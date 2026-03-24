@@ -1,0 +1,2976 @@
+[
+  {
+    "id": "health-nervous-system-no-nerves",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which multicellular animals are the only ones with no nervous system at all?",
+    "correct_answer": "Sponges and placozoans",
+    "distractors": [
+      "Jellyfish",
+      "Flatworms",
+      "Corals",
+      "Sea urchins",
+      "Clams",
+      "Starfish",
+      "Barnacles",
+      "Sea anemones"
+    ],
+    "explanation": "According to Wikipedia, the only multicellular animals with no nervous system are sponges, placozoans, and mesozoans, which have very simple body plans. All other multicellular animals — including jellyfish and corals — have at least a basic nerve net."
+  },
+  {
+    "id": "health-alzheimers-dementia-share",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What percentage of dementia cases does Alzheimer's disease account for?",
+    "correct_answer": "{60}–70% of cases",
+    "distractors": [],
+    "explanation": "According to Wikipedia, Alzheimer's disease accounts for around 60–70% of all dementia cases worldwide. As of 2020, approximately 50 million people had the disease globally, and its annual global cost was estimated at US$1 trillion."
+  },
+  {
+    "id": "health-alzheimers-named-1906",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "In what year was Alzheimer's disease first described by its namesake physician?",
+    "correct_answer": "{1906}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the disease is named after German psychiatrist and pathologist Alois Alzheimer, who first described it in 1906. By 2020, approximately 50 million people worldwide had the disease he identified over a century earlier."
+  },
+  {
+    "id": "health-alzheimers-early-onset",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What percentage of Alzheimer's cases are early-onset, striking people under age 65?",
+    "correct_answer": "Up to {10}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, Alzheimer's most often begins in people over 65, but up to 10% of cases are early-onset, affecting those in their 30s to mid-60s. About 6% of people aged 65 and older are affected."
+  },
+  {
+    "id": "health-stroke-two-types",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What are the two main types of stroke classified by cause?",
+    "correct_answer": "Ischemic and hemorrhagic",
+    "distractors": [
+      "Vascular and neural",
+      "Acute and chronic",
+      "Primary and secondary",
+      "Arterial and venous",
+      "Thrombotic and embolic",
+      "Focal and diffuse",
+      "Central and peripheral",
+      "Cryptogenic and embolic"
+    ],
+    "explanation": "According to Wikipedia, there are two main types of stroke: ischemic (due to lack of blood flow, typically a blockage) and hemorrhagic (due to bleeding into or around the brain). Both cause brain cell death, but they require completely different treatments."
+  },
+  {
+    "id": "health-stroke-third-death",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "In 2021, what global rank did stroke hold as a cause of death?",
+    "correct_answer": "Third",
+    "distractors": [
+      "First",
+      "Second",
+      "Fourth",
+      "Fifth",
+      "Sixth",
+      "Seventh",
+      "Eighth",
+      "Ninth"
+    ],
+    "explanation": "According to Wikipedia, in 2021 strokes were the third biggest cause of death worldwide, responsible for approximately 10% of total deaths. In 2023 alone, 15 million people worldwide had a stroke."
+  },
+  {
+    "id": "health-mental-disorder-depression-global",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "In 2019, approximately how many millions of people globally had major depression?",
+    "correct_answer": "About {264} million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, in 2019 major depression affected about 264 million people globally. Other common disorders that year included dementia (~50 million), bipolar disorder (~45 million), and schizophrenia and psychoses (~20 million people)."
+  },
+  {
+    "id": "health-autism-girls-masking",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Why are girls diagnosed with autism far less often than boys, despite similar rates?",
+    "correct_answer": "Because girls mask symptoms better",
+    "distractors": [
+      "Girls mature faster",
+      "Boys have weaker genes",
+      "Girls have less stress",
+      "Boys copy less behavior",
+      "Girls show more empathy",
+      "Boys have different diets",
+      "Girls get better schooling",
+      "Girls prefer privacy"
+    ],
+    "explanation": "According to Wikipedia, boys are diagnosed with autism several times more often than girls, with girls being better at hiding autistic traits. This 'masking' or 'camouflaging' means many autistic girls go undiagnosed, often until adulthood."
+  },
+  {
+    "id": "health-autism-savant",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which group of people is more likely than any other to have savant abilities?",
+    "correct_answer": "Autistic people",
+    "distractors": [
+      "People with ADHD",
+      "People with dyslexia",
+      "People with epilepsy",
+      "People with synesthesia",
+      "People with bipolar disorder",
+      "People with OCD",
+      "People with dyscalculia",
+      "People with schizophrenia"
+    ],
+    "explanation": "According to Wikipedia, certain savant abilities are more common among autistic people than in other groups. This is part of what makes autism a spectrum with highly variable presentations, from significant support needs to extraordinary specialized abilities."
+  },
+  {
+    "id": "health-psychiatry-dsm5-published",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What year was the DSM-5 psychiatric manual published?",
+    "correct_answer": "{2013}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the DSM-5 was published in May 2013. Notably, its release coincided with criticism from then-NIMH director Thomas Insel, who stated the manual lacks validity compared to other medical specialties because it has no objective laboratory biomarkers for diagnosis."
+  },
+  {
+    "id": "health-psychiatry-immuno-subspecialty",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which branch of psychiatry deals with legal and criminal justice contexts?",
+    "correct_answer": "Forensic psychiatry",
+    "distractors": [
+      "Military psychiatry",
+      "Social psychiatry",
+      "Geriatric psychiatry",
+      "Emergency psychiatry",
+      "Addiction psychiatry",
+      "Descriptive psychiatry",
+      "Child psychiatry",
+      "Neuropsychiatry"
+    ],
+    "explanation": "According to Wikidata, psychiatry has many subspecialties including forensic psychiatry (intersecting law), military psychiatry, geriatric psychiatry, and the emerging field of immuno-psychiatry, which studies links between the immune system and mental disorders."
+  },
+  {
+    "id": "health-intelligence-plants-controversial",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which living things have some researchers controversially claimed may show intelligence?",
+    "correct_answer": "Plants",
+    "distractors": [
+      "Fungi",
+      "Bacteria",
+      "Viruses",
+      "Coral",
+      "Slime molds",
+      "Sponges",
+      "Prions",
+      "Algae"
+    ],
+    "explanation": "According to Wikipedia, intelligence has been observed in the cognition of non-human animals, and some researchers have further suggested that plants exhibit forms of intelligence — though this remains controversial. Most definitions of intelligence center on perception, reasoning, and adaptive behavior within an environment."
+  },
+  {
+    "id": "health-neuron-axon-length",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How long can a single neuron's axon reach in the human body?",
+    "correct_answer": "{1} meter",
+    "distractors": [],
+    "explanation": "According to Wikipedia, a neuron's axon leaves the soma at the axon hillock and can travel up to 1 meter in humans — and even longer in other species. This allows a single nerve cell to run from the spinal cord all the way down to the foot."
+  },
+  {
+    "id": "health-neuron-700ma-evolution",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How many million years ago did electrical signaling in nerve cells first evolve?",
+    "correct_answer": "{700} to 800 million years ago",
+    "distractors": [],
+    "explanation": "According to Wikipedia, molecular evidence suggests the ability to generate electrical signals first appeared around 700 to 800 million years ago during the Tonian period. The predecessors of neurons were peptidergic secretory cells that eventually gained new gene modules enabling fast electrical signals."
+  },
+  {
+    "id": "health-meningitis-glass-test",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What household item is used to test for a dangerous meningitis rash?",
+    "correct_answer": "A glass",
+    "distractors": [
+      "A thermometer",
+      "A mirror",
+      "A coin",
+      "A flashlight",
+      "A ruler",
+      "A needle",
+      "A cotton swab",
+      "A spoon"
+    ],
+    "explanation": "According to Wikipedia, one warning sign of meningitis is a non-blanching rash — a rash that does NOT fade when a glass is rolled over it. This simple test can be lifesaving, as meningitis is classified as a medical emergency. Rashes that do fade under pressure are usually less dangerous."
+  },
+  {
+    "id": "health-meningitis-belt-africa",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What is the African region with annual bacterial meningitis outbreaks called?",
+    "correct_answer": "The meningitis belt",
+    "distractors": [
+      "The fever corridor",
+      "The pathogen zone",
+      "The infection arc",
+      "The disease band",
+      "The contagion strip",
+      "The epidemic region",
+      "The outbreak zone",
+      "The malaria corridor"
+    ],
+    "explanation": "According to Wikipedia, bacterial meningitis outbreaks occur every year between December and June in a swath of sub-Saharan Africa known as the meningitis belt. In 2019, meningitis was diagnosed in about 7.7 million people worldwide, of whom 236,000 died — down from 433,000 deaths in 1990."
+  },
+  {
+    "id": "health-dementia-three-seconds",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How often does a new dementia case occur somewhere in the world?",
+    "correct_answer": "Every 3 seconds",
+    "distractors": [
+      "Every 10 seconds",
+      "Every 30 seconds",
+      "Every minute",
+      "Every 5 seconds",
+      "Every 2 minutes",
+      "Every 15 seconds",
+      "Every 45 seconds",
+      "Every 20 seconds"
+    ],
+    "explanation": "According to Wikipedia, dementia is the seventh leading cause of death worldwide with 10 million new cases every year — approximately one new case every three seconds. In the UK specifically, it is the single leading cause of death."
+  },
+  {
+    "id": "health-dementia-90-year-olds",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What surprising fact about 90-year-olds shows dementia is not inevitable?",
+    "correct_answer": "Many have no dementia at all",
+    "distractors": [
+      "Most recover from dementia",
+      "90-year-olds have sharper memory",
+      "Aging prevents brain disease",
+      "Older brains resist all illness",
+      "Very old people never get dementia",
+      "Age reverses dementia symptoms",
+      "Old brains regenerate neurons",
+      "People over 80 are immune to dementia"
+    ],
+    "explanation": "According to Wikipedia, while the greatest risk factor for developing dementia is aging, dementia is not a normal part of the aging process — many people aged 90 and above show no signs whatsoever. Several risk factors like smoking and obesity are modifiable by lifestyle changes."
+  },
+  {
+    "id": "health-bipolar-former-name",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What was bipolar disorder previously called?",
+    "correct_answer": "Manic depression",
+    "distractors": [
+      "Cyclothymia",
+      "Split personality disorder",
+      "Hypomania syndrome",
+      "Melancholia",
+      "Seasonal affective disorder",
+      "Dysthymia",
+      "Nervous breakdown",
+      "Psychotic depression"
+    ],
+    "explanation": "According to Wikipedia, bipolar disorder (BD) was previously known as manic depression. The name change better reflects the cycling nature of the condition — alternating between depressive episodes and elevated mood states — and also reduces the stigma associated with the older term."
+  },
+  {
+    "id": "health-bipolar-genetic-risk",
+    "category_l1": "human_body_health",
+    "category_l2": "genetics_dna",
+    "quiz_question": "What percentage of bipolar disorder risk is attributed to genetic factors?",
+    "correct_answer": "Up to {90}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, while the causes of bipolar disorder are not fully understood, genetic factors may account for as much as 70–90% of the risk. Environmental risks such as childhood abuse and chronic stress also play a role, but genetics appears to be the dominant factor."
+  },
+  {
+    "id": "health-cns-arthropods-true-brain",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which invertebrate groups share the trait of a true brain with vertebrates?",
+    "correct_answer": "Arthropods and cephalopods",
+    "distractors": [
+      "Echinoderms and mollusks",
+      "Jellyfish and coral",
+      "Worms and sponges",
+      "Starfish and urchins",
+      "Flatworms and roundworms",
+      "Bivalves and barnacles",
+      "Leeches and snails",
+      "Annelids and nematodes"
+    ],
+    "explanation": "According to Wikipedia, only three animal groups have a true brain: arthropods (insects, crustaceans, spiders), cephalopods (octopuses, squids), and vertebrates. Other animals like sponges and diploblasts lack a central nervous system entirely, though some have precursor structures."
+  },
+  {
+    "id": "health-sensory-system-seven-senses",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "Besides the five classic senses, which two additional ones does the sensory nervous system commonly include?",
+    "correct_answer": "Balance and visceral sensation",
+    "distractors": [
+      "Pain and temperature",
+      "Heat and magnetism",
+      "Gravity and proprioception",
+      "Pressure and echo",
+      "Time and emotion",
+      "Hunger and thirst",
+      "Color and depth",
+      "Smell and taste only"
+    ],
+    "explanation": "According to Wikipedia, the sensory nervous system commonly recognizes seven senses: vision, hearing, touch, taste, smell, balance (vestibular sense), and visceral sensation (sensing the state of internal organs). Most people learn only five, so balance and visceral sensation are often forgotten."
+  },
+  {
+    "id": "health-neurology-nonsurgical",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What is the surgical counterpart to the nonsurgical specialty of neurology?",
+    "correct_answer": "Neurosurgery",
+    "distractors": [
+      "Orthopedic surgery",
+      "Cardiac surgery",
+      "Vascular surgery",
+      "Psychiatry",
+      "Oncology",
+      "Ophthalmology",
+      "Plastic surgery",
+      "General surgery"
+    ],
+    "explanation": "According to Wikipedia, neurology is a nonsurgical medical specialty focused on diagnosing and treating nervous system disorders. Its corresponding surgical specialty — neurosurgery — handles cases requiring physical intervention. Neurologists treat conditions like stroke, epilepsy, Parkinson's disease, and Alzheimer's without operating."
+  },
+  {
+    "id": "health-heart-attack-coronary-blockage",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What triggers a heart attack at the most basic level?",
+    "correct_answer": "A blocked coronary artery",
+    "distractors": [
+      "A burst aorta",
+      "A collapsed lung",
+      "An electrical short in the heart",
+      "A blocked pulmonary vein",
+      "Low blood pressure",
+      "A ruptured heart valve",
+      "A blood clot in the brain",
+      "An inflamed pericardium"
+    ],
+    "explanation": "According to Wikipedia, a myocardial infarction (heart attack) occurs when a coronary artery becomes blocked, interrupting blood supply to the heart muscle (myocardium). The classic symptom is retrosternal chest pain radiating to the left shoulder, arm, or jaw. In 2015 there were 15.9 million heart attacks worldwide."
+  },
+  {
+    "id": "health-blood-pressure-normal-values",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What is the normal resting blood pressure reading in millimetres of mercury?",
+    "correct_answer": "{120}/{80} mmHg",
+    "distractors": [],
+    "explanation": "According to Wikipedia, normal blood pressure is approximately 120/80 mmHg. Arterial hypertension (high blood pressure) is defined as a systolic pressure consistently above 130 or diastolic above 80. It affects about 33% of the global population and was responsible for approximately 19% of all deaths in 2019."
+  },
+  {
+    "id": "health-veins-blood-reservoir",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "What percentage of the body's blood is in the veins at any given time?",
+    "correct_answer": "About {70}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, veins serve as the primary blood reservoir in the body — at any moment approximately 70% of total blood volume resides in the venous system. This is why veins are sometimes called capacitance vessels. They carry deoxygenated blood back toward the heart and lungs."
+  },
+  {
+    "id": "health-spleen-iron-recycler",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "Which organ recycles iron from worn-out red blood cells?",
+    "correct_answer": "The spleen",
+    "distractors": [
+      "The liver",
+      "The kidneys",
+      "The bone marrow",
+      "The lymph nodes",
+      "The pancreas",
+      "The thymus",
+      "The appendix",
+      "The gallbladder"
+    ],
+    "explanation": "According to Wikipedia, the spleen performs several critical functions: filtering blood to remove old or damaged red blood cells, storing monocytes (a type of white blood cell), and recycling the iron contained in red blood cell hemoglobin. Despite all this, humans can survive without a spleen, though they become more susceptible to infections."
+  },
+  {
+    "id": "health-diabetes-828-million",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "How many people worldwide had diabetes as of 2024?",
+    "correct_answer": "{828} million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, diabetes mellitus affected 828 million people in 2024 compared to 200 million in 1990 — a greater than fourfold increase in just 34 years. Type 2 diabetes accounts for approximately 95% of all cases and costs the global economy around $760 billion per year."
+  },
+  {
+    "id": "health-anemia-most-common-blood-disorder",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "How many people worldwide are affected by iron-deficiency anemia?",
+    "correct_answer": "About {1} billion",
+    "distractors": [],
+    "explanation": "According to Wikipedia, anemia is the world's most common blood disorder, affecting between one-fifth and one-third of the global population. Iron-deficiency anemia — the most prevalent form — affects approximately 1 billion people. It occurs when hemoglobin levels fall too low to carry enough oxygen to the body's tissues."
+  },
+  {
+    "id": "health-white-blood-cells-one-percent",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "What percentage of total blood volume do white blood cells make up?",
+    "correct_answer": "About {1}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, white blood cells (leukocytes) are produced in the bone marrow and make up only about 1% of total blood volume — approximately 4 to 11 billion cells per litre of blood. Despite their small proportion, they are the body's entire immune system, defending against bacteria, viruses, parasites, and cancerous cells."
+  },
+  {
+    "id": "health-circulatory-systemic-pulmonary",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What are the two major divisions of the vertebrate circulatory system?",
+    "correct_answer": "Systemic and pulmonary circulation",
+    "distractors": [
+      "Arterial and venous circulation",
+      "Peripheral and central circulation",
+      "Cardiac and lymphatic circulation",
+      "Capillary and portal circulation",
+      "Somatic and visceral circulation",
+      "Open and closed circulation",
+      "Micro and macro circulation",
+      "Primary and secondary circulation"
+    ],
+    "explanation": "According to Wikipedia, the vertebrate circulatory system is a closed system with two major divisions: systemic circulation (carrying oxygenated blood from the heart throughout the body) and pulmonary circulation (carrying deoxygenated blood to the lungs to be re-oxygenated). The heart acts as a dual pump driving both circuits."
+  },
+  {
+    "id": "health-stress-fight-or-flight",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which hormone does the HPA axis release during stress?",
+    "correct_answer": "Cortisol",
+    "distractors": [
+      "Adrenaline",
+      "Serotonin",
+      "Dopamine",
+      "Insulin",
+      "Melatonin",
+      "Testosterone",
+      "Oxytocin",
+      "Estrogen"
+    ],
+    "explanation": "According to Wikipedia, the HPA axis regulates the release of cortisol, which influences metabolic, psychological, and immunological functions. The SAM axis separately triggers adrenaline as part of the immediate fight-or-flight response — two distinct systems firing at once."
+  },
+  {
+    "id": "health-stress-amygdala-hub",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which brain structure is the emotional threat detector that triggers stress responses?",
+    "correct_answer": "Amygdala",
+    "distractors": [
+      "Hippocampus",
+      "Cerebellum",
+      "Frontal lobe",
+      "Brain stem",
+      "Thalamus",
+      "Corpus callosum",
+      "Pituitary gland",
+      "Basal ganglia"
+    ],
+    "explanation": "According to Wikipedia, the SAM and HPA stress axes are regulated by several brain regions including the limbic system, prefrontal cortex, amygdala, hypothalamus, and stria terminalis. Through these mechanisms, stress can alter memory, reward, immune function, metabolism, and disease susceptibility."
+  },
+  {
+    "id": "health-stress-two-stress-hormones",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Name one of the two well-known hormones humans produce during stressful situations.",
+    "correct_answer": "Adrenaline",
+    "distractors": [
+      "Melatonin",
+      "Insulin",
+      "Serotonin",
+      "Dopamine",
+      "Estrogen",
+      "Testosterone",
+      "Oxytocin",
+      "Glucagon"
+    ],
+    "explanation": "According to Wikipedia, two well-known hormones that humans produce during stressful situations are adrenaline and cortisol. Adrenaline provides the immediate surge (SAM axis) while cortisol has longer-lasting metabolic, psychological, and immunological effects (HPA axis)."
+  },
+  {
+    "id": "health-adhd-heritability-rate",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What is the approximate heritability rate of ADHD according to meta-analyses?",
+    "correct_answer": "{75}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, meta-analyses have shown ADHD is primarily genetic with a heritability rate of 70-80%, with risk factors being highly accumulative. Environmental risks are not related to social or familial factors — they act very early in prenatal or early postnatal life."
+  },
+  {
+    "id": "health-adhd-hyperfocus-paradox",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What is the paradoxical state of intense locked-in focus sometimes seen in ADHD called?",
+    "correct_answer": "Hyperfocus",
+    "distractors": [
+      "Hypervigilance",
+      "Flow state",
+      "Perseveration",
+      "Hyper-arousal",
+      "Tunnel vision",
+      "Fixation mode",
+      "Deep focus",
+      "Cognitive lock"
+    ],
+    "explanation": "According to Wikipedia, ADHD's inhibitory deficits can lead to difficulty stopping an already ongoing response pattern — manifesting as hyperfocus, where someone continues an action despite intending to stop. This symptom is related to addiction risks and is colloquially well-known."
+  },
+  {
+    "id": "health-adhd-executive-dysfunction",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "ADHD symptoms arise from deficits in what type of brain function?",
+    "correct_answer": "Executive function",
+    "distractors": [
+      "Sensory processing",
+      "Motor coordination",
+      "Visual memory",
+      "Language processing",
+      "Spatial reasoning",
+      "Emotional memory",
+      "Reflex control",
+      "Auditory perception"
+    ],
+    "explanation": "According to Wikipedia, ADHD symptoms arise from executive dysfunction — specifically deficits in self-regulation such as time management, cognitive inhibition, task initiation, and sustained attention. These lead to poor professional performance, relationship difficulties, and numerous health risks."
+  },
+  {
+    "id": "health-cerebellum-accordion-cortex",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How is the cerebellar cortex arranged beneath its parallel surface grooves?",
+    "correct_answer": "Accordion-folded sheet",
+    "distractors": [
+      "Hollow chambers",
+      "Layered spheres",
+      "Spiral columns",
+      "Branching tubes",
+      "Interlocked ridges",
+      "Stacked discs",
+      "Hexagonal tiles",
+      "Radial spokes"
+    ],
+    "explanation": "According to Wikipedia, the parallel grooves of the cerebellum conceal the fact that the cerebellar cortex is actually a single thin continuous layer tightly folded accordion-style. Within this layer, the most important neurons are Purkinje cells and granule cells, giving rise to massive signal-processing capability."
+  },
+  {
+    "id": "health-cerebellum-teaching-signal",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What role does a climbing fiber play for each Purkinje cell in the cerebellum?",
+    "correct_answer": "Sends a teaching signal",
+    "distractors": [
+      "Provides oxygen supply",
+      "Inhibits all activity",
+      "Carries sensory input",
+      "Transmits pain signals",
+      "Enables synaptic pruning",
+      "Buffers electrical noise",
+      "Maintains cell structure",
+      "Relays motor commands"
+    ],
+    "explanation": "According to Wikipedia, the Marr-Albus theory proposes that each Purkinje cell receives thousands of weak inputs from granule cells via parallel fibers, plus one extremely strong input from a single climbing fiber acting as a 'teaching signal' — inducing long-lasting changes in parallel fiber strength, forming the basis of cerebellar motor learning."
+  },
+  {
+    "id": "health-cerebellum-mormyrid-fish",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "In which animal can the cerebellum be as large as or larger than the cerebrum?",
+    "correct_answer": "Mormyrid fish",
+    "distractors": [
+      "Octopus",
+      "Crow",
+      "Elephant",
+      "Bottlenose dolphin",
+      "Mantis shrimp",
+      "Fruit bat",
+      "Electric eel",
+      "Barn owl"
+    ],
+    "explanation": "According to Wikipedia, although the cerebellum is usually smaller than the cerebrum in most animals, in some animals such as the mormyrid fishes it may be as large as or even larger than the cerebrum — a striking anatomical exception to the usual brain organization."
+  },
+  {
+    "id": "health-coma-greek-origin",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What does the Ancient Greek word 'koma', origin of 'coma', mean?",
+    "correct_answer": "Deep sleep",
+    "distractors": [
+      "Death-like state",
+      "Silent mind",
+      "Frozen body",
+      "Dreamless void",
+      "Still waters",
+      "Empty vessel",
+      "Dark stillness",
+      "Locked away"
+    ],
+    "explanation": "According to Wikipedia, the word coma derives from Ancient Greek 'koma' meaning 'deep sleep'. A true coma involves complete absence of wakefulness — the person cannot be awakened, fails to respond to stimuli, and lacks a normal sleep-wake cycle."
+  },
+  {
+    "id": "health-coma-wakefulness-awareness",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What are the two components both required to maintain consciousness?",
+    "correct_answer": "Wakefulness and awareness",
+    "distractors": [
+      "Sleep and dreams",
+      "Reflexes and thought",
+      "Sensation and movement",
+      "Memory and motion",
+      "Breathing and heartbeat",
+      "Focus and vision",
+      "Alertness and memory",
+      "Cognition and sensation"
+    ],
+    "explanation": "According to Wikipedia, for a patient to maintain consciousness, both wakefulness (quantitative assessment of alertness degree) and awareness (qualitative assessment of cerebral cortex functions like attention, memory, language, and spatial orientation) must be maintained."
+  },
+  {
+    "id": "health-ptsd-ancient-documentation",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How far back have symptoms of trauma-related mental disorders been documented?",
+    "correct_answer": "Ancient Greek times",
+    "distractors": [
+      "World War I",
+      "The Renaissance",
+      "Medieval period",
+      "The Victorian era",
+      "Roman Empire",
+      "Industrial Revolution",
+      "Early 20th century",
+      "Napoleonic wars"
+    ],
+    "explanation": "According to Wikipedia, symptoms of trauma-related mental disorders have been documented since at least ancient Greek times. Samuel Pepys's 1666 diary described intrusive symptoms after the Great Fire of London, and the condition was known under various names during the world wars before PTSD was formally recognized."
+  },
+  {
+    "id": "health-ptsd-interpersonal-higher-risk",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which type of trauma makes PTSD development more likely than accidents or natural disasters?",
+    "correct_answer": "Interpersonal violence",
+    "distractors": [
+      "Earthquake damage",
+      "Financial ruin",
+      "Workplace injury",
+      "Natural disaster",
+      "Car accident",
+      "Serious illness",
+      "Bereavement",
+      "Military deployment"
+    ],
+    "explanation": "According to Wikipedia, people who experience interpersonal violence such as rape, other sexual assaults, being kidnapped, stalking, physical abuse by an intimate partner, and childhood abuse are more likely to develop PTSD than those who experience non-assault based trauma such as accidents and natural disasters."
+  },
+  {
+    "id": "health-neurosis-dropped-from-dsm",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which two diagnostic systems officially removed 'neurosis' from psychiatric use?",
+    "correct_answer": "DSM and ICD",
+    "distractors": [
+      "Oxford Handbook and PDR",
+      "DSM and Gray's Anatomy",
+      "ICD and Merck Manual",
+      "APA and WHO guidelines only",
+      "PDR and WHO manual",
+      "ICD and BMA codes",
+      "APA and MedlineP",
+      "DSM and ICD-10 appendix"
+    ],
+    "explanation": "According to Wikipedia, the term 'neurosis' is no longer used in disorder names by the WHO's International Classification of Diseases (ICD) or the American Psychiatric Association's Diagnostic and Statistical Manual of Mental Disorders (DSM). The American Heritage Medical Dictionary of 2007 confirmed it is 'no longer used in psychiatric diagnosis'."
+  },
+  {
+    "id": "health-neurosis-psychosis-distinction",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What key symptom does neurosis lack that distinguishes it from psychosis?",
+    "correct_answer": "Loss of touch with reality",
+    "distractors": [
+      "Anxiety symptoms",
+      "Emotional distress",
+      "Repressed memories",
+      "Social withdrawal",
+      "Mood changes",
+      "Compulsive behavior",
+      "Sleep disturbance",
+      "Phobic reactions"
+    ],
+    "explanation": "According to Wikipedia, neurosis is distinguished from psychosis, which refers to a loss of touch with reality. Its descendant concept, neuroticism, refers to a personality trait of being prone to anxiousness and mental collapse — now one of the recognized Big Five personality traits."
+  },
+  {
+    "id": "health-encephalitis-global-burden",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "How many deaths did encephalitis cause worldwide in 2015?",
+    "correct_answer": "{150,000}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, in 2015 encephalitis was estimated to have affected 4.3 million people and resulted in 150,000 deaths worldwide. Causes include viruses like herpes simplex and rabies, bacteria, fungi, parasites, and autoimmune diseases."
+  },
+  {
+    "id": "health-encephalitis-autoimmune-cause",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "Besides infections, what unexpected internal source can cause encephalitis?",
+    "correct_answer": "Autoimmune attack",
+    "distractors": [
+      "Loud noise trauma",
+      "Dehydration",
+      "Vitamin deficiency",
+      "Air pressure changes",
+      "Radiation exposure",
+      "Blood sugar spikes",
+      "Hormonal imbalance",
+      "Sleep deprivation"
+    ],
+    "explanation": "According to Wikipedia, encephalitis causes include viruses like herpes simplex and rabies, bacteria, fungi, parasites, autoimmune diseases, and certain medications. In many cases the cause remains unknown. The body's own immune system attacking the brain is a recognized distinct cause."
+  },
+  {
+    "id": "health-mental-health-who-definition",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "According to the WHO, mental health is a state of well-being — not merely the absence of what?",
+    "correct_answer": "Mental illness",
+    "distractors": [
+      "Sadness",
+      "Anxiety",
+      "Physical pain",
+      "Conflict",
+      "Memory loss",
+      "Social isolation",
+      "Career failure",
+      "Sleep problems"
+    ],
+    "explanation": "According to Wikipedia, the WHO defines mental health as a 'state of well-being' where the individual realizes their abilities, can cope with normal life stresses, work productively, and contribute to their community. From a holistic perspective, mental health is not merely the absence of mental illness."
+  },
+  {
+    "id": "health-cerebrum-controls-voluntary-actions",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which brain structure controls all voluntary human actions?",
+    "correct_answer": "Cerebrum",
+    "distractors": [
+      "Cerebellum",
+      "Brain stem",
+      "Medulla oblongata",
+      "Thalamus",
+      "Hypothalamus",
+      "Pons",
+      "Spinal cord",
+      "Amygdala"
+    ],
+    "explanation": "According to Wikipedia, the cerebrum — also called the telencephalon or endbrain — works with the cerebellum to control all voluntary actions in the human body. It includes the cerebral cortex, hippocampus, basal ganglia, and olfactory bulb."
+  },
+  {
+    "id": "health-cerebrum-two-hemispheres",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Into how many hemispheres is the cerebrum divided?",
+    "correct_answer": "{2} hemispheres",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the cerebrum is divided into approximately symmetric left and right cerebral hemispheres. In mammals, the outer pallium (dorsal telencephalon) develops into the cerebral cortex, while the inner subpallium becomes the basal ganglia."
+  },
+  {
+    "id": "health-brain-tumor-secondary-four-times",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How much more common are secondary brain tumors than primary ones?",
+    "correct_answer": "About {4} times more",
+    "distractors": [],
+    "explanation": "According to Wikipedia, secondary (metastatic) brain tumors — cancers that spread to the brain from elsewhere in the body — are about four times as common as primary brain tumors that originate within the brain. About half of all brain metastases come from lung cancer."
+  },
+  {
+    "id": "health-brain-tumor-five-year-survival",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What is the average US five-year survival rate for malignant brain cancers?",
+    "correct_answer": "{33}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the average five-year survival rate for all malignant brain cancers in the United States is 33%. Outcomes vary significantly by tumor type — malignant glioblastomas have very poor outcomes while benign meningiomas typically have good outcomes."
+  },
+  {
+    "id": "health-brain-tumor-ct-radiation-risk",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What common medical scan may cause up to 4% of brain cancers?",
+    "correct_answer": "CT scan",
+    "distractors": [
+      "MRI scan",
+      "X-ray",
+      "PET scan",
+      "Ultrasound",
+      "Bone density scan",
+      "Mammogram",
+      "Nuclear scan",
+      "Fluoroscopy"
+    ],
+    "explanation": "According to Wikipedia, while the cause of most brain tumors is unknown, up to 4% of brain cancers may be linked to CT scan radiation. Other uncommon risk factors include vinyl chloride exposure, Epstein-Barr virus, ionizing radiation, and inherited syndromes like neurofibromatosis."
+  },
+  {
+    "id": "health-intellectual-disability-prevalence-2-3-percent",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Roughly what percentage of the global population has intellectual disability?",
+    "correct_answer": "{2}-3%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, intellectual disability affects about 2-3% of the general population. About 5% of cases are inherited, and cases of unknown cause affected about 95 million people as of 2013."
+  },
+  {
+    "id": "health-pns-unprotected-by-barrier",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which nervous system division lacks blood-brain barrier protection?",
+    "correct_answer": "Peripheral nervous system",
+    "distractors": [
+      "Central nervous system",
+      "Autonomic nervous system",
+      "Somatic nervous system",
+      "Sympathetic nervous system",
+      "Enteric nervous system",
+      "Cranial nerve system",
+      "Parasympathetic system",
+      "Spinal cord system"
+    ],
+    "explanation": "According to Wikipedia, unlike the CNS (protected by the vertebral column, skull, and blood-brain barrier), the peripheral nervous system is exposed to toxins because it lacks these protections. This makes peripheral nerves vulnerable to poisons, infections, and metabolic damage."
+  },
+  {
+    "id": "health-pns-autonomic-involuntary-control",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which PNS division controls smooth muscle and glands involuntarily?",
+    "correct_answer": "Autonomic division",
+    "distractors": [
+      "Somatic division",
+      "Sensory division",
+      "Motor division",
+      "Cranial division",
+      "Sympathetic only",
+      "Enteric division",
+      "Parasympathetic only",
+      "Reflex division"
+    ],
+    "explanation": "According to Wikipedia, the autonomic division of the peripheral nervous system exerts involuntary control over smooth muscle and glands, regulating functions like heart rate, digestion, and glandular secretion without conscious effort."
+  },
+  {
+    "id": "health-human-brain-86-billion-neurons",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How many neurons are in the human brain?",
+    "correct_answer": "More than {86} billion",
+    "distractors": [],
+    "explanation": "According to Wikipedia, there are more than 86 billion neurons in the human brain, plus a roughly equal number of non-neuronal (glial) cells. Brain activity is made possible by interconnections between neurons and their release of neurotransmitters in response to nerve impulses."
+  },
+  {
+    "id": "health-human-brain-blood-brain-barrier",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What barrier isolates the human brain from the bloodstream?",
+    "correct_answer": "Blood-brain barrier",
+    "distractors": [
+      "Cerebrospinal fluid",
+      "Skull bone",
+      "Dura mater",
+      "Meninges",
+      "Arachnoid mater",
+      "Blood-nerve barrier",
+      "Neural sheath",
+      "Pia mater"
+    ],
+    "explanation": "According to Wikipedia, the human brain is protected by the skull, suspended in cerebrospinal fluid, and isolated from the bloodstream by the blood-brain barrier. This barrier prevents many pathogens and toxins from entering brain tissue — but also makes treating brain diseases with drugs notoriously difficult."
+  },
+  {
+    "id": "health-human-brain-occipital-vision",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which brain lobe is dedicated entirely to processing vision?",
+    "correct_answer": "Occipital lobe",
+    "distractors": [
+      "Frontal lobe",
+      "Parietal lobe",
+      "Temporal lobe",
+      "Limbic lobe",
+      "Insular lobe",
+      "Cerebellar lobe",
+      "Prefrontal cortex",
+      "Cingulate gyrus"
+    ],
+    "explanation": "According to Wikipedia, the occipital lobe of the cerebrum is dedicated to vision. The frontal lobe handles executive functions including self-control, planning, reasoning, and abstract thought. Each hemisphere has four major lobes in total."
+  },
+  {
+    "id": "health-nervous-tissue-axon-action-potentials",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What part of a neuron sends action potentials to the next cell?",
+    "correct_answer": "Axon",
+    "distractors": [
+      "Dendrite",
+      "Cell body",
+      "Myelin sheath",
+      "Synapse",
+      "Nucleus",
+      "Soma",
+      "Node of Ranvier",
+      "Schwann cell"
+    ],
+    "explanation": "According to Wikipedia, all neurons in nervous tissue have an axon — the long stem-like projection that transmits action potentials to the next cell. Bundles of axons make up nerves in the peripheral nervous system and tracts in the central nervous system."
+  },
+  {
+    "id": "health-nervous-tissue-five-functions",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How many key functions does nervous tissue perform?",
+    "correct_answer": "{5} functions",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the functions of nervous tissue include sensory input, integration, control of muscles and glands, homeostasis, and mental activity — covering everything from reflexes to consciousness."
+  },
+  {
+    "id": "health-brainstem-2-6-percent-weight",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What percentage of the brain's total weight is the brainstem?",
+    "correct_answer": "About {2.6}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the brainstem is very small, making up around only 2.6% of the brain's total weight. Despite its size, it has critical roles in regulating heart rate and respiratory function, and provides the main motor and sensory nerve supply to the face and neck via cranial nerves."
+  },
+  {
+    "id": "health-cerebral-cortex-90-percent-neocortex",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What percentage of the cerebral cortex is the six-layered neocortex?",
+    "correct_answer": "About {90}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the six-layered neocortex makes up approximately 90% of the cortex, with the allocortex (which has only three or four layers) making up the remainder. The cortex plays a key role in attention, perception, awareness, thought, memory, language, and consciousness."
+  },
+  {
+    "id": "health-cerebral-cortex-folding-surface-area",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Why is the cerebral cortex folded in large-brained mammals?",
+    "correct_answer": "To fit more surface area",
+    "distractors": [
+      "To protect neural tissue",
+      "To separate brain regions",
+      "To reduce blood flow",
+      "To allow brain growth",
+      "To cool the brain",
+      "To anchor to the skull",
+      "To store memories",
+      "To house more glial cells"
+    ],
+    "explanation": "According to Wikipedia, in most mammals with large brains, the cerebral cortex is folded, providing a greater surface area in the confined volume of the cranium. Mammals with small brains have smooth cortices. The folds are called gyri and the grooves are called sulci."
+  },
+  {
+    "id": "health-ganglion-peripheral-cluster",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Where in the body are ganglia — clusters of neuron cell bodies — located?",
+    "correct_answer": "Peripheral nervous system",
+    "distractors": [
+      "Central nervous system",
+      "Brain cortex",
+      "Spinal cord",
+      "Cerebellum",
+      "Brainstem",
+      "Frontal lobe",
+      "Hippocampus",
+      "Thalamus"
+    ],
+    "explanation": "According to Wikipedia, ganglia are groups of neuron cell bodies in the peripheral nervous system — outside the central nervous system. They serve as relay hubs for both the somatic and autonomic nervous systems, including sympathetic and parasympathetic branches."
+  },
+  {
+    "id": "health-ganglion-autonomic-branches",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Which nervous system division contains both sympathetic and parasympathetic ganglia?",
+    "correct_answer": "Autonomic nervous system",
+    "distractors": [
+      "Somatic nervous system",
+      "Central nervous system",
+      "Sensory nervous system",
+      "Motor nervous system",
+      "Cranial nervous system",
+      "Enteric nervous system",
+      "Voluntary nervous system",
+      "Reflex nervous system"
+    ],
+    "explanation": "According to Wikipedia, the autonomic nervous system contains both sympathetic and parasympathetic ganglia, which house the cell bodies of postganglionic neurons. These control involuntary functions like heart rate, digestion, and glandular activity."
+  },
+  {
+    "id": "health-somatosensory-homunculus-map",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "What is the brain's body map in the somatosensory cortex called?",
+    "correct_answer": "Sensory homunculus",
+    "distractors": [
+      "Cortical atlas",
+      "Neural topograph",
+      "Body schema",
+      "Somatic index",
+      "Dermatomal map",
+      "Sensory homograph",
+      "Synaptic chart",
+      "Proprioceptive grid"
+    ],
+    "explanation": "According to Wikipedia, the somatosensory cortex preserves the spatial layout of the body — neighboring neurons represent nearby skin or body locations, creating what is called a sensory homunculus. This map is wildly distorted: the hands and lips take up far more space than the back."
+  },
+  {
+    "id": "health-somatosensory-proprioception",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "Which sense — body position and balance — is part of the somatosensory system?",
+    "correct_answer": "Proprioception",
+    "distractors": [
+      "Equilibrioception",
+      "Interoception",
+      "Exteroception",
+      "Chronoception",
+      "Thermoception",
+      "Nociception",
+      "Magnetoreception",
+      "Echolocation"
+    ],
+    "explanation": "According to Wikipedia, the somatosensory system's main functions include perception of external stimuli, perception of internal stimuli, AND regulation of body position and balance — a sense known as proprioception. This is why you can touch your nose with your eyes closed."
+  },
+  {
+    "id": "health-somatosensory-touch-subdivisions",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "What are the two main subdivisions of the somatosensory system?",
+    "correct_answer": "Touch and pain/temperature",
+    "distractors": [
+      "Sight and sound",
+      "Balance and taste",
+      "Pressure and smell",
+      "Heat and motion",
+      "Reflex and memory",
+      "Hearing and balance",
+      "Vision and touch",
+      "Smell and pain"
+    ],
+    "explanation": "According to Wikipedia, the somatosensory system has two subdivisions: one detects mechanosensory information (touch, vibration, pressure, tension) and the other handles nociception — detection of pain and temperature that may be harmful. These use different receptor types and pathways."
+  },
+  {
+    "id": "health-stimulant-cocaine-ancient-use",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How far back does archaeological evidence for cocaine use in Peru go?",
+    "correct_answer": "{8000} BCE",
+    "distractors": [],
+    "explanation": "According to Wikipedia, archaeological evidence from Peru shows cocaine use dates as far back as 8000 BCE. Stimulants have a documented history spanning millennia, though the regulation and medical use of stimulants are far more recent developments."
+  },
+  {
+    "id": "health-stimulant-caffeine-mechanism",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How does caffeine work as a stimulant in the brain?",
+    "correct_answer": "Blocks sleep-promoting adenosine",
+    "distractors": [
+      "Boosts dopamine directly",
+      "Releases adrenaline stores",
+      "Increases serotonin levels",
+      "Stimulates norepinephrine release",
+      "Activates pleasure receptors",
+      "Triggers cortisol production",
+      "Increases glucose to neurons",
+      "Opens calcium channels"
+    ],
+    "explanation": "According to Wikipedia, caffeine works differently from many stimulants — instead of increasing excitatory neurotransmitters, it blocks the activity of adenosine, a natural compound that promotes sleep. This is why caffeine keeps you awake rather than simply making you feel energized."
+  },
+  {
+    "id": "health-stimulant-three-categories",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What are the three common categories of recreational psychoactive drugs?",
+    "correct_answer": "Depressants, stimulants, hallucinogens",
+    "distractors": [
+      "Opioids, sedatives, psychedelics",
+      "Uppers, downers, dissociatives",
+      "Analgesics, narcotics, stimulants",
+      "Cannabis, alcohol, tobacco",
+      "Nootropics, sedatives, empathogens",
+      "Hypnotics, euphorics, dissociatives",
+      "Anxiolytics, antidepressants, stimulants",
+      "Psychedelics, opioids, amphetamines"
+    ],
+    "explanation": "According to Wikipedia, recreational drugs are commonly divided into three categories: depressants (relaxation and calmness), stimulants (energy and alertness), and hallucinogens (perceptual distortions such as hallucinations). This classification helps understand their mechanisms and effects."
+  },
+  {
+    "id": "health-concussion-children-recovery",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How long can concussion symptoms last in children compared to adults?",
+    "correct_answer": "Up to 4 weeks vs. 2 weeks",
+    "distractors": [
+      "Equal time in both groups",
+      "Shorter in children",
+      "Only days in both",
+      "A year vs. six months",
+      "6 weeks vs. 4 weeks",
+      "2 months vs. 1 month",
+      "3 days vs. 1 week",
+      "Up to 6 weeks vs. 3 weeks"
+    ],
+    "explanation": "According to Wikipedia, concussion symptoms are not unusual to last 2 weeks in adults but up to 4 weeks in children. Children's developing brains take longer to recover from even mild traumatic brain injury, which is why return-to-sport protocols are stricter for young athletes."
+  },
+  {
+    "id": "health-concussion-loss-of-consciousness",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What percentage of sports-related child concussions involve loss of consciousness?",
+    "correct_answer": "Fewer than {10}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, fewer than 10% of sports-related concussions among children are associated with loss of consciousness. This means the vast majority of concussions — and their serious long-term risks — occur without the child ever blacking out, making them easy to miss."
+  },
+  {
+    "id": "health-concussion-rest-recovery",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What does prolonged rest after a concussion paradoxically cause?",
+    "correct_answer": "Slower recovery and worse mood",
+    "distractors": [
+      "Faster healing time",
+      "Reduced headache pain",
+      "Better sleep quality",
+      "Stronger memory recall",
+      "Lower anxiety levels",
+      "Improved concentration",
+      "Fewer mood changes",
+      "Enhanced neuroplasticity"
+    ],
+    "explanation": "According to Wikipedia, prolonged rest may slow recovery and result in greater depression and anxiety after concussion. Treatment now recommends relative rest for only 1-2 days, followed by aerobic exercise and gradual return to activities — the opposite of what was long advised."
+  },
+  {
+    "id": "health-pvs-four-week-threshold",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How long must someone be in a vegetative state before it becomes 'persistent'?",
+    "correct_answer": "{4} weeks",
+    "distractors": [],
+    "explanation": "According to Wikipedia, a vegetative state becomes classified as a persistent vegetative state (PVS) after four weeks. The diagnosis is further reclassified as 'permanent' after three months (in the US) or six months (in the UK) following a non-traumatic injury, or after one year following traumatic injury."
+  },
+  {
+    "id": "health-pvs-permanent-timeline",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "After traumatic brain injury, how long before a PVS is called permanent?",
+    "correct_answer": "{1} year",
+    "distractors": [],
+    "explanation": "According to Wikipedia, PVS is classified as permanent one year after a traumatic brain injury, but only three months (US) or six months (UK) after a non-traumatic injury. This reflects differences in expected recovery potential between trauma and other causes."
+  },
+  {
+    "id": "health-brain-damage-neuroplasticity",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What brain property allows new neural connections to compensate for damaged areas?",
+    "correct_answer": "Neuroplasticity",
+    "distractors": [
+      "Neural regeneration",
+      "Synaptogenesis",
+      "Myelin repair",
+      "Axon sprouting",
+      "Cortical mapping",
+      "Dendritic pruning",
+      "Glial migration",
+      "Cerebral dominance"
+    ],
+    "explanation": "According to Wikipedia, neuroplasticity allows the brain to partially recover function after brain injury by forming new neural connections to compensate for damaged regions. This is why patients can regain movement and speech through therapy and practice — the brain literally rewires itself."
+  },
+  {
+    "id": "health-brain-damage-primary-secondary",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What type of brain injury develops AFTER trauma due to physiological responses?",
+    "correct_answer": "Secondary injury",
+    "distractors": [
+      "Primary injury",
+      "Tertiary injury",
+      "Diffuse injury",
+      "Focal injury",
+      "Delayed coma",
+      "Contusion cascade",
+      "Retrograde injury",
+      "Acquired injury"
+    ],
+    "explanation": "According to Wikipedia, brain injuries are classified by timing: primary injuries occur at the moment of trauma, while secondary injuries develop afterward due to physiological responses like inflammation, swelling, and oxygen deprivation. Secondary injuries are often preventable with rapid treatment."
+  },
+  {
+    "id": "health-brain-damage-focal-diffuse",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What is a brain injury called when it affects widespread regions rather than a specific area?",
+    "correct_answer": "Diffuse injury",
+    "distractors": [
+      "Focal injury",
+      "Global injury",
+      "Systemic injury",
+      "Cortical injury",
+      "Scattered injury",
+      "Distributed trauma",
+      "Widespread lesion",
+      "Generalized injury"
+    ],
+    "explanation": "According to Wikipedia, brain injuries are categorized by location: focal injuries affect specific brain areas, whereas diffuse injuries involve widespread brain regions. Diffuse axonal injury — common in car accidents — is a major type of diffuse injury that can cause severe long-term impairment despite no visible lesion on imaging."
+  },
+  {
+    "id": "health-medicine-bloodletting-humorism",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What medical theory justified bloodletting in ancient medicine?",
+    "correct_answer": "Humorism (four humors)",
+    "distractors": [
+      "Miasma theory",
+      "Germ theory",
+      "Vitalism",
+      "Alchemy theory",
+      "Elemental balance",
+      "Qi energy flow",
+      "Blood pressure theory",
+      "Galvanic theory"
+    ],
+    "explanation": "According to Wikipedia, ancient physicians applied bloodletting according to the theories of humorism — the belief that the body was governed by four humors. This was medicine practiced as an 'art' before modern science, and bloodletting was a standard treatment for centuries despite causing harm."
+  },
+  {
+    "id": "health-medicine-quackery-ethics",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What is the medical term for unscientific treatments with safety or efficacy concerns?",
+    "correct_answer": "Quackery",
+    "distractors": [
+      "Alternative medicine",
+      "Folk medicine",
+      "Homeopathy",
+      "Naturopathy",
+      "Herbalism",
+      "Traditional medicine",
+      "Integrative medicine",
+      "Complementary care"
+    ],
+    "explanation": "According to Wikipedia, alternative treatments outside of scientific medicine that raise ethical, safety, or efficacy concerns are specifically termed 'quackery' or described as 'fringe science' — distinct from traditional folk medicine, which is an absence of scientific medicine rather than a contradiction of it."
+  },
+  {
+    "id": "health-medicine-art-and-science",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What does modern medicine have in common with both art and science?",
+    "correct_answer": "It requires both skill and knowledge",
+    "distractors": [
+      "It relies solely on technology",
+      "It follows fixed algorithms only",
+      "It depends on tradition alone",
+      "It is entirely evidence-based now",
+      "It needs creative guesswork mostly",
+      "It began as pure science",
+      "It excludes human judgment",
+      "It is purely academic now"
+    ],
+    "explanation": "According to Wikipedia, modern medicine is a combination of art and science. For example, suturing technique is an art learned through practice, while understanding what happens at the cellular and molecular level in the stitched tissue is science. This dual nature makes medicine uniquely human."
+  },
+  {
+    "id": "health-recreational-drug-global-use",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "As of 2015, roughly what percentage of 15-to-65-year-olds worldwide had used controlled drugs?",
+    "correct_answer": "About {5}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, as of 2015, approximately 5% of people aged 15 to 65 globally — estimated at 158 to 351 million people — had used controlled drugs at least once. The wide range reflects variation in definitions, self-reporting, and data quality across countries."
+  },
+  {
+    "id": "health-ganglion-peripheral-cluster-b6",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "Where in the nervous system are ganglia located?",
+    "correct_answer": "Peripheral nervous system",
+    "distractors": [
+      "Central nervous system",
+      "Cerebral cortex",
+      "Spinal cord interior",
+      "Brain stem",
+      "Cerebellum",
+      "Thalamus",
+      "Hippocampus",
+      "Corpus callosum"
+    ],
+    "explanation": "According to Wikipedia, a ganglion is a group of neuron cell bodies in the peripheral nervous system — meaning outside the brain and spinal cord. Both the somatic and autonomic nervous systems have their own types of ganglia."
+  },
+  {
+    "id": "health-ganglion-pseudoganglion-fake",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What does a pseudoganglion contain almost none of, despite looking like a ganglion?",
+    "correct_answer": "Nerve cell bodies",
+    "distractors": [
+      "Nerve fibers",
+      "Blood vessels",
+      "Connective tissue",
+      "Myelin sheaths",
+      "Axon terminals",
+      "Schwann cells",
+      "Collagen",
+      "Capillaries"
+    ],
+    "explanation": "According to Wikipedia, a pseudoganglion looks like a ganglion but only has nerve fibers and has few nerve cell bodies. It's essentially a structural impostor — same shape, very different contents."
+  },
+  {
+    "id": "health-somatosensory-homunculus-map-b6",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "What is the body map in the somatosensory cortex called?",
+    "correct_answer": "Sensory homunculus",
+    "distractors": [
+      "Cortical projection",
+      "Neural atlas",
+      "Dermatomal chart",
+      "Receptor field map",
+      "Somatotopic grid",
+      "Tactile map",
+      "Peripheral index",
+      "Nerve topography"
+    ],
+    "explanation": "According to Wikipedia, neighboring neurons in the somatosensory cortex represent nearby locations on the skin or in the body, creating a map called the sensory homunculus. This spatial organization means the brain 'knows' exactly where on your body a touch occurs."
+  },
+  {
+    "id": "health-somatosensory-proprioception-b6",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "What is the somatosensory system's sense of body position called?",
+    "correct_answer": "Proprioception",
+    "distractors": [
+      "Equilibrioception",
+      "Exteroception",
+      "Interoception",
+      "Mechanosensation",
+      "Kinesthesia mapping",
+      "Spatial cognition",
+      "Vestibular sense",
+      "Somatotopy"
+    ],
+    "explanation": "According to Wikipedia, one of the main functions of the somatosensory system is the regulation of body position and balance — a capability known as proprioception. This is why you can touch your nose with your eyes closed."
+  },
+  {
+    "id": "health-stimulant-cocaine-8000bce",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How far back does archaeological evidence of cocaine use date in Peru?",
+    "correct_answer": "{8000} BCE",
+    "distractors": [],
+    "explanation": "According to Wikipedia, archaeological evidence from Peru shows that cocaine use dates back as far as 8000 B.C.E. — roughly 10,000 years ago. This makes it one of the most ancient psychoactive substances used by humans."
+  },
+  {
+    "id": "health-stimulant-caffeine-blocks-sleep",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How does caffeine actually keep you awake?",
+    "correct_answer": "Blocks sleep-promoting agents",
+    "distractors": [
+      "Releases adrenaline directly",
+      "Increases dopamine production",
+      "Stimulates norepinephrine",
+      "Boosts blood sugar",
+      "Activates serotonin pathways",
+      "Speeds nerve conduction",
+      "Releases ATP energy",
+      "Raises cortisol levels"
+    ],
+    "explanation": "According to Wikipedia, caffeine works by blocking the activity of endogenous agents that promote sleep — unlike other stimulants that increase excitatory neurotransmitters. It's essentially a sleep-signal blocker, not an energy booster."
+  },
+  {
+    "id": "health-stimulant-three-categories-b6",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What are the three main categories of recreational psychoactive drugs?",
+    "correct_answer": "Depressants, stimulants, hallucinogens",
+    "distractors": [
+      "Opioids, sedatives, narcotics",
+      "Uppers, downers, dissociatives",
+      "Analgesics, euphorics, psychedelics",
+      "Sedatives, boosters, distorters",
+      "Relaxants, energizers, visions",
+      "Calming, alerting, confusing",
+      "Slow, fast, altered",
+      "Numbing, waking, tripping"
+    ],
+    "explanation": "According to Wikipedia, recreational drugs are commonly divided into three categories: depressants (relaxation/calmness), stimulants (energy/alertness), and hallucinogens (perceptual distortions such as hallucinations). This three-part framework is widely used in pharmacology and drug education."
+  },
+  {
+    "id": "health-concussion-children-longer",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How much longer do concussion symptoms typically last in children vs. adults?",
+    "correct_answer": "Twice as long",
+    "distractors": [
+      "The same duration",
+      "Three times as long",
+      "Half as long",
+      "One week longer",
+      "Four times longer",
+      "No significant difference",
+      "Slightly shorter",
+      "Three weeks longer"
+    ],
+    "explanation": "According to Wikipedia, it is not unusual for concussion symptoms to last 2 weeks in adults and 4 weeks in children — meaning children take approximately twice as long to recover. This is a key reason why youth sports concussion protocols are especially strict."
+  },
+  {
+    "id": "health-concussion-sports-no-blackout",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What fraction of children's sports concussions cause loss of consciousness?",
+    "correct_answer": "Fewer than 1 in 10",
+    "distractors": [
+      "About half",
+      "More than half",
+      "About 1 in 3",
+      "About 1 in 4",
+      "Nearly all",
+      "About 1 in 5",
+      "About 2 in 3",
+      "Roughly 1 in 20"
+    ],
+    "explanation": "According to Wikipedia, fewer than 10% of sports-related concussions among children are associated with loss of consciousness. This means most athletes who suffer a concussion never black out — making concussions harder to detect and easy to ignore."
+  },
+  {
+    "id": "health-concussion-rest-not-prolonged",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "How long should rest last after a concussion before activity resumes?",
+    "correct_answer": "No more than 1–2 days",
+    "distractors": [
+      "At least 2 weeks",
+      "One full month",
+      "Until all symptoms clear",
+      "A minimum of 7 days",
+      "3 to 4 weeks",
+      "At least 10 days",
+      "Until a doctor clears it fully",
+      "Two to three weeks minimum"
+    ],
+    "explanation": "According to Wikipedia, treatment of concussion includes relative rest for no more than 1–2 days, followed by aerobic exercise to increase heart rate and a gradual step-wise return to activities. Prolonged periods of rest may slow recovery and result in greater depression and anxiety."
+  },
+  {
+    "id": "health-pvs-timeline-differs-country",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How does the US and UK differ on when a vegetative state becomes 'permanent' after non-traumatic brain injury?",
+    "correct_answer": "3 months US, 6 months UK",
+    "distractors": [
+      "1 month US, 3 months UK",
+      "6 months US, 1 year UK",
+      "Same in both countries",
+      "1 year US, 6 months UK",
+      "2 months US, 4 months UK",
+      "3 months US, 1 year UK",
+      "6 months US, 3 months UK",
+      "1 year in both countries"
+    ],
+    "explanation": "According to Wikipedia, after a non-traumatic brain injury, a vegetative state is classified as permanent after three months in the US and six months in the UK. For traumatic injuries, both countries use a one-year threshold."
+  },
+  {
+    "id": "health-pvs-4weeks-classification",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "How long must a vegetative state last before it is classified as 'persistent'?",
+    "correct_answer": "{4} weeks",
+    "distractors": [],
+    "explanation": "According to Wikipedia, after four weeks in a vegetative state, the patient is classified as being in a persistent vegetative state (PVS). This is distinct from a 'permanent' vegetative state, which requires further time depending on the type of injury and country."
+  },
+  {
+    "id": "health-braindamage-neuroplasticity-recovery",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What brain property allows new neural connections to form after injury?",
+    "correct_answer": "Neuroplasticity",
+    "distractors": [
+      "Neurogenesis",
+      "Homeostasis",
+      "Synaptic pruning",
+      "Cortical dominance",
+      "Neural redundancy",
+      "Myelination",
+      "Axon sprouting",
+      "Glial repair"
+    ],
+    "explanation": "According to Wikipedia, because of neuroplasticity, the brain can partially recover function by forming new neural connections to compensate for damaged areas. Patients may regain adaptive skills such as movement and speech, especially with therapy and practice."
+  },
+  {
+    "id": "health-braindamage-secondary-injuries",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What causes 'secondary' brain injuries — the phase that develops after initial trauma?",
+    "correct_answer": "Body's physiological responses",
+    "distractors": [
+      "Additional external blows",
+      "Infection entering the brain",
+      "Lack of oxygen in transit",
+      "Surgical complications",
+      "Swelling from overhydration",
+      "Painkiller side effects",
+      "Blood pressure spikes",
+      "Delayed bleeding elsewhere"
+    ],
+    "explanation": "According to Wikipedia, brain injuries can be classified by timing: primary injuries occur at the moment of trauma, while secondary injuries develop afterward due to physiological responses. This means the body's own reaction to the initial injury can cause further damage."
+  },
+  {
+    "id": "health-recreational-drugs-5percent",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "As of 2015, what percentage of 15–65-year-olds worldwide had used a controlled drug at least once?",
+    "correct_answer": "About {5}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, as of 2015, it is estimated that about 5% of people worldwide aged 15 to 65 (158 million to 351 million people) had used controlled drugs at least once. The wide range reflects different estimation methodologies."
+  },
+  {
+    "id": "health-medicine-bloodletting-humors",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What ancient theory justified the medical practice of bloodletting?",
+    "correct_answer": "Theory of four humors",
+    "distractors": [
+      "Germ theory",
+      "Miasma theory",
+      "Vital spirits theory",
+      "Elemental balance theory",
+      "Phlegm excess theory",
+      "Ether circulation theory",
+      "Bodily fluids theory",
+      "Innate heat theory"
+    ],
+    "explanation": "According to Wikipedia, ancient physicians would apply bloodletting according to the theories of humorism, or the four humors. For centuries this was mainstream medicine — now considered harmful pseudoscience, it illustrates how dramatically medical understanding can change."
+  },
+  {
+    "id": "health-medicine-prehistoric-origins",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "How was prehistoric medicine primarily understood before modern science?",
+    "correct_answer": "As an art tied to religion",
+    "distractors": [
+      "As pure empirical science",
+      "As systematic surgery",
+      "As chemical pharmacology",
+      "As evidence-based practice",
+      "As mechanical engineering",
+      "As mathematical calculation",
+      "As physical therapy",
+      "As rational philosophy alone"
+    ],
+    "explanation": "According to Wikipedia, medicine has been practiced since prehistoric times, and for most of this time it was an art frequently having connections to the religious and philosophical beliefs of local culture. Only with modern science did medicine shift toward a combination of art and science."
+  },
+  {
+    "id": "health-syphilis-107k-deaths",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "Approximately how many people had syphilis globally in 2015?",
+    "correct_answer": "{45.4} million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, in 2015 syphilis affected approximately 45.4 million people worldwide, causing around 107,000 deaths. The bacterium Treponema pallidum causes the disease, which is transmitted through sexual contact and treatable with benzathine penicillin G."
+  },
+  {
+    "id": "health-typhoid-fever-12-million-cases",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "Approximately how many new typhoid fever cases occur per year globally?",
+    "correct_answer": "{12.5} million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, typhoid fever is a bacterial infection caused by Salmonella Typhi that affects approximately 12.5 million people per year. Vaccines exist with 40-90% effectiveness, and the disease spreads through contaminated food and water."
+  },
+  {
+    "id": "health-heart-attack-atypical-symptoms",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "Approximately what percentage of heart attack victims have no chest pain (atypical symptoms)?",
+    "correct_answer": "About {30}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, around 30% of people who have a myocardial infarction (heart attack) present with atypical symptoms such as nausea, jaw pain, or arm pain rather than classic chest pain. This is especially common in women, the elderly, and diabetic patients."
+  },
+  {
+    "id": "health-cardiovascular-disease-32-percent-deaths",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What percentage of all global deaths does cardiovascular disease cause?",
+    "correct_answer": "About {32}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, cardiovascular diseases (CVDs) are the leading cause of death globally. In 2015, CVDs caused approximately 17.9 million deaths, representing 32.1% of all deaths worldwide."
+  },
+  {
+    "id": "health-hypertension-33-percent-population",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What percentage of global adults have high blood pressure (hypertension)?",
+    "correct_answer": "About {33}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, arterial hypertension (high blood pressure) affects approximately one third (33%) of the global adult population and contributes to about 19% of all deaths — making it one of the most deadly and prevalent conditions in medicine."
+  },
+  {
+    "id": "health-small-intestine-6-5-metres",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "How long is the human small intestine?",
+    "correct_answer": "About {6.5} metres",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the human small intestine is approximately 6.5 metres (21 feet) long and is divided into three sections: the duodenum, jejunum, and ileum. Despite its name, the small intestine is much longer than the large intestine — it is 'small' only in diameter."
+  },
+  {
+    "id": "health-white-blood-cell-count",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What percentage of total blood volume do white blood cells represent?",
+    "correct_answer": "About {1}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, in a normal adult the white blood cell (leukocyte) count is approximately 4 to 11 billion cells per litre of blood. White blood cells make up about 1% of blood volume in a healthy adult and are critical to immune defense."
+  },
+  {
+    "id": "health-hpv-most-common-sti",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "Which two HPV types cause approximately 70% of cervical cancers?",
+    "correct_answer": "HPV 16 and 18",
+    "distractors": [
+      "HPV 6 and 11",
+      "HPV 31 and 33",
+      "HPV 45 and 52",
+      "HPV 2 and 4",
+      "HPV 58 and 59",
+      "HPV 8 and 9",
+      "HPV 1 and 2",
+      "HPV 56 and 57"
+    ],
+    "explanation": "According to Wikipedia, HPV (human papillomavirus) is the most common sexually transmitted infection globally. HPV 16 and HPV 18 are the most carcinogenic strains, responsible for approximately 70% of all cervical cancer cases worldwide."
+  },
+  {
+    "id": "health-scarlet-fever-child-death-historical",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What antibiotic is now used to easily treat scarlet fever that once killed many children?",
+    "correct_answer": "Penicillin",
+    "distractors": [
+      "Tetracycline",
+      "Streptomycin",
+      "Erythromycin",
+      "Chloramphenicol",
+      "Vancomycin",
+      "Ciprofloxacin",
+      "Metronidazole",
+      "Cephalosporin"
+    ],
+    "explanation": "According to Wikipedia, scarlet fever was a leading cause of childhood death in the early 20th century. The disease is caused by Streptococcus pyogenes and is now easily treated with penicillin — a stunning reversal made possible by antibiotics."
+  },
+  {
+    "id": "human_body_health-cardiac-arrest-535000-us",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What percentage of US cardiac arrests occur outside of a hospital?",
+    "correct_answer": "{61}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, per the 2015 American Heart Association Guidelines, there were approximately 535,000 cardiac arrests annually in the US. Of these, 326,000 (61%) occurred outside of a hospital setting, where survival is far less likely."
+  },
+  {
+    "id": "human_body_health-cardiovascular-leading-cause-death",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "Cardiovascular disease is the world's leading cause of death — on every continent except which one?",
+    "correct_answer": "Africa",
+    "distractors": [
+      "Asia",
+      "South America",
+      "Australia",
+      "Europe",
+      "North America",
+      "Antarctica",
+      "Oceania",
+      "Middle East"
+    ],
+    "explanation": "According to Wikipedia, cardiovascular diseases are the leading cause of death worldwide except Africa. Together CVD resulted in 17.9 million deaths (32.1%) in 2015, up from 12.3 million (25.8%) in 1990."
+  },
+  {
+    "id": "human_body_health-artery-pulmonary-exception",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "Which arteries are the exception to the rule that arteries carry oxygenated blood?",
+    "correct_answer": "Pulmonary arteries",
+    "distractors": [
+      "Coronary arteries",
+      "Carotid arteries",
+      "Aorta branches",
+      "Femoral arteries",
+      "Hepatic arteries",
+      "Renal arteries",
+      "Umbilical arteries",
+      "Aortic arch arteries"
+    ],
+    "explanation": "According to Wikipedia, arteries generally carry oxygenated blood away from the heart, but two exceptions exist: the pulmonary arteries (carrying deoxygenated blood to the lungs) and the umbilical arteries in fetal circulation (carrying deoxygenated blood to the placenta)."
+  },
+  {
+    "id": "human_body_health-capillary-smallest-vessels",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What is the diameter range of capillaries, the body's smallest blood vessels?",
+    "correct_answer": "{5}–10 micrometres",
+    "distractors": [],
+    "explanation": "According to Wikipedia, capillaries are 5 to 10 micrometres in diameter and are composed of only a single thin wall of squamous endothelial cells. They are where oxygen, carbon dioxide, glucose, and other substances are exchanged with surrounding tissues."
+  },
+  {
+    "id": "human_body_health-breast-cancer-5-percent-hereditary",
+    "category_l1": "human_body_health",
+    "category_l2": "genetics_dna",
+    "quiz_question": "What percentage of breast cancer cases are caused by inherited genetic mutations like BRCA?",
+    "correct_answer": "{5}–10%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, about five to ten percent of breast cancer cases are the result of an inherited genetic predisposition, including BRCA mutations. The remaining 90-95% are caused by lifestyle and environmental risk factors."
+  },
+  {
+    "id": "human_body_health-prostate-cancer-1-in-8",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What fraction of men will be diagnosed with prostate cancer during their lifetime?",
+    "correct_answer": "One in eight",
+    "distractors": [
+      "One in four",
+      "One in twenty",
+      "One in three",
+      "One in fifty",
+      "One in ten",
+      "One in two",
+      "One in fifteen",
+      "One in six"
+    ],
+    "explanation": "According to Wikipedia, one in eight men are diagnosed with prostate cancer in their lifetime and one in forty die of the disease. Each year 1.2 million cases are diagnosed and 350,000 die, making it the second-leading cause of cancer death in men."
+  },
+  {
+    "id": "human_body_health-colorectal-third-most-common",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Where does colorectal cancer rank among all cancer types globally?",
+    "correct_answer": "Third",
+    "distractors": [
+      "First",
+      "Second",
+      "Fourth",
+      "Fifth",
+      "Sixth",
+      "Seventh",
+      "Eighth",
+      "Ninth"
+    ],
+    "explanation": "According to Wikipedia, colorectal cancer is globally the third-most common type of cancer, making up about 10% of all cases. In 2022, there were 1.93 million new cases and 903,859 deaths from the disease."
+  },
+  {
+    "id": "human_body_health-herpes-60-95-percent-adults",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What percentage range of adults worldwide carry herpes (HSV-1 or HSV-2)?",
+    "correct_answer": "{60}–95%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, worldwide rates of either HSV-1 or HSV-2 are between 60% and 95% in adults. HSV-1 is usually acquired during childhood and since there is no cure, rates inherently increase as people age."
+  },
+  {
+    "id": "human_body_health-circulatory-closed-vertebrates",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What makes the vertebrate circulatory system 'closed' compared to arthropods?",
+    "correct_answer": "Blood never leaves vessels",
+    "distractors": [
+      "It has only one circuit",
+      "Blood flows in only one direction",
+      "The heart is enclosed in bone",
+      "Valves prevent all backflow",
+      "Blood is sealed in the heart",
+      "All vessels are microscopic",
+      "Lymph is kept separate",
+      "All blood flows in loops only"
+    ],
+    "explanation": "According to Wikipedia, the circulatory system in vertebrates is closed — blood never leaves the network of blood vessels. Many invertebrates such as arthropods have an open circulatory system where the blood (hemolymph) pumped by the heart returns via body cavities rather than vessels."
+  },
+  {
+    "id": "human_body_health-gonorrhea-33-106-million-cases",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What is the estimated range of new gonorrhea cases per year globally?",
+    "correct_answer": "{33}–106 million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, an estimated 33 to 106 million new gonorrhea cases occur each year globally. Resistance has developed to many previously used antibiotics, making treatment with ceftriaxone by injection and azithromycin the current standard."
+  },
+  {
+    "id": "human_body_health-smoking-7-million-deaths",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "How many non-smokers does second-hand smoke kill per year, according to the WHO?",
+    "correct_answer": "{1.3} million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the WHO estimated that smoking killed over seven million smokers worldwide in 2023, and an additional 1.3 million non-smokers due to second-hand smoke."
+  },
+  {
+    "id": "human_body_health-anthrax-95-percent-skin",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What form of anthrax accounts for more than 95% of all human cases?",
+    "correct_answer": "Skin (cutaneous) anthrax",
+    "distractors": [
+      "Inhalation anthrax",
+      "Intestinal anthrax",
+      "Meningeal anthrax",
+      "Blood anthrax",
+      "Lymphatic anthrax",
+      "Injection anthrax",
+      "Ocular anthrax",
+      "Neural anthrax"
+    ],
+    "explanation": "According to Wikipedia, skin infections represent more than 95% of anthrax cases. Respiratory anthrax (inhalation form) has a mortality of 50–80% even with treatment, making it far deadlier — which is why it has been developed as a bioweapon."
+  },
+  {
+    "id": "hbh-liver-500-functions",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "Approximately how many distinct functions does the human liver perform?",
+    "correct_answer": "Over 500",
+    "distractors": [
+      "Around 50",
+      "Around 100",
+      "Over 1,000",
+      "About 200"
+    ],
+    "explanation": "The human liver performs over 500 distinct functions, including producing bile, filtering toxins, and storing glycogen — making it the most metabolically complex organ in the body."
+  },
+  {
+    "id": "hbh-liver-regeneration",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "What percentage of the liver can be removed and still allow full regeneration?",
+    "correct_answer": "Up to 75%",
+    "distractors": [
+      "Up to 10%",
+      "Up to 25%",
+      "Up to 50%",
+      "Up to 90%"
+    ],
+    "explanation": "The liver is the only visceral organ with the remarkable ability to fully regenerate — even after up to 75% of its mass is removed, it can grow back to its original size."
+  },
+  {
+    "id": "hbh-small-intestine-length",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Approximately how long is the small intestine in a living adult human?",
+    "correct_answer": "6.5 metres (about 21 feet)",
+    "distractors": [
+      "1.5 metres",
+      "3 metres",
+      "10 metres",
+      "0.5 metres"
+    ],
+    "explanation": "Despite its name, the small intestine is the longest part of the digestive tract, measuring about 6.5 metres (21 feet) in a living adult — nearly four times the length of the large intestine."
+  },
+  {
+    "id": "hbh-small-intestine-absorption",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "What is the approximate total surface area of the small intestine's inner lining, thanks to villi and microvilli?",
+    "correct_answer": "About 250 square metres (the size of a tennis court)",
+    "distractors": [
+      "About 1 square metre",
+      "About 10 square metres",
+      "About 50 square metres",
+      "About 500 square metres"
+    ],
+    "explanation": "The small intestine's inner lining is covered in tiny finger-like projections called villi, and each villus is further covered in microvilli — together creating a surface area of roughly 250 square metres, about the size of a tennis court."
+  },
+  {
+    "id": "hbh-thyroid-iodine",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "What mineral deficiency is the world's leading preventable cause of intellectual disability?",
+    "correct_answer": "Iodine deficiency",
+    "distractors": [
+      "Iron deficiency",
+      "Calcium deficiency",
+      "Zinc deficiency",
+      "Vitamin D deficiency"
+    ],
+    "explanation": "Iodine deficiency — preventing the thyroid from making its hormones — is the world's leading preventable cause of intellectual disability, affecting hundreds of millions of people globally."
+  },
+  {
+    "id": "hbh-thyroid-butterfly",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "Which gland sits in front of the trachea in the neck and is described as butterfly-shaped?",
+    "correct_answer": "The thyroid gland",
+    "distractors": [
+      "The parathyroid gland",
+      "The pituitary gland",
+      "The adrenal gland",
+      "The pineal gland"
+    ],
+    "explanation": "The thyroid gland is a butterfly-shaped gland in the neck that sits in front of the trachea and secretes three hormones: thyroxine (T4), triiodothyronine (T3), and calcitonin."
+  },
+  {
+    "id": "hbh-enzyme-catalysis",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Without the enzyme orotidine 5'-phosphate decarboxylase, how long would its reaction take to occur spontaneously?",
+    "correct_answer": "78 million years",
+    "distractors": [
+      "78 seconds",
+      "78 hours",
+      "78 days",
+      "78 thousand years"
+    ],
+    "explanation": "The enzyme orotidine 5'-phosphate decarboxylase accelerates its reaction by a factor of 10^17 — a reaction that would take 78 million years without the enzyme is completed in milliseconds with it."
+  },
+  {
+    "id": "hbh-blood-glucose-brain",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What percentage of the body's fasting blood glucose does the brain consume?",
+    "correct_answer": "About 60%",
+    "distractors": [
+      "About 5%",
+      "About 20%",
+      "About 35%",
+      "About 80%"
+    ],
+    "explanation": "When fasting, the brain — despite making up only about 2% of body weight — consumes approximately 60% of the blood glucose used by the entire body."
+  },
+  {
+    "id": "hbh-artery-pulmonary-exception",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "Which arteries are famous exceptions to the rule that arteries carry oxygenated blood?",
+    "correct_answer": "The pulmonary arteries",
+    "distractors": [
+      "The coronary arteries",
+      "The renal arteries",
+      "The carotid arteries",
+      "The femoral arteries"
+    ],
+    "explanation": "Although arteries are defined as vessels carrying blood away from the heart, the pulmonary arteries are a famous exception — they carry deoxygenated blood from the heart to the lungs, the opposite of most arteries."
+  },
+  {
+    "id": "hbh-capillary-size",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What is the approximate diameter of a capillary — the body's smallest blood vessel?",
+    "correct_answer": "5–10 micrometres",
+    "distractors": [
+      "1–2 millimetres",
+      "0.5 millimetres",
+      "50–100 micrometres",
+      "1 centimetre"
+    ],
+    "explanation": "Capillaries are the smallest blood vessels in the body, with diameters of just 5–10 micrometres — so narrow that red blood cells must squeeze through them single file."
+  },
+  {
+    "id": "hbh-large-intestine-length",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Approximately how long is the large intestine?",
+    "correct_answer": "About 1.5 metres",
+    "distractors": [
+      "About 6.5 metres",
+      "About 3 metres",
+      "About 0.5 metres",
+      "About 4 metres"
+    ],
+    "explanation": "The large intestine is about 1.5 metres long — roughly one-fifth the length of the small intestine — but is wider, which is why it is called 'large.'"
+  },
+  {
+    "id": "hbh-large-intestine-water",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "What is the primary function of the large intestine?",
+    "correct_answer": "Absorbing water and electrolytes from indigestible food matter",
+    "distractors": [
+      "Breaking down proteins",
+      "Secreting digestive enzymes",
+      "Absorbing most nutrients",
+      "Producing bile"
+    ],
+    "explanation": "The large intestine's primary job is to absorb water and electrolytes from indigestible food matter — converting liquid chyme arriving from the small intestine into solid stool."
+  },
+  {
+    "id": "hbh-nose-therian-unique",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "Which group of animals uniquely possesses a protruding external nose separated from the mouth?",
+    "correct_answer": "Therian mammals (marsupials and placentals)",
+    "distractors": [
+      "All vertebrates",
+      "All mammals including monotremes",
+      "Reptiles and mammals",
+      "Birds and mammals"
+    ],
+    "explanation": "A protruding external nose — separated from the mouth by a philtrum — is a feature unique to therian mammals (marsupials and placentals), and is not found in other vertebrates."
+  },
+  {
+    "id": "hbh-metabolism-citric-acid-universal",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Which metabolic pathway is shared essentially unchanged across bacteria, fungi, plants, and animals — revealing the unity of life?",
+    "correct_answer": "The citric acid cycle (Krebs cycle)",
+    "distractors": [
+      "Photosynthesis",
+      "Nitrogen fixation",
+      "Glycolysis only in eukaryotes",
+      "The urea cycle"
+    ],
+    "explanation": "The citric acid cycle — a core metabolic pathway for energy production — uses the same set of intermediate molecules in bacteria, fungi, plants, and elephants alike, revealing the deep unity of life on Earth."
+  },
+  {
+    "id": "human_body_health-small-intestine-tennis-court",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "What is the approximate total surface area of the small intestine's inner lining?",
+    "correct_answer": "About {250} square metres",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the small intestine is about 6.5 metres long in a living adult, yet its inner surface is massively expanded by finger-like villi and even smaller microvilli, collectively creating a surface area of approximately 250 square metres — roughly the size of a tennis court. This maximises nutrient absorption."
+  },
+  {
+    "id": "human_body_health-enzyme-orotidine-78-million-years",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Without the enzyme orotidine 5'-phosphate decarboxylase, how long would its reaction take spontaneously?",
+    "correct_answer": "{78} million years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, orotidine 5'-phosphate decarboxylase is one of the most proficient enzymes known. It speeds up a chemical reaction by a factor of roughly 10^17 — without it, the reaction would take approximately 78 million years. With it, the reaction is complete in milliseconds. Enzymes are biological catalysts that are not consumed in the process."
+  },
+  {
+    "id": "human_body_health-pulmonary-artery-exception",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "Which arteries carry deoxygenated blood, making them a famous exception to the general rule about arteries?",
+    "correct_answer": "The pulmonary arteries",
+    "distractors": [
+      "The coronary arteries",
+      "The carotid arteries",
+      "The femoral arteries",
+      "The aorta",
+      "The hepatic arteries",
+      "The renal arteries",
+      "The subclavian arteries",
+      "The brachial arteries"
+    ],
+    "explanation": "According to Wikipedia, arteries are defined as vessels that carry blood away from the heart. Most arteries carry oxygenated blood, but the pulmonary arteries are a notable exception: they transport deoxygenated blood from the right side of the heart to the lungs to pick up oxygen. The returning pulmonary veins then carry oxygenated blood back to the heart."
+  },
+  {
+    "id": "human_body_health-nose-therian-unique",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "Which group of animals uniquely possesses a protruding external nose separated from the mouth by a philtrum?",
+    "correct_answer": "Therian mammals",
+    "distractors": [
+      "All vertebrates",
+      "All mammals including monotremes",
+      "Reptiles and mammals",
+      "Birds and mammals",
+      "Only primates",
+      "All amniotes",
+      "Fish and amphibians",
+      "All tetrapods"
+    ],
+    "explanation": "According to Wikipedia, the protruding external nose of humans and other mammals — with the philtrum groove between the nose and upper lip — is found only in therian mammals (marsupials and placentals). It is absent in monotremes (like the platypus), as well as in all fish, reptiles, birds, and amphibians, making it a distinctive evolutionary feature of this group."
+  },
+  {
+    "id": "human_body_health-citric-acid-cycle-universal",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Which metabolic pathway operates essentially unchanged in bacteria, fungi, plants, and humans — revealing the unity of all life?",
+    "correct_answer": "The citric acid cycle (Krebs cycle)",
+    "distractors": [
+      "Photosynthesis",
+      "Nitrogen fixation",
+      "The urea cycle",
+      "Beta-oxidation",
+      "Chemosynthesis",
+      "The pentose phosphate pathway",
+      "Anaerobic fermentation",
+      "The Calvin cycle"
+    ],
+    "explanation": "According to Wikipedia, the citric acid cycle (also called the Krebs cycle or TCA cycle) is a series of chemical reactions used by all aerobic organisms to generate energy. It operates in essentially the same form across bacteria, fungi, plants, and animals, using the same intermediate molecules — a testament to the shared biochemical ancestry of all life on Earth."
+  },
+  {
+    "id": "human_body_health-typhoid-fever-only-humans",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What makes typhoid fever unusual compared to many other infectious diseases?",
+    "correct_answer": "Its bacteria infect and replicate only in humans — no animal reservoirs",
+    "distractors": [
+      "It is caused by a virus, not a bacterium",
+      "It can only be contracted by drinking water",
+      "It is effectively treated with antibiotics",
+      "It only affects children under 12",
+      "It is airborne and cannot spread through food",
+      "It spreads easily through contaminated food and water",
+      "It is caused by a parasite, not a bacterium",
+      "It only occurs in cold climates"
+    ],
+    "explanation": "According to Wikipedia, typhoid fever is caused by Salmonella enterica serotype Typhi. Unusually, Salmonella Typhi is believed to infect and replicate only within humans — there are no known animal reservoirs. This differs from other Salmonella species which cause food poisoning in many animals. Typhoid spreads via food or water contaminated with faeces of infected people. In 2015, 12.5 million new cases were reported worldwide."
+  },
+  {
+    "id": "human_body_health-liver-cirrhosis-no-cure",
+    "category_l1": "human_body_health",
+    "category_l2": "anatomy_organs",
+    "quiz_question": "What is the only definitive cure for advanced liver cirrhosis?",
+    "correct_answer": "A liver transplant",
+    "distractors": [
+      "A specific antifibrotic drug",
+      "Complete rest for 6 months",
+      "Dialysis like in kidney failure",
+      "A blood transfusion series",
+      "Chemotherapy to shrink fibrosis",
+      "Stem cell injection into the liver",
+      "A targeted antibiotic course",
+      "Prolonged fasting"
+    ],
+    "explanation": "According to Wikipedia, cirrhosis is a chronic condition where normal liver tissue is replaced by scar tissue (fibrosis) and regenerative nodules. This causes increased resistance to blood flow through the liver (portal hypertension), and can lead to liver cancer, encephalopathy, and bleeding. No specific treatment for cirrhosis itself exists — management focuses on treating underlying causes. The only definitive cure for end-stage disease is liver transplantation."
+  },
+  {
+    "id": "human_body_health-cardiac-arrest-vs-heart-attack",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What is the fundamental difference between a heart attack and cardiac arrest?",
+    "correct_answer": "A heart attack is a blocked artery; cardiac arrest is the heart stopping beating",
+    "distractors": [
+      "A heart attack is more severe than cardiac arrest",
+      "Cardiac arrest only happens in the elderly",
+      "They are the same condition with different names",
+      "A heart attack always leads to cardiac arrest",
+      "Cardiac arrest is caused by blocked arteries too",
+      "Only cardiac arrest can be treated with CPR",
+      "Heart attacks are always fatal; cardiac arrest is treatable",
+      "Cardiac arrest only occurs in athletes"
+    ],
+    "explanation": "According to Wikipedia, cardiac arrest is a condition in which the heart suddenly and unexpectedly stops beating due to an arrhythmia (electrical problem). A heart attack (myocardial infarction) is caused by a blocked coronary artery (plumbing problem) cutting off blood supply to heart muscle. A heart attack can trigger cardiac arrest, but they are distinct conditions. Approximately 535,000 incidents of cardiac arrest occur annually in the US."
+  },
+  {
+    "id": "human_body_health-arthritis-most-common-form",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What is the most common form of arthritis worldwide?",
+    "correct_answer": "Osteoarthritis",
+    "distractors": [
+      "Rheumatoid arthritis",
+      "Gout",
+      "Psoriatic arthritis",
+      "Lupus arthritis",
+      "Septic arthritis",
+      "Juvenile arthritis",
+      "Reactive arthritis",
+      "Ankylosing spondylitis"
+    ],
+    "explanation": "According to Wikipedia, arthritis describes disorders where cartilage lining a joint is lost, causing bone-on-bone grinding during movement. The most common form is osteoarthritis, affecting more than 3.8% of people globally — it typically occurs with age and affects weight-bearing joints like hips, knees, and fingers. Rheumatoid arthritis, the second most common form (0.24% prevalence), is an autoimmune disorder. Osteoarthritis is not autoimmune."
+  },
+  {
+    "id": "human_body_health-scabies-seven-year-itch",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What causes the skin disease scabies?",
+    "correct_answer": "The mite Sarcoptes scabiei burrowing into the skin",
+    "distractors": [
+      "A bacterial infection in hair follicles",
+      "A fungal skin infection",
+      "An allergic reaction to dust particles",
+      "A viral rash similar to chickenpox",
+      "A parasitic worm living in skin layers",
+      "Contact dermatitis from plant allergens",
+      "A yeast overgrowth on the skin",
+      "UV damage to skin cells"
+    ],
+    "explanation": "According to Wikipedia, scabies is caused by infestation with the tiny mite Sarcoptes scabiei variety hominis, which is just 0.2–0.45 mm in size. The female mites burrow into the skin to live and deposit eggs. The characteristic intense itch is due to an allergic reaction to the mites. Remarkably, typically only 10–15 mites are involved in an entire infection. It spreads through prolonged direct skin contact, at least 10 minutes."
+  },
+  {
+    "id": "human_body_health-neanderthal-brain-larger-interbreeding",
+    "category_l1": "human_body_health",
+    "category_l2": "brain_neuro",
+    "quiz_question": "What was the average brain volume of male Neanderthals?",
+    "correct_answer": "About {1,640} cc",
+    "distractors": [],
+    "explanation": "According to Wikipedia, Neanderthal brain volume averaged 1,640 cc for males and 1,460 cc for females — higher than any living human population. However, their brain organisation differed from modern humans in areas related to cognition and language. Neanderthals went extinct around 40,000 years ago, but genetic sequencing (first in 2010) confirmed they interbred with Homo sapiens — most non-African people today carry 1–4% Neanderthal DNA."
+  },
+  {
+    "id": "human_body_health-taste-five-basics-cats-cant-sweet",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "How many basic tastes can humans perceive?",
+    "correct_answer": "{5} basic tastes",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the five basic tastes are sweetness, sourness, saltiness, bitterness, and savoriness (umami). Scientific experiments have demonstrated that all five are distinct. Taste buds contain 50–100 receptor cells each, and humans have 2,000–5,000 taste buds. Notably, cats cannot taste sweetness, and several carnivores including dolphins and sea lions have lost up to four of their ancestral five basic tastes through evolution."
+  },
+  {
+    "id": "human_body_health-digestion-saliva-amylase-30-percent",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "What percentage of dietary starch does salivary amylase break down in the mouth?",
+    "correct_answer": "About {30}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, saliva secreted by the salivary glands contains salivary amylase, which begins the chemical digestion of starch in food. About 30% of starch is hydrolysed into disaccharides in the oral cavity. Saliva also contains mucus for lubrication and bicarbonate to provide ideal pH conditions for amylase activity. After swallowing, the food travels through the oesophagus by peristalsis to the stomach, where protein digestion begins."
+  },
+  {
+    "id": "human_body_health-smoking-7-million-deaths-2023",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "How many people did tobacco smoking kill worldwide in 2023, according to the WHO?",
+    "correct_answer": "Over {7} million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the WHO estimated that smoking killed over 7 million smokers worldwide in 2023, and an additional 1.3 million non-smokers died due to exposure to second-hand smoke. Smoking is practiced by over one billion people globally, with the majority in developing countries. Diseases related to tobacco have been shown to kill approximately half of long-term smokers compared to non-smokers."
+  },
+  {
+    "id": "human_body_health-herpes-simplex-60-95-percent-adults",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What percentage of adults worldwide carry herpes simplex virus?",
+    "correct_answer": "Between {60}% and {95}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, worldwide rates of either HSV-1 or HSV-2 infection are between 60% and 95% in adults. HSV-1 (typically causing oral herpes/cold sores) is usually acquired during childhood. After infection, the virus travels along sensory nerves to nerve cell bodies where it resides lifelong. There is no cure for either type; antiviral medications like aciclovir can reduce the severity of outbreaks."
+  },
+  {
+    "id": "human_body_health-lichen-first-use-symbiosis-word",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "Which lifeform is credited with introducing the concept of symbiosis into biology?",
+    "correct_answer": "Lichens",
+    "distractors": [
+      "Mycorrhizal fungi",
+      "Coral reefs",
+      "Clownfish and sea anemones",
+      "Nitrogen-fixing bacteria",
+      "Mitochondria",
+      "Gut bacteria",
+      "Portuguese man-of-war",
+      "Cleaner fish"
+    ],
+    "explanation": "According to Wikipedia, lichens are hybrid colonies of algae or cyanobacteria living symbiotically among filaments of multiple fungus species, also hosting bacteria. Lichens are the lifeform that first brought the term symbiosis (as Symbiotismus) into biological context. There are about 20,000 known lichen species. Some are among the oldest living things, and lichenometry — measuring their slow and regular growth rate — is used to date geological events."
+  },
+  {
+    "id": "human_body_health-domain-three-domains-life",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What are the three domains in Carl Woese's three-domain system of life?",
+    "correct_answer": "Archaea, Bacteria, and Eukarya",
+    "distractors": [
+      "Plants, Animals, and Fungi",
+      "Prokaryotes, Eukaryotes, and Viruses",
+      "Kingdom, Phylum, and Class",
+      "Archaea, Prokaryotes, and Eukaryotes",
+      "Bacteria, Fungi, and Protozoa",
+      "Animalia, Plantae, and Protista",
+      "Bacteria, Archaea, and Protists",
+      "DNA, RNA, and Protein life forms"
+    ],
+    "explanation": "According to Wikipedia, the three-domain system was introduced in 1990 by Carl Woese, Otto Kandler, and Mark Wheelis. The three domains are Archaea, Bacteria, and Eukarya (which includes all plants, animals, fungi, and protists). Prior to this system, life was divided into two groups — prokaryotes and eukaryotes. The discovery revealed that archaea, despite being single-celled and lacking nuclei, are more closely related to eukaryotes (including humans) than to bacteria."
+  },
+  {
+    "id": "health-medication-essential-medicines-list",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "Which global body publishes a list of essential medicines for all health systems?",
+    "correct_answer": "World Health Organization",
+    "distractors": [
+      "United Nations General Assembly",
+      "International Red Cross",
+      "Centers for Disease Control",
+      "Global Health Alliance",
+      "World Medical Association",
+      "European Medicines Agency",
+      "International Pharmacopoeia Board",
+      "Pan American Health Organization"
+    ],
+    "explanation": "According to Wikipedia, the World Health Organization keeps a list of essential medicines — drugs considered minimum requirements for a basic functioning health system. Countries use this list to prioritize which medicines to make universally available."
+  },
+  {
+    "id": "health-medication-prescription-vs-otc",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What key division separates prescription drugs from over-the-counter drugs?",
+    "correct_answer": "Level of control",
+    "distractors": [
+      "Chemical composition",
+      "Country of manufacture",
+      "Speed of absorption",
+      "Active ingredient count",
+      "Required dosage amount",
+      "Patent status",
+      "Storage temperature",
+      "Price bracket"
+    ],
+    "explanation": "According to Wikipedia, one of the key divisions in drug classification is by level of control — prescription drugs require a pharmacist to dispense them only on a medical prescription, while over-the-counter drugs can be ordered by consumers for themselves without a doctor's note."
+  },
+  {
+    "id": "health-ebola-mortality-rate",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What is the average mortality rate of Ebola disease?",
+    "correct_answer": "About {50}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Ebola virus disease causes a mortality rate of anywhere between 25 and 90%, averaging out at approximately 50%. Death is often due to shock from fluid loss, typically occurring between 6 and 16 days after the first symptoms."
+  },
+  {
+    "id": "health-ebola-natural-reservoir-bats",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "Which animal can spread Ebola without being harmed by the virus itself?",
+    "correct_answer": "Fruit bats",
+    "distractors": [
+      "Chimpanzees",
+      "Gorillas",
+      "Bush pigs",
+      "Monitor lizards",
+      "Rodents",
+      "Monkeys",
+      "Civets",
+      "Pangolins"
+    ],
+    "explanation": "According to Wikipedia, fruit bats are believed to be the natural host of the Ebola viruses — they are able to spread the viruses without being affected by them. The virus first jumped to humans through contact with infected wildlife, especially in sub-Saharan Africa."
+  },
+  {
+    "id": "health-ebola-incubation-period",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What is the maximum incubation period for Ebola in humans?",
+    "correct_answer": "{21} days",
+    "distractors": [],
+    "explanation": "According to Wikidata, Ebola has a minimal incubation period of 2 days and a maximal incubation period of 21 days in humans. This wide window means infected people can unknowingly travel or interact with others long before symptoms appear, complicating quarantine efforts."
+  },
+  {
+    "id": "health-sti-global-burden-2015",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "In 2015, roughly how many people globally had STIs (excluding HIV)?",
+    "correct_answer": "{1.1} billion people",
+    "distractors": [],
+    "explanation": "According to Wikipedia, globally in 2015, about 1.1 billion people had STIs other than HIV/AIDS. About 500 million had either syphilis, gonorrhea, chlamydia, or trichomoniasis — four of the most common curable infections."
+  },
+  {
+    "id": "health-sti-ancient-records",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What ancient Egyptian text contains early documentation of sexually transmitted infections?",
+    "correct_answer": "Ebers Papyrus",
+    "distractors": [
+      "Edwin Smith Papyrus",
+      "Book of the Dead",
+      "Kahun Gynecological Papyrus",
+      "Rhind Mathematical Papyrus",
+      "Code of Hammurabi",
+      "Hippocratic Corpus",
+      "Vedic Sutras",
+      "Hua Tuo Medical Canon"
+    ],
+    "explanation": "According to Wikipedia, historical documentation of STIs in antiquity dates back to at least the Ebers Papyrus (c. 1550 BCE) and the Hebrew Bible/Old Testament (8th/7th century BCE). Sexually transmitted infections are among humanity's oldest documented diseases."
+  },
+  {
+    "id": "health-polio-endemic-countries-2022",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "As of October 2023, which two countries still have wild poliovirus transmission?",
+    "correct_answer": "Pakistan and Afghanistan",
+    "distractors": [
+      "Nigeria and Somalia",
+      "India and Sudan",
+      "Chad and Niger",
+      "Syria and Yemen",
+      "Bangladesh and Myanmar",
+      "Congo and Angola",
+      "Ethiopia and Kenya",
+      "Iraq and Libya"
+    ],
+    "explanation": "According to Wikipedia, as of October 2023, only Pakistan and Afghanistan remain endemic for wild poliovirus. Through vaccination, global cases dropped from an estimated 350,000 in 1988 to just 30 confirmed cases in 2022 — one of history's greatest public health achievements."
+  },
+  {
+    "id": "health-polio-asymptomatic-majority",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What percentage of polio infections produce no symptoms at all?",
+    "correct_answer": "About {75}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, approximately 75% of polio cases are asymptomatic. This is what makes eradication so hard — most infected people feel fine but can still spread the virus through fecal-oral transmission for up to six weeks."
+  },
+  {
+    "id": "health-polio-post-polio-syndrome",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What condition causes muscle weakness to return years after recovering from polio?",
+    "correct_answer": "Post-polio syndrome",
+    "distractors": [
+      "Myasthenia gravis",
+      "Guillain-Barré syndrome",
+      "Multiple sclerosis",
+      "Amyotrophic lateral sclerosis",
+      "Fibromyalgia",
+      "Polymyositis",
+      "Charcot-Marie-Tooth disease",
+      "Spinal muscular atrophy"
+    ],
+    "explanation": "According to Wikipedia, years after recovery from polio, post-polio syndrome may occur — with a slow development of muscle weakness similar to what the person had during the initial infection. It's a late complication that can emerge decades after the original illness."
+  },
+  {
+    "id": "health-infection-deaths-2013",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What share of all global deaths were caused by infectious diseases in 2013?",
+    "correct_answer": "About {17}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, infectious diseases remain a significant global health concern, causing approximately 9.2 million deaths in 2013 — 17% of all deaths worldwide. Despite modern medicine, infection remains the second leading category of death globally."
+  },
+  {
+    "id": "health-infection-drug-types-matched",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "Which drug class specifically targets fungal infections?",
+    "correct_answer": "Antifungals",
+    "distractors": [
+      "Antibiotics",
+      "Antivirals",
+      "Antiprotozoals",
+      "Antihelminthics",
+      "Antipyretics",
+      "Corticosteroids",
+      "Immunosuppressants",
+      "Antihistamines"
+    ],
+    "explanation": "According to Wikipedia, treatment for infections depends on the type of pathogen: antibiotics for bacteria, antivirals for viruses, antifungals for fungi, antiprotozoals for protozoa, and antihelminthics for parasitic worms. Each class targets a specific type of microorganism."
+  },
+  {
+    "id": "health-oncology-first-cancer-egypt",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "Which ancient document contains the earliest known description of cancer in humans?",
+    "correct_answer": "Edwin Smith Papyrus",
+    "distractors": [
+      "Ebers Papyrus",
+      "Kahun Papyrus",
+      "Hippocratic Corpus",
+      "Rhind Papyrus",
+      "Book of the Dead",
+      "Code of Hammurabi",
+      "Avicenna's Canon",
+      "Galen's Ars Medica"
+    ],
+    "explanation": "According to Wikipedia, cancer was first found in humans in 3000 BCE in Egypt. The Edwin Smith Papyrus described a form of cancer as 'a bulging tumor of the breast.' This makes cancer one of the oldest documented diseases in human history."
+  },
+  {
+    "id": "health-oncology-galen-onkos",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What Greek word meaning 'tumor' is the root of the word 'oncology'?",
+    "correct_answer": "Onkos",
+    "distractors": [
+      "Karkinoma",
+      "Neoplastos",
+      "Pharmakon",
+      "Pathos",
+      "Therapeia",
+      "Logos",
+      "Sarx",
+      "Sklerosis"
+    ],
+    "explanation": "According to Wikipedia, Galen, a Greek doctor who lived from 130–200 CE, was the first to use the word 'onkos' to describe tumors — from which the words 'oncologist' and 'oncology' are derived."
+  },
+  {
+    "id": "health-dermatology-training-years",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "How many years of advanced training do dermatologists typically complete after medical school?",
+    "correct_answer": "{4} years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, a dermatologist is a specialist medical doctor who has undergone advanced training (typically 4 years beyond medical school) and manages diseases related to skin, including inflammatory diseases, infections, cancers, hair loss, and cosmetic issues."
+  },
+  {
+    "id": "health-dermatology-necrotizing-fasciitis",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "Which terrifying skin condition is classified as a dermatological emergency?",
+    "correct_answer": "Necrotizing fasciitis",
+    "distractors": [
+      "Psoriasis",
+      "Eczema",
+      "Rosacea",
+      "Vitiligo",
+      "Acne vulgaris",
+      "Seborrheic dermatitis",
+      "Tinea versicolor",
+      "Perioral dermatitis"
+    ],
+    "explanation": "According to Wikipedia, conditions such as necrotizing fasciitis and Stevens-Johnson syndrome are life-threatening dermatological emergencies. Dermatology is not just about cosmetic issues — it encompasses some of the most dangerous medical conditions in medicine."
+  },
+  {
+    "id": "health-epidemiology-first-use-1802",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "Who first used the term 'epidemiology' in 1802?",
+    "correct_answer": "Joaquín de Villalba",
+    "distractors": [
+      "John Snow",
+      "Louis Pasteur",
+      "Robert Koch",
+      "Ignaz Semmelweis",
+      "Hippocrates",
+      "Edward Jenner",
+      "Rudolf Virchow",
+      "Joseph Lister"
+    ],
+    "explanation": "According to Wikipedia, the term 'epidemiology' appears to have first been used to describe the study of epidemics in 1802 by the Spanish physician Joaquín de Villalba in his work 'Epidemiología Española.' The distinction between epidemic and endemic disease was first drawn much earlier by Hippocrates."
+  },
+  {
+    "id": "health-epidemiology-syndemic",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "What term describes the simultaneous interaction of two or more diseases in a population?",
+    "correct_answer": "Syndemic",
+    "distractors": [
+      "Pandemic",
+      "Endemic",
+      "Epidemic",
+      "Zoonosis",
+      "Outbreak",
+      "Comorbidity",
+      "Multimorbidity",
+      "Polypharmacy"
+    ],
+    "explanation": "According to Wikipedia, epidemiologists also study the interaction of diseases in a population — a condition known as a syndemic. Unlike a pandemic (one disease spreading widely), a syndemic describes how multiple diseases co-occur and interact to worsen overall health outcomes."
+  },
+  {
+    "id": "human_body_health-stomach-25cm-esophagus",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "What muscular movement propels food down the esophagus to the stomach?",
+    "correct_answer": "Peristalsis",
+    "distractors": [
+      "Gravity",
+      "Suction",
+      "Ciliary beating",
+      "Osmosis",
+      "Diffusion",
+      "Sphincter pumping",
+      "Muscle spasm"
+    ],
+    "explanation": "According to Wikipedia, the esophagus is a fibromuscular tube about 25 cm long in adult humans that propels food by peristaltic contractions — waves of muscular movement. This means astronauts can swallow food in zero gravity because peristalsis, not gravity, moves food to the stomach."
+  },
+  {
+    "id": "human_body_health-gi-tract-nine-meters",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "How long is the human gastrointestinal tract at autopsy?",
+    "correct_answer": "About {9} meters",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the whole human GI tract is about nine meters (30 feet) long at autopsy. It is considerably shorter in the living body because the intestines, tubes of smooth muscle tissue, maintain constant muscle tone in a halfway-tense state but can relax to allow local distension and peristalsis."
+  },
+  {
+    "id": "human_body_health-digestion-starch-mouth",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Which enzyme in saliva begins breaking down starch in the mouth before swallowing?",
+    "correct_answer": "Salivary amylase",
+    "distractors": [
+      "Pepsin",
+      "Lipase",
+      "Trypsin",
+      "Lactase",
+      "Sucrase",
+      "Protease",
+      "Cellulase"
+    ],
+    "explanation": "According to Wikipedia, saliva contains salivary amylase, an enzyme which starts the digestion of starch in the food. About 30% of starch is hydrolyzed into disaccharide in the oral cavity (mouth). This means chewing bread or rice longer makes it noticeably sweeter as amylase releases sugar."
+  },
+  {
+    "id": "human_body_health-metabolism-citric-acid-universal",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "Which metabolic cycle's intermediates are found in every known living organism on Earth?",
+    "correct_answer": "Citric acid cycle",
+    "distractors": [
+      "Urea cycle",
+      "Calvin cycle",
+      "Nitrogen cycle",
+      "Glycolysis pathway",
+      "Beta oxidation cycle",
+      "Purine synthesis",
+      "Electron transport chain"
+    ],
+    "explanation": "According to Wikipedia, the set of carboxylic acids best known as intermediates in the citric acid cycle are present in all known organisms — from the bacterium E. coli to elephants. These similarities are likely due to the pathway's early appearance in evolutionary history and its continued efficacy."
+  },
+  {
+    "id": "human_body_health-pulse-cardiac-cycle",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What physical change in an artery creates the pulse you feel at the wrist or neck?",
+    "correct_answer": "Rhythmic expansion and contraction",
+    "distractors": [
+      "Blood flowing past a valve",
+      "Electric signal from the heart",
+      "Pressure wave from breathing",
+      "Vein collapsing and refilling",
+      "Nerve impulse traveling up the arm",
+      "Muscle twitch from nearby tendons",
+      "Capillary pressure surge"
+    ],
+    "explanation": "According to Wikipedia, the pulse is the rhythmic expansion and contraction of an artery in response to the cardiac cycle (heartbeat). It can be felt anywhere that an artery is compressed near the surface of the body — neck (carotid), wrist (radial or ulnar), groin (femoral), and others."
+  },
+  {
+    "id": "human_body_health-hepatitis-five-viruses",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "Which hepatitis virus can only infect someone who already has hepatitis B?",
+    "correct_answer": "Hepatitis D",
+    "distractors": [
+      "Hepatitis A",
+      "Hepatitis C",
+      "Hepatitis E",
+      "Hepatitis G",
+      "Hepatitis F",
+      "Hepatitis B",
+      "Hepatitis X"
+    ],
+    "explanation": "According to Wikipedia, hepatitis D can only infect people already infected with hepatitis B — it requires the hepatitis B surface antigen to replicate. This makes it a 'satellite virus' that depends entirely on another virus. There are vaccines against A, B, and D (via B vaccination), but no vaccine exists yet for hepatitis C."
+  },
+  {
+    "id": "human_body_health-immunology-mechnikov-phagocytosis",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What immune process did Ilya Mechnikov discover by observing starfish larvae with thorns inserted in them?",
+    "correct_answer": "Phagocytosis",
+    "distractors": [
+      "Apoptosis",
+      "Mitosis",
+      "Antibody production",
+      "Inflammation",
+      "Clonal selection",
+      "Complement activation",
+      "T-cell response"
+    ],
+    "explanation": "According to Wikipedia, it was Mechnikov who first observed the phenomenon of phagocytosis, in which the body defends itself against a foreign body. He pinned small thorns into starfish larvae and noticed unusual cells surrounding and engulfing the thorns. He received the Nobel Prize in 1908 with Paul Ehrlich for this work on immunity."
+  },
+  {
+    "id": "human_body_health-cirrhosis-scar-tissue",
+    "category_l1": "human_body_health",
+    "category_l2": "digestion_metabolism",
+    "quiz_question": "In liver cirrhosis, what replaces normal functioning liver tissue over time?",
+    "correct_answer": "Scar tissue (fibrosis)",
+    "distractors": [
+      "Fat deposits",
+      "Cancer cells",
+      "Calcified nodules",
+      "Inflammatory cells",
+      "Blood clots",
+      "Connective bone",
+      "Bile crystals"
+    ],
+    "explanation": "According to Wikipedia, cirrhosis is a chronic liver condition in which normal functioning tissue (parenchyma) is replaced with scar tissue (fibrosis) and regenerative nodules. This causes increased resistance to blood flow in hepatic sinusoids and consequently portal hypertension, eventually leading to liver failure."
+  },
+  {
+    "id": "human_body_health-gonorrhea-antibiotic-resistance",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What is particularly dangerous about gonorrhea's response to antibiotic treatment?",
+    "correct_answer": "It has developed resistance to many antibiotics",
+    "distractors": [
+      "It requires surgery to cure",
+      "It has no effective treatment",
+      "It only affects older patients",
+      "It mutates into other diseases",
+      "It becomes airborne over time",
+      "It is immune to all vaccines",
+      "It spreads only by touch"
+    ],
+    "explanation": "According to Wikipedia, gonorrhea treatment is usually with ceftriaxone by injection and azithromycin by mouth; however, resistance has developed to many previously used antibiotics and higher doses of ceftriaxone are occasionally required. The WHO lists gonorrhea as one of the priority pathogens for new antibiotic development."
+  },
+  {
+    "id": "human_body_health-aneurysm-balloon",
+    "category_l1": "human_body_health",
+    "category_l2": "cardiovascular",
+    "quiz_question": "What happens to rupture risk as an aneurysm grows larger?",
+    "correct_answer": "Risk increases",
+    "distractors": [
+      "Risk decreases",
+      "Risk stays constant",
+      "Risk disappears",
+      "Risk only increases with age",
+      "Risk depends on blood type",
+      "Risk reverses after a certain size",
+      "Risk is unrelated to size"
+    ],
+    "explanation": "According to Wikipedia, an aneurysm is an outward bulging caused by a localized, abnormal, weak spot on a blood vessel wall. As an aneurysm increases in size, the risk of rupture increases — which could lead to uncontrolled bleeding. Particularly dangerous examples include aortic aneurysms and brain aneurysms in the circle of Willis."
+  },
+  {
+    "id": "human_body_health-pain-useful-signal",
+    "category_l1": "human_body_health",
+    "category_l2": "senses_perception",
+    "quiz_question": "Why can being born unable to feel pain actually shorten your life?",
+    "correct_answer": "Pain warns of dangerous injury",
+    "distractors": [
+      "Pain provides energy to heal",
+      "Pain releases essential hormones",
+      "Pain improves circulation",
+      "Pain signals hunger and thirst",
+      "Pain regulates body temperature",
+      "Pain activates the immune system",
+      "Pain triggers growth hormones"
+    ],
+    "explanation": "According to Wikipedia, pain motivates organisms to withdraw from damaging situations, to protect a damaged body part while it heals, and to avoid similar experiences in the future. Congenital insensitivity to pain may result in reduced life expectancy because without pain, serious injuries, infections, and damage go unnoticed until they become fatal."
+  },
+  {
+    "id": "human_body_health-scabies-mite-invisible",
+    "category_l1": "human_body_health",
+    "category_l2": "immunity_disease",
+    "quiz_question": "What organism causes scabies by burrowing under human skin to lay eggs?",
+    "correct_answer": "Sarcoptes scabiei mite",
+    "distractors": [
+      "Flea",
+      "Louse",
+      "Tick",
+      "Demodex mite",
+      "Chigger",
+      "Nit",
+      "Bed bug"
+    ],
+    "explanation": "According to Wikipedia, scabies is caused by infection with the female mite Sarcoptes scabiei var. hominis, which is 0.2–0.45 mm in size — at the limit of detection with the human eye. The symptoms of scabies are due to an allergic reaction to the mites rather than the burrowing itself. Often, only 10–15 mites are involved in an infection."
+  },
+  {
+    "id": "human_body_health-anthrax-robert-koch",
+    "category_l1": "human_body_health",
+    "category_l2": "medical_science",
+    "quiz_question": "Which German scientist first identified Bacillus anthracis as the cause of anthrax?",
+    "correct_answer": "Robert Koch",
+    "distractors": [
+      "Louis Pasteur",
+      "Joseph Lister",
+      "Ignaz Semmelweis",
+      "Paul Ehrlich",
+      "Rudolf Virchow",
+      "Alexander Fleming",
+      "John Snow"
+    ],
+    "explanation": "According to Wikipedia, the German scientist Robert Koch was the first to identify Bacillus anthracis as the bacterium that causes anthrax. This was one of Koch's most important early contributions to microbiology and helped establish the germ theory of disease. Koch later won the Nobel Prize for his work on tuberculosis."
+  },
+  {
+    "id": "mythology_folklore-amaterasu-sun-goddess",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "Which Shinto goddess is the mythical ancestress of Japan's Imperial House?",
+    "correct_answer": "Amaterasu",
+    "distractors": [
+      "Izanami",
+      "Benzaiten",
+      "Ōkuninushi",
+      "Tsukuyomi",
+      "Susanoo",
+      "Inari",
+      "Hachiman",
+      "Konohanasakuya"
+    ],
+    "explanation": "According to Wikipedia, Amaterasu is portrayed in Japan's earliest literary texts — the Kojiki (c. 712 CE) and the Nihon Shoki (720 CE) — as both ruler of the heavenly realm Takamagahara and the mythical ancestress of the Imperial House of Japan via her grandson Ninigi."
+  },
+  {
+    "id": "mythology_folklore-amaterasu-three-precious-children",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "Which Shinto creator god fathered the Three Precious Children, including Amaterasu?",
+    "correct_answer": "Izanagi",
+    "distractors": [
+      "Izanami",
+      "Susanoo",
+      "Ōkuninushi",
+      "Raijin",
+      "Fujin",
+      "Inari",
+      "Takemikazuchi",
+      "Tsukuyomi"
+    ],
+    "explanation": "According to Wikipedia, Amaterasu, along with moon deity Tsukuyomi and storm-god Susanoo, ranks as one of the 'Three Precious Children' (三貴子, mihashira no uzu no miko), the three most important offspring of the creator god Izanagi."
+  },
+  {
+    "id": "mythology_folklore-amaterasu-ise-shrine",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "In which Japanese prefecture is Amaterasu's holiest shrine located?",
+    "correct_answer": "Mie Prefecture",
+    "distractors": [
+      "Kyoto Prefecture",
+      "Nara Prefecture",
+      "Shimane Prefecture",
+      "Tokyo Prefecture",
+      "Osaka Prefecture",
+      "Aichi Prefecture",
+      "Hyogo Prefecture",
+      "Fukuoka Prefecture"
+    ],
+    "explanation": "According to Wikipedia, Amaterasu's chief place of worship is the Grand Shrine of Ise in Ise, Mie Prefecture — one of Shinto's holiest sites and a major pilgrimage center and tourist destination."
+  },
+  {
+    "id": "mythology_folklore-susanoo-storm-god-dragonslayer",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "Which eight-headed serpent did the Japanese storm god Susanoo slay?",
+    "correct_answer": "Yamata no Orochi",
+    "distractors": [
+      "Ryujin the Sea God",
+      "Naga Vasuki",
+      "Leviathan the Serpent",
+      "Tiamat the Dragon",
+      "Jormungandr",
+      "Typhon the Giant",
+      "Apophis the Chaos",
+      "Fafnir the Dwarf"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, Susanoo is portrayed in Japanese mythology as a heroic figure who killed the monstrous eight-headed serpent Yamata no Orochi, making him one of mythology's most famous dragon-slayers alongside figures from Norse and Greek tradition."
+  },
+  {
+    "id": "mythology_folklore-susanoo-contradictory-nature",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "Which Japanese god is depicted as both villain and hero in different myths?",
+    "correct_answer": "Susanoo",
+    "distractors": [
+      "Raijin",
+      "Izanagi",
+      "Ōkuninushi",
+      "Inari",
+      "Fujin",
+      "Benzaiten",
+      "Tsukuyomi",
+      "Kagu-tsuchi"
+    ],
+    "explanation": "According to Wikipedia, Susanoo is a multifaceted deity with contradictory characteristics (both good and bad), portrayed variously as a wild impetuous storm god, a heroic dragon-slayer, and a local agricultural deity — making him one of the most complex figures in Shinto mythology."
+  },
+  {
+    "id": "mythology_folklore-susanoo-okuninushi-son",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "Which great earthly deity is described in Japanese myth as either son or scion of Susanoo?",
+    "correct_answer": "Ōkuninushi",
+    "distractors": [
+      "Amaterasu",
+      "Tsukuyomi",
+      "Kagu-tsuchi",
+      "Konohanasakuya",
+      "Izanagi",
+      "Takemikazuchi",
+      "Hiruko",
+      "Ame-no-Uzume"
+    ],
+    "explanation": "According to Wikipedia, Ōkuninushi (also known as Ōnamuchi) is depicted as either Susanoo's son or scion depending on the source. He is one of the central deities of the imperial Japanese mythological cycle recorded in the Kojiki (c. 712 CE) and Nihon Shoki (720 CE)."
+  },
+  {
+    "id": "mythology_folklore-sun-wukong-72-transformations",
+    "category_l1": "mythology_folklore",
+    "category_l2": "eastern_myths",
+    "quiz_question": "How many unique transformations can Sun Wukong perform?",
+    "correct_answer": "{72}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, Sun Wukong acquires the 72 Earthly Transformations through Taoist practice, which allow him to access 72 unique powers including the ability to transform into animals and objects. His hair also has magical properties, capable of making copies of himself."
+  },
+  {
+    "id": "mythology_folklore-sun-wukong-somersault-cloud",
+    "category_l1": "mythology_folklore",
+    "category_l2": "eastern_myths",
+    "quiz_question": "How far does Sun Wukong travel in one somersault, in kilometres?",
+    "correct_answer": "{54000} km",
+    "distractors": [],
+    "explanation": "According to Wikipedia, Sun Wukong is extremely fast, able to travel 108,000 li (54,000 km, 34,000 mi) in one somersault. Earth's circumference is about 40,075 km, meaning one Monkey King somersault exceeds a full lap around the globe."
+  },
+  {
+    "id": "mythology_folklore-sun-wukong-ruyi-jingu-bang",
+    "category_l1": "mythology_folklore",
+    "category_l2": "eastern_myths",
+    "quiz_question": "What is the name of Sun Wukong's iconic magical staff?",
+    "correct_answer": "Ruyi Jingu Bang",
+    "distractors": [
+      "Gandiva of Arjuna",
+      "Mjolnir of Thor",
+      "Gae Bulg of Cuchulainn",
+      "Excalibur of Arthur",
+      "Durandal of Roland",
+      "Caduceus of Hermes",
+      "Fragarach of Manannan",
+      "Gungnir of Odin"
+    ],
+    "explanation": "According to Wikidata, Sun Wukong's armament is the Ruyi Jingu Bang, a magical staff described in Journey to the West as originally a pillar used to measure sea depth. It can shrink to the size of a needle and expand to enormous lengths at its owner's will."
+  },
+  {
+    "id": "mythology_folklore-brahma-creator-trimurti",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "Which Hindu god completes the Trimurti alongside Vishnu and Shiva?",
+    "correct_answer": "Brahma",
+    "distractors": [
+      "Indra",
+      "Ganesha",
+      "Kartikeya",
+      "Surya",
+      "Vayu",
+      "Varuna",
+      "Agni",
+      "Kubera"
+    ],
+    "explanation": "According to Wikipedia, Brahma is a Hindu god referred to as 'the Creator' within the Trimurti, the trinity of supreme divinity that includes Vishnu and Shiva. He is associated with creation of everything, knowledge, and the Vedas."
+  },
+  {
+    "id": "mythology_folklore-brahma-least-worshipped",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "Which famous temple in Rajasthan is India's most notable shrine to creator god Brahma?",
+    "correct_answer": "Brahma Temple, Pushkar",
+    "distractors": [
+      "Konark Sun Temple, Odisha",
+      "Kashi Vishwanath",
+      "Brihadeeswarar Temple",
+      "Somnath Temple, Gujarat",
+      "Tirumala Venkateswara",
+      "Dakshineswar Kali Temple",
+      "Jagannath Temple, Puri",
+      "Meenakshi Amman Temple"
+    ],
+    "explanation": "According to Wikipedia, Brahma does not enjoy popular worship in contemporary Hinduism and has far less importance than Vishnu or Shiva. The most famous temple dedicated to him is the Brahma Temple in Pushkar, Rajasthan. By the 7th century CE, Brahma had largely lost his prominence."
+  },
+  {
+    "id": "mythology_folklore-brahma-four-heads-vedas",
+    "category_l1": "mythology_folklore",
+    "category_l2": "gods_deities",
+    "quiz_question": "What do Brahma's four heads symbolically represent in Hindu tradition?",
+    "correct_answer": "The four Vedas",
+    "distractors": [
+      "The four elements",
+      "The four castes",
+      "The four seasons",
+      "The four rivers",
+      "The four worlds",
+      "The four ashramas",
+      "The four Purusharthas",
+      "The four Yugas"
+    ],
+    "explanation": "According to Wikipedia, Brahma is commonly depicted with four heads, each pointed to the four cardinal directions. His four heads represent the four Vedas — the Rigveda, Samaveda, Yajurveda, and Atharvaveda — Hinduism's most sacred scriptures."
+  },
+  {
+    "id": "mythology_folklore-dragon-king-four-seas",
+    "category_l1": "mythology_folklore",
+    "category_l2": "eastern_myths",
+    "quiz_question": "How many Dragon Kings rule the Four Seas in Chinese mythology?",
+    "correct_answer": "{4}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Dragon King is a celestial water and weather god in Asian mythology. There are cosmological 'Dragon Kings of the Four Seas' (四海龍王, Sihai Longwang) — four dragon rulers who each govern one sea and hold divine power over rainfall and all bodies of water."
+  },
+  {
+    "id": "mythology_folklore-dragon-king-ancient-origins",
+    "category_l1": "mythology_folklore",
+    "category_l2": "eastern_myths",
+    "quiz_question": "How far back does archaeological evidence of Asian dragon/serpent worship date?",
+    "correct_answer": "{7000} BCE",
+    "distractors": [],
+    "explanation": "According to Wikipedia, serpent-like creatures have been regarded as a core part of Asian culture since 7,000–5,000 BCE (Neolithic period). Numerous serpent-like crafts and designs have been discovered at archaeological sites across China and India, proving dragon symbolism has been part of local folklore since ancient times."
+  },
+  {
+    "id": "mythology_folklore-erlang-shen-third-eye",
+    "category_l1": "mythology_folklore",
+    "category_l2": "eastern_myths",
+    "quiz_question": "Which Chinese deity has a truth-seeing third eye in the center of his forehead?",
+    "correct_answer": "Erlang Shen",
+    "distractors": [
+      "Sun Wukong",
+      "Dragon King",
+      "Jade Emperor",
+      "Nezha",
+      "Hou Yi",
+      "Guan Yu",
+      "Zhong Kui",
+      "Caishen"
+    ],
+    "explanation": "According to Wikipedia, Erlang Shen is a god in Chinese folk religion and Daoism, associated with water, justice, warriorhood, hunting, and demon subdual. He is commonly depicted as a young man with a third, truth-seeing eye in the middle of his forehead, wielding a three-pronged spear."
+  }
+]

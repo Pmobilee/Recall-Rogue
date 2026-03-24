@@ -1,8 +1,8 @@
 # Master Worker Prompt — Grounded Fact Generation
 
-**Version:** 1.0
-**Date:** 2026-03-20
-**Used by:** All Sonnet workers generating knowledge facts from enriched entity data
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
 
 ---
 
@@ -209,7 +209,7 @@ Assign based on the TOPIC of the question, not just the entity type. A question 
 
 **food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
 
-**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`, `music_performance`, `literature`, `performing_arts`
 
 **human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
 
@@ -295,6 +295,23 @@ Return a JSON array. Every fact MUST have ALL of these fields:
 | `tags` | YES | Array of 3-5 relevant tags |
 | `_haikuProcessed` | YES | Always `true` |
 | `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
 
 ---
 

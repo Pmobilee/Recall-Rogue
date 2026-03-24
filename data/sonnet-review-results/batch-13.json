@@ -1,0 +1,244 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 131,
+  "issues": [
+    {
+      "id": "hist_russo_turkish_war_duration",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "States the Russo-Turkish War lasted '{1} year', but the war ran from April 24, 1877 to March 3, 1878 — approximately 10 months, not a full year. This directly contradicts fact 'history-russo-turkish-war-1877-duration' in the same batch, which correctly answers 'About {10} months'.",
+      "suggested_fix": "Change correct_answer to '{10} months' and update explanation accordingly, or remove this duplicate in favor of the more accurate 'history-russo-turkish-war-1877-duration'."
+    },
+    {
+      "id": "history-timur-great-grandson-babur",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question calls Timur Babur's 'great-great-great-grandfather' (5 generations), but the genealogy is: Timur → Miran Shah → Abu Sa'id → Umar Shaikh → Babur — only 4 generations, making Timur Babur's great-great-grandfather, not great-great-great-grandfather.",
+      "suggested_fix": "Change question and answer to 'great-great-grandfather'. The chain has 4 links: Timur > Miran Shah > Abu Sa'id > Umar Shaikh > Babur."
+    },
+    {
+      "id": "history-che-guevara-missile-crisis",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states Guevara helped precipitate the Cuban Missile Crisis 'by bringing Soviet missiles to Cuba.' The decision to place Soviet nuclear missiles was Khrushchev's and Castro's; Guevara had a peripheral role in Cuban-Soviet relations but did not 'bring' the missiles. This misattributes primary agency and could teach a false causal chain.",
+      "suggested_fix": "Rephrase question to focus on Guevara's actual role: e.g. 'What near-catastrophic Cold War event was Guevara a participant in, having helped defend the missile sites?' Or change the angle entirely to ask about the Bay of Pigs, where Guevara's role was clearer."
+    },
+    {
+      "id": "history-first-bulgarian-empire-cyrillic",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Two distractors are problematic: 'Second Byzantine Empire' is not a real historical entity (there was only one Byzantine Empire — the 'Second' label is not used historically). 'Tsar of Russia' is a title, not an empire/state, and does not belong as a distractor alongside polity names.",
+      "suggested_fix": "Replace 'Second Byzantine Empire' with 'Byzantine Empire' and replace 'Tsar of Russia' with 'Grand Duchy of Moscow' or 'Rus' Khaganate'."
+    },
+    {
+      "id": "history-first-bulgarian-empire-cyrillic",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'ancient_classical' but the First Bulgarian Empire was founded in 681 CE and existed through 1018 CE — firmly medieval. Three other Liao Dynasty facts share this same miscategorization.",
+      "suggested_fix": "Change category_l2 to 'medieval'."
+    },
+    {
+      "id": "history-first-bulgarian-empire-duration",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'ancient_classical' but the First Bulgarian Empire (681–1018 CE) is medieval, not ancient.",
+      "suggested_fix": "Change category_l2 to 'medieval'."
+    },
+    {
+      "id": "history-liao-dynasty-first-manchuria",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'ancient_classical' but the Liao dynasty (907–1125 CE) is a medieval Chinese dynasty, not ancient.",
+      "suggested_fix": "Change category_l2 to 'medieval'."
+    },
+    {
+      "id": "history-liao-dynasty-chanyuan-treaty-120-years",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'ancient_classical' but the Liao dynasty (907–1125 CE) and the 1004 Chanyuan Treaty are medieval, not ancient.",
+      "suggested_fix": "Change category_l2 to 'medieval'."
+    },
+    {
+      "id": "history-liao-dynasty-western-liao-central-asia",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'ancient_classical' but the fall of the Liao dynasty (1125 CE) and the Western Liao (Qara Khitai) are medieval, not ancient.",
+      "suggested_fix": "Change category_l2 to 'medieval'."
+    },
+    {
+      "id": "history-kingdom-aragon-mediterranean",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The correct answer is 'Greece' (Aragonese Duchy of Athens), but the distractor list omits Italy and France — which had far more prominent and well-known Aragonese territories (Sicily, Sardinia, Naples, parts of southern France). A player with good historical knowledge would consider Italy an obvious correct answer and be confused by its absence. The question is technically correct but the distractor set is badly incomplete.",
+      "suggested_fix": "Either change the question to specify 'the Duchy of Athens' specifically, or reframe to ask about Italy/Sicily where the Aragonese presence was more famous, and adjust distractors accordingly."
+    },
+    {
+      "id": "hist_robespierre_reign_of_terror",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation states 'approximately 40,000 people' were executed during the Reign of Terror. Other facts in this same batch (history-french-revolution-terror-executions, history-french-revolution-reign-of-terror) cite ~16,000 as the count. Both figures are sourced from Wikipedia but refer to different counts: 16,000 sentenced by the Revolutionary Tribunal vs. ~40,000 total including summary executions. The discrepancy within the same batch will confuse players.",
+      "suggested_fix": "Align the explanation with the figure used in the paired facts (~16,000 sentenced by the Tribunal), or add a clarifying note that 16,000 were formally sentenced and ~40,000 died in total including summary killings."
+    },
+    {
+      "id": "history-renaissance-oxford-older-than-aztec",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The fact ID is 'history-renaissance-oxford-older-than-aztec' which has no relation to the question content (which asks when historians date the start of the Renaissance). The ID appears to be a copy-paste error from a different fact. The question and answer are otherwise fine.",
+      "suggested_fix": "Rename the ID to something like 'history-renaissance-start-date-1400' to match the actual content."
+    },
+    {
+      "id": "history-british-raj-un-founder",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor list contains 'British Malaya' twice (at positions 4 and 8 in the distractors array), which is a copy-paste error.",
+      "suggested_fix": "Remove the duplicate 'British Malaya' entry and replace with a different distractor such as 'British Kenya' or 'British Rhodesia'."
+    },
+    {
+      "id": "history-russo-turkish-war-coalition",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-russo-turkish-war-1877-coalition'. Both ask 'Which three Balkan nations allied/fought alongside Russia against the Ottomans in the 1877 war?' with the identical correct answer 'Romania, Serbia, Montenegro'. Having two functionally identical questions degrades the quiz experience.",
+      "suggested_fix": "Remove one of the two facts. If both are kept, differentiate one to ask about a different angle of the same war."
+    },
+    {
+      "id": "history-british-empire-largest-ever",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-british-empire-size'. Both ask what percentage of Earth's land the British Empire covered at its 1920 peak, with the identical answer 'About {24}%' and nearly identical explanations.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-napoleon-height-myth",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-napoleon-height-168cm'. Both ask about Napoleon's recorded height with the identical answer {168} cm/centimetres and very similar explanations about the myth.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-napoleon-louisiana-purchase",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-napoleon-sold-louisiana'. Both ask about Napoleon selling the Louisiana Territory to the US in 1803, with essentially the same answer and explanation.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-che-guevara-physician",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-che-guevara-motorcycle-doctor'. Both ask what profession Che Guevara trained in before becoming a revolutionary, with the same answer (physician/medicine).",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-french-revolution-terror-executions",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-french-revolution-reign-of-terror'. Both ask how many people were sentenced/executed during the Reign of Terror with the same answer ~16,000.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-protestant-reformation-gutenberg",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-protestant-reformation-printing-press'. Both ask what technology spread the Protestant Reformation with the same answer 'Gutenberg's printing press'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-robespierre-guillotined",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-robespierre-guillotine-no-trial' and 'hist_robespierre_fate'. All three facts ask how Robespierre died, with the same answer (guillotined without trial). Three facts on the same narrow topic is excessive.",
+      "suggested_fix": "Keep one fact on Robespierre's death. Remove the other two or convert them to ask distinct questions (e.g., date of execution, who arrested him)."
+    },
+    {
+      "id": "history-cyrus-only-non-jewish-messiah",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-cyrus-the-great-messiah'. Both ask which Persian king is the only non-Jewish person called 'messiah' in the Hebrew Bible, with the same answer 'Cyrus the Great'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-neolithic-revolution-mesopotamia",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-neolithic-revolution-start'. Both ask where the Neolithic Revolution (humanity's shift to farming) began, with the same answer 'Mesopotamia'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-tito-defied-stalin",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-tito-stalin-split'. Both ask which communist leader defied Stalin and survived, with the same answer 'Josip Broz Tito'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-german-empire-third-nobel",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-german-empire-nobel'. Both ask what fraction of Nobel Prizes went to German researchers during the German Empire era, with the same answer 'One-third'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-mughal-empire-founded-babur",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'hist_mughal_empire_founder'. Both ask who founded the Mughal Empire in 1526, with the same answer 'Babur'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-chandragupta-maurya-first-emperor",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-chandragupta-maurya-founder'. Both ask who founded the Maurya Empire around 320 BCE, with the same answer 'Chandragupta Maurya'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-sasanian-empire-four-centuries",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-sasanian-empire-duration'. Both ask how long the Sasanian Empire lasted, with the same answer {427} years.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-persepolis-ceremonial-capital",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-persepolis-alexander-fire'. Both ask about Persepolis being burned/destroyed by Alexander the Great in 330 BCE, with the same answer 'Persepolis'.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "hist_arab_spring_start_country",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-arab-spring-tunisia-origin' and 'history-arab-spring-start'. All three facts ask about the Arab Spring starting in Tunisia (triggered by Bouazizi's self-immolation). Three facts on the same narrow trigger event is excessive.",
+      "suggested_fix": "Keep one fact about where the Arab Spring started. Remove or differentiate the other two (e.g., one could ask about which leaders were toppled, or the year it spread to Egypt)."
+    },
+    {
+      "id": "hist_russo_turkish_war_romania_independence",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-russo-turkish-1877-bulgaria' and 'history-russo-turkish-war-1877-bulgaria'. Multiple facts cover the same war's outcome of freeing Balkan states from Ottoman rule.",
+      "suggested_fix": "This is one of several duplicates on the 1877-78 Russo-Turkish War. The batch contains at least 8 facts on this single conflict. Reduce to 3-4 maximum, each covering a distinctly different angle."
+    },
+    {
+      "id": "history-inca-empire-no-writing",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-inca-empire-no-writing-wheel'. Both ask about the Inca Empire building a vast state without a writing system, with the same answer.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "hist_spanish_empire_largest",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-spanish-empire-sun-never-sets'. Both ask about the 'empire on which the sun never sets' phrase associated with the Spanish Empire.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "history-portuguese-empire-oldest-colonial",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'history-portuguese-empire-longest'. Both ask which colonial empire lasted the longest (1415–1999), with the same answer 'Portuguese Empire'.",
+      "suggested_fix": "Remove one of the two facts."
+    }
+  ]
+}

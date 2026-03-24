@@ -296,11 +296,14 @@ export class CombatScene extends Phaser.Scene {
         const x = proxy.x
         const s = proxy.scale
         this.quizEnemyXOverride = x
+        this.quizEnemyScaleOverride = s
 
         // Move and scale enemy sprite container
         if (container) {
           container.setPosition(x, gameH * LANDSCAPE.ENEMY_Y_PCT)
           container.setScale(s)
+          // Update the sprite system's base position so idle animations don't reset
+          this.enemySpriteSystem?.updateBasePosition(x, gameH * LANDSCAPE.ENEMY_Y_PCT)
         }
 
         // Name text: below the scaled sprite
@@ -314,15 +317,17 @@ export class CombatScene extends Phaser.Scene {
         // Move HP text
         this.enemyHpText.setPosition(x, hpY)
 
-        // Redraw HP bar background at new position
+        // Redraw HP bar background scaled proportionally with the enemy
+        const barW = Math.round(scaledW * s)
+        const barH = Math.round(scaledH * s)
         this.enemyHpBarBg.clear()
         this.enemyHpBarBg.fillStyle(0x1a1a2e, 1)
         this.enemyHpBarBg.fillRoundedRect(
-          x - scaledW / 2, hpY - scaledH / 2,
-          scaledW, scaledH, 6
+          x - barW / 2, hpY - barH / 2,
+          barW, barH, 6
         )
 
-        // Redraw HP bar fill at new position
+        // Redraw HP bar fill at new position (uses quizEnemyScaleOverride internally)
         this.refreshEnemyHpBar(false)
 
         // Move block indicators
@@ -331,9 +336,15 @@ export class CombatScene extends Phaser.Scene {
       },
       onComplete: () => {
         if (!active) {
-          // Reset override and scale so normal repositionAll works correctly
+          // Reset overrides and scale so normal repositionAll works correctly
           this.quizEnemyXOverride = null
+          this.quizEnemyScaleOverride = null
           container?.setScale(1.0)
+          // Restore base position to default so idle animations anchor correctly
+          this.enemySpriteSystem?.updateBasePosition(defaultX, gameH * LANDSCAPE.ENEMY_Y_PCT)
+        } else {
+          // Ensure the final slid position sticks for idle animations
+          this.enemySpriteSystem?.updateBasePosition(targetX, gameH * LANDSCAPE.ENEMY_Y_PCT)
         }
         // Final refresh to settle everything
         this.refreshEnemyHpBar(false)
@@ -362,7 +373,8 @@ export class CombatScene extends Phaser.Scene {
     let enemyY: number
 
     if (isLandscape) {
-      enemyX = w * LANDSCAPE.ENEMY_X_PCT
+      // Respect quiz slide override when active (slideEnemyForQuiz sets this)
+      enemyX = this.quizEnemyXOverride ?? w * LANDSCAPE.ENEMY_X_PCT
       enemyY = h * LANDSCAPE.ENEMY_Y_PCT
     } else {
       enemyX = w * ENEMY_X_PCT
@@ -374,6 +386,10 @@ export class CombatScene extends Phaser.Scene {
     // Move enemy sprite container
     const container = this.enemySpriteSystem.getContainer()
     container.setPosition(enemyX, enemyY)
+    // Apply quiz scale override if active
+    if (isLandscape && this.quizEnemyScaleOverride !== null) {
+      container.setScale(this.quizEnemyScaleOverride)
+    }
 
     // Update enemy name text position
     this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + Math.round(12 * this.scaleFactor))
@@ -385,7 +401,8 @@ export class CombatScene extends Phaser.Scene {
     let enemyHpY: number
 
     if (isLandscape) {
-      enemyHpBarCenterX = w * LANDSCAPE.ENEMY_X_PCT
+      // Respect quiz slide override when active (mirrors enemy sprite position)
+      enemyHpBarCenterX = this.quizEnemyXOverride ?? w * LANDSCAPE.ENEMY_X_PCT
       enemyHpY = h * LANDSCAPE.ENEMY_HP_Y_PCT
     } else {
       enemyHpBarCenterX = w / 2
@@ -1918,8 +1935,10 @@ export class CombatScene extends Phaser.Scene {
     const ratio = this.currentEnemyMaxHP > 0
       ? this.currentEnemyHP / this.currentEnemyMaxHP
       : 0
-    const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
-    const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
+    // During the quiz slide tween the enemy is scaled down; shrink the HP bar to match.
+    const barScale = this.quizEnemyScaleOverride ?? 1.0
+    const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor * barScale)
+    const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor * barScale)
     const targetW = Math.max(1, ratio * scaledW)
     const baseColor = this.currentEnemyCategory === 'boss' ? COLOR_BOSS
       : this.currentEnemyCategory === 'elite' || this.currentEnemyCategory === 'mini_boss' ? COLOR_ELITE

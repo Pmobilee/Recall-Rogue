@@ -320,6 +320,9 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   'mastery-challenge': {
     screen: 'masteryChallenge',
   },
+  'dungeon-selection': {
+    screen: 'dungeonSelection',
+  },
 
   // Mystery event by ID examples
   'mystery-healing-fountain': {

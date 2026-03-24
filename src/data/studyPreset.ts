@@ -22,4 +22,43 @@ export interface StudyPreset {
 export type DeckMode =
   | { type: 'general' }
   | { type: 'preset'; presetId: string }
-  | { type: 'language'; languageCode: string };
+  | { type: 'language'; languageCode: string }
+  | { type: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> }
+  | { type: 'study'; deckId: string; subDeckId?: string };
+
+/** A single item in a custom playlist — either a trivia domain or a curated study deck. */
+export type CustomPlaylistItem =
+  | { type: 'trivia'; domain: string; subdomain?: string; label: string }
+  | { type: 'study'; deckId: string; subDeckId?: string; label: string };
+
+/** A named custom playlist combining items from trivia domains and/or curated decks. */
+export interface CustomPlaylist {
+  /** Unique ID (timestamp-based, e.g. Date.now().toString(36)). */
+  id: string;
+  /** User-chosen name, e.g. "Japanese + Space". */
+  name: string;
+  /** When this playlist was created (Unix ms). */
+  createdAt: number;
+  /** Items in this playlist. */
+  items: CustomPlaylistItem[];
+}
+
+/** Persisted last selection on the Dungeon Selection screen. */
+export interface LastDungeonSelection {
+  /** Which mode tab was last active. */
+  mode: 'trivia' | 'study';
+  /** Trivia Dungeon configuration. */
+  triviaConfig?: {
+    domains: string[];
+    subdomains: Record<string, string[]>;
+  };
+  /** Study Temple configuration. */
+  studyConfig?: {
+    deckId: string;
+    subDeckId?: string;
+  };
+  /** Named custom playlists. */
+  customPlaylists?: CustomPlaylist[];
+  /** ID of the currently active playlist. */
+  activePlaylistId?: string;
+}

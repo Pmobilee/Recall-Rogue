@@ -1,0 +1,104 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 183,
+  "issues": [
+    {
+      "id": "human_body_health-adhd-hyperfocus",
+      "severity": "critical",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer 'Hyperfocus' is wrong for what the question describes. The question asks about the symptom where a person 'continues an action they intend to stop.' That is perseveration (inhibitory deficit), not hyperfocus. The explanation even says 'perseveration of actions despite intending to stop — known colloquially as hyperfocus,' which is an incorrect conflation. Hyperfocus is prolonged engagement on a desired task, not inability to stop an unwanted action.",
+      "suggested_fix": "Change correct_answer to 'Perseveration' and rewrite the explanation to distinguish perseveration (inhibitory deficit causing inability to stop an ongoing action) from hyperfocus (prolonged, intense focus on a chosen activity). These are separate phenomena."
+    },
+    {
+      "id": "human_body_health-sperm-whale-brain",
+      "severity": "critical",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The fact ID is 'sperm-whale-brain' but the question and answer have nothing to do with sperm whales or brains. The question asks how vaccines protect against disease without causing illness, and the answer is 'Trains the immune system.' The ID is clearly a copy-paste artifact from a different fact that was overwritten. The content itself (vaccine mechanism) is accurate, but the ID signals this fact was mangled during pipeline processing.",
+      "suggested_fix": "Rename the ID to something like 'human_body_health-vaccine-immune-training' or similar. Content is fine; only the ID is broken. Verify this fact was not supposed to be a different question about sperm whale brain size (which may have been lost)."
+    },
+    {
+      "id": "human_body_health-encephalitis-causes",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Parasites' appears twice in the distractors list (positions 4 and 8). This is a data pipeline duplicate that will produce a broken quiz with a repeated wrong-answer option.",
+      "suggested_fix": "Remove the duplicate 'Parasites' entry and replace with a distinct distractor such as 'Trauma' or 'Chemical exposure'."
+    },
+    {
+      "id": "human_body_health-immune-system-adaptive-memory",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Fever response' appears twice in the distractors list (positions 1 and 8). Duplicate distractor will break the quiz display.",
+      "suggested_fix": "Remove one 'Fever response' and replace with a distinct distractor such as 'Complement activation' or 'Neutrophil response'."
+    },
+    {
+      "id": "human_body_health-common-cold-200-viruses",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Bubonic plague' (last in the list) is completely incoherent for a question about why no cold vaccine exists. It is not a plausible wrong answer — it is a non-sequitur disease name that would immediately be discarded by any player and reveals the distractor was corrupted or randomly inserted.",
+      "suggested_fix": "Replace 'Bubonic plague' with a plausible distractor such as 'No one has tried to develop one' or 'Cold viruses are too small to target' or 'Immunity lasts too briefly to be useful'."
+    },
+    {
+      "id": "human_body_health-cns-only-three-groups-true-brain",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Which invertebrate group shares a true brain with vertebrates?' using the singular 'group', but the correct answer names two groups: 'Arthropods and cephalopods.' The question should use the plural 'groups' to avoid a grammatical mismatch with the answer.",
+      "suggested_fix": "Change question to: 'Which invertebrate groups share a true brain with vertebrates?' (plural 'groups')."
+    },
+    {
+      "id": "human_body_health-dementia-not-aging",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer 'Dementia changes intelligence' is awkward and misleading as a direct answer to 'Unlike normal aging, what does a progressive neurocognitive disorder actually affect?' The answer format sounds like a comparative claim but reads oddly when selected as the quiz answer. The explanation actually clarifies the distinction (normal aging = no change in intelligence; dementia = disrupts cognitive abilities), but the answer phrasing does not cleanly answer the question.",
+      "suggested_fix": "Rewrite the correct_answer to something like 'Intelligence and cognitive function' or 'Cognitive abilities and functioning' — directly answering what the disorder affects, without the confusing embedded comparison."
+    },
+    {
+      "id": "human_body_health-inflammation-cardinal-signs",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states 'How many cardinal signs of inflammation were identified by ancient physicians?' implying all five were ancient. However, only four signs (calor, dolor, rubor, tumor) were described by ancient Roman physician Celsus (1st century AD). The fifth sign, functio laesa (loss of function), was added by Rudolf Virchow in the 19th century — not by ancient physicians. Attributing all five to ancient physicians is historically inaccurate.",
+      "suggested_fix": "Either change the question to remove 'ancient physicians' — e.g., 'How many cardinal signs of inflammation are recognized in medicine?' — or acknowledge in the explanation that Virchow added the fifth sign in the 19th century. The answer of 'Five' remains correct; only the framing attributing all five to antiquity is wrong."
+    },
+    {
+      "id": "human_body_health-kangaroo-pouch-joey",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact (and the three nearby kangaroo/mammoth facts: kangaroo-teeth-replacement, mammoth-survival-4000bce, mammoth-woolly-evolution) is categorized under category_l1='human_body_health', which is for human physiology, medicine, and health. Kangaroo pouch development and woolly mammoth evolution have no connection to human health. These belong in a zoology, natural history, or biology category.",
+      "suggested_fix": "Recategorize all four facts (kangaroo-pouch-joey, kangaroo-teeth-replacement, mammoth-survival-4000bce, mammoth-woolly-evolution) to an appropriate category such as 'natural_world', 'biology', or 'animal_kingdom' at category_l1 level."
+    },
+    {
+      "id": "human_body_health-kangaroo-teeth-replacement",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Same categorization issue as kangaroo-pouch-joey. Kangaroo dental polyphyodonty is animal biology, not human health.",
+      "suggested_fix": "Recategorize to a natural world / zoology category."
+    },
+    {
+      "id": "human_body_health-mammoth-survival-4000bce",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Woolly mammoth survival dates belong in natural history / paleontology, not human_body_health.",
+      "suggested_fix": "Recategorize to natural history, paleontology, or natural_world category."
+    },
+    {
+      "id": "human_body_health-mammoth-woolly-evolution",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Woolly mammoth evolution belongs in natural history / zoology, not human_body_health.",
+      "suggested_fix": "Recategorize to natural history, paleontology, or natural_world category."
+    },
+    {
+      "id": "human_body_health-stimulants-caffeine-oldest",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The fact ID 'stimulants-caffeine-oldest' strongly implies this is about caffeine as the oldest stimulant, but the question and answer are entirely about archaeological evidence of cocaine use in Peru (~8000 BCE). The ID is misleading and creates confusion about what this fact is teaching. The content is factually accurate, but the ID mislabels it as a caffeine fact.",
+      "suggested_fix": "Rename the ID to 'human_body_health-stimulants-cocaine-prehistoric' or similar to accurately reflect the content."
+    },
+    {
+      "id": "human_body_health-jonas-salk-no-patent",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation states 'The attorney investigating a patent found no patentable novelty,' which directly contradicts the intended lesson that Salk altruistically chose not to patent the vaccine for global access. Mentioning the attorney's finding — that it may not have been patentable anyway — undercuts the correct answer and introduces historical ambiguity that confuses the educational message.",
+      "suggested_fix": "Remove the sentence about the attorney finding no patentable novelty, or add context that Salk himself stated his intent was to keep it free. The motivational framing (to maximize global distribution) is historically supported by Salk's own statements and should remain the primary message."
+    }
+  ]
+}

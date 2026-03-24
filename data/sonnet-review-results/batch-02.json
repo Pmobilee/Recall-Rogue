@@ -1,0 +1,237 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 163,
+  "issues": [
+    {
+      "id": "animals-great-white-shark-warm-blooded",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "'Countercurrent heat exchange' is listed as a distractor, but it is actually the correct biological mechanism by which the great white shark achieves partial warm-bloodedness (regional endothermy). A knowledgeable player who knows the real answer would be confused — the correct answer 'Partial warm-bloodedness' describes the result, while 'Countercurrent heat exchange' describes the mechanism that produces it. Both are factually true, making this a contradictory distractor.",
+      "suggested_fix": "Replace 'Countercurrent heat exchange' with a genuinely wrong distractor such as 'Insulating mucus layer' or 'Heat-storing swim bladder'."
+    },
+    {
+      "id": "animals-pike-world-record-catch",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Northern pike (Esox lucius) is a freshwater fish native to rivers and lakes of the Northern Hemisphere. It is categorized here under category_l2: 'marine_life', which is incorrect.",
+      "suggested_fix": "Change category_l2 to 'freshwater_fish' or an equivalent freshwater subcategory."
+    },
+    {
+      "id": "animals-pike-eurasia-larger",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Northern pike is a freshwater fish categorized under 'marine_life'. Same issue as animals-pike-world-record-catch.",
+      "suggested_fix": "Change category_l2 to 'freshwater_fish'."
+    },
+    {
+      "id": "animals-pike-carnivore-freshwater",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Northern pike is a freshwater fish categorized under 'behavior_intelligence', which is fine for subcategory, but category_l2 should not imply marine context. The parent category is fine (animals_wildlife) but the fact's connection to the marine_life grouping (implied by its sibling facts) is wrong. Northern pike is a strictly freshwater species.",
+      "suggested_fix": "Ensure this fact is grouped with freshwater fish, not marine species."
+    },
+    {
+      "id": "animals-goldfish-bred-china",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Goldfish (Carassius auratus) are freshwater fish. Categorized under category_l2: 'marine_life', which is incorrect.",
+      "suggested_fix": "Change category_l2 to 'freshwater_fish' or equivalent."
+    },
+    {
+      "id": "animals-goldfish-invasive-wild",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Goldfish are freshwater fish. Categorized under 'conservation', which is fine, but the parent grouping with marine_life facts is misleading. Same root issue as animals-goldfish-bred-china.",
+      "suggested_fix": "Confirm category_l2 is not 'marine_life'. If it is, change to 'conservation' under a freshwater context."
+    },
+    {
+      "id": "animals-guppy-livebearer-distribution",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Guppies (Poecilia reticulata) are freshwater fish. Categorized under category_l2: 'marine_life', which is incorrect.",
+      "suggested_fix": "Change category_l2 to 'freshwater_fish'."
+    },
+    {
+      "id": "animals-guppy-model-organism",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Guppies are freshwater fish. Categorized under 'marine_life'.",
+      "suggested_fix": "Change category_l2 to 'freshwater_fish'."
+    },
+    {
+      "id": "animals-guppy-sex-size-difference",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Guppies are freshwater fish. Categorized under 'marine_life'.",
+      "suggested_fix": "Change category_l2 to 'freshwater_fish'."
+    },
+    {
+      "id": "animals-lungfish-tetrapod-relatives",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Lungfish are primarily freshwater fish (African and South American species live entirely in freshwater; Australian species also freshwater). Categorized under 'marine_life', which is incorrect.",
+      "suggested_fix": "Change category_l2 to 'freshwater_fish' or 'adaptations'."
+    },
+    {
+      "id": "animals-lungfish-air-breathing",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Lungfish are freshwater fish. Categorized under 'adaptations', which is fine for subcategory, but should not be associated with the marine_life grouping. Verify category_l2 is not 'marine_life'.",
+      "suggested_fix": "Keep category_l2 as 'adaptations' and ensure it is not grouped under marine_life in any way."
+    },
+    {
+      "id": "animals_wildlife-turbot-war",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks 'Which fish was at the centre of the 1995 Turbot War?' and the correct answer is 'Turbot'. However, the explanation itself immediately clarifies that the fish was actually Greenland halibut (Reinhardtius hippoglossoides), not turbot. The conflict was nicknamed the 'Turbot War' colloquially, but the species at issue was Greenland halibut. Presenting 'Turbot' as the factual answer while the explanation contradicts it is misleading and factually inaccurate.",
+      "suggested_fix": "Either: (a) change correct_answer to 'Greenland halibut' and rephrase the question to ask what the actual disputed fish was, OR (b) if keeping the trivia angle of the nickname, reframe the question as 'The 1995 diplomatic dispute between Canada and Spain was nicknamed the Turbot War — but which fish were they actually fighting over?' with correct_answer 'Greenland halibut'."
+    },
+    {
+      "id": "animals_wildlife-caecilian-scales",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Mudskippers' appears twice in the distractors list (positions 6 and 8). Duplicate distractors are not permitted.",
+      "suggested_fix": "Remove one instance of 'Mudskippers' and replace it with a unique option such as 'Caecilians' (no — that's the answer), or 'Lungfish' or 'Lampreys'."
+    },
+    {
+      "id": "aw-caecilian-legless-amphibian",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of animals_wildlife-caecilian-limbless (id further in the batch). Both ask essentially the same question: 'Which amphibian group is entirely limbless and lives underground?' with the same correct answer 'Caecilians'. Having two nearly identical facts in the same database creates redundancy and wastes card slots.",
+      "suggested_fix": "Merge the two facts into one, or differentiate them so they test genuinely distinct knowledge (e.g., one could focus on the order name Gymnophiona, the other on where they are found geographically)."
+    },
+    {
+      "id": "animals_wildlife-caecilian-limbless",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of aw-caecilian-legless-amphibian. Both ask which amphibian group is entirely limbless and lives underground, both answer 'Caecilians'. See note on aw-caecilian-legless-amphibian.",
+      "suggested_fix": "Merge or differentiate from aw-caecilian-legless-amphibian."
+    },
+    {
+      "id": "animals_wildlife-milkfish-sole-living-family",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of animals_wildlife-milkfish-sole-family (id further in batch). Both ask how many species are in the milkfish family Chanidae, both answer 'Just {1}'. The questions are almost word-for-word identical and the explanations cover the same content.",
+      "suggested_fix": "Remove one of the two facts, or differentiate them: one could focus on the tautonym 'Chanos chanos', the other on its role as the Philippine national fish."
+    },
+    {
+      "id": "animals_wildlife-milkfish-sole-family",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of animals_wildlife-milkfish-sole-living-family. See note above.",
+      "suggested_fix": "Remove one of the two facts."
+    },
+    {
+      "id": "animals_wildlife-coconut-austronesian",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The coconut is a plant (Cocos nucifera). This fact is filed under category_l1: 'animals_wildlife' with category_l2: 'adaptations'. Plants are not animals or wildlife in the standard sense — this belongs in a botany, food, or history/culture category.",
+      "suggested_fix": "Move to a 'plants_nature' or 'food_agriculture' category, or a 'history_culture' > 'exploration' subcategory."
+    },
+    {
+      "id": "animals_wildlife-coconut-production",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Coconut production statistics is an agriculture/food topic filed under category_l1: 'animals_wildlife' > category_l2: 'conservation'. This is a miscategorization — it has nothing to do with wildlife or conservation.",
+      "suggested_fix": "Move to 'food_agriculture' or 'geography_world' > 'economy'."
+    },
+    {
+      "id": "animals_wildlife-orchid-germination",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Orchids are plants. This fact is filed under category_l1: 'animals_wildlife' > category_l2: 'adaptations'. Plants should not be in the animals_wildlife category.",
+      "suggested_fix": "Move to 'plants_nature' > 'adaptations' or equivalent botany category."
+    },
+    {
+      "id": "animals_wildlife-orchid-pollination-deception",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Orchid pollination is a plant biology topic filed under 'animals_wildlife' > 'behavior_intelligence'. Plants do not have behavior_intelligence in the animal sense.",
+      "suggested_fix": "Move to 'plants_nature' > 'adaptations' or 'plants_nature' > 'ecology'."
+    },
+    {
+      "id": "animals_wildlife-watermelon-origin-africa",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Watermelon is a plant/crop. Filed under 'animals_wildlife' > 'adaptations'. This belongs in a food, agriculture, or botany category.",
+      "suggested_fix": "Move to 'food_agriculture' > 'origins' or 'plants_nature'."
+    },
+    {
+      "id": "animals_wildlife-watermelon-botanically-berry",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Botanical classification of a fruit crop filed under 'animals_wildlife' > 'adaptations'. Same miscategorization as the other watermelon fact.",
+      "suggested_fix": "Move to 'food_agriculture' or 'plants_nature' > 'botany'."
+    },
+    {
+      "id": "animals_wildlife-oak-caterpillars",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Oak tree ecology is a plant/ecology topic filed under 'animals_wildlife' > 'behavior_intelligence'. Oak trees are plants, not animals.",
+      "suggested_fix": "Move to 'plants_nature' > 'ecology' or keep in 'animals_wildlife' > 'ecology' if the intent is to discuss the animal interaction (caterpillars). If the latter, consider reframing the question to focus on the ecological relationship."
+    },
+    {
+      "id": "animals_wildlife-oak-species-threatened",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Oak species extinction threat is a plant conservation topic filed under 'animals_wildlife' > 'conservation'. While 'conservation' is thematically reasonable, the category_l1 'animals_wildlife' is incorrect for a plant.",
+      "suggested_fix": "Move to 'plants_nature' > 'conservation' or create a broader 'nature' > 'conservation' category."
+    },
+    {
+      "id": "art_architecture-iliad-15693-lines",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The Iliad is a work of literature. It is filed under category_l1: 'art_architecture' > category_l2: 'painting_visual'. Literature does not belong in the painting_visual subcategory.",
+      "suggested_fix": "Change category_l2 to 'literature' or move to a dedicated 'literature' category if one exists."
+    },
+    {
+      "id": "art_architecture-iliad-rhapsodes",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Fact about Greek oral performance tradition of the Iliad filed under 'art_architecture' > 'painting_visual'. Not painting-related.",
+      "suggested_fix": "Change category_l2 to 'literature' or 'performing_arts'."
+    },
+    {
+      "id": "art_architecture-charles-baudelaire-coined-modernity",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Baudelaire was a poet — this fact about him coining the term 'modernity' is a literary/intellectual history topic. It is filed under 'art_architecture' > 'painting_visual'. Poetry is not painting.",
+      "suggested_fix": "Change category_l2 to 'literature' or 'modern_contemporary'."
+    },
+    {
+      "id": "art_architecture-charles-baudelaire-flowers-of-evil",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Translation of Baudelaire's poetry collection title filed under 'painting_visual'. This is a literature fact.",
+      "suggested_fix": "Change category_l2 to 'literature'."
+    },
+    {
+      "id": "art_architecture-baudelaire-art-critic",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Fact about Baudelaire's contribution to art criticism filed under 'painting_visual'. While this has an art angle, art criticism is not painting. category_l2 should be 'modern_contemporary' or 'literature'.",
+      "suggested_fix": "Change category_l2 to 'modern_contemporary'."
+    },
+    {
+      "id": "art_architecture-novel-cervantes-first",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "A question about the first European novelist is a literature fact, filed under 'art_architecture' > 'painting_visual'. Literature and painting are distinct subcategories.",
+      "suggested_fix": "Change category_l2 to 'literature'."
+    },
+    {
+      "id": "art_architecture-hitchcock-46-academy-nominations",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation conflates two distinct statistics in a potentially confusing way: 'his films garnered 46 Academy Award nominations including six wins, although he himself never won the award for Best Director despite five nominations.' The question asks specifically how many Best Director nominations Hitchcock personally received (answer: 5), but the explanation leads with the unrelated '46 nominations / 6 wins' figure for his films overall. A player finishing the question might read the first sentence and think the answer should be 46 or 6, not 5. The structure is misleading.",
+      "suggested_fix": "Lead the explanation with the directly relevant fact: 'Despite being nominated five times for Best Director — one of cinema's most famous Oscar snubs — Hitchcock never won. His films collectively earned 46 Academy Award nominations and six wins.'"
+    },
+    {
+      "id": "art_architecture-jules-verne-surrealism-influence",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The fact ID contains 'surrealism-influence' but the question and content have nothing to do with surrealism — it is about poor English translations harming Verne's literary reputation. The ID is misleading (IDs are internal but can cause confusion during editorial review).",
+      "suggested_fix": "Rename the ID to something like 'art_architecture-jules-verne-translation-reputation' to accurately reflect the content."
+    }
+  ]
+}

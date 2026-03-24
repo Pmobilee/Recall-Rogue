@@ -11,6 +11,8 @@ import {
 } from '../data/balance';
 import { shuffled } from './randomUtils';
 import { factsDB } from './factsDB';
+import { selectNonCombatStudyQuestion } from './nonCombatQuizSelector';
+import { getConfusionMatrix } from './confusionMatrixStore';
 
 // ---------------------------------------------------------------------------
 // Public types
@@ -93,6 +95,34 @@ export function generateQuizPhaseQuestions(
   runState: RunState,
   factPool: CardRunState['drawPile'],
 ): QuizQuestion[] {
+  // Study mode branch: use curated deck selector for boss quiz phase questions
+  if (runState.deckMode?.type === 'study') {
+    const confusionMatrix = getConfusionMatrix();
+    const inRunTracker = runState.inRunFactTracker ?? null;
+    const questions: QuizQuestion[] = [];
+    for (let i = 0; i < config.questionCount; i++) {
+      const q = selectNonCombatStudyQuestion(
+        'boss',
+        runState.deckMode.deckId,
+        runState.deckMode.subDeckId,
+        confusionMatrix,
+        inRunTracker,
+        1,
+        runState.runSeed + i * 997,
+      );
+      if (q) {
+        questions.push({
+          factId: q.factId,
+          question: q.question,
+          answers: q.choices,
+          correctAnswer: q.correctAnswer,
+        });
+      }
+    }
+    if (questions.length > 0) return questions;
+    // Fall through to trivia path if study questions unavailable
+  }
+
   const allFacts = factsDB.getAll();
   const factMap = new Map(allFacts.map(f => [f.id, f]));
 

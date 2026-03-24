@@ -1,0 +1,417 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`, `music_performance`, `literature`, `performing_arts`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (10 entities = 30 facts). Output as a single JSON array.
+
+### MADAGASCAR
+**Domain:** geography / africa
+
+**Wikipedia:** Madagascar, officially the Republic of Madagascar, is an island country in the Indian Ocean that includes the island of Madagascar and numerous smaller peripheral islands. Lying off the southeastern coast of Africa, it is the world's fourth-largest island, the second-largest island country, and the 46th-largest country overall. Its capital and largest city is Antananarivo.
+Following the prehistoric breakup of the supercontinent Gondwana, Madagascar split from Africa during the Early Jurassic period, around 180 million years ago, and from the Indian subcontinent approximately 90 million years ago. This isolation allowed native plants and animals to evolve in relative seclusion. As a result, Madagascar is a biodiversity hotspot and one of the world's 17 megadiverse countries, with over 90% of its wildlife being endemic. The island has a subtropical to tropical maritime climate.
+Madagascar was first permanently settled during or before the mid-first millennium CE (roughly 500 to 700) by Austronesian peoples, presumably arriving on outrigger canoes from present-day Indonesia. These were joined around the ninth century by Bantu groups crossing the Mozambique Channel from East Africa. Other groups continued to settle on Madagascar over time, each one making lasting contributions to Malagasy cultural life. Consequently, there are 18 or more classified peoples of Madagascar, the most numerous being the Merina of the central highlands.
+Until the late 18th century, the island of Madagascar was ruled by a fragmented assortment of shifting sociopolitical alliances. Beginning in the early 19th century, most of it was united and ruled as the Kingdom of Madagascar by a series of Merina nobles. The monarchy was ended in 1897 by France's annexation of Madagascar, from which the country gained independence in 1960. It has since undergone four major constitutional periods, termed republics, and has been governed as a constitutional democracy since 1992. Following a political crisis and military coup in 2009, Madagascar underwent a protracted transition towards its fourth and current republic, with constitutional governance being restored in January 2014. In 2025, a series of mass protests resulted in a military coup and the installation of Michael Randrianirina as president of an interim government.
+Madagascar is a member of the United Nations (UN), the African Union (AU), the Southern African Development Community (SADC), and the Organisation Internationale de la Francophonie. Malagasy and French are both official languages of the state. Christianity is the country's predominant religion, with a significant minority still practicing traditional faiths.
+Madagascar is classified as a least-developed country by the UN. Ecotourism and agriculture, paired with greater investments in education, health and private enterprise, are key elements of its development strategy. Despite substantial economic growth since the early 2000s, income disparities have widened, and quali
+
+### PANAMA CANAL
+**Domain:** geography / landforms_water
+
+**Wikipedia:** The Panama Canal (Spanish: Canal de Panamá) is an artificial 82-kilometer (51-mile) waterway in Panama that connects the Caribbean Sea with the Pacific Ocean. It cuts across the narrowest point of the Isthmus of Panama, and is a conduit for maritime trade between the Atlantic Ocean and the Pacific Ocean. Locks at each end lift ships up to Gatun Lake, an artificial fresh water lake 26 meters (85 ft) above sea level, created by damming the Chagres River and Lake Alajuela to reduce the amount of excavation work required for the canal. Locks then lower the ships at the other end. The original locks are 33.5 meters (110 ft) wide and allow the passage of Panamax ships. A third, wider lane of locks was constructed between September 2007 and May 2016. The expanded waterway began commercial operation on 26 June 2016. The new locks allow for the transit of larger, Neopanamax ships. An average of 200,000,000 litres (52 million US gallons) of fresh water is used in a single passing of a ship. The canal is threatened by low water levels during droughts.
+The Panama Canal shortcut greatly reduces the time for ships to travel between the Atlantic and Pacific oceans, enabling them to avoid the lengthy, hazardous route around the southernmost tip of South America via the Drake Passage, the Strait of Magellan or the Beagle Channel. Its construction was one of the largest and most difficult engineering projects ever undertaken. Since its inauguration on 15 August 1914, the canal has succeeded in shortening maritime communication in time and distance, invigorating maritime and economic transportation by providing a short and relatively inexpensive transit route between the two oceans, decisively influencing global trade patterns, boosting economic growth in developed and developing countries, as well as providing the basic impetus for economic expansion in many remote regions of the world.
+Colombia, France, and later the United States controlled the territory surrounding the canal during construction. France began work on the canal in 1881, but stopped in 1889 because of a lack of investors' confidence due to engineering problems and a high worker mortality rate. The US took over the project in 1904 and opened the canal in 1914. The US continued to control the canal and the surrounding Panama Canal Zone until the Torrijos–Carter Treaties provided for its handover to Panama in 1977. After a period of joint American–Panamanian control, the Panamanian government took control in 1999. It is now managed and operated by the Panamanian government-owned Panama Canal Authority. Annual traffic has risen from about 1,000 ships in 1914, when the canal opened, to 14,702 vessels in 2008, for a total of 333.7 million Panama Canal/Universal Measurement System (PC/UMS) tons. By 2012, more than 815,000 vessels had passed through the canal. In that year, the top five users of the canal were the United States, China, Chile, Japan, and South Korea. In 2017, it took ships an average of 11
+
+### NORWAY
+**Domain:** geography / europe
+
+**Wikipedia:** Norway, officially the Kingdom of Norway, is a Nordic country comprising the western and northernmost parts of the Scandinavian Peninsula in Northern Europe, the remote Arctic island Jan Mayen and the archipelago Svalbard. Bouvet Island, located in the Subantarctic, is a dependency, and not a part of the Kingdom; Norway also claims the Antarctic territories of Peter I Island and Queen Maud Land. Norway has a population of approximately 5.6 million, and a total area of 385,207 square kilometres (148,729 sq mi). Its capital and largest city is Oslo. The country shares a long eastern border with Sweden, and is bordered by Finland and Russia to the northeast. Norway has an extensive coastline facing the Skagerrak strait, the North Sea, the Norwegian Sea, and the Barents Sea. 
+The unified kingdom of Norway was established in 872 as a merger of petty kingdoms and has existed continuously for 1,153–1,154 years. From 1537 to 1814, Norway was part of Denmark–Norway, and, from 1814 to 1905, it was in a personal union with Sweden. Norway was neutral during the First World War, and in the Second World War until April 1940 when it was invaded and occupied by Nazi Germany until the end of the war.
+Harald V of the House of Glücksburg is the current King of Norway. Jonas Gahr Støre has been Prime Minister of Norway since 2021. As a unitary state with a constitutional monarchy, Norway divides state power between the parliament, the cabinet, and the judiciary, as determined by the 1814 constitution. Norway has both administrative and political subdivisions on two levels: counties and municipalities. The Sámi people have a certain amount of self-determination and influence over traditional territories through the Sámi Parliament and the Finnmark Act. Norway maintains close ties with the European Union and the United States. Norway is a founding member of the United Nations, NATO, the European Free Trade Association, the Council of Europe, the Antarctic Treaty, and the Nordic Council; a member of the European Economic Area, the WTO, and the OECD; and a part of the Schengen Area. The Norwegian dialects form a continuum of mutual intelligibility with Danish and Swedish dialects.
+Norway maintains the Nordic model with universal health care and a comprehensive social security system, with its values rooted in egalitarian ideals. The Norwegian state has large ownership positions in key industrial sectors, having extensive reserves of petroleum, natural gas, minerals, lumber, seafood, and fresh water. The petroleum industry accounts for around a quarter of the country's gross domestic product (GDP). On a per-capita basis, Norway is the world's largest producer of oil and natural gas outside of the Middle East. The country has the fourth- and eighth-highest PPP-adjusted per-capita GDP in the world on the World Bank's and IMF's list, respectively. It has the world's largest sovereign wealth fund, with a value of US$2.1 trillion.
+
+
+
+### BERMUDA TRIANGLE
+**Domain:** geography / landforms_water
+
+**Wikipedia:** The Bermuda Triangle, also known as the Devil's Triangle, is a loosely defined region in the North Atlantic Ocean, roughly bounded by Florida, Bermuda, and Puerto Rico. Since the mid-20th century, it has been the focus of an urban legend suggesting that many aircraft, ships, and people have disappeared there under mysterious circumstances. However, extensive investigations by reputable sources, including the U.S. government and scientific organizations, have found no evidence of unusual activity, attributing reported incidents to natural phenomena, human error, and misinterpretation.
+
+
+
+### GREENLAND
+**Domain:** geography / extreme_records
+
+**Wikipedia:** Greenland is an autonomous territory of the Kingdom of Denmark and is the largest of the kingdom's three constituent parts by land area, the others being Denmark proper and the Faroe Islands. Citizens of Greenland are citizens of Denmark. They are thus citizens of the European Union (EU), although Greenland is not part of the EU. It is the world's largest island and lies between the Arctic and Atlantic oceans, east of the Canadian Arctic Archipelago. It shares a small 1.2-kilometre (0.75 mi) border with Canada on Hans Island. The capital and largest city is Nuuk. Kaffeklubben Island off the northern coast is the world's northernmost undisputed point of land – Cape Morris Jesup on the main island was thought to be so until the 1960s. Economically, Greenland is heavily reliant on aid from Denmark, which has averaged 5.4 billion kr. (€724 million) annually in the period 2019–2023, amounting to more than 20% of the territory's gross domestic product.
+Though a part of the continent of North America, Greenland was politically and culturally associated with the European kingdom of Norway from 986 until the early 15th century. From the 18th century, following the union of Denmark and Norway and the establishment of the Nuuk settlement, Greenland gradually became associated with Denmark. Greenland has been inhabited at intervals over at least the last 4,500 years by circumpolar peoples whose forebears migrated there from what is now Canada. Norsemen from Norway settled the uninhabited southern part of Greenland beginning in the 10th century (having previously settled Iceland), and their descendants lived in Greenland for 400 years until disappearing in the late 15th century. From the late 15th century, the Portuguese attempted to find the northern route to Asia, which ultimately led to the earliest cartographic depiction of the coastline. In the 17th century, Dano-Norwegian explorers reached Greenland again, finding their earlier settlement extinct and reestablishing a permanent Scandinavian presence.
+When Denmark and Norway separated in 1814, Greenland was transferred from the Norwegian to the Danish crown. The 1953 Constitution of Denmark ended Greenland's status as a colony, integrating it fully into the Danish state. In the 1979 Greenlandic home rule referendum, Denmark granted home rule to Greenland. In the 2008 Greenlandic self-government referendum, Greenlanders voted for the Self-Government Act which transferred more power from the Danish government to the local Naalakkersuisut (Greenlandic government). Under this structure, Greenland gradually assumed responsibility for governmental services and areas of competence. The Danish government retains control of citizenship, monetary policy, security policies, and foreign affairs. With the melting of the ice due to global warming, its abundance of mineral wealth, and its strategic position between Eurasia, North America, and the Arctic zone, Greenland holds strategic importance for the Kingdom of Denma
+
+### POMPEII
+**Domain:** history / ancient_classical
+
+**Wikipedia:** Pompeii ( ; Latin: [pɔmˈpei̯.iː]) was a city in what is now the municipality of Pompei, near Naples, in the Campania region of Italy. Along with Herculaneum, Stabiae, and many surrounding villas, the city was buried under 4 to 6 m (13 to 20 ft) of volcanic ash and pumice in the eruption of Mount Vesuvius in 79 AD.
+Largely preserved under the ash, Pompeii offers a unique snapshot of Roman life, frozen at the moment it was buried, as well as insight into ancient urban planning. It was a wealthy town of 10,000 to 20,000 residents at the time it was destroyed. It hosted many fine public buildings and luxurious private houses with lavish decorations, furnishings and artworks, which were the main attractions for early excavators; subsequent excavations have found hundreds of private homes and businesses reflecting various architectural styles and social classes, as well as numerous public buildings. Organic remains, including wooden objects and human bodies, were interred in the ash; their eventual decay allowed archaeologists to create moulds of figures in their final moments of life. The numerous graffiti carved on outside walls and inside rooms provide a wealth of examples of the largely lost Vulgar Latin spoken colloquially at the time, contrasting with the formal language of classical writers.
+Following its destruction, Pompeii remained largely undisturbed until its rediscovery in the late 16th century. Major excavations did not begin until the mid-18th century, which marked the emergence of modern archaeology; initial efforts to unearth the city were haphazard or marred by looting, resulting in many items or sites being damaged or destroyed. By 1960, most of Pompeii had been uncovered but left in decay; further major excavations were banned or limited to targeted, prioritised areas. Since 2018, these efforts have led to new discoveries in some previously unexplored areas of the city.
+Pompeii is a UNESCO World Heritage Site, owing to its status as "the only archaeological site in the world that provides a complete picture of an ancient Roman city." It is among the most popular tourist attractions in Italy, with approximately 2.5 million visitors annually.
+
+### TITANIC
+**Domain:** history / modern_contemporary
+
+**Wikipedia:** RMS Titanic was a British ocean liner that sank in the early hours of 15 April 1912 as a result of striking an iceberg on her maiden voyage from Southampton, England, to New York City, United States. Of the estimated 2,224 passengers and crew aboard, approximately 1,500 died (estimates vary), making the incident one of the deadliest peacetime sinkings of a single ship. Titanic, operated by White Star Line, carried some of the wealthiest people in the world, as well as hundreds of emigrants from the British Isles, Scandinavia, and elsewhere in Europe who were seeking a new life in the United States and Canada. The disaster drew public attention, spurred major changes in maritime safety regulations, and inspired a lasting legacy in popular culture. It was the second time White Star Line had lost a ship on her maiden voyage, the first being RMS Tayleur in 1854.
+Titanic was the largest ship afloat upon entering service and the second of three Olympic-class ocean liners built for White Star Line. The ship was built by the Harland and Wolff shipbuilding company in Belfast. Thomas Andrews Jr., the chief naval architect of the shipyard, died in the disaster. Titanic was under the command of Captain Edward John Smith, who went down with the ship. White Star Line's chairman, J. Bruce Ismay, survived in a lifeboat.
+The first-class accommodations were designed to be the pinnacle of comfort and luxury. They included a gymnasium, swimming pool, smoking rooms, fine restaurants and cafes, a Victorian-style Turkish bath, and hundreds of opulent cabins. A high-powered radiotelegraph transmitter was available for passenger use. Titanic had advanced safety features, such as watertight compartments and remotely activated watertight doors, which contributed to the ship's reputation as "unsinkable".
+Titanic was equipped with sixteen lifeboat davits, each capable of lowering three lifeboats, for a total capacity of 48 boats. Despite this capacity, the ship was equipped with twenty lifeboats. Fourteen of these were regular lifeboats, two were cutter lifeboats, and four were collapsible boats that proved difficult to prepare for launch while the ship was sinking. Together, these lifeboats could have held 1,178 people – roughly half the number of passengers on board, and a third of the number that the ship could have carried at full capacity (a number consistent with the maritime safety regulations of the era). The British Board of Trade's regulations required fourteen lifeboats for a ship of 10,000 tonnes. Titanic carried six more than that, room for 338 more people than the standard. When the ship sank, the lifeboats that had been lowered were carrying an average of 60% of their rated capacity.
+
+### MONGOL EMPIRE
+**Domain:** history / medieval
+
+**Wikipedia:** The Mongol Empire was the largest contiguous empire in history. Originating in present-day Mongolia in East Asia, the medieval empire at its height stretched from the Sea of Japan to Eastern Europe, extending northward into Siberia and east and southward into the Indian subcontinent, mounting invasions of Southeast Asia, and conquering the Iranian plateau; and reaching westward as far as the Levant and the Carpathian Mountains.
+The empire emerged from the unification of several nomadic tribes in the Mongol heartland under the leadership of Temüjin, known by the title of Genghis Khan (c. 1162–1227), whom a council proclaimed as the ruler of all Mongols in 1206. The empire grew rapidly under his rule and that of his descendants, who sent out invading armies in every direction. The vast transcontinental empire connected the East with the West, and the Pacific to the Mediterranean, in an enforced Pax Mongolica, allowing the exchange of trade, technologies, commodities, and ideologies across Eurasia.
+The empire began to split due to wars over succession, as the grandchildren of Genghis Khan disputed whether the royal line should follow from his son and initial heir Ögedei, or from one of his other sons, such as Tolui, Chagatai, or Jochi. The Toluids prevailed after a bloody purge of the Ögedeid and Chagatayid factions, but disputes continued among the descendants of Tolui. The conflict over whether the empire would adopt a sedentary, cosmopolitan lifestyle, or continue its nomadic, steppe-based way of life was a major factor in the breakup.
+After Möngke Khan died in 1259, rival kurultai councils simultaneously elected different successors, the brothers Ariq Böke and Kublai Khan, who fought each other in the Toluid Civil War (1260–1264) and dealt with challenges from the descendants of other sons of Genghis. Kublai successfully took power, but war ensued as he sought unsuccessfully to regain control of the Chagatayid and Ögedeid families. By Kublai's death in 1294, the empire had fractured into four separate khanates or empires, each pursuing its own objectives: the Golden Horde khanate in the northwest, the Chagatai Khanate in Central Asia, the Ilkhanate in Iran, and the Yuan dynasty in China, based in modern-day Beijing. In 1304, during the reign of Temür, the three western khanates accepted the suzerainty of the Yuan dynasty.
+The Ilkhanate was the first to fall, which disintegrated between 1335 and 1353. Next, the Yuan dynasty lost control of the Tibetan Plateau and China proper in 1354 and 1368, respectively, and collapsed after its capital Dadu was taken over by Ming forces. The Genghisid rulers of the Yuan then retreated north and continued to rule the Mongolian Plateau. The regime is thereafter known as the Northern Yuan dynasty, surviving as a rump state until the conquest by the Qing dynasty in the 1630s. The Golden Horde had broken into competing khanates by the end of the 15th century, and its rule on Eastern Europe is traditionally consider
+
+### SPANISH INQUISITION
+**Domain:** history / early_modern
+
+**Wikipedia:** The Tribunal of the Holy Office of the Inquisition (Spanish: Tribunal del Santo Oficio de la Inquisición) was authorized by Pope Sixtus IV in 1478 and the first inquisitors, Miguel de Morillo and Juan de San Martín, were appointed by the future Catholic Monarchs, King Ferdinand II of Aragon and Queen Isabella I of Castile, in 1480. Although its stated aim was to maintain Christian orthodoxy, it became an effective instrument of state power by replacing the Medieval Inquisition, which was under Papal control.
+According to some modern estimates, around 150,000 people were prosecuted for various offences during the period. 3,000–5,000 were executed, particularly in the initial 50 years, mostly by burning at the stake. Other punishments included penance and public flogging, exile, enslavement on galleys, and prison terms from years to life, together with the confiscation of all property.
+The Inquisition was originally intended primarily to identify heretics among those who converted from Judaism and Islam to Catholicism. The regulation of the faith of newly converted Catholics intensified following royal decrees issued in 1492 and 1502 ordering Jews and Muslims to either convert to Catholicism, leave Castile or face death. Hundreds of thousands of forced conversions, torture and executions, the persecution of conversos and moriscos, and the mass expulsions of Jews and Muslims from Spain all followed. An estimated 40,000–100,000 Jews were expelled in 1492. Conversos were subjected to blood purity statutes (limpieza de sangre), which introduced racially-based discrimination and antisemitism, lasting into the 19th and 20th centuries.
+The inquisition expanded to other domains under the Spanish Crown, including Southern Italy and the Americas, while also targeting those accused of alumbradismo, Protestantism, witchcraft, blasphemy, bigamy, sodomy, Freemasonry, etc. A notable feature was the auto-da-fe, where the accused were paraded, sentences read, and confessions made, after which the guilty were turned over to civil authorities for the execution of sentences.
+
+
+
+### MOON LANDING
+**Domain:** history / modern_contemporary
+
+**Wikipedia:** Apollo 11 (July 16–24 1969) was the American spaceflight that first landed humans on the Moon, and the fifth crewed mission of NASA's Apollo program. The mission was crewed by Commander Neil Armstrong, Command Module Pilot Michael Collins, and Lunar Module Pilot Edwin "Buzz" Aldrin, all of whom were on their second and final spaceflight.
+Launched atop a Saturn V rocket from Kennedy Space Center in Florida on July 16 at 13:32 UTC, the Apollo spacecraft consisted of three parts: the command module (CM), which housed the three astronauts and was the only part to return to Earth; the service module (SM), which provided propulsion, electrical power, oxygen, and water to the command module; and the Lunar Module (LM), which had two stages—a descent stage with a large engine and fuel tanks for landing on the Moon, and a lighter ascent stage containing a cabin for two astronauts and a small engine to return them to lunar orbit. After a three-day transit, Armstrong and Aldrin descended to the surface aboard the LM Eagle, landing in the Sea of Tranquility on July 20 at 20:17 UTC while Collins remained in lunar orbit aboard the CM Columbia. Armstrong became the first human to walk on the Moon approximately six hours after landing, followed by Aldrin nineteen minutes later. Together they spent around two and a half hours walking on the surface, planting an American flag, speaking by telephone with President Richard Nixon, deploying scientific instruments, and collecting 21.5 kg (47.5 lb) of lunar material. After more than 21 hours on the surface, they rejoined Collins in lunar orbit, and the crew returned safely to Earth on July 24, splashing down in the Pacific Ocean.
+Apollo 11 was the culmination of the Space Race, a geopolitical competition between the United States and the Soviet Union rooted in Cold War rivalry. It fulfilled a national goal set by President John F. Kennedy in May 1961, who had challenged the United States to land a man on the Moon and return him safely before the end of the decade. The programme overcame a severe setback with the fatal Apollo 1 launchpad fire in January 1967 and drew on technologies developed through the preceding Mercury and Gemini programmes. The Soviet Union, despite early leads in spaceflight, was unable to match the Saturn V rocket, and its uncrewed lunar probe Luna 15 crashed on the Moon on July 21, while Neil Armstrong and Buzz Aldrin were still on the lunar surface.
+Armstrong's moonwalk was broadcast live to an estimated 600 million viewers, roughly one-fifth of the world's population, making it among the most-watched television events in history. Stepping onto the lunar surface, Armstrong declared: "That's one small step for [a] man, one giant leap for mankind." lunar samples returned by the mission led to the identification of three previously unrecognized minerals, and scientific instruments deployed on the surface continued returning data for years afterwards. The crew were honoured with ticker-tape parades, 
+

@@ -44,6 +44,8 @@ import {
 } from './relicEffectResolver';
 import { resolveDistributionForDomain, createDefaultCalibrationState } from './difficultyCalibration';
 import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
+import { getCuratedDeck } from '../data/curatedDeckStore'
+import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import {
@@ -311,9 +313,60 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
           funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
           includeOutsideDueReviews: run.includeOutsideDueReviews ?? false,
         });
-      } else {
+      } else if (run.deckMode.type === 'language') {
         // Language mode — strict language-only pool.
         activeRunPool = buildLanguageRunPool(run.deckMode.languageCode, reviewStates, {
+          categoryFilters,
+          funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+        });
+      } else if (run.deckMode.type === 'study') {
+        const studyDeckId = run.deckMode.deckId;
+
+        if (studyDeckId.startsWith('all:')) {
+          // "All language" mode — combine all curated decks for this language.
+          // Map full language names to ISO codes used by buildLanguageRunPool.
+          const LANG_PREFIX_TO_CODE: Record<string, string> = {
+            japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',
+            spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
+            czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
+            arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
+          };
+          const langName = studyDeckId.substring(4).toLowerCase(); // e.g. 'japanese'
+          const langCode = LANG_PREFIX_TO_CODE[langName] ?? langName;
+          activeRunPool = buildLanguageRunPool(langCode, reviewStates, {
+            categoryFilters,
+            funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+          });
+        } else {
+          // Single curated deck — build general pool but stamp the deck's domain onto cards.
+          activeRunPool = buildGeneralRunPool(reviewStates, {
+            categoryFilters,
+            funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+          });
+          const curatedDeck = getCuratedDeck(studyDeckId);
+          if (curatedDeck) {
+            const deckDomain = curatedDeck.domain as FactDomain;
+            for (const card of activeRunPool) {
+              card.domain = deckDomain;
+            }
+          }
+        }
+      } else if (run.deckMode.type === 'trivia') {
+        // Trivia mode — filter by selected domains + subdomains.
+        const dm = run.deckMode;
+        // Build domainSelections: { domainId: subcategories[] } — empty array = all subcategories.
+        const domainSelections: Record<string, string[]> = {};
+        for (const domain of dm.domains) {
+          domainSelections[domain] = dm.subdomains?.[domain] ?? [];
+        }
+        activeRunPool = buildPresetRunPool(domainSelections, reviewStates, {
+          categoryFilters,
+          funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+          includeOutsideDueReviews: run.includeOutsideDueReviews ?? false,
+        });
+      } else {
+        // Other modes — fall back to general pool until dedicated builders exist.
+        activeRunPool = buildGeneralRunPool(reviewStates, {
           categoryFilters,
           funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
         });

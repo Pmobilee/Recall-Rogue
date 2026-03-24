@@ -1,0 +1,485 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`, `music_performance`, `literature`, `performing_arts`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (20 entities = 60 facts). Output as a single JSON array.
+
+### PANGOLIN
+**Domain:** animals_wildlife / mammals
+
+**Wikipedia:** Pangolins, also called scaly anteaters, are mammals of the order Pholidota (). The one extant family, the Manidae, has three genera: Manis, Phataginus, and Smutsia. Manis comprises five species found in Asia, while Phataginus and Smutsia include two species each, all found in sub-Saharan Africa. These species range in size from 30 to 100 cm (12 to 39 in). Several extinct pangolin species are also known. In September 2023, a ninth species was reported, although it is only known from confiscated scales and has never been observed in the wild.
+Pangolins have large, protective keratin scales, covering their skin. Depending on the species, they live in hollow trees or burrows. Pangolins are nocturnal, and their diet consists of mainly ants and termites, which they capture using their long tongues. They tend to be solitary animals, meeting only to mate and produce a litter of one to three offspring, which they raise for about two years. 
+Pangolins are threatened by poaching (for their meat and scales, which are used in traditional medicine) and heavy deforestation of their natural habitats, and are also the most trafficked mammals in the world. As of January 2020, there are eight species of pangolin whose conservation status is listed in the threatened tier. Three (Manis culionensis, M. pentadactyla and M. javanica) are critically endangered, three (Phataginus tricuspis, Manis crassicaudata and Smutsia gigantea) are endangered and two (Phataginus tetradactyla and Smutsia temminckii) are vulnerable on the Red List of Threatened Species of the International Union for Conservation of Nature.
+
+### NARWHAL
+**Domain:** animals_wildlife / marine_life
+
+**Wikipedia:** The narwhal (Monodon monoceros) is a species of toothed whale native to the Arctic. It is the only member of the genus Monodon and one of two living representatives of the family Monodontidae. The narwhal is a stocky cetacean with a relatively blunt snout, a large melon, and a shallow ridge in place of a dorsal fin. Males of this species have a spiralled tusk that is 1.5–3.0 m (4.9–9.8 ft) long, which is a protruding left canine thought to function as a weapon, a tool for feeding, in attracting mates or sensing water salinity. Specially adapted slow-twitch muscles, along with the jointed neck vertebrae and shallow dorsal ridge allow for easy movement through the Arctic environment, where the narwhal spends extended periods at great depths. The narwhal's geographic range overlaps with that of the similarly built and closely related beluga whale, and the animals are known to interbreed.
+Narwhals inhabit the Arctic waters of Canada, Greenland and Russia. Every year, they migrate to ice-free summering grounds, usually in shallow waters, and often return to the same sites in subsequent years. Their diet mainly consists of polar and Arctic cod, Greenland halibut, cuttlefish, shrimp, and armhook squid. Diving to depths of up to 2,370 m (7,780 ft), the narwhal is among the deepest-diving cetaceans. The animals typically travel in groups of three to eight, with aggregations of up to 1,000 occurring in the summer months. Narwhals mate among the offshore pack ice from March to May, and the young are born between July and August of the following year. When communicating amongst themselves, narwhals use a variety of clicks, whistles and knocks.
+There are an estimated 170,000 living narwhals, and the species is listed as being of least concern by the International Union for Conservation of Nature (IUCN). The population is threatened by the effects of climate change, such as reduction in ice cover and human activities such as pollution and hunting. Narwhals have been hunted for thousands of years by Inuit in northern Canada and Greenland for meat and ivory, and regulated subsistence hunting continues to this day.
+
+### PETRA
+**Domain:** art_architecture / historic_buildings
+
+**Wikipedia:** Petra (Arabic: ٱلْبَتْراء‎, romanized: Al-Batrāʾ; Ancient Greek: Πέτρα, lit. 'Rock'), originally known to its inhabitants as Raqmu (Nabataean Aramaic: 𐢛𐢚𐢒‎ or 𐢛𐢚𐢓𐢈‎, *Raqēmō), is an ancient city and archaeological site in southern Jordan. Famous for its rock-cut architecture and water conduit systems, Petra is also called the "Rose City" because of the colour of the sandstone from which it is carved. The city is one of the New 7 Wonders of the World and a UNESCO World Heritage Site.
+The area around Petra has been inhabited from as early as 7000 BC, and was settled by the Nabataeans, a nomadic Arab people, in the 4th century BC. Petra would later become the capital city of the Nabataean Kingdom in the second century BC. The Nabataeans invested in Petra's proximity to the incense trade routes by establishing it as a major regional trading hub, which gained them considerable revenue. Unlike their enemies, the Nabataeans were accustomed to living in the barren deserts and thus were able to defend their kingdom. They were particularly skillful in agriculture, stone carving, and rainwater harvesting.
+Petra flourished in the 1st century AD, when its Al-Khazneh structure, possibly the mausoleum of Nabataean king Aretas IV, was constructed, and its population peaked at an estimated 20,000 inhabitants. Nabataea fell to the Romans in 106 AD, who annexed and renamed it Arabia Petraea. Petra's importance declined as sea trade routes emerged, and after an earthquake in 363 destroyed many structures. In the Byzantine era, several Christian churches were built, but the city continued to decline and, by the early Islamic era, it was abandoned except for a handful of nomads. It remained unknown to the western world until 1812, when Swiss traveller Johann Ludwig Burckhardt rediscovered it.
+UNESCO has described Petra as "one of the most precious cultural properties of man's cultural heritage". Petra is a symbol of Jordan, as well as Jordan's most-visited tourist attraction. Visitor numbers reach close to a million tourists every year.
+
+### ANDY WARHOL
+**Domain:** art_architecture / modern_contemporary
+
+**Wikipedia:** Andy Warhol ( ; born Andrew Warhola Jr.; August 6, 1928 – February 22, 1987) was an American artist and filmmaker. Widely regarded as the most important artist of the second half of the 20th century, Warhol's work spanned various media, including painting, filmmaking, photography, publishing, and performance art. A leading figure in the pop art movement, his work explores the relationship between advertising, consumerism, mass media, and celebrity culture, transforming everyday consumer goods and familiar icons into renowned artworks. His embrace of mechanical reproduction challenged traditional boundaries between high and low culture. He is also credited with popularizing the expression "15 minutes of fame."
+Born to working-class Rusyn immigrant parents in Pittsburgh, Warhol began his career as a  commercial artist in New York before transitioning to fine art. Among his best-known early silkscreen paintings are Campbell's Soup Can (1962), Marilyn Diptych (1962), and Coca-Cola (3) (1962). In the mid-1960s, Warhol began devoting his attention to creating experimental films such as Blow Job (1964) and Empire (1965). He subsequently directed a number of underground films—including Chelsea Girls (1966), Four Stars (1967), and Blue Movie (1969)—featuring a shifting group of personalities known as Warhol superstars. His studio, the Factory, became a hub for avant-garde experimentation, bringing together drag queens, poets, bohemians, musicians, and wealthy patrons. Warhol also managed the influential rock band the Velvet Underground, who performed at his Exploding Plastic Inevitable (1966–67) multimedia events.
+After Warhol survived an assassination attempt in 1968, the Factory evolved into a business enterprise. He founded Interview magazine, produced the play Pork (1971), and published various books such as The Philosophy of Andy Warhol (1975) and Popism (1980). He executed several series of paintings—notably Mao (1972–73), Athletes (1977), and Last Supper (1985–86)—and commissioned portraiture, while expanding into television with Andy Warhol's TV (1980–83) and Andy Warhol's Fifteen Minutes (1985–87). He meticulously documented his social life through photography and daily recordings, published posthumously as The Andy Warhol Diaries (1989). Warhol died of cardiac arrhythmia at the age of 58 following gallbladder surgery in 1987.
+Warhol has been described as the "bellwether of the art market", with several of his works ranking among the most expensive paintings ever sold. In 2013, Silver Car Crash (Double Disaster) (1963) sold for $105 million. In 2022, Shot Sage Blue Marilyn (1964) sold for $195 million, the highest price ever paid at auction for a work by an American artist. Warhol has been the subject of numerous retrospective exhibitions, books, and documentary films. The Andy Warhol Museum in Pittsburgh, which holds an extensive permanent collection of his art and archives, is the largest in the United States dedicated to a single artist.
+
+### DURIAN
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** The durian ( ) is the edible fruit of several tree species belonging to the genus Durio. There are 30 recognised species, at least nine of which produce edible fruit. Durio zibethinus, native to Borneo, Sumatra, and the Malay Peninsula, is the only species available on the international market. It has over 300 named varieties in Thailand and over 200 in Malaysia as of 2021. Other species are sold in their local regions.
+Known in some regions as the "king of fruits", the durian is distinctive for its large size, strong odour, and thorn-covered rind. The fruit can grow as large as 30 cm (12 in) long and 15 cm (6 in) in diameter, and it typically weighs 1 to 3 kg (2 to 7 lb). Its shape ranges from oblong to round, the colour of its husk from green to brown, and its flesh from pale yellow to red, depending on the species. The flavour of the flesh is complex with savoury notes; the texture, creamy and pudding-like.
+Some people regard the durian as having a pleasantly sweet fragrance, whereas many others find the aroma overpowering and unpleasant. The persistence of its strong odour, which may linger for several days, has led some hotels and public transportation services in Southeast Asia, such as in Singapore and Bangkok, to ban the fruit. The flesh can be consumed at various stages of ripeness, and it is used to flavour a wide variety of sweet desserts and savoury dishes in Southeast Asian cuisines. The seeds can be eaten when cooked.
+
+### PASTA
+**Domain:** food_cuisine / european_cuisine
+
+**Wikipedia:** Pasta (UK: , US: ; Italian: [ˈpasta]) is a type of food typically made from an unleavened dough of wheat flour mixed with water or eggs, and formed into sheets or other shapes, then cooked by boiling or baking. Pasta was originally only made with durum, although the definition has been expanded to include alternatives for a gluten-free diet, such as rice flour, or legumes such as beans or lentils. Pasta is believed to have developed independently in Italy and is a staple food of Italian cuisine, with evidence of Etruscans making pasta as early as 400 BCE in Italy.
+Pastas are divided into two broad categories: dried (Italian: pasta secca) and fresh (Italian: pasta fresca). Most dried pasta is produced commercially via an extrusion process, although it can be produced at home. Fresh pasta is traditionally produced by hand, sometimes with the aid of simple machines. Fresh pastas available in grocery stores are produced commercially by large-scale machines.
+Both dried and fresh pastas come in a number of shapes and varieties, with 310 specific forms known by over 1,300 documented names. In Italy, the names of specific pasta shapes or types often vary by locale. For example, the pasta form cavatelli is known by 28 different names depending upon the town and region. Common forms of pasta include long and short shapes, tubes, flat shapes or sheets, miniature shapes for soup, those meant to be filled or stuffed, and specialty or decorative shapes.
+As a category in Italian cuisine, both fresh and dried pastas are classically used in one of three kinds of prepared dishes: as pasta asciutta (or pastasciutta), cooked pasta is plated and served with a complementary sauce or condiment; a second classification of pasta dishes is pasta in brodo, in which the pasta is part of a soup-type dish. A third category is pasta al forno, in which the pasta is incorporated into a dish that is subsequently baked in the oven. Pasta dishes are generally simple, but individual dishes vary in preparation. Some pasta dishes are served as a small first course or for light lunches, such as pasta salads. Other dishes may be portioned larger and used for dinner. Pasta sauces similarly may vary in taste, color and texture.
+In terms of nutrition, cooked plain pasta is 31% carbohydrates (mostly starch), 6% protein and is low in fat, with moderate amounts of manganese, but pasta generally has low micronutrient content. Pasta may be enriched or fortified, or made from whole grains.
+
+### VELCRO
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** Hook-and-loop fasteners, commonly known as Velcro (a trademarked term that the manufacturer renders in all-capital letters as VELCRO), hook-and-pile fasteners or touch fasteners are versatile fastening devices that allow two surfaces to be repeatedly attached and detached with ease. Invented in the mid-20th century, they are widely used in clothing, accessories, and various industrial and consumer applications. The fastener consists of two complementary components: one with tiny hooks and the other with soft loops. When pressed together, the hooks catch the loops, creating a secure but temporary bond. The fasteners can be separated by peeling or pulling the surfaces apart, often producing a distinctive ripping sound.
+
+### FIBONACCI SEQUENCE
+**Domain:** general_knowledge / everyday_science
+
+**Wikipedia:** In mathematics, the Fibonacci sequence is a sequence in which each element is the sum of the two elements that precede it.  Numbers that are part of the Fibonacci sequence are known as Fibonacci numbers, commonly denoted Fn . The initial elements of the sequence are F1 = 1 and F2 = 1, though many authors also include a zeroth element F0 = 0.  Starting from F0, the sequence begins
+
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ... (sequence A000045 in the OEIS)
+
+The Fibonacci numbers were first described in Indian mathematics as early as 200 BC in work by Pingala on enumerating possible patterns of Sanskrit poetry formed from syllables of two lengths. They are named after the Italian mathematician Leonardo of Pisa, also known as Fibonacci, who introduced the sequence to Western European mathematics in his 1202 book Liber Abaci.
+Fibonacci numbers appear unexpectedly often in mathematics, so much so that there is an entire journal dedicated to their study, the Fibonacci Quarterly. Applications of Fibonacci numbers include computer algorithms such as the Fibonacci search technique and the Fibonacci heap data structure, and graphs called Fibonacci cubes used for interconnecting parallel and distributed systems. They also appear in biological settings, such as branching in trees, the arrangement of leaves on a stem, the fruit sprouts of a pineapple, the flowering of an artichoke, and the arrangement of a pine cone's bracts, though they do not occur in all species.
+Fibonacci numbers are also strongly related to the golden ratio: Binet's formula expresses the n-th Fibonacci number in terms of n and the golden ratio, and implies that the ratio of two consecutive Fibonacci numbers tends to the golden ratio as n increases. Fibonacci numbers are also closely related to Lucas numbers, which obey the same recurrence relation and with the Fibonacci numbers form a complementary pair of Lucas sequences.
+
+
+
+### TONGA
+**Domain:** geography / asia_oceania
+
+**Wikipedia:** Tonga, officially the Kingdom of Tonga, is an island country in Polynesia, part of Oceania. The country has 171 islands, of which 45 are inhabited. Its total surface area is about 750 km2 (290 sq mi), scattered over 700,000 km2 (270,000 sq mi) in the southern Pacific Ocean. As of 2021, according to Johnson's Tribune, Tonga has a population of 104,494, 70% of whom reside on the main island, Tongatapu. The country stretches approximately 800 km (500 mi; 430 nmi) north-south. It is surrounded by Fiji and Wallis and Futuna (France) to the northwest, Samoa to the northeast, New Caledonia (France) and Vanuatu to the west, Niue (the nearest foreign territory) to the east and Kermadec (New Zealand) to the southwest. Tonga is about 1,800 km (1,100 mi; 970 nmi) from New Zealand's North Island.
+Tonga was first inhabited roughly 2,500 years ago by people who were a part of the Lapita culture, Polynesian settlers who gradually evolved a distinct and strong ethnic identity, language, and culture as the Tongan people. They quickly established a powerful footing across the South Pacific, and this period of Tongan expansionism and colonization is known as the Tuʻi Tonga Empire. From the rule of the first Tongan king, ʻAhoʻeitu, Tonga grew into a regional power. It was a thalassocracy that conquered and controlled unprecedented swathes of the Pacific, from parts of the Solomon Islands and the whole of New Caledonia and Fiji in the west to Samoa and Niue and even as far as parts of modern-day French Polynesia in the east. Tuʻi Tonga became renowned for its economic, ethnic, and cultural influence over the Pacific, which remained strong even after the Samoan revolution of the 13th century and Europeans' discovery of the islands in 1616.
+From 1900 to 1970, Tonga had British protected-state status. The United Kingdom looked after Tonga's foreign affairs under a Treaty of Friendship, but Tonga never relinquished its sovereignty to any foreign power. In 2010, Tonga took a decisive step away from its traditional absolute monarchy and became a semi-constitutional monarchy, after legislative reforms paved the way for its first partial representative elections.
+Tonga is a member of the Commonwealth of Nations, the United Nations, the Pacific Islands Forum, and the Alliance of Small Island States.
+
+### LAKE BAIKAL
+**Domain:** geography / landforms_water
+
+**Wikipedia:** Lake Baikal is a rift lake and the deepest lake in the world. It is situated in southern Siberia, Russia, between the federal subjects of Irkutsk Oblast to the northwest and the Republic of Buryatia to the southeast.
+At 31,722 km2 (12,248 sq mi)—slightly larger than Belgium—Lake Baikal is the world's seventh-largest lake by surface area, as well as the second largest lake in Eurasia after the Caspian Sea. However, because it is also the deepest lake, with a maximum depth of 1,642 metres (5,387 feet), Lake Baikal is the world's largest freshwater lake by volume, containing 23,615.39 km3 (5,670 cu mi) of water or 22–23% of the world's fresh surface water, more than all of the North American Great Lakes combined. It is also the world's oldest lake at 25–30 million years, and among the clearest. It is estimated that the lake contains around 19% of the unfrozen fresh water on the planet.
+Lake Baikal is home to thousands of species of plants and animals, many of them endemic to the region. It is also home to Buryat tribes, who raise goats, camels, cattle, sheep, and horses, on the eastern side of the lake within Buryatia, where the mean temperature varies from a winter minimum of −19 °C (−2 °F) to a summer maximum of 14 °C (57 °F). The region to the east of Lake Baikal is referred to as Transbaikalia or as the Transbaikal, and the loosely defined region around the lake itself is sometimes known as Baikalia. UNESCO declared Baikal a World Heritage Site in 1996.
+
+### TERRACOTTA ARMY
+**Domain:** history / ancient_classical
+
+**Wikipedia:** The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first emperor of China. It is a form of funerary art buried with the emperor in 210–209 BCE with the purpose of protecting him in his afterlife.
+The figures, dating from approximately the late 200s BCE, were discovered in 1974 by local farmers in Lintong County, outside Xi'an, Shaanxi, China. The figures vary in height according to their rank, the tallest being the generals. The figures include warriors, chariots and horses. Estimates from 2007 were that the three pits containing the Terracotta Army hold more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses, the majority of which remain in situ in the pits near Qin Shi Huang's mausoleum. Other, non-military terracotta figures have since been found in other pits, including those of officials, acrobats, strongmen, and musicians.
+
+### BERLIN WALL
+**Domain:** history / modern_contemporary
+
+**Wikipedia:** The Berlin Wall (German: Berliner Mauer, pronounced [bɛʁˌliːnɐ ˈmaʊɐ] ) was a guarded concrete barrier that encircled West Berlin from 1961 to 1989, separating it from East Berlin and the German Democratic Republic (GDR; East Germany). Construction of the Berlin Wall was commenced by the government of the GDR on 13 August 1961. It included guard towers placed along large concrete walls, accompanied by a wide area (later known as the "death strip") that contained anti-vehicle trenches, beds of nails and other defenses. The primary intention for the Wall's construction was to prevent East German citizens from fleeing to the West.
+The Soviet Bloc propaganda portrayed the Wall as protecting its population from "fascist elements conspiring to prevent the will of the people" from building a communist state in the GDR. The authorities officially referred to the Berlin Wall as the Anti-Fascist Protection Rampart (Antifaschistischer Schutzwall, pronounced [antifaˌʃɪstɪʃɐ ˈʃʊtsval] ). Conversely, West Berlin's city government sometimes referred to it as the "Wall of Shame", a term coined by Mayor Willy Brandt in reference to the Wall's restriction on freedom of movement. Along with the separate and much longer inner German border, which demarcated the border between East and West Germany, it came to symbolize physically the Iron Curtain that separated the Western Bloc and Soviet satellite states of the Eastern Bloc during the Cold War.
+Before the Wall's erection, 3.5 million East Germans (20% of the population) circumvented Eastern Bloc emigration restrictions and defected from the GDR, many by crossing over the border from East Berlin into West Berlin; from there they could then travel to West Germany and to other Western European countries. After 1961, the deadly force associated with the Wall prevented almost all such emigration. During this period, over 100,000 people attempted to escape, and over 5,000 people succeeded in escaping over the Wall, with an estimated death toll of those killed by East German authorities ranging from 136 to more than 200 in and around Berlin.
+In 1989, a series of revolutions in nearby Eastern Bloc countries (Poland and Hungary in particular) and the events of the "Pan-European Picnic" set in motion a peaceful development during which the Iron Curtain largely broke; rulers in the East came under public pressure to cease their repressive policies. After several weeks of civil unrest, the East German government announced on 9 November 1989 that all GDR citizens could visit the FRG and West Berlin. Crowds of East Germans crossed and climbed onto the Wall, joined by West Germans on the other side, and souvenir hunters chipped away parts of the Wall over the next few weeks. The Brandenburg Gate section, a few meters from the Berlin Wall, reopened on 22 December 1989, with full demolition of the Wall beginning on 13 June 1990 and concluding in 1994. The fall of the Berlin Wall paved the way for German reunification, which formall
+
+### TEARS
+**Domain:** human_body_health / senses_perception
+
+**Wikipedia:** Tears (tear film) are a transparent fluid secreted primarily by the lacrimal glands (tear gland) found in the eyes of all land mammals. According to the mode of production, tears are classified into four types: basal, closed eye, emotional, and reflex. The basal rate of tear secretion is ~0.5–2.2 μL/min, and irritation can increase secretion by up to ~100-fold, reaching ~300 μL/min. Tears are made up of water, electrolytes, proteins, lipids, and mucins that form layers on the surface of eyes. The four types of tears differ significantly in their composition. 
+
+ Some of the functions of tears include lubricating the eyes (basal tears), removing irritants (reflex tears), and also aiding the immune system. Tears also occur as a part of the body's natural pain response. Emotional secretion of tears may serve a biological function by excreting stress-inducing hormones built up through times of emotional distress. Tears have symbolic significance among humans.
+
+### HICCUP
+**Domain:** human_body_health / anatomy_organs
+
+**Wikipedia:** A hiccup (scientific name singultus, from Latin for "sob, hiccup"; also spelled hiccough) is an involuntary contraction (myoclonic jerk) of the diaphragm that may repeat several times per minute. The hiccup is an involuntary action involving a reflex arc. Once triggered, the reflex causes a contraction of the diaphragm followed by the closure of the glottis, the space between the vocal cords, in about 35 milliseconds, which results in the "hic" sound.
+Hiccups may occur individually or in bouts. The rhythm of the hiccup, or the time between hiccups, tends to be relatively constant. A bout of hiccups generally resolves itself without intervention, although many home remedies are often used to attempt to shorten the duration. Medical treatment is occasionally necessary in cases of chronic hiccups.
+
+### BABA YAGA
+**Domain:** mythology_folklore / folk_legends
+
+**Wikipedia:** Baba Yaga is a female character (or one of a trio of sisters of the same name) from Slavic folklore who has two contrasting roles. In some narratives, she is described as a repulsive or ferocious-looking old woman who fries and eats children, while in others she is depicted as a nice old woman who helps the hero. Both versions often depict her as a witch. She is often associated with forest wildlife. Her distinctive traits are flying around in a wooden mortar, wielding a pestle, and dwelling deep in the forest in a hut with chicken legs.
+
+### PEGASUS
+**Domain:** mythology_folklore / greek_roman
+
+**Wikipedia:** Pegasus (Ancient Greek: Πήγασος, romanized: Pḗgasos; Latin: Pegasus, Pegasos) is a winged horse in Greek mythology, usually depicted as a white stallion. He was sired by Poseidon, in his role as horse-god, and foaled by the Gorgon Medusa. Pegasus was the brother of Chrysaor, both born from Medusa's blood when their mother was decapitated by Perseus. Greco-Roman poets wrote about his ascent to heaven after his birth and his obeisance to Zeus, who instructed him to bring lightning and thunder from Olympus.
+Pegasus is the creator of Hippocrene, the fountain on Mount Helicon. He was captured by the Greek hero Bellerophon, near the fountain Peirene, with the help of Athena and Poseidon. Pegasus allowed Bellerophon to ride him in order to defeat the monster Chimera, which led to many more exploits. Bellerophon later fell from Pegasus's back while trying to reach Mount Olympus. Both Pegasus and Bellerophon were said to have died at the hands of Zeus for trying to reach Olympus. Other tales have Zeus bring Pegasus to Olympus to carry his thunderbolts.
+Long honored as a constellation, Pegasus is a subject of very rich iconography, especially through ancient Greek pottery as well as paintings and sculptures of the Renaissance.
+
+### MERCURY ELEMENT
+**Domain:** natural_sciences / chemistry_elements
+
+**Wikipedia:** Mercury is a chemical element; it has symbol Hg and atomic number 80. It is commonly known as quicksilver. A heavy, silvery d-block element, mercury is the only metallic element that is known to be liquid at standard temperature and pressure; the only other element that is liquid under these conditions is bromine, one of the halogens, though metals such as caesium, gallium, and rubidium melt just above room temperature.
+Mercury occurs in deposits throughout the world mostly as cinnabar (mercuric sulfide). The red pigment vermilion is obtained by grinding natural cinnabar or synthetic mercuric sulfide. Exposure to mercury and mercury-containing organic compounds is toxic to the nervous system, immune system and kidneys of humans and other animals; mercury poisoning can result from exposure to water-soluble forms of mercury (such as mercuric chloride or methylmercury) either directly or through mechanisms of biomagnification.
+Mercury is used in thermometers, barometers, manometers, sphygmomanometers, float valves, mercury switches, mercury relays, fluorescent lamps and other devices, but concerns about the element's toxicity have led to a reduction in the amount of mercury used in these instruments, or manufacturers not using it altogether. It remains in use in scientific research applications and in amalgam for dental restoration in some locales. It is also still used in fluorescent lighting, although the quantity of mercury used is now smaller. Electricity passed through mercury vapor in a fluorescent lamp produces short-wave ultraviolet light, which then causes the phosphor in the tube to fluoresce, making visible light.
+
+### BIOLUMINESCENCE
+**Domain:** natural_sciences / biology_organisms
+
+**Wikipedia:** Bioluminescence is the production of light by an organism as the result of a chemiluminescence reaction. It occurs in a wide variety of organisms, including marine vertebrates and invertebrates, terrestrial arthropods such as fireflies, some fungi, and microorganisms such as some bacteria and dinoflagellates. In some animals, the light is bacteriogenic, produced by symbiotic bacteria such as those from the genus Vibrio; in others, it is autogenic, produced by the animals themselves. Bioluminescence has evolved independently at least 94 times, first emerging in octocorals some 540 million years ago.
+In most cases, the principal chemical reaction in bioluminescence involves the reaction of a substrate called luciferin and an enzyme, called luciferase. Because these are generic names, luciferins and luciferases are often distinguished by the species or group, e.g. firefly luciferin or cypridina luciferin. In all characterized cases, the enzyme catalyzes the oxidation of the luciferin resulting in excited state oxyluciferin, which is the light emitter of the reaction. Upon their decay to the ground state they emit visible light.
+In some species, the luciferase requires other cofactors, such as calcium or magnesium ions, and sometimes also the energy-carrying molecule adenosine triphosphate (ATP). In evolution, luciferins vary little: one in particular, coelenterazine, is found in 11 different animal phyla, though in some of these, the animals obtain it through their diet. Conversely, luciferases vary widely between different species. Bioluminescence has arisen over 40 times in evolutionary history.
+Both Aristotle and Pliny the Elder mentioned that damp wood sometimes gives off a glow. Many centuries later Robert Boyle showed that oxygen was involved in the process, in wood, fish, and glowworms. It was not until the late nineteenth century that bioluminescence was properly investigated. The phenomenon is widely distributed among animal groups, especially in marine environments. On land it occurs in fungi, bacteria and some groups of invertebrates, including insects.
+The uses of bioluminescence by animals include counterillumination camouflage, mimicry of other animals, for example to lure prey, and signaling to other individuals of the same species, such as to attract mates. In the laboratory, luciferase-based systems are used in genetic engineering and biomedical research.
+
+### IO
+**Domain:** space_astronomy / planets_moons
+
+**Wikipedia:** Io () is the innermost and second-smallest of the four Galilean moons of Jupiter. Slightly larger than Earth's Moon, Io is the fourth-largest natural satellite in the Solar System, has the highest density and strongest surface gravity of any natural satellite, and the lowest amount of water by atomic ratio of any known astronomical object in the Solar System.
+With over 400 active volcanoes, Io is the most geologically active object in the Solar System. This extreme geologic activity results from tidal heating from friction generated within Io's interior as it is pulled between Jupiter and two other Galilean moons—Europa and Ganymede. Several volcanoes produce plumes of sulfur and sulfur dioxide as high as 500 km (300 mi) above the surface. Io's surface is also dotted with more than 100 mountains uplifted by extensive compression at the base of Io's silicate crust. Some of these peaks are taller than Mount Everest, the highest point on Earth's surface. Unlike most moons in the outer Solar System, which are mostly composed of water ice, Io is primarily composed of silicate rock surrounding a molten iron or iron sulfide core. Most of Io's surface is composed of extensive plains with a frosty coating of sulfur and sulfur dioxide.
+Io's volcanism is responsible for many of its unique features. Its volcanic plumes and lava flows produce large surface changes and paint the surface in various subtle shades of yellow, red, white, black, and green, largely due to allotropes and compounds of sulfur. Numerous extensive lava flows, several more than 500 km (300 mi) in length, also mark the surface. The materials produced by this volcanism make up Io's thin, patchy atmosphere, and they also greatly affect the nature and radiation levels of Jupiter's extensive magnetosphere. Io's volcanic ejecta also produces a large, intense plasma torus around Jupiter, creating a hostile radiation environment on and around the moon.
+It was discovered along with the other Galilean moons in 1610 by Galileo Galilei and named after the mythological character Io, a priestess of Hera who became one of Zeus's lovers. The discovery of the Galilean moons played a significant role in the development of astronomy, furthering the adoption of the Copernican model of the Solar System and the development of Kepler's laws of planetary motion. Io in particular was used for the first measurement of the speed of light. In 1979, the two Voyager spacecraft revealed Io to be a geologically active world, with numerous volcanic features, large mountains, and a young surface with no obvious impact craters. The Galileo spacecraft performed several close flybys in the 1990s and early 2000s, obtaining data about Io's interior structure and surface composition. These spacecraft also revealed the relationship between Io and Jupiter's magnetosphere and the existence of a belt of high-energy radiation centered on Io's orbit. Further observations have been made by Cassini–Huygens in 2000, New Horizons in 2007
+
+### MAGNETAR
+**Domain:** space_astronomy / stars_galaxies
+
+**Wikipedia:** A magnetar is a type of neutron star with an extremely powerful magnetic field (~109 to 1011 T, ~1013 to 1015 G). The magnetic-field decay (or dissipation) powers the emission of high-energy electromagnetic radiation, particularly X-rays and gamma rays.
+The existence of magnetars was proposed in 1992 by Robert Duncan and Christopher Thompson,  
+who sought to explain the properties of transient sources of gamma rays, now known as soft gamma repeaters (SGRs). Over the following decade, the magnetar hypothesis became widely accepted, and was extended to explain anomalous X-ray pulsars (AXPs). As of July 2021, 24 magnetars have been confirmed.
+It has been suggested that magnetars are the source of fast radio bursts (FRB), in particular as a result of findings in 2020 by scientists using the Australian Square Kilometre Array Pathfinder (ASKAP) radio telescope.
+
+
+

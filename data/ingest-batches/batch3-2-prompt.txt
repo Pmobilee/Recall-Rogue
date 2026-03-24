@@ -1,0 +1,492 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (20 entities = 60 facts). Output as a single JSON array.
+
+### AMAZON RAINFOREST
+**Domain:** geography / landforms_water
+
+**Wikipedia:** The Amazon rainforest, also called the Amazon jungle or Amazonia, is a moist broadleaf tropical rainforest in the Amazon biome that covers most of the Amazon basin of South America. This basin encompasses 7 million km2 (2.7 million sq mi), of which 6 million km2 (2.3 million sq mi) are covered by the rainforest. This region includes territory belonging to nine nations and 3,344 indigenous territories.
+The majority of the forest, 60%, is in Brazil, followed by Peru with 13%, Colombia with 10%, and with minor amounts in Bolivia, Ecuador, French Guiana, Guyana, Suriname, and Venezuela. Four nations have "Amazonas" as the name of one of their first-level administrative regions, and France uses the name "Guiana Amazonian Park" for French Guiana's protected rainforest area. The Amazon represents over half of the total area of remaining rainforests on Earth, and comprises the largest and most biodiverse tract of tropical rainforest in the world, with an estimated 390 billion individual trees in about 16,000 species.
+More than 30 million people of 350 different ethnic groups live in the Amazon, which are subdivided into 9 different national political systems and 3,344 formally acknowledged indigenous territories. Indigenous peoples make up 9% of the total population, and 60 groups remain largely isolated.
+Large scale deforestation is occurring in the forest, creating different harmful effects. Economic losses due to deforestation in Brazil could be approximately 7 times higher in comparison to the cost of all commodities produced through deforestation. In 2023, the World Bank published a report proposing a non-deforestation based economic program in the region. Deforestation hurts agriculture so severely that it can lead to "agro-suicide."
+
+### SAHARA
+**Domain:** geography / africa
+
+**Wikipedia:** The Sahara (, ) is a desert spanning North Africa. With an area of 9,200,000 square kilometres (3,600,000 sq mi), it is the largest hot desert in the world and the third-largest desert overall, smaller only than the deserts of Antarctica and the northern Arctic.
+The name "Sahara" is derived from Arabic: صَحَارَى, romanized: ṣaḥārā /sˤaħaːraː/, a broken plural form of ṣaḥrā' (صَحْرَاء /sˤaħraːʔ/), meaning "desert".
+The desert covers much of North Africa, excluding the fertile region on the Mediterranean Sea coast, the Atlas Mountains of the Maghreb, and the Nile Valley in Egypt and the Sudan.
+It stretches from the Red Sea in the east and the Mediterranean in the north to the Atlantic Ocean in the west, where the landscape gradually changes from desert to coastal plains. To the south it is bounded by the Sahel, a belt of semi-arid tropical savanna around the Niger River valley and the Sudan region of sub-Saharan Africa. The Sahara can be divided into several regions, including the western Sahara, the central Ahaggar Mountains, the Tibesti Mountains, the Aïr Mountains, the Ténéré desert, and the Libyan Desert.
+For several hundred thousand years, the Sahara has alternated between desert and savanna grassland in a 20,000-year cycle caused by the precession of Earth's axis (about 26,000 years) as it rotates around the Sun, which changes the location of the North African monsoon.
+
+### GREAT BARRIER REEF
+**Domain:** geography / landforms_water
+
+**Wikipedia:** The Great Barrier Reef is the world's largest coral reef system, composed of over 2,900 individual reefs and 900 islands stretching for over 2,300 kilometres (1,400 mi) over an area of approximately 344,400 square kilometres (133,000 mi2). The reef is located in the Coral Sea, off the coast of Queensland, Australia, separated from the coast by a channel 160 kilometres (100 mi) wide in places and over 61 metres (200 ft) deep. The Great Barrier Reef can be seen from outer space and is the world's biggest single structure made by living organisms. This reef structure is composed of and built by billions of tiny organisms, known as coral polyps. It supports a wide diversity of life and was selected as a World Heritage Site in 1981. CNN labelled it one of the Seven Natural Wonders of the World in 1997. Australian World Heritage places included it in its list in 2007. The Queensland National Trust named it a state icon of Queensland in 2006.
+A large part of the reef is protected by the Great Barrier Reef Marine Park, which helps to limit the impact of human use, such as fishing and tourism. Other environmental pressures on the reef and its ecosystem include runoff of humanmade pollutants, climate change accompanied by mass coral bleaching, dumping of dredging sludge and cyclic population outbreaks of the crown-of-thorns starfish. According to a study published in October 2012 by the Proceedings of the National Academy of Sciences, the reef has lost more than half its coral cover since 1985, a finding reaffirmed by a 2020 study which found over half of the reef's coral cover to have been lost between 1995 and 2017, with the effects of a widespread 2020 bleaching event not yet quantified.
+The Great Barrier Reef has long been known to and used by the Aboriginal Australian and Torres Strait Islander peoples, and is an important part of local groups' cultures and spirituality. The reef is a very popular destination for tourists, especially in the Whitsunday Islands and Cairns regions. Tourism is an important economic activity for the region, generating over AUD$3 billion per year. In November 2014, Google launched Google Underwater Street View in 3D of the Great Barrier Reef.
+A March 2016 report stated that coral bleaching was more widespread than previously thought, seriously affecting the northern parts of the reef as a result of warming ocean temperatures. In October 2016, Outside published an obituary for the reef; the article was criticised for being premature and hindering efforts to bolster the resilience of the reef. In March 2017, the journal Nature published a paper showing that huge sections of an 800-kilometre (500 mi) stretch in the northern part of the reef had died in the course of 2016 of high water temperatures, an event that the authors put down to the effects of global climate change. The percentage of baby corals being born on the Great Barrier Reef dropped drastically in 2018 and scientists are describing it as the early stage of a "hug
+
+### ANTARCTICA
+**Domain:** geography / extreme_records
+
+**Wikipedia:** Antarctica ( ) is Earth's southernmost and least-populated continent. Situated almost entirely south of the Antarctic Circle and surrounded by the Southern Ocean (also known as the Antarctic Ocean), it contains the geographic South Pole. Antarctica is the fifth-largest continent, being about 40% larger than Europe, and has an area of 14,200,000 km2 (5,500,000 sq mi). Most of Antarctica is covered by the Antarctic ice sheet, with an average thickness of 1.9 km (1.2 mi).
+Antarctica is, on average, the coldest, driest, and windiest of the continents, and has the highest average elevation. It is mainly a polar desert, with annual precipitation of over 200 mm (8 in) along the coast and far less inland. About 70% of the world's freshwater reserves are frozen in Antarctica, which, if melted, would raise global sea levels by almost 60 metres (200 ft). Antarctica holds the record for the lowest measured temperature on Earth, −89.2 °C (−128.6 °F). The coastal regions can reach temperatures over 10 °C (50 °F) in the summer. Native species of animals include mites, nematodes, penguins, seals and tardigrades. Where vegetation occurs, it is mostly in the form of lichen or moss.
+The ice shelves of Antarctica were probably first seen in 1820, during a Russian expedition led by Fabian Gottlieb von Bellingshausen and Mikhail Lazarev. The decades that followed saw further exploration by French, American, and British expeditions. The first confirmed landing was by a Norwegian team in 1895. In the early 20th century, there were a few expeditions into the interior of the continent. British explorers Douglas Mawson, Edgeworth David, and Alistair Mackay were the first to reach the magnetic South Pole in 1909, and the geographic South Pole was first reached in 1911 by Norwegian explorer Roald Amundsen.
+Antarctica is governed by about 30 countries, all of which are parties of the 1959 Antarctic Treaty System. According to the terms of the treaty, military activity, mining, nuclear explosions, and nuclear waste disposal are all prohibited in Antarctica. Tourism, fishing and research are the main human activities in and around Antarctica. During the summer months, about 5,000 people reside at research stations, a figure that drops to around 1,000 in the winter. Despite the continent's remoteness, human activity has a significant effect on it via pollution, ozone depletion, and climate change. The melting of the potentially unstable West Antarctic ice sheet causes the most uncertainty in century-scale projections of sea level rise, and the same melting also affects the Southern Ocean overturning circulation, which can eventually lead to significant impacts on the Southern Hemisphere climate and Southern Ocean productivity.
+
+### DEAD SEA
+**Domain:** geography / landforms_water
+
+**Wikipedia:** The Dead Sea (Arabic: اَلْبَحْر الْمَيِّت, romanized: al-Baḥr al-Mayyit; or اَلْبَحْر الْمَيْت, al-Baḥr al-Mayt; Hebrew: יַם הַמֶּלַח, romanized: Yam hamMelaḥ), also known by other names, is a landlocked salt lake bordered by Jordan to the east, the West Bank to the west and Israel to the southwest. It lies in the endorheic basin of the Jordan Rift Valley, and its main tributary is the Jordan River.
+As of 2025, the lake's surface is 439.78 metres (1,443 ft) below sea level, making its shores the lowest land-based elevation on Earth. It is 304 m (997 ft) deep, the deepest hypersaline lake in the world. With a salinity of 342 g/kg, or 34.2% (in 2011), it is one of the world's saltiest bodies of water, 9.6 times as salty as the ocean—and has a density of 1.24 kg/litre, which makes swimming similar to floating. This salinity makes for a harsh environment in which plants and animals cannot flourish, hence its name. The Dead Sea's main, northern basin is 50 kilometres (31 mi) long and 15 kilometres (9 mi) wide at its widest point.
+The Dead Sea has attracted visitors from around the Mediterranean basin for thousands of years. It was one of the world's first health resorts, and it has been the supplier of a wide variety of products, from asphalt for Egyptian mummification to potash for fertilisers. Today, tourists visit the sea on its Israeli, Jordanian and West Bank coastlines.
+The Dead Sea is receding at a swift rate; its surface area today is 605 km2 (234 sq mi), having been 1,050 km2 (410 sq mi) in 1930. Multiple canal and pipeline proposals, such as the scrapped Red Sea–Dead Sea Water Conveyance project, have been made to reduce its recession.
+
+### MOUNT EVEREST
+**Domain:** geography / extreme_records
+
+**Wikipedia:** Mount Everest (known locally as Sagarmāthā in Nepal and Qomolangma in Tibet) is Earth's highest mountain above sea level. It lies in the Mahalangur Himal sub-range of the Himalayas and marks part of the China–Nepal border at its summit. Its height was most recently measured in 2020 by Chinese and Nepali authorities as 8,848.86 m (29,031 ft 8+1⁄2 in).
+Mount Everest attracts many climbers, including highly experienced mountaineers. There are two main climbing routes, one approaching the summit from the southeast in Nepal (known as the standard route) and the other from the north in Tibet. While not posing substantial technical climbing challenges on the standard route, Everest presents dangers such as altitude sickness, weather, and wind, as well as hazards from avalanches and the Khumbu Icefall. As of May 2024, 340 people have died on Everest. Over 200 bodies remain on the mountain and have not been removed due to the dangerous conditions.
+Climbers typically ascend only part of Mount Everest's elevation, as the mountain's full elevation is measured from the geoid, which approximates sea level. The closest sea to Mount Everest's summit is the Bay of Bengal, almost 700 km (430 mi) away. To approximate a climb of the entire height of Mount Everest, one would need to start from this coastline, a feat accomplished by Tim Macartney-Snape's team in 1990. Climbers usually begin their ascent from base camps above 5,000 m (16,404 ft). The amount of elevation climbed from below these camps varies. On the Tibetan side, most climbers drive directly to the North Base Camp. On the Nepalese side, climbers generally fly into Kathmandu, then Lukla, and trek to the South Base Camp, making the climb from Lukla to the summit about 6,000 m (20,000 ft) in elevation gain.
+The first recorded efforts to reach Everest's summit were made by British mountaineers. As Nepal did not allow foreigners to enter the country at the time, the British made several attempts on the North Ridge route from the Tibetan side. After the first reconnaissance expedition by the British in 1921 reached 7,000 m (22,966 ft) on the North Col, the 1922 expedition on its first summit attempt marked the first time a human had climbed above 8,000 m (26,247 ft) and it also pushed the North Ridge route up to 8,321 m (27,300 ft). On the 1924 expedition, George Mallory and Andrew Irvine made a final summit attempt on 8 June but never returned, leading to debate as to whether they were the first to reach the top. Tenzing Norgay and Edmund Hillary made the first documented ascent of Everest in 1953, using the Southeast Ridge route. Norgay had reached 8,595 m (28,199 ft) the previous year as a member of the 1952 Swiss expedition. The Chinese mountaineering team of Wang Fuzhou, Gonpo, and Qu Yinhua made the first reported ascent of the peak from the North Ridge on 25 May 1960.
+
+### MARIANA TRENCH
+**Domain:** geography / landforms_water
+
+**Wikipedia:** The Mariana Trench is an oceanic trench located in the western Pacific Ocean, about 200 kilometres (124 mi) east of the Mariana Islands; it is the deepest oceanic trench on Earth. It is crescent-shaped and measures about 2,550 km (1,580 mi) in length and 69 km (43 mi) in width. The maximum known depth is 10,984 ± 25 metres (36,037 ± 82 ft; 6,006 ± 14 fathoms; 6.825 ± 0.016 mi) at the southern end of a small slot-shaped valley in its floor known as the Challenger Deep. The deepest point of the trench is more than 2 km (1.2 mi) farther from sea level than the peak of Mount Everest.
+At the bottom of the trench at around 11,000 metres below the sea surface, the water column above exerts a pressure of 1,086 bar (15,750 psi), approximately 1,071.8 times the standard atmospheric pressure at sea level or eight tons per square inch. The temperature at the bottom is 1 to 4 °C (34 to 39 °F).
+In 2009, the Mariana Trench was established as a US National Monument, Mariana Trench Marine National Monument.
+Single-celled organisms called monothalamea have been found in the trench at a record depth of 10.6 km (35,000 ft; 6.6 mi) below the sea surface by researchers from the Scripps Institution of Oceanography. Data has also suggested that microbial life forms thrive within the trench.
+
+
+
+### JAPAN
+**Domain:** geography / asia_oceania
+
+**Wikipedia:** Japan is an island country in East Asia. Located in the Pacific Ocean off the northeast coast of the Asian mainland, it is bordered to the west by the Sea of Japan and extends from the Sea of Okhotsk in the north to the East China Sea in the south. The Japanese archipelago consists of four major islands alongside 14,121 smaller islands. Japan is divided into 47 administrative prefectures and eight traditional regions, and around 75% of its terrain is mountainous and heavily forested, concentrating its agriculture and highly urbanized population along its eastern coastal plains. With a population of almost 123 million as of 2026, it is the world's 11th most populous country. Tokyo is the country's capital and largest city.
+The first known habitation of the archipelago dates to the Upper Paleolithic, with the beginning of the Japanese Paleolithic dating to c. 36,000 BC. Between the 4th and 6th centuries, its kingdoms were united under an emperor in Nara and later in Heian-kyō. From the 12th century, actual power was held by military aristocrats known as shōgun and feudal lords called daimyō, enforced by warrior nobility named samurai. After rule by the Kamakura and Ashikaga shogunates and a century of warring states, Japan was unified in 1600 by the Tokugawa shogunate, which implemented an isolationist foreign policy. In 1853, an American fleet forced Japan to open trade to the West, which led to the end of the shogunate and the restoration of imperial power in 1868. 
+The Meiji period saw Japan pursue rapid industrialization, modernization, militarism, and overseas colonization. The country annexed Korea in 1910, invaded China in 1937, and attacked the U.S. and European colonial powers in 1941, thus entering World War II as an Axis power. After being defeated in the Pacific War and suffering the U.S. atomic bombings of Hiroshima and Nagasaki, Japan surrendered in 1945 and came under Allied occupation. It underwent rapid economic growth in the following decades and became one of the first major non-NATO allies of the U.S. Since the collapse of the Japanese asset price bubble in the early 1990s, it has experienced a prolonged period of economic stagnation referred to as the Lost Decades.
+Japan is a constitutional monarchy with a bicameral legislature known as the National Diet. Widely considered a great power and the only Asian member of the G7, it maintains one of the world's strongest militaries but has constitutionally renounced its right to declare war. A developed country with one of the world's largest economies by nominal GDP, it is a global leader in the automotive, electronics, and robotics industries, in addition to making significant contributions to science and technology. It has one of the world's highest life expectancies, but is undergoing a population decline. The culture of Japan is well known around the world, particularly its popular culture as expressed in animation, art, comics, cuisine, fashion, films, music, television, theatre
+
+### NEW ZEALAND
+**Domain:** geography / asia_oceania
+
+**Wikipedia:** New Zealand is an island country in the southwestern Pacific Ocean. It consists of two main landmasses—the North Island (Te Ika-a-Māui) and the South Island (Te Waipounamu)—and over 600 smaller islands. It is the sixth-largest island country by area and lies east of Australia across the Tasman Sea and south of the islands of New Caledonia, Fiji, and Tonga. The country's varied topography and sharp mountain peaks, including the Southern Alps (Kā Tiritiri o te Moana), owe much to tectonic uplift and volcanic eruptions. New Zealand's capital city is Wellington, and its most populous city is Auckland.
+The islands of New Zealand were the last large habitable land to be settled by humans. Between about 1280 and 1350, Polynesians began to settle in the islands and subsequently developed a distinctive Māori culture. In 1642, the Dutch explorer Abel Tasman became the first European to sight and record New Zealand. In 1769 the British explorer Captain James Cook became the first European to set foot on and map New Zealand. In 1840, representatives of the United Kingdom and Māori chiefs signed the Treaty of Waitangi, which paved the way for Britain's declaration of sovereignty later that year and the establishment of the Crown Colony of New Zealand in 1841. Subsequently, a series of conflicts between the colonial government and Māori tribes resulted in the alienation and confiscation of large amounts of Māori land. New Zealand became a dominion in 1907; it gained full statutory independence in 1947, retaining the monarch as head of state. Today, the majority of New Zealand's population of around 5.3 million is of European descent; the indigenous Māori are the largest minority, followed by Asians and Pasifika. Reflecting this, New Zealand's culture mainly derives from Māori and early British settlers but has recently broadened from increased immigration. The official languages are English, Māori, and New Zealand Sign Language, with the local dialect of English being dominant.
+A developed country, New Zealand was the first to introduce a minimum wage and to give women the right to vote. Recognised as a middle power, New Zealand ranks very highly in international measures of quality of life and human rights and has one of the lowest levels of perceived corruption in the world. It retains visible levels of inequality, including structural disparities between its Māori and European populations. During the 1980s, New Zealand underwent major economic changes that transformed it from a protectionist to a liberalised free-trade economy. The service sector dominates the country's economy, followed by the industrial sector, and agriculture; international tourism is also a significant source of revenue. New Zealand and Australia have a strong relationship and are considered to share a strong Trans-Tasman identity, stemming from centuries of British colonisation. The country is part of multiple international organisations and forums.
+Nationally, legislative authority is
+
+### SWITZERLAND
+**Domain:** geography / europe
+
+**Wikipedia:** Switzerland, officially the Swiss Confederation, is a landlocked country located at the intersection of Central, Western, and Southern Europe. It is bordered by Germany to the north, France to the west, Austria and Liechtenstein to the east, and Italy to the south. Switzerland is geographically divided among the Swiss Alps, the Swiss Plateau, and the Jura Mountains; the Alps cover most of the country's territory, whereas the majority of its 9 million people are concentrated on the plateau, which hosts many of the largest cities and economic centres, including Zurich, Geneva, Basel, Bern, Lausanne, Winterthur, and Lucerne.
+Switzerland is a federal republic composed of 26 cantons, with Bern serving as the federal city and the seat of the national government. The country encompasses four principal linguistic and cultural regions—German, French, Italian, and Romansh—reflecting a long-standing tradition of multilingualism and cultural pluralism. Swiss national identity nonetheless remains fairly cohesive, rooted in a shared historical background, common values such as federalism and direct democracy, and Alpine symbolism. Swiss nationhood transcends language, ethnicity, and religion, leading to Switzerland being described as a Willensnation ("nation of volition") rather than a conventional nation state.
+The country originates from the Old Swiss Confederacy established in the Late Middle Ages as a defensive and commercial alliance; the Federal Charter of 1291 is considered the country's founding document. The confederation steadily expanded and consolidated despite external threats and internal political and religious strife. Swiss independence from the Holy Roman Empire was formally recognized in the Peace of Westphalia in 1648. The confederation was among the first and few republics of the early modern period, and the only one besides San Marino to survive the Napoleonic Wars. Switzerland remained a network of self-governing states until 1798, when revolutionary France invaded and imposed the centralist Helvetic Republic. Napoleon abolished the republic in 1803 and reinstated a confederation. Following the Napoleonic Wars, Switzerland restored its pre-revolutionary system, but by 1830 faced growing division and conflict between liberal and conservative movements; this culminated in a new constitution in 1848 that established the current federal system and enshrined principles such as individual rights, separation of powers, and parliamentary bicameralism.
+Switzerland has maintained a policy of armed neutrality since the 16th century and has not fought an international war since 1815. It joined the Council of Europe in 1964 and the United Nations (UN) in 2002, pursuing an active foreign policy that includes frequent involvement in peace building and global governance. Switzerland is the birthplace of the Red Cross and hosts the headquarters or offices of most major international institutions, including the WTO, the WHO, the ILO, FIFA, the WEF, and the
+
+### ROMAN EMPIRE
+**Domain:** history / ancient_classical
+
+**Wikipedia:** The Roman Empire was a state that controlled the Mediterranean and much of Europe, Western Asia, and North Africa during the classical period. The Roman Republic had previously conquered most of these territories, which became ruled by emperors following triumvir Octavian's rise to power and establishment of a Principate regime in 27 BC.  By the 4th century AD the empire split into western and eastern halves. The Western Empire collapsed in 476 AD, while the Eastern Empire endured until the fall of Constantinople in 1453.
+By 100 BC, the city of Rome had expanded its rule from the Italian peninsula to most of the Mediterranean and beyond. However, it was severely destabilised by civil wars and political conflicts, which culminated in the victory of Octavian over Mark Antony and Cleopatra at the Battle of Actium in 31 BC, and the subsequent conquest of the Ptolemaic Kingdom in Egypt. In 27 BC, the Roman Senate granted Octavian overarching military power (imperium) and the new title of Augustus, marking his accession as the first Roman emperor. The vast Roman territories were organized into senatorial provinces, governed by proconsuls who were appointed by lot annually, and imperial provinces, which belonged to the emperor but were governed by legates.
+The first two centuries of the Empire saw a period of unprecedented stability and prosperity known as the Pax Romana (lit. 'Roman Peace'). Rome reached its greatest territorial extent under Trajan (r. 98–117 AD), but a period of increasing trouble and decline began under Commodus (r. 180–192). In the 3rd century, the Empire underwent a 49-year crisis that threatened its existence due to civil war, plagues and barbarian invasions. The Gallic and Palmyrene empires broke away from the state and a series of short-lived emperors led the Empire, which was later reunified under Aurelian (r. 270–275). The civil wars ended with the victory of Diocletian (r. 284–305), who set up two different imperial courts in the Greek East and Latin West. Constantine the Great (r. 306–337), the first Christian emperor, moved the imperial seat from Rome to Byzantium in 330, and renamed it Constantinople. The Migration Period, involving large invasions by Germanic peoples and by the Huns of Attila, led to the decline of the Western Roman Empire. With the fall of Ravenna to the Germanic Herulians and the deposition of Romulus Augustus in 476 by Odoacer, the Western Empire finally collapsed. The Byzantine (Eastern Roman) Empire survived for another millennium with Constantinople as its sole capital, until the city's fall in 1453.
+Due to the Empire's extent and endurance, its institutions and culture had a lasting influence on the development of language, religion, art, architecture, literature, philosophy, law, and forms of government across its territories. Latin evolved into the Romance languages while Medieval Greek became the language of the East. The Empire's adoption of Christianity resulted in the formation of medieval Ch
+
+### WORLD WAR I
+**Domain:** history / world_wars
+
+**Wikipedia:** World War I, or the First World War (28 July 1914 – 11 November 1918), also known as the Great War, was a global conflict between two coalitions: the Allies (or Entente) and the Central Powers. Major areas of conflict included Europe and the Middle East, as well as parts of Africa and the Asia-Pacific. The war saw important developments in weaponry including tanks, aircraft, artillery, machine guns, and chemical weapons. One of the deadliest conflicts in history, it resulted in an estimated 15 to 22 million military and civilian casualties and genocide. The movement of large numbers of people was a major factor in the deadly Spanish flu pandemic. 
+The causes of World War I included the rise of the German Empire and decline of the Ottoman Empire, which disturbed the long-standing balance of power in Europe, the exacerbation of imperial rivalries, and an arms race between the great powers. Growing tensions in the Balkans reached a breaking point on 28 June 1914 when Gavrilo Princip, a Bosnian Serb, assassinated Franz Ferdinand, the heir to the Austro-Hungarian throne. Austria-Hungary blamed Serbia, and declared war on 28 July. After Russia mobilised in Serbia's defence, Germany declared war on Russia and France, who had an alliance. The United Kingdom entered the war after Germany invaded Belgium, and the Ottoman Empire joined the Central Powers in November. Germany's strategy in 1914 was to quickly defeat France before transferring its forces to the east, but its advance was halted in September, and by the end of the year the Western Front consisted of a near-continuous line of trenches from the English Channel to Switzerland. The Eastern Front was more dynamic, but neither side gained a decisive advantage, despite costly offensives. Italy, Bulgaria, Romania, Greece, and others entered the war from 1915 onward.
+Major battles, including those at Verdun, the Somme, and Passchendaele, failed to break the stalemate on the Western Front. In April 1917, the United States joined the Allies after Germany resumed unrestricted submarine warfare against Atlantic shipping. Later that year, the Bolsheviks seized power in Russia in the October Revolution; Soviet Russia signed an armistice with the Central Powers in December, followed by a separate peace in March 1918. That month, Germany launched a spring offensive in the west, which despite initial successes left the German Army exhausted and demoralised. The Allied Hundred Days Offensive, beginning in August 1918, caused a collapse of the German front line. Following the Vardar Offensive, Bulgaria signed an armistice in late September. By early November, the Allies had signed armistices with the Ottomans and with Austria-Hungary, leaving Germany isolated. Facing a revolution at home, Kaiser Wilhelm II abdicated on 9 November, and the war ended with the Armistice of 11 November 1918.
+The Paris Peace Conference of 1919–1920 imposed settlements on the defeated powers. Under the Treaty of Versailles, Germany lost
+
+### AZTEC EMPIRE
+**Domain:** history / medieval
+
+**Wikipedia:** The Aztec Empire, also known as the Triple Alliance (Classical Nahuatl: Ēxcān Tlahtōlōyān, [ˈjéːʃkaːn̥ t͡ɬaʔtoːˈlóːjaːn̥]) or historiographically as the Tenochca Empire, was an alliance of three Nahua city-states: Mexico-Tenochtitlan, Tetzcoco, and Tlacopan. These three city-states ruled that area in and around the Valley of Mexico from 1428 until the combined forces of the Spanish conquistadores and their native allies who ruled under Hernán Cortés defeated them in 1521. Its people and civil society are historiographically referred to as the Aztecs or the Culhua-Mexica.
+The alliance was formed from the victorious factions of a civil war fought between the city of Azcapotzalco and its former tributary provinces. Despite the initial conception of the empire as an alliance of three self-governed city-states, the capital Tenochtitlan became dominant militarily. By the time the Spanish arrived in 1519, the lands of the alliance were effectively ruled from Tenochtitlan, while other partners of the alliance had taken subsidiary roles.
+The alliance waged wars of conquest and expanded after its formation. The alliance controlled most of central Mexico at its height, as well as some more distant territories within Mesoamerica, such as the Xoconochco province, an Aztec exclave near the present-day Guatemalan border. Aztec rule has been described by scholars as hegemonic or indirect. The Aztecs left rulers of conquered cities in power so long as they agreed to pay semi-annual tribute to the alliance, as well as supply military forces when needed for the Aztec war efforts. In return, the imperial authority offered protection and political stability and facilitated an integrated economic network of diverse lands and peoples who had significant local autonomy.
+Aztec religion was a monistic pantheism in which the Nahua concept of teotl was construed as the supreme god Ometeotl, as well as a diverse pantheon of lesser gods and manifestations of nature. The popular religion tended to embrace the mythological and polytheistic aspects, and the empire's state religion sponsored both the monism of the upper classes and the popular heterodoxies. The empire even officially recognized the largest cults such that the deity was represented in the central temple precinct of the capital Tenochtitlan. The imperial cult was specifically that of the distinctive warlike patron god of the Mexica Huītzilōpōchtli. Peoples were allowed to retain and freely continue their own religious traditions in conquered provinces so long as they added the imperial god Huītzilōpōchtli to their local pantheons.
+
+### RENAISSANCE
+**Domain:** history / social_cultural
+
+**Wikipedia:** The Renaissance (UK:  rin-AY-sənss, US:   REN-ə-sahnss) is a European period of history and cultural movement, very roughly defined as covering the 14th through 17th centuries, though sometimes more narrowly defined for instance as only covering the 15th through 16th centuries. It marked the transition from the Middle Ages to modernity and was characterized by the European rediscovery and revival of the literary, philosophical, and artistic achievements of classical antiquity. Associated with great social change in most fields and disciplines, including art, architecture, politics, literature, exploration and science, the Renaissance was first centered in the Republic of Florence, then spread to the rest of Italy and later throughout Europe. The term rinascita ('rebirth') first appeared in Lives of the Artists (c. 1550) by Giorgio Vasari, while the corresponding French word renaissance was adopted into English as the term for this period during the 1830s.
+The Renaissance's intellectual basis was founded in its version of humanism, derived from the concept of Roman humanitas and the rediscovery of classical Greek philosophy, such as that of Protagoras, who said that "man is the measure of all things". Although the invention of metal movable type sped the dissemination of ideas from the later 15th century, the changes of the Renaissance were not uniform across Europe: the first traces appear in Italy as early as the late 13th century, in particular with the writings of Dante and the paintings of Giotto.
+As a cultural movement, the Renaissance encompassed innovative flowering of literary Latin and an explosion of vernacular literatures, beginning with the 14th-century resurgence of learning based on classical sources, which contemporaries credited to Petrarch; the development of linear perspective and other techniques of rendering a more natural reality in painting; and gradual but widespread educational reform. It saw myriad artistic developments and contributions from such polymaths as Leonardo da Vinci and Michelangelo, who inspired the term "Renaissance man". In politics, the Renaissance contributed to the development of the customs and conventions of diplomacy, and in science to an increased reliance on observation and inductive reasoning. The period also saw revolutions in other intellectual and social scientific pursuits, as well as the introduction of modern banking and the field of accounting.
+
+### SPACE RACE
+**Domain:** history / modern_contemporary
+
+**Wikipedia:** The Space Race (Russian: космическая гонка, romanized: kosmicheskaya gonka, IPA: [kɐsˈmʲitɕɪskəjə ˈɡonkə]) was a 20th-century competition between the Cold War rivals, the United States and the Soviet Union, to achieve superior spaceflight capability. It had its origins in the ballistic missile-based nuclear arms race between the two nations following World War II and the onset of the Cold War. The technological advantage demonstrated by spaceflight achievement was seen as necessary for national security, particularly in regard to intercontinental ballistic missile and satellite reconnaissance capability, but also became part of the cultural symbolism and ideology of the time. The Space Race brought pioneering launches of artificial satellites, robotic landers to the Moon, Venus, and Mars, and human spaceflight in low Earth orbit and ultimately to the Moon.
+Public interest in space travel originated in the 1951 publication of a Soviet youth magazine and was promptly picked up by US magazines. The competition began on July 29, 1955, when the United States announced its intent to launch artificial satellites for the International Geophysical Year. Five days later, the Soviet Union responded by declaring they would also launch a satellite "in the near future". The launching of satellites was enabled by developments in ballistic missile capabilities since the end of World War II. The competition gained Western public attention with the "Sputnik crisis", when the USSR achieved the first successful satellite launch, Sputnik 1, on October 4, 1957. It gained momentum when the USSR sent the first human, Yuri Gagarin, into space with the orbital flight of Vostok 1 on April 12, 1961. These were followed by a string of other firsts achieved by the Soviets over the next few years.
+Gagarin's flight led US president John F. Kennedy to raise the stakes on May 25, 1961, by asking the US Congress to commit to the goal of "landing a man on the Moon and returning him safely to the Earth" before the end of the decade. Both countries began developing super heavy-lift launch vehicles, with the US successfully deploying the Saturn V, which was large enough to send a three-person orbiter and two-person lander to the Moon. Kennedy's Moon landing goal was achieved in July 1969, with the flight of Apollo 11. The USSR continued to pursue crewed lunar programs to launch and land on the Moon before the US with its N1 rocket but did not succeed, and eventually canceled it to concentrate on Salyut, the first space station program, and the first landings on Venus and on Mars. Meanwhile, the US landed five more Apollo crews on the Moon, and continued exploration of other extraterrestrial bodies robotically.
+A period of détente followed with the April 1972 agreement on a cooperative Apollo–Soyuz Test Project (ASTP), resulting in the July 1975 rendezvous in Earth orbit of a US astronaut crew with a Soviet cosmonaut crew and joint development of an international docking standard APAS-
+
+### BLACK DEATH
+**Domain:** history / medieval
+
+**Wikipedia:** The Black Death was a plague pandemic that occurred in Europe from 1346 to 1353. It was one of the most fatal pandemics in human history; as many as 50 million people died, perhaps 50% of Europe's 14th-century population.  The disease is caused by the bacterium Yersinia pestis and is spread by fleas and through the air. One of the most significant events in European history, the Black Death had far-reaching population, economic, and cultural impacts. It was the beginning of the second plague pandemic. The plague created religious, social and economic upheavals, with profound effects on the course of European history.
+The Black Death was the second great natural disaster to strike Europe during the Late Middle Ages (the first one being the Great Famine of 1315–1317) and is estimated to have killed 30% to 60% of the European population, as well as approximately 33% of the population of the Middle East. There were further outbreaks throughout the Late Middle Ages and, also due to other contributing factors (the crisis of the late Middle Ages), the European population did not regain its 14th century level until the 16th century. Outbreaks of the plague recurred around the world until the early 19th century.
+
+### MAHATMA GANDHI
+**Domain:** history / people_leaders
+
+**Wikipedia:** Mohandas Karamchand Gandhi (2 October 1869 – 30 January 1948) was an Indian lawyer, anti-colonial nationalist, and political thinker who employed nonviolent resistance to lead the successful campaign for India's independence from British rule. He inspired movements for civil rights and freedom across the world. The honorific Mahātmā (from Sanskrit, meaning great-souled, or venerable), first applied to him in South Africa in 1914, is used worldwide.
+Born and raised in a Hindu family in coastal Gujarat, Gandhi was trained in the law at the Inner Temple in London and was called to the bar at the age of 22. After two uncertain years in India, where he was unable to start a successful law practice, Gandhi moved to South Africa in 1893 to represent an Indian merchant in a lawsuit. He went on to live in South Africa for the next 21 years. Here, Gandhi raised a family and first employed nonviolent resistance in a campaign for civil rights. In 1915, aged 45, he returned to India and soon set about organising peasants, farmers, and urban labourers to protest against discrimination and excessive land tax.
+Assuming leadership of the Indian National Congress in 1921, Gandhi led nationwide campaigns for easing poverty, expanding women's rights, building religious and ethnic amity, ending untouchability, and, above all, achieving swaraj or self-rule. Gandhi adopted the short dhoti woven with hand-spun yarn as a mark of identification with India's rural poor. He began to live in a self-sufficient residential community, to eat simple food, and undertake long fasts as a means of both introspection and political protest. Bringing anti-colonial nationalism to the common Indians, Gandhi led them in challenging the British-imposed salt tax with the 400 km (250 mi) Dandi Salt March in 1930 and in calling for the British to quit India in 1942. He was imprisoned many times and for many years in both South Africa and India.
+Gandhi's vision of an independent India based on religious pluralism was challenged in the early 1940s by a Muslim nationalism which demanded a separate homeland for Muslims within British India. In August 1947, Britain granted independence, but the British Indian Empire was partitioned into two dominions, a Hindu-majority India and a Muslim-majority Pakistan. As many displaced Hindus, Muslims, and Sikhs made their way to their new lands, religious violence broke out, especially in Punjab and Bengal. Abstaining from the official celebration of independence, Gandhi visited the affected areas, attempting to alleviate distress. In the months following, he undertook several hunger strikes to stop the religious violence. The last of these was begun in Delhi on 12 January 1948, when Gandhi was 78. The belief that Gandhi had been too resolute in his defence of both Pakistan and Indian Muslims spread among some Hindus in India. Among these was Nathuram Godse, a militant Hindu nationalist from Pune, western India, who assassinated Gandhi by firing three bullets
+
+### OTTOMAN EMPIRE
+**Domain:** history / early_modern
+
+**Wikipedia:** The Ottoman Empire, historically also known as the Turkish Empire, was a state that spanned much of Southeast Europe, West Asia, and North Africa from the 14th century to the early 20th century, centered in modern-day Turkey. It also controlled parts of southeastern Central Europe between the early 16th and early 18th centuries. 
+The empire emerged from a beylik, or principality, founded in northwestern Anatolia in c. 1299 by the Turkoman tribal leader Osman I. His successors conquered much of Anatolia and expanded into the Balkans by the mid-14th century, transforming their petty kingdom into a transcontinental empire. The Ottomans ended the Byzantine Empire with the conquest of Constantinople in 1453 by Mehmed II. Further conquests by Selim I led the Sultans to adopt the title of caliph. With its capital at Constantinople and control over a significant portion of the Mediterranean Basin, the Ottoman Empire was at the centre of interactions between the Middle East and Europe for six centuries. Ruling over so many peoples, the empire granted varying levels of autonomy to its many confessional communities, or millets, to manage their own affairs per Islamic law. During the reign of Suleiman the Magnificent in the 16th century, the Ottoman Empire became a global power.
+Modern academic consensus posits that the empire began to decline after defeat in the Second Siege of Vienna in 1683, but continued to maintain a flexible and strong economy, society and military into much of the 18th century. The Ottoman Empire fell behind technologically from the rest of Europe by the 18th century as imperial authority fragmented. Further defeats from Austria and Russia culminated in the loss of territory, and with rising nationalism after the French Revolution, a number of new states emerged in the Balkans. Following Mahmud II's reign and the Tanzimat reforms over the course of the 19th century, the Ottoman state became more powerful and organised internally as a new Ottoman identity took hold. In the 1876 revolution, the Ottoman Empire attempted constitutional monarchy, before reverting to a royalist dictatorship under Abdul Hamid II, following the Great Eastern Crisis.
+Over the course of the late 19th century, Ottoman intellectuals known as Young Turks sought to liberalise and rationalise society and politics along Western lines, culminating in the Young Turk Revolution of 1908 led by the Committee of Union and Progress (CUP), which reestablished a constitutional monarchy. However, following the disastrous Balkan Wars, the CUP became increasingly radicalised and Turkish nationalist, leading a coup d'état in 1913 that established a dictatorship.
+In the 19th and early 20th centuries, persecution of Muslims during the Ottoman contraction and in the Russian Empire resulted in large-scale loss of life and mass migration into modern-day Turkey from the Balkans, Caucasus, and Crimea. The CUP joined World War I on the side of the Central Powers. It struggled with intern
+
+### NELSON MANDELA
+**Domain:** history / modern_contemporary
+
+**Wikipedia:** Nelson Rolihlahla Mandela ( man-DEL-ə, Xhosa: [xolíɬaɬa mandɛ̂ːla]; born Rolihlahla Mandela; 18 July 1918 – 5 December 2013) was a South African anti-apartheid activist and statesman who was the first president of South Africa from 1994 to 1999. He was the country's first Black head of state and the first elected in a fully representative democratic election. His administration focused on dismantling the legacy of apartheid by fostering racial reconciliation, a  national peace accord and eventual multiracial democracy. Ideologically an African nationalist and socialist, he served as the president of the African National Congress (ANC) party from 1991 to 1997.
+Mandela was born into the Thembu royal family in Mvezo, South Africa. He studied law at the University of Fort Hare and the University of Witwatersrand before working as a lawyer in Johannesburg. There he became involved in anti-colonial and African nationalist politics, joining the ANC in 1943 and co-founding its Youth League in 1944. After the National Party's white-only government established apartheid, a system of racial segregation that privileged whites, Mandela and the ANC committed themselves to its overthrow. Rising to prominence for his involvement in the 1952 Defiance Campaign and the 1955 Congress of the People, he was repeatedly arrested for seditious activities and was unsuccessfully prosecuted in the 1956 Treason Trial. Influenced by Marxism, he secretly joined the banned South African Communist Party (SACP). Although initially committed to non-violent protest, in association with the SACP he co-founded the militant uMkhonto we Sizwe in 1961 that led a sabotage campaign against the apartheid government. Following the Rivonia Trial, he was sentenced to life imprisonment for conspiring to overthrow the state.
+Mandela served 27 years in prison. Amid growing domestic and international pressure and fears of racial civil war, President F. W. de Klerk released him in 1990. Mandela and de Klerk led efforts to negotiate an end to apartheid, which resulted in the 1994 multiracial general election in which Mandela became president. Leading a broad coalition government which promulgated a new constitution, Mandela created the Truth and Reconciliation Commission to investigate past human rights abuses. Economically, his administration retained its predecessor's liberal framework despite his own socialist beliefs, also introducing measures to encourage land reform, combat poverty and expand healthcare services. Internationally, Mandela acted as mediator in the Pan Am Flight 103 bombing trial and served as secretary-general of the Non-Aligned Movement from 1998 to 1999. He declined a second presidential term and was succeeded by Thabo Mbeki. Mandela focused on combating poverty and HIV/AIDS through the charitable Nelson Mandela Foundation.
+Mandela was a controversial figure for much of his life. Although critics on the right denounced him as a communist terrorist and those on the far left de
+
+### PRINTING IN CHINA
+**Domain:** history / medieval
+
+**Wikipedia:** Woodblock printing or block printing is a technique for printing text, images or patterns used widely throughout East Asia and originating in China in antiquity as a method of printing on textiles and later on paper. Each page or image is created by carving a wooden block to leave only some areas and lines at the original level; it is these that are inked and show in the print, in a relief printing process. Carving the blocks is skilled and laborious work, but a large number of impressions can then be printed.
+As a method of printing on cloth, the earliest surviving examples from China date to before 220 AD. Woodblock printing existed in Tang China by the 7th century AD and remained the most common East Asian method of printing books and other texts, as well as images, until the 19th century. Ukiyo-e is the best-known type of Japanese woodblock art print. Most European uses of the technique for printing images on paper are covered by the art term woodcut, except for the block books produced mainly in the 15th century.
+

@@ -1,0 +1,265 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 163,
+  "issues": [
+    {
+      "id": "food_cuisine-sodium-essential-nerve-cells",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The fact ID starts with 'food_cuisine-' but category_l1 is 'natural_sciences' and category_l2 is 'chemistry_elements'. The question asks about who isolated sodium — a chemistry/history-of-science question — but is ID-tagged as food. There are also two near-duplicate sodium facts: this one and 'food-sodium-isolation-humphry-davy', which ask almost the identical question with the same answer.",
+      "suggested_fix": "Mark one as a duplicate and remove or differentiate. If keeping both, ensure they ask genuinely different things. Fix the ID prefix to match the actual category."
+    },
+    {
+      "id": "food_cuisine-goulash-no-paprika-before-16th-century",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks 'What spice was absent from original Hungarian goulash before the 1500s?' The correct answer is 'Paprika reached Europe only in the 16th century' — this is a full explanatory sentence, not a spice name. The question calls for a noun (the spice name), so the answer should simply be 'Paprika'.",
+      "suggested_fix": "Change correct_answer to 'Paprika' and move the elaboration into the explanation."
+    },
+    {
+      "id": "food_cuisine-fast-food-570-billion",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-fast-food-industry-570-billion'. Both ask about the global fast-food industry value in 2018 with the answer $570 billion. The first uses a brace-numeric format with no distractors; the second has full distractors and a dollar-sign spelled out. One of these should be removed.",
+      "suggested_fix": "Remove one duplicate. Keep the version with distractors ('food_cuisine-fast-food-industry-570-billion') as it is more playable."
+    },
+    {
+      "id": "food_cuisine-mediterranean-diet-1975",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-mediterranean-diet-proposed-1975'. Both ask what year the Mediterranean diet was first proposed, both answer {1975}. Different question phrasing but functionally identical.",
+      "suggested_fix": "Remove one duplicate. Keep whichever has the richer explanation."
+    },
+    {
+      "id": "food_cuisine-organic-food-certification",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-organic-food-requires-certification'. Both ask what producers need to legally sell food as 'organic', both answer 'Special certification'. Questions are phrased slightly differently but test the exact same fact.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food_cuisine-food-allergy-anaphylaxis",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food-food-allergy-anaphylaxis'. Both ask what a severe food allergy reaction is called, both answer 'Anaphylaxis'. Distractors differ slightly but the fact is identical.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food_cuisine-samosa-origin",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-samosa-middle-persian-origin'. Both ask which language 'samosa' derives from, both answer 'Middle Persian'. The question phrasing is nearly identical.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food_cuisine-tandoori-moti-mahal",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-tandoori-chicken-moti-mahal-1940s'. Both ask which New Delhi restaurant popularised modern tandoori chicken in the late 1940s, both answer 'Moti Mahal'.",
+      "suggested_fix": "Remove one duplicate. Keep the one with the richer distractor set."
+    },
+    {
+      "id": "food-chili_pepper-fruit-not-vegetable",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer is 'Berry-fruit' — this is an unusual hyphenated compound not used in standard botanical literature. Chili peppers are classified as berries (botanically), and more specifically as a type of berry. 'Berry-fruit' is an odd formulation.",
+      "suggested_fix": "Change correct_answer to 'A berry' to match standard botanical terminology, consistent with how watermelon and bell pepper are described in this same batch."
+    },
+    {
+      "id": "food-watermelon-roman-spread",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks which empire 'helped spread sweet dessert watermelons around the Mediterranean' and credits the Roman Empire. However, the explanation says only that 'dessert watermelons spread across the Mediterranean world during Roman antiquity' — it does not clearly attribute the spread to Roman action specifically, as opposed to mere contemporaneity. This is a weak claim presented as a definite answer.",
+      "suggested_fix": "Minor — the claim is supportable. Consider softening the question to 'During which empire's era did dessert watermelons spread around the Mediterranean?' to avoid implying Roman agency."
+    },
+    {
+      "id": "food-watermelon-rind-edible",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states the rind 'becomes edible only after cooking'. This is an overstatement — watermelon rind can be eaten raw, pickled (without cooking), or stir-fried. It does not require cooking to be edible; it simply tastes better or is more commonly prepared when cooked. The 'only after cooking' framing is misleading.",
+      "suggested_fix": "Revise question to 'Which part of a watermelon is commonly consumed after cooking or pickling, unlike the raw flesh?' Or change the answer framing. The explanation itself acknowledges it can be pickled, contradicting the question."
+    },
+    {
+      "id": "food-cashew-shell-industrial",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer 'Varnishes and paints' partially conflicts with the explanation, which says 'varnishes, lubricants, and paints.' The answer omits 'lubricants' which is equally prominent in the source. Minor inconsistency between answer and explanation.",
+      "suggested_fix": "Either update the answer to 'Varnishes, lubricants, and paints' or update the explanation to focus on just varnishes and paints. The current mismatch could confuse players."
+    },
+    {
+      "id": "food-cashew-poisonous-plant-year",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'What award did the cashew plant surprisingly win?' and the answer is 'Poisonous Plant of the Year'. The distractors are all clearly fabricated/nonsense awards ('Deadliest Nut Award', 'Most Toxic Tree Prize') that do not reflect real awards, making this feel odd. More importantly, the question doesn't specify which organization gives this award or when, making it hard to verify or contextualize.",
+      "suggested_fix": "Minor — the fact is interesting. Consider adding 'according to a German botanical organization' or similar in the question to ground it, since the award is not widely known."
+    },
+    {
+      "id": "food-emulsion-milk-cutting-fluid",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question 'What does homogenized milk share with metalworking cutting fluids?' is answered 'Both are emulsions'. However, the distractor 'Both are oil-in-water types' is also technically correct — both milk and metalworking cutting fluids are oil-in-water emulsions. This distractor is not wrong enough.",
+      "suggested_fix": "Replace 'Both are oil-in-water types' with a clearly incorrect distractor, such as 'Both are produced by fermentation'."
+    },
+    {
+      "id": "food-gluten-not-in-rice-or-corn",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Which two grains have proteins nicknamed gluten but safe for people with celiac disease?' The answer is 'Corn and rice'. However, the premise that these proteins are specifically 'nicknamed gluten' in common usage is a stretch — they are called zeins and rice protein, not typically nicknamed 'gluten'. This could confuse players.",
+      "suggested_fix": "Rephrase to: 'Which two grains have storage proteins that are sometimes called gluten but do not trigger celiac disease?' This matches the Wikipedia source more accurately."
+    },
+    {
+      "id": "food-flan-british-vs-spanish",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question 'In British cuisine, what is a flan based on?' with the answer 'Open pastry or sponge base' is somewhat awkward. The answer 'Open pastry or sponge base' is a compound answer with 'or', suggesting it could be either — which is technically accurate but unusual as a quiz answer format. Also, the distractor 'Shortbread crust' is essentially correct for British flan (per the next fact in the batch, 'food-flan-europe-origin'), creating a potential conflict.",
+      "suggested_fix": "Resolve the conflict: if shortcrust/shortbread is the correct answer (per the next fact), remove it as a distractor here, or reconcile the two facts. 'Open pastry or sponge base' vs 'Shortcrust pastry' from the next fact appear contradictory."
+    },
+    {
+      "id": "food-flan-europe-origin",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'food-flan-british-vs-spanish' — both are about what British flan is made from, and they give different answers ('Open pastry or sponge base' vs 'Shortcrust pastry'). These two facts about the same dish give apparently contradictory answers without reconciling them.",
+      "suggested_fix": "Merge or reconcile. The Wikipedia answer is that British flan uses an 'open, rimmed pastry or sponge base' (shortcrust being one type of open pastry). One fact should be removed or they should be clearly differentiated to ask genuinely different things."
+    },
+    {
+      "id": "food-nachos-ignacio-anaya-1943",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation describes Ignacio Anaya as 'maître d'hôtel at the Victory Club'. Wikipedia actually describes him as the maître d' (or headwaiter/chef) at the Victory Club in Piedras Negras. Calling him 'maître d'hôtel' is a slight elevation of his role — the Wikipedia article most commonly identifies him simply as the maître d' or host. Minor nuance but worth accuracy.",
+      "suggested_fix": "Minor. Consider simplifying to 'maître d'' or 'restaurant host' in the explanation to stay closer to the source."
+    },
+    {
+      "id": "food-street-food-global-economy",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-street-food-2-5-billion'. Both ask how many people eat street food every day globally, both answer '{2.5} billion'. Different question phrasing but identical fact.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food-sodium-isolation-humphry-davy",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-sodium-essential-nerve-cells'. Both ask who first isolated sodium in 1807, both answer 'Humphry Davy'. Also, this fact's category_l2 is 'food_science' which is a poor fit for a chemistry history question about element isolation.",
+      "suggested_fix": "Remove one duplicate. Recategorize the surviving fact to natural_sciences / chemistry_elements."
+    },
+    {
+      "id": "food-iodine-deficiency-billion",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-iodine-deficiency'. Both ask what iodine deficiency is the leading preventable cause of, both answer 'Intellectual disabilities'. The question phrasing is slightly different but the fact is identical.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food-tzatziki-greek-dip",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-tzatziki-greek-dip'. Both ask what the primary dairy base of tzatziki is, both answer 'Strained yogurt'. Distractor sets differ slightly but the fact is identical.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food-dolma-ottoman-stuffed-dish",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-dolma-ottoman-stuffed'. Both ask which historic empire gave rise to dolma, both answer 'Ottoman Empire'. The question phrasing differs minimally.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food-quesadilla-cheese-definition",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food-quesadilla-cheese-filled'. Both ask what gives the quesadilla its name, both answer cheese/queso. The second version is slightly more specific ('Queso (cheese)' vs 'Cheese (queso)') but they test the exact same fact.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food-tabbouleh-parsley-salad-levant",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-tabbouleh-parsley-salad'. Both ask what the primary/dominant ingredient in tabbouleh is, both answer 'Parsley'. Different question phrasing but identical fact.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food_cuisine-green-bean-harvest",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-green-bean-harvested-immature'. Both ask what makes green beans different/unique compared to other beans, both answer that they are harvested as unripe/immature pods. Question phrasing is different but the fact is identical.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food_cuisine-zucchini-bred-in-milan",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'food_cuisine-zucchini-milan-origin'. Both ask in which city the zucchini variety was bred in the late 19th century, both answer 'Milan'. The question phrasing is nearly identical.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "food_cuisine-waffle-iron-france",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question 'What cooking tool creates the distinctive grid pattern on a waffle?' with answer 'A waffle iron' is extremely low difficulty — the answer is embedded in the name of the food itself. This is barely a trivia question; the waffle iron is named after the waffle.",
+      "suggested_fix": "Reframe to a more interesting angle, e.g., asking about the origin country (Belgium/France), the origin of the word 'waffle', or when the first waffle iron was invented."
+    },
+    {
+      "id": "general_knowledge-electronics-semiconductor-revenue",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question 'What industry drives the advancement of modern electronics?' with answer 'Semiconductor industry' is somewhat leading and vague. The semiconductor industry is itself part of electronics — calling it the 'driver' is a framing that could be disputed (software, materials science, and chip design all co-drive electronics advancement). The question feels circular.",
+      "suggested_fix": "Reframe to a clearer factual question, e.g., 'What was the global annual revenue of the semiconductor industry in 2018?' with answer '{481} billion dollars', which is more verifiable and interesting."
+    },
+    {
+      "id": "general_knowledge-software-high-level-languages-1958",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that high-level programming languages were 'first introduced in 1958' is debatable. FORTRAN, widely considered the first practical high-level language, was released in 1957. COBOL and LISP followed in 1958-1959. The 1958 date may refer to a specific milestone (perhaps ALGOL 58) but presenting it as the introduction of high-level languages generally is misleading.",
+      "suggested_fix": "Revise to specify which language the 1958 date refers to (ALGOL 58), or use 1957 for FORTRAN as the commonly cited first high-level language."
+    },
+    {
+      "id": "general_knowledge-c-language-compiler-universal",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The question about C running on 'supercomputers to tiny chips' is categorized under 'oddities', but it's a straightforward technical fact about C's portability. The 'oddities' category implies surprising or counterintuitive facts, whereas C's portability is a well-known and expected property of the language.",
+      "suggested_fix": "Recategorize to 'inventions_tech'."
+    },
+    {
+      "id": "general_knowledge-android-latest-version",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states 'Which version of Android was released on June 10, 2025?' and answers 'Android 16'. This is a future-dated fact from the perspective of the knowledge cutoff and game data freshness. Android version release dates are highly time-sensitive — if this fact is wrong, outdated, or the release date shifts, the fact becomes immediately incorrect. More problematically, today's date in context is 2026-03-23, meaning 'latest version' questions are always at risk of being stale.",
+      "suggested_fix": "Remove or replace this fact. Version-specific release date facts for rapidly-updated software are poor trivia candidates — they become wrong as soon as a new version ships. Replace with a more durable fact about Android."
+    },
+    {
+      "id": "general_knowledge-javascript-website-dominance",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The fact states '98.9% of websites use JavaScript as of 2025'. This is a highly specific, time-sensitive statistic that may change rapidly and is difficult to independently verify. The '{98.9}%' brace-numeric format has no distractors, which is correct format, but the specificity of 98.9% vs 97% or 99% makes it a fragile fact.",
+      "suggested_fix": "Minor — acceptable if sourced from Wikipedia. Consider rounding to 'about 99%' to reduce brittleness, or add a 'as of [year]' qualifier in the question."
+    },
+    {
+      "id": "general_knowledge-web-browser-chrome-dominance",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The fact states Chrome holds 'about 66%' of global browser market share 'as of 2024'. This statistic is highly time-sensitive — browser market share shifts constantly. The question uses a brace-numeric format correctly, but market share percentages for browser usage should be treated as approximate and may be stale.",
+      "suggested_fix": "Minor — acceptable as a brace-numeric with no distractors. Add 'as of 2024' to the question text (it currently only appears in the explanation) to clearly date-stamp the claim."
+    },
+    {
+      "id": "food-magnesium-body-abundance",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact's category_l1 is 'natural_sciences' and category_l2 is 'chemistry_elements' but is in a batch otherwise entirely food_cuisine. The content (magnesium rank in the human body) is borderline food science vs chemistry. Low severity, just inconsistent with the surrounding category.",
+      "suggested_fix": "Recategorize to food_cuisine / food_science to match neighboring magnesium facts, or confirm intentional placement in natural_sciences."
+    },
+    {
+      "id": "food-magnesium-seawater-rank",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Same issue as food-magnesium-body-abundance — category_l1 is 'natural_sciences' / 'chemistry_elements' while surrounding facts are food_cuisine. The content (magnesium rank in seawater) is a chemistry fact with no food connection.",
+      "suggested_fix": "Either keep as natural_sciences (correct for the content) or move to food_cuisine if the intent is to keep all magnesium facts together."
+    },
+    {
+      "id": "food-manganese-discovery-year",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Category_l1 is 'natural_sciences' / 'chemistry_elements' — manganese discovery year is a pure chemistry history fact with no food connection. Inconsistent with surrounding food_cuisine facts. Low severity, likely intentional grouping with other element facts.",
+      "suggested_fix": "Confirm intentional placement; if so, fine. If all facts are meant to be food_cuisine, recategorize."
+    }
+  ]
+}

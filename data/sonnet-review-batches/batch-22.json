@@ -1,0 +1,2594 @@
+[
+  {
+    "id": "natural_sciences-erosion-grand-canyon",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "How deep is the Grand Canyon?",
+    "correct_answer": "About {1.6} km",
+    "distractors": [],
+    "explanation": "Per Wikipedia, the Grand Canyon is ~1.6 km deep and ~446 km long, carved by the Colorado River over 5–6 million years through rock layers as old as 1.8 billion years."
+  },
+  {
+    "id": "natural_sciences-ruby-corundum",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Rubies and sapphires are both varieties of which mineral?",
+    "correct_answer": "Corundum",
+    "distractors": [
+      "Beryl",
+      "Quartz",
+      "Feldspar",
+      "Tourmaline",
+      "Spinel",
+      "Garnet",
+      "Zircon",
+      "Topaz"
+    ],
+    "explanation": "Per Wikipedia, both rubies and sapphires are varieties of the mineral corundum (aluminium oxide, Al₂O₃) — the difference is their trace element content causing different colours."
+  },
+  {
+    "id": "natural_sciences-jade-two-minerals",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "How many different minerals are sold as 'jade'?",
+    "correct_answer": "Two",
+    "distractors": [
+      "One",
+      "Three",
+      "Four",
+      "Five",
+      "It's always one",
+      "Depends on region",
+      "Varies by colour",
+      "One main, two minor"
+    ],
+    "explanation": "Per Wikipedia, 'jade' refers to two distinct minerals — nephrite (a calcium-magnesium silicate) and jadeite (a sodium-aluminium silicate) — both prized in Chinese and Mesoamerican cultures."
+  },
+  {
+    "id": "natural_sciences-asbestos-fireproof",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "What did ancient Greeks believe asbestos fibre came from?",
+    "correct_answer": "A fire-dwelling salamander",
+    "distractors": [
+      "The feathers of a phoenix",
+      "Mineral secretions from volcanoes",
+      "Compressed dragon scales",
+      "Charred plant roots",
+      "Solidified smoke",
+      "White lava deposits",
+      "Sea creature shells",
+      "Crystallised fire"
+    ],
+    "explanation": "Per Wikipedia, ancient Greeks used 'asbestos' (meaning 'indestructible' in Greek) and believed the fireproof fibres came from the fur of a mythical salamander that could live in flames."
+  },
+  {
+    "id": "natural_sciences-francis-crick-dna",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "What crucial data did Rosalind Franklin provide that helped Crick and Watson discover DNA's structure?",
+    "correct_answer": "X-ray crystallography",
+    "distractors": [
+      "Electron microscopy",
+      "Chemical analysis",
+      "Genetic sequencing",
+      "Radio imaging",
+      "Electron diffraction",
+      "Isotope labelling",
+      "Computer modelling",
+      "Spectral analysis"
+    ],
+    "explanation": "Per Wikipedia, Rosalind Franklin's X-ray diffraction images (especially Photo 51) provided critical evidence for the double-helix structure, though Franklin received little credit during her lifetime."
+  },
+  {
+    "id": "natural_sciences-rosalind-franklin-photo51",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Rosalind Franklin's Photo 51 was shown to Watson without her knowledge. What did it reveal?",
+    "correct_answer": "DNA's helical structure",
+    "distractors": [
+      "Protein structure",
+      "Cell membrane layers",
+      "Chromosomal arrangement",
+      "Enzyme binding",
+      "Viral structure",
+      "Gene splicing points",
+      "RNA structure",
+      "Nuclear membrane"
+    ],
+    "explanation": "Per Wikipedia, Photo 51 clearly showed DNA's helical structure and its dimensions — when Watson saw it (shown by Franklin's colleague Maurice Wilkins without her permission), it was decisive in solving the DNA puzzle."
+  },
+  {
+    "id": "natural_sciences-snow-unique-crystals",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "How many sides does a snowflake crystal always have?",
+    "correct_answer": "Six",
+    "distractors": [
+      "Four",
+      "Eight",
+      "Three",
+      "Five",
+      "Twelve",
+      "Two",
+      "Ten",
+      "Seven"
+    ],
+    "explanation": "Per Wikipedia, snowflakes always have six-fold (hexagonal) symmetry because of how water molecules bond in ice — but the exact shape of each arm varies based on temperature and humidity encountered while falling."
+  },
+  {
+    "id": "natural_sciences-cloud-weight",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Approximately how heavy is a typical cumulus cloud?",
+    "correct_answer": "About {500} tonnes",
+    "distractors": [],
+    "explanation": "Per Wikipedia, a cumulus cloud's water content totals about 500 metric tonnes — but this is dispersed in billions of tiny droplets spread across millions of cubic metres of air, making each droplet too light to fall."
+  },
+  {
+    "id": "natural_sciences-geology-deep-time",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "If Earth's history were one 24-hour day, when would humans appear?",
+    "correct_answer": "Last {1.5} seconds",
+    "distractors": [],
+    "explanation": "Per Wikipedia, Earth is approximately 4.54 billion years old; anatomically modern humans appeared ~300,000 years ago — representing less than 0.007% of Earth's history."
+  },
+  {
+    "id": "natural_sciences-organic-chemistry-carbon",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How many different known carbon compounds exist?",
+    "correct_answer": "Over {10} million",
+    "distractors": [],
+    "explanation": "Per Wikipedia, organic chemistry (the chemistry of carbon-containing compounds) is vast because carbon forms stable bonds with itself and other elements in unlimited chain and ring combinations."
+  },
+  {
+    "id": "natural_sciences-antimony-kohl",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How long ago was antimony first used as a black eye makeup?",
+    "correct_answer": "Over {4,000} years ago",
+    "distractors": [],
+    "explanation": "Per Wikipedia, antimony sulphide (stibnite, Sb₂S₃) was used as kohl eyeliner in ancient Egypt and Mesopotamia over 4,000 years ago — making it one of the oldest cosmetics known."
+  },
+  {
+    "id": "natural_sciences-alcohol-types",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which type of alcohol is safe to drink?",
+    "correct_answer": "Ethanol",
+    "distractors": [
+      "Methanol",
+      "Isopropanol",
+      "Propanol",
+      "Butanol",
+      "Glycerol",
+      "Rubbing alcohol",
+      "Denatured alcohol",
+      "Wood alcohol"
+    ],
+    "explanation": "Per Wikipedia, ethanol (C₂H₅OH) is the only alcohol consumed safely, while methanol (CH₃OH) is metabolised to formaldehyde and formic acid — causing blindness from as little as 10 mL and death from 25+ mL."
+  },
+  {
+    "id": "natural_sciences-stellar-evolution-sun",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "When the Sun expands into a red giant, which inner planets will it likely engulf?",
+    "correct_answer": "Mercury and Venus",
+    "distractors": [
+      "Earth only",
+      "Mars and Earth",
+      "All four inner planets",
+      "Mercury only",
+      "Venus and Earth",
+      "All planets",
+      "Mercury, Venus, Earth",
+      "Mars only"
+    ],
+    "explanation": "Per Wikipedia, in about 5 billion years the Sun will exhaust its hydrogen fuel and expand into a red giant, engulfing Mercury and Venus and possibly Earth's orbit."
+  },
+  {
+    "id": "natural_sciences-solar-system-formation",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "How long ago did the Solar System form?",
+    "correct_answer": "About {4.6} billion years ago",
+    "distractors": [],
+    "explanation": "Per Wikipedia, the Solar System formed approximately 4.568 billion years ago when a molecular cloud of gas and dust collapsed under its own gravity, forming the Sun and planets."
+  },
+  {
+    "id": "natural_sciences-zucchini-fruit",
+    "category_l1": "natural_sciences",
+    "category_l2": "botany_plants",
+    "quiz_question": "Is zucchini (courgette) botanically a fruit or a vegetable?",
+    "correct_answer": "Fruit",
+    "distractors": [
+      "Vegetable",
+      "Both",
+      "Neither",
+      "Root",
+      "Berry",
+      "Legume",
+      "Tuber",
+      "Gourd"
+    ],
+    "explanation": "Per Wikipedia, zucchini is botanically a fruit (the mature ovary of a flowering plant) but is used as a vegetable in culinary contexts — one of many foods classified differently in botany vs. cooking."
+  },
+  {
+    "id": "natural_sciences-cypress-longevity",
+    "category_l1": "natural_sciences",
+    "category_l2": "botany_plants",
+    "quiz_question": "Approximately how old is the Sarv-e Abarkuh cypress tree in Iran?",
+    "correct_answer": "{4,000}–{5,000} years old",
+    "distractors": [],
+    "explanation": "Per Wikipedia, the Sarv-e Abarkuh (Zoroastrian Sarv) in Iran is one of the world's oldest living organisms, estimated at 4,000–5,000 years old, predating the Roman Empire by over 3,000 years."
+  },
+  {
+    "id": "natural_sciences-mantle-composition",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What percentage of Earth's total volume is the mantle?",
+    "correct_answer": "About {84}%",
+    "distractors": [],
+    "explanation": "Per Wikipedia, Earth's mantle extends from the base of the crust to a depth of ~2,900 km, comprising about 84% of Earth's total volume and consisting mainly of silicate minerals."
+  },
+  {
+    "id": "natural_sciences-talc-softest",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What is the softest known mineral, rated 1 on the Mohs hardness scale?",
+    "correct_answer": "Talc",
+    "distractors": [
+      "Gypsum",
+      "Calcite",
+      "Feldspar",
+      "Quartz",
+      "Chalk",
+      "Mica",
+      "Soapstone",
+      "Selenite"
+    ],
+    "explanation": "Per Wikipedia, talc is the reference mineral for 1 on the Mohs scale of hardness — the scale's softest point — meaning any fingernail can scratch it."
+  },
+  {
+    "id": "natural_sciences-gypsum-plaster",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "What mineral makes up the White Sands desert in New Mexico?",
+    "correct_answer": "Gypsum",
+    "distractors": [
+      "Quartz",
+      "Calcite",
+      "Talc",
+      "Halite",
+      "Feldspar",
+      "Limestone",
+      "Dolomite",
+      "Anhydrite"
+    ],
+    "explanation": "Per Wikipedia, the White Sands National Park in New Mexico contains the world's largest gypsum dunefield, with brilliant white gypsum sand covering 710 km²."
+  },
+  {
+    "id": "natural_sciences-sandstone-petra",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "The ancient city of Petra in Jordan was carved into which type of rock?",
+    "correct_answer": "Sandstone",
+    "distractors": [
+      "Limestone",
+      "Granite",
+      "Marble",
+      "Basalt",
+      "Chalk",
+      "Slate",
+      "Schist",
+      "Obsidian"
+    ],
+    "explanation": "Per Wikipedia, Petra's famous architecture — including the Treasury (Al-Khazneh) — was carved from the distinctive rose-red Nubian sandstone cliffs by the Nabataeans from around the 4th century BCE."
+  },
+  {
+    "id": "natural_sciences-feldspar-most-common",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What percentage of Earth's crust is made up of feldspar minerals?",
+    "correct_answer": "About {60}%",
+    "distractors": [],
+    "explanation": "Per Wikipedia, feldspars are aluminosilicate minerals that make up approximately 60% of Earth's crust by volume, found in igneous, sedimentary, and metamorphic rocks."
+  },
+  {
+    "id": "natural_sciences-magma-hotspot",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "If Yellowstone's supervolcano erupted, what would its ash cloud potentially cover?",
+    "correct_answer": "Most of North America",
+    "distractors": [
+      "Only Wyoming",
+      "The Rocky Mountains",
+      "The western United States",
+      "Canada and Alaska",
+      "Just the surrounding states",
+      "Europe and North America",
+      "The entire USA",
+      "Half the world"
+    ],
+    "explanation": "Per Wikipedia, Yellowstone's last major eruption 640,000 years ago deposited ash across most of North America — a future eruption of similar scale would be a global catastrophe."
+  },
+  {
+    "id": "natural_sciences-ac-tesla-edison",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "In the 'War of Currents', whose electrical system won and now powers the world?",
+    "correct_answer": "AC current",
+    "distractors": [
+      "DC current (Edison)",
+      "Wireless (Marconi)",
+      "AC/DC hybrid",
+      "Edison's AC",
+      "Westinghouse DC",
+      "Tesla's DC",
+      "Government grid",
+      "Faraday's system"
+    ],
+    "explanation": "Per Wikipedia, the War of Currents in the 1880s–90s saw Edison promoting DC and Westinghouse/Tesla promoting AC — AC won because it can transmit electricity over long distances far more efficiently."
+  },
+  {
+    "id": "natural_sciences-igneous-obsidian-sharp",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Obsidian blades can be sharper than surgical steel. What type of rock is obsidian?",
+    "correct_answer": "Volcanic glass",
+    "distractors": [
+      "Sedimentary rock",
+      "Metamorphic rock",
+      "Crystalline igneous",
+      "Pumice stone",
+      "Limestone variant",
+      "Silicified rock",
+      "Compressed ash",
+      "Black granite"
+    ],
+    "explanation": "Per Wikipedia, obsidian is a naturally occurring volcanic glass formed from rapidly cooling lava, and obsidian scalpels can achieve edges thinner than 3 nanometres — potentially sharper than surgical steel."
+  },
+  {
+    "id": "natural_sciences-ecology-keystone",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "Wolves reintroduced to Yellowstone in 1995 changed what unexpected aspect of the park?",
+    "correct_answer": "The course of rivers",
+    "distractors": [
+      "Air quality",
+      "Temperature",
+      "Insect populations",
+      "Soil composition",
+      "Migration routes",
+      "Bird populations",
+      "Lake levels",
+      "Snow patterns"
+    ],
+    "explanation": "Per Wikipedia, wolves returning to Yellowstone reduced elk grazing near rivers, allowing vegetation to recover, which stabilized riverbanks — a trophic cascade that literally changed river courses."
+  },
+  {
+    "id": "natural_sciences-stratigraphy-law",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "In undisturbed rock strata, where are the oldest rocks found?",
+    "correct_answer": "At the bottom",
+    "distractors": [
+      "At the top",
+      "In the middle",
+      "Randomly distributed",
+      "At the edges",
+      "In alternating layers",
+      "Deepest vertical layers",
+      "Under fault lines",
+      "At the surface"
+    ],
+    "explanation": "Per Wikipedia, Nicolas Steno's Law of Superposition (1669) states that in any undeformed sequence of sedimentary rock layers, the oldest layer is at the bottom and the youngest at the top."
+  },
+  {
+    "id": "natural_sciences-schrödinger-coined-quantum-entanglement",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "Who coined the term 'quantum entanglement' in 1935?",
+    "correct_answer": "Schrödinger",
+    "distractors": [
+      "Einstein",
+      "Bohr",
+      "Heisenberg",
+      "Dirac",
+      "Pauli",
+      "Planck",
+      "Born",
+      "Fermi"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, Schrödinger coined the term 'quantum entanglement' in 1935 — the same year he published the famous Schrödinger's cat thought experiment. He shared the 1933 Nobel Prize in Physics with Paul Dirac for 'the discovery of new productive forms of atomic theory.'"
+  },
+  {
+    "id": "natural_sciences-schrödinger-wave-equation",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "What equation did Schrödinger develop to describe how quantum systems evolve?",
+    "correct_answer": "Schrödinger equation",
+    "distractors": [
+      "Maxwell's equations",
+      "Dirac equation",
+      "Heisenberg uncertainty principle",
+      "Born rule",
+      "Pauli exclusion principle",
+      "de Broglie relation",
+      "Boltzmann equation",
+      "Maxwell"
+    ],
+    "explanation": "According to Wikipedia, Schrödinger is recognized for devising the Schrödinger equation — an equation that provides a way to calculate the wave function of a system and how it changes dynamically in time. It is one of the fundamental equations of quantum mechanics."
+  },
+  {
+    "id": "natural_sciences-röntgen-first-nobel-physics",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "Who was the first recipient of the Nobel Prize in Physics, in 1901?",
+    "correct_answer": "Röntgen",
+    "distractors": [
+      "Marie Curie",
+      "Lord Rayleigh",
+      "Hendrik Lorentz",
+      "Pieter Zeeman",
+      "Max Planck",
+      "Antoine Becquerel",
+      "Joseph Thomson",
+      "Lord Rayleigh"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, Wilhelm Conrad Röntgen became the first recipient of the Nobel Prize in Physics in 1901 — awarded 'in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him,' i.e., X-rays."
+  },
+  {
+    "id": "natural_sciences-röntgen-gave-away-prize-money",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "What did Röntgen do with his Nobel Prize money?",
+    "correct_answer": "Gave it to the university",
+    "distractors": [
+      "Kept it as savings",
+      "Invested in research equipment",
+      "Donated to the poor",
+      "Returned it to the Nobel Foundation",
+      "Gave it to his students",
+      "Lost it in later poverty",
+      "Used it to fund more experiments",
+      "Millikan"
+    ],
+    "explanation": "According to Wikipedia, Röntgen refused to take out patents on X-rays because he wanted his discovery to benefit humanity freely. He donated his Nobel Prize money to the University of Würzburg. He also died in relative poverty after his savings were wiped out by post-WWI inflation."
+  },
+  {
+    "id": "natural_sciences-scandium-discovered-1879",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "In what year was the element scandium discovered by spectral analysis?",
+    "correct_answer": "{1879}",
+    "distractors": [],
+    "explanation": "According to Wikipedia and Wikidata, scandium (atomic number 21) was discovered in 1879 by spectral analysis of the minerals euxenite and gadolinite from Scandinavia. Despite discovery in 1879, it was not isolated as a pure metal until 1937 — nearly 60 years later."
+  },
+  {
+    "id": "natural_sciences-scandium-aluminium-alloys",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "What is scandium's only major commercial application?",
+    "correct_answer": "Aluminium alloys",
+    "distractors": [
+      "Nuclear reactor fuel",
+      "LCD screens",
+      "Solar panels",
+      "Spacecraft heat shields",
+      "Superconductors",
+      "Magnetic storage",
+      "Optical fibres",
+      "Gallium"
+    ],
+    "explanation": "According to Wikipedia, applications for scandium were not developed until the 1970s when the positive effects of scandium on aluminium alloys were discovered. Its use in such alloys remains its only major application. Global trade of scandium oxide is just 15–20 tonnes per year."
+  },
+  {
+    "id": "natural_sciences-tantalum-named-mythology",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which mythological figure gave tantalum its name, because the element 'tantalizingly' refused to absorb acid?",
+    "correct_answer": "Tantalus",
+    "distractors": [
+      "Prometheus",
+      "Sisyphus",
+      "Icarus",
+      "Narcissus",
+      "Midas",
+      "Orpheus",
+      "Achilles",
+      "Hafnium"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, tantalum (atomic number 73) is named after Tantalus, a figure in Greek mythology. The name was chosen because tantalum's extreme chemical inertness — its refusal to absorb or react with acid — was reminiscent of Tantalus's eternal frustration of being unable to consume the water or fruit around him."
+  },
+  {
+    "id": "natural_sciences-tantalum-capacitors-phones",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "What electronic component in computers and smartphones uses tantalum?",
+    "correct_answer": "Capacitors",
+    "distractors": [
+      "Transistors",
+      "Resistors",
+      "Inductors",
+      "Diodes",
+      "CPU chips",
+      "Batteries",
+      "Display screens",
+      "Niobium"
+    ],
+    "explanation": "According to Wikipedia, tantalum is used in tantalum capacitors for electronic equipment such as computers. Its chemical inertness and high melting point also make it valuable for laboratory equipment, vacuum furnaces, and it is being investigated as a material for superconducting quantum processors."
+  },
+  {
+    "id": "natural_sciences-tellurium-rarer-than-platinum",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How does tellurium's abundance in Earth's crust compare to platinum?",
+    "correct_answer": "Comparable rarity",
+    "distractors": [
+      "Much more common",
+      "Much rarer",
+      "Identical abundance",
+      "Ten times rarer",
+      "Ten times more common",
+      "Twenty times more common",
+      "A hundred times rarer",
+      "Selenium"
+    ],
+    "explanation": "According to Wikipedia, tellurium is far more common in the universe as a whole than on Earth. Its extreme rarity in Earth's crust is comparable to that of platinum, partly because tellurium formed a volatile hydride that caused it to escape to space as a gas during Earth's formation."
+  },
+  {
+    "id": "natural_sciences-indium-tin-oxide-touchscreens",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "Which compound coats nearly every smartphone touchscreen, containing the element indium?",
+    "correct_answer": "Indium tin oxide",
+    "distractors": [
+      "Indium nitride",
+      "Indium phosphide",
+      "Gallium arsenide",
+      "Silicon dioxide",
+      "Zinc oxide",
+      "Aluminium oxide",
+      "Tin dioxide",
+      "Germanium"
+    ],
+    "explanation": "According to Wikipedia, indium is used primarily in the production of flat-panel displays as indium tin oxide (ITO) — a transparent and conductive coating applied to glass. Without ITO, the touchscreen technology in modern smartphones and tablets would not exist in its current form."
+  },
+  {
+    "id": "natural_sciences-indium-softest-element",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which post-transition metal is named after the indigo blue line in its emission spectrum?",
+    "correct_answer": "Indium",
+    "distractors": [
+      "Thallium",
+      "Gallium",
+      "Tin",
+      "Bismuth",
+      "Antimony",
+      "Lead",
+      "Tellurium",
+      "Hafnium"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, indium was discovered in 1863 by Ferdinand Reich and Hieronymous Theodor Richter by spectroscopic methods and named for the indigo blue line in its emission spectrum. It is a silvery-white post-transition metal and one of the softest elements."
+  },
+  {
+    "id": "natural_sciences-rhenium-rarest-stable-element",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "What is rhenium's approximate average concentration in Earth's crust?",
+    "correct_answer": "{1} part per billion",
+    "distractors": [],
+    "explanation": "According to Wikipedia, rhenium has an estimated average concentration of 1 part per billion (ppb), making it one of the rarest stable elements in Earth's crust. It is mainly obtained as a by-product of molybdenum and copper ore processing."
+  },
+  {
+    "id": "natural_sciences-rhenium-jet-engine",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "What is the largest single use of the rare element rhenium?",
+    "correct_answer": "Jet engine turbine blades",
+    "distractors": [
+      "Nuclear reactor components",
+      "Solar panels",
+      "Filaments in light bulbs",
+      "Electrical contacts",
+      "Medical implants",
+      "Rocket nozzles alone",
+      "Computer chips",
+      "Osmium"
+    ],
+    "explanation": "According to Wikipedia, nickel-based superalloys of rhenium are used in combustion chambers, turbine blades, and exhaust nozzles of jet engines. These alloys can contain up to 6% rhenium, making jet engine construction the largest single use for the element."
+  },
+  {
+    "id": "natural_sciences-europium-euro-banknotes",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which rare-earth element's glowing compounds are used in anti-counterfeiting markings on euro banknotes?",
+    "correct_answer": "Europium",
+    "distractors": [
+      "Cerium",
+      "Lanthanum",
+      "Yttrium",
+      "Neodymium",
+      "Samarium",
+      "Gadolinium",
+      "Terbium",
+      "Arsenic"
+    ],
+    "explanation": "According to Wikipedia, most applications of europium exploit the phosphorescence of europium compounds — the ability to glow under ultraviolet light. This property makes europium-based phosphors essential in LED lighting and as anti-counterfeiting agents in currency, including euro banknotes."
+  },
+  {
+    "id": "natural_sciences-lanthanum-named-hiding",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "What does the Greek word 'lanthanein' — the source of lanthanum's name — mean?",
+    "correct_answer": "To lie hidden",
+    "distractors": [
+      "To shine brightly",
+      "To react strongly",
+      "To sit quietly",
+      "To resist melting",
+      "To stay pure",
+      "To glow faintly",
+      "To be first",
+      "Neodymium"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, lanthanum was first found in 1839 by Swedish chemist Carl Gustaf Mosander as an impurity in cerium nitrate. He named it from the ancient Greek 'lanthanein' meaning 'to lie hidden' because it had hidden inside cerium for so long."
+  },
+  {
+    "id": "natural_sciences-lanthanum-more-common-than-lead",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How does lanthanum's crustal abundance compare to lead?",
+    "correct_answer": "Nearly 3 times more abundant",
+    "distractors": [
+      "About the same",
+      "Ten times more rare",
+      "Half as abundant",
+      "Twice as rare",
+      "Much rarer",
+      "Five times more abundant",
+      "Equally rare",
+      "Neodymium"
+    ],
+    "explanation": "According to Wikipedia, lanthanum is the 28th most abundant element in Earth's crust, almost three times as abundant as lead. The 'rare' in rare-earth elements is therefore somewhat misleading — most are actually fairly common in the crust, just difficult to extract in concentrated form."
+  },
+  {
+    "id": "science-scandium-global-trade-tiny",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How many tonnes of scandium oxide are traded globally each year?",
+    "correct_answer": "{15}–20 tonnes",
+    "distractors": [],
+    "explanation": "According to Wikipedia, global scandium oxide trade is just 15–20 tonnes per year. Compare this to iron ore: billions of tonnes. Scandium is genuinely rare in usable form despite being present in many minerals worldwide."
+  },
+  {
+    "id": "science-scandium-alloy-delay",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How long after its discovery did scandium find its first major industrial use?",
+    "correct_answer": "About {90} years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, scandium was discovered in 1879 but applications were not developed until the 1970s — about 90 years later — when its positive effects on aluminium alloys were discovered. Its use in such alloys remains its only major application."
+  },
+  {
+    "id": "science-tantalum-named-torture",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which Greek myth figure inspired tantalum's name due to the element's frustrating inertness?",
+    "correct_answer": "Tantalus",
+    "distractors": [
+      "Prometheus",
+      "Sisyphus",
+      "Icarus",
+      "Narcissus",
+      "Orpheus",
+      "Achilles",
+      "Midas",
+      "Daedalus"
+    ],
+    "explanation": "According to Wikipedia, tantalum is named after Tantalus, a figure in Greek mythology. The name reflects the element's chemical inertness — early chemists were tormented trying to get it to react with acids, much like Tantalus was tantalized by food and water he could never reach."
+  },
+  {
+    "id": "science-tantalum-quantum-computer",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which metal is being investigated for use in quantum computer superconducting resonators?",
+    "correct_answer": "Tantalum",
+    "distractors": [
+      "Niobium",
+      "Vanadium",
+      "Rhenium",
+      "Hafnium",
+      "Iridium",
+      "Tungsten",
+      "Molybdenum",
+      "Osmium"
+    ],
+    "explanation": "According to Wikipedia, tantalum is being investigated for use as a material for high-quality superconducting resonators in quantum processors, adding to its existing uses in capacitors for computers and electronic equipment."
+  },
+  {
+    "id": "science-yttrium-one-mine-one-isotope",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How many stable isotopes does yttrium have?",
+    "correct_answer": "{1}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, 89Y is the only stable isotope of yttrium and the only isotope found in Earth's crust. Yttrium is almost always found in combination with lanthanide elements in rare-earth minerals and is never found in nature as a free element."
+  },
+  {
+    "id": "science-yttrium-led-tv-history",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which element provided the red phosphor in old CRT televisions?",
+    "correct_answer": "Yttrium",
+    "distractors": [
+      "Europium",
+      "Terbium",
+      "Cerium",
+      "Gadolinium",
+      "Lanthanum",
+      "Neodymium",
+      "Praseodymium",
+      "Holmium"
+    ],
+    "explanation": "According to Wikipedia, yttrium was historically widely used in the red phosphors in television set cathode ray tube displays. Its most important present-day use is as a component of phosphors in LEDs."
+  },
+  {
+    "id": "science-indium-named-indigo",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "What color spectral line inspired the naming of the element indium?",
+    "correct_answer": "Indigo blue",
+    "distractors": [
+      "Violet purple",
+      "Deep crimson",
+      "Cyan green",
+      "Cobalt azure",
+      "Ruby red",
+      "Emerald green",
+      "Orange gold",
+      "Magenta pink"
+    ],
+    "explanation": "According to Wikipedia, indium was discovered in 1863 by Ferdinand Reich and Hieronymous Theodor Richter by spectroscopic methods and named for the indigo blue line in its spectrum — not for India, despite the similarity."
+  },
+  {
+    "id": "science-indium-touchscreen-element",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which element is essential for the transparent conductive coating on touchscreens?",
+    "correct_answer": "Indium",
+    "distractors": [
+      "Gallium",
+      "Thallium",
+      "Bismuth",
+      "Germanium",
+      "Antimony",
+      "Tin",
+      "Selenium",
+      "Tellurium"
+    ],
+    "explanation": "According to Wikipedia, indium is used primarily in the production of flat-panel displays as indium tin oxide (ITO), a transparent and conductive coating applied to glass. This is what allows touchscreens to detect your finger's presence."
+  },
+  {
+    "id": "science-zirconium-nuclear-cladding",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Why is zirconium used to clad nuclear fuel rods?",
+    "correct_answer": "Low neutron absorption",
+    "distractors": [
+      "High heat output",
+      "Magnetic shielding",
+      "Gamma ray blocking",
+      "Fast neutron release",
+      "High density mass",
+      "Thermal insulation",
+      "Electrical conduction",
+      "Radiation reflection"
+    ],
+    "explanation": "According to Wikipedia, zirconium alloys are used to clad nuclear fuel rods due to their low neutron absorption and strong resistance to corrosion. This makes them ideal containment material — they let the neutron chain reaction proceed without interfering."
+  },
+  {
+    "id": "science-zirconium-deodorant-dental",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which surprisingly everyday product contains zirconium?",
+    "correct_answer": "Deodorant",
+    "distractors": [
+      "Toothpaste",
+      "Sunscreen",
+      "Shampoo",
+      "Contact lenses",
+      "Lip balm",
+      "Eye drops",
+      "Hand sanitizer",
+      "Nail polish"
+    ],
+    "explanation": "According to Wikipedia, zirconium finds uses in dental implants and prosthetics, deodorant, and water purification systems — alongside its high-tech uses in nuclear reactors and space vehicles. The compound zirconium chlorohydrate is an active ingredient in antiperspirants."
+  },
+  {
+    "id": "science-actinium-lends-name-series",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How many elements are in the actinide series named after actinium?",
+    "correct_answer": "{15}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the actinide series, a set of 15 elements between actinium and lawrencium in the periodic table, is named after actinium. This places actinium as the namesake anchor for an entire row of heavy radioactive elements."
+  },
+  {
+    "id": "science-actinium-uranium-ore-tiny",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How much actinium-227 is in one tonne of uranium ore?",
+    "correct_answer": "0.{2} milligrams",
+    "distractors": [],
+    "explanation": "According to Wikipedia, one tonne of natural uranium in ore contains about 0.2 milligrams of actinium-227. The element is so scarce that it has no significant industrial use and must instead be produced by neutron irradiation of radium-226 in a nuclear reactor for medical applications."
+  },
+  {
+    "id": "science-alcohols-arabic-origin",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "What Arabic cosmetic product gave us the word 'alcohol'?",
+    "correct_answer": "Kohl (eye powder)",
+    "distractors": [
+      "Musk perfume",
+      "Rose water",
+      "Henna dye",
+      "Oud incense",
+      "Saffron pigment",
+      "Ambergris oil",
+      "Myrrh resin",
+      "Frankincense"
+    ],
+    "explanation": "According to Wikipedia, the word alcohol derives from Arabic 'al-kuḥl', meaning 'the kohl' — a finely powdered cosmetic used as eyeliner. The concept of fine distillation was later applied to distilled spirits, carrying the Arabic word along."
+  },
+  {
+    "id": "science-alcohols-cholesterol-member",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "What class of organic compound does cholesterol belong to?",
+    "correct_answer": "Alcohol",
+    "distractors": [
+      "Ester",
+      "Ketone",
+      "Carboxylic acid",
+      "Ether",
+      "Aldehyde",
+      "Lipid only",
+      "Steroid only",
+      "Fatty acid"
+    ],
+    "explanation": "According to Wikipedia, alcohols range from the simple, like methanol and ethanol, to complex, like sugar alcohols and cholesterol. All carry at least one hydroxyl (−OH) functional group bound to a saturated carbon atom, making them all alcohols by chemical definition."
+  },
+  {
+    "id": "science-chemical-compound-350k-registered",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "How many chemical compounds are registered globally for production and use?",
+    "correct_answer": "Over {350,000}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, more than 350,000 chemical compounds (including mixtures of chemicals) have been registered for production and use globally. Chemists create thousands more each year in research labs worldwide."
+  },
+  {
+    "id": "science-chemical-compound-four-bond-types",
+    "category_l1": "natural_sciences",
+    "category_l2": "chemistry_elements",
+    "quiz_question": "Which type of chemical compound is held together by ionic bonds?",
+    "correct_answer": "Ionic compound",
+    "distractors": [
+      "Molecular compound",
+      "Intermetallic compound",
+      "Coordination complex",
+      "Covalent network solid",
+      "Non-stoichiometric compound",
+      "Organometallic complex",
+      "Polymer compound",
+      "Chelate complex"
+    ],
+    "explanation": "According to Wikipedia, the four major types of compounds are: molecular compounds (covalent bonds), ionic compounds (ionic bonds), intermetallic compounds (metallic bonds), and coordination complexes (coordinate covalent bonds). Common table salt (NaCl) is a classic ionic compound."
+  },
+  {
+    "id": "science-quaternary-anthropocene-rejected",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What did geologists officially vote to reject as an epoch in 2024?",
+    "correct_answer": "Anthropocene",
+    "distractors": [
+      "Holocene",
+      "Pleistocene",
+      "Capitalocene",
+      "Technocene",
+      "Pyrocene",
+      "Meghalayan",
+      "Northgrippian",
+      "Greenlandian"
+    ],
+    "explanation": "According to Wikipedia, the Anthropocene was proposed as a third epoch within the Quaternary Period, but was rejected in 2024 by the International Union of Geological Sciences (IUGS), the governing body of the International Commission on Stratigraphy. The Quaternary currently contains only two formal epochs: the Pleistocene and the Holocene."
+  },
+  {
+    "id": "science-quaternary-milankovitch-cycles",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What orbital cycles drive the ice ages of the Quaternary Period?",
+    "correct_answer": "Milankovitch cycles",
+    "distractors": [
+      "Sunspot cycles",
+      "Wilson cycles",
+      "Meeus cycles",
+      "Saros cycles",
+      "Chandler wobble",
+      "De Vries cycles",
+      "Gleissberg cycles",
+      "Bond cycles"
+    ],
+    "explanation": "According to Wikipedia, the Quaternary is defined by glaciation events — the cyclic growth and decay of continental ice sheets — related to the Milankovitch cycles, which govern periodic changes in Earth's orbit around the Sun and its axial orientation."
+  },
+  {
+    "id": "science-quaternary-start-age",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "How many million years ago did the Quaternary Period begin?",
+    "correct_answer": "{2.6} million years ago",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Quaternary spans from 2.6 million years ago to the present, making it the most recent of the three Cenozoic periods. It is currently ongoing — the period we live in today."
+  },
+  {
+    "id": "science-neogene-isthmus-panama",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What geological event in the Neogene linked North and South America?",
+    "correct_answer": "Isthmus of Panama formed",
+    "distractors": [
+      "Amazon River formed",
+      "Andes Mountains rose",
+      "Caribbean plate shifted",
+      "Atlantic Ocean opened",
+      "Gulf Stream reversed",
+      "Drake Passage closed",
+      "Bering land bridge appeared",
+      "Mid-Atlantic Ridge split"
+    ],
+    "explanation": "According to Wikipedia, the most significant continental event of the Neogene was the connection of North and South America at the Isthmus of Panama, late in the Pliocene epoch. This closed off warm ocean currents flowing from the Pacific to the Atlantic, leaving only the Gulf Stream to transfer heat to the Arctic Ocean, and contributed to global cooling."
+  },
+  {
+    "id": "science-neogene-first-humans",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Which early human species appeared in Africa near the end of the Neogene?",
+    "correct_answer": "Homo habilis",
+    "distractors": [
+      "Homo sapiens",
+      "Homo erectus",
+      "Australopithecus",
+      "Homo heidelbergensis",
+      "Homo naledi",
+      "Homo floresiensis",
+      "Ardipithecus",
+      "Paranthropus"
+    ],
+    "explanation": "According to Wikipedia, the first humans — Homo habilis — appeared in Africa near the end of the Neogene Period. The Neogene spans from 23.04 million years ago to 2.58 million years ago, when the Quaternary began."
+  },
+  {
+    "id": "science-paleogene-mammals-diversified",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What triggered the rapid diversification of mammals in the Paleogene Period?",
+    "correct_answer": "Dinosaur extinction",
+    "distractors": [
+      "Continental drift",
+      "Volcanic cooling",
+      "Sea level rise",
+      "Solar flare",
+      "Comet impact alone",
+      "Oxygen spike",
+      "Ice age retreat",
+      "Asteroid dust settling"
+    ],
+    "explanation": "According to Wikipedia, the Paleogene began 66 million years ago after the Cretaceous–Paleogene extinction event. Mammals took advantage of the empty ecological niches left by the extinction of non-avian dinosaurs, pterosaurs, and marine reptiles, diversifying from small simple forms into multiple orders and even colonizing the air and marine ecosystems."
+  },
+  {
+    "id": "science-paleogene-birds-are-dinosaurs",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Which living group of animals is actually a surviving lineage of dinosaurs?",
+    "correct_answer": "Birds",
+    "distractors": [
+      "Crocodilians",
+      "Lizards",
+      "Turtles",
+      "Sharks",
+      "Snakes",
+      "Coelacanths",
+      "Horseshoe crabs",
+      "Monitor lizards"
+    ],
+    "explanation": "According to Wikipedia, birds are described as 'the only surviving group of dinosaurs' in the Paleogene context. After the mass extinction, birds quickly diversified from the very few neognath and paleognath clades that survived, radiating into multiple orders and colonizing different ecosystems."
+  },
+  {
+    "id": "science-galton-darwin-cousin",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "What famous naturalist was Francis Galton's half-cousin?",
+    "correct_answer": "Charles Darwin",
+    "distractors": [
+      "Thomas Huxley",
+      "Alfred Russel Wallace",
+      "Gregor Mendel",
+      "Joseph Hooker",
+      "Karl Pearson",
+      "Herbert Spencer",
+      "Thomas Malthus",
+      "John Stuart Mill"
+    ],
+    "explanation": "According to Wikipedia, Francis Galton was Charles Darwin's half-cousin. Galton also developed fingerprint classification used in forensic science, coined the phrase 'nature versus nurture,' and produced over 340 scientific papers and books during his lifetime."
+  },
+  {
+    "id": "science-galton-first-weather-map",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Who devised the first weather map and discovered anticyclones?",
+    "correct_answer": "Francis Galton",
+    "distractors": [
+      "Luke Howard",
+      "Robert FitzRoy",
+      "John Dalton",
+      "Alexander von Humboldt",
+      "Benjamin Franklin",
+      "James Glaisher",
+      "William Ferrel",
+      "Vilhelm Bjerknes"
+    ],
+    "explanation": "According to Wikipedia, Galton was the initiator of scientific meteorology: he devised the first weather map, proposed a theory of anticyclones, and was the first to establish a complete record of short-term climatic phenomena on a European scale. Anticyclones — high-pressure weather systems — bear his conceptual discovery."
+  },
+  {
+    "id": "science-galton-fingerprints",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Who developed the first scientific fingerprint classification system?",
+    "correct_answer": "Francis Galton",
+    "distractors": [
+      "Alphonse Bertillon",
+      "Henry Faulds",
+      "William Herschel",
+      "Edward Henry",
+      "Juan Vucetich",
+      "Karl Pearson",
+      "James Marsh",
+      "Edmond Locard"
+    ],
+    "explanation": "According to Wikipedia, Francis Galton devised a method for classifying fingerprints that proved useful in forensic science. This contributed to the development of fingerprint identification as a cornerstone of criminal investigation — a method still in use over a century later."
+  },
+  {
+    "id": "science-earth-inner-core-solid",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Which part of Earth's core is liquid and generates the magnetic field?",
+    "correct_answer": "Outer core",
+    "distractors": [
+      "Inner core",
+      "Asthenosphere",
+      "Lower mantle",
+      "Lithosphere",
+      "Mesosphere",
+      "Upper mantle",
+      "Crust",
+      "Tectonic plate"
+    ],
+    "explanation": "According to Wikipedia, Earth has a liquid outer core whose flow generates the planet's magnetic field, and a solid inner core at the very center. The primary structure progresses outward: solid inner core, liquid outer core, solid mantle, weak asthenosphere, and silicate crust."
+  },
+  {
+    "id": "science-earth-layers-seismic",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "How do scientists mainly learn about Earth's deep interior structure?",
+    "correct_answer": "Analyzing seismic waves",
+    "distractors": [
+      "Deep drilling",
+      "Heat measurements",
+      "Gravity readings alone",
+      "Volcanic samples",
+      "Magnetic surveys only",
+      "Meteorite comparisons",
+      "Computer simulations only",
+      "Radar imaging"
+    ],
+    "explanation": "According to Wikipedia, scientific understanding of the internal structure of Earth is based on analysis of seismic waves that pass through Earth, along with observations of topography, rock outcrops, volcanic samples, and measurements of gravitational and magnetic fields. Seismology is studied by geophysicists to map layers no human has ever visited."
+  },
+  {
+    "id": "science-ronald-fisher-unified-evolution",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Which scientist bridged Darwin's evolution with Mendel's genetics mathematically?",
+    "correct_answer": "Ronald Fisher",
+    "distractors": [
+      "J.B.S. Haldane",
+      "Sewall Wright",
+      "Thomas Hunt Morgan",
+      "Ernst Mayr",
+      "Hugo de Vries",
+      "August Weismann",
+      "Francis Galton",
+      "Gregor Mendel"
+    ],
+    "explanation": "According to Wikipedia, Fisher combined Mendelian genetics and natural selection using mathematics, contributing to the 'modern synthesis' — the 20th-century revision of evolutionary theory. Richard Dawkins declared Fisher the greatest of Darwin's successors."
+  },
+  {
+    "id": "science-ronald-fisher-anova",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Where did Fisher invent ANOVA by analyzing 80 years of crop data?",
+    "correct_answer": "Rothamsted Station",
+    "distractors": [
+      "Cambridge University",
+      "University of Adelaide",
+      "Royal Society Lab",
+      "Oxford University",
+      "Kew Gardens",
+      "Rugby School",
+      "University College London",
+      "Harrow School"
+    ],
+    "explanation": "According to Wikipedia, from 1919 Fisher worked at the Rothamsted Experimental Station for 14 years, analyzing its immense body of data from crop experiments dating back to the 1840s. From this work he developed the analysis of variance (ANOVA), a statistical tool still used in virtually every scientific field today."
+  },
+  {
+    "id": "science-ronald-fisher-most-influential",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Which scientist ranks #1 in all-time scientific influence by citation count?",
+    "correct_answer": "Ronald Fisher",
+    "distractors": [
+      "Albert Einstein",
+      "Isaac Newton",
+      "Charles Darwin",
+      "Sigmund Freud",
+      "Nikola Tesla",
+      "Louis Pasteur",
+      "Marie Curie",
+      "Carl Linnaeus"
+    ],
+    "explanation": "According to Wikipedia, statistician Jeffrey T. Leek ranked Fisher as the most influential scientist of all time based on the number of citations of his contributions. Fisher's 1921 paper alone has been compared in impact to 'Darwin on evolutionary biology, Gauss on number theory, and Adam Smith on economics.'"
+  },
+  {
+    "id": "science-air-mass-classification",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "What two characteristics define how an air mass is classified?",
+    "correct_answer": "Latitude and surface type",
+    "distractors": [
+      "Temperature and pressure",
+      "Wind speed and humidity",
+      "Altitude and density",
+      "Color and salinity",
+      "Season and hemisphere",
+      "Mass and volume",
+      "Age and origin date",
+      "Moisture and cloudiness"
+    ],
+    "explanation": "According to Wikipedia, air masses are classified according to latitude (polar or arctic vs tropical) and their continental or maritime source regions. Continental and superior air masses are dry, while maritime and monsoon air masses are moist."
+  },
+  {
+    "id": "science-air-mass-surface-modification",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "What happens to an air mass's character when it moves over new terrain?",
+    "correct_answer": "It gets modified quickly",
+    "distractors": [
+      "It stays the same indefinitely",
+      "It splits into smaller masses",
+      "It rises into the stratosphere",
+      "It reverses direction",
+      "It becomes a weather front",
+      "It loses all moisture",
+      "It stops moving entirely",
+      "It descends underground"
+    ],
+    "explanation": "According to Wikipedia, once an air mass moves away from its source region, underlying vegetation and water bodies can quickly modify its character. Classification schemes tackle both an air mass's original characteristics and these modifications — a polar air mass traveling over a warm ocean can become much moister and milder."
+  },
+  {
+    "id": "science-hadley-cell-desert-maker",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "Why do most of Earth's deserts cluster around 30 degrees latitude?",
+    "correct_answer": "Hadley cells sink dry air there",
+    "distractors": [
+      "Jet streams block rain clouds",
+      "Ocean currents deflect moisture",
+      "Polar winds carry cold dry air",
+      "Mountain ranges block rainfall",
+      "Low solar angle dries land",
+      "Continental drift created dry zones",
+      "Trade winds remove clouds",
+      "Ozone layer deflects moisture"
+    ],
+    "explanation": "According to Wikipedia, the sinking branches of Hadley cells give rise to oceanic subtropical ridges and suppress rainfall. Many of Earth's deserts and arid regions are located in the subtropics coincident with the position of these sinking branches — including the Sahara, Arabian, and Australian deserts."
+  },
+  {
+    "id": "science-hadley-cell-named-1735",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "Who first proposed hemisphere-spanning air circulation cells in 1735?",
+    "correct_answer": "George Hadley",
+    "distractors": [
+      "Edmund Halley",
+      "William Ferrel",
+      "Anders Celsius",
+      "Daniel Bernoulli",
+      "Gustave Coriolis",
+      "Robert Hooke",
+      "James Clerk Maxwell",
+      "Benjamin Franklin"
+    ],
+    "explanation": "According to Wikipedia, the Hadley circulation is named after George Hadley, who in 1735 postulated the existence of hemisphere-spanning circulation cells driven by differences in heating to explain the trade winds. The existence of the broad meridional circulation he predicted was only confirmed in the mid-20th century once radiosondes allowed routine upper-troposphere observations."
+  },
+  {
+    "id": "science-hadley-cell-climate-change-expansion",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "Since the 1980s, what has climate change done to the Hadley circulation?",
+    "correct_answer": "Expanded it poleward",
+    "distractors": [
+      "Reversed its direction",
+      "Weakened it completely",
+      "Merged its two cells",
+      "Raised its altitude",
+      "Shifted it equatorward",
+      "Broken it into fragments",
+      "Made it seasonal only",
+      "Pushed it underground"
+    ],
+    "explanation": "According to Wikipedia, observations and climate modelling indicate that the Hadley circulation has expanded poleward since at least the 1980s as a result of climate change, with an accompanying but less certain intensification of the circulation. Model projections suggest it will widen and weaken throughout the 21st century."
+  },
+  {
+    "id": "science-pedogenesis-soil-horizons",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What name is given to the distinct layers that form as soil develops over time?",
+    "correct_answer": "Soil horizons",
+    "distractors": [
+      "Geological strata",
+      "Bedrock zones",
+      "Sediment bands",
+      "Mineral veins",
+      "Water tables",
+      "Clay lenses",
+      "Rock profiles",
+      "Deposit layers"
+    ],
+    "explanation": "According to Wikipedia, the biogeochemical processes of pedogenesis lead to the development of layers termed soil horizons, distinguished by differences in color, structure, texture, and chemistry. These occur in recognizable patterns that help scientists classify soils and understand their history."
+  },
+  {
+    "id": "science-pedogenesis-order-and-disorder",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What makes pedogenesis unusual compared to most geological processes?",
+    "correct_answer": "It both creates and destroys order",
+    "distractors": [
+      "It only occurs in warm climates",
+      "It requires volcanic activity",
+      "It works only underground",
+      "It needs liquid water",
+      "It only builds up layers",
+      "It requires human activity",
+      "It works from top to bottom",
+      "It only happens in forests"
+    ],
+    "explanation": "According to Wikipedia, biogeochemical processes in soil formation act to both create and destroy order (anisotropy) within soils. This dual nature — building structure in some ways while breaking it down in others — is what makes pedogenesis such a complex and fascinating earth process."
+  },
+  {
+    "id": "science-pedogenesis-geography-history",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Why do similar soil types appear in predictable geographic patterns worldwide?",
+    "correct_answer": "Same soil-forming factors",
+    "distractors": [
+      "Continental drift spread them",
+      "Ancient glaciers deposited them",
+      "Ocean currents mixed them",
+      "Plate tectonics lifted them",
+      "Volcanic eruptions spread ash",
+      "Human agriculture moved them",
+      "Wind carried identical seeds",
+      "River flooding deposited silt"
+    ],
+    "explanation": "According to Wikipedia, soil types occur in patterns of distribution that form in response to differences in soil-forming factors. This predictability — known as soil geography — means a trained pedologist can often predict what kind of soil will exist in a new location just by knowing the climate, parent rock, vegetation, and topography."
+  },
+  {
+    "id": "science-stellar-magnetic-field-starspots",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "What visible surface features do stellar magnetic fields create on stars?",
+    "correct_answer": "Starspots",
+    "distractors": [
+      "Coronal flares",
+      "Plasma jets",
+      "Nuclear rings",
+      "Gravity wells",
+      "Radiation bursts",
+      "Magnetic poles",
+      "Convection loops",
+      "Fusion craters"
+    ],
+    "explanation": "According to Wikipedia, a stellar magnetic field exerts a force on plasma, increasing pressure without a comparable gain in density, so the magnetized region rises to the photosphere. This process creates starspots on the surface — the same phenomenon seen as sunspots on our own star — as well as coronal loops."
+  },
+  {
+    "id": "science-stellar-magnetic-field-convection",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "What energy transport mechanism generates a stellar magnetic field?",
+    "correct_answer": "Convection of plasma",
+    "distractors": [
+      "Nuclear fusion reactions",
+      "Gravitational compression",
+      "Radioactive decay",
+      "Solar wind friction",
+      "Tidal forces from planets",
+      "Cosmic ray bombardment",
+      "Shock wave propagation",
+      "Electron beam emission"
+    ],
+    "explanation": "According to Wikipedia, a stellar magnetic field is a magnetic field generated by the motion of conductive plasma inside a star. This motion is created through convection, which is a form of energy transport involving the physical movement of material. The same basic dynamo process that generates Earth's magnetic field operates inside stars."
+  },
+  {
+    "id": "natural_sciences-maxwells-equations-light-speed",
+    "category_l1": "natural_sciences",
+    "category_l2": "physics_mechanics",
+    "quiz_question": "Maxwell's equations revealed that light is an electromagnetic wave. What is the speed of light they predicted (in m/s)?",
+    "correct_answer": "{299792458} m/s",
+    "distractors": [],
+    "explanation": "When Maxwell combined his four equations, they automatically predicted waves travelling at exactly the speed of light — he realized with astonishment that light itself must be an electromagnetic phenomenon. (Source: Wikipedia: Maxwell's equations)"
+  },
+  {
+    "id": "natural_sciences-quaternary-pleistocene-holocene",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "The Quaternary Period is divided into two epochs. One is the Holocene; what is the other?",
+    "correct_answer": "Pleistocene",
+    "distractors": [
+      "Miocene",
+      "Pliocene",
+      "Oligocene",
+      "Eocene",
+      "Paleocene",
+      "Cretaceous",
+      "Jurassic",
+      "Cretaceous"
+    ],
+    "explanation": "We are living in the Holocene epoch of the Quaternary Period — the relatively warm, stable interglacial period that began 12,000 years ago and allowed human civilization to develop. (Source: Wikipedia: Quaternary)"
+  },
+  {
+    "id": "natural_sciences-earth-formation-4-54-billion",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "According to scientific evidence, approximately how many billion years ago did Earth form?",
+    "correct_answer": "About {4.54} billion years ago",
+    "distractors": [],
+    "explanation": "Earth is about 4.54 billion years old — roughly one-third the age of the universe — and it formed from the gravitational collapse of a molecular cloud, the same process that formed the Sun. (Source: Wikipedia: History of Earth)"
+  },
+  {
+    "id": "natural_sciences-galton-coined-eugenics",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Francis Galton coined the term 'eugenics' in what year?",
+    "correct_answer": "{1883}",
+    "distractors": [],
+    "explanation": "Galton coined 'eugenics' in 1883 — he was Charles Darwin's half-cousin, and used Darwin's ideas to justify deeply harmful theories about selective human breeding, theories that would be weaponized in the 20th century with horrific consequences. (Source: Wikipedia: Francis Galton)"
+  },
+  {
+    "id": "natural_sciences-ronald-fisher-anova",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "Ronald Fisher developed the analysis of variance (ANOVA) while analyzing crop experiment data at which research station?",
+    "correct_answer": "Rothamsted Experimental Station",
+    "distractors": [
+      "Cambridge Botanic Garden",
+      "Kew Gardens Research Center",
+      "Imperial College Farm",
+      "Oxford Agricultural Institute",
+      "Edinburgh Experimental Farm",
+      "John Innes Centre",
+      "Broadbalk Agronomy Centre",
+      "Bristol Genetic Research Farm"
+    ],
+    "explanation": "Fisher developed ANOVA to analyze 80 years' worth of crop data at Rothamsted — one of the world's oldest agricultural research stations — turning a mountain of messy field records into the foundations of modern statistics. (Source: Wikipedia: Ronald Fisher)"
+  },
+  {
+    "id": "natural_sciences-solar-system-nebular-hypothesis",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "The nebular hypothesis for solar system formation was first developed in the 18th century. Who were among its original proposers?",
+    "correct_answer": "Emanuel Swedenborg, Immanuel Kant, and Pierre-Simon Laplace",
+    "distractors": [
+      "Newton, Halley, and Herschel",
+      "Galileo, Kepler, and Brahe",
+      "Faraday, Maxwell, and Cavendish",
+      "Huygens, Cassini, and Halley",
+      "Leibniz, Euler, and Bernoulli",
+      "Lamarck, Buffon, and Cuvier",
+      "Franklin, Priestley, and Lavoisier",
+      "Cassini, Brahe, and Herschel"
+    ],
+    "explanation": "The nebular hypothesis — that our solar system condensed from a spinning cloud of gas — was independently proposed by a Swedish mystic (Swedenborg), a German philosopher (Kant), and a French mathematician (Laplace), centuries before it was confirmed. (Source: Wikipedia: Formation and evolution of the Solar System)"
+  },
+  {
+    "id": "natural_sciences-hadley-cell-trade-winds",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "The Hadley cell is a global atmospheric circulation pattern. What surface wind phenomenon results from its lower branches?",
+    "correct_answer": "Trade winds",
+    "distractors": [
+      "Jet streams",
+      "Polar vortex",
+      "Monsoons",
+      "Westerlies",
+      "Roaring Forties",
+      "Katabatic winds",
+      "Santa Ana winds",
+      "Thermal inversions"
+    ],
+    "explanation": "The trade winds that propelled Columbus's ships across the Atlantic are actually just the lower branch of the Hadley cell — a giant atmospheric conveyor belt where hot equatorial air rises, flows poleward, cools, and descends around 30° latitude. (Source: Wikipedia: Hadley cell)"
+  },
+  {
+    "id": "natural_sciences-pedogenesis-soil-horizons",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "Pedogenesis is the scientific term for the process of what formation?",
+    "correct_answer": "Soil formation",
+    "distractors": [
+      "Rock formation",
+      "Fossil formation",
+      "Crystal formation",
+      "Cave formation",
+      "River delta formation",
+      "Coral reef formation",
+      "Peat formation",
+      "Glacier formation"
+    ],
+    "explanation": "Pedogenesis — soil formation — can take thousands of years to produce just one inch of topsoil. The rich agricultural soils that feed civilizations took longer to form than recorded human history. (Source: Wikipedia: Pedogenesis)"
+  },
+  {
+    "id": "natural_sciences-neogene-miocene-pliocene",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "The Neogene Period is subdivided into two epochs. What are they?",
+    "correct_answer": "Miocene and Pliocene",
+    "distractors": [
+      "Pleistocene and Holocene",
+      "Eocene and Oligocene",
+      "Paleocene and Eocene",
+      "Oligocene and Miocene",
+      "Pliocene and Pleistocene",
+      "Cretaceous and Paleocene",
+      "Aptian and Albian",
+      "Permian and Triassic"
+    ],
+    "explanation": "During the Neogene, the Isthmus of Panama rose from the sea — connecting North and South America for the first time — and this single geological event transformed ocean currents, climate, and the course of evolution on both continents. (Source: Wikipedia: Neogene)"
+  },
+  {
+    "id": "natural_sciences-cupressus-mythology-origin",
+    "category_l1": "natural_sciences",
+    "category_l2": "botany_plants",
+    "quiz_question": "What mythological origin explains the name of the cypress tree?",
+    "correct_answer": "A boy turned into a tree",
+    "distractors": [
+      "A god who planted it",
+      "A nymph who wept there",
+      "A hero who sheltered under it",
+      "A king who loved its wood",
+      "A river spirit's gift",
+      "A sacred grove spirit",
+      "A sun deity's symbol",
+      "A warrior's final wish"
+    ],
+    "explanation": "According to Wikipedia, the name 'cypress' (Latin cyparissus, Greek kypárissos) derives from Cyparissus, a mythological figure who was turned into a tree after killing a stag. The genus Cupressus is found across warm temperate regions from northwest Africa to southern China."
+  },
+  {
+    "id": "natural_sciences-cupressus-global-cultivation",
+    "category_l1": "natural_sciences",
+    "category_l2": "botany_plants",
+    "quiz_question": "Which continent is NOT part of the native range of Cupressus cypress trees?",
+    "correct_answer": "Australia",
+    "distractors": [
+      "Africa",
+      "Asia",
+      "North America",
+      "South America",
+      "Antarctica",
+      "Europe",
+      "Arctic",
+      "Pacific Islands"
+    ],
+    "explanation": "According to Wikipedia, Cupressus species are native to scattered localities in mainly warm temperate regions of the Northern Hemisphere, including northwest Africa, the Middle East, the Himalayas, southern China, and northern Vietnam. Extensive cultivation has spread them worldwide."
+  },
+  {
+    "id": "natural_sciences-karst-hydrocarbon-reserves",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What share of the world's hydrocarbon reserves may be hosted in porous karst and carbonate rock systems?",
+    "correct_answer": "Up to {50}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the study of paleokarst (buried karst in the stratigraphic column) is important in petroleum geology because as much as 50% of the world's hydrocarbon reserves are hosted in carbonate rock, and much of this is found in porous karst systems. Karst topography forms from dissolution of soluble carbonate rocks like limestone."
+  },
+  {
+    "id": "natural_sciences-asbestos-latency-period",
+    "category_l1": "natural_sciences",
+    "category_l2": "materials_engineering",
+    "quiz_question": "How long is the typical latency period between asbestos exposure and disease diagnosis?",
+    "correct_answer": "{20} years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the consequences of asbestos exposure can take decades to arise — the latency period from exposure to diagnosis of negative health effects is typically 20 years. Around 255,000 people are thought to die each year from diseases related to asbestos exposure, partly because many older buildings still contain it."
+  },
+  {
+    "id": "natural_sciences-rosalind-franklin-photo-51",
+    "category_l1": "natural_sciences",
+    "category_l2": "biology_organisms",
+    "quiz_question": "What was the name of Rosalind Franklin's X-ray DNA image shown to Watson without her knowledge?",
+    "correct_answer": "Photo 51",
+    "distractors": [
+      "Image Alpha",
+      "X-ray 23",
+      "Structure B",
+      "Helix Shot",
+      "Crystal 4",
+      "Frame 11",
+      "Diffraction 7",
+      "Watson Image"
+    ],
+    "explanation": "According to Wikipedia, Franklin is best known for Photo 51 — an X-ray diffraction image of DNA taken by her student Raymond Gosling — which led to the discovery of the DNA double helix. Maurice Wilkins showed it to Watson without Franklin's permission. Francis Crick, Watson, and Wilkins shared the 1962 Nobel Prize; Franklin had died in 1958 and was ineligible."
+  },
+  {
+    "id": "natural_sciences-basalt-most-volcanic-rock",
+    "category_l1": "natural_sciences",
+    "category_l2": "geology_earth",
+    "quiz_question": "What percentage of all volcanic rock on Earth is basalt?",
+    "correct_answer": "More than {90}%",
+    "distractors": [],
+    "explanation": "According to Wikipedia, more than 90% of all volcanic rock on Earth is basalt. It also makes up the bulk of Venus's plains (~80% of its surface), the lunar maria (flood-basaltic lava flows), and is a common rock on Mars. Geologists observe basalt lava eruptions at about 20 volcanoes per year."
+  },
+  {
+    "id": "natural_sciences-w-d-hamilton-kin-selection",
+    "category_l1": "natural_sciences",
+    "category_l2": "ecology_environment",
+    "quiz_question": "What did W. D. Hamilton's theoretical work explain using a rigorous genetic basis?",
+    "correct_answer": "Why altruism exists",
+    "distractors": [
+      "Why predators evolve",
+      "How mutations spread",
+      "Why species go extinct",
+      "How genes replicate",
+      "Why parasites evolve",
+      "How brains develop",
+      "Why sex evolved",
+      "How ecosystems form"
+    ],
+    "explanation": "According to Wikipedia, William Donald Hamilton became known for his theoretical work expounding a rigorous genetic basis for the existence of altruism — an insight that was a key part of the development of the gene-centred view of evolution. Richard Dawkins wrote that Hamilton was 'the greatest Darwinian of my lifetime'."
+  },
+  {
+    "id": "space_astronomy-nebular-hypothesis-kant-laplace",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "Who first published the nebular hypothesis explaining solar system formation?",
+    "correct_answer": "Immanuel Kant",
+    "distractors": [
+      "Pierre Laplace",
+      "Isaac Newton",
+      "Johannes Kepler",
+      "Galileo Galilei",
+      "Nicolaus Copernicus",
+      "Edmund Halley",
+      "William Herschel",
+      "Tycho Brahe"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, Immanuel Kant published the nebular hypothesis in his 1755 work 'Universal Natural History and Theory of the Heavens.' Pierre-Simon Laplace later independently modified the theory in 1796, giving us the Kant-Laplace nebular model."
+  },
+  {
+    "id": "space_astronomy-nebular-hypothesis-sndm",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "What does the nebular hypothesis explain about planetary orbital planes?",
+    "correct_answer": "They are nearly coplanar",
+    "distractors": [
+      "They orbit at random angles",
+      "They follow elliptical paths only",
+      "They mirror the Moon's orbit",
+      "They formed after the Sun cooled",
+      "They were captured from space",
+      "They orbit in opposite directions",
+      "They tilt toward the ecliptic",
+      "They align with magnetic poles"
+    ],
+    "explanation": "According to Wikipedia, the nebular model explains 'the nearly circular and coplanar orbits of the planets, and their motion in the same direction as the Sun's rotation.' All planets inherited their orbital geometry from the original spinning protoplanetary disk."
+  },
+  {
+    "id": "space_astronomy-constellation-88-modern",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "How many constellations are officially recognized in modern astronomy?",
+    "correct_answer": "{88}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, today's constellations were 'internationally recognized' in the early 20th century, standardizing the 88 modern constellations. This replaced a fragmented system where different cultures and nations had their own constellations 'some of which lasted into the early 20th century.'"
+  },
+  {
+    "id": "space_astronomy-constellation-ptolemy-48",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "How many constellations did Ptolemy catalogue in his ancient Almagest?",
+    "correct_answer": "{48}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, 'the traditional 48 constellations, consisting of the zodiac and 36 more... are listed by Ptolemy, a Greco-Roman astronomer from Alexandria, Egypt, in his Almagest.' These ancient patterns survived for nearly 2,000 years and remain at the core of today's 88."
+  },
+  {
+    "id": "space_astronomy-ceres-discovery-1801",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "On what date was Ceres discovered, making it a celestial New Year's gift?",
+    "correct_answer": "January 1, 1801",
+    "distractors": [
+      "March 13, 1781",
+      "February 18, 1930",
+      "December 25, 1758",
+      "July 4, 1848",
+      "August 25, 1989",
+      "November 10, 1572",
+      "June 21, 1682",
+      "April 15, 1912"
+    ],
+    "explanation": "According to Wikidata, Ceres was discovered on 1801-01-01 by Giuseppe Piazzi at the Palermo Astronomical Observatory. Wikipedia notes it was 'announced as a new planet' before later being reclassified — making it one of the most consequential discoveries ever made on New Year's Day."
+  },
+  {
+    "id": "space_astronomy-ceres-cryovolcano-ahuna-mons",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "What type of volcano on Ceres erupts with briny water instead of lava?",
+    "correct_answer": "Cryovolcano",
+    "distractors": [
+      "Mud volcano",
+      "Ice geyser",
+      "Salt dome",
+      "Brine fountain",
+      "Hydrothermal vent",
+      "Frost plume",
+      "Silica fumarole",
+      "Ammonia geyser"
+    ],
+    "explanation": "According to Wikipedia, Ceres hosts cryovolcanoes such as Ahuna Mons, which form 'roughly every fifty million years' as brines flow through the outer mantle and reach the surface. NASA's Dawn spacecraft confirmed this in 2015."
+  },
+  {
+    "id": "space_astronomy-dwarf-planet-2006-iau",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "In what year did the IAU adopt the 'dwarf planet' classification, demoting Pluto?",
+    "correct_answer": "{2006}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, 'the prototypical dwarf planet is Pluto, which for decades was regarded as a planet before the \"dwarf\" concept was adopted in 2006.' The IAU's 2006 vote created the new category, simultaneously stripping Pluto of full planet status."
+  },
+  {
+    "id": "space_astronomy-dwarf-planet-nine-largest",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Of the nine recognized dwarf planets, how many have been visited by spacecraft?",
+    "correct_answer": "Two",
+    "distractors": [
+      "None",
+      "One",
+      "Three",
+      "Four",
+      "Five",
+      "All nine",
+      "Six",
+      "Seven"
+    ],
+    "explanation": "According to Wikipedia, 'of these ten, two have been visited by spacecraft (Pluto and Ceres).' Pluto was visited by New Horizons in 2015, and Ceres by Dawn in 2015 — both in the same year."
+  },
+  {
+    "id": "space_astronomy-natural-satellite-434-confirmed",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How many confirmed natural satellites orbit the solar system's six planetary systems?",
+    "correct_answer": "{434}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, 'in the Solar System, there are six planetary satellite systems, altogether comprising 434 natural satellites with confirmed orbits.' Beyond this, seven dwarf planets and 630 minor planets also have known natural satellites."
+  },
+  {
+    "id": "space_astronomy-ursa-major-third-largest",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "How large is Ursa Major in square degrees on the celestial sphere?",
+    "correct_answer": "{1280} sq degrees",
+    "distractors": [],
+    "explanation": "According to Wikidata, Ursa Major covers 1,280 square degrees, and Wikipedia confirms it is 'the third largest of the 88 modern constellations.' Its famous Big Dipper asterism is just the central seven brightest stars of this much larger region."
+  },
+  {
+    "id": "space_astronomy-ursa-major-alaska-flag",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Which US state's flag depicts the Big Dipper from Ursa Major?",
+    "correct_answer": "Alaska",
+    "distractors": [
+      "Hawaii",
+      "Montana",
+      "Oregon",
+      "Wyoming",
+      "North Dakota",
+      "Idaho",
+      "Vermont",
+      "Minnesota"
+    ],
+    "explanation": "According to Wikipedia, Ursa Major's 'depiction on the flag of Alaska is a modern example of such symbolism,' referring to its significance as a symbol of the north. Alaska's flag, designed by a 13-year-old in 1927, features the Big Dipper and Polaris."
+  },
+  {
+    "id": "space_astronomy-orion-belt-three-stars",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "What are the names of Orion's two brightest stars, both of which are supergiants?",
+    "correct_answer": "Rigel and Betelgeuse",
+    "distractors": [
+      "Sirius and Vega",
+      "Aldebaran and Deneb",
+      "Spica and Antares",
+      "Capella and Pollux",
+      "Fomalhaut and Regulus",
+      "Castor and Procyon",
+      "Canopus and Arcturus",
+      "Altair and Achernar"
+    ],
+    "explanation": "According to Wikipedia, Orion's 'two brightest stars, Rigel (β) and Betelgeuse (α), are both among the brightest stars in the night sky; both are supergiants and slightly variable.' Rigel burns blue-white while Betelgeuse glows red-orange, making them visually striking opposites."
+  },
+  {
+    "id": "space_astronomy-orion-nebula-halley-comet",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Which famous comet is the source of debris that creates the annual Orionids meteor shower?",
+    "correct_answer": "Halley's Comet",
+    "distractors": [
+      "Hale-Bopp",
+      "Comet McNaught",
+      "Encke's Comet",
+      "Shoemaker-Levy 9",
+      "Tempel-Tuttle",
+      "Swift-Tuttle",
+      "Churyumov-Gerasimenko",
+      "Giacobini-Zinner"
+    ],
+    "explanation": "According to Wikipedia, Orion 'hosts the radiant of the annual Orionids, the strongest meteor shower associated with Halley's Comet.' Every October, Earth passes through the trail of debris left by Halley's Comet, producing shooting stars that appear to originate from Orion."
+  },
+  {
+    "id": "space_astronomy-eris-more-massive-than-pluto",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How much more massive is Eris compared to Pluto?",
+    "correct_answer": "{27}% more massive",
+    "distractors": [],
+    "explanation": "According to Wikipedia, Eris's 'mass is 0.28% that of the Earth and 27% greater than that of Pluto, although Pluto is slightly larger by volume.' Eris's density of 2.52 g/cm³ (from Wikidata) is higher than Pluto because it has a more rock-rich composition."
+  },
+  {
+    "id": "space_astronomy-eris-distance-96-au",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How many AU from the Sun was Eris in February 2016?",
+    "correct_answer": "{96.3} AU",
+    "distractors": [],
+    "explanation": "According to Wikipedia, 'in February 2016, Eris's distance from the Sun was 96.3 AU (14.41 billion km).' Wikidata confirms its semi-major axis is 67.74 AU and orbital eccentricity of 0.44, meaning its distance from the Sun varies enormously over its 557-year orbit."
+  },
+  {
+    "id": "space_astronomy-titan-only-moon-dense-atmosphere",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Which moon is the only one in the Solar System with a denser atmosphere than Earth?",
+    "correct_answer": "Titan",
+    "distractors": [
+      "Europa",
+      "Ganymede",
+      "Callisto",
+      "Io",
+      "Triton",
+      "Enceladus",
+      "Miranda",
+      "Oberon"
+    ],
+    "explanation": "According to Wikipedia, Titan is 'the only moon known to have a dense atmosphere — denser than Earth's — and is the only known object in the Solar System besides Earth with clear evidence of stable bodies of surface liquid.' These liquid bodies are seas of liquid methane and ethane, not water."
+  },
+  {
+    "id": "space_astronomy-titan-larger-than-mercury",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Though larger in diameter than Mercury, Titan is only what fraction as massive?",
+    "correct_answer": "40%",
+    "distractors": [
+      "10%",
+      "20%",
+      "30%",
+      "50%",
+      "60%",
+      "70%",
+      "75%",
+      "80%"
+    ],
+    "explanation": "According to Wikipedia, Titan 'is larger than Mercury; yet Titan is only 40% as massive as Mercury, because Mercury is mainly iron and rock while much of Titan is mostly ice, which is less dense.' This makes Titan a striking example of how size and mass can be decoupled."
+  },
+  {
+    "id": "space_astronomy-titan-discovered-1655-huygens",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Who discovered Titan in 1655, making it Saturn's first known moon?",
+    "correct_answer": "Christiaan Huygens",
+    "distractors": [
+      "Giovanni Cassini",
+      "Galileo Galilei",
+      "William Herschel",
+      "Johannes Kepler",
+      "Tycho Brahe",
+      "Edmund Halley",
+      "Simon Marius",
+      "Ole Rømer"
+    ],
+    "explanation": "According to Wikipedia, 'discovered in 1655 by the Dutch astronomer Christiaan Huygens, Titan was the first known moon of Saturn and the sixth known planetary satellite (after Earth's moon and the four Galilean moons of Jupiter).' The ESA probe that landed on Titan in 2005 was named in his honor."
+  },
+  {
+    "id": "space_astronomy-pleiades-seven-sisters-444-ly",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "How far away is the Pleiades star cluster from Earth in light-years?",
+    "correct_answer": "About {444} light-years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Pleiades is 'at a distance of about 444 light-years' and 'is among the nearest star clusters to Earth and the nearest Messier object to Earth, being the most obvious star cluster to the naked eye in the night sky.'"
+  },
+  {
+    "id": "space_astronomy-pleiades-250-million-years-survival",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "How many more years will the Pleiades remain a recognizable star cluster?",
+    "correct_answer": "{250} million years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, 'astronomers estimate that the cluster will survive for approximately another 250 million years, after which the clustering will be lost due to gravitational interactions with the galactic' environment. The cluster formed within the last 100 million years from a compact configuration similar to the Orion Nebula."
+  },
+  {
+    "id": "space_astronomy-pleiades-800-solar-mass-cluster",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "What is the total mass of the Pleiades star cluster in solar masses?",
+    "correct_answer": "{800} solar masses",
+    "distractors": [],
+    "explanation": "According to Wikidata, the Pleiades has a mass of 800 solar masses and a radius of 7.5 light-years. Wikipedia notes its apparent magnitude is 1.6, making it easily visible to the naked eye despite being 444 light-years away."
+  },
+  {
+    "id": "space_astronomy-nebular-hypothesis-solar-formation",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "Which two thinkers independently developed the nebular hypothesis of Solar System formation?",
+    "correct_answer": "Kant and Laplace",
+    "distractors": [
+      "Newton and Copernicus",
+      "Kepler and Galileo",
+      "Herschel and Halley",
+      "Brahe and Newton",
+      "Einstein and Hubble",
+      "Sagan and Hawking",
+      "Ptolemy and Aristotle",
+      "Darwin and Lyell"
+    ],
+    "explanation": "According to Wikipedia, Immanuel Kant published the nebular hypothesis in 1755, and Pierre Laplace independently refined it in 1796. The model explains how rotating gas and dust clouds collapse to form stars and planets — now considered the standard account of planetary system formation."
+  },
+  {
+    "id": "space_astronomy-nebular-hypothesis-same-direction",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "Why do all Solar System planets orbit in the same direction as the Sun's spin?",
+    "correct_answer": "Same original spinning disk",
+    "distractors": [
+      "Sun's magnetic field guides them",
+      "Gravity forces uniform orbit",
+      "They formed from the same comet",
+      "Dark matter alignment effect",
+      "Ancient planetary collisions",
+      "Jupiter's gravitational pull",
+      "The Moon stabilizes orbits",
+      "Tidal locking by the Sun"
+    ],
+    "explanation": "According to Wikipedia, the nebular hypothesis specifically explains the nearly circular, coplanar orbits of the planets and their motion in the same direction as the Sun's rotation — because everything formed from a single rotating disk of gas and dust."
+  },
+  {
+    "id": "space_astronomy-nebular-hypothesis-star-formation",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "Inside what enormous structure do stars form, according to the nebular hypothesis?",
+    "correct_answer": "Giant molecular clouds",
+    "distractors": [
+      "Planetary nebulae",
+      "Globular clusters",
+      "Supernova remnants",
+      "Dark matter halos",
+      "Asteroid belts",
+      "Galactic filaments",
+      "Neutron star shells",
+      "Binary star systems"
+    ],
+    "explanation": "According to Wikipedia, stars form in massive and dense clouds of molecular hydrogen called giant molecular clouds (GMC). These clouds are gravitationally unstable — matter coalesces into smaller, denser clumps that rotate, collapse, and eventually ignite as stars."
+  },
+  {
+    "id": "space_astronomy-constellation-88-recognized",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "How many constellations are officially recognized by international astronomers today?",
+    "correct_answer": "{88}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, different cultures and countries had their own constellations for millennia, but the 88 modern constellations became internationally recognized in the early 20th century. The original 48 were listed by the astronomer Ptolemy in the 2nd century AD."
+  },
+  {
+    "id": "space_astronomy-constellation-zodiac-babylon",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "In which ancient civilization's astronomy did the zodiac constellations first become prominent?",
+    "correct_answer": "Babylonian",
+    "distractors": [
+      "Ancient Egyptian",
+      "Ancient Greek",
+      "Roman Empire",
+      "Ancient Chinese",
+      "Sumerian",
+      "Ancient Indian",
+      "Mesopotamian Persian",
+      "Ancient Mayan"
+    ],
+    "explanation": "According to Wikipedia, the zodiac's astrological divisions became prominent around 400 BC in Babylonian (also called Chaldean) astronomy. The constellations then entered Western culture through Greece and appear in the works of Hesiod, Eudoxus, and Aratus."
+  },
+  {
+    "id": "space_astronomy-ceres-first-asteroid-discovery",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "On what unusual calendar date was the dwarf planet Ceres first discovered?",
+    "correct_answer": "New Year's Day",
+    "distractors": [
+      "Christmas Day",
+      "Summer solstice",
+      "Winter equinox",
+      "April Fool's Day",
+      "Valentine's Day",
+      "Midsummer's Night",
+      "The vernal equinox",
+      "A leap day"
+    ],
+    "explanation": "According to Wikipedia, Giuseppe Piazzi discovered Ceres on 1 January 1801 at the Palermo Astronomical Observatory in Sicily. He initially announced it as a new planet — but it was later reclassified as an asteroid, and then in 2006 as a dwarf planet."
+  },
+  {
+    "id": "space_astronomy-ceres-cryovolcanism",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How often do ice volcanoes erupt on the dwarf planet Ceres?",
+    "correct_answer": "Every {50} million years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, brines (salty liquid) still flow through Ceres's outer mantle and reach the surface, allowing cryovolcanoes like Ahuna Mons to form roughly every 50 million years. The Dawn spacecraft confirmed this when it arrived in 2015."
+  },
+  {
+    "id": "space_astronomy-ceres-rotation-period",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Approximately how many hours does it take Ceres to complete one full rotation?",
+    "correct_answer": "{9} hours",
+    "distractors": [],
+    "explanation": "According to Wikidata, Ceres has a rotation period of 9.07417 hours. This means a day on Ceres is less than half as long as a day on Earth, despite being the largest object in the asteroid belt."
+  },
+  {
+    "id": "space_astronomy-dwarf-planet-pluto-2006",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "In what year did the IAU officially create the 'dwarf planet' category, demoting Pluto?",
+    "correct_answer": "{2006}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the 'dwarf' concept was adopted in 2006, and Pluto — which had been regarded as the ninth planet since its discovery in 1930 — became the prototypical dwarf planet. This remains one of the most controversial decisions in modern astronomy."
+  },
+  {
+    "id": "space_astronomy-dwarf-planet-geologically-active",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Which two dwarf planets revealed unexpected geological activity to visiting spacecraft in 2015?",
+    "correct_answer": "Ceres and Pluto",
+    "distractors": [
+      "Eris and Haumea",
+      "Pluto and Eris",
+      "Makemake and Ceres",
+      "Haumea and Pluto",
+      "Gonggong and Quaoar",
+      "Sedna and Ceres",
+      "Makemake and Eris",
+      "Orcus and Pluto"
+    ],
+    "explanation": "According to Wikipedia, the Dawn mission to Ceres and the New Horizons mission to Pluto both revealed geological activity in 2015, defying expectations that small, cold worlds would be geologically dead."
+  },
+  {
+    "id": "space_astronomy-natural-satellite-434-count",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How many confirmed natural satellites orbit planets in our Solar System?",
+    "correct_answer": "{434}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Solar System's six planetary satellite systems together comprise 434 natural satellites with confirmed orbits. Additionally, 630 minor planets have known natural satellites, and seven dwarf planets also have moons."
+  },
+  {
+    "id": "space_astronomy-orion-supergiants-rigel-betelgeuse",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "What do Orion's two brightest stars, Rigel and Betelgeuse, have in common?",
+    "correct_answer": "Both are supergiants",
+    "distractors": [
+      "Both are binary stars",
+      "Both are red dwarfs",
+      "Both will become black holes",
+      "Both have planets",
+      "Both are in Orion's Belt",
+      "Both are the same color",
+      "Both are yellow-white stars",
+      "Both are pulsars"
+    ],
+    "explanation": "According to Wikipedia, both Rigel (Beta Orionis) and Betelgeuse (Alpha Orionis) are supergiants and slightly variable stars, and both rank among the brightest stars in the night sky. Their contrasting colors — Rigel blue-white, Betelgeuse red — make Orion especially striking."
+  },
+  {
+    "id": "space_astronomy-orion-winter-hexagon",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Orion's stars contribute to which giant winter sky asterism?",
+    "correct_answer": "The Winter Hexagon",
+    "distractors": [
+      "The Summer Triangle",
+      "The Great Square",
+      "The Spring Arc",
+      "The Autumn Diamond",
+      "The Northern Cross",
+      "The Celestial W",
+      "The Zodiac Ring",
+      "The Milky Way band"
+    ],
+    "explanation": "According to Wikipedia, Orion is most prominent during winter evenings in the Northern Hemisphere, as are five other constellations that have stars in the Winter Hexagon asterism. The constellation covers 594 square degrees, making it one of the more recognizable large constellations."
+  },
+  {
+    "id": "space_astronomy-eris-orbital-period",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How many Earth-years does it take Eris to complete one orbit around the Sun?",
+    "correct_answer": "{557} years",
+    "distractors": [],
+    "explanation": "According to Wikidata, Eris has an orbital period of 557.55 years. Its highly elliptical orbit takes it to a maximum distance of about 97 AU from the Sun. In early 2016, it was 96.3 AU away — more than three times Neptune's distance."
+  },
+  {
+    "id": "space_astronomy-eris-named-strife",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Eris is named after which goddess — fittingly given its role in reclassifying Pluto?",
+    "correct_answer": "Goddess of strife",
+    "distractors": [
+      "Goddess of the hunt",
+      "Goddess of the sea",
+      "Goddess of wisdom",
+      "Goddess of the harvest",
+      "Goddess of the moon",
+      "Goddess of love",
+      "Goddess of war",
+      "Goddess of the sky"
+    ],
+    "explanation": "According to Wikipedia, Eris was named in September 2006 after the Greco-Roman goddess of strife and discord. The name was perfectly chosen — the discovery of Eris sparked the contentious IAU debate that demoted Pluto and created the 'dwarf planet' category."
+  },
+  {
+    "id": "space_astronomy-titan-discovered-huygens",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Which 17th-century astronomer discovered Saturn's giant moon, Titan?",
+    "correct_answer": "Christiaan Huygens",
+    "distractors": [
+      "Giovanni Cassini",
+      "Galileo Galilei",
+      "Johannes Kepler",
+      "William Herschel",
+      "Pierre Laplace",
+      "John Flamsteed",
+      "Ole Roemer",
+      "Edmund Halley"
+    ],
+    "explanation": "According to Wikidata, Titan was discovered by Christiaan Huygens on March 25, 1655. Huygens used a self-built telescope to spot the moon. The ESA Huygens probe, which landed on Titan in 2005, was named in his honor."
+  },
+  {
+    "id": "space_astronomy-titan-radius-bigger-than-mercury",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Titan's radius of 2,574 km makes it physically larger than which planet?",
+    "correct_answer": "Mercury",
+    "distractors": [
+      "Mars",
+      "Venus",
+      "Earth",
+      "Neptune",
+      "Uranus",
+      "Jupiter",
+      "Saturn",
+      "Pluto"
+    ],
+    "explanation": "According to Wikidata, Titan has a radius of 2,574 km, which is larger than Mercury's radius of 2,439 km. However, Titan is less dense than Mercury, so it is less massive despite being physically bigger."
+  },
+  {
+    "id": "space_astronomy-pleiades-distance-444-lightyears",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Approximately how many light-years away is the Pleiades star cluster?",
+    "correct_answer": "{444} light-years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Pleiades is at a distance of about 444 light-years and is the nearest Messier object to Earth. It is also the most obvious star cluster to the naked eye in the night sky, viewable from most areas even in light-polluted locations."
+  },
+  {
+    "id": "space_astronomy-pleiades-young-blue-stars",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Within how many million years ago did the hot blue stars of the Pleiades form?",
+    "correct_answer": "{100} million years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Pleiades is dominated by hot blue luminous stars that formed within the last 100 million years. This makes them cosmically young — for comparison, Earth and the Sun formed about 4.6 billion years ago."
+  },
+  {
+    "id": "space_astronomy-pleiades-vernal-point-2330bc",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Around 2330 BC, the Pleiades cluster marked what important astronomical calendar point?",
+    "correct_answer": "The vernal equinox",
+    "distractors": [
+      "The summer solstice",
+      "The autumn equinox",
+      "The winter solstice",
+      "The lunar eclipse point",
+      "The perihelion point",
+      "The galactic center",
+      "The zodiac origin",
+      "The celestial pole"
+    ],
+    "explanation": "According to Wikipedia, around 2330 BC the Pleiades marked the vernal point (spring equinox). This made the cluster especially important for ancient agricultural civilizations who used the Pleiades' heliacal rising to mark the start of spring planting seasons."
+  },
+  {
+    "id": "space_astronomy-europa-smoothest-object",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Which moon holds the record as the smoothest solid object in the Solar System?",
+    "correct_answer": "Europa",
+    "distractors": [
+      "Ganymede",
+      "Titan",
+      "Enceladus",
+      "Callisto",
+      "Io",
+      "Triton",
+      "Mimas",
+      "Charon"
+    ],
+    "explanation": "According to Wikipedia, Europa's surface lacks large-scale features such as mountains or craters, making it the smoothest known solid object in the Solar System. The smoothness is caused by a liquid water ocean beneath the ice that continuously reshapes the crust."
+  },
+  {
+    "id": "space_astronomy-europa-orbital-period",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How many Earth days does Europa take to complete one orbit of Jupiter?",
+    "correct_answer": "About {3.55} days",
+    "distractors": [],
+    "explanation": "According to Wikidata, Europa's orbital period is 3.551181 days. Its closeness to Jupiter means it completes an orbit in under four Earth days. The tidal forces from this rapid orbit squeeze and flex the moon, generating heat that keeps the subsurface ocean from freezing solid."
+  },
+  {
+    "id": "space_astronomy-europa-oxygen-atmosphere",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "What gas makes up most of Europa's very thin atmosphere?",
+    "correct_answer": "Oxygen",
+    "distractors": [
+      "Nitrogen",
+      "Carbon dioxide",
+      "Methane",
+      "Hydrogen",
+      "Sulfur dioxide",
+      "Helium",
+      "Water vapor",
+      "Ammonia"
+    ],
+    "explanation": "According to Wikipedia, Europa has a very thin atmosphere composed primarily of oxygen. It is not breathable — it's an extremely tenuous exosphere produced by Jupiter's radiation breaking apart water ice on the surface, not a dense protective layer like Earth's."
+  },
+  {
+    "id": "space_astronomy-europa-clipper-launch",
+    "category_l1": "space_astronomy",
+    "category_l2": "missions_spacecraft",
+    "quiz_question": "What year did NASA launch its first spacecraft dedicated to studying Europa?",
+    "correct_answer": "{2024}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, NASA's Europa Clipper was launched on 14 October 2024. It is the first mission dedicated to studying Europa. Most previous Europa data came from the Galileo spacecraft, which orbited Jupiter from 1995 to 2003 and provided the bulk of what we currently know about the moon."
+  },
+  {
+    "id": "space_astronomy-kuiper-belt-size",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "How much wider is the Kuiper Belt than the asteroid belt?",
+    "correct_answer": "{20} times wider",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Kuiper Belt extends from 30 to 50 AU from the Sun and is 20 times as wide and 20–200 times as massive as the asteroid belt. Unlike the asteroid belt, its objects are mostly frozen volatiles — methane, ammonia, and water — rather than rock and metal."
+  },
+  {
+    "id": "space_astronomy-kuiper-belt-pluto-reclassification",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Why was Pluto reclassified as a dwarf planet in 2006?",
+    "correct_answer": "Because it's a Kuiper Belt Object",
+    "distractors": [
+      "It lost its atmosphere",
+      "It shrank below planet size",
+      "Its orbit was unstable",
+      "A larger body replaced it",
+      "NASA revised its mass data",
+      "Voyager disproved its moons",
+      "It failed the gravity test",
+      "New craters changed its class"
+    ],
+    "explanation": "According to Wikipedia, Pluto's orbital period is characteristic of 'plutinos' — a class of KBOs sharing the 2:3 resonance with Neptune. Its composition is similar to many other Kuiper Belt objects, leading to its 2006 reclassification as a dwarf planet by the IAU."
+  },
+  {
+    "id": "space_astronomy-kuiper-belt-comet-origin",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "Where do short-period comets actually originate, surprising early predictions about the Kuiper Belt?",
+    "correct_answer": "The scattered disc",
+    "distractors": [
+      "The Kuiper Belt",
+      "The Oort cloud",
+      "The asteroid belt",
+      "Near Jupiter's orbit",
+      "The inner Solar System",
+      "Solar ejection zones",
+      "Beyond the heliopause",
+      "Neptune's Trojan points"
+    ],
+    "explanation": "According to Wikipedia, the Kuiper Belt was initially thought to be the main source of short-period comets. Studies since the mid-1990s showed the belt is dynamically stable. The comets' true origin is the scattered disc — a dynamically active zone created by Neptune's outward migration 4.5 billion years ago, where objects like Eris have highly eccentric orbits."
+  },
+  {
+    "id": "space_astronomy-kuiper-belt-discovery-1992",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "How many years after Pluto was discovered was the first new Kuiper Belt Object found?",
+    "correct_answer": "{62} years",
+    "distractors": [],
+    "explanation": "According to Wikipedia, minor planet 15760 Albion was discovered in 1992, the first Kuiper Belt Object since Pluto in 1930 and Charon in 1978. Since then, thousands of KBOs have been found, with more than 100,000 estimated to exceed 100 km in diameter."
+  },
+  {
+    "id": "space-nebular-hypothesis-kant-laplace",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "Which philosopher first published the nebular hypothesis in 1755?",
+    "correct_answer": "Immanuel Kant",
+    "distractors": [
+      "Pierre Laplace",
+      "Isaac Newton",
+      "Johannes Kepler",
+      "Nicolaus Copernicus",
+      "Tycho Brahe",
+      "Edmond Halley",
+      "William Herschel",
+      "Galileo Galilei"
+    ],
+    "explanation": "According to Wikipedia, the nebular hypothesis was first published by Immanuel Kant in his Universal Natural History and Theory of the Heavens (1755), then independently modified by Pierre-Simon Laplace in 1796. Wikidata confirms both Kant and Laplace as discoverers/inventors. A philosopher beat astronomers to the theory of planetary formation!"
+  },
+  {
+    "id": "space-nebular-hypothesis-protoplanetary-timescale",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "How many million years does a protoplanetary disk take to become a planetary system?",
+    "correct_answer": "10 to {100} million",
+    "distractors": [],
+    "explanation": "According to Wikipedia, after a Sun-like star forms in about 1 million years, the protoplanetary disk takes an additional 10–100 million years to evolve into a full planetary system. The final terrestrial planet formation stage can take up to a billion years."
+  },
+  {
+    "id": "space-constellation-iau-88",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "How many constellations did the IAU officially recognize in 1922?",
+    "correct_answer": "{88}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the IAU formally accepted the modern list of 88 constellations in 1922 and adopted official boundaries in 1928, ensuring every point in the sky belongs to exactly one constellation. This replaced centuries of varying cultural star groupings."
+  },
+  {
+    "id": "space-constellation-zodiac-babylonian",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "In which ancient culture did zodiac divisions first become prominent around 400 BC?",
+    "correct_answer": "Babylonian",
+    "distractors": [
+      "Greek",
+      "Egyptian",
+      "Assyrian",
+      "Roman",
+      "Persian",
+      "Sumerian",
+      "Indian",
+      "Phoenician"
+    ],
+    "explanation": "According to Wikipedia, the zodiac's astrological divisions became prominent around 400 BC in Babylonian or Chaldean astronomy, despite constellations later reaching Western culture primarily through Greece. Many people associate horoscopes with Greece, but the Babylonians systematized them first."
+  },
+  {
+    "id": "space-ceres-first-asteroid-piazzi",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "On what exact date was Ceres — the first known asteroid — discovered?",
+    "correct_answer": "January 1, 1801",
+    "distractors": [
+      "March 13, 1781",
+      "September 23, 1846",
+      "February 18, 1930",
+      "August 31, 1846",
+      "October 4, 1957",
+      "January 7, 1610",
+      "March 30, 1867",
+      "December 28, 1612"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, Ceres was discovered by Giuseppe Piazzi at Palermo Astronomical Observatory on January 1, 1801 — literally the first day of the 19th century. It was announced as a new planet, later reclassified as an asteroid, and finally in 2006 became one of only five recognized dwarf planets."
+  },
+  {
+    "id": "space-ceres-cryovolcano-closest-sun",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Which dwarf planet is the closest known cryovolcanically active body to the Sun?",
+    "correct_answer": "Ceres",
+    "distractors": [
+      "Pluto",
+      "Eris",
+      "Enceladus",
+      "Titan",
+      "Makemake",
+      "Triton",
+      "Haumea",
+      "Ganymede"
+    ],
+    "explanation": "According to Wikipedia, brines flow through Ceres's outer mantle and reach the surface, allowing ice volcanoes (cryovolcanoes) like Ahuna Mons to form roughly every fifty million years. This makes Ceres uniquely the closest known cryovolcanically active body to the Sun."
+  },
+  {
+    "id": "space-dwarf-planet-pluto-reclassified",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "In what year did the IAU demote Pluto to dwarf planet status?",
+    "correct_answer": "{2006}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the IAU approved the dwarf planet definition on August 24, 2006, at which point Pluto, Eris, and Ceres were classified as dwarf planets, reducing the known planet count to eight. The key distinction is that planets must gravitationally dominate their orbital zone."
+  },
+  {
+    "id": "space-natural-satellite-434-moons",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How many confirmed natural satellite orbits exist in the Solar System's six planetary systems?",
+    "correct_answer": "{434}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the six planetary satellite systems (Earth, Mars, Jupiter, Saturn, Uranus, Neptune) together comprise 434 natural satellites with confirmed orbits. Additionally, seven dwarf planets and 630 minor planets also have known moons as of early 2026."
+  },
+  {
+    "id": "space-ursa-major-alaska-flag",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Which US state's flag features the Big Dipper from Ursa Major?",
+    "correct_answer": "Alaska",
+    "distractors": [
+      "Hawaii",
+      "Montana",
+      "Oregon",
+      "Wyoming",
+      "Colorado",
+      "Idaho",
+      "Nevada",
+      "Minnesota"
+    ],
+    "explanation": "According to Wikipedia, Ursa Major's depiction on the flag of Alaska is a modern example of the constellation's symbolic significance. Two of its stars, Dubhe and Merak, serve as navigational pointers to Polaris, the North Star. Ursa Major is the third largest of the 88 modern constellations."
+  },
+  {
+    "id": "space-orion-halley-comet-orionids",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Which annual meteor shower, caused by Halley's Comet debris, radiates from Orion?",
+    "correct_answer": "Orionids",
+    "distractors": [
+      "Perseids",
+      "Leonids",
+      "Geminids",
+      "Eta Aquariids",
+      "Taurids",
+      "Draconids",
+      "Lyrids",
+      "Ursids"
+    ],
+    "explanation": "According to Wikipedia, Orion hosts the radiant of the annual Orionids — the strongest meteor shower associated with Halley's Comet. While Halley's Comet also produces the Eta Aquariids, the Orionids are particularly famous for originating from this iconic constellation."
+  },
+  {
+    "id": "space-eris-demoted-pluto-heavier",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "What dwarf planet's discovery directly caused the IAU to demote Pluto?",
+    "correct_answer": "Eris",
+    "distractors": [
+      "Haumea",
+      "Makemake",
+      "Sedna",
+      "Quaoar",
+      "Gonggong",
+      "Orcus",
+      "Salacia",
+      "Varuna"
+    ],
+    "explanation": "According to Wikipedia, because Eris appeared larger than Pluto, NASA initially described it as the Solar System's tenth planet. This prospect — plus the likelihood of finding similar objects — motivated the IAU to formally define 'planet' for the first time in 2006, which resulted in Pluto's demotion. Eris is 27% more massive than Pluto, though Pluto is slightly larger by volume."
+  },
+  {
+    "id": "space-eris-orbit-557-years",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Approximately how many Earth years does Eris take to complete one orbit of the Sun?",
+    "correct_answer": "About {558} years",
+    "distractors": [],
+    "explanation": "According to Wikidata, Eris has an orbital period of 557.55 years and its next periapsis (closest approach to the Sun) is in October 2258. By comparison, Pluto takes only about 248 years. Eris's highly eccentric orbit takes it from 38 AU at closest to nearly 97.5 AU at its farthest."
+  },
+  {
+    "id": "space-pleiades-seven-sisters-444-lightyears",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Which star cluster, nicknamed the Seven Sisters, is the nearest Messier object to Earth?",
+    "correct_answer": "Pleiades",
+    "distractors": [
+      "Hyades",
+      "Beehive Cluster",
+      "Wild Duck Cluster",
+      "Omega Centauri",
+      "Hercules Cluster",
+      "Butterfly Cluster",
+      "Jewel Box Cluster",
+      "Perseus Double Cluster"
+    ],
+    "explanation": "According to Wikipedia, the Pleiades (Messier 45) is at a distance of about 444 light-years, making it both the nearest Messier object and the most obvious star cluster to the naked eye in the night sky. Computer simulations show the cluster itself formed from a compact configuration resembling the Orion Nebula."
+  },
+  {
+    "id": "space-pleiades-vernal-point-2330bc",
+    "category_l1": "space_astronomy",
+    "category_l2": "stars_galaxies",
+    "quiz_question": "Around 2330 BC, the Pleiades marked which key annual astronomical event?",
+    "correct_answer": "The vernal equinox",
+    "distractors": [
+      "The summer solstice",
+      "The autumn equinox",
+      "The winter solstice",
+      "A total lunar eclipse",
+      "A solar eclipse",
+      "Perihelion",
+      "Aphelion",
+      "The galactic equator"
+    ],
+    "explanation": "According to Wikipedia, around 2330 BC the Pleiades marked the vernal point — the position of the Sun at the spring equinox. Due to Earth's axial precession, this point shifts over millennia. Ancient cultures tracked the Pleiades' seasonal appearances to time planting, religious ceremonies, and calendar events."
+  },
+  {
+    "id": "space-europa-smoothest-body-solar-system",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Which moon of Jupiter is the smoothest known solid object in the Solar System?",
+    "correct_answer": "Europa",
+    "distractors": [
+      "Io",
+      "Ganymede",
+      "Callisto",
+      "Titan",
+      "Enceladus",
+      "Triton",
+      "Mimas",
+      "Dione"
+    ],
+    "explanation": "According to Wikipedia, Europa's surface lacks large mountains or craters due to a subsurface liquid water ocean that drives ice movement similar to plate tectonics, constantly resurfacing it. This makes Europa the smoothest known solid object in the Solar System — and a prime target in the search for extraterrestrial life."
+  },
+  {
+    "id": "space-europa-galileo-marius-1610",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Who named Jupiter's moon Europa after discovering it independently from Galileo?",
+    "correct_answer": "Simon Marius",
+    "distractors": [
+      "Johannes Kepler",
+      "Tycho Brahe",
+      "Edmond Halley",
+      "William Herschel",
+      "Giovanni Cassini",
+      "Ole Rømer",
+      "Christiaan Huygens",
+      "Jean-Dominique Cassini"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, Europa was discovered independently by Simon Marius and Galileo Galilei in 1610, and was named by Marius after Europa, the Phoenician mother of King Minos of Crete and lover of Zeus. Galileo used numbers rather than mythological names for the moons."
+  },
+  {
+    "id": "space-europa-smoothest-solid-object",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Which moon holds the title of smoothest known solid object in the Solar System?",
+    "correct_answer": "Europa",
+    "distractors": [
+      "Ganymede",
+      "Enceladus",
+      "Titan",
+      "Io",
+      "Callisto",
+      "Triton",
+      "Mimas",
+      "Rhea"
+    ],
+    "explanation": "According to Wikipedia, Europa's surface lacks large-scale features such as mountains or craters, making it the smoothest known solid object in the Solar System. This smoothness is maintained by a subsurface liquid water ocean that continuously reshapes the ice above it."
+  },
+  {
+    "id": "space-europa-subsurface-ocean-life",
+    "category_l1": "space_astronomy",
+    "category_l2": "exoplanets_astrobio",
+    "quiz_question": "What hidden feature of Europa makes it a top candidate for alien life?",
+    "correct_answer": "Liquid water ocean",
+    "distractors": [
+      "Dense oxygen atmosphere",
+      "Active volcanoes",
+      "Warm magnetic poles",
+      "Underground lava tubes",
+      "Nitrogen lakes",
+      "Carbon-rich surface",
+      "Hydrothermal vents above ice",
+      "Rocky caves with heat"
+    ],
+    "explanation": "According to Wikipedia, tidal heating from Jupiter keeps Europa's subsurface ocean liquid despite the moon's extreme cold. This makes Europa one of the most promising locations in the Solar System for finding life, as the ocean may interact with the seafloor and receive chemicals from the surface."
+  },
+  {
+    "id": "space-europa-named-by-simon-marius",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "Who gave Jupiter's moon Europa its name?",
+    "correct_answer": "Simon Marius",
+    "distractors": [
+      "Galileo Galilei",
+      "Johannes Kepler",
+      "Nicolaus Copernicus",
+      "Giovanni Cassini",
+      "Christiaan Huygens",
+      "Edmund Halley",
+      "William Herschel",
+      "Tycho Brahe"
+    ],
+    "explanation": "According to Wikidata and Wikipedia, Simon Marius named Europa after the Phoenician mother of King Minos of Crete who was a lover of Zeus. Although Galileo Galilei also independently discovered the moon, Marius's naming system is the one that stuck."
+  },
+  {
+    "id": "space-europa-orbital-period",
+    "category_l1": "space_astronomy",
+    "category_l2": "planets_moons",
+    "quiz_question": "How many days does Europa take to orbit Jupiter once?",
+    "correct_answer": "About {3.5} days",
+    "distractors": [],
+    "explanation": "According to Wikidata, Europa's orbital period is 3.551181 days. By comparison, our Moon takes about 27 days to orbit Earth, making Europa's year remarkably short — it completes an orbit in under a week."
+  },
+  {
+    "id": "space-kuiper-belt-size-vs-asteroid-belt",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "How much wider is the Kuiper Belt compared to the asteroid belt?",
+    "correct_answer": "{20} times wider",
+    "distractors": [],
+    "explanation": "According to Wikipedia, the Kuiper Belt extends from 30 to 50 AU from the Sun and is 20 times as wide and 20–200 times as massive as the asteroid belt. Despite being far larger, it was only recognized as a distinct structure after 1992."
+  },
+  {
+    "id": "space-kuiper-belt-named-after-gerard-kuiper",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "Which astronomer's 1951 conjecture gave the Kuiper Belt its name?",
+    "correct_answer": "Gerard Kuiper",
+    "distractors": [
+      "Kenneth Edgeworth",
+      "Julio Fernandez",
+      "Jan Oort",
+      "Carl Sagan",
+      "Fred Hoyle",
+      "Clyde Tombaugh",
+      "James Christy",
+      "Patrick Moore"
+    ],
+    "explanation": "According to Wikipedia and Wikidata, the belt is named after Dutch astronomer Gerard Kuiper, who conjectured its existence in 1951. Notably, Kenneth Edgeworth proposed similar ideas in the 1930s, and Julio Fernandez made the most direct prediction in 1980 — Kuiper's name stuck despite others contributing earlier."
+  },
+  {
+    "id": "space-kuiper-belt-first-kbo-1992",
+    "category_l1": "space_astronomy",
+    "category_l2": "cosmology_universe",
+    "quiz_question": "After Pluto, when was the first new Kuiper Belt Object discovered?",
+    "correct_answer": "{1992}",
+    "distractors": [],
+    "explanation": "According to Wikipedia, minor planet 15760 Albion was discovered in 1992 — the first Kuiper Belt Object since Pluto (1930) and Charon (1978). Since then, the number of known KBOs has increased to thousands, with more than 100,000 KBOs over 100 km in diameter thought to exist."
+  }
+]

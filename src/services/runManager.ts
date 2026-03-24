@@ -16,6 +16,9 @@ import { createCanaryState, recordCanaryAnswer } from './canaryService';
 import { getAscensionModifiers, type AscensionModifiers } from './ascension';
 import { getRewardMultiplier, isPracticeRun } from './masteryScalingService';
 import type { DeckMode } from '../data/studyPreset';
+import { InRunFactTracker } from './inRunFactTracker';
+import { getCuratedDeckFacts } from '../data/curatedDeckStore';
+import { playerSave } from '../ui/stores/playerData';
 
 export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
 
@@ -126,6 +129,8 @@ export interface RunState {
   novelQuestionsCorrect: number;
   /** Deterministic seed for this run (used in all modes for fair multiplayer/daily comparisons). */
   runSeed: number;
+  /** In-run fact tracker for study mode (curated deck runs). Undefined for trivia runs. */
+  inRunFactTracker?: InRunFactTracker;
   /**
    * Global turn counter that persists across encounters within a run.
    * Used by the Surge system so Surge timing varies per encounter rather than
@@ -199,7 +204,7 @@ export function createRunState(
   const ascensionModifiers = getAscensionModifiers(ascensionLevel);
   const maxHp = ascensionModifiers.playerMaxHpOverride ?? PLAYER_MAX_HP;
   const starterDeckSize = ascensionModifiers.starterDeckSizeOverride ?? options?.starterDeckSize ?? 15;
-  return {
+  const runState: RunState = {
     isActive: true,
     primaryDomain: primary,
     secondaryDomain: secondary,
@@ -265,6 +270,21 @@ export function createRunState(
     poolFactCount: options?.poolFactCount,
     includeOutsideDueReviews: options?.includeOutsideDueReviews ?? false,
   };
+
+  // Study mode: initialize in-run fact tracker
+  if (options?.deckMode?.type === 'study') {
+    const tracker = new InRunFactTracker();
+    const deckFacts = getCuratedDeckFacts(options.deckMode.deckId, options.deckMode.subDeckId);
+    const factIds = deckFacts.map(f => f.id);
+    const reviewStates = get(playerSave)?.reviewStates ?? [];
+    tracker.seedFromGlobalFSRS(factIds, (factId: string) => {
+      const reviewState = reviewStates.find((rs) => rs.factId === factId);
+      return reviewState?.stability;
+    });
+    runState.inRunFactTracker = tracker;
+  }
+
+  return runState;
 }
 
 export function recordCardPlay(

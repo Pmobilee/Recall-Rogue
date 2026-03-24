@@ -1,0 +1,195 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 157,
+  "issues": [
+    {
+      "id": "animals_wildlife-robin-tiny-mass",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer of {2.4} grams is wrong by an order of magnitude. European robins weigh approximately 14–20 grams. 2.4 grams is less than a paperclip — physically impossible for this bird. This appears to be a Wikidata unit error (possibly milligrams misread as grams, or wrong entity).",
+      "suggested_fix": "Change correct_answer to '{16} grams' (midpoint of ~14–20g range) and update explanation accordingly."
+    },
+    {
+      "id": "animals_wildlife-nightingale-tiny-weight",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer of {2.65} grams is wrong by an order of magnitude. Common nightingales weigh approximately 17–27 grams. 2.65 grams is lighter than a large coin — impossible for a 15cm-long passerine. Same Wikidata unit/entity error pattern as the robin fact.",
+      "suggested_fix": "Change correct_answer to approximately '{20} grams' and correct the explanation. Remove the comparison to 'a handful of coins' which is itself based on the wrong weight."
+    },
+    {
+      "id": "animals_wildlife-budgerigar-lifespan-tiny-mass",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation states the budgerigar's mass is 2.15 grams. Budgerigars weigh approximately 25–36 grams. 2.15 grams is impossible — lighter than a paperclip. The question/answer (20-year lifespan) is fine, but the explanation contains a critical factual error from a Wikidata unit mistake. Players will learn a false fact.",
+      "suggested_fix": "Remove the mass reference from the explanation entirely, or correct it to approximately '30 grams'."
+    },
+    {
+      "id": "animals_wildlife-raven-wild-lifespan",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer claims ravens live 'Over {23} years' in the wild, but the explanation immediately contradicts this by citing Wikidata's figure of 21.9 years as the longest observed lifespan. The answer and explanation are internally inconsistent. One of the two figures must be wrong.",
+      "suggested_fix": "Reconcile the answer and explanation. If Wikipedia says '23 years' and Wikidata says '21.9 years', use the Wikipedia figure ('over 21 years') or clarify the source. Remove the self-contradictory Wikidata citation from the explanation."
+    },
+    {
+      "id": "animals_wildlife-rhea-third-largest-bird",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states rhea is the 'third-largest living bird' but this is incorrect. The actual ranking by mass/height is: 1. Common ostrich, 2. Somali ostrich (or emu by height), 3. Southern cassowary. The rhea ranks 4th or 5th depending on the measure. The explanation itself only says rheas 'place just behind the emu' — never claiming third place — making the question heading factually wrong.",
+      "suggested_fix": "Change the question to 'What is the fourth-largest living bird, native only to South America?' or reframe to avoid an ordinal ranking. Update explanation to clarify the ranking."
+    },
+    {
+      "id": "animals_wildlife-phocidae-baikal-freshwater",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "The Baikal seal is categorized under category_l2 'marine_life', but it is explicitly described in both the question and answer as 'the only species that lives exclusively in freshwater.' A freshwater species should not be filed under marine_life.",
+      "suggested_fix": "Change category_l2 from 'marine_life' to 'mammals' or create/use a 'freshwater' subcategory."
+    },
+    {
+      "id": "animals_wildlife-eagle-not-true-group",
+      "severity": "critical",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'What minimum prey size qualifies a raptor to be called an eagle?' but the answer 'About 50 cm long' refers to the SIZE OF THE BIRD ITSELF, not prey size. The explanation confirms this: 'any large bird of prey capable of hunting sizeable vertebrates roughly 50 cm long or more' — 50cm is the bird's approximate length, not prey size. The question is factually misleading.",
+      "suggested_fix": "Rewrite the question to: 'Roughly how long does a bird of prey need to be to earn the label \"eagle\"?' or 'What body length roughly qualifies a raptor to be informally called an eagle?'"
+    },
+    {
+      "id": "animals_wildlife-nightingale-incubation",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation states 'Wikidata also confirms it is a diurnal species despite popular association with night singing.' This is confusing and potentially misleading. The nightingale is famous for singing at night — calling it 'diurnal' without explanation implies it doesn't actually sing at night, which contradicts common knowledge. The nightingale does sing at night (especially males during breeding season) even though it is generally active during the day too.",
+      "suggested_fix": "Remove the 'diurnal species' sentence or clarify: 'Despite its name, the nightingale is active during the day as well — but males also sing through the night during the breeding season, which is the source of its fame.'"
+    },
+    {
+      "id": "animals_wildlife-common-myna-wingspan",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation states 'despite being a medium-small bird weighing only about 7 grams.' Common mynas weigh approximately 80–130 grams, not 7 grams. This is another Wikidata body-mass error in the explanation text. While the question/answer (wingspan ~38cm) is correct, players will learn a false weight.",
+      "suggested_fix": "Remove the weight reference or correct it to approximately '100 grams'."
+    },
+    {
+      "id": "animals_wildlife-bird-living-dinosaurs",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Several distractors are true facts about birds that DO relate to their dinosaur lineage: 'They have scales on legs,' 'They lay hard-shelled eggs,' 'They have hollow bones,' 'They have feathers,' 'They share a four-chambered heart.' A knowledgeable player could argue any of these are also valid reasons. The correct answer 'They evolved from theropods' is the best answer, but the distractors are not clearly wrong in the intended sense — they are true statements about birds.",
+      "suggested_fix": "Replace factually-true-but-incorrect distractors with clearly wrong alternatives, e.g. 'They share DNA with T. rex directly,' 'They are classified as reptilia,' 'They split from mammals 65 million years ago,' 'They have the same brain structure as velociraptors.'"
+    },
+    {
+      "id": "animals_wildlife-starling-shakespeare-mimicry",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct answer names 'Shakespeare and Pliny the Elder' but the explanation mentions three sources: the Mabinogion, Pliny the Elder, and Shakespeare. The Mabinogion is a text/collection (anonymous), not a named author, so excluding it from the answer is defensible — but the explanation's framing ('including the Mabinogion... the works of Pliny... and the works of Shakespeare') implies all three are equally notable, making the two-person answer feel incomplete.",
+      "suggested_fix": "Either update the answer to note 'Shakespeare, Pliny the Elder, and the Mabinogion' or rewrite the explanation to present Shakespeare and Pliny as the primary literary examples, with the Mabinogion as additional context."
+    },
+    {
+      "id": "animals_wildlife-seahorse-male-pregnancy",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question claims seahorses are 'the only animal where the male carries and gives birth to offspring.' However, pipefish (family Syngnathidae, same family as seahorses) and sea dragons also have male pregnancy including true birth from a brood pouch. The 'only one' framing is too absolute. The distractor 'Pipefish' is listed as a wrong answer, which is factually incorrect.",
+      "suggested_fix": "Change the question to 'Which animal is the most famous example of male pregnancy?' or 'Which fish genus is best known for the male carrying and birthing offspring?' Remove 'Pipefish' from the distractors since pipefish also have male pregnancy."
+    },
+    {
+      "id": "animals_wildlife-house-sparrow-most-distributed",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-house-sparrow-most-widespread-bird'. Both ask 'Which small bird is the most widely distributed wild bird on Earth?' with the answer 'House sparrow.' The questions are nearly identical in phrasing, content, and explanation. Having both in the database wastes a slot and will bore players who encounter both.",
+      "suggested_fix": "Delete one of the two facts. Keep the one with the more interesting explanation (the second one, 'most-widespread-bird', which adds context about intentional vs. accidental introductions)."
+    },
+    {
+      "id": "animals_wildlife-cygnus-mate-for-life",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-swan-mate-for-life'. Both cover swans mating for life and the fact that nesting failure can cause separation. The questions are differently phrased but convey the same knowledge.",
+      "suggested_fix": "Delete one. The 'swan-mate-for-life' fact (asking what can cause a swan to abandon its mate) is more interesting as a question format. Remove 'cygnus-mate-for-life'."
+    },
+    {
+      "id": "animals_wildlife-cygnus-largest-waterfowl",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-swan-largest-waterfowl'. Both state swans are the largest waterfowl. Slightly different phrasings but identical knowledge being tested.",
+      "suggested_fix": "Delete one. Keep 'swan-largest-waterfowl' which has a slightly more engaging explanation mentioning they can outweigh eagles."
+    },
+    {
+      "id": "animals_wildlife-magpie-mirror-test",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-eurasian-magpie-mirror-test'. Both ask which bird passes the mirror self-recognition test with the answer 'Eurasian magpie.' Different question phrasing but identical knowledge.",
+      "suggested_fix": "Delete one. Keep 'eurasian-magpie-mirror-test' which specifies 'non-mammals' making it a more precise and interesting distinction."
+    },
+    {
+      "id": "animals_wildlife-magpie-brain-size",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-eurasian-magpie-brain-like-ape'. Both ask about the magpie's nidopallium being proportionally as large as a great ape's. Identical underlying fact.",
+      "suggested_fix": "Delete one. Keep 'eurasian-magpie-brain-like-ape' which names the specific brain region (nidopallium) making it more educational."
+    },
+    {
+      "id": "animals_wildlife-magpie-not-australian",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-eurasian-magpie-corvid-not-australian'. Both ask about Eurasian vs Australian magpie being unrelated despite shared name and colouring. The questions are differently phrased but test identical knowledge.",
+      "suggested_fix": "Delete one. Keep 'eurasian-magpie-corvid-not-australian' which asks the more specific taxonomic question (which family) rather than the vaguer 'what do they share' question."
+    },
+    {
+      "id": "animals_wildlife-kiwi-egg-size-ratio",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-kiwi-egg-size'. Both ask what percentage of a female kiwi's body weight her egg can reach, with the answer 'up to 20%'. The questions are near-identical in phrasing.",
+      "suggested_fix": "Delete one. Keep 'kiwi-egg-size' which has a slightly cleaner explanation and more accurate ostrich comparison (1-2% vs just '2%')."
+    },
+    {
+      "id": "animals_wildlife-kiwi-nostril-tip-smell",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-kiwi-nose-smell'. Both ask where kiwi nostrils are located (at the beak tip). Questions are phrased slightly differently but test identical knowledge.",
+      "suggested_fix": "Delete one. Keep 'kiwi-nose-smell' which is more concisely written."
+    },
+    {
+      "id": "animals_wildlife-albatross-wisdom-oldest-bird",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-albatross-wisdom-age'. Both ask 'What is the name of the oldest known wild bird in the world?' with the answer 'Wisdom'. The questions are identically phrased.",
+      "suggested_fix": "Delete one. Keep 'albatross-wisdom-age' which has a slightly richer explanation mentioning she was still breeding."
+    },
+    {
+      "id": "animals_wildlife-common-pheasant-south-dakota",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-common-pheasant-state-bird'. Both ask which US state has a non-native bird as its official state bird, with the answer 'South Dakota'. Questions are worded slightly differently but are identical in knowledge tested.",
+      "suggested_fix": "Delete one. Keep 'common-pheasant-state-bird' which is more concisely phrased."
+    },
+    {
+      "id": "animals_wildlife-common-pheasant-chicken-divergence",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-common-pheasant-divergence'. Both ask how many million years ago pheasants and chickens diverged (over 20 million), with nearly identical explanations.",
+      "suggested_fix": "Delete one. Keep 'common-pheasant-divergence' which has slightly cleaner phrasing."
+    },
+    {
+      "id": "animals_wildlife-emu-great-emu-war",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-emu-war'. Both cover the 1932 Emu War. The first asks for the event's name (answer: 'The Great Emu War'), the second asks which country waged the campaign (answer: 'Australia'). These test slightly different things so are less duplicative than others, but the explanations are nearly identical and cover the same anecdote.",
+      "suggested_fix": "These can both stay since they test different things (name vs. country), but the explanations should be differentiated more to avoid repetition for players who encounter both."
+    },
+    {
+      "id": "animals_wildlife-lagomorpha-110-species",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'animals_wildlife-lagomorpha-not-rodents'. Both ask what order rabbits/hares/pikas belong to, with the answer 'Lagomorpha'. The questions are slightly differently phrased but test identical knowledge.",
+      "suggested_fix": "Delete one. Keep 'lagomorpha-not-rodents' which focuses on the more interesting 'distinct from rodents' angle and explains the two-incisors distinction."
+    },
+    {
+      "id": "animals_wildlife-ginkgo-hiroshima-survivor",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is filed under category_l1 'animals_wildlife' and category_l2 'adaptations'. Ginkgo biloba is a tree/plant, not an animal. While some trivia databases include plants in a broad 'natural world' category, the category name 'animals_wildlife' strongly implies fauna. A player browsing 'animals_wildlife' would not expect tree facts.",
+      "suggested_fix": "Move to a 'plants_fungi' or 'nature_science' category, or create a category_l2 of 'plants' under animals_wildlife if the category_l1 is intended to cover all living things."
+    },
+    {
+      "id": "animals_wildlife-ginkgo-290-million-years",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Same issue as ginkgo-hiroshima-survivor: filed under 'animals_wildlife / adaptations' but Ginkgo biloba is a plant. Both ginkgo facts should be recategorized together.",
+      "suggested_fix": "Move to a 'plants_fungi' or 'nature_science' category. If the intent is to keep all living things under animals_wildlife, at minimum change category_l2 from 'adaptations' to 'plants' or 'botany'."
+    }
+  ]
+}

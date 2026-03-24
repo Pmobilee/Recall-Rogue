@@ -1,0 +1,286 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 152,
+  "issues": [
+    {
+      "id": "geography-guam-westernmost-us",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Guam is NOT the westernmost point of the United States. The westernmost point is Orote Point on Guam, but more accurately the westernmost US territory by longitude is actually Wake Island or parts of the Northern Mariana Islands depending on methodology. More critically, the explanation itself says 'westernmost point and territory as measured from the geographic centre of the US' — that is a non-standard and confusing qualifier. The standard geographic answer for westernmost US territory is the Northern Mariana Islands (specifically Farallon de Pajaros), not Guam.",
+      "suggested_fix": "Either change the correct answer to 'Northern Mariana Islands' (which is further west than Guam), or rewrite the question to ask specifically about Guam's geographic distinction without claiming it's westernmost US territory, which is factually disputed. If the intent is to say Guam is the westernmost US territory in Micronesia, clarify that."
+    },
+    {
+      "id": "geography-bavaria-largest-german-state",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'North Rhine-Westphalia' appears twice in the distractor list (positions 1 and 8). Duplicate distractors are a data quality error.",
+      "suggested_fix": "Replace the duplicate 'North Rhine-Westphalia' with a different German state, e.g. 'Thuringia' or 'Mecklenburg-Vorpommern'."
+    },
+    {
+      "id": "geography-bavaria-zugspitze-highest",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Black Forest' is in the distractor list as if it were a mountain name comparable to the others. The Black Forest (Schwarzwald) is a forested mountain range/region, not a single named peak. It's categorically different from the named summits in the list and would confuse players.",
+      "suggested_fix": "Replace 'Black Forest' with a specific peak name, e.g. 'Zugspitzplatt' or 'Alpspitze' or 'Nebelhorn'."
+    },
+    {
+      "id": "geography-bavaria-second-economy",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Wolfsburg' appears as a distractor in a question about German states ranked by GDP. Wolfsburg is a city, not a German state (Bundesland). It is categorically wrong as a distractor and would be immediately recognizable as absurd.",
+      "suggested_fix": "Replace 'Wolfsburg' with a real German state name, e.g. 'Saxony-Anhalt' or 'Saarland'."
+    },
+    {
+      "id": "geography-stuttgart-sixth-largest",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Reims' appears as a distractor in a question about Stuttgart's rank among German cities. Reims is a French city, not a German city rank. It is categorically impossible as an answer and breaks immersion.",
+      "suggested_fix": "Replace 'Reims' with an ordinal like 'Ninth' or 'Eleventh'."
+    },
+    {
+      "id": "geography-bordeaux-monuments",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Florence' appears as a distractor in a question specifically about French cities with the most listed historic monuments. Florence is an Italian city and cannot be a valid answer to a question about France's ranking. It breaks the category logic entirely.",
+      "suggested_fix": "Replace 'Florence' with a French city, e.g. 'Reims', 'Avignon', or 'Montpellier'."
+    },
+    {
+      "id": "geography-turin-fiat-lancia-alfromeo",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Haiti' appears as a distractor in a question about which Italian city is headquarters to Fiat, Lancia, and Alfa Romeo. Haiti is a Caribbean country, not an Italian city, and is a nonsensical distractor that would get an immediate laugh from any player.",
+      "suggested_fix": "Replace 'Haiti' with an Italian city, e.g. 'Turin' variants are the answer — add 'Torino' is the answer itself — so use 'Trieste', 'Palermo', or 'Bari' instead."
+    },
+    {
+      "id": "geography-turin-first-capital-italy",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Puerto Rico' appears as a distractor in a question about which Italian city was Italy's first capital. Puerto Rico is a Caribbean US territory, not an Italian city — absurd as a distractor.",
+      "suggested_fix": "Replace 'Puerto Rico' with an Italian city, e.g. 'Palermo', 'Bari', or 'Trieste'."
+    },
+    {
+      "id": "geography-guadeloupe-french-caribbean",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Lviv' appears as a distractor in a question about which Caribbean island group is French overseas territory. Lviv is a Ukrainian city — completely off-category and would be immediately dismissible by any player.",
+      "suggested_fix": "Replace 'Lviv' with a Caribbean island group, e.g. 'Saint Martin', 'Turks and Caicos', or 'Aruba'."
+    },
+    {
+      "id": "geography-odesa-world-heritage-danger",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Dnipro' appears twice in the distractor list (positions 5 and 8). Duplicate distractors are a data quality error.",
+      "suggested_fix": "Replace the duplicate 'Dnipro' with a different Ukrainian city, e.g. 'Sumy' or 'Vinnytsia'."
+    },
+    {
+      "id": "geography-odesa-fourth-largest-russia",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Munich' appears as a distractor in a question about Odesa's rank among cities of the Russian Empire. Munich is a German city, not a ranking descriptor or Russian Empire city. It is categorically wrong and nonsensical as a distractor.",
+      "suggested_fix": "Replace 'Munich' with an ordinal rank, e.g. 'Ninth largest' or 'Tenth largest'."
+    },
+    {
+      "id": "geography-düsseldorf-one-fifth-trade-shows",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Frankfurt' appears as a distractor in a question about what fraction of world-class trade shows Messe Düsseldorf organizes. The correct answer is a fraction ('About one-fifth'), so 'Frankfurt' is a city name — categorically wrong type of answer — and is nonsensical.",
+      "suggested_fix": "Replace 'Frankfurt' with a fraction, e.g. 'About one-sixth' or 'About one-eighth'."
+    },
+    {
+      "id": "geography-düsseldorf-kraftwerk",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Berlin' appears twice in the distractor list (positions 1 and 8). Duplicate distractor.",
+      "suggested_fix": "Replace the duplicate 'Berlin' with another German city, e.g. 'Dortmund' or 'Nuremberg'."
+    },
+    {
+      "id": "geo-saint-kitts-nevis-mount-liamuiga",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Mount Kilimanjaro' appears as a distractor for the highest point of Saint Kitts. Kilimanjaro is in Tanzania/Africa — it is geographically impossible as an answer about a Caribbean island's highest point and would be instantly dismissed.",
+      "suggested_fix": "Replace 'Mount Kilimanjaro' with a Caribbean volcanic peak, e.g. 'Morne Trois Pitons' or 'Soufrière Hills'."
+    },
+    {
+      "id": "history-middle-ages-renaissance-transition",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks for 'Which three movements together marked the end of the Middle Ages?' but the correct answer is 'Renaissance and Reformation' — only two movements, not three. The question premise says three, the answer gives two. This is internally contradictory.",
+      "suggested_fix": "Either change the question to 'Which two movements...' to match the answer, or expand the correct answer to include a third movement (e.g. 'Renaissance, Reformation, and Age of Discovery')."
+    },
+    {
+      "id": "history-serfdom-scandinavia-exception",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks which three Scandinavian countries never had serfdom, with answer 'Finland, Norway, Sweden'. However, Finland was not historically considered a Scandinavian country — it is Nordic but not Scandinavian (Scandinavia traditionally refers to Norway, Sweden, and Denmark). Also Denmark DID have serfdom (stavnsbånd), which is acknowledged in the explanation, yet Denmark is listed in several distractors as if it might be a valid answer. More precisely: the question's framing of 'three Scandinavian countries' is inaccurate since Finland is Nordic, not Scandinavian.",
+      "suggested_fix": "Reword the question to say 'three Nordic countries' instead of 'three Scandinavian countries' to be accurate. Alternatively, keep Scandinavian and replace Finland with Iceland (which also lacked feudal serfdom, though it had vistarband)."
+    },
+    {
+      "id": "geography-kharkiv-former-ussr-capital",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'europe' but all other Kharkiv facts and Ukraine geography facts use category_l1 'geography'. This is an inconsistent categorization — geography facts should be under 'geography', not 'europe'.",
+      "suggested_fix": "Change category_l1 from 'europe' to 'geography' to match the rest of the geography facts in this batch."
+    },
+    {
+      "id": "geography-ecuador-galapagos-endemic",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but other Ecuador/South America geography facts use category_l1 'geography'. Inconsistent categorization.",
+      "suggested_fix": "Change category_l1 from 'americas' to 'geography'."
+    },
+    {
+      "id": "geography-bolivia-landlocked-largest-southern",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but should be 'geography' for consistency with similar facts in this batch.",
+      "suggested_fix": "Change category_l1 from 'americas' to 'geography'."
+    },
+    {
+      "id": "geography-paraguay-guarani-language",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but should be 'geography' for consistency.",
+      "suggested_fix": "Change category_l1 from 'americas' to 'geography'."
+    },
+    {
+      "id": "geography-haiti-slave-revolution",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but should be 'geography' for consistency with similar facts in this batch.",
+      "suggested_fix": "Change category_l1 from 'americas' to 'geography'."
+    },
+    {
+      "id": "geography-dominica-boiling-lake",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but should be 'geography' for consistency. Also this fact is a near-duplicate of 'geo-dominica-boiling-lake' (same question, same answer, different phrasing). Two facts covering the same piece of trivia inflates the database.",
+      "suggested_fix": "Change category_l1 to 'geography'. Flag as duplicate of geo-dominica-boiling-lake for deduplication review."
+    },
+    {
+      "id": "geography-suriname-dutch-speaking",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but should be 'geography'. Also a near-duplicate of 'geography-suriname-dutch' (same core fact about Suriname and Dutch language).",
+      "suggested_fix": "Change category_l1 to 'geography'. Flag as duplicate of geography-suriname-dutch for deduplication review."
+    },
+    {
+      "id": "geography-dominican-republic-tallest-caribbean",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but should be 'geography' for consistency.",
+      "suggested_fix": "Change category_l1 from 'americas' to 'geography'."
+    },
+    {
+      "id": "geography-guatemala-maya-most-populous-central-america",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Teotihuacan civilization' appears twice in the distractor list (positions 7 and 8). Duplicate distractor.",
+      "suggested_fix": "Replace the duplicate 'Teotihuacan civilization' with 'Chimu civilization' or 'Huari civilization'."
+    },
+    {
+      "id": "geography-guatemala-maya-most-populous-central-america",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The category_l1 is set to 'americas' but should be 'geography' for consistency.",
+      "suggested_fix": "Change category_l1 from 'americas' to 'geography'."
+    },
+    {
+      "id": "geography-salvador-biggest-street-carnival",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that Salvador's Carnival holds the Guinness World Record for the world's biggest street party is contested. Rio de Janeiro's Carnival is generally far more internationally recognized as the world's largest. Wikipedia's Salvador article does mention this claim, but it is disputed and the framing 'recognized by Guinness World Records' should be verified against a current Guinness record — the record may have changed or been contested.",
+      "suggested_fix": "Add a qualifier like 'has claimed' or 'was recognized by Guinness as' rather than stating it as unambiguous current fact, or verify the current Guinness record status."
+    },
+    {
+      "id": "history-teutonic-order-still-exists",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Knights Hospitaller' is actually also a real medieval crusading military order that still exists today as the Sovereign Military Order of Malta. Presenting it as a wrong answer to 'Which famous medieval crusading military order still exists today?' is factually incorrect — the Knights Hospitaller (Order of Malta) absolutely still exists as a sovereign entity with observer status at the UN.",
+      "suggested_fix": "Remove 'Knights Hospitaller' from the distractors since it is also a correct answer. Replace with 'Order of the Holy Sepulchre' or 'Order of Saint George'."
+    },
+    {
+      "id": "history-teutonic-order-malbork-castle",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Marienburg Castle' is listed as a distractor, but Marienburg IS the German name for Malbork Castle — they are the same place. The explanation even states 'Malbork (known in German as Marienburg)'. A distractor that is literally another name for the correct answer is invalid.",
+      "suggested_fix": "Remove 'Marienburg Castle' from the distractors and replace with a different castle, e.g. 'Vilnius Castle' or 'Wawel Castle'."
+    },
+    {
+      "id": "geo-saint-vincent-grenadines-volcano-evacuation",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation does not actually confirm or contextualize the 16,000 evacuation figure. It mentions the eruption and a World Bank funding offer but fails to reference the number that is the answer to the question. The explanation feels tangential — the World Bank loan detail is interesting but doesn't reinforce the correct answer.",
+      "suggested_fix": "Rewrite explanation to confirm: 'According to Wikipedia, approximately 16,000 residents were evacuated when La Soufrière erupted explosively in April 2021 — about 15% of the country's population. The eruption caused widespread ashfall across the island.'"
+    },
+    {
+      "id": "geography-cayman-financial",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question 'The Cayman Islands has more registered companies than what?' is awkwardly phrased and reads like an incomplete sentence rather than a clean quiz question. It's a fill-in-the-blank format that doesn't work well for a multiple-choice card.",
+      "suggested_fix": "Rewrite as: 'What does the Cayman Islands have more of than its entire human population?' with the same answer 'Registered companies', or 'In the Cayman Islands, which outnumbers the other: registered companies or residents?'"
+    },
+    {
+      "id": "geo-curitiba-european-immigration",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question 'Which Brazilian city received major European immigration waves between 1850 and 1950?' is too broad — São Paulo, Porto Alegre, Florianópolis, and Rio de Janeiro all received major European immigration in this period. The question is not uniquely answerable as Curitiba without additional context. São Paulo especially received enormous waves of Italian, German, and Japanese immigrants.",
+      "suggested_fix": "Add a specific qualifier to make the answer unambiguously Curitiba, e.g. 'Which Brazilian state capital is most known for its Polish and Ukrainian immigrant heritage from the 1850–1950 period?' or use the Paraná angle."
+    },
+    {
+      "id": "geography-gulf-of-mexico-petroleum",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact (geography-gulf-of-mexico-petroleum) is a near-exact duplicate of 'geo-gulf-of-mexico-petroleum-production' — same question, same answer ({14}%), same explanation. Two facts with the same content inflate the database.",
+      "suggested_fix": "Flag for deduplication. Remove one of the two facts. Prefer keeping 'geo-gulf-of-mexico-petroleum-production' which has the cleaner ID."
+    },
+    {
+      "id": "history-urban-ii-crusades-council-clermont",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is a near-duplicate of 'history-crusades-first-proclaimed' (same event: Urban II proclaiming the First Crusade at the Council of Clermont, 1095) and 'history-urban-ii-died-before-news' (same person). The question angle differs slightly, but the core trivia is recycled across multiple IDs.",
+      "suggested_fix": "Flag for deduplication review. Consider merging or removing to avoid players seeing the same information across multiple cards."
+    },
+    {
+      "id": "history-knights-templar-ninety-percent-civilians",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is a near-exact duplicate of 'history-knights-templar-ninety-percent-noncombatants' — identical question phrasing ('What fraction of the Knights Templar's membership were non-combatant members?' vs 'What fraction of Knights Templar members were non-fighting business managers?'), identical answer (Up to {90}%), and essentially the same explanation.",
+      "suggested_fix": "Remove one of the two. Keep the one with clearer question phrasing."
+    },
+    {
+      "id": "history-knights-templar-king-philip-burned",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is a near-exact duplicate of 'history-knights-templar-arrested-burned' — same event (Philip IV arresting and burning Templars in 1307), same answer (Philip IV / King Philip IV), largely the same explanation.",
+      "suggested_fix": "Remove one of the two. The facts are functionally identical for a quiz card."
+    },
+    {
+      "id": "history-balfour-declaration-1917-letter",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is a near-duplicate of 'history-balfour-declaration-letter' — same question ('What form did the Balfour Declaration take?'), similar answer ('A letter' vs 'A private letter'), same explanation content.",
+      "suggested_fix": "Remove one of the two. 'A private letter' is arguably the more precise answer — keep history-balfour-declaration-1917-letter and remove history-balfour-declaration-letter."
+    },
+    {
+      "id": "history-ninja-spies-not-assassins",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is a near-exact duplicate of 'history-ninja-not-assassins' — same question (primary historical role of ninja), same answer (Spies and infiltrators), same explanation.",
+      "suggested_fix": "Remove one of the two. Keep whichever has the better question phrasing."
+    },
+    {
+      "id": "history-osman-i-birth-death-sogut",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is a near-duplicate of 'history-osman-i-birthplace-deathplace' — same question (where Osman I was born and died/buried), same answer (Söğüt). The question angle ('born and buried' vs 'born and died, never leaving his home town') is virtually identical.",
+      "suggested_fix": "Remove one of the two. Keep 'history-osman-i-birth-death-sogut' which has cleaner phrasing."
+    },
+    {
+      "id": "history-urban-ii-roman-curia",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Saying Urban II 'established the modern Roman Curia' slightly overstates the case. Urban II reorganized and formalized the Curia, but the Curia existed before him. The Wikipedia source says he 'set up the modern-day Roman Curia in the manner of a royal ecclesiastical court' — he reformed it rather than created it from nothing. The word 'established' in the question is misleading.",
+      "suggested_fix": "Change question to 'Which medieval pope reorganized the Roman Curia into its modern form?' or 'Which pope formalized the Roman Curia as a royal-style ecclesiastical court?'"
+    }
+  ]
+}

@@ -4,10 +4,12 @@
   import { playCardAudio } from '../../services/cardAudioManager';
   import { getKnowledgeDomains } from '../../data/domainMetadata';
   import { getAllDecks } from '../../data/deckRegistry';
+  import type { CustomPlaylist, CustomPlaylistItem } from '../../data/studyPreset';
   import ModeToggle from './ModeToggle.svelte';
   import DomainSidebar from './DomainSidebar.svelte';
   import TriviaContentArea from './TriviaContentArea.svelte';
   import StudyContentArea from './StudyContentArea.svelte';
+  import PlaylistPickerPopup from './PlaylistPickerPopup.svelte';
 
   /** Shape of a completed run configuration passed back to the parent. */
   type RunConfig =
@@ -23,11 +25,12 @@
 
   let { onback, onStartRun }: Props = $props();
 
-  // ── Custom playlist item type ──────────────────────────────────────────────
+  // ── Helpers ────────────────────────────────────────────────────────────────
 
-  type CustomItem =
-    | { type: 'trivia'; domain: string; subdomain?: string; label: string }
-    | { type: 'study'; deckId: string; subDeckId?: string; label: string };
+  /** Generate a short unique ID without external dependencies. */
+  function makeId(): string {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  }
 
   // ── State ──────────────────────────────────────────────────────────────────
 
@@ -47,19 +50,36 @@
   let pendingStudyDeckId = $state<string | null>(null);
   let pendingStudySubDeck = $state<string | null>(null);
 
-  // Custom playlist (cross-mode persistent)
-  /** Items the user has added to the custom playlist. */
-  let customItems = $state<CustomItem[]>([]);
+  // Custom playlists (cross-mode, persistent)
+  /** All named custom playlists. */
+  let customPlaylists = $state<CustomPlaylist[]>([]);
+  /** ID of the currently active playlist. */
+  let activePlaylistId = $state<string | null>(null);
+
+  // Playlist picker popup state
+  /** Whether the PlaylistPickerPopup is visible. */
+  let showPlaylistPicker = $state(false);
+  /** The item waiting to be placed into a playlist. */
+  let pendingCustomItem = $state<CustomPlaylistItem | null>(null);
 
   /** Whether the custom playlist flyout is open. */
   let customFlyoutOpen = $state(false);
 
-  // ── Derived: custom playlist fact count estimate ───────────────────────────
+  // ── Derived ────────────────────────────────────────────────────────────────
 
+  /** The currently active playlist object, or null. */
+  const activePlaylist = $derived(
+    activePlaylistId ? (customPlaylists.find((p) => p.id === activePlaylistId) ?? null) : null,
+  );
+
+  /** Items in the active playlist (empty array if none selected). */
+  const activeItems = $derived(activePlaylist?.items ?? []);
+
+  /** Estimated fact count for the active playlist. */
   const customEstimatedFacts = $derived.by<number>(() => {
     let total = 0;
     const decks = getAllDecks();
-    for (const item of customItems) {
+    for (const item of activeItems) {
       if (item.type === 'study') {
         const deck = decks.find((d) => d.id === item.deckId);
         if (!deck) continue;
@@ -70,10 +90,24 @@
           total += deck.factCount;
         }
       }
-      // trivia fact counts are harder to estimate without subcategory data; skip for now
+      // trivia fact counts are harder to estimate; skip for now
     }
     return total;
   });
+
+  /** Whether the header "Start Run" button should be enabled. */
+  const canStartTrivia = $derived(mode === 'trivia' && triviaSelectedDomains.length > 0);
+
+  /** Whether the header start button is visible (trivia mode only). */
+  const showHeaderStart = $derived(mode === 'trivia');
+
+  /** Whether the header start button is enabled. */
+  const headerStartEnabled = $derived(canStartTrivia);
+
+  /** Whether we should show the custom bar at the bottom. */
+  const showCustomBar = $derived(
+    customPlaylists.length > 0 && customPlaylists.some((p) => p.items.length > 0),
+  );
 
   // ── Persistence helpers ────────────────────────────────────────────────────
 
@@ -93,7 +127,8 @@
             mode === 'study' && pendingStudyDeckId
               ? { deckId: pendingStudyDeckId, subDeckId: pendingStudySubDeck ?? undefined }
               : undefined,
-          customItems: customItems.length > 0 ? customItems : undefined,
+          customPlaylists: customPlaylists.length > 0 ? customPlaylists : undefined,
+          activePlaylistId: activePlaylistId ?? undefined,
         },
       };
     });
@@ -114,8 +149,15 @@
       pendingStudyDeckId = last.studyConfig.deckId;
       pendingStudySubDeck = last.studyConfig.subDeckId ?? null;
     }
-    if (last.customItems) {
-      customItems = last.customItems;
+    if (last.customPlaylists) {
+      customPlaylists = last.customPlaylists;
+    }
+    if (last.activePlaylistId) {
+      // Verify the restored ID still exists in our playlists
+      const exists = customPlaylists.some((p) => p.id === last.activePlaylistId);
+      activePlaylistId = exists ? last.activePlaylistId! : (customPlaylists[0]?.id ?? null);
+    } else if (customPlaylists.length > 0) {
+      activePlaylistId = customPlaylists[0].id;
     }
   }
 
@@ -135,17 +177,6 @@
     playCardAudio('modal-open');
     restoreSelection();
   });
-
-  // ── Derived ────────────────────────────────────────────────────────────────
-
-  /** Whether the header "Start Run" button should be enabled. */
-  const canStartTrivia = $derived(mode === 'trivia' && triviaSelectedDomains.length > 0);
-
-  /** Whether the header start button is visible (trivia mode only). */
-  const showHeaderStart = $derived(mode === 'trivia');
-
-  /** Whether the header start button is enabled. */
-  const headerStartEnabled = $derived(canStartTrivia);
 
   // ── Handlers ───────────────────────────────────────────────────────────────
 
@@ -203,13 +234,11 @@
 
   // ── Custom playlist handlers ───────────────────────────────────────────────
 
-  /** Add a study deck/sub-deck to the custom playlist. */
-  function handleAddStudyToCustom(deckId: string, subDeckId?: string): void {
-    // Don't add duplicates
-    const exists = customItems.some(
-      (it) => it.type === 'study' && it.deckId === deckId && it.subDeckId === subDeckId,
-    );
-    if (exists) return;
+  /**
+   * Build a CustomPlaylistItem from a study deck reference.
+   * Returns null if the deck can't be resolved.
+   */
+  function buildStudyItem(deckId: string, subDeckId?: string): CustomPlaylistItem | null {
     const decks = getAllDecks();
     const deck = decks.find((d) => d.id === deckId);
     let label = deck?.name ?? deckId;
@@ -217,29 +246,95 @@
       const sub = deck?.subDecks?.find((s) => s.id === subDeckId);
       label = sub?.name ?? subDeckId;
     }
-    customItems = [...customItems, { type: 'study', deckId, subDeckId, label }];
+    return { type: 'study', deckId, subDeckId, label };
+  }
+
+  /** Open the playlist picker for adding a study deck. */
+  function handleAddStudyToCustom(deckId: string, subDeckId?: string): void {
+    const item = buildStudyItem(deckId, subDeckId);
+    if (!item) return;
+    pendingCustomItem = item;
+    showPlaylistPicker = true;
+  }
+
+  /** Add the pending item to an existing playlist. */
+  function handleAddToPlaylist(playlistId: string): void {
+    if (!pendingCustomItem) return;
+    const item = pendingCustomItem;
+    customPlaylists = customPlaylists.map((p) => {
+      if (p.id !== playlistId) return p;
+      // Avoid duplicates
+      const alreadyIn = p.items.some(
+        (it) =>
+          it.type === item.type &&
+          (item.type === 'study'
+            ? it.type === 'study' && it.deckId === item.deckId && it.subDeckId === item.subDeckId
+            : it.type === 'trivia' &&
+              it.domain === (item as Extract<CustomPlaylistItem, { type: 'trivia' }>).domain),
+      );
+      if (alreadyIn) return p;
+      return { ...p, items: [...p.items, item] };
+    });
+    activePlaylistId = playlistId;
+    pendingCustomItem = null;
     persistSelection();
     playCardAudio('toggle-on');
   }
 
-  /** Remove an item from the custom playlist by index. */
+  /** Create a new playlist, add the pending item to it, and make it active. */
+  function handleCreateAndAdd(name: string): void {
+    if (!pendingCustomItem) return;
+    const item = pendingCustomItem;
+    const newPlaylist: CustomPlaylist = {
+      id: makeId(),
+      name: name.trim(),
+      createdAt: Date.now(),
+      items: [item],
+    };
+    customPlaylists = [...customPlaylists, newPlaylist];
+    activePlaylistId = newPlaylist.id;
+    pendingCustomItem = null;
+    persistSelection();
+    playCardAudio('toggle-on');
+  }
+
+  /** Close the playlist picker without adding. */
+  function handleClosePlaylistPicker(): void {
+    showPlaylistPicker = false;
+    pendingCustomItem = null;
+  }
+
+  /** Remove an item from the active playlist by index. */
   function handleRemoveCustomItem(index: number): void {
-    customItems = customItems.filter((_, i) => i !== index);
+    if (!activePlaylistId) return;
+    playCardAudio('notification-ping');
+    customPlaylists = customPlaylists.map((p) => {
+      if (p.id !== activePlaylistId) return p;
+      return { ...p, items: p.items.filter((_, i) => i !== index) };
+    });
     persistSelection();
   }
 
-  /** Clear all custom playlist items with audio. */
+  /** Clear all items from the active playlist. */
   function handleClearCustom(): void {
+    if (!activePlaylistId) return;
     playCardAudio('notification-ping');
-    customItems = [];
+    customPlaylists = customPlaylists.map((p) => {
+      if (p.id !== activePlaylistId) return p;
+      return { ...p, items: [] };
+    });
     customFlyoutOpen = false;
     persistSelection();
   }
 
-  /** Remove a custom playlist item with audio. */
-  function handleRemoveCustomItemWithAudio(index: number): void {
+  /** Delete the active playlist entirely. */
+  function handleDeletePlaylist(): void {
+    if (!activePlaylistId) return;
     playCardAudio('notification-ping');
-    handleRemoveCustomItem(index);
+    customPlaylists = customPlaylists.filter((p) => p.id !== activePlaylistId);
+    activePlaylistId = customPlaylists[0]?.id ?? null;
+    customFlyoutOpen = false;
+    persistSelection();
   }
 
   /** Toggle custom playlist flyout with audio. */
@@ -248,12 +343,20 @@
     customFlyoutOpen = !customFlyoutOpen;
   }
 
-  /** Start a run from the custom playlist. */
+  /** Switch the active playlist. */
+  function handleSwitchPlaylist(e: Event): void {
+    const select = e.currentTarget as HTMLSelectElement;
+    activePlaylistId = select.value;
+    customFlyoutOpen = false;
+    persistSelection();
+  }
+
+  /** Start a run from the active playlist. */
   function handleStartCustomRun(): void {
-    if (customItems.length === 0) return;
-    // For now, use the first study deck item as the run's deck.
-    // Future: support mixed trivia+study custom runs.
-    const firstStudy = customItems.find((it): it is Extract<CustomItem, { type: 'study' }> => it.type === 'study');
+    if (activeItems.length === 0) return;
+    const firstStudy = activeItems.find(
+      (it): it is Extract<CustomPlaylistItem, { type: 'study' }> => it.type === 'study',
+    );
     if (firstStudy) {
       playCardAudio('run-start');
       persistSelection();
@@ -321,15 +424,35 @@
     </div>
   </div>
 
-  <!-- ── Custom playlist bar (shown when items exist) ── -->
-  {#if customItems.length > 0}
+  <!-- ── Custom playlist bar (shown when at least one playlist has items) ── -->
+  {#if showCustomBar}
     <div class="custom-bar">
-      <span class="custom-bar-label">
-        Custom Deck: <strong>{customItems.length}</strong> item{customItems.length !== 1 ? 's' : ''}
-        {#if customEstimatedFacts > 0}
-          <span class="custom-bar-facts">({customEstimatedFacts.toLocaleString()} facts)</span>
+      <!-- Left: playlist switcher + info -->
+      <div class="custom-bar-left">
+        <span class="custom-bar-icon" aria-hidden="true">&#128203;</span>
+        {#if customPlaylists.length > 1}
+          <select
+            class="playlist-select"
+            value={activePlaylistId ?? ''}
+            onchange={handleSwitchPlaylist}
+            aria-label="Switch playlist"
+          >
+            {#each customPlaylists as p (p.id)}
+              <option value={p.id}>{p.name}</option>
+            {/each}
+          </select>
+        {:else if activePlaylist}
+          <span class="playlist-name-static">{activePlaylist.name}</span>
         {/if}
-      </span>
+        <span class="custom-bar-meta">
+          {activeItems.length} item{activeItems.length !== 1 ? 's' : ''}
+          {#if customEstimatedFacts > 0}
+            &nbsp;({customEstimatedFacts.toLocaleString()} facts)
+          {/if}
+        </span>
+      </div>
+
+      <!-- Right: actions -->
       <div class="custom-bar-actions">
         <button
           class="custom-bar-btn view-btn"
@@ -341,30 +464,34 @@
         <button
           class="custom-bar-btn start-btn"
           onclick={handleStartCustomRun}
+          disabled={activeItems.length === 0}
           aria-label="Start custom run"
         >
-          ▶ Start
+          &#9654; Start
         </button>
       </div>
     </div>
 
     <!-- Custom playlist flyout -->
-    {#if customFlyoutOpen}
+    {#if customFlyoutOpen && activePlaylist}
       <div class="custom-flyout" role="dialog" aria-label="Custom playlist">
         <div class="flyout-header">
-          <span class="flyout-title">Custom Playlist</span>
-          <button class="flyout-clear" onclick={handleClearCustom}>Clear All</button>
+          <span class="flyout-title">{activePlaylist.name}</span>
+          <div class="flyout-header-actions">
+            <button class="flyout-clear" onclick={handleClearCustom}>Clear</button>
+            <button class="flyout-delete" onclick={handleDeletePlaylist}>Delete Playlist</button>
+          </div>
         </div>
         <div class="flyout-items">
-          {#each customItems as item, i (i)}
+          {#each activePlaylist.items as item, i (i)}
             <div class="flyout-item">
-              <span class="flyout-item-icon">{item.type === 'trivia' ? '⚔️' : '📚'}</span>
+              <span class="flyout-item-icon">{item.type === 'trivia' ? '&#9876;' : '&#128218;'}</span>
               <span class="flyout-item-label">{item.label}</span>
               <button
                 class="flyout-item-remove"
-                onclick={() => handleRemoveCustomItemWithAudio(i)}
+                onclick={() => handleRemoveCustomItem(i)}
                 aria-label="Remove {item.label}"
-              >✕</button>
+              >&#10005;</button>
             </div>
           {/each}
         </div>
@@ -372,6 +499,16 @@
     {/if}
   {/if}
 </div>
+
+<!-- Playlist picker popup (rendered outside the main div to avoid z-index issues) -->
+{#if showPlaylistPicker}
+  <PlaylistPickerPopup
+    playlists={customPlaylists}
+    onAddToPlaylist={handleAddToPlaylist}
+    onCreateAndAdd={handleCreateAndAdd}
+    onClose={handleClosePlaylistPicker}
+  />
+{/if}
 
 <style>
   .dungeon-selection-screen {
@@ -489,16 +626,54 @@
     border-top: 1px solid rgba(99, 102, 241, 0.3);
   }
 
-  .custom-bar-label {
-    font-size: calc(13px * var(--text-scale, 1));
-    color: #a5b4fc;
-    font-weight: 500;
+  .custom-bar-left {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    min-width: 0;
+    flex: 1;
   }
 
-  .custom-bar-facts {
+  .custom-bar-icon {
+    font-size: calc(14px * var(--text-scale, 1));
+    flex-shrink: 0;
+  }
+
+  /* Playlist dropdown */
+  .playlist-select {
+    max-width: calc(200px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    padding: 0 calc(8px * var(--layout-scale, 1));
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #a5b4fc;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    flex-shrink: 0;
+  }
+
+  .playlist-select:focus {
+    border-color: #6366f1;
+  }
+
+  .playlist-name-static {
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 600;
+    color: #a5b4fc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+  }
+
+  .custom-bar-meta {
     font-size: calc(12px * var(--text-scale, 1));
     color: #6366f1;
-    font-weight: 400;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .custom-bar-actions {
@@ -535,8 +710,13 @@
     color: #fff;
   }
 
-  .custom-bar-btn.start-btn:hover {
+  .custom-bar-btn.start-btn:hover:not(:disabled) {
     background: linear-gradient(135deg, #4338ca, #6d28d9);
+  }
+
+  .custom-bar-btn.start-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
 
   /* ── Custom playlist flyout ── */
@@ -563,17 +743,29 @@
     padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     flex-shrink: 0;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .flyout-title {
+    flex: 1;
     font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     color: #a5b4fc;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .flyout-clear {
+  .flyout-header-actions {
+    display: flex;
+    gap: calc(6px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .flyout-clear,
+  .flyout-delete {
     background: none;
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: #64748b;
@@ -582,12 +774,19 @@
     padding: calc(3px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
     transition: color 0.12s, background 0.12s;
+    white-space: nowrap;
   }
 
   .flyout-clear:hover {
     color: #f87171;
     background: rgba(248, 113, 113, 0.08);
     border-color: rgba(248, 113, 113, 0.3);
+  }
+
+  .flyout-delete:hover {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.35);
   }
 
   .flyout-items {

@@ -1129,7 +1129,7 @@
       "country": "Philippines",
       "inception": "+1565-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q334",
@@ -1142,7 +1142,7 @@
       "country": "Q8680",
       "inception": "+1965-08-09T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q822",
@@ -1155,7 +1155,7 @@
       "country": "Lebanon",
       "inception": "+1943-11-22T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q837",
@@ -1168,7 +1168,7 @@
       "country": "Nepal",
       "inception": "+1768-09-25T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q711",
@@ -1181,7 +1181,7 @@
       "country": "Mongolia",
       "inception": "+1911-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q813",
@@ -1194,7 +1194,9 @@
       "country": "Kyrgyzstan",
       "inception": "+1991-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q836",
@@ -1207,7 +1209,9 @@
       "country": "Myanmar",
       "inception": "+1948-01-04T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q878",
@@ -1220,7 +1224,9 @@
       "country": "United Arab Emirates",
       "inception": "+1971-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q819",
@@ -1233,7 +1239,9 @@
       "country": "Laos",
       "inception": "+1949-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q865",
@@ -1246,7 +1254,9 @@
       "country": "Taiwan",
       "inception": "+1912-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q810",
@@ -1259,7 +1269,7 @@
       "country": "Jordan",
       "inception": "+1946-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q805",
@@ -1272,7 +1282,7 @@
       "country": "Yemen",
       "inception": "+1990-05-22T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q423",
@@ -1285,7 +1295,7 @@
       "country": "North Korea",
       "inception": "+1948-09-09T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q265",
@@ -1298,7 +1308,7 @@
       "country": "Uzbekistan",
       "inception": "+1991-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q854",
@@ -1311,7 +1321,7 @@
       "country": "Sri Lanka",
       "inception": "+1972-05-22T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q863",
@@ -1324,7 +1334,7 @@
       "country": "Tajikistan",
       "inception": "+1991-09-09T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q956",
@@ -1336,7 +1346,7 @@
     "properties": {
       "country": "Q148"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q817",
@@ -1349,7 +1359,7 @@
       "country": "Kuwait",
       "inception": "+1991-02-26T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q917",
@@ -1362,7 +1372,7 @@
       "country": "Bhutan",
       "inception": "+1907-12-17T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8646",
@@ -1375,7 +1385,7 @@
       "country": "Q148",
       "inception": "+1997-07-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q874",
@@ -1388,7 +1398,8 @@
       "country": "Turkmenistan",
       "inception": "+1991-10-27T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q921",
@@ -1401,7 +1412,8 @@
       "country": "Brunei",
       "inception": "+1984-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q842",
@@ -1414,7 +1426,8 @@
       "country": "Oman",
       "inception": "+1970-07-23T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q826",
@@ -1427,7 +1440,8 @@
       "country": "Maldives",
       "inception": "+1965-07-26T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q846",
@@ -1440,7 +1454,8 @@
       "country": "Qatar",
       "inception": "+1870-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q574",
@@ -1453,7 +1468,7 @@
       "country": "Timor-Leste",
       "inception": "+1975-11-28T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q691",
@@ -1466,7 +1481,7 @@
       "country": "Papua New Guinea",
       "inception": "+1975-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q55643",
@@ -1476,7 +1491,7 @@
     "sitelinks": 278,
     "monthlyPageviews": 139000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q712",
@@ -1489,7 +1504,7 @@
       "country": "Fiji",
       "inception": "+1970-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q697",
@@ -1502,7 +1517,7 @@
       "country": "Nauru",
       "inception": "+1968-01-31T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q98",
@@ -1512,7 +1527,8 @@
     "sitelinks": 260,
     "monthlyPageviews": 130000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q686",
@@ -1525,7 +1541,8 @@
       "country": "Vanuatu",
       "inception": "+1980-07-30T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q683",
@@ -1538,7 +1555,8 @@
       "country": "Samoa",
       "inception": "+1962-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q34600",
@@ -1551,7 +1569,8 @@
       "country": "Q17",
       "inception": "+1889-04-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q678",
@@ -1564,7 +1583,8 @@
       "country": "Tonga",
       "inception": "+1970-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q695",
@@ -1577,7 +1597,8 @@
       "country": "Palau",
       "inception": "+1994-10-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q3130",
@@ -1590,7 +1611,8 @@
       "country": "Q408",
       "inception": "+1788-01-26T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q8686",
@@ -1603,7 +1625,8 @@
       "country": "Q148",
       "inception": "+0751-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q672",
@@ -1616,7 +1639,8 @@
       "country": "Tuvalu",
       "inception": "+1978-10-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q710",
@@ -1629,7 +1653,8 @@
       "country": "Kiribati",
       "inception": "+1979-07-12T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q685",
@@ -1642,7 +1667,10 @@
       "country": "Solomon Islands",
       "inception": "+1978-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q709",
@@ -1655,7 +1683,10 @@
       "country": "Marshall Islands",
       "inception": "+1979-05-01T00:00:00Z"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q166",
@@ -1667,7 +1698,10 @@
     "properties": {
       "country": "Bulgaria"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q14773",
@@ -1680,7 +1714,10 @@
       "country": "Q148",
       "inception": "+1999-12-20T00:00:00Z"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q1156",
@@ -1693,7 +1730,10 @@
       "country": "Q668",
       "inception": "+1507-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q702",
@@ -1706,7 +1746,8 @@
       "country": "Federated States of Micronesia",
       "inception": "+1947-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q219060",
@@ -1719,7 +1760,8 @@
       "country": "Palestine",
       "inception": "+1988-11-15T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q6101",
@@ -1734,7 +1776,8 @@
       "occupation": "Q215536",
       "fieldOfWork": "Q61509"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q5451",
@@ -1746,7 +1789,8 @@
     "properties": {
       "country": "Q837"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q1353",
@@ -1759,7 +1803,8 @@
       "country": "Q668",
       "inception": "-0500-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q1348",
@@ -1771,7 +1816,8 @@
     "properties": {
       "country": "Q668"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q5401",
@@ -1781,7 +1827,8 @@
     "sitelinks": 195,
     "monthlyPageviews": 97500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q35765",
@@ -1794,7 +1841,8 @@
       "country": "Q17",
       "inception": "+1889-04-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q33788",
@@ -1807,7 +1855,8 @@
       "country": "Q142",
       "inception": "+1853-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q23406",
@@ -1819,7 +1868,8 @@
     "properties": {
       "country": "Q79"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q27275",
@@ -1831,7 +1881,8 @@
     "properties": {
       "country": "Q232"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q26988",
@@ -1844,7 +1895,8 @@
       "country": "Q664",
       "inception": "+1965-08-04T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q5428",
@@ -1856,7 +1908,8 @@
     "properties": {
       "country": "Q190513"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q17070",
@@ -1869,7 +1922,8 @@
       "country": "Q142",
       "inception": "+1946-03-21T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q11708",
@@ -1881,7 +1935,8 @@
     "properties": {
       "country": "Q881"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q27231",
@@ -1893,7 +1948,8 @@
     "properties": {
       "country": "Q17"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q16641",
@@ -1906,7 +1962,8 @@
       "country": "Q30",
       "inception": "+1899-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q34020",
@@ -1919,7 +1976,8 @@
       "country": "Niue",
       "inception": "+1974-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q38",
@@ -1932,7 +1990,8 @@
       "country": "Italy",
       "inception": "+1946-06-18T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q183",
@@ -1945,7 +2004,8 @@
       "country": "Germany",
       "inception": "+1949-05-23T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q33",
@@ -1957,7 +2017,8 @@
     "properties": {
       "inception": "+1917-12-06T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q20",
@@ -1970,7 +2031,8 @@
       "country": "Norway",
       "inception": "+1905-10-26T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q145",
@@ -1983,7 +2045,8 @@
       "country": "United Kingdom",
       "inception": "+1927-04-12T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q36",
@@ -1996,7 +2059,8 @@
       "country": "Poland",
       "inception": "+1000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q222",
@@ -2009,7 +2073,8 @@
       "country": "Albania",
       "inception": "+1912-11-28T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q212",
@@ -2022,7 +2087,7 @@
       "country": "Ukraine",
       "inception": "+1991-08-24T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q39",
@@ -2035,7 +2100,7 @@
       "country": "Switzerland",
       "inception": "+1291-08-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q41",
@@ -2048,7 +2113,7 @@
       "country": "Greece",
       "inception": "+1821-03-25T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q31",
@@ -2061,7 +2126,7 @@
       "country": "Belgium",
       "inception": "+1830-10-04T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q34",
@@ -2073,7 +2138,7 @@
     "properties": {
       "inception": "+0900-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q40",
@@ -2086,7 +2151,7 @@
       "country": "Austria",
       "inception": "+1918-11-12T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q35",
@@ -2099,7 +2164,7 @@
       "country": "Q756617",
       "inception": "+0800-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q45",
@@ -2112,7 +2177,7 @@
       "country": "Portugal",
       "inception": "+1139-07-25T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q219",
@@ -2125,7 +2190,7 @@
       "country": "Bulgaria",
       "inception": "+0681-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q90",
@@ -2138,7 +2203,7 @@
       "country": "Q142",
       "inception": "-0300-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q184",
@@ -2151,7 +2216,7 @@
       "country": "Belarus",
       "inception": "+1991-08-25T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q28",
@@ -2164,7 +2229,7 @@
       "country": "Hungary",
       "inception": "+1000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q224",
@@ -2177,7 +2242,7 @@
       "country": "Croatia",
       "inception": "+1991-06-25T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q213",
@@ -2190,7 +2255,7 @@
       "country": "Czech Republic",
       "inception": "+1993-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q191",
@@ -2203,7 +2268,7 @@
       "country": "Estonia",
       "inception": "+1918-02-24T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q37",
@@ -2216,7 +2281,7 @@
       "country": "Lithuania",
       "inception": "+1990-03-11T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q403",
@@ -2229,7 +2294,7 @@
       "country": "Serbia",
       "inception": "+0780-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q218",
@@ -2242,7 +2307,7 @@
       "country": "Romania",
       "inception": "+1859-01-24T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q27",
@@ -2255,7 +2320,7 @@
       "country": "Ireland",
       "inception": "+1937-12-29T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q225",
@@ -2268,7 +2333,7 @@
       "country": "Bosnia and Herzegovina",
       "inception": "+1992-03-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q214",
@@ -2281,7 +2346,7 @@
       "country": "Slovakia",
       "inception": "+1939-03-14T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q237",
@@ -2294,7 +2359,7 @@
       "country": "Vatican City",
       "inception": "+1929-02-11T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q32",
@@ -2307,7 +2372,7 @@
       "country": "Luxembourg",
       "inception": "+1815-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q649",
@@ -2319,7 +2384,7 @@
     "properties": {
       "country": "Q11750528"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q211",
@@ -2332,7 +2397,7 @@
       "country": "Latvia",
       "inception": "+1918-11-18T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q215",
@@ -2345,7 +2410,9 @@
       "country": "Slovenia",
       "inception": "+1991-06-25T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q217",
@@ -2358,7 +2425,9 @@
       "country": "Moldova",
       "inception": "+1991-08-27T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q228",
@@ -2371,7 +2440,9 @@
       "country": "Andorra",
       "inception": "+1278-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q21",
@@ -2384,7 +2455,9 @@
       "country": "Q145",
       "inception": "+0927-07-12T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q233",
@@ -2397,7 +2470,9 @@
       "country": "Malta",
       "inception": "+1964-09-21T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q221",
@@ -2410,7 +2485,9 @@
       "country": "North Macedonia",
       "inception": "+1991-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q229",
@@ -2423,7 +2500,9 @@
       "country": "Cyprus",
       "inception": "+1960-08-16T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q236",
@@ -2436,7 +2515,9 @@
       "country": "Montenegro",
       "inception": "+2006-06-03T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q235",
@@ -2449,7 +2530,9 @@
       "country": "Monaco",
       "inception": "+1297-01-08T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q347",
@@ -2462,7 +2545,9 @@
       "country": "Liechtenstein",
       "inception": "+1806-07-12T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q238",
@@ -2475,7 +2560,9 @@
       "country": "San Marino",
       "inception": "+0301-09-03T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q2807",
@@ -2487,7 +2574,9 @@
     "properties": {
       "country": "Q29"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1246",
@@ -2500,7 +2589,9 @@
       "country": "Kosovo",
       "inception": "+2008-02-17T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q22",
@@ -2513,7 +2604,9 @@
       "country": "Q145",
       "inception": "+0843-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q656",
@@ -2526,7 +2619,9 @@
       "country": "Russia",
       "inception": "+1703-05-27T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q25",
@@ -2540,7 +2635,9 @@
       "country": "Q179876",
       "inception": "+0500-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1492",
@@ -2552,7 +2649,9 @@
     "properties": {
       "country": "Q29"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1726",
@@ -2565,7 +2664,9 @@
       "country": "Q183",
       "inception": "+1158-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1055",
@@ -2577,7 +2678,9 @@
     "properties": {
       "country": "Q12548"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q641",
@@ -2590,7 +2693,9 @@
       "country": "Q38",
       "inception": "+0421-03-25T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1410",
@@ -2603,7 +2708,9 @@
       "country": "Q145",
       "inception": "+1704-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q5705",
@@ -2616,7 +2723,9 @@
       "country": "Q29",
       "inception": "+0801-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1794",
@@ -2629,7 +2738,9 @@
       "country": "Q146246",
       "inception": "+0100-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1286",
@@ -2655,7 +2766,9 @@
       "country": "Q183",
       "inception": "+1919-01-12T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q2634",
@@ -2681,7 +2794,9 @@
       "deathDate": "+1521-04-27T00:00:00Z",
       "occupation": "Q11900058"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q456",
@@ -5427,7 +5542,7 @@
     "properties": {
       "country": "Q27"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q34370",

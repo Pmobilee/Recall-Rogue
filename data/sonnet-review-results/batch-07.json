@@ -1,0 +1,188 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 170,
+  "issues": [
+    {
+      "id": "general_knowledge-hindi-urdu-third-largest",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Largest in South Asia' appears twice in the distractor list.",
+      "suggested_fix": "Remove the duplicate distractor. Replace one with a unique option such as 'Seventh most spoken'."
+    },
+    {
+      "id": "general_knowledge-dutch-afrikaans-replaced-1925",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Grammar error in quiz_question: 'South Africa official language' is missing the possessive — should be 'South Africa's official language'.",
+      "suggested_fix": "Change to: 'Which language replaced Dutch as South Africa's official language in 1925?'"
+    },
+    {
+      "id": "general_knowledge-cyrillic-bulgarian-origin",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-cyrillic-invented-bulgaria'. Both ask 'In which country was the Cyrillic script developed?' with nearly identical correct answers, distractors, and explanations. One should be removed or substantially differentiated.",
+      "suggested_fix": "Remove one of the two duplicates, or reframe one to ask a different angle (e.g., who created it, what century, etc.)."
+    },
+    {
+      "id": "general_knowledge-cyrillic-invented-bulgaria",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-cyrillic-bulgarian-origin'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates, or reframe one to ask a different angle."
+    },
+    {
+      "id": "general_knowledge-greek-alphabet-first-vowels",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-greek-alphabet-vowels'. Both ask about the Greek alphabet being the first to systematically write vowels. The questions, correct answers, and explanations are substantially the same.",
+      "suggested_fix": "Remove one of the two. If keeping both, differentiate: one could ask the specific century it was developed, the other the parent script it derived from."
+    },
+    {
+      "id": "general_knowledge-greek-alphabet-vowels",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-greek-alphabet-first-vowels'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates."
+    },
+    {
+      "id": "general_knowledge-yiddish-holocaust-collapse",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-yiddish-holocaust-85-percent'. Both ask what percentage of Holocaust victims were Yiddish speakers, with the same answer (~85%) and nearly identical explanations.",
+      "suggested_fix": "Remove one of the two. Alternatively, keep one as the numerical question and replace the other with a distinct question about Yiddish (e.g., how many speakers it had before WWII, or where it survives today)."
+    },
+    {
+      "id": "general_knowledge-yiddish-holocaust-85-percent",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-yiddish-holocaust-collapse'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates."
+    },
+    {
+      "id": "general_knowledge-slavic-languages-europe",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-slavic-languages-speakers'. Both ask about total Slavic language speakers (315 million) with nearly identical correct answers and explanations.",
+      "suggested_fix": "Remove one of the two. If keeping both, differentiate: one could ask the number of distinct Slavic languages, or which branch has the most speakers."
+    },
+    {
+      "id": "general_knowledge-slavic-languages-speakers",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-slavic-languages-europe'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates."
+    },
+    {
+      "id": "general_knowledge-html-tim-berners-lee",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-html-inventor'. Both ask who invented HTML with identical correct answers (Tim Berners-Lee) and overlapping distractors.",
+      "suggested_fix": "Remove one of the two. If keeping both, differentiate: one could ask the year HTML was created or what organization maintains it."
+    },
+    {
+      "id": "general_knowledge-html-inventor",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-html-tim-berners-lee'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates."
+    },
+    {
+      "id": "general_knowledge-chinese-characters-only-continuous-writing",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-chinese-characters-continuous'. Both ask which of the four independently invented writing systems is still in continuous use, with identical correct answers and nearly identical distractors.",
+      "suggested_fix": "Remove one of the two."
+    },
+    {
+      "id": "general_knowledge-chinese-characters-continuous",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-chinese-characters-only-continuous-writing'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates."
+    },
+    {
+      "id": "general_knowledge-polish-alphabet",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-polish-alphabet-letters'. Both ask how many letters the Polish alphabet has (32), with nearly identical explanations.",
+      "suggested_fix": "Remove one of the two. If keeping both, differentiate: one could ask how many diacritic letters Polish adds, or which letters it removes from the Latin alphabet."
+    },
+    {
+      "id": "general_knowledge-polish-alphabet-letters",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-polish-alphabet'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates."
+    },
+    {
+      "id": "general_knowledge-english-2-billion-speakers",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-germanic-english-speakers'. Both ask how many total speakers English has (~2 billion) with nearly identical correct answers and explanations.",
+      "suggested_fix": "Remove one of the two. Note also that '2 billion' conflicts with the separate fact 'gk-english-1-4-billion-speakers' which cites 1.4 billion (Ethnologue 2021). These two facts should be reconciled — 2 billion is a higher-end estimate while 1.4 billion is Ethnologue's figure."
+    },
+    {
+      "id": "general_knowledge-germanic-english-speakers",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-english-2-billion-speakers'. See that entry.",
+      "suggested_fix": "Remove one of the two duplicates."
+    },
+    {
+      "id": "gk-english-1-4-billion-speakers",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "This fact states 1.4 billion English speakers (Ethnologue 2021), while two other facts in this batch ('general_knowledge-english-2-billion-speakers' and 'general_knowledge-germanic-english-speakers') state ~2 billion. These figures conflict across the same batch and will confuse players who encounter both.",
+      "suggested_fix": "Reconcile all English speaker count facts to use a single consistent estimate with the same source. Either update the 2 billion facts to note it includes all proficiency levels, or standardize on Ethnologue's 1.4 billion figure."
+    },
+    {
+      "id": "gk-robot-word-origin",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The fact states Josef Čapek coined 'robot', but this is contested. The overwhelming scholarly and popular attribution is to Karel Čapek, who used it in the 1920 play R.U.R. Josef suggested the word to Karel in conversation, but Karel wrote the play and published the word. Most encyclopedias and dictionaries credit Karel Čapek, not Josef. The Wikidata claim is a minority attribution. Presenting Josef as the coiner — with Karel as a distractor — will seem wrong to most knowledgeable players and may genuinely be inaccurate.",
+      "suggested_fix": "Either reframe the question to ask 'Which brothers are associated with coining robot?' or change the correct answer to Karel Čapek and rephrase the explanation to note Josef suggested the specific word to his brother Karel. Alternatively, the question could ask 'In which play did the word robot first appear in print?' with answer 'R.U.R.' by Karel Čapek."
+    },
+    {
+      "id": "gk-software-highlevel-languages-1958",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states high-level programming languages were 'first introduced' in 1958, but FORTRAN (released April 1957 by IBM) is widely considered the first high-level programming language. 1958 may refer to ALGOL 58 or LISP (1958), but is not accurate as the date of the first high-level language.",
+      "suggested_fix": "Change the correct answer to '{1957}' and update the explanation to reference FORTRAN (1957) as the first widely used high-level language, or reframe the question to ask specifically about ALGOL or another 1958 language."
+    },
+    {
+      "id": "gk-hard-disk-ssd-revenue",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation is internally contradictory: it states 'revenues for SSDs...slightly exceeded those for HDDs in 2018' but then says 'Flash storage products had more than twice the revenue of hard disk drives as of 2017' — which would mean SSDs already dominated in 2017, a year earlier. The two sentences cannot both be true.",
+      "suggested_fix": "Remove the contradictory second sentence. The correct statement is that SSD revenues first exceeded HDD revenues in 2018. The '2017' sentence appears to conflate flash storage revenue broadly (including enterprise) with the SSD vs HDD comparison and should be deleted."
+    },
+    {
+      "id": "gk-german-second-science-language",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that German is 'second most used in scientific publishing, after English' is outdated. By the 2010s, Chinese-language scientific output surpassed German by most measures. The Wikipedia source may reflect an older era. As a standalone fact presented without historical qualification, this is likely wrong for the current period.",
+      "suggested_fix": "Add a historical qualifier: 'Through much of the 20th century, which language was second most used in scientific publishing, after English?' with answer 'German'. Or update the explanation to note this was true historically but Chinese has since overtaken German in output volume."
+    },
+    {
+      "id": "gk-pc-individual-use-1957",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asserts 1957 as the origin of the personal computer concept, sourced from Wikidata. This is highly non-standard — the consensus historical origin of the personal computer is the early-to-mid 1970s (Altair 8800, 1975; Apple I, 1976). The 1957 date appears to reference an early single-user computer (possibly the IBM 610), not the personal computer as understood today. Presenting this to players as the PC's origin year will seem wrong and confusing.",
+      "suggested_fix": "Remove this fact or substantially reframe it. If 1957 refers to a specific machine (e.g., IBM 610 'Auto-Point' — one of the first single-user computers), name that machine explicitly. Otherwise, replace with a question about the Altair 8800 (1975) or the popularization of the home computer in the late 1970s."
+    },
+    {
+      "id": "gk-washing-machine-india-typewriter",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "The fact ID 'gk-washing-machine-india-typewriter' contains 'washing-machine' in the ID, which has no connection to the question (which is about typewriters still being used in India). This is a misleading/incorrect ID that may cause confusion in the database.",
+      "suggested_fix": "Rename the ID to something like 'gk-typewriter-india-still-used' to accurately reflect the fact's content."
+    },
+    {
+      "id": "gk-thermometer-fahrenheit-inventor",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states Daniel Gabriel Fahrenheit 'shares credit with Hero of Alexandria for the thermometer.' Hero of Alexandria is not a standard co-inventor of the thermometer — Galileo Galilei is typically credited with the thermoscope (~1593), and Santorio Santorio with the first clinical thermometer. Fahrenheit developed the sealed mercury thermometer and his temperature scale. Crediting Hero of Alexandria as a thermometer co-inventor is unusual and likely to mislead players.",
+      "suggested_fix": "Rephrase the question to avoid implying Hero of Alexandria and Fahrenheit are co-inventors of the thermometer in the modern sense. For example: 'Which inventor created the first sealed mercury thermometer and the temperature scale bearing his name?' Answer: Daniel Gabriel Fahrenheit. Or if the Wikidata claim for Hero must be used, add clear historical context in the explanation distinguishing 'thermoscope' (ancient) from 'thermometer' (modern)."
+    }
+  ]
+}

@@ -1,0 +1,522 @@
+{
+  "animals_wildlife": [
+    {
+      "name": "Blue whale",
+      "wiki": "Blue_whale",
+      "sub": "marine_life"
+    },
+    {
+      "name": "Komodo dragon",
+      "wiki": "Komodo_dragon",
+      "sub": "reptiles_amphibians"
+    },
+    {
+      "name": "Chimpanzee",
+      "wiki": "Chimpanzee",
+      "sub": "behavior_intelligence"
+    },
+    {
+      "name": "Leafcutter ant",
+      "wiki": "Leafcutter_ant",
+      "sub": "insects_arachnids"
+    },
+    {
+      "name": "Red fox",
+      "wiki": "Red_fox",
+      "sub": "mammals"
+    },
+    {
+      "name": "Dolphin",
+      "wiki": "Dolphin",
+      "sub": "marine_life"
+    },
+    {
+      "name": "Chameleon",
+      "wiki": "Chameleon",
+      "sub": "reptiles_amphibians"
+    },
+    {
+      "name": "Albatross",
+      "wiki": "Albatross",
+      "sub": "birds"
+    },
+    {
+      "name": "Vampire bat",
+      "wiki": "Vampire_bat",
+      "sub": "mammals"
+    },
+    {
+      "name": "Giant squid",
+      "wiki": "Giant_squid",
+      "sub": "marine_life"
+    }
+  ],
+  "art_architecture": [
+    {
+      "name": "Sistine Chapel",
+      "wiki": "Sistine_Chapel",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Claude Monet",
+      "wiki": "Claude_Monet",
+      "sub": "painting_visual"
+    },
+    {
+      "name": "Colosseum",
+      "wiki": "Colosseum",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Salvador Dali",
+      "wiki": "Salvador_Dal%C3%AD",
+      "sub": "painting_visual"
+    },
+    {
+      "name": "Hagia Sophia",
+      "wiki": "Hagia_Sophia",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Bauhaus",
+      "wiki": "Bauhaus",
+      "sub": "architectural_styles"
+    },
+    {
+      "name": "Mozart",
+      "wiki": "Wolfgang_Amadeus_Mozart",
+      "sub": "music_performance"
+    },
+    {
+      "name": "Great Wall of China",
+      "wiki": "Great_Wall_of_China",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Banksy",
+      "wiki": "Banksy",
+      "sub": "modern_contemporary"
+    },
+    {
+      "name": "Ukiyo-e",
+      "wiki": "Ukiyo-e",
+      "sub": "painting_visual"
+    }
+  ],
+  "food_cuisine": [
+    {
+      "name": "Honey",
+      "wiki": "Honey",
+      "sub": "ingredients_spices"
+    },
+    {
+      "name": "Pizza",
+      "wiki": "Pizza",
+      "sub": "european_cuisine"
+    },
+    {
+      "name": "Tea",
+      "wiki": "Tea",
+      "sub": "fermentation_beverages"
+    },
+    {
+      "name": "Cinnamon",
+      "wiki": "Cinnamon",
+      "sub": "ingredients_spices"
+    },
+    {
+      "name": "Cheese",
+      "wiki": "Cheese",
+      "sub": "food_history"
+    },
+    {
+      "name": "Wasabi",
+      "wiki": "Wasabi",
+      "sub": "asian_cuisine"
+    },
+    {
+      "name": "Sourdough",
+      "wiki": "Sourdough",
+      "sub": "baking_desserts"
+    },
+    {
+      "name": "Curry",
+      "wiki": "Curry",
+      "sub": "asian_cuisine"
+    },
+    {
+      "name": "Maple syrup",
+      "wiki": "Maple_syrup",
+      "sub": "ingredients_spices"
+    },
+    {
+      "name": "Tofu",
+      "wiki": "Tofu",
+      "sub": "asian_cuisine"
+    }
+  ],
+  "general_knowledge": [
+    {
+      "name": "Telescope",
+      "wiki": "Telescope",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Cryptocurrency",
+      "wiki": "Cryptocurrency",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Sign language",
+      "wiki": "Sign_language",
+      "sub": "words_language"
+    },
+    {
+      "name": "Leap year",
+      "wiki": "Leap_year",
+      "sub": "everyday_science"
+    },
+    {
+      "name": "Library of Alexandria",
+      "wiki": "Library_of_Alexandria",
+      "sub": "landmarks_wonders"
+    },
+    {
+      "name": "Radio",
+      "wiki": "Radio",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Board game",
+      "wiki": "Board_game",
+      "sub": "oddities"
+    },
+    {
+      "name": "Recycling",
+      "wiki": "Recycling",
+      "sub": "everyday_science"
+    },
+    {
+      "name": "Time zone",
+      "wiki": "Time_zone",
+      "sub": "everyday_science"
+    },
+    {
+      "name": "Vaccination",
+      "wiki": "Vaccination",
+      "sub": "inventions_tech"
+    }
+  ],
+  "geography": [
+    {
+      "name": "Amazon rainforest",
+      "wiki": "Amazon_rainforest",
+      "sub": "landforms_water"
+    },
+    {
+      "name": "Sahara",
+      "wiki": "Sahara",
+      "sub": "africa"
+    },
+    {
+      "name": "Great Barrier Reef",
+      "wiki": "Great_Barrier_Reef",
+      "sub": "landforms_water"
+    },
+    {
+      "name": "Antarctica",
+      "wiki": "Antarctica",
+      "sub": "extreme_records"
+    },
+    {
+      "name": "Dead Sea",
+      "wiki": "Dead_Sea",
+      "sub": "landforms_water"
+    },
+    {
+      "name": "Mount Everest",
+      "wiki": "Mount_Everest",
+      "sub": "extreme_records"
+    },
+    {
+      "name": "Mariana Trench",
+      "wiki": "Mariana_Trench",
+      "sub": "landforms_water"
+    },
+    {
+      "name": "Japan",
+      "wiki": "Japan",
+      "sub": "asia_oceania"
+    },
+    {
+      "name": "New Zealand",
+      "wiki": "New_Zealand",
+      "sub": "asia_oceania"
+    },
+    {
+      "name": "Switzerland",
+      "wiki": "Switzerland",
+      "sub": "europe"
+    }
+  ],
+  "history": [
+    {
+      "name": "Roman Empire",
+      "wiki": "Roman_Empire",
+      "sub": "ancient_classical"
+    },
+    {
+      "name": "World War I",
+      "wiki": "World_War_I",
+      "sub": "world_wars"
+    },
+    {
+      "name": "Aztec Empire",
+      "wiki": "Aztec_Empire",
+      "sub": "medieval"
+    },
+    {
+      "name": "Renaissance",
+      "wiki": "Renaissance",
+      "sub": "social_cultural"
+    },
+    {
+      "name": "Space Race",
+      "wiki": "Space_Race",
+      "sub": "modern_contemporary"
+    },
+    {
+      "name": "Black Death",
+      "wiki": "Black_Death",
+      "sub": "medieval"
+    },
+    {
+      "name": "Mahatma Gandhi",
+      "wiki": "Mahatma_Gandhi",
+      "sub": "people_leaders"
+    },
+    {
+      "name": "Ottoman Empire",
+      "wiki": "Ottoman_Empire",
+      "sub": "early_modern"
+    },
+    {
+      "name": "Nelson Mandela",
+      "wiki": "Nelson_Mandela",
+      "sub": "modern_contemporary"
+    },
+    {
+      "name": "Printing in China",
+      "wiki": "Woodblock_printing",
+      "sub": "medieval"
+    }
+  ],
+  "human_body_health": [
+    {
+      "name": "Skin",
+      "wiki": "Human_skin",
+      "sub": "anatomy_organs"
+    },
+    {
+      "name": "Gut flora",
+      "wiki": "Gut_microbiota",
+      "sub": "digestion_metabolism"
+    },
+    {
+      "name": "Fever",
+      "wiki": "Fever",
+      "sub": "immunity_disease"
+    },
+    {
+      "name": "REM sleep",
+      "wiki": "Rapid_eye_movement_sleep",
+      "sub": "brain_neuro"
+    },
+    {
+      "name": "Red blood cell",
+      "wiki": "Red_blood_cell",
+      "sub": "cardiovascular"
+    },
+    {
+      "name": "Pain",
+      "wiki": "Pain",
+      "sub": "senses_perception"
+    },
+    {
+      "name": "Placebo effect",
+      "wiki": "Placebo",
+      "sub": "medical_science"
+    },
+    {
+      "name": "Muscle",
+      "wiki": "Muscle",
+      "sub": "anatomy_organs"
+    },
+    {
+      "name": "Antibodies",
+      "wiki": "Antibody",
+      "sub": "immunity_disease"
+    },
+    {
+      "name": "Circadian rhythm",
+      "wiki": "Circadian_rhythm",
+      "sub": "brain_neuro"
+    }
+  ],
+  "mythology_folklore": [
+    {
+      "name": "Loki",
+      "wiki": "Loki",
+      "sub": "norse_celtic"
+    },
+    {
+      "name": "Sphinx",
+      "wiki": "Sphinx",
+      "sub": "creatures_monsters"
+    },
+    {
+      "name": "Underworld",
+      "wiki": "Greek_underworld",
+      "sub": "greek_roman"
+    },
+    {
+      "name": "Tanuki",
+      "wiki": "Bake-danuki",
+      "sub": "creatures_monsters"
+    },
+    {
+      "name": "Excalibur",
+      "wiki": "Excalibur",
+      "sub": "folk_legends"
+    },
+    {
+      "name": "Athena",
+      "wiki": "Athena",
+      "sub": "greek_roman"
+    },
+    {
+      "name": "Kraken",
+      "wiki": "Kraken",
+      "sub": "creatures_monsters"
+    },
+    {
+      "name": "Icarus",
+      "wiki": "Icarus",
+      "sub": "greek_roman"
+    },
+    {
+      "name": "Anansi",
+      "wiki": "Anansi",
+      "sub": "folk_legends"
+    },
+    {
+      "name": "Jormungandr",
+      "wiki": "J%C3%B6rmungandr",
+      "sub": "norse_celtic"
+    }
+  ],
+  "natural_sciences": [
+    {
+      "name": "DNA replication",
+      "wiki": "DNA_replication",
+      "sub": "biology_organisms"
+    },
+    {
+      "name": "Periodic table",
+      "wiki": "Periodic_table",
+      "sub": "chemistry_elements"
+    },
+    {
+      "name": "Plate tectonics",
+      "wiki": "Plate_tectonics",
+      "sub": "geology_earth"
+    },
+    {
+      "name": "Superconductor",
+      "wiki": "Superconductivity",
+      "sub": "physics_mechanics"
+    },
+    {
+      "name": "Fungi",
+      "wiki": "Fungus",
+      "sub": "biology_organisms"
+    },
+    {
+      "name": "Tsunami",
+      "wiki": "Tsunami",
+      "sub": "geology_earth"
+    },
+    {
+      "name": "Helium",
+      "wiki": "Helium",
+      "sub": "chemistry_elements"
+    },
+    {
+      "name": "Evolution",
+      "wiki": "Evolution",
+      "sub": "biology_organisms"
+    },
+    {
+      "name": "Graphene",
+      "wiki": "Graphene",
+      "sub": "materials_engineering"
+    },
+    {
+      "name": "Aurora",
+      "wiki": "Aurora_(astronomy)",
+      "sub": "physics_mechanics"
+    }
+  ],
+  "space_astronomy": [
+    {
+      "name": "Black hole",
+      "wiki": "Black_hole",
+      "sub": "stars_galaxies"
+    },
+    {
+      "name": "Moon",
+      "wiki": "Moon",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Hubble Space Telescope",
+      "wiki": "Hubble_Space_Telescope",
+      "sub": "missions_spacecraft"
+    },
+    {
+      "name": "Andromeda Galaxy",
+      "wiki": "Andromeda_Galaxy",
+      "sub": "stars_galaxies"
+    },
+    {
+      "name": "Asteroid belt",
+      "wiki": "Asteroid_belt",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Supernova",
+      "wiki": "Supernova",
+      "sub": "stars_galaxies"
+    },
+    {
+      "name": "Venus",
+      "wiki": "Venus",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Cosmic microwave background",
+      "wiki": "Cosmic_microwave_background",
+      "sub": "cosmology_universe"
+    },
+    {
+      "name": "Pluto",
+      "wiki": "Pluto",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Kepler space telescope",
+      "wiki": "Kepler_space_telescope",
+      "sub": "missions_spacecraft"
+    }
+  ]
+}

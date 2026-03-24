@@ -1,0 +1,491 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (20 entities = 60 facts). Output as a single JSON array.
+
+### HONEY
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** Honey is a sweet and viscous substance made by several species of bees, the best-known of which are honey bees. Honey is made and stored to nourish bee colonies. Bees produce honey by gathering and then refining the sugary secretions of plants (primarily floral nectar) or the secretions of other insects, like the honeydew of aphids. This refinement takes place both within individual bees, through regurgitation and enzymatic activity, and during storage in the hive, through water evaporation that concentrates the honey's sugars until it is thick and viscous.
+Honey bees stockpile honey in the hive. Within the hive is a structure made from wax called honeycomb. The honeycomb is made up of hundreds or thousands of hexagonal cells, into which the bees regurgitate honey for storage. Other honey-producing species of bee store the substance in different structures, such as the pots made of wax and resin used by the stingless bee.
+Honey for human consumption is collected from wild bee colonies, or from the hives of domesticated bees. The honey produced by honey bees is the most familiar to humans, thanks to its worldwide commercial production and availability. The husbandry of bees is known as beekeeping or apiculture, with the cultivation of stingless bees usually referred to as meliponiculture.
+Honey is sweet because of its high concentrations of the monosaccharides fructose and glucose. It has about the same relative sweetness as sucrose (table sugar). One standard tablespoon (14 mL) of honey provides around 180 kilojoules (43 kilocalories) of food energy. It has attractive chemical properties for baking and a distinctive flavor when used as a sweetener. Due to honey's high sugar concentration and acidic pH level many microorganisms cannot grow in it and, when properly stored, honey therefore does not spoil. Samples of honey discovered in archaeological contexts have proven edible even after millennia.
+
+Honey use and production has a long and varied history, with its beginnings in prehistoric times. Several cave paintings in Cuevas de la Araña in Spain depict humans foraging for honey at least 8,000 years ago. While Apis mellifera is an Old World insect, large-scale meliponiculture of New World stingless bees has been practiced by Mayans since pre-Columbian times.
+
+### PIZZA
+**Domain:** food_cuisine / european_cuisine
+
+**Wikipedia:** Pizza is an Italian dish typically consisting of a flat base of leavened wheat-based dough topped with tomato, cheese, and other ingredients, baked at a high temperature, traditionally in a wood-fired oven.
+The term pizza was first recorded in AD 997, in a Latin manuscript from the southern Italian town of Gaeta, in Lazio, on the border with Campania. Raffaele Esposito is often credited for creating the modern pizza in Naples. In 2009, Neapolitan pizza was registered with the European Union as a traditional speciality guaranteed (TSG) dish. In 2017, the art of making Neapolitan pizza was included on UNESCO's list of intangible cultural heritage.
+Pizza and its variants are among the most popular foods in the world. Pizza is sold at a variety of restaurants, including pizzerias, Mediterranean restaurants, via delivery, and as street food. In Italy, pizza served in a restaurant is presented unsliced, and is eaten with the use of a knife and fork. In casual settings, however, it is typically cut into slices to be eaten while held in the hand. Pizza is also sold in grocery stores in a variety of forms, including frozen or as kits for self-assembly. Store-bought pizzas are then cooked using a home oven.
+In 2017, the world pizza market was US$128 billion; in the US, it was $44 billion spread over 76,000 pizzerias. Overall, 13% of the US population aged two years and over consumed pizza on any given day.
+
+### TEA
+**Domain:** food_cuisine / fermentation_beverages
+
+**Wikipedia:** Tea is an aromatic beverage prepared by pouring hot or boiling water over cured or fresh leaves of Camellia sinensis, an evergreen shrub native to East Asia which  originated in the borderlands of south-western China, north-east India and northern Myanmar. Tea is also made, but rarely, from the leaves of Camellia taliensis. After plain water, tea is the most widely consumed drink in the world. There are many types of tea; some have a cooling, slightly bitter, and astringent flavour, while others have profiles that include sweet, nutty, floral, or grassy notes. Tea has a stimulating effect in humans, primarily due to its caffeine content.
+An early credible record of tea drinking dates to the third century AD, in a medical text written by Chinese physician Hua Tuo. It was popularised as a recreational drink during the Chinese Tang dynasty, and tea drinking spread to other East Asian countries. Portuguese priests and merchants introduced it to Europe during the 16th century. During the 17th century, drinking tea became fashionable among the British, who later started to plant tea on a large scale in India, where it had previously been used only as a medicine.
+The term herbal tea refers to drinks not made from Camellia sinensis. They are the infusions of fruit, leaves, or other plant parts, such as steeps of rosehip, chamomile, or rooibos. These may be called tisanes or herbal infusions to prevent confusion with tea made from the tea plant.
+
+### CINNAMON
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** Cinnamon is a spice obtained from the inner bark of several tree species from the genus Cinnamomum. Cinnamon is used mainly as an aromatic condiment and flavouring additive in a wide variety of cuisines, in particular sweet and savoury dishes such as biscuits, breakfast cereals, snack foods, bagels, teas, hot chocolate, and traditional foods. The aroma and flavour of cinnamon derive from its essential oil and principal component, cinnamaldehyde, as well as numerous other constituents, including eugenol.
+
+Cinnamon is the name for several species of trees and the commercial spice products that some of them produce. All are members of the genus Cinnamomum in the family Lauraceae. Only a few Cinnamomum species are grown commercially for spice. Cinnamomum verum (alternatively C. zeylanicum), known as "Ceylon cinnamon" after its origins in Sri Lanka (formerly Ceylon), is considered to be "true cinnamon", but most cinnamon in international commerce is derived from four other species, usually and more correctly referred to as "cassia": C. burmanni (Indonesian cinnamon or Padang cassia), C. cassia (Chinese cinnamon or Chinese cassia), C. loureiroi (Saigon cinnamon or Vietnamese cassia), and the less common C. citriodorum (Malabar cinnamon). 
+In 2023, world production of cinnamon was 238,403 tonnes, led by China with 39% of the total.
+
+### CHEESE
+**Domain:** food_cuisine / food_history
+
+**Wikipedia:** Cheese is a type of dairy product produced in a range of flavors, textures, and forms by coagulation of the milk protein casein. It is composed of proteins and fat from milk, usually of cows, goats or sheep, and sometimes of water buffalo. During production, milk is usually acidified and either the enzymes of rennet or bacterial enzymes with similar activity are added to cause the casein to coagulate. The solid curds are then separated from the liquid whey and pressed into finished cheese. Some cheeses have aromatic molds on the rind, the outer layer, or throughout.
+Over a thousand types of cheese exist, produced in various countries. Their styles, textures and flavors depend on the origin of the milk (including the animal's diet), whether they have been pasteurised, the butterfat content, the bacteria and mold, the processing, and how long they have been aged. Herbs, spices, or wood smoke may be used as flavoring agents.  Other added ingredients may include black pepper, garlic, chives or cranberries. A cheesemonger, or specialist seller of cheeses, may have expertise with selecting, purchasing, receiving, storing and ripening cheeses.
+Most cheeses are acidified by bacteria, which turn milk sugars into lactic acid; the addition of rennet completes the curdling. Vegetarian varieties of rennet are available; most are produced through fermentation by the fungus Mucor miehei, but others have been extracted from Cynara thistles. For a few cheeses, the milk is curdled by adding acids such as vinegar or lemon juice. 
+Cheese is valued for its portability, long shelf life, and high content of fat, protein, calcium, and phosphorus. Cheese is more compact and has a longer shelf life than milk. Hard cheeses, such as Cheddar and Parmesan, last longer than soft cheeses, such as Brie or goat's milk cheese. The long storage life of some cheeses, especially when encased in a protective rind, allows producers to sell when markets are favourable. Vacuum packaging of block-shaped cheeses and gas-flushing of plastic bags with mixtures of carbon dioxide and nitrogen are used for storage and mass distribution of cheeses in the 21st century, compared with the paper and twine that was used in the 20th and 19th century.
+
+### WASABI
+**Domain:** food_cuisine / asian_cuisine
+
+**Wikipedia:** Wasabi (Japanese: ワサビ, わさび, or 山葵, pronounced [waꜜsabi]) or Japanese horseradish (Eutrema japonicum syn. Wasabia japonica) is a plant of the family Brassicaceae, which also includes horseradish and mustard in other genera. The plant is native to Japan, the Russian Far East including Sakhalin, and the Korean Peninsula. It grows naturally along stream beds in mountain river valleys in Japan.
+Wasabi is grown for its rhizomes, which are ground into a paste as a pungent condiment for sushi and other foods. It is similar in taste to hot mustard or horseradish rather than chilli peppers, in that it stimulates the nose more than the tongue, but freshly grated wasabi has a subtly distinct flavour. The main cultivars in the marketplace are E. japonicum 'Daruma' and 'Mazuma', but there are many others.
+The oldest record of wasabi as a food dates to the 8th century AD. The popularity of wasabi in English-speaking countries has coincided with that of sushi, growing steadily from about 1980. Due to constraints that limit the Japanese wasabi plant's mass cultivation and thus increase its price and decrease availability outside Japan, the western horseradish plant is widely used in place of wasabi. This is commonly referred to as "western wasabi" (西洋わさび) in Japan.
+
+
+
+### SOURDOUGH
+**Domain:** food_cuisine / baking_desserts
+
+**Wikipedia:** Sourdough is a type of bread that uses fermentation by naturally occurring yeast and lactobacillus bacteria to raise (leaven) the dough. In addition to leavening the bread, the fermentation process produces lactic acid, which gives the bread its distinctive sour taste and improves its keeping qualities.
+
+
+
+### CURRY
+**Domain:** food_cuisine / asian_cuisine
+
+**Wikipedia:** Curry is a dish with a spicy sauce or dry flavouring, initially in Indian cuisine, then modified by interchange with the Portuguese, followed by the British, and eventually thoroughly internationalised. Many curries are found in the cuisines of countries in Southeast Asia and East Asia. 
+In medieval India, proto-curries were flavoured with mild spices such as asafoetida, cardamom, coriander, cumin, and ginger, with the limited heat of black pepper. A definite step in the creation of modern curry was the arrival in India of spicy hot chili peppers, along with other ingredients such as tomatoes and potatoes, part of the Columbian exchange of plants between the Old World and the New World. The Mughal empire brought new subtly-spiced dishes, especially to the north of India. During the British Raj, Anglo-Indian cuisine developed, leading to Hannah Glasse's 18th century recipe for "currey the India way" in England. Curry was then spread in the 19th century by indentured Indian sugar workers to the Caribbean, and by British traders to Japan. Further exchanges around the world made curry a fully international dish.
+Many types of curry exist in different countries. In Southeast Asia, curry often contains a spice paste and coconut milk. In India, the spices are fried in oil or ghee to create a paste; this may be combined with a water-based broth, or sometimes with milk or coconut milk. In China and Korea, curries are based on a commercial curry powder. Curry restaurants outside their native countries often adapt their cuisine to suit local tastes; for instance, Thai restaurants in the West sell red, yellow, and green curries with chili peppers of those colours, often combined with additional spices of the same colours. In Britain, curry is a popular dish with some types adopted from India, others modified or wholly invented, as with chicken tikka masala, likely created by British Indian restaurants in the 20th century.
+
+### MAPLE SYRUP
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** Maple syrup is a sweet syrup made from the sap of maple trees. In cold climates these trees store starch in their trunks and roots before winter; the starch is then converted to sugar that rises in the sap in late winter and early spring. Maple trees are tapped by drilling holes into their trunks and collecting the sap, which is heated to evaporate much of the water, leaving the concentrated syrup.
+Maple syrup was first made by the Indigenous people of Northeastern North America. The practice was adopted by European settlers, who gradually changed production methods. Technological improvements in the 1970s further refined syrup processing. Almost all of the world's maple syrup is produced in Canada and the United States, with Quebec alone accounting for 72% of global output.
+Maple syrup is graded based on its colour and taste. Sucrose is the most prevalent sugar in maple syrup. In Canada syrups must be made exclusively from maple sap to qualify as maple syrup and must also be at least 66 per cent sugar. Maple syrup is often used as a condiment for pancakes, waffles, French toast, oatmeal or porridge. It is also used as an ingredient in baking and as a sweetener or flavouring agent.
+
+### TOFU
+**Domain:** food_cuisine / asian_cuisine
+
+**Wikipedia:** Tofu (Japanese: 豆腐, Hepburn: Tōfu; Korean: 두부; RR: dubu, Chinese: 豆腐; pinyin: dòufu) or bean curd is a food prepared by pressing the curds of coagulated soy milk into solid white blocks of varying softness: silken, soft, firm, and extra (or super) firm. 
+It originated in China and has been consumed for over 2,000 years. Tofu is a traditional component of many East Asian and Southeast Asian cuisines; in modern Western cooking, it is often used as a meat substitute.
+Nutritionally, tofu is low in calories, while providing a rich source of protein. Cultivation of tofu has one of the lowest needs for land use (1.3 m2/ 1000 kcal) and emits some of the lowest amounts of greenhouse gas emissions per gram of edible protein of any food (1.6 kg CO2/ 100 g protein).
+
+### TELESCOPE
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** A telescope is a device used to observe distant objects by their emission, absorption, or reflection of electromagnetic radiation. Originally, it was an optical instrument using lenses, curved mirrors, or a combination of both to observe distant objects – an optical telescope. Nowadays, the word "telescope" is defined as a wide range of instruments capable of detecting different regions of the electromagnetic spectrum, and in some cases other types of detectors.
+The first known practical telescopes were refracting telescopes with glass lenses and were invented in the Netherlands at the beginning of the 17th century. They were used for both terrestrial applications and astronomy.
+The reflecting telescope, which uses mirrors to collect and focus light, was invented within a few decades of the first refracting telescope.
+In the 20th century, many new types of telescopes were invented, including radio telescopes in the 1930s and infrared telescopes in the 1960s.
+
+### CRYPTOCURRENCY
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** A cryptocurrency (colloquially crypto) is a digital currency designed to work through a computer network that is not reliant on any central authority, such as a government or bank, to uphold or maintain it. However, a type of cryptocurrency called a stablecoin may rely upon government action or legislation to require that a stable value be upheld and maintained.
+
+Individual coin ownership records are stored in a digital ledger or blockchain, which is a computerized database that uses a consensus mechanism to secure transaction records, control the creation of additional coins, and verify the transfer of coin ownership. The two most common consensus mechanisms are proof of work and proof of stake. Despite the name, which has come to describe many of the fungible blockchain tokens that have been created, cryptocurrencies are not considered to be currencies in the traditional sense, and varying legal treatments have been applied to them in various jurisdictions, including classification as commodities, securities, and currencies. Cryptocurrencies are generally viewed as a distinct asset class in practice.
+The first cryptocurrency was bitcoin, which was first released as open-source software in 2009. As of June 2023, there were more than 25,000 other cryptocurrencies in the marketplace, of which more than 40 had a market capitalization exceeding $1 billion. As of April 2025, the cryptocurrency market capitalization was  estimated at US$2.8 trillion.
+
+
+
+### SIGN LANGUAGE
+**Domain:** general_knowledge / words_language
+
+**Wikipedia:** Sign languages (also known as signed languages) are languages that use the visual-manual modality to convey meaning, instead of spoken words. Sign languages are expressed through manual articulation in combination with non-manual markers. Sign languages are full-fledged natural languages with their own grammar and lexicon. Sign languages are not universal and are usually not mutually intelligible, although there are similarities among different sign languages.
+Wherever communities of people with hearing challenges or people who experience deafness exist, sign languages have developed as useful means of communication and form the core of local deaf cultures. Although signing is used primarily by the deaf and hard of hearing, it is also used by hearing individuals, such as those with deaf family members including children of deaf adults.
+Sign language should not be confused with body language, a type of nonverbal communication. Linguists also distinguish natural sign languages from other systems that are precursors to them or obtained from them, such as constructed manual codes for spoken languages, home sign, "baby sign", and signs learned by non-human primates.
+The number of sign languages worldwide is not precisely known. Each country generally has its own native sign language and some have more than one. The 2021 edition of Ethnologue lists 150 sign languages, while the SIGN-HUB Atlas of Sign Language Structures lists over 200 and notes that there are more that have not been documented or discovered yet. As of 2021, Indo-Pakistani Sign Language is the most-used sign language in the world, and Ethnologue ranks it as the 151st most "spoken" language in the world.
+Some sign languages have obtained some form of legal recognition.
+
+### LEAP YEAR
+**Domain:** general_knowledge / everyday_science
+
+**Wikipedia:** A leap year (also known as an intercalary year or bissextile year) is a calendar year that contains an additional day (or, in the case of a lunisolar calendar, a month) compared to a common year. The 366th day (or 13th month) is added to keep the calendar year synchronised with the astronomical year or seasonal year. Since astronomical events and seasons do not repeat in a whole number of days, calendars that have a constant number of days each year will unavoidably drift over time with respect to the seasons. By inserting an additional day—a leap day—or an additional month—a leap month—into some years but not others, the drift between a civilisation's dating system and the physical properties of the Solar System can be avoided.
+An astronomical year lasts slightly less than 365⁠1/4⁠ days. The historic Julian calendar has three common years of 365 days followed by a leap year of 366 days, by extending February to 29 days rather than the common 28. The Gregorian calendar, the world's most widely used civil calendar, makes a further adjustment for the small error in the Julian algorithm; this extra leap day occurs in each year that is a multiple of 4, except for years evenly divisible by 100 but not by 400. Thus 1600, 2000 and 2400 are leap years, but  1700, 1800, 1900, 2100, 2200, and 2300 are not. In the Solar Hijri and Bahá'í calendars, a leap day is added whenever needed to ensure that the following year begins on the March equinox.
+A lunar year of 12 lunar months is about 11 days shorter than an astronomical year. Lunisolar calendars, such as are traditional in most of Asia, each has its own rule to decide when to add a leap (lunar) month, so as to keep its calendar year from drifting through the seasons. Pure lunar calendars, such as the lunar Hijri calendar used in most of Islam, do not employ any such arrangement and accept the seasonal drift.
+The term leap year probably comes from the fact that a fixed date in the Gregorian calendar normally advances one day of the week from one year to the next, but the day of the week in the 12 months following the leap day (from 1 March through 28 February of the following year) will advance two days due to the extra day, thus leaping over one day in the week. For example, since 1 March was a Friday in 2024, a Saturday in 2025, and a Sunday in 2026, and will be a Monday in 2027, the date will then "leap" over Tuesday to fall on a Wednesday in 2028.
+The length of a day is also occasionally corrected by inserting a leap second into Coordinated Universal Time (UTC) because of variations in Earth's rotation period. Unlike leap days, leap seconds are not introduced on a regular schedule because variations in the length of the day are not entirely predictable.
+
+### LIBRARY OF ALEXANDRIA
+**Domain:** general_knowledge / landmarks_wonders
+
+**Wikipedia:** The Library of Alexandria in Alexandria, Egypt, was one of the largest and most significant libraries of the ancient world. The library was part of a larger research institution called the Mouseion, which was dedicated to the Muses, the nine goddesses of the arts. The idea of a universal library in Alexandria may have been proposed by Demetrius of Phalerum, an exiled Athenian statesman living in Alexandria, to Ptolemy I Soter, who may have established plans for the library, but the library itself was probably not built until the reign of his son Ptolemy II Philadelphus. The library quickly acquired many papyrus scrolls, owing largely to the Ptolemaic kings' aggressive and well-funded policies for procuring texts. It is unknown precisely how many scrolls were housed at any given time, but estimates range from 40,000 to 400,000 at its height.
+Alexandria came to be regarded as the capital of knowledge and learning, in part because of the Great Library. Many important and influential scholars worked at the Library during the third and second centuries BC, including: Zenodotus of Ephesus, who worked towards standardizing the works of Homer; Callimachus, who wrote the Pinakes, sometimes considered the world's first library catalog; Apollonius of Rhodes, who composed the epic poem the Argonautica; Eratosthenes of Cyrene, who calculated the circumference of the earth within a few hundred kilometers of accuracy; Hero of Alexandria, who invented the first recorded steam engine; Aristophanes of Byzantium, who invented the system of Greek diacritics and was the first to divide poetic texts into lines; and Aristarchus of Samothrace, who produced the definitive texts of the Homeric poems as well as extensive commentaries on them. During the reign of Ptolemy III Euergetes, a daughter library was established in the Serapeum, a temple to the Greco-Egyptian god Serapis.
+The influence of the Library declined gradually over the course of several centuries. This decline began with the purging of intellectuals from Alexandria in 145 BC during the reign of Ptolemy VIII Physcon, which resulted in Aristarchus of Samothrace, the head librarian, resigning and exiling himself to Cyprus. Many other scholars, including Dionysius Thrax and Apollodorus of Athens, fled to other cities, where they continued teaching and conducting scholarship. The Library, or part of its collection, was accidentally burned by Julius Caesar during his civil war in 48 BC, but it is unclear how much was actually destroyed and it seems to have either survived or been rebuilt shortly thereafter. The geographer Strabo mentions having visited the Mouseion in around 20 BC, and the prodigious scholarly output of Didymus Chalcenterus in Alexandria from this period indicates that he had access to at least some of the Library's resources.
+The Library dwindled during the Roman period, from a lack of funding and support. Its membership appears to have ceased by the 260s AD. Between 270 and 275 AD, Alexandria s
+
+### RADIO
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** Radio is the technology of communicating using radio waves. Radio waves are electromagnetic waves of frequency between 3 hertz (Hz) and 300 gigahertz (GHz). They are generated by an electronic device called a transmitter connected to an antenna which radiates the waves. They can be received by other antennas connected to a radio receiver; this is the fundamental principle of radio communication. In addition to communication, radio is used for radar, radio navigation, remote control, remote sensing, and other applications.
+In radio communication, used in radio and television broadcasting, cell phones, two-way radios, wireless networking, and satellite communication, among numerous other uses, radio waves are used to carry information across space from a transmitter to a receiver, by modulating the radio signal (impressing an information signal on the radio wave by varying some aspect of the wave) in the transmitter. In radar, used to locate and track objects like aircraft, ships, spacecraft and missiles, a beam of radio waves emitted by a radar transmitter reflects off the target object, and the reflected waves reveal the object's location to a receiver that is typically colocated with the transmitter. In radio navigation systems such as GPS and VOR, a mobile navigation instrument receives radio signals from multiple navigational radio beacons whose position is known, and by precisely measuring the arrival time of the radio waves the receiver can calculate its position on Earth. In wireless radio remote control devices like drones, garage door openers, and keyless entry systems, radio signals transmitted from a controller device control the actions of a remote device.
+The existence of radio waves was first proven by German physicist Heinrich Hertz on 11 November 1886. In the mid-1890s, building on techniques physicists were using to study electromagnetic waves, Italian physicist Guglielmo Marconi developed the first apparatus for long-distance radio communication, sending a wireless Morse Code message to a recipient over a kilometer away in 1895, and the first transatlantic signal on 12 December 1901.  The first commercial radio broadcast was transmitted on 2 November 1920, when the live returns of the 1920 United States presidential election were broadcast by Westinghouse Electric and Manufacturing Company in Pittsburgh, under the call sign KDKA.
+The emission of radio waves is regulated by law, coordinated by the International Telecommunication Union (ITU), which allocates frequency bands in the radio spectrum for various uses.
+
+### BOARD GAME
+**Domain:** general_knowledge / oddities
+
+**Wikipedia:** A board game is a type of tabletop game that involves small objects (game pieces) that are placed and moved in particular ways on a specially designed patterned game board, potentially including other components, e.g. dice. The earliest known uses of the term "board game" are between the 1840s and 1850s.
+While game boards are a necessary and sufficient condition of this genre, card games that do not use a standard deck of cards, as well as games that use neither cards nor a game board, are often colloquially included, with some referring to this genre generally as "table and board games" or simply "tabletop games".
+
+### RECYCLING
+**Domain:** general_knowledge / everyday_science
+
+**Wikipedia:** Recycling is the process of converting waste materials into new materials and objects. This concept often includes the recovery of energy from waste materials. The recyclability of a material depends on its ability to reacquire the properties it had in its original state. It is an alternative to "conventional" waste disposal that can save material and help lower greenhouse gas emissions. It can also prevent the waste of potentially useful materials and reduce the consumption of fresh raw materials, reducing energy use, air pollution (from incineration) and water pollution (from landfilling).
+Recycling is a key component of modern waste reduction and represents the third step in the "Reduce, Reuse, and Recycle" waste hierarchy, contributing to environmental sustainability and resource conservation. It promotes environmental sustainability by removing raw material input and redirecting waste output in the economic system. There are some ISO standards related to recycling, such as ISO 15270:2008 for plastics waste and ISO 14001:2015 for environmental management control of recycling practice.
+Recyclable materials include many kinds of glass, paper, cardboard, metal, plastic, tires, textiles, batteries, and electronics. The composting and other reuse of biodegradable waste—such as food and garden waste—is also a form of recycling. Materials for recycling are either delivered to a household recycling center or picked up from curbside bins, then sorted, cleaned, and reprocessed into new materials for manufacturing new products.
+In ideal implementations, recycling a material produces a fresh supply of the same material—for example, used office paper would be converted into new office paper, and used polystyrene foam into new polystyrene. Some types of materials, such as metal cans, can be remanufactured repeatedly without losing their purity. With other materials, this is often difficult or too expensive (compared with producing the same product from raw materials or other sources), so "recycling" of many products and materials involves their reuse in producing different materials (for example, paperboard). Another form of recycling is the salvage of constituent materials from complex products, due to either their intrinsic value (such as lead from car batteries and gold from printed circuit boards), or their hazardous nature (e.g. removal and reuse of mercury from thermometers and thermostats).
+
+### TIME ZONE
+**Domain:** general_knowledge / everyday_science
+
+**Wikipedia:** A time zone is an area which observes a uniform standard time for legal, commercial, and social purposes. Time zones tend to follow the boundaries between countries and their subdivisions instead of strictly following longitude, because it is convenient for areas in frequent communication to keep the same time.
+Each time zone is defined by a standard offset from Coordinated Universal Time (UTC). The offsets range from UTC−12:00 to UTC+14:00, and are usually a whole number of hours, but a few zones are offset by an additional 30 or 45 minutes, such as in India and Nepal. Some areas in a time zone may use a different offset for part of the year, typically one hour ahead during spring and summer, a practice known as daylight saving time (DST).
+
+### VACCINATION
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** Vaccination is the administration of a vaccine to help the immune system develop immunity from a disease. Vaccines contain a microorganism or virus in a weakened, live or killed state, or proteins or toxins from the organism. In stimulating the body's adaptive immunity, they help prevent sickness from an infectious disease. When a sufficiently large percentage of a population has been vaccinated, herd immunity results. Herd immunity protects those who may be immunocompromised and cannot get a vaccine because even a weakened version would harm them.
+The effectiveness of vaccination has been widely studied and verified. Vaccination is the most effective method of preventing infectious diseases; widespread immunity due to vaccination is largely responsible for the worldwide eradication of smallpox and the elimination of diseases such as polio and tetanus from much of the world. According to the World Health Organization (WHO), vaccination prevents 3.5–5 million deaths per year. A WHO-funded study by The Lancet estimates that, during the 50-year period starting in 1974, vaccination prevented 154 million deaths, including 146 million among children under age 5. However, some diseases have seen rising cases due to relatively low vaccination rates attributable partly to vaccine hesitancy.
+The first disease people tried to prevent by inoculation was most likely smallpox, with the first recorded use of variolation occurring in the 16th century in China. It was also the first disease for which a vaccine was produced. Although at least six people had used the same principles years earlier, the smallpox vaccine was invented in 1796 by English physician Edward Jenner. He was the first to publish evidence that it was effective and to provide advice on its production. Louis Pasteur furthered the concept through his work in microbiology. The immunization was called vaccination because it was derived from a virus affecting cows (Latin: vacca 'cow'). Smallpox was a contagious and deadly disease, causing the deaths of 20–60% of infected adults and over 80% of infected children. When smallpox was finally eradicated in 1979, it had already killed an estimated 300–500 million people in the 20th century.
+Vaccination and immunization have a similar meaning in everyday language. This is distinct from inoculation, which uses unweakened live pathogens. Vaccination efforts have been met with some reluctance on scientific, ethical, political, medical safety, and religious grounds, although no major religions oppose vaccination, and some consider it an obligation due to the potential to save lives. In the United States, people may receive compensation for alleged injuries under the National Vaccine Injury Compensation Program. Early success brought widespread acceptance, and mass vaccination campaigns have greatly reduced the incidence of many diseases in numerous geographic regions. The US Centers for Disease Control and Prevention lists vaccination as one of the ten great p
+

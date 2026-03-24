@@ -1,0 +1,417 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`, `music_performance`, `literature`, `performing_arts`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (10 entities = 30 facts). Output as a single JSON array.
+
+### NITROGEN
+**Domain:** natural_sciences / chemistry_elements
+
+**Wikipedia:** Nitrogen is a chemical element; it has symbol N and atomic number 7. Nitrogen is a nonmetal and the lightest member of group 15 of the periodic table, often called the pnictogens. It is a common element in the universe, estimated at seventh in total abundance in the Milky Way and the Solar System. At standard temperature and pressure, two atoms of the element bond to form N2, a colourless and odourless diatomic gas. N2 forms about 78% of Earth's atmosphere, making it the most abundant chemical species in air. Because of the volatility of nitrogen compounds, nitrogen is relatively rare in the solid parts of the Earth.
+It was first discovered and isolated by Scottish physician Daniel Rutherford in 1772 and independently by Carl Wilhelm Scheele and Henry Cavendish at about the same time. The name nitrogène was suggested by French chemist Jean-Antoine-Claude Chaptal in 1790 when it was found that nitrogen was present in nitric acid and nitrates. Antoine Lavoisier suggested instead the name azote, from the Ancient Greek: ἀζωτικός "no life", as it is an asphyxiant gas; this name is used in a number of languages, and appears in the English names of some nitrogen compounds such as hydrazine, azides and azo compounds.
+Elemental nitrogen is usually produced from air by pressure swing adsorption technology. About 2/3 of commercially produced elemental nitrogen is used as an inert (oxygen-free) gas for commercial uses such as food packaging, and much of the rest is used as liquid nitrogen in cryogenic applications. Many industrially important compounds, such as ammonia, nitric acid, organic nitrates (propellants and explosives), and cyanides, contain nitrogen. The extremely strong triple bond in elemental nitrogen (N≡N), the second strongest bond in any diatomic molecule after carbon monoxide (CO), dominates nitrogen chemistry. This causes difficulty for both organisms and industry in converting N2 into useful compounds, but at the same time it means that burning, exploding, or decomposing nitrogen compounds to form nitrogen gas releases large amounts of often useful energy. Synthetically produced ammonia and nitrates are key industrial fertilisers, and fertiliser nitrates are key pollutants in the eutrophication of water systems.  Apart from its use in fertilisers and energy stores, nitrogen is a constituent of organic compounds as diverse as aramids used in high-strength fabric and cyanoacrylate used in superglue.
+Nitrogen occurs in all organisms, primarily in amino acids (and thus proteins), in the nucleic acids (DNA and RNA) and in the energy transfer molecule adenosine triphosphate. The human body contains about 3% nitrogen by mass, the fourth most abundant element in the body after oxygen, carbon, and hydrogen. The nitrogen cycle describes the movement of the element from the air, into the biosphere and organic compounds, then back into the atmosphere. Nitrogen is a constituent of every major pharmacological drug class, including antibiotics. Many drug
+
+### MAGNET
+**Domain:** natural_sciences / physics_mechanics
+
+**Wikipedia:** A magnet is a material or object that produces a magnetic field. This magnetic field is invisible but is responsible for the most notable property of a magnet: a force that pulls on other ferromagnetic materials, such as iron, steel, nickel, cobalt, etc. and attracts or repels other magnets.
+A permanent magnet is an object made from a material that is magnetized and creates its own persistent magnetic field. An everyday example is a refrigerator magnet used to hold notes on a refrigerator door. Materials that can be magnetized, which are also the ones that are strongly attracted to a magnet, are called ferromagnetic (or ferrimagnetic). These include the elements iron, nickel and cobalt and their alloys, some alloys of rare-earth metals, and some naturally occurring minerals such as lodestone. Although ferromagnetic (and ferrimagnetic) materials are the only ones attracted to a magnet strongly enough to be commonly considered magnetic, all other substances respond weakly to a magnetic field, by one of several other types of magnetism.
+Ferromagnetic materials can be divided into magnetically "soft" materials like annealed iron, which can be magnetized but do not tend to stay magnetized, and magnetically "hard" materials, which do. Permanent magnets are made from "hard" ferromagnetic materials such as alnico and ferrite that are subjected to special processing in a strong magnetic field during manufacture to align their internal microcrystalline structure, making them very hard to demagnetize. To demagnetize a saturated magnet, a certain magnetic field must be applied, and this threshold depends on coercivity of the respective material. "Hard" materials have high coercivity, whereas "soft" materials have low coercivity. The overall strength of a magnet is measured by its magnetic moment or, alternatively, the total magnetic flux it produces. The local strength of magnetism in a material is measured by its magnetization.
+An electromagnet is made from a coil of wire that acts as a magnet when an electric current passes through it but stops being a magnet when the current stops. Often, the coil is wrapped around a core of "soft" ferromagnetic material such as mild steel, which greatly enhances the magnetic field produced by the coil.
+
+
+
+### OCTOPUS INTELLIGENCE
+**Domain:** natural_sciences / biology_organisms
+
+**Wikipedia:** Cephalopod intelligence is a measure of the cognitive ability of the cephalopod class of molluscs.
+Intelligence is generally defined as the process of  acquiring, storing, retrieving, combining, and comparing information and skills. Though these criteria are difficult to measure in nonhuman animals, cephalopods are the most intelligent invertebrates. The study of cephalopod intelligence also has an important comparative aspect in the broader understanding of animal cognition because it relies on a nervous system that is fundamentally different from that of vertebrates. In particular, the Coleoidea subclass (cuttlefish, squid, and octopuses) is thought to contain the most intelligent invertebrates. It is also thought to be an important example of advanced cognitive evolution in animals, though nautilus intelligence is also a subject of growing interest among zoologists.
+The scope of cephalopod intelligence and learning capability is controversial within the biological community, complicated by the inherent complexity of quantifying non-vertebrate intelligence. In spite of this, the existence of impressive spatial learning capacity, navigational abilities, and predatory techniques in cephalopods is widely acknowledged. Cephalopods are legally classified as being at least as sentient as vertebrates in some countries and have been compared to intelligent extraterrestrials, due to their convergently evolved mammal-like intelligence.
+
+### OBSIDIAN
+**Domain:** natural_sciences / geology_earth
+
+**Wikipedia:** Obsidian ( əb-SID-ee-ən ob-) is a naturally occurring volcanic glass formed when lava extruded from a volcano cools rapidly with minimal crystal growth. It is an igneous rock. Produced from felsic lava, obsidian is rich in the lighter elements such as silicon, oxygen, aluminium, sodium, and potassium. It is commonly found within the margins of rhyolitic lava flows known as obsidian flows. These flows have a high content of silica, giving them a high viscosity. The high viscosity inhibits the diffusion of atoms through the lava, which inhibits the first step (nucleation) in the formation of mineral crystals. Together with rapid cooling, this results in a natural glass forming from the lava.
+Obsidian is hard, brittle, and amorphous; it therefore fractures with sharp edges. In the past, it was used to manufacture cutting and piercing tools, and it has been used experimentally as surgical scalpel blades.
+
+### QUANTUM ENTANGLEMENT
+**Domain:** natural_sciences / physics_mechanics
+
+**Wikipedia:** Quantum entanglement is the phenomenon wherein the quantum state of each particle in a group cannot be described independently of the state of the others, even when the particles are separated by a large distance. The topic of quantum entanglement is at the heart of the disparity between classical physics and quantum physics: entanglement is a primary feature of quantum mechanics not present in classical mechanics.
+Measurements of physical properties such as position, momentum, spin, and polarization performed on entangled particles can, in some cases, be found to be perfectly correlated. For example, if a pair of entangled particles is generated such that their total spin is known to be zero, and one particle is found to have clockwise spin on a first axis, then the spin of the other particle, measured on the same axis, is found to be anticlockwise. This behavior gives rise to seemingly paradoxical effects: any measurement of a particle's properties results in an apparent and irreversible wave function collapse of that particle and changes the original quantum state. With entangled particles, such measurements affect the entangled system as a whole.
+Such phenomena were the subject of a 1935 paper by Albert Einstein, Boris Podolsky, and Nathan Rosen, and several papers by Erwin Schrödinger shortly thereafter, describing what came to be known as the EPR paradox. Einstein and others considered such behavior impossible, as it violated the local realism view of causality and argued that the accepted formulation of quantum mechanics must therefore be incomplete.
+Later, the counterintuitive predictions of quantum mechanics were verified in tests where polarization or spin of entangled particles were measured at separate locations, statistically violating Bell's inequality. This established that the correlations produced from quantum entanglement cannot be explained in terms of local hidden variables, i.e., properties contained within the individual particles themselves.
+Entanglement can produce statistical correlations between events in widely separated places, but it cannot be used for faster-than-light communication. Quantum entanglement has been demonstrated experimentally with photons, electrons, top quarks, molecules and even small diamonds. The use of quantum entanglement in communication and computation is an active area of research and development.
+
+### EUROPA
+**Domain:** space_astronomy / planets_moons
+
+**Wikipedia:** Europa ( ) is the smallest and least massive of Jupiter's four Galilean moons. It is observable from Earth with common binoculars and is a planetary-mass moon, slightly smaller and less massive than Earth's Moon. Europa is an icy moon, and, of the three icy Galilean moons, the closest orbiting Jupiter. As a result, it exhibits a relatively young surface shaped by tidal heating.
+Europa consists mainly of silicate rock, and potentially has an iron-nickel core. It has a very thin atmosphere composed primarily of oxygen. Europa has a pale, geologically young surface striated by light tan cracks and streaks; the surface lacks large-scale features such as mountains or craters, making the moon the smoothest known solid object in the Solar System. The apparent youth and smoothness of the surface is due to a water ocean beneath the surface, which could conceivably harbor extraterrestrial life. The predominant model suggests that heat from tidal flexing causes the ocean to remain liquid and drives ice movement similar to plate tectonics, absorbing chemicals from the surface into the ocean below. 
+Sea salt from a subsurface ocean may be coating some geological features on Europa, suggesting that the ocean is interacting with the sea floor. This may be important in determining whether Europa could be habitable. In addition, the Hubble Space Telescope detected water vapor plumes similar to those observed on Saturn's moon Enceladus, which are thought to be caused by erupting cryogeysers. In May 2018, astronomers provided supporting evidence of water plume activity on Europa, based on an updated analysis of data obtained from the Galileo space probe, which orbited Jupiter from 1995 to 2003. Such plume activity could help researchers in a search for life from the subsurface Europan ocean without having to land on the moon. In March 2024, astronomers reported that the surface of Europa may have much less oxygen than previously inferred.
+Europa was discovered independently by Simon Marius and Galileo Galilei. Marius later named it after Europa, the Phoenician mother of King Minos of Crete and lover of Zeus (the Greek equivalent of the Roman Jupiter). 
+In addition to Earth-bound telescope observations, Europa has been examined by a succession of space-probe flybys, the first occurring in the early 1970s. The Galileo mission, launched in 1989, provides the bulk of current data on Europa. No spacecraft has yet landed on Europa, although there have been several proposed exploration missions. In September 2022, the Juno spacecraft flew within around 320 km (200 miles) of Europa for a more recent close-up view. The European Space Agency's Jupiter Icy Moons Explorer (Juice) is a mission to Ganymede launched on 14 April 2023, that will include two flybys of Europa. NASA's Europa Clipper was launched on 14 October 2024.
+
+### PULSAR
+**Domain:** space_astronomy / stars_galaxies
+
+**Wikipedia:** A pulsar (pulsating star, on the model of quasar) is a highly magnetized rotating neutron star that emits beams of electromagnetic radiation out of its magnetic poles. This radiation can be observed only when a beam of emission is pointing toward Earth (similar to the way a lighthouse can be seen only when the light is pointed in the direction of an observer), and is responsible for the pulsed appearance of emission. Neutron stars are very dense and have short, regular rotational periods. This produces a very precise interval between pulses that ranges from milliseconds to seconds for an individual pulsar. Pulsars are one of the candidates for the source of ultra-high-energy cosmic rays (see also centrifugal mechanism of acceleration).
+Pulsars’ highly regular pulses make them very useful tools for astronomers. For example, observations of a pulsar in a binary neutron star system were used to indirectly confirm the existence of gravitational radiation. The first extrasolar planets were discovered in 1992 around a pulsar, specifically PSR B1257+12. In 1983, certain types of pulsars were detected that, at that time, exceeded the accuracy of atomic clocks in keeping time.
+
+
+
+### JAMES WEBB SPACE TELESCOPE
+**Domain:** space_astronomy / missions_spacecraft
+
+**Wikipedia:** The James Webb Space Telescope (JWST) is a space telescope designed to conduct infrared astronomy. It is the largest telescope in space, and is equipped with high-resolution and high-sensitivity instruments, allowing it to view objects too old, distant, or faint for the Hubble Space Telescope. This enables investigations across many fields of astronomy and cosmology, such as observation of the first stars and the formation of the first galaxies, and detailed atmospheric characterization of potentially habitable exoplanets.
+Despite the Webb's mirror diameter being 2.7 times larger than that of the Hubble Space Telescope, it produces images of comparable resolution because it observes in the infrared spectrum, which has longer wavelengths than the Hubble's visible spectrum. The longer the wavelength the telescope is designed to observe, the larger the information-gathering surface (mirrors in the infrared spectrum or antenna area in the millimeter and radio ranges) required to achieve the desired resolution.
+The Webb was launched on 25 December 2021 on an Ariane 5 rocket from Kourou, French Guiana. In January 2022, it arrived at its destination, a solar orbit near the Sun–Earth L2 Lagrange point, about 1.5 million kilometers (930,000 mi) from Earth. The telescope's first image was released to the public on 11 July 2022.
+The U.S. National Aeronautics and Space Administration (NASA) led Webb's design and development and partnered with two central agencies: the European Space Agency (ESA) and the Canadian Space Agency (CSA). The NASA Goddard Space Flight Center in Maryland managed telescope development, while the Space Telescope Science Institute in Baltimore on the Homewood Campus of Johns Hopkins University operates Webb. The primary contractor for the project was Northrop Grumman.
+The telescope is named after James E. Webb, who was the administrator of NASA from 1961 to 1968 during the Mercury, Gemini, and Apollo programs.
+Webb's primary mirror consists of 18 hexagonal mirror segments made of gold-plated beryllium, which together create a 6.5-meter-diameter (21 ft) mirror, compared with Hubble's 2.4 m (7 ft 10 in). This gives Webb a light-collecting area of about 25 m2 (270 sq ft), about six times that of Hubble. Unlike Hubble, which observes in the near ultraviolet, visible, and near infrared spectra (0.1–2.5 μm), Webb observes a lower frequency range, from long-wavelength visible light (red) through mid-infrared (0.6–28.5 μm). The telescope must be kept extremely cold, below 50 K (−223 °C; −370 °F), so that the infrared radiation emitted by the telescope itself does not interfere with the collected light. Its five-layer sunshield protects it from warming by the Sun, Earth, and Moon.
+Initial designs for the telescope, then named the Next Generation Space Telescope, began in 1996. Two concept studies were commissioned in 1999, for a potential launch in 2007 and a US$1 billion budget. The program saw enormous cost overruns and delays. A significant 
+
+### TITAN
+**Domain:** space_astronomy / planets_moons
+
+**Wikipedia:** Titan is the largest moon of Saturn and the second-largest in the Solar System. It is the only moon known to have a dense atmosphere—denser than Earth's—and is the only known object in the Solar System besides Earth with clear evidence of stable bodies of surface liquid. Titan is one of seven gravitationally rounded moons of Saturn and the second-most distant among them. Frequently described as a planet-like moon, Titan is 48.16% larger in diameter than Earth's Moon and 80% more massive. It is the second-largest moon in the Solar System after Jupiter's Ganymede and is larger than Mercury; yet Titan is only 40% as massive as Mercury, because Mercury is mainly iron and rock while much of Titan is mostly ice, which is less dense.
+Discovered in 1655 by the Dutch astronomer Christiaan Huygens, Titan was the first known moon of Saturn and the sixth known planetary satellite (after Earth's moon and the four Galilean moons of Jupiter). Titan orbits Saturn at 20 Saturn radii or 1,200,000 km above Saturn's apparent surface. From Titan's surface, Saturn, disregarding its rings, subtends an arc of 5.09 degrees, and when viewed from above its thick atmospheric haze it would appear 11.4 times larger in the sky, in diameter, than the Moon from Earth, which subtends 0.48° of arc.
+Titan is primarily composed of ice and rocky material, with a rocky core surrounded by various layers of ice, including a crust of ice Ih and a subsurface layer of ammonia-rich liquid water. Much as with Venus before the Space Age, the dense opaque atmosphere prevented understanding of Titan's surface until the Cassini–Huygens mission in 2004 provided new information, including the discovery of liquid hydrocarbon lakes in Titan's polar regions and the discovery of its atmospheric super-rotation. The geologically young surface is generally smooth, with few impact craters, although mountains and several possible cryovolcanoes have been found.
+The atmosphere of Titan is mainly nitrogen and methane; minor components lead to the formation of hydrocarbon clouds and heavy organonitrogen haze. Its climate—including wind and rain—creates surface features similar to those of Earth, such as dunes, rivers, lakes, seas (probably of liquid methane and ethane), and deltas, and is dominated by seasonal weather patterns as on Earth. With its liquids (both surface and subsurface) and robust nitrogen atmosphere, Titan's methane cycle nearly resembles Earth's water cycle, albeit at a much lower temperature of about 94 K (−179 °C; −290 °F). Due to these factors, Titan is sometimes called the most Earth-like celestial object in the Solar System.
+
+### DARK MATTER
+**Domain:** space_astronomy / cosmology_universe
+
+**Wikipedia:** In astronomy and cosmology, dark matter is an invisible and hypothetical form of matter that does not interact with light or other electromagnetic radiation. Dark matter is implied by gravitational effects that cannot be explained by general relativity unless more matter is present than can be observed. Such effects occur in the context of formation and evolution of galaxies, gravitational lensing, the observable universe's current structure, mass position in galactic collisions, the motion of galaxies within galaxy clusters, and cosmic microwave background anisotropies. Dark matter is thought to serve as gravitational scaffolding for cosmic structures. After the Big Bang, dark matter clumped into blobs along narrow filaments with superclusters of galaxies forming a cosmic web at scales on which entire galaxies appear like tiny particles.
+In the standard Lambda-CDM model of cosmology, the mass–energy content of the universe is 5% ordinary matter, 26.8% dark matter, and 68.2% a form of energy known as dark energy. Thus, dark matter constitutes 85% of the total mass, while dark energy and dark matter constitute 95% of the total mass–energy content. While the density of dark matter is significant in the halo around a galaxy, its local density in the Solar System is much less than normal matter. The total of all the dark matter out to the orbit of Neptune would add up about 1017 kg, the same as a large asteroid. Dark matter is classified as "cold", "warm", or "hot" according to velocity (more precisely, its free streaming length). Recent models have favored a cold dark matter scenario, in which structures emerge by the gradual accumulation of particles.
+Dark matter is not known to interact with ordinary baryonic matter and radiation except through gravity, making it difficult to detect in the laboratory. The most prevalent explanation is that dark matter is some as-yet-undiscovered subatomic particle, such as either weakly interacting massive particles (WIMPs) or axions. The other main possibility is that dark matter is composed of primordial black holes.
+Although the astrophysics community generally accepts the existence of dark matter, a minority of astrophysicists, intrigued by specific observations that are not well explained by ordinary dark matter, argue for various modifications of the standard laws of general relativity. These include modified Newtonian dynamics (MOND), tensor–vector–scalar gravity, and entropic gravity. So far none of the proposed modified gravity theories can describe every piece of observational evidence at the same time, suggesting that even if gravity has to be modified, some form of dark matter will still be required.
+

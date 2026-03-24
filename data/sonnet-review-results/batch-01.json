@@ -1,0 +1,230 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 162,
+  "issues": [
+    {
+      "id": "animals_wildlife-seahorse-pregnancy",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that male pregnancy is found in 'no other vertebrate species' is too strong. Male brooding/pregnancy also occurs in pipefish and sea dragons (syngnathid relatives), and the explanation actually lists them as distractors, making the question misleading.",
+      "suggested_fix": "Change explanation to: 'Seahorses are the most well-known example — the male carries eggs in a specialized brood pouch and gives birth to live young. This pattern is also found in the closely related pipefish and sea dragons.' Or reframe the question to specifically ask about seahorses' brood pouch birth."
+    },
+    {
+      "id": "animals_wildlife-ray-finned-fish-vertebrate-dominance",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Insects' is a nonsensical answer for a question asking about vertebrate species. Insects are not vertebrates at all. This is an obviously invalid option that would confuse players.",
+      "suggested_fix": "Replace 'Insects' with a plausible vertebrate-fraction answer such as 'About three quarters' or 'About 40%'."
+    },
+    {
+      "id": "animals_wildlife-guppy-global-invasion",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Goldfish' is not a geographic origin — it is a fish species. It does not answer the question 'Where did the guppy originally come from?' and is nonsensical as a distractor.",
+      "suggested_fix": "Replace 'Goldfish' with a plausible geographic origin such as 'South Asian rivers' or 'Western Pacific islands'."
+    },
+    {
+      "id": "animals_wildlife-guppy-global-invasion",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is nearly identical to 'animals_wildlife-guppy-worldwide-distribution' — same question, same correct answer, very similar explanation. This is a duplicate fact.",
+      "suggested_fix": "Delete one of the two guppy origin facts. They ask the same thing with only slight wording variation."
+    },
+    {
+      "id": "animals_wildlife-pike-size-record",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Northern pike is a freshwater fish, not a marine species. It is categorized under category_l2 'marine_life', which is incorrect.",
+      "suggested_fix": "Change category_l2 to 'freshwater_life' or 'adaptations'."
+    },
+    {
+      "id": "animals_wildlife-pike-world-record",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Northern pike is a freshwater fish, not a marine species. It is categorized under category_l2 'marine_life'.",
+      "suggested_fix": "Change category_l2 to 'freshwater_life' or 'adaptations'."
+    },
+    {
+      "id": "animals_wildlife-pike-holarctic",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Northern pike is a freshwater fish, not a marine species. It is categorized under category_l2 'marine_life'.",
+      "suggested_fix": "Change category_l2 to 'freshwater_life' or 'adaptations'."
+    },
+    {
+      "id": "animals_wildlife-tiger-shark-conservation",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Endangered' appears twice in the distractors list (positions 1 and 8). Duplicate distractors are a data quality error — players would see the same wrong answer twice.",
+      "suggested_fix": "Remove the duplicate 'Endangered' entry and replace it with a different status, e.g. 'Protected' or 'Recovering'."
+    },
+    {
+      "id": "animals_wildlife-nutria-invasive-rodent",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Freshwater turtles' is not a reason for introduction — it is a species name and does not answer the question 'Why was the nutria introduced to Europe?' It is a nonsensical distractor.",
+      "suggested_fix": "Replace 'Freshwater turtles' with a plausible reason such as 'As a food delicacy' or 'To control aquatic vegetation'."
+    },
+    {
+      "id": "animals_wildlife-horseshoe-crab-ancient",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "This fact says horseshoe crabs first appeared '480 million years ago', but the companion fact 'animals_wildlife-xiphosura-living-fossil-445mya' says '445 million years ago'. The two facts give conflicting ages for the same animal (both citing Wikidata/Wikipedia). One figure is wrong, or both sources disagree and only one should be used.",
+      "suggested_fix": "Reconcile by using a single source. Wikipedia's article on Xiphosura gives ~480 Mya (Early Ordovician). Verify and delete or correct the 445 Mya variant, or note the uncertainty in the explanation."
+    },
+    {
+      "id": "animals_wildlife-xiphosura-living-fossil-445mya",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "This fact says horseshoe crabs first appeared '445 million years ago', conflicting with companion fact 'animals_wildlife-horseshoe-crab-ancient' which says '480 million years ago'. One of the two is incorrect.",
+      "suggested_fix": "Keep the better-sourced figure (480 Mya from Wikipedia) and delete or correct this fact."
+    },
+    {
+      "id": "animals_wildlife-swordfish-dive-depth",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-swordfish-depth-record' — both ask about the swordfish's maximum recorded depth and give the same answer ({2,878} m). Two nearly identical questions about the same stat will appear repetitive.",
+      "suggested_fix": "Delete one of the two swordfish depth facts."
+    },
+    {
+      "id": "animals_wildlife-lungfish-tetrapod-ancestor",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-lungfish-tetrapod-relative' — both ask which fish group is the closest relative of all land vertebrates and both have 'Lungfish' as the answer. The two questions are essentially identical.",
+      "suggested_fix": "Delete one of the two lungfish tetrapod facts."
+    },
+    {
+      "id": "animals_wildlife-bichir-oldest-ray-finned",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-bichir-ancient-lineage' — both ask how long ago bichirs diverged from other ray-finned fishes and give the same answer (at least 330 million years ago).",
+      "suggested_fix": "Delete one of the two bichir divergence facts."
+    },
+    {
+      "id": "animals_wildlife-sea-otter-tool-use",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Broken shells' is not a tool — it is a food item. It does not function as a plausible tool-use alternative answer and is semantically incoherent as a distractor for 'what do sea otters use as tools?'",
+      "suggested_fix": "Replace 'Broken shells' with a plausible tool such as 'Spines' or 'Pebbles'."
+    },
+    {
+      "id": "animals_wildlife-common-snapping-turtle-lifespan",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-snapping-turtle-lifespan' — both ask about common snapping turtle maximum wild age using Algonquin Park data and give the same answer (over 100 years).",
+      "suggested_fix": "Delete one of the two snapping turtle lifespan facts."
+    },
+    {
+      "id": "animals_wildlife-nurse-shark-bites",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-nurse-shark-bites-rank' — both ask where nurse sharks rank in documented bites on humans and both answer 'Fourth'. The questions are essentially the same.",
+      "suggested_fix": "Delete one of the two nurse shark bite-rank facts."
+    },
+    {
+      "id": "animals_wildlife-alligator-snapping-turtle-largest",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-alligator-snapping-turtle-north-america' — both ask about the alligator snapping turtle's distinction in North America (largest freshwater turtle). Essentially the same question.",
+      "suggested_fix": "Delete one of the two alligator snapping turtle facts."
+    },
+    {
+      "id": "animals_wildlife-actinopterygii-vertebrate-dominance",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-ray-finned-fish-vertebrate-dominance' — both ask what fraction of all living vertebrates are ray-finned fish and both answer 'Over half / Over 50%'. Essentially the same question.",
+      "suggested_fix": "Delete one of the two ray-finned fish vertebrate-dominance facts."
+    },
+    {
+      "id": "animals_wildlife-nutria-invasive-rodent",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-nutria-fur-invasion' — both ask why nutria were introduced to Europe/North America and both answer 'For fur'. The questions are essentially the same.",
+      "suggested_fix": "Delete one of the two nutria-fur-introduction facts."
+    },
+    {
+      "id": "animals-pig-intelligence",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct answer 'High intelligence' is vague and functions more as a label than a real answer. The question asks what 'unexpected cognitive trait makes pigs stand out', and three distractors — 'Exceptional memory', 'Tool use in the wild', and 'Problem-solving' — are all arguably examples of high intelligence and could be considered partially correct, making the question ambiguous.",
+      "suggested_fix": "Either rewrite to ask a more specific question (e.g., 'What have studies shown pigs can do that demonstrates their intelligence?') or change the correct answer to something more specific like 'Can navigate mazes and recognize themselves'."
+    },
+    {
+      "id": "animals-sloth-slowness-predator-avoidance",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation states sloths evolved slowness solely to avoid detection by predators, but the Wikipedia source describes sloth slowness as permitting their low-energy leaf diet AND avoiding detection. The question's answer 'To avoid detection by predators' is presented as the single reason, when energy conservation is equally important. The distractor 'To conserve energy from leaves' is also factually correct.",
+      "suggested_fix": "Rewrite question to 'What are the two main survival benefits of the sloth's extreme slowness?' with answer 'Low-energy diet and predator avoidance', or acknowledge both factors in the question framing."
+    },
+    {
+      "id": "animals-european-robin-mass",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The stated mass of 2.4 grams for the European robin is almost certainly wrong. European robins typically weigh 14–21 grams. A 2.4 gram bird would be smaller than a hummingbird. This appears to be a Wikidata error (possibly the mass was recorded in a wrong unit or conflated with another field).",
+      "suggested_fix": "Correct the mass to approximately 16–21 grams (the actual robin weight). Delete or completely rewrite this fact — the trivia claim as stated is factually incorrect."
+    },
+    {
+      "id": "animals-nightingale-song-weight",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The stated mass of 2.65 grams for the common nightingale is almost certainly wrong. Common nightingales typically weigh 17–25 grams. A 2.65 gram bird would be implausibly tiny — smaller than most insects. This appears to be a Wikidata unit error.",
+      "suggested_fix": "Correct the mass to approximately 17–25 grams (the actual nightingale weight). Delete or completely rewrite this fact — the trivia claim as stated is factually incorrect."
+    },
+    {
+      "id": "animals_wildlife-guppy-livebearer",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks how guppies 'reproduce differently from most fish' implying live birth is rare, but livebearing is fairly common across many fish families (sharks, some bony fish). The framing 'differently from most fish' is reasonable but the explanation should note this is common among Poeciliidae but rare among bony fish broadly.",
+      "suggested_fix": "Minor wording fix: change 'most fish' to 'most bony fish' for precision, or note in explanation that most bony fish lay eggs externally."
+    },
+    {
+      "id": "animals-stork-nest-size",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct answer is 'Over {3} metres' but the explanation says 'about 3 metres in depth' — the explanation directly contradicts the answer. The answer says 'over 3 metres' but the explanation says 'about 3 metres'.",
+      "suggested_fix": "Reconcile: if the answer is 'over 3 metres', the explanation should say 'over 3 metres'. If the fact is 'about 3 metres', change the correct answer to '{3} metres'."
+    },
+    {
+      "id": "animals-rhea-south-american-ostrich",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation says rheas place 'just behind the emu' in height, claiming rheas are the fourth largest ratite. However, cassowaries are generally considered larger than rheas, and some classifications put cassowaries as the third largest ratite (after ostriches and emus), which would make rheas fourth. But the explanation says the three larger ratites are ostriches, emus, and one African ostrich — treating ostriches as two species. This framing ('two African ostriches') is technically correct but potentially confusing, as the Somali ostrich was only recently split.",
+      "suggested_fix": "Clarify the explanation: 'There are two ostrich species (common and Somali), both larger than rheas, plus the emu — placing rheas fourth by height.' Or simplify to avoid the contested two-ostrich split."
+    },
+    {
+      "id": "animals-common-starling-shakespeare",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The explanation notes starling mimicry was documented by 'Pliny the Elder and William Shakespeare' — but the question asks which 'famous writer' noted this, with Shakespeare as the correct answer. Pliny the Elder (mentioned in the explanation) would be an equally correct answer to the question as asked, making the question have multiple correct answers.",
+      "suggested_fix": "Reframe question to specifically reference Shakespeare, e.g., 'Which playwright referenced the common starling's mimicry ability in Henry IV Part 1?' to make Shakespeare the uniquely correct answer."
+    },
+    {
+      "id": "animals_wildlife-electric-ray-torpedo-weapon",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'animals_wildlife-electric-ray-torpedo-etymology' — both are about the electric ray/torpedo connection. While one asks about the weapon name and the other about the Latin meaning, they cover the same narrow topic and will feel repetitive in a deck.",
+      "suggested_fix": "Consider merging these into one stronger fact, or ensure they are not dealt in the same session."
+    },
+    {
+      "id": "animals_wildlife-osteichthyes-land-connection",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Lungfish only' is partially correct — lungfish ARE the closest living relative of tetrapods and are lobe-finned fish. The correct answer 'Lobe-finned fish' includes lungfish. A player who has read about lungfish evolution could reasonably select 'Lungfish only' and be factually right at a more specific level. This creates ambiguity.",
+      "suggested_fix": "Remove 'Lungfish only' as a distractor. Replace with something clearly wrong like 'Jawless hagfish' or 'Bony armored fish'."
+    },
+    {
+      "id": "animals_wildlife-sarcopterygii-only-8-survivors",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'How many living species of coelacanth exist today?' but the explanation discusses lobe-finned fish broadly (Sarcopterygii) and lumps coelacanths and lungfish together as '2 coelacanth species and 6 lungfish species'. The question ID implies it's about coelacanths specifically (2 species), which is correct, but the explanation is about Sarcopterygii generally, making it a mismatch.",
+      "suggested_fix": "Tighten the explanation to focus on coelacanths only, since the question asks specifically about coelacanths."
+    },
+    {
+      "id": "animals_wildlife-hagfish-skull-no-spine",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation says hagfish 'lack a vertebral column, though they do have rudimentary vertebrae' — which partially contradicts itself. If they have rudimentary vertebrae, the claim that they 'lack a vertebral column' and are 'a profound evolutionary outlier among vertebrate animals' is at least confusing. Hagfish are debated as to whether they are true vertebrates.",
+      "suggested_fix": "Clarify: 'Hagfish have a partial cranium but only rudimentary, cartilaginous proto-vertebrae — not a true vertebral column — placing them in a unique evolutionary position at the base of the vertebrate lineage.'"
+    }
+  ]
+}

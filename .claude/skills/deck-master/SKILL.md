@@ -1,0 +1,853 @@
+---
+name: deck-master
+description: Create curated knowledge decks for Recall Rogue. 3 phases: discover (research topics), architect (design deck structure), generate (produce facts). Per DECKBUILDER.md spec. All content programmatically sourced from authoritative, commercially-licensed sources.
+---
+
+# deck-master
+
+## Mission
+
+Single skill for creating high-quality curated decks. Every deck is a self-contained educational unit: its own fact pool, answer type pools, synonym groups, chain themes, and question templates. Decks power the curated run system described in `docs/RESEARCH/DECKBUILDER.md`.
+
+**Canonical spec:** `docs/RESEARCH/DECKBUILDER.md` sections 3-9. If anything in this skill conflicts with that doc, the doc wins.
+
+**Living brainstorm doc:** `data/deck-ideas.md` — append all discovered deck candidates here with demand signals and notes. Consult it before discovery runs to avoid duplicate research.
+
+---
+
+## Curated Deck Design Philosophy — CRITICAL
+
+**A curated deck is NOT a trivia collection.** It is a carefully crafted ecosystem where every fact, every answer pool, every question template, and every confusion pair work together to build genuine understanding. This section is mandatory reading before any deck creation work.
+
+### The #1 Mistake: Entity-First Design
+
+The wrong approach: "Let me grab all solar system entities from Wikidata and generate questions about each one." This produces a trivia deck with a curated label — a flat list of disconnected facts that could just as easily be random trivia questions.
+
+The right approach: **Pool-first design.** Start by asking "What pools of confusable answers can I build?" and "What question templates create interesting difficulty curves?" The entities follow from the pools, not the other way around.
+
+### Pool-First Design Process
+
+The answer type pools ARE the deck's educational backbone. At runtime, distractors are drawn from these pools, weighted by the confusion matrix. This means:
+
+1. **Each pool must contain members that are genuinely confusable with each other.** "Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune" is a great pool — players WILL mix up which planet has which property. A pool of random asteroid names nobody's heard of is useless.
+
+2. **Pools must have 5+ members minimum** (1 correct + 4 distractors at high mastery). But aim higher — 8+ members create richer confusion matrices over time.
+
+3. **The pools define what the deck teaches.** If your deck has pools for planet_names, moon_names, and mission_names, the deck teaches planetary identity, moon-planet relationships, and exploration history. If it has a pool for orbital_period_days with 50 entries, you've built a memorization grind, not an educational experience.
+
+4. **Cross-pool question templates are where the magic happens.** "Which planet has the moon Europa?" uses planet_names as the answer pool but tests knowledge about moons. "Which mission was the first to orbit Jupiter?" uses mission_names but tests planetary knowledge. These cross-references build connected understanding, not isolated recall.
+
+### Question Templates Drive the Difficulty Curve
+
+A single fact isn't one question — it generates multiple questions at different mastery levels via question templates:
+
+- **Mastery 0**: Easiest template — "What is the largest planet in the solar system?" (recognition)
+- **Mastery 1-2**: Standard + reverse — "Which planet is known as the Red Planet?" -> "What is Mars known as?"
+- **Mastery 3+**: Harder variants — "Which planet is between Venus and Mars?" (relational reasoning)
+- **Mastery 4-5**: Hardest — comparative, counterintuitive, or multi-step — "Which planet has the highest surface temperature?" (Venus, not Mercury — requires understanding greenhouse effect)
+
+**Design templates that force reasoning, not just recall.** "What is the 5th planet?" is rote. "Which planet could fit all other planets inside it?" teaches scale. The best templates make the player think about relationships between entities.
+
+### The Confusion Matrix Is Your Secret Weapon
+
+The runtime confusion matrix tracks what players actually mix up. But deck designers can **seed** obvious confusion pairs at build time:
+
+- Monroe <-> Madison (both "James M___" presidents)
+- Jupiter <-> Saturn (both gas giants, players confuse their properties)
+- Europa <-> Enceladus (both icy moons with subsurface oceans)
+
+These seeded confusions tell the distractor system to preferentially pair these as distractors, accelerating the adaptive difficulty from the first encounter. Design your deck to ANTICIPATE what will confuse learners.
+
+### What Makes a Fact Worth Including
+
+Every fact in a curated deck must earn its place. Ask:
+
+1. **Does it belong to a pool with 5+ confusable members?** If it's an orphan fact with no natural distractor pool, it doesn't belong in a curated deck (it might work fine as trivia).
+2. **Does it connect to other facts in the deck?** The best facts create "aha" moments when the player realizes how two things relate. "Venus is hotter than Mercury" connects to "Venus has a thick CO2 atmosphere" — together they teach the greenhouse effect.
+3. **Does it support multiple question templates?** A fact that only works as one question type is thin. A fact about Jupiter's Great Red Spot can ask: what planet has it (planet_names pool), how long it's existed (bracket number), what it is (feature_names pool).
+4. **Is it counterintuitive or surprising?** "Saturn could float in water", "A day on Venus is longer than its year", "Olympus Mons is 3x taller than Everest" — these are the facts players remember and share. Prioritize them.
+5. **Does it avoid being pure rote memorization?** "Neptune is the 8th planet" teaches nothing interesting. "Neptune was predicted mathematically before it was observed" teaches something profound about science.
+
+### What Does NOT Belong in a Curated Deck
+
+- **Catalog entries** nobody cares about (minor moons, unnamed asteroids, obscure missions)
+- **Dry measurement facts** with no comparative context ("Jupiter's radius is 69,911 km" — so what?)
+- **Facts that only work as one flat question** with no template depth
+- **Facts with no natural distractor pool** (orphan facts that can't participate in the confusion matrix ecosystem)
+- **Anything you'd find in a random trivia game** without the connected understanding that makes curated decks special
+
+---
+
+## Game Modes Context
+
+Decks serve TWO distinct game modes. Workers building decks must understand both:
+
+### Study Temple (Focused Study)
+- Player enters via the **Dungeon Selection Screen** -> Study Temple tab
+- Browses curated decks by domain (left sidebar) -> picks a deck tile -> optionally focuses on a sub-deck
+- All facts for the entire run come from that single deck (or sub-deck)
+- Generic chain slots (0-5) for card combos; thematic chains are a future enhancement
+- Adaptive difficulty via confusion matrix and in-run FSRS
+- **ALL vocabulary content lives here** — Japanese N5-N1, Korean, Spanish, etc. are curated decks with sub-decks (Vocabulary, Kanji, Grammar)
+- **This is the deep learning mode** — the reason players keep coming back
+
+### Trivia Dungeon (Casual)
+- Player enters via the **Dungeon Selection Screen** -> Trivia Dungeon tab
+- Picks one or more domains and/or subdomains from the general trivia fact pool
+- Facts pulled from the existing general trivia database (`src/data/seed/facts.db`, `knowledge-*.json`)
+- Random fact selection — no chain theme strategy, no confusion matrix
+- **Vocabulary facts are NOT available in Trivia Dungeon** — they live exclusively in Study Temple
+- **This is the casual/fun mode** — zero commitment, instant variety
+- Facts answered in Trivia Dungeon do NOT count toward curated deck progress (separate fact pools)
+
+### Fact Pool Separation (CRITICAL)
+
+**Trivia Dungeon and Study Temple use COMPLETELY SEPARATE fact pools.** There is zero overlap.
+
+- **Trivia Dungeon** uses the existing general fact database (`src/data/seed/facts.db`, `knowledge-*.json`). These are the broad trivia facts that have always been in the game — standalone questions, no special structure. **No vocabulary/language facts** — those live exclusively in Study Temple.
+- **Study Temple (Curated Decks)** use their own dedicated fact files (`data/decks/<deck_id>.json`). These are purpose-built for focused study with answer type pools, confusion matrices, and sub-decks.
+
+Both systems can cover the same knowledge domains (e.g., both have History, Geography, etc.) and even the same sub-topics (e.g., both might have WW2 facts). But the actual fact entries are completely different — different IDs, different questions, different distractors.
+
+**Vocabulary is curated-only.** ALL language learning content (Japanese, Korean, Spanish, French, German, Dutch, Czech, etc.) lives exclusively in Study Temple as curated decks with sub-decks (Vocabulary, Kanji, Grammar). Language facts must be removed from the general trivia pool.
+
+**Future consideration:** Once enough curated decks exist, Trivia Dungeon could optionally pull from curated deck facts. Not for initial implementation.
+
+### Per-Language Display Settings
+
+Vocabulary decks may have language-specific display settings (e.g., Japanese: furigana, romaji, kana-only). These are defined in `src/types/vocabulary.ts` as `LanguageDeckOption` entries on each `LanguageConfig`. Settings are per-language (not per-deck) — they apply to ALL sub-decks of that language. When building a new language deck, check if display options should be added to the language config.
+
+### Progress Tracking
+
+Progress does NOT transfer between modes. A curated deck's progress bar only reflects facts answered within that deck's own Study Temple runs. Each sub-deck within a curated deck also has its own independent progress bar.
+
+---
+
+## Invocation
+
+```
+/deck-master discover [--domain history|science|languages|...]
+/deck-master architect --topic "US Presidents" [--target-facts 46]
+/deck-master generate --architecture <path/to/arch.yaml>
+/deck-master full --topic "Chemical Elements" [--target-facts 118]
+```
+
+- `discover` — Phase 1 only: research demand and output ranked deck candidates
+- `architect` — Phase 2 only: design deck structure for a chosen topic
+- `generate` — Phase 3 only: produce facts from a completed architecture spec
+- `full` — All three phases sequentially for a single topic
+
+---
+
+## CRITICAL: Programmatic Sourcing Rule
+
+**ALL deck content MUST be programmatically sourced from authoritative, commercially-usable sources.** This is non-negotiable. The game is a commercial product — every fact, every asset, every data point must have a clear provenance chain.
+
+### Data Sourcing Requirements
+
+| Requirement | Detail |
+|-------------|--------|
+| **Facts** | Must be grounded in Wikipedia/Wikidata. Every fact needs a `sourceName` and `sourceUrl` pointing to the authoritative source. Never invent facts from LLM knowledge alone. |
+| **Verification** | Cross-reference at least 2 sources for non-trivial claims. Wikipedia + one additional source (Britannica, official government sites, peer-reviewed databases). |
+| **Numerical data** | Use Wikidata SPARQL queries for structured numerical facts (populations, dates, measurements). Never approximate. |
+| **Visual assets** | Flag SVGs from open-source CC0/public domain repositories (e.g., flag-icons, flagpedia). Map outlines from Natural Earth (public domain). Animal/plant images from Wikimedia Commons (verify license per image). |
+| **Commercial licensing** | Every asset must be CC0, CC-BY, public domain, or have explicit commercial-use permission. CC-BY-NC (non-commercial) is NOT acceptable. CC-BY-SA is acceptable if attribution is provided. |
+| **Attribution tracking** | Each deck's architecture YAML must include an `asset_sources` section listing every external asset with its license type and attribution requirements. |
+
+### What This Means in Practice
+
+- **Flags of the World deck**: Use `flag-icons` npm package (MIT license) or `flagpedia.net` SVGs (public domain). Do NOT use random Google Image results.
+- **Periodic Table deck**: Use PubChem or IUPAC data (public domain). Cross-reference with Wikidata.
+- **Animal decks**: Use IUCN Red List data (verify API terms), Wikidata for taxonomy, Wikimedia Commons for reference images (check per-image license).
+- **Geography decks**: Use Natural Earth shapefiles (public domain) for any map data. UN Statistics Division for country/population data.
+- **Historical decks**: Wikipedia + Britannica cross-reference. Primary sources where available (Library of Congress, National Archives).
+
+### Banned Practices
+
+- Using LLM-generated "facts" without source verification
+- Scraping copyrighted content (Quizlet sets, Anki shared decks — use for demand research only, never copy content)
+- Using images/assets without verifying commercial license
+- Hardcoding data that could drift (populations, "current" leaders, living records) — these need flagging as `volatile: true`
+
+---
+
+## Phase 1: Discovery
+
+**Goal:** Find what people actually want to learn. Identify high-demand topics with strong structural potential.
+
+### Process
+
+1. Search Anki shared deck repositories for download counts (ankiweb.net/shared/decks) — for demand signal only, never copy content
+2. Search Reddit study communities: r/languagelearning, r/medicalschool, r/history, r/learnmath, etc. — look for recurring study requests
+3. Search educational forums and quiz sites (Quizlet, Kahoot popular sets, Sporcle trending quizzes) — demand signal only
+4. Check trending educational content: YouTube edu-channels, popular podcast topics, TikTok edu-creators
+5. Cross-reference `data/deck-ideas.md` — skip topics already researched or in progress
+
+### Filtering criteria
+
+A topic is a viable deck candidate if it satisfies ALL of:
+- 30+ distinct facts can be extracted from authoritative, commercially-usable sources
+- Answer types fall into at least 2 identifiable pools with 5+ members each
+- Not a micro-topic (e.g., "Noble Gases" alone — too small; fold it into "Periodic Table")
+- Note: natural sub-groupings for chain themes are NOT a current requirement. They are worth noting in the discovery output as future potential, but a topic is not disqualified for lacking them.
+- Required visual assets (if any) are available under commercial-friendly licenses
+
+### Sub-deck splitting rule
+
+**Large topics (100+ entities) SHOULD be evaluated for splitting into standalone sub-decks** when the sub-groups are independently viable (30+ facts each). Examples:
+- "World Capitals" (195) -> could split into "African Capitals" (54), "European Capitals" (44), "Asian Capitals" (48), etc.
+- "Periodic Table" (118) -> could keep as one mega-deck with 8+ chain themes (more replayability per run)
+
+The decision depends on whether sub-groups are independently interesting or only meaningful as part of the whole. Players should be able to choose either the full deck or a focused sub-deck.
+
+### Output format
+
+Append to `data/deck-ideas.md`. Return a ranked list in this format:
+
+```
+1. "US Presidents" — 50k Anki downloads, frequent Reddit requests, 46 facts; natural themed groupings exist (Founding Fathers, Civil War Era) — note for future chain theme enhancement
+2. "Chemical Elements" — 120k Anki downloads, periodic table grouping maps well; good future chain theme potential (by period, group, metal/nonmetal)
+3. "World Capitals" — 200k Anki downloads; verify it can reach 30+ interesting facts (not just name->capital)
+4. "Dog Breeds" — niche but passionate community; visual learning potential for cardbacks; groupings by size/type noted for future chains
+```
+
+Include:
+- A note on any topic that seems popular but structurally weak (pool count, depth, synonym hazards)
+- A note on required visual assets and their licensing status
+- Whether the topic should be one deck or split into sub-decks
+
+---
+
+## Phase 2: Architecture
+
+**Goal:** Design the complete pedagogical structure before any facts are generated. The architecture spec is the contract for the generation phase.
+
+### Process
+
+1. **Deep domain research** — Wikipedia, Wikidata, authoritative sources. Understand the full scope.
+2. **Identify data sources** — Which Wikidata properties? Which Wikipedia categories? Which authoritative databases? Document these in the architecture.
+3. **Identify natural answer types** — names, dates, places, terms, categories, numbers? **THIS IS THE MOST IMPORTANT STEP.** The pools you define here ARE what the deck teaches. A poor pool choice produces disconnected trivia; strong, confusable pools produce genuine learning. See "Curated Deck Design Philosophy" above before proceeding.
+4. **Define answer type pools** — group potential facts by answer format; verify each pool has 5+ members after synonym exclusions. Pools with fewer than 5 must be merged with a related pool or use bracket-number runtime generation. **Pools must contain members that are genuinely confusable with each other** — same-format is not enough. Also design cross-pool question templates that test one pool's knowledge using another pool as context (see "Pool-First Design Process" in the Design Philosophy section above).
+5. **Design question templates** — for each answer type pool: what question formats make sense? Templates MUST span a mastery-driven difficulty curve: simple recognition at mastery 0 (e.g., "What is the largest planet?"), standard/reverse at mastery 1-2, relational reasoning at mastery 3+ (e.g., "Which planet lies between Venus and Mars?"), and counterintuitive/comparative at mastery 4-5 (e.g., "Which planet has the highest surface temperature?" — tricky because it's Venus, not Mercury). Templates that force reasoning over rote recall are always preferred.
+6. **Identify common confusions** — what do learners typically mix up? These pairs are SEEDED into the confusion matrix at deck build time, telling the distractor system to preferentially pair them before any real player data exists. This is especially valuable for a new deck's initial quality — the adaptive system starts smart instead of cold. Good seeded pairs share a surface similarity (same first letter, same era, same category) that fools learners at low mastery. See examples in the Design Philosophy section above.
+7. **Identify synonym groups** — answers that are semantically interchangeable (e.g., "Civil War" / "War Between the States"). Facts in the same synonym group must NEVER appear as each other's distractors.
+8. **Define chain slots (NOT required to be subcategorized):**
+   - For NOW, named/thematic chain themes are NOT required. Facts can simply be assigned to generic chain slot types (Obsidian/Crimson/Azure/Amber/Violet/Jade) distributed evenly across all facts. The in-game chaining mechanic works correctly without themed groupings.
+   - Vocabulary decks: always use generic chains — no thematic grouping
+   - Knowledge decks: also use generic chains for initial builds. Themed chain groupings (e.g., "Founding Fathers", "Civil War Era") are a future enhancement for replayability — skip for now.
+   - Both deck types: assign `chainThemeId` as a generic slot index (0-5) distributed evenly across facts. Do NOT spend time designing named sub-groupings.
+9. **Set difficulty tiers** — easy (universally known), medium (commonly known), hard (obscure)
+10. **Identify required visual assets** — what images/icons does this deck need? Where will they come from? What license?
+11. **Validate structure** — confirm every pool has 5+ members, total facts meets target, chain slots (0-5) are evenly distributed, no synonym group is so large it starves the distractor pool (flag groups >4 facts)
+
+### Output format (YAML spec)
+
+Save to `data/deck-architectures/<deck_id>_arch.yaml`:
+
+```yaml
+deck_id: us_presidents
+name: "US Presidents"
+domain: history
+sub_domain: american_government
+target_facts: 46
+minimum_facts: 30
+
+# Sourcing & licensing (MANDATORY)
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States
+    license: CC-BY-SA-4.0
+    usage: fact text, explanations
+  - name: Wikidata
+    url: https://www.wikidata.org/wiki/Q11696
+    license: CC0
+    usage: structured data (dates, party, state)
+  - name: Library of Congress
+    url: https://www.loc.gov/rr/print/list/057_chron.html
+    license: public domain
+    usage: verification, portraits reference
+
+asset_sources:
+  - type: portraits
+    source: Wikimedia Commons
+    license: public domain (US government works)
+    note: "Official presidential portraits are public domain"
+  - type: party_icons
+    source: custom pixel art
+    license: original work
+    note: "Generate via ComfyUI"
+
+answer_type_pools:
+  - id: president_names
+    format: name
+    estimated_count: 46
+    min_distractors: 4
+  - id: inauguration_years
+    format: bracket_number
+    estimated_count: 46
+    note: "Use bracket system — runtime generation, not pool distraction"
+  - id: party_names
+    format: term
+    estimated_count: 8
+    note: "Small pool — merge with era labels if under 5"
+  - id: home_states
+    format: place
+    estimated_count: 30
+
+# chain_themes: NOT required for initial decks.
+# Facts are assigned to generic chain slots (0-5) distributed evenly across all facts.
+# Named/thematic chain groupings (e.g., "Founding Fathers", "Civil War Era") are a future
+# enhancement for replayability. Skip for now — generic slots work fine in-game.
+# When themed chains are added later, they go here:
+#   chain_themes:
+#     - id: 0
+#       name: "Founding Fathers"
+#       color: "#546E7A"
+#       estimated_facts: ["washington", "j_adams", "jefferson", "madison", "monroe"]
+
+question_templates:
+  - id: name_from_number
+    format: "Who was the {ordinal} president of the United States?"
+    answer_pool: president_names
+    available_from_mastery: 0
+    difficulty: 1
+  - id: number_from_name
+    format: "What number president was {name}?"
+    answer_pool: ordinal_numbers
+    available_from_mastery: 2
+    difficulty: 3
+
+common_confusions:
+  - ["monroe", "madison"]           # James M___
+  - ["j_adams", "jq_adams"]        # Father and son
+  - ["roosevelt_t", "roosevelt_f"] # Different Roosevelts
+
+synonym_groups:
+  - id: civil_war_johnsons
+    fact_ids: ["johnson_a", "johnson_l"]
+    reason: "Both named Andrew/Lyndon Johnson; keep apart as distractors"
+
+difficulty_tiers:
+  easy: ["washington", "lincoln", "obama", "jefferson", "jfk"]
+  medium: ["madison", "jackson", "grant", "eisenhower", "reagan"]
+  hard: ["fillmore", "pierce", "arthur", "harrison_b", "tyler"]
+
+# Volatile facts (data that changes over time)
+volatile_facts: []
+# e.g., for a "World Leaders" deck: ["current_us_president", "current_uk_pm"]
+# These need periodic review and update
+```
+
+---
+
+## Phase 3: Generation
+
+**Goal:** Produce the complete fact dataset conforming to the architecture spec.
+
+### Worker setup
+
+Spawn **Sonnet** sub-agents (`model: "sonnet"`) for ALL fact generation. Haiku is not acceptable for database content.
+
+Each Sonnet worker MUST receive:
+- The architecture YAML spec (full content)
+- The master worker prompt VERBATIM from `docs/RESEARCH/SOURCES/master-worker-prompt.md` — read it fresh each time, never paraphrase or summarize it
+- Wikidata/Wikipedia structured data for the entities being processed
+- A batch of entities to process (max 10 per worker call)
+- Max 5 workers running simultaneously
+- **The programmatic sourcing rule** — every fact must cite its source
+
+### Source verification workflow
+
+Before generating facts, the orchestrator MUST:
+1. **Fetch structured data** from Wikidata for the entities (SPARQL query or entity lookup)
+2. **Fetch Wikipedia content** for verification and explanation text
+3. **Pass this source data to workers** — workers generate facts FROM the source data, not from their training knowledge
+4. Workers MAY use world knowledge to write engaging explanations and visual descriptions, but the core fact (question + answer) must be grounded in the provided source data
+
+### Per-fact requirements (each fact must include)
+
+| Field | Requirement |
+|-------|-------------|
+| `id` | Unique, deck-scoped (e.g., `us_presidents_washington`) |
+| `correctAnswer` | Max 5 words / 30 chars; bracket numeric answers: `{1789}` |
+| `acceptableAlternatives` | All valid synonyms/alternates |
+| `synonymGroupId` | Assigned if fact belongs to a synonym group |
+| `chainThemeId` | Generic slot index (0-5), distributed evenly across all facts. Named theme assignments are NOT required for initial decks — use numeric slots only. |
+| `answerTypePoolId` | Must match a pool defined in the architecture |
+| `difficulty` | 1-5 per architecture tiers |
+| `funScore` | 1-10 using calibration anchors from master-worker-prompt |
+| `distractors` | 8-12 plausible wrong answers — LLM-generated from world knowledge, NEVER pulled from DB pools |
+| `quizQuestion` | Max 15 words, ends with `?`, not self-answering |
+| `explanation` | 1-3 sentences, adds context, never circular |
+| `wowFactor` | 1 punchy "share-worthy" sentence shown as a popup after correct answers in-game. Must be deck-specific, not generic trivia. |
+| `statement` | Clear declarative sentence of the fact (used on card face) |
+| `visualDescription` | 20-40 words, vivid mnemonic scene for pixel art cardback |
+| `sourceName` | Required — the authoritative source this fact comes from |
+| `sourceUrl` | Strongly recommended — direct link to the source page |
+| `volatile` | Boolean — true if this fact contains data that changes over time (populations, leaders, records) |
+| `ageGroup` | `"all"` (suitable for kids 8+) or `"teen+"` (complex/abstract concepts best for 13+). See Age Appropriateness section below. |
+
+### Age Appropriateness — MANDATORY for all decks
+
+Every fact MUST be tagged with an `ageGroup` field. This enables the game to filter deck content based on the player's age setting.
+
+**`"all"` (ages 8+):** The fact is concrete, engaging, and understandable by a bright 8-year-old. Examples: "What is the largest planet?", "Which planet has rings?", "What color is Mars?"
+
+**`"teen+"` (ages 13+):** The fact involves abstract scientific concepts, complex historical context, technical terminology, or requires reasoning beyond concrete thinking. Examples: "Which planet was predicted mathematically before it was observed?", "What causes Io's volcanic activity?" (tidal forces), greenhouse effect explanations.
+
+**Rules:**
+- At least 40% of facts in every deck MUST be `"all"` — kids need a full, enjoyable deck experience, not a handful of easy questions
+- When in doubt, tag `"teen+"` — it's safer to under-include for kids than to bore/confuse them
+- Violence, death, sensitive historical content → always `"teen+"`
+- The `ageGroup` tag does NOT affect difficulty rating — a fact can be `"all"` and difficulty 4 (hard but concrete: "Which moon is larger than Mercury?")
+
+### Distractor rule — non-negotiable
+
+Distractors MUST be generated by the LLM reading the specific question and producing plausible wrong answers from world knowledge. NEVER use `SELECT correct_answer FROM facts WHERE ...` or any DB query to source distractors. Post-generation DB validation is permitted to check for accidental matches.
+
+### Bracket notation for numeric answers — SUPPORTED
+
+Curated decks fully support `{N}` bracket notation for numeric answers (e.g., `"{8}"`, `"{4.6} billion years"`, `"About {8} minutes"`). The curated quiz paths (`nonCombatQuizSelector.ts` and `CardCombatOverlay.svelte`) detect bracket answers and route them through `getNumericalDistractors()` + `displayAnswer()` from `numericalDistractorService.ts`.
+
+**How to use:**
+1. Set `correctAnswer` to the bracket-notated value: `"{8}"`, `"{101}"`, `"{4.6} billion years"`
+2. Set `distractors` to `[]` (empty array) — the runtime generates plausible wrong numbers
+3. Set `answerTypePoolId` to `"bracket_numbers"` — these facts form their own pool but distractors come from the bracket generator, NOT from the pool
+4. The `bracket_numbers` pool exists for organizational purposes and pool-size validation, but the runtime NEVER uses it for distractor sourcing — bracket facts always self-generate distractors
+
+**What the runtime does:**
+- Detects `{N}` via `isNumericalAnswer()` → generates nearby plausible wrong numbers via `getNumericalDistractors()`
+- Strips braces for display via `displayAnswer("{8}")` → `"8"`
+- The player sees clean numbers, never curly braces
+
+### Runtime Fact Selection — Anki-Faithful Learning Step Model
+
+Curated deck fact selection uses Anki's actual learning step model (`curatedFactSelector.ts` + `inRunFactTracker.ts`). Deck designers must understand this because it directly shapes the player experience.
+
+**Three card states (not simple queues — states with timers):**
+
+| State | Meaning | How it got here |
+|-------|---------|-----------------|
+| **NEW** | Never seen this run | Default for all facts at run start |
+| **LEARNING** | Seen but not graduated. Has step counter + due timer. | Correct on NEW card, or wrong on ANY card |
+| **GRADUATED** | Completed all learning steps | Correct on final learning step |
+
+**Learning step progression (adapted from Anki's 1min/10min to charges):**
+
+| Event | Result |
+|-------|--------|
+| NEW card + correct | → LEARNING step 0. Due in **2 charges**. |
+| LEARNING step 0 + correct | → LEARNING step 1. Due in **5 charges**. |
+| LEARNING step 1 + correct | → **GRADUATED**. Due in **10 charges**. |
+| ANY card + **wrong** | → LEARNING step 0. Due in **2 charges**. (Anki "Again") |
+| GRADUATED + correct | Stays graduated. Due in **10 charges**. |
+| GRADUATED + wrong | **Un-graduates**. Back to LEARNING step 0. |
+
+**Selection priority (exactly Anki):**
+1. **Due learning cards** — any LEARNING card whose charge timer expired. ALWAYS shown first. These are time-critical.
+2. **Main queue (Intersperser)** — proportional mix of due GRADUATED reviews + NEW cards. Ratio: `P(review) = reviewCount / (reviewCount + newCount)`.
+3. **Ahead learning** — LEARNING cards not yet due. Only if nothing else available.
+4. **Fallback** — any card except the last one shown.
+
+**New card introduction cap:** Max 8 cards in LEARNING state at once. If 8 cards are learning, no new cards are introduced until some graduate. This prevents overwhelming the player.
+
+**What a typical session looks like (25 charges, all correct):**
+- Charges 1-3: Three NEW cards introduced
+- Charges 4-6: Those 3 come back as LEARNING (step 0 → step 1)
+- Charges 7-9: Three more NEW cards while step-1 cards wait
+- Charges 10-12: First batch returns (step 1 → GRADUATE)
+- Charges 13-15: Second batch returns (step 0 → step 1)
+- Charge 25: First REVIEW appears (graduated card's 10-charge timer expires)
+
+**Never repeats immediately.** The last shown card is always excluded.
+
+**Implications for deck design:**
+- Decks need 30+ facts minimum. The learning cap (8) + graduation delays mean ~9 unique cards rotate in early gameplay.
+- Wrong answers come back aggressively (2 charges). Design distractors to be plausibly confusing — the confusion matrix feeds on wrong answers.
+- The wow factor popup shows after correct answers on Learning-tier cards (max 3 per encounter). Each fact's `wowFactor` field must be present and deck-specific.
+
+### Synonym group computation
+
+After generation, run the `acceptableAlternatives` intersection algorithm (DECKBUILDER.md section 4.6):
+- Vocabulary decks: fully automated
+- Knowledge decks: review any flagged overlaps manually before committing
+
+### Output — CuratedDeck Envelope Format (CRITICAL)
+
+The final deck JSON file is NOT a flat array of facts. It MUST be wrapped in the `CuratedDeck` envelope that the runtime expects (`src/data/curatedDeckTypes.ts`). Workers generate facts as a flat array, then the orchestrator wraps them.
+
+**The orchestrator MUST wrap the merged facts into this structure:**
+
+```json
+{
+  "id": "solar_system",
+  "name": "Solar System",
+  "domain": "space_astronomy",
+  "subDomain": "solar_system",
+  "description": "Player-facing description (1-2 sentences, engaging)",
+  "minimumFacts": 60,
+  "targetFacts": 76,
+  "facts": [ ...all generated facts... ],
+  "answerTypePools": [
+    {
+      "id": "planet_names",
+      "label": "Planet Names",
+      "answerFormat": "name",
+      "factIds": ["...scan facts for answerTypePoolId === 'planet_names'..."],
+      "minimumSize": 5
+    }
+  ],
+  "synonymGroups": [
+    {
+      "id": "venus_names",
+      "factIds": ["...facts with overlapping acceptableAlternatives..."],
+      "reason": "Same planet, different names"
+    }
+  ],
+  "questionTemplates": [
+    {
+      "id": "planet_from_feature",
+      "answerPoolId": "planet_names",
+      "questionFormat": "Which planet has {feature}?",
+      "availableFromMastery": 1,
+      "difficulty": 2,
+      "reverseCapable": false
+    }
+  ],
+  "difficultyTiers": [
+    {"tier": "easy", "factIds": ["...difficulty 1-2..."]},
+    {"tier": "medium", "factIds": ["...difficulty 3..."]},
+    {"tier": "hard", "factIds": ["...difficulty 4-5..."]}
+  ],
+  "subDecks": [
+    {
+      "id": "planets",
+      "name": "Planets & System",
+      "factIds": ["...subset of fact IDs..."]
+    }
+  ]
+}
+```
+
+**Build the envelope programmatically** — scan the facts array to populate `answerTypePools[].factIds`, `difficultyTiers[].factIds`, and `synonymGroups[].factIds`. Never hand-craft these arrays.
+
+**After writing the deck JSON**, update `data/decks/manifest.json` to include the new deck filename in the `decks` array. The manifest is a flat array of filename strings:
+
+```json
+{
+  "decks": [
+    "existing_deck.json",
+    "new_deck.json"
+  ]
+}
+```
+
+The curated deck store (`src/data/curatedDeckStore.ts`) reads this manifest at app startup to discover available decks. If a deck is not in the manifest, it won't be loaded.
+
+Run validation commands below before marking generation complete.
+
+### Sub-Deck Design — When and How
+
+Sub-decks let players focus on a subset of the deck's content. They appear as selectable options within the deck tile in Study Temple (like Japanese has Hiragana, Katakana, N5, etc.).
+
+**When to create sub-decks:**
+- The deck has 50+ facts AND contains natural groupings a player would want to study independently
+- Each sub-deck must have 25+ facts to be viable (below that, the pool is too thin for good distractor variety)
+- The groupings must make sense from the PLAYER's perspective, not just the data's structure
+- A "Full Deck" option is always the default — sub-decks are optional focus modes
+
+**When NOT to create sub-decks:**
+- The deck has < 50 facts total (sub-decks would be too thin)
+- The groupings are arbitrary (e.g., "facts 1-25" vs "facts 26-50")
+- The answer pools would be too small within a sub-deck (< 5 confusable members per pool)
+
+**Sub-deck design process:**
+1. Look at the answer type pools — do any pools map naturally to a self-contained learning goal?
+2. Check that each sub-deck has enough facts AND enough pool members for good distractor variety
+3. Name sub-decks from the player's perspective: "Planets" not "Pool A", "Moons & Exploration" not "Sub-deck 2"
+4. Add `subDecks` array to the CuratedDeck envelope with id, name, and factIds
+
+**Examples by deck type:**
+
+| Deck | Sub-decks | Rationale |
+|------|-----------|-----------|
+| Solar System (76 facts) | "Planets & System" (50), "Moons & Exploration" (29) | Kids want just planets; enthusiasts want deep space |
+| Periodic Table (118 facts) | "Metals" (60+), "Non-metals & Noble Gases" (40+) | Chemistry students study these as distinct groups |
+| World Capitals (195 facts) | "European Capitals", "Asian Capitals", "African Capitals", "Americas Capitals" | Geographic focus is how people study capitals |
+| US Presidents (46 facts) | None — too small, and all facts use the same pool | Splitting would starve the distractor pools |
+| Japanese N5 (800+ facts) | "Vocabulary", "Kanji", "Grammar" | Completely different content types and study goals |
+
+**Architecture phase must decide sub-decks** — include them in the YAML spec so workers know which facts belong to which sub-deck. The orchestrator assigns `subDecks[].factIds` when building the envelope.
+
+---
+
+## Rules
+
+| Rule | Detail |
+|------|--------|
+| Minimum facts | 30 per deck; target 50+ |
+| Pool minimum | 5 facts per answer type pool (after synonym exclusions) |
+| Chain themes (knowledge) | NOT required for initial decks. Use generic chain slots (0-5) distributed evenly. Named themes are a future enhancement. |
+| Chain themes (vocabulary) | Generic chains only — no thematic grouping (same as knowledge decks for now) |
+| Math/numeric answers | Bracket notation + runtime generation, not pool distractors |
+| Grounding | All facts grounded in Wikipedia/Wikidata — never invented |
+| Distractor source | LLM world knowledge only; DB queries for distractors are banned |
+| Model for DB content | Sonnet only; Haiku is not acceptable for facts, distractors, or questions |
+| Micro-topics | Forbidden as standalone decks. "Noble Gases" = chain theme inside "Periodic Table", not its own deck |
+| Deck ideas log | Always update `data/deck-ideas.md` after a discovery run |
+| Programmatic sourcing | ALL facts must cite authoritative sources with URLs |
+| Commercial licensing | ALL visual assets must be CC0, CC-BY, public domain, or explicitly commercially licensed |
+| Volatile data | Facts with time-dependent data must be flagged `volatile: true` |
+| Age tagging | Every fact MUST have `ageGroup`: `"all"` (kids 8+) or `"teen+"` (13+). At least 40% must be `"all"` per deck. |
+| Sub-deck splitting | Large decks (100+ entities) must be evaluated for splitting into standalone sub-decks |
+| Bracket notation | Use `{N}` for numeric answers with `distractors: []`. Runtime generates numeric distractors. Pool is `bracket_numbers` (organizational only). |
+| Wow factor field | Every fact MUST have a `wowFactor` string — 1 punchy sentence shown after correct answers. Must be deck-specific. |
+
+---
+
+## Validation Commands — Data Quality
+
+Run after generation; fix all failures before committing.
+
+### CRITICAL: Run the Deck Verifier (MANDATORY)
+
+Before any other validation, run the deck verification script. This simulates every question the player would see — including bracket number generation, pool-based distractor selection, and answer display. It catches bugs that data-only checks miss.
+
+```bash
+node scripts/verify-curated-deck.mjs <deck_id>
+```
+
+**All facts must PASS.** If any fail, fix the data and re-run until clean. The script exits with code 1 on any failure.
+
+The verifier checks: literal braces in answers, answer appearing in distractors, duplicate distractors, pool size violations, missing fields, bracket generation quality, and unplayable quiz states.
+
+### Data Simulation Check
+
+**After ALL data validation passes, simulate what the player actually sees for EVERY fact.** Data checks alone are not sufficient — the Solar System deck shipped with literal `{8}` answers and `{4.6}` distractors because data validation passed but nobody simulated the runtime display.
+
+```bash
+# Simulate runtime distractor selection for every fact
+node -e "
+const deck = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const factById = new Map(deck.facts.map(f => [f.id, f]));
+let issues = 0;
+
+deck.facts.forEach(f => {
+  // 1. Check answer contains no braces
+  if (f.correctAnswer.includes('{') || f.correctAnswer.includes('}')) {
+    console.log('BRACE IN ANSWER:', f.id, '->', f.correctAnswer);
+    issues++;
+  }
+
+  // 2. Simulate pool-based distractor selection (what curatedDistractorSelector.ts does)
+  const pool = deck.answerTypePools.find(p => p.id === f.answerTypePoolId);
+  if (!pool) {
+    console.log('NO POOL:', f.id, '-> pool', f.answerTypePoolId, 'not found');
+    issues++;
+    return;
+  }
+
+  // Get pool member answers (what player would see as distractors)
+  const poolDistractors = pool.factIds
+    .filter(id => id !== f.id)
+    .map(id => factById.get(id)?.correctAnswer || '???')
+    .slice(0, 4);
+
+  // Check if pool distractors make semantic sense with the question
+  const hasNonsense = poolDistractors.some(d =>
+    d.includes('{') || d.includes('}') || d === f.correctAnswer
+  );
+  if (hasNonsense) {
+    console.log('NONSENSE DISTRACTOR:', f.id, '-> pool gives:', poolDistractors.join(', '));
+    issues++;
+  }
+
+  // 3. Check fallback distractors (used when pool too small)
+  if (f.distractors.length < 8 && pool.factIds.length < 6) {
+    console.log('THIN POOL + FEW FALLBACKS:', f.id, '-> pool has', pool.factIds.length, 'members, fact has', f.distractors.length, 'fallbacks');
+    issues++;
+  }
+
+  // 4. Check answer not in distractors
+  if (f.distractors.includes(f.correctAnswer)) {
+    console.log('ANSWER IN DISTRACTORS:', f.id);
+    issues++;
+  }
+
+  // 5. Check duplicate distractors
+  if (new Set(f.distractors).size < f.distractors.length) {
+    console.log('DUPE DISTRACTORS:', f.id);
+    issues++;
+  }
+});
+
+console.log(issues ? issues + ' ISSUES FOUND — fix before shipping' : 'All ' + deck.facts.length + ' facts simulate clean');
+"
+```
+
+**What this catches that basic validation misses:**
+- Bracket answers showing literally (the `{8}` bug)
+- Pool members being semantically wrong as distractors (moon counts as distractors for planet counts)
+- Pools too small to generate enough distractors at runtime
+- Correct answer appearing in distractor list after pool-based selection
+
+---
+
+### Data Validation Commands
+
+**Required fields check:**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const required = ['id','correctAnswer','acceptableAlternatives','chainThemeId','answerTypePoolId',
+  'difficulty','funScore','distractors','quizQuestion','explanation','visualDescription','sourceName','ageGroup'];
+let issues = 0;
+facts.forEach(f => {
+  const missing = required.filter(k => !(k in f));
+  if (missing.length) { console.log('MISSING in', f.id, ':', missing.join(', ')); issues++; }
+});
+console.log(issues ? issues + ' facts with missing fields' : 'All fields present');
+"
+```
+
+**Distractor count check (min 8):**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const low = facts.filter(f => !f.distractors || f.distractors.length < 8);
+low.forEach(f => console.log('LOW DISTRACTORS:', f.id, '(' + (f.distractors?.length ?? 0) + ')'));
+console.log(low.length ? low.length + ' facts need more distractors' : 'Distractor counts OK');
+"
+```
+
+**Pool size check (min 5 per pool):**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const pools = {};
+facts.forEach(f => { pools[f.answerTypePoolId] = (pools[f.answerTypePoolId] || 0) + 1; });
+Object.entries(pools).forEach(([pool, count]) => {
+  if (count < 5) console.log('POOL TOO SMALL:', pool, '(' + count + ' facts — need 5+)');
+});
+console.log('Pool check done.');
+"
+```
+
+**Chain slot distribution check (verify chainThemeId 0-5 is evenly spread):**
+```bash
+# NOTE: Named chain themes with min-8-per-theme rules are NOT required for initial decks.
+# Facts use generic slot indices (0-5) distributed evenly. This check just verifies
+# the distribution is reasonably balanced — not enforcing a hard minimum.
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const slots = {};
+facts.forEach(f => { slots[f.chainThemeId] = (slots[f.chainThemeId] || 0) + 1; });
+const counts = Object.values(slots);
+const avg = counts.reduce((a, b) => a + b, 0) / counts.length;
+Object.entries(slots).forEach(([slot, count]) => {
+  const pct = Math.round((count / facts.length) * 100);
+  console.log('Slot', slot + ':', count, 'facts (' + pct + '%)');
+});
+console.log('Average per slot:', Math.round(avg), '| Total slots used:', counts.length);
+"
+```
+
+**Age group distribution check (min 40% kids-friendly):**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const all = facts.filter(f => f.ageGroup === 'all').length;
+const teen = facts.filter(f => f.ageGroup === 'teen+').length;
+const other = facts.filter(f => !['all','teen+'].includes(f.ageGroup)).length;
+const pct = Math.round((all / facts.length) * 100);
+console.log('all (kids 8+):', all, '(' + pct + '%)');
+console.log('teen+ (13+):', teen, '(' + Math.round((teen / facts.length) * 100) + '%)');
+if (other) console.log('INVALID ageGroup:', other, 'facts');
+if (pct < 40) console.log('FAIL: Only ' + pct + '% are kids-friendly — need at least 40%');
+else console.log('Age distribution OK');
+"
+```
+
+**Synonym group sanity (flag groups >4 facts):**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const groups = {};
+facts.forEach(f => { if (f.synonymGroupId) { groups[f.synonymGroupId] = (groups[f.synonymGroupId] || 0) + 1; } });
+Object.entries(groups).forEach(([g, count]) => {
+  if (count > 4) console.log('LARGE SYNONYM GROUP (may starve distractor pool):', g, '(' + count + ' facts)');
+});
+console.log('Synonym group check done.');
+"
+```
+
+**Source URL check (all facts should have sourceUrl):**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const noUrl = facts.filter(f => !f.sourceUrl);
+noUrl.forEach(f => console.log('NO SOURCE URL:', f.id));
+console.log(noUrl.length ? noUrl.length + ' facts missing sourceUrl' : 'All facts have sourceUrl');
+"
+```
+
+**Volatile fact audit:**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const vol = facts.filter(f => f.volatile);
+if (vol.length) {
+  console.log(vol.length + ' volatile facts (need periodic review):');
+  vol.forEach(f => console.log('  -', f.id, ':', f.correctAnswer));
+} else {
+  console.log('No volatile facts.');
+}
+"
+```
+
+**categoryL2 taxonomy check (if deck facts enter the global DB):**
+```bash
+node -e "
+const facts = JSON.parse(require('fs').readFileSync('data/decks/<deck_id>.json'));
+const bad = facts.filter(f => !f.categoryL2 || ['general','other',''].includes(f.categoryL2));
+bad.forEach(f => console.log('BAD categoryL2:', f.id, '->', f.categoryL2));
+console.log(bad.length ? bad.length + ' facts need valid categoryL2' : 'categoryL2 OK');
+"
+```
+
+---
+
+## In-Game Testing — MANDATORY
+
+**Data validation alone is NOT sufficient.** The Solar System deck shipped with literal `{8}` in answers, wrong domain labels, and the same question repeating 6 times in a row — all of which passed data validation. The runtime behavior is what matters.
+
+### After every deck ships, verify in-game:
+
+1. **Start a Study Temple run** with the new deck
+2. **Play through at least 10 charge quizzes** and verify:
+   - Domain label at top matches the deck's domain (e.g., "SPACE & ASTRONOMY", not random)
+   - Questions vary — not the same question repeating
+   - Answers display cleanly (no `{braces}`, no truncation)
+   - Distractors are plausible wrong answers from the correct pool (not random values from other pools)
+   - Bracket-number facts show clean numbers with runtime-generated numeric distractors
+3. **Check the console** for `[CuratedDecks]` log showing the deck loaded with correct fact count
+4. **Test at least one bracket-number fact** — verify braces are stripped and distractors are nearby plausible numbers
+5. **No fact repeats within 3 charges** (Anki cooldown system)
+6. **Wrong answers come back after ~2 other facts** (learning queue)
+7. **New facts introduced gradually**, not all at once
+8. **Wow factor popup shows deck-specific text**, not trivia from other domains
+9. **Wow factor shows max 3 times per encounter**, no duplicates
+
+### Known integration points to verify:
+
+| Component | What to check | Past bug |
+|-----------|--------------|----------|
+| Domain label on cards | Must show deck domain, not random trivia domain | Study mode used general pool → random domains (fixed in encounterBridge.ts) |
+| Bracket answers | Must display without `{}` braces | Curated path didn't call `displayAnswer()` (fixed in nonCombatQuizSelector.ts + CardCombatOverlay.svelte) |
+| Question variety | Different questions per charge in same encounter | Seeded PRNG used same seed for all charges in encounter (fixed in curatedFactSelector.ts via chargeCount) |
+| Pool distractors | Must be semantically appropriate | bracket_numbers pool members showed as distractors for each other (fixed: bracket facts use runtime generation) |
+| Deck loads | Console shows `[CuratedDecks] Loaded N deck(s)` | Deck not in manifest → invisible |
+| CuratedDeck envelope | Must have answerTypePools, questionTemplates, difficultyTiers | Flat array of facts → runtime crash |
+| Distractor dedup | No duplicate answer text in choices; correct answer never appears as distractor | Multiple pool facts with same correctAnswer (6 Jupiter facts) caused "Jupiter" showing 3x as distractor (fixed: dedup by answer value in curatedDistractorSelector.ts) |
+| Wow factor popups | Must show curated deck fact's wowFactor, not random trivia facts | showWowFactor() read from trivia DB instead of curated deck (fixed: branches on deckMode, reads __studyFactId) |
+| Fact selection | Anki three-queue system: learning > review > new, charge-based cooldowns | Old weighted random picked same fact repeatedly (fixed: three queues with charge cooldowns in curatedFactSelector.ts + inRunFactTracker.ts) |

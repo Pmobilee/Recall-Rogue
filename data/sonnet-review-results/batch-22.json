@@ -1,0 +1,125 @@
+{
+  "total_reviewed": 171,
+  "perfect_count": 147,
+  "issues": [
+    {
+      "id": "natural_sciences-ac-tesla-edison",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Two distractors are self-contradictory nonsense: 'Edison's AC' (Edison promoted DC, not AC — this is internally incoherent) and 'Tesla's DC' (Tesla promoted AC, not DC — also internally incoherent). These aren't plausible wrong answers; they're confusing category errors that will mislead players.",
+      "suggested_fix": "Replace 'Edison's AC' with 'DC current (Westinghouse)' or just remove it. Replace 'Tesla's DC' with 'Tesla's wireless system' or another plausible alternative."
+    },
+    {
+      "id": "natural_sciences-schrödinger-wave-equation",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Maxwell' — a bare name appearing after 'Maxwell's equations' is already listed as the first distractor. This is a clear data corruption artifact: a stray element that duplicates content and breaks the list's grammatical consistency (all other distractors are named equations/principles, not bare scientist names).",
+      "suggested_fix": "Remove the trailing 'Maxwell' distractor entirely. The list is already strong without it."
+    },
+    {
+      "id": "natural_sciences-röntgen-gave-away-prize-money",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Millikan' — a physicist's surname appearing in a list of actions Röntgen could have taken with his prize money. This is a stray element name that clearly does not belong (e.g. 'Kept it as savings', 'Donated to the poor', ..., 'Millikan'). Complete data corruption.",
+      "suggested_fix": "Remove 'Millikan' entirely. If a replacement is needed, add something like 'Spent it on his family' or 'Left it to charity upon death'."
+    },
+    {
+      "id": "natural_sciences-scandium-aluminium-alloys",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Gallium' — an element name appearing in a list of industrial applications ('Nuclear reactor fuel', 'LCD screens', ..., 'Gallium'). This is a stray element name that does not fit the answer format at all.",
+      "suggested_fix": "Remove 'Gallium' entirely. Replace if needed with a plausible application like 'Aerospace coatings' or 'Battery electrodes'."
+    },
+    {
+      "id": "natural_sciences-tantalum-named-mythology",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Hafnium' — an element name appearing in a list of mythological figures ('Prometheus', 'Sisyphus', ..., 'Hafnium'). Complete data corruption.",
+      "suggested_fix": "Remove 'Hafnium'. Replace if needed with another mythological figure such as 'Heracles' or 'Agamemnon'."
+    },
+    {
+      "id": "natural_sciences-tantalum-capacitors-phones",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Niobium' — an element name appearing in a list of electronic components ('Transistors', 'Resistors', ..., 'Niobium'). Does not fit the answer format.",
+      "suggested_fix": "Remove 'Niobium'. Replace if needed with 'Microprocessors' or 'LED displays'."
+    },
+    {
+      "id": "natural_sciences-tellurium-rarer-than-platinum",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Selenium' — an element name appearing in a list of relative abundance comparisons ('Much more common', 'Much rarer', ..., 'Selenium'). Does not fit the answer format at all.",
+      "suggested_fix": "Remove 'Selenium'. Replace if needed with 'About twice as common' or another plausible comparison phrase."
+    },
+    {
+      "id": "natural_sciences-europium-euro-banknotes",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Arsenic' — which is not a rare-earth element and appears jarringly out of place in a list of rare-earth elements ('Cerium', 'Lanthanum', 'Yttrium', ..., 'Arsenic'). Arsenic is a toxic metalloid, not a lanthanide, making it an obviously absurd option that gives away the pattern of legitimate distractors.",
+      "suggested_fix": "Remove 'Arsenic'. Replace with another lanthanide like 'Praseodymium' or 'Dysprosium'."
+    },
+    {
+      "id": "natural_sciences-lanthanum-named-hiding",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Neodymium' — an element name appearing in a list of word definitions ('To shine brightly', 'To react strongly', ..., 'Neodymium'). Complete data corruption.",
+      "suggested_fix": "Remove 'Neodymium'. Replace if needed with another plausible translation like 'To be invisible' or 'To resist change'."
+    },
+    {
+      "id": "natural_sciences-lanthanum-more-common-than-lead",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Neodymium' — an element name appearing in a list of comparative abundance phrases ('About the same', 'Ten times more rare', ..., 'Neodymium'). Does not fit the answer format.",
+      "suggested_fix": "Remove 'Neodymium'. Replace if needed with 'Ten times more abundant' or 'Roughly as rare'."
+    },
+    {
+      "id": "natural_sciences-rhenium-jet-engine",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Osmium' — an element name appearing in a list of industrial applications ('Nuclear reactor components', 'Solar panels', ..., 'Osmium'). Does not fit the answer format.",
+      "suggested_fix": "Remove 'Osmium'. Replace if needed with 'Catalytic converters' or 'Industrial drill bits'."
+    },
+    {
+      "id": "natural_sciences-stellar-evolution-sun",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct answer is 'Mercury and Venus' but the explanation says 'engulfing Mercury and Venus and possibly Earth's orbit.' The explanation contradicts the answer by introducing uncertainty about Earth that isn't reflected in the answer. A player who reads the explanation will be confused about whether Earth is also correct.",
+      "suggested_fix": "Either update the explanation to say 'engulfing Mercury and Venus (Earth's fate is uncertain — its orbit may be reached but the planet itself may survive)' to match the answer, or change the correct answer to 'Mercury and Venus (possibly Earth)' to reflect the scientific nuance."
+    },
+    {
+      "id": "natural_sciences-cupressus-global-cultivation",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks which continent is NOT in Cupressus's native range, with 'Australia' as the correct answer. However, 'South America', 'Antarctica', and 'Arctic' (listed as distractors) are also not in Cupressus's native range. Multiple answers are technically correct, making the question ambiguous. 'Antarctica' in particular is a trivially obvious non-plant-habitat that telegraphs the puzzle.",
+      "suggested_fix": "Remove obviously non-plant-habitat options ('Antarctica', 'Arctic'). Rephrase to narrow down: 'Which of these continents does NOT have Cupressus as a native species?' with distractors being only continents where Cupressus IS native (Africa, Asia, North America, Europe). Alternatively, change to a positive framing: 'On which continent did Cupressus NOT naturally evolve?'"
+    },
+    {
+      "id": "space_astronomy-dwarf-planet-nine-largest",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The question states 'nine recognized dwarf planets' but the explanation says 'of these ten, two have been visited by spacecraft.' The question and explanation disagree on the total count of dwarf planets. The Wikipedia quote about 'ten' likely reflects a different counting convention (IAU recognizes 5 officially, informal lists go higher), creating an internal contradiction.",
+      "suggested_fix": "Align the explanation with the question's premise. Either update the question to say 'of the recognized dwarf planets' without specifying a number, or update the explanation to match the nine-count stated in the question."
+    },
+    {
+      "id": "science-galton-first-weather-map",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact about Galton inventing weather maps and anticyclones is categorized under category_l2: 'biology_organisms'. Meteorology / history of science is not biology. The fact about Galton's Darwin relationship (science-galton-darwin-cousin) and fingerprints (science-galton-fingerprints) have the same miscategorization.",
+      "suggested_fix": "Recategorize all three Galton facts (darwin-cousin, first-weather-map, fingerprints) to category_l2: 'history_science' or a suitable existing L2 category. If no better L2 exists, 'physics_mechanics' or a general sciences category is less wrong than 'biology_organisms'."
+    },
+    {
+      "id": "science-galton-darwin-cousin",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under biology_organisms but this is a history-of-science biographical fact about the relationship between two people, not a biology/organisms fact.",
+      "suggested_fix": "Recategorize to a history or general science L2 category."
+    },
+    {
+      "id": "science-galton-fingerprints",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under biology_organisms but forensic science / fingerprint classification is not a biology/organisms topic.",
+      "suggested_fix": "Recategorize to a history or applied science L2 category."
+    }
+  ]
+}

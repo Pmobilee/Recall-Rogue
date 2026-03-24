@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "lastUpdated": "2026-03-23",
+  "lastUpdated": "2026-03-24",
   "tables": {
     "cards": [
       {
@@ -3291,6 +3291,20 @@
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
+      },
+      {
+        "id": "dungeonSelection",
+        "name": "dungeonSelection",
+        "category": "screen",
+        "description": "Unified run configuration screen (Trivia Dungeon / Study Temple modes)",
+        "status": "working",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
       }
     ],
     "systems": [
@@ -3727,6 +3741,104 @@
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": "No UI in AR-205. Locked card display UI belongs to AR-209."
+      },
+      {
+        "id": "curatedDeckStore",
+        "name": "Curated Deck Store",
+        "category": "system",
+        "description": "Runtime store for loaded curated decks. Populated by initializeCuratedDecks() at app start (loads manifest → loads deck JSONs). Provides getDeck(id), getAllDecks().",
+        "status": "planned",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-245. src/data/curatedDeckStore.ts + data/decks/manifest.json"
+      },
+      {
+        "id": "inRunFactTracker",
+        "name": "In-Run Fact Tracker",
+        "category": "system",
+        "description": "Per-run fact performance tracker. Tracks correctCount, wrongCount, lastSeenEncounter, confusedWith[], streak per fact. Seeded from global FSRS at run start. Enforces 3-encounter cooldown.",
+        "status": "planned",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-246. src/services/inRunFactTracker.ts"
+      },
+      {
+        "id": "confusionMatrix",
+        "name": "Confusion Matrix",
+        "category": "system",
+        "description": "Cross-run confusion tracking. recordConfusion(correctFactId, chosenFactId) on every wrong answer. getConfusionsFor(factId) returns prioritized distractor candidates. Persisted to localStorage via confusionMatrixStore.",
+        "status": "planned",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-247. src/services/confusionMatrix.ts + src/services/confusionMatrixStore.ts"
+      },
+      {
+        "id": "curatedFactSelector",
+        "name": "Curated Fact Selector",
+        "category": "system",
+        "description": "Weighted fact selection at charge-commit time. Applies in-run FSRS weights (struggling 3x, known 0.4x), chain theme filtering, same-hand dedup, and cooldown exclusion. Entry point: selectFactForCharge().",
+        "status": "planned",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-246. src/services/curatedFactSelector.ts"
+      },
+      {
+        "id": "curatedDistractorSelector",
+        "name": "Curated Distractor Selector",
+        "category": "system",
+        "description": "Pool-based distractor selector. Priority: synonym exclusion → known confusions → in-run struggles → same pool similar difficulty → pool fill. Mastery-driven count: 2 at M0, 3 at M1-2, 4 at M3-5.",
+        "status": "planned",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-247. src/services/curatedDistractorSelector.ts"
+      },
+      {
+        "id": "questionTemplateSelector",
+        "name": "Question Template Selector",
+        "category": "system",
+        "description": "Template selection + rendering. selectTemplate(deck, fact, masteryLevel, recentTemplates) returns QuizData. Weights by difficulty match, variety, and mastery gate. Standard vocab templates: forward, reading, reverse, synonym_pick, definition_match.",
+        "status": "planned",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-248. src/services/questionTemplateSelector.ts + src/data/vocabularyTemplates.ts"
+      },
+      {
+        "id": "nonCombatQuizSelector",
+        "name": "Non-Combat Quiz Selector",
+        "category": "system",
+        "description": "Study Temple quiz selector for shop haggling, rest-site study, boss quiz phases, and mystery event quizzes. Uses full deck pool (no chain theme filter), still FSRS-weighted and cooldown-filtered. Updates both in-run and global FSRS.",
+        "status": "planned",
+        "lastChangedDate": "2026-03-24",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-249. src/services/nonCombatQuizSelector.ts"
       }
     ],
     "mysteryEvents": [
@@ -6591,6 +6703,36 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "deckRegistry",
+        "name": "Deck Registry",
+        "category": "system",
+        "description": "Curated deck metadata index mapping deck IDs to manifest entries (name, domain, file paths). AR-244.",
+        "status": "active",
+        "lastChangedDate": "2026-03-24",
+        "mechanicInspectionDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "deckProgressService",
+        "name": "Deck Progress Service",
+        "category": "system",
+        "description": "FSRS-based progress aggregation per deck; tracks mastery % across all runs. AR-244.",
+        "status": "active",
+        "lastChangedDate": "2026-03-24",
+        "mechanicInspectionDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "perLanguageSettings",
+        "name": "Per-Language Settings",
+        "category": "system",
+        "description": "Persistent per-language display option service (furigana, romaji, etc.). AR-244.",
+        "status": "active",
+        "lastChangedDate": "2026-03-24",
+        "mechanicInspectionDate": "not_checked",
         "notes": ""
       }
     ],

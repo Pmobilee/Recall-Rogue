@@ -1,0 +1,118 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 175,
+  "issues": [
+    {
+      "id": "geography-england-industrial-revolution-first",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks 'Which country' but the correct answer is 'England', which is a constituent country of the UK, not a sovereign country. The question and answer are inconsistent — the Industrial Revolution began in England specifically, not in the UK as a whole, but calling England a 'country' in isolation is technically accurate yet potentially confusing. More importantly, the distractor 'Scotland' is problematic: Scotland is also part of Great Britain, so answering 'England' vs 'Scotland' muddies the 'country' framing.",
+      "suggested_fix": "Change question to 'Which part of the British Isles became the world's first industrialised nation in the 18th century?' or change correct_answer to 'Great Britain' / 'United Kingdom' to match the 'country' framing."
+    },
+    {
+      "id": "geography-ireland-neutrality-not-nato",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Finland and Sweden are listed as distractors implying they are NATO members, which is correct as of 2023–2024 (Finland joined April 2023, Sweden March 2024). However, Austria, Switzerland, Malta, and Cyprus are all genuinely non-NATO, making them poor distractors — a player could reasonably second-guess Ireland by selecting one of those instead. The question asks for 'which Western European nation stays out of NATO due to military neutrality,' but Austria and Switzerland also have long-standing formal neutrality policies and also stay out of NATO, making the correct answer ambiguous.",
+      "suggested_fix": "The question needs rewording to make Ireland uniquely correct. Suggested: 'Which island nation in Western Europe is not a NATO member due to a policy of military neutrality?' — or replace Austria/Switzerland from the distractor pool since they are also correct answers to the question as written. This is a real ambiguity issue."
+    },
+    {
+      "id": "geography-sicily-mount-etna-highest",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that Mount Etna is 'Europe's tallest active volcano' is accurate, but the question asks which volcano is 'Europe's tallest' without the word 'active.' Mount Elbrus in Russia (5,642 m) is taller than Etna (~3,350 m) and is technically a dormant (not extinct) stratovolcano. The explanation only mentions 'tallest active volcano in Europe' (correct) but the question omits 'active,' making it potentially misleading.",
+      "suggested_fix": "Add 'active' to the question: 'Which active volcano is both Sicily's highest point and Europe's tallest active volcano?'"
+    },
+    {
+      "id": "geography-scandinavia-first-europeans-north-america",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Irish monks' is actually a competing historically plausible answer — Saint Brendan's voyage (c. 512–530 CE) is a serious historical claim that some scholars believe reached North America before the Vikings. While mainstream consensus favors the Norse, including 'Irish monks' as a distractor without acknowledging the debate makes the question appear to present settled fact where there is genuine academic discussion. Additionally, 'Basque fishermen' reaching Newfoundland before Columbus is another well-documented historical claim.",
+      "suggested_fix": "Replace 'Irish monks' and 'Basque fishermen' with less plausible distractors (e.g., 'Ottoman merchants,' 'Byzantine navigators'). Alternatively, tighten the question to 'Which group left confirmed archaeological evidence of reaching North America before Columbus?' to make the Norse answer unambiguous."
+    },
+    {
+      "id": "geo-singapore-highest-gdp-per-capita",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks 'Which Asian city-state has the world's highest PPP-adjusted GDP per capita?' but the distractor list includes 'Macau' — which by many measures (including IMF PPP data) has a higher GDP per capita than Singapore. Macau's GDP per capita has regularly exceeded Singapore's in PPP terms, particularly during casino boom years. Including Macau as a 'wrong' distractor is factually questionable.",
+      "suggested_fix": "Remove 'Macau' from the distractor list and replace with a less competitive option (e.g., 'South Korea' or 'Taiwan'). Alternatively, add a year qualifier to the question to anchor it to a specific dataset."
+    },
+    {
+      "id": "geo-manila-trans-pacific",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks 'What made colonial Manila a global trade powerhouse?' — a 'why/what' question expecting a reason or explanation. The correct answer 'Trans-Pacific trade hub' is a noun phrase label rather than a reason. It reads awkwardly as a standalone answer to 'what made it...'. Compare to: 'It became the western hub of trans-Pacific trade.'",
+      "suggested_fix": "Rephrase the correct answer to 'It was the hub of trans-Pacific trade' or rephrase the question to 'What role did colonial Manila play in global trade?' so the noun-phrase answer fits naturally."
+    },
+    {
+      "id": "geo-marco-polo-imprisoned-dictated-travels",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation states 'Venice was at war with Genoa when Marco Polo returned home in 1299' and 'He was released in 1299.' The Battle of Curzola (where Polo was captured) was in 1298, and most sources place his release around 1299. However, the explanation says he 'returned home in 1299' AND 'was released in 1299' — this implies he was captured immediately on return, which is slightly misleading. He returned from Asia around 1295, joined the war around 1296–1298, was captured at Curzola in 1298, and released in 1299. The 1299 return date in the explanation is inaccurate.",
+      "suggested_fix": "Correct the explanation: 'Marco Polo returned to Venice around 1295. He joined the Venetian war effort against Genoa, was captured at the Battle of Curzola in 1298, and while imprisoned dictated his travels to cellmate Rustichello da Pisa. He was released in 1299.'"
+    },
+    {
+      "id": "geo-tuvalu-tv-domain",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor list contains 'Vanuatu' twice (appears at positions 4 and 8 in the array). Duplicate distractors are a data quality error.",
+      "suggested_fix": "Replace the second 'Vanuatu' with a unique distractor such as 'Cook Islands' or 'Niue.'"
+    },
+    {
+      "id": "geo-pacific-ocean-three-deepest-points",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Indian Ocean' appears twice in the distractor list (positions 3 and 8). Duplicate distractors are a data quality error.",
+      "suggested_fix": "Replace one 'Indian Ocean' with a unique option such as 'Arctic Ocean' or 'Antarctic Ocean.'"
+    },
+    {
+      "id": "geo-shanghai-pudong-redevelopment",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Bund' appears twice in the distractor list (positions 4 and 8). The Bund is actually a waterfront area, not a district in the same administrative sense as Pudong — but its appearance twice is a data error regardless.",
+      "suggested_fix": "Remove the duplicate 'Bund' entry and replace the second one with a distinct Shanghai district such as 'Changning' or 'Putuo.'"
+    },
+    {
+      "id": "geography-argentina-tango-origin",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation acknowledges tango 'originated in the working-class port neighborhoods of Buenos Aires AND Montevideo' — yet the question asks 'In which city did the tango dance originate?' and the correct answer is 'Buenos Aires' only. If the explanation itself says Montevideo is a co-origin city, the question has an ambiguous correct answer. Uruguay (Montevideo) contests Argentina's sole claim to tango's origins, and UNESCO recognized it as shared heritage of both countries.",
+      "suggested_fix": "Either change the question to 'In which Argentine city is tango most associated with?' (making Buenos Aires unambiguously correct), or change the correct answer to 'Buenos Aires and Montevideo' and rework as a multiple-select or narrative fact. At minimum, remove Montevideo from the explanation's origin claim or acknowledge the shared origin properly."
+    },
+    {
+      "id": "geography-palestine-capital-ramallah",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is categorized under category_l2 'europe' but Palestine is in Asia (Middle East). This is a miscategorization — the fact should be under 'asia_oceania' to match its sister fact 'geography-palestine-oslo-accords-1993' and 'geo-palestine-crossroads-of-empires.'",
+      "suggested_fix": "Change category_l2 from 'europe' to 'asia_oceania.'"
+    },
+    {
+      "id": "geography-latvia-song-dance-festival",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks 'How often does Latvia's Song and Dance Festival take place?' and the answer is 'Every 5 years.' However, the Song Festival (Dziesmu svētki) and Dance Festival (Deju svētki) are actually separate events held every 5 years each, but offset so that one occurs every few years. More critically, multiple sources (including the official festival website) indicate the combined festival is held every 4–5 years, not on a fixed 5-year cycle. The explanation does not address the frequency claim at all, only describing its history.",
+      "suggested_fix": "Verify the current official cycle. If truly every 5 years, update the explanation to confirm this. If the cycle is irregular or 4 years, correct the answer. At minimum, the explanation should directly state the frequency to support the answer."
+    },
+    {
+      "id": "geography-dc-not-a-state",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct answer 'None (non-voting only)' is slightly self-contradictory. 'None' followed by '(non-voting only)' suggests there IS representation — just non-voting. The parenthetical undermines the main claim. The explanation correctly clarifies that D.C. has a non-voting delegate in the House, so the answer should be precise.",
+      "suggested_fix": "Change correct_answer to 'Non-voting delegate only — no voting representation' or 'A non-voting House delegate (no senators)' for clarity and internal consistency."
+    },
+    {
+      "id": "geography-brazil-amazon-rainforest",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that the Amazon rainforest produces 'about 20% of the world's oxygen' is a widely repeated but scientifically contested figure. The Amazon produces roughly 20% of global oxygen through photosynthesis but also consumes a nearly equal amount through respiration and decomposition — making its net oxygen contribution close to zero or even slightly negative. The '20% of oxygen' figure is considered a popular myth by many ecologists. The Amazon's actual climate importance is as a massive carbon sink, not an oxygen source.",
+      "suggested_fix": "Change the question and answer to focus on the Amazon's role as a carbon sink or its share of the world's tropical forest cover (about 40%), which are factually accurate and educationally sound. Example: 'What fraction of the world's tropical rainforest does the Amazon basin contain?' → 'About 40%'"
+    },
+    {
+      "id": "geography-colombia-two-oceans",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question claims Colombia is 'unique among South American countries' for bordering two oceans. However, the Caribbean Sea is technically not an ocean — it is a marginal sea of the Atlantic Ocean. If the Caribbean counts as 'the Atlantic,' then Ecuador, Peru, and Chile also border the Pacific, and Colombia's uniqueness claim breaks down unless specifically framed as Caribbean + Pacific. The explanation says 'Pacific Ocean (to the west) and the Caribbean Sea (to the north)' — calling the Caribbean an ocean when the question says 'two oceans' is imprecise.",
+      "suggested_fix": "Revise to: 'What makes Colombia unique among South American nations is that it has coastlines on both the Pacific Ocean and the Caribbean Sea.' Keep the question but clarify in the explanation that 'Caribbean Sea' is sometimes informally called an ocean in this context, or rephrase the question to 'Which South American country has coastlines on both the Pacific Ocean and the Caribbean Sea?'"
+    }
+  ]
+}

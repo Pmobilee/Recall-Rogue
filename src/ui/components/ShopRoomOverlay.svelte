@@ -12,6 +12,10 @@
   import { shuffled } from '../../services/randomUtils'
   import { recordHaggleAttempt } from '../../services/gameFlowController'
   import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
+  import { get } from 'svelte/store'
+  import { activeRunState } from '../../services/runStateStore'
+  import { selectNonCombatStudyQuestion } from '../../services/nonCombatQuizSelector'
+  import { getConfusionMatrix } from '../../services/confusionMatrixStore'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
@@ -174,8 +178,36 @@
     haggledPrice = Math.floor(pendingPurchase.price * (1 - SHOP_HAGGLE_DISCOUNT))
     penaltyPrice = Math.floor(pendingPurchase.price * (1 + SHOP_HAGGLE_DISCOUNT))
 
-    // Fetch a random quiz question
+    // Fetch a quiz question — study mode uses curated deck selector, trivia uses random factsDB fact
     try {
+      const run = get(activeRunState)
+      if (run?.deckMode?.type === 'study') {
+        // Study mode: use curated deck question
+        const q = selectNonCombatStudyQuestion(
+          'shop',
+          run.deckMode.deckId,
+          run.deckMode.subDeckId,
+          getConfusionMatrix(),
+          run.inRunFactTracker ?? null,
+          1,
+          run.runSeed,
+        )
+        if (q) {
+          // NonCombatQuizQuestion maps to the Fact-shaped state used by the haggle display
+          quizQuestion = {
+            id: q.factId,
+            correctAnswer: q.correctAnswer,
+            quizQuestion: q.question,
+            distractors: q.choices.filter(c => c !== q.correctAnswer),
+          } as unknown as Fact
+          quizAnswers = q.choices
+          hagglingState = 'quiz'
+          playCardAudio('quiz-appear')
+          return
+        }
+        // Fall through to trivia path if study question unavailable
+      }
+
       const allFacts = await factsDB.getAll()
       if (allFacts.length === 0) {
         // No facts available — skip quiz, just apply discount

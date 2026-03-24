@@ -64,17 +64,17 @@
 
 <style>
   .options-panel {
-    padding: 16px;
-    border-radius: 10px;
+    padding: calc(16px * var(--layout-scale, 1));
+    border-radius: calc(10px * var(--layout-scale, 1));
     background: var(--color-surface, #0f3460);
     border: 1px solid var(--color-border, #1a4d7a);
   }
 
   .options-header {
     font-family: 'Press Start 2P', monospace;
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: #e94560;
-    margin: 0 0 16px 0;
+    margin: 0 0 calc(16px * var(--layout-scale, 1)) 0;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -82,17 +82,17 @@
   .options-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   .option-item {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
-    padding: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1));
     background: var(--color-surface-dim, #1a4d7a);
-    border-radius: 8px;
+    border-radius: calc(8px * var(--layout-scale, 1));
     border: 1px solid var(--color-border, #2a5e8a);
   }
 
@@ -100,19 +100,19 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .option-label {
     color: var(--color-text-primary, #e0e0e0);
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: bold;
     cursor: pointer;
   }
 
   .option-description {
     color: var(--color-text-muted, #888);
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     margin: 0;
     line-height: 1.4;
   }
@@ -120,16 +120,16 @@
   /* Toggle switch styling */
   .toggle {
     position: relative;
-    width: 44px;
-    height: 24px;
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
     background: var(--color-surface-dim, #0a2340);
-    border-radius: 12px;
+    border-radius: calc(12px * var(--layout-scale, 1));
     cursor: pointer;
     transition: background 0.2s ease;
     border: none;
     padding: 0;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: calc(2px * var(--layout-scale, 1));
   }
 
   .toggle:hover {
@@ -147,10 +147,10 @@
   .toggle::after {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 20px;
-    height: 20px;
+    top: calc(2px * var(--layout-scale, 1));
+    left: calc(2px * var(--layout-scale, 1));
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
     background: white;
     border-radius: 50%;
     transition: transform 0.2s ease;
@@ -158,7 +158,7 @@
   }
 
   .toggle.active::after {
-    transform: translateX(20px);
+    transform: translateX(calc(20px * var(--layout-scale, 1)));
   }
 
   /* Focus style for accessibility */

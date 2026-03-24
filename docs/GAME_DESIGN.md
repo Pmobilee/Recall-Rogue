@@ -269,6 +269,21 @@ This creates a strategic layer: "I have two Civil War Era cards and one Founding
 
 The contrast between Quick Play speed and Charged Play drama makes Charging feel special and deliberate.
 
+### Per-Language Display Settings
+
+Language vocabulary decks support per-language display settings that customize how quiz content is rendered. Settings are scoped to a language (not per-deck) and apply to ALL sub-decks of that language.
+
+**Current settings (Japanese):**
+- **Furigana** (default: on) — show hiragana readings above kanji
+- **Romaji** (default: off) — show romanized readings
+- **Kana Only** (default: off) — replace all kanji with hiragana (beginner mode)
+
+**Access points:**
+- **Study Temple** — cogwheel (⚙) on each language group header in the vocabulary tree view
+- **During runs** — cogwheel (⚙) on the quiz overlay when a language fact appears. Changes take effect immediately for the current and all subsequent quizzes in the run.
+
+Settings are persisted in localStorage and shared across all contexts. Future languages may add their own display options (e.g., pinyin for Chinese, romanization for Korean).
+
 ### Chain Display (AR-116)
 
 The combo system has been **fully removed** (see §15 Wrong Answer Design for removal note). Only the **Knowledge Chain** display remains.
@@ -481,6 +496,23 @@ Synonym detection works on the **English translation layer**, making it language
 ### Chain Theme Pool Exhaustion
 
 If a chain theme's available fact pool drops below 3 (due to cooldown), cooldown resets for that theme. This prevents stalling during long boss encounters. If a theme has fewer than 3 total facts (should not happen with minimum 8 per theme), all theme facts become available regardless of recent-use state.
+
+### Dungeon Selection Screen (AR-244)
+
+When the player clicks "Start Run" from the Hub, they enter the Dungeon Selection Screen — a unified run configuration interface with two distinct modes.
+
+**Trivia Dungeon** — Casual exploration mode. Left sidebar shows domain checkboxes (multi-select). Content area displays subdomain checklists for each selected domain. Facts come from the general trivia database. Players can select entire domains or drill into specific subdomains (e.g., History > World War II only).
+
+**Study Temple** — Focused learning mode. Left sidebar shows domains with curated decks (single-select). Content area displays deck tiles with FSRS progress bars showing mastery in each deck. Vocabulary domain is special: it shows a language tree (e.g., Japanese expanded into JLPT N5 → N1 levels + Kana, each expandable to sub-decks). Per-language settings are accessible via a ⚙ Settings button on language headers.
+
+**Custom Playlists** — Players can add any deck or subdomain to named custom playlists via "Add to Custom ➕" buttons. Custom playlists persist as a toolbar at the bottom of the selection screen.
+
+The screen remembers the last selected mode and configuration between sessions.
+
+**Run Modes:**
+- `trivia` — Facts from general trivia database, filtered by selected domains/subdomains
+- `study` — Facts from a curated deck, adaptive difficulty via confusion matrix + in-run FSRS
+- `all:languageCode` — Combines all curated decks for a language (e.g., all Japanese decks) into a single fact pool for that run
 
 ---
 
@@ -2733,6 +2765,103 @@ interface PlayerFactState {
   averageResponseTimeMs: number;
 }
 ```
+
+---
+
+## 23.4. Two Game Modes: Trivia Dungeon vs Study Temple
+
+The game ships with two distinct modes selectable at run start. They share the same combat engine but use completely separate fact pools with zero overlap.
+
+| Aspect | Trivia Dungeon | Study Temple |
+|--------|---------------|--------------|
+| Fact source | Broad general-knowledge DB (`public/facts.db`) | Curated deck files (`data/decks/*.json`) |
+| Pool size | 200+ facts, one or mixed domains | 30–2500+ facts per deck (vocab decks are large) |
+| Repetition | Each fact at most once per run | FSRS-weighted repetition across encounters |
+| Distractors | Pool-based, NOT confusion-adaptive | Pool-based, confusion-matrix weighted |
+| In-run FSRS | Minimal (seen/unseen tracking only) | Full adaptive weighting |
+| Learning intent | Broad exposure | Deep mastery of focused topic |
+| Vocabulary content | None — all vocabulary lives exclusively here → | ALL vocab decks (Japanese, Korean, Spanish…) |
+| FSRS update | Yes — updates global FSRS | Yes — updates global FSRS |
+
+**Trivia Dungeon** is the casual entry point. **Study Temple** is the focused study mode for players who want to actually learn something. All curated decks (including all 8 language packs) are Study Temple only.
+
+---
+
+## 23.5. Dynamic Fact Assignment (Study Temple)
+
+Facts are assigned to cards at **charge-commit time**, not draw time. Cards in hand carry mechanic + chain theme + mastery only — no quiz content is visible until the player commits to a Charge.
+
+**Fact selection algorithm (`selectFactForCharge()`):**
+1. Determine the card's chain theme sub-pool (knowledge decks) or full deck pool (vocabulary decks)
+2. Filter by cooldown: facts seen in the last 3 encounters are excluded
+3. Apply in-run FSRS weighting:
+   - Struggling facts (wrong this run) → 3× weight
+   - Known facts (correct multiple times this run) → 0.4× weight
+   - At mastery 3+: struggling facts boosted further
+4. Return a single fact via weighted random draw
+
+**InRunFactState** (per-run, seeded from global FSRS at run start):
+
+| Field | Purpose |
+|-------|---------|
+| `correctCount` | Correct answers this run |
+| `wrongCount` | Wrong answers this run (struggling facts: start at 1 if global stability < 2d) |
+| `lastSeenEncounter` | For cooldown enforcement (3-encounter window) |
+| `confusedWith[]` | Facts chosen instead of this one (builds confusion pairs) |
+| `averageResponseTimeMs` | Speed tracking |
+| `streak` | Current consecutive-correct streak |
+
+Facts with global FSRS stability > 30 days start with `correctCount: 1` (known). Facts with stability < 2 days start with `wrongCount: 1` (needs practice). Everything else starts fresh.
+
+**Same-hand dedup:** No two cards in the same 5-card hand share the same fact (exact ID, base key, and root ID).
+
+---
+
+## 23.51. Pool-Based Adaptive Distractors (Study Temple)
+
+Distractors are selected at charge time from the deck's `answerTypePools`. Distractor count is mastery-driven: 2 at M0, 3 at M1–2, 4 at M3–5.
+
+**Selection priority:**
+1. **Synonym group exclusion (mandatory first):** Any fact in the same `synonymGroupId` is excluded entirely.
+2. **Known confusions:** Facts the player has previously confused with the correct answer (from the cross-run confusion matrix). Highest educational value.
+3. **In-run struggles:** Facts the player answered wrong this run (`wrongCount > 0`).
+4. **Same pool, similar difficulty:** Other facts in the same `answerTypePoolId` at ±1 difficulty.
+5. **Same pool, any difficulty:** Remaining pool fill.
+
+**Confusion matrix (persistent across runs):** Tracks "when asked about X, the player chose Y." These pairs are stored per-player and prioritized as distractors whenever X is the correct answer. Makes each player's questions uniquely challenging relative to their personal knowledge gaps. Updated on every wrong answer in both combat and non-combat quiz contexts.
+
+---
+
+## 23.52. Deck-Specific Question Templates (Study Temple)
+
+Each deck defines its own `questionTemplates` array. Templates are gated by card mastery level and selected via a weighted algorithm that considers difficulty match, variety (avoids repeating the same template), and mastery.
+
+**Vocabulary deck standard templates** (from `vocabularyTemplates.ts`):
+
+| Template ID | Example | Available From |
+|-------------|---------|---------------|
+| `forward` | "What does '食べる' mean?" → "to eat" | Mastery 0+ |
+| `reading` | "What is the reading of '食べる'?" → "たべる" | Mastery 1+ |
+| `reverse` | "How do you say 'to eat' in Japanese?" → "食べる" | Mastery 2+ |
+| `synonym_pick` | "Which word is closest in meaning to '食べる'?" | Mastery 3+ |
+| `definition_match` | Full definition → match the word | Mastery 3+ |
+
+Templates are selected via `questionTemplateSelector.ts` which returns a rendered `QuizData` object (question text + correct answer + distractor slots).
+
+---
+
+## 23.53. Non-Combat Quiz Contexts (Study Temple)
+
+Shop haggling, rest-site study, boss quiz phases, and mystery event quizzes all trigger quizzes outside combat. In Study Temple, these use the full deck pool (not filtered by chain theme):
+
+- Fact selection ignores chain theme and samples from the full deck pool, still cooldown-filtered and FSRS-weighted.
+- Distractors are still pool-based and confusion-matrix weighted.
+- Both in-run FSRS (`InRunFactState`) and global FSRS are updated after the result.
+- Confusion pairs recorded to the run's `confusionEntries[]`.
+
+Implemented in `nonCombatQuizSelector.ts`. Trivia Dungeon non-combat quizzes use the existing `factsDB` pool, unaffected.
+
+For full spec, see `docs/RESEARCH/DECKBUILDER.md`.
 
 ---
 

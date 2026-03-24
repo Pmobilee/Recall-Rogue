@@ -1,0 +1,413 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`, `music_performance`, `literature`, `performing_arts`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (10 entities = 30 facts). Output as a single JSON array.
+
+### RICE
+**Domain:** food_cuisine / food_history
+
+**Wikipedia:** Rice is a cereal grain and in its domesticated form is the staple food of over half of the world's population, particularly in Asia and Africa. Rice is the seed of the grass species Oryza sativa (Asian rice)—or, much less commonly, Oryza glaberrima (African rice). Asian rice was domesticated in China some 13,500 to 8,200 years ago; African rice was domesticated in Africa about 3,000 years ago. Rice has become commonplace in many cultures worldwide; in 2023, 800 million tons were produced, placing it third after sugarcane and maize. Only some 8% of rice is traded internationally. China, India, and Indonesia are the largest consumers of rice. A substantial amount of the rice produced in developing nations is lost after harvest through factors such as poor transport and storage. Rice yields can be reduced by pests including insects, rodents, and birds, as well as by weeds, and by diseases such as rice blast. Traditional rice polycultures such as rice-duck farming, and modern integrated pest management seek to control damage from pests in a sustainable way.
+Dry rice grain is milled to remove the outer layers; depending on how much is removed, products range from brown rice to rice with germ and white rice. Some is parboiled to make it easy to cook. Rice contains no gluten; it provides protein but not all the essential amino acids needed for good health. Rice of different types is eaten around the world. The composition of starch components within the grain, amylose and amylopectin, gives it different texture properties. Long-grain rice, from the Indica cultivar, tends to stay intact on cooking, and is dry and fluffy. The aromatic rice varieties, such as basmati and jasmine, are widely used in Asian cooking, and distinguished by their bold and nutty flavor profile. Medium-grain rice, from either the Japonica or Indica cultivar, or a hybrid of both, is moist and tender and tends to stick together. Its varieties include Calrose, which founded the Californian rice industry, Carnaroli, attributed as the king of Italian rice due to its excellent cooking properties, and black rice, which looks dark purple due to high levels of anthocyanins, and is also known as forbidden rice as it was reserved for the consumption of the royal family in ancient China. Short-grain rice, primarily from the Japonica cultivar, has an oval appearance and sticky texture. It is featured heavily in Japanese cooking such as sushi (with rice such as Koshihikari, Hatsushimo, and Sasanishiki, unique to different regions of climate and geography in Japan), as it keeps its shape when cooked. It is also used for sweet dishes such as mochi (with glutinous rice), and in European cuisine such as risotto (with arborio rice) and paella (with bomba rice, which is actually an Indica variety). Cooked white rice contains 29% carbohydrate and 2% protein, with some manganese. Golden rice is a variety produced by genetic engineering to contain vitamin A.
+Production of rice is estimated to have caused
+
+### NUTMEG
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** Nutmeg is the seed, or the ground spice derived from the seed, of several tree species of the genus Myristica; fragrant nutmeg or true nutmeg (M. fragrans) is a dark-leaved evergreen tree cultivated for two spices derived from its fruit: nutmeg, from its seed, and mace, from the seed covering. It is also a commercial source of nutmeg essential oil and nutmeg butter. The Banda Islands, in Maluku, Indonesia, are the main producer of nutmeg and mace, and the true nutmeg tree is native to the islands.
+Nutmeg and mace, commonly used as food spices, have been traditionally employed for their psychoactive and aphrodisiac effects, though clinical evidence is lacking. High doses can cause serious toxic effects including acute psychosis, with risks heightened during pregnancy and with psychiatric conditions.
+Conifers of the genus Torreya, commonly known as the nutmeg yews, have edible seeds of similar appearance, but are not closely related to M. fragrans, and are not used as a spice.
+
+### WINE
+**Domain:** food_cuisine / fermentation_beverages
+
+**Wikipedia:** Wine is an alcoholic drink made from fermented grape juice. It is produced and consumed in many regions around the world, in a wide variety of styles which are influenced by different varieties of grapes, growing environments, viticulture methods, and production techniques.
+Wine has been produced for thousands of years, the earliest evidence dating from c. 6000 BCE in present-day Georgia. Its popularity spread around the Mediterranean during Classical antiquity, and was sustained in Western Europe by winemaking monks and a secular trade for general drinking. New World wine was established by settler colonies from the 16th century onwards, and the wine trade increased dramatically up to the latter half of the 19th century, when European vineyards were largely destroyed by the invasive pest phylloxera. After the Second World War, the wine market improved dramatically as winemakers focused on quality and marketing to cater for a more discerning audience, and wine remains a popular drink in much of the world.
+Wine has played an important role in religion since antiquity, and has featured prominently in the arts for centuries. It is drunk on its own and paired with food, often in social settings such as wine bars and restaurants. It is often tasted and assessed, with drinkers using a wide range of descriptors to communicate a wine's characteristics. Wine is also collected and stored, as an investment or to improve with age. Its alcohol content makes wine generally unhealthy to consume, although it may have cardioprotective benefits.
+
+### RAMEN
+**Domain:** food_cuisine / asian_cuisine
+
+**Wikipedia:** Ramen () (拉麺, ラーメン or らあめん, rāmen; [ɾaꜜːmeɴ] ) is a Japanese noodle dish. It is a part of Japanese Chinese cuisine. It includes Chinese-style alkaline wheat noodles (中華麺, chūkamen) served in several flavors of hot broth. Common flavors are soy sauce and miso, with typical toppings including sliced pork (chāshū), nori (dried seaweed), lacto-fermented bamboo shoots (menma), narutomaki, and scallions. Nearly every region in Japan has its own variation of ramen, such as the tonkotsu (pork bone broth) ramen of Kyushu and the miso ramen of Hokkaido.
+The origins of ramen can be traced back to Yokohama Chinatown in the late 19th century. While the word "ramen" is a Japanese borrowing of the Chinese word lāmiàn (拉麵), meaning "pulled noodles", the ramen does not actually derive from any lamian dishes. Lamian is a part of northern Chinese cuisine, whereas the ramen evolved from southern Chinese noodle dishes from regions such as Guangdong, reflecting the demographics of Chinese immigrants in Yokohama. Ramen was largely confined to the Chinese community in Japan and was never popular nationwide until after World War II (specifically the Second Sino-Japanese War), following increased wheat consumption due to rice shortages and the return of millions of Japanese colonizers from China. In 1958, instant noodles were invented by Momofuku Ando, further popularizing the dish.
+Ramen was originally looked down upon by the Japanese due to racial discrimination against the Chinese and its status as an inexpensive food associated with the working class. Today, ramen is considered a national dish of Japan, with many regional varieties and a wide range of toppings. Examples include Sapporo's rich miso ramen, Hakodate's salt-flavored ramen, Kitakata's thick, flat noodles in pork-and-niboshi broth, Tokyo-style ramen with soy-flavored chicken broth, Yokohama's Iekei ramen with soy-flavored pork broth, Wakayama's soy sauce and pork bone broth, and Hakata's milky tonkotsu (pork bone) broth. Ramen is offered in various establishments and locations, with the best quality usually found in specialist ramen shops called rāmen'ya (ラーメン屋).
+Ramen's popularity has spread outside of Japan, becoming a cultural icon representing the country worldwide. In Korea, ramen is known both by its original name "ramen" (라멘) as well as ramyeon (라면), a local variation on the dish. In China, ramen is called rìshì lāmiàn (日式拉面/日式拉麵 "Japanese-style lamian"). Ramen has also made its way into Western restaurant chains. Instant ramen was exported from Japan in 1971 and has since gained international recognition. The global popularity of ramen has sometimes led to the term being misused in the Anglosphere as a catch-all for any noodle soup dish.
+
+### AVOCADO
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** The avocado, alligator pear or avocado pear (Persea americana) is an evergreen tree in the laurel family (Lauraceae). It is native to the Americas, with archaeological evidence of early human avocado use dating back thousands of years across various regions of Central and South America. It was prized for its large and unusually oily fruit. The native range of avocado (Persea americana) extends from Mexico to Peru, encompassing much of Central America and parts of northern and western South America.
+Its fruit, sometimes also referred to as an alligator pear or avocado pear, is botanically a large berry containing a single large seed. Sequencing of its genome showed that the evolution of avocados was shaped by polyploidy events and that commercial varieties have a hybrid origin. Avocado trees are partly self-pollinating, and are often propagated through grafting to maintain consistent fruit output. Avocados are presently cultivated in the tropical and Mediterranean climates of many countries. As of 2023, Mexico is the world's leading producer of avocados, supplying 29% of the global harvest of 10.5 million tonnes.
+The fruit of domestic varieties have smooth, buttery, golden-green flesh when ripe. Depending on the cultivar, avocados have green, brown, purplish, or black skin, and may be pear-shaped, egg-shaped, or spherical. For commercial purposes, the fruits are picked while unripe and ripened after harvesting. The nutrient density and high fat content of avocado flesh are advantages for various cuisines, including vegetarian diets.
+In major production regions like Chile, Mexico and California, the water demands of avocado farms place strain on local resources. Avocado production is implicated in other externalities, including deforestation and human rights concerns associated with the partial control of their production in Mexico by organized crime. Global warming is expected to result in significant changes to the suitable growing zones for avocados, and place additional pressures on the locales in which they are produced due to heat waves and drought.
+
+### BARCODE
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** A barcode or bar code is a method of representing data in a visual, machine-readable symbolic form. Initially, barcodes represented data by varying the widths, spacings and sizes of parallel lines. These barcodes, commonly referred to as linear or one-dimensional (1D), can be scanned by optical scanners known as barcode readers.
+Later, two-dimensional (2D) variants were developed, using rectangles, dots, hexagons and other patterns, called matrix codes or 2D barcodes, although they do not use bars in the traditional sense. Both can be read using purpose-built 2D optical scanners, which exist in a few different forms. Matrix codes can also be read by a digital camera connected to a microcomputer running software that takes a photographic image of the barcode and analyzes the image to deconstruct and decode the code. A mobile device with a built-in camera, such as a smartphone, can function as this type of barcode reader using specialized application software and is suitable for both 1D and 2D codes.
+
+The barcode was invented by Norman Joseph Woodland and Bernard Silver and patented in the US in 1952. The invention was based on Morse code that was extended to thin and thick bars. However, it took over twenty years before this invention became commercially successful. UK magazine Modern Railways December 1962 pages 387–389 record how British Railways had already perfected a barcode-reading system capable of correctly reading rolling stock travelling at 100 mph (160 km/h) with no mistakes. An early use of one type of barcode in an industrial context was sponsored by the Association of American Railroads in the late 1960s. Developed by General Telephone and Electronics (GTE) and called KarTrak ACI (Automatic Car Identification), this scheme involved placing colored stripes in various combinations on steel plates which were affixed to the sides of railroad rolling stock. Two plates were used per car, one on each side, with the arrangement of the colored stripes encoding information such as ownership, type of equipment, and identification number. The plates were read by a trackside scanner located, for instance, at the entrance to a classification yard, while the car was moving past. The project was abandoned after about ten years because the system proved unreliable after long-term use.
+Barcodes became commercially successful after they were adopted to automate supermarket checkout systems, a task for which they have become almost universal. The Uniform Grocery Product Code Council had chosen, in 1973, the barcode design developed by George Laurer. Laurer's barcode, with vertical bars, printed better than the circular barcode developed by Woodland and Silver. Their use has spread to many other tasks that are generically referred to as automatic identification and data capture (AIDC). The first successful system using barcodes was in the UK supermarket group Sainsbury's in 1972 using shelf-mounted barcodes which were developed by Plessey. In June 1974, 
+
+### GREGORIAN CALENDAR
+**Domain:** general_knowledge / everyday_science
+
+**Wikipedia:** The Gregorian calendar is the calendar used in most parts of the world. It went into effect in October 1582 following the papal bull Inter gravissimas issued by Pope Gregory XIII, which introduced it as a modification of, and replacement for, the Julian calendar. The principal change was to space leap years slightly differently to make the average calendar year 365.2425 days long rather than the Julian calendar's 365.25 days, thus more closely approximating the 365.2422-day "tropical" or "solar" year that is determined by the Earth's revolution around the Sun.
+The rule for leap years is that every year divisible by four is a leap year, except for years that are divisible by 100, except in turn for years also divisible by 400. For example, 1800 and 1900 were not leap years, but 1600 and 2000 were leap years.
+There were two reasons to establish the Gregorian calendar. First, the Julian calendar was based on the estimate that the average solar year is exactly 365.25 days long, an overestimate of a little under one day per century, and thus has a leap year every four years without exception. The Gregorian reform shortened the average (calendar) year by 0.0075 days to stop the drift of the calendar with respect to the equinoxes. Second, in the years since the First Council of Nicaea in AD 325, the excess leap days introduced by the Julian algorithm had caused the calendar to drift such that the March equinox was occurring well before its nominal 21 March date. This date was important to the Christian churches, because it is fundamental to the calculation of the date of Easter. To reinstate the association, the reform advanced the date by 10 days: Thursday 4 October 1582 was followed by Friday 15 October 1582. In addition, the reform also altered the lunar cycle used by the Church to calculate the date for Easter, because astronomical new moons were occurring four days before the calculated dates.
+The reform was adopted initially by the Catholic countries of Europe and their overseas possessions. Over the next three centuries, the Protestant and Eastern Orthodox countries also gradually moved to what they called the "Improved calendar", with Greece being the last European country to adopt the calendar (for civil use only) in 1923. However, many Orthodox churches continue to use the Julian calendar for religious rites and the dating of major feasts. To unambiguously specify a date during the transition period (in contemporary documents or in history texts), both notations were given, tagged as "Old Style" or "New Style" as appropriate. During the 20th century, most non-Western countries also adopted the calendar, at least for civil purposes.
+
+### ORIGAMI
+**Domain:** general_knowledge / oddities
+
+**Wikipedia:** Origami (折り紙) is the Japanese art of paper folding. In modern usage, the word origami is often used as an inclusive term for all folding practices, regardless of their culture of origin. The goal is to transform a flat square sheet of paper into a finished sculpture through folding and sculpting techniques. Modern origami practitioners generally discourage the use of cuts, glue, or markings on the paper. Origami folders often use the Japanese word kirigami to refer to designs which use cuts.
+In the detailed Japanese classification, origami is divided into stylized ceremonial origami (儀礼折り紙, girei origami) and recreational origami (遊戯折り紙, yūgi origami), and only recreational origami is generally recognized as origami.  In Japan, ceremonial origami is generally called "origata" (ja:折形) to distinguish it from recreational origami. The term "origata" is one of the old terms for origami.
+The small number of basic origami folds can be combined in a variety of ways to make intricate designs. The best-known origami model is the Japanese paper crane. In general, these designs begin with a square sheet of paper whose sides may be of different colors, prints, or patterns. Traditional Japanese origami, which has been practiced since the Edo period (1603–1868), has often been less strict about these conventions, sometimes cutting the paper or using nonsquare shapes to start with. The principles of origami are also used in stents, packaging, and other engineering applications.
+
+### METRIC SYSTEM
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** The metric system is a system of measurement that standardises a set of base units and a nomenclature for describing relatively large and small quantities using decimal-based multiplicative unit prefixes. Though the rules governing the metric system have changed over time, the modern definition, the International System of Units (SI), defines the metric prefixes and seven base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), and candela (cd).
+An SI derived unit is a named combination of base units, such as the hertz (cycles per second), newton (kg⋅m/s2), and tesla (1 kg⋅s−2⋅A−1). In the case of degrees Celsius, it is a shifted scale derived from the kelvin. Certain units have been officially accepted for use with the SI. Some of these are decimalised, like the litre and electronvolt, and are considered "metric". Others, like the astronomical unit are not. Ancient non-metric but SI-accepted multiples of time, minute and hour, are base 60 (sexagesimal). Similarly, the angular measure degree and submultiples, 
+arcminute, and arcsecond, are also sexagesimal and SI-accepted.
+The SI system derives from the older metre-kilogram-second (MKS) system of units, though the definitions of the base units have evolved over time. Today, all base units are defined by physical constants – not by prototypes in the form of physical objects, as they were in the past.
+Other metric system variants include the centimetre–gram–second system of units, the metre–tonne–second system of units, and the gravitational metric system. Each has unaffiliated metric units. Some of these systems are still used in limited contexts.
+
+### ROSETTA STONE
+**Domain:** general_knowledge / landmarks_wonders
+
+**Wikipedia:** The Rosetta Stone is a stele of granodiorite inscribed with three versions of a decree issued in 196 BC during the Ptolemaic dynasty of Egypt, on behalf of King Ptolemy V Epiphanes. The top and middle texts are in Ancient Egyptian using hieroglyphic and Demotic scripts, respectively, while the bottom is in Ancient Greek. The decree has only minor differences across the three versions, making the Rosetta Stone key to deciphering the Egyptian scripts.
+The stone was carved during the Hellenistic period and is believed to have originally been displayed within a temple, possibly at Sais. It was probably moved in late antiquity or during the Mamluk period, and was eventually used as building material in the construction of Fort Julien near the town of Rashid (Rosetta) in the Nile Delta. It was found there in July 1799 by French army officer Pierre-François Bouchard during France's invasion of Egypt. It was the first Ancient Egyptian bilingual text recovered in modern times, and it aroused widespread public interest with its potential to decipher this previously untranslated hieroglyphic script. Lithographic copies and plaster casts soon began circulating among European museums and scholars. When the British defeated the French, they took the stone to London under the terms of the Capitulation of Alexandria in 1801. Since 1802, it has been on public display at the British Museum almost continuously and it is the most visited object there.
+Study of the decree was already underway when the first complete translation of the Greek text was published in 1803. Jean-François Champollion announced the transliteration of the Egyptian scripts in Paris in 1822; it took longer still before scholars were able to read Ancient Egyptian inscriptions and literature confidently. Major advances in the decoding were recognition that the stone offered three versions of the same text (1799); that the Demotic text used phonetic characters to spell foreign names (1802); that the hieroglyphic text did so as well, and had pervasive similarities to the Demotic (1814); and that phonetic characters were also used to spell native Egyptian words (1822–1824).
+Three other fragmentary copies of the same decree were discovered later, and several similar Egyptian bilingual or trilingual inscriptions are now known, including three slightly earlier Ptolemaic decrees: the Decree of Alexandria in 243 BC, the Decree of Canopus in 238 BC, and the Memphis decree of Ptolemy IV, c. 218 BC. Though the Rosetta Stone is now known not to be unique, it was the essential key to the modern understanding of ancient Egyptian literature and civilisation. The term Rosetta Stone is now used to refer to the essential clue to a new field of knowledge.
+
+
+

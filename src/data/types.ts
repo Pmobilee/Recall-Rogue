@@ -1,6 +1,6 @@
 import type { InterestConfig } from './interestConfig'
 import { CATEGORIES, type FactDomain, isFactDomain } from './categories'
-import type { StudyPreset, DeckMode } from './studyPreset'
+import type { StudyPreset, DeckMode, LastDungeonSelection } from './studyPreset'
 import type { CalibrationState } from '../services/difficultyCalibration'
 
 /** Visual upgrade tier for a hub floor. 0 = bare scaffolding, 3 = premium. */
@@ -700,6 +700,10 @@ export interface PlayerSave {
   lastRunDeckMode?: DeckMode
   /** Per-domain category filters for the deck builder. */
   categoryFilters?: Record<string, string[]>
+  /** Last selection on the Dungeon Selection screen (mode, domains, deck). */
+  lastDungeonSelection?: LastDungeonSelection
+  /** Confusion matrix for curated deck study mode — tracks which facts the player confuses. */
+  confusionMatrix?: Array<{ targetFactId: string; confusedFactId: string; count: number; lastOccurred: number }>
 
   // Character progression (XP / levelling)
   /** Cumulative XP earned across all runs. */

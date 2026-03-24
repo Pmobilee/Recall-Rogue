@@ -1,0 +1,216 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 147,
+  "issues": [
+    {
+      "id": "general_knowledge-unix-linux-derivative",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The answer states Linux 'descends directly from Unix,' but this is factually wrong. Linux was written from scratch by Linus Torvalds and shares no Unix source code. It is Unix-like and POSIX-compatible, but not a derivative. The Wikidata 'derivative work' tag used here is a common misreading. macOS, FreeBSD, and Solaris are true Unix descendants. Linux is not.",
+      "suggested_fix": "Change correct_answer to 'macOS' (or 'FreeBSD') which are genuine Unix derivatives, and rewrite the question accordingly. Alternatively ask 'What family of operating systems is Linux classified as?' with answer 'Unix-like' — but do not assert direct lineage."
+    },
+    {
+      "id": "general_knowledge-personal-computer-invented-1957",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The answer '{1957}' for when the personal computer 'first appeared' is highly misleading. The commonly accepted PC era begins with the Altair 8800 (1975) or the Apple II / TRS-80 / Commodore PET (1977). The 1957 Wikidata entry likely refers to the IBM 610 Auto-Point Computer, an experimental single-user machine costing $55,000 — nothing like what a quiz player would understand as a 'personal computer.' The explanation itself admits 'the idea of a computer for personal use was still decades from mass adoption,' which contradicts framing 1957 as the answer.",
+      "suggested_fix": "Change to a question specifically about the mass-market PC era: 'In what year did the first mass-market personal computers launch?' with answer '{1977}' (Apple II, TRS-80, Commodore PET). Or ask about the IBM PC: 'In what year did IBM release its first Personal Computer?' with answer '{1981}'."
+    },
+    {
+      "id": "general_knowledge-phoenician-alphabet-ancestor",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation directly contradicts the correct answer. The answer is 'Phoenician alphabet,' but the explanation states: 'The first fully phonemic script was the Proto-Sinaitic script, which was later modified to create the Phoenician alphabet.' This makes Proto-Sinaitic the more accurate answer to 'ultimate ancestor.' Additionally, Arabic did not descend directly from Phoenician — it descended via Aramaic and Nabataean. The question overclaims Phoenician's direct ancestry.",
+      "suggested_fix": "Revise the question to accurately credit Phoenician: 'Which ancient alphabet is the direct ancestor of Greek, Latin, Hebrew, and Cyrillic?' (removing Arabic, which came via Aramaic). Fix the explanation to not mention Proto-Sinaitic as the 'first fully phonemic script' since it undercuts the answer."
+    },
+    {
+      "id": "general_knowledge-computer-network-almost-all-connected",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'what type of network connects computers inside everyday devices?' and the answer is 'Embedded network.' This is jargon that most players won't recognise — the Wikipedia source says 'embedded networks found in modern electronic devices' as a general descriptive phrase, not a named network type. The question framing implies a specific technical term that players should know, but 'embedded network' is not a standard technical term the way LAN, WAN, or CAN (Controller Area Network) are.",
+      "suggested_fix": "Reframe the question to match the Wikipedia source more accurately: 'What kind of interconnected system links processors inside a single device like a car or smartphone?' with answer 'Embedded system network' or restructure to ask about a well-known embedded network standard like CAN bus."
+    },
+    {
+      "id": "general_knowledge-information-technology-term-1958",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-it-term-coined-1958'. Both ask when 'information technology' was first used in print and both have answer '{1958}'. The questions differ only slightly in phrasing ('in its modern sense' vs 'first used in print'). One should be removed.",
+      "suggested_fix": "Remove one of the two facts. Keep 'general_knowledge-it-term-coined-1958' as its question and explanation are slightly more precise."
+    },
+    {
+      "id": "general_knowledge-biotechnology-term-ereky",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-biotechnology-term-coined-1919'. Both ask who coined 'biotechnology' in 1919, both answer Károly Ereky. The distractor sets differ slightly but the questions are functionally identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-biotechnology-term-coined-1919' which has a slightly richer distractor set."
+    },
+    {
+      "id": "general_knowledge-hard-disk-consolidation",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-hdd-three-makers'. Both ask how many companies have historically made hard disk drives, both answer 'More than {224}' / 'Over {224}'. The questions differ only by phrasing.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-hdd-three-makers' as its answer format ('Over {224}') and question are cleaner."
+    },
+    {
+      "id": "general_knowledge-machine-biological-motors",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-machine-molecular'. Both ask what natural biological structures are classified as machines, both answer 'Molecular machines'. Questions differ only by phrasing.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-machine-molecular' which has a richer explanation."
+    },
+    {
+      "id": "general_knowledge-ibm-invented-atm-hdd",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-ibm-inventions-list'. Both ask which company invented both the ATM and the hard disk drive, both answer 'IBM'. The distractor sets and explanations are nearly identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-ibm-inventions-list' which has a slightly fuller distractor set."
+    },
+    {
+      "id": "general_knowledge-ibm-patents-29-years",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-ibm-patent-record'. Both ask how many consecutive years IBM held the US annual patent record, both answer '{29}'. The answer format differs slightly ('29 consecutive years' vs '29 years') but questions are functionally identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-ibm-patent-record' which has a slightly richer explanation mentioning IBM's 19 research facilities."
+    },
+    {
+      "id": "general_knowledge-ibm-founded-ctr-1911",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-ibm-founded-name'. Both ask what IBM was originally named in 1911, both answer 'Computing-Tabulating-Recording Co.' The distractor sets differ somewhat but the questions are functionally identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-ibm-founded-ctr-1911' which has more realistic distractors (e.g. 'Tabulating Machine Company' was a real constituent company)."
+    },
+    {
+      "id": "general_knowledge-mit-105-nobel-laureates",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-mit-nobel-count'. Both ask how many Nobel laureates have been affiliated with MIT as of 2024, both answer '{105}'. Questions differ only by minor phrasing.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-mit-nobel-count' which is more concisely worded."
+    },
+    {
+      "id": "general_knowledge-mit-tuition-waiver-200k",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-mit-free-tuition'. Both ask at what family income MIT waives undergraduate tuition, both answer '$200,000'. One uses a distractor format, the other uses brace format for the number.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-mit-free-tuition' with the brace-format answer '${200,000}' as it fits the numerical answer pattern."
+    },
+    {
+      "id": "general_knowledge-sewing-machine-thomas-saint-1790",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-sewing-machine-invention-1790'. Both ask who invented the sewing machine in 1790, both answer 'Thomas Saint'. The distractor sets differ but questions are functionally identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-sewing-machine-invention-1790' as it has a cleaner distractor set of actual sewing machine pioneers (Howe, Singer, Thimonnier, Hunt, Merrow, Wilson, Gibbs)."
+    },
+    {
+      "id": "general_knowledge-spacecraft-interstellar-handful",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-spacecraft-interstellar-probes'. The first asks which probe 'besides the Voyagers and Pioneers' is leaving the solar system (answer: New Horizons), the second asks how many spacecraft total are on interstellar trajectories (answer: {5}). These are complementary rather than identical, but the content heavily overlaps and players who see both will find the second trivially answered by the first.",
+      "suggested_fix": "Keep both but reorder so the counting question ('general_knowledge-spacecraft-interstellar-probes') appears before the identifying question to avoid the giveaway."
+    },
+    {
+      "id": "general_knowledge-russian-iss-official-language",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-russian-iss-language'. The first asks 'Russian is one of only two official languages aboard which iconic space structure?' (answer: International Space Station). The second asks 'How many official languages does the International Space Station use?' (answer: {2}). Very similar topic and the second question is instantly answered by seeing the first.",
+      "suggested_fix": "Remove the numerical version ('general_knowledge-russian-iss-language') as it is trivially easy and closely follows from the identification question. Keep 'general_knowledge-russian-iss-official-language'."
+    },
+    {
+      "id": "general_knowledge-greek-oldest-written",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-greek-longest-history'. Both ask which Indo-European language has the longest documented written history (over 3,400 years), both answer 'Greek'. The first has distractors, the second is the same question with a slightly different phrasing.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-greek-longest-history' which names the '3,400 years' figure in the question itself, making it more informative."
+    },
+    {
+      "id": "general_knowledge-hebrew-language-revival",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-hebrew-revival'. Both ask which language is the only successfully revived spoken language, both answer 'Hebrew'. Questions differ by minor phrasing ('only successful large-scale revival of a dead spoken language' vs 'only language ever successfully revived as a native spoken tongue').",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-hebrew-revival' which has a richer distractor set including 'Old Norse' and 'Coptic'."
+    },
+    {
+      "id": "general_knowledge-indo-european-42-percent",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-indo-european-family-size'. Both ask what percentage of the global population speaks an Indo-European language as a first language, both answer 'About {42}%'. Questions differ only by phrasing.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-indo-european-family-size' as the explanation mentions more family members (English, Spanish, Hindi, Portuguese, Russian)."
+    },
+    {
+      "id": "general_knowledge-chinese-speakers-global",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-chinese-speakers'. Both ask what percentage of the global population speaks Chinese as a first language, both answer 'About {17}%'. Questions are nearly word-for-word identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-chinese-speakers' as it has a slightly more complete explanation."
+    },
+    {
+      "id": "general_knowledge-korean-hangul-designed-script",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-korean-hangul-alphabet-invented'. Both ask when the Korean Hangul writing system was created, both answer '15th century'. Questions differ only by minor phrasing.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-korean-hangul-alphabet-invented' which has a broader and more varied distractor set."
+    },
+    {
+      "id": "general_knowledge-computer-monitor-aspect-ratio-shift",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-monitor-aspect-ratio-shift'. Both ask what aspect ratio replaced 4:3 on screens since 2010, both answer '16:9'. Questions are nearly identical in wording.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-monitor-aspect-ratio-shift' which has a slightly richer explanation mentioning CRT history."
+    },
+    {
+      "id": "general_knowledge-elevator-horizontal-movement",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-elevator-horizontal'. Both ask about modern elevators' ability to move horizontally. The answers differ slightly ('Horizontally' vs 'Horizontal movement') but the questions are functionally identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-elevator-horizontal' which has a cleaner distractor set."
+    },
+    {
+      "id": "general_knowledge-lever-six-simple-machines",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-lever-simple-machine'. Both ask how many simple machines Renaissance scientists identified, both answer 'Six' / '{6}'. Questions are functionally identical.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-lever-simple-machine' which uses the brace-format numerical answer and has a cleaner explanation."
+    },
+    {
+      "id": "general_knowledge-persian-court-language",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-persian-language-prestige'. Both ask about Persian serving as a court language for empires in which it was not native. The first asks about both Mughal AND Ottoman Empires; the second asks only about the Mughal Empire. Content and answer are the same.",
+      "suggested_fix": "Remove 'general_knowledge-persian-language-prestige' (the narrower version). Keep 'general_knowledge-persian-court-language' which is more impressive and accurate — Persian served as court language of both empires."
+    },
+    {
+      "id": "general_knowledge-portuguese-fifth-most-spoken",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'general_knowledge-portuguese-five-continents'. Both identify Portuguese as the fifth-most-spoken native language with ~267 million speakers. The questions are worded differently but convey the same core fact.",
+      "suggested_fix": "Remove one. Keep 'general_knowledge-portuguese-five-continents' as the question angle (Romance language ranking) is more educational and the explanation mentions geographic spread."
+    },
+    {
+      "id": "general_knowledge-simple-machines-six",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "A third near-duplicate of the 'six simple machines' fact alongside 'general_knowledge-lever-six-simple-machines' and 'general_knowledge-lever-simple-machine'. Three facts asking essentially the same question (how many simple machines?) is excessive.",
+      "suggested_fix": "Remove this fact and one of the two lever variants. Retain only one 'six simple machines' question in the database."
+    },
+    {
+      "id": "general_knowledge-machine-energy-transformation",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks 'What is the defining effect that all machines produce?' and the answer is 'Energy transformation.' However, this is not universally accurate as the defining effect — a lever multiplies force without necessarily transforming energy type. More precisely, all machines transform or transmit energy or force. The answer as stated is a Wikidata field value, not a rigorous definition.",
+      "suggested_fix": "Qualify the answer or reframe the question: 'According to physics, what process do all machines perform on energy?' Answer: 'Energy transformation' is acceptable if the question scopes it to the Wikidata/Wikipedia definition. Minor clarification in explanation would help."
+    },
+    {
+      "id": "general_knowledge-washing-machine-invention",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question ID says 'invention' but the question asks about resource consumption ('What two resources do modern washing machines primarily consume?'). The explanation mentions only 'electric power' explicitly — water is implicit. The question is clear but the answer 'Electricity and water' undersells that modern machines also use significant detergent (a third resource). The question is fine but slightly misleading in its framing of 'primarily consume' when detergent/chemicals are equally essential.",
+      "suggested_fix": "Minor: rephrase to 'What two utilities do modern washing machines consume?' or add 'and detergent' to the answer if detergent is considered a utility. As-is the question is acceptable but could be crisper."
+    },
+    {
+      "id": "general_knowledge-hungarian-35-grammatical-cases",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The answer 'Around {18} to 35' uses a brace around only '18', leaving 'to 35' as free text. This is inconsistent formatting — the full range should either be in braces or neither should be. Additionally, the wide range (18 to 35) signals genuine linguistic disagreement; the question might confuse players expecting a precise answer. The explanation doesn't resolve the ambiguity.",
+      "suggested_fix": "Use a consistent format: either '{18} to {35}' or write the answer as free text without braces if the range is too wide to be a clean numerical fact. Better yet, reformulate: 'Hungarian has more grammatical cases than any other major European language — roughly how many?' with answer '{18} or more'."
+    }
+  ]
+}

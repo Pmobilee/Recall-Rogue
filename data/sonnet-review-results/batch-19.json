@@ -1,0 +1,174 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 154,
+  "issues": [
+    {
+      "id": "mythology_folklore-shango-new-world-syncretism",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer says 'Saint Barbara and Saint Jerome' (both), but the explanation says 'syncretized with either Saint Barbara or Saint Jerome' (one or the other depending on tradition). These directly contradict each other. The 'either/or' framing in the explanation is the accurate one — different diaspora traditions use different saints.",
+      "suggested_fix": "Change correct_answer to 'Saint Barbara or Saint Jerome' and reword the question to 'Which two Catholic saints is Shango most commonly syncretized with across different New World traditions?' OR keep the either/or and change the question to 'With which Catholic saint is Shango most commonly syncretized in Santería?' (answer: Saint Barbara)."
+    },
+    {
+      "id": "mythology_folklore-ishtar-gilgamesh",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "Inanna is listed as a distractor, but Ishtar IS Inanna — they are the exact same deity (Ishtar is the Akkadian/Babylonian name; Inanna is the Sumerian name). A knowledgeable player would correctly pick Inanna as a valid answer, making the question unanswerable without specialist knowledge of which naming convention the question uses. This is a factually wrong distractor.",
+      "suggested_fix": "Remove Inanna from the distractors and replace with another Mesopotamian goddess, e.g. 'Ninsun' or 'Gula'. The question could also be made clearer by specifying 'By her Akkadian name, which goddess...' to prevent ambiguity."
+    },
+    {
+      "id": "natural_sciences-kraken-norse-sea-monster",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Grammar error in the question: 'What real animal are scientists believe inspired the Kraken legend?' should be 'What real animal do scientists believe inspired the Kraken legend?'",
+      "suggested_fix": "Change 'are scientists believe' to 'do scientists believe'."
+    },
+    {
+      "id": "natural_sciences-silver-ancient-metal",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks 'Approximately how many years ago was silver first discovered' but the correct_answer is 'About {5000} BCE' — these are different framings. '5000 BCE' is approximately 7,025 years ago (from 2025), not 5,000 years ago. The answer should match the question's framing (years ago) or the question should ask for the BCE date. This is also a near-duplicate of natural_sciences-silver-5000-bce-discovery which correctly uses BCE framing for a BCE answer.",
+      "suggested_fix": "Either change the question to 'Approximately when was silver first discovered?' (to match the BCE answer), or change the answer to 'About {7000} years ago'. Also consider consolidating or removing this duplicate of silver-5000-bce-discovery."
+    },
+    {
+      "id": "natural_sciences-isaac-asimov-500-books",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under natural_sciences / biology_organisms. The fact is about Asimov's literary output (books written/edited) — this is a fact about a person's career and prolific writing, not biology. Asimov was a biochemist but the question is about his writing volume.",
+      "suggested_fix": "Recategorize to a more appropriate category, e.g. arts_culture / literature, or create a science_history / scientists subcategory. Alternatively, the fact could be retained here if framed as a scientist's accomplishments, but biology_organisms is not the right l2."
+    },
+    {
+      "id": "natural_sciences-isaac-asimov-foundation-hugo",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under natural_sciences / biology_organisms. The fact is entirely about a science fiction award won by a literary series — nothing about biology or natural sciences. This belongs in arts/literature or pop culture.",
+      "suggested_fix": "Recategorize to arts_culture / literature or popular_culture / books_authors."
+    },
+    {
+      "id": "myth-shango-yoruba-thunder-king",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-shango-yoruba-thunder, which asks 'Which Yoruba deity of thunder and justice was also historically the third king of the Oyo Empire?' Both facts address Shango's historical identity as the third Alaafin of Oyo. Having two questions about the same narrow fact in the same batch creates redundancy.",
+      "suggested_fix": "Remove one of the two facts. myth-shango-yoruba-thunder-king (asking 'What was Shango before he became a deity?') is the more interesting framing — keep it and remove the duplicate."
+    },
+    {
+      "id": "myth-medb-cattle-raid-warrior-queen",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-medb-irish-warrior-queen. Both facts are about Queen Medb and the Táin Bó Cúailnge cattle raid. myth-medb-irish-warrior-queen asks WHY she launched the raid (to match her husband's bull), while this one asks WHAT she tried to steal (a prized bull). The answers are essentially the same underlying fact, split across two very similar questions.",
+      "suggested_fix": "Remove one. The 'why' version (myth-medb-irish-warrior-queen) is more interesting and informative than the 'what' version. Keep that one, remove this duplicate."
+    },
+    {
+      "id": "myth-tristan-love-potion-death",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-tristan-iseult-love-potion. Both questions ask what caused Tristan and Iseult to fall in love. The prior fact asks 'How did Tristan fall in love with Iseult?' (answer: 'They accidentally drank a love potion together'), this one asks 'What caused Tristan and Iseult to fall in love?' (answer: 'A love potion'). Essentially the same question with a slightly simplified answer.",
+      "suggested_fix": "Remove one. The more specific version (myth-tristan-iseult-love-potion) with the fuller answer about the accidental drinking is preferable."
+    },
+    {
+      "id": "myth-ptah-creator-craftsmen-deity",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-ptah-creator-god-craftsmen. Both facts are about Ptah being the Egyptian patron deity of craftsmen and architects. myth-ptah-creator-god-craftsmen asks HOW Ptah created the world (through speech), while this one simply asks which god was the patron of craftsmen. These are distinct enough questions to both exist, but they share very similar explanations and may confuse players who see both.",
+      "suggested_fix": "These are sufficiently distinct to keep (one tests creation method, one tests patron identity). However, consider whether both are needed; the 'how did he create the world' question is more interesting and distinctive."
+    },
+    {
+      "id": "myth-sobek-crocodile-nile-protection",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-sobek-crocodile-nile-power. Both ask about the Egyptian crocodile god Sobek's animal association and depiction. myth-sobek-crocodile-nile-power asks which animal Sobek was associated with; this one asks which deity was depicted as crocodile/crocodile-headed. The distractor 'Sebek' in this version is notable — Sebek is simply an alternative transliteration of Sobek himself, not a different deity, making it a misleading distractor.",
+      "suggested_fix": "Remove one of the two Sobek facts. For the remaining one, remove 'Sebek' from the distractors as it is another name for Sobek himself and may confuse players."
+    },
+    {
+      "id": "myth-aten-egypt-monotheism",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-aten-akhenaten-monotheism. Both facts ask about Akhenaten establishing Aten as Egypt's sole state god. The questions are worded differently ('elevated Aten to become Egypt's sole state god' vs. 'established Atenism, ancient Egypt's brief monotheistic religion') but test the same knowledge with the same answer.",
+      "suggested_fix": "Remove one. The second version (myth-aten-egypt-monotheism) with 'Atenism' terminology is slightly more educational. Remove myth-aten-akhenaten-monotheism."
+    },
+    {
+      "id": "natural_sciences-al-khwarizmi-algebra-word-origin",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-al-khwarizmi-algebra-word. Both ask which medieval scholar/mathematician's book title gave English the word 'algebra', with the same correct answer of Al-Khwarizmi.",
+      "suggested_fix": "Remove one. Keep the version with more distinctive framing. natural_sciences-al-khwarizmi-algebra-word ('Which medieval mathematician's treatise title gave us the word algebra?') is marginally cleaner."
+    },
+    {
+      "id": "natural_sciences-algorithm-named-after-khwarizmi",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-al-khwarizmi-algorithm-word. Both facts establish that 'algorithm' derives from al-Khwarizmi's name. natural_sciences-al-khwarizmi-algorithm-word asks 'Which modern computing term is a Latinization of a medieval mathematician's name?' (answer: Algorithm); this one asks 'Which 9th-century mathematician's name is the origin of the word algorithm?' (answer: Al-Khwarizmi). The answers are reversed but both test the same fact.",
+      "suggested_fix": "Remove one. The version asking the computing term (al-khwarizmi-algorithm-word) is the more interesting framing since 'algorithm' as the answer is more surprising."
+    },
+    {
+      "id": "natural_sciences-omar-khayyam-jalali-calendar",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-omar-khayyam-calendar. Both ask about the Jalali calendar designed by Omar Khayyam that is still in use. The questions are almost identically worded.",
+      "suggested_fix": "Remove one. Keep natural_sciences-omar-khayyam-calendar which is in physics_mechanics; the duplicate is filed under geology_earth which is an odd categorization for a calendar."
+    },
+    {
+      "id": "natural_sciences-outer-space-temperature",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-outer-space-background-temperature. Both ask about the 2.7 Kelvin baseline temperature of outer space set by the cosmic microwave background radiation. The questions are nearly identically phrased.",
+      "suggested_fix": "Remove one. Keep natural_sciences-outer-space-background-temperature which has slightly cleaner phrasing."
+    },
+    {
+      "id": "natural_sciences-mass-not-weight",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-mass-vs-weight. Both ask why an object weighs less on the Moon but has the same mass. The questions are phrased almost identically and test exactly the same fact.",
+      "suggested_fix": "Remove one. Keep natural_sciences-mass-vs-weight which has a cleaner answer ('Lower gravity, same matter') and is categorized more precisely."
+    },
+    {
+      "id": "natural_sciences-david-hilbert-cantor",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-david-hilbert-cantor-set-theory. Both ask about Hilbert defending Cantor's controversial theory of infinite sets/set theory. The questions are close in wording and test the same knowledge.",
+      "suggested_fix": "Remove one. natural_sciences-david-hilbert-cantor-set-theory ('Which German mathematician famously championed Cantor's controversial set theory?') is slightly more instructive."
+    },
+    {
+      "id": "natural_sciences-enrico-fermi-theory-and-experiment",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-enrico-fermi-statistical-mechanics. Both ask what made Fermi exceptional/rare. natural_sciences-enrico-fermi-statistical-mechanics asks 'Which Italian-American physicist made major contributions to statistical mechanics and nuclear physics?' while this one asks 'What made Fermi exceptionally rare among 20th-century physicists?' — testing the same 'mastered both theory and experiment' fact. The explanation of natural_sciences-enrico-fermi-statistical-mechanics also contains this same claim.",
+      "suggested_fix": "Keep natural_sciences-enrico-fermi-theory-and-experiment (more interesting question framing) and remove or rework natural_sciences-enrico-fermi-statistical-mechanics to test a different Fermi fact."
+    },
+    {
+      "id": "natural_sciences-rontgen-element-roentgenium",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-rontgen-element-named. Both ask which chemical element is named after X-ray pioneer Röntgen, with the same correct answer of Roentgenium.",
+      "suggested_fix": "Remove one. Keep natural_sciences-rontgen-element-named which has a slightly cleaner question phrasing."
+    },
+    {
+      "id": "natural_sciences-hydrogen-named-water-former",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-hydrogen-name-water-former. Both ask what the name 'hydrogen' means in Ancient Greek, with the same answer 'Water-former'. The questions are worded slightly differently but are testing the exact same fact.",
+      "suggested_fix": "Remove one. natural_sciences-hydrogen-name-water-former has a slightly richer explanation mentioning Cavendish's specific observation, so keep that version."
+    },
+    {
+      "id": "natural_sciences-silver-5000-bce-discovery",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-silver-ancient-metal. Both facts are about silver being discovered around 5000 BCE. See also the ANSWER_FORMAT issue flagged on natural_sciences-silver-ancient-metal regarding mismatched framing.",
+      "suggested_fix": "Remove natural_sciences-silver-ancient-metal (which also has the years-ago/BCE framing mismatch). Keep natural_sciences-silver-5000-bce-discovery."
+    },
+    {
+      "id": "natural_sciences-oxygen-most-abundant-crust",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of natural_sciences-oxygen-most-abundant-earths-crust. Both ask about oxygen being the most abundant element in Earth's crust, making up almost half. The questions are worded slightly differently but test the same core fact.",
+      "suggested_fix": "Remove one. natural_sciences-oxygen-most-abundant-earths-crust ('Which element makes up almost half of Earth's crust by mass?') is more straightforward."
+    },
+    {
+      "id": "myth-medb-cattle-raid-warrior-queen",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under mythology_folklore / norse_celtic. Queen Medb is a figure of Irish mythology, which is Celtic — so 'norse_celtic' is technically inclusive, but the pairing of Norse and Celtic into one subcategory while this fact is purely Irish/Celtic (no Norse elements) may mislead players or create odd groupings. The companion fact myth-medb-irish-warrior-queen is under folk_legends, creating inconsistent categorization for the same subject.",
+      "suggested_fix": "Standardize both Medb facts to the same subcategory. If norse_celtic is meant to cover all Celtic mythology, that is acceptable. If not, move to folk_legends to match the other Medb fact."
+    }
+  ]
+}

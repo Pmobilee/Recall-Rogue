@@ -1,0 +1,62 @@
+[
+  {
+    "id": "animals-osprey-own-genus",
+    "field": "distractors",
+    "old": "[\"It is the oldest raptor\",\"It cannot fly at night\",\"It lives only on islands\",\"It has no land relatives\",\"It is larger than all eagles\",\"It was only recently found\",\"It lives only near water\",\"It breeds only in trees\"]",
+    "new": "[\"It is the oldest raptor\",\"It hunts primarily at dusk\",\"It lives only on islands\",\"It is descended from ancient falcons\",\"It is larger than all eagles\",\"It was only recently found\",\"It lives only near water\",\"It breeds only in trees\"]"
+  },
+  {
+    "id": "art_architecture-decorative-art-functional",
+    "field": "distractors",
+    "old": "[\"Must be made by machine\",\"Only uses natural materials\",\"Cannot depict human figures\",\"Must be sold at auction\",\"Requires guild certification\",\"Must use primary colors only\",\"Cannot be in museums\",\"Must be smaller than 1 metre\"]",
+    "new": "[\"Must be made by machine\",\"Only uses natural materials\",\"Must be created by hand\",\"Must be sold at auction\",\"Requires guild certification\",\"Must use primary colors only\",\"Must display maker's signature\",\"Must be smaller than 1 metre\"]"
+  },
+  {
+    "id": "food_cuisine-onion-wild-ancestor-unknown",
+    "field": "distractors",
+    "old": "[\"No known pollinators\",\"Grows only once a century\",\"Cannot reproduce naturally\",\"Origin predates all farming\",\"Has no close relatives\",\"Evolved from a fungus\",\"Only grows underground\",\"Has no known seeds\"]",
+    "new": "[\"It relies on insect pollination\",\"Grows only once a century\",\"Reproduces exclusively by cloning\",\"Origin predates all farming\",\"It evolved from garlic\",\"Evolved from a fungus\",\"Only grows underground\",\"It spreads only through bulb division\"]"
+  },
+  {
+    "id": "gk-arabic-allah-grammatically-unique",
+    "field": "distractors",
+    "old": "[\"It cannot be used in questions\",\"It is always capitalized\",\"It requires a special verb tense\",\"It cannot appear at the start of a sentence\",\"It changes form in every case\",\"It is borrowed from another language\",\"It cannot follow a definite article\",\"It is always written in cursive\"]",
+    "new": "[\"It is used only in prayers\",\"It is always capitalized\",\"It requires a special verb tense\",\"It appears only at sentence end\",\"It changes form in every case\",\"It is borrowed from another language\",\"It always requires the definite article\",\"It is always written in cursive\"]"
+  },
+  {
+    "id": "general_knowledge-czech-unique-phoneme",
+    "field": "distractors",
+    "old": "[\"It is the only Czech consonant\",\"It cannot be written in Latin script\",\"It is older than the Czech language itself\",\"It sounds identical to the Russian 'р'\",\"It disappears in casual speech\",\"It was invented in the 20th century\",\"It requires two vocal tracts\"]",
+    "new": "[\"It is the only Czech consonant\",\"It is written with a special diacritic\",\"It is older than the Czech language itself\",\"It sounds identical to the Russian 'р'\",\"It disappears in casual speech\",\"It was invented in the 20th century\",\"It requires two vocal tracts\"]"
+  },
+  {
+    "id": "geography-bolivia-landlocked-largest-southern",
+    "field": "distractors",
+    "old": "[\"Northern Hemisphere\",\"Eastern Hemisphere\",\"Western Hemisphere\",\"Both Northern and Southern equally\",\"South America only counts its own\",\"It is not landlocked\",\"Western South America\",\"It is partly landlocked\"]",
+    "new": "[\"Northern Hemisphere\",\"Eastern Hemisphere\",\"Western Hemisphere\",\"Both Northern and Southern equally\",\"South America only counts its own\",\"It borders the Pacific Ocean\",\"Western South America\",\"It is partly landlocked\"]"
+  },
+  {
+    "id": "human_body_health-typhoid-fever-only-humans",
+    "field": "distractors",
+    "old": "[\"It is caused by a virus, not a bacterium\",\"It can only be contracted by drinking water\",\"It has no known treatment\",\"It only affects children under 12\",\"It is airborne and cannot spread through food\",\"It is not transmissible between people\",\"It is caused by a parasite, not a bacterium\",\"It only occurs in cold climates\"]",
+    "new": "[\"It is caused by a virus, not a bacterium\",\"It can only be contracted by drinking water\",\"It is effectively treated with antibiotics\",\"It only affects children under 12\",\"It is airborne and cannot spread through food\",\"It spreads easily through contaminated food and water\",\"It is caused by a parasite, not a bacterium\",\"It only occurs in cold climates\"]"
+  },
+  {
+    "id": "natural_sciences-strontium-nuclear-fallout",
+    "field": "distractors",
+    "old": "[\"It emits gamma rays continuously\",\"It spreads through air rapidly\",\"It contaminates water supplies instantly\",\"It cannot be removed by washing\",\"It has an extremely long half-life\",\"It destroys DNA directly\",\"It attacks the lungs like asbestos\",\"It is chemically similar to sodium\"]",
+    "new": "[\"It emits gamma rays continuously\",\"It spreads through air rapidly\",\"It contaminates water supplies instantly\",\"It binds strongly to bone tissue\",\"It has an extremely long half-life\",\"It destroys DNA directly\",\"It attacks the lungs like asbestos\",\"It is chemically similar to sodium\"]"
+  },
+  {
+    "id": "natural_sciences-strontium-radioactive-fallout",
+    "field": "distractors",
+    "old": "[\"It becomes airborne easily\",\"It passes through the skin\",\"It is extremely long-lived\",\"It dissolves in water fast\",\"It targets lung tissue\",\"It cannot be filtered out\",\"It mimics iron in blood\",\"It bonds to DNA directly\"]",
+    "new": "[\"It becomes airborne easily\",\"It passes through the skin\",\"It is extremely long-lived\",\"It dissolves in water fast\",\"It targets lung tissue\",\"It accumulates in sediment over time\",\"It mimics iron in blood\",\"It bonds to DNA directly\"]"
+  },
+  {
+    "id": "sciences-pearl-only-gemstone-living-organism",
+    "field": "distractors",
+    "old": "[\"Only found underwater\",\"Only come in one color\",\"Cannot be cut or shaped\",\"Formed by heat and pressure\",\"Only found in Asia\",\"Made of a single mineral\",\"Require mining\",\"Are only from clams\"]",
+    "new": "[\"Only found underwater\",\"Only come in one color\",\"Are extremely brittle\",\"Formed by heat and pressure\",\"Only found in Asia\",\"Made of a single mineral\",\"Require mining\",\"Are only from clams\"]"
+  }
+]

@@ -1,0 +1,251 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 172,
+  "issues": [
+    {
+      "id": "general_knowledge-cucumber-roman-emperor",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Hadrian' appears twice in the distractors list (positions 5 and 8). Duplicate distractor.",
+      "suggested_fix": "Remove the duplicate 'Hadrian'. Replace the second with another Roman emperor, e.g. 'Domitian'."
+    },
+    {
+      "id": "gk-sociology-coined-term",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer is 'Late 18th century' but this is wrong. The term 'sociology' was coined by Auguste Comte around 1838 — early 19th century, not late 18th century. Wikipedia attributes it to Comte in the 1830s. The explanation also states 'late 18th century' which propagates the error.",
+      "suggested_fix": "Change correct_answer to 'Early 19th century' and update the explanation accordingly. Comte coined the term in his Cours de philosophie positive (1830–1842)."
+    },
+    {
+      "id": "general_knowledge-ukrainian-more-mutual-belarusian",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-ukrainian-closer-belarusian' (also in this batch). Both facts ask whether Ukrainian is more mutually intelligible with Belarusian vs Russian, with identical correct answers. One should be removed or reframed to test a different aspect.",
+      "suggested_fix": "Remove one of the two facts, or reframe one to test something distinct, e.g. Ukrainian's lexical closeness to Polish."
+    },
+    {
+      "id": "general_knowledge-ukrainian-closer-belarusian",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-ukrainian-more-mutual-belarusian' (also in this batch). Both ask the same thing in slightly different wording. See above.",
+      "suggested_fix": "Remove or repurpose one of the two Ukrainian/Belarusian intelligibility facts."
+    },
+    {
+      "id": "general_knowledge-military-industrial-complex-eisenhower",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-military-industrial-eisenhower' (also in this batch). Both ask which US president coined 'military-industrial complex'. The answers differ only in form (last name vs full name) but test the identical fact.",
+      "suggested_fix": "Remove one. If keeping both, reframe one to ask about the year of the speech or why Eisenhower's warning was notable given his own background."
+    },
+    {
+      "id": "general_knowledge-military-industrial-eisenhower",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-military-industrial-complex-eisenhower'. See above.",
+      "suggested_fix": "Remove or substantially reframe one of the two facts."
+    },
+    {
+      "id": "general_knowledge-clinical-psychology-founded-1896",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-clinical-psychology-1896' (also in this batch). One asks for the year, the other for the person — that's fine as two facts — but a player seeing both in the same run will feel repetition since the explanations are nearly identical.",
+      "suggested_fix": "Keep both but ensure the explanations are meaningfully differentiated. The year-question explanation could focus on the historical context; the person-question on what made Witmer's approach distinctive."
+    },
+    {
+      "id": "general_knowledge-malay-four-official-countries",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-malay-four-countries' (also in this batch). Both ask how many countries have Malay as an official language, with the same numeric answer ({4}). Straightforward duplicate.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "general_knowledge-malay-four-countries",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-malay-four-official-countries'. See above.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "general_knowledge-thai-tonal-analytic",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-thai-pali-sanskrit' (also in this batch). Both ask what proportion of Thai vocabulary is borrowed, and both have the same correct answer ('Over half'). The questions are worded differently but test the exact same fact.",
+      "suggested_fix": "Remove one, or reframe one to ask a distinct question (e.g. which specific ancient language contributed the most loanwords, or what type of language Thai is structurally)."
+    },
+    {
+      "id": "general_knowledge-thai-pali-sanskrit",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-thai-tonal-analytic'. See above.",
+      "suggested_fix": "Remove or reframe one."
+    },
+    {
+      "id": "gk-romanian-latin-isolation",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-romanian-romance-language-isolated' (also in this batch). Both ask what makes Romanian geographically unusual among Romance languages, with essentially the same correct answer (evolved in Eastern Europe / only major Romance language in Eastern Europe).",
+      "suggested_fix": "Remove one. The longer-answer version ('general_knowledge-romanian-romance-language-isolated') is more informative and should be kept."
+    },
+    {
+      "id": "general_knowledge-romanian-romance-language-isolated",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'gk-romanian-latin-isolation'. See above.",
+      "suggested_fix": "Keep this one (richer correct answer), remove 'gk-romanian-latin-isolation'."
+    },
+    {
+      "id": "general_knowledge-pashto-35-55-million-speakers",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'gk-pashto-speaker-count' (also in this batch). Both ask how many people speak Pashto, with the same answer range (35–55 million).",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "gk-pashto-speaker-count",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'general_knowledge-pashto-35-55-million-speakers'. See above.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "gk-verb-universal-distinction",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'gk-noun-every-language-distinction' (also in this batch). Both ask what grammatical distinction is found in every language ever discovered, both with the same answer (noun-verb distinction). The questions are nearly identical in wording.",
+      "suggested_fix": "Remove one. The noun-article version ('gk-noun-every-language-distinction') has a slightly richer explanation; keep that one."
+    },
+    {
+      "id": "gk-noun-every-language-distinction",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'gk-verb-universal-distinction'. See above.",
+      "suggested_fix": "Keep this one, remove 'gk-verb-universal-distinction'."
+    },
+    {
+      "id": "gk-pashto-eastern-iranian",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Arabic' is a specific language, not a language family, while all other distractors and the correct answer ('Eastern Iranian') are language family names or branches. This is a category mismatch that makes 'Arabic' an obvious wrong answer for anyone who reads carefully.",
+      "suggested_fix": "Replace 'Arabic' with a language family, e.g. 'Semitic' (which is the family Arabic belongs to, and is more analogous to 'Eastern Iranian')."
+    },
+    {
+      "id": "geography-oceania-smallest-continent",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer 'Oceania' is factually contested and likely wrong under the most common geographic frameworks. In the standard 7-continent model, Australia is the smallest continent (~7.7 million km²), not Oceania. Oceania is a geographic/geopolitical region (not always classified as a continent) that includes Australia plus Pacific islands. If Oceania is counted as a continent replacing Australia, then 'Australia' would not be a separate continent — but the distractors include 'Australia' as a wrong answer, which implies the question is using 'Oceania' and 'Australia' as separate options. The Wikipedia source may define Oceania as a continent in a specific regional model, but this is ambiguous and likely to confuse players.",
+      "suggested_fix": "Either (a) change correct_answer to 'Australia' under the standard 7-continent model, or (b) reframe the question to explicitly ask 'In the model that uses Oceania as a continent, which is the smallest?' and remove 'Australia' from distractors, or (c) replace this fact entirely with a less contested geography claim."
+    },
+    {
+      "id": "geography-timor-leste-first-21st-century-nation",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Montenegro' appears twice in the distractors list (positions 3 and 8). Duplicate distractor.",
+      "suggested_fix": "Remove the duplicate 'Montenegro'. Replace the second with another recently independent state, e.g. 'Eritrea' (already listed — use 'Slovakia' or 'Slovenia' instead, which became independent in 1993)."
+    },
+    {
+      "id": "geography-kuwait-foreign-nationals",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-kuwait-citizens-minority' (also in this batch). Both ask what fraction of Kuwait's population are Kuwaiti citizens, both with the same answer (less than 30%). The questions are nearly identically phrased.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-kuwait-citizens-minority",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-kuwait-foreign-nationals'. See above.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-sri-lanka-ancient-settlement",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-sri-lanka-settlement-125000-years' (also in this batch). Both ask how far back human settlement in Sri Lanka dates, both with the same answer ({125,000} years).",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-sri-lanka-settlement-125000-years",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-sri-lanka-ancient-settlement'. See above.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-bhutan-highest-unclimbed-mountain",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-bhutan-gangkhar-puensum-unclimbed' (also in this batch). Both ask which country has the world's highest unclimbed mountain, both answering 'Bhutan'. The questions are essentially identical.",
+      "suggested_fix": "Remove one. Consider reframing one to ask the name of the mountain (Gangkhar Puensum) rather than the country."
+    },
+    {
+      "id": "geography-bhutan-gangkhar-puensum-unclimbed",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-bhutan-highest-unclimbed-mountain'. See above.",
+      "suggested_fix": "Reframe to ask the mountain's name rather than the country, making it meaningfully distinct."
+    },
+    {
+      "id": "geography-beijing-daxing-airport",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-beijing-daxing-largest-airport-terminal' (also in this batch). Both ask which airport has the world's largest single-structure terminal, both answering 'Beijing Daxing'.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-beijing-daxing-largest-airport-terminal",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-beijing-daxing-airport'. See above.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-sri-lanka-two-capitals",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-sri-lanka-capital-surprise' (also in this batch). Both ask about Sri Lanka's official capital (answer: Sri Jayawardenepura Kotte) and note it is distinct from Colombo.",
+      "suggested_fix": "Remove one. The framing is nearly identical; only one is needed."
+    },
+    {
+      "id": "geography-sri-lanka-capital-surprise",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-sri-lanka-two-capitals'. See above.",
+      "suggested_fix": "Remove one."
+    },
+    {
+      "id": "geography-yemen-population-saudi",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-yemen-largest-population-arabian-peninsula' (also in this batch). Both ask which Arabian Peninsula country has a larger population than Saudi Arabia / which has the largest population, both answering 'Yemen'.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-yemen-largest-population-arabian-peninsula",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-yemen-population-saudi'. See above.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-north-korea-dmz-parallel",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-north-korea-dmz-38th-parallel' (also in this batch). Both ask along which parallel Korea was divided in 1945, both answering '38th parallel'. The questions are almost identically phrased.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-north-korea-dmz-38th-parallel",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'geography-north-korea-dmz-parallel'. See above.",
+      "suggested_fix": "Remove one entirely."
+    },
+    {
+      "id": "geography-bhutan-vajrayana-state-religion",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Tibetan Buddhism' is listed as a distractor but Vajrayana Buddhism is commonly known as Tibetan Buddhism — they refer to the same tradition. A player who knows this would correctly identify both as the answer, making 'Tibetan Buddhism' an unfairly tricky distractor rather than a genuinely wrong one.",
+      "suggested_fix": "Replace 'Tibetan Buddhism' with a clearly distinct school, e.g. 'Jodo Shinshu Buddhism' or 'Tiantai Buddhism'."
+    }
+  ]
+}

@@ -1,0 +1,489 @@
+deck_id: solar_system
+name: "Solar System"
+domain: space_astronomy
+sub_domain: solar_system
+target_facts: 76
+minimum_facts: 60
+
+# Sourcing & licensing (MANDATORY)
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Solar_System
+    license: CC-BY-SA-4.0
+    usage: fact text, explanations, mission details
+  - name: Wikidata
+    url: https://www.wikidata.org/wiki/Q544
+    license: CC0
+    usage: structured data (masses, radii, orbital periods, distances)
+  - name: NASA Planetary Fact Sheet
+    url: https://nssdc.gsfc.nasa.gov/planetary/factsheet/
+    license: public domain (US government)
+    usage: verification of numerical data
+
+asset_sources:
+  - type: planet_illustrations
+    source: custom pixel art
+    license: original work
+    note: "Generate via ComfyUI"
+
+# === VERIFIED SOURCE DATA (from Wikidata SPARQL + Wikipedia API, 2026-03-24) ===
+
+source_data:
+  planets:
+    Mercury:
+      wikidata_id: Q308
+      mass_1e21_kg: 330
+      radius_km: 2439.7
+      semi_major_axis_AU: 0.387
+      orbital_period_days: 87.969
+      rotation_period_hours: 1407.6  # 58.65 Earth days
+      known_moons: 0
+      ring_system: false
+      wikipedia: https://en.wikipedia.org/wiki/Mercury_(planet)
+      notes: "Smallest planet. Extreme temperature swings (-180C to 430C). Most cratered."
+
+    Venus:
+      wikidata_id: Q313
+      mass_1e21_kg: 4867.5
+      radius_km: 6051.8
+      semi_major_axis_AU: 0.723
+      orbital_period_days: 224.7
+      rotation_period_hours: -5832.5  # negative = retrograde, 243 Earth days
+      surface_temp_C: 464
+      known_moons: 0
+      ring_system: false
+      wikipedia: https://en.wikipedia.org/wiki/Venus
+      notes: "Hottest planet (464C avg). Retrograde rotation. Day longer than year (243 vs 225 days). Thick CO2 atmosphere. 'Morning/Evening Star'."
+
+    Earth:
+      wikidata_id: Q2
+      mass_1e21_kg: 5972.37
+      radius_km: 6371
+      semi_major_axis_AU: 1.0
+      orbital_period_days: 365.256
+      rotation_period_hours: 24
+      known_moons: 1
+      ring_system: false
+      wikipedia: https://en.wikipedia.org/wiki/Earth
+      notes: "Only planet with confirmed liquid surface water. Only planet not named after a god. 3rd from Sun."
+
+    Mars:
+      wikidata_id: Q111
+      mass_1e21_kg: 641.71
+      radius_km: 3389.5
+      semi_major_axis_AU: 1.524
+      orbital_period_days: 686.98
+      rotation_period_hours: 24.623
+      known_moons: 2  # Phobos and Deimos
+      ring_system: false
+      wikipedia: https://en.wikipedia.org/wiki/Mars
+      notes: "Red color from iron oxide. Olympus Mons (tallest volcano, 21.9km). Valles Marineris (largest canyon, 4000km). Evidence of ancient water."
+
+    Jupiter:
+      wikidata_id: Q319
+      mass_1e21_kg: 1898130
+      radius_km: 69911
+      semi_major_axis_AU: 5.203
+      orbital_period_days: 4332.589
+      rotation_period_hours: 9.9
+      known_moons: 101  # Wikipedia 2026-03-16: 101 known
+      ring_system: true  # faint
+      wikipedia: https://en.wikipedia.org/wiki/Jupiter
+      notes: "Largest planet. Great Red Spot (storm > Earth, centuries old). Galilean moons (Io, Europa, Ganymede, Callisto). Could fit all other planets inside. Faint rings."
+
+    Saturn:
+      wikidata_id: Q193
+      mass_1e21_kg: 568360
+      radius_km: 58232  # mean
+      semi_major_axis_AU: 9.537
+      orbital_period_days: 10757.7
+      rotation_period_hours: 10.7
+      known_moons: 285  # Wikipedia: 285 confirmed, most of any planet
+      ring_system: true  # prominent
+      density_g_cm3: 0.687  # less than water (1.0)
+      wikipedia: https://en.wikipedia.org/wiki/Saturn
+      notes: "Most prominent rings. Could float in water (density 0.687). Most confirmed moons (285). Rings mostly ice and rock. Second largest planet."
+
+    Uranus:
+      wikidata_id: Q324
+      mass_1e21_kg: 86810
+      radius_km: 25362  # mean
+      semi_major_axis_AU: 19.189
+      orbital_period_days: 30688.5  # ~84 Earth years
+      rotation_period_hours: 17
+      axial_tilt_degrees: 97.77
+      known_moons: 29  # Wikipedia: 29 known (27 named)
+      ring_system: true  # faint
+      wikipedia: https://en.wikipedia.org/wiki/Uranus
+      notes: "Tilted ~98 degrees (rolls on side). Ice giant. Discovered 1781 by William Herschel (first planet by telescope). Blue-green from methane."
+
+    Neptune:
+      wikidata_id: Q332
+      mass_1e21_kg: 102430
+      radius_km: 24622  # mean
+      semi_major_axis_AU: 30.07
+      orbital_period_days: 60193.2  # ~164.8 Earth years
+      rotation_period_hours: 16
+      known_moons: 16
+      ring_system: true  # faint
+      wikipedia: https://en.wikipedia.org/wiki/Neptune
+      notes: "Predicted mathematically before observed (Le Verrier 1846). Strongest winds (~2100 km/h). Farthest planet. Has retrograde moon Triton."
+
+    Pluto:
+      wikidata_id: Q339
+      mass_1e21_kg: 13.05
+      radius_km: 1185
+      semi_major_axis_AU: 39.482
+      orbital_period_days: 90553  # ~248 years
+      rotation_period_hours: 153.3  # 6.39 days
+      known_moons: 5
+      wikipedia: https://en.wikipedia.org/wiki/Pluto
+      notes: "Dwarf planet since 2006. Smaller than Earth's Moon (1185km vs 1737km). Heart-shaped nitrogen ice (Tombaugh Regio). 5 moons."
+
+  moons:
+    Moon:
+      wikidata_id: Q405
+      parent: Earth
+      radius_km: 1737.4
+      mass_1e21_kg: 73.48
+      orbital_period_days: 27.32
+      wikipedia: https://en.wikipedia.org/wiki/Moon
+      notes: "5th largest moon. Giant impact formation (Theia hypothesis). Only natural satellite with human visitors."
+
+    Io:
+      wikidata_id: Q3123
+      parent: Jupiter
+      radius_km: 1821.6
+      mass_1e21_kg: 89.3
+      orbital_period_days: 1.769
+      discovered_by: Galileo Galilei
+      discovered_year: 1610
+      wikipedia: https://en.wikipedia.org/wiki/Io_(moon)
+      notes: "Most volcanically active body in solar system. Tidal heating from Jupiter. Surface constantly reshaped (no old craters)."
+
+    Europa:
+      wikidata_id: Q3169
+      parent: Jupiter
+      radius_km: 1560.8
+      mass_1e21_kg: 48.0
+      orbital_period_days: 3.551
+      discovered_by: Galileo Galilei
+      discovered_year: 1610
+      wikipedia: https://en.wikipedia.org/wiki/Europa_(moon)
+      notes: "Subsurface ocean under ice. Prime candidate for extraterrestrial life. More water than Earth's oceans. Smooth ice surface (few craters)."
+
+    Ganymede:
+      wikidata_id: Q3143
+      parent: Jupiter
+      radius_km: 2631
+      mass_1e21_kg: 148.15
+      orbital_period_days: 7.154
+      discovered_by: Galileo Galilei
+      discovered_year: 1610
+      wikipedia: https://en.wikipedia.org/wiki/Ganymede_(moon)
+      notes: "Largest moon in solar system (larger than Mercury at 2440km). Only moon with own magnetic field."
+
+    Titan:
+      wikidata_id: Q2565
+      parent: Saturn
+      radius_km: 2574
+      mass_1e21_kg: 134.52
+      orbital_period_days: 15.945
+      discovered_by: Christiaan Huygens
+      discovered_year: 1655
+      wikipedia: https://en.wikipedia.org/wiki/Titan_(moon)
+      notes: "Only moon with thick atmosphere. Liquid methane lakes/rivers on surface. 2nd largest moon. Huygens probe landed 2005."
+
+    Enceladus:
+      wikidata_id: Q3303
+      parent: Saturn
+      radius_km: 252.1
+      mass_1e21_kg: 0.108
+      orbital_period_days: 1.37
+      discovered_by: William Herschel
+      discovered_year: 1789
+      wikipedia: https://en.wikipedia.org/wiki/Enceladus
+      notes: "Water geysers from south pole. Confirmed subsurface ocean. Tiny (252km) but one of brightest objects (reflective ice)."
+
+    Triton:
+      wikidata_id: Q3359
+      parent: Neptune
+      radius_km: 1353.4
+      mass_1e21_kg: 21.39
+      orbital_period_days: -5.877  # negative = retrograde
+      discovered_by: William Lassell
+      discovered_year: 1846
+      wikipedia: https://en.wikipedia.org/wiki/Triton_(moon)
+      notes: "Retrograde orbit (orbits backward). Likely captured Kuiper Belt object. Largest of Neptune's 16 moons."
+
+    Phobos:
+      wikidata_id: Q7547
+      parent: Mars
+      radius_km: 11.267  # irregular, mean
+      mass_1e21_kg: 0.01066
+      orbital_period_days: 0.319
+      discovered_by: Asaph Hall
+      discovered_year: 1877
+      wikipedia: https://en.wikipedia.org/wiki/Phobos_(moon)
+      notes: "Larger of Mars's 2 moons. Orbits very close (6000km above surface). Slowly spiraling inward."
+
+    Charon:
+      wikidata_id: Q3488
+      parent: Pluto
+      radius_km: 606
+      mass_1e21_kg: 1.586
+      discovered_year: 1978
+      wikipedia: https://en.wikipedia.org/wiki/Charon_(moon)
+      notes: "Largest of Pluto's 5 moons. So large relative to Pluto some call it a binary system. 6th largest trans-Neptunian object."
+
+  missions:
+    Voyager_2:
+      wikipedia: https://en.wikipedia.org/wiki/Voyager_2
+      launch_date: 1977-08-20
+      agency: NASA
+      destinations: [Jupiter, Saturn, Uranus, Neptune]
+      key_facts:
+        - "Only spacecraft to visit both ice giants (Uranus and Neptune)"
+        - "Part of the Grand Tour — visited all 4 outer planets"
+        - "Launched 16 days before twin Voyager 1"
+        - "Still sending data from interstellar space"
+        - "Third spacecraft to achieve solar escape velocity"
+
+    Cassini_Huygens:
+      wikipedia: https://en.wikipedia.org/wiki/Cassini–Huygens
+      launch_date: 1997-10-15
+      agency: NASA/ESA/ASI
+      destinations: [Saturn]
+      key_facts:
+        - "Orbited Saturn 2004-2017 (13 years)"
+        - "Huygens probe landed on Titan — first landing in outer solar system"
+        - "Fourth probe to visit Saturn, first to orbit"
+        - "Discovered water geysers on Enceladus"
+
+    Curiosity:
+      wikipedia: https://en.wikipedia.org/wiki/Curiosity_(rover)
+      launch_date: 2011-11-26
+      agency: NASA
+      destinations: [Mars]
+      key_facts:
+        - "Exploring Gale crater and Mount Sharp"
+        - "Car-sized rover, nuclear powered (RTG)"
+        - "Found organic molecules on Mars"
+        - "Operating 10+ years past original 2-year mission"
+
+    New_Horizons:
+      wikipedia: https://en.wikipedia.org/wiki/New_Horizons
+      launch_date: 2006-01-19
+      agency: NASA
+      destinations: [Pluto, Arrokoth]
+      key_facts:
+        - "First spacecraft to fly by Pluto (2015)"
+        - "Revealed heart-shaped nitrogen ice plain (Tombaugh Regio)"
+        - "Also flew past Kuiper Belt object Arrokoth (2019)"
+        - "Fastest spacecraft launched from Earth"
+
+    Juno:
+      wikipedia: https://en.wikipedia.org/wiki/Juno_(spacecraft)
+      launch_date: 2011-08-05
+      agency: NASA
+      destinations: [Jupiter]
+      key_facts:
+        - "Entered Jupiter polar orbit July 2016"
+        - "Studying atmosphere, magnetic field, interior structure"
+        - "Built by Lockheed Martin"
+        - "Part of New Frontiers program"
+
+    Pioneer_10:
+      wikipedia: https://en.wikipedia.org/wiki/Pioneer_10
+      launch_date: 1972-03-03
+      agency: NASA
+      destinations: [Jupiter]
+      key_facts:
+        - "First spacecraft through asteroid belt"
+        - "First Jupiter flyby"
+        - "First of 5 spacecraft to achieve solar escape velocity"
+        - "Carried Pioneer plaque (message for extraterrestrials)"
+
+    MESSENGER:
+      wikipedia: https://en.wikipedia.org/wiki/MESSENGER
+      launch_date: 2004-08-03
+      agency: NASA
+      destinations: [Mercury]
+      key_facts:
+        - "First spacecraft to orbit Mercury (2011-2015)"
+        - "Mapped entire surface of Mercury"
+        - "Studied chemical composition, geology, magnetic field"
+        - "Name is backronym: Mercury Surface, Space Environment, Geochemistry, and Ranging"
+
+# === ANSWER TYPE POOLS ===
+
+answer_type_pools:
+  - id: planet_names
+    format: name
+    members: [Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune]
+    count: 8
+    note: "Primary pool. Used in cross-pool templates for moon/mission knowledge."
+
+  - id: moon_names
+    format: name
+    members: [The Moon, Io, Europa, Ganymede, Titan, Enceladus, Triton, Phobos, Charon]
+    count: 9
+    note: "Players confuse which moon orbits which planet and has which property."
+
+  - id: mission_names
+    format: name
+    members: [Voyager 2, Cassini-Huygens, Curiosity, New Horizons, Juno, Pioneer 10, MESSENGER]
+    count: 7
+    note: "Players confuse which mission visited which destination."
+
+  - id: bracket_numbers
+    format: bracket_number
+    note: "Runtime-generated numeric distractors for: moon counts, distances, temperatures, sizes, years."
+
+# === QUESTION TEMPLATES ===
+
+question_templates:
+  # planet_names pool
+  - id: planet_from_ordinal
+    format: "What is the {ordinal} planet from the Sun?"
+    answer_pool: planet_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: planet_from_nickname
+    format: "Which planet is known as the {nickname}?"
+    answer_pool: planet_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: planet_from_feature
+    format: "Which planet has {distinctive_feature}?"
+    answer_pool: planet_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: planet_from_moon
+    format: "Which planet does {moon_name} orbit?"
+    answer_pool: planet_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: planet_from_mission
+    format: "Which planet did {mission} visit/orbit?"
+    answer_pool: planet_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: planet_from_neighbors
+    format: "Which planet is between {planet_a} and {planet_b}?"
+    answer_pool: planet_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  - id: planet_from_superlative
+    format: "Which planet has the highest/lowest/most {property}?"
+    answer_pool: planet_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  - id: planet_from_counterintuitive
+    format: "Counterintuitive comparative questions"
+    answer_pool: planet_names
+    available_from_mastery: 4
+    difficulty: 5
+
+  # moon_names pool
+  - id: moon_from_property
+    format: "Which moon has {distinctive_property}?"
+    answer_pool: moon_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: moon_from_planet
+    format: "Which of these is a moon of {planet}?"
+    answer_pool: moon_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: moon_from_superlative
+    format: "What is the largest/most {property} moon?"
+    answer_pool: moon_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: moon_from_distinction
+    format: "Which moon has {specific_feature}?"
+    answer_pool: moon_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  # mission_names pool
+  - id: mission_from_destination
+    format: "Which mission was the first to visit {body}?"
+    answer_pool: mission_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: mission_from_achievement
+    format: "Which mission {achievement}?"
+    answer_pool: mission_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  - id: mission_from_unique
+    format: "Specific unique achievement questions"
+    answer_pool: mission_names
+    available_from_mastery: 4
+    difficulty: 5
+
+  # bracket number templates
+  - id: count_moons
+    format: "How many known moons does {planet} have?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: ordinal_from_planet
+    format: "What number planet from the Sun is {planet}?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 1
+    difficulty: 2
+
+# === SEEDED CONFUSION PAIRS ===
+
+common_confusions:
+  - ["Jupiter", "Saturn"]         # Both gas giants; mix up properties (moons, rings, storms)
+  - ["Uranus", "Neptune"]         # Both ice giants; similar size/color; which is tilted
+  - ["Mercury", "Venus"]          # Inner planets; temperature confusion (Venus hotter!)
+  - ["Europa", "Enceladus"]       # Both icy moons with subsurface oceans
+  - ["Ganymede", "Titan"]         # Both "largest moon" contenders
+  - ["Io", "Europa"]              # Both Jupiter moons; fire vs ice
+  - ["Phobos", "Deimos"]          # Both Mars moons (Deimos appears as distractor)
+  - ["Voyager 1", "Voyager 2"]    # Which went where (Voyager 1 as distractor)
+  - ["Mars", "Venus"]             # Earth's neighbors; atmosphere contrast
+
+# === SYNONYM GROUPS ===
+
+synonym_groups:
+  - id: venus_names
+    fact_ids: []  # facts using "Venus" / "Morning Star" / "Evening Star"
+    reason: "Same planet, different names"
+  - id: mars_names
+    fact_ids: []  # facts using "Mars" / "Red Planet"
+    reason: "Nickname = planet"
+  - id: moon_names_group
+    fact_ids: []  # facts using "the Moon" / "Luna"
+    reason: "Same body, different names"
+
+# === DIFFICULTY TIERS ===
+
+difficulty_tiers:
+  easy:  # universally known
+    - Mercury (closest), Venus (hottest), Earth (water), Mars (red), Jupiter (largest), Saturn (rings)
+  medium:  # commonly known
+    - Uranus (tilted), Neptune (farthest), Great Red Spot, Olympus Mons, Titan, Europa
+  hard:  # requires specific knowledge
+    - Enceladus geysers, Triton retrograde, Pioneer 10, MESSENGER, Neptune predicted, Venus day>year
+
+volatile_facts: []
+# No volatile facts - solar system data is stable

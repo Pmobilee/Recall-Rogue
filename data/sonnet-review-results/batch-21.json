@@ -1,0 +1,174 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 168,
+  "issues": [
+    {
+      "id": "science-gold-reactivity",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The answer claims platinum is 'the only metal less reactive than gold' and the explanation calls gold 'second lowest in the reactivity series.' This is false. Multiple metals are less reactive than gold: palladium, iridium, osmium, rhodium, and ruthenium are all below gold on the electrochemical/reactivity series. Platinum is among the least reactive, but it is not the sole metal less reactive than gold.",
+      "suggested_fix": "Change correct_answer to something like 'Platinum group metals' or reframe the question to ask which specific metal is typically ranked just below gold in the standard reactivity series (where platinum is listed immediately below gold in many textbook versions). Alternatively, rewrite as: 'Gold resists almost all acids — what rare mixture of two acids is required to dissolve it?' and pivot to the aqua regia angle. If keeping this question, fix explanation: remove 'second lowest' and 'only platinum ranked as less reactive.'"
+    },
+    {
+      "id": "science-calcium-most-abundant-body-metal",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor list contains 'Phosphorus' twice (positions 7 and 8). Phosphorus is not a metal anyway, so both entries are doubly wrong as distractors for 'most abundant metal in the human body.'",
+      "suggested_fix": "Remove the duplicate 'Phosphorus' entry. Replace with a valid metal distractor such as 'Zinc' or 'Potassium' (making sure not to duplicate other existing distractors)."
+    },
+    {
+      "id": "science-tin-cry",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is simply 'Copper' — clearly a data-entry error. The question asks for the name of the sound tin makes when bent. 'Copper' is the name of an element, not a sound name, and makes no sense as a distractor in this context.",
+      "suggested_fix": "Replace 'Copper' with a plausible but wrong sound-name distractor, e.g. 'Tin groan', 'Metal whine', or 'Tin shriek'."
+    },
+    {
+      "id": "science-zinc-brass-ancient",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The last distractor is 'Silver' — an element name, not a time period. The question asks 'How long ago was brass first used by humans?' so all distractors should be time durations (e.g. '1,000 years ago'). 'Silver' is clearly a copy-paste or generation error.",
+      "suggested_fix": "Replace 'Silver' with a plausible wrong time period, e.g. '4,000 years ago' or '8,000 years ago'."
+    },
+    {
+      "id": "sciences-astatine-rarest-element",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question answer is 'Less than {1} gram' but the explanation directly contradicts this: 'approximately 25 grams of astatine-210 exists in the Earth's crust.' These two statements cannot both be true. Wikipedia's figure is approximately 25 grams of astatine occurring naturally at any given time, not less than 1 gram.",
+      "suggested_fix": "Fix the correct_answer to '{25} grams' (or 'About 25 grams') to match both Wikipedia and the explanation. Or, if the intended answer is truly less than 1 gram (citing a different isotope breakdown), rewrite the explanation to match and remove the contradicting '25 grams' sentence."
+    },
+    {
+      "id": "science-season-earth-axial-tilt",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-exact duplicate of 'sciences-seasons-caused-by-tilt' (id). Both ask what causes Earth's seasons, both answer 'Earth's axial tilt', and both list nearly identical distractors. Having both in the database will cause the same question to appear twice to players.",
+      "suggested_fix": "Remove one of the two duplicate facts. The 'sciences-seasons-caused-by-tilt' version has a slightly better explanation (mentions the 23.5° figure and debunks the distance misconception explicitly). Recommend keeping that one and deleting 'science-season-earth-axial-tilt'."
+    },
+    {
+      "id": "sciences-seasons-caused-by-tilt",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'science-season-earth-axial-tilt'. See that entry for details.",
+      "suggested_fix": "Keep this version (better explanation), delete 'science-season-earth-axial-tilt'."
+    },
+    {
+      "id": "sciences-glaciers-freshwater-storage",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'natural_sciences-glacier-freshwater'. Both ask what percentage of Earth's fresh water is stored in glaciers and ice sheets, both answer approximately 69%.",
+      "suggested_fix": "Remove one. The 'sciences-glaciers-freshwater-storage' version has a richer explanation (mentions Antarctica's 61% share and climate change context). Recommend keeping that one and deleting 'natural_sciences-glacier-freshwater'."
+    },
+    {
+      "id": "natural_sciences-glacier-freshwater",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of 'sciences-glaciers-freshwater-storage'. See that entry for details.",
+      "suggested_fix": "Delete this version; keep 'sciences-glaciers-freshwater-storage'."
+    },
+    {
+      "id": "sciences-schrodinger-cat",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'natural_sciences-schrodinger-cat' and 'natural_sciences-schrodinger-cat' (id). All three facts are about Schrödinger's cat thought experiment. 'sciences-schrodinger-cat' asks 'What famous thought experiment shows that a quantum particle can be in two states at once?' — 'natural_sciences-schrodinger-cat' asks 'What did Schrödinger's 1935 thought experiment use to illustrate quantum superposition?' — 'natural_sciences-schrodinger-entanglement-1935' asks 'What paradox-revealing thought experiment did Schrödinger devise in 1935?' All three answers converge on Schrödinger's cat. Three near-identical questions is excessive.",
+      "suggested_fix": "Consolidate to one Schrödinger's cat fact. The best is 'sciences-schrodinger-cat' (clearest framing). Delete 'natural_sciences-schrodinger-cat' and 'natural_sciences-schrodinger-entanglement-1935'."
+    },
+    {
+      "id": "natural_sciences-schrodinger-cat",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Duplicate of 'sciences-schrodinger-cat'. See that entry. Additionally, the answer 'A cat' is very thin — the question ('What did Schrödinger's 1935 thought experiment use...') technically has the correct answer, but 'A cat' alone teaches nothing. The other version is more educational.",
+      "suggested_fix": "Delete this fact in favour of 'sciences-schrodinger-cat'."
+    },
+    {
+      "id": "natural_sciences-schrodinger-entanglement-1935",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Third near-duplicate of the Schrödinger's cat theme. Question asks 'What paradox-revealing thought experiment did Schrödinger devise in 1935?' Answer is 'Schrödinger's cat'. Redundant given the other two facts.",
+      "suggested_fix": "Delete this fact in favour of 'sciences-schrodinger-cat'."
+    },
+    {
+      "id": "sciences-neptune-predicted-before-found",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'natural_sciences-neptune-predicted-by-math'. Both ask about Neptune being predicted mathematically before observation. 'sciences-neptune-predicted-before-found' asks what made Neptune's discovery 'historically unique' while 'natural_sciences-neptune-predicted-by-math' asks how Neptune's location was determined before telescope observation. Both answers and explanations are nearly identical.",
+      "suggested_fix": "Remove one. The 'sciences-neptune-predicted-before-found' version is slightly richer (names Le Verrier, Adams, and Galle). Keep that one; delete 'natural_sciences-neptune-predicted-by-math'."
+    },
+    {
+      "id": "natural_sciences-neptune-predicted-by-math",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'sciences-neptune-predicted-before-found'. See that entry.",
+      "suggested_fix": "Delete this fact; keep 'sciences-neptune-predicted-before-found'."
+    },
+    {
+      "id": "sciences-rontgen-xray-discovery",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'natural_sciences-rontgen-xray' and 'science-rontgen-first-nobel'. 'sciences-rontgen-xray-discovery' asks what Röntgen accidentally discovered in 1895; 'natural_sciences-rontgen-xray' asks why he named them X-rays. These are distinct enough to keep both. However, combined with 'science-rontgen-first-nobel' and 'science-rontgen-element-named', there are now four Röntgen facts — borderline over-represented for one person.",
+      "suggested_fix": "No deletion required, but flag for future curation: Röntgen has 4 facts in the DB. Consider whether all four are needed or if one can be retired."
+    },
+    {
+      "id": "science-sand-concrete",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Three of the eight distractors refer to essentially the same thing: 'Beach sand', 'Coastal sand', and 'Sea sand' are all near-synonymous. This reduces effective distractor diversity and makes the question easier by padding with non-distinct options.",
+      "suggested_fix": "Replace two of the three synonymous entries with more distinct wrong answers, e.g. 'Crushed glass sand' or 'Black volcanic sand', to give players genuinely different choices."
+    },
+    {
+      "id": "science-trigonometry-india-sine",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under category_l2 'physics_mechanics'. History of mathematics belongs in mathematics, not physics mechanics.",
+      "suggested_fix": "Change category_l2 to 'mathematics' or the closest available math subcategory."
+    },
+    {
+      "id": "science-algorithm-al-khwarizmi-name",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under 'physics_mechanics'. The origin of the word 'algorithm' is a history-of-mathematics/computer-science topic, not physics mechanics.",
+      "suggested_fix": "Change category_l2 to 'mathematics' or 'computer_science'."
+    },
+    {
+      "id": "science-algorithm-heuristic-distinction",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under 'physics_mechanics'. The distinction between algorithms and heuristics is computer science / mathematics, not physics.",
+      "suggested_fix": "Change category_l2 to 'mathematics' or 'computer_science'."
+    },
+    {
+      "id": "science-zero-indian-origin-fibonacci",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under 'physics_mechanics'. History of zero and number systems is mathematics, not physics mechanics.",
+      "suggested_fix": "Change category_l2 to 'mathematics'."
+    },
+    {
+      "id": "science-zero-dividing-undefined",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under 'physics_mechanics'. Division by zero is a mathematical concept, not physics.",
+      "suggested_fix": "Change category_l2 to 'mathematics'."
+    },
+    {
+      "id": "science-zero-additive-identity",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under 'physics_mechanics'. The additive identity is an abstract algebra / mathematics concept, not physics mechanics.",
+      "suggested_fix": "Change category_l2 to 'mathematics'."
+    },
+    {
+      "id": "natural_sciences-plate-tectonics-speed",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer is formatted as '{2}–{5} cm per year' with two separate brace-wrapped numbers. The game's numerical answer system expects a single braced value. This dual-brace format may not render or score correctly.",
+      "suggested_fix": "Use a single representative value, e.g. '{2} to 5 cm per year' or '{5} cm per year (maximum typical speed)', or restructure as a non-numerical distractor question asking players to identify the correct range from options."
+    },
+    {
+      "id": "sciences-organic-chemistry-carbon",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "States 'Over 10 million organic compounds are known.' The companion fact 'science-carbon-200m-compounds' in this same batch states 'about 200 million' carbon compounds have been described and indexed. These two facts directly contradict each other within the same batch. The 200 million figure (from CAS registry) is more current and accurate; the 10 million figure is significantly out of date.",
+      "suggested_fix": "Update the answer and explanation of 'sciences-organic-chemistry-carbon' to use the 200 million figure, aligning it with 'science-carbon-200m-compounds', or differentiate clearly (e.g., note that 10 million is a specific subset of synthesizable/known unique structures vs. 200 million indexed entries)."
+    }
+  ]
+}

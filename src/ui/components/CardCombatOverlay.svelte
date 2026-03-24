@@ -57,6 +57,13 @@
   import ExhaustPileViewer from './ExhaustPileViewer.svelte'
   import MultiChoicePopup from './MultiChoicePopup.svelte'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
+  import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../../data/curatedDeckStore'
+  import { selectFactForCharge } from '../../services/curatedFactSelector'
+  import { selectQuestionTemplate } from '../../services/questionTemplateSelector'
+  import { selectDistractors, getDistractorCount } from '../../services/curatedDistractorSelector'
+  import { getConfusionMatrix, saveConfusionMatrix } from '../../services/confusionMatrixStore'
+  import { isNumericalAnswer, getNumericalDistractors, displayAnswer as displayNumericalAnswer } from '../../services/numericalDistractorService'
+  import type { Fact } from '../../data/types'
 
   interface Props {
     turnState: TurnState | null
@@ -674,11 +681,27 @@
   function showWowFactor(card: Card): void {
     if (wowFactorCount >= WOW_FACTOR_MAX_PER_ENCOUNTER) return
     if (card.tier !== '1') return
-    const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
-    if (!fact?.wowFactor) return
+
+    let wowText: string | null = null
+
+    // Study mode: look up the curated deck fact by __studyFactId for its wowFactor/explanation
+    const runState = $activeRunState
+    if (runState?.deckMode?.type === 'study') {
+      const studyFactId = (card as any).__studyFactId as string | undefined
+      if (studyFactId && runState.deckMode.deckId) {
+        const deckFact = getCuratedDeckFact(runState.deckMode.deckId, studyFactId)
+        wowText = (deckFact as any)?.wowFactor ?? deckFact?.explanation ?? null
+      }
+    } else {
+      // Trivia mode: use the facts DB
+      const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
+      wowText = fact?.wowFactor ?? null
+    }
+
+    if (!wowText) return
 
     wowFactorCount++
-    wowFactorText = fact.wowFactor
+    wowFactorText = wowText
     wowFactorVisible = true
 
     // fade in 200ms (CSS), hold 5s, fade out 300ms (CSS), cleanup
@@ -855,7 +878,100 @@
     return [...primary, ...(isRunRngActive() ? seededShuffled(getRunRng('quiz'), secondaryPool) : shuffled(secondaryPool)).slice(0, distractorCount - primary.length)]
   }
 
+  /**
+   * Study mode quiz: dynamically select fact, template, and distractors from curated deck.
+   */
+  function getStudyModeQuiz(card: Card, runState: NonNullable<typeof $activeRunState>): QuizData {
+    const deckMode = runState.deckMode
+    if (!deckMode || deckMode.type !== 'study') {
+      return { question: 'Error: not in study mode', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
+    }
+
+    const deck = getCuratedDeck(deckMode.deckId)
+    if (!deck) {
+      return { question: 'Error: deck not loaded', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
+    }
+
+    const tracker = runState.inRunFactTracker!
+    const factPool = getCuratedDeckFacts(deckMode.deckId, deckMode.subDeckId)
+
+    if (factPool.length === 0) {
+      return { question: 'Error: empty deck', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
+    }
+
+    // 1. Select a fact dynamically
+    const cardMastery = card.masteryLevel ?? 0
+    const { fact } = selectFactForCharge(factPool, tracker, cardMastery, runState.runSeed)
+
+    // 2. Select a question template
+    const recentTemplates = tracker.getRecentTemplateIds()
+    const templateResult = selectQuestionTemplate(fact, deck, cardMastery, recentTemplates, runState.runSeed)
+    tracker.recordTemplateUsed(templateResult.template.id)
+
+    // 3. Select distractors from the answer type pool
+    const distractorCount = getDistractorCount(cardMastery)
+    const pool = deck.answerTypePools.find(p => p.id === templateResult.answerPoolId)
+
+    let distractorAnswers: string[]
+    let distractorMap: Record<string, string> = {}
+
+    // Bracket-answer facts (e.g. "{8}" or "About {8} minutes") use runtime
+    // numerical distractor generation instead of the pool-based selector.
+    if (isNumericalAnswer(fact.correctAnswer)) {
+      const factAdapter = { id: fact.id, correctAnswer: fact.correctAnswer } as Fact
+      distractorAnswers = getNumericalDistractors(factAdapter, distractorCount)
+      // distractorMap stays empty — numerical distractors have no deck fact IDs
+    } else if (pool) {
+      const confusionMatrix = getConfusionMatrix()
+      const { distractors } = selectDistractors(
+        fact, pool, deck.facts, deck.synonymGroups,
+        confusionMatrix, tracker, distractorCount, cardMastery
+      )
+      distractorAnswers = distractors.map(d => d.correctAnswer)
+      // Build a reverse map: answer text (lowercased) → distractor fact ID
+      // Used in handleAnswer to identify which fact the player confused the target with
+      for (const d of distractors) {
+        distractorMap[d.correctAnswer.toLowerCase()] = d.id
+      }
+    } else {
+      // Fallback to pre-generated distractors (no fact IDs available)
+      distractorAnswers = fact.distractors.slice(0, distractorCount)
+    }
+
+    // Strip brace markers from correct answer for display
+    const correctAnswerDisplay = displayNumericalAnswer(templateResult.correctAnswer)
+
+    // 4. Shuffle answers — deduplicate distractors that match the correct answer first
+    const cleanDistractors = distractorAnswers.filter(
+      d => d.toLowerCase() !== correctAnswerDisplay.toLowerCase()
+    )
+    const allAnswers = [...cleanDistractors]
+    const insertIdx = Math.floor((isRunRngActive() ? getRunRng('quiz').next() : Math.random()) * (allAnswers.length + 1))
+    allAnswers.splice(insertIdx, 0, correctAnswerDisplay)
+
+    // 5. Store the dynamically selected fact ID on the card for FSRS tracking
+    // This is a side effect but necessary — the card needs to know which fact was asked
+    ;(card as any).__studyFactId = fact.id
+    ;(card as any).__studyFactCorrectAnswer = correctAnswerDisplay
+    ;(card as any).__studyDistractorMap = distractorMap
+
+    return {
+      question: templateResult.renderedQuestion,
+      answers: allAnswers,
+      correctAnswer: correctAnswerDisplay,
+      variantIndex: 0,
+      acceptableAnswers: fact.acceptableAlternatives.length > 0 ? fact.acceptableAlternatives : undefined,
+    }
+  }
+
   function getQuizForCard(card: Card, optionCount: number): QuizData {
+    // Study mode: dynamic fact assignment from curated deck
+    const runState = $activeRunState
+    if (runState?.deckMode?.type === 'study' && runState.inRunFactTracker) {
+      return getStudyModeQuiz(card, runState)
+    }
+
+    // === Existing trivia mode code below (unchanged) ===
     const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
     if (!fact) {
       return {
@@ -1466,6 +1582,36 @@
     const previousTier = previousReviewState ? getCardTier(previousReviewState) : null
 
     resetCardFlow()
+
+    // Study mode: record result in in-run tracker and confusion matrix
+    const studyRunState = $activeRunState
+    if (studyRunState?.deckMode?.type === 'study' && studyRunState.inRunFactTracker) {
+      const studyFactId = (card as any).__studyFactId as string | undefined
+      if (studyFactId) {
+        const selectedAnswerText = answerIndex >= 0 && committedQuizData
+          ? committedQuizData.answers[answerIndex]
+          : undefined
+        const distractorMap = (card as any).__studyDistractorMap as Record<string, string> | undefined
+        const confusedFactId = (!isCorrect && selectedAnswerText && distractorMap)
+          ? distractorMap[selectedAnswerText.toLowerCase()]
+          : undefined
+
+        studyRunState.inRunFactTracker.recordResult(
+          studyFactId,
+          isCorrect,
+          responseTimeMs ?? 0,
+          studyRunState.inRunFactTracker.getCurrentEncounter(),
+          confusedFactId,
+        )
+        studyRunState.inRunFactTracker.recordCharge(studyFactId, isCorrect)
+
+        if (!isCorrect && confusedFactId) {
+          const matrix = getConfusionMatrix()
+          matrix.recordConfusion(studyFactId, confusedFactId)
+          saveConfusionMatrix()
+        }
+      }
+    }
 
     if (!isCorrect) {
       // Wrong answer: fizzle (unchanged)
@@ -3209,35 +3355,15 @@
     display: none;
   }
 
-  /* Relics: top-left of arena — HORIZONTAL row */
+  /* AR-243: Hide combat-overlay relic tray in landscape — relics now in top bar */
   :global(.layout-landscape .relic-tray) {
-    position: fixed;
-    top: 4%;
-    left: 2%;
-    bottom: auto;
-    transform: none;
-    width: auto;
-    max-width: calc(400px * var(--layout-scale, 1));  /* 5 slots × ~72px + gaps */
-    flex-direction: row;
-    gap: calc(6px * var(--layout-scale, 1));
+    display: none !important;
   }
 
-  /* Landscape: constrain each relic slot to compact size */
-  :global(.layout-landscape .relic-slot) {
-    width: calc(52px * var(--layout-scale, 1)) !important;
-    height: calc(52px * var(--layout-scale, 1)) !important;
-    flex-shrink: 0;
-  }
-
-  :global(.layout-landscape .relic-icon) {
-    width: calc(40px * var(--layout-scale, 1)) !important;
-    height: calc(40px * var(--layout-scale, 1)) !important;
-  }
-
-  /* Enemy name: top-center of arena */
+  /* Enemy name: top-center of arena, offset below the persistent top bar */
   .layout-landscape .enemy-name-header {
     position: fixed;
-    top: 2%;
+    top: calc(var(--run-viewport-top, 0px) + 2%);
     left: 0;
     right: 0;
     text-align: center;
@@ -3246,18 +3372,18 @@
   }
 
   .layout-landscape .enemy-dialogue {
-    top: calc(48px * var(--layout-scale, 1));
+    top: calc(var(--run-viewport-top, 0px) + calc(48px * var(--layout-scale, 1)));
     max-width: calc(240px * var(--layout-scale, 1));
   }
 
   /* Intent bubble: left of HP bar — HP bar is centered at ~50% horizontal, 15% from top */
   .layout-landscape .enemy-intent-bubble {
     position: fixed;
-    top: 10%;
-    left: 25%;
-    right: auto;
+    top: 14%;
+    right: calc(50% + calc(100px * var(--layout-scale, 1)));
+    left: auto;
     bottom: auto;
-    transform: none;
+    transform: translateY(-50%);
   }
 
   /* Quiz-active landscape: enemy slides to right ~72% — reposition overlay elements to match */
@@ -3269,10 +3395,10 @@
   }
 
   .layout-landscape.quiz-active .enemy-intent-bubble {
-    left: 58%;
-    right: auto;
-    top: 12%;
-    transform: none;
+    left: auto;
+    right: calc(28% + calc(60px * var(--layout-scale, 1)));
+    top: 14%;
+    transform: translateY(-50%);
   }
 
   :global(.layout-landscape.quiz-active .status-effect-bar-enemy) {

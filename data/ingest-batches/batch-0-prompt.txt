@@ -1,0 +1,450 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 1.0
+**Date:** 2026-03-20
+**Used by:** All Sonnet workers generating knowledge facts from enriched entity data
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ADDITIONAL QUALITY ENFORCEMENT (CRITICAL)
+
+These rules override any defaults. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since
+3. **Distractors must NEVER be secretly correct** (e.g., 'Inanna' when answer is 'Ishtar' — same deity)
+4. **Distractors must use correct terminology** (e.g., 'winter solstice' not 'winter equinox')
+5. **Distractors must NOT follow repetitive patterns** (avoid 'Only X and Y' × 8)
+6. **Variants must be genuine perspective shifts**, not reworded versions of the main question
+7. **Reverse variants** should flip the question entirely (answer→entity, not entity→entity)
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (15 entities = 45 facts). Output as a single JSON array.
+
+### OCTOPUS
+**Domain:** animals_wildlife / marine_life
+
+**Wikipedia:** An octopus (pl.: octopuses or octopodes) is a soft-bodied, eight-limbed mollusc of the order Octopoda (, ok-TOP-ə-də). The order consists of some 300 species and is grouped within the class Cephalopoda with squids, cuttlefish, and nautiloids. Like other cephalopods, an octopus is bilaterally symmetric with two eyes and a beaked mouth at the centre point of the eight limbs. An octopus can radically deform its shape, enabling it to squeeze through small gaps. They trail their appendages behind them as they swim backwards. The siphon is used for respiration and locomotion (by water jet propulsion). Octopuses have a complex nervous system and excellent sight, and are among the most intelligent and behaviourally diverse invertebrates.
+Octopuses inhabit various ocean habitats, including coral reefs, pelagic waters, and the seabed; some live in the intertidal zone and others at abyssal depths. Most species grow quickly, mature early, and are short-lived. In most species, the male uses a specially-adapted arm to deliver sperm directly into the female's mantle cavity, after which he becomes senescent and dies, while the female deposits fertilised eggs in a den and cares for them until they hatch, after which she also dies. They are predators and hunt crustaceans, bivalves, gastropods and fish. Strategies to defend themselves against their own predators include expelling ink, camouflage, and threat displays, the ability to jet quickly through the water and hide, and deceit. All octopuses are venomous, but only the blue-ringed octopuses are known to be deadly to humans.
+Octopuses appear in mythology as sea monsters such as the kraken of Norway and the Akkorokamui of the Ainu, and possibly the Gorgon of ancient Greece. A battle with an octopus appears in Victor Hugo's book Toilers of the Sea. Octopuses appear in Japanese shunga erotic art. They are eaten and considered a delicacy by humans in many parts of the world, especially the Mediterranean and Asia.
+
+
+
+### HONEY BEE
+**Domain:** animals_wildlife / insects_arachnids
+
+**Wikipedia:** A honey bee (also spelled honeybee) is a eusocial flying insect from the genus Apis of the largest bee family, Apidae. Honey bees are known for their construction of perennial nests within cavities (i.e. beehives) containing hexagonal cells made of secreted wax, their large colony sizes, and their routine regurgitation of digested carbohydrates as surplus food storage in the form of honey, the lattermost of which distinguishes their hives as a prized foraging target of many mellivorous animals including honey badgers, bears and human hunter-gatherers. 
+Although honey bees represent only a small fraction of the roughly 20,000 known species of bees, they are the bee clade most familiar to humans and are also the most valuable beneficial insects to agriculture and horticulture. The best-known honey bee species is the western honey bee (Apis mellifera), which was domesticated and farmed (i.e. beekeeping) for honey production and crop pollination. The only other domesticated species is the eastern honey bee (Apis cerana), which are raised in South, Southeast and East Asia. 
+Only members of the genus Apis are true honey bees, but some other bee species also produce and store honey and have been kept by humans for that purpose, including the stingless bees belonging to the genus Melipona and the Indian stingless or dammar bee Tetragonula iridipennis. In addition to harvesting honey, modern humans also use beeswax in making candles, soap, lip balms and various cosmetics, as a lubricant and in mould-making using the lost wax process. Other honey bee secretions such as royal jelly and bee venom are used pharmaceutically, especially in alternative medicine.
+
+### AFRICAN ELEPHANT
+**Domain:** animals_wildlife / mammals
+
+**Wikipedia:** African elephants are members of the genus Loxodonta comprising two living elephant species, the African bush elephant (L. africana) and the smaller African forest elephant (L. cyclotis). Both are social herbivores with grey skin. However, they differ in the size and colour of their tusks as well as the shape and size of their ears and skulls.
+Both species are at a pertinent risk of extinction according to the IUCN Red List; as of 2021, the bush elephant is considered endangered while the forest elephant is considered critically endangered. They are threatened by habitat loss and fragmentation, along with poaching for the illegal ivory trade in several range countries.
+Loxodonta is one of two extant genera in the family Elephantidae. The name refers to the lozenge-shaped enamel of their molar teeth. Fossil remains of Loxodonta species have been found in Africa, spanning from the Late Miocene (from around 7–6 million years ago) onwards.
+
+
+
+### PEREGRINE FALCON
+**Domain:** animals_wildlife / birds
+
+**Wikipedia:** The peregrine falcon (Falco peregrinus), also referred to simply as the peregrine, is a bird of prey (raptor) in the family Falconidae known for its speed. A large, crow-sized falcon, it has a blue-grey back, barred white underparts and a black head. As is typical for bird-eating (avivore) raptors, peregrine falcons are sexually dimorphic, with females being considerably larger than males. Historically, the bird has also been known as the "black-cheeked falcon" in Australia, and the "duck hawk" in North America.
+The breeding range includes land regions from the Arctic tundra to the tropics. It can be found nearly everywhere on Earth, except extreme polar regions, very high mountains, and most tropical rainforests. The only major ice-free landmass from which it is entirely absent is New Zealand. That makes it the world's most widespread raptor and one of the most widely found wild bird species. In fact, the only land-based bird species found over a larger geographic area, domestic and feral pigeons, owe their success to human-led introduction. Both are domesticated forms of the rock dove, and are a major prey species for peregrine populations. Due to their greater abundance in cities than most other birds, feral pigeons support many peregrine populations as a staple food source, especially in urban settings.
+The peregrine is a highly successful example of urban wildlife in much of its range, taking advantage of tall buildings as nest sites, and an abundance of prey such as pigeons and ducks. Both the English and scientific names of the species mean "wandering falcon", referring to the migratory habits of many northern populations. A total of 18 or 19 regional subspecies are accepted, which vary in appearance. Disagreement existed in the past over whether the distinctive Barbary falcon was represented by two subspecies of Falco peregrinus or was a separate species, F. pelegrinoides, and several of the other subspecies were originally described as species. However, the difference in their appearance is very small, as is their genetic difference, being only about 0.6–0.8% genetically differentiated. That indicates the divergence is relatively recent, occurring during the Last Ice Age, and all major ornithological authorities now treat the Barbary falcon as a subspecies.
+Although its diet consists almost exclusively of medium-sized birds, the peregrine will sometimes hunt small mammals, small reptiles, or even insects. Reaching sexual maturity at one year, it mates for life and nests in a scrape, normally on cliff edges or, in recent times, on tall human-made structures. The peregrine falcon became an endangered species in many areas because of the widespread use of various pesticides, especially DDT. Since the ban on DDT from the early 1970s, populations have recovered, supported by large-scale protection of nesting places and releases to the wild.
+The peregrine falcon is a well-respected falconry bird due to its strong hunting ability, high trainabi
+
+### AXOLOTL
+**Domain:** animals_wildlife / reptiles_amphibians
+
+**Wikipedia:** The axolotl ( ; from Classical Nahuatl: āxōlōtl [aːˈʃoːloːtɬ] ; Ambystoma mexicanum) is a species of paedomorphic mole salamander. They mature into their terrestrial adult form without undergoing metamorphosis; the adults remain fully aquatic with obvious external gills. This trait, although somewhat unusual among the majority of amphibians, is not unique. Axolotls may be difficult to distinguish from the larval stage of other neotenic adult mole salamanders, such as mudpuppies (Necturus spp.) or the occasionally paedomorphic tiger salamander (A. tigrinum).
+Axolotls originally inhabited a system of interconnected wetlands and lakes in the highlands of Mexico. They were known to inhabit the smaller lakes of Xochimilco and Chalco and are presumed to have inhabited the larger lakes of Texcoco and Zumpango. These waterways were mostly drained by Spanish settlers after the conquest of the Aztec Empire, leading to the destruction of much of the axolotl's natural habitat, which is now largely occupied by Mexico City. Despite this, they remained abundant enough to form part of the staple in the diet of native Mexica during the colonial era. Today, due to continued urbanization in Mexico City, which causes pollution in the remaining waterways, as well as the introduction of invasive species such as tilapia and carp, the axolotls are now near extinction. The species has been listed as critically endangered in the wild, with a decreasing population of around 50 to 1,000 adult individuals, by the International Union for Conservation of Nature (IUCN), and is listed under Appendix II of the Convention on International Trade in Endangered Species (CITES).
+A large captive population of axolotls currently exists, with specimens used extensively in scientific research for their remarkable ability to regenerate parts of their body, including limbs, gills and parts of their eyes and brains. They are also used as model organisms. As aquarium technology has developed, axolotls have become a common exhibit in zoos and public aquariums and as an occasional pet in home aquariums. Axolotls are also a popular subject in contemporary culture, inspiring a number of works and characters in the media.
+
+
+
+### FRIDA KAHLO
+**Domain:** art_architecture / painting_visual
+
+**Wikipedia:** Magdalena Carmen Frida Kahlo y Calderón (Spanish pronunciation: [ˈfɾiða ˈkalo]; 6 July 1907 – 13 July 1954) was a Mexican painter known for her many portraits, self-portraits, and works inspired by the nature and artifacts of Mexico. Inspired by the country's popular culture, she employed a naïve folk art style to explore questions of identity, postcolonialism, gender, class, and race in Mexican society. Her paintings often had strong autobiographical elements and mixed realism with fantasy. In addition to belonging to the post-revolutionary Mexicayotl movement, which sought to define a Mexican identity, Kahlo has been described as a surrealist or magical realist. She is also known for painting about her experience of chronic pain. Her 1940 self-portrait titled The Dream (The Bed) holds the record for the most expensive work by a female artist ever auctioned at $54.7 million.
+Born to a German father and a mestiza mother (of Purépecha descent), Kahlo spent most of her childhood and adult life at La Casa Azul, her family home in Coyoacán – now publicly accessible as the Frida Kahlo Museum. Although she was disabled by polio as a child, Kahlo had been a promising student headed for medical school until being injured in a bus accident at the age of 18, which caused her lifelong pain and medical problems. During her recovery, she returned to her childhood interest in art with the idea of becoming an artist. Around the same time, she approached artist Diego Rivera, whom she had encountered several years prior when he was painting a mural in her school auditorium, to ask for his opinion whether she should pursue a career as a painter or find another means to support herself. According to Rivera, the two began their "courtship in earnest" shortly after this encounter.
+Kahlo's interests in politics and art led her to join the Mexican Communist Party in 1927, through which she once again met fellow Mexican artist Diego Rivera, according to Zelazko. The couple married in 1929 and spent the late 1920s and early 1930s travelling together in Mexico and the United States. During this time, she developed her artistic style, drawing her main inspiration from Mexican folk culture, and painted mostly small self-portraits that mixed elements from pre-Columbian and Catholic beliefs. Her paintings raised the interest of surrealist artist André Breton, who arranged for Kahlo's first solo exhibition at the Julien Levy Gallery in New York in 1938; the exhibition was a success and was followed by another in Paris in 1939. While the French exhibition was less successful, the Louvre purchased a painting from Kahlo, The Frame, making her the first Mexican artist to be featured in their collection. Throughout the 1940s, Kahlo participated in exhibitions in Mexico and the United States and worked as an art teacher. She taught at the Escuela Nacional de Pintura, Escultura y Grabado ("La Esmeralda") and was a founding member of the Seminario de Cultura Mexicana. Kahlo's always-f
+
+### PARTHENON
+**Domain:** art_architecture / historic_buildings
+
+**Wikipedia:** The Parthenon (; Ancient Greek: Παρθενών, romanised: Parthenōn [par.tʰe.nɔ̌ːn]; Greek: Παρθενώνας, romanised: Parthenónas [parθeˈnonas]) is a former temple on the Athenian Acropolis, Greece, that was dedicated to the goddess Athena. Its decorative sculptures are considered some of the high points of classical Greek art, and the Parthenon is considered an enduring symbol of ancient Greece, Western civilisation, and democracy.
+The Parthenon was built in the 5th century BC in thanksgiving for the Greek victory over the Persian invaders during the Greco-Persian Wars. Like most Greek temples, the Parthenon also served as the city treasury. Construction started in 447 BC when the Delian League was at the peak of its power. It was completed in 438 BC; work on the artwork and decorations continued until 432 BC. For a time, it served as the treasury of the Delian League, which later became the Athenian Empire.
+In the final decade of the 6th century AD, the Parthenon was converted into a Christian church dedicated to the Virgin Mary. After the Ottoman conquest in the mid-15th century, it became a mosque. In the Morean War, a Venetian bomb landed on the Parthenon, which the Ottomans had used as a munitions dump, during the 1687 siege of the Acropolis. The resulting explosion severely damaged the Parthenon. From 1800 to 1803, the 7th Earl of Elgin controversially removed many of the surviving sculptures and subsequently shipped them to England where they are now known as the Elgin Marbles or Parthenon marbles. Since 1975, numerous large-scale restoration projects have been undertaken to preserve remaining artefacts and ensure its structural integrity.
+
+### LEONARDO DA VINCI
+**Domain:** art_architecture / painting_visual
+
+**Wikipedia:** Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519) was an Italian polymath of the High Renaissance who was active as a painter, draughtsman, engineer, scientist, theorist, sculptor, and architect. While his fame initially rested on his achievements as a painter, he has also become known for his notebooks, in which he made drawings and notes on a variety of subjects, including anatomy, astronomy, botany, cartography, painting, and palaeontology. Leonardo is widely regarded as a genius who epitomised the Renaissance humanist ideal, and his collective works contributed to the development of European art to an extent rivalled only by that of his younger contemporary Michelangelo.
+Born out of wedlock to a successful notary and a lower-class woman in, or near, Vinci, he was educated in Florence by the Italian painter and sculptor Andrea del Verrocchio. He began his career in the city, but then spent much time in the service of Ludovico Sforza in Milan. Later, he worked in Florence and Milan again, as well as briefly in Rome, all while attracting a large following of imitators and students. Upon the invitation of Francis I, he spent his last three years in France, where he died in 1519. Since his death, there has not been a time when his achievements, diverse interests, personal life, and empirical thinking have failed to incite interest and admiration, making him a frequent namesake and subject in culture.
+Leonardo is identified as one of the greatest painters in the history of Western art and is often credited as the founder of the High Renaissance. Despite having many lost works and fewer than 25 attributed major works – including numerous unfinished works – he created some of the most influential paintings in the Western canon. The Mona Lisa is his best known work and is regarded as the world's most famous individual painting. The Last Supper is the most reproduced religious painting of all time and his Vitruvian Man drawing is also regarded as a cultural icon. In 2017, Salvator Mundi, attributed in whole or part to Leonardo, was sold at auction for US$450.3 million, setting a new record for the most expensive painting ever sold at public auction.
+Revered for his technological ingenuity, he conceptualised flying machines, a type of armoured fighting vehicle, concentrated solar power, a ratio machine that could be used in an adding machine, and the double hull. Relatively few of his designs were constructed or were even feasible during his lifetime, as the modern scientific approaches to metallurgy and engineering were only in their infancy during the Renaissance. Some of his smaller inventions, however, entered the world of manufacturing unheralded, such as an automated bobbin winder and a machine for testing the tensile strength of wire. He made substantial discoveries in anatomy, civil engineering, hydrodynamics, geology, optics, and tribology, but he did not publish his findings and they had little to no direct influence on subsequent sc
+
+### GOTHIC ARCHITECTURE
+**Domain:** art_architecture / architectural_styles
+
+**Wikipedia:** Gothic architecture is an architectural style that was prevalent in Europe from the late 12th to the 16th century, during the High and Late Middle Ages, surviving into the 17th and 18th centuries in some areas. It evolved from Romanesque architecture and was succeeded by Renaissance architecture. It originated in the Île-de-France and Picardy regions of northern France. The style at the time was sometimes known as opus Francigenum (lit. 'French work'); the term Gothic was first applied contemptuously during the later Renaissance, by those ambitious to revive the architecture of classical antiquity.
+The defining design element of Gothic architecture is the pointed arch. The use of the pointed arch in turn led to the development of the pointed rib vault and flying buttresses, combined with elaborate tracery and stained glass windows.
+At the Abbey of Saint-Denis, near Paris, the choir was reconstructed between 1140 and 1144, drawing together for the first time the developing Gothic architectural features. In doing so, a new architectural style emerged that emphasized verticality and the effect created by the transmission of light through stained glass windows.
+Common examples are found in Christian ecclesiastical architecture, and Gothic cathedrals and churches, as well as abbeys, and parish churches. It is also the architecture of many castles, palaces, town halls, guildhalls, universities, and, less prominently today, private dwellings. Many of the finest examples of medieval Gothic architecture are listed by UNESCO as World Heritage Sites.
+With the development of Renaissance architecture in Italy during the mid-15th century, the Gothic style was supplanted by the new style, but in some regions, notably England and what is now Belgium, Gothic continued to flourish and develop into the 16th century. A series of Gothic revivals began in mid-18th century England, spread through 19th-century Europe and continued, largely for churches and university buildings, into the 20th century.
+
+### BEETHOVEN
+**Domain:** art_architecture / music_performance
+
+**Wikipedia:** Ludwig van Beethoven (baptised 17 December 1770 – 26 March 1827) was a German composer and pianist. He is widely regarded as one of the greatest composers in the history of classical music, and his symphonies redefined the medium for later musicians.
+Beethoven's career spanned the transition from the Classical to Romantic period of music in Europe. He gained recognition as a composer in Germany during his early period, which lasted until 1802. During his middle period (1802–1812), he moved beyond the influence of contemporaries such as Joseph Haydn and Wolfgang Amadeus Mozart, developing a distinctive personal style. His late period (1812–1827) included some of his most significant works. During his mid-20s, Beethoven experienced hearing problems and was almost completely deaf by 1816. Despite this, he continued to compose, relying on his extensive knowledge of music theory and his sensitivity to vibrations.
+Born in Bonn, Beethoven displayed his musical talent at a young age. He was initially taught intensively by his father, Johann van Beethoven, and later by Christian Gottlob Neefe. Under Neefe's tutelage in 1783, he published his first work, a set of keyboard variations. He found relief from a dysfunctional home life with the family of Helene von Breuning, whose children he loved, befriended, and taught piano. At age 21, he moved to Vienna, which subsequently became his base, and studied composition with Haydn. Beethoven then gained a reputation as a virtuoso pianist, and was soon patronised by Karl Alois, Prince Lichnowsky for compositions, which resulted in his three Opus 1 piano trios (the earliest works to which he accorded an opus number) in 1795.
+Beethoven's first major orchestral work, the First Symphony, premiered in 1800, and his first set of string quartets was published in 1801. Around 1798, Beethoven began experiencing symptoms of hearing loss; despite his advancing deafness during this period, he continued to conduct, premiering his Third and Fifth Symphonies in 1804 and 1808, respectively. His Violin Concerto appeared in 1806. His last piano concerto (No. 5, Op. 73, known as the Emperor), dedicated to his frequent patron Archduke Rudolf of Austria, premiered in 1811, without the composer as soloist. By 1815, Beethoven's hearing had deteriorated to the point that he ceased performing and seldom appeared in public. He described his health problems and his unfulfilled personal life in two letters, his "Heiligenstadt Testament" (1802) to his brothers and his unsent love letter to an unknown "Immortal Beloved" (1812).
+After 1810, increasingly less socially involved as his hearing loss worsened, Beethoven composed many of his most admired works, including his last three symphonies, mature chamber music and the late piano sonatas. His only opera, Fidelio, first performed in 1805, was extensively revised to its final version in 1814. He composed the Missa solemnis between 1819 and 1823 and his final Symphony, No. 9, the first major examp
+
+### SAFFRON
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** Saffron (  , Persian: زعفران) is a spice derived from the flower of Crocus sativus, commonly known as the "saffron crocus". The vivid crimson stigma and styles, called threads, are collected and dried for use mainly as a seasoning and colouring agent in food. The saffron crocus was slowly propagated throughout much of Eurasia and was later brought to parts of North Africa, North America, and Oceania.
+Saffron's taste and iodoform-like or hay-like fragrance result from the phytochemicals picrocrocin and safranal. It also contains a carotenoid pigment, crocin, which imparts a rich golden-yellow hue to dishes and textiles. Its quality is graded by the proportion of red stigma to yellow style, varying by region and affecting both potency and value. As of 2024, Iran produced some 90% of the world total for saffron. At US$5,000 per kg or higher, saffron has long been the world's costliest spice by weight.
+The English word saffron likely originates from the Old French safran, which traces back through Latin and Persian to the word zarparān, meaning 'gold strung'. It is a sterile, human-propagated, autumn-flowering plant descended from wild relatives in the eastern Mediterranean, cultivated for its fragrant purple flowers and valuable red stigmas in sunny, temperate climates. Saffron is primarily used as a culinary spice and natural colourant, with additional historical uses in traditional medicine, dyeing, perfumery, and religious rituals.
+Saffron originated in Iran especially in the Khorasan region and later spread to Kashmir, the Mediterranean region, and Asia Minor. It has been cultivated and traded for over 3,500 years across Eurasia, spreading through Asia via cultural exchange and conquest. Its recorded history is attested in a 7th-century BC Assyrian botanical treatise. Saffron is an essential ingredient in Persian cuisine, used in dishes such as chelow and tahdig, stews like khoresh-e fesenjan, and desserts including sholeh-zard and bastani sonnati.
+
+### CHOCOLATE
+**Domain:** food_cuisine / food_history
+
+**Wikipedia:** Chocolate is a food made from roasted and ground cocoa beans that can be a liquid, solid, or paste, either by itself or to flavor other foods. Cocoa beans are the processed seeds of the cacao tree (Theobroma cacao). They are usually fermented to develop the flavor, then dried, cleaned, and roasted. The shell is removed to reveal nibs, which are ground to chocolate liquor (unadulterated chocolate in rough form.) The liquor can be processed to separate its two components, cocoa solids and cocoa butter, or shaped and sold as unsweetened baking chocolate. By adding sugar, sweetened chocolates are produced, which can be sold simply as dark chocolate, or, with the addition of milk, can be made into milk chocolate. Making milk chocolate with cocoa butter and without cocoa solids produces white chocolate. 
+Chocolate is one of the most popular food types and flavors in the world, and many foodstuffs involving chocolate exist, particularly desserts, including ice creams, cakes, mousse, and cookies. Many candies are filled with or coated with sweetened chocolate. Chocolate bars, either made of solid chocolate or other ingredients coated in chocolate, are eaten as snacks. Gifts of chocolate molded into different shapes (such as eggs, hearts, and coins) are traditional on certain holidays, including Christmas, Easter, Valentine's Day, Hanukkah and Eid al-Fitr. Chocolate is also used in cold and hot beverages, such as chocolate milk, hot chocolate and chocolate liqueur.
+The cacao tree was first used as a source for food in what is today Ecuador at least 5,300 years ago. Mesoamerican civilizations widely consumed cacao beverages, and in the 16th century, one of these beverages, chocolate, was introduced to Europe. Until the 19th century, chocolate was a drink consumed by societal elite. After then, technological and cocoa production changes led to chocolate becoming a solid, mass-consumed food. In the 21st century, cocoa beans for most chocolate are produced in West African countries, particularly Ivory Coast and Ghana, which contribute about 60% of the world's cocoa supply. The presence of child labor, particularly child slavery and trafficking, in cocoa bean production in these countries has received significant media attention.
+
+### SUSHI
+**Domain:** food_cuisine / asian_cuisine
+
+**Wikipedia:** Sushi (すし, 寿司, 鮨, 鮓; pronounced [sɯɕiꜜ] or [sɯꜜɕi] ) is a traditional Japanese dish made with vinegared rice (鮨飯, sushi-meshi), typically seasoned with sugar and salt, and combined with a variety of ingredients (ねた, neta), such as seafood, vegetables, or meat; raw seafood is the most common, although some may be cooked. While sushi has numerous styles and presentations, the current defining component is the vinegared rice, also known as shari (しゃり), or sumeshi (酢飯).
+The modern form of sushi is believed to have been created by Hanaya Yohei, who invented nigiri-zushi, the most commonly recognized type today, in which seafood is placed on hand-pressed, vinegared rice. This innovation occurred around 1824 in the Edo period (1603–1867). It was the fast food of the chōnin class in the Edo period.
+Sushi is traditionally made with medium-grain white rice, although it can also be prepared with brown rice or short-grain rice. It is commonly prepared with seafood, such as squid, eel, yellowtail, salmon, tuna, or imitation crab meat (surimi). Certain types of sushi are vegetarian. It is often served with pickled ginger (gari), wasabi, and soy sauce. Daikon radish or pickled daikon (takuan) are popular garnishes for the dish.
+Sushi is sometimes confused with sashimi, a dish that consists of thinly sliced raw fish or occasionally meat, without sushi rice. Today, sushi is considered one of the most popular dishes in the world.
+
+### FERMENTATION
+**Domain:** food_cuisine / fermentation_beverages
+
+**Wikipedia:** Fermentation is a type of anaerobic metabolism that harnesses the redox potential of the reactants to make adenosine triphosphate (ATP) and organic end products. Organic molecules, such as glucose or other sugars, are catabolized and their electrons are transferred to other organic molecules (cofactors, coenzymes, etc.). Anaerobic glycolysis is a related term used to describe the occurrence of fermentation in organisms (usually multicellular organisms such as animals) when aerobic respiration cannot keep up with the ATP demand, due to insufficient oxygen supply or anaerobic conditions.
+Fermentation is important in several areas of human society. Humans have used fermentation in the production and preservation of food for 13,000 years. It has been associated with health benefits, unique flavor profiles, and making products have better texture. Humans and their livestock also benefit from fermentation from the microbes in the gut that release end products that are subsequently used by the host for energy. Perhaps the most commonly known use for fermentation is at an industrial level to produce commodity chemicals, such as ethanol and lactate. Ethanol is used in a variety of alcoholic beverages (beers, wine, and spirits) while lactate can be neutralized to lactic acid and be used for food preservation, as a curing agent, or as a flavoring agent.
+This complex metabolism utilizes a wide variety of substrates and can form nearly 300 different combinations of end products. Fermentation occurs in both prokaryotes and eukaryotes. The discovery of new end products and new fermentative organisms suggests that fermentation is more diverse than what has been studied.
+
+### CHILI PEPPER
+**Domain:** food_cuisine / ingredients_spices
+
+**Wikipedia:** Chili peppers, also spelled chile or chilli (from Classical Nahuatl  chīlli [ˈt͡ʃiːlːi] ), are varieties of berry-fruit plants from the genus Capsicum, which are members of the nightshade family Solanaceae, cultivated for their pungency (spicy heat). They are used as a spice to add pungency in many cuisines. Capsaicin and the related capsaicinoids give chili peppers their intensity when ingested or applied topically. Chili peppers exhibit a range of heat and flavors. This diversity is the reason behind the availability of different types of chili powder, each offering its own taste and heat level.
+Chili peppers originated in Central or South America and were first cultivated in Mexico. European explorers brought chili peppers back to the Old World in the late 16th century as part of the Columbian Exchange, which led to the cultivation of multiple varieties across the world for food and traditional medicine. Five Capsicum species have been widely cultivated: annuum, baccatum, chinense, frutescens, and pubescens.
+

@@ -1,0 +1,419 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 124,
+  "issues": [
+    {
+      "id": "health-nervous-system-no-nerves",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The explanation states 'sponges, placozoans, and mesozoans' have no nervous system, but the correct_answer omits mesozoans. The answer is factually incomplete relative to the explanation.",
+      "suggested_fix": "Change correct_answer to 'Sponges, placozoans, and mesozoans' OR update the explanation to omit mesozoans and note they are a disputed/vestigial grouping."
+    },
+    {
+      "id": "health-adhd-heritability-rate",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer is '{75}%' but the explanation says 'heritability rate of 70–80%'. The chosen value (75%) is internally inconsistent — it is not the figure cited in the explanation, which gives a range. This creates a mismatch between what the player reads in the answer vs. the explanation.",
+      "suggested_fix": "Change correct_answer to '{70}–80%' with distractors, or update explanation to specifically state '75%' as the midpoint figure with a source."
+    },
+    {
+      "id": "health-psychiatry-immuno-subspecialty",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The ID contains 'immuno-subspecialty' which is misleading — the question is actually about forensic psychiatry (legal/criminal contexts), not immunopsychiatry. The explanation then pivots to mention 'immuno-psychiatry' as if it is the point of the fact, creating confusion. The explanation reads as Wikidata jargon that doesn't match the question.",
+      "suggested_fix": "Rewrite explanation to focus entirely on forensic psychiatry and its intersection with law. Drop the immuno-psychiatry tangent or make a separate fact about it. Rename the ID to 'health-psychiatry-forensic-subspecialty'."
+    },
+    {
+      "id": "health-sensory-system-seven-senses",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Gravity and proprioception' is problematic: proprioception is closely related to the vestibular/balance sense and is itself a legitimate candidate for an 'additional sense' beyond the classic five. A knowledgeable player might select it as correct. Similarly, 'Pain and temperature' is commonly listed as an extended sense. These distractors are too plausible.",
+      "suggested_fix": "Replace 'Gravity and proprioception' with something clearly wrong like 'Echolocation and magnetism'. Replace 'Pain and temperature' with 'Speed and direction'."
+    },
+    {
+      "id": "health-stress-amygdala-hub",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks which structure is 'the emotional threat detector that triggers stress responses' (implying a single region), but the explanation states that stress responses are regulated by 'several brain regions including the limbic system, prefrontal cortex, amygdala, hypothalamus, and stria terminalis.' The question's singular framing contradicts the explanation's accurate plural framing.",
+      "suggested_fix": "Reframe question: 'Which small almond-shaped brain structure is most associated with detecting emotional threats?' or add 'primarily' to the question. Update explanation to clarify the amygdala's specific role vs. the broader network."
+    },
+    {
+      "id": "health-medication-prescription-vs-otc",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer 'Level of control' is vague and abstract. The real distinction is that prescription drugs require a doctor's authorization to dispense. A player who knows this well would not naturally arrive at 'level of control' as the phrasing. The answer does not cleanly answer the question 'what key division separates them'.",
+      "suggested_fix": "Change correct_answer to 'Whether a doctor's prescription is required' or 'Requiring medical authorization to dispense'. Update distractors accordingly."
+    },
+    {
+      "id": "human_body_health-lichen-first-use-symbiosis-word",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is categorized under category_l2 'immunity_disease' but lichens and the origin of the word 'symbiosis' have nothing to do with immunity or disease. This is a biology/ecology fact.",
+      "suggested_fix": "Recategorize to a biology or natural_world category. If the category system doesn't allow it, move to 'medical_science' as the least-wrong fit, or flag for a new subcategory."
+    },
+    {
+      "id": "human_body_health-domain-three-domains-life",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under 'medical_science' but the three-domain system of life (Archaea, Bacteria, Eukarya) is a fundamental biology/taxonomy concept, not a medical science concept. Carl Woese's classification belongs in biology or natural science.",
+      "suggested_fix": "Recategorize to a biology or natural_world category. If unavailable, 'immunity_disease' (microbiology angle) is a slightly better fit than 'medical_science'."
+    },
+    {
+      "id": "human_body_health-hepatitis-five-viruses",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Hepatitis X' is not a real/established hepatitis type. Including a made-up designation in a serious medical quiz undermines credibility and could confuse players. 'Hepatitis X' reads as a joke option.",
+      "suggested_fix": "Replace 'Hepatitis X' with 'Hepatitis G' (real but obscure) or 'Hepatitis F' (proposed but unconfirmed) — both are more plausible medical distractors."
+    },
+    {
+      "id": "health-ganglion-peripheral-cluster",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-ganglion-peripheral-cluster-b6'. Both facts ask essentially the same question ('Where are ganglia located?') with the same correct answer ('Peripheral nervous system') and very similar distractor sets. Having both in the database will produce repetitive quiz experiences.",
+      "suggested_fix": "Keep the more detailed version (health-ganglion-peripheral-cluster, which also notes both somatic and autonomic systems) and remove or substantially differentiate health-ganglion-peripheral-cluster-b6, or change b6 to ask a genuinely different aspect of ganglia."
+    },
+    {
+      "id": "health-ganglion-peripheral-cluster-b6",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-ganglion-peripheral-cluster'. See that entry. This is the weaker version — the explanation is shorter and less informative.",
+      "suggested_fix": "Remove this fact or rewrite to ask a distinct aspect (e.g., 'How many ganglia are in the human body?' or 'What distinguishes dorsal root ganglia from autonomic ganglia?')."
+    },
+    {
+      "id": "health-somatosensory-homunculus-map",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-somatosensory-homunculus-map-b6'. Both ask what the body map in the somatosensory cortex is called, with identical correct answers.",
+      "suggested_fix": "Keep one; differentiate the other to ask about a specific feature (e.g., 'Which body part has the largest representation in the sensory homunculus?')."
+    },
+    {
+      "id": "health-somatosensory-homunculus-map-b6",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-somatosensory-homunculus-map'. See that entry.",
+      "suggested_fix": "Rewrite to ask a distinct aspect of the homunculus, or remove."
+    },
+    {
+      "id": "health-somatosensory-proprioception",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-somatosensory-proprioception-b6'. Both ask what the somatosensory system's sense of body position is called, with identical correct answers.",
+      "suggested_fix": "Keep one; differentiate the other (e.g., ask why proprioception enables touching your nose with eyes closed, or ask what receptors detect proprioceptive signals)."
+    },
+    {
+      "id": "health-somatosensory-proprioception-b6",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-somatosensory-proprioception'. See that entry.",
+      "suggested_fix": "Rewrite to ask a distinct aspect of proprioception, or remove."
+    },
+    {
+      "id": "health-stimulant-cocaine-ancient-use",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-stimulant-cocaine-8000bce'. Both ask how far back archaeological evidence of cocaine use dates in Peru, with the same answer (8000 BCE).",
+      "suggested_fix": "Remove one. Keep 'health-stimulant-cocaine-8000bce' which has a richer explanation mentioning it is one of the oldest psychoactive substances."
+    },
+    {
+      "id": "health-stimulant-cocaine-8000bce",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-stimulant-cocaine-ancient-use'. See that entry. This version has a slightly better explanation.",
+      "suggested_fix": "Keep this one; remove 'health-stimulant-cocaine-ancient-use'."
+    },
+    {
+      "id": "health-stimulant-caffeine-mechanism",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-stimulant-caffeine-blocks-sleep'. Both ask how caffeine works as a stimulant, with answers conveying the same information (blocks adenosine/sleep-promoting agents).",
+      "suggested_fix": "Keep 'health-stimulant-caffeine-mechanism' which names adenosine specifically (more educational). Rewrite 'health-stimulant-caffeine-blocks-sleep' to ask something distinct, e.g., 'What molecule does caffeine block to prevent sleepiness?' (answer: adenosine)."
+    },
+    {
+      "id": "health-stimulant-caffeine-blocks-sleep",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-stimulant-caffeine-mechanism'. The answer 'Blocks sleep-promoting agents' is vaguer than the other version which specifies adenosine. See that entry.",
+      "suggested_fix": "Rewrite to ask a distinct caffeine fact, or remove."
+    },
+    {
+      "id": "health-stimulant-three-categories",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-stimulant-three-categories-b6'. Both ask what the three categories of recreational psychoactive drugs are, with identical correct answers.",
+      "suggested_fix": "Remove one or differentiate (e.g., ask which category alcohol belongs to, or what makes hallucinogens distinct)."
+    },
+    {
+      "id": "health-stimulant-three-categories-b6",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-stimulant-three-categories'. See that entry.",
+      "suggested_fix": "Remove this version or substantially rewrite to cover a distinct angle."
+    },
+    {
+      "id": "health-concussion-children-recovery",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-concussion-children-longer'. Both convey that children take roughly twice as long as adults (4 weeks vs 2 weeks) to recover from concussion. The question framing differs slightly but the knowledge tested is identical.",
+      "suggested_fix": "Keep 'health-concussion-children-longer' (cleaner framing). Rewrite 'health-concussion-children-recovery' to cover a different concussion aspect or remove it."
+    },
+    {
+      "id": "health-concussion-children-longer",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-concussion-children-recovery'. See that entry. This version has cleaner answer framing ('Twice as long').",
+      "suggested_fix": "Keep this version; remove or rewrite 'health-concussion-children-recovery'."
+    },
+    {
+      "id": "health-concussion-loss-of-consciousness",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-concussion-sports-no-blackout'. Both state that fewer than 10% of children's sports concussions involve loss of consciousness.",
+      "suggested_fix": "Keep 'health-concussion-sports-no-blackout' (the answer 'Fewer than 1 in 10' is more intuitive). Remove or rewrite 'health-concussion-loss-of-consciousness' to cover a different concussion statistic."
+    },
+    {
+      "id": "health-concussion-sports-no-blackout",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-concussion-loss-of-consciousness'. See that entry.",
+      "suggested_fix": "Keep this version; remove or rewrite the other."
+    },
+    {
+      "id": "health-concussion-rest-recovery",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-concussion-rest-not-prolonged'. Both convey that prolonged rest after concussion is harmful and that 1–2 days of rest is recommended.",
+      "suggested_fix": "Keep 'health-concussion-rest-not-prolonged' (question is cleaner, answer is more specific). Rewrite 'health-concussion-rest-recovery' to cover a different concussion treatment aspect."
+    },
+    {
+      "id": "health-concussion-rest-not-prolonged",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-concussion-rest-recovery'. See that entry. This version is cleaner.",
+      "suggested_fix": "Keep this version; remove or substantially rewrite the other."
+    },
+    {
+      "id": "health-pvs-four-week-threshold",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-pvs-4weeks-classification'. Both ask how long a vegetative state must last before being classified as 'persistent', with the same answer (4 weeks).",
+      "suggested_fix": "Remove one. Keep 'health-pvs-4weeks-classification' which has a slightly cleaner explanation."
+    },
+    {
+      "id": "health-pvs-4weeks-classification",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-pvs-four-week-threshold'. See that entry.",
+      "suggested_fix": "Keep this version; remove 'health-pvs-four-week-threshold'."
+    },
+    {
+      "id": "health-pvs-permanent-timeline",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Substantially overlaps with 'health-pvs-timeline-differs-country'. The former asks only about traumatic injury (1 year), the latter covers the US/UK distinction for non-traumatic injury. These could be kept as separate facts since they test genuinely different knowledge, but the explanations of both mention the same set of facts, making them feel redundant.",
+      "suggested_fix": "Keep both but tighten explanations so each only covers its own scope. 'health-pvs-permanent-timeline' should focus solely on the 1-year traumatic threshold. 'health-pvs-timeline-differs-country' should focus solely on the US/UK non-traumatic distinction."
+    },
+    {
+      "id": "health-brain-damage-neuroplasticity",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-braindamage-neuroplasticity-recovery'. Both ask what brain property allows new neural connections to form/compensate after injury, with identical answers (Neuroplasticity).",
+      "suggested_fix": "Keep 'health-brain-damage-neuroplasticity' (richer explanation). Remove or rewrite 'health-braindamage-neuroplasticity-recovery'."
+    },
+    {
+      "id": "health-braindamage-neuroplasticity-recovery",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-brain-damage-neuroplasticity'. See that entry.",
+      "suggested_fix": "Remove or rewrite to cover a distinct neuroplasticity fact (e.g., 'At what age does neuroplasticity peak?' or 'What therapy technique exploits neuroplasticity for stroke recovery?')."
+    },
+    {
+      "id": "health-brain-damage-primary-secondary",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-braindamage-secondary-injuries'. Both ask about secondary brain injuries developing after trauma due to physiological responses, with essentially identical answers.",
+      "suggested_fix": "Keep 'health-brain-damage-primary-secondary' (better framing, contrasts primary vs secondary). Remove or rewrite 'health-braindamage-secondary-injuries'."
+    },
+    {
+      "id": "health-braindamage-secondary-injuries",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-brain-damage-primary-secondary'. See that entry.",
+      "suggested_fix": "Remove or rewrite to ask a distinct secondary injury fact (e.g., 'Name one physiological response that causes secondary brain injury' — answer: inflammation or cerebral edema)."
+    },
+    {
+      "id": "health-recreational-drug-global-use",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-recreational-drugs-5percent'. Both ask what percentage of 15–65-year-olds used a controlled drug as of 2015, with identical answers (~5%).",
+      "suggested_fix": "Remove one. Keep 'health-recreational-drugs-5percent' which has a slightly cleaner question wording."
+    },
+    {
+      "id": "health-recreational-drugs-5percent",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-recreational-drug-global-use'. See that entry.",
+      "suggested_fix": "Keep this version; remove 'health-recreational-drug-global-use'."
+    },
+    {
+      "id": "health-medicine-bloodletting-humorism",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-medicine-bloodletting-humors'. Both ask what ancient theory justified bloodletting, with nearly identical answers ('Humorism (four humors)' vs 'Theory of four humors').",
+      "suggested_fix": "Keep 'health-medicine-bloodletting-humors' (cleaner answer phrasing). Remove 'health-medicine-bloodletting-humorism' or rewrite to ask a different bloodletting angle."
+    },
+    {
+      "id": "health-medicine-bloodletting-humors",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-medicine-bloodletting-humorism'. See that entry. This version is cleaner.",
+      "suggested_fix": "Keep this version; remove the other."
+    },
+    {
+      "id": "human_body_health-artery-pulmonary-exception",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Triplicate: near-identical to 'hbh-artery-pulmonary-exception' and 'human_body_health-pulmonary-artery-exception'. All three ask which arteries carry deoxygenated blood as an exception to the rule, with the same answer (pulmonary arteries).",
+      "suggested_fix": "Keep only 'human_body_health-pulmonary-artery-exception' (most thorough explanation, 8 distractors). Remove or rewrite the other two to cover distinct cardiovascular facts."
+    },
+    {
+      "id": "hbh-artery-pulmonary-exception",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Triplicate: near-identical to 'human_body_health-artery-pulmonary-exception' and 'human_body_health-pulmonary-artery-exception'. See that entry.",
+      "suggested_fix": "Remove; keep 'human_body_health-pulmonary-artery-exception'."
+    },
+    {
+      "id": "human_body_health-pulmonary-artery-exception",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Triplicate: near-identical to 'human_body_health-artery-pulmonary-exception' and 'hbh-artery-pulmonary-exception'. This is the strongest version — most complete explanation and 8 distractors.",
+      "suggested_fix": "Keep this version; remove the other two."
+    },
+    {
+      "id": "health-small-intestine-6-5-metres",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'hbh-small-intestine-length'. Both ask how long the human small intestine is, with identical answers (~6.5 metres).",
+      "suggested_fix": "Keep 'health-small-intestine-6-5-metres' (more detailed explanation mentioning three sections). Remove 'hbh-small-intestine-length'."
+    },
+    {
+      "id": "hbh-small-intestine-length",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-small-intestine-6-5-metres'. See that entry.",
+      "suggested_fix": "Remove; keep 'health-small-intestine-6-5-metres'."
+    },
+    {
+      "id": "human_body_health-capillary-smallest-vessels",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'hbh-capillary-size'. Both ask about the diameter of capillaries (5–10 micrometres).",
+      "suggested_fix": "Keep 'human_body_health-capillary-smallest-vessels' (more complete explanation, 8 distractors). Remove 'hbh-capillary-size'."
+    },
+    {
+      "id": "hbh-capillary-size",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'human_body_health-capillary-smallest-vessels'. See that entry.",
+      "suggested_fix": "Remove; keep 'human_body_health-capillary-smallest-vessels'."
+    },
+    {
+      "id": "human_body_health-small-intestine-tennis-court",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'hbh-small-intestine-absorption'. Both ask about the surface area of the small intestine's inner lining (~250 square metres / tennis court size).",
+      "suggested_fix": "Keep 'human_body_health-small-intestine-tennis-court' (Wikipedia-sourced, 8 distractors). Remove 'hbh-small-intestine-absorption'."
+    },
+    {
+      "id": "hbh-small-intestine-absorption",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'human_body_health-small-intestine-tennis-court'. See that entry.",
+      "suggested_fix": "Remove; keep 'human_body_health-small-intestine-tennis-court'."
+    },
+    {
+      "id": "human_body_health-nose-therian-unique",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'hbh-nose-therian-unique'. Both ask which animals uniquely have a protruding external nose, with the same answer (Therian mammals).",
+      "suggested_fix": "Keep 'human_body_health-nose-therian-unique' (Wikipedia-sourced, richer explanation, 8 distractors). Remove 'hbh-nose-therian-unique'."
+    },
+    {
+      "id": "hbh-nose-therian-unique",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'human_body_health-nose-therian-unique'. See that entry.",
+      "suggested_fix": "Remove; keep 'human_body_health-nose-therian-unique'."
+    },
+    {
+      "id": "human_body_health-citric-acid-cycle-universal",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Triplicate: near-identical to 'hbh-metabolism-citric-acid-universal' and 'human_body_health-metabolism-citric-acid-universal'. All three ask which metabolic pathway is universal across all life, with the same answer (Citric acid cycle / Krebs cycle).",
+      "suggested_fix": "Keep 'human_body_health-citric-acid-cycle-universal' (best explanation, 8 distractors, Wikipedia-sourced). Remove the other two."
+    },
+    {
+      "id": "hbh-metabolism-citric-acid-universal",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Triplicate of 'human_body_health-citric-acid-cycle-universal'. See that entry.",
+      "suggested_fix": "Remove."
+    },
+    {
+      "id": "human_body_health-metabolism-citric-acid-universal",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Triplicate of 'human_body_health-citric-acid-cycle-universal'. See that entry.",
+      "suggested_fix": "Remove."
+    },
+    {
+      "id": "human_body_health-enzyme-orotidine-78-million-years",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'hbh-enzyme-catalysis'. Both ask how long the orotidine 5'-phosphate decarboxylase reaction would take without the enzyme (78 million years).",
+      "suggested_fix": "Keep 'human_body_health-enzyme-orotidine-78-million-years' (Wikipedia-sourced, 8 distractors, richer explanation). Remove 'hbh-enzyme-catalysis'."
+    },
+    {
+      "id": "hbh-enzyme-catalysis",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'human_body_health-enzyme-orotidine-78-million-years'. See that entry.",
+      "suggested_fix": "Remove; keep 'human_body_health-enzyme-orotidine-78-million-years'."
+    },
+    {
+      "id": "human_body_health-herpes-60-95-percent-adults",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'human_body_health-herpes-simplex-60-95-percent-adults'. Both ask what percentage of adults carry herpes (60–95%), with the same answer.",
+      "suggested_fix": "Keep 'human_body_health-herpes-simplex-60-95-percent-adults' (richer explanation about latency and treatment). Remove 'human_body_health-herpes-60-95-percent-adults'."
+    },
+    {
+      "id": "human_body_health-herpes-simplex-60-95-percent-adults",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'human_body_health-herpes-60-95-percent-adults'. See that entry. This is the stronger version.",
+      "suggested_fix": "Keep this version; remove the other."
+    },
+    {
+      "id": "human_body_health-smoking-7-million-deaths",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'human_body_health-smoking-7-million-deaths-2023'. The former asks about second-hand smoke deaths (1.3 million), the latter asks about smoker deaths (7 million). These are actually different questions testing different facts from the same source — acceptable to keep both, but they should be clearly differentiated. Note: both explain the same two figures (7M + 1.3M), making explanations redundant.",
+      "suggested_fix": "Keep both but trim each explanation to only discuss the specific statistic being asked. The question distinction (second-hand vs direct) is valid."
+    },
+    {
+      "id": "health-white-blood-cells-one-percent",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-white-blood-cell-count'. Both ask what percentage of blood volume white blood cells represent (~1%), with identical answers.",
+      "suggested_fix": "Keep 'health-white-blood-cells-one-percent' (richer explanation mentioning immune function). Remove 'health-white-blood-cell-count'."
+    },
+    {
+      "id": "health-white-blood-cell-count",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'health-white-blood-cells-one-percent'. See that entry.",
+      "suggested_fix": "Remove; keep 'health-white-blood-cells-one-percent'."
+    }
+  ]
+}

@@ -1,378 +1,507 @@
 # Background Music — AI Generation Prompts
 
-**For:** Damion (manual task, not automated)
-**Output:** .ogg or .mp3, 128-192kbps
-**Destination:** `public/assets/audio/bgm/`
-**Naming:** `bgm_hub.ogg`, `bgm_combat.ogg`, `bgm_boss.ogg`, etc.
+**For:** Damion (generate via Suno free tier)
+**Output:** .ogg or .mp3
+**Destination:** Drop all files in a single folder, agent will sort them into the correct structure
+**Naming:** Use the track title as filename (e.g. `awakening_of_the_deep.ogg`)
 
 ---
 
-## Tool Recommendations (researched March 2026)
+## Music System — Three Playlists
 
-### Best Option: ACE-Step 1.5 (Open Source, Local)
+The game has a **music mode selector** in the top-left corner showing the current track title with next/previous buttons and three playlist modes:
 
-**This is installed locally on this machine** at `~/opt/ace-step`. It runs on your M4 Max (28GB unified memory, unlimited tier).
+| Mode | Vibe | When to Use |
+|------|------|-------------|
+| **EPIC** | Intense, dynamic, battle-forward | Default for combat-heavy players who want adrenaline |
+| **QUIET** | Lo-fi, chill, soft dungeon vibes | For players who want to focus on the quiz/strategy |
+| **AMBIENT** | Minimal, atmospheric, barely-there | For players who want near-silence with texture |
 
-| Detail | Value |
-|--------|-------|
-| Quality | SongEval **8.09** — outperforms Suno v5 on the standard benchmark |
-| Speed | ~30-60s per song on MacBook (MPS backend), ~15s on RTX 3060 |
-| VRAM | Under 4GB needed (your Mac has plenty) |
-| Languages | 50+ languages |
-| Features | Lyrics, vocals, style control, cover generation, vocal-to-BGM, LoRA fine-tuning |
-| License | Open source, fully local, unlimited generations, zero cost |
-| Repo | [github.com/ace-step/ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5) |
-| UI | [github.com/fspecii/ace-step-ui](https://github.com/fspecii/ace-step-ui) — Spotify-like interface |
+Each mode has its own playlist of ~20 tracks that plays continuously through the entire dungeon run. The player picks their vibe and the music stays in that lane.
 
-**To generate a track:**
-```bash
-cd ~/opt/ace-step
-uv run acestep --port 7860
-# Open http://localhost:7860 in your browser
-# Models auto-download on first run (~4-8GB from HuggingFace, one-time)
-# Paste any prompt below, hit Generate, export as .ogg
+**Camp/hub** uses a separate small playlist (shared across all modes).
+**Stings** (victory, defeat, boss entrance) play as one-shots over any playlist.
+
+### File Structure
 ```
-
-**CLI generation (headless):**
-```bash
-cd ~/opt/ace-step
-uv run python cli.py --tags "your style tags" --lyrics "your lyrics" --duration 60 --output bgm_hub.wav
-# Then convert: ffmpeg -i bgm_hub.wav -c:a libvorbis -q:a 5 ../../Recall_Rogue/public/assets/audio/bgm/bgm_hub.ogg
+public/assets/audio/bgm/
+  epic/           — 20 intense dungeon tracks
+  quiet/          — 20 lo-fi soft dungeon tracks
+  ambient/        — 20 minimal atmospheric tracks
+  camp/           — 5-10 hub/rest tracks
+  stings/         — victory, defeat, boss entrance
 ```
-
-### Commercial Services (if you want to compare)
-
-#### S-Tier
-
-| Service | Best For | Quality | Free Tier | Why Use It |
-|---------|----------|---------|-----------|------------|
-| **[Suno v4.5](https://suno.com)** | Overall best, fastest | 9/10 | 10 songs/day (non-commercial) | Best vocal naturalness, most consistent. 60-70% of generations are usable. Pro: $10/mo for commercial rights. |
-| **[Udio](https://www.udio.com)** | Highest fidelity | 9.5/10 fidelity | Similar to Suno | Only 3/10 listeners could tell it was AI. Best for electronic/complex genres. Stem downloads for mixing. |
-
-#### A-Tier
-
-| Service | Best For | Price | Why Use It |
-|---------|----------|-------|------------|
-| **[AIVA](https://www.aiva.ai)** | Orchestral/cinematic | $15-49/mo | Purpose-built for game soundtracks. Full copyright on Pro. **Best for boss battle + victory fanfare.** |
-| **[ElevenLabs Music](https://elevenlabs.io)** | Vocal realism | API-based | Unmatched vocal quality. Weaker on instrumentals. |
-| **[Soundverse](https://www.soundverse.ai)** | Seamless loops | Freemium | Dedicated Loop Mode for game music. Best loop tooling of any service. |
-| **[Beatoven.ai](https://www.beatoven.ai)** | Royalty-free | Freemium | All output pre-cleared for commercial use. |
-
-#### Other Open Source Options
-
-| Model | Quality | Notes |
-|-------|---------|-------|
-| **[HeartMuLa 7B](https://github.com/HeartMuLa/heartlib)** | Comparable to Suno | Best lyric clarity of any model (lowest Phoneme Error Rate). 4B params. Great for multilingual. |
-| **Meta MusicGen** | Good instrumental | MIT-licensed, established but older. Good for ambient/background, weaker on full songs. |
-
-### Recommended Workflow
-
-1. **Generate with ACE-Step locally** — unlimited iterations, zero cost, benchmark-beating quality
-2. **A/B test your favorites against Suno** — use Suno's free tier (10/day) to compare
-3. **For orchestral tracks (boss, victory)** — try AIVA if ACE-Step's orchestral output isn't cinematic enough
-4. **Fatigue test** — loop each track for 5 minutes. If it gets annoying, regenerate.
-5. **Layer test** — play the Surge overlay ON TOP of combat music. Do they harmonize?
 
 ---
 
-## How to use these prompts
+# EPIC PLAYLIST (20 tracks)
 
-1. Pick a track below
-2. Copy the prompt into your AI music tool of choice
-3. Generate 3-5 variations
-4. Listen to each — pick the one that *feels* right for the game moment
-5. If none are perfect, tweak the prompt (adjust tempo, key, instruments, mood words)
-6. Export as .ogg (preferred) or .mp3 at 128-192kbps
-7. Drop the file into `public/assets/audio/bgm/` with the filename shown
-8. The BGM system in `cardAudioManager.ts` has a reserved music channel ready to wire
-
-### Tips for better results
-- **Loop tracks:** Tell the AI "must loop seamlessly" AND "end on the same chord it begins with"
-- **One-shot tracks:** These DON'T loop — they play once (victory fanfare, defeat reflection)
-- **Layering:** The Surge overlay (Track 9) plays ON TOP of combat music — generate it in a compatible key
-- **Fatigue test:** For combat music, listen to it on repeat for 5 minutes. If it gets annoying, it's wrong.
-- **A/B test:** Play the game with the track running in another tab. Does it match the pixel art aesthetic?
+High energy, dynamic arcs, battle-forward. The default experience. Starts atmospheric, builds to intense combat peaks, pulls back. Castlevania/Mega Man energy.
 
 ---
 
-## Track 1: Hub Theme ("The Camp")
-**File:** `bgm_hub.ogg` | **Duration:** 60-90s loop | **Priority:** P1
+### E01: "Awakening of the Deep"
 
 ```
-Create a cozy, warm medieval camp theme for a pixel art card roguelite game.
-Acoustic guitar fingerpicking as the lead melody, gentle hand percussion
-(cajon or frame drum), soft plucked lute arpeggios. Add subtle crackling
-fire ambience underneath. The mood is "safe haven after adventure" —
-nostalgic, peaceful, inviting. Think Stardew Valley meets a quiet tavern.
-Key of C major or G major. Tempo 85-95 BPM. Must loop seamlessly. No
-vocals. Warm, lo-fi production with gentle reverb. End on the same chord
-it begins with for perfect looping.
+Dark NES dungeon crawler soundtrack, pure 8-bit chiptune, authentic NES 2A03 sound chip four-channel limitation, DYNAMIC ARC STRUCTURE: begins with single lonely pulse wave playing sparse minor-key notes over silence and distant noise channel dripping water, triangle wave bass enters slowly with deep sustained root notes, tension builds over 40 seconds as second pulse wave adds arpeggiated counter-melody, noise channel evolves from ambient drips to driving percussion, at the 60 second mark FULL INTENSITY — both pulse waves in aggressive unison playing driving battle melody with fast arpeggiated runs, triangle bass pumping relentless eighth notes, noise channel pounding kick-snare pattern, then at 90 seconds pulls back to atmospheric tension again, dark medieval dungeon crawler, the journey from exploration to combat and back, Castlevania atmosphere into Mega Man intensity, lo-fi bitcrushed warmth, detuned pulse wave vibrato, Famicom-era dark fantasy RPG, retro 8-bit game soundtrack
 ```
 
-**What to listen for:** Does it make you want to sit by a fire? Does it feel like home? If it's too busy or energetic, regenerate with "more sparse, more breathing room."
+### E02: "Flickering Resolve"
+
+```
+NES dark dungeon theme with dynamic intensity arc, pure 8-bit chiptune, authentic NES 2A03 four-channel composition, starts with gentle melancholic pulse wave melody over quiet triangle wave bass pedal tone, noise channel faint crackling torches, mood is weary exploration through stone corridors, gradually introduces rhythmic pulse from second pulse wave, bass line becomes more active walking pattern, noise channel adds hi-hat, energy builds steadily like approaching danger, peaks into urgent aggressive minor-key battle section with both pulse waves playing fast interlocking arpeggios, heavy noise channel percussion, then dissolves back to single pulse wave and silence, desperate survival in the dark depths, Castlevania meets early Final Fantasy dungeon energy, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E03: "The Abyss Answers"
+
+```
+NES dungeon descent epic build, pure 8-bit chiptune, authentic NES 2A03 sound chip four-channel limitation, opens with ominous low triangle wave bass playing slow descending chromatic line, single pulse wave playing detuned held notes with heavy vibrato creating dread, noise channel with sparse metallic ticks like distant chains, second pulse wave enters with chromatic ascending counter-motif building tension, rhythm intensifies — noise channel transitions to double-time military snare, both pulse waves lock into aggressive unison playing the most intense battle melody in a dark minor key, bass doing octave jumps, the full fury peaks for 30 seconds then DROPS to single bass note ringing in silence, dark medieval dungeon crawler boss-level intensity crescendo, Ninja Gaiden meets Castlevania III, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E04: "Iron Will"
+
+```
+Intense NES battle theme, 140-150 BPM, pure 8-bit chiptune, aggressive pulse wave lead carrying a driving minor-key melody with fast arpeggiated runs, second pulse wave channel playing counter-melody staccato stabs, triangle wave bass pumping relentless eighth notes, noise channel providing tight hi-hat patterns and punchy snare hits, no real instruments, authentic NES 2A03 sound chip four-channel limitation, dark dungeon crawler card combat, urgent determined focused, sustainable over many repeated encounters without listener fatigue, not bombastic just relentless forward momentum, duty cycle modulation on lead pulse for timbral variation, D minor, pixel art roguelite turn-based card battle, retro 8-bit game soundtrack, Castlevania meets Mega Man energy, Famicom-era action RPG
+```
+
+### E05: "The Hunt"
+
+```
+NES dark chase combat theme, 145 BPM, pure 8-bit chiptune, lead pulse wave playing chromatic descending riff that repeats with growing intensity, second pulse wave dissonant sustained drones shifting beneath, triangle wave bass with heavy deliberate root notes creating oppressive gravity, noise channel aggressive snare rolls, authentic NES 2A03 four-channel limitation, something is hunting you through the dungeon, urgent and threatening, F# minor with tritone intervals, duty cycle shifts for timbral darkness, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG, Ninja Gaiden intensity
+```
+
+### E06: "Arcane Blades"
+
+```
+NES magical combat theme, 135 BPM, pure 8-bit chiptune, lead pulse wave playing mysterious arpeggiated melody that mixes minor key darkness with unexpected major intervals for magical quality, second pulse wave rapid tremolo creating shimmering arcane texture, triangle wave bass with syncopated rhythm suggesting arcane energy, noise channel with precise hi-hat keeping mechanical time, authentic NES 2A03 four-channel limitation, card-based magical combat in a dungeon, knowledge is your weapon, D minor with Dorian mode for mystical color, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E07: "Blood on the Flagstones"
+
+```
+NES brutal dungeon combat theme, 150 BPM, pure 8-bit chiptune, both pulse waves playing aggressive interlocking riffs in E minor, heavy noise channel kick-snare pattern on every beat, triangle wave bass with octave jumps creating violent energy, the hardest fight you've ever had, frantic and desperate, no breathing room just pure combat intensity, duty cycle at maximum harshness, authentic NES 2A03 four-channel limitation, pixel art roguelite life-or-death encounter, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG, Contra final stage energy
+```
+
+### E08: "Warden's March"
+
+```
+NES boss approach theme with building arc, pure 8-bit chiptune, starts with slow menacing triangle wave bass march rhythm alone for 20 seconds, noise channel adds military snare, first pulse wave enters with foreboding melody that builds in tempo and intensity, second pulse wave joins with counter-harmony, accelerates from 90 BPM to 155 BPM over the full length, the boss is coming and getting closer, C minor, authentic NES 2A03 four-channel limitation, dark dungeon crawler approaching the guardian, dread building to confrontation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E09: "Shattered Seals"
+
+```
+NES epic dungeon theme with dramatic dynamic range, pure 8-bit chiptune, opens with single high pulse wave note ringing in reverb-like silence, triangle wave bass enters with two-note motif that becomes the backbone, builds layer by layer — noise channel percussion, second pulse wave harmony, first pulse wave takes the lead with sweeping minor-key melody, reaches massive climax with both channels in detuned unison playing heroic-dark theme, then strips back to the two-note bass motif alone, ancient seals breaking open deeper passages, A minor, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG, Symphony of the Night energy
+```
+
+### E10: "Ember and Ash"
+
+```
+NES dungeon theme alternating between quiet fire-lit atmosphere and sudden combat bursts, pure 8-bit chiptune, pattern: 20 seconds of sparse pulse wave melody with crackling noise channel embers, then SUDDEN shift to full aggressive battle section for 30 seconds, then drops back to quiet, the unpredictability of dungeon crawling, you never know when the next fight comes, E minor, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E11: "Descent of the Forgotten"
+
+```
+NES continuously descending dungeon theme, pure 8-bit chiptune, lead pulse wave melody that keeps modulating downward through keys creating a feeling of sinking deeper, triangle wave bass following the descent, second pulse wave adding increasingly frantic arpeggios as you go deeper, noise channel percussion intensifying, starts at medium energy and builds to overwhelming intensity by the end, then loops back to medium, the deeper you go the worse it gets, chromatic modulation, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E12: "The Gauntlet"
+
+```
+NES relentless combat gauntlet theme, 155 BPM, pure 8-bit chiptune, no quiet section — this track is ALL intensity from start to finish, lead pulse wave with driving eighth-note melody in D minor, second pulse wave playing aggressive counter-melody, triangle wave bass with non-stop pumping root notes, noise channel double-time hi-hat with heavy kick, for when the playlist needs pure unbroken combat energy, duty cycle modulation for timbral variety within the intensity, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG, Mega Man boss rush energy
+```
+
+### E13: "Crimson Corridors"
+
+```
+NES dark dungeon exploration to combat arc, pure 8-bit chiptune, opens with uneasy pulse wave playing in Phrygian mode creating exotic darkness, triangle wave bass with menacing half-step movement, noise channel distant rumbling, second pulse wave adds tension with held dissonant notes, builds into aggressive Phrygian-mode combat melody that sounds both dark and exotic, noise channel full combat percussion, the dungeon has a foreign ancient evil feel, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E14: "Knowledge is Power"
+
+```
+NES card roguelite theme celebrating the knowledge mechanic, pure 8-bit chiptune, starts with mysterious pulse wave playing a riddle-like melodic pattern, triangle wave bass with scholarly deliberate rhythm, builds as the pattern resolves into confident aggressive combat melody — the answer was found and now you strike with certainty, both pulse waves in triumphant unison at the peak, noise channel driving percussion, the feeling of getting every quiz question right and dealing massive damage, D major climax from D minor opening, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E15: "Throne of Bones"
+
+```
+NES final boss arena theme, 160 BPM, pure 8-bit chiptune, the most epic track in the entire playlist, both pulse waves playing massive detuned unison riff in C minor, triangle wave bass thundering, noise channel relentless double-time, includes a 4-bar breakdown where everything drops except a single ominous bass note before crashing back, builds to a second climax even more intense than the first, then resolves to dark atmospheric ending, the final confrontation, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Castlevania Dracula's final form energy, Famicom-era dark fantasy RPG
+```
+
+### E16: "Rust and Ruin"
+
+```
+NES decaying dungeon theme with industrial feel, 140 BPM, pure 8-bit chiptune, lead pulse wave playing mechanical repeating pattern like broken machinery, noise channel with irregular clanking rhythm, triangle wave bass grinding low notes, second pulse wave adding distorted harmony, the dungeon is falling apart around you and you're fighting through the collapse, builds from mechanical atmosphere to desperate combat, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E17: "Echoes of the Fallen"
+
+```
+NES mournful dungeon combat theme, pure 8-bit chiptune, starts with beautiful sad pulse wave melody in A minor — remembering fallen adventurers who came before, triangle wave bass with slow dignified movement, then hardens into determined combat melody — you will not share their fate, noise channel builds from silence to driving percussion, the sadness fuels the fight, duty cycle shift from soft to aggressive, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E18: "Chain Lightning"
+
+```
+NES knowledge chain combo theme, 145 BPM, pure 8-bit chiptune, starts at medium intensity with driving pulse wave melody, every 8 bars ESCALATES — adds more arpeggiation, faster notes, higher energy, like building a knowledge chain in the game, by the end both pulse waves are playing maximum-speed interlocking arpeggios at full intensity, noise channel percussion doubling in complexity, triangle wave bass going from simple roots to octave jumps, the feeling of a perfect chain building to 5x multiplier, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### E19: "No Retreat"
+
+```
+NES desperate last-stand dungeon theme, pure 8-bit chiptune, opens with urgent alarm-like pulse wave repeating pattern, triangle wave bass with anxious climbing chromatic line, noise channel fast heartbeat-like kick pattern, second pulse wave adds desperate melody fighting against the alarm, builds to frantic climax where everything is at maximum speed and intensity, you're low on HP and there's no going back, G minor, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG, Metroid escape sequence energy
+```
+
+### E20: "The Rogue's Triumph"
+
+```
+NES ultimate heroic dungeon theme with full dynamic arc, pure 8-bit chiptune, starts dark and atmospheric with single pulse wave and dripping noise channel, slowly builds through exploration melody into confident stride, then EXPLODES into the most triumphant battle melody in the entire game — heroic bright major-key section that feels like overcoming impossible odds, both pulse waves in glorious unison, triangle wave bass with powerful ascending line, noise channel crashing percussion, then resolves back to quiet determination, Bb major climax from Bb minor opening, the arc of a complete dungeon run in one song, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
 
 ---
 
-## Track 2: Combat Theme (Normal Encounters)
-**File:** `bgm_combat.ogg` | **Duration:** 45-60s loop | **Priority:** P1
+# QUIET PLAYLIST (20 tracks)
 
-```
-Create a tense, driving combat theme for a pixel art card roguelite.
-Rhythmic string ostinato (fast 16th notes) as the foundation, layered
-with punchy war drums and taiko hits on the downbeats. Add a heroic but
-restrained brass melody that repeats every 8 bars — French horn or
-trumpet, not full orchestra. The feel is "focused determination" — urgent
-but controlled, like a chess match with swords. Key of D minor. Tempo
-130-140 BPM. Must loop seamlessly after 45-60 seconds. No vocals. The
-energy level should be sustainable over 15-20 repeated encounters without
-listener fatigue — avoid being too bombastic. Subtle dynamic variation
-within the loop.
-```
-
-**What to listen for:** Can you hear this 20 times without wanting to mute it? Is it tense but not exhausting? The strings should drive forward, the brass should feel heroic but not overwhelming. If it's too intense, add "more restrained, less bombastic" to the prompt.
+Lo-fi, chill, soft. For players who want to focus on the strategy and quiz. Still dungeon-dark but calm and non-distracting. Think lo-fi hip-hop beats but through an NES sound chip.
 
 ---
 
-## Track 3: Combat Theme (Boss Battle)
-**File:** `bgm_boss.ogg` | **Duration:** 60-90s loop | **Priority:** P1
+### Q01: "Candlelight Study"
 
 ```
-Create an epic, intense boss battle theme for a pixel art card roguelite
-game. Full orchestral arrangement: pounding timpani and taiko drums in
-relentless 4/4, aggressive low brass (trombones, tubas) playing a
-menacing motif, fast string tremolo creating urgency, and a soaring choir
-("ah" vowels, not words) that enters at the climax. The feel is "this
-enemy is different — everything is at stake." Key of C minor or Bb minor.
-Tempo 150-160 BPM. Must loop seamlessly. Include a 4-bar buildup section
-that creates a sense of escalation each loop. Add a brief 2-bar
-"breathing room" with just strings before the drums crash back in. No
-vocals. Cinematic, dramatic, terrifying but empowering — the player
-should feel like a hero facing their greatest challenge.
+NES lo-fi chill dungeon study theme, 75 BPM, pure 8-bit chiptune, gentle pulse wave melody playing soft major-key notes with long sustain, triangle wave bass with simple two-note pattern repeating hypnotically, noise channel with very soft lo-fi crackle like vinyl static, second pulse wave adding occasional warm harmony notes, lo-fi chiptune beats to study and fight monsters to, relaxed and focused, not intense not scary just calm dungeon vibes, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, lo-fi pixel art study music
 ```
 
-**What to listen for:** Do you feel your heart rate go up? Is there a moment where the tension breaks briefly before crashing back? That breathing room is crucial — without it, the track becomes a wall of noise. The choir should feel like fate itself is watching.
+### Q02: "Quiet Blades"
+
+```
+NES soft combat theme, 100 BPM, pure 8-bit chiptune, lead pulse wave playing a gentle melodic line that suggests combat without being aggressive, triangle wave bass with laid-back walking pattern, noise channel with soft brushed hi-hat only, second pulse wave adding warm sustained chords, fighting but calmly — strategic not frantic, the combat is a puzzle not a war, D minor but with warm voicings, authentic NES 2A03 four-channel limitation, retro 8-bit game lo-fi soundtrack
+```
+
+### Q03: "Torchlight Reverie"
+
+```
+NES dreamy dungeon lo-fi theme, 70 BPM, pure 8-bit chiptune, pulse wave playing spacious melody with lots of rests between notes, triangle wave bass with gentle root notes every two bars, noise channel faint crackling fire ambience, second pulse wave adding held harmony creating warm chord pads, watching the torchlight flicker while thinking about your next move, meditative and warm despite being underground, A minor with major seventh intervals for warmth, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q04: "Soft Steps"
+
+```
+NES quiet exploration lo-fi theme, 85 BPM, pure 8-bit chiptune, lead pulse wave with simple stepping melody that moves in gentle quarter notes, triangle wave bass providing grounding root-fifth movement, noise channel with very soft kick on beats 1 and 3 only, second pulse wave holding sustained notes for warmth, walking quietly through corridors not in a rush, peaceful dungeon exploration, C major for simple clarity, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q05: "The Scholar's Rest"
+
+```
+NES rest site lo-fi chiptune theme, 65 BPM, pure 8-bit chiptune, pulse wave playing gentle arpeggio pattern repeating like a music box but warm not creepy, triangle wave bass with slow sustained root notes, noise channel silent except for occasional single tick like a page turning, second pulse wave adding one long held note per phrase, studying your cards and planning the next floor, Eb major, warm and safe but still underground, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q06: "Ember Glow"
+
+```
+NES lo-fi campfire dungeon theme, 60 BPM very slow, pure 8-bit chiptune, two pulse waves playing simple interlocking arpeggios creating a warm blanket of sound, triangle wave bass with single low note per bar, noise channel with quiet crackling ember texture, lo-fi warmth and comfort, sitting by the fire after a long fight, not sad not happy just present, A minor with natural warmth, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q07: "Dust and Memory"
+
+```
+NES nostalgic lo-fi dungeon theme, 80 BPM, pure 8-bit chiptune, pulse wave melody with wistful quality — notes that seem to remember better times, triangle wave bass with gentle movement, noise channel with soft vinyl-crackle texture throughout, second pulse wave adding detuned harmony for lo-fi warmth, the dungeon holds memories of those who came before, bittersweet and calm, G minor with occasional major lifts, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q08: "Lantern Light"
+
+```
+NES soft guiding light lo-fi theme, 90 BPM, pure 8-bit chiptune, lead pulse wave with bright but soft melody like a lantern bobbing as you walk, triangle wave bass with steady quarter note pulse, noise channel with gentle hi-hat shuffle, second pulse wave providing chordal warmth, a small light in the darkness guiding your way, hopeful but gentle, F major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q09: "Stone Lullaby"
+
+```
+NES lo-fi dungeon sleep theme, 55 BPM very slow, pure 8-bit chiptune, single pulse wave playing a simple descending-then-ascending lullaby melody, triangle wave bass with one note every two bars, noise channel almost inaudible distant texture, second pulse wave enters only in the second half adding very quiet harmony, the dungeon is resting and so are you, minimal and hypnotic, D minor, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q10: "Thinking Caps"
+
+```
+NES quiz-focused lo-fi study theme, 95 BPM, pure 8-bit chiptune, pulse wave playing clever bouncy melody in major key that makes you feel smart, triangle wave bass with playful walking line, noise channel with light snare shuffle, second pulse wave adding staccato rhythmic accents, the feeling of knowing the answer before the timer runs out, confident and focused, C major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q11: "Gentle Descent"
+
+```
+NES lo-fi floor transition theme, 70 BPM, pure 8-bit chiptune, slowly descending pulse wave melody getting lower in register as you go deeper, triangle wave bass following the descent gently, noise channel with distant dripping water, second pulse wave adding ethereal held notes, going deeper but it's okay everything is calm, Dorian mode for bittersweet color, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q12: "Parchment and Ink"
+
+```
+NES lo-fi card management theme, 85 BPM, pure 8-bit chiptune, pulse wave playing studious melody like writing notes in a journal, triangle wave bass with academic walking pattern, noise channel with scratching pen texture barely audible, second pulse wave adding bookish warm harmonies, reviewing your deck and making plans, scholarly and calm, A major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q13: "Warm Stones"
+
+```
+NES lo-fi dungeon comfort theme, 75 BPM, pure 8-bit chiptune, both pulse waves playing interlocking warm arpeggios in thirds creating a cozy blanket of sound, triangle wave bass with simple heartbeat-like two-note pattern, noise channel with soft static warmth, even deep underground there are warm places, comforting and safe, F major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q14: "Quiet Courage"
+
+```
+NES lo-fi heroic soft theme, 80 BPM, pure 8-bit chiptune, pulse wave playing a quietly heroic melody — brave but not loud, triangle wave bass with steady supportive movement, noise channel with gentle kick-hat pattern, second pulse wave adding determined harmony notes, courage doesn't have to be loud, doing the right thing quietly, Bb major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q15: "Midnight Arithmetic"
+
+```
+NES lo-fi puzzle solving theme, 90 BPM, pure 8-bit chiptune, pulse wave playing a mathematical-feeling melody with precise intervals, triangle wave bass with logical stepping pattern, noise channel with metronomic soft tick, second pulse wave adding calculating harmony, the satisfaction of working through a problem, intellectual and satisfying, E minor with chromatic passing tones for clever feeling, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q16: "Copper and Dust"
+
+```
+NES lo-fi dungeon merchant chill theme, 85 BPM, pure 8-bit chiptune, pulse wave playing a mellow jazzy melody with chromatic grace notes, triangle wave bass walking a chill chromatic line, noise channel with soft shuffle beat, second pulse wave adding coin-like staccato accents, browsing the shop with no urgency, everything has a price, F major with blues notes, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q17: "After the Battle"
+
+```
+NES lo-fi post-combat rest theme, 60 BPM, pure 8-bit chiptune, pulse wave playing a relieved exhale of a melody — tension leaving the body, triangle wave bass with slow comforting root notes, noise channel quiet, second pulse wave adding warm resolution chords, you survived that encounter now catch your breath, the relief after a close fight, C major resolving from C minor, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q18: "Fool's Gold"
+
+```
+NES lo-fi treasure room chill theme, 95 BPM, pure 8-bit chiptune, pulse wave playing a cheeky playful melody with unexpected turns, triangle wave bass with bouncy movement, noise channel with light percussion shuffle, second pulse wave adding sparkly high staccato notes like coins, finding treasure in the dungeon and not sure if it's worth it, A major with mischievous chromatic notes, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q19: "Deep Breaths"
+
+```
+NES lo-fi meditation rest theme, 50 BPM extremely slow, pure 8-bit chiptune, single pulse wave playing one note every 3-4 seconds with silence between, triangle wave bass holding a single pedal tone, noise channel breathing-like soft whoosh every few seconds, second pulse wave silent for most then one held note, the most minimal quiet track, almost meditation, just breathing in the dark, A minor, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
+
+### Q20: "The Long Road Home"
+
+```
+NES lo-fi journey's end reflective theme, 75 BPM, pure 8-bit chiptune, pulse wave playing a nostalgic melody looking back on the run, triangle wave bass with gentle movement toward home, noise channel with soft static warmth, second pulse wave adding bittersweet harmony, whether you won or lost the journey mattered, reflective and warm, G major with minor passing tones, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+```
 
 ---
 
-## Track 4: Combat Theme (Elite Encounter)
-**File:** `bgm_elite.ogg` | **Duration:** 45-60s loop | **Priority:** P2
+# AMBIENT PLAYLIST (20 tracks)
 
-```
-Create a menacing elite enemy combat theme for a pixel art card roguelite.
-Darker and more threatening than standard combat, but less grand than a
-boss theme. Heavy, distorted low strings playing a chromatic descending
-riff. Aggressive snare rolls and military-style percussion. A warning
-bell or gong hit every 8 bars. Sinister woodwinds (bass clarinet or
-contrabassoon) weaving between the string hits. The feel is "this enemy
-is dangerous — stay sharp." Key of F# minor. Tempo 140-145 BPM. Must
-loop seamlessly. No vocals. Think Dark Souls mini-boss energy but in a
-16-bit aesthetic.
-```
-
-**What to listen for:** It should feel *darker* than normal combat but *smaller* than boss. The gong every 8 bars is a warning pulse. If it sounds too similar to Track 2, push harder on the chromatic/dissonant elements.
+Minimal, textural, barely music. For players who want near-silence with just enough to know they're in a dungeon. These are sound-design-adjacent — drones, textures, sparse notes floating in darkness.
 
 ---
 
-## Track 5: Shop Theme ("The Merchant")
-**File:** `bgm_shop.ogg` | **Duration:** 30-45s loop | **Priority:** P2
+### A01: "The Silence Between"
 
 ```
-Create a playful, quirky merchant shop theme for a pixel art card
-roguelite. Plucked strings (pizzicato or mandolin) playing a bouncy,
-mischievous melody. Light hand claps and finger snaps as percussion. A
-recorder or tin whistle adding playful countermelody. Occasional
-coin-jingle sound effects woven into the rhythm. The mood is "a charming
-trickster wants your gold" — lighthearted, commercial, slightly cheeky.
-Key of F major or Bb major. Tempo 110-120 BPM. Must loop seamlessly. No
-vocals. Think of a medieval marketplace with a winking shopkeeper. Warm,
-inviting, makes you want to browse.
+NES dungeon ambient minimal texture, pure 8-bit chiptune, single pulse wave playing one isolated note every 8-10 seconds floating in silence, triangle wave bass with barely audible low drone, noise channel with faint irregular dripping water, no rhythm no melody just isolated moments of sound in darkness, the dungeon breathes, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack, dark atmospheric
 ```
 
-**What to listen for:** Does it make you smile? Does it feel like spending gold would be *fun*? The melody should be catchy but not annoying on loop. The coin jingles should be subtle, not literal.
+### A02: "Hollow Wind"
+
+```
+NES dungeon wind ambient drone, pure 8-bit chiptune, noise channel producing continuous soft wind-like texture, single pulse wave holding a very quiet sustained note that shifts pitch every 15 seconds, triangle wave bass inaudible low rumble, no melody no rhythm just wind through stone corridors, the emptiness between rooms, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A03: "Dripping Cavern"
+
+```
+NES cave ambient water texture, pure 8-bit chiptune, noise channel producing irregular water drip sounds at random intervals, pulse wave playing a single high note per drip like an echo, triangle wave bass with very low continuous drone, no melody just the sound of an underground water source, the dungeon is alive with hidden streams, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A04: "Torch Flicker"
+
+```
+NES dungeon ambient fire texture, pure 8-bit chiptune, noise channel with soft irregular crackling like a dying torch, pulse wave with occasional single warm note appearing and disappearing, triangle wave bass silent, second pulse wave adding one held note every 20 seconds that fades, watching a torch slowly burn down, hypnotic minimal, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A05: "Stone Whispers"
+
+```
+NES dungeon ambient whisper texture, pure 8-bit chiptune, two pulse waves playing extremely quiet detuned unison creating a subtle phasing whisper effect, triangle wave bass with single pedal tone, noise channel with random sparse ticks like stones settling, the walls seem to murmur, unsettling but not scary, whole-tone intervals for otherworldly feel, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A06: "Depth Gauge"
+
+```
+NES dungeon ambient descending drone, pure 8-bit chiptune, triangle wave bass playing an extremely slow descending chromatic line — one note shift every 10 seconds, pulse wave with faint harmonic hovering above, noise channel nearly silent occasional tick, the feeling of being deep underground and still going deeper, no rhythm just slow gravitational pull downward, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A07: "Ember Watch"
+
+```
+NES campfire ambient minimal rest theme, pure 8-bit chiptune, noise channel with gentle fire crackling pattern, single pulse wave playing one warm note every 6-8 seconds, triangle wave bass with lowest possible sustained note, second pulse wave silent, campfire ambience stripped to absolute minimum, the comfort of fire in the dark reduced to its essence, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A08: "Ancient Air"
+
+```
+NES dungeon ambient stale air texture, pure 8-bit chiptune, pulse wave producing a slow barely-audible oscillation like air moving through old passages, noise channel with distant resonance texture, triangle wave bass with extremely low almost felt-not-heard drone, no notes just texture, the dungeon has been here for centuries and the air remembers, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A09: "Rune Glow"
+
+```
+NES mystery room ambient minimal theme, pure 8-bit chiptune, single pulse wave playing whole-tone scale notes one at a time with 5-second gaps, each note slightly detuned creating dreamlike quality, triangle wave bass with chromatic pedal shift every 15 seconds, noise channel with sparse crystalline ticks, glowing runes on the wall casting faint light, otherworldly and strange, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A10: "Distant Battle"
+
+```
+NES ambient far-away combat texture, pure 8-bit chiptune, noise channel with very faint muffled rhythmic pattern like hearing a battle through thick walls, pulse wave with occasional distant melodic fragment barely audible, triangle wave bass with low rumble, someone else is fighting somewhere in the dungeon, you are alone with the echoes, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A11: "Frozen Passage"
+
+```
+NES dungeon cold ambient texture, pure 8-bit chiptune, pulse wave playing sparse high notes with long decay like icicles, triangle wave bass with deep glacial drone, noise channel with faint crystalline shimmer, second pulse wave adding rare dissonant interval, the dungeon gets cold at this depth, still and frozen, E minor with flat 6 for icy quality, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A12: "The Threshold"
+
+```
+NES ambient room transition texture, pure 8-bit chiptune, triangle wave bass playing two alternating notes very slowly creating a doorway feeling, pulse wave with single note that bends slightly, noise channel with one click like a latch, the moment between rooms, crossing a threshold into the unknown, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A13: "Dust Motes"
+
+```
+NES ambient floating particle texture, pure 8-bit chiptune, both pulse waves playing randomly spaced high tiny notes like dust catching light, no pattern just scattered sparkles, triangle wave bass completely silent, noise channel with faintest possible static, dust floating in a shaft of light from above, momentary beauty in the dark, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A14: "Below the Roots"
+
+```
+NES organic dungeon ambient texture, pure 8-bit chiptune, triangle wave bass with slow organic-feeling movement like roots growing, pulse wave with occasional note that sounds like something alive in the walls, noise channel with soft earthy texture, the dungeon is not just stone it's living, unsettling organic quality, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A15: "Prayer Candles"
+
+```
+NES ambient rest shrine texture, pure 8-bit chiptune, two pulse waves in very quiet unison playing a simple three-note descending prayer motif repeating every 12 seconds, triangle wave bass with single low sacred-feeling note, noise channel silent, a shrine found in the dungeon someone still prays here, solemn and reverent, C major for purity, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A16: "Iron Gates"
+
+```
+NES ambient industrial dungeon texture, pure 8-bit chiptune, noise channel with irregular metallic clanging at random intervals, triangle wave bass with deep resonant drone, pulse wave with occasional grinding note, second pulse wave silent, the deep dungeon where iron gates block forgotten passages, cold and mechanical, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A17: "Void"
+
+```
+NES ambient absolute minimal nothing, pure 8-bit chiptune, triangle wave bass with single sustained lowest possible note, pulse waves silent for 20+ seconds then one note appears and vanishes, noise channel with the faintest possible hiss, as close to silence as music can be, the deepest point of the dungeon where sound itself dies, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A18: "Echoing Steps"
+
+```
+NES ambient footstep echo texture, pure 8-bit chiptune, noise channel with rhythmic soft footstep-like sounds at walking pace, each footstep followed by pulse wave echo note that decays, triangle wave bass with distant corridor resonance, walking alone through endless corridors, the only sound is your own feet, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A19: "The Cartographer"
+
+```
+NES ambient map screen minimal texture, pure 8-bit chiptune, pulse wave playing a single thoughtful note every 4-5 seconds as if placing pins on a map, noise channel with soft paper-like rustle, triangle wave bass with grounding low note, second pulse wave silent, studying the dungeon map and planning your route, intellectual and still, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
+
+### A20: "Last Embers"
+
+```
+NES ambient dying campfire end-of-run texture, pure 8-bit chiptune, noise channel with increasingly sparse crackling — the fire is going out, pulse wave playing slower and slower melody fragments getting quieter, triangle wave bass fading to nothing, the run is ending whether in victory or defeat, everything winds down, the embers die, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
+```
 
 ---
 
-## Track 6: Rest Site Theme ("The Campfire")
-**File:** `bgm_rest.ogg` | **Duration:** 60-90s loop | **Priority:** P2
+# CAMP PLAYLIST (5-10 tracks)
 
-```
-Create a deeply peaceful rest site theme for a pixel art card roguelite.
-Slow, gentle piano as the lead — simple, spacious chords with lots of
-sustain pedal. Soft ambient pads creating a warm bed of sound underneath.
-Distant wind and very subtle nature sounds (not literal — suggested
-through reverb and texture). An occasional solo cello playing a tender,
-melancholic phrase. The mood is "you survived — rest now." Key of Eb
-major or Ab major. Tempo 60-70 BPM. Must loop seamlessly. No vocals.
-This should feel like emotional relief — the tension of combat is gone,
-replaced by warmth and safety. Slightly bittersweet, like remembering
-what you're fighting for. Minimal arrangement — space and silence are
-part of the music.
-```
-
-**What to listen for:** Close your eyes. Do you feel your shoulders drop? Does the tension leave your body? The silences between piano notes matter as much as the notes themselves. If it feels cluttered, regenerate with "more minimal, more space between notes."
+Plays on the hub/home screen. Consistently low energy, cozy-dark, safe haven.
 
 ---
 
-## Track 7: Map/Exploration Theme ("The Journey")
-**File:** `bgm_map.ogg` | **Duration:** 45-60s loop | **Priority:** P2
+### Camp 01: "Torch and Stone"
 
 ```
-Create an adventurous exploration theme for a pixel art card roguelite
-dungeon map screen. Light, steady march percussion (snare rim clicks,
-soft kick drum). A solo flute playing a curious, wandering melody that
-rises and falls like a path through hills. Gentle string pad providing
-harmonic support. Occasional harp glissandos suggesting discovery. The
-mood is "the unknown awaits, and it's exciting." Key of A major or E
-major. Tempo 100-110 BPM. Must loop seamlessly. No vocals. Not
-combat-tense, not camp-relaxed — the energy is forward-moving,
-adventurous, optimistic with a hint of uncertainty. Think Legend of Zelda
-overworld but smaller scale, more intimate.
+Dark NES dungeon campsite respite theme, slow tempo 60-70 BPM, pure 8-bit chiptune, two pulse wave channels carrying a somber minor-key melody with long sustained notes and sparse arpeggios, deep triangle wave bass with slow deliberate root notes, noise channel crackling embers and distant dripping cave water, no real instruments, authentic NES 2A03 sound chip limitations, four-channel composition, dark medieval dungeon crawler, melancholic but restful, brief safety before descending deeper, flickering torchlight atmosphere, lo-fi bitcrushed warmth, detuned pulse wave vibrato for unease, minor key with occasional dissonant passing tones, seamless loop, pixel art campfire in a stone corridor, weary adventurers resting, quiet dread beneath the calm, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
 ```
 
-**What to listen for:** Does it make you want to pick a path and go? The flute should wander — not march in a straight line. The harp glissandos should feel like "oh, what's over there?" moments.
+### Camp 02: "Embers and Silence"
+
+```
+Dark NES dungeon campsite respite theme, very slow tempo 55-65 BPM, pure 8-bit chiptune, single pulse wave playing isolated minor-key notes with long silences between them, triangle wave bass with single sustained low drone, noise channel quiet ember crackle barely audible, second pulse wave completely silent for most of the piece then adds one held note, no real instruments, authentic NES 2A03 sound chip four-channel limitation, the most minimal track in the game, barely there, silence is the music, flickering torchlight in an empty corridor, the exhaustion after a hard fight, A minor, detuned vibrato on the few notes that exist, pixel art campfire embers, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### Camp 03: "The Peddler's Alcove"
+
+```
+NES dungeon merchant theme, 105-115 BPM, pure 8-bit chiptune, lead pulse wave playing a slightly off-kilter bouncy melody in a major key that feels suspicious rather than cheerful, second pulse wave adding staccato rhythmic accompaniment like coins clinking, triangle wave bass walking a jazzy chromatic line, noise channel providing a light shuffle beat, no real instruments, authentic NES 2A03 sound chip four-channel limitation, dungeon peddler who should not be trusted, playful but with an edge of danger, F major with unexpected flat notes for unease, duty cycle changes giving the melody a sly winking quality, seamless loop, pixel art roguelite shop keeper in torchlit alcove, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG, Shovel Knight merchant vibes
+```
+
+### Camp 04: "Hearthside Tales"
+
+```
+NES warm storytelling camp theme, 70 BPM, pure 8-bit chiptune, pulse wave playing a gentle narrative melody that rises and falls like someone telling a story, triangle wave bass with warm supportive notes, noise channel with soft fire crackle, second pulse wave adding occasional response notes like a listener reacting, adventurers sharing stories by the fire, warm and communal, G major with nostalgic minor moments, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### Camp 05: "Tomorrow's Descent"
+
+```
+NES anticipation camp theme, 65 BPM, pure 8-bit chiptune, pulse wave playing a melody that balances hope and dread — tomorrow you go back into the dungeon, triangle wave bass with slow resolute movement, noise channel with quiet distant rumbling from below, second pulse wave adding held tension notes, the night before the next run, determined but uncertain, D minor with moments of D major for hope, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
 
 ---
 
-## Track 8: Mystery Event Theme ("The Enigma")
-**File:** `bgm_mystery.ogg` | **Duration:** 30-45s loop | **Priority:** P2
+# ONE-SHOT STINGS
 
-```
-Create an enigmatic, slightly unsettling mystery event theme for a pixel
-art card roguelite. A music box melody playing a simple but off-kilter
-tune — notes slightly detuned or in an unusual mode (Lydian or whole tone
-scale). Ethereal ambient pads with heavy reverb creating a dreamlike
-space. Subtle reversed cymbal swells. Very quiet, distant wind. The mood
-is "something strange is happening — it could be wonderful or terrible."
-Key of D Lydian or Bb whole tone. Tempo 75-85 BPM. Must loop seamlessly.
-No vocals. Think of opening a mysterious chest in a dark room — curiosity
-mixed with slight unease. Sparse, atmospheric, more about texture than
-melody.
-```
-
-**What to listen for:** Does it feel *weird* but not scary? The music box should be slightly off — like a dream you can't quite remember. If it's too creepy, add "more curious, less horror" to the prompt.
+Brief moments that play over the playlist.
 
 ---
 
-## Track 9: Surge Turn Overlay ("Knowledge Surge")
-**File:** `bgm_surge.ogg` | **Duration:** 15-20s loop | **Priority:** P1
+### Sting: "Ascent" (Victory)
+**Duration:** 5-8s
 
 ```
-Create a powered-up, golden energy overlay theme for a card game's
-special ability turn. This plays ON TOP of the combat music, so it must
-be in a compatible key. Shimmering synthesizer arpeggios cascading
-upward. A pulsing, warm bass synth providing energy. Bright, metallic
-percussion hits (like striking gold). The mood is "unlimited power for a
-brief moment" — euphoric, electric, time-limited urgency. Key of A major
-(to layer over D minor combat). Tempo must match combat at 130-140 BPM.
-Duration 15-20 seconds, loops seamlessly. No vocals. Think of a power-up
-star from Mario but reimagined as golden arcane energy. Bright, fast,
-intoxicating.
+NES victory fanfare, pure 8-bit chiptune, starts with single pulse wave holding one triumphant high note for 1 second, then both pulse waves burst into ascending major scale arpeggio with triangle wave bass doing powerful ascending octaves, noise channel crashing like 8-bit cymbals, at the peak both pulse waves play a 4-note hero motif in unison THE melody that means victory, resolves to warm tonic, no real instruments, authentic NES 2A03 sound chip four-channel limitation, Bb major, brief triumphant moment, duty cycle shifts from narrow to wide for maximum brightness, one-shot 5-8 seconds, retro 8-bit game soundtrack, Final Fantasy NES victory fanfare energy, Famicom-era dark fantasy RPG
 ```
 
-**What to listen for:** Play this OVER Track 2 simultaneously. Do they clash or harmonize? A major over D minor creates a Mixolydian shimmer — it should feel like the combat music got gilded. If they clash, try E major or D major instead.
+### Sting: "Fading Light" (Defeat)
+**Duration:** 5-8s
+
+```
+NES game over theme, pure 8-bit chiptune, single pulse wave playing a slow descending minor phrase 4 notes falling, triangle wave bass holding a low drone that fades, final moment resolves to a single major chord that glimmers with hope, noise channel silent, no real instruments, authentic NES 2A03 sound chip four-channel limitation, A minor resolving to C major, NOT punishing contemplative and dignified, one-shot 5-8 seconds, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
+
+### Sting: "The Warden Appears" (Boss Entrance)
+**Duration:** 3-5s
+
+```
+NES boss entrance dramatic hit, pure 8-bit chiptune, both pulse waves slamming a massive low chord in unison, triangle wave bass thundering low octave, noise channel crash, single moment of dread then silence, no real instruments, authentic NES 2A03 sound chip four-channel limitation, C minor, the boss has appeared, one-shot 3-5 seconds, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
+```
 
 ---
 
-## Track 10: Boss Quiz Phase ("The Trial")
-**File:** `bgm_quiz_boss.ogg` | **Duration:** 15-20s loop | **Priority:** P1
+# GENERATION STRATEGY
 
-```
-Create a tense, clock-ticking quiz pressure theme for a card roguelite
-boss encounter. The combat music has paused — this replaces it. A steady,
-metronomic tick (not a literal clock — more like a dampened wood block or
-muted string pluck) at 120 BPM. Sustained, dissonant string chords
-creating unbearable tension. Very quiet, breathy flute playing a single
-held note that slowly bends upward. The mood is "this question determines
-everything." Key of C minor. Must loop seamlessly at 15-20 seconds. No
-vocals. Minimalist — the silence between the ticks is as important as the
-sound. Think of defusing a bomb in a movie. The player's mind should
-race.
-```
+### Batch Order (most to least important)
+1. **Epic E01-E05** — the first dungeon experience
+2. **Quiet Q01-Q05** — alternative for quiz-focused players
+3. **Camp 01-03** — hub identity
+4. **Victory + Defeat stings** — emotional anchors
+5. **Epic E06-E20** — fill the epic playlist
+6. **Quiet Q06-Q20** — fill the quiet playlist
+7. **Ambient A01-A20** — last priority, most niche audience
+8. **Camp 04-05 + Boss sting** — finishing touches
 
-**What to listen for:** Does time feel like it's slowing down? The tick should be hypnotic, not annoying. The dissonant strings should make you uncomfortable but not distracted. Less is more here — if it's too busy, strip elements out.
+### Total Track Count
+- **Epic:** 20 tracks
+- **Quiet:** 20 tracks
+- **Ambient:** 20 tracks
+- **Camp:** 5 tracks
+- **Stings:** 3
 
----
-
-## Track 11: Run Victory ("Triumph")
-**File:** `bgm_victory.ogg` | **Duration:** 15-20s ONE-SHOT (does NOT loop) | **Priority:** P0
-
-```
-Create a triumphant victory fanfare for completing a dungeon run in a
-pixel art card roguelite. Structure: Start with a single, pure French
-horn note held for 2 seconds (the relief). Then a full orchestra swells
-in — ascending major scale in the brass, rapid string runs, crashing
-cymbals, thundering timpani. At the peak (8-10 seconds), a soaring
-trumpet melody plays the "hero theme" — 4 memorable notes that feel like
-destiny fulfilled. The final 5 seconds wind down to warm strings and a
-gentle harp arpeggio resolving to the tonic. Key of Bb major or C major.
-The emotion arc is: relief (2s) -> building joy (5s) -> TRIUMPH (5s) ->
-warm satisfaction (5s). No vocals. This is the single most emotionally
-powerful music in the entire game. The player just conquered the dungeon.
-Make them feel like a legend.
-```
-
-**What to listen for:** Do you get goosebumps? This is THE moment. The French horn at the start should make you exhale with relief. The trumpet peak should make you pump your fist. The harp at the end should make you smile. If you don't feel anything, regenerate until you do. This track is worth spending extra time on.
-
----
-
-## Track 12: Run Defeat ("Reflection")
-**File:** `bgm_defeat.ogg` | **Duration:** 12-15s ONE-SHOT (does NOT loop) | **Priority:** P1
-
-```
-Create a gentle, reflective defeat theme for dying in a pixel art card
-roguelite. Solo piano only. Start with a simple, descending minor phrase
-— 4 notes, played slowly with full sustain pedal. Pause. Then repeat the
-phrase one step lower, even softer. End with a single major chord that
-resolves the tension — a tiny glimmer of hope. The mood is NOT punishment
-or sadness — it's "that was a worthy attempt, and you learned something."
-Key of A minor resolving to C major at the end. Tempo rubato (free time),
-roughly 60 BPM. Duration 12-15 seconds, one-shot. No vocals. Think of a
-wise mentor gently saying "try again." Respectful, dignified,
-encouraging. The player should feel motivated to start another run, not
-discouraged.
-```
-
-**What to listen for:** Does it make you want to try again? The final major chord is everything — it's the "but next time..." that keeps players coming back. If the track makes you feel bad, it's wrong. It should feel like a warm hand on your shoulder.
-
----
-
-## Track 13: Onboarding/Tutorial ("Welcome")
-**File:** `bgm_tutorial.ogg` | **Duration:** 45-60s loop | **Priority:** P2
-
-```
-Create a bright, encouraging tutorial theme for a pixel art card
-roguelite. Gentle marimba or xylophone playing a simple, catchy melody —
-think of a music box but warmer. Soft acoustic guitar strumming quarter
-notes. Light, bouncy percussion (shaker, soft kick). Occasional bright
-chime accents on important moments. The mood is "welcome to something
-wonderful — let me show you." Key of C major or G major. Tempo 95-105
-BPM. Must loop seamlessly. No vocals. Simpler and brighter than the hub
-theme — this is the very first music new players hear. It should feel
-safe, inviting, and gently exciting. Not childish — warm and genuine.
-Think of the opening moments of a Miyazaki film.
-```
-
-**What to listen for:** Would a brand new player feel welcomed? Not overwhelmed, not bored — gently excited. The marimba should feel like tiny discoveries. If it sounds like a children's show, push toward "more sophisticated, Miyazaki warmth."
-
----
-
-## Generation Order (recommended)
-
-Do these first — they're heard the most:
-
-1. **Track 2 — Combat (normal)** — heard every single encounter
-2. **Track 1 — Hub** — heard every time you return home
-3. **Track 11 — Victory** — the emotional payoff (worth extra iterations)
-4. **Track 12 — Defeat** — the motivational moment
-5. **Track 3 — Boss** — the big moments
-6. **Track 9 — Surge** — must harmonize with Track 2
-7. **Track 10 — Boss Quiz** — must contrast with Track 3
-
-Then fill in the rest:
-
-8. Track 6 — Rest
-9. Track 7 — Map
-10. Track 5 — Shop
-11. Track 4 — Elite
-12. Track 8 — Mystery
-13. Track 13 — Tutorial
+**Grand total: 68 tracks**

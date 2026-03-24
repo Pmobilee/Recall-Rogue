@@ -1,0 +1,132 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 182,
+  "issues": [
+    {
+      "id": "geography-seville-columbus-departure",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Columbus's first voyage departed from Palos de la Frontera (near Huelva), not Seville. The question says 'his voyages' (plural), but the explanation itself clarifies he only organized his 3rd and 4th voyages from Seville. A player who knows the first voyage left from Palos would correctly contest the answer.",
+      "suggested_fix": "Narrow the question: 'From which Spanish city did Columbus organize his later voyages to the Americas?' or 'Which Spanish city was the administrative capital of Spain's colonial trade empire?' Both have Seville as the correct answer but avoid the inaccuracy about all voyages."
+    },
+    {
+      "id": "geography-hamburg-city-state",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Which German city is also an entire federal state unto itself?' implying uniqueness, but the explanation correctly notes that Berlin and Bremen share this exact status. A player who knows Berlin is also a city-state would find the question misleading or unanswerable.",
+      "suggested_fix": "Rephrase to remove the uniqueness implication: 'Which of the following German cities is simultaneously one of the country's 16 federal states?' Or add 'along with Berlin and Bremen' to the question stem."
+    },
+    {
+      "id": "geography-americas-combined-languages",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The answer 'Four' (Spanish, English, Portuguese, French) excludes Dutch, which is the official language of Suriname and the Dutch Caribbean territories. The qualifier 'major' is doing a lot of work here and is subjective. A player who knows about Suriname has a legitimate case for Five.",
+      "suggested_fix": "Add precision: 'How many European colonial languages are spoken as official languages by the most populous nations of the Americas?' or acknowledge Dutch in the explanation and justify its exclusion explicitly."
+    },
+    {
+      "id": "geography-naples-pizza-origin",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of geography-naples-pizza later in the batch. Both ask about Naples as the birthplace of pizza (one asks generally about pizza, one about pizza Margherita in 1889), both give Naples as the answer, and both cite Raffaele Esposito. Players will see both questions and the second will feel like a repeat.",
+      "suggested_fix": "Remove one, or differentiate clearly: keep one for the general origin of pizza in Naples and pivot the other to a distinct angle such as 'What protected EU status does Neapolitan pizza hold?' or 'Who made pizza Margherita for Queen Margherita in 1889?' (answer: Raffaele Esposito)."
+    },
+    {
+      "id": "geography-naples-pizza",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of geography-naples-pizza-origin — both teach the same Naples/pizza/Raffaele Esposito fact with the same correct answer. See note on geography-naples-pizza-origin above.",
+      "suggested_fix": "Retain only one Naples-pizza fact, or pivot this one to a distinct question angle (e.g., 'What Italian city's pizza style is protected by EU law under DOP status?' answer: Naples)."
+    },
+    {
+      "id": "geography-cologne-cathedral-construction",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of geography-cologne-cathedral later in the batch. Both ask how long Cologne Cathedral took to build and both use the 1248–1880 dates. The first gives 'Over {600} years' and the second gives '{632} years' — players will see both questions and the second gives away the answer to the first.",
+      "suggested_fix": "Remove one of the two. If both are kept, differentiate: one could ask 'In what year was Cologne Cathedral finally completed after a 632-year build?' (answer: {1880}) while the other keeps the duration angle."
+    },
+    {
+      "id": "geography-cologne-cathedral",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of geography-cologne-cathedral-construction — both cover the same 1248–1880 construction timeline. See note above.",
+      "suggested_fix": "Retain one; pivot the other to a distinct angle such as 'Which German cathedral was briefly the world's tallest structure upon its completion in 1880?' (answer: Cologne Cathedral)."
+    },
+    {
+      "id": "geography-albania-skanderbeg",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'George Castriot' is Skanderbeg's actual birth name, as stated in the explanation: 'born George Castriot.' This is a factually correct answer being offered as a wrong answer. Any player who knows this will be penalized for selecting what is, in fact, the right person.",
+      "suggested_fix": "Replace 'George Castriot' with a different distractor — e.g., 'Ali Pasha of Ioannina,' 'Gjergj Fishta,' or another Balkan historical figure. The correct answer and the distractor must not refer to the same person."
+    },
+    {
+      "id": "geography-greece-alexander-great-empire",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question 'Whose father united most of Greece before he conquered the ancient world?' is structurally ambiguous — 'he' could refer to the father (Philip II, who did the uniting) or the son (Alexander, who did the conquering). A player reading quickly is likely to answer 'Philip II' since he is the explicit subject of the first clause.",
+      "suggested_fix": "Rephrase to remove ambiguity: 'Philip II of Macedon unified most of Greece so that his son could conquer the ancient world. Who was that son?' (answer: Alexander the Great). Or: 'Which conqueror's father, Philip II, first unified the Greek city-states?'"
+    },
+    {
+      "id": "geography-ukraine-second-largest-europe",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Kazakhstan is listed as a distractor for 'largest country in Europe after Russia.' Kazakhstan straddles Europe and Asia — its western portion is in Europe — and if counted as European it is actually larger than Ukraine, making it a technically correct answer rather than a plausible wrong one. This creates a factual trap.",
+      "suggested_fix": "Replace 'Kazakhstan' with a clearly European large country such as 'Spain' or 'Sweden,' both of which are large but smaller than Ukraine, making them genuinely plausible-but-wrong distractors."
+    },
+    {
+      "id": "geography-germany-named-after-muteness",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation conflates two distinct etymologies. 'Deutsch' (from Deutschland) derives from Proto-Germanic *þiudisk meaning 'of the people' or 'vernacular' — not from 'muteness.' The 'mute/foreign' etymology (meaning people who speak unintelligibly) applies to Slavic words for Germans, notably Russian Nemtsy (Немцы). The explanation's claim that 'Deutsch' originally meant 'mutes' is incorrect; that meaning belongs to a completely separate linguistic tradition.",
+      "suggested_fix": "Either correct the explanation: 'Deutsch comes from *þiudisk meaning the vernacular/people's language, while Slavic languages called Germans Nemtsy (mute ones) — and the answer/question should reflect which etymology is actually being asked about.' Or narrow the question to 'What does the Russian/Slavic word for Germans (Nemtsy) literally mean?' with answer 'Mute people' or 'Those who cannot speak.'"
+    },
+    {
+      "id": "geography-lviv-three-empires",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The answer 'At least {4}' is inconsistent with the explanation, which lists seven distinct political entities: medieval Poland, Austria-Hungary, briefly Germany (1918), interwar Poland, Nazi Germany, Soviet Union, and independent Ukraine. The answer of 4 significantly understates the number described in the explanation, creating confusion.",
+      "suggested_fix": "Change the answer to 'At least {6}' to match the explanation, or simplify the explanation to list exactly four major powers (Poland, Austria-Hungary, Nazi Germany, Soviet Union) without the interim overlaps, so the number and explanation agree."
+    },
+    {
+      "id": "geography-americas-human-arrival",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer uses brace notation inconsistently: 'Between {20,000} and 16,000 years ago' — the first number is in braces but the second is not. For a numerical range answer both should be formatted consistently. Additionally, recent evidence (Chiquihuite Cave) suggests arrival as early as 30,000 years ago, making the upper bound potentially outdated.",
+      "suggested_fix": "Fix brace formatting to 'Between {20,000} and {16,000} years ago.' Optionally add a note in the explanation that some sites suggest earlier arrival dates, making this an area of active research."
+    },
+    {
+      "id": "geography-jamaica-third-caribbean",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks for 'the largest English-speaking country in Latin America and the Caribbean' and gives Jamaica as the answer based on being the 'largest English-speaking country.' However, Belize (~22,966 km²) is larger by area than Jamaica (~10,990 km²) and is also English-speaking and in the region. Jamaica is the most populous English-speaking Caribbean island nation, but not the largest by land area.",
+      "suggested_fix": "Change 'largest' to 'most populous': 'What is the most populous English-speaking country in Latin America and the Caribbean?' — Jamaica (~3 million) clearly beats Belize (~400,000) on this metric. Or specify 'largest English-speaking island nation in the Caribbean' to exclude mainland Belize."
+    },
+    {
+      "id": "geography-valencia-silk-capital",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The fact ID is 'geography-valencia-silk-capital' but the question is about Valencia's role as provisional capital during the Spanish Civil War — nothing about silk. The explanation then mentions both silk (18th century) and the Civil War seat of government. Two unrelated facts about Valencia have been blended into one entry under a misleading ID.",
+      "suggested_fix": "Split into two facts or pick one angle. If keeping the Civil War question, rename the ID to 'geography-valencia-civil-war-capital' and remove the silk reference from the explanation (or move it to a separate fact). The current ID-question mismatch is confusing for content management."
+    },
+    {
+      "id": "geo-new-caledonia-nickel-reserves",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The fact ID is 'geo-new-caledonia-nickel-reserves' but the question asks 'How many provinces is New Caledonia divided into?' — nothing about nickel. The question, answer ({3} provinces), and explanation are all about provincial divisions. The ID suggests this fact was originally planned as a nickel reserves question and the content was replaced without updating the ID.",
+      "suggested_fix": "Rename the ID to 'geo-new-caledonia-provinces' to match the actual content. If a nickel reserves fact was intended, create it separately (New Caledonia holds ~25% of the world's known nickel reserves — a genuinely interesting fact)."
+    },
+    {
+      "id": "geography-guyana-english-speaking-south-america",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Several distractors describe non-existent national attributes ('Only with no flag,' 'Only Creole-speaking') rather than plausible wrong answers about actual South American countries. These are not plausible wrong answers a player would seriously consider — they are clearly absurd. 'Only French territory' is also odd since French Guiana is a real entity (though not a country).",
+      "suggested_fix": "Replace weak distractors with country-based answers that name actual South American countries and their linguistic distinctions: e.g., 'Only Spanish-speaking (Argentina/Colombia/etc.),' 'Only Portuguese-speaking (Brazil),' 'Only Dutch-speaking (Suriname),' 'Only French-speaking (French Guiana).' These are genuinely plausible wrong answers."
+    },
+    {
+      "id": "geography-panama-canal-shortcut",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "This fact states the Canal shortened travel by ~12,875 km (New York to San Francisco route). A separate fact in the same batch (geography-panama-canal) states the Canal saves 'up to 15,000 km.' Both figures are technically valid for different route comparisons, but a player seeing both facts will encounter two different numbers for apparently the same question and find them contradictory.",
+      "suggested_fix": "Ensure each Canal fact specifies the exact route being measured: 'New York to San Francisco via Panama saves ~12,875 km versus the Cape Horn route.' The other fact should specify it refers to the maximum savings on the most extreme routes. Adding route specificity to both prevents apparent contradiction."
+    }
+  ]
+}

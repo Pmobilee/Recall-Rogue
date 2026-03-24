@@ -1117,5 +1117,917 @@
       "orbitalPeriod": "+2"
     },
     "processed": true
+  },
+  {
+    "name": "James Webb Space Telescope",
+    "qid": "Q184507",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "Next-generation space telescope launched 2021, observes in infrared, successor to Hubble, already producing revolutionary images of early universe and exoplanet atmospheres"
+  },
+  {
+    "name": "Cassini-Huygens",
+    "qid": "Q43822",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA/ESA mission to Saturn (1997-2017), extensively studied Saturn's rings, moons, and atmosphere; Huygens probe landed on Titan"
+  },
+  {
+    "name": "Mars Perseverance Rover",
+    "qid": "Q96829904",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA Mars rover launched 2020, searching for signs of ancient microbial life, collecting rock samples, carrying Ingenuity helicopter"
+  },
+  {
+    "name": "Mars Opportunity Rover",
+    "qid": "Q222597",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA rover that operated on Mars from 2004-2019, discovered evidence of ancient liquid water, far exceeded planned 90-day mission"
+  },
+  {
+    "name": "Mars Spirit Rover",
+    "qid": "Q177905",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA Mars rover (2004-2010), twin of Opportunity, explored Gusev Crater, found evidence of past water activity"
+  },
+  {
+    "name": "Pioneer 10",
+    "qid": "Q48580",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "First spacecraft to travel through the asteroid belt and past Jupiter (1972), carried the famous Pioneer plaque with a message for extraterrestrials"
+  },
+  {
+    "name": "Pioneer 11",
+    "qid": "Q48582",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "First spacecraft to visit Saturn (1979), followed Pioneer 10 through the asteroid belt and past Jupiter"
+  },
+  {
+    "name": "Juno spacecraft",
+    "qid": "Q192614",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA mission orbiting Jupiter since 2016, studying Jupiter's atmosphere, magnetic field, and interior structure in detail"
+  },
+  {
+    "name": "Dawn spacecraft",
+    "qid": "Q188760",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA mission (2007-2018) that orbited both Vesta and Ceres in the asteroid belt, first spacecraft to orbit two extraterrestrial bodies"
+  },
+  {
+    "name": "Parker Solar Probe",
+    "qid": "Q43902474",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA probe launched 2018 to study the Sun's outer atmosphere (corona), the closest any spacecraft has come to the Sun"
+  },
+  {
+    "name": "OSIRIS-REx",
+    "qid": "Q17711910",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA mission that collected samples from asteroid Bennu and returned them to Earth in 2023; first US asteroid sample return"
+  },
+  {
+    "name": "Rosetta spacecraft",
+    "qid": "Q182022",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "ESA mission (2004-2016) that orbited comet 67P and deployed Philae lander, first mission to orbit and land on a comet"
+  },
+  {
+    "name": "Chandrayaan-1",
+    "qid": "Q578580",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "India's first lunar mission (2008-2009), discovered water molecules on the Moon, major milestone for ISRO"
+  },
+  {
+    "name": "Chang'e 4",
+    "qid": "Q57789338",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "Chinese mission (2019) that made first-ever soft landing on the far side of the Moon, deployed Yutu-2 rover"
+  },
+  {
+    "name": "Hayabusa2",
+    "qid": "Q17510665",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "JAXA mission that collected samples from asteroid Ryugu and returned them to Earth in 2020, second asteroid sample return"
+  },
+  {
+    "name": "Viking 1",
+    "qid": "Q48565",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "First successful Mars lander (1976), searched for signs of life and studied Martian weather and soil composition"
+  },
+  {
+    "name": "Mars Pathfinder",
+    "qid": "Q193236",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA lander (1997) that deployed Sojourner rover, first Mars rover mission, demonstrated airbag landing technique"
+  },
+  {
+    "name": "MESSENGER",
+    "qid": "Q193143",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "First spacecraft to orbit Mercury (2011-2015), mapped entire planet, discovered water ice in permanently shadowed craters"
+  },
+  {
+    "name": "Magellan spacecraft",
+    "qid": "Q47223",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA mission (1989-1994) that mapped 98% of Venus surface using radar, revealing vast volcanic landscape"
+  },
+  {
+    "name": "Galileo spacecraft",
+    "qid": "Q46705",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA mission (1989-2003) that orbited Jupiter for 8 years, discovered evidence of subsurface ocean on Europa, deployed probe into Jupiter's atmosphere"
+  },
+  {
+    "name": "Chandra X-ray Observatory",
+    "qid": "Q2359280",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "NASA space telescope launched 1999 to observe X-ray sources, named after Subrahmanyan Chandrasekhar"
+  },
+  {
+    "name": "Spitzer Space Telescope",
+    "qid": "Q186447",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "NASA infrared space telescope (2003-2020), observed distant galaxies, star-forming regions, and exoplanet atmospheres"
+  },
+  {
+    "name": "Kepler space telescope",
+    "qid": "Q169876",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "NASA telescope (2009-2018) that discovered over 2,600 confirmed exoplanets by detecting tiny dips in starlight"
+  },
+  {
+    "name": "Very Large Telescope",
+    "qid": "Q190016",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "ESO facility in Chile with four 8.2m telescopes that can work as interferometer, among the world's most powerful optical instruments"
+  },
+  {
+    "name": "Atacama Large Millimeter Array",
+    "qid": "Q190904",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "Radio telescope array in Chile's Atacama Desert, 66 antennas working together to observe cold dust and gas in space"
+  },
+  {
+    "name": "Arecibo Observatory",
+    "qid": "Q185027",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "Former 305-meter radio telescope in Puerto Rico (1963-2020), used for SETI, radar astronomy, and sent the famous Arecibo Message to space"
+  },
+  {
+    "name": "FAST telescope",
+    "qid": "Q19576588",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "Five-hundred-meter Aperture Spherical Telescope in China, world's largest single-dish radio telescope since 2016"
+  },
+  {
+    "name": "LIGO",
+    "qid": "Q2059438",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "Laser Interferometer Gravitational-Wave Observatory; made first direct detection of gravitational waves in 2015 from merging black holes"
+  },
+  {
+    "name": "Vera C. Rubin Observatory",
+    "qid": "Q1241312",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "Observatory under construction in Chile named after Vera Rubin, will conduct Legacy Survey of Space and Time covering the entire southern sky every few nights"
+  },
+  {
+    "name": "black hole",
+    "qid": "Q589",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Region of spacetime where gravity is so strong nothing can escape, not even light; predicted by general relativity and first imaged in 2019"
+  },
+  {
+    "name": "neutron star",
+    "qid": "Q4360",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Incredibly dense remnant of massive star after supernova, packs more than one solar mass into a sphere ~20 km across"
+  },
+  {
+    "name": "pulsar",
+    "qid": "Q283977",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Highly magnetized rotating neutron star emitting beams of electromagnetic radiation; first discovered by Jocelyn Bell Burnell in 1967"
+  },
+  {
+    "name": "quasar",
+    "qid": "Q83373",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Extremely luminous active galactic nucleus powered by supermassive black holes, among the brightest objects in the universe"
+  },
+  {
+    "name": "supernova",
+    "qid": "Q3937",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Powerful stellar explosion that can briefly outshine an entire galaxy; source of heavy elements heavier than iron in the universe"
+  },
+  {
+    "name": "gamma-ray burst",
+    "qid": "Q18343",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Most energetic electromagnetic events in the universe, thought to occur during supernova explosions or neutron star mergers"
+  },
+  {
+    "name": "dark matter",
+    "qid": "Q11978",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Hypothetical invisible matter making up ~27% of the universe; inferred from gravitational effects on visible matter and light bending"
+  },
+  {
+    "name": "dark energy",
+    "qid": "Q11402",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Mysterious energy making up ~68% of the universe, responsible for accelerating expansion of the universe; discovered in 1998"
+  },
+  {
+    "name": "cosmic microwave background",
+    "qid": "Q23436",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Electromagnetic radiation filling the universe, relic from ~380,000 years after the Big Bang; key evidence for Big Bang cosmology"
+  },
+  {
+    "name": "gravitational waves",
+    "qid": "Q184634",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Ripples in spacetime caused by accelerating massive objects; predicted by Einstein in 1915, first directly detected by LIGO in 2015"
+  },
+  {
+    "name": "solar flare",
+    "qid": "Q80831",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Sudden intense burst of radiation from the Sun's surface, can disrupt radio communications and cause auroras on Earth"
+  },
+  {
+    "name": "aurora borealis",
+    "qid": "Q2818",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Natural light display in Earth's sky near polar regions, caused by charged particles from the Sun interacting with the atmosphere"
+  },
+  {
+    "name": "comet",
+    "qid": "Q3559",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Icy small Solar System body that develops a coma and tail when near the Sun; historically seen as omens"
+  },
+  {
+    "name": "Halley's Comet",
+    "qid": "Q1991",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Most famous periodic comet, visible from Earth every ~75-76 years; last perihelion 1986, next in 2061"
+  },
+  {
+    "name": "meteor shower",
+    "qid": "Q219934",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Celestial event where Earth passes through debris trail of a comet, creating streaks of light; famous examples include Perseids and Leonids"
+  },
+  {
+    "name": "Oort Cloud",
+    "qid": "Q176635",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Hypothetical shell of icy bodies at the outermost reaches of the Solar System, source of long-period comets"
+  },
+  {
+    "name": "exoplanet",
+    "qid": "Q44559",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Planet orbiting a star other than the Sun; over 5,500 confirmed as of 2024, many discovered by Kepler telescope"
+  },
+  {
+    "name": "Solar System",
+    "qid": "Q544",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "The Sun and all objects gravitationally bound to it, including 8 planets, dwarf planets, moons, asteroids, and comets"
+  },
+  {
+    "name": "light-year",
+    "qid": "Q531",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Distance light travels in one year (~9.46 trillion km or 5.88 trillion miles); used to measure astronomical distances"
+  },
+  {
+    "name": "Vega",
+    "qid": "Q100484",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Fifth brightest star in the sky, in Lyra constellation, part of Summer Triangle; was the North Star ~14,000 years ago"
+  },
+  {
+    "name": "Spica",
+    "qid": "Q12163",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Brightest star in Virgo constellation, binary star system about 250 light-years away"
+  },
+  {
+    "name": "Regulus",
+    "qid": "Q12176",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Brightest star in Leo constellation, one of the brightest stars in the night sky; spins so fast it's oblate-shaped"
+  },
+  {
+    "name": "Fomalhaut",
+    "qid": "Q12168",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Brightest star in Piscis Austrinus, ~25 light-years away; surrounded by a prominent debris disk and the first star imaged with a suspected exoplanet"
+  },
+  {
+    "name": "Alpha Centauri",
+    "qid": "Q4653",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Nearest star system to the Sun at 4.37 light-years; a triple system including Proxima Centauri, Alpha Centauri A and B"
+  },
+  {
+    "name": "Arcturus",
+    "qid": "Q12172",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Brightest star in Bootes constellation and northern celestial hemisphere, orange giant about 37 light-years away"
+  },
+  {
+    "name": "Castor",
+    "qid": "Q200874",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Second-brightest star in Gemini, actually a sextuple star system consisting of three binary pairs"
+  },
+  {
+    "name": "Pollux",
+    "qid": "Q12156",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Brightest star in Gemini constellation, an orange giant about 34 light-years away with a confirmed exoplanet"
+  },
+  {
+    "name": "white dwarf",
+    "qid": "Q5871",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Dense stellar remnant after a low/medium mass star expels its outer layers; Earth-sized but very massive, will eventually cool into a black dwarf"
+  },
+  {
+    "name": "red giant",
+    "qid": "Q81197",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Late stage of stellar evolution for low/medium mass stars, where the outer layers expand enormously; the Sun will become a red giant in ~5 billion years"
+  },
+  {
+    "name": "Eagle Nebula",
+    "qid": "Q11276",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Young open cluster and emission nebula 7,000 light-years away, famous for the 'Pillars of Creation' image taken by Hubble in 1995"
+  },
+  {
+    "name": "Horsehead Nebula",
+    "qid": "Q208895",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Dark nebula in Orion constellation shaped like a horse's head, one of the most identifiable nebulae in the night sky"
+  },
+  {
+    "name": "Pillars of Creation",
+    "qid": "Q1092029",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Famous Hubble photograph showing elephant trunk pillars of interstellar gas in the Eagle Nebula, stellar nurseries forming new stars"
+  },
+  {
+    "name": "Sombrero Galaxy",
+    "qid": "Q206447",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Spiral galaxy 31 million light-years away in Virgo, famous for its bright nucleus, large bulge, and prominent dust lane resembling a sombrero"
+  },
+  {
+    "name": "Whirlpool Galaxy",
+    "qid": "Q170483",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Interacting grand-design spiral galaxy about 23 million light-years away, first galaxy to have its spiral structure identified"
+  },
+  {
+    "name": "Triangulum Galaxy",
+    "qid": "Q3077325",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Third-largest galaxy in the Local Group after Andromeda and Milky Way, about 3 million light-years away, most distant object visible to naked eye"
+  },
+  {
+    "name": "Cassiopeia A",
+    "qid": "Q193766",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Supernova remnant in Cassiopeia about 11,000 light-years away, brightest extrasolar radio source in the sky, remnant of supernova ~1680"
+  },
+  {
+    "name": "Sagittarius A*",
+    "qid": "Q59047",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Supermassive black hole at the center of the Milky Way, 4 million solar masses; imaged by Event Horizon Telescope in 2022"
+  },
+  {
+    "name": "Cassiopeia constellation",
+    "qid": "Q8862",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "W-shaped constellation in the northern sky, named after mythological Ethiopian queen, contains several interesting star clusters and nebulae"
+  },
+  {
+    "name": "Scorpius constellation",
+    "qid": "Q8877",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Prominent zodiac constellation in the southern sky, contains Antares (red supergiant), resembles a scorpion with a curving tail"
+  },
+  {
+    "name": "Leo constellation",
+    "qid": "Q8866",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Zodiac constellation representing a lion, contains Regulus (brightest star) and several bright galaxies; source of Leonid meteor shower"
+  },
+  {
+    "name": "Gemini constellation",
+    "qid": "Q8863",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Zodiac constellation representing twins Castor and Pollux; source of Geminid meteor shower, one of the most active of the year"
+  },
+  {
+    "name": "Taurus constellation",
+    "qid": "Q8882",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Zodiac constellation containing Aldebaran, Pleiades star cluster, Hyades cluster, and the Crab Nebula supernova remnant"
+  },
+  {
+    "name": "Sagittarius constellation",
+    "qid": "Q8878",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Zodiac constellation near the center of the Milky Way, contains the teapot asterism, numerous nebulae and star clusters"
+  },
+  {
+    "name": "Aquarius constellation",
+    "qid": "Q8857",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Zodiac constellation representing water-bearer, contains the Helix Nebula (closest planetary nebula to Earth)"
+  },
+  {
+    "name": "Ursa Minor constellation",
+    "qid": "Q8919",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Constellation containing Polaris (North Star) at the tip of its tail, used for navigation for centuries"
+  },
+  {
+    "name": "Haumea",
+    "qid": "Q68953",
+    "domain": "space_astronomy",
+    "subcategory": "planets_moons",
+    "processed": false,
+    "notes": "Dwarf planet in the Kuiper Belt with an unusually elongated shape from rapid rotation, has two moons (Hi'iaka and Namaka) and a ring"
+  },
+  {
+    "name": "Makemake",
+    "qid": "Q75629",
+    "domain": "space_astronomy",
+    "subcategory": "planets_moons",
+    "processed": false,
+    "notes": "Dwarf planet in the Kuiper Belt, third-largest known dwarf planet, named after Rapa Nui creation deity"
+  },
+  {
+    "name": "Johannes Kepler",
+    "qid": "Q8963",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "German astronomer (1571-1630) who formulated the three laws of planetary motion, foundational to understanding orbits"
+  },
+  {
+    "name": "Carl Sagan",
+    "qid": "Q410",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "American astronomer (1934-1996) and science communicator, authored Cosmos series, advocated for SETI, helped design Pioneer plaque and Voyager Golden Record"
+  },
+  {
+    "name": "Neil deGrasse Tyson",
+    "qid": "Q236565",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "American astrophysicist and popular science communicator, director of Hayden Planetarium, hosted the revived Cosmos series"
+  },
+  {
+    "name": "Vera Rubin",
+    "qid": "Q228277",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "American astronomer (1928-2016) who provided key observational evidence for dark matter through galaxy rotation curves"
+  },
+  {
+    "name": "Jocelyn Bell Burnell",
+    "qid": "Q231522",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "British astrophysicist who discovered pulsars in 1967 as a graduate student; the Nobel Prize for the discovery controversially went to her supervisors"
+  },
+  {
+    "name": "Cecilia Payne-Gaposchkin",
+    "qid": "Q41368",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "British-American astronomer (1900-1979) who discovered that stars are mainly composed of hydrogen and helium, a foundational discovery in astrophysics"
+  },
+  {
+    "name": "Subrahmanyan Chandrasekhar",
+    "qid": "Q138246",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Indian-American astrophysicist (1910-1995) who calculated the Chandrasekhar limit for white dwarf collapse, Nobel Prize 1983; Chandra X-ray Observatory named after him"
+  },
+  {
+    "name": "Annie Jump Cannon",
+    "qid": "Q102203",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "American astronomer (1863-1941) who created the Harvard spectral classification system for stars (OBAFGKM), classified over 350,000 stellar spectra"
+  },
+  {
+    "name": "Henrietta Swan Leavitt",
+    "qid": "Q61029",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "American astronomer (1868-1921) who discovered the period-luminosity relationship for Cepheid variable stars, enabling measurement of cosmic distances"
+  },
+  {
+    "name": "Sputnik 1",
+    "qid": "Q41527",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "First artificial satellite to orbit Earth (1957), launched by Soviet Union, signaled the start of the Space Age and Space Race"
+  },
+  {
+    "name": "Apollo program",
+    "qid": "Q182168",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA crewed spaceflight program (1961-1972) that landed 12 astronauts on the Moon in 6 missions, greatest feat of human space exploration"
+  },
+  {
+    "name": "Space Shuttle",
+    "qid": "Q48806",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA's partially reusable low Earth orbit spacecraft (1981-2011), flew 135 missions, launched Hubble and built ISS; Challenger and Columbia disasters"
+  },
+  {
+    "name": "Mir space station",
+    "qid": "Q168573",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "Soviet/Russian space station (1986-2001), first modular space station, hosted over 100 cosmonauts, precursor to ISS"
+  },
+  {
+    "name": "Vostok 1",
+    "qid": "Q160169",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "Soviet spacecraft that carried Yuri Gagarin on the first human spaceflight on April 12, 1961, completing one orbit of Earth"
+  },
+  {
+    "name": "Mariner 4",
+    "qid": "Q272452",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "First spacecraft to provide close-up images of Mars (1965), revealed a heavily cratered, apparently lifeless surface, transforming views of Mars"
+  },
+  {
+    "name": "general relativity",
+    "qid": "Q11518",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Einstein's theory of gravitation (1915) describing gravity as curvature of spacetime; predicts black holes, gravitational waves, and expansion of the universe"
+  },
+  {
+    "name": "Hubble's law",
+    "qid": "Q127865",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Observation that galaxies recede from Earth at a speed proportional to their distance, demonstrating the expanding universe; discovered by Hubble in 1929"
+  },
+  {
+    "name": "Voyager Golden Record",
+    "qid": "Q170576",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "Gold-plated copper disk attached to both Voyager probes containing sounds and images representing life on Earth, meant for potential extraterrestrial finders"
+  },
+  {
+    "name": "Event Horizon Telescope",
+    "qid": "Q28595882",
+    "domain": "space_astronomy",
+    "subcategory": "satellites_tech",
+    "processed": false,
+    "notes": "Global network of radio telescopes that in 2019 produced first image of a black hole (M87*) and in 2022 imaged Sagittarius A*"
+  },
+  {
+    "name": "asteroid belt",
+    "qid": "Q1951",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Region between Mars and Jupiter containing millions of irregularly shaped rocky objects; Ceres is the largest body"
+  },
+  {
+    "name": "Vesta asteroid",
+    "qid": "Q3030",
+    "domain": "space_astronomy",
+    "subcategory": "planets_moons",
+    "processed": false,
+    "notes": "Second-largest object in the asteroid belt, orbited by Dawn spacecraft 2011-2012; differentiated body with an iron core"
+  },
+  {
+    "name": "Bennu asteroid",
+    "qid": "Q657308",
+    "domain": "space_astronomy",
+    "subcategory": "planets_moons",
+    "processed": false,
+    "notes": "Near-Earth carbonaceous asteroid visited by OSIRIS-REx; samples returned to Earth 2023, considered a potentially hazardous asteroid"
+  },
+  {
+    "name": "Ryugu asteroid",
+    "qid": "Q1385178",
+    "domain": "space_astronomy",
+    "subcategory": "planets_moons",
+    "processed": false,
+    "notes": "Near-Earth asteroid visited by Hayabusa2; samples returned to Earth 2020 contained organic molecules and amino acid precursors"
+  },
+  {
+    "name": "Apophis asteroid",
+    "qid": "Q60195",
+    "domain": "space_astronomy",
+    "subcategory": "planets_moons",
+    "processed": false,
+    "notes": "Near-Earth asteroid briefly considered a potential Earth impact risk in 2029 before refined calculations ruled it out; will make close flyby"
+  },
+  {
+    "name": "Io volcanic activity",
+    "qid": "Q75583",
+    "domain": "space_astronomy",
+    "subcategory": "planets_moons",
+    "processed": false,
+    "notes": "Io, Jupiter's innermost Galilean moon, is the most volcanically active body in the Solar System due to tidal heating from Jupiter's gravity"
+  },
+  {
+    "name": "Europa Clipper",
+    "qid": "Q25344474",
+    "domain": "space_astronomy",
+    "subcategory": "missions_spacecraft",
+    "processed": false,
+    "notes": "NASA mission launched 2024 to study Europa's subsurface ocean and assess habitability potential; multiple flybys of Europa around Jupiter"
+  },
+  {
+    "name": "TRAPPIST-1",
+    "qid": "Q18217032",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Ultra-cool dwarf star 39 light-years away with 7 Earth-sized exoplanets, 3 in the habitable zone; most planetary system favorable for life search"
+  },
+  {
+    "name": "Proxima Centauri b",
+    "qid": "Q28736282",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Exoplanet orbiting Proxima Centauri in the habitable zone, closest known exoplanet to Earth at ~4.24 light-years"
+  },
+  {
+    "name": "heliocentrism",
+    "qid": "Q51677",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Astronomical model placing the Sun at the center of the Solar System; championed by Copernicus and later proven correct by Galileo and Kepler"
+  },
+  {
+    "name": "parallax",
+    "qid": "Q213156",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Apparent shift of an object against a distant background when viewed from different positions; used to measure distances to nearby stars"
+  },
+  {
+    "name": "Cepheid variable",
+    "qid": "Q180516",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Type of pulsating star with a precise period-luminosity relationship used as 'standard candles' for measuring cosmic distances"
+  },
+  {
+    "name": "M87 galaxy",
+    "qid": "Q170921",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Giant elliptical galaxy in Virgo cluster, 53 million light-years away; contains the first ever imaged black hole (M87*) captured in 2019"
+  },
+  {
+    "name": "Kepler-452b",
+    "qid": "Q19654849",
+    "domain": "space_astronomy",
+    "subcategory": "stars_galaxies",
+    "processed": false,
+    "notes": "Exoplanet discovered by Kepler telescope in 2015, sometimes called 'Earth's cousin', orbits a Sun-like star in the habitable zone"
+  },
+  {
+    "name": "solar wind",
+    "qid": "Q83267",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Stream of charged particles released from the upper atmosphere of the Sun; shapes the magnetospheres of planets and creates cometary tails"
+  },
+  {
+    "name": "magnetosphere",
+    "qid": "Q82414",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Region of space around a planet dominated by its magnetic field; protects Earth from solar wind and cosmic rays"
+  },
+  {
+    "name": "Van Allen radiation belts",
+    "qid": "Q199013",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Zones of energetic charged particles held in place by Earth's magnetic field; discovered in 1958 by Explorer 1, named after James Van Allen"
+  },
+  {
+    "name": "Lagrange point",
+    "qid": "Q192985",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Position in space where gravitational forces balance; L2 Lagrange point is where JWST is parked, 1.5 million km from Earth"
+  },
+  {
+    "name": "Voyager interstellar space",
+    "qid": "Q173850",
+    "domain": "space_astronomy",
+    "subcategory": "cosmology_universe",
+    "processed": false,
+    "notes": "Heliosphere boundary (heliopause) where Voyager 1 became first human-made object to enter interstellar space in 2012"
   }
 ]

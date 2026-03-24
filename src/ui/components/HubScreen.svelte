@@ -13,7 +13,7 @@
   import CampSpeechBubble from './CampSpeechBubble.svelte'
   import CampHudOverlay from './CampHudOverlay.svelte'
   import CampUpgradeModal from './CampUpgradeModal.svelte'
-  import StudyModeSelector from './StudyModeSelector.svelte'
+
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { getLevelProgress } from '../../services/characterLevel'
   import { playCardAudio } from '../../services/cardAudioManager'
@@ -177,14 +177,6 @@
     <!-- Center column: portrait 9:16 hotspot container (transparent — wide bg shows through) -->
     <div class="hub-center">
       <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
-
-      <!-- Study Mode Selector — above dungeon gate -->
-      <div class="study-mode-container" class:banner-offset={hasActiveRunBanner}>
-        <StudyModeSelector
-          disabled={false}
-          onNavigateToDeckBuilder={onOpenDeckBuilder}
-        />
-      </div>
 
       <!-- 1. Dungeon Gate - Start Run -->
       <CampSpriteButton
@@ -361,14 +353,6 @@
       loading="lazy"
       decoding="async"
     />
-
-    <!-- Study Mode Selector — above dungeon gate -->
-    <div class="study-mode-container" class:banner-offset={hasActiveRunBanner}>
-      <StudyModeSelector
-        disabled={false}
-        onNavigateToDeckBuilder={onOpenDeckBuilder}
-      />
-    </div>
 
     <!-- 1. Dungeon Gate - Start Run -->
     <CampSpriteButton
@@ -601,20 +585,6 @@
     z-index: 0;
     image-rendering: pixelated;
     pointer-events: none;
-  }
-
-  .study-mode-container {
-    position: absolute;
-    top: calc(3% + var(--safe-top));
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    z-index: 30;
-  }
-
-  .study-mode-container.banner-offset {
-    top: calc(3% + calc(64px * var(--layout-scale, 1)) + var(--safe-top));
   }
 
   .campfire-sparkle-burst {

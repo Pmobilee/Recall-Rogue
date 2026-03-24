@@ -1,0 +1,307 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 156,
+  "issues": [
+    {
+      "id": "art_architecture-bayeux-tapestry-length",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation says the tapestry 'measures 68.3 metres wide and 0.5 metres tall' — 'wide' is wrong. The 68.3 m dimension is the LENGTH (how long it is), not the width. Width and length are transposed in the explanation.",
+      "suggested_fix": "Change 'measures 68.3 metres wide and 0.5 metres tall' to 'measures 68.3 metres long and 0.5 metres tall'."
+    },
+    {
+      "id": "art_architecture-violin-cremona-stradivari-mystery",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks for 'which Italian city' (singular), but the explanation mentions BOTH Brescia AND Cremona as centres of violin-making. The correct answer is Cremona, which is accurate, but the explanation undercuts it by saying the instruments came from 'Brescia and Cremona'. A player who answers 'Brescia' would be marked wrong despite the explanation validating Brescia.",
+      "suggested_fix": "Revise the explanation to clarify that Cremona is the primary and most celebrated centre, while Brescia was an earlier but lesser tradition. Or rephrase the question to ask specifically about Stradivari's city."
+    },
+    {
+      "id": "art_architecture-anime-origins-1917",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The fact ID is 'art_architecture-anime-origins-1917' suggesting the topic is the 1917 origin date, but the question is actually about Osamu Tezuka and the 1960s art style. The ID is misleading and the explanation opens with '1917' before pivoting to the actual answer topic (Tezuka/1960s). This creates a confusing mismatch that could mislead players who read the explanation.",
+      "suggested_fix": "Rename the ID to something like 'art_architecture-anime-tezuka-style' and clean up the explanation to not lead with the 1917 date, which is irrelevant to the question being asked."
+    },
+    {
+      "id": "art_architecture-vivaldi-four-seasons-orphanage",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is about Vivaldi's music compositions and categorized under category_l2: 'painting_visual'. Music facts about a composer should not be in a painting subcategory.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-vivaldi-red-priest-ordained",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is about Vivaldi's nickname and priesthood, categorized under category_l2: 'painting_visual'. Should be in a music-related subcategory.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-vivaldi-died-poverty-vienna",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is about Vivaldi's death in Vienna, categorized under category_l2: 'painting_visual'. Should be in a music-related subcategory.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-schubert-600-lieder-age-31",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This Schubert music fact is categorized under category_l2: 'painting_visual'. Schubert was a composer, not a visual artist.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-kabuki-female-founder-male-performers",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact about Kabuki theatre is categorized under category_l2: 'sculpture_decorative'. Theatre/performing arts facts should not be in the sculpture/decorative subcategory.",
+      "suggested_fix": "Change category_l2 to 'music_performance' or a performing arts subcategory."
+    },
+    {
+      "id": "art_architecture-kabuki-founded-by-woman",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This duplicate Kabuki founder fact is categorized under category_l2: 'painting_visual'. Theatre facts should not be in a painting subcategory.",
+      "suggested_fix": "Change category_l2 to 'music_performance' or a performing arts subcategory."
+    },
+    {
+      "id": "art_architecture-noh-oldest-japanese-theatre",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact about Noh theatre is categorized under category_l2: 'sculpture_decorative'. Performing arts facts should not be in sculpture/decorative.",
+      "suggested_fix": "Change category_l2 to 'music_performance' or a performing arts subcategory."
+    },
+    {
+      "id": "art_architecture-hg-wells-father-science-fiction",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "'The internet' is listed as a distractor when the correct answer is 'The World Wide Web'. The internet and the World Wide Web are functionally indistinguishable to most players, and are commonly confused even by educated adults. A player who selects 'The internet' would be marked wrong despite giving what most people consider the equivalent answer. This is a trap question, not a knowledge test.",
+      "suggested_fix": "Replace the 'The internet' distractor with something clearly distinct, e.g. 'Wireless radio' or 'The fax machine'. Alternatively, rephrase the correct answer as 'A global information network' to avoid the semantic ambiguity."
+    },
+    {
+      "id": "art_architecture-spielberg-highest-grossing-director",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question is awkwardly phrased: 'is among the few people to have achieved which rare status?' This is fine as far as it goes, but the distractors ('Triple Crown', 'Grand Slam', 'Golden Hat Trick', 'Platinum Quad', 'Diamond Award', 'Lifetime Master', 'Creative Pantheon') are all made-up terms. EGOT is a real, well-known industry term. The contrast between the one real term and seven invented ones makes EGOT obviously correct even without any knowledge, reducing it to a trivial guess.",
+      "suggested_fix": "Replace the invented distractors with plausible real industry honours, e.g. 'Presidential Medal of Freedom', 'National Medal of Arts', 'Kennedy Center Honors', 'American Film Institute Lifetime Achievement Award', 'Palme d'Or', 'BAFTA Fellowship', 'Irving G. Thalberg Award'."
+    },
+    {
+      "id": "art_architecture-pieta-mary-younger-than-jesus",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks 'Why does Mary look younger than Jesus?' The correct answer 'Because it was inspired by Dante's poem' is an indirect cause. The real reason (as stated in the explanation) is that Michelangelo interpreted Mary's purity as keeping her eternally youthful — Dante's passage was the inspiration for that interpretation. The answer as phrased attributes causation to the poem rather than to the theological/artistic reasoning, making it technically incomplete and slightly confusing.",
+      "suggested_fix": "Change correct_answer to something like 'Dante's verse inspired the idea of Mary's eternal purity' or 'To express her divine purity through eternal youth (inspired by Dante)' to make the causal chain clearer."
+    },
+    {
+      "id": "art_architecture-gothic-architecture-french-style",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks what Gothic architecture was 'originally called by its creators in medieval France' and the answer is 'The French Style'. However, the actual scholarly term used at the time was 'opus Francigenum' (Latin for 'French work'), not 'the French Style' in English. The explanation itself mentions 'opus Francigenum' but contradicts this by giving the answer as the colloquial English translation. Meanwhile, 'Opus Francigenum' appears as a distractor — meaning the more historically precise answer is listed as wrong.",
+      "suggested_fix": "Either change the correct answer to 'Opus Francigenum' (the actual documented term) and remove it from distractors, replacing it with a plausible made-up Latin-sounding alternative, or reframe the question as 'What does the original Latin term for Gothic architecture, opus Francigenum, mean in English?' with 'French work' as the answer."
+    },
+    {
+      "id": "art_architecture-bob-marley-reggae-pioneer",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact about Bob Marley is categorized under category_l2: 'modern_contemporary' which is an art/architecture subcategory. A fact about a reggae musician's age at death belongs in a music subcategory.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-bob-marley-rastafarian-symbol",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact about Bob Marley's political views is categorized under category_l2: 'modern_contemporary' within art_architecture. A fact about a musician's beliefs belongs in a music or social/cultural category.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-lyre-ancient-4000-years",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Approximately when does the lyre's origins date back to, according to historical records?' but this is an awkward phrasing — asking the player to recall a specific BCE date (3200 BCE) as a numerical answer with no distractors. This is fine mechanically (it's a brace-format numeric answer), but the question phrasing 'according to historical records' is redundant filler. Minor style issue.",
+      "suggested_fix": "Rephrase to: 'Approximately how far back do the lyre's origins date, according to Wikidata?' — and specify the answer format more naturally. Low priority."
+    },
+    {
+      "id": "art_architecture-ibsen-father-modern-drama",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Per Gynt' is listed as a distractor for a question about the playwright Henrik Ibsen. But Peer Gynt is a fictional character created BY Ibsen — not a real playwright. A player who knows Ibsen's work will immediately recognize 'Per Gynt' as Ibsen's own creation, which makes the distractor self-defeating (it hints at the answer rather than misleading).",
+      "suggested_fix": "Replace 'Per Gynt' with a real Norwegian/Scandinavian literary or theatrical figure, e.g. 'Ludvig Holberg', 'Alexander Kielland', or 'Arne Garborg'."
+    },
+    {
+      "id": "art_architecture-opera-conductor-19th-century",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact about opera conductors is categorized under category_l2: 'museums_institutions'. Nothing about this fact relates to museums or institutions.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-pieta-high-renaissance",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Baroque period' is arguably too easy to eliminate since the Baroque is well-known as a later style that follows the Renaissance. More problematically, 'Mannerism' is often considered to come AFTER the High Renaissance, meaning it could reasonably be seen as a follow-on period rather than one the Pietà 'marks the beginning of'. A knowledgeable player might hesitate between High Renaissance and Mannerism. This is borderline — not a clear error, but worth noting.",
+      "suggested_fix": "No critical change needed, but consider replacing 'Mannerism' with a less confusing distractor like 'Venetian School' to avoid suggesting Mannerism is a plausible answer for when the Pietà was made."
+    },
+    {
+      "id": "art_architecture-velazquez-court-role",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The correct answer 'Great Lodging Master' is an unusual English translation of the Spanish title. The explanation confirms this via Wikidata. However, 'Great Lodging Master' is an obscure enough role title that players may find it unconvincing or implausible, especially compared to the more formal-sounding distractors. This risks the fact feeling like a trivia gotcha rather than meaningful learning.",
+      "suggested_fix": "Consider adding the Spanish title in the explanation (Aposentador Mayor) and framing the question as 'What palace administrative role did Velázquez hold, giving him extraordinary access to the king?' The explanation already handles this well; the question just needs clearer context."
+    },
+    {
+      "id": "art-vivaldi-il-prete-rosso-red-priest",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This Vivaldi music fact is categorized under category_l2: 'painting_visual'. Vivaldi was a composer, not a visual artist.",
+      "suggested_fix": "Change category_l2 to 'music_performance'."
+    },
+    {
+      "id": "art_architecture-sistine-botticelli-team",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Raphael' and 'Fra Angelico' are listed as distractors for the 1481–1482 Sistine Chapel wall painters. Raphael was born in 1483 — he was not even born yet when these frescoes were made, so he couldn't possibly have participated. Similarly, Fra Angelico died in 1455, decades before this project. Both are technically valid 'wrong answers' (neither was on the team), but including Raphael specifically is misleading because his impossibility is obvious to anyone who knows Renaissance dates, not a test of knowledge about this commission.",
+      "suggested_fix": "Replace 'Raphael' with a contemporary who plausibly could have been on the team but wasn't (e.g. 'Andrea del Verrocchio' or 'Filippino Lippi'). Fra Angelico can stay since his absence is less immediately obvious."
+    },
+    {
+      "id": "art_architecture-velazquez-20c-tribute",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact and at least four other facts in this batch ask the same core question: 'Which three 20th-century artists reinterpreted Velázquez?' with the same answer (Picasso, Dalí, Bacon). Specifically: art_architecture-velazquez-20c-tribute, art_architecture-velazquez-picasso-influence, art_architecture-velazquez-modern-influence, art-velazquez-picasso-tribute, and art_architecture-velazquez-las-meninas all cover this same Picasso/Dalí/Bacon point. Five near-duplicate facts on the same narrow claim is excessive redundancy.",
+      "suggested_fix": "Retain at most one fact covering this point. Remove or replace the four redundant duplicates with distinct Velázquez facts."
+    },
+    {
+      "id": "art_architecture-velazquez-las-meninas-masterpiece",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of art_architecture-velazquez-las-meninas-year (same painting, same artist, very similar questions). Both ask about Las Meninas and Velázquez. Multiple similar facts dilute the deck.",
+      "suggested_fix": "Consolidate — keep the more interesting one (the one with the year or the impact/legacy angle) and remove this near-duplicate."
+    },
+    {
+      "id": "art_architecture-david-height",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-david-michelangelo-height — both ask 'How tall is Michelangelo's David?' with the same answer of 5.17 metres. Having two essentially identical questions in the same batch is a clear duplication error.",
+      "suggested_fix": "Remove one of the two duplicates. Retain art_architecture-david-michelangelo-height (more clearly named)."
+    },
+    {
+      "id": "art_architecture-david-wool-guild",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-david-michelangelo-wool-guild — both ask which guild commissioned Michelangelo's David, with the same answer (Wool Guild). Two identical questions in one batch is a duplication error.",
+      "suggested_fix": "Remove one duplicate. Keep art_architecture-david-michelangelo-wool-guild."
+    },
+    {
+      "id": "art_architecture-miro-assassination-painting",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-joan-miro-assassination-painting — both ask what Miró declared against conventional painting, with the same answer ('Assassinate it' / 'Assassination of painting'). Two functionally identical questions in one batch.",
+      "suggested_fix": "Remove one duplicate. Keep the version with the more precise answer phrasing."
+    },
+    {
+      "id": "art_architecture-miro-two-foundations",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-miro-surrealism-museums and art_architecture-joan-miro-two-museums — all three ask about the Fundació Joan Miró in Barcelona. Having three variants on the same narrow fact is excessive.",
+      "suggested_fix": "Retain one fact and remove the other two duplicates."
+    },
+    {
+      "id": "art_architecture-sculpture-ancient-painted",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-sculpture-originally-painted and art-sculpture-ancient-painted — all three ask the same question about ancient sculptures originally having vivid paint. Three duplicates of the same fact in one batch.",
+      "suggested_fix": "Retain one and remove the other two duplicates."
+    },
+    {
+      "id": "art_architecture-pieta-high-renaissance",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-pieta-michelangelo-high-renaissance — both ask which artistic period the Pietà marks the beginning of, with the same answer (High Renaissance). Two identical questions in one batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-romanesque-semicircular-arches",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-romanesque-arches — both ask what arch shape defines Romanesque architecture vs Gothic, with the same answer (Semicircular). Two identical questions in one batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-velazquez-court-painter-role",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-velazquez-prado-collection — both are about the fate of Velázquez's portraits. Additionally, this fact (diplomatic gifts) is also discussed in the explanation of art_architecture-velazquez-prado-collection, making it redundant information covered elsewhere.",
+      "suggested_fix": "This fact stands alone fine, but verify it is not a third coverage of the same narrow point already covered in other Velázquez facts."
+    },
+    {
+      "id": "art_architecture-velazquez-order-of-santiago",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-velazquez-knight-santiago and art-velazquez-order-of-santiago — all three ask about Velázquez and the Order of Santiago. Three duplicate facts on the same narrow point in one batch.",
+      "suggested_fix": "Retain one fact covering the Order of Santiago and remove the other two duplicates."
+    },
+    {
+      "id": "art_architecture-opera-origins-italy",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art-opera-origin-florence-1598 — both ask in which Italian city opera originated (Florence), referencing the 1598 production of Dafne. Two identical facts in the same batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-piano-invented-cristofori-florence",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art-piano-invented-cristofori-florence — both ask who invented the piano in Florence around 1700, same answer (Bartolomeo Cristofori). Two identical facts in the same batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-piano-88-keys-cast-iron-frame",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art-piano-cast-iron-frame-88-keys — both ask how many keys a standard piano has, same answer ({88}). Two identical facts in the same batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-violin-16th-century-italy-origin",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art-violin-16th-century-italy-creation — both ask when/which century the violin was first created in Italy, same answer (16th century). Two identical facts in the same batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-velazquez-tenebrist-style",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-velazquez-tenebrism — both ask about Velázquez's early tenebrist/tenebrism style with the same answer. Two identical facts in the same batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-handicraft-dhokra-5000-years",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-dhokra-5000-years — both ask about the Dhokra metal casting tradition practiced for over 5,000 years. Two identical facts in the same batch.",
+      "suggested_fix": "Remove one duplicate."
+    },
+    {
+      "id": "art_architecture-decorative-arts-functional-beautiful",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art_architecture-decorative-art-functional — both cover what distinguishes decorative arts from fine arts (functional objects). Two overlapping facts in the same batch.",
+      "suggested_fix": "Remove one duplicate. The version asking 'Which of these is NOT included in decorative arts?' (art_architecture-decorative-arts-functional-beautiful) is more engaging and tests knowledge differently, so prefer retaining it."
+    },
+    {
+      "id": "art_architecture-vivaldi-four-seasons-orphanage",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art-vivaldi-ospedale-della-pieta-venice — both ask about Vivaldi composing for an all-female ensemble at an orphanage. The earlier fact gives the answer as 'All-female orphanage' while the duplicate gives 'Ospedale della Pietà'. Two facts on the same narrow point.",
+      "suggested_fix": "Retain the more specific and informative version (art-vivaldi-ospedale-della-pieta-venice, which names the institution) and remove the vaguer duplicate."
+    },
+    {
+      "id": "art_architecture-vivaldi-red-priest-ordained",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-exact duplicate of art-vivaldi-il-prete-rosso-red-priest — both ask about Vivaldi's nickname 'il Prete Rosso' (The Red Priest). Two identical facts in the same batch.",
+      "suggested_fix": "Remove one duplicate."
+    }
+  ]
+}

@@ -1,0 +1,821 @@
+{
+  "lastUpdated": "2026-03-23",
+  "entities": {
+    "animals_wildlife": [
+      {
+        "name": "Octopus",
+        "wiki": "Octopus",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Honey bee",
+        "wiki": "Honey_bee",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "African elephant",
+        "wiki": "African_elephant",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Peregrine falcon",
+        "wiki": "Peregrine_falcon",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Axolotl",
+        "wiki": "Axolotl",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Great white shark",
+        "wiki": "Great_white_shark",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Mantis shrimp",
+        "wiki": "Mantis_shrimp",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Snow leopard",
+        "wiki": "Snow_leopard",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Platypus",
+        "wiki": "Platypus",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Monarch butterfly",
+        "wiki": "Monarch_butterfly",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Elephant",
+        "wiki": "elephant",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Great",
+        "wiki": "great",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Honeybee",
+        "wiki": "honeybee",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Mantis",
+        "wiki": "mantis",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Monarch",
+        "wiki": "monarch",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Peregrine",
+        "wiki": "peregrine",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Snow",
+        "wiki": "snow",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ],
+    "art_architecture": [
+      {
+        "name": "Frida Kahlo",
+        "wiki": "Frida_Kahlo",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Parthenon",
+        "wiki": "Parthenon",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Leonardo da Vinci",
+        "wiki": "Leonardo_da_Vinci",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Gothic architecture",
+        "wiki": "Gothic_architecture",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Beethoven",
+        "wiki": "Ludwig_van_Beethoven",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Sagrada Familia",
+        "wiki": "Sagrada_Fam%C3%ADlia",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Vincent van Gogh",
+        "wiki": "Vincent_van_Gogh",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Taj Mahal",
+        "wiki": "Taj_Mahal",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Pablo Picasso",
+        "wiki": "Pablo_Picasso",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Art Nouveau",
+        "wiki": "Art_Nouveau",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Art",
+        "wiki": "art",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Davinci",
+        "wiki": "davinci",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Frida",
+        "wiki": "frida",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Gothic",
+        "wiki": "gothic",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Picasso",
+        "wiki": "picasso",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Sagrada",
+        "wiki": "sagrada",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Taj",
+        "wiki": "taj",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Van",
+        "wiki": "van",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ],
+    "food_cuisine": [
+      {
+        "name": "Saffron",
+        "wiki": "Saffron",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Chocolate",
+        "wiki": "Chocolate",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Sushi",
+        "wiki": "Sushi",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Fermentation",
+        "wiki": "Fermentation",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Chili pepper",
+        "wiki": "Chili_pepper",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Coffee",
+        "wiki": "Coffee",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Olive oil",
+        "wiki": "Olive_oil",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Kimchi",
+        "wiki": "Kimchi",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Vanilla",
+        "wiki": "Vanilla",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Bread",
+        "wiki": "Bread",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Chili",
+        "wiki": "chili",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Olive",
+        "wiki": "olive",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ],
+    "general_knowledge": [
+      {
+        "name": "Morse code",
+        "wiki": "Morse_code",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Internet",
+        "wiki": "Internet",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Olympic Games",
+        "wiki": "Olympic_Games",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Chess",
+        "wiki": "Chess",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Printing press",
+        "wiki": "Printing_press",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Wikipedia",
+        "wiki": "Wikipedia",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Esperanto",
+        "wiki": "Esperanto",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Nobel Prize",
+        "wiki": "Nobel_Prize",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Compass",
+        "wiki": "Compass",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Braille",
+        "wiki": "Braille",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Morse",
+        "wiki": "morse",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Nobel",
+        "wiki": "nobel",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Olympics",
+        "wiki": "olympics",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Printing",
+        "wiki": "printing",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ],
+    "history": [
+      {
+        "name": "Cleopatra VII",
+        "wiki": "Cleopatra",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Genghis Khan",
+        "wiki": "Genghis_Khan",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "French Revolution",
+        "wiki": "French_Revolution",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Viking Age",
+        "wiki": "Viking_Age",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Industrial Revolution",
+        "wiki": "Industrial_Revolution",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Ancient Egypt",
+        "wiki": "Ancient_Egypt",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Samurai",
+        "wiki": "Samurai",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Cold War",
+        "wiki": "Cold_War",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Alexander the Great",
+        "wiki": "Alexander_the_Great",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Silk Road",
+        "wiki": "Silk_Road",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Alexander",
+        "wiki": "alexander",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Ancient",
+        "wiki": "ancient",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Cleopatra",
+        "wiki": "cleopatra",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Cold",
+        "wiki": "cold",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "French",
+        "wiki": "french",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Genghis",
+        "wiki": "genghis",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Industrial",
+        "wiki": "industrial",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Silk",
+        "wiki": "silk",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Vikings",
+        "wiki": "vikings",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ],
+    "human_body_health": [
+      {
+        "name": "Human brain",
+        "wiki": "Human_brain",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "DNA",
+        "wiki": "DNA",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Immune system",
+        "wiki": "Immune_system",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Human heart",
+        "wiki": "Human_heart",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Liver",
+        "wiki": "Liver",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Sleep",
+        "wiki": "Sleep",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Human eye",
+        "wiki": "Human_eye",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Bone",
+        "wiki": "Bone",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Blood",
+        "wiki": "Blood",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Microbiome",
+        "wiki": "Human_microbiome",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Brain",
+        "wiki": "brain",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Eye",
+        "wiki": "eye",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Heart",
+        "wiki": "heart",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Immune",
+        "wiki": "immune",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ],
+    "mythology_folklore": [
+      {
+        "name": "Kitsune",
+        "wiki": "Kitsune",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Thor",
+        "wiki": "Thor",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Medusa",
+        "wiki": "Medusa",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Anubis",
+        "wiki": "Anubis",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Dragons",
+        "wiki": "Dragon",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Valkyrie",
+        "wiki": "Valkyrie",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Minotaur",
+        "wiki": "Minotaur",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Yokai",
+        "wiki": "Y%C5%8Dkai",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Odin",
+        "wiki": "Odin",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Phoenix",
+        "wiki": "Phoenix_(mythology)",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      }
+    ],
+    "natural_sciences": [
+      {
+        "name": "Phosphorus",
+        "wiki": "Phosphorus",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Black hole",
+        "wiki": "Black_hole",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Photosynthesis",
+        "wiki": "Photosynthesis",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Diamond",
+        "wiki": "Diamond",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Volcano",
+        "wiki": "Volcano",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Lightning",
+        "wiki": "Lightning",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Coral reef",
+        "wiki": "Coral_reef",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Gold",
+        "wiki": "Gold",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Earthquake",
+        "wiki": "Earthquake",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Tardigrade",
+        "wiki": "Tardigrade",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Blackhole",
+        "wiki": "blackhole",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Coral",
+        "wiki": "coral",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ],
+    "space_astronomy": [
+      {
+        "name": "Rings of Saturn",
+        "wiki": "Rings_of_Saturn",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Mars",
+        "wiki": "Mars",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Milky Way",
+        "wiki": "Milky_Way",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "International Space Station",
+        "wiki": "International_Space_Station",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Big Bang",
+        "wiki": "Big_Bang",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Jupiter",
+        "wiki": "Jupiter",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Neutron star",
+        "wiki": "Neutron_star",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Voyager program",
+        "wiki": "Voyager_program",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Exoplanet",
+        "wiki": "Exoplanet",
+        "factCount": 3,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Solar eclipse",
+        "wiki": "Solar_eclipse",
+        "factCount": 0,
+        "ingestedAt": "2026-03-23"
+      },
+      {
+        "name": "Bigbang",
+        "wiki": "bigbang",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Iss",
+        "wiki": "iss",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Milkyway",
+        "wiki": "milkyway",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Neutron",
+        "wiki": "neutron",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Saturn",
+        "wiki": "saturn",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Solar",
+        "wiki": "solar",
+        "factCount": 3,
+        "ingestedAt": null
+      },
+      {
+        "name": "Voyager",
+        "wiki": "voyager",
+        "factCount": 3,
+        "ingestedAt": null
+      }
+    ]
+  }
+}

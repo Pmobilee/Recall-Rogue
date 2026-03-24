@@ -1,0 +1,321 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 143,
+  "issues": [
+    {
+      "id": "myth-scylla-strait-idiom",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct answer 'Between a rock and a hard place' is NOT derived from the Scylla and Charybdis myth. That phrase has a separate American origin (early 20th century labor disputes). The actual idiom from this myth is 'between Scylla and Charybdis.' The explanation even contradicts the answer by saying the phrase 'between Scylla and Charybdis' is the idiom that survives.",
+      "suggested_fix": "Change correct_answer to 'Between Scylla and Charybdis' and update distractors to include 'Between a rock and a hard place' as one of the wrong options. Update explanation accordingly."
+    },
+    {
+      "id": "myth-uranus-imprisoned-tartarus",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Uranus was not imprisoned in Tartarus. In Hesiod's Theogony, Cronus castrated Uranus and separated him from Gaia, ending his reign — he was not imprisoned anywhere. It is the Titans (after the Titanomachy) and later the Giants who were imprisoned in Tartarus. The Wikidata claim cited appears to be erroneous or misapplied.",
+      "suggested_fix": "Remove this fact or reframe it. A corrected version could ask: 'What did Cronus do to his father Uranus to overthrow him?' with answer 'Castrated him with a sickle.' Alternatively, ask what Cronus did with the Titans after the Golden Age."
+    },
+    {
+      "id": "mythology_folklore-quetzalcoatl-feathered-serpent",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "Quetzalcoatl is an Aztec/Mesoamerican deity but is filed under category_l2 'eastern_myths'. Mesoamerican mythology is neither geographically nor culturally 'eastern'. The duplicate of this fact (mythology_folklore-quetzalcoatl-feathered-serpent-b2) is correctly filed under 'gods_deities'.",
+      "suggested_fix": "Change category_l2 from 'eastern_myths' to 'gods_deities' or add a 'mesoamerican' subcategory if one exists."
+    },
+    {
+      "id": "myth-gaia-roman-terra",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Tellus' is listed as a distractor, but Tellus (also called Tellus Mater) is itself a valid Roman equivalent of Gaia — often considered synonymous with or indistinguishable from Terra in Roman religion. A player who knows this will correctly identify Tellus as also being right, making the question unfair.",
+      "suggested_fix": "Replace 'Tellus' as a distractor with a clearly wrong option such as 'Juno' or 'Diana'. Optionally, acknowledge in the explanation that Terra and Tellus are closely related Roman earth goddesses."
+    },
+    {
+      "id": "mythology_folklore-charybdis-scylla-strait-messina",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Scylla' is listed as a distractor for the question 'Which Greek sea monster was paired with Scylla in the Strait of Messina?' This is circular and confusing — the question names Scylla and then lists her as a wrong answer. A player who reads carefully may be thrown by seeing the subject of the question in the distractor list.",
+      "suggested_fix": "Remove 'Scylla' from the distractors and replace with a more sensible wrong answer, e.g., 'Hydra' or 'Ceto'."
+    },
+    {
+      "id": "mythology_folklore-chaos-primordial-parent-gaia-nyx",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks which entity 'spawned both Night and Earth as children,' but in Hesiod's Theogony, Gaia (Earth) did not arise as a child of Chaos — she arose spontaneously alongside Chaos as a co-primordial. Only Erebus and Nyx (Night) arose from Chaos. The question conflates two separate cosmogonic events. The explanation is also internally inconsistent, listing Uranus (Sky) as a child of Chaos, which contradicts standard Hesiodic cosmogony where Uranus was born of Gaia.",
+      "suggested_fix": "Rephrase to ask only about Night/Darkness: 'In Hesiod's Theogony, which primordial void first gave rise to Darkness (Erebus) and Night (Nyx)?' with answer 'Chaos'. Remove the claim that Gaia was a child of Chaos from both the question and explanation."
+    },
+    {
+      "id": "mythology_folklore-yama-first-mortal",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "This fact is a near-duplicate of mythology_folklore-yama-first-mortal-dead (lines 327-342) and mythology_folklore-yama-multi-religion-adoption asks almost the same thing. The core 'Yama was first mortal to die' fact appears at least twice in this batch with very similar wording. Duplicate facts dilute deck variety and reduce learning value.",
+      "suggested_fix": "Consolidate duplicate Yama 'first mortal' facts. Keep the better-phrased version; remove or significantly differentiate the other."
+    },
+    {
+      "id": "mythology_folklore-yama-first-mortal-dead",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-yama-first-mortal — both ask essentially the same question ('who became ruler of the dead by being the first mortal to die?') with only minor rephrasing. One of these should be removed or substantially differentiated.",
+      "suggested_fix": "Remove one of the two facts or differentiate by asking about a distinct aspect of Yama not covered by the other (e.g., his role in the Upanishads vs. Vedic tradition)."
+    },
+    {
+      "id": "mythology_folklore-indra-most-mentioned-rigveda",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-indra-rigveda-most-mentioned. Both ask which deity appears most in the Rigveda with identical correct answers and nearly identical distractors. Having two very similar facts about the same narrow data point is redundant.",
+      "suggested_fix": "Remove one instance. The version with the richer explanation (mythology_folklore-indra-rigveda-most-mentioned, which mentions Vritra) is preferable."
+    },
+    {
+      "id": "mythology_folklore-hydra-regenerating-heads",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-hydra-regrows-two-heads. Both ask what happened when a Hydra head was cut off; both answer 'two heads grew back.' The questions are phrased differently but test exactly the same fact.",
+      "suggested_fix": "Remove one instance. Keep the braced numerical version (mythology_folklore-hydra-regrows-two-heads) for variety in answer format."
+    },
+    {
+      "id": "mythology_folklore-medusa-pegasus-born",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-medusa-children-from-blood and mythology_folklore-medusa-pegasus-born — at least three facts in this batch ask which creature was born from Medusa's blood (all correct answer: Pegasus). myth-pegasus-born-from-medusa is yet another version of the same question.",
+      "suggested_fix": "Retain only one 'Pegasus born from Medusa' fact. Differentiate others by asking about Chrysaor, or Poseidon's role, or the full list of children."
+    },
+    {
+      "id": "mythology_folklore-minotaur-athens-tribute",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-minotaur-nine-year-tribute. Both ask about the 14 young Athenians sent every 9 years; the braced-number version tests the same fact.",
+      "suggested_fix": "Retain only one version. The braced-number version (mythology_folklore-minotaur-nine-year-tribute asking 'Every {9} years') tests a different specific number than the 14-count version, so these can coexist if the overlap is noted — but having both in the same deck remains redundant."
+    },
+    {
+      "id": "mythology_folklore-robin-hood-yeoman-not-noble",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-robin-hood-outlaw-rob-rich. Both ask what class Robin Hood belonged to in the oldest ballads; both answer 'yeoman' or 'yeoman class.'",
+      "suggested_fix": "Remove one. Keep the version with more specific context about the ballads being from the 15th century."
+    },
+    {
+      "id": "mythology_folklore-little-john-ironic-giant",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-little-john-giant-quarterstaff-robin. Both ask why Little John is called 'Little' and both answer with the irony of his giant size.",
+      "suggested_fix": "Remove one. The second version (mythology_folklore-little-john-giant-quarterstaff-robin) has better distractor variety."
+    },
+    {
+      "id": "mythology_folklore-minotaur-ariadnes-thread",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-minotaur-ariadne-thread. One asks 'What did Ariadne give Theseus?' (answer: 'A thread'), the other asks 'Who gave Theseus the thread?' (answer: 'Ariadne'). These test different recall directions and can coexist, but flagging for review.",
+      "suggested_fix": "These are acceptable as separate facts since they test different recall directions (item vs. person). No change required, but editor should confirm intentionality."
+    },
+    {
+      "id": "mythology_folklore-hel-norse-loki-daughter",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-hel-loki-daughter-odin-ruler. Both ask who appointed Hel as ruler of the underworld; both answer 'Odin.'",
+      "suggested_fix": "Remove one. The second version (mythology_folklore-hel-loki-daughter-odin-ruler) has a cleaner question phrasing."
+    },
+    {
+      "id": "mythology_folklore-ginnungagap-norse-primordial-void",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-ginnungagap-norse-void-creation. One asks for the Norse name of the primordial void; the other asks for the English translation of that name. These test different facts and can coexist — flagging only because they appear in the same batch.",
+      "suggested_fix": "No change needed — these test genuinely different facts (name vs. meaning). Acceptable pair."
+    },
+    {
+      "id": "mythology_folklore-pandora-first-woman-hephaestus",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-pandora-first-woman-hephaestus-box. Both ask which god created Pandora on Zeus's instructions; both answer 'Hephaestus.'",
+      "suggested_fix": "Remove one. They are identical in what they test."
+    },
+    {
+      "id": "mythology_folklore-cu-chulainn-hound",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Appears in three versions in this batch: mythology_folklore-cu-chulainn-hound, mythology_folklore-cu-chulainn-name-origin, and mythology_folklore-cu-chulainn-name-origin-b3. All three ask how Sétanta earned the name Cú Chulainn; all three give the same answer about killing Culann's guard dog.",
+      "suggested_fix": "Keep only one version. The explanation in mythology_folklore-cu-chulainn-name-origin is the most complete (mentions born name Sétanta). Remove the other two."
+    },
+    {
+      "id": "mythology_folklore-cu-chulainn-name-origin",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Duplicate of mythology_folklore-cu-chulainn-hound and mythology_folklore-cu-chulainn-name-origin-b3 — see above.",
+      "suggested_fix": "Remove; keep only one version of the Cú Chulainn naming fact."
+    },
+    {
+      "id": "mythology_folklore-cu-chulainn-name-origin-b3",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Third duplicate of the Cú Chulainn naming fact — see mythology_folklore-cu-chulainn-hound.",
+      "suggested_fix": "Remove; keep only one version of the Cú Chulainn naming fact."
+    },
+    {
+      "id": "mythology_folklore-enkidu-wild-man",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-enkidu-oldest-wild-man. Both ask which ancient Mesopotamian figure is the oldest literary wild man archetype; both answer 'Enkidu.'",
+      "suggested_fix": "Remove one. The second version (mythology_folklore-enkidu-oldest-wild-man) has a more complete explanation mentioning the Akkadian Epic of Gilgamesh."
+    },
+    {
+      "id": "mythology_folklore-great-flood-china-gun-yu",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-great-flood-china-gun-yu-yellow-river. One asks during whose reign the flood occurred (Emperor Yao), the other asks on which river archaeological evidence is found (Yellow River). These test different facts and can coexist — flagging because they appear together in the same batch.",
+      "suggested_fix": "No change needed — these are genuinely distinct facts. Acceptable pair."
+    },
+    {
+      "id": "mythology_folklore-behemoth-book-of-job",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-behemoth-book-of-job. Both ask which biblical book introduces Behemoth; both answer 'Book of Job.'",
+      "suggested_fix": "Remove one. The second version (myth-behemoth-book-of-job) has a slightly richer explanation."
+    },
+    {
+      "id": "mythology_folklore-leviathan-seven-deadly-sins",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-leviathan-envy-demon. Both ask which deadly sin Christian theologians associated with Leviathan; both answer 'Envy.'",
+      "suggested_fix": "Remove one."
+    },
+    {
+      "id": "mythology_folklore-leviathan-hobbes-state",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-leviathan-hobbes-state. Both ask which philosopher used Leviathan as metaphor for the all-powerful state; both answer 'Thomas Hobbes.'",
+      "suggested_fix": "Remove one."
+    },
+    {
+      "id": "mythology_folklore-baku-nightmare-eater",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of myth-baku-nightmare-eater. Both ask what Japanese Baku creatures eat; both answer 'nightmares.'",
+      "suggested_fix": "Remove one."
+    },
+    {
+      "id": "mythology_folklore-selkie-seal-human-shapeshifter-skin",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-selkie-seal-skin-transformation. Both ask how selkies transform; both answer by removing/putting on their seal skin.",
+      "suggested_fix": "Remove one. The second version (mythology_folklore-selkie-seal-skin-transformation) includes the culturally richer detail about Northern Isles of Scotland and the stolen-skin marriage trope."
+    },
+    {
+      "id": "mythology_folklore-paul-bunyan-giant-lumberjack-babe",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-paul-bunyan-lumber-company-origin. One asks who popularized Paul Bunyan (answer: William B. Laughead), the other asks what type of company the pamphlet was for (answer: a lumber company). These test different facts and can coexist — flagging only for batch density.",
+      "suggested_fix": "No change needed — these test genuinely different details. Acceptable pair."
+    },
+    {
+      "id": "mythology_folklore-dryad-oak-nymph",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-dryad-modern-vs-ancient and myth-dryad-oak-word-origin. All three ask what tree the Greek word 'drys' refers to or what tree dryads are associated with; all answer 'oak.' Three facts testing the same single datum is excessive.",
+      "suggested_fix": "Keep one (preferably myth-dryad-oak-word-origin for its clean phrasing) and remove the other two."
+    },
+    {
+      "id": "mythology_folklore-dryad-modern-vs-ancient",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Third version of the dryad/oak etymology fact — see mythology_folklore-dryad-oak-nymph.",
+      "suggested_fix": "Remove."
+    },
+    {
+      "id": "mythology_folklore-creation-myth-oral-tradition-sacred",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-creation-myth-oral-tradition-universal. Both ask how creation myths develop; both answer 'oral tradition/traditions.'",
+      "suggested_fix": "Remove one. The second version (mythology_folklore-creation-myth-oral-tradition-universal) has a richer explanation mentioning Mircea Eliade and in illo tempore."
+    },
+    {
+      "id": "mythology_folklore-tartarus-prison-titans",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-tartarus-dungeon-titans-plato. Both ask about Tartarus as prison for Titans and dungeon for the wicked.",
+      "suggested_fix": "Remove one. The first version (mythology_folklore-tartarus-prison-titans) has the richer explanation mentioning Plato's Gorgias and Hesiod's Theogony."
+    },
+    {
+      "id": "mythology_folklore-elysium-afterlife-blessed",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-elysium-afterlife-western-edge. One asks who could originally enter Elysium (answer: only relatives of the gods), the other asks where Homer located it (answer: western edge of the Earth). These test different facts and can coexist — flagging only for batch density.",
+      "suggested_fix": "No change needed — these are genuinely different facts. Acceptable pair."
+    },
+    {
+      "id": "mythology_folklore-yama-multi-religion",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-yama-multi-religion-adoption. Both describe Yama being adopted as king of hell by Buddhist, Chinese, Tibetan, Korean, and Japanese traditions; the braced-number version asks 'how many cultures' while the other asks 'which originally Hindu death god.' These test slightly different things but cover identical information.",
+      "suggested_fix": "These can coexist as they test different recall (number vs. identity), but consider whether both are needed in the same deck."
+    },
+    {
+      "id": "mythology_folklore-hyperion-sun-titan",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-hyperion-sun-parents-titan and myth-hyperion-titan-sun-children. All ask which three celestial deities Hyperion fathered with Theia (Helios, Selene, Eos). Three versions of the same fact is excessive.",
+      "suggested_fix": "Keep one — preferably the version with the braced answer or the one with the richest explanation. Remove the other two."
+    },
+    {
+      "id": "mythology_folklore-hyperion-sun-parents-titan",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Second duplicate of the Hyperion/Theia children fact — see mythology_folklore-hyperion-sun-titan.",
+      "suggested_fix": "Remove."
+    },
+    {
+      "id": "mythology_folklore-mnemosyne-memory-nine-muses",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-mnemosyne-memory-muses-zeus and myth-mnemosyne-mother-nine-muses. All three ask about Mnemosyne as mother of the nine Muses by Zeus.",
+      "suggested_fix": "Keep only one version of the core fact. The numerical braced version (mythology_folklore-mnemosyne-memory-muses-zeus asking '{9}') can coexist with one question-form version, but three is excessive."
+    },
+    {
+      "id": "myth-anubis-weighing-heart",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-anubis-weighing-hearts. One asks what the heart was weighed against (answer: 'The feather of Maat'), the other answers 'A feather'. These test the same knowledge at different specificity levels. The version specifying 'feather of Maat' is clearly preferable.",
+      "suggested_fix": "Remove the less specific version (mythology_folklore-anubis-weighing-hearts answering just 'A feather'). Keep myth-anubis-weighing-heart which names Maat and provides more learning value. Alternatively, keep both if the simpler version uses the {braced} format for numeric diversity."
+    },
+    {
+      "id": "myth-erlang-shen-jade-emperor-nephew",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-erlang-shen-jade-emperor-nephew. Both confirm Erlang Shen is the Jade Emperor's nephew, with very similar explanations.",
+      "suggested_fix": "Remove one. The myth- prefixed version (myth-erlang-shen-jade-emperor-nephew) has a cleaner answer format ('His nephew') vs. the more verbose original."
+    },
+    {
+      "id": "mythology_folklore-khnum-potter-wheel-creator",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-khnum-potter-wheel-creator-b3. Both ask which Egyptian god created human bodies using a potter's wheel; both answer 'Khnum.' The questions are nearly identical.",
+      "suggested_fix": "Remove one."
+    },
+    {
+      "id": "mythology_folklore-mordred-not-originally-villain",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of mythology_folklore-mordred-not-originally-villain-b3. Both ask in what year the Annales Cambriae first mentions Mordred; both answer '{537}'.",
+      "suggested_fix": "Remove one."
+    },
+    {
+      "id": "myth-cerberus-hound-of-hades",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The answer 'Stop the dead from leaving' uses an imperative/infinitive verb form that reads awkwardly as the answer to 'What was Cerberus's main purpose...' A noun phrase would be more grammatically natural.",
+      "suggested_fix": "Change answer to 'Preventing the dead from leaving' or 'To stop the dead from leaving' for grammatical consistency with the question."
+    },
+    {
+      "id": "myth-huitzilopochtli-aztec-sun-war",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation says 'Each dawn was conceived as Huitzilopochtli's victory over the forces of night' but the correct answer says he battled 'the night sky.' The explanation is slightly inconsistent — his battle was specifically against the 400 Huitznahua (southern stars) and his sister Coyolxauhqui (the moon), not generically 'the night sky.' The answer oversimplifies.",
+      "suggested_fix": "Minor: Either broaden the explanation to say 'the forces of darkness and night' or make the answer slightly more precise: 'Against darkness to make the sun rise each day.'"
+    },
+    {
+      "id": "myth-gargoyle-grotesque-statue",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The answer 'A grotesque statue' is technically imprecise. In architectural terminology, a gargoyle specifically has a water drainage function (from Old French 'gargouille', throat). Grotesque figures without drainage spouts are technically 'grotesques' not gargoyles. The explanation acknowledges this ('functional waterspouts') but the answer itself is imprecise by calling it merely 'a grotesque statue.'",
+      "suggested_fix": "Change answer to 'A carved stone waterspout figure' or rephrase the question to 'What practical function did gargoyles originally serve on Gothic cathedrals?' with answer 'Draining rainwater away from walls.'"
+    }
+  ]
+}

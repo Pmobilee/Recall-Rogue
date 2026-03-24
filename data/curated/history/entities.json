@@ -1179,7 +1179,7 @@
       "startDate": "+0476-00-00T00:00:00Z",
       "endDate": "+1520-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q12546",
@@ -1192,7 +1192,7 @@
       "startDate": "+1095-00-00T00:00:00Z",
       "endDate": "+1291-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q12567",
@@ -1204,7 +1204,7 @@
     "properties": {
       "startDate": "+0745-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8474",
@@ -1219,7 +1219,7 @@
       "occupation": "Q1097498",
       "fieldOfWork": "Q1791716"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q12557",
@@ -1231,7 +1231,7 @@
     "properties": {
       "inception": "+1206-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q42005",
@@ -1246,7 +1246,9 @@
       "country": "Q230",
       "countryOfOrigin": "Q212"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q16869",
@@ -1259,7 +1261,9 @@
       "country": "Q12544",
       "inception": "+0330-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q37739",
@@ -1269,7 +1273,9 @@
     "sitelinks": 122,
     "monthlyPageviews": 61000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q34503",
@@ -1283,7 +1289,9 @@
       "deathDate": "+1481-05-03T00:00:00Z",
       "occupation": "Q116"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q127398",
@@ -1298,7 +1306,9 @@
       "occupation": "Q4964182",
       "fieldOfWork": "Q5891"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q83100",
@@ -1312,7 +1322,7 @@
       "deathDate": "+1326-08-01T00:00:00Z",
       "occupation": "Q132050"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q134817",
@@ -1326,7 +1336,7 @@
       "deathDate": "+1918-02-10T00:00:00Z",
       "occupation": "Q2304859"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7313",
@@ -1338,7 +1348,7 @@
     "properties": {
       "inception": "+1271-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q30578",
@@ -1352,7 +1362,7 @@
       "deathDate": "+1099-07-29T00:00:00Z",
       "occupation": "Q250867"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q79965",
@@ -1365,7 +1375,7 @@
       "country": "Golden Horde",
       "inception": "+1243-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q494660",
@@ -1379,7 +1389,7 @@
       "deathDate": "+1520-09-22T00:00:00Z",
       "occupation": "Q49757"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q41300",
@@ -1392,7 +1402,7 @@
       "country": "Q170174",
       "inception": "+1118-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q187152",
@@ -1404,7 +1414,7 @@
     "properties": {
       "pointInTime": "+1917-11-02T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9402",
@@ -1416,7 +1426,7 @@
     "properties": {
       "country": "Q17"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q48189",
@@ -1429,7 +1439,7 @@
       "country": "Q170174",
       "inception": "+1190-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7519",
@@ -1443,7 +1453,8 @@
       "deathDate": "+1241-12-11T00:00:00Z",
       "occupation": "Q181888"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q174791",
@@ -1457,7 +1468,8 @@
       "deathDate": "+1839-07-01T00:00:00Z",
       "occupation": "Q2304859"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q177320",
@@ -1471,7 +1483,8 @@
       "deathDate": "+1265-02-08T00:00:00Z",
       "occupation": "Q181888"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q174306",
@@ -1484,7 +1497,8 @@
       "country": "Q38",
       "inception": "+1005-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q103350",
@@ -1494,7 +1508,8 @@
     "sitelinks": 75,
     "monthlyPageviews": 37500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q174205",
@@ -1507,7 +1522,7 @@
       "startDate": "+1877-04-24T00:00:00Z",
       "endDate": "+1878-03-03T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q170514",
@@ -1521,7 +1536,7 @@
       "deathDate": "+1693-01-06T00:00:00Z",
       "occupation": "Q43292"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q199442",
@@ -1534,7 +1549,7 @@
       "country": "Kingdom of Aragon",
       "inception": "+1035-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q76721",
@@ -1548,7 +1563,7 @@
       "deathDate": "+1100-07-18T00:00:00Z",
       "occupation": "Q116"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q203817",
@@ -1560,7 +1575,7 @@
     "properties": {
       "inception": "+0681-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q31929",
@@ -1573,7 +1588,8 @@
       "country": "Carolingian Empire",
       "inception": "+0800-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q153899",
@@ -1587,7 +1603,8 @@
       "deathDate": "+1922-08-04T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q106151",
@@ -1600,7 +1617,8 @@
       "country": "Q179876",
       "inception": "+1126-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q190530",
@@ -1613,7 +1631,8 @@
       "startDate": "+1303-01-01T00:00:00Z",
       "endDate": "+1850-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q190967",
@@ -1625,7 +1644,8 @@
     "properties": {
       "country": "Q232806"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q154764",
@@ -1638,7 +1658,8 @@
       "startDate": "+1075-00-00T00:00:00Z",
       "endDate": "+1124-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q217050",
@@ -1648,7 +1669,8 @@
     "sitelinks": 58,
     "monthlyPageviews": 29000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q4958",
@@ -1661,7 +1683,8 @@
       "country": "Q148",
       "inception": "+0916-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q213649",
@@ -1674,7 +1697,8 @@
       "startDate": "+0793-00-00T00:00:00Z",
       "endDate": "+1066-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q205466",
@@ -1686,7 +1710,8 @@
     "properties": {
       "inception": "+0552-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q420759",
@@ -1698,7 +1723,10 @@
     "properties": {
       "inception": "+1185-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q315888",
@@ -1712,7 +1740,10 @@
       "deathDate": "+1921-03-15T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q187742",
@@ -1725,7 +1756,10 @@
       "startDate": "+1120-00-00T00:00:00Z",
       "endDate": "+1390-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q1923401",
@@ -1737,7 +1771,10 @@
     "properties": {
       "inception": "+1635-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q51662",
@@ -1747,7 +1784,10 @@
     "sitelinks": 49,
     "monthlyPageviews": 24500,
     "properties": {},
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q698985",
@@ -1761,7 +1801,8 @@
       "endDate": "+1683-01-01T00:00:00Z",
       "country": "Ottoman Empire"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q517",
@@ -1775,7 +1816,8 @@
       "deathDate": "+1821-05-05T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q5809",
@@ -1789,7 +1831,8 @@
       "deathDate": "+1967-10-09T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q6534",
@@ -1804,7 +1847,8 @@
       "pointInTime": "+1789-05-05T00:00:00Z",
       "country": "Q142"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q4692",
@@ -1817,7 +1861,8 @@
       "startDate": "+1400-00-00T00:00:00Z",
       "endDate": "+1650-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q7231",
@@ -1831,7 +1876,8 @@
       "deathDate": "+1919-01-15T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q33391",
@@ -1846,7 +1892,8 @@
       "deathDate": "+1940-08-21T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q1316",
@@ -1861,7 +1908,8 @@
       "deathDate": "+2006-12-30T00:00:00Z",
       "occupation": "Q47064"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q8680",
@@ -1874,7 +1922,8 @@
       "country": "Q161885",
       "inception": "+1583-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q2269",
@@ -1888,7 +1937,8 @@
       "endDate": "+1820-00-00T00:00:00Z",
       "countryOfOrigin": "Q161885"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q8462",
@@ -1902,7 +1952,8 @@
       "deathDate": "+1405-02-19T00:00:00Z",
       "occupation": "Q1250916"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q12539",
@@ -1915,7 +1966,8 @@
       "startDate": "+1700-00-00T00:00:00Z",
       "endDate": "+1820-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q34266",
@@ -1928,7 +1980,8 @@
       "country": "Russian Empire",
       "inception": "+1721-10-22T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q12562",
@@ -1942,7 +1995,8 @@
       "endDate": "+1648-00-00T00:00:00Z",
       "creator": "Q9554"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q8423",
@@ -1956,7 +2010,8 @@
       "deathDate": "-0530-00-00T00:00:00Z",
       "occupation": "Q2304859"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q28513",
@@ -1969,7 +2024,8 @@
       "country": "Austria–Hungary",
       "inception": "+1867-03-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q27645",
@@ -1985,7 +2041,8 @@
       "occupation": "Q4964182",
       "fieldOfWork": "Q5891"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q28573",
@@ -1999,7 +2056,8 @@
       "endDate": "+1533-00-00T00:00:00Z",
       "inception": "+1438-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q47365",
@@ -2013,7 +2071,8 @@
       "deathDate": "+1793-10-16T00:00:00Z",
       "occupation": "Q2478141"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q44197",
@@ -2028,7 +2087,8 @@
       "occupation": "Q82955",
       "fieldOfWork": "Q3242115"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q9161",
@@ -2042,7 +2102,8 @@
       "deathDate": "+1980-05-04T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q43287",
@@ -2054,7 +2115,8 @@
     "properties": {
       "inception": "+1871-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q8729",
@@ -2067,7 +2129,8 @@
       "pointInTime": "+1917-00-00T00:00:00Z",
       "country": "Russian Empire"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q7721",
@@ -2081,7 +2144,8 @@
       "deathDate": "+1873-01-09T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q9683",
@@ -2095,7 +2159,8 @@
       "endDate": "+0907-00-00T00:00:00Z",
       "inception": "+0618-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q33296",
@@ -2107,7 +2172,7 @@
     "properties": {
       "inception": "+1526-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8690",
@@ -2122,7 +2187,7 @@
       "country": "Q148",
       "creator": "Q5816"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q36724",
@@ -2136,7 +2201,7 @@
       "deathDate": "+0453-00-00T00:00:00Z",
       "occupation": "Q1259323"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5752",
@@ -2152,7 +2217,7 @@
       "occupation": "Q901402",
       "fieldOfWork": "Q5891"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q40949",
@@ -2165,7 +2230,7 @@
       "startDate": "+1775-04-19T00:00:00Z",
       "endDate": "+1783-09-03T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q33761",
@@ -2179,7 +2244,7 @@
       "endDate": "+2012-12-00T00:00:00Z",
       "pointInTime": "+2010-12-17T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q129286",
@@ -2192,7 +2257,7 @@
       "country": "British Empire",
       "inception": "+1858-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q83891",
@@ -2207,7 +2272,7 @@
       "country": "Sasanian Empire",
       "inception": "+0224-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q797848",
@@ -2221,7 +2286,7 @@
       "deathDate": "+1530-12-26T00:00:00Z",
       "occupation": "Q49757"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q80702",
@@ -2234,7 +2299,7 @@
       "country": "Q29",
       "inception": "+1492-10-12T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q131964",
@@ -2247,7 +2312,7 @@
       "country": "Austrian Empire",
       "inception": "+1804-08-11T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q129072",
@@ -2261,7 +2326,7 @@
       "discoverer": "Q2355082",
       "inception": "-0510-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q79911",
@@ -2275,7 +2340,7 @@
       "endDate": "+1922-10-25T00:00:00Z",
       "country": "Russian Empire"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q126065",
@@ -2290,7 +2355,7 @@
       "pointInTime": "+1970-00-00T00:00:00Z",
       "country": "Q794"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q123034",
@@ -2304,7 +2369,7 @@
       "deathDate": "+1531-10-11T00:00:00Z",
       "occupation": "Q1234713"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q188712",
@@ -2317,7 +2382,7 @@
       "country": "Q17",
       "inception": "+1868-01-03T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q184536",
@@ -2329,7 +2394,7 @@
     "properties": {
       "inception": "+1235-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q133641",
@@ -2342,7 +2407,7 @@
       "startDate": "+1500-00-00T00:00:00Z",
       "endDate": "+1800-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q41718",
@@ -2356,7 +2421,7 @@
       "deathDate": "+1919-04-10T00:00:00Z",
       "occupation": "Q212948"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q184623",
@@ -2370,7 +2435,7 @@
       "deathDate": "+1794-04-05T00:00:00Z",
       "occupation": "Q40348"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q192769",
@@ -2385,7 +2450,7 @@
       "pointInTime": "+1763-03-22T00:00:00Z",
       "country": "Q30"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25979",
@@ -2397,7 +2462,7 @@
     "properties": {
       "inception": "+0030-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q44741",
@@ -2411,7 +2476,7 @@
       "deathDate": "+1541-06-26T00:00:00Z",
       "occupation": "Q126236"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11264",
@@ -2425,7 +2490,7 @@
       "pointInTime": "+1959-01-01T00:00:00Z",
       "country": "Q241"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q133132",
@@ -2453,7 +2518,7 @@
       "country": "Q45670",
       "inception": "+1415-08-21T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q122290",
@@ -2467,7 +2532,7 @@
       "deathDate": "+1793-07-13T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q188541",
@@ -2481,7 +2546,7 @@
       "deathDate": "-0297-00-00T00:00:00Z",
       "occupation": "Q2304859"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q128168",
@@ -2495,7 +2560,7 @@
       "endDate": "+1648-00-00T00:00:00Z",
       "inception": "+1545-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q309333",
@@ -2509,7 +2574,7 @@
       "deathDate": "+1337-01-01T00:00:00Z",
       "occupation": "Q1886285"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q164348",
@@ -2524,7 +2589,7 @@
       "pointInTime": "+1956-00-00T00:00:00Z",
       "country": "Q28"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q201705",
@@ -2536,7 +2601,7 @@
     "properties": {
       "inception": "+0802-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q180548",
@@ -2549,7 +2614,7 @@
       "startDate": "-8000-01-01T00:00:00Z",
       "endDate": "-2000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q179023",
@@ -2562,7 +2627,7 @@
       "country": "Q142",
       "inception": "+1534-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q199461",
@@ -2576,7 +2641,7 @@
       "deathDate": "-2300-00-00T00:00:00Z",
       "occupation": "Q2304859"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q229411",
@@ -2589,7 +2654,7 @@
       "country": "Delhi Sultanate",
       "inception": "+1206-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q302",
@@ -2606,7 +2671,7 @@
       "occupation": "Q432386",
       "fieldOfWork": "Q203605"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q309",
@@ -2616,7 +2681,7 @@
     "sitelinks": 316,
     "monthlyPageviews": 158000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q4604",
@@ -2632,7 +2697,7 @@
       "occupation": "Q4964182",
       "fieldOfWork": "Q5891"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9061",
@@ -2647,7 +2712,7 @@
       "occupation": "Q188094",
       "fieldOfWork": "Q47555"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1394",
@@ -2663,7 +2728,7 @@
       "occupation": "Q82955",
       "fieldOfWork": "Q155059"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1001",
@@ -2679,7 +2744,7 @@
       "occupation": "Q82955",
       "fieldOfWork": "Q5891"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q855",
@@ -2695,7 +2760,7 @@
       "occupation": "Q82955",
       "fieldOfWork": "Q3242115"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q15180",
@@ -2708,7 +2773,7 @@
       "country": "Soviet Union",
       "inception": "+1922-12-30T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9358",
@@ -2723,7 +2788,7 @@
       "occupation": "Q4964182",
       "fieldOfWork": "Q495527"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5152",
@@ -2737,7 +2802,7 @@
       "deathDate": "+1938-11-10T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9312",

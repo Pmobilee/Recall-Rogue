@@ -114,6 +114,8 @@ import type { UpgradePreview } from './cardUpgradeService';
 import { getUpgradeCandidates, getUpgradePreview, upgradeCard, canMasteryUpgrade, masteryUpgrade } from './cardUpgradeService'
 import type { QuizQuestion } from './bossQuizPhase';
 import { factsDB } from './factsDB';
+import { selectNonCombatStudyQuestion } from './nonCombatQuizSelector';
+import { getConfusionMatrix } from './confusionMatrixStore';
 import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards, removalPrice } from './shopService';
 import type { DeckMode } from '../data/studyPreset'
@@ -277,6 +279,7 @@ export function startNewRun(options?: { includeOutsideDueReviews?: boolean }): v
   pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
   deactivateDeterministicRandom()
   destroyRunRng()
+  resetEncounterBridge()  // clear stale encounter state from previous run
   // Always set deck mode from hub selector, even for onboarding flow
   const save = get(playerSave);
   pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
@@ -2016,9 +2019,42 @@ export function onUpgradeSkipped(): void {
 
 /**
  * Generate 3 study questions from the run's current fact pool.
- * Falls back to any available facts if the pool is too small.
+ * In study mode (curated deck runs), uses selectNonCombatStudyQuestion to draw
+ * from the full deck pool with FSRS-aware selection and deck-specific templates.
+ * In trivia mode, falls back to factsDB pool selection.
  */
 export function generateStudyQuestions(): QuizQuestion[] {
+  const run = get(activeRunState);
+
+  // Study mode branch: use curated deck selector
+  if (run?.deckMode?.type === 'study') {
+    const confusionMatrix = getConfusionMatrix();
+    const inRunTracker = run.inRunFactTracker ?? null;
+    const questions: QuizQuestion[] = [];
+    // Generate up to 3 questions with different seed offsets so each is distinct
+    for (let i = 0; i < 3; i++) {
+      const q = selectNonCombatStudyQuestion(
+        'rest',
+        run.deckMode.deckId,
+        run.deckMode.subDeckId,
+        confusionMatrix,
+        inRunTracker,
+        1,
+        run.runSeed + i * 1000,
+      );
+      if (q) {
+        questions.push({
+          factId: q.factId,
+          question: q.question,
+          answers: q.choices,
+          correctAnswer: q.correctAnswer,
+        });
+      }
+    }
+    if (questions.length > 0) return questions;
+    // Fall through to trivia path if no study questions could be generated
+  }
+
   const allFacts = factsDB.getAll();
   const factMap = new Map(allFacts.map(f => [f.id, f]));
 

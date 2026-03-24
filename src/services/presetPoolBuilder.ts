@@ -257,6 +257,23 @@ function factHasQuestion(fact: Fact): boolean {
   return hasQuizQuestion || hasVariantQuestions;
 }
 
+/**
+ * Returns true if the fact is suitable for the trivia/dungeon run pool.
+ * Language and vocabulary facts belong exclusively to the Study Temple
+ * curated deck system and must never appear in Trivia Dungeon runs.
+ *
+ * A fact is excluded when:
+ *   - fact.categoryL1 === 'language'  (canonical language domain fact)
+ *   - fact.type === 'vocabulary'       (vocabulary card regardless of domain)
+ *   - fact.type === 'grammar'          (grammar card — also language-specific)
+ *   - fact.type === 'phrase'           (phrase card — also language-specific)
+ */
+function factIsTrivia(fact: Fact): boolean {
+  if (fact.categoryL1 === 'language') return false;
+  if (fact.type === 'vocabulary' || fact.type === 'grammar' || fact.type === 'phrase') return false;
+  return true;
+}
+
 // ── Main pool builder ────────────────────────────────────────────
 
 /**
@@ -313,6 +330,8 @@ export function buildPresetRunPool(
       const categories = DOMAIN_TO_CATEGORY[normalized] ?? DOMAIN_TO_CATEGORY.general_knowledge;
       facts = factsDB.getByCategory(categories, contentTarget * 3);
       facts = applyCategoryFilters(normalized, facts, options?.categoryFilters);
+      // Exclude vocabulary/language facts from trivia pool — they live in Study Temple curated decks.
+      facts = facts.filter(factIsTrivia);
     }
 
     // Remove facts without a valid question before any further processing.
@@ -351,6 +370,10 @@ export function buildPresetRunPool(
 
   // ── Step 3: Build review pool (30%) ──
 
+  // True when the run contains at least one non-language domain (i.e. trivia/general/preset mode).
+  // In that case, language and vocabulary facts must be excluded from reviews and backfill.
+  const isTriviaRun = domains.some((d) => !d.startsWith('language:'));
+
   const now = Date.now();
   const DAY_MS = 86_400_000;
   const WEEK_MS = 7 * DAY_MS;
@@ -360,6 +383,8 @@ export function buildPresetRunPool(
     const fact = factsDB.getById(state.factId);
     if (!fact) return false;
     if (!factHasQuestion(fact)) return false;
+    // Exclude language/vocabulary facts from trivia run review pool.
+    if (isTriviaRun && !factIsTrivia(fact)) return false;
     return factMatchesPresetSelection(fact, domainSelections);
   });
 
@@ -402,6 +427,7 @@ export function buildPresetRunPool(
     const fillerCandidates = factsDB
       .getAll()
       .filter((fact) => !usedFactIds.has(fact.id))
+      .filter((fact) => !isTriviaRun || factIsTrivia(fact))
       .filter((fact) => factMatchesPresetSelection(fact, domainSelections))
       .filter(factHasQuestion);
     const fillerFacts = stratifiedSample(fillerCandidates, shortage, options?.funnessBoostFactor);

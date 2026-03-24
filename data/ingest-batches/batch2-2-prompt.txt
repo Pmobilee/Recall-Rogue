@@ -1,0 +1,465 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (15 entities = 45 facts). Output as a single JSON array.
+
+### VALKYRIE
+**Domain:** mythology_folklore / norse_celtic
+
+**Wikipedia:** In Norse mythology, a valkyrie ( VAL-kirr-ee or  val-KEER-ee; from Old Norse: valkyrja, lit. 'chooser of the slain') is one of a host of female figures who guide souls of the dead to the god Odin's hall Valhalla. There, the deceased warriors become einherjar ('single fighters' or 'once fighters'). When the einherjar are not preparing for the cataclysmic events of Ragnarök, the valkyries bear them mead. Valkyries also appear as lovers of heroes and other mortals, where they are sometimes described as the daughters of royalty, sometimes accompanied by ravens and sometimes connected to swans, boars or wolves.
+Valkyries are attested in the Poetic Edda (a book of poems compiled in the 13th century from earlier traditional sources), the Prose Edda, the Heimskringla (both by Snorri Sturluson) and the Njáls saga (one of the Sagas of Icelanders), all written—or compiled—in the 13th century. They appear throughout the poetry of skalds, in a 14th-century charm, and in various runic inscriptions.
+The Old English cognate term wælcyrge appears in several Old English manuscripts, and scholars have explored whether the term appears in Old English by way of Norse influence, or reflects a tradition also native among the Anglo-Saxon pagans. Scholarly theories have been proposed about the relation between the valkyries, the Norns, and the dísir, all of which are supernatural figures associated with fate. Archaeological excavations throughout Scandinavia have uncovered amulets theorized as depicting valkyries. In modern culture, valkyries have been the subject of works of art, musical works, comic books, video games and poetry.
+
+### MINOTAUR
+**Domain:** mythology_folklore / greek_roman
+
+**Wikipedia:** In Greek mythology, the Minotaur (Ancient Greek: Μινώταυρος, romanized: Mīnṓtauros), also known as Asterion or Asterius, is a mythical creature portrayed during classical antiquity with the head and tail of a bull and the body of a man or, as described by Roman poet Ovid, a being "part man and part bull". He dwelt at the center of the Labyrinth, which was an elaborate maze-like construction designed by the architect Daedalus and his son Icarus, upon command of King Minos of Crete. According to tradition, every nine years the people of Athens were compelled by King Minos to choose fourteen young noble citizens (seven men and seven women) to be offered as sacrificial victims to the Minotaur in retribution for the death of Minos's son Androgeos. The Minotaur was eventually slain by the Athenian hero Theseus, who managed to navigate the labyrinth with the help of a thread offered to him by the King's daughter, Ariadne.
+
+### YOKAI
+**Domain:** mythology_folklore / creatures_monsters
+
+**Wikipedia:** Yōkai (妖怪; Japanese pronunciation: [joː.kai]) are a class of supernatural entities and  spirits in Japanese folklore. Yōkai are a vast range of beings, including shapeshifters, ghosts, demons, and tricksters. They can be mischievous, helpful, or malevolent, often appearing as animal-like figures, possessed objects, or humanoids. They embody the mysterious and uncanny aspects of nature and human emotions. 
+Yōkai are also referred to as ayakashi (あやかし), mononoke (物の怪) or mamono (魔物). Some academics and Shinto practitioners acknowledge similarities within the seeming dichotomy between the natures of yōkai and most kami, which are generally regarded as relatively beneficent in comparison, and class the two as ultimately the same type of spirits of nature or of a mythological realm.
+Their behavior can range from malevolent or mischievous to benevolent to humans.
+Yōkai often have animal-like features (such as the kappa, depicted as appearing similar to a turtle, and the tengu, commonly depicted with wings), but may also appear humanoid in appearance, such as the kuchisake-onna (口裂け女). Some yōkai resemble inanimate objects (such as the tsukumogami), while others have no discernible shape. Yōkai are typically described as having spiritual or supernatural abilities, with shapeshifting being the most common trait associated with them. Yōkai that shapeshift are known as bakemono (化け物) or obake (お化け).
+Japanese folklorists and historians explain yōkai as personifications of "supernatural or unaccountable phenomena to their informants". In the Edo period (1603 to 1868), many artists, such as Toriyama Sekien (1712-1788), invented new yōkai by taking inspiration from folktales or purely from their own imagination. Today, several such yōkai (such as the amikiri) are mistakenly thought to originate in more traditional folklore.
+The kanji representation of the word yōkai comprises two characters that both mean "suspicious, doubtful", and while the Japanese name is simply the Japanese transliteration or pronunciation of the Chinese term yāoguài (which designates similarly strange creatures), some Japanese commentators argue that the word yōkai has taken on many different meanings in Japanese culture, including referring to a large number of uniquely Japanese creatures.
+
+### ODIN
+**Domain:** mythology_folklore / norse_celtic
+
+**Wikipedia:** Odin (; from Old Norse: Óðinn) is a widely revered god in Norse mythology and Germanic paganism. Most surviving information on Odin comes from Norse mythology, but he figures prominently in the recorded history of Northern Europe. This includes the Roman Empire's partial occupation of Germania (c. 2 BCE), the Migration Period (4th–6th centuries CE) and the Viking Age (8th–11th centuries CE). Consequently, Odin has hundreds of names and titles. Several of these stem from the reconstructed Proto-Germanic theonym Wōðanaz, meaning "lord of frenzy" or "leader of the possessed", which may relate to the god's strong association with poetry. 
+Most mythological stories about Odin survive from the 13th-century Prose Edda and an earlier collection of Old Norse poems, the Poetic Edda, along with other Old Norse items like Ynglinga saga. The Prose Edda and other sources depict Odin as the head of the pantheon, sometimes called the Æsir, and bearing a spear and a ring. Wider sources depict Odin as the son of Bestla and Borr; brother to Vili and Vé; and husband to the goddess Frigg, with whom he fathered Baldr. Odin has many other sons, including Thor, whom he sired with the earth-goddess Jörð. He is sometimes accompanied by animal familiars, such as the ravens Huginn and Muninn and the wolves Geri and Freki. The Prose Edda describes Odin and his brothers' creation of the world through slaying the primordial being Ymir, and his giving of life to the first humans Ask and Embla. Odin is often referred to as long-bearded, sometimes as an old man, and also as possessing only one eye, having sacrificed the other for wisdom. 
+Odin is widely regarded as a god of the dead and warfare. In this role, he receives slain warriors—the einherjar—at Valhöll ("Carrion-hall" or "Hall of the Slain") in the realm of Asgard. The Poetic Edda associates him with Valkyries, perhaps as their leader. In the mythic future, Odin leads the einherjar at Ragnarök, where he is killed by the monstrous wolf Fenrir. Accounts by early travellers to Northern Europe describe human sacrifices being made to Odin. In Old English texts, Odin is euhemerized as an ancestral figure for royalty and is frequently depicted as a founding figure for various Germanic peoples, such as the Langobards. In some later folklore, he is a leader of the Wild Hunt, a ghostly procession of the dead. 
+Odin has an attested history spanning over a thousand years. He is an important subject of interest to Germanic scholars. Some scholars consider the god's relations to other figures—as reflected, for example in the etymological similarity of his name to the name of Freyja's husband Óðr. Others discuss his historical lineage, exploring whether he derives from Proto-Indo-European mythology or developed later in Germanic society. In modern times, most forms of the new religious movement Heathenry venerate him; in some, he is the central deity. The god regularly features across all forms of modern media, especially genre fiction,
+
+### PHOENIX
+**Domain:** mythology_folklore / creatures_monsters
+
+**Wikipedia:** The phoenix (sometimes spelled phenix in American English; see spelling differences) is a legendary immortal bird that cyclically regenerates or is otherwise born again. Originating in Greek mythology, it has analogs in many cultures, such as Egyptian and Persian mythology. Associated with the Sun, a phoenix obtains new life by rising from the ashes of its predecessor. Some legends say it dies in a show of flames and combustion, while others say that it simply burns to death and decomposes before being born again. In the Motif-Index of Folk-Literature, a tool used by folklorists, the phoenix is classified as motif B32.
+The origin of the phoenix has been attributed to Ancient Egypt by Herodotus and later 19th-century scholars, but other scholars think the Egyptian texts may have been influenced by classical folklore. Over time, the phoenix motif spread and gained a variety of new associations; Herodotus, Lucan, Pliny the Elder, Pope Clement I, Lactantius, Ovid, and Isidore of Seville are among those who have contributed to the retelling and transmission of the phoenix motif. Over time, extending beyond its origins, the phoenix could variously "symbolize renewal in general as well as the sun, time, the Roman Empire, metempsychosis, consecration, resurrection, life in the heavenly Paradise, Christ, Mary, virginity, the exceptional man, and certain aspects of Christian life". Some scholars have claimed that the poem De ave phoenice may present the mythological phoenix motif as a symbol of Christ's resurrection.
+
+
+
+### LIGHTNING
+**Domain:** natural_sciences / physics_mechanics
+
+**Wikipedia:** Lightning is a natural phenomenon consisting of electrostatic discharges occurring through the atmosphere between two electrically charged regions. One or both regions are within the atmosphere, with the second region sometimes occurring on the ground. Following the lightning, the regions become partially or wholly electrically neutralized.
+Lightning involves a near-instantaneous release of energy on a scale averaging between 200 megajoules and 7 gigajoules. The air around the lightning flash rapidly heats to temperatures of about 30,000 °C (54,000 °F). There is an emission of electromagnetic radiation across a wide range of wavelengths, some visible as a bright flash. Lightning also causes thunder, a sound from the shock wave which develops as heated gases in the vicinity of the discharge experience a sudden increase in pressure.
+The most common occurrence of a lightning event is known as a thunderstorm, though they can also commonly occur in other types of energetic weather systems, such as volcanic eruptions. Lightning influences the global atmospheric electrical circuit and atmospheric chemistry and is a natural ignition source of wildfires. Lightning is considered an Essential Climate Variable by the World Meteorological Organization, and its scientific study is called fulminology.
+
+
+
+### CORAL REEF
+**Domain:** natural_sciences / ecology_environment
+
+**Wikipedia:** A coral reef is an underwater ecosystem characterized by reef-building corals. Reefs are formed of colonies of coral polyps held together by calcium carbonate. Most coral reefs are built from stony corals, whose polyps cluster in groups.
+Coral belongs to the class Anthozoa in the animal phylum Cnidaria, which includes sea anemones and jellyfish. Unlike sea anemones, corals secrete hard carbonate exoskeletons that support and protect the coral. Most reefs grow best in warm, shallow, clear, sunny, and agitated water. Coral reefs first appeared 485 million years ago, at the dawn of the Early Ordovician, displacing the microbial and sponge reefs of the Cambrian.
+Sometimes called rainforests of the sea, shallow coral reefs form some of Earth's most diverse ecosystems. They occupy less than 0.1% of the world's ocean area, about half the area of France. Yet, they provide a home for at least 25% of all marine species, including fish, mollusks, worms, crustaceans, echinoderms, sponges, tunicates and other cnidarians. Coral reefs flourish in ocean waters that provide few nutrients. They are most commonly found at shallow depths in tropical waters, but deep water and cold water coral reefs exist on smaller scales in other areas.
+Shallow tropical coral reefs have declined by 50% since 1950, partly because they are sensitive to water conditions. They are under threat from excess nutrients (nitrogen and phosphorus), rising ocean heat content and acidification, overfishing (e.g., from blast fishing, cyanide fishing, spearfishing on scuba), sunscreen use, and harmful land-use practices, including runoff and seeps (e.g., from injection wells and cesspools).
+Coral reefs deliver ecosystem services for tourism, fisheries, and shoreline protection. The annual global economic value of coral reefs has been estimated at anywhere from US$30–375 billion (1997 and 2003 estimates) to US$2.7 trillion (a 2020 estimate) to US$9.9 trillion (a 2014 estimate).
+
+### GOLD
+**Domain:** natural_sciences / chemistry_elements
+
+**Wikipedia:** Gold is a chemical element; its chemical symbol is Au (from Latin aurum) and atomic number 79. In its pure form, it is a bright-metallic-yellow, dense, soft, malleable, and ductile metal. Chemically, gold is a transition metal, a group 11 element, and one of the noble metals. It is one of the least reactive chemical elements, being the second lowest in the reactivity series, with only platinum ranked as less reactive. Gold is solid under standard conditions.
+Gold often occurs as the free element (native state), as nuggets or grains, in rocks, veins, and alluvial deposits. It occurs in a solid solution series with the native element silver (as in electrum), naturally alloyed with other metals such as copper, platinum, and palladium, as well as mineral inclusions such as within pyrite. Less commonly, it occurs in minerals as gold compounds, often with tellurium (gold tellurides).
+Gold is resistant to most acids, though it does dissolve in aqua regia (a mixture of nitric acid and hydrochloric acid), forming a soluble tetrachloroaurate anion. Gold is insoluble in nitric acid alone, which dissolves silver and base metals, a property long used to refine gold and confirm the presence of gold in metallic substances, giving rise to the term "acid test". Gold dissolves in alkaline solutions of cyanide, which are used in mining and electroplating. Gold also dissolves in mercury, forming amalgam alloys, and as the gold acts simply as a solute, this is not a chemical reaction.
+A relatively rare element when compared to silver (though thirty times more common than platinum), gold is a precious metal that has been used for coinage, jewelry, and other works of art throughout recorded history. In the past, a gold standard was often implemented as a monetary policy. Most gold coins ceased to be minted as a circulating currency in the 1930s, and the world gold standard was abandoned for a fiat currency system after the Nixon shock measures of 1971.
+In 2023, the world's largest gold producer was China, followed by Russia and Australia. As of 2020, a total of around 201,296 tonnes of gold exist above ground. If all of this gold were put together into a cube shape, each of its sides would measure 21.7 meters (71 ft). The world's consumption of new gold produced is about 50% in jewelry, 40% in investments, and 10% in industry. Gold's high malleability, ductility, resistance to corrosion and most other chemical reactions, as well as conductivity of electricity have led to its continued use in corrosion-resistant electrical connectors in all types of computerized devices (its chief industrial use). Gold is also used in infrared shielding, the production of colored glass, gold leafing, and tooth restoration. Auranofin is a gold-containing drug used to treat rheumatoid arthritis.
+
+### EARTHQUAKE
+**Domain:** natural_sciences / geology_earth
+
+**Wikipedia:** An earthquake, also called a quake, tremor, or temblor, is the shaking of the Earth's surface resulting from a sudden release of energy in the lithosphere that creates seismic waves. Earthquakes can range in intensity, from those so weak they cannot be felt, to those violent enough to propel objects and people into the air, damage critical infrastructure, and wreak destruction across entire cities. The seismic activity of an area is the frequency, type, and size of earthquakes experienced over a particular time. The seismicity at a particular location in the Earth is the average rate of seismic energy released per unit volume.
+In its most general sense, the word earthquake is used to describe any seismic event that generates seismic waves. Earthquakes can occur naturally or be induced by human activities, such as mining, fracking, and nuclear weapons testing. The initial point of rupture is called the hypocenter or focus, while the ground level directly above it is the epicenter. Earthquakes are primarily caused by geological faults, but also by volcanism, landslides, and other seismic events.
+Significant historical earthquakes include the 1976 Tangshan earthquake in China, with over 300,000 fatalities, and the 1960 Valdivia earthquake in Chile, the largest ever recorded at 9.5 magnitude. Earthquakes result in various effects, such as ground shaking and soil liquefaction, leading to significant damage and loss of life. When the epicenter of a large earthquake is located offshore, the seabed may be displaced sufficiently to cause a tsunami. Earthquakes can trigger landslides. The occurrence of earthquakes is influenced by tectonic movements along faults, including normal, reverse (thrust), and strike-slip faults, with energy release and rupture dynamics governed by the elastic-rebound theory.
+Efforts to manage earthquake risks involve prediction, forecasting, and preparedness, including seismic retrofitting and earthquake engineering to design structures that withstand shaking. The cultural impact of earthquakes spans myths, religious beliefs, and modern media, reflecting their profound influence on human societies. Similar seismic phenomena, known as marsquakes and moonquakes, have been observed on other celestial bodies, indicating the universality of such events beyond Earth.
+
+### TARDIGRADE
+**Domain:** natural_sciences / biology_organisms
+
+**Wikipedia:** Tardigrades ( ), also known as water bears or moss piglets, are a phylum of eight-legged segmented micro-animals. They were first described by the German zoologist Johann August Ephraim Goeze in 1773, who called them Kleiner Wasserbär 'little water bear'. In 1776, the Italian biologist Lazzaro Spallanzani named them Tardigrada, which means 'slow walkers'.
+Tardigrades live in diverse regions of Earth's biosphere – mountaintops, the deep sea, tropical rainforests, and the Antarctic. They are among the most resilient animals known, with individual species able to survive severe conditions, such as exposure to extreme temperatures, extreme pressures (both high and low), air deprivation, radiation, dehydration, and starvation – that would quickly kill most other forms of life. Tardigrades have survived exposure to outer space.
+There are about 1,500 known species in the phylum Tardigrada, a part of the superphylum Ecdysozoa. The earliest known fossil is from the Cambrian, some 500 million years ago. They lack several of the Hox genes found in arthropods, and the middle region of the body corresponding to an arthropod's thorax and abdomen. Instead, most of their body is homologous to an arthropod's head.
+Tardigrades are usually about 0.5 mm (0.02 in) long when fully grown. They are short and plump, with four pairs of legs, each ending in claws (usually four to eight) or sticky pads. Tardigrades are prevalent in mosses and lichens and can readily be collected and viewed under a low-power microscope, making them accessible to students and amateur scientists. Their clumsy crawling and their well-known ability to survive extreme conditions have brought them into science fiction and popular culture including items of clothing, statues, soft toys and crochet patterns.
+
+### JUPITER
+**Domain:** space_astronomy / planets_moons
+
+**Wikipedia:** Jupiter is the fifth planet from the Sun, and the largest in the Solar System. It is a gas giant with a mass nearly 2.5 times that of all the other planets in the Solar System combined and slightly less than one-thousandth the mass of the Sun. Its diameter is 11 times that of Earth and a tenth that of the Sun. Jupiter orbits the Sun at a distance of 5.20 AU (778.5 Gm), with an orbital period of 11.86 years. It is the third-brightest natural object in the Earth's night sky, after the Moon and Venus, and has been observed since prehistoric times. Its name derives from that of Jupiter, the chief deity of ancient Roman religion.
+Jupiter was the first of the Sun's planets to form, and its inward migration during the primordial phase of the Solar System affected much of the formation history of the other planets. Jupiter's atmosphere consists of 76% hydrogen and 24% helium by mass, with a denser interior. It contains traces of the elements carbon, oxygen, sulfur, neon, and compounds such as ammonia, water vapour, phosphine, hydrogen sulfide, and hydrocarbons. Jupiter's helium abundance is 80% of the Sun's, similar to Saturn's composition.
+The outer atmosphere is divided into a series of latitudinal bands, with turbulence and storms along their interacting boundaries; the most obvious result of this is the Great Red Spot, a giant storm that has been recorded since 1831. Because of its rapid rotation rate, one turn in ten hours, Jupiter is an oblate spheroid; the radius to the equator is about 7% larger than the radius to its poles. Its internal structure is believed to consist of an outer mantle of fluid metallic hydrogen and a diffuse inner core of denser material. The ongoing contraction of Jupiter's interior generates more heat than the planet receives from the Sun. Jupiter's magnetic field is the strongest and second-largest contiguous structure in the Solar System, generated by eddy currents within the fluid, metallic hydrogen core. The solar wind interacts with the magnetosphere, extending it outward and affecting Jupiter's orbit.
+At least 101 moons orbit the planet; the four largest moons—Io, Europa, Ganymede, and Callisto—orbit within the magnetosphere and are visible with common binoculars. Ganymede, the largest of the four, is larger than the planet Mercury. Jupiter is surrounded by a faint system of planetary rings. The rings of Jupiter consist mainly of dust and have three main segments: an inner torus of particles known as the halo, a relatively bright main ring, and an outer gossamer ring. The rings have a reddish colour in visible and near-infrared light. The age of the ring system is unknown, possibly dating back to Jupiter's formation. Since 1973, Jupiter has been visited by nine robotic probes: seven flybys and two dedicated orbiters (with two more en route). Jupiter-like exoplanets have also been found in other planetary systems.
+
+
+
+### NEUTRON STAR
+**Domain:** space_astronomy / stars_galaxies
+
+**Wikipedia:** A neutron star is the gravitationally collapsed core of a massive supergiant star. It results from the supernova explosion of a massive star—combined with gravitational collapse—that compresses the core past white dwarf star density to that of atomic nuclei. Surpassed only by black holes, neutron stars are the second smallest and densest known class of stellar objects. Neutron stars have a radius on the order of 10 kilometers (6 miles) and a mass of about 1.4 solar masses (M☉). Stars that collapse into neutron stars typically have an initial total mass between 10 and 25 M☉ or possibly more for those that are especially rich in elements heavier than hydrogen and helium.
+There are thought to be around one billion neutron stars in the Milky Way, and at a minimum several hundred million, a figure obtained by estimating the number of stars that have undergone supernova explosions. However, many of them have existed for a long period of time and have cooled down considerably. Originally it was thought that neutron stars would be difficult to detect due to low emissions. However it was discovered that spinning stars emit radiation. Most neutron stars that have been detected are pulsars or a part of a binary system.
+Neutron stars in a binary system with a main sequence star can pull in large amounts of gas from its companion, a process called accretion. These binary systems continue to evolve, with many companions eventually becoming compact objects such as white dwarfs or neutron stars themselves, though other possibilities include a complete destruction of the companion through ablation or collision.
+The study of neutron star systems is central to gravitational wave astronomy. The merger of binary neutron stars produces gravitational waves and is associated with kilonovae and short gamma-ray bursts. In 2017, the LIGO and Virgo interferometer sites observed GW170817, the first direct detection of gravitational waves from such an event. Prior to this, indirect evidence for gravitational waves was inferred by studying the gravity radiated from the orbital decay of a different type of (unmerged) binary neutron system, the Hulse–Taylor pulsar.
+
+### VOYAGER PROGRAM
+**Domain:** space_astronomy / missions_spacecraft
+
+**Wikipedia:** The Voyager program is an American scientific program that employs two interstellar probes, Voyager 1 and Voyager 2. They were launched in 1977 to take advantage of a favorable planetary alignment to explore the two gas giants Jupiter and Saturn and potentially also the ice giants, Uranus and Neptune—to fly near them while collecting data for transmission back to Earth. After Voyager 1 successfully completed its flyby of Saturn and its moon Titan, it was decided that Voyager 2 would continue on its pre-planned trajectory to fly by Uranus and Neptune.
+After the planetary flybys were complete, decisions were made to keep the probes in operation to explore interstellar space and the outer regions of the Solar System. On 25 August 2012, data from Voyager 1 indicated that it had entered interstellar space. On 5 November 2019, data from Voyager 2 indicated that it also had entered interstellar space. On 4 November 2019, scientists reported that on 5 November 2018, the Voyager 2 probe had officially reached the interstellar medium (ISM), a region of outer space beyond the influence of the solar wind, as did Voyager 1 in 2012. In August 2018, NASA confirmed, based on results by the New Horizons spacecraft, the existence of a "hydrogen wall" at the outer edges of the Solar System that was first detected in 1992 by the two Voyager spacecraft.
+As of 2024, the Voyagers are still in operation beyond the outer boundary of the heliosphere in interstellar space. Voyager 1 is moving with a velocity of 61,198 kilometers per hour (38,027 mph), or 17 km/s, (10.5 miles/second) relative to the Sun, and is 24,475,900,000 kilometers (1.52086×1010 mi) from the Sun reaching a distance of 162 AU (24.2 billion km; 15.1 billion mi) from Earth as of May 25, 2024. As of 2024, Voyager 2 is moving with a velocity of 55,347 kilometers per hour (34,391 mph), or 15 km/s, relative to the Sun, and is 20,439,100,000 kilometers (1.27003×1010 mi) from the Sun reaching a distance of 136.627 AU (20.4 billion km; 12.7 billion mi) from Earth as of May 25, 2024.
+The two Voyagers are the only human-made objects to date that have passed into interstellar space — a record they will hold until at least the 2040s — and Voyager 1 is the farthest human-made object from Earth.
+
+
+
+### EXOPLANET
+**Domain:** space_astronomy / exoplanets_astrobio
+
+**Wikipedia:** An exoplanet or extrasolar planet is a planet outside of the Solar System. The first confirmed detection of an exoplanet was in 1992 around a pulsar, and the first detection around a main-sequence star was in 1995. A different planet, first detected in 1988, was confirmed in 2003. In 2016, it was recognized that the first possible evidence of an exoplanet had been noted in 1917.  As of 19 March 2026, there are 6,150 confirmed exoplanets in 4,575 planetary systems, with 1,043 systems having more than one planet.
+There are many methods of detecting exoplanets. Transit photometry and Doppler spectroscopy have found the most, but these methods suffer from a clear observational bias favoring the detection of planets near the star; thus, 85% of the exoplanets detected are inside the tidal locking zone. About 1 in 5 Sun-like stars are estimated to have an "Earth-sized" planet in the habitable zone. Assuming there are 200 billion stars in the Milky Way, it can be hypothesized that there are 11 billion potentially habitable Earth-sized planets in the Milky Way, rising to 40 billion if planets orbiting the numerous red dwarfs are included.
+The least massive exoplanet known is Draugr, which is about twice the mass of the Moon. The most massive exoplanet listed on the NASA Exoplanet Archive is HR 2562 b, about 30 times the mass of Jupiter. However, according to some definitions of a planet (based on the nuclear fusion of deuterium), it is too massive to be a planet and might be a brown dwarf. Known orbital times for exoplanets vary from less than an hour (for those closest to their star) to thousands of years. Some exoplanets are so far away from the star that it is difficult to tell whether they are gravitationally bound to it.
+The nearest exoplanets are located 4.2 light-years (1.3 parsecs) from Earth and orbit Proxima Centauri, the closest star to the Sun. At the other extreme, there is evidence for extragalactic planets –  exoplanets located in other galaxies. 
+The discovery of exoplanets has intensified interest in the search for extraterrestrial life. There is special interest in planets that orbit in a star's habitable zone (sometimes called "goldilocks zone"), where it is possible for liquid water, a prerequisite for life as we know it, to exist on the surface. However, the study of planetary habitability also considers a wide range of other factors in determining the suitability of a planet for hosting life.
+In collaboration with ground-based and other space-based observatories, the James Webb Space Telescope (JWST) is expected to give more insight into exoplanet traits, such as their composition, environmental conditions, and habitability.
+Rogue planets are those that are not in planetary systems. Such objects are generally considered in a separate category from planets, especially if they are gas giants, often counted as sub-brown dwarfs. The number of rogue planets in the Milky Way is possibly in the billions.
+
+
+
+### SOLAR ECLIPSE
+**Domain:** space_astronomy / cosmology_universe
+
+**Wikipedia:** A solar eclipse occurs when the Moon passes between Earth and the Sun, thereby obscuring the view of the Sun from a small part of Earth, totally or partially. Such an alignment occurs approximately every six months, during the eclipse season in its new moon phase, when the Moon's orbital plane is closest to the plane of Earth's orbit. In a total eclipse, the disk of the Sun is fully obscured by the Moon. In partial and annular eclipses, only part of the Sun is obscured. Unlike a lunar eclipse, which may be viewed from anywhere on the night side of Earth, a solar eclipse can only be viewed from a relatively small area of the world. As such, although total solar eclipses occur somewhere on Earth every 18 months on average, they recur at any given place only once every 360 to 410 years.
+If the Moon were in a perfectly circular orbit and in the same orbital plane as Earth, there would be total solar eclipses at every new moon. Instead, because the Moon's orbit is tilted at about 5 degrees to Earth's orbit, its shadow usually misses Earth. Solar (and lunar) eclipses therefore happen only during eclipse seasons, resulting in at least two, and up to five, solar eclipses each year, no more than two of which can be total. Total eclipses are rarer because they require a more precise alignment between the centers of the Sun and Moon, and because the Moon's apparent size in the sky is sometimes too small to fully cover the Sun.
+An eclipse is a natural phenomenon. In some ancient and modern cultures, solar eclipses were attributed to supernatural causes or regarded as bad omens. Astronomers' predictions of eclipses began in China as early as the 4th century BC; eclipses hundreds of years into the future may now be predicted with high accuracy.
+Looking directly at the Sun can lead to permanent eye damage, so special eye protection or indirect viewing techniques are used when viewing a solar eclipse. Only the total phase of a total solar eclipse is safe to view without protection. Enthusiasts known as eclipse chasers or umbraphiles travel to remote locations to see solar eclipses.
+
+
+

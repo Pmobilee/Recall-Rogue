@@ -1,0 +1,293 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 177,
+  "issues": [
+    {
+      "id": "natural_sciences-lead-highest-stable-atomic-number",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Bismuth (atomic number 83) is listed as a distractor, but bismuth was the classic rival claim for 'heaviest stable element' until 2003 when it was proven very slightly radioactive. The explanation cites this fact itself (bismuth is a decay endpoint). Having bismuth as a wrong-answer option while the explanation implicitly acknowledges the bismuth debate is contradictory and may confuse knowledgeable players. Lead (82) is the traditional textbook answer but the framing should acknowledge that this is the historical/practical answer.",
+      "suggested_fix": "Either add a qualifier to the question ('Which element was long considered to have the highest atomic number of any stable element?') or remove bismuth from the distractors and replace with a more clearly wrong option like Antimony or Gold."
+    },
+    {
+      "id": "natural_sciences-uranium-half-life-earth-age",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation contains garbled Wikidata jargon: 'uranium-238's half-life varies between 159,200 and 4.5 billion years for different isotopes.' The 159,200-year figure is actually the half-life of uranium-235 (not uranium-238 or a variant of it). This is a copy-paste Wikidata artifact that incorrectly attributes another isotope's half-life to uranium-238.",
+      "suggested_fix": "Rewrite explanation: 'Uranium-238 has a half-life of approximately 4.5 billion years — nearly matching Earth's own age — which is why it is used to date the oldest rocks and meteorites. Its much rarer cousin uranium-235 has a far shorter half-life of about 700 million years.'"
+    },
+    {
+      "id": "ns_calcium_atomic_number",
+      "severity": "critical",
+      "dimension": "EXPLANATION",
+      "description": "The explanation field contains only 'What is the atomic number of calcium.' — literally just the question repeated verbatim. This is completely non-educational and provides zero context or interesting information for the player.",
+      "suggested_fix": "Replace with a real explanation, e.g.: 'Calcium's atomic number 20 means each calcium atom has 20 protons. It sits in Group 2 (alkaline earth metals) and Period 4 of the periodic table. Its 20th-element position makes it one of the most important biologically active elements — the most abundant metal in the human body.'"
+    },
+    {
+      "id": "ns_potassium_symbol_k",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The correct answer states 'Latin — from Kalium, the Latin name for potassium.' One distractor reads 'Arabic — from al-Qali, meaning alkali.' The explanation itself confirms that Kalium derives from the Arabic word al-qali. This makes the Arabic distractor not clearly wrong — Kalium IS ultimately Arabic-derived. The distinction between 'comes from Latin' vs 'comes from Arabic' is blurred enough that a knowledgeable player could reasonably select either. The distractor 'German — from Kalium, the German chemical name' is also very close to true since Kalium is also used in German.",
+      "suggested_fix": "Rewrite the correct answer to be more precise: 'New Latin (Neo-Latin) — Kalium was the chemical Latin name assigned to the element, ultimately traced to Arabic al-qali.' Remove the Arabic distractor and the German distractor to avoid near-correct options."
+    },
+    {
+      "id": "natural_sciences-francium-last-discovered-nature",
+      "severity": "critical",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question is grammatically broken and incomplete: 'Francium holds the distinction of being the last element discovered in nature rather than how?' This is an incomplete sentence fragment — 'rather than how?' makes no grammatical sense as a standalone question. It appears to be a malformed fill-in-the-blank converted to a question.",
+      "suggested_fix": "Rewrite as: 'Francium was the last element to be discovered in nature. How were all subsequently discovered elements produced?' with correct answer 'By artificial synthesis (in nuclear reactors or accelerators).' Alternatively: 'What makes francium historically unique among elements discovered before 1940?' with answer 'It was the last element discovered occurring naturally, rather than being synthesized artificially.'"
+    },
+    {
+      "id": "ns_schrodinger_wave_equation",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'What fundamental equation did Erwin Schrödinger develop in 1926 that describes how quantum systems evolve over time?' and the correct answer is 'The Schrödinger equation.' This is entirely circular — the answer is simply Schrödinger's name attached to 'equation.' A player with zero physics knowledge can guess this correctly just from the question containing Schrödinger's name. It tests almost nothing.",
+      "suggested_fix": "Reframe to test actual knowledge: 'What does the Schrödinger equation mathematically describe?' with answer 'How the quantum state (wave function) of a physical system changes over time.' Or ask about the year, or what field it founded, or what problem it solved."
+    },
+    {
+      "id": "natural_sciences-cobalt-named-goblin-miners",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is a near-duplicate of natural_sciences-cobalt-named-goblin (id appears ~13 facts later). Both ask about cobalt being named after a German word for goblin. The questions are phrased differently ('Which element is named after a German word for goblin because miners thought spirits had cursed their ore?' vs 'Which element's name comes from a German word for goblin, blamed for poisoning miners?') but cover identical content with the same answer and nearly identical explanations. In a deck of cards, a player will encounter both.",
+      "suggested_fix": "Remove one of the two cobalt-goblin facts. Keep the one with the richer explanation (natural_sciences-cobalt-named-goblin-miners has the more detailed 1735/Georg Brandt context). Replace the removed fact with a different cobalt fact (e.g., cobalt's role in lithium-ion batteries or its blue pigment use in art history)."
+    },
+    {
+      "id": "natural_sciences-cobalt-named-goblin",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-cobalt-named-goblin-miners — see that entry. Both facts cover identical content: cobalt named after German 'goblin/kobold.'",
+      "suggested_fix": "Remove this fact or replace with distinct cobalt content."
+    },
+    {
+      "id": "natural_sciences-nickel-named-mischievous-sprite",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-nickel-mischievous-sprite. Both ask about nickel being named after a mischievous sprite/Old Nick because miners were deceived by copper-looking ore. The questions differ slightly ('Which metal is named after a mischievous sprite because miners were tricked by ore that looked like copper?' vs 'Why did German miners call nickel ore Kupfernickel — Old Nick's copper?') but cover the same fact with the same answer.",
+      "suggested_fix": "Remove one. The second fact (natural_sciences-nickel-mischievous-sprite) with the more specific 'Kupfernickel' question is more interesting and tests deeper knowledge. Replace the generic one with a different nickel fact (e.g., nickel's role in stainless steel or its use in coins)."
+    },
+    {
+      "id": "natural_sciences-nickel-mischievous-sprite",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-nickel-named-mischievous-sprite — see that entry.",
+      "suggested_fix": "Keep this one (it's the more specific question), remove the other."
+    },
+    {
+      "id": "natural_sciences-roentgen-first-nobel-physics",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Röntgen winning the first Nobel Prize in Physics appears as the core fact in at least four separate entries: ns_rontgen_nobel_prize, natural_sciences-roentgen-first-nobel-physics, natural_sciences-rontgen-first-nobel, and natural-sciences-rontgen-first-nobel. While the questions are phrased differently, all four ultimately test the same single fact. Three of the four should be replaced with genuinely different Röntgen content.",
+      "suggested_fix": "Keep one Röntgen Nobel Prize fact (the best-phrased one). Replace the others with distinct Röntgen facts, e.g.: the X-ray's medical impact, the naming of X-rays, or Röntgen donating his Nobel Prize money."
+    },
+    {
+      "id": "ns_rontgen_nobel_prize",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate Nobel Prize fact — see natural_sciences-roentgen-first-nobel-physics entry. This is one of four facts covering Röntgen's first-ever Nobel Prize in Physics.",
+      "suggested_fix": "Remove or replace with distinct Röntgen content."
+    },
+    {
+      "id": "natural-sciences-rontgen-first-nobel",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "Two issues: (1) This is a duplicate of natural_sciences-roentgen-first-nobel-physics — same core fact about Röntgen winning the first Nobel Prize in Physics. (2) The correct answer is spelled 'Wilhelm Rontgen' (missing umlaut) while the identical fact in other IDs consistently spells it 'Wilhelm Röntgen.' Inconsistent spelling of a proper name in the answer field.",
+      "suggested_fix": "Remove this duplicate. If kept, fix spelling to 'Wilhelm Röntgen.'"
+    },
+    {
+      "id": "natural_sciences-pearl-only-gemstone-from-living-organism",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that pearl is 'the only gemstone produced by a living organism' is factually contestable. Amber (tree resin), coral (coral polyps), and jet (fossilized wood/organic matter) are all commonly listed as organic gemstones and all derive from living organisms. The distractors include Amber and Coral — both of which could be argued to also be gemstones from living organisms. While 'pearl' is the standard pub-quiz answer for this, listing amber and coral as clearly-wrong distractors is misleading.",
+      "suggested_fix": "Add a qualifier: 'What is the only gemstone produced directly by a living animal (rather than fossilized or mineralized organic material)?' This cleanly distinguishes pearl from amber/jet (fossilized) and makes coral the only real close competitor, which can be handled in the explanation."
+    },
+    {
+      "id": "natural_sciences-schrodinger-entanglement-coined",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural-sciences-schrodinger-entanglement. Both ask about Schrödinger coining 'quantum entanglement,' and both cite his 1935 paper. The second fact combines entanglement coinage with the cat experiment into one question, while this fact isolates just the entanglement coinage. Minor overlap but not identical.",
+      "suggested_fix": "Minor issue — the two questions are sufficiently different in scope to coexist. No change strictly required, but consider whether having both is worth the card slot."
+    },
+    {
+      "id": "natural_sciences-electron-discovered-jj-thomson",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-electron-discovered-1897. Both ask 'Who discovered the electron in 1897?' — same question, same answer (J. J. Thomson), essentially identical content. One adds 'identifying the first subatomic particle' in the phrasing but the factual content is identical.",
+      "suggested_fix": "Remove one. Replace with a different electron fact (e.g., the cathode ray tube experiment method, the charge-to-mass ratio, or the plum pudding model Thomson proposed)."
+    },
+    {
+      "id": "natural_sciences-electron-discovered-1897",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-electron-discovered-jj-thomson — see that entry.",
+      "suggested_fix": "Remove one of the two."
+    },
+    {
+      "id": "natural_sciences-arsenic-ranked-most-hazardous",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-arsenic-ranked-1-hazardous. Both ask about arsenic ranking #1 on the US government's 2001 hazardous substances list. The questions are phrased almost identically; the second version even helpfully adds ranked positions in the distractors (Lead ranked 2nd, Mercury ranked 3rd).",
+      "suggested_fix": "Remove one. Keep natural_sciences-arsenic-ranked-1-hazardous as it has the richer distractor set with ranking information."
+    },
+    {
+      "id": "natural_sciences-arsenic-ranked-1-hazardous",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-arsenic-ranked-most-hazardous — see that entry. This version (with ranked distractors) is the better of the two.",
+      "suggested_fix": "Keep this one, remove natural_sciences-arsenic-ranked-most-hazardous."
+    },
+    {
+      "id": "natural_sciences-krypton-defined-the-metre",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-krypton-defined-metre. Both ask which element was used to define the metre from 1960–1983. The questions are phrased differently ('From 1960 to 1983, the metre was officially defined using the light of which element?' vs 'Which noble gas was used to define the official length of one metre from 1960 to 1983?') but cover the exact same single fact.",
+      "suggested_fix": "Remove one. Replace with a different krypton fact (e.g., krypton's use in high-performance lighting, its discovery alongside xenon, or its atmosphere concentration)."
+    },
+    {
+      "id": "natural_sciences-krypton-defined-metre",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-krypton-defined-the-metre — see that entry.",
+      "suggested_fix": "Remove one of the two."
+    },
+    {
+      "id": "natural_sciences-bromine-only-liquid-nonmetal",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-bromine-liquid-at-room-temp. Both ask which two elements are liquid at standard conditions (bromine and mercury). The first asks the pair directly; the second asks 'Bromine shares the distinction... with which other element?' They are the same fact tested from slightly different angles.",
+      "suggested_fix": "Minor overlap — the angles are different enough to keep both if card slot is available. If trimming is needed, remove natural_sciences-bromine-only-liquid-nonmetal since natural_sciences-bromine-liquid-at-room-temp (the fill-in-the-other-element format) is more engaging."
+    },
+    {
+      "id": "natural_sciences-radon-radioactive-lung-cancer",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-radon-lung-cancer. Both ask about radon being a radioactive noble gas that causes lung cancer. The first question emphasizes it as 'a leading cause of lung cancer,' the second specifies 'second leading cause.' The factual claim in the second (second leading cause) is the more precise and verifiable claim; the first saying 'a leading cause' is vaguer.",
+      "suggested_fix": "Remove natural_sciences-radon-radioactive-lung-cancer (the vaguer version). Keep natural_sciences-radon-lung-cancer which specifies 'second leading cause' — a more testable, precise fact. Replace the removed one with a different radon fact (e.g., its half-life, detection methods, or geological source)."
+    },
+    {
+      "id": "natural_sciences-radon-lung-cancer",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-radon-radioactive-lung-cancer — see that entry. This version ('second leading cause') is the more precise and preferable of the two.",
+      "suggested_fix": "Keep this one."
+    },
+    {
+      "id": "natural_sciences-strontium-nuclear-fallout",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-strontium-radioactive-fallout. Both ask why strontium-90 is dangerous in nuclear fallout, and both have the same correct answer (the body absorbs it like calcium / mistakes it for calcium). The distractors differ slightly but the core fact is identical.",
+      "suggested_fix": "Remove one. The second version (natural_sciences-strontium-radioactive-fallout) has the cleaner question phrasing and answer ('The body mistakes it for calcium'). Replace the removed fact with a different strontium fact (e.g., its use in fireworks red color, or its namesake Strontian village in Scotland)."
+    },
+    {
+      "id": "natural_sciences-strontium-radioactive-fallout",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-strontium-nuclear-fallout — see that entry. This is the preferred version to keep.",
+      "suggested_fix": "Keep this one, remove natural_sciences-strontium-nuclear-fallout."
+    },
+    {
+      "id": "natural_sciences-vanadium-named-goddess",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-vanadium-naming. Both ask about vanadium being named after a Norse goddess because of its colorful compounds. The first specifies 'goddess of beauty,' the second just says 'Norse goddess.' Slightly different angles but same core fact.",
+      "suggested_fix": "Minor overlap. Keep both if space allows since one names the goddess specifically (Vanadís/Freyja). If trimming, the first version (natural_sciences-vanadium-named-goddess) is richer."
+    },
+    {
+      "id": "natural_sciences-polonium-curie",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-polonium-discovered-curie. Both ask about the Curies discovering polonium and naming it after Poland. The first asks 'Why did Marie Curie name it after Poland?' the second asks 'Who discovered polonium in 1898 and named it after their homeland?' Different angles on the same event — both have value.",
+      "suggested_fix": "Both can coexist as they test different things (the reason for naming vs who did the naming). No action required."
+    },
+    {
+      "id": "natural_sciences-plutonium-naming",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-plutonium-named-pluto. Both ask why plutonium was named after Pluto. The first asks 'Why?' (answer: Pluto was next planet beyond Neptune), the second asks 'Why specifically?' (answer: following uranium/neptunium planet naming pattern). These are two sides of the same coin but the second is phrased better and tests the underlying naming logic more precisely.",
+      "suggested_fix": "Both can coexist as they test slightly different recall angles. The second (natural_sciences-plutonium-named-pluto) is the more thoughtful question. If one must be removed, remove natural_sciences-plutonium-naming."
+    },
+    {
+      "id": "natural_sciences-selenium-named-moon",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-selenium-named-after-moon. Both ask what celestial body selenium is named after (the Moon). The first asks 'Selenium is named after the Greek goddess of what celestial body?' the second asks 'What celestial body is selenium named after?' Essentially identical.",
+      "suggested_fix": "Remove one. Keep natural_sciences-selenium-named-moon as it specifically mentions 'Greek goddess' (Selene) which is more informative than the bare version."
+    },
+    {
+      "id": "natural_sciences-selenium-named-after-moon",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-selenium-named-moon — see that entry.",
+      "suggested_fix": "Remove this one."
+    },
+    {
+      "id": "natural_sciences-barium-green-fireworks",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-barium-fireworks-green. Both ask about barium compounds giving fireworks their green color. Essentially the same question phrased slightly differently ('Which element's compounds are responsible for green colors in fireworks?' vs 'What element's compounds give fireworks their green color?').",
+      "suggested_fix": "Remove one. Keep natural_sciences-barium-fireworks-green as its explanation also mentions barium sulfate's use as an X-ray contrast agent, making it more educational."
+    },
+    {
+      "id": "natural_sciences-barium-fireworks-green",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-barium-green-fireworks — see that entry. This version has the richer explanation.",
+      "suggested_fix": "Keep this one, remove natural_sciences-barium-green-fireworks."
+    },
+    {
+      "id": "natural_sciences-germanium-predicted",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-germanium-mendeleev-predicted. Both ask about Mendeleev predicting germanium and naming it 'ekasilicon.' The first asks 'Which element did Mendeleev predict 17 years before its discovery, calling it ekasilicon?' the second asks 'What name did Mendeleev give to his predicted element germanium in 1869?' — different question angles but same fact.",
+      "suggested_fix": "Both test slightly different things (recognizing germanium as the predicted element vs knowing the prediction name). Can coexist, but if trimming is needed, the second (natural_sciences-germanium-mendeleev-predicted) is cleaner."
+    },
+    {
+      "id": "natural_sciences-wegener-continental-drift-rejected-then-accepted",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural-sciences-wegener-rejected-40-years. Both ask how long Wegener's continental drift theory was rejected before acceptance (~40 years). The questions are phrased differently but answer the same quantitative fact.",
+      "suggested_fix": "Remove one. Keep natural-sciences-wegener-rejected-40-years (cleaner question). Replace the removed one with a different Wegener fact."
+    },
+    {
+      "id": "natural-sciences-wegener-rejected-40-years",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-wegener-continental-drift-rejected-then-accepted — see that entry. This version is the preferable one.",
+      "suggested_fix": "Keep this one."
+    },
+    {
+      "id": "natural_sciences-xenon-dual-use",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural_sciences-xenon-general-anesthetic. Both ask about xenon's surprising medical use (general anesthetic). The first combines anesthetic + spacecraft propellant into one question, the second isolates just the anesthetic use. Different in scope but highly overlapping.",
+      "suggested_fix": "Both can coexist — the first is the more interesting question (dual use). If trimming, remove natural_sciences-xenon-general-anesthetic."
+    },
+    {
+      "id": "natural_sciences-leeuwenhoek-father-of-microbiology-draper",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of natural-sciences-leeuwenhoek-draper-bacteria. Both ask about Leeuwenhoek's occupation before becoming the Father of Microbiology (draper/cloth merchant). The answers are the same ('Draper (cloth merchant)' vs 'Cloth merchant'). Essentially identical.",
+      "suggested_fix": "Remove one. Keep natural-sciences-leeuwenhoek-draper-bacteria as its explanation is more detailed (mentions his lens-making, 1654 shop founding, and specific microscopic discoveries)."
+    },
+    {
+      "id": "natural-sciences-leeuwenhoek-draper-bacteria",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate of natural_sciences-leeuwenhoek-father-of-microbiology-draper — see that entry. This version has the richer explanation.",
+      "suggested_fix": "Keep this one, remove natural_sciences-leeuwenhoek-father-of-microbiology-draper."
+    },
+    {
+      "id": "natural-sciences-leeuwenhoek-discoveries",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Which of these did Leeuwenhoek NOT observe first through a microscope?' with only 3 distractors (Bacteria, Spermatozoa, Red blood cells) and the correct answer being 'Cell division.' The negative question format ('NOT observe') combined with very few answer options makes it feel like a trick question. Additionally, the explanation says he was 'among the first to see blood flow in capillaries' (not strictly first) but didn't mention cell division — the reasoning for why cell division is the odd one out is thin.",
+      "suggested_fix": "Consider rephrasing to a positive format, or ensure the explanation clearly explains who did first document cell division and why it definitively wasn't Leeuwenhoek."
+    },
+    {
+      "id": "science-faraday-benzene-terminology",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Which common chemical did Faraday discover as a chemist?' The answer 'Benzene' is correct, but the explanation also mentions he discovered carbon tetrachloride. A player reading the explanation would wonder why benzene was chosen over carbon tetrachloride as the answer. The question implies a unique discovery, but two are mentioned.",
+      "suggested_fix": "Either specify benzene in the question ('Faraday discovered which aromatic hydrocarbon in 1825?') or restructure the question to ask about both discoveries collectively, with the answer being a set rather than just benzene."
+    }
+  ]
+}

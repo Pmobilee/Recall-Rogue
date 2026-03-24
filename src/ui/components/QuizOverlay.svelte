@@ -22,6 +22,8 @@
   import FuriganaText from '../FuriganaText.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
   import { isLandscape } from '../../stores/layoutStore'
+  import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
+  import { getLanguageConfig } from '../../types/vocabulary'
   import { inputService } from '../../services/inputService'
   import { turboDelay } from '../../utils/turboMode'
 
@@ -94,6 +96,15 @@
   let attemptsRemaining = $state<number>(totalAttempts)
   let showResult = $state<boolean>(false)
   let showReportModal = $state(false)
+  /** Whether the live language options popup is open. */
+  let showLiveOptions = $state(false)
+
+  /** The language code of the current fact (null if not a language fact). */
+  const factLanguage = $derived(fact.language ?? null)
+  /** Whether the current fact's language has configurable options. */
+  const hasLanguageOptions = $derived(
+    factLanguage ? (getLanguageConfig(factLanguage)?.options?.length ?? 0) > 0 : false
+  )
   /** True when a wrong answer result is being displayed, waiting for the player to tap "Continue". */
   let waitingForTap = $state<boolean>(false)
   /** Index of answer highlighted briefly by keyboard shortcut (landscape, 150ms). */
@@ -353,6 +364,21 @@
     <div class={`quiz-landscape-panel quiz-card-enter ${cardOutcomeClass}`} class:high-contrast-quiz={$highContrastQuiz}>
       <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">x</button>
 
+      {#if hasLanguageOptions && factLanguage}
+        <button
+          class="quiz-options-cogwheel"
+          class:quiz-options-cogwheel-active={showLiveOptions}
+          type="button"
+          onclick={() => { showLiveOptions = !showLiveOptions }}
+          aria-label="Display options"
+        >⚙</button>
+        {#if showLiveOptions}
+          <div class="quiz-options-popup">
+            <DeckOptionsPanel languageCode={factLanguage} />
+          </div>
+        {/if}
+      {/if}
+
       {#if mode === 'random'}
         <p class="pop-quiz-header">Scanner ping!</p>
         <p class="pop-quiz-sub">Residual data detected...</p>
@@ -469,6 +495,21 @@
     <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">
       x
     </button>
+
+    {#if hasLanguageOptions && factLanguage}
+      <button
+        class="quiz-options-cogwheel"
+        class:quiz-options-cogwheel-active={showLiveOptions}
+        type="button"
+        onclick={() => { showLiveOptions = !showLiveOptions }}
+        aria-label="Display options"
+      >⚙</button>
+      {#if showLiveOptions}
+        <div class="quiz-options-popup">
+          <DeckOptionsPanel languageCode={factLanguage} />
+        </div>
+      {/if}
+    {/if}
 
     {#if mode === 'random'}
       <p class="pop-quiz-header">Scanner ping!</p>
@@ -1283,5 +1324,46 @@
     border-color: #60a5fa !important;
     background: rgba(96, 165, 250, 0.15) !important;
     box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.35);
+  }
+
+  /* ── Language options cogwheel (in-quiz) ──────────────────────────────── */
+  .quiz-options-cogwheel {
+    position: absolute;
+    top: calc(8px * var(--layout-scale, 1));
+    right: calc(52px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: calc(16px * var(--text-scale, 1));
+    transition: color 0.15s, background 0.15s;
+    z-index: 10;
+    padding: 0;
+  }
+
+  .quiz-options-cogwheel:hover {
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .quiz-options-cogwheel.quiz-options-cogwheel-active {
+    color: #4a9eff;
+    background: rgba(74, 158, 255, 0.12);
+  }
+
+  .quiz-options-popup {
+    position: absolute;
+    top: calc(48px * var(--layout-scale, 1));
+    right: calc(8px * var(--layout-scale, 1));
+    width: calc(280px * var(--layout-scale, 1));
+    z-index: 20;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    border-radius: calc(10px * var(--layout-scale, 1));
   }
 </style>

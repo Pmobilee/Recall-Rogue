@@ -1,0 +1,485 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 2.0
+**Date:** 2026-03-23
+**Used by:** Opus workers generating knowledge facts from enriched entity data (upgraded from Sonnet — see memory/feedback-fact-quality-review.md)
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY ENFORCEMENT (CRITICAL — v2.0 additions)
+
+These rules were added after auditing 4,571 facts and finding systematic issues. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them before outputting.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since. "Human activities" is WRONG. "Due to human activities" is CORRECT.
+3. **Distractors must NEVER be secretly correct** — e.g., "Inanna" when answer is "Ishtar" (same deity), "George Castriot" when answer is "Skanderbeg" (same person), "Countercurrent heat exchange" when that IS the correct mechanism.
+4. **Distractors must use correct terminology** — e.g., "winter solstice" not "winter equinox" (equinoxes are vernal/autumnal only).
+5. **Distractors must NOT follow repetitive patterns** — avoid "Only X and Y" × 8 or all-career-names. Mix types of plausible errors.
+6. **Distractors must NEVER negate the question premise** — if the question says "X is landlocked", no distractor should say "It is not landlocked".
+7. **Variants must be genuine perspective shifts**, not reworded versions of the main question. A reverse variant should flip answer→entity entirely.
+8. **Explanation must NOT restate the question** — it must add context, history, or a "wow" detail beyond what the Q+A already teach.
+9. **Explanation must NOT use Wikidata jargon** — no "has property", "instance of", "different from".
+10. **No ordinal suffixes after brace markers** — "{2}nd" produces "3nd" at runtime. Use "{2}" alone or write "Second".
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (20 entities = 60 facts). Output as a single JSON array.
+
+### SKIN
+**Domain:** human_body_health / anatomy_organs
+
+**Wikipedia:** The human skin is the outer covering of the body and is the largest organ of the integumentary system.  The skin has up to seven layers of ectodermal tissue guarding muscles, bones, ligaments and internal organs. Human skin is similar to most of the other mammals' skin, and it is very similar to pig skin. Though nearly all human skin is covered with hair follicles, it can appear hairless. There are two general types of skin: hairy and glabrous skin (hairless).  The adjective cutaneous literally means "of the skin" (from Latin cutis, skin).
+Skin plays an important immunity role in protecting the body against pathogens and excessive water loss. Its other functions are insulation, temperature regulation, sensation, synthesis of vitamin D, and the protection of vitamin B folates. Severely damaged skin will try to heal by forming scar tissue. This is often discoloured and depigmented.
+In humans, skin pigmentation (affected by melanin) varies among populations, and skin type can range from dry to non-dry and from oily to non-oily. Such skin variety provides a rich and diverse habitat for the approximately one thousand species of bacteria from nineteen phyla which have been found on human skin.
+
+### GUT FLORA
+**Domain:** human_body_health / digestion_metabolism
+
+**Wikipedia:** Gut microbiota, gut microbiome, or gut flora are the microorganisms, including bacteria, archaea, fungi, and viruses, that live in the digestive tracts of animals. The gastrointestinal metagenome is the aggregate of all the genomes of the gut microbiota. The gut is the main location of the human microbiome. The gut microbiota has broad impacts, including effects on colonization, resistance to pathogens, maintaining the intestinal epithelium, metabolizing dietary and pharmaceutical compounds, controlling immune function, and even behavior through the gut–brain axis. Imbalances in the gut microbiota (dysbiosis) have been associated with numerous diseases, including inflammatory bowel disease, certain cancers, and even neurological disorders, prompting increased efforts to develop microbiome-targeted therapies.
+The microbial composition of the gut microbiota varies across regions of the digestive tract. The colon contains the highest microbial density of any human-associated microbial community studied so far, representing between 300 and 1000 different species. Bacteria are the largest and to date, best studied component and 99% of gut bacteria come from about 30 or 40 species. About 55% of the dry mass of feces is bacteria. Over 99% of the bacteria in the gut are anaerobes, but in the cecum, aerobic bacteria reach high densities. It is estimated that the human gut microbiota has around a hundred times as many genes as there are in the human genome.
+
+### FEVER
+**Domain:** human_body_health / immunity_disease
+
+**Wikipedia:** 
+== == ==
+==
+
+Fever or pyrexia in humans is a symptom of an anti-infection defense mechanism that appears with body temperature exceeding the normal range caused by an increase in the body's temperature set point in the hypothalamus. There is no single agreed-upon upper limit for normal temperature: sources use values ranging between 37.2 and 38.3 °C (99.0 and 100.9 °F) in humans.
+The increase in set point triggers increased muscle contractions and causes a feeling of cold or chills. This results in greater heat production and efforts to conserve heat. When the set point temperature returns to normal, a person feels hot, becomes flushed, and may begin to sweat. Rarely a fever may trigger a febrile seizure, with this being more common in young children. Fevers do not typically go higher than 41 to 42 °C (106 to 108 °F).
+A fever can be caused by many medical conditions ranging from serious to life-threatening. This includes viral, bacterial, and parasitic infections—such as influenza, the common cold, meningitis, urinary tract infections, appendicitis, Lassa fever, COVID-19, and malaria. Non-infectious causes include vasculitis, deep vein thrombosis, connective tissue disease, side effects...
+
+### REM SLEEP
+**Domain:** human_body_health / brain_neuro
+
+**Wikipedia:** Rapid eye movement sleep (REM sleep or REMS) is a unique phase of sleep in mammals (including humans) and birds, characterized by random rapid movement of the eyes, accompanied by low muscle tone throughout the body, and the propensity of the sleeper to dream vividly. The core body and brain temperatures increase during REM sleep and skin temperature decreases to lowest values.
+The REM phase is also known as paradoxical sleep (PS) and sometimes  desynchronized sleep or dreamy sleep, because of physiological similarities to waking states including rapid, low-voltage desynchronized brain waves. Electrical and chemical activity regulating this phase seem to originate in the brain stem, and is characterized most notably by an abundance of the neurotransmitter acetylcholine, combined with a nearly complete absence of monoamine neurotransmitters histamine, serotonin and norepinephrine. Experiences of REM sleep are not transferred to permanent memory due to absence of norepinephrine.
+REM sleep is physiologically different from the other phases of sleep, which are collectively referred to as non-REM sleep (NREM sleep, NREMS, synchronized sleep). The absence of visual and auditory stimulation (sensory deprivation) during REM sleep can cause hallucinations. REM and non-REM sleep alternate within one sleep cycle, which lasts about 90 minutes in adult humans. As sleep cycles continue, they shift towards a higher proportion of REM sleep. The transition to REM sleep brings marked physical changes, beginning with electrical bursts called "ponto-geniculo-occipital waves" (PGO waves) originating in the brain stem. REM sleep occurs 4 times in a 7-hour sleep. Organisms in REM sleep suspend central homeostasis, allowing large fluctuations in respiration, thermoregulation and circulation which do not occur in any other modes of sleeping or waking. The body abruptly loses muscle tone, a state known as REM atonia.
+In 1953, Professor Nathaniel Kleitman and his student Eugene Aserinsky defined rapid eye movement and linked it to dreams. REM sleep was further described by researchers, including William Dement and Michel Jouvet. Many experiments have involved awakening test subjects whenever they begin to enter the REM phase, thereby producing a state known as REM deprivation. Subjects allowed to sleep normally again usually experience a modest REM rebound. Techniques of neurosurgery, chemical injection, electroencephalography, positron emission tomography, and reports of dreamers upon waking have all been used to study this phase of sleep.
+
+### RED BLOOD CELL
+**Domain:** human_body_health / cardiovascular
+
+**Wikipedia:** Red blood cells (RBCs), referred to as erythrocytes (from Ancient Greek  erythros 'red' and  kytos 'hollow vessel', with -cyte translated as 'cell' in modern usage) in academia and medical publishing, also known as red cells, erythroid cells, and rarely haematids, are the most common type of blood cell and the vertebrate's principal means of delivering oxygen (O2) to the body tissues—via blood flow through the circulatory system. Erythrocytes take up oxygen in the lungs, or in fish the gills, and release it into tissues while squeezing through the body's capillaries.
+The cytoplasm of a red blood cell is rich in hemoglobin (Hb), an iron-containing biomolecule that can bind oxygen and is responsible for the red color of the cells and the blood. Each human red blood cell contains approximately 270 million hemoglobin molecules. The cell membrane is composed of proteins and lipids, and this structure provides properties essential for physiological cell function such as deformability and stability of the blood cell while traversing the circulatory system and specifically the capillary network.
+In humans, mature red blood cells are flexible biconcave disks. They lack a cell nucleus (which is expelled during development) and organelles, to accommodate maximum space for hemoglobin; they can be viewed as sacks of hemoglobin, with a plasma membrane as the sack. Approximately 2.4 million new erythrocytes are produced per second in human adults. The cells develop in the bone marrow and circulate for about 100–120 days in the body before their components are recycled by macrophages.  Each circulation takes about 60 seconds (one minute). Approximately 84% of the cells in the human body are the 20–30 trillion red blood cells. Nearly half of the blood's volume (40% to 45%) is red blood cells.
+Packed red blood cells are red blood cells that have been donated, processed, and stored in a blood bank for blood transfusion.
+
+### PAIN
+**Domain:** human_body_health / senses_perception
+
+**Wikipedia:** Pain is a distressing sensation often caused by intense or damaging stimuli. The International Association for the Study of Pain defines pain as "an unpleasant sensory and emotional experience associated with, or resembling that associated with, actual or potential tissue damage."
+Pain motivates animals to withdraw from damaging situations, to protect a damaged body part while it heals, and to avoid similar experiences in the future.  Most pain resolves once the noxious stimulus is removed and the body has healed, but it may persist despite removal of the stimulus and apparent healing of the body. Sometimes pain arises in the absence of any detectable stimulus, damage or disease.
+Pain is the most common reason for physician consultation in most developed countries. It is a major symptom in many medical conditions, and can interfere with a person's quality of life and general functioning. People in pain experience impaired concentration, working memory, mental flexibility, problem-solving and information processing speed, and are more likely to experience irritability, depression, and anxiety.
+Simple over-the-counter pain medications are useful in 20% to 70% of acute pain cases, such as post-tooth extraction pain. Psychological factors such as social support, cognitive behavioral therapy, excitement, or distraction can affect pain's intensity or unpleasantness.
+
+### PLACEBO EFFECT
+**Domain:** human_body_health / medical_science
+
+**Wikipedia:** A placebo ( pluh-SEE-boh) is a medicine or treatment intended to appear genuine to its recipient, but which has no pharmaceutical effect. Common placebos include inert tablets (like sugar pills), inert injections (like saline), sham surgery, and other procedures.
+Placebos are used in randomized clinical trials to test the efficacy of medical treatments. In a placebo-controlled trial, any change in the control group is known as the placebo response, and the difference between this and the result of no treatment is the placebo effect. Placebos in clinical trials should ideally be indistinguishable from so-called verum treatments under investigation, except for the latter's particular hypothesized medicinal effect. This is to shield test participants (with their consent) from knowing who is getting the placebo and who is getting the treatment under test, as patients' and clinicians' expectations of efficacy can influence results.
+The idea of a "placebo effect" was discussed in 18th century psychology, but became more prominent in the 20th century. Modern studies find that placebos can affect some outcomes such as pain and nausea, but otherwise do not generally have important clinical effects. Improvements that patients experience after being treated with a placebo can also be due to unrelated factors, such as regression to the mean (a statistical effect where an unusually high or low measurement is likely to be followed by a less extreme one). The use of placebos in clinical medicine raises ethical concerns, especially if they are disguised as an active treatment, as this introduces dishonesty into the doctor–patient relationship and bypasses informed consent.
+Placebos are also popular because they can sometimes produce relief through psychological mechanisms (a phenomenon known as the "placebo effect"). They can affect how patients perceive their condition and encourage the body's chemical processes for relieving pain and a few other symptoms, but have no impact on the disease itself.
+
+### MUSCLE
+**Domain:** human_body_health / anatomy_organs
+
+**Wikipedia:** Muscle is a specialised soft tissue, one of the four basic types of animal tissues. There are three types of muscle tissues in vertebrates:- skeletal muscle tissue, cardiac muscle tissue, and smooth muscle tissue.  Muscle tissue gives skeletal muscles the ability to contract and relax.  Muscle tissue contains special contractile proteins called actin and myosin which interact to cause movement. Among many other muscle proteins present are two regulatory proteins, troponin and tropomyosin. Muscle is formed during embryonic development, in a process known as myogenesis.
+Skeletal muscle tissue is striated, consisting of elongated, multinucleate muscle cells called muscle fibers, and is responsible for movements of the body. Other tissues in skeletal muscle include tendons and perimysium. Smooth and cardiac muscle contract involuntarily, without conscious intervention. These muscle types may be activated both through the interaction of the central nervous system as well as by innervation from peripheral plexus or endocrine (hormonal) activation. Skeletal muscle only contracts voluntarily, under the influence of the central nervous system. Reflexes are a form of non-conscious activation of skeletal muscles, but nonetheless arise through activation of the central nervous system, albeit not engaging cortical structures until after the contraction has occurred.
+The different muscle types vary in their response to neurotransmitters and hormones such as acetylcholine, noradrenaline, adrenaline, and nitric oxide which depends on muscle type and the exact location of the muscle.
+Sub-categorization of muscle tissue is also possible, depending on among other things the content of myoglobin, mitochondria, and myosin ATPase, etc.
+
+### ANTIBODIES
+**Domain:** human_body_health / immunity_disease
+
+**Wikipedia:** An antibody (Ab), or immunoglobulin (Ig), is a large protein belonging to the immunoglobulin superfamily which is used by the immune system to identify and neutralize antigens such as those that exist on bacteria and virus cells, including those that cause disease. Each individual antibody recognizes one or more specific antigens, and antigens (a portmanteau of "antibody generator") of virtually any size and chemical composition can be recognized. Each of the branching chains comprising the "Y" of an antibody contains a paratope (the antigen-binding site) that specifically binds to one particular epitope (a specific part of an antigen bound by the paratope) on an antigen, allowing the two molecules to bind together with precision. Using this mechanism, antibodies can effectively "tag" the antigen (or a microbe or an infected cell bearing such an antigen) for attack by cells of the immune system, or can neutralize it directly (for example, by blocking a part of a virus that is essential for its ability to invade a host cell).
+Antibodies may be borne on the surface of an immune cell, as in a B cell receptor, or they may exist freely by being secreted into the extracellular space. The term antibody generally refers to the free (secreted) form, while the term immunoglobulin can refer to either forms. Since they are, broadly speaking, the same protein, the terms are often treated as synonymous. 
+To allow the immune system to recognize millions of different antigens, the antigen-binding paratopes at each tip of the antibody come in an equally wide variety. The rest of an antibody's structure is much less variable; in humans, antibodies occur in five classes or isotypes: IgA, IgD, IgE, IgG, and IgM. Human IgG and IgA antibodies are also divided into discrete subclasses (IgG1, IgG2, IgG3, and IgG4; IgA1 and IgA2). The class refers to the functions triggered by the antibody (also known as effector functions), in addition to some other structural features. Antibodies from different classes also differ in where they are released in the body and at what stage of an immune response. Between species, while classes and subclasses of antibodies may be shared (at least in name), their function and distribution throughout the body may be different, which complicates the use of animal models in studying antibodies. For example, mouse IgG1 is closer to human IgG2 than to human IgG1 in terms of its function.
+The term humoral immunity is often treated as synonymous with the antibody response, describing the function of the immune system that exists in the body's humors (fluids) in the form of soluble proteins, as distinct from cell-mediated immunity, which generally describes the responses of T cells (especially killer T cells). In general, antibodies are considered part of the adaptive immune system, though this classification can become complicated. For example, natural IgM, which are made by B-1 cells that have properties more similar to innate immune cells than ad
+
+### CIRCADIAN RHYTHM
+**Domain:** human_body_health / brain_neuro
+
+**Wikipedia:** A circadian rhythm (), or circadian cycle, is a natural oscillation that repeats roughly every 24 hours. Circadian rhythms can refer to any process that originates within an organism (i.e., endogenous) and responds to the environment (is entrained by the environment). Circadian rhythms are regulated by a circadian clock whose primary function is to rhythmically co-ordinate biological processes so they occur at the correct time to maximize the fitness of an individual. Circadian rhythms have been widely observed in animals, plants, fungi and cyanobacteria and there is  evidence that they evolved independently in each of these kingdoms of life.
+The term circadian comes from the Latin circa, meaning "around", and dies, meaning "day". Processes with 24-hour cycles are more generally called diurnal rhythms; diurnal rhythms should not be called circadian rhythms unless they can be confirmed as endogenous, and not environmental.
+Although circadian rhythms are endogenous, they are adjusted to the local environment by external cues called zeitgebers (from German Zeitgeber (German: [ˈtsaɪtˌɡeːbɐ]; lit. 'time giver')), which include light, temperature and redox cycles. In clinical settings, an abnormal circadian rhythm in humans is known as a circadian rhythm sleep disorder.
+
+### LOKI
+**Domain:** mythology_folklore / norse_celtic
+
+**Wikipedia:** Loki is a god in Norse mythology. He is the son of Fárbauti (a jötunn) and Laufey (a goddess), and the brother of Helblindi and Býleistr. Loki is married to the goddess Sigyn and they have two sons, Narfi or Nari and Váli. By the jötunn Angrboða, Loki is the father of Hel, the wolf Fenrir and the world serpent Jörmungandr. In the form of a mare, Loki was impregnated by the stallion Svaðilfari and gave birth to the eight-legged horse Sleipnir.
+Like other gods, Loki is a shape shifter and in separate sources appears in the form of a salmon, a mare, a fly, and possibly an elderly woman named Þökk (Old Norse 'thanks'). While sometimes friendly with the gods, Loki engineers the death of the beloved god Baldr. For this, Odin's specially engendered son Váli binds Loki with the entrails of one of his sons, where he writhes in pain. In the Prose Edda, this son, Nari or Narfi, is killed by another of Loki's sons, who is also called Váli. The goddess Skaði is responsible for placing a serpent above him while he is bound. The serpent drips venom from above him that Sigyn collects into a bowl; however, she must empty the bowl when it is full and the venom that drips in the meantime causes Loki to writhe in pain, thereby causing earthquakes.
+Loki is foretold to eventually break free from his bonds and, among the forces of the jötnar, to go to battle with the gods, during which time his children play a key role in the destruction of all but two humans over the events of Ragnarök. Loki has a particular enmity with the god Heimdallr. The two are in fact prophesied to kill one another during Ragnarök.
+Loki is attested in the Poetic Edda, compiled in the 13th century from earlier traditional sources: the Prose Edda and Heimskringla, written in the 13th century by Snorri Sturluson; the Norwegian Rune Poems, in the poetry of skalds, and in Scandinavian folklore. Loki may be depicted on the Snaptun Stone, the Kirkby Stephen Stone and the Gosforth Cross. Scholars have debated Loki's origins and role in Norse mythology, which some have described as that of a trickster god. Loki has been depicted in, or referenced in, a variety of media in modern popular culture.
+
+### SPHINX
+**Domain:** mythology_folklore / creatures_monsters
+
+**Wikipedia:** A sphinx ( SFINKS; Ancient Greek: σφίγξ, pronounced [spʰíŋks]; pl. sphinxes or sphinges ) is a mythical creature with the head of a human, the body of a lion, and the wings of an eagle.
+In Greek tradition, the sphinx is a treacherous and merciless being with the head of a woman, the haunches of a lion, and the wings of a bird. According to Greek myth, she challenges those who encounter her to answer a riddle, and kills and eats them when they fail to solve the riddle. This deadly version of a sphinx appears in the myth and drama of Oedipus.
+In Egyptian mythology, in contrast, the sphinx is typically depicted as a man (an androsphinx (Ancient Greek: ἀνδρόσφιγξ)), and is seen as a benevolent representation of strength and ferocity, usually of a pharaoh. Unlike Greek or Levantine/Mesopotamian ones, Egyptian sphinxes were not winged.
+Both the Greek and Egyptian sphinxes were thought of as guardians, and statues of them often flank the entrances to temples. During the Renaissance, the sphinx enjoyed a major revival in European decorative art. During this period, images of the sphinx were initially similar to the ancient Egyptian version, but when later exported to other cultures, the sphinx was often conceived of quite differently, partly due to varied translations of descriptions of the originals, and partly through the evolution of the concept as it was integrated into other cultural traditions.
+However, depictions of the sphinx are generally associated with grand architectural structures, such as royal tombs or religious temples.
+
+### UNDERWORLD
+**Domain:** mythology_folklore / greek_roman
+
+**Wikipedia:** In Greek mythology, the underworld or Hades (Ancient Greek: ᾍδης, romanized: Háidēs) is a distinct realm (one of the three realms that make up the cosmos) where an individual goes after death. The earliest idea of afterlife in Greek myth is that, at the moment of death, an individual's essence (psyche) is separated from the corpse and transported to the underworld. In early mythology (e.g., Homer's Iliad and Odyssey) the dead were indiscriminately grouped together and led a shadowy post-existence; however, in later mythology (e.g., Platonic philosophy) elements of post-mortem judgment began to emerge with good and bad people being separated (both spatially and with regard to treatment).
+The underworld itself—commonly referred to as Hades, after its patron god, but also known by various metonyms—is described as being located at the periphery of the earth, either associated with the outer limits of the ocean (i.e., Oceanus, again also a god) or beneath the earth. Darkness and a lack of sunlight are common features associated with the underworld and, in this way, provide a direct contrast to both the 'normality' of the land of the living (where the sun shines) and also with the brightness associated with Mount Olympus (the realm of the gods). The underworld is also considered to be an invisible realm, which is understood both in relation to the permanent state of darkness but also a potential etymological link with Hades as the 'unseen place'. The underworld is made solely for the dead and so mortals do not enter it – with only a few heroic exceptions (who undertook a mythical catabasis: Heracles, Theseus, Orpheus, possibly also Odysseus, and in later Roman depictions Aeneas).
+
+
+
+### TANUKI
+**Domain:** mythology_folklore / creatures_monsters
+
+**Wikipedia:** Bake-danuki (化け狸) are a kind of yōkai (supernatural beings) found in the classics and in the folklore and legends of various places in Japan, commonly associated with the Japanese raccoon dog or tanuki.
+Although the tanuki is a real, extant animal, the bake-danuki that appears in literature has always been depicted as a strange, even supernatural animal. In some regions of Japan, bake-danuki are reputed to have abilities similar to those attributed to kitsune (foxes): they can shapeshift into other things or people, and can possess human beings.
+Many legends of tanuki exist in the Sado Islands of Niigata Prefecture and in Shikoku, and among them, like the Danzaburou-danuki of Sado, the Kinchō-tanuki and Rokuemon-tanuki of Awa Province (Tokushima Prefecture), and the Yashima no Hage-tanuki of Kagawa Prefecture, the tanuki that possessed special abilities were given names, and even became the subject of rituals. Apart from these places, tanuki are treated with special regard in a few cases.
+
+### EXCALIBUR
+**Domain:** mythology_folklore / folk_legends
+
+**Wikipedia:** Excalibur is the mythical sword of King Arthur that may possess magical powers or be associated with the rightful sovereignty of Britain. Its first reliably datable appearance is found in Geoffrey of Monmouth's Historia Regum Britanniae. Excalibur as the "sword in the stone" functioning as the proof of Arthur's lineage is an iconic motif featured throughout most works dealing with Arthur's youth since its introduction in Robert de Boron's Merlin. The sword given to the young Arthur by the Lady of the Lake in the tradition that began soon afterwards with the Post-Vulgate Cycle is not the same weapon, but in Thomas Malory’s Le Morte d'Arthur both of them share the name of Excalibur. Several similar swords and other weapons also appear within Arthurian texts, as well as in other legends.
+
+### ATHENA
+**Domain:** mythology_folklore / greek_roman
+
+**Wikipedia:** Athena or Athene, often given the epithet Pallas, is an ancient Greek goddess associated with wisdom, warfare, and handicraft who was later syncretized with the Roman goddess Minerva. Athena was regarded as the patron and protectress of various cities across Greece, particularly the city of Athens, from which she most likely received her name. The Parthenon on the Acropolis of Athens is dedicated to her. Her major symbols include owls, olive trees, snakes, and the gorgoneion. In art, she is generally depicted wearing a helmet and holding a spear.
+From her origin as an Aegean palace goddess, Athena was closely associated with the city. She was known as Polias and Poliouchos (both derived from polis, meaning "city-state"), and her temples were usually located atop the fortified acropolis in the central part of the city. The Parthenon on the Athenian Acropolis is dedicated to her, along with numerous other temples and monuments. As the patron of craft and weaving, Athena was known as Ergane. She was also a warrior goddess, and was believed to lead soldiers into battle as Athena Promachos. Her main festival in Athens was the Panathenaia, which was celebrated during the month of Hekatombaion in midsummer and was the most important festival on the Athenian calendar.
+In Greek mythology, Athena was born from the forehead of her father Zeus; in Hesiod's Theogony, this occurred after Zeus swallowed his consort Metis while she was pregnant with Athena. In the founding myth of Athens, Athena bested Poseidon in a competition over patronage of the city by creating the first olive tree. She was known as Athena Parthenos "Athena the Virgin". In one archaic Attic myth, Hephaestus tried and failed to rape her, resulting in Gaia giving birth to Erichthonius, an important Athenian founding hero whom Athena raised. She was the patron goddess of heroic endeavor; she was believed to have aided the heroes Perseus, Heracles, Bellerophon, and Jason. Along with Aphrodite and Hera, Athena was one of the three goddesses whose feud resulted in the Trojan War. She plays an active role in the Iliad, in which she assists the Achaeans and, in the Odyssey, she is the tutelary deity to Odysseus.
+In the later writings of the Roman poet Ovid, Athena was said to have competed against the mortal Arachne in a weaving competition, afterward transforming Arachne into the first spider, and to have transformed Medusa into the Gorgon after witnessing the young woman being raped by Poseidon in the goddess's temple. Ovid also says that Athena saved the mortal maiden Corone from the same god by transforming her into a crow. Since the Renaissance, Athena has become an international symbol of wisdom, the arts, and classical learning. Western artists and allegorists have often used Athena as a symbol of freedom and democracy.
+
+### KRAKEN
+**Domain:** mythology_folklore / creatures_monsters
+
+**Wikipedia:** The kraken (; from Norwegian: kraken, ) is a legendary sea monster of enormous size, per its etymology something akin to a cephalopod, said to appear in the Norwegian Sea off the coast of Norway. It is believed that the legend of the Kraken may have originated from sightings of giant squid, which may grow to 10.5 metres (34 ft) in length.
+The kraken, as a subject of sailors' superstitions and mythos, was first described in a Norwegian glossary by Christen Jensøn in 1646. Later this creature appears in a travelogue by Francesco Negri in 1700, followed in 1734 by an account from Dano-Norwegian missionary and explorer Hans Egede, who described the kraken in detail and equated it with the hafgufa of medieval lore. However, the first description of the creature is usually credited to the Danish bishop Pontoppidan (1753). He described the kraken as an octopus (polypus) of tremendous size, and wrote that it had a reputation for pulling down ships. The French malacologist Denys-Montfort, of the 19th century, is also known for his pioneering inquiries into the existence of gigantic octopuses. 
+The great man-hunting octopus entered French fiction when novelist Victor Hugo (1866) introduced the pieuvre octopus of Guernsey lore, which he identified with the kraken of legend. This led to Jules Verne's depiction of the kraken, although Verne did not distinguish between octopuses and squids.
+Carl Linnaeus may have indirectly written about the kraken. Linnaeus wrote about the Microcosmus genus (an animal with various other organisms or growths attached to it, comprising a colony). Subsequent authors have referred to Linnaeus's writing, and the writings of Thomas Bartholin's cetus called hafgufa, and Christian Franz Paullini's monstrum marinum as "krakens". That said, the claim that Linnaeus used the word "kraken" in the margin of a later edition of Systema Naturae has not been confirmed.
+
+### ICARUS
+**Domain:** mythology_folklore / greek_roman
+
+**Wikipedia:** In Greek mythology, Icarus ( ; Ancient Greek: Ἴκαρος, romanized: Íkaros, pronounced [ǐːkaros]) was the son of the master craftsman Daedalus, the architect of the labyrinth of Crete, and his wife Naucrate. After Theseus, king of Athens and enemy of King Minos, escaped from the labyrinth, Minos suspected that Icarus and Daedalus had revealed the labyrinth's secrets and thus imprisoned them—either in a large tower overlooking the ocean or in the labyrinth itself, depending upon the account. Icarus and Daedalus escaped using wings Daedalus constructed from birds' molted feathers, threads from blankets, the leather straps from their sandals, and beeswax. Before escaping, Daedalus warned Icarus not to fly too low or the water would soak the feathers and not to fly too close to the Sun or the heat would melt the wax. Icarus ignored Daedalus' instructions not to fly too close to the Sun, causing the beeswax in his wings to melt. Icarus fell from the sky, plunged into the sea, and drowned. The myth gave rise to the idiom, "fly too close to the Sun". In some versions of the tale, Daedalus and Icarus escape by ship.
+
+### ANANSI
+**Domain:** mythology_folklore / folk_legends
+
+**Wikipedia:** Anansi or Ananse ( ə-NAHN-see; literally translates to spider)  is a character in Akan religion and folklore associated with stories, wisdom, knowledge, wit, mischievousness, cunning, and trickery, most commonly depicted as a spider. Anansi is a character who reflects the culture that he originates from. The Akan people are a close-knit people from present-day southern Ghana who rely on social order, which translates through the stories that come out of their culture. In many ways, Anansi is a paradoxical character whose actions defy this social order, but in incorporating rebellion and doubt into faith, his folkloric presence strengthens it.
+Taking the role of a trickster, he is also one of the most important characters of West African, African American and Caribbean folklore. These spider tales were spread to the Americas via the Atlantic slave trade. 
+Anansi is best known for his ability to outsmart and triumph over more powerful opponents through his use of cunning, creativity and wit. Despite taking on a trickster role, Anansi often takes centre stage in stories and is commonly portrayed as both the protagonist and antagonist.
+
+
+
+### JORMUNGANDR
+**Domain:** mythology_folklore / norse_celtic
+
+**Wikipedia:** In Norse mythology, Jörmungandr (Old Norse: ᛃᛟᚱᛗᚢᚾᚷᚨᚾᛞᚱ, Jǫrmungandr, lit. 'the Vast 'gand'', see Etymology), also known as the Midgard Serpent or World Serpent (Old Norse: Miðgarðsormr, "worm of Midgard"), is an unfathomably large and monstrous sea serpent or worm who dwells in the world sea, encircling the Earth (Midgard) and biting his own tail, an example of an ouroboros. As a result of him surrounding Midgard, the beast is referred to as the World Serpent. Jörmungandr releasing his tail is one of the signs of the beginning of Ragnarök.
+Jörmungandr is said to be the middle child of the god Loki and the jötunn Angrboða. According to the Prose Edda, Odin took Loki's three children by Angrboða – the wolf Fenrir, underworld ruler Hel, and the serpent Jörmungandr – and removed them from Asgard (the world of the Æsir). The serpent Jörmungandr was tossed into the great ocean that encircles Midgard. There the serpent grew so large that he was able to surround the Earth and grasp his own tail. The old Norse thunder god, Thor, has a lengthy feud with Jörmungandr and the serpent is regarded as his archenemy. During Ragnarök, Thor and Jörmungandr engage in a ferocious battle, culminating in both of their deaths.
+

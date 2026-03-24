@@ -4,9 +4,11 @@
   interface Props {
     node: MapNodeData
     onclick: () => void
+    /** When true, renders at the larger "choice" size with a room-type label below. */
+    prominent?: boolean
   }
 
-  let { node, onclick }: Props = $props()
+  let { node, onclick, prominent = false }: Props = $props()
 
   const TYPE_BORDER: Record<MapNodeData['type'], string> = {
     combat:   '#E74C3C',
@@ -38,10 +40,22 @@
     shop:     'Shop',
   }
 
-  let borderColor = $derived(TYPE_BORDER[node.type])
-  let iconUrl     = $derived(TYPE_ICON[node.type])
-  let label       = $derived(TYPE_LABEL[node.type])
-  let isClickable = $derived(node.state === 'available')
+  /** Short display label shown below prominent nodes */
+  const TYPE_SHORT_LABEL: Record<MapNodeData['type'], string> = {
+    combat:   'Combat',
+    elite:    'Elite',
+    boss:     'Boss',
+    mystery:  'Mystery',
+    rest:     'Rest',
+    treasure: 'Treasure',
+    shop:     'Shop',
+  }
+
+  let borderColor  = $derived(TYPE_BORDER[node.type])
+  let iconUrl      = $derived(TYPE_ICON[node.type])
+  let label        = $derived(TYPE_LABEL[node.type])
+  let shortLabel   = $derived(TYPE_SHORT_LABEL[node.type])
+  let isClickable  = $derived(node.state === 'available')
 
   /** Sprite URL for boss node only — shows the actual boss enemy instead of an emoji. */
   let spriteUrl = $derived(
@@ -51,31 +65,58 @@
   )
 </script>
 
-<button
-  class="map-node"
-  class:state-visited={node.state === 'visited'}
-  class:state-available={node.state === 'available'}
-  class:state-locked={node.state === 'locked'}
-  class:state-current={node.state === 'current'}
-  class:type-boss={node.type === 'boss'}
-  class:type-elite={node.type === 'elite'}
-  style="--node-color: {borderColor};"
-  aria-label="{label} — {node.state}"
-  data-testid="map-node-{node.id}"
-  disabled={!isClickable}
-  {onclick}
->
-  {#if spriteUrl}
-    <img class="node-sprite" src={spriteUrl} alt={label} />
-  {:else}
-    <img class="node-icon" src={iconUrl} alt={label} />
+<div class="node-wrapper" class:prominent>
+  <button
+    class="map-node"
+    class:state-visited={node.state === 'visited'}
+    class:state-available={node.state === 'available'}
+    class:state-locked={node.state === 'locked'}
+    class:state-current={node.state === 'current'}
+    class:type-boss={node.type === 'boss'}
+    class:type-elite={node.type === 'elite'}
+    class:prominent
+    style="--node-color: {borderColor};"
+    aria-label="{label} — {node.state}"
+    data-testid="map-node-{node.id}"
+    disabled={!isClickable}
+    {onclick}
+  >
+    {#if spriteUrl}
+      <img class="node-sprite" src={spriteUrl} alt={label} />
+    {:else}
+      <img class="node-icon" src={iconUrl} alt={label} />
+    {/if}
+    {#if node.state === 'visited'}
+      <span class="visited-check" aria-hidden="true">✓</span>
+    {/if}
+  </button>
+  {#if prominent}
+    <span class="node-type-label" aria-hidden="true">{shortLabel}</span>
   {/if}
-  {#if node.state === 'visited'}
-    <span class="visited-check" aria-hidden="true">✓</span>
-  {/if}
-</button>
+</div>
 
 <style>
+  /* Wrapper enables the label-below layout for prominent nodes */
+  .node-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  /* Room type label — only visible on prominent (choice) nodes */
+  .node-type-label {
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: calc(1.5px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    color: rgba(245, 240, 230, 0.75);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    white-space: nowrap;
+    user-select: none;
+  }
+
   .map-node {
     position: relative;
     width: calc(68px * var(--layout-scale, 1));
@@ -96,6 +137,23 @@
     /* Ensure minimum 44px tap target (already the node size) */
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prominent (choice) nodes: larger, brighter border, more shadow */
+  .map-node.prominent {
+    width: calc(88px * var(--layout-scale, 1));
+    height: calc(88px * var(--layout-scale, 1));
+    border-width: 3px;
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.6),
+      0 0 20px color-mix(in srgb, var(--node-color) 35%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Boss prominent node overrides (boss already has its own larger size below) */
+  .map-node.type-boss.prominent {
+    width: calc(104px * var(--layout-scale, 1));
+    height: calc(104px * var(--layout-scale, 1));
   }
 
   .map-node:disabled {
@@ -162,6 +220,12 @@
     display: block;
   }
 
+  /* Larger icon inside prominent nodes */
+  .map-node.prominent .node-icon {
+    width: calc(56px * var(--layout-scale, 1));
+    height: calc(56px * var(--layout-scale, 1));
+  }
+
   .node-sprite {
     width: calc(60px * var(--layout-scale, 1));
     height: calc(60px * var(--layout-scale, 1));
@@ -172,6 +236,12 @@
     animation: spriteFloat 3s ease-in-out infinite;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
     pointer-events: none;
+  }
+
+  /* Larger sprite inside prominent boss nodes */
+  .map-node.prominent .node-sprite {
+    width: calc(80px * var(--layout-scale, 1));
+    height: calc(80px * var(--layout-scale, 1));
   }
 
   /* Override sprite animation for boss — slower, more dramatic float */

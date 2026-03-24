@@ -1,0 +1,216 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 148,
+  "issues": [
+    {
+      "id": "food_cuisine-churro-choux-pastry",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Churros are NOT made from choux pastry. Traditional churro dough is a simple unleavened flour/water/salt mixture. Choux pastry is egg-enriched and behaves completely differently (it puffs hollow when baked/fried). Claiming they share the same dough as éclairs is factually wrong and would teach players an incorrect culinary fact.",
+      "suggested_fix": "Correct the answer. Churros are made from a simple unleavened dough (flour, water, salt, sometimes oil). The question or answer must be reworked — do not claim a choux connection."
+    },
+    {
+      "id": "food_cuisine-churro-spain-breakfast-coffee",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct answer is 'Coffee' but the explanation itself says churros are eaten 'dipped in coffee, or in hot chocolate for an afternoon snack.' The far more iconic and widely recognised Spanish pairing is chocolate con churros (hot thick chocolate). The Wikipedia source acknowledges both. Presenting 'coffee' as THE answer while the culturally dominant pairing is hot chocolate is misleading.",
+      "suggested_fix": "Change the correct answer to 'Hot chocolate' (the iconic pairing), and adjust the question to ask what the most famous traditional Spanish accompaniment is. Coffee can stay as a distractor."
+    },
+    {
+      "id": "art_architecture-oedipus-rex-second-place",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is about Greek theater / drama, not painting or visual art. The category_l2 is set to 'painting_visual' which is completely wrong. Oedipus Rex is a play by Sophocles.",
+      "suggested_fix": "Recategorize to a performing arts or literature category. If none exists, 'modern_contemporary' under art_architecture is still wrong — this belongs in a theater/literature domain."
+    },
+    {
+      "id": "art_architecture-noh-theater-age",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "Noh theater is a Japanese performing art, not 'modern_contemporary' visual art or architecture. The category_l1 'art_architecture' is a stretch, and category_l2 'modern_contemporary' is especially wrong for a 600-year-old theatrical tradition.",
+      "suggested_fix": "Recategorize to a performing arts or world cultures category. If art_architecture must be used, a subcategory like 'performing_arts' would be appropriate."
+    },
+    {
+      "id": "art_architecture-neruda-pen-name-secret",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "Pablo Neruda is a Chilean poet — this is a literature fact, not art or architecture. Categorized under art_architecture/modern_contemporary which is wrong.",
+      "suggested_fix": "Recategorize to a literature domain (e.g., category_l1: 'literature', category_l2: 'poetry' or 'authors')."
+    },
+    {
+      "id": "art_architecture-debussy-impressionist-rejected",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "Claude Debussy is a composer. This is a music fact, not visual art or architecture. Categorized under art_architecture/modern_contemporary which is wrong.",
+      "suggested_fix": "Recategorize to a music domain (e.g., category_l1: 'music', category_l2: 'classical_composers' or equivalent)."
+    },
+    {
+      "id": "art_architecture-journey-to-the-west-most-popular",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "Journey to the West is a Chinese novel — this is a literature fact, not art or architecture. Categorized under art_architecture/modern_contemporary which is wrong.",
+      "suggested_fix": "Recategorize to a literature domain."
+    },
+    {
+      "id": "art_architecture-dumas-200-film-adaptations",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "Alexandre Dumas was a novelist. This is a literature fact, not art or architecture. Categorized under art_architecture/modern_contemporary which is wrong.",
+      "suggested_fix": "Recategorize to a literature domain."
+    },
+    {
+      "id": "art_architecture-baroque-music-opera-invented",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "This is a music history fact about the Baroque musical period, opera, oratorio, and concerto forms. It is not about visual art, architecture, or modern_contemporary art. Categorized entirely in the wrong domain.",
+      "suggested_fix": "Recategorize to a music domain (e.g., category_l1: 'music', category_l2: 'music_history' or 'classical_music')."
+    },
+    {
+      "id": "art-textile-industrial-revolution",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is about the Industrial Revolution and the Luddite rebellion sparked by textile mechanization. The category_l2 is 'sculpture_decorative' which makes no sense whatsoever. This belongs in history, not decorative sculpture.",
+      "suggested_fix": "Recategorize to a history domain (e.g., category_l1: 'history', category_l2: 'industrial_history' or 'social_movements'). Alternatively, if kept in art_architecture, use 'applied_arts' or 'craft_design' — but sculpture_decorative is clearly wrong."
+    },
+    {
+      "id": "art-textile-silk-road",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is about the Silk Road as a trade network. The category_l2 'sculpture_decorative' is wrong — a fact about trade routes and the movement of textiles across civilizations does not belong under sculpture or decorative arts.",
+      "suggested_fix": "Recategorize to history/trade or world cultures. Within art_architecture, 'applied_arts' or similar would be less wrong than 'sculpture_decorative'."
+    },
+    {
+      "id": "food_cuisine-emulsion-photographic",
+      "severity": "critical",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is about photographic film, not food. The correct answer ('photographic film') and the topic (silver halide colloids in gelatin) have nothing to do with food_cuisine. The only connection is that the word 'emulsion' is shared. Placing a question whose answer is photographic film in the food_cuisine category will confuse players.",
+      "suggested_fix": "Recategorize to science/chemistry or photography/technology. If the intention was to highlight the cross-domain use of 'emulsion', that would fit better in a general science or materials category."
+    },
+    {
+      "id": "art_architecture-hagia-sophia-church-mosque-museum",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation lists five distinct historical roles: Eastern Orthodox cathedral (360–1453), Catholic cathedral (1204–1261), mosque (1453–1935), museum (1935–2020), and mosque again (2020–present). That is either 4 distinct function types or 5 distinct periods depending on how you count. The correct answer 'Four' is defensible as 4 *types*, but the explanation's five-item list creates confusion and a player could reasonably count five from the explanation and feel the answer is wrong.",
+      "suggested_fix": "Either change the correct answer to 'Five' (counting each distinct historical period) and rework the question to ask about periods, OR revise the explanation to clearly state there are 4 distinct types (Orthodox, Catholic, mosque, museum) — even though it served as mosque in two separate periods."
+    },
+    {
+      "id": "food_cuisine-pork-charcuterie",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Epicerie' appears twice in the distractors array (positions 6 and 8). Duplicate distractors are a data quality error.",
+      "suggested_fix": "Remove the duplicate 'Epicerie' and replace the second instance with a different distractor (e.g., 'Confiserie' or 'Cremerie')."
+    },
+    {
+      "id": "art-miro-assassination-of-painting-b6",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact is a near-duplicate of 'art-miro-assassination-of-painting'. Both ask essentially the same thing about Miró declaring an 'assassination of painting', with the same correct answer. The questions are slightly differently worded but teach identical information. Having both in the database will result in players seeing the same fact twice.",
+      "suggested_fix": "Delete one of the two. Prefer keeping 'art-miro-assassination-of-painting' (the original) and deleting this 'b6' variant."
+    },
+    {
+      "id": "art-miro-two-museums",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'art-miro-fundacio-barcelona'. Both ask about the Fundació Joan Miró in Barcelona founded in 1975, with the same correct answer 'Barcelona'. The questions are slightly differently phrased but test identical knowledge.",
+      "suggested_fix": "Delete one. 'art-miro-fundacio-barcelona' is numerical (year as answer) and thus tests a different angle. Delete 'art-miro-two-museums' or differentiate it substantially (e.g., ask which city got the SECOND museum, answer: Palma)."
+    },
+    {
+      "id": "art_architecture-sphinx-limestone-monolith",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'art_architecture-sphinx-limestone-carving'. Both ask what the Great Sphinx is carved from with the identical correct answer 'Natural limestone bedrock'. Players who see one will immediately know the other.",
+      "suggested_fix": "Delete one. Keep whichever has the better distractors (the monolith version has slightly better distractors — 'Diorite', 'Clay brick')."
+    },
+    {
+      "id": "art_architecture-pantheon-unreinforced-dome",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'art_architecture-pantheon-dome-record'. Both ask about the Pantheon's world record with the identical correct answer 'Largest unreinforced concrete dome' / 'Largest unreinforced dome'. Questions are slightly differently phrased but test the same fact.",
+      "suggested_fix": "Delete one. Keep 'art_architecture-pantheon-unreinforced-dome' which has more distractors and a better explanation."
+    },
+    {
+      "id": "art_architecture-velazquez-baroque-tenebrist",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'art_architecture-velazquez-tenebrist-baroque'. Both ask about Velázquez's early tenebrist painting style with the identical correct answer 'Tenebrism'. Questions slightly rephrase but test the same fact.",
+      "suggested_fix": "Delete one. The distractors differ somewhat; keep the one with higher-quality distractors."
+    },
+    {
+      "id": "art_architecture-prado-velazquez-collection",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'art_architecture-velazquez-prado-royal-collection'. Both ask which museum holds the greatest Velázquez collection with the identical answer 'Museo del Prado'. Slightly different question wording but identical teaching target.",
+      "suggested_fix": "Delete one. Keep 'art_architecture-velazquez-prado-royal-collection' since it provides more historical context (royal collection origin)."
+    },
+    {
+      "id": "food_cuisine-pork-religious-prohibition",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-pork-religious-taboo'. Both ask which two religions forbid eating pork with the identical correct answer 'Islam and Judaism'. Questions are almost identically worded.",
+      "suggested_fix": "Delete one. Keep 'food_cuisine-pork-religious-taboo' which has a more engaging explanation."
+    },
+    {
+      "id": "food_cuisine-onion-shallot-reclassified-2011",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-onion-shallot-reclassification'. Both ask until what year the shallot was classified as a separate species with the identical answer '{2011}'. Questions are nearly word-for-word identical.",
+      "suggested_fix": "Delete one. Keep 'food_cuisine-onion-shallot-reclassification' which has a marginally better explanation."
+    },
+    {
+      "id": "food_cuisine-onion-allium-genus",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-onion-most-widely-cultivated-allium'. Both ask about the onion being the most cultivated Allium species. 'onion-most-widely-cultivated-allium' answers 'Onion' (the species); 'onion-allium-genus' answers 'Allium' (the genus). These are testing essentially the same fact from two angles — a player who knows one trivially answers the other.",
+      "suggested_fix": "Delete one. If keeping both, rewrite the question asking for the genus to be clearly distinct: e.g., 'The onion belongs to which plant genus, alongside garlic, leeks, and chives?' — which tests genus identification, not the same 'most cultivated' angle."
+    },
+    {
+      "id": "food_cuisine-onion-biennial-plant",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-onion-eye-irritant'. Both ask why onions make eyes water when chopped, with essentially the same correct answer ('chemical irritants released when cells break' vs 'releases chemical irritants when cut'). The questions and answers are functionally identical.",
+      "suggested_fix": "Delete one. The 'eye-irritant' version has a slightly better explanation (mentions plant defense mechanism). Note also that the fact ID 'onion-biennial-plant' is misleading — the question has nothing to do with onions being biennials."
+    },
+    {
+      "id": "art_architecture-empire-state-410-days",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'art_architecture-empire-state-speed-built'. Both are about the speed of Empire State Building construction — one answers in months (13.5), the other in days (410). While technically different units, they test essentially the same memorable fact and a player who sees both will recognize the redundancy immediately.",
+      "suggested_fix": "Delete one. Keep the months version ('art_architecture-empire-state-speed-built') as 13.5 months is the more commonly cited figure and more surprising/memorable."
+    },
+    {
+      "id": "food_cuisine-food-pyramid-sweden-origin-1974",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-food-pyramid-sweden-1974'. Both ask which country published the first food pyramid in 1974 with the identical answer 'Sweden'. Questions are nearly word-for-word identical.",
+      "suggested_fix": "Delete one. Keep 'food_cuisine-food-pyramid-sweden-origin-1974' which has a richer explanation (mentions the 2026 RFK Jr. inverted pyramid update)."
+    },
+    {
+      "id": "food_cuisine-grilling-maillard-500-degrees",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-grilling-maillard-155c-threshold'. Both ask at what temperature the Maillard reaction occurs during grilling, with the identical answer '{155} degrees Celsius'. Questions are almost word-for-word identical.",
+      "suggested_fix": "Delete one. Keep 'food_cuisine-grilling-maillard-155c-threshold' which has a cleaner question."
+    },
+    {
+      "id": "food_cuisine-sorbet-origin-persian-empire",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-sorbet-persian-origin'. Both ask where sorbet originated with the identical answer 'Persian Empire'. Questions are differently phrased ('ancient empire' vs 'ancient civilization') but test the same fact.",
+      "suggested_fix": "Delete one. Keep 'food_cuisine-sorbet-persian-origin' since its explanation is marginally more informative."
+    },
+    {
+      "id": "food_cuisine-flan-british",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'food_cuisine-flan-british-definition'. Both ask about the British definition of flan. The correct answers are slightly different ('Open rimmed pastry with filling' vs 'Pastry or sponge') but they test the same topic with the same source content. A player who sees one will trivially answer the other.",
+      "suggested_fix": "Delete one. 'food_cuisine-flan-british-definition' has a better, more complete answer and question. Delete 'food_cuisine-flan-british'."
+    },
+    {
+      "id": "art_architecture-tate-modern-turbine",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'art_architecture-tate-modern-power-station'. Both ask what Tate Modern's building was previously used for, with the identical correct answer 'A power station'. Questions are nearly identical ('converted from' vs 'used as before becoming a gallery').",
+      "suggested_fix": "Delete one. Keep 'art_architecture-tate-modern-power-station' which is in a more appropriate subcategory (engineering_design) given the building conversion context."
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "animals_wildlife": [
+    {
+      "name": "Octopus",
+      "wiki": "Octopus",
+      "sub": "marine_life"
+    },
+    {
+      "name": "Honey bee",
+      "wiki": "Honey_bee",
+      "sub": "insects_arachnids"
+    },
+    {
+      "name": "African elephant",
+      "wiki": "African_elephant",
+      "sub": "mammals"
+    },
+    {
+      "name": "Peregrine falcon",
+      "wiki": "Peregrine_falcon",
+      "sub": "birds"
+    },
+    {
+      "name": "Axolotl",
+      "wiki": "Axolotl",
+      "sub": "reptiles_amphibians"
+    }
+  ],
+  "art_architecture": [
+    {
+      "name": "Frida Kahlo",
+      "wiki": "Frida_Kahlo",
+      "sub": "painting_visual"
+    },
+    {
+      "name": "Parthenon",
+      "wiki": "Parthenon",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Leonardo da Vinci",
+      "wiki": "Leonardo_da_Vinci",
+      "sub": "painting_visual"
+    },
+    {
+      "name": "Gothic architecture",
+      "wiki": "Gothic_architecture",
+      "sub": "architectural_styles"
+    },
+    {
+      "name": "Beethoven",
+      "wiki": "Ludwig_van_Beethoven",
+      "sub": "music_performance"
+    }
+  ],
+  "food_cuisine": [
+    {
+      "name": "Saffron",
+      "wiki": "Saffron",
+      "sub": "ingredients_spices"
+    },
+    {
+      "name": "Chocolate",
+      "wiki": "Chocolate",
+      "sub": "food_history"
+    },
+    {
+      "name": "Sushi",
+      "wiki": "Sushi",
+      "sub": "asian_cuisine"
+    },
+    {
+      "name": "Fermentation",
+      "wiki": "Fermentation",
+      "sub": "fermentation_beverages"
+    },
+    {
+      "name": "Chili pepper",
+      "wiki": "Chili_pepper",
+      "sub": "ingredients_spices"
+    }
+  ],
+  "general_knowledge": [
+    {
+      "name": "Morse code",
+      "wiki": "Morse_code",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Internet",
+      "wiki": "Internet",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Olympic Games",
+      "wiki": "Olympic_Games",
+      "sub": "records_firsts"
+    },
+    {
+      "name": "Chess",
+      "wiki": "Chess",
+      "sub": "oddities"
+    },
+    {
+      "name": "Printing press",
+      "wiki": "Printing_press",
+      "sub": "inventions_tech"
+    }
+  ],
+  "history": [
+    {
+      "name": "Cleopatra VII",
+      "wiki": "Cleopatra",
+      "sub": "ancient_classical"
+    },
+    {
+      "name": "Genghis Khan",
+      "wiki": "Genghis_Khan",
+      "sub": "medieval"
+    },
+    {
+      "name": "French Revolution",
+      "wiki": "French_Revolution",
+      "sub": "early_modern"
+    },
+    {
+      "name": "Viking Age",
+      "wiki": "Viking_Age",
+      "sub": "medieval"
+    },
+    {
+      "name": "Industrial Revolution",
+      "wiki": "Industrial_Revolution",
+      "sub": "modern_contemporary"
+    }
+  ],
+  "human_body_health": [
+    {
+      "name": "Human brain",
+      "wiki": "Human_brain",
+      "sub": "brain_neuro"
+    },
+    {
+      "name": "DNA",
+      "wiki": "DNA",
+      "sub": "genetics_dna"
+    },
+    {
+      "name": "Immune system",
+      "wiki": "Immune_system",
+      "sub": "immunity_disease"
+    },
+    {
+      "name": "Human heart",
+      "wiki": "Human_heart",
+      "sub": "cardiovascular"
+    },
+    {
+      "name": "Liver",
+      "wiki": "Liver",
+      "sub": "digestion_metabolism"
+    }
+  ],
+  "mythology_folklore": [
+    {
+      "name": "Kitsune",
+      "wiki": "Kitsune",
+      "sub": "creatures_monsters"
+    },
+    {
+      "name": "Thor",
+      "wiki": "Thor",
+      "sub": "norse_celtic"
+    },
+    {
+      "name": "Medusa",
+      "wiki": "Medusa",
+      "sub": "greek_roman"
+    },
+    {
+      "name": "Anubis",
+      "wiki": "Anubis",
+      "sub": "gods_deities"
+    },
+    {
+      "name": "Dragons",
+      "wiki": "Dragon",
+      "sub": "creatures_monsters"
+    }
+  ],
+  "natural_sciences": [
+    {
+      "name": "Phosphorus",
+      "wiki": "Phosphorus",
+      "sub": "chemistry_elements"
+    },
+    {
+      "name": "Black hole",
+      "wiki": "Black_hole",
+      "sub": "physics_mechanics"
+    },
+    {
+      "name": "Photosynthesis",
+      "wiki": "Photosynthesis",
+      "sub": "biology_organisms"
+    },
+    {
+      "name": "Diamond",
+      "wiki": "Diamond",
+      "sub": "materials_engineering"
+    },
+    {
+      "name": "Volcano",
+      "wiki": "Volcano",
+      "sub": "geology_earth"
+    }
+  ],
+  "space_astronomy": [
+    {
+      "name": "Rings of Saturn",
+      "wiki": "Rings_of_Saturn",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Mars",
+      "wiki": "Mars",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Milky Way",
+      "wiki": "Milky_Way",
+      "sub": "stars_galaxies"
+    },
+    {
+      "name": "International Space Station",
+      "wiki": "International_Space_Station",
+      "sub": "missions_spacecraft"
+    },
+    {
+      "name": "Big Bang",
+      "wiki": "Big_Bang",
+      "sub": "cosmology_universe"
+    }
+  ]
+}

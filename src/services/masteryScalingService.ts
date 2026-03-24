@@ -151,6 +151,11 @@ export function getLeaderboardEligibility(deckMode: DeckMode): string | null {
     return `language:${deckMode.languageCode}`;
   }
 
+  // Trivia/study modes: not yet eligible for leaderboards.
+  if (deckMode.type === 'trivia' || deckMode.type === 'study') {
+    return null;
+  }
+
   // Preset mode: check if it's a single-domain, all-subcategories preset
   const preset = getPresetById(deckMode.presetId);
   if (!preset) return null;

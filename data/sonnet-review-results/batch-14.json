@@ -1,0 +1,111 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 167,
+  "issues": [
+    {
+      "id": "history-american-civil-war-slavery-abolished-nationally",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'world_wars' but the American Civil War is a domestic conflict, not a world war. The other Civil War fact in this batch (history-american-civil-war-four-million) is correctly under 'battles_military'.",
+      "suggested_fix": "Change category_l2 from 'world_wars' to 'battles_military' or 'modern_contemporary'."
+    },
+    {
+      "id": "history-vietnam-war-longest-us-war",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation states 'US combat forces from 1965 to 1973' but the war's accepted dates are 1955–1975. Using 1965–1973 understates US involvement and creates inconsistency with the claim about it being the 'longest US war at the time.' The US was militarily involved (advisors, funding, air power) from 1955, not just 1965.",
+      "suggested_fix": "Update explanation to note US involvement began with advisors in 1955, escalated to direct combat in 1965, and ended in 1975 — spanning 20 years. Alternatively, qualify the question to specify 'direct combat involvement.'"
+    },
+    {
+      "id": "history-che-guevara-cuban-missile-crisis",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The answer attributes bringing Soviet nuclear missiles to Cuba primarily to Che Guevara, which is misleading. The decision was made by Fidel Castro and Nikita Khrushchev. Guevara's personal role in initiating or brokering the missile deployment is not established in the historical record. Fidel Castro — listed as a distractor — was far more central to this decision. This misattribution could actively teach players incorrect history.",
+      "suggested_fix": "Change the correct answer to 'Fidel Castro' and rephrase the question accordingly, or reframe to focus on a role Guevara actually played (e.g., leading the militia that repelled the Bay of Pigs). The current framing is unsupported."
+    },
+    {
+      "id": "history-leon_trotsky-siblings-kameneva",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'They were brothers-in-law by marriage' is essentially the same as the correct answer 'Kamenev married Trotsky's sister' — both describe a brother-in-law relationship. A player who knows the correct answer could also select the distractor, or vice versa. This creates ambiguity.",
+      "suggested_fix": "Remove the distractor 'They were brothers-in-law by marriage' and replace with something genuinely distinct, e.g., 'Kamenev was Trotsky's uncle' or 'They married sisters of each other.'"
+    },
+    {
+      "id": "history-september-11-attacks-3000-deaths",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "This fact and 'history-9-11-death-toll' cover the exact same event with conflicting answers: 'About {3000}' vs. '{2,977}'. The Wikipedia figure is 2,977 victims. 'About 3000' is a rounded approximation that contradicts the more precise fact in the same batch. Having two facts about 9/11 deaths with different numbers will confuse players.",
+      "suggested_fix": "Remove one of the two 9/11 death toll facts. If keeping this one, update to '{2,977}' for consistency. If keeping this one for its broader context (war on terror), ensure the two facts ask genuinely different questions, not just the same number worded differently."
+    },
+    {
+      "id": "history-iron-age-why-important",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Iron was stronger' is historically partially true — iron (especially when worked into steel) is stronger than bronze, and this WAS one reason for the transition. Listing a true statement as a wrong answer is misleading and unfair to players who know their metallurgy. The intended correct answer ('Iron was more abundant') is also true but is not the only reason.",
+      "suggested_fix": "Replace the distractor 'Iron was stronger' with something clearly false, e.g., 'Iron glowed more brightly' or 'Bronze required water to smelt.' Alternatively, rephrase the question to specifically ask about iron's advantage in *availability/accessibility*, making 'more abundant' unambiguously the target answer."
+    },
+    {
+      "id": "history-qing-dynasty-last-emperor",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'ancient_classical' but Puyi's abdication in 1912 is squarely in the modern era. The Qing Dynasty (1644–1912) is not ancient or classical by any historical framework.",
+      "suggested_fix": "Change category_l2 from 'ancient_classical' to 'modern_contemporary'."
+    },
+    {
+      "id": "history-dzungar-khanate-last-nomadic-mongol-empire",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized as 'medieval' but the Dzungar Khanate (1634–1758) existed entirely in the early modern period — it was destroyed by the Qing dynasty in the mid-18th century, nearly 300 years after the conventional end of the medieval era.",
+      "suggested_fix": "Change category_l2 from 'medieval' to 'early_modern' or 'modern_contemporary'."
+    },
+    {
+      "id": "history-rosa_luxemburg-junius-pamphlet",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation states Luxemburg coined the phrase 'socialism or barbarism,' but this phrase originates with Friedrich Engels (from his 1880 work 'Socialism: Utopian and Scientific'). Luxemburg adapted and popularized it in her Junius Pamphlet but did not coin it. The question asks what she 'popularized,' which is accurate — but the explanation's implicit claim of authorship is misleading.",
+      "suggested_fix": "Update the explanation to note the phrase was originally from Engels and was adapted/popularized by Luxemburg in her Junius Pamphlet. E.g., '...she powerfully adapted Engels's stark formulation: socialism or barbarism.'"
+    },
+    {
+      "id": "history-empire-of-japan-fastest-modernization",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact (id ending in 'fastest-modernization', no number suffix) is a near-duplicate of 'history-empire-japan-fastest-modernization'. Both ask which country had the fastest modernization in history and both answer 'Japan'. The questions are worded slightly differently ('which country is considered to have undergone' vs. 'which country's post-1868 industrialization is often called') but test identical knowledge. Players will see essentially the same card twice.",
+      "suggested_fix": "Remove one of the two facts. If both are kept, reframe one to ask something distinct, e.g., the specific era/reform name (Meiji Restoration) or a concrete outcome (e.g., how long it took Japan to become a recognized great power)."
+    },
+    {
+      "id": "history-bismarck-unified-germany-wars",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'history-bismarck-three-wars-unification'. Both ask how many wars Bismarck fought/provoked to unify Germany and both answer '3 wars' / 'Three wars'. The questions differ only in wording ('fight' vs. 'provoke') and answer format (numeral vs. word).",
+      "suggested_fix": "Remove one fact. The numerical brace format fact ('history-bismarck-unified-germany-wars') is the better candidate for removal since the other has more engaging distractor options and uses the word form 'Three wars'."
+    },
+    {
+      "id": "history-atatürk-abolished-caliphate-1924",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'history-ataturk-abolished-caliphate'. Both ask about Atatürk abolishing the caliphate in 1924 and give the same core answer. The first is a multiple-choice question ('Which leader abolished...'), the second is a numerical brace question ('What year...'). These test different specifics so they may be worth keeping, but together with the Latin alphabet duplicates and other Atatürk duplication, the coverage density on Atatürk is very high in one batch.",
+      "suggested_fix": "Keep both if the year-based fact is needed for spaced repetition variety. Otherwise remove the multiple-choice one (history-atatürk-abolished-caliphate-1924) since the year fact is more precise."
+    },
+    {
+      "id": "history-pizarro-conquered-inca-ransom-room-gold",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'history-francisco-pizarro-ransom'. Both cover Atahualpa's capture, ransom, and execution by Pizarro. The first asks who was captured; the second asks what happened after the ransom. These test different angles so they are more defensible as separate facts, but they share essentially identical explanations and context.",
+      "suggested_fix": "Keep both — they test different knowledge (identity vs. outcome). Ensure explanations are distinct enough to not feel repetitive."
+    },
+    {
+      "id": "history-stalin-18-million-gulag",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'history-joseph-stalin-gulag-18-million'. Both ask approximately how many people passed through Stalin's Gulag and both answer 'About {18} million'. Questions are worded nearly identically. This is a true duplicate delivering zero additional learning value.",
+      "suggested_fix": "Remove one. Keep 'history-joseph-stalin-gulag-18-million' as its explanation is marginally richer."
+    },
+    {
+      "id": "history-beatles-best-selling-act",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "Near-duplicate of 'history-beatles-best-selling-music-act'. The first asks where The Beatles formed (Liverpool), the second asks what year they dissolved (1970). These actually test different facts, so both are legitimate — but both share the same category, id-prefix, and similar framing about 'best selling act' in the ID despite asking about different things. No content issue, just potential player confusion from similar IDs and shared explanations.",
+      "suggested_fix": "No change needed to content. Consider renaming IDs to better reflect what each question actually tests (e.g., 'history-beatles-formed-liverpool' and 'history-beatles-dissolved-1970')."
+    }
+  ]
+}

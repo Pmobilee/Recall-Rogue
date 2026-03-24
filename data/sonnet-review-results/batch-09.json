@@ -1,0 +1,216 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 163,
+  "issues": [
+    {
+      "id": "geography-macau-most-dense-territory",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Macau is the most densely populated *territory*, but Monaco is the most densely populated *sovereign state*. Both facts appear in this batch. The Macau fact uses 'territory' correctly, but players will see both facts and the framing will appear contradictory. The real issue is that these two facts make competing claims without the distinction being apparent in the question text.",
+      "suggested_fix": "Add 'dependent or autonomous territory' to the question: 'Which non-sovereign territory holds the record as the most densely populated on Earth?' This preserves accuracy and avoids confusion with the Monaco sovereign-state fact."
+    },
+    {
+      "id": "geography-monaco-densest-state",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "This fact and geography-macau-most-dense-territory both appear in the batch and will seem contradictory to players unless the sovereign-state vs territory distinction is clear. The Monaco question currently says 'sovereign state' which is accurate, but players may still flag this as conflicting with the Macau fact.",
+      "suggested_fix": "No change needed to facts themselves, but note that both should be retained — just ensure both questions emphasize their specific scope ('sovereign state' vs 'territory') clearly."
+    },
+    {
+      "id": "geo_norway_sovereign_wealth_fund",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "States the fund is 'Over {1} trillion USD' but the other Norway fund fact in this same batch (geography-norway-sovereign-wealth-fund) states 'over US$2.1 trillion'. As of 2026 the fund is well above $1.5 trillion, so $1 trillion is technically 'over $1T' but is highly misleading and contradicts the more precise sibling fact. Players will notice the discrepancy.",
+      "suggested_fix": "Update correct_answer to 'Over {1.5} trillion USD' or 'Over {2} trillion USD' and align the explanation to match the more accurate figure given in the sibling fact. Alternatively, retire this duplicate fact since geography-norway-sovereign-wealth-fund covers the same topic with a better answer."
+    },
+    {
+      "id": "geography-norway-sovereign-wealth-fund",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geo_norway_sovereign_wealth_fund covers the exact same fact (Norway's sovereign wealth fund). One of these two facts should be retired to avoid players seeing the same question twice and noticing the contradictory dollar figures.",
+      "suggested_fix": "Retire geo_norway_sovereign_wealth_fund (the one with the lower '$1 trillion' figure) and keep this one with the more accurate '$2.1 trillion' figure."
+    },
+    {
+      "id": "geography-red-sea-baby-ocean",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The answer is 'Continental drift' but the process widening the Red Sea is specifically *seafloor spreading* / *rifting* — a subset of plate tectonics. Continental drift is the older, less precise term describing horizontal movement of continents, not the mechanism of rift formation. The explanation correctly describes seafloor spreading ('Arabian plate rifting away from the African plate') but the answer uses the imprecise term.",
+      "suggested_fix": "Change correct_answer to 'Seafloor spreading (rifting)' and update distractors to replace 'Plate subduction' (which is an actual tectonic process and thus less implausible than intended) with something more clearly wrong like 'Erosion by wind'."
+    },
+    {
+      "id": "geography-southeast-asia-biodiversity",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The question asks 'Why is Southeast Asia considered a global biodiversity hotspot?' and the answer is 'Because of its dense species concentration.' This is circular/tautological — a biodiversity hotspot is defined by its dense species concentration, so the answer is essentially 'because it has lots of species.' It does not explain a cause (climate, geography, evolutionary history, etc.).",
+      "suggested_fix": "Change correct_answer to something substantive like 'Diverse habitats from rainforests to coral reefs' or 'Overlap of tropical rainforest and marine ecosystems'. Update distractors accordingly."
+    },
+    {
+      "id": "geography-micronesia-island-span",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct_answer states '{2,900} km' but the explanation itself hedges: 'approximately 2,700 km (some sources cite ~2,900 km)'. The question presents 2,900 as the definitive answer when the primary Wikipedia figure is 2,700 km. The answer should reflect the better-sourced figure.",
+      "suggested_fix": "Change correct_answer to '{2,700} km' to match the primary Wikipedia figure cited in the explanation, or rephrase as 'About {2,700}–{2,900} km' with a note in the explanation clarifying the range."
+    },
+    {
+      "id": "geography-solomon-islands-settlement",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer is 'About {28,800} years ago' but the explanation says 'at least some time between 30,000 and 28,800 BC.' Dates 'BC' (before Christ/CE) are not the same as 'years ago' — 28,800 BC means approximately 30,800 years ago from 2026. The answer conflates a calendar date (28,800 BC) with a duration (years ago), making it factually imprecise.",
+      "suggested_fix": "Change correct_answer to 'About {30,000} years ago' (rounding the BC date to years-ago), or reframe as 'At least {28,800} BC' and update the question to ask 'By what date (BC) had humans settled the Solomon Islands?' Update the explanation to clarify the distinction."
+    },
+    {
+      "id": "geography-liechtenstein-smallest-two-border",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question states 'What geographic record does Liechtenstein hold as the world's smallest country?' — but Liechtenstein is NOT the world's smallest country. Vatican City (0.44 km²), Monaco (2.08 km²), and San Marino (61 km²) are all smaller than Liechtenstein (160 km²). The premise of the question is factually wrong.",
+      "suggested_fix": "Remove 'as the world's smallest country' from the question. Rephrase to: 'Liechtenstein borders only two countries. What unusual geographic property does this give it?' — Answer remains 'Doubly landlocked' or 'Borders exactly two countries'. Alternatively, change the framing to 'smallest doubly landlocked country' which is accurate."
+    },
+    {
+      "id": "geography-belarus-un-founding-member",
+      "severity": "critical",
+      "dimension": "DISTRACTORS",
+      "description": "The distractor 'Ukrainian SSR' is factually correct — the Ukrainian SSR was ALSO a founding member of the United Nations in 1945 alongside the Byelorussian SSR. Both Soviet republics were admitted as founding UN members at the same time. Presenting 'Ukrainian SSR' as a wrong answer is factually incorrect and will mislead educated players.",
+      "suggested_fix": "Remove 'Ukrainian SSR' from the distractors and replace with a Soviet republic that was NOT a founding UN member, e.g., 'Armenian SSR', 'Azerbaijani SSR', or 'Georgian SSR'. Optionally, reframe the question to ask which TWO Soviet republics became founding UN members, with the answer being 'Byelorussian SSR and Ukrainian SSR'."
+    },
+    {
+      "id": "geography-bulgaria-cyrillic-script",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question credits the 'First Bulgarian Empire' with developing Cyrillic. Historically, Cyrillic was developed by scholars at the Preslav Literary School (in the First Bulgarian Empire) around 893 CE — so the attribution to the empire is technically defensible — but Saints Cyril and Methodius (who created the Glagolitic alphabet, not Cyrillic) are traditionally credited, and the script is named after Cyril. The phrasing 'developed the Cyrillic script' without naming the scholars (Clement of Ohrid, Naum of Preslav) may mislead players into thinking the empire as an institution invented it, rather than scholars patronized by it.",
+      "suggested_fix": "Refine the explanation to clarify: 'The Cyrillic script was developed by scholars at the Preslav Literary School, patronized by the First Bulgarian Empire.' The correct_answer can remain 'First Bulgarian Empire' but the explanation should be more precise."
+    },
+    {
+      "id": "geography-kyoto-nintendo",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-kyoto-nintendo-headquartered asks the nearly identical question ('Which globally famous video game company is based in Kyoto?' vs 'Which city is home to Nintendo's headquarters?'). These are inverse versions of the same fact and will feel repetitive to players.",
+      "suggested_fix": "Retire one. Prefer geography-kyoto-nintendo-headquartered (the version that gives the city as the answer) as it is more geographically focused and better fits the geography category. The current geography-kyoto-nintendo version where 'Nintendo' is the answer is also valid, but having both is redundant."
+    },
+    {
+      "id": "geography-kiribati-utc-plus14",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-kiribati-date-line covers the same UTC+14 / first-to-see-each-day fact. Two questions about Kiribati and UTC+14 in the same batch will feel repetitive.",
+      "suggested_fix": "Retire geography-kiribati-utc-plus14 — geography-kiribati-date-line is more specific and interesting (it explains the date line redraw). Keep only one."
+    },
+    {
+      "id": "geography-kiribati-equator-date-line-crossroads",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-kiribati-four-hemispheres covers the same 'crosses equator and date line / spans all four hemispheres' fact. Both questions essentially ask the same thing from different angles.",
+      "suggested_fix": "Retire geography-kiribati-equator-date-line-crossroads. The geography-kiribati-four-hemispheres version ('How does Kiribati uniquely span all four hemispheres?') is the more interesting framing."
+    },
+    {
+      "id": "geography-paris-city-of-light",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-paris-city-of-light-enlightenment asks 'Why was Paris originally given the nickname City of Light?' with the same answer and near-identical explanation. Two identical facts in the same batch.",
+      "suggested_fix": "Retire geography-paris-city-of-light. Keep geography-paris-city-of-light-enlightenment which has the same content."
+    },
+    {
+      "id": "geography-kolkata-second-british-empire",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-kolkata-british-capital asks nearly the identical question ('Which Indian city was the second largest in the British Empire?' vs 'Which Indian city served as the second-largest city in the entire British Empire?'). Two versions of the same fact in one batch.",
+      "suggested_fix": "Retire geography-kolkata-second-british-empire. The geo_kolkata_british_capital version is slightly more informative (it specifies 1911 as the year the capital moved to Delhi)."
+    },
+    {
+      "id": "geography-kolkata-only-chinatown",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geo_kolkata_only_chinatown asks the near-identical question ('Which Indian city contains the country's only Chinatown?' vs Kolkata's Tiretti Bazaar). Two versions of the same Chinatown fact in one batch.",
+      "suggested_fix": "Retire geography-kolkata-only-chinatown. The geo_kolkata_only_chinatown version is more specific and interesting (it names Tiretti Bazaar and provides richer context about Hakka Chinese immigrants)."
+    },
+    {
+      "id": "geography-andorra-two-co-princes",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-andorra-co-princes asks 'Which country is jointly ruled by a bishop and a foreign president?' — essentially the same question as geography-andorra-two-co-princes ('Which European country is jointly ruled by a French president and a Spanish bishop?'). Same fact, two questions.",
+      "suggested_fix": "Retire geography-andorra-co-princes. The geography-andorra-two-co-princes version is more informative (specifies French president and Spanish bishop)."
+    },
+    {
+      "id": "geography-lithuania-first-soviet-break",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-lithuania-first-soviet-independence asks the identical question ('Which was the first Soviet republic to declare independence from the USSR?'). Two copies of the same fact in one batch.",
+      "suggested_fix": "Retire geography-lithuania-first-soviet-break. Both are nearly identical; keep geography-lithuania-first-soviet-independence which has a slightly richer explanation."
+    },
+    {
+      "id": "geography-croatia-recognized-879",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-croatia-independence-879 asks the same question about Croatia's 879 CE recognition from a different angle ('In what century was Croatia first recognized internationally as independent?'). Two facts about the same 879 CE event in one batch.",
+      "suggested_fix": "Retire geography-croatia-recognized-879 (the numerical year version). Keep geography-croatia-independence-879 which asks for the century — a more interesting framing that requires understanding rather than memorizing a specific number."
+    },
+    {
+      "id": "geography-macau-densest-gambling",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-macau-casino-vs-las-vegas asks the identical question ('How does Macau's gambling industry compare to Las Vegas in size?' / 'How does Macau's gambling industry compare in size to Las Vegas?'). Same fact, same answer, two questions.",
+      "suggested_fix": "Retire geography-macau-densest-gambling. Keep geography-macau-casino-vs-las-vegas which has a cleaner ID and more detailed explanation."
+    },
+    {
+      "id": "geography-sydney-penal-colony",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-sydney-first-fleet-1788 asks the same foundational fact ('What was Sydney's original purpose when founded by the British in 1788?' / 'What was the unusual founding population of Sydney in 1788?'). Same event, answers 'Penal colony' vs 'Convicts' — effectively identical.",
+      "suggested_fix": "Retire geography-sydney-first-fleet-1788. Keep geography-sydney-penal-colony which has a cleaner answer ('Penal colony') that better fits a multiple choice game."
+    },
+    {
+      "id": "geography-magellan-circumnavigation",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-magellan-died-circumnavigation asks the identical question ('Who led the first circumnavigation of Earth but died before it finished?' / 'Which explorer led the first circumnavigation of Earth but died before it finished?'). Exact same fact, same answer.",
+      "suggested_fix": "Retire geography-magellan-circumnavigation. Keep geography-magellan-died-circumnavigation which has a more precise explanation (mentions 18 survivors from 270 crew) and is correctly categorized under landforms_water."
+    },
+    {
+      "id": "geography-kolkata-metro-population",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "States 'Over {15} million' for Kolkata's metropolitan population, but the sibling fact geo_kolkata_metro_population states '{14} million'. The two figures are inconsistent within the same batch. Wikipedia figures for Kolkata metro vary by source (14–15 million), but presenting both as definitive answers in the same game creates a contradiction.",
+      "suggested_fix": "Standardize to 'About {15} million' across both facts (the higher estimate is more current), or retire one of the two Kolkata metro population facts."
+    },
+    {
+      "id": "geo_kolkata_metro_population",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "States '{14} million' for Kolkata's metropolitan area population, conflicting with geography-kolkata-metro-population which states 'Over {15} million'. Both appear in the same batch. See geography-kolkata-metro-population note above.",
+      "suggested_fix": "Standardize to 'About {15} million' or retire this duplicate in favor of geography-kolkata-metro-population."
+    },
+    {
+      "id": "geography-himalayas-100-peaks-7200m",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Duplicate topic — geography-himalayas-100-peaks-over-7200m asks the nearly identical question ('How many Himalayan peaks exceed 7,200 meters above sea level?' vs '... metres above sea level?'). These are the same question with only metre/meter spelling variation.",
+      "suggested_fix": "Retire geography-himalayas-100-peaks-7200m. Keep geography-himalayas-100-peaks-over-7200m which has a slightly better explanation connecting to the range's length."
+    },
+    {
+      "id": "geography-vatican-city-elected-pope",
+      "severity": "minor",
+      "dimension": "EXPLANATION",
+      "description": "The explanation goes off on a tangent: 'making France (whose president is a co-prince of Andorra) the only republic that is also a monarchy.' This non-sequitur about France and Andorra has nothing to do with the question about how the Pope is chosen. It is confusing and sounds like a Wikidata data dump artifact.",
+      "suggested_fix": "Remove the final sentence about France and Andorra from the explanation. Keep the explanation focused: 'Vatican City is governed by the Holy See and the Pope holds absolute executive, legislative, and judicial authority. Unlike hereditary monarchies, the Pope is elected by the College of Cardinals in a conclave held inside the Sistine Chapel.'"
+    },
+    {
+      "id": "geography-finland-suffrage-1906",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Which European country was first to grant universal suffrage, in 1906?' — but New Zealand granted women the vote in 1893 (though not the right to stand for election). Finland's actual distinction is being first to grant *full* political rights (vote AND stand for office). 'Universal suffrage' is ambiguous and could lead knowledgeable players to dispute the answer.",
+      "suggested_fix": "Rephrase to: 'Which European country was first to grant women full political rights — both the vote and the right to stand for election — in 1906?' This matches the more precise framing in the sibling fact geo_finland_universal_suffrage."
+    },
+    {
+      "id": "geo_finland_lakes",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct_answer is '{180000}' with no formatting (no comma separator, no units). In a game context this renders as '180000' which is harder to read than '180,000'. The sibling fact geography-finland-lakes correctly uses 'Over {188,000} lakes' with comma formatting and units.",
+      "suggested_fix": "Change correct_answer to 'About {180,000} lakes' for readability consistency, or use 'About {188,000} lakes' to match the more precise figure cited in the sibling fact."
+    },
+    {
+      "id": "geography-germany-unesco-sites",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "States Germany has 55 UNESCO World Heritage Sites and 'ranks third globally... behind only Italy and China.' As of 2024–2026, China has 57 sites, Italy has 59, and Germany has 54 (figures are updated annually). The exact count of 55 may be slightly off and the ranking claim needs verification. Minor but worth checking against the current UNESCO list.",
+      "suggested_fix": "Rephrase as 'Over {50}' to make it more durable against annual UNESCO list updates, or verify the current count and update accordingly."
+    }
+  ]
+}

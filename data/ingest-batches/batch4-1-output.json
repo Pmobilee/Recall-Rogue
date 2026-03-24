@@ -1,0 +1,2573 @@
+[
+  {
+    "id": "food_cuisine-rice-forbidden-rice",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Black rice was known as 'forbidden rice' in ancient China because it was reserved exclusively for the royal family.",
+    "quizQuestion": "Why was black rice called 'forbidden rice' in ancient China?",
+    "correctAnswer": "Reserved for royalty",
+    "distractors": [
+      "It was considered poisonous",
+      "It grew only in temples",
+      "It caused hallucinations",
+      "Peasants were allergic to it",
+      "It was used in rituals only",
+      "It was thought to be cursed",
+      "It required sacred water",
+      "It was used as medicine"
+    ],
+    "acceptableAnswers": [
+      "reserved for the royal family",
+      "only for royalty",
+      "for the royal family"
+    ],
+    "explanation": "According to Wikipedia, black rice looks dark purple due to high levels of anthocyanins and was reserved for the consumption of the royal family in ancient China, earning it the name 'forbidden rice.'",
+    "wowFactor": "Black rice was so exclusive in ancient China that commoners were literally forbidden from eating it — only royals got to enjoy it!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which type of rice was reserved for Chinese royalty in ancient times?",
+        "correctAnswer": "Black rice",
+        "distractors": [
+          "Golden rice",
+          "Jasmine rice",
+          "Basmati rice"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: black rice gets its dark purple color from high levels of anthocyanins.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A food historian finds ancient Chinese laws restricting a colorful grain to the palace. Which rice?",
+        "correctAnswer": "Black rice",
+        "distractors": [
+          "Red rice",
+          "Wild rice",
+          "Brown rice"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Black rice was called ___ rice because only Chinese royals could eat it.",
+        "correctAnswer": "forbidden",
+        "distractors": [
+          "sacred",
+          "imperial",
+          "divine"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rice",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gilded Chinese palace bowl overflowing with dark purple-black rice grains, surrounded by forbidden-entry signs and imperial dragon motifs.",
+    "tags": [
+      "rice",
+      "china",
+      "royalty",
+      "food history",
+      "forbidden"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-rice-staple-half-world",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Rice is the staple food of over half the world's population, yet only about 8% of rice produced is traded internationally.",
+    "quizQuestion": "What percentage of the world's rice production is traded internationally?",
+    "correctAnswer": "About {8}%",
+    "distractors": [],
+    "acceptableAnswers": [
+      "8%",
+      "8 percent",
+      "around 8%"
+    ],
+    "explanation": "According to Wikipedia, despite feeding over half of humanity, rice is overwhelmingly consumed domestically. Only some 8% enters international trade, making it one of the least globally traded major food crops relative to its production.",
+    "wowFactor": "Rice feeds half the planet, but only 8% ever crosses a border — almost all of it is eaten where it's grown!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which staple grain has only about 8% of its production traded internationally?",
+        "correctAnswer": "Rice",
+        "distractors": [
+          "Wheat",
+          "Corn",
+          "Barley"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: over 50% of the world's rice production is exported.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A trade analyst notes this grain feeds half the world but barely enters global markets. Which crop?",
+        "correctAnswer": "Rice",
+        "distractors": [
+          "Soybean",
+          "Wheat",
+          "Maize"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rice is the staple food of over ___ of the world's population.",
+        "correctAnswer": "half",
+        "distractors": [
+          "a quarter",
+          "a third",
+          "two-thirds"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rice",
+    "sourceVerified": true,
+    "contentVolatility": "slow_changing",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive mountain of white rice grains with tiny ships carrying only a sliver of it across a blue ocean, showing the vast domestic consumption.",
+    "tags": [
+      "rice",
+      "trade",
+      "global food",
+      "agriculture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-rice-domestication-age",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Asian rice was domesticated in China up to 13,500 years ago, while African rice was independently domesticated about 3,000 years ago.",
+    "quizQuestion": "Where was Asian rice first domesticated up to 13,500 years ago?",
+    "correctAnswer": "China",
+    "distractors": [
+      "India",
+      "Thailand",
+      "Vietnam",
+      "Japan",
+      "Indonesia",
+      "Korea",
+      "Myanmar",
+      "Philippines"
+    ],
+    "acceptableAnswers": [
+      "China",
+      "in China"
+    ],
+    "explanation": "According to Wikipedia, Asian rice (Oryza sativa) was domesticated in China some 13,500 to 8,200 years ago. Separately, African rice (Oryza glaberrima) was domesticated in Africa about 3,000 years ago — two completely independent domestication events.",
+    "wowFactor": "Humans have been farming rice for potentially 13,500 years — making it one of the oldest domesticated crops on Earth!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which grain was domesticated in China up to 13,500 years ago?",
+        "correctAnswer": "Rice",
+        "distractors": [
+          "Wheat",
+          "Millet",
+          "Barley"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: African rice and Asian rice were domesticated independently.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "An archaeologist finds 13,000-year-old cultivated grain remains in China. Which crop?",
+        "correctAnswer": "Rice",
+        "distractors": [
+          "Wheat",
+          "Soybean",
+          "Maize"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "African rice was independently domesticated about ___ years ago.",
+        "correctAnswer": "{3000}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rice",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Chinese farmers tending bright green rice paddies under a prehistoric sky, with a timeline stretching back 13,500 years behind them.",
+    "tags": [
+      "rice",
+      "domestication",
+      "china",
+      "agriculture",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-nutmeg-two-spices",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "The nutmeg tree produces two distinct spices from its fruit: nutmeg from the seed, and mace from the seed covering.",
+    "quizQuestion": "What second spice comes from the seed covering of the nutmeg fruit?",
+    "correctAnswer": "Mace",
+    "distractors": [
+      "Clove",
+      "Allspice",
+      "Cardamom",
+      "Cinnamon",
+      "Saffron",
+      "Turmeric",
+      "Star anise",
+      "Vanilla"
+    ],
+    "acceptableAnswers": [
+      "mace",
+      "Mace"
+    ],
+    "explanation": "According to Wikipedia, the nutmeg tree (Myristica fragrans) is unique among spice plants in yielding two distinct spices from a single fruit — nutmeg from the seed itself, and mace from the reddish seed covering (aril) that surrounds it.",
+    "wowFactor": "One fruit, two spices — nutmeg and mace both come from the exact same tree, just different parts of the seed!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which spice tree uniquely produces both nutmeg and mace?",
+        "correctAnswer": "Myristica fragrans",
+        "distractors": [
+          "Cinnamomum verum",
+          "Syzygium aromaticum",
+          "Piper nigrum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: mace and nutmeg come from the same fruit.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A spice merchant describes a tree that yields two spices from one fruit. Which tree?",
+        "correctAnswer": "Nutmeg tree",
+        "distractors": [
+          "Pepper vine",
+          "Clove tree",
+          "Cinnamon tree"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nutmeg comes from the seed, while mace comes from the seed ___.",
+        "correctAnswer": "covering",
+        "distractors": [
+          "shell",
+          "root",
+          "stem"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nutmeg",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a nutmeg fruit showing the brown seed labeled 'nutmeg' and the bright red lacy covering labeled 'mace' glowing distinctly.",
+    "tags": [
+      "nutmeg",
+      "mace",
+      "spices",
+      "botany"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-nutmeg-banda-islands",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "The true nutmeg tree is native to the tiny Banda Islands in Maluku, Indonesia, which remain the main producer of nutmeg and mace.",
+    "quizQuestion": "Which tiny Indonesian islands are the native home and main producer of nutmeg?",
+    "correctAnswer": "Banda Islands",
+    "distractors": [
+      "Spice Islands",
+      "Molucca Islands",
+      "Raja Ampat",
+      "Sulawesi Islands",
+      "Komodo Islands",
+      "Flores Islands",
+      "Ternate Islands",
+      "Sumatra coast"
+    ],
+    "acceptableAnswers": [
+      "Banda Islands",
+      "the Banda Islands",
+      "Banda"
+    ],
+    "explanation": "According to Wikipedia, the Banda Islands in Maluku, Indonesia are both the native habitat of true nutmeg (Myristica fragrans) and remain the world's main source of nutmeg and mace to this day.",
+    "wowFactor": "A handful of tiny volcanic islands in Indonesia — the Banda Islands — are the birthplace and still the capital of the world's nutmeg supply!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which spice is native to the Banda Islands in Indonesia?",
+        "correctAnswer": "Nutmeg",
+        "distractors": [
+          "Clove",
+          "Black pepper",
+          "Cinnamon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: nutmeg is native to India.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Colonial powers fought wars over these tiny Indonesian islands for their precious spice. Which islands?",
+        "correctAnswer": "Banda Islands",
+        "distractors": [
+          "Bali Islands",
+          "Java Islands",
+          "Borneo Islands"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "True nutmeg is native to the Banda Islands in ___, Indonesia.",
+        "correctAnswer": "Maluku",
+        "distractors": [
+          "Sumatra",
+          "Sulawesi",
+          "Kalimantan"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nutmeg",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tiny volcanic islands rising from turquoise seas, covered in dark-leaved nutmeg trees heavy with golden fruit, labeled 'Banda Islands.'",
+    "tags": [
+      "nutmeg",
+      "indonesia",
+      "banda islands",
+      "spice trade"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-nutmeg-psychoactive",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Nutmeg in high doses can cause acute psychosis and serious toxic effects, despite being a common kitchen spice.",
+    "quizQuestion": "What serious mental health effect can high doses of nutmeg cause?",
+    "correctAnswer": "Acute psychosis",
+    "distractors": [
+      "Permanent amnesia",
+      "Chronic insomnia",
+      "Severe depression",
+      "Total paralysis",
+      "Color blindness",
+      "Hearing loss",
+      "Uncontrollable laughter",
+      "Complete numbness"
+    ],
+    "acceptableAnswers": [
+      "acute psychosis",
+      "psychosis"
+    ],
+    "explanation": "According to Wikipedia, while nutmeg and mace are common food spices, high doses can cause serious toxic effects including acute psychosis. The risks are heightened during pregnancy and for those with psychiatric conditions.",
+    "wowFactor": "That innocent spice in your kitchen cabinet can actually cause psychosis if you consume enough of it — nutmeg is secretly intense!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which common kitchen spice can cause acute psychosis in high doses?",
+        "correctAnswer": "Nutmeg",
+        "distractors": [
+          "Cinnamon",
+          "Ginger",
+          "Turmeric"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: nutmeg has been traditionally used for its psychoactive effects.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A doctor treats a patient who consumed large amounts of a holiday spice and developed psychosis. Which spice?",
+        "correctAnswer": "Nutmeg",
+        "distractors": [
+          "Clove",
+          "Allspice",
+          "Cinnamon"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "High doses of nutmeg can cause serious toxic effects including acute ___.",
+        "correctAnswer": "psychosis",
+        "distractors": [
+          "paralysis",
+          "blindness",
+          "deafness"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nutmeg",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "References psychoactive substance effects; appropriate for teens",
+    "visualDescription": "A split image: one side shows a cozy kitchen with nutmeg on a pie, the other shows swirling psychedelic warning symbols radiating from the same spice.",
+    "tags": [
+      "nutmeg",
+      "toxicity",
+      "psychoactive",
+      "spices"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-wine-oldest-evidence",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "The earliest evidence of wine production dates from around 6000 BCE in present-day Georgia, making wine about 8,000 years old.",
+    "quizQuestion": "In which modern country was the earliest evidence of wine production found?",
+    "correctAnswer": "Georgia",
+    "distractors": [
+      "Italy",
+      "Greece",
+      "France",
+      "Egypt",
+      "Iran",
+      "Turkey",
+      "Spain",
+      "Lebanon"
+    ],
+    "acceptableAnswers": [
+      "Georgia",
+      "present-day Georgia"
+    ],
+    "explanation": "According to Wikipedia, the earliest evidence of wine production dates from approximately 6000 BCE in present-day Georgia in the Caucasus region, predating Mediterranean winemaking traditions by thousands of years.",
+    "wowFactor": "Forget France and Italy — the world's oldest wine comes from Georgia in the Caucasus, dating back 8,000 years!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which beverage has its earliest production evidence in 6000 BCE Georgia?",
+        "correctAnswer": "Wine",
+        "distractors": [
+          "Beer",
+          "Mead",
+          "Cider"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the earliest evidence of wine production comes from France.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Archaeologists in the Caucasus find 8,000-year-old fermentation vessels. What drink was being made?",
+        "correctAnswer": "Wine",
+        "distractors": [
+          "Beer",
+          "Vodka",
+          "Kumis"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The earliest wine evidence dates from c. ___ BCE in present-day Georgia.",
+        "correctAnswer": "{6000}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wine",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References alcohol",
+    "visualDescription": "Ancient clay vessels half-buried in Georgian mountainside soil, with dark grape residue inside, under a sky showing '6000 BCE' in stone-carved numbers.",
+    "tags": [
+      "wine",
+      "georgia",
+      "ancient history",
+      "fermentation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-wine-phylloxera-crisis",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "In the late 19th century, European vineyards were largely destroyed by phylloxera, a tiny invasive insect pest from the Americas.",
+    "quizQuestion": "What invasive pest largely destroyed European vineyards in the late 1800s?",
+    "correctAnswer": "Phylloxera",
+    "distractors": [
+      "Boll weevil",
+      "Grape moth",
+      "Vine mealybug",
+      "Spider mites",
+      "Downy mildew",
+      "Root nematodes",
+      "Japanese beetle",
+      "Bark beetles"
+    ],
+    "acceptableAnswers": [
+      "phylloxera",
+      "Phylloxera"
+    ],
+    "explanation": "According to Wikipedia, the wine trade increased dramatically until the latter half of the 19th century, when European vineyards were largely destroyed by the invasive pest phylloxera, a microscopic louse that feeds on grapevine roots.",
+    "wowFactor": "A tiny American insect nearly wiped out all of Europe's wine — the phylloxera crisis was the closest the world came to losing wine forever!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which crop was largely destroyed across Europe by phylloxera in the 1800s?",
+        "correctAnswer": "Grapevines",
+        "distractors": [
+          "Wheat fields",
+          "Olive groves",
+          "Potato farms"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: phylloxera was an invasive pest that devastated European vineyards.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A 19th-century French winemaker watches helplessly as a microscopic pest kills his vines. What pest?",
+        "correctAnswer": "Phylloxera",
+        "distractors": [
+          "Locusts",
+          "Vine weevils",
+          "Grape borers"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "European vineyards were largely destroyed by the invasive pest ___ in the late 19th century.",
+        "correctAnswer": "phylloxera",
+        "distractors": [
+          "blight",
+          "locust",
+          "weevil"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wine",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Rows of withered brown grapevines stretching to the horizon in a French vineyard, with magnified tiny insects swarming the roots below ground.",
+    "tags": [
+      "wine",
+      "phylloxera",
+      "vineyards",
+      "19th century",
+      "pest"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-wine-religion-role",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Wine survived the Middle Ages largely because Christian monks continued winemaking for religious ceremonies when secular trade declined.",
+    "quizQuestion": "Who sustained European winemaking through the Middle Ages for religious use?",
+    "correctAnswer": "Monks",
+    "distractors": [
+      "Merchants",
+      "Nobility",
+      "Peasants",
+      "Soldiers",
+      "Alchemists",
+      "Scholars",
+      "Pilgrims",
+      "Apothecaries"
+    ],
+    "acceptableAnswers": [
+      "monks",
+      "Monks",
+      "winemaking monks",
+      "Christian monks"
+    ],
+    "explanation": "According to Wikipedia, after wine's popularity spread around the Mediterranean during Classical antiquity, it was sustained in Western Europe by winemaking monks who produced it for religious ceremonies, alongside a secular trade for general drinking.",
+    "wowFactor": "We might not have wine today if medieval monks hadn't kept making it for church — they were literally the world's first craft brewers!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which beverage was sustained through the Middle Ages by monastery production?",
+        "correctAnswer": "Wine",
+        "distractors": [
+          "Beer",
+          "Mead",
+          "Brandy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: wine has played an important role in religion since antiquity.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A medieval monastery produces barrels of a fermented drink for Mass. What are they making?",
+        "correctAnswer": "Wine",
+        "distractors": [
+          "Ale",
+          "Cider",
+          "Mead"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wine was sustained in Western Europe through the Middle Ages by winemaking ___.",
+        "correctAnswer": "monks",
+        "distractors": [
+          "kings",
+          "merchants",
+          "farmers"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wine",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References alcohol and religion",
+    "visualDescription": "Hooded monks in a stone cellar pressing grapes into wooden barrels, stained glass windows casting colored light across rows of aging wine casks.",
+    "tags": [
+      "wine",
+      "monks",
+      "medieval",
+      "religion",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-ramen-instant-noodles-inventor",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Instant noodles were invented in 1958 by Momofuku Ando, revolutionizing how ramen was consumed worldwide.",
+    "quizQuestion": "Who invented instant noodles in 1958, transforming ramen globally?",
+    "correctAnswer": "Momofuku Ando",
+    "distractors": [
+      "Jiro Ono",
+      "Haruki Murakami",
+      "Akio Morita",
+      "Soichiro Honda",
+      "Masaru Ibuka",
+      "Kiichiro Toyoda",
+      "Noritoshi Kanai",
+      "Yutaka Ishibashi"
+    ],
+    "acceptableAnswers": [
+      "Momofuku Ando",
+      "Ando Momofuku",
+      "Ando"
+    ],
+    "explanation": "According to Wikipedia, Momofuku Ando invented instant noodles in 1958, further popularizing ramen and eventually exporting instant ramen from Japan in 1971, where it gained international recognition.",
+    "wowFactor": "One man — Momofuku Ando — invented instant noodles in 1958 and single-handedly turned ramen into a global phenomenon!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "What food product did Momofuku Ando invent in 1958?",
+        "correctAnswer": "Instant noodles",
+        "distractors": [
+          "Soy sauce packets",
+          "Frozen sushi",
+          "Rice cookers"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: instant noodles were invented in China.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A Japanese inventor in 1958 creates a way to make ramen in minutes with just hot water. Who?",
+        "correctAnswer": "Momofuku Ando",
+        "distractors": [
+          "Jiro Ono",
+          "Akio Morita",
+          "Sakichi Toyoda"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Instant noodles were invented in ___ by Momofuku Ando.",
+        "correctAnswer": "{1958}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramen",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Momofuku Ando holding up a cup of steaming instant noodles triumphantly in 1958, with a factory production line behind him.",
+    "tags": [
+      "ramen",
+      "instant noodles",
+      "invention",
+      "japan"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-ramen-chinese-origin",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Despite its name meaning 'pulled noodles' in Chinese, Japanese ramen actually evolved from southern Chinese noodle dishes, not from the northern Chinese lamian it's named after.",
+    "quizQuestion": "From which region's cuisine did Japanese ramen actually evolve?",
+    "correctAnswer": "Southern China",
+    "distractors": [
+      "Northern China",
+      "Korea",
+      "Taiwan",
+      "Mongolia",
+      "Central China",
+      "Southeast Asia",
+      "Okinawa",
+      "Western China"
+    ],
+    "acceptableAnswers": [
+      "southern China",
+      "Southern China",
+      "south China",
+      "Guangdong"
+    ],
+    "explanation": "According to Wikipedia, while 'ramen' is borrowed from the Chinese word lamian meaning 'pulled noodles' (a northern Chinese dish), ramen actually evolved from southern Chinese noodle dishes from regions such as Guangdong, reflecting the demographics of Chinese immigrants in Yokohama.",
+    "wowFactor": "Ramen is named after a Chinese dish it has nothing to do with — it evolved from completely different noodles brought by southern Chinese immigrants!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which Japanese dish evolved from southern Chinese noodles despite being named after northern ones?",
+        "correctAnswer": "Ramen",
+        "distractors": [
+          "Udon",
+          "Soba",
+          "Yakisoba"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Japanese ramen directly derives from Chinese lamian (pulled noodles).",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Historians trace this Japanese noodle soup to Yokohama Chinatown's Cantonese immigrants. Which dish?",
+        "correctAnswer": "Ramen",
+        "distractors": [
+          "Udon",
+          "Gyoza",
+          "Tempura"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ramen's origins can be traced back to ___ Chinatown in the late 19th century.",
+        "correctAnswer": "Yokohama",
+        "distractors": [
+          "Tokyo",
+          "Osaka",
+          "Kyoto"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramen",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split scene showing northern Chinese hand-pulled noodles on one side and a steaming bowl of Japanese ramen on the other, with a red X between them.",
+    "tags": [
+      "ramen",
+      "japan",
+      "china",
+      "food origins",
+      "noodles"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-ramen-postwar-rise",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Ramen only became popular across Japan after World War II, when rice shortages increased wheat consumption and millions of Japanese returned from China.",
+    "quizQuestion": "Why did ramen become popular nationwide in Japan only after World War II?",
+    "correctAnswer": "Due to rice shortages",
+    "distractors": [
+      "Due to American influence",
+      "Due to new refrigeration",
+      "Due to government campaigns",
+      "Due to railroad expansion",
+      "Due to tourism growth",
+      "Due to television advertising",
+      "Due to fishing industry decline",
+      "Due to new farming tools"
+    ],
+    "acceptableAnswers": [
+      "rice shortages",
+      "due to rice shortages",
+      "because of rice shortages"
+    ],
+    "explanation": "According to Wikipedia, ramen was largely confined to Chinese communities in Japan until after WWII. Rice shortages drove increased wheat consumption, and millions of Japanese colonizers returning from China brought a taste for Chinese-style noodles, making ramen a nationwide phenomenon.",
+    "wowFactor": "Ramen was once looked down on in Japan — it only became the national obsession because WWII rice shortages forced people to eat wheat noodles instead!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which now-beloved Japanese dish was originally looked down upon due to anti-Chinese sentiment?",
+        "correctAnswer": "Ramen",
+        "distractors": [
+          "Sushi",
+          "Tempura",
+          "Tofu"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: ramen was popular across all of Japan before World War II.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Postwar Japan faces rice shortages, and millions return from China with a taste for wheat noodles. What booms?",
+        "correctAnswer": "Ramen",
+        "distractors": [
+          "Soba",
+          "Udon",
+          "Gyoza"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ramen was originally associated with the ___ class in Japan before becoming a national dish.",
+        "correctAnswer": "working",
+        "distractors": [
+          "upper",
+          "merchant",
+          "samurai"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramen",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References wartime history and racial discrimination",
+    "visualDescription": "A postwar Japanese street scene with workers lined up at a humble ramen cart, empty rice paddies visible in the background.",
+    "tags": [
+      "ramen",
+      "japan",
+      "world war II",
+      "food history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-avocado-berry",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "The avocado is botanically classified as a large berry containing a single large seed, despite its size and appearance.",
+    "quizQuestion": "What is the avocado botanically classified as?",
+    "correctAnswer": "A large berry",
+    "distractors": [
+      "A stone fruit",
+      "A tropical nut",
+      "A legume",
+      "A drupe",
+      "A pome fruit",
+      "A gourd",
+      "A capsule fruit",
+      "A citrus fruit"
+    ],
+    "acceptableAnswers": [
+      "a berry",
+      "berry",
+      "large berry",
+      "a large berry"
+    ],
+    "explanation": "According to Wikipedia, the avocado fruit is botanically a large berry containing a single large seed. This makes it similar in classification to bananas and grapes, despite looking nothing like them.",
+    "wowFactor": "Avocados are technically berries — the same botanical category as grapes and blueberries, just giant and green!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which popular green fruit is botanically classified as a large berry?",
+        "correctAnswer": "Avocado",
+        "distractors": [
+          "Kiwi",
+          "Lime",
+          "Pear"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the avocado is botanically a stone fruit like a peach.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A botanist explains that this popular toast topping is technically a giant berry. Which fruit?",
+        "correctAnswer": "Avocado",
+        "distractors": [
+          "Tomato",
+          "Cucumber",
+          "Fig"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The avocado is botanically a large ___ containing a single seed.",
+        "correctAnswer": "berry",
+        "distractors": [
+          "drupe",
+          "nut",
+          "pod"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Avocado",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A halved avocado sitting among tiny blueberries and grapes on a botanical classification chart, all labeled 'BERRY' with arrows.",
+    "tags": [
+      "avocado",
+      "botany",
+      "berry",
+      "classification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-avocado-mexico-dominance",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Mexico produces 29% of the world's avocados, supplying nearly a third of the 10.5 million tonnes harvested globally in 2023.",
+    "quizQuestion": "What share of global avocado production did Mexico supply in 2023?",
+    "correctAnswer": "{29}%",
+    "distractors": [],
+    "acceptableAnswers": [
+      "29%",
+      "29 percent",
+      "about 29%"
+    ],
+    "explanation": "According to Wikipedia, as of 2023 Mexico is the world's leading avocado producer, supplying 29% of the global harvest of 10.5 million tonnes. This dominance comes with controversy, as production has been linked to deforestation and organized crime involvement.",
+    "wowFactor": "Nearly one in three avocados on Earth comes from Mexico — and their production is so valuable that cartels have gotten involved!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which country is the world's largest avocado producer at 29% of global output?",
+        "correctAnswer": "Mexico",
+        "distractors": [
+          "Brazil",
+          "Colombia",
+          "Peru"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Brazil is the world's leading producer of avocados.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A global supply report shows one country producing nearly a third of all avocados. Which country?",
+        "correctAnswer": "Mexico",
+        "distractors": [
+          "Chile",
+          "Indonesia",
+          "Kenya"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The global avocado harvest in 2023 was ___ million tonnes.",
+        "correctAnswer": "{10.5}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Avocado",
+    "sourceVerified": true,
+    "contentVolatility": "slow_changing",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References organized crime tangentially",
+    "visualDescription": "A map of Mexico overflowing with green avocados, with arrows shipping them to every continent, showing '29%' in bold numbers.",
+    "tags": [
+      "avocado",
+      "mexico",
+      "agriculture",
+      "production"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "food_cuisine-avocado-laurel-family",
+    "type": "knowledge",
+    "domain": "Food & Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "food_cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "The avocado tree belongs to the laurel family, making it a relative of cinnamon, bay laurel, and camphor trees.",
+    "quizQuestion": "Which plant family does the avocado tree belong to, shared with cinnamon?",
+    "correctAnswer": "Laurel family",
+    "distractors": [
+      "Rose family",
+      "Citrus family",
+      "Palm family",
+      "Nightshade family",
+      "Legume family",
+      "Mallow family",
+      "Olive family",
+      "Mulberry family"
+    ],
+    "acceptableAnswers": [
+      "laurel family",
+      "Lauraceae",
+      "the laurel family"
+    ],
+    "explanation": "According to Wikipedia, the avocado (Persea americana) is an evergreen tree in the laurel family (Lauraceae). This means it shares a botanical family with aromatic plants like cinnamon, bay laurel, and camphor.",
+    "wowFactor": "Avocados and cinnamon are botanical cousins — they're both in the laurel family, despite tasting nothing alike!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which popular fruit tree is in the same family as cinnamon and bay laurel?",
+        "correctAnswer": "Avocado",
+        "distractors": [
+          "Mango",
+          "Papaya",
+          "Coconut"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the avocado belongs to the same plant family as citrus fruits.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A botanist groups this fruit tree with cinnamon and camphor. Which tree?",
+        "correctAnswer": "Avocado",
+        "distractors": [
+          "Banana",
+          "Guava",
+          "Lychee"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The avocado is an evergreen tree in the ___ family (Lauraceae).",
+        "correctAnswer": "laurel",
+        "distractors": [
+          "palm",
+          "rose",
+          "olive"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Avocado",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An avocado tree standing next to a cinnamon tree and bay laurel, all connected by roots underground with 'Lauraceae' on a family tree diagram.",
+    "tags": [
+      "avocado",
+      "botany",
+      "laurel family",
+      "plant classification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-barcode-morse-code-origin",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "The barcode was invented based on Morse code — its creators extended dots and dashes into thin and thick bars.",
+    "quizQuestion": "What communication system inspired the invention of the barcode?",
+    "correctAnswer": "Morse code",
+    "distractors": [
+      "Binary code",
+      "Braille",
+      "Semaphore",
+      "Telegraph signals",
+      "Musical notation",
+      "Hieroglyphics",
+      "Sign language",
+      "Shorthand writing"
+    ],
+    "acceptableAnswers": [
+      "Morse code",
+      "morse code"
+    ],
+    "explanation": "According to Wikipedia, the barcode was invented by Norman Joseph Woodland and Bernard Silver and patented in the US in 1952. The invention was explicitly based on Morse code, which was extended into thin and thick bars rather than dots and dashes.",
+    "wowFactor": "Every barcode you scan at the grocery store is basically Morse code stretched into lines — dots became thin bars, dashes became thick ones!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which everyday technology was originally based on extending Morse code into bars?",
+        "correctAnswer": "Barcode",
+        "distractors": [
+          "QR code",
+          "Magnetic stripe",
+          "RFID chip"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the barcode was inspired by binary computer code.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Two inventors extend an old telegraph system's dots and dashes into visual bars. What do they create?",
+        "correctAnswer": "Barcode",
+        "distractors": [
+          "QR code",
+          "Punch card",
+          "Microchip"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The barcode was invented by Norman Joseph Woodland and ___.",
+        "correctAnswer": "Bernard Silver",
+        "distractors": [
+          "George Laurer",
+          "Alan Turing",
+          "Claude Shannon"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Barcode",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Morse code telegraph key morphing into a modern barcode, with dots transforming into thin bars and dashes into thick bars in a visual progression.",
+    "tags": [
+      "barcode",
+      "morse code",
+      "invention",
+      "technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-barcode-patent-to-success-gap",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "The barcode was patented in 1952 but took over twenty years to become commercially successful, first succeeding in supermarkets.",
+    "quizQuestion": "How many years did it take after patenting for barcodes to become commercially successful?",
+    "correctAnswer": "Over {20} years",
+    "distractors": [],
+    "acceptableAnswers": [
+      "over 20 years",
+      "more than 20 years",
+      "about 20 years"
+    ],
+    "explanation": "According to Wikipedia, the barcode was patented in 1952 but it took over twenty years before the invention became commercially successful. Barcodes finally found their niche in automating supermarket checkout systems, becoming almost universal for that purpose.",
+    "wowFactor": "The barcode sat around for over 20 years after being invented before anyone figured out what to do with it — then supermarkets changed everything!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which invention was patented in 1952 but took 20+ years to succeed commercially?",
+        "correctAnswer": "Barcode",
+        "distractors": [
+          "Microchip",
+          "Laser",
+          "Fax machine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: barcodes became commercially successful immediately after being patented.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "An inventor patents a visual data system in 1952 that nobody uses until supermarkets adopt it decades later. What?",
+        "correctAnswer": "Barcode",
+        "distractors": [
+          "Credit card",
+          "Price tag",
+          "Receipt printer"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The barcode was patented in the US in ___.",
+        "correctAnswer": "{1952}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Barcode",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dusty 1952 patent document on one side, a busy 1970s supermarket checkout scanner on the other, connected by a long timeline arrow.",
+    "tags": [
+      "barcode",
+      "invention",
+      "supermarket",
+      "patent"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-barcode-railroad-first-use",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "Before supermarkets, one of the first industrial barcode systems used colored stripes on railroad cars, but was abandoned after ten years as unreliable.",
+    "quizQuestion": "What industry first tried using barcodes with colored stripes before supermarkets adopted them?",
+    "correctAnswer": "Railroads",
+    "distractors": [
+      "Airlines",
+      "Shipping ports",
+      "Postal service",
+      "Automobile factories",
+      "Warehouses",
+      "Mining operations",
+      "Military logistics",
+      "Textile mills"
+    ],
+    "acceptableAnswers": [
+      "railroads",
+      "Railroads",
+      "railroad",
+      "the railroad industry"
+    ],
+    "explanation": "According to Wikipedia, an early industrial barcode use was sponsored by the Association of American Railroads in the late 1960s. The KarTrak system used colored stripes on steel plates attached to railroad cars, read by trackside scanners, but was abandoned after about ten years because it proved unreliable after long-term use.",
+    "wowFactor": "Barcodes were originally tried on trains, not groceries — colored stripes on railroad cars read at 100 mph, but the system flopped after a decade!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which barcode system used colored stripes on railroad cars before being abandoned?",
+        "correctAnswer": "KarTrak ACI",
+        "distractors": [
+          "RFID Tags",
+          "ScanTrack",
+          "RailCode"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the first commercial barcode use was in supermarkets.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In the 1960s, colored stripes on steel plates track railway cars at speed. What technology is being tested?",
+        "correctAnswer": "Barcodes",
+        "distractors": [
+          "RFID chips",
+          "GPS trackers",
+          "Radio beacons"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The early railroad barcode system was abandoned after about ___ years due to unreliability.",
+        "correctAnswer": "{10}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Barcode",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1960s railroad car with colorful striped plates on its side, a trackside scanner reading them as the train whooshes past at full speed.",
+    "tags": [
+      "barcode",
+      "railroad",
+      "KarTrak",
+      "technology history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-gregorian-calendar-10-days-skipped",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "When the Gregorian calendar was adopted in 1582, ten days were skipped — October 4 was followed directly by October 15.",
+    "quizQuestion": "How many days were skipped when the Gregorian calendar was adopted in 1582?",
+    "correctAnswer": "{10} days",
+    "distractors": [],
+    "acceptableAnswers": [
+      "10 days",
+      "ten days",
+      "10"
+    ],
+    "explanation": "According to Wikipedia, the Gregorian reform advanced the date by 10 days to correct centuries of drift: Thursday 4 October 1582 was followed by Friday 15 October 1582. This corrected the excess leap days accumulated since the First Council of Nicaea in AD 325.",
+    "wowFactor": "Imagine going to bed on October 4th and waking up on October 15th — that's exactly what happened in 1582 when ten days were simply erased from the calendar!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which calendar reform caused 10 days to be skipped in October 1582?",
+        "correctAnswer": "Gregorian calendar",
+        "distractors": [
+          "Julian calendar",
+          "Roman calendar",
+          "Islamic calendar"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: October 4, 1582 was followed by October 5 in countries adopting the Gregorian calendar.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A 1582 merchant's diary jumps from October 4 straight to October 15. Why?",
+        "correctAnswer": "Gregorian calendar adoption",
+        "distractors": [
+          "Pages were torn out",
+          "A plague quarantine",
+          "A printing error"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Gregorian calendar was introduced in ___ following a papal bull by Pope Gregory XIII.",
+        "correctAnswer": "{1582}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1582 calendar page with October 5 through October 14 dramatically crossed out in red ink, showing the jump from 4 to 15.",
+    "tags": [
+      "calendar",
+      "gregorian",
+      "1582",
+      "time",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-gregorian-calendar-leap-year-rule",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "The year 1900 was not a leap year, but 2000 was — because the Gregorian calendar skips leap years divisible by 100 unless also divisible by 400.",
+    "quizQuestion": "Why was the year 1900 not a leap year despite being divisible by 4?",
+    "correctAnswer": "Divisible by 100 not 400",
+    "distractors": [
+      "It was a war year",
+      "The Pope declared it so",
+      "A calculation error",
+      "It followed a leap year",
+      "Solar eclipses that year",
+      "To honor a saint's day",
+      "An astronomical event",
+      "The Julian rule applied"
+    ],
+    "acceptableAnswers": [
+      "divisible by 100 but not 400",
+      "century year not divisible by 400"
+    ],
+    "explanation": "According to Wikipedia, the Gregorian calendar rule states every year divisible by four is a leap year, except for years divisible by 100, unless they are also divisible by 400. So 1800 and 1900 were not leap years, but 1600 and 2000 were.",
+    "wowFactor": "Most people think every 4th year is a leap year, but 1900 wasn't one — the Gregorian calendar has a hidden rule most people never learn!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which calendar system has the rule that century years must be divisible by 400 to be leap years?",
+        "correctAnswer": "Gregorian calendar",
+        "distractors": [
+          "Julian calendar",
+          "Hebrew calendar",
+          "Chinese calendar"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the year 2100 will be a leap year.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A programmer needs to know: was 2000 a leap year? What's the answer?",
+        "correctAnswer": "Yes",
+        "distractors": [
+          "No"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Gregorian calendar averages ___ days per year, closer to the solar year than the Julian calendar.",
+        "correctAnswer": "365.2425",
+        "distractors": [
+          "365.25",
+          "365.2422",
+          "365.24"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A flowchart showing the leap year decision tree: divisible by 4? yes → by 100? yes → by 400? with checkmarks and X marks at each branch.",
+    "tags": [
+      "calendar",
+      "leap year",
+      "gregorian",
+      "math"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-gregorian-calendar-greece-last",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Greece was the last European country to adopt the Gregorian calendar, not switching until 1923 — over 340 years after Catholic countries adopted it.",
+    "quizQuestion": "Which was the last European country to adopt the Gregorian calendar, in 1923?",
+    "correctAnswer": "Greece",
+    "distractors": [
+      "Russia",
+      "Turkey",
+      "Romania",
+      "Serbia",
+      "Bulgaria",
+      "Finland",
+      "Poland",
+      "Albania"
+    ],
+    "acceptableAnswers": [
+      "Greece"
+    ],
+    "explanation": "According to Wikipedia, the Gregorian calendar was initially adopted by Catholic countries in 1582. Protestant and Eastern Orthodox countries gradually followed over the next three centuries, with Greece being the last European country to adopt the calendar for civil use in 1923.",
+    "wowFactor": "While most of Europe switched calendars in the 1500s-1700s, Greece held out until 1923 — they were literally living in a different time!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which European country held out until 1923 before adopting the Gregorian calendar?",
+        "correctAnswer": "Greece",
+        "distractors": [
+          "Spain",
+          "Italy",
+          "France"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: all European countries adopted the Gregorian calendar by the year 1800.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 1923, this Orthodox nation finally aligns its civil calendar with Western Europe. Which country?",
+        "correctAnswer": "Greece",
+        "distractors": [
+          "Russia",
+          "Serbia",
+          "Ethiopia"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Greece adopted the Gregorian calendar for civil use in ___.",
+        "correctAnswer": "{1923}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Europe with countries lighting up chronologically as they adopt the Gregorian calendar, Greece glowing last in 1923.",
+    "tags": [
+      "calendar",
+      "greece",
+      "gregorian",
+      "europe",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-origami-edo-period",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "oddities",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "oddities",
+    "categoryL3": "",
+    "statement": "Traditional Japanese origami has been practiced since the Edo period (1603-1868) and was less strict, sometimes allowing cuts and non-square paper.",
+    "quizQuestion": "During which Japanese period did traditional origami practice begin?",
+    "correctAnswer": "Edo period",
+    "distractors": [
+      "Meiji period",
+      "Heian period",
+      "Muromachi period",
+      "Kamakura period",
+      "Nara period",
+      "Showa period",
+      "Taisho period",
+      "Sengoku period"
+    ],
+    "acceptableAnswers": [
+      "Edo period",
+      "Edo",
+      "the Edo period"
+    ],
+    "explanation": "According to Wikipedia, traditional Japanese origami has been practiced since the Edo period (1603-1868) and was often less strict about modern conventions, sometimes cutting the paper or using non-square shapes to start with.",
+    "wowFactor": "Old-school origami masters in the Edo period actually used scissors and odd-shaped paper — the 'no cuts, square only' rules are a modern invention!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which Japanese art form has been practiced since the Edo period (1603-1868)?",
+        "correctAnswer": "Origami",
+        "distractors": [
+          "Ikebana",
+          "Bonsai",
+          "Kabuki"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: traditional Edo-period origami strictly forbade cutting the paper.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A 17th-century Japanese artisan folds paper into decorative shapes, sometimes using scissors. What art?",
+        "correctAnswer": "Origami",
+        "distractors": [
+          "Kirigami",
+          "Calligraphy",
+          "Ukiyo-e"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Edo period lasted from 1603 to ___.",
+        "correctAnswer": "{1868}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Origami",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Edo-period Japanese room with paper cranes and flowers on a low table, alongside scissors and irregularly-shaped colored paper sheets.",
+    "tags": [
+      "origami",
+      "japan",
+      "edo period",
+      "paper art"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-origami-engineering-uses",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "oddities",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "oddities",
+    "categoryL3": "",
+    "statement": "The principles of origami are used in real engineering applications including medical stents and product packaging.",
+    "quizQuestion": "In which medical device are origami folding principles used?",
+    "correctAnswer": "Stents",
+    "distractors": [
+      "Prosthetic limbs",
+      "Surgical masks",
+      "Hearing aids",
+      "Contact lenses",
+      "Pacemakers",
+      "Dental implants",
+      "Blood filters",
+      "Bone screws"
+    ],
+    "acceptableAnswers": [
+      "stents",
+      "Stents",
+      "medical stents"
+    ],
+    "explanation": "According to Wikipedia, the principles of origami are used in stents, packaging, and other engineering applications. Medical stents use origami-inspired folding to collapse into a small size for insertion, then expand once inside a blood vessel.",
+    "wowFactor": "The same folding principles behind paper cranes are saving lives — origami math is used to design stents that expand inside your blood vessels!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which Japanese paper art has principles used in engineering applications like stents?",
+        "correctAnswer": "Origami",
+        "distractors": [
+          "Kirigami",
+          "Sumi-e",
+          "Ukiyo-e"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: origami principles are used in real-world engineering and packaging.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "An engineer designs a collapsible medical device using ancient Japanese folding techniques. Which art inspires them?",
+        "correctAnswer": "Origami",
+        "distractors": [
+          "Ikebana",
+          "Kintsugi",
+          "Sashiko"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Origami principles are used in stents, ___, and other engineering applications.",
+        "correctAnswer": "packaging",
+        "distractors": [
+          "textiles",
+          "ceramics",
+          "glasswork"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Origami",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A medical stent unfolding inside an artery next to a paper crane unfolding, showing the shared geometric folding patterns between them.",
+    "tags": [
+      "origami",
+      "engineering",
+      "stents",
+      "medical",
+      "technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-origami-paper-crane",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "oddities",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "oddities",
+    "categoryL3": "",
+    "statement": "The best-known origami model is the Japanese paper crane, made from a small number of basic folds combined in intricate ways.",
+    "quizQuestion": "What is the best-known and most iconic origami model?",
+    "correctAnswer": "Paper crane",
+    "distractors": [
+      "Paper frog",
+      "Paper boat",
+      "Paper flower",
+      "Paper butterfly",
+      "Paper star",
+      "Paper fish",
+      "Paper dragon",
+      "Paper fox"
+    ],
+    "acceptableAnswers": [
+      "paper crane",
+      "the paper crane",
+      "crane",
+      "Japanese paper crane"
+    ],
+    "explanation": "According to Wikipedia, the best-known origami model is the Japanese paper crane (orizuru). Despite origami's vast repertoire, the crane has become the universal symbol of the art form, recognized worldwide.",
+    "wowFactor": "Out of thousands of possible origami designs, the humble paper crane reigns supreme as the most recognized folded creation on Earth!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which art form is most closely associated with the iconic paper crane?",
+        "correctAnswer": "Origami",
+        "distractors": [
+          "Kirigami",
+          "Quilling",
+          "Papier-mache"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: modern origami generally discourages the use of cuts, glue, or markings.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A child folds a square sheet of paper into the world's most famous folded figure. What are they making?",
+        "correctAnswer": "Paper crane",
+        "distractors": [
+          "Paper airplane",
+          "Paper hat",
+          "Paper boat"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Origami designs begin with a flat ___ sheet of paper.",
+        "correctAnswer": "square",
+        "distractors": [
+          "rectangular",
+          "circular",
+          "triangular"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Origami",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A perfectly folded white paper crane sitting on a tatami mat, surrounded by colorful square sheets of origami paper.",
+    "tags": [
+      "origami",
+      "paper crane",
+      "japan",
+      "art"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-metric-system-seven-base-units",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "The modern metric system (SI) is built on exactly seven base units: metre, kilogram, second, ampere, kelvin, mole, and candela.",
+    "quizQuestion": "How many base units does the modern metric system (SI) define?",
+    "correctAnswer": "{7}",
+    "distractors": [],
+    "acceptableAnswers": [
+      "7",
+      "seven",
+      "7 base units"
+    ],
+    "explanation": "According to Wikipedia, the International System of Units (SI) defines seven base units: metre (length), kilogram (mass), second (time), ampere (electric current), kelvin (temperature), mole (amount of substance), and candela (luminous intensity).",
+    "wowFactor": "Every measurement in the metric system — from nanoseconds to gigajoules — is built from just 7 base units. That's the entire foundation!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which measurement system is built on exactly 7 base units including the metre and kilogram?",
+        "correctAnswer": "SI (metric system)",
+        "distractors": [
+          "Imperial system",
+          "CGS system",
+          "US customary"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the candela is one of the seven SI base units.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A physics student must memorize the fundamental units: metre, kilogram, second, ampere, kelvin, mole, and ___.",
+        "correctAnswer": "Candela",
+        "distractors": [
+          "Newton",
+          "Hertz",
+          "Joule"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The SI base unit for temperature is the ___.",
+        "correctAnswer": "kelvin",
+        "distractors": [
+          "celsius",
+          "fahrenheit",
+          "rankine"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Metric_system",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Seven glowing pillars each labeled with an SI base unit, supporting a grand archway labeled 'International System of Units.'",
+    "tags": [
+      "metric system",
+      "SI units",
+      "measurement",
+      "science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-metric-system-physical-constants",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "Today, all SI base units are defined by physical constants rather than physical prototypes — the kilogram was the last to switch.",
+    "quizQuestion": "How are all SI base units defined today, rather than by physical objects?",
+    "correctAnswer": "By physical constants",
+    "distractors": [
+      "By chemical reactions",
+      "By atomic weights",
+      "By Earth's dimensions",
+      "By water properties",
+      "By laser wavelengths",
+      "By celestial orbits",
+      "By magnetic fields",
+      "By sound frequencies"
+    ],
+    "acceptableAnswers": [
+      "physical constants",
+      "by physical constants",
+      "fundamental physical constants"
+    ],
+    "explanation": "According to Wikipedia, today all SI base units are defined by physical constants, not by prototypes in the form of physical objects as they were in the past. The kilogram was famously the last holdout, previously defined by a physical platinum-iridium cylinder in Paris.",
+    "wowFactor": "The kilogram used to be defined by a single metal cylinder in a Paris vault — now every SI unit is defined by unchangeable laws of physics instead!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which measurement system redefined all its base units using physical constants instead of prototypes?",
+        "correctAnswer": "SI (metric system)",
+        "distractors": [
+          "Imperial system",
+          "CGS system",
+          "MTS system"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the kilogram is still defined by a physical platinum cylinder in Paris.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Scientists replace a famous metal cylinder in Paris with a definition based on Planck's constant. What unit?",
+        "correctAnswer": "Kilogram",
+        "distractors": [
+          "Metre",
+          "Second",
+          "Ampere"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The SI system derives from the older ___-kilogram-second system of units.",
+        "correctAnswer": "metre",
+        "distractors": [
+          "centimetre",
+          "foot",
+          "inch"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Metric_system",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gleaming platinum cylinder under a glass dome being replaced by glowing mathematical equations and fundamental constants floating in space.",
+    "tags": [
+      "metric system",
+      "SI units",
+      "physical constants",
+      "kilogram"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-metric-system-time-not-decimal",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "Despite the metric system being decimal-based, minutes and hours are ancient base-60 (sexagesimal) units that the SI accepts but didn't create.",
+    "quizQuestion": "What ancient number base do minutes and hours use, unlike the decimal metric system?",
+    "correctAnswer": "Base 60",
+    "distractors": [
+      "Base 12",
+      "Base 8",
+      "Base 16",
+      "Base 24",
+      "Base 10",
+      "Base 20",
+      "Base 5",
+      "Base 100"
+    ],
+    "acceptableAnswers": [
+      "base 60",
+      "Base 60",
+      "sexagesimal",
+      "base-60"
+    ],
+    "explanation": "According to Wikipedia, the minute and hour are ancient non-metric but SI-accepted multiples of time that use base 60 (sexagesimal), inherited from Babylonian mathematics. Similarly, degrees of angle and their subdivisions (arcminutes, arcseconds) are also sexagesimal.",
+    "wowFactor": "The metric system is all about tens — except for time. We still measure hours and minutes in base 60, a system the Babylonians invented thousands of years ago!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which ancient civilization's base-60 number system gave us 60-minute hours?",
+        "correctAnswer": "Babylonian",
+        "distractors": [
+          "Egyptian",
+          "Roman",
+          "Greek"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the minute and hour are officially part of the SI base unit system.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A student asks why there are 60 seconds in a minute instead of 100. The answer traces back to which number system?",
+        "correctAnswer": "Sexagesimal (base 60)",
+        "distractors": [
+          "Duodecimal (base 12)",
+          "Octal (base 8)",
+          "Binary (base 2)"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Minutes and hours are ancient ___ units that the SI accepts but didn't create.",
+        "correctAnswer": "sexagesimal",
+        "distractors": [
+          "decimal",
+          "binary",
+          "hexadecimal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Metric_system",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A clock face showing 60 divisions alongside a metric ruler showing 10 divisions, highlighting the clash between sexagesimal time and decimal measurement.",
+    "tags": [
+      "metric system",
+      "time",
+      "sexagesimal",
+      "base 60",
+      "babylonian"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-rosetta-stone-three-scripts",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "The Rosetta Stone contains the same decree written in three scripts: Egyptian hieroglyphs, Demotic script, and Ancient Greek.",
+    "quizQuestion": "How many different scripts appear on the Rosetta Stone?",
+    "correctAnswer": "{3}",
+    "distractors": [],
+    "acceptableAnswers": [
+      "3",
+      "three",
+      "3 scripts"
+    ],
+    "explanation": "According to Wikipedia, the Rosetta Stone is inscribed with three versions of a decree issued in 196 BC: the top in Egyptian hieroglyphic script, the middle in Demotic script, and the bottom in Ancient Greek. The minor differences between the three versions made it the key to deciphering Egyptian scripts.",
+    "wowFactor": "One stone, three languages, and the key to unlocking an entire lost civilization's writing — the Rosetta Stone is history's greatest cheat sheet!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which ancient artifact contains the same text in hieroglyphic, Demotic, and Greek scripts?",
+        "correctAnswer": "Rosetta Stone",
+        "distractors": [
+          "Dead Sea Scrolls",
+          "Behistun Inscription",
+          "Hammurabi's Code"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the Rosetta Stone contains text in Latin.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Scholars compare three versions of the same decree to crack an ancient writing system. Which artifact?",
+        "correctAnswer": "Rosetta Stone",
+        "distractors": [
+          "Moabite Stone",
+          "Turin Papyrus",
+          "Narmer Palette"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Rosetta Stone decree was issued in ___ BC during the Ptolemaic dynasty.",
+        "correctAnswer": "{196}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The dark granodiorite Rosetta Stone with three distinct bands of text glowing in different colors — hieroglyphs, Demotic, and Greek.",
+    "tags": [
+      "rosetta stone",
+      "hieroglyphs",
+      "ancient egypt",
+      "decipherment"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-rosetta-stone-champollion",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "Jean-Francois Champollion announced the transliteration of Egyptian hieroglyphs in Paris in 1822, using the Rosetta Stone as his key.",
+    "quizQuestion": "Who announced the decipherment of Egyptian hieroglyphs in 1822?",
+    "correctAnswer": "Champollion",
+    "distractors": [
+      "Thomas Young",
+      "Howard Carter",
+      "Heinrich Schliemann",
+      "Arthur Evans",
+      "Flinders Petrie",
+      "Auguste Mariette",
+      "Karl Lepsius",
+      "Athanasius Kircher"
+    ],
+    "acceptableAnswers": [
+      "Champollion",
+      "Jean-Francois Champollion",
+      "Jean-François Champollion"
+    ],
+    "explanation": "According to Wikipedia, Jean-Francois Champollion announced the transliteration of the Egyptian scripts in Paris in 1822. Key breakthroughs included recognizing that hieroglyphs used phonetic characters to spell both foreign and native Egyptian words.",
+    "wowFactor": "One man cracked a code that had been unreadable for over a thousand years — Champollion unlocked hieroglyphs in 1822 and resurrected ancient Egypt!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which ancient script did Champollion famously decipher in 1822?",
+        "correctAnswer": "Hieroglyphs",
+        "distractors": [
+          "Cuneiform",
+          "Linear B",
+          "Phoenician"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Champollion announced his decipherment of hieroglyphs in London.",
+        "correctAnswer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 1822 Paris, a scholar announces he can read ancient Egyptian writing. Who is he?",
+        "correctAnswer": "Champollion",
+        "distractors": [
+          "Napoleon",
+          "Young",
+          "Rosellini"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Champollion announced the transliteration of Egyptian scripts in ___.",
+        "correctAnswer": "{1822}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Champollion standing before a Parisian audience, pointing excitedly at hieroglyphic translations on a large blackboard in 1822.",
+    "tags": [
+      "rosetta stone",
+      "champollion",
+      "hieroglyphs",
+      "decipherment"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  },
+  {
+    "id": "general_knowledge-rosetta-stone-british-museum",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "general_knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "The Rosetta Stone has been at the British Museum since 1802 and is its most visited object, taken from the French after their defeat in Egypt.",
+    "quizQuestion": "Where has the Rosetta Stone been on display almost continuously since 1802?",
+    "correctAnswer": "British Museum",
+    "distractors": [
+      "The Louvre",
+      "Cairo Museum",
+      "Smithsonian",
+      "Metropolitan Museum",
+      "Vatican Museums",
+      "Pergamon Museum",
+      "National Gallery",
+      "Hermitage Museum"
+    ],
+    "acceptableAnswers": [
+      "British Museum",
+      "the British Museum"
+    ],
+    "explanation": "According to Wikipedia, after the British defeated the French in Egypt, they took the Rosetta Stone to London under the terms of the Capitulation of Alexandria in 1801. It has been on public display at the British Museum almost continuously since 1802 and is the museum's most visited object.",
+    "wowFactor": "Found by the French, seized by the British — the Rosetta Stone has been the British Museum's star attraction for over 200 years and it's STILL the most visited object there!",
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which is the most visited object at the British Museum?",
+        "correctAnswer": "Rosetta Stone",
+        "distractors": [
+          "Elgin Marbles",
+          "Egyptian mummies",
+          "Lewis Chessmen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: the Rosetta Stone was found by a French army officer.",
+        "correctAnswer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "British forces capture this artifact from the French in 1801 and bring it to London. What is it?",
+        "correctAnswer": "Rosetta Stone",
+        "distractors": [
+          "Elgin Marbles",
+          "Sutton Hoo helmet",
+          "Benin Bronzes"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Rosetta Stone was found in July ___ by French officer Pierre-Francois Bouchard.",
+        "correctAnswer": "{1799}",
+        "distractors": []
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+    "sourceVerified": true,
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References colonial-era artifact acquisition",
+    "visualDescription": "The Rosetta Stone behind glass at the British Museum, crowds of visitors pressing close with cameras, the most popular exhibit in the building.",
+    "tags": [
+      "rosetta stone",
+      "british museum",
+      "egypt",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-23T00:00:00.000Z"
+  }
+]

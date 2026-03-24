@@ -1,0 +1,272 @@
+{
+  "animals_wildlife": [
+    {
+      "name": "Polar bear",
+      "wiki": "Polar_bear",
+      "sub": "mammals"
+    },
+    {
+      "name": "Hummingbird",
+      "wiki": "Hummingbird",
+      "sub": "birds"
+    },
+    {
+      "name": "Jellyfish",
+      "wiki": "Jellyfish",
+      "sub": "marine_life"
+    },
+    {
+      "name": "Gorilla",
+      "wiki": "Gorilla",
+      "sub": "mammals"
+    },
+    {
+      "name": "Firefly",
+      "wiki": "Lampyridae",
+      "sub": "insects_arachnids"
+    }
+  ],
+  "art_architecture": [
+    {
+      "name": "Rembrandt",
+      "wiki": "Rembrandt",
+      "sub": "painting_visual"
+    },
+    {
+      "name": "Machu Picchu",
+      "wiki": "Machu_Picchu",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Tchaikovsky",
+      "wiki": "Pyotr_Ilyich_Tchaikovsky",
+      "sub": "music_performance"
+    },
+    {
+      "name": "Guggenheim Museum Bilbao",
+      "wiki": "Guggenheim_Museum_Bilbao",
+      "sub": "museums_institutions"
+    },
+    {
+      "name": "Michelangelo",
+      "wiki": "Michelangelo",
+      "sub": "sculpture_decorative"
+    }
+  ],
+  "food_cuisine": [
+    {
+      "name": "Rice",
+      "wiki": "Rice",
+      "sub": "food_history"
+    },
+    {
+      "name": "Nutmeg",
+      "wiki": "Nutmeg",
+      "sub": "ingredients_spices"
+    },
+    {
+      "name": "Wine",
+      "wiki": "Wine",
+      "sub": "fermentation_beverages"
+    },
+    {
+      "name": "Ramen",
+      "wiki": "Ramen",
+      "sub": "asian_cuisine"
+    },
+    {
+      "name": "Avocado",
+      "wiki": "Avocado",
+      "sub": "ingredients_spices"
+    }
+  ],
+  "general_knowledge": [
+    {
+      "name": "Barcode",
+      "wiki": "Barcode",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Gregorian calendar",
+      "wiki": "Gregorian_calendar",
+      "sub": "everyday_science"
+    },
+    {
+      "name": "Origami",
+      "wiki": "Origami",
+      "sub": "oddities"
+    },
+    {
+      "name": "Metric system",
+      "wiki": "Metric_system",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Rosetta Stone",
+      "wiki": "Rosetta_Stone",
+      "sub": "landmarks_wonders"
+    }
+  ],
+  "geography": [
+    {
+      "name": "Madagascar",
+      "wiki": "Madagascar",
+      "sub": "africa"
+    },
+    {
+      "name": "Panama Canal",
+      "wiki": "Panama_Canal",
+      "sub": "landforms_water"
+    },
+    {
+      "name": "Norway",
+      "wiki": "Norway",
+      "sub": "europe"
+    },
+    {
+      "name": "Bermuda Triangle",
+      "wiki": "Bermuda_Triangle",
+      "sub": "landforms_water"
+    },
+    {
+      "name": "Greenland",
+      "wiki": "Greenland",
+      "sub": "extreme_records"
+    }
+  ],
+  "history": [
+    {
+      "name": "Pompeii",
+      "wiki": "Pompeii",
+      "sub": "ancient_classical"
+    },
+    {
+      "name": "Titanic",
+      "wiki": "Titanic",
+      "sub": "modern_contemporary"
+    },
+    {
+      "name": "Mongol Empire",
+      "wiki": "Mongol_Empire",
+      "sub": "medieval"
+    },
+    {
+      "name": "Spanish Inquisition",
+      "wiki": "Spanish_Inquisition",
+      "sub": "early_modern"
+    },
+    {
+      "name": "Moon landing",
+      "wiki": "Apollo_11",
+      "sub": "modern_contemporary"
+    }
+  ],
+  "human_body_health": [
+    {
+      "name": "Stomach",
+      "wiki": "Stomach",
+      "sub": "digestion_metabolism"
+    },
+    {
+      "name": "Fingernail",
+      "wiki": "Nail_(anatomy)",
+      "sub": "anatomy_organs"
+    },
+    {
+      "name": "Dopamine",
+      "wiki": "Dopamine",
+      "sub": "brain_neuro"
+    },
+    {
+      "name": "Allergy",
+      "wiki": "Allergy",
+      "sub": "immunity_disease"
+    },
+    {
+      "name": "Tongue",
+      "wiki": "Tongue",
+      "sub": "senses_perception"
+    }
+  ],
+  "mythology_folklore": [
+    {
+      "name": "Prometheus",
+      "wiki": "Prometheus",
+      "sub": "greek_roman"
+    },
+    {
+      "name": "Werewolf",
+      "wiki": "Werewolf",
+      "sub": "creatures_monsters"
+    },
+    {
+      "name": "Freya",
+      "wiki": "Freyja",
+      "sub": "norse_celtic"
+    },
+    {
+      "name": "Coyote mythology",
+      "wiki": "Coyote_(mythology)",
+      "sub": "folk_legends"
+    },
+    {
+      "name": "Cerberus",
+      "wiki": "Cerberus",
+      "sub": "creatures_monsters"
+    }
+  ],
+  "natural_sciences": [
+    {
+      "name": "Nitrogen",
+      "wiki": "Nitrogen",
+      "sub": "chemistry_elements"
+    },
+    {
+      "name": "Magnet",
+      "wiki": "Magnet",
+      "sub": "physics_mechanics"
+    },
+    {
+      "name": "Octopus intelligence",
+      "wiki": "Cephalopod_intelligence",
+      "sub": "biology_organisms"
+    },
+    {
+      "name": "Obsidian",
+      "wiki": "Obsidian",
+      "sub": "geology_earth"
+    },
+    {
+      "name": "Quantum entanglement",
+      "wiki": "Quantum_entanglement",
+      "sub": "physics_mechanics"
+    }
+  ],
+  "space_astronomy": [
+    {
+      "name": "Europa",
+      "wiki": "Europa_(moon)",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Pulsar",
+      "wiki": "Pulsar",
+      "sub": "stars_galaxies"
+    },
+    {
+      "name": "James Webb Space Telescope",
+      "wiki": "James_Webb_Space_Telescope",
+      "sub": "missions_spacecraft"
+    },
+    {
+      "name": "Titan",
+      "wiki": "Titan_(moon)",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Dark matter",
+      "wiki": "Dark_matter",
+      "sub": "cosmology_universe"
+    }
+  ]
+}

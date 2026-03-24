@@ -1,0 +1,336 @@
+[
+  {
+    "id": "history-nazi-germany-propaganda",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "general_knowledge-malay-four-countries",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "history-bolivar-six-countries",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-jordan-nabataeans-petra",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-salvador-first-capital-brazil",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-black-sea-anoxic-shipwrecks",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "animals-common_pheasant-most-hunted-bird",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "animals-goldfish-invasive-wild",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "food-muffin-not-english-muffin",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "QUESTION_CLARITY",
+        "severity": "minor",
+        "description": "The question asks 'What baked good is officially categorized as different from the American muffin?' — this is grammatically inverted. The Wikidata property says the American muffin has a 'different from: English muffin' relation, meaning the English muffin is what it is NOT. Asking 'what is different from X' could be interpreted as 'what item is not X' (any of the distractors) rather than pointing to a specific answer. A clearer phrasing would be: 'Despite sharing a name, the English muffin is officially classed as a different food from what?'",
+        "suggested_fix": "Rephrase to: 'The American muffin and which other baked good share a name but are officially categorized as completely different foods?' or 'Which flat, griddle-toasted bread is officially classified as distinct from the American cup-cake-style muffin despite sharing its name?'"
+      }
+    ]
+  },
+  {
+    "id": "natural_sciences-molybdenum-sixth-highest-melting",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "ANSWER_FORMAT",
+        "severity": "minor",
+        "description": "The correct_answer is 'About {80}%' — the brace format is used for runtime distractor generation around the number, but the surrounding text 'About' and '%' sit outside the brace. Depending on how the runtime system renders this, the displayed answer might read oddly (e.g., 'About 75%' vs 'About 80%' when comparing). The '%' symbol outside the brace is likely fine, but 'About' before the brace adds ambiguity. Consistent with similar entries like 'About {25}%' and 'Nearly {800}', so this is a systemic pattern — just flagging.",
+        "suggested_fix": "If the render system handles 'About {80}%' gracefully, no change needed. Otherwise consider '{80}%' and move context to the explanation."
+      }
+    ]
+  },
+  {
+    "id": "human_body_health-stress-adrenaline-cortisol",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "space_astronomy-titan-only-moon-dense-atmosphere",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "art_architecture-albrecht-durer-woodcut-revolution",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "art_architecture-velazquez-baroque-tenebrist",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "DISTRACTORS",
+        "severity": "minor",
+        "description": "The distractor 'Chiaroscuro alone' is problematic for two reasons: (1) tenebrism IS a form of extreme chiaroscuro — they are not opposites, and a knowledgeable player might correctly identify tenebrism as a type of chiaroscuro and be confused by this distractor. (2) The phrasing 'alone' is awkward and artificial — it doesn't sound like a natural answer option. This distractor is too close to correct to be a clean wrong answer.",
+        "suggested_fix": "Replace 'Chiaroscuro alone' with a clearly distinct style such as 'Mannerism' or 'Baroque realism'."
+      }
+    ]
+  },
+  {
+    "id": "geo-delhi-mahabharata-indraprastha",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-new-caledonia-nickel",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "human_body_health-encephalitis-symptoms",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "QUESTION_CLARITY",
+        "severity": "minor",
+        "description": "The question asks for complications 'beyond its initial symptoms,' but seizures and hallucinations are themselves listed in Wikipedia as symptoms of encephalitis progression — not clearly a separate class of 'complication.' The distinction between 'initial symptoms' and 'complications' is blurry in the explanation itself, which lists seizures and hallucinations as things that 'complications can progress to.' The framing implies a cleaner clinical separation than actually exists.",
+        "suggested_fix": "Rephrase to: 'Which neurological symptoms can develop as encephalitis worsens beyond fever and headache?' or simply 'What serious symptoms can encephalitis cause as it progresses?'"
+      }
+    ]
+  },
+  {
+    "id": "geography-lyon-gastronomy",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "health-polio-post-polio-syndrome",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "natural_sciences-waterfall-bedrock-formation",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-mongolia-second-largest-landlocked",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "ANSWER_FORMAT",
+        "severity": "minor",
+        "description": "The correct_answer is '{2}nd largest' — the brace only wraps the digit, leaving 'nd largest' as literal text. Runtime distractor generation would produce numbers like 3, 4, 5 etc. but all options would read '3nd largest', '4nd largest' which is grammatically broken (should be '3rd', '4th'). The ordinal suffix is hardcoded for '2' and won't adapt.",
+        "suggested_fix": "Reframe as a plain numeric answer '{2}' with the question asking 'What ranking does Mongolia hold...' and the explanation clarifying 'second-largest'. Or use a non-brace answer: 'Second largest' with word-form distractors like 'Largest', 'Third largest', 'Fourth largest'."
+      }
+    ]
+  },
+  {
+    "id": "science-rutherford-buried-westminster",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "mythology_folklore-cosmogony-universe-origin",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "history-kingdom-aragon-spain-union-1479",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "space_astronomy-ceres-first-asteroid-discovery",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "DISTRACTORS",
+        "severity": "critical",
+        "description": "The distractor 'Winter equinox' is not a real astronomical term. The equinoxes are vernal (spring) and autumnal (fall). The winter celestial event is the winter solstice, not an equinox. Using a factually malformed distractor teaches players wrong terminology.",
+        "suggested_fix": "Replace 'Winter equinox' with 'Winter solstice' or another real calendar date like 'Midsummer's Day' or 'Epiphany'."
+      }
+    ]
+  },
+  {
+    "id": "geography-stuttgart-auto",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "science-mass-weight-vs-mass",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-serbia-population-6-6-million",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "general_knowledge-ram-volatile-memory",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "mythology_folklore-isolde-opera-connection",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "EXPLANATION",
+        "severity": "minor",
+        "description": "The explanation spends the majority of its text on the etymology of the name 'Isolde' (Old High German words, Brythonic roots) rather than explaining anything interesting about Wagner, the opera itself, or its cultural impact. The question is about which composer wrote the opera — the explanation should reinforce that and add engaging context about the work, not pivot to name etymology.",
+        "suggested_fix": "Lead with something interesting about the opera: its revolutionary harmonic language (the Tristan chord), its influence on Western music, or its emotional themes of doomed love. The name etymology can be cut or reduced to one clause."
+      }
+    ]
+  },
+  {
+    "id": "food_cuisine-onion-shallot-reclassified-2011",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "food_cuisine-iodine-deficiency",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "history-maimonides-physician-saladin",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "general_knowledge-transistor-concept-proposed-1925",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geo-italy-800-islands",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "science-beryllium-x-ray-window",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "history-napoleon-iii-paris-reconstruction",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-greece-cradle-western-civ",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "geography-cook-islands-eez-ocean",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "ANSWER_FORMAT",
+        "severity": "minor",
+        "description": "The correct_answer is 'About {8000} times' — the brace wraps only the number. Runtime distractors would generate alternative numbers (e.g., 2000, 5000, 12000), but the actual precise figure per the explanation is ~8,280. Using 8000 as the canonical answer value (with 'About' outside the brace) is reasonable, but the question phrasing 'how many times larger' is awkward since players may not intuitively know whether to say '8,000 times' vs. '8,280 times'. Minor quibble, not a blocking issue.",
+        "suggested_fix": "Keep as-is if the runtime system handles 'About {8000} times' well. Alternatively rephrase as a cleaner multiple-choice question with non-brace round-number answers."
+      }
+    ]
+  },
+  {
+    "id": "mythology_folklore-creation-myth-oral-tradition-sacred",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "QUESTION_CLARITY",
+        "severity": "minor",
+        "description": "The question front-loads two declarative statements ('Creation myths are the most common form of myth globally. In what tradition do they primarily develop, explaining why they typically have multiple versions?') making it feel like a paragraph rather than a crisp quiz question. The embedded 'explaining why they typically have multiple versions' is a secondary clause that adds confusion — it's partly answering itself. The core question is just 'In what tradition do creation myths primarily develop?'",
+        "suggested_fix": "Trim to: 'In what kind of tradition do creation myths primarily develop, which explains why they often have multiple versions?' or simply 'Creation myths are found in every culture. What type of tradition are they primarily passed down through?'"
+      }
+    ]
+  },
+  {
+    "id": "human_body_health-lichen-first-use-symbiosis-word",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "CATEGORIZATION",
+        "severity": "critical",
+        "description": "This fact about lichens and the biological concept of symbiosis is filed under category_l1: 'human_body_health', category_l2: 'immunity_disease'. Lichens have nothing to do with human health, immunity, or disease. This is clearly a biology/natural sciences fact.",
+        "suggested_fix": "Recategorize to category_l1: 'natural_sciences', category_l2: 'biology' (or the closest available subcategory such as 'ecology' or 'organisms')."
+      }
+    ]
+  },
+  {
+    "id": "geography-hawaii-most-isolated",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "QUESTION_CLARITY",
+        "severity": "minor",
+        "description": "The question asks 'What is Hawaii's distinction as a population center?' — but Hawaii is not commonly described as a 'population center.' The actual distinction is geographic isolation of the archipelago, not a population-density or demographic distinction. The phrase 'as a population center' is imprecise and slightly misleading. The explanation itself describes Hawaii as 'the most isolated archipelago in the world' — an archipelago distinction, not a population-center distinction.",
+        "suggested_fix": "Rephrase to: 'What geographic distinction does Hawaii hold among all inhabited island groups on Earth?' or 'Hawaii is the most _____ major island group on Earth?'"
+      }
+    ]
+  },
+  {
+    "id": "geography-sardinia-blue-zone",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "animals_wildlife-hammerhead-binocular-vision",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "animals_wildlife-pike-holarctic",
+    "verdict": "HAS_ISSUES",
+    "issues": [
+      {
+        "dimension": "CATEGORIZATION",
+        "severity": "critical",
+        "description": "The northern pike (Esox lucius) is a strictly freshwater fish found in lakes and rivers. It is categorized here under category_l2: 'marine_life', which typically denotes saltwater/ocean species. This is a clear miscategorization — pike are freshwater fish, not marine life.",
+        "suggested_fix": "Recategorize to category_l2: 'freshwater_life' or 'fish' or whatever the appropriate freshwater subcategory is. If no freshwater subcategory exists, 'adaptations' (already used for hammerhead) or a general wildlife category would be more accurate than 'marine_life'."
+      }
+    ]
+  },
+  {
+    "id": "animals-common-quail-migration-range",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "history-middle-ages-three-subdivisions",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "food_cuisine-gordon-ramsay-michelin-stars",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "gk-ibm-founded-1911-ctr",
+    "verdict": "PERFECT",
+    "issues": []
+  },
+  {
+    "id": "history-suleiman-longest-ottoman-reign",
+    "verdict": "PERFECT",
+    "issues": []
+  }
+]

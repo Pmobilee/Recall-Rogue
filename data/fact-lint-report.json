@@ -1,0 +1,272 @@
+{
+  "generated_at": "2026-03-23T13:40:10.313Z",
+  "total_knowledge_facts": 810,
+  "summary": {
+    "BROKEN_EXPLANATION": {
+      "count": 0
+    },
+    "DUPLICATE_QUESTION": {
+      "count": 0,
+      "groups": 0
+    },
+    "EMPTY_DISTRACTORS_NON_NUMERICAL": {
+      "count": 0
+    },
+    "PREMISE_CONTRADICTING_DISTRACTORS": {
+      "count": 3
+    },
+    "CATEGORY_MISMATCH": {
+      "count": 8
+    },
+    "ANSWER_FORMAT_MISMATCH": {
+      "count": 13
+    },
+    "LOW_DISTRACTOR_COUNT": {
+      "count": 0
+    },
+    "total_unique_flagged": 22,
+    "flagged_pct": 2.7
+  },
+  "issues": [
+    {
+      "id": "geography-japan-renounced-war",
+      "check": "PREMISE_CONTRADICTING_DISTRACTORS",
+      "quiz_question": "What unusual constitutional provision applies to Japan's military despite its strength?",
+      "correct_answer": "Renounced right to declare war",
+      "distractors": "[\"Cannot operate overseas\",\"Limited to 100,000 troops\",\"No nuclear submarines\",\"Cannot form alliances\",\"Banned from space weapons\",\"No intelligence agency\",\"Cannot draft citizens\",\"No aircraft carriers allowed\"]",
+      "category_l1": "geography",
+      "category_l2": "asia_oceania",
+      "reason": "Distractors contain negation phrases: [\"Cannot operate overseas\",\"Cannot form alliances\",\"Cannot draft citizens\"]"
+    },
+    {
+      "id": "human_body-rem-sleep-paradoxical",
+      "check": "PREMISE_CONTRADICTING_DISTRACTORS",
+      "quiz_question": "Why is REM sleep also called 'paradoxical sleep'?",
+      "correct_answer": "Brain active, body paralyzed",
+      "distractors": "[\"Eyes move but are closed\",\"Body temperature drops sharply\",\"Heart rate becomes irregular\",\"Dreams feel real but aren't\",\"You sleep but feel awake\",\"Breathing speeds then slows\",\"It refreshes but feels tiring\",\"Memory forms but isn't stored\"]",
+      "category_l1": "human_body_health",
+      "category_l2": "brain_neuro",
+      "reason": "Distractors contain negation phrases: [\"Dreams feel real but aren't\"]"
+    },
+    {
+      "id": "mythology-anansi-social-paradox",
+      "check": "PREMISE_CONTRADICTING_DISTRACTORS",
+      "quiz_question": "What is paradoxical about Anansi's role in Akan culture?",
+      "correct_answer": "He defies yet strengthens social order",
+      "distractors": "[\"He is wise but always fails\",\"He is feared but also tiny\",\"He helps but never benefits\",\"He creates but also destroys\",\"He teaches but never learns\",\"He leads but has no followers\",\"He tricks but is always caught\",\"He speaks but cannot be heard\"]",
+      "category_l1": "mythology_folklore",
+      "category_l2": "folk_legends",
+      "reason": "Distractors contain negation phrases: [\"He speaks but cannot be heard\"]"
+    },
+    {
+      "id": "food-chili-capsaicin-heat",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "What chemical compound gives chili peppers their spicy heat?",
+      "correct_answer": "Capsaicin",
+      "distractors": "[\"Piperine\",\"Allicin\",\"Gingerol\",\"Menthol\",\"Eugenol\",\"Mustard oil\",\"Curcumin\",\"Cinnamaldehyde\"]",
+      "category_l1": "food_cuisine",
+      "category_l2": "ingredients_spices",
+      "reason": "Chemistry content in food_cuisine domain (matched: /\\bcompound\\b/i)"
+    },
+    {
+      "id": "food-chili-five-species",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "How many Capsicum species have been widely cultivated for chili peppers?",
+      "correct_answer": "{5}",
+      "distractors": "[]",
+      "category_l1": "food_cuisine",
+      "category_l2": "ingredients_spices",
+      "reason": "Biology/animal behavior content in food_cuisine domain (matched: /\\bspecies\\b/i)"
+    },
+    {
+      "id": "food-vanilla-orchid-origin",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "Which two countries produce two-thirds of the world's vanilla supply?",
+      "correct_answer": "Madagascar and Indonesia",
+      "distractors": "[\"Mexico and Brazil\",\"India and Sri Lanka\",\"Tahiti and Hawaii\",\"Ecuador and Colombia\",\"Uganda and Tanzania\",\"Papua New Guinea and Fiji\",\"Vietnam and Thailand\",\"Costa Rica and Guatemala\"]",
+      "category_l1": "food_cuisine",
+      "category_l2": "ingredients_spices",
+      "reason": "Biology/animal behavior content in food_cuisine domain (matched: /\\bspecies\\b/i)"
+    },
+    {
+      "id": "food-cinnamon-bark-spice",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "Which chemical compound gives cinnamon its distinctive aroma and flavor?",
+      "correct_answer": "Cinnamaldehyde",
+      "distractors": "[\"Capsaicin\",\"Vanillin\",\"Eugenol\",\"Menthol\",\"Piperine\",\"Allicin\",\"Limonene\",\"Thymol\"]",
+      "category_l1": "food_cuisine",
+      "category_l2": "ingredients_spices",
+      "reason": "Chemistry content in food_cuisine domain (matched: /\\bcompound\\b/i)"
+    },
+    {
+      "id": "food-cinnamon-ceylon-vs-cassia",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "Where does 'true cinnamon' (Ceylon cinnamon) originate?",
+      "correct_answer": "Sri Lanka",
+      "distractors": "[\"Indonesia\",\"China\",\"Vietnam\",\"India\",\"Madagascar\",\"Brazil\",\"Malaysia\",\"Mexico\"]",
+      "category_l1": "food_cuisine",
+      "category_l2": "ingredients_spices",
+      "reason": "Biology/animal behavior content in food_cuisine domain (matched: /\\bspecies\\b/i)"
+    },
+    {
+      "id": "geography-japan-renounced-war",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "What unusual constitutional provision applies to Japan's military despite its strength?",
+      "correct_answer": "Renounced right to declare war",
+      "distractors": "[\"Cannot operate overseas\",\"Limited to 100,000 troops\",\"No nuclear submarines\",\"Cannot form alliances\",\"Banned from space weapons\",\"No intelligence agency\",\"Cannot draft citizens\",\"No aircraft carriers allowed\"]",
+      "category_l1": "geography",
+      "category_l2": "asia_oceania",
+      "reason": "Historical/political event content in geography domain (no geographic element apparent) (matched: /\\bworld war\\b/i)"
+    },
+    {
+      "id": "food_cuisine-durian-king-of-fruits",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "How many named durian varieties exist in Thailand alone?",
+      "correct_answer": "Over {300}",
+      "distractors": "[]",
+      "category_l1": "food_cuisine",
+      "category_l2": "ingredients_spices",
+      "reason": "Biology/animal behavior content in food_cuisine domain (matched: /\\bspecies\\b/i)"
+    },
+    {
+      "id": "food_cuisine-durian-30-species",
+      "check": "CATEGORY_MISMATCH",
+      "quiz_question": "Of the 30 recognized durian species, how many are sold on the international market?",
+      "correct_answer": "Only {1}",
+      "distractors": "[]",
+      "category_l1": "food_cuisine",
+      "category_l2": "ingredients_spices",
+      "reason": "Biology/animal behavior content in food_cuisine domain (matched: /\\bspecies\\b/i)"
+    },
+    {
+      "id": "general_knowledge-internet-no-central-governance",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "How many centralized governing bodies control the entire Internet?",
+      "correct_answer": "None",
+      "distractors": "[\"One (ICANN)\",\"Two (ICANN and IETF)\",\"The United Nations\",\"Five regional bodies\",\"The US government\",\"A global council\",\"Three (by continent)\",\"The World Wide Web Foundation\"]",
+      "category_l1": "general_knowledge",
+      "category_l2": "inventions_tech",
+      "reason": "\"How many/much\" question but answer \"None\" contains no number"
+    },
+    {
+      "id": "human_body_health-dna-rna-uracil",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "When DNA is copied into RNA, which base replaces thymine?",
+      "correct_answer": "Uracil",
+      "distractors": "[\"Cytosine\",\"Guanine\",\"Adenine\",\"Ribose\",\"Deoxyribose\",\"Peptide\",\"Phosphate\",\"Histone\"]",
+      "category_l1": "human_body_health",
+      "category_l2": "genetics_dna",
+      "reason": "\"When/In what year\" question but answer \"Uracil\" contains no date/year/time"
+    },
+    {
+      "id": "mythology-anubis-black-color-symbolism",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why was the Egyptian god Anubis depicted in black?",
+      "correct_answer": "To symbolize regeneration",
+      "distractors": "[\"To represent death\",\"To frighten evil spirits\",\"To honor the night sky\",\"To match jackals' fur\",\"To symbolize the void\",\"To ward off demons\",\"To represent mourning\",\"To camouflage at night\"]",
+      "category_l1": "mythology_folklore",
+      "category_l2": "gods_deities",
+      "reason": "\"Why\" question but answer \"To symbolize regeneration\" is a bare noun phrase (no reason word/verb)"
+    },
+    {
+      "id": "science-photosynthesis-chlorophyll-reflects-green",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why do plants appear green to our eyes?",
+      "correct_answer": "Chlorophyll reflects green",
+      "distractors": "[\"They absorb green light\",\"Green pigment is dominant\",\"Sunlight is mostly green\",\"Chloroplasts emit green\",\"Water filters other colors\",\"Leaves produce green dye\",\"Cells scatter green waves\",\"Roots filter other colors\"]",
+      "category_l1": "natural_sciences",
+      "category_l2": "biology_organisms",
+      "reason": "\"Why\" question but answer \"Chlorophyll reflects green\" is a bare noun phrase (no reason word/verb)"
+    },
+    {
+      "id": "food-kimchi-hundreds-of-types",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "How many different types of kimchi exist in Korean cuisine?",
+      "correct_answer": "Hundreds",
+      "distractors": "[\"About a dozen\",\"Exactly three\",\"Fewer than ten\",\"Around fifty\",\"Only two main types\",\"Just five varieties\",\"Roughly twenty\",\"Seven traditional types\"]",
+      "category_l1": "food_cuisine",
+      "category_l2": "asian_cuisine",
+      "reason": "\"How many/much\" question but answer \"Hundreds\" contains no number"
+    },
+    {
+      "id": "space-voyager-planetary-alignment",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why were the Voyager probes launched specifically in 1977?",
+      "correct_answer": "A rare planetary alignment",
+      "distractors": "[\"NASA budget deadline\",\"Cold War competition\",\"Solar minimum window\",\"New rocket availability\",\"International treaty requirement\",\"Centennial celebration\",\"Optimal fuel conditions\",\"Eclipse window timing\"]",
+      "category_l1": "space_astronomy",
+      "category_l2": "missions_spacecraft",
+      "reason": "\"Why\" question but answer \"A rare planetary alignment\" is a bare noun phrase (no reason word/verb)"
+    },
+    {
+      "id": "art-hagia-sophia-church-mosque-museum",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "How many different religious and cultural roles has Hagia Sophia served?",
+      "correct_answer": "Church, mosque, museum",
+      "distractors": "[\"Only a church\",\"Church and museum only\",\"Only a mosque\",\"Mosque and palace\",\"Temple and cathedral\",\"Synagogue and church\",\"Cathedral and fortress\",\"Palace and museum\"]",
+      "category_l1": "art_architecture",
+      "category_l2": "historic_buildings",
+      "reason": "\"How many/much\" question but answer \"Church, mosque, museum\" contains no number"
+    },
+    {
+      "id": "gk-time-zone-follow-borders",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why do time zones follow country borders instead of longitude lines?",
+      "correct_answer": "For communication convenience",
+      "distractors": "[\"Due to magnetic variation\",\"Because of continental drift\",\"To match satellite orbits\",\"For military coordination\",\"Because of ocean currents\",\"Due to historical treaties\",\"To simplify astronomy\",\"Because of trade agreements\"]",
+      "category_l1": "general_knowledge",
+      "category_l2": "everyday_science",
+      "reason": "\"Why\" question but answer \"For communication convenience\" is a bare noun phrase (no reason word/verb)"
+    },
+    {
+      "id": "human_body-rem-sleep-paradoxical",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why is REM sleep also called 'paradoxical sleep'?",
+      "correct_answer": "Brain active, body paralyzed",
+      "distractors": "[\"Eyes move but are closed\",\"Body temperature drops sharply\",\"Heart rate becomes irregular\",\"Dreams feel real but aren't\",\"You sleep but feel awake\",\"Breathing speeds then slows\",\"It refreshes but feels tiring\",\"Memory forms but isn't stored\"]",
+      "category_l1": "human_body_health",
+      "category_l2": "brain_neuro",
+      "reason": "\"Why\" question but answer \"Brain active, body paralyzed\" is a bare noun phrase (no reason word/verb)"
+    },
+    {
+      "id": "human_body-rbc-no-nucleus",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why do mature red blood cells lack a nucleus?",
+      "correct_answer": "To fit more hemoglobin",
+      "distractors": "[\"To move through veins faster\",\"To avoid immune detection\",\"To reduce oxygen consumption\",\"To prevent cell division\",\"To increase flexibility only\",\"To lower energy requirements\",\"To resist viral infection\",\"To minimize cell weight\"]",
+      "category_l1": "human_body_health",
+      "category_l2": "cardiovascular",
+      "reason": "\"Why\" question but answer \"To fit more hemoglobin\" is a bare noun phrase (no reason word/verb)"
+    },
+    {
+      "id": "space_astronomy-venus-earths-twin",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "How many natural moons does Venus, Earth's so-called 'twin,' have?",
+      "correct_answer": "None",
+      "distractors": "[\"One\",\"Two\",\"Three\",\"Four\",\"Five\",\"Seven\",\"Twelve\",\"Sixteen\"]",
+      "category_l1": "space_astronomy",
+      "category_l2": "planets_moons",
+      "reason": "\"How many/much\" question but answer \"None\" contains no number"
+    },
+    {
+      "id": "space_astronomy-kepler-telescope-retired-2018",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why was the Kepler space telescope retired in 2018?",
+      "correct_answer": "Ran out of fuel",
+      "distractors": "[\"Mirror broke down\",\"Solar panels failed\",\"Hit by space debris\",\"Camera malfunctioned\",\"Funding was cut\",\"Orbit decayed\",\"Replaced by James Webb\",\"Communication was lost\"]",
+      "category_l1": "space_astronomy",
+      "category_l2": "missions_spacecraft",
+      "reason": "\"Why\" question but answer \"Ran out of fuel\" is a bare noun phrase (no reason word/verb)"
+    },
+    {
+      "id": "food_cuisine-rice-forbidden-rice",
+      "check": "ANSWER_FORMAT_MISMATCH",
+      "quiz_question": "Why was black rice called 'forbidden rice' in ancient China?",
+      "correct_answer": "Reserved for royalty",
+      "distractors": "[\"It was considered poisonous\",\"It grew only in temples\",\"It caused hallucinations\",\"Peasants were allergic to it\",\"It was used in rituals only\",\"It was thought to be cursed\",\"It required sacred water\",\"It was used as medicine\"]",
+      "category_l1": "food_cuisine",
+      "category_l2": "food_history",
+      "reason": "\"Why\" question but answer \"Reserved for royalty\" is a bare noun phrase (no reason word/verb)"
+    }
+  ]
+}

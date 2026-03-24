@@ -1,0 +1,245 @@
+{
+  "animals_wildlife": [
+    {
+      "name": "Great white shark",
+      "wiki": "Great_white_shark",
+      "sub": "marine_life"
+    },
+    {
+      "name": "Mantis shrimp",
+      "wiki": "Mantis_shrimp",
+      "sub": "marine_life"
+    },
+    {
+      "name": "Snow leopard",
+      "wiki": "Snow_leopard",
+      "sub": "mammals"
+    },
+    {
+      "name": "Platypus",
+      "wiki": "Platypus",
+      "sub": "mammals"
+    },
+    {
+      "name": "Monarch butterfly",
+      "wiki": "Monarch_butterfly",
+      "sub": "insects_arachnids"
+    }
+  ],
+  "art_architecture": [
+    {
+      "name": "Sagrada Familia",
+      "wiki": "Sagrada_Fam%C3%ADlia",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Vincent van Gogh",
+      "wiki": "Vincent_van_Gogh",
+      "sub": "painting_visual"
+    },
+    {
+      "name": "Taj Mahal",
+      "wiki": "Taj_Mahal",
+      "sub": "historic_buildings"
+    },
+    {
+      "name": "Pablo Picasso",
+      "wiki": "Pablo_Picasso",
+      "sub": "painting_visual"
+    },
+    {
+      "name": "Art Nouveau",
+      "wiki": "Art_Nouveau",
+      "sub": "architectural_styles"
+    }
+  ],
+  "food_cuisine": [
+    {
+      "name": "Coffee",
+      "wiki": "Coffee",
+      "sub": "fermentation_beverages"
+    },
+    {
+      "name": "Olive oil",
+      "wiki": "Olive_oil",
+      "sub": "ingredients_spices"
+    },
+    {
+      "name": "Kimchi",
+      "wiki": "Kimchi",
+      "sub": "asian_cuisine"
+    },
+    {
+      "name": "Vanilla",
+      "wiki": "Vanilla",
+      "sub": "ingredients_spices"
+    },
+    {
+      "name": "Bread",
+      "wiki": "Bread",
+      "sub": "food_history"
+    }
+  ],
+  "general_knowledge": [
+    {
+      "name": "Wikipedia",
+      "wiki": "Wikipedia",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Esperanto",
+      "wiki": "Esperanto",
+      "sub": "words_language"
+    },
+    {
+      "name": "Nobel Prize",
+      "wiki": "Nobel_Prize",
+      "sub": "records_firsts"
+    },
+    {
+      "name": "Compass",
+      "wiki": "Compass",
+      "sub": "inventions_tech"
+    },
+    {
+      "name": "Braille",
+      "wiki": "Braille",
+      "sub": "inventions_tech"
+    }
+  ],
+  "history": [
+    {
+      "name": "Ancient Egypt",
+      "wiki": "Ancient_Egypt",
+      "sub": "ancient_classical"
+    },
+    {
+      "name": "Samurai",
+      "wiki": "Samurai",
+      "sub": "medieval"
+    },
+    {
+      "name": "Cold War",
+      "wiki": "Cold_War",
+      "sub": "modern_contemporary"
+    },
+    {
+      "name": "Alexander the Great",
+      "wiki": "Alexander_the_Great",
+      "sub": "ancient_classical"
+    },
+    {
+      "name": "Silk Road",
+      "wiki": "Silk_Road",
+      "sub": "medieval"
+    }
+  ],
+  "human_body_health": [
+    {
+      "name": "Sleep",
+      "wiki": "Sleep",
+      "sub": "brain_neuro"
+    },
+    {
+      "name": "Human eye",
+      "wiki": "Human_eye",
+      "sub": "senses_perception"
+    },
+    {
+      "name": "Bone",
+      "wiki": "Bone",
+      "sub": "anatomy_organs"
+    },
+    {
+      "name": "Blood",
+      "wiki": "Blood",
+      "sub": "cardiovascular"
+    },
+    {
+      "name": "Microbiome",
+      "wiki": "Human_microbiome",
+      "sub": "immunity_disease"
+    }
+  ],
+  "mythology_folklore": [
+    {
+      "name": "Valkyrie",
+      "wiki": "Valkyrie",
+      "sub": "norse_celtic"
+    },
+    {
+      "name": "Minotaur",
+      "wiki": "Minotaur",
+      "sub": "greek_roman"
+    },
+    {
+      "name": "Yokai",
+      "wiki": "Y%C5%8Dkai",
+      "sub": "creatures_monsters"
+    },
+    {
+      "name": "Odin",
+      "wiki": "Odin",
+      "sub": "norse_celtic"
+    },
+    {
+      "name": "Phoenix",
+      "wiki": "Phoenix_(mythology)",
+      "sub": "creatures_monsters"
+    }
+  ],
+  "natural_sciences": [
+    {
+      "name": "Lightning",
+      "wiki": "Lightning",
+      "sub": "physics_mechanics"
+    },
+    {
+      "name": "Coral reef",
+      "wiki": "Coral_reef",
+      "sub": "ecology_environment"
+    },
+    {
+      "name": "Gold",
+      "wiki": "Gold",
+      "sub": "chemistry_elements"
+    },
+    {
+      "name": "Earthquake",
+      "wiki": "Earthquake",
+      "sub": "geology_earth"
+    },
+    {
+      "name": "Tardigrade",
+      "wiki": "Tardigrade",
+      "sub": "biology_organisms"
+    }
+  ],
+  "space_astronomy": [
+    {
+      "name": "Jupiter",
+      "wiki": "Jupiter",
+      "sub": "planets_moons"
+    },
+    {
+      "name": "Neutron star",
+      "wiki": "Neutron_star",
+      "sub": "stars_galaxies"
+    },
+    {
+      "name": "Voyager program",
+      "wiki": "Voyager_program",
+      "sub": "missions_spacecraft"
+    },
+    {
+      "name": "Exoplanet",
+      "wiki": "Exoplanet",
+      "sub": "exoplanets_astrobio"
+    },
+    {
+      "name": "Solar eclipse",
+      "wiki": "Solar_eclipse",
+      "sub": "cosmology_universe"
+    }
+  ]
+}

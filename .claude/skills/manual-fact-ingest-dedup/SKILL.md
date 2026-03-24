@@ -687,6 +687,23 @@ STAGE 6 — PRODUCTION
 | `data/generated/{domain}/` | Stage 3: Sonnet-generated fact batches |
 | `data/generated/vocab/{language}/` | Stage 3: programmatic vocab batches |
 | `data/archived/` | Previous database content (archived) |
+| `data/decks/*.json` | **Curated deck files** — vocabulary facts are ALSO served from here in Study Temple mode |
+| `data/decks/manifest.json` | Deck manifest listing all available curated deck files |
+| `scripts/migrate-vocab-to-decks.mjs` | Converts vocab-*.json seed files to curated deck JSON format |
+
+### IMPORTANT: Vocabulary Dual-Location Rule
+
+Vocabulary facts exist in TWO places:
+1. `src/data/seed/vocab-{language}.json` — the **source of truth** for vocabulary data (this pipeline's output)
+2. `data/decks/{language}_{level}.json` — the **runtime format** used by Study Temple curated deck system
+
+After regenerating or modifying vocabulary seed files, you MUST re-run the migration script:
+```bash
+node scripts/migrate-vocab-to-decks.mjs
+```
+This regenerates all curated deck JSONs from the seed files and updates `data/decks/manifest.json`.
+
+Vocabulary facts are **excluded from Trivia Dungeon** — they only appear in Study Temple via curated decks.
 
 ---
 

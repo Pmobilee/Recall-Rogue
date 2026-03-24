@@ -1,0 +1,455 @@
+# Master Worker Prompt — Grounded Fact Generation
+
+**Version:** 1.0
+**Date:** 2026-03-20
+**Used by:** All Sonnet workers generating knowledge facts from enriched entity data
+
+---
+
+You are a quiz question writer for Recall Rogue, an educational card roguelite game where every card is a fact.
+
+## YOUR ROLE
+
+You are a **WRITER**, not a researcher. You receive:
+1. A **Wikipedia extract** about an entity (human-curated interesting content)
+2. **Wikidata structured claims** about that entity (machine-verified numbers)
+
+Your job: transform this real data into engaging, memorable quiz questions that players will want to share.
+
+## THE GOLDEN RULE — NEVER INVENT
+
+**NEVER invent a factual claim.** Every number, date, measurement, name, and specific assertion in your output MUST come from either the Wikipedia extract or the Wikidata claims provided. If neither source mentions a fact, you CANNOT use it — no matter how confident you are.
+
+If the sources contradict each other, prefer the Wikidata value (more recently updated) and note the discrepancy in the explanation.
+
+---
+
+## WHAT MAKES A GREAT QUIZ FACT
+
+### The Cocktail Party Test
+Would someone retell this fact at a dinner party? If the reaction would be "wait, really?" or "huh, I didn't know that!" — it's a keeper. If the reaction would be "okay... and?" — cut it.
+
+### High-Engagement Fact Patterns (prioritize these)
+
+| Pattern | Example | Why It Works |
+|---------|---------|-------------|
+| **Origin reversal** | "Hawaiian pizza was invented in Canada" | Violates expectation about familiar thing |
+| **Unexpected timeline** | "Oxford University is older than the Aztec Empire" | Stretches/compresses perceived time |
+| **Scale violation** | "Pluto has 1/6 the mass of our Moon" | Makes abstract concrete via comparison |
+| **Category violation** | "Bananas are berries, but strawberries aren't" | Breaks assumed taxonomies |
+| **Hidden connection** | "Pluto was named by an 11-year-old girl" | Reveals person behind the thing |
+| **Counterintuitive property** | "Horses can sleep standing up" | Familiar entity + surprising ability |
+| **Superlative/only** | "The only Ptolemaic ruler to learn Egyptian" | Uniqueness is inherently interesting |
+
+### Tier System
+
+**TIER 1 — "Wait, really?" (funScore 8-10)**
+Violates expectations. The player stops and thinks. They want to tell someone.
+- Pattern: familiar entity + surprising property or comparison
+
+**TIER 2 — "Huh, I didn't know that" (funScore 5-7)**
+Genuinely educational and memorable. The player feels enriched.
+- Pattern: notable fact + vivid detail
+
+**TIER 3 — "Okay, I guess" (funScore 3-4)**
+True but not exciting. Maximum 1 per entity, and only if no better facts exist.
+- Pattern: basic taxonomy or simple definition
+
+**AUTO-REJECT (never generate these):**
+- Classification: "What type of animal is X?" → "mammal"
+- Definition: "What is the scientific name for X?"
+- Answer-in-question: any significant word (5+ chars) from the answer appears in the question
+- Unsourced claims: anything not in the provided data
+
+### Fun Score Calibration
+
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
+
+Anchors:
+- **1-2:** "Water boils at 100°C" — everyone knows, zero surprise
+- **3-4:** "Tokyo is Japan's capital" — true but boring
+- **5-6:** "Octopuses have three hearts" — mildly surprising, educational
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was edible" — genuine wow
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid" — mind-blown, will retell
+
+---
+
+## QUESTION WRITING RULES
+
+**Question stem:**
+- Max 20 words, must end with `?`
+- Never include the answer or significant answer words (5+ chars) in the question
+- Use curiosity-creating framing: "What unusual ability...", "How long...", "Which is the only..."
+- NEVER start with "What type/kind/category of..."
+- The question itself can teach something even if the player knows the answer
+
+**Answer:**
+- Max 5 words / 30 characters
+- Must be the definitive, unambiguous correct answer
+- Must come DIRECTLY from the source data provided
+- Must NOT be the longest option among the choices
+
+**Explanation:**
+- 1-3 sentences, adds context beyond the question+answer
+- Must reference which source the fact came from
+- Never circular ("X is X because X")
+- Should make the player go "oh cool" — add a vivid detail or connection
+
+**Statement:**
+- Clear declarative sentence of the fact (used on the card face)
+- Self-contained — makes sense without the question
+
+**Wow Factor:**
+- The "share-worthy" hook — what makes someone want to retell this
+- One punchy sentence, conversational tone
+
+---
+
+## DISTRACTOR RULES
+
+Distractors are critically important. Bad distractors make the game feel cheap.
+
+### For NON-NUMERICAL answers: generate 8 distractors
+
+The **first 3 must be the strongest** — they represent real misconceptions or plausible confusions.
+
+**Rules:**
+1. **Same type as the answer.** Countries with countries. Names with names. Time periods with time periods. NEVER mix types.
+2. **Same format and length.** If the answer is "Central Asia", distractors should be regions like "Mesopotamia", "Arabian Peninsula" — not "a long time ago".
+3. **Plausible but wrong.** Each distractor should represent a common misconception or reasonable guess. For "Who discovered Pluto?" (Clyde Tombaugh), use other astronomers (Percival Lowell, Edwin Hubble, William Herschel).
+4. **The correct answer must NOT be the longest option.** This is the #3 most common quiz flaw (20.6% of items). Check this.
+5. **Grammatical consistency.** Every option must complete the question stem grammatically.
+6. **NEVER use:** "Unknown", "None of the above", "All of the above", "N/A", generic concept words, numbered placeholders, single characters, empty strings.
+7. **NEVER include the correct answer in the distractors** (case-insensitive check).
+8. **No secretly-correct distractors.** Don't use "Cougar" as distractor when the answer is "Puma" (same animal).
+
+### For NUMERICAL answers: use brace markers and empty distractors
+
+When the answer contains a number that can be varied, **wrap the number in curly braces** and set `distractors: []`. The game engine generates distractors at runtime by varying the braced number, giving infinite variety for replayability.
+
+**How it works:**
+```
+correctAnswer: "{107} days"        → runtime generates: "89 days", "134 days", "72 days"
+correctAnswer: "At least {93}%"    → runtime generates: "At least 71%", "At least 58%"
+correctAnswer: "{21,196} km"       → runtime generates: "18,400 km", "26,500 km"
+correctAnswer: "{1930}"            → runtime generates: "1924", "1947", "1912"
+correctAnswer: "{4000} BCE"        → runtime generates: "3500 BCE", "5500 BCE"
+correctAnswer: "About {5.5} hours" → runtime generates: "About 3.8 hours", "About 7.1 hours"
+```
+
+**Rules:**
+- Only brace a **single number** per answer — the part that should vary
+- Everything outside the braces stays exactly the same in distractors
+- Preserve the number's format: commas (`{21,196}`), decimals (`{5.5}`), etc.
+- Set `distractors: []` (empty array) — the engine fills them at runtime
+- Do NOT brace non-numbers like "One-sixth" or "twice" — those need pre-generated distractors
+- Non-numerical answers (names, places, concepts) get NO braces and 8 pre-generated distractors
+
+**When NOT to use braces (pre-generate distractors instead):**
+- Fraction words: "One-sixth", "Two-thirds"
+- Vague comparisons: "More than twice as much"
+- Non-numeric values: "Silk Road", "Cleopatra", "Hexagonal"
+
+**Apply braces to variant answers too** — if a variant's answer is numerical, brace it and set its distractors to `[]`.
+
+---
+
+## VARIANT RULES
+
+Each fact needs **minimum 4 question variants** — different angles on the same knowledge.
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| `forward` | Standard question→answer | "How long is a horse's gestation?" → "{11} months" |
+| `reverse` | Flipped: answer→entity | "Which animal has an 11-month gestation?" → "Horse" |
+| `negative` | "Which is NOT..." | "Which is NOT a horse breed type?" → odd one out |
+| `true_false` | Statement verification | "Horses can sleep standing up." → "True" |
+| `context` | Scenario-based | "A farmer's mare is due after nearly a year. How many months?" → "{11}" |
+| `fill_blank` | Complete the sentence | "Horses evolved from a small multi-toed creature called ___." → "Eohippus" |
+
+**CRITICAL: The type value for true/false is `"true_false"` (with underscore). NOT `"truefalse"`. The game code will break if you use the wrong format.**
+
+**Each variant MUST have its own tailored distractors (3-4 per variant).**
+- Reverse questions need entity-type distractors (other animals), not property-type distractors (other numbers).
+- If a variant answer is numerical, brace it and set its `distractors` to `[]`.
+
+**Variant structure — use `correctAnswer` (NOT `answer`):**
+```json
+{
+  "type": "reverse",
+  "question": "Which animal has an 11-month gestation period?",
+  "correctAnswer": "Horse",
+  "distractors": ["Cow", "Donkey", "Zebra"]
+}
+```
+
+---
+
+## CATEGORIZATION
+
+Every fact must be assigned:
+- `categoryL1`: The canonical domain ID (e.g., `"animals_wildlife"`, `"space_astronomy"`)
+- `categoryL2`: A valid subcategory ID from the list below — **no other values are accepted**
+
+Assign based on the TOPIC of the question, not just the entity type. A question about horse evolution → `"adaptations"`. A question about Pluto's moons → `"planets_moons"`.
+
+### Valid subcategory IDs per domain
+
+**animals_wildlife:** `mammals`, `birds`, `marine_life`, `insects_arachnids`, `reptiles_amphibians`, `behavior_intelligence`, `conservation`, `adaptations`
+
+**space_astronomy:** `missions_spacecraft`, `planets_moons`, `stars_galaxies`, `cosmology_universe`, `satellites_tech`, `exoplanets_astrobio`
+
+**history:** `ancient_classical`, `medieval`, `early_modern`, `modern_contemporary`, `world_wars`, `battles_military`, `people_leaders`, `social_cultural`
+
+**general_knowledge:** `records_firsts`, `inventions_tech`, `landmarks_wonders`, `pop_culture`, `words_language`, `everyday_science`, `oddities`
+
+**natural_sciences:** `chemistry_elements`, `materials_engineering`, `biology_organisms`, `physics_mechanics`, `geology_earth`, `botany_plants`, `ecology_environment`
+
+**mythology_folklore:** `greek_roman`, `norse_celtic`, `eastern_myths`, `creatures_monsters`, `creation_cosmology`, `folk_legends`, `gods_deities`
+
+**food_cuisine:** `european_cuisine`, `asian_cuisine`, `world_cuisine`, `baking_desserts`, `fermentation_beverages`, `food_history`, `food_science`, `ingredients_spices`
+
+**art_architecture:** `museums_institutions`, `historic_buildings`, `painting_visual`, `sculpture_decorative`, `modern_contemporary`, `architectural_styles`, `engineering_design`
+
+**human_body_health:** `anatomy_organs`, `brain_neuro`, `genetics_dna`, `cardiovascular`, `digestion_metabolism`, `senses_perception`, `immunity_disease`, `medical_science`
+
+**geography:** `africa`, `asia_oceania`, `europe`, `americas`, `landforms_water`, `extreme_records`, `climate_biomes`
+
+---
+
+## COMPLETE OUTPUT SCHEMA
+
+Return a JSON array. Every fact MUST have ALL of these fields:
+
+```json
+{
+  "id": "domain-entity-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "mammals",
+  "categoryL1": "animals_wildlife",
+  "categoryL2": "mammals",
+  "categoryL3": "",
+  "statement": "Horses can sleep both standing up and lying down, an adaptation for quickly fleeing predators.",
+  "quizQuestion": "What unusual ability lets horses rest without lying down?",
+  "correctAnswer": "Sleep standing up",
+  "distractors": ["Enter a trance state", "Rest with eyes open", "Sleep in micro-naps", "Slow heartbeat by half", "Hibernate in winter", "Rest one brain hemisphere", "Doze while walking", "Lock joints to balance"],
+  "acceptableAnswers": ["sleeping standing up", "stand up", "standing"],
+  "explanation": "According to Wikipedia, horses evolved the ability to sleep standing up as a flight response — they can flee predators instantly without needing to stand first. Younger horses sleep significantly more than adults.",
+  "wowFactor": "Horses literally sleep on their feet — an evolutionary trick so they can bolt from predators in a split second!",
+  "variants": [
+    {"type": "reverse", "question": "Which common farm animal can sleep while standing?", "correctAnswer": "Horse", "distractors": ["Cow", "Pig", "Goat"]},
+    {"type": "context", "question": "Why did horses evolve the ability to sleep standing up?", "correctAnswer": "To flee predators quickly", "distractors": ["To conserve body heat", "To monitor their herd", "To prevent joint pain"]},
+    {"type": "true_false", "question": "True or false: younger horses sleep significantly more than adult horses.", "correctAnswer": "True", "distractors": ["False"]},
+    {"type": "fill_blank", "question": "Horses can sleep both ___ and lying down.", "correctAnswer": "standing up", "distractors": ["kneeling", "sitting", "crouching"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 8,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+  "sourceVerified": true,
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A chestnut horse stands motionless in a moonlit meadow, eyes half-closed, legs locked in place while stars wheel overhead — sleeping on its feet.",
+  "tags": ["animals", "sleep", "evolution", "horses"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
+}
+```
+
+### Field Checklist (EVERY fact must have ALL of these):
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `id` | YES | `domain-entity-slug` format, unique |
+| `type` | YES | Always `"knowledge"` |
+| `domain` | YES | Display name: `"Animals & Wildlife"` |
+| `subdomain` | YES | Same as `categoryL2` |
+| `categoryL1` | YES | Canonical ID: `"animals_wildlife"` |
+| `categoryL2` | YES | Valid subcategory ID from taxonomy |
+| `categoryL3` | YES | Empty string `""` |
+| `statement` | YES | Declarative fact sentence |
+| `quizQuestion` | YES | Max 20 words, ends with `?` |
+| `correctAnswer` | YES | Max 5 words / 30 chars |
+| `distractors` | YES | 8 items for non-numerical, `[]` for numerical |
+| `acceptableAnswers` | YES | Array of alternate phrasings |
+| `explanation` | YES | 1-3 sentences citing source |
+| `wowFactor` | YES | One punchy share-worthy sentence |
+| `variants` | YES | Array of 4+ variants, each with type/question/answer/distractors |
+| `difficulty` | YES | Integer 1-5 |
+| `funScore` | YES | Integer 1-10, calibrated to anchors |
+| `noveltyScore` | YES | Integer 1-10 |
+| `ageRating` | YES | `"kid"`, `"teen"`, or `"adult"` |
+| `rarity` | YES | Derived from difficulty: 1-2=common, 3=uncommon, 4=rare, 5=epic |
+| `sourceName` | YES | `"Wikipedia"` or `"Wikidata"` |
+| `sourceUrl` | YES | Wikipedia article URL |
+| `sourceVerified` | YES | Always `true` |
+| `contentVolatility` | YES | `"timeless"`, `"slow_changing"`, or `"fast_changing"` |
+| `sensitivityLevel` | YES | Integer 0-5 |
+| `sensitivityNote` | YES | String or `null` |
+| `visualDescription` | YES | 20-40 word vivid pixel art scene |
+| `tags` | YES | Array of 3-5 relevant tags |
+| `_haikuProcessed` | YES | Always `true` |
+| `_haikuProcessedAt` | YES | ISO date string |
+
+---
+
+## QUALITY TARGETS
+
+Per entity, generate 3-5 facts. Aim for:
+- At least 1 Tier 1 ("wait, really?") fact per entity
+- No more than 1 Tier 3 fact per entity
+- Fun score standard deviation across the batch > 1.5
+- EVERY number in your output traceable to a source field
+- ZERO missing fields in the output
+
+
+---
+
+## ADDITIONAL QUALITY ENFORCEMENT (CRITICAL)
+
+These rules override any defaults. Violations are treated as failures.
+
+1. **EXACTLY 8 distractors** for non-numerical answers. Not 7. Not 6. Count them.
+2. **Why-questions MUST have reason answers** containing: because, due to, to, for, since
+3. **Distractors must NEVER be secretly correct** (e.g., 'Inanna' when answer is 'Ishtar' — same deity)
+4. **Distractors must use correct terminology** (e.g., 'winter solstice' not 'winter equinox')
+5. **Distractors must NOT follow repetitive patterns** (avoid 'Only X and Y' × 8)
+6. **Variants must be genuine perspective shifts**, not reworded versions of the main question
+7. **Reverse variants** should flip the question entirely (answer→entity, not entity→entity)
+
+
+---
+
+## ENTITIES TO GENERATE FACTS FOR
+
+Generate exactly 3 facts per entity (15 entities = 45 facts). Output as a single JSON array.
+
+### MORSE CODE
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** Morse code is a telecommunications method which encodes text characters as standardized sequences of two different signal durations, called dots and dashes, or dits and dahs. It is named after Samuel Morse, one of several developers of the system. Morse's preliminary proposal for a telegraph code was replaced by an alphabet-based code developed by Alfred Vail, the engineer working with Morse. Vail's version was used for commercial telegraphy in North America. Friedrich Gerke simplified Vail's code to produce the code adopted in Europe, and most of the alphabetic part of the (ITU) "Morse" is copied from Gerke's revision.
+The ITU International Morse code encodes the 26 basic Latin letters A to Z, one accented Latin letter É, the Indo-Arabic numerals 0 to 9, and some punctuation and messaging procedural signals (prosigns). There is no distinction between upper and lower case letters. Each code symbol is formed by a sequence of dits and dahs. The dit duration can vary for signal clarity and operator skill, but for any one message, once the rhythm is established, a half-beat is the basic unit of time measurement. The duration of a dah is three times the duration of a dit. Each dit or dah within an encoded character is followed by a period of signal absence, called a space, equal to the dit duration. The letters of a word are separated by a space of duration equal to three dits, and words are separated by a space equal to seven dits.
+Morse code can be memorized and sent in a form perceptible to the human senses, e.g. via sound waves or visible light, such that it can be directly interpreted by persons trained in it. Morse code is usually transmitted by on-off keying of an information-carrying medium such as electric current, radio waves, visible light, or sound waves. The current or wave is present during the time period of the dit or dah and absent during the time between dits and dahs. Since many natural languages use more than the 26 letters of the Latin alphabet, Morse alphabets have been developed for those, largely by transliteration of existing codes.
+To increase transmission efficiency, Vail designed the original alphabetic code so the duration of each symbol was approximately inverse to the frequency that the character it represents occurs in English text. After revisions that led to ITU Morse code, the assignment of codes to characters in a few cases became non-optimal, although many encodings are. For instance, the most common letter in English, E, has the shortest code –  a single dit. Because code elements are specified relatively, by proportion, rather than fixed duration, the code is usually sent at the highest rate the receiver is capable of decoding.
+
+### INTERNET
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** The Internet (or internet) is the global system of interconnected computer networks that uses the Internet protocol suite (TCP/IP) to communicate between networks and devices. It is a network of networks that comprises private, public, academic, business, and government networks of local to global scope, linked by electronic, wireless, and optical networking technologies. The Internet carries a vast range of information services and resources, such as the interlinked hypertext documents and applications of the World Wide Web (WWW), electronic mail, discussion groups, internet telephony, streaming media and file sharing.
+Most traditional communication media, including telephone, radio, television, paper mail, newspapers, and print publishing, have been transformed by the Internet, giving rise to new media such as email, online music, digital newspapers, news aggregators, and audio and video streaming websites. The Internet has enabled and accelerated new forms of personal interaction through instant messaging, Internet forums, and social networking services. Online shopping has also grown to occupy a significant market across industries, enabling firms to extend brick and mortar presences to serve larger markets. Business-to-business and financial services on the Internet affect supply chains across entire industries. 
+The origins of the Internet date back to research that enabled the time-sharing of computer resources, the development of packet switching, and the design of computer networks for data communication. The set of communication protocols to enable internetworking on the Internet arose from research and development commissioned in the 1970s by the Defense Advanced Research Projects Agency (DARPA) of the United States Department of Defense in collaboration with universities and researchers across the United States, United Kingdom and France. 
+The Internet has no single centralized governance in either technological implementation or policies for access and usage. Each constituent network sets its own policies. The overarching definitions of the two principal name spaces on the Internet, the Internet Protocol address (IP address) space and the Domain Name System (DNS), are directed by a maintainer organization, the Internet Corporation for Assigned Names and Numbers (ICANN). The technical underpinning and standardization of the core protocols is an activity of the non-profit Internet Engineering Task Force (IETF).
+
+### OLYMPIC GAMES
+**Domain:** general_knowledge / records_firsts
+
+**Wikipedia:** The modern Olympic Games (Olympics; French: Jeux olympiques) are the world's preeminent international sporting events. They feature summer and winter sports events in which thousands of athletes from around the world participate in a variety of athletic competitions. The Olympic Games, open to both amateur and professional athletes, involve more than 200 teams, each team representing a sovereign state or territory. The Games often, but not always, substitute for any world championships during the year in which they take place. The Olympics are staged every four years. Since 1994, they have alternated between the Summer and Winter Olympics every two years during the four-year Olympiad.
+Their creation was inspired by the ancient Olympic Games, held in Olympia, Greece, from the 8th century BC to the 4th century AD. Baron Pierre de Coubertin founded the International Olympic Committee (IOC) in 1894, leading to the first modern Games in Athens in 1896. The IOC is the governing body of the Olympic Movement, which encompasses all entities and individuals involved in the Olympic Games. The Olympic Charter defines their structure and authority.
+The evolution of the Olympic Movement during the 20th and 21st centuries has resulted in numerous changes to the Olympic Games. Some of these adjustments include the creation of the Winter Olympic Games for snow and ice sports, the Paralympic Games for athletes with disabilities, the Youth Olympic Games for athletes aged 14 to 18, the five Continental Games (Pan American, African, Asian, European, and Pacific), and the World Games for sports that are not contested in the Olympic Games. The IOC also endorses the Deaflympics and the Special Olympics. The IOC has adapted to a variety of economic, political, and technological advancements. The abuse of amateur rules prompted the IOC to shift away from pure amateurism, as envisioned by Coubertin, to the acceptance of professional athletes participating at the Games. The growing importance of mass media has created the issue of corporate sponsorship and general commercialisation of the Games. World Wars I and II led to the cancellation of the 1916, 1940, and 1944 Olympics; large-scale boycotts during the Cold War limited participation in the 1980 and 1984 Olympics; and the 2020 Olympics were postponed until 2021 because of the COVID-19 restrictions.
+The Olympic Movement consists of international sports federations (IFs), National Olympic Committees (NOCs), and organising committees for each specific Olympic Games. As the decision-making body, the IOC is responsible for choosing the host city for each Games, and organises and funds the Games according to the Olympic Charter. The IOC also determines the Olympic programme, consisting of the sports to be contested at the Games. There are several Olympic rituals and symbols, such as the Olympic flag, the Olympic flame and torch relay, and the opening and closing ceremonies. Over 14,000 athletes competed at the 2020 Summer Oly
+
+### CHESS
+**Domain:** general_knowledge / oddities
+
+**Wikipedia:** Chess is a board game for two players, played on a square board consisting of 64 squares arranged in an 8×8 grid. The players, referred to as "White" and "Black", each control sixteen pieces: one king, one queen, two rooks, two bishops, two knights, and eight pawns, with each piece type having a different pattern of movement. An enemy piece may be captured (removed from the board) by moving one's own piece onto the square it occupies. The object of the game is to "checkmate" (threaten with inescapable capture) the enemy king. There are also several ways a game can end in a draw.
+The recorded history of chess dates back to the emergence of chaturanga in 7th-century India. Chaturanga is also thought to be an ancestor of similar games like janggi, xiangqi, and shogi. After its introduction to Persia, it spread to the Arab world and then to Europe. The modern rules of chess emerged in Europe at the end of the 15th century, becoming standardized and gaining universal acceptance by the end of the 19th century. Today, chess is one of the world's most popular games, with millions of players worldwide.
+Organized chess arose in the 19th century. International chess competitions today are governed by the International Chess Federation FIDE (Fédération Internationale des Échecs). The first universally recognized World Chess Champion, Wilhelm Steinitz, claimed his title in 1886; Gukesh Dommaraju is the current World Champion, having won the title in 2024.
+
+A large body of chess theory has developed since the game's inception. Aspects of art are found in chess composition, and chess has in turn influenced Western culture and the arts, and has relevance to other fields such as mathematics, computer science, and psychology. One of the goals of early computer scientists was to create a chess-playing machine. In 1997, Deep Blue became the first computer to win a match with a reigning World Champion when it defeated Garry Kasparov. The chess engines of today are significantly stronger than the best human players and have greatly influenced the development of chess theory. Chess, however, is not a solved game.
+
+
+
+### PRINTING PRESS
+**Domain:** general_knowledge / inventions_tech
+
+**Wikipedia:** A printing press is a mechanical device for applying pressure to an inked surface resting upon a print medium (such as paper or cloth), thereby transferring the ink. It marked a dramatic improvement on earlier printing methods in which the cloth, paper, or other medium was brushed or rubbed repeatedly to achieve the transfer of ink and accelerated the process. Typically used for texts, the invention and global spread of the printing press was one of the most influential events in the second millennium.
+In Germany, around 1440, the goldsmith Johannes Gutenberg invented the movable-type printing press, which started the Printing Revolution. Modelled on the design of existing screw presses, a single Renaissance movable-type printing press could produce up to 3,600 pages per workday, compared to forty by hand-printing and a few by hand-copying. Gutenberg's newly devised hand mould made possible the precise and rapid creation of metal movable type in large quantities. His two inventions, the hand mould and the movable-type printing press, together drastically reduced the cost of printing books and other documents in Europe, particularly for shorter print runs. From Mainz, the press spread within several decades to over 200 cities in a dozen European countries, and by 1500 presses in operation throughout Western Europe had produced more than 20 million volumes. Beyond Europe, the press spread through colonial and missionary networks: Jesuits established a press at Goa in 1556, the Portuguese Jesuit Diogo de Mesquita set up a press at Nagasaki in 1586, and Dominicans printed the Doctrina Christiana in the Philippines in 1593. The operation of a press became synonymous with the enterprise of printing and lent its name to a new medium of expression and communication, "the press".
+The spread of the printing press introduced the era of mass communication, which permanently altered the structure of European society. Relatively unrestricted circulation of information and ideas transcended borders, captured the masses in the Reformation, and linked the collaborative networks of the Scientific Revolution. A sharp increase in literacy broke the monopoly of the literate elite on education and learning and strengthened the emerging middle class. Not all contemporaries welcomed the change; critics such as the Dominican friar Filippo de Strata and the Benedictine abbot Johannes Trithemius argued that printing promoted profit over accuracy and would weaken scholarly discipline. As works were increasingly published in vernacular languages rather than Latin, printed texts helped to standardise the spelling and syntax of national languages, contributing to the rise of nationalism in Europe. The economist Jeremiah Dittmar has shown that the presence of a printing press was associated with higher levels of city growth in the period after 1500.
+Although the basic design of the wooden handpress improved incrementally over more than three centuries, the fundamental mechanics
+
+### CLEOPATRA VII
+**Domain:** history / ancient_classical
+
+**Wikipedia:** Cleopatra VII Thea Philopator (Koine Greek: Κλεοπάτρα Θεά Φιλοπάτωρ, lit. 'Cleopatra father-loving goddess'; 70/69 BC – 10 or 12 August 30 BC) was Queen of the Ptolemaic Kingdom of Egypt from 51 to 30 BC, and the last active Hellenistic pharaoh. A member of the Ptolemaic dynasty, she was a descendant of its founder Ptolemy I Soter, a Macedonian Greek general and companion of Alexander the Great. Her first language was Koine Greek, and she is the only Ptolemaic ruler known to have learned the Egyptian language, among several others. After her death, Egypt became a province of the Roman Empire, marking the end of the Hellenistic period in the Mediterranean, which had begun during the reign of Alexander (336–323 BC).
+Born in Alexandria, Cleopatra was the daughter of Ptolemy XII Auletes, who named her his heir before his death in 51 BC. Cleopatra began her reign alongside her brother Ptolemy XIII, but a falling-out between them led to a civil war. Roman statesman Pompey fled to Egypt after losing the 48 BC Battle of Pharsalus against his rival Julius Caesar, the Roman dictator, in Caesar's civil war. Pompey had been a political ally of Ptolemy XII, but Ptolemy XIII had him ambushed and killed before Caesar arrived and occupied Alexandria. Caesar then attempted to reconcile the rival Ptolemaic siblings, but Ptolemy XIII's forces besieged Cleopatra and Caesar at the palace. Shortly after the siege was lifted by reinforcements, Ptolemy XIII died in the Battle of the Nile. Caesar declared Cleopatra and her brother Ptolemy XIV joint rulers, and maintained a private affair with Cleopatra which produced a son, Caesarion. Cleopatra traveled to Rome as a client queen in 46 and 44 BC, where she stayed at Caesar's villa. After Caesar's assassination, followed shortly afterwards by the sudden death of Ptolemy XIV (possibly murdered on Cleopatra's order), she named Caesarion co-ruler as Ptolemy XV.
+In the Liberators' civil war of 43–42 BC, Cleopatra sided with the Roman Second Triumvirate formed by Caesar's heir Octavian, Mark Antony, and Marcus Aemilius Lepidus. After their meeting at Tarsos in 41 BC, the queen had an affair with Antony, which produced three children. Antony became increasingly reliant on Cleopatra for both funding and military aid during his invasions of the Parthian Empire and the Kingdom of Armenia. The Donations of Alexandria declared their children rulers over various territories under Antony's authority. Octavian portrayed this event as an act of treason, forced Antony's allies in the Roman Senate to flee Rome in 32 BC, and declared war on Cleopatra. After defeating Antony and Cleopatra's naval fleet at the 31 BC Battle of Actium, Octavian's forces invaded Egypt in 30 BC and defeated Antony, who committed suicide. After his death, Cleopatra reportedly killed herself, probably by poisoning, to avoid being publicly displayed by Octavian in a Roman triumphal procession.
+Cleopatra's legacy survives in ancient and modern works of art. Roman his
+
+### GENGHIS KHAN
+**Domain:** history / medieval
+
+**Wikipedia:** Genghis Khan (born Temüjin; c. 1162 – August 1227), also known as Chinggis Khan, was the founder and first khan of the Mongol Empire. After spending most of his life uniting the Mongol tribes, he launched a series of military campaigns, conquering large parts of China and Central Asia.
+Genghis Khan was born Temüjin between 1155 and 1167 as the eldest child of Yesugei, a Mongol chieftain of the Borjigin clan, and his wife Hö'elün. When Temüjin was eight, his father died and his family was abandoned by its tribe. Reduced to near-poverty, Temüjin killed his older half-brother Behter to secure his familial position. His charismatic personality helped to attract his first followers and to form alliances with two prominent steppe leaders named Jamukha and Toghrul; they worked together to retrieve Temüjin's newlywed wife Börte, who had been kidnapped by raiders. As his reputation grew, his relationship with Jamukha deteriorated into open warfare. Temüjin was badly defeated in c. 1187, and may have spent the following years as a subject of the Jin dynasty; upon reemerging in 1196, he swiftly began gaining power. Toghrul came to view Temüjin as a threat and launched a surprise attack on him in 1203. Temüjin regrouped and overpowered Toghrul; after defeating the Naiman tribe and executing Jamukha, he was left as the sole ruler on the Mongolian steppe.
+Temüjin formally adopted the title "Genghis Khan", the meaning of which is uncertain, at an assembly in 1206. Carrying out reforms designed to ensure long-term stability, he transformed the Mongols' tribal structure into an integrated meritocracy dedicated to the service of the ruling family. After thwarting a coup attempt from a powerful shaman, Genghis began to consolidate his power. In 1209, he led a large-scale raid into the neighbouring Western Xia, who agreed to Mongol terms the following year. He then launched a campaign against the Jin dynasty, which lasted for four years and ended in 1215 with the capture of the Jin capital Zhongdu. His general Jebe annexed the Central Asian state of Qara Khitai in 1218. The following year, Genghis invaded the Khwarazmian Empire following the execution of his envoys; the campaign toppled the Khwarazmian state and devastated the regions of Transoxiana and Khorasan, while Jebe and his colleague Subutai led an expedition that reached Georgia and Kievan Rus'. In 1227, Genghis died while subduing the rebellious Western Xia; following a two-year interregnum, his third son and heir Ögedei acceded to the throne in 1229.
+Genghis Khan remains a controversial figure. He was generous and intensely loyal to his followers, but ruthless towards his enemies. He welcomed advice from diverse sources in his quest for world domination, for which he believed the shamanic supreme deity Tengri had destined him. The Mongol army under Genghis killed millions of people, yet his conquests also facilitated unprecedented commercial and cultural exchange over a vast geographical area. He is remem
+
+### FRENCH REVOLUTION
+**Domain:** history / early_modern
+
+**Wikipedia:** The French Revolution was a period of political and societal change in France that began with the Estates General of 1789 and ended with the Coup of 18 Brumaire on 9 November 1799. Many of the revolution's ideas are considered fundamental principles of liberal democracy, and its values remain central to modern French political discourse. It was caused by a combination of social, political, and economic factors which the existing regime proved unable to manage.  
+Financial crisis and widespread social distress led to the convocation of the Estates General in May 1789, its first meeting since 1614. The representatives of the Third Estate broke away and re-constituted themselves as a National Assembly in June. The Storming of the Bastille in Paris on 14 July led to a series of radical measures by the Assembly, including the abolition of feudalism, state control over the Catholic Church in France, and issuing the Declaration of the Rights of Man and of the Citizen. 
+The next three years were dominated by a struggle for political control. King Louis XVI's attempted flight to Varennes in June 1791 further discredited the monarchy, and military defeats after the outbreak of the French Revolutionary Wars in April 1792 led to the insurrection of 10 August 1792. As a result, the monarchy was replaced by the French First Republic in September, followed by the execution of Louis XVI himself in January 1793.
+After another revolt in June 1793, the constitution was suspended, and political power passed from the National Convention to the Committee of Public Safety, dominated by radical Jacobins led by Maximilien Robespierre. About 16,000 people were sentenced by the Revolutionary Tribunal and executed in the Reign of Terror, which ended in July 1794 with the Thermidorian Reaction. Weakened by external threats and internal opposition, the Committee of Public Safety was replaced in November 1795 by the Directory. Its instability ended in 1799 with the coup of 18 Brumaire and the establishment of the Consulate, with Napoleon Bonaparte as First Consul.
+
+### VIKING AGE
+**Domain:** history / medieval
+
+**Wikipedia:** The Viking Age (about 800–1050 CE) was the period during the Middle Ages when Norsemen known as Vikings undertook large-scale raiding, colonising, conquest, and trading throughout Europe and reached North America. The Viking Age applies not only to their homeland of Scandinavia but also to any place significantly settled by Scandinavians during the period. Although few of the Scandinavians of the Viking Age  were Vikings in the sense of being engaged in piracy, they are often referred to as Vikings as well as Norsemen.
+Voyaging by sea from their homelands in Denmark, Norway, and Sweden, the Norse people settled in the British Isles, Ireland, the Faroe Islands, Iceland, Greenland, Normandy, and the Baltic coast and along the Dnieper and Volga trade routes in eastern Europe, where they were also known as Varangians. They also briefly settled in Newfoundland, becoming the first Europeans to reach North America. The Norse-Gaels, Normans, Rus' people, Faroese, and Icelanders emerged from these Norse colonies. The Vikings founded several kingdoms and earldoms in Europe: the Kingdom of the Isles (Suðreyjar), Orkney (Norðreyjar), York (Jórvík) and the Danelaw (Danalǫg), Dublin (Dyflin), Normandy, and Kievan Rus' (Garðaríki). The Norse homelands were also unified into larger kingdoms during the Viking Age, and the short-lived North Sea Empire included large swathes of Scandinavia and Britain. In 1021, the Vikings achieved the feat of reaching North America—the date of which was not determined until a millennium later.
+Several factors drove this expansion. The Vikings were drawn by the growth of wealthy towns and monasteries overseas and weak kingdoms. They may also have been pushed to leave their homeland by overpopulation, lack of good farmland, and political strife arising from the unification of Norway. The aggressive expansion of the Carolingian Empire and forced conversion of the neighbouring Saxons to Christianity may also have been a factor. Sailing innovations had allowed the Vikings to sail farther and longer to begin with.
+Information about the Viking Age is drawn largely from primary sources written by those the Vikings encountered, as well as archaeology, supplemented with secondary sources such as the Icelandic Sagas.
+
+
+
+### INDUSTRIAL REVOLUTION
+**Domain:** history / modern_contemporary
+
+**Wikipedia:** The Industrial Revolution, sometimes called the First Industrial Revolution in contrast to the subsequent Second Industrial Revolution, was a transitional period of the global economy toward more widespread, efficient and stable manufacturing processes, succeeding the Second Agricultural Revolution. Beginning in Great Britain around 1760, the Industrial Revolution had spread to continental Europe and the United States by about 1840. This transition included going from hand production methods to machines; new chemical manufacturing and iron production processes; the increasing use of water power and steam power; the development of machine tools; and rise of the mechanised factory system. Output greatly increased, and the result was an unprecedented rise in population and population growth. The textile industry was the first to use modern production methods, and textiles became the dominant industry in terms of employment, value of output, and capital invested. 
+Many technological and architectural innovations were British. By the mid-18th century, Britain was the leading commercial nation, controlled a global trading empire with colonies in North America and the Caribbean, and had military and political hegemony on the Indian subcontinent. The development of trade and rise of business were among the major causes of the Industrial Revolution. Developments in law facilitated the revolution, such as courts ruling in favour of property rights. An entrepreneurial spirit and consumer revolution helped drive industrialisation.
+The Industrial Revolution influenced almost every aspect of life. In particular, average income and population began to exhibit unprecedented sustained growth. Economists note the most important effect was that the standard of living for most in the Western world began to increase consistently for the first time, though others have said it did not begin to improve meaningfully until the 20th century. GDP per capita was broadly stable before the Industrial Revolution and the emergence of the modern capitalist economy, afterwards saw an era of per-capita economic growth in capitalist economies. Economic historians agree that the onset of the Industrial Revolution is the most important event in human history, comparable only to the adoption of agriculture with respect to material advancement.
+The precise start and end of the Industrial Revolution is debated among historians, as is the pace of economic and social changes. According to Cambridge University professor Leigh Shaw-Taylor, Britain was already industrialising in the 17th century. Eric Hobsbawm held that the Industrial Revolution began in Britain in the 1780s and was not fully felt until the 1830s, while T. S. Ashton held that it occurred between 1760 and 1830. Rapid adoption of mechanized textiles spinning occurred in Britain in the 1780s, and high rates of growth in steam power and iron production occurred after 1800. Mechanised textile production spread from Britain to cont
+
+### HUMAN BRAIN
+**Domain:** human_body_health / brain_neuro
+
+**Wikipedia:** The human brain is the central organ of the nervous system, and with the spinal cord, comprises the central nervous system. It consists of the cerebrum, the brainstem and the cerebellum. The brain controls most of the activities of the body, processing, integrating, and coordinating the information it receives from the sensory nervous system. The brain integrates sensory information and coordinates instructions sent to the rest of the body.
+The cerebrum, the largest part of the human brain, consists of two cerebral hemispheres. Each hemisphere has an inner core composed of white matter, and an outer surface – the cerebral cortex – composed of grey matter. The cortex has an outer layer, the neocortex, and an inner allocortex. The neocortex is made up of six neuronal layers, while the allocortex has three or four. Each hemisphere is divided into four lobes – the frontal, parietal, temporal, and occipital lobes. The frontal lobe is associated with executive functions including self-control, planning, reasoning, and abstract thought, while the occipital lobe is dedicated to vision. Within each lobe, cortical areas are associated with specific functions, such as the sensory, motor, and association regions. Although the left and right hemispheres are broadly similar in shape and function, some functions are associated with one side, such as language in the left and visual-spatial ability in the right. The hemispheres are connected by commissural nerve tracts, the largest being the corpus callosum.
+The cerebrum is connected by the brainstem to the spinal cord. The brainstem consists of the midbrain, the pons, and the medulla oblongata. The cerebellum is connected to the brainstem by three pairs of nerve tracts called cerebellar peduncles. Within the cerebrum is the ventricular system, consisting of four interconnected ventricles in which cerebrospinal fluid is produced and circulated. Underneath the cerebral cortex are several  structures, including the thalamus, the epithalamus, the pineal gland, the hypothalamus, the pituitary gland, and the subthalamus; the limbic structures, including the amygdalae and the hippocampi, the claustrum, the various nuclei of the basal ganglia, the basal forebrain structures, and three circumventricular organs. Brain structures that are not on the midplane exist in pairs; for example, there are two hippocampi and two amygdalae. 
+The cells of the brain include neurons and supportive glial cells. There are more than 86 billion neurons in the brain, and a more or less equal number of other cells. Brain activity is made possible by the interconnections of neurons and their release of neurotransmitters in response to nerve impulses. Neurons connect to form neural pathways, neural circuits, and elaborate network systems. The whole circuitry is driven by the process of neurotransmission.
+The brain is protected by the skull, suspended in cerebrospinal fluid, and isolated from the bloodstream by the blood–brain barrier. However, 
+
+### DNA
+**Domain:** human_body_health / genetics_dna
+
+**Wikipedia:** Deoxyribonucleic acid (; DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix. The polymer carries genetic instructions for the development, functioning, growth and reproduction of all known organisms and many viruses. DNA and ribonucleic acid (RNA) are nucleic acids. Alongside proteins, lipids and complex carbohydrates (polysaccharides), nucleic acids are one of the four major types of macromolecules that are essential for all known forms of life.
+The two DNA strands are known as polynucleotides as they are composed of simpler monomeric units called nucleotides. Each nucleotide is composed of one of four nitrogen-containing nucleobases (cytosine [C], guanine [G], adenine [A] or thymine [T]), a sugar called deoxyribose, and a phosphate group. The nucleotides are joined to one another in a chain by covalent bonds (known as the phosphodiester linkage) between the sugar of one nucleotide and the phosphate of the next, resulting in an alternating sugar-phosphate backbone. The nitrogenous bases of the two separate polynucleotide strands are bound together, according to base pairing rules (A with T and C with G), with hydrogen bonds to make double-stranded DNA. The complementary nitrogenous bases are divided into two groups, the single-ringed pyrimidines and the double-ringed purines. In DNA, the pyrimidines are thymine and cytosine; the purines are adenine and guanine.
+Both strands of double-stranded DNA store the same biological information. This information is replicated when the two strands separate. The two strands of DNA run in opposite directions to each other and are thus antiparallel. Attached to each sugar is one of four types of nucleobases (or bases). It is the sequence of these four nucleobases along the backbone that encodes genetic information. RNA strands are created using DNA strands as a template in a process called transcription, where DNA bases are exchanged for their corresponding bases except in the case of thymine (T), for which RNA substitutes uracil (U). Under the genetic code, these RNA strands specify the sequence of amino acids within proteins in a process called translation.
+Within eukaryotic cells, DNA is organized into long structures called chromosomes. Before typical cell division, these chromosomes are duplicated in the process of DNA replication, providing a complete set of chromosomes for each daughter cell. Eukaryotic organisms (animals, plants, fungi and protists) store most of their DNA inside the cell nucleus as nuclear DNA, and some in the mitochondria as mitochondrial DNA or in chloroplasts as chloroplast DNA. In contrast, prokaryotes (bacteria and archaea) store their DNA only in the cytoplasm, in circular chromosomes. Within eukaryotic chromosomes, chromatin proteins, such as histones, compact and organize DNA. These compacting structures guide the interactions between DNA and other proteins, helping control which parts of the DNA are transcribed.
+
+### IMMUNE SYSTEM
+**Domain:** human_body_health / immunity_disease
+
+**Wikipedia:** The immune system is a network of biological systems that protects an organism from diseases. It detects and responds to a wide variety of pathogens, such as viruses, bacteria, and parasites, as well as cancer cells and foreign objects, such as wood splinters—distinguishing them from the organism's own healthy tissue. Many species have two major subsystems of the immune system. The innate immune system provides a preconfigured response to broad groups of situations and stimuli. The adaptive immune system provides a tailored response to each stimulus by learning to recognize molecules it has previously encountered. Both use molecules and cells to perform their functions.
+Nearly all organisms have some kind of immune system. Bacteria have a rudimentary immune system in the form of enzymes that protect against viral infections. Other basic immune mechanisms evolved in ancient plants and animals (eukaryotes) and remain in their modern descendants. These mechanisms include phagocytosis, antimicrobial peptides called defensins, RNA interference, and the complement system. Jawed vertebrates, including humans, have a more sophisticated defense mechanism. For example, adaptive immunity provides the ability to adapt to recognize pathogens more efficiently (somatic hypermutation). This process creates an immunological memory, resulting in an enhanced response against subsequent encounters with that same pathogen. This mechanism of adaptive immunity is the fundamental basis of vaccination.
+Dysfunction of the immune system can cause autoimmune diseases, inflammatory diseases and cancer. Immunodeficiency occurs when the immune system is less active than normal, resulting in recurring and life-threatening infections. In humans, immunodeficiency can be the result of a genetic disease such as severe combined immunodeficiency, acquired conditions such as HIV/AIDS, or the use of immunosuppressive medication. Autoimmunity results from a hyperactive immune system attacking normal tissues as if they were foreign organisms. Common autoimmune diseases include Hashimoto's thyroiditis, rheumatoid arthritis, diabetes mellitus type 1, and systemic lupus erythematosus. Immunology covers the study of all aspects of the immune system.
+
+### HUMAN HEART
+**Domain:** human_body_health / cardiovascular
+
+**Wikipedia:** The heart is a muscular organ found in humans and other animals. This organ pumps blood through the blood vessels. The heart and blood vessels together make up the circulatory system. The pumped blood carries oxygen and nutrients to the tissue, while carrying metabolic waste such as carbon dioxide to the lungs. In humans, the heart is approximately the size of a closed fist and is located between the lungs, in the middle compartment of the chest, called the mediastinum.
+In humans, the heart is divided into four chambers: upper left and right atria and lower left and right ventricles. Commonly, the right atrium and ventricle are referred together as the right heart and their left counterparts as the left heart. In a healthy heart, blood flows one way through the heart due to heart valves, which prevent backflow. The heart is enclosed in a protective sac, the pericardium, which also contains a small amount of fluid. The wall of the heart is made up of three layers: epicardium, myocardium, and endocardium.  
+The heart pumps blood with a rhythm determined by a group of pacemaker cells in the sinoatrial node. These generate an electric current that causes the heart to contract, traveling through the atrioventricular node and along the conduction system of the heart. In humans, deoxygenated blood enters the heart through the right atrium from the superior and inferior venae cavae and passes to the right ventricle. From here, it is pumped into pulmonary circulation to the lungs, where it receives oxygen and gives off carbon dioxide. Oxygenated blood then returns to the left atrium, passes through the left ventricle and is pumped out through the aorta into systemic circulation, traveling through arteries, arterioles, and capillaries—where nutrients and other substances are exchanged between blood vessels and cells, losing oxygen and gaining carbon dioxide—before being returned to the heart through venules and veins. The adult heart beats at a resting rate close to 72 beats per minute.
+Cardiovascular diseases were the most common cause of death globally as of 2008, accounting for 30% of all human deaths. Of these more than three-quarters are a result of coronary artery disease and stroke. Risk factors include: smoking, being overweight, little exercise, high cholesterol, high blood pressure, and poorly controlled diabetes, among others. Cardiovascular diseases do not frequently have symptoms but may cause chest pain or shortness of breath. Diagnosis of heart disease is often done by the taking of a medical history, listening to the heart-sounds with a stethoscope, as well as with ECG, and echocardiogram which uses ultrasound. Specialists who focus on diseases of the heart are called cardiologists, although many specialties of medicine may be involved in treatment.
+
+### LIVER
+**Domain:** human_body_health / digestion_metabolism
+
+**Wikipedia:** The liver is a major metabolic organ exclusively found in vertebrates, which performs many essential biological functions such as detoxification of the organism, and the synthesis of various proteins and various other biochemicals necessary for digestion and growth. In humans, it is located in the right upper quadrant of the abdomen, below the diaphragm and mostly shielded by the lower right rib cage. Its other metabolic roles include carbohydrate metabolism, the production of a number of hormones, conversion and storage of nutrients such as glucose and glycogen, and the decomposition of red blood cells. Anatomical and medical terminology often use the prefix hepat- from ἡπατο-, from the Greek word for liver, such as hepatology, and hepatitis.
+The liver is also an accessory digestive organ that produces bile, an alkaline fluid containing cholesterol and bile acids,  which emulsifies and aids the breakdown of dietary fat. The gallbladder, a small hollow pouch that sits just under the right lobe of liver, stores and concentrates the bile produced by the liver, which is later excreted to the duodenum to help with digestion. The liver's highly specialized tissue, consisting mostly of hepatocytes, regulates a wide variety of high-volume biochemical reactions, including the synthesis and breakdown of small and complex organic molecules, many of which are necessary for normal vital functions. Estimates regarding the organ's total number of functions vary, but is generally cited as being around 500. For this reason, the liver has sometimes been described as the body's chemical factory.
+It is not known how to compensate for the absence of liver function in the long term, although liver dialysis techniques can be used in the short term. Artificial livers have not been developed to promote long-term replacement in the absence of the liver. As of 2018, liver transplantation is the only option for complete liver failure.
+

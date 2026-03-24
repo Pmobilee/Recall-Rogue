@@ -1,0 +1,202 @@
+{
+  "total_reviewed": 200,
+  "perfect_count": 172,
+  "issues": [
+    {
+      "id": "history-saddam_hussein-dominance-35-years",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The 35-year calculation is off. Saddam joined the Ba'ath Party in 1957, but 1957 to 2003 is 46 years, not 35. The more defensible framing is his time in power: Ba'ath Party came to power in 1968, and 1968–2003 = 35 years. But the question says 'joined the Ba'ath Party in 1957' and then claims 35 years — that arithmetic is wrong inside the explanation itself.",
+      "suggested_fix": "Change explanation to: 'Saddam Hussein dominated Iraqi politics for 35 years from the Ba'ath Party's rise to power in 1968 to his overthrow in 2003.' Remove the reference to joining in 1957 as the start date."
+    },
+    {
+      "id": "history-enlightenment-cogito-descartes",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "Descartes' 'Cogito, ergo sum' appears in his Meditations on First Philosophy (1641) and the Discourse on the Method (1637), but calling the 1637 Discourse the event that 'marked the start of the Enlightenment' is a stretch — most historians date the Enlightenment to the late 17th or early 18th century, not 1637. Additionally, 'Cogito, ergo sum' is actually Latin for 'I think, therefore I am,' but Descartes originally wrote it in French in the Discourse ('je pense, donc je suis'). The pure Latin form appears in the Meditations (1641), not 1637.",
+      "suggested_fix": "Revise question to not pin the Enlightenment's start to 1637. Better phrasing: 'Which famous Latin phrase encapsulates Descartes' foundational claim that the thinking self is the basis of all knowledge?' Or correct the year to 1641 and reference the Meditations."
+    },
+    {
+      "id": "history-timur-limp-tamerlane",
+      "severity": "minor",
+      "dimension": "ANSWER_FORMAT",
+      "description": "The correct answer 'A limp' is accurate, but the question asks what 'physical condition gave Timur the nickname.' A limp is a symptom/gait, not the underlying condition. The condition was a leg injury (possibly from an arrow). This is defensible but slightly imprecise — 'a limp' answers 'what was the disability' more than 'what condition.'",
+      "suggested_fix": "Minor: change question to 'What physical disability gave Timur the nickname Tamerlane, meaning the lame?' and answer to 'A lame leg' or keep as-is since 'limp' is the Wikidata value."
+    },
+    {
+      "id": "history-aquinas-summa",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "Two distractors are very similar and redundant: 'Health collapse' and 'Vision blindness' — the latter also partially overlaps with the correct answer (the mystical vision left him unable to write, which contemporaries sometimes described as a breakdown). More importantly, 'Banned by Pope' and 'Church censure' are nearly identical distractors.",
+      "suggested_fix": "Replace 'Vision blindness' and one of the near-duplicate church-related distractors with more distinct options, e.g. 'Completed the work' and 'Appointed Archbishop.'"
+    },
+    {
+      "id": "history-cortes-aztec-ships",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation says Cortés 'scuttled (or burned) most of his fleet' — this is accurate hedging. However the correct_answer confidently says 'Burned his ships.' Historians generally agree he scuttled (sank) the ships rather than burned them. 'Burned his ships' is the popular myth; the more accurate term is 'scuttled.' The answer perpetuates a well-known historical inaccuracy.",
+      "suggested_fix": "Change correct_answer to 'Scuttled (sank) his ships' and update the explanation to clearly state the ships were scuttled, not burned, while noting the common myth."
+    },
+    {
+      "id": "history-french-empire-second-largest",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct answer says 'About 10%' but the explanation states France covered ~12 million km². Earth's total land area is ~149 million km², making 12 million km² about 8%, not 10%. The answer and explanation are inconsistent, and neither is precisely right — 8% is closer to accurate.",
+      "suggested_fix": "Change correct_answer to 'About {8}%' (numerical brace format) with no distractors, or keep as a distractor-based question and correct the answer to 'About one-twelfth' to match the actual ~8% figure."
+    },
+    {
+      "id": "history-timbuktu-manuscripts",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The question asks about 'Timbuktu's university' but the explanation names Sankore University specifically. The question conflates Timbuktu's scholarly institutions — the city had several mosques and madrasas that collectively constituted the scholarly infrastructure, not a single formal university. The 25,000 students figure is sourced from Wikipedia but refers to the entire scholarly community across the city's institutions, not one university.",
+      "suggested_fix": "Rephrase question to: 'How many students studied at Timbuktu's Islamic scholarly institutions at their medieval peak?' This is more accurate than implying a single university."
+    },
+    {
+      "id": "history-thirty-years-war-population",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct answer 'Up to one-third' and the explanation are internally inconsistent. The explanation states the population fell from 21 million to 13 million — a loss of 8 million out of 21 million, which is approximately 38%, closer to two-fifths than one-third. Saying 'up to one-third' when the explanation cites 38% in 'some regions' creates a mismatch.",
+      "suggested_fix": "Either change the correct answer to 'Up to two-fifths' to match the explanation's own figures, or revise the explanation to cite a one-third figure consistently."
+    },
+    {
+      "id": "history-attila-death-by-nosebleed",
+      "severity": "critical",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The correct answer 'Accidental choking' conflicts with the most widely cited account of Attila's death. Wikipedia and most historical sources state he died from a severe nosebleed (internal hemorrhage) on his wedding night — likely esophageal varices from heavy drinking — not choking on food. The Wikidata 'choking' classification appears to be a misclassification; a nosebleed/hemorrhage is not the same as choking. The question title even says 'death-by-nosebleed' in the ID, contradicting the answer.",
+      "suggested_fix": "Change correct_answer to 'A severe nosebleed (hemorrhage)' and distractors accordingly. The fact ID itself ('history-attila-death-by-nosebleed') reveals what the correct answer should be. Update explanation to reflect the hemorrhage account."
+    },
+    {
+      "id": "history-engels-double-life-cotton-merchant",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "One distractor is 'William of Ockham' — this is clearly a data corruption artifact (a person's name appearing as a distractor for a question about Engels's cover identity). It is completely nonsensical as a distractor.",
+      "suggested_fix": "Replace 'William of Ockham' with a plausible occupation-based distractor, e.g. 'Coal mine manager' or 'Textile broker.'"
+    },
+    {
+      "id": "history-engels-ashes-beachy-head",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "One distractor is 'Adam Smith' — this is clearly a data corruption artifact (a person's name appearing as a distractor for a question about where Engels's ashes were scattered). Completely nonsensical.",
+      "suggested_fix": "Replace 'Adam Smith' with a plausible location-based distractor, e.g. 'In the Irish Sea' or 'Over the Pennine Hills.'"
+    },
+    {
+      "id": "history-bolivar-died-disillusioned",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "One distractor is 'O'Higgins' — this is a person's name (Bernardo O'Higgins, South American independence leader) appearing as a distractor for a question about what disease killed Bolívar. Completely nonsensical as a disease name.",
+      "suggested_fix": "Replace 'O'Higgins' with a plausible disease distractor, e.g. 'Typhus' or 'Scarlet fever.'"
+    },
+    {
+      "id": "history-aquinas-doctor-angelicus",
+      "severity": "minor",
+      "dimension": "DISTRACTORS",
+      "description": "'Discourses on Livy' appears as a distractor for a question about Aquinas's nickname. This is a book title (by Machiavelli), not a nickname/title in the same category as the other distractors. It is a data corruption artifact.",
+      "suggested_fix": "Replace 'Discourses on Livy' with a legitimate medieval scholarly title, e.g. 'Doctor Evangelicus' or 'Doctor Luminosus.'"
+    },
+    {
+      "id": "history-spinoza-leibniz-student",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The question asks 'Which famous co-inventor of calculus studied under Spinoza?' — but Leibniz did not formally 'study under' Spinoza in any academic sense. Leibniz visited Spinoza once in 1676 for a few days of conversation. Saying he 'studied under' Spinoza implies a formal teacher-student relationship that did not exist.",
+      "suggested_fix": "Change question to 'Which famous co-inventor of calculus visited and studied the ideas of Spinoza?' or 'Which co-inventor of calculus was influenced by Spinoza and listed as his student in historical records?'"
+    },
+    {
+      "id": "history-roger-federer-wimbledon",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "This fact is categorized under history / modern_contemporary with category_l1 = 'history'. A fact about a tennis player's Wimbledon titles is a sports fact, not a history fact. There is also a duplicate: 'history-federer-wimbledon-record-titles' covers the exact same fact (8 Wimbledon titles).",
+      "suggested_fix": "Move to a sports category. Also flag the duplicate with 'history-federer-wimbledon-record-titles' — one should be removed."
+    },
+    {
+      "id": "history-federer-wimbledon-record-titles",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Exact duplicate of 'history-roger-federer-wimbledon' — both ask how many Wimbledon titles Federer won and give the same answer of 8. Additionally, the claim it is 'a record that still stands' needs updating: Djokovic also has 7 Wimbledon titles as of 2024 and could surpass this.",
+      "suggested_fix": "Remove this fact as a duplicate. If kept, update the 'record that still stands' framing since Djokovic is actively competing."
+    },
+    {
+      "id": "history-michael-jordan-cut",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under history / modern_contemporary. A fact about Michael Jordan being cut from his high school basketball team belongs in a sports category, not history.",
+      "suggested_fix": "Recategorize to sports or popular_culture."
+    },
+    {
+      "id": "history-schumacher-307-races",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Categorized under history / modern_contemporary. A Formula One statistics fact belongs in a sports category. Also the question asks 'How many Formula One races did Michael Schumacher win' but the ID says '307-races' (his starts), creating a mismatch between ID naming and question content.",
+      "suggested_fix": "Recategorize to sports. Fix the ID to reflect wins, not starts."
+    },
+    {
+      "id": "history-russo-turkish-war-bulgaria-500-years",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "This fact and 'history-russo-turkish-1877-bulgaria-500-years' are near-duplicates covering essentially the same fact (Bulgarian Ottoman domination duration before 1878). The first gives 'About {500} years' and the second gives 'About {482} years' — these contradict each other. 1396 to 1878 = 482 years, so the second is more precise. The first's round-number 'About 500' is a loose approximation.",
+      "suggested_fix": "Remove 'history-russo-turkish-war-bulgaria-500-years' and keep only the more precise 'history-russo-turkish-1877-bulgaria-500-years' with the correct 482-year figure."
+    },
+    {
+      "id": "history-ataturk-gallipoli",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "There are two facts with the same content: 'history-atatürk-gallipoli' (category world_wars) and 'history-ataturk-gallipoli' (also world_wars). Both ask about Atatürk's first military prominence and both answer 'Gallipoli' / 'Defence of Gallipoli.' These are near-duplicates covering the same fact.",
+      "suggested_fix": "Remove one of the two duplicates. Keep 'history-ataturk-gallipoli' which has the more precise answer 'Defence of Gallipoli' and better distractors."
+    },
+    {
+      "id": "history-marat-assassinated-bathtub",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'history-marat-bathtub-assassination' — both ask where Marat was killed and both answer 'In his bathtub' / 'In a medicinal bath.' The questions are worded differently but cover identical content.",
+      "suggested_fix": "Remove one. Keep 'history-marat-bathtub-assassination' which has the more accurate answer 'In a medicinal bath' and better distractors."
+    },
+    {
+      "id": "history-ataturk-founded-turkey",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'history-ataturk-founded-turkey-1923' — both cover Atatürk founding Turkey, just one asks 'who' and the other asks 'what year.' The 'who' version is a very easy question with obvious answer. Consider whether both are needed.",
+      "suggested_fix": "Keep 'history-ataturk-founded-turkey-1923' (more specific/interesting). Reconsider 'history-ataturk-founded-turkey' as it's trivially easy."
+    },
+    {
+      "id": "history-atatUrk-alphabet-1928",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'history-ataturk-alphabet' and 'history-ataturk-latin-alphabet' — three facts all ask about Atatürk replacing the Ottoman script with the Latin alphabet. This cluster of 3 duplicates on the same narrow fact is excessive.",
+      "suggested_fix": "Keep only one (the numerical one 'history-ataturk-alphabet' asking what year, as a brace-format fact). Remove the other two."
+    },
+    {
+      "id": "history-simon-bolivar-six-countries",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate cluster: 'history-simon-bolivar-six-countries', 'history-bolivar-six-nations', and 'history-bolivar-six-nations-liberated' all ask how many countries Bolívar liberated and all answer 6. Three facts on the exact same datum is excessive.",
+      "suggested_fix": "Keep only one. 'history-bolivar-six-nations' has the best explanation. Remove the other two."
+    },
+    {
+      "id": "history-yeltsin-first-popularly-elected",
+      "severity": "minor",
+      "dimension": "CATEGORIZATION",
+      "description": "Near-duplicate of 'history-yeltsin-soviet-union-dissolution' — both ask about Yeltsin in 1991 becoming the first popularly elected Russian leader. The standalone 'history-yeltsin-soviet-dissolution' and 'history-yeltsin-soviet-union-dissolution' also overlap on the 1991 Soviet dissolution.",
+      "suggested_fix": "This is a lesser duplicate issue than the Bolívar cluster — the questions are different enough (who he was vs. what year). Flag for review but not urgent."
+    },
+    {
+      "id": "history-chernobyl-most-expensive-disaster-ever",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The claim that Chernobyl is 'the most expensive disaster in history' at $700 billion is disputed. The 2011 Fukushima disaster and various estimates of the 2008 global financial crisis dwarf $700 billion. The $700 billion figure for Chernobyl is one estimate but calling it definitively 'the most expensive disaster in history' is an overstatement that many sources contest.",
+      "suggested_fix": "Change explanation to 'one of the most expensive disasters in history' rather than definitively 'the most expensive.' The question itself is fine; just soften the superlative in the explanation."
+    },
+    {
+      "id": "history-khrushchev-shoe",
+      "severity": "minor",
+      "dimension": "FACTUAL_ACCURACY",
+      "description": "The explanation correctly notes 'accounts vary on whether Khrushchev actually used his shoe or his fist' — yet the question asks what object he 'reportedly' banged, and the correct answer is 'His shoe.' The distractors include 'His fist' — but if accounts genuinely vary and his fist is equally well-sourced, then 'His fist' could also be considered correct, making this a flawed question.",
+      "suggested_fix": "Rephrase question to: 'What object is Khrushchev most famously reported to have banged on the desk in the 1960 UN incident?' This frames it as the popular legend rather than established fact, and the shoe answer remains the best-known version."
+    },
+    {
+      "id": "history-paul-apostle-new-testament-books",
+      "severity": "minor",
+      "dimension": "QUESTION_CLARITY",
+      "description": "The correct answer is '{14}' books traditionally attributed to Paul. The explanation then immediately says 'scholars only accept 7 as definitely authentic.' This creates a confusing situation for learners — the answer is '14' but the explanation strongly implies the real answer is closer to 7. The question and answer are technically correct (traditional attribution) but the explanation undermines confidence in the answer.",
+      "suggested_fix": "Lead the explanation with the 14-book traditional count clearly, then add scholarly context as a secondary note. Alternatively, rephrase to ask specifically about traditional attribution to signal that's the frame."
+    }
+  ]
+}

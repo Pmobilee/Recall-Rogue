@@ -1097,6 +1097,12 @@ export class EnemySpriteSystem {
     return this.container
   }
 
+  /** Update the base position used by idle animations. Called by quiz slide. */
+  public updateBasePosition(x: number, y: number): void {
+    this.baseX = x
+    this.baseY = y
+  }
+
   /**
    * Set the alpha (opacity) of the entire sprite system.
    * @param alpha The alpha value (0-1)

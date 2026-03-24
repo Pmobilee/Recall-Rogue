@@ -42,11 +42,10 @@
   }
 
   /** Max container width — centred on wide screens. */
-  const MAX_WIDTH = 560
+  const MAX_WIDTH = 680
 
   /**
    * Base vertical spacing between history rows (unscaled px).
-   * Choices section is 1.4x this height.
    */
   const ROW_HEIGHT_BASE = 100
 
@@ -105,20 +104,14 @@
   })
 
   // =========================================================
-  // Scaled layout helpers
+  // Scaled layout helpers (used only for history section)
   // =========================================================
 
-  let choicesSectionH = $derived(ROW_HEIGHT_BASE * layoutScale * 1.3)
   let rowH = $derived(ROW_HEIGHT_BASE * layoutScale)
 
-  /** Y centre of choice nodes within their section. */
-  let choicesNodeY = $derived(choicesSectionH * 0.48)
-
-  /** Total canvas min-height. */
-  let totalViewHeight = $derived(
-    choicesSectionH +
-    resolvedHistory.length * rowH +
-    48 * layoutScale,
+  /** Total height of the history canvas. */
+  let historyCanvasHeight = $derived(
+    resolvedHistory.length * rowH + 48 * layoutScale,
   )
 
   /**
@@ -140,12 +133,12 @@
 
   /** Y centre of a history row's node (rowIndex 0 = most recent). */
   function historyNodeY(rowIndex: number): number {
-    return choicesSectionH + rowIndex * rowH + rowH * 0.52
+    return rowIndex * rowH + rowH * 0.52
   }
 
   /** Y for the connector SVG top within a history row. */
   function historyConnectorTopY(rowIndex: number): number {
-    return choicesSectionH + rowIndex * rowH + rowH * 0.08
+    return rowIndex * rowH + rowH * 0.08
   }
 
   // =========================================================
@@ -195,80 +188,42 @@
     </div>
   </header>
 
-  <!-- Scrollable progressive path view -->
+  <!-- Scrollable content — choices centered, history below -->
   <div class="map-scroll-container" bind:this={scrollContainer}>
-    <div
-      class="progressive-canvas"
-      style="width: {containerWidth}px; min-height: {totalViewHeight}px;"
-    >
 
-      <!-- =================================================
-           SECTION 1: Current choices — hero area at top
-           ================================================= -->
-      <section
-        class="choices-section"
-        aria-label="Choose your next room"
-        style="height: {choicesSectionH}px;"
-      >
-        <p class="section-label choices-label">Choose your path</p>
+    <!-- =================================================
+         SECTION 1: Centered choices — fills available space
+         ================================================= -->
+    <section class="choices-center-area" aria-label="Choose your next room">
+      <p class="section-label choices-label">Choose your path</p>
 
-        <!-- Dashed arrow connectors pointing UPWARD from below the choices toward each choice node -->
-        {#if map.currentNodeId && availableNodes.length > 0}
-          <svg
-            class="connector-svg"
-            width={containerWidth}
-            height={choicesSectionH}
-            aria-hidden="true"
-          >
-            <defs>
-              <!-- Arrow points upward: marker-end at the node (top), so orient="auto" and the
-                   path goes bottom-to-top. The triangle points right (+x direction) in SVG coords,
-                   orient="auto" rotates it to match the path direction. -->
-              <marker id="arrow-active" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
-                <path d="M 8 1 L 0 4 L 8 7 Z" fill="#F5F0E6" opacity="0.9" />
-              </marker>
-            </defs>
-            {#each availableNodes as node, i (node.id)}
-              {@const tx = nodeGroupX(i, availableNodes.length, containerWidth)}
-              {@const ty = choicesNodeY - 34 * layoutScale}
-              <!-- Path branches FROM center-bottom of section UPWARD TO each choice node -->
-              <path
-                class="connector-path connector-active"
-                d={arrowPath(containerWidth / 2, choicesSectionH - 4 * layoutScale, tx, ty)}
-                marker-end="url(#arrow-active)"
-              />
-            {/each}
-          </svg>
+      <div class="choices-nodes-row" style="width: {containerWidth}px;">
+        {#each availableNodes as node, i (node.id)}
+          <MapNodeComponent
+            {node}
+            prominent={true}
+            onclick={() => onNodeSelect(node.id)}
+          />
+        {/each}
+
+        {#if availableNodes.length === 0}
+          <p class="no-choices-hint">Entering room…</p>
         {/if}
+      </div>
+    </section>
 
-        <!-- Choice node buttons -->
-        <div class="choices-row" style="top: {choicesNodeY}px;">
-          {#each availableNodes as node, i (node.id)}
-            <div
-              class="node-slot"
-              style="left: {nodeGroupX(i, availableNodes.length, containerWidth)}px;"
-            >
-              <MapNodeComponent
-                {node}
-                onclick={() => onNodeSelect(node.id)}
-              />
-            </div>
-          {/each}
+    <!-- =================================================
+         SECTION 2: Decision history — below the choices
+         Newest entry at top, oldest at bottom.
+         ================================================= -->
+    {#if resolvedHistory.length > 0}
+      <section class="history-section" aria-label="Path history">
+        <p class="section-label history-label">Your path</p>
 
-          {#if availableNodes.length === 0}
-            <p class="no-choices-hint">Entering room…</p>
-          {/if}
-        </div>
-      </section>
-
-      <!-- =================================================
-           SECTION 2: Decision history — scrolls downward
-           Newest entry at top, oldest at bottom.
-           ================================================= -->
-      {#if resolvedHistory.length > 0}
-        <section class="history-section" aria-label="Path history">
-          <p class="section-label history-label">Your path</p>
-
+        <div
+          class="history-canvas"
+          style="width: {containerWidth}px; height: {historyCanvasHeight}px;"
+        >
           {#each [...resolvedHistory].reverse() as decision, reverseIdx (decision.selectedNode.id)}
             {@const histIdx = resolvedHistory.length - 1 - reverseIdx}
 
@@ -327,10 +282,10 @@
               </div>
             </div>
           {/each}
-        </section>
-      {/if}
+        </div>
+      </section>
+    {/if}
 
-    </div>
   </div>
 </div>
 
@@ -375,6 +330,11 @@
     text-shadow: 0 0 16px rgba(74, 158, 255, 0.4);
   }
 
+  /* AR-243: Hide segment title in landscape — shown in top bar */
+  :global([data-layout="landscape"]) .hud-title {
+    display: none;
+  }
+
   .hp-bar-container {
     width: min(calc(340px * var(--layout-scale, 1)), 88%);
     position: relative;
@@ -410,7 +370,7 @@
   }
 
   /* =========================================================
-     Scrollable progressive canvas
+     Scrollable area — flex column, centers choices, history below
      ========================================================= */
   .map-scroll-container {
     flex: 1;
@@ -418,7 +378,8 @@
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-bottom: var(--safe-bottom, calc(16px * var(--layout-scale, 1)));
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -428,18 +389,43 @@
     display: none;
   }
 
-  .progressive-canvas {
-    position: relative;
-    flex-shrink: 0;
+  /* =========================================================
+     Choices center area — fills available vertical space,
+     vertically and horizontally centers the choice nodes.
+     ========================================================= */
+  .choices-center-area {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Subtle radial glow behind the nodes */
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(74, 158, 255, 0.07) 0%,
+      transparent 65%
+    );
+    /* Minimum height so it doesn't collapse on very small viewports */
+    min-height: calc(220px * var(--layout-scale, 1));
+    gap: calc(28px * var(--layout-scale, 1));
+    padding: calc(24px * var(--layout-scale, 1)) 0;
+  }
+
+  /* The row of choice nodes — flex, horizontally centered, spaced */
+  .choices-nodes-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: calc(48px * var(--layout-scale, 1));
+    flex-wrap: nowrap;
   }
 
   /* =========================================================
      Section labels
      ========================================================= */
   .section-label {
-    position: absolute;
-    left: 0;
-    right: 0;
     text-align: center;
     letter-spacing: calc(1.5px * var(--layout-scale, 1));
     text-transform: uppercase;
@@ -449,55 +435,42 @@
   }
 
   .choices-label {
-    top: calc(8px * var(--layout-scale, 1));
-    font-size: calc(11px * var(--layout-scale, 1));
-    color: rgba(245, 240, 230, 0.7);
+    font-size: calc(11px * var(--text-scale, 1));
+    color: rgba(245, 240, 230, 0.6);
   }
 
   .history-label {
-    top: calc(4px * var(--layout-scale, 1));
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
     color: rgba(245, 240, 230, 0.35);
-  }
-
-  /* =========================================================
-     Choices section — hero area at top
-     ========================================================= */
-  .choices-section {
-    position: relative;
-    width: 100%;
-    background: radial-gradient(
-      ellipse at 50% 40%,
-      rgba(74, 158, 255, 0.07) 0%,
-      transparent 70%
-    );
-  }
-
-  .choices-row {
-    position: absolute;
-    left: 0;
-    right: 0;
-    /* Y position set inline; translate so node centres sit on the Y coordinate */
-    transform: translateY(-50%);
+    margin-bottom: calc(8px * var(--layout-scale, 1));
   }
 
   .no-choices-hint {
     text-align: center;
     color: rgba(245, 240, 230, 0.4);
-    font-size: calc(13px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-style: italic;
     margin: 0;
-    padding-top: calc(16px * var(--layout-scale, 1));
   }
 
   /* =========================================================
-     History section
+     History section — naturally sized below choices
      ========================================================= */
   .history-section {
-    position: relative;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-top: 1px solid rgba(245, 240, 230, 0.07);
-    padding-top: calc(12px * var(--layout-scale, 1));
+    padding-top: calc(16px * var(--layout-scale, 1));
+    padding-bottom: calc(16px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  /* Absolute-positioned canvas for the history rows */
+  .history-canvas {
+    position: relative;
+    flex-shrink: 0;
   }
 
   .history-row {
@@ -508,7 +481,7 @@
   }
 
   /* =========================================================
-     Node slots
+     Node slots (used in history only)
      ========================================================= */
   .node-slot {
     position: absolute;
@@ -534,7 +507,7 @@
   }
 
   /* =========================================================
-     SVG connector overlays
+     SVG connector overlays (history only)
      ========================================================= */
   .connector-svg {
     position: absolute;

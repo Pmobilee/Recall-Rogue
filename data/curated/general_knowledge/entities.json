@@ -957,7 +957,7 @@
     "sitelinks": 170,
     "monthlyPageviews": 85000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7397",
@@ -967,7 +967,7 @@
     "sitelinks": 169,
     "monthlyPageviews": 84500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q15777",
@@ -979,7 +979,7 @@
     "properties": {
       "inception": "+1972-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9143",
@@ -989,7 +989,7 @@
     "sitelinks": 161,
     "monthlyPageviews": 80500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9041",
@@ -1004,7 +1004,7 @@
       "occupation": "Q81096",
       "fieldOfWork": "Q101333"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q80",
@@ -1018,7 +1018,9 @@
       "occupation": "Q82594",
       "fieldOfWork": "Q11661"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q11019",
@@ -1028,7 +1030,9 @@
     "sitelinks": 160,
     "monthlyPageviews": 80000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q2005",
@@ -1040,7 +1044,9 @@
     "properties": {
       "inception": "+1995-12-04T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q466",
@@ -1052,7 +1058,9 @@
     "properties": {
       "discoverer": "Q80"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q251",
@@ -1065,7 +1073,9 @@
       "inception": "+1995-00-00T00:00:00Z",
       "countryOfOrigin": "Q30"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q94",
@@ -1077,7 +1087,7 @@
     "properties": {
       "inception": "+2008-09-23T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q12802",
@@ -1087,7 +1097,7 @@
     "sitelinks": 154,
     "monthlyPageviews": 77000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q6368",
@@ -1099,7 +1109,7 @@
     "properties": {
       "discoverer": "Q80"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11012",
@@ -1109,7 +1119,7 @@
     "sitelinks": 151,
     "monthlyPageviews": 75500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q34253",
@@ -1123,7 +1133,7 @@
       "occupation": "Q5482740",
       "fieldOfWork": "Q1709010"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7987",
@@ -1136,7 +1146,7 @@
       "discoverer": "Q92614",
       "inception": "+1963-01-01T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5339",
@@ -1146,7 +1156,7 @@
     "sitelinks": 135,
     "monthlyPageviews": 67500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11661",
@@ -1156,7 +1166,7 @@
     "sitelinks": 134,
     "monthlyPageviews": 67000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7108",
@@ -1166,7 +1176,7 @@
     "sitelinks": 132,
     "monthlyPageviews": 66000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q4439",
@@ -1176,7 +1186,7 @@
     "sitelinks": 132,
     "monthlyPageviews": 66000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q22645",
@@ -1188,7 +1198,8 @@
     "properties": {
       "material": "Q11474"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q11468",
@@ -1198,7 +1209,8 @@
     "sitelinks": 130,
     "monthlyPageviews": 65000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q14076",
@@ -1210,7 +1222,8 @@
     "properties": {
       "material": "Q131877"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q250",
@@ -1222,7 +1235,8 @@
     "properties": {
       "creator": "Q654495"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q3966",
@@ -1232,7 +1246,8 @@
     "sitelinks": 127,
     "monthlyPageviews": 63500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q1301371",
@@ -1244,7 +1259,7 @@
     "properties": {
       "country": "Q884"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q39495",
@@ -1254,7 +1269,7 @@
     "sitelinks": 126,
     "monthlyPageviews": 63000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q3884",
@@ -1267,7 +1282,7 @@
       "country": "Q30",
       "inception": "+1994-07-05T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q44167",
@@ -1277,7 +1292,7 @@
     "sitelinks": 123,
     "monthlyPageviews": 61500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11368",
@@ -1289,7 +1304,7 @@
     "properties": {
       "inception": "+1969-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q31087",
@@ -1301,7 +1316,8 @@
     "properties": {
       "startDate": "+1960-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q5300",
@@ -1311,7 +1327,8 @@
     "sitelinks": 121,
     "monthlyPageviews": 60500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q80006",
@@ -1321,7 +1338,8 @@
     "sitelinks": 121,
     "monthlyPageviews": 60500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q41291",
@@ -1331,7 +1349,8 @@
     "sitelinks": 121,
     "monthlyPageviews": 60500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q12757",
@@ -1343,7 +1362,8 @@
     "properties": {
       "discoverer": "Q12674"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q12579633",
@@ -1353,7 +1373,8 @@
     "sitelinks": 120,
     "monthlyPageviews": 60000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q42889",
@@ -1363,7 +1384,8 @@
     "sitelinks": 119,
     "monthlyPageviews": 59500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q267298",
@@ -1373,7 +1395,8 @@
     "sitelinks": 118,
     "monthlyPageviews": 59000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q38867",
@@ -1383,7 +1406,8 @@
     "sitelinks": 118,
     "monthlyPageviews": 59000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q12800",
@@ -1393,7 +1417,8 @@
     "sitelinks": 118,
     "monthlyPageviews": 59000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q11436",
@@ -1403,7 +1428,10 @@
     "sitelinks": 117,
     "monthlyPageviews": 58500,
     "properties": {},
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q7857",
@@ -1415,7 +1443,10 @@
     "properties": {
       "material": "Q130693"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q40056",
@@ -1427,7 +1458,10 @@
     "properties": {
       "fieldOfWork": "Q11661"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q12760",
@@ -1437,7 +1471,10 @@
     "sitelinks": 116,
     "monthlyPageviews": 58000,
     "properties": {},
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q82",
@@ -1447,7 +1484,10 @@
     "sitelinks": 114,
     "monthlyPageviews": 57000,
     "properties": {},
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q37156",
@@ -1461,7 +1501,8 @@
       "creator": "Q468160",
       "inception": "+1911-06-16T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q40218",
@@ -1471,7 +1512,8 @@
     "sitelinks": 112,
     "monthlyPageviews": 56000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q646",
@@ -1483,7 +1525,8 @@
     "properties": {
       "discoverer": "Q57073"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q49108",
@@ -1496,7 +1539,8 @@
       "country": "Q30",
       "inception": "+1861-04-10T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q49013",
@@ -1509,7 +1553,8 @@
       "discoverer": "Q130495495",
       "material": "Q11427"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q5295",
@@ -1519,7 +1564,8 @@
     "sitelinks": 110,
     "monthlyPageviews": 55000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q16338",
@@ -1529,7 +1575,8 @@
     "sitelinks": 109,
     "monthlyPageviews": 54500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q132911",
@@ -1539,7 +1586,8 @@
     "sitelinks": 108,
     "monthlyPageviews": 54000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q101333",
@@ -1549,7 +1597,8 @@
     "sitelinks": 106,
     "monthlyPageviews": 53000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q46335",
@@ -1561,7 +1610,8 @@
     "properties": {
       "discoverer": "Q453351"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q38720",
@@ -1571,7 +1621,8 @@
     "sitelinks": 106,
     "monthlyPageviews": 53000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q5290",
@@ -1581,7 +1632,8 @@
     "sitelinks": 105,
     "monthlyPageviews": 52500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q127933",
@@ -1591,7 +1643,8 @@
     "sitelinks": 105,
     "monthlyPageviews": 52500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q124441",
@@ -1601,7 +1654,8 @@
     "sitelinks": 104,
     "monthlyPageviews": 52000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q483382",
@@ -1615,7 +1669,8 @@
       "occupation": "Q82594",
       "fieldOfWork": "Q43035"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q768575",
@@ -1625,7 +1680,8 @@
     "sitelinks": 102,
     "monthlyPageviews": 51000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q47506",
@@ -1635,7 +1691,8 @@
     "sitelinks": 101,
     "monthlyPageviews": 50500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q40164",
@@ -1645,7 +1702,8 @@
     "sitelinks": 101,
     "monthlyPageviews": 50500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q187939",
@@ -1655,7 +1713,8 @@
     "sitelinks": 99,
     "monthlyPageviews": 49500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q72313",
@@ -1665,7 +1724,8 @@
     "sitelinks": 98,
     "monthlyPageviews": 49000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q159236",
@@ -1675,7 +1735,8 @@
     "sitelinks": 97,
     "monthlyPageviews": 48500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q80993",
@@ -1685,7 +1746,8 @@
     "sitelinks": 97,
     "monthlyPageviews": 48500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q12674",
@@ -1700,7 +1762,8 @@
       "occupation": "Q205375",
       "fieldOfWork": "Q81096"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q173113",
@@ -1710,7 +1773,8 @@
     "sitelinks": 96,
     "monthlyPageviews": 48000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q1860",
@@ -1722,7 +1786,8 @@
     "properties": {
       "country": "Q16641"
     },
-    "processed": false
+    "processed": true,
+    "batch": 13
   },
   {
     "qid": "Q188",
@@ -1734,7 +1799,7 @@
     "properties": {
       "country": "Q183"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1321",
@@ -1746,7 +1811,7 @@
     "properties": {
       "country": "Q29"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q150",
@@ -1758,7 +1823,7 @@
     "properties": {
       "country": "Q142"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q315",
@@ -1768,7 +1833,7 @@
     "sitelinks": 326,
     "monthlyPageviews": 163000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7737",
@@ -1780,7 +1845,7 @@
     "properties": {
       "country": "Q159"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q13955",
@@ -1792,7 +1857,7 @@
     "properties": {
       "country": "Q79"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q652",
@@ -1804,7 +1869,7 @@
     "properties": {
       "country": "Q224"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q397",
@@ -1817,7 +1882,7 @@
       "startDate": "-0800-00-00T00:00:00Z",
       "country": "Q237"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5287",
@@ -1829,7 +1894,7 @@
     "properties": {
       "country": "Q17"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5146",
@@ -1841,7 +1906,7 @@
     "properties": {
       "country": "Q45"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q143",
@@ -1858,7 +1923,7 @@
       "movement": "Q384764",
       "countryOfOrigin": "Q34266"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9168",
@@ -1870,7 +1935,7 @@
     "properties": {
       "country": "Q794"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7850",
@@ -1882,7 +1947,7 @@
     "properties": {
       "country": "Q148"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9129",
@@ -1894,7 +1959,7 @@
     "properties": {
       "country": "Q41"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9288",
@@ -1907,7 +1972,7 @@
       "country": "Q801",
       "inception": "-1500-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7411",
@@ -1919,7 +1984,7 @@
     "properties": {
       "country": "Q55"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q809",
@@ -1931,7 +1996,7 @@
     "properties": {
       "country": "Q36"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9027",
@@ -1943,7 +2008,7 @@
     "properties": {
       "country": "Q34"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q256",
@@ -1955,7 +2020,7 @@
     "properties": {
       "country": "Q219"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q866",
@@ -1968,7 +2033,7 @@
       "country": "Q30",
       "inception": "+2005-02-14T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8162",
@@ -1978,7 +2043,7 @@
     "sitelinks": 231,
     "monthlyPageviews": 115500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8798",
@@ -1990,7 +2055,7 @@
     "properties": {
       "country": "Q212"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1568",
@@ -2002,7 +2067,7 @@
     "properties": {
       "country": "Q668"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9176",
@@ -2014,7 +2079,7 @@
     "properties": {
       "country": "Q884"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1617",
@@ -2026,7 +2091,7 @@
     "properties": {
       "country": "Q668"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9056",
@@ -2038,7 +2103,9 @@
     "properties": {
       "country": "Q213"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q11059",
@@ -2050,7 +2117,9 @@
     "properties": {
       "country": "Q668"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q19860",
@@ -2062,7 +2131,9 @@
     "properties": {
       "discoverer": "Q273969"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9035",
@@ -2074,7 +2145,9 @@
     "properties": {
       "country": "Q756617"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q7913",
@@ -2086,7 +2159,9 @@
     "properties": {
       "country": "Q218"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q7838",
@@ -2098,7 +2173,9 @@
     "properties": {
       "country": "Q924"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9067",
@@ -2110,7 +2187,9 @@
     "properties": {
       "country": "Q28"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9779",
@@ -2120,7 +2199,9 @@
     "sitelinks": 199,
     "monthlyPageviews": 99500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9292",
@@ -2132,7 +2213,9 @@
     "properties": {
       "country": "Q227"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q8091",
@@ -2142,7 +2225,9 @@
     "sitelinks": 195,
     "monthlyPageviews": 97500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q21204",
@@ -2156,7 +2241,9 @@
       "creator": "Q621776",
       "inception": "+1888-08-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9240",
@@ -2168,7 +2255,9 @@
     "properties": {
       "country": "Q252"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q8811",
@@ -2182,7 +2271,9 @@
       "discoverer": "Q80",
       "inception": "+1989-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q8209",
@@ -2195,7 +2286,9 @@
       "creator": "Q158504",
       "inception": "+0870-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q8785",
@@ -2207,7 +2300,9 @@
     "properties": {
       "country": "Q399"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q5885",
@@ -2219,7 +2314,9 @@
     "properties": {
       "country": "Q668"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q12791",
@@ -2229,7 +2326,9 @@
     "sitelinks": 172,
     "monthlyPageviews": 86000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q8216",
@@ -2241,7 +2340,9 @@
     "properties": {
       "inception": "-0750-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9217",
@@ -2253,7 +2354,9 @@
     "properties": {
       "country": "Q869"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q24905",
@@ -2263,7 +2366,9 @@
     "sitelinks": 170,
     "monthlyPageviews": 85000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q37260",
@@ -2273,7 +2378,9 @@
     "sitelinks": 168,
     "monthlyPageviews": 84000,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q7553",
@@ -2283,7 +2390,9 @@
     "sitelinks": 167,
     "monthlyPageviews": 83500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9199",
@@ -2295,7 +2404,9 @@
     "properties": {
       "country": "Q148"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9252",
@@ -2307,7 +2418,9 @@
     "properties": {
       "country": "Q232"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q234801",
@@ -2317,7 +2430,9 @@
     "sitelinks": 163,
     "monthlyPageviews": 81500,
     "properties": {},
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q9237",
@@ -2329,7 +2444,7 @@
     "properties": {
       "country": "Q833"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1084",
@@ -2339,7 +2454,7 @@
     "sitelinks": 159,
     "monthlyPageviews": 79500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q19814",
@@ -2349,7 +2464,7 @@
     "sitelinks": 157,
     "monthlyPageviews": 78500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8192",
@@ -2359,7 +2474,7 @@
     "sitelinks": 157,
     "monthlyPageviews": 78500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8641",
@@ -2371,7 +2486,7 @@
     "properties": {
       "country": "Q408"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q6266",
@@ -2381,7 +2496,7 @@
     "sitelinks": 153,
     "monthlyPageviews": 76500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q23526",
@@ -2391,7 +2506,7 @@
     "sitelinks": 152,
     "monthlyPageviews": 76000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9788",
@@ -2401,7 +2516,7 @@
     "sitelinks": 151,
     "monthlyPageviews": 75500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q21200",
@@ -2411,7 +2526,7 @@
     "sitelinks": 150,
     "monthlyPageviews": 75000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q36368",
@@ -2423,7 +2538,7 @@
     "properties": {
       "country": "Q43"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8201",
@@ -2437,7 +2552,7 @@
       "inception": "-1250-00-00T00:00:00Z",
       "countryOfOrigin": "Q29520"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q36244",
@@ -2447,7 +2562,7 @@
     "sitelinks": 142,
     "monthlyPageviews": 71000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q58680",
@@ -2459,7 +2574,7 @@
     "properties": {
       "country": "Q889"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8097",
@@ -2471,7 +2586,7 @@
     "properties": {
       "country": "Q668"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8222",
@@ -2485,7 +2600,7 @@
       "inception": "+1443-00-00T00:00:00Z",
       "countryOfOrigin": "Q18097"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q58635",
@@ -2497,7 +2612,7 @@
     "properties": {
       "country": "Q843"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q33384",
@@ -2507,7 +2622,7 @@
     "sitelinks": 139,
     "monthlyPageviews": 69500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9264",
@@ -2519,7 +2634,7 @@
     "properties": {
       "country": "Q265"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q33823",
@@ -2531,7 +2646,7 @@
     "properties": {
       "country": "Q837"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q35395",
@@ -2541,7 +2656,7 @@
     "sitelinks": 138,
     "monthlyPageviews": 69000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q82799",

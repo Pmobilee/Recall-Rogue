@@ -107,9 +107,11 @@
   import { isSlowReader, onboardingState, textSize } from './services/cardPreferences'
   import { unlockCardAudio, playCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
-  import { getDueReviews, playerSave } from './ui/stores/playerData'
+  import { getDueReviews, playerSave, persistPlayer } from './ui/stores/playerData'
   import { lastRunSummary } from './services/hubState'
   import { factsDB } from './services/factsDB'
+  import { initializeCuratedDecks } from './data/curatedDeckStore'
+  import { initConfusionMatrix } from './services/confusionMatrixStore'
   import { getPresetById } from './services/studyPresetService'
   import { collectMatchingFactIds } from './services/presetSelectionService'
   import { resumeCombatWithFallback } from './services/combatResumeService'
@@ -146,6 +148,7 @@
   import DungeonMap from './ui/components/DungeonMap.svelte'
   // StarterRelicSelection removed in AR-59.12 — file kept as dead code pending deletion approval
   import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
+  import DungeonSelectionScreen from './ui/components/DungeonSelectionScreen.svelte'
   import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
   import { knowledgeLevelSelected } from './services/cardPreferences'
   import RewardCardDetail from './ui/components/RewardCardDetail.svelte'
@@ -155,6 +158,7 @@
   import { updateRichPresence } from './services/steamService'
   import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
+  import InRunTopBar from './ui/components/InRunTopBar.svelte'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -208,8 +212,28 @@
       showRunGuardPopup = true
       return
     }
-    if (await maybePromptOutsideDueReviews()) return
-    startNewRun({ includeOutsideDueReviews: false })
+    // Navigate to dungeon selection instead of directly starting
+    handleOpenDungeonSelection()
+  }
+
+  function handleOpenDungeonSelection(): void {
+    transitionScreen('dungeonSelection')
+  }
+
+  function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string }): void {
+    // Set the deck mode in playerSave so the run uses it
+    if (config.mode === 'trivia') {
+      playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: config.domains, subdomains: config.subdomains } } : s)
+    } else {
+      playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'study' as const, deckId: config.deckId, subDeckId: config.subDeckId } } : s)
+    }
+    persistPlayer()
+    // Navigate back to hub, then start the run
+    transitionScreen('hub')
+    // Small delay to let the hub render, then start
+    setTimeout(() => {
+      startNewRun({ includeOutsideDueReviews: false })
+    }, 100)
   }
 
   function handleGuardContinue(): void {
@@ -718,6 +742,29 @@
   let hasRunSave = $state(hasActiveRun())
   let showActiveRunBanner = $derived(!$activeRunState && hasRunSave && !showRunGuardPopup)
 
+  const IN_RUN_SCREENS: Set<Screen> = new Set([
+    'combat', 'cardReward', 'shopRoom', 'restRoom', 'mysteryEvent',
+    'dungeonMap', 'retreatOrDelve', 'campfire', 'specialEvent',
+    'upgradeSelection', 'postMiniBossRest', 'restStudy', 'restMeditate',
+    'rewardRoom', 'masteryChallenge', 'relicSwapOverlay',
+  ])
+
+  let showTopBar = $derived($layoutMode === 'landscape' && IN_RUN_SCREENS.has($currentScreen) && $activeRunState !== null)
+
+  let topBarRelics = $derived(
+    ($activeRunState?.runRelics ?? []).map((r) => {
+      const def = RELIC_BY_ID[r.definitionId]
+      return {
+        definitionId: r.definitionId,
+        name: def?.name ?? r.definitionId,
+        description: def?.description ?? '',
+        icon: def?.icon ?? '?',
+        rarity: def?.rarity ?? 'common',
+      }
+    })
+  )
+  let topBarMaxRelicSlots = $derived($activeRunState ? getMaxRelicSlots($activeRunState.runRelics) : 5)
+
   $effect(() => {
     if ($currentScreen === 'hub') {
       hasRunSave = hasActiveRun()
@@ -883,6 +930,12 @@
     updateLayoutScale()
     window.addEventListener('resize', updateLayoutScale)
 
+    // Load curated decks in parallel — non-blocking, store handles empty state gracefully
+    void initializeCuratedDecks()
+
+    // Initialize confusion matrix from player save
+    initConfusionMatrix()
+
     // Re-run scale computation whenever layout mode changes (dev toggle or orientation flip)
     const unsubLayoutMode = layoutMode.subscribe(() => {
       updateLayoutScale()
@@ -919,6 +972,24 @@
   <FireflyBackground />
 </div>
 <div class="card-app" class:boot-bg-black={showBootAnimation && !hubShowBlurred} class:boot-bg-clear={hubShowBlurred && showBootAnimation} data-screen={$currentScreen} data-layout={$layoutMode}>
+  {#if showTopBar}
+    <InRunTopBar
+      playerHp={$activeRunState?.playerHp ?? 0}
+      playerMaxHp={$activeRunState?.playerMaxHp ?? 100}
+      playerBlock={$activeTurnState?.playerState?.shield ?? 0}
+      currency={$activeRunState?.currency ?? 0}
+      currentFloor={$activeRunState?.floor.currentFloor ?? 1}
+      segment={$activeRunState?.floor.segment ?? 1}
+      currentEncounter={$activeRunState?.floor.currentEncounter ?? 0}
+      encountersPerFloor={$activeRunState?.floor.encountersPerFloor ?? 3}
+      relics={topBarRelics}
+      triggeredRelicId={$activeTurnState?.triggeredRelicId ?? null}
+      maxRelicSlots={topBarMaxRelicSlots}
+      ascensionLevel={$activeRunState?.ascensionLevel ?? 0}
+      onpause={handlePause}
+    />
+  {/if}
+
   <div
     id="phaser-container"
     class="phaser-container"
@@ -944,7 +1015,6 @@
       onOpenSocial={handleOpenSocial}
       onOpenRelicSanctum={() => handleOpenRelicSanctum()}
       onOpenDeckBuilder={handleOpenDeckBuilder}
-      onOpenTopicInterests={handleOpenTopicInterests}
       onReplayBootAnim={handleReplayBootAnim}
       disableEffects={showBootAnimation}
     />
@@ -1292,6 +1362,15 @@
     </div>
   {/if}
 
+  {#if $currentScreen === 'dungeonSelection'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <DungeonSelectionScreen
+        onback={handleBackToMenu}
+        onStartRun={handleDungeonRunStart}
+      />
+    </div>
+  {/if}
+
   {#if $currentScreen === 'profile'}
     <div in:fly={{ y: 8, duration: 350 }}>
       <ProfileScreen onBack={handleBackToMenu} />
@@ -1418,6 +1497,7 @@
     width: min(100vw, calc(100vh * 571 / 1024)); /* GAME_ASPECT_RATIO: 9/16 ≈ 0.5625, legacy: 571/1024 ≈ 0.5576 */
     background: #0d1117;
     overflow: hidden;
+    --run-viewport-top: 0px;
   }
 
   /* Landscape: expand .card-app to fill the full viewport — remove portrait column constraints.
@@ -1428,6 +1508,8 @@
     transform: none;
     width: 100vw;
     overflow: visible;
+    --topbar-height: clamp(36px, 4.5vh, 56px);
+    --run-viewport-top: var(--topbar-height, 0px);
   }
 
   /* Suppress the portrait-mode side-curtain gradients in landscape — they would overlay the hub. */
@@ -1483,6 +1565,16 @@
     object-fit: cover !important;
     width: 100vw !important;
     height: 100dvh !important;
+  }
+
+  /* Landscape: push Phaser canvas below the top bar */
+  [data-layout="landscape"] .phaser-container.visible {
+    top: var(--topbar-height, 0);
+    height: calc(100dvh - var(--topbar-height, 0));
+  }
+
+  [data-layout="landscape"] .phaser-container.visible :global(canvas) {
+    height: calc(100dvh - var(--topbar-height, 0)) !important;
   }
 
   .hub-wrapper {
@@ -1553,6 +1645,10 @@
     height: calc(14px * var(--layout-scale, 1));
     background: currentColor;
     border-radius: 1px;
+  }
+
+  [data-layout="landscape"] .pause-btn {
+    display: none;
   }
 
   [data-layout="landscape"] .active-run-banner {

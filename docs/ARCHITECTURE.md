@@ -169,6 +169,10 @@ Located in `src/data/`:
 - `saveState.ts` — run state shape (RunSaveState); includes ActMap in run save state. **v3 fields:** `deckId: string` (selected curated deck for this run), `inRunFSRS: Map<string, InRunFactState>` (per-run fact performance tracker), `confusionEntries: ConfusionEntry[]` (confusion pairs recorded this run). **Removed (v3):** `cursedFactIds: string[]` (cursed card system removed), `firstChargeFreeFactIds` (Free First Charge removed).
 - `curatedDeck.ts` — **NEW (v3):** `CuratedDeck`, `DeckFact`, `AnswerTypePool`, `SynonymGroup`, `ChainTheme`, `QuestionTemplate` interfaces.
 - `confusionMatrix.ts` — **NEW (v3):** `ConfusionEntry` interface, persistent cross-run confusion tracking.
+- `curatedDeckTypes.ts` — **NEW (v3):** `CuratedDeck`, `DeckFact`, `AnswerTypePool`, `SynonymGroup`, `QuestionTemplate` runtime types (mirrors `curatedDeck.ts` with service-facing additions).
+- `deckRegistry.ts` — **NEW (v3):** Deck metadata registry mapping deck IDs to manifest entries (name, domain, subdeck list, file path).
+- `deckFactIndex.ts` — **NEW (v3):** Deck/sub-deck to fact ID mapping index; enables fast `getFactsForDeck(deckId)` without full JSON parse.
+- `vocabularyTemplates.ts` — **NEW (v3):** Standard vocabulary deck question templates (forward, reading, reverse, synonym_pick, definition_match); gated by mastery level.
 - `card-types.ts` — Expansion: `isInscription?: boolean` and `isRemovedFromGame?: boolean` added to Card interface for Inscription keyword support.
 - Map types (`src/services/mapGenerator.ts`) — `ActMap` (rows, edges, completed nodes, current node), `MapNode` (id, row, col, type: combat|elite|boss|mystery|rest|treasure|shop, connections)
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number`, `difficultyVariance` (0.8–1.2x HP/damage variance), `enrageBonusDamage` (cumulative bonus added to attack damage), and `playerChargedThisTurn` (reset each enemy turn for `onPlayerNoCharge` detection). `EnemyTemplate` includes `rarity`, `spawnWeight`, `animArchetype` (8 animation types), and v2 quiz-reactive callbacks: `onPlayerChargeWrong`, `onPlayerChargeCorrect`, `onPlayerNoCharge`, `onEnemyTurnStart`. Passive flags: `quickPlayImmune` (Quick Play deals 0 damage), `chainMultiplierOverride` (caps chain multiplier). Boss templates include `quizPhases: QuizPhaseConfig[]` (hpThreshold, questionCount, timerSeconds, rapidFire). Exports `ACT_ENEMY_POOLS` (3-act pool structure) and `getEnemiesForNode(act, nodeType)` for map node enemy selection.
@@ -241,6 +245,23 @@ Core systems powering the card roguelite:
 | Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen; **v3:** replaced for run setup by curated deck selection system |
 | Study mode selector | `src/ui/components/StudyModeSelector.svelte` | Built — hub dropdown; **v3:** replaced by curated deck selection flow |
 | Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built — preserved as fallback for pre-map saves |
+| **Dungeon Selection System (AR-244)** | | |
+| Dungeon Selection Screen | `src/ui/components/DungeonSelectionScreen.svelte` | Main unified run configuration screen with mode toggle |
+| Mode Toggle | `src/ui/components/ModeToggle.svelte` | Trivia Dungeon / Study Temple tab switcher |
+| Domain Sidebar | `src/ui/components/DomainSidebar.svelte` | Left sidebar: domain list (checkboxes for trivia, single-select for study) |
+| Trivia Content Area | `src/ui/components/TriviaContentArea.svelte` | Trivia domain/subdomain multi-select grid |
+| Subdomain Checklist | `src/ui/components/SubdomainChecklist.svelte` | Expandable subdomain picker for each domain |
+| Study Content Area | `src/ui/components/StudyContentArea.svelte` | Curated deck grid view with detail panel |
+| Vocab Tree View | `src/ui/components/VocabTreeView.svelte` | Language-grouped vocabulary deck tree with per-language settings cogwheel |
+| Deck Grid | `src/ui/components/DeckGrid.svelte` | Responsive deck tile grid layout |
+| Deck Tile | `src/ui/components/DeckTile.svelte` | Individual deck card with FSRS progress bar and action buttons |
+| Deck Detail | `src/ui/components/DeckDetail.svelte` | Slide-in deck detail panel with sub-deck selection + run/custom buttons |
+| Custom Playlist Bar | `src/ui/components/CustomPlaylistBar.svelte` | Bottom toolbar for saved playlists |
+| Deck Registry | `src/services/deckRegistry.ts` | Curated deck metadata registry (deck IDs → manifest entries) |
+| Deck Fact Index | `src/services/deckFactIndex.ts` | Fast deck/sub-deck → fact ID mapping lookup |
+| Deck Progress Service | `src/services/deckProgressService.ts` | FSRS-based progress aggregation per deck |
+| Language Settings | `src/services/languageSettingsService.ts` | Per-language display option persistence (furigana, romaji, etc.) |
+| Per-Language Settings UI | `src/ui/components/LanguageSettingsPanel.svelte` | Settings cog panel for language-specific options |
 | Dungeon map | `src/ui/components/DungeonMap.svelte` | Built — scrollable vertical act map with SVG paths and HTML nodes |
 | Map node | `src/ui/components/MapNode.svelte` | Built — 44px circle node button, type-coded by icon/color |
 | Map generator | `src/services/mapGenerator.ts` | Built — ActMap/MapNode types, generateActMap(), selectMapNode(), navigation helpers. Boss selection uses seeded RNG to pick randomly from a 2-boss pool per region (Shallow Depths, Deep Caverns, The Abyss, The Archive). AR-116: post-processing step enforces exact room counts per floor: row 0 = combat, 1 rest in rows 1–5, 2 shops (2+ rows apart), 2 mystery rooms (not on shop rows), row 6 = rest (pre-boss), row 7 = boss. |
@@ -306,6 +327,44 @@ Core systems powering the card roguelite:
 **AR-73 CombatScene landscape layout**: `handleLayoutChange(mode)` calls `repositionAll()` which branches on `currentLayoutMode`. All positioning uses helper methods `getEnemyX()`, `getEnemyY()`, `getEnemyHpBarCenter()` that return portrait or landscape coordinates respectively. The `LANDSCAPE` const object defines all landscape position percentages. Portrait code paths are never touched when in portrait mode — pure additive branching. The `CardHand` component renders a separate `.card-hand-landscape` container (fixed bottom strip, flex-row, no arc/rotation) when `$isLandscape` is true, and the original `.card-hand-container` (portrait fan) when false. `CardCombatOverlay` applies `.layout-landscape` class which repositions HUD elements via CSS.
 
 **AR-74 Input system**: `inputService` (singleton pub/sub) decouples input sources from UI. `keyboardInput` module auto-subscribes to `layoutMode` and only binds `keydown` listeners in landscape. Components register `inputService.on(actionType, handler)` in `onMount` and call the returned unsubscribe in `onDestroy`. `CardCombatOverlay` calls `setQuizVisible()` on `cardPlayStage` change to enable context-aware key routing (1-4 = quiz answers when quiz visible, card select otherwise). `CardHand` subscribes to `SELECT_CARD` and `DESELECT`. Mouse hover tooltip in `CardHand` is gated by `$isLandscape`.
+
+### Implemented (Dungeon Selection System — AR-244)
+
+**Screen:** `DungeonSelectionScreen.svelte` — unified run configuration screen presented on "Start Run" click from Hub.
+
+**Components:**
+- `ModeToggle.svelte` — Trivia Dungeon / Study Temple tab switcher
+- `DomainSidebar.svelte` — left sidebar domain list (checkboxes for trivia, single-select for study)
+- `TriviaContentArea.svelte` + `SubdomainChecklist.svelte` — trivia domain/subdomain multi-select grid
+- `StudyContentArea.svelte` — curated deck grid view with optional detail panel
+- `VocabTreeView.svelte` — language-grouped vocabulary deck tree with per-language settings cogwheel
+- `DeckGrid.svelte` + `DeckTile.svelte` — responsive deck tile grid with FSRS progress bars
+- `DeckDetail.svelte` — slide-in detail panel for deck inspection and sub-deck selection
+- `CustomPlaylistBar.svelte` — persistent toolbar showing saved custom playlists
+- `LanguageSettingsPanel.svelte` — settings UI for per-language display options (furigana, romaji, etc.)
+
+**Services:**
+- `deckRegistry.ts` — curated deck metadata index (deck IDs → manifest entries with name, domain, file paths)
+- `deckFactIndex.ts` — fast deck/sub-deck → fact ID mapping; enables `getFactsForDeck(deckId)` lookup
+- `deckProgressService.ts` — FSRS-based progress aggregation per deck (tracks mastery % across all runs)
+- `languageSettingsService.ts` — persistent per-language display option store
+
+**Data Flow:**
+1. User clicks "Start Run" → `DungeonSelectionScreen` mounts
+2. User selects mode (Trivia or Study) and makes selections
+3. On "Start Run" button click → `handleStartRun(selections)`
+4. Calls `gameFlowController.startNewRun(selections)` with run config (mode, deckId, domain filters, etc.)
+5. `gameFlowController` → sets up appropriate fact pool via:
+   - Trivia mode: `buildTriviaRunPool(domains, subdomains)`
+   - Study mode: `buildStudyRunPool(deckId)` + loads curated deck facts
+   - All-language mode: `buildLanguageRunPool(languageCode)` → combines all language decks
+6. Routes to `dungeonMap` screen
+
+**State Persistence:**
+- Last selected mode, domain selections, and deck choice stored in `playerSave.dungeonSelectionState`
+- Custom playlists stored in `playerSave.customPlaylists`
+- Language settings (furigana toggle, romaji toggle, etc.) stored per language in `playerSave.languageSettings`
+- Screen remembers these choices on next visit
 
 ### Implemented (P0.5 — Mastery Tiers)
 
@@ -483,6 +542,51 @@ activeInscriptions: ActiveInscription[]  // persists for entire encounter; initi
 - `gameFlowController.ts` — Relic acquisition flow after encounters, relic reward routing, slot cap enforcement, swap flow trigger
 - `playerData.ts` — `awardMasteryCoin()`, `spendMasteryCoins()`, `unlockRelic()`, `toggleRelicExclusion()`
 - `saveService.ts` — Backward-compatible migration: retroactive mastery coins from Tier 3 facts
+
+### Curated Deck System — New Files (v3, AR-245–AR-251)
+
+| File | Purpose |
+|------|---------|
+| `src/data/curatedDeckTypes.ts` | `CuratedDeck`, `DeckFact`, `AnswerTypePool`, `SynonymGroup`, `QuestionTemplate` types |
+| `src/data/curatedDeckStore.ts` | Runtime store + JSON loader for curated decks |
+| `src/data/deckRegistry.ts` | Deck metadata registry (deck ID → name, domain, subdeck list, file path) |
+| `src/data/deckFactIndex.ts` | Deck/sub-deck to fact ID mapping index |
+| `src/data/vocabularyTemplates.ts` | Standard vocabulary deck templates (forward, reading, reverse, synonym_pick, definition_match) |
+| `src/services/inRunFactTracker.ts` | Per-run fact performance + cooldown tracker |
+| `src/services/curatedFactSelector.ts` | Weighted fact selection at charge-commit time (`selectFactForCharge()`) |
+| `src/services/confusionMatrix.ts` | Cross-run confusion tracking + priority scoring |
+| `src/services/confusionMatrixStore.ts` | Global confusion matrix singleton + localStorage persistence |
+| `src/services/curatedDistractorSelector.ts` | Pool-based distractor selection (synonym exclusion → confusions → struggles → fill) |
+| `src/services/questionTemplateSelector.ts` | Template selection + `QuizData` rendering |
+| `src/services/nonCombatQuizSelector.ts` | Study Temple quiz selector for shop/rest/boss/mystery contexts |
+| `src/services/deckProgressService.ts` | Per-deck FSRS progress computation (powers mastery % display) |
+| `data/decks/manifest.json` | Deck file manifest (lists all available deck JSON paths) |
+| `data/decks/*.json` | Curated deck data files (facts, answer pools, chain themes, synonym groups) |
+
+**Data Flow (Study Temple):**
+```
+App Start
+  → initializeCuratedDecks()
+  → loads data/decks/manifest.json
+  → loads each deck JSON
+  → populates curatedDeckStore, deckRegistry, deckFactIndex
+
+Run Start (Study Temple)
+  → InRunFactTracker created
+  → seeded from global FSRS (stability < 2d → wrongCount:1; > 30d → correctCount:1)
+
+Card Charge (Study Temple)
+  → selectFactForCharge(card, deck, inRunTracker)
+  → selectQuestionTemplate(deck, fact, masteryLevel)
+  → selectDistractors(correctFact, deck, inRunTracker, confusionMatrix, masteryLevel)
+  → QuizData returned to CardExpanded.svelte
+
+Answer Result
+  → inRunFactTracker.recordResult(factId, correct, responseTimeMs)
+  → confusionMatrix.recordConfusion(correctFactId, chosenFactId) [if wrong]
+  → global FSRS update via saveService
+  → confusionMatrixStore.flush() at run end
+```
 
 ### Planned (P1)
 
@@ -699,6 +803,15 @@ src/
     platformService.ts     — AR-72 platform detection: `platform: 'mobile'|'desktop'|'web'`; detects Tauri (`__TAURI__`), Capacitor, or bare browser at module load time.
     hapticService.ts       — Capacitor haptic feedback; guarded by `isMobile` — no-op on desktop/web.
     notificationService.ts — Capacitor push notifications; `requestNotificationPermission()` returns false immediately on non-mobile platforms.
+    inRunFactTracker.ts    — NEW (v3): Per-run fact performance tracker. Tracks correctCount, wrongCount, lastSeenEncounter, confusedWith[], streak per fact. Seeded from global FSRS at run start. Enforces 3-encounter cooldown.
+    curatedFactSelector.ts — NEW (v3): Weighted fact selection at charge-commit time. Applies in-run FSRS weights, chain theme filtering, same-hand dedup, and cooldown exclusion. Entry point: selectFactForCharge().
+    curatedDeckStore.ts    — NEW (v3): Runtime store for loaded curated decks. Populated by initializeCuratedDecks() at app start (loads manifest → loads deck JSONs). Provides getDeck(id), getAllDecks().
+    confusionMatrix.ts     — NEW (v3): Cross-run confusion tracking service. recordConfusion(correctFactId, chosenFactId), getConfusionsFor(factId). Implements priority weighting for distractor selection.
+    confusionMatrixStore.ts — NEW (v3): Global confusion matrix singleton + localStorage persistence. Loaded at app start; flushed after each run.
+    curatedDistractorSelector.ts — NEW (v3): Pool-based distractor selector. selectDistractors(correctFact, deck, inRunTracker, confusionMatrix, masteryLevel) → string[]. Implements synonym exclusion → known confusions → in-run struggles → pool fill priority chain.
+    questionTemplateSelector.ts — NEW (v3): Template selection + rendering. selectTemplate(deck, fact, masteryLevel, recentTemplates) → QuizData. Weights by difficulty match, variety, and mastery gate.
+    nonCombatQuizSelector.ts — NEW (v3): Quiz selector for shop/rest/boss/mystery contexts in Study Temple. Uses full deck pool (no chain theme filter); still FSRS-weighted + cooldown-filtered. Updates both in-run and global FSRS.
+    deckProgressService.ts — NEW (v3): Per-deck FSRS progress computation. getProgressStats(deckId, playerSave) → { known, struggling, unseen, masteryPct }. Powers "You know 73% of US Presidents" display.
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
 src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet compiled — requires Rust toolchain)
   tauri.conf.json        — Window config: 1920×1080 default, 1280×720 min, resizable
@@ -741,7 +854,11 @@ src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet com
   data/
     card-types.ts          — Card, CardRunState, CardType, FactDomain types; AR-113 adds `masteryLevel: number` (0–5) and `masteryChangedThisEncounter: boolean` fields to Card
     curatedDeck.ts         — NEW (v3): CuratedDeck, DeckFact, AnswerTypePool, SynonymGroup, ChainTheme, QuestionTemplate interfaces
+    curatedDeckTypes.ts    — NEW (v3): Runtime-facing curated deck types (service additions on top of curatedDeck.ts)
     confusionMatrix.ts     — NEW (v3): ConfusionEntry interface; persistent cross-run confusion tracking types
+    deckRegistry.ts        — NEW (v3): Deck metadata registry (deck ID → name, domain, subdeck list, file path)
+    deckFactIndex.ts       — NEW (v3): Deck/sub-deck → fact ID mapping index
+    vocabularyTemplates.ts — NEW (v3): Standard vocabulary question templates gated by mastery level
     flagManifest.ts        — Maps 218 country names to flag SVG URLs; exports getFlagUrl(countryName), getFlagUrlBySlug(slug)
     studyPreset.ts         — StudyPreset, DeckMode types (preset selection + mastery scaling) — v3: superseded by curated deck selection
     enemies.ts             — Enemy template definitions

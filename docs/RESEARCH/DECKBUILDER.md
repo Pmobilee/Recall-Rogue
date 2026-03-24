@@ -127,13 +127,16 @@ Bracket-number facts still belong to an answer type pool (for organizational pur
 
 ### 3.4 Deck Selection at Run Start
 
-At run start, the player selects a deck from their available collection:
+At run start, the player enters the **Dungeon Selection Screen** — a single unified screen with two mode tabs:
 
-1. **Domain selection** — Choose a top-level domain (e.g., "History", "Japanese", "Science")
-2. **Deck selection** — Choose a specific deck within that domain (e.g., "US Presidents", "World War II", "Ancient Rome")
-3. If a deck has sub-decks, optionally narrow further
+1. **Trivia Dungeon** — casual mode. Pick one or more domains and/or subdomains from the general trivia fact pool (`facts.db`, `knowledge-*.json`). Multi-select supported. Facts are standalone entries, no curated structure.
+2. **Study Temple** — focused study mode. Browse curated decks organized by domain (left sidebar). Pick a specific deck, optionally focus on a sub-deck (e.g., Japanese N3 -> Kanji only). All facts come from that deck's dedicated fact file (`data/decks/*.json`).
 
-The selected deck's full fact pool (minimum 30, target 50+) is loaded for the run. All quiz content for the entire run comes from this single deck.
+**CRITICAL: These two modes use COMPLETELY SEPARATE fact pools.** Trivia Dungeon draws from the general trivia database. Study Temple draws from curated deck JSON files. There is zero overlap between the fact pools. Both can cover the same topics but use entirely different fact entries.
+
+**Vocabulary content (all languages) lives EXCLUSIVELY in Study Temple** as curated decks with sub-decks (Vocabulary, Kanji, Grammar). Language facts are not available in Trivia Dungeon.
+
+The screen remembers the player's last selected mode and configuration for quick re-entry. See AR-244 for full UX specification.
 
 **Multiple deck composition (future consideration):** For advanced players who want variety, a "Mixed Deck" option could combine 2-3 curated decks — but only if their answer type pools don't overlap in confusing ways. This is NOT for initial implementation.
 
@@ -150,6 +153,8 @@ interface ChainTheme {
   factSubset: string[];          // Fact IDs that belong to this theme (minimum 8 per theme)
 }
 ```
+
+**CURRENT IMPLEMENTATION: Generic chain slots only.** For initial deck builds, facts are assigned to generic chain slot indices (0-5) distributed evenly. The 6 default chain types (Obsidian, Crimson, Azure, Amber, Violet, Jade) are used for all decks — both knowledge and vocabulary. Named thematic chain groupings (e.g., "Founding Fathers", "Civil War Era") are a future enhancement for replayability. The in-game chaining mechanic works correctly with generic slots.
 
 **Minimum 3 chain themes per deck.** No upper limit — a large deck like the Periodic Table might have 8+ themes (Alkali Metals, Noble Gases, Transition Metals, Halogens, etc.). Each run selects 3 of the deck's themes (deterministically from seed), same as the current system. This means a deck with exactly 3 themes always uses all of them, while a deck with 8 themes has different 3-theme combinations per seed — adding replayability.
 
@@ -507,6 +512,8 @@ interface QuestionTemplate {
 
 ### 5.2 Vocabulary Decks — Complete System
 
+**Vocabulary decks are EXCLUSIVELY available in Study Temple mode.** All language learning content (Japanese N5-N1, Korean, Spanish, French, German, Dutch, Czech, etc.) must be structured as curated decks with sub-decks (Vocabulary, Kanji, Grammar where applicable). Language facts are removed from the general trivia fact pool.
+
 Vocabulary decks (all languages) use a standardized template set that works identically across all supported languages. The existing Forward/Reverse/Synonym Pick/Definition Match variants are restructured as deck-specific templates within the new system.
 
 #### Template Mapping (All Languages)
@@ -566,6 +573,17 @@ The `acceptableAlternatives` intersection algorithm (§4.6) catches all of these
 
 **Reverse question synonym safety:** For Reverse questions ("How do you say 'pretty'?"), synonym-grouped target language words (きれい and うつくしい) never appear as each other's distractors. The question may also need specificity ("Which word means 'pretty' in the sense of 'clean/tidy'?") — the Deck Master skill should flag these during deck architecture.
 
+#### Per-Language Display Settings
+
+Vocabulary decks support per-language display settings that customize quiz rendering. Settings are scoped to a language and apply to ALL sub-decks of that language. They are accessible from the Study Temple vocabulary tree (cogwheel on language headers) and live during runs (cogwheel on quiz overlay).
+
+Current settings (Japanese only):
+- Furigana toggle (hiragana above kanji)
+- Romaji toggle (romanized readings)
+- Kana-only mode (replace kanji with hiragana)
+
+Future languages may add their own options. Settings are stored via `deckOptionsService.ts` and react immediately in the quiz UI.
+
 #### Vocabulary Deck Restructuring Notes
 
 Existing programmatic vocabulary data (Japanese 13,073 facts, Korean 11,400, Chinese 13,472, etc.) must be restructured with:
@@ -575,6 +593,7 @@ Existing programmatic vocabulary data (Japanese 13,073 facts, Korean 11,400, Chi
 4. Difficulty ratings preserved from existing data
 5. Fact IDs preserved where possible to maintain player FSRS data
 6. **No chain themes needed** — vocabulary decks use generic chain types (see §3.5)
+7. **Vocabulary facts removed from Trivia Dungeon** — language content lives exclusively in Study Temple curated decks
 
 ### 5.3 Template Selection at Charge Time
 
@@ -690,13 +709,13 @@ This becomes a genuinely valuable study tool independent of the game — a stron
 
 ---
 
-## 8. Trivia Mode & Daily Expedition
+## 8. Trivia Dungeon & Daily Expedition
 
-### 8.1 Trivia Mode (Separate Game Mode)
+### 8.1 Trivia Dungeon (Separate Game Mode)
 
 A separate mode where instead of a focused curated deck, facts are drawn from a broad domain pool with no repetition within a run. Every fact appears at most ONCE.
 
-| Aspect | Standard Mode | Trivia Mode |
+| Aspect | Study Temple | Trivia Dungeon |
 |--------|--------------|-------------|
 | Deck | Curated, 30-50+ facts, one domain | Broad pool, 200+ facts, one or mixed domains |
 | Repetition | Facts repeat across encounters (FSRS-weighted) | Each fact appears ONCE per run, never repeated |
@@ -707,14 +726,16 @@ A separate mode where instead of a focused curated deck, facts are drawn from a 
 | Chain themes | Deck-specific themed sub-groups | Generic or domain-based |
 | FSRS update | Yes — results update global FSRS | Yes — results still update global FSRS |
 
-**When to use Trivia Mode:**
+**Fact Pool Separation:** Trivia Dungeon uses the general trivia database (`facts.db`, `knowledge-*.json`). Study Temple uses curated deck files (`data/decks/*.json`). These are completely separate pools — no fact IDs overlap. Vocabulary/language facts are exclusive to Study Temple.
+
+**When to use Trivia Dungeon:**
 - Casual sessions where variety is more fun than depth
 - Exploring a new domain before committing to a curated deck
 - Players who find focused repetition tedious
 
 ### 8.2 Daily Expedition (Redesigned)
 
-The Daily Expedition uses **Trivia Mode mechanics** (no repeat facts, broad pool) with a shared seed so all players face identical questions.
+The Daily Expedition uses **Trivia Dungeon mechanics** (no repeat facts, broad pool) with a shared seed so all players face identical questions.
 
 **Per-domain leaderboards:** Each domain has its own Daily Expedition. Players compete to prove they're the best at a specific topic.
 
@@ -918,7 +939,7 @@ The `full` command runs all three phases sequentially.
 
 ### 10.3 Data Migration
 
-The original general knowledge fact database was deleted. A regenerated set of ~3,000 general domain facts exists for Trivia Mode use. Vocabulary fact databases (all languages) are intact and must be restructured into the new curated deck format — see §12 for details.
+The original general knowledge fact database was deleted. A regenerated set of ~3,000 general domain facts exists for Trivia Dungeon use. Vocabulary fact databases (all languages) are intact and must be restructured into the new curated deck format — see §12 for details.
 
 No backward-compatible fact ID migration is needed since the original database is gone. Vocabulary fact IDs should be preserved where possible during restructuring to maintain any existing player FSRS data.
 
@@ -956,7 +977,7 @@ No backward-compatible fact ID migration is needed since the original database i
 
 ### 12.1 Current State
 
-The original 20,000+ general knowledge fact database has been **deleted**. A smaller regenerated set of ~3,000 general domain facts exists. These serve as the base pool for Trivia Mode and the "Ultimate Daily" general knowledge expedition.
+The original 20,000+ general knowledge fact database has been **deleted**. A smaller regenerated set of ~3,000 general domain facts exists. These serve as the base pool for Trivia Dungeon and the "Ultimate Daily" general knowledge expedition.
 
 **Vocabulary facts (all languages) are intact.** Japanese (13,073), Korean (11,400), Chinese (13,472), and European languages were generated programmatically from authoritative sources (JLPT word lists, TOPIK lists, HSK lists, CEFR frequency lists). These must be carefully restructured into the new curated deck format:
 - Reorganize into per-level sub-decks (e.g., "Japanese N5 Vocabulary", "Japanese N4 Vocabulary")
@@ -1107,6 +1128,6 @@ Several deck types would benefit from image-based questions (flags, anatomy diag
 
 1. **Vocabulary `acceptableAlternatives` completeness:** How thoroughly populated are the existing vocabulary datasets' alternative answer fields? If sparse, synonym group detection will miss overlaps. An audit pass may be needed before restructuring.
 
-2. **Trivia Mode chain types:** Should Trivia Mode (broad pool, no repeat facts) use domain-based chain themes, generic chain types, or no chains at all?
+2. **Trivia Dungeon chain types:** Should Trivia Dungeon (broad pool, no repeat facts) use domain-based chain themes, generic chain types, or no chains at all?
 
 3. **Onboarding deck:** Which deck should be pre-selected for a brand new player's first run? A general knowledge deck would be safest (broadest appeal), but a well-crafted specific deck (World Countries?) might be more engaging.

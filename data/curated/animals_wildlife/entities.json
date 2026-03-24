@@ -890,7 +890,7 @@
       "taxonName": "Bovidae",
       "startDate": "-20000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -904,7 +904,7 @@
     "properties": {
       "taxonName": "Tabanidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1035,7 +1035,7 @@
       "taxonName": "Hominoidea",
       "startDate": "-20400000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1062,7 +1062,7 @@
     "properties": {
       "taxonName": "Pholidota"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q10798",
@@ -1074,7 +1074,7 @@
     "properties": {
       "taxonName": "Sus"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q132922",
@@ -1086,7 +1086,9 @@
     "properties": {
       "taxonName": "Camelus bactrianus"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q43284",
@@ -1100,7 +1102,9 @@
       "conservationStatus": "Q96377276",
       "startDate": "-51500000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q2274076",
@@ -1112,7 +1116,9 @@
     "properties": {
       "taxonName": "Folivora"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q25587",
@@ -1124,9 +1130,11 @@
     "properties": {
       "taxonName": "Phocidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q25401",
@@ -1138,7 +1146,9 @@
     "properties": {
       "taxonName": "Lagomorpha"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b2",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q5113",
@@ -1150,7 +1160,7 @@
     "properties": {
       "taxonName": "Aves"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q780",
@@ -1162,7 +1172,7 @@
     "properties": {
       "taxonName": "Gallus gallus domesticus"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25222",
@@ -1175,7 +1185,7 @@
       "taxonName": "Strigiformes",
       "startDate": "-60000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1189,7 +1199,7 @@
     "properties": {
       "taxonName": "Columbidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1201,7 +1211,7 @@
     "sitelinks": 167,
     "monthlyPageviews": 83500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q17592",
@@ -1215,7 +1225,7 @@
       "conservationStatus": "Q211005",
       "startDate": "-15000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q29564928",
@@ -1227,7 +1237,7 @@
     "properties": {
       "taxonName": "Cygnus"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9147",
@@ -1239,7 +1249,7 @@
     "properties": {
       "taxonName": "Spheniscidae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q31431",
@@ -1252,7 +1262,7 @@
       "taxonName": "Psittaciformes",
       "startDate": "-50000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1267,7 +1277,7 @@
       "taxonName": "Corvus",
       "startDate": "-17000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q14683",
@@ -1280,7 +1290,8 @@
       "taxonName": "Passer domesticus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q39861",
@@ -1292,9 +1303,10 @@
     "properties": {
       "taxonName": "Hirundinidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": 5
   },
   {
     "qid": "Q25357",
@@ -1307,7 +1319,8 @@
       "taxonName": "Corvus corax",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q25307",
@@ -1320,7 +1333,8 @@
       "taxonName": "Pica pica",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q25348",
@@ -1333,7 +1347,8 @@
       "taxonName": "Anas platyrhynchos",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 5
   },
   {
     "qid": "Q25439",
@@ -1345,7 +1360,7 @@
     "properties": {
       "taxonName": "Picidae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25341",
@@ -1358,7 +1373,7 @@
       "taxonName": "Passeriformes",
       "startDate": "-52500000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q28922",
@@ -1370,7 +1385,7 @@
     "properties": {
       "taxonName": "Passeridae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1385,7 +1400,7 @@
       "taxonName": "Coturnix coturnix",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q18789",
@@ -1398,7 +1413,7 @@
       "taxonName": "Ardeidae",
       "startDate": "-55000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25334",
@@ -1411,7 +1426,8 @@
       "taxonName": "Erithacus rubecula",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q28507",
@@ -1424,7 +1440,8 @@
       "taxonName": "Ciconiidae",
       "startDate": "-30000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q19413",
@@ -1437,7 +1454,8 @@
       "taxonName": "Pelecanus",
       "startDate": "-28100000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q42326",
@@ -1450,7 +1468,8 @@
       "taxonName": "Columba livia",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q43489",
@@ -1462,7 +1481,8 @@
     "properties": {
       "taxonName": "Falco"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": 7
   },
   {
     "qid": "Q25469",
@@ -1475,7 +1495,8 @@
       "taxonName": "Sturnus vulgaris",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q43624",
@@ -1488,9 +1509,10 @@
       "taxonName": "Trochilidae",
       "startDate": "-30000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q29858",
@@ -1502,9 +1524,10 @@
     "properties": {
       "taxonName": "Alaudidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q41181",
@@ -1517,7 +1540,8 @@
       "taxonName": "Aquila chrysaetos",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q130933",
@@ -1530,7 +1554,8 @@
       "taxonName": "Bubo bubo",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedAt": "2026-03-24T00:00:00.000Z"
   },
   {
     "qid": "Q25332",
@@ -1543,7 +1568,10 @@
       "taxonName": "Pandion haliaetus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q30535",
@@ -1556,7 +1584,10 @@
       "taxonName": "Falco peregrinus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q21659",
@@ -1571,7 +1602,10 @@
     },
     "processed": false,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q25393",
@@ -1584,7 +1618,10 @@
       "taxonName": "Luscinia megarhynchos",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": false,
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q25565",
@@ -1599,7 +1636,10 @@
     },
     "processed": false,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "status": "processed",
+    "processedBatch": 9,
+    "processedDate": "2026-03-24"
   },
   {
     "qid": "Q168473",
@@ -1611,7 +1651,7 @@
     "properties": {
       "taxonName": "Paridae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1625,7 +1665,7 @@
     "properties": {
       "taxonName": "Gruidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1639,7 +1679,7 @@
     "properties": {
       "taxonName": "Numididae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1653,7 +1693,7 @@
     "properties": {
       "taxonName": "Turdidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1667,7 +1707,7 @@
     "properties": {
       "taxonName": "Diomedeidae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25432",
@@ -1680,7 +1720,7 @@
       "taxonName": "Phasianus colchicus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q93208",
@@ -1693,7 +1733,7 @@
       "taxonName": "Dromaius novaehollandiae",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q43642",
@@ -1705,7 +1745,7 @@
     "properties": {
       "taxonName": "Apteryx"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q31448",
@@ -1717,7 +1757,7 @@
     "properties": {
       "taxonName": "Cacatuidae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q185237",
@@ -1729,7 +1769,7 @@
     "properties": {
       "taxonName": "Sturnidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1743,7 +1783,7 @@
     "properties": {
       "taxonName": "Paradisaeidae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q26381",
@@ -1756,7 +1796,7 @@
       "taxonName": "Cuculidae",
       "startDate": "-34000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1770,7 +1810,7 @@
     "properties": {
       "taxonName": "Fringillidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1784,7 +1824,7 @@
     "properties": {
       "taxonName": "Laniidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1799,7 +1839,7 @@
       "taxonName": "Melopsittacus undulatus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q200989",
@@ -1811,7 +1851,7 @@
     "properties": {
       "taxonName": "Muscicapidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1826,7 +1866,7 @@
       "taxonName": "Casuarius",
       "startDate": "-5000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q168748",
@@ -1839,7 +1879,7 @@
       "taxonName": "Sagittarius serpentarius",
       "conservationStatus": "Q96377276"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q26617",
@@ -1851,7 +1891,7 @@
     "properties": {
       "taxonName": "Apodidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1865,7 +1905,7 @@
     "properties": {
       "taxonName": "Bucerotidae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1325045",
@@ -1878,7 +1918,7 @@
       "taxonName": "Ramphastidae",
       "startDate": "-2000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25557",
@@ -1891,7 +1931,7 @@
       "taxonName": "Gruiformes",
       "startDate": "-66000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1905,7 +1945,7 @@
     "properties": {
       "taxonName": "Scolopacidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1920,7 +1960,7 @@
       "taxonName": "Balaeniceps rex",
       "conservationStatus": "Q278113"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q21755",
@@ -1933,7 +1973,7 @@
       "taxonName": "Otididae",
       "startDate": "-13000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1947,7 +1987,7 @@
     "properties": {
       "taxonName": "Sterninae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q188737",
@@ -1959,7 +1999,7 @@
     "properties": {
       "taxonName": "Accipiter"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q26623",
@@ -1971,7 +2011,7 @@
     "properties": {
       "taxonName": "Rallidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -1985,7 +2025,7 @@
     "properties": {
       "taxonName": "Alcidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2000,7 +2040,7 @@
       "taxonName": "Rhea",
       "startDate": "-126000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q116667",
@@ -2013,7 +2053,7 @@
       "taxonName": "Acridotheres tristis",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q3901247",
@@ -2026,7 +2066,7 @@
       "taxonName": "Phalacrocoracidae",
       "startDate": "-70000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2041,7 +2081,7 @@
       "taxonName": "Opisthocomus hoazin",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q201251",
@@ -2051,7 +2091,7 @@
     "sitelinks": 72,
     "monthlyPageviews": 36000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q188854",
@@ -2063,7 +2103,7 @@
     "properties": {
       "taxonName": "Pycnonotidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2077,7 +2117,7 @@
     "properties": {
       "taxonName": "Troglodytidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2091,7 +2131,7 @@
     "properties": {
       "taxonName": "Caprimulgidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2106,7 +2146,7 @@
       "taxonName": "Pisces",
       "startDate": "-530000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7377",
@@ -2119,7 +2159,7 @@
       "taxonName": "Mammalia",
       "startDate": "-160000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7372",
@@ -2132,7 +2172,7 @@
       "taxonName": "Selachimorpha",
       "startDate": "-425000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q160",
@@ -2145,7 +2185,7 @@
       "taxonName": "Cetacea",
       "startDate": "-50000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q15343",
@@ -2159,7 +2199,7 @@
       "conservationStatus": "Q719675",
       "startDate": "-9000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q26843",
@@ -2172,7 +2212,7 @@
       "taxonName": "Orcinus orca",
       "conservationStatus": "Q3245245"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q42196",
@@ -2186,7 +2226,7 @@
       "conservationStatus": "Q96377276",
       "startDate": "-1500000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q123141",
@@ -2199,7 +2239,7 @@
       "taxonName": "Carassius auratus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q129026",
@@ -2213,7 +2253,7 @@
       "conservationStatus": "Q278113",
       "startDate": "-16000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q131538",
@@ -2226,7 +2266,7 @@
       "taxonName": "Hydrochoerus hydrochaeris",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25349",
@@ -2238,7 +2278,7 @@
     "properties": {
       "taxonName": "Asteroidea"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2253,7 +2293,7 @@
       "taxonName": "Hippocampus",
       "startDate": "-23000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q81214",
@@ -2267,7 +2307,7 @@
       "conservationStatus": "Q278113",
       "startDate": "-3600000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q128685",
@@ -2279,9 +2319,11 @@
     "properties": {
       "taxonName": "Anguilliformes"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q165278",
@@ -2294,7 +2336,9 @@
       "taxonName": "Esox lucius",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q83483",
@@ -2306,9 +2350,11 @@
     "properties": {
       "taxonName": "Echinoidea"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q80378",
@@ -2322,7 +2368,9 @@
       "conservationStatus": "Q96377276",
       "startDate": "-28400000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q127282",
@@ -2335,7 +2383,9 @@
       "taxonName": "Actinopterygii",
       "startDate": "-420000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q27207",
@@ -2347,7 +2397,9 @@
     "properties": {
       "taxonName": "Osteichthyes"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q6495741",
@@ -2360,7 +2412,9 @@
       "taxonName": "Batomorphi",
       "startDate": "-250000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q132905",
@@ -2373,7 +2427,9 @@
       "taxonName": "Megaptera novaeangliae",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q160649",
@@ -2385,7 +2441,9 @@
     "properties": {
       "taxonName": "Typhus group"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q164327",
@@ -2399,7 +2457,9 @@
       "conservationStatus": "Q719675",
       "startDate": "-3000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q1038113",
@@ -2411,9 +2471,11 @@
     "properties": {
       "taxonName": "Nephropidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q183686",
@@ -2425,9 +2487,11 @@
     "properties": {
       "taxonName": "Exocoetidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q178202",
@@ -2440,7 +2504,9 @@
       "taxonName": "Poecilia reticulata",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q127595",
@@ -2452,9 +2518,11 @@
     "properties": {
       "taxonName": "Perciformes"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q41407",
@@ -2467,7 +2535,9 @@
       "taxonName": "Enhydra lutris",
       "conservationStatus": "Q96377276"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q59576",
@@ -2480,9 +2550,11 @@
       "taxonName": "Siluriformes",
       "startDate": "-100000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q187704",
@@ -2495,7 +2567,9 @@
       "taxonName": "Myocastor coypus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q168422",
@@ -2507,7 +2581,9 @@
     "properties": {
       "taxonName": "Dipnoi"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q219329",
@@ -2520,7 +2596,9 @@
       "taxonName": "Chelonioidea",
       "startDate": "-110000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q181871",
@@ -2545,9 +2623,11 @@
     "properties": {
       "taxonName": "Salmonidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q160830",
@@ -2560,7 +2640,9 @@
       "taxonName": "Sarcopterygii",
       "startDate": "-423000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q201701",
@@ -2572,9 +2654,11 @@
     "properties": {
       "taxonName": "Tetraodontidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q161095",
@@ -2587,7 +2671,9 @@
       "taxonName": "Agnatha",
       "startDate": "-535000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q148134",
@@ -2599,7 +2685,9 @@
     "properties": {
       "taxonName": "Bryozoa"
     },
-    "processed": false
+    "processed": true,
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q192662",
@@ -2611,9 +2699,11 @@
     "properties": {
       "taxonName": "Engraulidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
-    "skipReason": "Latin taxonomic group — too broad for quiz"
+    "skipReason": "Latin taxonomic group — too broad for quiz",
+    "processedBatch": "b15",
+    "processedAt": "2026-03-24"
   },
   {
     "qid": "Q177879",
@@ -2625,7 +2715,7 @@
     "properties": {
       "taxonName": "Cypriniformes"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2640,7 +2730,7 @@
       "taxonName": "Sphyrnidae",
       "startDate": "-55800000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q192285",
@@ -2653,7 +2743,7 @@
       "taxonName": "Mola mola",
       "conservationStatus": "Q278113"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q188212",
@@ -2667,7 +2757,7 @@
       "conservationStatus": "Q719675",
       "startDate": "-23000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q217129",
@@ -2680,7 +2770,7 @@
       "taxonName": "Dicentrarchus labrax",
       "conservationStatus": "Q719675"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q42237",
@@ -2692,7 +2782,7 @@
     "properties": {
       "taxonName": "Mugilidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2706,7 +2796,7 @@
     "properties": {
       "taxonName": "Salmonella"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q549",
@@ -2719,7 +2809,7 @@
       "taxonName": "Betta splendens",
       "conservationStatus": "Q278113"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q59577",
@@ -2731,7 +2821,7 @@
     "properties": {
       "taxonName": "Pleuronectiformes"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2746,7 +2836,7 @@
       "taxonName": "Melanogrammus aeglefinus",
       "conservationStatus": "Q278113"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q75713",
@@ -2758,7 +2848,7 @@
     "properties": {
       "taxonName": "Myxinidae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q3406",
@@ -2770,7 +2860,7 @@
     "properties": {
       "taxonName": "Cichlidae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2785,7 +2875,7 @@
       "taxonName": "Lophiiformes",
       "startDate": "-130000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2800,7 +2890,7 @@
       "taxonName": "Pristidae",
       "startDate": "-99700000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2814,7 +2904,7 @@
     "properties": {
       "taxonName": "Torpediniformes"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q59166",
@@ -2827,7 +2917,7 @@
       "taxonName": "Coelacanthiformes",
       "startDate": "-409000000-00-00T00:00:00Z"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2842,7 +2932,7 @@
       "taxonName": "Perca",
       "startDate": "-3600000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q217329",
@@ -2855,7 +2945,7 @@
       "taxonName": "Scophthalmus maximus",
       "conservationStatus": "Q211005"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5290058",
@@ -2879,7 +2969,7 @@
     "properties": {
       "taxonName": "Labridae"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
@@ -2893,7 +2983,7 @@
     "properties": {
       "taxonName": "Characiformes"
     },
-    "processed": false,
+    "processed": true,
     "skip": true,
     "skipReason": "Latin taxonomic group — too broad for quiz"
   },
