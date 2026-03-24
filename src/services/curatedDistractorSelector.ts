@@ -114,6 +114,29 @@ export function selectDistractors(
     candidates.push({ factId, score, source });
   }
 
+  // Add jitter to break ties between equal-scored candidates.
+  // Seeded by totalCharges so distractors vary between encounters
+  // but are deterministic within a single charge.
+  // Jitter range 0–0.5 ensures confusion data (+10.0) and in-run struggle (+3.0)
+  // always outrank jittered pool-fill candidates (1.0 + 0.5 max).
+  // Hash the fact ID for better per-fact variation (djb2)
+  let idHash = 5381;
+  for (let i = 0; i < correctFact.id.length; i++) {
+    idHash = ((idHash << 5) + idHash) ^ correctFact.id.charCodeAt(i);
+  }
+  const jitterSeed = (inRunTracker.getTotalCharges() * 31 + (idHash >>> 0)) | 0;
+  let jitterState = (jitterSeed | 0) || 1;
+  function jitter(): number {
+    jitterState ^= jitterState << 13;
+    jitterState ^= jitterState >> 17;
+    jitterState ^= jitterState << 5;
+    return ((jitterState >>> 0) / 4294967296) * 0.5; // 0 to 0.5
+  }
+
+  for (const c of candidates) {
+    c.score += jitter();
+  }
+
   // Sort by score descending, then deduplicate by correctAnswer before slicing to count
   candidates.sort((a, b) => b.score - a.score);
 

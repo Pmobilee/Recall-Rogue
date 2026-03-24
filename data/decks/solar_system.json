@@ -235,7 +235,16 @@
           "type": "fill_blank",
           "question": "Jupiter has ___ known moons as of 2026.",
           "correctAnswer": "101",
-          "distractors": ["83", "79", "62", "146", "285", "27", "54", "16"]
+          "distractors": [
+            "83",
+            "79",
+            "62",
+            "146",
+            "285",
+            "27",
+            "54",
+            "16"
+          ]
         }
       ],
       "tags": [
@@ -3700,7 +3709,7 @@
         "Kuiper belt"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "planet_names",
+      "answerTypePoolId": "system_facts",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -4062,7 +4071,7 @@
         "G-type main-sequence"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "planet_names",
+      "answerTypePoolId": "system_facts",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -4163,7 +4172,7 @@
         "all orbit the same way"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "planet_names",
+      "answerTypePoolId": "system_facts",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -6780,9 +6789,6 @@
         "solar_system_mars_ancient_water",
         "solar_system_mars_red_iron_oxide",
         "solar_system_asteroid_belt_location",
-        "solar_system_kuiper_belt_pluto",
-        "solar_system_sun_medium_star",
-        "solar_system_prograde_orbits",
         "solar_system_uranus_tilted",
         "solar_system_uranus_ice_giant",
         "solar_system_uranus_telescope_discovery",
@@ -6855,6 +6861,17 @@
         "solar_system_messenger_mercury_orbit"
       ],
       "minimumSize": 5
+    },
+    {
+      "id": "system_facts",
+      "label": "System Facts",
+      "answerFormat": "term",
+      "factIds": [
+        "solar_system_kuiper_belt_pluto",
+        "solar_system_sun_medium_star",
+        "solar_system_prograde_orbits"
+      ],
+      "minimumSize": 1
     }
   ],
   "synonymGroups": [

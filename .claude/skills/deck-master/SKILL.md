@@ -591,7 +591,7 @@ Sub-decks let players focus on a subset of the deck's content. They appear as se
 | Chain themes (vocabulary) | Generic chains only — no thematic grouping (same as knowledge decks for now) |
 | Math/numeric answers | Bracket notation + runtime generation, not pool distractors |
 | Grounding | All facts grounded in Wikipedia/Wikidata — never invented |
-| Distractor source | LLM world knowledge only; DB queries for distractors are banned |
+| Distractor source | **Pool-based ONLY at runtime.** Distractors come from the answer type pool (other facts with the same answerTypePoolId). The `distractors[]` field on each fact is a legacy fallback — do NOT rely on pre-generated distractors. The pool IS the distractor source. Design pools with enough unique correctAnswer values (8+) to provide variety. |
 | Model for DB content | Sonnet only; Haiku is not acceptable for facts, distractors, or questions |
 | Micro-topics | Forbidden as standalone decks. "Noble Gases" = chain theme inside "Periodic Table", not its own deck |
 | Deck ideas log | Always update `data/deck-ideas.md` after a discovery run |
