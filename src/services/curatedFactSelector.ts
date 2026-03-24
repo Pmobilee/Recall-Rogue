@@ -83,6 +83,13 @@ export function selectFactForCharge(
     }
   }
 
+  // Shuffle new cards so we don't always introduce in file order
+  // (Anki: "Random" new card gather order is the default)
+  for (let i = newCards.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [newCards[i], newCards[j]] = [newCards[j], newCards[i]];
+  }
+
   // Anki Intersperser: proportional mixing
   if (dueReviews.length > 0 && newCards.length > 0) {
     const reviewProb = dueReviews.length / (dueReviews.length + newCards.length);

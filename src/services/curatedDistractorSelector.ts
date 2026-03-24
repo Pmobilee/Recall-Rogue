@@ -140,11 +140,15 @@ export function selectDistractors(
   // Sort by score descending, then deduplicate by correctAnswer before slicing to count
   candidates.sort((a, b) => b.score - a.score);
 
-  // Deduplicate: skip candidates whose correctAnswer matches one already selected
-  // or matches the quiz's correct answer (prevent correct answer appearing as its own distractor)
+  // Deduplicate: skip candidates whose correctAnswer matches one already selected,
+  // matches the quiz's correct answer, or is mentioned in the question text
   const selected: ScoredCandidate[] = [];
   const seenAnswers = new Set<string>();
   seenAnswers.add(correctFact.correctAnswer.toLowerCase()); // Never show correct answer as distractor
+
+  // Exclude any entity mentioned by name in the question text
+  // e.g., "Besides Saturn, which..." → Saturn must not appear as distractor
+  const questionLower = (correctFact.quizQuestion ?? '').toLowerCase();
 
   for (const c of candidates) {
     if (selected.length >= count) break;
@@ -152,6 +156,8 @@ export function selectDistractors(
     if (!candidateFact) continue;
     const answerKey = candidateFact.correctAnswer.toLowerCase();
     if (seenAnswers.has(answerKey)) continue;
+    // Skip if this distractor's answer is mentioned in the question
+    if (answerKey.length > 2 && questionLower.includes(answerKey)) continue;
     seenAnswers.add(answerKey);
     selected.push(c);
   }
