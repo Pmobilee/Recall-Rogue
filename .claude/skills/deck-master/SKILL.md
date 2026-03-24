@@ -817,6 +817,39 @@ console.log(bad.length ? bad.length + ' facts need valid categoryL2' : 'category
 
 ---
 
+## Automated Playtest — MANDATORY (replaces manual in-game testing)
+
+**After all data validation passes, run the automated deck playtest.** This imports the REAL game code (fact selector, template renderer, distractor selector, learning step tracker) and simulates a full study mode session. No browser needed.
+
+```bash
+# All correct — verify Anki queue interleaving and question quality
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/playtest-curated-deck.ts <deck_id> --charges 30 --verbose
+
+# With wrong answers — verify learning queue brings them back
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/playtest-curated-deck.ts <deck_id> --charges 25 --wrong-rate 0.3 --verbose
+
+# Deterministic replay (same seed = same sequence)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/playtest-curated-deck.ts <deck_id> --charges 20 --seed 42 --verbose
+```
+
+**What it checks per charge:**
+- Unresolved `{placeholder}` patterns in rendered questions
+- Braces in displayed answers
+- Correct answer leaking into distractors
+- Duplicate distractors
+- Back-to-back fact repeats
+- Fewer than 2 distractors
+- Empty question or answer text
+
+**What the summary reports:**
+- Unique facts seen vs charges (Anki interleaving quality)
+- Learning/review/new queue hit distribution
+- Total issues found (exit code 1 if any)
+
+**Run BOTH all-correct and wrong-rate tests.** All-correct verifies new card introduction. Wrong-rate verifies the learning queue brings back wrong answers aggressively.
+
+---
+
 ## In-Game Testing — MANDATORY
 
 **Data validation alone is NOT sufficient.** The Solar System deck shipped with literal `{8}` in answers, wrong domain labels, and the same question repeating 6 times in a row — all of which passed data validation. The runtime behavior is what matters.
