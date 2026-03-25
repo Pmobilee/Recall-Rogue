@@ -25,8 +25,8 @@ When Playwright MCP tools are unavailable (common), use this approach directly:
 // Run via: node -e "..." (in Bash tool)
 const { chromium } = require('playwright');
 (async () => {
-  // MUST use headed mode — headless can't render Phaser WebGL
-  const browser = await chromium.launch({ headless: false });
+  // MUST use system Chrome (channel: 'chrome') — Playwright's bundled Chromium lacks WebGL on macOS ARM64
+  const browser = await chromium.launch({ headless: true, channel: 'chrome' });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   await page.goto('http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial');
   await page.waitForTimeout(5000);
@@ -69,7 +69,7 @@ If `mcp__playwright__*` tools are loaded:
 5. Result: full game view with enemy sprites + backgrounds + cards + UI
 
 ### CRITICAL RULES
-- **NEVER use headless mode** for Phaser screenshots (no GPU = blank canvas)
+- **ALWAYS use `channel: 'chrome'`** when launching Playwright (system Chrome has WebGL via Metal GPU; bundled Chromium does not)
 - **NEVER use `page.screenshot()`** (Phaser RAF blocks it — 30s timeout)
 - **NEVER use `mcp__playwright__browser_take_screenshot`** (same RAF issue)
 - **NEVER use `page.context().newCDPSession()`** (hangs permanently)
