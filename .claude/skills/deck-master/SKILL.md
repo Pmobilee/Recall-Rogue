@@ -31,7 +31,7 @@ Fact production uses a **two-tier model** that separates accuracy from quality:
 
 #### Tier 1: Sonnet Workers — Research & Extraction (Accuracy)
 - **Role**: Structured data extraction from authoritative sources
-- **Tools**: WebSearch, WebFetch to pull data from Wikipedia, Wikidata, authoritative sites
+- **Tools**: WebSearch, WebFetch, and **Wikidata MCP** (`mcp__wikidata__search_entity`, `mcp__wikidata__execute_sparql`, `mcp__wikidata__get_properties`) for structured data from Wikipedia/Wikidata
 - **Output**: Verified source data in architecture YAML — dates, numbers, names, quotes, claims, each with source URL
 - **What they do**: "Find me the exact date, casualty figure, commander names, and Wikipedia URL for the Battle of Stalingrad"
 - **What they DON'T do**: Write quiz questions, explanations, wow factors, or distractors
@@ -321,7 +321,7 @@ Progress does NOT transfer between modes. A curated deck's progress bar only ref
 |-------------|--------|
 | **Facts** | Must be grounded in Wikipedia/Wikidata. Every fact needs a `sourceName` and `sourceUrl` pointing to the authoritative source. Never invent facts from LLM knowledge alone. |
 | **Verification** | Cross-reference at least 2 sources for non-trivial claims. Wikipedia + one additional source (Britannica, official government sites, peer-reviewed databases). |
-| **Numerical data** | Use Wikidata SPARQL queries for structured numerical facts (populations, dates, measurements). Never approximate. |
+| **Numerical data** | Use the **Wikidata MCP** (`mcp__wikidata__execute_sparql`) for structured numerical facts (populations, dates, measurements). Never approximate. |
 | **Visual assets** | Flag SVGs from open-source CC0/public domain repositories (e.g., flag-icons, flagpedia). Map outlines from Natural Earth (public domain). Animal/plant images from Wikimedia Commons (verify license per image). |
 | **Commercial licensing** | Every asset must be CC0, CC-BY, public domain, or have explicit commercial-use permission. CC-BY-NC (non-commercial) is NOT acceptable. CC-BY-SA is acceptable if attribution is provided. |
 | **Attribution tracking** | Each deck's architecture YAML must include an `asset_sources` section listing every external asset with its license type and attribution requirements. |
@@ -528,9 +528,11 @@ Deck generation uses a **two-phase pipeline** to ensure both factual accuracy an
 **Purpose:** Generate structurally complete facts grounded in ACTUAL source data. Sonnet ensures factual accuracy by working directly from fetched Wikipedia/Wikidata text.
 
 **Before spawning workers, the orchestrator MUST:**
-1. **Fetch Wikipedia articles** for all major entities using WebFetch (or read cached source files)
-2. **Fetch Wikidata structured data** via SPARQL queries where applicable (dates, measurements, relationships)
-3. **Organize source text by entity** — each worker receives the actual article text for its assigned entities
+1. **Query Wikidata via SPARQL MCP** (`mcp__wikidata__query`) — get machine-verified structured data (dates, locations, casualty figures, participants, relationships). Example: `SELECT ?startDate ?endDate WHERE { wd:Q38789 wdt:P580 ?startDate. wd:Q38789 wdt:P582 ?endDate. }` returns exact Battle of Stalingrad dates. This is the PRIMARY source for all verifiable numerical/date claims.
+2. **Fetch Wikipedia articles** via WebFetch for narrative context, quotes, explanations, and details that Wikidata doesn't capture (stories, motivations, consequences)
+3. **Pass BOTH to workers** — Wikidata results (structured, machine-verified) + Wikipedia text (narrative context). Workers use Wikidata for dates/numbers and Wikipedia for explanations/stories.
+
+**Why Wikidata SPARQL first:** During the WWII deck build (2026-03-25), 51 factual errors (6.9%) were found — almost all were wrong dates, inflated casualty figures, or rounded numbers. These are exactly the claims Wikidata stores as structured, verified data. Using SPARQL eliminates this entire error class.
 
 **Sonnet worker setup:**
 - Spawn **Sonnet** sub-agents (`model: "sonnet"`) for ALL fact generation. Haiku is not acceptable for database content.
@@ -593,12 +595,44 @@ These limits were discovered during the WWII deck build (2026-03-25, 735 facts g
 **Every worker MUST verify against Wikipedia/Wikidata before generating facts.** The correct workflow is:
 1. Orchestrator reads the YAML to identify WHAT entities and topics to cover
 2. Workers receive the entity list AND are instructed to WebSearch/WebFetch each entity from Wikipedia
+   - For structured data (dates, measurements, relationships, taxonomy): use `mcp__wikidata__execute_sparql` or `mcp__wikidata__get_properties` — returns clean structured data instead of parsing HTML
+   - For prose context (historical narrative, explanations): use WebFetch on Wikipedia articles
 3. Workers generate facts from the Wikipedia data they actually fetched, citing real URLs they consulted
 4. The YAML notes serve as a checklist of what to look for — not as the source of truth
 
 **What went wrong in the WWII build (2026-03-25):** 14 of 16 subdecks were generated with YAML notes passed directly to workers as if they were verified source data. The YAML had been written with research in a prior session, so the data was MOSTLY correct — but this workflow skipped the verification step that catches LLM confabulations. This was expedient but violated the sourcing rule. Future decks must not repeat this shortcut.
 
 **The only acceptable shortcut:** If the orchestrator has PERSONALLY verified a YAML entry against Wikipedia in the current session (via WebSearch/WebFetch), that entry can be passed to workers as verified. But "it was in the YAML" alone is never sufficient provenance.
+
+### Wikidata MCP Quick Reference
+
+The Wikidata MCP (`mcp__wikidata__*`) provides direct structured access to the Wikidata knowledge graph. **Prefer it over WebFetch for structured data.**
+
+**Common patterns:**
+```sparql
+# Get birth/death dates for a person
+SELECT ?birthDate ?deathDate WHERE {
+  wd:Q937 wdt:P569 ?birthDate; wdt:P570 ?deathDate.
+}
+
+# Get all US states with populations
+SELECT ?state ?stateLabel ?population WHERE {
+  ?state wdt:P31 wd:Q35657; wdt:P1082 ?population.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+
+# Get chemical elements with atomic numbers
+SELECT ?element ?elementLabel ?atomicNumber WHERE {
+  ?element wdt:P31 wd:Q11344; wdt:P1086 ?atomicNumber.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+```
+
+**Workflow:**
+1. `mcp__wikidata__search_entity("Battle of Stalingrad")` → get entity ID (e.g., Q81647)
+2. `mcp__wikidata__get_properties("Q81647")` → see all available properties
+3. `mcp__wikidata__execute_sparql(query)` → get specific structured data
+4. Use the structured results as verified source data for fact generation
 
 ### Opus Quality Pass — When to Skip
 
