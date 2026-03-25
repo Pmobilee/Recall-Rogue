@@ -1,0 +1,1264 @@
+{
+  "facts": [
+    {
+      "id": "wwii_na_el_alamein_date",
+      "correctAnswer": "October 23, 1942",
+      "acceptableAlternatives": ["Oct 23, 1942", "23 October 1942", "1942"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did the Second Battle of El Alamein begin — the clash that broke Rommel's momentum and turned the tide in North Africa?",
+      "explanation": "Montgomery's Eighth Army launched its assault on October 23, 1942, after weeks of meticulous preparation. The 13-day battle ended with Rommel's withdrawal — a pivotal moment Churchill later described as 'the end of the beginning.' Before El Alamein, the Allies had never won a major land battle against Germany. After it, they never lost one in North Africa.",
+      "visualDescription": "Pixel art of British tanks advancing through billowing desert dust at night under artillery muzzle flashes, the sky lit orange-red on the horizon.",
+      "sourceName": "Wikipedia — Second Battle of El Alamein",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_El_Alamein",
+      "volatile": false,
+      "distractors": ["June 6, 1942", "November 8, 1942", "July 1, 1942", "September 1, 1942", "January 23, 1943", "August 30, 1942", "March 15, 1943", "December 7, 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Second Battle of El Alamein",
+          "quizQuestion": "Which October 1942 battle ended Rommel's eastward advance and is considered the turning point of the North African campaign?",
+          "distractors": ["Battle of Kasserine Pass", "Operation Torch", "Battle of Tobruk", "Battle of Gazala"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Montgomery",
+          "quizQuestion": "El Alamein was the decisive victory that established which British general's reputation — the man who commanded the Eighth Army with methodical, careful planning?",
+          "distractors": ["Auchinleck", "Wavell", "Alexander", "Slim"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Second Battle of El Alamein (October 1942) was the first major land battle that the Allies won against Germany.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "13",
+          "quizQuestion": "The Second Battle of El Alamein lasted ____ days before Rommel ordered his forces to withdraw.",
+          "distractors": ["7", "21", "38", "5"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_rommel_nickname",
+      "correctAnswer": "Desert Fox",
+      "acceptableAlternatives": ["the Desert Fox", "Wüstenfuchs"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 1,
+      "funScore": 8,
+      "quizQuestion": "What was Erwin Rommel's famous nickname, earned through his cunning mobile tactics in the North African desert?",
+      "explanation": "Rommel earned 'Desert Fox' from both Allies and Axis for his audacious flanking maneuvers and rapid armored thrusts. His reputation was so formidable that British soldiers invented ghost-sightings of him. Churchill told Parliament: 'We have a very daring and skillful opponent against us, and, may I say across the havoc of war, a great general.' This was a remarkable tribute to an enemy commander.",
+      "visualDescription": "Pixel art of a German general in peaked cap and dust goggles surveying the desert from a half-track, a red fox silhouette shadow stretching across the sand behind him.",
+      "sourceName": "Wikipedia — Erwin Rommel",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erwin_Rommel",
+      "volatile": false,
+      "distractors": ["Sand Viper", "Iron General", "African Eagle", "Blitz Wolf", "Panzer Ghost", "Sahara Lion", "Dune Hawk", "Black Knight"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Erwin Rommel",
+          "quizQuestion": "Which German general commanded the Afrika Korps and was nicknamed the 'Desert Fox' by both Allied and Axis soldiers?",
+          "distractors": ["Heinz Guderian", "Erich von Manstein", "Walter Model", "Albert Kesselring"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Afrika Korps",
+          "quizQuestion": "Rommel's nickname 'Desert Fox' came from his command of which German expeditionary force sent to rescue Italian forces in North Africa?",
+          "distractors": ["Panzergruppe West", "Army Group Africa", "Heeresgruppe B", "Kampfgruppe Rommel"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Churchill praised Rommel as 'a great general' in a wartime speech to Parliament, despite Rommel being an enemy commander.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Afrika Korps",
+          "quizQuestion": "Rommel, the 'Desert Fox,' commanded the German ____ — an expeditionary force deployed to North Africa in 1941 to support Italian forces.",
+          "distractors": ["Panzer Lehr", "Waffen-SS", "Fallschirmjäger", "Wehrmacht Reserve"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_operation_torch_date",
+      "correctAnswer": "November 8, 1942",
+      "acceptableAlternatives": ["Nov 8, 1942", "8 November 1942", "November 1942"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "On what date did Operation Torch begin — the first major American combat operation against Axis forces in the European theater?",
+      "explanation": "Operation Torch (November 8, 1942) was a massive Anglo-American amphibious invasion of French North Africa — Casablanca, Oran, and Algiers simultaneously. Vichy French forces initially resisted, killing some Allied troops, before being persuaded to stand down. It was the first time American soldiers fought European Axis-aligned forces at scale, providing crucial combat experience that would shape U.S. tactics for the rest of the war.",
+      "visualDescription": "Pixel art of landing craft pouring American and British troops onto a North African beach at dawn, the sea filled with a vast invasion fleet, stars and stripes visible on a helmet.",
+      "sourceName": "Wikipedia — Operation Torch",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Torch",
+      "volatile": false,
+      "distractors": ["June 6, 1944", "October 23, 1942", "September 3, 1943", "July 10, 1943", "January 14, 1943", "December 8, 1941", "May 12, 1943", "August 19, 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Torch",
+          "quizQuestion": "Which November 1942 operation saw American and British forces land simultaneously at Casablanca, Oran, and Algiers — the U.S. Army's baptism of fire in the European theater?",
+          "distractors": ["Operation Husky", "Operation Overlord", "Operation Shingle", "Operation Compass"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Vichy France",
+          "quizQuestion": "Operation Torch's landings met initial armed resistance from which French government — the collaborationist regime that controlled North Africa?",
+          "distractors": ["Free France", "French Resistance", "Occupied France", "French Colonial Army"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: During Operation Torch, Vichy French forces initially fired on American and British troops before eventually ceasing resistance.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Algeria",
+          "quizQuestion": "Operation Torch's easternmost landing at Algiers was in French ____, giving the Allies a base to threaten German forces from the west.",
+          "distractors": ["Morocco", "Tunisia", "Libya", "Egypt"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_tunisia_prisoners",
+      "correctAnswer": "230,000",
+      "acceptableAlternatives": ["230,000+", "over 230,000", "230K"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How many Axis troops were captured in Tunisia in May 1943 — a mass surrender that cleared North Africa and shocked Germany?",
+      "explanation": "When Axis forces surrendered in Tunisia on May 12, 1943, over 230,000 German and Italian soldiers went into captivity — the largest Axis surrender until that point. It was Germany's 'African Stalingrad': Hitler had poured reinforcements into Tunisia rather than admit defeat, and now lost them all. North Africa was finally free of Axis forces, and the Mediterranean was open to the Allies.",
+      "visualDescription": "Pixel art of a vast column of German and Italian POWs marching through brown Tunisian terrain, hands raised, Allied soldiers standing guard, the horizon dotted with tanks and vehicles.",
+      "sourceName": "Wikipedia — Tunisian campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tunisian_campaign",
+      "volatile": false,
+      "distractors": ["50,000", "100,000", "150,000", "300,000", "75,000", "400,000", "180,000", "500,000"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Tunisia",
+          "quizQuestion": "In which country did over 230,000 Axis troops surrender in May 1943, ending the North African campaign?",
+          "distractors": ["Egypt", "Libya", "Algeria", "Morocco"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "May 12, 1943",
+          "quizQuestion": "The 230,000-strong Axis surrender that cleared North Africa occurred on what date — sometimes called Germany's 'African Stalingrad'?",
+          "distractors": ["November 8, 1942", "October 23, 1942", "July 10, 1943", "January 23, 1943"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Tunisian surrender of May 1943 resulted in more Axis prisoners than any previous surrender in the war to that point.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Mediterranean",
+          "quizQuestion": "After 230,000 Axis troops surrendered in Tunisia, the ____ Sea was fully open to Allied shipping and operations.",
+          "distractors": ["Red", "Adriatic", "Aegean", "Black"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_suez_canal_strategic",
+      "correctAnswer": "Suez Canal",
+      "acceptableAlternatives": ["the Suez Canal", "Suez"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "places",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What vital waterway did Rommel's eastward advance threaten to capture — a shipping chokepoint connecting the Mediterranean to the Indian Ocean?",
+      "explanation": "The Suez Canal was the jugular of the British Empire: it cut the route from Europe to India and the Far East from months to weeks. Had Rommel seized it, Germany could have threatened British oil supplies from the Middle East and potentially linked up with Japanese forces in the Indian Ocean — a nightmare scenario that made El Alamein existential for Britain. Churchill privately feared losing Suez more than almost any other military setback.",
+      "visualDescription": "Pixel art of a narrow canal cutting through golden desert, cargo ships threading through single-file, a British flag flying over a sandbagged fortification on the bank.",
+      "sourceName": "Wikipedia — Suez Canal",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Suez_Canal",
+      "volatile": false,
+      "distractors": ["Strait of Gibraltar", "Bosphorus Strait", "Strait of Hormuz", "Panama Canal", "Dardanelles", "Red Sea", "Persian Gulf", "Strait of Sicily"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Egypt",
+          "quizQuestion": "The Suez Canal, whose defense was the ultimate strategic goal of the North African campaign, passes through which country?",
+          "distractors": ["Libya", "Sudan", "Tunisia", "Palestine"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "India",
+          "quizQuestion": "Control of the Suez Canal mattered most because it shortened the sea route from Britain to which empire territory by months — making it the strategic heart of British imperialism?",
+          "distractors": ["Australia", "Canada", "South Africa", "Singapore"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Had Rommel captured the Suez Canal, Germany could potentially have threatened British oil supplies in the Middle East and approached the Indian Ocean.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "El Alamein",
+          "quizQuestion": "The battle of ____ halted Rommel's advance toward the Suez Canal, preserving British control of this vital shipping route.",
+          "distractors": ["Tobruk", "Gazala", "Kasserine", "Mersa Matruh"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_montgomery_command",
+      "correctAnswer": "August 1942",
+      "acceptableAlternatives": ["August 1942", "Aug 1942"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "When did General Bernard Montgomery take command of the British Eighth Army — a leadership change that transformed Allied fortunes in North Africa?",
+      "explanation": "Montgomery assumed command of the Eighth Army in August 1942 after Churchill lost confidence in General Auchinleck. 'Monty' immediately reshaped the army's morale with theatrical confidence — visiting units, wearing a distinctive beret, making himself visible. His methodical approach (refusing to attack until properly prepared) was criticized as cautious, but it worked: two months after taking command, he launched El Alamein and won.",
+      "visualDescription": "Pixel art of a British general in black beret gesturing to a map table inside a desert command tent, officers leaning in attentively, radio equipment in the corner.",
+      "sourceName": "Wikipedia — Bernard Montgomery",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bernard_Montgomery,_1st_Viscount_Montgomery_of_Alamein",
+      "volatile": false,
+      "distractors": ["June 1942", "October 1942", "January 1942", "March 1942", "November 1941", "September 1942", "December 1941", "April 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Bernard Montgomery",
+          "quizQuestion": "Which British general took command of the Eighth Army in August 1942 and led it to victory at El Alamein two months later?",
+          "distractors": ["Harold Alexander", "Claude Auchinleck", "Archibald Wavell", "William Slim"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Auchinleck",
+          "quizQuestion": "Montgomery replaced which British general as commander of the Eighth Army after Churchill lost confidence in the previous leadership?",
+          "distractors": ["Wavell", "Alexander", "Ritchie", "O'Connor"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Montgomery was criticized for being overly cautious in pursuing Rommel after El Alamein, despite winning the battle decisively.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "beret",
+          "quizQuestion": "Montgomery made himself distinctive and recognizable to his troops by wearing a black ____ — an unusual choice that became his personal trademark.",
+          "distractors": ["pith helmet", "peaked cap", "steel helmet", "kepi"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_operation_husky_length",
+      "correctAnswer": "38 days",
+      "acceptableAlternatives": ["38 days", "38"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "How long did Operation Husky — the Allied invasion of Sicily — take to conquer the island?",
+      "explanation": "Operation Husky (July 10 – August 17, 1943) conquered Sicily in 38 days, but not without controversy. The race to Messina between Patton and Montgomery became a competition — Patton's Americans arrived first. However, the real failure was that the Germans executed a skillful evacuation across the Messina Strait, escaping with 100,000+ troops and their equipment to fight in Italy. Sicily was won; the enemy slipped away.",
+      "visualDescription": "Pixel art of American and British soldiers marching through a sun-baked Sicilian village, locals watching from doorways, a road sign reading 'Messina' in the distance.",
+      "sourceName": "Wikipedia — Operation Husky",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Husky",
+      "volatile": false,
+      "distractors": ["14 days", "21 days", "45 days", "60 days", "28 days", "10 days", "52 days", "30 days"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Husky",
+          "quizQuestion": "Which operation, completed in 38 days, conquered Sicily in summer 1943 and marked the first Allied invasion of Axis-held European territory?",
+          "distractors": ["Operation Torch", "Operation Shingle", "Operation Compass", "Operation Battleaxe"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Messina",
+          "quizQuestion": "Despite the 38-day victory in Sicily, the Germans escaped across the strait to which Italian city — evacuating over 100,000 troops to fight another day?",
+          "distractors": ["Palermo", "Catania", "Syracuse", "Naples"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Operation Husky in July 1943 was the first Allied invasion of Axis-controlled territory in Europe.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Patton",
+          "quizQuestion": "During Operation Husky, American General ____ raced British forces to capture Messina first, arriving before Montgomery's troops.",
+          "distractors": ["Eisenhower", "Bradley", "Clark", "Ridgway"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_italy_surrender_date",
+      "correctAnswer": "September 8, 1943",
+      "acceptableAlternatives": ["Sept 8, 1943", "8 September 1943", "September 1943"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date was Italy's armistice with the Allies publicly announced — the moment that split Italy between Allied south and German-occupied north?",
+      "explanation": "The armistice was secretly signed September 3 but publicly announced September 8, 1943. Germany, anticipating betrayal, immediately moved to occupy Italy. Within days, the Germans had disarmed hundreds of thousands of Italian soldiers — many were killed, enslaved, or shipped to labor camps. The king and government fled south. Mussolini, deposed in July, was dramatically rescued from mountain captivity by German paratroopers on September 12.",
+      "visualDescription": "Pixel art of Italian civilians celebrating in a sunlit piazza, throwing hats in the air, while in the background German tanks roll ominously through the streets in the opposite direction.",
+      "sourceName": "Wikipedia — Armistice of Cassibile",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Armistice_of_Cassibile",
+      "volatile": false,
+      "distractors": ["July 25, 1943", "October 13, 1943", "September 3, 1943", "November 1, 1943", "August 17, 1943", "June 4, 1944", "January 22, 1944", "May 8, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Italy",
+          "quizQuestion": "Which Axis power publicly announced an armistice with the Allies on September 8, 1943 — only to see Germany immediately occupy its territory?",
+          "distractors": ["Romania", "Hungary", "Finland", "Bulgaria"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Mussolini",
+          "quizQuestion": "When Italy surrendered, German paratroopers dramatically rescued which Italian dictator — who had been deposed in July and imprisoned — and installed him as puppet leader in the north?",
+          "distractors": ["Badoglio", "Victor Emmanuel III", "Ciano", "Balbo"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: When Italy announced its armistice on September 8, 1943, Germany immediately occupied northern Italy and disarmed Italian forces.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Italian Social Republic",
+          "quizQuestion": "After Italy's surrender, Mussolini was rescued and installed as head of the ____ — a German puppet state controlling northern Italy.",
+          "distractors": ["Kingdom of Italy", "Republic of Salò", "Fascist Italy", "Axis Italy"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_monte_cassino_bombing",
+      "correctAnswer": "February 15, 1944",
+      "acceptableAlternatives": ["Feb 15, 1944", "15 February 1944", "February 1944"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "On what date did Allied aircraft bomb the ancient monastery atop Monte Cassino — one of the most controversial targeting decisions of the Italian campaign?",
+      "explanation": "Allied commanders ordered the bombing of Monte Cassino abbey on February 15, 1944, believing Germans were using it as an observation post. The destruction was enormous — and counterproductive. The Germans, who had actually kept troops OUT of the monastery out of respect for it, now moved into the rubble, which made for far better defensive positions. The ruins were harder to take than the intact building. It took three more months and Polish forces to finally capture it.",
+      "visualDescription": "Pixel art of Allied bombers dropping ordnance on a hilltop monastery, smoke and flames engulfing ancient stone walls, snow-capped mountains visible in the background.",
+      "sourceName": "Wikipedia — Battle of Monte Cassino",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Monte_Cassino",
+      "volatile": false,
+      "distractors": ["January 22, 1944", "March 15, 1944", "May 18, 1944", "April 1, 1944", "December 25, 1943", "October 13, 1943", "June 4, 1944", "November 15, 1943"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Monte Cassino",
+          "quizQuestion": "Which Italian monastery was controversially bombed by Allied aircraft on February 15, 1944 — a decision that actually made the German defensive position stronger?",
+          "distractors": ["Abbey of Montecassino", "San Benedetto", "Montserrat Abbey", "Abbey of Farfa"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Polish",
+          "quizQuestion": "After four bloody assaults spanning months, which national force finally captured the ruins of Monte Cassino on May 18, 1944, planting their flag on the summit?",
+          "distractors": ["American", "British", "Canadian", "French"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Allied bombing of Monte Cassino monastery actually helped the Germans — they moved into the rubble, which provided better defensive cover than the intact building.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "four",
+          "quizQuestion": "Allied forces launched ____ separate assaults on Monte Cassino between January and May 1944 before finally capturing it.",
+          "distractors": ["two", "three", "five", "six"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_anzio_commander",
+      "correctAnswer": "General Lucas",
+      "acceptableAlternatives": ["Lucas", "John Lucas", "General John Lucas"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "people",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Which American commander's cautious decision at Anzio — choosing to build up the beachhead rather than break out — turned a bold flanking move into a costly months-long stalemate?",
+      "explanation": "General John Lucas landed at Anzio on January 22, 1944, achieving complete surprise. The road to Rome was open. But Lucas spent days consolidating his beachhead rather than exploiting the shock. Germans rapidly contained him. Churchill, who championed the operation, famously lamented: 'I had hoped we were hurling a wildcat onto the shore, but all we got was a stranded whale.' Lucas was eventually relieved in February 1944.",
+      "visualDescription": "Pixel art of an American general standing in a crowded command bunker looking at maps, outside the narrow slit of a window German artillery bursts visible on the beachhead perimeter.",
+      "sourceName": "Wikipedia — Operation Shingle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Shingle",
+      "volatile": false,
+      "distractors": ["General Clark", "General Patton", "General Bradley", "General Truscott", "General Harmon", "General Ridgway", "General Allen", "General Keyes"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Anzio",
+          "quizQuestion": "At which January 1944 amphibious landing did General Lucas's cautious consolidation squander complete surprise — turning a potential shortcut to Rome into a bloody stalemate?",
+          "distractors": ["Salerno", "Syracuse", "Taranto", "Gela"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "stranded whale",
+          "quizQuestion": "Churchill, who championed the Anzio landing, described its failure to break out by saying he'd hoped for a wildcat but got what instead?",
+          "distractors": ["dead fish", "beached seal", "sunken ship", "trapped fox"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Allied landings at Anzio in January 1944 achieved complete tactical surprise, with the road to Rome initially undefended.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "January 22, 1944",
+          "quizQuestion": "Operation Shingle — the Anzio amphibious landing designed to outflank the Gustav Line — took place on ____.",
+          "distractors": ["September 3, 1943", "February 15, 1944", "May 23, 1944", "June 4, 1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_salerno_crisis",
+      "correctAnswer": "Salerno",
+      "acceptableAlternatives": ["the Salerno beachhead", "Salerno beachhead"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "places",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "At which September 1943 landing in mainland Italy did German counterattacks nearly push Allied forces back into the sea — the most dangerous moment of the Italian invasion?",
+      "explanation": "The Salerno landings (September 3-16, 1943) nearly ended in catastrophe. Germany had anticipated the landing site and counterattacked ferociously on September 12-13. The beachhead was compressed to a few miles. Eisenhower prepared evacuation orders. U.S. paratroopers were dropped directly into the battle, and naval gunfire at point-blank range into German tank columns finally stabilized the line. It was closer to defeat than the official histories admitted.",
+      "visualDescription": "Pixel art of American soldiers in desperate fighting near the sea, German tanks rolling through smoke toward the beach, warships firing massive broadside salvos just offshore.",
+      "sourceName": "Wikipedia — Allied invasion of Italy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Allied_invasion_of_Italy",
+      "volatile": false,
+      "distractors": ["Anzio", "Gela", "Taranto", "Reggio Calabria", "Bari", "Brindisi", "Syracuse", "Catania"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "September 1943",
+          "quizQuestion": "The near-disastrous Salerno landings, when Germany almost pushed Allies back into the sea, occurred in which month and year?",
+          "distractors": ["July 1943", "January 1944", "November 1943", "October 1943"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "naval gunfire",
+          "quizQuestion": "What ultimately stabilized the Salerno beachhead when German tanks broke through — with warships firing at near-point-blank range into enemy armored columns?",
+          "distractors": ["air strikes", "paratrooper reinforcements", "British flank attack", "artillery barrage"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Eisenhower prepared evacuation orders during the Salerno crisis because the beachhead was in genuine danger of collapse.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Gustav Line",
+          "quizQuestion": "After stabilizing the Salerno beachhead, Allied forces faced the fortified ____ — Germany's main defensive position blocking the advance up the Italian peninsula.",
+          "distractors": ["Gothic Line", "Winter Line", "Siegfried Line", "Hitler Line"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_italian_campaign_duration",
+      "correctAnswer": "2 years",
+      "acceptableAlternatives": ["two years", "1943-1945", "nearly two years"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "How long did the Italian campaign last — the slow, costly slog up the peninsula that some historians call the 'forgotten war'?",
+      "explanation": "The Italian campaign ran from September 1943 to May 1945 — nearly two years of grinding attritional warfare through mountainous terrain that favored defenders at every turn. Germany held the peninsula with relatively few elite troops while tying down massive Allied forces. Critics argued the campaign diverted resources from more decisive theaters. Supporters countered it kept 25+ German divisions occupied. Either way, the soldiers who fought it paid the price.",
+      "visualDescription": "Pixel art of exhausted Allied soldiers climbing a steep rocky mountain path in pouring rain, a ruined stone village above, a makeshift grave marker beside the trail.",
+      "sourceName": "Wikipedia — Italian campaign (World War II)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Italian_campaign_(World_War_II)",
+      "volatile": false,
+      "distractors": ["6 months", "1 year", "3 years", "8 months", "18 months", "4 years", "10 months", "30 months"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Italian campaign",
+          "quizQuestion": "Which WWII theater, lasting nearly two years from 1943-1945, is sometimes called the 'forgotten war' due to the mountainous terrain that made every mile costly?",
+          "distractors": ["North African campaign", "Sicilian campaign", "Mediterranean campaign", "Balkan campaign"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Gothic Line",
+          "quizQuestion": "After breaking through Monte Cassino and the Gustav Line, Allied forces encountered which German defensive position in northern Italy in late 1944?",
+          "distractors": ["Siegfried Line", "Hitler Line", "Winter Line", "Albert Line"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Germany defended Italy with relatively few divisions, yet still tied down enormous Allied forces for nearly two years — making it strategically efficient for Germany.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "May 1945",
+          "quizQuestion": "The Italian campaign, which began with the invasion of Sicily in July 1943, finally ended in ____.",
+          "distractors": ["June 1944", "September 1944", "January 1945", "August 1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_tobruk_strategic",
+      "correctAnswer": "Tobruk",
+      "acceptableAlternatives": ["the siege of Tobruk"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "places",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Which Libyan port city was besieged by Axis forces in 1941-42 and changed hands multiple times — its control shaping supply lines across the Western Desert?",
+      "explanation": "Tobruk was the only deep-water port between Alexandria and Tripoli — whoever held it could supply large armored forces. The garrison held out for 241 days in 1941 against Rommel's first siege, becoming a symbol of Allied resilience. But in June 1942, Rommel captured it in a single day, taking 33,000 prisoners — a blow so severe it reached Churchill as he conferred with Roosevelt in Washington. Churchill called it 'one of the heaviest blows I can recall during the war.'",
+      "visualDescription": "Pixel art of a fortified desert town surrounded by dust and smoke, supply trucks racing through a narrow defended corridor, artillery emplacements visible along a perimeter wire.",
+      "sourceName": "Wikipedia — Siege of Tobruk",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Tobruk",
+      "volatile": false,
+      "distractors": ["Benghazi", "Tripoli", "El Alamein", "Mersa Matruh", "Alexandria", "Bardia", "Sidi Barrani", "Derna"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "241 days",
+          "quizQuestion": "In 1941, British and Commonwealth forces held out in Tobruk for how long against Rommel's siege — a record that made the garrison famous as the 'Rats of Tobruk'?",
+          "distractors": ["30 days", "90 days", "120 days", "365 days"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "33,000",
+          "quizQuestion": "When Rommel finally captured Tobruk in June 1942, approximately how many Allied prisoners did he take — a mass surrender that shocked Churchill?",
+          "distractors": ["5,000", "10,000", "50,000", "20,000"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Tobruk was strategically critical because it was the only deep-water port between Alexandria and Tripoli, making it essential for supplying armored forces.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Rats of Tobruk",
+          "quizQuestion": "The Australian and Commonwealth troops who held Tobruk for 241 days in 1941 became known as the ____.",
+          "distractors": ["Desert Rats", "Afrika Korps", "Desert Warriors", "Tobruk Defenders"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_casablanca_policy",
+      "correctAnswer": "unconditional surrender",
+      "acceptableAlternatives": ["unconditional surrender policy", "no negotiated peace"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What famous policy did FDR and Churchill announce at the Casablanca Conference in January 1943 — the demand that Axis powers must accept total defeat?",
+      "explanation": "At Casablanca, FDR surprised Churchill by publicly announcing 'unconditional surrender' as Allied policy. The intent was to reassure Stalin (no separate peace with Germany) and prevent a repeat of the 1918 armistice, which Hitler had exploited in his 'stab-in-the-back' myth. But critics argued the policy prolonged the war by eliminating any incentive for German generals to overthrow Hitler — if surrender meant complete destruction either way, why risk it?",
+      "visualDescription": "Pixel art of FDR and Churchill seated outdoors at a conference table in a sunlit Moroccan garden, generals and aides standing behind, a press corps visible in the background.",
+      "sourceName": "Wikipedia — Casablanca Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_Conference",
+      "volatile": false,
+      "distractors": ["total war", "strategic bombing", "island hopping", "war crimes tribunal", "lend-lease", "Marshall Plan", "collective security", "containment"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Casablanca Conference",
+          "quizQuestion": "At which January 1943 Allied conference did FDR and Churchill announce that Axis powers must accept unconditional surrender — no negotiated peace?",
+          "distractors": ["Tehran Conference", "Yalta Conference", "Quebec Conference", "Cairo Conference"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "stab-in-the-back",
+          "quizQuestion": "The unconditional surrender policy was designed to prevent which German post-WWI myth — the claim that the German army was betrayed rather than militarily defeated?",
+          "distractors": ["Dolchstoßlegende", "Lebensraum myth", "stab in the heart", "homeland betrayal"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Some historians argue the unconditional surrender policy prolonged WWII by removing any incentive for German generals to overthrow Hitler.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Morocco",
+          "quizQuestion": "The Casablanca Conference, where FDR and Churchill announced the unconditional surrender policy, was held in ____ — a country liberated by Operation Torch just two months earlier.",
+          "distractors": ["Algeria", "Tunisia", "Egypt", "Libya"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_free_french_role",
+      "correctAnswer": "Charles de Gaulle",
+      "acceptableAlternatives": ["de Gaulle", "General de Gaulle"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "people",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Which French leader commanded the Free French forces that participated in the North African campaign — using it to restore France's military legitimacy and claim a seat at the victory table?",
+      "explanation": "De Gaulle's participation in North Africa was as much political as military. Free French forces fought alongside British and American troops, helping liberate French colonial territories from Vichy and Axis control. This gave France the claim to be a co-liberator rather than a defeated nation. It was this North African contribution — along with the later liberation of France — that secured France's permanent seat on the UN Security Council. De Gaulle understood that symbols of participation mattered as much as military results.",
+      "visualDescription": "Pixel art of a tall French general in kepi addressing uniformed troops under the French tricolor flag, North African landscape and palm trees in the background.",
+      "sourceName": "Wikipedia — Free France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Free_France",
+      "volatile": false,
+      "distractors": ["Henri Giraud", "Philippe Pétain", "Jean de Lattre de Tassigny", "Alphonse Juin", "Georges Catroux", "Louis Leclerc", "Marie-Pierre Koenig", "Maxime Weygand"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Free French",
+          "quizQuestion": "Which French military force, led by de Gaulle, fought in the North African campaign and used the campaign to reestablish France's claim to great power status?",
+          "distractors": ["Vichy French", "French Foreign Legion", "French Resistance", "French Expeditionary Corps"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "UN Security Council",
+          "quizQuestion": "France's participation in the North African campaign helped secure its postwar permanent seat on which international body — despite having been defeated and occupied in 1940?",
+          "distractors": ["League of Nations", "NATO", "Warsaw Pact", "European Parliament"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: De Gaulle initially refused to attend the Casablanca Conference, causing tensions with FDR and Churchill.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Vichy",
+          "quizQuestion": "Free French forces in North Africa fought to liberate French colonial territories controlled by the collaborationist ____ French government.",
+          "distractors": ["Occupied", "Fascist", "German", "Italian"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_pantelleria_bombing",
+      "correctAnswer": "Pantelleria",
+      "acceptableAlternatives": ["island of Pantelleria"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "places",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Which small Mediterranean island fortress was surrendered to Allied forces in June 1943 after intensive bombing — without a single Allied soldier setting foot on it, opening the path to Sicily?",
+      "explanation": "Pantelleria was supposed to be a fortress island garrisoned by 12,000 Italian troops. Allied planners feared a costly assault. Instead, the USAAF and RAF bombed it so relentlessly that the Italian commander radioed surrender on June 11, 1943 — before any Allied soldier landed. One airman joked that only a mule was killed in the final bombing run. Pantelleria became a test case for air power advocates claiming bombing alone could win battles, though the Italian garrison's low morale was the real factor.",
+      "visualDescription": "Pixel art of a tiny rocky Mediterranean island surrounded by an Allied naval fleet, Allied bombers in tight formation passing overhead, white flags being raised from clifftop fortifications.",
+      "sourceName": "Wikipedia — Battle of Pantelleria",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Pantelleria",
+      "volatile": false,
+      "distractors": ["Malta", "Lampedusa", "Sardinia", "Corsica", "Gozo", "Capri", "Elba", "Rhodes"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "air power alone",
+          "quizQuestion": "The surrender of Pantelleria in June 1943 appeared to prove that what could force a garrison to capitulate — without a single Allied infantry landing?",
+          "distractors": ["naval blockade alone", "artillery bombardment", "psychological warfare", "chemical weapons"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Sicily",
+          "quizQuestion": "Capturing Pantelleria in June 1943 opened the path for the Allied invasion of which larger island one month later?",
+          "distractors": ["Sardinia", "Corsica", "Malta", "Crete"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Pantelleria surrendered to the Allies in June 1943 before any Allied soldier had landed on the island — capitulating purely to air bombardment.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "12,000",
+          "quizQuestion": "Pantelleria was garrisoned by approximately ____ Italian troops when it surrendered to Allied air power in June 1943.",
+          "distractors": ["1,000", "3,000", "25,000", "50,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_sidi_barrani_1940",
+      "correctAnswer": "December 1940",
+      "acceptableAlternatives": ["December 1940", "Dec 1940"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "When was the Battle of Sidi Barrani fought — the first major desert engagement of the North African campaign, where British forces routed a much larger Italian army?",
+      "explanation": "Operation Compass (December 1940) saw 36,000 British Commonwealth troops attack 150,000 Italian soldiers and rout them completely. Over 130,000 Italians were captured while British casualties numbered around 2,000. It was a staggering victory — and one reason Hitler sent Rommel to Africa. The British success threatened to end Axis presence in North Africa before it had properly begun, forcing Germany to intervene.",
+      "visualDescription": "Pixel art of British Matilda tanks advancing through desert at dawn, rows of Italian soldiers surrendering with hands raised, scattered artillery pieces and abandoned vehicles behind them.",
+      "sourceName": "Wikipedia — Battle of Sidi Barrani",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Sidi_Barrani",
+      "volatile": false,
+      "distractors": ["June 1940", "September 1940", "March 1941", "January 1941", "August 1941", "February 1941", "November 1940", "October 1941"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Compass",
+          "quizQuestion": "Which British operation in December 1940 shattered Italian forces at Sidi Barrani — the opening blow of the North African campaign?",
+          "distractors": ["Operation Crusader", "Operation Battleaxe", "Operation Brevity", "Operation Lightfoot"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "130,000",
+          "quizQuestion": "The Battle of Sidi Barrani captured approximately how many Italian prisoners — a number so embarrassing it prompted Hitler to send Rommel to Africa?",
+          "distractors": ["10,000", "30,000", "50,000", "200,000"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The British victory at Sidi Barrani in December 1940 was one reason Hitler dispatched Rommel's Afrika Korps to North Africa — to prevent an Italian collapse.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "36,000",
+          "quizQuestion": "At Sidi Barrani, approximately ____ British and Commonwealth troops defeated an Italian force of 150,000 in one of the most lopsided victories of the war.",
+          "distractors": ["5,000", "100,000", "75,000", "15,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_palermo_capture",
+      "correctAnswer": "July 22, 1943",
+      "acceptableAlternatives": ["July 22", "22 July 1943", "July 1943"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "On what date did American forces under Patton capture Palermo — the capital of Sicily — during Operation Husky?",
+      "explanation": "Patton's Seventh Army captured Palermo on July 22, 1943, just 12 days after the Sicily landings. Patton had defied his orders to stay in a supporting role, driving his tanks 100 miles in 72 hours to seize the city before Montgomery. The fall of Palermo was primarily symbolic — it was Sicily's capital and largest city — but the rapid advance also demonstrated that Americans could conduct aggressive armored operations, silencing British skeptics who doubted U.S. combat effectiveness.",
+      "visualDescription": "Pixel art of American jeeps and half-tracks rolling through cheering Sicilian crowds in a sun-drenched city square, American flags waving from building windows, the harbor visible in the distance.",
+      "sourceName": "Wikipedia — Capture of Palermo",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Capture_of_Palermo",
+      "volatile": false,
+      "distractors": ["July 10, 1943", "August 17, 1943", "July 15, 1943", "August 1, 1943", "July 30, 1943", "August 10, 1943", "July 5, 1943", "August 22, 1943"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Patton",
+          "quizQuestion": "Which American general defied supporting-role orders to race his tanks 100 miles in 72 hours and capture Palermo on July 22, 1943?",
+          "distractors": ["Bradley", "Clark", "Eisenhower", "Ridgway"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Messina",
+          "quizQuestion": "Palermo's capture was a symbolic prize, but Patton's real goal was racing Montgomery to which eastern city — the key to Sicily's conquest?",
+          "distractors": ["Catania", "Syracuse", "Agrigento", "Trapani"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Patton's rapid capture of Palermo helped prove to British commanders that American forces could conduct effective offensive armored operations.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "12",
+          "quizQuestion": "Patton's forces captured Palermo just ____ days after the initial Sicily landings on July 10, 1943.",
+          "distractors": ["3", "5", "20", "30"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_messina_evacuation",
+      "correctAnswer": "Messina Strait",
+      "acceptableAlternatives": ["the Strait of Messina", "Strait of Messina"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "places",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Across which narrow body of water did Germany evacuate over 100,000 troops from Sicily to mainland Italy — escaping despite Allied naval and air superiority?",
+      "explanation": "The Messina evacuation (August 11-17, 1943) was Germany's masterpiece of defensive withdrawal. While the Allies raced to capture Messina, Germany ran a precision ferry operation at night, moving 100,000+ troops, 10,000 vehicles, and heavy equipment across the 3-kilometer strait despite Allied bombing. The evacuation was better organized than Dunkirk. Allied failure to intercept it meant the same German divisions would fight the Allies again in Italy for two more years.",
+      "visualDescription": "Pixel art of a nighttime ferry operation: German soldiers and vehicles loading onto flat-bottomed boats in darkness, the lights of mainland Italy visible across a narrow strip of black water, searchlights probing from Allied ships.",
+      "sourceName": "Wikipedia — Evacuation of Sicily",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Evacuation_of_Sicily",
+      "volatile": false,
+      "distractors": ["Strait of Sicily", "Strait of Gibraltar", "Strait of Otranto", "Strait of Bonifacio", "English Channel", "Adriatic Sea", "Strait of Tunis", "Malta Channel"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "over 100,000",
+          "quizQuestion": "Approximately how many German and Italian troops escaped across the Messina Strait before Sicily fell — denying the Allies a potentially war-shortening mass capture?",
+          "distractors": ["5,000", "25,000", "50,000", "200,000"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "3 kilometers",
+          "quizQuestion": "The Messina Strait that Germany used to evacuate Sicily is remarkably narrow — approximately how wide at its narrowest point?",
+          "distractors": ["10 kilometers", "25 kilometers", "50 kilometers", "100 kilometers"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Germany's Messina evacuation moved 100,000+ troops and thousands of vehicles to mainland Italy despite Allied air and naval superiority — ensuring the same units fought in Italy for two more years.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Italy",
+          "quizQuestion": "The German troops who escaped across the Messina Strait regrouped in ____, where they manned the Gustav Line and fought Allied forces for two more years.",
+          "distractors": ["Greece", "Tunisia", "France", "Austria"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_gothic_line",
+      "correctAnswer": "Gothic Line",
+      "acceptableAlternatives": ["the Gothic Line", "Green Line"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "What was the name of Germany's final major defensive line in northern Italy — the fortification that slowed Allied advance through late 1944?",
+      "explanation": "The Gothic Line stretched across the northern Apennine mountains from Pisa to Rimini — Germany's last prepared defensive line before the Po Valley. Kesselring's engineers had spent months fortifying it with 2,375 machine gun posts, 479 anti-tank gun positions, and miles of anti-tank ditches. The Allies breached it in August 1944 but couldn't achieve a breakthrough before winter. Fighting continued into 1945, finally ending with German surrender in Italy on May 2 — six days before the wider European armistice.",
+      "visualDescription": "Pixel art of Allied soldiers attacking fortified mountain positions in autumn rain, pill-boxes cut into rocky ridgelines, barbed wire and tank traps stretching across the valley below.",
+      "sourceName": "Wikipedia — Gothic Line",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gothic_Line",
+      "volatile": false,
+      "distractors": ["Gustav Line", "Winter Line", "Hitler Line", "Siegfried Line", "Caesar Line", "Bernhardt Line", "Viktor Line", "Barbara Line"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "northern Apennines",
+          "quizQuestion": "The Gothic Line ran across which Italian mountain range — from Pisa on the west coast to Rimini on the Adriatic?",
+          "distractors": ["Alps", "Dolomites", "Ligurian Mountains", "Calabrian Apennines"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "August 1944",
+          "quizQuestion": "The Allies breached the Gothic Line in which month and year — but failed to achieve a decisive breakthrough before winter set in?",
+          "distractors": ["October 1944", "May 1944", "June 1944", "December 1944"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Gothic Line was Germany's final major defensive line in Italy, fortified with over 2,000 machine gun positions and hundreds of anti-tank emplacements.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "May 2, 1945",
+          "quizQuestion": "German forces in Italy surrendered on ____ — six days before Germany's wider European armistice on May 8.",
+          "distractors": ["May 8, 1945", "April 30, 1945", "April 25, 1945", "June 1, 1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_corsica_liberation",
+      "correctAnswer": "Free French",
+      "acceptableAlternatives": ["French forces", "French Resistance", "French"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "people",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Which forces liberated Corsica in September-October 1943 — making it the first French territory freed from Axis occupation?",
+      "explanation": "Corsica's liberation in autumn 1943 was conducted primarily by French forces alongside Corsican resistance fighters — with American submarine support. The island fell quickly after Italian surrender removed most of the garrison, with German forces fighting a rearguard action before evacuating. Corsica's liberation was symbolically powerful for de Gaulle: the first French soil liberated, and done by Frenchmen. The island then became a vital air base for Mediterranean operations.",
+      "visualDescription": "Pixel art of French and Corsican resistance fighters marching through a rocky Mediterranean village, a French tricolor being raised on a public building, fishing boats visible in the harbor.",
+      "sourceName": "Wikipedia — Liberation of Corsica",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Liberation_of_Corsica",
+      "volatile": false,
+      "distractors": ["American forces", "British forces", "Canadian forces", "Polish forces", "New Zealand forces", "South African forces", "Australian forces", "Greek forces"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Corsica",
+          "quizQuestion": "Which Mediterranean island, liberated in autumn 1943, was the first French territory freed from Axis control — a symbolic prize for de Gaulle?",
+          "distractors": ["Sardinia", "Sicily", "Malta", "Elba"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "air base",
+          "quizQuestion": "After liberation, Corsica's strategic value lay primarily in its use as what — allowing Allied aircraft to reach targets across Italy and southern France?",
+          "distractors": ["naval base", "POW camp", "supply depot", "training ground"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Corsica was the first French territory liberated from Axis occupation, and its liberation was conducted primarily by French forces.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Italian",
+          "quizQuestion": "Corsica's liberation was made easier by the ____ armistice of September 1943, which removed most of the island's garrison without a fight.",
+          "distractors": ["German", "French", "Spanish", "Bulgarian"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_british_eighth_army",
+      "correctAnswer": "Eighth Army",
+      "acceptableAlternatives": ["British Eighth Army", "the Eighth Army"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "What was the name of Britain's primary fighting force in North Africa and the Mediterranean — the army that fought from El Alamein through Italy?",
+      "explanation": "The British Eighth Army became one of the most storied formations of WWII. Formed in 1941 in the Western Desert, it cycled through commanders (Wavell, Auchinleck, Montgomery) before stabilizing under 'Monty.' Its multinational composition — British, Australian, New Zealand, South African, Indian, Polish forces — made it a genuine coalition army. The 'Desert Rats' nickname attached to elements of it became a badge of pride. After El Alamein, it pursued Rommel across 2,000 miles to Tunisia, then fought up Italy until VE Day.",
+      "visualDescription": "Pixel art of a mixed coalition force of soldiers in different uniforms — British, Australian, Indian, New Zealand — advancing in line through desert scrub, a formation of tanks on the horizon.",
+      "sourceName": "Wikipedia — Eighth Army (United Kingdom)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Eighth_Army_(United_Kingdom)",
+      "volatile": false,
+      "distractors": ["Seventh Army", "First Army", "Fifth Army", "Ninth Army", "Second Army", "Third Army", "Fourth Army", "Sixth Army"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Montgomery",
+          "quizQuestion": "The British Eighth Army's most famous commander took over in August 1942 and led it to victory at El Alamein — who was he?",
+          "distractors": ["Wavell", "Auchinleck", "Alexander", "Slim"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Desert Rats",
+          "quizQuestion": "The British Eighth Army, which fought from Egypt to Italy, was associated with which famous nickname — adopted as a badge of pride by its troops?",
+          "distractors": ["Sand Vipers", "Desert Hawks", "Afrika Warriors", "Western Wolves"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The British Eighth Army was a multinational coalition force including British, Australian, New Zealand, South African, Indian, and Polish soldiers.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "2,000",
+          "quizQuestion": "After El Alamein, the Eighth Army pursued Rommel approximately ____ miles across North Africa from Egypt to Tunisia.",
+          "distractors": ["100", "500", "750", "5,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_taranto_capture",
+      "correctAnswer": "Taranto",
+      "acceptableAlternatives": ["Taranto harbor", "the port of Taranto"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "places",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Which major Italian naval base was seized by Allied forces in September 1943 — taken almost without a fight after Italy's armistice, giving the Allies their first major Italian port?",
+      "explanation": "After Italy's armistice announcement on September 8, 1943, British forces seized Taranto in a audacious Operation Slapstick — sailing directly into the harbor aboard a cruiser with no air cover, relying entirely on the armistice holding. The gamble worked: Italian forces stood down, and the Allies captured one of Italy's most important naval bases without a shot fired. Ironically, Taranto had been the site of a famous British naval attack in 1940 — when Royal Navy Swordfish biplanes crippled the Italian fleet there.",
+      "visualDescription": "Pixel art of British warships sailing unopposed into a large harbor, Italian sailors watching from the dockside, warships with white flags at anchor, the city of Taranto visible beyond the naval installations.",
+      "sourceName": "Wikipedia — Operation Slapstick",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Slapstick",
+      "volatile": false,
+      "distractors": ["Naples", "Brindisi", "Bari", "Genoa", "Palermo", "Syracuse", "Ancona", "Trieste"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Slapstick",
+          "quizQuestion": "Which audacious British operation seized the Italian naval base at Taranto in September 1943 — sailing directly into the harbor with no air cover and relying entirely on the armistice?",
+          "distractors": ["Operation Shingle", "Operation Avalanche", "Operation Baytown", "Operation Compass"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "1940",
+          "quizQuestion": "Taranto was captured by Britain peacefully in 1943 — but Taranto had also been the site of a famous British naval air attack in what earlier year, which crippled the Italian fleet?",
+          "distractors": ["1939", "1941", "1942", "1943"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: British forces seized Taranto naval base in September 1943 without firing a shot — relying entirely on Italy's armistice to prevent resistance.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Swordfish",
+          "quizQuestion": "In 1940, Royal Navy ____ biplanes had launched a daring nighttime attack on Taranto harbor, crippling Italy's battlefleet — the same base taken peacefully in 1943.",
+          "distractors": ["Hurricane", "Spitfire", "Barracuda", "Albacore"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_africa_korps_supply",
+      "correctAnswer": "supply lines",
+      "acceptableAlternatives": ["logistics", "overstretched supply lines", "supply"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What fundamental constraint limited Rommel's Afrika Korps more than any British general — the inability to deliver enough fuel, ammunition, and food across the Mediterranean?",
+      "explanation": "Rommel's genius was real but his supply situation was catastrophic. German and Italian convoys crossing the Mediterranean were regularly sunk by British forces using Ultra intelligence — sometimes more than half of supplies were lost. Rommel repeatedly advanced further than he could sustain logistically, gambling that captured enemy supplies would fuel his next thrust. When they didn't materialize, he had to retreat. He privately acknowledged: 'Before Alamein, we never had a decisive victory. After Alamein, we never had a decisive defeat.' The truth is he never had enough fuel.",
+      "visualDescription": "Pixel art of an Afrika Korps tank stopped in the desert with empty fuel indicators, soldiers standing around helplessly while a supply convoy burns on the horizon from RAF air attack.",
+      "sourceName": "Wikipedia — Afrika Korps",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Afrika_Korps",
+      "volatile": false,
+      "distractors": ["terrain", "enemy generals", "tank quality", "troop morale", "weather", "air support", "infantry numbers", "naval support"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Ultra",
+          "quizQuestion": "British forces used intelligence from which secret codebreaking program to intercept and sink German supply convoys to North Africa — starving Rommel's Afrika Korps?",
+          "distractors": ["Enigma", "SIGINT", "Purple", "Magic"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Malta",
+          "quizQuestion": "Which Allied-held island in the Mediterranean was crucial to interdicting Rommel's supply lines — its air and naval forces sinking convoys that would have fueled his advance?",
+          "distractors": ["Cyprus", "Crete", "Sicily", "Sardinia"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Rommel repeatedly advanced further than his supply lines could support, gambling on capturing enemy fuel depots to sustain his next offensive.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Mediterranean",
+          "quizQuestion": "Rommel's supply convoys had to cross the ____ Sea to reach North Africa — waters patrolled by British submarines and aircraft using Ultra intelligence.",
+          "distractors": ["Atlantic", "Red", "Adriatic", "Black"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_kasserine_pass",
+      "correctAnswer": "Kasserine Pass",
+      "acceptableAlternatives": ["Battle of Kasserine Pass", "Kasserine"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "places",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "At which February 1943 battle in Tunisia did the Afrika Korps inflict the U.S. Army's worst defeat of the European war — shattering inexperienced American units?",
+      "explanation": "Kasserine Pass (February 19-24, 1943) was a brutal lesson. Rommel's panzers tore through green American troops, advancing 50 miles and inflicting 6,000+ casualties. American commanders panicked, equipment was abandoned, and coordination collapsed. But the defeat was transformative: Eisenhower sacked incompetent generals, Patton was brought in to rebuild II Corps, and the Army fundamentally reformed its tactics and leadership. The Americans who fought at Kasserine were a different army by D-Day.",
+      "visualDescription": "Pixel art of American Sherman tanks burning in a mountain pass, German panzers advancing through the smoke, American soldiers retreating in disarray toward rocky hillsides on either side.",
+      "sourceName": "Wikipedia — Battle of Kasserine Pass",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kasserine_Pass",
+      "volatile": false,
+      "distractors": ["Battle of El Guettar", "Battle of Longstop Hill", "Battle of Mareth Line", "Battle of Wadi Akarit", "Battle of Enfidaville", "Battle of Tunis", "Battle of Fondouk Pass", "Battle of El Alamein"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Patton",
+          "quizQuestion": "After Kasserine Pass humiliated American forces, which general was brought in to rebuild the U.S. II Corps — turning it into the aggressive force that helped close the North African campaign?",
+          "distractors": ["Bradley", "Clark", "Eisenhower", "Allen"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "6,000",
+          "quizQuestion": "At Kasserine Pass, the Afrika Korps inflicted approximately how many American casualties — a shock that forced a complete overhaul of U.S. Army leadership and tactics?",
+          "distractors": ["500", "1,000", "15,000", "30,000"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The defeat at Kasserine Pass led to major reforms in the U.S. Army — including the sacking of incompetent commanders and changes in tactics that produced a far more effective force by 1944.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "50",
+          "quizQuestion": "At Kasserine Pass, Rommel's panzers advanced approximately ____ miles into Allied lines before being halted — the deepest Axis penetration against American forces in the European theater.",
+          "distractors": ["5", "15", "100", "200"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_africa_air_power",
+      "correctAnswer": "Mediterranean Allied Air Forces",
+      "acceptableAlternatives": ["MAAF", "Allied air forces", "Mediterranean air forces"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 5,
+      "funScore": 5,
+      "quizQuestion": "What unified Allied air command coordinated strategic bombing and fighter operations across the Mediterranean theater from 1943 to 1945?",
+      "explanation": "The Mediterranean Allied Air Forces (MAAF), formed in 1944, unified American and British air operations across the Mediterranean. It conducted strategic bombing of oil refineries (especially Ploesti), transportation interdiction, and close air support of ground operations. Mediterranean air operations developed many of the combined-arms techniques that would define modern warfare — particularly the systematic use of air power to isolate battlefields before ground assaults, pioneered during the Sicilian and Italian campaigns.",
+      "visualDescription": "Pixel art of a mixed formation of American B-17s and British bombers in V-formation over the blue Mediterranean, fighter escorts weaving above and below, an Italian coastline visible far below.",
+      "sourceName": "Wikipedia — Mediterranean Allied Air Forces",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mediterranean_Allied_Air_Forces",
+      "volatile": false,
+      "distractors": ["RAF Bomber Command", "USAAF Eighth Air Force", "Desert Air Force", "Strategic Air Command", "Allied Tactical Air Force", "RAF Middle East Command", "USAAF Fifteenth Air Force", "Twelfth Air Force"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Ploesti",
+          "quizQuestion": "Mediterranean Allied Air Forces launched some of their most important strategic bombing missions against oil refineries at which Romanian city — striking a critical Axis fuel source?",
+          "distractors": ["Vienna", "Berlin", "Hamburg", "Munich"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "air interdiction",
+          "quizQuestion": "The Mediterranean campaigns pioneered what air power technique — systematically bombing roads, railways, and bridges to isolate the battlefield before ground assaults?",
+          "distractors": ["carpet bombing", "precision bombing", "terror bombing", "naval gunfire coordination"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Mediterranean theater pioneered combined-arms techniques — particularly the systematic use of air power to isolate battlefields — that influenced Allied tactics for the rest of the war.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "1944",
+          "quizQuestion": "The Mediterranean Allied Air Forces were formally unified under a single command in ____, consolidating American and British air operations across the theater.",
+          "distractors": ["1942", "1943", "1945", "1941"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_victor_emmanuel_fled",
+      "correctAnswer": "King Victor Emmanuel III",
+      "acceptableAlternatives": ["Victor Emmanuel III", "Victor Emmanuel", "the King of Italy"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "people",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Which Italian monarch, along with Prime Minister Badoglio, fled Rome for Allied-held southern Italy after Germany occupied the capital following Italy's armistice?",
+      "explanation": "When Germany moved to occupy Italy after the armistice, King Victor Emmanuel III and Marshal Badoglio's government fled ignominiously to Brindisi in the Allied-held south on September 9, 1943. They left Rome to German occupation and left the Italian army leaderless — most Italian soldiers were captured or killed by Germans in the chaos. The flight was a profound embarrassment that destroyed the monarchy's remaining credibility. Italy voted to abolish the monarchy in 1946, in part because of this betrayal.",
+      "visualDescription": "Pixel art of a king and military officer scrambling onto a warship at night, Italian officers looking on in confusion, German troops visible marching into the city in the background.",
+      "sourceName": "Wikipedia — Victor Emmanuel III",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Victor_Emmanuel_III",
+      "volatile": false,
+      "distractors": ["Mussolini", "Count Ciano", "Marshal Cavallero", "Cardinal Pacelli", "Prince Umberto", "Marshal Graziani", "General Ambrosio", "Duke of Aosta"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Brindisi",
+          "quizQuestion": "When Germany occupied Rome after Italy's armistice, King Victor Emmanuel and Prime Minister Badoglio fled to which southern Italian city — now under Allied control?",
+          "distractors": ["Naples", "Bari", "Taranto", "Palermo"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "1946",
+          "quizQuestion": "Italy abolished its monarchy in what year — partly because of King Victor Emmanuel's shameful flight from Rome in 1943, which destroyed the institution's credibility?",
+          "distractors": ["1944", "1945", "1947", "1948"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: When King Victor Emmanuel III fled Rome in September 1943, he left the Italian army leaderless — allowing Germany to capture or kill hundreds of thousands of Italian soldiers.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Badoglio",
+          "quizQuestion": "After Mussolini's overthrow in July 1943, Italy was governed by Marshal ____, who signed the armistice and then fled with the king to Allied-held Italy.",
+          "distractors": ["Graziani", "Ambrosio", "Roatta", "Castellano"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_anzio_breakout",
+      "correctAnswer": "May 23, 1944",
+      "acceptableAlternatives": ["May 1944", "May 23", "late May 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "On what date did Allied forces finally break out from the Anzio beachhead — four months after landing with the expectation of a quick advance to Rome?",
+      "explanation": "The Anzio breakout on May 23, 1944 coincided with the Allied offensive on the Gustav Line further south. Both attacks linking up was supposed to trap the German Tenth Army. But American General Clark controversially ordered the Anzio force to drive for Rome rather than cut off the retreating Germans — sacrificing a strategic encirclement for the publicity of entering Rome. Germans escaped and fought again. Clark entered Rome on June 4 — and was overshadowed the next day by D-Day.",
+      "visualDescription": "Pixel art of American tanks and infantry bursting out of a beachhead perimeter, soldiers cheering as they break through German lines, the road to Rome stretching ahead through green Italian countryside.",
+      "sourceName": "Wikipedia — Operation Shingle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Shingle",
+      "volatile": false,
+      "distractors": ["January 22, 1944", "March 15, 1944", "April 30, 1944", "June 4, 1944", "February 15, 1944", "June 6, 1944", "July 4, 1944", "August 15, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Mark Clark",
+          "quizQuestion": "Which American general controversially ordered Anzio forces to drive for Rome rather than cut off retreating Germans in May 1944 — sacrificing a strategic encirclement for the prize of entering the Italian capital?",
+          "distractors": ["Lucian Truscott", "John Lucas", "Dwight Eisenhower", "George Patton"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "June 4, 1944",
+          "quizQuestion": "American forces entered Rome on what date — only to have the triumph eclipsed just two days later by the much larger D-Day landings in Normandy?",
+          "distractors": ["May 23, 1944", "June 6, 1944", "May 18, 1944", "June 1, 1944"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Anzio breakout could have trapped the German Tenth Army, but General Clark ordered forces toward Rome instead — allowing the Germans to escape and fight again.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "four",
+          "quizQuestion": "Allied forces were pinned at Anzio for approximately ____ months before finally breaking out in May 1944.",
+          "distractors": ["one", "two", "six", "eight"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_tunisia_campaign_end",
+      "correctAnswer": "May 12, 1943",
+      "acceptableAlternatives": ["May 1943", "May 12", "12 May 1943"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "On what date did the last Axis forces in North Africa surrender in Tunisia — ending the African campaign and freeing the Mediterranean?",
+      "explanation": "Operation Flax and the final squeeze of Axis forces into the Cape Bon peninsula ended with formal surrender on May 12, 1943. Hitler had reinforced Tunisia rather than admit defeat, losing the 230,000+ men who surrendered. The day after — May 13 — is called 'Tunisgrad' by historians, an echo of Stalingrad's significance. With North Africa clear, the Allies held the entire southern Mediterranean coastline, and the way to invade Europe's 'soft underbelly' was open.",
+      "visualDescription": "Pixel art of German and Italian officers surrendering their swords to Allied commanders in a dusty Tunisian town, rows of prisoners stretching to the horizon in the background, Allied flags raised on buildings.",
+      "sourceName": "Wikipedia — Tunisian campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tunisian_campaign",
+      "volatile": false,
+      "distractors": ["March 15, 1943", "April 7, 1943", "June 1, 1943", "February 14, 1943", "July 1, 1943", "January 23, 1943", "August 17, 1943", "October 23, 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Tunisgrad",
+          "quizQuestion": "What informal name do some historians give to the May 1943 Axis surrender in Tunisia — comparing its significance to the Soviet victory over Germany at Stalingrad?",
+          "distractors": ["African Waterloo", "Desert Stalingrad", "Afrika Surrender", "Tunisian Tragedy"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Cape Bon",
+          "quizQuestion": "Axis forces in Tunisia were squeezed into which peninsula before their final surrender on May 12, 1943 — trapped with no route of evacuation?",
+          "distractors": ["Cap Serrat", "Bizerte Peninsula", "Tunis Bay", "Gulf of Hammamet"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Hitler chose to reinforce Tunisia rather than evacuate forces — a decision that cost him 230,000+ troops who went into Allied captivity on May 12, 1943.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "soft underbelly",
+          "quizQuestion": "With North Africa clear, Churchill argued the Allies should attack Europe through Italy — famously calling it the ____ of the Axis.",
+          "distractors": ["open flank", "weak point", "southern gate", "Mediterranean backdoor"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_na_rommel_retreat_1942",
+      "correctAnswer": "2,000 miles",
+      "acceptableAlternatives": ["2,000 km", "over 2,000 miles", "two thousand miles", "roughly 2,000 miles"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "How far did Rommel's forces retreat after El Alamein — pursued by Montgomery's Eighth Army from Egypt across Libya and into Tunisia?",
+      "explanation": "After El Alamein, Rommel conducted one of history's most impressive fighting retreats — withdrawing roughly 2,000 miles from Egypt to Tunisia over five months while pursued by superior forces. He kept his army intact and fighting, only surrendering when trapped with no escape route. Montgomery was criticized for not cutting off Rommel sooner, but the practical difficulties of advancing through the desert with extended supply lines were real. The pursuit itself was as remarkable as the initial defeat.",
+      "visualDescription": "Pixel art of a map showing a long red arrow retreating westward from Egypt past Tobruk, Benghazi, Tripoli, all the way to Tunisia, Allied pursuit arrows following behind.",
+      "sourceName": "Wikipedia — Western Desert campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Western_Desert_campaign",
+      "volatile": false,
+      "distractors": ["200 miles", "500 miles", "800 miles", "1,200 miles", "3,000 miles", "4,000 miles", "100 miles", "750 miles"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "El Alamein",
+          "quizQuestion": "Rommel's 2,000-mile retreat to Tunisia began after which October 1942 defeat — the battle that permanently ended his ability to threaten Egypt?",
+          "distractors": ["Kasserine Pass", "Battle of Sidi Barrani", "Battle of Gazala", "Battle of Tobruk"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "five months",
+          "quizQuestion": "Rommel conducted his 2,000-mile retreat from El Alamein to Tunisia over approximately how long — keeping his army intact and fighting throughout?",
+          "distractors": ["one month", "two months", "one year", "eight months"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Rommel's retreat from El Alamein to Tunisia is considered one of history's most skillful fighting withdrawals — keeping his army cohesive while outnumbered and outgunned.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Montgomery",
+          "quizQuestion": "After El Alamein, British General ____ pursued Rommel's retreating Afrika Korps across 2,000 miles of North Africa — though critics said he moved too cautiously.",
+          "distractors": ["Alexander", "Auchinleck", "Patton", "Wavell"]
+        }
+      ]
+    }
+  ]
+}

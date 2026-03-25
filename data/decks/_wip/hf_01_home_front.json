@@ -1,0 +1,1711 @@
+{
+  "id": "wwii_home_front",
+  "name": "WWII: Home Front & Civilians",
+  "domain": "history",
+  "subDomain": "wwii_home_front",
+  "description": "The war was won as much in factories and farms as on battlefields. Explore the lives of civilians who built the weapons, fed the troops, endured the bombs, and paid the price — from Rosie the Riveter to the starving streets of Leningrad.",
+  "minimumFacts": 30,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "wwii_hf_rosie_6million",
+      "correctAnswer": "6 million",
+      "acceptableAlternatives": ["six million"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Approximately how many American women entered industrial war work by 1943, symbolized by 'Rosie the Riveter'?",
+      "explanation": "As American men joined the military, approximately 6 million women entered the industrial workforce by 1943 — building planes, ships, tanks, and ammunition. Many earned better wages than prewar domestic service, gaining economic independence. Postwar, women were pushed back out of factories to make room for returning soldiers, but wartime work had proven women's industrial capability and planted seeds for postwar feminism.",
+      "visualDescription": "Pixel art of a woman in factory coveralls and red bandana flexing her arm beside a half-assembled aircraft fuselage, sparks flying from a nearby welder",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rosie_the_Riveter",
+      "volatile": false,
+      "distractors": [
+        "2 million",
+        "3 million",
+        "4 million",
+        "8 million",
+        "10 million",
+        "500,000",
+        "1 million",
+        "12 million"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What cultural icon represented the millions of American women who entered industrial work during WWII?",
+          "correctAnswer": "Rosie the Riveter",
+          "distractors": ["Liberty Belle", "Victory Vera", "Factory Fanny", "Arsenal Annie"]
+        },
+        {
+          "type": "context",
+          "question": "What happened to women who had taken industrial jobs during WWII once the war ended?",
+          "correctAnswer": "They were pushed out of industrial jobs to make room for returning soldiers",
+          "distractors": [
+            "They were promoted to management roles",
+            "They moved into the newly created government workforce",
+            "They retained their jobs as the economy expanded",
+            "They were given pensions in recognition of wartime service"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Black women in WWII defense plants worked in fully integrated conditions alongside white women.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "By 1943, approximately ___ American women had entered the industrial workforce to support the war effort.",
+          "correctAnswer": "6 million",
+          "distractors": ["2 million", "10 million", "4 million", "1 million"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_internment_120k",
+      "correctAnswer": "120,000",
+      "acceptableAlternatives": ["120000", "over 120,000", "more than 120,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "numbers",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "How many people of Japanese descent did the U.S. government force into internment camps after Pearl Harbor?",
+      "explanation": "The U.S. government ordered 120,000+ people of Japanese descent into internment camps, primarily in Western states. About two-thirds were U.S. citizens (Nisei). No evidence of espionage was ever found — internment was driven by racist assumptions and wartime hysteria. Families lost homes and businesses. The Supreme Court upheld internment in Korematsu v. United States (1944). In 1988, Congress formally apologized and paid $20,000 to each surviving internee.",
+      "visualDescription": "Pixel art of a family with luggage tags pinned to their coats standing before a barbed wire fence, a guard tower silhouetted against a desert sunset",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_American_internment",
+      "volatile": false,
+      "distractors": [
+        "40,000",
+        "60,000",
+        "80,000",
+        "200,000",
+        "300,000",
+        "25,000",
+        "500,000",
+        "10,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which 1944 Supreme Court case upheld the constitutionality of Japanese American internment?",
+          "correctAnswer": "Korematsu v. United States",
+          "distractors": ["Hirabayashi v. United States", "Ex parte Endo", "Yasui v. United States", "Endo v. Eisenhower"]
+        },
+        {
+          "type": "context",
+          "question": "In 1988, how much did the U.S. Congress pay each surviving Japanese American internee as formal reparations?",
+          "correctAnswer": "$20,000",
+          "distractors": ["$5,000", "$50,000", "$100,000", "$1,000"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: German and Italian Americans were also interned in large numbers alongside Japanese Americans during WWII.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "About two-thirds of the Japanese Americans sent to internment camps were U.S. citizens, known as ___.",
+          "correctAnswer": "Nisei",
+          "distractors": ["Issei", "Kibei", "Sansei", "Nikkei"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_blitz_40k_dead",
+      "correctAnswer": "40,000",
+      "acceptableAlternatives": ["over 40,000", "more than 40,000"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Approximately how many British civilians were killed during the Blitz — Germany's bombing campaign of 1940–1941?",
+      "explanation": "The Blitz ran from September 7, 1940 to May 11, 1941, killing over 40,000 civilians and damaging or destroying 1 million homes. Germany's goal was to break British morale and force surrender. Instead, the bombing hardened civilian resolve — stoicism and the spirit of 'Keep Calm and Carry On' became defining national values. Queen Elizabeth (the Queen Mother) stayed in London throughout to demonstrate solidarity with the public.",
+      "visualDescription": "Pixel art of a London street at night, fires blazing amid bombed terraces, an ARP warden in a steel helmet guiding a family toward a shelter entrance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Blitz",
+      "volatile": false,
+      "distractors": [
+        "5,000",
+        "10,000",
+        "20,000",
+        "60,000",
+        "100,000",
+        "200,000",
+        "500",
+        "80,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What phrase, associated with British resilience during the Blitz, became an enduring national motto?",
+          "correctAnswer": "Keep Calm and Carry On",
+          "distractors": ["Britain Can Take It", "We Shall Never Surrender", "Stiff Upper Lip", "Blitz Spirit"]
+        },
+        {
+          "type": "context",
+          "question": "How many British homes were damaged or destroyed during the Blitz?",
+          "correctAnswer": "1 million",
+          "distractors": ["100,000", "500,000", "2 million", "250,000"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany's Blitz bombing campaign successfully broke British civilian morale and forced peace negotiations.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Blitz lasted from September 1940 to ___ 1941.",
+          "correctAnswer": "May",
+          "distractors": ["January", "March", "July", "December"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_rationing_bread_postwar",
+      "correctAnswer": "1946–1948",
+      "acceptableAlternatives": ["1946 to 1948", "after the war"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "In Britain, bread rationing was actually STRICTER after WWII ended than during the war itself — in which postwar years did bread rationing apply?",
+      "explanation": "Britain introduced rationing early in the war (covering meat, butter, sugar, eggs, tea, clothing, and petrol) to fairly distribute scarce resources. The counterintuitive twist: bread had not been rationed during the war itself, but was rationed postwar from 1946 to 1948 due to global wheat shortages. British rationing didn't fully end until the 1950s. The shared sacrifice of rationing reduced inequality — everyone received similar allocations regardless of wealth, creating a lasting sense of collective burden.",
+      "visualDescription": "Pixel art of a housewife at a shop counter handing over a ration book, shelves behind the shopkeeper sparsely stocked, a government poster about fair shares on the wall",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rationing_in_the_United_Kingdom",
+      "volatile": false,
+      "distractors": [
+        "1944–1945",
+        "1945–1946",
+        "1949–1951",
+        "1950–1952",
+        "1941–1942",
+        "1943–1944",
+        "1948–1950",
+        "1952–1954"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What social effect did wartime rationing have on British class inequality?",
+          "correctAnswer": "It reduced inequality by giving everyone similar allocations regardless of wealth",
+          "distractors": [
+            "It widened inequality because the rich could afford black market goods",
+            "It had no effect on class inequality",
+            "It mainly benefited the upper class who had better storage facilities",
+            "It created new inequality by favouring rural over urban families"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which of the following was NOT rationed in Britain during WWII?",
+          "correctAnswer": "Bread",
+          "distractors": ["Butter", "Meat", "Sugar", "Tea"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: British bread rationing was introduced during WWII and ended when the war ended in 1945.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "British food rationing fully ended in the ___.",
+          "correctAnswer": "1950s",
+          "distractors": ["1940s", "1960s", "1945", "1970s"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_dresden_25k_35k",
+      "correctAnswer": "25,000–35,000",
+      "acceptableAlternatives": ["25000 to 35000", "between 25,000 and 35,000", "around 25,000"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Estimates of how many people died in the Allied firebombing of Dresden in February 1945 range from approximately what to what?",
+      "explanation": "American and British bombers firebombed Dresden from February 13–15, 1945. Dresden was a major cultural city (baroque architecture, rich heritage) and housed refugees fleeing eastern territories. The bombing created firestorms; death estimates range from 25,000 to 35,000+. Kurt Vonnegut, a captured American soldier who survived the bombing in an underground slaughterhouse, later wrote 'Slaughterhouse-Five' (1969) about the experience. The raid remains morally controversial — Dresden had some military value (rail hub), but critics contend the civilian destruction was excessive.",
+      "visualDescription": "Pixel art of a baroque city skyline silhouetted against an orange firestorm sky, the famous Frauenkirche dome crumbling amid rolling smoke",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bombing_of_Dresden_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "1,000–5,000",
+        "5,000–10,000",
+        "10,000–15,000",
+        "50,000–100,000",
+        "100,000–200,000",
+        "200,000–300,000",
+        "500–2,000",
+        "40,000–60,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which famous American novel, written by a survivor, is set during the firebombing of Dresden?",
+          "correctAnswer": "Slaughterhouse-Five",
+          "distractors": ["Catch-22", "The Naked and the Dead", "A Farewell to Arms", "All Quiet on the Western Front"]
+        },
+        {
+          "type": "context",
+          "question": "The Allied firebombing of Dresden took place in which month and year?",
+          "correctAnswer": "February 1945",
+          "distractors": ["August 1944", "March 1943", "June 1944", "October 1944"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Dresden was primarily a military-industrial city with few cultural monuments when it was firebombed.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Kurt Vonnegut witnessed the Dresden firebombing while sheltering in an underground ___ used as a prison camp.",
+          "correctAnswer": "slaughterhouse",
+          "distractors": ["bunker", "railway tunnel", "brewery", "cathedral crypt"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_tuskegee_450_missions",
+      "correctAnswer": "450",
+      "acceptableAlternatives": ["over 450", "450+", "more than 450"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The Tuskegee Airmen flew over how many combat missions during WWII, earning a reputation for rarely losing bombers under their escort?",
+      "explanation": "The Tuskegee Airmen were African American fighter pilots trained at Tuskegee Army Airfield in Alabama. Despite serving in a racially segregated military where they were denied basic rights (segregated officers' clubs, separate housing), they flew 450+ combat missions escorting bombers over Europe with an exceptional record — defeating German fighters and losing very few bombers in their care. Their combat success helped pressure President Truman to desegregate the military by executive order in 1948.",
+      "visualDescription": "Pixel art of four P-51 Mustangs with distinctive red tails in tight formation over Italian mountains, bomber contrails visible below them",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tuskegee_Airmen",
+      "volatile": false,
+      "distractors": [
+        "50",
+        "100",
+        "200",
+        "600",
+        "800",
+        "1,000",
+        "25",
+        "1,500"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which U.S. president signed the executive order desegregating the American military in 1948, a change partly driven by the Tuskegee Airmen's wartime service?",
+          "correctAnswer": "Harry S. Truman",
+          "distractors": ["Franklin D. Roosevelt", "Dwight D. Eisenhower", "John F. Kennedy", "Herbert Hoover"]
+        },
+        {
+          "type": "context",
+          "question": "Where were the Tuskegee Airmen trained before deploying to combat in Europe?",
+          "correctAnswer": "Tuskegee Army Airfield, Alabama",
+          "distractors": [
+            "Langley Field, Virginia",
+            "Randolph Air Force Base, Texas",
+            "Maxwell Field, Alabama",
+            "Wright-Patterson Air Base, Ohio"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Tuskegee Airmen were fully integrated with white pilots and shared equal facilities at their training base.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Tuskegee Airmen's distinctive red ___ on their P-51 Mustangs became their calling card over Europe.",
+          "correctAnswer": "tails",
+          "distractors": ["noses", "wings", "cockpit markings", "fuselages"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_navajo_code_unbroken",
+      "correctAnswer": "Never",
+      "acceptableAlternatives": ["It was never broken", "the Japanese never broke it"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "statements",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "How many times did Japan successfully break the Navajo Code Talkers' military code during WWII?",
+      "explanation": "Over 400 Navajo Nation members served as Code Talkers, primarily in the Pacific, transmitting encrypted messages in the Navajo language — an unwritten language with almost no speakers outside the Navajo Nation at the time. The code was never broken by Japan. The Navajo Code Talkers' service was classified until 1969; they received little recognition for decades. In 2001, they were finally awarded the Congressional Gold Medal. Their contribution shows how indigenous cultural uniqueness became a decisive strategic asset.",
+      "visualDescription": "Pixel art of a Marine in Pacific jungle foliage speaking into a field radio, a Navajo Nation emblem on his helmet, dense tropical canopy above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Code_talker",
+      "volatile": false,
+      "distractors": [
+        "Once",
+        "Twice",
+        "Three times",
+        "Several times",
+        "Many times",
+        "Partially",
+        "At least once in 1944",
+        "Numerous times"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Navajo Code Talkers' code was unbreakable primarily because Navajo is what?",
+          "correctAnswer": "An unwritten language with almost no speakers outside the Navajo Nation",
+          "distractors": [
+            "An ancient dead language known only to historians",
+            "A newly invented cipher language taught only to military recruits",
+            "A tonal language too complex for electronic interception",
+            "A language spoken by fewer than 10 people worldwide"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "In what year was the Navajo Code Talkers' service finally declassified?",
+          "correctAnswer": "1969",
+          "distractors": ["1950", "1960", "1975", "1945"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Navajo Code Talkers received the Congressional Gold Medal immediately after WWII ended in recognition of their service.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Over ___ Navajo Nation members served as Code Talkers during WWII.",
+          "correctAnswer": "400",
+          "distractors": ["50", "100", "200", "1,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_gi_bill_78million_students",
+      "correctAnswer": "7.8 million",
+      "acceptableAlternatives": ["7.8 million veterans", "nearly 8 million"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How many veterans used the G.I. Bill's education benefits between 1944 and 1952, fueling American postwar prosperity?",
+      "explanation": "The Servicemen's Readjustment Act (G.I. Bill), passed in 1944, offered veterans paid college tuition, vocational training, and favorable home loans. Between 1944 and 1952, 7.8 million veterans used education benefits — many the first in their families to attend college. The G.I. Bill is widely credited with building the American middle class and fueling postwar economic dominance. However, it originally failed Black veterans due to segregation in schools and housing, exposing the gap between the law's promise and its racist implementation.",
+      "visualDescription": "Pixel art of a veteran in uniform walking onto a college campus, briefcase in hand, rows of brick buildings and autumn trees behind him, a GI Bill poster on the bulletin board",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/G.I._Bill",
+      "volatile": false,
+      "distractors": [
+        "1 million",
+        "2 million",
+        "3 million",
+        "5 million",
+        "10 million",
+        "15 million",
+        "500,000",
+        "20 million"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the formal name of the 1944 law commonly known as the G.I. Bill?",
+          "correctAnswer": "Servicemen's Readjustment Act",
+          "distractors": [
+            "Veterans' Education and Housing Act",
+            "American Soldiers' Benefits Act",
+            "National Veterans' Assistance Act",
+            "Postwar Reintegration Act"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Why did the G.I. Bill largely fail African American veterans despite offering equal legal benefits?",
+          "correctAnswer": "Racial segregation in schools and housing denied Black veterans access to the benefits in practice",
+          "distractors": [
+            "Black veterans were explicitly excluded from the law's text",
+            "Black veterans preferred to return to agricultural work",
+            "The benefits only applied to veterans with high school diplomas",
+            "Black veterans received smaller benefit amounts under a separate schedule"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The G.I. Bill contributed to suburban housing development through its favorable home loan terms for veterans.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The G.I. Bill was passed in ___, the same year the Normandy invasion took place.",
+          "correctAnswer": "1944",
+          "distractors": ["1943", "1945", "1946", "1942"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_war_bonds_loose_lips",
+      "correctAnswer": "Loose Lips Sink Ships",
+      "acceptableAlternatives": ["loose lips sink ships"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "phrases",
+      "difficulty": 1,
+      "funScore": 7,
+      "quizQuestion": "What was the iconic American wartime propaganda slogan warning civilians not to gossip about military ship movements?",
+      "explanation": "\"Loose Lips Sink Ships\" warned American civilians that careless talk about military movements could reach enemy spies and cost sailors' lives. It was part of a broader propaganda campaign that included war bond drives (government debt sold to civilians with interest), celebrity endorsements, patriotic posters ('Uncle Sam: I Want YOU'), and Hollywood films. Britain ran a parallel campaign ('Careless Talk Costs Lives'). These campaigns show how total war required mobilizing civilian psychology alongside industrial capacity.",
+      "visualDescription": "Pixel art of a 1940s propaganda poster style — a shadowy figure eavesdropping on two sailors at a diner counter, a sinking ship visible through the window behind them",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Loose_lips_sink_ships",
+      "volatile": false,
+      "distractors": [
+        "Careless Talk Costs Lives",
+        "Keep Calm and Carry On",
+        "V for Victory",
+        "We Can Do It",
+        "Buy Bonds or Ships Go Down",
+        "A Spy Is Listening",
+        "Talk Less, Win More",
+        "Silence Wins Wars"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was Britain's equivalent wartime security slogan to America's 'Loose Lips Sink Ships'?",
+          "correctAnswer": "Careless Talk Costs Lives",
+          "distractors": [
+            "Silence Saves Soldiers",
+            "Keep Mum She's Not So Dumb",
+            "Words Kill Men",
+            "Shut Up and Win"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "War bonds, sold to civilians during WWII, were essentially what type of financial instrument?",
+          "correctAnswer": "Government debt (loans from civilians to the government, repaid with interest after the war)",
+          "distractors": [
+            "Insurance policies covering war damages",
+            "Shares in weapons manufacturing companies",
+            "Currency exchange certificates for postwar trade",
+            "Tax credits redeemable for goods after the war"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: 'Loose Lips Sink Ships' was a British slogan adopted by the Americans.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The famous Uncle Sam 'I Want YOU' recruitment poster was part of the broader WWII ___ campaign.",
+          "correctAnswer": "propaganda",
+          "distractors": ["rationing", "evacuation", "war bond", "draft resistance"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_child_evacuation_1point5m",
+      "correctAnswer": "1.5 million",
+      "acceptableAlternatives": ["over 1.5 million", "more than 1.5 million"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How many British children were evacuated from cities to rural areas to escape German bombing raids?",
+      "explanation": "The British government evacuated over 1.5 million children from urban areas to rural foster homes between 1939 and 1944. The scheme exposed stark class differences: urban working-class children arrived in rural middle-class homes — sometimes malnourished, sometimes lice-ridden — shocking host families who had little awareness of urban poverty. Siblings were often separated. The emotional toll of being removed from parents was significant, with many evacuees developing lasting attachment issues. Most returned to cities after the war.",
+      "visualDescription": "Pixel art of a railway platform in wartime Britain — rows of children with cardboard labels tied to their coat buttons, gas mask boxes over their shoulders, waving to parents through a steam-filled carriage window",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Evacuations_of_civilians_in_Britain_during_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "100,000",
+        "300,000",
+        "500,000",
+        "800,000",
+        "3 million",
+        "5 million",
+        "50,000",
+        "200,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What unexpected social awareness did the British child evacuation scheme create among middle-class rural families?",
+          "correctAnswer": "Awareness of urban poverty and class inequality",
+          "distractors": [
+            "Support for increased military spending",
+            "Appreciation for rural self-sufficiency",
+            "Opposition to women working in factories",
+            "Sympathy for German civilian casualties"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Why were siblings often separated during the British wartime evacuation?",
+          "correctAnswer": "Host families could not always accommodate multiple children",
+          "distractors": [
+            "Government policy deliberately separated siblings to spread children evenly",
+            "Boys and girls were sent to different regions for safety reasons",
+            "Older children were sent to factories rather than foster homes",
+            "Rail cars were organised alphabetically, splitting families"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The British child evacuation programme ran throughout the entire war from 1939 to 1945.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "British evacuated children often carried a ___ box on a strap — equipment for a potential gas attack that never came.",
+          "correctAnswer": "gas mask",
+          "distractors": ["first aid", "ration book", "identity card", "water canteen"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_leningrad_1million_dead",
+      "correctAnswer": "1 million",
+      "acceptableAlternatives": ["over 1 million", "approximately 1 million", "more than 1 million"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Approximately how many civilians died during the 900-day Siege of Leningrad — the deadliest siege in modern history?",
+      "explanation": "During the Siege of Leningrad (1941–1944), over 1 million civilians died — the majority from starvation. Daily bread rations fell to 125–200 grams, consisting largely of sawdust and fillers. Winter temperatures plunged to -40°C with no fuel for heating. Reports of cannibalism emerged as desperate residents ate corpses. The Soviet city's survival became a symbol of national resistance; it was designated a 'Hero City' postwar. The scale of civilian death dwarfed almost any other single wartime siege in history.",
+      "visualDescription": "Pixel art of a skeletal figure pulling a sled through a snowswept Leningrad street, the frozen Neva River visible between apartment blocks, a distant artillery flash on the horizon",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Leningrad",
+      "volatile": false,
+      "distractors": [
+        "10,000",
+        "50,000",
+        "100,000",
+        "500,000",
+        "2 million",
+        "3 million",
+        "200,000",
+        "5 million"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the primary cause of civilian death during the Siege of Leningrad?",
+          "correctAnswer": "Starvation",
+          "distractors": ["Artillery bombardment", "Disease and plague", "Exposure to chemical weapons", "Mass execution by German forces"]
+        },
+        {
+          "type": "context",
+          "question": "How low did the Leningrad civilian bread ration fall at its worst point during the siege?",
+          "correctAnswer": "125–200 grams per day",
+          "distractors": [
+            "500 grams per day",
+            "400 grams per day",
+            "50 grams per day",
+            "1 kilogram per day"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Siege of Leningrad lasted approximately 900 days.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After surviving the siege, Leningrad was officially designated a Soviet ___ city in recognition of its resistance.",
+          "correctAnswer": "Hero",
+          "distractors": ["Martyr", "Defender", "Victory", "Fortress"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_night_witches_30000_sorties",
+      "correctAnswer": "30,000",
+      "acceptableAlternatives": ["over 30,000", "30,000+"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "The Soviet Night Witches — all-female bomber pilots — completed over how many combat sorties during WWII?",
+      "explanation": "The Night Witches (Nochnye Vedmy) were an all-female Soviet aviation unit led by Marina Raskova, flying wooden Polikarpov Po-2 biplanes with open cockpits at night. Their tactic: cut engines near the target to glide in silently like a witch's broom, drop bombs, then restart and escape. They completed over 30,000 combat sorties; 23 were awarded the Hero of the Soviet Union. German pilots feared them. Despite this, Soviet culture largely ignored their heroism postwar, emphasizing male combat narratives instead.",
+      "visualDescription": "Pixel art of two female Soviet pilots in leather helmets climbing into open-cockpit biplanes at a moonlit airstrip, a German searchlight beam sweeping the horizon ahead",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/588th_Night_Bomber_Regiment",
+      "volatile": false,
+      "distractors": [
+        "500",
+        "1,000",
+        "5,000",
+        "10,000",
+        "50,000",
+        "100,000",
+        "2,000",
+        "20,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the signature silent attack tactic of the Soviet Night Witches?",
+          "correctAnswer": "Cutting the aircraft engine to glide silently over the target before dropping bombs",
+          "distractors": [
+            "Flying at high altitude to avoid radar detection",
+            "Attacking in large formations to overwhelm anti-aircraft guns",
+            "Using radio silence and special camouflage on aircraft",
+            "Flying at ultra-low level to avoid searchlights"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Who founded and commanded the Night Witches regiment?",
+          "correctAnswer": "Marina Raskova",
+          "distractors": ["Lyudmila Pavlichenko", "Valentina Tereshkova", "Zoya Kosmodemyanskaya", "Nina Raspopova"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Night Witches flew high-performance modern metal aircraft comparable to German fighters.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Twenty-three Night Witches were awarded the ___, the Soviet Union's highest military honor.",
+          "correctAnswer": "Hero of the Soviet Union",
+          "distractors": [
+            "Order of Lenin",
+            "Red Star Medal",
+            "Order of Glory",
+            "Stalin Prize"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_lend_lease_50billion",
+      "correctAnswer": "$50 billion",
+      "acceptableAlternatives": ["50 billion dollars", "over $50 billion", "more than $50 billion"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How much did the United States provide in Lend-Lease military aid to Britain, the Soviet Union, and other Allies during WWII (in 1940s dollars)?",
+      "explanation": "Lend-Lease was a program where the U.S. supplied military equipment, ammunition, food, and vehicles to Allied nations on deferred credit — President Roosevelt called it the 'Arsenal of Democracy.' Over $50 billion in 1940s dollars was delivered. Without Lend-Lease, Britain and the Soviet Union would have collapsed far earlier. American industrial capacity proved decisive: the U.S. produced 88,000 aircraft and 60,000 tanks during the war. Lend-Lease demonstrated American commitment to the Allies before Pearl Harbor brought the U.S. into direct combat.",
+      "visualDescription": "Pixel art of a wartime American shipyard at full capacity — Sherman tanks and crated aircraft lined up on a dock, a Liberty Ship being loaded under floodlights, Stars and Stripes flying overhead",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lend-Lease",
+      "volatile": false,
+      "distractors": [
+        "$1 billion",
+        "$5 billion",
+        "$10 billion",
+        "$20 billion",
+        "$100 billion",
+        "$200 billion",
+        "$500 million",
+        "$30 billion"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What phrase did President Roosevelt use to describe the U.S. role as a major arms supplier to the Allies before entering WWII?",
+          "correctAnswer": "Arsenal of Democracy",
+          "distractors": [
+            "Forge of Freedom",
+            "Shield of the Free World",
+            "Supplier of Liberty",
+            "Workshop of Victory"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many aircraft did the United States produce during WWII, demonstrating the industrial capacity that won the war?",
+          "correctAnswer": "88,000",
+          "distractors": ["15,000", "30,000", "50,000", "200,000"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Lend-Lease only began after the United States officially entered WWII following Pearl Harbor in December 1941.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In addition to weapons, Lend-Lease also supplied ___ to the Soviet Union and Britain, preventing civilian and military starvation.",
+          "correctAnswer": "food",
+          "distractors": ["oil", "steel", "medicine", "uniforms"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_bracero_4million",
+      "correctAnswer": "4 million",
+      "acceptableAlternatives": ["over 4 million", "more than 4 million"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "How many Mexican workers came to the United States through the Bracero Program, which addressed WWII labor shortages?",
+      "explanation": "The Bracero Program (1942–1964) brought Mexican workers to the U.S. to fill labor gaps caused by military mobilization. Over 4 million braceros (Spanish for 'temporary laborers') worked in American agriculture, railroads, and industry — often for low wages in poor conditions and facing open discrimination. Postwar, rather than being recognized for their contribution, braceros were often blamed for labor problems. The program normalized the exploitation of vulnerable immigrant workers as a wartime convenience that outlasted the war by nearly two decades.",
+      "visualDescription": "Pixel art of rows of Mexican farmworkers harvesting in a California field, a foreman on horseback in the distance, a wartime labor shortage poster nailed to a fence post",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bracero_program",
+      "volatile": false,
+      "distractors": [
+        "50,000",
+        "200,000",
+        "500,000",
+        "1 million",
+        "2 million",
+        "8 million",
+        "10 million",
+        "100,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Bracero Program brought workers from which country to fill U.S. labor shortages during WWII?",
+          "correctAnswer": "Mexico",
+          "distractors": ["Canada", "Cuba", "Puerto Rico", "Guatemala"]
+        },
+        {
+          "type": "context",
+          "question": "Until what year did the Bracero Program continue operating after WWII ended?",
+          "correctAnswer": "1964",
+          "distractors": ["1946", "1950", "1955", "1970"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Bracero workers received equal wages to American citizens and faced no discrimination under the program's legal protections.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "'Bracero' is a Spanish word meaning ___.",
+          "correctAnswer": "temporary laborer",
+          "distractors": ["soldier", "farmhand", "guest worker", "helper"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_double_v_campaign",
+      "correctAnswer": "Double V",
+      "acceptableAlternatives": ["the Double V", "Double V campaign"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "phrases",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What campaign did African Americans launch during WWII calling for victory over Nazi Germany AND victory over racism at home?",
+      "explanation": "The 'Double V' campaign emerged in Black communities and newspapers in 1942, demanding two victories: defeat of fascism abroad and defeat of racial discrimination at home. Black soldiers fought for democracy in a segregated military that denied them equal rights. The 92nd and 93rd Infantry Divisions and the Tuskegee Airmen served with distinction while facing humiliation at home. Their sacrifice helped build the moral and political pressure that led to military desegregation in 1948 and ultimately the Civil Rights Act of 1964.",
+      "visualDescription": "Pixel art of a Black WWII soldier in uniform holding a newspaper with a bold 'Double V' headline, a factory smokestack and American flag in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Double_V_campaign",
+      "volatile": false,
+      "distractors": [
+        "The Unity March",
+        "The Freedom Campaign",
+        "V for Victory",
+        "March on Washington",
+        "Operation Equality",
+        "The Two-Front War",
+        "Brothers in Arms",
+        "The Democracy Drive"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What year did President Truman desegregate the U.S. military, an outcome partly driven by Black soldiers' wartime service?",
+          "correctAnswer": "1948",
+          "distractors": ["1945", "1950", "1954", "1964"]
+        },
+        {
+          "type": "context",
+          "question": "What was the core contradiction the Double V campaign highlighted about American democracy during WWII?",
+          "correctAnswer": "The U.S. was fighting fascist racism abroad while enforcing racial segregation at home",
+          "distractors": [
+            "The U.S. was drafting Black men while refusing to pay them equal wages",
+            "The U.S. was fighting for freedom while maintaining colonial territories abroad",
+            "Black civilians were excluded from war bond drives despite paying taxes",
+            "Black soldiers were fighting in the Pacific while white soldiers served in Europe"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Double V campaign called for Black Americans to refuse military service until segregation ended.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Double V campaign demanded victory over fascism abroad and victory over ___ at home.",
+          "correctAnswer": "racism",
+          "distractors": ["poverty", "unemployment", "communism", "segregated churches"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_oak_ridge_75k_workers",
+      "correctAnswer": "75,000",
+      "acceptableAlternatives": ["75000", "approximately 75,000", "about 75,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "At its peak, how many workers lived and labored at Oak Ridge — the secret Manhattan Project city built to enrich uranium for the atomic bomb?",
+      "explanation": "Oak Ridge, Tennessee was a secret city built from scratch for Manhattan Project uranium enrichment. Families and Native Americans were forcibly displaced from the land. At peak operation, 75,000 workers lived there under intense secrecy — fences, armed guards, no outside communication. Most workers had no idea they were producing uranium for atomic weapons; only a handful knew the full purpose. Racial segregation was strictly enforced. After the war, Oak Ridge was opened to the public, leaving residents to live with the knowledge of their role in nuclear weapons history.",
+      "visualDescription": "Pixel art of a 1940s factory city at night — rows of identical wooden barracks, a massive industrial plant belching steam, chain-link fences with guard towers, security badges glowing at a checkpoint",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oak_Ridge,_Tennessee",
+      "volatile": false,
+      "distractors": [
+        "1,000",
+        "5,000",
+        "10,000",
+        "30,000",
+        "100,000",
+        "200,000",
+        "500",
+        "50,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was Oak Ridge, Tennessee's secret wartime purpose?",
+          "correctAnswer": "Enriching uranium for the Manhattan Project's atomic bomb",
+          "distractors": [
+            "Developing the first jet aircraft engine",
+            "Producing synthetic rubber for military vehicles",
+            "Cracking German Enigma cipher communications",
+            "Building ballistic missiles for long-range bombardment"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What did the vast majority of Oak Ridge's 75,000 workers NOT know about their work?",
+          "correctAnswer": "That they were enriching uranium to build an atomic weapon",
+          "distractors": [
+            "That their facility was located in Tennessee",
+            "That the project was funded by the U.S. government",
+            "That German scientists were also working at the site",
+            "That their product would be tested in New Mexico"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Oak Ridge was built on uninhabited federal land with no displacement of existing residents.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Oak Ridge enforced strict racial ___ even as workers labored side by side on the nation's most secret project.",
+          "correctAnswer": "segregation",
+          "distractors": ["secrecy", "hierarchy", "curfews", "wage scales"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_coventry_568_dead",
+      "correctAnswer": "568",
+      "acceptableAlternatives": ["over 500", "approximately 568", "more than 500"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "How many civilians were killed when Germany bombed Coventry, England on November 14, 1940 — one of the most devastating single raids of the Blitz?",
+      "explanation": "On November 14, 1940, the German Luftwaffe launched a devastating night raid against Coventry, killing over 568 civilians and largely destroying the medieval city center, including the historic Coventry Cathedral. The raid was so intense that Germans coined the word 'Coventrieren' (to coventrate) — meaning to obliterate a city by bombing. Churchill knew the raid was coming through decoded Enigma signals but chose not to act on the intelligence (to protect the secret that Germany's codes were broken). The ruins of the cathedral's walls were preserved as a permanent war memorial.",
+      "visualDescription": "Pixel art of a gutted medieval cathedral, its stone walls still standing but roofless and fire-blackened, a medieval spire silhouetted against a smoke-red sky, rubble filling the nave",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Coventry_Blitz",
+      "volatile": false,
+      "distractors": [
+        "50",
+        "100",
+        "200",
+        "1,000",
+        "2,000",
+        "5,000",
+        "50",
+        "400"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What new German word was coined after the Coventry bombing, meaning to utterly destroy a city by aerial bombardment?",
+          "correctAnswer": "Coventrieren (to coventrate)",
+          "distractors": [
+            "Blitzkriegen",
+            "Zerstören",
+            "Londoniern",
+            "Auslöschen"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Why did Churchill choose not to act on decoded Enigma intelligence warning of the Coventry raid?",
+          "correctAnswer": "To protect the secret that Britain had broken Germany's Enigma codes",
+          "distractors": [
+            "Churchill did not receive the intelligence in time",
+            "The decoded message was too vague to identify the target",
+            "Churchill calculated the city was not strategically important",
+            "RAF fighters were unavailable due to prior commitments"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The ruins of Coventry Cathedral were demolished after the war to build a modern replacement.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Coventry Blitz took place on November ___, 1940.",
+          "correctAnswer": "14",
+          "distractors": ["7", "21", "1", "30"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_us_war_production_88k_planes",
+      "correctAnswer": "88,000",
+      "acceptableAlternatives": ["over 88,000", "approximately 88,000"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How many aircraft did the United States produce during WWII, demonstrating the industrial output that gave the Allies decisive material superiority?",
+      "explanation": "American wartime industrial mobilization was staggering: 88,000 aircraft and 60,000 tanks produced between 1941 and 1945. Detroit's auto manufacturers retooled to build tanks and bombers. The U.S. produced more aircraft in 1944 alone than Germany produced in the entire war. This industrial dominance, combined with Lend-Lease supply to Britain and the Soviet Union, meant the Allies could absorb enormous losses and keep fighting while Germany and Japan could not replace their losses at anywhere near the same rate.",
+      "visualDescription": "Pixel art of an enormous American aircraft factory floor, dozens of B-17 bomber fuselages in various stages of assembly, 'riveting' workers on scaffolding stretching into the distance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/American_involvement_in_World_War_II_production",
+      "volatile": false,
+      "distractors": [
+        "5,000",
+        "15,000",
+        "30,000",
+        "50,000",
+        "120,000",
+        "200,000",
+        "10,000",
+        "250,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many tanks did the United States produce during WWII?",
+          "correctAnswer": "60,000",
+          "distractors": ["10,000", "30,000", "100,000", "500,000"]
+        },
+        {
+          "type": "context",
+          "question": "What did American automobile manufacturers famously do to contribute to WWII war production?",
+          "correctAnswer": "Retooled their factories to build tanks and military vehicles instead of cars",
+          "distractors": [
+            "Financed the war effort through bond purchases",
+            "Donated existing vehicles to the military for conversion",
+            "Manufactured aircraft engines while keeping car production running",
+            "Provided engineering expertise to improve Allied tank designs"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The United States produced more aircraft in 1944 alone than Germany produced during the entire war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Roosevelt's description of America as the '___ of Democracy' referred to its massive wartime industrial output.",
+          "correctAnswer": "Arsenal",
+          "distractors": ["Forge", "Shield", "Engine", "Bastion"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_ms_st_louis_refugees",
+      "correctAnswer": "Cuba and the United States",
+      "acceptableAlternatives": ["Cuba and the USA", "Cuba and America", "the USA and Cuba"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The SS St. Louis carried 900+ Jewish refugees fleeing Nazi Germany in 1939 — which two countries refused to let them disembark?",
+      "explanation": "In May 1939, the SS St. Louis sailed from Hamburg with over 900 Jewish refugees seeking asylum. Cuba initially denied entry, allowing only a small number ashore. The ship then sailed to the United States, where it was turned away. Canada also refused. The ship was forced to return to Europe, where refugees disembarked in Belgium, France, the Netherlands, and Britain. Historians estimate that roughly 254 of the passengers who returned to continental Europe were later killed in the Holocaust. The St. Louis became a symbol of the world's failure to act as the Holocaust unfolded.",
+      "visualDescription": "Pixel art of an ocean liner at anchor in a tropical harbour, a crowd of passengers leaning over the railings watching rowboats carrying officials turn away, a fading sunset reflecting off the water",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/MS_St._Louis",
+      "volatile": false,
+      "distractors": [
+        "France and Britain",
+        "Canada and Mexico",
+        "Argentina and Brazil",
+        "Britain and Portugal",
+        "Spain and Portugal",
+        "Australia and South Africa",
+        "France and Canada",
+        "Mexico and Panama"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What happened to passengers on the SS St. Louis who were returned to continental Europe after being denied entry?",
+          "correctAnswer": "Approximately 254 were later killed in the Holocaust",
+          "distractors": [
+            "They were all eventually resettled in South America",
+            "They were granted asylum in Switzerland after international pressure",
+            "They were returned to Germany and imprisoned immediately",
+            "They all survived the war by hiding in the French countryside"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The SS St. Louis incident is most historically significant as evidence of what failure?",
+          "correctAnswer": "The refusal of Western nations to accept Jewish refugees while the Holocaust was underway",
+          "distractors": [
+            "German naval aggression against civilian shipping",
+            "The failure of the League of Nations refugee system",
+            "American isolationism preventing entry into WWII",
+            "Cuba's collusion with Nazi Germany to block refugees"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Canada accepted all passengers from the SS St. Louis after Cuba and the U.S. refused them.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The SS St. Louis departed Hamburg in ___ 1939, just months before WWII began.",
+          "correctAnswer": "May",
+          "distractors": ["January", "August", "March", "September"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_goebbels_radio_propaganda",
+      "correctAnswer": "Joseph Goebbels",
+      "acceptableAlternatives": ["Goebbels"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Which Nazi official ran the Reich Ministry of Public Enlightenment and Propaganda, controlling all German radio, newspapers, and cinema from 1933 to 1945?",
+      "explanation": "Joseph Goebbels controlled all German media as Reich Minister of Propaganda from 1933 until his suicide in 1945. He mastered radio as a mass propaganda tool — Hitler's speeches were broadcast nationally, and cheap 'People's Receivers' (Volksempfänger) were produced so ordinary Germans could receive state broadcasts. Goebbels pioneered many modern propaganda techniques: emotional messaging, repetition, dehumanization of enemies, and spectacle (Nuremberg rallies). His media control is studied as a foundational case in how totalitarian states weaponize mass communication.",
+      "visualDescription": "Pixel art of a 1930s German radio cabinet with a glowing dial, a Nazi Party eagle emblem above it, and a queue of anxious-looking civilians gathered around it in a grey apartment room",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Goebbels",
+      "volatile": false,
+      "distractors": [
+        "Heinrich Himmler",
+        "Hermann Göring",
+        "Albert Speer",
+        "Rudolf Hess",
+        "Reinhard Heydrich",
+        "Hans Frank",
+        "Wilhelm Keitel",
+        "Ernst Kaltenbrunner"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What cheap consumer product did the Nazi regime mass-produce to ensure ordinary Germans could receive state radio propaganda?",
+          "correctAnswer": "The Volksempfänger (People's Receiver)",
+          "distractors": [
+            "The Volksmicrophone (People's Microphone)",
+            "The Reichsfernseher (State Television)",
+            "The Gemeinschaftsempfänger (Community Receiver)",
+            "The Führerapparat (Leader's Apparatus)"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What happened to Joseph Goebbels at the end of WWII?",
+          "correctAnswer": "He committed suicide",
+          "distractors": ["He was captured and tried at Nuremberg", "He escaped to Argentina", "He was killed in the Battle of Berlin", "He surrendered to British forces in Hamburg"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Goebbels allowed some independent newspapers to continue publishing in Germany as a safety valve for public opinion.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Goebbels controlled German ___, newspapers, and cinema as tools of total state propaganda.",
+          "correctAnswer": "radio",
+          "distractors": ["universities", "theatre", "publishing houses", "the postal system"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_tokyo_rose",
+      "correctAnswer": "Tokyo Rose",
+      "acceptableAlternatives": ["Tokyo Rose broadcasts"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "phrases",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What nickname did American soldiers give to the female Japanese radio broadcasters who played American music and spread demoralizing propaganda over Pacific airwaves?",
+      "explanation": "American servicemen in the Pacific nicknamed several Japanese English-language radio broadcasters 'Tokyo Rose.' The broadcasts featured American jazz and big band music (to make soldiers homesick and tune in) mixed with false claims of Allied defeats, ship sinkings, and messages designed to undermine morale. Far from being demoralized, many troops found the broadcasts entertaining and often laughed at the exaggerated claims. After the war, Iva Toguri D'Aquino — an American citizen of Japanese descent caught in Japan during the war — was controversially convicted of treason for her role as broadcaster. She was pardoned by President Ford in 1977.",
+      "visualDescription": "Pixel art of a 1940s radio broadcasting booth with a woman speaking into a microphone, Japanese characters on the broadcast schedule, American sailors gathered around a deck radio in a Pacific setting listening in",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tokyo_Rose",
+      "volatile": false,
+      "distractors": [
+        "Axis Sally",
+        "Radio Geisha",
+        "Pacific Lily",
+        "Chrysanthemum Rose",
+        "Sunrise Sally",
+        "Orient Annie",
+        "Radio Rose",
+        "Yamato Voice"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the equivalent German propaganda broadcaster targeting American and British troops called?",
+          "correctAnswer": "Axis Sally",
+          "distractors": ["Berlin Betty", "Rhine Rose", "Nazi Nancy", "German Greta"]
+        },
+        {
+          "type": "context",
+          "question": "Which American citizen was controversially convicted of treason after the war for her role as a Tokyo Rose broadcaster, and later pardoned in 1977?",
+          "correctAnswer": "Iva Toguri D'Aquino",
+          "distractors": ["Mildred Gillars", "Ruth Kuehn", "Jane Foster", "Agnes Smedley"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: American servicemen generally found Tokyo Rose broadcasts terrifying and deeply demoralizing.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Tokyo Rose broadcasts mixed American ___ music with false reports of Allied defeats to make soldiers homesick and tune in.",
+          "correctAnswer": "jazz",
+          "distractors": ["classical", "country", "folk", "opera"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_chinese_casualties_15_20m",
+      "correctAnswer": "15–20 million",
+      "acceptableAlternatives": ["15 to 20 million", "approximately 15 million", "around 20 million"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "How many Chinese people died during the Sino-Japanese War (1937–1945) — a toll largely absent from Western WWII narratives?",
+      "explanation": "Historians estimate 15–20 million Chinese died in the Sino-Japanese War (1937–1945), the majority from starvation and disease caused by Japanese occupation rather than direct combat. China's war began in 1937 — four years before the U.S. entered WWII. Japanese atrocities (Nanjing Massacre, Unit 731 biological warfare experiments) killed hundreds of thousands. Yet China's catastrophic losses are routinely omitted from Western WWII histories, which focus on the European and Pacific theaters from an Anglo-American perspective. China suffered the third-largest death toll of any WWII nation, after the Soviet Union and Germany.",
+      "visualDescription": "Pixel art of a Chinese city in ruins — soldiers in round helmets defending rubble, a distant pagoda partially destroyed, smoke rising from rice paddies in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+      "volatile": false,
+      "distractors": [
+        "500,000",
+        "1 million",
+        "3 million",
+        "5 million",
+        "25 million",
+        "40 million",
+        "8 million",
+        "50 million"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In what year did China's war against Japan begin — years before the Western Allies entered WWII?",
+          "correctAnswer": "1937",
+          "distractors": ["1939", "1941", "1935", "1931"]
+        },
+        {
+          "type": "context",
+          "question": "What was the primary cause of the majority of China's 15–20 million wartime deaths?",
+          "correctAnswer": "Starvation and disease caused by Japanese occupation",
+          "distractors": [
+            "Direct combat casualties in set-piece battles",
+            "Allied bombing of occupied Chinese cities",
+            "Biological warfare using plague-infested fleas",
+            "Forced labor in Japanese mines and factories"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: China's WWII death toll was larger than that of Germany.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Japanese massacre of civilians in ___ in December 1937 killed an estimated 100,000–300,000 Chinese people.",
+          "correctAnswer": "Nanjing",
+          "distractors": ["Shanghai", "Beijing", "Chongqing", "Guangzhou"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_zoot_suit_riots_1943",
+      "correctAnswer": "1943",
+      "acceptableAlternatives": ["June 1943"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "In what year did the Zoot Suit Riots erupt in Los Angeles, when white servicemen attacked Mexican-American youth over racial tensions during the war?",
+      "explanation": "In June 1943, white U.S. Navy sailors and Marines stationed in Los Angeles attacked Mexican-American (and some Black and Filipino) youth who wore 'zoot suits' — flamboyant wide-lapelled suits seen by some as unpatriotic use of rationed fabric. The riots lasted days; police largely stood by or arrested the victims, not the attackers. The Zoot Suit Riots exposed the violent racial fault lines beneath wartime 'unity' rhetoric. Mexican-American youth had been fighting in the Pacific and Europe — yet faced racist violence at home. The riots sparked protests and a brief congressional inquiry.",
+      "visualDescription": "Pixel art of a 1940s Los Angeles street — a young Mexican-American man in a zoot suit surrounded by sailors in white uniforms, neon signs and a movie marquee visible, a police car watching from a distance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Zoot_Suit_Riots",
+      "volatile": false,
+      "distractors": [
+        "1941",
+        "1942",
+        "1944",
+        "1945",
+        "1940",
+        "1939",
+        "1946",
+        "1938"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Why were zoot suits considered unpatriotic by some Americans during WWII?",
+          "correctAnswer": "They used extra fabric at a time when fabric was a rationed wartime resource",
+          "distractors": [
+            "They were associated with pro-Japanese sentiment",
+            "They were modelled on Mexican military uniforms",
+            "They were worn to mock the austerity of military uniforms",
+            "They incorporated colours associated with the Axis nations"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "During the Zoot Suit Riots, who did Los Angeles police primarily arrest?",
+          "correctAnswer": "The Mexican-American victims, not the white servicemen attackers",
+          "distractors": [
+            "The white servicemen who started the attacks",
+            "Both groups equally under wartime emergency powers",
+            "Black bystanders who had no involvement in the riots",
+            "Zoot suit manufacturers for violating wartime rationing rules"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Zoot Suit Riots targeted only Mexican-American youth and left Black and Filipino youth unharmed.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Zoot Suit Riots took place in ___, California in June 1943.",
+          "correctAnswer": "Los Angeles",
+          "distractors": ["San Francisco", "San Diego", "Oakland", "Sacramento"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_uso_morale",
+      "correctAnswer": "United Service Organizations (USO)",
+      "acceptableAlternatives": ["USO", "the USO"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "organization_names",
+      "difficulty": 1,
+      "funScore": 7,
+      "quizQuestion": "What civilian organization provided entertainment for American troops at military bases worldwide during WWII to maintain morale?",
+      "explanation": "The United Service Organizations (USO) was founded in 1941 to provide entertainment and morale support for American troops. Celebrities including Bob Hope, Bing Crosby, and Marlene Dietrich performed at USO shows near frontlines and at bases worldwide. The USO recognized that morale — the will to fight — was as critical as ammunition. A bored, isolated, or demoralized soldier fights less effectively. The USO model proved so successful that it has continued operating through every subsequent American military engagement, including Korea, Vietnam, and Iraq.",
+      "visualDescription": "Pixel art of a makeshift outdoor stage on a Pacific island — a comedian at a microphone, a big band behind him, hundreds of sailors and soldiers packed on a jungle hillside watching, palm trees silhouetted against a setting sun",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/United_Service_Organizations",
+      "volatile": false,
+      "distractors": [
+        "Red Cross",
+        "YMCA",
+        "Salvation Army",
+        "Veterans of Foreign Wars",
+        "American Legion",
+        "War Entertainers Guild",
+        "National Morale Service",
+        "Armed Forces Entertainment"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which comedian became the most famous USO entertainer, performing over 57 overseas tours for American troops from WWII through the Gulf War?",
+          "correctAnswer": "Bob Hope",
+          "distractors": ["Jack Benny", "Abbott and Costello", "Bing Crosby", "George Burns"]
+        },
+        {
+          "type": "context",
+          "question": "What was the core strategic insight behind investing military resources in USO entertainment?",
+          "correctAnswer": "A soldier's morale and will to fight is as critical to victory as weapons and ammunition",
+          "distractors": [
+            "Entertainment prevented soldiers from gambling and drinking",
+            "Shows were used to distribute propaganda messages to troops",
+            "Entertainment was a reward for soldiers with high kill counts",
+            "The USO served primarily as a recruitment advertising tool"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The USO was a U.S. government military agency funded entirely by the Department of War.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The USO was founded in ___, the same year the United States began Lend-Lease aid to the Allies.",
+          "correctAnswer": "1941",
+          "distractors": ["1939", "1942", "1940", "1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_conscientious_objectors",
+      "correctAnswer": "Conscientious objectors",
+      "acceptableAlternatives": ["COs", "conscientious objector"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What term describes the WWII civilians in the U.S. and Britain who refused military service on moral or religious grounds, often facing social stigma despite their principled stand?",
+      "explanation": "Conscientious objectors (COs) refused to perform military service on moral, ethical, or religious grounds during WWII. In the U.S., recognized COs were assigned to alternative service (such as the Civilian Public Service), including dangerous medical experiments and forest firefighting. In Britain, a tribunal system evaluated each case. COs faced significant social stigma and were sometimes labeled cowards. Some, like pacifist Quakers and Mennonites, had deeply held religious convictions. Their existence challenged wartime propaganda presenting the war as universally supported — a reminder that even in total war, principled dissent existed.",
+      "visualDescription": "Pixel art of a young man in civilian clothes standing before a military tribunal panel, holding a letter of objection, uniformed officers seated at a table examining his file",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Conscientious_objector",
+      "volatile": false,
+      "distractors": [
+        "Draft dodgers",
+        "Pacifists",
+        "Deserters",
+        "Non-combatants",
+        "Resisters",
+        "Quakers",
+        "Exemptees",
+        "War dissidents"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "American conscientious objectors during WWII were often assigned to what type of alternative service instead of military duty?",
+          "correctAnswer": "Civilian Public Service (including medical experiments and forest firefighting)",
+          "distractors": [
+            "Working in munitions factories",
+            "Serving as military chaplains",
+            "Translating captured enemy documents",
+            "Serving jail sentences for draft refusal"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which religious groups provided a high proportion of WWII conscientious objectors based on pacifist doctrine?",
+          "correctAnswer": "Quakers and Mennonites",
+          "distractors": [
+            "Catholics and Lutherans",
+            "Jews and Muslims",
+            "Baptists and Methodists",
+            "Jehovah's Witnesses and Presbyterians"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Conscientious objectors in Britain were automatically imprisoned without any review of their cases.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Conscientious objectors faced social ___ and were sometimes labeled cowards by communities swept up in wartime patriotism.",
+          "correctAnswer": "stigma",
+          "distractors": ["prosecution", "exile", "execution", "internment"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_soviet_factory_relocation",
+      "correctAnswer": "East",
+      "acceptableAlternatives": ["eastward", "to the east", "further east"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "directions",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "When Germany invaded the Soviet Union, Soviet industrial planners relocated entire factories in which direction to put them beyond German bombing range?",
+      "explanation": "One of WWII's most extraordinary industrial feats: when Germany invaded in June 1941, the Soviet Union dismantled and relocated over 1,500 entire factories — including workers, machinery, and raw material supplies — eastward beyond the Ural Mountains to Siberia and Central Asia. The operation was accomplished in a matter of months, with factories often resuming production before permanent buildings were erected (workers sometimes operated machinery in open fields in winter). This relocation ensured Soviet industrial capacity survived the German advance. Without it, the USSR would likely have been unable to produce the weapons needed to hold and then reverse the German attack.",
+      "visualDescription": "Pixel art of a Soviet industrial operation — disassembled factory machinery loaded onto flatbed railway wagons, workers in winter coats loading equipment by torchlight, the Ural mountains visible in the snowy distance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet_war_economy_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "North",
+        "South",
+        "West",
+        "Northwest",
+        "Northeast",
+        "Central",
+        "Coastal",
+        "Underground"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many factories did the Soviet Union relocate eastward after Germany's 1941 invasion?",
+          "correctAnswer": "Over 1,500",
+          "distractors": ["About 50", "Around 200", "Fewer than 100", "Approximately 5,000"]
+        },
+        {
+          "type": "context",
+          "question": "What made the Soviet factory relocation especially remarkable from a production standpoint?",
+          "correctAnswer": "Factories sometimes resumed production before permanent buildings were constructed, operating outdoors in winter",
+          "distractors": [
+            "Every factory was rebuilt to a higher production capacity than the original",
+            "The relocations were completed in total secrecy without German intelligence detecting them",
+            "Workers voluntarily relocated without any government coercion",
+            "Each factory was fully automated, requiring no human workers at all"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Soviet factory relocation program was a failure — most factories never resumed production after being moved.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Soviet factories were relocated beyond the ___ Mountains to place them out of reach of German bombers.",
+          "correctAnswer": "Ural",
+          "distractors": ["Caucasus", "Carpathian", "Altai", "Pamir"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_korematsu_1944",
+      "correctAnswer": "Korematsu v. United States",
+      "acceptableAlternatives": ["Korematsu", "the Korematsu case"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "case_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which 1944 Supreme Court case upheld the constitutionality of Japanese American internment — a ruling later officially repudiated by the U.S. government?",
+      "explanation": "In Korematsu v. United States (1944), the Supreme Court ruled 6–3 that the wartime internment of Japanese Americans was constitutional, accepting the government's argument of military necessity. Fred Korematsu had defied the evacuation order and was convicted. The majority opinion, written by Justice Hugo Black, applied a 'national security' rationale. Three justices dissented, calling it a racist action 'legalized by an emergency.' The ruling was not formally overturned until Trump v. Hawaii (2018), when the Supreme Court declared the Korematsu decision to have been 'gravely wrong the day it was decided.'",
+      "visualDescription": "Pixel art of a 1940s American courthouse exterior, scales of justice carved above the entrance, a young Japanese-American man climbing the courthouse steps clutching legal papers",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Korematsu_v._United_States",
+      "volatile": false,
+      "distractors": [
+        "Hirabayashi v. United States",
+        "Ex parte Endo",
+        "Yasui v. United States",
+        "Plessy v. Ferguson",
+        "Marbury v. Madison",
+        "Schenck v. United States",
+        "Ex parte Milligan",
+        "Youngstown Sheet & Tube Co. v. Sawyer"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who was the Japanese American man whose defiance of the internment order led to the landmark Supreme Court case?",
+          "correctAnswer": "Fred Korematsu",
+          "distractors": ["Gordon Hirabayashi", "Min Yasui", "Jim Akutsu", "Joe Kurihara"]
+        },
+        {
+          "type": "context",
+          "question": "In what year did the Supreme Court formally repudiate the Korematsu decision as 'gravely wrong the day it was decided'?",
+          "correctAnswer": "2018",
+          "distractors": ["1988", "1944", "1968", "2000"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Korematsu decision was unanimous — all nine Supreme Court justices agreed internment was constitutional.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Korematsu ruling was 6 to ___ — three justices dissented, calling internment 'racism legalized by an emergency.'",
+          "correctAnswer": "3",
+          "distractors": ["1", "2", "4", "5"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_manhattan_compartmentalization",
+      "correctAnswer": "Compartmentalization",
+      "acceptableAlternatives": ["compartmentalised information", "need-to-know basis", "information compartments"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What security technique did the Manhattan Project use to ensure that each worker only knew their own piece of the atomic bomb project — preventing any single leak from compromising the whole?",
+      "explanation": "The Manhattan Project used strict compartmentalization: each section knew only what was necessary for their specific task. A machinist making a component had no idea what the final device was. Scientists at Los Alamos didn't know the full scale of the project. Even many senior officials didn't know the bomb's true nature. This approach meant that even if a spy penetrated the project, they could only betray their small piece of it. Ironically, the Soviets still obtained crucial information through spies (Klaus Fuchs, Julius Rosenberg) who had broader access — proving that compartmentalization works against average leaks but not against trusted insiders.",
+      "visualDescription": "Pixel art of a 1940s secret facility showing separate walled-off laboratory sections — each with its own entrance and badge color, workers in one section unable to see into others, a single scientist holding a tiny classified piece of paper",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Manhattan_Project",
+      "volatile": false,
+      "distractors": [
+        "Encryption",
+        "Misinformation",
+        "Blackout protocols",
+        "Double agents",
+        "Security clearances",
+        "Code names",
+        "Censorship",
+        "Background checks"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Despite Manhattan Project compartmentalization, which method did Soviet spies actually use to obtain atomic bomb secrets?",
+          "correctAnswer": "Recruiting insiders with broad access, such as Klaus Fuchs and Julius Rosenberg",
+          "distractors": [
+            "Intercepting classified radio transmissions from Los Alamos",
+            "Bribing senior military officials for complete project blueprints",
+            "Photographing documents from outside the facilities",
+            "Decoding project communications using captured Enigma machines"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What was the core security logic behind Manhattan Project compartmentalization?",
+          "correctAnswer": "If any single worker leaked information, they could only betray their small piece of the project",
+          "distractors": [
+            "It prevented workers from discussing their wages and forming unions",
+            "It stopped German double agents from coordinating their reports",
+            "It allowed faster work by preventing distracting cross-department communication",
+            "It satisfied congressional oversight requirements for classified spending"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Most Manhattan Project workers knew they were building an atomic weapon that would be used against Japan.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Manhattan Project's compartmentalization meant workers operated on a strict ___ basis.",
+          "correctAnswer": "need-to-know",
+          "distractors": ["top-secret", "clearance-only", "officer-only", "division-only"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_war_correspondents",
+      "correctAnswer": "War correspondents",
+      "acceptableAlternatives": ["combat correspondents", "war reporters", "frontline journalists"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What term describes the journalists who reported from active combat zones during WWII, shaping how millions of civilians at home understood the war?",
+      "explanation": "War correspondents were journalists embedded with combat units during WWII, filing dispatches, photographs, and radio reports that shaped public understanding of the war. Ernie Pyle humanized the ordinary American soldier with intimate frontline columns; he was killed by Japanese machine gun fire on Ie Shima in 1945. Robert Capa's photographs brought combat horror directly to news pages. Government censors reviewed much content, ensuring atrocities and defeats were often minimized. Despite censorship, correspondents built the emotional narrative of the war that sustained public support through years of sacrifice.",
+      "visualDescription": "Pixel art of a war correspondent in a steel helmet and khaki jacket crouching behind a stone wall, typing on a portable typewriter while artillery flashes illuminate the hillside above him",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/War_correspondent",
+      "volatile": false,
+      "distractors": [
+        "Military attachés",
+        "Field observers",
+        "Combat historians",
+        "Press officers",
+        "Embedded reporters",
+        "Intelligence analysts",
+        "Newsreel operators",
+        "Military censors"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which beloved American war correspondent, known for humanizing the ordinary soldier, was killed by Japanese fire on the Pacific island of Ie Shima in 1945?",
+          "correctAnswer": "Ernie Pyle",
+          "distractors": ["Walter Cronkite", "Edward R. Murrow", "Robert Capa", "Bill Mauldin"]
+        },
+        {
+          "type": "context",
+          "question": "How did governments typically manage the information war correspondents could report during WWII?",
+          "correctAnswer": "Through military censors who reviewed dispatches before publication",
+          "distractors": [
+            "By allowing complete freedom of the press as a democratic principle",
+            "By embedding journalists with only rear-echelon support units, away from combat",
+            "By requiring all correspondents to be active military officers",
+            "By limiting all war news to official government press conferences"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Robert Capa's famous D-Day photographs from Omaha Beach were sharp and detailed due to his professional equipment.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Edward R. Murrow's live radio broadcasts from ___ during the Blitz brought the sound of falling bombs directly into American living rooms.",
+          "correctAnswer": "London",
+          "distractors": ["Paris", "Berlin", "Moscow", "Cairo"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hf_victory_gardens",
+      "correctAnswer": "Victory gardens",
+      "acceptableAlternatives": ["a victory garden", "victory garden"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What did Americans and Britons call the home vegetable plots that civilians were encouraged to grow during WWII to reduce food supply pressure and support rationing?",
+      "explanation": "Victory gardens were civilian vegetable plots planted in backyards, rooftops, parks, and vacant lots during WWII to supplement rationed food supplies. The U.S. government promoted them heavily through posters and radio campaigns. By 1943, there were over 20 million victory gardens in the U.S., producing approximately 40% of all vegetables consumed nationally. In Britain, the 'Dig for Victory' campaign transformed flower gardens and public parks into food production plots. Victory gardens connected civilians directly to the war effort through physical labor, reinforcing collective sacrifice while easing agricultural supply chains.",
+      "visualDescription": "Pixel art of a suburban American backyard with neat rows of vegetables — tomatoes, beans, lettuce — replacing an ornamental lawn, a government 'Dig for Victory' poster tacked to the garden shed, a family in sun hats tending the plot",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Victory_garden",
+      "volatile": false,
+      "distractors": [
+        "War gardens",
+        "Liberty plots",
+        "Freedom farms",
+        "Home fronts",
+        "Ration patches",
+        "Civilian allotments",
+        "Defense plots",
+        "Patriot gardens"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "By 1943, approximately what percentage of all vegetables consumed in the United States were produced by victory gardens?",
+          "correctAnswer": "40%",
+          "distractors": ["5%", "10%", "20%", "70%"]
+        },
+        {
+          "type": "context",
+          "question": "What was the British government's equivalent slogan promoting home food production during WWII?",
+          "correctAnswer": "Dig for Victory",
+          "distractors": [
+            "Grow to Win",
+            "Plant for Britain",
+            "Feed the Nation",
+            "Garden for Glory"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Victory gardens were only grown in rural areas; urban civilians were considered unable to contribute to food production.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "By 1943, there were over ___ million victory gardens in the United States.",
+          "correctAnswer": "20",
+          "distractors": ["2", "5", "50", "100"]
+        }
+      ]
+    }
+  ]
+}

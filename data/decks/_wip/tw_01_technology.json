@@ -1,0 +1,1414 @@
+{
+  "facts": [
+    {
+      "id": "wwii_tw_manhattan_cost",
+      "correctAnswer": "$2 billion",
+      "acceptableAlternatives": ["2 billion dollars", "two billion dollars"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dollar_amounts",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The Manhattan Project cost how much in 1940s dollars — roughly equivalent to $30 billion today?",
+      "explanation": "The Manhattan Project (1942–1945) cost $2 billion in 1940s currency — approximately $30 billion today. Over 125,000 people worked across facilities in Los Alamos, Oak Ridge, and Hanford, all in total secrecy. Congress itself was not informed until the bombs were used.",
+      "visualDescription": "Pixel art of a massive industrial complex at night, cooling towers glowing, security fences stretching into darkness, a scientist in silhouette studying blueprints at a lit desk.",
+      "sourceName": "Wikipedia — Manhattan Project",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Manhattan_Project",
+      "volatile": false,
+      "distractors": [
+        "$500 million",
+        "$800 million",
+        "$5 billion",
+        "$10 billion",
+        "$1.2 billion",
+        "$3 billion",
+        "$750 million",
+        "$4 billion"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Which wartime program cost $2 billion in 1940s dollars — roughly $30 billion today — and employed over 125,000 people?",
+          "correctAnswer": "Manhattan Project",
+          "distractors": ["Operation Overlord", "Operation Torch", "Lend-Lease Program", "B-29 Superfortress program"]
+        },
+        "context": {
+          "quizQuestion": "The Manhattan Project employed 125,000 people across Los Alamos, Oak Ridge, and Hanford. What unified all three sites?",
+          "correctAnswer": "Developing the atomic bomb",
+          "distractors": ["Producing synthetic rubber", "Cracking German codes", "Manufacturing B-29 bombers", "Refining aviation fuel"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The U.S. Congress was briefed on the Manhattan Project before the atomic bombs were dropped on Japan.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Manhattan Project was kept secret from ___ and the public until the bombs were used.",
+          "correctAnswer": "Congress",
+          "distractors": ["the press", "the military", "the President", "Allied leaders"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_manhattan_oppenheimer",
+      "correctAnswer": "J. Robert Oppenheimer",
+      "acceptableAlternatives": ["Oppenheimer", "Robert Oppenheimer"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Who led the scientific teams at Los Alamos during the Manhattan Project?",
+      "explanation": "J. Robert Oppenheimer directed the Los Alamos Laboratory, coordinating the physicists and engineers who designed the atomic bombs. After the war, he expressed profound moral doubts about nuclear weapons — a journey from weapons developer to peace advocate that remains one of WWII's most haunting personal stories.",
+      "visualDescription": "Pixel art of a gaunt scientist in a wide-brimmed hat standing before a desert facility under a vast night sky, a single bright test flash on the horizon.",
+      "sourceName": "Wikipedia — J. Robert Oppenheimer",
+      "sourceUrl": "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer",
+      "volatile": false,
+      "distractors": [
+        "Enrico Fermi",
+        "Niels Bohr",
+        "Werner Heisenberg",
+        "Ernest Lawrence",
+        "Edward Teller",
+        "Leo Szilard",
+        "James Franck",
+        "Harold Urey"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "J. Robert Oppenheimer directed the scientific effort at which secret WWII weapons site?",
+          "correctAnswer": "Los Alamos",
+          "distractors": ["Oak Ridge", "Hanford", "Bletchley Park", "Peenemünde"]
+        },
+        "context": {
+          "quizQuestion": "After the atomic bombs were used, Oppenheimer reportedly quoted Hindu scripture: 'I am become Death, destroyer of worlds.' What does this reveal about the scientists who built the bomb?",
+          "correctAnswer": "Many felt moral anguish over what they had created",
+          "distractors": ["They celebrated unreservedly", "They had expected the war to continue", "They believed the bomb was a hoax", "They had no knowledge of casualties"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Oppenheimer later became a vocal advocate for nuclear arms control after WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Manhattan Project produced two bomb designs: a uranium-based bomb called Little Boy and a plutonium-based bomb called ___.",
+          "correctAnswer": "Fat Man",
+          "distractors": ["Big Boy", "Fat Boy", "Thin Man", "Iron Fist"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_radar_britain",
+      "correctAnswer": "Radar",
+      "acceptableAlternatives": ["radar system", "radio detection and ranging"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What technology gave RAF pilots advance warning of incoming German bombers during the Battle of Britain, allowing them to intercept instead of scramble blindly?",
+      "explanation": "Britain's chain of radar (Radio Detection And Ranging) stations detected Luftwaffe formations before they crossed the coast, giving RAF pilots precious minutes to climb and position for interception. Germany had radar too but allocated far fewer resources to it — a critical oversight that contributed directly to the Luftwaffe's failure.",
+      "visualDescription": "Pixel art of a coastal radar tower at dusk, radio waves rippling outward across a stormy Channel, tiny Spitfire silhouettes rising from a green airfield below.",
+      "sourceName": "Wikipedia — Battle of Britain",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Britain",
+      "volatile": false,
+      "distractors": [
+        "Sonar",
+        "Enigma intelligence",
+        "Barrage balloons",
+        "Observer Corps spotters",
+        "Anti-aircraft guns",
+        "Proximity fuzes",
+        "Carrier pigeons",
+        "Telephone networks"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Britain's chain of coastal radar stations gave RAF fighters advance warning during which 1940 air campaign?",
+          "correctAnswer": "Battle of Britain",
+          "distractors": ["Battle of the Atlantic", "Blitz on London", "Operation Sea Lion", "Operation Barbarossa"]
+        },
+        "context": {
+          "quizQuestion": "Germany also had radar during the Battle of Britain but allocated fewer resources to it. What does this suggest about WWII technology outcomes?",
+          "correctAnswer": "Having a technology matters less than investing in and deploying it effectively",
+          "distractors": ["German radar was technically inferior in every respect", "Radar was ineffective in cloudy conditions", "Britain stole German radar designs", "Germany chose not to use radar deliberately"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The acronym RADAR stands for Radio Detection And Ranging.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Radar uses ___ waves to detect objects at a distance.",
+          "correctAnswer": "radio",
+          "distractors": ["sound", "infrared", "light", "microwave"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_enigma_configurations",
+      "correctAnswer": "3 × 10^114",
+      "acceptableAlternatives": ["three times ten to the power of 114", "virtually infinite"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "The Germans believed the Enigma machine was unbreakable because it had approximately how many possible rotor configurations?",
+      "explanation": "The Enigma machine offered roughly 3 × 10^114 possible configurations — a number larger than the atoms in the observable universe. Germans were right that brute force was impossible. What they failed to anticipate was that mathematician Alan Turing would find a mathematical shortcut, exploiting the one thing Enigma could never encode: a letter as itself.",
+      "visualDescription": "Pixel art of a glowing cipher machine with spinning rotors, each notched wheel casting shifting shadows, an operator in a bunker typing by lamplight.",
+      "sourceName": "Wikipedia — Enigma machine",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Enigma_machine",
+      "volatile": false,
+      "distractors": [
+        "10,000",
+        "1 million",
+        "1 billion",
+        "1 trillion",
+        "3 × 10^20",
+        "3 × 10^50",
+        "10^80",
+        "10^100"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Alan Turing's Bombe machine was designed to crack which German cipher device that had ~3 × 10^114 configurations?",
+          "correctAnswer": "Enigma",
+          "distractors": ["Lorenz cipher", "Purple cipher", "Caesar cipher", "SIGABA"]
+        },
+        "context": {
+          "quizQuestion": "Turing exploited one logical flaw in Enigma: it could never encrypt a letter as itself. Why was this militarily devastating for Germany?",
+          "correctAnswer": "It gave codebreakers a known reference point to eliminate impossible settings",
+          "distractors": ["It meant German operators had to transmit twice", "It limited message length to 26 characters", "It meant the machine required daily recalibration", "It exposed the machine to static interference"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The existence of Bletchley Park's codebreaking operation was kept secret until the 1970s.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Intelligence gathered by reading German Enigma messages was codenamed ___ by the Allies.",
+          "correctAnswer": "Ultra",
+          "distractors": ["Magic", "Purple", "Overlord", "Neptune"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_enigma_war_length",
+      "correctAnswer": "2+ years",
+      "acceptableAlternatives": ["two or more years", "at least two years"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "time_spans",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Historians estimate that breaking the Enigma code shortened World War II by how long?",
+      "explanation": "Cracking Enigma at Bletchley Park is estimated to have shortened WWII by more than two years and saved millions of lives. The Ultra intelligence stream revealed German ship movements, supply lines, and military plans in near real-time — a strategic advantage unlike any in history. Turing's contributions were classified until the 1970s.",
+      "visualDescription": "Pixel art of Bletchley Park mansion at night, every window lit, dozens of analysts hunched over desks, telegraph wires stretching to a distant horizon.",
+      "sourceName": "Wikipedia — Bletchley Park",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bletchley_Park",
+      "volatile": false,
+      "distractors": [
+        "6 months",
+        "1 year",
+        "3 years",
+        "4 years",
+        "6 weeks",
+        "18 months",
+        "5 years",
+        "3 months"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Bletchley Park's codebreakers are credited with shortening WWII by 2+ years. What was the name of the intelligence stream they produced?",
+          "correctAnswer": "Ultra",
+          "distractors": ["Magic", "Enigma", "Purple", "Neptune"]
+        },
+        "context": {
+          "quizQuestion": "Turing's WWII codebreaking work was only declassified in the 1970s. How does this affect how history judges him?",
+          "correctAnswer": "His contributions to winning WWII were hidden for decades, delaying recognition",
+          "distractors": ["It had no effect since he won the Turing Award during his lifetime", "His family successfully lobbied for earlier recognition", "He was awarded the Victoria Cross in 1946", "He received a Nobel Prize before classification ended"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Alan Turing was celebrated as a national hero during his lifetime for his WWII codebreaking.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Turing designed the ___ machine at Bletchley Park to automate the process of breaking Enigma codes.",
+          "correctAnswer": "Bombe",
+          "distractors": ["Colossus", "ENIAC", "Lorenz", "Abacus"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_v2_height",
+      "correctAnswer": "46 feet",
+      "acceptableAlternatives": ["46 ft", "approximately 46 feet"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "measurements",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How tall was the V-2, the world's first ballistic missile, developed by Germany under Wernher von Braun?",
+      "explanation": "The V-2 (Vergeltungswaffe 2) stood 46 feet tall, carried a 1-ton warhead, and reached 53 miles altitude — technically entering space on a suborbital arc. About 2,200 were built; 517 hit London, killing 2,754 people. Unlike the V-1, it arrived faster than sound, giving no warning whatsoever.",
+      "visualDescription": "Pixel art of a sleek white rocket on a mobile launch platform in a forest clearing, technicians in gray uniforms dwarfed by its scale, dawn sky behind it.",
+      "sourceName": "Wikipedia — V-2 rocket",
+      "sourceUrl": "https://en.wikipedia.org/wiki/V-2_rocket",
+      "volatile": false,
+      "distractors": [
+        "20 feet",
+        "30 feet",
+        "60 feet",
+        "80 feet",
+        "100 feet",
+        "15 feet",
+        "35 feet",
+        "70 feet"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Wernher von Braun designed the V-2 rocket for Nazi Germany. What did he lead after the war ended?",
+          "correctAnswer": "The U.S. rocket program (leading to NASA)",
+          "distractors": ["The Soviet nuclear weapons program", "Britain's Blue Streak missile program", "The French space program", "German post-war jet aircraft development"]
+        },
+        "context": {
+          "quizQuestion": "The V-2 reached 53 miles altitude — technically the edge of space. Why was this militarily significant beyond its destructive payload?",
+          "correctAnswer": "It proved ballistic missiles could not be intercepted, making them unstoppable weapons",
+          "distractors": ["It allowed Germany to deploy spy satellites", "It proved aircraft could not fly at that altitude", "It demonstrated that rockets could carry nuclear warheads immediately", "It created a new strategic deterrent through psychological warfare"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The V-2 rocket arrived at its target faster than the speed of sound, giving no warning to those below.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Approximately ___ V-2 rockets were built by Nazi Germany during the war.",
+          "correctAnswer": "2,200",
+          "distractors": ["500", "5,000", "9,000", "10,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_spitfire_engine",
+      "correctAnswer": "Rolls-Royce Merlin",
+      "acceptableAlternatives": ["Merlin engine", "Rolls Royce Merlin"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "equipment_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Both the Spitfire and Hurricane featured which iconic liquid-cooled engine that became synonymous with British air power?",
+      "explanation": "Both the Supermarine Spitfire and Hawker Hurricane were powered by the Rolls-Royce Merlin engine. The Spitfire was faster with its elliptical wings and superior climb rate; the Hurricane was sturdier and easier to repair. Together they defeated the Luftwaffe in the Battle of Britain — the first major military campaign fought entirely in the air.",
+      "visualDescription": "Pixel art of a Spitfire banking hard against a sunset sky, elliptical wing silhouette unmistakable, contrails crossing above a patchwork English countryside.",
+      "sourceName": "Wikipedia — Supermarine Spitfire",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Supermarine_Spitfire",
+      "volatile": false,
+      "distractors": [
+        "Bristol Hercules",
+        "Napier Sabre",
+        "Pratt & Whitney R-2800",
+        "Wright Cyclone",
+        "Allison V-1710",
+        "BMW 801",
+        "Junkers Jumo 213",
+        "Daimler-Benz DB 601"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Spitfire had elliptical wings and a superior climb rate, while the Hurricane was more robust. Both won which 1940 air battle?",
+          "correctAnswer": "Battle of Britain",
+          "distractors": ["Battle of Midway", "Battle of the Bulge", "Operation Barbarossa", "Battle of Stalingrad"]
+        },
+        "context": {
+          "quizQuestion": "During the Battle of Britain, RAF pilots flew multiple sorties per day. What does this reveal about the strategic difference between attacker and defender?",
+          "correctAnswer": "Downed British pilots could return to their squadrons; downed German pilots were captured or lost",
+          "distractors": ["British pilots had faster aircraft with greater range", "German pilots were less experienced overall", "Britain had three times more aircraft than Germany", "Night flying gave Britain an insurmountable advantage"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Spitfire had straight rectangular wings that made it highly maneuverable at low altitudes.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "While the Spitfire was faster and more maneuverable, the ___ was more robust and easier to repair in the field.",
+          "correctAnswer": "Hurricane",
+          "distractors": ["Typhoon", "Tempest", "Mosquito", "Lancaster"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_penicillin_nobel",
+      "correctAnswer": "1945",
+      "acceptableAlternatives": ["Nobel Prize 1945"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "years",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Fleming, Florey, and Chain won the Nobel Prize in Medicine in what year for penicillin — the same year WWII ended?",
+      "explanation": "Alexander Fleming discovered penicillin in 1928, but it required WWII's urgent medical demands to drive mass production. By 1944, fermentation and purification processes were producing enough penicillin to supply Allied forces. Fleming, Howard Florey, and Ernst Boris Chain shared the 1945 Nobel Prize in Medicine. Penicillin saved countless soldiers from infected wounds that would previously have meant amputation or death.",
+      "visualDescription": "Pixel art of a military field surgeon injecting penicillin into a wounded soldier in a canvas tent, surgical tools gleaming, a supply crate labeled with a cross in the foreground.",
+      "sourceName": "Wikipedia — Penicillin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Penicillin",
+      "volatile": false,
+      "distractors": [
+        "1928",
+        "1940",
+        "1942",
+        "1943",
+        "1944",
+        "1947",
+        "1950",
+        "1938"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Who discovered penicillin in 1928, decades before WWII medical demands finally drove its mass production?",
+          "correctAnswer": "Alexander Fleming",
+          "distractors": ["Howard Florey", "Ernst Boris Chain", "Louis Pasteur", "Robert Koch"]
+        },
+        "context": {
+          "quizQuestion": "Penicillin was discovered in 1928 but only mass-produced starting in 1944. What does this 16-year gap reveal?",
+          "correctAnswer": "Scientific discovery often waits for industrial or military urgency to drive production",
+          "distractors": ["Fleming kept the formula secret for commercial reasons", "The drug was ineffective before 1944 improvements", "Government regulations blocked earlier production", "Penicillin required materials that didn't exist before WWII"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Penicillin was available to Allied troops by 1944, significantly reducing death from infected battlefield wounds.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Before penicillin became widely available, infected battlefield wounds commonly led to ___ or death.",
+          "correctAnswer": "amputation",
+          "distractors": ["blindness", "paralysis", "gangrene treatment with silver", "quarantine"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_jeep_production",
+      "correctAnswer": "640,000+",
+      "acceptableAlternatives": ["over 640,000", "more than 640,000", "640 thousand"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Willys and Ford produced more than how many Jeeps during WWII — vehicles so versatile they served as transport, ambulance, and artillery tow?",
+      "explanation": "Over 640,000 Jeeps were built during WWII by Willys and Ford. The name came from the military designation GP (General Purpose), which became 'Jeep' in soldier slang. Rugged and simple to maintain in the field, the Jeep became the defining symbol of American military mobility. Its post-war commercialization spawned a vehicle lineage that continues today.",
+      "visualDescription": "Pixel art of a muddy olive-green Jeep splashing through a jungle trail, two soldiers holding on, equipment piled in back, dense foliage pressing in from both sides.",
+      "sourceName": "Wikipedia — Willys MB",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Willys_MB",
+      "volatile": false,
+      "distractors": [
+        "50,000",
+        "100,000",
+        "250,000",
+        "400,000",
+        "1 million",
+        "200,000",
+        "80,000",
+        "500,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Jeep's name derived from which military designation — shortened by soldiers into slang?",
+          "correctAnswer": "General Purpose (GP)",
+          "distractors": ["Ground Patrol", "General Performance", "Guard Post vehicle", "Guided Patrol"]
+        },
+        "context": {
+          "quizQuestion": "The Jeep succeeded because it was simple, rugged, and easy to repair in the field — not because it was technologically sophisticated. What does this illustrate about WWII logistics?",
+          "correctAnswer": "Reliability and maintainability in combat conditions matter more than peak performance",
+          "distractors": ["American industry could only produce simple designs", "Complexity was deliberately avoided due to enemy espionage", "Simple vehicles were harder for enemies to disable", "Soldiers preferred vehicles they recognized from civilian life"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Jeep's WWII design is the direct ancestor of modern consumer Jeep vehicles.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Jeeps were manufactured by Willys and ___ during WWII.",
+          "correctAnswer": "Ford",
+          "distractors": ["Chrysler", "General Motors", "Studebaker", "Packard"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_sherman_quantity",
+      "correctAnswer": "50,000+",
+      "acceptableAlternatives": ["over 50,000", "more than 50,000", "fifty thousand"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "More than how many M4 Sherman tanks were built during WWII — making it the most numerous American tank of the war?",
+      "explanation": "Over 50,000 M4 Shermans were produced — more than any other American tank. The Sherman was outgunned and out-armored by the German Tiger and Panther in direct combat. But superior American logistics meant damaged Shermans were repaired while damaged German tanks were often abandoned. The Sherman's quantity and reliability ultimately overwhelmed German qualitative superiority.",
+      "visualDescription": "Pixel art of a column of Sherman tanks rolling through a liberated French village, white star markings on their hulls, jubilant civilians tossing flowers from stone doorways.",
+      "sourceName": "Wikipedia — M4 Sherman",
+      "sourceUrl": "https://en.wikipedia.org/wiki/M4_Sherman",
+      "volatile": false,
+      "distractors": [
+        "5,000",
+        "10,000",
+        "20,000",
+        "30,000",
+        "75,000",
+        "100,000",
+        "1,350",
+        "8,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The M4 Sherman was outgunned by German Tigers and Panthers but won through sheer numbers and logistics. What was one key Sherman advantage?",
+          "correctAnswer": "Superior American logistics kept damaged Shermans repaired and returning to battle",
+          "distractors": ["Shermans had thicker frontal armor than Tigers", "Shermans could outrun German tanks at all speeds", "Shermans were equipped with early radar targeting", "Sherman crews were better trained than German Panzer crews"]
+        },
+        "context": {
+          "quizQuestion": "The Sherman's 50,000+ production versus the Tiger's ~1,350 illustrates a core WWII industrial lesson. What was it?",
+          "correctAnswer": "Industrial capacity and logistics can defeat superior individual weapon design",
+          "distractors": ["Allied engineers copied German designs effectively", "Tank quality mattered more in Europe than in the Pacific", "German factories were deliberately sabotaged by workers", "Air superiority negated the need for tank quality"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The M4 Sherman tank had superior armor protection compared to the German Tiger I.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Shermans were reliable, fast, and easy to produce, but were vulnerable to German ___ and Panther tanks in direct combat.",
+          "correctAnswer": "Tiger",
+          "distractors": ["Panzer III", "Stug III", "Jagdpanther", "Leopard"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_tiger_production",
+      "correctAnswer": "~1,350",
+      "acceptableAlternatives": ["about 1,350", "1350", "approximately 1,350"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Despite being feared across every front, only approximately how many Tiger I tanks were ever produced — compared to 50,000+ Shermans?",
+      "explanation": "Only about 1,350 Tiger I tanks were produced in total. Each Tiger was devastatingly effective — its 88mm gun could kill Shermans at ranges beyond any Sherman's ability to respond. But Tigers were mechanically unreliable, fuel-hungry, and impossible to produce in mass. When a Tiger broke down, German logistics often couldn't recover it. The Tiger's reputation exceeded its strategic impact.",
+      "visualDescription": "Pixel art of a lone Tiger tank in a bombed-out urban street, its massive gun barrel dominating the frame, wrecked Allied vehicles smoking in the distance.",
+      "sourceName": "Wikipedia — Tiger I",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tiger_I",
+      "volatile": false,
+      "distractors": [
+        "500",
+        "5,000",
+        "10,000",
+        "20,000",
+        "800",
+        "3,000",
+        "200",
+        "8,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Tiger I mounted which gun that could destroy most Allied tanks at extreme range?",
+          "correctAnswer": "88mm gun",
+          "distractors": ["75mm KwK 42", "50mm KwK 39", "105mm howitzer", "76mm F-34"]
+        },
+        "context": {
+          "quizQuestion": "Tigers were mechanically unreliable and often abandoned when damaged due to poor German logistics. How does this contrast with the Sherman's story?",
+          "correctAnswer": "The Tiger showed that a superb weapon is useless if it cannot be sustained in the field",
+          "distractors": ["It shows German engineers prioritized firepower over reliability correctly", "It proves quality always wins against quantity in tank warfare", "It explains why Germany lost air superiority before losing tank battles", "It shows German commanders lacked tactical competence"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Tiger I's mechanical reliability made it easy to maintain in field conditions.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Allied tank doctrine countered Tigers by using superior ___ and coordinated attacks rather than one-on-one duels.",
+          "correctAnswer": "numbers",
+          "distractors": ["speed", "air support", "artillery", "electronics"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_carriers_midway",
+      "correctAnswer": "Aircraft carriers",
+      "acceptableAlternatives": ["carriers", "carrier-based aircraft"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "weapon_types",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What type of warship replaced the battleship as the dominant naval weapon during WWII — demonstrated most dramatically at Midway in 1942?",
+      "explanation": "The Battle of Midway (1942) was fought entirely by carrier-based aircraft; the opposing surface fleets never sighted each other. This confirmed what Pearl Harbor had hinted: the battleship era was over. Post-war navies built carriers instead of battleships — the most fundamental shift in naval warfare since ironclads replaced wooden ships.",
+      "visualDescription": "Pixel art of a fleet carrier at sea, dozens of aircraft arranged on deck, a massive column of smoke rising from a stricken enemy carrier on the horizon.",
+      "sourceName": "Wikipedia — Battle of Midway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+      "volatile": false,
+      "distractors": [
+        "Battleships",
+        "Submarines",
+        "Destroyers",
+        "Cruisers",
+        "Torpedo boats",
+        "Gunboats",
+        "Dreadnoughts",
+        "Mine-layers"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "At the Battle of Midway, the opposing fleets never saw each other. What does this tell us about how naval combat had changed?",
+          "correctAnswer": "Battles were now decided by aircraft at ranges beyond visual contact",
+          "distractors": ["Both sides were using radar to avoid direct confrontation", "The battle was decided by submarines, not surface ships", "Fog prevented visual contact but radio guided the battle", "It was fought at night using searchlights"]
+        },
+        "context": {
+          "quizQuestion": "At Pearl Harbor, the Japanese sank American battleships but missed the carriers (which were at sea). Why was missing the carriers catastrophic for Japan's long-term war effort?",
+          "correctAnswer": "Carriers were now the decisive weapon; destroying only battleships left American naval power intact",
+          "distractors": ["The battleships were irreplaceable; carriers were secondary", "American carriers carried the gold reserves being evacuated from Pearl Harbor", "Carriers escaped because they were faster than battleships", "Japan's pilots were instructed to avoid carriers to prevent retaliation"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Battle of Midway was the first naval battle in history decided entirely by aircraft, with surface ships never engaging each other.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Post-war navies built ___ instead of battleships, reflecting the lessons of WWII's Pacific theater.",
+          "correctAnswer": "aircraft carriers",
+          "distractors": ["submarines", "cruisers", "destroyers", "frigates"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_b29_altitude",
+      "correctAnswer": "35,000+ feet",
+      "acceptableAlternatives": ["above 35,000 feet", "over 35,000 feet", "thirty-five thousand feet"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "measurements",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The B-29 Superfortress could fly at what altitude — high enough that Japanese fighters struggled to reach it?",
+      "explanation": "The B-29 could fly at 35,000+ feet with a pressurized cabin and a 3,250-mile range. Over 3,900 were produced. B-29s conducted the firebombing of Japanese cities and delivered both atomic bombs. Flying above Japanese fighter interception altitude made them nearly untouchable — and the pressurized cabin meant crews didn't need oxygen masks, a revolutionary comfort at extreme altitude.",
+      "visualDescription": "Pixel art of a massive silver B-29 flying high above clouds at dusk, four radial engines humming, tiny Japanese fighter aircraft far below unable to reach it.",
+      "sourceName": "Wikipedia — Boeing B-29 Superfortress",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Boeing_B-29_Superfortress",
+      "volatile": false,
+      "distractors": [
+        "15,000 feet",
+        "20,000 feet",
+        "25,000 feet",
+        "30,000 feet",
+        "40,000 feet",
+        "10,000 feet",
+        "45,000 feet",
+        "50,000 feet"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The B-29 Superfortress delivered both atomic bombs dropped on Japan. What were the names of those bombs?",
+          "correctAnswer": "Little Boy and Fat Man",
+          "distractors": ["Big Boy and Fat Man", "Little Boy and Big Boy", "Iron Man and Fat Boy", "Thin Man and Fat Man"]
+        },
+        "context": {
+          "quizQuestion": "The B-29 had a pressurized cabin — crews didn't need oxygen masks. Why was this operationally significant?",
+          "correctAnswer": "Crew comfort and performance were maintained on extremely long missions at high altitude",
+          "distractors": ["It allowed the bomber to carry more bombs by removing oxygen equipment weight", "Pressurization made the bomber invisible to early radar systems", "It doubled the bomber's range by reducing fuel consumption", "It protected the crew from anti-aircraft shell fragments"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The B-29 Superfortress had a longer range than any other bomber used in WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Over ___ B-29 Superfortresses were produced during WWII.",
+          "correctAnswer": "3,900",
+          "distractors": ["500", "1,000", "10,000", "12,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_me262_speed",
+      "correctAnswer": "~900 km/h",
+      "acceptableAlternatives": ["900 kilometers per hour", "approximately 900 kph", "560 mph"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "speeds",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The Me 262 — the world's first operational jet fighter — could fly at approximately what speed, far beyond any Allied piston-engine aircraft?",
+      "explanation": "The Messerschmitt Me 262 flew at ~900 km/h in level flight, faster than any Allied fighter. Over 1,400 were produced, but Hitler insisted on using it as a bomber rather than a pure fighter, wasting its air combat potential. By the time it deployed operationally in 1944, fuel shortages and supply problems limited its impact — a cautionary tale about political interference in military technology.",
+      "visualDescription": "Pixel art of an Me 262 streaking past a formation of Allied bombers, twin jet pods glowing blue-white, leaving a clean contrail where piston fighters leave smoke.",
+      "sourceName": "Wikipedia — Messerschmitt Me 262",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Messerschmitt_Me_262",
+      "volatile": false,
+      "distractors": [
+        "500 km/h",
+        "600 km/h",
+        "700 km/h",
+        "750 km/h",
+        "1,100 km/h",
+        "1,200 km/h",
+        "450 km/h",
+        "800 km/h"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Hitler insisted the Me 262 be used as a bomber rather than a fighter, wasting its potential. What was the aircraft's actual revolutionary capability?",
+          "correctAnswer": "It was the world's first operational jet fighter, faster than all Allied aircraft",
+          "distractors": ["It was the first aircraft with an ejection seat system", "It was the first bomber that could reach Britain from Germany non-stop", "It was the first aircraft to use radar-guided targeting", "It was the first pressurized combat aircraft"]
+        },
+        "context": {
+          "quizQuestion": "The Me 262 was faster than anything the Allies flew but came too late and in too few numbers. What does this illustrate about Germany's technology strategy?",
+          "correctAnswer": "Advanced technology deployed too late and in too few numbers cannot reverse strategic defeat",
+          "distractors": ["Allied bombing prevented Germany from ever producing effective weapons", "Jet technology requires decades of development before military deployment", "Germany lacked the engineers to properly operate jet aircraft", "Political interference is irrelevant to military technology outcomes"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Me 262 could be shot down by Allied piston-engine fighters during landing and takeoff when its jet engines were at low power.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Me 262 was powered by twin ___ jet engines.",
+          "correctAnswer": "Junkers Jumo 004",
+          "distractors": ["Rolls-Royce Derwent", "BMW 003", "General Electric J47", "Bristol Olympus"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_eniac_weight",
+      "correctAnswer": "30 tons",
+      "acceptableAlternatives": ["thirty tons", "30 tonnes"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "measurements",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "ENIAC — built to calculate artillery firing tables and considered the first general-purpose electronic computer — weighed how much?",
+      "explanation": "ENIAC (Electronic Numerical Integrator and Computer) weighed 30 tons and used 18,000 vacuum tubes. Built at the University of Pennsylvania and completed in 1946, it could perform 5,000 additions per second — revolutionary for its era. WWII military mathematics funding drove the development of the entire modern computing industry.",
+      "visualDescription": "Pixel art of an enormous room-filling machine of blinking vacuum tubes and patch cables, two engineers in white coats dwarfed by walls of glowing components.",
+      "sourceName": "Wikipedia — ENIAC",
+      "sourceUrl": "https://en.wikipedia.org/wiki/ENIAC",
+      "volatile": false,
+      "distractors": [
+        "500 kg",
+        "1 ton",
+        "5 tons",
+        "10 tons",
+        "50 tons",
+        "100 tons",
+        "2 tons",
+        "8 tons"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "ENIAC was originally built during WWII to calculate what military application?",
+          "correctAnswer": "Artillery firing tables",
+          "distractors": ["Atomic bomb detonation timing", "Enigma code combinations", "Radar signal processing", "Naval navigation charts"]
+        },
+        "context": {
+          "quizQuestion": "ENIAC used 18,000 vacuum tubes and consumed enormous electricity. How does this compare to a modern smartphone?",
+          "correctAnswer": "A modern smartphone performs billions of times more calculations per second in a device weighing grams",
+          "distractors": ["A modern smartphone uses a similar architecture of transistor arrays", "ENIAC was more energy-efficient per calculation than modern chips", "The gap in capability is less than a thousandfold", "ENIAC and smartphones use fundamentally identical logic gates"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: ENIAC was completed before the end of WWII and used during the war itself.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "ENIAC used ___ vacuum tubes and could perform 5,000 additions per second.",
+          "correctAnswer": "18,000",
+          "distractors": ["1,500", "500", "100,000", "5,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_sonar_asdic",
+      "correctAnswer": "ASDIC (Sonar)",
+      "acceptableAlternatives": ["sonar", "ASDIC", "Anti-Submarine Detection Investigation Committee"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What Allied technology using sound waves detected submerged U-boats in the Battle of the Atlantic, helping turn the tide against Germany's wolfpack strategy?",
+      "explanation": "ASDIC (later called Sonar) used sound waves to detect submerged submarines. Combined with depth charges and tactical coordination, ASDIC helped shift the Battle of the Atlantic in the Allies' favor by 1943. U-boats had to operate in wolfpacks to overcome ASDIC detection — but this massing of submarines also made them more detectable and vulnerable when convoy escorts adapted tactics.",
+      "visualDescription": "Pixel art of a Royal Navy destroyer at sea, sonar ping ripples spreading underwater beneath its hull, a shadowy U-boat silhouette caught at the edge of the detection ring.",
+      "sourceName": "Wikipedia — ASDIC",
+      "sourceUrl": "https://en.wikipedia.org/wiki/ASDIC",
+      "volatile": false,
+      "distractors": [
+        "Radar",
+        "Proximity fuze",
+        "Magnetic anomaly detector",
+        "Depth charge alone",
+        "Hydrophone",
+        "Periscope detection net",
+        "ENIGMA decryption",
+        "Aircraft patrol"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "German U-boats grouped into wolfpacks to overwhelm Allied convoy defenses. Which Allied detection technology made wolfpack concentration increasingly dangerous?",
+          "correctAnswer": "ASDIC (Sonar)",
+          "distractors": ["Radar mounted on aircraft", "Magnetic mines", "Proximity fuze shells", "Infrared detection cameras"]
+        },
+        "context": {
+          "quizQuestion": "By 1943 the Battle of the Atlantic shifted decisively in the Allies' favor. What combination of technologies drove this reversal?",
+          "correctAnswer": "ASDIC detection combined with depth charges, radar aircraft, and Ultra intelligence from Enigma",
+          "distractors": ["The U-boat fleet was destroyed in a single coordinated air raid", "Germany voluntarily reduced submarine operations in 1943", "American entry provided enough shipping to overwhelm U-boat sinkings", "British surface fleets achieved numerical superiority over the Kriegsmarine"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: ASDIC works by emitting sound pulses and listening for echoes bouncing off submerged objects.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "ASDIC technology evolved into modern ___, still used by navies worldwide for anti-submarine warfare.",
+          "correctAnswer": "sonar",
+          "distractors": ["radar", "lidar", "GPS", "infrared tracking"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_napalm_first_use",
+      "correctAnswer": "1944",
+      "acceptableAlternatives": ["first used in 1944"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "years",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Napalm — the incendiary mixture of gasoline and aluminum naphthenate — was first used in what year, primarily for firebombing Japanese cities?",
+      "explanation": "Napalm was developed by the U.S. and first used in 1944 for firebombing Tokyo and other Japanese cities. It adheres to surfaces and burns intensely, causing catastrophic urban fires. The March 1945 firebombing of Tokyo killed more people than the atomic bomb dropped on Hiroshima. Napalm's use against civilian populations raised profound ethical questions that persist today.",
+      "visualDescription": "Pixel art of B-29s in night formation releasing canisters over a city grid, orange fire spreading block by block far below, thick black smoke rising to the stratosphere.",
+      "sourceName": "Wikipedia — Napalm",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Napalm",
+      "volatile": false,
+      "distractors": [
+        "1940",
+        "1941",
+        "1942",
+        "1943",
+        "1945",
+        "1939",
+        "1938",
+        "1946"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Napalm is an incendiary mixture of gasoline thickened with what compound — giving it its adhesive burning properties?",
+          "correctAnswer": "Aluminum naphthenate and palmitate",
+          "distractors": ["Magnesium powder", "White phosphorus", "Thermite compounds", "Petroleum jelly (Vaseline)"]
+        },
+        "context": {
+          "quizQuestion": "The March 1945 Tokyo firebombing with napalm killed more people than the Hiroshima atomic bomb. Why does the atomic bomb receive far more historical attention?",
+          "correctAnswer": "The atomic bomb represented a qualitatively new type of weapon — nuclear technology — not just a larger firebombing",
+          "distractors": ["The Tokyo firebombing was classified for 50 years after the war", "Atomic bombs were more controversial legally under the laws of war", "The Tokyo firebombing was conducted by the British, not Americans", "Napalm kills fewer people per bomb than conventional explosives"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Napalm was later used extensively during the Vietnam War, well after WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Napalm's key property — that it ___ to surfaces — makes it far more destructive in urban environments than conventional explosives.",
+          "correctAnswer": "adheres",
+          "distractors": ["explodes on contact", "evaporates slowly", "creates toxic gas", "penetrates concrete"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_proximity_fuze",
+      "correctAnswer": "Small radar transmitter",
+      "acceptableAlternatives": ["radar", "miniature radar", "radio proximity sensor"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The proximity fuze dramatically improved anti-aircraft effectiveness by using what mechanism to detonate shells near aircraft without requiring a direct hit?",
+      "explanation": "The proximity fuze embedded a tiny radar transmitter in an artillery shell. When the shell passed close enough to an aircraft, the reflected radar signal triggered detonation — no direct hit needed. This dramatically increased the number of Luftwaffe aircraft killed per round fired. The Allies kept it so secret that they initially refused to use it over enemy territory for fear of capture.",
+      "visualDescription": "Pixel art of an anti-aircraft shell exploding in a burst of shrapnel next to a German aircraft, the aircraft trailing smoke, all against a clear blue sky dotted with shell bursts.",
+      "sourceName": "Wikipedia — Proximity fuze",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Proximity_fuze",
+      "volatile": false,
+      "distractors": [
+        "Pressure sensor",
+        "Magnetic detector",
+        "Timer mechanism",
+        "Infrared heat seeker",
+        "Acoustic sensor",
+        "Tripwire",
+        "Chemical reaction trigger",
+        "Gyroscope"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Allies initially refused to use proximity fuzes over enemy territory. Why?",
+          "correctAnswer": "They feared captured duds would reveal the secret technology to Germany",
+          "distractors": ["Proximity fuzes were unreliable in cold European weather", "They were reserved exclusively for Pacific theater naval use", "The fuzes interfered with Allied radar systems", "International law prohibited their use over occupied civilian areas"]
+        },
+        "context": {
+          "quizQuestion": "Proximity fuzes required fitting a functional radar system into an artillery shell that survived firing forces of thousands of G. What does this achievement represent?",
+          "correctAnswer": "A pioneering miniaturization of electronics that foreshadowed modern microelectronics",
+          "distractors": ["A straightforward application of existing radio technology", "A German invention that the Allies reverse-engineered after capture", "A Soviet contribution to the Allied technology sharing program", "An accidental discovery during radar antenna testing"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Proximity fuzes are still used in modern missile and artillery systems.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Proximity fuzes killed more Luftwaffe aircraft per round than traditional ___ fuses.",
+          "correctAnswer": "impact",
+          "distractors": ["timed", "contact", "delayed", "chemical"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_v1_launched",
+      "correctAnswer": "~9,000",
+      "acceptableAlternatives": ["about 9,000", "nine thousand", "approximately 9,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Approximately how many V-1 'Buzz Bombs' — the world's first cruise missiles — were launched at London and Antwerp from 1944 to 1945?",
+      "explanation": "About 9,000 V-1s were launched; roughly 2,400 reached London, killing over 6,000 people. The V-1's distinctive pulse-jet engine gave it the nickname 'Buzz Bomb' — Londoners dreaded the sound because silence meant the engine had cut out and the bomb was falling. Unlike the V-2, V-1s could be intercepted by fast fighters or tipped by wing-rolling them off course.",
+      "visualDescription": "Pixel art of a V-1 flying bomb silhouetted against a night sky over London rooftops, its pulse-jet engine glowing orange at the tail, searchlight beams crossing below it.",
+      "sourceName": "Wikipedia — V-1 flying bomb",
+      "sourceUrl": "https://en.wikipedia.org/wiki/V-1_flying_bomb",
+      "volatile": false,
+      "distractors": [
+        "500",
+        "1,000",
+        "2,000",
+        "5,000",
+        "15,000",
+        "20,000",
+        "3,000",
+        "25,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "British pilots discovered they could disable a V-1 by nudging its wing tip with their own aircraft wing to tumble it off course. Why was this tactic necessary?",
+          "correctAnswer": "Firing guns at a V-1 risked the exploding warhead destroying the intercepting aircraft too",
+          "distractors": ["V-1s were too fast to be shot down by gunfire", "Gunfire was prohibited over civilian areas due to falling debris", "V-1s were armored against bullet impacts", "The pulse-jet exhaust blinded pilots trying to aim"]
+        },
+        "context": {
+          "quizQuestion": "The V-1 was the world's first cruise missile; the V-2 was the first ballistic missile. How do these two weapon types differ in their fundamental approach to killing?",
+          "correctAnswer": "The V-1 flew like an aircraft and could be intercepted; the V-2 was a ballistic arc with no warning and no interception possible",
+          "distractors": ["The V-1 carried a nuclear warhead while the V-2 carried conventional explosives", "The V-1 was guided to specific targets while the V-2 was unguided", "The V-2 was cheaper to produce due to simpler propulsion", "Both used identical guidance systems but different propulsion"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The V-1 Buzz Bomb's distinctive sound meant Londoners knew the bomb was still flying — silence meant it was falling.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The V-1 was nicknamed the 'Buzz Bomb' because of its distinctive ___ engine sound.",
+          "correctAnswer": "pulse-jet",
+          "distractors": ["propeller", "ramjet", "turbofan", "rocket"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_turing_tragedy",
+      "correctAnswer": "Chemical castration",
+      "acceptableAlternatives": ["chemically castrated", "chemical castration sentence"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Alan Turing — the mathematician who broke Enigma and potentially shortened WWII by 2+ years — was subjected to what punishment by the British government for his homosexuality?",
+      "explanation": "Turing was prosecuted for 'gross indecency' under British law in 1952. He was chemically castrated as an 'alternative' to imprisonment. He died in 1954 under unclear circumstances, likely suicide. His WWII codebreaking work remained classified until the 1970s — meaning Britain punished and killed one of its greatest war heroes in complete secrecy. He received a posthumous royal pardon in 2013.",
+      "visualDescription": "Pixel art of a lone man at a desk in a bare room, a half-eaten apple beside his papers, code wheels and mathematical diagrams on the wall, a window showing a cold gray dawn.",
+      "sourceName": "Wikipedia — Alan Turing",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alan_Turing",
+      "volatile": false,
+      "distractors": [
+        "Life imprisonment",
+        "Exile to Australia",
+        "Loss of security clearance only",
+        "Public flogging",
+        "Forced labor",
+        "House arrest",
+        "Deportation",
+        "Financial ruin and public shaming only"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Turing's contributions to WWII remained classified until the 1970s. He died in 1954 having never received public recognition. What is the moral of Turing's story?",
+          "correctAnswer": "A society can persecute and destroy the very people who saved it, if prejudice overrides reason",
+          "distractors": ["Classified work always eventually receives proper recognition", "British law treated all citizens equally regardless of wartime service", "Scientific achievement provides legal protection in liberal democracies", "The Turing Test was Turing's most celebrated public contribution during his lifetime"]
+        },
+        "context": {
+          "quizQuestion": "Turing designed the famous 'Turing Test' as a thought experiment about machine intelligence. His WWII Bombe machine was an ancestor of modern computers. What field did Turing essentially found?",
+          "correctAnswer": "Computer science and artificial intelligence",
+          "distractors": ["Quantum mechanics", "Information theory", "Nuclear physics", "Cryptography exclusively"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Alan Turing received a royal pardon for his conviction during his lifetime.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Turing's work at Bletchley Park was declassified in the ___, decades after his death.",
+          "correctAnswer": "1970s",
+          "distractors": ["1950s", "1960s", "1980s", "1990s"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_t34_armor",
+      "correctAnswer": "Sloped armor",
+      "acceptableAlternatives": ["angled armor", "slanted armor", "revolutionary sloped armor"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The T-34 tank was arguably the finest tank design of the early WWII period. Its most revolutionary defensive feature was what design principle?",
+      "explanation": "The T-34 introduced sloped armor — angled plates that deflected shells rather than stopping them with sheer thickness. This dramatically increased effective protection without adding weight. German tanks initially had inferior armor and guns against the T-34. Germany's response — designing the Panther and Tiger — is direct evidence of the T-34's technological shock on Wehrmacht commanders.",
+      "visualDescription": "Pixel art of a T-34 charging forward over snow-covered ground, its angled hull deflecting a bright shell spark, Red Army soldiers riding its engine deck behind it.",
+      "sourceName": "Wikipedia — T-34",
+      "sourceUrl": "https://en.wikipedia.org/wiki/T-34",
+      "volatile": false,
+      "distractors": [
+        "Reactive armor",
+        "Composite armor",
+        "Spaced armor",
+        "Thicker flat plates",
+        "Rubber side skirts",
+        "Frontal turret reinforcement",
+        "Double-hull construction",
+        "Ceramic armor inserts"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Germany designed the Panther and Tiger tanks partly in response to encountering which Soviet tank in 1941?",
+          "correctAnswer": "T-34",
+          "distractors": ["KV-1", "IS-2", "BT-7", "T-70"]
+        },
+        "context": {
+          "quizQuestion": "The T-34 shocked German engineers in 1941. Germany took two years to field an adequate counter. What does this reveal about WWII weapons development cycles?",
+          "correctAnswer": "Technological surprise on the battlefield forces costly emergency redesigns that take years to reach the front",
+          "distractors": ["German engineers had already designed the Panther before encountering the T-34", "Soviet tank production was too slow for the T-34 to matter strategically in 1941", "The T-34 was quickly countered by tactical anti-tank gun deployments instead of new tanks", "German intelligence had warned about the T-34 design years before Operation Barbarossa"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The T-34's sloped armor was more effective than flat armor of the same thickness because it deflected shells and increased the effective path length through the steel.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The T-34 was produced in vast numbers and remained ___ throughout WWII, unlike many weapons that became obsolete.",
+          "correctAnswer": "effective",
+          "distractors": ["unreliable", "obsolete", "classified", "experimental"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_higgins_boats",
+      "correctAnswer": "Andrew Higgins",
+      "acceptableAlternatives": ["Higgins", "Andrew Jackson Higgins"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Eisenhower said this man 'won the war for us' by designing the LCVP landing craft that enabled amphibious assaults including D-Day. Who was he?",
+      "explanation": "Andrew Higgins designed the LCVP (Landing Craft, Vehicle, Personnel), known as the 'Higgins Boat.' Over 20,000 were built. Eisenhower credited Higgins directly: 'Andrew Higgins is the man who won the war for us.' The Higgins Boat's flat bow ramp allowed troops to charge directly onto beaches — a capability that was essential from D-Day to every Pacific island assault.",
+      "visualDescription": "Pixel art of a Higgins Boat ramping open on a gray beach, soldiers streaming out into surf, another wave of landing craft approaching behind through sea spray.",
+      "sourceName": "Wikipedia — Higgins boat",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Higgins_boat",
+      "volatile": false,
+      "distractors": [
+        "Chester Nimitz",
+        "Dwight Eisenhower",
+        "Omar Bradley",
+        "Douglas MacArthur",
+        "George Patton",
+        "Henry Kaiser",
+        "William Knudsen",
+        "Walter Chrysler"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The LCVP landing craft enabled every major Allied amphibious assault of WWII. What was the craft's key design feature that made it so effective?",
+          "correctAnswer": "A flat bow ramp that dropped to let troops run directly onto the beach",
+          "distractors": ["A reinforced keel that could beach on rocky terrain without damage", "Jet propulsion that allowed rapid retraction under fire", "Armored sides that protected troops from small arms fire during approach", "A hydraulic lifting deck that raised troops above the surf line"]
+        },
+        "context": {
+          "quizQuestion": "Over 20,000 Higgins Boats were built. Why did sheer production quantity matter as much as the design itself?",
+          "correctAnswer": "Amphibious operations require simultaneous landings at multiple points; only mass production enabled this",
+          "distractors": ["Higgins Boats were expendable and not meant to return after landing troops", "Each assault required new boats since they couldn't be recovered under fire", "The Navy required one boat per soldier for logistical calculations", "Roosevelt mandated massive orders to prevent Higgins' company from bankruptcy"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Eisenhower credited Andrew Higgins with winning the war, specifically for designing the LCVP landing craft.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Over ___ Higgins Boats (LCVPs) were built during WWII.",
+          "correctAnswer": "20,000",
+          "distractors": ["500", "2,000", "50,000", "5,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_katyusha",
+      "correctAnswer": "Stalin's Organ",
+      "acceptableAlternatives": ["Stalin's Organs", "Stalinorgel"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "nicknames",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "German soldiers gave what nickname to the Soviet Katyusha multiple rocket launcher — inspired by the terrifying wailing sound it made?",
+      "explanation": "German soldiers called the Katyusha rocket launcher 'Stalin's Organ' (Stalinorgel) because the multiple launch tubes resembled organ pipes and the rockets' shriek was unmistakable. Soviet troops called it 'Katyusha' (a diminutive of Katya). The Katyusha fired unguided rockets in rapid succession, producing devastating saturation fire over a wide area — cheaper and faster to produce than conventional artillery.",
+      "visualDescription": "Pixel art of a Katyusha truck-mounted launcher firing a ripple salvo at dusk, dozens of rockets trailing red fire arcing across a bleak winter battlefield.",
+      "sourceName": "Wikipedia — Katyusha rocket launcher",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Katyusha_rocket_launcher",
+      "volatile": false,
+      "distractors": [
+        "Russian Thunder",
+        "Red Devil",
+        "Iron Rain",
+        "Soviet Scream",
+        "Fire Organ",
+        "Red Pipe",
+        "Soviet Hammer",
+        "Molotov's Harp"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Katyusha rocket launcher was cheaper and faster to produce than conventional artillery. What tactical property made it devastating despite being unguided?",
+          "correctAnswer": "Saturation fire — rapid salvos covering a wide area with simultaneous impacts",
+          "distractors": ["Precision targeting using early electronic guidance", "High-explosive warheads larger than any artillery shell", "Long range exceeding all German counter-battery artillery", "The rockets were self-propelled and adjusted their own trajectory"]
+        },
+        "context": {
+          "quizQuestion": "The Katyusha was cheaper and faster to produce than artillery. How does this connect to the broader Soviet strategy?",
+          "correctAnswer": "Soviet strategy relied on mass production and volume of fire rather than precision weapons",
+          "distractors": ["The Soviets lacked the metallurgy skills for conventional artillery barrels", "Katyushas were adopted from a captured German design and improved", "Soviet doctrine explicitly banned conventional towed artillery after 1941", "The Katyusha's range prevented German counter-battery fire from reaching it"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Katyusha fired guided rockets that could be steered toward specific targets.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Soviet troops nicknamed the Katyusha rocket launcher after a popular Russian song — a diminutive of the name ___.",
+          "correctAnswer": "Katya",
+          "distractors": ["Katarina", "Irina", "Natasha", "Olga"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_zero_weakness",
+      "correctAnswer": "Light armor making it vulnerable to damage",
+      "acceptableAlternatives": ["lack of armor", "no pilot armor", "unprotected fuel tanks", "poor survivability"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "tactical_facts",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The Mitsubishi A6M Zero had exceptional maneuverability and range — but it achieved this by sacrificing what critical quality?",
+      "explanation": "The Zero achieved its outstanding maneuverability and 1,600-mile range by eliminating pilot armor and self-sealing fuel tanks — features that added weight. This meant a single burst of fire that would leave an American Hellcat smoking might set a Zero ablaze. Once the F6F Hellcat entered service, American pilots could exploit this fragility with dive-and-climb tactics the Zero couldn't follow, and the Zero era ended.",
+      "visualDescription": "Pixel art of a Zero in a tight turn with rising sun markings, a burst of tracers catching its exposed fuel tank, a flash of flame spreading behind the cockpit.",
+      "sourceName": "Wikipedia — Mitsubishi A6M Zero",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mitsubishi_A6M_Zero",
+      "volatile": false,
+      "distractors": [
+        "Speed at all altitudes",
+        "Reliable engine performance",
+        "Long-range radio communication",
+        "Night vision capability",
+        "High-caliber armament",
+        "Carrier landing ability",
+        "Twin-engine redundancy",
+        "Pressurized cockpit"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The F6F Hellcat was designed specifically to defeat the Zero. How did American pilots exploit the Zero's fragility in combat?",
+          "correctAnswer": "Dive-and-climb tactics that the heavier but more durable Hellcat could sustain",
+          "distractors": ["Head-on attacks that overwhelmed the Zero's single forward gun", "Night operations when the Zero's maneuverability was irrelevant", "Carrier-based radio coordination the Zero lacked the range to counter", "Using radar to ambush Zeros before they could engage at close range"]
+        },
+        "context": {
+          "quizQuestion": "The Zero's design trade-off — maximum performance at the cost of survivability — mirrors a broader Japanese strategy. What does this suggest?",
+          "correctAnswer": "Japan's strategy accepted high pilot and aircraft losses for short-term superiority, which became unsustainable in a long war",
+          "distractors": ["Japanese pilots were untrained in self-preservation techniques", "Japan's metallurgy could not produce armor plate of sufficient quality", "The Zero was specifically designed as a kamikaze aircraft from the beginning", "Japan intentionally built expendable aircraft to drain Allied ammunition"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Zero outfought American fighters early in the war but was overtaken by the F6F Hellcat in the Pacific.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Zero achieved extraordinary range and maneuverability by eliminating pilot ___ and self-sealing fuel tanks.",
+          "correctAnswer": "armor",
+          "distractors": ["oxygen systems", "radio equipment", "navigation instruments", "landing gear weight"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_cavity_magnetron",
+      "correctAnswer": "Cavity magnetron",
+      "acceptableAlternatives": ["magnetron", "the cavity magnetron"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "What British invention generated the microwaves that enabled centimeter-wave radar — later adapted into the consumer device that heats your lunch?",
+      "explanation": "The cavity magnetron, developed in Britain in 1940, generated microwaves that enabled precise centimeter-wave radar used in the Battle of Britain and naval operations. The U.S. developed and mass-produced it after Britain shared the design. Post-war, engineers at Raytheon discovered magnetron microwaves could pop popcorn — and the microwave oven was born.",
+      "visualDescription": "Pixel art of a glowing cylindrical metal device in a laboratory, microwave energy lines radiating from it, a radar screen showing an aircraft blip nearby.",
+      "sourceName": "Wikipedia — Cavity magnetron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cavity_magnetron",
+      "volatile": false,
+      "distractors": [
+        "Vacuum tube",
+        "Klystron tube",
+        "Transistor",
+        "Crystal detector",
+        "Magnetron oscillator",
+        "Gyrotron",
+        "Spark gap generator",
+        "Traveling wave tube"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The cavity magnetron generated microwaves for precision radar. What consumer technology was it accidentally adapted into after the war?",
+          "correctAnswer": "Microwave oven",
+          "distractors": ["Television broadcast transmitter", "FM radio receiver", "Cellular telephone signal amplifier", "Laser pointer"]
+        },
+        "context": {
+          "quizQuestion": "Britain shared the cavity magnetron design with the United States in 1940 via the Tizard Mission. What does this represent strategically?",
+          "correctAnswer": "Britain traded its most advanced technology secrets for American industrial production capacity",
+          "distractors": ["Britain sought to prevent American isolation from WWII by offering incentives", "The exchange was mandated by the Lend-Lease agreement signed that year", "British scientists had already replicated all American technology and wanted reciprocity", "The Tizard Mission was a cover operation to gather American industrial intelligence"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The cavity magnetron enabled centimeter-wave radar — far more precise than the meter-wave radar used earlier in the war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The cavity magnetron was developed in Britain in ___, and immediately changed the precision of Allied radar systems.",
+          "correctAnswer": "1940",
+          "distractors": ["1935", "1942", "1944", "1938"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_b17_production",
+      "correctAnswer": "12,000+",
+      "acceptableAlternatives": ["over 12,000", "more than 12,000", "twelve thousand"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Over how many B-17 Flying Fortresses were built — the primary American heavy bomber used for daylight strategic bombing over Europe?",
+      "explanation": "More than 12,000 B-17 Flying Fortresses were built, making it one of the most produced heavy bombers in history. B-17 crews suffered horrific casualty rates flying daylight precision bombing missions over heavily defended German targets before long-range fighter escorts became available. The B-17 symbolized American industrial commitment to the air war over Europe.",
+      "visualDescription": "Pixel art of a B-17 formation at high altitude, contrails spreading behind each aircraft, black flak bursts peppering the sky around them, one aircraft already trailing smoke.",
+      "sourceName": "Wikipedia — Boeing B-17 Flying Fortress",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Boeing_B-17_Flying_Fortress",
+      "volatile": false,
+      "distractors": [
+        "500",
+        "1,000",
+        "3,000",
+        "5,000",
+        "8,000",
+        "20,000",
+        "30,000",
+        "2,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "B-17 crews suffered horrific casualty rates flying unescorted daylight bombing missions. What changed to drastically improve their survival?",
+          "correctAnswer": "Introduction of long-range P-51 Mustang escort fighters",
+          "distractors": ["Switching to night bombing like the RAF", "Adding more defensive gun turrets to each B-17", "Flying at higher altitude beyond German fighter reach", "Equipping B-17s with radar jamming equipment"]
+        },
+        "context": {
+          "quizQuestion": "The B-17 flew daylight missions for precision bombing while the RAF flew night raids. What does this tactical difference reveal?",
+          "correctAnswer": "America prioritized industrial target accuracy; Britain prioritized crew survivability over precision",
+          "distractors": ["Britain lacked the heavy bombers needed for daylight operations", "American crews were specifically trained for night blindness resistance", "The RAF believed daylight bombing was morally wrong against civilian areas", "Daylight and night schedules were coordinated to exhaust German defenses around the clock"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The B-17 Flying Fortress was replaced by the B-29 Superfortress for bombing Japan due to the B-29's far greater range.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The B-17's nickname 'Flying Fortress' referred to its many ___ positions that allowed it to defend itself from attacking fighters.",
+          "correctAnswer": "gun turret",
+          "distractors": ["bomb bay", "radar", "crew", "engine"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_norden_bombsight",
+      "correctAnswer": "Mechanical computer",
+      "acceptableAlternatives": ["analog computer", "computing device", "mechanical calculating device"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The Norden bombsight was a remarkable American device — essentially a what — that calculated the precise release point for bombs dropped from high altitude?",
+      "explanation": "The Norden bombsight was a mechanical analog computer that calculated bomb trajectories accounting for aircraft speed, altitude, wind, and ballistics. B-17 bombardiers swore secrecy oaths to protect it. Despite its technological sophistication, actual accuracy was far less perfect than promised — weather, enemy fire, and combat stress made precision bombing extraordinarily difficult in practice.",
+      "visualDescription": "Pixel art of a bombardier hunched over a complex bronze optical device in a B-17 nose bubble, city grid visible far below through frosted glass, flak bursting outside.",
+      "sourceName": "Wikipedia — Norden bombsight",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Norden_bombsight",
+      "volatile": false,
+      "distractors": [
+        "Radar system",
+        "Optical telescope",
+        "Gyroscope stabilizer",
+        "Radio altimeter",
+        "Electronic targeting system",
+        "Periscope assembly",
+        "Infrared sensor",
+        "Acoustic rangefinder"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "American bombardiers swore secrecy oaths over the Norden bombsight. What was the irony of this secrecy?",
+          "correctAnswer": "Germany had already obtained Norden plans through a spy before the war began",
+          "distractors": ["The Norden was too heavy to use effectively and was replaced by 1943", "British bombers used an identical device called the Mark XIV already in production", "The device was so complex that fewer than 10% of bombardiers could operate it correctly", "Soviet engineers independently developed a near-identical device in 1941"]
+        },
+        "context": {
+          "quizQuestion": "Despite the Norden's sophistication, precision bombing accuracy was far worse than promised. Why did the gap between theory and reality matter so much?",
+          "correctAnswer": "Imprecision meant hitting civilians and missing military targets, raising ethical and strategic questions about bombing strategy",
+          "distractors": ["It meant the U.S. had to build far more bombers than initially budgeted", "It caused the Army Air Forces to abandon strategic bombing in favor of close air support", "It led to a Congressional investigation of procurement fraud", "It had no strategic impact since bomb loads were large enough to compensate"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Norden bombsight could automatically fly the aircraft during the bomb run, removing the pilot from control.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Norden bombsight's promised precision was undercut in practice by ___, enemy fire, and the stress of combat.",
+          "correctAnswer": "weather",
+          "distractors": ["crew fatigue", "vibration", "fuel quality", "communication failures"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_dukw_amphibious",
+      "correctAnswer": "DUKW",
+      "acceptableAlternatives": ["Duck", "Duck truck", "DUKW amphibious truck"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "equipment_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "What amphibious truck — nicknamed 'Duck' by soldiers — could drive from sea onto land without stopping, solving one of the most difficult logistics problems in amphibious warfare?",
+      "explanation": "The DUKW (nicknamed 'Duck') was a six-wheeled amphibious truck that could traverse both water and land, providing flexible logistics for beach landings. It transported troops and supplies from ships directly to inland positions without transloading at the beach — eliminating a deadly bottleneck. DUKWs were used across every major Allied amphibious operation from Sicily to Normandy to the Pacific.",
+      "visualDescription": "Pixel art of a DUKW driving out of shallow surf onto a sandy beach, supply crates stacked in its bed, another DUKW behind it still in the water, soldiers directing traffic at the waterline.",
+      "sourceName": "Wikipedia — DUKW",
+      "sourceUrl": "https://en.wikipedia.org/wiki/DUKW",
+      "volatile": false,
+      "distractors": [
+        "LCT",
+        "LST",
+        "Higgins Boat",
+        "Amtrac",
+        "Sherman DD Tank",
+        "Alligator LVT",
+        "Rhino Ferry",
+        "Pontoon Bridge section"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The DUKW could drive directly from sea to land without stopping. Why did this capability matter more than its modest speed or payload?",
+          "correctAnswer": "It eliminated the beach bottleneck where troops and supplies became stationary targets while being transferred between vehicles",
+          "distractors": ["It allowed the Navy to use smaller vessels that couldn't beach themselves", "It provided armored protection for supplies moving through the surf zone", "It was faster than any other supply transfer method, doubling logistics throughput", "It freed Higgins Boats to return immediately for more troops without offloading"]
+        },
+        "context": {
+          "quizQuestion": "Amphibious operations require solving a 'last mile' problem: getting supplies from ships to inland forces under fire. How did the DUKW address this?",
+          "correctAnswer": "By seamlessly bridging sea and land transport in a single vehicle without requiring stops or transfers",
+          "distractors": ["By providing armored protection for supply columns moving inland", "By traveling faster than enemy fire could target moving vehicles", "By operating only at night when enemy observation was limited", "By disguising supply transfers as troop movements to confuse defenders"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The DUKW's military designation is the origin of the soldier's nickname 'Duck.'",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "DUKWs provided flexible logistics by transporting troops and supplies across ___ in difficult terrain.",
+          "correctAnswer": "rivers and beaches",
+          "distractors": ["mountains and jungles", "airfields and roads", "deserts and frozen ground", "forests and swamps"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_blood_banks",
+      "correctAnswer": "Sulfa drugs and blood transfusions",
+      "acceptableAlternatives": ["sulfonamides and blood banks", "antibiotics and transfusions"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "medical_innovations",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Two WWII medical innovations — mobile blood banks and what antibiotic class — dramatically reduced soldier mortality from wounds and infections?",
+      "explanation": "Mobile blood banks brought transfusions directly to the battlefield, preventing death from shock. Sulfa drugs (sulfonamides) prevented bacterial infections in wounds before penicillin became widely available. Together with penicillin by 1944, these innovations created a medical revolution — WWII soldiers had dramatically better survival odds than WWI soldiers with equivalent wounds.",
+      "visualDescription": "Pixel art of a WWII medic in a field station applying sulfa powder to a wound from a canvas pouch, blood plasma bags hanging from a makeshift stand above the patient.",
+      "sourceName": "Wikipedia — Sulfonamide (medicine)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sulfonamide_(medicine)",
+      "volatile": false,
+      "distractors": [
+        "Morphine and aspirin",
+        "Quinine and plasma",
+        "Ether and iodine",
+        "Chloroform and bandaging",
+        "Penicillin and plasma",
+        "Vitamin C injections and bandages",
+        "Blood typing and antiseptic spray",
+        "X-ray and morphine"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Sulfa powder packets were standard-issue in every American soldier's kit for what purpose?",
+          "correctAnswer": "Immediate self-application to wounds to prevent bacterial infection before medical treatment",
+          "distractors": ["Purifying drinking water in the field", "Sterilizing surgical instruments in field hospitals", "Creating smoke signals for rescue operations", "Reducing fever from malaria and tropical diseases"]
+        },
+        "context": {
+          "quizQuestion": "WWII soldiers had dramatically better survival rates from wounds than WWI soldiers. What combination of factors drove this improvement?",
+          "correctAnswer": "Sulfa drugs, blood transfusions, penicillin, and mobile surgical units brought closer to the front",
+          "distractors": ["Better weapons that caused cleaner wounds with less tissue damage", "Allied bombers prevented German forces from using poison gas", "Better physical conditioning meant soldiers were more resilient", "Modern steel helmets reduced fatal head wounds to near zero"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Sulfa drugs were a pre-war invention available throughout WWII, unlike penicillin which required wartime development for mass production.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Mobile ___ allowed transfusions to be performed near the front lines, preventing soldiers from dying of shock.",
+          "correctAnswer": "blood banks",
+          "distractors": ["surgical theaters", "triage centers", "plasma units", "medical helicopters"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_panzer_blitzkrieg",
+      "correctAnswer": "Blitzkrieg",
+      "acceptableAlternatives": ["lightning war", "blitz", "combined arms tactics"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "military_doctrines",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "German Panzer divisions combined tanks, motorized infantry, artillery, and air support into what revolutionary doctrine of rapid warfare?",
+      "explanation": "Blitzkrieg ('lightning war') combined Panzer tanks, motorized infantry, artillery, and Stuka dive-bombers into a coordinated assault that shattered enemy lines before defenders could respond. It crushed Poland (1939), France (1940), and drove deep into the Soviet Union (1941). But it required fuel and replacement parts that overstretched German logistics — and when the supply lines snapped, the Panzer divisions halted.",
+      "visualDescription": "Pixel art of a Panzer column advancing through burning French countryside, Stuka dive-bombers screaming down ahead to clear the road, infantry following on motorcycles.",
+      "sourceName": "Wikipedia — Blitzkrieg",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blitzkrieg",
+      "volatile": false,
+      "distractors": [
+        "Auftragstaktik",
+        "Schwerpunkt",
+        "Kesselschlacht",
+        "Stellungskrieg",
+        "Vernichtungsgedanke",
+        "Festung",
+        "Frontangriff",
+        "Abteilungstaktik"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Blitzkrieg devastated Poland and France but eventually stalled on the Eastern Front. What was the key vulnerability of the Panzer-dependent strategy?",
+          "correctAnswer": "Extended supply lines — fuel and spare parts couldn't keep pace with the rapid advance",
+          "distractors": ["German tank armor was too thin to withstand Soviet counter-attacks", "Blitzkrieg required warm weather and couldn't operate in mud or snow", "Soviet numerical superiority made encirclement of Panzer spearheads inevitable", "Hitler repeatedly ordered Panzer divisions to halt and wait for infantry"]
+        },
+        "context": {
+          "quizQuestion": "Panzer doctrine influenced all postwar militaries. How do modern 'combined arms' military operations reflect WWII Panzer lessons?",
+          "correctAnswer": "Modern armies still integrate armor, infantry, artillery, and air power into coordinated combined-arms formations",
+          "distractors": ["Modern armies abandoned tank formations after Vietnam proved their obsolescence", "Drone warfare has made combined arms doctrine irrelevant to land warfare", "Post-WWII armies reverted to WWI-era attrition doctrine after the Cold War ended", "Only the United States and Israel retained combined arms doctrine from WWII"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Blitzkrieg doctrine required the coordination of tanks, motorized infantry, artillery, and ground-attack aircraft to be effective.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Blitzkrieg is German for '___ war' — reflecting the speed of advance that characterized the tactic.",
+          "correctAnswer": "lightning",
+          "distractors": ["thunder", "total", "armored", "modern"]
+        }
+      }
+    }
+  ]
+}
