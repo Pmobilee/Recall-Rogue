@@ -11101,7 +11101,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "The name 'Chindits' is a corrupted form of what Burmese word for a mythological lion guardian?",
-      "explanation": "The Chindits — officially the Long Range Penetration Groups — were British and Indian special operations units formed by Brigadier Orde Wingate for operations deep behind Japanese lines in Burma. Their name is a corruption of 'Chinthe' (Burmese: ခြင်္သေ့), the mythological lion-guardian statues that stand at the entrances to Burmese pagodas. Operation Longcloth, their first operation, began on 8 February 1943 with 3,000 men marching into Burma.",
+      "explanation": "The Chindits — officially the Long Range Penetration Groups — were British and Indian special operations units formed by Brigadier Orde Wingate for operations deep behind Japanese lines in Burma. Their name is a corruption of 'Chinthe' (Burmese: ခြင်္သေ့), the mythological lion guardian statues that stand at the entrances to Burmese pagodas. Operation Longcloth, their first operation, began on 8 February 1943 with 3,000 men marching into Burma.",
       "statement": "The Chindits took their name from 'Chinthe,' the Burmese mythological lion-guardian — a corruption chosen by Brigadier Orde Wingate.",
       "wowFactor": "Wingate chose the Chinthe as the unit's symbol because these mythological lion statues traditionally guard the entrances to Burmese Buddhist temples — symbolising the Chindits' role as guardians operating deep within Burma.",
       "visualDescription": "Pixel art of a gold-painted stone lion guardian statue at a jungle temple entrance, its fierce expression half-shadowed by palm fronds, soldiers marching past in the background",
@@ -12444,17 +12444,18 @@
     },
     {
       "id": "wwii_ef_barbarossa_force_size",
-      "correctAnswer": "3 million",
+      "correctAnswer": "3.8 million",
       "acceptableAlternatives": [
-        "3,000,000",
-        "three million"
+        "3,800,000",
+        "three point eight million",
+        "nearly 4 million"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "How many troops did Hitler commit to Operation Barbarossa — the largest land invasion in military history?",
-      "explanation": "Operation Barbarossa launched June 22, 1941 with approximately 3 million Axis troops across a 1,000 km front. No single land invasion before or since has matched this scale. The sheer size made it initially devastating — but also created supply and logistics problems that would haunt Germany through the winter of 1941.",
+      "explanation": "Operation Barbarossa launched June 22, 1941 with approximately 3.8 million total Axis troops across a 1,000 km front — approximately 3 million Wehrmacht plus Romanian, Finnish, Hungarian, Italian, and Slovak forces. No single land invasion before or since has matched this scale. The sheer size made it initially devastating — but also created supply and logistics problems that would haunt Germany through the winter of 1941.",
       "visualDescription": "Pixel art of a massive column of German soldiers and tanks stretching to the horizon across a green summer plain, dawn light casting long shadows.",
       "sourceName": "Wikipedia — Operation Barbarossa",
       "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
@@ -12473,7 +12474,7 @@
         {
           "type": "reverse",
           "correctAnswer": "Operation Barbarossa",
-          "quizQuestion": "Which operation, launched June 22, 1941, was the largest land invasion in military history with 3 million troops?",
+          "quizQuestion": "Which operation, launched June 22, 1941, was the largest land invasion in military history with 3.8 million troops?",
           "distractors": [
             "Operation Sea Lion",
             "Operation Citadel",
@@ -17399,17 +17400,17 @@
     },
     {
       "id": "wwii_hc_total_victims",
-      "correctAnswer": "11 million",
+      "correctAnswer": "17 million",
       "acceptableAlternatives": [
-        "eleven million",
-        "11,000,000"
+        "seventeen million",
+        "17,000,000"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 3,
       "quizQuestion": "Including all targeted groups — Jews, Roma, disabled people, political prisoners, and others — what is the estimated total number of Holocaust victims?",
-      "explanation": "Beyond the 6 million Jews, the Nazis and their collaborators murdered approximately 5 million others including Roma, people with disabilities, Soviet civilians, political prisoners, and homosexuals, bringing the total to roughly 11 million.",
+      "explanation": "Per USHMM 2018 figures: beyond the 6 million Jews, the Nazis and their collaborators murdered approximately 11 million non-Jewish victims — including Roma, people with disabilities, Soviet POWs, Slavs, political prisoners, homosexuals, and others — bringing the total to approximately 17 million.",
       "visualDescription": "Pixel art of a dark memorial plaza with multiple stone pillars of varying heights under a grey sky, candles burning at their bases.",
       "sourceName": "United States Holocaust Memorial Museum",
       "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution",
@@ -17426,20 +17427,20 @@
       ],
       "variants": {
         "reverse": {
-          "quizQuestion": "The approximately 11 million total Holocaust victims included 6 million Jews plus roughly how many others?",
-          "correctAnswer": "5 million",
+          "quizQuestion": "The approximately 17 million total Holocaust victims included 6 million Jews plus roughly how many non-Jewish victims?",
+          "correctAnswer": "11 million",
           "distractors": [
             "2 million",
             "3 million",
             "7 million",
             "1 million",
             "4 million",
-            "8 million",
-            "10 million"
+            "5 million",
+            "8 million"
           ]
         },
         "context": {
-          "quizQuestion": "Which group formed the largest single component of the Holocaust's approximately 11 million total victims?",
+          "quizQuestion": "Which group formed the largest single component of the Holocaust's approximately 17 million total victims?",
           "correctAnswer": "Jews",
           "distractors": [
             "Roma",
@@ -22084,10 +22085,10 @@
     },
     {
       "id": "wwii_hf_dresden_25k_35k",
-      "correctAnswer": "25,000–35,000",
+      "correctAnswer": "22,700–25,000",
       "acceptableAlternatives": [
-        "25000 to 35000",
-        "between 25,000 and 35,000",
+        "22700 to 25000",
+        "between 22,700 and 25,000",
         "around 25,000"
       ],
       "chainThemeId": 4,
@@ -22095,7 +22096,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Estimates of how many people died in the Allied firebombing of Dresden in February 1945 range from approximately what to what?",
-      "explanation": "American and British bombers firebombed Dresden from February 13–15, 1945. Dresden was a major cultural city (baroque architecture, rich heritage) and housed refugees fleeing eastern territories. The bombing created firestorms; death estimates range from 25,000 to 35,000+. Kurt Vonnegut, a captured American soldier who survived the bombing in an underground slaughterhouse, later wrote 'Slaughterhouse-Five' (1969) about the experience. The raid remains morally controversial — Dresden had some military value (rail hub), but critics contend the civilian destruction was excessive.",
+      "explanation": "American and British bombers firebombed Dresden from February 13–15, 1945. Dresden was a major cultural city (baroque architecture, rich heritage) and housed refugees fleeing eastern territories. The bombing created firestorms; the 2010 Dresden Historians' Commission established the death toll at 22,700–25,000. Kurt Vonnegut, a captured American soldier who survived the bombing in an underground slaughterhouse, later wrote 'Slaughterhouse-Five' (1969) about the experience. The raid remains morally controversial — Dresden had some military value (rail hub), but critics contend the civilian destruction was excessive.",
       "visualDescription": "Pixel art of a baroque city skyline silhouetted against an orange firestorm sky, the famous Frauenkirche dome crumbling amid rolling smoke",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bombing_of_Dresden_in_World_War_II",
@@ -27329,7 +27330,7 @@
       "difficulty": 4,
       "funScore": 9,
       "quizQuestion": "During the Battle of Okinawa (1945), Japan launched its largest kamikaze campaign. How many suicide aircraft were used?",
-      "explanation": "1,465 kamikaze aircraft crashed into Allied ships at Okinawa — sinking 34 ships and damaging hundreds more. American commanders were horrified: the Japanese were burning through their best remaining pilots on one-way missions. The casualty rate for kamikaze pilots was 100%. Allied planners calculated that invading the Japanese mainland would face thousands more.",
+      "explanation": "1,465 kamikaze aircraft crashed into Allied ships at Okinawa — sinking 36 ships and damaging hundreds more. American commanders were horrified: the Japanese were burning through their best remaining pilots on one-way missions. The casualty rate for kamikaze pilots was 100%. Allied planners calculated that invading the Japanese mainland would face thousands more.",
       "visualDescription": "Pixel art of a Zero fighter in a steep diving attack toward a US aircraft carrier, anti-aircraft fire streaking up from the deck and surrounding escorts, the ocean littered with smoke and explosions",
       "sourceName": "Wikipedia — Kamikaze",
       "sourceUrl": "https://en.wikipedia.org/wiki/Kamikaze",
@@ -27348,7 +27349,7 @@
         {
           "type": "reverse",
           "quizQuestion": "At Okinawa, kamikaze attacks sank how many Allied ships and damaged how many more?",
-          "correctAnswer": "Sank 34 ships and damaged hundreds",
+          "correctAnswer": "Sank 36 ships and damaged hundreds",
           "distractors": [
             "Sank 3 fleet carriers and 12 destroyers",
             "Sank 120 ships and damaged 50 more",
@@ -29357,18 +29358,18 @@
     },
     {
       "id": "wwii_pt_bataan_pows",
-      "correctAnswer": "80,000 American and Filipino prisoners of war",
+      "correctAnswer": "72,000–78,000 American and Filipino prisoners of war",
       "acceptableAlternatives": [
-        "80000 POWs",
-        "80,000 prisoners",
-        "eighty thousand"
+        "72000 to 78000 POWs",
+        "approximately 78,000 prisoners",
+        "about 75,000"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "number_stats",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "How many prisoners of war were forced on the Bataan Death March in April 1942 — the largest surrender in US military history?",
-      "explanation": "80,000 men — starving and sick after months of siege — surrendered when the Philippines fell. The sheer scale of the surrender shocked Americans. For the survivors who reached the prison camps, a worse ordeal was just beginning: years of captivity with starvation rations, forced labor, and brutal guards.",
+      "explanation": "72,000–78,000 men (approximately 66,000 Filipino and 12,000 American soldiers) — starving and sick after months of siege — surrendered when the Philippines fell. The sheer scale of the surrender shocked Americans. For the survivors who reached the prison camps, a worse ordeal was just beginning: years of captivity with starvation rations, forced labor, and brutal guards.",
       "visualDescription": "Pixel art of an exhausted American soldier, gaunt and sunburned, hands tied, being guarded by a Japanese soldier with a rifle, jungle vegetation on both sides of the dirt road",
       "sourceName": "Wikipedia — Bataan Death March",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bataan_Death_March",
@@ -30777,17 +30778,18 @@
     },
     {
       "id": "wwii_pt_trinity_location",
-      "correctAnswer": "Alamogordo, New Mexico",
+      "correctAnswer": "White Sands, New Mexico",
       "acceptableAlternatives": [
         "New Mexico",
-        "Trinity site, New Mexico"
+        "Trinity site, New Mexico",
+        "White Sands Proving Ground"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "place_names",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Where in the United States was the Trinity Test — the first nuclear detonation in history — conducted in July 1945?",
-      "explanation": "The Trinity Test site was in the Jornada del Muerto desert, near Alamogordo, New Mexico. The detonation fused desert sand into a glassy green mineral later called 'trinitite.' Today the site is preserved as a National Historic Landmark and opened to public visits twice a year. The Manhattan Project chose this remote location for secrecy and the flat terrain needed to measure blast effects.",
+      "explanation": "The Trinity Test site was in the Jornada del Muerto desert on the White Sands Proving Ground in New Mexico — approximately 60 miles from the city of Alamogordo. The detonation fused desert sand into a glassy green mineral later called 'trinitite.' Today the site is preserved as a National Historic Landmark and opened to public visits twice a year. The Manhattan Project chose this remote location for secrecy and the flat terrain needed to measure blast effects.",
       "visualDescription": "Pixel art of a flat desert expanse with a steel tower at its center, surrounded by monitoring equipment and bunkers, the pre-dawn sky deep blue.",
       "sourceName": "Wikipedia — Trinity (nuclear test)",
       "sourceUrl": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
@@ -30797,14 +30799,14 @@
         "Nevada Test Site, Nevada",
         "Oak Ridge, Tennessee",
         "Hanford, Washington",
-        "White Sands, New Mexico",
+        "Alamogordo, New Mexico",
         "Yucca Flat, Nevada",
         "Colorado Springs, Colorado",
         "Bikini Atoll, Marshall Islands"
       ],
       "variants": {
         "reverse": {
-          "quizQuestion": "The Trinity Test site in Alamogordo, New Mexico is notable for being the location of what world-first?",
+          "quizQuestion": "The Trinity Test site on the White Sands Proving Ground, New Mexico is notable for being the location of what world-first?",
           "correctAnswer": "The first nuclear detonation in history (July 16, 1945)",
           "distractors": [
             "The first test of a hydrogen bomb",
@@ -40365,16 +40367,16 @@
     },
     {
       "id": "wwii_tw_napalm_first_use",
-      "correctAnswer": "1944",
+      "correctAnswer": "1943",
       "acceptableAlternatives": [
-        "first used in 1944"
+        "first used in 1943"
       ],
       "chainThemeId": 4,
       "answerTypePoolId": "years",
       "difficulty": 3,
       "funScore": 6,
-      "quizQuestion": "Napalm — the incendiary mixture of gasoline and aluminum naphthenate — was first used in what year, primarily for firebombing Japanese cities?",
-      "explanation": "Napalm was developed by the U.S. and first used in 1944 for firebombing Tokyo and other Japanese cities. It adheres to surfaces and burns intensely, causing catastrophic urban fires. The March 1945 firebombing of Tokyo killed more people than the atomic bomb dropped on Hiroshima. Napalm's use against civilian populations raised profound ethical questions that persist today.",
+      "quizQuestion": "Napalm — the incendiary mixture of gasoline and aluminum naphthenate — was first used in combat in what year?",
+      "explanation": "Napalm was first used in combat in 1943, in flamethrowers during the Sicily campaign. Napalm incendiary bombs were first airdropped in 1944 over France and Pacific targets. It adheres to surfaces and burns intensely, causing catastrophic urban fires. The major Tokyo firebombing came in March 1945. Napalm's use against civilian populations raised profound ethical questions that persist today.",
       "visualDescription": "Pixel art of B-29s in night formation releasing canisters over a city grid, orange fire spreading block by block far below, thick black smoke rising to the stratosphere.",
       "sourceName": "Wikipedia — Napalm",
       "sourceUrl": "https://en.wikipedia.org/wiki/Napalm",
@@ -40383,7 +40385,7 @@
         "1940",
         "1941",
         "1942",
-        "1943",
+        "1944",
         "1945",
         "1939",
         "1938",
@@ -49870,7 +49872,7 @@
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "In September 1940, Italian General Graziani advanced 60 miles into Egypt and stopped at this small coastal town — refusing to advance further without supplies he said were inadequate — giving the British time to prepare Operation Compass?",
-      "explanation": "Italian General Rodolfo Graziani's invasion of Egypt from Libya began September 9, 1940 — Mussolini had pressured him to attack despite inadequate preparation. Graziani advanced 60 miles to Sidi Barrani, then stopped and built fortified camps rather than continuing to the vital British supply base at Mersa Matruh. He repeatedly told Mussolini his supplies were insufficient. This three-month pause gave General Wavell time to reinforce and plan Operation Compass (December 1940), which destroyed Graziani's 10th Army.",
+      "explanation": "Italian General Rodolfo Graziani's invasion of Egypt from Libya began September 9, 1940 — Mussolini had pressured him to attack despite inadequate preparation. Graziani advanced 60 miles, capturing Sidi Barrani and continuing approximately 10 miles further to Maktila before halting and building fortified camps rather than pressing on to the vital British supply base at Mersa Matruh. He repeatedly told Mussolini his supplies were insufficient. This three-month pause gave General Wavell time to reinforce and plan Operation Compass (December 1940), which destroyed Graziani's 10th Army.",
       "visualDescription": "Pixel art of Italian troops building a fortified desert camp at Sidi Barrani, sandbag walls around their tents, supply trucks unloading in the distance, the Mediterranean coast visible to the north, a quiet scene of missed opportunity.",
       "sourceName": "Wikipedia — Sidi Barrani",
       "sourceUrl": "https://en.wikipedia.org/wiki/Sidi_Barrani",
