@@ -1,0 +1,970 @@
+{
+  "facts": [
+    {
+      "id": "wwii_ef_barbarossa_force_size",
+      "correctAnswer": "3 million",
+      "acceptableAlternatives": ["3,000,000", "three million"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "How many troops did Hitler commit to Operation Barbarossa — the largest land invasion in military history?",
+      "explanation": "Operation Barbarossa launched June 22, 1941 with approximately 3 million Axis troops across a 1,000 km front. No single land invasion before or since has matched this scale. The sheer size made it initially devastating — but also created supply and logistics problems that would haunt Germany through the winter of 1941.",
+      "visualDescription": "Pixel art of a massive column of German soldiers and tanks stretching to the horizon across a green summer plain, dawn light casting long shadows.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["1 million", "1.5 million", "2 million", "4 million", "5 million", "500,000", "800,000", "6 million"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Barbarossa",
+          "quizQuestion": "Which operation, launched June 22, 1941, was the largest land invasion in military history with 3 million troops?",
+          "distractors": ["Operation Sea Lion", "Operation Citadel", "Operation Overlord", "Operation Market Garden"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Lebensraum",
+          "quizQuestion": "Operation Barbarossa was ideologically driven by Hitler's concept of what — the need for German 'living space' in the east?",
+          "distractors": ["Blitzkrieg", "Anschluss", "Weltpolitik", "Drang nach Osten"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Operation Barbarossa violated the Molotov-Ribbentrop non-aggression pact that Germany and the USSR had signed in 1939.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "1941",
+          "quizQuestion": "Operation Barbarossa, Germany's invasion of the Soviet Union, began on June 22, ____.",
+          "distractors": ["1939", "1940", "1942", "1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_barbarossa_front_width",
+      "correctAnswer": "1,000 km",
+      "acceptableAlternatives": ["1000 km", "1,000 kilometers", "one thousand kilometers"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Operation Barbarossa attacked across a front of what width — a scale that made it logistically unlike any previous military campaign?",
+      "explanation": "The 1,000 km front from the Baltic to the Black Sea was both Barbarossa's greatest weapon and greatest weakness. It spread Soviet defenses impossibly thin at first, enabling rapid German advances. But it also meant Germany had to supply and reinforce an enormous line as Soviet resistance stiffened — a problem that proved fatal by winter.",
+      "visualDescription": "Pixel art of a map showing red arrows sweeping across a vast green-and-brown landscape from west to east, spanning from Baltic coast to Black Sea.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["500 km", "750 km", "1,500 km", "2,000 km", "300 km", "200 km", "2,500 km", "400 km"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Barbarossa",
+          "quizQuestion": "Which 1941 invasion opened across a 1,000 km front — the widest ground offensive ever launched?",
+          "distractors": ["Operation Citadel", "Operation Bagration", "Operation Typhoon", "Operation Blue"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Eastern Front",
+          "quizQuestion": "Historians estimate the majority of all WWII casualties occurred on which theater, opened by Barbarossa's 1,000 km assault?",
+          "distractors": ["Western Front", "Pacific Theater", "North African Campaign", "Italian Campaign"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The majority of all WWII casualties occurred on the Eastern Front, the theater opened by Operation Barbarossa.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Molotov-Ribbentrop",
+          "quizQuestion": "Operation Barbarossa violated the ____ pact, a non-aggression treaty Germany and the USSR signed in 1939.",
+          "distractors": ["Locarno", "Munich", "Versailles", "Atlantic"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_barbarossa_ideology",
+      "correctAnswer": "Lebensraum",
+      "acceptableAlternatives": ["lebensraum", "living space"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Hitler's ideological justification for invading the USSR was the concept of what — meaning 'living space' for the German people in eastern territories?",
+      "explanation": "Lebensraum ('living space') was a core Nazi ideological goal: conquering eastern Europe and the Soviet Union to resettle Germans and exploit resources. Barbarossa was not merely a strategic military move — it was explicitly ideological genocide and colonization. This made it unlike any previous European war and explained the deliberate mass murder of Soviet civilians and POWs.",
+      "visualDescription": "Pixel art of Nazi propaganda imagery: a stylized German soldier pointing east toward vast empty farmland, dark ominous clouds behind.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["Blitzkrieg", "Anschluss", "Weltpolitik", "Großdeutschland", "Volksgemeinschaft", "Reich", "Ostmark", "Drang nach Osten"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Barbarossa",
+          "quizQuestion": "Which military operation was explicitly driven by the Nazi ideology of Lebensraum — conquering eastern territory for German settlement?",
+          "distractors": ["Operation Weserübung", "Operation Sea Lion", "Operation Torch", "Operation Overlord"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Eastern Front",
+          "quizQuestion": "Lebensraum ideology shaped how Germany fought in which theater — making it a war of annihilation rather than conventional conquest?",
+          "distractors": ["North Africa", "Western Europe", "the Pacific", "the Balkans"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Hitler's Lebensraum ideology meant Barbarossa was conceived as a war of annihilation, not just military conquest.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "largest",
+          "quizQuestion": "Operation Barbarossa's 3-million-troop invasion across a 1,000 km front made it the ____ land invasion in military history.",
+          "distractors": ["fastest", "costliest", "longest", "deadliest"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_barbarossa_pact",
+      "correctAnswer": "Molotov-Ribbentrop Pact",
+      "acceptableAlternatives": ["Molotov-Ribbentrop pact", "Nazi-Soviet pact", "non-aggression pact"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Operation Barbarossa shocked the world because it violated what agreement — a secret deal that had divided eastern Europe between Hitler and Stalin just two years earlier?",
+      "explanation": "The Molotov-Ribbentrop Pact (August 1939) was a non-aggression treaty with secret protocols dividing Poland, the Baltic states, and Romania between Germany and the USSR. It enabled Hitler to invade Poland without Soviet interference. When Barbarossa violated it in June 1941, Stalin was reportedly stunned — he had believed the pact would hold. The betrayal galvanized Soviet resistance and ultimately doomed Germany.",
+      "visualDescription": "Pixel art of two diplomats shaking hands across a table strewn with maps, swastika and Soviet star flags flanking them, sinister smiles on their faces.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["Treaty of Versailles", "Atlantic Charter", "Locarno Treaty", "Munich Agreement", "Anti-Comintern Pact", "Tripartite Pact", "Kellogg-Briand Pact", "Geneva Convention"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "1939",
+          "quizQuestion": "The Molotov-Ribbentrop Pact — violated by Barbarossa in 1941 — was originally signed in what year?",
+          "distractors": ["1936", "1937", "1938", "1940"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Stalin",
+          "quizQuestion": "Historical accounts suggest which Soviet leader was caught off-guard by Barbarossa, despite intelligence warnings, partly due to faith in the Molotov-Ribbentrop Pact?",
+          "distractors": ["Zhukov", "Molotov", "Beria", "Khrushchev"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Molotov-Ribbentrop Pact included secret protocols dividing eastern Europe between Germany and the Soviet Union.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "June 22, 1941",
+          "quizQuestion": "Operation Barbarossa, which violated the Molotov-Ribbentrop Pact, launched on ____.",
+          "distractors": ["September 1, 1939", "May 10, 1940", "December 7, 1941", "August 23, 1939"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_barbarossa_casualties",
+      "correctAnswer": "Eastern Front",
+      "acceptableAlternatives": ["the Eastern Front", "Eastern Theater"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The majority of all WWII casualties occurred on which theater — the one opened by Operation Barbarossa in June 1941?",
+      "explanation": "The Eastern Front was by far the bloodiest theater of WWII. Between German and Soviet military deaths alone, casualties dwarfed every other front combined. The ideological nature of the war — Nazi racial policy, Soviet scorched earth, partisan warfare — meant civilians died in catastrophic numbers too. Understanding Barbarossa is essential to understanding why WWII killed so many people.",
+      "visualDescription": "Pixel art of a vast snowy battlefield strewn with destroyed vehicles and figures, a dark sky with smoke columns, the scale dwarfing any individual soldier.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["Western Front", "Pacific Theater", "North African Campaign", "Italian Campaign", "Balkans Campaign", "Atlantic Theater", "China-Burma-India Theater", "Mediterranean Theater"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Barbarossa",
+          "quizQuestion": "Which operation opened the Eastern Front — the theater where the majority of all WWII casualties occurred?",
+          "distractors": ["Operation Typhoon", "Operation Blue", "Operation Bagration", "Operation Citadel"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "ideological",
+          "quizQuestion": "Historians note the Eastern Front's extreme casualties stemmed partly from its ____ nature — a Nazi war of annihilation driven by Lebensraum and anti-Bolshevism.",
+          "distractors": ["geographic", "technological", "economic", "political"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Eastern Front, opened by Barbarossa, produced more casualties than all other WWII theaters combined.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "bloodiest",
+          "quizQuestion": "The Eastern Front, opened by Operation Barbarossa, was the ____ theater of World War II.",
+          "distractors": ["longest", "widest", "costliest financially", "most decisive"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_leningrad_duration",
+      "correctAnswer": "900 days",
+      "acceptableAlternatives": ["900-day", "approximately 900 days", "872 days"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The Siege of Leningrad lasted approximately how many days — making it the longest siege of World War II?",
+      "explanation": "The siege began September 8, 1941 and was finally broken January 27, 1944 — approximately 900 days. No other siege in WWII came close in duration. The Germans surrounded the city but never assaulted it directly, choosing starvation as their weapon. The 900-day figure became a symbol of Soviet endurance, and January 27 is still commemorated in Russia as Leningrad Liberation Day.",
+      "visualDescription": "Pixel art of a snow-covered city skyline surrounded by a ring of German artillery positions, a single thin ice road crossing a frozen lake — the only lifeline.",
+      "sourceName": "Wikipedia — Siege of Leningrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Leningrad",
+      "volatile": false,
+      "distractors": ["200 days", "400 days", "600 days", "1,200 days", "500 days", "100 days", "1,500 days", "300 days"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Siege of Leningrad",
+          "quizQuestion": "Which WWII siege, lasting approximately 900 days, was the longest in the war — ending January 27, 1944?",
+          "distractors": ["Siege of Stalingrad", "Siege of Sevastopol", "Siege of Warsaw", "Siege of Budapest"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "January 27, 1944",
+          "quizQuestion": "The Soviet relief operation that finally broke the Siege of Leningrad succeeded on what date — still commemorated annually in Russia?",
+          "distractors": ["June 6, 1944", "May 9, 1945", "February 2, 1943", "November 7, 1941"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Siege of Leningrad was the longest siege of World War II, lasting approximately 900 days.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "September 8, 1941",
+          "quizQuestion": "The Siege of Leningrad began on ____ when German forces completed their encirclement of the city.",
+          "distractors": ["June 22, 1941", "December 7, 1941", "August 23, 1942", "July 5, 1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_leningrad_civilian_deaths",
+      "correctAnswer": "~1 million",
+      "acceptableAlternatives": ["approximately 1 million", "about 1 million", "around 1 million", "1 million civilians"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Approximately how many Leningrad civilians died during the 900-day siege — mostly from starvation and disease rather than enemy fire?",
+      "explanation": "Estimates suggest roughly 1 million Leningrad civilians perished, the vast majority from starvation and disease rather than combat. This makes it one of the deadliest sieges in history. The Germans deliberately targeted food supplies to starve the population — a war crime on a massive scale. Daily rations fell as low as 125 grams of bread (mostly sawdust and cellulose) per person in winter 1941–42.",
+      "visualDescription": "Pixel art of gaunt figures queuing in a snow-blizzard outside a bakery, a tiny ration of dark bread in each person's hands, bombed buildings in the background.",
+      "sourceName": "Wikipedia — Siege of Leningrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Leningrad",
+      "volatile": false,
+      "distractors": ["100,000", "250,000", "500,000", "2 million", "3 million", "50,000", "750,000", "1.5 million"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "starvation and disease",
+          "quizQuestion": "During the Siege of Leningrad, the majority of the ~1 million civilian deaths were caused by what — not enemy artillery?",
+          "distractors": ["aerial bombing", "artillery shelling", "mass executions", "chemical weapons"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "leather and glue",
+          "quizQuestion": "Historical accounts of the Siege of Leningrad record that desperate survivors resorted to eating what — an indication of how extreme the starvation became?",
+          "distractors": ["rats and pigeons", "tree bark and grass", "sawdust and paper", "boot polish and grease"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: During the Siege of Leningrad, civilians ate leather and glue as food sources became exhausted.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "never surrendered",
+          "quizQuestion": "Despite ~1 million civilian deaths from starvation, Leningrad ____ to German forces during the 900-day siege.",
+          "distractors": ["was captured briefly", "was evacuated", "was destroyed", "was abandoned"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_leningrad_never_fell",
+      "correctAnswer": "never surrendered",
+      "acceptableAlternatives": ["did not surrender", "held out", "never fell", "was not captured"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Despite 900 days of blockade and ~1 million civilian deaths, what was the outcome for Leningrad — a fact that stunned German planners?",
+      "explanation": "Leningrad never surrendered. The Germans surrounded the city but never launched a full assault, gambling that starvation would deliver it. They were wrong. The city was supplied via a thin ice road across frozen Lake Ladoga — the 'Road of Life' — and Soviet forces eventually broke the blockade. The city's refusal to fall became a powerful symbol of Soviet resistance and complicated German plans on the Northern Front for years.",
+      "visualDescription": "Pixel art of defenders on Leningrad's city walls, gaunt but defiant, red banner flying, German positions visible in the distant snow-covered fields.",
+      "sourceName": "Wikipedia — Siege of Leningrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Leningrad",
+      "volatile": false,
+      "distractors": ["surrendered after 600 days", "was partially captured", "fell temporarily then recaptured", "was evacuated and abandoned", "surrendered but was recaptured", "was destroyed by Soviet forces", "fell to German assault", "negotiated a ceasefire"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Leningrad",
+          "quizQuestion": "Which Soviet city endured a 900-day German blockade with ~1 million civilian deaths but never surrendered?",
+          "distractors": ["Moscow", "Kiev", "Stalingrad", "Minsk"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Road of Life",
+          "quizQuestion": "During the siege, Leningrad was supplied via an ice road across Lake Ladoga known by what name — the thin lifeline that prevented total starvation?",
+          "distractors": ["Road of Victory", "Ice Corridor", "Ladoga Highway", "Winter Road"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "False",
+          "quizQuestion": "True or False: German forces successfully captured Leningrad during the 900-day siege.",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Lake Ladoga",
+          "quizQuestion": "Leningrad was supplied during the siege via an ice road across ____, the only route not under German control.",
+          "distractors": ["Lake Onega", "Lake Ilmen", "Lake Peipus", "the Neva River"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_leningrad_start_date",
+      "correctAnswer": "September 8, 1941",
+      "acceptableAlternatives": ["Sep 8, 1941", "8 September 1941"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "On what date did the Siege of Leningrad begin — when German forces completed their encirclement of the city just weeks after Barbarossa?",
+      "explanation": "The siege began September 8, 1941, less than three months after Barbarossa launched. The speed of German advance was breathtaking — but capturing Leningrad would have required costly urban combat. Hitler chose encirclement and starvation instead. This decision spared the Wehrmacht from a bloody assault but committed Germany to a years-long siege that tied down forces needed elsewhere.",
+      "visualDescription": "Pixel art of German soldiers completing a ring around a distant city skyline, the last open road being cut by panzer units, civilians fleeing in the foreground.",
+      "sourceName": "Wikipedia — Siege of Leningrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Leningrad",
+      "volatile": false,
+      "distractors": ["June 22, 1941", "July 15, 1941", "August 1, 1941", "October 3, 1941", "November 7, 1941", "December 1, 1941", "August 23, 1942", "January 1, 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Siege of Leningrad",
+          "quizQuestion": "Which siege began September 8, 1941 and ended January 27, 1944 — approximately 900 days later?",
+          "distractors": ["Siege of Stalingrad", "Siege of Sevastopol", "Siege of Odessa", "Siege of Moscow"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "starvation",
+          "quizQuestion": "Rather than assault Leningrad directly, Hitler chose to use ____ as a weapon — encircling the city and cutting off food supplies.",
+          "distractors": ["chemical weapons", "strategic bombing", "artillery bombardment", "psychological warfare"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Siege of Leningrad began in September 1941, less than three months after Operation Barbarossa launched.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "January 27, 1944",
+          "quizQuestion": "The Siege of Leningrad, which began September 8, 1941, was finally broken on ____.",
+          "distractors": ["February 2, 1943", "June 6, 1944", "May 9, 1945", "November 7, 1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_leningrad_survival_food",
+      "correctAnswer": "leather and glue",
+      "acceptableAlternatives": ["leather, glue", "glue and leather"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "Historical accounts of the Siege of Leningrad document survivors eating what unlikely substances — a testament to how complete the German starvation strategy became?",
+      "explanation": "When food ran out in Leningrad, survivors resorted to eating leather (boiled to make a paste), wallpaper paste, glue, and even earth. Zoo animals were slaughtered, then pets, then vermin. The 900-day siege reduced one of Europe's great cultural cities to subsistence survival. These accounts remain among the most harrowing testimonies of civilian suffering in WWII.",
+      "visualDescription": "Pixel art of a gaunt Leningrad resident in a cold apartment, boiling a leather boot in a pot, frost on the windows, the city dark and silent outside.",
+      "sourceName": "Wikipedia — Siege of Leningrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Leningrad",
+      "volatile": false,
+      "distractors": ["rats and dogs", "tree bark and leaves", "sawdust bread", "boiled grass", "shoe polish", "coal dust", "paper pulp", "engine oil"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Siege of Leningrad",
+          "quizQuestion": "During which siege did civilians famously resort to eating leather and glue after food supplies were exhausted?",
+          "distractors": ["Siege of Stalingrad", "Siege of Paris (1870)", "Siege of Warsaw", "Siege of Sevastopol"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "~1 million",
+          "quizQuestion": "Despite desperate measures like eating leather and glue, approximately how many Leningrad civilians still died during the siege?",
+          "distractors": ["100,000", "250,000", "500,000", "2 million"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Leningrad civilians ate leather and glue during the siege, as the German blockade cut off nearly all food supplies.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "900",
+          "quizQuestion": "Leningrad civilians endured food shortages severe enough to require eating leather and glue for approximately ____ days.",
+          "distractors": ["200", "400", "600", "1,200"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_stalingrad_casualties",
+      "correctAnswer": "~2 million",
+      "acceptableAlternatives": ["approximately 2 million", "about 2 million", "2,000,000"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The Battle of Stalingrad produced approximately how many total casualties — making it the bloodiest single battle in human history?",
+      "explanation": "With roughly 2 million total casualties (dead, wounded, captured) across both sides, Stalingrad dwarfs any other single battle in recorded history. For context, the entire D-Day campaign (Normandy, June–August 1944) produced roughly 425,000 casualties. Stalingrad's scale reflects the Eastern Front's industrial-scale violence — and explains why it marked the war's psychological turning point.",
+      "visualDescription": "Pixel art of shattered urban ruins stretching to the horizon, two armies locked in combat among rubble, smoke rising from dozens of fires simultaneously.",
+      "sourceName": "Wikipedia — Battle of Stalingrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+      "volatile": false,
+      "distractors": ["500,000", "1 million", "1.5 million", "3 million", "4 million", "250,000", "750,000", "5 million"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Stalingrad",
+          "quizQuestion": "Which battle, with ~2 million casualties, is considered the bloodiest single engagement in human history?",
+          "distractors": ["Battle of Kursk", "Battle of Moscow", "Battle of Berlin", "Battle of the Somme"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "February 2, 1943",
+          "quizQuestion": "The Battle of Stalingrad ended with German surrender on what date — marking the first major German defeat of the war?",
+          "distractors": ["November 19, 1942", "January 1, 1943", "March 15, 1943", "August 23, 1942"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Battle of Stalingrad produced approximately 2 million total casualties — more than any other single battle in history.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "urban",
+          "quizQuestion": "Stalingrad's ~2 million casualties resulted partly from brutal ____ combat, as both sides fought house-by-house through the city's ruins.",
+          "distractors": ["tank", "aerial", "trench", "naval"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_stalingrad_temperature",
+      "correctAnswer": "-40°C",
+      "acceptableAlternatives": ["-40 degrees Celsius", "-40°F", "minus 40", "-40 degrees"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "German soldiers at Stalingrad fought in temperatures as low as what — conditions for which they were not equipped and which killed thousands independently of combat?",
+      "explanation": "Temperatures at Stalingrad dropped to -40°C (-40°F — they're equal at that value). German troops had summer uniforms and were not resupplied with winter gear after Hitler's assumption of a quick autumn victory. Meanwhile, Soviet soldiers operated in weather they were accustomed to, with appropriate equipment. The cold was a weapon the Soviets didn't have to fire.",
+      "visualDescription": "Pixel art of frost-covered German soldiers huddled in the ruins of a building, their breath visible, improvised rags wrapped around their boots, snow blowing through broken walls.",
+      "sourceName": "Wikipedia — Battle of Stalingrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+      "volatile": false,
+      "distractors": ["-5°C", "-10°C", "-15°C", "-20°C", "-25°C", "-30°C", "-50°C", "0°C"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Stalingrad",
+          "quizQuestion": "Which battle saw German forces suffer in temperatures of -40°C, for which they were completely unprepared?",
+          "distractors": ["Battle of Moscow", "Battle of Kursk", "Battle of Berlin", "Siege of Leningrad"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Operation Uranus",
+          "quizQuestion": "The Soviet counteroffensive that surrounded the German 6th Army at Stalingrad was codenamed what — launched November 19, 1942?",
+          "distractors": ["Operation Bagration", "Operation Mars", "Operation Saturn", "Operation Citadel"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: German forces at Stalingrad endured temperatures of -40°C, partly because Hitler had expected victory before winter.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "6th Army",
+          "quizQuestion": "The Soviet encirclement at Stalingrad (Operation Uranus) trapped the German ____, which surrendered February 2, 1943.",
+          "distractors": ["4th Army", "3rd Army", "Army Group South", "1st Panzer Army"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_stalingrad_operation_uranus",
+      "correctAnswer": "Operation Uranus",
+      "acceptableAlternatives": ["Uranus", "Op Uranus"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What was the codename for the Soviet counteroffensive at Stalingrad that encircled the entire German 6th Army — turning the battle's momentum completely?",
+      "explanation": "Operation Uranus (November 19–23, 1942) was one of the most decisive counteroffensives in military history. Soviet forces attacked the weaker Romanian flanks rather than the Germans directly, then linked up to complete a double encirclement of 300,000 German troops. The surrounded 6th Army was then methodically destroyed over the following months. The name 'Uranus' was part of a planetary naming convention — Operation Mars (targeting Army Group Center) was concurrent but failed.",
+      "visualDescription": "Pixel art of a tactical map showing Soviet red arrows sweeping around both sides of a German-held city, the arrows meeting to form a complete circle — the encirclement.",
+      "sourceName": "Wikipedia — Battle of Stalingrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+      "volatile": false,
+      "distractors": ["Operation Saturn", "Operation Mars", "Operation Bagration", "Operation Citadel", "Operation Ring", "Operation Thunderstorm", "Operation Jupiter", "Operation Neptune"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Stalingrad",
+          "quizQuestion": "Operation Uranus, the Soviet encirclement of the German 6th Army, was launched during which battle?",
+          "distractors": ["Battle of Kursk", "Battle of Moscow", "Battle of Berlin", "Battle of Kharkov"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Romanian",
+          "quizQuestion": "Operation Uranus succeeded partly because Soviet forces attacked the weaker ____ flanks rather than assaulting the German center directly.",
+          "distractors": ["Hungarian", "Italian", "Finnish", "German reserve"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Operation Uranus targeted the Romanian flanks of the German position at Stalingrad, not the stronger German center.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "November 19, 1942",
+          "quizQuestion": "Operation Uranus, the Soviet counteroffensive that encircled the German 6th Army at Stalingrad, launched on ____.",
+          "distractors": ["August 23, 1942", "December 7, 1942", "February 2, 1943", "January 15, 1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_stalingrad_turning_point",
+      "correctAnswer": "February 2, 1943",
+      "acceptableAlternatives": ["Feb 2, 1943", "2 February 1943"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "On what date did German forces surrender at Stalingrad — the moment historians mark as the first major German defeat and the psychological turning point of the war?",
+      "explanation": "Field Marshal Friedrich Paulus surrendered the remnants of the German 6th Army on February 2, 1943. Of 300,000 men encircled in November 1942, only about 91,000 survived to surrender — and only 6,000 of those would ever return to Germany. The shock in Germany was immense: Nazi propaganda had promised victory, and the news of total defeat shattered public confidence in Hitler's leadership.",
+      "visualDescription": "Pixel art of a gaunt German officer in tattered uniform, white flag raised among the ruins of Stalingrad, Soviet soldiers advancing cautiously in the background.",
+      "sourceName": "Wikipedia — Battle of Stalingrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+      "volatile": false,
+      "distractors": ["November 19, 1942", "December 25, 1942", "January 15, 1943", "March 1, 1943", "April 5, 1943", "August 23, 1942", "January 1, 1943", "March 15, 1943"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Stalingrad",
+          "quizQuestion": "Which battle ended on February 2, 1943 with German surrender — the first major defeat Germany suffered in WWII?",
+          "distractors": ["Battle of Kursk", "Battle of El Alamein", "Battle of Moscow", "Battle of Berlin"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Paulus",
+          "quizQuestion": "Which German Field Marshal surrendered the remnants of the 6th Army at Stalingrad on February 2, 1943?",
+          "distractors": ["Rommel", "Manstein", "Guderian", "Model"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The German surrender at Stalingrad on February 2, 1943 is considered the first major German defeat and a psychological turning point of WWII.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "6th Army",
+          "quizQuestion": "The German unit that surrendered at Stalingrad on February 2, 1943 — encircled by Operation Uranus — was the ____.",
+          "distractors": ["4th Panzer Army", "Army Group South", "17th Army", "1st SS Panzer Corps"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_stalingrad_urban_combat",
+      "correctAnswer": "house-by-house",
+      "acceptableAlternatives": ["house to house", "building by building", "room by room", "urban combat"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "The fighting at Stalingrad was so close-quarters that German soldiers coined the term 'Rattenkrieg' (rat war) for what type of combat — fought through factories, sewers, and individual rooms?",
+      "explanation": "Stalingrad became infamous for 'Rattenkrieg' — rat war — the brutal room-by-room, floor-by-floor fighting through a ruined industrial city. German doctrine relied on maneuver and combined arms; Stalingrad neutralized these advantages. At point-blank range in rubble, Soviet defenders were actually at an advantage. General Chuikov deliberately kept frontlines so close that German air and artillery support became unusable — a deliberate Soviet tactic.",
+      "visualDescription": "Pixel art of soldiers from both sides fighting through the shattered interior of a factory, machinery overturned, fires burning in the background, combat at arm's length.",
+      "sourceName": "Wikipedia — Battle of Stalingrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
+      "volatile": false,
+      "distractors": ["trench warfare", "artillery duels", "tank battles", "aerial combat", "siege tunneling", "river crossings", "cavalry charges", "submarine warfare"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Rattenkrieg",
+          "quizQuestion": "German soldiers at Stalingrad used which term — meaning 'rat war' — to describe the brutal house-by-house fighting through ruined buildings?",
+          "distractors": ["Blitzkrieg", "Kesselschlacht", "Stellungskrieg", "Bewegungskrieg"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Chuikov",
+          "quizQuestion": "Which Soviet general defending Stalingrad deliberately kept frontlines so close to German positions that enemy air support became unusable?",
+          "distractors": ["Zhukov", "Rokossovsky", "Vatutin", "Konev"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Soviet defenders at Stalingrad deliberately kept frontlines close to German positions to neutralize German air and artillery superiority.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "-40°C",
+          "quizQuestion": "The house-by-house fighting at Stalingrad took place in temperatures as low as ____, for which German troops were completely unprepared.",
+          "distractors": ["-10°C", "-20°C", "-25°C", "0°C"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_kursk_tank_count",
+      "correctAnswer": "3,400",
+      "acceptableAlternatives": ["3400", "approximately 3,400", "over 3,000", "3,400 tanks"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How many tanks and assault guns did Germany commit to Operation Citadel at Kursk — making it the largest tank battle in history?",
+      "explanation": "Germany assembled approximately 3,400 tanks and assault guns for Operation Citadel (Kursk). The Soviets had even more — roughly 5,000 tanks — plus intelligence from the Lucy spy network that gave them full knowledge of German plans. Kursk was the first major German offensive of the war where Soviets had prepared defenses in advance. The result was a grinding defeat that ended German strategic offensive capability on the Eastern Front.",
+      "visualDescription": "Pixel art of hundreds of tanks stretching across a flat summer steppe, a massive armored formation filling the entire horizon, dust clouds rising from every direction.",
+      "sourceName": "Wikipedia — Battle of Kursk",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kursk",
+      "volatile": false,
+      "distractors": ["500", "1,000", "1,500", "2,000", "2,500", "5,000", "6,000", "800"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Kursk",
+          "quizQuestion": "Which battle, involving ~3,400 German and ~5,000 Soviet tanks, is considered the largest tank battle in history?",
+          "distractors": ["Battle of Stalingrad", "Battle of Moscow", "Battle of Berlin", "Battle of Brody"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Operation Citadel",
+          "quizQuestion": "Germany's offensive at Kursk — their last major strategic attack on the Eastern Front — was codenamed what?",
+          "distractors": ["Operation Barbarossa", "Operation Blue", "Operation Typhoon", "Operation Winter Storm"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Battle of Kursk, with approximately 3,400 German and 5,000 Soviet tanks, was the largest tank battle in history.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "intelligence",
+          "quizQuestion": "The Soviet defense at Kursk was so effective partly because they had advance ____ about German plans — reportedly from the Lucy spy network.",
+          "distractors": ["air superiority", "superior tanks", "more experienced troops", "better weather"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_kursk_dates",
+      "correctAnswer": "July 5 – August 23, 1943",
+      "acceptableAlternatives": ["July 1943", "summer 1943", "July 5 to August 23, 1943"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "The Battle of Kursk (Operation Citadel) ran from what dates — a roughly seven-week engagement that permanently ended Germany's strategic offensive capability on the Eastern Front?",
+      "explanation": "Kursk ran July 5 to August 23, 1943. Germany had delayed the offensive repeatedly to wait for new Tiger and Panther tanks, giving the Soviets additional months to prepare defenses. The delay was fatal: when the attack finally came, Soviet defensive belts up to 300 km deep absorbed the German assault. After Kursk, Germany never mounted another major strategic offensive in the east.",
+      "visualDescription": "Pixel art of a calendar showing July and August 1943, with a burning Panzer IV tank silhouetted against a summer sky, Soviet anti-tank guns in prepared positions.",
+      "sourceName": "Wikipedia — Battle of Kursk",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kursk",
+      "volatile": false,
+      "distractors": ["August 23 – November 2, 1942", "November 1942 – February 1943", "April – June 1943", "September – October 1943", "January – March 1943", "October – December 1943", "June – July 1943", "March – April 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Kursk",
+          "quizQuestion": "Which battle, fought July–August 1943, ended Germany's ability to conduct strategic offensives on the Eastern Front?",
+          "distractors": ["Battle of Stalingrad", "Battle of Moscow", "Battle of Kharkov", "Battle of Berlin"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Tiger and Panther",
+          "quizQuestion": "Germany delayed Operation Citadel at Kursk to wait for deliveries of which new tank models — a delay that gave Soviets extra time to prepare defenses?",
+          "distractors": ["King Tiger and Jagdpanther", "Panzer III and Panzer IV", "Stug III and Marder", "Ferdinand and Hetzer"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Germany delayed the Kursk offensive to receive new Tiger and Panther tanks, inadvertently giving the Soviets more time to build defenses.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "strategic initiative",
+          "quizQuestion": "The Battle of Kursk marked the end of German ____ on the Eastern Front — after Kursk, Germany only fought defensively.",
+          "distractors": ["tank superiority", "air superiority", "troop advantage", "supply dominance"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_kursk_soviet_defense",
+      "correctAnswer": "prepared defenses",
+      "acceptableAlternatives": ["defensive preparation", "prior intelligence", "foreknowledge", "advance warning"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Unlike earlier Soviet defeats, what key advantage did the Red Army have at Kursk that allowed it to absorb Germany's 3,400-tank assault?",
+      "explanation": "For the first time, Soviets received advance intelligence of the German attack (reportedly via the Lucy spy network) and had months to prepare. They built eight defensive belts stretching 300 km deep, planted over 400,000 mines, and concentrated artillery specifically to destroy tanks. When Germany attacked, they were doing exactly what Soviet planners had prepared for. This marks a profound shift in Soviet military capability — from reactive to proactive.",
+      "visualDescription": "Pixel art of Soviet engineers planting anti-tank mines in a vast steppe field, defensive trenches visible in multiple parallel lines stretching to the horizon, all prepared before a single German tank appeared.",
+      "sourceName": "Wikipedia — Battle of Kursk",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kursk",
+      "volatile": false,
+      "distractors": ["numerical superiority", "air superiority", "better tank armor", "chemical weapons", "surprise attack", "superior commanders", "shorter supply lines", "American equipment"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Kursk",
+          "quizQuestion": "In which battle did Soviet prepared defenses — built after receiving advance intelligence — absorb Germany's largest tank assault of the war?",
+          "distractors": ["Battle of Stalingrad", "Battle of Moscow", "Battle of Berlin", "Battle of Kharkov"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "300 km",
+          "quizQuestion": "Soviet defenses at Kursk extended approximately how deep — ensuring that no German breakthrough could be decisive?",
+          "distractors": ["50 km", "100 km", "150 km", "500 km"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Soviet victory at Kursk was partly due to advance intelligence of German plans, allowing months of defensive preparation.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "3,400",
+          "quizQuestion": "Soviet prepared defenses at Kursk successfully stopped a German assault involving ____ tanks and assault guns.",
+          "distractors": ["1,000", "2,000", "5,000", "500"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_kursk_strategic_end",
+      "correctAnswer": "German strategic initiative",
+      "acceptableAlternatives": ["Germany's strategic offensive capability", "German offensive capacity", "German ability to attack strategically"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Historians mark the Battle of Kursk as the end of what on the Eastern Front — after which Germany fought only defensively until the war's end?",
+      "explanation": "After Kursk (August 1943), Germany never again launched a major strategic offensive on the Eastern Front. The loss of so many tanks and experienced crews was irreplaceable. From this point, the strategic question shifted from 'Can Germany win?' to 'How far will the Soviets advance?' The initiative passed to the Red Army permanently. Kursk directly enabled Operation Bagration (1944) — the Soviet offensive that shattered Army Group Centre.",
+      "visualDescription": "Pixel art of a German officer staring at a battle map, his flags showing a shrinking German-held territory in the east, Soviet arrows advancing from every direction.",
+      "sourceName": "Wikipedia — Battle of Kursk",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kursk",
+      "volatile": false,
+      "distractors": ["Soviet strategic initiative", "German air superiority", "German naval dominance", "German supply lines", "German political will", "German intelligence operations", "German diplomatic leverage", "German tank production"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Kursk",
+          "quizQuestion": "Which 1943 battle permanently ended Germany's ability to take strategic initiative on the Eastern Front?",
+          "distractors": ["Battle of Stalingrad", "Battle of Moscow", "Battle of Berlin", "Operation Bagration"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Operation Bagration",
+          "quizQuestion": "The Soviet strategic initiative gained after Kursk directly enabled which 1944 offensive that shattered the German Army Group Centre?",
+          "distractors": ["Operation Overlord", "Operation Uranus", "Operation Citadel", "Operation Market Garden"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: After the Battle of Kursk in 1943, Germany never again launched a major strategic offensive on the Eastern Front.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "August 23, 1943",
+          "quizQuestion": "The Battle of Kursk — which ended Germany's strategic initiative on the Eastern Front — concluded on ____.",
+          "distractors": ["February 2, 1943", "July 5, 1943", "November 7, 1943", "January 27, 1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter41_temperature",
+      "correctAnswer": "-30°C",
+      "acceptableAlternatives": ["-30 degrees Celsius", "minus 30", "-30 degrees"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The German army's advance on Moscow stalled in winter 1941 partly as temperatures fell to what — while German soldiers still wore summer uniforms?",
+      "explanation": "Temperatures reached -30°C in the winter of 1941-42 before Moscow. German vehicles — including tanks and trucks — used lubricants formulated for temperate conditions that froze solid. Rifles and artillery jammed. Soldiers suffered mass frostbite. Hitler had guaranteed victory by autumn; no winter equipment had been ordered. Soviet soldiers, fighting in their own country with proper cold-weather gear, had an enormous advantage.",
+      "visualDescription": "Pixel art of a frozen German tank stuck in deep snow, soldiers in thin grey uniforms huddled against it, frost thick on the metal, a blizzard obscuring the horizon.",
+      "sourceName": "Wikipedia — Operation Barbarossa (Winter phase)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["-5°C", "-10°C", "-15°C", "-20°C", "-40°C", "-50°C", "0°C", "-25°C"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "winter 1941",
+          "quizQuestion": "In which season did the German advance on Moscow finally stall, as temperatures hit -30°C and soldiers lacked winter equipment?",
+          "distractors": ["autumn 1941", "winter 1942", "spring 1942", "summer 1941"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "autumn",
+          "quizQuestion": "Hitler failed to order winter equipment for his troops because he assumed the USSR would be defeated by what season — a catastrophic miscalculation?",
+          "distractors": ["spring", "summer", "winter", "the following year"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: German vehicles in the 1941 Russian winter used lubricants that froze solid, immobilizing tanks and trucks at -30°C.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Moscow",
+          "quizQuestion": "The German army's advance stalled in winter 1941 at temperatures of -30°C on the outskirts of ____.",
+          "distractors": ["Leningrad", "Stalingrad", "Kiev", "Minsk"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter41_soviet_counteroffensive",
+      "correctAnswer": "December 1941",
+      "acceptableAlternatives": ["December 5, 1941", "December 1941", "late 1941"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In what month did the Soviets launch their counteroffensive before Moscow — catching a frozen, exhausted German army at its most vulnerable point?",
+      "explanation": "The Soviet counteroffensive before Moscow began December 5–6, 1941 — the same week Japan attacked Pearl Harbor. Soviet General Zhukov had transferred fresh Siberian divisions to Moscow, troops equipped and trained for Arctic combat. The counteroffensive drove the Germans back 100–250 km from Moscow, the first significant reversal of German fortunes in the war. It shattered the myth of German invincibility and bought the USSR crucial time.",
+      "visualDescription": "Pixel art of Soviet soldiers in white winter camouflage advancing through a blizzard, T-34 tanks pushing through deep snow, Germans retreating in the frozen background.",
+      "sourceName": "Wikipedia — Battle of Moscow",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Moscow",
+      "volatile": false,
+      "distractors": ["August 1941", "September 1941", "October 1941", "November 1941", "January 1942", "February 1942", "March 1942", "June 1941"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Battle of Moscow",
+          "quizQuestion": "The Soviet counteroffensive of December 1941, which pushed Germany back from the Soviet capital, was part of which larger battle?",
+          "distractors": ["Battle of Kursk", "Battle of Stalingrad", "Operation Barbarossa", "Battle of Leningrad"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Siberian",
+          "quizQuestion": "Soviet General Zhukov reinforced Moscow's defense with fresh divisions from where — troops already equipped and trained for Arctic winter combat?",
+          "distractors": ["Central Asian", "Ukrainian", "Caucasian", "Far Eastern Reserve"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Soviet counteroffensive before Moscow began in December 1941, the same week Japan attacked Pearl Harbor.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Zhukov",
+          "quizQuestion": "The Soviet counteroffensive before Moscow in December 1941 was commanded by General ____, who transferred fresh Siberian troops for the attack.",
+          "distractors": ["Rokossovsky", "Konev", "Vatutin", "Timoshenko"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter41_vehicles_frozen",
+      "correctAnswer": "vehicles froze",
+      "acceptableAlternatives": ["engines froze", "equipment froze", "tanks froze", "vehicles broke down in cold"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "A key reason the German advance stalled before Moscow in winter 1941 was that what happened to German military equipment — a direct result of failing to prepare for a winter campaign?",
+      "explanation": "German vehicles — tanks, trucks, half-tracks, motorcycles — used temperate-climate lubricants that solidified at -30°C. Engines couldn't start, artillery recoil mechanisms seized, even rifles jammed. The German military had not prepared fuel, oil, or antifreeze for winter conditions because Hitler had guaranteed the campaign would end in autumn. Soviet equipment, maintained with cold-weather lubricants and operated by troops familiar with Russian winters, continued to function.",
+      "visualDescription": "Pixel art of a column of German vehicles frozen solid along a Russian road, mechanics beating engines with hammers, fires lit under frozen fuel tanks, a futile scene of mechanical disaster.",
+      "sourceName": "Wikipedia — Operation Barbarossa (Winter phase)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["ran out of ammunition", "lost air support", "faced partisan attacks", "supply lines were cut", "generals surrendered", "soldiers mutinied", "got lost in snow", "were outnumbered 10:1"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "winter 1941–42",
+          "quizQuestion": "In which period did frozen German vehicles and inadequate cold-weather gear halt the Wehrmacht's advance before Moscow?",
+          "distractors": ["summer 1941", "autumn 1941", "spring 1942", "winter 1942–43"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "autumn",
+          "quizQuestion": "German vehicles used temperate-climate lubricants that froze in winter because Hitler had guaranteed victory by what season — so no winter preparations were made?",
+          "distractors": ["spring", "summer", "early winter", "Christmas"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: German tanks and trucks used lubricants formulated for temperate climates, which froze solid in the -30°C Russian winter of 1941.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "winter gear",
+          "quizQuestion": "When temperatures hit -30°C before Moscow in 1941, German soldiers suffered mass frostbite because they lacked ____ — never ordered because Hitler expected autumn victory.",
+          "distractors": ["ammunition", "artillery support", "reinforcements", "food rations"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter41_assumption",
+      "correctAnswer": "autumn 1941",
+      "acceptableAlternatives": ["by autumn", "before winter", "that autumn", "autumn victory"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The German military was catastrophically unprepared for the Russian winter because Hitler assumed the USSR would be defeated by when — an assumption that proved disastrously wrong?",
+      "explanation": "Hitler and OKH (Army High Command) planned Barbarossa as a campaign of weeks, not months — expecting Soviet collapse before the first frost. No winter clothing was stockpiled, no cold-weather lubricants ordered. When October rains turned roads to mud (the 'Rasputitsa' or season of bad roads), then winter froze everything, Germany had no contingency. This single planning failure arguably cost Germany the war — a three-month campaign became a four-year catastrophe.",
+      "visualDescription": "Pixel art of a German planning table with a calendar showing 'October 1941' crossed out, then 'November', then 'December', soldiers outside visible through a window in summer uniforms, deep snow piling up.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["spring 1942", "winter 1941", "summer 1942", "by Christmas 1941", "within two months", "by December 1941", "by the following year", "summer 1941"],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Operation Barbarossa",
+          "quizQuestion": "Which invasion was planned as a campaign of weeks, with Hitler assuming the USSR would collapse before autumn 1941?",
+          "distractors": ["Operation Sea Lion", "Operation Citadel", "Operation Blue", "Operation Typhoon"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Rasputitsa",
+          "quizQuestion": "Before the Russian winter halted Germany's advance, the autumn 'season of bad roads' known by what name turned Soviet roads to impassable mud?",
+          "distractors": ["Blizzard season", "Mud campaign", "Autumn freeze", "Soviet weather weapon"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Hitler planned Barbarossa as a campaign of weeks, assuming the Soviet Union would collapse before winter — a miscalculation that helped doom Germany.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "December 1941",
+          "quizQuestion": "Because Hitler assumed victory by autumn 1941, Germany was completely unprepared when Soviet forces counterattacked before Moscow in ____.",
+          "distractors": ["September 1941", "October 1941", "January 1942", "February 1942"]
+        }
+      ]
+    }
+  ]
+}

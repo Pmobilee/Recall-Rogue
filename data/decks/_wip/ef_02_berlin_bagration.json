@@ -1,0 +1,1012 @@
+{
+  "facts": [
+    {
+      "id": "wwii_ef_berlin_assault_size",
+      "correctAnswer": "2.5 million",
+      "acceptableAlternatives": ["2,500,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How many Soviet troops attacked Berlin in the final assault of April–May 1945?",
+      "explanation": "The Soviet assault on Berlin deployed 2.5 million troops — the same number used in Operation Bagration a year earlier. The sheer scale of the offensive reflected Stalin's determination to end the war swiftly, before Western Allies could reach the German capital.",
+      "visualDescription": "Pixel art of a massive Soviet army column advancing through ruined Berlin streets, red flags visible, smoke rising from destroyed buildings in the background.",
+      "sourceName": "Wikipedia — Battle of Berlin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Berlin",
+      "volatile": false,
+      "distractors": ["500,000", "1 million", "1.5 million", "3 million", "750,000", "4 million", "200,000", "5 million"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Soviet force of 2.5 million troops that attacked a European capital in April 1945 targeted which city?",
+          "correctAnswer": "Berlin",
+          "distractors": ["Vienna", "Warsaw", "Budapest", "Prague", "Dresden", "Königsberg", "Breslau"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Battle of Berlin (April–May 1945) was notable partly because Hitler refused to surrender and remained in which location until his death?",
+          "correctAnswer": "Führerbunker",
+          "distractors": ["Reich Chancellery", "Berchtesgaden", "Wolfsschanze", "Reichstag", "Brandenburg Gate", "Olympic Stadium", "Tempelhof Airport"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: At the Battle of Berlin, the German defenders included Hitler Youth alongside SS and Wehrmacht troops.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Berlin's German commanders formally surrendered the city on May ___, 1945.",
+          "correctAnswer": "2",
+          "distractors": ["1", "3", "7", "8", "4", "9", "10"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_hitler_death_date",
+      "correctAnswer": "April 30, 1945",
+      "acceptableAlternatives": ["April 30", "30 April 1945"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "On what date did Hitler shoot himself in the Führerbunker as Soviet forces closed in on Berlin?",
+      "explanation": "Hitler killed himself on April 30, 1945 — two days before Berlin's surrender — and ordered his body burned to prevent it from being displayed like Mussolini's. The German Instrument of Surrender followed just days later on May 7–8, ending the war in Europe.",
+      "visualDescription": "Pixel art of a dark underground bunker corridor with concrete walls, a single dim light, and the sound of distant artillery implied by cracks in the ceiling.",
+      "sourceName": "Wikipedia — Death of Adolf Hitler",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Death_of_Adolf_Hitler",
+      "volatile": false,
+      "distractors": ["May 2, 1945", "May 8, 1945", "April 20, 1945", "May 7, 1945", "April 25, 1945", "May 1, 1945", "April 28, 1945", "May 5, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Hitler's death on April 30, 1945 preceded the formal German Instrument of Surrender by roughly how many days?",
+          "correctAnswer": "7 to 8 days",
+          "distractors": ["1 day", "2 days", "30 days", "14 days", "3 days", "21 days", "45 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hitler ordered his body burned after death to prevent what fate that had befallen his ally Mussolini?",
+          "correctAnswer": "Being publicly displayed",
+          "distractors": ["Being buried in a mass grave", "Being captured by the Soviets", "Being tried at Nuremberg", "Being used for propaganda", "Being transported to Moscow", "Being exhibited in a museum", "Being photographed by the press"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hitler escaped Berlin before the Soviet assault and died in hiding elsewhere.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The German Instrument of Surrender was signed on May ___ and May ___, 1945, marking V-E Day.",
+          "correctAnswer": "7 and 8",
+          "distractors": ["1 and 2", "8 and 9", "5 and 6", "2 and 3", "9 and 10", "6 and 7", "10 and 11"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_berlin_surrender_date",
+      "correctAnswer": "May 2, 1945",
+      "acceptableAlternatives": ["May 2", "2 May 1945"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "On what date did German commanders formally surrender Berlin to Soviet forces?",
+      "explanation": "Berlin fell to the Soviets on May 2, 1945, two days after Hitler's suicide. The formal German Instrument of Surrender — ending the war across all fronts — came five days later on May 7–8, celebrated as V-E Day (Victory in Europe Day).",
+      "visualDescription": "Pixel art of a shattered Reichstag building with a Soviet soldier hoisting a red flag on its roof, rubble and smoke filling the foreground.",
+      "sourceName": "Wikipedia — Battle of Berlin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Berlin",
+      "volatile": false,
+      "distractors": ["April 30, 1945", "May 5, 1945", "May 7, 1945", "May 8, 1945", "May 1, 1945", "April 25, 1945", "May 9, 1945", "May 10, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Berlin's formal surrender on May 2, 1945 came how many days after Hitler's suicide on April 30?",
+          "correctAnswer": "2 days",
+          "distractors": ["1 day", "3 days", "5 days", "7 days", "10 days", "4 days", "14 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After Berlin surrendered on May 2, the overall German Instrument of Surrender — ending the entire European war — was signed on which dates?",
+          "correctAnswer": "May 7 and 8, 1945",
+          "distractors": ["May 5 and 6, 1945", "May 9 and 10, 1945", "May 2 and 3, 1945", "May 1 and 2, 1945", "May 10 and 11, 1945", "April 30 and May 1, 1945", "May 8 and 9, 1945"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Berlin surrendered to Soviet forces before the German Instrument of Surrender was signed.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The fall of Berlin on May 2, 1945 followed street-by-street fighting that began when Soviet forces attacked on April ___, 1945.",
+          "correctAnswer": "16",
+          "distractors": ["1", "10", "20", "25", "30", "12", "8"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_berlin_ve_day",
+      "correctAnswer": "May 7–8, 1945",
+      "acceptableAlternatives": ["May 7 and 8", "May 8, 1945", "V-E Day"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The German Instrument of Surrender, ending the war in Europe, was signed on what dates?",
+      "explanation": "The German Instrument of Surrender was signed on May 7–8, 1945, celebrated as V-E Day (Victory in Europe). The fall of Berlin five days earlier made it inevitable. The war in the Pacific would continue until Japan's surrender in August 1945.",
+      "visualDescription": "Pixel art of a formal signing ceremony table with Allied officers in dress uniforms, documents spread out, flags of the Allied nations visible in the background.",
+      "sourceName": "Wikipedia — German Instrument of Surrender (1945)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_Instrument_of_Surrender_(1945)",
+      "volatile": false,
+      "distractors": ["April 30, 1945", "May 2, 1945", "May 5, 1945", "May 9, 1945", "May 15, 1945", "June 1, 1945", "August 15, 1945", "May 1, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "V-E Day, celebrating the German Instrument of Surrender, was observed across the Allied world on which date?",
+          "correctAnswer": "May 8, 1945",
+          "distractors": ["May 2, 1945", "May 7, 1945", "April 30, 1945", "June 6, 1945", "May 9, 1945", "August 15, 1945", "May 5, 1945"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The German Instrument of Surrender ending the European war was signed approximately how many days after Berlin fell on May 2, 1945?",
+          "correctAnswer": "5 to 6 days",
+          "distractors": ["1 day", "2 days", "10 days", "14 days", "30 days", "3 days", "21 days"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The German Instrument of Surrender ended the entire World War II, including the Pacific theater.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "V-E stands for 'Victory in ___,' the term used to describe the Allied celebration of Germany's surrender.",
+          "correctAnswer": "Europe",
+          "distractors": ["East", "Europe and Asia", "England", "Every front", "Eurasia", "Eastern Front", "European Theater"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_berlin_german_defenders",
+      "correctAnswer": "Hitler Youth, SS, and Wehrmacht",
+      "acceptableAlternatives": ["Hitler Youth and SS", "Hitler Youth, SS, Wehrmacht"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The defense of Berlin in April–May 1945 was carried out by which combination of forces, reflecting Germany's desperate manpower situation?",
+      "explanation": "By the Battle of Berlin, Germany was so depleted that its defense relied on Hitler Youth (teenagers), SS units, and demoralized Wehrmacht remnants. This desperate mix of defenders against 2.5 million Soviet troops underscored just how total Germany's military collapse had become by spring 1945.",
+      "visualDescription": "Pixel art of a teenage soldier in an oversized uniform manning a street barricade, rubble behind him, a distant Soviet tank visible through smoke.",
+      "sourceName": "Wikipedia — Battle of Berlin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Berlin",
+      "volatile": false,
+      "distractors": ["Volkssturm and Luftwaffe", "Panzer divisions and U-boat crews", "Regular army and paratroopers", "Alpine troops and police units", "Kriegsmarine and artillery reserves", "Foreign SS volunteers only", "Wehrmacht and Home Guard", "Luftwaffe ground forces and Waffen-SS"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The presence of Hitler Youth among Berlin's 1945 defenders most clearly indicates what about Germany's military situation?",
+          "correctAnswer": "Germany had exhausted its adult male manpower reserves",
+          "distractors": ["Germany had superior morale", "Hitler trusted youth more than veterans", "The Wehrmacht refused to defend Berlin", "SS units had all surrendered", "Germany was recruiting allied nations", "The eastern front had stabilized", "Germany expected to negotiate peace"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What term describes the civilian militia force that Germany also mobilized late in the war, alongside Hitler Youth and SS, to defend German soil?",
+          "correctAnswer": "Volkssturm",
+          "distractors": ["Freikorps", "Landwehr", "Sturmabteilung", "Fallschirmjäger", "Einsatzgruppen", "Schutzstaffel reserves", "Waffen-Miliz"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The German defense of Berlin in 1945 included units composed of teenage boys from the Hitler Youth.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "By the final Battle of Berlin, German forces were described as 'demoralized ___,' indicating the collapse of regular army cohesion.",
+          "correctAnswer": "Wehrmacht",
+          "distractors": ["Luftwaffe", "Kriegsmarine", "Panzerwaffe", "SS", "Volkssturm", "Gestapo", "Fallschirmjäger"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_moscow_counter_date",
+      "correctAnswer": "December 5, 1941",
+      "acceptableAlternatives": ["December 1941", "5 December 1941"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did the Red Army launch its major winter counteroffensive against German forces surrounding Moscow?",
+      "explanation": "The Soviet counteroffensive began December 5, 1941 — the same day German Army Group Center stood at the gates of Moscow but could advance no further. The Soviets had secretly massed fresh Siberian divisions equipped for winter warfare, catching the frozen Germans completely off guard.",
+      "visualDescription": "Pixel art of Soviet soldiers in white winter camouflage advancing through snow-covered birch forest, steam rising from their breath, T-34 tanks behind them.",
+      "sourceName": "Wikipedia — Soviet counter-offensive in the Battle of Moscow",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet_counter-offensive_in_the_Battle_of_Moscow",
+      "volatile": false,
+      "distractors": ["November 15, 1941", "January 1, 1942", "October 2, 1941", "December 20, 1941", "December 25, 1941", "February 1, 1942", "November 7, 1941", "December 10, 1941"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Soviet winter counteroffensive that launched December 5, 1941 was fought to relieve which besieged Soviet capital?",
+          "correctAnswer": "Moscow",
+          "distractors": ["Leningrad", "Stalingrad", "Kiev", "Minsk", "Smolensk", "Kursk", "Kharkov"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why were Siberian divisions particularly effective in the December 1941 Moscow counteroffensive?",
+          "correctAnswer": "They were trained and equipped for extreme cold weather",
+          "distractors": ["They had superior artillery", "They were elite airborne troops", "They had more tanks than the Germans", "They had never suffered a defeat", "They were motivated by revenge for Stalingrad", "They were reinforced by American supplies", "They had experienced officers from the Finnish war"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Soviet counteroffensive at Moscow in December 1941 succeeded in fully driving Germany out of all captured Soviet territory.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Moscow counteroffensive continued until January ___, 1942, when the offensive phase concluded.",
+          "correctAnswer": "7",
+          "distractors": ["1", "15", "20", "31", "10", "25", "3"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_moscow_german_winter",
+      "correctAnswer": "Frostbite, supply shortages, and extreme cold",
+      "acceptableAlternatives": ["extreme cold", "winter conditions", "cold and supply failures"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What three critical problems did German forces face outside Moscow in the winter of 1941 that the Soviets did not?",
+      "explanation": "German forces outside Moscow in winter 1941 suffered frostbite in enormous numbers, ran short on supplies, and were simply unprepared for the Russian winter. They lacked winter clothing, antifreeze for vehicles, and cold-weather lubricants. Meanwhile, the Soviets wore felt boots and fielded T-34 tanks specifically engineered to operate in freezing temperatures.",
+      "visualDescription": "Pixel art of a German soldier in summer uniform with icicles on his rifle, hunched against a blizzard, abandoned frozen vehicles behind him.",
+      "sourceName": "Wikipedia — Battle of Moscow",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Moscow",
+      "volatile": false,
+      "distractors": ["Air superiority, artillery failures, and terrain", "Partisan attacks, disease, and mud", "Lack of tanks, ammunition shortages, and night blindness", "Poor morale, communication failures, and fog", "Allied bombing, fuel shortage, and command disputes", "Poor maps, river crossings, and mud season", "Cavalry shortages, rail disruptions, and aerial attacks", "Trench warfare, gas attacks, and wire obstacles"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Soviet forces outside Moscow were better prepared for winter 1941 because they used T-34 tanks and issued soldiers what footwear designed for cold?",
+          "correctAnswer": "Felt boots (valenki)",
+          "distractors": ["Steel-toed boots", "Leather jackboots", "Rubber galoshes", "Canvas sneakers", "Standard army boots", "Wooden clogs", "Insulated ski boots"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The German failure at Moscow in winter 1941 was historically significant because it was what milestone in the war?",
+          "correctAnswer": "The first major German defeat, shattering the myth of German invincibility",
+          "distractors": ["The first time Germany used blitzkrieg", "The last major German offensive", "The battle where Hitler first lost command authority", "The first Soviet use of tanks", "The battle that ended the siege of Leningrad", "Germany's deepest advance into Soviet territory", "The first Allied strategic victory"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: German T-34 tank equivalents were specifically engineered to operate in extreme cold, unlike Soviet armor.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Moscow in winter 1941, thousands of German soldiers suffered ___, a cold-weather injury caused by freezing of body tissue.",
+          "correctAnswer": "Frostbite",
+          "distractors": ["Scurvy", "Trench foot", "Dysentery", "Hypothermia only", "Typhus", "Shell shock", "Malaria"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_moscow_first_defeat",
+      "correctAnswer": "First major German defeat of the war",
+      "acceptableAlternatives": ["Germany's first major defeat", "shattered myth of invincibility"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "What was the historical significance of Germany being pushed back from Moscow in December 1941–January 1942?",
+      "explanation": "The Soviet counteroffensive at Moscow was the first major German defeat of World War II, shattering the myth that Germany's military was unstoppable. After eighteen months of near-unbroken conquest — Poland, France, the Balkans, and deep into the USSR — Germany had finally been stopped and pushed back, proving the war was winnable.",
+      "visualDescription": "Pixel art of a propaganda poster-style image showing a Soviet soldier pointing toward a retreating German army, Moscow's Kremlin towers visible in the snow-blurred distance.",
+      "sourceName": "Wikipedia — Battle of Moscow",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Moscow",
+      "volatile": false,
+      "distractors": ["First German defeat at sea", "First use of Soviet artillery", "First Allied bombing of Berlin", "First Soviet use of winter tactics", "First German failure to break a siege", "Germany's first strategic retreat in the west", "First battle where American supplies decided the outcome", "First time Germany failed to take a capital city"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Before the Moscow counteroffensive, what phrase described Germany's reputation that the defeat shattered?",
+          "correctAnswer": "Myth of invincibility",
+          "distractors": ["Superiority of blitzkrieg", "Master race doctrine", "Thousand-year Reich", "Strategic air superiority", "Unbreakable Eastern Wall", "Undefeated Wehrmacht", "Impenetrable Siegfried Line"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Although Germany was pushed back from Moscow, what did the Soviets fail to achieve in the January 1942 phase of the counteroffensive?",
+          "correctAnswer": "Drive Germany out of all captured Soviet territory",
+          "distractors": ["Retake Leningrad", "Destroy all German tank divisions", "Cut off the entire German army", "Force Germany to negotiate peace", "Capture Berlin", "Liberate Kiev", "Destroy the Luftwaffe"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Soviet counteroffensive at Moscow was Germany's first major military defeat of the entire war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Battle of Moscow counteroffensive demonstrated that Germany could be ___, even if it could not yet be completely expelled from Soviet territory.",
+          "correctAnswer": "Stopped",
+          "distractors": ["Negotiated with", "Outgunned", "Surrendered", "Divided", "Surrounded", "Bombed into submission", "Starved out"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_moscow_t34_winter",
+      "correctAnswer": "T-34",
+      "acceptableAlternatives": ["T34", "T-34 tank"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which Soviet tank, specifically engineered to operate in extreme cold, gave Soviet forces a major advantage during the Moscow winter counteroffensive of 1941?",
+      "explanation": "The T-34 was designed with wide tracks for snow and mud, and used a diesel engine that started reliably in freezing temperatures. German tanks used gasoline engines that froze and required heating fires to start, giving the Soviets a decisive operational edge in the 1941 Moscow winter.",
+      "visualDescription": "Pixel art of a T-34 tank charging through deep snow with Soviet infantry on its hull, birch trees coated in ice on either side of a forest road.",
+      "sourceName": "Wikipedia — T-34",
+      "sourceUrl": "https://en.wikipedia.org/wiki/T-34",
+      "volatile": false,
+      "distractors": ["KV-1", "IS-2", "StuG III", "Panzer IV", "Sherman", "Tiger I", "Panther", "BT-7"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The T-34's diesel engine gave it what advantage over German gasoline-powered tanks in the Russian winter?",
+          "correctAnswer": "It started reliably in freezing temperatures",
+          "distractors": ["It was faster on paved roads", "It had thicker armor", "It required less maintenance", "It was quieter in operation", "It could carry more ammunition", "It was invisible on radar", "It could ford deeper rivers"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Besides its engine, what feature of the T-34's design made it superior in Russian winter conditions compared to German tanks?",
+          "correctAnswer": "Wide tracks designed for snow and mud",
+          "distractors": ["Fully enclosed turret heating system", "Ski attachments on the hull", "Heated crew compartment", "Foam insulation on the engine block", "Rubberized road wheels", "Rear-mounted engine exhaust", "Spaced armor for cold resistance"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: German tank engines in winter 1941 sometimes required heating fires to start because their gasoline engines froze in the extreme cold.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The T-34's wide ___ were a key design feature allowing it to distribute weight over snow and mud where narrower German tracks would sink.",
+          "correctAnswer": "Tracks",
+          "distractors": ["Wheels", "Armor plates", "Turret rings", "Drive shafts", "Hull sections", "Fuel tanks", "Road rollers"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_moscow_counter_end",
+      "correctAnswer": "January 7, 1942",
+      "acceptableAlternatives": ["January 1942", "7 January 1942"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "On what date did the Soviet counteroffensive phase at Moscow officially conclude, after successfully pushing Germans back from the capital?",
+      "explanation": "The Soviet counteroffensive near Moscow ran from December 5, 1941 to January 7, 1942 — just over a month. Though Germany was not expelled from all Soviet territory, it was pushed back decisively from Moscow's outskirts. This proved that blitzkrieg could be blunted by terrain, weather, and determined resistance.",
+      "visualDescription": "Pixel art of Soviet soldiers resting in a snow-covered trench after battle, Moscow's skyline faintly visible through clearing snowfall, a destroyed German tank smoking in the field.",
+      "sourceName": "Wikipedia — Battle of Moscow",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Moscow",
+      "volatile": false,
+      "distractors": ["December 25, 1941", "February 1, 1942", "January 15, 1942", "December 31, 1941", "January 20, 1942", "March 1, 1942", "January 31, 1942", "February 15, 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Moscow counteroffensive lasted approximately how long, from its December 5 start to its January 7 conclusion?",
+          "correctAnswer": "About one month (33 days)",
+          "distractors": ["2 weeks", "6 months", "2 months", "1 week", "3 months", "45 days", "10 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What German operational concept (rapid armored breakthrough) did the Soviet resistance at Moscow demonstrate could be effectively countered?",
+          "correctAnswer": "Blitzkrieg",
+          "distractors": ["Auftragstaktik", "Schwerpunkt", "Total war", "Strategic bombing", "Encirclement warfare", "Defense in depth", "Scorched earth"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Soviet Moscow counteroffensive of December 1941–January 1942 lasted more than six months.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Soviet counteroffensive near Moscow began on December 5, 1941 and ended on January ___, 1942.",
+          "correctAnswer": "7",
+          "distractors": ["1", "15", "20", "31", "3", "10", "25"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_uprising_start",
+      "correctAnswer": "August 1, 1944",
+      "acceptableAlternatives": ["August 1944", "1 August 1944"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did the Polish Home Army launch the Warsaw Uprising against German occupation?",
+      "explanation": "The Polish Home Army (AK) launched the Warsaw Uprising on August 1, 1944 — timed to coincide with the Red Army's approach to the city. The Poles hoped to liberate Warsaw themselves before Soviet arrival, establishing an independent Polish government rather than accepting Soviet-imposed communist rule.",
+      "visualDescription": "Pixel art of Polish resistance fighters in civilian clothes with red-and-white armbands, emerging from barricaded Warsaw streets with rifles, German-occupied buildings in the background.",
+      "sourceName": "Wikipedia — Warsaw Uprising",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Warsaw_Uprising",
+      "volatile": false,
+      "distractors": ["June 6, 1944", "July 1, 1944", "September 1, 1944", "October 2, 1944", "July 22, 1944", "August 15, 1944", "September 15, 1944", "August 23, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Polish Home Army timed the August 1, 1944 Warsaw Uprising to coincide with the approach of which military force?",
+          "correctAnswer": "The Red Army (Soviet forces)",
+          "distractors": ["American airborne divisions", "British paratroopers", "Free French forces", "Western Allied ground armies", "Polish forces from the west", "Finnish allied units", "Romanian troops switching sides"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "By launching the Warsaw Uprising before Soviet arrival, the Polish Home Army's political goal was to establish what?",
+          "correctAnswer": "An independent Polish government, not a Soviet-imposed communist one",
+          "distractors": ["A military alliance with Germany against the Soviets", "A neutral buffer state between east and west", "A monarchy under the Polish government-in-exile king", "A free city under international protection", "A confederation with Czechoslovakia", "Polish control of German-occupied territories", "A British-sponsored protectorate"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Warsaw Uprising of 1944 was launched by the Polish Home Army, not by communist Polish forces loyal to Stalin.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Warsaw Uprising lasted 63 days, from August 1 to October ___, 1944.",
+          "correctAnswer": "2",
+          "distractors": ["1", "5", "10", "15", "20", "31", "7"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_uprising_duration",
+      "correctAnswer": "63 days",
+      "acceptableAlternatives": ["63", "about two months"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How long did the Warsaw Uprising last before Polish resistance collapsed without Soviet support?",
+      "explanation": "The Warsaw Uprising lasted 63 days — from August 1 to October 2, 1944. Despite fierce urban combat, the Polish Home Army lacked the heavy weapons needed to defeat the German military alone. The nearby Soviet Army deliberately held its position, allowing Germany to crush the uprising and eliminate non-communist Polish political leadership.",
+      "visualDescription": "Pixel art of a calendar with days crossed off, rubble and fire visible through a broken window, a Polish flag hanging ragged from a damaged building across the street.",
+      "sourceName": "Wikipedia — Warsaw Uprising",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Warsaw_Uprising",
+      "volatile": false,
+      "distractors": ["14 days", "30 days", "45 days", "90 days", "21 days", "7 days", "100 days", "180 days"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The 63-day Warsaw Uprising ended on October 2, 1944. What caused its collapse?",
+          "correctAnswer": "Lack of Soviet support and inability to defeat German forces alone",
+          "distractors": ["An Allied air bombing that destroyed both sides", "A Polish ceasefire agreement with Germany", "American withdrawal of air supply drops", "The capture of the Home Army commander", "A German offer of safe passage that was accepted", "Soviet military intervention on Germany's side", "An earthquake that destroyed Warsaw's defenses"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After the Warsaw Uprising failed in October 1944, Germany did what to the city of Warsaw?",
+          "correctAnswer": "Systematically destroyed it",
+          "distractors": ["Turned it into a German administrative capital", "Evacuated all civilians and fortified it", "Opened it to Red Cross inspection", "Left it largely intact as a warning", "Used it as a prisoner-of-war camp", "Allowed neutral Swedish observers to document it", "Handed it to the Soviet Union immediately"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Soviet Army advanced to help the Warsaw Uprising while it was still ongoing.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "During the Warsaw Uprising, the Soviet Army was positioned ___ the city but did not advance to support the Polish fighters.",
+          "correctAnswer": "Nearby / outside",
+          "distractors": ["Far from", "Inside", "South of", "Retreating from", "North of", "Advancing through", "Attacking from east of"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_soviet_betrayal",
+      "correctAnswer": "The Soviet Army positioned nearby did not advance to support the uprising",
+      "acceptableAlternatives": ["Soviets did not advance", "Soviet refusal to help", "USSR abandoned the uprising"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What did the Soviet Army do — or fail to do — that led directly to the collapse of the Warsaw Uprising in 1944?",
+      "explanation": "The Red Army halted outside Warsaw and refused to advance to aid the Polish Home Army. Historians debate whether this was a strategic pause or deliberate policy, but the effect was clear: Germany was allowed to destroy the non-communist Polish resistance, eliminating a political rival to Stalin's plans for postwar Poland.",
+      "visualDescription": "Pixel art split scene: on one side Polish fighters in rubble with dwindling supplies, on the other side Soviet tanks parked at a riverbank with no orders to cross, artillery silent.",
+      "sourceName": "Wikipedia — Warsaw Uprising",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Warsaw_Uprising",
+      "volatile": false,
+      "distractors": ["The Soviet Army entered Warsaw and fought alongside the Germans", "Soviet planes bombed Warsaw instead of supplying it", "Stalin ordered the Red Army to attack the Polish forces directly", "The Soviet Army retreated east under German counterattack", "Soviet forces entered Warsaw but ran out of supplies", "The USSR declared war on Poland", "Soviet forces seized Polish weapons drops", "The USSR formally allied with Germany to crush the uprising"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Stalin's decision to allow Germany to crush the Warsaw Uprising benefited Soviet postwar goals by eliminating what political threat?",
+          "correctAnswer": "The non-communist Polish Home Army and its political leadership",
+          "distractors": ["German nationalist parties in Poland", "A British-backed Polish monarchy", "American-aligned Polish industrialists", "The Polish Catholic Church hierarchy", "A potential NATO-aligned Polish government", "Anti-Soviet Ukrainian partisans in Poland", "Polish communist factions rival to Stalin's preferred group"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After the Warsaw Uprising was crushed, Germany systematically destroyed Warsaw. What fraction of the city is estimated to have been deliberately demolished?",
+          "correctAnswer": "Most of the city (roughly 85%)",
+          "distractors": ["About 20%", "Exactly half", "Only the Jewish quarter", "The industrial districts only", "About one-third", "Only military installations", "Primarily government buildings"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Warsaw Uprising of 1944 was a military success — the Polish Home Army liberated Warsaw before the Soviets arrived.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Warsaw Uprising was launched by the Polish Home Army, also known by its Polish abbreviation ___.",
+          "correctAnswer": "AK",
+          "distractors": ["AL", "NSZ", "BCh", "ZWZ", "PPS", "PPR", "SOE"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_destruction",
+      "correctAnswer": "Germany systematically destroyed Warsaw and killed hundreds of thousands",
+      "acceptableAlternatives": ["Warsaw was leveled", "Germany destroyed Warsaw"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "After the Warsaw Uprising collapsed in October 1944, what did Germany do to the city and its population?",
+      "explanation": "Following the uprising's defeat, Germany systematically leveled Warsaw — demolition teams moved block by block, destroying buildings, burning archives, and killing hundreds of thousands of civilians. When Soviet forces finally entered Warsaw in January 1945, they found a ghost city of ruins, one of the most complete urban destructions of the entire war.",
+      "visualDescription": "Pixel art of a demolished cityscape with only broken walls and chimneys standing, no roofs, no windows, no people — just grey ruins stretching to the horizon under a winter sky.",
+      "sourceName": "Wikipedia — Destruction of Warsaw",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Destruction_of_Warsaw",
+      "volatile": false,
+      "distractors": ["Germany evacuated all civilians and used Warsaw as a military fortress", "Germany established Warsaw as the new capital of occupied Poland", "Germany left Warsaw intact and withdrew to defensive lines", "Germany handed Warsaw to Soviet control under a negotiated agreement", "Germany allowed neutral observers to document the aftermath and then withdrew", "Germany used Warsaw as a massive prisoner-of-war processing center", "Germany rebuilt Warsaw as a model German city", "Germany flooded Warsaw's underground systems to destroy resistance networks"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "When Soviet forces entered Warsaw in January 1945, what did they find after Germany's systematic destruction of the city?",
+          "correctAnswer": "A ghost city of ruins with almost no intact structures",
+          "distractors": ["A city still partially functioning with civilian population", "A heavily fortified German defensive position", "A city that had been only lightly damaged", "A city of refugees under German military administration", "A functioning German garrison awaiting surrender", "A city with most infrastructure intact but no civilians", "A neutral zone administered by the Red Cross"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The deliberate destruction of Warsaw after the 1944 uprising is considered one of history's most complete examples of what type of warfare crime?",
+          "correctAnswer": "Urbicide — the deliberate destruction of a city as collective punishment",
+          "distractors": ["Scorched earth retreat tactics", "Total war mobilization", "Siege warfare under international law", "Strategic bombing doctrine", "Ethnic cleansing", "Population transfer", "Anti-partisan countermeasures"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The city of Warsaw survived the 1944 uprising largely intact, with major reconstruction unnecessary.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After crushing the Warsaw Uprising, Germany killed hundreds of ___ of civilians in the city's population.",
+          "correctAnswer": "Thousands",
+          "distractors": ["Dozens", "Hundreds", "Millions", "Tens", "Scores", "Hundreds of millions", "Billions"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_uprising_end",
+      "correctAnswer": "October 2, 1944",
+      "acceptableAlternatives": ["October 1944", "2 October 1944"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did the Warsaw Uprising formally end after 63 days of urban combat?",
+      "explanation": "The Warsaw Uprising ended October 2, 1944 with a Polish surrender to German forces. The AK fighters were granted prisoner-of-war status. Germany then spent weeks systematically demolishing what remained of Warsaw. The Soviets entered the ruins in January 1945, three months after their deliberate inaction had sealed the uprising's fate.",
+      "visualDescription": "Pixel art of a Polish fighter laying down weapons before German officers in the rubble of Warsaw, a white flag visible, the city destroyed behind them.",
+      "sourceName": "Wikipedia — Warsaw Uprising",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Warsaw_Uprising",
+      "volatile": false,
+      "distractors": ["September 15, 1944", "October 15, 1944", "November 1, 1944", "August 31, 1944", "October 10, 1944", "September 1, 1944", "October 25, 1944", "September 30, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "After surrendering on October 2, 1944, AK fighters from the Warsaw Uprising were granted what legal status by Germany?",
+          "correctAnswer": "Prisoner-of-war status",
+          "distractors": ["Executed on the spot", "Released to the Soviets", "Sent to concentration camps as criminals", "Deported to forced labor in Germany", "Classified as terrorists with no legal status", "Interned as civilian detainees", "Used as human shields"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How many months after the Warsaw Uprising's October 1944 end did Soviet forces finally enter the city's ruins?",
+          "correctAnswer": "About 3 months (January 1945)",
+          "distractors": ["Immediately in October 1944", "6 months later", "1 month later", "2 weeks later", "Nearly a year later", "5 months later", "8 months later"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Warsaw Uprising of 1944 succeeded in its goal of liberating Warsaw from German control.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Warsaw Uprising lasted from August 1 to October 2, 1944 — a total of ___ days.",
+          "correctAnswer": "63",
+          "distractors": ["30", "45", "90", "100", "21", "55", "75"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_bagration_date_start",
+      "correctAnswer": "June 23, 1944",
+      "acceptableAlternatives": ["June 1944", "23 June 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did Operation Bagration — the Soviet summer offensive that destroyed Army Group Center — begin?",
+      "explanation": "Operation Bagration launched June 23, 1944 — just 17 days after D-Day. The timing was deliberate: Germany had transferred troops west to defend against the Allied landing, weakening Army Group Center. Bagration was the largest Soviet offensive of the war and one of the largest military operations in history.",
+      "visualDescription": "Pixel art of a massive Soviet armored column stretching to the horizon in summer Belarus, aircraft flying overhead, infantry marching alongside T-34 tanks on a dusty road.",
+      "sourceName": "Wikipedia — Operation Bagration",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Bagration",
+      "volatile": false,
+      "distractors": ["June 6, 1944", "July 4, 1944", "May 1, 1944", "August 1, 1944", "June 1, 1944", "July 22, 1944", "June 15, 1944", "July 10, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Operation Bagration began on June 23, 1944 — just 17 days after which major Allied operation also launched in June 1944?",
+          "correctAnswer": "D-Day (the Normandy landings)",
+          "distractors": ["Operation Market Garden", "Operation Overlord planning phase", "The Allied invasion of Sicily", "Operation Torch in North Africa", "The liberation of Paris", "The Battle of the Bulge", "Operation Cobra breakout"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Operation Bagration targeted which German Army Group?",
+          "correctAnswer": "Army Group Center",
+          "distractors": ["Army Group North", "Army Group South", "Army Group A", "Army Group Ukraine", "Army Group Vistula", "Army Group Don", "Army Group E"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Operation Bagration began after D-Day, not before it.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Operation Bagration ran from June 23 to August ___, 1944.",
+          "correctAnswer": "19",
+          "distractors": ["1", "15", "31", "10", "25", "30", "7"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_bagration_troop_size",
+      "correctAnswer": "2.5 million",
+      "acceptableAlternatives": ["2,500,000 troops", "over two million"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How many Soviet troops were deployed in Operation Bagration, making it one of the largest military operations in history?",
+      "explanation": "Operation Bagration deployed 2.5 million Soviet troops — the same number used at the Battle of Berlin a year later. The offensive attacked on a 1,000-kilometer front with overwhelming air superiority, completely shattering Army Group Center. By comparison, D-Day landed roughly 156,000 troops on its first day.",
+      "visualDescription": "Pixel art of a vast military map of Belarus with red arrows sweeping forward in a massive pincer movement, dwarfing the German defensive lines.",
+      "sourceName": "Wikipedia — Operation Bagration",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Bagration",
+      "volatile": false,
+      "distractors": ["500,000", "1 million", "1.5 million", "3 million", "750,000", "4 million", "2 million", "300,000"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Operation Bagration's 2.5 million troops attacked on a front how wide?",
+          "correctAnswer": "1,000 kilometers",
+          "distractors": ["100 kilometers", "500 kilometers", "200 kilometers", "2,000 kilometers", "50 kilometers", "750 kilometers", "300 kilometers"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Operation Bagration was larger and deadlier than D-Day. Roughly how many Allied troops landed on D-Day's first day, compared to Bagration's 2.5 million?",
+          "correctAnswer": "About 156,000",
+          "distractors": ["About 2 million", "About 500,000", "About 1 million", "About 50,000", "About 300,000", "About 750,000", "About 100,000"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Operation Bagration was larger and deadlier than the D-Day landings at Normandy.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "By late August 1944, Operation Bagration had allowed Soviet forces to liberate ___ and reach Poland.",
+          "correctAnswer": "Belarus",
+          "distractors": ["Ukraine", "Lithuania", "Latvia", "Estonia", "Finland", "Romania", "Hungary"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_bagration_army_group_center",
+      "correctAnswer": "Army Group Center was encircled and destroyed",
+      "acceptableAlternatives": ["destroyed Army Group Center", "Army Group Center annihilated"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What was the decisive military outcome of Operation Bagration for the German Army Group Center?",
+      "explanation": "Operation Bagration encircled and destroyed Army Group Center — one of Germany's largest and most powerful formations. The destruction was so complete that Germany lost over 300,000 killed, wounded, or captured. It was arguably the worst single defeat in German military history, far exceeding Stalingrad in scale.",
+      "visualDescription": "Pixel art of German soldiers with hands raised in surrender surrounded by Soviet troops, their unit flags and weapons piled on the ground, a vast encirclement visible on a map in the background.",
+      "sourceName": "Wikipedia — Operation Bagration",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Bagration",
+      "volatile": false,
+      "distractors": ["Army Group Center retreated in good order to the Vistula", "Army Group Center held its positions throughout the offensive", "Army Group Center was reinforced and stabilized the front", "Army Group Center was redeployed to France to defend against D-Day", "Army Group Center surrendered to Allied forces in the west", "Army Group Center successfully counterattacked and recaptured Belarus", "Army Group Center was absorbed into Army Group North", "Army Group Center evacuated to East Prussia intact"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The destruction of Army Group Center in Operation Bagration is compared to which earlier Soviet victory in terms of German losses?",
+          "correctAnswer": "Stalingrad — but Bagration was larger in scale",
+          "distractors": ["Moscow — but Bagration was more decisive", "Kursk — but Bagration was faster", "Berlin — but Bagration came first", "Leningrad — but Bagration was in summer", "Warsaw — but Bagration was a field battle", "D-Day — but Bagration was in the east", "El Alamein — but Bagration involved more troops"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why were German defenses in Army Group Center weakened when Bagration launched in June 1944?",
+          "correctAnswer": "Troops had been transferred west to defend against D-Day",
+          "distractors": ["A Soviet deception operation tricked Germany into defending elsewhere", "Hitler had personally ordered a retreat to shorten the front line", "Supply shortages had forced Germany to reduce frontline strength", "The German army had been devastated at Kursk one year earlier", "Allied bombing had destroyed German rail supply lines", "German officers had disobeyed orders and withdrawn preemptively", "Romania had withdrawn its forces, creating a gap"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Army Group Center survived Operation Bagration and remained a coherent fighting force.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Operation Bagration attacked Army Group Center on a ___ kilometer front with overwhelming air superiority.",
+          "correctAnswer": "1,000",
+          "distractors": ["100", "500", "200", "2,000", "50", "750", "300"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_bagration_liberation",
+      "correctAnswer": "Belarus",
+      "acceptableAlternatives": ["Byelorussia", "Belorussia"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Operation Bagration liberated which Soviet republic and pushed Soviet forces to the borders of Poland by late August 1944?",
+      "explanation": "Operation Bagration liberated Belarus (Byelorussia), a Soviet republic that had been under brutal German occupation since 1941. By the offensive's end in August 1944, Soviet forces had reached Poland — setting the stage for the Warsaw Uprising and ultimately the drive to Berlin.",
+      "visualDescription": "Pixel art of a Soviet officer raising a red banner over a liberated Belarusian town square, civilians cautiously emerging from damaged buildings to watch.",
+      "sourceName": "Wikipedia — Operation Bagration",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Bagration",
+      "volatile": false,
+      "distractors": ["Ukraine", "Lithuania", "Latvia", "Poland", "Estonia", "Romania", "Hungary", "Finland"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Belarus had been under German occupation since which year, making its liberation in Operation Bagration particularly significant to the Soviet people?",
+          "correctAnswer": "1941",
+          "distractors": ["1939", "1940", "1942", "1943", "1938", "1944", "1937"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After Operation Bagration liberated Belarus, Soviet forces reaching Poland directly preceded which event that began August 1, 1944?",
+          "correctAnswer": "The Warsaw Uprising",
+          "distractors": ["The Battle of the Bulge", "D-Day", "The invasion of Romania", "The siege of Budapest", "The liberation of Paris", "The Allied crossing of the Rhine", "Operation Market Garden"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Operation Bagration liberated the Soviet republic of Belarus from German occupation.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "By late August 1944, Operation Bagration had liberated Belarus and Soviet forces had reached the borders of ___.",
+          "correctAnswer": "Poland",
+          "distractors": ["Germany", "Ukraine", "Romania", "Hungary", "Czechoslovakia", "Austria", "Lithuania"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter_war_start",
+      "correctAnswer": "November 30, 1939",
+      "acceptableAlternatives": ["November 1939", "30 November 1939"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did the USSR invade Finland, beginning the Winter War?",
+      "explanation": "The USSR invaded Finland on November 30, 1939 — less than three months after invading Poland from the east in September 1939. Stalin demanded territorial concessions; when Finland refused, he expected a quick victory. Instead, Finland's fierce resistance exposed severe weaknesses in the Soviet military just before Germany invaded the USSR in 1941.",
+      "visualDescription": "Pixel art of Soviet troops advancing through dense Finnish forest in heavy snowfall, Finnish ski troops in white camouflage watching from behind trees.",
+      "sourceName": "Wikipedia — Winter War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Winter_War",
+      "volatile": false,
+      "distractors": ["September 1, 1939", "January 15, 1940", "October 1, 1939", "December 1, 1939", "November 15, 1939", "February 1, 1940", "December 15, 1939", "October 15, 1939"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The USSR invaded Finland on November 30, 1939 after Finland refused what Soviet demand?",
+          "correctAnswer": "Territorial concessions",
+          "distractors": ["A military alliance against Germany", "Access to Finnish ports for the Soviet navy", "The right to station Soviet troops in Finland", "Finnish neutrality in the coming war", "The transfer of Finnish industrial equipment", "A non-aggression pact like the Molotov-Ribbentrop Pact", "Finnish participation in the Comintern"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Winter War began just weeks after the USSR also invaded which other country in September 1939, revealing Soviet expansionism?",
+          "correctAnswer": "Poland (eastern Poland)",
+          "distractors": ["Romania", "Estonia", "Latvia", "Lithuania", "Hungary", "Bulgaria", "Czechoslovakia"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The USSR invaded Finland in 1939 after Finland refused Soviet demands for territorial concessions.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Winter War between the USSR and Finland ended with a ceasefire in March ___, with Finland ceding some territory but retaining independence.",
+          "correctAnswer": "1940",
+          "distractors": ["1939", "1941", "1938", "1942", "1943", "1937", "1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter_war_duration",
+      "correctAnswer": "Nearly 4 months (about 105 days)",
+      "acceptableAlternatives": ["3.5 months", "about 4 months", "105 days"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How long did Finland resist the USSR in the Winter War before agreeing to a ceasefire in March 1940?",
+      "explanation": "Finland held out for nearly 4 months — from November 30, 1939 to March 13, 1940. That a small nation of 3.5 million could hold off the Soviet superpower for this long shocked the world, including Adolf Hitler, who may have drawn false confidence from Soviet military weakness when planning Operation Barbarossa.",
+      "visualDescription": "Pixel art of Finnish ski troops firing from behind a snowdrift at advancing Soviet columns, the frozen landscape stretching into a grey winter sky.",
+      "sourceName": "Wikipedia — Winter War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Winter_War",
+      "volatile": false,
+      "distractors": ["2 weeks", "1 month", "6 months", "2 months", "1 week", "8 months", "10 months", "1 year"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Finland's near-4-month resistance in the Winter War alarmed other nations about Soviet military weakness. Which leader may have been falsely encouraged to invade the USSR as a result?",
+          "correctAnswer": "Adolf Hitler",
+          "distractors": ["Winston Churchill", "Franklin Roosevelt", "Benito Mussolini", "Emperor Hirohito", "Francisco Franco", "Ion Antonescu", "Miklós Horthy"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Winter War ceasefire of March 1940 ended with Finland retaining independence but ceding what?",
+          "correctAnswer": "Some territory to the USSR",
+          "distractors": ["Its entire army to Soviet command", "All port access on the Baltic", "Half its population centers", "Its entire air force", "The Åland Islands to Germany", "Nordic defense cooperation rights", "Finnish citizenship rights for Soviet immigrants"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Finland was fully conquered by the USSR during the Winter War.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Finland used winter conditions, forest tactics, and ___ to inflict heavy casualties on Soviet forces despite being vastly outnumbered.",
+          "correctAnswer": "Mobility",
+          "distractors": ["Heavy artillery", "American weapons", "German air support", "Chemical warfare", "Underground bunkers", "Naval blockades", "Cavalry charges"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter_war_tactics",
+      "correctAnswer": "Winter conditions, forest tactics, and ski mobility",
+      "acceptableAlternatives": ["ski troops", "forest and winter warfare", "Finnish ski warfare"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What three tactical advantages allowed Finnish forces to inflict far heavier casualties on the Soviet army than their numbers should have permitted in the Winter War?",
+      "explanation": "Finnish troops exploited winter conditions (the USSR was unprepared), used dense forest terrain for ambushes, and employed ski mobility to outmaneuver Soviet columns bogged down on frozen roads. Finnish snipers like Simo Häyhä became legendary. The USSR suffered enormous casualties before brute-force assaults finally broke through Finnish lines.",
+      "visualDescription": "Pixel art of Finnish ski troops moving silently through a dark pine forest at night, Soviet vehicles visible trapped on a frozen road below them, surrounded and still.",
+      "sourceName": "Wikipedia — Winter War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Winter_War",
+      "volatile": false,
+      "distractors": ["Air superiority, artillery barrages, and tank superiority", "Naval blockade, chemical weapons, and fortifications", "German alliance, air support, and artillery", "Cavalry, river crossings, and night attacks only", "Superior numbers, better equipment, and morale", "Allied air drops, submarine warfare, and mines", "Mountain terrain, poisoned wells, and scorched earth", "Radio jamming, booby traps, and fortified cities"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Finnish ski troops were able to outmaneuver Soviet columns because Soviet forces were bogged down on what type of terrain?",
+          "correctAnswer": "Frozen roads (unable to use forest terrain like the Finns)",
+          "distractors": ["Mountain passes blocked by avalanche", "Frozen rivers too thin to cross", "Muddy unpaved roads melting in a false thaw", "Deep snow drifts in open fields", "Minefield barriers around Finnish cities", "Forest swamps impassable in winter", "Ice-covered lake systems"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Finnish sniper Simo Häyhä, who became famous during the Winter War for his extraordinary kill count, was known by what nickname?",
+          "correctAnswer": "White Death",
+          "distractors": ["The Ghost of the Forest", "Iron Wolf", "Arctic Shadow", "Silent Storm", "The White Bear", "Snow Falcon", "The Invisible Finn"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Finnish ski troops in the Winter War were able to outmaneuver Soviet columns by moving through forest terrain the Soviets could not use.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Winter War demonstrated that small nations could resist Soviet ___, even if they could not ultimately prevent territorial loss.",
+          "correctAnswer": "Power",
+          "distractors": ["Propaganda", "Diplomacy", "Industry", "Alliances", "Navy", "Air force", "Economy"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter_war_ceasefire",
+      "correctAnswer": "March 13, 1940",
+      "acceptableAlternatives": ["March 1940", "13 March 1940"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did the Winter War ceasefire end hostilities between the USSR and Finland?",
+      "explanation": "The Winter War ended March 13, 1940 with the Moscow Peace Treaty. Finland ceded about 11% of its territory — including the Karelian Isthmus — but retained sovereignty. Finland's resilience demonstrated that Soviet military power had severe weaknesses, a lesson that may have influenced Hitler's decision to invade the USSR in June 1941.",
+      "visualDescription": "Pixel art of Finnish and Soviet diplomats at a table signing a document, the Finnish flag still standing in the background alongside the Soviet flag, indicating Finland's survival as an independent nation.",
+      "sourceName": "Wikipedia — Moscow Peace Treaty (1940)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Moscow_Peace_Treaty_(1940)",
+      "volatile": false,
+      "distractors": ["February 15, 1940", "April 1, 1940", "January 31, 1940", "March 1, 1940", "February 28, 1940", "March 30, 1940", "April 15, 1940", "March 20, 1940"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Moscow Peace Treaty ended the Winter War on March 13, 1940. Under its terms, Finland ceded roughly what percentage of its territory?",
+          "correctAnswer": "About 11%",
+          "distractors": ["50%", "25%", "75%", "5%", "33%", "2%", "100% (Finland was annexed)"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Winter War's revelation of Soviet military weakness in 1940 may have encouraged Hitler to do what in June 1941?",
+          "correctAnswer": "Invade the USSR with Operation Barbarossa",
+          "distractors": ["Sign a non-aggression pact with Stalin", "Declare war on the United States", "Invade Finland as a Soviet ally", "Withdraw from the Eastern Front entirely", "Propose a negotiated peace with Britain", "Bomb Soviet cities preemptively", "Support Finnish independence officially"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Finland was forced to surrender completely and was absorbed into the USSR after the Winter War.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Winter War peace treaty required Finland to cede the ___ Isthmus to the Soviet Union.",
+          "correctAnswer": "Karelian",
+          "distractors": ["Kola", "Scandinavian", "Baltic", "Finnish", "Hanko", "Vyborg", "Arctic"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_winter_war_outcome",
+      "correctAnswer": "Finland retained independence but ceded some territory",
+      "acceptableAlternatives": ["Finland kept independence", "Finland survived as independent nation"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What was Finland's ultimate fate at the end of the Winter War — the outcome that made the conflict historically significant for small nations?",
+      "explanation": "Finland retained its independence despite fighting the Soviet superpower for nearly four months — an outcome no one expected. The Winter War demonstrated that small nations could resist Soviet power through terrain exploitation, preparation, and national will. Finland later re-entered conflict against the USSR in the Continuation War (1941–1944) alongside Germany.",
+      "visualDescription": "Pixel art of a Finnish flag flying over a snow-covered city, battered but intact, with Soviet troops visible retreating in the background — a David-vs-Goliath visual.",
+      "sourceName": "Wikipedia — Winter War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Winter_War",
+      "volatile": false,
+      "distractors": ["Finland was annexed as a Soviet republic", "Finland surrendered unconditionally to the USSR", "Finland was partitioned between the USSR and Germany", "Finland joined the Soviet Union voluntarily after the war", "Finland was placed under UN trusteeship", "Finland became a German protectorate after Soviet defeat", "Finland was divided into occupation zones like post-war Germany", "Finland's government was replaced by a Soviet-backed communist regime"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Finland's successful defense in the Winter War inspired which broader historical lesson about small nations and superpowers?",
+          "correctAnswer": "Small nations can resist superpower aggression through terrain, tactics, and national will",
+          "distractors": ["Small nations should always submit to larger neighbors to avoid casualties", "Guerrilla warfare is always more effective than conventional forces", "Winter always defeats any invading army", "National resistance movements require outside support to succeed", "Nuclear deterrence is the only reliable defense for small nations", "Alliances with major powers are the only way small nations survive", "Economic sanctions are more effective than military resistance"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After the Winter War, Finland entered the Continuation War (1941–1944) fighting alongside Germany. What was Finland's primary goal in that conflict?",
+          "correctAnswer": "Recapture territory lost in the Winter War",
+          "distractors": ["Conquer all of the USSR", "Join the German Reich as a province", "Occupy Leningrad permanently", "Establish a pan-Nordic empire", "Access the Arctic Ocean ports", "Expel all Russians from Europe", "Create a Finnish-German customs union"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Finland's survival as an independent nation after the Winter War was widely expected given the USSR's overwhelming military superiority.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Winter War showed that the Soviet military had severe ___, a weakness that may have influenced Hitler's decision to invade the USSR in 1941.",
+          "correctAnswer": "Weaknesses",
+          "distractors": ["Strengths", "Advantages", "Air superiority", "Tank reserves", "Strategic depth", "Population advantages", "Industrial capacity"]
+        }
+      ]
+    }
+  ]
+}

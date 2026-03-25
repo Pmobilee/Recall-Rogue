@@ -1,0 +1,863 @@
+{
+  "facts": [
+    {
+      "id": "wwii_ef_auschwitz_liberation",
+      "correctAnswer": "Auschwitz",
+      "acceptableAlternatives": ["Auschwitz-Birkenau"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which death camp did Soviet forces liberate in January 1945, finding evidence of gas chambers and Nazi medical experiments that later served as Nuremberg trial evidence?",
+      "explanation": "Soviet forces liberated Auschwitz in January 1945, discovering survivors in horrific conditions and documentation of systematic murder. The evidence found there — gas chambers, records of medical experiments, and mass graves — became central proof at the Nuremberg trials.",
+      "visualDescription": "Pixel art of Soviet soldiers approaching a gate in winter, barbed wire fences stretching into fog, snow covering the ground, muted grays and whites.",
+      "sourceName": "Wikipedia — Liberation of concentration camps",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Liberation_of_Nazi_concentration_camps",
+      "volatile": false,
+      "distractors": ["Bergen-Belsen", "Dachau", "Buchenwald", "Treblinka", "Mauthausen", "Chelmno", "Flossenbürg", "Ravensbrück"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Soviet forces liberated this camp in January 1945, uncovering evidence of gas chambers that was later used at Nuremberg. Name the camp.",
+          "correctAnswer": "Auschwitz",
+          "distractors": ["Bergen-Belsen", "Dachau", "Buchenwald", "Treblinka"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why was the liberation of Auschwitz historically significant beyond freeing its survivors?",
+          "correctAnswer": "It provided documentary evidence of systematic murder used at the Nuremberg trials",
+          "distractors": [
+            "It was the first camp liberated by any Allied force",
+            "It housed the largest number of survivors of any camp",
+            "It was located inside Germany proper, proving Nazi guilt"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: American and British forces liberated Auschwitz.",
+          "correctAnswer": "False — Soviet forces liberated Auschwitz",
+          "distractors": ["True — American forces reached Auschwitz first", "True — British forces liberated all eastern camps", "True — joint Allied forces liberated Auschwitz together"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Soviet forces liberated ______, while American and British forces freed western camps like Bergen-Belsen and Dachau.",
+          "correctAnswer": "Auschwitz",
+          "distractors": ["Buchenwald", "Dachau", "Mauthausen", "Ravensbrück"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_bergen_belsen_liberators",
+      "correctAnswer": "British",
+      "acceptableAlternatives": ["British forces", "the British"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Which Allied nation's forces liberated Bergen-Belsen concentration camp, finding survivors in conditions that shocked even battle-hardened soldiers?",
+      "explanation": "British forces liberated Bergen-Belsen in April 1945. The conditions they found — mass starvation, disease, and thousands of unburied dead — shocked the world and were widely broadcast, helping shape public understanding of the Holocaust.",
+      "visualDescription": "Pixel art of British soldiers in khaki uniforms opening a wooden gate, hollow-eyed survivors visible beyond, sparse leafless trees in the background.",
+      "sourceName": "Wikipedia — Liberation of Bergen-Belsen",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bergen-Belsen_concentration_camp",
+      "volatile": false,
+      "distractors": ["Soviet", "American", "French", "Canadian", "Polish", "Australian", "Dutch", "Norwegian"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Bergen-Belsen was liberated by which Allied nation?",
+          "correctAnswer": "British",
+          "distractors": ["Soviet", "American", "French", "Canadian"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The liberation of Bergen-Belsen, Dachau, and Buchenwald by western Allied forces and Auschwitz by Soviet forces reveals what about the Holocaust's geography?",
+          "correctAnswer": "Eastern death camps were deeper in Nazi-controlled territory and liberated last by Soviet forces pushing west",
+          "distractors": [
+            "Western camps were far more deadly than eastern ones",
+            "The Soviets refused to liberate any camps west of Poland",
+            "American forces deliberately avoided liberating camps to stay out of politics"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Soviet forces liberated Bergen-Belsen.",
+          "correctAnswer": "False — British forces liberated Bergen-Belsen",
+          "distractors": ["True — Soviet forces liberated all major concentration camps", "True — American forces reached Bergen-Belsen before the British", "True — Bergen-Belsen was liberated by a joint Soviet-British operation"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "______ forces liberated Bergen-Belsen, while Soviet forces liberated Auschwitz and the eastern camps.",
+          "correctAnswer": "British",
+          "distractors": ["American", "French", "Canadian", "Polish"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_nuremberg_evidence",
+      "correctAnswer": "Nuremberg trials",
+      "acceptableAlternatives": ["the Nuremberg trials", "Nuremberg"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Documentation of gas chambers, medical experiments, and systematic murder found when Allied forces liberated camps provided key evidence for what postwar legal proceedings?",
+      "explanation": "Camp liberators discovered meticulous Nazi records, physical evidence of gas chambers, and survivor testimony. This documentation became foundational evidence at the Nuremberg trials, where Nazi leaders were prosecuted for crimes against humanity — establishing a new standard in international law.",
+      "visualDescription": "Pixel art of a courtroom with rows of seated defendants, Allied flags on the wall, stacks of documents on judge's bench, dramatic overhead lighting.",
+      "sourceName": "Wikipedia — Nuremberg trials",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_trials",
+      "volatile": false,
+      "distractors": ["Geneva Convention revisions", "Paris Peace Conference", "Potsdam Agreement", "United Nations charter drafting", "Tokyo War Crimes Tribunal", "Marshall Plan negotiations", "Yalta Conference", "League of Nations hearings"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Nuremberg trials relied heavily on evidence discovered when Allied forces liberated what type of facilities?",
+          "correctAnswer": "Concentration and death camps",
+          "distractors": ["German military headquarters", "Nazi party archives in Berlin", "Captured Wehrmacht supply depots", "Gestapo interrogation centers"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What made the documentary evidence found in liberated camps especially powerful at Nuremberg?",
+          "correctAnswer": "The Nazis had kept meticulous records of their own crimes, providing irrefutable proof",
+          "distractors": [
+            "Survivor testimony alone was considered legally sufficient under Allied law",
+            "Physical evidence of gas chambers could be dismissed but written orders could not",
+            "The Soviets had fabricated additional documents to strengthen the case"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The evidence from liberated camps played a role in the Nuremberg trials.",
+          "correctAnswer": "True — camp documentation and survivor testimony were key Nuremberg evidence",
+          "distractors": ["False — Nuremberg relied only on military records captured in Berlin", "False — camp evidence was excluded as too emotionally prejudicial", "False — the Nuremberg trials began before any camps were liberated"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Liberators found documentation of systematic murder and gas chambers, which later provided evidence for the ______.",
+          "correctAnswer": "Nuremberg trials",
+          "distractors": ["Geneva Convention", "Paris Peace Conference", "Potsdam Agreement", "United Nations founding"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_displaced_survivors",
+      "correctAnswer": "Displaced persons",
+      "acceptableAlternatives": ["displaced persons (DPs)", "DPs"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Camp survivors liberated by Allied forces in 1944-45 were classified under what category, as they had no home country to safely return to?",
+      "explanation": "Holocaust survivors liberated from camps became displaced persons (DPs) — stateless or unable to return home due to destroyed communities, antisemitism, and Soviet occupation of Eastern Europe. Millions spent years in DP camps before emigrating, many to the newly founded state of Israel after 1948.",
+      "visualDescription": "Pixel art of gaunt figures in striped uniforms standing by a road with bundles of belongings, Allied jeeps passing, autumn-colored trees lining the route.",
+      "sourceName": "Wikipedia — Displaced persons after World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Displaced_persons_after_World_War_II",
+      "volatile": false,
+      "distractors": ["Prisoners of war", "Stateless refugees", "Allied civilians", "War criminals", "Enemy combatants", "Neutral nationals", "Occupied civilians", "Liberated nationals"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What term described Holocaust survivors after liberation who had no home to return to?",
+          "correctAnswer": "Displaced persons (DPs)",
+          "distractors": ["Prisoners of war", "Stateless refugees", "Liberated nationals", "Allied civilians"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why could many Holocaust survivors not return home even after liberation?",
+          "correctAnswer": "Their communities had been destroyed and Eastern Europe was now under Soviet occupation",
+          "distractors": [
+            "Allied authorities required survivors to remain in Germany for legal testimony",
+            "Most survivors had lost all documentation proving their nationality",
+            "International law prohibited movement across newly drawn postwar borders"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Most Holocaust survivors were able to return to their home communities immediately after liberation.",
+          "correctAnswer": "False — most became displaced persons as their communities had been destroyed",
+          "distractors": ["True — Allied forces arranged immediate repatriation for all survivors", "True — survivors were given priority resettlement in their home countries", "True — most survivors returned within weeks of liberation"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Camp survivors found by liberators were classified as ______, as they had no safe home country to return to.",
+          "correctAnswer": "Displaced persons",
+          "distractors": ["Prisoners of war", "Stateless refugees", "Enemy civilians", "Liberated nationals"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_vistula_offensive",
+      "correctAnswer": "January 1945",
+      "acceptableAlternatives": ["Jan 1945", "January"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "When did the Soviets launch their final major offensive, crossing the Vistula River into Poland and beginning the drive that would end with Berlin's fall?",
+      "explanation": "The Vistula-Oder Offensive began January 12, 1945, building on the momentum from Operation Bagration and Kursk. Soviet forces crossed the Vistula, captured Warsaw, and swept through Poland into Germany — covering more ground in weeks than the Western Allies had in months.",
+      "visualDescription": "Pixel art of Soviet tanks crossing a frozen river in winter, snow-covered plains stretching ahead, dark pine forests on the far bank, cold blue sky.",
+      "sourceName": "Wikipedia — Vistula–Oder Offensive",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vistula%E2%80%93Oder_Offensive",
+      "volatile": false,
+      "distractors": ["June 1944", "August 1944", "October 1944", "March 1945", "September 1944", "November 1944", "December 1944", "February 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Soviet crossing of the Vistula River into Poland, beginning the final push to Berlin, occurred in which month and year?",
+          "correctAnswer": "January 1945",
+          "distractors": ["June 1944", "August 1944", "March 1945", "December 1944"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The January 1945 Soviet offensive crossed the Vistula and captured which major city on the way to Berlin?",
+          "correctAnswer": "Warsaw",
+          "distractors": ["Krakow", "Lodz", "Poznan", "Gdansk"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Soviet final offensive that crossed the Vistula River began in January 1945.",
+          "correctAnswer": "True — the Vistula-Oder Offensive began January 12, 1945",
+          "distractors": ["False — the Soviet final offensive began in June 1944 with Bagration", "False — Soviets crossed the Vistula in October 1944", "False — the final Soviet offensive began in March 1945"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "In ______, the Soviets launched their final offensive, crossing the Vistula into Poland and advancing toward Berlin.",
+          "correctAnswer": "January 1945",
+          "distractors": ["June 1944", "August 1944", "March 1945", "December 1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_berlin_fall",
+      "correctAnswer": "May 1945",
+      "acceptableAlternatives": ["May 8, 1945", "May 8"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "After crossing the Vistula in January 1945 and sweeping through Poland, Soviet forces captured Berlin in what month of 1945?",
+      "explanation": "Berlin fell to Soviet forces in May 1945, ending the war in Europe. The Battle of Berlin was one of the costliest of the entire war, with massive casualties on both sides. Germany formally surrendered on May 8, 1945 — V-E Day.",
+      "visualDescription": "Pixel art of a Soviet soldier raising the red flag over a ruined building against a grey sky, smoke rising from destroyed city blocks below.",
+      "sourceName": "Wikipedia — Battle of Berlin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Berlin",
+      "volatile": false,
+      "distractors": ["March 1945", "April 1945", "June 1945", "February 1945", "July 1945", "January 1945", "August 1945", "September 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Germany formally surrendered on May 8, 1945 — V-E Day. What city had Soviet forces just captured to force that surrender?",
+          "correctAnswer": "Berlin",
+          "distractors": ["Hamburg", "Munich", "Dresden", "Frankfurt"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Soviet 'liberation' of Eastern Europe as they advanced from the Vistula to Berlin in 1945 had what lasting geopolitical consequence?",
+          "correctAnswer": "It set up Soviet occupation and communist regimes — dividing Europe into Cold War blocs",
+          "distractors": [
+            "It created a power vacuum quickly filled by democratic governments",
+            "It forced the United States to immediately commit troops to Eastern Europe",
+            "It led to a unified European government under joint Allied administration"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: American forces captured Berlin in May 1945.",
+          "correctAnswer": "False — Soviet forces captured Berlin in May 1945",
+          "distractors": ["True — American forces reached Berlin before the Soviets", "True — Berlin was captured by a joint American-Soviet operation", "True — British forces led the capture of Berlin"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After sweeping through Poland and advancing into Germany, Soviet forces captured Berlin in ______, ending the war in Europe.",
+          "correctAnswer": "May 1945",
+          "distractors": ["March 1945", "April 1945", "February 1945", "June 1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_soviet_cold_war",
+      "correctAnswer": "Communist regimes",
+      "acceptableAlternatives": ["Soviet-backed communist governments", "communist governments", "puppet states"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Stalin's 'liberation' of Eastern Europe as Soviet forces advanced westward in 1944-45 actually meant occupation — what did he install in the countries his forces controlled?",
+      "explanation": "As Soviet forces pushed through Belarus, Ukraine, the Baltic states, and Poland, Stalin imposed Soviet-aligned communist regimes rather than restoring pre-war governments. This divided Europe between Western democracies and Eastern communist states — directly creating the Cold War.",
+      "visualDescription": "Pixel art of Soviet soldiers marching through a European city street, red flags being raised on buildings, local civilians watching silently from doorways.",
+      "sourceName": "Wikipedia — Soviet occupation of Eastern Europe",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet_occupation_of_Eastern_Europe",
+      "volatile": false,
+      "distractors": ["Democratic provisional governments", "Military occupation councils", "League of Nations trusteeships", "Restored monarchies", "Coalition governments", "UN peacekeeping administrations", "Free elections", "Neutral caretaker governments"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What political system did Stalin impose on Eastern European nations 'liberated' by Soviet forces in 1944-45?",
+          "correctAnswer": "Communist regimes aligned with the Soviet Union",
+          "distractors": ["Democratic republics with free elections", "Military occupation councils under joint Allied control", "Restored pre-war governments", "League of Nations trusteeships"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How did Soviet control over Eastern Europe after 1945 directly contribute to the Cold War?",
+          "correctAnswer": "It divided Europe between Western democratic and Eastern communist blocs, creating the Iron Curtain",
+          "distractors": [
+            "It caused the United States to develop nuclear weapons exclusively to deter Soviet expansion",
+            "It led Britain and France to form a military alliance against the Soviets before the US joined",
+            "It convinced the Soviet Union to abandon communism for a mixed economy"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Stalin allowed free elections in Eastern European countries liberated by Soviet forces.",
+          "correctAnswer": "False — Stalin imposed communist regimes that set up the Cold War division",
+          "distractors": ["True — Stalin promised free elections at Yalta and kept his word", "True — Eastern European nations chose communism through legitimate referendums", "True — free elections were held under joint Allied supervision"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "As Soviet forces swept through Eastern Europe, Stalin imposed ______, setting up the Cold War division of the continent.",
+          "correctAnswer": "communist regimes",
+          "distractors": ["democratic elections", "military occupation councils", "joint Allied administrations", "League of Nations mandates"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_sevastopol_duration",
+      "correctAnswer": "300 days",
+      "acceptableAlternatives": ["approximately 300 days", "about 300 days"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How long did Soviet forces hold the fortified city of Sevastopol against the German siege that began in October 1941?",
+      "explanation": "The Siege of Sevastopol lasted from October 30, 1941 to July 4, 1942 — approximately 300 days. Soviet defenders held the Crimean fortress far longer than German planners expected, supplied by sea across the Black Sea, before finally being forced to evacuate.",
+      "visualDescription": "Pixel art of a coastal fortress under bombardment, smoke rising from the harbor, warships silhouetted against an orange sky, artillery flashes on the hilltops.",
+      "sourceName": "Wikipedia — Siege of Sevastopol (1941–1942)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Sevastopol_(1941%E2%80%9342)",
+      "volatile": false,
+      "distractors": ["30 days", "60 days", "100 days", "150 days", "200 days", "400 days", "500 days", "900 days"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Siege of Sevastopol lasted from October 30, 1941 to July 4, 1942. Approximately how many days is that?",
+          "correctAnswer": "300 days",
+          "distractors": ["60 days", "150 days", "200 days", "400 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How were Soviet defenders of Sevastopol supplied during the 300-day siege while surrounded by German forces on land?",
+          "correctAnswer": "By sea across the Black Sea",
+          "distractors": [
+            "By aircraft flying low over German lines at night",
+            "Through a secret tunnel network dug under German positions",
+            "By overland supply convoys that broke through the German perimeter"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Siege of Sevastopol lasted less than one month before Soviet forces surrendered.",
+          "correctAnswer": "False — the siege lasted approximately 300 days before Soviets evacuated",
+          "distractors": ["True — Sevastopol fell within weeks of the German assault", "True — the siege lasted exactly 30 days", "True — Soviet forces abandoned Sevastopol before a siege could begin"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Siege of Sevastopol lasted approximately ______, making it one of the longest sieges on the Eastern Front.",
+          "correctAnswer": "300 days",
+          "distractors": ["60 days", "150 days", "900 days", "400 days"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_sevastopol_casualties",
+      "correctAnswer": "200,000+",
+      "acceptableAlternatives": ["over 200,000", "more than 200,000"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How many total casualties did each side suffer during the 300-day Siege of Sevastopol, reflecting the ferocity of German attacks against the Soviet fortified perimeter?",
+      "explanation": "Both German and Soviet forces suffered 200,000+ casualties during the Siege of Sevastopol. Despite enormous losses, German forces eventually took the city and with it control of Crimea and Black Sea access — a major strategic prize in 1942.",
+      "visualDescription": "Pixel art of a bombed-out coastal city, ruined white buildings on clifftops, smoke plumes over the harbor, German and Soviet infantry clashing in the rubble.",
+      "sourceName": "Wikipedia — Siege of Sevastopol (1941–1942)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Sevastopol_(1941%E2%80%9342)",
+      "volatile": false,
+      "distractors": ["5,000", "10,000", "25,000", "50,000", "75,000", "100,000", "150,000", "500,000"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Siege of Sevastopol was described as a battle where both sides suffered over 200,000 casualties. What type of terrain made it so costly to attack?",
+          "correctAnswer": "A fortified coastal fortress perimeter supplied by sea",
+          "distractors": [
+            "Dense urban street fighting in a heavily populated industrial city",
+            "Jungle terrain that neutralized German armor and artillery",
+            "Underground bunker networks dug into rocky mountainsides"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What strategic prize did Germany gain by taking Sevastopol after the costly 300-day siege?",
+          "correctAnswer": "Control of Crimea and access to the Black Sea",
+          "distractors": [
+            "Direct land corridor to the Caucasus oil fields",
+            "A major railroad hub linking Ukraine to Romania",
+            "The Soviet Navy's largest submarine base"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Only the Soviet side suffered significant casualties at Sevastopol, as German attackers had overwhelming superiority.",
+          "correctAnswer": "False — both sides suffered 200,000+ casualties each",
+          "distractors": ["True — Soviet losses vastly outnumbered German casualties", "True — German forces suffered almost no casualties due to superior tactics", "True — the Soviets lost 10 times more men than the Germans"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Sevastopol, both German and Soviet forces each suffered ______ casualties during the 300-day siege.",
+          "correctAnswer": "200,000+",
+          "distractors": ["5,000", "50,000", "100,000", "500,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_sevastopol_evacuation",
+      "correctAnswer": "Evacuated across the Black Sea",
+      "acceptableAlternatives": ["evacuated by sea", "evacuated across the sea", "escaped by sea"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After holding Sevastopol for 300 days, how did Soviet forces ultimately leave the city when German pressure became overwhelming in July 1942?",
+      "explanation": "Soviet forces evacuated across the Black Sea rather than surrender in place. The sea evacuation under fire was costly but preserved some forces. Sevastopol's fall gave Germany control of Crimea, though the Soviets would return and recapture the peninsula in 1944.",
+      "visualDescription": "Pixel art of Soviet soldiers wading to small boats in dark water, searchlights and tracer fire visible overhead, Crimean cliffs silhouetted against a burning sky.",
+      "sourceName": "Wikipedia — Siege of Sevastopol (1941–1942)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Sevastopol_(1941%E2%80%9342)",
+      "volatile": false,
+      "distractors": ["Surrendered to German forces", "Broke out overland through German lines", "Tunneled under the German perimeter", "Were airlifted by Soviet aircraft", "Surrendered after negotiations", "Retreated north along the coast", "Were rescued by a relief army", "Held out in underground bunkers"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Soviet forces held Sevastopol for 300 days before being forced out. What method did they use to escape German encirclement?",
+          "correctAnswer": "Evacuated across the Black Sea",
+          "distractors": ["Broke out overland through German lines", "Surrendered after negotiating terms", "Were airlifted out by Soviet transport aircraft", "Tunneled under the German siege lines"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Germany held Crimea after Sevastopol fell in 1942, but this occupation proved temporary. When did Soviets recapture the peninsula?",
+          "correctAnswer": "1944",
+          "distractors": ["1943", "1945", "Late 1942", "Early 1943"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Soviet forces at Sevastopol surrendered en masse when the city fell in July 1942.",
+          "correctAnswer": "False — Soviet forces evacuated across the Black Sea rather than surrender",
+          "distractors": ["True — the entire Sevastopol garrison surrendered to German forces", "True — Soviet commanders ordered mass surrender to prevent further casualties", "True — the Soviets surrendered after running out of ammunition and food"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "When Sevastopol fell in July 1942, Soviet forces ______ rather than surrender to German forces.",
+          "correctAnswer": "evacuated across the Black Sea",
+          "distractors": ["surrendered en masse", "broke out overland", "were airlifted to safety", "tunneled to safety"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_tito_partisans",
+      "correctAnswer": "Tito",
+      "acceptableAlternatives": ["Josip Broz Tito", "Josip Broz"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Who led the communist partisans in Yugoslavia from 1941-1945, fighting both the Germans and rival Četniks to eventually liberate Yugoslavia and install a communist government?",
+      "explanation": "Tito (Josip Broz) commanded one of Europe's most effective resistance movements. His partisans fought a brutal guerrilla war against German occupation while simultaneously outmaneuvering the royalist Četniks. By 1944, both the Soviets and western Allies backed Tito, who liberated Yugoslavia in 1945 and ruled as its communist leader until his death in 1980.",
+      "visualDescription": "Pixel art of a partisan leader in olive uniform with a red star cap, standing on a forested hillside, armed fighters visible among the trees behind him.",
+      "sourceName": "Wikipedia — Yugoslav Partisans",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Yugoslav_Partisans",
+      "volatile": false,
+      "distractors": ["Draža Mihailović", "King Peter II", "Milan Nedić", "Ante Pavelić", "Svetozar Vukmanović", "Peko Dapčević", "Ivan Ribar", "Alexander Ranković"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Tito led which nation's communist resistance movement during WWII, eventually liberating his country and installing a communist government in 1945?",
+          "correctAnswer": "Yugoslavia",
+          "distractors": ["Greece", "Poland", "Albania", "Bulgaria"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Yugoslav Partisan struggle was complicated by rivalry with the Četniks. What ultimately discredited the Četniks in the eyes of the western Allies?",
+          "correctAnswer": "The Četniks collaborated with the Germans",
+          "distractors": [
+            "The Četniks refused to attack German forces and focused only on Communists",
+            "The Četniks were discovered to be funded by Italy rather than Britain",
+            "The Četniks lost their leaders in a series of German counterattacks"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: By 1944, both the Soviet Union and Western Allies recognized Tito's partisans rather than the Četniks as the legitimate Yugoslav resistance.",
+          "correctAnswer": "True — Četnik collaboration with Germans led both superpowers to back Tito",
+          "distractors": ["False — the Western Allies continued to support the Četniks while Soviets backed Tito", "False — only the Soviets backed Tito; the West remained neutral", "False — neither the Soviets nor the West officially recognized any Yugoslav faction"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "______ led communist partisans in Yugoslavia against both German occupation and the rival Četniks, eventually liberating the country in 1945.",
+          "correctAnswer": "Tito",
+          "distractors": ["Draža Mihailović", "King Peter II", "Milan Nedić", "Ante Pavelić"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_cetnik_collaboration",
+      "correctAnswer": "Collaborated with Germans",
+      "acceptableAlternatives": ["collaborated with the Germans", "collaborated with Germany", "collaborated with the occupiers"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "What decision by the royalist Četnik resistance in Yugoslavia ultimately discredited them with the Allies and allowed Tito's partisans to receive full international support?",
+      "explanation": "The Četniks, led by Draža Mihailović, increasingly collaborated with the German and Italian occupiers to fight the communist Partisans. This collaboration became widely known by 1944, leading both Britain and the Soviet Union to withdraw support from the Četniks and back Tito exclusively.",
+      "visualDescription": "Pixel art of bearded Serbian fighters in a mountain village, German officers visible in the background in an uneasy parley, snow-capped peaks behind.",
+      "sourceName": "Wikipedia — Chetniks",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chetniks",
+      "volatile": false,
+      "distractors": ["Refused to fight Germans at all", "Surrendered to Italy early in the war", "Aligned with the Croatian Ustaše", "Broke an arms agreement with Britain", "Failed to hold any territory", "Defected to the German army wholesale", "Attacked Allied supply lines", "Assassinated Allied liaison officers"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Četnik collaboration with Germans in Yugoslavia discredited them and led the Allies to support whom instead?",
+          "correctAnswer": "Tito's communist partisans",
+          "distractors": ["King Peter II's government-in-exile", "A new democratic resistance movement", "The Croatian Home Guard", "A joint Serb-Croat resistance front"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Yugoslav resistance was complicated by ethnic tensions between Serbs and Croats. Which ethnic group primarily made up the Četniks versus Tito's partisans?",
+          "correctAnswer": "Četniks were predominantly Serbian royalists; Tito's partisans were multi-ethnic",
+          "distractors": [
+            "Četniks were Croatian nationalists; partisans were exclusively Serbian",
+            "Both movements were exclusively Serbian; the Croats collaborated with Germany",
+            "Četniks were Slovenian Catholics; partisans were Serbian Orthodox"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Četniks were the primary Allied-recognized resistance movement in Yugoslavia throughout the entire war.",
+          "correctAnswer": "False — Četnik collaboration with Germans led the Allies to switch support to Tito's partisans by 1944",
+          "distractors": ["True — the Četniks remained the only Allied-recognized resistance until Yugoslavia's liberation", "True — Britain maintained support for the Četniks even after their German collaboration was exposed", "True — the Četniks liberated Yugoslavia in 1945 with Allied support"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Četniks lost Allied support because they ______, causing both Britain and the Soviets to back Tito's partisans exclusively by 1944.",
+          "correctAnswer": "collaborated with Germans",
+          "distractors": ["refused to fight at all", "surrendered to Italy", "attacked Allied supply lines", "defected to the German army"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_yugoslavia_liberation",
+      "correctAnswer": "1945",
+      "acceptableAlternatives": ["1945 — liberated by Tito's partisans"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "In what year did Tito's partisans liberate Yugoslavia and install a communist government, making Yugoslavia one of the only European nations to largely free itself without depending on a superpower's army?",
+      "explanation": "Yugoslavia was liberated in 1945 primarily by Tito's own partisan forces, though Soviet forces helped clear some areas. Unlike most of Eastern Europe, where Soviet armies imposed communism, Yugoslavia's communism came through its own internal revolution — giving Tito independence from Stalin that would later define the Cold War.",
+      "visualDescription": "Pixel art of partisan fighters marching through a city street in celebration, crowds lining the road, red stars on partisan caps, European building facades decorated with partisan flags.",
+      "sourceName": "Wikipedia — Yugoslav Partisans",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Yugoslav_Partisans",
+      "volatile": false,
+      "distractors": ["1941", "1942", "1943", "1944", "1946", "1947", "1948", "1940"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Unlike most Eastern European communist states imposed by Soviet occupation, Yugoslavia's communist government came largely through its own partisan liberation. In what year?",
+          "correctAnswer": "1945",
+          "distractors": ["1943", "1944", "1946", "1947"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Yugoslavia's self-liberation in 1945 gave Tito what advantage over other Eastern European communist leaders?",
+          "correctAnswer": "Independence from Stalin — Tito could defy Soviet control, unlike puppet regimes installed by Soviet occupation",
+          "distractors": [
+            "Yugoslavia received far more American Marshall Plan aid than Soviet-occupied states",
+            "Yugoslavia was allowed to join NATO as a result of its independent liberation",
+            "Tito gained a permanent UN Security Council seat for Yugoslavia"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Yugoslavia's liberation in 1945 was accomplished primarily by Soviet Red Army forces.",
+          "correctAnswer": "False — Yugoslavia was primarily liberated by Tito's own partisan forces",
+          "distractors": ["True — Soviet forces liberated all of the Balkans in 1945", "True — Yugoslavia was freed by a joint Soviet and US operation", "True — British forces were the primary liberators of Yugoslavia"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "In ______, Tito's partisans liberated Yugoslavia and installed a communist government, one of Europe's fiercest resistance movements having won.",
+          "correctAnswer": "1945",
+          "distractors": ["1943", "1944", "1946", "1942"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_destruction_pct",
+      "correctAnswer": "80%",
+      "acceptableAlternatives": ["eighty percent", "80 percent"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "After suppressing the Warsaw Uprising, Hitler ordered the systematic destruction of Warsaw. What percentage of the city was demolished with explosives and fires?",
+      "explanation": "After the Warsaw Uprising was suppressed in October 1944, Hitler ordered engineers to systematically demolish Warsaw building by building. By the time Soviet forces entered the city in January 1945, approximately 80% of Warsaw had been deliberately destroyed. Hitler wanted to erase Warsaw as punishment for the rebellion.",
+      "visualDescription": "Pixel art of a gutted cityscape, only skeletal walls and rubble remaining, German engineers with detonators visible, smoke rising from every block into a grey sky.",
+      "sourceName": "Wikipedia — Destruction of Warsaw",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Destruction_of_Warsaw",
+      "volatile": false,
+      "distractors": ["20%", "30%", "40%", "50%", "60%", "70%", "90%", "100%"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Eighty percent of Warsaw was deliberately destroyed by German forces after the Warsaw Uprising. Between what dates did this demolition occur?",
+          "correctAnswer": "October 2 to November 15, 1944",
+          "distractors": [
+            "August 1 to October 2, 1944 (during the uprising itself)",
+            "January 1 to February 15, 1945 (as Soviets advanced)",
+            "September 1 to September 30, 1943 (after the Ghetto Uprising)"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hitler's order to destroy Warsaw after the 1944 uprising was intended as what kind of message?",
+          "correctAnswer": "A punishment — to erase the city entirely as retribution for the rebellion",
+          "distractors": [
+            "A military necessity to deny Soviet forces a usable urban base",
+            "A final solution to the Polish question by eliminating the capital",
+            "A deterrent to prevent other occupied cities from rebelling"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The destruction of Warsaw resulted from combat between German and Soviet forces, not deliberate demolition.",
+          "correctAnswer": "False — Hitler ordered systematic demolition with explosives and fires after the uprising was suppressed",
+          "distractors": ["True — Warsaw was destroyed in fighting between Soviet and German forces in early 1945", "True — Warsaw was bombed to rubble by Allied air raids in 1944", "True — the city was destroyed during the German invasion in 1939"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After suppressing the Warsaw Uprising, Hitler ordered systematic destruction, and German engineers demolished ______ of the city with explosives and fires.",
+          "correctAnswer": "80%",
+          "distractors": ["30%", "50%", "60%", "90%"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_uprising_dates",
+      "correctAnswer": "October 2 to November 15, 1944",
+      "acceptableAlternatives": ["October–November 1944", "late 1944"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "After the Warsaw Uprising was suppressed, German demolition units systematically destroyed the city during what period?",
+      "explanation": "The systematic demolition of Warsaw occurred from October 2 to November 15, 1944 — after the Uprising was crushed. German engineers methodically destroyed block by block. Polish survivors were expelled from the city, leaving it an uninhabited ruin that Soviet forces entered in January 1945.",
+      "visualDescription": "Pixel art of German soldiers in winter coats surveying a map of street blocks, engineers setting charges on building foundations, Warsaw rooftops in the background.",
+      "sourceName": "Wikipedia — Destruction of Warsaw",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Destruction_of_Warsaw",
+      "volatile": false,
+      "distractors": [
+        "August–September 1944",
+        "January–February 1945",
+        "June–August 1944",
+        "November 1944–January 1945",
+        "September–October 1943",
+        "March–April 1944",
+        "December 1944–January 1945",
+        "July–August 1944"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "German demolition units systematically destroyed Warsaw from October 2 to November 15, 1944. What triggered this destruction order?",
+          "correctAnswer": "Hitler's order after suppressing the Warsaw Uprising",
+          "distractors": [
+            "A Soviet artillery bombardment that accidentally ignited city-wide fires",
+            "A German military decision to deny Soviet forces a defensible urban base",
+            "Retreating German forces destroying infrastructure under standard scorched-earth orders"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After German engineers destroyed 80% of Warsaw and expelled the Polish population, when did Soviet forces finally enter the ruined city?",
+          "correctAnswer": "January 1945",
+          "distractors": ["November 1944", "December 1944", "February 1945", "March 1945"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Polish civilians were allowed to remain in Warsaw during the German demolition in late 1944.",
+          "correctAnswer": "False — Polish survivors were expelled from Warsaw before and during the demolition",
+          "distractors": ["True — civilians were kept in Warsaw as forced labor to help demolish buildings", "True — the Red Cross negotiated civilian protection during the demolition", "True — Polish civilians hid underground and survived the demolition campaign"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "German forces systematically demolished Warsaw from ______, expelling Polish survivors and leaving an uninhabited ruin.",
+          "correctAnswer": "October 2 to November 15, 1944",
+          "distractors": ["August to September 1944", "January to February 1945", "December 1944 to January 1945", "June to August 1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_rebuilt",
+      "correctAnswer": "Rebuilt Warsaw on the ruins",
+      "acceptableAlternatives": ["rebuilt the city", "rebuilt Warsaw", "reconstructed Warsaw"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "After Germany deliberately destroyed 80% of Warsaw to punish Polish resistance, what did Poles do with the ruins after the war?",
+      "explanation": "Rather than abandon their capital, Poles rebuilt Warsaw on the ruins — one of history's most remarkable acts of national defiance. They reconstructed the Old Town so precisely from historical records and paintings that it was later recognized as a UNESCO World Heritage Site. Warsaw's reconstruction became a symbol of Polish national resilience.",
+      "visualDescription": "Pixel art of workers in postwar clothing clearing rubble, cranes in the background beginning new construction, Warsaw's Old Town facades rising again from ruins, hopeful dawn sky.",
+      "sourceName": "Wikipedia — Reconstruction of Warsaw",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Reconstruction_of_Warsaw",
+      "volatile": false,
+      "distractors": [
+        "Abandoned Warsaw and built a new capital city",
+        "Left Warsaw as a preserved war memorial",
+        "Accepted German reparations to relocate the capital",
+        "Built a modern city entirely different from historic Warsaw",
+        "Relocated the capital permanently to Krakow",
+        "Accepted Soviet redevelopment of Warsaw as a Soviet-style city",
+        "Left Warsaw abandoned for a decade before rebuilding",
+        "Petitioned the UN to restore Warsaw from international funds"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Poland rebuilt Warsaw's Old Town so faithfully from historical records after WWII that it received what international recognition?",
+          "correctAnswer": "UNESCO World Heritage Site designation",
+          "distractors": [
+            "A UN Security Council Resolution condemning German war crimes",
+            "The European Capital of Culture award for 1950",
+            "A special Marshall Plan reconstruction grant"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hitler ordered Warsaw destroyed as punishment for the 1944 Uprising. What does the subsequent Polish rebuilding of Warsaw symbolize in historical memory?",
+          "correctAnswer": "Polish national resilience and defiance — the refusal to let Hitler erase their capital",
+          "distractors": [
+            "The success of Soviet urban planning in reconstructing Eastern European cities",
+            "The effectiveness of international aid in postwar European reconstruction",
+            "The superiority of communist collective labor over individual enterprise"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: After World War II, Poland abandoned Warsaw due to the scale of destruction and moved its capital to another city.",
+          "correctAnswer": "False — Poles rebuilt Warsaw on the ruins, reconstructing it as a symbol of national defiance",
+          "distractors": ["True — Poland relocated its capital to Krakow after Warsaw's destruction", "True — Warsaw was left as a ruin for decades before any rebuilding began", "True — the Soviet Union rebuilt Warsaw as a new Soviet-style city"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Rather than abandon their capital after Hitler's deliberate destruction, Poles ______, an act recognized as one of history's most remarkable national resurgences.",
+          "correctAnswer": "rebuilt Warsaw on the ruins",
+          "distractors": [
+            "abandoned Warsaw and built a new capital",
+            "left Warsaw as a preserved memorial",
+            "accepted Soviet redevelopment of the city",
+            "relocated permanently to Krakow"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_warsaw_survivors_expelled",
+      "correctAnswer": "Expelled",
+      "acceptableAlternatives": ["expelled from Warsaw", "driven out", "forcibly removed"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After the Warsaw Uprising was crushed in October 1944, what happened to the Polish civilians who had survived both the uprising and the German suppression?",
+      "explanation": "After suppressing the Warsaw Uprising, German forces expelled all remaining Polish civilians from the city. This cleared the way for demolition engineers to systematically destroy Warsaw block by block. The expulsion of hundreds of thousands of Poles — combined with the city's 80% destruction — made Warsaw a ghost city by the time Soviet forces arrived in January 1945.",
+      "visualDescription": "Pixel art of long columns of Polish civilians carrying bundles on a road leading away from burning Warsaw, German soldiers standing watch, autumn trees lining the road.",
+      "sourceName": "Wikipedia — Destruction of Warsaw",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Destruction_of_Warsaw",
+      "volatile": false,
+      "distractors": ["Allowed to remain as hostages", "Deported to concentration camps", "Evacuated to neutral countries", "Sheltered in the city's sewers", "Allowed to return to pre-war homes", "Transferred to labor camps in Germany", "Granted refugee status by the Red Cross", "Permitted to flee east toward Soviet lines"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "German forces expelled Polish civilians from Warsaw after the 1944 Uprising to allow for systematic demolition. Approximately how many residents were driven out?",
+          "correctAnswer": "Hundreds of thousands of Polish survivors",
+          "distractors": [
+            "Only resistance fighters — civilians were permitted to remain",
+            "Fewer than 10,000 — most had already fled during the uprising",
+            "A symbolic few thousand to satisfy international observers"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The expulsion of Warsaw's civilian population after the 1944 Uprising served a specific German military purpose. What was it?",
+          "correctAnswer": "To clear the city for demolition engineers to destroy Warsaw systematically with explosives",
+          "distractors": [
+            "To prevent civilian casualties during anticipated Soviet bombardment",
+            "To use expelled Poles as a labor force to build new German defensive lines",
+            "To comply with Red Cross demands for civilian protection"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Warsaw's Polish civilian population was allowed to remain in the city while German engineers demolished it in late 1944.",
+          "correctAnswer": "False — German forces expelled all remaining civilians before the systematic demolition began",
+          "distractors": ["True — civilians were kept as laborers to assist with demolition", "True — civilians were permitted to stay in designated safe zones", "True — civilians hid successfully and witnessed the entire demolition"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After crushing the Warsaw Uprising, German forces ______ all Polish survivors from the city before beginning systematic demolition.",
+          "correctAnswer": "expelled",
+          "distractors": ["imprisoned", "allowed to stay", "transferred to labor camps", "evacuated to safety"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ef_sevastopol_crimea_strategic",
+      "correctAnswer": "Black Sea access",
+      "acceptableAlternatives": ["access to the Black Sea", "Crimea and Black Sea access", "control of the Black Sea"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After paying over 200,000 casualties in the 300-day siege, Germany's strategic reward for taking Sevastopol was control of Crimea and access to what body of water?",
+      "explanation": "Sevastopol was the Soviet Union's main Black Sea naval base. By capturing it, Germany gained control of Crimea and — critically — Black Sea access. This threatened Soviet supply lines and opened the southern flank. However, Germany held Crimea precariously; Soviet counter-offensives retook it in 1944.",
+      "visualDescription": "Pixel art of German naval vessels in a harbor framed by Crimean cliffs, a Kriegsmarine flag flying from a fort, bright blue sea stretching to the horizon.",
+      "sourceName": "Wikipedia — Siege of Sevastopol (1941–1942)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Sevastopol_(1941%E2%80%9342)",
+      "volatile": false,
+      "distractors": ["Caspian Sea access", "Sea of Azov control", "Dnieper River crossing", "Caucasus oil fields", "Romanian border control", "Danube River access", "Mediterranean Sea route", "Turkish Strait passage"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Germany's control of the Black Sea after capturing Sevastopol was precariously held. When did Soviet forces retake Crimea?",
+          "correctAnswer": "1944",
+          "distractors": ["1943", "1942", "Early 1945", "Late 1944 after Bagration"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Sevastopol was the Soviet Navy's main base in the Black Sea region. What threat did German control of this base pose to the Soviet war effort?",
+          "correctAnswer": "It threatened Soviet supply lines across the Black Sea and opened the southern flank toward the Caucasus",
+          "distractors": [
+            "It allowed Germany to blockade Leningrad from the south",
+            "It gave Germany direct naval access to the Caspian oil fields",
+            "It cut off Soviet supply routes from Britain through the Black Sea"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Germany held Crimea from 1942 until the end of the war in 1945.",
+          "correctAnswer": "False — Soviet counter-offensives retook Crimea in 1944",
+          "distractors": ["True — German forces held Crimea throughout the war until German surrender", "True — Crimea remained German-controlled until the 1945 Potsdam Conference", "True — Crimea was never retaken; it was ceded to the Soviets by treaty"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Germany's strategic gain from the costly Siege of Sevastopol was control of Crimea and ______, though it held the peninsula precariously until 1944.",
+          "correctAnswer": "Black Sea access",
+          "distractors": ["Caspian Sea access", "Caucasus oil fields", "the Dnieper River crossing", "Sea of Azov control"]
+        }
+      ]
+    }
+  ]
+}
