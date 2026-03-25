@@ -586,24 +586,19 @@ These limits were discovered during the WWII deck build (2026-03-25, 735 facts g
 | **3 parallel batches per subdeck** | Split entities into ~3 batches of 8-10 entities each, run all 3 in parallel with `run_in_background: true`. This maximizes throughput while keeping each worker under the token limit. |
 | **Supplement shortfalls immediately** | After all batches return, count total. If under target, spawn one more worker with specific gap-filling instructions referencing what's already been generated. |
 
-### When Architecture YAML Has Verified Data
+### Source Data — Workers ALWAYS Need Wikipedia Verification
 
-If the architecture YAML already contains rich notes with dates, numbers, names, and key details for each entity, workers can generate directly from that data WITHOUT separate Wikipedia fetching. The orchestrator:
-1. Reads the relevant YAML section
-2. Passes the entity data directly in the worker prompt
-3. Workers format facts from the provided data
+**The architecture YAML is NOT a verified source.** YAML notes were written by LLMs in previous sessions — they may contain hallucinated dates, wrong numbers, or misattributed claims. The YAML is a research OUTLINE, not a truth source.
 
-This was the primary workflow for the WWII deck — 14 of 16 subdecks generated this way. It's faster and cheaper than having each worker do its own web research.
+**Every worker MUST verify against Wikipedia/Wikidata before generating facts.** The correct workflow is:
+1. Orchestrator reads the YAML to identify WHAT entities and topics to cover
+2. Workers receive the entity list AND are instructed to WebSearch/WebFetch each entity from Wikipedia
+3. Workers generate facts from the Wikipedia data they actually fetched, citing real URLs they consulted
+4. The YAML notes serve as a checklist of what to look for — not as the source of truth
 
-### When Architecture YAML Has Only Placeholders
+**What went wrong in the WWII build (2026-03-25):** 14 of 16 subdecks were generated with YAML notes passed directly to workers as if they were verified source data. The YAML had been written with research in a prior session, so the data was MOSTLY correct — but this workflow skipped the verification step that catches LLM confabulations. This was expedient but violated the sourcing rule. Future decks must not repeat this shortcut.
 
-For sections with no verified data (only placeholder comments), combine research + generation in a single Sonnet worker:
-1. Worker receives the topic list and instructions to use WebSearch/WebFetch
-2. Worker researches each topic from Wikipedia, recording URLs
-3. Worker generates facts citing the actual URLs it consulted
-4. This worked for WWII China/SEA and Wartime Culture subdecks (32 and 30 facts each)
-
-**Trade-off:** Combined research+generation is convenient but the orchestrator can't verify source data before generation. Use only for supplementary subdecks, not core content.
+**The only acceptable shortcut:** If the orchestrator has PERSONALLY verified a YAML entry against Wikipedia in the current session (via WebSearch/WebFetch), that entry can be passed to workers as verified. But "it was in the YAML" alone is never sufficient provenance.
 
 ### Opus Quality Pass — When to Skip
 
