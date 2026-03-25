@@ -1,0 +1,752 @@
+[
+  {
+    "id": "ha_multi_001",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Cholecystokinin (CCK)",
+    "acceptableAlternatives": ["CCK", "cholecystokinin"],
+    "chainThemeId": "gi_hormones",
+    "answerTypePoolId": "hormone_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Which GI hormone is secreted by I cells of the duodenum in response to fat and protein, triggering gallbladder contraction and pancreatic enzyme release?",
+    "explanation": "Cholecystokinin (CCK) is released from I cells in the duodenum and jejunum when fat and protein enter the small intestine. It causes the gallbladder to contract and release bile, stimulates the pancreas to secrete digestive enzymes, and also slows gastric emptying to allow time for digestion. Its name literally means 'bile-sac mover' (Greek: chole = bile, cysto = sac, kinin = mover).",
+    "visualDescription": "Pixel art duodenum cross-section with I cells highlighted releasing CCK hormone arrows toward gallbladder and pancreas, fat droplets visible in intestinal lumen",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cholecystokinin",
+    "volatile": false,
+    "distractors": ["Secretin", "Gastrin", "GIP", "Motilin", "Ghrelin"],
+    "variants": [
+      {
+        "quizQuestion": "CCK is released by I cells of the duodenum. Which two organs are its primary targets?",
+        "correctAnswer": "Gallbladder and pancreas",
+        "explanation": "CCK stimulates gallbladder contraction (releasing bile) and pancreatic acinar cells (releasing digestive enzymes). Both actions facilitate fat and protein digestion in the small intestine."
+      },
+      {
+        "quizQuestion": "In which cells of the duodenum is cholecystokinin (CCK) produced?",
+        "correctAnswer": "I cells",
+        "explanation": "I cells are enteroendocrine cells scattered throughout the duodenal and jejunal mucosa. They detect luminal fat and protein and respond by secreting CCK into the bloodstream."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_002",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Secretin",
+    "acceptableAlternatives": [],
+    "chainThemeId": "gi_hormones",
+    "answerTypePoolId": "hormone_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which GI hormone is released by S cells of the duodenum in response to acidic chyme, stimulating the pancreas to secrete bicarbonate-rich juice?",
+    "explanation": "Secretin is released from S cells in the duodenal mucosa when acidic chyme (pH <4.5) enters from the stomach. It stimulates the pancreatic ductal cells to secrete bicarbonate (HCO3-), which neutralises the acid and raises the pH of the small intestine to the optimal range for pancreatic enzyme activity. Secretin was the first hormone ever discovered, identified by Bayliss and Starling in 1902.",
+    "visualDescription": "Pixel art duodenum with S cells releasing secretin toward pancreatic duct, bicarbonate ions shown flowing into intestinal lumen neutralising acid",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Secretin",
+    "volatile": false,
+    "distractors": ["CCK", "Gastrin", "GIP", "Motilin", "Somatostatin"],
+    "variants": [
+      {
+        "quizQuestion": "Secretin was the first hormone ever discovered — in what year was it identified?",
+        "correctAnswer": "1902",
+        "explanation": "William Bayliss and Ernest Starling discovered secretin in 1902, demonstrating for the first time that a chemical messenger released into the blood could trigger a distant organ's response — founding the science of endocrinology."
+      },
+      {
+        "quizQuestion": "Secretin stimulates the pancreas to secrete which ion-rich juice to neutralise acidic chyme?",
+        "correctAnswer": "Bicarbonate",
+        "explanation": "Pancreatic ductal cells, stimulated by secretin, pour bicarbonate (HCO3-) into the duodenum, raising its pH from ~2 to the ~7–8 optimal for pancreatic lipase, amylase, and proteases."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_003",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "GIP (Glucose-dependent Insulinotropic Peptide)",
+    "acceptableAlternatives": ["GIP", "glucose-dependent insulinotropic peptide", "gastric inhibitory peptide"],
+    "chainThemeId": "gi_hormones",
+    "answerTypePoolId": "hormone_names",
+    "difficulty": 5,
+    "funScore": 6,
+    "quizQuestion": "Which GI hormone released by K cells of the duodenum in response to glucose and fat stimulates pancreatic beta cells to secrete insulin — an effect called the incretin effect?",
+    "explanation": "GIP (Glucose-dependent Insulinotropic Peptide, formerly Gastric Inhibitory Peptide) is secreted by K cells of the duodenum and proximal jejunum in response to glucose and fat. It amplifies insulin secretion from pancreatic beta cells only when blood glucose is elevated — this is the incretin effect. GIP and GLP-1 together account for ~50-70% of postprandial insulin secretion. GIP receptors are a therapeutic target in type 2 diabetes (e.g., tirzepatide targets both GIP and GLP-1 receptors).",
+    "visualDescription": "Pixel art duodenum K cells releasing GIP hormones, arrows pointing to pancreatic islet beta cells with insulin granules, blood glucose meter in background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastric_inhibitory_polypeptide",
+    "volatile": false,
+    "distractors": ["Secretin", "CCK", "Motilin", "Glucagon", "Somatostatin"],
+    "variants": [
+      {
+        "quizQuestion": "GIP is secreted from which cells of the duodenum?",
+        "correctAnswer": "K cells",
+        "explanation": "K cells are enteroendocrine cells concentrated in the duodenum and proximal jejunum. They secrete GIP in response to luminal glucose and fat, triggering the incretin effect on pancreatic beta cells."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_004",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Motilin",
+    "acceptableAlternatives": [],
+    "chainThemeId": "gi_hormones",
+    "answerTypePoolId": "hormone_names",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "Which GI hormone triggers the migrating motor complex (MMC) every ~90 minutes during fasting, sweeping residual contents through the intestine?",
+    "explanation": "Motilin is released from Mo cells of the duodenum and jejunum during the fasting state. It initiates the migrating motor complex (MMC) — a cyclical pattern of electrical and muscular activity that moves residue, bacteria, and cellular debris from the stomach through the small intestine every 90 minutes. The MMC is sometimes called the 'intestinal housekeeper'. Erythromycin (an antibiotic) is a motilin receptor agonist, which is why it causes diarrhoea and is used off-label to treat gastroparesis.",
+    "visualDescription": "Pixel art small intestine with wave of peristaltic contraction sweeping debris toward large intestine, clock showing 90-minute cycle, fasting stomach visible",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Motilin",
+    "volatile": false,
+    "distractors": ["Secretin", "CCK", "GIP", "Gastrin", "Ghrelin"],
+    "variants": [
+      {
+        "quizQuestion": "The migrating motor complex (MMC) occurs approximately every 90 minutes during fasting. Which hormone triggers it?",
+        "correctAnswer": "Motilin",
+        "explanation": "Motilin released from Mo cells of the duodenum and jejunum initiates the MMC during fasting. The MMC stops when eating begins and resumes after digestion is complete."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_005",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "The superior mesenteric vein (SMV) and splenic vein",
+    "acceptableAlternatives": ["SMV and splenic vein", "superior mesenteric and splenic vein"],
+    "chainThemeId": "hepatic_portal",
+    "answerTypePoolId": "vessel_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "The hepatic portal vein is formed by the union of which two veins, occurring at the level of L2 behind the neck of the pancreas?",
+    "explanation": "The hepatic portal vein is formed by the confluence of the superior mesenteric vein (SMV), which drains the small intestine and right colon, and the splenic vein, which drains the spleen, stomach, and pancreas. This junction occurs at approximately the L2 vertebral level, posterior to the neck of the pancreas. The portal vein carries nutrient-rich blood from the GI tract to the liver for first-pass metabolism. Portal hypertension (from liver cirrhosis) backs up pressure into this system, causing oesophageal varices and splenomegaly.",
+    "visualDescription": "Pixel art abdominal diagram showing SMV and splenic vein merging behind pancreas at L2, forming portal vein heading toward liver hilum",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Portal_vein",
+    "volatile": false,
+    "distractors": ["Inferior mesenteric vein and splenic vein", "SMV and inferior mesenteric vein", "Splenic vein and left gastric vein", "SMV and left colic vein"],
+    "variants": [
+      {
+        "quizQuestion": "At approximately which vertebral level does the hepatic portal vein form, behind the neck of the pancreas?",
+        "correctAnswer": "L2",
+        "explanation": "The SMV and splenic vein join at the L2 level, posterior to the pancreatic neck. This anatomical landmark is clinically relevant during pancreatic surgery, where the portal vein can be inadvertently injured."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_006",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Week 24–28 of gestation",
+    "acceptableAlternatives": ["24–28 weeks", "weeks 24 to 28", "24-28 weeks gestation"],
+    "chainThemeId": "lung_development",
+    "answerTypePoolId": "time_ranges",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Pulmonary surfactant production by type II pneumocytes begins between which weeks of gestation, with full maturity typically reached by ~35 weeks?",
+    "explanation": "Type II alveolar cells (type II pneumocytes) begin producing surfactant — a phospholipid mixture that reduces alveolar surface tension — between weeks 24 and 28 of gestation. Surfactant production is not sufficient until ~35 weeks, making premature infants born before this point highly susceptible to Neonatal Respiratory Distress Syndrome (NRDS, also called hyaline membrane disease). Antenatal corticosteroids (betamethasone) given to the mother can accelerate surfactant production. The lecithin:sphingomyelin (L:S) ratio in amniotic fluid is used to assess foetal lung maturity.",
+    "visualDescription": "Pixel art alveolus cross-section with type II pneumocytes labelled, surfactant molecules coating the inner surface, premature infant in incubator in background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_surfactant",
+    "volatile": false,
+    "distractors": ["Week 10–16", "Week 16–20", "Week 20–24", "Week 30–35"],
+    "variants": [
+      {
+        "quizQuestion": "Deficiency of pulmonary surfactant in premature infants causes which condition?",
+        "correctAnswer": "Neonatal Respiratory Distress Syndrome (NRDS)",
+        "explanation": "Without sufficient surfactant, alveolar surface tension collapses the air sacs on expiration, causing progressive atelectasis. This is Neonatal RDS (hyaline membrane disease), the leading cause of death in premature infants."
+      },
+      {
+        "quizQuestion": "Which drug is given to mothers at risk of premature delivery to accelerate foetal surfactant production?",
+        "correctAnswer": "Betamethasone (corticosteroids)",
+        "explanation": "Antenatal betamethasone (a synthetic glucocorticoid) crosses the placenta and stimulates type II pneumocyte maturation, significantly reducing the risk and severity of NRDS in premature infants."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_007",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Right main bronchus",
+    "acceptableAlternatives": ["right bronchus", "right mainstem bronchus"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which main bronchus is wider, shorter, and more vertical than its counterpart, making it the more common site for inhaled foreign body aspiration?",
+    "explanation": "The right main bronchus is wider (~16 mm vs 13 mm), shorter (~2.5 cm vs 5 cm), and takes a more vertical angle (~25° from midline vs ~45°) compared to the left. This means inhaled foreign bodies — peanuts, coins, small toys — preferentially fall into the right lung. The right lower lobe is therefore the most common site of aspiration pneumonia in upright patients. In supine patients, the right upper lobe is the common aspiration site due to the posterior segment's anatomy.",
+    "visualDescription": "Pixel art bronchial tree from front view with right main bronchus labelled as wider and more vertical, peanut illustration falling toward right lung",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bronchus",
+    "volatile": false,
+    "distractors": ["Left main bronchus", "Trachea", "Right upper lobe bronchus", "Carina"],
+    "variants": [
+      {
+        "quizQuestion": "In an upright patient who aspirates a foreign body, which lobe of the lung is most commonly affected?",
+        "correctAnswer": "Right lower lobe",
+        "explanation": "Because the right main bronchus is more vertical and wider, aspirated material travels to the right lung. In the upright position, gravity pulls it into the right lower lobe. In the supine position, the right upper lobe posterior segment is most affected."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_008",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~150 mL",
+    "acceptableAlternatives": ["150 mL", "150 millilitres", "about 150 mL"],
+    "chainThemeId": "lung_zones",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "The conducting zone of the respiratory tract (nose to terminal bronchioles) does not participate in gas exchange. Approximately what volume of air does it hold, constituting anatomical dead space?",
+    "explanation": "The conducting zone — nasal cavity, pharynx, larynx, trachea, bronchi, and terminal bronchioles — conducts air but does not exchange gas with blood. It contains approximately 150 mL of anatomical dead space. This means that of a normal 500 mL tidal breath, only ~350 mL reaches the alveoli (respiratory zone) for gas exchange. The respiratory zone begins at the respiratory bronchioles and includes the alveolar ducts and alveoli, where actual O2/CO2 exchange occurs. The concept of dead space is critical in mechanical ventilation calculations.",
+    "visualDescription": "Pixel art respiratory tract diagram split into conducting zone (blue, nose to terminal bronchiole) and respiratory zone (red, respiratory bronchioles to alveoli), dead space volume labelled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dead_space_(physiology)",
+    "volatile": false,
+    "distractors": ["~50 mL", "~100 mL", "~300 mL", "~500 mL"],
+    "variants": [
+      {
+        "quizQuestion": "Where does the respiratory zone of the lung begin — that is, where does actual gas exchange first occur?",
+        "correctAnswer": "Respiratory bronchioles",
+        "explanation": "Terminal bronchioles mark the end of the purely conducting zone. From the respiratory bronchioles onward, the walls contain alveoli, enabling gas exchange to begin. The full respiratory zone includes respiratory bronchioles, alveolar ducts, and alveolar sacs."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_009",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "98.5%",
+    "acceptableAlternatives": ["98.5 percent"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "percentages",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Oxygen is transported in the blood primarily bound to haemoglobin as oxyhaemoglobin. What percentage of oxygen in arterial blood is carried this way?",
+    "explanation": "Approximately 98.5% of oxygen in arterial blood is carried bound to haemoglobin (as oxyhaemoglobin, HbO2) within red blood cells. Only ~1.5% is dissolved directly in plasma, following Henry's Law. Each haemoglobin molecule carries up to 4 oxygen molecules (one per haem group), giving blood its enormous oxygen-carrying capacity — roughly 70x greater than plasma alone. This is why severe anaemia (low haemoglobin) or carbon monoxide poisoning (CO displaces O2 on Hb with 200x greater affinity) so drastically reduces oxygen delivery.",
+    "visualDescription": "Pixel art red blood cell cross-section with haemoglobin tetramers bound to O2 molecules, small fraction of dissolved O2 shown in plasma surrounding the cell",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oxygen_transport",
+    "volatile": false,
+    "distractors": ["75%", "85%", "95%", "99.9%"],
+    "variants": [
+      {
+        "quizQuestion": "What fraction of oxygen in arterial blood is dissolved directly in plasma (not bound to haemoglobin)?",
+        "correctAnswer": "~1.5%",
+        "explanation": "Only about 1.5% of arterial oxygen is dissolved in plasma. While small, this dissolved fraction drives the partial pressure gradient that loads O2 onto haemoglobin in the lungs and off-loads it in the tissues."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_010",
+    "subDeckId": "urinary_system",
+    "correctAnswer": "Loop of Henle (thick ascending limb, TAL)",
+    "acceptableAlternatives": ["thick ascending limb", "TAL", "loop of Henle"],
+    "chainThemeId": "nephron_pharmacology",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Furosemide (a loop diuretic) blocks the NKCC2 cotransporter in which segment of the nephron, producing powerful diuresis?",
+    "explanation": "Furosemide inhibits the Na-K-2Cl cotransporter (NKCC2) in the thick ascending limb (TAL) of the loop of Henle. This prevents reabsorption of up to 25% of filtered sodium — making loop diuretics the most potent diuretics available. By abolishing the medullary concentration gradient, loop diuretics also impair the kidney's ability to concentrate urine. They are used in acute pulmonary oedema, heart failure, and hypercalcaemia. Side effects include hypokalaemia, hyponatraemia, hypomagnesaemia, metabolic alkalosis, and ototoxicity.",
+    "visualDescription": "Pixel art nephron diagram with loop of Henle highlighted, NKCC2 transporter on thick ascending limb, furosemide molecule shown blocking the transporter",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Loop_diuretic",
+    "volatile": false,
+    "distractors": ["Proximal convoluted tubule", "Distal convoluted tubule", "Collecting duct", "Bowman's capsule"],
+    "variants": [
+      {
+        "quizQuestion": "Thiazide diuretics (e.g. hydrochlorothiazide) block the NCC cotransporter in which nephron segment?",
+        "correctAnswer": "Distal convoluted tubule (DCT)",
+        "explanation": "Thiazides inhibit the Na-Cl cotransporter (NCC) in the distal convoluted tubule, blocking 5–8% of sodium reabsorption. They are less potent than loop diuretics but more effective for hypertension. Side effects include hypokalaemia, hyperuricaemia, and hyperglycaemia."
+      },
+      {
+        "quizQuestion": "Spironolactone and amiloride are both potassium-sparing diuretics. What are their respective mechanisms?",
+        "correctAnswer": "Spironolactone blocks aldosterone receptors; amiloride blocks ENaC channels in the collecting duct",
+        "explanation": "Spironolactone is an aldosterone receptor antagonist, preventing transcription of ENaC and Na-K-ATPase. Amiloride directly blocks the epithelial sodium channel (ENaC) in the collecting duct. Both prevent sodium reabsorption while retaining potassium. Used together with loop or thiazide diuretics to prevent hypokalaemia."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_011",
+    "subDeckId": "urinary_system",
+    "correctAnswer": "Mannitol",
+    "acceptableAlternatives": [],
+    "chainThemeId": "nephron_pharmacology",
+    "answerTypePoolId": "drug_names",
+    "difficulty": 4,
+    "funScore": 5,
+    "quizQuestion": "Which osmotic diuretic acts primarily in the proximal convoluted tubule and descending loop to draw water into the tubular lumen by osmosis, used to treat raised intracranial pressure and acute oliguric renal failure?",
+    "explanation": "Mannitol is a freely filtered, non-reabsorbable sugar alcohol that creates an osmotic gradient in the proximal convoluted tubule (PCT) and descending loop of Henle, pulling water into the tubular lumen and increasing urine output. It does not act on ion channels or transporters. Clinically, it is used IV to reduce cerebral oedema and intracranial pressure, and to maintain urine flow in oliguric acute kidney injury. Mannitol is contraindicated in anuria (no renal function) and heart failure because the osmotic load can expand intravascular volume dangerously before being excreted.",
+    "visualDescription": "Pixel art proximal tubule cross-section with mannitol molecules creating osmotic pull, water molecules moving from tubule cells into lumen, brain with reduced swelling in background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mannitol",
+    "volatile": false,
+    "distractors": ["Furosemide", "Hydrochlorothiazide", "Spironolactone", "Acetazolamide"],
+    "variants": [
+      {
+        "quizQuestion": "Mannitol is used as an osmotic diuretic. What is a key clinical contraindication to its use?",
+        "correctAnswer": "Anuria (absence of urine output) or severe heart failure",
+        "explanation": "In anuria, mannitol cannot be excreted and accumulates, causing dangerous osmotic expansion of plasma volume. In heart failure, this acute volume expansion risks precipitating pulmonary oedema before the drug can be eliminated."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_012",
+    "subDeckId": "urinary_system",
+    "correctAnswer": "Low pH, low bicarbonate (HCO3-)",
+    "acceptableAlternatives": ["low pH and low HCO3", "decreased pH and decreased bicarbonate"],
+    "chainThemeId": "acid_base",
+    "answerTypePoolId": "lab_values",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "What are the two defining blood gas findings in metabolic acidosis — distinguishing it from respiratory acidosis where CO2 is elevated?",
+    "explanation": "Metabolic acidosis is characterised by low blood pH (<7.35) and low bicarbonate (<22 mEq/L), reflecting a primary loss of base or gain of acid. Respiratory acidosis also has low pH but is characterised by elevated CO2 (>45 mmHg), reflecting inadequate ventilation. In metabolic acidosis, the respiratory system compensates by hyperventilating (Kussmaul breathing) to blow off CO2 and raise pH. Winter's formula predicts the expected compensatory CO2: expected pCO2 = (1.5 × HCO3) + 8 ± 2. Common causes of metabolic acidosis include DKA, lactic acidosis, renal failure, and diarrhoea (MUDPILES mnemonic).",
+    "visualDescription": "Pixel art arterial blood gas panel showing pH 7.25, HCO3 14, pCO2 normal or low, comparison chart showing metabolic vs respiratory acidosis patterns",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Metabolic_acidosis",
+    "volatile": false,
+    "distractors": ["Low pH, high CO2", "High pH, high bicarbonate", "Low pH, normal bicarbonate", "High pH, low CO2"],
+    "variants": [
+      {
+        "quizQuestion": "Winter's formula predicts the compensatory pCO2 in metabolic acidosis. What is the formula?",
+        "correctAnswer": "Expected pCO2 = (1.5 × HCO3) + 8 ± 2",
+        "explanation": "If the measured pCO2 equals the Winter's formula prediction, compensation is appropriate (simple metabolic acidosis). If pCO2 is higher than predicted, a concurrent respiratory acidosis is present; if lower, a concurrent respiratory alkalosis is present."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_013",
+    "subDeckId": "urinary_system",
+    "correctAnswer": "pH = pKa + log([HCO3-] / [CO2])",
+    "acceptableAlternatives": ["Henderson-Hasselbalch equation", "pH = pKa + log(base/acid)"],
+    "chainThemeId": "acid_base",
+    "answerTypePoolId": "equations",
+    "difficulty": 5,
+    "funScore": 5,
+    "quizQuestion": "Which equation describes the relationship between pH, bicarbonate, and dissolved CO2 in blood, forming the basis of all acid-base physiology calculations?",
+    "explanation": "The Henderson-Hasselbalch equation states: pH = pKa + log([HCO3-] / [dissolved CO2]). For the bicarbonate buffer system in blood, pKa = 6.1. At normal blood values (pH 7.4, HCO3- 24 mEq/L, pCO2 40 mmHg → dissolved CO2 ≈ 1.2 mEq/L), the ratio [HCO3-]/[CO2] ≈ 20:1. This 20:1 ratio is what maintains pH 7.4. The equation reveals why both the kidneys (regulate HCO3-) and lungs (regulate CO2) must work together to maintain acid-base balance.",
+    "visualDescription": "Pixel art chalkboard with Henderson-Hasselbalch equation written, bicarbonate and CO2 molecules on a balance scale, kidneys and lungs labelled as controllers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Henderson%E2%80%93Hasselbalch_equation",
+    "volatile": false,
+    "distractors": ["Fick's Law", "Starling's equation", "Nernst equation", "Michaelis-Menten equation"],
+    "variants": [
+      {
+        "quizQuestion": "In the bicarbonate buffer system at normal blood pH of 7.4, what is the ratio of bicarbonate (HCO3-) to dissolved CO2?",
+        "correctAnswer": "20:1",
+        "explanation": "At pH 7.4, [HCO3-] ≈ 24 mEq/L and dissolved CO2 ≈ 1.2 mEq/L, giving a 20:1 ratio. The lungs and kidneys maintain this ratio — the lungs control the denominator (CO2) and the kidneys control the numerator (HCO3-)."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_014",
+    "subDeckId": "reproductive_system",
+    "correctAnswer": "Gas exchange, nutrient/waste transfer, and hormone production (hCG, hPL, oestrogen, progesterone)",
+    "acceptableAlternatives": ["gas exchange, nutrients, waste, hormones", "exchange and hormone production"],
+    "chainThemeId": "placenta",
+    "answerTypePoolId": "process_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "The placenta serves as the foetal lung, gut, kidney, and endocrine organ simultaneously. What are its four major functional roles?",
+    "explanation": "The placenta performs four critical functions: (1) Gas exchange — O2 diffuses from maternal to foetal blood, CO2 in reverse; (2) Nutrient transfer — glucose (via facilitated diffusion), amino acids, fatty acids, and vitamins pass to the foetus; (3) Waste removal — foetal CO2, urea, and bilirubin are cleared to maternal circulation; (4) Hormone production — hCG (maintains corpus luteum in early pregnancy), human placental lactogen (hPL, promotes foetal growth and maternal insulin resistance), oestrogen, and progesterone (maintains uterine quiescence). Structures do NOT freely cross: most proteins, bacteria, and maternal red blood cells. IgG crosses via FcRn receptors, providing passive immunity.",
+    "visualDescription": "Pixel art placenta cross-section with arrows showing O2 and nutrients entering foetal side, CO2 and waste exiting, hormone molecules labelled hCG, hPL, oestrogen, progesterone",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Placenta",
+    "volatile": false,
+    "distractors": ["Only gas exchange and nutrition", "Gas exchange, immunity, and temperature regulation", "Hormone production and filtration only"],
+    "variants": [
+      {
+        "quizQuestion": "Which placental hormone is detected in urine as the basis of the pregnancy test, and what is its role in early pregnancy?",
+        "correctAnswer": "hCG — maintains the corpus luteum to sustain progesterone production",
+        "explanation": "Human chorionic gonadotropin (hCG) is produced by trophoblast cells from implantation. It stimulates the corpus luteum to continue producing progesterone, preventing menstruation and maintaining the uterine lining until the placenta takes over progesterone production at ~8–10 weeks."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_015",
+    "subDeckId": "reproductive_system",
+    "correctAnswer": "Weeks 28–35 of gestation",
+    "acceptableAlternatives": ["28–35 weeks", "28 to 35 weeks gestation"],
+    "chainThemeId": "testes_development",
+    "answerTypePoolId": "time_ranges",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Testicular descent from a retroperitoneal position through the inguinal canal into the scrotum occurs during which weeks of foetal gestation, guided by the gubernaculum?",
+    "explanation": "The testes develop retroperitoneally near the kidneys, then descend in two phases: transabdominal descent to the inguinal region (weeks 8–15, driven by insulin-like factor 3/INSL3) and inguinoscrotal descent through the inguinal canal into the scrotum (weeks 28–35, driven by androgens and genitofemoral nerve calcitonin gene-related peptide). The gubernaculum — a fibromuscular cord — anchors and guides the testes into the scrotum. Failure of descent (cryptorchidism) occurs in ~3–5% of full-term males and ~30% of premature males, and is associated with impaired spermatogenesis and increased testicular cancer risk if uncorrected.",
+    "visualDescription": "Pixel art foetal anatomy sagittal view showing testes migrating from retroperitoneal position through inguinal canal, gubernaculum cord guiding descent, weeks labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Testicular_descent",
+    "volatile": false,
+    "distractors": ["Weeks 4–8", "Weeks 10–15", "Weeks 20–25", "Weeks 36–40"],
+    "variants": [
+      {
+        "quizQuestion": "What fibromuscular structure guides the testes through the inguinal canal into the scrotum during foetal development?",
+        "correctAnswer": "Gubernaculum",
+        "explanation": "The gubernaculum is a fibromuscular cord that extends from the testes to the scrotal floor. It anchors the testes and shortens relative to body growth, physically guiding the testes into the scrotum during the inguinoscrotal phase of descent."
+      },
+      {
+        "quizQuestion": "Failure of testicular descent (cryptorchidism) is associated with two major long-term complications. What are they?",
+        "correctAnswer": "Impaired spermatogenesis and increased testicular cancer risk",
+        "explanation": "Undescended testes remain at core body temperature (~37°C) rather than the ~2°C cooler scrotal temperature required for normal spermatogenesis. This causes subfertility. Cryptorchidism is also the strongest risk factor for testicular germ cell tumours, even after orchiopexy (surgical correction)."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_016",
+    "subDeckId": "reproductive_system",
+    "correctAnswer": "15–20 lobes draining via lactiferous ducts to the nipple, suspended by Cooper's ligaments",
+    "acceptableAlternatives": ["15-20 lobes", "15 to 20 lobes with lactiferous ducts and Cooper's ligaments"],
+    "chainThemeId": "breast_anatomy",
+    "answerTypePoolId": "structure_descriptions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Describe the basic anatomical organisation of the breast: how many lobes does it contain, how does milk reach the nipple, and which ligaments suspend the breast tissue?",
+    "explanation": "Each breast contains 15–20 lobular glandular lobes arranged radially around the nipple. Each lobe drains via a lactiferous duct (also called a galactophorous duct) that opens at the nipple surface. The breast is suspended by Cooper's ligaments — fibrous bands that run from the deep (pectoral) fascia through breast parenchyma to the overlying skin. When Cooper's ligaments are invaded by breast cancer, they shorten and cause 'skin dimpling' — an important clinical sign. The breast also contains lymphatic drainage primarily to the axillary nodes (75%), which is why axillary node biopsy is performed during breast cancer staging.",
+    "visualDescription": "Pixel art breast sagittal cross-section showing 15-20 radial lobes, lactiferous ducts converging at nipple, Cooper's ligaments as fibrous strands from pectoral fascia to skin",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Breast",
+    "volatile": false,
+    "distractors": ["5–8 lobes", "25–30 lobes", "10–12 lobes", "Suspended by pectoral ligaments"],
+    "variants": [
+      {
+        "quizQuestion": "Invasion of which breast ligaments by cancer causes skin dimpling — an important clinical sign?",
+        "correctAnswer": "Cooper's ligaments",
+        "explanation": "Cooper's suspensory ligaments run from the deep fascia through breast tissue to the skin. When carcinoma invades these ligaments it shortens them, tethering the overlying skin and producing the characteristic 'peau d'orange' dimpling that prompts clinical investigation."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_017",
+    "subDeckId": "reproductive_system",
+    "correctAnswer": "Axillary lymph nodes (~75%)",
+    "acceptableAlternatives": ["axillary nodes", "axillary lymphatics"],
+    "chainThemeId": "breast_anatomy",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Approximately 75% of lymphatic drainage from the breast flows to which group of lymph nodes, making them the primary surgical target in breast cancer staging?",
+    "explanation": "About 75% of breast lymph drains to the axillary lymph nodes (in three levels relative to pectoralis minor). The remaining ~25% drains to the internal mammary nodes along the sternal border, and a small portion to supraclavicular nodes. Sentinel lymph node biopsy (SLNB) identifies the first draining axillary node, which is biopsied to determine if cancer has spread — sparing patients full axillary dissection and its side effects (lymphoedema, nerve injury) if the sentinel node is clear.",
+    "visualDescription": "Pixel art torso front view with breast lymphatic drainage arrows converging on axillary node cluster, smaller arrows to internal mammary nodes alongside sternum",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lymph_nodes_of_the_axilla",
+    "volatile": false,
+    "distractors": ["Inguinal lymph nodes", "Supraclavicular lymph nodes", "Internal mammary nodes", "Parasternal lymph nodes"],
+    "variants": [
+      {
+        "quizQuestion": "In breast cancer surgery, the sentinel lymph node biopsy samples the first draining node to check for metastasis. Where is this node typically found?",
+        "correctAnswer": "Axilla (axillary lymph nodes)",
+        "explanation": "The sentinel node is identified by injecting blue dye or radioactive tracer into the tumour bed. It is typically found in the axilla. If histologically clear of cancer, full axillary dissection is avoided, reducing the risk of lymphoedema."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_018",
+    "subDeckId": "endocrine_system",
+    "correctAnswer": "Cushing syndrome",
+    "acceptableAlternatives": ["Cushing's syndrome", "hypercortisolism"],
+    "chainThemeId": "adrenal_disorders",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which endocrine syndrome results from chronic excess cortisol and is characterised by central obesity, moon face, buffalo hump, purple striae, hypertension, hyperglycaemia, osteoporosis, and immunosuppression?",
+    "explanation": "Cushing syndrome is caused by chronic glucocorticoid excess — most commonly from prolonged exogenous steroid use (iatrogenic, the most common cause overall), a cortisol-secreting adrenal adenoma, or an ACTH-secreting pituitary adenoma (Cushing disease, the most common endogenous cause). Key features: central obesity with limb wasting, moon face (fat redistribution), buffalo hump (supraclavicular fat pad), purple/violaceous striae (skin atrophy), hypertension, hyperglycaemia (cortisol antagonises insulin), osteoporosis, easy bruising, poor wound healing, and immunosuppression. The overnight dexamethasone suppression test screens for Cushing syndrome.",
+    "visualDescription": "Pixel art figure with moon face, central obesity, purple striae on abdomen, buffalo hump on upper back, all labelled as classic Cushing features",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cushing%27s_syndrome",
+    "volatile": false,
+    "distractors": ["Addison disease", "Conn syndrome", "Acromegaly", "Hypothyroidism"],
+    "variants": [
+      {
+        "quizQuestion": "The most common cause of Cushing syndrome overall is exogenous steroid use. What is the most common endogenous cause?",
+        "correctAnswer": "ACTH-secreting pituitary adenoma (Cushing disease)",
+        "explanation": "Cushing disease (note: 'disease' specifically refers to the pituitary cause, 'syndrome' covers all causes) accounts for ~70% of endogenous Cushing cases. The pituitary adenoma overproduces ACTH, driving bilateral adrenal hyperplasia and excess cortisol."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_019",
+    "subDeckId": "endocrine_system",
+    "correctAnswer": "Addison disease (primary adrenal insufficiency)",
+    "acceptableAlternatives": ["Addison's disease", "adrenal insufficiency", "primary adrenal insufficiency"],
+    "chainThemeId": "adrenal_disorders",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which condition caused by adrenal cortex destruction produces hyperpigmentation (due to excess ACTH cross-reacting with MSH receptors), hypotension, hyperkalaemia, and hyponatraemia?",
+    "explanation": "Addison disease (primary adrenal insufficiency) results from destruction of the adrenal cortex (autoimmune in ~80% of cases in developed countries, also TB, metastatic cancer, haemorrhage). Loss of cortisol removes negative feedback on the pituitary, causing a massive rise in ACTH. ACTH shares structural similarity with melanocyte-stimulating hormone (MSH) and cross-activates MC1R receptors, causing characteristic hyperpigmentation — especially at sun-exposed areas, creases, buccal mucosa, and pressure points. Loss of aldosterone causes hyponatraemia (can't retain Na+), hyperkalaemia (can't excrete K+), and postural hypotension. Addisonian crisis (acute adrenal failure with shock, fever, vomiting) is life-threatening and requires emergency hydrocortisone.",
+    "visualDescription": "Pixel art figure with darkened skin at knuckles and buccal mucosa, labelled adrenal glands (atrophied), ACTH/MSH arrows showing feedback loop to pituitary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Addison%27s_disease",
+    "volatile": false,
+    "distractors": ["Cushing syndrome", "Conn syndrome", "Phaeochromocytoma", "Hypothyroidism"],
+    "variants": [
+      {
+        "quizQuestion": "Why does Addison disease cause hyperpigmentation of the skin and mucous membranes?",
+        "correctAnswer": "Elevated ACTH cross-reacts with melanocyte-stimulating hormone (MSH) receptors",
+        "explanation": "Loss of cortisol removes negative feedback on the pituitary hypothalamic-pituitary-adrenal axis, causing ACTH to rise markedly. ACTH is derived from the same precursor protein (POMC) as alpha-MSH, and at high levels it activates MC1R (melanocortin-1 receptor) on melanocytes, increasing melanin production."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_020",
+    "subDeckId": "endocrine_system",
+    "correctAnswer": "Type 1: autoimmune beta-cell destruction, insulin-dependent. Type 2: insulin resistance, non-insulin-dependent initially.",
+    "acceptableAlternatives": ["Type 1 autoimmune, Type 2 insulin resistance"],
+    "chainThemeId": "diabetes",
+    "answerTypePoolId": "disease_descriptions",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What is the fundamental pathophysiological distinction between Type 1 and Type 2 diabetes mellitus?",
+    "explanation": "Type 1 diabetes mellitus (T1DM) results from autoimmune destruction of pancreatic beta cells (islets of Langerhans), typically mediated by autoreactive T cells against antigens such as GAD65, IA-2, and insulin. Patients produce little or no insulin and are absolutely insulin-dependent. Onset is usually in childhood/adolescence. DKA (diabetic ketoacidosis) is the acute complication. Type 2 diabetes mellitus (T2DM) begins with insulin resistance — peripheral tissues (muscle, fat, liver) fail to respond normally to insulin. Initially the pancreas compensates with hyperinsulinaemia, but beta cells eventually fail. T2DM is associated with obesity, sedentary lifestyle, and genetic predisposition. Initially managed with lifestyle + metformin; insulin added as disease progresses.",
+    "visualDescription": "Pixel art split panel: left shows autoimmune destruction of islets for T1DM; right shows insulin receptor with blocked signalling and obese figure for T2DM",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diabetes_mellitus",
+    "volatile": false,
+    "distractors": ["Both are autoimmune", "T1 is insulin resistance, T2 is autoimmune", "T1 is diet-related, T2 is autoimmune", "Both respond to metformin alone"],
+    "variants": [
+      {
+        "quizQuestion": "Diabetic ketoacidosis (DKA) is an acute life-threatening complication most characteristic of which type of diabetes?",
+        "correctAnswer": "Type 1 diabetes",
+        "explanation": "In T1DM, absolute insulin deficiency means no suppression of glucagon, leading to unrestrained lipolysis and hepatic ketone body production. DKA is rare in T2DM because residual insulin is usually sufficient to suppress ketogenesis, though it can occur under extreme stress or in patients with advanced disease."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_021",
+    "subDeckId": "lymphatic_immune",
+    "correctAnswer": "Type I: IgE-mediated immediate hypersensitivity (anaphylaxis, asthma, atopy)",
+    "acceptableAlternatives": ["Type I hypersensitivity", "IgE-mediated", "anaphylaxis"],
+    "chainThemeId": "hypersensitivity",
+    "answerTypePoolId": "immunology_concepts",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "In Gell and Coombs' classification, Type I hypersensitivity involves IgE antibodies cross-linking on mast cells — triggering immediate degranulation. Give the mechanism and two clinical examples.",
+    "explanation": "Type I (immediate) hypersensitivity: On first exposure (sensitisation), allergen drives IgE antibody production. IgE binds to high-affinity FcεRI receptors on mast cells and basophils. On re-exposure, allergen cross-links adjacent IgE molecules, triggering mast cell degranulation within minutes — releasing histamine, tryptase, leukotrienes, and prostaglandins. Clinical examples: anaphylaxis (systemic), allergic asthma, allergic rhinitis, urticaria, food allergies. Treatment: epinephrine (anaphylaxis), antihistamines, corticosteroids, anti-IgE (omalizumab).",
+    "visualDescription": "Pixel art mast cell covered in IgE antibodies, allergen molecule cross-linking adjacent IgE, degranulation with histamine granules releasing, hive on skin in background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hypersensitivity",
+    "volatile": false,
+    "distractors": ["Type II: IgG cytotoxic", "Type III: immune complex", "Type IV: T-cell delayed", "Type I: IgM-mediated"],
+    "variants": [
+      {
+        "quizQuestion": "Type IV (delayed) hypersensitivity does not involve antibodies — it is mediated by which immune cells, and what are two clinical examples?",
+        "correctAnswer": "CD4+ T cells (Th1); examples: contact dermatitis, tuberculin skin test (PPD), transplant rejection",
+        "explanation": "Type IV is 'delayed' because the T-cell response takes 48–72 hours (vs. minutes for Type I). Sensitised CD4+ Th1 cells re-encounter antigen presented by APCs and release cytokines (IFN-γ, TNF) that activate macrophages, causing granulomatous inflammation. Examples: PPD skin test, nickel/poison ivy contact dermatitis, coeliac disease, type 1 diabetes (beta cell destruction)."
+      },
+      {
+        "quizQuestion": "Type III hypersensitivity is caused by immune complex deposition. What is the mechanism and a key clinical example?",
+        "correctAnswer": "Antigen-antibody complexes deposit in vessel walls/tissues → complement activation → neutrophil infiltration → tissue damage. Example: serum sickness, post-streptococcal GN",
+        "explanation": "In Type III, soluble antigen-antibody (IgG/IgM) complexes form in excess and deposit in blood vessel walls, joints, and glomeruli. Complement is activated (C3a, C5a attract neutrophils) causing local inflammation. Examples: serum sickness (drug reaction to foreign proteins), systemic lupus erythematosus, post-streptococcal glomerulonephritis, Arthus reaction."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_022",
+    "subDeckId": "lymphatic_immune",
+    "correctAnswer": "MHC class II — found only on antigen-presenting cells (APCs); recognised by CD4+ T helper cells",
+    "acceptableAlternatives": ["MHC II on APCs recognised by CD4+", "class II MHC and CD4"],
+    "chainThemeId": "mhc",
+    "answerTypePoolId": "immunology_concepts",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "While MHC class I molecules are expressed on all nucleated cells and present intracellular peptides to CD8+ cytotoxic T cells, which MHC class is restricted to antigen-presenting cells and presents extracellular/phagocytosed antigens to CD4+ T helper cells?",
+    "explanation": "MHC class II molecules are expressed only on professional antigen-presenting cells (APCs): dendritic cells, macrophages, and B cells (in humans, encoded by HLA-DP, HLA-DQ, HLA-DR). They present peptides derived from exogenous antigens (phagocytosed bacteria, extracellular proteins) processed in endosomes. CD4+ T helper cells recognise antigen in the context of MHC II (the 'CD4 restricts to MHC II' rule). MHC class I (HLA-A, B, C) presents endogenous (cytosolic) peptides — viral proteins, tumour antigens — to CD8+ cytotoxic T cells. Memory rule: CD4 x MHC II = 4 x 2 = 8 → no, use 'CD4 with class II' and 'CD8 with class I' or the rule: 4 ÷ 2 = 2 (CD4/MHC II), 8 ÷ 2 = 4 (CD8/MHC I).",
+    "visualDescription": "Pixel art side-by-side: left shows nucleated cell with MHC-I presenting to CD8+ cytotoxic T cell (skull on T cell); right shows macrophage with MHC-II presenting to CD4+ helper T cell (helper hat)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/MHC_class_II",
+    "volatile": false,
+    "distractors": ["MHC class I on all cells, CD4+", "MHC class II on all nucleated cells, CD8+", "MHC class I on APCs only, CD4+", "MHC class III, CD4+"],
+    "variants": [
+      {
+        "quizQuestion": "Which cells express MHC class I molecules, and which T cell subset recognises peptides presented on MHC class I?",
+        "correctAnswer": "All nucleated cells express MHC class I; CD8+ cytotoxic T cells recognise it",
+        "explanation": "MHC class I is expressed on virtually all nucleated cells (not red blood cells or platelets). It presents endogenous peptides — from the cytosol (viral proteins, tumour antigens, normal self-proteins) — allowing CD8+ CTLs to survey every cell for intracellular infection or malignancy."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_023",
+    "subDeckId": "lymphatic_immune",
+    "correctAnswer": "Type II hypersensitivity — IgG/IgM binds cell-surface antigens → complement activation or ADCC → cell destruction",
+    "acceptableAlternatives": ["Type II", "cytotoxic hypersensitivity", "IgG/IgM cytotoxic"],
+    "chainThemeId": "hypersensitivity",
+    "answerTypePoolId": "immunology_concepts",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Haemolytic disease of the newborn (Rh incompatibility) and autoimmune haemolytic anaemia are examples of which hypersensitivity type, where IgG or IgM targets cell-surface antigens for destruction?",
+    "explanation": "Type II (cytotoxic) hypersensitivity: IgG or IgM antibodies bind directly to antigens on cell surfaces or extracellular matrix. Consequences include: (1) Complement activation (MAC formation → cell lysis), (2) Antibody-dependent cellular cytotoxicity (ADCC) via NK cells, (3) Opsonisation for phagocytosis. Clinical examples: haemolytic disease of the newborn (maternal anti-Rh IgG crosses placenta, destroys foetal RBCs), autoimmune haemolytic anaemia, Goodpasture syndrome (anti-GBM antibodies), myasthenia gravis (anti-AChR blocks acetylcholine binding), Graves disease (anti-TSH receptor stimulates thyroid), pemphigus vulgaris (anti-desmoglein causes skin blistering).",
+    "visualDescription": "Pixel art red blood cell with IgG antibodies coating its surface, complement proteins and NK cell attacking it, newborn jaundice in background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Type_II_hypersensitivity",
+    "volatile": false,
+    "distractors": ["Type I: IgE-mediated", "Type III: immune complex", "Type IV: T-cell delayed", "Type II: IgA-mediated"],
+    "variants": [
+      {
+        "quizQuestion": "In myasthenia gravis, autoantibodies cause muscle weakness by targeting which receptor?",
+        "correctAnswer": "Acetylcholine receptor (AChR) at the neuromuscular junction",
+        "explanation": "Myasthenia gravis is a Type II hypersensitivity where IgG antibodies block or destroy nicotinic acetylcholine receptors at the neuromuscular junction, preventing muscle activation. Hallmarks: fatigable ptosis, diplopia, dysphagia worsening with use. Treatment includes acetylcholinesterase inhibitors (pyridostigmine) and immunosuppression."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_024",
+    "subDeckId": "lymphatic_immune",
+    "correctAnswer": "Type IV (delayed-type) hypersensitivity — T-cell mediated, 48–72 hours",
+    "acceptableAlternatives": ["Type IV", "delayed hypersensitivity", "T-cell mediated"],
+    "chainThemeId": "hypersensitivity",
+    "answerTypePoolId": "immunology_concepts",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "The tuberculin skin test (PPD) produces induration at 48–72 hours. The Mantoux reaction is the classic example of which hypersensitivity type — the only type not mediated by antibodies?",
+    "explanation": "Type IV (delayed-type hypersensitivity, DTH) is the only hypersensitivity reaction mediated entirely by T cells (not antibodies). Sensitised CD4+ Th1 cells, upon re-encountering antigen presented via MHC II, release IFN-γ and TNF-α, activating macrophages and recruiting monocytes. The reaction peaks at 48–72 hours (vs. minutes for Type I). The tuberculin (PPD) skin test exploits this — a positive result (induration ≥10–15mm) indicates prior sensitisation to M. tuberculosis. Other examples: contact dermatitis (nickel, poison ivy), graft rejection, coeliac disease, and the pathology in tuberculosis granuloma formation.",
+    "visualDescription": "Pixel art forearm with indurated PPD skin test wheal, Th1 lymphocytes and macrophages shown in dermis cross-section, 48-hour timer in corner",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Type_IV_hypersensitivity",
+    "volatile": false,
+    "distractors": ["Type I: IgE-mediated", "Type II: cytotoxic", "Type III: immune complex", "Type V: stimulatory"],
+    "variants": [
+      {
+        "quizQuestion": "Contact dermatitis to nickel or poison ivy is mediated by which T cell subset?",
+        "correctAnswer": "CD4+ Th1 cells (with CD8+ CTL contribution in the effector phase)",
+        "explanation": "The sensitisation phase involves dendritic cells presenting hapten-modified self proteins to naive T cells in lymph nodes. The elicitation phase on re-exposure involves CD4+ Th1 cells releasing IFN-γ (recruiting macrophages) and CD8+ cytotoxic T cells directly killing keratinocytes. Together they produce the eczematous rash of allergic contact dermatitis."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_025",
+    "subDeckId": "special_senses",
+    "correctAnswer": "Open-angle glaucoma: chronic, painless, progressive peripheral vision loss. Closed-angle: acute, painful, emergency — halos, eye redness, nausea.",
+    "acceptableAlternatives": ["open-angle is painless chronic, closed-angle is acute painful"],
+    "chainThemeId": "eye_disease",
+    "answerTypePoolId": "disease_descriptions",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Glaucoma involves raised intraocular pressure damaging the optic nerve. Distinguish open-angle from closed-angle glaucoma in terms of onset, symptoms, and urgency.",
+    "explanation": "Open-angle glaucoma (90% of cases): The trabecular meshwork is partially blocked, drainage is impaired but the iridocorneal angle remains open. IOP rises gradually. The condition is chronic, painless, and peripheral ('tunnel') vision is lost insidiously — patients are often unaware until significant damage has occurred. Closed-angle (angle-closure) glaucoma: The iris physically blocks the trabecular meshwork (angle closes). IOP rises acutely and severely. Symptoms: sudden severe eye pain, headache, blurred vision, halos around lights, nausea/vomiting, red eye, mid-dilated fixed pupil. This is an ophthalmic EMERGENCY requiring immediate treatment (IV acetazolamide, pilocarpine, laser iridotomy) to prevent permanent blindness within hours.",
+    "visualDescription": "Pixel art eye cross-section split: left open-angle with partially obstructed trabecular meshwork, gradual vision tunnel; right closed-angle with iris blocking drainage angle, urgent red eye with pain",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Glaucoma",
+    "volatile": false,
+    "distractors": ["Both are painless chronic conditions", "Open-angle is acute, closed-angle is chronic", "Both cause central vision loss first", "Closed-angle is treated with beta-blockers alone"],
+    "variants": [
+      {
+        "quizQuestion": "A patient presents with sudden severe eye pain, halos around lights, a hard red eye, nausea, and a mid-dilated non-reactive pupil. What is the diagnosis?",
+        "correctAnswer": "Acute closed-angle glaucoma",
+        "explanation": "This is a classic presentation of acute angle-closure glaucoma — an ophthalmological emergency. The pupil dilates (from a dim room, stress, or mydriatic drops), the peripheral iris contacts the trabecular meshwork, blocking aqueous outflow. IOP can reach 60–80 mmHg (normal ~10–21). Immediate treatment prevents permanent optic nerve damage."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_026",
+    "subDeckId": "special_senses",
+    "correctAnswer": "Cataracts — lens opacity causing painless progressive vision loss; most common cause of reversible blindness worldwide",
+    "acceptableAlternatives": ["cataracts", "cataract", "lens opacity"],
+    "chainThemeId": "eye_disease",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which condition involves opacity of the crystalline lens, producing painless, gradual vision blurring and glare, and is the leading cause of reversible blindness worldwide?",
+    "explanation": "Cataracts are opacities within the crystalline lens caused by protein denaturation and aggregation. The lens is normally transparent; opacity scatters incoming light, reducing visual acuity. Symptoms: blurred vision (often worse at distance), glare and halos (especially driving at night), 'second sight' (temporary near-vision improvement as the denser nucleus acts as a magnifier), and faded colour perception. Risk factors: age (most common — senile cataract), UV exposure, smoking, diabetes, corticosteroids, trauma, congenital (TORCH infections, galactosaemia). Treatment: surgical lens removal with intraocular lens (IOL) implantation — one of the most commonly performed and successful surgeries worldwide. Cataracts cause ~51% of all global blindness (WHO).",
+    "visualDescription": "Pixel art eye cross-section with clouded whitish lens visible through pupil, visual simulation showing blurred hazy image through cataractous lens vs clear lens",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cataract",
+    "volatile": false,
+    "distractors": ["Glaucoma", "Age-related macular degeneration", "Diabetic retinopathy", "Retinal detachment"],
+    "variants": [
+      {
+        "quizQuestion": "Cataracts are the leading cause of reversible blindness. What percentage of global blindness do they cause according to the WHO?",
+        "correctAnswer": "~51%",
+        "explanation": "The WHO estimates cataracts account for approximately 51% of world blindness — about 20 million people. Because cataract surgery is inexpensive and highly effective, most of this blindness is preventable. The remaining major causes are glaucoma (8%), age-related macular degeneration (5%), corneal opacification (4%), and diabetic retinopathy (1%)."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_027",
+    "subDeckId": "special_senses",
+    "correctAnswer": "Meniere's disease — endolymphatic hydrops causing episodic vertigo, sensorineural hearing loss, tinnitus, and aural fullness",
+    "acceptableAlternatives": ["Meniere's disease", "Meniere disease", "endolymphatic hydrops"],
+    "chainThemeId": "vestibular",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which inner ear disorder is caused by excess endolymph (endolymphatic hydrops) and presents with recurrent episodes of severe vertigo, fluctuating sensorineural hearing loss, tinnitus, and a sensation of ear fullness?",
+    "explanation": "Meniere's disease (endolymphatic hydrops) results from abnormal accumulation of endolymph in the membranous labyrinth of the inner ear, distending the scala media and damaging hair cells. Episodes typically last 20 minutes to several hours. The four hallmark symptoms form a tetrad: (1) episodic vertigo with nausea/vomiting, (2) fluctuating low-frequency sensorineural hearing loss (eventually permanent), (3) tinnitus (roaring, low-pitched), (4) aural fullness/pressure. Diagnosis is clinical. Management: low-salt diet and diuretics to reduce endolymph volume, betahistine, vestibular rehabilitation; for severe cases intratympanic gentamicin or endolymphatic sac decompression surgery.",
+    "visualDescription": "Pixel art cochlear cross-section with distended endolymph-filled scala media labelled, figure experiencing room-spinning vertigo, tinnitus waves near ear",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/M%C3%A9ni%C3%A8re%27s_disease",
+    "volatile": false,
+    "distractors": ["Benign paroxysmal positional vertigo (BPPV)", "Acoustic neuroma", "Vestibular neuritis", "Labyrinthitis"],
+    "variants": [
+      {
+        "quizQuestion": "Meniere's disease is managed partly with a low-sodium diet. What is the physiological rationale?",
+        "correctAnswer": "Reducing dietary sodium decreases endolymph volume by lowering osmotic pressure and fluid retention in the labyrinth",
+        "explanation": "Sodium intake influences systemic fluid and electrolyte balance. A low-sodium diet combined with diuretics reduces circulating fluid volume, which in turn reduces endolymph overproduction or impairs reabsorption in the endolymphatic sac, decreasing distension of the membranous labyrinth."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_028",
+    "subDeckId": "integumentary",
+    "correctAnswer": "Psoriasis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "skin_disorders",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which chronic autoimmune skin disease is characterised by well-demarcated, erythematous plaques with silvery scales, the Auspitz sign (pinpoint bleeding when scale is removed), and the Koebner phenomenon?",
+    "explanation": "Psoriasis is a T-cell mediated autoimmune condition causing keratinocyte hyperproliferation — skin cells turn over in 3–5 days instead of the normal 28 days, producing the thick silvery-white scale. Key signs: Auspitz sign — removal of scale reveals pinpoint bleeding from dilated capillaries; Koebner (isomorphic) phenomenon — new lesions appear at sites of skin trauma (scratches, surgical scars). Common sites: extensor surfaces (elbows, knees), scalp, sacrum. Associated with psoriatic arthritis (seronegative, asymmetric), cardiovascular disease, metabolic syndrome, and depression. Treatment: emollients, topical corticosteroids/vitamin D analogues, phototherapy (UVB), systemics (methotrexate, ciclosporin), biologics (anti-TNF, anti-IL-17, anti-IL-23).",
+    "visualDescription": "Pixel art elbow with well-defined silvery-white plaque, Auspitz sign close-up showing pinpoint bleeding, Koebner lesion forming on scratch line on forearm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Psoriasis",
+    "volatile": false,
+    "distractors": ["Eczema (atopic dermatitis)", "Lichen planus", "Seborrheic dermatitis", "Pityriasis rosea"],
+    "variants": [
+      {
+        "quizQuestion": "The Koebner phenomenon is seen in psoriasis. What does it describe?",
+        "correctAnswer": "New psoriatic lesions appearing at sites of skin trauma or injury",
+        "explanation": "The Koebner (isomorphic) response describes the development of new psoriatic plaques along lines of trauma — scratches, surgical incisions, sunburn, or even tattoo sites. It reflects the pro-inflammatory state of psoriatic skin making it highly reactive to any mechanical disruption."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_029",
+    "subDeckId": "integumentary",
+    "correctAnswer": "Vitiligo",
+    "acceptableAlternatives": [],
+    "chainThemeId": "skin_disorders",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which autoimmune skin condition is caused by destruction of melanocytes, producing sharply demarcated, chalky-white depigmented patches that fluoresce brightly under Wood's lamp?",
+    "explanation": "Vitiligo results from autoimmune-mediated destruction (CD8+ cytotoxic T cells targeting melanocyte-specific antigens such as TYRP1, TYRP2, and melanin biosynthesis enzymes) leading to complete loss of melanin pigment in affected areas. Patches are typically well-circumscribed, chalk-white, and may be surrounded by hyperpigmented borders. Under Wood's lamp (UVA 365nm), depigmented patches fluoresce bright white-blue, aiding diagnosis in fair-skinned patients. Vitiligo has segmental and non-segmental (generalised) types. It is associated with other autoimmune conditions: Hashimoto thyroiditis, Addison disease, type 1 diabetes, pernicious anaemia. Treatment: topical calcineurin inhibitors, narrow-band UVB phototherapy, JAK inhibitors (ruxolitinib — FDA approved 2022 for repigmentation).",
+    "visualDescription": "Pixel art dark-skinned arm with stark white depigmented patches, Wood's lamp shining UV light and patches glowing bright white, melanocyte shown being attacked by T cells",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vitiligo",
+    "volatile": false,
+    "distractors": ["Albinism", "Pityriasis versicolor", "Leprosy (tuberculoid type)", "Post-inflammatory hypopigmentation"],
+    "variants": [
+      {
+        "quizQuestion": "Vitiligo is associated with several other autoimmune diseases. Name three that are commonly associated.",
+        "correctAnswer": "Hashimoto thyroiditis, Addison disease, and type 1 diabetes mellitus",
+        "explanation": "The autoimmune diathesis underlying vitiligo predisposes to other organ-specific autoimmune diseases. Hashimoto thyroiditis is most common; Addison disease (adrenal), type 1 DM (pancreatic beta cells), and pernicious anaemia (gastric parietal cells) are also recognised associations. Screening for thyroid function is recommended in all vitiligo patients."
+      }
+    ]
+  },
+  {
+    "id": "ha_multi_030",
+    "subDeckId": "integumentary",
+    "correctAnswer": "ABCDE: Asymmetry, Border irregularity, Colour variation, Diameter >6 mm, Evolution",
+    "acceptableAlternatives": ["ABCDE criteria", "asymmetry, border, colour, diameter, evolution"],
+    "chainThemeId": "skin_cancer",
+    "answerTypePoolId": "clinical_criteria",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What are the five ABCDE clinical warning signs used to identify a suspicious pigmented lesion that may be malignant melanoma?",
+    "explanation": "The ABCDE criteria for melanoma recognition: A — Asymmetry (one half doesn't mirror the other); B — Border irregularity (ragged, notched, or blurred edges); C — Colour variation (multiple colours within one lesion: black, brown, tan, red, white, blue); D — Diameter greater than 6mm (size of a pencil eraser, though melanomas can be smaller); E — Evolution (any change in size, shape, colour, or appearance over weeks to months — this is arguably the most important criterion). Melanoma arises from malignant transformation of melanocytes. Despite representing only ~1% of skin cancers, melanoma causes ~75% of skin cancer deaths due to its metastatic potential. Key risk factors: fair skin, UV exposure, family history, dysplastic naevus syndrome, BRAF mutation (V600E in ~50%, targetable by vemurafenib). Treatment: wide local excision with sentinel node biopsy; metastatic disease: BRAF inhibitors + MEK inhibitors, immunotherapy (anti-PD1: nivolumab, pembrolizumab).",
+    "visualDescription": "Pixel art skin lesion with all five ABCDE features labelled: asymmetric irregular-bordered multi-coloured lesion over 6mm, before/after evolution comparison",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Melanoma",
+    "volatile": false,
+    "distractors": ["ABCDE: Age, Bleeding, Colour, Depth, Extension", "ABCDE: Asymmetry, Bleeding, Crust, Diameter, Erythema", "ABCD only — Evolution is not part of the criteria"],
+    "variants": [
+      {
+        "quizQuestion": "Approximately 50% of melanomas carry a BRAF mutation (V600E). What class of drug specifically targets this mutation?",
+        "correctAnswer": "BRAF inhibitors (e.g. vemurafenib, dabrafenib)",
+        "explanation": "The V600E BRAF mutation constitutively activates the MAP kinase signalling pathway, driving uncontrolled melanocyte proliferation. BRAF inhibitors (vemurafenib, dabrafenib) block this. They are often combined with MEK inhibitors (trametinib, cobimetinib) to delay resistance. This combination produces dramatic initial responses but resistance typically develops within ~12 months."
+      }
+    ]
+  }
+]

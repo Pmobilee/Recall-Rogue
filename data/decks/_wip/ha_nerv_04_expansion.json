@@ -1,0 +1,407 @@
+{
+  "facts": [
+    {
+      "id": "ha_nerv_081",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "L1–L4",
+      "acceptableAlternatives": ["lumbar 1 to 4", "L1, L2, L3, L4"],
+      "chainThemeId": "peripheral_nerves",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "The lumbar plexus is formed by the anterior rami of which spinal cord levels?",
+      "explanation": "The lumbar plexus is formed by the anterior rami of L1–L4 (with a small contribution from T12). It gives rise to the iliohypogastric (L1), ilioinguinal (L1), genitofemoral (L1–L2), lateral femoral cutaneous (L2–L3), femoral (L2–L4), and obturator nerves (L2–L4). It lies within the substance of the psoas major muscle and supplies the anterior and medial thigh, as well as the inguinal and scrotal/labial regions.",
+      "visualDescription": "Anterior view of lumbar vertebrae L1–L4 with color-coded nerve roots diverging and merging into the labeled branches of the lumbar plexus within the psoas muscle",
+      "sourceName": "Wikipedia — Lumbar plexus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lumbar_plexus",
+      "volatile": false,
+      "distractors": ["T10–L2", "L2–L5", "L1–L5"],
+      "variants": [
+        {
+          "type": "recall",
+          "quizQuestion": "Name the six main branches of the lumbar plexus in order from most superior to most inferior.",
+          "correctAnswer": "Iliohypogastric, ilioinguinal, genitofemoral, lateral femoral cutaneous, femoral, obturator",
+          "explanation": "Mnemonic: 'I, I, Get Laid For Once' — Iliohypogastric (L1), Ilioinguinal (L1), Genitofemoral (L1–2), Lateral femoral cutaneous (L2–3), Femoral (L2–4), Obturator (L2–4). The femoral nerve is the largest branch and the obturator the most medial."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_082",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Femoral nerve (L2–L4)",
+      "acceptableAlternatives": ["femoral nerve", "L2-L4 femoral"],
+      "chainThemeId": "peripheral_nerves",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Which is the largest nerve of the lumbar plexus, emerging from the lateral border of psoas major to supply the quadriceps and skin of the anterior thigh?",
+      "explanation": "The femoral nerve (L2–L4) is the largest branch of the lumbar plexus. It exits the lateral border of psoas, passes beneath the inguinal ligament lateral to the femoral artery (mnemonic: NAVY — Nerve, Artery, Vein, Y-fronts medial to lateral), and divides into anterior (cutaneous) and posterior (muscular) divisions. Motor supply: hip flexors (iliacus, pectineus) and knee extensors (quadriceps). The saphenous nerve, its longest branch, provides sensory supply to the medial leg and foot.",
+      "visualDescription": "Anterior thigh cross-section below inguinal ligament: femoral nerve lateral to femoral artery in femoral triangle; motor branches to quadriceps; saphenous branch descending medially",
+      "sourceName": "Wikipedia — Femoral nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Femoral_nerve",
+      "volatile": false,
+      "distractors": ["Obturator nerve", "Lateral femoral cutaneous nerve", "Sciatic nerve"],
+      "variants": [
+        {
+          "type": "context",
+          "quizQuestion": "A patient cannot extend the knee and has lost the knee-jerk reflex (L3/L4). Which nerve is most likely injured?",
+          "correctAnswer": "Femoral nerve",
+          "explanation": "The femoral nerve (L2–L4) supplies the quadriceps femoris, the sole extensor of the knee. The knee-jerk (patellar) reflex arc involves L3 and L4 via the femoral nerve. Loss of both functions in combination strongly localises the lesion to the femoral nerve or its spinal segments."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_083",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Obturator nerve (L2–L4)",
+      "acceptableAlternatives": ["obturator nerve", "obturator L2-L4"],
+      "chainThemeId": "peripheral_nerves",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Which lumbar plexus nerve (L2–L4) exits the pelvis through the obturator foramen and supplies the adductors of the thigh?",
+      "explanation": "The obturator nerve (L2–L4) descends through the medial border of psoas, crosses the pelvic brim, and exits through the obturator foramen (the only lumbar plexus nerve to exit this way). It divides into anterior and posterior divisions within the obturator externus. Motor: adductors (adductor longus, brevis, magnus — adductor part), gracilis, pectineus. Sensory: medial thigh. Obturator nerve injury causes weak adduction and sensory loss on the medial thigh; pain may be referred to the knee (obturator-referred knee pain in hip pathology).",
+      "visualDescription": "Coronal pelvis diagram: obturator nerve path from medial psoas border → obturator foramen → thigh; adductor muscle group highlighted",
+      "sourceName": "Wikipedia — Obturator nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Obturator_nerve",
+      "volatile": false,
+      "distractors": ["Femoral nerve", "Iliohypogastric nerve", "Genitofemoral nerve"],
+      "variants": [
+        {
+          "type": "clinical",
+          "quizQuestion": "A patient with hip pathology complains of medial knee pain despite a normal knee examination. Which nerve's referred pain pattern explains this?",
+          "correctAnswer": "Obturator nerve",
+          "explanation": "The obturator nerve (L2–L4) supplies both the hip joint and the medial thigh/knee area. Hip pathology can irritate the obturator nerve, causing referred pain perceived in the medial knee. This is a classic clinical pitfall: knee pain that turns out to be hip disease."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_084",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "L4–S3",
+      "acceptableAlternatives": ["L4, L5, S1, S2, S3", "lumbar 4 to sacral 3"],
+      "chainThemeId": "peripheral_nerves",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "The sacral plexus is formed by the anterior rami of which spinal cord levels?",
+      "explanation": "The sacral plexus is formed by the anterior rami of L4, L5, S1, S2, and S3 (lumbosacral trunk from L4–L5 plus S1–S3). It lies on the posterior pelvic wall anterior to the piriformis muscle. Its largest branch — and the largest nerve in the body — is the sciatic nerve. Other branches include the superior gluteal (L4–S1), inferior gluteal (L5–S2), posterior femoral cutaneous (S1–S3), and pudendal nerves (S2–S4).",
+      "visualDescription": "Posterior pelvic wall diagram: nerve roots L4–S3 converging anterior to piriformis; major branches labeled with their levels; sciatic nerve exiting below piriformis through greater sciatic foramen",
+      "sourceName": "Wikipedia — Sacral plexus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sacral_plexus",
+      "volatile": false,
+      "distractors": ["L2–S2", "L5–S4", "S1–S5"],
+      "variants": [
+        {
+          "type": "recall",
+          "quizQuestion": "The sciatic nerve (the largest nerve in the body) divides in the posterior thigh into two terminal branches. Name them.",
+          "correctAnswer": "Tibial nerve and common fibular (peroneal) nerve",
+          "explanation": "The sciatic nerve divides — usually at the apex of the popliteal fossa — into the tibial nerve (medial, L4–S3) supplying posterior thigh/leg and the sole of the foot, and the common fibular (common peroneal) nerve (lateral, L4–S2) supplying the anterior and lateral leg. The division may occur higher, even in the pelvis, especially in piriformis syndrome."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_085",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Pudendal nerve (S2–S4)",
+      "acceptableAlternatives": ["pudendal nerve", "S2-S4 pudendal"],
+      "chainThemeId": "peripheral_nerves",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Which sacral plexus nerve (S2–S4) exits via the greater sciatic foramen, wraps around the ischial spine, and re-enters the perineum via the lesser sciatic foramen to supply the external genitalia and anal/urethral sphincters?",
+      "explanation": "The pudendal nerve (S2–S4) is the main sensory and motor nerve of the perineum. It exits the pelvis through the greater sciatic foramen below piriformis, passes around the ischial spine (landmark for pudendal nerve block), and re-enters via the lesser sciatic foramen into the pudendal canal (Alcock's canal). It gives off the inferior rectal nerve, perineal nerve, and dorsal nerve of the penis/clitoris. It is the nerve blocked for perineal anaesthesia in obstetric and urological procedures.",
+      "visualDescription": "Lateral pelvic diagram: pudendal nerve path curving around ischial spine between greater and lesser sciatic foramina; Alcock's canal on obturator internus; branching to anal canal and perineum",
+      "sourceName": "Wikipedia — Pudendal nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pudendal_nerve",
+      "volatile": false,
+      "distractors": ["Posterior femoral cutaneous nerve", "Inferior gluteal nerve", "Obturator internus nerve"],
+      "variants": [
+        {
+          "type": "clinical",
+          "quizQuestion": "A pudendal nerve block for perineal anaesthesia targets the nerve as it passes around which bony landmark?",
+          "correctAnswer": "Ischial spine",
+          "explanation": "The pudendal nerve is blocked by injecting local anaesthetic just medial to the ischial spine (palpated transvaginally or transperineally). The nerve wraps around this landmark between the sacrospinous and sacrotuberous ligaments before entering the pudendal canal. This block provides anaesthesia to the perineum, lower vagina, and vulva."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_086",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Sciatic nerve → tibial nerve + common fibular nerve",
+      "acceptableAlternatives": ["sciatic divides into tibial and common peroneal", "tibial and common fibular"],
+      "chainThemeId": "peripheral_nerves",
+      "answerTypePoolId": "process_steps",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The sciatic nerve is the largest nerve in the body. Into which two terminal branches does it divide, usually at the popliteal fossa?",
+      "explanation": "The sciatic nerve (L4–S3) exits the pelvis through the greater sciatic foramen below piriformis and descends in the posterior thigh. At the apex of the popliteal fossa it divides into the tibial nerve (L4–S3) and the common fibular (peroneal) nerve (L4–S2). The tibial nerve continues deep to supply the posterior leg and sole (plantar flexion, toe flexion, intrinsic foot muscles). The common fibular nerve wraps around the fibular neck (highly vulnerable to injury) and divides into the deep fibular (foot dorsiflexion) and superficial fibular (foot eversion) nerves.",
+      "visualDescription": "Posterior thigh diagram: sciatic nerve (thick yellow trunk) descending from gluteal fold, bifurcating at popliteal fossa apex into tibial (medial, continues down leg) and common fibular (lateral, wrapping fibular neck)",
+      "sourceName": "Wikipedia — Sciatic nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sciatic_nerve",
+      "volatile": false,
+      "distractors": ["Femoral nerve + obturator nerve", "Tibial nerve + sural nerve", "Common fibular nerve + posterior femoral cutaneous nerve"],
+      "variants": [
+        {
+          "type": "clinical",
+          "quizQuestion": "The common fibular (peroneal) nerve is the most commonly injured nerve in the lower limb because it wraps around a bony surface. Which bone?",
+          "correctAnswer": "Fibular neck (neck of the fibula)",
+          "explanation": "The common fibular nerve winds around the neck of the fibula just below the knee, where it is directly subcutaneous and vulnerable. Injury (from tight plaster cast, prolonged squatting, knee dislocation, or fracture) causes foot drop (loss of dorsiflexion from deep fibular nerve) and loss of eversion (superficial fibular nerve), with sensory loss over the dorsum of the foot and lateral leg."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_087",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "10 arteries: 2 ACA + ACoA + 2 ICA + 2 PCoA + 2 PCA + basilar",
+      "acceptableAlternatives": ["anterior cerebral + anterior communicating + internal carotid + posterior communicating + posterior cerebral + basilar", "Circle of Willis components"],
+      "chainThemeId": "cerebral_circulation",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Name the arterial components that form the Circle of Willis (the complete anastomotic ring at the base of the brain).",
+      "explanation": "The Circle of Willis consists of: two anterior cerebral arteries (ACA, from ICA) joined by the single anterior communicating artery (ACoA); two internal carotid arteries (ICA) contributing directly; two posterior communicating arteries (PCoA) linking ICA to the posterior system; two posterior cerebral arteries (PCA, from the basilar artery); and the basilar artery itself (formed by the fusion of the two vertebral arteries). The ring allows collateral flow between the anterior (carotid) and posterior (vertebrobasilar) circulations. An anatomically complete circle is present in only ~35% of people.",
+      "visualDescription": "Inferior brain view: anterior communicating artery (top midline), two ACA branches diverging upward, two ICA trunks on each side, two PCoA linking ICA to PCA, two PCA diverging toward temporal lobes, basilar artery entering from below",
+      "sourceName": "Wikipedia — Circle of Willis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Circle_of_Willis",
+      "volatile": false,
+      "distractors": [
+        "ACA + MCA + PCA + basilar + vertebral",
+        "ACA + ACoA + MCA + PCoA + PCA",
+        "ICA + MCA + ACA + vertebral + basilar"
+      ],
+      "variants": [
+        {
+          "type": "context",
+          "quizQuestion": "An anatomically complete Circle of Willis is present in only about what percentage of the population?",
+          "correctAnswer": "~35%",
+          "explanation": "Studies show that a textbook complete Circle of Willis (all segments present and normally sized) exists in only about 35% of people. Common variants include hypoplastic or absent PCoA (~30%), absent or hypoplastic A1 ACA segment, and fetal-type PCA (where PCA arises from ICA rather than basilar). These variants affect collateral flow capacity and stroke risk."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_088",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Ipsilateral motor and proprioception loss + contralateral pain and temperature loss",
+      "acceptableAlternatives": ["Brown-Séquard: ipsilateral UMN + DC loss, contralateral spinothalamic loss", "hemisection: same-side paralysis, opposite-side pain/temp loss"],
+      "chainThemeId": "spinal_cord_syndromes",
+      "answerTypePoolId": "process_steps",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Brown-Séquard syndrome results from hemisection of the spinal cord. What is the classic pattern of deficits below the lesion?",
+      "explanation": "Brown-Séquard syndrome results from damage to one lateral half of the spinal cord. Below the lesion: (1) Ipsilateral loss of motor function (corticospinal tract, which has already crossed in the medulla) and proprioception/vibration sense (dorsal column–medial lemniscus, which crosses in the medulla above the lesion). (2) Contralateral loss of pain and temperature sensation (spinothalamic tract, which crosses within 1–2 spinal segments of entry, so is on the opposite side from the lesion). At the level of the lesion: ipsilateral lower motor neuron signs and ipsilateral loss of all sensation.",
+      "visualDescription": "Spinal cord cross-section with right hemisection highlighted; table showing: ipsilateral side — red for motor and proprioception loss; contralateral side — blue for pain/temperature loss; arrows indicating tract crossing levels",
+      "sourceName": "Wikipedia — Brown-Séquard syndrome",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Brown%E2%80%93S%C3%A9quard_syndrome",
+      "volatile": false,
+      "distractors": [
+        "Bilateral motor loss + unilateral sensory loss",
+        "Ipsilateral pain loss + contralateral motor loss",
+        "Contralateral motor and proprioception loss + ipsilateral pain and temperature loss"
+      ],
+      "variants": [
+        {
+          "type": "recall",
+          "quizQuestion": "In Brown-Séquard syndrome, why is proprioception lost on the SAME side as the lesion while pain is lost on the OPPOSITE side?",
+          "correctAnswer": "Dorsal columns cross in the medulla (above); spinothalamic tract crosses at spinal cord entry level (below)",
+          "explanation": "Dorsal column fibres ascend ipsilaterally all the way to the medulla before crossing — so a cord hemisection interrupts the uncrossed ipsilateral fibres. Spinothalamic fibres cross within 1–2 spinal levels of entering the cord — so a cord hemisection interrupts already-crossed contralateral fibres. This produces the paradoxical split: same-side proprioception loss, opposite-side pain/temp loss."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_089",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Miosis + ptosis + anhidrosis (on the affected side)",
+      "acceptableAlternatives": ["small pupil, drooping eyelid, no sweating", "Horner's triad: miosis, ptosis, anhidrosis"],
+      "chainThemeId": "autonomic_nervous_system",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Horner syndrome results from disruption of the sympathetic pathway to the eye and face. What are the three classic clinical signs?",
+      "explanation": "Horner syndrome is caused by interruption of the oculosympathetic pathway at any of three levels: central (hypothalamus → ciliospinal centre of Budge at C8–T2), preganglionic (T1 root → over the lung apex → superior cervical ganglion), or postganglionic (along the carotid artery to the orbit). The three signs are: miosis (small pupil, due to loss of pupillary dilator), ptosis (drooping upper eyelid, due to loss of Müller's muscle), and anhidrosis (loss of sweating on the ipsilateral face, postganglionic lesion) or ipsilateral face + body (central lesion). A fourth sign — apparent enophthalmos — occurs due to the ptosis and lower lid elevation.",
+      "visualDescription": "Close-up of two eyes: affected side shows smaller pupil (miosis), drooping upper lid (ptosis), and slight elevation of lower lid compared to normal side; sweat gland diagram below showing ipsilateral anhidrosis",
+      "sourceName": "Wikipedia — Horner syndrome",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Horner%27s_syndrome",
+      "volatile": false,
+      "distractors": [
+        "Mydriasis + ptosis + hyperhidrosis",
+        "Miosis + proptosis + anhidrosis",
+        "Mydriasis + proptosis + lacrimation"
+      ],
+      "variants": [
+        {
+          "type": "clinical",
+          "quizQuestion": "A patient presents with right-sided Horner syndrome and right arm pain and weakness. Where is the likely lesion in the sympathetic pathway?",
+          "correctAnswer": "Preganglionic (T1 nerve root / apex of lung)",
+          "explanation": "Preganglionic Horner syndrome with ipsilateral arm symptoms localises to T1–T2, which carries both the preganglionic sympathetic fibres and the motor/sensory fibres to the arm. A Pancoast tumour (apical lung tumour) is the classic cause, compressing the brachial plexus (arm pain/weakness) and the preganglionic sympathetic chain (Horner syndrome). Anhidrosis involves the whole ipsilateral face and arm with a preganglionic lesion."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_090",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Choroid plexus → foramen of Monro → 3rd ventricle → cerebral aqueduct → 4th ventricle → foramina of Luschka and Magendie → subarachnoid space → arachnoid granulations → dural venous sinuses",
+      "acceptableAlternatives": ["CSF: lateral ventricles → 3rd → aqueduct → 4th → subarachnoid → arachnoid granulations", "choroid plexus to dural venous sinuses via ventricles"],
+      "chainThemeId": "csf_and_meninges",
+      "answerTypePoolId": "process_steps",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Trace the complete pathway of CSF from production to reabsorption.",
+      "explanation": "CSF is produced by the choroid plexus (mainly in the lateral ventricles) at ~500 mL/day, with a total CSF volume of ~150 mL (turnover ~3× daily). It flows: lateral ventricles → foramen of Monro (interventricular foramina) → 3rd ventricle → cerebral aqueduct (of Sylvius, through the midbrain) → 4th ventricle → exits via the paired lateral foramina of Luschka and single median foramen of Magendie → subarachnoid space (bathes brain and spinal cord) → arachnoid granulations (into the dural venous sinuses, especially the superior sagittal sinus) → internal jugular veins. Blockage at any point causes hydrocephalus.",
+      "visualDescription": "Midline brain sagittal diagram: choroid plexus in lateral and 3rd ventricles labeled, aqueduct as narrow channel through midbrain, 4th ventricle with foramina of Luschka (lateral) and Magendie (median) marked, arrows through subarachnoid space to superior sagittal sinus",
+      "sourceName": "Wikipedia — Cerebrospinal fluid",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cerebrospinal_fluid",
+      "volatile": false,
+      "distractors": [
+        "Arachnoid mater → subarachnoid space → choroid plexus → dural sinuses",
+        "Choroid plexus → cerebral aqueduct → 3rd ventricle → subarachnoid space → vertebral veins",
+        "Ependymal cells → 4th ventricle → foramen of Monro → arachnoid granulations"
+      ],
+      "variants": [
+        {
+          "type": "clinical",
+          "quizQuestion": "Blockage of the cerebral aqueduct (of Sylvius) causes which specific type of hydrocephalus?",
+          "correctAnswer": "Non-communicating (obstructive) hydrocephalus",
+          "explanation": "Aqueductal stenosis blocks CSF flow between the 3rd and 4th ventricles, causing dilation of the lateral and 3rd ventricles while the 4th ventricle and subarachnoid space remain normal — this is non-communicating hydrocephalus (the ventricles don't communicate with the subarachnoid space through normal pathways). Communicating hydrocephalus involves impaired reabsorption at the arachnoid granulations with a patent ventricular system."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_091",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Foramen of Monro (interventricular foramen)",
+      "acceptableAlternatives": ["interventricular foramen", "foramen of Monro"],
+      "chainThemeId": "csf_and_meninges",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "CSF flows from each lateral ventricle into the 3rd ventricle through a paired opening. What is this opening called?",
+      "explanation": "The foramen of Monro (interventricular foramen) is the paired opening connecting each lateral ventricle to the midline 3rd ventricle. Obstruction — by a colloid cyst, subependymoma, or other mass — can trap CSF in the lateral ventricle(s), causing acute obstructive hydrocephalus with sudden rise in intracranial pressure and potentially rapid clinical deterioration. The foramina are named after the Scottish anatomist Alexander Monro (secundus), who described them in 1783.",
+      "visualDescription": "Coronal brain section: lateral ventricles (bilateral), with converging arrows at the interventricular foramina entering the midline 3rd ventricle; colloid cyst shown as a small sphere at the junction",
+      "sourceName": "Wikipedia — Interventricular foramina (neuroanatomy)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Interventricular_foramina_(neuroanatomy)",
+      "volatile": false,
+      "distractors": ["Foramen of Magendie", "Cerebral aqueduct", "Foramen of Luschka"],
+      "variants": [
+        {
+          "type": "recall",
+          "quizQuestion": "A colloid cyst at the foramen of Monro causes what acute neurological emergency?",
+          "correctAnswer": "Acute obstructive hydrocephalus",
+          "explanation": "A colloid cyst at the foramen of Monro (the most common location) intermittently or suddenly obstructs CSF drainage from the lateral ventricles, causing rapid-onset obstructive hydrocephalus. Classically it presents with postural headache (worse when lying down, relieved by standing), 'drop attacks', or sudden death. Urgent neurosurgical intervention is required."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_092",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Cerebral aqueduct of Sylvius",
+      "acceptableAlternatives": ["aqueduct of Sylvius", "mesencephalic aqueduct", "cerebral aqueduct"],
+      "chainThemeId": "csf_and_meninges",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "CSF passes from the 3rd ventricle to the 4th ventricle through a narrow channel running through the midbrain. What is this channel called?",
+      "explanation": "The cerebral aqueduct (aqueduct of Sylvius or mesencephalic aqueduct) is a narrow (~3 mm diameter, ~15 mm long) channel running through the dorsal midbrain (tectum) connecting the 3rd and 4th ventricles. It is the narrowest part of the ventricular system and the most common site of congenital or acquired obstruction causing hydrocephalus. Surrounding structures include the periaqueductal grey (PAG), which is important in pain modulation and the Parinaud syndrome (dorsal midbrain compression causing upgaze palsy).",
+      "visualDescription": "Sagittal brain diagram: midbrain cross-section with narrow aqueduct visible as a small lumen in the dorsal tegmentum; 3rd ventricle above and 4th ventricle below connected by the labeled aqueduct",
+      "sourceName": "Wikipedia — Cerebral aqueduct",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cerebral_aqueduct",
+      "volatile": false,
+      "distractors": ["Foramen of Monro", "Foramen of Magendie", "Central canal of spinal cord"],
+      "variants": [
+        {
+          "type": "context",
+          "quizQuestion": "Compression of the periaqueductal grey and dorsal midbrain causes Parinaud syndrome, characterised by loss of which eye movement?",
+          "correctAnswer": "Upgaze (upward vertical gaze)",
+          "explanation": "Parinaud syndrome (dorsal midbrain syndrome) is caused by compression of the superior colliculus and pretectal nuclei, typically by a pineal region tumour, hydrocephalus, or stroke. Classic features include paralysis of upward conjugate gaze (most prominent sign), convergence-retraction nystagmus on attempted upgaze, light-near dissociation of pupils, and eyelid retraction (Collier's sign)."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_093",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Foramen of Magendie (median) + foramina of Luschka (paired lateral)",
+      "acceptableAlternatives": ["Magendie and Luschka foramina", "median aperture and lateral apertures of 4th ventricle"],
+      "chainThemeId": "csf_and_meninges",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "CSF exits the 4th ventricle into the subarachnoid space through three openings. Name them.",
+      "explanation": "The 4th ventricle has three apertures through which CSF escapes into the subarachnoid space: the single foramen of Magendie (median aperture) in the roof of the 4th ventricle opening into the cisterna magna, and the paired foramina of Luschka (lateral apertures) at the lateral recesses of the 4th ventricle opening into the cerebellopontine angle cisterns. Blockage of all three (e.g., by post-meningitic adhesions or Chiari malformation) causes communicating hydrocephalus. The Dandy-Walker malformation involves atresia of these foramina with cystic dilation of the 4th ventricle.",
+      "visualDescription": "Posterior fossa diagram (4th ventricle from behind): single midline foramen of Magendie at the bottom opening into cisterna magna; paired lateral foramina of Luschka at each corner opening into CPA cisterns; arrows showing CSF escape routes",
+      "sourceName": "Wikipedia — Fourth ventricle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fourth_ventricle",
+      "volatile": false,
+      "distractors": [
+        "Foramen of Monro + foramen of Magendie + cerebral aqueduct",
+        "Foramen of Magendie + central canal + foramen of Monro",
+        "Two foramina of Luschka + aqueduct of Sylvius"
+      ],
+      "variants": [
+        {
+          "type": "recall",
+          "quizQuestion": "Dandy-Walker malformation involves atresia of the foramina of Magendie and Luschka. What structural abnormality results?",
+          "correctAnswer": "Cystic dilation of the 4th ventricle with hydrocephalus",
+          "explanation": "Dandy-Walker malformation involves hypoplasia or agenesis of the cerebellar vermis and cystic dilation of the 4th ventricle (which cannot empty through blocked foramina), occupying the posterior fossa. It is associated with obstructive hydrocephalus, agenesis of the corpus callosum, and other CNS malformations. It presents in infancy with a bulging occiput, macrocephaly, and cerebellar signs."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_094",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Arachnoid granulations → dural venous sinuses → internal jugular veins",
+      "acceptableAlternatives": ["arachnoid villi into superior sagittal sinus", "arachnoid granulations reabsorb CSF into venous sinuses"],
+      "chainThemeId": "csf_and_meninges",
+      "answerTypePoolId": "process_steps",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "How is CSF reabsorbed from the subarachnoid space back into the venous circulation?",
+      "explanation": "CSF is reabsorbed primarily through arachnoid granulations (also called arachnoid villi or Pacchioni granulations) — finger-like projections of the arachnoid mater that protrude into the dural venous sinuses, especially the superior sagittal sinus. CSF passes through these one-way pressure valves into the venous blood when CSF pressure exceeds venous pressure (normally by ~5 cmH₂O). Dural venous sinuses drain into the internal jugular veins and ultimately the heart. Minor reabsorption also occurs along cranial nerve sheaths and spinal nerve root sleeves. Impaired reabsorption (e.g., after meningitis) causes normal-pressure hydrocephalus.",
+      "visualDescription": "Coronal section through superior sagittal sinus: arachnoid granulations shown as small finger projections penetrating into the sinus lumen; subarachnoid space with CSF below; arrows showing CSF flowing into venous blood",
+      "sourceName": "Wikipedia — Arachnoid granulation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arachnoid_granulation",
+      "volatile": false,
+      "distractors": [
+        "Ependymal cells → cerebral veins → heart",
+        "Choroid plexus → ventricular walls → cerebral arteries",
+        "Pia mater → lymphatic vessels → subclavian vein"
+      ],
+      "variants": [
+        {
+          "type": "clinical",
+          "quizQuestion": "Normal-pressure hydrocephalus (NPH) presents with the classic triad of gait disturbance, urinary incontinence, and dementia. What is the underlying mechanism?",
+          "correctAnswer": "Impaired CSF reabsorption at arachnoid granulations → ventricular dilation at normal CSF pressure",
+          "explanation": "In NPH, fibrosis of the arachnoid granulations (often after meningitis, subarachnoid haemorrhage, or idiopathically) impairs CSF reabsorption, causing gradual ventricular enlargement without elevated lumbar CSF pressure. The enlarged ventricles compress periventricular white matter — particularly the corona radiata fibres carrying leg motor and bladder control — causing the classic triad. NPH is a treatable cause of dementia: ventriculoperitoneal shunting can reverse the gait and incontinence symptoms."
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_095",
+      "subDeckId": "nervous_system",
+      "correctAnswer": "Central (1st order): hypothalamus → ciliospinal centre (C8–T2); Preganglionic (2nd order): T1 → over lung apex → superior cervical ganglion; Postganglionic (3rd order): along carotid artery → orbit",
+      "acceptableAlternatives": ["three-neuron arc: hypothalamus, superior cervical ganglion, carotid plexus to orbit", "hypothalamus → C8-T2 → superior cervical ganglion → eye"],
+      "chainThemeId": "autonomic_nervous_system",
+      "answerTypePoolId": "process_steps",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Describe the three-neuron oculosympathetic pathway whose disruption causes Horner syndrome.",
+      "explanation": "The oculosympathetic pathway is a three-neuron arc: 1st-order (central) neuron: hypothalamus → descends ipsilaterally through the brainstem and cervical cord → ciliospinal centre of Budge (C8–T2). 2nd-order (preganglionic) neuron: exits at T1, passes over the lung apex (vulnerable to Pancoast tumour), crosses the subclavian artery, ascends to the superior cervical ganglion (at C2–C3, near the carotid bifurcation). 3rd-order (postganglionic) neuron: fibres travel along the internal carotid artery into the cavernous sinus, then via the ophthalmic division of CN V to reach the orbit — supplying the pupillary dilator and Müller's muscle. Anhidrosis localises the lesion: face only = postganglionic; face + arm/trunk = preganglionic/central.",
+      "visualDescription": "Schematic of the three-neuron arc: hypothalamus (top) → brainstem/cervical cord → C8-T2 (1st neuron); T1 root over lung apex → superior cervical ganglion (2nd neuron); carotid plexus → orbit (3rd neuron); each neuron labeled with its clinical vulnerability",
+      "sourceName": "Wikipedia — Horner syndrome",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Horner%27s_syndrome",
+      "volatile": false,
+      "distractors": [
+        "Hypothalamus → ciliary ganglion → iris sphincter",
+        "Edinger-Westphal nucleus → ciliary ganglion → pupillary dilator",
+        "Hypothalamus → dorsal vagal nucleus → superior cervical ganglion → orbit"
+      ],
+      "variants": [
+        {
+          "type": "clinical",
+          "quizQuestion": "In Horner syndrome, anhidrosis limited to the ipsilateral face (but NOT the arm or trunk) localises the lesion to which neuron of the oculosympathetic pathway?",
+          "correctAnswer": "Postganglionic (3rd-order) neuron",
+          "explanation": "Sweating fibres to the face travel along the external carotid artery branches (postganglionic), while sweating fibres to the arm and trunk leave the sympathetic chain more inferiorly. A postganglionic lesion (distal to the superior cervical ganglion) affects only face anhidrosis. A preganglionic or central lesion interrupts fibres before they segregate and causes anhidrosis of both the face AND the ipsilateral arm/trunk. This anatomical distinction is clinically useful for localising the level of the Horner lesion."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1084 @@
+{
+  "facts": [
+    {
+      "id": "ha_regional_031",
+      "correctAnswer": "vagus nerve (CN X)",
+      "acceptableAlternatives": ["CN X", "cranial nerve X", "vagus"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The carotid sheath runs deep to the sternocleidomastoid muscle and contains the common/internal carotid artery, internal jugular vein, and which cranial nerve?",
+      "explanation": "The carotid sheath is a condensation of deep cervical fascia enclosing three main structures: the common carotid artery (and internal carotid above the bifurcation) medially, the internal jugular vein laterally, and the vagus nerve (CN X) positioned between and posterior to both vessels. The sheath runs from the base of the skull to the thoracic inlet, deep to the sternocleidomastoid muscle. Damage during neck surgery can cause hoarseness, bradycardia, or Horner syndrome.",
+      "visualDescription": "Pixel art cross-section of the neck: carotid sheath highlighted in yellow with three labeled structures inside — medial artery (red), lateral vein (blue), posterior nerve (white), all deep to a green SCM muscle",
+      "sourceName": "StatPearls — Anatomy, Carotid Sheath",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK519577/",
+      "volatile": false,
+      "distractors": ["hypoglossal nerve (CN XII)", "glossopharyngeal nerve (CN IX)", "accessory nerve (CN XI)", "phrenic nerve", "facial nerve (CN VII)", "sympathetic chain", "ansa cervicalis", "recurrent laryngeal nerve"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The vagus nerve (CN X) travels in the neck alongside major blood vessels. What structure contains it?",
+          "correctAnswer": "carotid sheath",
+          "distractors": ["pretracheal fascia", "prevertebral fascia", "alar fascia", "investing fascia"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the ulnar nerve travels within the carotid sheath alongside the internal jugular vein.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Within the carotid sheath, the internal jugular vein lies ___ and the carotid artery lies medially.",
+          "correctAnswer": "laterally",
+          "distractors": ["posteriorly", "anteriorly", "superiorly"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_032",
+      "correctAnswer": "subclavian artery",
+      "acceptableAlternatives": ["subclavian a.", "subclavian"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The interscalene (scalene) triangle is bounded by the anterior scalene, middle scalene, and the first rib. Along with the roots of the brachial plexus, which major artery passes through this triangle?",
+      "explanation": "The interscalene triangle transmits the roots/trunks of the brachial plexus and the third part of the subclavian artery. The subclavian vein does NOT pass through the triangle — it runs anterior to the anterior scalene muscle. Compression of the contents of this triangle can cause thoracic outlet syndrome, presenting as neurological symptoms (brachial plexus compression) or vascular symptoms (subclavian artery compression), with signs in the upper limb.",
+      "visualDescription": "Pixel art anterior neck diagram: two scalene muscles forming a V-shape with the first rib as the base, labeled brachial plexus roots and subclavian artery threading through the triangle",
+      "sourceName": "StatPearls — Inter-scalene Triangle",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK544222/",
+      "volatile": false,
+      "distractors": ["subclavian vein", "common carotid artery", "vertebral artery", "axillary artery", "internal thoracic artery", "brachial artery", "external carotid artery", "inferior thyroid artery"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Thoracic outlet syndrome involves compression at the interscalene triangle. Which vascular structure is NOT found in this triangle?",
+          "correctAnswer": "subclavian vein",
+          "distractors": ["subclavian artery", "brachial plexus roots", "vertebral artery"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the brachial plexus roots pass through the interscalene triangle.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The interscalene triangle is bounded by the anterior scalene, middle scalene, and the ___.",
+          "correctAnswer": "first rib",
+          "distractors": ["clavicle", "second rib", "coracoid process"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_033",
+      "correctAnswer": "9",
+      "acceptableAlternatives": ["nine"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The carpal tunnel, bounded by carpal bones and the flexor retinaculum, contains the median nerve plus how many tendons?",
+      "explanation": "The carpal tunnel contains the median nerve and exactly 9 tendons: 4 tendons of flexor digitorum superficialis (FDS), 4 tendons of flexor digitorum profundus (FDP), and 1 tendon of flexor pollicis longus (FPL). The ulnar nerve does NOT pass through the carpal tunnel — it travels through the separate Guyon's canal. Carpal tunnel syndrome results from compression of the median nerve, producing pain, tingling, and weakness in the lateral 3.5 fingers.",
+      "visualDescription": "Pixel art wrist cross-section: flexor retinaculum arching over carpal bones, nine small labeled tendons packed inside with the median nerve nestled at the top, Guyon's canal shown outside the tunnel",
+      "sourceName": "TeachMeAnatomy — The Carpal Tunnel",
+      "sourceUrl": "https://teachmeanatomy.info/upper-limb/areas/carpal-tunnel/",
+      "volatile": false,
+      "distractors": ["8", "10", "7", "12", "6", "11", "4", "5"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Carpal tunnel syndrome compresses the median nerve. Which nerve passes through Guyon's canal, NOT the carpal tunnel?",
+          "correctAnswer": "ulnar nerve",
+          "distractors": ["median nerve", "radial nerve", "musculocutaneous nerve"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the ulnar nerve passes through the carpal tunnel alongside the median nerve.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The carpal tunnel contains 9 tendons: 4 FDS, 4 FDP, and 1 tendon of the flexor ___ longus.",
+          "correctAnswer": "pollicis",
+          "distractors": ["digitorum", "carpi radialis", "carpi ulnaris"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_034",
+      "correctAnswer": "extensor pollicis longus",
+      "acceptableAlternatives": ["EPL"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The anatomical snuffbox has two sets of boundaries. Extensor pollicis brevis and abductor pollicis longus form its lateral border. Which tendon forms its medial border?",
+      "explanation": "The anatomical snuffbox is a triangular depression at the radial wrist. Its medial (ulnar) border is the tendon of extensor pollicis longus (EPL); its lateral (radial) border is formed by extensor pollicis brevis (EPB) and abductor pollicis longus (APL) together. The floor contains the scaphoid and trapezium bones, and the radial artery passes through the snuffbox deep to the tendons. Tenderness here after wrist trauma raises strong suspicion for scaphoid fracture.",
+      "visualDescription": "Pixel art dorsal wrist in thumb extension: triangular depression highlighted, medial EPL tendon labeled in red, lateral EPB+APL tendons in blue, scaphoid bone glowing at the floor",
+      "sourceName": "StatPearls — Anatomical Snuff Box",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482228/",
+      "volatile": false,
+      "distractors": ["extensor pollicis brevis", "abductor pollicis longus", "extensor carpi radialis longus", "extensor carpi radialis brevis", "flexor pollicis longus", "abductor pollicis brevis", "opponens pollicis", "extensor indicis"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Tenderness in the anatomical snuffbox after a fall on an outstretched hand should raise suspicion for fracture of which bone?",
+          "correctAnswer": "scaphoid",
+          "distractors": ["trapezium", "radius", "lunate"]
+        },
+        {
+          "type": "context",
+          "question": "The radial artery passes through the anatomical snuffbox. Which structures form its lateral border?",
+          "correctAnswer": "extensor pollicis brevis and abductor pollicis longus",
+          "distractors": ["extensor pollicis longus only", "extensor carpi radialis brevis and longus", "flexor carpi radialis and palmaris longus"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the floor of the anatomical snuffbox includes the scaphoid and trapezium bones.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_035",
+      "correctAnswer": "tibialis posterior",
+      "acceptableAlternatives": ["tibialis posterior tendon", "TP"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Using the tarsal tunnel mnemonic 'Tom, Dick, And Very Nervous Harry,' Tom stands for the most anterior structure. What does 'Tom' represent?",
+      "explanation": "The tarsal tunnel runs posterior to the medial malleolus, covered by the flexor retinaculum. The mnemonic 'Tom, Dick, And Very Nervous Harry' lists contents from anterior to posterior: T = Tibialis posterior, D = flexor Digitorum longus, A = posterior tibial Artery, V = posterior tibial Vein, N = tibial Nerve, H = flexor Hallucis longus. The tibial nerve is the most clinically important content; its compression causes tarsal tunnel syndrome with burning pain and paresthesias radiating to the sole.",
+      "visualDescription": "Pixel art medial ankle cross-section: flexor retinaculum labeled as the tunnel roof, six structures lined up from anterior to posterior with Tom/Dick/And/Very/Nervous/Harry labels, medial malleolus as a bony landmark",
+      "sourceName": "TeachMeAnatomy — The Tarsal Tunnel",
+      "sourceUrl": "https://teachmeanatomy.info/lower-limb/areas/tarsal-tunnel/",
+      "volatile": false,
+      "distractors": ["flexor digitorum longus", "tibial nerve", "posterior tibial artery", "flexor hallucis longus", "peroneus longus", "extensor digitorum longus", "Achilles tendon", "plantaris tendon"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In the tarsal tunnel mnemonic 'Tom, Dick, And Very Nervous Harry,' which letter represents the tibial nerve?",
+          "correctAnswer": "N (Nervous)",
+          "distractors": ["T (Tom)", "D (Dick)", "H (Harry)"]
+        },
+        {
+          "type": "context",
+          "question": "Tarsal tunnel syndrome causes burning pain in the sole of the foot. Which nerve is compressed?",
+          "correctAnswer": "tibial nerve",
+          "distractors": ["sural nerve", "common fibular nerve", "saphenous nerve"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the tarsal tunnel is located posterior to the medial malleolus.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_036",
+      "correctAnswer": "C5 and C6",
+      "acceptableAlternatives": ["C5-C6", "C5, C6"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Erb's point is located 2–3 cm above the clavicle where the brachial plexus is superficial. It is formed by the union of which two cervical nerve roots?",
+      "explanation": "Erb's point is where roots C5 and C6 unite to form the upper trunk of the brachial plexus, located approximately 2–3 cm above the clavicle. Because the nerve is superficial here, forced lateral neck flexion or shoulder traction can avulse it. The resulting Erb palsy (Erb-Duchenne palsy) produces the classic 'waiter's tip' posture: shoulder adducted and internally rotated, elbow extended, forearm pronated, wrist flexed — loss of deltoid, biceps, and brachioradialis function.",
+      "visualDescription": "Pixel art neck/shoulder diagram: brachial plexus roots labeled C5-T1, Erb's point circled in red at the C5-C6 junction above the clavicle, inset showing waiter's tip arm posture",
+      "sourceName": "StatPearls — Erb Palsy",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK513260/",
+      "volatile": false,
+      "distractors": ["C4 and C5", "C6 and C7", "C7 and C8", "C8 and T1", "C5 and T1", "C4 and C6", "C3 and C4", "C6 and T1"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Erb palsy causes a 'waiter's tip' deformity. Which nerve roots are injured?",
+          "correctAnswer": "C5 and C6",
+          "distractors": ["C8 and T1", "C6 and C7", "C4 and C5"]
+        },
+        {
+          "type": "context",
+          "question": "Klumpke's palsy (claw hand) is the lower brachial plexus injury counterpart to Erb palsy. Klumpke's involves which nerve roots?",
+          "correctAnswer": "C8 and T1",
+          "distractors": ["C5 and C6", "C6 and C7", "C7 and C8"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Erb palsy affects the upper trunk of the brachial plexus at C5-C6.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_037",
+      "correctAnswer": "trapezius, latissimus dorsi, and medial scapular border",
+      "acceptableAlternatives": ["trapezius, latissimus dorsi, scapula", "trapezius / latissimus dorsi / medial scapular border"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The triangle of auscultation on the posterior thorax is the thinnest part of the thoracic wall and the best site for hearing breath sounds. What three structures form its borders?",
+      "explanation": "The triangle of auscultation is bounded medially by the lateral border of the trapezius, inferiorly by the superior border of latissimus dorsi, and laterally by the medial border of the scapula. Its floor is the 6th–7th intercostal space with only thin rhomboid major and fascia covering it. Because the muscular layers here are minimal, breath sounds (wheezes, rhonchi, crackles) are particularly clear. Having the patient cross their arms and lean forward brings this triangle into prominence.",
+      "visualDescription": "Pixel art posterior torso: scapula, trapezius (upper), latissimus dorsi (lower) labeled, yellow triangle highlighted between them where the chest wall is thin, stethoscope icon marking it as the auscultation site",
+      "sourceName": "StatPearls — Triangle of Auscultation",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK539834/",
+      "volatile": false,
+      "distractors": ["trapezius, rhomboid major, and 6th rib", "serratus anterior, latissimus dorsi, and 7th rib", "infraspinatus, teres major, and triceps", "deltoid, teres minor, and long head of triceps", "rhomboid major, serratus anterior, and scapular spine", "erector spinae, trapezius, and 8th rib", "levator scapulae, rhomboids, and clavicle", "teres major, infraspinatus, and posterior deltoid"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "To maximize exposure of the triangle of auscultation, you ask the patient to cross their arms over their chest. What does this action do?",
+          "correctAnswer": "Abducts/displaces the scapula laterally, opening the triangle",
+          "distractors": ["Adducts the scapula, closing the triangle", "Elevates the clavicle, increasing intercostal space", "Rotates the trapezius, thinning the muscle layer"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the triangle of auscultation is located on the anterior chest wall.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The triangle of auscultation's floor is formed by the ___ intercostal space, making it the thinnest part of the posterior thoracic wall.",
+          "correctAnswer": "6th–7th",
+          "distractors": ["4th–5th", "8th–9th", "2nd–3rd"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_038",
+      "correctAnswer": "vertebral artery",
+      "acceptableAlternatives": ["V3 segment of vertebral artery", "vertebral a."],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 5,
+      "funScore": 8,
+      "quizQuestion": "The suboccipital triangle is bounded by rectus capitis posterior major, obliquus capitis superior, and obliquus capitis inferior. Its floor is the posterior arch of C1. Which major artery runs through it?",
+      "explanation": "The suboccipital triangle contains the V3 (atlantic) segment of the vertebral artery, the suboccipital venous plexus, and the suboccipital nerve (posterior ramus of C1). The vertebral artery exits the transverse foramen of the atlas, courses horizontally through the suboccipital triangle, pierces the posterior atlantooccipital membrane, and enters the skull through the foramen magnum. Because the artery follows a curved path here, extreme head rotation can kink it — a risk during high-velocity cervical manipulation.",
+      "visualDescription": "Pixel art posterior upper neck and skull base: three muscles forming a triangular outline, vertebral artery looping in bright red across the C1 arch, suboccipital nerve (C1) running alongside, posterior atlantooccipital membrane as the floor",
+      "sourceName": "Kenhub — Suboccipital Triangle",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/suboccipital-triangle",
+      "volatile": false,
+      "distractors": ["posterior inferior cerebellar artery", "occipital artery", "posterior meningeal artery", "basilar artery", "deep cervical artery", "ascending pharyngeal artery", "posterior auricular artery", "internal carotid artery"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The suboccipital nerve is the posterior ramus of which cervical nerve?",
+          "correctAnswer": "C1",
+          "distractors": ["C2", "C3", "C4"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the suboccipital triangle is bounded by three muscles attached to the axis (C2) and skull.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The vertebral artery passes through the suboccipital triangle, pierces the posterior atlantooccipital membrane, and enters the skull through the ___.",
+          "correctAnswer": "foramen magnum",
+          "distractors": ["jugular foramen", "hypoglossal canal", "foramen ovale"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_039",
+      "correctAnswer": "portal vein",
+      "acceptableAlternatives": ["hepatic portal vein"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The porta hepatis (transverse fissure of the liver) transmits the portal triad. Within this triad, the common bile duct is anterior-right and the hepatic artery proper is anterior-left. Which structure is posterior?",
+      "explanation": "At the porta hepatis, the three structures of the portal triad are arranged in a predictable pattern: the common bile duct is anterior and to the right, the hepatic artery proper is anterior and to the left, and the portal vein is posterior (deepest). This arrangement is critical in the Pringle maneuver, where compressing the hepatoduodenal ligament between finger and thumb (in the foramen of Winslow) occludes both the hepatic artery and portal vein to control liver bleeding. The portal vein delivers ~75% of hepatic blood flow.",
+      "visualDescription": "Pixel art liver inferior surface: transverse fissure labeled as porta hepatis, three labeled structures entering — bile duct (right, green), hepatic artery (left, red), portal vein (posterior, blue) — shown in correct spatial arrangement",
+      "sourceName": "Wikipedia — Porta Hepatis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Porta_hepatis",
+      "volatile": false,
+      "distractors": ["hepatic artery proper", "common bile duct", "cystic duct", "lymphatic vessels", "common hepatic artery", "left gastric artery", "splenic vein", "superior mesenteric vein"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Pringle maneuver compresses the hepatoduodenal ligament to stop liver hemorrhage. Which two vessels are occluded?",
+          "correctAnswer": "hepatic artery and portal vein",
+          "distractors": ["hepatic artery and hepatic veins", "portal vein and inferior vena cava", "splenic artery and portal vein"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the portal vein carries approximately 75% of the liver's total blood flow.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The porta hepatis is located on the ___ surface of the liver and transmits the portal triad.",
+          "correctAnswer": "visceral (inferior)",
+          "distractors": ["diaphragmatic (superior)", "anterior", "posterior"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_040",
+      "correctAnswer": "cavernous sinus thrombosis",
+      "acceptableAlternatives": ["septic cavernous sinus thrombosis", "cavernous sinus infection"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "clinical_conditions",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The 'danger triangle of the face' encompasses the nose and upper lip. Infections here are dangerous because valveless veins allow retrograde spread to which intracranial complication?",
+      "explanation": "The danger triangle spans from the corners of the mouth to the bridge of the nose. The facial vein communicates — via the ophthalmic veins and pterygoid plexus — with the cavernous sinus, a dural venous sinus behind the orbits. Because these connections are valveless (or have valves that are easily overcome), infection (e.g., from a squeezed pimple or dental abscess) can spread retrogradely to the cavernous sinus, causing septic cavernous sinus thrombosis: high fever, proptosis, chemosis, ophthalmoplegia, and potentially meningitis or brain abscess.",
+      "visualDescription": "Pixel art face diagram: triangular red shaded area from mouth corners to nose bridge labeled 'danger triangle', arrows showing retrograde venous flow from facial vein through ophthalmic veins to cavernous sinus at skull base, warning skull icon",
+      "sourceName": "Wikipedia — Danger Triangle of the Face",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Danger_triangle_of_the_face",
+      "volatile": false,
+      "distractors": ["meningitis", "brain abscess", "subdural empyema", "epidural abscess", "cerebral venous thrombosis", "Ludwig's angina", "orbital cellulitis", "temporal arteritis"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Cavernous sinus thrombosis can present with proptosis, chemosis, and ophthalmoplegia. What is the most common source of infection?",
+          "correctAnswer": "facial infection from the danger triangle (nose/upper lip area)",
+          "distractors": ["otitis media spreading to sigmoid sinus", "direct skull base fracture", "sphenoid sinusitis only"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the valveless communication between facial veins and the cavernous sinus is why the danger triangle is dangerous.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The danger triangle of the face extends from the corners of the mouth to the bridge of the nose, forming a triangle over the ___ and upper lip.",
+          "correctAnswer": "nose",
+          "distractors": ["orbit", "forehead", "chin"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_041",
+      "correctAnswer": "SAD PUCKER",
+      "acceptableAlternatives": ["Sad PUCKER", "sad pucker"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "mnemonics",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Which mnemonic is used to remember the retroperitoneal organs — Suprarenal glands, Aorta/IVC, Duodenum (2–4), Pancreas, Ureters, Colon (ascending/descending), Kidneys, Esophagus, Rectum?",
+      "explanation": "SAD PUCKER stands for: Suprarenal (adrenal) glands, Aorta and IVC, Duodenum (2nd–4th parts), Pancreas (head, neck, body), Ureters, Colon (ascending and descending), Kidneys, Esophagus, Rectum. These structures lie behind the peritoneum (retroperitoneal) and are fixed in position. The transverse colon and sigmoid colon are NOT retroperitoneal — they are intraperitoneal with mesenteries. Knowing retroperitoneal anatomy is critical for surgical approach planning and understanding pain referral patterns.",
+      "visualDescription": "Pixel art abdominal cross-section: retroperitoneum highlighted in a different color from the peritoneal cavity, each SAD PUCKER organ labeled and glowing, peritoneum shown as a thin shimmering layer in front",
+      "sourceName": "Radiopaedia — Retroperitoneal Organs Mnemonic",
+      "sourceUrl": "https://radiopaedia.org/articles/retroperitoneal-organs-mnemonic?lang=us",
+      "volatile": false,
+      "distractors": ["KIDNEY SADP", "PUCKER SAD", "DUCKER SAP", "SADUCEP R", "CUPS DRAKE", "PACKED RUS", "UCKER DAPS", "SACK PURED"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Using SAD PUCKER, which part of the duodenum is retroperitoneal?",
+          "correctAnswer": "2nd, 3rd, and 4th parts (the first part is intraperitoneal)",
+          "distractors": ["only the 3rd part", "all four parts", "only the 1st and 2nd parts"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the transverse colon is retroperitoneal and included in the SAD PUCKER mnemonic.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In SAD PUCKER, the 'K' stands for Kidneys, which are retroperitoneal. The 'P' stands for ___.",
+          "correctAnswer": "Pancreas",
+          "distractors": ["Pelvis", "Prostate", "Portal vein"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_042",
+      "correctAnswer": "inferior epigastric vessels",
+      "acceptableAlternatives": ["inferior epigastric artery and vein", "inferior epigastric artery"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Hesselbach's triangle defines where direct inguinal hernias protrude. Its medial border is the rectus abdominis and its inferior border is the inguinal ligament. What forms its lateral border?",
+      "explanation": "Hesselbach's triangle (inguinal triangle) is bounded medially by the lateral edge of rectus abdominis, inferiorly by the inguinal ligament (Poupart's ligament), and laterally by the inferior epigastric vessels. A direct inguinal hernia passes directly through the posterior wall of the inguinal canal within this triangle (medial to the inferior epigastric vessels). An indirect inguinal hernia, by contrast, passes through the deep inguinal ring lateral to the inferior epigastric vessels, traversing the full inguinal canal. The mnemonic 'RIP' helps: Rectus (medial), Inferior epigastric (lateral), Poupart's/inguinal ligament (inferior).",
+      "visualDescription": "Pixel art lower anterior abdominal wall: Hesselbach's triangle shaded yellow, rectus abdominis on left border labeled, inguinal ligament on bottom, inferior epigastric vessels on right border, direct hernia arrow pointing through the triangle",
+      "sourceName": "TeachMeAnatomy — Inguinal Triangle",
+      "sourceUrl": "https://teachmeanatomy.info/abdomen/areas/inguinal-triangle/",
+      "volatile": false,
+      "distractors": ["rectus sheath", "ilioinguinal nerve", "femoral artery", "external iliac vessels", "inguinal canal deep ring", "transversalis fascia", "spermatic cord", "round ligament"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A direct inguinal hernia passes through Hesselbach's triangle. An indirect inguinal hernia passes through which structure?",
+          "correctAnswer": "deep inguinal ring (lateral to inferior epigastric vessels)",
+          "distractors": ["superficial inguinal ring only", "femoral ring", "obturator foramen"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: direct inguinal hernias pass medial to the inferior epigastric vessels.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The mnemonic 'RIP' for Hesselbach's triangle stands for Rectus abdominis, Inferior epigastric vessels, and Poupart's ___.",
+          "correctAnswer": "ligament (inguinal ligament)",
+          "distractors": ["muscle", "hernia", "ring"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_043",
+      "correctAnswer": "flexor retinaculum",
+      "acceptableAlternatives": ["transverse carpal ligament", "flexor retinaculum of the hand"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The carpal tunnel is bordered inferiorly by carpal bones. What structure forms its roof — the fibrous band that when cut releases pressure on the median nerve?",
+      "explanation": "The flexor retinaculum (also called the transverse carpal ligament) is the thick fibrous band that forms the roof of the carpal tunnel. It attaches laterally to the scaphoid tuberosity and trapezial ridge, and medially to the pisiform and hook of hamate. In carpal tunnel release surgery, this ligament is divided (either open or endoscopically) to decompress the median nerve. The ulnar nerve and vessels travel in a separate compartment (Guyon's canal) superficial and ulnar to the flexor retinaculum.",
+      "visualDescription": "Pixel art wrist cross-section with the flexor retinaculum highlighted in orange as the tunnel roof, carpal bones forming the floor and walls, median nerve in yellow underneath the retinaculum, surgical scissors icon indicating where to cut",
+      "sourceName": "StatPearls — Flexor Retinaculum",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK545198/",
+      "volatile": false,
+      "distractors": ["palmar aponeurosis", "extensor retinaculum", "annular pulley A1", "dorsal carpal ligament", "interosseous membrane", "volar plate", "deep transverse metacarpal ligament", "radial collateral ligament"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Carpal tunnel release surgery cuts a specific ligament to decompress the median nerve. What is this ligament?",
+          "correctAnswer": "flexor retinaculum (transverse carpal ligament)",
+          "distractors": ["palmar aponeurosis", "extensor retinaculum", "ulnar collateral ligament"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the flexor retinaculum attaches medially to the pisiform and hook of hamate.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The flexor retinaculum is also known as the ___ carpal ligament.",
+          "correctAnswer": "transverse",
+          "distractors": ["oblique", "dorsal", "radial"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_044",
+      "correctAnswer": "radial artery",
+      "acceptableAlternatives": ["radial a."],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The anatomical snuffbox is an important access site for coronary angiography via the distal radial approach. Which artery runs through its floor, deep to the extensor tendons?",
+      "explanation": "The radial artery passes through the anatomical snuffbox deep to the extensor tendons (extensor pollicis longus medially; extensor pollicis brevis and abductor pollicis longus laterally). It runs over the floor of scaphoid and trapezium bones, then dives between the two heads of the first dorsal interosseous muscle to enter the palm and complete the deep palmar arch. The distal radial (snuffbox) approach for cardiac catheterization has become popular because it reduces bleeding complications compared to conventional radial access.",
+      "visualDescription": "Pixel art dorsal wrist: anatomical snuffbox outlined in yellow, radial artery shown in red running along the floor beneath the tendons, then diving into the hand, scaphoid bone labeled as the floor landmark",
+      "sourceName": "StatPearls — Anatomical Snuff Box",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482228/",
+      "volatile": false,
+      "distractors": ["ulnar artery", "anterior interosseous artery", "posterior interosseous artery", "cephalic vein", "superficial branch of radial nerve", "dorsal carpal branch", "princeps pollicis artery", "deep palmar arch"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The radial artery exits the anatomical snuffbox and dives between which structures to enter the palm?",
+          "correctAnswer": "two heads of the first dorsal interosseous muscle",
+          "distractors": ["two heads of adductor pollicis", "two heads of flexor pollicis brevis", "opponens pollicis and abductor pollicis brevis"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the cephalic vein (not the radial artery) passes through the anatomical snuffbox.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After passing through the anatomical snuffbox, the radial artery contributes to the ___ palmar arch inside the hand.",
+          "correctAnswer": "deep",
+          "distractors": ["superficial", "dorsal metacarpal", "digital"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_045",
+      "correctAnswer": "thoracic outlet syndrome",
+      "acceptableAlternatives": ["TOS", "thoracic outlet"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "clinical_conditions",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Compression of the brachial plexus roots and subclavian artery within the interscalene triangle causes which clinical syndrome?",
+      "explanation": "Thoracic outlet syndrome (TOS) results from compression of neurovascular structures (brachial plexus, subclavian artery, or subclavian vein) as they exit the thoracic outlet, most commonly at the interscalene triangle. Neurogenic TOS (brachial plexus compression) is by far the most common form (>95% of cases), causing arm pain, paresthesias, and weakness. Arterial TOS causes limb ischemia; venous TOS ('effort thrombosis,' Paget-Schroetter syndrome) causes arm swelling. Causes include cervical ribs, anomalous scalene muscles, and clavicle fractures.",
+      "visualDescription": "Pixel art anterior neck: scalene muscles and first rib forming the interscalene triangle, brachial plexus and subclavian artery shown being compressed by a cervical rib protruding from C7, patient's arm shown with paresthesia dots",
+      "sourceName": "PMC — Anatomy and Embryology of the Thoracic Outlet",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8057296/",
+      "volatile": false,
+      "distractors": ["cubital tunnel syndrome", "carpal tunnel syndrome", "cervical radiculopathy", "Pancoast syndrome", "Raynaud phenomenon", "axillary vein thrombosis only", "brachial neuritis (Parsonage-Turner)", "subclavian steal syndrome"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Thoracic outlet syndrome: which finding on X-ray is a common anatomical cause?",
+          "correctAnswer": "cervical rib (arising from C7)",
+          "distractors": ["acromioclavicular joint dislocation", "Pancoast tumor of lung apex", "glenohumeral dislocation"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: neurogenic TOS (brachial plexus compression) accounts for more than 95% of thoracic outlet syndrome cases.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The subclavian ___ does NOT pass through the interscalene triangle — it runs anterior to the anterior scalene muscle.",
+          "correctAnswer": "vein",
+          "distractors": ["artery", "nerve", "lymphatic"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_046",
+      "correctAnswer": "waiter's tip",
+      "acceptableAlternatives": ["waiter's tip posture", "waiter's tip deformity", "waiters tip"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "clinical_signs",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Erb palsy damages the C5–C6 upper trunk of the brachial plexus, paralyzing deltoid, biceps, and brachioradialis. The arm hangs with shoulder adducted, internally rotated, elbow extended, and forearm pronated. What is this classic posture called?",
+      "explanation": "Erb palsy produces the 'waiter's tip' posture: the arm hangs limp at the side (shoulder adducted and internally rotated by unopposed pectoralis and subscapularis), the elbow is extended (biceps paralyzed), the forearm is pronated (biceps/supinator lost), and the wrist may be flexed. It resembles someone waiting for a tip with their palm facing backward. Common causes include obstetric traction injury at birth and adult shoulder trauma. The rate of complete recovery is 80–96%, especially with early physiotherapy.",
+      "visualDescription": "Pixel art figure with right arm hanging in classic Erb palsy posture: shoulder internally rotated, elbow extended, forearm pronated, palm facing posteriorly — labeled 'waiter's tip' with C5-C6 nerve root diagram inset",
+      "sourceName": "Wikipedia — Erb's Palsy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erb%27s_palsy",
+      "volatile": false,
+      "distractors": ["claw hand", "policeman's tip", "ape hand", "wrist drop", "pope's blessing hand", "Kanavel sign", "Froment sign", "Finkelstein's test position"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Klumpke's palsy damages C8–T1 and produces which hand deformity?",
+          "correctAnswer": "claw hand",
+          "distractors": ["waiter's tip", "wrist drop", "ape hand"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: in Erb palsy, the biceps muscle is paralyzed because it is supplied by C5 and C6.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Erb palsy is also called ___ palsy, named after the two physicians who described it.",
+          "correctAnswer": "Erb-Duchenne",
+          "distractors": ["Klumpke-Erb", "Horner-Erb", "Bell-Erb"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_047",
+      "correctAnswer": "rectus abdominis (lateral border)",
+      "acceptableAlternatives": ["rectus abdominis", "rectus sheath", "lateral border of rectus abdominis"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Hesselbach's triangle: the inferior epigastric vessels form its lateral border and the inguinal ligament its inferior border. What muscle's lateral border forms its medial boundary?",
+      "explanation": "The medial border of Hesselbach's triangle is the lateral margin of the rectus abdominis muscle (or its sheath). This is crucial clinically: a direct inguinal hernia protrudes through the posterior inguinal wall within this triangle, while an indirect hernia exits through the deep inguinal ring lateral to the inferior epigastric vessels — outside the triangle. The posterior wall of the inguinal canal within Hesselbach's triangle is formed by the transversalis fascia, reinforced in its medial part by the conjoint tendon.",
+      "visualDescription": "Pixel art lower abdominal wall interior view: Hesselbach's triangle in yellow with labeled corners, rectus abdominis muscle on left with its lateral edge as the triangle's medial border, inferior epigastric vessels on right, inguinal ligament at bottom",
+      "sourceName": "Kenhub — Inguinal Canal",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/inguinal-canal",
+      "volatile": false,
+      "distractors": ["iliopsoas", "external oblique", "internal oblique", "transversus abdominis", "pyramidalis", "quadratus lumborum", "iliacus", "conjoint tendon"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the posterior wall of the inguinal canal within Hesselbach's triangle is formed by the transversalis fascia.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The mnemonic 'RIP' for Hesselbach's triangle: R = Rectus abdominis (medial), I = Inferior epigastric vessels (lateral), P = ___ (inferior).",
+          "correctAnswer": "Poupart's ligament (inguinal ligament)",
+          "distractors": ["Psoas major", "Pubic symphysis", "Pectineal ligament"]
+        },
+        {
+          "type": "context",
+          "question": "A patient has a direct inguinal hernia. Where does the hernia sac protrude in relation to the inferior epigastric vessels?",
+          "correctAnswer": "Medial to the inferior epigastric vessels (through Hesselbach's triangle)",
+          "distractors": ["Lateral to the inferior epigastric vessels", "Through the femoral ring", "Through the obturator foramen"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_048",
+      "correctAnswer": "suboccipital nerve (C1 posterior ramus)",
+      "acceptableAlternatives": ["C1 dorsal ramus", "suboccipital nerve", "posterior ramus of C1"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 5,
+      "funScore": 7,
+      "quizQuestion": "The suboccipital triangle contains the vertebral artery plus one named nerve. This nerve innervates the four suboccipital muscles and has no cutaneous distribution. What is it?",
+      "explanation": "The suboccipital nerve is the posterior (dorsal) ramus of the C1 spinal nerve. Unlike virtually all other posterior rami, it has no sensory (cutaneous) component — it is purely motor, supplying the four suboccipital muscles: rectus capitis posterior major, rectus capitis posterior minor, obliquus capitis superior, and obliquus capitis inferior. It courses between the posterior arch of the atlas and the vertebral artery before entering the suboccipital triangle. The greater occipital nerve (C2 posterior ramus) is the one responsible for cutaneous sensation of the posterior scalp.",
+      "visualDescription": "Pixel art suboccipital region: four suboccipital muscles labeled, suboccipital nerve (C1) shown as a white line branching to each muscle, vertebral artery in red, greater occipital nerve (C2) shown ascending to scalp for comparison",
+      "sourceName": "StatPearls — Neuroanatomy, Suboccipital Nerve",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK556133/",
+      "volatile": false,
+      "distractors": ["greater occipital nerve (C2)", "lesser occipital nerve (C3)", "third occipital nerve", "deep cervical nerve C1", "accessory nerve (CN XI)", "hypoglossal nerve (CN XII)", "cervical sympathetic trunk", "occipital nerve (C4)"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The greater occipital nerve provides cutaneous sensation to the posterior scalp. It is the posterior ramus of which cervical nerve?",
+          "correctAnswer": "C2",
+          "distractors": ["C1", "C3", "C4"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the suboccipital nerve (C1 posterior ramus) has no cutaneous branch — it is purely motor.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The suboccipital nerve courses between the posterior arch of the ___ and the vertebral artery before supplying the suboccipital muscles.",
+          "correctAnswer": "atlas (C1)",
+          "distractors": ["axis (C2)", "occiput", "C3 vertebra"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_049",
+      "correctAnswer": "meningitis",
+      "acceptableAlternatives": ["bacterial meningitis", "septic meningitis"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "clinical_conditions",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Septic cavernous sinus thrombosis from a facial danger triangle infection can progress to which dreaded central nervous system complication beyond thrombosis itself?",
+      "explanation": "Once septic cavernous sinus thrombosis is established, infection can spread to the subarachnoid space, causing bacterial meningitis, or extend locally into brain tissue causing brain abscess or subdural empyema. Mortality was ~100% before the antibiotic era; modern mortality is still 20–30%. Presenting features include high fever, headache, proptosis, chemosis, cranial nerve palsies (III, IV, V1, V2, VI), and meningism. Staphylococcus aureus is the most common causative organism. Anticoagulation in addition to antibiotics is used in some centers.",
+      "visualDescription": "Pixel art skull cross-section: cavernous sinus highlighted at skull base, bacterial icons spread from it along the dura into the subarachnoid space labeled 'meningitis,' skull base cranial nerve labels showing CN III, IV, VI palsies from sinus involvement",
+      "sourceName": "StatPearls — Cavernous Sinus Thrombosis",
+      "sourceUrl": "https://emedicine.medscape.com/article/791704-overview",
+      "volatile": false,
+      "distractors": ["hydrocephalus", "epidural hematoma", "trigeminal neuralgia", "Bell's palsy", "cluster headache", "subdural hematoma", "cerebral amyloid angiopathy", "pseudotumor cerebri"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The most common causative organism in septic cavernous sinus thrombosis is which bacterium?",
+          "correctAnswer": "Staphylococcus aureus",
+          "distractors": ["Streptococcus pneumoniae", "Haemophilus influenzae", "Neisseria meningitidis"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: cavernous sinus thrombosis can cause cranial nerve palsies because CN III, IV, V1, V2, and VI all run near or through the cavernous sinus.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Facial danger triangle infections spread retrograde to the cavernous sinus via the ophthalmic veins. The cavernous sinus is a ___ venous sinus located at the skull base.",
+          "correctAnswer": "dural",
+          "distractors": ["epidural", "subarachnoid", "subdural"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_050",
+      "correctAnswer": "sternocleidomastoid (SCM)",
+      "acceptableAlternatives": ["sternocleidomastoid muscle", "SCM"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The carotid sheath and its contents (carotid artery, internal jugular vein, vagus nerve) run deep to which prominent neck muscle — the one that divides the neck into anterior and posterior triangles?",
+      "explanation": "The sternocleidomastoid (SCM) muscle runs from the sternum and clavicle to the mastoid process of the temporal bone, dividing the neck into the anterior triangle (medial to SCM) and posterior triangle (lateral to SCM). The carotid sheath runs deep to (posterior to) the SCM along its entire length. This relationship is exploited surgically: the SCM is retracted laterally to access the carotid artery for endarterectomy. On clinical exam, the carotid pulse and internal jugular vein (JVP) are assessed by palpating/inspecting the region just medial to the SCM.",
+      "visualDescription": "Pixel art lateral neck: SCM muscle in green running from clavicle/sternum to mastoid, carotid sheath shown as a blue-outlined tube running deep to it, anterior and posterior triangles labeled on either side of the muscle",
+      "sourceName": "Kenhub — Carotid Sheath",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/carotid-sheath",
+      "volatile": false,
+      "distractors": ["trapezius", "scalene muscles", "platysma", "digastric", "omohyoid", "stylohyoid", "mylohyoid", "anterior scalene"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The SCM divides the neck into two triangles. The posterior triangle is bounded by the SCM anteriorly, trapezius posteriorly, and which structure inferiorly?",
+          "correctAnswer": "clavicle",
+          "distractors": ["hyoid bone", "mandible", "first rib"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the carotid sheath lies deep (posterior) to the sternocleidomastoid muscle.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The sternocleidomastoid muscle attaches superiorly to the ___ process of the temporal bone.",
+          "correctAnswer": "mastoid",
+          "distractors": ["styloid", "coronoid", "condylar"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_051",
+      "correctAnswer": "scaphoid fracture",
+      "acceptableAlternatives": ["fractured scaphoid", "scaphoid bone fracture"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "clinical_conditions",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Tenderness elicited by palpating the floor of the anatomical snuffbox after a fall on an outstretched hand (FOOSH) raises immediate concern for fracture of which carpal bone?",
+      "explanation": "The floor of the anatomical snuffbox is formed by the scaphoid (proximal) and trapezium (distal) bones. After a FOOSH injury, snuffbox tenderness is a cardinal sign of scaphoid fracture — the most common carpal fracture. The scaphoid is at high risk for avascular necrosis because ~80% of its blood supply enters distally via the radial artery; a proximal pole fracture interrupts the retrograde flow to the proximal fragment. X-rays are initially normal in up to 20% of scaphoid fractures, so MRI or CT is used when clinical suspicion is high.",
+      "visualDescription": "Pixel art wrist: anatomical snuffbox outlined, scaphoid bone highlighted in red at the floor with a fracture line, FOOSH mechanism diagram showing force direction, inset showing scaphoid blood supply entering distally",
+      "sourceName": "StatPearls — Anatomical Snuff Box",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482228/",
+      "volatile": false,
+      "distractors": ["trapezium fracture", "lunate fracture", "radius fracture (Colles')", "capitate fracture", "hamate fracture", "triquetrum fracture", "pisiform fracture", "navicular fracture"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Scaphoid fractures are prone to avascular necrosis because blood supply enters the bone distally. Which artery supplies the scaphoid via the anatomical snuffbox?",
+          "correctAnswer": "radial artery",
+          "distractors": ["ulnar artery", "anterior interosseous artery", "dorsal carpal arch"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: initial X-rays can appear normal in up to 20% of scaphoid fractures.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The scaphoid is the most commonly fractured carpal bone. Its proximal pole is most at risk for ___ necrosis due to its blood supply pattern.",
+          "correctAnswer": "avascular",
+          "distractors": ["septic", "aseptic", "osteochondral"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_052",
+      "correctAnswer": "flexor hallucis longus",
+      "acceptableAlternatives": ["FHL", "flexor hallucis longus tendon"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Using 'Tom, Dick, And Very Nervous Harry' for the tarsal tunnel (anterior to posterior): Tom = tibialis posterior, Dick = FDL, And = posterior tibial artery, Very = vein, Nervous = tibial nerve. What does 'Harry' represent?",
+      "explanation": "Harry = Flexor Hallucis Longus (FHL), the most posterior structure in the tarsal tunnel. The FHL tendon passes in its own groove behind the sustentaculum tali and is the most posterior tendon. In the tarsal tunnel the order from anterior to posterior is: tibialis posterior, flexor digitorum longus, posterior tibial artery, posterior tibial vein, tibial nerve, and flexor hallucis longus. The tibial nerve is penultimate ('Nervous') and FHL is last ('Harry'), running in a more posterior groove.",
+      "visualDescription": "Pixel art medial ankle with tarsal tunnel opened: six structures lined up front-to-back labeled Tom-Dick-And-Very-Nervous-Harry, flexor hallucis longus tendon highlighted at the posterior end of the lineup, sustentaculum tali labeled",
+      "sourceName": "TeachMeAnatomy — The Tarsal Tunnel",
+      "sourceUrl": "https://teachmeanatomy.info/lower-limb/areas/tarsal-tunnel/",
+      "volatile": false,
+      "distractors": ["tibialis posterior", "flexor digitorum longus", "tibial nerve", "Achilles tendon", "peroneus brevis", "posterior tibial artery", "plantaris tendon", "extensor hallucis longus"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the Achilles tendon passes through the tarsal tunnel.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The tarsal tunnel is covered by the ___ retinaculum overlying the medial malleolus.",
+          "correctAnswer": "flexor",
+          "distractors": ["extensor", "superior peroneal", "inferior peroneal"]
+        },
+        {
+          "type": "context",
+          "question": "The flexor hallucis longus tendon is unique in the tarsal tunnel because it also runs in a groove on the posterior surface of which tarsal bone?",
+          "correctAnswer": "sustentaculum tali of the calcaneus",
+          "distractors": ["talus body", "navicular", "cuboid"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_053",
+      "correctAnswer": "Pringle maneuver",
+      "acceptableAlternatives": ["Pringle's maneuver"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "clinical_procedures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "A surgeon compresses the hepatoduodenal ligament (containing the portal vein and hepatic artery) between finger and thumb through the foramen of Winslow to temporarily stop liver bleeding. What is this maneuver called?",
+      "explanation": "The Pringle maneuver (described by James Hogarth Pringle in 1908) involves compressing the hepatoduodenal ligament — which runs in the free edge of the lesser omentum — between the thumb (anteriorly) and index finger (posteriorly through the foramen of Winslow). This occludes both the portal vein and hepatic artery proper, stopping inflow to the liver. It is used during hepatic resections and trauma to limit blood loss. The porta hepatis is where these structures enter the liver; understanding the arrangement (bile duct anterior-right, hepatic artery anterior-left, portal vein posterior) is essential for safe compression.",
+      "visualDescription": "Pixel art liver and hepatoduodenal ligament: surgeon's finger and thumb compressing the ligament at the free edge of the lesser omentum, portal vein and hepatic artery shown flattened, foramen of Winslow labeled, clock icon indicating temporary occlusion",
+      "sourceName": "Wikipedia — Porta Hepatis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Porta_hepatis",
+      "volatile": false,
+      "distractors": ["Kocher maneuver", "Cattell-Braasch maneuver", "Mattox maneuver", "DeBakey maneuver", "FAST exam", "peritoneal lavage", "vascular isolation", "Holt maneuver"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Pringle maneuver compresses the hepatoduodenal ligament. What is the anatomical name of the hole through which the surgeon's finger passes posteriorly?",
+          "correctAnswer": "foramen of Winslow (epiploic foramen)",
+          "distractors": ["foramen of Luschka", "saphenous opening", "obturator foramen"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the Pringle maneuver also occludes the hepatic veins draining into the IVC.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The hepatoduodenal ligament is the free edge of the ___ omentum.",
+          "correctAnswer": "lesser",
+          "distractors": ["greater", "gastrocolic", "gastrosplenic"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_054",
+      "correctAnswer": "deep inguinal ring",
+      "acceptableAlternatives": ["internal inguinal ring", "internal ring"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "An indirect inguinal hernia passes lateral to the inferior epigastric vessels. It begins its journey through the inguinal canal by entering which ring — the opening in the transversalis fascia?",
+      "explanation": "The deep inguinal ring is an opening in the transversalis fascia located approximately 1.5 cm above the midpoint of the inguinal ligament, lateral to the inferior epigastric vessels. An indirect inguinal hernia enters the deep ring, traverses the full length of the inguinal canal, and exits through the superficial inguinal ring, potentially descending into the scrotum (or labia majora). This path follows the embryological route of testicular descent. By contrast, a direct hernia bulges through the posterior wall of the inguinal canal within Hesselbach's triangle — medial to the epigastric vessels.",
+      "visualDescription": "Pixel art inguinal region: transversalis fascia with deep ring labeled laterally (indirect hernia arrow entering it) and Hesselbach's triangle labeled medially (direct hernia arrow pushing through the posterior wall), inferior epigastric vessels as the dividing landmark",
+      "sourceName": "TeachMeAnatomy — Inguinal Triangle",
+      "sourceUrl": "https://teachmeanatomy.info/abdomen/areas/inguinal-triangle/",
+      "volatile": false,
+      "distractors": ["superficial inguinal ring", "femoral ring", "obturator ring", "saphenous opening", "internal os of uterus", "lacunar ligament gap", "adductor canal", "pectineal hiatus"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The superficial inguinal ring is an opening in which abdominal wall layer?",
+          "correctAnswer": "external oblique aponeurosis",
+          "distractors": ["transversalis fascia", "internal oblique aponeurosis", "conjoint tendon"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: indirect inguinal hernias follow the path of testicular descent because the hernia passes through the deep inguinal ring.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The deep inguinal ring is an opening in the ___ fascia, located lateral to the inferior epigastric vessels.",
+          "correctAnswer": "transversalis",
+          "distractors": ["external oblique", "internal oblique", "Scarpa's"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_055",
+      "correctAnswer": "esophagus",
+      "acceptableAlternatives": ["oesophagus"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "In the SAD PUCKER mnemonic for retroperitoneal organs, the 'E' stands for which structure — a surprising retroperitoneal organ given that most of its length is thoracic?",
+      "explanation": "The 'E' in SAD PUCKER stands for Esophagus — specifically the short abdominal portion of the esophagus (approximately 2–3 cm) as it passes from the esophageal hiatus of the diaphragm to the gastroesophageal junction. This segment is retroperitoneal. The stomach itself is intraperitoneal. The esophageal hiatus is at T10, and the abdominal esophagus descends slightly to the left before connecting to the cardiac stomach. The lower esophageal sphincter (LES) is located in this region and its dysfunction causes GERD.",
+      "visualDescription": "Pixel art upper abdominal cross-section: diaphragm at the top, abdominal esophagus (short segment, 2-3 cm) labeled 'E' in SAD PUCKER descending through the esophageal hiatus, retroperitoneal region shaded behind the peritoneum, stomach labeled as intraperitoneal",
+      "sourceName": "Epomedicine — Retroperitoneal Organs Mnemonic",
+      "sourceUrl": "https://epomedicine.com/medical-students/retroperitoneal-organs-mnemonic/",
+      "volatile": false,
+      "distractors": ["epididymis", "external iliac artery", "extrahepatic bile duct", "endometrium", "epiglottis", "endocardium", "ethmoid sinus", "epidural space"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The esophagus passes through the diaphragm at which vertebral level?",
+          "correctAnswer": "T10",
+          "distractors": ["T8", "T12", "L1"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the stomach is retroperitoneal like the abdominal esophagus.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "SAD PUCKER lists retroperitoneal organs. S = Suprarenal, A = Aorta/IVC, D = Duodenum (2–4), P = Pancreas, U = Ureters, C = Colon, K = Kidneys, E = Esophagus, R = ___.",
+          "correctAnswer": "Rectum",
+          "distractors": ["Renal pelvis", "Retroperitoneum", "Renal artery"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_056",
+      "correctAnswer": "space of Disse",
+      "acceptableAlternatives": ["perisinusoidal space", "Disse space"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 5,
+      "funScore": 7,
+      "quizQuestion": "The hepatic sinusoid is lined by fenestrated endothelium. Between the endothelium and the hepatocytes lies a narrow perisinusoidal space that contains hepatic stellate (Ito) cells storing vitamin A. What is this space called?",
+      "explanation": "The space of Disse (perisinusoidal space) lies between the fenestrated sinusoidal endothelium and the hepatocyte surface (basolateral membrane). It contains stellate cells (Ito cells), which store vitamin A as retinyl esters in lipid droplets. In liver injury/fibrosis, stellate cells become activated myofibroblasts and produce collagen — the basis of hepatic fibrosis and cirrhosis. The fenestrations in the sinusoidal endothelium allow plasma proteins (but not blood cells) to access hepatocytes directly in the space of Disse.",
+      "visualDescription": "Pixel art liver sinusoid cross-section: central vein in center, hepatocyte plates radiating outward, sinusoid lined by fenestrated endothelium, space of Disse labeled in the narrow gap between endothelium and hepatocytes, stellate cell with yellow lipid droplets (vitamin A stores)",
+      "sourceName": "StatPearls — Physiology, Liver",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK535438/",
+      "volatile": false,
+      "distractors": ["space of Mall", "sinusoidal lumen", "periportal space", "bile canaliculus", "Glisson's capsule", "hepatic acinus", "Herring's canal", "lobular sinusoid"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Activated hepatic stellate cells (Ito cells) are the primary producers of collagen in liver fibrosis. In their quiescent state, they store which vitamin in the space of Disse?",
+          "correctAnswer": "Vitamin A (retinyl esters)",
+          "distractors": ["Vitamin D", "Vitamin K", "Vitamin B12"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the sinusoidal endothelium in the space of Disse is fenestrated, allowing plasma proteins to contact hepatocytes directly.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In liver cirrhosis, stellate cells in the space of Disse become activated ___ and deposit collagen, replacing functional liver tissue.",
+          "correctAnswer": "myofibroblasts",
+          "distractors": ["Kupffer cells", "hepatocytes", "cholangiocytes"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_057",
+      "correctAnswer": "Guyon's canal",
+      "acceptableAlternatives": ["ulnar canal", "Guyon canal", "ulnar tunnel"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The ulnar nerve does NOT pass through the carpal tunnel. It travels in a separate fibro-osseous canal at the ulnar wrist, between the pisiform and hook of hamate. What is this canal called?",
+      "explanation": "Guyon's canal (ulnar canal) is a fibro-osseous tunnel at the wrist bounded by the pisiform (medial), hook of hamate (lateral), and the palmar carpal ligament (roof). The ulnar nerve and ulnar artery pass through it. Compression here causes ulnar tunnel syndrome: weakness and wasting of intrinsic hand muscles (hypothenar, interossei, medial two lumbricals) and sensory loss in the ring and little fingers — but unlike carpal tunnel syndrome, the dorsal ulnar sensory branch (which branches above the canal) is preserved.",
+      "visualDescription": "Pixel art wrist cross-section: carpal tunnel shown in yellow with median nerve, Guyon's canal shown in purple beside it between pisiform and hamate hook, ulnar nerve and artery inside Guyon's canal, both tunnels labeled side by side",
+      "sourceName": "TeachMeAnatomy — The Carpal Tunnel",
+      "sourceUrl": "https://teachmeanatomy.info/upper-limb/areas/carpal-tunnel/",
+      "volatile": false,
+      "distractors": ["carpal tunnel", "cubital tunnel", "radial tunnel", "pronator teres tunnel", "thoracic outlet", "axillary tunnel", "spiral groove", "supinator arcade"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Compression of the ulnar nerve in Guyon's canal spares dorsal ulnar sensation. Why?",
+          "correctAnswer": "The dorsal ulnar cutaneous branch arises proximal to Guyon's canal and bypasses it",
+          "distractors": ["The dorsal branch passes through the carpal tunnel instead", "Guyon's canal only contains the motor branch of the ulnar nerve", "The ulnar nerve has no dorsal sensory branch"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the ulnar nerve passes through the carpal tunnel alongside the median nerve.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Guyon's canal is bounded laterally by the hook of hamate and medially by the ___.",
+          "correctAnswer": "pisiform",
+          "distractors": ["triquetrum", "scaphoid", "lunate"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_058",
+      "correctAnswer": "posterior tibial artery",
+      "acceptableAlternatives": ["posterior tibial a.", "tibial artery"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In the tarsal tunnel mnemonic 'Tom, Dick, And Very Nervous Harry,' the 'A' of 'And' represents which vessel that is palpable posterior to the medial malleolus?",
+      "explanation": "In the tarsal tunnel, 'And' = posterior tibial Artery, a terminal branch of the popliteal artery that passes through the tarsal tunnel and divides into the medial and lateral plantar arteries to supply the sole of the foot. The posterior tibial pulse is routinely assessed in vascular examination posterior to the medial malleolus, between the medial malleolus and the heel. It is diminished or absent in peripheral arterial disease of the lower limb.",
+      "visualDescription": "Pixel art medial ankle: posterior tibial artery labeled 'A' in the tarsal tunnel sequence, pulse waveform icon over the artery, medial malleolus as landmark, bifurcation into medial and lateral plantar arteries shown continuing into the foot sole",
+      "sourceName": "TeachMeAnatomy — The Tarsal Tunnel",
+      "sourceUrl": "https://teachmeanatomy.info/lower-limb/areas/tarsal-tunnel/",
+      "volatile": false,
+      "distractors": ["anterior tibial artery", "peroneal artery", "dorsalis pedis artery", "medial plantar artery", "lateral plantar artery", "sural artery", "fibular artery", "popliteal artery"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The posterior tibial artery divides into which two arteries that supply the sole of the foot?",
+          "correctAnswer": "medial and lateral plantar arteries",
+          "distractors": ["anterior and posterior plantar arteries", "superficial and deep plantar arteries", "digital and metatarsal arteries"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the posterior tibial pulse can be palpated posterior to the medial malleolus.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The posterior tibial artery is a terminal branch of the ___ artery.",
+          "correctAnswer": "popliteal",
+          "distractors": ["femoral", "tibial", "fibular"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_059",
+      "correctAnswer": "Kupffer cells",
+      "acceptableAlternatives": ["Kupffer cell", "hepatic macrophages"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Within hepatic sinusoids, specialized resident macrophages line the fenestrated endothelium and phagocytose antigens, bacteria, and damaged red blood cells from portal blood. What are these cells called?",
+      "explanation": "Kupffer cells are the resident macrophages of the liver, located within the sinusoids (lining the sinusoidal endothelium). They represent the largest population of tissue-resident macrophages in the body. They continuously sample portal blood flowing through the sinusoids, phagocytosing bacteria, endotoxins, damaged erythrocytes, and foreign antigens. They also produce cytokines (TNF-α, IL-1, IL-6) and are central to the inflammatory response in alcoholic hepatitis and early cirrhosis. They are derived from bone marrow monocytes.",
+      "visualDescription": "Pixel art hepatic sinusoid: Kupffer cell shown attached to fenestrated endothelium, its cytoplasm engulfing bacteria and debris from the sinusoid lumen, hepatocytes visible on the other side of the space of Disse, portal blood flowing through",
+      "sourceName": "Kenhub — Liver Histology",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/liver-histology",
+      "volatile": false,
+      "distractors": ["hepatic stellate cells (Ito cells)", "hepatocytes", "cholangiocytes", "pit cells (NK cells)", "portal fibroblasts", "sinusoidal endothelial cells", "oval cells", "hepatic progenitor cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which liver cells (not Kupffer cells) store vitamin A and become pro-fibrotic myofibroblasts when activated?",
+          "correctAnswer": "hepatic stellate cells (Ito cells)",
+          "distractors": ["Kupffer cells", "cholangiocytes", "hepatocytes"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Kupffer cells are the largest population of tissue-resident macrophages in the human body.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Kupffer cells are derived from bone marrow ___ that migrate into the liver.",
+          "correctAnswer": "monocytes",
+          "distractors": ["neutrophils", "lymphocytes", "mast cells"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_060",
+      "correctAnswer": "central vein",
+      "acceptableAlternatives": ["centrilobular vein", "central venule", "terminal hepatic venule"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "In the classic hexagonal hepatic lobule model, hepatocytes are arranged in radiating plates between portal triads at the periphery and which structure at the center?",
+      "explanation": "The classic hepatic lobule is organized around the central vein (centrilobular vein / terminal hepatic venule) at its center, with portal triads at each of the six corners. Hepatocytes are arranged in plates that radiate from the central vein to the portal tracts. Sinusoids run between these plates, carrying blood from the portal triads inward to the central vein. The central vein collects blood and drains into the hepatic veins → inferior vena cava. Zone 1 (periportal) hepatocytes are closest to the portal triad and receive the most oxygenated blood; zone 3 (centrilobular) cells are most vulnerable to ischemia and toxic injury.",
+      "visualDescription": "Pixel art classic hepatic lobule: hexagonal outline, central vein in the center labeled and glowing blue, six portal triads at each corner in orange, hepatocyte plates radiating outward like spokes, sinusoids shown as spaces between the plates",
+      "sourceName": "Wikipedia — Lobules of Liver",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lobules_of_liver",
+      "volatile": false,
+      "distractors": ["portal vein", "hepatic artery", "bile canaliculus", "portal triad", "hepatic vein", "space of Disse", "sinusoidal endothelium", "Glisson's capsule"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In the hepatic lobule, zone 3 (centrilobular) hepatocytes are most vulnerable to ischemia. Zone 1 (periportal) hepatocytes are most vulnerable to which type of injury?",
+          "correctAnswer": "toxin injury (e.g., acetaminophen overdose affects zone 3; zone 1 is vulnerable to viral hepatitis and some toxins)",
+          "distractors": ["ischemia from low blood flow", "biliary obstruction", "venous congestion"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the central vein of the hepatic lobule drains into the hepatic veins, which then drain into the inferior vena cava.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Blood flows through the hepatic lobule from the portal triads inward to the ___ vein, which is located at the lobule center.",
+          "correctAnswer": "central",
+          "distractors": ["portal", "hepatic", "sinusoidal"]
+        }
+      ]
+    }
+  ]
+}

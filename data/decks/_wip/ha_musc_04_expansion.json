@@ -1,0 +1,722 @@
+[
+  {
+    "id": "ha_musc_081",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Flexor digitorum profundus tendons",
+    "acceptableAlternatives": ["FDP tendons", "flexor digitorum profundus"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "The four lumbrical muscles of the hand are unique intrinsic muscles because they have no bony origin — instead, they arise from the tendons of which forearm muscle?",
+    "explanation": "The lumbricals are the only muscles in the body that originate entirely from tendons of another muscle — the flexor digitorum profundus (FDP). Each lumbrical arises from the corresponding FDP tendon in the palm. They insert into the extensor hoods of digits 2–5, producing the paradoxical action of simultaneous MCP flexion and IP extension. The first and second lumbricals are unipennate (median nerve); the third and fourth are bipennate (ulnar nerve).",
+    "visualDescription": "Pixel art palmar view of the hand showing four lumbrical muscles arising from FDP tendons in the palm and inserting into the extensor hoods on the dorsal side of each finger",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumbricals_of_the_hand",
+    "volatile": false,
+    "distractors": ["Flexor digitorum superficialis tendons", "Extensor digitorum tendons", "Palmar aponeurosis", "Flexor retinaculum", "Metacarpal bones", "Proximal phalanges"],
+    "variants": [
+      {
+        "quizQuestion": "The lumbricals of the hand flex the MCP joints and simultaneously extend the IP joints. Which nerve innervates the lateral two (first and second) lumbricals?",
+        "correctAnswer": "Median nerve",
+        "explanation": "The first and second (most radial) lumbricals are innervated by the median nerve. The third and fourth lumbricals are innervated by the deep branch of the ulnar nerve. This split innervation is clinically significant — ulnar nerve palsy causes clawing predominantly in digits 4 and 5, where lumbrical function is lost."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_082",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Abduct (DAB — Dorsal interossei ABduct)",
+    "acceptableAlternatives": ["abduction", "spread the fingers", "DAB"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Using the classic hand interossei mnemonic, what does the 'DAB' in 'PAD-DAB' stand for, describing the action of the dorsal interossei?",
+    "explanation": "The mnemonic PAD-DAB summarises the interossei: Palmar interossei ADduct fingers toward the midline (middle finger), and Dorsal interossei ABduct fingers away from the midline. There are 4 dorsal interossei (bipennate) and 3 palmar interossei (unipennate). Both groups are innervated by the deep branch of the ulnar nerve.",
+    "visualDescription": "Pixel art dorsal view of the hand with arrows showing the four dorsal interossei spreading fingers 2, 3, and 4 away from the midline axis of the middle finger",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Interosseous_muscles_of_the_hand",
+    "volatile": false,
+    "distractors": ["Adduct (move toward midline)", "Flex the DIP joints", "Extend the MCP joints", "Oppose the thumb", "Rotate the metacarpals", "Pronate the forearm"],
+    "variants": [
+      {
+        "quizQuestion": "Both the dorsal and palmar interossei of the hand share the same innervation. Which nerve supplies all seven interosseous muscles?",
+        "correctAnswer": "Deep branch of the ulnar nerve",
+        "explanation": "All 4 dorsal interossei and all 3 palmar interossei are innervated by the deep branch of the ulnar nerve (C8–T1). Complete ulnar nerve palsy therefore paralyses all interossei, causing loss of finger abduction/adduction and contributing to the classic 'claw hand' deformity."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_083",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Adduct fingers toward the middle finger (PAD — Palmar interossei ADduct)",
+    "acceptableAlternatives": ["adduction", "adduct", "PAD"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "There are three palmar interossei in the hand, all innervated by the ulnar nerve. What is their primary action, recalled by the 'PAD' half of the PAD-DAB mnemonic?",
+    "explanation": "The three palmar interossei adduct fingers 2, 4, and 5 toward the axial line of the middle finger (digit 3). They are unipennate muscles, in contrast to the four bipennate dorsal interossei. Like all interossei, they also assist in MCP flexion and IP extension. All are innervated by the deep branch of the ulnar nerve.",
+    "visualDescription": "Pixel art palmar view of the hand with arrows showing the three palmar interossei drawing index, ring, and little fingers toward the middle finger",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palmar_interossei_muscles",
+    "volatile": false,
+    "distractors": ["Abduct fingers away from the middle finger", "Flex the wrist", "Extend the IP joints independently", "Oppose the little finger", "Supinate the forearm", "Flex the MCP joints only"],
+    "variants": [
+      {
+        "quizQuestion": "How many dorsal interossei and how many palmar interossei are in the hand?",
+        "correctAnswer": "4 dorsal, 3 palmar",
+        "explanation": "There are 4 dorsal interossei (bipennate, between each pair of metacarpals) and 3 palmar interossei (unipennate). The middle finger has no palmar interosseous because it is the axis of abduction/adduction; it can be abducted to either side by the second and third dorsal interossei."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_084",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Trapezium and flexor retinaculum",
+    "acceptableAlternatives": ["tubercle of trapezium and flexor retinaculum", "trapezium"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Opponens pollicis is the deepest thenar muscle and the primary producer of thumb opposition. From which two structures does it originate?",
+    "explanation": "Opponens pollicis originates from the tubercle of the trapezium and the flexor retinaculum. It inserts along the entire radial border of the first metacarpal. Its contraction rotates and flexes MC1 to bring the thumb pad across to meet the fingertips — the motion of opposition. It is innervated by the recurrent branch of the median nerve.",
+    "visualDescription": "Pixel art palmar view of the thenar eminence with opponens pollicis highlighted in red, showing its origin on the trapezium/flexor retinaculum and broad insertion along MC1",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Opponens_pollicis_muscle",
+    "volatile": false,
+    "distractors": ["Scaphoid and palmar aponeurosis", "Capitate and MC3", "Radius and ulna", "Pisiform and hook of hamate", "Lunate and flexor retinaculum", "Hamate and MC5"],
+    "variants": [
+      {
+        "quizQuestion": "Opponens pollicis produces thumb opposition and is innervated by the recurrent branch of the median nerve. Into which bone does it insert?",
+        "correctAnswer": "First metacarpal (MC1)",
+        "explanation": "Opponens pollicis inserts along the entire length of the radial border of the first metacarpal. By rotating MC1 at the carpometacarpal joint, it places the thumb in opposition — essential for precision grip. Loss of this function (as in median nerve injury at the wrist) severely impairs fine motor tasks."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_085",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Deep branch of the ulnar nerve (C8–T1)",
+    "acceptableAlternatives": ["ulnar nerve", "deep ulnar nerve"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_nerves",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Adductor pollicis adducts the thumb and originates from two heads — one from the capitate and bases of MC2/MC3, the other from MC3 itself. Which nerve innervates it?",
+    "explanation": "Adductor pollicis is the only thenar muscle NOT innervated by the median nerve. It is innervated by the deep branch of the ulnar nerve (C8–T1). It has an oblique head (arising from capitate and bases of MC2 and MC3) and a transverse head (arising from the shaft of MC3), both inserting on the ulnar side of the base of the proximal phalanx of the thumb.",
+    "visualDescription": "Pixel art palmar view of the deep hand showing the two heads of adductor pollicis converging on the base of the thumb proximal phalanx",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adductor_pollicis_muscle",
+    "volatile": false,
+    "distractors": ["Recurrent branch of the median nerve", "Anterior interosseous nerve", "Radial nerve", "Superficial branch of the ulnar nerve", "Median nerve (C6–C7)", "Musculocutaneous nerve"],
+    "variants": [
+      {
+        "quizQuestion": "Adductor pollicis has two heads. The transverse head arises from the shaft of the third metacarpal. What does the oblique head arise from?",
+        "correctAnswer": "Capitate and bases of the second and third metacarpals",
+        "explanation": "The oblique head of adductor pollicis originates from the capitate bone and the bases of the second and third metacarpals. Both heads insert on the ulnar base of the thumb's proximal phalanx. Froment's sign — flexing the thumb IP joint to compensate for weak adduction during a pinch — indicates ulnar nerve palsy."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_086",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Pubococcygeus, puborectalis, and iliococcygeus",
+    "acceptableAlternatives": ["pubococcygeus puborectalis iliococcygeus", "three parts of levator ani"],
+    "chainThemeId": "pelvic_floor_muscles",
+    "answerTypePoolId": "anatomy_structures",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Levator ani is the principal muscle of the pelvic floor, forming most of the pelvic diaphragm. What are its three named muscle components?",
+    "explanation": "Levator ani is composed of three parts: pubococcygeus (the medial hammock-like sling from pubic bone to coccyx), puborectalis (a U-shaped sling looping around the rectum, maintaining the anorectal angle), and iliococcygeus (the more lateral sheet from the tendinous arch of obturator fascia and ischial spine to the coccyx and anococcygeal body). Together they support the pelvic viscera and control continence.",
+    "visualDescription": "Pixel art inferior view of the pelvic floor showing levator ani's three parts: pubococcygeus medially, puborectalis as a rectal sling, and iliococcygeus laterally",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Levator_ani",
+    "volatile": false,
+    "distractors": ["Coccygeus, ischiococcygeus, and puboprostaticus", "Obturator internus, piriformis, and coccygeus", "Pubovaginalis, puboanalis, and ischiococcygeus", "Sphincter urethrae, bulbospongiosus, and coccygeus", "Iliococcygeus, sacrospinalis, and puborectalis", "Transversus perinei, coccygeus, and pubococcygeus"],
+    "variants": [
+      {
+        "quizQuestion": "The levator ani is innervated primarily by branches of which nerve and spinal levels?",
+        "correctAnswer": "Pudendal nerve (S2–S4)",
+        "explanation": "Levator ani is primarily innervated by branches of the pudendal nerve (S2–S4), arising from the sacral plexus. Some sources also note direct branches from S3–S4 on the superior surface. Pudendal nerve injury during childbirth is a major cause of pelvic floor weakness and stress urinary incontinence."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_087",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Ischial spine",
+    "acceptableAlternatives": ["spine of the ischium"],
+    "chainThemeId": "pelvic_floor_muscles",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Coccygeus (ischiococcygeus) lies posterior to levator ani and completes the pelvic diaphragm. From which bony landmark does it originate?",
+    "explanation": "Coccygeus originates by its apex from the ischial spine and the sacrospinous ligament. It inserts by its base into the lateral margin of the coccyx and the lowest piece of the sacrum. Along with levator ani, it forms the pelvic diaphragm. It is innervated by branches of S4–S5 (the coccygeal plexus).",
+    "visualDescription": "Pixel art lateral pelvic view showing coccygeus as a triangular muscle running from the ischial spine to the lateral sacrum and coccyx, posterior to the levator ani",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coccygeus_muscle",
+    "volatile": false,
+    "distractors": ["Pubic tubercle", "Iliac crest", "Obturator foramen", "Sacral promontory", "Posterior superior iliac spine", "Lesser sciatic notch"],
+    "variants": [
+      {
+        "quizQuestion": "Coccygeus inserts on the coccyx and the lowest sacrum. Which spinal levels innervate it via the coccygeal plexus?",
+        "correctAnswer": "S4–S5",
+        "explanation": "Coccygeus is innervated by ventral rami of S4 and S5 via the coccygeal plexus. This is distinct from levator ani, which is primarily innervated by S2–S4. Coccygeus and sacrospinous ligament are effectively fused in adults, a fact exploited surgically during sacrospinous ligament fixation for pelvic organ prolapse."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_088",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Puborectalis",
+    "acceptableAlternatives": ["puborectalis sling"],
+    "chainThemeId": "pelvic_floor_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which part of levator ani forms a U-shaped muscular sling around the rectum that maintains the anorectal angle critical for fecal continence?",
+    "explanation": "Puborectalis is the component of levator ani that loops behind the anorectal junction, creating the anorectal angle (approximately 90° at rest). This angle is essential for fecal continence. During defecation, puborectalis relaxes, straightening the angle to allow passage. Puborectalis is considered by some authorities to be more closely related functionally to the external anal sphincter than to the other levator ani components.",
+    "visualDescription": "Pixel art sagittal pelvic section showing the puborectalis sling looping posteriorly around the rectum, creating the anorectal angle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Levator_ani",
+    "volatile": false,
+    "distractors": ["Pubococcygeus", "Iliococcygeus", "Coccygeus", "External anal sphincter", "Transversus perinei profundus", "Obturator internus"],
+    "variants": [
+      {
+        "quizQuestion": "The anorectal angle maintained by puborectalis is approximately how many degrees at rest?",
+        "correctAnswer": "90 degrees",
+        "explanation": "The puborectalis sling maintains an anorectal angle of approximately 90° at rest, which is central to fecal continence. The angle straightens to about 135° during straining for defecation as puborectalis relaxes. Loss of this sling (e.g., in pudendal nerve damage) causes fecal incontinence."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_089",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Digastric muscle (anterior belly CN V3, posterior belly CN VII)",
+    "acceptableAlternatives": ["digastric", "anterior belly mylohyoid nerve CN V3 posterior belly facial nerve CN VII"],
+    "chainThemeId": "neck_hyoid_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Which suprahyoid muscle is unique in having two bellies with different embryological origins, its anterior belly innervated by the mylohyoid nerve (CN V3) and its posterior belly by the facial nerve (CN VII)?",
+    "explanation": "The digastric muscle has an anterior belly (derived from the first pharyngeal arch, innervated by the mylohyoid branch of CN V3) and a posterior belly (derived from the second pharyngeal arch, innervated by the digastric branch of CN VII). Both bellies are connected by an intermediate tendon that loops through a fibrous pulley attached to the hyoid bone. The digastric assists in opening the mouth and elevating the hyoid during swallowing.",
+    "visualDescription": "Pixel art lateral neck view showing the digastric with its anterior belly running from the mandible and posterior belly from the mastoid, both attached to the hyoid bone via an intermediate tendon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Digastric_muscle",
+    "volatile": false,
+    "distractors": ["Mylohyoid (both bellies CN V3)", "Stylohyoid (CN VII, single belly)", "Geniohyoid (C1 via CN XII)", "Omohyoid (ansa cervicalis)", "Thyrohyoid (C1 via CN XII)", "Sternohyoid (ansa cervicalis)"],
+    "variants": [
+      {
+        "quizQuestion": "The digastric, stylohyoid, mylohyoid, and geniohyoid all belong to which muscle group that collectively elevates the hyoid during swallowing?",
+        "correctAnswer": "Suprahyoid muscles",
+        "explanation": "The four suprahyoid muscles sit above the hyoid bone and elevate it during swallowing and opening of the mouth. They are: digastric (CN V3 + CN VII), mylohyoid (CN V3), geniohyoid (C1 via CN XII), and stylohyoid (CN VII). In contrast, the infrahyoid (strap) muscles depress the hyoid after swallowing."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_090",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Geniohyoid",
+    "acceptableAlternatives": ["geniohyoid muscle"],
+    "chainThemeId": "neck_hyoid_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which suprahyoid muscle is innervated by C1 fibres travelling alongside the hypoglossal nerve (CN XII), arising from the inferior mental spine of the mandible to insert on the hyoid body?",
+    "explanation": "Geniohyoid runs from the inferior mental spine (genial tubercle) of the mandible to the body of the hyoid bone. It pulls the hyoid anterosuperiorly, shortening the floor of the mouth and widening the pharynx during swallowing. Its innervation is unique among suprahyoids: C1 fibres from the cervical plexus hitch a ride with the hypoglossal nerve before leaving it to supply geniohyoid.",
+    "visualDescription": "Pixel art midsagittal neck view showing geniohyoid running from the posterior mandibular symphysis anteriorly to the hyoid body",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Geniohyoid_muscle",
+    "volatile": false,
+    "distractors": ["Mylohyoid", "Stylohyoid", "Digastric (posterior belly)", "Thyrohyoid", "Genioglossus", "Hyoglossus"],
+    "variants": [
+      {
+        "quizQuestion": "Mylohyoid forms the muscular floor of the mouth, running between the mylohyoid line of the mandible and the hyoid. Which nerve innervates it?",
+        "correctAnswer": "Mylohyoid nerve (branch of CN V3)",
+        "explanation": "Mylohyoid is innervated by the mylohyoid nerve, a branch of the inferior alveolar nerve, which is itself a branch of the mandibular division of the trigeminal nerve (CN V3). Mylohyoid elevates the hyoid and the floor of the mouth, forcing the tongue upward during swallowing. It shares innervation (V3) with the anterior belly of the digastric."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_091",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Stylohyoid (CN VII — facial nerve)",
+    "acceptableAlternatives": ["stylohyoid", "facial nerve CN VII"],
+    "chainThemeId": "neck_hyoid_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which suprahyoid muscle originates from the styloid process of the temporal bone, draws the hyoid upward and backward during swallowing, and is innervated by a branch of the facial nerve (CN VII)?",
+    "explanation": "Stylohyoid runs from the styloid process of the temporal bone to the body of the hyoid, near its junction with the greater cornu. It retracts and elevates the hyoid during swallowing, elongating the floor of the mouth. It is innervated by the stylohyoid branch of the facial nerve (CN VII). Its tendon is pierced by the intermediate tendon of the digastric as both structures cross near the hyoid.",
+    "visualDescription": "Pixel art lateral neck view showing stylohyoid descending from the styloid process of the temporal bone to insert on the hyoid body, with the digastric intermediate tendon passing through its split tendon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stylohyoid_muscle",
+    "volatile": false,
+    "distractors": ["Mylohyoid (CN V3)", "Geniohyoid (C1 via CN XII)", "Digastric posterior belly (CN VII — same nerve, different muscle)", "Omohyoid (ansa cervicalis)", "Sternohyoid (ansa cervicalis)", "Thyrohyoid (C1 via CN XII)"],
+    "variants": [
+      {
+        "quizQuestion": "Of the four suprahyoid muscles, which two are both innervated by the facial nerve (CN VII)?",
+        "correctAnswer": "Stylohyoid and the posterior belly of digastric",
+        "explanation": "Both stylohyoid and the posterior belly of the digastric are innervated by the facial nerve (CN VII) — both structures are derived from the second pharyngeal arch. Mylohyoid and anterior digastric are first-arch derivatives (CN V3), while geniohyoid is innervated by C1 fibres via the hypoglossal nerve."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_092",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Ansa cervicalis (C1–C3)",
+    "acceptableAlternatives": ["ansa cervicalis", "C1-C3"],
+    "chainThemeId": "neck_hyoid_muscles",
+    "answerTypePoolId": "anatomy_nerves",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Three of the four infrahyoid (strap) muscles — sternohyoid, sternothyroid, and omohyoid — are innervated by a cervical plexus loop. What is this loop called?",
+    "explanation": "The ansa cervicalis is a nerve loop formed from cervical plexus branches C1–C3. A superior root (C1 fibres briefly travelling with CN XII) and an inferior root (C2–C3) unite in the carotid triangle to form the loop. It supplies sternohyoid, sternothyroid, and omohyoid. The exception is thyrohyoid, which is supplied by C1 fibres travelling with the hypoglossal nerve but branching off before the ansa loop.",
+    "visualDescription": "Pixel art anterior neck showing the ansa cervicalis loop in the carotid triangle with branches running to sternohyoid, omohyoid, and sternothyroid, and a separate C1 branch to thyrohyoid",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ansa_cervicalis",
+    "volatile": false,
+    "distractors": ["Phrenic nerve (C3–C5)", "Vagus nerve (CN X)", "Hypoglossal nerve (CN XII)", "Glossopharyngeal nerve (CN IX)", "Cervical sympathetic trunk", "Recurrent laryngeal nerve"],
+    "variants": [
+      {
+        "quizQuestion": "Thyrohyoid is the one infrahyoid muscle NOT innervated by the ansa cervicalis. Which nerve actually supplies it?",
+        "correctAnswer": "C1 fibres travelling with the hypoglossal nerve (CN XII)",
+        "explanation": "The thyrohyoid branch arises from C1 fibres that hitch a ride with the hypoglossal nerve (CN XII) but diverge before the ansa cervicalis loop. These C1 fibres cross the greater cornu of the hyoid to reach thyrohyoid. This makes thyrohyoid appear to be innervated by CN XII, but CN XII carries no motor fibres to muscles below the tongue — they are borrowed C1 fibres."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_093",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Omohyoid",
+    "acceptableAlternatives": ["omohyoid muscle"],
+    "chainThemeId": "neck_hyoid_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which infrahyoid strap muscle is unique in having two bellies — an inferior belly attached to the scapula and a superior belly attached to the hyoid — separated by an intermediate tendon?",
+    "explanation": "Omohyoid is the only infrahyoid muscle with two bellies and an intermediate tendon. Its inferior belly runs from the superior border of the scapula (near the suprascapular notch); its superior belly runs to the hyoid bone. The intermediate tendon is held by a fibrous sling to the clavicle and first rib. Omohyoid depresses and retracts the hyoid after swallowing and tenses the deep cervical fascia. It is innervated by the ansa cervicalis (C1–C3).",
+    "visualDescription": "Pixel art anterior neck showing omohyoid with its inferior belly from scapula, bend at the intermediate tendon, and superior belly rising to the hyoid bone",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Omohyoid_muscle",
+    "volatile": false,
+    "distractors": ["Sternohyoid", "Sternothyroid", "Thyrohyoid", "Stylohyoid", "Digastric (two bellies but suprahyoid)", "Mylohyoid"],
+    "variants": [
+      {
+        "quizQuestion": "Sternothyroid is the deepest of the four infrahyoid strap muscles. Where does it insert, and how does this differ from sternohyoid?",
+        "correctAnswer": "Sternothyroid inserts on the thyroid cartilage; sternohyoid inserts on the hyoid bone",
+        "explanation": "Sternothyroid runs from the manubrium to the oblique line of the thyroid cartilage, depressing the larynx. Sternohyoid runs superficial to it, from the manubrium to the hyoid bone, depressing the hyoid. Thyrohyoid then bridges from thyroid cartilage to hyoid. This arrangement allows sequential fine control of laryngeal and hyoid position during speech and swallowing."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_094",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Multifidus",
+    "acceptableAlternatives": ["multifidus muscle"],
+    "chainThemeId": "deep_back_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which deep back muscle spans 2–4 vertebral levels, originating from sacrum and transverse processes, inserting on spinous processes above, and is considered the most important stabiliser of each individual lumbar spinal segment?",
+    "explanation": "Multifidus runs the entire length of the spine, with the thickest, most developed fibres in the lumbar region. Each fasciculus spans 2–4 vertebral levels, arising from the sacrum (in the lumbar region from mamillary processes, in the thoracic region from transverse processes) and inserting into the spinous process of the vertebra 2–4 levels above. It is essential for fine intersegmental spinal stabilisation and is consistently atrophied in chronic low back pain. Innervated by medial branches of posterior (dorsal) rami.",
+    "visualDescription": "Pixel art posterior spine showing multifidus fibres crossing 2–4 vertebral levels from transverse processes to spinous processes, most prominent in the lumbar region",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Multifidus_muscle",
+    "volatile": false,
+    "distractors": ["Erector spinae (iliocostalis)", "Semispinalis capitis", "Rotatores", "Quadratus lumborum", "Longissimus thoracis", "Intertransversarii"],
+    "variants": [
+      {
+        "quizQuestion": "Multifidus is innervated by medial branches of which nerve division at each spinal level?",
+        "correctAnswer": "Posterior (dorsal) rami",
+        "explanation": "Multifidus, like all true back muscles (epaxial muscles), is innervated by the medial branches of the posterior (dorsal) rami of the spinal nerves at each level. This is clinically important in medial branch nerve blocks and radiofrequency ablation procedures used to treat facet joint pain and multifidus-related low back pain."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_095",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Semispinalis",
+    "acceptableAlternatives": ["semispinalis muscles", "semispinalis capitis", "semispinalis cervicis"],
+    "chainThemeId": "deep_back_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which transversospinalis muscle spans the greatest number of vertebral levels (5–7), originating from transverse processes and inserting on spinous processes far above, producing extension and contralateral rotation, and is innervated by dorsal rami of cervical nerves?",
+    "explanation": "Semispinalis is the most superficial of the transversospinalis group (semispinalis, multifidus, rotatores) and spans the most vertebral levels — approximately 5–7. It has three parts: semispinalis capitis (inserts on occiput), semispinalis cervicis, and semispinalis thoracis. Fibres arise from transverse processes and insert on spinous processes 5–7 levels above, producing extension of the head and vertebral column and contralateral rotation of the trunk. Innervated by dorsal rami of cervical spinal nerves.",
+    "visualDescription": "Pixel art posterior neck and upper back showing semispinalis capitis as a large muscle mass from upper thoracic transverse processes to the occipital bone, lateral to the nuchal ligament",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Semispinalis_muscles",
+    "volatile": false,
+    "distractors": ["Multifidus (spans 2–4 levels)", "Rotatores (spans 1–2 levels)", "Iliocostalis", "Longissimus capitis", "Splenius capitis", "Spinalis"],
+    "variants": [
+      {
+        "quizQuestion": "The transversospinalis group is made up of three muscles ranked by how many vertebral levels they span. From fewest to most, what is the order?",
+        "correctAnswer": "Rotatores (1–2 levels), multifidus (2–4 levels), semispinalis (5–7 levels)",
+        "explanation": "The transversospinalis muscles (all running from transverse processes to spinous processes above) are: rotatores (shortest — 1–2 levels, finest intersegmental control), multifidus (intermediate — 2–4 levels, best developed in the lumbar region), and semispinalis (longest — 5–7 levels, best developed in the cervical region)."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_096",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Lateral condyle of the femur",
+    "acceptableAlternatives": ["lateral femoral condyle", "lateral surface of the lateral condyle of femur"],
+    "chainThemeId": "leg_muscles_additional",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Popliteus is the small posterior knee muscle known as the 'key to unlocking the knee.' From which bony landmark does it originate?",
+    "explanation": "Popliteus originates by a rounded tendon from the lateral surface of the lateral condyle of the femur (and also from the arcuate popliteal ligament and the lateral meniscus). It inserts on the posterior surface of the tibia above the soleal line. It unlocks the fully extended knee by laterally rotating the femur on the fixed tibia, allowing flexion to begin. Innervated by the tibial nerve.",
+    "visualDescription": "Pixel art posterior knee showing popliteus as a small triangular muscle from the lateral femoral condyle sweeping down and medially to the proximal posterior tibia",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Popliteus_muscle",
+    "volatile": false,
+    "distractors": ["Medial condyle of the femur", "Head of the fibula", "Posterior surface of tibia (its insertion)", "Lateral supracondylar ridge of femur (plantaris origin)", "Linea aspera", "Ischial tuberosity"],
+    "variants": [
+      {
+        "quizQuestion": "Popliteus 'unlocks' a fully extended knee by performing which rotation, and it is innervated by which nerve?",
+        "correctAnswer": "Lateral rotation of the femur on the tibia; tibial nerve",
+        "explanation": "In the closed kinetic chain (foot fixed), popliteus laterally rotates the femur on the tibia to unlock the screw-home mechanism of full knee extension, allowing flexion to begin. In open chain, it medially rotates the tibia. It is innervated by the tibial nerve (L4–S1). It also retracts the lateral meniscus posteriorly during knee flexion to prevent meniscal crushing."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_097",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Lateral supracondylar ridge of the femur",
+    "acceptableAlternatives": ["inferior lateral supracondylar ridge", "lateral supracondylar line of femur"],
+    "chainThemeId": "leg_muscles_additional",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Plantaris is considered a vestigial muscle in humans. From which femoral origin does it arise, just superior to the lateral head of gastrocnemius?",
+    "explanation": "Plantaris originates from the inferior part of the lateral supracondylar ridge of the femur, just superior and medial to the lateral head of the gastrocnemius. It has a very short belly (~10 cm) and an extremely long, thin tendon that passes between gastrocnemius and soleus before inserting on the medial surface of the calcaneus (sometimes joining the Achilles tendon). It provides only weak plantarflexion and is innervated by the tibial nerve. Its tendon is harvested for ligament reconstruction surgery.",
+    "visualDescription": "Pixel art posterior knee showing the tiny plantaris muscle belly from the lateral supracondylar ridge of femur, with its long slender tendon running medially between gastrocnemius and soleus to the calcaneus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plantaris_muscle",
+    "volatile": false,
+    "distractors": ["Medial condyle of the femur", "Head of fibula", "Lateral condyle of femur (popliteus origin)", "Posterior tibial surface", "Ischial tuberosity", "Lateral tibial condyle"],
+    "variants": [
+      {
+        "quizQuestion": "Plantaris is absent in approximately what percentage of the human population, making it one of the most variable muscles in the body?",
+        "correctAnswer": "Approximately 7–10%",
+        "explanation": "Plantaris is absent in roughly 7–10% of individuals (some sources cite up to 20% variation by ethnic group). When present, its long slender tendon running between gastrocnemius and soleus can be confused with the posterior tibial nerve on ultrasound, but is valuable as a graft source for ligament reconstruction. Its absence has no functional consequence."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_098",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Approximately 14% of the population (varies by ethnicity)",
+    "acceptableAlternatives": ["~14%", "10-20%", "about 14 percent"],
+    "chainThemeId": "arm_muscles_additional",
+    "answerTypePoolId": "anatomy_facts",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Palmaris longus is the only forearm flexor considered functionally vestigial in humans. In approximately what percentage of the population is it entirely absent?",
+    "explanation": "Palmaris longus is absent in roughly 14% of individuals, with rates ranging from 10–20% depending on ethnicity. It is thought to have been important for arboreal locomotion in primate ancestors. When present, its long thin tendon is visible at the wrist when the thumb and little finger are opposed with the wrist flexed — a clinical test for its presence. Its absence has no effect on grip strength. Its tendon is used in surgical repair of other tendons.",
+    "visualDescription": "Pixel art anterior forearm showing the slender palmaris longus tendon running between flexor carpi radialis and flexor carpi ulnaris to insert on the palmar aponeurosis",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palmaris_longus_muscle",
+    "volatile": false,
+    "distractors": ["Approximately 1%", "Approximately 50%", "Approximately 5%", "Approximately 30%", "Approximately 2%", "It is present in virtually all humans"],
+    "variants": [
+      {
+        "quizQuestion": "Palmaris longus originates from the medial epicondyle and inserts on the palmar aponeurosis. Which nerve innervates it?",
+        "correctAnswer": "Median nerve",
+        "explanation": "Palmaris longus is innervated by the median nerve (C7–C8). It originates from the medial epicondyle of the humerus (common flexor origin) and its long slender tendon inserts onto the flexor retinaculum and the palmar aponeurosis. Despite being the shallowest wrist flexor, its contribution to wrist flexion is minimal, which is why its absence is clinically silent."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_099",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Palmar aponeurosis",
+    "acceptableAlternatives": ["palmar fascia", "flexor retinaculum and palmar aponeurosis"],
+    "chainThemeId": "arm_muscles_additional",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Palmaris longus runs from the medial epicondyle down the forearm and ends in a long flat tendon. Into which palmar structure does this tendon insert?",
+    "explanation": "Palmaris longus inserts onto the central part of the flexor retinaculum and the palmar aponeurosis — the thick triangular fascia that protects the underlying flexor tendons and digital neurovascular bundles in the palm. The palmar aponeurosis is the structure that undergoes fibrotic contracture in Dupuytren's disease, causing progressive finger flexion contractures.",
+    "visualDescription": "Pixel art anterior wrist and palm showing the palmaris longus tendon fanning out as it merges with the palmar aponeurosis distal to the flexor retinaculum",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palmaris_longus_muscle",
+    "volatile": false,
+    "distractors": ["Proximal phalanx of the middle finger", "Flexor digitorum superficialis tendon", "Extensor retinaculum", "Base of metacarpal 3", "Pisiform bone", "Hook of hamate"],
+    "variants": [
+      {
+        "quizQuestion": "Which disease involves fibrotic contracture of the palmar aponeurosis — the same structure palmaris longus inserts into — causing progressive flexion of the ring and little fingers?",
+        "correctAnswer": "Dupuytren's disease (Dupuytren's contracture)",
+        "explanation": "Dupuytren's disease (palmar fibromatosis) involves progressive fibrosis and contracture of the palmar aponeurosis, most commonly affecting the ring and little fingers. It is more common in men of Northern European descent, and is associated with alcoholic liver disease and anticonvulsant use. Treatment ranges from collagenase injection to surgical fasciectomy."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_100",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Extensor hood (dorsal digital expansion)",
+    "acceptableAlternatives": ["extensor expansion", "extensor hood mechanism", "dorsal extensor hood"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_structures",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "The lumbricals and interossei of the hand all converge to insert on the same fibrous structure on the dorsal side of each finger. What is this structure called?",
+    "explanation": "Both the lumbricals and interossei insert into the extensor hood (dorsal digital expansion) — a fibrous aponeurosis on the dorsal surface of each finger. The extensor digitorum tendon forms the central part; the lumbricals and interossei contribute via the lateral bands. The tension balance between flexors and intrinsic muscles through this mechanism determines finger posture. Loss of intrinsic function causes clawing because the extrinsic extensors hyperextend the MCPs while the IP joints collapse into flexion.",
+    "visualDescription": "Pixel art dorsal finger view showing the extensor hood with the central extensor digitorum tendon flanked by lateral bands from the lumbricals and interossei, all merging to extend the IP joints",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumbricals_of_the_hand",
+    "volatile": false,
+    "distractors": ["Flexor tendon sheath", "Palmar plate (volar plate)", "Flexor retinaculum", "Annular pulley (A2 pulley)", "Proximal phalanx base", "Interosseous membrane"],
+    "variants": [
+      {
+        "quizQuestion": "Intrinsic-minus hand (loss of lumbricals and interossei) results in which characteristic finger deformity?",
+        "correctAnswer": "Claw hand (hyperextended MCPs, flexed IP joints)",
+        "explanation": "Without lumbrical and interosseous function, the extrinsic extensors (extensor digitorum) hyperextend the MCP joints while the extrinsic flexors (FDP, FDS) cause IP joint flexion — producing the claw deformity. The clawing is worst in digits 4 and 5 (ulnar nerve palsy) because digits 2 and 3 retain some intrinsic function via the median-innervated lumbricals."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_101",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Support the pelvic viscera and maintain continence",
+    "acceptableAlternatives": ["support pelvic organs", "supports bladder bowel uterus", "pelvic organ support and continence"],
+    "chainThemeId": "pelvic_floor_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Levator ani forms the muscular floor of the pelvis. What are its two primary functional roles?",
+    "explanation": "Levator ani has two principal functions: (1) providing structural support for the pelvic viscera (bladder, rectum, uterus/prostate) against the downward force of intra-abdominal pressure, and (2) maintaining urinary and fecal continence via tonic contraction around the urethra and anorectal junction. Levator ani also assists in parturition and contributes to erectile function via its connections to the perineal body.",
+    "visualDescription": "Pixel art sagittal pelvic view showing levator ani as a funnel-shaped muscle floor supporting the bladder, uterus/prostate, and rectum from below",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Levator_ani",
+    "volatile": false,
+    "distractors": ["Flex the hip and rotate the thigh", "Produce thrust in the sacroiliac joint", "Generate intra-abdominal pressure for lifting", "Flex the lumbar spine", "Adduct the thighs and compress the sacrum", "Tense the thoracolumbar fascia"],
+    "variants": [
+      {
+        "quizQuestion": "Pelvic floor weakness causing stress urinary incontinence is most commonly associated with damage to which nerve that innervates levator ani?",
+        "correctAnswer": "Pudendal nerve",
+        "explanation": "The pudendal nerve (S2–S4) innervates levator ani and the external urethral and anal sphincters. Stretch injury to the pudendal nerve during vaginal delivery is the most common cause of stress urinary incontinence in women. Pelvic floor physiotherapy (Kegel exercises) strengthens the levator ani to partially compensate."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_102",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Medial epicondyle of the humerus (common flexor origin)",
+    "acceptableAlternatives": ["medial epicondyle", "common flexor origin"],
+    "chainThemeId": "arm_muscles_additional",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Palmaris longus, along with the other wrist flexors, shares a common origin at the medial elbow. Which specific bony landmark is this?",
+    "explanation": "Palmaris longus originates from the medial epicondyle of the humerus as part of the common flexor origin — the shared attachment for the superficial forearm flexors (flexor carpi radialis, palmaris longus, flexor carpi ulnaris, and flexor digitorum superficialis). Overuse inflammation at this site is called medial epicondylitis ('golfer's elbow'). From this origin, palmaris longus runs distally to its long flat tendon that inserts on the palmar aponeurosis.",
+    "visualDescription": "Pixel art anterior elbow showing the common flexor origin on the medial epicondyle with the palmaris longus muscle belly highlighted running distally along the forearm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palmaris_longus_muscle",
+    "volatile": false,
+    "distractors": ["Lateral epicondyle of the humerus", "Olecranon process of the ulna", "Radial head", "Coronoid process of the ulna", "Styloid process of the radius", "Pisiform bone"],
+    "variants": [
+      {
+        "quizQuestion": "Inflammation at the common flexor origin on the medial epicondyle, often from repetitive wrist flexion, is clinically known by what name?",
+        "correctAnswer": "Medial epicondylitis (golfer's elbow)",
+        "explanation": "Medial epicondylitis ('golfer's elbow') involves degeneration and microtearing at the common flexor origin on the medial epicondyle. It is analogous to lateral epicondylitis ('tennis elbow') at the common extensor origin. Both are actually tendinopathies (degenerative) rather than true inflammatory 'itis' conditions histologically."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_103",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Posterior surface of the tibia above the soleal line",
+    "acceptableAlternatives": ["proximal posterior tibia", "posterior tibia above soleal line"],
+    "chainThemeId": "leg_muscles_additional",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Popliteus originates from the lateral femoral condyle and crosses the posterior knee joint obliquely. Where does it insert?",
+    "explanation": "Popliteus inserts on the posterior surface of the tibia above the soleal line. Its oblique fibres (lateral-high to medial-low) allow it to laterally rotate the femur on the tibia to unlock the extended knee. The popliteus tendon passes inside the knee joint capsule and is vulnerable in posterolateral corner injuries. Innervation: tibial nerve (L4–S1).",
+    "visualDescription": "Pixel art posterior proximal tibia showing the broad triangular insertion of popliteus on the posterior tibial surface above the oblique soleal line",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Popliteus_muscle",
+    "volatile": false,
+    "distractors": ["Head of the fibula", "Lateral condyle of the tibia", "Medial condyle of the tibia", "Calcaneus", "Linea aspera of femur", "Medial malleolus"],
+    "variants": [
+      {
+        "quizQuestion": "The popliteus tendon is intracapsular — it passes inside the knee joint capsule. Which structure can it injure or pull posteriorly during knee flexion to prevent its crushing?",
+        "correctAnswer": "Lateral meniscus",
+        "explanation": "Popliteus has an attachment to the posterior horn of the lateral meniscus. During knee flexion it draws the lateral meniscus posteriorly, preventing it from being crushed between the femoral condyle and tibia. This is why popliteus tendon injuries in posterolateral corner trauma are often associated with lateral meniscal pathology."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_104",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Dorsal rami (posterior rami) of spinal nerves",
+    "acceptableAlternatives": ["posterior rami", "dorsal rami", "medial branches of posterior rami"],
+    "chainThemeId": "deep_back_muscles",
+    "answerTypePoolId": "anatomy_nerves",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Multifidus, semispinalis, and all other intrinsic back muscles are innervated by the same division of the spinal nerve. Which division is this?",
+    "explanation": "All intrinsic (true) back muscles — including erector spinae, transversospinalis group (multifidus, semispinalis, rotatores), and suboccipital muscles — are innervated by the dorsal (posterior) rami of the spinal nerves at each corresponding vertebral level. The medial branches of the dorsal rami supply the deep transversospinalis muscles; the lateral branches supply erector spinae. This is clinically exploited in medial branch nerve blocks for facet joint pain.",
+    "visualDescription": "Pixel art cross-section of a lumbar vertebral level showing a spinal nerve dividing into ventral ramus (to limbs and trunk walls) and dorsal ramus branching medially to multifidus and semispinalis",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Multifidus_muscle",
+    "volatile": false,
+    "distractors": ["Ventral (anterior) rami", "Lateral cutaneous branches", "Phrenic nerve", "Sympathetic chain ganglia", "Intercostal nerves", "Ansa cervicalis"],
+    "variants": [
+      {
+        "quizQuestion": "Chronic low back pain is consistently associated with atrophy of which deep intrinsic back muscle, even on the contralateral side from a herniated disc?",
+        "correctAnswer": "Multifidus",
+        "explanation": "MRI studies consistently show multifidus atrophy at the level of disc herniation — even on the contralateral side — in patients with chronic low back pain. The atrophy appears to be neurogenic (from dorsal ramus irritation) and does not recover spontaneously after the primary injury heals, contributing to recurrence of low back pain unless specifically rehabilitated."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_105",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Recurrent branch of the median nerve",
+    "acceptableAlternatives": ["thenar branch of median nerve", "median nerve recurrent branch"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_nerves",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Opponens pollicis, along with abductor pollicis brevis and the superficial head of flexor pollicis brevis, is innervated by a small branch of the median nerve that curls back into the thenar eminence just distal to the carpal tunnel. What is this branch called?",
+    "explanation": "The recurrent branch of the median nerve (also called the thenar branch) exits the median nerve just distal to the flexor retinaculum and curves back (recurs) to enter the thenar eminence. It supplies opponens pollicis, abductor pollicis brevis, and the superficial head of flexor pollicis brevis. This branch is at high risk in carpal tunnel release surgery — it is vulnerable to injury if it takes an anomalous course through or proximal to the retinaculum.",
+    "visualDescription": "Pixel art palmar wrist showing the median nerve exiting the carpal tunnel and immediately giving off the recurrent (thenar) branch that hooks back to supply the three thenar muscles",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Opponens_pollicis_muscle",
+    "volatile": false,
+    "distractors": ["Deep branch of the ulnar nerve", "Superficial branch of the radial nerve", "Anterior interosseous nerve", "Palmar cutaneous branch of the median nerve", "Digital branch of the ulnar nerve", "Musculocutaneous nerve"],
+    "variants": [
+      {
+        "quizQuestion": "A patient with carpal tunnel syndrome has a compressed median nerve at the wrist. Which thenar function is specifically lost if the recurrent branch is also affected?",
+        "correctAnswer": "Thumb opposition (opponens pollicis paralysis)",
+        "explanation": "The recurrent branch innervates opponens pollicis, abductor pollicis brevis, and the superficial flexor pollicis brevis. Its damage causes inability to oppose the thumb (bring the thumb pad to meet the fingertips), leading to an ape-hand deformity. Pinch and fine grip are severely impaired. Thenar wasting is a late sign of chronic severe carpal tunnel syndrome."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_106",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Tibial nerve",
+    "acceptableAlternatives": ["tibial nerve L4-S1"],
+    "chainThemeId": "leg_muscles_additional",
+    "answerTypePoolId": "anatomy_nerves",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Popliteus and plantaris are both small posterior compartment knee muscles. Which nerve innervates both of them?",
+    "explanation": "Both popliteus and plantaris are innervated by the tibial nerve (a branch of the sciatic nerve from the sacral plexus). The tibial nerve descends through the posterior thigh and popliteal fossa, supplying popliteus and plantaris in the region of the knee before continuing into the posterior leg to supply gastrocnemius, soleus, tibialis posterior, flexor digitorum longus, and flexor hallucis longus.",
+    "visualDescription": "Pixel art posterior knee showing the tibial nerve descending through the popliteal fossa with branches running to both popliteus (deep, small) and plantaris (superficial, slender) muscles",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tibial_nerve",
+    "volatile": false,
+    "distractors": ["Common fibular (peroneal) nerve", "Femoral nerve", "Obturator nerve", "Sural nerve", "Saphenous nerve", "Superior gluteal nerve"],
+    "variants": [
+      {
+        "quizQuestion": "Plantaris has a very short muscle belly (~10 cm) and an extremely long tendon. The tendon ultimately inserts on which bone?",
+        "correctAnswer": "Calcaneus (medial surface)",
+        "explanation": "Plantaris has a short muscle belly (about 10 cm) in the popliteal fossa and a tendon that can be up to 30–40 cm long. The tendon runs between gastrocnemius and soleus before inserting on the medial aspect of the calcaneus — sometimes merging with the Achilles (calcaneal) tendon. Its long slender tendon is favoured as a graft material for tendon and ligament reconstruction procedures."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_107",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "First and second lumbricals (unipennate) — median nerve; third and fourth (bipennate) — ulnar nerve",
+    "acceptableAlternatives": ["lateral two median nerve medial two ulnar nerve", "1st 2nd median 3rd 4th ulnar"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_nerves",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "The four lumbricals of the hand have a split innervation. How are they divided between the median and ulnar nerves, and how does this correlate with their pennation pattern?",
+    "explanation": "The first and second (radial) lumbricals are unipennate and innervated by the median nerve. The third and fourth (ulnar) lumbricals are bipennate and innervated by the deep branch of the ulnar nerve. This split mirrors the split innervation of flexor digitorum profundus (median nerve for digits 2–3, ulnar nerve for digits 4–5). Ulnar nerve palsy therefore causes clawing predominantly in digits 4 and 5, where lumbrical action is lost.",
+    "visualDescription": "Pixel art palmar hand with the first and second lumbricals coloured blue (median nerve) and third and fourth coloured yellow (ulnar nerve), with unipennate and bipennate fibre patterns shown",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumbricals_of_the_hand",
+    "volatile": false,
+    "distractors": ["All four by the ulnar nerve", "All four by the median nerve", "First by radial nerve, others by median nerve", "All four by the anterior interosseous nerve", "Lateral three median, medial one ulnar", "First and third by median, second and fourth by ulnar"],
+    "variants": [
+      {
+        "quizQuestion": "Why is clawing in ulnar nerve palsy worse in digits 4 and 5 than digits 2 and 3 ('ulnar paradox')?",
+        "correctAnswer": "Digits 2 and 3 still have intact median-innervated lumbricals to balance the extrinsic flexors at the MCP joint",
+        "explanation": "The 'ulnar paradox': a high ulnar nerve lesion (above elbow, also losing FDP to digits 4–5) causes less clawing than a low lesion (at wrist, FDP intact). Digits 2–3 escape severe clawing because their lumbricals are median-innervated. In digits 4–5, both FDP and the third/fourth lumbricals are ulnar — so MCP extension and IP extension are both lost, producing maximal claw deformity."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_108",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Iliococcygeus",
+    "acceptableAlternatives": ["iliococcygeus muscle"],
+    "chainThemeId": "pelvic_floor_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 5,
+    "quizQuestion": "Which component of levator ani is the most lateral, arising from the tendinous arch of the obturator fascia and the ischial spine, and inserting on the coccyx and anococcygeal body?",
+    "explanation": "Iliococcygeus is the lateral sheet of levator ani. It arises from the inner side of the ischium and the posterior part of the tendinous arch of the obturator fascia (arcus tendineus levator ani), and inserts on the coccyx and the anococcygeal raphe. It is typically the thinnest and most tendinous of the three levator ani components. Together with coccygeus it forms the posterior pelvic floor.",
+    "visualDescription": "Pixel art inferior pelvic view with iliococcygeus highlighted as the lateral fan-shaped component of levator ani, from the arcus tendineus to the coccyx and anococcygeal body",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Levator_ani",
+    "volatile": false,
+    "distractors": ["Pubococcygeus", "Puborectalis", "Coccygeus", "Obturator internus", "Piriformis", "Ischiocavernosus"],
+    "variants": [
+      {
+        "quizQuestion": "The pubococcygeus component of levator ani is sometimes described as a 'hammock.' From which bone does it originate, and to which does it insert?",
+        "correctAnswer": "From the pubic bone; inserts on the coccyx",
+        "explanation": "Pubococcygeus runs from the posterior surface of the pubic body to the coccyx, forming a hammock-like sling. In females it also forms the pubovaginalis (surrounds the vagina) and in males the puboprostaticus (wraps around the prostate). It is the most medial and clinically significant levator ani component — the one most targeted by pelvic floor exercises."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_109",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Semispinalis capitis",
+    "acceptableAlternatives": ["semispinalis capitis muscle"],
+    "chainThemeId": "deep_back_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which part of the semispinalis group forms the large muscle mass of the posterior neck (the 'nuchal' muscle), arising from the upper six thoracic and lower four cervical transverse processes and inserting on the occipital bone between the superior and inferior nuchal lines?",
+    "explanation": "Semispinalis capitis is the largest and most superficial part of the semispinalis group. It arises from the transverse processes of C4–T6 and inserts on the occipital bone between the superior and inferior nuchal lines. It extends and ipsilaterally rotates the head (pulls the occiput back to look upward). The other divisions are semispinalis cervicis (T1–T5 transverse processes → C2–C5 spinous processes) and semispinalis thoracis (T6–T10 transverse processes → C6–T4 spinous processes).",
+    "visualDescription": "Pixel art posterior neck showing semispinalis capitis as the broad, thick muscle mass filling the nuchal region, with fibres running from upper thoracic transverse processes up to the occipital bone",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Semispinalis_muscles",
+    "volatile": false,
+    "distractors": ["Splenius capitis", "Trapezius (descending part)", "Multifidus", "Longissimus capitis", "Rectus capitis posterior major", "Semispinalis cervicis"],
+    "variants": [
+      {
+        "quizQuestion": "Semispinalis muscles are part of the transversospinalis group. Unlike the erector spinae which run vertically, in which direction do transversospinalis fibres run?",
+        "correctAnswer": "Inferomedial to superolateral — from transverse processes below to spinous processes above",
+        "explanation": "All transversospinalis muscles (semispinalis, multifidus, rotatores) run obliquely from transverse processes of lower vertebrae to spinous processes of higher vertebrae — i.e., they cross from lateral-below to medial-above. This oblique orientation makes them effective at vertebral rotation (contralateral rotation) as well as extension, in contrast to the more vertically running erector spinae."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_110",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Flexes MCP joint and extends both IP joints simultaneously",
+    "acceptableAlternatives": ["MCP flexion with IP extension", "flex metacarpophalangeal extend interphalangeal"],
+    "chainThemeId": "hand_intrinsic_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "The lumbricals and interossei produce a paradoxical action at the fingers — they simultaneously work on two different joints in opposite directions. What is this combined action?",
+    "explanation": "Lumbricals and interossei flex the metacarpophalangeal (MCP) joints and simultaneously extend the proximal and distal interphalangeal (PIP and DIP) joints — through the extensor hood mechanism. This combination (intrinsic-plus position) is the position of function of the hand (used in splinting). It is achieved because the muscles pass volar to the MCP axis (flexing it) but connect to the extensor hood dorsal to the IP joint axes (extending them).",
+    "visualDescription": "Pixel art lateral finger diagram showing a lumbrical muscle passing palmar to the MCP axis and inserting into the extensor hood dorsal to the IP joints, with arrows showing MCP flexion and IP extension simultaneously",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumbricals_of_the_hand",
+    "volatile": false,
+    "distractors": ["Extends MCP and flexes IP joints (intrinsic-minus position)", "Flexes all finger joints together", "Extends all finger joints together", "Abducts at MCP and flexes at PIP", "Rotates the proximal phalanx", "Flexes DIP only via lateral slips"],
+    "variants": [
+      {
+        "quizQuestion": "The 'intrinsic-plus' hand position used in hand splinting refers to what specific joint configuration, which stretches the intrinsic muscles maximally?",
+        "correctAnswer": "MCP joints flexed, IP joints extended",
+        "explanation": "The intrinsic-plus position (MCP flexion + IP extension) is the position that maximally stretches the intrinsic muscles (lumbricals and interossei) and their lateral bands. Splinting in this position prevents contracture of the intrinsic muscles and extensor hood. Conversely, intrinsic-minus (MCP extension + IP flexion) is the claw position that develops when intrinsic function is lost."
+      }
+    ]
+  }
+]

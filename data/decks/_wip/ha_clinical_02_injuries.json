@@ -1,0 +1,932 @@
+[
+  {
+    "id": "ha_clinical_031",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Anterior compartment of the leg",
+    "acceptableAlternatives": ["anterior leg compartment", "anterior compartment"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "anatomical_compartments",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Acute compartment syndrome most commonly affects which compartment?",
+    "explanation": "The anterior compartment of the leg is the most frequent site of acute compartment syndrome. It contains tibialis anterior, extensor digitorum longus, extensor hallucis longus, and the deep peroneal nerve — tight unyielding fascia means even modest pressure rises rapidly reach the threshold for ischaemia. Treatment is emergency four-compartment fasciotomy.",
+    "visualDescription": "Pixel art cross-section of lower leg: four compartments labelled, anterior compartment highlighted red with pressure arrows, deep peroneal nerve glowing inside",
+    "sourceName": "StatPearls — Fasciotomy",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK556153/",
+    "volatile": false,
+    "distractors": ["Lateral compartment", "Superficial posterior compartment", "Deep posterior compartment", "Anterior thigh compartment", "Medial compartment of thigh"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient with a tibial fracture develops the '6 P's' — pain, pressure, pulselessness, paralysis, paresthesia, and pallor. What is the emergency treatment?",
+        "correctAnswer": "Fasciotomy (urgent surgical release of compartment fascia)",
+        "distractors": ["Splinting and elevation only", "IV antibiotics and observation", "Compression bandage and analgesia"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ compartment of the leg is most commonly affected by acute compartment syndrome.",
+        "correctAnswer": "Anterior",
+        "distractors": ["Lateral", "Superficial posterior", "Deep posterior"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_032",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Axillary nerve",
+    "acceptableAlternatives": ["the axillary nerve"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "peripheral_nerves",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Anterior shoulder dislocation — which accounts for 95% of all shoulder dislocations — puts which nerve most at risk?",
+    "explanation": "In anterior dislocation the humeral head translates anteriorly and inferiorly, placing direct traction on the axillary nerve as it winds around the surgical neck of the humerus. The axillary nerve innervates deltoid and teres minor and supplies sensation to the 'regimental badge' area (lateral upper arm). Clinical check: test deltoid contraction and lateral shoulder sensation immediately after reduction.",
+    "visualDescription": "Pixel art shoulder girdle: humeral head displaced anteriorly, axillary nerve highlighted orange at surgical neck, 'regimental badge' sensory patch outlined",
+    "sourceName": "StatPearls — Anterior Glenohumeral Joint Dislocation",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557862/",
+    "volatile": false,
+    "distractors": ["Radial nerve", "Median nerve", "Ulnar nerve", "Musculocutaneous nerve", "Suprascapular nerve"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "After reduction of an anterior shoulder dislocation, the patient cannot abduct the shoulder and has numbness over the lateral arm. Which nerve is injured?",
+        "correctAnswer": "Axillary nerve",
+        "distractors": ["Radial nerve", "Suprascapular nerve", "Long thoracic nerve", "Musculocutaneous nerve"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Anterior shoulder dislocation accounts for approximately ___% of all glenohumeral dislocations.",
+        "correctAnswer": "95",
+        "distractors": ["75", "50", "60", "85"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_033",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Intracapsular fractures (femoral neck)",
+    "acceptableAlternatives": ["intracapsular hip fractures", "femoral neck fractures"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "fracture_types",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Hip fractures are classified as intracapsular or extracapsular. Which type carries the higher risk of avascular necrosis of the femoral head?",
+    "explanation": "The blood supply to the femoral head (primarily retinacular branches of the medial femoral circumflex artery running along the femoral neck) lies within the joint capsule. Intracapsular fractures tear these vessels, leaving only the small artery of the ligamentum teres. Extracapsular fractures (intertrochanteric, subtrochanteric) spare capsular vessels and rarely cause AVN. The Garden classification (I–IV) grades intracapsular fracture displacement; grades III–IV typically require arthroplasty.",
+    "visualDescription": "Pixel art proximal femur: joint capsule outlined, retinacular vessels running up femoral neck highlighted red, intracapsular fracture line severing them, femoral head shaded grey to indicate ischaemia risk",
+    "sourceName": "Geeky Medics — Intracapsular vs Extracapsular Hip Fractures",
+    "sourceUrl": "https://geekymedics.com/intracapsular-vs-extracapsular-hip-fractures/",
+    "volatile": false,
+    "distractors": ["Extracapsular fractures (intertrochanteric)", "Subtrochanteric fractures", "Femoral shaft fractures", "Stress fractures of the femoral neck", "Extracapsular fractures (subtrochanteric)"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "The Garden classification is used to grade which type of hip fracture, and why does grade IV carry the highest risk of avascular necrosis?",
+        "correctAnswer": "Femoral neck (intracapsular) fractures; Grade IV is fully displaced, completely disrupting retinacular blood vessels",
+        "distractors": ["Intertrochanteric fractures; displacement tears the ilio-femoral ligament", "Subtrochanteric fractures; comminution blocks fixation devices", "Pubic rami fractures; proximity to obturator vessels"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ artery provides the main blood supply to the femoral head via retinacular branches running along the femoral neck.",
+        "correctAnswer": "Medial femoral circumflex",
+        "distractors": ["Lateral femoral circumflex", "Obturator", "Superior gluteal", "Inferior gluteal"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_034",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Anterior talofibular ligament (ATFL)",
+    "acceptableAlternatives": ["ATFL", "anterior talofibular"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "ligaments",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Forced inversion of the ankle most commonly tears which ligament?",
+    "explanation": "The anterior talofibular ligament (ATFL) runs from the anterior border of the lateral malleolus to the lateral talar neck. It is the weakest of the lateral ankle ligaments and resists inversion and plantar-flexion. It is injured first in approximately 66–85% of lateral ankle sprains. With greater force the calcaneofibular ligament (CFL) tears next, then the posterior talofibular ligament (PTFL).",
+    "visualDescription": "Pixel art lateral ankle: fibula, talus, calcaneus visible; ATFL highlighted red, CFL and PTFL shown in grey; inversion arrow applied to foot",
+    "sourceName": "StatPearls — Acute Ankle Sprain",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459212/",
+    "volatile": false,
+    "distractors": ["Calcaneofibular ligament", "Posterior talofibular ligament", "Deltoid ligament", "Spring (calcaneonavicular) ligament", "Tibiofibular syndesmosis"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A footballer rolls their ankle inward. On examination there is tenderness at the anterior inferior fibula and talar neck. Which structure is most likely torn?",
+        "correctAnswer": "Anterior talofibular ligament (ATFL)",
+        "distractors": ["Calcaneofibular ligament", "Posterior talofibular ligament", "Peroneus brevis tendon", "Deltoid ligament"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ATFL connects the anterior border of the ___ to the neck of the talus.",
+        "correctAnswer": "Lateral malleolus (fibula)",
+        "distractors": ["Medial malleolus", "Calcaneus", "Navicular", "Cuboid"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_035",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "2–4 times higher than males",
+    "acceptableAlternatives": ["2 to 4 times greater", "2–4x higher in females", "females have 2-4x higher risk"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_statistics",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Female athletes tear their ACL at what rate compared with males playing the same sports?",
+    "explanation": "Female ACL injury incidence is estimated at 2–4 times higher than males in matched sports. Contributing factors include a narrower intercondylar notch, wider Q-angle, smaller ACL cross-sectional area, greater posterior tibial slope, and neuromuscular differences — females land with greater knee valgus and lower flexion angles. The classic mechanism is a non-contact pivot-shift: the knee is slightly flexed, loaded in valgus, with tibial internal rotation.",
+    "visualDescription": "Pixel art knee joint: ACL fibres highlighted, intercondylar notch narrow, valgus collapse arrow on knee, female silhouette landing",
+    "sourceName": "PMC — Non-contact ACL Injuries: Mechanisms and Risk Factors",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3625971/",
+    "volatile": false,
+    "distractors": ["Equal rates in males and females", "1.5 times higher in females", "5–8 times higher in females", "Males have higher ACL injury rates", "10 times higher in females"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A female footballer hears a 'pop' while cutting and pivoting without contact, then has immediate swelling. What is the most likely injury and the classic mechanism?",
+        "correctAnswer": "ACL tear; non-contact pivot-shift with valgus loading and tibial internal rotation",
+        "distractors": ["Medial meniscus tear; direct valgus blow", "PCL tear; posterior tibial force with knee flexed", "MCL sprain; pure valgus stress"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ACL runs from the ___ tibial plateau to attach on the medial wall of the lateral femoral condyle.",
+        "correctAnswer": "Anterior intercondylar area",
+        "distractors": ["Posterior intercondylar area", "Medial tibial plateau", "Lateral tibial plateau", "Tibial tuberosity"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_036",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Medial meniscus",
+    "acceptableAlternatives": ["the medial meniscus"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "anatomical_structures",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Meniscal tears are twice as common on which side of the knee?",
+    "explanation": "Medial meniscus tears outnumber lateral tears approximately 2:1. The medial meniscus is more firmly attached to the medial capsule and medial collateral ligament, giving it less mobility to escape shear forces. The McMurray test (rotation with compression of the flexed knee) produces a palpable click or pain over the joint line. A bucket-handle tear can produce a 'locked knee' — inability to fully extend due to the torn flap displacing into the intercondylar notch.",
+    "visualDescription": "Pixel art superior knee cross-section: medial and lateral menisci visible, medial meniscus highlighted red with tear line, McMurray test examiner silhouette",
+    "sourceName": "Physiopedia — McMurray's Test",
+    "sourceUrl": "https://www.physio-pedia.com/McMurrays_Test",
+    "volatile": false,
+    "distractors": ["Lateral meniscus", "Both are torn equally often", "Lateral is 3 times more common", "Neither — discoid meniscus tears are most common"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient cannot fully extend their knee and has joint-line tenderness. Imaging shows a bucket-handle meniscal tear. What anatomical structure displaced to block extension?",
+        "correctAnswer": "Torn meniscal flap displaced into the intercondylar notch",
+        "distractors": ["Anterior cruciate ligament stump", "Medial collateral ligament", "Osteochondral loose body from the patellar groove"]
+      },
+      {
+        "type": "reverse",
+        "question": "The McMurray test detects meniscal tears. How is the medial meniscus stressed during the test?",
+        "correctAnswer": "External tibial rotation with valgus stress and knee extension from full flexion",
+        "distractors": ["Internal tibial rotation with varus stress", "Anterior tibial drawer with knee at 90°", "Passive straight-leg raise with dorsiflexion"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_037",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Extensor carpi radialis brevis (ECRB)",
+    "acceptableAlternatives": ["ECRB tendon", "extensor carpi radialis brevis tendon"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "tendons_muscles",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Tennis elbow (lateral epicondylitis) is primarily a degenerative condition of which tendon at the lateral epicondyle?",
+    "explanation": "Lateral epicondylitis is an overuse tendinopathy of the common extensor tendon, with the extensor carpi radialis brevis (ECRB) almost always the primary site of pathology. ECRB originates from the lateral epicondyle and inserts at the base of the 3rd metacarpal, acting as the prime wrist dorsiflexor. Histology shows angiofibroblastic degeneration (fibroblasts, vascular hyperplasia, disorganised collagen) rather than true inflammation — hence the preferred term 'tendinopathy' over 'itis'.",
+    "visualDescription": "Pixel art lateral elbow: lateral epicondyle highlighted, ECRB tendon origin shown in red with degenerative fibres, forearm extensors labelled",
+    "sourceName": "StatPearls — Lateral Epicondylitis (Tennis Elbow)",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK431092/",
+    "volatile": false,
+    "distractors": ["Extensor digitorum communis", "Extensor carpi ulnaris", "Extensor carpi radialis longus", "Extensor pollicis brevis", "Anconeus"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A tennis player has pain at the lateral epicondyle that worsens with resisted wrist extension. What structure is affected and what does biopsy typically show?",
+        "correctAnswer": "ECRB tendon; angiofibroblastic degeneration with fibroblasts and vascular hyperplasia — not inflammatory cells",
+        "distractors": ["Extensor digitorum communis; acute inflammatory infiltrate with neutrophils", "Radial nerve; demyelination at the radial tunnel", "Lateral ulnar collateral ligament; fibre disruption with oedema"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "ECRB (extensor carpi radialis brevis) originates at the lateral epicondyle and inserts at the base of the ___ metacarpal.",
+        "correctAnswer": "3rd (third)",
+        "distractors": ["2nd (second)", "4th (fourth)", "5th (fifth)", "1st (first)"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_038",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Common flexor tendon (flexor carpi radialis, pronator teres origin)",
+    "acceptableAlternatives": ["common flexor origin", "common flexor tendon at medial epicondyle"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "tendons_muscles",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Golfer's elbow (medial epicondylitis) involves degeneration of which tendon origin?",
+    "explanation": "Medial epicondylitis affects the common flexor tendon origin at the medial epicondyle — the shared origin of flexor carpi radialis, flexor carpi ulnaris, palmaris longus, flexor digitorum superficialis, and pronator teres. Overuse (gripping, throwing, wrist flexion) causes degenerative micro-tears. Pain is reproduced by resisted wrist flexion and pronation. The ulnar nerve (in the cubital tunnel just posterior) may also be irritated, causing ring/little-finger tingling.",
+    "visualDescription": "Pixel art medial elbow: medial epicondyle highlighted, common flexor tendon origin shown in red, ulnar nerve in cubital tunnel visible posteriorly",
+    "sourceName": "Wikipedia — Tennis elbow (medial variant section)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tennis_elbow",
+    "volatile": false,
+    "distractors": ["Extensor carpi radialis brevis tendon", "Biceps tendon at radial tuberosity", "Triceps tendon at olecranon", "Brachioradialis origin at lateral supracondylar ridge"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A golfer has medial elbow pain worsened by resisted wrist flexion and tingling in the ring and little fingers. What two structures are likely affected?",
+        "correctAnswer": "Common flexor tendon (medial epicondylitis) and ulnar nerve in the cubital tunnel",
+        "distractors": ["ECRB tendon and radial nerve in radial tunnel", "Biceps tendon and musculocutaneous nerve", "UCL and median nerve in the cubital fossa"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The common flexor tendon of the medial epicondyle is the shared origin of flexor carpi radialis, flexor carpi ulnaris, palmaris longus, FDS, and ___.",
+        "correctAnswer": "Pronator teres",
+        "distractors": ["Supinator", "Flexor pollicis longus", "Brachioradialis", "Extensor carpi ulnaris"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_039",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Long thoracic nerve (C5, C6, C7)",
+    "acceptableAlternatives": ["long thoracic nerve", "nerve to serratus anterior"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "peripheral_nerves",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Winging of the scapula — the medial border lifting off the chest wall — results from injury to which nerve?",
+    "explanation": "The long thoracic nerve (C5–C7) arises from the brachial plexus roots, runs along the mid-axillary line on the chest wall, and innervates serratus anterior. Serratus anterior protracts the scapula and holds it flush against the thorax. When paralysed, the rhomboids and trapezius pull the medial scapular border posteriorly, producing the characteristic 'wing'. Causes include mastectomy, chest-drain insertion, first-rib resection, and heavy backpack straps.",
+    "visualDescription": "Pixel art posterior thorax: scapula with medial border lifted (winged) highlighted; long thoracic nerve tracing from C5-C7 to serratus anterior muscle on lateral chest wall",
+    "sourceName": "StatPearls — Anatomy, Thorax, Long Thoracic Nerve",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK535396/",
+    "volatile": false,
+    "distractors": ["Accessory nerve (CN XI)", "Dorsal scapular nerve", "Suprascapular nerve", "Axillary nerve", "Thoracodorsal nerve"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "After a left mastectomy a patient cannot push against a wall without her left scapula winging. Which muscle is paralysed and what nerve was damaged?",
+        "correctAnswer": "Serratus anterior; long thoracic nerve",
+        "distractors": ["Trapezius; accessory nerve (CN XI)", "Rhomboids; dorsal scapular nerve", "Teres major; lower subscapular nerve"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The long thoracic nerve innervates serratus anterior and arises from cervical roots ___.",
+        "correctAnswer": "C5, C6, C7",
+        "distractors": ["C4, C5, C6", "C6, C7, C8", "C5, C6, T1", "C7, C8, T1"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_040",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Common fibular (peroneal) nerve at the fibular neck",
+    "acceptableAlternatives": ["common peroneal nerve at fibular neck", "common fibular nerve", "common peroneal nerve"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "peripheral_nerves",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Foot drop — inability to dorsiflex the foot — typically results from injury to which nerve at which anatomical site?",
+    "explanation": "The common fibular nerve winds around the fibular neck, just below the lateral knee, where it is superficial and easily compressed or injured. Damage here interrupts the deep fibular branch (tibialis anterior → dorsiflexion) and the superficial fibular branch (peroneus longus/brevis → eversion). The patient walks with a high-stepping 'steppage' gait to clear the dropped foot. Common causes: tight plaster cast, prolonged leg-crossing, or fibular neck fracture.",
+    "visualDescription": "Pixel art lateral knee and proximal leg: fibula neck highlighted, common fibular nerve wrapping around it in orange, tibialis anterior and peroneus muscles indicated, foot hanging in plantar flexion",
+    "sourceName": "StatPearls — Peroneal Nerve Injury",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK549859/",
+    "volatile": false,
+    "distractors": ["Tibial nerve at the ankle", "Sciatic nerve in the gluteal region", "Deep fibular nerve in the anterior tarsal tunnel", "Femoral nerve in the femoral triangle", "Superficial fibular nerve at the ankle"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient in a long-leg cast develops foot drop after 2 weeks. Which nerve was compressed, and why is that anatomical site vulnerable?",
+        "correctAnswer": "Common fibular nerve at fibular neck — superficial position against bone makes it vulnerable to external compression",
+        "distractors": ["Tibial nerve at medial malleolus — pressure from tight bandaging at the ankle", "Femoral nerve at inguinal ligament — tight cast edge at the groin", "Sural nerve at the lateral ankle — superficial course over lateral malleolus"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "After common fibular nerve injury, the patient develops a ___ gait to compensate for the dropped foot.",
+        "correctAnswer": "Steppage (high-stepping)",
+        "distractors": ["Trendelenburg", "Scissor", "Waddling", "Antalgic"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_041",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Spiral groove of the humerus",
+    "acceptableAlternatives": ["radial groove of the humerus", "humeral spiral groove"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "anatomical_landmarks",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Wrist drop (loss of wrist and finger extension) occurs after injury to the radial nerve — most often damaged at which anatomical site?",
+    "explanation": "The radial nerve runs in the spiral groove (radial groove) on the posterior humeral shaft, tightly bound to bone. A mid-shaft humeral fracture — or compression ('Saturday night palsy') with the arm draped over a chair — damages the nerve here. Triceps is typically spared (branch leaves before the groove), but brachioradialis, wrist extensors, and finger extensors are lost. Sensory loss covers the dorsal forearm and dorsal hand.",
+    "visualDescription": "Pixel art posterior humerus: spiral groove highlighted, radial nerve winding through it in orange, mid-shaft fracture line, hand shown in characteristic wrist-drop position",
+    "sourceName": "StatPearls — Radial Nerve Injury",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537304/",
+    "volatile": false,
+    "distractors": ["Axilla", "Lateral epicondyle (radial tunnel)", "Posterior interosseous canal", "Wrist (superficial branch)", "Cubital fossa"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient wakes with wrist drop after falling asleep drunk with their arm over a chair back. Triceps is intact. Which nerve and site are affected?",
+        "correctAnswer": "Radial nerve in the spiral groove of the humerus — triceps branch arises proximal to the groove",
+        "distractors": ["Radial nerve in the axilla — triceps branch exits after the axillary injury", "Posterior interosseous nerve at the radial tunnel — wrist extension preserved", "Ulnar nerve at the spiral groove — wrist extensors not ulnar innervated"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Radial nerve injury in the spiral groove typically spares ___ because its motor branch exits proximal to the groove.",
+        "correctAnswer": "Triceps",
+        "distractors": ["Brachioradialis", "Extensor carpi radialis longus", "Extensor digitorum", "Supinator"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_042",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Loss of ulnar lumbricals and interossei → MCP hyperextension, IP flexion of 4th and 5th digits",
+    "acceptableAlternatives": ["ulnar claw hand", "claw hand deformity", "intrinsic minus hand"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_deformities",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Ulnar nerve injury causes 'claw hand'. What is the anatomical mechanism?",
+    "explanation": "The ulnar nerve innervates the 3rd and 4th lumbricals plus all interossei. These intrinsic muscles normally flex the MCP joints and extend the IP joints. Without them, the long finger extensors hyperextend MCPs and the long flexors (FDP, innervated by ulnar nerve) flex the IPs — producing clawing of the 4th and 5th digits. The 2nd and 3rd digits are less affected because their lumbricals are median-innervated. Paradoxically, a distal (low) ulnar palsy causes worse clawing than a proximal one because FDP (which drives IP flexion) is also lost in high lesions.",
+    "visualDescription": "Pixel art hand: 4th and 5th digits clawed — MCP joints hyperextended, PIP and DIP flexed; ulnar nerve tract highlighted, lumbrical muscles absent",
+    "sourceName": "Wikipedia — Ulnar claw",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ulnar_claw",
+    "volatile": false,
+    "distractors": ["Loss of thenar muscles → thumb adduction and flattening", "Loss of FDS tendons → inability to flex PIP joints", "Loss of extensor digitorum → all fingers dropped", "Loss of flexor digitorum profundus → inability to flex DIP joints only"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A low ulnar nerve palsy produces more pronounced clawing than a high ulnar palsy. Why?",
+        "correctAnswer": "In high palsy FDP is also lost, reducing the IP flexion drive; low palsy preserves FDP so IP flexion is powerful, worsening the claw",
+        "distractors": ["High palsy spares the interossei at the wrist level", "Low palsy additionally damages the radial nerve branches", "High palsy always involves the median nerve, which partially compensates"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ulnar claw primarily affects the ___ and ___ digits because their lumbricals are innervated by the ulnar nerve.",
+        "correctAnswer": "4th (ring) and 5th (little)",
+        "distractors": ["1st and 2nd", "2nd and 3rd", "3rd and 4th", "All five digits equally"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_043",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Loss of thenar muscles (opponens pollicis, APB, FPB) → thumb lies flat in plane of palm",
+    "acceptableAlternatives": ["ape hand deformity", "median nerve thenar palsy", "loss of thumb opposition"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_deformities",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Median nerve injury causes 'ape hand'. What is the anatomical basis of this deformity?",
+    "explanation": "The recurrent motor branch of the median nerve (arising just distal to the carpal tunnel) innervates the thenar eminence: opponens pollicis, abductor pollicis brevis (APB), and flexor pollicis brevis (superficial head). These muscles rotate and abduct the thumb into opposition. Without them, adductor pollicis (ulnar nerve) and the thumb extensors pull the thumb flat into the plane of the palm — mimicking a primate hand where the thumb is not opposable.",
+    "visualDescription": "Pixel art hand: thumb adducted and lying flat against the index finger, thenar eminence wasted; median nerve recurrent branch highlighted, APB and opponens absent",
+    "sourceName": "Wikipedia — Ape hand deformity",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ape_hand_deformity",
+    "volatile": false,
+    "distractors": ["Loss of lumbricals → IP flexion with MCP hyperextension", "Loss of interossei → abduction deficit of all digits", "Loss of extensor pollicis longus → thumb flexion deformity", "Loss of FPL → inability to flex the thumb IP joint"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A patient cannot bring their thumb pad to touch their little finger pad. Thenar wasting is visible. Which nerve and which specific branch is damaged?",
+        "correctAnswer": "Median nerve — recurrent motor branch after the carpal tunnel",
+        "distractors": ["Ulnar nerve — deep branch at Guyon's canal", "Radial nerve — posterior interosseous nerve", "Median nerve — anterior interosseous nerve in the forearm"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The best single clinical test for median nerve motor dysfunction at the wrist is weakness of ___.",
+        "correctAnswer": "Abductor pollicis brevis (APB)",
+        "distractors": ["Opponens pollicis", "Flexor pollicis brevis", "Adductor pollicis", "Extensor pollicis brevis"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_044",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Head tilts to the affected (contracted) side; chin rotates to the opposite side",
+    "acceptableAlternatives": ["tilt to same side, rotation to opposite", "ipsilateral tilt, contralateral rotation"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_signs",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "In torticollis from unilateral SCM contracture, how does the head posture change?",
+    "explanation": "Sternocleidomastoid (SCM) has two actions: it tilts the head toward the same side (ipsilateral lateral flexion) and rotates the chin toward the opposite side (contralateral rotation). A contracted right SCM therefore tilts the head toward the right and rotates the chin toward the left. The palpable tight band or mass confirms the affected side. Most congenital cases respond to physiotherapy stretching within the first year of life.",
+    "visualDescription": "Pixel art neck and head: right SCM contracted and thickened (highlighted red), head tilted right, chin pointing left, sternum and clavicle attachment visible",
+    "sourceName": "StatPearls — Torticollis",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK539857/",
+    "volatile": false,
+    "distractors": ["Head tilts to the opposite side; chin rotates to the affected side", "Head tilts forward; chin tucks to chest", "Head tilts to the affected side; chin rotates to the same side", "No tilt; pure rotation to affected side"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A 3-week-old infant has head tilting to the right with chin pointing left, and a firm mass is palpable in the right neck. What is the diagnosis and first-line treatment?",
+        "correctAnswer": "Congenital muscular torticollis (right SCM); passive stretching physiotherapy",
+        "distractors": ["Atlantoaxial subluxation; cervical collar and surgical referral", "Klippel-Feil syndrome; spinal fusion assessment", "Cervical lymphadenopathy; antibiotics"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "SCM contracts to rotate the chin ___ and tilt the head ___.",
+        "correctAnswer": "Contralaterally (to the opposite side); ipsilaterally (to the same side)",
+        "distractors": ["Ipsilaterally; contralaterally", "Posteriorly; anteriorly", "Contralaterally; posteriorly"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_045",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "First step in the morning (or after prolonged rest)",
+    "acceptableAlternatives": ["first morning steps", "after periods of inactivity", "on rising after rest"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_signs",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Plantar fasciitis produces heel pain classically worst at which time?",
+    "explanation": "During sleep the plantar fascia shortens in slight foot flexion. The first weight-bearing steps abruptly stretch the tight, degenerated fascia from its origin at the medial calcaneal tubercle, tearing apart already-damaged fibres — causing intense 'first-step pain'. Pain typically eases with further walking as the tissue warms up and lengthens, then may return after prolonged activity. Despite the '-itis' name, biopsy shows degenerative fibres without inflammatory infiltrate.",
+    "visualDescription": "Pixel art foot: plantar fascia running from calcaneal tubercle to toes highlighted red, 'morning step' arrow, heel bone labeled",
+    "sourceName": "Mayo Clinic — Plantar Fasciitis",
+    "sourceUrl": "https://www.mayoclinic.org/diseases-conditions/plantar-fasciitis/symptoms-causes/syc-20354846",
+    "volatile": false,
+    "distractors": ["During maximum physical activity", "At rest with leg elevated", "After swimming or cycling", "Exclusively at night in bed", "Only during the first week after injury"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A runner has sharp heel pain on the first steps out of bed each morning, improving with walking. Tenderness is at the medial calcaneal tubercle. What is the diagnosis and its anatomical origin?",
+        "correctAnswer": "Plantar fasciitis — degeneration of plantar fascia at its medial calcaneal tubercle origin",
+        "distractors": ["Achilles tendinopathy — degeneration of Achilles at calcaneal insertion", "Calcaneal stress fracture — trabecular failure of calcaneus body", "Tarsal tunnel syndrome — tibial nerve compression under flexor retinaculum"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The plantar fascia originates at the ___ of the calcaneus.",
+        "correctAnswer": "Medial calcaneal tubercle",
+        "distractors": ["Lateral calcaneal tubercle", "Calcaneal tuberosity (posterior)", "Sustentaculum tali", "Navicular tuberosity"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_046",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "A1 pulley at the metacarpal head",
+    "acceptableAlternatives": ["A1 pulley", "first annular pulley"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "anatomical_structures",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "In trigger finger (stenosing tenosynovitis), a nodule on the flexor tendon catches on which structure?",
+    "explanation": "The A1 pulley sits at the base of each finger, overlying the metacarpal head. In stenosing tenosynovitis, repetitive mechanical stress causes reactive thickening of the flexor tendon sheath and a palpable nodule on the tendon surface. As the finger flexes, the nodule passes through the A1 pulley; on extension it catches, causing a painful snap ('trigger'). In locked trigger finger the digit remains fixed in flexion. Injection into the tendon sheath or surgical A1 pulley release are effective treatments.",
+    "visualDescription": "Pixel art sagittal finger cross-section: flexor tendon with nodule trying to pass through A1 pulley at metacarpal head; snapping arrow and A1 label",
+    "sourceName": "StatPearls — Trigger Finger",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459310/",
+    "volatile": false,
+    "distractors": ["A2 pulley over the proximal phalanx", "A4 pulley at the middle phalanx", "Flexor retinaculum at the wrist", "Palmar aponeurosis", "C1 (cruciform) pulley"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Treatment options for trigger finger include corticosteroid injection into which space?",
+        "correctAnswer": "The flexor tendon sheath (at the A1 pulley level)",
+        "distractors": ["The MCP joint cavity", "The carpal tunnel", "The palmar bursa (radial and ulnar bursae)"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The A1 pulley lies at the level of the ___ head.",
+        "correctAnswer": "Metacarpal",
+        "distractors": ["Proximal phalanx", "Middle phalanx", "Distal phalanx", "Carpal bones"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_047",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Extensor pollicis brevis (EPB) and abductor pollicis longus (APL) in the first dorsal compartment",
+    "acceptableAlternatives": ["EPB and APL tendons", "abductor pollicis longus and extensor pollicis brevis"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "tendons_muscles",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "De Quervain's tenosynovitis affects which two tendons in the first dorsal compartment of the wrist?",
+    "explanation": "De Quervain's tenosynovitis is stenosing tenosynovitis of the first dorsal wrist compartment, which contains the abductor pollicis longus (APL) and extensor pollicis brevis (EPB). These tendons are compressed as they pass under the extensor retinaculum. Pain is elicited by the Finkelstein test: the thumb is tucked into the fist and the wrist is ulnar-deviated, maximally stretching and impinging the two tendons. Common in new mothers ('new-mother's wrist') from repetitive lifting.",
+    "visualDescription": "Pixel art dorsal wrist: first extensor compartment highlighted, APL and EPB tendons labelled in red, anatomical snuffbox outline, Finkelstein test position shown",
+    "sourceName": "StatPearls — Finkelstein Sign",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK539768/",
+    "volatile": false,
+    "distractors": ["Extensor pollicis longus (EPL) and extensor carpi radialis brevis (ECRB)", "Extensor carpi radialis longus and brevis (2nd compartment)", "Extensor indicis and extensor digitorum (4th compartment)", "Extensor digiti minimi (5th compartment)"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Finkelstein test is positive in De Quervain's. How is it performed?",
+        "correctAnswer": "Thumb enclosed in fist, wrist ulnar-deviated — reproduces pain at the radial styloid/first dorsal compartment",
+        "distractors": ["Resisted wrist extension at the lateral epicondyle", "Passive wrist flexion held for 60 seconds (Phalen's)", "Tapping over the volar carpal ligament (Tinel's)"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "De Quervain's tenosynovitis affects the ___ dorsal wrist compartment.",
+        "correctAnswer": "First (1st)",
+        "distractors": ["Second (2nd)", "Third (3rd)", "Fourth (4th)", "Sixth (6th)"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_048",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Progressive fibrosis and contracture of the palmar fascia — typically ring then little finger",
+    "acceptableAlternatives": ["palmar fascia fibrosis", "Dupuytren's disease of palmar aponeurosis"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "pathological_processes",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Dupuytren's contracture is caused by myofibroblastic proliferation in which structure, most often affecting which digits?",
+    "explanation": "Dupuytren's disease is a benign, progressive fibroproliferative disorder of the palmar fascia. Myofibroblasts produce excess type III collagen, forming hard nodules then longitudinal cords that tether the MCP and PIP joints into flexion. The ring finger is most often involved first, followed by the little finger, then occasionally middle and index. Risk factors include Northern European ancestry, male sex, diabetes, and alcohol use. Treatment (injection of collagenase, needle aponeurotomy, or surgery) cuts or dissolves the cords.",
+    "visualDescription": "Pixel art palm: thick cord of fibrotic palmar fascia pulling ring and little fingers into flexion, palmar nodule visible proximal to ring finger MCP joint",
+    "sourceName": "Wikipedia — Dupuytren's contracture",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dupuytren%27s_contracture",
+    "volatile": false,
+    "distractors": ["Degenerative arthritis of the IP joints — index and middle first", "Extensor tendon adhesions on the dorsum — all digits equally", "Palmar plate calcification — little finger only", "Ulnar nerve entrapment causing flexor tendon shortening"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A 65-year-old man of Scandinavian descent cannot fully straighten his ring finger due to a palpable cord in the palm. Sensation is intact. What is the diagnosis?",
+        "correctAnswer": "Dupuytren's contracture",
+        "distractors": ["Trigger finger", "Volar plate injury", "Flexor tendon adhesion post-trauma", "Ulnar nerve claw hand"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In Dupuytren's contracture, myofibroblasts produce excess ___ collagen, forming cords that flex the MCP and PIP joints.",
+        "correctAnswer": "Type III",
+        "distractors": ["Type I", "Type II", "Type IV", "Type V"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_049",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Prevents anterior translation of the tibia on the femur",
+    "acceptableAlternatives": ["resists anterior tibial translation", "prevents tibia sliding forward"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "ligament_functions",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the primary biomechanical function of the anterior cruciate ligament (ACL)?",
+    "explanation": "The ACL runs from the anterior intercondylar area of the tibia to the posterolateral wall of the intercondylar notch (medial surface of the lateral femoral condyle). Its primary role is resisting anterior tibial translation on the femur, especially at 30–90° of knee flexion. The Lachman test (anterior tibial drawer at 20–30° flexion) and anterior drawer test (at 90°) assess ACL integrity. A positive pivot-shift test confirms rotational instability.",
+    "visualDescription": "Pixel art sagittal knee: ACL fibres running from anterior tibia to posterior femur, anterior tibial translation arrow blocked by taut ACL, Lachman test examiner silhouette",
+    "sourceName": "StatPearls — Anatomy, Bony Pelvis and Lower Limb, Knee Anterior Cruciate Ligament",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559233/",
+    "volatile": false,
+    "distractors": ["Prevents posterior translation of the tibia on the femur", "Resists valgus stress on the knee", "Resists varus stress on the knee", "Prevents hyperextension of the knee"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Lachman test assesses ACL integrity. How is it performed and what constitutes a positive result?",
+        "correctAnswer": "Anterior drawer on the tibia with knee at 20–30° flexion; soft endpoint or >5 mm anterior translation is positive",
+        "distractors": ["Valgus stress at 30° flexion; medial joint line opening", "Posterior drawer at 90° flexion; posterior sag of tibia", "Knee flexion-rotation-extension; audible click"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ACL attaches on the tibia at the ___ intercondylar area and on the femur at the medial surface of the lateral condyle.",
+        "correctAnswer": "Anterior",
+        "distractors": ["Posterior", "Medial", "Lateral", "Central"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_050",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Prevents posterior translation of the tibia on the femur; classic mechanism is a direct blow to the anterior proximal tibia (dashboard injury)",
+    "acceptableAlternatives": ["resists posterior tibial translation", "prevents tibia sliding backward"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "ligament_functions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "What is the primary function of the PCL, and what is the classic injury mechanism?",
+    "explanation": "The posterior cruciate ligament (PCL) is the strongest knee ligament — approximately twice as strong as the ACL — and its primary role is preventing posterior tibial translation on the femur. The classic mechanism is a 'dashboard injury': in a motor vehicle collision, a flexed knee strikes the dashboard, driving the tibia posteriorly. The posterior sag sign (tibia sags posteriorly at 90° compared with the normal leg) and posterior drawer test confirm PCL injury.",
+    "visualDescription": "Pixel art sagittal knee: PCL fibres highlighted, posterior tibial translation arrow blocked; inset MVC scene with knee hitting dashboard",
+    "sourceName": "StatPearls — Posterior Cruciate Ligament Knee Injuries",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK430726/",
+    "volatile": false,
+    "distractors": ["Prevents anterior translation; mechanism is a pivot-shift landing", "Resists varus stress; mechanism is contact blow to medial knee", "Resists valgus stress; mechanism is lateral impact in sport", "Prevents hyperextension; mechanism is a forced extension kick"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A patient in a car crash has knee pain, a posterior sag sign at 90° flexion, and a positive posterior drawer. Which ligament is injured?",
+        "correctAnswer": "Posterior cruciate ligament (PCL)",
+        "distractors": ["Anterior cruciate ligament (ACL)", "Medial collateral ligament (MCL)", "Lateral collateral ligament (LCL)", "Posterolateral corner (PLC)"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The PCL is approximately ___ times as strong as the ACL.",
+        "correctAnswer": "2 (twice)",
+        "distractors": ["Equal in strength", "3 times", "0.5 times (it is weaker)", "4 times"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_051",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Medial collateral ligament (MCL)",
+    "acceptableAlternatives": ["MCL", "tibial collateral ligament"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "ligaments",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "The MCL resists valgus stress and is the most commonly injured knee ligament. What mechanism typically causes an MCL tear?",
+    "explanation": "The MCL (tibial collateral ligament) runs from the medial femoral epicondyle to the medial tibial metaphysis and provides approximately 78% of valgus restraint. MCL tears account for about 40% of all knee ligament injuries. The mechanism is a valgus force on the slightly bent knee — a direct blow to the lateral knee (contact), or a combined valgus–external rotation load (skiing). Most isolated MCL injuries heal without surgery; concomitant ACL or medial meniscus tears ('unhappy triad') require more complex management.",
+    "visualDescription": "Pixel art anterior knee: MCL on medial side highlighted red, valgus stress arrow from lateral, superficial and deep MCL layers shown, fibular head on lateral side",
+    "sourceName": "StatPearls — Medial Collateral Ligament Knee Injury",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK431095/",
+    "volatile": false,
+    "distractors": ["Lateral collateral ligament (LCL)", "Anterior cruciate ligament (ACL)", "Posterior cruciate ligament (PCL)", "Medial meniscus", "Patellar ligament"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "The 'unhappy triad' of knee injury involves which three structures?",
+        "correctAnswer": "ACL, MCL, and medial meniscus",
+        "distractors": ["ACL, PCL, and lateral meniscus", "MCL, LCL, and PCL", "ACL, PCL, and MCL"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The MCL provides approximately ___% of the valgus restraint of the knee.",
+        "correctAnswer": "78",
+        "distractors": ["50", "25", "90", "40"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_052",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Resists varus stress on the knee",
+    "acceptableAlternatives": ["resists varus force", "prevents varus angulation of the knee"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "ligament_functions",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What is the primary function of the lateral collateral ligament (LCL)?",
+    "explanation": "The LCL (fibular collateral ligament) runs from the lateral femoral epicondyle to the fibular head, resisting varus (bow-legged) stress at the knee. LCL injuries are less common than MCL injuries because direct varus loads are rare in everyday sport. The LCL is part of the posterolateral corner complex (with popliteus, popliteofibular ligament) — combined injuries cause posterolateral rotatory instability. Isolated LCL tears are tested with varus stress at both 0° and 30° flexion.",
+    "visualDescription": "Pixel art lateral knee: LCL cord running from lateral femoral epicondyle to fibular head highlighted; varus stress arrow applied to medial knee",
+    "sourceName": "Wikipedia — Lateral collateral ligament of knee joint",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lateral_collateral_ligament_of_knee_joint",
+    "volatile": false,
+    "distractors": ["Resists valgus stress", "Prevents anterior tibial translation", "Prevents posterior tibial translation", "Limits hyperextension of the knee", "Supports the medial meniscus"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A varus stress test at 30° of knee flexion shows lateral joint line opening. Which structure is disrupted?",
+        "correctAnswer": "Lateral collateral ligament (LCL)",
+        "distractors": ["Medial collateral ligament (MCL)", "Posterolateral corner (popliteus tendon)", "Anterior cruciate ligament (ACL)", "Posterior cruciate ligament (PCL)"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The LCL attaches proximally to the lateral femoral epicondyle and distally to the ___.",
+        "correctAnswer": "Fibular head",
+        "distractors": ["Lateral tibial condyle", "Lateral tibial tuberosity", "Gerdy's tubercle", "Posterior tibial plateau"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_053",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Supraspinatus tendon (and subacromial bursa) compressed under the coracoacromial arch",
+    "acceptableAlternatives": ["supraspinatus impingement", "subacromial impingement of supraspinatus"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "pathological_processes",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Rotator cuff impingement syndrome: which tendon is most commonly involved and where is it impinged?",
+    "explanation": "Supraspinatus passes through the subacromial space between the humeral head below and the coracoacromial arch (acromion + coracoacromial ligament + coracoid) above. Repeated overhead activity or decreased subacromial space traps it, causing pain at 60–120° of abduction (the 'painful arc'). Two provocative tests: the Neer test (arm passively forward-flexed, impinges tendon against anterior acromion) and the Hawkins–Kennedy test (90° flexion, internal rotation — drives supraspinatus under coracoacromial ligament).",
+    "visualDescription": "Pixel art coronal shoulder: supraspinatus tendon highlighted red between humeral head and acromion; Neer and Hawkins-Kennedy test positions inset",
+    "sourceName": "PMC — Tests for diagnosing subacromial impingement syndrome",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4935057/",
+    "volatile": false,
+    "distractors": ["Infraspinatus at the posterior glenoid rim", "Subscapularis in the subcoracoid space", "Biceps long head at the coracoid process", "Teres minor under the acromion"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The Hawkins–Kennedy test for shoulder impingement: the arm is positioned at 90° flexion and internally rotated. What is impinged, and against what?",
+        "correctAnswer": "Supraspinatus tendon is driven against the coracoacromial ligament and coracoid process",
+        "distractors": ["Infraspinatus against the posterior glenoid labrum", "Biceps tendon against the anterior humeral head", "Supraspinatus against the posterior acromion"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The 'painful arc' in shoulder impingement typically occurs between ___ and ___ degrees of shoulder abduction.",
+        "correctAnswer": "60° and 120°",
+        "distractors": ["0° and 60°", "90° and 180°", "30° and 90°", "120° and 180°"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_054",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Restricted active AND passive ROM (especially external rotation), distinguishing it from rotator cuff pathology",
+    "acceptableAlternatives": ["loss of both active and passive ROM", "restricted passive and active range of motion"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_signs",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Adhesive capsulitis (frozen shoulder) is characterised by which hallmark finding on examination?",
+    "explanation": "Frozen shoulder is defined by significant restriction of both active AND passive glenohumeral ROM — especially external rotation — in the absence of another identifiable intra-articular cause. Loss of passive ROM distinguishes it from rotator cuff tears (where passive ROM is preserved). Pathology is fibroblastic proliferation and contracture of the GH joint capsule with capsular thickening, loss of axillary fold, and reduced synovial volume. The condition progresses through three phases: freezing (pain-dominated, 2–9 months), frozen (stiffness), and thawing (gradual recovery).",
+    "visualDescription": "Pixel art shoulder: glenohumeral capsule thickened and contracted highlighted; range-of-motion dial showing severely limited external rotation; three clinical phases labelled",
+    "sourceName": "StatPearls — Adhesive Capsulitis (Frozen Shoulder)",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK532955/",
+    "volatile": false,
+    "distractors": ["Restricted active ROM only, with preserved passive ROM (like rotator cuff tear)", "Full ROM with pain at end range only", "Loss of only internal rotation", "Restricted passive ROM with normal active ROM"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "How does examination differentiate adhesive capsulitis from a rotator cuff tear?",
+        "correctAnswer": "Adhesive capsulitis restricts passive ROM; rotator cuff tears preserve passive ROM but limit active ROM due to weakness",
+        "distractors": ["Rotator cuff tears are always painless; adhesive capsulitis is always painful", "Cuff tears affect internal rotation; capsulitis affects abduction only", "Capsulitis is bilateral by definition; cuff tears are unilateral"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Adhesive capsulitis is characterised by fibroblastic proliferation and contraction of the ___.",
+        "correctAnswer": "Glenohumeral joint capsule",
+        "distractors": ["Subacromial bursa", "Rotator cuff tendons", "Coracoacromial ligament", "Glenohumeral articular cartilage"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_055",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Brachial plexus and subclavian vessels compressed between the anterior and middle scalene muscles, first rib, and clavicle",
+    "acceptableAlternatives": ["scalene triangle compression of brachial plexus", "TOS — scalenes, first rib, clavicle"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "pathological_processes",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Thoracic outlet syndrome (TOS) results from compression of which structures between which anatomical boundaries?",
+    "explanation": "The thoracic outlet has three compression zones: (1) interscalene triangle (anterior scalene, middle scalene, first rib — contains brachial plexus trunks and subclavian artery); (2) costoclavicular space (clavicle and first rib — all structures); (3) subcoracoid space (pectoralis minor). Neurogenic TOS (brachial plexus compression — most common, >90%) causes arm/hand pain, numbness, and weakness. Vascular TOS (arterial or venous compression) causes ischaemia or thrombosis. Risk factors include a cervical rib and scalene hypertrophy.",
+    "visualDescription": "Pixel art anterior neck: anterior and middle scalene muscles forming a triangle, first rib below, brachial plexus and subclavian artery squeezed between them; cervical rib variant shown",
+    "sourceName": "PMC — Anatomy and Embryology of the Thoracic Outlet",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8057296/",
+    "volatile": false,
+    "distractors": ["Brachial plexus stretched over the coracoid process", "Subclavian vein compressed in the cubital fossa", "Ulnar nerve compressed between trapezius and first rib", "Radial nerve and axillary artery impinged by the subscapularis"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A musician has unilateral hand numbness and weakness that worsens with arm elevation. X-ray shows a cervical rib. What syndrome is this and which structure is most likely compressed?",
+        "correctAnswer": "Thoracic outlet syndrome; lower trunk of brachial plexus (C8, T1) — causing medial arm and hand symptoms",
+        "distractors": ["Carpal tunnel syndrome; median nerve at the wrist", "Cubital tunnel syndrome; ulnar nerve at the elbow", "Pronator teres syndrome; median nerve in the forearm"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The interscalene triangle is bounded by the anterior scalene, middle scalene, and ___.",
+        "correctAnswer": "First rib",
+        "distractors": ["Clavicle", "Pectoralis minor tendon", "Second rib", "Coracoid process"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_056",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Sciatic nerve compressed as it passes anterior to (or through) the piriformis muscle in the greater sciatic notch",
+    "acceptableAlternatives": ["piriformis compresses sciatic nerve", "sciatic nerve impingement by piriformis"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "pathological_processes",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Piriformis syndrome causes buttock pain and sciatica by what mechanism?",
+    "explanation": "The piriformis muscle originates from the anterior sacrum, exits through the greater sciatic notch, and inserts on the greater trochanter, acting as a hip external rotator (and internal rotator when hip is >60° flexed). The sciatic nerve normally exits the greater sciatic notch anterior to (below) piriformis. In piriformis syndrome, spasm, hypertrophy, or anatomical variation causes sciatic nerve compression — producing buttock pain and sciatica mimicking lumbar disc herniation, but without spine pathology.",
+    "visualDescription": "Pixel art gluteal region: piriformis muscle outlined, sciatic nerve exiting below it, compression at greater sciatic notch highlighted; hip flexion angle annotation",
+    "sourceName": "StatPearls — Piriformis Syndrome",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK448172/",
+    "volatile": false,
+    "distractors": ["Femoral nerve compressed in the femoral triangle by iliopsoas", "Obturator nerve compressed in the obturator foramen", "Sciatic nerve stretched over the ischial tuberosity by hamstrings", "Pudendal nerve compressed in Alcock's canal"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient has buttock pain and sciatica. MRI spine is normal. Pain worsens with prolonged sitting and with resisted hip external rotation. What is the likely diagnosis?",
+        "correctAnswer": "Piriformis syndrome — sciatic nerve compressed by piriformis muscle",
+        "distractors": ["L4/L5 disc herniation — despite normal MRI, early changes can be subtle", "Sacroiliac joint dysfunction — pain referred to buttock and leg", "Hamstring proximal tendinopathy — posterior thigh pain with sitting"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The piriformis muscle originates from the anterior ___ and inserts on the greater trochanter.",
+        "correctAnswer": "Sacrum",
+        "distractors": ["Ilium", "Pubis", "Ischium", "Coccyx"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_057",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Positive Phalen's test, positive Tinel's sign, nocturnal paraesthesia, thenar wasting",
+    "acceptableAlternatives": ["Phalen and Tinel positive with thenar wasting", "CTS clinical triad"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_signs",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What are the four key clinical features of carpal tunnel syndrome (CTS)?",
+    "explanation": "CTS involves compression of the median nerve under the flexor retinaculum in the carpal tunnel. Classic presentation: (1) Tinel's sign — tingling on tapping the carpal tunnel (parasympathetic nerve regeneration marker); (2) Phalen's test — tingling reproduced after 60 seconds of wrist flexion (compresses tunnel); (3) nocturnal paraesthesia — lying flat reduces venous drainage, increasing tunnel pressure; (4) thenar wasting (abductor pollicis brevis) — indicates chronic motor fibre damage. Nerve conduction studies confirm diagnosis.",
+    "visualDescription": "Pixel art wrist cross-section: carpal tunnel with median nerve, 9 flexor tendons and flexor retinaculum; thenar eminence atrophied; Phalen's position inset",
+    "sourceName": "Stanford Medicine 25 — Carpal Tunnel Exam",
+    "sourceUrl": "https://med.stanford.edu/stanfordmedicine25/the25/carpaltunnel.html",
+    "volatile": false,
+    "distractors": ["Positive McMurray, locked wrist, nocturnal pain, hypothenar wasting", "Weak grip, wrist drop, positive Finkelstein, thenar wasting", "Positive Lachman, hyperflexion deformity, night pain, intrinsic wasting"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Thenar wasting in carpal tunnel syndrome most specifically indicates denervation of which muscle?",
+        "correctAnswer": "Abductor pollicis brevis (APB) — best isolated indicator of median nerve motor dysfunction",
+        "distractors": ["Opponens pollicis — shared innervation makes it less specific", "Adductor pollicis — innervated by ulnar nerve, not median", "Flexor pollicis brevis — often has dual innervation"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The carpal tunnel contains the median nerve and ___ flexor tendons.",
+        "correctAnswer": "9",
+        "distractors": ["4", "6", "7", "12"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_058",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "L4–L5 disc level; the exiting L5 nerve root is typically compressed",
+    "acceptableAlternatives": ["L4-L5 is most common; L5 root affected", "L4/L5 level with L5 radiculopathy"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "vertebral_levels",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Lumbar disc herniation most commonly occurs at which level, and which nerve root is usually affected?",
+    "explanation": "L4–L5 and L5–S1 together account for approximately 95% of lumbar disc herniations, with L4–L5 the single most common level. A posterolateral herniation at L4–L5 compresses the traversing L5 nerve root in the lateral recess. L5 compression causes: pain radiating to lateral calf and dorsum of foot, weakness of foot dorsiflexion (tibialis anterior) and great toe extension (EHL), and sensory loss on the dorsum of the foot and web space between 1st and 2nd toes. Reflex changes are subtle (medial hamstring). The L5–S1 disc compresses S1, causing posterior leg pain, weak plantar flexion, and loss of ankle jerk.",
+    "visualDescription": "Pixel art lumbar cross-section L4-L5: herniated disc posterolateral pressing on L5 nerve root, dermatome chart showing dorsal foot, EHL and tibialis anterior labelled",
+    "sourceName": "StatPearls — Lumbar Disc Herniation",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK560878/",
+    "volatile": false,
+    "distractors": ["L1–L2 disc; femoral nerve root compressed", "L3–L4 disc; L4 root — weak knee extension, absent knee jerk", "L5–S1 disc; S1 root — absent knee jerk", "L2–L3 disc; obturator nerve root affected"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient with L4–L5 disc herniation and L5 radiculopathy cannot walk on their heels. Which muscle is weakened and which nerve root level is affected?",
+        "correctAnswer": "Tibialis anterior (foot dorsiflexion); L5 nerve root",
+        "distractors": ["Gastrocnemius (plantar flexion); S1 nerve root", "Quadriceps (knee extension); L4 nerve root", "Gluteus medius (hip abduction); L5 via superior gluteal nerve"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "L5 and S1 disc herniations together account for approximately ___% of lumbar disc herniations.",
+        "correctAnswer": "95",
+        "distractors": ["50", "70", "80", "99"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_059",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Neurogenic claudication — bilateral leg pain/heaviness relieved by lumbar flexion (leaning forward or sitting)",
+    "acceptableAlternatives": ["neurogenic claudication relieved by flexion", "leg pain with walking, relieved by bending forward"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_signs",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Lumbar spinal stenosis causes which characteristic symptom pattern?",
+    "explanation": "Lumbar spinal stenosis narrows the central canal, lateral recesses, or foramina, compressing nerve roots. Extension (standing, walking) further reduces the spinal canal diameter while flexion (sitting, leaning on a shopping trolley — 'shopping cart sign') increases it. This causes neurogenic claudication: bilateral leg pain, heaviness, numbness, or weakness that appears with walking and is relieved within seconds to minutes by sitting or bending forward. Differentiated from vascular claudication by relief with posture change rather than just stopping walking, and by preserved pedal pulses.",
+    "visualDescription": "Pixel art lumbar spine: central canal narrowed by ligamentum flavum hypertrophy and disc bulge; extension narrowing vs flexion opening arrows; elderly patient leaning on walking frame",
+    "sourceName": "StatPearls — Spinal Stenosis and Neurogenic Claudication",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK430872/",
+    "volatile": false,
+    "distractors": ["Unilateral sharp shooting pain down the posterior leg, relieved by lying flat", "Central back pain worsened by flexion and relieved by extension", "Bilateral leg oedema with absent pulses — vascular claudication", "Saddle anaesthesia and urinary retention — cauda equina syndrome"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "An elderly patient can only walk 200 m before bilateral leg pain forces them to stop. Sitting briefly relieves symptoms. Pedal pulses are normal. What is the diagnosis and what relieves it?",
+        "correctAnswer": "Lumbar spinal stenosis with neurogenic claudication; lumbar flexion (sitting/leaning forward) relieves it by increasing canal diameter",
+        "distractors": ["Peripheral arterial disease; rest alone relieves it regardless of posture", "Bilateral L4/L5 disc herniations; supine straight-leg raise is positive", "Diabetic peripheral neuropathy; burning sensation at rest, unrelated to walking"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lumbar ___ (standing/walking position) narrows the spinal canal in stenosis; ___ (sitting/leaning forward) increases canal diameter and relieves symptoms.",
+        "correctAnswer": "Extension; flexion",
+        "distractors": ["Flexion; extension", "Rotation; lateral flexion", "Neutral; extension"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_060",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Golfer's elbow (medial epicondylitis) — pain at medial epicondyle, worsened by resisted wrist flexion",
+    "acceptableAlternatives": ["medial epicondylitis", "golfer's elbow"],
+    "chainThemeId": "clinical_injuries",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Lateral epicondylitis (tennis elbow) is at the lateral epicondyle. Its medial counterpart, affecting the common flexor tendon, is called what?",
+    "explanation": "Medial epicondylitis ('golfer's elbow') mirrors tennis elbow on the medial side: the common flexor tendon origin (FCR, palmaris longus, FDS, FCU, pronator teres) undergoes degenerative tendinopathy from overuse. Pain is at the medial epicondyle and worsens with resisted wrist flexion and pronation. Because the ulnar nerve lies just posterior in the cubital tunnel, co-existing ulnar neuritis with ring/little-finger tingling is common (~50% of cases). Unlike tennis elbow (ECRB/extensor), golfer's elbow involves flexor/pronator tendons.",
+    "visualDescription": "Pixel art medial elbow: medial epicondyle highlighted yellow, common flexor tendon attachment shown in red, ulnar nerve in cubital tunnel posterior to it",
+    "sourceName": "StatPearls — Lateral Epicondylitis (Tennis Elbow) [medial variant cross-reference]",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK431092/",
+    "volatile": false,
+    "distractors": ["Tennis elbow (lateral epicondylitis)", "Olecranon bursitis", "Cubital tunnel syndrome", "Medial ulnar collateral ligament sprain", "Pronator teres syndrome"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "A golfer has medial elbow pain. Which resisted movement reproduces the pain, and which co-existing nerve can be involved?",
+        "correctAnswer": "Resisted wrist flexion/pronation reproduces pain; ulnar nerve (in cubital tunnel) may cause ring/little-finger tingling",
+        "distractors": ["Resisted wrist extension reproduces pain; radial nerve causes posterior forearm tingling", "Resisted elbow extension; median nerve causes thenar symptoms", "Resisted supination; musculocutaneous nerve causes anterior forearm tingling"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Both lateral epicondylitis and medial epicondylitis are histologically degenerative (___ degeneration) rather than truly inflammatory conditions.",
+        "correctAnswer": "Angiofibroblastic (tendinopathy)",
+        "distractors": ["Acute inflammatory (tendinitis)", "Calcific", "Necrotic", "Amyloid"]
+      }
+    ]
+  }
+]

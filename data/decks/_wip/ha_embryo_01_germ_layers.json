@@ -1,0 +1,722 @@
+[
+  {
+    "id": "ha_embryo_001",
+    "subDeckId": "embryology",
+    "correctAnswer": "Ectoderm",
+    "acceptableAlternatives": [],
+    "chainThemeId": "germ_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which germ layer gives rise to the brain and spinal cord?",
+    "explanation": "The ectoderm forms all neural tissue, including the entire central nervous system (brain and spinal cord) via the neural tube, as well as the peripheral nervous system and neural crest derivatives.",
+    "visualDescription": "Embryo cross-section showing neural tube forming from ectodermal neural plate",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ectoderm",
+    "volatile": false,
+    "distractors": ["Mesoderm", "Endoderm", "Neural crest"],
+    "variants": [
+      {
+        "quizQuestion": "The neural tube, which becomes the brain and spinal cord, forms from which primary germ layer?",
+        "correctAnswer": "Ectoderm",
+        "explanation": "During neurulation in week 3-4, the ectodermal neural plate folds and fuses to form the neural tube — the precursor of the entire CNS."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_002",
+    "subDeckId": "embryology",
+    "correctAnswer": "Mesoderm",
+    "acceptableAlternatives": [],
+    "chainThemeId": "germ_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which germ layer gives rise to muscle, bone, and the kidneys?",
+    "explanation": "Mesoderm forms all three muscle types (skeletal, cardiac, smooth), bone, cartilage, connective tissue, blood, blood vessels, heart, kidneys, gonads, adrenal cortex, spleen, and dermis.",
+    "visualDescription": "Embryo diagram with mesoderm-derived structures highlighted: muscle, skeleton, kidneys",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mesoderm",
+    "volatile": false,
+    "distractors": ["Ectoderm", "Endoderm", "Trophoblast"],
+    "variants": [
+      {
+        "quizQuestion": "The kidneys, all muscle types, and the adrenal cortex are all derived from which germ layer?",
+        "correctAnswer": "Mesoderm",
+        "explanation": "Mesoderm is the 'connective tissue layer' — it generates virtually all structural and supporting tissues of the body, from blood to bone to kidney."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_003",
+    "subDeckId": "embryology",
+    "correctAnswer": "Endoderm",
+    "acceptableAlternatives": [],
+    "chainThemeId": "germ_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which germ layer lines the GI tract and gives rise to the liver and pancreas?",
+    "explanation": "Endoderm forms the epithelial lining of the GI tract, respiratory tract, bladder, and urethra, and gives rise to glandular organs including the liver, pancreas, thyroid, parathyroids, and thymus.",
+    "visualDescription": "Embryo diagram with gut tube and associated glands (liver, pancreas) highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Endoderm",
+    "volatile": false,
+    "distractors": ["Mesoderm", "Ectoderm", "Neural crest"],
+    "variants": [
+      {
+        "quizQuestion": "The thyroid, thymus, and epithelial lining of the lungs all derive from which germ layer?",
+        "correctAnswer": "Endoderm",
+        "explanation": "Endoderm forms all internal epithelial linings and the glands that bud off the primitive gut tube, including the thyroid, thymus, parathyroids, liver, and pancreas."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_004",
+    "subDeckId": "embryology",
+    "correctAnswer": "Ectoderm",
+    "acceptableAlternatives": [],
+    "chainThemeId": "germ_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Tooth enamel is derived from which germ layer?",
+    "explanation": "Enamel is the only tooth component derived from ectoderm (oral epithelium via ameloblasts). All other dental components — dentine, cementum, pulp — come from neural crest cells (mesectoderm).",
+    "visualDescription": "Tooth diagram with enamel layer labeled and marked as ectodermal origin",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enamel_(dentistry)",
+    "volatile": false,
+    "distractors": ["Mesoderm", "Endoderm", "Neural crest"],
+    "variants": [
+      {
+        "quizQuestion": "Ameloblasts, which produce tooth enamel, are derived from which germ layer?",
+        "correctAnswer": "Ectoderm",
+        "explanation": "Ameloblasts arise from the oral ectoderm (specifically the inner enamel epithelium of the dental lamina), making enamel the only hard tissue in the body with ectodermal origin."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_005",
+    "subDeckId": "embryology",
+    "correctAnswer": "Adrenal medulla",
+    "acceptableAlternatives": [],
+    "chainThemeId": "germ_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "The adrenal gland has a split embryological origin — the cortex from mesoderm, and the medulla from which source?",
+    "explanation": "The adrenal medulla is derived from neural crest cells (ectoderm), not mesoderm. Neural crest cells migrate to the adrenal gland and become chromaffin cells that secrete epinephrine and norepinephrine. The outer cortex, which produces steroid hormones, is mesodermal.",
+    "visualDescription": "Adrenal gland cross-section with cortex (mesoderm) and medulla (neural crest) labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adrenal_gland#Embryological_development",
+    "volatile": false,
+    "distractors": ["Endoderm", "Mesoderm", "Lateral plate mesoderm"],
+    "variants": [
+      {
+        "quizQuestion": "Chromaffin cells of the adrenal medulla, which secrete epinephrine, derive from which embryological source?",
+        "correctAnswer": "Neural crest cells",
+        "explanation": "Neural crest cells are sympathetic neuron precursors that migrate into the developing adrenal gland and differentiate into chromaffin cells — modified post-ganglionic sympathetic neurons."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_006",
+    "subDeckId": "embryology",
+    "correctAnswer": "Neural crest cells",
+    "acceptableAlternatives": ["Neural crest"],
+    "chainThemeId": "neural_crest",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Melanocytes, Schwann cells, and dorsal root ganglia all arise from which embryological source?",
+    "explanation": "Neural crest cells, derived from the dorsal ectoderm during neurulation, are a highly migratory population that gives rise to melanocytes, peripheral glial cells (Schwann cells), dorsal root ganglia, autonomic ganglia, craniofacial bones, dental pulp, and the adrenal medulla.",
+    "visualDescription": "Embryo diagram showing neural crest cell migration paths to skin (melanocytes), DRG, and adrenal gland",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neural_crest",
+    "volatile": false,
+    "distractors": ["Ectoderm (surface)", "Mesoderm", "Endoderm"],
+    "variants": [
+      {
+        "quizQuestion": "Neural crest cells are sometimes called the 'fourth germ layer' — from which germ layer do they originally arise?",
+        "correctAnswer": "Ectoderm",
+        "explanation": "Neural crest cells delaminate from the dorsal neural tube (ectodermal origin) during neurulation and migrate throughout the embryo, giving rise to an extraordinarily diverse range of cell types."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_007",
+    "subDeckId": "embryology",
+    "correctAnswer": "Aorticopulmonary septum",
+    "acceptableAlternatives": ["Aortico-pulmonary septum", "AP septum"],
+    "chainThemeId": "neural_crest",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 5,
+    "quizQuestion": "Neural crest cells contribute to which cardiac septum that divides the truncus arteriosus into the aorta and pulmonary trunk?",
+    "explanation": "Neural crest cells migrate into the outflow tract of the developing heart to form the aorticopulmonary septum, which spirals through the truncus arteriosus and divides it into the aorta and pulmonary trunk. Failure causes conotruncal defects such as transposition of the great arteries.",
+    "visualDescription": "Diagram of truncus arteriosus being divided by spiral aorticopulmonary septum into aorta and pulmonary trunk",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aorticopulmonary_septum",
+    "volatile": false,
+    "distractors": ["Interatrial septum", "Interventricular septum", "Endocardial cushion"],
+    "variants": [
+      {
+        "quizQuestion": "Which embryological cell population is responsible for forming the septum that divides the truncus arteriosus into the aorta and pulmonary artery?",
+        "correctAnswer": "Neural crest cells",
+        "explanation": "Cardiac neural crest cells migrate from the dorsal neural tube to the outflow tract, forming the aorticopulmonary septum. Their absence causes persistent truncus arteriosus and transposition defects."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_008",
+    "subDeckId": "embryology",
+    "correctAnswer": "Week 3",
+    "acceptableAlternatives": ["Third week"],
+    "chainThemeId": "developmental_timeline",
+    "answerTypePoolId": "timepoints",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "During which week of embryonic development does gastrulation occur, establishing the three germ layers?",
+    "explanation": "Gastrulation occurs in week 3. The bilaminar disc (epiblast + hypoblast) is converted into a trilaminar embryo through the formation of the primitive streak, through which epiblast cells migrate to form mesoderm and endoderm. The remaining epiblast becomes ectoderm.",
+    "visualDescription": "Diagram of primitive streak with arrows showing epiblast cells migrating to form three germ layers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastrulation",
+    "volatile": false,
+    "distractors": ["Week 1", "Week 2", "Week 4"],
+    "variants": [
+      {
+        "quizQuestion": "The primitive streak forms during which week, marking the start of gastrulation?",
+        "correctAnswer": "Week 3",
+        "explanation": "The primitive streak appears at the caudal end of the epiblast at the start of week 3, providing the entry point for cells that will form the mesoderm and endoderm."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_009",
+    "subDeckId": "embryology",
+    "correctAnswer": "Week 4",
+    "acceptableAlternatives": ["Fourth week"],
+    "chainThemeId": "developmental_timeline",
+    "answerTypePoolId": "timepoints",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Failure of neural tube closure, causing spina bifida or anencephaly, occurs due to a defect in which week?",
+    "explanation": "The neural tube normally closes during week 4. Failure of closure at the caudal end causes spina bifida; failure at the cranial end causes anencephaly. Adequate folate intake before and during early pregnancy significantly reduces neural tube defect risk.",
+    "visualDescription": "Neural tube closure diagram showing cranial and caudal neuropores with arrows",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neural_tube_defect",
+    "volatile": false,
+    "distractors": ["Week 2", "Week 3", "Week 6"],
+    "variants": [
+      {
+        "quizQuestion": "Neural tube closure is normally complete by the end of which embryonic week?",
+        "correctAnswer": "Week 4",
+        "explanation": "The cranial neuropore closes around day 25 and the caudal neuropore around day 27, both within week 4. Folic acid deficiency at this stage is the main preventable risk factor for neural tube defects."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_010",
+    "subDeckId": "embryology",
+    "correctAnswer": "Week 8",
+    "acceptableAlternatives": ["Eight weeks", "End of week 8"],
+    "chainThemeId": "developmental_timeline",
+    "answerTypePoolId": "timepoints",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "By the end of which week are all major organ systems formed, marking the transition from embryonic to fetal period?",
+    "explanation": "The embryonic period spans weeks 1–8. By week 8, all major organs have formed (though not yet fully functional). From week 9 onward, the conceptus is called a fetus, and development shifts from organogenesis to growth and maturation.",
+    "visualDescription": "Timeline showing embryonic period (weeks 1-8) and fetal period (week 9 onwards)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Embryonic_development",
+    "volatile": false,
+    "distractors": ["Week 4", "Week 6", "Week 12"],
+    "variants": [
+      {
+        "quizQuestion": "Organogenesis is essentially complete and the conceptus is renamed a 'fetus' at the start of which week?",
+        "correctAnswer": "Week 9",
+        "explanation": "The embryonic period ends at week 8 (all major organs formed), and week 9 marks the start of the fetal period. The distinction is clinically important because teratogen exposure during weeks 3–8 causes major structural defects."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_011",
+    "subDeckId": "embryology",
+    "correctAnswer": "CN V (trigeminal nerve)",
+    "acceptableAlternatives": ["Trigeminal nerve", "CN V", "Cranial nerve V"],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which cranial nerve is the nerve of the first pharyngeal arch?",
+    "explanation": "The first pharyngeal arch is innervated by CN V (trigeminal nerve). Arch 1 derivatives include the muscles of mastication, the malleus and incus, and the mandible and maxilla — all receive trigeminal innervation.",
+    "visualDescription": "Pharyngeal arch diagram with arch 1 labeled and CN V highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pharyngeal_arch",
+    "volatile": false,
+    "distractors": ["CN VII (facial)", "CN IX (glossopharyngeal)", "CN X (vagus)"],
+    "variants": [
+      {
+        "quizQuestion": "The muscles of mastication and the ossicles (malleus and incus) derive from which pharyngeal arch?",
+        "correctAnswer": "First pharyngeal arch",
+        "explanation": "The first arch (mandibular arch) gives rise to Meckel's cartilage (→ malleus, incus), the mandible, maxilla, and muscles of mastication, all innervated by the trigeminal nerve (CN V)."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_012",
+    "subDeckId": "embryology",
+    "correctAnswer": "CN VII (facial nerve)",
+    "acceptableAlternatives": ["Facial nerve", "CN VII", "Cranial nerve VII"],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which cranial nerve is the nerve of the second pharyngeal arch?",
+    "explanation": "The second pharyngeal arch (Reichert's arch) is innervated by CN VII (facial nerve). It gives rise to the muscles of facial expression, stapedius, stylohyoid, and posterior digastric, plus the stapes, styloid process, and lesser horn of the hyoid.",
+    "visualDescription": "Pharyngeal arch diagram with arch 2 labeled and CN VII highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pharyngeal_arch",
+    "volatile": false,
+    "distractors": ["CN V (trigeminal)", "CN IX (glossopharyngeal)", "CN X (vagus)"],
+    "variants": [
+      {
+        "quizQuestion": "Reichert's cartilage (arch 2) gives rise to the stapes and styloid process — which nerve innervates all second arch derivatives?",
+        "correctAnswer": "CN VII (facial nerve)",
+        "explanation": "All second arch muscles receive facial nerve innervation. This explains why Bell's palsy (CN VII paralysis) causes loss of facial expression — those muscles are arch 2 derivatives."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_013",
+    "subDeckId": "embryology",
+    "correctAnswer": "Stylopharyngeus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "Which muscle is the sole muscular derivative of the third pharyngeal arch?",
+    "explanation": "The third pharyngeal arch, innervated by CN IX (glossopharyngeal), produces only one muscle: the stylopharyngeus. It also contributes the greater horn and lower body of the hyoid bone.",
+    "visualDescription": "Lateral neck diagram showing stylopharyngeus arising from styloid process to pharyngeal wall",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pharyngeal_arch",
+    "volatile": false,
+    "distractors": ["Stylohyoid", "Pharyngeal constrictor", "Cricothyroid"],
+    "variants": [
+      {
+        "quizQuestion": "CN IX (glossopharyngeal nerve) is the nerve of the third pharyngeal arch — which is the only muscle it innervates from that arch?",
+        "correctAnswer": "Stylopharyngeus",
+        "explanation": "Stylopharyngeus is unique as the only arch 3 muscle, and the only muscle in the pharynx innervated by CN IX rather than CN X. This is a high-yield clinical anatomy point."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_014",
+    "subDeckId": "embryology",
+    "correctAnswer": "Fourth pharyngeal arch",
+    "acceptableAlternatives": ["Arch 4", "4th pharyngeal arch"],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "The thyroid cartilage is derived from which pharyngeal arch?",
+    "explanation": "The fourth pharyngeal arch gives rise to the thyroid cartilage, the pharyngeal constrictor muscles, cricothyroid, and levator veli palatini. Its nerve is the superior laryngeal branch of CN X (vagus).",
+    "visualDescription": "Larynx diagram with thyroid cartilage labeled as arch 4 derivative",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pharyngeal_arch",
+    "volatile": false,
+    "distractors": ["Second pharyngeal arch", "Third pharyngeal arch", "Sixth pharyngeal arch"],
+    "variants": [
+      {
+        "quizQuestion": "The superior laryngeal branch of the vagus nerve (CN X) is the nerve of which pharyngeal arch?",
+        "correctAnswer": "Fourth pharyngeal arch",
+        "explanation": "Arch 4 derivatives are innervated by the superior laryngeal nerve (a branch of CN X). This includes cricothyroid — the only intrinsic laryngeal muscle NOT supplied by the recurrent laryngeal nerve."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_015",
+    "subDeckId": "embryology",
+    "correctAnswer": "Sixth pharyngeal arch",
+    "acceptableAlternatives": ["Arch 6", "6th pharyngeal arch"],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "All intrinsic laryngeal muscles except cricothyroid are derived from which pharyngeal arch?",
+    "explanation": "The sixth pharyngeal arch, innervated by the recurrent laryngeal branch of CN X, gives rise to all intrinsic laryngeal muscles except cricothyroid (arch 4). It also forms the arytenoid, cricoid, corniculate, and cuneiform cartilages.",
+    "visualDescription": "Larynx diagram with intrinsic muscles labeled and arch 6 / recurrent laryngeal nerve indicated",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pharyngeal_arch",
+    "volatile": false,
+    "distractors": ["Fourth pharyngeal arch", "Third pharyngeal arch", "Second pharyngeal arch"],
+    "variants": [
+      {
+        "quizQuestion": "Damage to the recurrent laryngeal nerve (arch 6 nerve) causes hoarseness because it supplies all intrinsic laryngeal muscles except which one?",
+        "correctAnswer": "Cricothyroid",
+        "explanation": "Cricothyroid is the only intrinsic laryngeal muscle supplied by the external branch of the superior laryngeal nerve (arch 4), not the recurrent laryngeal nerve (arch 6). All others are arch 6 derivatives."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_016",
+    "subDeckId": "embryology",
+    "correctAnswer": "Ductus arteriosus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which fetal shunt connects the pulmonary trunk to the aorta, bypassing the lungs?",
+    "explanation": "The ductus arteriosus is a vessel connecting the pulmonary trunk to the descending aorta, allowing most blood to bypass the non-functioning fetal lungs. After birth, it normally closes within 24–48 hours (triggered by increased oxygen) and becomes the ligamentum arteriosum.",
+    "visualDescription": "Fetal circulation diagram with ductus arteriosus highlighted between pulmonary trunk and aorta",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ductus_arteriosus",
+    "volatile": false,
+    "distractors": ["Foramen ovale", "Ductus venosus", "Umbilical vein"],
+    "variants": [
+      {
+        "quizQuestion": "After birth, the ductus arteriosus closes and becomes which fibrous remnant?",
+        "correctAnswer": "Ligamentum arteriosum",
+        "explanation": "The ductus arteriosus is kept patent in utero by prostaglandin E2. After birth, oxygen-driven prostaglandin reduction triggers constriction. Failure to close causes patent ductus arteriosus (PDA), which can be closed with indomethacin."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_017",
+    "subDeckId": "embryology",
+    "correctAnswer": "Foramen ovale",
+    "acceptableAlternatives": [],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which fetal shunt allows oxygenated blood to pass directly from the right atrium to the left atrium, bypassing the lungs?",
+    "explanation": "The foramen ovale is an opening in the interatrial septum. In the fetus, right atrial pressure exceeds left atrial pressure, so blood flows right-to-left through the foramen ovale. After birth, pressures reverse and the foramen ovale closes, becoming the fossa ovalis.",
+    "visualDescription": "Fetal heart cross-section showing foramen ovale with arrow indicating right-to-left flow",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Foramen_ovale_(heart)",
+    "volatile": false,
+    "distractors": ["Ductus arteriosus", "Ductus venosus", "Coronary sinus"],
+    "variants": [
+      {
+        "quizQuestion": "The fossa ovalis, visible in the adult right atrium, is the remnant of which fetal structure?",
+        "correctAnswer": "Foramen ovale",
+        "explanation": "After birth, the rise in left atrial pressure (from pulmonary venous return) functionally closes the foramen ovale. Anatomical closure follows as the septum primum fuses with the septum secundum, leaving the fossa ovalis."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_018",
+    "subDeckId": "embryology",
+    "correctAnswer": "Ductus venosus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which fetal shunt carries oxygenated blood from the umbilical vein directly into the inferior vena cava, bypassing the liver?",
+    "explanation": "The ductus venosus connects the umbilical vein (carrying oxygenated placental blood) to the inferior vena cava, allowing about half of portal blood to bypass the fetal liver. After birth it closes and becomes the ligamentum venosum, a fibrous cord within the liver.",
+    "visualDescription": "Fetal liver diagram showing umbilical vein, ductus venosus, and IVC connections",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ductus_venosus",
+    "volatile": false,
+    "distractors": ["Foramen ovale", "Ductus arteriosus", "Portal vein"],
+    "variants": [
+      {
+        "quizQuestion": "The ligamentum venosum, a fibrous remnant within the liver, was which fetal circulatory shunt?",
+        "correctAnswer": "Ductus venosus",
+        "explanation": "The ductus venosus shunts oxygenated umbilical vein blood past the hepatic sinusoids directly to the IVC. After birth it closes and becomes the ligamentum venosum, visible on the inferior surface of the liver."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_019",
+    "subDeckId": "embryology",
+    "correctAnswer": "Umbilical vein",
+    "acceptableAlternatives": [],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "In fetal circulation, which vessel carries oxygenated blood FROM the placenta TO the fetus?",
+    "explanation": "The umbilical vein carries oxygen-rich blood from the placenta to the fetus — the reverse of postnatal convention where veins carry deoxygenated blood. After birth, it becomes the ligamentum teres (round ligament of the liver), visible in the falciform ligament.",
+    "visualDescription": "Umbilical cord cross-section showing one vein (oxygenated, red) and two arteries (deoxygenated, blue)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Umbilical_vein",
+    "volatile": false,
+    "distractors": ["Umbilical artery", "Ductus arteriosus", "Portal vein"],
+    "variants": [
+      {
+        "quizQuestion": "The ligamentum teres (round ligament of the liver), visible in the free edge of the falciform ligament, is the postnatal remnant of which fetal vessel?",
+        "correctAnswer": "Umbilical vein",
+        "explanation": "The umbilical vein runs from the umbilicus to the liver and carries oxygenated blood from the placenta. After birth it obliterates and becomes the round ligament, clinically important as a surgical landmark."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_020",
+    "subDeckId": "embryology",
+    "correctAnswer": "Medial umbilical ligaments",
+    "acceptableAlternatives": ["Medial umbilical ligament"],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "The umbilical arteries, which carry deoxygenated blood from the fetus to the placenta, become which adult ligamentous structures?",
+    "explanation": "The two umbilical arteries carry deoxygenated, waste-laden blood from the fetal iliac arteries to the placenta. After birth they obliterate and become the medial umbilical ligaments, visible on the inner anterior abdominal wall.",
+    "visualDescription": "Anterior abdominal wall (internal view) showing paired medial umbilical ligaments converging at umbilicus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Umbilical_artery",
+    "volatile": false,
+    "distractors": ["Lateral umbilical ligaments", "Ligamentum teres", "Urachus"],
+    "variants": [
+      {
+        "quizQuestion": "On the internal surface of the anterior abdominal wall, the paired medial umbilical ligaments are remnants of which fetal vessels?",
+        "correctAnswer": "Umbilical arteries",
+        "explanation": "The two umbilical arteries branch from the internal iliac arteries and run to the placenta. After birth they become the medial umbilical ligaments — not to be confused with the median umbilical ligament (remnant of the urachus)."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_021",
+    "subDeckId": "embryology",
+    "correctAnswer": "Meckel's cartilage",
+    "acceptableAlternatives": [],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "The malleus and incus of the middle ear are derived from which embryological cartilage?",
+    "explanation": "Meckel's cartilage is the cartilaginous skeleton of the first pharyngeal arch. Most of it regresses, but its dorsal end gives rise to the malleus and incus (two of the three middle ear ossicles). The mandible and maxilla form by intramembranous ossification around it.",
+    "visualDescription": "First arch diagram showing Meckel's cartilage with dorsal end labeled as malleus and incus precursor",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Meckel%27s_cartilage",
+    "volatile": false,
+    "distractors": ["Reichert's cartilage", "Hyoid cartilage", "Thyroid cartilage"],
+    "variants": [
+      {
+        "quizQuestion": "Reichert's cartilage (arch 2) gives rise to the stapes and styloid process. Which cartilage gives rise to the malleus and incus?",
+        "correctAnswer": "Meckel's cartilage",
+        "explanation": "Meckel's cartilage (arch 1) and Reichert's cartilage (arch 2) together account for all three middle ear ossicles: malleus + incus from Meckel's, stapes from Reichert's."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_022",
+    "subDeckId": "embryology",
+    "correctAnswer": "Reichert's cartilage",
+    "acceptableAlternatives": [],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "The stapes and styloid process are derived from which embryological cartilage?",
+    "explanation": "Reichert's cartilage is the skeleton of the second pharyngeal arch. It gives rise to the stapes (the third middle ear ossicle), the styloid process of the temporal bone, the stylohyoid ligament, and the lesser horn and upper body of the hyoid bone.",
+    "visualDescription": "Second arch diagram with Reichert's cartilage labeled and its derivatives (stapes, styloid, hyoid) shown",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reichert%27s_cartilage",
+    "volatile": false,
+    "distractors": ["Meckel's cartilage", "Hyoid cartilage", "Arytenoid cartilage"],
+    "variants": [
+      {
+        "quizQuestion": "Which pharyngeal arch cartilage is the precursor of the stapes — the smallest bone in the human body?",
+        "correctAnswer": "Reichert's cartilage",
+        "explanation": "Reichert's cartilage (arch 2) gives rise to the stapes, the smallest bone in the body at ~3 mm long. It also contributes to the styloid process and lesser horn of the hyoid."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_023",
+    "subDeckId": "embryology",
+    "correctAnswer": "Third pharyngeal arch",
+    "acceptableAlternatives": ["Arch 3", "3rd pharyngeal arch"],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "The greater horn and body of the hyoid bone are derived from which pharyngeal arch?",
+    "explanation": "The third pharyngeal arch contributes the greater horn and lower body of the hyoid bone. The lesser horn and upper body come from the second arch (Reichert's cartilage). The arch 3 artery becomes the common and internal carotid arteries.",
+    "visualDescription": "Hyoid bone diagram with lesser horn (arch 2) and greater horn (arch 3) labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pharyngeal_arch",
+    "volatile": false,
+    "distractors": ["Second pharyngeal arch", "Fourth pharyngeal arch", "First pharyngeal arch"],
+    "variants": [
+      {
+        "quizQuestion": "The internal carotid artery develops from the artery of which pharyngeal arch?",
+        "correctAnswer": "Third pharyngeal arch",
+        "explanation": "The arch 3 artery persists as the common carotid and proximal internal carotid arteries. The arch 4 arteries persist as the aortic arch (left) and right subclavian (right)."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_024",
+    "subDeckId": "embryology",
+    "correctAnswer": "Aortic arch",
+    "acceptableAlternatives": ["Left aortic arch", "Arch of aorta"],
+    "chainThemeId": "pharyngeal_arches",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "The left fourth pharyngeal arch artery persists in the adult as which major vessel?",
+    "explanation": "The left arch 4 artery becomes the aortic arch (the portion between the left common carotid and left subclavian arteries). The right arch 4 artery becomes the proximal right subclavian artery. This explains why these vessels are vulnerable in certain aortic arch anomalies.",
+    "visualDescription": "Aortic arch development diagram showing arch 4 arteries becoming left aortic arch and right subclavian",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Aortic_arches",
+    "volatile": false,
+    "distractors": ["Pulmonary artery", "Internal carotid artery", "Ductus arteriosus"],
+    "variants": [
+      {
+        "quizQuestion": "The right fourth pharyngeal arch artery becomes which adult vessel?",
+        "correctAnswer": "Right subclavian artery (proximal portion)",
+        "explanation": "Left arch 4 → aortic arch; right arch 4 → proximal right subclavian artery. Arch 6 arteries become the pulmonary arteries (and ductus arteriosus on the left)."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_025",
+    "subDeckId": "embryology",
+    "correctAnswer": "Week 20 to 30",
+    "acceptableAlternatives": ["Weeks 20-30", "Week 24", "Around week 24"],
+    "chainThemeId": "developmental_timeline",
+    "answerTypePoolId": "timepoints",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Surfactant production by type II pneumocytes begins during which period of fetal development?",
+    "explanation": "Pulmonary surfactant (a phospholipid mixture that reduces alveolar surface tension) is produced by type II pneumocytes beginning around weeks 20–24, with adequate amounts for survival by approximately week 28–32. Premature infants born before this window develop respiratory distress syndrome.",
+    "visualDescription": "Fetal lung development timeline with surfactant production phase highlighted (weeks 24-32)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_surfactant",
+    "volatile": false,
+    "distractors": ["Week 8 to 12", "Week 12 to 16", "Week 32 to 36"],
+    "variants": [
+      {
+        "quizQuestion": "Neonatal respiratory distress syndrome in premature infants is caused by insufficient production of which substance by type II pneumocytes?",
+        "correctAnswer": "Surfactant",
+        "explanation": "Surfactant reduces alveolar surface tension and prevents collapse on expiration. Premature infants born before adequate surfactant production (before ~28-32 weeks) develop RDS (formerly called hyaline membrane disease), treated with exogenous surfactant and maternal antenatal corticosteroids."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_026",
+    "subDeckId": "embryology",
+    "correctAnswer": "Anterior pituitary",
+    "acceptableAlternatives": ["Adenohypophysis"],
+    "chainThemeId": "germ_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "The anterior pituitary (adenohypophysis) is derived from which embryological source?",
+    "explanation": "The anterior pituitary forms from Rathke's pouch, an upward evagination of oral ectoderm (roof of the stomodeum). The posterior pituitary (neurohypophysis) forms as a downgrowth from the hypothalamus (neuroectoderm). This dual origin means the two pituitary lobes have completely different embryological origins.",
+    "visualDescription": "Diagram showing Rathke's pouch (oral ectoderm) meeting neurohypophysis (brain downgrowth) to form pituitary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rathke%27s_pouch",
+    "volatile": false,
+    "distractors": ["Neuroectoderm (brain)", "Mesoderm", "Endoderm"],
+    "variants": [
+      {
+        "quizQuestion": "Rathke's pouch, an upward evagination of oral ectoderm, gives rise to which part of the pituitary gland?",
+        "correctAnswer": "Anterior pituitary (adenohypophysis)",
+        "explanation": "Rathke's pouch forms the pars distalis, pars tuberalis, and pars intermedia of the anterior pituitary. A craniopharyngioma is a benign tumor of Rathke's pouch remnants — it presents with bitemporal hemianopia and pituitary hypofunction."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_027",
+    "subDeckId": "embryology",
+    "correctAnswer": "Notochord",
+    "acceptableAlternatives": [],
+    "chainThemeId": "developmental_timeline",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which embryological structure forms during week 3 and induces the overlying ectoderm to form the neural plate?",
+    "explanation": "The notochord is a rod of mesodermal cells running along the dorsal midline of the embryo, formed during week 3. It secretes Sonic Hedgehog (SHH) and other signals that induce the overlying ectoderm to thicken into the neural plate — the first step in neurulation. In adults, remnants persist as the nucleus pulposus of intervertebral discs.",
+    "visualDescription": "Week 3 embryo cross-section showing notochord below neural plate, with inductive signals indicated",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Notochord",
+    "volatile": false,
+    "distractors": ["Primitive streak", "Neural crest", "Allantois"],
+    "variants": [
+      {
+        "quizQuestion": "The nucleus pulposus of adult intervertebral discs is a remnant of which embryonic structure?",
+        "correctAnswer": "Notochord",
+        "explanation": "The notochord induces neural tube formation then regresses, but remnants persist as the nucleus pulposus — the gel-like core of each intervertebral disc. Chordomas are rare tumors arising from notochord remnants."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_028",
+    "subDeckId": "embryology",
+    "correctAnswer": "Week 12",
+    "acceptableAlternatives": ["Twelve weeks"],
+    "chainThemeId": "developmental_timeline",
+    "answerTypePoolId": "timepoints",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "By which fetal week are external genitalia distinguishable as male or female on ultrasound?",
+    "explanation": "External genitalia are sexually indifferent until about week 9. Under the influence of testosterone (in males) or its absence (in females), the genital tubercle, urogenital folds, and labioscrotal swellings differentiate into recognizable male or female external genitalia by week 12.",
+    "visualDescription": "Fetal development timeline showing indifferent genitalia → differentiated by week 12",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_embryonic_development",
+    "volatile": false,
+    "distractors": ["Week 8", "Week 16", "Week 20"],
+    "variants": [
+      {
+        "quizQuestion": "Before week 9, the external genitalia of male and female embryos are indistinguishable. What drives male external genital differentiation?",
+        "correctAnswer": "Testosterone (and DHT)",
+        "explanation": "Testosterone from fetal Leydig cells (stimulated by hCG and then LH) is converted to dihydrotestosterone (DHT) by 5α-reductase in the genital skin. DHT drives development of the penis, scrotum, and prostate. Without androgens, female genitalia develop by default."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_029",
+    "subDeckId": "embryology",
+    "correctAnswer": "Pulmonary trunk and aorta",
+    "acceptableAlternatives": ["Aorta and pulmonary trunk", "Aorta and pulmonary artery"],
+    "chainThemeId": "neural_crest",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "The truncus arteriosus is divided by the aorticopulmonary septum into which two great vessels?",
+    "explanation": "The aorticopulmonary septum, formed by neural crest cell migration into the outflow tract, spirals through the truncus arteriosus and divides it into the aorta (anterior → posterior) and pulmonary trunk (posterior → anterior). The spiral explains why the two vessels wrap around each other in the adult.",
+    "visualDescription": "Diagram showing truncus arteriosus being divided by spiral septum into aorta and pulmonary trunk",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Truncus_arteriosus_(embryology)",
+    "volatile": false,
+    "distractors": ["Aorta and superior vena cava", "Pulmonary trunk and coronary arteries", "Aorta and ductus arteriosus"],
+    "variants": [
+      {
+        "quizQuestion": "Failure of the aorticopulmonary septum to form results in which congenital heart defect?",
+        "correctAnswer": "Persistent truncus arteriosus",
+        "explanation": "If neural crest cells fail to migrate and form the aorticopulmonary septum, the truncus arteriosus remains as one single outflow vessel — persistent truncus arteriosus. This causes mixing of oxygenated and deoxygenated blood and presents as cyanotic congenital heart disease."
+      }
+    ]
+  },
+  {
+    "id": "ha_embryo_030",
+    "subDeckId": "embryology",
+    "correctAnswer": "Lens of the eye",
+    "acceptableAlternatives": ["Lens"],
+    "chainThemeId": "germ_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "The lens of the eye is derived from which germ layer?",
+    "explanation": "The lens forms from the surface ectoderm via a process called lens induction. The optic vesicle (brain outgrowth, neuroectoderm) contacts the overlying surface ectoderm and induces it to thicken into the lens placode, which invaginates to form the lens vesicle and ultimately the crystalline lens.",
+    "visualDescription": "Eye development diagram showing optic vesicle inducing surface ectoderm to form lens placode",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lens_(anatomy)#Development",
+    "volatile": false,
+    "distractors": ["Neuroectoderm (optic cup)", "Mesoderm", "Neural crest"],
+    "variants": [
+      {
+        "quizQuestion": "Lens induction, the process forming the crystalline lens, requires contact between the optic vesicle (neuroectoderm) and which tissue?",
+        "correctAnswer": "Surface ectoderm",
+        "explanation": "The optic vesicle induces the overlying surface ectoderm to form the lens placode. This is a classic example of embryonic induction — one tissue instructing an adjacent tissue to change its fate. Without the inductive signal, lens formation fails."
+      }
+    ]
+  }
+]

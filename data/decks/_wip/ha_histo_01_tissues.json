@@ -1,0 +1,1197 @@
+{
+  "id": "histology_tissues_01",
+  "name": "Histology — Tissues (Batch 1)",
+  "domain": "anatomy",
+  "subDomain": "histology",
+  "description": "The four basic tissue types, epithelial classifications, connective tissue variants, cell junctions, and glands — the foundational vocabulary of histology.",
+  "minimumFacts": 30,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "ha_histo_001",
+      "correctAnswer": "Epithelial, connective, muscle, and nervous",
+      "acceptableAlternatives": [
+        "Epithelium, connective tissue, muscle, nerve"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "tissue_types",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Epithelial, vascular, adipose, and nervous",
+        "Epithelial, connective, osseous, and nervous",
+        "Muscular, vascular, glandular, and nervous",
+        "Epithelial, lymphatic, muscle, and nervous"
+      ],
+      "quizQuestion": "What are the four basic tissue types of the human body?",
+      "explanation": "All tissues in the human body belong to one of four categories: epithelial (covers surfaces and forms glands), connective (supports and connects), muscle (contractile), and nervous (excitable, signal-conducting). Every organ is built from combinations of these four.",
+      "statement": "The four basic tissue types are epithelial, connective, muscle, and nervous tissue.",
+      "wowFactor": "Despite the extraordinary complexity of a human body — 37 trillion cells across hundreds of organ types — every structure is built from just four tissue categories first described systematically by Marie François Xavier Bichat in 1800.",
+      "visualDescription": "Four-panel diagram showing a cross-section of skin (epithelial), a tendon (connective), striated muscle fibers (muscle), and a branching neuron (nervous), each in a different color",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tissue_(biology)",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Histologists classify all body tissues into four types: epithelial, connective, ___, and nervous.",
+          "correctAnswer": "Muscle",
+          "distractors": [
+            "Vascular",
+            "Glandular",
+            "Adipose"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_002",
+      "correctAnswer": "Avascular (no blood vessels)",
+      "acceptableAlternatives": [
+        "Avascular",
+        "No blood supply",
+        "Lacks blood vessels"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "tissue_properties",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Highly vascular (rich blood supply)",
+        "Contains lymphatic vessels but no arteries",
+        "Supplied only by capillary loops",
+        "Vascular only in stratified forms"
+      ],
+      "quizQuestion": "Epithelial tissue is described as avascular — what does this mean for its nutrient supply?",
+      "explanation": "Epithelial tissue contains no blood vessels at all (avascular). It receives nutrients and oxygen by diffusion from capillaries in the underlying connective tissue, passing through the basement membrane. This is why epithelial cells are arranged close to the basement membrane and sheets are never very thick.",
+      "statement": "Epithelial tissue is avascular — it contains no blood vessels and receives nutrients by diffusion from underlying connective tissue.",
+      "wowFactor": "Because epithelia are avascular, corneal transplants are possible without blood type matching — there are no blood vessels to carry immune cells into the graft, making the cornea one of the most immunologically privileged sites in the body.",
+      "visualDescription": "Histology slide cross-section showing a layer of epithelial cells sitting on a pink basement membrane above a connective tissue layer filled with capillaries, with arrows indicating diffusion direction",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Epithelial tissue is avascular and receives nutrients by diffusion from underlying connective tissue.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_003",
+      "correctAnswer": "Basement membrane",
+      "acceptableAlternatives": [
+        "Basal lamina",
+        "Basement lamina"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "tissue_structures",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Reticular lamina",
+        "Periosteum",
+        "Sarcolemma",
+        "Perichondrium"
+      ],
+      "quizQuestion": "Epithelial tissue always sits on a specialized extracellular layer that anchors it to underlying connective tissue. What is this layer called?",
+      "explanation": "The basement membrane (composed of the basal lamina secreted by epithelial cells and the reticular lamina from connective tissue) anchors epithelium, acts as a selective molecular filter, guides cell migration during wound healing, and provides a scaffold for tissue regeneration. Loss of basement membrane integrity is a key feature of invasive carcinoma.",
+      "statement": "All epithelial tissue sits on a basement membrane that anchors it to underlying connective tissue.",
+      "wowFactor": "When cancer 'invades,' it specifically means tumor cells have broken through the basement membrane — intact basement membrane = carcinoma in situ (curable); breached basement membrane = invasive cancer (much harder to treat).",
+      "visualDescription": "High-magnification histology image showing a row of columnar epithelial cells sitting atop a thin pink basement membrane line, below which loose connective tissue is visible",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Basement_membrane",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the function of the basement membrane in epithelial tissue?",
+          "correctAnswer": "Anchors epithelium to underlying connective tissue and acts as a selective molecular filter",
+          "distractors": [
+            "Provides blood vessels to the avascular epithelium",
+            "Secretes mucus to protect the epithelial surface",
+            "Forms tight junctions between adjacent epithelial cells"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_004",
+      "correctAnswer": "Connective tissue",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "tissue_types",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Epithelial tissue",
+        "Muscle tissue",
+        "Nervous tissue"
+      ],
+      "quizQuestion": "Which of the four basic tissue types is the most abundant and widely distributed in the body, characterized by cells embedded in an extracellular matrix of fibers and ground substance?",
+      "explanation": "Connective tissue is the most abundant tissue type by mass and distribution. Its defining feature is the extracellular matrix (ECM) — a meshwork of protein fibers (collagen, elastin, reticular) embedded in ground substance (proteoglycans, water). Major cells include fibroblasts (produce ECM), macrophages (immune surveillance), and mast cells (inflammation).",
+      "statement": "Connective tissue is the most abundant tissue type in the body, defined by its extracellular matrix of fibers and ground substance.",
+      "wowFactor": "The ECM of connective tissue is far more than passive scaffolding — it stores growth factors, transmits mechanical signals, and actively instructs cell behavior. Disrupting ECM signaling is a major driver of fibrosis and cancer progression.",
+      "visualDescription": "Histology slide of loose connective tissue showing widely spaced fibroblasts (dark nuclei) amid wavy pink collagen fibers and open ground substance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Connective_tissue",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The most abundant tissue type in the body, defined by its extracellular matrix, is ___ tissue.",
+          "correctAnswer": "Connective",
+          "distractors": [
+            "Epithelial",
+            "Muscle",
+            "Nervous"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_005",
+      "correctAnswer": "Simple squamous epithelium",
+      "acceptableAlternatives": [
+        "Simple squamous"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_types",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Simple cuboidal epithelium",
+        "Simple columnar epithelium",
+        "Stratified squamous epithelium",
+        "Pseudostratified columnar epithelium"
+      ],
+      "quizQuestion": "The alveoli of the lungs and Bowman's capsule of the kidney are lined by a single layer of flat, scale-like cells optimized for diffusion. What epithelial type is this?",
+      "explanation": "Simple squamous epithelium consists of a single layer of flattened cells with disc-shaped nuclei. Its extreme thinness minimizes the diffusion distance for gases and filtrate. Beyond alveoli and Bowman's capsule, it also forms the endothelium lining blood and lymph vessels and the mesothelium lining body cavities (pleura, peritoneum, pericardium).",
+      "statement": "Simple squamous epithelium lines the alveoli, Bowman's capsule, endothelium, and mesothelium — optimized for gas exchange and filtration.",
+      "wowFactor": "The air-blood barrier in the alveolus — across which all your oxygen crosses — is just two layers of simple squamous epithelium plus a fused basement membrane, totaling roughly 0.5 micrometers thick. That's 1/200th the width of a human hair.",
+      "visualDescription": "Microscopy view of alveolar walls showing extremely thin, flat cells with flattened dark nuclei forming the lining, with red blood cells visible inside capillaries just beyond",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Simple_squamous_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Where in the kidney is simple squamous epithelium found?",
+          "correctAnswer": "Bowman's capsule (parietal layer)",
+          "distractors": [
+            "Proximal convoluted tubule",
+            "Loop of Henle (thick ascending limb)",
+            "Collecting duct"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_006",
+      "correctAnswer": "Simple cuboidal epithelium",
+      "acceptableAlternatives": [
+        "Simple cuboidal"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_types",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Simple squamous epithelium",
+        "Simple columnar epithelium",
+        "Stratified cuboidal epithelium",
+        "Transitional epithelium"
+      ],
+      "quizQuestion": "Kidney tubules, thyroid follicles, and the surface of the ovary are all lined by cells that are roughly as tall as they are wide, with centrally placed round nuclei. What epithelial type is this?",
+      "explanation": "Simple cuboidal epithelium consists of a single layer of cube-shaped cells with large, round, centrally located nuclei. Its primary functions are secretion and absorption. In kidney tubules it reabsorbs filtered molecules; in thyroid follicles it secretes thyroid hormone precursors; on the ovary surface it is a source of ovarian epithelial carcinoma.",
+      "statement": "Simple cuboidal epithelium lines kidney tubules, thyroid follicles, and the ovary surface, serving secretion and absorption.",
+      "wowFactor": "The most common ovarian cancer — serous carcinoma — is now thought to originate not from the ovarian surface epithelium but from simple cuboidal cells lining the fimbriated end of the fallopian tube that implant onto the ovary.",
+      "visualDescription": "Histology cross-section of kidney cortex showing tubular profiles lined by neat cube-shaped cells with round central nuclei, each cell roughly equal in height and width",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Simple_cuboidal_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The thyroid follicles are lined by ___ epithelium, which secretes thyroglobulin into the follicular lumen.",
+          "correctAnswer": "Simple cuboidal",
+          "distractors": [
+            "Simple squamous",
+            "Stratified squamous",
+            "Pseudostratified columnar"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_007",
+      "correctAnswer": "Simple columnar epithelium",
+      "acceptableAlternatives": [
+        "Simple columnar"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_types",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Simple cuboidal epithelium",
+        "Pseudostratified columnar epithelium",
+        "Stratified columnar epithelium",
+        "Transitional epithelium"
+      ],
+      "quizQuestion": "The lining of the stomach, small intestine, large intestine, and gallbladder consists of a single layer of tall, upright cells with basally placed nuclei. What epithelial type is this?",
+      "explanation": "Simple columnar epithelium lines the entire GI tract from the stomach to the rectum and the gallbladder. Its tall cell height provides more cytoplasmic space for organelles involved in secretion and absorption. In the small intestine, cells bear microvilli (brush border) that dramatically increase absorptive surface area. Goblet cells interspersed among columnar cells secrete mucus.",
+      "statement": "Simple columnar epithelium lines the GI tract (stomach to rectum) and gallbladder, specialized for secretion and absorption.",
+      "wowFactor": "The small intestine's absorptive surface area, created by folds (plicae), villi, and microvilli on simple columnar cells, reaches an estimated 250 square meters — roughly the size of a tennis court — packed inside a 6-meter tube.",
+      "visualDescription": "Histology of small intestine mucosa showing tall columnar cells with basal nuclei lining finger-like villi, with goblet cells visible as pale vacuolated cells interspersed throughout",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Simple_columnar_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the main function of simple columnar epithelium in the small intestine?",
+          "correctAnswer": "Secretion and absorption of nutrients",
+          "distractors": [
+            "Gas exchange across thin diffusion barriers",
+            "Protection from abrasion",
+            "Stretch to accommodate volume changes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_008",
+      "correctAnswer": "Pseudostratified ciliated columnar epithelium",
+      "acceptableAlternatives": [
+        "Pseudostratified columnar",
+        "Respiratory epithelium"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_types",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Simple columnar epithelium",
+        "Stratified columnar epithelium",
+        "Simple cuboidal epithelium",
+        "Transitional epithelium"
+      ],
+      "quizQuestion": "The trachea and bronchi are lined by an epithelium that appears multilayered because nuclei are at different heights, yet all cells contact the basement membrane. What is this epithelial type?",
+      "explanation": "Pseudostratified ciliated columnar epithelium appears stratified because cell nuclei are staggered at multiple levels — but every cell contacts the basement membrane, so it is technically a single layer (simple). All tall cells bear cilia that beat in coordinated waves to sweep mucus and trapped particles up toward the pharynx (mucociliary escalator). Goblet cells secrete the mucus layer.",
+      "statement": "Pseudostratified ciliated columnar epithelium lines the trachea and bronchi; all cells touch the basement membrane despite appearing multilayered, and cilia drive mucociliary clearance.",
+      "wowFactor": "Primary ciliary dyskinesia (Kartagener syndrome) paralyzes these cilia due to absent dynein arms. Patients have recurrent lung infections, bronchiectasis — and 50% have situs inversus (mirror-image organs) because embryonic nodal cilia that normally set left-right body asymmetry are also paralyzed.",
+      "visualDescription": "Histology of trachea lining showing tall cells with cilia projecting from the apical surface, nuclei at different heights creating a false appearance of layering, with occasional pale goblet cells",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pseudostratified_columnar_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What is the mucociliary escalator, and which epithelial type drives it?",
+          "correctAnswer": "The upward sweep of mucus by cilia on pseudostratified ciliated columnar epithelium, clearing particles from the airways",
+          "distractors": [
+            "The downward flow of surfactant driven by simple squamous alveolar cells",
+            "The peristaltic movement of cilia on stratified squamous epithelium in the esophagus",
+            "The filtration of plasma by ciliated cells in the kidney glomerulus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_009",
+      "correctAnswer": "Stratified squamous (keratinized) epithelium",
+      "acceptableAlternatives": [
+        "Keratinized stratified squamous",
+        "Stratified squamous keratinized"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_types",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Stratified squamous (non-keratinized) epithelium",
+        "Simple squamous epithelium",
+        "Transitional epithelium",
+        "Pseudostratified columnar epithelium"
+      ],
+      "quizQuestion": "The epidermis of the skin consists of multiple layers of cells where surface cells are dead, filled with keratin, and shed continuously. What epithelial type is this?",
+      "explanation": "Keratinized stratified squamous epithelium forms the epidermis. Cells (keratinocytes) progressively flatten, synthesize keratin, and die as they migrate from the basal layer to the surface. The dead, keratin-packed surface cells (corneocytes) create a tough, waterproof barrier against abrasion and desiccation. The stratum corneum layer is continuously shed (desquamation) and replaced.",
+      "statement": "Keratinized stratified squamous epithelium forms the epidermis, with dead keratin-filled surface cells providing protection from abrasion and water loss.",
+      "wowFactor": "You shed and replace the entire outer layer of your skin (stratum corneum) roughly every 2–4 weeks. The dust in your home is largely made up of shed skin cells — about 30,000 to 40,000 cells per hour.",
+      "visualDescription": "Cross-section of thick skin showing multiple stacked layers of cells, flattening toward the surface, with the outermost pale pink anucleate keratin layer (stratum corneum) clearly visible",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Stratified_squamous_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Why does keratinized stratified squamous epithelium have dead surface cells filled with keratin?",
+          "correctAnswer": "To form a tough, waterproof barrier against abrasion and water loss",
+          "distractors": [
+            "To enable stretch without tearing during movement",
+            "To facilitate gas exchange through the skin surface",
+            "To allow mucociliary clearance of surface debris"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_010",
+      "correctAnswer": "Stratified squamous (non-keratinized) epithelium",
+      "acceptableAlternatives": [
+        "Non-keratinized stratified squamous",
+        "Stratified squamous non-keratinized"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_types",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Stratified squamous (keratinized) epithelium",
+        "Simple columnar epithelium",
+        "Transitional epithelium",
+        "Simple squamous epithelium"
+      ],
+      "quizQuestion": "The oral cavity, esophagus, and vagina are lined by multiple cell layers where surface cells remain alive and moist. What epithelial type is this?",
+      "explanation": "Non-keratinized stratified squamous epithelium lines wet surfaces subject to abrasion: oral cavity, pharynx, esophagus, vagina, and the cornea. Unlike the skin, surface cells stay alive and nucleated, kept moist by secretions. It resists abrasion from food and friction but lacks the waterproofing of keratinized epidermis.",
+      "statement": "Non-keratinized stratified squamous epithelium lines the oral cavity, esophagus, and vagina — multiple living cell layers resisting abrasion on moist surfaces.",
+      "wowFactor": "Barrett's esophagus occurs when chronic acid reflux damages the esophagus and the normal non-keratinized stratified squamous epithelium is replaced by intestinal-type simple columnar epithelium — a metaplasia that carries a 30–125x increased risk of esophageal adenocarcinoma.",
+      "visualDescription": "Histology of esophageal mucosa showing thick bands of stacked squamous cells with nucleated surface cells, contrasting with the dead anucleate cells seen in skin",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Stratified_squamous_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The esophagus is lined by ___ stratified squamous epithelium, where surface cells remain alive and nucleated.",
+          "correctAnswer": "Non-keratinized",
+          "distractors": [
+            "Keratinized",
+            "Transitional",
+            "Pseudostratified"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_011",
+      "correctAnswer": "Transitional epithelium (urothelium)",
+      "acceptableAlternatives": [
+        "Transitional epithelium",
+        "Urothelium"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_types",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Simple columnar epithelium",
+        "Stratified squamous epithelium",
+        "Simple cuboidal epithelium",
+        "Pseudostratified columnar epithelium"
+      ],
+      "quizQuestion": "The bladder, ureters, and renal pelvis are lined by a specialized epithelium that changes shape when stretched and provides an impermeable barrier to urine. What is it called?",
+      "explanation": "Transitional epithelium (urothelium) is unique to the urinary outflow tract. When the bladder is empty, the cells appear dome-shaped and the epithelium looks thick and multilayered (5–6 cell layers). When the bladder fills and stretches, the cells flatten and the apparent layer count decreases. Large, specialized surface 'umbrella cells' bear asymmetric membrane plaques (uroplakins) that maintain impermeability to urine.",
+      "statement": "Transitional epithelium (urothelium) lines the bladder, ureters, and renal pelvis, uniquely able to stretch and specialized for impermeability to urine.",
+      "wowFactor": "The 'umbrella cells' of the urothelium store extra membrane in folded surface plaques that unfurl as the bladder fills — allowing the surface area to increase by up to 70% without tearing or leaking.",
+      "visualDescription": "Histology of bladder wall showing rounded dome-shaped umbrella cells at the luminal surface above several layers of underlying cells, with the full urothelium appearing thick in the relaxed state",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Transitional_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Where in the body is transitional epithelium (urothelium) found?",
+          "correctAnswer": "Bladder, ureters, and renal pelvis",
+          "distractors": [
+            "Trachea, bronchi, and bronchioles",
+            "Stomach, small intestine, and colon",
+            "Oral cavity, esophagus, and vagina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_012",
+      "correctAnswer": "Loose (areolar) connective tissue",
+      "acceptableAlternatives": [
+        "Areolar connective tissue",
+        "Loose connective tissue"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "connective_tissue_types",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Dense regular connective tissue",
+        "Dense irregular connective tissue",
+        "Reticular connective tissue",
+        "Adipose tissue"
+      ],
+      "quizQuestion": "The most common type of connective tissue, found beneath epithelium and around organs, contains fibroblasts and all three fiber types (collagen, elastic, reticular) loosely arranged in abundant ground substance. What is it called?",
+      "explanation": "Loose (areolar) connective tissue is the most widely distributed connective tissue. It fills spaces between and around organs, underlies all epithelial tissue, and forms the lamina propria of mucous membranes. It contains fibroblasts (main cell type), macrophages, mast cells, and occasional lymphocytes embedded in a gel-like ground substance with all three fiber types — but in a sparse, open arrangement unlike dense connective tissue.",
+      "statement": "Loose (areolar) connective tissue is the most common connective tissue type, found beneath epithelia and around organs, containing all three fiber types in an open arrangement.",
+      "wowFactor": "Loose connective tissue is the 'packing material' of the body — it fills every gap, allows organs to move relative to each other, and is the primary battleground where immune cells (macrophages, mast cells, lymphocytes) monitor for infection.",
+      "visualDescription": "Histology of loose connective tissue showing widely spaced wavy collagen fibers, thinner elastic fibers, and scattered fibroblast nuclei with abundant clear ground substance in between",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Loose_connective_tissue",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The connective tissue found beneath epithelium and around organs, with all three fiber types in a loose arrangement, is called ___ (areolar) connective tissue.",
+          "correctAnswer": "Loose",
+          "distractors": [
+            "Dense regular",
+            "Dense irregular",
+            "Reticular"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_013",
+      "correctAnswer": "Dense regular connective tissue",
+      "acceptableAlternatives": [
+        "Dense regular CT"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "connective_tissue_types",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Dense irregular connective tissue",
+        "Loose (areolar) connective tissue",
+        "Hyaline cartilage",
+        "Elastic connective tissue"
+      ],
+      "quizQuestion": "Tendons and ligaments are composed of a connective tissue in which collagen fibers run in parallel bundles, conferring very high tensile strength in one direction. What type is this?",
+      "explanation": "Dense regular connective tissue has tightly packed, parallel collagen fibers all oriented in the same direction. This arrangement provides maximum tensile strength along the axis of force — exactly what tendons (connecting muscle to bone) and ligaments (connecting bone to bone) require. Fibroblasts are compressed between fiber bundles and appear as flattened cells (fibrocytes in mature tissue).",
+      "statement": "Dense regular connective tissue, found in tendons and ligaments, has parallel collagen fibers that provide high tensile strength in one direction.",
+      "wowFactor": "The Achilles tendon — a dense regular connective tissue — can withstand forces of up to 12.5 times body weight during running. Its collagen fibers are among the most perfectly aligned biological structures known, essentially a natural high-tensile cable.",
+      "visualDescription": "Histology of a tendon showing densely packed parallel pink collagen bundles running left to right, with flattened fibroblast nuclei (tenocytes) squeezed in rows between the bundles",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dense_regular_connective_tissue",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Why are collagen fibers in tendons and ligaments arranged in parallel bundles rather than randomly?",
+          "correctAnswer": "To provide maximum tensile strength along a single axis of force",
+          "distractors": [
+            "To allow stretch in multiple directions simultaneously",
+            "To maximize diffusion of nutrients from ground substance",
+            "To resist compressive forces from all directions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_014",
+      "correctAnswer": "Dense irregular connective tissue",
+      "acceptableAlternatives": [
+        "Dense irregular CT"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "connective_tissue_types",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Dense regular connective tissue",
+        "Loose connective tissue",
+        "Fibrocartilage",
+        "Hyaline cartilage"
+      ],
+      "quizQuestion": "The reticular layer of the dermis and organ capsules are composed of a connective tissue with tightly packed collagen fibers running in many directions, resisting forces from multiple angles. What type is this?",
+      "explanation": "Dense irregular connective tissue has the same densely packed collagen fibers as dense regular, but they are arranged randomly in multiple planes. This gives strength in all directions rather than just one. It forms the deep dermis (reticular layer), organ capsules (kidney, liver, spleen), joint capsules, and perichondrium — structures that experience forces from unpredictable directions.",
+      "statement": "Dense irregular connective tissue, found in the dermis and organ capsules, has randomly oriented collagen fibers providing strength in multiple directions.",
+      "wowFactor": "Leather is made from the dense irregular connective tissue of the dermis. The random collagen fiber orientation that makes leather tough and flexible in all directions is exactly why you can twist and bend a leather strap without it splitting along a grain line.",
+      "visualDescription": "Histology of dermis showing interwoven collagen bundles running in many different directions in a dense, irregular pattern, clearly distinct from the parallel bundles of a tendon",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dense_irregular_connective_tissue",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The reticular layer of the dermis is composed of ___ connective tissue, with collagen fibers oriented in multiple directions.",
+          "correctAnswer": "Dense irregular",
+          "distractors": [
+            "Dense regular",
+            "Loose areolar",
+            "Reticular"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_015",
+      "correctAnswer": "Hyaline cartilage",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "connective_tissue_types",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Elastic cartilage",
+        "Fibrocartilage",
+        "Compact bone",
+        "Dense regular connective tissue"
+      ],
+      "quizQuestion": "The most common type of cartilage, found in the trachea, costal cartilages of the ribs, and articular surfaces of joints, has a glassy homogeneous matrix with collagen fibers invisible to standard light microscopy. What type is it?",
+      "explanation": "Hyaline cartilage is the most abundant cartilage type. Its matrix contains type II collagen fibers, but they match the refractive index of the ground substance, making them invisible on standard H&E — giving the matrix a glassy (hyaline) appearance. Chondrocytes sit in lacunae. It forms the fetal skeleton, costal cartilages, tracheal rings, the articular surfaces of synovial joints, and the nasal cartilages.",
+      "statement": "Hyaline cartilage is the most common cartilage, found in trachea, ribs, and joint surfaces, with a glassy matrix that makes its type II collagen fibers invisible on H&E.",
+      "wowFactor": "Articular hyaline cartilage has no blood vessels, no nerves, and no lymphatics. It gets nutrients entirely by diffusion from synovial fluid — which is why cartilage heals so poorly. Once damaged, it cannot regenerate because it has no vascular or stem cell supply.",
+      "visualDescription": "Histology of hyaline cartilage showing a glassy pale blue-purple homogeneous matrix with rounded chondrocytes sitting in small clear lacunae, a perichondrium visible at the outer edge",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hyaline_cartilage",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which cartilage type is found at articular surfaces of synovial joints?",
+          "correctAnswer": "Hyaline cartilage",
+          "distractors": [
+            "Elastic cartilage",
+            "Fibrocartilage",
+            "Dense regular connective tissue"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_016",
+      "correctAnswer": "Fibrocartilage",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "connective_tissue_types",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Hyaline cartilage",
+        "Elastic cartilage",
+        "Dense regular connective tissue",
+        "Compact bone"
+      ],
+      "quizQuestion": "Intervertebral discs, the menisci of the knee, and the pubic symphysis contain a cartilage type with dense bundles of visible type I collagen fibers, providing both compressive resistance and tensile strength. What type is this?",
+      "explanation": "Fibrocartilage is a hybrid tissue combining the compressive resistance of hyaline cartilage with the tensile strength of dense regular connective tissue. Its matrix has abundant, visible type I collagen bundles. It lacks a perichondrium. Found in intervertebral discs (annulus fibrosus), knee menisci, pubic symphysis, and tendon insertion sites — all locations requiring resistance to both compression and tension simultaneously.",
+      "statement": "Fibrocartilage, found in intervertebral discs, knee menisci, and pubic symphysis, has dense visible type I collagen bundles providing combined compressive and tensile strength.",
+      "wowFactor": "A herniated disc is fibrocartilage failure: the inner nucleus pulposus (jelly-like proteoglycan core) herniates through a tear in the outer annulus fibrosus (fibrocartilage ring). The proteoglycan gel can absorb water equal to several times its weight — which is why you are about 1 cm taller in the morning than at night.",
+      "visualDescription": "Histology of fibrocartilage showing clearly visible dense collagen bundles with chondrocytes in lacunae scattered between the fiber bundles, lacking the glassy appearance of hyaline cartilage",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fibrocartilage",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The intervertebral discs and knee menisci are made of ___, a cartilage type with visible type I collagen bundles.",
+          "correctAnswer": "Fibrocartilage",
+          "distractors": [
+            "Hyaline cartilage",
+            "Elastic cartilage",
+            "Dense irregular connective tissue"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_017",
+      "correctAnswer": "Elastic cartilage",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "connective_tissue_types",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Hyaline cartilage",
+        "Fibrocartilage",
+        "Loose connective tissue",
+        "Dense regular connective tissue"
+      ],
+      "quizQuestion": "The external ear (auricle) and epiglottis contain a cartilage type whose matrix is loaded with elastic fibers rather than collagen, allowing it to spring back after deformation. What type is this?",
+      "explanation": "Elastic cartilage contains abundant elastic fibers in addition to type II collagen, giving it a yellow appearance on gross examination. The elastic fibers allow the tissue to bend and then return to its original shape — critical for the auricle (which must recoil after being pressed) and epiglottis (which must spring open after swallowing). It has a perichondrium and is more cellular than hyaline cartilage.",
+      "statement": "Elastic cartilage, found in the external ear and epiglottis, contains elastic fibers allowing it to spring back after deformation.",
+      "wowFactor": "You can feel the difference between elastic and hyaline cartilage on your own body: the tip of your nose (hyaline cartilage) feels relatively firm; your earlobe (elastic cartilage) bends easily and snaps back. Same class of tissue, radically different mechanical properties from one protein swap.",
+      "visualDescription": "Histology of elastic cartilage showing a matrix with both collagen and wavy elastic fibers (visible as branching dark lines with special stains) and chondrocytes in lacunae, with perichondrium at the border",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Elastic_cartilage",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Why does elastic cartilage in the auricle and epiglottis contain elastic fibers?",
+          "correctAnswer": "To allow the tissue to bend and spring back to its original shape",
+          "distractors": [
+            "To withstand compressive loading from body weight",
+            "To provide a waterproof barrier impermeable to synovial fluid",
+            "To facilitate diffusion of nutrients without blood vessels"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_018",
+      "correctAnswer": "Blood",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "tissue_types",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Smooth muscle",
+        "Lymphatic tissue",
+        "Epithelial tissue",
+        "Nervous tissue"
+      ],
+      "quizQuestion": "Which tissue type is technically classified as a connective tissue because it has cells (erythrocytes, leukocytes, platelets) suspended in a liquid extracellular matrix (plasma)?",
+      "explanation": "Blood is a specialized connective tissue. Like all connective tissues, it has cells and an extracellular matrix — but the matrix is liquid (plasma, ~55% of blood volume). The cellular components (red blood cells, white blood cells, platelets) develop from hematopoietic stem cells in the bone marrow, which is itself a connective tissue. This classification surprises most students who have never considered blood as connective tissue.",
+      "statement": "Blood is classified as a connective tissue because its cells (RBCs, WBCs, platelets) are suspended in a liquid extracellular matrix (plasma).",
+      "wowFactor": "Plasma — the liquid matrix of blood — is ~90% water but carries over 1,000 different proteins. Fibrinogen, one of those proteins, spontaneously polymerizes into fibrin strands within seconds of a vessel injury, forming the scaffold of a blood clot without any cell involvement.",
+      "visualDescription": "Blood smear showing round biconcave red blood cells (salmon-pink, no nuclei), scattered purple-stained leukocytes with distinct nuclei, and tiny platelets, all floating in pale plasma",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blood",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Blood is classified as a type of connective tissue because its cells are suspended in a liquid extracellular matrix.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_019",
+      "correctAnswer": "Tight junctions (zonula occludens)",
+      "acceptableAlternatives": [
+        "Tight junctions",
+        "Zonula occludens"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cell_junction_types",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Adherens junctions",
+        "Desmosomes",
+        "Gap junctions",
+        "Hemidesmosomes"
+      ],
+      "quizQuestion": "Which cell junction, located at the apical surface of epithelial cells, seals adjacent cells together to prevent molecules from passing between them (paracellular transport)?",
+      "explanation": "Tight junctions (zonula occludens) are the apical-most junction in the epithelial junctional complex. Transmembrane proteins (claudins, occludins) from adjacent cells interdigitate and seal the intercellular space, preventing paracellular ion and water movement. They are critical in the gut epithelium (regulating nutrient absorption), the blood-brain barrier (preventing most blood-borne molecules from entering the CNS), and renal tubules (controlling tubular reabsorption).",
+      "statement": "Tight junctions (zonula occludens) seal adjacent epithelial cells at their apical surface, preventing paracellular transport of molecules between cells.",
+      "wowFactor": "The blood-brain barrier — which blocks most drugs from reaching the brain — is maintained largely by exceptionally tight junctions between brain capillary endothelial cells. Drug companies spend billions trying to engineer molecules that can sneak past these junctions to treat neurological diseases.",
+      "visualDescription": "Electron micrograph schematic showing two adjacent epithelial cells with a 'kissing' membrane fusion at the apical surface (tight junction), with claudin and occludin strands bridging the intercellular gap",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tight_junction",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What proteins are primarily responsible for forming tight junctions between epithelial cells?",
+          "correctAnswer": "Claudins and occludins",
+          "distractors": [
+            "Cadherins and catenins",
+            "Desmogleins and desmocollins",
+            "Connexins",
+            "Integrins and laminins"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_020",
+      "correctAnswer": "Desmosomes (macula adherens)",
+      "acceptableAlternatives": [
+        "Desmosomes",
+        "Macula adherens"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cell_junction_types",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Tight junctions",
+        "Adherens junctions",
+        "Gap junctions",
+        "Hemidesmosomes"
+      ],
+      "quizQuestion": "Which cell junction links to intermediate filaments, uses cadherins (desmogleins and desmocollins) to connect adjacent cells, and is especially abundant in the epidermis and cardiac muscle to resist shearing forces?",
+      "explanation": "Desmosomes (macula adherens) are spot-weld junctions that anchor to intermediate filaments (keratin in epithelium, desmin in cardiac muscle), distributing mechanical stress across the cell sheet. The transmembrane proteins desmogleins and desmocollins are cadherins that bridge the intercellular space. They are concentrated in high-stress tissues: skin epidermis (exposed to friction), cardiac muscle (intercalated discs subject to contractile force), and the bladder.",
+      "statement": "Desmosomes (macula adherens) anchor to intermediate filaments via desmogleins and desmocollins, resisting shearing forces in epidermis and cardiac muscle.",
+      "wowFactor": "Pemphigus vulgaris is a life-threatening autoimmune disease where antibodies attack desmogleins in skin desmosomes — the epidermis literally peels away from itself (like a cooked tomato skin), forming painful blisters over the entire body. Before corticosteroids, it was almost always fatal.",
+      "visualDescription": "Electron micrograph schematic of a desmosome showing two plasma membranes with a dense plaque on each cytoplasmic face, keratin intermediate filaments looping into the plaques, and cadherin bridges crossing the intercellular space",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Desmosome",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Desmosomes use cadherin proteins called desmogleins and ___ to bridge the intercellular space between adjacent cells.",
+          "correctAnswer": "Desmocollins",
+          "distractors": [
+            "Occludins",
+            "Connexins",
+            "Integrins"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_021",
+      "correctAnswer": "Gap junctions",
+      "acceptableAlternatives": [
+        "Nexus"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cell_junction_types",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Tight junctions",
+        "Desmosomes",
+        "Adherens junctions",
+        "Hemidesmosomes"
+      ],
+      "quizQuestion": "Which cell junctions form pores (connexons) from hexamers of connexin proteins that allow direct cytoplasmic communication — passing ions and small molecules — between adjacent cells, essential in cardiac muscle and smooth muscle?",
+      "explanation": "Gap junctions consist of two hemichannels (connexons), each made of six connexin proteins, that align across the intercellular space to create a direct aqueous channel between cytoplasms. Ions, second messengers (cAMP, IP3), glucose, and small molecules (< ~1 kDa) pass freely. In cardiac muscle they are located in intercalated discs and allow the wave of electrical depolarization to spread rapidly, coordinating contraction. In smooth muscle they synchronize peristalsis.",
+      "statement": "Gap junctions (connexons) allow direct cell-to-cell passage of ions and small molecules, coordinating electrical coupling in cardiac muscle and smooth muscle.",
+      "wowFactor": "Your heartbeat is coordinated almost entirely by gap junctions. The 2–3 billion cardiomyocytes do not each fire independently — gap junctions electrically couple them into a functional syncytium so the entire ventricle contracts as one unit within milliseconds. Block the gap junctions and the heart fibrillates.",
+      "visualDescription": "Schematic diagram of a gap junction showing two hexameric connexon hemichannels from adjacent cell membranes aligned to form a continuous aqueous pore, with arrows showing ion and small molecule flow between cytoplasms",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gap_junction",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What protein forms the hexameric subunit (connexon) of a gap junction channel?",
+          "correctAnswer": "Connexin",
+          "distractors": [
+            "Claudin",
+            "Cadherin",
+            "Integrin",
+            "Desmoglein"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_022",
+      "correctAnswer": "Adherens junctions (zonula adherens)",
+      "acceptableAlternatives": [
+        "Adherens junctions",
+        "Zonula adherens"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cell_junction_types",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Tight junctions",
+        "Desmosomes",
+        "Gap junctions",
+        "Hemidesmosomes"
+      ],
+      "quizQuestion": "Which cell junction, located just below tight junctions in the epithelial junctional complex, links to actin filaments via cadherins and catenins to provide mechanical stability across the cell sheet?",
+      "explanation": "Adherens junctions (zonula adherens) form a continuous belt below the tight junctions. E-cadherin (the main cadherin) on one cell binds E-cadherin on the adjacent cell in a calcium-dependent manner; the cytoplasmic tail connects to the actin cytoskeleton via catenins (alpha, beta, gamma). This actin linkage transmits tension across the epithelium, allowing coordinated cell shape changes during morphogenesis. Loss of E-cadherin is a key step in epithelial-mesenchymal transition (EMT) in cancer invasion.",
+      "statement": "Adherens junctions (zonula adherens) link actin filaments via E-cadherin and catenins below the tight junctions, providing mechanical stability across the epithelial sheet.",
+      "wowFactor": "E-cadherin loss is one of the hallmarks of invasive cancer. When tumor cells lose adherens junctions, they detach from the epithelial sheet, acquire a mesenchymal morphology, and gain the ability to migrate into surrounding tissue — a process called epithelial-mesenchymal transition (EMT). Beta-catenin from adherens junctions can also act as a transcription factor when released, driving oncogenic gene expression in colorectal cancer.",
+      "visualDescription": "Schematic of the epithelial junctional complex showing tight junction at top (apical), adherens junction belt below it with actin filaments, then desmosomes, illustrating the apical-to-basal sequence",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adherens_junction",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Adherens junctions connect to the ___ cytoskeleton via cadherins and catenins.",
+          "correctAnswer": "Actin",
+          "distractors": [
+            "Intermediate filament",
+            "Microtubule",
+            "Myosin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_023",
+      "correctAnswer": "Hemidesmosomes",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cell_junction_types",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Desmosomes",
+        "Tight junctions",
+        "Gap junctions",
+        "Adherens junctions"
+      ],
+      "quizQuestion": "Which specialized cell junction anchors the basal surface of epithelial cells to the basement membrane using integrins (rather than cadherins), linking internally to keratin intermediate filaments?",
+      "explanation": "Hemidesmosomes resemble half a desmosome structurally but are functionally different — they anchor epithelium to the extracellular basement membrane rather than to an adjacent cell. The transmembrane proteins are integrins (alpha6beta4) rather than cadherins. Intracellularly they connect to keratin intermediate filaments. Mutations or autoimmune attack against hemidesmosome components cause bullous skin diseases where the epidermis detaches from the dermis.",
+      "statement": "Hemidesmosomes anchor epithelial basal cells to the basement membrane via integrins (alpha6beta4), linking internally to keratin intermediate filaments.",
+      "wowFactor": "Bullous pemphigoid — the most common autoimmune blistering disease in elderly patients — is caused by antibodies against BP180 and BP230, structural proteins of hemidesmosomes. When hemidesmosomes fail, the epidermis lifts off the dermis and fills with fluid, forming large tense blisters.",
+      "visualDescription": "Electron micrograph schematic of a hemidesmosome showing a single epithelial cell with a dense cytoplasmic plaque on its basal surface, integrin transmembrane anchors crossing into the basement membrane below, keratin fibers looping into the plaque above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hemidesmosome",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the key structural difference between desmosomes and hemidesmosomes?",
+          "correctAnswer": "Desmosomes join two adjacent cells (cell-to-cell) using cadherins; hemidesmosomes anchor a single cell to the basement membrane using integrins",
+          "distractors": [
+            "Desmosomes anchor to actin filaments; hemidesmosomes anchor to microtubules",
+            "Desmosomes are found only in cardiac muscle; hemidesmosomes only in epithelia",
+            "Desmosomes use connexins; hemidesmosomes use claudins"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_024",
+      "correctAnswer": "Exocrine glands",
+      "acceptableAlternatives": [
+        "Exocrine"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "gland_types",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Endocrine glands",
+        "Paracrine glands",
+        "Neuroendocrine glands"
+      ],
+      "quizQuestion": "Sweat glands, salivary glands, sebaceous glands, and the exocrine pancreas all secrete their products onto an epithelial surface or into a duct. What type of gland is this?",
+      "explanation": "Exocrine glands retain a duct connecting them to an epithelial surface and secrete their products externally (onto skin) or into body cavities (digestive secretions, mucus). They develop from surface epithelium and maintain that ductal connection throughout life. Types include sweat (temperature regulation), salivary (digestive enzymes, lubrication), sebaceous (skin oil), and pancreatic exocrine (digestive enzymes into duodenum).",
+      "statement": "Exocrine glands secrete through ducts onto epithelial surfaces; examples include sweat, salivary, sebaceous, and the exocrine pancreas.",
+      "wowFactor": "The human body has roughly 2–4 million sweat glands — all exocrine. You can produce up to 10 liters of sweat per day during extreme heat or exercise, making sweating one of the most powerful heat-dissipation mechanisms in the animal kingdom.",
+      "visualDescription": "Histology of salivary gland showing clusters of secretory acinar cells (dark purple, pyramid-shaped) draining into central ducts that converge into larger collecting ducts carrying saliva toward the oral cavity",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Exocrine_gland",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Exocrine glands secrete their products through ducts onto epithelial surfaces, unlike endocrine glands which secrete directly into the bloodstream.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_025",
+      "correctAnswer": "Endocrine glands",
+      "acceptableAlternatives": [
+        "Endocrine"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "gland_types",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Exocrine glands",
+        "Mucous glands",
+        "Holocrine glands"
+      ],
+      "quizQuestion": "The pituitary, thyroid, and adrenal glands secrete hormones directly into the bloodstream without ducts. What type of gland is this?",
+      "explanation": "Endocrine glands lack ducts entirely — they evolved from epithelial tissue but lost their ductal connection during development. Secretory cells are in direct contact with capillaries, and hormones diffuse into the bloodstream to act on distant target organs. Examples: pituitary (master regulator hormones), thyroid (T3/T4 for metabolism), adrenal cortex (cortisol, aldosterone), pancreatic islets of Langerhans (insulin, glucagon).",
+      "statement": "Endocrine glands secrete hormones directly into the bloodstream without ducts; examples include the pituitary, thyroid, and adrenal glands.",
+      "wowFactor": "The pituitary gland (size of a pea, ~0.5 g) is the master endocrine gland — it secretes 8 different hormones that regulate thyroid function, adrenal function, reproduction, growth, water balance, skin pigmentation, and uterine contraction. Removing it would collapse nearly every hormonal axis in the body.",
+      "visualDescription": "Histology of thyroid gland showing follicles (round structures) filled with pink colloid (stored thyroglobulin), lined by simple cuboidal follicular epithelial cells with capillaries visible between follicles",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Endocrine_gland",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Unlike exocrine glands, ___ glands have no ducts and secrete hormones directly into the bloodstream.",
+          "correctAnswer": "Endocrine",
+          "distractors": [
+            "Exocrine",
+            "Apocrine",
+            "Merocrine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_026",
+      "correctAnswer": "Merocrine secretion (exocytosis)",
+      "acceptableAlternatives": [
+        "Merocrine",
+        "Eccrine",
+        "Exocytosis"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "secretion_modes",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Apocrine secretion",
+        "Holocrine secretion",
+        "Paracrine secretion"
+      ],
+      "quizQuestion": "The most common secretory mechanism in glands, in which secretory vesicles fuse with the apical plasma membrane and release their contents into the duct without damaging the cell, is called what?",
+      "explanation": "Merocrine secretion (also called eccrine secretion) involves packaging products into membrane-bound vesicles that fuse with the apical plasma membrane and release contents by exocytosis. The cell remains intact. This is the default mechanism for most glands: salivary glands, the exocrine pancreas, mucous glands, and sweat glands (eccrine type). It is the most efficient and reversible secretory mode.",
+      "statement": "Merocrine (eccrine) secretion is the most common glandular mechanism: secretory vesicles release contents by exocytosis, leaving the cell intact.",
+      "wowFactor": "The pancreas produces roughly 2 liters of digestive juice per day by merocrine secretion — containing proteases, lipases, and amylases at concentrations high enough to digest the pancreas itself. To prevent this, proteases are secreted as inactive zymogens (trypsinogen, chymotrypsinogen) that only activate when they reach the duodenum.",
+      "visualDescription": "Diagram showing an exocrine gland cell with secretory granules clustered at the apical surface, a granule membrane fusing with the plasma membrane, and its contents releasing into the gland lumen — cell membrane remains intact throughout",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Merocrine",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which mode of secretion involves exocytosis of vesicle contents without any loss of cell membrane or cytoplasm?",
+          "correctAnswer": "Merocrine (eccrine) secretion",
+          "distractors": [
+            "Apocrine secretion",
+            "Holocrine secretion",
+            "Autocrine secretion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_027",
+      "correctAnswer": "Apocrine secretion",
+      "acceptableAlternatives": [
+        "Apocrine"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "secretion_modes",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Merocrine secretion",
+        "Holocrine secretion",
+        "Endocrine secretion"
+      ],
+      "quizQuestion": "In which secretory mode does the apical portion of the cell pinch off along with the secretory product, releasing membrane-enclosed blebs containing the secretion while the cell body remains alive?",
+      "explanation": "Apocrine secretion involves budding of the apical cytoplasm: membrane blebs containing secretory products pinch off and are released into the gland lumen. The cell loses a small amount of cytoplasm but survives and regenerates. Classic examples include apocrine sweat glands (axillary/genital region — produce odorous secretions that contribute to body odor after bacterial metabolism) and mammary glands (lipid secretion component).",
+      "statement": "Apocrine secretion involves pinching off apical membrane blebs containing the product; the cell survives. Classic example: apocrine sweat glands of the axilla.",
+      "wowFactor": "Human body odor does not come directly from apocrine sweat — the secretion itself is odorless. Skin bacteria (mainly Corynebacterium and Staphylococcus) metabolize the lipid- and protein-rich apocrine secretion into volatile fatty acids and thioalcohols that produce the characteristic scent.",
+      "visualDescription": "Diagram of an apocrine gland cell showing a dome-shaped apical protrusion filled with secretory product bulging into the lumen, the protrusion pinching off as a membrane bleb while the cell body remains attached to the basement membrane",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Apocrine",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Apocrine sweat glands (in the axilla) secrete by pinching off ___ from the apical cell surface.",
+          "correctAnswer": "Membrane blebs (apical cytoplasmic buds)",
+          "distractors": [
+            "Secretory vesicles by exocytosis",
+            "The entire cell contents after cell rupture",
+            "Free diffusion of lipids across the membrane"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_028",
+      "correctAnswer": "Holocrine secretion",
+      "acceptableAlternatives": [
+        "Holocrine"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "secretion_modes",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Merocrine secretion",
+        "Apocrine secretion",
+        "Paracrine secretion"
+      ],
+      "quizQuestion": "In which mode of secretion does the entire secretory cell rupture and die to release its products, with sebaceous glands of the skin being the classic example?",
+      "explanation": "In holocrine secretion, the cell accumulates its secretory product as it matures, then undergoes programmed cell death (apoptosis/cell lysis), releasing all its contents — including the secretory product and cellular debris — into the duct. Sebaceous glands produce sebum (skin oil) this way: basal cells proliferate, mature cells fill with lipid, then rupture. New basal cells continuously replace them.",
+      "statement": "Holocrine secretion involves complete cell rupture to release the product; sebaceous glands produce sebum this way.",
+      "wowFactor": "Every time your skin is conditioned by sebum, cells died for it. Sebaceous glands produce up to 1–2 grams of sebum per day by mass-producing lipid-filled cells that then sacrifice themselves. Acne occurs partly when this holocrine process goes wrong and the cell debris clogs the follicular opening.",
+      "visualDescription": "Histology of sebaceous gland showing a lobule of cells: basal cells with dark nuclei at the periphery, progressively enlarging pale lipid-filled cells toward the center, and central duct filled with cellular debris and lipid (sebum) — the product of cells that have ruptured",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Holocrine",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which gland is the classic example of holocrine secretion?",
+          "correctAnswer": "Sebaceous gland",
+          "distractors": [
+            "Eccrine sweat gland",
+            "Salivary gland (parotid)",
+            "Apocrine sweat gland"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_029",
+      "correctAnswer": "Pseudostratified — all cells contact the basement membrane, but nuclei are at different heights",
+      "acceptableAlternatives": [
+        "All cells touch the basement membrane despite appearing multilayered"
+      ],
+      "chainThemeId": 0,
+      "answerTypePoolId": "epithelial_properties",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Stratified — only basal cells contact the basement membrane, surface cells do not",
+        "Simple — each cell spans the full height from basement membrane to lumen",
+        "Transitional — cells change contact with the basement membrane depending on stretch"
+      ],
+      "quizQuestion": "What key structural feature distinguishes pseudostratified epithelium from truly stratified epithelium?",
+      "explanation": "In truly stratified epithelium, only the basal cell layer contacts the basement membrane — upper layers are stacked on top and have no basement membrane contact. In pseudostratified epithelium, every cell contacts the basement membrane, but cells are different heights and their nuclei occupy different vertical positions, creating the false (pseudo) appearance of multiple layers. This distinction matters for classification and understanding tissue behavior.",
+      "statement": "In pseudostratified epithelium, ALL cells contact the basement membrane (unlike true stratified where only basal cells do); the multilayered appearance is false, caused by nuclei at different heights.",
+      "wowFactor": "This naming trick catches almost every histology student: 'pseudo' means false, so pseudostratified = falsely stratified = really a SIMPLE epithelium. Yet most students remember the trachea as stratified rather than simple — making this one of the most reliably tested distinctions in histology examinations worldwide.",
+      "visualDescription": "Side-by-side comparison diagram: pseudostratified epithelium with all cells touching the basement membrane (nuclei staggered at different heights); stratified squamous with only the bottom layer touching basement membrane and multiple stacked layers above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pseudostratified_columnar_epithelium",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: In pseudostratified epithelium, all cells contact the basement membrane — it is technically a simple (single-layer) epithelium despite appearing multilayered.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_030",
+      "correctAnswer": "Fibroblasts",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "cell_types",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Macrophages",
+        "Mast cells",
+        "Chondrocytes",
+        "Keratinocytes"
+      ],
+      "quizQuestion": "Which are the primary resident cells of connective tissue, responsible for synthesizing collagen, elastin, and other extracellular matrix components?",
+      "explanation": "Fibroblasts are the main cellular component of connective tissue. They synthesize and maintain the extracellular matrix: collagen (type I, III), elastin, reticular fibers, and ground substance components (proteoglycans, glycoproteins). In quiescent connective tissue, mature fibroblasts are called fibrocytes. When tissue is injured, fibrocytes reactivate into fibroblasts and increase ECM production — the basis of scar formation (fibrosis).",
+      "statement": "Fibroblasts are the primary cells of connective tissue, synthesizing collagen, elastin, and other extracellular matrix components.",
+      "wowFactor": "Excessive fibroblast activity causes fibrosis — pathological scarring that can destroy organs. Liver cirrhosis, pulmonary fibrosis, and keloid scars are all diseases of fibroblasts that refuse to stop making collagen after the injury is healed. Targeting fibroblast activity is a major area of research in organ failure.",
+      "visualDescription": "Histology of loose connective tissue showing scattered fibroblasts with elongated spindle-shaped nuclei and faint pale cytoplasm amid wavy pink collagen fibers that the cells have synthesized",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fibroblast",
+      "volatile": false,
+      "categoryL1": "anatomy",
+      "categoryL2": "histology",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the name for a quiescent (non-active) fibroblast in mature connective tissue?",
+          "correctAnswer": "Fibrocyte",
+          "distractors": [
+            "Osteocyte",
+            "Chondrocyte",
+            "Macrophage"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1084 @@
+{
+  "facts": [
+    {
+      "id": "ha_histo_031",
+      "correctAnswer": "central vein",
+      "acceptableAlternatives": ["centrilobular vein", "terminal hepatic venule"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The classic hepatic lobule is a hexagonal unit. Portal triads sit at each corner. Which structure sits at the center, collecting blood from sinusoids?",
+      "explanation": "The classic hepatic lobule is organized around the central vein (terminal hepatic venule) at its center. Blood flows inward from portal triads at the periphery, through sinusoids lined by fenestrated endothelium and Kupffer cells, to the central vein. The central vein drains into the hepatic veins and then the IVC. Hepatocytes are arranged in one-cell-thick plates (cords) that radiate between the portal triads and the central vein. In centrilobular (zone 3) necrosis from ischemia or acetaminophen toxicity, hepatocytes nearest the central vein are destroyed first because they receive the most deoxygenated blood.",
+      "visualDescription": "Pixel art hepatic lobule, hexagonal outline, central vein glowing blue at center, six portal triads (artery/vein/bile duct) at corners, hepatocyte plates radiating outward, sinusoids as narrow channels between plates",
+      "sourceName": "Wikipedia — Lobules of Liver",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lobules_of_liver",
+      "volatile": false,
+      "distractors": ["portal vein branch", "hepatic artery branch", "bile duct", "sinusoid", "space of Disse", "portal triad", "Glisson's capsule", "canaliculus"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Acetaminophen overdose causes centrilobular (zone 3) necrosis. Zone 3 hepatocytes surround which structure?",
+          "correctAnswer": "central vein",
+          "distractors": ["portal triad", "bile canaliculus", "sinusoidal endothelium"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: blood in the hepatic lobule flows from the portal triads inward toward the central vein.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The central vein of the hepatic lobule drains into the ___ veins and then the inferior vena cava.",
+          "correctAnswer": "hepatic",
+          "distractors": ["portal", "splenic", "renal"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_032",
+      "correctAnswer": "Kupffer cells",
+      "acceptableAlternatives": ["Kupffer cell", "hepatic resident macrophages"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Lining the hepatic sinusoids alongside fenestrated endothelium are resident macrophages that phagocytose bacteria, endotoxins, and senescent red blood cells arriving from the portal circulation. What are these cells?",
+      "explanation": "Kupffer cells are the resident macrophages of the liver, located in the sinusoidal lumen attached to the endothelium. They represent the largest pool of tissue-resident macrophages in the body (~80–90% of all fixed tissue macrophages). They continuously screen portal blood for pathogens and debris, secreting cytokines (TNF-α, IL-1, IL-6) when activated. In alcoholic liver disease, LPS from gut bacteria activates Kupffer cells to produce TNF-α, driving hepatocyte apoptosis. They are distinct from hepatic stellate cells (Ito cells), which reside in the space of Disse.",
+      "visualDescription": "Pixel art sinusoid cross-section: Kupffer cell shown with irregular nucleus inside the sinusoidal lumen, pseudopods engulfing bacteria and red blood cell debris, fenestrated endothelium beside it, portal blood flowing through",
+      "sourceName": "Kenhub — Liver Histology",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/liver-histology",
+      "volatile": false,
+      "distractors": ["hepatic stellate cells (Ito cells)", "hepatocytes", "cholangiocytes", "pit cells", "oval cells", "sinusoidal endothelial cells", "portal fibroblasts", "dendritic cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Kupffer cells are activated by lipopolysaccharide (LPS) from gut bacteria and release TNF-α, driving injury in which liver disease?",
+          "correctAnswer": "alcoholic liver disease (alcoholic hepatitis)",
+          "distractors": ["primary biliary cirrhosis", "Wilson's disease", "hemochromatosis"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Kupffer cells and hepatic stellate cells are the same cell type.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Kupffer cells represent approximately ___% of all fixed tissue macrophages in the human body.",
+          "correctAnswer": "80–90",
+          "distractors": ["10–20", "40–50", "50–60"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_033",
+      "correctAnswer": "brush border (microvilli)",
+      "acceptableAlternatives": ["microvilli", "brush border", "apical microvilli"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The proximal convoluted tubule (PCT) of the kidney appears 'fuzzy' in the lumen on light microscopy. This fuzziness is produced by which apical specialization that increases the reabsorptive surface area?",
+      "explanation": "The PCT is lined by simple cuboidal epithelium rich in mitochondria (supporting active transport) and covered by abundant apical microvilli forming a brush border. This brush border greatly increases surface area for reabsorbing glucose, amino acids, sodium, bicarbonate, and phosphate from the glomerular filtrate. On H&E staining, the PCT has an eosinophilic (pink) cytoplasm and a 'fuzzy' luminal border compared to the smoother, more open lumen of the distal convoluted tubule (DCT), which lacks a prominent brush border.",
+      "visualDescription": "Pixel art kidney cortex cross-section: PCT tubule with dense brush border of microvilli along its luminal surface (fuzzy appearance), abundant pink cytoplasm, DCT beside it with smooth, clearer lumen for contrast, glomerulus visible in background",
+      "sourceName": "StatPearls — Histology, Nephron",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554411/",
+      "volatile": false,
+      "distractors": ["tight junctions", "gap junctions", "desmosomes", "basal infoldings", "stereocilia", "kinocilia", "zonula occludens", "caveolae"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "On H&E microscopy, how do you distinguish the PCT from the DCT in the kidney cortex?",
+          "correctAnswer": "PCT has fuzzy lumen (brush border/microvilli), DCT has smooth clear lumen without prominent brush border",
+          "distractors": ["PCT is wider; DCT is narrower", "PCT has dark nuclei; DCT has pale nuclei", "PCT is in the medulla; DCT is in the cortex"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the DCT has a prominent brush border of microvilli, similar to the PCT.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The PCT's brush border is formed by ___, which increase the apical surface area for reabsorption.",
+          "correctAnswer": "microvilli",
+          "distractors": ["cilia", "stereocilia", "desmosomes"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_034",
+      "correctAnswer": "Type II pneumocytes",
+      "acceptableAlternatives": ["type II alveolar cells", "type 2 pneumocytes", "type II alveolar epithelial cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "In alveolar histology, which cuboidal cell type — distinguished by intracytoplasmic lamellar bodies on electron microscopy — synthesizes and secretes pulmonary surfactant?",
+      "explanation": "Type II pneumocytes (type II alveolar epithelial cells) are large cuboidal cells concentrated at alveolar corners that contain characteristic lamellar bodies: vesicles packed with phospholipids (mainly dipalmitoyl phosphatidylcholine, DPPC) that are secreted as surfactant. Surfactant reduces alveolar surface tension, preventing collapse on expiration. Although Type II cells cover only ~7% of the alveolar surface, they are the progenitors of Type I pneumocytes and can regenerate the alveolar epithelium after injury. Their absence in premature infants causes respiratory distress syndrome (RDS).",
+      "visualDescription": "Pixel art alveolar wall: large cuboidal Type II pneumocyte with labeled lamellar bodies (pink layered vesicles) in cytoplasm, flat Type I pneumocyte beside it for comparison, surfactant molecules dispersed into the alveolar space reducing surface tension",
+      "sourceName": "StatPearls — Histology, Alveolar Cells",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557542/",
+      "volatile": false,
+      "distractors": ["Type I pneumocytes", "alveolar macrophages (dust cells)", "Clara cells (club cells)", "goblet cells", "mast cells", "endothelial cells", "interstitial fibroblasts", "bronchial epithelial cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Respiratory distress syndrome (RDS) in premature infants is caused by deficiency of surfactant. Which cells normally produce it?",
+          "correctAnswer": "Type II pneumocytes",
+          "distractors": ["Type I pneumocytes", "alveolar macrophages", "bronchiolar club cells"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Type II pneumocytes cover approximately 90% of the alveolar surface.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Type II pneumocytes store surfactant precursors in intracytoplasmic ___ bodies, visible on electron microscopy.",
+          "correctAnswer": "lamellar",
+          "distractors": ["Weibel-Palade", "Birbeck", "Nissl"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_035",
+      "correctAnswer": "Type I pneumocytes",
+      "acceptableAlternatives": ["type I alveolar cells", "type 1 pneumocytes", "squamous alveolar cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Covering approximately 90–95% of the alveolar surface, which flat squamous cell type forms the thin barrier for gas exchange between air and blood?",
+      "explanation": "Type I pneumocytes are highly attenuated (flat squamous) cells that form the thin alveolar epithelium essential for gas exchange. Their extreme thinness minimizes the diffusion distance for O2 and CO2 across the blood-air barrier, which consists of: Type I pneumocyte → basement membrane → capillary endothelium. Despite covering 90–95% of the surface, Type I cells are only ~10–15% of alveolar cells by number. They cannot divide to repair themselves; regeneration depends on Type II pneumocytes, which can differentiate into Type I cells.",
+      "visualDescription": "Pixel art alveolar wall: flat, elongated Type I pneumocyte spanning most of the alveolar surface, its thin cytoplasm closely apposed to the capillary endothelium, labeled diffusion distance, small cuboidal Type II cell in one corner for scale comparison",
+      "sourceName": "StatPearls — Histology, Alveolar Cells",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557542/",
+      "volatile": false,
+      "distractors": ["Type II pneumocytes", "alveolar macrophages", "ciliated bronchial cells", "goblet cells", "club (Clara) cells", "interstitial cells", "endothelial cells", "smooth muscle cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The blood-air barrier for gas exchange consists of three layers. What are they, from alveolus to blood?",
+          "correctAnswer": "Type I pneumocyte → fused basement membranes → capillary endothelium",
+          "distractors": ["Type II pneumocyte → surfactant layer → endothelium", "alveolar macrophage → epithelium → smooth muscle", "goblet cell → mucus → endothelium"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Type I pneumocytes can divide to repair themselves after injury.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Type I pneumocytes cover approximately ___ of the alveolar surface despite being a minority by cell number.",
+          "correctAnswer": "90–95%",
+          "distractors": ["50–60%", "7–10%", "30–40%"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_036",
+      "correctAnswer": "Paneth cells",
+      "acceptableAlternatives": ["Paneth cell"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "At the base of the crypts of Lieberkühn in the small intestine, which granular cells secrete defensins, lysozyme, and other antimicrobial peptides to protect intestinal stem cells?",
+      "explanation": "Paneth cells are pyramidal cells located at the base of the crypts of Lieberkühn, recognizable by their prominent eosinophilic (red-pink) apical granules on H&E staining. They secrete a battery of antimicrobial molecules: alpha-defensins (cryptdins), lysozyme, phospholipase A2, and TNF-α. These protect the intestinal stem cells that share their niche at the crypt base. Paneth cell dysfunction is implicated in Crohn's disease, where impaired defensin secretion may allow bacterial invasion of the gut wall.",
+      "visualDescription": "Pixel art intestinal crypt: base of crypt showing two Paneth cells with bright pink granules at their apical poles, intestinal stem cells nestled between them, goblet cells and enterocytes lining the upper crypt, crypt axis labeled with Lieberkuhn",
+      "sourceName": "StatPearls — Anatomy, Small Intestine",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459366/",
+      "volatile": false,
+      "distractors": ["goblet cells", "enterocytes", "enteroendocrine cells", "M cells", "tuft cells", "cup cells", "columnar cells", "brush cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Paneth cell dysfunction is associated with which inflammatory bowel disease, possibly due to impaired antimicrobial defensin secretion?",
+          "correctAnswer": "Crohn's disease",
+          "distractors": ["ulcerative colitis", "celiac disease", "irritable bowel syndrome"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Paneth cells are found at the base of the crypts of Lieberkühn throughout the small intestine.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "On H&E staining, Paneth cells are recognized by prominent ___ (red-pink) apical granules at the crypt base.",
+          "correctAnswer": "eosinophilic",
+          "distractors": ["basophilic", "PAS-positive mucin", "amphophilic"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_037",
+      "correctAnswer": "Brunner's glands",
+      "acceptableAlternatives": ["Brunner glands", "duodenal glands", "submucosal glands of Brunner"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which submucosal glands, found exclusively in the duodenum, secrete alkaline mucus to neutralize acidic gastric chyme entering from the stomach?",
+      "explanation": "Brunner's glands are mucous glands located in the submucosa of the duodenum — the only part of the small intestine with submucosal glands. They secrete alkaline mucus (rich in bicarbonate) and pepsinogen II, neutralizing the acidic chyme (pH 1–2) arriving from the stomach and protecting the duodenal mucosa from peptic digestion. Their secretion is stimulated by secretin (released in response to acid), vagal stimulation, and truncated forms of EGF. Brunner's gland hyperplasia or adenomas can appear as polypoid lesions in the proximal duodenum.",
+      "visualDescription": "Pixel art duodenal wall cross-section: layers labeled (mucosa, submucosa, muscularis), Brunner's glands highlighted in pink clusters within the submucosa, arrows showing bicarbonate secretion into duodenal crypts neutralizing acidic chyme, jejunum section beside it without these glands",
+      "sourceName": "StatPearls — Anatomy, Small Intestine",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK459366/",
+      "volatile": false,
+      "distractors": ["crypts of Lieberkühn", "goblet cells only", "Peyer's patches", "enteroendocrine cells", "chief cells", "mucous neck cells", "pyloric glands", "oxyntic glands"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Brunner's glands are found exclusively in the duodenum. Their secretion is stimulated by which hormone released in response to acidic chyme?",
+          "correctAnswer": "secretin",
+          "distractors": ["gastrin", "cholecystokinin (CCK)", "motilin"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Brunner's glands are located in the mucosa of the duodenum.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Brunner's glands are the only submucosal glands in the small intestine and are found exclusively in the ___.",
+          "correctAnswer": "duodenum",
+          "distractors": ["jejunum", "ileum", "cecum"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_038",
+      "correctAnswer": "parietal cells",
+      "acceptableAlternatives": ["oxyntic cells", "parietal (oxyntic) cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "In the gastric glands of the fundus and body of the stomach, which large eosinophilic cells — with abundant mitochondria — secrete both hydrochloric acid (HCl) and intrinsic factor?",
+      "explanation": "Parietal cells (oxyntic cells) are large, triangular cells with intensely eosinophilic (pink) cytoplasm due to abundant mitochondria required for the H+/K+-ATPase proton pump. They secrete HCl (creating gastric pH 1–2) and intrinsic factor (IF), a glycoprotein essential for vitamin B12 absorption in the terminal ileum. Autoimmune destruction of parietal cells (autoimmune gastritis) causes both achlorhydria and loss of IF, leading to pernicious anemia (B12 deficiency). Proton pump inhibitors (PPIs) irreversibly block the H+/K+-ATPase.",
+      "visualDescription": "Pixel art gastric gland cross-section: large triangular parietal cell with eosinophilic cytoplasm and canalicular system, H+/K+-ATPase proton pumps labeled on its apical membrane, chief cells (darker, basal granules) beside it, G cells in pyloric region for comparison",
+      "sourceName": "StatPearls — Histology, Parietal Cells",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK547758/",
+      "volatile": false,
+      "distractors": ["chief cells", "mucous neck cells", "G cells", "D cells", "enterochromaffin-like (ECL) cells", "I cells", "S cells", "K cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Pernicious anemia results from autoimmune destruction of parietal cells. The resulting vitamin B12 deficiency is due to loss of which parietal cell product?",
+          "correctAnswer": "intrinsic factor",
+          "distractors": ["hydrochloric acid", "pepsinogen", "gastrin"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: parietal cells use the H+/K+-ATPase pump to secrete HCl into the stomach lumen.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Proton pump inhibitors (PPIs) block the ___ pump on parietal cells, reducing acid secretion.",
+          "correctAnswer": "H+/K+-ATPase",
+          "distractors": ["Na+/K+-ATPase", "H+/Cl- cotransporter", "carbonic anhydrase"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_039",
+      "correctAnswer": "chief cells",
+      "acceptableAlternatives": ["zymogenic cells", "peptic cells", "gastric chief cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Located at the base of gastric glands in the fundus, which basophilic secretory cells contain zymogen granules and release pepsinogen, the inactive precursor of pepsin?",
+      "explanation": "Chief cells (zymogenic/peptic cells) are basophilic cells at the base of fundic gastric glands that secrete pepsinogen, the inactive zymogen of pepsin. Gastric acid converts pepsinogen to pepsin (autocatalytically), which cleaves proteins at pH 1–3. Chief cells also secrete gastric lipase. Basophilia reflects abundant rough ER and ribosomes for protein synthesis. In Zollinger-Ellison syndrome (gastrinoma), excess gastrin overstimulates both chief and parietal cells, causing profuse acid secretion and peptic ulcers.",
+      "visualDescription": "Pixel art gastric gland base: chief cells with basophilic cytoplasm and apical zymogen granules (darker), parietal cells above them with eosinophilic cytoplasm for contrast, arrows showing pepsinogen released into the gland lumen and activated by HCl",
+      "sourceName": "StatPearls — Physiology, Pepsin",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537005/",
+      "volatile": false,
+      "distractors": ["parietal cells", "mucous neck cells", "G cells", "D cells", "ECL cells", "surface mucous cells", "enteroendocrine cells", "Paneth cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Pepsinogen is activated to pepsin in the stomach. What is the activating agent?",
+          "correctAnswer": "hydrochloric acid (low pH)",
+          "distractors": ["intrinsic factor", "gastrin", "secretin"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: chief cells are eosinophilic, similar to parietal cells, due to abundant mitochondria.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Chief cells are called zymogenic cells because they secrete pepsin as an inactive precursor called ___.",
+          "correctAnswer": "pepsinogen",
+          "distractors": ["proenzyme", "trypsinogen", "chymotrypsinogen"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_040",
+      "correctAnswer": "G cells",
+      "acceptableAlternatives": ["G cell", "gastrin cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Located in the pyloric antrum of the stomach, which enteroendocrine cells release gastrin in response to peptides in the antrum, stimulating parietal cells to secrete more HCl?",
+      "explanation": "G cells are enteroendocrine cells of the pyloric antrum and duodenum that produce gastrin, a peptide hormone that stimulates parietal cells (directly) and ECL cells (indirectly via histamine) to produce HCl. G cells also stimulate gastric motility and mucosal growth. In Zollinger-Ellison syndrome, a gastrinoma (usually in the duodenum or pancreas) produces excess gastrin, causing refractory peptic ulcers. Gastrin secretion is inhibited by low antral pH (< 3.0) via somatostatin from D cells — a negative feedback loop.",
+      "visualDescription": "Pixel art pyloric antrum gland: G cell with basal granules labeled, gastrin arrows pointing toward blood vessel (entering circulation), then to parietal cell in fundus stimulating HCl pump, D cell beside G cell with somatostatin feedback inhibition arrow",
+      "sourceName": "Medical News Today — Cells of the Stomach",
+      "sourceUrl": "https://www.medicalnewstoday.com/articles/cells-of-the-stomach",
+      "volatile": false,
+      "distractors": ["parietal cells", "chief cells", "D cells", "S cells", "I cells", "ECL cells", "mucous neck cells", "K cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Zollinger-Ellison syndrome is caused by a gastrinoma producing excess gastrin. What is the primary clinical consequence?",
+          "correctAnswer": "Refractory peptic ulcers (excess acid from overstimulated parietal cells)",
+          "distractors": ["Achlorhydria (no acid)", "Pernicious anemia (loss of intrinsic factor)", "Malabsorption (no pepsinogen)"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: gastrin secretion from G cells is inhibited when antral pH drops below 3.0.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "G cells are located in the ___ antrum of the stomach and secrete gastrin.",
+          "correctAnswer": "pyloric",
+          "distractors": ["fundic", "cardiac", "body (corpus)"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_041",
+      "correctAnswer": "tunica media",
+      "acceptableAlternatives": ["media", "tunica media (middle layer)"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Blood vessel walls have three layers. In arteries, which middle layer — containing circularly arranged smooth muscle and elastic fibers — is proportionally much thicker than in veins?",
+      "explanation": "The tunica media is the middle layer of blood vessel walls. In arteries it is thick and contains circularly arranged smooth muscle cells interspersed with elastic lamellae, allowing arteries to withstand high systolic pressure and maintain diastolic flow via elastic recoil. In veins, the tunica media is thinner (less smooth muscle and elastic tissue) because venous pressure is much lower. The largest vessels (aorta, pulmonary arteries) have a 'predominantly elastic' media; medium arteries are 'muscular.' The tunica intima (endothelium) is innermost; tunica adventitia (connective tissue) is outermost.",
+      "visualDescription": "Pixel art artery cross-section: three concentric layers labeled — thin intima (endothelium) inside, thick media in the middle (smooth muscle and elastic fibers in circular arrangement), adventitia outside, contrasted with a vein cross-section showing thin media and prominent adventitia",
+      "sourceName": "StatPearls — Histology, Blood Vascular System",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK553217/",
+      "volatile": false,
+      "distractors": ["tunica intima", "tunica adventitia", "internal elastic lamina", "external elastic lamina", "endothelium", "subendothelial layer", "vasa vasorum", "periadvential tissue"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The aorta is classified as an elastic artery. What is the predominant component of its tunica media?",
+          "correctAnswer": "elastic lamellae (elastic fibers)",
+          "distractors": ["smooth muscle cells", "collagen fibers", "fibroblasts"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: veins have valves and a thicker tunica media than arteries of the same caliber.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The innermost layer of a blood vessel is the tunica ___, consisting of a single layer of squamous endothelial cells.",
+          "correctAnswer": "intima",
+          "distractors": ["media", "adventitia", "externa"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_042",
+      "correctAnswer": "Langerhans cells",
+      "acceptableAlternatives": ["Langerhans cell", "epidermal dendritic cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In the epidermis (stratum spinosum), which dendritic antigen-presenting cells — identifiable by cytoplasmic Birbeck granules on EM — capture antigens and carry them to regional lymph nodes?",
+      "explanation": "Langerhans cells are dendritic cells (derived from bone marrow monocyte precursors) that reside in the epidermis, primarily in the stratum spinosum. They have long cytoplasmic processes that weave between keratinocytes, sampling antigens. They are identified ultrastructurally by Birbeck granules (tennis racket-shaped granules containing langerin/CD207). After capturing antigen, they migrate to regional lymph nodes and present it to T cells, initiating adaptive immune responses (e.g., contact hypersensitivity reactions). They are CD1a+ and HLA-DR+ and are absent in acanthosis nigricans.",
+      "visualDescription": "Pixel art epidermis cross-section: Langerhans cell in stratum spinosum with long dendritic processes reaching between keratinocytes, Birbeck granule inset (tennis-racket shape), arrow showing migration to lymph node, CD1a+ label",
+      "sourceName": "StatPearls — Anatomy, Skin (Integument), Epidermis",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK470464/",
+      "volatile": false,
+      "distractors": ["melanocytes", "Merkel cells", "keratinocytes", "mast cells", "fibroblasts", "Meissner's corpuscles", "Pacinian corpuscles", "sebaceous gland cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Langerhans cells are identified on EM by which unique organelle?",
+          "correctAnswer": "Birbeck granules (tennis racket-shaped)",
+          "distractors": ["lamellar bodies", "Weibel-Palade bodies", "Nissl bodies"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Langerhans cells are derived from keratinocyte precursors in the basal epidermis.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Langerhans cells reside primarily in the stratum ___ of the epidermis.",
+          "correctAnswer": "spinosum",
+          "distractors": ["corneum", "basale", "granulosum"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_043",
+      "correctAnswer": "melanosomes",
+      "acceptableAlternatives": ["melanosome", "melanin granules"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Melanocytes in the basal epidermis synthesize melanin and package it into organelles that are then transferred to neighboring keratinocytes via dendritic processes. What are these pigment-containing organelles called?",
+      "explanation": "Melanosomes are the specialized organelles of melanocytes that contain melanin pigment. They are synthesized in the melanocyte and transferred to keratinocytes via cytocrine secretion: keratinocytes phagocytose the tips of melanocyte dendrites, internalizing the melanosomes. Inside keratinocytes, melanosomes form a 'cap' over the nucleus, shielding DNA from UV radiation. All humans have approximately the same number of melanocytes (~1 per 10 basal keratinocytes); differences in skin color reflect differences in melanosome size, number, distribution, and melanin content — not melanocyte number.",
+      "visualDescription": "Pixel art basal epidermis: melanocyte with long dendritic processes containing rows of oval melanosomes, a keratinocyte shown phagocytosing the dendritic tip, melanosomes inside keratinocyte arranged as a supranuclear cap shielding the nucleus from UV arrows above",
+      "sourceName": "Kenhub — Skin Histology",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/histology-of-the-skin",
+      "volatile": false,
+      "distractors": ["keratin filaments", "lamellar granules", "Birbeck granules", "Weibel-Palade bodies", "lipofuscin granules", "lysosomes", "peroxisomes", "autophagosomes"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "All humans have roughly the same number of melanocytes. What accounts for differences in skin color between individuals?",
+          "correctAnswer": "Differences in melanosome size, number, distribution, and melanin type",
+          "distractors": ["Differences in melanocyte density per square centimeter", "Differences in the rate of keratinocyte turnover", "Differences in the thickness of the stratum corneum"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: melanosomes form a supranuclear cap over keratinocyte nuclei to shield DNA from UV radiation.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Melanin synthesis occurs in the ___, the pigment-containing organelle of melanocytes.",
+          "correctAnswer": "melanosome",
+          "distractors": ["lysosome", "peroxisome", "Golgi apparatus"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_044",
+      "correctAnswer": "osteon (Haversian system)",
+      "acceptableAlternatives": ["Haversian system", "osteon"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Compact bone is organized into cylindrical structural units, each consisting of a central Haversian canal surrounded by concentric lamellae, osteocytes in lacunae, and interconnecting canaliculi. What is each unit called?",
+      "explanation": "The osteon (Haversian system) is the fundamental structural unit of compact bone. Each osteon consists of a central Haversian canal (carrying blood vessels and nerves), surrounded by 4–20 concentric lamellae of mineralized collagen matrix. Osteocytes reside in lacunae between the lamellae and communicate via canaliculi — tiny channels that carry nutrients from the Haversian canal to the osteocytes. Volkmann's canals (perforating canals) run perpendicularly, connecting adjacent Haversian canals and the periosteum. Osteons are oriented parallel to the long axis of bone, providing maximal resistance to longitudinal stress.",
+      "visualDescription": "Pixel art compact bone cross-section: osteon shown as concentric rings around a central Haversian canal with labeled blood vessel inside, osteocytes in lacunae between rings, canaliculi as tiny lines connecting lacunae to the canal, Volkmann's canal crossing perpendicular",
+      "sourceName": "Wikipedia — Osteon",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Osteon",
+      "volatile": false,
+      "distractors": ["trabecula", "endosteum", "periosteum", "bone marrow unit", "haversian lamella only", "canalicular unit", "woven bone unit", "cement line"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Volkmann's canals in compact bone run perpendicular to the long axis of bone. What do they connect?",
+          "correctAnswer": "Adjacent Haversian canals and the periosteum",
+          "distractors": ["Osteons to bone marrow spaces", "Osteocyte lacunae to each other only", "The endosteum to trabecular bone"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: osteocytes in compact bone communicate with their Haversian canal via canaliculi.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Each osteon has a central ___ canal that carries blood vessels and nerves to nourish the osteocytes.",
+          "correctAnswer": "Haversian",
+          "distractors": ["Volkmann's", "sinusoidal", "capillary"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_045",
+      "correctAnswer": "germinal centers",
+      "acceptableAlternatives": ["germinal centre", "secondary follicle germinal centers"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In the outer cortex of a lymph node, B cells are organized into follicles. During an active immune response, pale-staining structures appear within these follicles where B cell proliferation, affinity maturation, and class switching occur. What are these structures?",
+      "explanation": "Germinal centers develop within secondary follicles of the lymph node cortex during an active humoral immune response. They contain rapidly proliferating B cells (centroblasts undergoing somatic hypermutation), centrocytes being selected for high-affinity antibody production, follicular dendritic cells (presenting antigen), and tingible body macrophages (clearing apoptotic B cells). Class switching (e.g., IgM → IgG) also occurs here. Germinal centers appear pale (lighter staining) than the dark mantle zone of small resting B cells surrounding them. The paracortex, by contrast, is the T-cell zone.",
+      "visualDescription": "Pixel art lymph node cortex: secondary follicle with pale germinal center (centroblasts in division), dark mantle zone of resting B cells surrounding it, follicular dendritic cells labeled, tingible body macrophages shown with apoptotic debris, paracortex region labeled T-cell zone adjacent",
+      "sourceName": "StatPearls — Histology, Lymph Nodes",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559053/",
+      "volatile": false,
+      "distractors": ["primary follicles", "medullary cords", "paracortex", "subcapsular sinuses", "high endothelial venules", "mantle zone only", "efferent lymphatics", "trabeculae"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The lymph node paracortex is the T-cell zone. Which specialized vessels in the paracortex allow lymphocytes to enter the lymph node from blood?",
+          "correctAnswer": "high endothelial venules (HEVs)",
+          "distractors": ["afferent lymphatic sinuses", "efferent lymphatics", "central arterioles"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: somatic hypermutation and affinity maturation of B cells occur in germinal centers.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germinal centers appear ___ (lighter) on H&E staining compared to the surrounding dark mantle zone of small resting B cells.",
+          "correctAnswer": "pale",
+          "distractors": ["dark", "eosinophilic", "basophilic"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_046",
+      "correctAnswer": "parafollicular C cells",
+      "acceptableAlternatives": ["C cells", "parafollicular cells", "clear cells of thyroid"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In thyroid histology, between or within the follicle walls, lighter-staining cells of neural crest origin secrete calcitonin to lower serum calcium. What are these cells?",
+      "explanation": "Parafollicular C cells (clear cells) are neuroendocrine cells derived from neural crest cells that migrate into the ultimobranchial body and then the thyroid during development. They reside between or within the follicle walls (outside the follicular epithelium) and secrete calcitonin in response to elevated serum calcium. Calcitonin inhibits osteoclasts and promotes renal calcium excretion, lowering serum calcium. Medullary thyroid carcinoma (MTC) arises from C cells and is a marker of MEN 2A and MEN 2B syndromes. Elevated calcitonin is the tumor marker for MTC.",
+      "visualDescription": "Pixel art thyroid follicle: follicular cells (cuboidal) lining the colloid-filled follicle, C cells shown as lighter-staining cells tucked between follicles (larger, paler cytoplasm), calcitonin secretion arrows, neural crest origin label, 'MTC' inset with tumor marker label",
+      "sourceName": "StatPearls — Histology, Thyroid Gland",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK551659/",
+      "volatile": false,
+      "distractors": ["follicular cells (thyrocytes)", "oxyphilic (Hürthle) cells", "chief cells of parathyroid", "water-clear cells", "colloid-containing cells", "ultimobranchial body remnants", "sustentacular cells", "parachief cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Medullary thyroid carcinoma (MTC) arises from parafollicular C cells. Which syndrome is associated with RET proto-oncogene mutations and MTC?",
+          "correctAnswer": "MEN 2A and MEN 2B",
+          "distractors": ["MEN 1 (Wermer syndrome)", "MEN 4", "Von Hippel-Lindau syndrome"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: parafollicular C cells are derived from neural crest cells.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "C cells secrete ___, a hormone that inhibits osteoclasts and lowers serum calcium.",
+          "correctAnswer": "calcitonin",
+          "distractors": ["parathyroid hormone (PTH)", "thyroxine (T4)", "thyroglobulin"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_047",
+      "correctAnswer": "type II collagen",
+      "acceptableAlternatives": ["collagen type II", "type 2 collagen"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Hyaline cartilage (found in articular surfaces, costal cartilages, and the fetal skeleton) has a homogeneous glassy matrix. Which type of collagen predominates in its extracellular matrix?",
+      "explanation": "Hyaline cartilage contains type II collagen as its predominant fibrillar collagen, forming a fine network invisible on routine H&E staining (giving the characteristic glassy, homogeneous appearance). Fibrocartilage (intervertebral discs, menisci, pubic symphysis) uses type I collagen — the same type as tendons and bone — giving it greater tensile strength but less resilience. Elastic cartilage (auricle, epiglottis) contains type II collagen plus abundant elastic fibers. Type II collagen mutations cause achondroplasia and other skeletal dysplasias.",
+      "visualDescription": "Pixel art cartilage comparison: three side-by-side panels — hyaline (glassy homogeneous matrix, chondrocytes in lacunae), elastic (black elastic fibers weaving through matrix), fibrocartilage (dense parallel type I collagen bundles), each labeled with collagen type",
+      "sourceName": "StatPearls — Anatomy, Cartilage",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK532964/",
+      "volatile": false,
+      "distractors": ["type I collagen", "type III collagen", "type IV collagen", "type X collagen", "elastin", "fibronectin", "laminin", "aggrecan"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Fibrocartilage (intervertebral discs, menisci) is the strongest cartilage type. Which collagen type predominates in its matrix?",
+          "correctAnswer": "type I collagen",
+          "distractors": ["type II collagen", "type III collagen", "elastic fibers"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: elastic cartilage (found in the ear and epiglottis) contains type II collagen plus abundant elastic fibers.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hyaline cartilage appears glassy on H&E because its type II collagen fibers are too ___ to be visible with routine light microscopy.",
+          "correctAnswer": "fine (thin)",
+          "distractors": ["sparse", "parallel", "unstained"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_048",
+      "correctAnswer": "red bone marrow",
+      "acceptableAlternatives": ["red marrow", "hematopoietic marrow"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "In adults, active hematopoiesis (blood cell production) occurs in which type of bone marrow — found in flat bones (sternum, iliac crest) and the proximal ends of long bones?",
+      "explanation": "Red bone marrow contains hematopoietic stem cells (HSCs) and their progeny at all stages of differentiation (erythropoiesis, granulopoiesis, megakaryopoiesis, lymphopoiesis). The red color comes from the high density of erythroid precursors and mature red blood cells. In children, all bone marrow is red. With age, the diaphyses of long bones are replaced by yellow marrow (adipocytes), restricting active hematopoiesis to flat bones and epiphyses of long bones in adults. In severe anemia or myelophthisis, yellow marrow can revert to red (compensatory extramedullary hematopoiesis may also occur in spleen and liver).",
+      "visualDescription": "Pixel art long bone cross-section: diaphysis filled with yellow (fatty) marrow labeled, epiphyses and flat bone inset filled with red cellular marrow, HSC shown in red marrow with branching lineage arrows to RBC, WBC, platelets, fat cells dominant in yellow marrow",
+      "sourceName": "StatPearls — Histology, Hematopoiesis",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK534246/",
+      "volatile": false,
+      "distractors": ["yellow bone marrow", "periosteum", "endosteum", "trabecular bone", "bone marrow sinusoids", "cortical bone", "epiphyseal plate", "bone marrow stroma"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Yellow bone marrow is mostly adipocytes and is metabolically inactive. Under what condition can it revert to red marrow?",
+          "correctAnswer": "Severe anemia or increased demand for blood cell production",
+          "distractors": ["Aging (it always remains yellow)", "Iron deficiency only", "Vitamin B12 deficiency only"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: in adults, all bone marrow in the body is active red marrow.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In adults, active hematopoiesis in red marrow is restricted to flat bones (sternum, pelvis, vertebrae) and the ___ of long bones.",
+          "correctAnswer": "proximal epiphyses",
+          "distractors": ["diaphyses", "distal epiphyses", "metaphyses"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_049",
+      "correctAnswer": "reticulocyte",
+      "acceptableAlternatives": ["reticulocytes", "immature red blood cell"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In erythropoiesis, the normoblast (late erythroblast) ejects its nucleus before release from bone marrow. The resulting anucleate cell still contains residual ribosomes and can be stained with a reticular stain. What is this immature RBC called?",
+      "explanation": "After the normoblast ejects its nucleus, the resulting cell — still containing residual ribosomes, mitochondria, and mRNA — is called a reticulocyte (so named because its ribosomal network is visible as a 'reticulum' on vital staining with new methylene blue or brilliant cresyl blue). Reticulocytes circulate in the blood for 1–2 days before losing the remaining organelles and maturing into erythrocytes. Normally, ~1% of circulating red cells are reticulocytes. An elevated reticulocyte count (reticulocytosis) indicates increased erythropoiesis in response to hemolysis, blood loss, or successful treatment of anemia.",
+      "visualDescription": "Pixel art erythropoiesis stages: pronormoblast → basophilic → polychromatic → orthochromatic normoblast (nucleus ejecting) → reticulocyte (anucleate with blue reticular staining pattern) → mature RBC (smooth biconcave disc), each stage labeled",
+      "sourceName": "Wikipedia — Erythropoiesis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erythropoiesis",
+      "volatile": false,
+      "distractors": ["normoblast", "polychromatic erythroblast", "proerythroblast", "basophilic erythroblast", "burst-forming unit erythroid (BFU-E)", "megakaryocyte fragment", "spherocyte", "poikilocyte"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "An elevated reticulocyte count indicates what process?",
+          "correctAnswer": "Accelerated erythropoiesis (e.g., hemolysis, blood loss, treated anemia)",
+          "distractors": ["Bone marrow failure", "Iron deficiency", "Megaloblastic anemia"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: reticulocytes contain no nucleus but still have residual ribosomes detectable by vital staining.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Normally, approximately ___% of circulating red blood cells are reticulocytes.",
+          "correctAnswer": "1",
+          "distractors": ["5", "10", "0.1"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_050",
+      "correctAnswer": "colloid",
+      "acceptableAlternatives": ["thyroid colloid", "thyroglobulin colloid"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Thyroid follicles are the functional units of the thyroid gland. Follicular cells surround a central cavity filled with a gelatinous, eosinophilic material that is the storage form of thyroid hormone. What is this material called?",
+      "explanation": "Colloid is the eosinophilic (pink) gelatinous material that fills thyroid follicles. It is composed primarily of thyroglobulin, an iodinated glycoprotein synthesized by follicular cells and secreted into the follicular lumen as the storage form of T3 and T4. When thyroid hormone is needed, follicular cells take up thyroglobulin by endocytosis, cleave it, and release T3 and T4 into the bloodstream. On H&E, well-stored colloid appears pale pink and homogeneous; 'scalloping' (peripheral vacuoles in the colloid) indicates active reabsorption. Hashimoto's thyroiditis destroys follicular cells, reducing colloid stores.",
+      "visualDescription": "Pixel art thyroid histology: multiple follicles lined by cuboidal follicular cells, eosinophilic colloid filling each follicle labeled, one follicle showing scalloping at edges indicating active reabsorption, parafollicular C cells labeled between follicles",
+      "sourceName": "StatPearls — Histology, Thyroid Gland",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK551659/",
+      "volatile": false,
+      "distractors": ["mucus", "bile", "glycogen", "keratin", "fibrin", "amyloid", "surfactant", "hyaluronic acid"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "'Scalloping' of thyroid colloid on H&E indicates what physiological process?",
+          "correctAnswer": "Active reabsorption of thyroglobulin by follicular cells",
+          "distractors": ["Inactive thyroid (reduced TSH stimulation)", "Colloid nodule formation (inactive storage)", "Hashimoto's thyroiditis necrosis"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: thyroid colloid is composed mainly of thyroglobulin, the storage form of T3 and T4.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Thyroid follicular cells take up thyroglobulin from the colloid by ___ before cleaving it to release T3 and T4.",
+          "correctAnswer": "endocytosis",
+          "distractors": ["exocytosis", "diffusion", "active transport"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_051",
+      "correctAnswer": "fibrocartilage",
+      "acceptableAlternatives": ["fibro-cartilage", "fibrous cartilage"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which type of cartilage — the strongest of the three types — contains dense type I collagen bundles and is found in the intervertebral discs, pubic symphysis, and knee menisci?",
+      "explanation": "Fibrocartilage is the strongest and least flexible cartilage type. It contains abundant type I collagen fibers (same as tendons and bone) arranged in dense parallel bundles, giving it high tensile strength. Chondrocytes are found in lacunae between the collagen bundles. Fibrocartilage lacks a perichondrium. It is found in: intervertebral discs (annulus fibrosus), pubic symphysis, glenoid labrum, acetabular labrum, menisci of the knee, and sites of tendon insertion into bone. Its poor vascularity limits healing after injury (e.g., meniscus tears).",
+      "visualDescription": "Pixel art fibrocartilage: dense parallel type I collagen bundles shown in parallel horizontal lines, chondrocytes in lacunae between bundles, compared with hyaline cartilage (homogeneous) and elastic cartilage (elastic fiber network) in side-by-side panels, intervertebral disc diagram labeled",
+      "sourceName": "StatPearls — Anatomy, Cartilage",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK532964/",
+      "volatile": false,
+      "distractors": ["hyaline cartilage", "elastic cartilage", "fibrous connective tissue", "dense regular connective tissue", "bone", "ligamentum flavum", "tendon matrix", "synovial tissue"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The knee meniscus is composed of fibrocartilage. Why does a meniscus tear heal poorly?",
+          "correctAnswer": "Fibrocartilage has poor vascularity — only the peripheral 'red zone' has blood supply",
+          "distractors": ["Fibrocartilage lacks chondrocytes and cannot produce collagen", "The knee is under constant load, preventing healing", "Fibrocartilage is avascular throughout and cannot self-repair at all"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: fibrocartilage is surrounded by a perichondrium.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The annulus fibrosus of intervertebral discs is composed of ___, the strongest cartilage type.",
+          "correctAnswer": "fibrocartilage",
+          "distractors": ["hyaline cartilage", "elastic cartilage", "dense fibrous tissue"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_052",
+      "correctAnswer": "medullary cords",
+      "acceptableAlternatives": ["lymph node medullary cords", "medullary cord"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "In the medulla of a lymph node, lymphocytes and plasma cells are organized into cord-like structures separated by sinuses that drain lymph toward the efferent lymphatic. What are these cord-like structures called?",
+      "explanation": "Medullary cords are the cord-like projections of lymphoid tissue in the medulla of lymph nodes. They contain plasma cells, macrophages, B cells, and T cells. Interleaved between the cords are medullary sinuses, through which lymph flows (entering via subcapsular and cortical sinuses) and is filtered by macrophages before exiting through the efferent lymphatic. Plasma cells in medullary cords are terminally differentiated B cells producing large quantities of antibody. In lymphadenitis, medullary cords expand with reactive plasma cells.",
+      "visualDescription": "Pixel art lymph node medulla: medullary cords shown as dark cellular strands labeled with plasma cells (blue) and macrophages (red), medullary sinuses as pale spaces between them, lymph flow arrows entering from cortical sinuses and exiting via efferent lymphatic at hilum",
+      "sourceName": "StatPearls — Histology, Lymph Nodes",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559053/",
+      "volatile": false,
+      "distractors": ["germinal centers", "primary follicles", "high endothelial venules", "trabecular sinuses", "paracortical T zones", "mantle zones", "subcapsular sinuses", "cortical sinuses"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Plasma cells in lymph node medullary cords are terminally differentiated B cells. What is their primary function?",
+          "correctAnswer": "Secreting antibodies (immunoglobulins)",
+          "distractors": ["Phagocytosing pathogens", "Presenting antigen to T cells", "Undergoing somatic hypermutation"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: medullary sinuses in the lymph node are lined by macrophages that filter lymph before it exits via the efferent lymphatic.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The lymph node cortex contains B cell follicles; the paracortex contains T cells; the medulla contains ___ and plasma cells in cord-like structures.",
+          "correctAnswer": "macrophages",
+          "distractors": ["neutrophils", "eosinophils", "mast cells"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_053",
+      "correctAnswer": "vasa recta",
+      "acceptableAlternatives": ["vasa recta vessels", "peritubular capillaries of medulla"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Histologically, the kidney medulla contains loops of Henle and collecting ducts, plus hairpin-shaped capillaries that run parallel to the loops and participate in the countercurrent exchange mechanism for urine concentration. What are these capillaries called?",
+      "explanation": "Vasa recta are the straight, hairpin-shaped capillaries of the renal medulla that arise from efferent arterioles of juxtamedullary nephrons. They run parallel to the loops of Henle and collecting ducts, participating in countercurrent exchange: as blood descends into the hypertonic medulla, water leaves and solutes enter; as blood ascends, the reverse occurs. This trapping effect preserves the medullary osmotic gradient essential for concentrated urine production. NSAIDs reduce prostaglandin-mediated vasodilation of vasa recta, causing medullary ischemia and analgesic nephropathy with chronic use.",
+      "visualDescription": "Pixel art kidney medulla: loop of Henle (descending and ascending limbs) and vasa recta running in parallel, arrows showing countercurrent exchange (water out/solutes in on descent; water in/solutes out on ascent), osmolarity gradient labeled (300 → 1200 mOsm/kg cortex to medulla)",
+      "sourceName": "Kenhub — Kidney Histology",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/kidney-histology",
+      "volatile": false,
+      "distractors": ["peritubular capillaries (cortical)", "arcuate arteries", "interlobar arteries", "afferent arterioles", "efferent arterioles", "glomerular capillaries", "medullary interstitium", "collecting veins"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "NSAIDs cause renal medullary ischemia by blocking which vasoactive molecules that normally dilate the vasa recta?",
+          "correctAnswer": "prostaglandins",
+          "distractors": ["angiotensin II", "endothelin", "thromboxane A2"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: vasa recta arise from efferent arterioles of juxtamedullary nephrons.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Vasa recta preserve the medullary osmotic gradient through ___ exchange, running parallel to the loops of Henle.",
+          "correctAnswer": "countercurrent",
+          "distractors": ["co-current", "active transport", "osmotic"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_054",
+      "correctAnswer": "alveolar macrophages (dust cells)",
+      "acceptableAlternatives": ["dust cells", "alveolar macrophages", "pulmonary macrophages"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "In the alveolar space, mononuclear phagocytes derived from blood monocytes patrol the air spaces, engulfing inhaled particles, bacteria, and debris. They are sometimes called 'dust cells.' What is their standard histological name?",
+      "explanation": "Alveolar macrophages (dust cells) are the resident macrophages of the alveolar space. They engulf inhaled particles (coal dust, asbestos, bacteria, dead cells) and can be seen on H&E as large mononuclear cells with granular, often dark cytoplasm (from phagocytosed debris) either free in the alveolar lumen or attached to the alveolar wall. In heart failure, they ingest extravasated red blood cells and convert hemoglobin to hemosiderin, becoming 'heart failure cells' (siderophages), identifiable with Prussian blue stain. In smokers, they are laden with tobacco tar particles.",
+      "visualDescription": "Pixel art alveolus: alveolar macrophage shown as a large cell with dark cytoplasmic inclusions free in the alveolar space, Type I and Type II pneumocytes lining the wall, insets showing: heart failure cell (hemosiderin-laden, blue with Prussian blue), coal dust macrophage (black inclusions)",
+      "sourceName": "StatPearls — Histology, Alveolar Macrophages",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK513313/",
+      "volatile": false,
+      "distractors": ["Type I pneumocytes", "Type II pneumocytes", "mast cells", "eosinophils", "neutrophils", "club (Clara) cells", "interstitial macrophages", "dendritic cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In congestive heart failure, alveolar macrophages that have engulfed extravasated RBCs and converted hemoglobin to hemosiderin are called what?",
+          "correctAnswer": "heart failure cells (siderophages)",
+          "distractors": ["dust cells", "Kupffer cells", "Langerhans cells"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: alveolar macrophages are derived from blood monocytes that migrate into the alveolar space.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Alveolar macrophages laden with hemosiderin (from engulfed RBCs in heart failure) can be confirmed with ___ blue staining.",
+          "correctAnswer": "Prussian",
+          "distractors": ["Alcian", "Congo", "Methylene"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_055",
+      "correctAnswer": "D cells (delta cells)",
+      "acceptableAlternatives": ["D cells", "delta cells", "somatostatin cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "In the pyloric antrum and throughout the GI tract and pancreatic islets, which enteroendocrine cells secrete somatostatin to inhibit gastrin (G cells), insulin, glucagon, and pancreatic enzyme secretion?",
+      "explanation": "D cells (delta cells) are somatostatin-secreting enteroendocrine cells found in the gastric antrum, duodenum, and pancreatic islets of Langerhans (where they are the third most common islet cell type after beta and alpha cells). Gastric D cells are activated by luminal acidity (low pH), and the somatostatin they secrete acts in a paracrine manner to inhibit adjacent G cells (reducing gastrin) and ECL cells (reducing histamine). This negative feedback prevents excessive acid secretion. In the pancreas, islet D cells inhibit both insulin (beta cells) and glucagon (alpha cells) secretion.",
+      "visualDescription": "Pixel art pyloric antrum gland: D cell labeled in yellow beside G cell, somatostatin arrows going to G cell (inhibiting gastrin), to parietal cells (inhibiting HCl), and to ECL cells (inhibiting histamine), pH sensor icon showing low pH activates D cells",
+      "sourceName": "StatPearls — Physiology, Stomach",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK535425/",
+      "volatile": false,
+      "distractors": ["G cells", "I cells", "S cells", "K cells", "ECL cells", "chief cells", "parietal cells", "L cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In the pancreatic islets of Langerhans, D cells secrete somatostatin to inhibit which two hormones?",
+          "correctAnswer": "insulin (beta cells) and glucagon (alpha cells)",
+          "distractors": ["gastrin and secretin", "CCK and motilin", "leptin and ghrelin"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: gastric D cells are activated by low antral pH and inhibit G cell gastrin secretion by paracrine somatostatin.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "D cells secrete ___, a hormone that inhibits acid secretion, gastrin, insulin, and glucagon in a paracrine/endocrine fashion.",
+          "correctAnswer": "somatostatin",
+          "distractors": ["secretin", "cholecystokinin", "vasoactive intestinal peptide (VIP)"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_056",
+      "correctAnswer": "high endothelial venules (HEVs)",
+      "acceptableAlternatives": ["HEVs", "high endothelial venules"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "In the paracortex (T-cell zone) of lymph nodes, which specialized postcapillary venules with cuboidal endothelium allow circulating naive lymphocytes to exit the blood and enter the lymph node parenchyma?",
+      "explanation": "High endothelial venules (HEVs) are specialized postcapillary venules found in the paracortex of lymph nodes (and Peyer's patches). Their characteristic cuboidal (high) endothelium is studded with addressins (CD34, MAdCAM-1) and glycoproteins that bind L-selectin and integrins on naïve lymphocytes, enabling rolling, arrest, and diapedesis (transendothelial migration) into the lymph node parenchyma. This process is called lymphocyte homing. HEVs are the primary route by which naive T and B cells enter lymph nodes from the bloodstream; activated effector cells preferentially exit via efferent lymphatics.",
+      "visualDescription": "Pixel art lymph node paracortex: HEV shown with thick cuboidal endothelial cells (labeled 'high endothelium'), naïve lymphocyte rolling along the luminal surface, then squeezing through (diapedesis) into the T-cell zone, addressin molecules shown on endothelium surface, L-selectin on lymphocyte",
+      "sourceName": "Kenhub — Histology of Lymph Nodes",
+      "sourceUrl": "https://www.kenhub.com/en/library/anatomy/histology-of-lymph-nodes",
+      "volatile": false,
+      "distractors": ["subcapsular sinuses", "medullary sinuses", "cortical sinuses", "efferent lymphatics", "afferent lymphatics", "germinal center capillaries", "mantle zone vessels", "perifollicular capillaries"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Lymphocyte homing into lymph nodes is mediated by L-selectin on lymphocytes binding to addressins on HEV endothelium. What zone of the lymph node do HEVs supply?",
+          "correctAnswer": "paracortex (T-cell zone)",
+          "distractors": ["outer cortex (B-cell follicles)", "medullary cords", "subcapsular sinus"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: HEVs allow lymphocytes to enter lymph nodes from the blood, bypassing the afferent lymphatics.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "HEVs are found in the paracortex of lymph nodes and in ___ patches of the small intestinal wall.",
+          "correctAnswer": "Peyer's",
+          "distractors": ["Brunner's", "Malpighian", "Hassall's"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_057",
+      "correctAnswer": "elastic cartilage",
+      "acceptableAlternatives": ["elastic fibrocartilage"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which cartilage type — found in the auricle (ear), epiglottis, and laryngeal cartilages (except thyroid and cricoid) — contains type II collagen PLUS an abundance of elastic fibers that give it resilience and flexibility?",
+      "explanation": "Elastic cartilage contains type II collagen (like hyaline) but adds a dense network of elastic fibers (elastin), making it flexible and resilient — it springs back after deformation. It is found where the body needs rigid-but-flexible structures: the auricle of the ear, epiglottis, Eustachian tube walls, corniculate and cuneiform laryngeal cartilages. It is surrounded by perichondrium. Unlike hyaline cartilage, the elastic fibers are visible on H&E or Verhoeff's elastic stain. Relapsing polychondritis, an autoimmune disease, classically destroys elastic cartilage of the auricle and nose.",
+      "visualDescription": "Pixel art elastic cartilage: chondrocytes in lacunae within a matrix showing interwoven dark elastic fiber network (visible unlike hyaline), auricle diagram beside it, comparison panel with hyaline (smooth matrix) and fibrocartilage (parallel collagen bundles)",
+      "sourceName": "TeachMePhysiology — Cartilage",
+      "sourceUrl": "https://teachmephysiology.com/histology/tissue-structure/cartilage/",
+      "volatile": false,
+      "distractors": ["hyaline cartilage", "fibrocartilage", "periosteum", "dense regular connective tissue", "elastic ligament (ligamentum flavum)", "fibrous joint capsule", "articular cartilage", "growth plate cartilage"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Relapsing polychondritis classically destroys cartilage of the auricle and nose. Which cartilage type is affected?",
+          "correctAnswer": "elastic cartilage",
+          "distractors": ["hyaline cartilage", "fibrocartilage", "articular cartilage"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the thyroid and cricoid cartilages of the larynx are elastic cartilage.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Elastic cartilage is distinguished from hyaline cartilage histologically by the presence of ___ fibers visible in the extracellular matrix.",
+          "correctAnswer": "elastic",
+          "distractors": ["type I collagen", "type III collagen", "reticular"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_058",
+      "correctAnswer": "erythroblast (normoblast)",
+      "acceptableAlternatives": ["normoblast", "orthochromatic normoblast", "late erythroblast"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "In erythropoiesis, the stage just before the reticulocyte is the cell that ejects its pyknotic nucleus (visible in the marrow as an extruded nucleus being phagocytosed by a macrophage). What is this nucleus-ejecting cell called?",
+      "explanation": "The orthochromatic normoblast (also called the late erythroblast or normoblast) is the final nucleated stage of erythropoiesis. As hemoglobin production nears completion, the nucleus condenses (becomes pyknotic) and is extruded from the cell. The extruded nucleus is phagocytosed by central macrophages in erythroblastic islands (clusters of erythroblasts around a central macrophage in red marrow). The resulting anucleate cell is the reticulocyte, released into the bloodstream. Defects in nucleus extrusion can be seen in some thalassemias and myelodysplastic syndromes.",
+      "visualDescription": "Pixel art erythropoiesis sequence: orthochromatic normoblast shown with pyknotic (dark, condensed) nucleus being extruded from eosinophilic cytoplasm, central macrophage beside it phagocytosing the extruded nucleus, resulting reticulocyte (smaller, no nucleus) labeled, erythroblastic island context shown",
+      "sourceName": "Wikipedia — Erythropoiesis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erythropoiesis",
+      "volatile": false,
+      "distractors": ["basophilic erythroblast", "polychromatic erythroblast", "proerythroblast (pronormoblast)", "reticulocyte", "burst-forming unit erythroid", "megakaryocyte", "myeloid stem cell", "colony-forming unit erythroid (CFU-E)"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In red bone marrow, erythroid precursors cluster around a central macrophage in structures called what?",
+          "correctAnswer": "erythroblastic islands",
+          "distractors": ["erythroid cords", "hematopoietic nests", "sinusoidal clusters"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the nucleus extruded from the normoblast is phagocytosed by central macrophages in erythroblastic islands.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The order of nucleated erythroid precursors is: proerythroblast → basophilic erythroblast → polychromatic erythroblast → ___ normoblast → reticulocyte.",
+          "correctAnswer": "orthochromatic",
+          "distractors": ["hyperchromatic", "acidophilic", "amphophilic"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_059",
+      "correctAnswer": "glomerulus",
+      "acceptableAlternatives": ["glomerular capillary tuft", "renal glomerulus"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The renal corpuscle in the kidney cortex consists of Bowman's capsule and the enclosed tuft of fenestrated capillaries that filters blood to produce the primary urine filtrate. What is this capillary tuft called?",
+      "explanation": "The glomerulus is a tuft of fenestrated capillaries inside Bowman's capsule (glomerular capsule). Blood enters via the afferent arteriole and exits via the efferent arteriole (narrower, maintaining filtration pressure). The filtration barrier consists of three layers: fenestrated endothelium, a fused basement membrane (GBM), and podocyte foot processes (filtration slits). The glomerulus filters approximately 180 L/day (GFR ~125 mL/min in adults). In glomerulonephritis, immune complex deposition in the GBM activates complement, causing inflammation and proteinuria.",
+      "visualDescription": "Pixel art renal corpuscle: Bowman's capsule outlined, glomerular capillary tuft labeled inside with afferent arteriole entering and efferent arteriole exiting, podocytes with foot processes on the outer capillary surface, filtrate shown entering Bowman's space, three-layer filtration barrier inset",
+      "sourceName": "StatPearls — Histology, Nephron",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554411/",
+      "volatile": false,
+      "distractors": ["Bowman's capsule", "macula densa", "juxtaglomerular apparatus", "mesangium", "peritubular capillary", "vasa recta", "Henle's loop", "collecting duct"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The filtration barrier of the glomerulus has three layers. What is the middle layer, shared between endothelium and podocytes?",
+          "correctAnswer": "glomerular basement membrane (GBM)",
+          "distractors": ["mesangium", "Bowman's capsule parietal epithelium", "fenestrated endothelium"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the efferent arteriole of the glomerulus is narrower than the afferent arteriole, helping maintain filtration pressure.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The normal glomerular filtration rate (GFR) in an adult is approximately ___ mL per minute.",
+          "correctAnswer": "125",
+          "distractors": ["60", "200", "50"]
+        }
+      ]
+    },
+    {
+      "id": "ha_histo_060",
+      "correctAnswer": "stellate cells (Ito cells)",
+      "acceptableAlternatives": ["Ito cells", "hepatic stellate cells", "perisinusoidal cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "In the space of Disse between hepatic sinusoidal endothelium and hepatocytes, which quiescent cells store vitamin A in lipid droplets but become activated myofibroblasts producing collagen in response to liver injury — driving fibrosis?",
+      "explanation": "Hepatic stellate cells (Ito cells, perisinusoidal cells) reside in the space of Disse. In their quiescent state they store vitamin A (retinyl esters) as intracytoplasmic lipid droplets. When activated by injury signals (TGF-β from Kupffer cells, reactive oxygen species, PDGF), they lose their lipid droplets, transition to myofibroblasts, proliferate, and secrete large amounts of collagen (mainly type I and III) — the cellular basis of hepatic fibrosis in conditions like alcoholic cirrhosis, non-alcoholic steatohepatitis (NASH), and chronic viral hepatitis. They are the primary target for anti-fibrotic therapies.",
+      "visualDescription": "Pixel art space of Disse: quiescent stellate cell shown with large lipid droplets (vitamin A, yellow), activation arrow triggered by TGF-β (from Kupffer cell), activated stellate cell shown as elongated myofibroblast secreting collagen fibers, surrounding hepatocytes labeled, sinusoidal lumen above",
+      "sourceName": "StatPearls — Physiology, Liver",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK535438/",
+      "volatile": false,
+      "distractors": ["Kupffer cells", "hepatocytes", "pit cells (hepatic NK cells)", "cholangiocytes", "sinusoidal endothelial cells", "portal fibroblasts", "oval (progenitor) cells", "hepatic progenitor cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Activated hepatic stellate cells are the primary collagen-producing cells in liver fibrosis. Which cytokine from Kupffer cells is the most potent activator of stellate cells?",
+          "correctAnswer": "TGF-β (transforming growth factor beta)",
+          "distractors": ["IL-6", "TNF-α", "VEGF"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: quiescent hepatic stellate cells store vitamin A as retinyl esters in lipid droplets.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Upon activation, hepatic stellate cells lose their vitamin A droplets and transition to ___, secreting collagen and driving liver fibrosis.",
+          "correctAnswer": "myofibroblasts",
+          "distractors": ["macrophages", "cholangiocytes", "hepatocytes"]
+        }
+      ]
+    }
+  ]
+}

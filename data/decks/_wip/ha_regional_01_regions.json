@@ -1,0 +1,1057 @@
+{
+  "id": "human_anatomy_regional",
+  "name": "Regional Anatomy",
+  "domain": "science",
+  "subDomain": "human_anatomy",
+  "description": "Master the named regions, triangles, canals, fossae, and spaces of the human body — from the neck triangles to the popliteal fossa. Each region has defined boundaries, key contents, and clinical relevance. Know these cold and gross anatomy becomes a map, not a maze.",
+  "minimumFacts": 30,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "ha_regional_001",
+      "correctAnswer": "Sternocleidomastoid",
+      "acceptableAlternatives": ["SCM"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Trapezius",
+        "Platysma",
+        "Digastric",
+        "Omohyoid",
+        "Scalenus anterior",
+        "Mylohyoid"
+      ],
+      "quizQuestion": "Which muscle forms the posterior boundary of the anterior triangle of the neck?",
+      "explanation": "The anterior triangle of the neck is bounded anteriorly by the midline of the neck, superiorly by the inferior border of the mandible, and posteriorly by the anterior border of the sternocleidomastoid (SCM). It contains the carotid, submandibular, submental, and muscular sub-triangles.",
+      "statement": "The sternocleidomastoid (SCM) forms the posterior boundary of the anterior triangle of the neck.",
+      "wowFactor": "The anterior triangle is so anatomically dense — carotid arteries, jugular vein, vagus nerve — that surgeons spend years mastering safe approaches to it. One wrong cut during neck dissection can mean stroke.",
+      "visualDescription": "Anterior view of neck with triangle outlined: mandible above, neck midline to the left, SCM muscle forming the right diagonal border",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Anterior_triangle_of_the_neck",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The anterior triangle of the neck is bounded posteriorly by the anterior border of which muscle?",
+          "correctAnswer": "Sternocleidomastoid",
+          "distractors": ["Trapezius", "Platysma", "Digastric", "Omohyoid"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_002",
+      "correctAnswer": "Accessory nerve (CN XI)",
+      "acceptableAlternatives": ["CN XI", "Spinal accessory nerve"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_nerve_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Vagus nerve (CN X)",
+        "Hypoglossal nerve (CN XII)",
+        "Facial nerve (CN VII)",
+        "Phrenic nerve",
+        "Greater auricular nerve",
+        "Transverse cervical nerve"
+      ],
+      "quizQuestion": "Which cranial nerve crosses the posterior triangle of the neck superficially and is vulnerable during lymph node biopsy?",
+      "explanation": "The spinal accessory nerve (CN XI) crosses the posterior triangle of the neck on the surface of the investing fascia. It innervates the trapezius and sternocleidomastoid muscles. Because it is superficial here, it is at serious risk of injury during posterior triangle surgery or lymph node biopsy, potentially causing trapezius palsy and dropped shoulder.",
+      "statement": "The accessory nerve (CN XI) crosses superficially through the posterior triangle of the neck, making it vulnerable in surgery.",
+      "wowFactor": "Iatrogenic CN XI injury during lymph node biopsy is one of the most common surgical nerve injuries in the neck — the patient wakes up unable to shrug or raise their arm above 90°.",
+      "visualDescription": "Lateral neck view showing the posterior triangle bordered by SCM, trapezius, and clavicle, with a highlighted nerve coursing diagonally through the fat and fascia",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Posterior_triangle_of_the_neck",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Cranial nerve ___ crosses the posterior triangle superficially and is at risk during lymph node biopsy.",
+          "correctAnswer": "XI",
+          "distractors": ["X", "XII", "VII", "V"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_003",
+      "correctAnswer": "Carotid bifurcation",
+      "acceptableAlternatives": ["Carotid sinus", "Common carotid bifurcation"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Thyroid gland",
+        "Submandibular gland",
+        "Ansa cervicalis",
+        "Brachial plexus roots",
+        "Cervical lymph nodes"
+      ],
+      "quizQuestion": "The carotid triangle of the neck contains which major arterial landmark where the common carotid divides?",
+      "explanation": "The carotid triangle is bounded by the SCM posteriorly, the posterior belly of the digastric superiorly, and the superior belly of the omohyoid inferiorly. Its key contents include the carotid bifurcation (common carotid → internal + external carotid arteries), the internal jugular vein, vagus nerve (CN X), and hypoglossal nerve (CN XII).",
+      "statement": "The carotid triangle contains the carotid bifurcation, where the common carotid artery divides into internal and external branches.",
+      "wowFactor": "Pressing on the carotid sinus at the bifurcation reflexively slows the heart — baroreceptors there sense blood pressure. Tight collars and neck massage have caused syncope by triggering this reflex.",
+      "visualDescription": "Dissection view of carotid triangle showing the Y-shaped split of the common carotid artery into internal and external branches, flanked by the jugular vein and vagus nerve",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Carotid_triangle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Which cranial nerve found in the carotid triangle innervates most of the tongue's muscles?",
+          "correctAnswer": "Hypoglossal nerve (CN XII)",
+          "distractors": ["Vagus nerve (CN X)", "Accessory nerve (CN XI)", "Glossopharyngeal nerve (CN IX)", "Facial nerve (CN VII)"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_004",
+      "correctAnswer": "T1 vertebra, 1st ribs, and manubrium",
+      "acceptableAlternatives": ["First thoracic vertebra, first pair of ribs, and the manubrium of the sternum"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_boundary_descriptions",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "C7 vertebra, 1st ribs, and clavicles",
+        "T2 vertebra, 2nd ribs, and sternal angle",
+        "T1 vertebra, 2nd ribs, and clavicles",
+        "C7 vertebra, 1st ribs, and manubrium"
+      ],
+      "quizQuestion": "What three bony structures form the boundary of the thoracic inlet (superior thoracic aperture)?",
+      "explanation": "The thoracic inlet is the superior opening of the thoracic cage, bounded posteriorly by the T1 vertebral body, laterally by the first pair of ribs and their costal cartilages, and anteriorly by the superior border of the manubrium. Structures passing through it include the trachea, esophagus, subclavian vessels, vagus nerves, phrenic nerves, recurrent laryngeal nerves, and the thoracic duct on the left.",
+      "statement": "The thoracic inlet is bounded by the T1 vertebra posteriorly, the first ribs laterally, and the manubrium anteriorly.",
+      "wowFactor": "The thoracic inlet is surprisingly small — roughly the size of your palm — yet the great vessels, trachea, esophagus, and several major nerves all pass through it simultaneously.",
+      "visualDescription": "Superior view looking down into the thoracic inlet, showing the kidney-shaped opening framed by the first ribs, manubrium anteriorly, and T1 vertebra posteriorly",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Superior_thoracic_aperture",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The thoracic duct passes through the thoracic inlet on the left side.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_005",
+      "correctAnswer": "Sternal angle (angle of Louis)",
+      "acceptableAlternatives": ["Angle of Louis", "Manubriosternal joint", "Louis angle"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_landmark_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Xiphisternal joint",
+        "Suprasternal notch",
+        "Second intercostal space",
+        "Midsternal point",
+        "Clavicular notch"
+      ],
+      "quizQuestion": "What landmark marks the boundary between the superior and inferior mediastinum?",
+      "explanation": "The sternal angle (angle of Louis) is the transverse ridge at the manubriosternal joint, level with the T4/T5 intervertebral disc. It is the key landmark dividing the superior mediastinum (above) from the inferior mediastinum (below). It also marks where the trachea bifurcates, the level of the 2nd rib articulation, and the start of the aortic arch.",
+      "statement": "The sternal angle (angle of Louis) marks the division between the superior and inferior mediastinum, at the level of T4/T5.",
+      "wowFactor": "The sternal angle is so packed with anatomical significance that medical students remember it with 'Louis loves angles at 4-5': tracheal bifurcation, aortic arch start and end, azygos vein entry into SVC — all at the same transverse plane.",
+      "visualDescription": "Anterior chest view with the sternal angle highlighted as a palpable ridge, horizontal dashed line extending to T4/T5 level, dividing the mediastinum into superior and inferior zones",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sternal_angle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "At what vertebral level does the sternal angle lie, marking the superior-inferior mediastinum boundary?",
+          "correctAnswer": "T4/T5",
+          "distractors": ["T2/T3", "T6/T7", "C7/T1", "T3/T4"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_006",
+      "correctAnswer": "Middle mediastinum",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_region_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Anterior mediastinum",
+        "Posterior mediastinum",
+        "Superior mediastinum",
+        "Inferior mediastinum"
+      ],
+      "quizQuestion": "The pericardium, heart, and roots of the great vessels are located in which division of the inferior mediastinum?",
+      "explanation": "The inferior mediastinum is divided into anterior (between sternum and pericardium), middle (containing the pericardial sac, heart, and great vessel roots), and posterior (between pericardium and vertebral column, containing the thoracic aorta, esophagus, thoracic duct, and azygos system). The heart occupies the middle mediastinum.",
+      "statement": "The heart, pericardium, and roots of the great vessels occupy the middle mediastinum.",
+      "wowFactor": "Pericardial effusion — fluid accumulating in the middle mediastinum's pericardial sac — can compress the heart and cause cardiac tamponade, a rapidly fatal condition treated emergently by needle pericardiocentesis.",
+      "visualDescription": "Cross-sectional diagram of the chest at the level of the heart, with color-coded mediastinal divisions: anterior (narrow strip), middle (heart-shaped pericardial sac), and posterior (containing descending aorta and esophagus)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mediastinum",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which mediastinal compartment contains the thoracic aorta, esophagus, and thoracic duct?",
+          "correctAnswer": "Posterior mediastinum",
+          "distractors": ["Middle mediastinum", "Anterior mediastinum", "Superior mediastinum"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_007",
+      "correctAnswer": "Transversalis fascia",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "External oblique aponeurosis",
+        "Internal oblique aponeurosis",
+        "Transversus abdominis",
+        "Inguinal ligament",
+        "Conjoint tendon"
+      ],
+      "quizQuestion": "The deep inguinal ring is a defect in which layer of the abdominal wall?",
+      "explanation": "The inguinal canal is an oblique ~4 cm passage through the anterior abdominal wall. Its deep (internal) ring is an opening in the transversalis fascia, located about 1.5 cm above the midpoint of the inguinal ligament. The superficial (external) ring is an opening in the external oblique aponeurosis. Indirect hernias pass through the deep ring; direct hernias do not.",
+      "statement": "The deep inguinal ring is an opening in the transversalis fascia, forming the proximal entrance to the inguinal canal.",
+      "wowFactor": "The inguinal canal's oblique course is a clever anatomical design — increased abdominal pressure compresses the canal shut, reducing hernia risk. The design partially fails in males because the testicular descent route creates a structural weak point.",
+      "visualDescription": "Sagittal section of the lower abdominal wall showing the inguinal canal as an oblique tube, with the deep ring piercing transversalis fascia and the superficial ring opening in the external oblique aponeurosis",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Inguinal_canal",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The superficial inguinal ring is an opening in which structure?",
+          "correctAnswer": "External oblique aponeurosis",
+          "distractors": ["Transversalis fascia", "Internal oblique aponeurosis", "Transversus abdominis", "Conjoint tendon"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_008",
+      "correctAnswer": "Inguinal ligament",
+      "acceptableAlternatives": ["Poupart's ligament"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Conjoint tendon",
+        "Transversalis fascia",
+        "Lacunar ligament",
+        "Iliopectineal ligament",
+        "Pectineal ligament"
+      ],
+      "quizQuestion": "What structure forms the floor of the inguinal canal?",
+      "explanation": "The four walls of the inguinal canal: the floor is the inguinal ligament (and lacunar ligament medially); the roof is formed by arching fibres of the internal oblique and transversus abdominis; the anterior wall is the external oblique aponeurosis (and internal oblique laterally); the posterior wall is the transversalis fascia (and conjoint tendon medially).",
+      "statement": "The floor of the inguinal canal is formed by the inguinal ligament.",
+      "wowFactor": "The inguinal ligament is itself the lower free edge of the external oblique aponeurosis, folded back on itself — a neat anatomical recycling that forms both the canal's floor and the landmark separating the abdomen from the thigh.",
+      "visualDescription": "Anterior abdominal wall with the inguinal canal opened, showing the trough-like floor formed by the inguinal ligament stretching from ASIS to pubic tubercle",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Inguinal_canal",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The roof of the inguinal canal is formed by arching fibres of the internal oblique and ___ muscles.",
+          "correctAnswer": "Transversus abdominis",
+          "distractors": ["External oblique", "Transversalis fascia", "Rectus abdominis", "Iliopsoas"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_009",
+      "correctAnswer": "Ilioinguinal nerve",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_nerve_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Genitofemoral nerve",
+        "Lateral femoral cutaneous nerve",
+        "Femoral nerve",
+        "Iliohypogastric nerve",
+        "Subcostal nerve"
+      ],
+      "quizQuestion": "Which nerve travels through the inguinal canal alongside the spermatic cord (in males) or round ligament (in females)?",
+      "explanation": "The inguinal canal contains the spermatic cord in males or round ligament of the uterus in females. The ilioinguinal nerve (L1) also traverses the canal, exiting through the superficial inguinal ring to supply sensation to the medial thigh, base of the penis/labium majus, and scrotum/labium. It does not enter through the deep ring but joins the canal partway through.",
+      "statement": "The ilioinguinal nerve passes through the inguinal canal alongside the spermatic cord or round ligament.",
+      "wowFactor": "Damage to the ilioinguinal nerve during hernia repair — one of the most common general surgery procedures — causes chronic groin pain and numbness of the scrotum or labia, a complication that affects roughly 10% of patients.",
+      "visualDescription": "Open inguinal canal showing the spermatic cord and a thin nerve running alongside it, with arrows indicating the nerve's sensory distribution over the medial thigh and genitalia",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Inguinal_canal",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: In females, the inguinal canal contains the round ligament of the uterus.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_010",
+      "correctAnswer": "Lateral to the inferior epigastric vessels",
+      "acceptableAlternatives": ["Lateral to inferior epigastric artery"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_positional_descriptions",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Medial to the inferior epigastric vessels",
+        "Through Hesselbach's triangle",
+        "Through the superficial inguinal ring only",
+        "Posterior to the conjoint tendon"
+      ],
+      "quizQuestion": "An indirect inguinal hernia passes through the deep inguinal ring at what position relative to the inferior epigastric vessels?",
+      "explanation": "Indirect inguinal hernias pass through the deep inguinal ring, which lies lateral to the inferior epigastric vessels. They follow the path of testicular descent through the inguinal canal and can enter the scrotum. Direct inguinal hernias push through Hesselbach's triangle medial to the inferior epigastric vessels — they do not traverse the deep ring.",
+      "statement": "Indirect inguinal hernias pass through the deep ring lateral to the inferior epigastric vessels; direct hernias push through Hesselbach's triangle medial to these vessels.",
+      "wowFactor": "The inferior epigastric vessels are the single most useful landmark to distinguish indirect from direct hernias during laparoscopic surgery — one vessel, two completely different hernias, one definitive diagnostic line.",
+      "visualDescription": "Posterior (laparoscopic) view of the inguinal region showing the inferior epigastric vessels as a raised ridge, with an indirect hernia defect lateral to it and Hesselbach's triangle marked medially",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Inguinal_hernia",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A direct inguinal hernia pushes through Hesselbach's triangle, which lies at what position relative to the inferior epigastric vessels?",
+          "correctAnswer": "Medial",
+          "distractors": ["Lateral", "Posterior", "Superior", "Inferior"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_011",
+      "correctAnswer": "Pectoralis major (anterior), latissimus dorsi and teres major (posterior), rib cage (medial), humerus (lateral)",
+      "acceptableAlternatives": ["Pectoralis major anteriorly, latissimus dorsi and teres major posteriorly, serratus anterior medially, humerus laterally"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_boundary_descriptions",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Deltoid (anterior), subscapularis (posterior), clavicle (superior), humerus (lateral)",
+        "Pectoralis minor (anterior), trapezius (posterior), clavicle (superior), scapula (lateral)",
+        "Serratus anterior (anterior), rhomboids (posterior), rib cage (medial), clavicle (superior)"
+      ],
+      "quizQuestion": "What are the anterior and posterior walls of the axilla?",
+      "explanation": "The axilla is a pyramid-shaped space below the shoulder joint. Its anterior wall is formed by pectoralis major and minor; its posterior wall by subscapularis, teres major, and latissimus dorsi; its medial wall by serratus anterior overlying the rib cage; and its lateral wall (apex) by the intertubercular groove of the humerus. It contains the axillary artery and vein, the three cords of the brachial plexus, and axillary lymph nodes.",
+      "statement": "The axilla has pectoralis major as its anterior wall and latissimus dorsi plus teres major as its posterior wall.",
+      "wowFactor": "The axilla contains five groups of lymph nodes that drain virtually all of the breast — which is why axillary dissection is central to breast cancer staging. Sentinel node biopsy samples just the first node in this chain.",
+      "visualDescription": "Oblique view of the axilla opened to show the pyramid-shaped space, with pectoralis muscles forming the front wall and latissimus dorsi/teres major forming the back, brachial plexus cords visible inside",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Axilla",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Which three structures of the brachial plexus (named by position relative to the axillary artery) are found inside the axilla?",
+          "correctAnswer": "Medial, lateral, and posterior cords",
+          "distractors": ["Roots, trunks, and divisions", "Upper, middle, and lower trunks", "Anterior and posterior divisions", "C5, C6, and C7 roots"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_012",
+      "correctAnswer": "Tendon, Artery, Nerve (TAN — lateral to medial)",
+      "acceptableAlternatives": ["TAN from lateral to medial", "Biceps tendon, brachial artery, median nerve"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_mnemonic_content",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "adult",
+      "distractors": [
+        "Nerve, Artery, Tendon (NAT — lateral to medial)",
+        "Artery, Nerve, Tendon (ANT — lateral to medial)",
+        "Tendon, Nerve, Artery (TNA — lateral to medial)",
+        "Nerve, Tendon, Artery (NTA — lateral to medial)"
+      ],
+      "quizQuestion": "In the cubital fossa, the mnemonic 'TAN' describes which three contents from lateral to medial?",
+      "explanation": "The cubital fossa is the triangular depression at the front of the elbow, bounded laterally by brachioradialis, medially by pronator teres, and superiorly by a line between the epicondyles. Its floor is formed by brachialis and supinator. The roof is the bicipital aponeurosis. From lateral to medial, the contents are: biceps Tendon, brachial Artery, Median Nerve — remembered as TAN.",
+      "statement": "The cubital fossa contents from lateral to medial are: biceps Tendon, brachial Artery, Median Nerve (TAN).",
+      "wowFactor": "The cubital fossa is where blood pressure is measured — the brachial artery is pressed by the cuff just proximal, and the stethoscope bell listens for Korotkoff sounds right over it.",
+      "visualDescription": "Anterior elbow with the cubital fossa triangle highlighted, showing the biceps tendon in the center, brachial artery just medial to it, and the median nerve most medially, labeled TAN left-to-right",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cubital_fossa",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What forms the roof of the cubital fossa, protecting its contents from superficial pressure?",
+          "correctAnswer": "Bicipital aponeurosis",
+          "distractors": ["Brachial fascia", "Antebrachial fascia", "Pronator teres tendon", "Radial collateral ligament"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_013",
+      "correctAnswer": "Brachioradialis (lateral) and pronator teres (medial)",
+      "acceptableAlternatives": ["Brachioradialis laterally, pronator teres medially"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_boundary_descriptions",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Biceps brachii (lateral) and brachialis (medial)",
+        "Extensor carpi radialis (lateral) and flexor carpi radialis (medial)",
+        "Supinator (lateral) and pronator quadratus (medial)",
+        "Brachialis (lateral) and flexor digitorum superficialis (medial)"
+      ],
+      "quizQuestion": "What are the lateral and medial boundaries of the cubital fossa?",
+      "explanation": "The cubital fossa is a triangular depression anterior to the elbow. Its lateral boundary is brachioradialis, its medial boundary is pronator teres, and its superior boundary is an imaginary horizontal line connecting the medial and lateral epicondyles of the humerus. The floor consists of brachialis (proximally) and supinator (distally).",
+      "statement": "The cubital fossa is bounded laterally by brachioradialis and medially by pronator teres.",
+      "wowFactor": "The cubital fossa is a common site for intravenous access via the median cubital vein, which lies just superficial to the bicipital aponeurosis — a natural shield that protects the brachial artery from accidental puncture.",
+      "visualDescription": "Anterior elbow dissection showing the triangular cubital fossa, with brachioradialis labeled on the lateral (thumb) side and pronator teres on the medial (pinky) side",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cubital_fossa",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The floor of the cubital fossa is formed proximally by brachialis and distally by ___.",
+          "correctAnswer": "Supinator",
+          "distractors": ["Pronator teres", "Pronator quadratus", "Brachioradialis", "Anconeus"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_014",
+      "correctAnswer": "Scaphoid and trapezium",
+      "acceptableAlternatives": ["Scaphoid bone and trapezium bone"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_bone_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Lunate and capitate",
+        "Radius and scaphoid",
+        "Trapezoid and capitate",
+        "Navicular and cuboid",
+        "Lunate and triquetrum"
+      ],
+      "quizQuestion": "What carpal bones form the floor of the anatomical snuffbox?",
+      "explanation": "The anatomical snuffbox is a triangular depression on the lateral (radial) side of the wrist when the thumb is extended. Its medial boundary is extensor pollicis longus (EPL); its lateral boundary is extensor pollicis brevis (EPB) and abductor pollicis longus (APL). The floor consists of the scaphoid (proximally) and trapezium (distally). The radial artery crosses the floor deep to the tendons.",
+      "statement": "The floor of the anatomical snuffbox is formed by the scaphoid and trapezium bones.",
+      "wowFactor": "Tenderness in the anatomical snuffbox after a fall on an outstretched hand must be treated as a scaphoid fracture until proven otherwise by MRI — the scaphoid's poor blood supply makes missed fractures lead to avascular necrosis and permanent wrist disability.",
+      "visualDescription": "Dorsal view of the wrist with thumb extended, showing the triangular snuffbox depression, EPL on the medial border, EPB/APL on the lateral border, and the scaphoid visible at the floor",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Anatomical_snuffbox",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Which major artery passes through the floor of the anatomical snuffbox deep to the tendons?",
+          "correctAnswer": "Radial artery",
+          "distractors": ["Ulnar artery", "Anterior interosseous artery", "Posterior interosseous artery", "Brachial artery"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_015",
+      "correctAnswer": "Extensor pollicis longus (medial) and extensor pollicis brevis + abductor pollicis longus (lateral)",
+      "acceptableAlternatives": ["EPL medially, EPB and APL laterally"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_boundary_descriptions",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Flexor pollicis longus (medial) and extensor pollicis longus (lateral)",
+        "Extensor carpi radialis longus (medial) and extensor pollicis longus (lateral)",
+        "Abductor pollicis longus (medial) and extensor carpi radialis brevis (lateral)",
+        "Extensor pollicis brevis (medial) and extensor pollicis longus (lateral)"
+      ],
+      "quizQuestion": "What tendons form the medial and lateral borders of the anatomical snuffbox?",
+      "explanation": "The anatomical snuffbox borders: medially (ulnar side within the snuffbox) = extensor pollicis longus (EPL); laterally (radial side) = extensor pollicis brevis (EPB) and abductor pollicis longus (APL) running together. The EPL hooks around Lister's tubercle of the radius before crossing to the thumb. The cephalic vein runs superficially over the snuffbox.",
+      "statement": "The anatomical snuffbox is bounded medially by EPL and laterally by EPB and APL.",
+      "wowFactor": "The extensor pollicis longus can rupture spontaneously after a distal radius fracture, even one that healed perfectly — the tendon rubs against the rough fracture callus near Lister's tubercle inside the snuffbox.",
+      "visualDescription": "Close-up dorsal wrist with thumb extended, two tendons labeled: EPL on the medial (toward index finger) border, EPB and APL bundled on the lateral (thumb tip) border, diamond-shaped depression between them",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Anatomical_snuffbox",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The cephalic vein passes superficially over the anatomical snuffbox.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_016",
+      "correctAnswer": "NAVEL (Nerve, Artery, Vein, Empty space, Lymphatics) — lateral to medial",
+      "acceptableAlternatives": ["Femoral nerve laterally, femoral artery middle, femoral vein medially"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_mnemonic_content",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "adult",
+      "distractors": [
+        "VANE — Vein, Artery, Nerve, Empty space",
+        "ANEL — Artery, Nerve, Empty space, Lymphatics",
+        "NAVEL but medial to lateral",
+        "Nerve medially, vein laterally, artery in the center"
+      ],
+      "quizQuestion": "The mnemonic 'NAVEL' describes the contents of the femoral triangle from lateral to medial — what does each letter stand for?",
+      "explanation": "The femoral triangle is bounded superiorly by the inguinal ligament, laterally by the medial border of sartorius, and medially by the medial border of adductor longus. Its contents from lateral to medial are: femoral Nerve, femoral Artery, femoral Vein, Empty space (femoral canal), and Lymphatics — remembered as NAVEL. The femoral canal contains deep inguinal lymph nodes and is the weak point through which femoral hernias protrude.",
+      "statement": "The femoral triangle contents from lateral to medial follow NAVEL: Nerve, Artery, Vein, Empty space (femoral canal), Lymphatics.",
+      "wowFactor": "The 'E' in NAVEL — the femoral canal — is the route of femoral hernias, which are more common in women because of the wider female pelvis. They are more prone to strangulation than inguinal hernias and require urgent surgical repair.",
+      "visualDescription": "Anterior thigh with femoral triangle outlined, showing the five NAVEL structures color-coded from lateral to medial: nerve (yellow), artery (red), vein (blue), femoral canal (white), lymph node (green)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Femoral_triangle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "The femoral canal — the 'E' in NAVEL — is the passage through which what type of hernia protrudes?",
+          "correctAnswer": "Femoral hernia",
+          "distractors": ["Indirect inguinal hernia", "Direct inguinal hernia", "Obturator hernia", "Spigelian hernia"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_017",
+      "correctAnswer": "Inguinal ligament (superior), sartorius (lateral), adductor longus (medial)",
+      "acceptableAlternatives": ["Inguinal ligament superiorly, sartorius laterally, adductor longus medially"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_boundary_descriptions",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Inguinal ligament (superior), iliotibial band (lateral), pectineus (medial)",
+        "Inguinal ligament (superior), rectus femoris (lateral), gracilis (medial)",
+        "Inguinal ligament (superior), tensor fasciae latae (lateral), adductor brevis (medial)",
+        "Pubic symphysis (medial), sartorius (lateral), inguinal ligament (superior)"
+      ],
+      "quizQuestion": "What three structures form the boundaries of the femoral triangle?",
+      "explanation": "The femoral triangle is a triangular subfascial space on the anteromedial upper thigh. Its superior boundary is the inguinal ligament; its lateral boundary is the medial border of sartorius; its medial boundary is the medial border of adductor longus. The floor is formed by iliopsoas, pectineus, and adductor longus. The apex points inferiorly and leads into the adductor (Hunter's) canal.",
+      "statement": "The femoral triangle is bounded superiorly by the inguinal ligament, laterally by sartorius, and medially by adductor longus.",
+      "wowFactor": "Femoral artery catheterization for cardiac angiography is performed right in the femoral triangle — the artery is palpated just medial to the triangle's midpoint, and getting this position wrong by centimetres risks femoral nerve or vein injury.",
+      "visualDescription": "Anterior thigh dissection with the femoral triangle outlined in white, apex pointing distally, labeled boundaries showing inguinal ligament at top, sartorius descending laterally, adductor longus descending medially",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Femoral_triangle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The floor of the femoral triangle is formed by iliopsoas, pectineus, and ___.",
+          "correctAnswer": "Adductor longus",
+          "distractors": ["Sartorius", "Rectus femoris", "Adductor magnus", "Gracilis"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_018",
+      "correctAnswer": "Adductor (Hunter's) canal",
+      "acceptableAlternatives": ["Hunter's canal", "Subsartorial canal", "Adductor canal"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_region_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Popliteal fossa",
+        "Femoral triangle",
+        "Obturator canal",
+        "Subsartorial space",
+        "Adductor hiatus"
+      ],
+      "quizQuestion": "What subsartorial canal connects the femoral triangle to the popliteal fossa, transmitting the femoral artery and vein?",
+      "explanation": "The adductor (Hunter's) canal is an aponeurotic tunnel in the medial thigh, running from the apex of the femoral triangle to the adductor hiatus in adductor magnus. It lies deep to sartorius. Contents: femoral artery, femoral vein, and the saphenous nerve. The femoral artery enters the popliteal fossa as the popliteal artery after passing through the adductor hiatus.",
+      "statement": "The adductor (Hunter's) canal carries the femoral artery and vein from the femoral triangle through the medial thigh to the adductor hiatus.",
+      "wowFactor": "The adductor canal block — injecting local anaesthetic into Hunter's canal — selectively anaesthetizes the saphenous nerve and minimizes motor block to the quadriceps, allowing same-day walking after total knee replacement. It replaced the femoral nerve block because it doesn't cause falls.",
+      "visualDescription": "Medial thigh cross-section showing sartorius overlying the adductor canal, femoral artery (red) and vein (blue) inside the tunnel, saphenous nerve running alongside",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adductor_canal",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Which nerve travels through the adductor canal alongside the femoral vessels?",
+          "correctAnswer": "Saphenous nerve",
+          "distractors": ["Femoral nerve", "Obturator nerve", "Common peroneal nerve", "Sural nerve"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_019",
+      "correctAnswer": "Popliteal artery (deepest, most vulnerable)",
+      "acceptableAlternatives": ["Popliteal artery"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Popliteal vein",
+        "Tibial nerve",
+        "Common fibular nerve",
+        "Small saphenous vein",
+        "Sural nerve"
+      ],
+      "quizQuestion": "In the popliteal fossa, which structure lies deepest against the joint capsule and is most at risk in a knee dislocation?",
+      "explanation": "The popliteal fossa is a diamond-shaped space posterior to the knee, bounded by biceps femoris (superolateral), semimembranosus and semitendinosus (superomedial), and the two heads of gastrocnemius (inferolateral and inferomedial). From superficial to deep, the contents are: tibial nerve, common fibular nerve (lateral), popliteal vein, and deepest — the popliteal artery. Because the artery is tethered to the joint capsule at the adductor hiatus and soleus arch, it is at extreme risk of injury in knee dislocations, causing limb-threatening ischemia.",
+      "statement": "The popliteal artery lies deepest in the popliteal fossa and is the structure most vulnerable to injury in a knee dislocation.",
+      "wowFactor": "Knee dislocations can spontaneously reduce before the patient reaches hospital, masking the injury. But the popliteal artery may already be disrupted. An ankle-brachial index below 0.9 after any knee dislocation mandates urgent vascular imaging — missing it can mean amputation.",
+      "visualDescription": "Posterior knee dissection with the popliteal fossa opened, showing the tibial nerve most superficial, popliteal vein below it, and the popliteal artery deepest against the capsule of the knee joint",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Popliteal_fossa",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In the popliteal fossa from superficial to deep, which comes first: tibial nerve, popliteal vein, or popliteal artery?",
+          "correctAnswer": "Tibial nerve (most superficial)",
+          "distractors": ["Popliteal artery (most superficial)", "Popliteal vein (most superficial)", "Common fibular nerve (most superficial)"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_020",
+      "correctAnswer": "Biceps femoris (superolateral) and semimembranosus + semitendinosus (superomedial)",
+      "acceptableAlternatives": ["Biceps femoris superolaterally, semimembranosus and semitendinosus superomedially"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_boundary_descriptions",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Biceps femoris (superomedial) and semimembranosus (superolateral)",
+        "Rectus femoris (superolateral) and gracilis (superomedial)",
+        "Semitendinosus (superolateral) and biceps femoris (superomedial)",
+        "Vastus lateralis (superolateral) and adductor magnus (superomedial)"
+      ],
+      "quizQuestion": "What muscles form the superolateral and superomedial boundaries of the popliteal fossa?",
+      "explanation": "The popliteal fossa is a diamond-shaped depression behind the knee. The superolateral boundary is biceps femoris; the superomedial boundary is semimembranosus (deep) and semitendinosus (superficial). Inferiorly, the two heads of gastrocnemius (lateral and medial) form the lower boundaries. The roof is the popliteal fascia and skin.",
+      "statement": "The popliteal fossa is bounded superolaterally by biceps femoris and superomedially by semimembranosus and semitendinosus.",
+      "wowFactor": "A Baker's cyst (popliteal cyst) forms when synovial fluid from the knee joint herniates into the popliteal fossa, usually between the medial head of gastrocnemius and semimembranosus — the posteromedial corner that lacks muscle reinforcement.",
+      "visualDescription": "Posterior knee view with the diamond-shaped popliteal fossa highlighted, biceps femoris labeled superolaterally, the two medial hamstrings labeled superomedially, and gastrocnemius heads forming the inferior boundaries",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Popliteal_fossa",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What forms the inferior boundaries of the popliteal fossa?",
+          "correctAnswer": "The two heads of gastrocnemius",
+          "distractors": ["The two heads of soleus", "Plantaris and popliteus", "Biceps femoris and semimembranosus", "Popliteus alone"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_021",
+      "correctAnswer": "Posterior triangle of the neck",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_region_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Anterior triangle of the neck",
+        "Carotid triangle",
+        "Submental triangle",
+        "Occipital triangle",
+        "Supraclavicular triangle"
+      ],
+      "quizQuestion": "Which neck region is bounded by the SCM anteriorly, trapezius posteriorly, and the middle third of the clavicle inferiorly?",
+      "explanation": "The posterior triangle of the neck is bounded anteriorly by the posterior border of the sternocleidomastoid, posteriorly by the anterior border of the trapezius, and inferiorly by the middle third of the clavicle. Its roof is the investing layer of deep cervical fascia. It contains two sub-triangles: occipital (larger, superior) and supraclavicular (smaller, inferior), divided by the inferior belly of omohyoid.",
+      "statement": "The posterior triangle of the neck is bounded by the SCM anteriorly, trapezius posteriorly, and the middle third of the clavicle inferiorly.",
+      "wowFactor": "The posterior triangle is a key surgical target for scalene blocks — anaesthetising the brachial plexus trunks as they emerge between the anterior and middle scalene muscles, just before they pass under the clavicle. One of the most common regional anaesthesia techniques for shoulder surgery.",
+      "visualDescription": "Lateral neck view with the posterior triangle outlined in blue, showing SCM as the anterior edge, trapezius as the posterior edge, and the clavicle forming the base",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Posterior_triangle_of_the_neck",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What muscle divides the posterior neck triangle into occipital and supraclavicular sub-triangles?",
+          "correctAnswer": "Inferior belly of omohyoid",
+          "distractors": ["Superior belly of omohyoid", "Digastric posterior belly", "Scalenus anterior", "Scalenus medius"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_022",
+      "correctAnswer": "Conjoint tendon (inguinal falx)",
+      "acceptableAlternatives": ["Inguinal falx", "Conjoined tendon"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Transversalis fascia",
+        "Lacunar ligament",
+        "Pectineal ligament",
+        "Reflected inguinal ligament",
+        "Interfoveolar ligament"
+      ],
+      "quizQuestion": "What structure reinforces the posterior wall of the medial portion of the inguinal canal, helping to resist direct hernias?",
+      "explanation": "The posterior wall of the inguinal canal is formed mainly by transversalis fascia but is reinforced medially by the conjoint tendon (inguinal falx) — the fused aponeuroses of the internal oblique and transversus abdominis, which insert into the pubic crest and pectineal line. This medial reinforcement is what resists direct herniation through Hesselbach's triangle. When the conjoint tendon is weak, direct hernias occur.",
+      "statement": "The conjoint tendon reinforces the medial part of the inguinal canal's posterior wall, forming resistance against direct inguinal hernias.",
+      "wowFactor": "The Bassini hernia repair (1887) was revolutionary because it reconstructed the posterior canal wall by reapproximating the conjoint tendon to the inguinal ligament — understanding that weak medial reinforcement is the root cause of direct hernias.",
+      "visualDescription": "Posterior wall of the inguinal canal opened from behind, showing the broad transversalis fascia laterally and the whiter, denser conjoint tendon reinforcing the medial third near the pubic tubercle",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Inguinal_canal",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The conjoint tendon is formed by the fused aponeuroses of the internal oblique and ___ muscles.",
+          "correctAnswer": "Transversus abdominis",
+          "distractors": ["External oblique", "Rectus abdominis", "Transversalis fascia", "Pyramidalis"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_023",
+      "correctAnswer": "Thoracic duct",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Right lymphatic duct",
+        "Internal jugular vein",
+        "Subclavian vein",
+        "Vagus nerve",
+        "Left recurrent laryngeal nerve"
+      ],
+      "quizQuestion": "Which lymphatic vessel passes through the left side of the thoracic inlet to drain into the venous system at the junction of the left subclavian and internal jugular veins?",
+      "explanation": "The thoracic duct is the main lymphatic collecting vessel, draining lymph from the lower limbs, abdomen, left thorax, left arm, and left side of the head and neck. It ascends through the posterior mediastinum, passes through the thoracic inlet on the left, and empties into the venous system at the left venous angle (junction of left subclavian and internal jugular veins). Its position in the thoracic inlet makes it vulnerable in left neck and thoracic surgery.",
+      "statement": "The thoracic duct passes through the left side of the thoracic inlet and drains into the left venous angle (subclavian-IJV junction).",
+      "wowFactor": "Thoracic duct injury during left neck dissection or thoracic surgery causes chylothorax — milky lymph fluid flooding the pleural cavity. Chyle contains fat absorbed from the gut and can drain 1–2 litres per day, requiring drainage or ligation.",
+      "visualDescription": "Diagram of the chest and lower neck showing the thoracic duct as a beaded lymphatic tube ascending along the left side of the esophagus, arching over the left subclavian artery, and draining into the left venous angle",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_duct",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The thoracic duct drains into the right venous angle at the junction of the right subclavian and right internal jugular veins.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_024",
+      "correctAnswer": "Hesselbach's triangle",
+      "acceptableAlternatives": ["Inguinal triangle"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_region_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Femoral triangle",
+        "Petitit's triangle",
+        "Grynfeltt-Lesshaft triangle",
+        "Calot's triangle",
+        "Lumbar triangle"
+      ],
+      "quizQuestion": "A direct inguinal hernia protrudes through which anatomical triangle, bounded by the inferior epigastric vessels, the lateral edge of rectus abdominis, and the inguinal ligament?",
+      "explanation": "Hesselbach's triangle (inguinal triangle) is defined by three boundaries: laterally the inferior epigastric vessels, medially the lateral border of rectus abdominis, and inferiorly the inguinal ligament. Its floor is transversalis fascia. Direct inguinal hernias push anteriorly through this weakened area, medial to the inferior epigastric vessels — in contrast to indirect hernias that enter the deep ring lateral to those vessels.",
+      "statement": "Direct inguinal hernias protrude through Hesselbach's triangle, bounded by the inferior epigastric vessels, the rectus abdominis, and the inguinal ligament.",
+      "wowFactor": "Hesselbach described this triangle in 1806 and correctly predicted that hernias pushing through it would differ from those going around the epigastric vessels. Surgeons still use this triangle 220 years later as the definitive laparoscopic landmark.",
+      "visualDescription": "Posterior abdominal wall viewed laparoscopically, with Hesselbach's triangle highlighted, inferior epigastric vessels forming the lateral boundary, rectus sheath on the right, inguinal ligament at the bottom",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Inguinal_triangle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which type of inguinal hernia protrudes through Hesselbach's triangle — direct or indirect?",
+          "correctAnswer": "Direct",
+          "distractors": ["Indirect", "Femoral", "Umbilical", "Both direct and indirect"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_025",
+      "correctAnswer": "Phrenic nerve",
+      "acceptableAlternatives": ["Phrenic nerves"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_nerve_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Vagus nerve",
+        "Recurrent laryngeal nerve",
+        "Subclavian nerve",
+        "Greater splanchnic nerve",
+        "Sympathetic trunk"
+      ],
+      "quizQuestion": "Which nerve passes through the thoracic inlet, descends through the mediastinum on each side, and is the sole motor supply to the diaphragm?",
+      "explanation": "The phrenic nerves (C3, C4, C5 — 'C3, 4, 5 keep the diaphragm alive') pass through the thoracic inlet, descend anterior to the lung roots through the mediastinum (right on the IVC, left on the pericardium), and pierce the diaphragm to supply it exclusively with motor fibres. They also carry sensory fibres from the pericardium, mediastinal pleura, and central diaphragm. Damage at any point from neck to chest causes ipsilateral diaphragm paralysis.",
+      "statement": "The phrenic nerve (C3–C5) passes through the thoracic inlet, descends through the mediastinum, and is the sole motor supply to the diaphragm.",
+      "wowFactor": "Referred pain from the diaphragm (irritated by blood, bile, or a sub-phrenic abscess) is felt in the ipsilateral shoulder tip because C3–C5 phrenic fibres share the same spinal segments as the supraclavicular nerves supplying the shoulder skin.",
+      "visualDescription": "Anterior mediastinum diagram showing the phrenic nerve descending on each side of the pericardium from the thoracic inlet down to the diaphragm, with the right nerve labeled on the IVC and the left crossing the heart",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Phrenic_nerve",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The mnemonic for the phrenic nerve origin is 'C3, 4, 5 keep the diaphragm ___.'",
+          "correctAnswer": "Alive",
+          "distractors": ["Active", "Working", "Intact", "Breathing"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_026",
+      "correctAnswer": "Submental triangle",
+      "acceptableAlternatives": ["Submental space"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_region_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Submandibular triangle",
+        "Muscular triangle",
+        "Carotid triangle",
+        "Digastric triangle",
+        "Suboccipital triangle"
+      ],
+      "quizQuestion": "Which sub-triangle of the anterior neck lies between the anterior bellies of the digastric muscles and the hyoid bone, and contains the submental lymph nodes?",
+      "explanation": "The submental triangle (unpaired) is bounded laterally by the anterior bellies of the two digastric muscles and inferiorly by the body of the hyoid bone. Its floor is formed by the mylohyoid muscle. It contains the submental lymph nodes, which drain the tip of the tongue, lower incisor teeth, and lower lip. It is the only unpaired sub-triangle of the anterior neck.",
+      "statement": "The submental triangle is bounded by the anterior digastric bellies and hyoid bone, and contains submental lymph nodes draining the tongue tip and lower lip.",
+      "wowFactor": "The submental triangle is a common site of Ludwig's angina — a life-threatening bilateral floor-of-mouth infection that can spread to close off the airway within hours. The mylohyoid floor offers little resistance to downward spread into the neck.",
+      "visualDescription": "Inferior view of the chin and upper neck showing the paired anterior digastric bellies forming a V-shape, with the small unpaired submental triangle between them, hyoid bone at the apex",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Submental_triangle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The submental triangle is the only unpaired sub-triangle of the anterior neck.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_027",
+      "correctAnswer": "Adductor hiatus",
+      "acceptableAlternatives": ["Adductor opening", "Hiatus in adductor magnus"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Obturator canal",
+        "Femoral ring",
+        "Saphenous opening",
+        "Popliteal hiatus",
+        "Sciatic foramen"
+      ],
+      "quizQuestion": "The femoral artery passes through what opening in adductor magnus to become the popliteal artery?",
+      "explanation": "The adductor hiatus is a gap in the lower fibres of adductor magnus, between its adductor (pubofemoral) and hamstring (ischiocondylar) parts. The femoral artery and vein pass through it at the distal end of the adductor canal, entering the popliteal fossa and becoming the popliteal artery and vein. The saphenous nerve does not pass through — it runs anteriorly to supply the medial leg.",
+      "statement": "The femoral artery passes through the adductor hiatus in adductor magnus to enter the popliteal fossa as the popliteal artery.",
+      "wowFactor": "The adductor hiatus is a potential pressure point in thigh compartment syndrome — rising pressure in the adductor compartment can compress the femoral vessels here, causing distal ischaemia and devastating popliteal injury.",
+      "visualDescription": "Medial thigh dissection showing the lower end of the adductor canal and the gap between the two portions of adductor magnus, with the femoral artery labeled as it dives through the hiatus to emerge behind the knee",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adductor_hiatus",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "After passing through the adductor hiatus, the femoral artery changes name to what?",
+          "correctAnswer": "Popliteal artery",
+          "distractors": ["Anterior tibial artery", "Profunda femoris artery", "Peroneal artery", "Posterior tibial artery"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_028",
+      "correctAnswer": "Common fibular (peroneal) nerve",
+      "acceptableAlternatives": ["Common peroneal nerve", "Common fibular nerve"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_nerve_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "Tibial nerve",
+        "Sural nerve",
+        "Saphenous nerve",
+        "Superficial peroneal nerve",
+        "Deep peroneal nerve"
+      ],
+      "quizQuestion": "Which nerve in the popliteal fossa wraps around the neck of the fibula, where it is commonly injured in lateral knee trauma or fibula fracture?",
+      "explanation": "The common fibular (peroneal) nerve is the lateral component of the sciatic nerve. It diverges superolaterally in the popliteal fossa, follows the medial border of biceps femoris, and then wraps around the neck of the fibula where it is immediately subcutaneous. This superficial position makes it the most commonly injured nerve in the lower limb — causing foot drop (inability to dorsiflex) and sensory loss over the dorsum of the foot.",
+      "statement": "The common fibular nerve wraps around the neck of the fibula in the popliteal fossa, making it highly vulnerable to compression and fracture injury.",
+      "wowFactor": "Foot drop from common fibular nerve palsy can come from something as trivial as crossing your legs for too long — the nerve is so superficial at the fibular neck that sustained pressure against a chair leg can produce complete palsy.",
+      "visualDescription": "Posterior knee and proximal leg showing the common fibular nerve diverging laterally in the popliteal fossa, curving around the fibular neck just under the skin, with an arrow indicating vulnerability",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Common_fibular_nerve",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Injury to the common fibular nerve at the fibular neck typically causes loss of which movement?",
+          "correctAnswer": "Dorsiflexion of the foot (foot drop)",
+          "distractors": ["Plantarflexion of the foot", "Knee extension", "Hip abduction", "Toe flexion"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_029",
+      "correctAnswer": "Recurrent laryngeal nerve",
+      "acceptableAlternatives": ["RLN", "Recurrent laryngeal nerves"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_nerve_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "External laryngeal nerve",
+        "Internal laryngeal nerve",
+        "Superior laryngeal nerve",
+        "Hypoglossal nerve",
+        "Glossopharyngeal nerve"
+      ],
+      "quizQuestion": "Which nerve branch of the vagus passes through the thoracic inlet and is at risk in thyroid surgery and aortic arch aneurysm?",
+      "explanation": "The recurrent laryngeal nerve (RLN) branches from the vagus nerve in the thorax — the right RLN loops around the right subclavian artery near the thoracic inlet, while the left RLN loops under the aortic arch and ascends in the tracheoesophageal groove to reach the larynx. Both nerves innervate all intrinsic laryngeal muscles except the cricothyroid (external laryngeal nerve). Damage causes hoarseness or complete aphonia.",
+      "statement": "The recurrent laryngeal nerve passes through the thoracic inlet and ascends to the larynx, risking injury in thyroid surgery, aortic surgery, and apical lung tumors.",
+      "wowFactor": "A Pancoast tumour at the lung apex can crush the left RLN before it even enters the thoracic inlet, causing hoarseness as the first sign of lung cancer — a presentation that can be confused with laryngitis for months.",
+      "visualDescription": "Anterior neck and chest diagram showing the vagus nerve descending into the thorax, the left RLN looping under the aortic arch and ascending in the tracheoesophageal groove, and the right RLN looping under the right subclavian artery",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Recurrent_laryngeal_nerve",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The left recurrent laryngeal nerve loops around which thoracic structure before ascending to the larynx?",
+          "correctAnswer": "Aortic arch",
+          "distractors": ["Right subclavian artery", "Superior vena cava", "Pulmonary trunk", "Left subclavian artery"]
+        }
+      ]
+    },
+    {
+      "id": "ha_regional_030",
+      "correctAnswer": "Scaphoid fracture",
+      "acceptableAlternatives": ["Fractured scaphoid"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "anatomy_clinical_conditions",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "adult",
+      "distractors": [
+        "Distal radius fracture (Colles fracture)",
+        "Lunate dislocation",
+        "Triquetrum fracture",
+        "De Quervain tenosynovitis",
+        "First metacarpal fracture"
+      ],
+      "quizQuestion": "Tenderness in the anatomical snuffbox after a fall on an outstretched hand should raise strong clinical suspicion for what injury?",
+      "explanation": "Tenderness in the anatomical snuffbox is the classic clinical sign of a scaphoid fracture. The scaphoid is the most commonly fractured carpal bone and its proximal pole has a retrograde blood supply — the nutrient artery enters distally, meaning a proximal fracture can cut off blood flow and cause avascular necrosis. Plain X-ray misses up to 20% of acute scaphoid fractures; MRI is the gold standard. Clinical snuffbox tenderness mandates thumb spica immobilisation even if X-ray is negative.",
+      "statement": "Tenderness in the anatomical snuffbox after wrist injury indicates probable scaphoid fracture — requiring immobilisation even with a negative X-ray due to avascular necrosis risk.",
+      "wowFactor": "The scaphoid has one of the worst blood supplies in the body — it enters distally and flows retrogradely to the proximal pole. A missed proximal scaphoid fracture can progress to avascular necrosis and then to complete scapholunate collapse, destroying the wrist permanently.",
+      "visualDescription": "Wrist X-ray showing the carpal bones, with the scaphoid highlighted, and an inset photograph showing a clinician's thumb pressing into the anatomical snuffbox of a patient",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Scaphoid_fracture",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Why are plain X-rays insufficient to rule out a scaphoid fracture, and what imaging is gold standard?",
+          "correctAnswer": "X-rays miss up to 20% of acute fractures; MRI is gold standard",
+          "distractors": [
+            "X-rays miss up to 5% of fractures; CT scan is gold standard",
+            "X-rays are fully reliable; no further imaging needed if negative",
+            "X-rays miss fractures only in children; ultrasound is gold standard",
+            "X-rays miss up to 50% of fractures; bone scan is gold standard"
+          ]
+        }
+      ]
+    }
+  ]
+}

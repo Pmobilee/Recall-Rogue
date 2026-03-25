@@ -1,0 +1,910 @@
+{
+  "facts": [
+    {
+      "id": "ha_embryo_031",
+      "subDeckId": "embryology",
+      "correctAnswer": "cardiac crescent",
+      "acceptableAlternatives": ["primary heart field"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Heart development begins when bilateral mesodermal progenitors coalesce into a horseshoe-shaped structure called the ___.",
+      "explanation": "The cardiac crescent (primary heart field) is the first recognizable cardiac structure, formed by mesodermal progenitor cells in the third week. These bilateral clusters respond to inductive signals from surrounding tissues and coalesce at the midline to form the linear heart tube, the immediate precursor to all four chambers.",
+      "visualDescription": "Pixel art embryo cross-section: horseshoe-shaped band of cells glowing red along the ventral midline, surrounding tissue in neutral gray",
+      "sourceName": "StatPearls — Embryology, Heart",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537313/",
+      "volatile": false,
+      "distractors": ["neural crest", "lateral plate mesoderm", "notochord", "somite", "cardiogenic plate", "endocardial cushion", "interventricular septum"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The primary heart field forms a bilateral structure that later gives rise to the linear heart tube. What is this structure called?",
+          "correctAnswer": "cardiac crescent",
+          "distractors": ["notochord", "somite", "neural crest", "endocardial cushion"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The cardiac crescent is derived from neural crest cells.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_032",
+      "subDeckId": "embryology",
+      "correctAnswer": "day 23",
+      "acceptableAlternatives": ["week 4", "around day 22-23"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "The linear heart tube begins looping at approximately what day of embryonic development?",
+      "explanation": "Cardiac looping begins around day 22-23 of intrauterine life. The heart tube elongates while both ends are fixed, causing it to bend. The primitive ventricle loops anteriorly and to the right (D-loop), establishing the left-right polarity of the heart. If looping goes to the left instead, the result is dextrocardia (situs inversus).",
+      "visualDescription": "Pixel art sequence: straight heart tube on left, curved S-shaped tube on right with rightward bend highlighted in yellow",
+      "sourceName": "TeachMeAnatomy — Development of the Cardiovascular System",
+      "sourceUrl": "https://teachmeanatomy.info/the-basics/embryology/cardiovascular-system/",
+      "volatile": false,
+      "distractors": ["day 7", "day 14", "day 35", "day 10", "day 42", "day 16", "day 28"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "If cardiac looping goes leftward instead of rightward, what anatomical condition results?",
+          "correctAnswer": "dextrocardia",
+          "distractors": ["situs solitus", "patent foramen ovale", "transposition of great arteries"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Normal cardiac looping is called ___ because the loop bends to the right.",
+          "correctAnswer": "D-loop",
+          "distractors": ["L-loop", "S-loop", "C-loop"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_033",
+      "subDeckId": "embryology",
+      "correctAnswer": "septum primum and septum secundum",
+      "acceptableAlternatives": ["two septa", "primum and secundum"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Atrial septation involves the sequential formation of two overlapping septa. What are they called?",
+      "explanation": "The septum primum grows downward from the roof of the primitive atrium toward the endocardial cushions, leaving an opening called the ostium primum. Before that closes, a new opening (ostium secundum) forms higher up in the septum primum. Then the septum secundum grows down to the right of the septum primum, leaving a residual gap — the foramen ovale — which allows right-to-left shunting in fetal life and normally closes at birth.",
+      "visualDescription": "Pixel art atrial cross-section: two overlapping membranes growing down from the roof, arrows showing fetal blood flow rightward through the foramen ovale",
+      "sourceName": "TeachMeAnatomy — Development of the Cardiovascular System",
+      "sourceUrl": "https://teachmeanatomy.info/the-basics/embryology/cardiovascular-system/",
+      "volatile": false,
+      "distractors": ["endocardial cushions", "bulbus cordis and truncus arteriosus", "aorticopulmonary septum", "muscular and membranous septum", "foramen ovale and ductus arteriosus"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The gap between the septum primum and septum secundum that allows fetal right-to-left shunting is called the ___.",
+          "correctAnswer": "foramen ovale",
+          "distractors": ["ostium primum", "ostium secundum", "ductus arteriosus"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Failure of the foramen ovale to close after birth is called an atrial septal defect (patent foramen ovale).",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_034",
+      "subDeckId": "embryology",
+      "correctAnswer": "aorticopulmonary septum",
+      "acceptableAlternatives": ["AP septum", "conotruncal septum"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The truncus arteriosus is divided into the aorta and pulmonary trunk by the spiral rotation of what septum — derived partly from neural crest cells?",
+      "explanation": "The aorticopulmonary (AP) septum forms within the truncus arteriosus and rotates in a 180-degree spiral as it grows, dividing the single outflow tract into the aorta (left) and pulmonary trunk (right). Neural crest cells migrate into the truncus to contribute to this septum. Failure results in persistent truncus arteriosus; abnormal spiraling causes transposition of the great vessels.",
+      "visualDescription": "Pixel art outflow tract: single tube splitting into two spiraling channels, neural crest cells shown migrating in as small blue dots",
+      "sourceName": "StatPearls — Embryology, Heart",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537313/",
+      "volatile": false,
+      "distractors": ["interventricular septum", "septum primum", "endocardial cushion", "septum secundum", "bulboventricular flange"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Failure of the aorticopulmonary septum to form results in a single outflow tract — what congenital defect is this?",
+          "correctAnswer": "persistent truncus arteriosus",
+          "distractors": ["tetralogy of Fallot", "transposition of great vessels", "ventricular septal defect"]
+        },
+        {
+          "type": "reverse",
+          "question": "Which cell type migrates into the truncus arteriosus to help form the aorticopulmonary septum?",
+          "correctAnswer": "neural crest cells",
+          "distractors": ["endothelial cells", "myoblasts", "mesothelial cells"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_035",
+      "subDeckId": "embryology",
+      "correctAnswer": "anencephaly",
+      "acceptableAlternatives": [],
+      "chainThemeId": 4,
+      "answerTypePoolId": "medical_conditions",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Failure of the anterior (rostral) neuropore to close during week 4 results in which lethal neural tube defect?",
+      "explanation": "Anencephaly results from failure of the rostral (anterior) end of the neural tube to close, leaving the forebrain exposed. The exposed neural tissue degenerates, and affected infants are typically stillborn or die within hours to days of birth. It is one of the most common fatal congenital malformations. Adequate maternal folic acid intake before and during early pregnancy significantly reduces the risk.",
+      "visualDescription": "Pixel art embryo diagram: neural tube open at the top end, red warning marker at unclosed rostral opening, folate molecule icon nearby",
+      "sourceName": "StatPearls — Embryology, Anencephaly",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK545244/",
+      "volatile": false,
+      "distractors": ["spina bifida", "meningocele", "holoprosencephaly", "myelomeningocele", "encephalocele", "hydrocephalus", "Dandy-Walker malformation"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In anencephaly, which end of the neural tube fails to close?",
+          "correctAnswer": "anterior (rostral)",
+          "distractors": ["posterior (caudal)", "both ends equally", "the middle segment"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Anencephaly is typically compatible with long-term survival.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_036",
+      "subDeckId": "embryology",
+      "correctAnswer": "myelomeningocele",
+      "acceptableAlternatives": ["meningomyelocele"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "medical_conditions",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The most severe form of spina bifida — where the spinal cord and meninges protrude through the vertebral defect — is called ___.",
+      "explanation": "Spina bifida has three forms of increasing severity: (1) spina bifida occulta — vertebral arch defect only, no herniation; (2) meningocele — meninges herniate but cord stays in canal; (3) myelomeningocele — both meninges and spinal cord herniate, causing significant neurological deficits below the lesion. All result from failure of the posterior (caudal) neuropore to close. Periconceptional folic acid reduces incidence by ~50-70%.",
+      "visualDescription": "Pixel art spine cross-section: three side-by-side diagrams showing occulta (skin dimple only), meningocele (sac of fluid), myelomeningocele (open sac with spinal cord visible)",
+      "sourceName": "CDC — Neural Tube Defects",
+      "sourceUrl": "https://www.cdc.gov/birth-defects/about/neural-tube-defects.html",
+      "volatile": false,
+      "distractors": ["spina bifida occulta", "meningocele", "anencephaly", "encephalocele", "syringomyelia", "tethered cord"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Which type of spina bifida involves a vertebral arch defect but no herniation of neural tissue — often asymptomatic and found incidentally?",
+          "correctAnswer": "spina bifida occulta",
+          "distractors": ["meningocele", "myelomeningocele", "anencephaly"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Taking ___ mcg of folic acid daily before and during early pregnancy is the key prevention strategy for neural tube defects.",
+          "correctAnswer": "400",
+          "distractors": ["100", "1000", "50"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_037",
+      "subDeckId": "embryology",
+      "correctAnswer": "adrenal medulla",
+      "acceptableAlternatives": ["chromaffin cells of adrenal medulla"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Neural crest cells migrating ventrally along the trunk give rise to sympathetic ganglia and the chromaffin cells of which endocrine organ's inner region?",
+      "explanation": "Trunk neural crest cells that migrate ventrally give rise to the sympathetic chain ganglia, adrenal medullary chromaffin cells, and the periaortic nerve clusters. The adrenal medulla is essentially a modified sympathetic ganglion — its chromaffin cells are the neural crest-derived secretory cells that release epinephrine and norepinephrine. This is why pheochromocytoma (adrenal medullary tumor) is a neural crest-origin neoplasm.",
+      "visualDescription": "Pixel art: neural crest cells migrating down from the dorsal neural tube, arrows pointing toward adrenal gland cross-section with medulla highlighted yellow",
+      "sourceName": "NCBI Bookshelf — The Neural Crest",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK10065/",
+      "volatile": false,
+      "distractors": ["adrenal cortex", "thyroid follicular cells", "anterior pituitary", "pancreatic islets", "parathyroid chief cells", "thymus"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "A pheochromocytoma is a tumor of the adrenal medulla. From what embryological cell lineage do these chromaffin cells derive?",
+          "correctAnswer": "neural crest cells",
+          "distractors": ["lateral plate mesoderm", "intermediate mesoderm", "endoderm"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The adrenal cortex and adrenal medulla share the same embryological origin.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_038",
+      "subDeckId": "embryology",
+      "correctAnswer": "melanocytes, Schwann cells, dorsal root ganglia, craniofacial skeleton",
+      "acceptableAlternatives": ["melanocytes and Schwann cells", "skin pigment cells and peripheral nerve sheaths"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Name four major derivatives of neural crest cells.",
+      "explanation": "Neural crest cells are remarkably multipotent. Key derivatives include: melanocytes (skin pigmentation), Schwann cells (peripheral nerve myelin sheaths), dorsal root ganglia (sensory neurons), adrenal medulla (chromaffin cells), aorticopulmonary septum (cardiac), craniofacial skeleton and cartilage, dental pulp (odontoblasts), and C cells of the thyroid (calcitonin-secreting). Disruption of neural crest migration underlies syndromes such as DiGeorge (22q11 deletion) and Waardenburg syndrome.",
+      "visualDescription": "Pixel art neural crest fate map: single cell population at dorsal neural tube branching into 6 labeled cell types — melanocyte, Schwann cell, sensory neuron, chromaffin cell, bone cell, odontoblast",
+      "sourceName": "StatPearls — Neuroanatomy, Neural Crest",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK547700/",
+      "volatile": false,
+      "distractors": ["hepatocytes", "cardiomyocytes", "renal tubular cells", "alveolar type II cells", "red blood cells", "thyroid follicular cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Waardenburg syndrome (deafness + pigmentation defects) results from a defect in migration of which embryological cell population?",
+          "correctAnswer": "neural crest cells",
+          "distractors": ["neural plate cells", "somite cells", "lateral plate mesoderm"]
+        },
+        {
+          "type": "context",
+          "question": "The C cells of the thyroid gland (which secrete calcitonin) are derived from which embryological cell population?",
+          "correctAnswer": "neural crest cells",
+          "distractors": ["pharyngeal endoderm", "thyroglossal duct epithelium", "lateral plate mesoderm"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_039",
+      "subDeckId": "embryology",
+      "correctAnswer": "apical ectodermal ridge (AER)",
+      "acceptableAlternatives": ["AER", "apical ectodermal ridge"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which thickened band of ectoderm at the tip of the limb bud drives proximal-to-distal limb outgrowth by secreting FGFs?",
+      "explanation": "The apical ectodermal ridge (AER) runs along the distal edge of the limb bud and secretes fibroblast growth factors (primarily FGF8) that maintain the underlying mesenchyme in a proliferative state, driving proximal-to-distal growth (shoulder → digits). Removal of the AER halts outgrowth at whatever level the limb has reached. The AER and ZPA communicate via reciprocal FGF-Shh signaling to coordinate all three limb axes simultaneously.",
+      "visualDescription": "Pixel art limb bud: elongated paddle shape with a bright ridge of cells glowing along the distal tip, arrows showing outgrowth direction toward digits",
+      "sourceName": "PMC — Apical ectodermal ridge regulates three principal axes",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7606201/",
+      "volatile": false,
+      "distractors": ["zone of polarizing activity", "notochord", "neural crest", "Hensen's node", "floor plate", "somite boundary"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The AER drives outgrowth along which limb axis?",
+          "correctAnswer": "proximal-to-distal (shoulder to fingertip)",
+          "distractors": ["anterior-to-posterior (thumb to pinky)", "dorsal-to-ventral", "medial-to-lateral"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The primary growth factor secreted by the AER to drive limb outgrowth is ___.",
+          "correctAnswer": "FGF8",
+          "distractors": ["sonic hedgehog", "Wnt7a", "BMP4"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_040",
+      "subDeckId": "embryology",
+      "correctAnswer": "sonic hedgehog (Shh)",
+      "acceptableAlternatives": ["Shh", "sonic hedgehog"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "biology_molecules",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The zone of polarizing activity (ZPA) at the posterior limb bud controls anterior-posterior digit identity by secreting which morphogen?",
+      "explanation": "The ZPA occupies the posterior mesenchyme of the limb bud and secretes sonic hedgehog (Shh), a morphogen that specifies digit identity along the anterior-posterior axis (thumb = digit 1, pinky = digit 5). Transplanting ZPA tissue to the anterior side produces mirror-image digit duplication. Shh also signals back to the AER to maintain FGF4 expression, creating a positive feedback loop essential for continued outgrowth.",
+      "visualDescription": "Pixel art limb bud posterior view: ZPA region glowing orange, Shh gradient fading toward the anterior side, digits labeled 1-5",
+      "sourceName": "Wikipedia — Zone of polarizing activity",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Zone_of_polarizing_activity",
+      "volatile": false,
+      "distractors": ["FGF8", "Wnt7a", "BMP4", "retinoic acid", "TGF-beta", "noggin"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "If ZPA tissue is transplanted to the anterior limb bud, what defect results?",
+          "correctAnswer": "mirror-image digit duplication (polydactyly)",
+          "distractors": ["loss of all digits", "fused digits (syndactyly)", "no change in digit pattern"]
+        },
+        {
+          "type": "context",
+          "question": "What is the axis of patterning controlled by the ZPA and sonic hedgehog signaling in the limb?",
+          "correctAnswer": "anterior-posterior (thumb to pinky)",
+          "distractors": ["proximal-distal (shoulder to fingertip)", "dorsal-ventral", "medial-lateral"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_041",
+      "subDeckId": "embryology",
+      "correctAnswer": "celiac artery",
+      "acceptableAlternatives": ["celiac trunk", "celiac axis"],
+      "chainThemeId": 6,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The foregut (esophagus, stomach, liver, gallbladder, pancreas, proximal duodenum) is supplied by which artery?",
+      "explanation": "Each gut segment retains the blood supply of its embryological origin. The foregut is supplied by the celiac artery (trunk), the midgut by the superior mesenteric artery (SMA), and the hindgut by the inferior mesenteric artery (IMA). This embryological basis explains why ischemia in different vessels produces characteristic bowel patterns and why the blood supply predicts the boundary between foregut and midgut derivatives (at the ampulla of Vater in the duodenum).",
+      "visualDescription": "Pixel art GI tract: esophagus to duodenum highlighted blue (celiac), small bowel to proximal transverse colon green (SMA), distal transverse to rectum yellow (IMA)",
+      "sourceName": "StatPearls — Embryology, Gastrointestinal",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537172/",
+      "volatile": false,
+      "distractors": ["superior mesenteric artery", "inferior mesenteric artery", "renal artery", "hepatic artery", "portal vein", "aorta"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The midgut (distal duodenum to 2/3 transverse colon) is supplied by which vessel — and ischemia here causes midgut infarction?",
+          "correctAnswer": "superior mesenteric artery",
+          "distractors": ["celiac artery", "inferior mesenteric artery", "portal vein"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The hindgut (distal 1/3 transverse colon to rectum) is supplied by the ___ artery.",
+          "correctAnswer": "inferior mesenteric",
+          "distractors": ["superior mesenteric", "celiac", "internal iliac"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_042",
+      "subDeckId": "embryology",
+      "correctAnswer": "dorsal and ventral pancreatic buds fusing",
+      "acceptableAlternatives": ["two pancreatic buds", "dorsal bud and ventral bud"],
+      "chainThemeId": 6,
+      "answerTypePoolId": "biology_processes",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The pancreas forms from the fusion of two endodermal outgrowths of the duodenum. The dorsal bud forms the body and tail; the ventral bud rotates to form what structure?",
+      "explanation": "The pancreas forms from two separate endodermal buds: the dorsal pancreatic bud (larger, forms head body and tail) and the ventral pancreatic bud (smaller, rotates with the bile duct to fuse with the dorsal bud, forming the uncinate process and part of the head). Failure of this rotation or fusion results in annular pancreas (ring of pancreatic tissue encircling the duodenum) or pancreas divisum (incomplete fusion).",
+      "visualDescription": "Pixel art duodenum rotation diagram: ventral bud rotating 270 degrees clockwise to meet the dorsal bud, bile duct shown tracking with it",
+      "sourceName": "StatPearls — Embryology, Gastrointestinal",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537172/",
+      "volatile": false,
+      "distractors": ["islets of Langerhans only", "exocrine acini only", "the entire body and tail", "the spleen"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Failure of the ventral pancreatic bud to rotate properly results in a ring of pancreas encircling the duodenum — what is this called?",
+          "correctAnswer": "annular pancreas",
+          "distractors": ["pancreas divisum", "heterotopic pancreas", "pancreatic agenesis"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_043",
+      "subDeckId": "embryology",
+      "correctAnswer": "metanephros",
+      "acceptableAlternatives": ["metanephric kidney"],
+      "chainThemeId": 7,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Three successive kidney structures develop during embryogenesis. Which is the permanent, functional adult kidney — appearing from week 5?",
+      "explanation": "The three kidneys develop in sequence: pronephros (week 4, rudimentary, degenerates immediately), mesonephros (weeks 4-8, temporarily functional in early fetal life, degenerates in males except for parts that become reproductive ducts), and metanephros (week 5 onward, becomes the permanent adult kidney). The metanephros arises from two structures: the ureteric bud and the metanephric mesenchyme (blastema).",
+      "visualDescription": "Pixel art timeline bar: three kidney icons left to right — pronephros (faded/crossed out), mesonephros (semi-transparent), metanephros (bright, labeled 'permanent')",
+      "sourceName": "StatPearls — Embryology, Kidney, Bladder, and Ureter",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK547747/",
+      "volatile": false,
+      "distractors": ["pronephros", "mesonephros", "archinephros", "opisthonephros", "Wolffian duct kidney", "mesonephric duct"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the first kidney structure to appear in embryogenesis — it forms in week 4 and degenerates almost immediately?",
+          "correctAnswer": "pronephros",
+          "distractors": ["mesonephros", "metanephros", "ureteric bud"]
+        },
+        {
+          "type": "context",
+          "question": "The mesonephros degenerates in both sexes, but in males its remnants persist as what structures?",
+          "correctAnswer": "epididymis and vas deferens",
+          "distractors": ["seminal vesicles", "prostate gland", "bulbourethral glands"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_044",
+      "subDeckId": "embryology",
+      "correctAnswer": "ureteric bud and metanephric mesenchyme",
+      "acceptableAlternatives": ["ureteric bud and metanephric blastema"],
+      "chainThemeId": 7,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The permanent kidney (metanephros) forms from the reciprocal induction of two structures. Name them.",
+      "explanation": "At week 5, GDNF (glial cell line-derived neurotrophic factor) secreted by the metanephric mesenchyme induces an outgrowth from the mesonephric duct called the ureteric bud. The ureteric bud then penetrates the metanephric mesenchyme and branches repeatedly to form the renal pelvis, calyces, and collecting ducts. In turn, the mesenchyme differentiates into nephrons (Bowman's capsule through distal convoluted tubule). This bidirectional induction is essential — failure of either leads to renal agenesis.",
+      "visualDescription": "Pixel art: ureteric bud sprouting upward from mesonephric duct, penetrating a cloud of mesenchymal cells, branching into tree-like collecting system",
+      "sourceName": "PMC — Kidney development: from ureteric bud formation to branching morphogenesis",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2783241/",
+      "volatile": false,
+      "distractors": ["pronephric duct and lateral plate mesoderm", "cloacal membrane and urogenital sinus", "mesonephros and allantois", "intermediate mesoderm alone"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The ureteric bud branches to form the collecting system. What forms the nephrons (Bowman's capsule to distal tubule)?",
+          "correctAnswer": "metanephric mesenchyme",
+          "distractors": ["ureteric bud epithelium", "mesonephric duct", "intermediate mesoderm"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The signal that induces ureteric bud outgrowth from the metanephric mesenchyme is called ___.",
+          "correctAnswer": "GDNF",
+          "distractors": ["FGF8", "sonic hedgehog", "Wnt4"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_045",
+      "subDeckId": "embryology",
+      "correctAnswer": "pseudoglandular stage",
+      "acceptableAlternatives": ["pseudoglandular period", "pseudoglandular phase"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "biology_processes",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "During weeks 5-17, the fetal lung resembles a tubuloacinar gland as the first ~20 generations of future airways branch into mesenchyme. What is this lung development stage called?",
+      "explanation": "Lung development has five stages. The pseudoglandular stage (weeks 5-17) is characterized by repeated branching of the airway epithelium into surrounding mesenchyme, forming the bronchial tree down to the terminal bronchioles. The lung looks histologically like a gland — hence the name. No gas exchange is possible at this stage. Infants born during this period cannot survive.",
+      "visualDescription": "Pixel art fetal lung cross-section at 12 weeks: branching tubes resembling gland acini, surrounded by dense mesenchyme, no air sacs visible",
+      "sourceName": "PMC — Development of the lung",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5320013/",
+      "volatile": false,
+      "distractors": ["embryonic stage", "canalicular stage", "saccular stage", "alveolar stage", "bronchiolar stage", "acinar stage"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "During which lung development stage (weeks 16-25) do type I and type II pneumocytes begin to differentiate and surfactant production starts?",
+          "correctAnswer": "canalicular stage",
+          "distractors": ["pseudoglandular stage", "saccular stage", "alveolar stage"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Surfactant is produced by ___ cells (type II pneumocytes) and adequate amounts to prevent atelectasis are present by about 32 weeks.",
+          "correctAnswer": "alveolar type II",
+          "distractors": ["alveolar type I", "Clara cells", "goblet cells"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_046",
+      "subDeckId": "embryology",
+      "correctAnswer": "alveolar stage",
+      "acceptableAlternatives": ["alveolar period"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "biology_processes",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Alveolar formation begins at about 36 weeks gestation and continues until roughly what age postnatally?",
+      "explanation": "The alveolar stage of lung development spans from approximately 36 weeks gestation to 8 years of age. The majority of the approximately 300 million adult alveoli form postnatally, with the most rapid multiplication occurring within the first 6 months of life. This prolonged postnatal alveolarization means that premature birth — while survivable with intensive care — still leaves a compressed window for completing alveolar development outside the womb.",
+      "visualDescription": "Pixel art: newborn lung cross-section with small primitive sacs on left, 8-year-old lung on right packed with mature alveoli, timeline arrow between them",
+      "sourceName": "StatPearls — Embryology, Pulmonary",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK544372/",
+      "volatile": false,
+      "distractors": ["2 years", "4 years", "16 years", "birth only", "12 years", "adulthood"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the correct sequence of the five lung development stages?",
+          "correctAnswer": "embryonic → pseudoglandular → canalicular → saccular → alveolar",
+          "distractors": ["embryonic → canalicular → pseudoglandular → saccular → alveolar", "embryonic → saccular → pseudoglandular → canalicular → alveolar", "pseudoglandular → embryonic → canalicular → saccular → alveolar"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: All alveoli are present at birth — no new ones form postnatally.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_047",
+      "subDeckId": "embryology",
+      "correctAnswer": "higher oxygen affinity (left-shifted dissociation curve)",
+      "acceptableAlternatives": ["higher O2 affinity", "left shift", "greater affinity for oxygen than HbA"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "biology_processes",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Fetal hemoglobin (HbF) differs from adult HbA in that HbF has ___ for oxygen, enabling it to extract O₂ from maternal blood across the placenta.",
+      "explanation": "HbF has a higher oxygen affinity than HbA because its gamma chains (replacing adult beta chains) bind 2,3-BPG less avidly. 2,3-BPG normally stabilizes the deoxy form of hemoglobin and reduces oxygen affinity — since HbF binds less of it, it stays in the oxy configuration more readily. HbF's P50 is 19 mmHg vs. 27 mmHg for HbA. This left-shifted curve ensures the fetus can extract oxygen from maternal hemoglobin at the placenta, where fetal and maternal blood run in close apposition.",
+      "visualDescription": "Pixel art oxygen-hemoglobin dissociation curve: two S-curves, HbF (red) shifted left vs HbA (blue), P50 values labeled, placenta icon with fetal-maternal interface",
+      "sourceName": "StatPearls — Physiology, Fetal Hemoglobin",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK500011/",
+      "volatile": false,
+      "distractors": ["lower oxygen affinity", "the same oxygen affinity as HbA", "right-shifted dissociation curve", "higher CO2 affinity", "lower P50 than HbF already has"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "HbF has gamma chains instead of beta chains. Why does this give HbF higher oxygen affinity than adult HbA?",
+          "correctAnswer": "Gamma chains bind 2,3-BPG less avidly, so HbF stays in the oxy conformation more readily",
+          "distractors": ["Gamma chains bind oxygen more tightly due to larger binding pockets", "HbF has more heme groups per molecule", "Gamma chains do not react with CO2"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The P50 of fetal hemoglobin is approximately ___ mmHg, compared to 27 mmHg for adult HbA.",
+          "correctAnswer": "19",
+          "distractors": ["35", "27", "12"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_048",
+      "subDeckId": "embryology",
+      "correctAnswer": "second branchial cleft cyst",
+      "acceptableAlternatives": ["2nd branchial cleft cyst", "branchial cleft cyst"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "medical_conditions",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The most common branchial cleft anomaly (40-95% of cases) presents as a fluctuant mass along the anterior border of the SCM at the level of the hyoid — it is a remnant of which branchial cleft?",
+      "explanation": "Second branchial cleft cysts are the most common branchial remnant. During normal development the second pharyngeal arch overgrows and buries the second, third, and fourth clefts, forming the cervical sinus of His. If this sinus fails to obliterate, an epithelium-lined cyst forms along the anterior border of the sternocleidomastoid muscle. They typically present in young adults as a painless, nontender neck mass that may enlarge during upper respiratory infections.",
+      "visualDescription": "Pixel art neck lateral view: SCM muscle running diagonally, oval cyst highlighted at its anterior border near the level of the hyoid bone",
+      "sourceName": "StatPearls — Branchial Cleft Cysts",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482467/",
+      "volatile": false,
+      "distractors": ["first branchial cleft cyst", "third branchial cleft cyst", "fourth branchial cleft cyst", "thyroglossal duct cyst", "dermoid cyst", "lymphangioma"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A 25-year-old presents with a painless lateral neck mass along the anterior border of the SCM that enlarged with a recent cold. What is the most likely diagnosis?",
+          "correctAnswer": "second branchial cleft cyst",
+          "distractors": ["thyroglossal duct cyst", "lymph node abscess", "thyroid nodule"]
+        },
+        {
+          "type": "context",
+          "question": "The cervical sinus of His normally obliterates in embryonic development. Failure to do so results in which type of neck cyst?",
+          "correctAnswer": "branchial cleft cyst",
+          "distractors": ["thyroglossal duct cyst", "ranula", "dermoid cyst"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_049",
+      "subDeckId": "embryology",
+      "correctAnswer": "septum transversum",
+      "acceptableAlternatives": ["septum transversum (central tendon)"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The diaphragm forms from four embryological components. Which component forms the central tendon of the adult diaphragm?",
+      "explanation": "The diaphragm develops from four structures: (1) septum transversum — forms the central tendon; (2) pleuroperitoneal membranes — close the posterolateral pleuroperitoneal canals; (3) body wall mesoderm — peripheral muscular parts; (4) esophageal mesentery (dorsal mesentery of esophagus) — crura of the diaphragm. Failure of the pleuroperitoneal membranes to fuse with the septum transversum causes a Bochdalek hernia (posterolateral diaphragmatic defect).",
+      "visualDescription": "Pixel art diaphragm viewed from below: central tendon labeled in yellow (septum transversum origin), crura labeled green (esophageal mesentery), peripheral ring labeled blue (body wall)",
+      "sourceName": "StatPearls — Bochdalek Hernia",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK539767/",
+      "volatile": false,
+      "distractors": ["pleuroperitoneal membranes", "esophageal mesentery", "body wall mesoderm", "pericardium", "lateral plate mesoderm"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The crura of the diaphragm (attachments to the vertebral column) are derived from which embryological component?",
+          "correctAnswer": "esophageal mesentery (dorsal mesentery)",
+          "distractors": ["septum transversum", "pleuroperitoneal membranes", "body wall mesoderm"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The septum transversum forms the muscular peripheral portions of the diaphragm.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_050",
+      "subDeckId": "embryology",
+      "correctAnswer": "left side (85%)",
+      "acceptableAlternatives": ["left", "left-sided"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Bochdalek hernia (congenital diaphragmatic hernia from posterolateral defect) occurs predominantly on which side, in approximately 85% of cases?",
+      "explanation": "Bochdalek hernias occur on the left side in approximately 85% of cases because the left pleuroperitoneal canal is larger than the right and closes later in development. This allows abdominal contents (bowel, stomach, spleen) to herniate into the left thorax, compressing the developing lung and causing ipsilateral pulmonary hypoplasia. Bowel sounds heard in the chest and absent breath sounds on the left in a newborn with respiratory distress are classic features.",
+      "visualDescription": "Pixel art newborn chest X-ray view: loops of bowel visible in left hemithorax, heart deviated to the right, compressed left lung",
+      "sourceName": "StatPearls — Congenital Diaphragmatic Hernia",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK556076/",
+      "volatile": false,
+      "distractors": ["right side", "bilateral equally", "midline", "right side (85%)", "bilateral (50% each)"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "A neonate presents with respiratory distress, absent left breath sounds, and bowel sounds in the chest. What is the most likely diagnosis?",
+          "correctAnswer": "Bochdalek hernia (congenital diaphragmatic hernia)",
+          "distractors": ["tension pneumothorax", "pleural effusion", "esophageal atresia"]
+        },
+        {
+          "type": "reverse",
+          "question": "Why does congenital diaphragmatic hernia (Bochdalek) preferentially affect the left side?",
+          "correctAnswer": "The left pleuroperitoneal canal is larger and closes later than the right",
+          "distractors": ["The liver protects the right side from herniation", "The right lung is larger and more resistant", "The left diaphragm has fewer muscle fibers"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_051",
+      "subDeckId": "embryology",
+      "correctAnswer": "esophageal atresia with distal tracheoesophageal fistula",
+      "acceptableAlternatives": ["EA with distal TEF", "Type C TEF", "blind upper esophagus with distal fistula"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "medical_conditions",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The most common type of tracheoesophageal fistula (84% of cases) involves a blind upper esophageal pouch and a fistula connecting the lower esophagus to the trachea. What is this configuration called?",
+      "explanation": "The trachea and esophagus both derive from the primitive foregut, separated by the tracheoesophageal septum. In the most common form (84%), the upper esophagus ends in a blind pouch while the lower esophagus connects to the trachea via a fistula. Clinically this presents as choking/cyanosis with first feeding, inability to pass a nasogastric tube, and air in the stomach on X-ray. The pure H-type (fistula without atresia) accounts for only ~4% of cases.",
+      "visualDescription": "Pixel art: blind upper esophageal pouch (labeled 'atresia'), lower esophagus connecting directly to posterior trachea (labeled 'distal fistula'), stomach shown with air bubble",
+      "sourceName": "StatPearls — Tracheoesophageal Fistula",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK535376/",
+      "volatile": false,
+      "distractors": ["H-type fistula without atresia", "isolated esophageal atresia without fistula", "proximal TEF with distal atresia", "bilateral fistulas", "tracheal agenesis"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "In EA with distal TEF, why is there air visible in the stomach on abdominal X-ray if the upper esophagus ends blindly?",
+          "correctAnswer": "Air enters the stomach through the distal fistula connecting the trachea to the lower esophagus",
+          "distractors": ["Air leaks through the diaphragm", "The fistula connects the upper pouch to the trachea", "Gas is produced by bacteria in the blind pouch"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "TEF and esophageal atresia result from abnormal development of the ___ septum that normally separates the trachea from the esophagus.",
+          "correctAnswer": "tracheoesophageal",
+          "distractors": ["aorticopulmonary", "pleuroperitoneal", "interventricular"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_052",
+      "subDeckId": "embryology",
+      "correctAnswer": "2 feet proximal to the ileocecal valve",
+      "acceptableAlternatives": ["~60 cm proximal to ileocecal valve", "2 feet from the ileocecal valve"],
+      "chainThemeId": 6,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Meckel's diverticulum — the most common congenital GI anomaly — follows the 'rule of 2s.' Where is it located in the GI tract?",
+      "explanation": "Meckel's diverticulum is a remnant of the omphalomesenteric (vitelline) duct that normally obliterates by week 7. The rule of 2s: occurs in 2% of the population, located 2 feet (~60 cm) proximal to the ileocecal valve on the antimesenteric border of the ileum, approximately 2 inches long, symptomatic in ~2% of those affected, most often presents before age 2, twice as common in males, and may contain 2 types of ectopic tissue (gastric mucosa most common, or pancreatic).",
+      "visualDescription": "Pixel art ileum segment: small finger-like projection on the antimesenteric border, ruler showing 2 feet distance to the ileocecal valve, '2%' label floating nearby",
+      "sourceName": "StatPearls — Meckel Diverticulum",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK499960/",
+      "volatile": false,
+      "distractors": ["2 feet distal to the ileocecal valve", "at the ileocecal valve itself", "2 feet proximal to the pylorus", "in the ascending colon", "in the jejunum"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "A 2-year-old presents with painless rectal bleeding. Meckel's diverticulum is suspected. What type of ectopic tissue causes the bleeding by secreting acid?",
+          "correctAnswer": "gastric mucosa",
+          "distractors": ["pancreatic tissue", "colonic mucosa", "duodenal mucosa"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Meckel's diverticulum is a remnant of the ___ duct, which normally obliterates by week 7 of development.",
+          "correctAnswer": "omphalomesenteric (vitelline)",
+          "distractors": ["thyroglossal", "mesonephric (Wolffian)", "Mullerian"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_053",
+      "subDeckId": "embryology",
+      "correctAnswer": "it moves upward with swallowing and tongue protrusion",
+      "acceptableAlternatives": ["moves with swallowing and tongue protrusion", "elevates on tongue protrusion"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "clinical_signs",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "A thyroglossal duct cyst presents as a midline neck mass near the hyoid. What clinical feature distinguishes it from other midline neck masses?",
+      "explanation": "Thyroglossal duct cysts are remnants of the tract along which the thyroid descends from the foramen cecum at the tongue base to its final pretracheal position. Because the cyst remains attached to the foramen cecum via fibrous tissue, it moves upward when the patient swallows or protrudes their tongue. This distinguishing sign is not seen with other midline neck masses such as dermoid cysts or lymph nodes. Treatment is Sistrunk procedure (excision of cyst + tract + hyoid bone midportion).",
+      "visualDescription": "Pixel art neck midline: round cyst near hyoid bone, upward arrow showing movement when tongue sticks out, foramen cecum labeled at tongue base",
+      "sourceName": "StatPearls — Thyroglossal Duct Cyst",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK519057/",
+      "volatile": false,
+      "distractors": ["it transilluminates on exam", "it is pulsatile", "it moves laterally with swallowing", "it does not move at all", "it shrinks with antibiotics"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is the embryological origin of a thyroglossal duct cyst?",
+          "correctAnswer": "Incomplete obliteration of the thyroglossal duct from foramen cecum to pretracheal position",
+          "distractors": ["Remnant of branchial cleft 2", "Remnant of vitelline duct", "Ectopic salivary gland tissue"]
+        },
+        {
+          "type": "context",
+          "question": "Surgical removal of a thyroglossal duct cyst requires excision of the cyst, the tract, and the midportion of which bone to prevent recurrence?",
+          "correctAnswer": "hyoid bone",
+          "distractors": ["thyroid cartilage", "cricoid cartilage", "mandible"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_054",
+      "subDeckId": "embryology",
+      "correctAnswer": "inferior mesenteric artery",
+      "acceptableAlternatives": ["IMA"],
+      "chainThemeId": 7,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In horseshoe kidney, the fused lower poles are trapped during ascent by which vessel — fixing the kidney in a low, anterior position at approximately L3?",
+      "explanation": "During weeks 6-8, the metanephric kidneys normally ascend from the pelvis to the lumbar region while rotating 90 degrees medially. In horseshoe kidney, fusion of the lower poles occurs before ascent is complete. The isthmus of fused tissue cannot pass the inferior mesenteric artery (which crosses anteriorly at L3), arresting ascent. The kidneys are malrotated with calyces pointing anteriorly, and the ureters must pass anterior to the isthmus, predisposing to urinary stasis and stones.",
+      "visualDescription": "Pixel art abdominal diagram: two kidney outlines joined at lower poles forming a U-shape, aorta running vertically, IMA crossing horizontally and blocking further ascent",
+      "sourceName": "StatPearls — Horseshoe Kidney",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK431105/",
+      "volatile": false,
+      "distractors": ["superior mesenteric artery", "celiac artery", "aorta", "common iliac artery", "renal artery", "lumbar vein"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Horseshoe kidney predisposes patients to urinary stasis and nephrolithiasis. Why do the ureters drain poorly?",
+          "correctAnswer": "The ureters must pass anteriorly over the isthmus to reach the bladder, impairing drainage",
+          "distractors": ["The fused kidneys compress the ureters from both sides", "The kidneys are too low for gravity-assisted drainage", "The collecting system opens posteriorly instead of medially"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Horseshoe kidney results from fusion of the ___ poles of the two metanephric kidneys during embryonic development.",
+          "correctAnswer": "lower (inferior)",
+          "distractors": ["upper (superior)", "anterior", "medial"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_055",
+      "subDeckId": "embryology",
+      "correctAnswer": "ventral interventricular septum grows up from the floor of the ventricle toward the endocardial cushions",
+      "acceptableAlternatives": ["muscular interventricular septum grows from ventricular floor", "muscular portion grows upward"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "biology_processes",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The interventricular septum has a muscular and a membranous component. How does the muscular component form?",
+      "explanation": "The muscular interventricular septum grows upward from the floor of the primitive ventricle toward the fused endocardial cushions. It forms most of the septum but leaves a small gap — the primary interventricular foramen — near the top. This gap is later closed by the membranous septum, formed by tissue from the endocardial cushions and the aorticopulmonary septum. Failure to close the membranous portion causes a membranous VSD, the most common type of ventricular septal defect.",
+      "visualDescription": "Pixel art ventricular cross-section: muscular septum growing upward from the floor (labeled), small gap remaining at top (primary interventricular foramen), endocardial cushions shown above",
+      "sourceName": "TeachMeAnatomy — Development of the Cardiovascular System",
+      "sourceUrl": "https://teachmeanatomy.info/the-basics/embryology/cardiovascular-system/",
+      "volatile": false,
+      "distractors": ["from the endocardial cushions growing downward only", "from neural crest ingrowth alone", "from the aorticopulmonary septum extending inferiorly", "simultaneously from both sides of the ventricular wall"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "A VSD in the membranous septum near the aortic valve is the most common type. What embryological structures fail to fuse to close this gap?",
+          "correctAnswer": "Endocardial cushions and the aorticopulmonary septum fail to close the primary interventricular foramen",
+          "distractors": ["The muscular septum fails to grow tall enough", "The septum primum fails to fuse with the floor", "The pleuropericardial membranes fail to fuse"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_056",
+      "subDeckId": "embryology",
+      "correctAnswer": "Hox genes",
+      "acceptableAlternatives": ["homeobox genes", "HOX genes"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "biology_molecules",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Which family of transcription factor genes, originally responsible for establishing the embryonic anterior-posterior body axis, also controls segment identity and positional information in the developing limb?",
+      "explanation": "Hox genes (homeobox genes) encode transcription factors that define positional identity along the body axis. In limb development, they are expressed in nested domains along the proximal-distal and anterior-posterior axes, specifying which structures form at each position. AER-secreted FGFs and ZPA-secreted Shh both regulate Hox gene expression in the limb bud. Mutations in specific Hox genes (e.g., HOXD13) cause synpolydactyly in humans.",
+      "visualDescription": "Pixel art limb bud with nested colored bands: different Hox gene expression zones from proximal (arm) to distal (digits), color-coded by which Hox gene is active",
+      "sourceName": "NCBI Bookshelf — Limb Development, FGF Signalling",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK53162/",
+      "volatile": false,
+      "distractors": ["Pax genes", "Sox genes", "Wnt genes", "myoD family", "p53 family", "GATA factors"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Hox gene expression in the limb is completely independent of AER and ZPA signaling.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "context",
+          "question": "A mutation in HOXD13 in humans causes synpolydactyly — extra and fused digits. This illustrates that Hox genes specify what aspect of limb identity?",
+          "correctAnswer": "positional identity of digit segments",
+          "distractors": ["overall limb length", "muscle versus bone fate", "nerve ingrowth timing"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_057",
+      "subDeckId": "embryology",
+      "correctAnswer": "foramen cecum of the tongue",
+      "acceptableAlternatives": ["foramen cecum", "base of tongue"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The thyroid gland begins its development in week 3 as a median endodermal outgrowth from what specific structure at the junction of the anterior 2/3 and posterior 1/3 of the tongue?",
+      "explanation": "The thyroid originates as a median thickening of pharyngeal floor endoderm at the foramen cecum — the junction of the anterior 2/3 and posterior 1/3 of the tongue. It then descends along the thyroglossal duct, passing anterior to the developing hyoid bone, to reach its final pretracheal position by week 7. Failure to descend results in a lingual thyroid (most common location of ectopic thyroid); a remnant along the path forms a thyroglossal duct cyst. Before removing any midline neck mass, verify the tissue is not the patient's only thyroid tissue.",
+      "visualDescription": "Pixel art sagittal head diagram: tongue shown with foramen cecum marked by a red dot, dotted migration path descending to pretracheal position, labeled 'thyroid descent'",
+      "sourceName": "StatPearls — Thyroglossal Duct Cyst",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK519057/",
+      "volatile": false,
+      "distractors": ["pharyngeal tonsil", "Rathke's pouch", "stomodeum", "glossoepiglottic fold", "palatine tonsil", "posterior choanae"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Before surgically removing a midline neck mass thought to be a thyroglossal duct cyst, why must thyroid function and imaging be checked first?",
+          "correctAnswer": "It may represent the patient's only functional thyroid tissue (ectopic/lingual thyroid)",
+          "distractors": ["The cyst may contain parathyroid tissue", "The carotid artery runs through the tract", "It may be malignant and require staging first"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_058",
+      "subDeckId": "embryology",
+      "correctAnswer": "hindgut (distal 1/3 transverse colon, descending colon, sigmoid, rectum)",
+      "acceptableAlternatives": ["hindgut", "posterior gut"],
+      "chainThemeId": 6,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Supplied by the inferior mesenteric artery — which embryological gut segment gives rise to the distal transverse colon, descending colon, sigmoid colon, and rectum?",
+      "explanation": "The hindgut extends from the distal 1/3 of the transverse colon to the upper anal canal (the ectoderm-derived anal canal below the pectinate line comes from the proctodeum). The IMA supplies all hindgut derivatives. Hirschsprung disease (congenital aganglionic megacolon) results from failure of neural crest cells to migrate into the hindgut wall, leaving a segment without enteric ganglia most often in the sigmoid and rectum.",
+      "visualDescription": "Pixel art abdominal diagram: large intestine highlighted from mid-transverse colon to rectum in yellow (hindgut), IMA labeled in red supplying this segment",
+      "sourceName": "StatPearls — Embryology, Gastrointestinal",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537172/",
+      "volatile": false,
+      "distractors": ["foregut", "midgut", "proctodeum", "cloaca", "mesonephric duct territory"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Hirschsprung disease results from failure of neural crest cells to colonize the hindgut wall. What is absent in the affected bowel segment?",
+          "correctAnswer": "enteric ganglia (Auerbach's and Meissner's plexuses)",
+          "distractors": ["smooth muscle", "mucous glands", "blood vessels"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_059",
+      "subDeckId": "embryology",
+      "correctAnswer": "dental pulp (odontoblasts) and C cells of the thyroid",
+      "acceptableAlternatives": ["odontoblasts and parafollicular C cells", "dental pulp and parafollicular cells"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 5,
+      "funScore": 9,
+      "quizQuestion": "Beyond melanocytes and Schwann cells, neural crest cells also give rise to the dentin-producing cells of teeth and the calcitonin-secreting cells of the thyroid. Name these two cell types.",
+      "explanation": "Odontoblasts (derived from cranial neural crest cells) produce dentin, the principal calcified tissue of the tooth. Parafollicular C cells (also from neural crest) migrate into the thyroid gland and secrete calcitonin, which lowers blood calcium by inhibiting osteoclasts. This is why medullary thyroid carcinoma — a tumor of C cells — is a neural crest-origin tumor and associated with MEN2A/MEN2B (RET proto-oncogene mutations). Both are clinically testable neural crest derivatives.",
+      "visualDescription": "Pixel art split panel: left shows tooth cross-section with odontoblasts lining the pulp chamber (labeled); right shows thyroid follicle with C cells scattered between follicles (labeled)",
+      "sourceName": "StatPearls — Neuroanatomy, Neural Crest",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK547700/",
+      "volatile": false,
+      "distractors": ["thyroid follicular cells and chief cells of parathyroid", "hepatocytes and pancreatic beta cells", "adrenal cortex and thymus epithelium"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Medullary thyroid carcinoma is a tumor of parafollicular C cells. From which embryological cell population do C cells originate?",
+          "correctAnswer": "neural crest cells",
+          "distractors": ["thyroglossal duct epithelium", "pharyngeal endoderm", "lateral plate mesoderm"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Thyroid follicular cells (which produce T3/T4) are derived from neural crest cells.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_embryo_060",
+      "subDeckId": "embryology",
+      "correctAnswer": "canalicular stage (weeks 16-25)",
+      "acceptableAlternatives": ["canalicular stage", "canalicular period"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "biology_processes",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "During which lung development stage do type I and type II pneumocytes first differentiate, the air-blood barrier first form, and surfactant production begin — making survival of extremely premature infants theoretically possible by the end of this stage?",
+      "explanation": "The canalicular stage (weeks 16-25) is the critical window when the lung transitions from a purely branching structure to one capable of gas exchange. Capillaries come into close apposition with differentiating type I cells (for gas exchange) and type II cells (for surfactant production). Surfactant begins to be produced around week 24; adequate amounts to prevent collapse on expiration do not accumulate until ~32 weeks. The 'limit of viability' (approximately 22-24 weeks) corresponds to the late canalicular stage — survival requires NICU support.",
+      "visualDescription": "Pixel art fetal lung at 24 weeks: thin-walled sacs with capillaries running alongside, type II cell labeled with surfactant droplets, '24 wks' timeline marker",
+      "sourceName": "StatPearls — Embryology, Pulmonary",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK544372/",
+      "volatile": false,
+      "distractors": ["embryonic stage", "pseudoglandular stage", "saccular stage", "alveolar stage", "bronchiolar stage"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Surfactant production begins during the canalicular stage. What type of cell secretes surfactant and is absent or immature in premature infants with respiratory distress syndrome?",
+          "correctAnswer": "type II pneumocytes (alveolar type II cells)",
+          "distractors": ["type I pneumocytes", "Clara cells", "alveolar macrophages"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Although surfactant production begins around week 24, adequate amounts to prevent alveolar collapse on expiration are not present until approximately week ___.",
+          "correctAnswer": "32",
+          "distractors": ["28", "36", "20"]
+        }
+      ]
+    }
+  ]
+}

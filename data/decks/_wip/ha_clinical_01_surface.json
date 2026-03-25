@@ -1,0 +1,932 @@
+[
+  {
+    "id": "ha_clinical_001",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "T2–T3",
+    "acceptableAlternatives": ["T2-T3", "second to third thoracic"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "vertebral_levels",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "The jugular (suprasternal) notch — the visible dip at the top of the sternum — corresponds to which vertebral level?",
+    "explanation": "The jugular notch is the concave superior border of the manubrium sterni, palpable in the midline at the base of the neck. It lies at the level of the T2–T3 intervertebral disc. Clinicians use it as an orientation landmark when counting ribs or assessing the trachea for deviation.",
+    "visualDescription": "Pixel art anterior chest: sternal notch highlighted at top of manubrium, T2-T3 label on adjacent spine cross-section, trachea visible above",
+    "sourceName": "Wikipedia — Suprasternal notch",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Suprasternal_notch",
+    "volatile": false,
+    "distractors": ["T1–T2", "T3–T4", "T4–T5", "C7–T1", "T5–T6", "C6–C7", "T1"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which palpable bony landmark on the sternum lies at the level of the T2–T3 vertebral disc?",
+        "correctAnswer": "Jugular (suprasternal) notch",
+        "distractors": ["Sternal angle", "Xiphoid process", "Clavicular notch", "Manubriosternal joint"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The suprasternal notch is located at the ___ vertebral level.",
+        "correctAnswer": "T2–T3",
+        "distractors": ["T4–T5", "C7–T1", "T1–T2", "T5–T6"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_002",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "T4–T5",
+    "acceptableAlternatives": ["T4-T5", "fourth to fifth thoracic"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "vertebral_levels",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "The sternal angle (angle of Louis) is a critical clinical landmark. At which vertebral level does it lie?",
+    "explanation": "The sternal angle is the transverse ridge on the anterior chest wall where the manubrium meets the body of the sternum (the manubriosternal joint). It corresponds to the T4–T5 intervertebral disc. From this single palpable point, four landmarks can be identified: the 2nd rib cartilage (attaches here), the carina of the trachea, the aortic arch, and the division between the superior and inferior mediastinum.",
+    "visualDescription": "Pixel art chest cross-section: manubriosternal junction glowing, lines radiating to rib 2, tracheal carina, aortic arch, all at same horizontal plane",
+    "sourceName": "Wikipedia — Sternal angle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sternal_angle",
+    "volatile": false,
+    "distractors": ["T2–T3", "T3–T4", "T5–T6", "T6–T7", "T1–T2", "T4", "T5"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A clinician palpates the sternal angle (angle of Louis) to locate rib 2. What four structures all lie at the same horizontal plane as this landmark?",
+        "correctAnswer": "Rib 2 cartilage, carina, aortic arch, superior/inferior mediastinum border",
+        "distractors": ["Rib 3, thymus, pulmonary trunk, T3", "Rib 1, thyroid, subclavian artery, T1", "Rib 4, heart apex, inferior vena cava, T6"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The sternal angle marks the junction of the manubrium and sternal body and lies at the ___ vertebral level.",
+        "correctAnswer": "T4–T5",
+        "distractors": ["T2–T3", "T6–T7", "T3–T4", "T5–T6"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_003",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "T9",
+    "acceptableAlternatives": ["ninth thoracic", "T9 vertebra"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "vertebral_levels",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "The xiphoid process — the inferior tip of the sternum — corresponds to which vertebral level?",
+    "explanation": "The xiphoid process is the small cartilaginous/bony tip at the inferior end of the sternum, corresponding to the T9 vertebral level. It is an important CPR landmark: during chest compressions, the heel of the hand is placed on the lower half of the sternum, above the xiphoid, to avoid lacerating the liver or diaphragm with a displaced xiphoid.",
+    "visualDescription": "Pixel art sternum from front: xiphoid process at lower tip highlighted red, spine silhouette alongside with T9 labeled",
+    "sourceName": "Wikipedia — Xiphoid process",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Xiphoid_process",
+    "volatile": false,
+    "distractors": ["T7", "T8", "T10", "T11", "T6", "L1", "T5"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "During CPR, why is it important to identify the xiphoid process before placing your hands for chest compressions?",
+        "correctAnswer": "To avoid pressing on the xiphoid, which can lacerate the liver or diaphragm",
+        "distractors": ["To find the correct rib for needle decompression", "To locate the cardiac apex for auscultation", "To identify the costal margin for liver palpation"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The xiphoid process at the inferior tip of the sternum lies at the ___ vertebral level.",
+        "correctAnswer": "T9",
+        "distractors": ["T7", "T11", "T5", "L1"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_004",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Inguinal ligament",
+    "acceptableAlternatives": ["inguinal ligament attachment", "Poupart's ligament"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "anatomy_structures",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "The anterior superior iliac spine (ASIS) is a prominent bony landmark on the hip. What major ligament attaches to it medially?",
+    "explanation": "The ASIS is the anterior projection of the iliac crest — the bony bump palpable at the front of the hip. The inguinal ligament runs from the ASIS to the pubic tubercle, forming the inferior boundary of the inguinal triangle. The ASIS is also used to locate McBurney's point (appendicitis), the femoral pulse (midinguinal point), and as a bony landmark for leg length measurement.",
+    "visualDescription": "Pixel art pelvis anterior view: ASIS highlighted on right ilium, dashed line of inguinal ligament running to pubic tubercle, femoral vessels passing beneath",
+    "sourceName": "Wikipedia — Anterior superior iliac spine",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anterior_superior_iliac_spine",
+    "volatile": false,
+    "distractors": ["Iliotibial band", "Femoral ligament", "Sacrotuberous ligament", "Lacunar ligament", "Pectineal ligament", "Pubofemoral ligament", "Hip joint capsule"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The inguinal ligament runs between which two bony landmarks?",
+        "correctAnswer": "ASIS and pubic tubercle",
+        "distractors": ["PSIS and pubic symphysis", "ASIS and ischial tuberosity", "Iliac crest and femoral head", "ASIS and greater trochanter"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ ligament attaches medially to the anterior superior iliac spine and forms the floor of the inguinal canal.",
+        "correctAnswer": "inguinal",
+        "distractors": ["sacrotuberous", "iliofemoral", "pectineal", "lacunar"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_005",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Hamstrings",
+    "acceptableAlternatives": ["hamstring muscles", "biceps femoris, semitendinosus, semimembranosus"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "muscle_groups",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "The ischial tuberosity — the 'sit bones' palpable when the hip is flexed — is the origin of which muscle group?",
+    "explanation": "The ischial tuberosity is the posteroinferior projection of the ischium, easily palpated through the gluteal fold when the hip is flexed (the gluteus maximus slides superiorly, exposing it). It is the common origin for all three hamstring muscles: biceps femoris (long head), semitendinosus, and semimembranosus. Avulsion fractures of the ischial tuberosity can occur in sprinters during explosive hamstring contraction.",
+    "visualDescription": "Pixel art posterior pelvis: ischial tuberosity highlighted, three hamstring muscles (labeled) originating from it and descending down the posterior thigh",
+    "sourceName": "Wikipedia — Ischial tuberosity",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ischial_tuberosity",
+    "volatile": false,
+    "distractors": ["Quadriceps", "Adductors", "Gluteus maximus", "Hip flexors", "Gastrocnemius", "Iliopsoas", "Sartorius"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A sprinter feels a sharp posterior thigh pain and 'pop' at the hip after an explosive start. Imaging shows an avulsion fracture of the ischial tuberosity. Which muscle group avulsed it?",
+        "correctAnswer": "Hamstrings",
+        "distractors": ["Quadriceps", "Adductors", "Gluteus maximus", "Hip flexors"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ischial tuberosity is the origin of the ___ muscle group, which flex the knee and extend the hip.",
+        "correctAnswer": "hamstrings",
+        "distractors": ["quadriceps", "adductors", "gluteals", "hip flexors"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_006",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Midinguinal point",
+    "acceptableAlternatives": ["midpoint of the inguinal ligament", "halfway between ASIS and pubic symphysis"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "clinical_landmarks",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Where is the femoral pulse palpated on the surface of the thigh?",
+    "explanation": "The femoral pulse is palpated just below the inguinal ligament at the midinguinal point — the midpoint between the anterior superior iliac spine (ASIS) and the pubic symphysis. The femoral artery, vein, and nerve pass under the inguinal ligament in the femoral triangle at this location (from lateral to medial: nerve, artery, vein — remembered as NAV). This is also the site for femoral artery access in cardiac catheterization.",
+    "visualDescription": "Pixel art groin region: inguinal ligament as dashed line from ASIS to pubic tubercle, midpoint marked with pulsating dot showing femoral artery, NAV arrangement labeled",
+    "sourceName": "Wikipedia — Femoral triangle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femoral_triangle",
+    "volatile": false,
+    "distractors": ["Midpoint of inguinal ligament between ASIS and pubic tubercle", "1/3 from ASIS along inguinal ligament", "At the pubic tubercle", "Below the femoral head", "At the midpoint of the thigh", "At the adductor canal", "At the popliteal fossa"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Using the mnemonic NAV, what is the lateral-to-medial arrangement of structures passing under the inguinal ligament at the femoral pulse point?",
+        "correctAnswer": "Nerve, Artery, Vein (NAV)",
+        "distractors": ["Vein, Artery, Nerve (VAN)", "Artery, Nerve, Vein (ANV)", "Nerve, Vein, Artery (NVA)", "Artery, Vein, Nerve (AVN)"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The femoral pulse is palpated just below the inguinal ligament at the ___ — halfway between the ASIS and pubic symphysis.",
+        "correctAnswer": "midinguinal point",
+        "distractors": ["McBurney's point", "midclavicular point", "inguinal ring", "femoral ring"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_007",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Between the 1st and 2nd metatarsals",
+    "acceptableAlternatives": ["dorsum of foot between 1st and 2nd metatarsal", "first intermetatarsal space"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "anatomy_locations",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Where is the dorsalis pedis pulse palpated on the foot?",
+    "explanation": "The dorsalis pedis artery is the continuation of the anterior tibial artery onto the dorsum of the foot. Its pulse is palpated on the dorsal surface of the foot, in the groove between the tendons of extensor hallucis longus and extensor digitorum longus — which corresponds to the space between the 1st and 2nd metatarsal bones. It is assessed routinely in peripheral vascular disease and after lower limb surgery or trauma.",
+    "visualDescription": "Pixel art dorsal foot view: dorsalis pedis artery highlighted between 1st and 2nd metatarsals, pulsating dot at palpation site, extensor tendons labeled alongside",
+    "sourceName": "Wikipedia — Dorsalis pedis artery",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dorsalis_pedis_artery",
+    "volatile": false,
+    "distractors": ["Lateral malleolus", "Medial malleolus", "Navicular tuberosity", "Base of 5th metatarsal", "Between 2nd and 3rd metatarsals", "Calcaneus", "Cuboid"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "The dorsalis pedis artery — assessed in peripheral vascular disease — is the continuation of which artery onto the dorsum of the foot?",
+        "correctAnswer": "Anterior tibial artery",
+        "distractors": ["Posterior tibial artery", "Peroneal artery", "Popliteal artery", "Fibular artery"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The dorsalis pedis pulse is palpated on the dorsum of the foot between the ___ and ___ metatarsals.",
+        "correctAnswer": "1st and 2nd",
+        "distractors": ["2nd and 3rd", "3rd and 4th", "4th and 5th", "1st and 5th"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_008",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Between the flexor carpi radialis tendon and the radius",
+    "acceptableAlternatives": ["lateral to FCR tendon", "lateral wrist between FCR and radial styloid"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "anatomy_locations",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Where is the radial pulse palpated at the wrist?",
+    "explanation": "The radial artery runs along the lateral (radial) aspect of the forearm and is palpated at the wrist between the tendon of flexor carpi radialis (FCR) medially and the distal radius laterally. It is the most commonly used site for pulse measurement. The artery then passes through the anatomical snuffbox before entering the palm to form the deep palmar arch.",
+    "visualDescription": "Pixel art wrist cross-section: radial artery highlighted between FCR tendon and radius, fingers pressing over pulsating vessel",
+    "sourceName": "Wikipedia — Radial artery",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Radial_artery",
+    "volatile": false,
+    "distractors": ["Medial to the FCR tendon", "Between FCR and flexor carpi ulnaris", "Over the carpal tunnel", "Lateral to palmaris longus", "Over the anatomical snuffbox", "At the ulnar styloid", "Between radius and ulna"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "After passing through the anatomical snuffbox, the radial artery enters the palm and forms which arterial arch?",
+        "correctAnswer": "Deep palmar arch",
+        "distractors": ["Superficial palmar arch", "Palmar carpal arch", "Digital arch", "Ulnar arch"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The radial pulse is palpated at the wrist between the flexor carpi radialis tendon and the ___.",
+        "correctAnswer": "radius",
+        "distractors": ["ulna", "flexor carpi ulnaris", "palmaris longus", "scaphoid"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_009",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "1/3 of the way from the ASIS to the umbilicus",
+    "acceptableAlternatives": ["one third from ASIS to umbilicus", "one-third distance from anterior superior iliac spine to navel"],
+    "chainThemeId": "surface_landmarks",
+    "answerTypePoolId": "clinical_landmarks",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "McBurney's point is the classic surface landmark for appendicitis tenderness. Where is it located?",
+    "explanation": "McBurney's point lies at the junction of the outer one-third and inner two-thirds of the line drawn from the right anterior superior iliac spine (ASIS) to the umbilicus — in other words, 1/3 of the distance from the ASIS. Direct tenderness at this point (McBurney's sign) is highly suggestive of acute appendicitis. The appendix tip typically overlies this point when the base is at the ileocaecal junction.",
+    "visualDescription": "Pixel art abdomen anterior: dashed line from right ASIS to umbilicus, red dot at 1/3 from ASIS labeled McBurney's point, appendix outline beneath",
+    "sourceName": "Wikipedia — McBurney's point",
+    "sourceUrl": "https://en.wikipedia.org/wiki/McBurney%27s_point",
+    "volatile": false,
+    "distractors": ["Midpoint between ASIS and umbilicus", "1/3 from umbilicus to ASIS", "At the ASIS itself", "1/4 from ASIS to umbilicus", "Midpoint of right iliac fossa", "2/3 from ASIS to umbilicus", "At the right costal margin"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Rebound tenderness at McBurney's point (pain on sudden release of pressure worse than on pressing) suggests peritoneal irritation. In the context of right iliac fossa pain, what diagnosis does this most suggest?",
+        "correctAnswer": "Acute appendicitis",
+        "distractors": ["Ectopic pregnancy", "Ovarian cyst rupture", "Mesenteric adenitis", "Crohn's disease"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "McBurney's point is located ___ of the way from the right ASIS to the umbilicus.",
+        "correctAnswer": "1/3",
+        "distractors": ["1/2", "2/3", "1/4", "3/4"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_010",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Acute cholecystitis",
+    "acceptableAlternatives": ["cholecystitis", "gallbladder inflammation"],
+    "chainThemeId": "clinical_signs",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Murphy's sign is elicited by palpating the right upper quadrant deeply during inspiration. Arrest of inspiration due to pain constitutes a positive sign. What condition does it indicate?",
+    "explanation": "Murphy's sign is tested by hooking the fingers under the right costal margin in the midclavicular line (over the gallbladder fossa) and asking the patient to breathe in deeply. As the diaphragm descends, the inflamed gallbladder is pushed onto the examiner's fingers, causing pain that halts inspiration — a positive sign. It has high sensitivity for acute cholecystitis. The left side is tested as a control (negative). A positive Murphy's ultrasound sign can also be elicited sonographically.",
+    "visualDescription": "Pixel art clinical exam: examiner's hand pressing under right costal margin, patient silhouette inhaling, gallbladder descending into hand with pain indicator",
+    "sourceName": "Wikipedia — Murphy's sign",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Murphy%27s_sign_(medical)",
+    "volatile": false,
+    "distractors": ["Acute appendicitis", "Hepatitis", "Peptic ulcer perforation", "Pancreatitis", "Renal colic", "Splenic rupture", "Bowel obstruction"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which clinical sign involves arrest of inspiration during deep RUQ palpation, indicating an inflamed gallbladder?",
+        "correctAnswer": "Murphy's sign",
+        "distractors": ["McBurney's sign", "Rovsing's sign", "Blumberg's sign", "Courvoisier's sign"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Murphy's sign, elicited by palpating under the right costal margin during inspiration, is positive in acute ___.",
+        "correctAnswer": "cholecystitis",
+        "distractors": ["appendicitis", "pancreatitis", "hepatitis", "pyelonephritis"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_011",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Gluteus medius weakness (superior gluteal nerve palsy)",
+    "acceptableAlternatives": ["gluteus medius weakness", "superior gluteal nerve lesion", "abductor weakness"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "The Trendelenburg test: a patient stands on one leg and the pelvis drops on the contralateral (opposite) side. What does this indicate?",
+    "explanation": "Normally when standing on one leg, the gluteus medius on the stance-leg side contracts to keep the pelvis level (or raise the contralateral side slightly). A positive Trendelenburg — where the unsupported side drops — means the ipsilateral gluteus medius is failing. This muscle is innervated by the superior gluteal nerve (L4–S1). Causes include superior gluteal nerve damage, hip pathology (e.g., hip OA), or proximal femoral fracture. The patient may also show a Trendelenburg gait (lurching to the affected side while walking to compensate).",
+    "visualDescription": "Pixel art stick figure standing on right leg: left pelvis side drooping down, right hip gluteus medius labeled with X, superior gluteal nerve pathway highlighted",
+    "sourceName": "Wikipedia — Trendelenburg's sign",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trendelenburg%27s_sign",
+    "volatile": false,
+    "distractors": ["Gluteus maximus weakness", "Piriformis syndrome", "Inferior gluteal nerve palsy", "Sciatic nerve lesion", "L3 nerve root compression", "Hip flexor weakness", "Tensor fasciae latae tear"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "The superior gluteal nerve (L4–S1) innervates gluteus medius, gluteus minimus, and tensor fasciae latae. What is the nerve root level of this nerve?",
+        "correctAnswer": "L4–S1",
+        "distractors": ["L2–L4", "S1–S3", "L5–S2", "L1–L3"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A positive Trendelenburg sign indicates weakness of ___ on the side that is bearing weight.",
+        "correctAnswer": "gluteus medius",
+        "distractors": ["gluteus maximus", "piriformis", "iliopsoas", "tensor fasciae latae"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_012",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Carpal tunnel syndrome (median nerve compression)",
+    "acceptableAlternatives": ["carpal tunnel syndrome", "median nerve entrapment"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Phalen's test: the patient holds the wrists in full flexion for 60 seconds. Tingling or numbness in the thumb, index, middle, and radial half of ring finger constitutes a positive test. What does this diagnose?",
+    "explanation": "Phalen's test (wrist flexion test) reproduces symptoms of carpal tunnel syndrome by maximally narrowing the carpal tunnel, compressing the median nerve. The median nerve supplies sensation to the lateral 3.5 fingers (thumb, index, middle, and lateral half of ring finger) — tingling in this distribution after 60 seconds is positive. The thenar muscles (abductor pollicis brevis, opponens pollicis, flexor pollicis brevis) may waste if chronic. Tinel's sign (tapping over the flexor retinaculum) is a complementary test.",
+    "visualDescription": "Pixel art hands pressed back-to-back with wrists maximally flexed, median nerve highlighted in carpal tunnel, tingling sensation radiating to thumb and first two fingers",
+    "sourceName": "Wikipedia — Phalen maneuver",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phalen_maneuver",
+    "volatile": false,
+    "distractors": ["Ulnar tunnel syndrome", "Thoracic outlet syndrome", "De Quervain tenosynovitis", "Trigger finger", "Radial nerve palsy", "Cubital tunnel syndrome", "Pronator teres syndrome"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "In carpal tunnel syndrome, which specific muscle group in the hand wastes with chronic median nerve compression?",
+        "correctAnswer": "Thenar muscles (abductor pollicis brevis, opponens pollicis, flexor pollicis brevis)",
+        "distractors": ["Hypothenar muscles", "Interossei", "Lumbricals", "Flexor digitorum superficialis"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Phalen's test provokes symptoms of carpal tunnel syndrome by compressing the ___ nerve under the flexor retinaculum.",
+        "correctAnswer": "median",
+        "distractors": ["ulnar", "radial", "anterior interosseous", "musculocutaneous"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_013",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Nerve compression (entrapment neuropathy)",
+    "acceptableAlternatives": ["nerve entrapment", "compressed nerve", "nerve compression syndrome"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "clinical_concepts",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Tinel's sign: tapping over a nerve produces tingling that radiates distally along its distribution. What does a positive Tinel's sign indicate?",
+    "explanation": "Tinel's sign is a clinical test for nerve compression or regeneration. When a compressed or regenerating nerve is percussed, mechanically sensitive axons depolarize and produce paraesthesia (tingling) in the distribution of that nerve distally — this is a positive Tinel's sign. It is used at the wrist (carpal tunnel — median nerve), elbow (cubital tunnel — ulnar nerve), and along any compressed peripheral nerve. In nerve regeneration after injury, the advancing front of regenerating axons produces Tinel's sign, and its distal progression over weeks indicates active recovery.",
+    "visualDescription": "Pixel art wrist: finger tapping over carpal tunnel area, lightning bolt symbol radiating distally to fingertips along median nerve pathway",
+    "sourceName": "Wikipedia — Tinel's sign",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tinel%27s_sign",
+    "volatile": false,
+    "distractors": ["Muscle tear", "Joint instability", "Arterial occlusion", "Tendon rupture", "Bone fracture", "Ligament sprain", "Synovitis"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "After a radial nerve injury at the arm, a physician checks Tinel's sign weekly by tapping along the nerve's course. The point of tingling moves progressively more distally each week. What does this indicate?",
+        "correctAnswer": "Active nerve regeneration (axons regrowing distally)",
+        "distractors": ["Worsening compression", "Complete nerve transection", "Wallerian degeneration progressing", "Muscle reinnervation complete"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tinel's sign is elicited by ___ over a nerve, producing distal tingling in its distribution.",
+        "correctAnswer": "tapping (percussion)",
+        "distractors": ["stretching", "compressing", "flexing", "warming"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_014",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Lachman test",
+    "acceptableAlternatives": ["Lachman's test"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "clinical_tests",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which clinical test for ACL integrity is performed with the knee flexed to 20–30° and is considered the most sensitive test for ACL rupture?",
+    "explanation": "The Lachman test is the most sensitive clinical test for ACL rupture (sensitivity ~85%). With the knee at 20–30° flexion, the examiner stabilizes the femur with one hand and pulls the tibia anteriorly with the other. Excessive anterior tibial translation with a soft or absent endpoint is a positive result, indicating ACL disruption. At this angle of flexion, the posterior capsule and hamstrings do not mask the result (unlike the anterior drawer test at 90°).",
+    "visualDescription": "Pixel art lateral knee view: knee at 30° flexion, arrow showing anterior tibial translation, examiner hands stabilizing femur and pulling tibia, ACL labeled as torn",
+    "sourceName": "Wikipedia — Lachman test",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lachman_test",
+    "volatile": false,
+    "distractors": ["Anterior drawer test", "Posterior drawer test", "McMurray test", "Valgus stress test", "Varus stress test", "Pivot shift test", "Thessaly test"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Why is the Lachman test more sensitive for ACL rupture than the anterior drawer test (which uses 90° knee flexion)?",
+        "correctAnswer": "At 20–30° flexion, the posterior capsule and hamstrings don't mask tibial translation",
+        "distractors": ["The ACL is under more tension at 20–30° flexion", "The PCL cannot confound the result at low flexion", "The knee joint is more unstable at low flexion angles", "The examiner can apply more force at low flexion"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Lachman test is performed with the knee at ___ degrees of flexion and is the most sensitive test for ACL rupture.",
+        "correctAnswer": "20–30",
+        "distractors": ["90", "45", "60", "0"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_015",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Anterior cruciate ligament (ACL)",
+    "acceptableAlternatives": ["ACL", "anterior cruciate"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "anatomy_structures",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "The anterior drawer test is performed with the knee at 90° flexion. The tibia is pulled forward. Excessive forward translation indicates rupture of which ligament?",
+    "explanation": "The anterior drawer test assesses the integrity of the ACL. With the patient supine, hip at 45°, knee at 90°, and foot flat (examiner sits on the foot to stabilize), the tibia is pulled anteriorly. Excessive translation (>5–8mm compared to the other side) or a soft endpoint indicates ACL rupture. This test has lower sensitivity than the Lachman test because at 90° flexion, the posterior capsule and hamstrings may provide a false-negative result by restraining tibial translation.",
+    "visualDescription": "Pixel art lateral knee at 90° flexion: anterior arrow on tibia, ACL ligament shown torn or absent, posterior capsule labeled as secondary restraint",
+    "sourceName": "Wikipedia — Anterior drawer test",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anterior_drawer_test",
+    "volatile": false,
+    "distractors": ["Posterior cruciate ligament (PCL)", "Medial collateral ligament (MCL)", "Lateral collateral ligament (LCL)", "Patellar tendon", "Posterolateral corner", "Anterior capsule", "Biceps femoris tendon"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "The classic mechanism for an ACL tear in sport is a non-contact deceleration with the knee near extension and the foot planted. Why does this injure the ACL specifically?",
+        "correctAnswer": "The ACL resists anterior tibial translation; deceleration with foot planted creates this force",
+        "distractors": ["The ACL resists valgus stress, which peaks during deceleration", "The ACL resists hyperflexion, which occurs during this mechanism", "The ACL is stressed by tibial rotation alone", "The ACL is weakest when the knee is fully extended"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The anterior drawer test, performed with the knee at 90° flexion, tests the integrity of the ___ ligament.",
+        "correctAnswer": "anterior cruciate (ACL)",
+        "distractors": ["posterior cruciate (PCL)", "medial collateral (MCL)", "lateral collateral (LCL)", "patellar"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_016",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Meniscal tear",
+    "acceptableAlternatives": ["meniscus tear", "torn meniscus"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "The McMurray test: the knee is taken from full flexion and progressively extended while applying rotational stress. A palpable click or pain at the joint line is a positive test. What does it diagnose?",
+    "explanation": "The McMurray test is used to detect meniscal tears. With the patient supine, the examiner fully flexes the knee, then slowly extends it while applying either internal rotation (testing lateral meniscus) or external rotation (testing medial meniscus) with axial load. A palpable or audible click, clunk, or pain along the joint line at the level of the meniscus constitutes a positive result. The medial meniscus is torn more frequently than the lateral due to its attachment to the MCL.",
+    "visualDescription": "Pixel art knee from lateral view: knee moving from full flexion toward extension, examiner's hands applying rotation, click symbol at medial joint line, meniscus outline highlighted",
+    "sourceName": "Wikipedia — McMurray test",
+    "sourceUrl": "https://en.wikipedia.org/wiki/McMurray_test",
+    "volatile": false,
+    "distractors": ["ACL tear", "PCL tear", "Collateral ligament tear", "Patellar dislocation", "Chondromalacia patellae", "Bursitis", "Hoffa's fat pad impingement"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "During McMurray testing, external tibial rotation stresses the medial meniscus while internal rotation stresses the lateral meniscus. Why is the medial meniscus more commonly torn?",
+        "correctAnswer": "It is attached to the MCL, making it less mobile and more vulnerable to shear forces",
+        "distractors": ["It is thicker and thus under greater mechanical load", "It lacks a blood supply throughout, making it weaker", "It is compressed more during weight-bearing", "The lateral meniscus is protected by the popliteus tendon"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The McMurray test detects ___ tears by reproducing a click or pain at the joint line during rotated knee extension.",
+        "correctAnswer": "meniscal",
+        "distractors": ["cruciate ligament", "collateral ligament", "patellar tendon", "bursal"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_017",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Upper motor neuron (UMN) lesion",
+    "acceptableAlternatives": ["UMN lesion", "upper motor neuron damage", "corticospinal tract lesion"],
+    "chainThemeId": "clinical_signs",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "Babinski's sign: stroking the lateral plantar surface of the foot causes extension of the great toe and fanning of other toes. In adults, what does this indicate?",
+    "explanation": "Babinski's sign is elicited by firmly stroking the lateral plantar surface of the foot from heel to ball, then across the ball to the great toe. In healthy adults, the response is plantar flexion of all toes (downgoing). An upgoing great toe with fanning of the others (positive Babinski) indicates disruption of the corticospinal (pyramidal) tract — an upper motor neuron lesion. It is NORMAL in infants under 2 years old because myelination is incomplete. Causes in adults include stroke, multiple sclerosis, spinal cord injury, ALS, and tumors.",
+    "visualDescription": "Pixel art foot sole: key sliding laterally from heel toward toes, great toe extending upward with arrows showing fan pattern of lateral toes, red alert symbol",
+    "sourceName": "Wikipedia — Babinski sign",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Babinski_sign",
+    "volatile": false,
+    "distractors": ["Lower motor neuron lesion", "Cerebellar lesion", "Dorsal column lesion", "Peripheral neuropathy", "Normal reflex in adults", "Neuromuscular junction disorder", "Basal ganglia lesion"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Babinski's sign is normal in infants under 2 years old. Why?",
+        "correctAnswer": "Myelination of the corticospinal tract is incomplete, so the reflex arc is not yet fully inhibited",
+        "distractors": ["Infants have immature plantar skin receptors", "Infants have a different nerve supply to the sole", "The reflex is mediated by a different pathway in infants", "Infant tendons are too lax to show the normal downgoing response"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A positive Babinski sign in an adult — upgoing great toe on stroking the lateral sole — indicates a ___ motor neuron lesion.",
+        "correctAnswer": "upper",
+        "distractors": ["lower", "peripheral", "autonomic", "cerebellar"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_018",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Proprioception loss (dorsal column dysfunction)",
+    "acceptableAlternatives": ["posterior column dysfunction", "dorsal column lesion", "sensory ataxia"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Romberg's test: the patient stands with feet together and eyes closed. Falling or significant sway is a positive result. What does this indicate?",
+    "explanation": "Romberg's test assesses proprioception. Standing requires three inputs: vision, vestibular function, and proprioception (dorsal columns). Closing the eyes removes visual input — patients with proprioceptive loss (dorsal column dysfunction) can compensate while eyes are open but lose balance when vision is removed. A positive Romberg indicates dorsal column pathology (e.g., subacute combined degeneration from B12 deficiency, tabes dorsalis, Friedrich's ataxia). It does NOT indicate cerebellar disease — cerebellar patients are unsteady whether eyes open or closed.",
+    "visualDescription": "Pixel art standing figure with feet together, eyes closed, wobbling, dorsal spinal column highlighted, proprioceptive pathway shown ascending to brain",
+    "sourceName": "Wikipedia — Romberg's test",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Romberg%27s_test",
+    "volatile": false,
+    "distractors": ["Cerebellar ataxia", "Vestibular dysfunction", "Motor neuron disease", "Visual loss", "Frontal lobe lesion", "Basal ganglia disorder", "Muscle weakness"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient with B12 deficiency develops a positive Romberg's sign. What spinal cord tract is affected, and what is this condition called?",
+        "correctAnswer": "Dorsal columns; subacute combined degeneration of the cord",
+        "distractors": ["Spinothalamic tracts; tropical spastic paraparesis", "Corticospinal tracts; motor neuron disease", "Spinocerebellar tracts; Friedreich's ataxia", "Anterolateral tracts; syringomyelia"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A positive Romberg test (falling with eyes closed, stable with eyes open) indicates ___ loss due to dorsal column dysfunction.",
+        "correctAnswer": "proprioception",
+        "distractors": ["vision", "vestibular function", "pain sensation", "motor control"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_019",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Supraspinatus",
+    "acceptableAlternatives": ["supraspinatus muscle", "supraspinatus tendon"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "anatomy_structures",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Rotator cuff tears most commonly involve which specific muscle?",
+    "explanation": "The supraspinatus is the most commonly torn rotator cuff muscle, accounting for roughly 90% of rotator cuff tears. It originates from the supraspinous fossa of the scapula and inserts on the superior facet of the greater tubercle of the humerus. It initiates abduction (first 0–15°) and is mechanically stressed where its tendon passes under the coracoacromial arch. The characteristic finding is a painful arc between 60–120° of abduction, when the tendon is most compressed under the acromion.",
+    "visualDescription": "Pixel art shoulder cross-section: supraspinatus muscle and tendon highlighted, painful arc zone marked at 60-120° during shoulder abduction, coracoacromial arch above",
+    "sourceName": "Wikipedia — Supraspinatus muscle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Supraspinatus_muscle",
+    "volatile": false,
+    "distractors": ["Infraspinatus", "Subscapularis", "Teres minor", "Deltoid", "Teres major", "Biceps brachii", "Coracobrachialis"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A supraspinatus tear produces a 'painful arc' of shoulder abduction. Between which degrees of abduction is pain maximal?",
+        "correctAnswer": "60–120°",
+        "distractors": ["0–30°", "30–60°", "120–180°", "0–60°"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ muscle is most commonly torn in rotator cuff injuries and produces a painful arc between 60–120° of abduction.",
+        "correctAnswer": "supraspinatus",
+        "distractors": ["infraspinatus", "subscapularis", "teres minor", "deltoid"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_020",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Median nerve compressed under the flexor retinaculum",
+    "acceptableAlternatives": ["median nerve entrapment at the wrist", "median nerve compression at carpal tunnel"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "anatomy_structures",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Carpal tunnel syndrome causes tingling in the lateral 3.5 fingers and thenar wasting. What is the underlying anatomical pathology?",
+    "explanation": "The carpal tunnel is formed by the concave carpal bones posteriorly and the flexor retinaculum (transverse carpal ligament) anteriorly. Nine flexor tendons and the median nerve pass through this rigid tunnel. When tunnel pressure rises (from tenosynovitis, fluid retention in pregnancy, hypothyroidism, rheumatoid arthritis, or repetitive wrist flexion), the median nerve is compressed. This causes sensory loss in the lateral 3.5 fingers and, in chronic cases, wasting of the thenar muscles (abductor pollicis brevis, opponens pollicis, and superficial head of flexor pollicis brevis — all median-innervated).",
+    "visualDescription": "Pixel art wrist cross-section: carpal tunnel bounded by carpal bones and flexor retinaculum, median nerve compressed centrally, nine flexor tendons surrounding it",
+    "sourceName": "Wikipedia — Carpal tunnel syndrome",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_tunnel_syndrome",
+    "volatile": false,
+    "distractors": ["Ulnar nerve compressed at Guyon's canal", "Radial nerve compressed at the wrist", "Median nerve compressed at the elbow", "Flexor retinaculum tear", "Scaphoid fracture compressing nerve", "Thrombosis of radial artery", "Anterior interosseous nerve compression"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Which three thenar muscles waste in chronic carpal tunnel syndrome due to median nerve compression?",
+        "correctAnswer": "Abductor pollicis brevis, opponens pollicis, flexor pollicis brevis (superficial head)",
+        "distractors": ["Adductor pollicis, abductor pollicis longus, extensor pollicis brevis", "All four thenar muscles including adductor pollicis", "Flexor pollicis longus, abductor pollicis longus, opponens pollicis", "First dorsal interosseous, adductor pollicis, flexor pollicis brevis"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The carpal tunnel is roofed by the flexor ___, the rigid structure whose lack of expandability causes median nerve compression.",
+        "correctAnswer": "retinaculum",
+        "distractors": ["aponeurosis", "fascia", "capsule", "tendon"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_021",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "L4–S3 nerve root compression",
+    "acceptableAlternatives": ["lumbar/sacral nerve root compression", "L4-S3", "L4 to S3 nerve roots"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "nerve_roots",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Sciatica presents with pain radiating from the buttock down the posterior thigh and leg. Which nerve roots contribute to the sciatic nerve?",
+    "explanation": "The sciatic nerve is the largest nerve in the body, formed from the anterior rami of L4, L5, S1, S2, and S3. It exits the pelvis through the greater sciatic foramen, usually below piriformis, and divides into the tibial nerve and common fibular (peroneal) nerve at the apex of the popliteal fossa. Most sciatica is caused by a prolapsed lumbar disc compressing a nerve root — most commonly L4/L5 (L5 root) or L5/S1 (S1 root). True sciatic nerve damage from piriformis syndrome is rare.",
+    "visualDescription": "Pixel art posterior pelvis and thigh: sciatic nerve highlighted from lumbar plexus (L4-S3) through greater sciatic foramen, descending to posterior thigh, branching to tibial and common fibular",
+    "sourceName": "Wikipedia — Sciatic nerve",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sciatic_nerve",
+    "volatile": false,
+    "distractors": ["L2–L4", "L3–S1", "L5–S2", "S1–S4", "L1–L4", "L4–L5 only", "S1–S3 only"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient with sciatica has loss of ankle dorsiflexion (foot drop) and numbness over the dorsum of the foot. Which nerve root is most likely compressed?",
+        "correctAnswer": "L4–L5 disc prolapse compressing L5 root",
+        "distractors": ["L3–L4 disc prolapse compressing L4 root", "L5–S1 disc prolapse compressing S1 root", "S1–S2 disc prolapse compressing S2 root", "L2–L3 disc prolapse compressing L3 root"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The sciatic nerve is formed from nerve roots ___, the largest nerve in the body.",
+        "correctAnswer": "L4–S3",
+        "distractors": ["L2–L4", "L3–S1", "L5–S2", "S1–S4"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_022",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Radial nerve compressed against the humerus (spiral groove)",
+    "acceptableAlternatives": ["radial nerve palsy", "radial nerve compression at spiral groove", "spiral groove compression"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "Saturday night palsy causes wrist drop and loss of finger/thumb extension. What is the anatomical basis?",
+    "explanation": "Saturday night palsy (radial nerve palsy from prolonged arm compression) occurs when the radial nerve is compressed against the spiral groove of the humerus — classically while someone sleeps deeply (due to alcohol intoxication) with their arm draped over a chair or bed edge. The radial nerve supplies all wrist and finger extensors. The result is wrist drop (inability to extend the wrist) and inability to extend the fingers and thumb at the MCP joints. Sensation over the dorsal hand (dorsal web space of thumb) is also impaired. Supinator, brachioradialis, and long head of triceps are typically spared (they branch above the spiral groove).",
+    "visualDescription": "Pixel art arm hanging limply over chair back at night, radial nerve highlighted at spiral groove of humerus, wrist drooping with fingers curled",
+    "sourceName": "Wikipedia — Radial nerve",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Radial_nerve",
+    "volatile": false,
+    "distractors": ["Median nerve compressed at wrist", "Ulnar nerve compressed at elbow", "Brachial plexus avulsion", "Posterior interosseous nerve palsy", "Axillary nerve palsy", "Musculocutaneous nerve damage", "C7 nerve root compression"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "In Saturday night palsy, triceps function is typically preserved despite wrist drop. Why?",
+        "correctAnswer": "The branch to triceps leaves the radial nerve above the spiral groove where compression occurs",
+        "distractors": ["Triceps is innervated by the ulnar nerve", "The spiral groove compresses only motor fibers below the elbow", "Triceps has dual innervation from the axillary nerve", "The spiral groove is distal to where the radial nerve leaves the axilla"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Saturday night palsy involves compression of the ___ nerve at the spiral groove of the humerus, causing wrist drop.",
+        "correctAnswer": "radial",
+        "distractors": ["median", "ulnar", "axillary", "musculocutaneous"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_023",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "C5–C6 brachial plexus injury (upper trunk)",
+    "acceptableAlternatives": ["C5-C6 injury", "Erb-Duchenne palsy", "upper brachial plexus injury"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "nerve_roots",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Erb-Duchenne palsy produces a 'waiter's tip' arm position. Which nerve roots are damaged?",
+    "explanation": "Erb-Duchenne palsy results from traction injury to the upper trunk of the brachial plexus (C5–C6), typically during difficult delivery (shoulder dystocia) when the head is forcefully laterally flexed away from the shoulder, or in adults from falls on the shoulder/neck. The resulting 'waiter's tip' position shows: arm adducted and internally rotated (deltoid/supraspinatus lost), forearm extended and pronated (biceps/brachialis lost), wrist flexed. C5–C6 supply the deltoid (via axillary nerve), supraspinatus (suprascapular nerve), biceps (musculocutaneous), brachialis, and brachioradialis.",
+    "visualDescription": "Pixel art infant or adult arm: limb hanging with shoulder adducted and internally rotated, elbow extended, wrist flexed in classic waiter's tip posture, C5-C6 nerve roots highlighted at neck",
+    "sourceName": "Wikipedia — Erb's palsy",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Erb%27s_palsy",
+    "volatile": false,
+    "distractors": ["C8–T1", "C6–C7", "C7–C8", "C4–C5", "C5–C7", "T1 only", "Entire brachial plexus"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Erb-Duchenne palsy commonly follows shoulder dystocia in neonates. The classic mechanism is lateral neck flexion away from the shoulder. Which point on the brachial plexus is the lesion site?",
+        "correctAnswer": "Erb's point — junction of C5 and C6 roots forming the upper trunk, just above the clavicle",
+        "distractors": ["The posterior cord at the axilla", "The medial cord at the clavicle", "The lateral cord below the clavicle", "The C5–C6 roots at the intervertebral foramina"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Erb-Duchenne palsy (waiter's tip position) results from injury to ___ nerve roots of the brachial plexus.",
+        "correctAnswer": "C5–C6",
+        "distractors": ["C8–T1", "C6–C7", "C4–C5", "C7–T1"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_024",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "C8–T1 brachial plexus injury (lower trunk)",
+    "acceptableAlternatives": ["C8-T1 injury", "Klumpke palsy", "lower brachial plexus injury"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "nerve_roots",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Klumpke palsy produces a 'claw hand' deformity. Which nerve roots are damaged?",
+    "explanation": "Klumpke palsy results from injury to the lower trunk of the brachial plexus (C8–T1), typically caused by forceful arm abduction (e.g., grabbing a branch during a fall, birth injury with arm traction). C8–T1 supply the intrinsic hand muscles via the ulnar nerve (interossei, hypothenar, medial two lumbricals) and median nerve (lateral two lumbricals, thenar). Loss of intrinsic muscles causes hyperextension at the MCP joints and flexion at the IPJ joints — the 'claw hand.' If T1 is also damaged, Horner's syndrome (ptosis, miosis, anhidrosis) may occur ipsilaterally.",
+    "visualDescription": "Pixel art hand showing claw deformity: MCPs hyperextended, IP joints flexed, hypothenar and interosseous wasting, C8-T1 nerve roots labeled at cervical spine",
+    "sourceName": "Wikipedia — Klumpke paralysis",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Klumpke_paralysis",
+    "volatile": false,
+    "distractors": ["C5–C6", "C6–C7", "C7–C8", "C4–C5", "C5–C8", "T1–T2 only", "Entire brachial plexus"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "A patient with Klumpke palsy (C8–T1 injury) also has ptosis, miosis, and anhidrosis on the same side. What additional structure is involved?",
+        "correctAnswer": "T1 sympathetic fibers (Horner's syndrome from disruption of the sympathetic chain)",
+        "distractors": ["Facial nerve on the same side", "Ipsilateral phrenic nerve", "C7 nerve root", "Vagus nerve at the thoracic inlet"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Klumpke palsy causing claw hand results from injury to ___ nerve roots, affecting intrinsic hand muscles.",
+        "correctAnswer": "C8–T1",
+        "distractors": ["C5–C6", "C6–C7", "C7–C8", "T1–T2"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_025",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Supraspinous fossa of the scapula to the superior facet of the greater tubercle of the humerus",
+    "acceptableAlternatives": ["supraspinous fossa to greater tubercle", "scapula supraspinous fossa to humerus greater tubercle superior facet"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "anatomy_attachments",
+    "difficulty": 4,
+    "funScore": 5,
+    "quizQuestion": "What is the origin and insertion of the supraspinatus muscle?",
+    "explanation": "Supraspinatus originates from the supraspinous fossa of the scapula (above the scapular spine) and inserts onto the superior facet of the greater tubercle of the humerus. It is innervated by the suprascapular nerve (C5–C6) and initiates shoulder abduction from 0–15° before the deltoid takes over. Its tendon passes under the coracoacromial arch between the acromion and humeral head — the area of impingement in rotator cuff pathology.",
+    "visualDescription": "Pixel art posterior scapula view: supraspinous fossa highlighted above spine of scapula, dotted line to insertion on superior greater tubercle of humerus, suprascapular nerve labeled",
+    "sourceName": "Wikipedia — Supraspinatus muscle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Supraspinatus_muscle",
+    "volatile": false,
+    "distractors": ["Infraspinous fossa to middle facet of greater tubercle", "Supraspinous fossa to lesser tubercle", "Spine of scapula to greater tubercle", "Supraspinous fossa to bicipital groove", "Coracoid process to greater tubercle", "Supraspinous fossa to anatomical neck", "Infraspinous fossa to greater tubercle superior facet"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Supraspinatus, infraspinatus, teres minor, and subscapularis all insert on the humerus. Which of these four muscles inserts on the lesser tubercle (not the greater tubercle)?",
+        "correctAnswer": "Subscapularis",
+        "distractors": ["Infraspinatus", "Teres minor", "Supraspinatus", "All four insert on the greater tubercle"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The supraspinatus originates from the ___ fossa of the scapula and is innervated by the suprascapular nerve (C5–C6).",
+        "correctAnswer": "supraspinous",
+        "distractors": ["infraspinous", "subscapular", "glenoid", "coracoid"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_026",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Superior gluteal nerve (L4–S1)",
+    "acceptableAlternatives": ["superior gluteal nerve", "L4-S1 superior gluteal nerve"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "nerve_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Trendelenburg gait results from weakness of which nerve and its muscles?",
+    "explanation": "The superior gluteal nerve (L4–S1) innervates gluteus medius, gluteus minimus, and tensor fasciae latae — the hip abductors that stabilize the pelvis during single-leg stance. When this nerve is damaged (e.g., from a poorly placed gluteal injection, hip surgery, or pelvic fracture), patients develop a Trendelenburg gait: the pelvis drops on the unsupported side at each step, and the patient lurches the trunk toward the affected (weak) side to shift the centre of gravity and compensate.",
+    "visualDescription": "Pixel art walking figure: pelvis tilting down on unsupported right side, left leg bearing weight, gluteus medius on left side marked with X, superior gluteal nerve highlighted",
+    "sourceName": "Wikipedia — Superior gluteal nerve",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Superior_gluteal_nerve",
+    "volatile": false,
+    "distractors": ["Inferior gluteal nerve (L5–S2)", "Sciatic nerve (L4–S3)", "Femoral nerve (L2–L4)", "Obturator nerve (L2–L4)", "Pudendal nerve (S2–S4)", "Posterior cutaneous nerve of the thigh", "Common fibular nerve"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Intramuscular injections to the gluteal region risk injuring the superior gluteal nerve. Where should gluteal injections be given to avoid this nerve?",
+        "correctAnswer": "Upper outer quadrant of the gluteus (ventrogluteal or upper-outer gluteal), away from the nerve's path through the greater sciatic notch",
+        "distractors": ["Lower inner quadrant, away from the sciatic nerve", "Central buttock region", "Just below the posterior superior iliac spine", "Directly over the greater trochanter"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The superior gluteal nerve (L4–S1) innervates gluteus medius, gluteus minimus, and ___, which together abduct the hip and stabilize the pelvis.",
+        "correctAnswer": "tensor fasciae latae",
+        "distractors": ["gluteus maximus", "piriformis", "obturator internus", "quadratus femoris"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_027",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Flexor retinaculum (transverse carpal ligament)",
+    "acceptableAlternatives": ["transverse carpal ligament", "flexor retinaculum of the wrist"],
+    "chainThemeId": "injury_patterns",
+    "answerTypePoolId": "anatomy_structures",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "In carpal tunnel syndrome, which rigid roof structure of the carpal tunnel is divided during surgical decompression?",
+    "explanation": "The carpal tunnel is bounded posteriorly and laterally by the concave carpal bones and anteriorly (as its roof) by the flexor retinaculum (transverse carpal ligament). During carpal tunnel release surgery, the flexor retinaculum is divided longitudinally to decompress the median nerve. The procedure can be performed open (through a palmar incision) or endoscopically. Anatomical variations in the median nerve (bifid nerve, persistent median artery) must be identified to avoid iatrogenic damage.",
+    "visualDescription": "Pixel art wrist cross-section: carpal tunnel with flexor retinaculum roof highlighted, median nerve and nine flexor tendons inside, surgical blade cutting through retinaculum",
+    "sourceName": "Wikipedia — Carpal tunnel",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_tunnel",
+    "volatile": false,
+    "distractors": ["Palmar aponeurosis", "Extensor retinaculum", "Flexor digitorum superficialis tendon sheath", "Annular pulley", "Guyon's canal ligament", "Pisohamate ligament", "Antebrachial fascia"],
+    "variants": [
+      {
+        "type": "reverse",
+        "question": "Nine structures pass through the carpal tunnel alongside the median nerve. What are they?",
+        "correctAnswer": "4 tendons of FDS, 4 tendons of FDP, and 1 tendon of FPL (nine flexor tendons total)",
+        "distractors": ["4 FDS, 4 FDP, and the ulnar nerve", "4 FDS, 4 FDP, and the median artery", "4 FDS, 3 FDP, 1 FPL, and 1 palmar artery", "8 lumbricals and the median nerve"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Carpal tunnel release surgery divides the ___ retinaculum to decompress the median nerve.",
+        "correctAnswer": "flexor",
+        "distractors": ["extensor", "palmar", "dorsal", "annular"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_028",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Anterior tibial translation with a soft endpoint",
+    "acceptableAlternatives": ["excessive anterior drawer", "increased anterior tibial translation", "absent firm endpoint"],
+    "chainThemeId": "clinical_tests",
+    "answerTypePoolId": "clinical_findings",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "What finding on the Lachman test constitutes a positive result indicating ACL rupture?",
+    "explanation": "A positive Lachman test is characterized by: (1) excessive anterior translation of the tibia relative to the femur (more than the unaffected side, typically >5mm), AND (2) a soft or absent endpoint — instead of the normal firm 'hard stop' as the intact ACL becomes taut, the examiner feels little or no resistance to further translation. The combination of increased translation AND a soft endpoint differentiates true ACL rupture from laxity or a partial tear. Grade I = firm endpoint, minimal laxity; Grade II = firm endpoint, moderate laxity; Grade III = soft endpoint, marked laxity (complete tear).",
+    "visualDescription": "Pixel art knee Lachman test: tibia translating forward from femur, soft endpoint shown with dashed terminus (no firm stop), ACL absent from joint interior",
+    "sourceName": "Wikipedia — Lachman test",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lachman_test",
+    "volatile": false,
+    "distractors": ["Posterior tibial sag", "Valgus instability", "Joint line pain on flexion", "Patellar apprehension", "Anterior knee pain", "Hamstring tightness", "Reduced range of motion"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "Lachman grading: Grade III laxity means a soft endpoint and marked tibial translation — indicating complete ACL rupture. What does Grade I mean?",
+        "correctAnswer": "Firm endpoint with minimal tibial translation (ACL likely intact or partial tear only)",
+        "distractors": ["Soft endpoint with minimal translation", "No endpoint with maximal translation", "Firm endpoint with marked translation", "Absent endpoint with moderate translation"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A positive Lachman test shows excessive anterior tibial translation combined with a ___ endpoint, distinguishing complete ACL rupture from laxity.",
+        "correctAnswer": "soft (or absent)",
+        "distractors": ["hard", "firm", "springy", "normal"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_029",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Stroke or other upper motor neuron lesion (corticospinal tract damage)",
+    "acceptableAlternatives": ["stroke", "UMN lesion", "pyramidal tract lesion", "corticospinal tract lesion"],
+    "chainThemeId": "clinical_signs",
+    "answerTypePoolId": "clinical_diagnoses",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "A 68-year-old presents after a sudden onset of left-sided weakness. Examination reveals right-sided hyperreflexia, spasticity, and a positive Babinski sign. What class of lesion does this constellation suggest?",
+    "explanation": "The triad of hyperreflexia, spasticity, and positive Babinski sign is the hallmark of an upper motor neuron (UMN) lesion — specifically damage to the corticospinal (pyramidal) tract. In the context of sudden onset, stroke (ischaemic or haemorrhagic) is the most common cause. Note the contralateral signs: left-sided weakness with right-sided examination findings indicates the lesion is above the decussation in the medulla, i.e., in the right cerebral hemisphere or right brainstem above the pyramidal decussation. UMN signs contrast with LMN signs (flaccid paralysis, hyporeflexia, fasciculations, muscle atrophy).",
+    "visualDescription": "Pixel art brain cross-section: right hemisphere infarct highlighted, descending corticospinal tract shown decussating at medulla, left body affected on clinical diagram",
+    "sourceName": "Wikipedia — Upper motor neuron lesion",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_motor_neuron_lesion",
+    "volatile": false,
+    "distractors": ["Lower motor neuron lesion", "Cerebellar lesion", "Peripheral neuropathy", "Neuromuscular junction disease", "Myopathy", "Sensory pathway lesion only", "Extrapyramidal lesion"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "UMN lesion signs include spasticity, hyperreflexia, and Babinski. LMN lesion signs include flaccid weakness, hyporeflexia, and fasciculations. Which pattern would you expect from an S1 nerve root compression causing foot drop?",
+        "correctAnswer": "LMN signs — hyporeflexia (loss of ankle reflex), flaccid weakness, possible fasciculations",
+        "distractors": ["UMN signs — spasticity with preserved reflexes", "Mixed UMN and LMN signs equally", "UMN signs with Babinski present", "Neither — nerve root compression causes only sensory loss"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hyperreflexia, spasticity, and positive Babinski sign together indicate a ___ motor neuron lesion.",
+        "correctAnswer": "upper",
+        "distractors": ["lower", "mixed", "peripheral", "neuromuscular"]
+      }
+    ]
+  },
+  {
+    "id": "ha_clinical_030",
+    "subDeckId": "clinical_anatomy",
+    "correctAnswer": "Lateral plantar surface, stroked from heel toward toes",
+    "acceptableAlternatives": ["outer sole from heel to ball", "lateral sole of foot heel to toe", "lateral plantar aspect heel to metatarsal heads"],
+    "chainThemeId": "clinical_signs",
+    "answerTypePoolId": "clinical_technique",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "How is Babinski's sign correctly elicited — what is the exact technique?",
+    "explanation": "Babinski's sign is correctly elicited using a blunt instrument (e.g., a key or the handle of a tendon hammer) to firmly stroke the lateral plantar surface of the foot, beginning at the heel, moving toward the little toe, and then curving medially across the metatarsal heads toward the great toe. A key point: the stimulus must be on the lateral sole (not the medial sole or dorsum). Stroking too medially stimulates a different reflex. The normal adult response is plantar flexion of all toes. An abnormal (positive) response is extension of the great toe with fanning of the lateral toes.",
+    "visualDescription": "Pixel art plantar foot: blue arrow starting at heel, curving laterally along outer edge to little toe, then sweeping medially across metatarsal heads to great toe, illustrating correct Babinski stroke path",
+    "sourceName": "Wikipedia — Babinski sign",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Babinski_sign",
+    "volatile": false,
+    "distractors": ["Medial plantar surface from heel to great toe", "Dorsum of the foot from ankle to toes", "Lateral plantar surface from toes to heel", "Central plantar surface in a straight line", "Stroking the lateral ankle", "Tapping the plantar surface", "Scratching the dorsum of the great toe"],
+    "variants": [
+      {
+        "type": "context",
+        "question": "You stroke the lateral sole and the great toe flexes downward with all toes curling — the normal adult response. What is the name of this normal plantar reflex?",
+        "correctAnswer": "Plantar flexion response (normal flexor plantar reflex)",
+        "distractors": ["Babinski sign (negative)", "Gordon's sign", "Oppenheim's reflex", "Chaddock's reflex"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Babinski's sign is elicited by stroking the ___ plantar surface from heel toward toes, provoking great toe extension in UMN lesions.",
+        "correctAnswer": "lateral",
+        "distractors": ["medial", "central", "dorsal", "proximal"]
+      }
+    ]
+  }
+]

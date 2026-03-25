@@ -1,0 +1,362 @@
+[
+  {
+    "id": "ha_cardio_071",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Circle of Willis",
+    "acceptableAlternatives": ["circulus arteriosus cerebri"],
+    "chainThemeId": "cerebral_circulation",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the name of the arterial anastomosis at the base of the brain that provides collateral blood flow if one of its contributing vessels is occluded?",
+    "explanation": "The Circle of Willis is a ring-shaped anastomosis formed by the two anterior cerebral arteries joined by the anterior communicating artery, the two internal carotid arteries, the two posterior communicating arteries, and the two posterior cerebral arteries (which arise from the basilar artery). It allows collateral flow between the anterior and posterior cerebral circulations so that if one vessel is blocked, adjacent territories can still be perfused.",
+    "visualDescription": "Inferior view of the brain with the Circle of Willis highlighted: ICA entering on each side, ACA + ACoA across the front, PCoA linking to PCA on each side, basilar artery entering from below",
+    "sourceName": "Wikipedia — Circle of Willis",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Circle_of_Willis",
+    "volatile": false,
+    "distractors": ["Carotid siphon", "Basilar plexus", "Venous sinus ring"],
+    "variants": [
+      {
+        "quizQuestion": "The Circle of Willis is formed by contributions from two pairs of vertebral-derived vessels and one unpaired midline trunk. What is the unpaired trunk called?",
+        "correctAnswer": "Basilar artery",
+        "explanation": "The two vertebral arteries merge at the pontomedullary junction to form the single basilar artery, which then bifurcates into the two posterior cerebral arteries — the posterior portion of the Circle of Willis."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_072",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Anterior communicating artery (ACoA)",
+    "acceptableAlternatives": ["ACoA", "anterior communicating"],
+    "chainThemeId": "cerebral_circulation",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which short artery connects the two anterior cerebral arteries across the midline, completing the anterior portion of the Circle of Willis?",
+    "explanation": "The anterior communicating artery (ACoA) is a short vessel (~3 mm) bridging the left and right anterior cerebral arteries just above the optic chiasm. It completes the anterior arc of the Circle of Willis. It is also the most common site of intracranial berry aneurysm formation, accounting for roughly 30–35% of all cerebral aneurysms.",
+    "visualDescription": "Close-up diagram of the anterior Circle of Willis: two ACA trunks running parallel with a short horizontal bridge labeled ACoA",
+    "sourceName": "Wikipedia — Anterior communicating artery",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anterior_communicating_artery",
+    "volatile": false,
+    "distractors": ["Posterior communicating artery", "Anterior choroidal artery", "Recurrent artery of Heubner"],
+    "variants": [
+      {
+        "quizQuestion": "The anterior communicating artery is the most common site of which intracranial vascular abnormality?",
+        "correctAnswer": "Berry aneurysm",
+        "explanation": "Berry (saccular) aneurysms form at arterial bifurcations and weak points. The ACoA accounts for ~30–35% of all intracranial aneurysms. Rupture causes subarachnoid haemorrhage presenting with a sudden 'thunderclap headache'."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_073",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Ductus arteriosus, foramen ovale, ductus venosus",
+    "acceptableAlternatives": ["three fetal shunts", "foramen ovale, ductus arteriosus, ductus venosus"],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "process_steps",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Fetal circulation contains three shunts that bypass the lungs and liver. Name all three.",
+    "explanation": "The three fetal shunts are: (1) the ductus venosus — diverts oxygenated umbilical venous blood past the liver into the IVC; (2) the foramen ovale — an interatrial opening that allows blood to pass from RA to LA, bypassing the lungs; (3) the ductus arteriosus — connects the pulmonary artery to the aorta, shunting blood away from the fluid-filled lungs. At birth, rising oxygen and falling prostaglandins cause all three to close functionally within hours to days.",
+    "visualDescription": "Fetal heart and great vessels diagram with three shunt points labeled: umbilical vein → ductus venosus → IVC, interatrial foramen ovale, and pulmonary trunk → ductus arteriosus → aorta",
+    "sourceName": "Wikipedia — Fetal circulation",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fetal_circulation",
+    "volatile": false,
+    "distractors": ["Ductus arteriosus, patent foramen ovale, umbilical vein", "Foramen ovale, ductus arteriosus, oval fossa", "Ductus venosus, ductus arteriosus, coronary sinus"],
+    "variants": [
+      {
+        "quizQuestion": "The ductus arteriosus closes after birth and becomes a fibrous remnant. What is this remnant called?",
+        "correctAnswer": "Ligamentum arteriosum",
+        "explanation": "After birth, the ductus arteriosus constricts in response to increased oxygen tension and reduced prostaglandin E2 levels, becoming the fibrous ligamentum arteriosum within a few weeks. Failure to close causes patent ductus arteriosus (PDA), the most common congenital cardiac defect in premature infants."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_074",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Foramen ovale → fossa ovalis",
+    "acceptableAlternatives": ["foramen ovale closes to form fossa ovalis", "fossa ovalis"],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "After birth, the fetal interatrial opening that bypassed the lungs closes and leaves a shallow depression on the right atrial wall. What is this adult remnant called?",
+    "explanation": "The foramen ovale is a flap-like opening in the interatrial septum that allows oxygenated blood to pass from the right atrium directly to the left atrium in the fetus, bypassing the non-functional lungs. After birth, the increase in left atrial pressure pushes the flap closed; it fuses within months to leave the fossa ovalis — the thin oval depression in the interatrial septum. In ~25% of adults it fails to fuse (patent foramen ovale, PFO), remaining a potential route for paradoxical embolism.",
+    "visualDescription": "Coronal section of adult heart showing right atrial wall with oval indentation labeled fossa ovalis on the interatrial septum",
+    "sourceName": "Wikipedia — Foramen ovale (heart)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Foramen_ovale_(heart)",
+    "volatile": false,
+    "distractors": ["Fossa triangularis", "Limbus fossae ovalis", "Coronary sinus ostium"],
+    "variants": [
+      {
+        "quizQuestion": "Approximately what percentage of adults retain a patent foramen ovale (PFO) that failed to close after birth?",
+        "correctAnswer": "~25%",
+        "explanation": "In about 25% of the adult population the foramen ovale never fully fuses, leaving a PFO. Under most conditions it causes no symptoms, but it can allow paradoxical emboli (clots from venous to arterial circulation), especially during Valsalva manoeuvres, and has been linked to cryptogenic stroke in younger patients."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_075",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "~120/80 mmHg",
+    "acceptableAlternatives": ["120/80", "systolic 120, diastolic 80"],
+    "chainThemeId": "cardiac_pressures",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What are the normal systolic and diastolic pressures in the aorta (and systemic arterial system) of a healthy adult?",
+    "explanation": "Normal aortic (systemic arterial) pressure is approximately 120 mmHg systolic and 80 mmHg diastolic, giving a pulse pressure of ~40 mmHg and a mean arterial pressure (MAP) of roughly 93 mmHg. The left ventricle generates 120/0–5 mmHg during systole/diastole. Hypertension is defined as sustained BP ≥130/80 mmHg (ACC/AHA 2017 criteria).",
+    "visualDescription": "Pressure-volume diagram showing aortic systolic and diastolic pressure levels with normal range shaded",
+    "sourceName": "Wikipedia — Blood pressure",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_pressure",
+    "volatile": false,
+    "distractors": ["~100/60 mmHg", "~140/90 mmHg", "~80/40 mmHg"],
+    "variants": [
+      {
+        "quizQuestion": "Using the formula MAP ≈ diastolic + 1/3 pulse pressure, what is the approximate mean arterial pressure for a blood pressure of 120/80 mmHg?",
+        "correctAnswer": "~93 mmHg",
+        "explanation": "Pulse pressure = 120 − 80 = 40 mmHg. MAP ≈ 80 + (40/3) ≈ 93 mmHg. MAP is the average pressure throughout the cardiac cycle and is the key driver of organ perfusion. A MAP below 60 mmHg is generally insufficient to perfuse vital organs."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_076",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Right ventricle: ~25/0–5 mmHg; Pulmonary artery: ~25/10 mmHg",
+    "acceptableAlternatives": ["RV 25/5, PA 25/10", "right ventricular pressure 25/5, pulmonary arterial pressure 25/10"],
+    "chainThemeId": "cardiac_pressures",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Normal right-heart pressures are far lower than left-heart pressures. What are the approximate pressures in the right ventricle and pulmonary artery?",
+    "explanation": "Normal right ventricular pressure is ~25 mmHg systolic / 0–5 mmHg diastolic. The pulmonary artery receives this output at ~25 mmHg systolic / ~10 mmHg diastolic (mean ~15 mmHg). By comparison, the right atrium operates at ~0–5 mmHg (central venous pressure). Pulmonary arterial hypertension is defined as a resting mean PA pressure >20 mmHg. These low pressures reflect the low-resistance pulmonary vascular bed.",
+    "visualDescription": "Diagram of right heart with pressure labels: RA ~2 mmHg, RV 25/5 mmHg, PA 25/10 mmHg, arrows showing direction of flow",
+    "sourceName": "Wikipedia — Pulmonary artery",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_artery",
+    "volatile": false,
+    "distractors": ["RV 80/10, PA 80/40", "RV 40/10, PA 40/20", "RV 15/0, PA 15/5"],
+    "variants": [
+      {
+        "quizQuestion": "Pulmonary capillary wedge pressure (PCWP) approximates left atrial pressure. What is the normal PCWP range?",
+        "correctAnswer": "6–12 mmHg",
+        "explanation": "PCWP is measured by wedging a Swan-Ganz catheter in a small pulmonary artery branch, which reflects back-pressure from the left atrium (~6–12 mmHg). A PCWP >18 mmHg suggests left heart failure and pulmonary oedema. It is used clinically to distinguish cardiogenic from non-cardiogenic pulmonary oedema."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_077",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Right-dominant (~85%)",
+    "acceptableAlternatives": ["right dominant", "right dominance in 85% of people"],
+    "chainThemeId": "coronary_anatomy",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Coronary dominance is determined by which artery supplies the posterior descending artery (PDA) and the inferior wall of the left ventricle. What is the most common pattern?",
+    "explanation": "In ~85% of individuals the right coronary artery (RCA) gives rise to the posterior descending artery (PDA), making the circulation right-dominant. In ~8% the left circumflex gives rise to the PDA (left-dominant), and in ~7% both contribute (co-dominant). Dominance matters clinically because RCA occlusion in a right-dominant person causes inferior MI and can impair the SA node (60% RCA supply) and AV node (85–90% RCA supply).",
+    "visualDescription": "Inferior view of heart showing RCA running in posterior AV groove, giving off the PDA labeled as right-dominant pattern",
+    "sourceName": "Wikipedia — Coronary circulation",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coronary_circulation",
+    "volatile": false,
+    "distractors": ["Left-dominant (~60%)", "Co-dominant (~50%)", "Left-dominant (~85%)"],
+    "variants": [
+      {
+        "quizQuestion": "In a right-dominant coronary circulation, occlusion of the right coronary artery (RCA) typically causes infarction of which wall of the left ventricle?",
+        "correctAnswer": "Inferior wall",
+        "explanation": "The RCA supplies the inferior wall of the LV via the PDA in right-dominant systems. RCA occlusion causes inferior STEMI (ST elevation in leads II, III, aVF). It also commonly impairs the AV node (supplied by the AV nodal artery, a RCA branch in 85–90% of people), causing heart block."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_078",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Increased preload → increased stroke volume",
+    "acceptableAlternatives": ["greater end-diastolic volume increases stroke volume", "Frank-Starling mechanism"],
+    "chainThemeId": "cardiac_physiology",
+    "answerTypePoolId": "process_steps",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the Frank-Starling law of the heart, and what is its physiological basis?",
+    "explanation": "The Frank-Starling law states that the greater the end-diastolic volume (preload), the greater the stroke volume on the next beat — up to a physiological maximum. The mechanism is that increased stretch of cardiac muscle fibres increases the overlap of actin and myosin, optimising cross-bridge formation and generating a stronger contraction. This intrinsic mechanism allows the heart to match output to venous return without neural input.",
+    "visualDescription": "Frank-Starling curve graph: x-axis end-diastolic volume, y-axis stroke volume; ascending curve that plateaus, with a second higher curve for positive inotropy",
+    "sourceName": "Wikipedia — Frank-Starling law of the heart",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Frank-Starling_law_of_the_heart",
+    "volatile": false,
+    "distractors": ["Increased afterload → increased stroke volume", "Increased heart rate → increased stroke volume", "Increased contractility → increased end-diastolic volume"],
+    "variants": [
+      {
+        "quizQuestion": "In the Frank-Starling mechanism, what happens to stroke volume when the heart is overstretched beyond the optimal fibre length (on the descending limb)?",
+        "correctAnswer": "Stroke volume decreases",
+        "explanation": "Beyond the optimal sarcomere length (~2.2 µm), further stretch causes actin and myosin filaments to overlap less efficiently, reducing the force generated. This descending limb is rarely reached in the healthy heart but is important in dilated cardiomyopathy where grossly enlarged chambers lose contractile efficiency."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_079",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "P wave = atrial depolarization",
+    "acceptableAlternatives": ["P wave represents atrial depolarization"],
+    "chainThemeId": "ecg_basics",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "On a standard ECG, what electrical event does the P wave represent?",
+    "explanation": "The P wave represents the spread of the depolarization wavefront through both atria, triggering atrial contraction. It is normally <0.12 seconds in duration and <2.5 mm in amplitude. The PR interval (P wave onset to QRS onset) represents the conduction delay at the AV node and is normally 0.12–0.20 seconds. Absence of P waves suggests atrial fibrillation; peaked tall P waves (P pulmonale) suggest right atrial enlargement.",
+    "visualDescription": "ECG strip with single PQRST complex: P wave labeled 'atrial depolarization', QRS labeled 'ventricular depolarization', T wave labeled 'ventricular repolarization'",
+    "sourceName": "Wikipedia — Electrocardiography",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electrocardiography",
+    "volatile": false,
+    "distractors": ["Ventricular depolarization", "Atrial repolarization", "AV nodal conduction"],
+    "variants": [
+      {
+        "quizQuestion": "On a standard ECG, the QRS complex represents ventricular depolarization. What electrical event does the T wave represent?",
+        "correctAnswer": "Ventricular repolarization",
+        "explanation": "The T wave represents ventricular repolarization (recovery). It is normally in the same direction as the QRS. Inverted T waves can indicate ischaemia. Atrial repolarization also occurs but is buried within the QRS complex and not visible on a standard ECG."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_080",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "QRS complex — ventricular depolarization",
+    "acceptableAlternatives": ["QRS represents ventricular depolarization", "QRS complex"],
+    "chainThemeId": "ecg_basics",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which ECG waveform represents ventricular depolarization and is normally less than 0.12 seconds in duration?",
+    "explanation": "The QRS complex represents depolarization of both ventricles, triggering ventricular contraction. Normal QRS duration is <0.12 s (3 small squares). A wide QRS (>0.12 s) indicates a bundle branch block, ventricular ectopic rhythm, or aberrant conduction. The Q wave (initial septal depolarization left to right), R wave (apical depolarization), and S wave (basal depolarization) each reflect specific vectors of electrical spread.",
+    "visualDescription": "ECG trace with QRS complex highlighted in red; Q, R, S deflections individually labeled with arrows showing their respective vectors",
+    "sourceName": "Wikipedia — QRS complex",
+    "sourceUrl": "https://en.wikipedia.org/wiki/QRS_complex",
+    "volatile": false,
+    "distractors": ["P wave", "T wave", "U wave"],
+    "variants": [
+      {
+        "quizQuestion": "A QRS duration greater than 0.12 seconds (3 small squares) on an ECG suggests what type of conduction abnormality?",
+        "correctAnswer": "Bundle branch block",
+        "explanation": "A wide QRS indicates that ventricular depolarization is spreading via slower cell-to-cell conduction rather than the fast His-Purkinje system. Right bundle branch block (RBBB) gives an RSR' pattern in V1; left bundle branch block (LBBB) gives a broad notched R wave in lateral leads. New LBBB with chest pain is treated as STEMI-equivalent."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_081",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Coronary sinus → right atrium",
+    "acceptableAlternatives": ["coronary sinus drains into RA", "coronary sinus → right atrium"],
+    "chainThemeId": "coronary_anatomy",
+    "answerTypePoolId": "process_steps",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Most venous blood from the myocardium drains via the great cardiac vein and its tributaries into which collecting structure, which then empties into which cardiac chamber?",
+    "explanation": "Approximately 75% of cardiac venous return drains through the great, middle, and small cardiac veins into the coronary sinus — a wide venous channel running in the posterior atrioventricular groove. The coronary sinus empties into the right atrium between the tricuspid valve and the opening of the inferior vena cava. The remaining ~25% drains via anterior cardiac veins directly into the right atrium and via the smallest cardiac veins (Thebesian veins) directly into all four chambers.",
+    "visualDescription": "Posterior view of heart: coronary sinus highlighted in blue running in AV groove, arrow pointing to its ostium in the right atrium",
+    "sourceName": "Wikipedia — Coronary sinus",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coronary_sinus",
+    "volatile": false,
+    "distractors": ["Great cardiac vein → left atrium", "Coronary sinus → left ventricle", "Anterior cardiac veins → pulmonary artery"],
+    "variants": [
+      {
+        "quizQuestion": "The smallest cardiac veins (Thebesian veins) drain directly into which cardiac chambers, bypassing the coronary sinus?",
+        "correctAnswer": "All four chambers",
+        "explanation": "Thebesian veins (venae cordis minimae) are tiny veins that open directly into all four chambers. Those draining into the left heart represent a small physiological right-to-left shunt, contributing a small amount to the normal anatomical dead-space. They are clinically significant as a potential route for paradoxical embolism."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_082",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Azygos vein → superior vena cava",
+    "acceptableAlternatives": ["azygos → SVC", "azygos system drains into SVC"],
+    "chainThemeId": "venous_drainage",
+    "answerTypePoolId": "process_steps",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "The azygos system collects venous blood from the posterior thorax and abdomen. Into which great vessel does the azygos vein drain, and why is this system clinically important?",
+    "explanation": "The azygos vein ascends along the right side of the thoracic vertebral column and arches over the right main bronchus to drain into the superior vena cava (SVC). On the left, the hemiazygos and accessory hemiazygos veins cross to join the azygos. The azygos system forms a key collateral pathway: when the IVC is obstructed (e.g., by thrombosis, tumour, or interruption during surgery), blood from the lower body can bypass the blockage via lumbar veins → azygos → SVC → right atrium.",
+    "visualDescription": "Posterior thorax diagram: azygos vein running up right of spine with arch over right main bronchus into SVC; hemiazygos on left side crossing midline; arrows showing collateral flow",
+    "sourceName": "Wikipedia — Azygos vein",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Azygos_vein",
+    "volatile": false,
+    "distractors": ["Azygos vein → inferior vena cava", "Hemiazygos vein → left subclavian vein", "Azygos vein → right pulmonary vein"],
+    "variants": [
+      {
+        "quizQuestion": "Azygos continuation of the inferior vena cava is a congenital variant in which the hepatic segment of the IVC is absent. Blood from the lower body then drains via the azygos system into which vessel?",
+        "correctAnswer": "Superior vena cava",
+        "explanation": "In azygos continuation, the infrarenal IVC is present but the hepatic IVC is absent; venous blood from the lower body reroutes via the azygos vein into the SVC. The hepatic veins drain directly into the right atrium. This variant is associated with asplenia/polysplenia syndromes and can complicate cardiac catheterisation or placement of IVC filters."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_083",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Carotid sinus (CN IX) and aortic arch (CN X)",
+    "acceptableAlternatives": ["carotid body CN IX, aortic arch CN X", "glossopharyngeal and vagus nerves"],
+    "chainThemeId": "cardiac_reflexes",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "The baroreceptor reflex monitors blood pressure via stretch receptors in two main locations. Name these locations and the cranial nerves carrying the afferent signals.",
+    "explanation": "Baroreceptors are mechanoreceptors that detect stretch in arterial walls. The carotid sinus baroreceptors (at the bifurcation of the common carotid) send afferents via CN IX (glossopharyngeal nerve, Hering's nerve branch) to the nucleus tractus solitarius (NTS) in the medulla. The aortic arch baroreceptors send afferents via CN X (vagus nerve, aortic depressor nerve) to the same nucleus. The NTS then modulates sympathetic and parasympathetic outflow to adjust heart rate and vascular tone.",
+    "visualDescription": "Diagram of carotid bifurcation and aortic arch with baroreceptor locations marked; arrows showing CN IX and CN X pathways to the medullary NTS; efferent arrows to heart and blood vessels",
+    "sourceName": "Wikipedia — Baroreceptor",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baroreceptor",
+    "volatile": false,
+    "distractors": ["Carotid body (CN X) and aortic arch (CN IX)", "Carotid sinus (CN VII) and subclavian artery (CN X)", "Carotid sinus (CN IX) and pulmonary artery (CN X)"],
+    "variants": [
+      {
+        "quizQuestion": "When blood pressure rises, baroreceptor firing increases and the reflex response reduces heart rate. Which division of the autonomic nervous system is responsible for this heart-rate reduction?",
+        "correctAnswer": "Parasympathetic (vagal)",
+        "explanation": "Increased baroreceptor firing inhibits the sympathetic cardioacceleratory centre and excites the vagal dorsal motor nucleus and nucleus ambiguus, increasing parasympathetic (vagal) tone to the SA node. This slows heart rate (negative chronotropy), helping to lower cardiac output and blood pressure back toward normal."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_084",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Ductus venosus → ligamentum venosum",
+    "acceptableAlternatives": ["ductus venosus becomes ligamentum venosum"],
+    "chainThemeId": "fetal_circulation",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "The ductus venosus shunts oxygenated umbilical blood past the fetal liver into the IVC. After birth, this vessel closes and becomes which fibrous remnant?",
+    "explanation": "In fetal circulation, the ductus venosus connects the left branch of the portal vein directly to the inferior vena cava, allowing ~50% of oxygenated umbilical venous blood to bypass the liver and reach the heart more quickly. When the umbilical vein is clamped at birth and portal venous pressure falls, the ductus venosus closes and fibrotises over 3–7 days to become the ligamentum venosum, a fibrous cord visible on the posterior surface of the liver.",
+    "visualDescription": "Fetal liver diagram: umbilical vein branching into portal circulation and ductus venosus shortcut to IVC; adult version shows same area with fibrous ligamentum venosum",
+    "sourceName": "Wikipedia — Ductus venosus",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ductus_venosus",
+    "volatile": false,
+    "distractors": ["Ligamentum teres hepatis", "Ligamentum arteriosum", "Round ligament of liver"],
+    "variants": [
+      {
+        "quizQuestion": "The umbilical vein itself also persists as a fibrous remnant after birth, running in the free edge of the falciform ligament. What is this structure called?",
+        "correctAnswer": "Ligamentum teres hepatis (round ligament of liver)",
+        "explanation": "The left umbilical vein carries oxygenated blood from the placenta to the fetal liver. After birth it obliterates and becomes the ligamentum teres hepatis (round ligament of the liver), running from the umbilicus to the inferior hepatic notch in the free edge of the falciform ligament. In portal hypertension, collateral recanalization of this vessel produces caput medusae."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_085",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Left ventricle: ~120/0–5 mmHg",
+    "acceptableAlternatives": ["LV 120/5", "left ventricular pressure 120 systolic, 0-5 diastolic"],
+    "chainThemeId": "cardiac_pressures",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What are the normal systolic and diastolic pressures inside the left ventricle during the cardiac cycle?",
+    "explanation": "During systole the left ventricle generates ~120 mmHg to eject blood into the aorta. During diastole (relaxation and filling), left ventricular pressure falls to ~0–5 mmHg, allowing the mitral valve to open and the ventricle to fill passively. Left atrial pressure is also ~6–12 mmHg (similar to PCWP). The right ventricle operates at far lower pressures (~25/0–5 mmHg) because pulmonary vascular resistance is about 10× lower than systemic resistance.",
+    "visualDescription": "Wiggers diagram showing LV pressure curve: rising from ~5 mmHg, peak at ~120 mmHg during systole, falling back to ~5 mmHg in diastole; aortic pressure curve slightly below LV during ejection",
+    "sourceName": "Wikipedia — Cardiac cycle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cardiac_cycle",
+    "volatile": false,
+    "distractors": ["~80/40 mmHg", "~200/10 mmHg", "~25/5 mmHg"],
+    "variants": [
+      {
+        "quizQuestion": "On a Wiggers diagram, when the left ventricular pressure exceeds aortic pressure, which valve opens to allow ejection?",
+        "correctAnswer": "Aortic valve",
+        "explanation": "The aortic valve (a semilunar valve) opens when left ventricular systolic pressure exceeds aortic diastolic pressure (~80 mmHg), initiating the ejection phase. It closes when LV pressure falls below aortic pressure at the end of systole, producing the dicrotic notch on the arterial pressure trace and the S2 heart sound."
+      }
+    ]
+  }
+]
