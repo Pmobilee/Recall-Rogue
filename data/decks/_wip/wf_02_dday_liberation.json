@@ -1,0 +1,592 @@
+{
+  "facts": [
+    {
+      "id": "wwii_wf_dday_date",
+      "correctAnswer": "June 6, 1944",
+      "acceptableAlternatives": ["6 June 1944", "D-Day"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 1,
+      "funScore": 8,
+      "quizQuestion": "On what date did Allied forces launch the D-Day landings at Normandy?",
+      "explanation": "June 6, 1944 — D-Day — was the opening blow of Operation Overlord, the largest amphibious assault in history. 156,000 troops crossed the English Channel to breach Hitler's Atlantic Wall. Its success opened the long-awaited second front, easing pressure on the Soviet Union in the East.",
+      "visualDescription": "Pixel art of landing craft ramping open on a gray beach with troops storming ashore under smoke and artillery flashes, dawn sky overhead",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
+      "volatile": false,
+      "distractors": ["June 6, 1943", "May 8, 1944", "July 4, 1944", "September 1, 1944", "June 6, 1942", "August 25, 1944", "April 6, 1944", "March 22, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "D-Day — the Allied landings at Normandy — took place on what date?",
+          "correctAnswer": "June 6, 1944",
+          "distractors": ["June 6, 1943", "May 8, 1944", "July 4, 1944", "September 1, 1944"]
+        },
+        {
+          "type": "context",
+          "question": "The D-Day landings were part of a broader plan to open a second front against Nazi Germany. Approximately how many troops landed at Normandy on D-Day itself?",
+          "correctAnswer": "156,000",
+          "distractors": ["50,000", "300,000", "900,000", "75,000"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The D-Day landings at Normandy on June 6, 1944 were the largest amphibious assault in history.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The D-Day invasion of Normandy on June 6, 1944 involved roughly ___ Allied troops landing on the beaches.",
+          "correctAnswer": "156,000",
+          "distractors": ["50,000", "300,000", "900,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_dday_omaha",
+      "correctAnswer": "Omaha",
+      "acceptableAlternatives": ["Omaha Beach"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which of the five D-Day beaches saw the heaviest American casualties, with roughly 2,400 deaths?",
+      "explanation": "Omaha Beach became a killing ground on June 6, 1944. Unlike the other four beaches, defenders here were an experienced German division. American forces landed in the wrong sectors, many craft sank, and withering fire pinned troops at the waterline. The 2,400 American deaths at Omaha alone — out of five beaches — illustrate both the courage of the assault and its terrible cost.",
+      "visualDescription": "Pixel art of steep bluffs overlooking a wide beach, craters pocking the sand, wrecked landing craft in the surf, smoke rising from fortified bunkers above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Omaha_Beach",
+      "volatile": false,
+      "distractors": ["Utah", "Sword", "Juno", "Gold", "Dunkirk", "Calais", "Anzio", "Dieppe"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Omaha Beach is remembered as the bloodiest of the five D-Day landing zones. How many American soldiers died there on June 6, 1944?",
+          "correctAnswer": "2,400",
+          "distractors": ["500", "800", "5,000", "10,000"]
+        },
+        {
+          "type": "context",
+          "question": "Five beaches were assigned code names for the D-Day landings. Which two were American sectors?",
+          "correctAnswer": "Utah and Omaha",
+          "distractors": ["Gold and Juno", "Sword and Juno", "Omaha and Gold", "Utah and Sword"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Omaha Beach was the D-Day landing zone that suffered the most American casualties.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Of the five D-Day beaches, ___ saw roughly 2,400 American deaths and is remembered as the bloodiest landing zone.",
+          "correctAnswer": "Omaha",
+          "distractors": ["Utah", "Sword", "Gold"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_overlord_commander",
+      "correctAnswer": "Dwight D. Eisenhower",
+      "acceptableAlternatives": ["Eisenhower", "Ike"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Who served as Supreme Commander of Operation Overlord, coordinating the Allied invasion of Normandy?",
+      "explanation": "Dwight D. Eisenhower was appointed Supreme Commander of Allied Expeditionary Force in December 1943. His job was not just military — he had to hold together American, British, Canadian, and other Allied commanders with clashing egos and national interests. Operation Overlord's success launched him toward the U.S. presidency a decade later.",
+      "visualDescription": "Pixel art of a five-star general in olive uniform standing before a wall map of northern France, pointing to the Normandy coastline",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Overlord",
+      "volatile": false,
+      "distractors": ["Bernard Montgomery", "George Patton", "Omar Bradley", "Douglas MacArthur", "Harold Alexander", "Arthur Tedder", "Bertram Ramsay", "Charles de Gaulle"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Eisenhower's role in Operation Overlord was as Supreme Commander. Which nations' forces did he coordinate under his command?",
+          "correctAnswer": "American, British, Canadian, and other Allied forces",
+          "distractors": ["American and British only", "American and French only", "British and Canadian only", "All Allied forces except the Soviets"]
+        },
+        {
+          "type": "context",
+          "question": "Operation Overlord was the code name for the entire Allied invasion of Western Europe beginning June 6, 1944. How many Allied troops had landed in Normandy by the end of June 1944?",
+          "correctAnswer": "Over 900,000",
+          "distractors": ["156,000", "500,000", "1.5 million", "300,000"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Operation Overlord was the code name specifically for the D-Day beach landings, not the broader campaign to liberate Western Europe.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation Overlord was commanded by Supreme Commander ___, who coordinated American, British, Canadian, and other Allied forces.",
+          "correctAnswer": "Eisenhower",
+          "distractors": ["Montgomery", "Patton", "Bradley"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_paris_liberated",
+      "correctAnswer": "August 25, 1944",
+      "acceptableAlternatives": ["25 August 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "On what date was Paris liberated from Nazi occupation?",
+      "explanation": "Paris fell to Germany in June 1940 and endured four years of occupation. Following D-Day, Allied forces swept through France, and Free French troops under de Gaulle entered Paris on August 25, 1944. Crucially, Hitler had ordered the city burned rather than surrendered — but his commanders largely ignored the order, sparing one of history's great cities.",
+      "visualDescription": "Pixel art of jubilant crowds lining a grand boulevard, Free French soldiers on a tank under the Arc de Triomphe, sunlight breaking through smoke",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Liberation_of_Paris",
+      "volatile": false,
+      "distractors": ["June 6, 1944", "September 17, 1944", "July 20, 1944", "May 8, 1945", "August 15, 1944", "September 1, 1944", "October 1, 1944", "December 16, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Paris was liberated on August 25, 1944. Who led the Free French forces that entered the city?",
+          "correctAnswer": "Charles de Gaulle",
+          "distractors": ["Bernard Montgomery", "Dwight Eisenhower", "George Patton", "Philippe Leclerc"]
+        },
+        {
+          "type": "context",
+          "question": "When Allied forces advanced on Paris in 1944, Hitler issued an unusual order. What did he demand happen to the city?",
+          "correctAnswer": "It should be destroyed rather than surrendered",
+          "distractors": ["It should be defended to the last soldier", "It should be evacuated of all German troops", "It should be declared an open city", "It should be used as a hostage negotiation"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Hitler ordered Paris destroyed rather than surrendered in 1944, but his commanders largely ignored the order.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Paris was liberated on August 25, 1944, after which de Gaulle led a victory parade down the ___.",
+          "correctAnswer": "Champs-Élysées",
+          "distractors": ["Boulevard Saint-Germain", "Rue de Rivoli", "Avenue Montaigne"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_market_garden_date",
+      "correctAnswer": "September 1944",
+      "acceptableAlternatives": ["September 17, 1944", "September 17–26, 1944"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Operation Market Garden — the failed Allied airborne assault on Dutch bridges — took place in which month and year?",
+      "explanation": "Operation Market Garden launched September 17, 1944, just weeks after the Liberation of Paris. Montgomery's bold plan aimed to capture bridges across Dutch rivers and cross the Rhine before winter. Poor intelligence about German Panzer forces near Arnhem doomed the operation — after nine days, survivors were evacuated and the Rhine remained in German hands, prolonging the war.",
+      "visualDescription": "Pixel art of paratroopers descending from Dakota transports over flat Dutch farmland, a distant town bridge visible across a wide river below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Market_Garden",
+      "volatile": false,
+      "distractors": ["June 1944", "August 1944", "November 1944", "December 1944", "January 1945", "March 1945", "October 1944", "July 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Operation Market Garden was planned by which British field marshal?",
+          "correctAnswer": "Bernard Montgomery",
+          "distractors": ["Harold Alexander", "Arthur Tedder", "Alan Brooke", "Archibald Wavell"]
+        },
+        {
+          "type": "context",
+          "question": "Operation Market Garden dropped over 34,000 airborne troops into the Netherlands. What was its strategic objective?",
+          "correctAnswer": "To capture bridges and cross the Rhine River",
+          "distractors": ["To cut off German forces in Belgium", "To liberate Amsterdam", "To establish a supply route through the Netherlands", "To destroy German V-2 launch sites"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Operation Market Garden succeeded in securing a Rhine crossing for the Allies in September 1944.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation Market Garden failed in part due to poor ___ about German Panzer forces near Arnhem.",
+          "correctAnswer": "intelligence",
+          "distractors": ["weather", "supply lines", "air support"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_market_garden_troops",
+      "correctAnswer": "34,000",
+      "acceptableAlternatives": ["over 34,000", "34,000+"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Roughly how many airborne troops were dropped during Operation Market Garden in September 1944?",
+      "explanation": "Over 34,000 paratroopers and glider troops landed across the Netherlands in the largest airborne operation in history to that point. Despite this enormous force, German defenders — including armored SS divisions that Allied intelligence had dismissed — encircled Allied troops at Arnhem. After nine days, survivors had to be evacuated, leaving thousands captured.",
+      "visualDescription": "Pixel art of a formation of C-47 transport planes dropping hundreds of parachutes over a patchwork of Dutch fields and canals, anti-aircraft bursts dotting the sky",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Market_Garden",
+      "volatile": false,
+      "distractors": ["5,000", "10,000", "20,000", "50,000", "75,000", "100,000", "15,000", "8,000"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Market Garden dropped 34,000+ airborne troops into the Netherlands. After the operation failed, what happened to Allied troops at Arnhem?",
+          "correctAnswer": "Survivors were evacuated; thousands were captured",
+          "distractors": ["They held the bridgehead until relieved", "They crossed the Rhine independently", "All were killed in fighting", "They surrendered en masse"]
+        },
+        {
+          "type": "context",
+          "question": "The airborne phase of Operation Market Garden (dropping paratroopers) was called 'Market.' What was the ground advance component called?",
+          "correctAnswer": "Garden",
+          "distractors": ["Hammer", "Sword", "Shield", "Bridge"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Operation Market Garden's failure meant Allied forces would not cross the Rhine until early 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation Market Garden lasted ___ days before Allied forces were surrounded at Arnhem and survivors evacuated.",
+          "correctAnswer": "9",
+          "distractors": ["3", "21", "45"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_remagen_crossing",
+      "correctAnswer": "Remagen",
+      "acceptableAlternatives": ["Remagen bridge", "Ludendorff Bridge"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Where did American forces under Patton find an undefended Rhine crossing in March 1945, allowing a surprise advance into Germany?",
+      "explanation": "The Rhine was Germany's last great natural defensive barrier. After Market Garden's failure, Allied planners expected a set-piece assault. But in late March 1945, Patton's forces discovered the Ludendorff Bridge at Remagen still standing — the Germans had failed to destroy it. This unplanned crossing preceded Montgomery's massive prepared assault in the north and accelerated Germany's collapse.",
+      "visualDescription": "Pixel art of a stone railway bridge spanning a wide gray river, American soldiers sprinting across while smoke rises from partially demolished pylons",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Remagen",
+      "volatile": false,
+      "distractors": ["Arnhem", "Cologne", "Mainz", "Frankfurt", "Düsseldorf", "Hamburg", "Koblenz", "Bonn"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Rhine crossing at Remagen in March 1945 was notable because it was largely unplanned. What made the crossing possible?",
+          "correctAnswer": "The Germans failed to destroy the bridge before American forces arrived",
+          "distractors": ["American engineers built a pontoon bridge overnight", "German forces surrendered the crossing voluntarily", "Allied bombers suppressed all defenses first", "A spy revealed the crossing point to Patton"]
+        },
+        {
+          "type": "context",
+          "question": "By late March 1945, both Patton's forces and Montgomery's forces had crossed the Rhine. Why was the Rhine so strategically important?",
+          "correctAnswer": "It was Germany's last major water obstacle defending the interior",
+          "distractors": ["It was the boundary of the prewar German state", "It separated Allied occupation zones", "It was the location of Germany's main munitions factories", "Hitler had declared it a sacred national symbol not to be crossed"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The first Allied Rhine crossing in 1945 came from Montgomery's large set-piece assault in the north.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "American forces crossed the Rhine at ___ in March 1945, exploiting a bridge the Germans had failed to destroy.",
+          "correctAnswer": "Remagen",
+          "distractors": ["Arnhem", "Cologne", "Mainz"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_bulge_date",
+      "correctAnswer": "December 16, 1944",
+      "acceptableAlternatives": ["December 1944", "16 December 1944"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "On what date did Germany launch its surprise Ardennes offensive — the Battle of the Bulge?",
+      "explanation": "December 16, 1944 stunned Allied commanders who believed Germany was spent. Hitler gambled everything on Operation Wacht am Rhein, a massive attack through the snowy Ardennes forest designed to split Allied lines and capture the vital port of Antwerp. The surprise was nearly total — but the American hold at Bastogne, followed by clearing weather that restored Allied air power, doomed the offensive within five weeks.",
+      "visualDescription": "Pixel art of German Panzer tanks advancing through a snow-covered forest at dawn, pine trees heavy with snow, muzzle flashes in the gray distance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Bulge",
+      "volatile": false,
+      "distractors": ["September 17, 1944", "November 1, 1944", "January 1, 1945", "October 16, 1944", "December 7, 1944", "December 25, 1944", "February 1, 1945", "March 1, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Battle of the Bulge began December 16, 1944. What was the German code name for this offensive?",
+          "correctAnswer": "Operation Wacht am Rhein",
+          "distractors": ["Operation Overlord", "Operation Market Garden", "Operation Barbarossa", "Operation Citadel"]
+        },
+        {
+          "type": "context",
+          "question": "The Battle of the Bulge took place in which geographic area, chosen by Germany because bad weather would neutralize Allied air power?",
+          "correctAnswer": "The Ardennes Forest",
+          "distractors": ["The Rhine Valley", "The Ruhr industrial region", "The Vosges Mountains", "The Low Countries"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany launched the Battle of the Bulge because it had ample fuel and reserves and sought a decisive offensive victory.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Battle of the Bulge began on December 16, 1944, when Germany launched a surprise attack through the ___ Forest.",
+          "correctAnswer": "Ardennes",
+          "distractors": ["Black", "Hürtgen", "Rhineland"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_bulge_bastogne",
+      "correctAnswer": "Bastogne",
+      "acceptableAlternatives": [],
+      "chainThemeId": 2,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Which Belgian town did encircled American forces hold during the Battle of the Bulge, supplied by air while surrounded by German forces?",
+      "explanation": "Bastogne was a critical road junction in the Ardennes. When German forces surrounded the 101st Airborne Division and other American units there, the German commander demanded surrender — the American commander's response was the legendary single word 'NUTS.' Resupplied by air, the garrison held until Patton's Third Army broke through on December 26. Bastogne became a symbol of American grit at the Bulge's turning point.",
+      "visualDescription": "Pixel art of snow-covered Belgian town surrounded by a ring of German positions, C-47 transports dropping supply canisters from a gray winter sky above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Bastogne",
+      "volatile": false,
+      "distractors": ["Arnhem", "St. Vith", "Liège", "Dinant", "Malmedy", "Aachen", "Namur", "Luxembourg City"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "At Bastogne, surrounded American forces refused to surrender. How were they kept in the fight despite being encircled?",
+          "correctAnswer": "Resupplied by air drops",
+          "distractors": ["They broke out and rejoined Allied lines", "A secret underground supply tunnel was used", "They seized German supply depots", "They were not resupplied and rationed captured German supplies"]
+        },
+        {
+          "type": "context",
+          "question": "After weather cleared during the Battle of the Bulge, what decisive advantage did the Allies regain that helped defeat Germany's offensive?",
+          "correctAnswer": "Air superiority",
+          "distractors": ["Armored reinforcements from Italy", "Soviet pressure on the Eastern Front", "German fuel shortages caused by sabotage", "American cipher breaking of German plans"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of the Bulge was Germany's last major offensive on the Western Front.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "American forces at ___ held out while surrounded during the Battle of the Bulge, resupplied by air until Patton's army broke through.",
+          "correctAnswer": "Bastogne",
+          "distractors": ["St. Vith", "Liège", "Aachen"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_ve_day",
+      "correctAnswer": "May 8, 1945",
+      "acceptableAlternatives": ["8 May 1945", "V-E Day"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 1,
+      "funScore": 8,
+      "quizQuestion": "What date is celebrated as V-E Day — the end of the war in Europe?",
+      "explanation": "May 8, 1945 marked the formal end of six years of war in Europe. Germany signed its unconditional surrender on May 7–8. The continent had paid an almost incomprehensible price: approximately 7 million European military deaths and 20 million civilian deaths. The peace that followed was not the hoped-for unity — Europe was immediately divided between Western democracies and Soviet-dominated states, setting the stage for the Cold War.",
+      "visualDescription": "Pixel art of jubilant crowds in a European city square, flags hanging from windows, soldiers and civilians embracing under a banner reading 'Victory'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Victory_in_Europe_Day",
+      "volatile": false,
+      "distractors": ["May 1, 1945", "April 30, 1945", "June 6, 1945", "May 15, 1945", "August 15, 1945", "September 2, 1945", "April 12, 1945", "May 5, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "V-E Day on May 8, 1945 ended six years of combat in Europe. Approximately how many European civilians died during that period?",
+          "correctAnswer": "Approximately 20 million",
+          "distractors": ["1 million", "5 million", "50 million", "100 million"]
+        },
+        {
+          "type": "context",
+          "question": "Germany signed its unconditional surrender to end World War II in Europe. What term describes the political division of Europe that immediately followed?",
+          "correctAnswer": "The Cold War",
+          "distractors": ["The Iron Curtain only", "The Marshall Plan divide", "The Yalta partition", "The Berlin split"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany surrendered unconditionally to end World War II in Europe.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "V-E Day was declared on May 8, 1945, after Germany signed its ___ surrender.",
+          "correctAnswer": "unconditional",
+          "distractors": ["conditional", "negotiated", "armistice"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_ve_day_deaths",
+      "correctAnswer": "Approximately 27 million",
+      "acceptableAlternatives": ["~7 million military and ~20 million civilian", "millions"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "The war in Europe ended May 8, 1945. Combining European military and civilian deaths, roughly what was the human toll?",
+      "explanation": "The numbers are staggering: approximately 7 million European military deaths and 20 million European civilian deaths — a combined toll near 27 million. These figures exclude Soviet losses (which dwarf Western Front numbers), the Holocaust's 6 million Jewish victims, and deaths in Asia. Europe's infrastructure, cities, and social fabric were devastated, making postwar reconstruction a generational challenge.",
+      "visualDescription": "Pixel art of a devastated European city at war's end — skeletal bombed-out buildings, rubble-strewn streets, a lone figure walking through the ruins at dusk",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_II_casualties",
+      "volatile": false,
+      "distractors": ["1 million", "5 million", "10 million", "50 million", "100 million", "500,000", "3 million", "15 million"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "By war's end in Europe, roughly how many European military personnel (excluding civilians) had died?",
+          "correctAnswer": "Approximately 7 million",
+          "distractors": ["500,000", "2 million", "20 million", "50 million"]
+        },
+        {
+          "type": "context",
+          "question": "V-E Day ended combat in Europe on May 8, 1945 — but the broader war continued until which date when Japan surrendered?",
+          "correctAnswer": "September 2, 1945",
+          "distractors": ["August 6, 1945", "August 15, 1945", "October 1, 1945", "July 4, 1945"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: European civilian deaths in World War II exceeded European military deaths.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "World War II in Europe ended on May 8, 1945, after approximately 7 million military and ___ civilian European deaths.",
+          "correctAnswer": "20 million",
+          "distractors": ["1 million", "5 million", "50 million"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_hurtgen_duration",
+      "correctAnswer": "Nearly 6 months",
+      "acceptableAlternatives": ["September 1944 to February 1945", "about 5 months"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "How long did the Battle of Hürtgen Forest last, making it one of the longest single battles fought by the U.S. Army in World War II?",
+      "explanation": "The Battle of Hürtgen Forest began in September 1944 and ground on until February 1945 — nearly six months. American forces fought through dense forest where their greatest advantages (air power and armor) were neutralized by trees and terrain. The Germans defended bunkers and prepared positions stubbornly, inflicting over 100,000 American casualties while buying time to rebuild defenses along the Rhine.",
+      "visualDescription": "Pixel art of American soldiers advancing through a dark pine forest, snow on the ground, ruined bunkers and fallen trees blocking every path forward",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_H%C3%BCrtgen_Forest",
+      "volatile": false,
+      "distractors": ["3 days", "2 weeks", "1 month", "2 months", "1 year", "3 months", "10 months", "8 weeks"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Hürtgen Forest battle lasted nearly six months and inflicted massive American losses. Roughly how many U.S. casualties occurred?",
+          "correctAnswer": "Over 100,000",
+          "distractors": ["5,000", "20,000", "50,000", "500,000"]
+        },
+        {
+          "type": "context",
+          "question": "Dense forest neutralized American advantages at Hürtgen. Which two American strengths were most diminished by the terrain?",
+          "correctAnswer": "Air power and armor",
+          "distractors": ["Artillery and logistics", "Infantry numbers and communications", "Supply lines and naval support", "Intelligence and mobility"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of Hürtgen Forest lasted nearly six months and cost the U.S. Army over 100,000 casualties.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Battle of Hürtgen Forest lasted nearly six months, neutralizing American ___ and armor advantages through dense terrain.",
+          "correctAnswer": "air power",
+          "distractors": ["artillery", "infantry numbers", "supply lines"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_july20_date",
+      "correctAnswer": "July 20, 1944",
+      "acceptableAlternatives": ["20 July 1944"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "On what date did Colonel Claus von Stauffenberg place a bomb in Hitler's conference room in the most famous assassination attempt of World War II?",
+      "explanation": "July 20, 1944 is the date of the closest any conspirator came to killing Hitler. Just six weeks after D-Day, a group of German military officers tried to end the war by removing its architect. The bomb exploded — but a heavy oak table shielded Hitler from the blast. The failure led to hundreds of executions and meant Germany would fight to total destruction rather than seek a negotiated peace.",
+      "visualDescription": "Pixel art of a damaged wooden conference room at a forest compound, smoke rising from a shattered table, uniformed officers scrambling through debris",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/20_July_plot",
+      "volatile": false,
+      "distractors": ["June 6, 1944", "August 25, 1944", "December 16, 1944", "September 17, 1944", "May 8, 1945", "November 9, 1944", "January 20, 1945", "March 22, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The July 20, 1944 assassination attempt on Hitler failed. What physical object accidentally shielded Hitler from the bomb blast?",
+          "correctAnswer": "A heavy oak table",
+          "distractors": ["A concrete bunker wall", "His briefcase", "A steel blast door", "A bodyguard who fell on the bomb"]
+        },
+        {
+          "type": "context",
+          "question": "After the July 20 plot failed, what happened to the conspirators who had tried to assassinate Hitler?",
+          "correctAnswer": "Hundreds were arrested and executed",
+          "distractors": ["They escaped to neutral Switzerland", "They were imprisoned but survived the war", "They were exiled to occupied territories", "Only the direct perpetrators were punished"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Colonel Claus von Stauffenberg was the officer who placed the bomb in Hitler's conference room on July 20, 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The July 20, 1944 bomb plot against Hitler failed, leading to the arrest and execution of ___ of conspirators.",
+          "correctAnswer": "hundreds",
+          "distractors": ["dozens", "thousands", "a handful"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_july20_consequence",
+      "correctAnswer": "Prolonged the war",
+      "acceptableAlternatives": ["prevented a negotiated peace", "Germany continued fighting to total destruction"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The failure of the July 20, 1944 assassination plot against Hitler had a profound consequence. What did historians argue the plot's failure ultimately did to the war?",
+      "explanation": "If Hitler had died on July 20, 1944, the conspirators planned to immediately seek a negotiated peace with the Western Allies. With D-Day already underway and Soviet forces pressing from the East, Germany had no realistic path to victory. Hitler's survival meant Germany continued fighting for ten more months, at the cost of millions of additional lives — military and civilian — on all sides.",
+      "visualDescription": "Pixel art of German soldiers in snow-covered ruins late in the war, a burning city skyline behind them, looking toward a dark horizon with no relief in sight",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/20_July_plot",
+      "volatile": false,
+      "distractors": ["Accelerated Germany's surrender", "Triggered a military coup that succeeded", "Caused Hitler to flee Berlin", "Strengthened German civilian morale", "Led to the Battle of the Bulge directly", "Prompted Himmler to take command", "Caused Germany to sue for peace in the East", "Had no effect on the war's outcome"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The July 20 plotters planned to do something immediately if their assassination of Hitler had succeeded. What was their plan?",
+          "correctAnswer": "Seek a negotiated peace with the Western Allies",
+          "distractors": ["Continue fighting but under new, competent generals", "Surrender unconditionally to the Soviets", "Establish a military dictatorship to rebuild Germany", "Negotiate with the SS to maintain order"]
+        },
+        {
+          "type": "context",
+          "question": "The July 20 plot is remembered as a symbol of what broader phenomenon during World War II?",
+          "correctAnswer": "German resistance to Nazism",
+          "distractors": ["German military incompetence in 1944", "The SS's total control over the Wehrmacht", "The failure of diplomacy to end the war", "Allied intelligence penetration of German command"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The July 20, 1944 assassination attempt on Hitler is considered a symbol of German resistance to Nazism.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The failure of the July 20 plot meant no negotiated peace was possible, and Germany fought on for ___ more months until total defeat.",
+          "correctAnswer": "ten",
+          "distractors": ["two", "twenty", "six"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1420 @@
+{
+  "facts": [
+    {
+      "id": "wwii_wf_poland_invasion_date",
+      "correctAnswer": "September 1, 1939",
+      "acceptableAlternatives": ["1 September 1939", "Sept 1 1939"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "On what date did Germany invade Poland, triggering the start of WWII in Europe?",
+      "explanation": "Germany's invasion of Poland on September 1, 1939 used Blitzkrieg tactics — coordinated tanks, artillery, and aircraft — to overwhelm Polish defenses. Poland fell in just 27 days. Britain and France declared war on Germany two days later on September 3, making this invasion the official start of the European war.",
+      "visualDescription": "Pixel art of German Panzer tanks rolling across a flat Polish landscape at dawn, with smoke rising from a distant town and a Nazi flag visible on the lead tank",
+      "sourceName": "Wikipedia — Invasion of Poland",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+      "volatile": false,
+      "distractors": [
+        "August 28, 1939",
+        "September 3, 1939",
+        "August 31, 1939",
+        "October 1, 1939",
+        "September 15, 1939",
+        "July 4, 1939",
+        "November 1, 1939",
+        "September 7, 1939"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What event occurred on September 1, 1939 that started WWII in Europe?",
+          "correctAnswer": "Germany invaded Poland",
+          "distractors": [
+            "Germany invaded France",
+            "Germany bombed London",
+            "Germany invaded the Soviet Union"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many days did it take Germany to defeat Poland in 1939?",
+          "correctAnswer": "27 days",
+          "distractors": [
+            "6 weeks",
+            "3 months",
+            "14 days"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Britain and France declared war on Germany immediately on September 1, 1939, the same day Germany invaded Poland.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany invaded Poland on September 1, 1939, and Britain and France declared war on Germany ___ days later.",
+          "correctAnswer": "2",
+          "distractors": ["7", "14", "1"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_poland_partition",
+      "correctAnswer": "Soviet Union",
+      "acceptableAlternatives": ["USSR", "Russia"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Under the secret Molotov-Ribbentrop agreement, which nation seized the eastern half of Poland after Germany invaded from the west in 1939?",
+      "explanation": "The Molotov-Ribbentrop Pact contained a secret protocol dividing Eastern Europe into German and Soviet spheres. While Germany took western Poland, the Soviet Union invaded from the east on September 17, 1939. Poland was partitioned between two totalitarian powers — a detail often overlooked in Western tellings of the war's opening.",
+      "visualDescription": "Pixel art of a map of Poland split down the middle with a Nazi swastika flag on the left half and a Soviet red star flag on the right half",
+      "sourceName": "Wikipedia — Invasion of Poland",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+      "volatile": false,
+      "distractors": [
+        "Hungary",
+        "Romania",
+        "Czechoslovakia",
+        "Lithuania",
+        "Austria",
+        "Yugoslavia",
+        "Italy",
+        "Sweden"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What secret agreement between Germany and the Soviet Union divided Eastern Europe before the war?",
+          "correctAnswer": "Molotov-Ribbentrop Pact",
+          "distractors": [
+            "Treaty of Versailles",
+            "Munich Agreement",
+            "Atlantic Charter"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Approximately how many Poles died during the entire war after Germany and the Soviet Union partitioned Poland in 1939?",
+          "correctAnswer": "6 million",
+          "distractors": [
+            "1 million",
+            "3 million",
+            "10 million"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: When Germany invaded Poland in 1939, the Soviet Union also invaded Poland from the east under a secret agreement.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Poland was partitioned between Germany and the ___ under the secret Molotov-Ribbentrop protocol in 1939.",
+          "correctAnswer": "Soviet Union",
+          "distractors": ["United Kingdom", "Italy", "Hungary"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_blitzkrieg_definition",
+      "correctAnswer": "Lightning war",
+      "acceptableAlternatives": ["lightning warfare", "lightning strike"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 1,
+      "funScore": 6,
+      "quizQuestion": "What does the German military term 'Blitzkrieg' literally translate to in English?",
+      "explanation": "Blitzkrieg — 'lightning war' — was Germany's revolutionary doctrine of rapid, coordinated attack using tanks, motorized infantry, and close air support. Rather than battering through static defenses (as in WWI), Blitzkrieg aimed to pierce enemy lines quickly and drive deep behind them, creating chaos. It proved devastating against Poland in 1939, then France in 1940.",
+      "visualDescription": "Pixel art of a lightning bolt striking through a row of military fortifications, with tanks and aircraft swarming through the gap",
+      "sourceName": "Wikipedia — Blitzkrieg",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blitzkrieg",
+      "volatile": false,
+      "distractors": [
+        "Iron fist",
+        "Storm assault",
+        "Fire and steel",
+        "Hammer war",
+        "Swift strike",
+        "Total war",
+        "Rapid march",
+        "Shock attack"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What German military doctrine combined tanks, artillery, and aircraft in rapid coordinated attacks to overwhelm defenses?",
+          "correctAnswer": "Blitzkrieg",
+          "distractors": [
+            "Sturmtruppen",
+            "Fallschirmjäger",
+            "Stosstruppen"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Blitzkrieg eventually failed for Germany when the war became two-fronted. Which combination of factors most undermined it?",
+          "correctAnswer": "Lack of resources and terrain/weather slowing movement",
+          "distractors": [
+            "Allied invention of superior tanks",
+            "Germany ran out of pilots",
+            "Allied use of radar defeated the air component"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Blitzkrieg relied primarily on static defensive lines and massed artillery, similar to WWI tactics.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Blitzkrieg used coordinated ___, motorized infantry, and air support to rapidly pierce and bypass enemy defenses.",
+          "correctAnswer": "tanks",
+          "distractors": ["submarines", "artillery only", "cavalry"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_phoney_war_duration",
+      "correctAnswer": "Eight months",
+      "acceptableAlternatives": ["8 months", "approximately 8 months"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After Germany defeated Poland in 1939, roughly how long did the 'Phoney War' — the period of minimal fighting in the west — last before Germany launched its major offensive?",
+      "explanation": "From September 1939 to May 1940 — roughly eight months — almost no significant fighting occurred on the French-German border. Both sides expected WWI-style trench warfare to resume, leading the French to feel secure behind the Maginot Line. Germany used this time to consolidate its gains and plan its audacious invasion through Belgium. The calm was brutally shattered on May 10, 1940.",
+      "visualDescription": "Pixel art of French and German soldiers on opposite sides of a fortified border, soldiers lounging in trenches playing cards while nothing happens",
+      "sourceName": "Wikipedia — Phoney War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Phoney_War",
+      "volatile": false,
+      "distractors": [
+        "Two weeks",
+        "Three months",
+        "One month",
+        "Two years",
+        "Six weeks",
+        "One year",
+        "Four months",
+        "Two months"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the name given to the period of minimal combat between Allied and German forces from September 1939 to May 1940?",
+          "correctAnswer": "Phoney War",
+          "distractors": [
+            "The Quiet Front",
+            "The Winter Stalemate",
+            "The Maginot Standoff"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What did both Allied and German sides incorrectly expect during the Phoney War period?",
+          "correctAnswer": "WWI-style trench warfare to resume",
+          "distractors": [
+            "A negotiated peace deal",
+            "The United States to enter the war",
+            "Germany to attack through Switzerland"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The 'Phoney War' was the name given to the period of little actual combat between the fall of Poland and Germany's invasion of France.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Phoney War ended on ___ when Germany invaded Belgium and France.",
+          "correctAnswer": "May 10, 1940",
+          "distractors": ["June 22, 1940", "September 1, 1940", "March 15, 1940"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_maginot_line_flaw",
+      "correctAnswer": "It did not extend to the Belgian border",
+      "acceptableAlternatives": ["it left the Belgian border undefended", "Germany went through Belgium instead", "no coverage on Belgian frontier"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "France spent billions building the Maginot Line to stop a German invasion, yet Germany bypassed it easily in 1940. What was the critical flaw?",
+      "explanation": "The Maginot Line was a marvel of engineering — underground forts, artillery bunkers, and interconnected tunnels. But France stopped it at the Belgian border, assuming Germany would never invade through Belgium (or the dense Ardennes forest). Germany did exactly that, outflanking the entire line and trapping French and British forces. The Maginot Line became history's most expensive strategic blunder — it stopped what no one was pointing at.",
+      "visualDescription": "Pixel art of a massive concrete fortress wall with a gap at one end, with a small cartoon German tank sneaking through the gap with an arrow pointing around the fortress",
+      "sourceName": "Wikipedia — Maginot Line",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Maginot_Line",
+      "volatile": false,
+      "distractors": [
+        "The forts were poorly staffed",
+        "Germany had better artillery to destroy the bunkers",
+        "The line was never completed due to budget cuts",
+        "German spies sabotaged the bunkers from inside",
+        "The forts could only face east, not north",
+        "Allied commanders refused to use the line",
+        "Germany tunneled beneath it",
+        "The line extended into the water and flooded"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What massive French fortification system, built along the German border in the 1930s, was famously outflanked by Germany in 1940?",
+          "correctAnswer": "Maginot Line",
+          "distractors": [
+            "Siegfried Line",
+            "Atlantic Wall",
+            "Hindenburg Line"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Through which country did Germany invade to bypass the Maginot Line in May 1940?",
+          "correctAnswer": "Belgium",
+          "distractors": [
+            "Switzerland",
+            "Luxembourg only",
+            "Spain"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Maginot Line fully covered the French-Belgian border as well as the French-German border.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Maginot Line's failure symbolized French military thinking still rooted in ___ tactics.",
+          "correctAnswer": "WWI",
+          "distractors": ["Napoleonic", "Crimean War", "Franco-Prussian War"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_fall_of_france_duration",
+      "correctAnswer": "6 weeks",
+      "acceptableAlternatives": ["six weeks", "43 days"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "France had the largest army in Western Europe and the Maginot Line. How quickly did Germany defeat France in 1940?",
+      "explanation": "Germany invaded on May 10, 1940. France signed an armistice on June 22 — just 43 days (about 6 weeks) later. The speed shocked the world. Germany's Blitzkrieg through the Ardennes bypassed French defenses entirely. Paris fell on June 14. The defeat left Britain completely alone against Nazi Germany and forced the dramatic Dunkirk evacuation of 338,000 troops.",
+      "visualDescription": "Pixel art of a calendar with dates rapidly flipping from May to June 1940, a French flag lowered on the Eiffel Tower with a Nazi flag raised in its place",
+      "sourceName": "Wikipedia — Battle of France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_France",
+      "volatile": false,
+      "distractors": [
+        "6 months",
+        "4 years",
+        "3 months",
+        "1 year",
+        "27 days",
+        "2 weeks",
+        "9 months",
+        "18 months"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "On what date did France sign the armistice with Germany, ending the Fall of France?",
+          "correctAnswer": "June 22, 1940",
+          "distractors": [
+            "May 10, 1940",
+            "June 14, 1940",
+            "July 4, 1940"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "When Paris fell to Germany on June 14, 1940, what critical result did France's rapid defeat have for Britain?",
+          "correctAnswer": "Britain stood alone against Nazi Germany",
+          "distractors": [
+            "The USA immediately entered the war",
+            "The Soviet Union allied with Britain",
+            "Italy switched sides to join the Allies"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Paris fell to German forces on June 14, 1940, before France signed the official armistice.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After France fell, Germany divided the country: Germany occupied the north, while the south became a puppet state headed by Marshal ___.",
+          "correctAnswer": "Pétain",
+          "distractors": ["de Gaulle", "Reynaud", "Daladier"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_dunkirk_troops",
+      "correctAnswer": "338,226",
+      "acceptableAlternatives": ["338,000", "over 338,000", "approximately 338,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "How many Allied troops were evacuated from the beaches of Dunkirk in May–June 1940?",
+      "explanation": "Over 9 days (May 26 – June 4, 1940), the Royal Navy organized Operation Dynamo, using warships alongside hundreds of civilian 'little ships' — fishing boats, ferries, pleasure craft — to evacuate 338,226 troops from the beaches of Dunkirk. This saved the core of the British Expeditionary Force, enabling Britain to continue fighting. Churchill called it 'a miracle of deliverance.'",
+      "visualDescription": "Pixel art of a crowded beach with soldiers wading into the water toward a flotilla of small civilian boats and Royal Navy destroyers in the background",
+      "sourceName": "Wikipedia — Dunkirk evacuation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dunkirk_evacuation",
+      "volatile": false,
+      "distractors": [
+        "120,000",
+        "500,000",
+        "200,000",
+        "75,000",
+        "450,000",
+        "280,000",
+        "150,000",
+        "600,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the code name for the naval operation that evacuated Allied troops from Dunkirk in 1940?",
+          "correctAnswer": "Operation Dynamo",
+          "distractors": [
+            "Operation Sea Lion",
+            "Operation Overlord",
+            "Operation Torch"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What made the Dunkirk evacuation unusual compared to typical military naval evacuations?",
+          "correctAnswer": "Hundreds of civilian boats participated alongside Royal Navy ships",
+          "distractors": [
+            "It was conducted entirely at night without lights",
+            "Only officers were evacuated, leaving enlisted men behind",
+            "German forces deliberately allowed the evacuation to proceed"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Dunkirk evacuation took place over 9 days in late May and early June 1940.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Dunkirk evacuation saved the British Expeditionary Force, allowing Britain to continue fighting after ___ fell to Germany.",
+          "correctAnswer": "France",
+          "distractors": ["Belgium", "the Netherlands", "Norway"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_battle_of_britain_result",
+      "correctAnswer": "Germany failed to gain air superiority and cancelled the invasion",
+      "acceptableAlternatives": ["Germany lost", "Hitler cancelled Operation Sea Lion", "RAF defeated the Luftwaffe"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What was the decisive outcome of the Battle of Britain (July–October 1940), and why did it matter strategically?",
+      "explanation": "From July 10 to October 31, 1940, the Luftwaffe tried to destroy the RAF and gain air superiority needed for Operation Sea Lion — Hitler's planned invasion of Britain. The RAF, aided by radar early-warning systems and flying Spitfires and Hurricanes, denied Germany air superiority. After four months, Hitler cancelled the invasion. This was the first major defeat of Nazi Germany, proving the Wehrmacht could be stopped — a crucial psychological and strategic turning point.",
+      "visualDescription": "Pixel art of a dogfight above white cliffs, British Spitfire and Hurricane planes battling German Messerschmitt fighters with contrails filling the blue sky",
+      "sourceName": "Wikipedia — Battle of Britain",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Britain",
+      "volatile": false,
+      "distractors": [
+        "Germany successfully invaded southern England but was repelled",
+        "Both sides agreed to a ceasefire after heavy losses",
+        "Germany destroyed the RAF but chose not to invade",
+        "The United States air force intervened and drove Germany back",
+        "Germany won air superiority but was stopped at sea",
+        "Britain surrendered the south coast before Germany withdrew",
+        "Italy's air force defeated Germany's invasion fleet at sea",
+        "Germany shifted focus due to bad weather, planning to resume later"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the name of Hitler's planned invasion of Britain that was cancelled after Germany lost the Battle of Britain?",
+          "correctAnswer": "Operation Sea Lion",
+          "distractors": [
+            "Operation Barbarossa",
+            "Operation Sealord",
+            "Operation Neptune"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What technology gave the RAF a critical early-warning advantage against Luftwaffe attacks during the Battle of Britain?",
+          "correctAnswer": "Radar",
+          "distractors": [
+            "Codebreaking via Enigma",
+            "Spy networks in Germany",
+            "Infrared night-vision equipment"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of Britain was the first major defeat suffered by Nazi Germany in the war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The RAF defended Britain during the Battle of Britain flying ___ and Hurricane fighter aircraft.",
+          "correctAnswer": "Spitfires",
+          "distractors": ["Lancaster bombers", "Wellington bombers", "Mosquitos"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_the_blitz_casualties",
+      "correctAnswer": "Over 40,000",
+      "acceptableAlternatives": ["40,000+", "more than 40,000", "approximately 40,000"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "During the Blitz (September 1940 – May 1941), Germany bombed British cities to break civilian morale. How many British civilians were killed?",
+      "explanation": "From September 7, 1940 to May 11, 1941, the Luftwaffe bombed British cities — especially London — in a sustained campaign called the Blitz. Over 40,000 British civilians were killed, and approximately 1 million homes were destroyed. Cities like Coventry were nearly obliterated. Rather than breaking morale, the bombing united Britons behind the war effort. The phrase 'keep calm and carry on' captures this defiant spirit.",
+      "visualDescription": "Pixel art of London at night with searchlights sweeping the sky, barrage balloons floating above, fires burning in the city below and Big Ben silhouetted against an orange glow",
+      "sourceName": "Wikipedia — The Blitz",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Blitz",
+      "volatile": false,
+      "distractors": [
+        "5,000",
+        "100,000",
+        "10,000",
+        "500,000",
+        "200,000",
+        "2,000",
+        "80,000",
+        "25,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the name given to Germany's sustained bombing campaign against British cities from 1940 to 1941?",
+          "correctAnswer": "The Blitz",
+          "distractors": [
+            "Operation Sea Lion",
+            "The Night Offensive",
+            "Operation Barbarossa"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Approximately how many British homes were destroyed or damaged during the Blitz?",
+          "correctAnswer": "Approximately 1 million",
+          "distractors": [
+            "100,000",
+            "5 million",
+            "250,000"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany's bombing of British cities during the Blitz successfully broke British civilian morale and led to calls for peace.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "During the Blitz, Germany bombed ___ and other British cities to destroy civilian morale, but instead United Britain further.",
+          "correctAnswer": "London",
+          "distractors": ["Glasgow", "Manchester", "Liverpool"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_sedan_breakthrough",
+      "correctAnswer": "May 12–15, 1940",
+      "acceptableAlternatives": ["May 13, 1940", "mid-May 1940"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The decisive breakthrough of the Fall of France came at Sedan, where German armor crossed the Meuse River. When did this critical event occur?",
+      "explanation": "On May 12–15, 1940, German armored forces crossed the Meuse River at Sedan, punching through the incomplete French defensive lines at what was thought to be an impassable forest (the Ardennes). By May 15 — just 5 days after the invasion began — German tanks were driving toward the English Channel, cutting off the British and French armies in Belgium. General Erich von Manstein's audacious 'Sickle Cut' plan had succeeded. The Maginot Line, never engaged, became irrelevant.",
+      "visualDescription": "Pixel art of German Panzer tanks crossing a pontoon bridge over a wide river at dawn, with smoke and aircraft overhead, soldiers rushing across in columns",
+      "sourceName": "Wikipedia — Battle of Sedan (1940)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Sedan_(1940)",
+      "volatile": false,
+      "distractors": [
+        "June 5–8, 1940",
+        "May 20–23, 1940",
+        "April 30 – May 2, 1940",
+        "May 25–28, 1940",
+        "June 1–3, 1940",
+        "May 1–4, 1940",
+        "June 10–13, 1940",
+        "May 17–20, 1940"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What river did German forces cross at Sedan in May 1940 in the decisive breakthrough of the Battle of France?",
+          "correctAnswer": "Meuse River",
+          "distractors": [
+            "Rhine River",
+            "Seine River",
+            "Loire River"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "German general Erich von Manstein's plan routed German armor through which 'impassable' terrain to achieve the Sedan breakthrough?",
+          "correctAnswer": "The Ardennes forest",
+          "distractors": [
+            "The Alps mountain range",
+            "The Rhine marshes",
+            "The Maginot fortifications"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: After the Sedan breakthrough on May 15, 1940, German tanks drove toward the English Channel, cutting off Allied armies in Belgium.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Sedan breakthrough made the Maginot Line strategically irrelevant because German armor had ___ it entirely.",
+          "correctAnswer": "outflanked",
+          "distractors": ["destroyed", "tunneled beneath", "surrendered to"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_vichy_france_head",
+      "correctAnswer": "Marshal Pétain",
+      "acceptableAlternatives": ["Philippe Pétain", "Pétain"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "After France's defeat in June 1940, Germany allowed a French puppet state to form in the south with its capital at Vichy. Who headed this collaborationist government?",
+      "explanation": "Marshal Philippe Pétain, a WWI hero celebrated for defending Verdun, headed the Vichy regime from June 1940. He chose collaboration with Nazi Germany rather than continued resistance. Vichy France actively cooperated with Nazi policies, including deportations of Jewish people. The regime collapsed when Allied forces liberated France in August 1944. Pétain's legacy remains deeply controversial in France — war hero turned collaborator.",
+      "visualDescription": "Pixel art of a stern elderly man in a French military uniform sitting at a desk in a grand government building, a German officer standing in the background",
+      "sourceName": "Wikipedia — Vichy France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vichy_France",
+      "volatile": false,
+      "distractors": [
+        "Charles de Gaulle",
+        "Georges Clemenceau",
+        "Pierre Laval",
+        "Édouard Daladier",
+        "Ferdinand Foch",
+        "Paul Reynaud",
+        "Maurice Gamelin",
+        "Maxime Weygand"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the name of the French collaborationist government that ruled southern France from 1940 to 1944?",
+          "correctAnswer": "Vichy France",
+          "distractors": [
+            "Free France",
+            "Occupied France",
+            "Pétain Republic"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Vichy France collapsed in August 1944 when what event made its German-backed authority untenable?",
+          "correctAnswer": "Allied liberation of France",
+          "distractors": [
+            "Germany surrendered unconditionally",
+            "A French military coup overthrew Pétain",
+            "The Soviet Union invaded southern France"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Charles de Gaulle led Vichy France while Marshal Pétain commanded the Free French resistance from London.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Vichy France was established after the French armistice on June 22, 1940, with its capital located at ___, a spa town in central France.",
+          "correctAnswer": "Vichy",
+          "distractors": ["Bordeaux", "Lyon", "Marseille"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_poland_blitzkrieg_components",
+      "correctAnswer": "Tanks, motorized infantry, and close air support",
+      "acceptableAlternatives": ["armor, infantry, and aircraft", "panzer divisions, artillery, and Luftwaffe support"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The German Blitzkrieg that crushed Poland in 1939 coordinated three key military elements simultaneously. What were they?",
+      "explanation": "Blitzkrieg worked by combining Panzer tank divisions, motorized infantry, and Luftwaffe close air support in one overwhelming strike. Traditional armies of 1939 still operated these three elements independently with slow communication. Germany's innovation was coordination: aircraft suppressed defenses while tanks punched through and infantry followed to hold ground. Poland's cavalry and fixed infantry had no answer to this synchronized assault.",
+      "visualDescription": "Pixel art showing three panels: a Panzer tank, a truck full of soldiers, and a Stuka dive bomber, with arrows showing them converging on the same target",
+      "sourceName": "Wikipedia — Blitzkrieg",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blitzkrieg",
+      "volatile": false,
+      "distractors": [
+        "Artillery barrages, trench assaults, and poison gas",
+        "Submarines, surface fleet, and paratroopers",
+        "Night raids, cavalry charges, and artillery",
+        "Paratroopers, infantry, and naval bombardment",
+        "Bombers only, no ground coordination",
+        "Cavalry, armored cars, and biplanes",
+        "Infantry assaults, chemical weapons, and flame tanks",
+        "Propaganda, sabotage, and conventional infantry"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What made Germany's Blitzkrieg tactically revolutionary compared to how other 1939 armies used tanks, infantry, and aircraft?",
+          "correctAnswer": "Germany coordinated all three simultaneously rather than separately",
+          "distractors": [
+            "Germany had far more tanks than any other nation",
+            "German aircraft were faster and could not be intercepted",
+            "German tanks were armored too heavily for any existing weapon to destroy"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What type of Polish military unit — symbolic of an earlier era of warfare — famously could not counter Germany's Blitzkrieg tactics?",
+          "correctAnswer": "Cavalry",
+          "distractors": [
+            "Artillery batteries",
+            "Naval gunboats",
+            "Submarine fleet"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Blitzkrieg tactics were designed to bypass and surround enemy forces rather than destroy fortified positions head-on.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The German air force element that provided close air support to Blitzkrieg ground forces was the ___.",
+          "correctAnswer": "Luftwaffe",
+          "distractors": ["Wehrmacht", "Kriegsmarine", "Waffen-SS"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_phoney_war_expectation",
+      "correctAnswer": "WWI-style trench warfare",
+      "acceptableAlternatives": ["static trench warfare", "a repeat of WWI"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "During the Phoney War (1939–1940), why did Allied commanders feel falsely secure despite Germany having just conquered Poland?",
+      "explanation": "Allied commanders expected Germany to attack France the same way it attacked in WWI — a frontal assault that would bog down into trenches. The Maginot Line was designed for exactly this scenario. Germany had other plans: Blitzkrieg through Belgium, then a surprise thrust through the 'impassable' Ardennes forest. Allied overconfidence in static defense proved catastrophic. The Phoney War gave Germany exactly the time it needed to finalize the invasion plan.",
+      "visualDescription": "Pixel art of smug Allied officers studying a map with a thick Maginot Line marked in red, while a small German arrow sneaks around above the line through Belgium, unnoticed",
+      "sourceName": "Wikipedia — Phoney War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Phoney_War",
+      "volatile": false,
+      "distractors": [
+        "Germany would attack through Switzerland",
+        "Italy would mediate a peace deal before fighting began",
+        "Germany lacked enough tanks to invade France",
+        "The USA would intervene before Germany attacked west",
+        "The Soviet Union would attack Germany from the east",
+        "Winter weather would delay any German offensive for years",
+        "Germany would fight defensively after taking Poland",
+        "The RAF would destroy German industry before any invasion"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which major French defensive preparation actually made France MORE vulnerable by encouraging static thinking during the Phoney War?",
+          "correctAnswer": "The Maginot Line",
+          "distractors": [
+            "The Siegfried Line",
+            "Belgian neutrality",
+            "The British Expeditionary Force deployment"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How did Germany use the eight months of the Phoney War while France waited behind the Maginot Line?",
+          "correctAnswer": "Germany consolidated gains and finalized plans to invade through Belgium",
+          "distractors": [
+            "Germany rebuilt its air force after losses in Poland",
+            "Germany negotiated secretly with Britain for a separate peace",
+            "Germany trained new infantry divisions at the French border"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Phoney War was called 'drôle de guerre' in French, meaning 'strange war.'",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Phoney War's false sense of security was shattered on ___ when Germany invaded Belgium and France.",
+          "correctAnswer": "May 10, 1940",
+          "distractors": ["June 22, 1940", "April 9, 1940", "March 1, 1940"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_maginot_symbolism",
+      "correctAnswer": "France was still planning for WWI-style warfare",
+      "acceptableAlternatives": ["French military thinking was stuck in WWI", "outdated static defense strategy"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Beyond being outflanked, the Maginot Line has become a lasting strategic symbol. What does 'Maginot Line thinking' mean when applied to modern strategy?",
+      "explanation": "The Maginot Line was built in the 1930s at enormous expense to replay the last war — WWI. France invested billions in fixed underground fortifications optimized for a German frontal attack that never came. Germany simply went around it through Belgium. Today, 'Maginot Line thinking' describes any strategy where an organization builds defenses against the last threat while ignoring how the next attack will be entirely different. It's a permanent lesson in the danger of fighting the previous war.",
+      "visualDescription": "Pixel art of a museum-style exhibit showing the Maginot Line cross-section underground fortress with visitors, while a small window shows tanks driving past it on the outside",
+      "sourceName": "Wikipedia — Maginot Line",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Maginot_Line",
+      "volatile": false,
+      "distractors": [
+        "Overwhelming force guarantees victory",
+        "Fixed fortifications are always superior to mobile armies",
+        "Defense is always more expensive than offense",
+        "Technology always defeats strategy",
+        "International alliances make invasions impossible",
+        "Air power makes ground fortifications obsolete",
+        "Geography determines the outcome of wars",
+        "Trench warfare will always be strategically decisive"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What decade was the Maginot Line primarily constructed, after which Germany bypassed it entirely?",
+          "correctAnswer": "1930s",
+          "distractors": [
+            "1920s",
+            "1940s",
+            "1910s"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Maginot Line was designed to protect which specific border — the one Germany chose NOT to attack across?",
+          "correctAnswer": "The French-German border",
+          "distractors": [
+            "The French-Italian border",
+            "The French-Spanish border",
+            "The French-Swiss border"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Maginot Line was never actually attacked or tested by German forces in 1940 — Germany simply went around it.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "France spent ___ building the Maginot Line, making its strategic irrelevance one of history's costliest military mistakes.",
+          "correctAnswer": "billions",
+          "distractors": ["millions", "almost nothing", "the same as Germany spent on tanks"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_fall_of_france_paris",
+      "correctAnswer": "June 14, 1940",
+      "acceptableAlternatives": ["14 June 1940"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "On what date did German forces occupy Paris, the symbolic capital of France, during the Fall of France?",
+      "explanation": "German forces entered an undefended Paris on June 14, 1940 — just 35 days after the invasion began on May 10. The French government had already fled to Bordeaux. Paris was declared an 'open city' to spare it from bombardment, meaning it surrendered without a fight. The image of German soldiers marching down the Champs-Élysées became one of WWII's most powerful symbols of Nazi conquest. France signed the armistice eight days later on June 22.",
+      "visualDescription": "Pixel art of German soldiers marching in formation down a wide Parisian boulevard past the Arc de Triomphe, Nazi flags hanging from grand buildings, while a few Parisians watch from the sidewalk",
+      "sourceName": "Wikipedia — Battle of France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_France",
+      "volatile": false,
+      "distractors": [
+        "May 10, 1940",
+        "June 22, 1940",
+        "June 4, 1940",
+        "May 28, 1940",
+        "July 1, 1940",
+        "June 1, 1940",
+        "June 20, 1940",
+        "May 20, 1940"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Why was Paris declared an 'open city' when German forces approached in June 1940?",
+          "correctAnswer": "To spare it from bombardment by surrendering without resistance",
+          "distractors": [
+            "To trick Germany into a street-fighting ambush",
+            "Because the Allies had already evacuated all military personnel",
+            "Because Pétain ordered the garrison to defend to the last man"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many days after Germany's invasion began on May 10 did German forces enter Paris on June 14, 1940?",
+          "correctAnswer": "35 days",
+          "distractors": [
+            "14 days",
+            "56 days",
+            "21 days"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: French forces fought and held Paris for several weeks before it finally fell to Germany in mid-June 1940.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "When Paris fell on June 14, 1940, the French government had already fled to ___.",
+          "correctAnswer": "Bordeaux",
+          "distractors": ["Lyon", "Marseille", "London"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_dunkirk_vessels",
+      "correctAnswer": "Hundreds of civilian boats alongside Royal Navy warships",
+      "acceptableAlternatives": ["civilian and military vessels", "little ships and Royal Navy ships"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "What made the Dunkirk evacuation remarkable and earned it the term 'Dunkirk spirit'?",
+      "explanation": "The Royal Navy alone could not evacuate 338,000 troops fast enough. So hundreds of private British civilians — fishermen, ferry operators, yacht owners, and pleasure boaters — spontaneously sailed their small vessels across the English Channel to help. These 'little ships of Dunkirk' became a symbol of ordinary British people rising to extraordinary national crisis. The mixture of professional navy and civilian volunteers became the defining image of British resilience in 1940.",
+      "visualDescription": "Pixel art of a flotilla of mismatched small boats — a fishing trawler, a pleasure yacht, a river ferry — crossing choppy water toward a smoke-filled beach, Royal Navy destroyers visible in the background",
+      "sourceName": "Wikipedia — Dunkirk evacuation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dunkirk_evacuation",
+      "volatile": false,
+      "distractors": [
+        "It was conducted entirely by submarine to avoid air attack",
+        "American volunteer ships secretly participated before the US entered the war",
+        "French naval vessels carried the majority of evacuated troops",
+        "The evacuation happened entirely at night over a single weekend",
+        "Canadian warships formed the core of the evacuation fleet",
+        "German U-boats failed to intercept the evacuation fleet entirely",
+        "It was the largest naval operation in British history before D-Day",
+        "The troops swam to ships waiting offshore"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What collective nickname was given to the small civilian boats that helped evacuate soldiers from Dunkirk in 1940?",
+          "correctAnswer": "The little ships of Dunkirk",
+          "distractors": [
+            "The Channel fleet",
+            "The miracle boats",
+            "The rescue armada"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The term 'Dunkirk spirit' refers to what broader cultural meaning the evacuation took on for Britain?",
+          "correctAnswer": "Ordinary people rising together to overcome national crisis",
+          "distractors": [
+            "The ability of professional soldiers to retreat in good order",
+            "Britain's naval superiority over Germany",
+            "Churchill's personal leadership saving the army"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Dunkirk evacuation successfully rescued over 300,000 Allied troops, preserving the core of Britain's fighting force.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Dunkirk evacuation ran from May 26 to ___, 1940, over nine days of continuous rescue operations.",
+          "correctAnswer": "June 4",
+          "distractors": ["June 10", "May 31", "June 15"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_battle_of_britain_aircraft",
+      "correctAnswer": "Spitfires and Hurricanes",
+      "acceptableAlternatives": ["Hurricane and Spitfire", "RAF Spitfires and Hurricanes"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Which two British fighter aircraft did the RAF use to defend against the Luftwaffe during the Battle of Britain?",
+      "explanation": "The RAF's two front-line fighters during the Battle of Britain were the Supermarine Spitfire and the Hawker Hurricane. The Hurricane bore the greater share of combat — shooting down more German aircraft overall — while the faster Spitfire became more famous as the iconic symbol of the battle. Both were aided critically by Britain's Chain Home radar network, which gave controllers enough warning to direct squadrons precisely where they were needed.",
+      "visualDescription": "Pixel art of a Spitfire and a Hurricane flying in formation above English countryside, sun glinting off their elliptical and straight wings respectively, with contrails against a blue sky",
+      "sourceName": "Wikipedia — Battle of Britain",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Britain",
+      "volatile": false,
+      "distractors": [
+        "Lancaster and Halifax bombers",
+        "Mosquito and Typhoon",
+        "Mustang and Thunderbolt",
+        "Wellington and Stirling",
+        "Beaufighter and Blenheim",
+        "Gladiator and Defiant only",
+        "Meteor and Tempest",
+        "Lysander and Swordfish"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "During the Battle of Britain, which of the two main RAF fighters — Spitfire or Hurricane — actually shot down more German aircraft overall?",
+          "correctAnswer": "Hurricane",
+          "distractors": [
+            "Spitfire",
+            "Both shot down exactly equal numbers",
+            "Neither — anti-aircraft guns were responsible for most kills"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What early-warning system gave RAF controllers enough time to scramble fighters to intercept Luftwaffe raids during the Battle of Britain?",
+          "correctAnswer": "Radar (Chain Home network)",
+          "distractors": [
+            "Codebreaking of Luftwaffe radio signals",
+            "Observer Corps balloon spotters on the coast",
+            "Forward airfields positioned in France"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany's Luftwaffe outnumbered the RAF during the Battle of Britain, yet still failed to achieve air superiority.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Battle of Britain ran from July 10 to ___, 1940, after which Hitler cancelled Operation Sea Lion.",
+          "correctAnswer": "October 31",
+          "distractors": ["September 15", "December 31", "November 30"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_blitz_coventry",
+      "correctAnswer": "Coventry",
+      "acceptableAlternatives": ["Coventry, England"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Beyond London, which British city was so devastated by German bombing during the Blitz that a new German verb — 'to coventrate' — was coined to describe urban destruction?",
+      "explanation": "On November 14–15, 1940, the Luftwaffe launched 'Operation Moonlight Sonata' — a massive raid that killed approximately 568 Coventry civilians, destroyed 4,330 homes, and gutted Coventry Cathedral. The raid was so total that Nazi propaganda minister Goebbels coined the German verb 'koventrieren' (to coventrate) meaning to completely destroy a city by bombing. Coventry became an international symbol of Blitz devastation. Its ruined cathedral was preserved as a war memorial.",
+      "visualDescription": "Pixel art of a ruined Gothic cathedral in a bombed city at dawn, its stone walls standing but roof destroyed and open to the sky, with rubble and smoke around it",
+      "sourceName": "Wikipedia — Coventry Blitz",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Coventry_Blitz",
+      "volatile": false,
+      "distractors": [
+        "Bristol",
+        "Birmingham",
+        "Manchester",
+        "Plymouth",
+        "Southampton",
+        "Liverpool",
+        "Sheffield",
+        "Cardiff"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What preserved symbol in Coventry became an international memorial to Blitz devastation after German bombing in November 1940?",
+          "correctAnswer": "The ruined Coventry Cathedral",
+          "distractors": [
+            "The bombed Coventry Town Hall",
+            "A factory converted into a museum",
+            "A preserved unexploded bomb in the city center"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What was the German code name for the massive November 1940 raid that devastated Coventry during the Blitz?",
+          "correctAnswer": "Operation Moonlight Sonata",
+          "distractors": [
+            "Operation Sea Lion",
+            "Operation Night Eagle",
+            "Operation Barbarossa"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The German Blitz achieved its strategic goal of breaking British civilian will to continue fighting.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Blitz ran from September 7, 1940 to ___, 1941, a sustained campaign of bombing British cities.",
+          "correctAnswer": "May 11",
+          "distractors": ["December 31", "March 15", "July 4"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_sedan_manstein",
+      "correctAnswer": "Erich von Manstein",
+      "acceptableAlternatives": ["von Manstein", "General Manstein"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The Sedan breakthrough and overall German invasion plan for France was built around which general's audacious 'Sickle Cut' strategy?",
+      "explanation": "General Erich von Manstein devised the 'Sickle Cut' (Sichelschnitt) plan — routing the main German armored thrust through the Ardennes forest, which Allied planners considered impassable to tanks. The plan was initially rejected by Hitler and the Wehrmacht high command as too risky, but Manstein persistently lobbied for it. Once approved, it succeeded beyond expectations: within days of crossing the Meuse at Sedan, German armor had reached the English Channel, trapping over 300,000 Allied troops.",
+      "visualDescription": "Pixel art of a German general in a peaked cap gesturing at a map table, a bold curved arrow sweeping through a forest region and cutting to a coastline, surrounding a mass of Allied troops",
+      "sourceName": "Wikipedia — Erich von Manstein",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erich_von_Manstein",
+      "volatile": false,
+      "distractors": [
+        "Erwin Rommel",
+        "Heinz Guderian",
+        "Gerd von Rundstedt",
+        "Wilhelm Keitel",
+        "Fedor von Bock",
+        "Walter Model",
+        "Franz Halder",
+        "Albert Kesselring"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the German code name for von Manstein's plan to route armor through the Ardennes to outflank Allied forces in France?",
+          "correctAnswer": "Sichelschnitt (Sickle Cut)",
+          "distractors": [
+            "Operation Sea Lion",
+            "Fall Weiss",
+            "Operation Barbarossa"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Why did Allied planners not defend the Ardennes route that Manstein exploited in May 1940?",
+          "correctAnswer": "They believed the dense forest was impassable for armored vehicles",
+          "distractors": [
+            "The Ardennes was inside Belgian territory and politically off-limits",
+            "Germany had signed a treaty guaranteeing it would not use that route",
+            "Allied commanders simply ran out of troops to deploy there"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Von Manstein's Sickle Cut plan was immediately embraced by Hitler and the Wehrmacht high command when first proposed.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After German armor crossed the Meuse at Sedan, tanks drove to the ___ Channel, cutting off Allied armies from behind.",
+          "correctAnswer": "English",
+          "distractors": ["North Sea", "Atlantic", "Mediterranean"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_poland_war_declaration",
+      "correctAnswer": "September 3, 1939",
+      "acceptableAlternatives": ["3 September 1939", "Sept 3, 1939"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Germany invaded Poland on September 1, 1939. On what date did Britain and France formally declare war on Germany?",
+      "explanation": "Britain and France gave Germany an ultimatum: withdraw from Poland or face war. Germany ignored it. Britain declared war at 11am on September 3, France followed at 5pm the same day. This is the formal start of WWII in Europe. The two-day gap between Poland's invasion and the Western declarations reflects how long diplomacy took — and how much France and Britain hesitated before honoring their treaty obligations to Poland.",
+      "visualDescription": "Pixel art of a British radio set with a BBC microphone, Neville Chamberlain's face solemn in the background, with the date September 3, 1939 displayed on a calendar on the wall",
+      "sourceName": "Wikipedia — Invasion of Poland",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+      "volatile": false,
+      "distractors": [
+        "September 1, 1939",
+        "September 7, 1939",
+        "October 1, 1939",
+        "August 31, 1939",
+        "September 10, 1939",
+        "September 17, 1939",
+        "November 1, 1939",
+        "September 15, 1939"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Britain declared war on Germany on September 3, 1939. What treaty obligation triggered this declaration?",
+          "correctAnswer": "Britain's guarantee to defend Poland",
+          "distractors": [
+            "Britain's mutual defense pact with France",
+            "The League of Nations binding vote",
+            "A secret agreement with the Soviet Union"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Who was the British Prime Minister who announced Britain's declaration of war on Germany on September 3, 1939?",
+          "correctAnswer": "Neville Chamberlain",
+          "distractors": [
+            "Winston Churchill",
+            "Clement Attlee",
+            "Anthony Eden"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Britain and France declared war on Germany on the same day Germany invaded Poland, September 1, 1939.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "On September 3, 1939, ___ declared war on Germany in the morning, and France followed in the afternoon.",
+          "correctAnswer": "Britain",
+          "distractors": ["The United States", "The Soviet Union", "Italy"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_battle_of_britain_significance",
+      "correctAnswer": "It was the first major defeat of Nazi Germany",
+      "acceptableAlternatives": ["first German defeat of the war", "proved Germany could be stopped"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Why is the Battle of Britain (1940) considered a turning point beyond just saving Britain from invasion?",
+      "explanation": "Before the Battle of Britain, Nazi Germany had never suffered a significant defeat — Poland, Denmark, Norway, Belgium, and France had all fallen in rapid succession. When the Luftwaffe failed to defeat the RAF and Hitler cancelled Operation Sea Lion in autumn 1940, it shattered the myth of German invincibility. The battle demonstrated that the Third Reich could be stopped, providing a crucial psychological boost to occupied peoples and resistance movements across Europe. Churchill captured it: 'Never was so much owed by so many to so few.'",
+      "visualDescription": "Pixel art of Churchill giving a speech with a stern expression, RAF pilots in the background toasting with mugs, a scoreboard on the wall showing RAF losses vs higher Luftwaffe losses",
+      "sourceName": "Wikipedia — Battle of Britain",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Britain",
+      "volatile": false,
+      "distractors": [
+        "It forced Germany to abandon the war entirely",
+        "It brought the United States into the war immediately",
+        "It caused Italy to switch sides to the Allies",
+        "It triggered the Soviet Union to declare war on Germany",
+        "It enabled Britain to invade France in 1941",
+        "It destroyed the Luftwaffe so completely it could not fight again",
+        "It caused Japan to refuse to ally with Germany",
+        "It ended German bombing of British cities permanently"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Churchill's famous quote 'Never was so much owed by so many to so few' referred to which group that defended Britain in 1940?",
+          "correctAnswer": "RAF fighter pilots",
+          "distractors": [
+            "Royal Navy sailors at Dunkirk",
+            "British Army soldiers defending airfields",
+            "Civilian workers building Spitfires"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Before the Battle of Britain, which sequence of countries had Germany already conquered, building an image of invincibility?",
+          "correctAnswer": "Poland, Denmark, Norway, Belgium, and France",
+          "distractors": [
+            "Austria, Czechoslovakia, and Poland only",
+            "France and Spain",
+            "Poland, Hungary, and Yugoslavia"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of Britain was fought entirely over the English Channel, with no combat over British soil.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After the Battle of Britain, Hitler cancelled Operation ___, his plan to invade Britain by sea.",
+          "correctAnswer": "Sea Lion",
+          "distractors": ["Barbarossa", "Dynamo", "Overlord"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_blitz_strategic_failure",
+      "correctAnswer": "It failed — British morale strengthened rather than broke",
+      "acceptableAlternatives": ["the Blitz failed to break British morale", "it united Britain instead of demoralizing it"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Germany launched the Blitz to destroy British civilian morale and force surrender. What was the actual strategic result?",
+      "explanation": "Germany's theory was that sustained bombing would break British civilians' will to fight, forcing a negotiated peace. The opposite happened. The shared experience of danger and loss created a 'Blitz spirit' — a national solidarity and defiance that made the British population more determined to resist. The phrase 'keep calm and carry on' (from an actual government propaganda poster) captured this attitude. The Blitz killed over 40,000 civilians but failed completely as a strategic weapon against morale.",
+      "visualDescription": "Pixel art of a London street after bombing — rubble beside intact buildings, a milkman delivering bottles as if nothing happened, a 'Business As Usual' sign in a cracked shop window",
+      "sourceName": "Wikipedia — The Blitz",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Blitz",
+      "volatile": false,
+      "distractors": [
+        "Britain sought peace negotiations after the second month of bombing",
+        "The Blitz succeeded in destroying key British war industries",
+        "British morale collapsed but the military refused to surrender",
+        "The Blitz forced Britain to divert all fighters from offense to defense",
+        "Britain evacuated its government to Canada to escape the bombing",
+        "The bombing destroyed most of London's docks, crippling supply lines",
+        "British civilian protests demanded Churchill negotiate with Hitler",
+        "The Blitz succeeded but Germany stopped to focus on the Soviet Union"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What popular British phrase — originally from a WWII government poster — became associated with civilian resilience during the Blitz?",
+          "correctAnswer": "Keep calm and carry on",
+          "distractors": [
+            "We shall fight on the beaches",
+            "Britain can take it",
+            "Their finest hour"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Germany shifted to bombing British cities during the Blitz after failing at what previous goal in the Battle of Britain?",
+          "correctAnswer": "Destroying the RAF to gain air superiority",
+          "distractors": [
+            "Sinking the Royal Navy to clear the Channel",
+            "Capturing British airfields through paratroop landings",
+            "Starving Britain through submarine blockade"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Blitz ended in May 1941 when Germany redirected Luftwaffe forces to the Eastern Front for the invasion of the Soviet Union.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Blitz killed over 40,000 British civilians and destroyed approximately ___ homes.",
+          "correctAnswer": "1 million",
+          "distractors": ["100,000", "5 million", "250,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_vichy_collaboration",
+      "correctAnswer": "Deporting Jewish people to Nazi death camps",
+      "acceptableAlternatives": ["deporting Jews to concentration camps", "collaborating in deportation of Jewish Frenchmen"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Beyond political submission, how did the Vichy regime actively collaborate with Nazi Germany in the persecution of people?",
+      "explanation": "Vichy France did not merely tolerate Nazi occupation passively — it actively collaborated in implementing Nazi racial policies. The Vichy government voluntarily passed antisemitic laws and participated in organizing the deportation of Jewish people to Nazi death camps, even going beyond what Germany demanded in some cases. The 1942 Vel' d'Hiv Roundup, in which French police rounded up over 13,000 Jewish people including children, was organized and carried out by Vichy authorities, not Germans. This active complicity — rather than passive acquiescence — makes Vichy one of WWII's darkest chapters.",
+      "visualDescription": "Pixel art of a solemn memorial flame burning before a curved stone wall inscribed with names, the colors of France reflected in the stone",
+      "sourceName": "Wikipedia — Vichy France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vichy_France",
+      "volatile": false,
+      "distractors": [
+        "Providing France's navy to help Germany blockade Britain",
+        "Sending French soldiers to fight on the Eastern Front",
+        "Sharing French nuclear research with Germany",
+        "Allowing German submarines to use French Atlantic ports only",
+        "Supplying Germany with French wheat as war reparations",
+        "Handing over French colonial territories to German administration",
+        "Arresting British spies on behalf of the Gestapo only",
+        "Providing German troops with French military equipment"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The 1942 Vel' d'Hiv Roundup, where over 13,000 Jewish people were rounded up in Paris for deportation, was carried out by which authorities?",
+          "correctAnswer": "French (Vichy) police, not German forces",
+          "distractors": [
+            "German SS units operating in occupied Paris",
+            "A joint French-German operation under direct Wehrmacht command",
+            "French Resistance members working as informants for Germany"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "After the war, what was the legal fate of Vichy leader Marshal Pétain, who had been a celebrated WWI hero?",
+          "correctAnswer": "He was tried for treason and sentenced to death, later commuted to life imprisonment",
+          "distractors": [
+            "He escaped to Argentina and was never prosecuted",
+            "He was executed immediately upon France's liberation",
+            "He was pardoned due to his WWI service and lived freely"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Vichy France's collaboration with Nazi racial policies went beyond passive compliance in some cases, with French authorities taking initiative beyond German demands.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "French ___ fighters and the Free French movement under de Gaulle opposed the Vichy collaborationist regime throughout the occupation.",
+          "correctAnswer": "Resistance",
+          "distractors": ["Navy", "Communist", "Colonial"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_vichy_duration",
+      "correctAnswer": "1940–1944",
+      "acceptableAlternatives": ["June 1940 to August 1944", "4 years"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Vichy France existed as a collaborationist puppet state under Nazi Germany. Which period does this cover?",
+      "explanation": "Vichy France existed from the armistice signing on June 22, 1940, until Allied forces liberated Paris on August 25, 1944 — roughly four years. During this time, Vichy collaborated in Nazi policies including the deportation of over 75,000 Jewish people from France to Nazi death camps. The regime's cooperation with the occupiers — rather than purely passive surrender — makes it one of WWII's most morally complex chapters.",
+      "visualDescription": "Pixel art of a timeline bar from 1940 to 1944 with a French-German flag hybrid at the left end and a Free France tricolor flag at the right end, resistance fighters marching below",
+      "sourceName": "Wikipedia — Vichy France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vichy_France",
+      "volatile": false,
+      "distractors": [
+        "1939–1943",
+        "1941–1945",
+        "1938–1942",
+        "1940–1945",
+        "1942–1944",
+        "1943–1945",
+        "1937–1941",
+        "1940–1943"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "On what date was Paris liberated by Allied forces, effectively ending the Vichy regime's authority?",
+          "correctAnswer": "August 25, 1944",
+          "distractors": [
+            "June 6, 1944",
+            "May 8, 1945",
+            "September 2, 1944"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What organized French opposition to Vichy France operated from London during the occupation?",
+          "correctAnswer": "Free French forces under Charles de Gaulle",
+          "distractors": [
+            "The French Communist Party underground",
+            "The Maquis operated independently with no foreign backing",
+            "The French Navy formed a government-in-exile in Algeria only"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Vichy France actively cooperated with Nazi policies, including deporting Jewish people to concentration camps.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Vichy France's collaboration with Nazi Germany remains ___ in French history, given Pétain's earlier status as a WWI hero.",
+          "correctAnswer": "contentious",
+          "distractors": ["celebrated", "forgotten", "legally pardoned"]
+        }
+      ]
+    }
+  ]
+}

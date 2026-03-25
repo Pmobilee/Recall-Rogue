@@ -1,0 +1,424 @@
+{
+  "facts": [
+    {
+      "id": "wwii_wf_dday_beach_nationalities",
+      "correctAnswer": "Utah and Omaha",
+      "acceptableAlternatives": ["Omaha and Utah"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Of the five D-Day beaches, which two were assigned to American forces?",
+      "explanation": "The five D-Day beaches were divided by nationality: Utah and Omaha were American sectors, Gold and Sword were British, and Juno was Canadian. This split reflected each nation's army group alignment along the front. Canadians at Juno had one of the more successful landings of the day, penetrating further inland than any other beach.",
+      "visualDescription": "Pixel art of a color-coded map of the Normandy coastline showing five labeled beach sectors in red, blue, and green from west to east",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
+      "volatile": false,
+      "distractors": ["Gold and Juno", "Sword and Juno", "Omaha and Gold", "Utah and Sword", "Utah and Juno", "Gold and Sword", "Omaha and Juno", "Utah and Gold"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Utah and Omaha were the American D-Day beaches. Which beach was assigned to Canadian forces?",
+          "correctAnswer": "Juno",
+          "distractors": ["Sword", "Gold", "Calais", "Dieppe"]
+        },
+        {
+          "type": "context",
+          "question": "Which two beaches were British sectors on D-Day?",
+          "correctAnswer": "Gold and Sword",
+          "distractors": ["Juno and Gold", "Omaha and Sword", "Utah and Sword", "Juno and Sword"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: All five D-Day beaches were assaulted by American forces.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The five D-Day beaches were Utah, Omaha (American), ___ (Canadian), Gold, and Sword (British).",
+          "correctAnswer": "Juno",
+          "distractors": ["Sword", "Gold", "Calais"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_dday_june_buildup",
+      "correctAnswer": "Over 900,000",
+      "acceptableAlternatives": ["900,000+", "nearly a million", "more than 900,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "By the end of June 1944 — less than a month after D-Day — how many Allied troops had landed in Normandy?",
+      "explanation": "The D-Day assault on June 6 put 156,000 troops ashore, but that was only the beginning. By June 30, Allied logistics had pushed over 900,000 troops, 177,000 vehicles, and 586,000 tons of supplies across the Channel. The sheer scale of this buildup is what turned a beachhead into an unstoppable campaign.",
+      "visualDescription": "Pixel art of a vast harbor filled with supply ships and transport vessels, trucks and tanks rolling down ramps onto a French beach under an overcast sky",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
+      "volatile": false,
+      "distractors": ["156,000", "500,000", "1.5 million", "300,000", "250,000", "750,000", "2 million", "450,000"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "By end of June 1944, over 900,000 Allied troops were in Normandy. How many vehicles also crossed the Channel by that point?",
+          "correctAnswer": "177,000",
+          "distractors": ["50,000", "500,000", "20,000", "1 million"]
+        },
+        {
+          "type": "context",
+          "question": "156,000 Allied troops landed on D-Day itself. Roughly how many times larger was the Allied force in Normandy by end of June?",
+          "correctAnswer": "About 6 times larger",
+          "distractors": ["About the same", "Twice as large", "Ten times larger", "Three times larger"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: By the end of June 1944, over 900,000 Allied troops had landed in Normandy.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "While 156,000 Allied troops stormed ashore on D-Day, the total force in Normandy had grown to over ___ by the end of June 1944.",
+          "correctAnswer": "900,000",
+          "distractors": ["300,000", "500,000", "1.5 million"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_fortitude_deception",
+      "correctAnswer": "Pas de Calais",
+      "acceptableAlternatives": ["Calais", "the Pas-de-Calais"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Operation Fortitude convinced the Germans the main Allied invasion would target which location — not Normandy?",
+      "explanation": "Operation Fortitude was the greatest deception of World War II. A fake army group — 'FUSAG' — was invented, with General Patton notionally in command, because the Germans believed Patton was the Allies' best general and assumed he'd lead the real invasion. Double agents fed false intelligence, fake radio traffic simulated a massive army in southeastern England, and inflatable tanks sat in fields. The Germans kept elite Panzer divisions at Pas de Calais even after D-Day, waiting for the 'real' invasion that never came.",
+      "visualDescription": "Pixel art of a field full of inflatable rubber tanks and dummy aircraft, a spy with a radio, and a map with a false arrow pointing at Calais",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Fortitude",
+      "volatile": false,
+      "distractors": ["Brittany", "the Seine estuary", "the Belgian coast", "Cherbourg", "Le Havre", "Bordeaux", "the Cotentin Peninsula", "Dunkirk"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Operation Fortitude used a fake army at Pas de Calais. Which real American general was notionally placed in command of this phantom force to fool the Germans?",
+          "correctAnswer": "George Patton",
+          "distractors": ["Omar Bradley", "Dwight Eisenhower", "Mark Clark", "Douglas MacArthur"]
+        },
+        {
+          "type": "context",
+          "question": "What was the name of the phantom army group created for Operation Fortitude, designed to convince Germany the invasion was aimed at Pas de Calais?",
+          "correctAnswer": "FUSAG (First United States Army Group)",
+          "distractors": ["SHAEF", "COSSAC", "Operation Bodyguard", "Army Group Center"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Germans kept Panzer divisions at Pas de Calais even after D-Day, still expecting a 'real' invasion there.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation Fortitude deceived the Germans into believing the Allied invasion would target ___, not Normandy.",
+          "correctAnswer": "Pas de Calais",
+          "distractors": ["Brittany", "Belgium", "Cherbourg"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_paris_choltitz",
+      "correctAnswer": "Dietrich von Choltitz",
+      "acceptableAlternatives": ["von Choltitz", "Choltitz"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Hitler ordered Paris destroyed before the Allies arrived, but which German commander disobeyed the order, saving the city?",
+      "explanation": "When Allied forces approached Paris in August 1944, Hitler gave explicit orders: destroy the city's bridges, monuments, and infrastructure — Paris must not fall into enemy hands intact. The German military governor, General Dietrich von Choltitz, ignored the order. Whether out of sanity, a desire to end his career honorably, or genuine love of the city, he surrendered Paris to French General Philippe Leclerc on August 25, 1944. The city survived with minimal damage.",
+      "visualDescription": "Pixel art of Notre Dame Cathedral and the Eiffel Tower standing intact at night, a German officer sitting at a desk staring at an ignored order, a phone off the hook",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dietrich_von_Choltitz",
+      "volatile": false,
+      "distractors": ["Erwin Rommel", "Gerd von Rundstedt", "Walter Model", "Heinrich Himmler", "Alfred Jodl", "Albert Kesselring", "Friedrich Dollmann", "Günther von Kluge"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Dietrich von Choltitz disobeyed Hitler's order to destroy Paris. On what date did he surrender the city to Allied forces?",
+          "correctAnswer": "August 25, 1944",
+          "distractors": ["June 6, 1944", "August 15, 1944", "September 2, 1944", "July 14, 1944"]
+        },
+        {
+          "type": "context",
+          "question": "Von Choltitz surrendered Paris to which French general who led the liberating column into the city?",
+          "correctAnswer": "Philippe Leclerc",
+          "distractors": ["Charles de Gaulle", "Jean de Lattre de Tassigny", "Georges Bidault", "Henri Giraud"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Hitler ordered Paris destroyed before Allied forces could capture it, but his order was disobeyed.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Paris was saved from destruction when General ___ disobeyed Hitler's order to demolish the city's bridges and monuments.",
+          "correctAnswer": "Dietrich von Choltitz",
+          "distractors": ["Erwin Rommel", "Walter Model", "Albert Kesselring"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_market_garden_arnhem",
+      "correctAnswer": "Arnhem",
+      "acceptableAlternatives": ["the bridge at Arnhem", "Arnhem bridge"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Operation Market Garden's failure centered on one bridge that Allied forces couldn't reach — lending the operation the phrase 'A Bridge Too Far.' Which bridge was it?",
+      "explanation": "Operation Market Garden (September 1944) aimed to seize a series of bridges across the Netherlands, ending in a crossing of the Rhine at Arnhem. The British 1st Airborne Division landed at Arnhem but faced two SS Panzer divisions unexpectedly present. They held a small bridgehead for 9 days but couldn't be relieved. Of 10,000 men who jumped, over 7,500 were killed, wounded, or captured. British General Browning's pre-operation quip that it might be 'a bridge too far' entered history.",
+      "visualDescription": "Pixel art of paratroopers descending in a cloudy Dutch sky above a river, with a large highway bridge in the distance and burning buildings in the foreground",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Market_Garden",
+      "volatile": false,
+      "distractors": ["Nijmegen", "Eindhoven", "Rotterdam", "Utrecht", "Grave", "Veghel", "Son", "Maastricht"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The British 1st Airborne Division was destroyed trying to hold Arnhem. Of the 10,000 men who jumped, how many were killed, wounded, or captured?",
+          "correctAnswer": "Over 7,500",
+          "distractors": ["About 1,000", "About 3,000", "About 5,000", "All 10,000"]
+        },
+        {
+          "type": "context",
+          "question": "Two SS Panzer divisions were unexpectedly resting near Arnhem during Operation Market Garden. Which German officer commanded the forces that defeated the British 1st Airborne?",
+          "correctAnswer": "Wilhelm Bittrich",
+          "distractors": ["Erwin Rommel", "Walther Model", "Sepp Dietrich", "Hans von Luck"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: 'A Bridge Too Far' refers to the bridge at Arnhem during Operation Market Garden.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation Market Garden's final objective was the Rhine crossing at ___— the bridge that proved 'a bridge too far.'",
+          "correctAnswer": "Arnhem",
+          "distractors": ["Nijmegen", "Eindhoven", "Rotterdam"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_bulge_nuts",
+      "correctAnswer": "Nuts!",
+      "acceptableAlternatives": ["Nuts", "\"Nuts!\""],
+      "chainThemeId": 4,
+      "answerTypePoolId": "quotes",
+      "difficulty": 2,
+      "funScore": 10,
+      "quizQuestion": "When the Germans demanded the surrender of besieged Bastogne during the Battle of the Bulge, American commander Brigadier General Anthony McAuliffe replied with a single word. What was it?",
+      "explanation": "On December 22, 1944, German forces surrounding Bastogne delivered a formal demand for surrender. General McAuliffe's initial reaction was a dismissive expletive, but his staff encouraged him to use his written reply. He typed back: 'Nuts!' The German commander, confused, asked for a translation. McAuliffe's aide told him to 'Go to Hell.' The defiance became legendary. Bastogne held until General Patton's Third Army broke through the encirclement on December 26.",
+      "visualDescription": "Pixel art of a snow-covered Belgian town surrounded by German tanks and artillery, a lone American general at a table writing a note that reads NUTS in bold letters",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Anthony_McAuliffe",
+      "volatile": false,
+      "distractors": ["Never!", "Surrender denied!", "No!", "Hell no!", "Impossible!", "We fight on!", "Go to Hell!", "Try and take it!"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "General McAuliffe replied 'Nuts!' to a German surrender demand. Which Belgian town was he defending during the Battle of the Bulge?",
+          "correctAnswer": "Bastogne",
+          "distractors": ["Liège", "Malmedy", "St. Vith", "Dinant"]
+        },
+        {
+          "type": "context",
+          "question": "Bastogne held out until relieved on December 26, 1944. Whose army broke through the German encirclement to relieve the town?",
+          "correctAnswer": "General Patton's Third Army",
+          "distractors": ["General Bradley's 12th Army Group", "General Hodges's First Army", "General Montgomery's 21st Army Group", "General Collins's VII Corps"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: General McAuliffe replied 'Nuts!' when the Germans demanded the surrender of Bastogne in December 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "When the Germans demanded surrender at Bastogne, General McAuliffe's famous one-word written reply was '___!'",
+          "correctAnswer": "Nuts",
+          "distractors": ["Never", "No", "Impossible"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_remagen_bridge",
+      "correctAnswer": "Remagen",
+      "acceptableAlternatives": ["the Remagen bridge", "Ludendorff Bridge at Remagen"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which was the only Rhine River bridge that German forces failed to destroy before American troops could cross it in March 1945?",
+      "explanation": "The Ludendorff Bridge at Remagen was scheduled for demolition as American forces approached on March 7, 1945. The German charges detonated but failed to drop the structure. Sergeant Alexander Drabik became the first American soldier to cross the Rhine. Eisenhower called it a stroke of luck worth its weight in gold. The bridge collapsed 10 days later from structural damage, but by then U.S. engineers had built five pontoon bridges. Hitler had four officers involved in the failure executed.",
+      "visualDescription": "Pixel art of American soldiers sprinting across a damaged iron railway bridge over a wide grey river, smoke rising from failed demolition charges, far bank in sight",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Remagen_bridge",
+      "volatile": false,
+      "distractors": ["Cologne", "Düsseldorf", "Mainz", "Koblenz", "Bonn", "Mannheim", "Wesel", "Karlsruhe"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Remagen bridge was captured March 7, 1945. How many days later did it collapse from accumulated structural damage?",
+          "correctAnswer": "10 days",
+          "distractors": ["2 days", "30 days", "6 months", "1 day"]
+        },
+        {
+          "type": "context",
+          "question": "The Ludendorff Bridge at Remagen collapsed 10 days after capture, but the crossing had already been exploited. What bridge type did American engineers rapidly build to replace it?",
+          "correctAnswer": "Pontoon bridges",
+          "distractors": ["Bailey bridges", "Trestle bridges", "Cable suspension bridges", "Floating log bridges"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Remagen bridge (Ludendorff Bridge) was the only Rhine crossing that German forces failed to demolish before American troops seized it.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "On March 7, 1945, American forces captured the Ludendorff Bridge at ___ — the only Rhine bridge the Germans failed to destroy.",
+          "correctAnswer": "Remagen",
+          "distractors": ["Cologne", "Koblenz", "Mainz"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_ve_day_two_surrenders",
+      "correctAnswer": "Reims and Berlin",
+      "acceptableAlternatives": ["Reims then Berlin", "twice — at Reims and Berlin"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Germany signed its surrender documents in two different cities — explaining why V-E Day is May 8 in Western nations but May 9 in Russia. Name both cities.",
+      "explanation": "On May 7, 1945, Germany signed the first surrender at Reims, France, at Eisenhower's headquarters — effective midnight May 8. Stalin was furious: the signing had happened in the Western-controlled city, with only a minor Soviet officer present. He demanded a second ceremony on Soviet-liberated soil. Germany signed again in Berlin on the night of May 8–9 (May 9 Moscow time). This created the enduring calendar split: the West celebrates V-E Day on May 8, Russia on May 9.",
+      "visualDescription": "Pixel art of two separate signing tables — one in a pale French building with American and British flags, another in a ruined Berlin hall with Soviet red banners — clocks showing different times",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Victory_in_Europe_Day",
+      "volatile": false,
+      "distractors": ["Paris and Moscow", "London and Berlin", "Reims and Moscow", "Paris and Berlin", "Potsdam and Berlin", "London and Reims", "Nuremberg and Berlin", "Vienna and Berlin"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The first German surrender was signed at Reims on May 7. Why did Stalin demand a second signing ceremony?",
+          "correctAnswer": "The Reims signing happened in a Western-controlled city with only a minor Soviet officer present; Stalin wanted a ceremony on Soviet-liberated soil",
+          "distractors": ["The first document contained legal errors", "Germany's eastern commander refused to recognize the Reims signing", "Churchill requested a duplicate for British records", "The original copy was destroyed in a fire"]
+        },
+        {
+          "type": "context",
+          "question": "Because Germany's final surrender was signed during the night of May 8–9 in Berlin, which country celebrates V-E Day on May 9 instead of May 8?",
+          "correctAnswer": "Russia (and other former Soviet states)",
+          "distractors": ["Germany", "Poland", "France", "China"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany signed two separate surrender documents — one at Reims (May 7) and one at Berlin (May 8–9) — due to a dispute over Soviet representation.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany signed surrender at ___ for the Western Allies on May 7, and then again in ___ for the Soviets on May 8–9.",
+          "correctAnswer": "Reims, Berlin",
+          "distractors": ["Paris, Moscow", "London, Berlin", "Brussels, Berlin"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_hurtgen_forgotten",
+      "correctAnswer": "Hürtgen Forest",
+      "acceptableAlternatives": ["the Hurtgen Forest", "Hurtgen"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which costly Allied battle in a German forest lasting nearly 5 months (September 1944 – February 1945) is often called the 'forgotten battle,' partly because it was overshadowed by the Battle of the Bulge?",
+      "explanation": "The Battle of Hürtgen Forest was one of the longest single battles the U.S. Army fought in World War II — nearly 5 months of grinding combat in dense, muddy forest terrain along the German-Belgian border. Over 33,000 Americans became casualties. It was strategically inconclusive and arguably unnecessary. The battle began to be overshadowed almost immediately when the Germans launched the Bulge offensive nearby in December 1944. Ernest Hemingway reported from Hürtgen and later wrote about it in his novel 'Across the River and Into the Trees.'",
+      "visualDescription": "Pixel art of infantrymen struggling through a snow-dusted dark pine forest, foxholes dug between massive fir roots, artillery shell bursts stripping branches, fog obscuring visibility",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_H%C3%BCrtgen_Forest",
+      "volatile": false,
+      "distractors": ["Ardennes Forest", "Black Forest", "Reichswald", "Vosges Mountains", "Siegfried Line", "Aachen", "Paderborn Forest", "Teutoburg Forest"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Battle of Hürtgen Forest saw over 33,000 American casualties. Which famous American author reported from the battle and later referenced it in fiction?",
+          "correctAnswer": "Ernest Hemingway",
+          "distractors": ["John Steinbeck", "Kurt Vonnegut", "Norman Mailer", "James Jones"]
+        },
+        {
+          "type": "context",
+          "question": "The Battle of Hürtgen Forest is called 'forgotten' largely because it was overshadowed by which German offensive that began nearby in December 1944?",
+          "correctAnswer": "Battle of the Bulge",
+          "distractors": ["Operation Market Garden", "Operation Varsity", "The Siege of Aachen", "Operation Autumn Mist"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of Hürtgen Forest lasted nearly 5 months and is sometimes called the 'forgotten battle' of the Western Front.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The '___ battle' of the Western Front, fought in the dense forests near the German-Belgian border from September 1944 to February 1945, cost over 33,000 American casualties.",
+          "correctAnswer": "forgotten",
+          "distractors": ["longest", "bloodiest", "smallest"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_hurtgen_hemingway",
+      "correctAnswer": "Ernest Hemingway",
+      "acceptableAlternatives": ["Hemingway"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which Nobel Prize-winning American author served as a war correspondent during the Battle of Hürtgen Forest and later drew on that experience in his writing?",
+      "explanation": "Ernest Hemingway was 45 years old and already the most famous American writer alive when he embedded with U.S. forces during the Battle of Hürtgen Forest in autumn 1944. He reportedly fought alongside soldiers (technically violating war correspondent rules), drank heavily, and described the forest as the worst place he'd ever seen. His 1950 novel 'Across the River and Into the Trees' and his memoir 'A Moveable Feast' both carry echoes of that experience. He was awarded the Bronze Star for his reporting.",
+      "visualDescription": "Pixel art of a broad-shouldered war correspondent in a field jacket and knitted cap, typewriter in hand, crouching behind a fallen pine tree in a grey forest, soldiers advancing in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ernest_Hemingway#World_War_II",
+      "volatile": false,
+      "distractors": ["John Steinbeck", "Kurt Vonnegut", "Norman Mailer", "William Faulkner", "Truman Capote", "John Dos Passos", "Irwin Shaw", "A.J. Liebling"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hemingway reported from Hürtgen Forest in autumn 1944. Which American military decoration was he awarded for his war reporting?",
+          "correctAnswer": "Bronze Star",
+          "distractors": ["Silver Star", "Medal of Honor", "Purple Heart", "Distinguished Service Cross"]
+        },
+        {
+          "type": "context",
+          "question": "Hemingway's 1950 novel, written partly inspired by his time in the Hürtgen Forest, was titled what?",
+          "correctAnswer": "Across the River and Into the Trees",
+          "distractors": ["A Farewell to Arms", "For Whom the Bell Tolls", "The Sun Also Rises", "Men at War"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Ernest Hemingway served as a war correspondent during the Battle of Hürtgen Forest and received the Bronze Star for his reporting.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "___ Hemingway, already the most famous American writer of his era, reported from the Battle of Hürtgen Forest in autumn 1944 and was awarded the Bronze Star.",
+          "correctAnswer": "Ernest",
+          "distractors": ["John", "Norman", "Kurt"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,874 @@
+{
+  "facts": [
+    {
+      "id": "wwii_wf_ardennes_terrain",
+      "correctAnswer": "Ardennes Forest",
+      "acceptableAlternatives": ["the Ardennes"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Allied high command believed the Germans would NOT attack through which dense forested region — a miscalculation that allowed Hitler's December 1944 surprise offensive?",
+      "explanation": "The Ardennes Forest's poor roads and thick trees convinced Allied planners it was impassable for a major offensive. Hitler exploited this assumption exactly as he had in 1940, when he also used the Ardennes to bypass the Maginot Line. The December 1944 attack through this 'bad' terrain became the Battle of the Bulge.",
+      "visualDescription": "Pixel art of a snow-covered dense forest at dusk, German tank silhouettes emerging from the tree line, foggy sky blocking air observation",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Bulge",
+      "volatile": false,
+      "distractors": ["Rhine Valley", "Hurtgen Forest", "Black Forest", "Vosges Mountains", "Alsace Plain", "Siegfried Line", "Moselle Valley", "Pfalz Forest"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Battle of the Bulge was launched through which terrain that Allied commanders considered too difficult for a German offensive?",
+          "correctAnswer": "Ardennes Forest",
+          "distractors": ["Rhine Valley", "Vosges Mountains", "Hurtgen Forest", "Black Forest"]
+        },
+        {
+          "type": "context",
+          "question": "Hitler chose the Ardennes Forest for his December 1944 offensive partly because its dense canopy provided cover from what Allied advantage?",
+          "correctAnswer": "Air attack",
+          "distractors": ["Artillery spotting", "Radio interception", "Armored breakthrough", "Naval bombardment"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Ardennes Forest was used by Germany for surprise offensives in both 1940 and 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The December 1944 German offensive through the Ardennes Forest is known as the Battle of the ___.",
+          "correctAnswer": "Bulge",
+          "distractors": ["Rhine", "Siegfried", "Ardennes"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_ardennes_bulge_date",
+      "correctAnswer": "December 1944",
+      "acceptableAlternatives": ["December 16, 1944", "winter 1944"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "In what month and year did Germany launch its surprise offensive through the Ardennes Forest, the last major German offensive on the Western Front?",
+      "explanation": "The December 1944 Ardennes offensive (Battle of the Bulge) was Germany's last major gamble on the Western Front. By exploiting terrain the Allies considered impassable and attacking through fog that grounded Allied air power, Germany temporarily created a 'bulge' in Allied lines before being pushed back by January 1945.",
+      "visualDescription": "Pixel art calendar page showing December 1944, surrounded by snowflakes and battle map arrows pointing through a forested region",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Bulge",
+      "volatile": false,
+      "distractors": ["June 1944", "September 1944", "February 1945", "October 1944", "August 1944", "March 1945", "November 1943", "January 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Battle of the Bulge, Germany's last major Western Front offensive, began in which season?",
+          "correctAnswer": "Winter",
+          "distractors": ["Summer", "Autumn", "Spring", "Early spring"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of the Bulge was launched in December 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany's surprise offensive through the Ardennes in ___ 1944 became known as the Battle of the Bulge.",
+          "correctAnswer": "December",
+          "distractors": ["September", "October", "November"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_cassino_polish",
+      "correctAnswer": "Polish forces",
+      "acceptableAlternatives": ["Poland", "Polish troops", "Polish II Corps"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "After four grueling Allied assaults lasting from January to May 1944, which national force finally captured the summit of Monte Cassino on May 18?",
+      "explanation": "Monte Cassino dominated the approaches to the Liri Valley and the road to Rome. After three failed Allied assaults, it was Polish forces of the II Corps who raised their flag on the ruined monastery on May 18, 1944. The fall of Cassino finally unlocked the path to Rome, which fell three weeks later.",
+      "visualDescription": "Pixel art of a ruined hilltop monastery at dawn, Polish soldiers raising a flag on the rubble, smoke rising from the valley below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Monte_Cassino",
+      "volatile": false,
+      "distractors": ["British forces", "American forces", "Canadian forces", "New Zealand forces", "French forces", "Indian forces", "Australian forces", "South African forces"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Polish forces achieved a major symbolic victory on May 18, 1944 when they captured which heavily contested hilltop monastery in Italy?",
+          "correctAnswer": "Monte Cassino",
+          "distractors": ["Monte Lungo", "Monte Sammucro", "Monte la Defensa", "Monte Rotondo"]
+        },
+        {
+          "type": "context",
+          "question": "Capturing Monte Cassino in May 1944 was strategically important because it opened the road to which Allied objective?",
+          "correctAnswer": "Rome",
+          "distractors": ["Florence", "Naples", "Venice", "Bologna"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: It took four major assaults over several months before Monte Cassino was finally captured in May 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Polish forces captured Monte Cassino on May ___, 1944, after four major Allied assaults.",
+          "correctAnswer": "18",
+          "distractors": ["1", "25", "31"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_cassino_bombing",
+      "correctAnswer": "February 15, 1944",
+      "acceptableAlternatives": ["February 1944", "Feb 15 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "On what date did Allied forces controversially bomb the historic Monte Cassino monastery, destroying a cultural treasure in hopes of dislodging German defenders?",
+      "explanation": "Allied commanders debated bombing the Monte Cassino monastery for weeks. On February 15, 1944, they finally ordered air strikes, destroying the ancient Benedictine abbey founded in 529 AD. Ironically, the rubble actually made it easier for German paratroopers to defend. The bombing became one of the most controversial decisions of the Italian campaign.",
+      "visualDescription": "Pixel art of Allied bombers dropping bombs on a hilltop monastery, the ancient stone walls crumbling in explosions, smoke billowing into a blue sky",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Monte_Cassino",
+      "volatile": false,
+      "distractors": ["January 22, 1944", "March 5, 1944", "December 15, 1943", "April 11, 1944", "February 3, 1944", "March 15, 1944", "January 30, 1944", "February 25, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Allied bombing of the Monte Cassino monastery in February 1944 was controversial partly because it was a site of what?",
+          "correctAnswer": "Cultural/historic significance",
+          "distractors": ["German headquarters", "Civilian hospital", "Prison camp", "Ammunition depot"]
+        },
+        {
+          "type": "context",
+          "question": "After Allied bombers destroyed the Monte Cassino monastery in February 1944, the rubble paradoxically made the position easier for whom to defend?",
+          "correctAnswer": "German paratroopers",
+          "distractors": ["Allied infantry", "Italian partisans", "Polish forces", "British tanks"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Allies bombed the Monte Cassino monastery in February 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Allied forces controversially bombed the Monte Cassino monastery on February ___, 1944.",
+          "correctAnswer": "15",
+          "distractors": ["3", "22", "28"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_husky_date",
+      "correctAnswer": "July 10, 1943",
+      "acceptableAlternatives": ["July 1943", "summer 1943"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Operation Husky, the Allied invasion of Sicily that marked the first assault on Axis territory in Europe, began on what date?",
+      "explanation": "Following the Allied victory in North Africa, Operation Husky launched on July 10, 1943 as the largest amphibious operation in history at the time. Patton's US Seventh Army and Montgomery's British Eighth Army landed along Sicily's southern coast. The techniques and lessons from Husky directly shaped the planning for the Normandy landings a year later.",
+      "visualDescription": "Pixel art of Allied landing craft approaching a rocky Mediterranean coastline at dawn, warships on the horizon, Sicilian hills in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Allied_invasion_of_Sicily",
+      "volatile": false,
+      "distractors": ["June 6, 1943", "September 3, 1943", "August 1, 1943", "May 12, 1943", "July 4, 1943", "August 15, 1943", "June 20, 1943", "October 3, 1943"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Operation Husky was the Allied invasion of which Mediterranean island, the first Allied assault on Axis territory in Europe?",
+          "correctAnswer": "Sicily",
+          "distractors": ["Sardinia", "Corsica", "Malta", "Crete"]
+        },
+        {
+          "type": "context",
+          "question": "Operation Husky in 1943 demonstrated amphibious landing capabilities that were later applied on a larger scale in which 1944 operation?",
+          "correctAnswer": "Operation Overlord (Normandy)",
+          "distractors": ["Operation Market Garden", "Operation Torch", "Operation Dragoon", "Operation Bagration"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Operation Husky was the first Allied invasion of Axis territory in Europe.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After conquering North Africa, the Allies launched Operation ___ to invade Sicily in July 1943.",
+          "correctAnswer": "Husky",
+          "distractors": ["Torch", "Dragoon", "Avalanche"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_husky_duration",
+      "correctAnswer": "38 days",
+      "acceptableAlternatives": ["38", "about 38 days"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "How many days did it take Allied forces to conquer Sicily during Operation Husky, from the July 10 landing to the island's fall on August 17, 1943?",
+      "explanation": "Operation Husky lasted 38 days, from the July 10 landings to August 17, 1943, when the last Axis forces evacuated to mainland Italy. Despite rivalries between Patton and Montgomery slowing coordination, the campaign succeeded as a proof-of-concept for large-scale amphibious assault in the European theater.",
+      "visualDescription": "Pixel art of a map of Sicily with Allied arrows advancing from south to north over 38 days, small calendar ticking in the corner",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Allied_invasion_of_Sicily",
+      "volatile": false,
+      "distractors": ["22 days", "45 days", "60 days", "28 days", "52 days", "18 days", "75 days", "31 days"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Operation Husky, the Allied conquest of Sicily, was completed in approximately how many days?",
+          "correctAnswer": "38 days",
+          "distractors": ["22 days", "60 days", "52 days", "45 days"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Allied forces conquered Sicily in under 40 days during Operation Husky.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Allied forces conquered Sicily in ___ days during Operation Husky (July 10 – August 17, 1943).",
+          "correctAnswer": "38",
+          "distractors": ["22", "52", "60"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_italian_campaign_length",
+      "correctAnswer": "2 years",
+      "acceptableAlternatives": ["two years", "nearly two years", "1943 to 1945"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Despite being expected to fall quickly, the Italian campaign dragged on for how long — from the Sicily invasion in 1943 to the German surrender in northern Italy in 1945?",
+      "explanation": "Italy's long peninsula with its mountain spine (the Apennines) created a defender's paradise. After landing in Sicily and then the mainland in September 1943, the Allies did not reach the Po Valley until April 1945. Germany skillfully used the terrain and fortified defensive lines (Gustav and Gothic) to slow the Allied advance for two full years.",
+      "visualDescription": "Pixel art of a narrow Italian mountain valley with a winding road, defensive fortifications on the heights, Allied troops laboring uphill through rugged terrain",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Italian_campaign_(World_War_II)",
+      "volatile": false,
+      "distractors": ["6 months", "1 year", "3 years", "8 months", "18 months", "4 years", "14 months", "30 months"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What geographic feature of Italy primarily explains why the Allied campaign there lasted approximately two years instead of months?",
+          "correctAnswer": "Mountain spine (Apennines)",
+          "distractors": ["River delta network", "Dense urban areas", "Coastal fortifications", "Swamp regions"]
+        },
+        {
+          "type": "context",
+          "question": "The Italian campaign's two-year duration was made possible by which two German fortified defensive lines?",
+          "correctAnswer": "Gustav Line and Gothic Line",
+          "distractors": ["Siegfried Line and Atlantic Wall", "Winter Line and Hitler Line", "Volturno Line and Caesar Line", "Bernhardt Line and Albert Line"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Italian campaign lasted approximately two years, from 1943 to 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Allied campaign in Italy lasted approximately ___ years, slowed by mountainous terrain and German defensive lines.",
+          "correctAnswer": "2",
+          "distractors": ["1", "3", "4"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_gustav_line",
+      "correctAnswer": "Gustav Line",
+      "acceptableAlternatives": ["the Gustav Line"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After capturing Naples, the Allies encountered which German fortified defensive line stretching coast-to-coast across southern Italy, with Monte Cassino at its center?",
+      "explanation": "The Gustav Line was Germany's main defensive position blocking the road to Rome. Running from the Tyrrhenian Sea to the Adriatic, it was centered on Monte Cassino's commanding heights. Allied forces spent months battering this line in the winter of 1943-44 before it was finally broken in May 1944 when Polish forces captured Cassino.",
+      "visualDescription": "Pixel art of a fortified defensive line across a mountain valley, concrete bunkers, barbed wire, and minefields stretching from coast to coast on a tactical map",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gustav_Line",
+      "volatile": false,
+      "distractors": ["Gothic Line", "Siegfried Line", "Winter Line", "Hitler Line", "Caesar Line", "Albert Line", "Bernhardt Line", "Volturno Line"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Monte Cassino was the centerpiece of which German defensive line that blocked Allied access to Rome in 1943-44?",
+          "correctAnswer": "Gustav Line",
+          "distractors": ["Gothic Line", "Winter Line", "Hitler Line", "Caesar Line"]
+        },
+        {
+          "type": "context",
+          "question": "The Gustav Line was finally broken in May 1944 after which national force captured Monte Cassino?",
+          "correctAnswer": "Polish forces",
+          "distractors": ["American forces", "British forces", "Canadian forces", "French forces"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Gustav Line stretched coast-to-coast across southern Italy with Monte Cassino at its center.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Line was Germany's main defensive fortification in southern Italy, blocking the road to Rome.",
+          "correctAnswer": "Gustav",
+          "distractors": ["Gothic", "Winter", "Hitler"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_gothic_line",
+      "correctAnswer": "Gothic Line",
+      "acceptableAlternatives": ["the Gothic Line"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "North of Rome, the Germans established which defensive line in the northern Apennine Mountains that the Allies spent months breaching in 1944-1945?",
+      "explanation": "After Rome fell in June 1944, the Germans withdrew to the Gothic Line in the northern Apennines. This formidable defensive position slowed Allied progress through the autumn and winter of 1944-45. With most reserves redirected to France after D-Day, Allied forces in Italy never reached Austria or the Balkans before the war ended.",
+      "visualDescription": "Pixel art of high Apennine mountain peaks with fortified German defensive positions, Allied soldiers struggling up steep slopes in autumn fog",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gothic_Line",
+      "volatile": false,
+      "distractors": ["Gustav Line", "Siegfried Line", "Winter Line", "Hitler Line", "Caesar Line", "Albert Line", "Bernhardt Line", "Volturno Line"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Gothic Line was Germany's defensive fortification in which mountain range of northern Italy?",
+          "correctAnswer": "Northern Apennines",
+          "distractors": ["Southern Apennines", "Alps", "Dolomites", "Ligurian Alps"]
+        },
+        {
+          "type": "context",
+          "question": "Allied progress against the Gothic Line slowed in 1944 partly because many reserves were redirected after D-Day to support operations in which country?",
+          "correctAnswer": "France",
+          "distractors": ["Belgium", "Greece", "Yugoslavia", "Austria"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Allied forces broke through the Gothic Line and reached Austria before the war ended.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "North of Rome, Germany established the ___ Line in the northern Apennines as its next major defensive position.",
+          "correctAnswer": "Gothic",
+          "distractors": ["Gustav", "Caesar", "Winter"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_italian_armistice_date",
+      "correctAnswer": "September 3, 1943",
+      "acceptableAlternatives": ["September 1943", "Sept 3, 1943"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did Italy secretly sign an armistice with the Allies, switching sides after Mussolini had been deposed in July 1943?",
+      "explanation": "After Mussolini was deposed and arrested in July 1943, King Victor Emmanuel III negotiated secretly with the Allies. Italy signed the armistice on September 3, 1943. Germany responded swiftly, occupying most of Italy and rescuing Mussolini to lead a puppet state (the Italian Social Republic). Many Italian soldiers found themselves caught between two armies.",
+      "visualDescription": "Pixel art of an Italian general signing papers at a table under Allied flags, a dramatic split showing German tanks rolling into northern Italy simultaneously",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Armistice_of_Cassibile",
+      "volatile": false,
+      "distractors": ["July 25, 1943", "August 15, 1943", "October 13, 1943", "June 4, 1943", "November 8, 1943", "September 8, 1943", "August 3, 1943", "October 1, 1943"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Italy's secret armistice with the Allies was negotiated by which Italian leader after Mussolini's deposition in July 1943?",
+          "correctAnswer": "King Victor Emmanuel III",
+          "distractors": ["Pietro Badoglio", "Benito Mussolini", "Ivanoe Bonomi", "Ferruccio Parri"]
+        },
+        {
+          "type": "context",
+          "question": "After Italy signed its armistice with the Allies in September 1943, Germany responded by doing what?",
+          "correctAnswer": "Occupying most of Italy",
+          "distractors": ["Withdrawing to the Alps", "Surrendering in the south", "Evacuating Sicily", "Retreating to France"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Italy signed an armistice with the Allies on September 3, 1943.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Italy signed its armistice with the Allies on September ___, 1943, after Mussolini was deposed.",
+          "correctAnswer": "3",
+          "distractors": ["8", "15", "25"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_italian_armistice_aftermath",
+      "correctAnswer": "Italian Social Republic",
+      "acceptableAlternatives": ["Salo Republic", "Republic of Salo"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "After Italy's armistice with the Allies in 1943, Germany rescued Mussolini and installed him as head of which German-controlled puppet state in northern Italy?",
+      "explanation": "In a dramatic glider rescue (Operation Oak), German commandos freed Mussolini from captivity in September 1943. Germany then established him as leader of the Italian Social Republic (also called the Salo Republic), a puppet state in German-occupied northern Italy. This created the unusual situation of Italian forces fighting on both sides of the same war.",
+      "visualDescription": "Pixel art of Mussolini standing before a podium in German-occupied northern Italy, German soldiers flanking him, a puppet strings motif subtly visible",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Italian_Social_Republic",
+      "volatile": false,
+      "distractors": ["Kingdom of Italy", "Italian Empire", "National Fascist State", "Italian Republic", "Republic of Venice", "Trieste Protectorate", "Fascist Italy", "Republic of Milan"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Italian Social Republic (Salo Republic) was a puppet state established by Germany in 1943 and led by which figure?",
+          "correctAnswer": "Mussolini",
+          "distractors": ["Victor Emmanuel III", "Pietro Badoglio", "Galeazzo Ciano", "Marshal Kesselring"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: After Italy's armistice with the Allies, Germany rescued Mussolini and made him leader of a puppet state in northern Italy.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany rescued Mussolini and installed him as leader of the Italian ___ Republic in German-occupied northern Italy.",
+          "correctAnswer": "Social",
+          "distractors": ["Fascist", "National", "Imperial"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_crete_airborne",
+      "correctAnswer": "Fallschirmjäger",
+      "acceptableAlternatives": ["German paratroopers", "German airborne troops", "paratroops"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Germany's May 1941 invasion of Crete used which elite airborne troops in history's first large-scale airborne invasion, an operation so costly it ended major German airborne offensives?",
+      "explanation": "Operation Mercury (May 20-31, 1941) was the world's first airborne invasion at scale. German Fallschirmjäger (parachute hunters) suffered catastrophic losses during the landing — defenders killed hundreds in mid-air or on the beaches. Though Crete eventually fell after 11 days, the losses were so severe that Hitler never again ordered a major airborne operation.",
+      "visualDescription": "Pixel art of German paratroopers descending from Ju 52 transport planes over a Mediterranean island, defenders firing upward, crash-landed gliders on an airfield",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Crete",
+      "volatile": false,
+      "distractors": ["Waffen-SS", "Panzergrenadiers", "Gebirgsjäger", "Sturmtruppen", "Pioniere", "Infanterie", "Brandenburgers", "Panzerjäger"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Battle of Crete in May 1941 was the world's first large-scale invasion using what type of military forces?",
+          "correctAnswer": "Airborne troops (paratroopers)",
+          "distractors": ["Amphibious assault forces", "Armored tank divisions", "Naval infantry", "Mountain troops"]
+        },
+        {
+          "type": "context",
+          "question": "Fallschirmjäger losses during the Crete invasion were so severe that Germany never again launched what type of major operation?",
+          "correctAnswer": "Major airborne invasion",
+          "distractors": ["Island amphibious assault", "Mediterranean naval operation", "Large glider assault", "Parachute supply drop"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The German airborne invasion of Crete in 1941 was so costly that Germany never attempted another major airborne invasion.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "German ___ (airborne troops) invaded Crete in May 1941 in history's first large-scale airborne invasion.",
+          "correctAnswer": "Fallschirmjäger",
+          "distractors": ["Panzergrenadiers", "Waffen-SS", "Gebirgsjäger"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_crete_duration",
+      "correctAnswer": "11 days",
+      "acceptableAlternatives": ["eleven days", "about 11 days"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "How many days did the Battle of Crete last, from the German airborne invasion on May 20 to the completion of British evacuation on May 31, 1941?",
+      "explanation": "The Battle of Crete lasted 11 days (May 20-31, 1941). Despite initial German losses so severe the operation nearly failed, the lack of Allied air superiority proved decisive. British and Commonwealth forces evacuated by sea, though many were captured or killed. Crete's fall gave Germany control of the eastern Mediterranean but at a cost that ended its airborne ambitions.",
+      "visualDescription": "Pixel art of British ships evacuating troops from a Cretan harbor under air attack, smoke and explosions in the background, soldiers wading to boats",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Crete",
+      "volatile": false,
+      "distractors": ["5 days", "21 days", "30 days", "15 days", "3 days", "45 days", "8 days", "18 days"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Crete fell to Germany in May 1941 after a battle that lasted approximately how many days?",
+          "correctAnswer": "11 days",
+          "distractors": ["5 days", "21 days", "30 days", "45 days"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of Crete lasted 11 days, from May 20 to May 31, 1941.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Crete fell to German airborne forces after ___ days of fighting in May 1941.",
+          "correctAnswer": "11",
+          "distractors": ["5", "21", "30"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_norway_invasion_date",
+      "correctAnswer": "April 9, 1940",
+      "acceptableAlternatives": ["April 1940", "spring 1940"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "On what date did Germany invade neutral Norway, securing iron ore supply routes and denying Britain a potential staging ground?",
+      "explanation": "Germany invaded Norway on April 9, 1940, the same day it invaded Denmark. The objective was to secure Swedish iron ore shipments that traveled through Norwegian ports and to preempt a British operation that was actually already being planned. Despite British intervention, Norway was conquered in two months. The 400,000-strong German occupation force remained there for the war's remainder.",
+      "visualDescription": "Pixel art of German warships entering a Norwegian fjord at dawn, the Norwegian flag lowering as occupation begins, snow-capped mountains in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Norwegian_campaign",
+      "volatile": false,
+      "distractors": ["May 10, 1940", "March 15, 1940", "June 4, 1940", "February 28, 1940", "April 20, 1940", "March 30, 1940", "May 1, 1940", "April 3, 1940"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Germany's invasion of Norway in April 1940 was primarily motivated by securing supplies of which critical war material?",
+          "correctAnswer": "Iron ore",
+          "distractors": ["Copper", "Coal", "Oil", "Timber"]
+        },
+        {
+          "type": "context",
+          "question": "After conquering Norway in 1940, Germany stationed approximately how many troops there for the rest of the war?",
+          "correctAnswer": "400,000",
+          "distractors": ["50,000", "150,000", "250,000", "600,000"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany invaded neutral Norway on April 9, 1940.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany invaded neutral Norway on April ___, 1940, to secure iron ore supply routes.",
+          "correctAnswer": "9",
+          "distractors": ["1", "15", "20"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_norway_duration",
+      "correctAnswer": "Two months",
+      "acceptableAlternatives": ["2 months", "about two months", "approximately two months", "June 1940"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Despite British attempts to support Norwegian resistance, how long did it take Germany to fully conquer Norway after its April 9, 1940 invasion?",
+      "explanation": "The Norwegian campaign ended on June 10, 1940 — two months after the invasion began. British forces intervened but were overextended. The Norwegian government and royal family escaped to London, where they continued to lead a government-in-exile and Norwegian resistance. Norway would remain under German occupation until May 1945.",
+      "visualDescription": "Pixel art of Norwegian soldiers in mountain terrain fighting a retreating action, a calendar showing the two-month span from April to June 1940",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Norwegian_campaign",
+      "volatile": false,
+      "distractors": ["One week", "One month", "Three months", "Six months", "Four months", "Three weeks", "Five months", "Eight months"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Norwegian campaign ended on June 10, 1940 — how long after Germany's initial invasion?",
+          "correctAnswer": "Two months",
+          "distractors": ["Two weeks", "One month", "Three months", "Six months"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany conquered Norway in approximately two months, despite British intervention.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Norway was conquered by Germany in approximately ___ months, from April 9 to June 10, 1940.",
+          "correctAnswer": "2",
+          "distractors": ["1", "3", "6"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_channel_islands_occupation",
+      "correctAnswer": "Channel Islands",
+      "acceptableAlternatives": ["Guernsey and Jersey", "the Channel Islands"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Which British territory, consisting of islands including Guernsey and Jersey, was the ONLY part of Britain conquered and occupied by Germany during World War II?",
+      "explanation": "The Channel Islands were invaded on July 1, 1940, making them the only British territory occupied by Germany during the war. Britain chose not to defend them militarily as they were strategically indefensible. The occupation lasted nearly five years until May 1945, and included forced labor, deportations, and heavy German fortification. The islands became a symbol of occupation in British memory.",
+      "visualDescription": "Pixel art of a British island with German occupation signs posted on country lanes, soldiers guarding a harbor, the Union Jack replaced by the German flag",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_occupation_of_the_Channel_Islands",
+      "volatile": false,
+      "distractors": ["Isle of Man", "Isle of Wight", "Orkney Islands", "Shetland Islands", "Hebrides", "Falkland Islands", "Gibraltar", "Bermuda"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The German occupation of the Channel Islands from July 1940 to May 1945 is historically significant as the only occupation of what?",
+          "correctAnswer": "British territory",
+          "distractors": ["French-speaking territory", "Allied supply route", "Atlantic port", "Commonwealth land"]
+        },
+        {
+          "type": "context",
+          "question": "The German occupation of the Channel Islands began on July 1, 1940, and lasted until which year?",
+          "correctAnswer": "1945",
+          "distractors": ["1944", "1943", "1942", "1946"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Channel Islands were the only British territory occupied by Germany during World War II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Islands (including Guernsey and Jersey) were the only British territory occupied by Germany in World War II.",
+          "correctAnswer": "Channel",
+          "distractors": ["Orkney", "Shetland", "Hebrides"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_channel_islands_date",
+      "correctAnswer": "July 1, 1940",
+      "acceptableAlternatives": ["July 1940", "summer 1940"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "On what date did German forces begin their occupation of the Channel Islands, starting what would become the only German occupation of British territory in the entire war?",
+      "explanation": "Germany occupied the Channel Islands beginning July 1, 1940, just weeks after France's fall. Britain had declared the islands 'open' (demilitarized) to avoid civilian casualties. The occupation lasted until May 9, 1945 — one of the last German-held territories to surrender, as the isolated garrison had no means to escape.",
+      "visualDescription": "Pixel art of German troops marching down a picturesque English-looking country road, traditional British-style cottages in the background, date marker showing July 1940",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_occupation_of_the_Channel_Islands",
+      "volatile": false,
+      "distractors": ["June 15, 1940", "August 1, 1940", "May 25, 1940", "July 15, 1940", "June 28, 1940", "August 10, 1940", "July 8, 1940", "September 1, 1940"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The German occupation of the Channel Islands ended on May 9, 1945 — approximately how long did the occupation last?",
+          "correctAnswer": "Nearly 5 years",
+          "distractors": ["2 years", "3 years", "6 years", "1 year"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany occupied the Channel Islands starting in July 1940 and held them until May 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany began occupying the Channel Islands on July ___, 1940, after Britain declared them demilitarized.",
+          "correctAnswer": "1",
+          "distractors": ["4", "10", "20"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_husky_commanders",
+      "correctAnswer": "Patton and Montgomery",
+      "acceptableAlternatives": ["General Patton and Field Marshal Montgomery", "George Patton and Bernard Montgomery"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which two Allied commanders led their respective armies in the invasion of Sicily during Operation Husky, their rivalry foreshadowing famous tensions in the campaigns ahead?",
+      "explanation": "Operation Husky saw General George Patton's US Seventh Army and Field Marshal Bernard Montgomery's British Eighth Army land along Sicily's southern coast on July 10, 1943. Their intense rivalry — particularly over who would enter Palermo or Messina first — slowed coordination but also pushed both armies to advance rapidly. Their competition continued in northwest Europe after D-Day.",
+      "visualDescription": "Pixel art of two commanders standing on opposite sides of a map of Sicily, one American general and one British field marshal, each pointing toward different routes",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Allied_invasion_of_Sicily",
+      "volatile": false,
+      "distractors": ["Eisenhower and Rommel", "Bradley and Alexander", "Clark and Leese", "Hodges and Dempsey", "MacArthur and Cunningham", "Truscott and Horrocks", "Ridgway and Freyberg", "Lucian Truscott and Oliver Leese"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "General Patton commanded which US army during Operation Husky, the Allied invasion of Sicily?",
+          "correctAnswer": "US Seventh Army",
+          "distractors": ["US Fifth Army", "US Third Army", "US First Army", "US Ninth Army"]
+        },
+        {
+          "type": "context",
+          "question": "The rivalry between Patton and Montgomery during Operation Husky in Sicily later continued during Allied operations in which theater?",
+          "correctAnswer": "Northwest Europe (after D-Day)",
+          "distractors": ["North Africa", "Pacific", "Eastern Front", "Middle East"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Both Patton and Montgomery commanded forces during the Allied invasion of Sicily in 1943.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation Husky was led by US General ___ and British Field Marshal Montgomery on Sicily's southern coast.",
+          "correctAnswer": "Patton",
+          "distractors": ["Bradley", "Clark", "Eisenhower"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_italy_sept43_invasion",
+      "correctAnswer": "September 1943",
+      "acceptableAlternatives": ["September 3, 1943", "autumn 1943"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "After conquering Sicily, the Allies invaded mainland Italy in what month and year, opening the long Italian campaign?",
+      "explanation": "The Allied invasion of mainland Italy began on September 3, 1943 — the same day as Italy's armistice — with landings at Reggio Calabria. A larger amphibious landing at Salerno followed on September 9. Germany rapidly occupied most of Italy after the armistice, turning the peninsula into a two-year battleground rather than the quick route to Germany's southern flank that planners had hoped for.",
+      "visualDescription": "Pixel art of Allied landing craft approaching the Italian mainland coast, the boot-shaped peninsula visible on a tactical map, German forces shown rapidly moving south",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Italian_campaign_(World_War_II)",
+      "volatile": false,
+      "distractors": ["July 1943", "October 1943", "August 1943", "November 1943", "June 1943", "December 1943", "February 1944", "January 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Allied invasion of mainland Italy in September 1943 followed the conquest of which island?",
+          "correctAnswer": "Sicily",
+          "distractors": ["Sardinia", "Corsica", "Malta", "Elba"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Allied invasion of mainland Italy began in September 1943.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After Sicily, the Allies invaded mainland Italy in ___ 1943, coinciding with Italy's armistice.",
+          "correctAnswer": "September",
+          "distractors": ["August", "October", "November"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_crete_date",
+      "correctAnswer": "May 20, 1941",
+      "acceptableAlternatives": ["May 1941", "spring 1941"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did Germany launch Operation Mercury, the airborne invasion of Crete using Fallschirmjäger paratroopers?",
+      "explanation": "Operation Mercury began on May 20, 1941, when thousands of German Fallschirmjäger parachuted and glided onto Crete. The operation's first hours were nearly catastrophic for the Germans — Allied defenders killed hundreds of paratroopers on the drop zones. But the capture of Maleme airfield allowed reinforcements to arrive, turning the battle. Crete fell eleven days later on May 31.",
+      "visualDescription": "Pixel art of May 20, 1941 on a calendar, German Ju-52 transport planes above a Mediterranean island, paratroopers deploying in the sky",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Crete",
+      "volatile": false,
+      "distractors": ["April 6, 1941", "June 1, 1941", "May 1, 1941", "March 28, 1941", "April 27, 1941", "May 10, 1941", "June 10, 1941", "April 18, 1941"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The capture of which Cretan airfield on May 20-21, 1941 proved decisive in allowing German reinforcements to land and turn the battle?",
+          "correctAnswer": "Maleme airfield",
+          "distractors": ["Heraklion airfield", "Rethymno airfield", "Iraklion airfield", "Suda Bay airfield"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The German airborne invasion of Crete (Operation Mercury) began on May 20, 1941.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany launched Operation Mercury, the airborne invasion of Crete, on May ___, 1941.",
+          "correctAnswer": "20",
+          "distractors": ["1", "10", "27"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_norway_ironore",
+      "correctAnswer": "Iron ore",
+      "acceptableAlternatives": ["Swedish iron ore", "iron"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Germany's April 1940 invasion of neutral Norway was primarily motivated by securing access to which critical war material that traveled through Norwegian ports from Sweden?",
+      "explanation": "Sweden supplied Germany with high-grade iron ore essential for steel production and the war machine. The ore was shipped through the Norwegian port of Narvik, especially in winter when the Baltic froze. Germany feared Britain would mine Norwegian waters or occupy Narvik to cut this supply. Ironically, Britain was actually planning exactly that when Germany struck first on April 9, 1940.",
+      "visualDescription": "Pixel art of a Norwegian fjord with ore carriers loading at a dock, Swedish mountains visible in the background, a German warship entering the harbor",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Norwegian_campaign",
+      "volatile": false,
+      "distractors": ["Coal", "Oil", "Copper", "Aluminum", "Timber", "Fish", "Nickel", "Uranium"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Swedish iron ore was shipped to Germany through which Norwegian port, making it a strategic target in 1940?",
+          "correctAnswer": "Narvik",
+          "distractors": ["Bergen", "Oslo", "Trondheim", "Stavanger"]
+        },
+        {
+          "type": "context",
+          "question": "Germany and Britain were both planning operations in Norway in April 1940 — Germany struck first on April 9. What was Britain planning to do?",
+          "correctAnswer": "Mine Norwegian waters to cut iron ore supply",
+          "distractors": ["Bomb Norwegian airfields", "Land troops in Oslo", "Negotiate Norway into the Allies", "Occupy all Norwegian ports"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany invaded Norway in 1940 partly to secure Swedish iron ore supply routes through Norwegian ports.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany invaded Norway in April 1940 primarily to secure supplies of ___ ore from Sweden.",
+          "correctAnswer": "iron",
+          "distractors": ["coal", "copper", "oil"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wf_gustav_broken",
+      "correctAnswer": "May 1944",
+      "acceptableAlternatives": ["spring 1944", "May 18, 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In what month and year was the German Gustav Line finally broken, after months of Allied assaults including four battles at Monte Cassino?",
+      "explanation": "The Gustav Line held from late 1943 through the winter and spring of 1944. Four Allied assaults battered Monte Cassino between January and May 1944. The line finally broke in May 1944 when Polish forces captured Monte Cassino's summit on May 18 and Allied forces launched Operation Diadem simultaneously across the line. Rome fell three weeks later on June 4, 1944.",
+      "visualDescription": "Pixel art of a fortified defensive line crumbling, Allied soldiers advancing through broken bunkers in May sunshine, a road sign pointing toward Rome in the distance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gustav_Line",
+      "volatile": false,
+      "distractors": ["January 1944", "August 1944", "March 1944", "June 1944", "December 1943", "February 1944", "July 1944", "October 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "After the Gustav Line was broken in May 1944, which major city did Allied forces capture three weeks later?",
+          "correctAnswer": "Rome",
+          "distractors": ["Florence", "Naples", "Bologna", "Milan"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The German Gustav Line in Italy was finally broken in May 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Gustav Line was finally broken in ___ 1944 after Polish forces captured Monte Cassino.",
+          "correctAnswer": "May",
+          "distractors": ["January", "March", "August"]
+        }
+      ]
+    }
+  ]
+}
