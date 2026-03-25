@@ -148,7 +148,9 @@
   import DungeonMap from './ui/components/DungeonMap.svelte'
   // StarterRelicSelection removed in AR-59.12 — file kept as dead code pending deletion approval
   import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
-  import DungeonSelectionScreen from './ui/components/DungeonSelectionScreen.svelte'
+  import DeckSelectionHub from './ui/components/DeckSelectionHub.svelte'
+  import TriviaDungeonScreen from './ui/components/TriviaDungeonScreen.svelte'
+  import StudyTempleScreen from './ui/components/StudyTempleScreen.svelte'
   import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
   import { knowledgeLevelSelected } from './services/cardPreferences'
   import RewardCardDetail from './ui/components/RewardCardDetail.svelte'
@@ -217,7 +219,19 @@
   }
 
   function handleOpenDungeonSelection(): void {
-    transitionScreen('dungeonSelection')
+    transitionScreen('deckSelectionHub')
+  }
+
+  function handleOpenTriviaDungeon(): void {
+    transitionScreen('triviaDungeon')
+  }
+
+  function handleOpenStudyTemple(): void {
+    transitionScreen('studyTemple')
+  }
+
+  function handleBackToDeckHub(): void {
+    transitionScreen('deckSelectionHub')
   }
 
   function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string }): void {
@@ -863,7 +877,7 @@
   // Combat enter transition: show parallax when entering combat
   $effect(() => {
     const screen = $currentScreen
-    if (screen === 'combat' && prevScreen !== 'combat') {
+    if (screen === 'combat' && prevScreen !== 'combat' && prevScreen !== 'campfire') {
       combatTransitionType = 'enter'
       combatTransitionActive = true
     }
@@ -1362,10 +1376,29 @@
     </div>
   {/if}
 
-  {#if $currentScreen === 'dungeonSelection'}
+  {#if $currentScreen === 'deckSelectionHub'}
     <div in:fly={{ y: 8, duration: 350 }}>
-      <DungeonSelectionScreen
+      <DeckSelectionHub
         onback={handleBackToMenu}
+        onSelectTrivia={handleOpenTriviaDungeon}
+        onSelectStudy={handleOpenStudyTemple}
+      />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'triviaDungeon'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <TriviaDungeonScreen
+        onback={handleBackToDeckHub}
+        onStartRun={handleDungeonRunStart}
+      />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'studyTemple'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <StudyTempleScreen
+        onback={handleBackToDeckHub}
         onStartRun={handleDungeonRunStart}
       />
     </div>

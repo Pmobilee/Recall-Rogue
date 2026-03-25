@@ -1,6 +1,6 @@
 import type { Screen } from '../ui/stores/gameState'
 
-export type HubScreenName = Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'leaderboards' | 'social'>
+export type HubScreenName = Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'leaderboards' | 'social' | 'deckSelectionHub' | 'triviaDungeon' | 'studyTemple'>
 
 const RUN_LOCKED_SCREENS = new Set<Screen>([
   'combat',
@@ -20,6 +20,9 @@ const HUB_SCREENS = new Set<Screen>([
   'journal',
   'leaderboards',
   'social',
+  'deckSelectionHub',
+  'triviaDungeon',
+  'studyTemple',
   'relicSanctum',
   'mainMenu',
   'base',

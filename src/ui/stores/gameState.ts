@@ -37,7 +37,9 @@ export type Screen =
   | 'relicSwapOverlay'
   | 'restStudy'
   | 'restMeditate'
-  | 'dungeonSelection'
+  | 'deckSelectionHub'
+  | 'triviaDungeon'
+  | 'studyTemple'
   // 'starterRelicSelection' removed in AR-59.12 — runs start directly at dungeonMap
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
@@ -74,7 +76,9 @@ const VALID_SCREENS: Screen[] = [
   'relicSwapOverlay',
   'restStudy',
   'restMeditate',
-  'dungeonSelection',
+  'deckSelectionHub',
+  'triviaDungeon',
+  'studyTemple',
   // 'starterRelicSelection' removed AR-59.12
 ]
 
@@ -90,7 +94,7 @@ const PERSISTABLE_SCREENS = new Set<Screen>([
   'social',
   'relicSanctum',
   'topicInterests',
-  'dungeonSelection',
+  'deckSelectionHub',
 ])
 
 function normalizeHomeScreen(screen: Screen): Screen {

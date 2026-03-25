@@ -245,18 +245,21 @@ Core systems powering the card roguelite:
 | Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen; **v3:** replaced for run setup by curated deck selection system |
 | Study mode selector | `src/ui/components/StudyModeSelector.svelte` | Built — hub dropdown; **v3:** replaced by curated deck selection flow |
 | Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built — preserved as fallback for pre-map saves |
-| **Dungeon Selection System (AR-244)** | | |
-| Dungeon Selection Screen | `src/ui/components/DungeonSelectionScreen.svelte` | Main unified run configuration screen with mode toggle |
-| Mode Toggle | `src/ui/components/ModeToggle.svelte` | Trivia Dungeon / Study Temple tab switcher |
-| Domain Sidebar | `src/ui/components/DomainSidebar.svelte` | Left sidebar: domain list (checkboxes for trivia, single-select for study) |
-| Trivia Content Area | `src/ui/components/TriviaContentArea.svelte` | Trivia domain/subdomain multi-select grid |
-| Subdomain Checklist | `src/ui/components/SubdomainChecklist.svelte` | Expandable subdomain picker for each domain |
-| Study Content Area | `src/ui/components/StudyContentArea.svelte` | Curated deck grid view with detail panel |
-| Vocab Tree View | `src/ui/components/VocabTreeView.svelte` | Language-grouped vocabulary deck tree with per-language settings cogwheel |
-| Deck Grid | `src/ui/components/DeckGrid.svelte` | Responsive deck tile grid layout |
-| Deck Tile | `src/ui/components/DeckTile.svelte` | Individual deck card with FSRS progress bar and action buttons |
-| Deck Detail | `src/ui/components/DeckDetail.svelte` | Slide-in deck detail panel with sub-deck selection + run/custom buttons |
-| Custom Playlist Bar | `src/ui/components/CustomPlaylistBar.svelte` | Bottom toolbar for saved playlists |
+| **Deck Selection Screens (3-Screen System, AR-244)** | | |
+| Deck Selection Hub | `src/ui/components/DeckSelectionHub.svelte` | Hero split-screen mode selector (Trivia Dungeon vs Study Temple) |
+| Trivia Dungeon Screen | `src/ui/components/TriviaDungeonScreen.svelte` | Trivia mode: DomainStrip + LoadoutCards + SubcategoryChips |
+| Study Temple Screen | `src/ui/components/StudyTempleScreen.svelte` | Study mode: CategoryTabs + DeckTileV2 grid + DeckDetailModal |
+| Domain Strip Card | `src/ui/components/DomainStripCard.svelte` | Individual domain card in horizontal trivia mode strip |
+| Loadout Card | `src/ui/components/LoadoutCard.svelte` | Loadout card showing selected domain + subcategory filter state |
+| Subcategory Chip | `src/ui/components/SubcategoryChip.svelte` | Toggleable subcategory filter chips |
+| Category Tabs | `src/ui/components/CategoryTabs.svelte` | Tab switcher for study mode (All, Languages, History, Science, etc.) |
+| Deck Tile V2 | `src/ui/components/DeckTileV2.svelte` | Study mode individual deck tile with gradient art, progress bar, status badge |
+| Deck Detail Modal | `src/ui/components/DeckDetailModal.svelte` | Centered 640px modal for deck inspection + sub-deck selection |
+| Deck Search Bar | `src/ui/components/DeckSearchBar.svelte` | Study mode search filter for decks and subcategories |
+| Deck Sort Dropdown | `src/ui/components/DeckSortDropdown.svelte` | Study mode sort control (A-Z, progress, fact count) |
+| Deck Filter Chips | `src/ui/components/DeckFilterChips.svelte` | Study mode filter toggles (in-progress, not-started, mastered) |
+| Language Group Header | `src/ui/components/LanguageGroupHeader.svelte` | Language section header in study mode vocabulary tab |
+| Playlist Bar | `src/ui/components/PlaylistBar.svelte` | Bottom toolbar for custom playlist selection/management |
 | Deck Registry | `src/services/deckRegistry.ts` | Curated deck metadata registry (deck IDs → manifest entries) |
 | Deck Fact Index | `src/services/deckFactIndex.ts` | Fast deck/sub-deck → fact ID mapping lookup |
 | Deck Progress Service | `src/services/deckProgressService.ts` | FSRS-based progress aggregation per deck |
@@ -328,20 +331,27 @@ Core systems powering the card roguelite:
 
 **AR-74 Input system**: `inputService` (singleton pub/sub) decouples input sources from UI. `keyboardInput` module auto-subscribes to `layoutMode` and only binds `keydown` listeners in landscape. Components register `inputService.on(actionType, handler)` in `onMount` and call the returned unsubscribe in `onDestroy`. `CardCombatOverlay` calls `setQuizVisible()` on `cardPlayStage` change to enable context-aware key routing (1-4 = quiz answers when quiz visible, card select otherwise). `CardHand` subscribes to `SELECT_CARD` and `DESELECT`. Mouse hover tooltip in `CardHand` is gated by `$isLandscape`.
 
-### Implemented (Dungeon Selection System — AR-244)
+### Implemented (Deck Selection System — 3-Screen Architecture, AR-244)
 
-**Screen:** `DungeonSelectionScreen.svelte` — unified run configuration screen presented on "Start Run" click from Hub.
+**Screens:**
+- `DeckSelectionHub.svelte` — Hero split-screen mode selector landing page; routes to Trivia Dungeon or Study Temple on selection
+- `TriviaDungeonScreen.svelte` — Trivia Dungeon "The Armory": horizontal domain strip, loadout cards, subcategory chip filters, footer status bar with Start Run button
+- `StudyTempleScreen.svelte` — Study Temple "The Library": category tabs, 4-column responsive DeckTileV2 grid, center-modal DeckDetailModal, search/sort/filter controls, playlist bar
 
-**Components:**
-- `ModeToggle.svelte` — Trivia Dungeon / Study Temple tab switcher
-- `DomainSidebar.svelte` — left sidebar domain list (checkboxes for trivia, single-select for study)
-- `TriviaContentArea.svelte` + `SubdomainChecklist.svelte` — trivia domain/subdomain multi-select grid
-- `StudyContentArea.svelte` — curated deck grid view with optional detail panel
-- `VocabTreeView.svelte` — language-grouped vocabulary deck tree with per-language settings cogwheel
-- `DeckGrid.svelte` + `DeckTile.svelte` — responsive deck tile grid with FSRS progress bars
-- `DeckDetail.svelte` — slide-in detail panel for deck inspection and sub-deck selection
-- `CustomPlaylistBar.svelte` — persistent toolbar showing saved custom playlists
-- `LanguageSettingsPanel.svelte` — settings UI for per-language display options (furigana, romaji, etc.)
+**Trivia Dungeon Components:**
+- `DomainStripCard.svelte` — toggleable domain card in horizontal strip
+- `LoadoutCard.svelte` — shows selected domain + loadout state
+- `SubcategoryChip.svelte` — toggleable subcategory filter chip
+
+**Study Temple Components:**
+- `CategoryTabs.svelte` — tab switcher (All, Languages, History, Science, Geography, etc.)
+- `DeckTileV2.svelte` — responsive deck tile with gradient art, progress bar, status badge
+- `DeckDetailModal.svelte` — centered 640px modal for deck details + sub-deck selection + Start Study Run button
+- `DeckSearchBar.svelte` — study mode search filter
+- `DeckSortDropdown.svelte` — sort options (A-Z, progress, fact count)
+- `DeckFilterChips.svelte` — filter toggles (in-progress, not-started, mastered)
+- `LanguageGroupHeader.svelte` — section header in vocabulary tab grouping decks by language
+- `PlaylistBar.svelte` — bottom toolbar for saved custom playlists
 
 **Services:**
 - `deckRegistry.ts` — curated deck metadata index (deck IDs → manifest entries with name, domain, file paths)
@@ -350,21 +360,22 @@ Core systems powering the card roguelite:
 - `languageSettingsService.ts` — persistent per-language display option store
 
 **Data Flow:**
-1. User clicks "Start Run" → `DungeonSelectionScreen` mounts
-2. User selects mode (Trivia or Study) and makes selections
-3. On "Start Run" button click → `handleStartRun(selections)`
-4. Calls `gameFlowController.startNewRun(selections)` with run config (mode, deckId, domain filters, etc.)
-5. `gameFlowController` → sets up appropriate fact pool via:
+1. User clicks "Start Run" → `DeckSelectionHub` mounts (hero mode selector)
+2. User selects Trivia Dungeon or Study Temple
+3. Appropriate screen mounts (`TriviaDungeonScreen` or `StudyTempleScreen`)
+4. User makes selections (domain/deck filters) and clicks "Start Run"
+5. Calls `gameFlowController.startNewRun(selections)` with run config (mode, deckId, domain filters, etc.)
+6. `gameFlowController` → sets up appropriate fact pool via:
    - Trivia mode: `buildTriviaRunPool(domains, subdomains)`
    - Study mode: `buildStudyRunPool(deckId)` + loads curated deck facts
    - All-language mode: `buildLanguageRunPool(languageCode)` → combines all language decks
-6. Routes to `dungeonMap` screen
+7. Routes to `dungeonMap` screen
 
 **State Persistence:**
-- Last selected mode, domain selections, and deck choice stored in `playerSave.dungeonSelectionState`
+- Last selected mode, domain selections, and deck choice stored in `playerSave.deckSelectionState`
 - Custom playlists stored in `playerSave.customPlaylists`
 - Language settings (furigana toggle, romaji toggle, etc.) stored per language in `playerSave.languageSettings`
-- Screen remembers these choices on next visit
+- Screens remember previous selections on next visit
 
 ### Implemented (P0.5 — Mastery Tiers)
 

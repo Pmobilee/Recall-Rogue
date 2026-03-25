@@ -9,6 +9,7 @@ import { registerDeck } from './deckRegistry';
 import { registerDeckFacts, getSubDeckFactIds } from './deckFactIndex';
 import type { DeckRegistryEntry } from './deckRegistry';
 import type { CanonicalFactDomain } from './card-types';
+import { getDomainMetadata } from './domainMetadata';
 
 /** In-memory store of fully loaded curated decks. */
 const loadedDecks: Map<string, CuratedDeck> = new Map();
@@ -55,6 +56,53 @@ export function getAllLoadedDecks(): CuratedDeck[] {
   return Array.from(loadedDecks.values());
 }
 
+/** Mix a hex color with a dark base (#0d1117) at the given ratio (0–1, where 1 = full color). */
+function mixHexWithDark(hex: string, ratio: number): string {
+  const darkR = 13, darkG = 17, darkB = 23; // #0d1117
+  const normalized = hex.replace(/^#/, '').toLowerCase();
+  const r = parseInt(normalized.slice(0, 2), 16);
+  const g = parseInt(normalized.slice(2, 4), 16);
+  const b = parseInt(normalized.slice(4, 6), 16);
+  const mr = Math.round(r * ratio + darkR * (1 - ratio));
+  const mg = Math.round(g * ratio + darkG * (1 - ratio));
+  const mb = Math.round(b * ratio + darkB * (1 - ratio));
+  return `#${mr.toString(16).padStart(2, '0')}${mg.toString(16).padStart(2, '0')}${mb.toString(16).padStart(2, '0')}`;
+}
+
+/** Derive gradient colors and icon from the deck's domain for art placeholders. */
+function deriveArtPlaceholder(
+  domain: string,
+  deckId: string,
+): { gradientFrom: string; gradientTo: string; icon: string } {
+  const meta = getDomainMetadata(domain as CanonicalFactDomain);
+  let colorTint = meta.colorTint;
+  let icon = meta.icon;
+
+  // For vocabulary decks, override icon with a language flag derived from the deck ID prefix.
+  if (domain === 'vocabulary') {
+    const PREFIX_FLAGS: Record<string, string> = {
+      japanese: '\u{1F1EF}\u{1F1F5}',
+      korean: '\u{1F1F0}\u{1F1F7}',
+      mandarin: '\u{1F1E8}\u{1F1F3}',
+      chinese: '\u{1F1E8}\u{1F1F3}',
+      spanish: '\u{1F1EA}\u{1F1F8}',
+      french: '\u{1F1EB}\u{1F1F7}',
+      german: '\u{1F1E9}\u{1F1EA}',
+      dutch: '\u{1F1F3}\u{1F1F1}',
+      czech: '\u{1F1E8}\u{1F1FF}',
+    };
+    const underscoreIdx = deckId.indexOf('_');
+    const prefix = underscoreIdx > 0 ? deckId.substring(0, underscoreIdx) : deckId;
+    icon = PREFIX_FLAGS[prefix] ?? '\u{1F4DA}'; // stack of books fallback
+  }
+
+  return {
+    gradientFrom: mixHexWithDark(colorTint, 0.35), // 35% color, 65% dark
+    gradientTo: mixHexWithDark(colorTint, 0.15),   // 15% color, 85% dark
+    icon,
+  };
+}
+
 /**
  * Load a CuratedDeck into the store, register it in the deck registry,
  * and register its fact IDs in the fact index.
@@ -95,11 +143,7 @@ function loadDeck(deck: CuratedDeck): void {
     subDecks: registrySubDecks,
     tier: 1,
     status: 'available',
-    artPlaceholder: {
-      gradientFrom: '#555',
-      gradientTo: '#333',
-      icon: 'book',
-    },
+    artPlaceholder: deriveArtPlaceholder(deck.domain, deck.id),
   };
   registerDeck(registryEntry);
 
@@ -115,7 +159,10 @@ function loadDeck(deck: CuratedDeck): void {
  * Call at app startup alongside factsDB.init().
  * Gracefully handles a missing manifest or individual missing/malformed files.
  */
+let _initCalled = false;
 export async function initializeCuratedDecks(): Promise<void> {
+  if (_initCalled) return; // Prevent duplicate initialization from re-running effects
+  _initCalled = true;
   try {
     const manifestResp = await fetch('/data/decks/manifest.json');
     if (!manifestResp.ok) {
@@ -138,6 +185,11 @@ export async function initializeCuratedDecks(): Promise<void> {
         const resp = await fetch(`/data/decks/${filename}`);
         if (!resp.ok) {
           console.warn(`[CuratedDecks] Failed to fetch ${filename}: ${resp.status}`);
+          continue;
+        }
+        const contentType = resp.headers.get('content-type') ?? '';
+        if (!contentType.includes('json')) {
+          // Vite dev server returns HTML for missing files — skip silently
           continue;
         }
         const deck: CuratedDeck = await resp.json();

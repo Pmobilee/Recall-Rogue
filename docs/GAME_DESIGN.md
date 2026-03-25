@@ -73,13 +73,56 @@ ENEMY TURN:
 
 | Scenario | AP Spent | Damage Dealt | Efficiency |
 |----------|----------|--------------|------------|
-| 3 Quick Strike plays | 3 AP | 8 + 8 + 8 = 24 | 8 dmg/AP |
-| 1 Charged Strike (correct, mastery 0) | 2 AP | 12 | 6 dmg/AP |
-| 1 Charged Strike (correct, mastery 3) | 2 AP | 18 | 9 dmg/AP |
-| 1 Charged Strike (wrong, mastery 1+) | 2 AP | 5.6 | 2.8 dmg/AP |
-| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 12 + 8 = 20 | 6.7 dmg/AP |
+| 3 Quick Strike plays | 3 AP | 4 + 4 + 4 = 12 | 4 dmg/AP |
+| 1 Charged Strike (correct, mastery 0) | 2 AP | 6 | 3 dmg/AP |
+| 1 Charged Strike (correct, mastery 3) | 2 AP | 14 | 7 dmg/AP |
+| 1 Charged Strike (wrong, mastery 1+) | 2 AP | 2.8 | 1.4 dmg/AP |
+| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 6 + 4 = 10 | 3.3 dmg/AP |
 
 **Quick Play is AP-efficient. Charge is power-efficient but expensive.** The +1 AP surcharge prevents "always Charge everything" — with 3 AP, you can Quick Play 3 cards OR Charge 1 + Quick 1. Meaningful tradeoff every turn.
+
+### Charge Damage Pipeline (How Values Are Actually Computed)
+
+The runtime computes card effect values through this pipeline:
+
+1. **Base value** = mechanic's `quickPlayValue` (e.g., Strike = 4, Block = 3)
+2. **Play mode scaling:**
+   - Quick Play: `quickPlayValue × 1.0` (no multiplier)
+   - Charge Correct: `quickPlayValue × 1.5` (CHARGE_CORRECT_MULTIPLIER)
+   - Charge Wrong: mechanic's `chargeWrongValue` (e.g., Strike = 3, Block = 2)
+3. **Mastery bonus** = flat bonus from `getMasteryBaseBonus()` added to base (scales with mastery level 0–5)
+4. **Tier multiplier** = T1: 1.0×, T2a: 1.3×, T2b: 1.6× (from `card.effectMultiplier`)
+5. **Chain multiplier** = [1.0, 1.0, 1.3, 1.7, 2.2, 3.0] based on consecutive same-domain Charges
+6. **Buff/relic/overclock** multipliers stacked on top
+7. **Vulnerable** (+50% if enemy is vulnerable)
+
+**The 1.5× CC multiplier is intentionally modest.** The real power progression comes from:
+- Mastery upgrades: Each correct Charge upgrades the card one mastery level, increasing the mastery bonus
+- Tier upgrades: T2a (1.3×) and T2b (1.6×) make all play modes stronger
+- Chain stacking: A 5-chain gives 3.0× on top of everything
+- Relic synergies: Many relics amplify Charge Correct specifically
+
+**Example — Strike at different mastery levels (Charge Correct, no chain/relic):**
+
+Strike's `perLevelDelta` = 3, so mastery bonus = `level × 3`.
+
+| Mastery | Base | + Mastery Bonus | × 1.5 CC | × Tier | Total |
+|---------|------|-----------------|----------|--------|-------|
+| 0 | 4 | +0 = 4 | 6 | ×1.0 | **6** |
+| 2 | 4 | +6 = 10 | 15 | ×1.0 | **15** |
+| 5 | 4 | +15 = 19 | 28.5 | ×1.0 | **~29** |
+| 5 + T2b | 4 | +15 = 19 | 28.5 | ×1.6 | **~46** |
+
+With a 3-chain (1.7×) on top of mastery 5 + T2b: 46 × 1.7 = **~78 damage** from a single Strike.
+
+> **Design intent (2026-03-25):** Base values were intentionally halved (Strike 8→4, Block 6→3)
+> so that T0/M0 cards feel genuinely weak. The mastery scaling (perLevelDelta) was increased
+> to compensate — M5 cards are slightly stronger than before the nerf. This creates a satisfying
+> upgrade curve: M0 feels underpowered → M2-3 feels "normal" → M5 feels powerful. The 1.5×
+> CC multiplier stays modest because the real power comes from mastery progression, not from
+> Charging alone.
+
+> **Implementation note:** The `chargeCorrectValue` field in `mechanics.ts` is **dead data** — the resolver does NOT read it. CC is always computed as `quickPlayValue × CHARGE_CORRECT_MULTIPLIER`. The field exists for documentation/reference only.
 
 ### Mastery Upgrade System (AR-113)
 
@@ -96,7 +139,7 @@ Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the *
 | Level 5 (Mastered) | Quiz uses hardest variant + most confusable distractors. Rewards highest multiplier. |
 | Rest Site Study | Correct answer → +1 mastery to a specific card (max 3 cards; no downgrades possible) |
 
-**Stat display:** Card descriptions show base+bonus format: "Deal 8+2 damage" where the +2 bonus is rendered in green. Bonus scales with mastery level.
+**Stat display:** Card descriptions show base+bonus format: "Deal 4+3 damage" where the +3 bonus is rendered in green. Bonus scales with mastery level.
 
 **Mechanic-level caps (AR-116):** Some mechanics cap their mastery below level 5:
 - `immunity`: max level 2
@@ -336,11 +379,11 @@ Each run uses exactly 3 chain themes, selected from the deck's available themes.
 
 | Scenario | Calculation | Total |
 |----------|-------------|-------|
-| 3-chain Quick Play Strikes | 8 × 1.7 each | 40.8 |
-| 3-chain Charged (correct, mastery 1) middle card | 8, 24×1.7, 8×1.7 | 62.4 |
-| 3-chain all Charged on Surge turn (free Charge surcharge, mastery 1) | 24 × 1.7 each | 122.4 |
+| 3-chain Quick Play Strikes | 7 × 1.7 each (M1 QP) | 35.7 |
+| 3-chain Charged (correct, mastery 1) middle card | 7, 10.5×1.7, 7×1.7 | 43.0 |
+| 3-chain all Charged on Surge turn (free Charge surcharge, mastery 1) | 10.5 × 1.7 each | 53.6 |
 
-The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
+The 54-damage Surge chain is the "holy shit" peak at early mastery. Rare. Players will chase it — and at M5, a 3-chain CC sits at ~78 damage (see pipeline example above).
 
 ### Chain Rules (Active in Combat)
 
@@ -960,8 +1003,8 @@ Cards unlock as character level increases. New players start at level 0 with 36 
 
 | Card | Count | AP | Quick Play | Charged Correct (2a) | Charged Wrong |
 |------|-------|----|------------|---------------------|---------------|
-| Strike | 5 | 1 | 8 dmg | 24 dmg | 5.6 dmg |
-| Block | 4 | 1 | 6 block | 18 block | 4.2 block |
+| Strike | 5 | 1 | 4 dmg | 6 dmg | 2.8 dmg |
+| Block | 4 | 1 | 3 block | 4.5 block | 2.1 block |
 | Surge | 1 | 0 | Draw 2 cards | Draw 3 cards | Draw 1 card |
 
 **10 cards = cycle every 2 turns** (draw 5 per turn). Each card reward is a 10% deck change — immediately impactful. Boring by design; interesting mechanics come from rewards.
@@ -997,7 +1040,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 
 | Mechanic | AP | Quick Play | Charged Correct | Charged Wrong | Notes |
 |----------|----|------------|-----------------|---------------|-------|
-| **Strike** | 1 | 8 dmg | 24 dmg | 5.6 dmg | Bread and butter |
+| **Strike** | 1 | 4 dmg | 6 dmg | 2.8 dmg | Bread and butter — weak at M0 by design |
 | **Multi-Hit** | 2 | 4×3 (12 total) | 12×3 (36 total) | 2.8×3 (8.4 total) | Devastating when Charged |
 | **Heavy Strike** | 3 | 20 dmg | 60 dmg | 14 dmg | The nuke. Charge costs 4 AP total. |
 | **Piercing** | 1 | 6 dmg (ignores block) | 18 dmg | 4.2 dmg | Anti-tank |
@@ -1009,7 +1052,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 
 | Mechanic | AP | Quick Play | Charged Correct | Charged Wrong | Notes |
 |----------|----|------------|-----------------|---------------|-------|
-| **Block** | 1 | 6 block | 18 block | 4.2 block | Standard defense |
+| **Block** | 1 | 3 block | 4.5 block | 2.1 block | Standard defense — weak at M0 by design |
 | **Thorns** | 1 | 6 block, 3 reflect | 18 block, 9 reflect | 4.2 block, 2.1 reflect | Reflect scales with Charge |
 | **Emergency** | 1 | 4 (8 if <30% HP) | 12 (24 if <30%) | 2.8 (5.6 if <30%) | Desperation shield |
 | **Fortify** | 2 | 7 persistent block | 21 persistent | 4.9 persistent | Carries between turns |
@@ -2039,7 +2082,7 @@ The exact order of damage calculation for all attack cards. **The combo multipli
 ### Core Rules
 
 - **5 active relic slots** per run. Expandable to 6 via Scholar's Gambit (rare, cursed).
-- **77 total relics** (41 original + 36 new expansion relics). ~60% build-around, ~40% stat-stick. Echo Chamber relic removed; not counted.
+- **91 total relics** (41 original + 36 expansion + 8 tradeoff + 6 conditional; 5 original stat-sticks reworked into tradeoffs). Echo Chamber relic removed; not counted.
 - **No starter relic selection** — all players start the run with no relics. First relic earned at Act 1 mini-boss.
 
 ### Acquisition
@@ -2226,11 +2269,22 @@ Since all runs use a single curated deck from one domain, this relic always acti
 
 **Scavenger's Eye** — Common | See 4 card choices after combat instead of 3.
 
-#### Stat Stick Relics (Always Useful)
+#### Stat Stick Relics (Reworked as Tradeoffs)
 
-**Whetstone** — Common | All attack cards +2 base damage.
+**Whetstone** — Common | All attack cards +3 base damage / all shield cards −1 base block.
+*Offence over defence. A real choice now.*
 
-**Iron Shield** — Common | Start each turn with 2 block.
+**Iron Shield** — Common | Start each turn with 3 block / draw 1 fewer card on turn 1 of each encounter.
+*Reliable early defence at a tempo cost.*
+
+**Thick Skin** — Common | First debuff each encounter is immune / take +2 damage from all sources.
+*Debuff immunity with a permanent HP tax.*
+
+**Worn Shield** — Common | Shield cards grant 1 Thorns for the turn / shield value −20%.
+*Damage reflection at the cost of raw mitigation.*
+
+**Quick Study** — Common | After 3 Charge Correct in an encounter, preview the answer for the next quiz for 2 seconds / wrong answers deal +2 self-damage.
+*Knowledge preview for the informed player — but mistakes sting harder.*
 
 **Vitality Ring** — Common | +20 max HP. Applied at run start (max HP increased immediately on pickup).
 
@@ -2275,8 +2329,8 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 
 | ID | Name | Trigger | Effect |
 |----|------|---------|--------|
-| `quick_study` | Quick Study | on_encounter_end | After combat, if 3+ Charges correct, see quiz answer for 1 random deck fact (3s) |
-| `thick_skin` | Thick Skin | permanent | First debuff each encounter has duration −1 turn |
+| `quick_study` | Quick Study | on_charge_correct / on_charge_wrong | After 3 CC in an encounter, preview answer for next quiz (2s) / wrong answers deal +2 self-damage |
+| `thick_skin` | Thick Skin | permanent | First debuff each encounter is immune / +2 damage taken from all sources |
 | `tattered_notebook` | Tattered Notebook | on_charge_correct | +5 gold on first correct Charge per encounter |
 | `battle_scars` | Battle Scars | on_damage_taken | Next attack deals +3 damage after taking a hit (once/turn) |
 | `brass_knuckles` | Brass Knuckles | on_attack | Every 3rd attack card played deals +6 bonus damage |
@@ -2287,7 +2341,7 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 |----|------|---------|--------|
 | `pocket_watch` | Pocket Watch | on_turn_start | +1 draw on turns 1 and 5 of each encounter |
 | `chain_link_charm` | Chain Link Charm | on_chain_complete | +5 gold per chain link in completed chains |
-| `worn_shield` | Worn Shield | on_block | Every 2nd shield card played gains +3 block |
+| `worn_shield` | Worn Shield | on_block | Shield cards grant Thorns 1 for the turn / shield value −20% *(reworked from stat-stick)* |
 | `bleedstone` | Bleedstone | permanent | Bleed stacks applied by you are +2 higher; Bleed decays 1 slower |
 | `ember_core` | Ember Core | permanent | Burn applied by you starts +2 extra stacks. Enemy at 5+ Burn: attacks +20% |
 | `gambler_s_token` | Gambler's Token | on_charge_wrong | Wrong Charge = +3 gold |
@@ -2327,6 +2381,45 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 | `paradox_engine` | Paradox Engine | on_charge_wrong | Wrong Charges resolve at 0.3× AND deal 5 piercing damage. +1 AP per turn |
 | `akashic_record` | Akashic Record | on_charge_correct | **NEEDS REDESIGN** — originally referenced Tier 3 auto-charge (removed). Candidate redesign: Mastery 4–5 cards: one wrong answer subtly highlighted in the quiz. Mastery 5 correct Charge = 4.5× (up from 4.0×). |
 | `singularity` | Singularity | on_chain_complete | Completing a 5-chain deals BONUS damage equal to total chain damage (doubles 5-chain output) |
+
+#### New Tradeoff Relics (8)
+
+High-risk relics that offer a strong upside with an explicit downside. Each is a meaningful build commitment.
+
+| ID | Name | Rarity | Upside | Downside |
+|----|------|--------|--------|----------|
+| `berserkers_focus` | Berserker's Focus | Rare | Free Charge surcharge (all Charges cost base AP only) | Max AP reduced to 2 |
+| `glass_lens` | Glass Lens | Rare | +50% CC power multiplier | Take 3 damage on Charge Wrong |
+| `pain_conduit` | Pain Conduit | Rare | Reflect HP loss as piercing damage to enemy | Healing effects halved |
+| `ritual_blade` | Ritual Blade | Uncommon | First card played each turn ×2 effect | All other cards that turn −25% |
+| `hollow_armor` | Hollow Armor | Uncommon | Start each encounter with 20 block | No new block can be gained during combat |
+| `overclocked_mind` | Overclocked Mind | Uncommon | +2 cards drawn per turn | Discard 2 cards at end of each turn |
+| `mnemonic_scar` | Mnemonic Scar | Rare | CW on a previously-seen fact triggers CC power instead | CW on a new (unseen) fact deals 5 self-damage |
+| `knowledge_tax` | Knowledge Tax | Uncommon | +10 gold per CC | All CC values −10% |
+
+#### New Conditional Relics (6)
+
+Relics that activate only when a specific combat condition is met. They reward specific play patterns.
+
+| ID | Name | Rarity | Trigger | Effect |
+|----|------|--------|---------|--------|
+| `bloodletter` | Bloodletter | Uncommon | on_hp_loss | +3 to next attack when you lose HP from any source |
+| `chain_addict` | Chain Addict | Uncommon | on_chain_complete | Heal 5 HP when completing a 3+ chain |
+| `quiz_master` | Quiz Master | Rare | on_turn_end | If 3+ CC in current turn: gain +2 AP next turn |
+| `exhaustion_engine` | Exhaustion Engine | Uncommon | on_exhaust | Draw 2 cards when any card is exhausted |
+| `momentum_wheel` | Momentum Wheel | Rare | on_card_play | 4th+ card played in a turn resolves at +100% effect |
+| `thorn_mantle` | Thorn Mantle | Uncommon | on_turn_end | If you end a turn with 10+ block: gain Thorns 4 next turn |
+
+#### New Trigger Types (4)
+
+Four new relic trigger types added to support tradeoff and conditional relics above:
+
+| Trigger | Fires When |
+|---------|-----------|
+| `on_hp_loss` | Player loses any HP (from enemy attack, self-damage, cursed relic drain, etc.) |
+| `on_exhaust` | Any card is moved to the exhaust pile (via Exhaust keyword, Burnout Shield CC, etc.) |
+| `on_discard` | Any card is discarded from hand (end-of-turn discard, Battle Trance, Overclocked Mind penalty, etc.) |
+| `on_chain_break` | An active chain is broken (Quick Play, Wrong Charge, or turn end while chain length ≥ 2) |
 
 ### Relic Archive (Hub — Meta-Progression)
 
@@ -2888,25 +2981,29 @@ A separate mode where instead of a focused curated deck, facts are drawn from a 
 
 ---
 
-## 24. Curated Deck Selection (Replaces Study Presets & Deck Builder)
+## 24. Deck Selection (3-Screen System)
 
-At run start, the player selects a curated deck:
+Players access deck selection via the hub's "Start Run" doorway, which leads to a **hero mode selector** (DeckSelectionHub) offering two paths:
 
-1. **Domain selection** — Choose a top-level domain (e.g., "History", "Japanese", "Science")
-2. **Deck selection** — Choose a specific curated deck within that domain (e.g., "US Presidents", "World War II", "Ancient Rome")
-3. Optional: if a deck has sub-decks, narrow further
+**Trivia Dungeon ("The Armory")** — combat roguelite mode:
+- Horizontal domain strip with toggleable domain cards (All, Science, History, Geography, etc.)
+- Loadout cards per selected domain with subcategory chip filters
+- Footer status bar with domain count and Start Run button
+- Search bar filters domains and subcategories
+
+**Study Temple ("The Library")** — focused learning mode:
+- Category tabs (All, Languages, History, Science, Geography, etc.)
+- 4-column responsive deck tile grid (DeckTileV2) with gradient art, progress bars, status badges
+- Click a tile to open DeckDetailModal (centered, 640px) with sub-deck selection and Start Study Run
+- Search, sort (A-Z, progress, fact count), and filter (in-progress, not-started, mastered) controls
+- Custom playlist bar for mixing study decks
+- Language tab groups vocabulary decks by language with LanguageGroupHeader
 
 The selected deck's chain themes (knowledge decks) or generic chain types (vocabulary decks) are set for the run. Favorite decks can be bookmarked for quick access.
 
 **Old Study Presets** (user-defined mixes of domains and subcategories) are replaced by curated deck selection. Saved presets become "favorite decks" — quick links to frequently played curated decks.
 
 **Mixed Deck option (future consideration):** For advanced players who want variety, a "Mixed Deck" option could combine 2–3 curated decks — but only if their answer type pools don't overlap in confusing ways. NOT for initial implementation.
-
-The hub screen **Deck Selection** panel shows:
-- Recently played decks
-- All available decks organized by domain
-- Mastery percentage per deck ("You know 73% of US Presidents well")
-- A "Today's Expedition" shortcut per domain
 
 ---
 

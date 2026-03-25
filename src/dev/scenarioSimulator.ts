@@ -321,7 +321,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'masteryChallenge',
   },
   'dungeon-selection': {
-    screen: 'dungeonSelection',
+    screen: 'deckSelectionHub',
   },
 
   // Mystery event by ID examples
@@ -516,6 +516,9 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
     return { ok: false, message: 'startEncounterForRoom returned false — check run state and factsDB' };
   }
 
+  // Sync gameFlowState so pause/resume works correctly
+  const { gameFlowState } = await import('../services/gameFlowController');
+  gameFlowState.set('combat');
   // Navigate to combat screen
   writeStore('terra:currentScreen', 'combat');
   await wait(500);
