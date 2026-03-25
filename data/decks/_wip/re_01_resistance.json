@@ -1,0 +1,1534 @@
+{
+  "facts": [
+    {
+      "id": "wwii_re_soe_europe_ablaze",
+      "correctAnswer": "Set Europe ablaze",
+      "acceptableAlternatives": ["set Europe ablaze", "set Europe on fire"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What three-word directive did Winston Churchill give when authorizing the Special Operations Executive?",
+      "explanation": "Churchill's instruction to the SOE in 1940 was to 'set Europe ablaze' — meaning unleash sabotage, subversion, and resistance across occupied Europe. The SOE trained agents, manufactured explosives, organized airdrops to resistance groups, and worked with French, Belgian, Dutch, Polish, and other underground movements from 1940 to 1946.",
+      "visualDescription": "Pixel art of a stone office at night, a portly figure in silhouette signing a document by candlelight, European map spread across the desk with tiny flames marked on it.",
+      "sourceName": "Wikipedia — Special Operations Executive",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Special_Operations_Executive",
+      "volatile": false,
+      "distractors": [
+        "Burn them down",
+        "Strike them hard",
+        "Deny them peace",
+        "Break the chains",
+        "Sow confusion everywhere",
+        "Give no quarter",
+        "Stir the hornets nest",
+        "Light the fuse"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Churchill told the SOE to 'set Europe ablaze.' What kind of operations did this mandate actually involve?",
+          "correctAnswer": "Sabotage, espionage, and supporting resistance movements",
+          "distractors": ["Conventional bombing raids", "Diplomatic negotiations", "Economic blockades", "Naval operations"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The SOE operated from 1940 to 1946 and was a precursor to which postwar intelligence agencies?",
+          "correctAnswer": "CIA and expanded MI6",
+          "distractors": ["KGB and Stasi", "Mossad and BND", "NSA and GCHQ", "Interpol and FBI"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The SOE recruited agents exclusively from Britain's military officer class.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The SOE worked with resistance movements across occupied Europe, including those in France, Belgium, the Netherlands, and _____.",
+          "correctAnswer": "Poland",
+          "distractors": ["Spain", "Sweden", "Turkey", "Switzerland"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_noor_inayat_khan_execution",
+      "correctAnswer": "Dachau",
+      "acceptableAlternatives": ["Dachau concentration camp"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "At which concentration camp was SOE agent Noor Inayat Khan executed in September 1944?",
+      "explanation": "Noor Inayat Khan, a British Indian woman and SOE radio operator, parachuted into occupied France in 1943. As the Gestapo hunted her network, she stayed at her post transmitting intelligence to Britain. Captured in 1943 and imprisoned, she was executed at Dachau in September 1944. She was posthumously awarded the George Cross — Britain's highest civilian honor.",
+      "visualDescription": "Pixel art portrait of a young South Asian woman in a dark beret, radio headset around her neck, expression composed and resolute against a grey Parisian rooftop backdrop.",
+      "sourceName": "Wikipedia — Noor Inayat Khan",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Noor_Inayat_Khan",
+      "volatile": false,
+      "distractors": [
+        "Auschwitz",
+        "Bergen-Belsen",
+        "Buchenwald",
+        "Ravensbrück",
+        "Sachsenhausen",
+        "Mauthausen",
+        "Treblinka",
+        "Sobibor"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Noor Inayat Khan was a radio operator for the SOE. What made her role especially dangerous?",
+          "correctAnswer": "Radio operators were prime Gestapo targets — their transmissions could be traced",
+          "distractors": ["She was the only woman in her network", "She operated without cover identity", "She was known to German intelligence by name", "She worked in a combat zone"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What posthumous honor was Noor Inayat Khan awarded for her courage as an SOE agent?",
+          "correctAnswer": "George Cross",
+          "distractors": ["Victoria Cross", "Military Cross", "Distinguished Service Order", "Medal of Honor"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Noor Inayat Khan was born in Britain.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "A monument to Noor Inayat Khan was erected in _____ after the war, honoring her service as an SOE agent.",
+          "correctAnswer": "Paris",
+          "distractors": ["London", "Brussels", "Amsterdam", "Lyon"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_operation_mincemeat_cover",
+      "correctAnswer": "Greece and Sardinia",
+      "acceptableAlternatives": ["Sardinia and Greece", "Greece or Sardinia"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "Operation Mincemeat's fake documents convinced Germany that the Allied invasion target was Sicily would be replaced by attacks on which two locations?",
+      "explanation": "Operation Mincemeat (April 30, 1943) planted false Allied invasion plans on a corpse dressed as a British officer and released it off the coast of Spain. German intelligence recovered the body and believed the documents, shifting defenses to Greece and Sardinia. When the actual Sicily invasion (Operation Husky) launched, German forces were badly positioned — a direct result of the deception.",
+      "visualDescription": "Pixel art of a Spanish beach at dawn, a briefcase chained to a wrist washing ashore, a German officer in silhouette inspecting documents with a look of dawning conviction.",
+      "sourceName": "Wikipedia — Operation Mincemeat",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Mincemeat",
+      "volatile": false,
+      "distractors": [
+        "France and Norway",
+        "Sicily and Corsica",
+        "Yugoslavia and Albania",
+        "Tunisia and Malta",
+        "Crete and Cyprus",
+        "Libya and Egypt",
+        "Turkey and Rhodes",
+        "Italy and the Adriatic coast"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Operation Mincemeat used false documents to protect the real Allied invasion. What was the actual target?",
+          "correctAnswer": "Sicily",
+          "distractors": ["France", "Sardinia", "Greece", "Italy's heel"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How did British intelligence deliver the false documents in Operation Mincemeat?",
+          "correctAnswer": "Attached them to a corpse released to drift ashore in Spain",
+          "distractors": ["Dropped them by parachute near German lines", "Fed them through a double agent", "Left them in a captured German vehicle", "Passed them via a neutral diplomat"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Operation Mincemeat succeeded — German forces shifted away from Sicily before the Allied invasion.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The body used in Operation Mincemeat was floated ashore off the coast of _____, a neutral country where German agents could recover the documents.",
+          "correctAnswer": "Spain",
+          "distractors": ["Portugal", "Sweden", "Switzerland", "Turkey"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_ultra_bletchley",
+      "correctAnswer": "Enigma",
+      "acceptableAlternatives": ["the Enigma machine", "Enigma cipher"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "proper_nouns",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The top-secret 'Ultra' intelligence program decrypted messages encoded by which German machine?",
+      "explanation": "Ultra was the Allied codename for intelligence derived from decrypting German Enigma messages at Bletchley Park. Codebreakers including Alan Turing broke the Enigma cipher; resulting intelligence revealed German military plans, ship movements, and supply lines. Ultra was kept classified until the 1970s — commanders who used it had to act without revealing its source.",
+      "visualDescription": "Pixel art of a dimly lit room packed with women and men at wooden desks covered in rotors, wires, and code sheets, a Bombe machine whirring in the background.",
+      "sourceName": "Wikipedia — Ultra (WWII)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ultra",
+      "volatile": false,
+      "distractors": [
+        "Lorenz",
+        "Purple",
+        "Geheimschreiber",
+        "Hagelin",
+        "Typex",
+        "SIGABA",
+        "Colossus",
+        "Tunny"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Ultra intelligence revealed German military plans, ship movements, and supply lines. How long was Ultra kept secret after the war?",
+          "correctAnswer": "Until the 1970s — about 30 years",
+          "distractors": ["Until 1950", "Until 1960", "It was never officially disclosed", "Until the 1980s"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Ultra intelligence was produced at which famous British codebreaking center?",
+          "correctAnswer": "Bletchley Park",
+          "distractors": ["MI6 headquarters", "GCHQ Cheltenham", "Dover Castle", "Cambridge University"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Alan Turing was among the codebreakers who broke the Enigma cipher at Bletchley Park.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Ultra was the Allied codename for intelligence derived from decrypted German _____ messages.",
+          "correctAnswer": "Enigma",
+          "distractors": ["Purple", "Lorenz", "Geheimschreiber", "Hagelin"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_polish_enigma_rejewski",
+      "correctAnswer": "Marian Rejewski",
+      "acceptableAlternatives": ["Rejewski"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Which Polish mathematician first cracked the Enigma machine before World War II, laying the groundwork for Bletchley Park?",
+      "explanation": "Marian Rejewski, a Polish mathematician working for the Polish Cipher Bureau, cracked the Enigma machine in 1932 — years before WWII began. Polish intelligence shared their methods with British and French counterparts in 1939. This contribution was foundational to Bletchley Park's later work, yet Rejewski received little recognition during or after the war.",
+      "visualDescription": "Pixel art of a young man in a pre-war suit bent over a wooden desk covered in mathematical notation, a disassembled rotor mechanism beside him, Warsaw skyline through the window.",
+      "sourceName": "Wikipedia — Marian Rejewski",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marian_Rejewski",
+      "volatile": false,
+      "distractors": [
+        "Alan Turing",
+        "Gordon Welchman",
+        "Jerzy Rozycki",
+        "Henryk Zygalski",
+        "Dilly Knox",
+        "Max Newman",
+        "Peter Calvocoressi",
+        "William Friedman"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Marian Rejewski cracked Enigma in 1932. What did Poland do with this intelligence breakthrough before WWII began?",
+          "correctAnswer": "Shared methods with British and French intelligence in 1939",
+          "distractors": ["Used it to negotiate with Germany", "Kept it entirely secret", "Published findings in academic journals", "Destroyed the methods to prevent capture"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In what year did Marian Rejewski first crack the Enigma cipher?",
+          "correctAnswer": "1932",
+          "distractors": ["1939", "1940", "1935", "1941"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Polish contribution to breaking Enigma was widely recognized during the war.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Marian Rejewski worked for Poland's _____ before sharing his Enigma breakthrough with the British.",
+          "correctAnswer": "Polish Cipher Bureau",
+          "distractors": ["Home Army intelligence", "Warsaw University", "Polish Foreign Ministry", "Polish Air Force intelligence"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_white_rose_leaders",
+      "correctAnswer": "Sophie and Hans Scholl",
+      "acceptableAlternatives": ["Hans and Sophie Scholl", "the Scholl siblings", "Hans Scholl and Sophie Scholl"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Which brother and sister led the White Rose resistance group that distributed anti-Nazi pamphlets in Munich in 1942–43?",
+      "explanation": "The White Rose (Weiße Rose) was a student resistance group at Munich University led by Hans and Sophie Scholl. They distributed pamphlets calling on Germans to resist Nazi atrocities and refuse participation in Nazi crimes. Arrested by the Gestapo in February 1943, they were tried and executed. Today they are celebrated as symbols of German moral courage — rare voices of conscience inside the Reich itself.",
+      "visualDescription": "Pixel art of two young figures in university clothes scattering leaflets from a balcony above a Munich courtyard, Gestapo officers rushing through the gate below.",
+      "sourceName": "Wikipedia — White Rose",
+      "sourceUrl": "https://en.wikipedia.org/wiki/White_Rose",
+      "volatile": false,
+      "distractors": [
+        "Claus von Stauffenberg and his brother",
+        "Dietrich Bonhoeffer and his sister",
+        "Ernst and Hilde Brandt",
+        "Karl and Margarete Goerdeler",
+        "Wilhelm and Maria Canaris",
+        "Georg and Inge Elser",
+        "Fritz and Clara Kolbe",
+        "Helmuth and Freya von Moltke"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The White Rose distributed pamphlets calling Germans to do what?",
+          "correctAnswer": "Actively resist the Nazi regime and refuse to participate in its crimes",
+          "distractors": ["Flee Germany to neutral countries", "Support a military coup", "Surrender to Allied forces", "Sabotage weapons factories"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In what month and year were White Rose leaders arrested and executed?",
+          "correctAnswer": "February 1943",
+          "distractors": ["July 1944", "April 1942", "January 1945", "November 1943"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Before execution, White Rose members recanted their opposition to the Nazi regime.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The White Rose operated out of _____ University in Munich, making it unusual as an internal German resistance movement.",
+          "correctAnswer": "Ludwig Maximilian University",
+          "distractors": ["Technical University Munich", "Heidelberg University", "Berlin University", "Frankfurt University"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_polish_home_army_size",
+      "correctAnswer": "300,000",
+      "acceptableAlternatives": ["over 300,000", "300,000 members", "more than 300,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers_statistics",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "At its peak, approximately how many members did the Polish Home Army (Armia Krajowa) have — making it the largest resistance force in occupied Europe?",
+      "explanation": "The Polish Home Army (Armia Krajowa, AK) had over 300,000 members at its peak, making it the largest resistance organization in occupied Europe. It operated a parallel underground state with courts, education, and administration alongside Nazi occupation, conducted armed resistance and sabotage, and provided intelligence to the Allies. The AK launched the Warsaw Uprising in 1944 — and many members were persecuted by Poland's postwar communist government.",
+      "visualDescription": "Pixel art of a Polish resistance cell meeting in a candlelit basement, coded maps pinned to earthen walls, soldiers of varying ages in civilian clothes around a rough-hewn table.",
+      "sourceName": "Wikipedia — Home Army (Poland)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Home_Army",
+      "volatile": false,
+      "distractors": [
+        "50,000",
+        "100,000",
+        "500,000",
+        "75,000",
+        "150,000",
+        "200,000",
+        "450,000",
+        "1,000,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Polish Home Army didn't just fight — it also maintained what parallel institution under Nazi occupation?",
+          "correctAnswer": "An underground state with courts, education, and civil administration",
+          "distractors": ["A government in exile in London", "A shadow parliament in Warsaw", "A secret diplomatic corps", "Underground banks and currency"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What happened to many Polish Home Army members after the war when Soviet-backed communists took over Poland?",
+          "correctAnswer": "They were persecuted by the communist government",
+          "distractors": ["They were celebrated as national heroes", "They were integrated into the new Polish army", "They fled to the United States", "They were given amnesty by Stalin"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Polish Home Army was the largest resistance organization in occupied Europe during WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Polish Home Army's Polish name was Armia Krajowa, abbreviated _____.",
+          "correctAnswer": "AK",
+          "distractors": ["AP", "KA", "WP", "ZOB"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_danish_jews_rescued",
+      "correctAnswer": "7,000",
+      "acceptableAlternatives": ["over 7,000", "more than 7,000", "7,000 Jews"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "numbers_statistics",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In October 1943, approximately how many Danish Jews were smuggled to safety in Sweden when Germany ordered their deportation?",
+      "explanation": "When Germany ordered the deportation of Danish Jews in October 1943, Danish fishermen and resistance members organized a remarkable rescue — smuggling over 7,000 Jews across the sea to neutral Sweden. The Swedish government accepted all refugees. Denmark's Jewish community survived the war at an extraordinary rate compared to Jews in most other occupied countries, where deportation to death camps was the fate of the majority.",
+      "visualDescription": "Pixel art of a small wooden fishing boat at night on dark water, tightly packed figures huddled under canvas, a dim light showing the Swedish coast ahead.",
+      "sourceName": "Wikipedia — Rescue of the Danish Jews",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rescue_of_the_Danish_Jews",
+      "volatile": false,
+      "distractors": [
+        "500",
+        "1,200",
+        "3,500",
+        "12,000",
+        "20,000",
+        "4,000",
+        "2,000",
+        "15,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Denmark smuggled over 7,000 Jews to safety in 1943. Which neutral country accepted them?",
+          "correctAnswer": "Sweden",
+          "distractors": ["Switzerland", "Portugal", "Spain", "Turkey"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Who organized and carried out the rescue of Danish Jews in October 1943?",
+          "correctAnswer": "Danish fishermen and resistance members",
+          "distractors": ["The Danish royal family alone", "Allied intelligence agents", "Swedish military commandos", "The Danish police force"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Most Danish Jews survived the war, unlike Jewish populations in most other occupied countries.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The rescue of Danish Jews occurred in _____ 1943 after Germany issued deportation orders.",
+          "correctAnswer": "October",
+          "distractors": ["June", "January", "March", "August"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_pilecki_volunteered",
+      "correctAnswer": "Volunteered to be imprisoned at Auschwitz",
+      "acceptableAlternatives": ["voluntarily entered Auschwitz", "allowed himself to be captured and sent to Auschwitz"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "What extraordinary act did Polish officer Witold Pilecki perform in 1940 that no intelligence service ordered him to do?",
+      "explanation": "Witold Pilecki voluntarily allowed himself to be captured in a German street roundup so he could be imprisoned at Auschwitz. Once inside, he documented Nazi atrocities, organized a resistance cell, and transmitted reports to the outside world — providing some of the first comprehensive accounts of Auschwitz to the Allies. He escaped in 1943. Tragically, Poland's postwar communist government executed him in 1952, viewing him as a nationalist threat.",
+      "visualDescription": "Pixel art of a solitary figure walking into a grey prison gate voluntarily, barbed wire silhouetted against a pale sky, a notebook barely visible tucked inside his coat.",
+      "sourceName": "Wikipedia — Witold Pilecki",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Witold_Pilecki",
+      "volatile": false,
+      "distractors": [
+        "Crossed enemy lines alone to assassinate a German general",
+        "Parachuted behind German lines without training",
+        "Infiltrated the Gestapo by posing as an officer",
+        "Burned classified Nazi documents before capture",
+        "Swam across the English Channel to deliver intelligence",
+        "Arranged his own false execution to deceive the Gestapo",
+        "Surrendered to the Soviets to gather intelligence",
+        "Posed as a civilian contractor at a V-2 rocket site"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Witold Pilecki escaped Auschwitz in 1943. What happened to him after Poland fell under communist rule?",
+          "correctAnswer": "He was executed by Poland's communist government in 1952",
+          "distractors": ["He was celebrated as a national hero", "He emigrated to the United States", "He was imprisoned but later released", "He disappeared and was never found"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What was the strategic purpose of Pilecki's self-imprisonment at Auschwitz?",
+          "correctAnswer": "To document Nazi atrocities and provide intelligence reports to the Allies",
+          "distractors": ["To organize a mass prisoner escape", "To assassinate the camp commandant", "To hide radio equipment inside the camp", "To identify Polish informants for the Gestapo"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Witold Pilecki was ordered by the Polish government-in-exile to enter Auschwitz.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Witold Pilecki was imprisoned at Auschwitz from 1940 until his escape in _____.",
+          "correctAnswer": "1943",
+          "distractors": ["1941", "1942", "1944", "1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_richard_sorge_warning",
+      "correctAnswer": "Stalin ignored it",
+      "acceptableAlternatives": ["Stalin dismissed it", "Stalin disregarded the warning", "it was ignored by Stalin"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Soviet spy Richard Sorge warned Moscow in 1941 that Germany would invade the USSR. What was Stalin's response?",
+      "explanation": "Richard Sorge, posing as a German journalist in Tokyo, ran a highly effective Soviet spy ring. He warned Stalin that Germany would launch Operation Barbarossa — but Stalin attributed the warning to Allied disinformation and ignored it. Sorge was captured by Japanese authorities in October 1941 and executed in 1944. The warning he died for went unheeded until German tanks crossed the Soviet border.",
+      "visualDescription": "Pixel art of a man in a journalist's trench coat at a Tokyo bar, covertly writing in a small notebook, a Nazi swastika armband visible on his sleeve as a disguise, shadows deep around him.",
+      "sourceName": "Wikipedia — Richard Sorge",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Richard_Sorge",
+      "volatile": false,
+      "distractors": [
+        "Stalin mobilized forces immediately",
+        "Stalin arrested Sorge as a double agent",
+        "Stalin used the warning to negotiate with Hitler",
+        "Stalin forwarded the intelligence to Churchill",
+        "Stalin ordered Sorge to gather more confirmation",
+        "Stalin publicly announced the German threat",
+        "Stalin contacted the US about the invasion",
+        "Stalin withdrew troops from the western frontier"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Richard Sorge posed as a German journalist in Tokyo. What was his actual nationality and employer?",
+          "correctAnswer": "German-born Soviet intelligence officer",
+          "distractors": ["British MI6 double agent", "American OSS operative", "Japanese military intelligence", "Stateless anti-fascist volunteer"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How did Sorge's intelligence career end — what happened to him after his arrest in 1941?",
+          "correctAnswer": "Executed by Japan in 1944",
+          "distractors": ["Exchanged in a prisoner swap in 1943", "Escaped to the Soviet Union in 1942", "Died of illness in a Japanese prison in 1945", "Acquitted and released after the war"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Richard Sorge was posthumously celebrated as a hero in the Soviet Union.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Richard Sorge warned Stalin that Germany would launch Operation _____, but Stalin believed it was Allied disinformation.",
+          "correctAnswer": "Barbarossa",
+          "distractors": ["Citadel", "Sea Lion", "Typhoon", "Blue"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_jean_moulin_unifier",
+      "correctAnswer": "Unified the French Resistance movements",
+      "acceptableAlternatives": ["unified French Resistance", "coordinated French Resistance groups under de Gaulle"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What was the central achievement of Jean Moulin before his capture by the Gestapo in 1943?",
+      "explanation": "Jean Moulin was de Gaulle's personal representative in France, tasked with unifying the scattered, ideologically diverse French Resistance movements into a single coordinated force. He succeeded — creating the National Council of the Resistance (CNR) in May 1943. Arrested by the Gestapo weeks later, he was tortured but refused to reveal any secrets, dying from his treatment. He became a martyr symbol of French resistance.",
+      "visualDescription": "Pixel art of a lean figure in a fedora and long coat seated at a clandestine meeting table in a shadowed Lyon apartment, different resistance faction badges visible on those around him.",
+      "sourceName": "Wikipedia — Jean Moulin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Jean_Moulin",
+      "volatile": false,
+      "distractors": [
+        "Led the D-Day intelligence operation from Paris",
+        "Organized the liberation of Lyon singlehandedly",
+        "Smuggled the first photographs of Auschwitz to London",
+        "Assassinated a senior Gestapo officer in Vichy France",
+        "Established the French Resistance radio network",
+        "Coordinated the Allied landing at Normandy",
+        "Destroyed the Vichy government's central archive",
+        "Led the Resistance delegation to London"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Jean Moulin was captured and tortured by the Gestapo. What did he refuse to reveal?",
+          "correctAnswer": "His colleagues' identities and Resistance secrets",
+          "distractors": ["The location of Allied supply drops", "De Gaulle's address in London", "The date of the planned Allied invasion", "The names of SOE agents in France"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Jean Moulin coordinated with which Free French leader based in London?",
+          "correctAnswer": "Charles de Gaulle",
+          "distractors": ["Henri Giraud", "Philippe Leclerc", "Georges Bidault", "Pierre Mendès France"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Jean Moulin survived WWII and lived to see France liberated.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Jean Moulin created the National Council of the Resistance (CNR) in _____ 1943, unifying French Resistance factions.",
+          "correctAnswer": "May",
+          "distractors": ["January", "June", "October", "March"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_double_cross_system",
+      "correctAnswer": "MI5",
+      "acceptableAlternatives": ["British MI5", "British Security Service"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "proper_nouns",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which British intelligence service ran the Double Cross System — turning captured German spies to feed false information back to Germany?",
+      "explanation": "MI5 (Britain's domestic counter-intelligence service) ran the Double Cross System from 1940 to 1945, capturing virtually every German spy in Britain and turning them into double agents. These turned spies fed Germany false intelligence — most crucially, false D-Day landing locations. The system was so successful that Germany never realized it had no reliable intelligence network in Britain.",
+      "visualDescription": "Pixel art of a suited British intelligence officer sitting across a table from a nervous figure, a folder labeled 'XX' between them, blackout curtains on the windows of a London townhouse.",
+      "sourceName": "Wikipedia — Double Cross System",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Double-Cross_System",
+      "volatile": false,
+      "distractors": [
+        "MI6",
+        "SOE",
+        "OSS",
+        "SIS",
+        "GHQ Intelligence",
+        "Bletchley Park",
+        "Naval Intelligence Division",
+        "GCHQ"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Double Cross System's most important deception protected which specific operation?",
+          "correctAnswer": "D-Day — the Normandy invasion (Operation Overlord)",
+          "distractors": ["Operation Torch — the North Africa landings", "Operation Market Garden", "Operation Husky — the Sicily invasion", "Operation Dragoon — the southern France landing"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What did the Double Cross System's '20 Committee' symbol represent?",
+          "correctAnswer": "XX — Roman numerals for 20, also meaning 'double cross'",
+          "distractors": ["Two German agents who refused to turn", "Twenty active double agents", "The twentieth century security protocol", "Cross-referencing of two intelligence agencies"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Germany eventually discovered the Double Cross System had compromised its entire British spy network.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Double Cross System turned German spies into _____ agents who fed false information back to Germany.",
+          "correctAnswer": "double",
+          "distractors": ["triple", "sleeper", "defector", "volunteer"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_norwegian_heavy_water_target",
+      "correctAnswer": "Rjukan (Vemork hydroelectric plant)",
+      "acceptableAlternatives": ["Rjukan", "Vemork", "Norsk Hydro plant at Rjukan", "the Vemork facility"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "place_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Norwegian resistance and British commandos sabotaged which Norwegian facility in 1942–1944 to disrupt Germany's nuclear program?",
+      "explanation": "The Vemork hydroelectric plant at Rjukan in Norway produced heavy water (deuterium oxide), which Germany needed for nuclear weapons research. Norwegian resistance fighters and British commandos attacked it in 1942 and again in 1944, disrupting production. The sabotage is considered critical to delaying Germany's nuclear program, though Germany was never actually close to completing a weapon. The operation inspired the 1965 film 'Heroes of Telemark.'",
+      "visualDescription": "Pixel art of commandos in white snowsuits descending a cliff face on ropes above a Norwegian fjord, an industrial plant visible far below on the valley floor, winter moonlight on ice.",
+      "sourceName": "Wikipedia — Norwegian heavy water sabotage",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Norwegian_heavy_water_sabotage",
+      "volatile": false,
+      "distractors": [
+        "Oslo shipyards",
+        "Narvik iron ore terminal",
+        "Bergen submarine pens",
+        "Trondheim airfield",
+        "Kristiansand harbor",
+        "Stavanger oil refinery",
+        "Alesund radio station",
+        "Bodø airbase"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Norwegian sabotage at Rjukan disrupted Germany's supply of heavy water. What did Germany need heavy water for?",
+          "correctAnswer": "Nuclear weapons research (as a moderator in a nuclear reactor)",
+          "distractors": ["Jet fuel production", "Rocket propellant development", "Chemical weapons synthesis", "Torpedo fuel formulation"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Norwegian heavy water sabotage is referenced in which 1965 film?",
+          "correctAnswer": "Heroes of Telemark",
+          "distractors": ["The Longest Day", "The Guns of Navarone", "Where Eagles Dare", "Operation Crossbow"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Germany successfully completed a nuclear weapon before the sabotage could have any effect.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Rjukan sabotage targeted heavy water — chemically known as _____ oxide.",
+          "correctAnswer": "deuterium",
+          "distractors": ["tritium", "hydrogen", "helium", "uranium"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_oss_founder",
+      "correctAnswer": "William J. Donovan",
+      "acceptableAlternatives": ["Donovan", "Wild Bill Donovan"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Who founded and directed the Office of Strategic Services (OSS) — America's WWII intelligence and sabotage agency?",
+      "explanation": "William J. Donovan, nicknamed 'Wild Bill,' established and commanded the OSS from its founding in 1942. The OSS conducted espionage, sabotage, guerrilla training, and propaganda across Europe, Asia, and the Pacific, recruiting an eclectic mix of academics, businessmen, and adventurers rather than traditional military personnel. When the OSS was dissolved in 1945, its experience and personnel formed the foundation of the CIA, created in 1947.",
+      "visualDescription": "Pixel art of a broad-shouldered man in an American general's uniform gesturing over a world map, surrounded by civilian-clothed agents receiving briefings in a Pentagon-style war room.",
+      "sourceName": "Wikipedia — Office of Strategic Services",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Office_of_Strategic_Services",
+      "volatile": false,
+      "distractors": [
+        "George Marshall",
+        "Allen Dulles",
+        "Dwight Eisenhower",
+        "Henry Stimson",
+        "Walter Bedell Smith",
+        "Omar Bradley",
+        "Mark Clark",
+        "John Magruder"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The OSS was dissolved after WWII. What organization replaced it in 1947?",
+          "correctAnswer": "The CIA (Central Intelligence Agency)",
+          "distractors": ["The NSA", "The DIA", "The FBI", "The State Department's intelligence bureau"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What made OSS agent recruitment unusual compared to traditional military intelligence agencies?",
+          "correctAnswer": "It recruited academics, businessmen, and adventurers — not traditional military officers",
+          "distractors": ["It only recruited foreign nationals", "It exclusively used women agents", "It hired convicted criminals for deniability", "It drew entirely from Ivy League universities"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The OSS was established before the United States entered WWII.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "William Donovan established the OSS in _____, the year after the United States entered WWII.",
+          "correctAnswer": "1942",
+          "distractors": ["1941", "1943", "1940", "1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_french_resistance_dday",
+      "correctAnswer": "Sabotage and intelligence on German positions",
+      "acceptableAlternatives": ["intelligence and sabotage", "disrupted German supply lines and provided intelligence"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "How did the French Resistance directly support the D-Day invasion in June 1944?",
+      "explanation": "By D-Day in June 1944, the French Resistance had grown from disorganized beginnings into a capable force. It provided the Allies with intelligence on German troop positions and conducted sabotage of supply lines, railways, and communications — hampering Germany's ability to reinforce Normandy after the landings. The Resistance had gradually unified under de Gaulle's Free French organization after starting as scattered, ideologically diverse groups in 1940.",
+      "visualDescription": "Pixel art of a Resistance member in dark civilian clothes cutting a telephone line on a country road at dusk, Norman hedgerows in the background, distant flares on the horizon.",
+      "sourceName": "Wikipedia — French Resistance",
+      "sourceUrl": "https://en.wikipedia.org/wiki/French_Resistance",
+      "volatile": false,
+      "distractors": [
+        "Launched a full uprising in Paris on D-Day itself",
+        "Secured the beaches before Allied troops landed",
+        "Assassinated German coastal defense commanders",
+        "Delivered forged German orders to Rommel",
+        "Destroyed Panzers using anti-tank weapons",
+        "Guided paratroopers to safe drop zones",
+        "Organized a nationwide general strike on June 6",
+        "Provided French troops for the initial beach assault"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The French Resistance was ideologically diverse when it formed in 1940. Which groups were included?",
+          "correctAnswer": "Communists, Socialists, liberals, and conservatives — united against occupation",
+          "distractors": ["Exclusively Gaullists loyal to the Free French", "Only military officers and veterans", "Primarily Catholic Church members", "Communist Party members only"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "France fell to Germany in 1940. In what year did the French Resistance begin emerging?",
+          "correctAnswer": "1940",
+          "distractors": ["1941", "1942", "1943", "1939"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The French Resistance is considered to have had a larger real impact than Soviet partisan movements.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The French Resistance gradually unified under the _____ organization, aligned with de Gaulle in London.",
+          "correctAnswer": "Free French",
+          "distractors": ["French Liberation Front", "National Resistance Council", "French Republican Army", "Committee of National Liberation"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_virginia_hall_disability",
+      "correctAnswer": "She had a prosthetic leg",
+      "acceptableAlternatives": ["she was an amputee", "she had lost a leg", "she operated despite a prosthetic leg"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "What physical challenge made Virginia Hall's career as an American SOE spy in France even more remarkable?",
+      "explanation": "Virginia Hall, an American who worked for the British SOE and later the OSS in France from 1940 to 1944, operated as a spy and helped organize escape lines despite having a prosthetic leg — the result of a hunting accident before the war. She named her prosthesis 'Cuthbert.' The Gestapo considered her the most dangerous Allied agent in France and hunted her relentlessly. She escaped over the Pyrenees into Spain on foot.",
+      "visualDescription": "Pixel art of a woman in a French peasant disguise — dark headscarf, plain coat — moving confidently through a Lyon street, Gestapo officers visible at the far end, unaware.",
+      "sourceName": "Wikipedia — Virginia Hall",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Virginia_Hall",
+      "volatile": false,
+      "distractors": [
+        "She was blind in one eye",
+        "She was deaf in one ear from a wartime bombing",
+        "She operated under a chronic illness that required medication",
+        "She had burn scars that made disguises difficult",
+        "She had a speech impediment that required careful cover maintenance",
+        "She had lost her right hand",
+        "She was partially paralyzed from a pre-war injury",
+        "She suffered from severe asthma requiring medication drops"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Virginia Hall escaped France by crossing which mountain range on foot despite her prosthetic leg?",
+          "correctAnswer": "The Pyrenees",
+          "distractors": ["The Alps", "The Vosges", "The Massif Central", "The Ardennes"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Gestapo reportedly called Virginia Hall the most dangerous Allied agent in France. What was her nickname among them?",
+          "correctAnswer": "The Limping Lady",
+          "distractors": ["The White Mouse", "The Red Fox", "The Shadow", "La Renarde"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Virginia Hall worked for both the British SOE and the American OSS during the war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Virginia Hall humorously named her prosthetic leg '_____', referencing it in coded messages to London.",
+          "correctAnswer": "Cuthbert",
+          "distractors": ["George", "Charles", "Arthur", "Albert"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_nancy_wake_nickname",
+      "correctAnswer": "The White Mouse",
+      "acceptableAlternatives": ["White Mouse"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "proper_nouns",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What nickname did the Gestapo give to Australian-born resistance leader Nancy Wake, reflecting how she repeatedly slipped their grasp?",
+      "explanation": "Nancy Wake, born in Australia and working with the French Resistance from 1941, was codenamed 'The White Mouse' by the Gestapo because she escaped their traps repeatedly. She organized sabotage operations, recruited agents, and led an armed resistance group in southern France. When the Gestapo finally zeroed in on her network, she escaped over the Pyrenees into Spain — on foot — and returned later to continue operations.",
+      "visualDescription": "Pixel art of a red-lipped woman in a dark beret and leather jacket, a pistol holstered at her hip, standing confidently at the edge of a French village square with Resistance fighters behind her.",
+      "sourceName": "Wikipedia — Nancy Wake",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nancy_Wake",
+      "volatile": false,
+      "distractors": [
+        "The Black Cat",
+        "The Red Fox",
+        "The Grey Wolf",
+        "La Renarde",
+        "The Scarlet Pimpernel",
+        "The Night Hawk",
+        "The Blue Dove",
+        "La Resistance"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Nancy Wake was born in Australia but fought in French resistance. What did she do when the Gestapo closed in on her network?",
+          "correctAnswer": "Escaped over the Pyrenees into Spain on foot",
+          "distractors": ["Hid in a Paris convent for six months", "Surrendered and was imprisoned in Lyon", "Was evacuated by submarine from Marseille", "Crossed into Switzerland through the Alps"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Nancy Wake's Gestapo nickname was 'The White Mouse.' What did this nickname reflect?",
+          "correctAnswer": "Her ability to repeatedly escape their traps",
+          "distractors": ["Her pale hair and quiet manner", "Her preference for night operations", "Her small stature and fast movement", "Her use of white as a disguise color"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Nancy Wake was among the Gestapo's most wanted agents in France.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Nancy Wake was born in _____ but became one of the most decorated Allied agents of WWII.",
+          "correctAnswer": "Australia",
+          "distractors": ["New Zealand", "Canada", "South Africa", "Britain"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_jedburgh_composition",
+      "correctAnswer": "American, British, and French (or Belgian)",
+      "acceptableAlternatives": ["multi-national — American, British, French", "mixed Allied nationality teams"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "What made Jedburgh Teams unusual in their composition compared to other Allied special operations units?",
+      "explanation": "Jedburgh Teams were deliberately multi-national — each three-man team typically included an American, a British, and a French (or Belgian) officer. Dropped behind German lines primarily in France from 1944, they arrived with weapons, explosives, and radios to coordinate local resistance with regular Allied forces. Their tri-national composition helped bridge communication between Allied high command and specific occupied territories.",
+      "visualDescription": "Pixel art of three parachutes descending at night over a dark French forest, each figure wearing different national insignia, a moonlit farmhouse clearing below.",
+      "sourceName": "Wikipedia — Jedburgh teams",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Jedburgh_teams",
+      "volatile": false,
+      "distractors": [
+        "Composed entirely of British commandos",
+        "Made up of German defectors and Allied officers",
+        "Recruited solely from occupied country resistance members",
+        "Formed entirely from OSS volunteers",
+        "Built around Polish and Czech exile soldiers",
+        "Composed of French Foreign Legion and British SAS",
+        "Drawn exclusively from Airborne divisions",
+        "Composed of American Rangers and British Commandos only"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Jedburgh Teams were dropped into France with three specific items. Which set is correct?",
+          "correctAnswer": "Weapons, explosives, and radios",
+          "distractors": ["Maps, ciphers, and forged documents", "Gold, radio equipment, and uniforms", "Weapons, food supplies, and medical kits", "Radios, sabotage manuals, and cash"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "When were Jedburgh Teams primarily deployed — what phase of the war?",
+          "correctAnswer": "From 1944, primarily around and after D-Day",
+          "distractors": ["From 1940, during the Fall of France", "From 1942, before Operation Torch", "From 1943, during the Italy campaign", "From 1945, during the German collapse"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: All Jedburgh Teams successfully completed their missions without capture.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Jedburgh Teams coordinated _____ movements with regular Allied forces during liberation operations.",
+          "correctAnswer": "resistance",
+          "distractors": ["partisan", "guerrilla", "civilian", "underground"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_canaris_abwehr_fate",
+      "correctAnswer": "Executed in April 1945",
+      "acceptableAlternatives": ["executed by Nazis in 1945", "hanged at Flossenbürg in 1945"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "What fate befell Admiral Wilhelm Canaris, head of Germany's military intelligence (Abwehr), who was secretly involved in anti-Hitler plots?",
+      "explanation": "Admiral Wilhelm Canaris headed the Abwehr (German military intelligence) from 1935 but secretly worked against Hitler, passing intelligence to the Allies and protecting some resistance figures. After the July 1944 assassination attempt on Hitler failed, investigations exposed Canaris's involvement in anti-Hitler conspiracies. He was arrested, imprisoned, and executed at Flossenbürg concentration camp in April 1945 — just weeks before Germany's surrender.",
+      "visualDescription": "Pixel art of a grey-uniformed German admiral sitting alone in a dim office, two portraits on the wall — Hitler's official photo and a small hidden crucifix — expression conflicted and exhausted.",
+      "sourceName": "Wikipedia — Wilhelm Canaris",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Wilhelm_Canaris",
+      "volatile": false,
+      "distractors": [
+        "Escaped to Argentina after the war",
+        "Was tried and imprisoned at Nuremberg",
+        "Defected to Britain before the war ended",
+        "Died in a bombing raid in 1944",
+        "Was shot by SS forces during the Battle of Berlin",
+        "Committed suicide when Germany surrendered",
+        "Was captured by Soviet forces and imprisoned",
+        "Survived the war and lived in West Germany"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Admiral Canaris headed the Abwehr — Germany's military intelligence service. What did he secretly do against his own government?",
+          "correctAnswer": "Passed intelligence to the Allies and participated in anti-Hitler plots",
+          "distractors": ["Fed false intelligence to Hitler about Allied strength", "Hid Jewish families in Abwehr safe houses", "Sabotaged the Enigma machine program", "Forged documents showing Germany's military weakness"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What event in 1944 led to the exposure of Canaris's anti-Hitler activities?",
+          "correctAnswer": "The failed July 1944 assassination attempt on Hitler",
+          "distractors": ["The Normandy landings exposing German intelligence failures", "A defector who named Canaris to the Gestapo", "The Battle of Stalingrad defeat", "The White Rose arrests in Munich"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Canaris was executed before Germany surrendered in May 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Canaris was executed at _____ concentration camp in April 1945, just weeks before Germany's collapse.",
+          "correctAnswer": "Flossenbürg",
+          "distractors": ["Dachau", "Buchenwald", "Bergen-Belsen", "Sachsenhausen"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_purple_cipher_pacific",
+      "correctAnswer": "Japanese diplomatic communications",
+      "acceptableAlternatives": ["Japanese diplomatic messages", "Japan's diplomatic code"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The American codebreaking of 'Purple' gave the US access to which category of enemy communications during WWII?",
+      "explanation": "The Purple cipher was the codename for Japan's most secure diplomatic encryption machine, analogous to Germany's Enigma. American codebreakers, led by William Friedman, cracked Purple in 1940. This gave the US access to Japanese diplomatic communications, informing US strategy throughout the Pacific war — though Purple did not cover Japanese naval operational codes (those required separate breakthroughs).",
+      "visualDescription": "Pixel art of American codebreakers in a crowded Signal Intelligence office, desks covered in Japanese character sheets, a large mechanical cipher machine resembling a typewriter array in the center.",
+      "sourceName": "Wikipedia — Purple (cipher machine)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Purple_(cipher_machine)",
+      "volatile": false,
+      "distractors": [
+        "Japanese naval operational orders",
+        "Japanese army tactical commands",
+        "Japanese weather station reports",
+        "Imperial Japanese Army personnel files",
+        "Japanese submarine position reports",
+        "Japanese merchant shipping manifests",
+        "Japanese military production figures",
+        "Japanese air force sortie orders"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Purple was Japan's diplomatic cipher, analogous to Germany's Enigma. Who led the American team that cracked it?",
+          "correctAnswer": "William Friedman",
+          "distractors": ["Alan Turing", "Marian Rejewski", "Joseph Rochefort", "Edwin Layton"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In what year did American codebreakers crack the Japanese Purple cipher?",
+          "correctAnswer": "1940",
+          "distractors": ["1941", "1942", "1939", "1943"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Breaking Purple also gave the US access to Japan's naval operational codes.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Japan's Purple cipher was the diplomatic equivalent of Germany's _____ machine.",
+          "correctAnswer": "Enigma",
+          "distractors": ["Lorenz", "Geheimschreiber", "Typex", "Hagelin"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_dutch_hiding_numbers",
+      "correctAnswer": "300,000",
+      "acceptableAlternatives": ["over 300,000", "more than 300,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "numbers_statistics",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Approximately how many Jews were hidden from Nazi deportation by Dutch families and underground networks in the Netherlands?",
+      "explanation": "Dutch resistance networks — working with Quakers, churches, and civic organizations — hid over 300,000 Jews from Nazi deportation across the Netherlands from 1941 to 1945. Despite the massive danger (discovery meant death for both families and those hidden), this effort resulted in a Jewish survival rate of around 25–30% in the Netherlands — higher than in France, Belgium, or Eastern Europe, though still devastatingly low. Dutch rescuers are honored as Righteous Among the Nations.",
+      "visualDescription": "Pixel art of a Dutch family peering through a crack in the floorboards at a hidden cellar below, a woman placing bread through a gap, dark Amsterdam canal house beams overhead.",
+      "sourceName": "Wikipedia — Netherlands in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Netherlands_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "50,000",
+        "100,000",
+        "500,000",
+        "75,000",
+        "150,000",
+        "25,000",
+        "450,000",
+        "200,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the Jewish survival rate in the Netherlands despite the large-scale hiding effort?",
+          "correctAnswer": "About 25–30% — higher than most occupied countries but still devastatingly low",
+          "distractors": ["Over 90%", "Nearly 75%", "Under 5%", "About 50%"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What penalty did Dutch families face if caught hiding Jewish people?",
+          "correctAnswer": "Death",
+          "distractors": ["Deportation to a labor camp", "A heavy fine and imprisonment", "Loss of property and forced relocation", "Forced labor service for the German war effort"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Dutch rescuers who hid Jewish people are honored with the 'Righteous Among the Nations' designation.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Dutch resistance worked with Quakers, churches, and civic organizations to hide Jews — making it a _____ effort rather than just a military one.",
+          "correctAnswer": "societal",
+          "distractors": ["governmental", "military", "religious only", "academic"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_greek_resistance_split",
+      "correctAnswer": "ELAS and EDES",
+      "acceptableAlternatives": ["EDES and ELAS", "communist ELAS and nationalist EDES"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "proper_nouns",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Greek resistance against the German occupation was split between two rival factions — what were their abbreviations?",
+      "explanation": "Greek resistance from 1941–1944 was divided between ELAS (communist-aligned) and EDES (nationalist), both fighting German occupation but deeply hostile to each other. This internal conflict created a devastating civil dimension to the occupation — ELAS and EDES clashed repeatedly, and Greece descended into full civil war after liberation. The split between communist and nationalist resistance factions in Greece became a template for Cold War proxy conflicts.",
+      "visualDescription": "Pixel art of two armed partisan groups facing each other on a mountain ridge in Greece, German forces visible on the valley road below — both sides ignoring the common enemy to stare each other down.",
+      "sourceName": "Wikipedia — Greek Resistance",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Greek_Resistance",
+      "volatile": false,
+      "distractors": [
+        "EKKA and PAO",
+        "EAM and OKW",
+        "NOF and SNOF",
+        "EOK and KKE",
+        "YBE and OKW",
+        "OPLA and ELAS",
+        "PEAN and ELAS",
+        "EDES and OPLA"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The ELAS–EDES conflict in Greece foreshadowed what broader postwar confrontation?",
+          "correctAnswer": "The Greek Civil War (1946–1949) and the Cold War divide between communism and capitalism",
+          "distractors": ["The formation of NATO", "The division of Germany", "The Korean War", "The Yugoslav–Soviet split"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What was the ideological difference between ELAS and EDES in the Greek resistance?",
+          "correctAnswer": "ELAS was communist-aligned; EDES was nationalist",
+          "distractors": ["ELAS was royalist; EDES was republican", "ELAS was urban; EDES was rural", "ELAS was British-backed; EDES was Soviet-backed", "ELAS was military; EDES was civilian"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: ELAS and EDES cooperated fully against Germany despite their ideological differences.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After German forces withdrew from Greece in 1944, the rivalry between ELAS and EDES escalated into a full _____ war.",
+          "correctAnswer": "civil",
+          "distractors": ["guerrilla", "proxy", "religious", "border"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_italian_partisans_cln",
+      "correctAnswer": "CLN (Committee of National Liberation)",
+      "acceptableAlternatives": ["Committee of National Liberation", "Italian Committee of National Liberation"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "proper_nouns",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Italian anti-Fascist partisan groups organized under what umbrella coalition from 1943 to 1945?",
+      "explanation": "After Italy's armistice with the Allies in September 1943 and Germany's subsequent occupation of northern Italy, partisan groups formed under the CLN (Comitato di Liberazione Nazionale — Committee of National Liberation). Communist partisans dominated in northern Italy's industrial regions. The CLN coordinated partisan attacks on German forces and Fascist collaborators. Italian partisans played a significant role in the liberation of northern Italy, and it was partisans who captured and killed Mussolini in April 1945.",
+      "visualDescription": "Pixel art of Italian partisans in rough civilian clothes and mix-matched weapons emerging from alpine forest shadows, a red bandana and a tricolor armband visible among the group, Italian Alps behind.",
+      "sourceName": "Wikipedia — Italian resistance movement",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Italian_resistance_movement",
+      "volatile": false,
+      "distractors": [
+        "PCI (Italian Communist Party)",
+        "OVRA (Italian secret police)",
+        "GNR (National Republican Guard)",
+        "OSS (Office of Strategic Services)",
+        "SOE Italian Section",
+        "Badoglio's Royal Government",
+        "PSIUP (Italian Socialist Party)",
+        "ANPI (National Association of Italian Partisans)"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Italian partisans played a role in Mussolini's end. What happened when partisans captured him in April 1945?",
+          "correctAnswer": "They executed him",
+          "distractors": ["They handed him to Allied forces for trial", "They imprisoned him until Germany surrendered", "He escaped during the handover", "He was killed in a German bombing raid the same day"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What triggered the formation of the Italian partisan movement in 1943?",
+          "correctAnswer": "Italy's armistice with the Allies and Germany's subsequent occupation of northern Italy",
+          "distractors": ["The Allied invasion of Sicily", "Mussolini's arrest by the Italian king", "The Allied bombing of Rome", "The fall of the Fascist Grand Council"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Communist partisans were dominant in northern Italy's industrial regions.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The CLN coordinated Italian partisans against both German occupiers and _____ collaborators.",
+          "correctAnswer": "Fascist",
+          "distractors": ["Socialist", "royalist", "Catholic", "liberal"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_soviet_partisans_strategy",
+      "correctAnswer": "Behind German lines in occupied Soviet territory",
+      "acceptableAlternatives": ["occupied Soviet territory", "behind enemy lines in the USSR"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Where did Soviet partisan forces operate during Germany's occupation of the USSR from 1941–1944?",
+      "explanation": "Soviet partisan units operated behind German lines in occupied Soviet territory — including Belarus, Ukraine, and Russia — from 1941 to 1944. Organized and directed by the Soviet state, they conducted rail sabotage, ambushes, and intelligence gathering that significantly disrupted German supply lines and logistics. Unlike other resistance movements, Soviet partisans were a formal component of Soviet military strategy, receiving airdrops and coordination from Moscow.",
+      "visualDescription": "Pixel art of Soviet partisans in heavy winter coats setting explosives beneath a railway bridge in a snow-covered birch forest at night, a distant German freight train's headlights visible.",
+      "sourceName": "Wikipedia — Soviet partisans",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet_partisans",
+      "volatile": false,
+      "distractors": [
+        "In neutral Finland and Sweden, gathering intelligence",
+        "Embedded within the regular Red Army",
+        "Operating out of safe houses in German-occupied Warsaw",
+        "Deployed from Britain by the SOE",
+        "Concealed within German prisoner of war camps",
+        "Working from Swiss territory to infiltrate Germany",
+        "Hidden inside German munitions factories as forced laborers",
+        "Stationed along the Turkish border for supply access"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Soviet partisans were unusual compared to other resistance movements. What made them different?",
+          "correctAnswer": "They were a formal component of Soviet military strategy, directed by Moscow with official supply drops",
+          "distractors": ["They were made up entirely of women", "They operated in neutral countries to avoid German forces", "They avoided combat and focused only on intelligence", "They were composed mainly of German defectors"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Soviet partisans were especially effective at disrupting what type of German infrastructure?",
+          "correctAnswer": "Railways and supply lines",
+          "distractors": ["Airfields and fuel depots", "Command bunkers and communications", "Naval port facilities", "Industrial factories in occupied cities"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Soviet partisans received coordination and supply drops from Moscow.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Soviet partisan activity was heaviest in occupied _____, Ukraine, and Russia — regions deep behind German front lines.",
+          "correctAnswer": "Belarus",
+          "distractors": ["Poland", "Romania", "Finland", "Estonia"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_philippine_guerrillas_role",
+      "correctAnswer": "Intelligence for MacArthur's 1944 return",
+      "acceptableAlternatives": ["provided intelligence to MacArthur", "gathered intelligence supporting the 1944 Philippine invasion"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What was the primary strategic contribution of Filipino guerrilla forces to the Allied Pacific campaign after Japan conquered the Philippines in 1942?",
+      "explanation": "After Japan conquered the Philippines in 1942, Filipino guerrilla groups — suffering disease, starvation, and Japanese reprisals — maintained resistance throughout the islands. Their most strategically critical contribution was gathering detailed intelligence on Japanese troop positions and fortifications that directly informed MacArthur's 1944 invasion planning. Guerrilla harassment of Japanese supply lines also tied down Japanese forces until the main Allied assault.",
+      "visualDescription": "Pixel art of Filipino guerrillas in the jungle, radios cobbled from scavenged parts, one figure holding a hand-drawn map of Japanese positions while an American officer crouches beside him.",
+      "sourceName": "Wikipedia — Philippine guerrilla resistance in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Philippine_guerrilla_resistance_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "Capturing a Japanese naval code book intact",
+        "Holding Bataan indefinitely against Japan",
+        "Liberating Manila before MacArthur's arrival",
+        "Assassinating the Japanese military governor of Luzon",
+        "Destroying Japan's Philippine air force on the ground",
+        "Organizing mass civilian evacuations from Japanese zones",
+        "Escorting downed Allied pilots to safety at sea",
+        "Launching a major conventional battle to retake Leyte"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Filipino guerrillas faced terrible conditions resisting Japan. Which hardships were most devastating?",
+          "correctAnswer": "Disease and starvation, alongside Japanese reprisal killings",
+          "distractors": ["Allied bombing of supply routes", "Lack of any outside communication", "Inability to recruit civilian support", "American abandonment of supply drops"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In what year did MacArthur return to the Philippines, supported by guerrilla intelligence?",
+          "correctAnswer": "1944",
+          "distractors": ["1942", "1943", "1945", "1941"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Filipino guerrilla contributions to WWII are sometimes overshadowed by MacArthur's prominence in postwar accounts.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Filipino guerrillas provided intelligence critical to MacArthur's _____ Gulf landing in October 1944.",
+          "correctAnswer": "Leyte",
+          "distractors": ["Manila", "Luzon", "Mindanao", "Bataan"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_bletchley_women",
+      "correctAnswer": "They decoded the majority of intercepted German messages",
+      "acceptableAlternatives": ["they operated the Bombe machines", "they did most of the codebreaking work"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Women codebreakers at Bletchley Park from 1939 to 1945 are now recognized as critical to the intelligence effort — what role did they primarily fill?",
+      "explanation": "Women made up the majority of Bletchley Park's workforce, operating the electromechanical Bombe machines that tested Enigma settings and processed intercepted messages. Without their work — largely uncelebrated for decades after the war due to secrecy — the volume of Ultra intelligence could not have been produced. Many were recruited as mathematicians, linguists, and chess players. Their contribution was declassified only in the 1970s.",
+      "visualDescription": "Pixel art of a vast room filled with large cylindrical Bombe machines, women in ATS uniforms monitoring drum rotations and marking results on clipboards, concentration evident on every face.",
+      "sourceName": "Wikipedia — Bletchley Park",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bletchley_Park",
+      "volatile": false,
+      "distractors": [
+        "They served as couriers delivering intelligence to field commanders",
+        "They managed the administrative and logistical operations only",
+        "They translated intercepted messages from Japanese Purple",
+        "They operated as field agents in occupied Europe",
+        "They transcribed messages but did not participate in decryption",
+        "They maintained the physical security of the Bletchley grounds",
+        "They managed only the German naval Enigma section",
+        "They served exclusively as telephone operators"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Bletchley Park women's contributions were kept secret for decades. When were they finally declassified?",
+          "correctAnswer": "The 1970s",
+          "distractors": ["The 1950s", "The 1960s", "The 1980s", "They have never been fully declassified"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Women were recruited to Bletchley Park because of which skills?",
+          "correctAnswer": "Mathematics, linguistics, and chess ability",
+          "distractors": ["Nursing and administrative experience", "Military officer training", "Scientific laboratory credentials", "Foreign language secretarial skills only"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Women made up the majority of Bletchley Park's wartime workforce.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Women at Bletchley Park primarily operated the _____ machines that tested Enigma cipher settings at high speed.",
+          "correctAnswer": "Bombe",
+          "distractors": ["Colossus", "Tunny", "Typex", "Lorenz"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_resistance_newspapers_purpose",
+      "correctAnswer": "Spread resistance propaganda and sustain civilian morale",
+      "acceptableAlternatives": ["boost morale and spread anti-Nazi information", "counter Nazi propaganda and encourage resistance"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "What was the primary purpose of underground newspapers printed across occupied Europe from 1940 to 1944?",
+      "explanation": "Underground newspapers were one of the earliest and most widespread forms of resistance in occupied Europe. Published in defiance of Nazi censorship at enormous personal risk, they served two functions: spreading truthful information about the war (countering German propaganda) and sustaining civilian morale by showing that resistance existed. In France alone, hundreds of underground publications circulated. Printers caught distributing them faced imprisonment or execution.",
+      "visualDescription": "Pixel art of a man in a trench coat palming a folded newspaper to another figure in a shadowed doorway, a German occupation poster visible on the wall behind them, a tram passing on a rain-slicked Paris street.",
+      "sourceName": "Wikipedia — French Resistance press",
+      "sourceUrl": "https://en.wikipedia.org/wiki/French_Resistance#The_press",
+      "volatile": false,
+      "distractors": [
+        "Coordinate armed attacks against German garrisons",
+        "Organize escape routes for Allied pilots",
+        "Recruit agents for sabotage missions",
+        "Communicate coded military intelligence to London",
+        "Distribute forged German identity papers",
+        "Raise funds for resistance operations",
+        "Identify collaborators for reprisal",
+        "Publish German troop movements for Allied bombers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Underground newspaper printers faced what penalty if caught by German occupation authorities?",
+          "correctAnswer": "Imprisonment or execution",
+          "distractors": ["A fine and public shaming", "Forced labor in Germany", "Deportation to occupied Poland", "Loss of property and business licenses"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In France alone, how many underground publications circulated during the occupation?",
+          "correctAnswer": "Hundreds",
+          "distractors": ["Fewer than ten", "About twenty", "Around fifty", "Thousands"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Underground newspapers were among the earliest forms of organized resistance across occupied Europe.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Underground newspapers countered German _____ by providing truthful information about the war to occupied populations.",
+          "correctAnswer": "propaganda",
+          "distractors": ["censorship laws", "rationing orders", "curfew enforcement", "conscription orders"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_neutral_spy_hubs",
+      "correctAnswer": "Switzerland, Sweden, and Portugal",
+      "acceptableAlternatives": ["Switzerland, Portugal, and Sweden", "neutral countries like Switzerland and Portugal"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which three neutral European countries served as major espionage hubs during WWII, hosting intelligence networks from multiple belligerents?",
+      "explanation": "Switzerland, Sweden, and Portugal remained neutral during WWII and became dense with competing intelligence networks — British, American, German, Soviet, and others operated simultaneously within their borders. Lisbon (Portugal), Bern (Switzerland), and Stockholm (Sweden) were especially active spy cities. Allen Dulles ran the OSS's most successful European operation from Bern, Switzerland, recruiting high-level German sources. Neutrality created a permissive intelligence environment that all sides exploited.",
+      "visualDescription": "Pixel art of a Lisbon café terrace at dusk, four figures at separate tables each covertly examining the others, a newspaper in each hand, flagpins from different nations subtly visible on their lapels.",
+      "sourceName": "Wikipedia — Espionage in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_II_espionage",
+      "volatile": false,
+      "distractors": [
+        "Spain, Ireland, and Turkey",
+        "Switzerland, Greece, and Egypt",
+        "Sweden, Finland, and Hungary",
+        "Portugal, Argentina, and Sweden",
+        "Switzerland, Morocco, and Ireland",
+        "Spain, Switzerland, and Finland",
+        "Portugal, Turkey, and Sweden",
+        "Sweden, Switzerland, and Denmark"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Allen Dulles ran the OSS's most successful European intelligence operation from which neutral city?",
+          "correctAnswer": "Bern, Switzerland",
+          "distractors": ["Lisbon, Portugal", "Stockholm, Sweden", "Dublin, Ireland", "Geneva, Switzerland"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why did neutral countries become intelligence hubs during WWII?",
+          "correctAnswer": "Their neutrality created a permissive environment where all belligerents could operate simultaneously",
+          "distractors": ["Their governments actively supported Allied espionage", "They provided safe houses paid for by the British government", "They had no Gestapo presence to threaten agents", "They shared borders only with Allied-controlled territory"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Neutral countries hosted intelligence networks from all major powers simultaneously during WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Lisbon, the capital of neutral _____, was one of WWII's most active spy cities.",
+          "correctAnswer": "Portugal",
+          "distractors": ["Spain", "Switzerland", "Sweden", "Turkey"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_soe_women_agents_number",
+      "correctAnswer": "39",
+      "acceptableAlternatives": ["thirty-nine", "39 women"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "numbers_statistics",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "How many women did the British SOE deploy as agents into occupied Europe — a figure remarkable for a 1940s military intelligence agency?",
+      "explanation": "The SOE deployed 39 women as field agents into occupied Europe — a radical departure for a 1940s military intelligence organization. Women agents were particularly valued as radio operators and couriers because they could move more freely under German occupation than military-age men, who risked forced labor conscription. About a third of the women deployed by SOE into France were captured; several were executed, including Noor Inayat Khan, Violette Szabo, and others.",
+      "visualDescription": "Pixel art of a young woman in 1940s civilian clothes receiving a briefing from a British officer in a wood-paneled London room, a suitcase radio kit open on the table between them.",
+      "sourceName": "Wikipedia — Special Operations Executive § Women agents",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Special_Operations_Executive",
+      "volatile": false,
+      "distractors": [
+        "5",
+        "12",
+        "20",
+        "50",
+        "75",
+        "100",
+        "15",
+        "200"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "SOE women agents were valued for a specific operational advantage. What was it?",
+          "correctAnswer": "They could move more freely under occupation than military-age men, who risked conscription",
+          "distractors": ["They were better at language impersonation", "Germany underestimated women as threats", "They had formal diplomatic immunity", "They were recruited from local Resistance networks already in place"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Roughly what fraction of SOE women deployed into France were captured?",
+          "correctAnswer": "About one-third",
+          "distractors": ["Almost none", "Over half", "Nearly all of them", "About one-tenth"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Noor Inayat Khan and Violette Szabo were both SOE women agents who were executed.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "SOE women agents often served as _____ operators — transmitting intelligence back to Britain by radio.",
+          "correctAnswer": "radio",
+          "distractors": ["cipher", "courier", "drop", "signals"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_re_ultra_kept_secret_years",
+      "correctAnswer": "1970s — about 30 years after the war",
+      "acceptableAlternatives": ["the 1970s", "30 years after the war", "until the 1970s"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "short_phrases",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Until which decade was Ultra — the secret of Enigma decryption — kept classified, distorting postwar histories of WWII?",
+      "explanation": "Ultra was kept secret until the 1970s, roughly 30 years after WWII ended. This created a historical distortion: commanders who had used Ultra intelligence to win battles couldn't explain their decisions, and the full significance of codebreaking was absent from early war histories. When declassified, it reshaped understanding of major battles — Montgomery's North Africa campaign, Atlantic convoy routing, and many others were revealed to have been guided by Enigma intelligence.",
+      "visualDescription": "Pixel art of a declassification archive scene — a civil servant stamps 'DECLASSIFIED' on a thick folder labeled 'ULTRA', stacks of similar folders visible in a government filing room, 1970s-era office furniture.",
+      "sourceName": "Wikipedia — Ultra (WWII)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ultra",
+      "volatile": false,
+      "distractors": [
+        "Immediately after the war in 1946",
+        "In the 1950s when NATO was formed",
+        "In the 1960s during the Cold War",
+        "In the 1980s under Thatcher",
+        "In the 1990s with Soviet archives",
+        "In 2000 under Freedom of Information",
+        "It was never officially declassified",
+        "In 2013 under the 70-year rule"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Keeping Ultra secret for 30 years distorted early WWII history. Which Allied commander's reputation was most affected when Ultra was revealed?",
+          "correctAnswer": "Bernard Montgomery — his North Africa victories were partly explained by Enigma intelligence",
+          "distractors": ["Churchill — his speeches were revealed to contain coded intelligence", "Eisenhower — his D-Day decision was shown to be based entirely on Ultra", "Patton — his tank victories were shown to be driven solely by Enigma advantage", "Roosevelt — his diplomatic moves were revealed as intelligence-driven"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What was one consequence of Ultra being kept secret for decades after WWII?",
+          "correctAnswer": "Early war histories omitted the full significance of codebreaking in Allied decisions",
+          "distractors": ["German commanders couldn't be prosecuted for specific crimes", "Bletchley Park staff received no postwar recognition", "The Bombe machine design was stolen by the Soviets", "Churchill was falsely credited with intelligence he didn't have"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Ultra intelligence influenced the routing of Allied Atlantic convoys to avoid German submarines.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Ultra was kept secret until the _____, when historians began rewriting WWII histories to account for Enigma intelligence.",
+          "correctAnswer": "1970s",
+          "distractors": ["1950s", "1960s", "1980s", "1990s"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1896 @@
+{
+  "facts": [
+    {
+      "id": "wwii_nw_atlantic_duration",
+      "correctAnswer": "6 years (entire war, 1939–1945)",
+      "acceptableAlternatives": ["entire war", "1939 to 1945", "six years"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "duration_period",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The Battle of the Atlantic holds a unique distinction as the longest campaign of WWII. How long did it last?",
+      "explanation": "The Battle of the Atlantic ran from the first day of the war to the last — September 1939 to May 1945, a full 6 years. Every other major campaign had a start and end date; this one never stopped. Britain's survival literally depended on whether ships could cross the ocean each week.",
+      "visualDescription": "Pixel art of a merchant convoy silhouetted against a grey Atlantic horizon, a destroyer escort zigzagging ahead, a periscope barely visible beneath dark waves",
+      "sourceName": "Wikipedia — Battle of the Atlantic",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Atlantic",
+      "volatile": false,
+      "distractors": [
+        "2 years (1941–1943)",
+        "3 years (1942–1945)",
+        "4 years (1940–1944)",
+        "18 months (1942–1943)",
+        "1 year (1943–1944)",
+        "5 years (1940–1945)",
+        "8 months (1942)",
+        "3.5 years (1941–1944)"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which WWII campaign was notable for being the only one that lasted the entire duration of the war, from 1939 to 1945?",
+          "correctAnswer": "Battle of the Atlantic",
+          "distractors": [
+            "Eastern Front",
+            "Strategic bombing campaign over Germany",
+            "Pacific submarine war",
+            "Mediterranean campaign"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why was the Battle of the Atlantic's outcome considered decisive to Allied victory in Europe?",
+          "correctAnswer": "It kept supply lines open — without them Britain would have been starved into surrender",
+          "distractors": [
+            "It destroyed the German surface fleet, preventing an invasion of Britain",
+            "It allowed American troops to reach North Africa before German reinforcements",
+            "It demonstrated that submarines could not defeat organized naval power",
+            "It tied down German air assets that would otherwise have defended the Eastern Front"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Battle of the Atlantic ended before D-Day in June 1944.",
+          "correctAnswer": "False — it continued until Germany's surrender in May 1945",
+          "distractors": [
+            "True — German U-boats were neutralized by mid-1943",
+            "True — Allied air cover closed the mid-Atlantic gap in early 1944",
+            "False — it ended with the fall of Berlin"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Battle of the Atlantic saw over ____ Allied merchant ships sunk by German U-boats.",
+          "correctAnswer": "3,500",
+          "distractors": ["800", "1,200", "5,000", "2,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_uboat_peak_tonnage",
+      "correctAnswer": "700,000 tons per month",
+      "acceptableAlternatives": ["700K tons monthly", "700 thousand tons a month"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "At the height of German U-boat success in 1942, how much Allied shipping tonnage were they sinking every single month?",
+      "explanation": "In 1942 — Germany's 'Second Happy Time' off the US coast — U-boats were sinking 700,000 tons of shipping per month. Allied shipyards were barely keeping pace. If that rate had held, Britain's imports would have collapsed within months. The margin was razor-thin.",
+      "visualDescription": "Pixel art of a burning tanker at night, orange fire reflecting on black ocean swells, a U-boat conning tower silhouetted in the distance",
+      "sourceName": "Wikipedia — German submarine campaign of World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_submarine_campaign_of_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "200,000 tons per month",
+        "1.5 million tons per month",
+        "100,000 tons per month",
+        "400,000 tons per month",
+        "3 million tons per month",
+        "50,000 tons per month",
+        "900,000 tons per month",
+        "250,000 tons per month"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "In what year did German U-boats achieve their peak sinking rate of 700,000 tons of shipping per month?",
+          "correctAnswer": "1942",
+          "distractors": ["1940", "1941", "1943", "1944"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What development in 1943 most directly ended the U-boat peak success period and reversed Allied shipping losses?",
+          "correctAnswer": "Improved Allied escorts, sonar, air support, and convoy tactics",
+          "distractors": [
+            "The US Navy introduced radar-equipped destroyers capable of 40 knots",
+            "Germany ran out of torpedoes and had to reduce patrol frequency",
+            "Allied codebreakers revealed the exact position of every U-boat at sea",
+            "The Royal Air Force began bombing U-boat pens directly"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Germany built over 1,000 U-boats during World War II.",
+          "correctAnswer": "True — approximately 1,150 U-boats were built",
+          "distractors": [
+            "False — only about 300 were ever commissioned",
+            "False — production was limited to around 600 due to steel shortages",
+            "True — but fewer than 100 were ever operational at once"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Over 40,000 German ______ died serving aboard U-boats during WWII — the highest casualty rate of any service branch.",
+          "correctAnswer": "submariners",
+          "distractors": ["sailors", "officers", "crew members", "naval personnel"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_happy_time",
+      "correctAnswer": "Die Glückliche Zeit (The Happy Time)",
+      "acceptableAlternatives": ["Happy Time", "The Happy Time", "Glückliche Zeit"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "German U-boat crews had a darkly cheerful nickname for the 1940–1941 period when they slaughtered Allied merchant shipping almost unopposed. What was it?",
+      "explanation": "U-boat crews called 1940–1941 'Die Glückliche Zeit' — The Happy Time. With few Allied escorts and no effective convoy tactics yet, individual commanders racked up dozens of kills. Some aces sank 10+ ships in a single patrol. The grim irony: their victims were merchant sailors, many of whom died in freezing Atlantic waters within minutes.",
+      "visualDescription": "Pixel art of a U-boat captain peering through a periscope, smiling, while merchant ship silhouettes burn on the horizon behind him",
+      "sourceName": "Wikipedia — Happy Time (naval warfare)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Happy_Time_(naval_warfare)",
+      "volatile": false,
+      "distractors": [
+        "Operation Wolfpack",
+        "The Golden Age",
+        "Schwarze Zeit (Black Time)",
+        "Operation Sea Lion",
+        "The Hunting Season",
+        "Die Siegeszeit (Victory Time)",
+        "The Atlantic Harvest",
+        "Blauzeit (Blue Time)"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The 'Happy Time' for German U-boats (1940–1941) ended primarily because of what Allied improvement?",
+          "correctAnswer": "Better escorts, convoy organisation, and anti-submarine sonar (ASDIC)",
+          "distractors": [
+            "The United States entered the war and flooded the Atlantic with destroyers",
+            "Germany reassigned U-boats to the Mediterranean after the fall of France",
+            "Allied air power eliminated most U-boats during surface recharging at night",
+            "American Lend-Lease shipbuilding outpaced German sinking rates"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What made the 'Happy Time' period so deadly for Allied merchant sailors specifically?",
+          "correctAnswer": "Limited escort ships and ineffective convoy tactics left merchant ships largely undefended",
+          "distractors": [
+            "U-boats had been equipped with an acoustic torpedo that could track propeller noise",
+            "Germany had broken British naval codes and knew exact convoy routes and times",
+            "U-boats operated in packs of 20 or more, overwhelming any single escort",
+            "Allied merchant ships were ordered to sail without zigzagging to conserve fuel"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The 'Happy Time' was a term used by Allied sailors to describe convoy runs that successfully evaded U-boats.",
+          "correctAnswer": "False — it was a German U-boat crews' term for their own peak success period",
+          "distractors": [
+            "True — British convoy veterans used it to describe safe North Atlantic crossings",
+            "True — it referred to periods when Allied air cover was effective enough to deter U-boats"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "During the Happy Time, some German U-boat commanders were celebrated as aces after sinking more than ____ ships in a single patrol.",
+          "correctAnswer": "10",
+          "distractors": ["3", "5", "20", "2"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_bismarck_sank_hood",
+      "correctAnswer": "HMS Hood",
+      "acceptableAlternatives": ["the Hood", "Hood"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "On May 24, 1941, the German battleship Bismarck scored a catastrophic hit that shocked the British public. What famous British warship did Bismarck sink?",
+      "explanation": "Bismarck hit HMS Hood's magazine — and the pride of the Royal Navy blew apart in under 3 minutes. Of 1,418 crew, only 3 survived. Hood had been Britain's largest warship; her loss stunned the nation. The order went out immediately: 'Sink the Bismarck.' Within three days, they did.",
+      "visualDescription": "Pixel art of HMS Hood exploding in a massive fireball on the grey North Atlantic, her bow rising vertically as she sinks, smoke billowing to the sky",
+      "sourceName": "Wikipedia — Bismarck (battleship)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bismarck_(battleship)",
+      "volatile": false,
+      "distractors": [
+        "HMS Rodney",
+        "HMS Prince of Wales",
+        "HMS Ark Royal",
+        "HMS Warspite",
+        "HMS Repulse",
+        "HMS Nelson",
+        "HMS King George V",
+        "HMS Illustrious"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "How many of HMS Hood's 1,418-man crew survived when Bismarck sank her on May 24, 1941?",
+          "correctAnswer": "3",
+          "distractors": ["47", "115", "312", "0"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What ultimately allowed the Royal Navy to catch and sink Bismarck after she had sunk HMS Hood and escaped into the Atlantic?",
+          "correctAnswer": "A torpedo from HMS Ark Royal's aircraft damaged Bismarck's rudder, leaving her unable to manoeuvre",
+          "distractors": [
+            "British codebreakers deciphered Bismarck's position report to Berlin, revealing her exact location",
+            "A Royal Air Force Sunderland flying boat spotted Bismarck refuelling from a supply tanker",
+            "Bismarck's captain turned back toward France after a fire in the engine room",
+            "An American destroyer tracked Bismarck and radioed her position to the Royal Navy"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Bismarck was sunk primarily by naval gunfire from HMS Rodney and HMS King George V.",
+          "correctAnswer": "True — though a torpedo from HMS Dorsetshire delivered the final blow",
+          "distractors": [
+            "False — Bismarck was sunk entirely by RAF bombing raids from shore-based aircraft",
+            "False — a submarine delivered all torpedoes that sank Bismarck"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "When Bismarck sank on May 27, 1941, over ____ of her sailors were killed — with only approximately 100 surviving.",
+          "correctAnswer": "2,200",
+          "distractors": ["800", "1,400", "3,000", "500"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_bismarck_tonnage",
+      "correctAnswer": "35,000 tons (with 15-inch guns)",
+      "acceptableAlternatives": ["35000 tons", "35,000 tons"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "The German battleship Bismarck was one of the world's most powerful warships at her launch. What was her displacement tonnage?",
+      "explanation": "Bismarck displaced 35,000 tons and carried eight 15-inch guns. She was one of the largest and most powerful battleships afloat when she sailed on her only combat mission in May 1941. Her entire operational life lasted just 9 days before the Royal Navy hunted her down.",
+      "visualDescription": "Pixel art of the Bismarck battleship at full speed in calm grey seas, her massive gun turrets trained forward, Nazi battle ensign flying from the stern",
+      "sourceName": "Wikipedia — Bismarck (battleship)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bismarck_(battleship)",
+      "volatile": false,
+      "distractors": [
+        "18,000 tons",
+        "46,000 tons",
+        "28,000 tons",
+        "52,000 tons",
+        "22,000 tons",
+        "40,000 tons",
+        "12,000 tons",
+        "30,000 tons"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Bismarck's entire combat career — from leaving port to being sunk — lasted how long?",
+          "correctAnswer": "9 days (May 18–27, 1941)",
+          "distractors": ["3 months", "6 weeks", "2 years", "4 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What lesson about modern naval warfare did the hunt for Bismarck most clearly demonstrate to both sides?",
+          "correctAnswer": "Carrier aircraft, not guns, determined the outcome — a torpedo from HMS Ark Royal decided the battle",
+          "distractors": [
+            "Battleships were too fast for any pursuing force to catch without air spotting",
+            "Radar-guided naval gunfire had made torpedo attacks obsolete",
+            "A single capital ship could hold an entire enemy navy at bay indefinitely",
+            "Surface ships required submarine escorts to survive in contested waters"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Bismarck conducted multiple successful Atlantic raiding operations before being sunk.",
+          "correctAnswer": "False — her single sortie lasted only 9 days; she never completed a commerce raiding mission",
+          "distractors": [
+            "True — Bismarck made three Atlantic patrols before her final voyage",
+            "True — Bismarck sank several merchant ships during her first Atlantic sortie"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Bismarck's main armament consisted of eight ____ guns arranged in four twin turrets.",
+          "correctAnswer": "15-inch",
+          "distractors": ["12-inch", "18-inch", "16-inch", "14-inch"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_midway_carriers_sunk",
+      "correctAnswer": "4 Japanese fleet carriers",
+      "acceptableAlternatives": ["four carriers", "4 carriers", "Akagi, Kaga, Soryu, Hiryu"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "At the Battle of Midway (June 1942), how many Japanese fleet carriers did US forces sink in just 3 days — a loss from which Japan never recovered?",
+      "explanation": "The US sank all four Japanese carriers — Akagi, Kaga, Soryu, and Hiryu — while losing only USS Yorktown. More devastating than the ships: Japan lost hundreds of irreplaceable veteran pilots with thousands of hours of training. American factories could build new carriers in months; there was no replacing those pilots.",
+      "visualDescription": "Pixel art of a Japanese fleet carrier engulfed in black smoke and orange flame, listing heavily to one side, American SBD Dauntless dive bombers pulling up in the distance",
+      "sourceName": "Wikipedia — Battle of Midway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+      "volatile": false,
+      "distractors": [
+        "2 Japanese fleet carriers",
+        "3 Japanese fleet carriers",
+        "5 Japanese fleet carriers",
+        "6 Japanese fleet carriers",
+        "1 Japanese fleet carrier",
+        "7 Japanese fleet carriers",
+        "2 carriers and 3 battleships",
+        "3 carriers and 2 heavy cruisers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Name the four Japanese fleet carriers sunk at the Battle of Midway in June 1942.",
+          "correctAnswer": "Akagi, Kaga, Soryu, Hiryu",
+          "distractors": [
+            "Shokaku, Zuikaku, Taiho, Junyo",
+            "Zuiho, Shoho, Hiyo, Ryujo",
+            "Hosho, Chitose, Chiyoda, Zuiho",
+            "Kaga, Soryu, Shokaku, Taiho"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why was the loss of experienced pilots at Midway considered even more damaging to Japan than the loss of the four carriers themselves?",
+          "correctAnswer": "Japan could not replace the thousands of training hours those veteran pilots represented; America could quickly build new carriers",
+          "distractors": [
+            "The pilots carried classified tactical manuals that revealed Japan's entire Pacific strategy",
+            "Those pilots were the only airmen trained to fly the advanced Zero fighter at high altitude",
+            "Losing them forced Japan to cancel planned attacks on the Australian mainland",
+            "The pilots had been earmarked for the planned invasion of Hawaii"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: American codebreaking played a decisive role in the US victory at Midway by revealing Japan's plan in advance.",
+          "correctAnswer": "True — US intelligence decoded Japanese communications and knew the target and timing",
+          "distractors": [
+            "False — the US stumbled on the Japanese fleet by chance during a routine patrol",
+            "False — a Japanese defector warned the US about the Midway operation"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Midway, the US lost approximately ____ aircraft while Japan lost approximately 250+.",
+          "correctAnswer": "150",
+          "distractors": ["50", "300", "75", "400"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_coral_sea_ships_never_saw",
+      "correctAnswer": "The opposing ships never saw each other — fought entirely by carrier aircraft",
+      "acceptableAlternatives": ["ships never saw each other", "fought by carrier aircraft", "no ship-to-ship contact"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "unique_facts",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "The Battle of the Coral Sea (May 1942) made naval history with a remarkable first. What unprecedented feature defined this battle?",
+      "explanation": "For the first time in history, two naval fleets fought a major battle without any ship ever seeing an enemy ship. Every blow was struck by carrier aircraft. The age of the battleship was over — the range of warfare had expanded from miles to hundreds of miles in a single generation.",
+      "visualDescription": "Pixel art split-panel: on the left a carrier deck launching aircraft; on the right another carrier launching aircraft. Blue ocean between them, no ships visible to either side",
+      "sourceName": "Wikipedia — Battle of the Coral Sea",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Coral_Sea",
+      "volatile": false,
+      "distractors": [
+        "It was fought entirely at night, with neither side using searchlights",
+        "It was the first battle where submarines made all the decisive attacks",
+        "It was the first naval battle involving only destroyers and no capital ships",
+        "No aircraft were used — it was fought by surface ships using only gunfire",
+        "It was conducted entirely via radio-controlled drone boats",
+        "Both fleets were out of ammunition — they settled it by ramming",
+        "It was the first battle where weather deliberately halted combat",
+        "It involved only ships from non-combatant nations acting as proxies"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "At the Battle of the Coral Sea, the US lost carrier USS Lexington and Japan's Shokaku was heavily damaged. Despite these losses, what was the strategic outcome?",
+          "correctAnswer": "Japan abandoned its Port Moresby invasion — a strategic American victory despite tactical losses",
+          "distractors": [
+            "Japan claimed a decisive victory and accelerated its offensive toward Australia",
+            "Both sides declared a ceasefire and withdrew to regroup before the Midway operation",
+            "The US gained Guadalcanal as a direct result of Coral Sea's aftermath",
+            "Japan redirected its carriers to the Indian Ocean, relieving pressure on British India"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What did the Battle of the Coral Sea permanently demonstrate about the future of naval warfare?",
+          "correctAnswer": "Battleships were obsolete — carrier aircraft, not guns, now determined naval battles",
+          "distractors": [
+            "Submarines had become the dominant naval weapon, making surface ships irrelevant",
+            "Naval battles would now require land-based air cover to be decisive",
+            "Night fighting tactics would dominate future naval engagements",
+            "Small fast torpedo boats had become the primary ship-killer in fleet actions"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japan achieved a tactical victory at the Battle of the Coral Sea but suffered a strategic defeat.",
+          "correctAnswer": "True — Japan sank more tonnage but had to abandon its invasion of Port Moresby",
+          "distractors": [
+            "False — the US achieved both tactical and strategic victory at Coral Sea",
+            "False — the battle was a complete Japanese victory with no strategic downside"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At the Battle of the Coral Sea, Japan's invasion fleet targeting ____ was recalled when the naval battle turned against them.",
+          "correctAnswer": "Port Moresby",
+          "distractors": ["Guadalcanal", "Darwin", "Rabaul", "Tulagi"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_pearl_harbor_353_aircraft",
+      "correctAnswer": "353 Japanese aircraft",
+      "acceptableAlternatives": ["353 planes", "353 aircraft"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How many Japanese aircraft attacked Pearl Harbor in the December 7, 1941 surprise attack?",
+      "explanation": "353 Japanese aircraft — launched from six carriers — struck Pearl Harbor in two waves. They sank or damaged 8 battleships, killed 2,403 Americans, and plunged the United States into WWII. The Japanese carriers, however, missed the most important targets: all three US aircraft carriers were at sea that day.",
+      "visualDescription": "Pixel art of 353 aircraft in tight formation overhead Pearl Harbor at dawn, the harbor below filled with battleships, the sky turning from orange to smoke-grey",
+      "sourceName": "Wikipedia — Attack on Pearl Harbor",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+      "volatile": false,
+      "distractors": [
+        "180 aircraft",
+        "500 aircraft",
+        "220 aircraft",
+        "100 aircraft",
+        "600 aircraft",
+        "75 aircraft",
+        "420 aircraft",
+        "150 aircraft"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the critical strategic failure of Japan's Pearl Harbor attack, despite its tactical success?",
+          "correctAnswer": "US aircraft carriers were not in harbor and survived — they would go on to defeat Japan at Midway",
+          "distractors": [
+            "Japan's aircraft failed to destroy Pearl Harbor's fuel storage tanks",
+            "The attack occurred on a Sunday when Congress could not immediately declare war",
+            "Japan's carriers were spotted by radar but the warning was ignored",
+            "American shipyards were not damaged, allowing rapid fleet reconstruction"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Admiral Yamamoto's strategic goal at Pearl Harbor was to buy Japan 6–12 months of uncontested expansion. Why did this plan ultimately fail?",
+          "correctAnswer": "Japan underestimated American industrial capacity and resolve — the US out-produced and out-fought Japan within 6 months",
+          "distractors": [
+            "The attack was detected in advance and US forces were partially prepared",
+            "Germany refused to declare war on the US, leaving Japan to fight alone",
+            "Japan's navy suffered crippling losses of its own during the Pearl Harbor operation",
+            "The US immediately blockaded Japan's oil supply routes after the attack"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The USS Arizona still rests on the bottom of Pearl Harbor today, with oil slowly seeping from her hull.",
+          "correctAnswer": "True — she is a memorial and final resting place for 1,102 of her crew",
+          "distractors": [
+            "False — the Arizona was salvaged and scrapped for steel after the war",
+            "False — the Arizona was raised and decommissioned as a museum ship"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Of the 2,403 Americans killed at Pearl Harbor, ____ died aboard the USS Arizona when her forward magazine exploded.",
+          "correctAnswer": "1,177",
+          "distractors": ["400", "850", "2,000", "600"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_yamato_displacement",
+      "correctAnswer": "46,000 tons (with 18-inch guns)",
+      "acceptableAlternatives": ["46000 tons", "46,000 tons", "largest battleship ever built"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The Japanese battleship Yamato was the largest and most heavily armed battleship ever built. What was her displacement?",
+      "explanation": "Yamato displaced 46,000 tons and carried 18-inch guns — the largest naval guns ever fitted to a warship. She was the pinnacle of battleship engineering. And she was sunk by aircraft that never came within range of those massive guns. The irony defined the entire naval transition of WWII.",
+      "visualDescription": "Pixel art of the Yamato battleship from above, her massive triple-turret 18-inch guns dominating the bow and stern, surrounded by churning white wake in the Pacific",
+      "sourceName": "Wikipedia — Japanese battleship Yamato",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_battleship_Yamato",
+      "volatile": false,
+      "distractors": [
+        "35,000 tons",
+        "28,000 tons",
+        "55,000 tons",
+        "72,000 tons",
+        "40,000 tons",
+        "22,000 tons",
+        "38,000 tons",
+        "60,000 tons"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Operation Ten-Go in April 1945 was Yamato's final mission — a suicide sortie. What was her target?",
+          "correctAnswer": "The American invasion fleet at Okinawa",
+          "distractors": [
+            "The US naval base at Guam",
+            "American carrier groups operating north of the Philippines",
+            "The US supply depot at Ulithi Atoll",
+            "The Allied fleet preparing to invade the Japanese mainland"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What made Yamato's sinking in April 1945 a symbol of the entire naval transformation of WWII?",
+          "correctAnswer": "The world's largest battleship was sunk by aircraft that never came within range of her guns — proving battleships were obsolete",
+          "distractors": [
+            "Yamato was sunk by a single American submarine using acoustic homing torpedoes",
+            "Yamato was destroyed by her own crew to prevent capture — not by American attack",
+            "Yamato sank because of a design flaw in her hull that caused flooding when she accelerated",
+            "A Japanese kamikaze pilot accidentally struck Yamato's fuel tanks, triggering the explosion"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Yamato participated in many major fleet actions during the Pacific War before her final mission.",
+          "correctAnswer": "False — Japan conserved its battleships after carrier losses; Yamato saw little combat",
+          "distractors": [
+            "True — Yamato fought in over a dozen major surface engagements from 1941 to 1945",
+            "True — Yamato was the flagship at the Battle of Midway and Leyte Gulf"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Yamato's 18-inch guns were the largest ____ guns ever mounted on a warship.",
+          "correctAnswer": "naval",
+          "distractors": ["artillery", "calibre", "turret", "battleship"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_liberty_ships_count",
+      "correctAnswer": "Over 2,700 ships",
+      "acceptableAlternatives": ["2700", "2,710", "more than 2700"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Liberty Ships were America's mass-produced solution to U-boat losses. Approximately how many were built during WWII?",
+      "explanation": "More than 2,700 Liberty Ships were built — a production miracle. Shipyards using prefabricated sections could launch a new Liberty Ship in as few as 4 days. The Kaiser Shipyards in California once built one in 4 days, 15 hours as a publicity stunt. U-boats were sinking ships; American factories were building them faster.",
+      "visualDescription": "Pixel art of a busy shipyard with cranes and scaffolding, a half-built Liberty Ship in a dry dock, workers in hard hats swarming over its hull, American flags flying overhead",
+      "sourceName": "Wikipedia — Liberty ship",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Liberty_ship",
+      "volatile": false,
+      "distractors": [
+        "450 ships",
+        "800 ships",
+        "1,200 ships",
+        "5,000 ships",
+        "300 ships",
+        "600 ships",
+        "3,500 ships",
+        "1,800 ships"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the fastest any single Liberty Ship was built during WWII, achieved by the Kaiser Shipyards as a publicity demonstration?",
+          "correctAnswer": "4 days and 15 hours",
+          "distractors": ["2 weeks", "3 days", "1 week", "10 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Liberty Ships used a prefabricated assembly method that revolutionised shipbuilding. Why was this significant strategically?",
+          "correctAnswer": "It allowed US shipyards to produce new vessels faster than U-boats could sink them, winning the tonnage war",
+          "distractors": [
+            "Prefabrication made Liberty Ships much harder to sink because their hulls were reinforced at the joints",
+            "The method allowed ships to be assembled inland on rivers, away from German submarine threat",
+            "Prefabricated ships could be disassembled and transported by rail to different theatres",
+            "The technique used less steel per ship, freeing up material for tank and aircraft production"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Liberty Ships were considered elegant, well-engineered vessels that remained in service for decades after the war.",
+          "correctAnswer": "False — they were deliberately simple and cheap; some suffered hull cracking in cold water due to the steel alloy used",
+          "distractors": [
+            "True — many Liberty Ships served in merchant fleets until the 1980s without modification",
+            "True — the design was so sound that postwar shipyards copied it for commercial freighters"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Liberty Ships were designed as a mass-produced replacement for merchant vessels lost to ____ attacks in the Atlantic.",
+          "correctAnswer": "U-boat",
+          "distractors": ["Luftwaffe", "surface raider", "mine", "torpedo boat"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_convoy_size",
+      "correctAnswer": "20–60 ships per convoy",
+      "acceptableAlternatives": ["20 to 60 ships", "groups of 20 to 60"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "Allied navies organised merchant ships into convoys for protection. What was the typical size range of these convoys?",
+      "explanation": "Convoys typically grouped 20–60 merchant ships, screened by destroyers, corvettes, and frigates. The key vulnerability: convoys travelled at the speed of the slowest ship, and for hundreds of miles in mid-Atlantic there was no air cover at all — the deadly 'Black Pit' where U-boats hunted freely until long-range aircraft closed the gap.",
+      "visualDescription": "Pixel art top-down view of 30+ merchant ships in convoy formation, small escort destroyers zigzagging on the flanks, a vast grey ocean surrounding them",
+      "sourceName": "Wikipedia — Convoy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Convoy",
+      "volatile": false,
+      "distractors": [
+        "3–5 ships per convoy",
+        "100–200 ships per convoy",
+        "8–12 ships per convoy",
+        "500+ ships per convoy",
+        "2–4 ships per convoy",
+        "70–100 ships per convoy",
+        "10–15 ships per convoy",
+        "200–300 ships per convoy"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the 'Black Pit' (or 'Atlantic Gap') that made mid-Atlantic convoy crossings so deadly in 1941–1943?",
+          "correctAnswer": "A stretch of ocean beyond the range of land-based air cover where U-boats could attack without fear of aircraft",
+          "distractors": [
+            "A deep ocean trench where sonar failed completely, making U-boats undetectable",
+            "A region of particularly severe storms that scattered convoys and made escort coordination impossible",
+            "The zone between American and British naval command responsibility where escort handovers caused gaps",
+            "An area of the ocean designated as neutral under international law, where Allied ships could not be defended"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What single technological development most effectively closed the Atlantic Gap and ended the threat to mid-ocean convoys?",
+          "correctAnswer": "Very Long Range (VLR) aircraft such as the B-24 Liberator, which could finally patrol the mid-Atlantic",
+          "distractors": [
+            "Nuclear-powered submarines that could shadow U-boats indefinitely",
+            "Sonar bouys dropped from aircraft that tracked submerged U-boats across hundreds of miles",
+            "The introduction of fast escort carriers that could keep up with fleet carriers",
+            "Depth charges capable of detonating at extreme depth, denying U-boats safe diving"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Convoy tactics were initially rejected by the Royal Navy in WWI but proved effective — forcing WWII planners to relearn the same lesson.",
+          "correctAnswer": "True — convoys were resisted in WWI before being adopted; WWII planners initially repeated some of the same errors",
+          "distractors": [
+            "False — convoys were standard doctrine continuously from WWI through WWII without interruption",
+            "False — convoys were a purely WWII innovation with no WWI precedent"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "In the convoy system, all ships were forced to travel at the speed of the ____ vessel in the group.",
+          "correctAnswer": "slowest",
+          "distractors": ["fastest", "largest", "most heavily loaded", "lead"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_dambuster_bouncing_bomb",
+      "correctAnswer": "Bouncing bomb (skipped along water surface to evade torpedo nets)",
+      "acceptableAlternatives": ["bouncing bomb", "Upkeep bomb", "skip bomb"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "Operation Chastise (May 1943) required a totally novel weapon to destroy the Ruhr Valley dams. What was it called?",
+      "explanation": "Barnes Wallis designed a cylindrical bomb that spun backward before release — causing it to skip along the water surface like a flat stone, evading torpedo nets, then roll down the dam face before detonating. It required aircraft to fly at exactly 60 feet at exactly 230 mph at night. Getting that calculation wrong meant death.",
+      "visualDescription": "Pixel art of a Lancaster bomber flying dangerously low over a dark reservoir at night, a spinning cylindrical bomb dropping from its bomb bay, a dam wall visible in the background",
+      "sourceName": "Wikipedia — Operation Chastise",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Chastise",
+      "volatile": false,
+      "distractors": [
+        "Tallboy bomb",
+        "Grand Slam bomb",
+        "Blockbuster bomb",
+        "Earthquake bomb",
+        "Upkeep mine",
+        "Skip-charge torpedo",
+        "Penguin glide bomb",
+        "Barnes shell"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which two German dams were successfully breached in the Dambusters Raid of May 1943?",
+          "correctAnswer": "Möhne and Eder dams",
+          "distractors": [
+            "Sorpe and Ennepe dams",
+            "Rhine and Ruhr dams",
+            "Eder and Lister dams",
+            "Mohne and Sorpe dams"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Dambusters Raid was tactically spectacular but strategically limited. Why did it fail to deliver its expected long-term damage?",
+          "correctAnswer": "The Ruhr industrial region recovered relatively quickly — repairs were faster than anticipated",
+          "distractors": [
+            "The bombs missed the weakest points of the dam walls and caused only superficial damage",
+            "Germany immediately moved all ball-bearing production underground before the next raid",
+            "The flooding destroyed mostly farmland; key munitions factories were on higher ground",
+            "Allied bombers were prevented from following up due to bad weather for six months"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The bouncing bomb was designed to skip along the water surface in order to evade torpedo nets stretched across the dams.",
+          "correctAnswer": "True — conventional torpedoes would have been stopped by the torpedo nets",
+          "distractors": [
+            "False — the bounce was an accidental effect; the real purpose was to achieve the correct angle of impact",
+            "False — the dams had no torpedo nets; the skip was to ensure detonation at the correct depth"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Dambusters Raid killed approximately ____ civilians when the dam floodwaters swept through the valley.",
+          "correctAnswer": "1,600",
+          "distractors": ["200", "5,000", "300", "10,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_strategic_bombing_british_night",
+      "correctAnswer": "Night bombing (area bombing, lower accuracy, higher civilian casualties)",
+      "acceptableAlternatives": ["night bombing", "area bombing"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "British RAF Bomber Command and the US Eighth Air Force pursued different strategic bombing philosophies. Which approach did the British use?",
+      "explanation": "The RAF bombed at night — harder for German fighters to intercept, but too dark for precision. The result was 'area bombing': targeting entire cities rather than specific factories. The Americans bombed in daylight to hit precise targets, but faced terrifying losses to German fighters until the P-51 Mustang arrived as a long-range escort.",
+      "visualDescription": "Pixel art of RAF Lancaster bombers over a German city at night, searchlight beams probing the darkness, anti-aircraft flak bursting in orange-red clouds around the formation",
+      "sourceName": "Wikipedia — Strategic bombing during World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Strategic_bombing_during_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "Dawn precision bombing with fighter escort",
+        "High-altitude radar-guided bombing in all conditions",
+        "Low-level daylight strikes on specific factory targets",
+        "Dusk bombing using advanced navigational aids",
+        "Submarine-launched cruise missile attacks on infrastructure",
+        "Glide-bomb attacks from altitudes above flak range",
+        "Pattern bombing from extreme altitude using radio guidance",
+        "Daylight formation bombing with no fighter escorts"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the key trade-off that made US daylight precision bombing far more dangerous for bomber crews than British night bombing?",
+          "correctAnswer": "US bombers were visible in daylight and faced German fighters and flak — over 5,000 aircraft and 47,000 aircrew were lost",
+          "distractors": [
+            "Daylight raids were at lower altitude, putting aircraft within range of even light anti-aircraft guns",
+            "American bombers flew alone rather than in formation, making them individually vulnerable",
+            "The US used heavier bomb loads that slowed the aircraft below fighter-evasion speed",
+            "Daylight raids required refuelling at foreign bases, increasing exposure time over hostile territory"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The debate over strategic bombing's effectiveness centres on one core question. What is it?",
+          "correctAnswer": "Did the massive civilian casualties and bomber losses justify the strategic impact, given that Germany and Japan kept fighting despite devastation?",
+          "distractors": [
+            "Whether radar or visual targeting produced more accurate bombing results",
+            "Whether night or day bombing produced higher bomber crew survival rates",
+            "Whether industrial or civilian targets yielded greater impact per bomb dropped",
+            "Whether Germany or Japan suffered greater proportional damage from bombing"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: British night bombing was more accurate than American daylight bombing because bombers flew lower to avoid radar detection.",
+          "correctAnswer": "False — night bombing was significantly less accurate than American daylight precision bombing",
+          "distractors": [
+            "True — lower altitudes at night allowed visual confirmation of target locations",
+            "True — the British developed specialised night targeting systems that the Americans lacked"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "RAF Bomber Command under Air Marshal Arthur '____' Harris became notorious for ordering the systematic bombing of German cities.",
+          "correctAnswer": "Bomber",
+          "distractors": ["Night", "Iron", "Target", "Carpet"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_schweinfurt_ball_bearings",
+      "correctAnswer": "Ball-bearing factories (to cripple German weapons production)",
+      "acceptableAlternatives": ["ball bearings", "ball bearing production", "Kugelfischer factories"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The costly Schweinfurt raids of 1943 targeted a critical bottleneck in German war production. What did the factories there make?",
+      "explanation": "Ball bearings were in every tank, aircraft, and artillery piece Germany produced. Allied planners calculated that destroying Schweinfurt would paralyse German weapons manufacturing. The August 1943 raid cost 60 B-17s in a single day — 600 men. Without P-51 escort, unescorted deep bombing was a killing ground.",
+      "visualDescription": "Pixel art of B-17 Flying Fortress bombers in tight formation over industrial Germany, black flak bursts all around them, one bomber trailing smoke and spiralling downward",
+      "sourceName": "Wikipedia — Schweinfurt–Regensburg mission",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Schweinfurt%E2%80%93Regensburg_mission",
+      "volatile": false,
+      "distractors": [
+        "Synthetic oil refineries",
+        "Aircraft engine factories",
+        "U-boat components",
+        "Steel processing plants",
+        "Rubber synthesis facilities",
+        "Rocket fuel production",
+        "Artillery shell casings",
+        "Tank armour plating"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The August 17, 1943 Schweinfurt–Regensburg double mission is remembered as one of the most costly single-day USAAF operations. How many B-17s were lost?",
+          "correctAnswer": "60 bombers (600 crew members)",
+          "distractors": ["12 bombers", "30 bombers", "100 bombers", "8 bombers"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Despite the heavy losses at Schweinfurt, the strategic goal of crippling German ball-bearing production ultimately failed. Why?",
+          "correctAnswer": "Germany dispersed ball-bearing production and used stockpiles — and the US lacked escort fighters for follow-up raids until the P-51 arrived",
+          "distractors": [
+            "The bombs fell on the wrong city due to navigational errors in cloud cover",
+            "Ball bearings turned out not to be a meaningful bottleneck because Germany imported them from neutral Sweden",
+            "German repair crews restored the factories to full capacity within 24 hours using slave labour",
+            "The factories were heavily reinforced underground before the raid with German intelligence forewarning"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Schweinfurt raids proved that unescorted daylight bombing deep into Germany was sustainable as a long-term strategy.",
+          "correctAnswer": "False — the losses were unsustainable; deep raids were suspended until the P-51 Mustang provided long-range escort",
+          "distractors": [
+            "True — the USAAF accepted 10% mission losses as an acceptable operational cost",
+            "True — improved formation tactics after Schweinfurt reduced subsequent losses to manageable levels"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Schweinfurt raid paired with a simultaneous attack on the Messerschmitt aircraft factory at ____.",
+          "correctAnswer": "Regensburg",
+          "distractors": ["Munich", "Stuttgart", "Augsburg", "Nuremberg"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_hamburg_firestorm_deaths",
+      "correctAnswer": "Approximately 40,000 civilians",
+      "acceptableAlternatives": ["40000", "40,000", "around 40,000"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Operation Gomorrah, the Allied bombing of Hamburg in July–August 1943, created history's first urban firestorm. Approximately how many civilians died?",
+      "explanation": "The Hamburg firestorm reached temperatures of 800°C — hot enough to melt glass and asphalt. Oxygen was consumed so rapidly that people sheltering in bunkers suffocated. Around 40,000 civilians died in a single week. Albert Speer told Hitler it was a catastrophe — if the Allies sustained this over six more German cities, Germany would have to surrender.",
+      "visualDescription": "Pixel art of Hamburg at night engulfed in a roaring firestorm, the sky glowing orange-red for miles, buildings reduced to glowing skeletons, no people visible — only the inferno",
+      "sourceName": "Wikipedia — Bombing of Hamburg in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bombing_of_Hamburg_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "2,000 civilians",
+        "8,000 civilians",
+        "100,000 civilians",
+        "150,000 civilians",
+        "15,000 civilians",
+        "5,000 civilians",
+        "200,000 civilians",
+        "25,000 civilians"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What physical phenomenon made the Hamburg bombing uniquely devastating — different from ordinary large-scale bombing?",
+          "correctAnswer": "A firestorm — concentrated fires consumed all oxygen, creating superheated winds that spread and intensified the blaze",
+          "distractors": [
+            "The RAF used a new type of incendiary bomb with white phosphorus that could not be extinguished by water",
+            "Hamburg's layout funnelled wind through its streets, spreading fires faster than firefighters could respond",
+            "The city's oil refineries were hit first, creating a fuel source that amplified normal incendiary damage",
+            "German air defences had been completely suppressed, allowing bombers to fly low and achieve maximum accuracy"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Albert Speer reportedly warned Hitler after Hamburg that repeating this attack on six more German cities would force surrender. Why did the Allies fail to achieve this?",
+          "correctAnswer": "The Allies lacked the sustained force and coordination to create firestorms in multiple cities simultaneously before Germany adapted",
+          "distractors": [
+            "Churchill ordered a halt to city bombing after Hamburg due to domestic political pressure",
+            "Germany successfully developed a counter-measure that prevented firestorms from developing in subsequent raids",
+            "Allied bombers switched to precision industrial targets after Hamburg at the insistence of US commanders",
+            "The Hamburg raid was actually a strategic failure because the city's port was not significantly damaged"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Hamburg firestorm was the first large-scale use of incendiary bombing against a civilian population in WWII.",
+          "correctAnswer": "False — the Luftwaffe used incendiaries against British cities (Coventry, London) earlier in the war",
+          "distractors": [
+            "True — Hamburg represented the first time any air force deliberately targeted civilians with incendiaries",
+            "True — prior to Hamburg, Allied bombing policy prohibited the use of incendiary munitions"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Allied bombing campaign that destroyed Hamburg in 1943 was codenamed Operation ____.",
+          "correctAnswer": "Gomorrah",
+          "distractors": ["Chastise", "Millennium", "Thunderclap", "Clarion"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_mighty_eighth_sorties",
+      "correctAnswer": "Over 500,000 sorties",
+      "acceptableAlternatives": ["500000 sorties", "500,000+ sorties", "half a million sorties"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "The US Eighth Air Force, based in England, conducted the strategic bombing campaign against Germany. How many total sorties did it fly from 1942–1945?",
+      "explanation": "The Mighty Eighth flew over 500,000 sorties — and paid for it with 5,000+ aircraft lost and 47,000+ aircrew killed. That's nearly one-third of all US Army Air Forces deaths in the entire war. A bomber crewman completing his 25-mission tour early in the war did so against approximately 50/50 odds of survival.",
+      "visualDescription": "Pixel art of hundreds of B-17 bombers in combat box formation high above clouds, contrails stretching across the sky, fighter escorts visible as tiny specks higher above",
+      "sourceName": "Wikipedia — Eighth Air Force",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Eighth_Air_Force",
+      "volatile": false,
+      "distractors": [
+        "50,000 sorties",
+        "100,000 sorties",
+        "250,000 sorties",
+        "1 million sorties",
+        "750,000 sorties",
+        "25,000 sorties",
+        "2 million sorties",
+        "150,000 sorties"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the approximate survival odds for a US Eighth Air Force bomber crewman completing his required 25-mission tour early in the strategic bombing campaign?",
+          "correctAnswer": "Roughly 50/50 — casualty rates were approximately 50% before P-51 escort improved survival",
+          "distractors": [
+            "About 90% — bomber formations provided mutual defensive fire that was highly effective",
+            "About 75% — losses were heavy but not as catastrophic as ground forces on the Eastern Front",
+            "About 20% — barely one in five airmen completed a full tour without becoming a casualty",
+            "About 10% — strategic bombing was the most dangerous assignment in the entire US military"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Eighth Air Force's bombing campaign achieved which of its strategic goals most decisively?",
+          "correctAnswer": "Destroying the Luftwaffe by forcing German fighters up to defend factories — attriting German air power",
+          "distractors": [
+            "Destroying German oil production, which halted all Panzer operations by late 1943",
+            "Eliminating German submarine construction yards, ending U-boat production",
+            "Destroying German rail networks, making it impossible to move troops to Normandy",
+            "Demoralising the German civilian population to the point of open anti-government revolt"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Eighth Air Force suffered higher total combat deaths than the entire US Marine Corps during WWII.",
+          "correctAnswer": "True — 47,000+ Eighth Air Force aircrew killed vs roughly 19,000 Marine combat deaths",
+          "distractors": [
+            "False — the Marine Corps' island campaigns were significantly more costly than air operations",
+            "False — the Eighth Air Force's losses were real but comparable to a single major land battle"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The US Eighth Air Force flew its daylight bombing missions primarily using B-17 Flying Fortress and ____ bombers.",
+          "correctAnswer": "B-24 Liberator",
+          "distractors": ["B-29 Superfortress", "B-25 Mitchell", "B-26 Marauder", "A-20 Havoc"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_p51_mustang_escort",
+      "correctAnswer": "P-51 Mustang long-range fighter escort",
+      "acceptableAlternatives": ["P-51 Mustang", "Mustang", "North American P-51"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Before 1944, unescorted US bomber raids deep into Germany suffered devastating losses. What single aircraft changed this — enabling bombers to be escorted all the way to Berlin and back?",
+      "explanation": "The P-51 Mustang had two key features: a Rolls-Royce Merlin engine and drop tanks that extended its range to 1,650 miles. It could escort bombers to Berlin and fight off German interceptors. USAAF commander Hap Arnold said the P-51 was the most important aircraft of the war — not because it was the best fighter, but because it made strategic bombing viable.",
+      "visualDescription": "Pixel art of a P-51 Mustang fighter with checkerboard nose markings banking above a formation of B-17s, a Messerschmitt Bf-109 in flames below it",
+      "sourceName": "Wikipedia — North American P-51 Mustang",
+      "sourceUrl": "https://en.wikipedia.org/wiki/North_American_P-51_Mustang",
+      "volatile": false,
+      "distractors": [
+        "P-47 Thunderbolt",
+        "P-38 Lightning",
+        "Spitfire Mk XIV",
+        "F4U Corsair",
+        "P-40 Warhawk",
+        "Typhoon Mk IB",
+        "Republic P-43 Lancer",
+        "Lockheed P-80 Shooting Star"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The P-51 Mustang's exceptional range came from two key design features. What were they?",
+          "correctAnswer": "The Rolls-Royce Merlin engine (installed in later marks) combined with external drop tanks extending range to 1,650 miles",
+          "distractors": [
+            "A massive internal fuel capacity and a specially designed lean-burn carburetor",
+            "A revolutionary turbojet engine that consumed half the fuel of piston fighters",
+            "Laminar flow wings that dramatically reduced drag plus an oversized fuel tank in the fuselage",
+            "A tandem two-seat configuration that allowed one pilot to rest during long escort missions"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What was the decisive strategic effect of introducing P-51 Mustang escort for USAAF bombers in early 1944?",
+          "correctAnswer": "German fighters had to fight to defend factories — the Luftwaffe was bled white defending against escorted bomber raids",
+          "distractors": [
+            "Bomber losses dropped to near zero, allowing the USAAF to triple its sortie rate",
+            "The Luftwaffe immediately withdrew its fighters to conserve them for D-Day coastal defence",
+            "German industrial production collapsed within three months of escorted bombing beginning",
+            "The P-51s shot down so many German pilots that the Luftwaffe cancelled all fighter production"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The P-51 Mustang was originally designed as a long-range escort fighter from the start of its development.",
+          "correctAnswer": "False — early P-51s used an Allison engine with limited performance; the Rolls-Royce Merlin conversion transformed it",
+          "distractors": [
+            "True — the USAAF specified long range as the primary requirement before North American designed the airframe",
+            "True — the P-51 was specifically built to replace the P-38 Lightning as a dedicated escort"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "With drop tanks, the P-51 Mustang had a range of approximately ____ miles — enough to escort bombers to Berlin and back.",
+          "correctAnswer": "1,650",
+          "distractors": ["800", "1,000", "2,500", "600"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_kamikaze_okinawa_attacks",
+      "correctAnswer": "1,465 kamikaze aircraft",
+      "acceptableAlternatives": ["1465 aircraft", "about 1500 kamikazes", "nearly 1,500"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "During the Battle of Okinawa (1945), Japan launched its largest kamikaze campaign. How many suicide aircraft were used?",
+      "explanation": "1,465 kamikaze aircraft crashed into Allied ships at Okinawa — sinking 34 ships and damaging hundreds more. American commanders were horrified: the Japanese were burning through their best remaining pilots on one-way missions. The casualty rate for kamikaze pilots was 100%. Allied planners calculated that invading the Japanese mainland would face thousands more.",
+      "visualDescription": "Pixel art of a Zero fighter in a steep diving attack toward a US aircraft carrier, anti-aircraft fire streaking up from the deck and surrounding escorts, the ocean littered with smoke and explosions",
+      "sourceName": "Wikipedia — Kamikaze",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kamikaze",
+      "volatile": false,
+      "distractors": [
+        "50 kamikaze aircraft",
+        "300 kamikaze aircraft",
+        "700 kamikaze aircraft",
+        "5,000 kamikaze aircraft",
+        "200 kamikaze aircraft",
+        "800 kamikaze aircraft",
+        "3,000 kamikaze aircraft",
+        "100 kamikaze aircraft"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "At Okinawa, kamikaze attacks sank how many Allied ships and damaged how many more?",
+          "correctAnswer": "Sank 34 ships and damaged hundreds",
+          "distractors": [
+            "Sank 3 fleet carriers and 12 destroyers",
+            "Sank 120 ships and damaged 50 more",
+            "Sank 7 ships with no significant damage to others",
+            "Sank 0 fleet carriers but damaged 400 smaller vessels"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How did the scale of kamikaze attacks at Okinawa directly influence the American decision to use atomic bombs rather than invade Japan?",
+          "correctAnswer": "Planners estimated thousands of kamikazes awaited an invasion force — atomic bombs offered a way to end the war without those casualties",
+          "distractors": [
+            "The kamikaze threat had no influence — the atomic bomb decision was made before Okinawa began",
+            "Okinawa demonstrated that kamikazes were ineffective; the atomic bomb was chosen for other reasons",
+            "US commanders sought the atomic bomb to destroy Japanese airfields where kamikazes were based",
+            "The British insisted on the atomic bomb after suffering kamikaze damage to their Pacific Fleet carriers"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Kamikaze pilots were volunteers who willingly chose suicide missions — they were never ordered or coerced.",
+          "correctAnswer": "False — while many genuinely volunteered, social pressure, peer expectation, and command pressure made refusal nearly impossible",
+          "distractors": [
+            "True — every kamikaze pilot submitted a written volunteer form; no one was ever assigned against their will",
+            "True — the Imperial Navy kept meticulous records showing 100% volunteer rates across all kamikaze units"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The word 'kamikaze' means '____' in Japanese — a reference to the divine typhoons that destroyed Mongol invasion fleets in the 13th century.",
+          "correctAnswer": "divine wind",
+          "distractors": ["sacred flame", "spirit storm", "warrior wind", "heaven's arrow"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_us_sub_pacific_tonnage",
+      "correctAnswer": "Over 5 million tons of Japanese shipping",
+      "acceptableAlternatives": ["5 million tons", "more than 5 million tons"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "American submarines conducted a devastating commerce war against Japan in the Pacific. How much Japanese shipping did they sink?",
+      "explanation": "US submarines sank over 5 million tons of Japanese shipping — tankers, freighters, troop transports. Japan's island empire depended entirely on sea lanes to feed its factories and soldiers. By 1945, Japanese soldiers in the field were starving, and factories had run out of raw materials. The submarines strangled Japan economically before the atomic bombs fell.",
+      "visualDescription": "Pixel art of an American Gato-class submarine surfaced at night, its deck gun firing at a listing Japanese freighter, the Pacific sky bright with stars",
+      "sourceName": "Wikipedia — Submarine warfare of World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Submarine_warfare_of_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "500,000 tons",
+        "1 million tons",
+        "2 million tons",
+        "10 million tons",
+        "750,000 tons",
+        "3 million tons",
+        "8 million tons",
+        "250,000 tons"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why was Japan especially vulnerable to US submarine commerce warfare, compared to Germany's vulnerability to Allied submarine pressure?",
+          "correctAnswer": "Japan's entire empire was island-based and required continuous sea transport for food, oil, and raw materials — there were no overland alternatives",
+          "distractors": [
+            "Japan had invested less in convoy escort than Germany, leaving merchant ships completely undefended",
+            "Japanese merchant ships were older and slower than German vessels, making them easier targets",
+            "Japan lacked depth charges and sonar, making its anti-submarine warfare completely ineffective",
+            "The Pacific was too vast for Japan to patrol, while the Atlantic was narrow enough for Germany to manage"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "American submarines began WWII with a major technical flaw that cost many successful attacks. What was it?",
+          "correctAnswer": "The Mark 14 torpedo had defective exploder mechanisms — it ran too deep and its contact pistol often failed to detonate on impact",
+          "distractors": [
+            "American sonar was inadequate — submarines could not locate Japanese convoy routes reliably until 1943",
+            "US submarines lacked sufficient range to operate in the deepest Japanese shipping lanes",
+            "American submarine commanders were trained to be overly cautious — they avoided attacks that their German counterparts would have taken",
+            "The US Navy had too few submarines in 1941–42 because Congress had cut submarine procurement"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: US submarine warfare was conducted according to international prize law, stopping vessels and allowing crews to evacuate before sinking.",
+          "correctAnswer": "False — the US declared unrestricted submarine warfare against Japan on December 7, 1941 itself",
+          "distractors": [
+            "True — US submarines followed prize rules throughout the Pacific War, unlike German U-boats",
+            "True — unrestricted submarine warfare was only authorised after the Battle of Midway in 1942"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "US submarines made up about 2% of the US Navy but sank about ____% of all Japanese ships destroyed during WWII.",
+          "correctAnswer": "55",
+          "distractors": ["10", "25", "40", "70"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_dday_vessels",
+      "correctAnswer": "6,000+ vessels",
+      "acceptableAlternatives": ["over 6000 ships", "6000 vessels", "more than 6,000"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The D-Day invasion of June 6, 1944 assembled the largest naval fleet in history. How many vessels participated?",
+      "explanation": "Over 6,000 vessels — battleships, cruisers, destroyers, minesweepers, landing craft, and transports — crossed the Channel on D-Day. Naval gunfire from battleships reached 15 miles inland, silencing German batteries that would have slaughtered soldiers on the beach. The logistical coordination required was without precedent in history.",
+      "visualDescription": "Pixel art of the English Channel on June 6, 1944 — an ocean so filled with ships that the water is barely visible, from horizon to horizon, all heading toward a coastline shrouded in smoke",
+      "sourceName": "Wikipedia — Normandy landings",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
+      "volatile": false,
+      "distractors": [
+        "500 vessels",
+        "1,200 vessels",
+        "2,500 vessels",
+        "10,000 vessels",
+        "800 vessels",
+        "3,000 vessels",
+        "15,000 vessels",
+        "400 vessels"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the primary naval role at D-Day beyond transporting troops — and how far did its reach extend inland?",
+          "correctAnswer": "Naval gunfire from battleships and cruisers provided fire support reaching 15+ miles inland, suppressing German defences",
+          "distractors": [
+            "Naval vessels laid an artificial harbour that allowed heavy equipment to be offloaded for six days",
+            "Destroyers ran up to the beach and physically acted as jetties, allowing tanks to drive directly ashore",
+            "Submarines covertly landed special forces the night before to cut communication cables",
+            "Aircraft carriers positioned just offshore provided continuous close air support for the first 48 hours"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The D-Day invasion fleet required an artificial harbour to sustain the landing before Cherbourg was captured. What was it called?",
+          "correctAnswer": "Mulberry Harbour — prefabricated sections towed across the Channel and assembled off the Normandy beaches",
+          "distractors": [
+            "Operation Neptune Harbour — a series of sunken ships forming a breakwater",
+            "Port Winston — converted Liberty Ships anchored bow-to-stern as a floating pier",
+            "PLUTO — the pipeline under the ocean that also served as an offshore loading platform",
+            "Gooseberry — a network of buoyed pontoon bridges extending from ship to shore"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: German forces knew roughly where and when D-Day would happen but were deceived into believing it was a feint.",
+          "correctAnswer": "True — Operation Fortitude convinced Hitler that Normandy was a diversion and the real landing would be at Pas-de-Calais",
+          "distractors": [
+            "False — German intelligence had no warning; the landing was a complete surprise at all levels",
+            "False — German commanders correctly identified Normandy as the real landing site but lacked the troops to stop it"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The naval component of the D-Day operation was codenamed Operation ____.",
+          "correctAnswer": "Neptune",
+          "distractors": ["Overlord", "Torch", "Husky", "Anvil"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_arctic_convoys_pq17",
+      "correctAnswer": "Convoy PQ-17 suffered catastrophic losses after being ordered to scatter",
+      "acceptableAlternatives": ["PQ-17", "convoy PQ 17", "ordered to scatter"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Arctic convoys to the Soviet Union were among the most dangerous of WWII. Which convoy became notorious for being ordered to scatter — resulting in the loss of 24 of its 35 merchant ships?",
+      "explanation": "PQ-17 was ordered to scatter in July 1942 because the Admiralty feared the German battleship Tirpitz was at sea. Without escorts, the dispersed merchant ships were hunted individually by U-boats and aircraft. 24 of 35 ships were sunk — 153 sailors killed, 430 vehicles, 210 aircraft, and 99,316 tons of cargo lost. The order to scatter was one of the worst decisions of the naval war.",
+      "visualDescription": "Pixel art of a lone merchant ship in Arctic seas, surrounded by pack ice and fog, a U-boat periscope visible astern, no escort ships anywhere in sight",
+      "sourceName": "Wikipedia — Convoy PQ 17",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Convoy_PQ_17",
+      "volatile": false,
+      "distractors": [
+        "Convoy PQ-5",
+        "Convoy JW-51B",
+        "Convoy SC-7",
+        "Convoy HX-229",
+        "Convoy ON-127",
+        "Convoy PQ-1",
+        "Convoy OB-318",
+        "Convoy SL-125"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why was Convoy PQ-17 ordered to scatter in July 1942 — the decision that led to catastrophic losses?",
+          "correctAnswer": "The Admiralty feared Tirpitz was at sea and would destroy the escorts — so it ordered dispersal to reduce the target",
+          "distractors": [
+            "A German Enigma intercept suggested a massive U-boat ambush ahead that escorts could not handle",
+            "The convoy had entered a minefield and individual ships needed to find their own clear routes",
+            "Severe Arctic weather had scattered the convoy naturally; the scatter order came after the fact",
+            "American and British escort commanders disagreed on routes and both withdrew, forcing ships to proceed alone"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What made the Arctic convoy route to Murmansk and Archangel particularly dangerous beyond German attack?",
+          "correctAnswer": "Extreme weather — pack ice, storms, fog, and temperatures that could freeze machinery and kill crew exposed to the sea",
+          "distractors": [
+            "Soviet anti-aircraft guns in Murmansk frequently fired on Allied aircraft by mistake",
+            "The shallow Arctic waters made sonar nearly useless, giving U-boats an enormous advantage",
+            "Soviet port facilities were so inadequate that cargo often sat unloaded on docks for months",
+            "Allied sailors had to wear Soviet uniforms to avoid being taken prisoner if captured by Germans"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Tirpitz — the threat that prompted PQ-17 to scatter — actually attacked and sank ships from that convoy.",
+          "correctAnswer": "False — Tirpitz turned back without engaging; PQ-17 was destroyed by submarines and aircraft, not Tirpitz",
+          "distractors": [
+            "True — Tirpitz sank six merchant ships before being driven off by long-range British aircraft",
+            "True — Tirpitz coordinated the attack, directing U-boats to each scattered ship's position"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Of 35 merchant ships in Convoy PQ-17, ____ were sunk after the fatal order to scatter was issued.",
+          "correctAnswer": "24",
+          "distractors": ["5", "12", "30", "35"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_tirpitz_sinking",
+      "correctAnswer": "RAF Lancasters with 12,000-lb Tallboy bombs (November 1944)",
+      "acceptableAlternatives": ["Tallboy bombs", "RAF Lancaster bombers", "12000 lb bombs", "November 12 1944"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The German battleship Tirpitz lurked in Norwegian fjords for years, threatening Arctic convoys without ever fighting. How was she finally sunk?",
+      "explanation": "The RAF spent two years and multiple operations trying to sink Tirpitz. In November 1944, No. 617 Squadron (the Dambusters) dropped Barnes Wallis's 12,000-lb Tallboy earthquake bombs. Two direct hits caused Tirpitz to capsize in the fjord. Over 1,000 German sailors were trapped inside the upturned hull — rescuers cut through the bottom to save some of them.",
+      "visualDescription": "Pixel art of the Tirpitz battleship capsized in a Norwegian fjord, her hull above the waterline, Lancaster bombers visible in the sky above, Norwegian mountains in the background",
+      "sourceName": "Wikipedia — German battleship Tirpitz",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_battleship_Tirpitz",
+      "volatile": false,
+      "distractors": [
+        "Royal Navy midget submarines with limpet mines",
+        "US Navy carrier aircraft dive-bombing",
+        "British torpedo bombers from HMS Victorious",
+        "Norwegian resistance commandos with explosives",
+        "HMS Warspite's 15-inch guns in a direct naval engagement",
+        "RAF Wellington bombers with standard 500-lb bombs",
+        "A British destroyer torpedo at close range",
+        "Churchill Tank-launched anti-tank rockets from shore"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why did the Tirpitz — Germany's most powerful battleship — have such a major strategic impact despite never fighting a major naval battle?",
+          "correctAnswer": "Her mere presence in Norwegian fjords forced the Allies to maintain major naval forces in northern waters and disrupted Arctic convoys",
+          "distractors": [
+            "Tirpitz repeatedly sank Allied submarines attempting to penetrate Norwegian coastal defences",
+            "Tirpitz bombarded Allied supply depots in Iceland, forcing the rerouting of Atlantic convoys",
+            "Tirpitz sank three British cruisers during her operational career in Norwegian waters",
+            "Tirpitz served as a floating air defence command platform directing Luftwaffe operations over the North Sea"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The same No. 617 Squadron that conducted the Dambusters Raid also sank Tirpitz. What weapon did they use for Tirpitz?",
+          "correctAnswer": "The 12,000-lb Tallboy earthquake bomb, designed by Barnes Wallis",
+          "distractors": [
+            "The bouncing bomb (Upkeep) adapted for use against the ship's hull",
+            "The 22,000-lb Grand Slam bomb, dropped from extreme altitude",
+            "Modified naval torpedoes dropped from low altitude using the bouncing technique",
+            "Radio-guided Azon bombs that could be steered after release"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: When Tirpitz capsized in Tromsø fjord, all of her crew escaped and survived.",
+          "correctAnswer": "False — over 1,000 sailors were trapped; rescuers had to cut through the upturned hull to save some",
+          "distractors": [
+            "True — the shallow fjord allowed the entire crew to swim to shore before the ship sank",
+            "True — Tirpitz had time to evacuate because the Tallboy bombs gave 45 minutes of warning before she capsized"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Tirpitz was sunk in ____ fjord, Norway, in November 1944.",
+          "correctAnswer": "Tromsø",
+          "distractors": ["Narvik", "Bergen", "Trondheim", "Altafjord"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_escort_carriers_count",
+      "correctAnswer": "77 escort carriers (vs ~24 fleet carriers)",
+      "acceptableAlternatives": ["77", "seventy-seven"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "The United States mass-produced a smaller carrier type to provide air support wherever it was needed. How many 'escort carriers' did America build?",
+      "explanation": "The US built 77 escort carriers — more than three times as many fleet carriers. They were slower, lightly armoured, and couldn't fight fleet actions. But they provided air cover for every amphibious landing, convoy, and island-hopping operation simultaneously. Japan and Germany had no equivalent mass-production capacity. This was industrial war.",
+      "visualDescription": "Pixel art of a small escort carrier at sea, smaller than a fleet carrier but with a full flight deck, aircraft arranged on deck, a destroyer escort alongside",
+      "sourceName": "Wikipedia — Escort carrier",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Escort_carrier",
+      "volatile": false,
+      "distractors": [
+        "12 escort carriers",
+        "25 escort carriers",
+        "40 escort carriers",
+        "100 escort carriers",
+        "150 escort carriers",
+        "8 escort carriers",
+        "55 escort carriers",
+        "200 escort carriers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why were escort carriers unsuitable for major fleet actions despite their aircraft capacity?",
+          "correctAnswer": "They were slower, lightly armoured, and could not withstand the damage or sustain the tempo of a fleet carrier engagement",
+          "distractors": [
+            "Their aircraft were unarmed and could only conduct reconnaissance, not attacks",
+            "Escort carriers lacked catapults, so their aircraft could only take off with a full deck run — unusable in combat",
+            "Their hulls were designed from merchant ship hulls and could not withstand torpedo hits at all",
+            "International agreements restricted escort carriers to convoy duty and prohibited their use in fleet battles"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What did the US ability to build 77 escort carriers demonstrate about the fundamental nature of the Pacific War?",
+          "correctAnswer": "Industrial capacity was as decisive as tactical skill — the US could field air power everywhere simultaneously, Japan could not",
+          "distractors": [
+            "The US prioritised quantity over quality, gambling that numbers would overwhelm superior Japanese aircraft",
+            "American naval architects were more innovative than Japanese counterparts, producing better designs faster",
+            "US admirals believed in defensive naval warfare, using escort carriers to protect rather than attack",
+            "The escort carrier programme diverted resources from fleet carrier construction, a strategic mistake"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Escort carriers were nicknamed 'baby flattops' by US Navy personnel.",
+          "correctAnswer": "True — the informal nickname reflected their smaller size compared to fleet carriers",
+          "distractors": [
+            "False — they were called 'jeep carriers' because they were built on the same assembly lines as military jeeps",
+            "False — the official Navy designation was 'auxiliary carriers' and no informal names were permitted"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Escort carriers were primarily used for three roles: amphibious assault air support, convoy protection, and ____.",
+          "correctAnswer": "anti-submarine warfare",
+          "distractors": ["strategic bombing", "fleet carrier replacement", "naval gunfire support", "troop transport"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_tokyo_express",
+      "correctAnswer": "Fast Japanese destroyer runs at night resupplying isolated island garrisons",
+      "acceptableAlternatives": ["night resupply runs", "fast destroyer resupply missions", "Tokyo Express"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Allied sailors in the Solomon Islands gave a nickname to the fast Japanese naval sorties that ran supplies to Guadalcanal at night. What was it?",
+      "explanation": "The 'Tokyo Express' was the Japanese practice of using fast destroyers to run supplies down the 'Slot' (New Georgia Sound) at night — too fast for Allied aircraft to intercept in darkness. It kept Japanese garrisons alive on Guadalcanal for months. US Navy surface forces fought bloody night battles trying to stop it, suffering severe losses in the Savo Island area.",
+      "visualDescription": "Pixel art of Japanese destroyers at high speed down a narrow island-flanked channel at night, their wakes phosphorescent in the black water, jungle-covered islands on both sides",
+      "sourceName": "Wikipedia — Tokyo Express",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tokyo_Express",
+      "volatile": false,
+      "distractors": [
+        "The Rat Run",
+        "Operation Night Train",
+        "The Guadalcanal Ferry",
+        "Operation Packtrain",
+        "The Slot Express",
+        "Operation Midnight Run",
+        "The Solomon Shuttle",
+        "The Night Convoy"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why did the Tokyo Express use destroyers rather than slower transport ships for the Guadalcanal resupply runs?",
+          "correctAnswer": "Destroyers were fast enough to complete the run at night and escape before daylight exposed them to Allied air attack",
+          "distractors": [
+            "Japan had lost all its transport ships to US submarines by mid-1942",
+            "Destroyers could be loaded with supply drums thrown overboard near shore, avoiding dangerous harbour approaches",
+            "The shallow waters of the Solomon Islands channel were too dangerous for larger vessels to navigate",
+            "American PT boats patrolled at night; destroyers had the guns to fight through them"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What was the strategic importance of the Tokyo Express's success during the Guadalcanal campaign?",
+          "correctAnswer": "It kept 36,000 Japanese troops supplied and fighting, prolonging the battle of Guadalcanal for six months",
+          "distractors": [
+            "It allowed Japan to build a second airfield on Guadalcanal, threatening Allied control of Henderson Field",
+            "The Express carried reinforcements that allowed Japan to recapture the western half of Guadalcanal",
+            "Its success persuaded Japan to attempt a similar operation to retake the Philippines",
+            "The Express delivered heavy artillery that could bombard Henderson Field from outside Allied attack range"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: American PT boats, including JFK's PT-109, attempted to intercept Tokyo Express destroyer runs.",
+          "correctAnswer": "True — PT boats were used to ambush the Tokyo Express, though with limited effectiveness against destroyers",
+          "distractors": [
+            "False — PT boats operated only in the Philippines and were never deployed in the Solomon Islands",
+            "False — PT boats lacked the range to reach the Slot and could only patrol close to Guadalcanal's shore"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Tokyo Express ran through the narrow channel between islands known as 'The ____' — formally called New Georgia Sound.",
+          "correctAnswer": "Slot",
+          "distractors": ["Narrows", "Channel", "Run", "Pass"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_pt109_jfk",
+      "correctAnswer": "John F. Kennedy (future US President)",
+      "acceptableAlternatives": ["JFK", "Kennedy", "John Kennedy"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "names_people",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Which future US President commanded patrol torpedo boat PT-109 in the Pacific, which was rammed and sunk by a Japanese destroyer in 1943?",
+      "explanation": "Lieutenant JFK commanded PT-109 in the Solomon Islands. On August 2, 1943, a Japanese destroyer rammed and cut PT-109 in half at night. Kennedy kept his surviving crew together for hours in the water, then towed an injured crewman by clenching the man's life-jacket strap in his teeth as he swam. He scratched a message into a coconut to pass to natives who found Allied rescuers. The incident made him a war hero — and helped him win the 1960 presidency.",
+      "visualDescription": "Pixel art of a young naval officer swimming in dark Pacific waters, towing an injured sailor behind him, wreckage of a PT boat burning nearby, a dark jungle island in the distance",
+      "sourceName": "Wikipedia — PT-109",
+      "sourceUrl": "https://en.wikipedia.org/wiki/PT-109",
+      "volatile": false,
+      "distractors": [
+        "Richard Nixon",
+        "Lyndon B. Johnson",
+        "George H.W. Bush",
+        "Gerald Ford",
+        "Jimmy Carter",
+        "Ronald Reagan",
+        "Dwight Eisenhower",
+        "Harry Truman"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "How did JFK signal for rescue after PT-109 was sunk in the Solomon Islands?",
+          "correctAnswer": "He scratched a message into a coconut shell and gave it to friendly natives to deliver to Allied forces",
+          "distractors": [
+            "He swam to shore and used a Japanese radio captured from a bunker to broadcast a distress call",
+            "He lit signal fires on the beach using fuel salvaged from the sunken PT boat",
+            "He lashed together a raft from PT-109's wreckage and paddled toward the nearest Allied base",
+            "He persuaded a Japanese fishing boat crew to carry his crew to an Allied-held island"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How did the PT-109 incident shape JFK's political career?",
+          "correctAnswer": "His heroism — swimming hours in the water and saving his crew — made him a war hero; his father publicised the story, boosting his 1946 congressional campaign",
+          "distractors": [
+            "The incident gave Kennedy severe injuries that garnered public sympathy during his political campaigns",
+            "PT-109's sinking was actually a scandal that Kennedy had to overcome — he was initially blamed for losing the boat",
+            "The incident introduced Kennedy to Pacific islanders who later testified at the UN on his behalf",
+            "Kennedy's experience led him to write a bestselling memoir that funded his entry into politics"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: PT-109 was sunk by Japanese gunfire during a surface engagement.",
+          "correctAnswer": "False — it was rammed and cut in half by the Japanese destroyer Amagiri at night",
+          "distractors": [
+            "True — PT-109 was caught by a Japanese destroyer's guns while on a patrol mission",
+            "True — a Japanese shore battery hit PT-109 during a close-range resupply interdiction mission"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "JFK towed an injured crewman to safety by clenching the man's life-jacket strap in his ____ while swimming for hours.",
+          "correctAnswer": "teeth",
+          "distractors": ["hands", "belt", "arm", "grip"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_uboat_crew_deaths",
+      "correctAnswer": "Over 40,000 German submariners",
+      "acceptableAlternatives": ["40000", "40,000", "more than 40000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "German U-boat service was extraordinarily lethal. How many German submariners died during WWII — the highest proportional casualty rate of any service branch on either side?",
+      "explanation": "Over 40,000 German submariners died — from a total of approximately 40,000–45,000 who served in U-boats. That's a casualty rate approaching 75–80%. These men knew the odds. When a U-boat was depth-charged, there was often no way out. They died sealed in iron tubes, crushed by water pressure, or burned by fires they couldn't escape.",
+      "visualDescription": "Pixel art of the interior of a U-boat under depth charge attack — red emergency lighting, men bracing against bulkheads, water spraying from joints, gauges spinning in the pressure",
+      "sourceName": "Wikipedia — German submarine campaign of World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_submarine_campaign_of_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "5,000 submariners",
+        "12,000 submariners",
+        "20,000 submariners",
+        "60,000 submariners",
+        "100,000 submariners",
+        "8,000 submariners",
+        "3,000 submariners",
+        "80,000 submariners"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the approximate casualty rate for German U-boat crewmen who served during WWII?",
+          "correctAnswer": "Approximately 75–80% — nearly four in five submariners were killed",
+          "distractors": [
+            "About 20% — U-boats were difficult to sink and most crewmen completed their service",
+            "About 40% — similar to the average for other naval branches",
+            "About 95% — virtually no U-boat crewman survived the war",
+            "About 10% — U-boat losses were high in 1943 only; most of the war was relatively safe"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why was survival so difficult for U-boat crews when their vessel was attacked by Allied anti-submarine forces?",
+          "correctAnswer": "A depth-charged U-boat typically flooded or imploded under pressure; there was no reliable escape mechanism from a submarine at depth",
+          "distractors": [
+            "Allied policy was to machine-gun German submariners in the water to deter future U-boat service",
+            "Allied anti-submarine weapons in 1944–45 were designed to destroy submarines instantly, giving no time for escape",
+            "German U-boats were designed without escape hatches to prevent intelligence leaks if captured",
+            "U-boats operated so deep that even crew who escaped would die of decompression before reaching the surface"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Despite the horrific casualties, Germany never had difficulty recruiting new U-boat volunteers throughout the war.",
+          "correctAnswer": "True — U-boat service was prestigious; better pay, food, and status attracted volunteers even as losses mounted",
+          "distractors": [
+            "False — by 1943 Germany had to conscript unwilling sailors into U-boat service",
+            "False — the Kriegsmarine suspended U-boat recruitment in 1944 because morale had completely collapsed"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Germany built approximately ____ U-boats during WWII but lost the majority of them to Allied anti-submarine forces.",
+          "correctAnswer": "1,150",
+          "distractors": ["300", "600", "2,000", "450"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_bomber_crew_casualty_rate",
+      "correctAnswer": "Approximately 50% of USAAF bomber crews were lost",
+      "acceptableAlternatives": ["50%", "half", "one in two"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What was the overall casualty rate for American bomber crews flying the strategic bombing campaign over Germany?",
+      "explanation": "Approximately 50% of USAAF bomber crews became casualties. A crew ordered to complete 25 missions early in the campaign faced roughly coin-flip odds. Men flew in unheated aircraft at -40°C at 25,000 feet, wearing oxygen masks, surrounded by flak bursts, with German fighters attacking from all angles. Those who survived called it the most terrifying experience of their lives.",
+      "visualDescription": "Pixel art of a B-17 bomber crew in their freezing aircraft at 25,000 feet, oxygen masks and leather helmets, flak bursts visible through the cockpit glass, ice crystals on the windows",
+      "sourceName": "Wikipedia — Eighth Air Force",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Eighth_Air_Force",
+      "volatile": false,
+      "distractors": [
+        "10% of bomber crews",
+        "20% of bomber crews",
+        "80% of bomber crews",
+        "5% of bomber crews",
+        "95% of bomber crews",
+        "30% of bomber crews",
+        "70% of bomber crews",
+        "15% of bomber crews"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "How many missions were US bomber crews required to complete before being rotated home from strategic bombing operations early in the campaign?",
+          "correctAnswer": "25 missions",
+          "distractors": ["10 missions", "50 missions", "15 missions", "35 missions"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What specific environmental conditions made flying bomber missions at high altitude over Germany physically harrowing beyond the enemy threat?",
+          "correctAnswer": "Temperatures of -40°C at 25,000 feet in unheated aircraft, requiring oxygen masks; frostbite was common",
+          "distractors": [
+            "Blinding sunlight reflecting off cloud tops caused permanent eye damage requiring dark goggles",
+            "Aircraft pressurisation failures at altitude caused explosive decompression injuries",
+            "The extreme noise levels caused permanent hearing loss in virtually all bomber crews",
+            "High-altitude cosmic radiation exposure caused increased cancer rates among aircrew"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The 47,000+ Eighth Air Force aircrew killed represented nearly one-third of all US Army Air Forces deaths in WWII.",
+          "correctAnswer": "True — the Eighth's losses were the highest of any US air formation",
+          "distractors": [
+            "False — the Fifteenth Air Force based in Italy suffered greater total losses",
+            "False — Pacific carrier aviation suffered far higher proportional casualties than European bombing"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Flying at altitudes of approximately ____ feet, USAAF bombers were above the effective range of light flak but within reach of heavy 88mm anti-aircraft guns.",
+          "correctAnswer": "25,000",
+          "distractors": ["8,000", "15,000", "35,000", "50,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_luftwaffe_top_ace",
+      "correctAnswer": "Erich Hartmann (352 aerial victories)",
+      "acceptableAlternatives": ["Hartmann", "Erich Hartmann"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "names_people",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The Luftwaffe produced the highest-scoring fighter ace in aviation history. Who was he, and how many aerial victories did he achieve?",
+      "explanation": "Erich Hartmann shot down 352 aircraft — primarily on the Eastern Front against Soviet fighters. He flew 1,404 combat missions, was shot down 16 times and always escaped, and was nicknamed 'Bubi' (the Boy) by his own side for his youthful appearance. His tactics were simple: get close enough to fill the windscreen, then fire. The Soviets put a price on his head.",
+      "visualDescription": "Pixel art of a young Luftwaffe pilot in leather flying jacket standing in front of a Bf-109 with row upon row of victory kill marks on the rudder, Eastern European steppe in the background",
+      "sourceName": "Wikipedia — Erich Hartmann",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erich_Hartmann",
+      "volatile": false,
+      "distractors": [
+        "Adolf Galland (104 victories)",
+        "Hans-Ulrich Rudel (519 tank kills)",
+        "Günther Rall (275 victories)",
+        "Hermann Graf (212 victories)",
+        "Werner Mölders (115 victories)",
+        "Walter Nowotny (258 victories)",
+        "Otto Kittel (267 victories)",
+        "Heinz Bär (220 victories)"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "On which front did Erich Hartmann achieve the vast majority of his 352 aerial victories?",
+          "correctAnswer": "Eastern Front — fighting Soviet Air Force aircraft",
+          "distractors": [
+            "Western Front — fighting American P-51 Mustangs and P-47 Thunderbolts",
+            "North African Front — fighting RAF Spitfires and Hurricanes",
+            "Mediterranean Front — fighting Allied carrier aircraft",
+            "Channel Front — fighting British Spitfires during the Battle of Britain"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hartmann's exceptional survival rate (never killed despite being shot down 16 times) is attributed to his signature tactical philosophy. What was it?",
+          "correctAnswer": "Get so close to the target that it filled the windscreen before firing — eliminating the need for deflection shooting",
+          "distractors": [
+            "Climb to extreme altitude before attacking, diving on enemies who could not follow him up",
+            "Never fight a turning battle — rely exclusively on speed to break off any engagement that turned unfavourable",
+            "Always attack from out of the sun, ensuring the enemy was blinded at the critical moment",
+            "Hunt alone at dawn when patrols were minimal and targets were caught taking off from airfields"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Erich Hartmann spent 10 years in Soviet captivity after the war despite being the Luftwaffe's greatest ace.",
+          "correctAnswer": "True — he was held by the Soviets from 1945 to 1955, released only after diplomatic pressure",
+          "distractors": [
+            "False — Hartmann surrendered to American forces and was immediately repatriated to West Germany",
+            "False — Hartmann escaped from Soviet capture and lived in exile in Argentina until 1950"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Erich Hartmann flew ____ total combat missions during his WWII career — more than almost any other pilot.",
+          "correctAnswer": "1,404",
+          "distractors": ["200", "500", "800", "2,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_me262_jet",
+      "correctAnswer": "Messerschmitt Me 262 — world's first operational jet fighter",
+      "acceptableAlternatives": ["Me 262", "Me-262", "Messerschmitt 262"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The Luftwaffe introduced the world's first operational jet-powered fighter in combat during WWII. What was it called?",
+      "explanation": "The Me 262 could fly at 540 mph — 100+ mph faster than any Allied piston fighter. Allied pilots described being attacked by something that moved impossibly fast and was gone before they could react. Hitler initially insisted it be used as a bomber; this delay cost Germany critical months. By the time it appeared in numbers, Allied airfields were overrunning Germany from the ground.",
+      "visualDescription": "Pixel art of a sleek twin-engine jet aircraft with swept wings banking steeply at high speed, contrails streaming, Allied B-17s in the background looking slow and vulnerable",
+      "sourceName": "Wikipedia — Messerschmitt Me 262",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Messerschmitt_Me_262",
+      "volatile": false,
+      "distractors": [
+        "Heinkel He 162 Volksjäger",
+        "Focke-Wulf Ta 183",
+        "Messerschmitt Bf 109K",
+        "Focke-Wulf Fw 190D",
+        "Dornier Do 335 Pfeil",
+        "Heinkel He 280",
+        "Arado Ar 234",
+        "Junkers Ju 88G"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Hitler's controversial decision about the Me 262 delayed its deployment as a fighter. What did he insist it be used for instead?",
+          "correctAnswer": "A fast bomber (Schnellbomber) to attack Allied invasion beaches — delaying its use as an interceptor by months",
+          "distractors": [
+            "A reconnaissance aircraft to photograph Allied production facilities in Britain",
+            "A pilot training aircraft to replace the Bf-109 in advanced flight schools",
+            "A torpedo carrier to attack Allied convoys in the English Channel",
+            "A night fighter to replace the radar-equipped Bf-110 in defending German cities"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why did the Me 262, despite being technologically superior to Allied fighters, fail to decisively affect the air war?",
+          "correctAnswer": "It arrived too late and in too few numbers — fuel shortages, Allied bombing of airfields, and pilot losses limited its impact",
+          "distractors": [
+            "Early jet engines were unreliable and the aircraft crashed so frequently it was grounded repeatedly",
+            "The Me 262 had a critical design flaw — its guns jammed at high altitude, making it useless against bombers",
+            "Allied pilots discovered that diving away at full throttle could always outrun the Me 262",
+            "Germany assigned all Me 262s to suicide attack units, eliminating them faster than factories could produce them"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Me 262 was faster than any Allied fighter aircraft at the end of WWII.",
+          "correctAnswer": "True — at 540+ mph it outpaced all Allied piston fighters by 100+ mph",
+          "distractors": [
+            "False — the British Hawker Tempest was faster at low altitude in 1944",
+            "False — the American P-51H matched the Me 262's speed when introduced in early 1945"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Allied pilots learned to intercept Me 262s most effectively during their most vulnerable phase: while ____ from their airfields.",
+          "correctAnswer": "taking off or landing",
+          "distractors": ["refuelling at altitude", "forming up in formation", "attacking bomber formations", "returning from missions"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_nw_night_fighters_radar",
+      "correctAnswer": "Radar-guided Bf 110 and Me 262 night fighters intercepting RAF bombers",
+      "acceptableAlternatives": ["German night fighters", "radar-guided night fighters", "Bf 110 night fighters"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "names_terms",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The RAF bombed Germany at night to avoid fighters. Germany responded with a radar-guided night fighter system. Which aircraft was the primary German night fighter?",
+      "explanation": "The Messerschmitt Bf 110 — originally a failed daytime 'destroyer' — was repurposed as a radar-equipped night fighter and became devastatingly effective. Ground-controlled radar (Himmelbett) guided Bf 110s to within visual range of RAF Lancasters in darkness. Losses over Germany at night were still severe; the RAF never solved the night fighter threat — they just accepted the casualties.",
+      "visualDescription": "Pixel art of a twin-engine Bf 110 with radar antenna array on its nose, illuminated from below by searchlight beams, closing on a Lancaster silhouette against a star-filled sky",
+      "sourceName": "Wikipedia — Nachtjagd",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nachtjagd",
+      "volatile": false,
+      "distractors": [
+        "Focke-Wulf Fw 190A",
+        "Messerschmitt Bf 109G",
+        "Heinkel He 111",
+        "Junkers Ju 88A",
+        "Dornier Do 17",
+        "Focke-Wulf Ta 154",
+        "Heinkel He 219 Uhu",
+        "Arado Ar 234"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What ground-based radar system coordinated German night fighter interceptions of RAF bombers over Germany?",
+          "correctAnswer": "Himmelbett — a network of radar stations that guided fighters to individual bombers in darkness",
+          "distractors": [
+            "Freya — a long-range early warning system that vectored fighters by voice radio",
+            "Würzburg — a mobile radar that tracked bombers and relayed positions to Flak batteries only",
+            "Seetakt — a naval radar repurposed to guide aircraft approaching from the sea",
+            "Lichtenstein — an airborne radar that operated without any ground control input"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why did the RAF switch to night bombing of Germany, and what was the key price they paid for it?",
+          "correctAnswer": "Night bombing reduced fighter interception risk but made precision impossible — entire city areas were bombed rather than specific targets",
+          "distractors": [
+            "Night bombing increased accuracy because searchlights illuminated targets better than daylight navigation",
+            "The RAF switched to night operations to share daytime airspace with American bomber formations",
+            "Night bombing was less psychologically damaging to German civilian morale than daylight raids",
+            "RAF bombers were too slow for daytime operations once the Luftwaffe deployed the Me 262"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: German night fighters forced RAF Bomber Command to abandon night bombing campaigns entirely by 1944.",
+          "correctAnswer": "False — the RAF continued night bombing despite losses; they developed countermeasures like 'Window' (aluminium chaff) to confuse radar",
+          "distractors": [
+            "True — Bomber Command suspended all night operations in 1943 after catastrophic losses over Nuremberg",
+            "True — RAF Bomber Command converted to daytime operations in late 1943 to coordinate with USAAF raids"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The RAF countered German radar-guided night fighters by dropping strips of aluminium foil called '____' that created false radar returns.",
+          "correctAnswer": "Window",
+          "distractors": ["Chaff", "Tinsel", "Corona", "Mandrel"]
+        }
+      ]
+    }
+  ]
+}

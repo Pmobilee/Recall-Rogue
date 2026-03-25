@@ -1,0 +1,1607 @@
+{
+  "id": "wwii_alliances_diplomacy",
+  "name": "WWII: Alliances & Diplomacy",
+  "domain": "history",
+  "subDomain": "world_war_ii",
+  "description": "The secret meetings, signed documents, and personal rivalries that shaped the Allied coalition and Axis partnership — from Churchill and FDR's clandestine rendezvous off Newfoundland to the percentage deal scrawled on a napkin in Moscow.",
+  "minimumFacts": 25,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "wwii_ad_atlantic_charter_date",
+      "correctAnswer": "August 14, 1941",
+      "acceptableAlternatives": ["August 1941", "1941"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "December 7, 1941",
+        "January 1, 1942",
+        "June 6, 1944",
+        "February 4, 1945",
+        "July 17, 1945",
+        "September 2, 1945",
+        "November 28, 1943",
+        "June 26, 1945"
+      ],
+      "quizQuestion": "On what date did Churchill and FDR secretly meet off the coast of Newfoundland and issue the Atlantic Charter?",
+      "explanation": "Churchill and Roosevelt met aboard warships off Newfoundland on August 14, 1941 — months before the US officially entered the war. Their joint declaration of 8 principles, covering self-determination, free trade, and freedom from fear and want, became the ideological blueprint for the Allied cause and influenced the later UN Charter. Source: Wikipedia, Atlantic Charter.",
+      "statement": "Churchill and FDR signed the Atlantic Charter on August 14, 1941, off the coast of Newfoundland.",
+      "wowFactor": "FDR met Churchill in secret on the open Atlantic while officially telling the press he was on a 'fishing holiday' — America wasn't even at war yet.",
+      "visualDescription": "Pixel art of two warships anchored side by side in a foggy grey sea, two small figures in suits shaking hands on the deck under a pale sky",
+      "sourceName": "Wikipedia — Atlantic Charter",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atlantic_Charter",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What document did Churchill and FDR secretly sign off Newfoundland in August 1941, before the US entered the war?",
+          "correctAnswer": "Atlantic Charter",
+          "distractors": ["Declaration of the United Nations", "Lend-Lease Act", "Cairo Declaration", "Casablanca Agreement", "Potsdam Declaration"]
+        },
+        {
+          "type": "context",
+          "question": "Churchill and FDR met secretly at sea in August 1941 to issue a joint declaration of war aims — 4 months before Pearl Harbor. What was this document called?",
+          "correctAnswer": "Atlantic Charter",
+          "distractors": ["Declaration of the United Nations", "Four Freedoms Speech", "Tripartite Pact", "Tehran Communiqué", "Lend-Lease Agreement"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Atlantic Charter was signed AFTER the United States formally declared war on Germany.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Churchill and FDR issued the ___ off the coast of Newfoundland on August 14, 1941, laying out Allied war aims before the US entered the war.",
+          "correctAnswer": "Atlantic Charter",
+          "distractors": ["Lend-Lease Act", "Cairo Declaration", "Declaration of the United Nations", "Potsdam Declaration", "Casablanca Agreement"]
+        }
+      ],
+      "tags": ["atlantic charter", "churchill", "fdr", "1941", "diplomacy", "war aims", "pre-war"]
+    },
+    {
+      "id": "wwii_ad_atlantic_charter_principles",
+      "correctAnswer": "8",
+      "acceptableAlternatives": ["eight"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "4",
+        "6",
+        "10",
+        "12",
+        "5",
+        "7",
+        "14",
+        "3"
+      ],
+      "quizQuestion": "How many principles were laid out in the Atlantic Charter signed by Churchill and FDR in August 1941?",
+      "explanation": "The Atlantic Charter contained 8 principles: no territorial aggrandizement, no territorial changes without consent of the people concerned, self-determination, access to trade and raw materials, international economic cooperation, freedom from want and fear, freedom of the seas, and disarmament of aggressor nations. These became the moral framework of the Allied cause. Source: Wikipedia, Atlantic Charter.",
+      "statement": "The Atlantic Charter contained 8 principles covering self-determination, free trade, and freedom from fear.",
+      "wowFactor": "Those 8 principles directly inspired the UN Charter four years later — a wartime press release turned into the foundation of postwar world order.",
+      "visualDescription": "Pixel art of a scroll unrolled on a wooden table with 8 numbered lines of text, a quill pen resting beside it, maps and a compass in the background",
+      "sourceName": "Wikipedia — Atlantic Charter",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atlantic_Charter",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Atlantic Charter was a joint declaration containing how many guiding principles for the Allied war effort?",
+          "correctAnswer": "8",
+          "distractors": ["4", "6", "10", "12", "5", "14"]
+        },
+        {
+          "type": "context",
+          "question": "Churchill and FDR's Atlantic Charter (1941) laid out a numbered set of war aims that later influenced the UN Charter. How many principles did it contain?",
+          "correctAnswer": "8",
+          "distractors": ["4", "6", "10", "14", "5", "12"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Atlantic Charter contained exactly 8 principles.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Atlantic Charter laid out ___ principles for the Allied war effort, including self-determination, free trade, and freedom from fear.",
+          "correctAnswer": "8",
+          "distractors": ["4", "6", "10", "14", "12", "5"]
+        }
+      ],
+      "tags": ["atlantic charter", "principles", "8", "war aims", "self-determination"]
+    },
+    {
+      "id": "wwii_ad_tripartite_pact_date",
+      "correctAnswer": "September 27, 1940",
+      "acceptableAlternatives": ["September 1940", "1940"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "August 23, 1939",
+        "September 1, 1939",
+        "June 22, 1941",
+        "December 7, 1941",
+        "January 1, 1942",
+        "April 13, 1941",
+        "June 6, 1944",
+        "May 8, 1945"
+      ],
+      "quizQuestion": "On what date did Germany, Italy, and Japan sign the Tripartite Pact in Berlin, formally creating the Axis alliance?",
+      "explanation": "Germany, Italy, and Japan signed the Tripartite Pact on September 27, 1940 in Berlin. Each power committed to defend the others against any nation not already at war. The pact was designed to deter U.S. entry into the war by threatening a two-front conflict. In practice, the partners shared little military coordination — Germany surprised Japan by invading the USSR in 1941, and Japan surprised Germany with Pearl Harbor. Source: Wikipedia, Tripartite Pact.",
+      "statement": "Germany, Italy, and Japan signed the Tripartite Pact on September 27, 1940, formalizing the Axis alliance.",
+      "wowFactor": "The Tripartite Pact was supposed to scare the US into staying neutral — instead it meant that when Japan attacked Pearl Harbor, Germany was technically obligated to declare war on America too.",
+      "visualDescription": "Pixel art of three uniformed figures — one in feldgrau, one in fascist black, one in IJA khaki — each placing a pen to a large document on an ornate Berlin table",
+      "sourceName": "Wikipedia — Tripartite Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tripartite_Pact",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_axis",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What pact, signed in Berlin in September 1940, formally united Germany, Italy, and Japan as the Axis powers?",
+          "correctAnswer": "Tripartite Pact",
+          "distractors": ["Molotov-Ribbentrop Pact", "Anti-Comintern Pact", "Pact of Steel", "Rome-Berlin Axis", "Soviet-Japanese Neutrality Pact", "Atlantic Charter"]
+        },
+        {
+          "type": "context",
+          "question": "The Axis alliance was formalized in September 1940 when Germany, Italy, and Japan each promised mutual defense. What was this agreement called?",
+          "correctAnswer": "Tripartite Pact",
+          "distractors": ["Molotov-Ribbentrop Pact", "Pact of Steel", "Anti-Comintern Pact", "Locarno Treaties", "Geneva Convention"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Tripartite Pact was signed BEFORE Germany invaded the Soviet Union.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany, Italy, and Japan formalized their Axis alliance on September 27, 1940 by signing the ___ in Berlin.",
+          "correctAnswer": "Tripartite Pact",
+          "distractors": ["Molotov-Ribbentrop Pact", "Anti-Comintern Pact", "Pact of Steel", "Atlantic Charter", "Rome-Berlin Axis Protocol"]
+        }
+      ],
+      "tags": ["tripartite pact", "axis", "germany", "italy", "japan", "1940", "alliance"]
+    },
+    {
+      "id": "wwii_ad_tripartite_pact_aim",
+      "correctAnswer": "Deter U.S. entry into the war",
+      "acceptableAlternatives": ["deter America", "prevent US involvement", "scare the US into neutrality"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "strategic_aims",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Coordinate a joint invasion of the Soviet Union",
+        "Share nuclear weapons research",
+        "Divide conquered territories equally",
+        "Establish a unified Axis command",
+        "Prevent Britain from entering the war",
+        "Control the global oil supply",
+        "Form a common currency among Axis nations",
+        "Pressure Spain to join the Axis"
+      ],
+      "quizQuestion": "What was the primary strategic aim of the Tripartite Pact (1940) — the alliance between Germany, Italy, and Japan?",
+      "explanation": "The Tripartite Pact was designed specifically to deter American entry into the war by threatening that any US attack on one Axis power would mean war with all three — a two-front conflict across both oceans. Despite this, the pact provided almost no real military coordination: Germany surprised Japan with the invasion of the USSR, and Japan surprised Germany and Italy with Pearl Harbor. Source: Wikipedia, Tripartite Pact.",
+      "statement": "The Tripartite Pact's primary strategic aim was to deter U.S. entry into the war by threatening a two-front conflict.",
+      "wowFactor": "The pact's whole point was to scare America — and it failed spectacularly, since Japan's Pearl Harbor attack brought the US in on the Allied side anyway.",
+      "visualDescription": "Pixel art of a map of the world with arrows pointing at the US coastline from both the Atlantic and Pacific, three flags — German, Italian, Japanese — hovering over Europe, Italy, and the Pacific",
+      "sourceName": "Wikipedia — Tripartite Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tripartite_Pact",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_axis",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Tripartite Pact was primarily meant to threaten which country into staying neutral?",
+          "correctAnswer": "United States",
+          "distractors": ["Soviet Union", "Britain", "France", "China", "Canada", "Brazil"]
+        },
+        {
+          "type": "context",
+          "question": "Despite signing a mutual defense pact in 1940, Germany surprised Japan with Operation Barbarossa and Japan surprised Germany with Pearl Harbor. What was the pact originally supposed to do?",
+          "correctAnswer": "Deter U.S. entry into the war",
+          "distractors": ["Coordinate a joint invasion of the Soviet Union", "Establish a unified Axis command structure", "Divide the British Empire among three powers", "Secure global oil supplies for the Axis"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany and Japan coordinated closely under the Tripartite Pact, with Germany informing Japan before invading the Soviet Union.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Tripartite Pact was designed to ___ by threatening that any attack on one Axis power would trigger war with all three.",
+          "correctAnswer": "Deter U.S. entry into the war",
+          "distractors": ["Force Britain into a negotiated peace", "Coordinate a joint invasion of the Soviet Union", "Secure Japanese control of the Pacific", "Prevent Soviet expansion into Eastern Europe"]
+        }
+      ],
+      "tags": ["tripartite pact", "strategy", "deterrence", "usa", "axis", "two-front war"]
+    },
+    {
+      "id": "wwii_ad_casablanca_unconditional_surrender",
+      "correctAnswer": "Unconditional surrender",
+      "acceptableAlternatives": ["unconditional surrender policy"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "policy_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Negotiated armistice",
+        "Conditional peace",
+        "Status quo ante bellum",
+        "Partial disarmament",
+        "Territorial partition",
+        "Decolonization first",
+        "War crimes tribunal before peace",
+        "Economic reparations only"
+      ],
+      "quizQuestion": "What controversial Allied policy, announced at the Casablanca Conference in January 1943, required Axis powers to surrender without any conditions or negotiation?",
+      "explanation": "At Casablanca (January 14–24, 1943), FDR and Churchill announced the 'unconditional surrender' policy: the Axis powers must give up completely, with no negotiated peace. The policy aimed to reassure the Soviet Union that there would be no separate deal with Germany, and to prevent another post-WWI 'stab-in-the-back' myth. Critics argued it removed any incentive for German generals to overthrow Hitler and prolonged the war. Source: Wikipedia, Casablanca Conference.",
+      "statement": "The Casablanca Conference (January 1943) is where FDR and Churchill announced the 'unconditional surrender' policy.",
+      "wowFactor": "By refusing any negotiated peace, some historians argue the Allies accidentally helped Hitler stay in power — German officers had less reason to attempt a coup if surrender would be total humiliation regardless.",
+      "visualDescription": "Pixel art of FDR and Churchill seated at a table in a sun-drenched Moroccan courtyard, microphones in front of them, military aides standing behind",
+      "sourceName": "Wikipedia — Casablanca Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_Conference",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "At which 1943 conference did FDR and Churchill announce that the Axis powers must surrender unconditionally, with no negotiated peace?",
+          "correctAnswer": "Casablanca",
+          "distractors": ["Tehran", "Yalta", "Potsdam", "Quebec", "Cairo", "Dumbarton Oaks"]
+        },
+        {
+          "type": "context",
+          "question": "FDR and Churchill met in Morocco in January 1943 partly to reassure Stalin there would be no secret deal with Germany. What dramatic policy did they announce there?",
+          "correctAnswer": "Unconditional surrender",
+          "distractors": ["A second front in France by spring 1943", "Lend-Lease extension to the Soviet Union", "The Four Freedoms declaration", "A Mediterranean-first strategy"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The unconditional surrender policy was designed in part to reassure the Soviet Union that the Western Allies would not make a separate peace with Germany.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "At the Casablanca Conference (1943), FDR and Churchill announced that Germany, Italy, and Japan must accept ___ — no peace negotiations, no conditions.",
+          "correctAnswer": "Unconditional surrender",
+          "distractors": ["A negotiated armistice", "Territorial partition", "Economic reparations", "A conditional ceasefire"]
+        }
+      ],
+      "tags": ["casablanca", "unconditional surrender", "fdr", "churchill", "1943", "policy"]
+    },
+    {
+      "id": "wwii_ad_four_freedoms_date",
+      "correctAnswer": "January 6, 1941",
+      "acceptableAlternatives": ["January 1941", "1941"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "August 14, 1941",
+        "December 7, 1941",
+        "January 1, 1942",
+        "June 6, 1944",
+        "September 1, 1939",
+        "March 11, 1941",
+        "November 28, 1943",
+        "February 4, 1945"
+      ],
+      "quizQuestion": "On what date did President FDR deliver his 'Four Freedoms' State of the Union address, articulating the ideological case for supporting democracy?",
+      "explanation": "On January 6, 1941 — nearly a year before Pearl Harbor — FDR delivered his State of the Union address naming four universal freedoms: freedom of speech, freedom of worship, freedom from want, and freedom from fear. The speech framed American intervention as a fight for human rights, not just national interest. Norman Rockwell later painted iconic images of each freedom. The Four Freedoms influenced the Atlantic Charter and the UN Declaration of Human Rights. Source: Wikipedia, Four Freedoms.",
+      "statement": "FDR's 'Four Freedoms' State of the Union address was delivered on January 6, 1941.",
+      "wowFactor": "Norman Rockwell painted four small-town American scenes to illustrate each freedom — and the Saturday Evening Post printed them as the most effective US propaganda of the war.",
+      "visualDescription": "Pixel art of FDR at a wooden podium, one hand raised, speaking into a 1940s microphone, with an American flag behind him and a crowd of faces in shadow below",
+      "sourceName": "Wikipedia — Four Freedoms",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Four_Freedoms",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What are the Four Freedoms that FDR articulated in his 1941 State of the Union address? (Name one.)",
+          "correctAnswer": "Freedom from fear",
+          "distractors": ["Freedom from taxation", "Freedom from military service", "Freedom of movement", "Freedom of assembly only in wartime", "Freedom from conscription", "Freedom from debt"]
+        },
+        {
+          "type": "context",
+          "question": "In January 1941, almost a year before Pearl Harbor, FDR gave a speech outlining four universal human rights to justify opposing fascism. What was this speech known as?",
+          "correctAnswer": "The Four Freedoms address",
+          "distractors": ["The Arsenal of Democracy speech", "The Atlantic Charter declaration", "The Day of Infamy address", "The Lend-Lease speech", "The Iron Curtain speech"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: FDR's Four Freedoms speech was delivered BEFORE the United States officially entered World War II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "FDR's January 6, 1941 State of the Union address articulated the '___ Freedoms' — including freedom from fear and freedom from want — as the ideological stakes of the war.",
+          "correctAnswer": "Four",
+          "distractors": ["Five", "Six", "Three", "Eight", "Two", "Seven"]
+        }
+      ],
+      "tags": ["four freedoms", "fdr", "1941", "ideology", "human rights", "state of the union"]
+    },
+    {
+      "id": "wwii_ad_declaration_united_nations",
+      "correctAnswer": "January 1, 1942",
+      "acceptableAlternatives": ["January 1942", "New Year's Day 1942"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "August 14, 1941",
+        "December 8, 1941",
+        "June 26, 1945",
+        "November 28, 1943",
+        "February 4, 1945",
+        "July 17, 1945",
+        "September 2, 1945",
+        "January 6, 1941"
+      ],
+      "quizQuestion": "On what date did 26 Allied nations sign the Declaration of the United Nations in Washington D.C., committing to fight the Axis until victory?",
+      "explanation": "On January 1, 1942 — just three weeks after Pearl Harbor — 26 nations including the US, Britain, the Soviet Union, and China signed the Declaration of the United Nations in Washington D.C. The signatories pledged to fight the Axis and not make any separate peace. The name 'United Nations' came from FDR himself. The declaration later grew to 47 signatories and directly inspired the international organization formally founded in San Francisco in 1945. Source: Wikipedia, Declaration by United Nations.",
+      "statement": "26 nations signed the Declaration of the United Nations on January 1, 1942, pledging to fight the Axis together.",
+      "wowFactor": "The phrase 'United Nations' was coined by FDR — originally it just meant the alliance of countries fighting the Axis, not the peacetime organization it became.",
+      "visualDescription": "Pixel art of a grand Washington DC room with flags of multiple nations lining the walls, delegates in formal suits seated at a long table covered with papers, pen in hand",
+      "sourceName": "Wikipedia — Declaration by United Nations",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Declaration_by_United_Nations",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many nations originally signed the Declaration of the United Nations on January 1, 1942?",
+          "correctAnswer": "26",
+          "distractors": ["14", "47", "50", "51", "32", "18", "40"]
+        },
+        {
+          "type": "context",
+          "question": "Three weeks after Pearl Harbor, the Allied nations formalized their partnership in a document signed in Washington D.C. that gave birth to the phrase 'United Nations.' When was this signed?",
+          "correctAnswer": "January 1, 1942",
+          "distractors": ["August 14, 1941", "December 8, 1941", "June 26, 1945", "November 28, 1943", "February 4, 1945"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The phrase 'United Nations' was coined by FDR to describe the Allied coalition before the postwar organization was founded.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "On January 1, 1942, ___ nations signed the Declaration of the United Nations in Washington D.C., committing to fight the Axis until total victory.",
+          "correctAnswer": "26",
+          "distractors": ["47", "50", "14", "32", "18", "40"]
+        }
+      ],
+      "tags": ["declaration of the united nations", "1942", "allied coalition", "washington dc", "26 nations"]
+    },
+    {
+      "id": "wwii_ad_lend_lease_soviet_total",
+      "correctAnswer": "$11 billion",
+      "acceptableAlternatives": ["11 billion dollars", "11 billion USD", "about 11 billion"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "amounts",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "$4 billion",
+        "$7 billion",
+        "$50 billion",
+        "$3 billion",
+        "$25 billion",
+        "$2 billion",
+        "$15 billion",
+        "$20 billion"
+      ],
+      "quizQuestion": "Approximately how much in supplies did the Soviet Union receive from the U.S. Lend-Lease program during World War II?",
+      "explanation": "The Soviet Union received approximately $11 billion in Lend-Lease supplies from the United States — the largest single-nation share after Britain. Supplies included food, trucks, aircraft, and raw materials. Many historians argue that without Lend-Lease, the Soviet Union might have collapsed during the crisis years of 1941–42. The program also provided Britain with the economic lifeline it needed to stay in the fight before US entry. Source: Wikipedia, Lend-Lease.",
+      "statement": "The Soviet Union received approximately $11 billion in U.S. Lend-Lease supplies during WWII.",
+      "wowFactor": "The US sent the USSR over 400,000 trucks via Lend-Lease — Soviet soldiers nicknamed American Studebaker trucks 'Studers' and they became the backbone of Red Army logistics.",
+      "visualDescription": "Pixel art of a grey wartime ship loaded with crates and trucks, a red star stenciled on some boxes, sailing through choppy North Atlantic waters with escort destroyers flanking it",
+      "sourceName": "Wikipedia — Lend-Lease",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lend-Lease",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which country received the most Lend-Lease aid from the United States after Britain?",
+          "correctAnswer": "Soviet Union",
+          "distractors": ["France", "China", "Australia", "Canada", "Poland", "Netherlands"]
+        },
+        {
+          "type": "context",
+          "question": "The U.S. Lend-Lease program sustained both Britain and the Soviet Union economically and militarily. The USSR alone received approximately how much in supplies?",
+          "correctAnswer": "$11 billion",
+          "distractors": ["$4 billion", "$7 billion", "$25 billion", "$50 billion", "$3 billion", "$15 billion"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Some historians argue the Soviet Union might have collapsed in 1941–42 without U.S. Lend-Lease support.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Soviet Union received approximately $___ billion in U.S. Lend-Lease supplies during WWII, making it the largest single-nation recipient after Britain.",
+          "correctAnswer": "11",
+          "distractors": ["4", "7", "50", "3", "25", "20"]
+        }
+      ],
+      "tags": ["lend-lease", "soviet union", "11 billion", "supplies", "economic alliance", "logistics"]
+    },
+    {
+      "id": "wwii_ad_tehran_conference_date",
+      "correctAnswer": "November 28 – December 1, 1943",
+      "acceptableAlternatives": ["November–December 1943", "late 1943", "1943"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "January 14–24, 1943",
+        "February 4–11, 1945",
+        "July 17 – August 2, 1945",
+        "June 6, 1944",
+        "August 14, 1941",
+        "November 22–26, 1943",
+        "January 1, 1942",
+        "October 1944"
+      ],
+      "quizQuestion": "When did the Tehran Conference take place — the first in-person meeting of the Big Three (FDR, Churchill, and Stalin)?",
+      "explanation": "The Tehran Conference ran from November 28 to December 1, 1943, in Tehran, Iran. It was the first time FDR, Churchill, and Stalin met face to face. The major achievement was agreeing to launch Operation Overlord (D-Day) in spring 1944, giving Stalin the second front in Western Europe he had been demanding. Stalin also agreed to enter the war against Japan after Germany's defeat in exchange for territorial concessions. Source: Wikipedia, Tehran Conference.",
+      "statement": "The Tehran Conference (November 28 – December 1, 1943) was the first in-person meeting of the Big Three.",
+      "wowFactor": "Stalin was so suspicious of assassination attempts that he refused to travel far — the Allies literally had to come to him, meeting in Soviet-controlled Tehran rather than a neutral location.",
+      "visualDescription": "Pixel art of three leaders seated in a row in a grand hall — Churchill in a dark suit, FDR in a wheelchair beside a desk, Stalin in his marshal's uniform — Persian rugs underfoot",
+      "sourceName": "Wikipedia — Tehran Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tehran_Conference",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Where did FDR, Churchill, and Stalin hold their first in-person meeting in late 1943?",
+          "correctAnswer": "Tehran, Iran",
+          "distractors": ["Casablanca, Morocco", "Cairo, Egypt", "Yalta, Soviet Union", "Potsdam, Germany", "Quebec, Canada", "Washington D.C."]
+        },
+        {
+          "type": "context",
+          "question": "At their first face-to-face meeting in November 1943, FDR, Churchill, and Stalin agreed to launch the long-awaited second front in France. At which conference was this decided?",
+          "correctAnswer": "Tehran Conference",
+          "distractors": ["Yalta Conference", "Casablanca Conference", "Cairo Conference", "Potsdam Conference", "Quebec Conference", "Dumbarton Oaks"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Tehran Conference (1943) was the first time FDR, Churchill, and Stalin met together in person.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Conference (November–December 1943) in Iran was the first meeting of the Big Three and produced the agreement to launch D-Day in spring 1944.",
+          "correctAnswer": "Tehran",
+          "distractors": ["Yalta", "Casablanca", "Cairo", "Potsdam", "Quebec", "Dumbarton Oaks"]
+        }
+      ],
+      "tags": ["tehran conference", "big three", "fdr", "churchill", "stalin", "d-day", "1943", "first meeting"]
+    },
+    {
+      "id": "wwii_ad_yalta_conference_date",
+      "correctAnswer": "February 4–11, 1945",
+      "acceptableAlternatives": ["February 1945", "early 1945", "1945"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "November 28 – December 1, 1943",
+        "January 14–24, 1943",
+        "July 17 – August 2, 1945",
+        "November 22–26, 1943",
+        "August 14, 1941",
+        "January 1, 1942",
+        "June 6, 1944",
+        "May 8, 1945"
+      ],
+      "quizQuestion": "When did the Yalta Conference take place, at which the Big Three planned postwar Europe including Poland's new borders?",
+      "explanation": "The Yalta Conference took place February 4–11, 1945, in Yalta, Soviet Union. With Germany's defeat imminent, FDR, Churchill, and Stalin met to plan postwar arrangements. Major decisions included Poland's revised borders (shifted westward), Soviet entry against Japan after Germany's defeat, and the framework for the United Nations. The conference became deeply controversial: critics argued FDR conceded too much to Stalin, effectively handing Eastern Europe to Soviet domination. Source: Wikipedia, Yalta Conference.",
+      "statement": "The Yalta Conference ran from February 4–11, 1945, at which the Big Three decided Poland's postwar borders and Soviet entry against Japan.",
+      "wowFactor": "FDR was visibly ill at Yalta — he died just two months later. Some historians argue his weakened state led him to make excessive concessions to Stalin.",
+      "visualDescription": "Pixel art of three leaders at a round table in a Crimean palace, snow visible through tall windows, maps and documents spread before them, each with military aides standing behind",
+      "sourceName": "Wikipedia — Yalta Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Yalta_Conference",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "At which 1945 conference did FDR, Churchill, and Stalin plan postwar Europe and agree on Poland's new borders?",
+          "correctAnswer": "Yalta",
+          "distractors": ["Tehran", "Potsdam", "Casablanca", "Cairo", "Quebec", "Dumbarton Oaks"]
+        },
+        {
+          "type": "context",
+          "question": "With Germany nearly defeated, the Big Three met in Soviet Crimea in February 1945. FDR's concessions here are blamed by some historians for giving Stalin Eastern Europe. Which conference was this?",
+          "correctAnswer": "Yalta Conference",
+          "distractors": ["Tehran Conference", "Potsdam Conference", "Casablanca Conference", "Quebec Conference", "Cairo Conference"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Yalta Conference took place AFTER Germany formally surrendered.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "At the ___ Conference in February 1945, FDR, Churchill, and Stalin agreed on Soviet entry against Japan and Poland's postwar borders.",
+          "correctAnswer": "Yalta",
+          "distractors": ["Tehran", "Potsdam", "Casablanca", "Cairo", "Quebec"]
+        }
+      ],
+      "tags": ["yalta conference", "big three", "1945", "poland", "postwar", "fdr", "churchill", "stalin"]
+    },
+    {
+      "id": "wwii_ad_potsdam_atomic_test",
+      "correctAnswer": "Potsdam Conference",
+      "acceptableAlternatives": ["Potsdam", "the Potsdam Conference"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "event_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Yalta Conference",
+        "Tehran Conference",
+        "Casablanca Conference",
+        "Cairo Conference",
+        "Quebec Conference",
+        "Dumbarton Oaks Conference",
+        "Atlantic Charter summit",
+        "San Francisco Conference"
+      ],
+      "quizQuestion": "During which 1945 conference did Truman receive word that the atomic bomb had been successfully tested, shifting the power dynamics with Stalin?",
+      "explanation": "The Potsdam Conference (July 17 – August 2, 1945) in Germany began the same day as the Trinity nuclear test in New Mexico. Truman received confirmation that the atomic bomb worked while at the conference — meaning the US was no longer dependent on Soviet entry into the Pacific War. This shifted his posture toward Stalin considerably. Some historians mark Potsdam as the start of the Cold War due to the marked cooling of Allied relations. Source: Wikipedia, Potsdam Conference.",
+      "statement": "Truman learned of the atomic bomb's successful test on the first day of the Potsdam Conference, July 17, 1945.",
+      "wowFactor": "Truman told Stalin only that the US had 'a new weapon of unusual destructive force' — Stalin's reaction was so calm that Truman thought he hadn't understood. Stalin already knew, via Soviet spies at Los Alamos.",
+      "visualDescription": "Pixel art of three leaders at a round table in a bombed-out German city, tension visible in their postures, a red telephone on a side table and a faint mushroom cloud silhouette glowing in the distant window",
+      "sourceName": "Wikipedia — Potsdam Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Potsdam_Conference",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Potsdam Conference in July–August 1945 is sometimes called the start of the Cold War. Who replaced Churchill midway through the conference after a British election?",
+          "correctAnswer": "Clement Attlee",
+          "distractors": ["Ernest Bevin", "Anthony Eden", "Harold Macmillan", "Neville Chamberlain", "Hugh Dalton", "Stafford Cripps"]
+        },
+        {
+          "type": "context",
+          "question": "Truman arrived at the Potsdam Conference on July 17, 1945 — the same day as the Trinity nuclear test. Learning the bomb worked changed his entire negotiating position with Stalin. What was this conference?",
+          "correctAnswer": "Potsdam Conference",
+          "distractors": ["Yalta Conference", "Tehran Conference", "Casablanca Conference", "Cairo Conference", "Quebec Conference"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Potsdam Conference began on the same day that the first atomic bomb was successfully tested in New Mexico.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "At the ___ Conference in July 1945, Truman learned the atomic bomb worked — news that made him less dependent on Soviet entry into the Pacific War.",
+          "correctAnswer": "Potsdam",
+          "distractors": ["Yalta", "Tehran", "Casablanca", "Cairo", "Quebec"]
+        }
+      ],
+      "tags": ["potsdam", "atomic bomb", "truman", "1945", "cold war origins", "trinity test"]
+    },
+    {
+      "id": "wwii_ad_un_founding_date",
+      "correctAnswer": "June 26, 1945",
+      "acceptableAlternatives": ["June 1945", "1945"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "January 1, 1942",
+        "August 14, 1941",
+        "February 4, 1945",
+        "September 2, 1945",
+        "May 8, 1945",
+        "August 6, 1945",
+        "January 24, 1946",
+        "October 24, 1945"
+      ],
+      "quizQuestion": "On what date was the United Nations Charter signed in San Francisco, formally founding the UN as the successor to the failed League of Nations?",
+      "explanation": "The United Nations Charter was signed by 50 nations in San Francisco on June 26, 1945 — just six weeks after Germany's surrender, and two months before Japan's. The UN was designed to prevent future world wars through collective security, with a General Assembly for all nations and a Security Council with five permanent members (US, Soviet Union, Britain, France, China) each holding veto power. The UN began operations on January 24, 1946. Source: Wikipedia, United Nations.",
+      "statement": "50 nations signed the UN Charter in San Francisco on June 26, 1945, founding the United Nations.",
+      "wowFactor": "The UN's Security Council veto — granted to just 5 nations — was a direct lesson from WWI: the League of Nations failed partly because the US never joined. The veto ensured great powers would stay engaged rather than walk out.",
+      "visualDescription": "Pixel art of a grand Art Deco hall in San Francisco, 50 national flags lining the walls, delegates from around the world signing a large document at an ornate wooden table",
+      "sourceName": "Wikipedia — United Nations",
+      "sourceUrl": "https://en.wikipedia.org/wiki/United_Nations",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many nations originally signed the United Nations Charter in San Francisco on June 26, 1945?",
+          "correctAnswer": "50",
+          "distractors": ["26", "47", "51", "44", "32", "60", "38"]
+        },
+        {
+          "type": "context",
+          "question": "Six weeks after Germany's surrender, 50 nations gathered in San Francisco to sign the charter for a new international organization intended to replace the failed League of Nations. What was it?",
+          "correctAnswer": "United Nations",
+          "distractors": ["League of Nations (renewed)", "World Peace Council", "Atlantic Alliance", "International Court of Nations", "Allied Security Council"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The United Nations Charter was signed in San Francisco BEFORE Japan formally surrendered.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "On June 26, 1945, ___ nations signed the United Nations Charter in San Francisco, founding the successor to the League of Nations.",
+          "correctAnswer": "50",
+          "distractors": ["26", "47", "51", "44", "32", "60"]
+        }
+      ],
+      "tags": ["united nations", "san francisco", "1945", "charter", "50 nations", "league of nations"]
+    },
+    {
+      "id": "wwii_ad_cairo_chiang",
+      "correctAnswer": "Chiang Kai-shek",
+      "acceptableAlternatives": ["Chiang", "Generalissimo Chiang"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "leader_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Mao Zedong",
+        "Hirohito",
+        "Hideki Tojo",
+        "Douglas MacArthur",
+        "Sun Yat-sen",
+        "Zhou Enlai",
+        "Manchukuo Emperor Puyi",
+        "Yasuji Okamura"
+      ],
+      "quizQuestion": "Which Chinese leader met with FDR and Churchill at the Cairo Conference in November 1943 to discuss strategy against Japan and postwar Asia?",
+      "explanation": "Nationalist Chinese leader Chiang Kai-shek met FDR and Churchill at the Cairo Conference (November 22–26, 1943). They issued the Cairo Declaration committing to fight until Japan's unconditional surrender and stating that Japan would lose all territories seized by force, including Manchuria, Taiwan, and Korea. Stalin was absent — the Soviet Union was not yet at war with Japan. The conference recognized China as a major Allied power, though Chiang's military effectiveness was often questioned by American commanders. Source: Wikipedia, Cairo Conference.",
+      "statement": "Chiang Kai-shek met FDR and Churchill at the Cairo Conference in November 1943 to plan strategy against Japan.",
+      "wowFactor": "The Cairo Declaration promised to strip Japan of all conquered territories — written in 1943, it still shapes legal arguments over Taiwan's status today.",
+      "visualDescription": "Pixel art of FDR, Churchill, and Chiang Kai-shek seated together in front of Egyptian pyramids, with military aides and Madame Chiang standing nearby in the warm desert light",
+      "sourceName": "Wikipedia — Cairo Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cairo_Conference",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "At which 1943 conference did FDR and Churchill meet with Chinese leader Chiang Kai-shek to plan Pacific strategy and issue a declaration on Japan's postwar territorial losses?",
+          "correctAnswer": "Cairo Conference",
+          "distractors": ["Tehran Conference", "Yalta Conference", "Casablanca Conference", "Potsdam Conference", "Quebec Conference", "Dumbarton Oaks"]
+        },
+        {
+          "type": "context",
+          "question": "In November 1943, just days before the Tehran Conference, FDR and Churchill met in Egypt with a third Allied leader to plan the Pacific War. Who was this leader?",
+          "correctAnswer": "Chiang Kai-shek",
+          "distractors": ["Mao Zedong", "Douglas MacArthur", "Chester Nimitz", "Hirohito", "Zhou Enlai"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Stalin attended the Cairo Conference alongside FDR, Churchill, and Chiang Kai-shek in November 1943.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Cairo Declaration (1943) stated that Japan would lose all seized territories — it was issued after FDR, Churchill, and ___ met in Egypt.",
+          "correctAnswer": "Chiang Kai-shek",
+          "distractors": ["Stalin", "MacArthur", "Mao Zedong", "Hirohito", "Zhou Enlai"]
+        }
+      ],
+      "tags": ["cairo conference", "chiang kai-shek", "china", "fdr", "churchill", "japan", "pacific war", "1943"]
+    },
+    {
+      "id": "wwii_ad_soviet_japanese_neutrality_pact",
+      "correctAnswer": "April 13, 1941",
+      "acceptableAlternatives": ["April 1941", "1941"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "August 23, 1939",
+        "September 27, 1940",
+        "June 22, 1941",
+        "December 7, 1941",
+        "August 8, 1945",
+        "April 13, 1945",
+        "January 1, 1942",
+        "November 28, 1943"
+      ],
+      "quizQuestion": "On what date did the Soviet Union and Japan sign their Neutrality Pact in Moscow, a surprising agreement that Stalin would later violate in 1945?",
+      "explanation": "The Soviet-Japanese Neutrality Pact was signed on April 13, 1941 — just ten weeks before Germany's invasion of the Soviet Union. The pact allowed Stalin to focus on the German threat without worrying about Japan attacking from the east, and allowed Japan to advance into Southeast Asia without fear of Soviet intervention. Stalin violated the pact in August 1945, declaring war on Japan after Germany's defeat as promised at Yalta and Tehran, in exchange for territorial concessions. Source: Wikipedia, Soviet–Japanese Neutrality Pact.",
+      "statement": "The Soviet Union and Japan signed a Neutrality Pact on April 13, 1941, which Stalin violated by entering the Pacific War in August 1945.",
+      "wowFactor": "The pact was signed just 10 weeks before Germany invaded the USSR — it freed Stalin's eastern border so he could move elite Siberian divisions west to stop the German advance, possibly saving Moscow.",
+      "visualDescription": "Pixel art of Soviet Foreign Minister Molotov and Japanese Ambassador Matsuoka shaking hands at a desk in a Moscow hall, champagne glasses visible on the table, both looking cautiously pleased",
+      "sourceName": "Wikipedia — Soviet–Japanese Neutrality Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Japanese_Neutrality_Pact",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What pact signed in April 1941 allowed both the Soviet Union and Japan to avoid fighting each other — until Stalin broke it in August 1945?",
+          "correctAnswer": "Soviet-Japanese Neutrality Pact",
+          "distractors": ["Molotov-Ribbentrop Pact", "Tripartite Pact", "Anti-Comintern Pact", "Pact of Steel", "Atlantic Charter", "Yalta Agreement"]
+        },
+        {
+          "type": "context",
+          "question": "In April 1941, Stalin and Japan agreed not to attack each other. This freed Stalin to move Siberian troops west when Germany invaded. What was this agreement?",
+          "correctAnswer": "Soviet-Japanese Neutrality Pact",
+          "distractors": ["Molotov-Ribbentrop Pact", "Tripartite Pact", "Yalta Accords", "San Francisco Peace Treaty", "Tehran Agreement"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Stalin violated the Soviet-Japanese Neutrality Pact by declaring war on Japan in August 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Soviet-Japanese ___ Pact (April 1941) kept the two powers from fighting each other until Stalin invaded Manchuria in August 1945.",
+          "correctAnswer": "Neutrality",
+          "distractors": ["Non-Aggression", "Friendship", "Alliance", "Defense", "Commerce", "Diplomatic"]
+        }
+      ],
+      "tags": ["soviet-japanese neutrality pact", "stalin", "japan", "1941", "violated", "siberian divisions"]
+    },
+    {
+      "id": "wwii_ad_percentage_agreement",
+      "correctAnswer": "October 1944",
+      "acceptableAlternatives": ["October 1944", "autumn 1944", "1944"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "February 1945",
+        "November 1943",
+        "July 1945",
+        "January 1945",
+        "August 1944",
+        "September 1944",
+        "March 1945",
+        "December 1944"
+      ],
+      "quizQuestion": "In October 1944, Churchill met Stalin in Moscow and famously scrawled percentages on a slip of paper to divide Balkan influence — when did this 'Percentages Agreement' occur?",
+      "explanation": "In October 1944, Churchill flew to Moscow for a private meeting with Stalin (without FDR) and proposed dividing Balkan influence by percentages: the USSR would have 90% dominance in Romania, Britain 90% in Greece, a 50/50 split in Yugoslavia and Hungary, and 75/25 Soviet advantage in Bulgaria. Churchill pushed the slip of paper across the table; Stalin ticked it with a blue pencil. Churchill called it a 'naughty document.' The informal deal reflected spheres-of-influence thinking and was later criticized as dividing Europe without democratic input. Source: Wikipedia, Percentages Agreement.",
+      "statement": "Churchill and Stalin's 'Percentages Agreement' dividing Balkan influence was negotiated informally in Moscow in October 1944.",
+      "wowFactor": "Churchill slid a handwritten note with percentages across the table to Stalin, who ticked it with a blue pencil — a quick scribble that shaped Eastern Europe's fate for 45 years.",
+      "visualDescription": "Pixel art of Churchill and Stalin seated across a wooden table in a Moscow office, Churchill pushing a small slip of paper across toward Stalin, Stalin leaning forward with a blue pencil, red curtains in the background",
+      "sourceName": "Wikipedia — Percentages Agreement",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Percentages_agreement",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Churchill described his October 1944 deal with Stalin dividing Balkan spheres of influence as a 'naughty document.' What is this informal agreement called?",
+          "correctAnswer": "Percentages Agreement",
+          "distractors": ["Yalta Protocol", "Potsdam Declaration", "Atlantic Charter", "Tehran Accords", "Casablanca Arrangement", "Moscow Pact"]
+        },
+        {
+          "type": "context",
+          "question": "Without FDR present, Churchill met Stalin in Moscow in October 1944 and wrote percentages on a scrap of paper — 90% Soviet control in Romania, 90% British control in Greece. What is this episode called?",
+          "correctAnswer": "Percentages Agreement",
+          "distractors": ["Yalta Protocol", "Moscow Armistice", "Potsdam Declaration", "Tehran Memorandum", "Casablanca Arrangement"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Percentages Agreement was a formal diplomatic treaty ratified by all three Allied powers.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In October 1944, Churchill proposed the '___ Agreement' to Stalin — a handwritten division of Balkan spheres of influence that Stalin approved with a tick of his blue pencil.",
+          "correctAnswer": "Percentages",
+          "distractors": ["Potsdam", "Moscow", "Balkan", "Spheres", "Yalta", "Churchill-Stalin"]
+        }
+      ],
+      "tags": ["percentages agreement", "churchill", "stalin", "balkans", "spheres of influence", "1944", "moscow"]
+    },
+    {
+      "id": "wwii_ad_finland_switches_sides",
+      "correctAnswer": "1944",
+      "acceptableAlternatives": ["September 1944", "autumn 1944"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "1943",
+        "1942",
+        "1945",
+        "1940",
+        "1941",
+        "1939",
+        "1946",
+        "1938"
+      ],
+      "quizQuestion": "In what year did Finland, which had been fighting alongside Germany against the Soviet Union, negotiate a separate peace and switch to the Allied side?",
+      "explanation": "Finland had fought the Soviet Union in the Winter War (1939–40) and then joined Germany in the Continuation War (1941–44) to recover lost territory. As Germany weakened, Finland negotiated a separate peace with the Soviet Union in September 1944. Finland paid war reparations but crucially retained its independence — unlike the Baltic states and most of Eastern Europe, which fell under Soviet domination. Finland's diplomatic skill in navigating this exit is often attributed to skilled postwar leadership. Source: Wikipedia, Continuation War.",
+      "statement": "Finland negotiated a separate peace and switched sides from Germany to the Allies in 1944, avoiding Soviet occupation.",
+      "wowFactor": "Finland is the only country that fought alongside Nazi Germany and survived as a democratic independent state — every other German satellite ended up either occupied or in the Soviet sphere.",
+      "visualDescription": "Pixel art of a Finnish soldier in white winter camouflage standing at a crossroads, one sign pointing toward a German eagle symbol and another toward a Soviet red star, holding a white flag",
+      "sourceName": "Wikipedia — Continuation War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Continuation_War",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_axis",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which Nordic country fought alongside Germany against the Soviet Union from 1941–44, then negotiated a separate peace and retained its independence?",
+          "correctAnswer": "Finland",
+          "distractors": ["Sweden", "Norway", "Denmark", "Hungary", "Romania", "Bulgaria"]
+        },
+        {
+          "type": "context",
+          "question": "Finland joined Germany in attacking the Soviet Union in 1941 to recover territory lost in the Winter War. Unlike other German satellites, it successfully switched sides and avoided occupation. When did Finland make peace with the USSR?",
+          "correctAnswer": "1944",
+          "distractors": ["1943", "1945", "1942", "1940", "1941"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Finland ended up under Soviet occupation after WWII, like other countries that had fought alongside Germany.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In ___, Finland negotiated a separate peace with the Soviet Union, ending the Continuation War and avoiding the Soviet occupation that swallowed the Baltic states.",
+          "correctAnswer": "1944",
+          "distractors": ["1943", "1945", "1942", "1940", "1941"]
+        }
+      ],
+      "tags": ["finland", "continuation war", "switches sides", "1944", "separate peace", "independence", "axis"]
+    },
+    {
+      "id": "wwii_ad_india_soldiers",
+      "correctAnswer": "2.5 million",
+      "acceptableAlternatives": ["2,500,000", "two and a half million", "over 2 million"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "500,000",
+        "1 million",
+        "5 million",
+        "750,000",
+        "250,000",
+        "10 million",
+        "1.5 million",
+        "3 million"
+      ],
+      "quizQuestion": "Approximately how many soldiers did India contribute to Allied forces in World War II, making it the largest all-volunteer army in history?",
+      "explanation": "India contributed approximately 2.5 million volunteers to Allied forces — making the British Indian Army the largest all-volunteer military force in history. Indian soldiers fought in North Africa, Italy, the Middle East, and Burma, often in the most grueling theaters of the war. Despite this enormous contribution, India's role is often overlooked in mainstream WWII narratives centered on Western fronts. Source: Wikipedia, British Indian Army in World War II.",
+      "statement": "India contributed 2.5 million volunteers to Allied forces — the largest all-volunteer army in history.",
+      "wowFactor": "Every single one of India's 2.5 million soldiers was a volunteer — no conscription. They fought for a country that still colonized them, making their sacrifice all the more remarkable.",
+      "visualDescription": "Pixel art of a diverse column of soldiers in khaki turbans and helmets marching through North African desert, British and Indian flags visible, a long line stretching to the horizon",
+      "sourceName": "Wikipedia — British Indian Army in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/British_Indian_Army_in_World_War_II",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_alliances",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "India contributed 2.5 million soldiers to the Allied cause — all volunteers. Which theaters did Indian troops fight in? (Name one.)",
+          "correctAnswer": "North Africa",
+          "distractors": ["Normandy", "the Battle of Britain", "the Pacific Islands", "the Eastern Front", "Scandinavia"]
+        },
+        {
+          "type": "context",
+          "question": "Despite being a colonized nation, India sent the largest all-volunteer army in history to fight for the Allies. How many soldiers did India contribute?",
+          "correctAnswer": "2.5 million",
+          "distractors": ["500,000", "1 million", "5 million", "750,000", "1.5 million", "3 million"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: India's 2.5 million soldiers in WWII were all volunteers — India had no conscription.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "India contributed ___ million volunteers to Allied forces in WWII — the largest all-volunteer army in history.",
+          "correctAnswer": "2.5",
+          "distractors": ["1", "5", "0.5", "3", "1.5", "10"]
+        }
+      ],
+      "tags": ["india", "2.5 million", "volunteers", "allied forces", "overlooked", "british indian army"]
+    },
+    {
+      "id": "wwii_ad_bretton_woods",
+      "correctAnswer": "July 1944",
+      "acceptableAlternatives": ["1944", "Bretton Woods, 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "July 1945",
+        "January 1942",
+        "June 1944",
+        "August 1944",
+        "February 1945",
+        "October 1943",
+        "April 1945",
+        "September 1945"
+      ],
+      "quizQuestion": "When did the Bretton Woods Conference take place, establishing the postwar international financial system including the IMF and World Bank?",
+      "explanation": "The Bretton Woods Conference took place in July 1944 in Bretton Woods, New Hampshire. Allied nations designed the postwar international financial system: the International Monetary Fund (IMF) and World Bank were created, and a gold-standard exchange rate system was established. The goal was to prevent the kind of economic collapse and competitive devaluation that had destabilized the world economy in the 1930s and contributed to the rise of fascism. The Bretton Woods system shaped global finance until 1971. Source: Wikipedia, Bretton Woods Conference.",
+      "statement": "The Bretton Woods Conference (July 1944) established the postwar financial system, creating the IMF and World Bank.",
+      "wowFactor": "Bretton Woods happened while D-Day was still less than two months old — Allied leaders were planning the economic architecture of the postwar world before they'd even won the war.",
+      "visualDescription": "Pixel art of suited delegates from many nations seated in a grand New Hampshire hotel ballroom, chalkboards covered with currency exchange equations, a globe on the central podium",
+      "sourceName": "Wikipedia — Bretton Woods Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bretton_Woods_Conference",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Bretton Woods Conference created the IMF and World Bank to prevent postwar economic chaos. Where was this conference held?",
+          "correctAnswer": "Bretton Woods, New Hampshire",
+          "distractors": ["Washington D.C.", "San Francisco", "London", "Paris", "Geneva", "New York City"]
+        },
+        {
+          "type": "context",
+          "question": "In July 1944, Allied nations met in New Hampshire to design the postwar financial system — creating the IMF and World Bank to prevent another Great Depression from fueling fascism. What was this conference?",
+          "correctAnswer": "Bretton Woods Conference",
+          "distractors": ["Dumbarton Oaks Conference", "San Francisco Conference", "Potsdam Conference", "Atlantic Charter summit", "Tehran Conference"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Bretton Woods Conference took place AFTER Germany's surrender.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Conference (July 1944) established the postwar gold-standard financial system and created the IMF and World Bank.",
+          "correctAnswer": "Bretton Woods",
+          "distractors": ["Dumbarton Oaks", "San Francisco", "Potsdam", "Yalta", "Tehran"]
+        }
+      ],
+      "tags": ["bretton woods", "IMF", "world bank", "postwar economy", "1944", "gold standard"]
+    },
+    {
+      "id": "wwii_ad_dumbarton_oaks",
+      "correctAnswer": "1944",
+      "acceptableAlternatives": ["August–October 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 5,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "1943",
+        "1945",
+        "1942",
+        "1946",
+        "1941",
+        "1940",
+        "1947",
+        "1939"
+      ],
+      "quizQuestion": "In what year did the Dumbarton Oaks Conference take place, drafting the framework for the United Nations before the war even ended?",
+      "explanation": "The Dumbarton Oaks Conference ran from August to October 1944 in Washington D.C., where Allied negotiators drafted the structural framework for the United Nations organization — including the Security Council with its five permanent veto-wielding members. The conference resolved key design questions about how a postwar international body would function. The resulting framework was refined at Yalta and formally ratified at San Francisco in June 1945. Source: Wikipedia, Dumbarton Oaks Conference.",
+      "statement": "The Dumbarton Oaks Conference (1944) drafted the structural framework for the United Nations before the war ended.",
+      "wowFactor": "The UN Security Council veto structure — still in use today — was negotiated at Dumbarton Oaks while the Battle of the Bulge hadn't even happened yet.",
+      "visualDescription": "Pixel art of a stately Washington D.C. mansion with diplomats in formal attire gathered around a table, blueprints of an organizational chart visible on the wall, quills and ink on the table",
+      "sourceName": "Wikipedia — Dumbarton Oaks Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dumbarton_Oaks_Conference",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Dumbarton Oaks Conference drafted the structural framework for which postwar international organization?",
+          "correctAnswer": "United Nations",
+          "distractors": ["League of Nations (renewed)", "NATO", "International Monetary Fund", "World Bank", "International Court of Justice", "Warsaw Pact"]
+        },
+        {
+          "type": "context",
+          "question": "Before the war ended, Allied powers met in Washington D.C. in 1944 to draft the blueprint for a postwar world organization. What was the conference that produced the UN's structural framework?",
+          "correctAnswer": "Dumbarton Oaks Conference",
+          "distractors": ["San Francisco Conference", "Yalta Conference", "Bretton Woods Conference", "Potsdam Conference", "Tehran Conference"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Dumbarton Oaks Conference drafted the framework for the United Nations while WWII was still ongoing.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Oaks Conference (1944) in Washington D.C. drafted the organizational blueprint for the United Nations, including the Security Council veto structure.",
+          "correctAnswer": "Dumbarton",
+          "distractors": ["Bretton", "Yalta", "Potsdam", "Tehran", "San Francisco"]
+        }
+      ],
+      "tags": ["dumbarton oaks", "united nations", "1944", "security council", "postwar planning"]
+    },
+    {
+      "id": "wwii_ad_brazil_expeditionary",
+      "correctAnswer": "Brazil",
+      "acceptableAlternatives": ["Brazil (FEB)", "Brazilian Expeditionary Force"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "country_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Argentina",
+        "Mexico",
+        "Colombia",
+        "Chile",
+        "Venezuela",
+        "Peru",
+        "Cuba",
+        "Bolivia"
+      ],
+      "quizQuestion": "Which Latin American country sent an expeditionary force to fight alongside the Allies in Europe during World War II?",
+      "explanation": "Brazil was the only Latin American country to send a combat force to fight in Europe during WWII. The Brazilian Expeditionary Force (Força Expedicionária Brasileira, or FEB) fought in Italy alongside U.S. forces from 1944–45. Several other Latin American nations including Argentina eventually declared war on the Axis, but Brazil's military contribution was unique in Latin America. Brazil's participation symbolized Western Hemisphere solidarity and helped secure Allied naval routes in the South Atlantic. Source: Wikipedia, Brazilian Expeditionary Force.",
+      "statement": "Brazil was the only Latin American country to send an expeditionary force to fight in Europe during WWII.",
+      "wowFactor": "Brazilian soldiers fought in Italy wearing a distinctive green and yellow patch — their motto was 'the snake smokes,' meaning the impossible became possible, since sending troops to Europe seemed inconceivable.",
+      "visualDescription": "Pixel art of Brazilian soldiers in Allied helmets marching through an Italian mountain village, a green and yellow shoulder patch visible, ruined buildings behind them and Allied flags flying above",
+      "sourceName": "Wikipedia — Brazilian Expeditionary Force",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Brazilian_Expeditionary_Force",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_alliances",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Brazilian Expeditionary Force (FEB) fought alongside Allied troops in which European country during 1944–45?",
+          "correctAnswer": "Italy",
+          "distractors": ["France", "Germany", "Belgium", "Greece", "Yugoslavia", "Netherlands"]
+        },
+        {
+          "type": "context",
+          "question": "Which Latin American nation sent a full combat expeditionary force to fight in Europe — making it unique among all Latin American countries in WWII?",
+          "correctAnswer": "Brazil",
+          "distractors": ["Argentina", "Mexico", "Colombia", "Chile", "Venezuela", "Cuba"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Brazil was the only Latin American country to send a combat force to fight in Europe during World War II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "___ was the only Latin American country to send an expeditionary force to fight in Europe during WWII, deploying troops to Italy in 1944–45.",
+          "correctAnswer": "Brazil",
+          "distractors": ["Argentina", "Mexico", "Colombia", "Chile", "Venezuela"]
+        }
+      ],
+      "tags": ["brazil", "expeditionary force", "FEB", "italy", "latin america", "allied forces", "1944"]
+    },
+    {
+      "id": "wwii_ad_stilwell_chiang_tensions",
+      "correctAnswer": "Joseph Stilwell",
+      "acceptableAlternatives": ["General Stilwell", "Vinegar Joe Stilwell", "Stilwell"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Douglas MacArthur",
+        "Chester Nimitz",
+        "George Marshall",
+        "Dwight Eisenhower",
+        "Omar Bradley",
+        "George Patton",
+        "Albert Wedemeyer",
+        "Jonathan Wainwright"
+      ],
+      "quizQuestion": "Which American general clashed repeatedly with Chinese leader Chiang Kai-shek over strategy in the China-Burma-India theater, wanting aggressive operations that Chiang resisted?",
+      "explanation": "General Joseph 'Vinegar Joe' Stilwell was the U.S. commander in the China-Burma-India (CBI) theater and Chiang Kai-shek's nominal chief of staff. Their relationship was notoriously hostile: Stilwell wanted aggressive offensive operations to keep China fighting and protect Allied supply lines; Chiang was cautious, conserving his Nationalist forces for the coming civil war with the Communists. The conflict illustrated the difficulty of Allied partnership — military priorities often contradicted national political interests. Stilwell was eventually recalled in 1944. Source: Wikipedia, Joseph Stilwell.",
+      "statement": "General Joseph Stilwell and Chiang Kai-shek clashed over strategy in the China-Burma-India theater — Stilwell wanted aggression; Chiang wanted to preserve his forces.",
+      "wowFactor": "Stilwell privately called Chiang 'the Peanut' in his diary — and Chiang eventually got Stilwell recalled by demanding FDR replace him, which FDR did rather than risk losing China.",
+      "visualDescription": "Pixel art of an American general in khaki with four stars on his collar pointing at a map of Burma, a Chinese Nationalist general in a peaked cap crossing his arms skeptically across the table",
+      "sourceName": "Wikipedia — Joseph Stilwell",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Stilwell",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_alliances",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "U.S. General Stilwell was famously recalled from the China-Burma-India theater after clashing with which Chinese Nationalist leader?",
+          "correctAnswer": "Chiang Kai-shek",
+          "distractors": ["Mao Zedong", "Zhou Enlai", "Sun Yat-sen", "Zhu De", "Lin Biao", "Peng Dehuai"]
+        },
+        {
+          "type": "context",
+          "question": "The Allied partnership in China was strained because American General Stilwell wanted aggressive offensives while Chiang Kai-shek conserved his army for the postwar civil war. What was Stilwell's nickname?",
+          "correctAnswer": "Vinegar Joe",
+          "distractors": ["Iron Mike", "Bulldog", "Old Blood and Guts", "Ike", "Wild Bill", "The Desert Fox"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: General Stilwell was eventually recalled from the China theater after Chiang Kai-shek demanded his removal.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "General ___ Stilwell was recalled from the China-Burma-India theater in 1944 after his relationship with Chiang Kai-shek completely broke down over strategy.",
+          "correctAnswer": "Joseph",
+          "distractors": ["Douglas", "Chester", "George", "Dwight", "Omar", "Albert"]
+        }
+      ],
+      "tags": ["stilwell", "chiang kai-shek", "CBI theater", "china", "allied tensions", "1944", "strategy"]
+    },
+    {
+      "id": "wwii_ad_unconditional_japan_exception",
+      "correctAnswer": "The Emperor would be allowed to remain",
+      "acceptableAlternatives": ["Emperor Hirohito kept his throne", "Emperor retained", "imperial institution preserved"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "policy_outcomes",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Japan would keep Okinawa",
+        "Japanese officers would not be prosecuted for war crimes",
+        "Japan could retain its navy",
+        "Manchuria would remain Japanese",
+        "Japan could keep Taiwan",
+        "Japan would not be occupied by Allied troops",
+        "Japan's colonial empire would be preserved",
+        "Tokyo would not be bombed"
+      ],
+      "quizQuestion": "Japan refused to surrender after the atomic bombs until which condition regarding the imperial institution was clarified by the Allies?",
+      "explanation": "Despite the unconditional surrender policy, Japan refused to surrender even after the atomic bombing of Hiroshima and Nagasaki in August 1945. Japan's key condition was that Emperor Hirohito be allowed to remain on the throne — the imperial institution must not be abolished. The Allies eventually clarified that the Emperor would be retained (though subject to Allied authority), allowing Japan to surrender on August 15, 1945. This became a quiet exception to the unconditional surrender policy. Source: Wikipedia, Surrender of Japan.",
+      "statement": "Japan surrendered only after the Allies clarified that Emperor Hirohito would be allowed to remain — a quiet exception to the unconditional surrender policy.",
+      "wowFactor": "The US technically violated its own unconditional surrender policy to end the Pacific War — Hirohito stayed on his throne because removing him might have made invasion necessary, costing far more lives.",
+      "visualDescription": "Pixel art of Emperor Hirohito in formal robes seated at a radio microphone, Japanese officials in formal dress bowing around him, the date August 15, 1945 visible on a nearby newspaper",
+      "sourceName": "Wikipedia — Surrender of Japan",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Surrender_of_Japan",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Japan surrendered in August 1945 only after the Allies agreed to one condition. What was it?",
+          "correctAnswer": "Emperor Hirohito could remain on the throne",
+          "distractors": ["Japan could keep its army", "Japan would not be occupied", "Japanese officers would not face war crimes trials", "Japan could retain Korea", "Okinawa would remain Japanese"]
+        },
+        {
+          "type": "context",
+          "question": "The unconditional surrender policy meant no conditions — but Japan refused to surrender after Hiroshima and Nagasaki until one condition was guaranteed. What was Japan's non-negotiable demand?",
+          "correctAnswer": "Preservation of the Emperor",
+          "distractors": ["Retention of the Japanese navy", "No occupation of the home islands", "No war crimes trials", "Keeping Taiwan", "Keeping Manchuria"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Japan accepted unconditional surrender with absolutely no conditions — the Emperor was abolished and the imperial institution ended.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Japan surrendered in August 1945 only after the Allies clarified that ___ would be allowed to remain — a practical exception to the unconditional surrender policy.",
+          "correctAnswer": "The Emperor",
+          "distractors": ["The Japanese navy", "The war crimes suspects", "Manchuria", "Okinawa", "The colonial empire"]
+        }
+      ],
+      "tags": ["unconditional surrender", "japan", "emperor", "hirohito", "1945", "surrender terms", "exception"]
+    },
+    {
+      "id": "wwii_ad_axis_coordination_failure",
+      "correctAnswer": "Germany and Japan did not coordinate their major offensives",
+      "acceptableAlternatives": ["Axis powers acted independently", "no real military coordination", "Axis had limited coordination"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_facts",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Germany and Japan agreed on a joint invasion of the Soviet Union",
+        "The Axis powers shared nuclear weapons research",
+        "Japan informed Germany before attacking Pearl Harbor",
+        "Germany told Japan before invading the Soviet Union",
+        "Italy and Japan coordinated naval operations in the Pacific",
+        "The Axis powers had a unified supreme command structure",
+        "Germany supplied Japan with its U-boat technology",
+        "Japan and Italy agreed to divide the British Empire"
+      ],
+      "quizQuestion": "What was the most striking strategic weakness of the Axis alliance — the fact that Germany and Japan consistently failed to do what?",
+      "explanation": "Despite the Tripartite Pact, Germany and Japan pursued almost entirely independent campaigns with no meaningful strategic coordination. Germany invaded the Soviet Union in June 1941 without informing Japan — who had just signed a Neutrality Pact with the USSR. Japan attacked Pearl Harbor in December 1941 without telling Germany — who then declared war on the US (unnecessarily). The Axis alliance was one of shared anti-Allied interests, not unified strategy. This lack of coordination was in stark contrast to the Allied conferences and combined command structures. Source: Wikipedia, Axis Powers.",
+      "statement": "Germany and Japan did not coordinate their major operations — each surprised the other with its biggest strategic decisions.",
+      "wowFactor": "Germany was actually hurt by Japan's Pearl Harbor attack — Hitler felt obligated to declare war on the US even though Japan never coordinated with him, giving FDR the war in Europe he wanted.",
+      "visualDescription": "Pixel art split panel: left side shows a German soldier looking at a map of Russia with a surprised face, right side shows a Japanese pilot in a cockpit over Pearl Harbor — neither knows what the other is doing",
+      "sourceName": "Wikipedia — Axis Powers",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Axis_powers",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_axis",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Germany surprised Japan by invading the Soviet Union in 1941 without warning — just as Japan had done what to Germany?",
+          "correctAnswer": "Attacked Pearl Harbor without warning Germany",
+          "distractors": ["Signed a neutrality pact with the Allies", "Surrendered to the US before Germany", "Requested Germany invade India", "Sent troops to fight on the Eastern Front", "Shared nuclear research without Germany's knowledge"]
+        },
+        {
+          "type": "context",
+          "question": "The Tripartite Pact united Germany, Italy, and Japan — but in practice, the alliance was famously disjointed. What key behavior demonstrates this most clearly?",
+          "correctAnswer": "Germany and Japan did not coordinate their major offensives",
+          "distractors": ["Germany and Japan shared no common ideology", "Italy fought against Germany in 1943", "Japan never signed the Tripartite Pact", "Germany declared war on Japan in 1943"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Japan informed Germany before attacking Pearl Harbor, in accordance with their Tripartite Pact obligations.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Axis alliance was an alliance of convenience rather than strategy — Germany and Japan each launched their biggest offensives without ___ each other.",
+          "correctAnswer": "Informing",
+          "distractors": ["Fighting alongside", "Supplying weapons to", "Asking permission from", "Attacking before", "Defending"]
+        }
+      ],
+      "tags": ["axis", "coordination failure", "germany", "japan", "pearl harbor", "barbarossa", "strategic weakness"]
+    },
+    {
+      "id": "wwii_ad_big_three_tensions",
+      "correctAnswer": "FDR trusted Stalin more than Churchill did",
+      "acceptableAlternatives": ["FDR was more trusting of Stalin than Churchill", "Churchill was more suspicious of Stalin than FDR"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_facts",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Churchill trusted Stalin more than FDR did",
+        "Stalin trusted Churchill more than FDR",
+        "All three leaders had equal levels of mutual trust",
+        "FDR and Stalin had a hostile relationship throughout the war",
+        "Churchill advocated for expanding the Soviet sphere in Eastern Europe",
+        "FDR and Churchill disagreed on whether to fight Germany first",
+        "Stalin demanded Churchill be replaced at Tehran",
+        "Truman and FDR had identical views on Soviet cooperation"
+      ],
+      "quizQuestion": "Within the Big Three alliance, what was the notable difference in how FDR and Churchill regarded Stalin?",
+      "explanation": "FDR believed that personal diplomacy and genuine partnership with Stalin would secure postwar cooperation, and tended to trust him more — even sometimes aligning with Stalin against Churchill on colonial issues. Churchill was far more suspicious of Soviet motives, worried about Soviet expansion into Eastern Europe, and consistently warned against concessions. When Truman replaced FDR in April 1945, he was even more suspicious of Stalin than Churchill, hardening the Allied posture and accelerating the Cold War. Source: Wikipedia, The Big Three (WWII).",
+      "statement": "FDR trusted Stalin more than Churchill did — Truman was more suspicious than both.",
+      "wowFactor": "At Tehran, FDR privately told Stalin about his conversations with Churchill to build personal rapport — Churchill was furious when he found out.",
+      "visualDescription": "Pixel art of three figures at a diplomatic table: FDR smiling toward Stalin and extending a hand, Churchill sitting back with arms crossed and one eyebrow raised skeptically, Stalin watching both with a careful neutral expression",
+      "sourceName": "Wikipedia — Allied leaders of World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Allied_leaders_of_World_War_II",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "When Truman replaced FDR after April 1945, how did his attitude toward Stalin compare to FDR's?",
+          "correctAnswer": "Truman was more suspicious of Stalin than FDR had been",
+          "distractors": ["Truman trusted Stalin more than FDR did", "Truman and FDR held identical views on Stalin", "Truman wanted to form a military alliance with the Soviet Union", "Truman was willing to concede more territory to Stalin than FDR"]
+        },
+        {
+          "type": "context",
+          "question": "The Big Three alliance was held together by shared necessity, not genuine trust. Which leader was consistently the most suspicious of Stalin's motives throughout the war?",
+          "correctAnswer": "Churchill",
+          "distractors": ["FDR", "Truman", "De Gaulle", "Eisenhower", "Attlee"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: FDR tended to trust Stalin more than Churchill did, sometimes siding with Stalin against Churchill at wartime conferences.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Within the Big Three, ___ was the most suspicious of Stalin's intentions and consistently warned against concessions to the Soviet Union.",
+          "correctAnswer": "Churchill",
+          "distractors": ["FDR", "Truman", "Attlee", "De Gaulle", "Eisenhower"]
+        }
+      ],
+      "tags": ["big three", "fdr", "churchill", "stalin", "trust", "cold war origins", "diplomacy"]
+    },
+    {
+      "id": "wwii_ad_poland_borders_shift",
+      "correctAnswer": "Poland's borders were shifted westward",
+      "acceptableAlternatives": ["Poland moved west", "Polish territory shifted west", "Poland gained German land and lost eastern territory"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_facts",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Poland's borders were kept exactly as they were before the war",
+        "Poland was abolished as a nation and merged into the Soviet Union",
+        "Poland expanded eastward into Ukrainian territory",
+        "Poland was divided equally between Britain and the Soviet Union",
+        "Poland's borders shifted eastward, gaining Soviet territory",
+        "Poland received all of Germany as war reparations",
+        "Poland's western border was moved to the Rhine River",
+        "Poland was partitioned between Germany and the Soviet Union permanently"
+      ],
+      "quizQuestion": "What happened to Poland's national borders as a result of decisions at the Yalta and Potsdam conferences?",
+      "explanation": "As a result of Allied wartime diplomacy — particularly at Yalta and Potsdam — Poland's borders were physically shifted westward. Poland lost its eastern territories to the Soviet Union (these became part of the Ukrainian and Belarusian SSRs) and was compensated with German territory to the west (formerly Prussia and Silesia). Millions of people were displaced. Poland was 'liberated' from Nazi occupation only to fall under Soviet domination as a satellite state — making the decisions at Yalta and Potsdam deeply controversial among Poles and Western observers. Source: Wikipedia, Territorial evolution of Poland.",
+      "statement": "Poland's borders were physically shifted westward at Yalta and Potsdam — losing eastern land to the USSR and gaining former German territory.",
+      "wowFactor": "Poland's borders moved hundreds of miles west after WWII — the country was literally picked up and placed in a different location on the map, displacing millions of Germans and Poles.",
+      "visualDescription": "Pixel art of two maps of Poland side by side — the prewar map with borders to the east, and the postwar map shifted west, red arrows showing the displacement, millions of tiny figures walking in both directions",
+      "sourceName": "Wikipedia — Territorial evolution of Poland",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Territorial_evolution_of_Poland",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Poland gained territory that had previously belonged to which country as a result of the postwar border settlement?",
+          "correctAnswer": "Germany",
+          "distractors": ["Soviet Union", "Czechoslovakia", "Austria", "Hungary", "Lithuania", "Ukraine"]
+        },
+        {
+          "type": "context",
+          "question": "The wartime conferences agreed that Poland would be compensated for eastern land given to the Soviet Union by receiving territory from Germany in the west. What was the result?",
+          "correctAnswer": "Poland's borders were shifted westward",
+          "distractors": ["Poland's borders remained unchanged", "Poland was merged into the Soviet Union", "Poland was partitioned between Britain and the USSR", "Poland expanded eastward into Ukraine"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Poland lost eastern territory to the Soviet Union at Yalta and Potsdam but was compensated with German territory in the west.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Poland's postwar borders were shifted ___ — losing land to the Soviet Union in the east but gaining former German Silesia and Prussia in the west.",
+          "correctAnswer": "Westward",
+          "distractors": ["Eastward", "Northward", "Southward", "Into Germany entirely", "Into the Soviet Union entirely"]
+        }
+      ],
+      "tags": ["poland", "borders", "shifted westward", "yalta", "potsdam", "soviet sphere", "displaced persons"]
+    },
+    {
+      "id": "wwii_ad_second_front_demand",
+      "correctAnswer": "1941–1944",
+      "acceptableAlternatives": ["1941 to 1944", "three years"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "date_ranges",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "1939–1941",
+        "1942–1943 only",
+        "1943–1945",
+        "1940–1942",
+        "1944–1945",
+        "1941–1942 only",
+        "1942–1944",
+        "1940–1943"
+      ],
+      "quizQuestion": "From what year to what year did Stalin repeatedly demand that the Western Allies open a second front in France to relieve pressure on the Soviet Union?",
+      "explanation": "From the moment Germany invaded the Soviet Union in June 1941, Stalin demanded that Britain and the US open a second front in Western Europe. The US and Britain delayed — fighting in North Africa (1942), Sicily and Italy (1943), before finally launching D-Day in June 1944. Stalin's distrust of the Western Allies ran deep: he suspected they were deliberately letting Germany bleed the Soviet Union before intervening. The delay strained the alliance for three years. Source: Wikipedia, Second front.",
+      "statement": "Stalin demanded a second front in France from 1941 until D-Day finally opened one in June 1944.",
+      "wowFactor": "Stalin's fury at the delay was so intense that at Tehran he sarcastically asked Churchill whether the British were afraid of the Germans — Churchill reportedly turned bright red.",
+      "visualDescription": "Pixel art of Stalin jabbing his finger at a map of Western Europe, a red arrow pointed at France, Churchill and FDR on the other side of the table with uncomfortable expressions",
+      "sourceName": "Wikipedia — Second front",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_front",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Stalin demanded a second front in France for three years — finally achieved by D-Day in June 1944. Why did the Western Allies delay so long?",
+          "correctAnswer": "They fought in North Africa and Italy first, building up forces for a larger invasion",
+          "distractors": ["They were waiting for Stalin's permission to enter France", "Roosevelt refused to open a second front at any cost", "They lacked any military forces until 1944", "Churchill preferred an invasion of Scandinavia instead"]
+        },
+        {
+          "type": "context",
+          "question": "The Eastern Front saw the Soviet Union bear the brunt of the fighting against Germany for years while Stalin waited. Stalin's constant demand during 1941–44 was for what?",
+          "correctAnswer": "A second front in Western Europe",
+          "distractors": ["More Lend-Lease supplies", "A declaration of war on Japan", "Sharing of the atomic bomb project", "A ceasefire with Germany while regrouping"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Stalin's demand for a second front went unmet from 1941 until D-Day in June 1944 — nearly three years.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Stalin demanded a second front in France from ___ until June 1944, when D-Day finally opened the Western Allied campaign in Europe.",
+          "correctAnswer": "1941",
+          "distractors": ["1939", "1940", "1942", "1943", "1945"]
+        }
+      ],
+      "tags": ["second front", "stalin", "demand", "d-day", "1941-1944", "allied tensions", "eastern front"]
+    },
+    {
+      "id": "wwii_ad_reverse_lend_lease",
+      "correctAnswer": "Reverse Lend-Lease",
+      "acceptableAlternatives": ["Reciprocal Lend-Lease", "Reverse Lend-Lease program"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "policy_names",
+      "difficulty": 5,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Marshall Plan",
+        "Mutual Defense Agreement",
+        "Reciprocal Trade Act",
+        "Allied Supply Protocol",
+        "Collective Aid Arrangement",
+        "Counter-Lease Act",
+        "Allied Procurement Agreement",
+        "Atlantic Trade Treaty"
+      ],
+      "quizQuestion": "What arrangement allowed Allied nations to supply the United States with goods, services, and military bases in return for Lend-Lease aid?",
+      "explanation": "The Lend-Lease program was not a one-way arrangement. Allied nations provided the US with goods, services, and access to military bases in a system called 'Reverse Lend-Lease.' Britain, Australia, New Zealand, and others supplied American forces with food, airfields, intelligence facilities, and war materiel. This reciprocal arrangement acknowledged that Lend-Lease was a mutual partnership, not charity — and it helped the US sustain its forces abroad. Source: Wikipedia, Lend-Lease.",
+      "statement": "Reverse Lend-Lease allowed Allied nations to supply the US with goods, services, and bases in return for American Lend-Lease aid.",
+      "wowFactor": "Australia alone provided over $1 billion in goods and services to the US under Reverse Lend-Lease — American soldiers stationed in Australia ate Australian food and used Australian facilities.",
+      "visualDescription": "Pixel art of a dock with two ships facing each other — one flying a US flag loading crates into a British vessel, and a British ship loading crates back onto an American ship, goods flowing in both directions",
+      "sourceName": "Wikipedia — Lend-Lease",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lend-Lease",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Lend-Lease sent US supplies to Allied nations. What was the name of the program where Allied nations supplied the US with goods and bases in return?",
+          "correctAnswer": "Reverse Lend-Lease",
+          "distractors": ["Marshall Plan", "Mutual Defense Agreement", "Reciprocal Trade Act", "Allied Supply Protocol", "Counter-Lease Act"]
+        },
+        {
+          "type": "context",
+          "question": "The Lend-Lease relationship between the US and its Allies was not one-directional — Australia, Britain, and others provided the US with food, airfields, and war materials. What was this called?",
+          "correctAnswer": "Reverse Lend-Lease",
+          "distractors": ["Marshall Plan", "Reciprocal Trade Act", "Mutual Aid Agreement", "Allied Logistics Protocol", "Counter-Lease Program"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Lend-Lease was entirely one-way — Allied nations received US supplies but gave nothing in return.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "___ Lend-Lease allowed Britain, Australia, and other Allies to supply US forces with goods, services, and military bases in return for American aid.",
+          "correctAnswer": "Reverse",
+          "distractors": ["Counter", "Reciprocal", "Mutual", "Allied", "Secondary"]
+        }
+      ],
+      "tags": ["reverse lend-lease", "reciprocal", "allied supply", "australia", "britain", "logistics"]
+    },
+    {
+      "id": "wwii_ad_un_security_council_permanent",
+      "correctAnswer": "5",
+      "acceptableAlternatives": ["five", "five permanent members"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "numbers",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "3",
+        "4",
+        "6",
+        "7",
+        "10",
+        "8",
+        "2",
+        "9"
+      ],
+      "quizQuestion": "How many permanent members with veto power were given seats on the United Nations Security Council when the UN was founded in 1945?",
+      "explanation": "The UN Security Council was given 5 permanent members when founded in 1945: the United States, the Soviet Union, Britain, France, and China (Republic of China, later replaced by the People's Republic of China in 1971). Each permanent member holds veto power over Security Council resolutions. This structure was deliberately designed to keep the great powers engaged with the UN — unlike the League of Nations, which the US never joined. Source: Wikipedia, United Nations Security Council.",
+      "statement": "The UN Security Council has 5 permanent members with veto power: the US, Soviet Union, Britain, France, and China.",
+      "wowFactor": "France got a permanent Security Council seat despite having been conquered by Germany in 1940 — largely because Churchill and FDR wanted a Western European counterweight to the Soviet Union.",
+      "visualDescription": "Pixel art of the UN Security Council chamber with five large ornate chairs at the head of a horseshoe table, five national flags behind them — US, Soviet, British, French, and Chinese flags",
+      "sourceName": "Wikipedia — United Nations Security Council",
+      "sourceUrl": "https://en.wikipedia.org/wiki/United_Nations_Security_Council",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_diplomacy",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which five nations were given permanent veto-wielding seats on the UN Security Council when it was founded in 1945?",
+          "correctAnswer": "US, Soviet Union, Britain, France, China",
+          "distractors": ["US, Soviet Union, Britain, Germany, Japan", "US, Britain, France, Italy, China", "US, Soviet Union, Britain, Canada, Australia", "US, Soviet Union, France, Poland, China"]
+        },
+        {
+          "type": "context",
+          "question": "The UN Security Council gave veto power to exactly 5 nations. France was included despite being occupied for most of the war. Why were the permanent members given veto power?",
+          "correctAnswer": "To keep great powers engaged rather than walking out like the League of Nations",
+          "distractors": ["To prevent small nations from dominating the UN", "To ensure military spending targets were met", "To give Germany and Japan a path back into the international community", "To balance democratic and communist blocs equally"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The UN Security Council originally had 5 permanent veto-wielding members when the UN was founded in 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The United Nations Security Council has ___ permanent members with veto power — the US, Soviet Union, Britain, France, and China — as established when the UN was founded in 1945.",
+          "correctAnswer": "5",
+          "distractors": ["3", "4", "6", "7", "10", "8"]
+        }
+      ],
+      "tags": ["UN Security Council", "permanent members", "veto", "5", "1945", "postwar order"]
+    }
+  ]
+}
