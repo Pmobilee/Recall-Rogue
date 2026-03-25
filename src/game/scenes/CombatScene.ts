@@ -13,7 +13,6 @@ import { ENEMY_TEMPLATES } from '../../data/enemies'
 import { BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
-import { SpriteDepthFX } from '../shaders/SpriteDepthFX'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -592,12 +591,6 @@ export class CombatScene extends Phaser.Scene {
     this.scaleFactor = w / BASE_WIDTH
     this.displayH = h * DISPLAY_ZONE_HEIGHT_PCT
 
-    // Register custom PostFX pipelines
-    const renderer = this.game.renderer as Phaser.Renderer.WebGL.WebGLRenderer
-    if (renderer && renderer.pipelines) {
-      renderer.pipelines.addPostPipeline('SpriteDepthFX', SpriteDepthFX)
-    }
-
     // ── Combat background ─────────────────────────────────
     // Initial dark background — real bg loaded per-encounter via setBackground()
     this.combatBackground = this.add.rectangle(w / 2, h / 2, w, h, 0x0d1117)
@@ -947,29 +940,6 @@ export class CombatScene extends Phaser.Scene {
     // Sprite tinting and AO disabled until Light2D (AR-219) adds point lights.
     // Without light sources, multiplicative tint + AO just darkens everything.
     this.applyColorGrading(atmConfig)
-    // Load depth map on-demand and apply depth-based effects (breathing, lighting, rim)
-    const depthKey = `enemy-${this.currentEnemyId}-depth`
-    const lightDef = atmConfig.lighting.lights[0]
-    const lightColor = lightDef?.color ?? 0xffffff
-    const lightDir = atmConfig.rim.lightDir
-    if (this.textures.exists(depthKey)) {
-      // Depth map already loaded — apply immediately
-      this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir, 0.018, 1.8)
-    } else {
-      // Load depth map on-demand, then apply
-      const depthUrl = `assets/sprites/enemies/${this.currentEnemyId}_idle_depth.png`
-      this.load.image(depthKey, depthUrl)
-      this.load.once('complete', () => {
-        if (this.textures.exists(depthKey)) {
-          this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir, 0.018, 1.8)
-        }
-      })
-      this.load.start()
-    }
-    // Tint the background
-    if (this.combatBackground instanceof Phaser.GameObjects.Image) {
-      this.combatBackground.setTint(atmConfig.backgroundTint)
-    }
   }
 
   /** Update enemy HP (optionally animate the bar). */
@@ -1260,10 +1230,6 @@ export class CombatScene extends Phaser.Scene {
         .setDepth(0)
     }
 
-    // Re-apply background tint when real image loads
-    if (this.atmosphereConfig) {
-      (this.combatBackground as Phaser.GameObjects.Image).setTint(this.atmosphereConfig.backgroundTint)
-    }
   }
 
   /**
@@ -2134,6 +2100,7 @@ export class CombatScene extends Phaser.Scene {
 
   /** Cleanup on shutdown/sleep — stop tweens, reset positions. */
   private onShutdown(): void {
+    this.screenShake?.stop()
     this.tweens.killAll()
     this.flashTween = null
     if (this.criticalPulseTween) {
@@ -2162,11 +2129,20 @@ export class CombatScene extends Phaser.Scene {
     this.atmosphereSystem?.stop()
     this.statusEffectVisuals?.destroy()
     this.weaponAnimations?.destroy()
+    const cam = this.cameras.main
+    cam.zoom = 1.0
+    cam.scrollX = 0
+    cam.scrollY = 0
   }
 
   /** Re-sync display on wake/resume. */
   private onWake(): void {
     this.reduceMotion = isReduceMotionEnabled()
+    // Reset camera state in case shutdown/sleep left stale offsets
+    const cam = this.cameras.main
+    cam.zoom = 1.0
+    cam.scrollX = 0
+    cam.scrollY = 0
 
     // Fix 1 (AR-97): Re-check layout mode on every wake — the scene may have
     // been sleeping when CardGameManager broadcast a layout change.

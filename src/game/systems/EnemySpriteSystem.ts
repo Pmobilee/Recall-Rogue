@@ -2,7 +2,6 @@ import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { getAnimConfig, type AnimConfig, type AnimArchetype, type IdlePatternStep, type IdleBehavior } from '../../data/enemyAnimations'
 import type { AtmosphereConfig } from '../../data/roomAtmosphere'
-import { SpriteDepthFX } from '../shaders/SpriteDepthFX'
 
 type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss'
 
@@ -49,7 +48,6 @@ export class EnemySpriteSystem {
   // ── Atmosphere visual effects ─────────────────────────────
   private _aoFx: Phaser.FX.Gradient | null = null
   private _currentAtmosphereTint: number | null = null
-  private _depthFx: SpriteDepthFX | null = null
   private _depthTextureKey: string | null = null
 
   /**
@@ -288,83 +286,9 @@ export class EnemySpriteSystem {
   }
 
   /**
-   * Apply depth-map-based effects to the enemy sprite.
-   * Enables parallax breathing, directional lighting, and rim light from a depth map.
-   * @param depthTextureKey Phaser texture key for the depth map image
-   * @param lightColor Hex color of the room's primary light
-   * @param lightDir Light direction as [x, y] (will be normalized with z=1)
-   * @param breathIntensity How much the sprite breathes (0.001-0.008)
-   * @param breathSpeed Breathing speed multiplier (1.0-3.0)
-   */
-  public applyDepthEffects(
-    depthTextureKey: string,
-    lightColor: number,
-    lightDir: [number, number],
-    breathIntensity: number = 0.015,
-    breathSpeed: number = 2.0,
-  ): void {
-    if (!this.mainSprite) return
-    if (getDeviceTier() === 'low-end') return
-    if (!this.scene.textures.exists(depthTextureKey)) {
-      console.warn('[EnemySpriteSystem] Depth map not found:', depthTextureKey)
-      return
-    }
-
-    this.removeDepthEffects()
-
-    const c = Phaser.Display.Color.ValueToColor(lightColor)
-    const len = Math.sqrt(lightDir[0] ** 2 + lightDir[1] ** 2 + 1)
-    const dir: [number, number, number] = [lightDir[0] / len, lightDir[1] / len, 1 / len]
-    const rimC = Phaser.Display.Color.ValueToColor(lightColor)
-    rimC.lighten(40)
-
-    try {
-      const sprite = this.mainSprite as any
-      sprite.setPostPipeline('SpriteDepthFX')
-
-      // getPostPipeline can return array or single — handle both
-      const result = sprite.getPostPipeline('SpriteDepthFX')
-      const pipeline: any = Array.isArray(result) ? result[0] : result
-
-      if (pipeline) {
-        // Set config as plain data — uniforms applied in onDraw where GL is active
-        pipeline.depthTexKey = depthTextureKey
-        pipeline.cfg = {
-          lightDir: dir,
-          lightColor: [c.redGL, c.greenGL, c.blueGL],
-          lightIntensity: 1.2,
-          ambientColor: [0.55, 0.55, 0.6],
-          breathIntensity,
-          breathSpeed,
-          rimColor: [rimC.redGL, rimC.greenGL, rimC.blueGL],
-          rimIntensity: 0.5,
-          rimPower: 2.5,
-          normalStrength: 3.0,
-        }
-        this._depthFx = pipeline
-        this._depthTextureKey = depthTextureKey
-        console.log('[EnemySpriteSystem] Depth FX applied:', depthTextureKey)
-      } else {
-        console.warn('[EnemySpriteSystem] Pipeline not found after setPostPipeline')
-      }
-    } catch (e) {
-      console.warn('[EnemySpriteSystem] SpriteDepthFX failed:', e)
-      this._depthFx = null
-    }
-  }
-
-  /**
    * Remove depth effects from the sprite.
    */
   public removeDepthEffects(): void {
-    if (this.mainSprite) {
-      try {
-        ;(this.mainSprite as any).removePostPipeline('SpriteDepthFX')
-      } catch {
-        // ignore
-      }
-    }
-    this._depthFx = null
     this._depthTextureKey = null
   }
 
@@ -1158,7 +1082,6 @@ export class EnemySpriteSystem {
     // Reset atmosphere effects
     this._aoFx = null
     this._currentAtmosphereTint = null
-    this._depthFx = null
     this._depthTextureKey = null
 
     // Clean up jitter timer
