@@ -1,0 +1,1144 @@
+{
+  "facts": [
+    {
+      "id": "wwii_hc_six_million",
+      "correctAnswer": "6 million",
+      "acceptableAlternatives": ["six million", "6,000,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many Jews were murdered during the Holocaust?",
+      "explanation": "Approximately 6 million Jewish men, women, and children were murdered by the Nazi regime and its collaborators between 1941 and 1945 — roughly two-thirds of European Jewry.",
+      "visualDescription": "Pixel art of a somber memorial wall bearing six candles, each flame flickering against a dark background, stone blocks etched with names.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution",
+      "volatile": false,
+      "distractors": ["3 million", "4 million", "9 million", "11 million", "2 million", "8 million", "1 million", "15 million"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Holocaust resulted in the murder of approximately 6 million members of which group?",
+          "correctAnswer": "Jews",
+          "distractors": ["Roma", "Poles", "Soviet POWs", "Disabled people", "Jehovah's Witnesses", "Political prisoners", "Homosexuals"]
+        },
+        "context": {
+          "quizQuestion": "The 6 million Jews killed in the Holocaust represented roughly what fraction of European Jewry?",
+          "correctAnswer": "Two-thirds",
+          "distractors": ["One-third", "One-half", "Three-quarters", "One-quarter", "Four-fifths", "One-fifth", "All of them"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: More than 10 million Jews were murdered in the Holocaust.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Holocaust claimed approximately ___ million Jewish lives between 1941 and 1945.",
+          "correctAnswer": "6",
+          "distractors": ["3", "4", "9", "11", "2", "8", "5"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_total_victims",
+      "correctAnswer": "11 million",
+      "acceptableAlternatives": ["eleven million", "11,000,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 3,
+      "quizQuestion": "Including all targeted groups — Jews, Roma, disabled people, political prisoners, and others — what is the estimated total number of Holocaust victims?",
+      "explanation": "Beyond the 6 million Jews, the Nazis and their collaborators murdered approximately 5 million others including Roma, people with disabilities, Soviet civilians, political prisoners, and homosexuals, bringing the total to roughly 11 million.",
+      "visualDescription": "Pixel art of a dark memorial plaza with multiple stone pillars of varying heights under a grey sky, candles burning at their bases.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution",
+      "volatile": false,
+      "distractors": ["6 million", "8 million", "14 million", "20 million", "5 million", "9 million", "3 million", "15 million"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The approximately 11 million total Holocaust victims included 6 million Jews plus roughly how many others?",
+          "correctAnswer": "5 million",
+          "distractors": ["2 million", "3 million", "7 million", "1 million", "4 million", "8 million", "10 million"]
+        },
+        "context": {
+          "quizQuestion": "Which group formed the largest single component of the Holocaust's approximately 11 million total victims?",
+          "correctAnswer": "Jews",
+          "distractors": ["Roma", "Soviet POWs", "Polish civilians", "Disabled people", "Political prisoners", "Homosexuals", "Jehovah's Witnesses"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Holocaust's victims included groups beyond Jewish people, such as Roma and disabled individuals.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Including all targeted groups, total Holocaust victims numbered approximately ___ million.",
+          "correctAnswer": "11",
+          "distractors": ["6", "8", "14", "20", "5", "9", "3"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_nuremberg_year",
+      "correctAnswer": "1935",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 4,
+      "quizQuestion": "In what year were the Nuremberg Laws enacted, stripping Jewish Germans of citizenship?",
+      "explanation": "The Nuremberg Laws, passed at a special session of the Reichstag in September 1935, stripped Jews of German citizenship, prohibited marriage between Jews and non-Jews, and laid the legal foundation for systematic persecution.",
+      "visualDescription": "Pixel art of a solemn stone courthouse facade with a Nazi eagle emblem, a lone figure in the shadow of its entrance, heavy clouds above.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-nuremberg-race-laws",
+      "volatile": false,
+      "distractors": ["1933", "1936", "1938", "1939", "1934", "1937", "1940", "1941"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Nuremberg Laws of 1935 stripped Jewish Germans of what?",
+          "correctAnswer": "Citizenship",
+          "distractors": ["Property", "Employment", "Freedom of movement", "Education rights", "Voting rights only", "Religious practice", "Language rights"]
+        },
+        "context": {
+          "quizQuestion": "The Nuremberg Laws were passed at a special session of which German legislative body?",
+          "correctAnswer": "Reichstag",
+          "distractors": ["Bundesrat", "Wehrmacht", "Gestapo", "SS command", "Nazi Party Congress only", "Supreme Court", "Chancellery"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Nuremberg Laws were passed in 1935.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Nuremberg Laws, which stripped Jews of German citizenship, were enacted in ___.",
+          "correctAnswer": "1935",
+          "distractors": ["1933", "1936", "1938", "1939", "1934", "1937", "1940"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_kristallnacht_date",
+      "correctAnswer": "November 9–10, 1938",
+      "acceptableAlternatives": ["November 9, 1938", "Nov 9-10 1938", "1938"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 4,
+      "quizQuestion": "On what dates did Kristallnacht — the 'Night of Broken Glass' — take place?",
+      "explanation": "Kristallnacht took place on the nights of November 9–10, 1938. Nazi stormtroopers and civilians attacked Jewish businesses, homes, and synagogues across Germany and Austria, killing at least 91 Jews and arresting around 30,000.",
+      "visualDescription": "Pixel art of a dark city street with shattered glass glinting on cobblestones, broken shop windows, and smoke rising from a burning building in the background.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/kristallnacht",
+      "volatile": false,
+      "distractors": ["September 1, 1939", "January 30, 1933", "March 15, 1938", "July 20, 1944", "December 7, 1941", "January 20, 1942", "May 8, 1945", "April 20, 1937"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "What event, meaning 'Night of Broken Glass,' occurred on November 9–10, 1938?",
+          "correctAnswer": "Kristallnacht",
+          "distractors": ["Anschluss", "Wannsee Conference", "Night of the Long Knives", "Reichstag fire", "Beer Hall Putsch", "Operation Barbarossa", "D-Day"]
+        },
+        "context": {
+          "quizQuestion": "During Kristallnacht in 1938, approximately how many Jews were arrested?",
+          "correctAnswer": "30,000",
+          "distractors": ["3,000", "10,000", "100,000", "500", "5,000", "50,000", "1,000", "200,000"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Kristallnacht occurred in November 1938.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Kristallnacht, the 'Night of Broken Glass,' took place on November 9–10, ___.",
+          "correctAnswer": "1938",
+          "distractors": ["1933", "1935", "1939", "1941", "1936", "1937", "1940"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_kristallnacht_killed",
+      "correctAnswer": "91",
+      "acceptableAlternatives": ["at least 91", "ninety-one"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 3,
+      "quizQuestion": "How many Jews were killed during Kristallnacht in November 1938?",
+      "explanation": "At least 91 Jews were killed during Kristallnacht. Around 30,000 Jewish men were arrested and sent to concentration camps. Hundreds of synagogues were burned and thousands of Jewish-owned businesses were destroyed.",
+      "visualDescription": "Pixel art of a ruined synagogue with broken Star of David windows, embers glowing in the wreckage against a night sky.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/kristallnacht",
+      "volatile": false,
+      "distractors": ["9", "400", "1,000", "25", "200", "50", "500", "300"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "During Kristallnacht, 91 Jews were killed and approximately 30,000 were sent where?",
+          "correctAnswer": "Concentration camps",
+          "distractors": ["Prison cells", "Labor brigades", "Deportation trains", "Ghettos", "Court trials", "Exile abroad", "Work farms"]
+        },
+        "context": {
+          "quizQuestion": "In addition to killing 91 Jews, Kristallnacht resulted in the destruction of hundreds of what?",
+          "correctAnswer": "Synagogues",
+          "distractors": ["Schools", "Government buildings", "Banks", "Hospitals", "Museums", "Train stations", "Police stations"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Fewer than 100 Jews were officially recorded as killed during Kristallnacht.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "At least ___ Jews were killed during Kristallnacht, while around 30,000 were arrested.",
+          "correctAnswer": "91",
+          "distractors": ["400", "9", "1,000", "200", "50", "500", "300"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_warsaw_ghetto_population",
+      "correctAnswer": "400,000",
+      "acceptableAlternatives": ["400000", "four hundred thousand"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 4,
+      "quizQuestion": "How many people were confined in the Warsaw Ghetto at its peak?",
+      "explanation": "The Warsaw Ghetto, established in November 1940, held approximately 400,000 Jews crammed into an area of only 1.3 square miles. Disease and starvation killed tens of thousands before mass deportations to Treblinka began in 1942.",
+      "visualDescription": "Pixel art of a densely packed grey city block enclosed by a tall brick wall, narrow streets crowded with figures in worn coats under an overcast sky.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/warsaw",
+      "volatile": false,
+      "distractors": ["50,000", "100,000", "1 million", "200,000", "600,000", "25,000", "750,000", "150,000"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The 400,000 people confined in the Warsaw Ghetto were packed into an area of how many square miles?",
+          "correctAnswer": "1.3 square miles",
+          "distractors": ["5 square miles", "10 square miles", "0.5 square miles", "3 square miles", "20 square miles", "0.1 square miles", "7 square miles"]
+        },
+        "context": {
+          "quizQuestion": "The Warsaw Ghetto, which held 400,000 people, was established in what year?",
+          "correctAnswer": "1940",
+          "distractors": ["1939", "1941", "1942", "1938", "1943", "1944", "1937"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Warsaw Ghetto held more than 300,000 people at its peak.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Warsaw Ghetto held approximately ___ people in just 1.3 square miles.",
+          "correctAnswer": "400,000",
+          "distractors": ["50,000", "100,000", "1 million", "200,000", "600,000", "25,000", "150,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_einsatzgruppen_killed",
+      "correctAnswer": "1.5 million",
+      "acceptableAlternatives": ["over 1.5 million", "more than 1.5 million", "1,500,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many people did Einsatzgruppen mobile killing squads shoot in Eastern Europe during 1941–42?",
+      "explanation": "Einsatzgruppen were SS mobile killing units that followed the German army into the Soviet Union in 1941. They shot more than 1.5 million Jews, Soviet officials, and others in mass executions, often at sites like Babi Yar in Ukraine.",
+      "visualDescription": "Pixel art of a somber forest clearing with a stone monument and fallen autumn leaves, a memorial wreath at its base, grey skies above.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/einsatzgruppen",
+      "volatile": false,
+      "distractors": ["200,000", "500,000", "3 million", "100,000", "800,000", "5 million", "50,000", "4 million"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Einsatzgruppen, which killed more than 1.5 million people, operated primarily in which region?",
+          "correctAnswer": "Eastern Europe",
+          "distractors": ["Western Europe", "North Africa", "The Balkans", "France", "Italy", "Scandinavia", "The Middle East"]
+        },
+        "context": {
+          "quizQuestion": "What was the primary killing method used by Einsatzgruppen mobile killing squads?",
+          "correctAnswer": "Shooting",
+          "distractors": ["Gas chambers", "Starvation", "Hanging", "Poison", "Deportation to camps", "Bombing", "Forced labor"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Einsatzgruppen killed more than 1 million people through mass shootings.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Einsatzgruppen mobile killing squads shot more than ___ million people in Eastern Europe in 1941–42.",
+          "correctAnswer": "1.5",
+          "distractors": ["0.2", "0.5", "3", "0.1", "0.8", "5", "4"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_wannsee_date",
+      "correctAnswer": "January 20, 1942",
+      "acceptableAlternatives": ["January 1942", "1942"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 4,
+      "quizQuestion": "On what date was the Wannsee Conference held, at which Nazi officials coordinated the 'Final Solution'?",
+      "explanation": "The Wannsee Conference was held on January 20, 1942, at a villa in the Berlin suburb of Wannsee. Senior Nazi officials coordinated the logistics of the 'Final Solution to the Jewish Question' — the systematic murder of all European Jews.",
+      "visualDescription": "Pixel art of a stately lakeside villa in winter, bare trees reflected in still grey water, a single light visible through a tall window.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-wannsee-conference-and-the-final-solution",
+      "volatile": false,
+      "distractors": ["September 1, 1939", "December 11, 1941", "March 13, 1938", "November 9, 1938", "June 22, 1941", "July 20, 1944", "May 7, 1945", "April 30, 1945"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Wannsee Conference of January 1942 coordinated what Nazi policy?",
+          "correctAnswer": "The Final Solution",
+          "distractors": ["The invasion of the Soviet Union", "The occupation of France", "The bombing of Britain", "Kristallnacht", "The Nuremberg Laws", "The annexation of Austria", "The Night of the Long Knives"]
+        },
+        "context": {
+          "quizQuestion": "In which German city suburb was the Wannsee Conference held in January 1942?",
+          "correctAnswer": "Wannsee (Berlin suburb)",
+          "distractors": ["Nuremberg", "Munich", "Hamburg", "Dresden", "Frankfurt", "Cologne", "Stuttgart"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Wannsee Conference was held in 1942.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Wannsee Conference, coordinating the 'Final Solution,' was held on January 20, ___.",
+          "correctAnswer": "1942",
+          "distractors": ["1939", "1940", "1941", "1943", "1944", "1938", "1945"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_auschwitz_killed",
+      "correctAnswer": "1.1 million",
+      "acceptableAlternatives": ["over 1 million", "1,100,000", "approximately 1.1 million"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many people were killed at Auschwitz-Birkenau?",
+      "explanation": "Approximately 1.1 million people — the vast majority of them Jews — were murdered at Auschwitz-Birkenau, making it the largest of the Nazi death camps. It was liberated by Soviet forces on January 27, 1945.",
+      "visualDescription": "Pixel art of a brick gatehouse under grey winter skies, snow-covered ground, a wreath of memorial flowers placed at its base.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/auschwitz",
+      "volatile": false,
+      "distractors": ["200,000", "500,000", "3 million", "6 million", "400,000", "800,000", "50,000", "2 million"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Auschwitz-Birkenau, where 1.1 million people were killed, was liberated by which military force?",
+          "correctAnswer": "Soviet forces",
+          "distractors": ["American forces", "British forces", "French forces", "Polish resistance", "Allied bombers", "Red Cross", "German defectors"]
+        },
+        "context": {
+          "quizQuestion": "Auschwitz-Birkenau was actually a complex of how many main camps?",
+          "correctAnswer": "3",
+          "distractors": ["1", "2", "4", "5", "6", "7", "10"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Auschwitz-Birkenau was the largest Nazi death camp.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Approximately ___ million people were killed at Auschwitz-Birkenau.",
+          "correctAnswer": "1.1",
+          "distractors": ["0.2", "0.5", "3", "6", "0.4", "0.8", "2"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_auschwitz_gate",
+      "correctAnswer": "Arbeit Macht Frei",
+      "acceptableAlternatives": ["Work Makes You Free", "Arbeit macht frei"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "What German phrase, meaning 'Work Makes You Free,' was displayed on the gate of Auschwitz?",
+      "explanation": "'Arbeit Macht Frei' ('Work Makes You Free') was the cynical phrase displayed on the iron gate at the entrance to Auschwitz I. The slogan was a cruel deception — prisoners were not freed through labor but systematically murdered.",
+      "visualDescription": "Pixel art of a wrought-iron gate with letters spelled out across its arch, bare trees on either side, foggy grey sky behind.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/auschwitz",
+      "volatile": false,
+      "distractors": ["Jedem das Seine", "Gott Mit Uns", "Kraft durch Freude", "Blut und Boden", "Ein Volk, Ein Reich, Ein Führer", "Sieg Heil", "Für Führer und Vaterland", "Deutschland über Alles"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The gate slogan 'Arbeit Macht Frei' at Auschwitz translates to what in English?",
+          "correctAnswer": "Work Makes You Free",
+          "distractors": ["Death Brings Peace", "Honor Through Obedience", "Strength Through Joy", "Blood and Soil", "Work Brings Honor", "Duty Before Self", "Order Above All"]
+        },
+        "context": {
+          "quizQuestion": "The 'Arbeit Macht Frei' sign appeared at the entrance of which section of the Auschwitz complex?",
+          "correctAnswer": "Auschwitz I (the main camp)",
+          "distractors": ["Auschwitz II (Birkenau)", "Auschwitz III (Monowitz)", "The gas chamber block", "The SS headquarters", "The commandant's office", "The train platform", "The quarantine block"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: 'Arbeit Macht Frei' appeared on the gate of Auschwitz.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Auschwitz gate bore the phrase '___ Macht Frei,' meaning 'Work Makes You Free.'",
+          "correctAnswer": "Arbeit",
+          "distractors": ["Tod", "Gott", "Sieg", "Blut", "Kraft", "Ehre", "Pflicht"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_auschwitz_gas",
+      "correctAnswer": "Zyklon B",
+      "acceptableAlternatives": ["Zyklon-B", "hydrogen cyanide"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 3,
+      "quizQuestion": "What poison gas was used in the gas chambers at Auschwitz-Birkenau?",
+      "explanation": "Zyklon B, a commercial pesticide whose active ingredient is hydrogen cyanide, was used in the gas chambers at Auschwitz-Birkenau. The SS introduced it at Auschwitz in September 1941 as a more 'efficient' method of mass murder.",
+      "visualDescription": "Pixel art of a somber empty concrete chamber interior with a single barred vent in the ceiling, pale light filtering through.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/zyklon-b",
+      "volatile": false,
+      "distractors": ["Carbon monoxide", "Mustard gas", "Chlorine gas", "Phosgene", "Prussic acid pellets", "Nitrogen gas", "Sarin", "Hydrogen sulfide"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Zyklon B, used in Auschwitz gas chambers, was originally developed as what?",
+          "correctAnswer": "A commercial pesticide",
+          "distractors": ["A military weapon", "A medical anesthetic", "An industrial solvent", "A fumigant for ships only", "A delousing powder", "A rat poison for sewers", "A chemical warfare agent"]
+        },
+        "context": {
+          "quizQuestion": "In what year did the SS first use Zyklon B at Auschwitz?",
+          "correctAnswer": "1941",
+          "distractors": ["1939", "1940", "1942", "1943", "1944", "1938", "1945"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Zyklon B was used in the gas chambers at Auschwitz.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The gas chambers at Auschwitz used ___ B, a pesticide whose active ingredient is hydrogen cyanide.",
+          "correctAnswer": "Zyklon",
+          "distractors": ["Sarin", "Carbon", "Mustard", "Chlorine", "Phosgene", "Prussic", "Nitrogen"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_mengele",
+      "correctAnswer": "Josef Mengele",
+      "acceptableAlternatives": ["Mengele", "Joseph Mengele"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 4,
+      "quizQuestion": "Which SS doctor at Auschwitz became notorious for conducting deadly medical experiments on prisoners?",
+      "explanation": "Dr. Josef Mengele, known as the 'Angel of Death,' was an SS physician at Auschwitz who conducted cruel pseudoscientific experiments on prisoners — particularly twins and children. After the war he fled to South America and died in Brazil in 1979.",
+      "visualDescription": "Pixel art of a forbidding medical office with barred windows and a coat hung on a wall hook, sparse grey light through frosted glass.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/josef-mengele",
+      "volatile": false,
+      "distractors": ["Heinrich Himmler", "Adolf Eichmann", "Rudolf Höss", "Reinhard Heydrich", "Klaus Barbie", "Karl Brandt", "Ernst Kaltenbrunner", "Wilhelm Canaris"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Josef Mengele, the notorious SS doctor at Auschwitz, was known by what epithet?",
+          "correctAnswer": "The Angel of Death",
+          "distractors": ["The Butcher of Lyon", "The Hangman", "The Beast of Belsen", "The Architect of Evil", "The Shadow of Death", "The Iron Doctor", "The Black Surgeon"]
+        },
+        "context": {
+          "quizQuestion": "After the war, Josef Mengele evaded capture and died in which country in 1979?",
+          "correctAnswer": "Brazil",
+          "distractors": ["Argentina", "Paraguay", "Chile", "Uruguay", "Bolivia", "Peru", "Colombia"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Josef Mengele was an SS doctor who conducted experiments at Auschwitz.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "SS doctor Josef ___ became notorious for conducting experiments on prisoners at Auschwitz.",
+          "correctAnswer": "Mengele",
+          "distractors": ["Himmler", "Eichmann", "Höss", "Heydrich", "Barbie", "Brandt", "Kaltenbrunner"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_sonderkommando",
+      "correctAnswer": "Sonderkommando",
+      "acceptableAlternatives": ["sonderkommandos", "Sonder Kommando"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 4,
+      "funScore": 3,
+      "quizQuestion": "What term described the prisoner work units at Auschwitz forced by the SS to assist in the operation of the gas chambers and crematoria?",
+      "explanation": "Sonderkommando ('special unit') were prisoner work units, mostly Jewish men, who were forced by the SS at Auschwitz to remove bodies from gas chambers and operate the crematoria. They were periodically killed and replaced to prevent witness accounts.",
+      "visualDescription": "Pixel art of a grey courtyard with a stone wall, a single lantern casting dim light, fallen leaves on worn cobblestones, a solemn atmosphere.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/sonderkommando",
+      "volatile": false,
+      "distractors": ["Einsatzgruppen", "Kapo", "Orpo", "Schutzpolizei", "Waffen-SS", "Sturmabteilung", "Reichswehr", "Volkssturm"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Sonderkommando at Auschwitz were prisoner work units forced to assist with what?",
+          "correctAnswer": "Operating gas chambers and crematoria",
+          "distractors": ["Building barracks", "Food distribution", "Guard duties", "Document processing", "Road construction", "Hospital work", "Clothing production"]
+        },
+        "context": {
+          "quizQuestion": "Why did the SS periodically kill and replace the Sonderkommando at Auschwitz?",
+          "correctAnswer": "To prevent witness accounts of the killings",
+          "distractors": ["To train new workers", "Due to disease outbreaks", "As punishment", "For military deployment", "To reduce camp population", "Due to labor inefficiency", "For disciplinary reasons"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Sonderkommando were prisoner units forced to assist in camp killing operations.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "___ were prisoner work units at Auschwitz forced to operate gas chambers and crematoria.",
+          "correctAnswer": "Sonderkommando",
+          "distractors": ["Einsatzgruppen", "Kapos", "Orpo", "Gestapo", "Waffen-SS", "Sturmabteilung", "Volkssturm"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_treblinka_killed",
+      "correctAnswer": "800,000",
+      "acceptableAlternatives": ["approximately 800,000", "~800,000", "around 800,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many people were killed at Treblinka death camp?",
+      "explanation": "Treblinka, located in occupied Poland, was an Operation Reinhard death camp where approximately 800,000 people — almost all of them Jews — were murdered between July 1942 and October 1943. Most victims came from the Warsaw Ghetto.",
+      "visualDescription": "Pixel art of a stone memorial field with jagged granite stones standing at varied heights among autumn grass, a muted sky above.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/treblinka",
+      "volatile": false,
+      "distractors": ["100,000", "200,000", "1.5 million", "400,000", "3 million", "50,000", "1.1 million", "600,000"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Treblinka death camp, where ~800,000 were killed, was part of which Nazi killing program?",
+          "correctAnswer": "Operation Reinhard",
+          "distractors": ["Operation Barbarossa", "Operation Overlord", "Operation Sea Lion", "Final Solution Phase 1", "Operation T4", "Operation Harvest Festival", "Operation Citadel"]
+        },
+        "context": {
+          "quizQuestion": "Most victims killed at Treblinka came from which ghetto?",
+          "correctAnswer": "Warsaw Ghetto",
+          "distractors": ["Łódź Ghetto", "Kraków Ghetto", "Vilna Ghetto", "Minsk Ghetto", "Lublin Ghetto", "Lviv Ghetto", "Białystok Ghetto"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: More than 500,000 people were killed at Treblinka.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Approximately ___ people were killed at Treblinka between 1942 and 1943.",
+          "correctAnswer": "800,000",
+          "distractors": ["100,000", "200,000", "1,500,000", "400,000", "3,000,000", "50,000", "600,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_belzec_killed",
+      "correctAnswer": "500,000",
+      "acceptableAlternatives": ["approximately 500,000", "~500,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many people were killed at Belzec death camp?",
+      "explanation": "Belzec, in occupied Poland, was an Operation Reinhard death camp where approximately 500,000 Jews were murdered between March and December 1942. It was one of the first purpose-built death camps, using carbon monoxide gas.",
+      "visualDescription": "Pixel art of a wide memorial plaza with a low stone wall and carved relief, bare winter trees along its edges, grey sky overhead.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/belzec",
+      "volatile": false,
+      "distractors": ["50,000", "100,000", "1 million", "200,000", "800,000", "2 million", "30,000", "300,000"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Belzec death camp, where ~500,000 were killed, used which gas for killing — unlike Auschwitz?",
+          "correctAnswer": "Carbon monoxide",
+          "distractors": ["Zyklon B", "Chlorine gas", "Mustard gas", "Hydrogen cyanide", "Phosgene", "Nitrogen gas", "Sarin"]
+        },
+        "context": {
+          "quizQuestion": "Belzec was one of the first purpose-built death camps, becoming operational in which year?",
+          "correctAnswer": "1942",
+          "distractors": ["1939", "1940", "1941", "1943", "1944", "1938", "1945"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Approximately 500,000 people were killed at Belzec.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Approximately ___ people were killed at the Belzec death camp in 1942.",
+          "correctAnswer": "500,000",
+          "distractors": ["50,000", "100,000", "1,000,000", "200,000", "800,000", "30,000", "300,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_sobibor_killed",
+      "correctAnswer": "200,000",
+      "acceptableAlternatives": ["approximately 200,000", "~200,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many people were killed at Sobibor death camp?",
+      "explanation": "Sobibor, an Operation Reinhard death camp in occupied Poland, killed approximately 200,000 Jews between May 1942 and October 1943. The camp was closed after a prisoner uprising on October 14, 1943, the largest and most successful revolt at any Nazi death camp.",
+      "visualDescription": "Pixel art of a forested memorial site with a central stone obelisk, autumn leaves covering the ground, a respectful quiet atmosphere.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/sobibor",
+      "volatile": false,
+      "distractors": ["50,000", "800,000", "1 million", "500,000", "30,000", "400,000", "2 million", "100,000"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Sobibor death camp was shut down following a successful prisoner uprising on what date in 1943?",
+          "correctAnswer": "October 14, 1943",
+          "distractors": ["August 2, 1943", "April 19, 1943", "June 6, 1944", "January 20, 1942", "November 9, 1938", "September 1, 1939", "May 7, 1945"]
+        },
+        "context": {
+          "quizQuestion": "The prisoner uprising at Sobibor in October 1943 was notable as what?",
+          "correctAnswer": "The largest successful revolt at any Nazi death camp",
+          "distractors": ["The first ever prisoner revolt", "The only revolt outside Poland", "The revolt that ended the Holocaust", "A failed attempt with no survivors", "A revolt supported by Allied forces", "The only revolt by non-Jewish prisoners", "A revolt that freed all prisoners"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Sobibor was closed after a prisoner uprising in 1943.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Approximately ___ people were killed at Sobibor before a prisoner revolt led to its closure.",
+          "correctAnswer": "200,000",
+          "distractors": ["50,000", "800,000", "500,000", "30,000", "400,000", "100,000", "1,000,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_chelmno_killed",
+      "correctAnswer": "150,000",
+      "acceptableAlternatives": ["approximately 150,000", "~150,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 5,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many people were killed at Chelmno death camp?",
+      "explanation": "Chelmno (Kulmhof), in occupied Poland, was the first stationary Nazi death camp to use gas for mass murder — employing gas vans rather than gas chambers. Approximately 150,000 Jews were killed there from December 1941 onward.",
+      "visualDescription": "Pixel art of a bleak open field with a lone memorial stone, a single bare tree, snow dusting the ground under a pale winter sky.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/chelmno",
+      "volatile": false,
+      "distractors": ["30,000", "500,000", "1 million", "800,000", "50,000", "300,000", "2 million", "75,000"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Chelmno was notable as the first Nazi death camp to use gas — delivered by what method instead of gas chambers?",
+          "correctAnswer": "Gas vans",
+          "distractors": ["Open pits with gas pipes", "Sealed barracks", "Gas-filled tunnels", "Pressurized cylinders in barracks", "Outdoor fumigation tents", "Underground chambers", "Converted train cars"]
+        },
+        "context": {
+          "quizQuestion": "Chelmno death camp began operations in which month and year?",
+          "correctAnswer": "December 1941",
+          "distractors": ["March 1942", "July 1942", "January 1942", "June 1941", "October 1941", "September 1942", "April 1943"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Chelmno was the first Nazi death camp to use gas for mass murder.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Approximately ___ people were killed at Chelmno, the first Nazi camp to use gas vans.",
+          "correctAnswer": "150,000",
+          "distractors": ["30,000", "500,000", "800,000", "50,000", "300,000", "75,000", "1,000,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_majdanek_killed",
+      "correctAnswer": "78,000",
+      "acceptableAlternatives": ["approximately 78,000", "~78,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 5,
+      "funScore": 3,
+      "quizQuestion": "Approximately how many people were killed at Majdanek death camp?",
+      "explanation": "Majdanek, located near Lublin in occupied Poland, functioned as both a concentration camp and a death camp. Approximately 78,000 people were killed there. It was one of the first camps liberated by Allied forces (Soviet Army, July 1944), and its gas chambers were found largely intact.",
+      "visualDescription": "Pixel art of a large domed stone mausoleum under an overcast sky, surrounded by a wide memorial field, trees lining the distant horizon.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/majdanek",
+      "volatile": false,
+      "distractors": ["10,000", "200,000", "500,000", "1 million", "30,000", "400,000", "800,000", "50,000"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Majdanek, where ~78,000 were killed, was historically significant as one of the first camps liberated by Allied forces in what year?",
+          "correctAnswer": "1944",
+          "distractors": ["1943", "1945", "1942", "1941", "1946", "1940", "1947"]
+        },
+        "context": {
+          "quizQuestion": "Majdanek was located near which Polish city?",
+          "correctAnswer": "Lublin",
+          "distractors": ["Warsaw", "Kraków", "Łódź", "Gdańsk", "Wrocław", "Poznań", "Białystok"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Majdanek functioned as both a concentration camp and a death camp.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Approximately ___ people were killed at Majdanek near Lublin, Poland.",
+          "correctAnswer": "78,000",
+          "distractors": ["10,000", "200,000", "500,000", "30,000", "400,000", "50,000", "1,000,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_eichmann_captured",
+      "correctAnswer": "Argentina",
+      "acceptableAlternatives": ["Buenos Aires", "Buenos Aires, Argentina"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "In which country was Adolf Eichmann captured by Israeli Mossad agents in 1960?",
+      "explanation": "Adolf Eichmann, who organized the logistics of deportations to death camps, fled to Argentina after the war under a false name. Israeli Mossad agents located and captured him in Buenos Aires in May 1960 and transported him secretly to Israel for trial.",
+      "visualDescription": "Pixel art of a nighttime suburban street in South America, a small house with a dim porch light, shadow of a figure in a doorway.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/adolf-eichmann",
+      "volatile": false,
+      "distractors": ["Brazil", "Paraguay", "Germany", "Austria", "Chile", "Uruguay", "Egypt", "Bolivia"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Adolf Eichmann was captured in Argentina in 1960 by agents of which organization?",
+          "correctAnswer": "Mossad (Israeli intelligence)",
+          "distractors": ["CIA", "FBI", "KGB", "MI6", "French DGSE", "West German BND", "Interpol"]
+        },
+        "context": {
+          "quizQuestion": "Adolf Eichmann's primary role in the Holocaust was organizing what?",
+          "correctAnswer": "Transportation and deportation of Jews to death camps",
+          "distractors": ["Running the gas chambers", "Commanding the Einsatzgruppen", "Designing the concentration camps", "Drafting the Nuremberg Laws", "Leading the Wannsee Conference", "Overseeing Auschwitz operations", "Funding the SS"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Adolf Eichmann was captured in Argentina in 1960.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Adolf Eichmann was captured by Israeli Mossad agents in ___ in 1960.",
+          "correctAnswer": "Argentina",
+          "distractors": ["Brazil", "Paraguay", "Germany", "Austria", "Chile", "Uruguay", "Egypt"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_eichmann_trial",
+      "correctAnswer": "Jerusalem",
+      "acceptableAlternatives": ["Israel", "Jerusalem, Israel"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "In which city was Adolf Eichmann tried and convicted for his role in the Holocaust?",
+      "explanation": "Adolf Eichmann was tried in Jerusalem in 1961 before an Israeli court. The trial drew global attention and was one of the first major Holocaust trials broadcast on television. Eichmann was convicted and executed by hanging in 1962.",
+      "visualDescription": "Pixel art of a formal stone courtroom interior, a glass booth in the center, spectators in the gallery, bright lights overhead.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-trial-of-adolf-eichmann",
+      "volatile": false,
+      "distractors": ["Nuremberg", "Berlin", "Frankfurt", "Vienna", "The Hague", "New York", "Warsaw", "Tel Aviv"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The 1961 Jerusalem trial of Eichmann was notable for being one of the first Holocaust trials to be what?",
+          "correctAnswer": "Broadcast on television",
+          "distractors": ["Held outside Germany", "Conducted in English", "Presided over by women", "Open to the public", "Supported by the UN", "Broadcast on radio only", "Defended by a Jewish lawyer"]
+        },
+        "context": {
+          "quizQuestion": "In what year was Adolf Eichmann executed following his conviction in Jerusalem?",
+          "correctAnswer": "1962",
+          "distractors": ["1960", "1961", "1963", "1945", "1965", "1970", "1947"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Adolf Eichmann was tried and executed in Israel.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Adolf Eichmann was tried in ___, Israel, in 1961 and executed in 1962.",
+          "correctAnswer": "Jerusalem",
+          "distractors": ["Nuremberg", "Berlin", "Frankfurt", "Vienna", "The Hague", "Tel Aviv", "Warsaw"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_hoss_role",
+      "correctAnswer": "Rudolf Höss",
+      "acceptableAlternatives": ["Rudolf Hoss", "Höss", "Hoss"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 4,
+      "quizQuestion": "Who served as the commandant of Auschwitz and oversaw the murder of over a million people there?",
+      "explanation": "Rudolf Höss was the longest-serving commandant of Auschwitz, overseeing the camp from 1940 to 1943 and again briefly in 1944. Under his command the camp became the largest killing center of the Holocaust. He was arrested in 1946, tried in Poland, and executed at Auschwitz in April 1947.",
+      "visualDescription": "Pixel art of a dimly lit stone commandant's office, a desk with papers and a desk lamp, a window overlooking grey barracks.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/rudolf-hoss",
+      "volatile": false,
+      "distractors": ["Heinrich Himmler", "Adolf Eichmann", "Josef Mengele", "Reinhard Heydrich", "Ernst Kaltenbrunner", "Karl Fritzsch", "Richard Baer", "Arthur Liebehenschel"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Auschwitz commandant Rudolf Höss was executed in 1947 — at which location?",
+          "correctAnswer": "Auschwitz",
+          "distractors": ["Nuremberg", "Berlin", "Warsaw", "Kraków", "Frankfurt", "The Hague", "Jerusalem"]
+        },
+        "context": {
+          "quizQuestion": "In what year was Rudolf Höss first appointed commandant of Auschwitz?",
+          "correctAnswer": "1940",
+          "distractors": ["1939", "1941", "1942", "1943", "1944", "1938", "1945"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Rudolf Höss was the commandant of Auschwitz and was executed there after the war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Rudolf ___ was Auschwitz commandant who oversaw the murder of over a million people and was executed in 1947.",
+          "correctAnswer": "Höss",
+          "distractors": ["Himmler", "Eichmann", "Mengele", "Heydrich", "Kaltenbrunner", "Fritzsch", "Barbie"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_final_solution_term",
+      "correctAnswer": "Final Solution",
+      "acceptableAlternatives": ["The Final Solution", "Final Solution to the Jewish Question", "Endlösung"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 4,
+      "quizQuestion": "What euphemistic term did the Nazis use for their plan to systematically murder all European Jews?",
+      "explanation": "The Nazis used the euphemism 'Final Solution to the Jewish Question' (Endlösung der Judenfrage) to refer to their plan for the systematic genocide of Jews in Europe. This term was used at the Wannsee Conference in January 1942 to coordinate the implementation across Nazi-occupied territories.",
+      "visualDescription": "Pixel art of a stark conference table in a cold formal room, documents spread across it, tall arched windows looking out on a grey winter lake.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-wannsee-conference-and-the-final-solution",
+      "volatile": false,
+      "distractors": ["Operation Reinhard", "The Jewish Question", "Night and Fog", "Lebensraum Policy", "Operation Harvest Festival", "The Eastern Plan", "Racial Hygiene", "The New Order"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The German term 'Endlösung' translates to what in English?",
+          "correctAnswer": "Final Solution",
+          "distractors": ["Night and Fog", "New Order", "Eastern Plan", "Living Space", "Blood and Soil", "People's Will", "Iron Curtain"]
+        },
+        "context": {
+          "quizQuestion": "The Wannsee Conference of 1942 coordinated the implementation of the 'Final Solution' across what territory?",
+          "correctAnswer": "Nazi-occupied Europe",
+          "distractors": ["Germany only", "Poland only", "The Soviet Union only", "Western Europe only", "North Africa", "The Balkans only", "The Baltic states only"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: 'Final Solution' was the Nazi euphemism for the genocide of Jews.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Nazis used the term '___ Solution' as a euphemism for their plan to murder all European Jews.",
+          "correctAnswer": "Final",
+          "distractors": ["Eastern", "Ultimate", "Complete", "Total", "Racial", "Last", "Perfect"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_operation_reinhard",
+      "correctAnswer": "Operation Reinhard",
+      "acceptableAlternatives": ["Aktion Reinhard", "Aktion Reinhardt"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 4,
+      "funScore": 4,
+      "quizQuestion": "What was the code name for the Nazi plan to murder the Jews of German-occupied Poland using Treblinka, Sobibor, and Belzec?",
+      "explanation": "Operation Reinhard (Aktion Reinhard) was the code name for the systematic murder of Polish Jews — the most lethal phase of the Holocaust. Named after Reinhard Heydrich, it operated the three death camps of Treblinka, Sobibor, and Belzec, killing approximately 1.7 million people between 1942 and 1943.",
+      "visualDescription": "Pixel art of a rail line disappearing into a dark forested horizon under heavy clouds, a lone signal lamp glowing amber at the track's edge.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/operation-reinhard-aktion-reinhard",
+      "volatile": false,
+      "distractors": ["Operation Barbarossa", "Operation T4", "Operation Night Fog", "Operation Harvest Festival", "Operation Citadel", "Operation Overlord", "Operation Sea Lion", "Operation Weserübung"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Operation Reinhard was named after which Nazi official who was assassinated in 1942?",
+          "correctAnswer": "Reinhard Heydrich",
+          "distractors": ["Ernst Röhm", "Reinhard Gehlen", "Rudolf Höss", "Heinrich Himmler", "Adolf Eichmann", "Karl Brandt", "Arthur Seyss-Inquart"]
+        },
+        "context": {
+          "quizQuestion": "Approximately how many people were killed under Operation Reinhard across its three death camps?",
+          "correctAnswer": "1.7 million",
+          "distractors": ["500,000", "3 million", "6 million", "200,000", "800,000", "4 million", "100,000"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Operation Reinhard was the code name for the murder of Polish Jews using three dedicated death camps.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Operation ___ was the code name for the systematic murder of Polish Jews at Treblinka, Sobibor, and Belzec.",
+          "correctAnswer": "Reinhard",
+          "distractors": ["Barbarossa", "Citadel", "Harvest", "T4", "Weiss", "Night Fog", "Seafire"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_nuremberg_laws_marriage",
+      "correctAnswer": "Marriage between Jews and non-Jews",
+      "acceptableAlternatives": ["intermarriage", "Jewish-German marriage", "marrying non-Jews"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 3,
+      "quizQuestion": "Besides stripping Jewish citizenship, what personal right did the Nuremberg Laws of 1935 explicitly prohibit?",
+      "explanation": "The Nuremberg Laws of 1935 had two main components: the Reich Citizenship Law (which stripped Jews of citizenship) and the Law for the Protection of German Blood and German Honor, which prohibited marriage and sexual relations between Jews and non-Jewish Germans.",
+      "visualDescription": "Pixel art of a formal government notice posted on a stone wall under a gas lamp, people in 1930s clothing passing by in subdued colors.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-nuremberg-race-laws",
+      "volatile": false,
+      "distractors": ["Owning property", "Attending school", "Having a passport", "Opening a bank account", "Practicing religion", "Speaking German", "Holding government jobs", "Traveling within Germany"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Nuremberg Law 'for the Protection of German Blood and German Honor' specifically banned what?",
+          "correctAnswer": "Marriage and sexual relations between Jews and non-Jewish Germans",
+          "distractors": ["Jews from owning businesses", "Jews from attending universities", "Jews from holding passports", "Jews from practicing Judaism", "Jews from speaking German in public", "Jews from gathering in groups", "Jews from entering government buildings"]
+        },
+        "context": {
+          "quizQuestion": "How many main laws comprised the Nuremberg Laws passed in September 1935?",
+          "correctAnswer": "Two",
+          "distractors": ["One", "Three", "Four", "Five", "Six", "Seven", "Ten"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Nuremberg Laws prohibited marriage between Jews and non-Jewish Germans.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Nuremberg Laws prohibited ___ between Jews and non-Jewish Germans, in addition to stripping Jewish citizenship.",
+          "correctAnswer": "Marriage",
+          "distractors": ["Employment", "Education", "Commerce", "Travel", "Religious worship", "Correspondence", "Landownership"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_auschwitz_camps_count",
+      "correctAnswer": "3",
+      "acceptableAlternatives": ["three", "three main camps"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 4,
+      "quizQuestion": "How many main camps made up the Auschwitz complex?",
+      "explanation": "The Auschwitz complex consisted of three main camps: Auschwitz I (the original concentration camp), Auschwitz II-Birkenau (the main death camp), and Auschwitz III-Monowitz (a forced labor camp). There were also dozens of sub-camps.",
+      "visualDescription": "Pixel art of a wide aerial schematic view of three grouped camp outlines sketched in charcoal lines on aged parchment paper.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/auschwitz",
+      "volatile": false,
+      "distractors": ["1", "2", "4", "5", "6", "7", "10", "12"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Auschwitz I, Auschwitz II-Birkenau, and Auschwitz III-Monowitz were the three main sections of which camp complex?",
+          "correctAnswer": "Auschwitz",
+          "distractors": ["Treblinka", "Majdanek", "Dachau", "Buchenwald", "Bergen-Belsen", "Sobibor", "Belzec"]
+        },
+        "context": {
+          "quizQuestion": "Which section of the Auschwitz complex was the primary killing center?",
+          "correctAnswer": "Auschwitz II-Birkenau",
+          "distractors": ["Auschwitz I", "Auschwitz III-Monowitz", "The sub-camps", "The Auschwitz garrison", "The SS hospital compound", "The quarantine block", "The command center"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Auschwitz complex consisted of more than two main camps.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Auschwitz complex had ___ main camps: Auschwitz I, Birkenau, and Monowitz.",
+          "correctAnswer": "3",
+          "distractors": ["1", "2", "4", "5", "6", "7", "10"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_liberation_date",
+      "correctAnswer": "January 27, 1945",
+      "acceptableAlternatives": ["January 1945", "1945"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "On what date was Auschwitz liberated by Soviet forces?",
+      "explanation": "Soviet forces of the Red Army liberated Auschwitz-Birkenau on January 27, 1945, finding approximately 7,000 surviving prisoners. January 27 is now observed internationally as Holocaust Remembrance Day.",
+      "visualDescription": "Pixel art of a winter morning scene — snow-covered camp grounds, open gates, a Soviet soldier silhouetted at the entrance, pale sunrise light.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/liberation-of-nazi-camps",
+      "volatile": false,
+      "distractors": ["May 8, 1945", "April 11, 1945", "April 29, 1945", "September 1, 1944", "June 6, 1944", "December 7, 1944", "March 15, 1945", "February 13, 1945"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "January 27 is observed as International Holocaust Remembrance Day because of what event in 1945?",
+          "correctAnswer": "Liberation of Auschwitz",
+          "distractors": ["End of World War II", "Nuremberg trials verdict", "Wannsee Conference anniversary", "Death of Hitler", "Liberation of Dachau", "Liberation of Bergen-Belsen", "Discovery of Treblinka"]
+        },
+        "context": {
+          "quizQuestion": "Approximately how many surviving prisoners did Soviet forces find when they liberated Auschwitz in January 1945?",
+          "correctAnswer": "7,000",
+          "distractors": ["500", "100,000", "50,000", "1,000", "200", "20,000", "30,000"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Auschwitz was liberated in January 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Auschwitz was liberated by Soviet forces on January ___, 1945, now observed as Holocaust Remembrance Day.",
+          "correctAnswer": "27",
+          "distractors": ["1", "8", "15", "20", "30", "11", "19"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_nuremberg_trials",
+      "correctAnswer": "Nuremberg",
+      "acceptableAlternatives": ["Nuremberg, Germany"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "In which German city were the major postwar trials of Nazi war criminals held?",
+      "explanation": "The International Military Tribunal convened in Nuremberg, Germany from November 1945 to October 1946. Twenty-four major Nazi leaders were tried; twelve were sentenced to death. Nuremberg was chosen partly because it had been the site of major Nazi rallies, giving the proceedings symbolic weight.",
+      "visualDescription": "Pixel art of a grand stone courthouse interior with a high wooden dock, Allied flags mounted on the wall, a formal court in session under warm lights.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-nuremberg-trials",
+      "volatile": false,
+      "distractors": ["Berlin", "Munich", "Frankfurt", "Hamburg", "Vienna", "The Hague", "Paris", "London"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Nuremberg Trials began in November 1945 and ran through October of what year?",
+          "correctAnswer": "1946",
+          "distractors": ["1945", "1947", "1948", "1949", "1950", "1944", "1943"]
+        },
+        "context": {
+          "quizQuestion": "Of the 24 major Nazi leaders tried at Nuremberg, how many were sentenced to death?",
+          "correctAnswer": "12",
+          "distractors": ["3", "6", "18", "24", "9", "1", "20"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The major postwar trials of Nazi war criminals were held in Nuremberg, Germany.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The International Military Tribunal held its postwar war crimes trials in ___, Germany.",
+          "correctAnswer": "Nuremberg",
+          "distractors": ["Berlin", "Munich", "Frankfurt", "Hamburg", "Vienna", "Dresden", "Cologne"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_warsaw_uprising",
+      "correctAnswer": "April 19, 1943",
+      "acceptableAlternatives": ["April 1943", "1943"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did the Warsaw Ghetto Uprising begin?",
+      "explanation": "The Warsaw Ghetto Uprising began on April 19, 1943, when Jewish fighters resisted the final German liquidation of the ghetto. Despite being vastly outnumbered and outgunned, the fighters held out for nearly a month before German forces suppressed the revolt and destroyed the ghetto.",
+      "visualDescription": "Pixel art of barricaded ghetto streets with figures standing in doorways, a Star of David flag visible on a rooftop, smoke rising in the background.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/warsaw-ghetto-uprising",
+      "volatile": false,
+      "distractors": ["September 1, 1939", "November 9, 1938", "January 20, 1942", "October 14, 1943", "June 6, 1944", "May 8, 1945", "March 15, 1938", "July 20, 1944"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Warsaw Ghetto Uprising of April 1943 was a response to what German action?",
+          "correctAnswer": "The final liquidation of the Warsaw Ghetto",
+          "distractors": ["The invasion of Poland", "The destruction of synagogues", "A mass arrest of Jewish leaders", "The start of deportations in 1942", "The bombing of Warsaw", "The closing of Jewish businesses", "The creation of the ghetto"]
+        },
+        "context": {
+          "quizQuestion": "Approximately how long did Jewish fighters hold out in the Warsaw Ghetto Uprising before German forces suppressed it?",
+          "correctAnswer": "Nearly one month",
+          "distractors": ["One day", "Three days", "One week", "Three months", "Six months", "One year", "Two weeks only"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Warsaw Ghetto Uprising began in April 1943.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Warsaw Ghetto Uprising began on April 19, ___, when Jewish fighters resisted the ghetto's final liquidation.",
+          "correctAnswer": "1943",
+          "distractors": ["1939", "1940", "1941", "1942", "1944", "1945", "1938"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_international_remembrance",
+      "correctAnswer": "January 27",
+      "acceptableAlternatives": ["27 January", "January 27th"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 4,
+      "quizQuestion": "On what date is International Holocaust Remembrance Day observed, as designated by the United Nations?",
+      "explanation": "The United Nations designated January 27 as International Holocaust Remembrance Day in 2005. The date marks the anniversary of the liberation of Auschwitz-Birkenau by Soviet forces on January 27, 1945.",
+      "visualDescription": "Pixel art of a candlelit memorial vigil at dusk, small flames reflected in a still stone pool, figures standing in respectful silence.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/days-of-remembrance",
+      "volatile": false,
+      "distractors": ["May 8", "November 9", "April 11", "September 1", "April 29", "June 6", "October 7", "December 7"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "International Holocaust Remembrance Day on January 27 was designated by which international body?",
+          "correctAnswer": "United Nations",
+          "distractors": ["European Union", "NATO", "Red Cross", "UNESCO", "World Jewish Congress", "International Court of Justice", "Council of Europe"]
+        },
+        "context": {
+          "quizQuestion": "In what year did the United Nations designate January 27 as International Holocaust Remembrance Day?",
+          "correctAnswer": "2005",
+          "distractors": ["1945", "1965", "1985", "1995", "2000", "2010", "2015"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: International Holocaust Remembrance Day is observed on January 27.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The United Nations designated January ___ as International Holocaust Remembrance Day.",
+          "correctAnswer": "27",
+          "distractors": ["1", "8", "15", "20", "30", "11", "19"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hc_five_million_others",
+      "correctAnswer": "5 million",
+      "acceptableAlternatives": ["approximately 5 million", "five million"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 3,
+      "quizQuestion": "Beyond the 6 million Jews killed in the Holocaust, approximately how many non-Jewish victims were also murdered by the Nazi regime?",
+      "explanation": "In addition to 6 million Jews, the Nazis murdered approximately 5 million others including Roma, Soviet civilians and POWs, Poles, people with disabilities, political prisoners, homosexuals, and Jehovah's Witnesses — bringing the total to approximately 11 million.",
+      "visualDescription": "Pixel art of a multilingual memorial plaque on a stone wall, several languages carved into its surface, a wreath at its base.",
+      "sourceName": "United States Holocaust Memorial Museum",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution",
+      "volatile": false,
+      "distractors": ["1 million", "2 million", "8 million", "10 million", "500,000", "3 million", "15 million", "7 million"],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Which of the following groups was among the approximately 5 million non-Jewish Holocaust victims?",
+          "correctAnswer": "Roma",
+          "distractors": ["British civilians", "French resistance fighters", "American POWs", "Italian partisans", "Neutral Swiss citizens", "Swedish volunteers", "Spanish Republicans"]
+        },
+        "context": {
+          "quizQuestion": "Including both Jewish and non-Jewish victims, the Holocaust's total death toll was approximately how many millions?",
+          "correctAnswer": "11 million",
+          "distractors": ["6 million", "8 million", "14 million", "20 million", "5 million", "9 million", "3 million"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Holocaust's victims included millions of non-Jewish people such as Roma, disabled people, and political prisoners.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Beyond 6 million Jews, approximately ___ million non-Jewish people were also murdered in the Holocaust.",
+          "correctAnswer": "5",
+          "distractors": ["1", "2", "8", "10", "3", "15", "7"]
+        }
+      }
+    }
+  ]
+}

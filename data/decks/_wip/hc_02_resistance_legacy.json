@@ -1,0 +1,1585 @@
+{
+  "facts": [
+    {
+      "id": "wwii_hc_warsaw_uprising_start",
+      "correctAnswer": "April 19, 1943",
+      "acceptableAlternatives": ["April 19", "19 April 1943"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "On what date did the Warsaw Ghetto Uprising begin?",
+      "explanation": "The Warsaw Ghetto Uprising began on April 19, 1943 — the eve of Passover — when German forces entered the ghetto to complete its liquidation and were met with armed Jewish resistance. It became the largest single revolt by Jews during the Holocaust.",
+      "visualDescription": "Pixel art of a narrow ghetto street at dawn, rubble and barricades visible, a figure with an armband standing defiantly in shadow against a pale orange sky.",
+      "sourceName": "United States Holocaust Memorial Museum — Warsaw Ghetto Uprising",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/warsaw-ghetto-uprising",
+      "volatile": false,
+      "distractors": [
+        "January 18, 1943",
+        "September 1, 1939",
+        "November 9, 1938",
+        "July 22, 1942",
+        "March 15, 1943",
+        "June 6, 1944",
+        "October 14, 1943",
+        "August 2, 1943"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Warsaw Ghetto Uprising began on April 19, 1943. What was the significance of that date on the Jewish calendar?",
+          "correctAnswer": "Eve of Passover",
+          "distractors": ["Yom Kippur", "Rosh Hashanah", "Hanukkah", "Purim"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Warsaw Ghetto Uprising began when German forces entered the ghetto to do what?",
+          "correctAnswer": "Complete its liquidation (deport remaining Jews to death camps)",
+          "distractors": ["Conduct a census", "Search for weapons smugglers", "Impose a curfew", "Collect forced labor"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Warsaw Ghetto Uprising lasted nearly a month.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Warsaw Ghetto Uprising lasted from April 19 to _____, 1943.",
+          "correctAnswer": "May 16",
+          "distractors": ["April 30", "May 1", "June 1", "April 25"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_warsaw_uprising_leader",
+      "correctAnswer": "Mordechai Anielewicz",
+      "acceptableAlternatives": ["Anielewicz"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Who led the Jewish fighting organization during the Warsaw Ghetto Uprising?",
+      "explanation": "Mordechai Anielewicz, a 23-year-old commander of the Jewish Fighting Organization (ZOB), led the Warsaw Ghetto Uprising. He died in May 1943 when the Germans discovered and destroyed the ZOB command bunker at 18 Mila Street.",
+      "visualDescription": "Pixel art portrait of a young man in dark clothing, resolute expression, against a background of crumbling ghetto walls and smoke rising in the distance.",
+      "sourceName": "United States Holocaust Memorial Museum — Mordechai Anielewicz",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/mordecai-anielewicz",
+      "volatile": false,
+      "distractors": [
+        "Janusz Korczak",
+        "Emanuel Ringelblum",
+        "Marek Edelman",
+        "Adam Czerniakow",
+        "Szmul Zygielbojm",
+        "Yitzhak Zuckerman",
+        "Chaim Rumkowski",
+        "Jakob Gens"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Mordechai Anielewicz led which resistance organization during the Warsaw Ghetto Uprising?",
+          "correctAnswer": "Jewish Fighting Organization (ZOB)",
+          "distractors": ["Jewish Military Union (ZZW)", "Bund", "Judenrat", "Hashomer Hatzair"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How old was Mordechai Anielewicz when he led the Warsaw Ghetto Uprising?",
+          "correctAnswer": "23",
+          "distractors": ["18", "30", "35", "27"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Mordechai Anielewicz survived the Warsaw Ghetto Uprising.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The ZOB command bunker where Anielewicz died was located at _____ Mila Street in Warsaw.",
+          "correctAnswer": "18",
+          "distractors": ["12", "7", "24", "33"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_warsaw_uprising_tactics",
+      "correctAnswer": "Burned the ghetto block by block",
+      "acceptableAlternatives": ["Set fire to the ghetto", "Burned buildings block by block"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "How did German forces ultimately suppress the Warsaw Ghetto Uprising?",
+      "explanation": "Unable to quickly overcome the Jewish fighters using conventional tactics, the SS under General Jürgen Stroop systematically burned the Warsaw Ghetto block by block, destroying the entire neighborhood to root out resisters. Stroop later reported: 'The Jewish Quarter of Warsaw is no more.'",
+      "visualDescription": "Pixel art of a Warsaw ghetto street engulfed in orange and red flames at night, silhouettes of ruined buildings crumbling, ash falling like snow against a dark sky.",
+      "sourceName": "United States Holocaust Memorial Museum — Warsaw Ghetto Uprising",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/warsaw-ghetto-uprising",
+      "volatile": false,
+      "distractors": [
+        "Flooded the ghetto tunnels",
+        "Used poison gas in the streets",
+        "Starved out the fighters over months",
+        "Deployed tanks to breach the walls",
+        "Conducted mass executions at the gate",
+        "Erected electric fences around the perimeter",
+        "Waited for ammunition to run out",
+        "Launched air strikes on the district"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which SS commander directed the suppression of the Warsaw Ghetto Uprising by burning the ghetto block by block?",
+          "correctAnswer": "Jürgen Stroop",
+          "distractors": ["Heinrich Himmler", "Odilo Globocnik", "Rudolf Höss", "Karl Wolff"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Before resorting to burning the ghetto, why were conventional German tactics initially ineffective against the Warsaw Ghetto fighters?",
+          "correctAnswer": "The fighters used bunkers, tunnels, and rooftop ambushes to resist direct assault",
+          "distractors": ["The fighters had artillery", "Soviet troops were nearby", "The ghetto walls were too thick", "International observers were present"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Jewish fighters in the Warsaw Ghetto used weapons smuggled into the ghetto before the uprising.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After suppressing the uprising, Stroop reported: 'The Jewish Quarter of Warsaw is _____.'",
+          "correctAnswer": "No more",
+          "distractors": ["Destroyed", "Pacified", "Cleansed", "Eliminated"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_sobibor_revolt",
+      "correctAnswer": "October 14, 1943",
+      "acceptableAlternatives": ["October 14", "14 October 1943"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did prisoners revolt at the Sobibor extermination camp?",
+      "explanation": "On October 14, 1943, prisoners at the Sobibor death camp staged a revolt, killing several SS guards. Approximately 300 prisoners escaped the camp. Most were later recaptured and killed. In response, the Nazis demolished the camp entirely.",
+      "visualDescription": "Pixel art of a dark forest treeline at dusk, a wooden fence with barbed wire visible, silhouettes of figures running toward the trees across open ground.",
+      "sourceName": "United States Holocaust Memorial Museum — Sobibor",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/sobibor",
+      "volatile": false,
+      "distractors": [
+        "August 2, 1943",
+        "April 19, 1943",
+        "October 7, 1944",
+        "January 18, 1943",
+        "June 22, 1941",
+        "November 9, 1938",
+        "December 8, 1941",
+        "September 3, 1943"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "After the prisoner revolt at Sobibor in October 1943, what did the Nazis do with the camp?",
+          "correctAnswer": "Demolished it",
+          "distractors": ["Converted it to a POW camp", "Increased security and continued operations", "Handed it to the SS Death's Head units", "Evacuated it to Germany"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Approximately how many prisoners escaped during the Sobibor revolt of October 1943?",
+          "correctAnswer": "About 300",
+          "distractors": ["About 50", "About 600", "About 1,000", "About 100"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Most prisoners who escaped the Sobibor revolt were later recaptured and killed.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Sobibor revolt prisoners gained the upper hand by _____ several SS guards.",
+          "correctAnswer": "Killing",
+          "distractors": ["Capturing", "Disarming", "Bribing", "Trapping"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_treblinka_revolt",
+      "correctAnswer": "August 2, 1943",
+      "acceptableAlternatives": ["August 2", "2 August 1943"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did prisoners revolt at the Treblinka extermination camp?",
+      "explanation": "On August 2, 1943, Treblinka prisoners seized weapons from the camp armory and set fire to several buildings. About 200 prisoners escaped into the surrounding forest. Treblinka was subsequently destroyed by the Nazis to conceal evidence of the mass killings.",
+      "visualDescription": "Pixel art of flames rising from wooden camp buildings, a chaotic scene with small figures running toward a fence in the background, smoke billowing under a dark sky.",
+      "sourceName": "United States Holocaust Memorial Museum — Treblinka",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/treblinka",
+      "volatile": false,
+      "distractors": [
+        "October 14, 1943",
+        "April 19, 1943",
+        "October 7, 1944",
+        "July 22, 1942",
+        "January 18, 1943",
+        "November 19, 1942",
+        "September 1, 1943",
+        "March 14, 1943"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "During the Treblinka revolt on August 2, 1943, where did prisoners obtain their weapons?",
+          "correctAnswer": "The camp armory",
+          "distractors": ["Smuggled in from outside", "Taken from killed guards", "Hidden under barracks floors", "Provided by Polish partisans"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Approximately how many prisoners escaped into the forest during the Treblinka revolt?",
+          "correctAnswer": "About 200",
+          "distractors": ["About 50", "About 500", "About 1,000", "About 20"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: After the Treblinka revolt, the Nazis destroyed the camp to conceal evidence.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Treblinka revolt began when prisoners seized weapons and set fire to camp _____.",
+          "correctAnswer": "Buildings",
+          "distractors": ["Guard towers", "Vehicles", "Supply depots", "Gates"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_sonderkommando_revolt",
+      "correctAnswer": "October 7, 1944",
+      "acceptableAlternatives": ["October 7", "7 October 1944"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did the Sonderkommando revolt at Auschwitz-Birkenau?",
+      "explanation": "On October 7, 1944, Sonderkommando prisoners — Jews forced to work in the crematoria — blew up Crematorium IV at Auschwitz-Birkenau using explosives smuggled in by women workers. All rebels were killed. It remains one of the most dramatic acts of armed resistance within a Nazi death camp.",
+      "visualDescription": "Pixel art of a concrete crematorium building erupting in an explosion at night, orange light flaring against the dark silhouettes of Auschwitz barracks in the background.",
+      "sourceName": "United States Holocaust Memorial Museum — Sonderkommando",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/sonderkommando",
+      "volatile": false,
+      "distractors": [
+        "August 2, 1943",
+        "October 14, 1943",
+        "April 19, 1943",
+        "January 27, 1945",
+        "November 9, 1938",
+        "June 6, 1944",
+        "September 3, 1944",
+        "December 7, 1941"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What structure did the Sonderkommando blow up during their revolt at Auschwitz on October 7, 1944?",
+          "correctAnswer": "Crematorium IV",
+          "distractors": ["The main gatehouse", "The camp commandant's office", "A guard barracks", "The camp hospital"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How did the Sonderkommando obtain the explosives used to blow up the crematorium?",
+          "correctAnswer": "Smuggled in by women workers at a nearby munitions factory",
+          "distractors": ["Stolen from a supply train", "Provided by the Polish underground", "Hidden by escaping Soviet POWs", "Taken from a bombed SS storage depot"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Sonderkommando rebels who blew up Crematorium IV survived the war.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Sonderkommando were Jewish prisoners forced to work in the _____ at Auschwitz.",
+          "correctAnswer": "Crematoria",
+          "distractors": ["Kitchens", "Munitions factories", "Guard barracks", "Medical wards"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_schindler_saved",
+      "correctAnswer": "About 1,200",
+      "acceptableAlternatives": ["1,200", "approximately 1,200", "1200"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Approximately how many Jews did Oskar Schindler save by employing them in his factories?",
+      "explanation": "Oskar Schindler, a German industrialist and Nazi Party member, saved approximately 1,200 Jews by employing them in his enamelware and munitions factories in Kraków and Brünnlitz. He spent his entire fortune bribing Nazi officials to keep his workers off the deportation lists.",
+      "visualDescription": "Pixel art of an industrial factory floor with Jewish workers at machines, a figure in a suit standing near the door, pale light filtering through grimy windows.",
+      "sourceName": "United States Holocaust Memorial Museum — Oskar Schindler",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/oskar-schindler",
+      "volatile": false,
+      "distractors": [
+        "About 300",
+        "About 500",
+        "About 2,500",
+        "About 5,000",
+        "About 800",
+        "About 10,000",
+        "About 150",
+        "About 3,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Oskar Schindler saved about 1,200 Jews — what was his occupation that gave him the means to do so?",
+          "correctAnswer": "German industrialist (factory owner)",
+          "distractors": ["Diplomat", "Military officer", "Catholic priest", "Underground newspaper editor"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What did Oskar Schindler spend his entire fortune on to protect the Jews he employed?",
+          "correctAnswer": "Bribing Nazi officials",
+          "distractors": ["Buying forged identity documents", "Funding a partisan network", "Paying SS guards to look the other way during escapes", "Purchasing a farm to hide people"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Oskar Schindler was a member of the Nazi Party.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Oskar Schindler's rescue effort is the subject of the novel and film '_____'s List'.",
+          "correctAnswer": "Schindler",
+          "distractors": ["Wallenberg's", "Korczak's", "Frank's", "Wiesel's"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_wallenberg_passports",
+      "correctAnswer": "Raoul Wallenberg",
+      "acceptableAlternatives": ["Wallenberg"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which Swedish diplomat saved tens of thousands of Hungarian Jews by issuing protective passports in Budapest?",
+      "explanation": "Raoul Wallenberg, a Swedish businessman-turned-diplomat, issued thousands of protective passports — called Schutzpässe — to Hungarian Jews in Budapest in 1944, placing them under Swedish diplomatic protection. His efforts saved tens of thousands before he was arrested by Soviet forces in January 1945 and disappeared.",
+      "visualDescription": "Pixel art of a formal document with a Swedish crown seal being handed through a crowd of anxious figures outside a grand Budapest building, autumn leaves on the cobblestones.",
+      "sourceName": "United States Holocaust Memorial Museum — Raoul Wallenberg",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/raoul-wallenberg",
+      "volatile": false,
+      "distractors": [
+        "Oskar Schindler",
+        "Giorgio Perlasca",
+        "Carl Lutz",
+        "Angel Sanz-Briz",
+        "Frederick Born",
+        "Aristides de Sousa Mendes",
+        "Jan Karski",
+        "Per Anger"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Raoul Wallenberg disappeared after being arrested in January 1945 — by which country's forces was he arrested?",
+          "correctAnswer": "Soviet Union",
+          "distractors": ["Germany", "Hungary", "Romania", "United States"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What were the protective passports issued by Raoul Wallenberg in Budapest called?",
+          "correctAnswer": "Schutzpässe",
+          "distractors": ["Nansen passports", "Laissez-passer documents", "Sicherheitsausweise", "Yellow star exemptions"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Raoul Wallenberg was a Swedish diplomat who operated in Budapest in 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Raoul Wallenberg placed Jews under _____ diplomatic protection using specially designed passports.",
+          "correctAnswer": "Swedish",
+          "distractors": ["Swiss", "Danish", "Portuguese", "Vatican"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_kindertransport_number",
+      "correctAnswer": "About 10,000",
+      "acceptableAlternatives": ["10,000", "approximately 10,000", "nearly 10,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Approximately how many Jewish children were brought to Britain by the Kindertransport?",
+      "explanation": "The Kindertransport ('children's transport') was an organized rescue effort that brought approximately 10,000 Jewish children from Nazi-occupied Europe to Great Britain between December 1938 and September 1939. Most of the children's parents were unable to accompany them and later perished in the Holocaust.",
+      "visualDescription": "Pixel art of a steam train platform, children with small suitcases and name tags boarding train cars, adults waving goodbye from behind a fence, grey morning light.",
+      "sourceName": "United States Holocaust Memorial Museum — Kindertransport",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/kindertransport-1938-40",
+      "volatile": false,
+      "distractors": [
+        "About 2,000",
+        "About 5,000",
+        "About 20,000",
+        "About 1,000",
+        "About 50,000",
+        "About 3,000",
+        "About 7,500",
+        "About 15,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Kindertransport brought approximately 10,000 children to safety — which country received them?",
+          "correctAnswer": "Great Britain",
+          "distractors": ["United States", "Sweden", "Switzerland", "France"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What happened to most of the parents of the children who were sent on the Kindertransport?",
+          "correctAnswer": "Most perished in the Holocaust",
+          "distractors": ["Most escaped to South America", "Most were imprisoned but survived", "Most emigrated to Palestine", "Most were released after the war"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Parents were permitted to accompany their children on the Kindertransport.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Kindertransport operated between December 1938 and _____ 1939.",
+          "correctAnswer": "September",
+          "distractors": ["March", "June", "December", "January"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_denmark_rescue",
+      "correctAnswer": "About 7,200",
+      "acceptableAlternatives": ["7,200", "approximately 7,200", "nearly 7,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Approximately how many Danish Jews were rescued by evacuation to Sweden in October 1943?",
+      "explanation": "In October 1943, Danish citizens organized a remarkable rescue operation, ferrying approximately 7,200 Jews — nearly the entire Danish Jewish population — across the Øresund strait to neutral Sweden in fishing boats and other small vessels. The operation saved almost the entire community from deportation.",
+      "visualDescription": "Pixel art of small fishing boats crossing dark water at night, huddled figures wrapped in coats, a faint coastline with lights visible in the distant fog.",
+      "sourceName": "United States Holocaust Memorial Museum — Rescue in Denmark",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/rescue-in-denmark",
+      "volatile": false,
+      "distractors": [
+        "About 500",
+        "About 2,000",
+        "About 15,000",
+        "About 1,000",
+        "About 4,500",
+        "About 20,000",
+        "About 3,000",
+        "About 10,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "In the Danish rescue operation of October 1943, approximately 7,200 Jews were evacuated to which country?",
+          "correctAnswer": "Sweden",
+          "distractors": ["Britain", "Norway", "Switzerland", "United States"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What type of vessels did Danish citizens use to ferry Jews across to Sweden in October 1943?",
+          "correctAnswer": "Fishing boats and other small vessels",
+          "distractors": ["Military submarines", "Commercial ferries", "Neutral Red Cross ships", "Swedish naval escorts"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Danish rescue of October 1943 saved nearly the entire Danish Jewish population.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Danish Jews were evacuated by boat across the _____ strait to Sweden.",
+          "correctAnswer": "Øresund",
+          "distractors": ["Kattegat", "Skagerrak", "Baltic", "North Sea"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_righteous_nations_count",
+      "correctAnswer": "Over 27,000",
+      "acceptableAlternatives": ["27,000", "more than 27,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "How many non-Jews have been recognized with the 'Righteous Among the Nations' title by Yad Vashem?",
+      "explanation": "Yad Vashem, Israel's official Holocaust memorial, awards the title 'Righteous Among the Nations' to non-Jews who risked their lives to save Jews during the Holocaust. Over 27,000 individuals from more than 50 countries have been recognized. Poland has the highest number of honorees.",
+      "visualDescription": "Pixel art of a tree-lined avenue in a memorial garden, small plaques visible along a stone wall, sunlight filtering through leaves onto a path of remembrance.",
+      "sourceName": "Yad Vashem — Righteous Among the Nations",
+      "sourceUrl": "https://www.yadvashem.org/righteous.html",
+      "volatile": false,
+      "distractors": [
+        "Over 5,000",
+        "Over 10,000",
+        "Over 50,000",
+        "Over 1,000",
+        "Over 100,000",
+        "Over 15,000",
+        "Over 3,000",
+        "Over 20,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which country has the highest number of 'Righteous Among the Nations' honorees at Yad Vashem?",
+          "correctAnswer": "Poland",
+          "distractors": ["Germany", "France", "Netherlands", "Ukraine"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What is the requirement for receiving the 'Righteous Among the Nations' title from Yad Vashem?",
+          "correctAnswer": "A non-Jew who risked their life to save Jews during the Holocaust",
+          "distractors": ["Any person who aided Jews after the war", "A soldier who liberated a concentration camp", "A journalist who documented Nazi crimes", "A diplomat who granted visas to refugees"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The 'Righteous Among the Nations' title is awarded by Yad Vashem in Israel.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Righteous Among the Nations honorees are recognized for risking their lives to save Jews during the _____.",
+          "correctAnswer": "Holocaust",
+          "distractors": ["First World War", "Spanish Civil War", "Armenian Genocide", "Stalinist purges"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_auschwitz_liberation_date",
+      "correctAnswer": "January 27, 1945",
+      "acceptableAlternatives": ["January 27", "27 January 1945"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "On what date did Soviet forces liberate Auschwitz-Birkenau?",
+      "explanation": "Soviet forces of the Red Army liberated Auschwitz-Birkenau on January 27, 1945, finding approximately 7,000 surviving prisoners — those too weak to be marched west in the Nazi death marches. This date was designated International Holocaust Remembrance Day by the United Nations in 2005.",
+      "visualDescription": "Pixel art of Soviet soldiers in winter coats opening the gates of a snow-covered camp, emaciated figures standing in striped uniforms inside, a grey winter sky above.",
+      "sourceName": "United States Holocaust Memorial Museum — Liberation of Auschwitz",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/liberation-of-auschwitz",
+      "volatile": false,
+      "distractors": [
+        "April 15, 1945",
+        "April 29, 1945",
+        "April 11, 1945",
+        "May 8, 1945",
+        "February 13, 1945",
+        "December 25, 1944",
+        "March 7, 1945",
+        "January 1, 1945"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "January 27 is now observed as International Holocaust Remembrance Day because of a liberation that occurred on that date. Which camp was liberated?",
+          "correctAnswer": "Auschwitz-Birkenau",
+          "distractors": ["Bergen-Belsen", "Dachau", "Buchenwald", "Treblinka"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why were approximately 7,000 prisoners still inside Auschwitz when Soviet forces arrived on January 27, 1945?",
+          "correctAnswer": "They were too weak to be evacuated on the Nazi death marches",
+          "distractors": ["The Soviets arrived before the Nazis could deport them", "They were hidden in underground bunkers", "The Nazis abandoned the camp suddenly without evacuating anyone", "They were held as witnesses for Nazi trials"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The United Nations designated January 27 as International Holocaust Remembrance Day.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Auschwitz was liberated by forces of the _____ Army.",
+          "correctAnswer": "Soviet (Red)",
+          "distractors": ["American", "British", "Polish", "French"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_belsen_liberation",
+      "correctAnswer": "April 15, 1945",
+      "acceptableAlternatives": ["April 15", "15 April 1945"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "On what date did British forces liberate the Bergen-Belsen concentration camp?",
+      "explanation": "British forces liberated Bergen-Belsen on April 15, 1945, finding approximately 60,000 surviving prisoners and over 13,000 unburied corpses. Among those who had already died was Anne Frank, who perished of typhus just weeks before liberation. BBC correspondent Richard Dimbleby's radio broadcast shocked the world.",
+      "visualDescription": "Pixel art of British soldiers in khaki uniforms looking in horror at rows of still figures on the ground inside a camp, a low wooden barracks in the background, overcast sky.",
+      "sourceName": "United States Holocaust Memorial Museum — Liberation of Bergen-Belsen",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/liberation-of-bergen-belsen",
+      "volatile": false,
+      "distractors": [
+        "January 27, 1945",
+        "April 29, 1945",
+        "April 11, 1945",
+        "May 8, 1945",
+        "March 30, 1945",
+        "April 1, 1945",
+        "April 23, 1945",
+        "February 28, 1945"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Bergen-Belsen was liberated on April 15, 1945. Which famous diarist had died there just weeks before?",
+          "correctAnswer": "Anne Frank",
+          "distractors": ["Elie Wiesel", "Primo Levi", "Viktor Frankl", "Etty Hillesum"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Which Allied nation liberated Bergen-Belsen?",
+          "correctAnswer": "Britain",
+          "distractors": ["United States", "Soviet Union", "France", "Canada"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Anne Frank survived Bergen-Belsen and was liberated by British forces.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Bergen-Belsen, British forces found over 13,000 _____ corpses when they arrived on April 15, 1945.",
+          "correctAnswer": "Unburied",
+          "distractors": ["Cremated", "Mass-buried", "Identified", "Numbered"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_dachau_liberation",
+      "correctAnswer": "April 29, 1945",
+      "acceptableAlternatives": ["April 29", "29 April 1945"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "On what date did American forces liberate Dachau concentration camp?",
+      "explanation": "American forces of the 45th Infantry Division liberated Dachau on April 29, 1945 — just days before Germany's surrender. They found approximately 32,000 surviving prisoners and a train filled with corpses. The liberation of Dachau provoked some US soldiers to execute SS guards in anger, in what became known as the 'Dachau massacre.'",
+      "visualDescription": "Pixel art of American soldiers in olive drab uniforms entering a camp gate marked with German lettering, emaciated survivors reaching out through a barbed wire fence, spring light.",
+      "sourceName": "United States Holocaust Memorial Museum — Dachau",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/dachau",
+      "volatile": false,
+      "distractors": [
+        "April 11, 1945",
+        "April 15, 1945",
+        "January 27, 1945",
+        "May 2, 1945",
+        "March 20, 1945",
+        "April 7, 1945",
+        "April 21, 1945",
+        "May 8, 1945"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "American forces liberated Dachau on April 29, 1945. Which US Army division carried out the liberation?",
+          "correctAnswer": "45th Infantry Division",
+          "distractors": ["101st Airborne Division", "3rd Armored Division", "1st Infantry Division", "82nd Airborne Division"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Besides surviving prisoners, what shocking discovery did American soldiers make at Dachau upon liberation?",
+          "correctAnswer": "A train filled with corpses",
+          "distractors": ["A fully operational gas chamber", "Underground mass graves with thousands of bodies", "A Nazi gold storage vault", "A medical research laboratory still in use"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Dachau was liberated by American forces.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Dachau was liberated on April 29, 1945 — just days before Germany's _____ on May 8.",
+          "correctAnswer": "Surrender",
+          "distractors": ["Evacuation", "Armistice", "Invasion", "Partition"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_buchenwald_liberation",
+      "correctAnswer": "April 11, 1945",
+      "acceptableAlternatives": ["April 11", "11 April 1945"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "On what date did American forces liberate Buchenwald concentration camp?",
+      "explanation": "American forces liberated Buchenwald concentration camp on April 11, 1945. General Dwight D. Eisenhower personally visited the camp and ordered German civilians and soldiers to view what had been done in their name. He also ordered extensive documentation, anticipating that future generations might deny the atrocities.",
+      "visualDescription": "Pixel art of an American general in uniform standing before rows of emaciated survivors in a concentration camp barracks, filmed by a military camera crew, somber grey daylight.",
+      "sourceName": "United States Holocaust Memorial Museum — Buchenwald",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/buchenwald",
+      "volatile": false,
+      "distractors": [
+        "April 29, 1945",
+        "April 15, 1945",
+        "January 27, 1945",
+        "March 25, 1945",
+        "April 2, 1945",
+        "April 19, 1945",
+        "May 1, 1945",
+        "February 14, 1945"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Buchenwald was liberated on April 11, 1945. Which Allied commander personally visited the camp and ordered documentation?",
+          "correctAnswer": "General Dwight D. Eisenhower",
+          "distractors": ["General George S. Patton", "General Omar Bradley", "General Douglas MacArthur", "General Mark Clark"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why did Eisenhower order extensive documentation of Buchenwald after liberation?",
+          "correctAnswer": "He anticipated future generations might deny the atrocities",
+          "distractors": ["To gather evidence for an immediate war crimes tribunal", "To catalog confiscated property for restitution", "To create a public health report on camp conditions", "To satisfy Congress's demand for proof of Nazi crimes"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Eisenhower ordered German civilians to visit Buchenwald after liberation.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Buchenwald was liberated by _____ forces on April 11, 1945.",
+          "correctAnswer": "American",
+          "distractors": ["British", "Soviet", "French", "Canadian"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_nuremberg_sentenced",
+      "correctAnswer": "12",
+      "acceptableAlternatives": ["twelve"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "How many Nazi defendants were sentenced to death at the Nuremberg Trials?",
+      "explanation": "At the main Nuremberg Trials (1945–1946), 12 of the 24 major Nazi defendants were sentenced to death. Among those executed by hanging in October 1946 were Hermann Göring (who cheated the executioner by suicide), Joachim von Ribbentrop, Wilhelm Keitel, and Alfred Jodl. Rudolf Hess received life imprisonment.",
+      "visualDescription": "Pixel art of a formal courtroom scene, rows of defendants in the dock with headphones, American military police standing guard, paneled wooden walls under bright lights.",
+      "sourceName": "United States Holocaust Memorial Museum — Nuremberg Trials",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-nuremberg-trials",
+      "volatile": false,
+      "distractors": [
+        "3",
+        "6",
+        "8",
+        "20",
+        "24",
+        "15",
+        "18",
+        "9"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Of the 12 Nuremberg defendants sentenced to death, one committed suicide before execution. Who was it?",
+          "correctAnswer": "Hermann Göring",
+          "distractors": ["Rudolf Hess", "Albert Speer", "Hans Frank", "Wilhelm Keitel"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In what years did the main Nuremberg Trials take place?",
+          "correctAnswer": "1945–1946",
+          "distractors": ["1944–1945", "1946–1948", "1947–1949", "1943–1945"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Rudolf Hess was sentenced to death at the Nuremberg Trials.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Nuremberg Trials were held to prosecute major Nazi _____ criminals.",
+          "correctAnswer": "War",
+          "distractors": ["Financial", "Political", "Military", "Civilian"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_holocaust_remembrance_day",
+      "correctAnswer": "January 27",
+      "acceptableAlternatives": ["January 27th", "27 January"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "What date is observed as International Holocaust Remembrance Day?",
+      "explanation": "January 27 is International Holocaust Remembrance Day, established by United Nations Resolution 60/7 in November 2005. The date marks the anniversary of the liberation of Auschwitz-Birkenau by Soviet forces on January 27, 1945. UN member states are urged to hold memorial ceremonies and educational programs.",
+      "visualDescription": "Pixel art of a candle flame casting soft light on a cracked stone memorial wall, faint inscribed names visible, snowflakes drifting in darkness around the glow.",
+      "sourceName": "United Nations — International Holocaust Remembrance Day",
+      "sourceUrl": "https://www.un.org/en/holocaustremembrance/",
+      "volatile": false,
+      "distractors": [
+        "November 9",
+        "April 19",
+        "May 8",
+        "October 7",
+        "September 1",
+        "April 15",
+        "December 10",
+        "March 15"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "International Holocaust Remembrance Day on January 27 commemorates the liberation of which camp?",
+          "correctAnswer": "Auschwitz-Birkenau",
+          "distractors": ["Bergen-Belsen", "Dachau", "Treblinka", "Buchenwald"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Which international body established January 27 as International Holocaust Remembrance Day?",
+          "correctAnswer": "United Nations",
+          "distractors": ["European Union", "International Red Cross", "UNESCO", "International Criminal Court"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: International Holocaust Remembrance Day is observed on January 27.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "International Holocaust Remembrance Day was established by UN Resolution 60/7 in _____.",
+          "correctAnswer": "2005",
+          "distractors": ["1945", "1995", "1948", "2000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_anne_frank_diary_published",
+      "correctAnswer": "1947",
+      "acceptableAlternatives": ["in 1947"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "In what year was Anne Frank's diary first published?",
+      "explanation": "Anne Frank's diary was first published in 1947 in Dutch as 'Het Achterhuis' ('The Secret Annex'), edited by her father Otto Frank — the sole surviving member of their family. It has since been translated into more than 70 languages and remains the most widely read Holocaust memoir in the world.",
+      "visualDescription": "Pixel art of a red-checked hardcover diary on a wooden desk, soft candlelight illuminating handwritten pages, a small window with drawn curtains in the background.",
+      "sourceName": "United States Holocaust Memorial Museum — Anne Frank",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/anne-frank-biography",
+      "volatile": false,
+      "distractors": [
+        "1945",
+        "1950",
+        "1952",
+        "1939",
+        "1946",
+        "1955",
+        "1944",
+        "1960"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Anne Frank's diary was first published in 1947. Who edited and arranged for its publication?",
+          "correctAnswer": "Her father, Otto Frank",
+          "distractors": ["Her sister Margot Frank", "Her mother Edith Frank", "A Dutch publisher who found it in the annex", "A survivor of Bergen-Belsen"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Into how many languages has Anne Frank's diary been translated?",
+          "correctAnswer": "More than 70",
+          "distractors": ["About 10", "About 25", "More than 100", "About 50"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Otto Frank was the only member of his immediate family to survive the Holocaust.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Anne Frank's diary was first published in Dutch under the title 'Het _____' (The Secret Annex).",
+          "correctAnswer": "Achterhuis",
+          "distractors": ["Tagesbuch", "Journal", "Dagboek", "Notizen"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_wiesel_night",
+      "correctAnswer": "Elie Wiesel",
+      "acceptableAlternatives": ["Wiesel"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which Holocaust survivor authored the memoir 'Night' and received the Nobel Peace Prize in 1986?",
+      "explanation": "Elie Wiesel, a Romanian-born Holocaust survivor who was deported to Auschwitz in 1944, wrote 'Night' — a harrowing memoir of his experiences. First published in Yiddish in 1956 and in French in 1958, it became one of the most important works of Holocaust literature. Wiesel received the Nobel Peace Prize in 1986.",
+      "visualDescription": "Pixel art of a frail figure in striped camp clothing looking upward in a dark barracks, a single window casting faint light, other silent figures lying on wooden bunks.",
+      "sourceName": "United States Holocaust Memorial Museum — Elie Wiesel",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/elie-wiesel",
+      "volatile": false,
+      "distractors": [
+        "Anne Frank",
+        "Primo Levi",
+        "Viktor Frankl",
+        "Imre Kertész",
+        "Jean Améry",
+        "Tadeusz Borowski",
+        "Władysław Szpilman",
+        "Hannah Arendt"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Elie Wiesel received the Nobel Peace Prize in 1986. To which death camp was he deported in 1944?",
+          "correctAnswer": "Auschwitz",
+          "distractors": ["Treblinka", "Sobibor", "Bergen-Belsen", "Dachau"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In what year was Elie Wiesel's memoir 'Night' first published in Yiddish?",
+          "correctAnswer": "1956",
+          "distractors": ["1945", "1947", "1960", "1952"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Elie Wiesel's memoir 'Night' was first written in Yiddish.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Elie Wiesel received the Nobel _____ Prize in 1986.",
+          "correctAnswer": "Peace",
+          "distractors": ["Literature", "Memorial in Economic Sciences", "Chemistry", "Medicine"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_yad_vashem_established",
+      "correctAnswer": "1953",
+      "acceptableAlternatives": ["in 1953"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "In what year was Yad Vashem, Israel's Holocaust memorial and museum, established?",
+      "explanation": "Yad Vashem was established in 1953 by a law of the Israeli Knesset (parliament). Located on the Mount of Remembrance in Jerusalem, it serves as the world's largest Holocaust archive and museum. 'Yad Vashem' comes from the Book of Isaiah and means 'a memorial and a name.'",
+      "visualDescription": "Pixel art of a stone memorial building on a hillside under a bright Jerusalem sky, cypress trees lining the path, visitors walking solemnly toward the entrance.",
+      "sourceName": "Yad Vashem — About Yad Vashem",
+      "sourceUrl": "https://www.yadvashem.org/about/yad-vashem.html",
+      "volatile": false,
+      "distractors": [
+        "1945",
+        "1948",
+        "1961",
+        "1967",
+        "1970",
+        "1950",
+        "1956",
+        "1938"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Yad Vashem was established in 1953. In which city is it located?",
+          "correctAnswer": "Jerusalem",
+          "distractors": ["Tel Aviv", "Haifa", "Warsaw", "New York"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What does the name 'Yad Vashem' mean, from the Book of Isaiah?",
+          "correctAnswer": "A memorial and a name",
+          "distractors": ["Never again", "Remember and remember", "Light in the darkness", "The place of names"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Yad Vashem was established by a law of the Israeli Knesset.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Yad Vashem is located on the Mount of Remembrance in _____.",
+          "correctAnswer": "Jerusalem",
+          "distractors": ["Tel Aviv", "Haifa", "Nazareth", "Beer Sheva"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_eichmann_trial_year",
+      "correctAnswer": "1961",
+      "acceptableAlternatives": ["1961–1962", "1961-62"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "In what year did the trial of Adolf Eichmann begin in Jerusalem?",
+      "explanation": "The trial of Adolf Eichmann — the SS lieutenant colonel who organized the logistics of the Holocaust — began in Jerusalem in April 1961. It was among the first trials to be televised globally and brought renewed worldwide attention to the Holocaust. He was found guilty and executed in May 1962.",
+      "visualDescription": "Pixel art of a courtroom with a bulletproof glass booth at the center, a pale bureaucratic figure visible inside, rows of observers watching, film cameras visible at the sides.",
+      "sourceName": "United States Holocaust Memorial Museum — Eichmann Trial",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-trial-of-adolf-eichmann",
+      "volatile": false,
+      "distractors": [
+        "1945",
+        "1946",
+        "1955",
+        "1968",
+        "1972",
+        "1950",
+        "1975",
+        "1960"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Adolf Eichmann was tried in Jerusalem in 1961. What had been his role in the Holocaust?",
+          "correctAnswer": "Organizing the logistics of deportations to the death camps (head of the SS Jewish Affairs section)",
+          "distractors": ["Commanding Auschwitz as its first commandant", "Designing the Final Solution policy", "Leading SS Einsatzgruppen killing squads", "Running the Wannsee Conference as chairman"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Eichmann trial was historically significant partly because it was one of the first trials to be what?",
+          "correctAnswer": "Televised globally",
+          "distractors": ["Conducted in a neutral country", "Open to Jewish survivor testimony", "Presided over by an international court", "Broadcast on radio worldwide"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Adolf Eichmann was executed after his trial in Jerusalem.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Eichmann was captured by Israeli _____ agents in Argentina in 1960 before being brought to trial.",
+          "correctAnswer": "Mossad",
+          "distractors": ["Shin Bet", "Palmach", "IDF special forces", "Interpol"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_banality_of_evil",
+      "correctAnswer": "Hannah Arendt",
+      "acceptableAlternatives": ["Arendt"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Which philosopher coined the phrase 'the banality of evil' after attending the Eichmann trial?",
+      "explanation": "Hannah Arendt, a German-Jewish political philosopher, covered the Eichmann trial for The New Yorker magazine and published 'Eichmann in Jerusalem: A Report on the Banality of Evil' in 1963. Her controversial thesis argued that Eichmann was not a monster but an ordinary bureaucrat who followed orders without critical thought — a disturbing illustration of how ordinary people can participate in atrocities.",
+      "visualDescription": "Pixel art of a woman with short grey hair writing at a desk with a typewriter, stacks of papers and a glass of water nearby, a newspaper visible with the headline about a trial.",
+      "sourceName": "Wikipedia — Hannah Arendt",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hannah_Arendt",
+      "volatile": false,
+      "distractors": [
+        "Simone de Beauvoir",
+        "Primo Levi",
+        "Elie Wiesel",
+        "Simon Wiesenthal",
+        "Theodor Adorno",
+        "Raul Hilberg",
+        "Gershom Scholem",
+        "Mary McCarthy"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Hannah Arendt coined 'the banality of evil' — in what publication did she cover the Eichmann trial?",
+          "correctAnswer": "The New Yorker",
+          "distractors": ["The New York Times", "The Times of London", "Die Zeit", "Commentary Magazine"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What was Hannah Arendt's main argument about Eichmann in 'Eichmann in Jerusalem'?",
+          "correctAnswer": "He was an ordinary bureaucrat who followed orders without critical moral thought, not a fanatic monster",
+          "distractors": ["He was mentally ill and not legally responsible for his actions", "He was a true believer in Nazi ideology who enjoyed killing", "He was a scapegoat covering for higher-ranking officials", "He had been coerced by Himmler and acted under duress"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hannah Arendt's conclusions about Eichmann were widely praised without controversy.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Arendt published her Eichmann trial report as 'Eichmann in Jerusalem: A Report on the Banality of _____.'",
+          "correctAnswer": "Evil",
+          "distractors": ["Obedience", "Power", "Bureaucracy", "Complicity"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_never_again",
+      "correctAnswer": "Never Again",
+      "acceptableAlternatives": ["Never again"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 1,
+      "funScore": 5,
+      "quizQuestion": "What two-word phrase became the rallying cry of Holocaust remembrance, vowing to prevent future genocides?",
+      "explanation": "'Never Again' became the defining moral imperative to emerge from the Holocaust — a vow that the mass extermination of a people must never be allowed to happen again. The phrase has been adopted as a rallying cry by human rights organizations, genocide scholars, and Holocaust survivors worldwide, and is inscribed at many memorials.",
+      "visualDescription": "Pixel art of a cracked stone wall with 'Never Again' engraved in weathered letters, a single candle burning at its base, soft grey light and a fallen autumn leaf nearby.",
+      "sourceName": "United States Holocaust Memorial Museum — Legacy and Memory",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/remembrance-and-memorial",
+      "volatile": false,
+      "distractors": [
+        "Lest We Forget",
+        "We Remember",
+        "Always Remember",
+        "Not in Our Name",
+        "No More War",
+        "Remember the Fallen",
+        "We Shall Overcome",
+        "Justice for All"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The phrase 'Never Again' arose specifically in response to what historical event?",
+          "correctAnswer": "The Holocaust",
+          "distractors": ["World War I", "The Armenian Genocide", "The Rwandan Genocide", "The atomic bombings of Japan"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What does 'Never Again' pledge in the context of Holocaust remembrance?",
+          "correctAnswer": "That genocide and mass extermination must never be allowed to happen again",
+          "distractors": ["That no nation will ever go to war again", "That all war criminals will be prosecuted", "That antisemitism is now eliminated from society", "That all Holocaust survivors will receive reparations"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: 'Never Again' is a rallying cry associated with Holocaust remembrance and preventing future genocides.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The two-word Holocaust remembrance rallying cry is '_____ _____'.",
+          "correctAnswer": "Never Again",
+          "distractors": ["Lest Forget", "Always Remember", "No More", "Not Again"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_liberation_nuremberg_evidence",
+      "correctAnswer": "Nuremberg Trials",
+      "acceptableAlternatives": ["the Nuremberg Trials", "Nuremberg"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "Documentation gathered by Allied liberators at concentration camps was used as evidence in which postwar proceedings?",
+      "explanation": "When Allied forces liberated Nazi concentration camps in 1945, military photographers, journalists, and officers documented the atrocities extensively. This evidence — photographs, film footage, survivor testimony, and camp records — was subsequently used at the Nuremberg Trials to prosecute Nazi war criminals.",
+      "visualDescription": "Pixel art of a military photographer in a WWII helmet carefully photographing rows of prisoner bunks inside a dim barracks, a note-taker visible in the background.",
+      "sourceName": "United States Holocaust Memorial Museum — Nuremberg Trials",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-nuremberg-trials",
+      "volatile": false,
+      "distractors": [
+        "The Tokyo Trials",
+        "The United Nations General Assembly",
+        "The League of Nations",
+        "The International Red Cross hearings",
+        "The Potsdam Conference",
+        "The Eichmann trial in Jerusalem",
+        "The Allied Control Council",
+        "The Paris Peace Conference"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "At the Nuremberg Trials, documentation from liberated camps was key evidence. In what city were these trials held?",
+          "correctAnswer": "Nuremberg, Germany",
+          "distractors": ["Berlin, Germany", "Frankfurt, Germany", "Munich, Germany", "Hamburg, Germany"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why did General Eisenhower order thorough documentation when American forces liberated Buchenwald?",
+          "correctAnswer": "He anticipated that future generations might deny the atrocities had occurred",
+          "distractors": ["To provide evidence for an immediate execution of Nazi guards", "To satisfy Congress's requirement for photographic proof", "To create a training manual for occupying Germany", "To file an official report with the Red Cross"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Allied liberators documented concentration camp conditions for use as evidence at postwar trials.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Documentation from liberated camps, including photographs, film, and survivor testimony, was presented as evidence at the _____ Trials.",
+          "correctAnswer": "Nuremberg",
+          "distractors": ["Tokyo", "Jerusalem", "Hague", "Paris"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_schindler_nationality",
+      "correctAnswer": "German",
+      "acceptableAlternatives": ["a German"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "What was Oskar Schindler's nationality?",
+      "explanation": "Oskar Schindler was a German from the Sudetenland (now part of the Czech Republic), born in 1908. A Nazi Party member and war profiteer who initially exploited Jewish forced labor, he transformed into a rescuer who spent his fortune protecting approximately 1,200 Jews from deportation to death camps.",
+      "visualDescription": "Pixel art of a well-dressed man in a 1940s suit and fedora walking through a factory courtyard past Jewish workers, the man looking over his shoulder with a cautious expression.",
+      "sourceName": "United States Holocaust Memorial Museum — Oskar Schindler",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/oskar-schindler",
+      "volatile": false,
+      "distractors": [
+        "Austrian",
+        "Polish",
+        "Swedish",
+        "Swiss",
+        "Czech",
+        "Hungarian",
+        "Dutch",
+        "Danish"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Oskar Schindler was a German industrialist — in which occupied Polish city were his factories located?",
+          "correctAnswer": "Kraków",
+          "distractors": ["Warsaw", "Łódź", "Lublin", "Wrocław"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Before becoming a rescuer, how did Oskar Schindler initially use Jewish workers in his factory?",
+          "correctAnswer": "As cheap forced labor for profit",
+          "distractors": ["As skilled craftsmen he genuinely admired", "As informants for the SS", "As cover for an underground resistance cell", "As domestic servants"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Oskar Schindler was a member of the Nazi Party.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Oskar Schindler was born in 1908 in the _____, a region now part of the Czech Republic.",
+          "correctAnswer": "Sudetenland",
+          "distractors": ["Rhineland", "Silesia", "Bavaria", "Alsace"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_wallenberg_fate",
+      "correctAnswer": "He disappeared after being arrested by the Soviet Union",
+      "acceptableAlternatives": ["Arrested by Soviets and disappeared", "Taken by Soviet forces and never returned"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "What happened to Raoul Wallenberg in January 1945 after Soviet forces entered Budapest?",
+      "explanation": "Raoul Wallenberg was summoned to Soviet military headquarters on January 17, 1945. He was arrested by Soviet forces and transferred to Moscow's Lubyanka prison. The Soviet government later claimed he died of a heart attack in 1947, but his fate remains disputed. Sweden only officially declared him dead in 2016.",
+      "visualDescription": "Pixel art of a figure in a winter coat being escorted by two Soviet soldiers in a snow-covered Budapest street, looking back over his shoulder, ornate building facades in the background.",
+      "sourceName": "United States Holocaust Memorial Museum — Raoul Wallenberg",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/raoul-wallenberg",
+      "volatile": false,
+      "distractors": [
+        "He escaped to Sweden and lived out the war safely",
+        "He was killed by Hungarian Arrow Cross militia",
+        "He was tried at Nuremberg as a minor war criminal",
+        "He emigrated to Israel after the war",
+        "He was captured by Germans and sent to a concentration camp",
+        "He defected to the Soviet Union voluntarily",
+        "He was assassinated in Stockholm in 1946",
+        "He returned to Sweden and died of illness in 1950"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Soviet Union claimed Raoul Wallenberg died of a heart attack — in what year did they say this occurred?",
+          "correctAnswer": "1947",
+          "distractors": ["1945", "1950", "1953", "1962"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In what year did Sweden officially declare Raoul Wallenberg dead?",
+          "correctAnswer": "2016",
+          "distractors": ["1952", "1972", "1947", "1989"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Raoul Wallenberg's ultimate fate after Soviet arrest has been definitively proven.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After his arrest, Wallenberg was transferred to Moscow's _____ prison.",
+          "correctAnswer": "Lubyanka",
+          "distractors": ["Lefortovo", "Butyrka", "Kresty", "Peter and Paul"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_righteous_nations_criterion",
+      "correctAnswer": "Non-Jews who risked their lives to save Jews",
+      "acceptableAlternatives": ["Non-Jews who risked their own lives to save Jews during the Holocaust"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "What is the defining criterion for receiving the 'Righteous Among the Nations' honor from Yad Vashem?",
+      "explanation": "Yad Vashem awards 'Righteous Among the Nations' exclusively to non-Jews who risked their own lives (and often their families' lives) to save Jews during the Holocaust, without expectation of monetary reward. The criteria were established by a formal committee that reviews documented evidence for each application.",
+      "visualDescription": "Pixel art of a simple farmhouse at night with a barn, a faint light visible through shuttered windows, a hidden figure's shadow just visible beneath the floorboards in a cross-section view.",
+      "sourceName": "Yad Vashem — Righteous Among the Nations Criteria",
+      "sourceUrl": "https://www.yadvashem.org/righteous/resources/the-criteria.html",
+      "volatile": false,
+      "distractors": [
+        "Any person who helped Jews emigrate before the war",
+        "Jewish resistance fighters who fought the Nazis",
+        "Allied soldiers who liberated concentration camps",
+        "Journalists who exposed Nazi atrocities to the world",
+        "Government officials who issued visas to refugees",
+        "Doctors who provided medical care to camp survivors",
+        "Postwar lawyers who prosecuted Nazi war criminals",
+        "Scholars who preserve Holocaust documentation"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The 'Righteous Among the Nations' honor is specifically for non-Jews who risked their lives — who bestows this honor?",
+          "correctAnswer": "Yad Vashem (Israel's Holocaust memorial)",
+          "distractors": ["The United Nations", "The Israeli government (separate from Yad Vashem)", "The Simon Wiesenthal Center", "The International Red Cross"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Can someone receive the 'Righteous Among the Nations' title if they accepted monetary payment for helping Jews?",
+          "correctAnswer": "No — the criteria explicitly excludes those who acted for financial reward",
+          "distractors": ["Yes, if the payment was nominal", "Yes, financial circumstances are not considered", "Only if they later donated the money to Jewish organizations", "It depends on the country and period of the rescue"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Jewish survivors of the Holocaust can receive the 'Righteous Among the Nations' honor.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The 'Righteous Among the Nations' honor is awarded only to _____ who risked their lives to save Jews during the Holocaust.",
+          "correctAnswer": "Non-Jews",
+          "distractors": ["Soldiers", "Diplomats", "Clergy", "Doctors"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_sobibor_demolished",
+      "correctAnswer": "Demolished by the Nazis",
+      "acceptableAlternatives": ["Destroyed by the Nazis", "The Nazis demolished it"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "What did the Nazis do to the Sobibor death camp after the prisoner revolt of October 1943?",
+      "explanation": "After the Sobibor revolt on October 14, 1943, Heinrich Himmler ordered the camp closed and demolished to destroy evidence of the mass killings. The site was plowed under and planted with trees and crops. Sobibor had been an extermination camp where an estimated 170,000 to 250,000 Jews were murdered.",
+      "visualDescription": "Pixel art of workers dismantling wooden barracks in a forest clearing, tree stumps and scattered planks visible, a grey overcast sky, the scene methodical and desolate.",
+      "sourceName": "United States Holocaust Memorial Museum — Sobibor",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/sobibor",
+      "volatile": false,
+      "distractors": [
+        "Converted into a POW camp for German soldiers",
+        "Handed to the Red Cross as a relief center",
+        "Abandoned and left as a monument",
+        "Repurposed as a labor camp under different management",
+        "Converted to a military barracks",
+        "Transferred to Ukrainian auxiliary police",
+        "Sealed and guarded as a classified site",
+        "Evacuated east as Soviet forces advanced"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Himmler ordered Sobibor demolished after the revolt — approximately how many Jews had been murdered there?",
+          "correctAnswer": "Between 170,000 and 250,000",
+          "distractors": ["About 10,000", "About 50,000", "About 500,000", "About 1 million"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After Sobibor was demolished, what was the site planted with to conceal its history?",
+          "correctAnswer": "Trees and crops",
+          "distractors": ["A German military cemetery", "A factory", "A school", "A farm owned by the SS"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Nazis demolished Sobibor specifically to destroy evidence of the mass killings.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Sobibor was demolished on the orders of Heinrich _____ after the prisoner revolt.",
+          "correctAnswer": "Himmler",
+          "distractors": ["Heydrich", "Göring", "Bormann", "Eichmann"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_liberation_conditions",
+      "correctAnswer": "Horrific conditions — thousands of unburied dead, mass starvation, disease",
+      "acceptableAlternatives": ["Survivors in horrific condition with unburied dead", "Starvation, disease, unburied corpses"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 4,
+      "quizQuestion": "What conditions did Allied liberators find when they entered Nazi concentration camps in 1945?",
+      "explanation": "When Allied forces liberated Nazi camps in 1945, they encountered catastrophic conditions: thousands of unburied corpses, survivors reduced to living skeletons by starvation, mass outbreaks of typhus and dysentery, and evidence of systematic mass murder. Many survivors were too weak to eat the rations soldiers offered. The scenes traumatized liberating troops.",
+      "visualDescription": "Pixel art of Allied soldiers standing in stunned silence at a camp entrance, hunched skeletal figures in striped uniforms visible nearby, a somber grey palette with muted tones throughout.",
+      "sourceName": "United States Holocaust Memorial Museum — Liberation",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/liberation",
+      "volatile": false,
+      "distractors": [
+        "Orderly, with most prisoners already evacuated by the Nazis",
+        "Quiet, with guards having surrendered peacefully beforehand",
+        "Active — some camps were still operating when liberators arrived",
+        "Empty — the Nazis had successfully destroyed all evidence",
+        "Organized, with Red Cross representatives already on site",
+        "Chaotic due to prisoner escapes before liberators arrived",
+        "Well-provisioned, as the Nazis improved conditions to avoid war crimes charges",
+        "Sealed, requiring liberators to break through reinforced barriers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Allied liberators documented the horrific camp conditions in 1945 — for what future purpose was this documentation specifically useful?",
+          "correctAnswer": "Evidence at the Nuremberg Trials against Nazi war criminals",
+          "distractors": ["To apply for war reparations from Germany", "To plan rebuilding of the camp sites as memorials", "To write official military history reports", "To satisfy the requirements of the armistice agreement"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why were many camp survivors too weak to eat the rations Allied soldiers offered at liberation?",
+          "correctAnswer": "Extreme starvation had shrunk their digestive systems, making rich food dangerous",
+          "distractors": ["They refused to eat German rations on principle", "They were unconscious or delirious from typhus", "They were too fearful to trust the soldiers", "The rations contained substances they were allergic to"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Many Allied soldiers who liberated Nazi camps were psychologically traumatized by what they witnessed.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Bergen-Belsen, British forces found over 13,000 _____ corpses along with approximately 60,000 surviving prisoners.",
+          "correctAnswer": "Unburied",
+          "distractors": ["Cremated", "Identified", "Catalogued", "Exhumed"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_treblinka_destroyed_why",
+      "correctAnswer": "To conceal evidence of mass killings",
+      "acceptableAlternatives": ["To hide evidence of the murders", "To destroy proof of the exterminations"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "Why did the Nazis destroy Treblinka after the prisoner revolt of August 1943?",
+      "explanation": "After the Treblinka revolt in August 1943, the Nazis destroyed the camp to conceal evidence of the approximately 700,000 to 900,000 Jews who had been murdered there. The site was dismantled, plowed under, and a farmhouse built on it. Treblinka was one of the Operation Reinhard death camps designed purely for extermination.",
+      "visualDescription": "Pixel art of a lonely farmhouse in the Polish countryside at dusk, wildflowers growing over a disturbed field, pine trees at the edge of the frame, a single marker stone visible.",
+      "sourceName": "United States Holocaust Memorial Museum — Treblinka",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/treblinka",
+      "volatile": false,
+      "distractors": [
+        "To prevent it from being used as a Soviet POW camp",
+        "To recover building materials for the German war effort",
+        "Because it was no longer needed after deportations ended",
+        "To punish the local civilian population",
+        "Because Allied bombing had already partially destroyed it",
+        "To relocate its operations to a more remote location",
+        "To prevent spreading disease among German troops",
+        "Because Jewish prisoners had made it structurally unsafe"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Treblinka was destroyed to conceal evidence of mass murder. Approximately how many Jews had been killed there?",
+          "correctAnswer": "Between 700,000 and 900,000",
+          "distractors": ["About 70,000", "About 100,000", "About 1.5 million", "About 300,000"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After Treblinka was demolished, what was built on the site to disguise its former use?",
+          "correctAnswer": "A farmhouse",
+          "distractors": ["A German military barracks", "A Ukrainian police station", "An agricultural research station", "A forest plantation"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Treblinka was part of the Nazi program known as Operation Reinhard.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Treblinka, Sobibor, and Belzec were all part of Nazi _____ Reinhard, a program dedicated to extermination.",
+          "correctAnswer": "Operation",
+          "distractors": ["Project", "Plan", "Program", "Phase"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_hc_sonderkommando_smugglers",
+      "correctAnswer": "Women workers at a nearby munitions factory",
+      "acceptableAlternatives": ["Jewish women working at a munitions factory"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Who smuggled the explosives used by the Auschwitz Sonderkommando to blow up Crematorium IV in October 1944?",
+      "explanation": "The explosives used in the October 7, 1944 Sonderkommando revolt were smuggled piece by piece by Jewish women forced to work at the Union munitions factory near Auschwitz. Four women — Roza Robota, Ester Wajcblum, Regina Safirsztajn, and Ala Gertner — were later identified, tortured, and publicly hanged by the Nazis in January 1945.",
+      "visualDescription": "Pixel art of a woman in dark factory clothes slipping a tiny parcel into her clothing near a munitions assembly line, guards visible in the background, the scene tense and dimly lit.",
+      "sourceName": "United States Holocaust Memorial Museum — Sonderkommando Revolt",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/sonderkommando",
+      "volatile": false,
+      "distractors": [
+        "Polish partisans who infiltrated the camp as guards",
+        "Red Army soldiers posing as civilian laborers",
+        "Jewish prisoners who found explosives in a bombed area",
+        "An SS guard bribed with gold and jewelry",
+        "Hungarian civilians who worked at the camp laundry",
+        "Kapo trustees with access to the camp armory",
+        "Soviet POWs held in a separate part of the camp",
+        "A sympathetic German civilian engineer at the plant"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The women who smuggled explosives for the Sonderkommando revolt were later executed — in what month and year?",
+          "correctAnswer": "January 1945",
+          "distractors": ["October 1944", "March 1945", "April 1945", "December 1944"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What was the name of the munitions factory near Auschwitz where the women smugglers worked?",
+          "correctAnswer": "Union factory",
+          "distractors": ["IG Farben factory", "Krupp factory", "Siemens factory", "Rheinmetall factory"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The women who smuggled explosives for the Sonderkommando revolt were publicly hanged by the Nazis.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "One of the women hanged for smuggling explosives to the Sonderkommando was Roza _____.",
+          "correctAnswer": "Robota",
+          "distractors": ["Silber", "Goldberg", "Katz", "Klein"]
+        }
+      ]
+    }
+  ]
+}
