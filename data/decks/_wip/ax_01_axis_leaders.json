@@ -1,0 +1,1432 @@
+{
+  "facts": [
+    {
+      "id": "wwii_ax_hitler_chancellor",
+      "correctAnswer": "1933",
+      "acceptableAlternatives": ["January 1933", "January 30, 1933"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "In what year did Adolf Hitler become Chancellor of Germany?",
+      "explanation": "Hitler became Chancellor on January 30, 1933, appointed by President Hindenburg who believed the Nazis could be controlled. Within 18 months Hitler had consolidated total power.",
+      "visualDescription": "Pixel art of Hitler in formal suit at a ceremonial podium inside the Reich Chancellery, officials watching from the sides, swastika banners flanking the room.",
+      "sourceName": "Wikipedia — Adolf Hitler",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+      "volatile": false,
+      "distractors": ["1931", "1932", "1934", "1935", "1930", "1929", "1936", "1928"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What event occurred in Germany on January 30, 1933?",
+          "correctAnswer": "Hitler became Chancellor",
+          "distractors": ["Hitler became President", "The Reichstag burned", "Germany invaded Poland", "Hitler founded the Nazi Party"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hitler was appointed Chancellor by which German leader who believed the Nazis could be 'controlled'?",
+          "correctAnswer": "President Hindenburg",
+          "distractors": ["President Ebert", "Kaiser Wilhelm II", "Chancellor Brüning", "General Ludendorff"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hitler was elected directly by the German people as Chancellor in a popular vote.",
+          "correctAnswer": "False — he was appointed by President Hindenburg",
+          "distractors": ["True — he won a majority in the 1933 election"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hitler became Chancellor in _____, then consolidated total power within 18 months.",
+          "correctAnswer": "1933",
+          "distractors": ["1932", "1934", "1931", "1935"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hitler_power_consolidated",
+      "correctAnswer": "1934",
+      "acceptableAlternatives": ["August 1934"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After Hindenburg's death, Hitler merged the roles of Chancellor and President in what year, making himself supreme leader?",
+      "explanation": "When Hindenburg died in August 1934, Hitler merged the offices of Chancellor and President, declaring himself Führer und Reichskanzler. The army swore a personal oath of loyalty to Hitler — not Germany — locking the military into obedience.",
+      "visualDescription": "Pixel art of a massive military parade with soldiers saluting under eagle-and-swastika banners, Hitler on a raised platform reviewing the ranks.",
+      "sourceName": "Wikipedia — Adolf Hitler",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+      "volatile": false,
+      "distractors": ["1933", "1935", "1936", "1932", "1937", "1938", "1939", "1930"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "When Hitler merged the offices of Chancellor and President in 1934, what title did he take?",
+          "correctAnswer": "Führer",
+          "distractors": ["Reichsmarschall", "Kaiser", "Reichspräsident", "Oberbefehlshaber"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After consolidating power in 1934, Germany's military swore a personal oath of loyalty to whom — locking the armed forces into obedience?",
+          "correctAnswer": "Adolf Hitler personally",
+          "distractors": ["The German nation", "The Nazi Party", "The Reichstag", "The Wehrmacht high command"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: After Hindenburg's death in 1934, Hitler had the German military swear a personal oath of loyalty to him rather than to Germany.",
+          "correctAnswer": "True",
+          "distractors": ["False — the oath was to the German constitution"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hitler consolidated total control in _____ by merging Chancellor and President into one office after Hindenburg's death.",
+          "correctAnswer": "1934",
+          "distractors": ["1933", "1935", "1936", "1932"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hitler_lebensraum",
+      "correctAnswer": "Lebensraum",
+      "acceptableAlternatives": ["living space"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What German term, meaning 'living space,' was central to Hitler's ideology justifying eastward expansion and the conquest of Slavic lands?",
+      "explanation": "Lebensraum ('living space') was Hitler's core geopolitical concept: Germany needed to conquer Eastern Europe and Russia to provide agricultural land and resources for the German 'master race.' It directly drove the invasion of the Soviet Union.",
+      "visualDescription": "Pixel art of a Nazi propaganda map with bold arrows sweeping eastward across Europe, wheat fields and settlements sketched at the arrow tips.",
+      "sourceName": "Wikipedia — Lebensraum",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lebensraum",
+      "volatile": false,
+      "distractors": ["Blitzkrieg", "Anschluss", "Weltpolitik", "Drang nach Osten", "Volksgemeinschaft", "Führerprinzip", "Grossraum", "Ostmark"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Hitler's ideology of Lebensraum targeted which region for conquest and colonization?",
+          "correctAnswer": "Eastern Europe and Russia",
+          "distractors": ["North Africa", "Western Europe and France", "The Mediterranean basin", "Scandinavia"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Lebensraum ideology directly motivated which major German military operation of World War II?",
+          "correctAnswer": "Operation Barbarossa — the invasion of the Soviet Union",
+          "distractors": ["Operation Sea Lion — planned invasion of Britain", "Operation Torch — Allied invasion of North Africa", "Operation Overlord — the D-Day landings", "Operation Market Garden — Allied airborne assault"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Lebensraum was an improvised wartime policy. It was not part of Hitler's ideology before he came to power.",
+          "correctAnswer": "False — Hitler outlined Lebensraum in Mein Kampf years before becoming Chancellor",
+          "distractors": ["True — it emerged from wartime necessity in 1941"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hitler's concept of _____ ('living space') justified seizing Eastern Europe to provide land for German settlers.",
+          "correctAnswer": "Lebensraum",
+          "distractors": ["Blitzkrieg", "Anschluss", "Weltpolitik", "Volksgemeinschaft"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hitler_blitzkrieg",
+      "correctAnswer": "1939–1941",
+      "acceptableAlternatives": ["1939 to 1941", "1939-41"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "During which period did Hitler's Blitzkrieg ('lightning war') conquests reach their peak, overrunning Poland, France, and most of Western Europe?",
+      "explanation": "From 1939 to 1941, German Blitzkrieg tactics — combined armor, motorized infantry, and air support — defeated Poland in weeks, Denmark in a day, Norway, the Low Countries, and France in six weeks. It appeared unstoppable until the Battle of Britain and then Barbarossa's stall.",
+      "visualDescription": "Pixel art of a column of German Panzer tanks rolling through a burning town at dusk, Stuka dive-bombers visible in the smoky sky above.",
+      "sourceName": "Wikipedia — Blitzkrieg",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blitzkrieg",
+      "volatile": false,
+      "distractors": ["1937–1939", "1940–1942", "1941–1943", "1938–1940", "1942–1944", "1936–1938", "1943–1945", "1935–1937"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "How long did it take German Blitzkrieg to defeat France in 1940?",
+          "correctAnswer": "About six weeks",
+          "distractors": ["About six months", "Two weeks", "About one year", "Three months"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Blitzkrieg combined three key elements. Which of the following was NOT one of them?",
+          "correctAnswer": "Naval blockade of enemy ports",
+          "distractors": ["Concentrated armor (Panzer) thrusts", "Close air support from dive-bombers", "Motorized infantry following the tanks"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Germany conquered France faster in 1940 than World War I's entire Western Front campaign lasted.",
+          "correctAnswer": "True — France fell in about six weeks in 1940; WWI's Western Front lasted over four years",
+          "distractors": ["False — France resisted for over a year before falling"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hitler's _____ ('lightning war') tactics overran most of Western Europe between 1939 and 1941.",
+          "correctAnswer": "Blitzkrieg",
+          "distractors": ["Festung", "Sturmangriff", "Kesselschlacht", "Vernichtungskrieg"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hitler_holocaust",
+      "correctAnswer": "6 million",
+      "acceptableAlternatives": ["six million", "approximately 6 million"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 1,
+      "funScore": 4,
+      "quizQuestion": "Approximately how many Jewish people were murdered in the Holocaust under Hitler's regime?",
+      "explanation": "The Holocaust was the systematic, state-sponsored murder of approximately 6 million Jews by the Nazi regime. It was carried out through mass shootings, death squads (Einsatzgruppen), and industrialized extermination camps including Auschwitz-Birkenau.",
+      "visualDescription": "Pixel art of an empty rail yard at dusk, barbed-wire fencing receding into the distance, a single flickering memorial candle in the foreground.",
+      "sourceName": "Wikipedia — The Holocaust",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Holocaust",
+      "volatile": false,
+      "distractors": ["1 million", "3 million", "10 million", "2 million", "4 million", "8 million", "500,000", "12 million"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Holocaust killed approximately 6 million people of which religion/ethnicity as its primary target?",
+          "correctAnswer": "Jewish people",
+          "distractors": ["Romani people", "Soviet prisoners of war", "Polish civilians", "Jehovah's Witnesses"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Which Nazi mechanism was NOT used in the Holocaust?",
+          "correctAnswer": "Naval internment ships",
+          "distractors": ["Industrialized extermination camps", "Mobile death squads (Einsatzgruppen)", "Gas chambers at sites like Auschwitz"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The Holocaust killed more Jewish people than currently live in the entire United States Jewish community.",
+          "correctAnswer": "True — approximately 6 million Jews were killed; the US Jewish population is about 7 million today",
+          "distractors": ["False — fewer than 1 million Jews were killed in total"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Holocaust resulted in the systematic murder of approximately _____ Jewish people.",
+          "correctAnswer": "6 million",
+          "distractors": ["1 million", "3 million", "10 million", "2 million"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hitler_barbarossa",
+      "correctAnswer": "Operation Barbarossa",
+      "acceptableAlternatives": ["Barbarossa", "the invasion of the Soviet Union"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What was the code name of Hitler's gamble to invade the Soviet Union in June 1941, which many historians consider his most catastrophic strategic decision?",
+      "explanation": "Operation Barbarossa launched June 22, 1941 — opening a front Hitler's own generals warned would be unwinnable. The USSR's vast territory, brutal winters, and capacity to absorb losses eventually destroyed the bulk of the German army. Hitler overrode expert military advice to pursue it.",
+      "visualDescription": "Pixel art of German troops advancing across an endless flat steppe at dawn, storm clouds gathering on the horizon, a village burning in the middle distance.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["Operation Sea Lion", "Operation Citadel", "Operation Overlord", "Operation Market Garden", "Operation Torch", "Operation Weserübung", "Operation Fall Gelb", "Operation Typhoon"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Operation Barbarossa began on June 22, 1941. What was its objective?",
+          "correctAnswer": "To invade and conquer the Soviet Union",
+          "distractors": ["To invade Britain across the English Channel", "To capture the Suez Canal in North Africa", "To seize oil fields in the Middle East", "To knock Turkey out of its neutrality"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hitler launched Barbarossa despite warnings from his generals. Which factor most severely undermined the campaign?",
+          "correctAnswer": "The USSR's ability to absorb massive losses and the brutal Russian winter",
+          "distractors": ["American intervention in the first weeks", "British naval blockade cutting German supply lines", "Immediate Soviet nuclear deterrence", "Failure to achieve air superiority over France"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Operation Barbarossa was the largest land invasion in history.",
+          "correctAnswer": "True — involving over 3 million Axis troops on a front stretching nearly 2,900 km",
+          "distractors": ["False — the D-Day landings in Normandy were larger"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hitler's disastrous decision to invade the Soviet Union was code-named Operation _____.",
+          "correctAnswer": "Barbarossa",
+          "distractors": ["Citadel", "Sea Lion", "Typhoon", "Weserübung"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hitler_july20",
+      "correctAnswer": "July 20, 1944",
+      "acceptableAlternatives": ["July 20 1944", "20 July 1944", "the July Plot"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "On what date did German officers attempt to assassinate Hitler with a bomb planted in a briefcase at his Wolf's Lair headquarters?",
+      "explanation": "On July 20, 1944, Colonel Claus von Stauffenberg placed a briefcase bomb near Hitler at the Wolf's Lair. Hitler survived when someone moved the briefcase behind a heavy table leg. The plot's failure led to the execution of nearly 5,000 people implicated in the conspiracy.",
+      "visualDescription": "Pixel art of a wooden conference room with shattered debris, a smoldering briefcase in the corner, maps scattered across a ruined table.",
+      "sourceName": "Wikipedia — 20 July plot",
+      "sourceUrl": "https://en.wikipedia.org/wiki/20_July_plot",
+      "volatile": false,
+      "distractors": ["June 6, 1944", "August 15, 1944", "September 1, 1944", "March 20, 1944", "November 9, 1944", "October 14, 1944", "May 8, 1945", "April 30, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Colonel Claus von Stauffenberg led the July 20, 1944 assassination plot against Hitler. Why did it fail?",
+          "correctAnswer": "Someone moved the briefcase bomb behind a heavy table leg, deflecting the blast",
+          "distractors": ["Stauffenberg was caught before reaching Wolf's Lair", "The bomb failed to detonate", "Hitler was warned by a spy and left the room", "The bomb was discovered and defused before detonation"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After the July 20 plot failed, approximately how many people were executed for alleged involvement?",
+          "correctAnswer": "Nearly 5,000",
+          "distractors": ["About 50", "About 200", "About 1,000", "About 20,000"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hitler was completely uninjured in the July 20, 1944 assassination attempt.",
+          "correctAnswer": "False — he suffered burst eardrums, burns, and temporary paralysis in one arm, but survived",
+          "distractors": ["True — the blast did not reach Hitler at all"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The _____ plot was the most famous attempt to assassinate Hitler, failing when a briefcase bomb was moved away from him.",
+          "correctAnswer": "July 20",
+          "distractors": ["June 6", "March 13", "November 9", "August 15"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hitler_death",
+      "correctAnswer": "April 30, 1945",
+      "acceptableAlternatives": ["April 1945", "Apr 30 1945"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "On what date did Hitler die by suicide in his underground Führerbunker in Berlin, ordering his body to be burned to prevent capture?",
+      "explanation": "As Soviet forces closed in on Berlin, Hitler shot himself on April 30, 1945, while Eva Braun took cyanide. Per his instructions, their bodies were doused in petrol and burned in the Reich Chancellery garden. Germany surrendered eight days later.",
+      "visualDescription": "Pixel art of a concrete bunker entrance amid burning ruins of Berlin, Soviet artillery flashes lighting the night sky, a small fire burning outside.",
+      "sourceName": "Wikipedia — Death of Adolf Hitler",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Death_of_Adolf_Hitler",
+      "volatile": false,
+      "distractors": ["May 8, 1945", "May 1, 1945", "April 28, 1945", "March 30, 1945", "April 25, 1945", "May 7, 1945", "April 20, 1945", "May 2, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why did Hitler order his body burned after his suicide on April 30, 1945?",
+          "correctAnswer": "To prevent capture and display of his corpse by Soviet forces",
+          "distractors": ["It was a Nazi religious ritual", "Eva Braun requested it", "He wanted no grave to become a shrine", "He feared his body would be used for medical experiments"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Eva Braun died alongside Hitler on April 30, 1945. How?",
+          "correctAnswer": "She took cyanide",
+          "distractors": ["She was shot by an SS guard", "She shot herself", "She died in an air raid", "She drowned in the bunker flooding"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hitler died before Germany formally surrendered in World War II.",
+          "correctAnswer": "True — he died April 30, 1945; Germany surrendered May 7–8, 1945",
+          "distractors": ["False — Hitler survived to sign the surrender documents"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hitler died by suicide on _____, eight days before Germany's formal surrender.",
+          "correctAnswer": "April 30, 1945",
+          "distractors": ["May 8, 1945", "April 28, 1945", "May 1, 1945", "May 7, 1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_mussolini_il_duce",
+      "correctAnswer": "Il Duce",
+      "acceptableAlternatives": ["The Leader", "Il Duce (The Leader)"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "What title did Benito Mussolini use, meaning 'The Leader' in Italian, which later influenced Hitler's own title of Führer?",
+      "explanation": "Mussolini adopted 'Il Duce' as his title and pioneered the fascist leader cult that Hitler later emulated. Mussolini founded fascism in 1919 — years before Hitler rose to power — making him the original model for 20th-century authoritarian strongman politics.",
+      "visualDescription": "Pixel art of Mussolini on a stone balcony in uniform, chin thrust out, addressing a vast crowd below in a Roman piazza.",
+      "sourceName": "Wikipedia — Benito Mussolini",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Benito_Mussolini",
+      "volatile": false,
+      "distractors": ["Der Führer", "El Caudillo", "El Generalísimo", "Vozhd", "Great Leader", "Supreme Commander", "Il Capitano", "Il Presidente"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Mussolini pioneered fascism before Hitler. In what year did he found the fascist movement in Italy?",
+          "correctAnswer": "1919",
+          "distractors": ["1933", "1922", "1925", "1917"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Which future dictator studied and emulated Mussolini's fascist playbook and leader cult before coming to power?",
+          "correctAnswer": "Adolf Hitler",
+          "distractors": ["Francisco Franco", "Joseph Stalin", "Emperor Hirohito", "Hideki Tojo"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hitler rose to power before Mussolini and served as the original model for Italian fascism.",
+          "correctAnswer": "False — Mussolini founded fascism in 1919 and came to power in 1922, more than a decade before Hitler",
+          "distractors": ["True — Hitler's 1923 Beer Hall Putsch inspired Mussolini's March on Rome"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Mussolini's title _____ ('The Leader') was the Italian equivalent of Hitler's German title Führer.",
+          "correctAnswer": "Il Duce",
+          "distractors": ["El Caudillo", "Der Kapitän", "Il Presidente", "Vozhd"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_mussolini_ethiopia",
+      "correctAnswer": "1935",
+      "acceptableAlternatives": ["October 1935"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Mussolini invaded Ethiopia in what year, drawing international condemnation and straining Italy's relationship with Britain and France?",
+      "explanation": "Italy's 1935 invasion of Ethiopia used poison gas against soldiers who had spears and horses. The League of Nations imposed sanctions but did nothing effective, demonstrating the League's impotence and pushing Mussolini toward alliance with Hitler.",
+      "visualDescription": "Pixel art of Italian Savoia-Marchetti bombers flying over a rocky Ethiopian highland, Ethiopian warriors in traditional dress visible below.",
+      "sourceName": "Wikipedia — Second Italo-Ethiopian War",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Italo-Ethiopian_War",
+      "volatile": false,
+      "distractors": ["1933", "1936", "1937", "1934", "1938", "1932", "1939", "1931"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Italy's 1935 invasion of Ethiopia was condemned by the League of Nations, which imposed sanctions. What did this reveal?",
+          "correctAnswer": "The League of Nations was powerless to stop determined aggression",
+          "distractors": ["That Italy was a major Allied power", "That Britain and France would actively defend African colonies", "That the United States would intervene militarily", "That the League had effective enforcement mechanisms"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What weapon did Italy controversially use against Ethiopian fighters, who were largely equipped with traditional arms?",
+          "correctAnswer": "Poison gas (mustard gas)",
+          "distractors": ["Landmines", "Submarine warfare", "Atomic devices", "Napalm incendiaries"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: The international community's failure to stop Italy's invasion of Ethiopia in 1935 emboldened both Mussolini and Hitler to pursue further aggression.",
+          "correctAnswer": "True",
+          "distractors": ["False — the League's sanctions successfully reversed Italian policy"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Mussolini invaded Ethiopia in _____, using poison gas against defenders armed largely with traditional weapons.",
+          "correctAnswer": "1935",
+          "distractors": ["1933", "1937", "1939", "1932"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_mussolini_deposed",
+      "correctAnswer": "Fascist Grand Council and King Victor Emmanuel III",
+      "acceptableAlternatives": ["the Fascist Grand Council", "King Victor Emmanuel III", "his own party"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "In July 1943, Mussolini was deposed by a vote of his own ruling body and then arrested on whose orders?",
+      "explanation": "After Allied landings in Sicily in July 1943, the Fascist Grand Council voted to remove Mussolini, and King Victor Emmanuel III had him arrested. Italy had decided to change sides. This is the unique case of a WWII dictator being overthrown by his own government while the war continued.",
+      "visualDescription": "Pixel art of Italian carabinieri escorting a subdued Mussolini in civilian clothes down stone palace steps, royal guards standing at attention.",
+      "sourceName": "Wikipedia — Benito Mussolini",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Benito_Mussolini",
+      "volatile": false,
+      "distractors": ["Allied commanders after capture", "His own generals in a military coup", "The Italian parliament", "Pope Pius XII", "German SS forces", "The Italian Communist Party", "American OSS agents", "British MI6 operatives"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What military event in July 1943 directly triggered the Fascist Grand Council's vote to remove Mussolini?",
+          "correctAnswer": "Allied landings in Sicily",
+          "distractors": ["The Allied bombing of Rome", "Italy's defeat at El Alamein", "The German invasion of Italy", "Italy's declaration of war on the Allies"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After Mussolini was deposed in July 1943, German paratroopers rescued him. What role did they give him?",
+          "correctAnswer": "Puppet leader of a German-controlled state in northern Italy",
+          "distractors": ["Commander of Italian forces in Russia", "Ambassador to neutral Switzerland", "President of postwar Italy", "Head of the Waffen-SS Italian division"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Mussolini is unique among major WWII leaders in having been overthrown by his own government rather than by enemy forces.",
+          "correctAnswer": "True — the Fascist Grand Council voted him out and the king had him arrested",
+          "distractors": ["False — Hitler was also removed from office by the German government in 1944"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After Allied landings in Sicily in 1943, Mussolini was voted out by the _____ and arrested by King Victor Emmanuel III.",
+          "correctAnswer": "Fascist Grand Council",
+          "distractors": ["Italian parliament", "Wehrmacht high command", "Vatican", "Italian Socialist Party"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_mussolini_execution",
+      "correctAnswer": "April 28, 1945",
+      "acceptableAlternatives": ["April 1945", "Apr 28 1945"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "On what date were Mussolini and his mistress executed by Italian partisans, with their bodies then hung upside-down in a Milan piazza?",
+      "explanation": "Mussolini was captured on April 27, 1945, while trying to flee to Switzerland disguised among German soldiers. He was shot the next day. The display of his body upside-down at a Milan gas station — two days before Hitler's suicide — became an iconic image of fascism's collapse.",
+      "visualDescription": "Pixel art of a grim Milan street scene, a crowd gathered around a gas station canopy, Italian partisan fighters standing guard nearby.",
+      "sourceName": "Wikipedia — Benito Mussolini",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Benito_Mussolini",
+      "volatile": false,
+      "distractors": ["April 30, 1945", "May 2, 1945", "May 8, 1945", "April 25, 1945", "March 28, 1945", "May 1, 1945", "April 20, 1945", "May 7, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Mussolini was captured trying to flee to Switzerland disguised among which group?",
+          "correctAnswer": "German soldiers",
+          "distractors": ["Neutral Swiss diplomats", "Italian partisans in Allied uniforms", "Vatican clergy", "Red Cross workers"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Mussolini's execution on April 28, 1945 came how many days before Hitler's suicide?",
+          "correctAnswer": "Two days before",
+          "distractors": ["Two weeks before", "On the same day", "One day after", "One month before"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Mussolini was executed by Allied soldiers, not Italians.",
+          "correctAnswer": "False — he was executed by Italian Communist partisans",
+          "distractors": ["True — American OSS agents carried out the execution"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "After execution by Italian partisans, Mussolini's body was hung upside-down in a _____ piazza as a symbol of fascism's defeat.",
+          "correctAnswer": "Milan",
+          "distractors": ["Rome", "Turin", "Venice", "Florence"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_tojo_pm",
+      "correctAnswer": "October 1941",
+      "acceptableAlternatives": ["1941", "October 17, 1941"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "In what month and year did Hideki Tojo become Prime Minister of Japan, just weeks before Pearl Harbor?",
+      "explanation": "Tojo became Prime Minister on October 17, 1941, replacing Prince Konoe who had sought a diplomatic solution with the US. Tojo was the hard-liner who pushed forward with war plans, and Pearl Harbor followed less than two months later.",
+      "visualDescription": "Pixel art of Tojo in full military uniform at a Japanese imperial government meeting, a large map of the Pacific on the wall behind him.",
+      "sourceName": "Wikipedia — Hideki Tojo",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hideki_Tojo",
+      "volatile": false,
+      "distractors": ["September 1941", "December 1941", "August 1941", "July 1941", "January 1942", "March 1941", "June 1941", "February 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Tojo replaced which Japanese Prime Minister who had sought a diplomatic solution with the United States?",
+          "correctAnswer": "Prince Konoe",
+          "distractors": ["Admiral Yamamoto", "Emperor Hirohito", "General Yamashita", "Admiral Nagano"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How many weeks after Tojo became Prime Minister did Japan attack Pearl Harbor?",
+          "correctAnswer": "About seven weeks",
+          "distractors": ["About two years", "About six months", "About two weeks", "About one year"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Tojo was a civilian politician, not a military officer, when he became Prime Minister.",
+          "correctAnswer": "False — Tojo was a general who served simultaneously as Prime Minister and Army Minister",
+          "distractors": ["True — Tojo was a diplomat who had served in the foreign ministry"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Tojo became Japan's Prime Minister in _____, replacing Prince Konoe and pushing forward with plans to attack the US.",
+          "correctAnswer": "October 1941",
+          "distractors": ["December 1941", "September 1941", "August 1941", "July 1941"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_tojo_removed",
+      "correctAnswer": "July 1944",
+      "acceptableAlternatives": ["1944", "July 18, 1944"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "After Japan's catastrophic defeat at the Battle of Saipan, Tojo was forced to resign as Prime Minister in what month and year?",
+      "explanation": "The fall of Saipan in July 1944 brought the US within bombing range of the Japanese home islands. Tojo resigned on July 18, 1944. His removal showed that even Japan's military government would sacrifice a leader once strategic failure became undeniable.",
+      "visualDescription": "Pixel art of a Japanese government chamber, officials in formal attire bowing stiffly, Tojo at the center accepting their verdict with a stoic expression.",
+      "sourceName": "Wikipedia — Hideki Tojo",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hideki_Tojo",
+      "volatile": false,
+      "distractors": ["August 1945", "June 1944", "September 1944", "December 1944", "March 1944", "November 1944", "January 1945", "October 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why was Tojo's removal from office in July 1944 so significant strategically?",
+          "correctAnswer": "The fall of Saipan put US bombers within range of the Japanese home islands",
+          "distractors": ["Japan had lost all of its aircraft carriers", "The Soviet Union declared war on Japan", "American forces had invaded the Philippines", "Japan's oil supply had been completely cut off"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After being removed from office in 1944, what happened to Tojo at the end of the war?",
+          "correctAnswer": "He was tried at the Tokyo War Crimes Tribunal and executed in 1948",
+          "distractors": ["He committed ritual suicide (seppuku) in August 1945", "He was pardoned by General MacArthur", "He fled to South America like some Nazi officials", "He became an adviser to the postwar Japanese government"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Tojo attempted suicide when American forces came to arrest him, but survived and was later executed.",
+          "correctAnswer": "True — he shot himself in the chest but was resuscitated by American medics",
+          "distractors": ["False — Tojo surrendered peacefully without incident"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Tojo was forced to resign in _____ after Japan's defeat at Saipan brought US bombers within range of the home islands.",
+          "correctAnswer": "July 1944",
+          "distractors": ["August 1945", "June 1944", "December 1944", "March 1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_tojo_executed",
+      "correctAnswer": "December 1948",
+      "acceptableAlternatives": ["1948", "December 23, 1948"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Tojo was hanged for war crimes in what month and year after being convicted at the Tokyo War Crimes Tribunal?",
+      "explanation": "The Tokyo Tribunal (1946–1948) was the Pacific equivalent of Nuremberg. Tojo was convicted of waging aggressive war and ordering atrocities. He was executed on December 23, 1948 — the same day as Emperor Hirohito's birthday, a timing some saw as deliberate.",
+      "visualDescription": "Pixel art of Sugamo Prison's exterior at dawn, Japanese and Allied flags visible on the ramparts, the sky still dark.",
+      "sourceName": "Wikipedia — Hideki Tojo",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hideki_Tojo",
+      "volatile": false,
+      "distractors": ["August 1945", "May 1946", "September 1945", "December 1945", "November 1946", "March 1947", "September 1948", "January 1949"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Tokyo War Crimes Tribunal was the Pacific equivalent of which European war crimes trial?",
+          "correctAnswer": "The Nuremberg Trials",
+          "distractors": ["The Hague International Court", "The Geneva Convention hearings", "The Versailles War Guilt Commission", "The Rome Statute proceedings"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Unlike Tojo, which Japanese leader was controversially NOT prosecuted for war crimes despite Japan's military actions?",
+          "correctAnswer": "Emperor Hirohito",
+          "distractors": ["General Yamashita", "Admiral Yamamoto", "Prince Konoe", "Foreign Minister Togo"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Tojo was executed on Emperor Hirohito's birthday — December 23 — in what some saw as a deliberate symbolic choice.",
+          "correctAnswer": "True",
+          "distractors": ["False — the execution date was chosen entirely at random"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Tojo was convicted at the Tokyo War Crimes Tribunal and hanged in _____.",
+          "correctAnswer": "December 1948",
+          "distractors": ["August 1945", "September 1945", "December 1945", "November 1946"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_rommel_desert_fox",
+      "correctAnswer": "Desert Fox",
+      "acceptableAlternatives": ["The Desert Fox", "Wüstenfuchs"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 1,
+      "funScore": 8,
+      "quizQuestion": "What nickname did Erwin Rommel earn for his aggressive, cunning tactics commanding the Afrika Korps in North Africa?",
+      "explanation": "Rommel earned 'Desert Fox' for his fast-moving, unpredictable tactics in Libya and Egypt (1941–43). His reputation was so strong that even Churchill praised him in the House of Commons — 'We have a very daring and skilful opponent against us' — which became famous.",
+      "visualDescription": "Pixel art of Rommel standing in a sand-coloured staff car wearing his peaked cap and binoculars, dunes stretching to the horizon, a Panzer IV visible behind him.",
+      "sourceName": "Wikipedia — Erwin Rommel",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erwin_Rommel",
+      "volatile": false,
+      "distractors": ["Iron Cross", "African Lion", "Sand Viper", "Sahara Wolf", "Dune Hawk", "Nile Tiger", "North Star", "Scorpion"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Even British Prime Minister Churchill praised Rommel in the House of Commons. What did this illustrate?",
+          "correctAnswer": "Rommel's reputation transcended enemy lines — he was respected even by his opponents",
+          "distractors": ["Churchill was secretly negotiating with Germany", "Rommel had switched to the Allied side by 1942", "It was a propaganda trick to demoralize German troops", "Churchill was criticizing his own generals by comparison"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Which battle in 1942 ended Rommel's dominance in North Africa and began the Axis retreat westward?",
+          "correctAnswer": "El Alamein (Second Battle of El Alamein)",
+          "distractors": ["Battle of Kasserine Pass", "Battle of Tobruk", "Operation Torch landings", "Battle of Gazala"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Rommel commanded the Africa Korps, which fought in North Africa from 1941 to 1943.",
+          "correctAnswer": "True",
+          "distractors": ["False — Rommel commanded forces on the Eastern Front, not in Africa"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Rommel's nickname '_____ Fox' reflected his cunning, fast-moving tactics in the North African desert campaign.",
+          "correctAnswer": "Desert",
+          "distractors": ["African", "Sahara", "Sand", "Iron"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_rommel_el_alamein",
+      "correctAnswer": "El Alamein",
+      "acceptableAlternatives": ["Battle of El Alamein", "Second Battle of El Alamein", "1942"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "At which Egyptian battle in 1942 did Bernard Montgomery's British forces defeat Rommel, marking the turning point in the North African campaign?",
+      "explanation": "El Alamein (October–November 1942) stopped Rommel's drive toward the Suez Canal and began the Axis retreat across North Africa. Churchill said 'Before Alamein we never had a victory. After Alamein we never had a defeat.' Rommel was absent sick when the battle began.",
+      "visualDescription": "Pixel art of British Sherman tanks advancing across rocky Egyptian desert at dawn, smoke from burning German vehicles rising on the horizon.",
+      "sourceName": "Wikipedia — Second Battle of El Alamein",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_El_Alamein",
+      "volatile": false,
+      "distractors": ["Tobruk", "Kasserine Pass", "Bir Hakeim", "Benghazi", "Gazala", "Tripoli", "Tunis", "Mareth Line"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Churchill said 'Before Alamein we never had a victory. After Alamein we never had a defeat.' What was he describing?",
+          "correctAnswer": "El Alamein as the turning point of the North African campaign and Britain's fortunes in the war",
+          "distractors": ["The D-Day landings as the final turning point of World War II", "The Battle of Britain as Britain's first defensive success", "The fall of Singapore as Britain's greatest defeat", "The Italian campaign as a prolonged stalemate"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why was Rommel absent when the Second Battle of El Alamein began in October 1942?",
+          "correctAnswer": "He was on sick leave in Germany",
+          "distractors": ["He had been recalled to defend the Atlantic Wall", "He was commanding forces at Stalingrad", "He had been removed from command for insubordination", "He was attending Hitler's headquarters for a strategy conference"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: If Rommel had reached the Suez Canal, it could have allowed Axis forces to link up with Japanese forces in the Indian Ocean.",
+          "correctAnswer": "True — this was the feared worst-case scenario for the Allies",
+          "distractors": ["False — Japan and Germany never coordinated on strategic objectives"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Montgomery's victory at _____ in 1942 halted Rommel's advance and began the Axis retreat across North Africa.",
+          "correctAnswer": "El Alamein",
+          "distractors": ["Tobruk", "Kasserine Pass", "Bir Hakeim", "Tripoli"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_rommel_july20_forced_suicide",
+      "correctAnswer": "October 14, 1944",
+      "acceptableAlternatives": ["October 1944", "Oct 14 1944"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "Rommel was implicated in the July 20 plot against Hitler and given a choice: trial or suicide. On what date did he take cyanide, after which the Nazis staged a state funeral?",
+      "explanation": "On October 14, 1944, two SS generals visited Rommel and presented Hitler's offer: trial and the death of his family, or suicide with a state funeral and pension for his wife. Rommel chose cyanide. He was dead within 15 minutes. The Nazis announced a 'brain embolism' and gave him a hero's funeral — the perfect cover-up.",
+      "visualDescription": "Pixel art of Rommel in full dress uniform saying goodbye to his family outside a German villa, two dark staff cars waiting in the lane beyond the garden gate.",
+      "sourceName": "Wikipedia — Erwin Rommel",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erwin_Rommel",
+      "volatile": false,
+      "distractors": ["September 1, 1944", "November 20, 1944", "July 20, 1944", "August 15, 1944", "December 1, 1944", "April 30, 1945", "March 10, 1945", "January 14, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why did the Nazis give Rommel a state funeral after forcing him to commit suicide?",
+          "correctAnswer": "To maintain his heroic image for German morale and conceal his involvement in the July 20 plot",
+          "distractors": ["It was a standard honor for all Field Marshals who died in service", "Rommel's family demanded a military funeral and the Nazis complied", "Hitler personally admired Rommel and wanted to honor him", "It was required by the Geneva Convention for senior officers"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "What false cause of death did the Nazis officially give for Rommel?",
+          "correctAnswer": "A brain embolism (from his earlier car crash wounds)",
+          "distractors": ["A heart attack during the stress of combat", "Wounds from the July 20 bomb blast", "Pneumonia from the North African campaign", "A stroke brought on by overwork"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Rommel was given a choice between public trial (and his family's execution) or a private suicide with honors for his family.",
+          "correctAnswer": "True",
+          "distractors": ["False — Rommel was shot without warning by SS agents who came to his home"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Rommel was forced to take cyanide on _____ after being implicated in the July 20 plot, with the Nazis covering it up as a 'brain embolism.'",
+          "correctAnswer": "October 14, 1944",
+          "distractors": ["July 20, 1944", "November 20, 1944", "September 1, 1944", "April 30, 1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_yamamoto_pearl_harbor",
+      "correctAnswer": "Yamamoto",
+      "acceptableAlternatives": ["Isoroku Yamamoto", "Admiral Yamamoto"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Which Japanese admiral planned the attack on Pearl Harbor, despite privately warning that Japan could not defeat American industrial power in a prolonged war?",
+      "explanation": "Yamamoto's paradox: he designed the Pearl Harbor attack while telling colleagues Japan could not win a long war with the US. Having studied at Harvard and served as naval attaché in Washington, he understood American industrial capacity firsthand. He planned Pearl Harbor hoping to knock the US out quickly — and failed.",
+      "visualDescription": "Pixel art of Yamamoto in white naval dress uniform studying a large map of the Pacific, a model of a battleship on the table beside him.",
+      "sourceName": "Wikipedia — Isoroku Yamamoto",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Isoroku_Yamamoto",
+      "volatile": false,
+      "distractors": ["Tojo", "Hirohito", "Nagumo", "Nagano", "Kuroshima", "Ozawa", "Kurita", "Toyoda"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Yamamoto planned Pearl Harbor despite opposing war with the US. What personal experience gave him his realistic view of American power?",
+          "correctAnswer": "He had studied at Harvard and served as naval attaché in Washington, seeing American industry firsthand",
+          "distractors": ["He had been captured by Americans during WWI and seen their factories", "He had read American production statistics in intercepted intelligence", "He had toured US shipyards as part of a naval arms treaty delegation", "He had family members who emigrated to America before the war"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Yamamoto hoped Pearl Harbor would knock the US out of the Pacific War quickly. Which critical targets at Pearl Harbor were not present during the attack?",
+          "correctAnswer": "US aircraft carriers (they were at sea)",
+          "distractors": ["US battleships (they had all left Hawaii)", "US submarine base (submarines were elsewhere)", "Pacific Fleet headquarters (it had moved to San Diego)", "US fuel storage tanks (they were empty for maintenance)"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Yamamoto warned Japanese leaders that attacking the US would be like 'awakening a sleeping giant,' though historians debate whether he said it in those exact words.",
+          "correctAnswer": "True — the 'sleeping giant' sentiment is documented, though the exact phrasing may be apocryphal",
+          "distractors": ["False — Yamamoto actively advocated for war with the US and never expressed reservations"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Admiral _____ planned Pearl Harbor while privately warning that Japan could not win a long war against American industrial power.",
+          "correctAnswer": "Yamamoto",
+          "distractors": ["Tojo", "Nagumo", "Ozawa", "Nagano"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_yamamoto_midway",
+      "correctAnswer": "4 aircraft carriers",
+      "acceptableAlternatives": ["four carriers", "four aircraft carriers", "4 carriers"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "At the Battle of Midway in June 1942, Japan lost how many aircraft carriers — a loss from which their naval air power never recovered?",
+      "explanation": "Japan lost the carriers Akagi, Kaga, Sōryū, and Hiryū at Midway — four of their six fleet carriers. The US lost one carrier (Yorktown). This single battle, lasting four days, permanently shifted naval superiority in the Pacific. Yamamoto commanded the overall fleet.",
+      "visualDescription": "Pixel art of a Japanese carrier deck engulfed in orange flame and black smoke, SBD Dauntless dive-bombers visible in the sky above, the ocean glittering around the stricken ship.",
+      "sourceName": "Wikipedia — Battle of Midway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+      "volatile": false,
+      "distractors": ["2 aircraft carriers", "3 aircraft carriers", "6 aircraft carriers", "5 aircraft carriers", "1 aircraft carrier", "8 aircraft carriers", "7 aircraft carriers", "all aircraft carriers"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Battle of Midway was decided largely by intelligence. How did the US know to position its carriers for the ambush?",
+          "correctAnswer": "US codebreakers had broken the Japanese naval code (JN-25) and predicted the attack",
+          "distractors": ["A Japanese defector provided battle plans", "US reconnaissance planes spotted the fleet days in advance", "Britain shared German-decoded intelligence about Japanese plans", "A neutral country warned the US diplomatically"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How many carriers did the United States lose at the Battle of Midway compared to Japan's four?",
+          "correctAnswer": "One — the USS Yorktown",
+          "distractors": ["None — all US carriers survived", "Two", "Three", "Four — equal losses on both sides"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Japan losing four aircraft carriers at Midway permanently ended their ability to conduct offensive naval operations in the Pacific.",
+          "correctAnswer": "True — they could never rebuild carrier aviation to pre-Midway strength",
+          "distractors": ["False — Japan rebuilt their carrier force within six months and launched new offensives"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Japan lost _____ aircraft carriers at Midway in June 1942, permanently shifting naval superiority to the United States.",
+          "correctAnswer": "4",
+          "distractors": ["2", "3", "6", "5"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_yamamoto_killed",
+      "correctAnswer": "April 18, 1943",
+      "acceptableAlternatives": ["April 1943", "Operation Vengeance"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "On what date was Admiral Yamamoto killed when American P-38 fighters, acting on intercepted intelligence, shot down his transport plane over Bougainville?",
+      "explanation": "Operation Vengeance: US codebreakers intercepted Yamamoto's precise inspection itinerary. On April 18, 1943, sixteen P-38 Lightnings flew 400+ miles to intercept his transport. Both of Japan's top admirals were on those flights — Yamamoto was killed, his escort Ugaki survived the crash. It was targeted assassination using signals intelligence.",
+      "visualDescription": "Pixel art of two P-38 Lightning fighters banking over jungle-covered hills, a G4M bomber trailing black smoke toward the dense canopy below.",
+      "sourceName": "Wikipedia — Death of Isoroku Yamamoto",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Death_of_Isoroku_Yamamoto",
+      "volatile": false,
+      "distractors": ["June 4, 1942", "August 17, 1943", "December 7, 1941", "March 1, 1943", "May 30, 1943", "July 4, 1943", "September 2, 1945", "January 18, 1943"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The US was able to intercept and kill Yamamoto because of what intelligence advantage?",
+          "correctAnswer": "US codebreakers had broken the Japanese naval code and intercepted Yamamoto's exact travel itinerary",
+          "distractors": ["A Japanese double agent in Tokyo provided the schedule", "Reconnaissance planes photographed Yamamoto's plane at Rabaul", "British intelligence shared a decoded diplomatic cable", "A captured Japanese officer revealed the inspection plans under questioning"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Yamamoto's assassination on April 18, 1943 was notable because it fell on the anniversary of which earlier American strike against Japan?",
+          "correctAnswer": "The Doolittle Raid on Tokyo (April 18, 1942)",
+          "distractors": ["The attack on Pearl Harbor (April 18 was its planning date)", "The fall of Corregidor (April 18, 1942)", "The Battle of Midway's first day (April 18, 1942)", "The signing of the Pacific alliance (April 18, 1940)"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: President Roosevelt personally authorized the targeted killing of Yamamoto.",
+          "correctAnswer": "True — Nimitz requested and Roosevelt approved the mission",
+          "distractors": ["False — the mission was a local commander's decision without presidential involvement"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "American P-38 fighters killed Yamamoto on _____, acting on intercepted intelligence that revealed his exact flight schedule.",
+          "correctAnswer": "April 18, 1943",
+          "distractors": ["June 4, 1942", "August 17, 1943", "December 7, 1941", "March 1, 1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_himmler_ss_holocaust",
+      "correctAnswer": "Heinrich Himmler",
+      "acceptableAlternatives": ["Himmler"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "As Reichsführer-SS, which Nazi leader was the primary architect of the Holocaust, organizing the concentration camps and overseeing the murder of 6 million Jews?",
+      "explanation": "Himmler built the SS from a small bodyguard into a state within a state — controlling the camps, the Gestapo, the Waffen-SS, and the entire apparatus of mass murder. He micromanaged logistics of genocide with bureaucratic precision, yet struggled to watch a mass shooting himself.",
+      "visualDescription": "Pixel art of Himmler in black SS uniform with wire-rimmed glasses, reviewing documents at a desk, a skull-and-crossbones SS insignia visible on his collar.",
+      "sourceName": "Wikipedia — Heinrich Himmler",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Heinrich_Himmler",
+      "volatile": false,
+      "distractors": ["Hermann Göring", "Reinhard Heydrich", "Joseph Goebbels", "Adolf Eichmann", "Rudolf Höss", "Ernst Kaltenbrunner", "Hans Frank", "Martin Bormann"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Himmler organized the Holocaust with bureaucratic precision yet reportedly became ill watching a mass execution. What does this reveal?",
+          "correctAnswer": "He could orchestrate mass murder abstractly through paperwork but was personally disturbed by its direct reality",
+          "distractors": ["He secretly opposed the Holocaust and was trying to minimize casualties", "He staged illness to avoid responsibility for atrocities", "It shows the Holocaust was poorly organized and chaotic at the top", "He relied entirely on subordinates and had no personal involvement"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Near the end of the war, Himmler secretly tried to negotiate with the Western Allies. What did Hitler do when he found out?",
+          "correctAnswer": "Hitler stripped Himmler of all his offices and declared him a traitor",
+          "distractors": ["Hitler approved the negotiations as a last resort", "Hitler had Himmler arrested and executed", "Hitler ignored it as an unauthorized minor diplomatic contact", "Hitler expelled Himmler from the Nazi Party but kept him in his post"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Himmler was captured by British forces and committed suicide by biting a cyanide capsule before he could be tried for war crimes.",
+          "correctAnswer": "True — he was captured in May 1945 and killed himself by cyanide",
+          "distractors": ["False — Himmler was tried at Nuremberg and executed by hanging"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "As Reichsführer-_____, Himmler commanded the entire apparatus of the Holocaust and oversaw the murder of 6 million Jews.",
+          "correctAnswer": "SS",
+          "distractors": ["SA", "SD", "Gestapo", "Wehrmacht"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_himmler_suicide",
+      "correctAnswer": "cyanide capsule",
+      "acceptableAlternatives": ["cyanide", "poison capsule", "biting a cyanide capsule"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Captured by British forces in May 1945, Himmler killed himself before trial by using what method?",
+      "explanation": "Himmler was arrested traveling in disguise with a false identity. During a medical examination, he bit a hidden cyanide capsule and died within minutes. The most wanted war criminal in British custody at the time escaped justice entirely — a fact that haunted Allied prosecutors.",
+      "visualDescription": "Pixel art of a British army field interrogation tent, soldiers standing guard, Himmler in plain civilian clothes at a field table.",
+      "sourceName": "Wikipedia — Heinrich Himmler",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Heinrich_Himmler",
+      "volatile": false,
+      "distractors": ["Self-inflicted gunshot", "Hanging in his cell", "Starvation strike", "Poison in food", "Jumping from a window", "Medication overdose", "Drowning", "Razorblade"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Himmler was captured in May 1945 while traveling in disguise. What identity was he using?",
+          "correctAnswer": "A false identity as a common German soldier",
+          "distractors": ["A Swiss diplomat", "A Red Cross relief worker", "A German civilian farmer", "A Danish businessman"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Himmler's suicide by cyanide in May 1945 meant he evaded which legal proceeding?",
+          "correctAnswer": "The Nuremberg Trials",
+          "distractors": ["The Tokyo War Crimes Tribunal", "The Hague International Court", "A British military tribunal in London", "A denazification hearing in occupied Germany"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Himmler was the most senior Nazi official to stand trial at Nuremberg.",
+          "correctAnswer": "False — Himmler killed himself before trial; Göring was the most senior official tried at Nuremberg",
+          "distractors": ["True — Himmler was tried and convicted at Nuremberg before committing suicide in prison"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Himmler killed himself by biting a hidden _____ capsule during a British medical examination in May 1945.",
+          "correctAnswer": "cyanide",
+          "distractors": ["morphine", "arsenic", "strychnine", "potassium"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hirohito_surrender_radio",
+      "correctAnswer": "August 15, 1945",
+      "acceptableAlternatives": ["August 1945", "V-J Day"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "On what date did Emperor Hirohito make a radio broadcast announcing Japan's surrender — the first time most Japanese people had ever heard their emperor's voice?",
+      "explanation": "Hirohito's recorded surrender broadcast on August 15, 1945 was extraordinary: emperors were considered divine and did not address commoners directly. The voice many Japanese had never heard their emperor speak even in the capital before this broadcast. Some soldiers in remote postings refused to believe it was real.",
+      "visualDescription": "Pixel art of Japanese civilians gathered around a radio in a town square, some kneeling, some weeping, the broadcast crackling through static.",
+      "sourceName": "Wikipedia — Hirohito",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hirohito",
+      "volatile": false,
+      "distractors": ["September 2, 1945", "August 6, 1945", "August 9, 1945", "July 26, 1945", "September 1, 1945", "August 14, 1945", "October 25, 1945", "August 10, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why was Hirohito's surrender radio broadcast on August 15, 1945 so historically unusual?",
+          "correctAnswer": "Emperors were considered divine and had never addressed the common people directly by radio before",
+          "distractors": ["Japan had never owned a radio broadcast network before that date", "The emperor had been mute since birth and this was his first ever public speech", "It was the first radio broadcast ever transmitted in the Japanese language", "It was secretly recorded and played without Hirohito's knowledge"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Some Japanese soldiers in remote areas refused to believe Hirohito's surrender broadcast was genuine. Which famous case involved a soldier who held out for nearly 30 years after the war ended?",
+          "correctAnswer": "Hiroo Onoda, who fought in the Philippine jungle until 1974",
+          "distractors": ["Shoichi Yokoi, who surrendered in Guam in 1945 after hearing the broadcast", "Masashi Saito, who was found on a Pacific island in 1947", "Kenji Watanabe, who turned himself in to US authorities in 1950", "Takuya Nishida, who continued fighting until 1955 in Burma"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hirohito's surrender broadcast was made in the formal, archaic Japanese of the imperial court — many ordinary Japanese struggled to understand his exact words.",
+          "correctAnswer": "True — the classical court language was unfamiliar to common citizens",
+          "distractors": ["False — Hirohito deliberately used simple modern Japanese so all citizens would clearly understand"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hirohito's radio surrender broadcast on _____ was the first time most Japanese citizens had ever heard their emperor's voice.",
+          "correctAnswer": "August 15, 1945",
+          "distractors": ["September 2, 1945", "August 6, 1945", "August 9, 1945", "July 26, 1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hirohito_preserved_throne",
+      "correctAnswer": "facilitate the occupation",
+      "acceptableAlternatives": ["ease the Allied occupation", "help manage Japan's surrender", "maintain stability during occupation"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "American authorities chose not to prosecute Hirohito for war crimes and preserved his throne. What was their primary strategic reason?",
+      "explanation": "General MacArthur advised Washington that trying Hirohito would destabilize Japan and make occupation far more difficult — potentially requiring hundreds of thousands more troops. The emperor became a tool for implementing Allied directives. Critics argue this let Japan avoid confronting its war guilt.",
+      "visualDescription": "Pixel art of General MacArthur and Emperor Hirohito standing side by side for a formal photograph, MacArthur towering over the shorter emperor, both in very different uniforms.",
+      "sourceName": "Wikipedia — Hirohito",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hirohito",
+      "volatile": false,
+      "distractors": ["Prove Japan was a democracy", "Satisfy the Soviet Union's demands", "Honor the terms of Japan's surrender agreement", "Please the Japanese military", "Fulfill obligations under the Geneva Convention", "Follow the precedent set for Germany", "Appease China", "Maintain the British alliance"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Historians debate Hirohito's real role in Japan's war decisions. What are the two main positions?",
+          "correctAnswer": "Figurehead with limited power vs. active decision-maker who endorsed key military actions",
+          "distractors": ["Secret pacifist who secretly obstructed the war vs. enthusiastic supporter", "Unaware of Pearl Harbor plans vs. personally designed the attack", "Powerless hostage of the military vs. planning to overthrow the militarists himself", "Advised surrender in 1942 vs. pushed for war until the atomic bombs fell"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hirohito renounced his divine status in 1946. Who required this?",
+          "correctAnswer": "American occupation authorities under General MacArthur",
+          "distractors": ["The newly formed United Nations", "The Japanese parliament (Diet)", "The Soviet Union as a condition of peace", "The International Military Tribunal for the Far East"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hirohito was the only major Axis leader who was neither killed, executed, nor imprisoned — surviving to die of natural causes in 1989.",
+          "correctAnswer": "True — he died in 1989 at age 87",
+          "distractors": ["False — Mussolini also survived the war and lived until 1989"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The US preserved Hirohito's throne primarily to _____, rather than to judge him for war crimes.",
+          "correctAnswer": "facilitate the occupation",
+          "distractors": ["honor the peace treaty", "satisfy Soviet demands", "reward Japanese civilians", "punish the military instead"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_goering_luftwaffe",
+      "correctAnswer": "Hermann Göring",
+      "acceptableAlternatives": ["Göring", "Goering"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Who commanded the Luftwaffe and was considered Hitler's designated successor and second-in-command of the Nazi regime?",
+      "explanation": "Göring was a WWI flying ace, the last commander of Richthofen's famous 'Flying Circus.' Hitler rewarded his early loyalty with the Luftwaffe command. By WWII, Göring was obese, addicted to morphine, and obsessed with looting art across Europe — yet still wielded enormous formal power.",
+      "visualDescription": "Pixel art of Göring in a flamboyant powder-blue Luftwaffe marshal's uniform, medals covering his chest, a swagger stick in hand, with German aircraft visible through an office window.",
+      "sourceName": "Wikipedia — Hermann Göring",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hermann_G%C3%B6ring",
+      "volatile": false,
+      "distractors": ["Heinrich Himmler", "Rudolf Hess", "Ernst Udet", "Erhard Milch", "Albert Kesselring", "Hugo Sperrle", "Hans-Jürgen Stumpff", "Robert Ritter von Greim"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Göring was famous for looting art across occupied Europe. What became of much of this stolen art after the war?",
+          "correctAnswer": "Allied forces recovered much of it; some is still being repatriated to original owners or heirs today",
+          "distractors": ["It was all destroyed during Allied bombing raids on Germany", "Göring secretly sold it to neutral countries and the proceeds funded escape networks", "It was redistributed to German museums by the postwar government", "The Soviet Union seized all of it as war reparations"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Göring's Luftwaffe failed to win the Battle of Britain in 1940. What strategic opportunity did this failure deny Germany?",
+          "correctAnswer": "Operation Sea Lion — the planned German invasion of Britain — was cancelled due to the Luftwaffe's failure to achieve air superiority",
+          "distractors": ["Germany's chance to bomb the Soviet Union before Barbarossa began", "The planned destruction of the British Home Fleet", "Germany's ability to resupply Rommel in North Africa", "Germany's opportunity to bomb American east coast cities"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Göring was a decorated WWI combat pilot who had commanded the legendary Richthofen Fighter Wing.",
+          "correctAnswer": "True",
+          "distractors": ["False — Göring was a political appointee with no aviation experience before WWII"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Göring commanded the _____, Germany's air force, and was considered Hitler's official designated successor.",
+          "correctAnswer": "Luftwaffe",
+          "distractors": ["Wehrmacht", "Kriegsmarine", "Waffen-SS", "Heer"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_goering_nuremberg",
+      "correctAnswer": "suicide by cyanide capsule",
+      "acceptableAlternatives": ["cyanide capsule", "suicide", "bit a cyanide capsule"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Sentenced to death at Nuremberg, Göring escaped execution by what method the night before he was to be hanged?",
+      "explanation": "Despite a thorough cell search, Göring concealed a cyanide capsule — the source remains debated (hidden in a jar of face cream is one theory). He bit it on October 15, 1946, hours before his scheduled execution. He left a note explaining he refused to die by hanging as a common criminal.",
+      "visualDescription": "Pixel art of a prison cell at night, a guard looking through the door viewing slot, Göring's large silhouette slumped on the cot, a small glass vial visible on the floor.",
+      "sourceName": "Wikipedia — Hermann Göring",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hermann_G%C3%B6ring",
+      "volatile": false,
+      "distractors": ["Bribed guards and escaped", "Self-inflicted knife wound", "Overdose of medication", "Strangled himself with bedsheets", "Starved himself before the execution", "Smuggled poison in food", "Drowned in prison bath", "Jumped from exercise yard"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Göring explained in his suicide note why he refused to be hanged. What did he say?",
+          "correctAnswer": "He refused to die by hanging, which he considered a death for common criminals unworthy of a military leader",
+          "distractors": ["He said he was innocent and would not accept an unjust verdict", "He wanted to die before revealing where Nazi gold was hidden", "He claimed the Nuremberg court had no legal jurisdiction over him", "He was protecting other Nazis who would be implicated if he testified further"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "A cyanide capsule was found hidden in Göring's cell after his death. Prison authorities never definitively determined who smuggled it in. Which is the most commonly cited theory?",
+          "correctAnswer": "Hidden inside a jar of skin cream that had passed inspection",
+          "distractors": ["Inserted into the heel of a boot during a family visit", "Bribed into the prison by a former Luftwaffe aide", "Left by an American guard who sympathized with Göring", "Concealed inside a book sent by his wife"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Göring was the most senior Nazi official successfully convicted and sentenced to death at Nuremberg.",
+          "correctAnswer": "True — though he died by suicide before the sentence could be carried out",
+          "distractors": ["False — Himmler was convicted at Nuremberg and executed before Göring's trial even began"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Göring cheated the Nuremberg hangman by concealing a _____ capsule in his cell and biting it the night before his execution.",
+          "correctAnswer": "cyanide",
+          "distractors": ["morphine", "arsenic", "strychnine", "potassium cyanide tablet"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_vonrundstedt_western_defense",
+      "correctAnswer": "Von Rundstedt",
+      "acceptableAlternatives": ["Gerd von Rundstedt", "Field Marshal von Rundstedt"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Which senior German Field Marshal commanded the defense of Western Europe in 1944, and famously told Hitler the war was lost — and survived?",
+      "explanation": "Von Rundstedt was the most senior German Field Marshal — the Wehrmacht's nominal top commander in the West. After D-Day failed to be contained, he told Hitler's representative 'Make peace, you fools.' He was dismissed twice but reinstated twice. Unlike so many who defied Hitler, he survived to be tried (briefly) after the war.",
+      "visualDescription": "Pixel art of an elderly German field marshal in grey greatcoat studying a wall map of the Normandy coastline with his staff, medals gleaming on his chest.",
+      "sourceName": "Wikipedia — Gerd von Rundstedt",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gerd_von_Rundstedt",
+      "volatile": false,
+      "distractors": ["Rommel", "Model", "Kesselring", "Manstein", "Paulus", "Guderian", "Kluge", "Blaskowitz"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "After D-Day, Von Rundstedt told Hitler's representative 'Make peace, you fools.' What happened to him as a result?",
+          "correctAnswer": "He was dismissed from command — for the second time — but not executed",
+          "distractors": ["He was arrested and shot for defeatism", "Nothing happened — Hitler ignored the comment", "He was reassigned to the Eastern Front as punishment", "He was tried by military tribunal and imprisoned"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Von Rundstedt disagreed with Rommel on how to defend against the D-Day invasion. What was Von Rundstedt's strategy?",
+          "correctAnswer": "Hold a mobile reserve inland and counterattack after the Allies landed — rather than stopping them at the beaches",
+          "distractors": ["Concentrate all forces at Calais, where he believed the real invasion would come", "Immediately surrender to British forces while fighting the Soviets", "Use Luftwaffe bombing to destroy the Allied fleet before it reached shore", "Mine all beaches and flood the coastal lowlands to prevent landing"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Von Rundstedt was dismissed from command twice by Hitler but reinstated twice, and survived the war.",
+          "correctAnswer": "True",
+          "distractors": ["False — Von Rundstedt was executed for his criticism of Hitler's strategy after D-Day"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Von _____ was Germany's most senior Field Marshal in the West, dismissed twice for telling Hitler the war was lost.",
+          "correctAnswer": "Rundstedt",
+          "distractors": ["Manstein", "Rommel", "Model", "Paulus"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_donitz_uboats",
+      "correctAnswer": "U-boats",
+      "acceptableAlternatives": ["submarines", "U-boat fleet", "submarine warfare"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Grand Admiral Dönitz commanded Germany's submarine fleet, known by what two-letter shorthand that struck terror in Allied merchant shipping?",
+      "explanation": "Dönitz's U-boats came closest to winning the war for Germany in 1941–42, when they were sinking Allied ships faster than they could be built. His 'wolf pack' tactics grouped multiple submarines to overwhelm convoy escorts. By 1943, Allied codebreaking and air power had effectively defeated the U-boat threat.",
+      "visualDescription": "Pixel art of a grey U-boat running on the surface at dusk, its conning tower crew scanning the horizon, the Atlantic stretching dark and foreboding around it.",
+      "sourceName": "Wikipedia — Karl Dönitz",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Karl_D%C3%B6nitz",
+      "volatile": false,
+      "distractors": ["E-boats", "S-boats", "X-craft", "Midget subs", "Kriegsmarine destroyers", "Pocket battleships", "Schnellboots", "Minesweepers"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Dönitz's 'wolf pack' tactic grouped multiple U-boats to attack Allied convoys. What ended the U-boat threat in 1943?",
+          "correctAnswer": "Allied codebreaking (Enigma), long-range aircraft, and improved convoy escort tactics",
+          "distractors": ["Germany ran out of steel to build new submarines", "Allied submarines sank the entire U-boat fleet in a single campaign", "Hitler ordered U-boats withdrawn to defend Norwegian waters", "The US Navy developed an impenetrable mine barrier across the Atlantic"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "In 1941–42, U-boats were sinking Allied ships faster than they could be built. What did this threaten to achieve?",
+          "correctAnswer": "Starving Britain of food, fuel, and war materials — potentially forcing a British surrender",
+          "distractors": ["Preventing US troops from reaching Europe", "Blocking the Murmansk convoy route to the Soviet Union", "Cutting off oil supplies to the Mediterranean fleet", "Isolating Canada from the war effort"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Of the approximately 40,000 German sailors who served in U-boats during WWII, about 75% were killed — the highest casualty rate of any branch in any major military.",
+          "correctAnswer": "True — U-boat service was extraordinarily lethal",
+          "distractors": ["False — U-boat crews had a lower casualty rate than German infantry on the Eastern Front"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Dönitz commanded Germany's _____ fleet, whose 'wolf pack' tactics nearly starved Britain into submission by 1942.",
+          "correctAnswer": "U-boat",
+          "distractors": ["E-boat", "destroyer", "battleship", "minesweeper"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_donitz_fuhrer",
+      "correctAnswer": "8 days",
+      "acceptableAlternatives": ["eight days", "less than two weeks"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "Hitler named Dönitz his successor in his political testament. How many days did Dönitz actually serve as Germany's head of state before ordering the final surrender?",
+      "explanation": "Dönitz became Führer on May 1, 1945 — one day after Hitler's suicide. He served 8 days, issuing the order for Germany's unconditional surrender on May 7-8, 1945. The shortest-lived head of state in German history, his only real act was ending the war.",
+      "visualDescription": "Pixel art of Dönitz in naval uniform sitting at a sparse desk, a formal document before him, Allied flags visible through the window of the Flensburg navy barracks.",
+      "sourceName": "Wikipedia — Karl Dönitz",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Karl_D%C3%B6nitz",
+      "volatile": false,
+      "distractors": ["3 days", "23 days", "6 weeks", "2 days", "2 weeks", "1 day", "1 month", "4 days"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Dönitz served as Germany's head of state for 8 days in May 1945. Why did Hitler choose the Admiral as his successor rather than Göring or Himmler?",
+          "correctAnswer": "Hitler had stripped both Göring and Himmler of their titles for insubordination near the end of the war",
+          "distractors": ["Dönitz was the only senior leader still alive when Hitler wrote his testament", "Hitler respected the navy above the army and SS", "Dönitz was the ranking officer closest to Hitler's bunker", "Dönitz had secretly been designated successor since 1943"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After Germany's surrender, Dönitz was tried at Nuremberg. What was his sentence?",
+          "correctAnswer": "10 years imprisonment",
+          "distractors": ["Death by hanging", "Life imprisonment", "20 years imprisonment", "Acquitted on all charges"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Dönitz is one of the few senior Nazi officials who was tried, convicted, and imprisoned — and then released to live as a free man for years after the war.",
+          "correctAnswer": "True — he served 10 years and was released in 1956, dying in 1980",
+          "distractors": ["False — Dönitz was executed at Nuremberg along with other senior Nazi officials"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Named Hitler's successor, Dönitz served as Germany's head of state for only _____ before ordering the final surrender.",
+          "correctAnswer": "8 days",
+          "distractors": ["3 days", "23 days", "2 weeks", "1 day"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_donitz_nuremberg",
+      "correctAnswer": "10 years",
+      "acceptableAlternatives": ["ten years", "10 years imprisonment"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "At the Nuremberg Trials, Dönitz received what sentence — notably lighter than most other defendants, partly because US Admiral Chester Nimitz filed a declaration supporting similar American submarine warfare tactics?",
+      "explanation": "Dönitz was convicted of unrestricted submarine warfare and ordering survivors not to be rescued. But Admiral Nimitz submitted a statement that the US Navy had used identical tactics in the Pacific. Judges accepted this tu quoque ('you did it too') partially, and Dönitz received 10 years — not death.",
+      "visualDescription": "Pixel art of the Nuremberg courtroom, defendants in the dock, judges at their high bench, international military officers observing from the gallery.",
+      "sourceName": "Wikipedia — Nuremberg trials",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_trials",
+      "volatile": false,
+      "distractors": ["Death by hanging", "Life imprisonment", "20 years", "5 years", "Acquittal", "25 years", "2 years", "15 years"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "US Admiral Chester Nimitz's Nuremberg declaration helped reduce Dönitz's sentence. What had Nimitz acknowledged about American naval warfare?",
+          "correctAnswer": "That the US Navy had used the same unrestricted submarine warfare tactics in the Pacific that Dönitz was charged with",
+          "distractors": ["That Dönitz had secretly aided the Allies during the war", "That German U-boat crews had treated American survivors humanely", "That Dönitz had tried to prevent atrocities committed by other commanders", "That Dönitz had negotiated an early German surrender offer in 1943"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The legal principle that others committed the same acts ('tu quoque') was partially accepted for Dönitz at Nuremberg. Why was this controversial?",
+          "correctAnswer": "It implied victors could not be tried for the same acts they prosecuted in the defeated — undermining the universality of war crimes law",
+          "distractors": ["It set a precedent that all naval officers were immune from prosecution", "It meant Germany could retroactively prosecute Allied commanders", "It required the US to return all German prisoners captured at sea", "It resulted in American submarine commanders being tried in German courts after the war"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Dönitz was convicted at Nuremberg and sentenced to 10 years, then released in 1956 to live as a free man until 1980.",
+          "correctAnswer": "True",
+          "distractors": ["False — Dönitz was acquitted at Nuremberg and never served any prison time"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Dönitz received _____ at Nuremberg — a lighter sentence partly because the US Navy had used identical submarine warfare tactics in the Pacific.",
+          "correctAnswer": "10 years imprisonment",
+          "distractors": ["death by hanging", "life imprisonment", "20 years", "acquittal"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_mussolini_albania",
+      "correctAnswer": "Albania",
+      "acceptableAlternatives": ["the invasion of Albania"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "In April 1939, Mussolini invaded and annexed which small Balkan country, making it an Italian protectorate just months before WWII began?",
+      "explanation": "Mussolini invaded Albania on April 7, 1939 — barely a week after Franco's victory in Spain and months before Hitler invaded Poland. Albania fell in three days. Mussolini wanted to control the Adriatic and project Italian power into the Balkans, but the ease of victory contributed to his overconfidence about Italian military capability.",
+      "visualDescription": "Pixel art of Italian naval warships approaching a rocky Albanian coastline, a small stone harbor town visible, Italian soldiers wading ashore.",
+      "sourceName": "Wikipedia — Italian invasion of Albania",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Italian_invasion_of_Albania",
+      "volatile": false,
+      "distractors": ["Greece", "Yugoslavia", "Bulgaria", "Croatia", "Montenegro", "Macedonia", "Serbia", "Romania"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Italy's 1939 annexation of Albania was completed in how many days?",
+          "correctAnswer": "Three days",
+          "distractors": ["Three weeks", "Three months", "One year", "Six months"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After annexing Albania in 1939, Mussolini then launched a disastrous invasion of which neighboring country in 1940 — requiring German rescue?",
+          "correctAnswer": "Greece",
+          "distractors": ["Yugoslavia", "Bulgaria", "Turkey", "Egypt"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Italy's rapid conquest of Albania in 1939 contributed to Mussolini's overconfidence in Italian military capability, which led to later disasters.",
+          "correctAnswer": "True",
+          "distractors": ["False — Albania's resistance was fierce and taught Mussolini respect for small nations"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Mussolini invaded _____ in April 1939, annexing it in three days and projecting Italian power into the Balkans.",
+          "correctAnswer": "Albania",
+          "distractors": ["Greece", "Yugoslavia", "Bulgaria", "Croatia"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_hirohito_renounced_divinity",
+      "correctAnswer": "1946",
+      "acceptableAlternatives": ["January 1, 1946"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Under pressure from American occupation authorities, Emperor Hirohito renounced his divine status in what year?",
+      "explanation": "On January 1, 1946, Hirohito issued the 'Humanity Declaration,' stating he was not a living god. This was required by MacArthur's occupation administration to recast Japan's political system on democratic grounds. For a nation that had fought believing the emperor was divine, this was a profound cultural rupture.",
+      "visualDescription": "Pixel art of Hirohito in a Western-style business suit at a New Year's press conference, Japanese reporters and Allied officers in the audience.",
+      "sourceName": "Wikipedia — Hirohito",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hirohito",
+      "volatile": false,
+      "distractors": ["1945", "1947", "1948", "1950", "1944", "1943", "1949", "1951"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Hirohito's 1946 'Humanity Declaration' stated he was not a living god. What was this declaration's main political purpose?",
+          "correctAnswer": "To dismantle State Shinto and its use as justification for imperial militarism, supporting Japan's democratization",
+          "distractors": ["To formally end the state of war between Japan and the Allied powers", "To apologize for Japanese wartime atrocities", "To transfer executive power from the Emperor to the new parliament", "To announce Japan's acceptance of the new democratic constitution"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Hirohito retained the throne under the 1947 Japanese constitution but with fundamentally changed powers. What did the new constitution make him?",
+          "correctAnswer": "A ceremonial symbol of the state with no political power",
+          "distractors": ["President of a constitutional republic", "Head of government with limited executive authority", "Supreme commander of Japan's self-defense forces", "Chairman of Japan's privy council"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Hirohito's renunciation of divinity in 1946 was demanded by American occupation authorities as a condition of preserving the throne.",
+          "correctAnswer": "True",
+          "distractors": ["False — Hirohito voluntarily renounced divinity of his own accord before the occupation ended"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Hirohito renounced his divine status in _____ in a declaration required by American occupation authorities.",
+          "correctAnswer": "1946",
+          "distractors": ["1945", "1947", "1948", "1950"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_ax_rommel_atlantic_wall",
+      "correctAnswer": "Atlantic Wall",
+      "acceptableAlternatives": ["the Atlantic Wall", "Atlantikwall"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After North Africa, Rommel was given command of fortifying which massive coastal defense system stretching from Norway to Spain to resist Allied invasion?",
+      "explanation": "Appointed in late 1943, Rommel found the Atlantic Wall was largely propaganda — he described it as a 'figment of Hitler's imagination.' He furiously added millions of mines, obstacles, and fortifications to Normandy beaches. Despite his efforts, D-Day succeeded because Allied air superiority and strategic deception (Operation Fortitude) neutralized his preparations.",
+      "visualDescription": "Pixel art of a German concrete bunker on a French cliff overlooking a beach, Rommel and staff officers inspecting artillery emplacements, the English Channel grey behind them.",
+      "sourceName": "Wikipedia — Atlantic Wall",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atlantic_Wall",
+      "volatile": false,
+      "distractors": ["Siegfried Line", "Maginot Line", "Gothic Line", "Gustav Line", "Winter Line", "West Wall", "Caesar Line", "Panther-Wotan line"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Rommel famously said the Atlantic Wall was a 'figment of Hitler's imagination.' What did he find when he actually inspected it?",
+          "correctAnswer": "It was largely incomplete, under-armed, and far weaker than official propaganda claimed",
+          "distractors": ["It was stronger than expected but positioned to defend the wrong beaches", "It was complete but the garrison troops were too poorly trained to use it", "It had too few artillery pieces but excellent troop morale", "It was in good shape in France but nonexistent in Norway"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Rommel disagreed with Von Rundstedt about where to concentrate reserves against the D-Day invasion. What was Rommel's view?",
+          "correctAnswer": "Reserves must be near the beaches — once Allied air power was dominant, inland reserves could never move fast enough",
+          "distractors": ["Reserves should be in Norway where the real invasion was expected", "Germany should have no reserves and put everything on the beaches", "Reserves should be in Paris, the most likely Allied target", "Reserves should counterattack immediately without waiting to identify the main landing"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or false: Rommel was commanding the Normandy defenses in person on D-Day, June 6, 1944.",
+          "correctAnswer": "False — Rommel was in Germany visiting his family for his wife's birthday when D-Day began",
+          "distractors": ["True — Rommel was at his headquarters in La Roche-Guyon and directed the first response"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Rommel fortified the _____ Wall from late 1943, adding millions of beach obstacles and mines to Normandy — but D-Day still succeeded.",
+          "correctAnswer": "Atlantic",
+          "distractors": ["Siegfried", "Gothic", "Winter", "Caesar"]
+        }
+      ]
+    }
+  ]
+}

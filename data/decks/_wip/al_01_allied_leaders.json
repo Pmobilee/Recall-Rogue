@@ -1,0 +1,1642 @@
+{
+  "facts": [
+    {
+      "id": "wwii_al_churchill_pm_date",
+      "correctAnswer": "May 10, 1940",
+      "acceptableAlternatives": ["10 May 1940", "May 10th 1940"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did Winston Churchill become Prime Minister of Britain — the same day Germany invaded the Low Countries?",
+      "explanation": "Churchill became PM on May 10, 1940, the very day Germany launched its assault on Belgium and the Netherlands. Chamberlain had lost confidence of Parliament after the disastrous Norway campaign. The timing was catastrophic — Churchill inherited a war already going wrong.",
+      "visualDescription": "Pixel art of Churchill in a black suit and bowler hat standing at the door of 10 Downing Street, war planes visible in the cloudy sky behind him.",
+      "sourceName": "Wikipedia — Winston Churchill",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "volatile": false,
+      "distractors": ["September 3, 1939", "June 4, 1940", "July 10, 1940", "April 9, 1940", "August 23, 1939", "March 5, 1940", "January 1, 1940", "November 11, 1940"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which British PM took office on May 10, 1940 — the same day Germany invaded Belgium?",
+          "correctAnswer": "Winston Churchill",
+          "distractors": ["Neville Chamberlain", "Clement Attlee", "Anthony Eden", "Harold Macmillan"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Churchill became PM on May 10, 1940. Who did he replace after that leader lost Parliament's confidence?",
+          "correctAnswer": "Neville Chamberlain",
+          "distractors": ["Anthony Eden", "Lord Halifax", "Stanley Baldwin", "Ramsay MacDonald"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Churchill became Prime Minister before Germany began its western offensive in 1940.",
+          "correctAnswer": "False — he became PM on the same day, May 10, 1940",
+          "distractors": ["True — he became PM one week before the invasion", "True — he became PM in April 1940", "False — he became PM two weeks after the invasion began"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Churchill replaced ___ as Prime Minister on May 10, 1940.",
+          "correctAnswer": "Neville Chamberlain",
+          "distractors": ["Lord Halifax", "Anthony Eden", "Herbert Asquith", "David Lloyd George"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_churchill_beaches",
+      "correctAnswer": "We shall fight on the beaches",
+      "acceptableAlternatives": ["fight on the beaches", "we shall fight them on the beaches"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Churchill's June 4, 1940 speech promised Britain would never surrender — what phrase has become its most famous line?",
+      "explanation": "Delivered on June 4, 1940 after the Dunkirk evacuation rescued 338,000 Allied troops, this speech was Churchill's defiant answer to those who counseled surrender. The full line: 'We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets.' It hardened British resolve at Britain's darkest hour.",
+      "visualDescription": "Pixel art of Churchill at a podium in the House of Commons, fist raised, MPs visible in tiered seats around him, a Union Jack banner behind.",
+      "sourceName": "Wikipedia — We shall fight on the beaches",
+      "sourceUrl": "https://en.wikipedia.org/wiki/We_shall_fight_on_the_beaches",
+      "volatile": false,
+      "distractors": ["This was their finest hour", "Never in the field of human conflict", "Blood, toil, tears and sweat", "An iron curtain has descended", "The few, the proud", "Victory at all costs", "We shall never surrender alone", "England expects"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The 'We shall fight on the beaches' speech was delivered on June 4, 1940 — what military disaster had just occurred days before it?",
+          "correctAnswer": "The Dunkirk evacuation",
+          "distractors": ["The fall of France", "The Battle of Britain began", "The fall of Norway", "Italy entered the war"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Churchill delivered 'We shall fight on the beaches' on June 4, 1940. How many Allied troops had just been evacuated at Dunkirk?",
+          "correctAnswer": "338,000",
+          "distractors": ["150,000", "500,000", "200,000", "450,000"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Churchill's 'We shall fight on the beaches' speech was broadcast live on BBC radio to the British public.",
+          "correctAnswer": "False — it was delivered in Parliament; a recording was made later",
+          "distractors": ["True — it was broadcast live on the BBC", "True — Churchill read it on radio the same evening", "False — Churchill never gave radio speeches"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Churchill's June 4, 1940 defiance speech pledged Britain would 'fight on the beaches' after the ___ evacuation.",
+          "correctAnswer": "Dunkirk",
+          "distractors": ["Calais", "Dieppe", "Normandy", "Brest"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_churchill_iron_curtain",
+      "correctAnswer": "March 5, 1946",
+      "acceptableAlternatives": ["1946", "March 1946"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Churchill coined 'Iron Curtain' in a speech at Fulton, Missouri. When was this landmark Cold War speech delivered?",
+      "explanation": "On March 5, 1946 at Westminster College in Fulton, Missouri — with President Truman seated on the platform — Churchill declared: 'An iron curtain has descended across the Continent.' This speech is widely seen as the opening salvo of the Cold War, naming the divide between Soviet-dominated Eastern Europe and the West.",
+      "visualDescription": "Pixel art of Churchill at a lectern in a Missouri college auditorium, Truman seated behind him, a map of Europe on the wall showing a dark line across it.",
+      "sourceName": "Wikipedia — Iron Curtain speech",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sinews_of_Peace",
+      "volatile": false,
+      "distractors": ["February 4, 1945", "May 8, 1945", "July 17, 1945", "January 10, 1946", "August 6, 1946", "September 12, 1946", "April 3, 1947", "June 5, 1947"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "In which US city did Churchill deliver the famous 'Iron Curtain' speech on March 5, 1946?",
+          "correctAnswer": "Fulton, Missouri",
+          "distractors": ["Washington D.C.", "New York City", "Chicago", "Philadelphia"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Churchill gave the 'Iron Curtain' speech with which US president seated on the platform behind him?",
+          "correctAnswer": "Harry Truman",
+          "distractors": ["Franklin Roosevelt", "Dwight Eisenhower", "Herbert Hoover", "Lyndon Johnson"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Churchill was still Prime Minister of Britain when he delivered the 'Iron Curtain' speech in 1946.",
+          "correctAnswer": "False — he had lost the 1945 election and was Leader of the Opposition",
+          "distractors": ["True — he was PM until 1947", "True — he served until the end of 1945", "False — he had already retired from politics"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Churchill's 1946 'Iron Curtain' speech was delivered at Westminster College in Fulton, ___.",
+          "correctAnswer": "Missouri",
+          "distractors": ["Virginia", "Ohio", "Kentucky", "Illinois"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_churchill_nobel",
+      "correctAnswer": "Literature",
+      "acceptableAlternatives": ["Nobel Prize in Literature", "Nobel Literature Prize"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Churchill won the Nobel Prize in 1953 — but not for Peace. In which category was a wartime leader awarded a Nobel Prize?",
+      "explanation": "Churchill won the Nobel Prize in Literature in 1953, recognized for his historical and biographical writings and for his brilliant oratory. His six-volume 'The Second World War' and 'A History of the English-Speaking Peoples' were cited. It remains one of the most surprising Nobel Prize awards — a war leader winning Literature, not Peace.",
+      "visualDescription": "Pixel art of Churchill in formal evening wear accepting a gold Nobel medal, bookshelves visible behind him filled with thick volumes he authored.",
+      "sourceName": "Wikipedia — Winston Churchill",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "volatile": false,
+      "distractors": ["Peace", "History", "Economics", "Medicine", "Physics", "Political Science", "Philosophy", "Journalism"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which WWII leader won the Nobel Prize in Literature in 1953 for his historical writings and oratory?",
+          "correctAnswer": "Winston Churchill",
+          "distractors": ["Charles de Gaulle", "Franklin Roosevelt", "Dwight Eisenhower", "Harry Truman"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Churchill's Nobel Prize in Literature was awarded partly for his multi-volume history of which war?",
+          "correctAnswer": "The Second World War",
+          "distractors": ["The First World War", "The Boer War", "The Crimean War", "The Napoleonic Wars"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Churchill won the Nobel Peace Prize for his role in ending World War II.",
+          "correctAnswer": "False — he won the Nobel Prize in Literature in 1953",
+          "distractors": ["True — he won it in 1945", "True — he shared it with Roosevelt and Stalin", "False — he was never nominated for a Nobel Prize"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Churchill won the 1953 Nobel Prize in ___, recognized for his histories and oratory.",
+          "correctAnswer": "Literature",
+          "distractors": ["Peace", "Economics", "History", "Political Science"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_fdr_arsenal",
+      "correctAnswer": "Arsenal of Democracy",
+      "acceptableAlternatives": ["the arsenal of democracy"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "FDR's December 29, 1940 fireside chat declared America must become what, to supply Britain without entering the war?",
+      "explanation": "In his December 29, 1940 fireside chat, FDR declared America must become 'the great arsenal of democracy' — supplying weapons to Britain while officially staying neutral. This speech was the political groundwork for Lend-Lease, passed in March 1941. FDR was threading the needle: helping Britain fight Hitler while keeping America out of the war.",
+      "visualDescription": "Pixel art of FDR at a microphone in the White House, a radio broadcast setup, factory silhouettes with smoke stacks visible through the window behind him.",
+      "sourceName": "Wikipedia — Arsenal of Democracy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arsenal_of_democracy",
+      "volatile": false,
+      "distractors": ["Defender of Freedom", "Lighthouse of Liberty", "Forge of Victory", "Workshop of the World", "Bastion of Democracy", "Shield of the Free", "Citadel of Liberty", "Armory of Nations"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "FDR called America 'the arsenal of democracy' on December 29, 1940 — what major aid program did this speech help pave the way for?",
+          "correctAnswer": "Lend-Lease",
+          "distractors": ["Marshall Plan", "NATO", "Atlantic Charter", "Cash and Carry"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The 'Arsenal of Democracy' speech was a fireside chat — what medium did FDR use to address the American public in fireside chats?",
+          "correctAnswer": "Radio",
+          "distractors": ["Newspaper", "Newsreel cinema", "Television", "Telegram"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: FDR's 'Arsenal of Democracy' speech declared that the United States would immediately enter the war against Germany.",
+          "correctAnswer": "False — it argued for supplying allies while staying neutral",
+          "distractors": ["True — he declared war in the same speech", "True — Congress voted for war the next day", "False — FDR opposed helping Britain militarily"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "FDR's December 29, 1940 fireside chat declared America must become 'the great ___ of democracy.'",
+          "correctAnswer": "arsenal",
+          "distractors": ["defender", "fortress", "lighthouse", "citadel"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_fdr_casablanca",
+      "correctAnswer": "Unconditional surrender",
+      "acceptableAlternatives": ["unconditional surrender of Germany", "unconditional surrender of the Axis"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "At the 1943 Casablanca Conference, FDR announced the Allies' war aim — what two-word policy would they demand from Germany?",
+      "explanation": "At Casablanca in January 1943, FDR — surprising even Churchill — announced the Allies would accept nothing less than 'unconditional surrender' from the Axis powers. This controversial policy prevented any negotiated peace with factions within Germany willing to remove Hitler. It meant the war would be fought to the absolute end.",
+      "visualDescription": "Pixel art of FDR and Churchill seated at an outdoor table in Casablanca with palm trees in the background, press photographers visible, both leaders looking confident.",
+      "sourceName": "Wikipedia — Casablanca Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_Conference",
+      "volatile": false,
+      "distractors": ["Total victory", "Complete disarmament", "Regime change", "Absolute defeat", "Full capitulation", "Permanent occupation", "Territorial surrender", "Military dissolution"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "At which 1943 Allied conference did FDR announce the policy of demanding 'unconditional surrender' from the Axis?",
+          "correctAnswer": "Casablanca",
+          "distractors": ["Tehran", "Yalta", "Potsdam", "Quebec"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Casablanca Conference was held in January 1943. In which country is Casablanca located?",
+          "correctAnswer": "Morocco",
+          "distractors": ["Algeria", "Tunisia", "Libya", "Egypt"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Churchill fully expected and approved FDR's announcement of 'unconditional surrender' policy at Casablanca before FDR said it publicly.",
+          "correctAnswer": "False — Churchill was surprised by the announcement",
+          "distractors": ["True — Churchill proposed it himself", "True — it was jointly planned weeks in advance", "False — Churchill openly opposed the policy at the conference"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Casablanca in 1943, FDR announced the Allies would demand ___ surrender from Germany.",
+          "correctAnswer": "unconditional",
+          "distractors": ["immediate", "total", "complete", "absolute"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_fdr_death",
+      "correctAnswer": "April 12, 1945",
+      "acceptableAlternatives": ["April 12th 1945", "12 April 1945"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "FDR died just weeks before Germany surrendered. On what date did he die, leaving Truman to inherit both the presidency and the atomic bomb decision?",
+      "explanation": "FDR died on April 12, 1945 at Warm Springs, Georgia — just 25 days before Germany's surrender on May 8. Truman, his Vice President, had been kept so far out of the loop that he didn't even know the Manhattan Project existed until after becoming president. The decision to use atomic bombs fell entirely on Truman.",
+      "visualDescription": "Pixel art of a somber White House at dusk, American flag at half-mast, a lone figure of Truman visible in a lit window, newspapers on the ground bearing FDR's photo.",
+      "sourceName": "Wikipedia — Franklin D. Roosevelt",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+      "volatile": false,
+      "distractors": ["March 12, 1945", "May 8, 1945", "February 4, 1945", "January 20, 1945", "June 6, 1945", "August 6, 1945", "November 7, 1944", "December 7, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "FDR died on April 12, 1945. How many days before Germany's surrender on May 8, 1945 was that?",
+          "correctAnswer": "25 days",
+          "distractors": ["3 days", "90 days", "6 months", "50 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "FDR died without telling his VP about the atomic bomb project. What was the Manhattan Project's secret development site that Truman only learned of after taking office?",
+          "correctAnswer": "Truman learned of the entire Manhattan Project",
+          "distractors": ["Los Alamos only", "The Trinity test site", "The Oak Ridge facility only", "The Hanford site only"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Truman knew about the atomic bomb project before FDR died and he became president.",
+          "correctAnswer": "False — Truman was not briefed on the Manhattan Project until after becoming president",
+          "distractors": ["True — as VP he was fully briefed", "True — he helped oversee Senate funding for it", "False — no one in government knew about it"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "FDR died on April 12, 1945 at Warm Springs, ___.",
+          "correctAnswer": "Georgia",
+          "distractors": ["Virginia", "Florida", "South Carolina", "Tennessee"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_fdr_four_terms",
+      "correctAnswer": "Four",
+      "acceptableAlternatives": ["4", "4 terms", "four terms"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "FDR is the only US president ever elected to more than two terms. How many times was he elected president?",
+      "explanation": "FDR was elected president four times: 1932, 1936, 1940, and 1944. Before the 22nd Amendment (1951), no term limits existed — just a two-term tradition set by Washington. FDR broke that tradition twice. The 22nd Amendment was passed directly in response to his unprecedented tenure.",
+      "visualDescription": "Pixel art of four campaign posters side by side showing FDR's portrait across 1932, 1936, 1940, and 1944 elections, in vintage American political poster style.",
+      "sourceName": "Wikipedia — Franklin D. Roosevelt",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
+      "volatile": false,
+      "distractors": ["Two", "Three", "Five", "Six", "One", "Seven", "Eight", "Nine"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which US constitutional amendment, passed in 1951, was enacted largely in response to FDR winning four presidential elections?",
+          "correctAnswer": "22nd Amendment",
+          "distractors": ["21st Amendment", "19th Amendment", "25th Amendment", "20th Amendment"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "FDR won his first election in 1932 defeating which incumbent Republican president during the Great Depression?",
+          "correctAnswer": "Herbert Hoover",
+          "distractors": ["Calvin Coolidge", "Warren Harding", "William Taft", "Woodrow Wilson"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: FDR completed all four of his presidential terms before dying.",
+          "correctAnswer": "False — he died during his fourth term in April 1945",
+          "distractors": ["True — he finished all four terms and then retired", "True — he died right after his fourth inauguration", "False — he only completed two terms"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "FDR was the only US president elected ___ times, breaking the informal two-term tradition established by George Washington.",
+          "correctAnswer": "four",
+          "distractors": ["three", "five", "six", "two"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_ike_supreme_commander",
+      "correctAnswer": "Supreme Commander Allied Expeditionary Force",
+      "acceptableAlternatives": ["SCAEF", "Supreme Allied Commander", "Supreme Commander of Allied Forces"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What was Eisenhower's official title when he commanded all Allied forces for the D-Day invasion and liberation of Western Europe?",
+      "explanation": "Eisenhower served as Supreme Commander Allied Expeditionary Force (SCAEF), responsible for planning and executing Operation Overlord — the D-Day landings of June 6, 1944. His most consequential pre-D-Day decision was whether to proceed given poor weather forecasts. He gave the go-ahead on June 5 for the next morning, a gamble that worked.",
+      "visualDescription": "Pixel art of Eisenhower in general's uniform pointing at a large wall map of the English Channel coastline, staff officers around him, the SHAEF insignia visible on the wall.",
+      "sourceName": "Wikipedia — Dwight D. Eisenhower",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower",
+      "volatile": false,
+      "distractors": ["Commander in Chief European Theater", "Supreme Allied Commander Europe", "Commanding General US Army", "Director of Operations Allied Forces", "Chief of Staff Allied Command", "Supreme Commander Western Front", "Allied Ground Forces Commander", "General of the Allied Armies"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Eisenhower held the title of Supreme Commander Allied Expeditionary Force — what major operation was he primarily overseeing when he held this role?",
+          "correctAnswer": "Operation Overlord (D-Day)",
+          "distractors": ["Operation Market Garden", "Operation Torch", "Operation Barbarossa", "Operation Husky"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Eisenhower's most critical pre-D-Day decision was whether to launch despite poor weather. On what date did he give the final 'go' order?",
+          "correctAnswer": "June 5, 1944 (for the June 6 landing)",
+          "distractors": ["June 4, 1944", "June 7, 1944", "May 31, 1944", "June 1, 1944"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Eisenhower prepared a message accepting personal responsibility for failure before the D-Day landings in case they went wrong.",
+          "correctAnswer": "True — he drafted a note accepting blame if Overlord failed",
+          "distractors": ["False — military commanders never prepare failure statements", "False — he was completely confident in the operation", "True — but it was written by his aide, not Eisenhower himself"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Eisenhower served as Supreme Commander ___ Expeditionary Force, directing the D-Day landings.",
+          "correctAnswer": "Allied",
+          "distractors": ["American", "British", "Western", "European"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_ike_german_surrender",
+      "correctAnswer": "May 7, 1945",
+      "acceptableAlternatives": ["7 May 1945", "May 7th 1945"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Eisenhower accepted Germany's unconditional surrender at Reims, France. On what date did this occur?",
+      "explanation": "Germany signed the unconditional surrender documents at Reims on May 7, 1945, effective at midnight May 8 — V-E Day. Eisenhower refused to be present for the signing itself, instead waiting in another room. When German officers were brought to him afterward, he asked them coldly if they understood the terms and dismissed them. It was his deliberate rebuke to the men who had started the war.",
+      "visualDescription": "Pixel art of Allied officers at a table in a war room in Reims, a large map on the wall, German officers signing documents while Allied generals stand witness.",
+      "sourceName": "Wikipedia — German Instrument of Surrender",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_Instrument_of_Surrender",
+      "volatile": false,
+      "distractors": ["May 2, 1945", "May 8, 1945", "May 9, 1945", "April 30, 1945", "April 25, 1945", "May 1, 1945", "June 5, 1945", "May 15, 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Eisenhower accepted Germany's surrender on May 7, 1945 — in which French city did this surrender ceremony take place?",
+          "correctAnswer": "Reims",
+          "distractors": ["Paris", "Versailles", "Strasbourg", "Lyon"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Eisenhower refused to be present at the German signing ceremony — what did he do instead when German officers were brought to him?",
+          "correctAnswer": "Asked coldly if they understood the terms, then dismissed them",
+          "distractors": ["Shook their hands as per military protocol", "Gave a speech welcoming peace", "Refused to meet them at all", "Offered them lunch as customary"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The German surrender on May 7, 1945 was the same date as V-E Day (Victory in Europe Day).",
+          "correctAnswer": "False — V-E Day was May 8, the effective date the surrender took force",
+          "distractors": ["True — they were the same day", "True — V-E Day was declared the moment Germany signed", "False — V-E Day was May 9, 1945"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Eisenhower accepted Germany's unconditional surrender on May 7, 1945 at Reims, ___.",
+          "correctAnswer": "France",
+          "distractors": ["Germany", "Belgium", "Luxembourg", "Netherlands"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_ike_military_industrial",
+      "correctAnswer": "Military-industrial complex",
+      "acceptableAlternatives": ["the military-industrial complex"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "In his presidential farewell address, Eisenhower coined a phrase warning against the growing power of what entity he had personally helped build during WWII?",
+      "explanation": "In his January 17, 1961 farewell address, President Eisenhower warned: 'In the councils of government, we must guard against the acquisition of unwarranted influence, whether sought or unsought, by the military-industrial complex.' The irony: he was the general who commanded the massive industrial war machine he was now warning against. It remains one of the most self-aware political farewells in history.",
+      "visualDescription": "Pixel art of Eisenhower as an elderly president at a TV camera in the Oval Office giving his farewell address, a globe and American flag beside him.",
+      "sourceName": "Wikipedia — Eisenhower's farewell address",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Eisenhower%27s_farewell_address",
+      "volatile": false,
+      "distractors": ["The deep state", "The permanent war establishment", "The defense apparatus", "The armaments lobby", "The war economy", "The Pentagon complex", "The weapons industry", "The national security state"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Eisenhower warned of the 'military-industrial complex' in which type of presidential address?",
+          "correctAnswer": "Farewell address (January 1961)",
+          "distractors": ["State of the Union", "Inaugural address", "Victory speech", "Press conference"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Eisenhower's warning about the military-industrial complex carried unique credibility — what was his military rank during WWII?",
+          "correctAnswer": "General of the Army (five-star general)",
+          "distractors": ["Four-star general", "Three-star general", "Field Marshal", "Supreme Allied Admiral"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Eisenhower's 'military-industrial complex' warning was made in his first speech as president.",
+          "correctAnswer": "False — it was his farewell address as he was leaving office in January 1961",
+          "distractors": ["True — he raised it immediately upon taking office", "True — it was his first State of the Union", "False — he never used the phrase while president"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "In his 1961 farewell address, Eisenhower warned against undue influence by the ___-industrial complex.",
+          "correctAnswer": "military",
+          "distractors": ["political", "financial", "defense", "corporate"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_macarthur_shall_return",
+      "correctAnswer": "I shall return",
+      "acceptableAlternatives": ["I will return", "We shall return"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Ordered to abandon his troops in the Philippines in 1942, MacArthur made a famous promise as he escaped to Australia. What were his three words?",
+      "explanation": "After FDR ordered MacArthur to leave the Philippines in March 1942 as Japanese forces closed in, MacArthur escaped by PT boat and then plane to Australia. On arriving he declared: 'I shall return.' He kept his promise — returning to the Philippines on October 20, 1944, wading ashore dramatically at Leyte. The phrase became one of WWII's most powerful morale statements.",
+      "visualDescription": "Pixel art of MacArthur in his iconic peaked cap and sunglasses wading through surf onto a Philippine beach, soldiers behind him, a dramatic cloudy sky overhead.",
+      "sourceName": "Wikipedia — Douglas MacArthur",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Douglas_MacArthur",
+      "volatile": false,
+      "distractors": ["I will fight on", "Never surrender here", "We shall prevail", "God willing, return", "America remembers you", "Duty calls back", "Freedom demands return", "Honor compels return"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "MacArthur promised 'I shall return' when leaving which Pacific nation under Japanese attack in 1942?",
+          "correctAnswer": "Philippines",
+          "distractors": ["Guam", "Wake Island", "New Guinea", "Corregidor"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "MacArthur fulfilled his 'I shall return' promise by landing at Leyte in October 1944 — how did he famously enter the Philippines?",
+          "correctAnswer": "Wading ashore through the surf",
+          "distractors": ["Parachuting onto the beach", "Arriving by battleship", "Flying in by fighter plane", "Landing by submarine"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: MacArthur volunteered to leave the Philippines — FDR had to order him to go.",
+          "correctAnswer": "False — FDR ordered MacArthur to leave; MacArthur was reluctant",
+          "distractors": ["True — MacArthur chose to leave to plan the counterattack", "True — he left to preserve his leadership for the Pacific campaign", "False — MacArthur was never ordered to leave; he chose to go"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "MacArthur promised '___' when ordered out of the Philippines in 1942.",
+          "correctAnswer": "I shall return",
+          "distractors": ["We shall return", "I will be back", "America will return", "Freedom will return"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_macarthur_missouri",
+      "correctAnswer": "USS Missouri",
+      "acceptableAlternatives": ["Missouri", "the Missouri", "BB-63"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "MacArthur presided over Japan's formal surrender ceremony on September 2, 1945 aboard which US Navy battleship?",
+      "explanation": "Japan's formal surrender was signed aboard the USS Missouri (BB-63) in Tokyo Bay on September 2, 1945. MacArthur orchestrated the ceremony meticulously — he wanted it to be dignified and final. The Missouri was chosen partly because it was President Truman's home state. MacArthur signed first, then Allied and Japanese representatives. The ceremony lasted 23 minutes.",
+      "visualDescription": "Pixel art of the crowded deck of a battleship in Tokyo Bay, Allied officers in dress uniforms at a table covered with surrender documents, Japanese delegates in formal dress approaching to sign.",
+      "sourceName": "Wikipedia — Surrender of Japan",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Surrender_of_Japan",
+      "volatile": false,
+      "distractors": ["USS Iowa", "USS New Jersey", "USS Wisconsin", "USS Arizona", "USS Enterprise", "USS Saratoga", "USS Washington", "USS North Carolina"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Japanese surrender ceremony aboard the USS Missouri on September 2, 1945 took place in which bay?",
+          "correctAnswer": "Tokyo Bay",
+          "distractors": ["Pearl Harbor", "Manila Bay", "Sagami Bay", "Osaka Bay"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The USS Missouri was selected for Japan's surrender ceremony partly because it was the home state of which president?",
+          "correctAnswer": "Harry Truman",
+          "distractors": ["Franklin Roosevelt", "Dwight Eisenhower", "Herbert Hoover", "Calvin Coolidge"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: MacArthur was the last Allied representative to sign the Japanese surrender documents aboard the USS Missouri.",
+          "correctAnswer": "False — MacArthur signed first as Supreme Commander",
+          "distractors": ["True — tradition required the senior officer sign last", "True — he deferred to the Japanese representatives", "False — a Japanese officer signed first"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "MacArthur presided over Japan's surrender on the USS ___ in Tokyo Bay on September 2, 1945.",
+          "correctAnswer": "Missouri",
+          "distractors": ["Iowa", "Enterprise", "Arizona", "Wisconsin"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_macarthur_fired",
+      "correctAnswer": "Korean War",
+      "acceptableAlternatives": ["Korea", "Korean conflict"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "MacArthur was fired by Truman for publicly contradicting civilian leadership — during which war did this dismissal occur?",
+      "explanation": "In April 1951, Truman fired MacArthur as commander of UN forces in Korea after MacArthur publicly threatened to expand the war into China — directly contradicting Truman's policy of limiting the conflict. MacArthur had also written a letter to a Republican congressman undermining Truman's strategy. Truman's dismissal of the most popular general in America was one of the most controversial acts of his presidency.",
+      "visualDescription": "Pixel art of Truman at his desk signing papers with a grim expression, a framed photo of MacArthur visible on the wall behind him, newspaper headlines about the firing visible on the desk.",
+      "sourceName": "Wikipedia — Dismissal of Douglas MacArthur",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dismissal_of_Douglas_MacArthur",
+      "volatile": false,
+      "distractors": ["World War II", "Vietnam War", "Cold War standoff", "Philippine-American War", "Chinese Civil War", "Pacific Theater", "Occupation of Japan", "Berlin Crisis"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Truman fired MacArthur in April 1951 for publicly threatening to do what, against Truman's policy of limiting the Korean War?",
+          "correctAnswer": "Expand the war into China",
+          "distractors": ["Use atomic weapons without authorization", "Negotiate a ceasefire independently", "Invade North Korea beyond the 38th parallel", "Withdraw troops from the peninsula"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "MacArthur undermined Truman by writing a letter to a Republican congressman. Under what constitutional principle did Truman justify firing him?",
+          "correctAnswer": "Civilian control of the military",
+          "distractors": ["The Commander-in-Chief clause", "The Uniform Code of Military Justice", "Executive privilege", "The War Powers Act"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: MacArthur was fired because his Korean War military strategy had failed and he was losing battles.",
+          "correctAnswer": "False — he was fired for insubordination, publicly contradicting civilian policy",
+          "distractors": ["True — the Korean stalemate was MacArthur's tactical failure", "True — Truman blamed him for Chinese intervention", "False — MacArthur resigned voluntarily"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Truman fired MacArthur during the ___ War for publicly advocating expansion of the conflict into China.",
+          "correctAnswer": "Korean",
+          "distractors": ["Vietnam", "Cold", "Second World", "Pacific"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_stalin_barbarossa",
+      "correctAnswer": "June 22, 1941",
+      "acceptableAlternatives": ["22 June 1941", "June 1941"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Operation Barbarossa — Germany's surprise invasion of the USSR — shocked Stalin despite months of warnings. On what date did Germany invade?",
+      "explanation": "Germany launched Operation Barbarossa on June 22, 1941 along an 1,800-mile front — the largest military operation in history. Stalin had received dozens of warnings from Soviet intelligence, British intelligence, and even US sources, but dismissed them all as British provocations designed to drag the USSR into war. The first days were catastrophic: the Soviet air force was destroyed on the ground, entire armies were encircled.",
+      "visualDescription": "Pixel art of a massive German armored column crossing into Soviet territory at dawn, Cyrillic road signs visible, Soviet border troops surprised, smoke rising in the distance.",
+      "sourceName": "Wikipedia — Operation Barbarossa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
+      "volatile": false,
+      "distractors": ["August 23, 1939", "September 1, 1939", "April 6, 1941", "May 10, 1941", "July 4, 1941", "June 6, 1941", "March 15, 1941", "December 7, 1941"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Operation Barbarossa on June 22, 1941 was the largest military operation in history — along roughly how many miles of front did Germany attack?",
+          "correctAnswer": "1,800 miles",
+          "distractors": ["500 miles", "800 miles", "2,500 miles", "1,200 miles"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Stalin had signed a non-aggression pact with Germany in 1939. What was this agreement called?",
+          "correctAnswer": "Molotov-Ribbentrop Pact",
+          "distractors": ["Nazi-Soviet Treaty", "Berlin-Moscow Agreement", "Stalin-Hitler Accord", "Eastern Non-Aggression Pact"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Stalin received no intelligence warnings before Operation Barbarossa and was completely blindsided.",
+          "correctAnswer": "False — he received many warnings but dismissed them",
+          "distractors": ["True — German operational security was perfect", "True — all warnings were planted disinformation", "False — Stalin had ordered a preemptive strike that failed"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Operation Barbarossa, Germany's surprise invasion of the USSR, launched on June 22, ___.",
+          "correctAnswer": "1941",
+          "distractors": ["1940", "1942", "1939", "1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_stalin_order_227",
+      "correctAnswer": "Not one step back",
+      "acceptableAlternatives": ["Neither step back", "Not a step back", "No step back"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Stalin's Order 227, issued July 28, 1942 as German forces closed on Stalingrad, is known by what four-word phrase?",
+      "explanation": "Order 227 — 'Not one step back' — was Stalin's brutal response to Soviet retreats in summer 1942. It authorized 'blocking detachments' (NKVD units) to shoot Soviet soldiers who retreated without orders. Penalty battalions (shtrafbats) sent soldiers into suicide missions. The order was read to every unit in the Red Army. It reflected Stalin's view that retreat = treason.",
+      "visualDescription": "Pixel art of Soviet soldiers in a trench, a commissar reading aloud from a document, grim expressions all around, Stalingrad factory buildings burning in the background.",
+      "sourceName": "Wikipedia — Order No. 227",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Order_No._227",
+      "volatile": false,
+      "distractors": ["Death before surrender", "Victory or death", "Hold at all costs", "Stand firm, comrades", "No retreat ever", "Die in place", "Forward to victory", "Advance or die"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Stalin's Order 227 'Not one step back' authorized units behind the front lines to shoot retreating soldiers. What were these units called?",
+          "correctAnswer": "Blocking detachments (zagradotryady)",
+          "distractors": ["Commissar battalions", "Political officer units", "NKVD firing squads", "Punishment regiments"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Order 227 was issued July 28, 1942 as Germany was advancing toward which city along the Volga River?",
+          "correctAnswer": "Stalingrad",
+          "distractors": ["Moscow", "Leningrad", "Kiev", "Kursk"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Order 227 was a secret document known only to senior commanders, never shared with ordinary soldiers.",
+          "correctAnswer": "False — it was read aloud to every unit in the Red Army",
+          "distractors": ["True — it was classified Top Secret", "True — only division commanders received it", "False — soldiers were told about it but only after the war"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Stalin's Order 227 of July 1942 became known as 'Not one ___ back.'",
+          "correctAnswer": "step",
+          "distractors": ["man", "soldier", "inch", "meter"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_stalin_soviet_deaths",
+      "correctAnswer": "27 million",
+      "acceptableAlternatives": ["approximately 27 million", "~27 million", "26-27 million"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The USSR suffered by far the highest WWII death toll of any nation. Approximately how many Soviet citizens and soldiers died in the war?",
+      "explanation": "The Soviet Union lost approximately 27 million people in WWII — more than any other nation by a massive margin. This represents roughly 14% of the entire Soviet population. Of this, about 8-9 million were military deaths and 18-19 million were civilian deaths from combat, starvation, disease, and atrocity. Germany's Eastern Front was the war's true center of gravity: 80% of all German military losses occurred there.",
+      "visualDescription": "Pixel art of a vast Soviet war memorial — towering stone figures of soldiers and mothers, eternal flame burning, rows of names carved into dark granite walls.",
+      "sourceName": "Wikipedia — World War II casualties",
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_II_casualties",
+      "volatile": false,
+      "distractors": ["6 million", "10 million", "15 million", "20 million", "5 million", "8 million", "35 million", "40 million"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The USSR lost approximately 27 million people in WWII — what percentage of the total Soviet population did this represent?",
+          "correctAnswer": "About 14%",
+          "distractors": ["About 3%", "About 25%", "About 7%", "About 50%"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Roughly 80% of all German military losses in WWII occurred on which front — demonstrating why the Eastern Front was the war's decisive theater?",
+          "correctAnswer": "The Eastern Front (against the USSR)",
+          "distractors": ["The Western Front", "The North African Front", "The Italian Front", "The Pacific Theater"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The United States suffered more WWII deaths than the Soviet Union.",
+          "correctAnswer": "False — the US lost ~420,000; the USSR lost ~27 million",
+          "distractors": ["True — the US had 10 million combat deaths", "True — counting all theaters, US deaths exceeded Soviet losses", "False — but the gap was only about 2:1"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Soviet Union suffered approximately ___ million deaths in World War II, the highest of any nation.",
+          "correctAnswer": "27",
+          "distractors": ["10", "15", "6", "20"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_degaulle_broadcast",
+      "correctAnswer": "June 18, 1940",
+      "acceptableAlternatives": ["18 June 1940", "June 1940"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "After France fell and de Gaulle escaped to London, he made a famous BBC radio broadcast refusing to accept surrender. On what date was this 'Appeal of 18 June'?",
+      "explanation": "On June 18, 1940 — just two days after Pétain's government requested an armistice — de Gaulle broadcast over the BBC from London: 'France has lost a battle. But France has not lost the war.' This broadcast is the founding moment of the Free French movement. Very few French people heard it live, but it became legendary. De Gaulle was later sentenced to death in absentia by the Vichy government.",
+      "visualDescription": "Pixel art of de Gaulle in military uniform at a BBC microphone in a cramped London studio, a map of France on the wall, an exhausted but defiant expression on his face.",
+      "sourceName": "Wikipedia — Appeal of 18 June",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Appeal_of_18_June",
+      "volatile": false,
+      "distractors": ["June 10, 1940", "June 14, 1940", "June 22, 1940", "July 1, 1940", "May 30, 1940", "June 4, 1940", "July 14, 1940", "August 1, 1940"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "De Gaulle's June 18, 1940 BBC broadcast founding the Free French declared France had lost a battle but not the ___.",
+          "correctAnswer": "War",
+          "distractors": ["Fight", "Nation", "Spirit", "Future"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "De Gaulle was sentenced to death in absentia by which French government for refusing to accept the 1940 armistice?",
+          "correctAnswer": "The Vichy government",
+          "distractors": ["The Third Republic", "The Paris Commune", "The German occupation authority", "The French National Assembly"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Most French people heard de Gaulle's June 18, 1940 BBC broadcast live when it was transmitted.",
+          "correctAnswer": "False — very few heard it live; it became famous later",
+          "distractors": ["True — BBC France coverage reached millions", "True — it was rebroadcast continuously for three days", "False — de Gaulle was not allowed to broadcast until July"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "De Gaulle's founding BBC broadcast on June ___, 1940 is known as the 'Appeal of 18 June.'",
+          "correctAnswer": "18",
+          "distractors": ["14", "22", "10", "4"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_degaulle_paris",
+      "correctAnswer": "August 25, 1944",
+      "acceptableAlternatives": ["25 August 1944", "August 1944"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "De Gaulle led the triumphant liberation parade down the Champs-Élysées. On what date was Paris officially liberated?",
+      "explanation": "Paris was liberated on August 25, 1944. De Gaulle had insisted — against American wishes — that French forces enter the city first to establish French sovereignty and prevent a communist takeover. The next day he led an enormous victory procession down the Champs-Élysées amid massive crowds. Snipers fired during the parade but he walked on without breaking stride — a calculated act of political theater.",
+      "visualDescription": "Pixel art of a massive crowd lining the Champs-Élysées, de Gaulle's tall figure walking at the center of a triumphant column, the Arc de Triomphe visible in the background.",
+      "sourceName": "Wikipedia — Liberation of Paris",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Liberation_of_Paris",
+      "volatile": false,
+      "distractors": ["June 6, 1944", "August 15, 1944", "September 1, 1944", "July 20, 1944", "August 19, 1944", "September 12, 1944", "August 30, 1944", "July 25, 1944"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "De Gaulle insisted French forces enter Paris first on August 25, 1944 — which concern about postwar France drove this insistence?",
+          "correctAnswer": "To establish French sovereignty and prevent a communist takeover",
+          "distractors": ["To ensure France received credit in Allied histories", "To secure French territorial claims in Germany", "To prevent American occupation of the city", "To rescue French resistance fighters first"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "During the liberation parade down the Champs-Élysées, snipers fired on the crowd — what did de Gaulle famously do in response?",
+          "correctAnswer": "Continued walking without breaking stride",
+          "distractors": ["Dove for cover like everyone else", "Returned fire with his pistol", "Ended the parade immediately", "Ordered the square cleared before continuing"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: American troops were the first Allied soldiers to enter Paris when it was liberated in August 1944.",
+          "correctAnswer": "False — de Gaulle ensured French troops (2nd Armored Division) entered first",
+          "distractors": ["True — the US 4th Infantry Division led the entry", "True — British troops entered first under Montgomery's orders", "False — Soviet liaison officers were sent first as a diplomatic gesture"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Paris was liberated on August ___, 1944, with de Gaulle leading the victory parade the following day.",
+          "correctAnswer": "25",
+          "distractors": ["15", "19", "30", "6"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_patton_third_army",
+      "correctAnswer": "Third Army",
+      "acceptableAlternatives": ["US Third Army", "the Third Army", "3rd Army"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Patton commanded which US Army on its rapid breakout from Normandy across France in summer 1944?",
+      "explanation": "Patton's Third Army became operational on August 1, 1944 after the Normandy breakout (Operation Cobra). In just two weeks, Third Army swept across France at unprecedented speed — covering more ground faster than any army in history to that point. Patton's bold style: keep moving, don't let the enemy regroup, exploit every gap. His advance only stopped when he ran out of fuel.",
+      "visualDescription": "Pixel art of Sherman tanks racing across open French countryside, a dirt road winding into the distance, the Third Army insignia (a large A) on tank turrets.",
+      "sourceName": "Wikipedia — Patton — World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/George_S._Patton",
+      "volatile": false,
+      "distractors": ["First Army", "Second Army", "Fifth Army", "Seventh Army", "Ninth Army", "Twelfth Army", "Fifteenth Army", "Sixth Army"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Patton's Third Army became famous for running out of what supply during its rapid advance across France in 1944?",
+          "correctAnswer": "Fuel (gasoline)",
+          "distractors": ["Ammunition", "Food rations", "Medical supplies", "Replacement troops"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Patton's Third Army breakout followed which Operation that punched through German lines at Saint-Lô in Normandy?",
+          "correctAnswer": "Operation Cobra",
+          "distractors": ["Operation Overlord", "Operation Market Garden", "Operation Goodwood", "Operation Bagration"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Patton commanded the Third Army throughout all of the Normandy campaign from D-Day onward.",
+          "correctAnswer": "False — Third Army became operational on August 1, 1944, after the initial Normandy phase",
+          "distractors": ["True — Patton led forces in Normandy from June 6 onward", "True — he commanded from day one but under another general's nominal authority", "False — Patton was still in England until September 1944"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Patton commanded the US ___ Army during its famous rapid sweep across France in summer 1944.",
+          "correctAnswer": "Third",
+          "distractors": ["First", "Fifth", "Seventh", "Ninth"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_patton_slapping",
+      "correctAnswer": "Slapping a shell-shocked soldier",
+      "acceptableAlternatives": ["slapping a hospitalized soldier", "the slapping incident", "slapping a soldier with battle fatigue"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Patton nearly lost his command in 1943 due to a controversial incident in Sicily. What did he do that caused an international scandal?",
+      "explanation": "In August 1943 during the Sicily campaign, Patton visited a field hospital and slapped a soldier suffering from battle fatigue (shell shock), calling him a coward. He slapped a second soldier days later. When journalist Drew Pearson broke the story in November 1943, there was enormous public outrage. Eisenhower forced Patton to apologize publicly to the soldiers and his entire command. He was sidelined for nearly a year.",
+      "visualDescription": "Pixel art of Patton in his dress uniform with pearl-handled revolvers at a military hospital tent in Sicily, nurses and wounded soldiers visible, a tense confrontation depicted.",
+      "sourceName": "Wikipedia — George S. Patton — Slapping incidents",
+      "sourceUrl": "https://en.wikipedia.org/wiki/George_S._Patton#Slapping_incidents",
+      "volatile": false,
+      "distractors": ["Shooting a surrendering German officer", "Publicly insulting Eisenhower", "Ordering an unauthorized advance", "Executing prisoners without trial", "Deserting his post during battle", "Refusing a direct order from Ike", "Publicly criticizing the Soviet alliance", "Threatening to court-martial Monty"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Patton slapping incident occurred during the Allied campaign in which Mediterranean island?",
+          "correctAnswer": "Sicily",
+          "distractors": ["Italy", "Corsica", "Sardinia", "Malta"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After the slapping scandal, Eisenhower sidelined Patton for nearly a year — but kept him for one key strategic reason. What was it?",
+          "correctAnswer": "To use Patton's notoriety as a decoy in Operation Fortitude (convincing Germans of a fake Pas-de-Calais invasion)",
+          "distractors": ["Because no other general could command armor as effectively", "Because FDR personally insisted Patton stay", "Because Patton's Third Army was already assembled and ready", "Because Marshall threatened to resign if Patton was fired"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Eisenhower immediately fired Patton after learning of the slapping incident.",
+          "correctAnswer": "False — Eisenhower forced Patton to apologize but kept him, recognizing his battlefield value",
+          "distractors": ["True — Patton was relieved and sent home", "True — he was reduced in rank and reassigned", "False — Eisenhower didn't learn about it until after the war"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The 1943 Patton slapping scandal involved him striking a ___ soldier he accused of cowardice.",
+          "correctAnswer": "shell-shocked",
+          "distractors": ["deserting", "wounded", "surrendering", "insubordinate"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_patton_death",
+      "correctAnswer": "December 1945",
+      "acceptableAlternatives": ["December 21, 1945", "1945"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Patton survived WWII only to die from injuries sustained in a mundane accident. When did he die and what caused it?",
+      "explanation": "Patton died on December 21, 1945 — just months after Germany's defeat — from injuries suffered in a car accident on December 9 in Germany near Mannheim. His staff car collided with an Army truck; Patton's neck was broken. He was paralyzed from the shoulders down. He died of pulmonary edema (fluid in the lungs) 12 days later. The most aggressive combat general of WWII was killed by a traffic accident.",
+      "visualDescription": "Pixel art of a military staff car with a crumpled front on a muddy German road, another vehicle visible, medical personnel rushing toward the scene in a gray winter landscape.",
+      "sourceName": "Wikipedia — George S. Patton — Death",
+      "sourceUrl": "https://en.wikipedia.org/wiki/George_S._Patton#Death",
+      "volatile": false,
+      "distractors": ["June 1945", "August 1945", "March 1946", "January 1946", "April 1945", "September 1945", "February 1946", "October 1945"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Patton died in December 1945 from a car accident — what injury killed him 12 days after the collision?",
+          "correctAnswer": "Pulmonary edema (fluid in the lungs) after a broken neck",
+          "distractors": ["Internal bleeding", "Brain injury", "Infection from surgery", "Heart attack while in hospital"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Patton died in Germany months after the war — what city was he near when his staff car had the fatal accident?",
+          "correctAnswer": "Mannheim",
+          "distractors": ["Berlin", "Frankfurt", "Munich", "Heidelberg"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Patton was killed in combat during the final days of the war in Europe.",
+          "correctAnswer": "False — he died from a traffic accident in Germany months after V-E Day",
+          "distractors": ["True — he was killed by German sniper fire in May 1945", "True — he was ambushed while touring the front lines", "False — he was assassinated by Soviet agents"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Patton died on December 21, ___, from injuries sustained in a car accident near Mannheim, Germany.",
+          "correctAnswer": "1945",
+          "distractors": ["1944", "1946", "1943", "1947"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_monty_el_alamein",
+      "correctAnswer": "El Alamein",
+      "acceptableAlternatives": ["the Battle of El Alamein", "Second Battle of El Alamein", "Alamein"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Montgomery's most celebrated victory in 1942 stopped Rommel's advance and turned the tide in North Africa. What was the name of this battle?",
+      "explanation": "Montgomery's victory at the Second Battle of El Alamein (October 23 – November 4, 1942) was the first major British land victory of WWII. Churchill famously said: 'Before Alamein we never had a victory. After Alamein we never had a defeat.' Montgomery took command of the Eighth Army in August 1942 when it was demoralized after repeated retreats, rebuilt its confidence, and then methodically crushed Rommel's Afrika Korps.",
+      "visualDescription": "Pixel art of British tanks advancing through North African desert at dawn with explosions in the distance, 8th Army markings on the vehicles, Monty's distinctive beret visible on a tank commander.",
+      "sourceName": "Wikipedia — Second Battle of El Alamein",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_El_Alamein",
+      "volatile": false,
+      "distractors": ["Tobruk", "Operation Torch", "Kasserine Pass", "Mareth Line", "Gazala", "Cyrenaica", "Tripoli", "Operation Supercharge"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Churchill said 'Before Alamein we never had a victory; after Alamein we never had a defeat' — which German general did Montgomery defeat at El Alamein?",
+          "correctAnswer": "Erwin Rommel",
+          "distractors": ["Heinz Guderian", "Erich von Manstein", "Gerd von Rundstedt", "Walter Model"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "El Alamein is located in which country — then a British protectorate where the battle was fought?",
+          "correctAnswer": "Egypt",
+          "distractors": ["Libya", "Tunisia", "Algeria", "Morocco"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Montgomery commanded the British Eighth Army throughout the entire North African campaign from its formation.",
+          "correctAnswer": "False — he took command in August 1942 after the army had suffered repeated defeats under earlier commanders",
+          "distractors": ["True — he formed and led the Eighth Army from its creation", "True — he took command at the start of the desert war in 1940", "False — he only arrived in North Africa after El Alamein"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Montgomery's October 1942 victory at ___ was Churchill's marker for the turning point of Britain's war.",
+          "correctAnswer": "El Alamein",
+          "distractors": ["Tobruk", "Tripoli", "Gazala", "Benghazi"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_monty_patton_rivalry",
+      "correctAnswer": "Bernard Montgomery",
+      "acceptableAlternatives": ["Monty", "Field Marshal Montgomery", "Montgomery"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Patton's aggressive style constantly clashed with which British general who favored meticulous, cautious operations on the same Allied fronts?",
+      "explanation": "The Patton-Montgomery rivalry was one of WWII's most famous command conflicts. Patton believed in speed and audacity; Montgomery in careful preparation and overwhelming force before advancing. They competed in races to capture cities (Messina in Sicily, Rhine crossings). Eisenhower spent enormous energy managing their ego clashes. Both were brilliant, both indispensable, both insufferable to each other.",
+      "visualDescription": "Pixel art of two generals facing away from each other on a map-covered table, one in American uniform with pearl-handled revolvers, one in British beret, Eisenhower visible in the background looking exhausted.",
+      "sourceName": "Wikipedia — Bernard Montgomery",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bernard_Montgomery",
+      "volatile": false,
+      "distractors": ["Harold Alexander", "Alan Brooke", "Archibald Wavell", "Claude Auchinleck", "Henry Maitland Wilson", "Miles Dempsey", "Arthur Tedder", "Trafford Leigh-Mallory"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Patton-Montgomery rivalry reached a peak when they raced to capture which Sicilian port city in August 1943?",
+          "correctAnswer": "Messina",
+          "distractors": ["Palermo", "Syracuse", "Catania", "Agrigento"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Eisenhower had to manage the Patton-Montgomery rivalry — what was his strategy for keeping both generals effective despite their clashes?",
+          "correctAnswer": "Assign them to separate axes of advance to minimize direct competition",
+          "distractors": ["Remove one of them from command temporarily", "Promote both to equal rank to reduce friction", "Let them fight it out and support whoever succeeded", "Give Montgomery overall command and Patton a subordinate role"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Patton and Montgomery had a warm personal relationship despite their professional disagreements.",
+          "correctAnswer": "False — they had genuine mutual contempt",
+          "distractors": ["True — they wrote friendly letters to each other after the war", "True — the rivalry was exaggerated by journalists", "False — Montgomery respected Patton but Patton didn't reciprocate"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Patton's aggressive style created famous friction with British General ___, who favored cautious, methodical operations.",
+          "correctAnswer": "Montgomery",
+          "distractors": ["Alexander", "Brooke", "Wavell", "Auchinleck"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_zhukov_moscow",
+      "correctAnswer": "Moscow",
+      "acceptableAlternatives": ["Battle of Moscow", "defense of Moscow", "the defense of Moscow"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "In late 1941, Zhukov commanded the defense that stopped Germany's seemingly unstoppable advance just miles from the Soviet capital. Which city did he save?",
+      "explanation": "Zhukov commanded the defense of Moscow from October 1941, when German forces were within 15 miles of the Kremlin. In December 1941, using fresh Siberian divisions (transferred after Soviet intelligence confirmed Japan would not attack from the east), Zhukov launched a devastating counterattack that pushed the Germans back and shattered the myth of German invincibility. It was the first major German defeat of WWII.",
+      "visualDescription": "Pixel art of Soviet soldiers in white winter camouflage charging through snow toward German positions, Moscow's distinctive Kremlin towers faintly visible in the icy background.",
+      "sourceName": "Wikipedia — Battle of Moscow",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Moscow",
+      "volatile": false,
+      "distractors": ["Leningrad", "Stalingrad", "Kiev", "Kursk", "Minsk", "Smolensk", "Kharkov", "Odessa"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Zhukov's December 1941 counterattack at Moscow used fresh divisions transferred from the Soviet Far East — why were these troops available?",
+          "correctAnswer": "Soviet intelligence (the Sorge spy ring) confirmed Japan would not attack Siberia",
+          "distractors": ["Germany had captured so many Soviet troops that reinforcements were available", "These were training units kept in reserve", "Britain had diverted Japanese attention through Pacific operations", "The Trans-Siberian Railway had brought US Lend-Lease troops"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Zhukov's victory at Moscow in late 1941 is significant because it was the first major defeat of which military — shattering the myth of invincibility?",
+          "correctAnswer": "The German Wehrmacht",
+          "distractors": ["The Japanese Imperial Army", "The Italian Royal Army", "The Romanian Army", "The Hungarian Army"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: German forces never came within 100 miles of Moscow before Zhukov stopped them.",
+          "correctAnswer": "False — German forces were within approximately 15 miles of the Kremlin",
+          "distractors": ["True — the closest German troops got was 80 miles", "True — Soviet defenses held at the Moscow River", "False — Germans actually entered the outer suburbs before being stopped"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Zhukov commanded the defense of ___ in late 1941, stopping Germany's advance just miles from the Kremlin.",
+          "correctAnswer": "Moscow",
+          "distractors": ["Leningrad", "Stalingrad", "Kiev", "Smolensk"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_zhukov_stalingrad",
+      "correctAnswer": "Operation Uranus",
+      "acceptableAlternatives": ["Uranus", "the Stalingrad encirclement", "the Stalingrad counteroffensive"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Zhukov planned the Stalingrad counteroffensive that encircled the entire German Sixth Army. What was the operation's code name?",
+      "explanation": "Operation Uranus (November 19–23, 1942) was Zhukov and Vasilevsky's masterpiece — a massive double envelopment that attacked the weak Romanian flanks of the German Sixth Army at Stalingrad, encircling 300,000 German and Axis troops. Zhukov had secretly built up reserves for months while the street fighting bled German strength. The encirclement of Paulus's army and its eventual surrender on February 2, 1943 was the war's turning point.",
+      "visualDescription": "Pixel art of a large military map showing curved arrows sweeping around both flanks of a city on a river, Soviet tank insignia at the arrow tips, a German force symbol trapped in the center.",
+      "sourceName": "Wikipedia — Operation Uranus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Uranus",
+      "volatile": false,
+      "distractors": ["Operation Saturn", "Operation Mars", "Operation Jupiter", "Operation Ring", "Operation Winter Storm", "Operation Thunderclap", "Operation Citadel", "Operation Bagration"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Operation Uranus succeeded by attacking the weaker flanks of the German position at Stalingrad — whose troops were holding these flanks?",
+          "correctAnswer": "Romanian (and Hungarian/Italian) troops",
+          "distractors": ["Italian troops alone", "German SS divisions", "Hungarian and Austrian forces", "Finnish and Croatian units"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Operation Uranus encircled the German Sixth Army at Stalingrad — how many Axis troops were trapped?",
+          "correctAnswer": "Approximately 300,000",
+          "distractors": ["50,000", "100,000", "500,000", "750,000"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Zhukov attacked the strongest part of the German line at Stalingrad to achieve the encirclement.",
+          "correctAnswer": "False — he deliberately attacked the weak Romanian flanks, not the strong German center",
+          "distractors": ["True — overwhelming force at the strongest point was Soviet doctrine", "True — Zhukov believed a direct assault would succeed faster", "False — the attack was actually led by Rokossovsky, not Zhukov"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Zhukov's November 1942 Stalingrad encirclement was called Operation ___, which trapped 300,000 Axis troops.",
+          "correctAnswer": "Uranus",
+          "distractors": ["Saturn", "Mars", "Jupiter", "Ring"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_zhukov_berlin",
+      "correctAnswer": "Berlin",
+      "acceptableAlternatives": ["the Battle of Berlin", "assault on Berlin"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Zhukov commanded the final assault on Nazi Germany's capital in April–May 1945. Which city did he capture to end the war in Europe?",
+      "explanation": "Zhukov's 1st Belorussian Front, along with Konev's 1st Ukrainian Front, assaulted Berlin in April 1945. Zhukov's controversial tactical decision to use massive searchlights to blind German defenders backfired — the searchlights illuminated his own troops in the dust. The battle was ferocious; the Reichstag was stormed on May 2. Hitler committed suicide on April 30. The famous photograph of Soviet soldiers raising the flag over the Reichstag is from Zhukov's operation.",
+      "visualDescription": "Pixel art of Soviet soldiers raising a red flag with hammer and sickle atop a ruined building, smoke billowing from fires across a destroyed cityscape, the Brandenburg Gate silhouette visible.",
+      "sourceName": "Wikipedia — Battle of Berlin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Berlin",
+      "volatile": false,
+      "distractors": ["Vienna", "Warsaw", "Prague", "Budapest", "Königsberg", "Danzig", "Breslau", "Dresden"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Zhukov's assault on Berlin included a controversial tactic of using huge searchlights at night — why did this backfire?",
+          "correctAnswer": "The searchlights illuminated his own troops in the dust and smoke",
+          "distractors": ["The Germans had their own searchlights that cancelled them out", "The lights attracted German Luftwaffe bombers", "Soviet troops blinded themselves and fired on each other", "The lights were visible from 50 miles and revealed the attack plan"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "During the Battle of Berlin, which Soviet rival commander's front also attacked the city, creating a race with Zhukov?",
+          "correctAnswer": "Ivan Konev (1st Ukrainian Front)",
+          "distractors": ["Konstantin Rokossovsky", "Aleksei Antonov", "Rodion Malinovsky", "Semyon Timoshenko"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Zhukov accepted the German surrender of Berlin personally.",
+          "correctAnswer": "True — Zhukov signed the German surrender documents as the Soviet representative",
+          "distractors": ["False — Konev signed on behalf of the Soviets", "False — Stalin flew to Berlin to accept the surrender himself", "True — but he shared the signing with Konev and Rokossovsky"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Zhukov commanded the April–May 1945 assault on ___, ending the war in Europe.",
+          "correctAnswer": "Berlin",
+          "distractors": ["Vienna", "Warsaw", "Prague", "Königsberg"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_truman_presidency",
+      "correctAnswer": "Vice President",
+      "acceptableAlternatives": ["the Vice President", "VP"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Truman became president on April 12, 1945 when FDR died. What office had Truman held — keeping him out of the war's inner circle?",
+      "explanation": "Truman had been Vice President for only 82 days when FDR died. As VP, he had been deliberately kept out of war planning by FDR. He had met privately with FDR only twice. He didn't know about the Manhattan Project, the atomic bomb, key diplomatic negotiations, or detailed war strategy. He was thrown into the most consequential decisions of the 20th century with almost no preparation.",
+      "visualDescription": "Pixel art of Truman at a simple wooden desk in the Oval Office, looking slightly overwhelmed, surrounded by stacks of briefing papers, a phone off the hook, morning light coming through the windows.",
+      "sourceName": "Wikipedia — Harry S. Truman",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Harry_S._Truman",
+      "volatile": false,
+      "distractors": ["Secretary of State", "Secretary of War", "Senator", "Speaker of the House", "Army Chief of Staff", "Secretary of Treasury", "Attorney General", "Governor"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Truman became VP in January 1945 and president in April 1945 — how many days did he serve as VP before FDR's death?",
+          "correctAnswer": "82 days",
+          "distractors": ["365 days", "200 days", "30 days", "500 days"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "How many times had Truman met privately with FDR before becoming president?",
+          "correctAnswer": "Twice",
+          "distractors": ["Never", "Weekly", "Dozens of times", "Once"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Truman knew about the atomic bomb project before FDR died because Senate appropriations required his oversight.",
+          "correctAnswer": "False — the Manhattan Project's funding was hidden within other budget lines; Truman had no knowledge of it",
+          "distractors": ["True — as Senate majority leader he had approved the funding", "True — he was briefed as a Senate appropriations chairman", "False — Truman knew about it but pretended ignorance for political reasons"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Truman inherited the presidency after serving only 82 days as ___ when FDR died on April 12, 1945.",
+          "correctAnswer": "Vice President",
+          "distractors": ["Secretary of State", "Senator", "Speaker of the House", "Secretary of War"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_truman_atomic_decision",
+      "correctAnswer": "Hiroshima and Nagasaki",
+      "acceptableAlternatives": ["Japan", "Hiroshima", "Nagasaki"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 1,
+      "funScore": 8,
+      "quizQuestion": "Truman made the decision to use the atomic bomb — on which two Japanese cities were bombs dropped in August 1945?",
+      "explanation": "Truman authorized dropping atomic bombs on Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945). The stated rationale: avoiding a land invasion of Japan (Operation Downfall) estimated to cost 250,000–1,000,000 Allied casualties and millions of Japanese casualties. Japan surrendered on August 15, 1945. Truman never publicly expressed regret for the decision, saying he made it to end the war and save lives on both sides.",
+      "visualDescription": "Pixel art of two maps of Japan side by side, the first showing Hiroshima with a stylized atomic explosion cloud, the second showing Nagasaki similarly, dates labeled below each.",
+      "sourceName": "Wikipedia — Atomic bombings of Hiroshima and Nagasaki",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "volatile": false,
+      "distractors": ["Tokyo and Osaka", "Kyoto and Hiroshima", "Tokyo and Hiroshima", "Nagasaki and Tokyo", "Osaka and Nagasaki", "Kyoto and Nagasaki", "Yokohama and Hiroshima", "Kobe and Nagasaki"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The bomb dropped on Hiroshima on August 6, 1945 used uranium-235. The Nagasaki bomb used a different design — what fissile material?",
+          "correctAnswer": "Plutonium-239",
+          "distractors": ["Uranium-238", "Enriched uranium", "Thorium-232", "Deuterium"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Truman's justification for using the bombs centered on avoiding Operation Downfall — what was this planned operation?",
+          "correctAnswer": "The Allied land invasion of the Japanese home islands",
+          "distractors": ["A naval blockade of Japan", "Strategic firebombing of Japanese cities", "A Soviet declaration of war against Japan", "The capture of Okinawa"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Truman publicly expressed regret about using the atomic bombs later in his life.",
+          "correctAnswer": "False — Truman consistently defended the decision and never expressed regret",
+          "distractors": ["True — he called it his greatest regret in his memoir", "True — he apologized to Japan in a 1950 letter", "False — Truman delegated the decision to military advisors and claimed no responsibility"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Truman authorized atomic bomb drops on Hiroshima (August 6) and ___ (August 9), 1945.",
+          "correctAnswer": "Nagasaki",
+          "distractors": ["Tokyo", "Osaka", "Kyoto", "Yokohama"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_truman_potsdam",
+      "correctAnswer": "Potsdam",
+      "acceptableAlternatives": ["the Potsdam Conference", "Potsdam Declaration"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In July 1945, Truman met with Stalin and Churchill (then Attlee) at which conference near Berlin that shaped the postwar world?",
+      "explanation": "The Potsdam Conference (July 17 – August 2, 1945) was the last Allied summit of WWII. Truman learned during the conference that the first atomic bomb test had succeeded. He told Stalin vaguely that the US had 'a new weapon of unusual destructive force' — Stalin already knew about it from spies. Churchill was replaced mid-conference by Clement Attlee after Labour won the British election. The conference set the terms for Germany's occupation.",
+      "visualDescription": "Pixel art of three leaders seated at a round table in an ornate German palace, maps and documents spread before them, military aides standing at attention behind each delegation.",
+      "sourceName": "Wikipedia — Potsdam Conference",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Potsdam_Conference",
+      "volatile": false,
+      "distractors": ["Yalta", "Tehran", "Casablanca", "Quebec", "Cairo", "Malta", "Moscow", "Paris"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "At Potsdam, Truman told Stalin 'we have a new weapon of unusual destructive force.' How did Stalin actually already know about the atomic bomb?",
+          "correctAnswer": "Soviet spies had infiltrated the Manhattan Project",
+          "distractors": ["German scientists had informed Moscow", "Stalin had deduced it from US production increases", "A British diplomat had leaked the information", "Truman had mentioned it at a previous conference"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Churchill was replaced mid-conference at Potsdam by which new British Prime Minister after Labour's electoral victory?",
+          "correctAnswer": "Clement Attlee",
+          "distractors": ["Anthony Eden", "Harold Macmillan", "Ernest Bevin", "Herbert Morrison"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Potsdam was the first Allied conference that Truman attended.",
+          "correctAnswer": "True — Potsdam was Truman's first Big Three summit; he had never met Stalin before",
+          "distractors": ["False — Truman attended the Yalta Conference in February 1945", "False — Truman was at Casablanca as FDR's representative", "True — but he had met Stalin privately before the formal summit"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Truman's first Allied summit was the ___ Conference in July 1945, where he also learned his atomic bomb test had succeeded.",
+          "correctAnswer": "Potsdam",
+          "distractors": ["Yalta", "Tehran", "Casablanca", "Quebec"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_chamberlain_appeasement",
+      "correctAnswer": "Neville Chamberlain",
+      "acceptableAlternatives": ["Chamberlain"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which British PM gave Hitler the Sudetenland at Munich in 1938 and returned claiming 'peace for our time' — a policy later defined as appeasement?",
+      "explanation": "Neville Chamberlain signed the Munich Agreement on September 30, 1938, giving Hitler the Sudetenland (part of Czechoslovakia) in exchange for his promise of no further territorial demands. Chamberlain returned to Britain declaring he had secured 'peace for our time.' Germany invaded the rest of Czechoslovakia six months later. Chamberlain's name became synonymous with the failure of appeasement. He resigned in May 1940.",
+      "visualDescription": "Pixel art of Chamberlain in formal dress at a London airport, holding up a piece of paper to a crowd, umbrella in his other hand, looking triumphant.",
+      "sourceName": "Wikipedia — Neville Chamberlain",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neville_Chamberlain",
+      "volatile": false,
+      "distractors": ["Winston Churchill", "Stanley Baldwin", "Ramsay MacDonald", "Anthony Eden", "Lord Halifax", "Herbert Asquith", "Lloyd George", "Clement Attlee"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Chamberlain gave Hitler the Sudetenland at the 1938 Munich Agreement — in which country is the Sudetenland located?",
+          "correctAnswer": "Czechoslovakia",
+          "distractors": ["Austria", "Poland", "Hungary", "Germany"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Chamberlain resigned as PM on May 10, 1940 — what German action that day made his position untenable?",
+          "correctAnswer": "Germany invaded Belgium and the Netherlands",
+          "distractors": ["Germany bombed London for the first time", "Germany invaded France", "Germany captured Norway's capital", "Germany sank a British aircraft carrier"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Chamberlain died before the end of World War II.",
+          "correctAnswer": "True — he died on November 9, 1940, less than a year after resigning",
+          "distractors": ["False — he lived to see the Allied victory in 1945", "False — he died in 1943 during the North Africa campaign", "True — he was killed during the Blitz in 1940"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Chamberlain's policy of giving concessions to Hitler is historically defined as ___.",
+          "correctAnswer": "appeasement",
+          "distractors": ["détente", "containment", "neutrality", "pacifism"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_atlantic_charter",
+      "correctAnswer": "August 1941",
+      "acceptableAlternatives": ["August 14, 1941", "1941"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Churchill and FDR met secretly on warships in Placentia Bay, Newfoundland to sign a joint declaration of war aims. When was the Atlantic Charter signed?",
+      "explanation": "The Atlantic Charter was signed on August 14, 1941 — four months before the US entered the war. FDR and Churchill met aboard HMS Prince of Wales and USS Augusta in Placentia Bay, Newfoundland. The Charter laid out post-war principles: no territorial aggrandizement, self-determination, free trade, disarmament, and collective security. It was a remarkable document — the US was still officially neutral, yet FDR was co-authoring Allied war aims with Britain.",
+      "visualDescription": "Pixel art of two warships anchored in a foggy bay, rowboats transferring men between them, FDR and Churchill visible on a deck shaking hands, Canadian coastline in the background.",
+      "sourceName": "Wikipedia — Atlantic Charter",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atlantic_Charter",
+      "volatile": false,
+      "distractors": ["January 1941", "December 1941", "March 1941", "June 1941", "November 1941", "September 1941", "February 1942", "April 1942"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Atlantic Charter meeting took place in Placentia Bay — in which Canadian territory?",
+          "correctAnswer": "Newfoundland",
+          "distractors": ["Nova Scotia", "Prince Edward Island", "New Brunswick", "Quebec"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Atlantic Charter was remarkable because the US was still officially neutral when FDR signed it — how many months before Pearl Harbor did this meeting occur?",
+          "correctAnswer": "About 4 months",
+          "distractors": ["1 month", "8 months", "14 months", "2 years"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Atlantic Charter meeting was public knowledge at the time — FDR and Churchill held a press conference to announce it.",
+          "correctAnswer": "True — they held a press conference and issued the Charter publicly on August 14, 1941",
+          "distractors": ["False — it was kept secret for months", "False — the full text was classified until after the war", "True — but the meeting itself was secret; only the document was released"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Atlantic Charter, co-authored by FDR and Churchill, was signed in August ___, four months before the US entered WWII.",
+          "correctAnswer": "1941",
+          "distractors": ["1940", "1942", "1943", "1939"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_chiang_nationalist",
+      "correctAnswer": "Kuomintang",
+      "acceptableAlternatives": ["KMT", "Chinese Nationalist Party", "Nationalist Party", "Guomindang"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Chiang Kai-shek led China's government throughout WWII — which political party was he leading?",
+      "explanation": "Chiang Kai-shek led the Kuomintang (KMT, Chinese Nationalist Party), the governing party of the Republic of China. Despite receiving substantial US military aid to fight Japan, Chiang simultaneously fought a civil war against Mao's Communists — sometimes more concerned with defeating the Communists than fighting Japan. After WWII, the civil war resumed; Mao's forces defeated the Nationalists in 1949, forcing Chiang to retreat to Taiwan.",
+      "visualDescription": "Pixel art of Chiang Kai-shek in Chinese Nationalist military uniform at a map table, the Republic of China flag (red, white, blue with sun) visible on the wall.",
+      "sourceName": "Wikipedia — Chiang Kai-shek",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chiang_Kai-shek",
+      "volatile": false,
+      "distractors": ["Chinese Communist Party", "Republican Party of China", "National Progressive Party", "Chinese Liberal Democratic Party", "People's Action Party", "Three Principles Party", "National Salvation Party", "Democratic Alliance"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Chiang's Nationalist forces were defeated by which Chinese faction in 1949, forcing him to retreat to Taiwan?",
+          "correctAnswer": "Mao Zedong's Communist forces",
+          "distractors": ["Zhou Enlai's Socialist coalition", "Lin Biao's People's Liberation Army directly", "Warlord coalition forces", "Soviet-backed Manchurian forces"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After retreating to Taiwan in 1949, Chiang's government continued to claim legitimacy as the government of all China until the 1970s — what is the island nation now called?",
+          "correctAnswer": "Taiwan (Republic of China)",
+          "distractors": ["Formosa", "Republic of Nationalist China", "Free China", "Chinese Special Administrative Region"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Chiang Kai-shek fully committed all Nationalist forces to fighting Japan, suspending the civil war for the duration of WWII.",
+          "correctAnswer": "False — he often prioritized fighting Communists over fighting Japan, even during the war",
+          "distractors": ["True — the United Front agreement required complete cooperation against Japan", "True — US aid was conditional on suspending the civil war", "False — but this was only true in 1944 when Japan launched the Ichi-Go offensive"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Chiang Kai-shek led the ___ (Nationalist Party) as China's wartime leader.",
+          "correctAnswer": "Kuomintang",
+          "distractors": ["Communist Party", "Republican Party", "Three Principles Party", "National Progressive Party"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_tito_partisan",
+      "correctAnswer": "Yugoslavia",
+      "acceptableAlternatives": ["Yugoslav partisans", "Yugoslavia during WWII"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Tito commanded a remarkable partisan resistance force that largely liberated itself without Soviet ground troops. In which country did he lead this fight?",
+      "explanation": "Josip Broz Tito led the Yugoslav Partisans — one of the most effective resistance movements in occupied Europe. His forces tied down Axis divisions that could have fought elsewhere. Unlike Greece or France, Yugoslavia was largely liberated by its own forces. Tito's independence during the war (he received aid from both the Western Allies and the USSR) gave him political credibility to resist Stalin after the war.",
+      "visualDescription": "Pixel art of Tito in partisan uniform on horseback in the mountains of Yugoslavia, armed fighters visible behind him, a red star on his cap, forested Balkan peaks in the background.",
+      "sourceName": "Wikipedia — Josip Broz Tito",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Josip_Broz_Tito",
+      "volatile": false,
+      "distractors": ["Greece", "Poland", "France", "Albania", "Bulgaria", "Hungary", "Romania", "Czechoslovakia"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Tito's ability to resist Stalin after WWII was rooted in a key difference from other Eastern European leaders — what was it?",
+          "correctAnswer": "Yugoslavia was liberated by Tito's own forces, not by the Soviet Red Army",
+          "distractors": ["Yugoslavia was a founding NATO member", "Yugoslavia had a nuclear deterrent", "Yugoslavia's geography made Soviet invasion impossible", "Tito had US military bases protecting him"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Tito broke with Stalin in 1948 — this Tito-Stalin split led to Yugoslavia being expelled from which Soviet-aligned communist organization?",
+          "correctAnswer": "Cominform (Communist Information Bureau)",
+          "distractors": ["Warsaw Pact", "Council for Mutual Economic Assistance (Comecon)", "Third International (Comintern)", "Soviet Socialist Republics Council"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Tito held Yugoslavia together as a unified state until the country broke apart shortly after his death.",
+          "correctAnswer": "True — Yugoslavia held together under Tito but began disintegrating after he died in 1980",
+          "distractors": ["False — Yugoslavia broke apart while Tito was still alive in 1975", "False — Yugoslavia remained united until 1991 regardless of Tito's influence", "True — but Yugoslavia broke apart peacefully as Tito had planned"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Tito led the ___ Partisans, one of WWII's most effective resistance movements, liberating his country largely without Soviet help.",
+          "correctAnswer": "Yugoslav",
+          "distractors": ["Greek", "Polish", "French", "Albanian"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_lend_lease",
+      "correctAnswer": "March 1941",
+      "acceptableAlternatives": ["March 11, 1941", "1941"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "FDR's Lend-Lease Act allowed the US to supply war materials to Britain without requiring immediate payment. When was it signed into law?",
+      "explanation": "The Lend-Lease Act was signed on March 11, 1941 — nine months before Pearl Harbor. It allowed the US to 'lend or lease' war materials to nations whose defense was deemed vital to US security. By war's end, the US had provided $50 billion in aid ($700 billion in 2024 dollars) to 30+ countries — 63% to Britain, 22% to the Soviet Union. FDR famously compared it to lending your neighbor a garden hose to fight a fire.",
+      "visualDescription": "Pixel art of a busy American dockyard with tanks, jeeps, and crates being loaded onto cargo ships under floodlights, workers and cranes active, American and British flags both visible.",
+      "sourceName": "Wikipedia — Lend-Lease",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lend-Lease",
+      "volatile": false,
+      "distractors": ["December 1940", "August 1941", "June 1941", "September 1940", "January 1942", "November 1941", "April 1941", "October 1941"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "FDR used a household analogy to explain Lend-Lease to the American public — what did he compare it to?",
+          "correctAnswer": "Lending your neighbor a garden hose to put out a fire",
+          "distractors": ["Giving a friend money to fight off a bully", "Selling weapons to an ally at cost", "A bank loan to be repaid after the emergency", "Renting equipment to a business partner"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "By war's end, what percentage of total Lend-Lease aid went to the Soviet Union?",
+          "correctAnswer": "About 22%",
+          "distractors": ["About 5%", "About 50%", "About 35%", "About 10%"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Lend-Lease was only available to Britain — the Soviet Union received no American Lend-Lease aid.",
+          "correctAnswer": "False — the USSR received about 22% of all Lend-Lease aid after Germany invaded in June 1941",
+          "distractors": ["True — Lend-Lease was restricted to democratic nations", "True — the USSR received separate direct purchases only", "False — the USSR received more Lend-Lease than Britain"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "FDR signed the Lend-Lease Act in March ___, allowing the US to supply war materials to allies before entering WWII.",
+          "correctAnswer": "1941",
+          "distractors": ["1940", "1942", "1939", "1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_molotov_ribbentrop",
+      "correctAnswer": "August 23, 1939",
+      "acceptableAlternatives": ["August 1939", "23 August 1939"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Stalin shocked the world by signing a non-aggression pact with Hitler just days before Germany invaded Poland. When was the Molotov-Ribbentrop Pact signed?",
+      "explanation": "The Molotov-Ribbentrop Pact was signed on August 23, 1939 — just 9 days before Germany invaded Poland. Stalin was buying time to rebuild the Red Army after the Great Purge had decimated his officer corps. The pact contained a secret protocol dividing Eastern Europe into German and Soviet spheres, allowing the USSR to occupy eastern Poland, Finland, the Baltic States, and parts of Romania. Stalin bought two years — but was still unprepared when Barbarossa came.",
+      "visualDescription": "Pixel art of Molotov and Ribbentrop at a table signing documents, Stalin standing behind Molotov smiling, swastika flags and Soviet red star banners both visible on the walls.",
+      "sourceName": "Wikipedia — Molotov-Ribbentrop Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Molotov%E2%80%93Ribbentrop_Pact",
+      "volatile": false,
+      "distractors": ["September 1, 1939", "July 15, 1939", "June 22, 1941", "October 12, 1939", "March 5, 1939", "May 22, 1939", "January 10, 1939", "December 3, 1939"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Molotov-Ribbentrop Pact contained a secret protocol dividing Eastern Europe — which Baltic nations fell into the Soviet sphere?",
+          "correctAnswer": "Estonia, Latvia, and Lithuania",
+          "distractors": ["Finland and Sweden", "Poland and Czechoslovakia", "Hungary and Romania", "Bulgaria and Yugoslavia"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Stalin signed the pact partly because a Soviet military purge had weakened the Red Army — which of these describes what happened?",
+          "correctAnswer": "Stalin had executed most of his senior generals in the Great Purge (1936-1938)",
+          "distractors": ["Soviet forces had just lost the Winter War against Finland", "A failed coup had destroyed the Red Army leadership", "US sanctions had stripped the Soviet military of equipment", "A disastrous wargame had revealed Soviet weakness"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The secret protocol of the Molotov-Ribbentrop Pact was acknowledged by the Soviet Union during the war.",
+          "correctAnswer": "False — the USSR denied the secret protocol existed until 1989, when Gorbachev admitted it",
+          "distractors": ["True — Stalin revealed it at the Tehran Conference", "True — it was used publicly to justify Soviet occupation of the Baltic states", "False — Germany revealed the protocol to embarrass Stalin in 1941"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Stalin signed the Molotov-___ Pact with Nazi Germany on August 23, 1939, just days before WWII began.",
+          "correctAnswer": "Ribbentrop",
+          "distractors": ["Hitler", "Himmler", "Goebbels", "Göring"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_ike_patton_monty",
+      "correctAnswer": "Eisenhower",
+      "acceptableAlternatives": ["Dwight Eisenhower", "Ike"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Which Supreme Allied Commander had the unenviable job of managing both Patton and Montgomery — two brilliant but extremely difficult generals?",
+      "explanation": "Eisenhower's greatest non-military skill was coalition management. He kept Patton in command after the slapping incident, managed Montgomery's demands for resources and credit, mediated their constant feuding, and maintained Allied unity despite intense national rivalries. Churchill called him 'the best chairman of committees I have ever known' — not entirely as a compliment. But Eisenhower understood his role: his job was Allied unity, not personal glory.",
+      "visualDescription": "Pixel art of Eisenhower at the center of a large Allied war room, American, British, and French officers on either side, arguing officers in the background, Ike looking calm and composed.",
+      "sourceName": "Wikipedia — Dwight D. Eisenhower",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower",
+      "volatile": false,
+      "distractors": ["Omar Bradley", "Harold Alexander", "Alan Brooke", "George Marshall", "Arthur Tedder", "Henry Maitland Wilson", "Jacob Devers", "Lesley McNair"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Churchill described Eisenhower as 'the best chairman of committees I have ever known' — what was the double edge of this backhanded compliment?",
+          "correctAnswer": "It implied Eisenhower was a bureaucrat/diplomat rather than a true battlefield commander",
+          "distractors": ["It meant Churchill thought Eisenhower preferred peace to war", "It was genuinely complimentary — Churchill admired committee skills", "It implied Eisenhower was slow to make decisions", "It suggested Eisenhower was too democratic in his command style"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "After the war, Eisenhower was elected president in 1952 — which Republican rival did he defeat for the party's presidential nomination?",
+          "correctAnswer": "Robert Taft",
+          "distractors": ["Barry Goldwater", "Richard Nixon", "Wendell Willkie", "Thomas Dewey"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Eisenhower had commanded troops in direct combat during WWII, personally leading men in battle.",
+          "correctAnswer": "False — Eisenhower was primarily a strategic and administrative commander; he never commanded at the tactical combat level",
+          "distractors": ["True — he led forces in North Africa personally", "True — he was present at the front during the Battle of the Bulge", "False — Eisenhower refused all combat command roles by personal preference"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "___ managed the Patton-Montgomery rivalry as Supreme Commander, prioritizing Allied unity over either general's ego.",
+          "correctAnswer": "Eisenhower",
+          "distractors": ["Bradley", "Marshall", "Alexander", "Brooke"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_zhukov_kursk",
+      "correctAnswer": "Kursk",
+      "acceptableAlternatives": ["Battle of Kursk", "the Kursk salient"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Zhukov helped plan the Soviet defense of which 1943 battle — the largest tank battle in history — where the Red Army repelled Germany's last major Eastern Front offensive?",
+      "explanation": "The Battle of Kursk (July 5–23, 1943) was Germany's last strategic offensive on the Eastern Front. Zhukov had correctly predicted the German attack would strike the Kursk salient and recommended letting the Germans attack prepared Soviet defenses rather than striking first. The Soviets built eight defensive lines. When Germany attacked with its new Tiger and Panther tanks, they ran into the most prepared defensive position in military history. After Kursk, the Red Army never stopped advancing.",
+      "visualDescription": "Pixel art of massed Soviet and German tanks clashing in open steppe, smoke and fire across the horizon, destroyed vehicles on both sides, the scale emphasizing hundreds of tanks in battle.",
+      "sourceName": "Wikipedia — Battle of Kursk",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kursk",
+      "volatile": false,
+      "distractors": ["Stalingrad", "Moscow", "Leningrad", "Kiev", "Kharkov", "Minsk", "Warsaw", "Smolensk"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "At Kursk, Zhukov recommended letting the Germans attack Soviet prepared defenses rather than striking first — what was the tactical principle behind this?",
+          "correctAnswer": "Wear down German armor in prepared defenses, then counterattack with fresh reserves",
+          "distractors": ["It was a political decision ordered by Stalin, not Zhukov's choice", "Soviet tanks were outmatched and could only fight defensively", "Pre-emptive attack was against Soviet military doctrine", "Allied landings in Sicily required Soviet forces to stay back"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Germany's new tanks at Kursk — Tiger and Panther — were technologically superior to most Soviet tanks. Which Soviet tank eventually proved the most effective mass-produced counter?",
+          "correctAnswer": "T-34 (especially the T-34/85)",
+          "distractors": ["IS-2 Stalin heavy tank", "KV-1 heavy tank", "SU-85 tank destroyer", "Churchill tank (via Lend-Lease)"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Germany's attack at Kursk was a surprise — Soviet forces had no intelligence warning of the offensive.",
+          "correctAnswer": "False — Soviet intelligence (including the Lucy spy ring) had detailed knowledge of German attack plans",
+          "distractors": ["True — the attack achieved complete tactical surprise initially", "True — German operational security was perfect until the attack began", "False — but the Soviets only learned of it 24 hours before the attack"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Zhukov helped plan the defense of the ___ salient in 1943 — the largest tank battle in history and Germany's last Eastern Front offensive.",
+          "correctAnswer": "Kursk",
+          "distractors": ["Stalingrad", "Moscow", "Kiev", "Kharkov"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_al_degaulle_fifth_republic",
+      "correctAnswer": "Fifth Republic",
+      "acceptableAlternatives": ["the French Fifth Republic", "France's Fifth Republic"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "De Gaulle's postwar political legacy includes founding which French system of government, still in place today, with a strong executive presidency?",
+      "explanation": "De Gaulle founded the Fifth Republic in 1958. The Fourth Republic (1946-1958) had been plagued by governmental instability — 22 prime ministers in 12 years. During the Algerian War crisis of 1958, de Gaulle was called back to power and rewrote the constitution to create a strong presidential system. The Fifth Republic gave France its first durable government since before WWII. It remains France's constitutional framework today.",
+      "visualDescription": "Pixel art of de Gaulle signing documents at a grand presidential desk, the tricolor flag visible, French Republic seal on the wall, other officials watching the historic moment.",
+      "sourceName": "Wikipedia — French Fifth Republic",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fifth_French_Republic",
+      "volatile": false,
+      "distractors": ["Fourth Republic", "Third Republic", "Sixth Republic", "De Gaulle Republic", "Second Republic", "First Republic", "Vichy State", "Free French Republic"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "De Gaulle created the Fifth Republic's strong presidential system to fix the instability of the Fourth Republic — how many prime ministers did France have in the Fourth Republic's 12-year lifespan?",
+          "correctAnswer": "22",
+          "distractors": ["4", "8", "45", "12"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "De Gaulle was called back to power to found the Fifth Republic during which colonial crisis that threatened civil war in France?",
+          "correctAnswer": "The Algerian War of Independence",
+          "distractors": ["The Indochina War", "The Suez Crisis", "The Morocco independence movement", "The Madagascar uprising"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: France's Fifth Republic, founded by de Gaulle in 1958, has since been replaced by a Sixth Republic.",
+          "correctAnswer": "False — the Fifth Republic remains France's constitutional framework today",
+          "distractors": ["True — a Sixth Republic was established after the 1968 student protests", "True — France revised to a Sixth Republic in 1990 after German reunification", "False — France reverted to the Fourth Republic's parliamentary system in 1970"]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "De Gaulle founded France's ___ Republic in 1958, establishing the strong presidential system still in place today.",
+          "correctAnswer": "Fifth",
+          "distractors": ["Fourth", "Sixth", "Third", "Second"]
+        }
+      ]
+    }
+  ]
+}
