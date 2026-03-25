@@ -575,6 +575,67 @@ Deck generation uses a **two-phase pipeline** to ensure both factual accuracy an
 - Combining both in one step risks Opus "improving" facts by changing them to be more interesting but less accurate
 - Separating phases means truth is locked in before quality polish begins
 
+### Worker Batch Size & Parallelism — CRITICAL
+
+These limits were discovered during the WWII deck build (2026-03-25, 735 facts generated). Violating them wastes tokens and produces incomplete output.
+
+| Rule | Detail |
+|------|--------|
+| **Max 30 facts per worker** | Requesting 50+ facts in a single Sonnet worker hits the 32K output token limit and silently truncates. The Holocaust subdeck (60 facts) had to be split into 2x30 after a total failure at 60. |
+| **Always verify counts after return** | Workers routinely underdeliver. Western Front batch 2 was asked for 24, returned 14. ALWAYS check `len(facts)` and spawn supplement workers for shortfalls. |
+| **3 parallel batches per subdeck** | Split entities into ~3 batches of 8-10 entities each, run all 3 in parallel with `run_in_background: true`. This maximizes throughput while keeping each worker under the token limit. |
+| **Supplement shortfalls immediately** | After all batches return, count total. If under target, spawn one more worker with specific gap-filling instructions referencing what's already been generated. |
+
+### When Architecture YAML Has Verified Data
+
+If the architecture YAML already contains rich notes with dates, numbers, names, and key details for each entity, workers can generate directly from that data WITHOUT separate Wikipedia fetching. The orchestrator:
+1. Reads the relevant YAML section
+2. Passes the entity data directly in the worker prompt
+3. Workers format facts from the provided data
+
+This was the primary workflow for the WWII deck — 14 of 16 subdecks generated this way. It's faster and cheaper than having each worker do its own web research.
+
+### When Architecture YAML Has Only Placeholders
+
+For sections with no verified data (only placeholder comments), combine research + generation in a single Sonnet worker:
+1. Worker receives the topic list and instructions to use WebSearch/WebFetch
+2. Worker researches each topic from Wikipedia, recording URLs
+3. Worker generates facts citing the actual URLs it consulted
+4. This worked for WWII China/SEA and Wartime Culture subdecks (32 and 30 facts each)
+
+**Trade-off:** Combined research+generation is convenient but the orchestrator can't verify source data before generation. Use only for supplementary subdecks, not core content.
+
+### Opus Quality Pass — When to Skip
+
+The two-phase pipeline (Sonnet generates, Opus polishes) is the ideal. However, during the WWII build, Sonnet workers consistently produced high-quality prose — narrative explanations, cross-references, surprising angles. The Opus quality pass was reviewed and deemed unnecessary for all 16 subdecks.
+
+**Skip the Opus pass when:**
+- Sonnet explanations already connect facts into narrative arcs
+- Questions already force reasoning (not just recall)
+- Distractors are already semantically coherent
+- The orchestrator samples 5-10 facts and finds no prose quality issues
+
+**Do the Opus pass when:**
+- Explanations are flat/disconnected ("X happened in Y year")
+- Cross-subdeck references are absent
+- wowFactor fields are generic or missing
+- The deck is a flagship product where prose quality is a differentiator
+
+### Assembly & Schema Normalization
+
+When assembling the final deck from WIP files, expect schema drift between batches:
+
+| Issue | Fix |
+|-------|-----|
+| `chainTheme` instead of `chainThemeId` | Rename field |
+| `categories` instead of `answerTypePoolId` | Replace with `"historical_events"` default |
+| Variants with `answer` instead of `correctAnswer` | Rename field |
+| Missing `acceptableAlternatives` | Default to `[]` |
+| Missing `volatile` | Default to `false` |
+| Bare array `[...]` instead of `{"facts": [...]}` | Wrap in object |
+
+The assembly worker must normalize all of these. Always validate the final deck with a script that checks every fact has all required fields.
+
 ### Source data caching
 
 For large decks (100+ entities), source data should be cached locally:
