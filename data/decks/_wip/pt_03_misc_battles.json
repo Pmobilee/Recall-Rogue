@@ -1,0 +1,927 @@
+{
+  "facts": [
+    {
+      "id": "wwii_pt_kokoda_track",
+      "correctAnswer": "Kokoda Track",
+      "acceptableAlternatives": ["Kokoda Trail", "Kokoda Campaign"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which brutal jungle trail through Papua New Guinea became the site of Australia's most critical defensive campaign of World War II?",
+      "explanation": "The Kokoda Track was a jungle trail crossing the Owen Stanley Range in Papua New Guinea. From July to November 1942, Australian forces fought Japanese troops along this path to defend Port Moresby. The campaign involved extreme jungle conditions, disease, and starvation. Japan lost approximately 7,000 troops and Australia over 2,000 — but the Australians halted Japan's southern advance.",
+      "visualDescription": "Pixel art of Australian soldiers in jungle gear trekking through dense tropical rainforest, thick green canopy overhead, narrow muddy trail, mist in the distance.",
+      "sourceName": "Wikipedia — Kokoda Track campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kokoda_Track_campaign",
+      "volatile": false,
+      "distractors": [
+        "Death Railway",
+        "Ho Chi Minh Trail",
+        "Burma Road",
+        "Bataan Death March",
+        "Hump Airlift Route",
+        "Ledo Road",
+        "Guadalcanal Jungle Line",
+        "Saipan Trail"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Papua New Guinea",
+          "quizQuestion": "The Kokoda Track campaign was fought in which territory, where Australians blocked Japan's advance toward Port Moresby?",
+          "distractors": ["Guadalcanal", "Borneo", "Java", "Timor"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Port Moresby",
+          "quizQuestion": "The Kokoda Track campaign was fought to defend which strategic Allied base from Japanese capture?",
+          "distractors": ["Darwin", "Townsville", "Rabaul", "Lae"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Australia's Kokoda Track campaign in 1942 successfully halted Japan's overland advance toward Port Moresby.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "7,000",
+          "quizQuestion": "Japan lost approximately _____ troops during the Kokoda Track campaign — roughly three times Australia's losses.",
+          "distractors": ["2,000", "15,000", "3,500", "20,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_kokoda_date",
+      "correctAnswer": "1942",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "In what year did the Kokoda Track campaign take place, when Australian forces stopped Japan's overland push into Papua New Guinea?",
+      "explanation": "The Kokoda Track campaign ran from July to November 1942, during the broader struggle for the Pacific. Australia's defensive success on Kokoda, combined with the battles at Milne Bay and Guadalcanal, marked the turning point that halted Japan's southern expansion and secured Australia from direct invasion threat.",
+      "visualDescription": "Pixel art of a calendar page showing 1942, with a jungle backdrop, Australian slouch hat and rifle in foreground.",
+      "sourceName": "Wikipedia — Kokoda Track campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kokoda_Track_campaign",
+      "volatile": false,
+      "distractors": [
+        "1941",
+        "1943",
+        "1944",
+        "1940",
+        "1945",
+        "1939",
+        "1943",
+        "1944"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Kokoda Track",
+          "quizQuestion": "What July–November 1942 campaign saw Australian troops fight Japanese forces through Papua New Guinea's jungle?",
+          "distractors": ["Battle of Milne Bay", "Battle of Rabaul", "Battle of Coral Sea", "Battle of Buna-Gona"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Australia",
+          "quizQuestion": "Which Allied nation's forces bore the primary burden of defending Papua New Guinea along the Kokoda Track in 1942?",
+          "distractors": ["United States", "United Kingdom", "New Zealand", "Netherlands"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Kokoda Track campaign took place in 1942, making it one of the earliest Allied defensive victories in the Pacific.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Port Moresby",
+          "quizQuestion": "Japanese forces advanced along the Kokoda Track with the objective of capturing _____, a key Allied base in Papua New Guinea.",
+          "distractors": ["Darwin", "Rabaul", "Lae", "Madang"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_coprosperity",
+      "correctAnswer": "Greater East Asia Co-Prosperity Sphere",
+      "acceptableAlternatives": ["Co-Prosperity Sphere", "East Asia Co-Prosperity Sphere"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What was the name of Japan's imperial ideology that promised Asian liberation but masked occupation, exploitation, and forced labor across conquered territories?",
+      "explanation": "The Greater East Asia Co-Prosperity Sphere (1940–1945) was Japan's ideological framework for its empire — marketed as liberating Asia from Western colonialism under Japanese leadership. In reality, it combined racial hierarchy with brutal occupation. Conquered populations faced forced labor, resource extraction, and violence. The ideology collapsed with Japan's military defeat and was formally renounced post-war.",
+      "visualDescription": "Pixel art propaganda poster style showing a rising sun over a map of Asia, but with chains subtly visible beneath the 'prosperity' imagery.",
+      "sourceName": "Wikipedia — Greater East Asia Co-Prosperity Sphere",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Greater_East_Asia_Co-Prosperity_Sphere",
+      "volatile": false,
+      "distractors": [
+        "Pan-Asian Liberation Front",
+        "Imperial East Asia Union",
+        "Asia for Asians Doctrine",
+        "Japanese Monroe Doctrine",
+        "Eastern Harmony Bloc",
+        "Pacific Prosperity Pact",
+        "Asian New Order",
+        "Imperial Pacific Federation"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "exploitation and forced labor",
+          "quizQuestion": "Despite its promise of 'prosperity,' what did Japan's Co-Prosperity Sphere primarily deliver to conquered Asian populations?",
+          "distractors": ["economic development", "political independence", "cultural exchange programs", "agricultural reform"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "1940",
+          "quizQuestion": "In what year was the Greater East Asia Co-Prosperity Sphere formally announced as Japan's imperial ideological framework?",
+          "distractors": ["1937", "1941", "1942", "1938"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "False",
+          "quizQuestion": "True or False: Japan's Greater East Asia Co-Prosperity Sphere genuinely delivered political liberation and economic prosperity to conquered Asian nations.",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "militarism",
+          "quizQuestion": "After Japan's defeat in 1945, the post-war Japanese government formally renounced _____, abandoning the ideology behind the Co-Prosperity Sphere.",
+          "distractors": ["democracy", "trade agreements", "territorial claims", "diplomatic relations"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_tarawa",
+      "correctAnswer": "Battle of Tarawa",
+      "acceptableAlternatives": ["Tarawa", "Operation Galvanic"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which November 1943 amphibious assault — the first major Pacific island landing — shocked the American public when graphic combat images were released by the media?",
+      "explanation": "The Battle of Tarawa (November 20–23, 1943) was the first major US amphibious assault in the Pacific. Marines attacked Betio Island but coral reef obstacles shattered landing craft, leaving men exposed to withering fire. Of approximately 4,700 Japanese defenders, nearly all died — only 17 survived. The US suffered about 1,000 casualties. Photographs of dead American soldiers on the beach, unusually released to the public, created shock and drove war bond sales.",
+      "visualDescription": "Pixel art of US Marines storming a coral beach, landing craft in the background, palm trees on shore, dramatic orange sky from gunfire.",
+      "sourceName": "Wikipedia — Battle of Tarawa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Tarawa",
+      "volatile": false,
+      "distractors": [
+        "Battle of Peleliu",
+        "Battle of Saipan",
+        "Battle of Kwajalein",
+        "Battle of Eniwetok",
+        "Battle of Guam",
+        "Battle of Tinian",
+        "Battle of Wake Island",
+        "Battle of Makin"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Betio Island",
+          "quizQuestion": "The Battle of Tarawa was fought on which tiny island where coral reefs destroyed US landing craft and Japanese defenders fought to the last man?",
+          "distractors": ["Guadalcanal", "Peleliu", "Saipan", "Iwo Jima"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "1,000",
+          "quizQuestion": "Approximately how many US casualties were suffered at the Battle of Tarawa in November 1943 — a number that shocked the American public?",
+          "distractors": ["300", "3,000", "500", "5,000"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Media coverage of the Battle of Tarawa was unusual because graphic images of dead American soldiers were actually released to the public.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "coral reef",
+          "quizQuestion": "At the Battle of Tarawa, US landing craft were damaged or destroyed by _____ obstacles, leaving Marines exposed on the beach under heavy fire.",
+          "distractors": ["underwater mines", "sea walls", "barbed wire barriers", "artillery fire"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_tarawa_defenders",
+      "correctAnswer": "4,700",
+      "acceptableAlternatives": ["nearly 4,700", "approximately 4,700"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Of the approximately _____ Japanese defenders at Betio Island during the Battle of Tarawa, only 17 survived — a near-total last-man resistance.",
+      "explanation": "The Japanese garrison at Betio numbered approximately 4,700 men. Japanese military culture under bushido demanded fighting to the death rather than surrender. Of the entire garrison, only 17 Japanese personnel (mostly Korean laborers) survived to be captured. This near-total annihilation — combined with US casualty counts — highlighted how costly Pacific island warfare would become.",
+      "visualDescription": "Pixel art of a tiny fortified island from above, dense defensive positions, surrounded by ocean, showing the impossible scale of the assault.",
+      "sourceName": "Wikipedia — Battle of Tarawa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Tarawa",
+      "volatile": false,
+      "distractors": [
+        "1,200",
+        "2,500",
+        "8,000",
+        "10,000",
+        "600",
+        "3,200",
+        "6,500",
+        "1,800"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "17",
+          "quizQuestion": "Of approximately 4,700 Japanese defenders at Tarawa, only _____ survived to be captured — illustrating the extremity of Japanese resistance.",
+          "distractors": ["200", "500", "50", "1,000"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "bushido",
+          "quizQuestion": "The near-total annihilation of Tarawa's garrison reflected which Japanese military code that demanded fighting to the death over surrender?",
+          "distractors": ["kamikaze", "banzai", "seppuku", "yamato-damashii"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: At the Battle of Tarawa, fewer than 20 of the 4,700 Japanese defenders survived to be taken prisoner.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "amphibious",
+          "quizQuestion": "The Battle of Tarawa was significant as the first major US _____ assault in the Pacific, providing lessons that improved later island invasions.",
+          "distractors": ["airborne", "submarine", "naval", "combined-arms"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_burma_railway",
+      "correctAnswer": "Thai-Burma Railway",
+      "acceptableAlternatives": ["Burma Railway", "Death Railway", "Burma-Thailand Railway"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What wartime construction project, later immortalized as the 'Death Railway,' killed 16,000 Allied POWs and over 60,000 forced laborers through brutal conditions?",
+      "explanation": "The Thai-Burma Railway was built 1942–1943 using 60,000+ forced laborers including Allied POWs, Asian civilians, and romusha workers. Approximately 16,000 Allied POWs and 60,000+ Asian laborers died from disease, starvation, beatings, and exhaustion. The railway was operational only briefly before Allied bombers destroyed key bridges. The famous 'Bridge on the River Kwai' immortalized this atrocity in fiction.",
+      "visualDescription": "Pixel art of gaunt prisoners hacking through dense jungle with hand tools, building a railway bridge, under watchful armed guards, oppressive tropical heat.",
+      "sourceName": "Wikipedia — Burma Railway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Burma_Railway",
+      "volatile": false,
+      "distractors": [
+        "Manchurian Supply Line",
+        "Ledo Road",
+        "Burma Road",
+        "Ho Chi Minh Trail",
+        "Trans-Siberian Extension",
+        "Indochina Rail Network",
+        "Malayan Military Railroad",
+        "Pacific Labor Corridor"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "16,000",
+          "quizQuestion": "Approximately how many Allied POWs died during construction of the Thai-Burma Railway — earning it the name 'Death Railway'?",
+          "distractors": ["2,000", "5,000", "30,000", "8,000"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Bridge on the River Kwai",
+          "quizQuestion": "Which famous film — based on the Thai-Burma Railway — depicted Allied POWs being forced to construct a strategic bridge for their Japanese captors?",
+          "distractors": ["The Thin Red Line", "Merry Christmas Mr. Lawrence", "Empire of the Sun", "Unbroken"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Thai-Burma Railway was ultimately destroyed by Allied bombers before it could provide significant long-term strategic value to Japan.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "60,000",
+          "quizQuestion": "Total deaths during the Thai-Burma Railway construction exceeded _____ when including Asian civilian laborers alongside Allied POWs.",
+          "distractors": ["16,000", "10,000", "100,000", "30,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_comfort_women",
+      "correctAnswer": "200,000",
+      "acceptableAlternatives": ["over 200,000", "approximately 200,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 5,
+      "quizQuestion": "Historians estimate that approximately _____ women — mainly from Korea, China, and the Philippines — were coerced into sexual slavery as 'comfort women' for the Japanese military.",
+      "explanation": "The 'comfort women' system operated from 1932–1945, coercing an estimated 200,000+ women from across Japanese-occupied Asia into institutionalized sexual slavery for Japanese military personnel. Women were recruited through deception, coercion, or outright abduction. The system was widespread and institutionally organized. Post-war, Japan initially denied the system's existence; later acknowledgments remain contested, and reparations between Japan and South Korea are still disputed.",
+      "visualDescription": "Pixel art of a somber memorial wall with names inscribed, flowers placed at its base, a quiet respectful scene in muted colors.",
+      "sourceName": "Wikipedia — Comfort women",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Comfort_women",
+      "volatile": false,
+      "distractors": [
+        "5,000",
+        "20,000",
+        "50,000",
+        "500,000",
+        "10,000",
+        "1,000,000",
+        "75,000",
+        "30,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Korea, China, and the Philippines",
+          "quizQuestion": "The majority of women coerced into the Japanese military 'comfort women' system were drawn from which occupied territories?",
+          "distractors": ["Japan, Manchuria, and Burma", "Indochina, Malaya, and Indonesia", "Burma, Thailand, and India", "Taiwan, Guam, and the Marianas"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "1932",
+          "quizQuestion": "In what year did Japan's institutionalized 'comfort women' system begin — more than a decade before the Pacific War expanded to the United States?",
+          "distractors": ["1937", "1941", "1940", "1935"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Reparations for 'comfort women' remain a point of diplomatic contention between Japan and South Korea to this day.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "denied",
+          "quizQuestion": "After Japan's defeat, the Japanese government initially _____ the existence of the organized 'comfort women' system before later offering partial acknowledgments.",
+          "distractors": ["celebrated", "documented", "prosecuted", "compensated"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_turkey_shoot",
+      "correctAnswer": "Great Marianas Turkey Shoot",
+      "acceptableAlternatives": ["Marianas Turkey Shoot", "Battle of the Philippine Sea"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What nickname did American pilots give to the June 1944 Battle of the Philippine Sea, where Japan's mass carrier air attacks were so thoroughly destroyed it resembled a hunting game?",
+      "explanation": "The Battle of the Philippine Sea (June 19–20, 1944) saw Japan launch its largest carrier air offensive of the war, but American pilots flying superior aircraft with superior training overwhelmed the attacking waves. American forces shot down approximately 550–645 Japanese aircraft while losing around 123 of their own. The US sank 3 Japanese carriers while losing none. Japan's carrier aviation — its most powerful weapon of 1941–42 — was permanently crippled. The slaughter was so one-sided that American pilots nicknamed it the 'Great Marianas Turkey Shoot.'",
+      "visualDescription": "Pixel art of Pacific sky filled with dogfighting aircraft, American Hellcat fighters swarming Japanese Zeros, carrier flight decks in the ocean below.",
+      "sourceName": "Wikipedia — Battle of the Philippine Sea",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Philippine_Sea",
+      "volatile": false,
+      "distractors": [
+        "Pacific Grand Slam",
+        "Coral Sea Massacre",
+        "Midway Rout",
+        "Pacific Air Slaughter",
+        "Leyte Gulf Ambush",
+        "Formosa Air Trap",
+        "Solomon Islands Trap",
+        "Saipan Air Sweep"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "3",
+          "quizQuestion": "During the Battle of the Philippine Sea, how many Japanese carriers did the United States sink while losing none of its own?",
+          "distractors": ["1", "5", "7", "2"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "carrier aviation",
+          "quizQuestion": "The Battle of the Philippine Sea permanently crippled Japan's _____ — the weapon that had devastated Pearl Harbor only two and a half years earlier.",
+          "distractors": ["submarine fleet", "battleship force", "island garrison network", "land-based air force"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: After the Battle of the Philippine Sea, Japan's carrier air forces never recovered sufficiently to pose a major offensive threat.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "June 1944",
+          "quizQuestion": "The Great Marianas Turkey Shoot took place in _____, the same month as the D-Day landings in Normandy, France.",
+          "distractors": ["October 1944", "August 1944", "March 1944", "December 1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_turkey_shoot_losses",
+      "correctAnswer": "3 carriers",
+      "acceptableAlternatives": ["three Japanese carriers", "3 Japanese carriers"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "At the Battle of the Philippine Sea, the United States sank _____ and lost none of its own — a lopsided victory that ended Japan's offensive carrier power.",
+      "explanation": "The Battle of the Philippine Sea resulted in the destruction of 3 Japanese fleet carriers — Taiho, Shokaku, and Hiyo — while the United States lost no carriers. Combined with the loss of hundreds of irreplaceable trained aviators, Japan's ability to project carrier-based air power was permanently broken. The US lost approximately 123 aircraft; Japan lost an estimated 550–645 aircraft and their experienced crews.",
+      "visualDescription": "Pixel art of a Japanese carrier listing and burning on the Pacific horizon, smoke billowing, American aircraft circling above victorious.",
+      "sourceName": "Wikipedia — Battle of the Philippine Sea",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_the_Philippine_Sea",
+      "volatile": false,
+      "distractors": [
+        "5 carriers",
+        "1 carrier",
+        "7 battleships",
+        "2 carriers",
+        "4 carriers",
+        "6 destroyers",
+        "2 battleships",
+        "8 carriers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Philippine Sea",
+          "quizQuestion": "Which 1944 battle saw the US sink 3 Japanese carriers and destroy hundreds of Japanese aircraft in what pilots called the 'Great Marianas Turkey Shoot'?",
+          "distractors": ["Battle of Leyte Gulf", "Battle of Coral Sea", "Battle of Midway", "Battle of Guadalcanal"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "June 19–20, 1944",
+          "quizQuestion": "On what dates did the Battle of the Philippine Sea — the Great Marianas Turkey Shoot — take place?",
+          "distractors": ["October 23–26, 1944", "August 7–9, 1942", "November 20–23, 1943", "April 7, 1945"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "False",
+          "quizQuestion": "True or False: The United States lost several aircraft carriers during the Battle of the Philippine Sea.",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "Marianas",
+          "quizQuestion": "The Battle of the Philippine Sea was fought to defend the _____ Islands — capturing them gave the US bases for B-29 bombing raids on Japan itself.",
+          "distractors": ["Marshall", "Caroline", "Solomon", "Palau"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_macarthur_return",
+      "correctAnswer": "I have returned",
+      "acceptableAlternatives": ["I shall return", "MacArthur returned"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "When General MacArthur waded ashore at Leyte in October 1944 to liberate the Philippines, what three-word declaration did he broadcast to the Filipino people?",
+      "explanation": "On October 20, 1944, General Douglas MacArthur waded ashore at Leyte Gulf in the Philippines and dramatically declared 'I have returned' — fulfilling his famous 1942 promise 'I shall return' when he was ordered to flee the Japanese advance. The liberation of the Philippines was both strategically vital (cutting Japan's supply lines to Southeast Asia) and symbolically powerful. Manila was liberated in February 1945 after brutal urban fighting.",
+      "visualDescription": "Pixel art of a general in military uniform and sunglasses striding through knee-deep ocean water toward a beach, dramatic clouds and ocean backdrop.",
+      "sourceName": "Wikipedia — Douglas MacArthur",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Douglas_MacArthur#Return_to_the_Philippines",
+      "volatile": false,
+      "distractors": [
+        "We have won",
+        "Victory is ours",
+        "Freedom at last",
+        "We are here",
+        "Japan will fall",
+        "America returns",
+        "The wait ends",
+        "Honor restored"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Leyte",
+          "quizQuestion": "MacArthur waded ashore at which Philippine island to dramatically declare 'I have returned' in October 1944?",
+          "distractors": ["Luzon", "Mindanao", "Corregidor", "Mindoro"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "October 20, 1944",
+          "quizQuestion": "On what date did General MacArthur make his famous return to the Philippines, fulfilling his 1942 promise?",
+          "distractors": ["February 3, 1945", "August 15, 1945", "June 6, 1944", "December 7, 1941"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: MacArthur's return to the Philippines in 1944 fulfilled a promise he made in 1942 when he was ordered to evacuate the islands.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "February 1945",
+          "quizQuestion": "Following MacArthur's October 1944 landing, the Philippine capital Manila was finally liberated in _____ after intense urban combat.",
+          "distractors": ["October 1944", "August 1945", "June 1945", "December 1944"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_soviet_entry",
+      "correctAnswer": "August 8, 1945",
+      "acceptableAlternatives": ["August 1945"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "On what date did the Soviet Union declare war on Japan and invade Manchuria — just days after Hiroshima and days before Japan's surrender?",
+      "explanation": "The Soviet Union declared war on Japan on August 8, 1945 — exactly as promised to the Allies at the Yalta Conference — and immediately invaded Japanese-held Manchuria. Soviet forces swiftly overwhelmed the Kwantung Army. Stalin sought to reclaim territories lost in the 1904–05 Russo-Japanese War. The Soviet entry, combined with atomic bombs, accelerated Japan's surrender. The Soviet occupation of northern Korea subsequently contributed to the Korean division and the Cold War.",
+      "visualDescription": "Pixel art of Soviet T-34 tanks rolling through a Manchurian landscape, red stars on turrets, dust clouds, artillery fire in the distance.",
+      "sourceName": "Wikipedia — Soviet–Japanese War (1945)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Japanese_War_(1945)",
+      "volatile": false,
+      "distractors": [
+        "August 6, 1945",
+        "August 9, 1945",
+        "August 15, 1945",
+        "July 26, 1945",
+        "September 2, 1945",
+        "June 22, 1945",
+        "August 1, 1945",
+        "July 16, 1945"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Manchuria",
+          "quizQuestion": "When the Soviet Union declared war on Japan on August 8, 1945, Soviet forces immediately invaded which Japanese-controlled territory?",
+          "distractors": ["Korea", "Sakhalin Island", "Hokkaido", "China"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "1904–05 Russo-Japanese War",
+          "quizQuestion": "Stalin's primary motive for declaring war on Japan in 1945 included reclaiming territories Russia had lost in which earlier conflict?",
+          "distractors": ["World War I", "1938 Khalkhin Gol incident", "1931 Manchurian Incident", "1917 Russian Revolution"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Soviet entry into the Pacific War in August 1945 contributed to Japanese surrender by destroying the Kwantung Army in Manchuria.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "North Korea",
+          "quizQuestion": "Soviet occupation of northern Korea after the war led to the establishment of _____ as a Soviet-backed communist state — a Cold War consequence of the Pacific War's final days.",
+          "distractors": ["South Korea", "Manchuria", "Mongolia", "China"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_soviet_neutrality_pact",
+      "correctAnswer": "Soviet-Japanese Neutrality Pact",
+      "acceptableAlternatives": ["Soviet-Japanese Non-Aggression Pact", "Japanese-Soviet Neutrality Pact"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "When the Soviet Union declared war on Japan in August 1945, it violated which 1941 agreement that had kept the two nations at peace during the earlier years of World War II?",
+      "explanation": "The Soviet-Japanese Neutrality Pact was signed in April 1941 and was set to expire in April 1946. Stalin announced his intention to not renew it in April 1945, then declared war on Japan on August 8, 1945 — technically violating the spirit of the pact even though it had not yet formally expired. Stalin had secretly agreed at Yalta to enter the Pacific War within three months of Germany's defeat in exchange for territorial concessions.",
+      "visualDescription": "Pixel art of two diplomats at a table signing documents, Soviet and Japanese flags behind them, the scene in sepia tones with red highlighting the signatures.",
+      "sourceName": "Wikipedia — Soviet–Japanese Neutrality Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Japanese_Neutrality_Pact",
+      "volatile": false,
+      "distractors": [
+        "Tripartite Pact",
+        "Anti-Comintern Pact",
+        "Molotov-Ribbentrop Pact",
+        "Yalta Non-Aggression Treaty",
+        "Trans-Siberian Non-Belligerence Agreement",
+        "Portsmouth Peace Treaty",
+        "Pacific Non-Intervention Accord",
+        "Moscow Armistice"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "1941",
+          "quizQuestion": "In what year was the Soviet-Japanese Neutrality Pact signed — the agreement the Soviet Union violated when it declared war on Japan in 1945?",
+          "distractors": ["1939", "1940", "1942", "1943"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Yalta Conference",
+          "quizQuestion": "At which Allied meeting had Stalin secretly agreed to enter the Pacific War within three months of Germany's defeat — a promise fulfilled by the August 1945 invasion of Manchuria?",
+          "distractors": ["Tehran Conference", "Potsdam Conference", "Quebec Conference", "Cairo Conference"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Soviet Union's 1945 invasion of Manchuria violated the spirit of the Soviet-Japanese Neutrality Pact, which had not yet formally expired.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "three months",
+          "quizQuestion": "Stalin had promised at Yalta to enter the Pacific War within _____ of Germany's defeat — and kept that promise almost to the day.",
+          "distractors": ["six months", "one month", "one year", "two weeks"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_hiroo_onoda",
+      "correctAnswer": "Hiroo Onoda",
+      "acceptableAlternatives": ["Onoda", "Captain Onoda"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "Which Japanese soldier continued waging a one-man guerrilla war in the Philippine jungle until 1974 — 29 years after Japan surrendered — because he refused to believe the war was over?",
+      "explanation": "Hiroo Onoda was a Japanese intelligence officer stationed in the Philippines who continued guerrilla fighting until March 1974, nearly 30 years after Japan's August 1945 surrender. He dismissed leaflets announcing the surrender as Allied propaganda. Only when his former commanding officer personally flew to the Philippines and formally relieved him of duty did Onoda surrender — emerging in full uniform, weapons in working order. He embodied the extreme end of bushido honor culture.",
+      "visualDescription": "Pixel art of a lone soldier in worn WWII-era Japanese uniform emerging from dense jungle, rifle in hand, looking bewildered at a modern world around him.",
+      "sourceName": "Wikipedia — Hiroo Onoda",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hiroo_Onoda",
+      "volatile": false,
+      "distractors": [
+        "Shoichi Yokoi",
+        "Teruo Nakamura",
+        "Masashi Ito",
+        "Yamamoto Isoroku",
+        "Tadamichi Kuribayashi",
+        "Mitsuru Ushijima",
+        "Tomoyuki Yamashita",
+        "Kenji Doihara"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "1974",
+          "quizQuestion": "In what year did Hiroo Onoda finally surrender — 29 years after Japan's defeat — after his former commander personally ordered him to stand down?",
+          "distractors": ["1950", "1960", "1965", "1970"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Philippines",
+          "quizQuestion": "In which country did Hiroo Onoda continue fighting his decades-long one-man war, hiding in the jungle and conducting guerrilla raids?",
+          "distractors": ["Borneo", "Indonesia", "New Guinea", "Malaya"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Hiroo Onoda only surrendered after his original commanding officer personally flew to the Philippines and formally relieved him of duty.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "29",
+          "quizQuestion": "Hiroo Onoda fought alone in the Philippine jungle for _____ years after Japan's surrender, convinced the war was still ongoing.",
+          "distractors": ["10", "15", "5", "20"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_japanese_holdouts",
+      "correctAnswer": "bushido",
+      "acceptableAlternatives": ["bushido code", "bushido honor"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Japanese holdout soldiers like Hiroo Onoda continued fighting for decades after Japan's surrender because of which traditional code of honor that valued loyalty unto death over surrender?",
+      "explanation": "Bushido — the 'way of the warrior' — was the samurai code emphasizing loyalty, honor, and death before surrender. It was deeply instilled in Japanese military culture during World War II. Japanese holdouts refused to surrender because they believed doing so would be shameful, and they could not conceive that Japan would truly have surrendered. Several Japanese soldiers were discovered on remote Pacific islands hiding years or decades after 1945 — some as late as the 1970s.",
+      "visualDescription": "Pixel art of a samurai code scroll with Japanese calligraphy, a katana laid beside it, in a sparse traditional room — representing the deep roots of the holdout soldiers' beliefs.",
+      "sourceName": "Wikipedia — Japanese holdout",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_holdout",
+      "volatile": false,
+      "distractors": [
+        "banzai",
+        "kamikaze",
+        "seppuku",
+        "yamato-damashii",
+        "kempeitai",
+        "ikari",
+        "giri",
+        "harakiri"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "remote Pacific islands",
+          "quizQuestion": "Japanese holdout soldiers continued fighting for years after WWII while hiding on which type of locations — too isolated to easily reach with news of surrender?",
+          "distractors": ["Chinese mountains", "Siberian forests", "Australian deserts", "Southeast Asian cities"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "Teruo Nakamura",
+          "quizQuestion": "Which Japanese holdout soldier, an Amis aboriginal Taiwanese serviceman, was found in Indonesia in 1974 — the same year Onoda surrendered — after 30 years of hiding?",
+          "distractors": ["Shoichi Yokoi", "Masashi Ito", "Noboru Fujita", "Kazuo Sakamaki"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Multiple Japanese soldiers continued hiding and fighting on Pacific islands well into the 1970s, unaware or disbelieving that Japan had surrendered in 1945.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "surrender",
+          "quizQuestion": "Holdout soldiers treated announcements of Japan's defeat as Allied propaganda because their bushido code made _____ psychologically inconceivable.",
+          "distractors": ["combat", "retreat", "promotion", "relief"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_coprosperity_practice",
+      "correctAnswer": "forced labor",
+      "acceptableAlternatives": ["exploitation", "romusha", "forced labor and exploitation"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Despite promising mutual prosperity and Asian liberation, what did Japan's Co-Prosperity Sphere primarily deliver to conquered territories like Indonesia, Malaya, and Burma?",
+      "explanation": "The Greater East Asia Co-Prosperity Sphere promised Asian nations freedom from Western colonialism under Japanese leadership. In practice, conquered peoples faced romusha (forced labor), brutal occupation administrations, resource extraction for Japan's war machine, and widespread atrocities. Indonesia alone lost an estimated 4 million romusha to forced labor. The ideology was a propaganda tool to rationalize Japanese imperialism, and was thoroughly discredited by Japan's military defeat.",
+      "visualDescription": "Pixel art split scene: left side shows propaganda poster of prosperous Asian cities; right side shows the reality of forced laborers in chains under Japanese overseers.",
+      "sourceName": "Wikipedia — Greater East Asia Co-Prosperity Sphere",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Greater_East_Asia_Co-Prosperity_Sphere",
+      "volatile": false,
+      "distractors": [
+        "genuine independence",
+        "economic development grants",
+        "educational reform programs",
+        "democratic self-governance",
+        "agricultural modernization",
+        "shared military protection",
+        "cultural preservation programs",
+        "anti-colonial legislation"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Western colonialism",
+          "quizQuestion": "The Co-Prosperity Sphere's propaganda claimed to liberate Asian nations from which existing colonial system — while replacing it with Japanese domination?",
+          "distractors": ["Soviet communism", "American capitalism", "Chinese warlordism", "British imperialism"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "1945",
+          "quizQuestion": "In what year did Japan formally renounce militarism — the ideological engine behind the Co-Prosperity Sphere — following its total defeat?",
+          "distractors": ["1946", "1947", "1948", "1950"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "False",
+          "quizQuestion": "True or False: Japan's Greater East Asia Co-Prosperity Sphere delivered meaningful political independence to conquered Asian nations during the war.",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "romusha",
+          "quizQuestion": "Indonesian forced laborers conscripted under Japan's Co-Prosperity Sphere were called _____, with an estimated 4 million dying from brutal conditions.",
+          "distractors": ["kamikaze", "tokkotai", "burakumin", "hibakusha"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_leyte_gulf",
+      "correctAnswer": "Leyte Gulf",
+      "acceptableAlternatives": ["Battle of Leyte Gulf", "Leyte"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "MacArthur's dramatic 'I have returned' wading ashore in October 1944 took place at which Philippine gulf — the site of the largest naval battle in history?",
+      "explanation": "MacArthur's return to the Philippines on October 20, 1944 took place at Leyte Gulf. The same battle that covered this landing — the Battle of Leyte Gulf (October 23–26) — was the largest naval battle in history by number of vessels. Japan deployed virtually its entire remaining fleet in a desperate attempt to destroy the landing force, using for the first time organized kamikaze attacks. The Japanese navy never recovered from its catastrophic losses.",
+      "visualDescription": "Pixel art of a Philippine coastal scene with palm trees, American landing ships in the harbor, soldiers wading to shore, a general striding through shallow water.",
+      "sourceName": "Wikipedia — Battle of Leyte Gulf",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Leyte_Gulf",
+      "volatile": false,
+      "distractors": [
+        "Manila Bay",
+        "Subic Bay",
+        "Lingayen Gulf",
+        "Davao Gulf",
+        "Moro Gulf",
+        "Samar Bay",
+        "Cebu Strait",
+        "Mindoro Sound"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "largest naval battle in history",
+          "quizQuestion": "The Battle of Leyte Gulf in October 1944 holds what distinction in military history?",
+          "distractors": [
+            "first use of aircraft carriers in battle",
+            "first Pacific naval engagement",
+            "most decisive submarine victory",
+            "longest naval siege of the war"
+          ]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "kamikaze",
+          "quizQuestion": "The Battle of Leyte Gulf marked the first organized deployment of which desperate Japanese tactic — suicide aircraft attacks against US warships?",
+          "distractors": ["banzai charges", "human torpedo attacks", "balloon bomb strikes", "poison gas attacks"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The Battle of Leyte Gulf was the largest naval battle in history by number of vessels engaged.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "October 1944",
+          "quizQuestion": "MacArthur waded ashore at Leyte in _____, fulfilling his 1942 promise to the Filipino people that he would return.",
+          "distractors": ["February 1945", "June 1944", "December 1944", "August 1945"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_tarawa_lessons",
+      "correctAnswer": "improved amphibious assault tactics",
+      "acceptableAlternatives": ["amphibious assault improvements", "better landing craft tactics", "improved future assaults"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Despite its terrible casualties, the Battle of Tarawa produced what crucial military benefit that directly improved the success rate of subsequent Pacific island landings?",
+      "explanation": "The Battle of Tarawa (November 1943) was costly and chaotic, but the US military systematically analyzed every failure. The lessons learned included the need for extended pre-landing bombardment, better coordination between naval gunfire and troop movements, improved landing craft that could traverse coral reefs, and better hydrographic surveys of landing zones. These improvements proved critical at Saipan, Guam, Tinian, Peleliu, Iwo Jima, and Okinawa.",
+      "visualDescription": "Pixel art of military planners gathered around a map table, charts of coral reefs pinned to walls, new landing craft designs sketched out, a determined wartime meeting room.",
+      "sourceName": "Wikipedia — Battle of Tarawa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Tarawa",
+      "volatile": false,
+      "distractors": [
+        "better propaganda techniques",
+        "new submarine warfare doctrine",
+        "improved carrier air tactics",
+        "radio communications protocols",
+        "jungle warfare training methods",
+        "submarine mine deployment",
+        "long-range bomber coordination",
+        "naval blockade strategy"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "coral reef",
+          "quizQuestion": "At Tarawa, the primary obstacle that wrecked landing craft and left Marines exposed under fire was a _____ surrounding Betio Island.",
+          "distractors": ["sea wall", "minefield", "shallow lagoon", "defensive trench network"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "hydrographic surveys",
+          "quizQuestion": "One key lesson of Tarawa was the need for better _____ — detailed underwater mapping of landing zones to identify hazards like reefs before assaults.",
+          "distractors": ["aerial photography missions", "radio intercept programs", "submarine reconnaissance", "commando raids"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: The painful lessons of Tarawa directly improved US amphibious assault doctrine, benefiting later landings at Saipan, Iwo Jima, and Okinawa.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "November 1943",
+          "quizQuestion": "The Battle of Tarawa was fought in _____, roughly one year before the massive Leyte Gulf operation opened the Philippines campaign.",
+          "distractors": ["August 1943", "June 1943", "February 1944", "October 1943"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_kokoda_disease",
+      "correctAnswer": "malaria",
+      "acceptableAlternatives": ["malaria and disease", "tropical disease"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Along the Kokoda Track, which tropical disease — alongside enemy fire, starvation, and exhaustion — claimed as many casualties as Japanese bullets among both sides?",
+      "explanation": "The Kokoda Track campaign was fought through some of the world's most inhospitable jungle terrain. Malaria, scrub typhus, dysentery, and other tropical diseases devastated both Australian and Japanese forces. For every battle casualty, there were multiple disease casualties. The Japanese were particularly hard-hit as their supply lines collapsed — troops starved and succumbed to disease during their forced retreat back across the Owen Stanley Range.",
+      "visualDescription": "Pixel art of an Australian soldier resting against a jungle tree, face pale with fever, comrades helping him along the muddy jungle track, thick vegetation surrounding them.",
+      "sourceName": "Wikipedia — Kokoda Track campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kokoda_Track_campaign",
+      "volatile": false,
+      "distractors": [
+        "cholera",
+        "smallpox",
+        "typhoid fever",
+        "yellow fever",
+        "dengue fever",
+        "influenza",
+        "bubonic plague",
+        "tuberculosis"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "correctAnswer": "Owen Stanley Range",
+          "quizQuestion": "The Kokoda Track crossed which mountain range in Papua New Guinea — one of the world's most grueling jungle terrains?",
+          "distractors": ["Highlands Plateau", "Huon Peninsula", "Ramu Valley", "Sepik Range"]
+        },
+        {
+          "type": "context",
+          "correctAnswer": "supply lines",
+          "quizQuestion": "A key reason the Japanese advance on Kokoda ultimately failed was the collapse of their _____ — leaving troops starving and diseased in the jungle.",
+          "distractors": ["air support", "officer corps", "artillery reserves", "radio communications"]
+        },
+        {
+          "type": "true_false",
+          "correctAnswer": "True",
+          "quizQuestion": "True or False: Disease casualties along the Kokoda Track outnumbered combat casualties for both Australian and Japanese forces.",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "correctAnswer": "starvation",
+          "quizQuestion": "During the Japanese retreat along the Kokoda Track, soldiers suffered not only from malaria but also from _____, as their supply chain had completely collapsed.",
+          "distractors": ["frostbite", "altitude sickness", "heat stroke", "trench foot"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1473 @@
+{
+  "facts": [
+    {
+      "id": "wwii_pt_pearl_harbor_date",
+      "correctAnswer": "December 7, 1941",
+      "acceptableAlternatives": ["Dec 7 1941", "7 December 1941"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 1,
+      "funScore": 7,
+      "quizQuestion": "On what date did Japan launch its surprise attack on Pearl Harbor, drawing the United States into World War II?",
+      "explanation": "December 7, 1941 — FDR called it 'a date which will live in infamy.' The attack unified an isolationist American public overnight, turning divided opinion into near-unanimous support for war.",
+      "visualDescription": "Pixel art of battleships burning in Pearl Harbor at dawn, smoke columns rising against an orange sky, Japanese planes in formation overhead",
+      "sourceName": "Wikipedia — Attack on Pearl Harbor",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+      "volatile": false,
+      "distractors": [
+        "November 7, 1941",
+        "December 7, 1940",
+        "January 7, 1942",
+        "October 25, 1941",
+        "December 11, 1941",
+        "September 7, 1941",
+        "December 7, 1942",
+        "November 25, 1941"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which World War II event occurred on December 7, 1941?",
+          "correctAnswer": "Japanese surprise attack on Pearl Harbor",
+          "distractors": [
+            "Germany invaded the Soviet Union",
+            "Japan surrendered to the Allies",
+            "The Battle of Midway began",
+            "US declared war on Germany"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Japan attacked Pearl Harbor in December 1941 with the strategic goal of doing what?",
+          "correctAnswer": "Destroying the US Pacific Fleet to buy 6-12 months of strategic advantage",
+          "distractors": [
+            "Capturing Hawaii as a Japanese territory",
+            "Eliminating US aircraft carrier groups",
+            "Forcing a US peace treaty with Japan",
+            "Preventing US aid to Britain and Australia"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: US aircraft carriers were present in Pearl Harbor during the Japanese attack on December 7, 1941.",
+          "correctAnswer": "False — the carriers were at sea and survived",
+          "distractors": [
+            "True — all three carriers were sunk",
+            "True — the carriers escaped because they were in dry dock",
+            "False — there were no carriers assigned to the Pacific Fleet yet"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Pearl Harbor, Japan sank or damaged ____ US battleships in a single morning.",
+          "correctAnswer": "8",
+          "distractors": ["4", "12", "6", "3"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_pearl_harbor_casualties",
+      "correctAnswer": "2,403",
+      "acceptableAlternatives": ["2403", "about 2400", "over 2000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "How many Americans were killed in the Japanese attack on Pearl Harbor on December 7, 1941?",
+      "explanation": "2,403 Americans died — 1,177 of them aboard the USS Arizona alone when her forward magazine exploded. The Arizona still rests on the harbor floor; oil still seeps from her hull, which sailors call 'the tears of the Arizona.'",
+      "visualDescription": "Pixel art of the USS Arizona battleship engulfed in a massive explosion and fire, debris flying, small rescue boats in the foreground",
+      "sourceName": "Wikipedia — Attack on Pearl Harbor",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+      "volatile": false,
+      "distractors": [
+        "1,177",
+        "3,500",
+        "4,800",
+        "1,800",
+        "5,000",
+        "900",
+        "1,500",
+        "2,100"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which US warship suffered the single greatest loss of life at Pearl Harbor, with 1,177 killed?",
+          "correctAnswer": "USS Arizona",
+          "distractors": ["USS Oklahoma", "USS West Virginia", "USS Nevada", "USS California"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The USS Arizona's wreck still lies at Pearl Harbor today. What physical phenomenon has led sailors to call it 'the tears of the Arizona'?",
+          "correctAnswer": "Oil still slowly seeps from the sunken hull",
+          "distractors": [
+            "Morning mist collects on the memorial plaque each dawn",
+            "Water bubbles up through cracks in the hull",
+            "Rusting metal stains the water red around the wreck",
+            "Condensation drips from the memorial structure above"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: More Americans were killed at Pearl Harbor than in the entire Battle of Midway.",
+          "correctAnswer": "True — Pearl Harbor killed 2,403 vs approximately 360 at Midway",
+          "distractors": [
+            "False — Midway was a longer battle with far more casualties",
+            "False — the numbers were roughly equal at both engagements"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Of the 2,403 Americans killed at Pearl Harbor, ____ died on the USS Arizona alone.",
+          "correctAnswer": "1,177",
+          "distractors": ["500", "800", "2,000", "350"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_pearl_harbor_carriers",
+      "correctAnswer": "They were at sea on missions and escaped the attack",
+      "acceptableAlternatives": ["at sea", "not in harbor", "away from Pearl Harbor"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Why did Japan's attack on Pearl Harbor fail to destroy the US aircraft carriers, which would prove decisive in the Pacific war?",
+      "explanation": "Japan's planners designed the attack to cripple battleships — the traditional symbol of naval power. By 1942, carriers had replaced battleships as the decisive weapon. The USS Enterprise, Lexington, and Saratoga were all at sea that day, a stroke of luck that changed the war's outcome.",
+      "visualDescription": "Pixel art of a US aircraft carrier sailing on open ocean under clear skies, planes on its deck, while smoke from Pearl Harbor is barely visible on the distant horizon",
+      "sourceName": "Wikipedia — Attack on Pearl Harbor",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+      "volatile": false,
+      "distractors": [
+        "They were hidden in underground shelters before the attack",
+        "Japan chose not to target carriers to avoid provoking a full response",
+        "US carriers had all been transferred to the Atlantic Fleet months earlier",
+        "Carriers were docked at a separate classified facility outside Pearl Harbor",
+        "Japan's bombers ran out of fuel before reaching the carrier moorings",
+        "US code-breakers warned carriers to leave the night before",
+        "A second Japanese strike wave was cancelled before it could find them",
+        "The carriers were scuttled by their crews to prevent capture"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which class of warship did Japan mistakenly prioritize over aircraft carriers at Pearl Harbor, focusing on an already-obsolete weapon?",
+          "correctAnswer": "Battleships",
+          "distractors": ["Destroyers", "Cruisers", "Submarines", "Minesweepers"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Pearl Harbor's silver lining for the US was the survival of its carriers. How many US carriers were at sea and escaped the attack?",
+          "correctAnswer": "3 (Enterprise, Lexington, Saratoga)",
+          "distractors": ["1 (Enterprise only)", "5 carriers", "2 (Enterprise and Hornet)", "None — all carriers were already in the Atlantic"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japan's admirals considered attacking the US carriers at Pearl Harbor more important than the battleships.",
+          "correctAnswer": "False — Japan prioritized battleships, which proved a strategic miscalculation",
+          "distractors": [
+            "True — carrier destruction was the primary objective of the attack",
+            "True — Japan's second wave specifically targeted the carrier moorings"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Japan's failure to destroy US ____ at Pearl Harbor proved to be its most consequential strategic error of the Pacific war.",
+          "correctAnswer": "aircraft carriers",
+          "distractors": ["submarines", "fuel depots", "dry docks", "naval air stations"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_midway_carriers_sunk",
+      "correctAnswer": "4",
+      "acceptableAlternatives": ["four"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "How many Japanese aircraft carriers did the United States sink at the Battle of Midway in June 1942?",
+      "explanation": "All four Japanese carriers — Akagi, Kaga, Soryu, and Hiryu — were sunk in one day of combat. Japan had used those same four carriers at Pearl Harbor. Their loss took years to replace, and the experienced pilots aboard could never be replaced at all.",
+      "visualDescription": "Pixel art of a Japanese aircraft carrier in flames and listing heavily to one side, a US dive bomber pulling out of its attack run above, smoke filling the sky",
+      "sourceName": "Wikipedia — Battle of Midway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+      "volatile": false,
+      "distractors": ["2", "3", "5", "6", "1", "7", "8", "10"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Name one of the four Japanese aircraft carriers sunk at the Battle of Midway.",
+          "correctAnswer": "Akagi (also Kaga, Soryu, or Hiryu)",
+          "distractors": ["Yamato", "Shokaku", "Zuikaku", "Taiho"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The four Japanese carriers sunk at Midway had one thing in common beyond their shared fate. What was it?",
+          "correctAnswer": "All four had participated in the Pearl Harbor attack",
+          "distractors": [
+            "All four were newly commissioned vessels less than a year old",
+            "All four were commanded by the same admiral, Nagumo",
+            "All four were sunk by the same US dive-bomber squadron",
+            "All four had their aircraft destroyed on deck before they could launch"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japan sank more US carriers than the US sank Japanese carriers at the Battle of Midway.",
+          "correctAnswer": "False — the US sank 4 Japanese carriers; Japan sank 1 US carrier (Yorktown)",
+          "distractors": [
+            "True — Japan successfully targeted two US fleet carriers",
+            "True — the battle was roughly even in carrier losses"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Midway, the US sank four Japanese carriers: Akagi, Kaga, Soryu, and ____.",
+          "correctAnswer": "Hiryu",
+          "distractors": ["Zuikaku", "Shokaku", "Taiho", "Junyo"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_midway_intelligence",
+      "correctAnswer": "US codebreakers had cracked Japanese naval codes and knew the attack plan in advance",
+      "acceptableAlternatives": ["broke the Japanese code", "intelligence about Japanese plans", "knew Japan's plans from codebreaking"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "What gave the US the decisive intelligence advantage at the Battle of Midway that turned an ambush into a catastrophe for Japan?",
+      "explanation": "Station HYPO at Pearl Harbor, led by Commander Joseph Rochefort, broke Japan's JN-25 naval code. Rochefort's team even used a clever deception — broadcasting a fake water shortage at Midway to confirm the target Japan called 'AF.' Admiral Nimitz knew the attack was coming before Japan's fleet left port.",
+      "visualDescription": "Pixel art of a dimly lit signals intelligence room, rows of analysts at desks covered in coded papers, a single overhead light, US Navy pennant on the wall",
+      "sourceName": "Wikipedia — Battle of Midway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+      "volatile": false,
+      "distractors": [
+        "A Japanese officer defected to the US with battle plans",
+        "US radar stations detected the Japanese fleet three days out",
+        "A neutral merchant ship spotted and reported Japan's fleet",
+        "Japan accidentally broadcast its battle orders in plain language",
+        "British intelligence intercepted a diplomatic cable revealing the target",
+        "A captured Japanese submarine yielded navigation charts",
+        "US spy planes photographed Japan's carrier formation before the battle",
+        "Australia's coast watchers tracked Japan's fleet through island chains"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Commander Joseph Rochefort led the intelligence unit that cracked Japan's naval codes before Midway. Where was his unit based?",
+          "correctAnswer": "Station HYPO at Pearl Harbor",
+          "distractors": ["Washington DC's Op-20-G", "Corregidor in the Philippines", "Brisbane, Australia", "San Francisco naval base"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "US codebreakers suspected Japan's Midway target was codenamed 'AF' but needed confirmation. How did they cleverly verify this?",
+          "correctAnswer": "They broadcast a fake water shortage at Midway and intercepted Japan's coded reply confirming 'AF' had a water problem",
+          "distractors": [
+            "They sent a fake defector to Japanese naval headquarters",
+            "They found 'AF' labeled on a captured Japanese map",
+            "They tortured captured Japanese pilots for the codeword meaning",
+            "A neutral nation's embassy confirmed the target in a diplomatic cable"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japan believed its JN-25 naval codes were unbreakable and made no attempt to change them before Midway.",
+          "correctAnswer": "True — Japanese overconfidence in their codes was a fatal error",
+          "distractors": [
+            "False — Japan changed codes two weeks before Midway but the US adapted quickly",
+            "False — Japan suspected a leak but blamed it on ship sightings, not codebreaking"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The US advantage at Midway came from breaking Japan's ____ naval code, allowing Nimitz to position his carriers perfectly.",
+          "correctAnswer": "JN-25",
+          "distractors": ["Enigma", "Purple", "JN-40", "Red"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_midway_pilots",
+      "correctAnswer": "3,500 experienced Japanese naval aviators",
+      "acceptableAlternatives": ["3500 pilots", "thousands of pilots", "irreplaceable naval aviators"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Beyond the four carriers, what irreplaceable loss at Midway truly crippled Japan's ability to wage offensive naval air warfare?",
+      "explanation": "Japan lost approximately 3,500 highly trained naval aviators at Midway — men who had taken years to train and had combat experience from China, Pearl Harbor, and across the Pacific. Japan's training pipeline couldn't replace them. By 1944, Japan was sending barely-trained pilots to their deaths in kamikaze attacks.",
+      "visualDescription": "Pixel art of Japanese Zero fighter planes spiraling down into the ocean in flames, the vast Pacific Ocean below, a Japanese carrier visible in the background listing from bomb damage",
+      "sourceName": "Wikipedia — Battle of Midway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+      "volatile": false,
+      "distractors": [
+        "500 naval aviators",
+        "1,200 experienced sailors",
+        "800 fighter pilots",
+        "5,000 ground troops",
+        "200 carrier officers",
+        "1,800 mechanics and ground crew",
+        "4,500 infantrymen",
+        "700 submarine crews"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Japan's loss of experienced naval aviators at Midway had a devastating long-term effect. What did Japan resort to by 1944 partly because of this pilot shortage?",
+          "correctAnswer": "Kamikaze suicide attacks using poorly trained pilots",
+          "distractors": [
+            "Drafting civilian merchant sailors into combat roles",
+            "Purchasing fighter aircraft from Germany",
+            "Abandoning carrier operations entirely in favor of battleships",
+            "Relying on land-based aircraft for all naval air support"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why couldn't Japan quickly replace the 3,500 naval aviators lost at Midway?",
+          "correctAnswer": "Training a skilled naval aviator took years, and the pipeline couldn't produce replacements fast enough",
+          "distractors": [
+            "Japan had a small population and had already mobilized all eligible men",
+            "The US had destroyed Japan's flight training academies in early 1942",
+            "Japan diverted aviation training resources to the army after Midway",
+            "Allied submarines sank the ships carrying aviation fuel needed for training"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The loss of four carriers at Midway was more strategically damaging to Japan than the loss of its experienced aviators.",
+          "correctAnswer": "False — carriers could be built, but experienced pilots took years to train and couldn't be replaced quickly",
+          "distractors": [
+            "True — carriers were Japan's primary strategic asset and their loss was irreplaceable",
+            "True — pilots could be trained in months but carriers took years to construct"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Japan lost approximately ____ experienced naval aviators at Midway — men whose skills had taken years to develop.",
+          "correctAnswer": "3,500",
+          "distractors": ["500", "1,200", "8,000", "200"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_bataan_march",
+      "correctAnswer": "60+ miles (approximately 65-70 miles)",
+      "acceptableAlternatives": ["60 miles", "65 miles", "over 60 miles", "about 65 miles"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "How far were American and Filipino prisoners of war forced to march during the Bataan Death March in April 1942?",
+      "explanation": "80,000 prisoners — starving, sick, and exhausted from months of combat — were marched over 60 miles in brutal tropical heat. Guards bayoneted those who fell. Around 11,000 died on the march or shortly after arrival in prison camps, making it one of the worst atrocities committed against US forces.",
+      "visualDescription": "Pixel art of a long column of gaunt prisoners shuffling along a jungle road in intense heat, Japanese guards with rifles and bayonets flanking them, bodies visible on the roadside",
+      "sourceName": "Wikipedia — Bataan Death March",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bataan_Death_March",
+      "volatile": false,
+      "distractors": [
+        "10 miles",
+        "25 miles",
+        "40 miles",
+        "100 miles",
+        "150 miles",
+        "30 miles",
+        "80 miles",
+        "200 miles"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Bataan Death March occurred in which country in April 1942?",
+          "correctAnswer": "Philippines",
+          "distractors": ["Burma", "Malaya", "Indonesia", "Guam"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Approximately how many of the 80,000 prisoners died during the Bataan Death March and its immediate aftermath?",
+          "correctAnswer": "About 11,000",
+          "distractors": ["About 1,000", "About 5,000", "About 30,000", "About 500"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Bataan Death March guards were later tried for war crimes after Japan's defeat.",
+          "correctAnswer": "True — Japanese officers responsible were tried and convicted",
+          "distractors": [
+            "False — no Japanese personnel faced trial specifically for the Death March",
+            "False — the march was classified as a legitimate military operation under Japanese law"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "During the Bataan Death March, Japanese guards ____ prisoners who fell or could not keep pace.",
+          "correctAnswer": "Bayoneted (killed)",
+          "distractors": ["left behind for rescue", "placed on vehicles", "allowed to rest before continuing", "returned to the starting point"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_doolittle_raid",
+      "correctAnswer": "USS Hornet",
+      "acceptableAlternatives": ["the Hornet", "carrier Hornet"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "From which US aircraft carrier did Lieutenant Colonel Doolittle's 16 B-25 bombers launch their surprise raid on Tokyo in April 1942?",
+      "explanation": "B-25 Mitchell bombers were never designed to fly from a carrier — their wingspan barely cleared the deck. The Hornet sailed to within 650 miles of Japan. The raid caused minimal physical damage but was a massive psychological shock: Japan's civilians had been told their homeland was impregnable.",
+      "visualDescription": "Pixel art of a large B-25 bomber rolling down a carrier flight deck at sea, waves crashing against the hull, a row of other bombers lined up behind it, sailors cheering on the deck edges",
+      "sourceName": "Wikipedia — Doolittle Raid",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Doolittle_Raid",
+      "volatile": false,
+      "distractors": [
+        "USS Enterprise",
+        "USS Lexington",
+        "USS Saratoga",
+        "USS Wasp",
+        "USS Ranger",
+        "USS Yorktown",
+        "USS Essex",
+        "USS Bunker Hill"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Doolittle Raid on April 18, 1942 was the first air attack on which city?",
+          "correctAnswer": "Tokyo (Japan's capital)",
+          "distractors": ["Hiroshima", "Osaka", "Nagasaki", "Yokohama"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Doolittle Raid caused minimal physical damage to Japan. Why was it nonetheless considered a major strategic success?",
+          "correctAnswer": "It proved Japan's homeland could be bombed, shattering the myth of its invulnerability and boosting American morale",
+          "distractors": [
+            "It forced Japan to recall fighter squadrons from the Pacific to defend the home islands",
+            "It destroyed Japan's main oil refinery and cut fuel supplies for six months",
+            "It killed several high-ranking Japanese military commanders in Tokyo",
+            "It triggered Japan to sue for a negotiated peace in mid-1942"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: All 16 crews of the Doolittle Raid successfully returned to their carrier after bombing Japan.",
+          "correctAnswer": "False — all planes ran out of fuel; crews bailed out over China or crash-landed; some were captured and executed",
+          "distractors": [
+            "True — the mission was planned as a one-way attack from the start",
+            "True — 15 of 16 crews returned safely; one was forced to land in Soviet territory"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Doolittle Raid used ____ bombers — a type never designed to operate from aircraft carriers.",
+          "correctAnswer": "B-25 Mitchell",
+          "distractors": ["B-17 Flying Fortress", "B-24 Liberator", "SBD Dauntless", "TBF Avenger"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_guadalcanal_duration",
+      "correctAnswer": "August 7, 1942 to February 9, 1943 (approximately 6 months)",
+      "acceptableAlternatives": ["6 months", "August 1942 to February 1943", "late 1942 to early 1943"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "How long did the grueling Allied campaign for Guadalcanal last, making it one of the longest and most costly battles of the Pacific war?",
+      "explanation": "Six months of jungle warfare, naval battles, and tropical disease. Marines who landed expecting a quick victory faced relentless Japanese counterattacks, food shortages, and outbreaks of malaria that put half the force out of action. Guadalcanal proved the Pacific would be won yard by bloody yard.",
+      "visualDescription": "Pixel art of US Marines advancing through dense jungle, sweat-soaked uniforms, heavy foliage overhead, a half-built Japanese airfield visible in the background through the trees",
+      "sourceName": "Wikipedia — Guadalcanal Campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Guadalcanal_campaign",
+      "volatile": false,
+      "distractors": [
+        "2 weeks",
+        "1 month",
+        "3 months",
+        "9 months",
+        "1 year",
+        "18 months",
+        "10 days",
+        "4 months"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "US Marines landed on Guadalcanal in August 1942 primarily to seize what strategic asset Japan was building there?",
+          "correctAnswer": "An airfield (later renamed Henderson Field)",
+          "distractors": ["A deep-water port capable of supporting battleships", "A radar installation covering the Solomon Sea", "A submarine base for attacks on Australia", "A supply depot for the planned invasion of New Guinea"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Disease, not enemy fire, was the greatest threat on Guadalcanal. What illness incapacitated roughly half of American troops on the island?",
+          "correctAnswer": "Malaria",
+          "distractors": ["Typhus", "Dysentery", "Yellow fever", "Dengue fever"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japan lost more troops on Guadalcanal to combat wounds than to disease and starvation.",
+          "correctAnswer": "False — most of Japan's 31,000 dead on Guadalcanal died from starvation and disease, not combat",
+          "distractors": [
+            "True — intense Marine firepower caused the majority of Japanese casualties",
+            "True — naval bombardment accounted for most Japanese losses on the island"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Japan lost approximately ____ troops on Guadalcanal, most to disease and starvation rather than combat.",
+          "correctAnswer": "31,000",
+          "distractors": ["5,000", "10,000", "60,000", "3,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_island_hopping",
+      "correctAnswer": "Capture strategically vital islands and bypass heavily fortified ones, leaving them to wither",
+      "acceptableAlternatives": ["bypass fortified islands", "leapfrog strategy", "skip heavily defended islands"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What was the core principle of the US 'island-hopping' strategy in the Pacific from 1943-1945?",
+      "explanation": "Admiral Nimitz and General MacArthur developed complementary versions of this approach. Rather than assaulting every Japanese stronghold, the Allies captured key islands for airfields and bases, then leapt ahead — leaving massive Japanese garrisons like Rabaul with 100,000+ troops stranded, cut off, and irrelevant to the war's outcome.",
+      "visualDescription": "Pixel art of a top-down strategic map of the Pacific Ocean with island groups marked, arrows jumping between them in a hopping pattern toward Japan, some islands marked with red X symbols to show they were bypassed",
+      "sourceName": "Wikipedia — Leapfrogging (strategy)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leapfrogging_(strategy)",
+      "volatile": false,
+      "distractors": [
+        "Capture every Japanese-held island in sequence from east to west",
+        "Use amphibious landings to push Japan back island by island in a straight line",
+        "Concentrate all forces on the nearest islands to Japan for a rapid advance",
+        "Establish a naval blockade around each island before invading",
+        "Use Marine divisions to assault every fortified Japanese position directly",
+        "Divide forces to simultaneously attack multiple islands in parallel",
+        "Lure Japanese fleets to decisive naval engagements near each island",
+        "Neutralize each island with air power before any ground forces landed"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Island-hopping bypassed massive Japanese bases like Rabaul. What eventually happened to the 100,000+ Japanese troops stranded there?",
+          "correctAnswer": "They were cut off from supply and reinforcement and played no further role in the war",
+          "distractors": [
+            "They were rescued by submarine and redeployed to defend the Philippines",
+            "Allied forces eventually had to assault Rabaul at great cost",
+            "They surrendered in 1943 when food supplies ran out",
+            "They launched a breakout offensive that temporarily recaptured nearby islands"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Island-hopping required seizing certain islands specifically as bases for what asset, which would bring Japan's home islands within range?",
+          "correctAnswer": "Airfields for land-based bombers (especially B-29s)",
+          "distractors": ["Submarine pens to interdict Japan's shipping lanes", "Artillery emplacements for bombardment of adjacent islands", "Radar stations to track Japanese fleet movements", "Fuel depots to extend destroyer patrol ranges"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Island-hopping was designed to minimize US casualties by avoiding the most heavily fortified Japanese positions.",
+          "correctAnswer": "True — bypassing strongholds saved lives compared to a sequential island-by-island assault",
+          "distractors": [
+            "False — the strategy accepted higher casualties in exchange for faster progress",
+            "False — island-hopping was driven by logistics, not casualty avoidance"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The island-hopping strategy was partly designed to capture ____ as forward bases for bombing raids on Japan.",
+          "correctAnswer": "Airfields",
+          "distractors": ["harbors", "fuel depots", "communication towers", "submarine bases"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_kamikaze_meaning",
+      "correctAnswer": "Divine wind",
+      "acceptableAlternatives": ["sacred wind", "god's wind", "heavenly wind"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What does 'kamikaze' mean in Japanese — the name given to suicide pilots who crashed their planes into Allied ships from 1944-1945?",
+      "explanation": "The name references a legendary typhoon that scattered Mongol invasion fleets in the 13th century, saving Japan from conquest. Japan invoked the same divine protection in 1944 — framing suicide pilots as the nation's last mystical defense. The reality was industrial: Japan was running out of experienced pilots and quality aircraft.",
+      "visualDescription": "Pixel art of a Japanese Zero fighter plane diving steeply toward a US battleship, trailing smoke, the rising sun insignia visible on its wings, desperate anti-aircraft fire rising from the ship below",
+      "sourceName": "Wikipedia — Kamikaze",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kamikaze",
+      "volatile": false,
+      "distractors": [
+        "Eternal fire",
+        "Sacred warrior",
+        "Spirit sacrifice",
+        "Heaven's arrow",
+        "Emperor's fist",
+        "Iron typhoon",
+        "Noble death",
+        "Wind of war"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The kamikaze name references a historical event that supposedly saved Japan from conquest in the 13th century. What was that event?",
+          "correctAnswer": "Typhoons that destroyed Mongol invasion fleets attempting to land in Japan",
+          "distractors": [
+            "A volcanic eruption that sank Chinese warships near Kyushu",
+            "A fierce samurai counterattack that drove off Korean invaders",
+            "A storm that wrecked a Portuguese fleet threatening Japanese trade routes",
+            "A legendary naval victory over a Chinese emperor's armada"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Kamikazes sank 34 ships and damaged 368 more. What made them particularly difficult for Allied ships to defend against?",
+          "correctAnswer": "A plane under human control could maneuver until the last second, making anti-aircraft targeting extremely difficult",
+          "distractors": [
+            "Kamikazes flew in formations too large for anti-aircraft guns to cover",
+            "Allied sailors were forbidden to fire on aircraft within a certain distance of other ships",
+            "Kamikazes approached from directly above, outside most gun elevation limits",
+            "The planes were coated in a material that confused Allied radar systems"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: All kamikaze pilots were willing volunteers who enthusiastically embraced their mission.",
+          "correctAnswer": "False — many pilots were coerced or pressured; volunteering was sometimes not truly voluntary",
+          "distractors": [
+            "True — documented records show every kamikaze pilot submitted a written volunteer statement",
+            "True — the waiting list to become a kamikaze was longer than the number of available planes"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Kamikaze attacks killed approximately ____ Allied sailors — more than any other Japanese weapon in the war's final year.",
+          "correctAnswer": "5,600",
+          "distractors": ["500", "2,000", "12,000", "800"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_iwo_jima_flag",
+      "correctAnswer": "Mount Suribachi",
+      "acceptableAlternatives": ["Suribachi", "Mt. Suribachi"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "On which volcanic peak was the iconic US flag-raising photograph taken during the Battle of Iwo Jima in February 1945?",
+      "explanation": "Joe Rosenthal's photograph of six Marines raising the flag on Mount Suribachi became one of the most reproduced images in history and was used to inspire the 7th War Bond drive. What few knew: this was the SECOND flag raised that day — a larger replacement flag. The first flag-raising had already been photographed, less dramatically.",
+      "visualDescription": "Pixel art of six Marines straining to plant a US flag on a rocky volcanic peak, black volcanic soil beneath them, the Pacific Ocean visible far below, smoke from battle in the distance",
+      "sourceName": "Wikipedia — Battle of Iwo Jima",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Iwo_Jima",
+      "volatile": false,
+      "distractors": [
+        "Mount Fuji",
+        "Hill 382",
+        "Airfield No. 1",
+        "Mount Tapochau",
+        "Bloody Nose Ridge",
+        "Hill 660",
+        "The Meatgrinder",
+        "Motoyama Plateau"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Joe Rosenthal's famous Iwo Jima flag-raising photo was actually the SECOND flag raised that day. Why was a second, larger flag raised?",
+          "correctAnswer": "The first flag was considered too small to see from a distance; a larger replacement was raised for visibility",
+          "distractors": [
+            "The first flag was captured by a Japanese counterattack and had to be replaced",
+            "The first flag was stained by blood and a fresh one was raised for the photograph",
+            "Marine command ordered a second raising so photographers could document the moment",
+            "The first flag was raised by Army troops; the second showed Marine ownership of the peak"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Iwo Jima flag photo inspired the 7th War Bond drive. How many of the six Marines in the famous photo survived the battle?",
+          "correctAnswer": "3 of the 6 Marines survived; the other 3 were killed in the battle",
+          "distractors": [
+            "All 6 survived — they were pulled from combat after the photo",
+            "Only 1 survived; the rest were killed in the final Japanese banzai charge",
+            "5 of 6 survived; one was killed in the landing on D-Day at Iwo Jima",
+            "None survived; the photo was taken hours before a fatal Japanese counterattack"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japanese forces on Iwo Jima were primarily positioned on the beaches to repel the US landing.",
+          "correctAnswer": "False — Japan tunneled deep into the volcanic rock and let the landing proceed, then fired from hidden inland fortifications",
+          "distractors": [
+            "True — Japan massed its defenses at the waterline in a traditional beach defense",
+            "True — Japan's strategy was to destroy US landing craft before troops reached shore"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Of Iwo Jima's approximately 21,000 Japanese defenders, only ____ survived to be taken prisoner.",
+          "correctAnswer": "216",
+          "distractors": ["2,000", "500", "5,000", "50"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_iwo_jima_cost",
+      "correctAnswer": "Approximately 7,000 Americans killed; 21,000 Japanese killed",
+      "acceptableAlternatives": ["7000 US dead", "nearly all Japanese defenders killed", "21000 Japanese"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What were the approximate combined death tolls at the Battle of Iwo Jima — an island only 8 square miles — demonstrating the cost of advancing on Japan?",
+      "explanation": "7,000 Americans killed and 21,000 Japanese killed on a tiny volcanic island. Admiral Nimitz said 'Uncommon valor was a common virtue.' The battle's casualty rate alarmed US planners: if an 8-square-mile island cost this much, invading Japan's main islands — 145,000 square miles — would be catastrophic.",
+      "visualDescription": "Pixel art of stark black volcanic terrain with fortified pillboxes and cave entrances, shell craters everywhere, US Marines advancing low to the ground between explosions",
+      "sourceName": "Wikipedia — Battle of Iwo Jima",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Iwo_Jima",
+      "volatile": false,
+      "distractors": [
+        "500 Americans killed; 2,000 Japanese killed",
+        "3,000 Americans killed; 5,000 Japanese killed",
+        "15,000 Americans killed; 8,000 Japanese killed",
+        "1,200 Americans killed; 10,000 Japanese killed",
+        "25,000 Americans killed; 30,000 Japanese killed",
+        "2,000 Americans killed; 4,000 Japanese killed",
+        "10,000 Americans killed; 15,000 Japanese killed",
+        "500 Americans killed; 500 Japanese killed"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The enormous casualties at Iwo Jima alarmed US planners about what future operation that was then being planned?",
+          "correctAnswer": "Operation Downfall — the planned invasion of Japan's home islands",
+          "distractors": ["Operation Cartwheel — the campaign to isolate Rabaul", "Operation Iceberg — the Okinawa landing", "Operation Starvation — the mining of Japan's harbors", "Operation Coronet — the assault on Tokyo Bay"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why was capturing Iwo Jima strategically vital to the US bombing campaign against Japan?",
+          "correctAnswer": "Its airfields provided an emergency landing site and fighter escort base for B-29 bombers attacking Japan",
+          "distractors": [
+            "Iwo Jima's harbor was needed to stage the planned invasion of Kyushu",
+            "Iwo Jima's radar station could warn of Japanese counterattacks on Saipan",
+            "The island housed Japan's primary communications hub for the Pacific defense network",
+            "Capturing it denied Japan a submarine base used to attack US supply lines"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Battle of Iwo Jima was the only Pacific battle where US casualties exceeded Japanese casualties.",
+          "correctAnswer": "True — it was the only major Pacific battle where American casualties outnumbered Japanese",
+          "distractors": [
+            "False — US casualties exceeded Japanese at both Iwo Jima and Tarawa",
+            "False — Okinawa also produced more US than Japanese military deaths"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Admiral Nimitz said of the Marines at Iwo Jima: 'Uncommon ____ was a common virtue.'",
+          "correctAnswer": "valor",
+          "distractors": ["sacrifice", "courage", "heroism", "duty"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_okinawa_scale",
+      "correctAnswer": "The largest amphibious assault in the Pacific Theater",
+      "acceptableAlternatives": ["largest Pacific battle", "biggest battle of the Pacific war", "largest battle in the Pacific"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What distinction does the Battle of Okinawa (April-June 1945) hold among all Pacific Theater battles of World War II?",
+      "explanation": "Over 180,000 US troops assaulted an island defended by 100,000+ Japanese soldiers and containing 500,000 civilians. The 82-day battle produced 50,000+ US killed and wounded. The sheer scale of suffering — including Okinawan civilians jumping from cliffs rather than surrender — directly influenced the decision to use atomic bombs instead of invading Japan.",
+      "visualDescription": "Pixel art of an enormous naval armada offshore — dozens of warships stretching to the horizon — while waves of US Marines and soldiers wade ashore on a long beach under smoke and shellfire",
+      "sourceName": "Wikipedia — Battle of Okinawa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Okinawa",
+      "volatile": false,
+      "distractors": [
+        "The first battle where kamikaze attacks were used against US forces",
+        "The only Pacific battle fought on Japanese sovereign territory",
+        "The battle with the highest percentage of US Marine casualties",
+        "The longest naval bombardment of any Pacific island",
+        "The first battle where Japan deployed its super-battleship Yamato",
+        "The only Pacific battle involving both US Army and Marine Corps divisions",
+        "The battle with the greatest concentration of anti-aircraft guns in the Pacific",
+        "The last battle before Japan's unconditional surrender"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "How many US troops were committed to the assault on Okinawa — the largest force assembled for any Pacific battle?",
+          "correctAnswer": "Over 180,000",
+          "distractors": ["50,000", "75,000", "120,000", "250,000"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The Battle of Okinawa's staggering cost — 50,000+ US casualties in one battle — directly influenced a major strategic decision. What was it?",
+          "correctAnswer": "The decision to use atomic bombs on Japan rather than launch a ground invasion",
+          "distractors": [
+            "The decision to demand unconditional surrender rather than negotiate terms",
+            "The decision to use firebombing against Japanese cities instead of precision raids",
+            "The decision to wait for the Soviet Union to enter the Pacific war before invading",
+            "The decision to bypass Japan entirely and blockade it into starvation"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The civilian population of Okinawa was evacuated before the battle began.",
+          "correctAnswer": "False — approximately 500,000 Okinawan civilians were present during the battle, and over 100,000 died",
+          "distractors": [
+            "True — Japan evacuated most civilians to Kyushu before the US assault",
+            "True — US leaflet drops convinced most civilians to flee to the northern mountains"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Okinawa, some Okinawan civilians ____ from clifftops rather than surrender, having been told Americans would torture and kill prisoners.",
+          "correctAnswer": "Jumped to their deaths (committed suicide)",
+          "distractors": ["hid in caves for months", "fought alongside Japanese soldiers", "swam out to US ships to surrender", "were conscripted into labor battalions"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_okinawa_kamikazes",
+      "correctAnswer": "3,000+",
+      "acceptableAlternatives": ["over 3000", "thousands of sorties", "more than 3000"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "How many kamikaze sorties did Japan fly during the battle of Okinawa alone — making it the most intense kamikaze campaign of the war?",
+      "explanation": "Okinawa saw the peak of kamikaze operations — over 3,000 sorties in Operation Kikusui ('floating chrysanthemums'). Japan launched massive coordinated waves. The US Navy suffered its worst losses of the entire war during this campaign, with over 400 ships damaged. Yet Japan couldn't stop the invasion — only delay and bleed it.",
+      "visualDescription": "Pixel art of a US destroyer surrounded by explosions and smoke, multiple Japanese planes diving at it from different angles, crew manning anti-aircraft guns desperately, the chaos of a full kamikaze wave attack",
+      "sourceName": "Wikipedia — Battle of Okinawa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Okinawa",
+      "volatile": false,
+      "distractors": ["100", "500", "1,000", "5,000", "10,000", "200", "750", "1,500"],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Japan's mass kamikaze campaign at Okinawa was code-named 'Operation Kikusui' — what does Kikusui mean in Japanese?",
+          "correctAnswer": "Floating chrysanthemums",
+          "distractors": ["Sacred storm", "Iron blossoms", "Heaven's wrath", "Crimson waves"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "During the Okinawa campaign, the US Navy suffered its worst losses of the entire Pacific war. What type of ship bore the brunt of kamikaze damage?",
+          "correctAnswer": "Destroyers used as radar picket ships — positioned far out to give early warning, they were isolated and highly vulnerable",
+          "distractors": [
+            "Aircraft carriers, which were targeted specifically because of their size",
+            "Battleships providing shore bombardment close to the beach",
+            "Troop transports, which were targeted to prevent reinforcement landings",
+            "Submarines, which surfaced to provide anti-aircraft support"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Kamikaze attacks at Okinawa successfully repelled the US invasion and prevented the capture of the island.",
+          "correctAnswer": "False — despite inflicting serious damage, kamikazes could not stop the invasion; Okinawa fell to the US",
+          "distractors": [
+            "True — the invasion had to be scaled back significantly due to kamikaze losses",
+            "True — the US temporarily withdrew and had to re-assault the island in June 1945"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The US Navy suffered over ____ ships damaged during the kamikaze campaign at Okinawa — its worst naval losses of the entire Pacific war.",
+          "correctAnswer": "400",
+          "distractors": ["50", "150", "700", "1,000"]
+        }
+      ]
+    }
+  ,
+    {
+      "id": "wwii_pt_bataan_pows",
+      "correctAnswer": "80,000 American and Filipino prisoners of war",
+      "acceptableAlternatives": ["80000 POWs", "80,000 prisoners", "eighty thousand"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "How many prisoners of war were forced on the Bataan Death March in April 1942 — the largest surrender in US military history?",
+      "explanation": "80,000 men — starving and sick after months of siege — surrendered when the Philippines fell. The sheer scale of the surrender shocked Americans. For the survivors who reached the prison camps, a worse ordeal was just beginning: years of captivity with starvation rations, forced labor, and brutal guards.",
+      "visualDescription": "Pixel art of an exhausted American soldier, gaunt and sunburned, hands tied, being guarded by a Japanese soldier with a rifle, jungle vegetation on both sides of the dirt road",
+      "sourceName": "Wikipedia — Bataan Death March",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bataan_Death_March",
+      "volatile": false,
+      "distractors": [
+        "10,000 prisoners",
+        "25,000 prisoners",
+        "50,000 prisoners",
+        "120,000 prisoners",
+        "5,000 American soldiers only",
+        "200,000 total combatants",
+        "15,000 American prisoners",
+        "40,000 Filipino soldiers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "The Bataan Death March was the largest surrender of forces under US command in history. In which month and year did it occur?",
+          "correctAnswer": "April 1942",
+          "distractors": ["December 1941", "June 1942", "February 1942", "August 1942"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The fall of Bataan and the Death March became a powerful propaganda symbol for the US war effort. What did it symbolize to the American public?",
+          "correctAnswer": "Japanese brutality and the urgent need to defeat Japan — used to drive war bond sales and recruitment",
+          "distractors": [
+            "The incompetence of US generals who failed to hold a defensible position",
+            "The need to negotiate a separate peace with Japan before more troops were lost",
+            "American resilience and the stubborn resistance of Filipino-American forces",
+            "The importance of abandoning the Philippines and concentrating on Europe"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Bataan Death March only involved American military personnel.",
+          "correctAnswer": "False — the majority of the 80,000 prisoners were Filipino soldiers, not Americans",
+          "distractors": [
+            "True — Filipino forces had already surrendered separately before the march began",
+            "True — only US Army and Marine personnel were forced to march; Filipino troops were released"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Approximately ____ prisoners died during the Bataan Death March and its immediate aftermath from brutality, heat, and disease.",
+          "correctAnswer": "11,000",
+          "distractors": ["500", "2,000", "30,000", "75,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_doolittle_outcome",
+      "correctAnswer": "All planes ran out of fuel; crews bailed out over China or crash-landed; some were captured by Japan and executed",
+      "acceptableAlternatives": ["crews bailed over China", "planes ran out of fuel over China", "some captured and executed"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What happened to the 16 B-25 crews after they bombed Tokyo in the Doolittle Raid — none of them ever returned to their carrier?",
+      "explanation": "The plan was to land in Nationalist China, but early launch (spotted by a Japanese picket boat) meant they ran short of fuel. 15 planes crash-landed or crews bailed out over China; one landed in the Soviet Union and was interned. Eight airmen were captured by Japan — three were executed. Doolittle himself expected a court martial for losing all his planes; instead he received the Medal of Honor.",
+      "visualDescription": "Pixel art of a B-25 bomber ditching into the dark sea at night near a rocky Chinese coastline, the crew climbing out of the sinking plane into small rubber rafts, no other aircraft visible",
+      "sourceName": "Wikipedia — Doolittle Raid",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Doolittle_Raid",
+      "volatile": false,
+      "distractors": [
+        "All 16 crews safely returned to the USS Hornet after the mission",
+        "The planes landed at a secret US airbase in the Philippines",
+        "Most crews were captured immediately after landing in China",
+        "The planes successfully reached Allied airbases in Australia",
+        "14 of 16 crews were rescued; two planes were shot down over Japan",
+        "All crews were interned in the Soviet Union after diverting east",
+        "The planes were abandoned in the ocean and crews were rescued by submarine",
+        "Crews parachuted into the Yellow Sea and were picked up by US destroyers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Jimmy Doolittle expected to be court-martialed after the raid for losing all 16 aircraft. What award did he receive instead?",
+          "correctAnswer": "The Medal of Honor",
+          "distractors": ["The Distinguished Flying Cross", "The Navy Cross", "The Silver Star", "The Legion of Merit"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Why did the Doolittle Raiders launch earlier than planned, reducing their fuel margin and dooming the aircraft?",
+          "correctAnswer": "A Japanese picket boat spotted the fleet, forcing early launch 150 miles further from Japan than planned",
+          "distractors": [
+            "Mechanical problems on the carrier meant the planes had to take off before full fueling",
+            "A storm was approaching and the launch window would have closed",
+            "US intelligence suggested a Japanese fighter screen was waiting at the planned launch point",
+            "Admiral Halsey ordered early launch to avoid a Japanese submarine sighting"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: All of the Doolittle Raiders who were captured by Japan survived captivity and returned home after the war.",
+          "correctAnswer": "False — three of the eight captured airmen were executed by Japan",
+          "distractors": [
+            "True — Japan treated the raiders as POWs under the Geneva Convention",
+            "True — all captured raiders were exchanged in a prisoner swap before the war ended"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "One Doolittle Raid plane diverted to the ____ and its crew was interned rather than captured by Japan.",
+          "correctAnswer": "Soviet Union",
+          "distractors": ["Philippines", "India", "Australia", "Manchuria"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_guadalcanal_significance",
+      "correctAnswer": "First major US offensive of the Pacific war, proving Japan could be beaten on land",
+      "acceptableAlternatives": ["first US offensive", "first Allied land victory over Japan", "proved island-hopping could work"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Why was the Allied victory at Guadalcanal in February 1943 considered a strategic turning point beyond its immediate tactical value?",
+      "explanation": "Before Guadalcanal, Japanese ground forces had not lost a major battle in the Pacific war. The island also validated the entire island-hopping concept — that the US could seize and hold enemy-held islands as stepping stones toward Japan. After Guadalcanal, the strategic initiative in the Pacific permanently shifted to the Allies.",
+      "visualDescription": "Pixel art of US Marines raising an American flag over a captured Japanese airfield in a jungle clearing, damaged Japanese Zero planes visible in the background, palm trees framing the scene",
+      "sourceName": "Wikipedia — Guadalcanal Campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Guadalcanal_campaign",
+      "volatile": false,
+      "distractors": [
+        "It was the first battle where US forces used radar to defeat a Japanese fleet",
+        "It demonstrated the decisive importance of aircraft carriers over battleships",
+        "It was the first time Japan surrendered a garrison rather than fighting to the last man",
+        "It proved the effectiveness of submarine warfare against Japanese supply lines",
+        "It was the first battle where US forces outnumbered Japanese defenders",
+        "It forced Japan to cancel its planned invasion of Australia",
+        "It demonstrated that American production could outpace Japanese manufacturing",
+        "It was the first time the US Army and Marine Corps fought side by side in the Pacific"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "What was the name of the key airfield on Guadalcanal that both sides fought so hard to control?",
+          "correctAnswer": "Henderson Field",
+          "distractors": ["Munda Field", "Tontouta Field", "Milne Bay", "Clark Field"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Japan lost 31,000 troops on Guadalcanal — but most died from what cause rather than combat wounds?",
+          "correctAnswer": "Starvation and disease, as US naval control cut off Japanese supply runs",
+          "distractors": [
+            "Friendly fire from Japanese artillery firing in the dense jungle",
+            "American submarine attacks on troop transports trying to reinforce the island",
+            "Tropical storms that destroyed Japanese base camps and supply dumps",
+            "Air raids by US carrier aircraft that targeted Japanese troop concentrations"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japan successfully evacuated most of its surviving Guadalcanal garrison before the island fell.",
+          "correctAnswer": "True — Japan conducted a skillful secret evacuation (Operation Ke) removing 10,000 surviving troops",
+          "distractors": [
+            "False — Japan's garrison fought to the last man; there were no survivors",
+            "False — US forces captured the entire Japanese garrison when resistance collapsed"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The Guadalcanal campaign lasted from August 1942 to ____ 1943.",
+          "correctAnswer": "February",
+          "distractors": ["April", "December", "June", "October"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_island_hopping_rabaul",
+      "correctAnswer": "Rabaul, with over 100,000 Japanese troops",
+      "acceptableAlternatives": ["Rabaul", "Rabaul garrison", "bypassed Rabaul"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Which massively fortified Japanese base — garrisoned by over 100,000 troops — did the Allies deliberately bypass under island-hopping strategy, leaving it stranded for the rest of the war?",
+      "explanation": "Rabaul on New Britain was Japan's primary South Pacific base, heavily defended with 100,000 troops, hundreds of aircraft, and massive coastal artillery. A direct assault would have cost tens of thousands of Allied lives. Instead, MacArthur and Nimitz simply bypassed it — isolating its garrison, cutting its supply lines, and making its enormous garrison irrelevant. By 1945, those 100,000 troops were growing vegetables to survive.",
+      "visualDescription": "Pixel art of a top-down map view showing a large island base with airfields and harbor facilities, surrounded by a dotted bypass arrow showing Allied forces leaping past it to the next island chain",
+      "sourceName": "Wikipedia — Leapfrogging (strategy)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leapfrogging_(strategy)",
+      "volatile": false,
+      "distractors": [
+        "Truk Atoll",
+        "Peleliu Island",
+        "Corregidor",
+        "Tarawa Atoll",
+        "Wake Island",
+        "Kwajalein Atoll",
+        "Saipan",
+        "Bougainville"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "By 1945, what were Rabaul's stranded 100,000 Japanese troops doing to survive after being completely cut off from resupply?",
+          "correctAnswer": "Growing their own food — farming vegetables and raising livestock on the island",
+          "distractors": [
+            "Launching nightly barge raids on nearby Allied-held islands for supplies",
+            "Surviving on stockpiled prewar supply depots the Allies had failed to destroy",
+            "Receiving supply drops from Japanese submarines that ran the Allied blockade",
+            "Fishing in the surrounding waters under air cover from hidden mountain airstrips"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Bypassing Rabaul instead of assaulting it saved the Allies enormous casualties. What eventually happened to its 100,000 Japanese garrison?",
+          "correctAnswer": "They surrendered peacefully after Japan's August 1945 capitulation, never having fought",
+          "distractors": [
+            "They were destroyed by a combined Allied air, land, and sea assault in 1945",
+            "They broke out in a surprise attack that recaptured key Solomon Islands",
+            "They starved to death over the course of 1944 as supplies ran out",
+            "They were evacuated by Japan's submarine fleet in 1944"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The decision to bypass Rabaul was controversial — US generals initially wanted a direct assault on the base.",
+          "correctAnswer": "True — MacArthur initially wanted to take Rabaul directly; Nimitz's bypass strategy eventually prevailed",
+          "distractors": [
+            "False — bypassing Rabaul was universally agreed upon from the start of Pacific planning",
+            "False — the Joint Chiefs in Washington ordered the bypass without consulting field commanders"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Under island-hopping, heavily fortified Japanese bases like Rabaul were bypassed and left to 'wither on the vine' — a phrase meaning they were ____ without a direct attack.",
+          "correctAnswer": "Isolated, cut off from supply, and rendered strategically irrelevant",
+          "distractors": ["destroyed by aerial bombardment", "infiltrated by Allied special forces", "blockaded until their garrison surrendered", "neutralized by naval gunfire from offshore"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_kamikaze_ships",
+      "correctAnswer": "34 ships sunk and 368 damaged",
+      "acceptableAlternatives": ["34 sunk", "over 30 ships sunk", "hundreds damaged"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What was the total toll of Japanese kamikaze attacks on Allied ships across the entire 1944-1945 Pacific campaign?",
+      "explanation": "Despite 3,000+ sorties, kamikazes sank only 34 ships — mostly small destroyers and escort carriers — and damaged 368 more. The kill rate was lower than conventional attacks. Yet the psychological effect was enormous: sailors described the terror of watching a plane that refused to pull up. The US developed 'kamikaze picket' destroyers as a sacrificial warning screen.",
+      "visualDescription": "Pixel art of a small US destroyer on fire amidships after a kamikaze hit, its bow and stern still above water, crew members in the water and on life rafts around it, two other warships rushing to assist",
+      "sourceName": "Wikipedia — Kamikaze",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kamikaze",
+      "volatile": false,
+      "distractors": [
+        "150 ships sunk and 600 damaged",
+        "5 ships sunk and 50 damaged",
+        "80 ships sunk and 200 damaged",
+        "200 ships sunk and 1,000 damaged",
+        "10 ships sunk and 100 damaged",
+        "50 ships sunk and 150 damaged",
+        "300 ships sunk and 500 damaged",
+        "20 ships sunk and 75 damaged"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Why were kamikaze attacks particularly dangerous to destroyers assigned as radar picket ships near Okinawa?",
+          "correctAnswer": "Picket destroyers were stationed far from the fleet and had no air cover, making them isolated and easy targets",
+          "distractors": [
+            "Destroyers lacked radar-directed anti-aircraft guns unlike larger ships",
+            "Picket destroyers were forbidden to open fire until the threat was confirmed hostile",
+            "Destroyers were slower than escort carriers and couldn't maneuver to evade diving planes",
+            "Picket ships were required to maintain radio silence, preventing them from calling for air support"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Kamikazes killed approximately 5,600 Allied sailors. Which ship type did they most frequently successfully sink?",
+          "correctAnswer": "Destroyers and small escort vessels — large fleet carriers were heavily armored and often survived hits",
+          "distractors": [
+            "Fleet carriers — their large flat decks were the primary target and offered no armor",
+            "Battleships — their slow speed made them unable to take evasive action",
+            "Troop transports — Japan specifically targeted them to prevent reinforcement",
+            "Submarines — kamikaze attacks were timed to catch submarines surfacing at night"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Kamikaze pilots were more effective per sortie than conventional Japanese aircraft attacks.",
+          "correctAnswer": "False — conventional attacks had higher hit rates per sortie; kamikazes had a lower actual kill ratio than expected",
+          "distractors": [
+            "True — the kill ratio per kamikaze sortie was the highest of any Japanese attack method",
+            "True — the surprise factor of kamikaze attacks made US anti-aircraft gunners less effective"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Despite over 3,000 kamikaze sorties, Japan sank only ____ Allied ships — most kamikazes were shot down before reaching their targets.",
+          "correctAnswer": "34",
+          "distractors": ["200", "500", "8", "150"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_okinawa_civilians",
+      "correctAnswer": "Over 100,000 Okinawan civilians died — some jumping from cliffs rather than surrender",
+      "acceptableAlternatives": ["100,000 civilians", "civilian mass suicides", "Okinawans jumped from cliffs"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "What was the tragic fate of Okinawa's civilian population during the battle, making Okinawa unique among Pacific battles for its civilian death toll?",
+      "explanation": "Over 100,000 Okinawan civilians died — roughly a quarter of the island's prewar population. Japanese propaganda had convinced many civilians that Americans would rape and murder them. Rather than surrender, groups of civilians leapt from cliffs at sites like Kyan and Itoman. The tragedy haunts Okinawa to this day and has fueled decades of anti-US base sentiment on the island.",
+      "visualDescription": "Pixel art of Okinawan civilians sheltering in a coastal cave, terrified expressions, the sound of artillery audible, a narrow cave entrance with US soldiers visible outside — the impossible choice of surrender or death depicted",
+      "sourceName": "Wikipedia — Battle of Okinawa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Okinawa",
+      "volatile": false,
+      "distractors": [
+        "500 civilians died; most were safely evacuated before the battle",
+        "5,000 civilians died in crossfire between the armies",
+        "50,000 civilians died fighting as militia alongside Japanese soldiers",
+        "200,000 civilians fled to Japan by boat during the battle",
+        "10,000 civilians were killed by US naval bombardment",
+        "No civilians died — they were sheltered in caves throughout the battle",
+        "30,000 civilians were killed by Japanese forces suspected of collaboration",
+        "75,000 civilians were taken prisoner and used as human shields"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Japanese propaganda told Okinawan civilians Americans would harm them. What act of mass tragedy did this propaganda cause at sites like Kyan Cape?",
+          "correctAnswer": "Groups of civilians jumped from cliffs to their deaths rather than surrender to US forces",
+          "distractors": [
+            "Civilians poisoned their water supplies to prevent US use",
+            "Entire villages set their homes on fire and perished rather than yield them to Americans",
+            "Civilian men killed their families and then themselves to avoid capture",
+            "Civilian groups attacked US positions with farm tools in suicidal charges"
+          ]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "The mass civilian deaths at Okinawa have had a lasting political consequence into the modern era. What is it?",
+          "correctAnswer": "Deep anti-US military base sentiment in Okinawa, which hosts major American bases still contested today",
+          "distractors": [
+            "Okinawa remains legally a disputed territory between Japan and the US",
+            "Okinawa has banned all military activity on the island since 1972",
+            "Japan has never formally acknowledged the civilian deaths, creating diplomatic tension",
+            "Okinawa held a referendum to become an independent nation in 2000"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Okinawa's civilian death toll of 100,000+ exceeded the number of Japanese military deaths on the island.",
+          "correctAnswer": "False — Japanese military deaths (100,000+) roughly matched civilian deaths; both were catastrophic",
+          "distractors": [
+            "True — civilian deaths vastly exceeded military losses on both sides combined",
+            "True — Japan's military garrison was small; most deaths were among the civilian population"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Okinawa's civilian death toll represented approximately ____ of the island's entire prewar population.",
+          "correctAnswer": "One quarter (25%)",
+          "distractors": ["5%", "Half (50%)", "10%", "Three quarters (75%)"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_pearl_harbor_industrial",
+      "correctAnswer": "Japan underestimated American industrial capacity to replace losses and mobilize for war",
+      "acceptableAlternatives": ["underestimated US industry", "US industrial capacity", "Japan miscalculated American production"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Admiral Yamamoto, architect of the Pearl Harbor attack, privately feared the raid had made a catastrophic strategic error. What did he believe Japan had fatally underestimated?",
+      "explanation": "Yamamoto reportedly said: 'I fear all we have done is to awaken a sleeping giant and fill him with a terrible resolve.' Japan's planners believed the US, shocked by Pearl Harbor, would seek a negotiated peace. Instead, American factories converted to war production at a rate Japan couldn't match — building 90,000 aircraft in 1944 alone while Japan built 28,000.",
+      "visualDescription": "Pixel art of a vast American factory floor at night, rows of half-built warplanes and tanks stretching to the horizon, hundreds of workers on multiple shifts, American flags hanging from the rafters",
+      "sourceName": "Wikipedia — Attack on Pearl Harbor",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+      "volatile": false,
+      "distractors": [
+        "The fighting spirit of the US Marine Corps",
+        "The range and accuracy of American anti-aircraft guns",
+        "The speed at which US battleships could be repaired and returned to service",
+        "The loyalty and morale of Filipino troops fighting alongside Americans",
+        "The effectiveness of US submarine warfare against Japanese shipping",
+        "The diplomatic skill of American negotiators at the peace table",
+        "The accuracy of US naval gunnery at long range",
+        "The effectiveness of US Army Air Corps long-range bombers"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "In 1944, the US built roughly 90,000 military aircraft. How many did Japan build in the same year?",
+          "correctAnswer": "Approximately 28,000 — less than a third of US output",
+          "distractors": ["85,000 — nearly matching US production", "50,000 — about half as many", "10,000 — less than 15% of US output", "60,000 — two-thirds of US production"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Japan's plan was to destroy the Pacific Fleet and negotiate peace before the US could rebuild. Why did this assumption prove fatally wrong?",
+          "correctAnswer": "Pearl Harbor united American public opinion, transforming isolationist sentiment into overwhelming support for total war",
+          "distractors": [
+            "The US had secretly been planning war with Japan for years and had mobilization plans ready",
+            "Britain immediately threatened to abandon the Allied cause if the US did not fight Japan",
+            "The damage at Pearl Harbor was less severe than Japan believed, leaving US forces combat-ready",
+            "FDR had already ordered full war mobilization the week before Pearl Harbor"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Admiral Yamamoto, who planned the Pearl Harbor attack, was confident it would force the US into a peace settlement.",
+          "correctAnswer": "False — Yamamoto privately feared Japan had made a grave error and that American industrial might would eventually overwhelm Japan",
+          "distractors": [
+            "True — Yamamoto's own after-action report declared the attack a complete strategic success",
+            "True — Japanese war gaming predicted the US would seek peace within 12 months of the attack"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Yamamoto feared Japan had 'awakened a ____ giant' — his private metaphor for American industrial and military potential.",
+          "correctAnswer": "Sleeping",
+          "distractors": ["wounded", "defeated", "dying", "peaceful"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_guadalcanal_naval",
+      "correctAnswer": "Seven major naval battles were fought in the waters around Guadalcanal",
+      "acceptableAlternatives": ["multiple naval battles", "naval battles in Iron Bottom Sound", "7 naval engagements"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The Guadalcanal campaign was not just a land battle — the waters around the island became a graveyard of ships. What earned the surrounding strait the grim nickname 'Iron Bottom Sound'?",
+      "explanation": "So many ships were sunk in the narrow strait between Guadalcanal and Savo Island that the channel was nicknamed Iron Bottom Sound. Both sides lost dozens of warships in seven major naval engagements. The US lost four heavy cruisers in a single night at the Battle of Savo Island — the worst US naval defeat of WWII. Japan's 'Tokyo Express' ran destroyers down 'The Slot' to resupply its garrison nightly.",
+      "visualDescription": "Pixel art of a night naval battle in a narrow channel, muzzle flashes from battleships and cruisers illuminating dark water, a burning ship silhouetted against the flames, tropical jungle coastline visible on both sides",
+      "sourceName": "Wikipedia — Guadalcanal Campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Guadalcanal_campaign",
+      "volatile": false,
+      "distractors": [
+        "The shallow water made sonar useless for finding submarine wrecks",
+        "US ships were sunk near a coral reef called Iron Bottom by local charts",
+        "The rusting hulks of Japanese invasion barges covered the seabed",
+        "A single catastrophic storm sank an entire US destroyer squadron there",
+        "The area was named after the iron ore deposits in the surrounding hills",
+        "Japanese submarines sank so many Allied vessels that the floor was littered with wrecks",
+        "US carrier aircraft sank every ship Japan sent through the strait",
+        "The dark volcanic sediment of the channel bottom gave it an iron-colored appearance"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Japan's nightly destroyer runs to resupply Guadalcanal were nicknamed the 'Tokyo Express.' What route did they use?",
+          "correctAnswer": "New Georgia Sound, nicknamed 'The Slot' — a natural channel through the Solomon Islands",
+          "distractors": ["The Lunga Roads — a sheltered anchorage near Henderson Field", "The Coral Passage — a deep-water route south of the Solomons", "The Bismarck Sea route — a northern approach from Rabaul", "The Bougainville Strait — a heavily mined channel to the northwest"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "At the Battle of Savo Island — the worst US naval defeat of WWII — how many US heavy cruisers did Japan sink in a single night?",
+          "correctAnswer": "Four",
+          "distractors": ["One", "Two", "Seven", "Six"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Japan won every major naval battle fought around Guadalcanal, only losing the island due to air power and logistics.",
+          "correctAnswer": "False — the naval battles were mixed; the US won decisive night engagements in November 1942 that ended Japan's ability to resupply the island",
+          "distractors": [
+            "True — Japan's superior night-fighting tactics gave it naval dominance throughout the campaign",
+            "True — the US only reversed the naval situation after bringing in new battleships from the Atlantic"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "The waters between Guadalcanal and Savo Island were nicknamed '____ Sound' because so many ships from both sides were sunk there.",
+          "correctAnswer": "Iron Bottom",
+          "distractors": ["Blood Red", "Death's Gate", "Black Water", "Graves"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_okinawa_atomic_link",
+      "correctAnswer": "Okinawa's catastrophic 50,000+ US casualties convinced planners an invasion of Japan would cost millions of lives",
+      "acceptableAlternatives": ["casualty projections from Okinawa", "cost of invading Japan estimated from Okinawa", "50000 US casualties influenced atomic bomb decision"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "How did the Battle of Okinawa directly influence President Truman's decision to use atomic bombs against Japan in August 1945?",
+      "explanation": "US planners used Okinawa as their model for estimating invasion casualties. Okinawa was 0.46% of Japan's land area — yet produced 50,000+ US casualties. Scaling up to Japan's main islands, military planners estimated between 250,000 and 1 million American deaths. Japanese estimates projected 20 million Japanese deaths in the defense. These projections made the atomic bomb — with its promise of ending the war without invasion — appear the lesser horror.",
+      "visualDescription": "Pixel art of a war room with uniformed officers around a map table, casualty projection charts on the wall showing climbing numbers, a large map of Japan with invasion routes marked, grim expressions on every face",
+      "sourceName": "Wikipedia — Battle of Okinawa",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Okinawa",
+      "volatile": false,
+      "distractors": [
+        "Okinawan civilians poisoned US water supplies, suggesting Japan would use chemical weapons in an invasion",
+        "Japan launched its first successful atomic bomb test during the Okinawa campaign",
+        "The Japanese garrison at Okinawa surrendered, suggesting the atomic bomb was unnecessary",
+        "Kamikaze attacks at Okinawa destroyed 50% of the invasion fleet, proving invasion was physically impossible",
+        "Soviet refusal to join the Pacific war forced the US to find an alternative way to end the conflict",
+        "Okinawa proved Japan had larger defensive forces than US intelligence estimated",
+        "Japanese civilians at Okinawa fought alongside soldiers, suggesting total civilian resistance to invasion",
+        "The Okinawa campaign took twice as long as planned, revealing intelligence failures about Japanese defenses"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "US military planners estimated a full invasion of Japan's main islands would cost how many American lives — based in part on Okinawa projections?",
+          "correctAnswer": "Between 250,000 and 1 million American deaths",
+          "distractors": ["10,000-50,000 American deaths", "50,000-100,000 American deaths", "5 million American deaths", "1,000-5,000 American deaths"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "Japanese planners had their own estimate for how many Japanese would die defending the home islands from a US invasion. What was that figure?",
+          "correctAnswer": "Approximately 20 million Japanese deaths",
+          "distractors": ["1 million Japanese deaths", "500,000 Japanese deaths", "5 million Japanese deaths", "100 million Japanese deaths"]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: Okinawa was the only factor in the atomic bomb decision — historians agree there were no other significant motivations.",
+          "correctAnswer": "False — other factors included Soviet entry into the Pacific war, diplomatic goals, and preventing further conventional bombing deaths",
+          "distractors": [
+            "True — declassified documents show Okinawa casualty projections were the sole driver of Truman's decision",
+            "True — the Joint Chiefs of Staff cited only Okinawa in their recommendation to use atomic weapons"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "Okinawa covered 0.46% of Japan's land area but produced 50,000+ US casualties. Planners ____ these numbers up to estimate invasion losses for Japan's main islands.",
+          "correctAnswer": "Scaled (multiplied / projected)",
+          "distractors": ["ignored", "halved", "dismissed as anomalous", "presented to Congress without comment"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_pt_midway_no_surface_contact",
+      "correctAnswer": "Carrier aircraft — opposing ships never saw each other; planes did all the fighting",
+      "acceptableAlternatives": ["dive bombers", "carrier planes", "aircraft", "planes"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 10,
+      "quizQuestion": "What made the Battle of Midway historically unique as a naval battle — and what weapon system proved absolutely decisive?",
+      "explanation": "Midway was the first naval battle where the opposing fleets never saw each other — no battleship guns fired, no torpedoes ran between surface ships. Everything was decided by carrier aircraft flying hundreds of miles. The SBD Dauntless dive-bomber sank all four Japanese carriers in a few devastating minutes of attacks. The age of the battleship was definitively over.",
+      "visualDescription": "Pixel art of US SBD Dauntless dive-bombers plunging nearly vertical toward a Japanese aircraft carrier far below, anti-aircraft bursts surrounding them, the carrier's flight deck visible as a tiny rectangle from the bombers' perspective",
+      "sourceName": "Wikipedia — Battle of Midway",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
+      "volatile": false,
+      "distractors": [
+        "Submarine torpedo attacks launched from below the surface",
+        "Battleship long-range gunfire at extreme range",
+        "Land-based bombers flying from Midway Island itself",
+        "Destroyer torpedo attacks at night under cover of darkness",
+        "Coordinated surface and air attacks from multiple directions simultaneously",
+        "Long-range cruise missiles guided by radio",
+        "Mines laid in advance across the anticipated Japanese route",
+        "Motor torpedo boats operating at high speed between the fleets"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "quizQuestion": "Which specific US aircraft type delivered the killing blows on all four Japanese carriers at Midway, attacking in steep dives?",
+          "correctAnswer": "SBD Dauntless dive-bombers",
+          "distractors": ["TBF Avenger torpedo bombers", "F4F Wildcat fighters", "B-17 Flying Fortress high-altitude bombers", "PBY Catalina patrol planes"]
+        },
+        {
+          "type": "context",
+          "quizQuestion": "At Midway, US torpedo bombers attacked first and were almost entirely wiped out — but their sacrifice contributed to the later decisive dive-bomber success. How?",
+          "correctAnswer": "Torpedo attacks drew Japanese combat air patrol fighters down to sea level, leaving the dive-bombers' high-altitude approach uncontested",
+          "distractors": [
+            "Torpedo bombers successfully damaged Japanese carrier flight decks, preventing aircraft launches",
+            "The torpedo attacks distracted Japanese damage control crews from spotting the incoming dive-bombers",
+            "Torpedo hits slowed two carriers enough for the dive-bombers to make accurate attacks",
+            "Torpedo bomber radio chatter misdirected Japanese anti-aircraft gun crews"
+          ]
+        },
+        {
+          "type": "true_false",
+          "quizQuestion": "True or False: The Battle of Midway proved that battleships, not aircraft carriers, remained the decisive weapon of naval warfare.",
+          "correctAnswer": "False — Midway proved the opposite: carrier aircraft were decisive and battleships played no role",
+          "distractors": [
+            "True — Japan's battleships provided critical anti-aircraft fire that protected the carrier force",
+            "True — US battleships were the only ships that survived the battle unscathed"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "quizQuestion": "At Midway, the opposing US and Japanese surface fleets never came within ____ of each other — all combat was done by aircraft.",
+          "correctAnswer": "Visual range (hundreds of miles)",
+          "distractors": ["10 miles", "50 miles", "5 miles", "cannon range"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1522 @@
+{
+  "facts": [
+    {
+      "id": "wwii_pt_hiroshima_plane",
+      "correctAnswer": "Enola Gay",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What was the name of the B-29 Superfortress that dropped the first atomic bomb on Hiroshima?",
+      "explanation": "The Enola Gay, piloted by Colonel Paul Tibbets and named after his mother, dropped 'Little Boy' on Hiroshima on August 6, 1945. The crew did not know the full destructive power of what they carried until they saw the fireball consume the city below.",
+      "visualDescription": "Pixel art of a silver B-29 bomber flying over clouds, viewed from slightly below, with a small atomic bomb visible in its open bomb bay doors.",
+      "sourceName": "Wikipedia — Enola Gay",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Enola_Gay",
+      "volatile": false,
+      "distractors": [
+        "Bockscar",
+        "Memphis Belle",
+        "Superfortress",
+        "B-29 Stratojet",
+        "Great Artiste",
+        "Necessary Evil",
+        "City of Los Angeles",
+        "Straight Flush"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The B-29 bomber named Enola Gay is historically significant because it did what on August 6, 1945?",
+          "correctAnswer": "Dropped the first atomic bomb on Hiroshima",
+          "distractors": [
+            "Dropped the first atomic bomb on Nagasaki",
+            "Conducted the firebombing of Tokyo",
+            "Dropped the second atomic bomb on Hiroshima",
+            "Led the first bombing raid on Tokyo"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Enola Gay was named after the mother of its pilot. What was the pilot's name?",
+          "correctAnswer": "Paul Tibbets",
+          "distractors": [
+            "Curtis LeMay",
+            "James Sweeney",
+            "Charles Sweeney",
+            "Robert Lewis"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Bockscar was the B-29 that dropped the atomic bomb on Hiroshima.",
+          "correctAnswer": "False — that was the Enola Gay; Bockscar dropped the Nagasaki bomb",
+          "distractors": [
+            "True — Bockscar flew both missions",
+            "True — Bockscar was the primary plane and Enola Gay was backup",
+            "False — neither plane had a name; both were classified"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The B-29 named ______ dropped the first atomic bomb on Hiroshima on August 6, 1945.",
+          "correctAnswer": "Enola Gay",
+          "distractors": [
+            "Bockscar",
+            "Memphis Belle",
+            "Great Artiste",
+            "Necessary Evil"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_hiroshima_immediate_dead",
+      "correctAnswer": "70,000",
+      "acceptableAlternatives": ["~70,000", "seventy thousand", "70000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Approximately how many people were killed immediately when the atomic bomb detonated over Hiroshima on August 6, 1945?",
+      "explanation": "The Hiroshima bomb killed roughly 70,000 people in the immediate blast, fire, and radiation. By the end of 1945 the total death toll reached approximately 140,000, as radiation sickness, burns, and injuries claimed further victims. Survivors became known as hibakusha.",
+      "visualDescription": "Pixel art of a mushroom cloud rising over a city skyline with a blinding white flash at the base, rendered in stark grays and oranges.",
+      "sourceName": "Wikipedia — Atomic bombings of Hiroshima and Nagasaki",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "volatile": false,
+      "distractors": [
+        "20,000",
+        "35,000",
+        "50,000",
+        "100,000",
+        "140,000",
+        "200,000",
+        "250,000",
+        "500,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The immediate death toll at Hiroshima was roughly 70,000 — but what was the estimated total death count by the end of 1945?",
+          "correctAnswer": "140,000",
+          "distractors": [
+            "80,000",
+            "100,000",
+            "200,000",
+            "300,000"
+          ]
+        },
+        "context": {
+          "quizQuestion": "Hiroshima survivors who suffered long-term radiation effects were given a specific Japanese name. What is it?",
+          "correctAnswer": "Hibakusha",
+          "distractors": [
+            "Kamikaze",
+            "Bushido",
+            "Shinkansen",
+            "Tokkotai"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Hiroshima bomb destroyed 70% of the city's buildings.",
+          "correctAnswer": "True — the blast and firestorm destroyed approximately 70% of structures",
+          "distractors": [
+            "False — only 40% of buildings were destroyed",
+            "False — most damage was from radiation, not physical blast",
+            "False — 90% of buildings were destroyed"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Hiroshima atomic bomb killed approximately ______ people immediately, with the total rising to 140,000 by year's end.",
+          "correctAnswer": "70,000",
+          "distractors": [
+            "35,000",
+            "50,000",
+            "100,000",
+            "200,000"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_hiroshima_date",
+      "correctAnswer": "August 6, 1945",
+      "acceptableAlternatives": ["Aug 6, 1945", "August 6th 1945", "6 August 1945"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 5,
+      "quizQuestion": "On what date did the United States drop the first atomic bomb on Hiroshima, Japan?",
+      "explanation": "August 6, 1945 — a date still marked annually in Japan as a day of remembrance. The bomb detonated at 8:15 a.m. local time, instantly altering the course of the war and opening the nuclear age. Three days later a second bomb fell on Nagasaki.",
+      "visualDescription": "Pixel art of a calendar page showing August 6 with a dark mushroom cloud silhouetted behind it, stars-and-stripes muted in the background.",
+      "sourceName": "Wikipedia — Atomic bombings of Hiroshima and Nagasaki",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "volatile": false,
+      "distractors": [
+        "August 9, 1945",
+        "July 16, 1945",
+        "August 15, 1945",
+        "September 2, 1945",
+        "July 26, 1945",
+        "August 6, 1944",
+        "August 10, 1945",
+        "June 6, 1945"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The date August 6, 1945 is historically significant because of what event over Japan?",
+          "correctAnswer": "The United States dropped the first atomic bomb on Hiroshima",
+          "distractors": [
+            "Japan formally surrendered aboard the USS Missouri",
+            "The Soviet Union declared war on Japan",
+            "The firebombing of Tokyo began",
+            "The United States dropped the second atomic bomb on Nagasaki"
+          ]
+        },
+        "context": {
+          "quizQuestion": "How many days passed between the Hiroshima bombing (Aug 6) and the Nagasaki bombing (Aug 9)?",
+          "correctAnswer": "3 days",
+          "distractors": [
+            "1 day",
+            "5 days",
+            "7 days",
+            "10 days"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Hiroshima bomb detonated in the early morning hours at approximately 8:15 a.m. local time.",
+          "correctAnswer": "True — the bomb detonated at 8:15 a.m., targeting the city at the start of the workday",
+          "distractors": [
+            "False — it detonated at midnight to maximize civilian impact",
+            "False — it detonated at noon",
+            "False — it detonated at 3:00 p.m."
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The United States dropped the first atomic bomb on Hiroshima on ______, beginning the nuclear age.",
+          "correctAnswer": "August 6, 1945",
+          "distractors": [
+            "August 9, 1945",
+            "July 16, 1945",
+            "August 15, 1945",
+            "September 2, 1945"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_nagasaki_plane",
+      "correctAnswer": "Bockscar",
+      "acceptableAlternatives": ["Bock's Car"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "What was the name of the B-29 that dropped the atomic bomb on Nagasaki on August 9, 1945?",
+      "explanation": "Bockscar, piloted by Major Charles Sweeney, dropped 'Fat Man' on Nagasaki — a more powerful bomb than Hiroshima's 'Little Boy,' but the city's mountainous terrain contained some of the blast. The bomb's original target was Kokura, but cloud cover redirected the mission to Nagasaki.",
+      "visualDescription": "Pixel art of a B-29 bomber banking over a jagged mountainous coastline, with a bright flash erupting in a valley below.",
+      "sourceName": "Wikipedia — Bockscar",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bockscar",
+      "volatile": false,
+      "distractors": [
+        "Enola Gay",
+        "Memphis Belle",
+        "Great Artiste",
+        "Necessary Evil",
+        "Straight Flush",
+        "City of Los Angeles",
+        "Full House",
+        "Top Secret"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The B-29 named Bockscar is historically significant because it did what on August 9, 1945?",
+          "correctAnswer": "Dropped the atomic bomb on Nagasaki",
+          "distractors": [
+            "Dropped the atomic bomb on Hiroshima",
+            "Led the firebombing raids on Tokyo",
+            "Dropped the bomb on Kokura, the original target",
+            "Flew the first reconnaissance mission over Tokyo"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Nagasaki bomb was more powerful than the Hiroshima bomb, yet caused less destruction. What geographic feature limited its damage?",
+          "correctAnswer": "Mountainous terrain that contained the blast",
+          "distractors": [
+            "Nagasaki was a smaller city with fewer wooden structures",
+            "The bomb detonated at too high an altitude",
+            "Rain and cloud cover dampened the explosion",
+            "The bomb partially failed to detonate at full yield"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Nagasaki was the original intended target for the second atomic bomb mission — not a backup choice.",
+          "correctAnswer": "False — Kokura was the primary target; cloud cover caused the crew to divert to Nagasaki",
+          "distractors": [
+            "True — Nagasaki was always the primary target due to its military shipyards",
+            "True — Nagasaki was chosen because it was the largest port city",
+            "False — the original target was Osaka"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The B-29 named ______ dropped 'Fat Man' on Nagasaki, three days after Hiroshima.",
+          "correctAnswer": "Bockscar",
+          "distractors": [
+            "Enola Gay",
+            "Great Artiste",
+            "Necessary Evil",
+            "Memphis Belle"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_nagasaki_buildings",
+      "correctAnswer": "40%",
+      "acceptableAlternatives": ["forty percent", "~40%"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "What percentage of Nagasaki's buildings were destroyed by the atomic bomb, compared to 70% in Hiroshima?",
+      "explanation": "Despite the Nagasaki bomb being more powerful, only about 40% of the city's buildings were destroyed — versus 70% at Hiroshima. The surrounding hills acted as natural blast shields, channeling the destructive force upward rather than outward. This made Nagasaki a striking case study in how terrain shapes nuclear lethality.",
+      "visualDescription": "Pixel art split-panel showing two cityscapes — one (Hiroshima) mostly rubble, the other (Nagasaki) with buildings standing behind a ridge of hills while the valley is devastated.",
+      "sourceName": "Wikipedia — Atomic bombings of Hiroshima and Nagasaki",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "volatile": false,
+      "distractors": [
+        "20%",
+        "30%",
+        "50%",
+        "60%",
+        "70%",
+        "80%",
+        "90%",
+        "15%"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Hiroshima's bomb destroyed 70% of its buildings. Nagasaki's more powerful bomb destroyed a LOWER percentage — roughly how much?",
+          "correctAnswer": "40%",
+          "distractors": [
+            "60%",
+            "75%",
+            "55%",
+            "30%"
+          ]
+        },
+        "context": {
+          "quizQuestion": "If the Nagasaki bomb was more powerful than the Hiroshima bomb, why did it destroy fewer buildings (40% vs 70%)?",
+          "correctAnswer": "Nagasaki's mountainous terrain contained and redirected the blast",
+          "distractors": [
+            "Nagasaki had more concrete buildings that resisted the blast",
+            "The bomb detonated too high above the city",
+            "A rainstorm dampened the explosion",
+            "Nagasaki had a larger area, so the same explosion covered less of it"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Nagasaki atomic bomb was more powerful than the Hiroshima bomb.",
+          "correctAnswer": "True — 'Fat Man' (Nagasaki) had a larger yield than 'Little Boy' (Hiroshima), but terrain limited its destruction",
+          "distractors": [
+            "False — they were identical weapons",
+            "False — the Hiroshima bomb was more powerful",
+            "True — and it also caused more casualties than Hiroshima"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "Despite having a more powerful bomb, Nagasaki saw only ______ of its buildings destroyed, compared to 70% at Hiroshima.",
+          "correctAnswer": "40%",
+          "distractors": [
+            "60%",
+            "75%",
+            "30%",
+            "50%"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_vj_day_radio",
+      "correctAnswer": "Emperor Hirohito",
+      "acceptableAlternatives": ["Hirohito"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "On August 15, 1945, who made a radio broadcast announcing Japan's surrender — the first time most Japanese citizens had ever heard their ruler's voice?",
+      "explanation": "Emperor Hirohito's radio address on August 15, 1945 (known as the 'Jewel Voice Broadcast') shocked the Japanese public not just for its content — surrender — but for the voice itself. His divine status had made him untouchably remote; most subjects had never heard him speak. The broadcast marked the end of Japan's war and the emperor's mythic distance from ordinary life.",
+      "visualDescription": "Pixel art of a Japanese family gathered around an old wooden radio set, faces solemn and shocked, rays of light from the radio speaker suggesting an otherworldly voice.",
+      "sourceName": "Wikipedia — Jewel Voice Broadcast",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Jewel_Voice_Broadcast",
+      "volatile": false,
+      "distractors": [
+        "General Hideki Tojo",
+        "Foreign Minister Shigemitsu",
+        "General Anami",
+        "Prime Minister Suzuki",
+        "General Douglas MacArthur",
+        "Admiral Yamamoto",
+        "President Truman",
+        "General Umezu"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Emperor Hirohito's August 15, 1945 radio broadcast is historically notable for two reasons: its content (surrender) and what unusual aspect about the speaker?",
+          "correctAnswer": "It was the first time most Japanese citizens had ever heard the Emperor's voice",
+          "distractors": [
+            "It was the first live radio broadcast in Japanese history",
+            "Hirohito broke protocol by speaking in modern Japanese instead of classical court language",
+            "The broadcast was transmitted worldwide simultaneously",
+            "Hirohito personally appeared on television simultaneously"
+          ]
+        },
+        "context": {
+          "quizQuestion": "Emperor Hirohito's surrender broadcast on August 15, 1945 is called by what poetic name in Japanese history?",
+          "correctAnswer": "The Jewel Voice Broadcast",
+          "distractors": [
+            "The White Flag Proclamation",
+            "The Imperial Rescript on Surrender",
+            "The Voice from the Palace",
+            "The Chrysanthemum Address"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Japan's formal surrender on the USS Missouri took place on August 15, 1945 — the same day as Hirohito's radio broadcast.",
+          "correctAnswer": "False — August 15 was V-J Day (the radio announcement); the formal signing was September 2, 1945",
+          "distractors": [
+            "True — both events happened on August 15",
+            "True — the Missouri ceremony was a live broadcast of the August 15 address",
+            "False — the formal surrender was August 9, same day as Nagasaki"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "On August 15, 1945, ______ announced Japan's surrender by radio — the first time most Japanese had ever heard their emperor speak.",
+          "correctAnswer": "Emperor Hirohito",
+          "distractors": [
+            "Prime Minister Suzuki",
+            "Foreign Minister Shigemitsu",
+            "General Anami",
+            "General Umezu"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_vj_day_invasion_lives",
+      "correctAnswer": "500,000+",
+      "acceptableAlternatives": ["500,000", "over 500,000", "half a million"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Military planners estimated that a land invasion of Japan (Operation Downfall) could have cost the U.S. approximately how many American lives?",
+      "explanation": "American planners projected 500,000 or more U.S. casualties from Operation Downfall, the planned invasion of Japan. Some estimates ran higher. Japanese civilian and military losses would have been staggering as well. The atomic bombs and Soviet entry changed the strategic calculus so completely that the invasion was never launched — though historians still debate whether the bombs were the decisive factor.",
+      "visualDescription": "Pixel art of a planning map showing Japan's home islands with red invasion arrows and casualty counters, an American officer studying it with a grim expression.",
+      "sourceName": "Wikipedia — Operation Downfall",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Downfall",
+      "volatile": false,
+      "distractors": [
+        "50,000",
+        "100,000",
+        "150,000",
+        "250,000",
+        "750,000",
+        "1,000,000",
+        "300,000",
+        "75,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The planned invasion of Japan (Operation Downfall) was called off after Japan's surrender. What was it mainly replaced by?",
+          "correctAnswer": "The use of atomic bombs and Soviet entry into the Pacific war",
+          "distractors": [
+            "A naval blockade that starved Japan into surrender",
+            "Continued conventional bombing until Japan collapsed economically",
+            "A diplomatic agreement brokered by the Soviet Union",
+            "The Potsdam Declaration ultimatum alone"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The planned U.S. invasion of Japan was code-named Operation Downfall. What were the names of its two phases?",
+          "correctAnswer": "Operation Olympic (Kyushu) and Operation Coronet (Honshu)",
+          "distractors": [
+            "Operation Overlord and Operation Market Garden",
+            "Operation Iceberg and Operation Detachment",
+            "Operation Stalemate and Operation Galvanic",
+            "Operation Torch and Operation Anvil"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: U.S. military planners estimated that a land invasion of Japan could have cost over 500,000 American lives.",
+          "correctAnswer": "True — estimates ranged from 500,000 to over 1 million American casualties for a full invasion",
+          "distractors": [
+            "False — the estimate was under 100,000 because Japan's military was nearly defeated",
+            "False — no formal casualty estimate was made before the bombs were dropped",
+            "True — but only if Japan used nuclear weapons in defense"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "U.S. planners estimated Operation Downfall could cost ______ American lives, making the atomic bombs an argument for ending the war quickly.",
+          "correctAnswer": "500,000+",
+          "distractors": [
+            "100,000",
+            "250,000",
+            "1,000,000",
+            "50,000"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_missouri_surrender_location",
+      "correctAnswer": "USS Missouri in Tokyo Bay",
+      "acceptableAlternatives": ["Tokyo Bay", "aboard USS Missouri", "USS Missouri"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Where did Japan formally sign the Instrument of Surrender on September 2, 1945, ending World War II?",
+      "explanation": "The surrender was signed aboard the USS Missouri (nicknamed 'Mighty Mo') anchored in Tokyo Bay. MacArthur presided over the ceremony. The choice of an American battleship in Japan's home waters was deeply symbolic — only three years earlier, Japanese warships had dominated the Pacific. The Missouri is now a museum ship at Pearl Harbor.",
+      "visualDescription": "Pixel art of a battleship deck crowded with military officers in formal dress, a table with documents in the center, Allied flags flying overhead in the morning light.",
+      "sourceName": "Wikipedia — Surrender of Japan",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Surrender_of_Japan",
+      "volatile": false,
+      "distractors": [
+        "USS Arizona at Pearl Harbor",
+        "USS Enterprise in the Philippine Sea",
+        "Tokyo Imperial Palace",
+        "Yokohama Harbor aboard USS Nevada",
+        "Manila Bay aboard USS New Jersey",
+        "Okinawa aboard HMS Duke of York",
+        "Guam Naval Base",
+        "San Francisco aboard a Japanese vessel"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The USS Missouri in Tokyo Bay was the site of Japan's formal surrender. Why was using an American battleship in Tokyo Bay symbolically significant?",
+          "correctAnswer": "It underscored American naval dominance over Japan, which had controlled the Pacific just three years earlier",
+          "distractors": [
+            "The Missouri was the same ship that launched the first atomic bomb mission",
+            "Tokyo Bay was Japanese territory, making the surrender humiliatingly on home soil at sea",
+            "MacArthur had personally commanded the Missouri during the island-hopping campaign",
+            "The Missouri was the only ship large enough to hold all the Allied representatives"
+          ]
+        },
+        "context": {
+          "quizQuestion": "Which Allied commander accepted Japan's surrender on behalf of all Allied Powers aboard the USS Missouri?",
+          "correctAnswer": "General Douglas MacArthur",
+          "distractors": [
+            "Admiral Chester Nimitz",
+            "General Dwight Eisenhower",
+            "Admiral William Halsey",
+            "President Harry Truman"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Japanese Instrument of Surrender was signed on September 2, 1945 — not August 15 (V-J Day).",
+          "correctAnswer": "True — August 15 was Japan's announcement of surrender; September 2 was the formal signing ceremony",
+          "distractors": [
+            "False — both announcements happened on the same day, September 2",
+            "False — the formal surrender was August 15 and September 2 was a confirmation ceremony",
+            "True — but the war is officially considered to have ended on August 6 with Hiroshima"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "Japan signed the formal Instrument of Surrender on September 2, 1945, aboard the ______ anchored in Tokyo Bay.",
+          "correctAnswer": "USS Missouri",
+          "distractors": [
+            "USS Arizona",
+            "USS Enterprise",
+            "USS New Jersey",
+            "HMS Duke of York"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_missouri_signer",
+      "correctAnswer": "Foreign Minister Mamoru Shigemitsu",
+      "acceptableAlternatives": ["Shigemitsu", "Mamoru Shigemitsu"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 5,
+      "funScore": 6,
+      "quizQuestion": "Which Japanese official signed the Instrument of Surrender first, representing the Japanese government aboard the USS Missouri?",
+      "explanation": "Foreign Minister Mamoru Shigemitsu signed first on behalf of the Japanese government, followed by General Yoshijiro Umezu signing for Japanese Imperial General Headquarters. Shigemitsu had been skeptical of Japan's militarism and had survived an assassination attempt in 1932. His signing represented the civilian government's acceptance of defeat.",
+      "visualDescription": "Pixel art of a Japanese diplomat in formal black coat and top hat, leaning over a table to sign documents surrounded by Allied officers in dress uniforms.",
+      "sourceName": "Wikipedia — Surrender of Japan",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Surrender_of_Japan",
+      "volatile": false,
+      "distractors": [
+        "Emperor Hirohito",
+        "Prime Minister Kantaro Suzuki",
+        "General Hideki Tojo",
+        "General Yoshijiro Umezu",
+        "Admiral Soemu Toyoda",
+        "Prince Naruhiko Higashikuni",
+        "Baron Hiranuma",
+        "General Korechika Anami"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The first Japanese signature on the Instrument of Surrender was by Foreign Minister Mamoru Shigemitsu. Who signed second, representing the Japanese military?",
+          "correctAnswer": "General Yoshijiro Umezu",
+          "distractors": [
+            "Emperor Hirohito",
+            "Prime Minister Suzuki",
+            "General Hideki Tojo",
+            "Admiral Soemu Toyoda"
+          ]
+        },
+        "context": {
+          "quizQuestion": "What is the document Japan signed on September 2, 1945 aboard the USS Missouri formally called?",
+          "correctAnswer": "Instrument of Surrender",
+          "distractors": [
+            "Treaty of Tokyo",
+            "Pacific Peace Accord",
+            "Declaration of Japanese Defeat",
+            "Armistice of Tokyo Bay"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Emperor Hirohito personally signed Japan's surrender document aboard the USS Missouri.",
+          "correctAnswer": "False — Foreign Minister Shigemitsu and General Umezu signed; Hirohito did not attend",
+          "distractors": [
+            "True — Hirohito was required to sign as head of state",
+            "True — Hirohito signed but MacArthur kept the signing secret for diplomatic reasons",
+            "False — no Japanese signed; only Allied representatives signed"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "______ signed the Instrument of Surrender first on behalf of the Japanese government aboard the USS Missouri on September 2, 1945.",
+          "correctAnswer": "Foreign Minister Mamoru Shigemitsu",
+          "distractors": [
+            "Emperor Hirohito",
+            "General Yoshijiro Umezu",
+            "Prime Minister Suzuki",
+            "General Hideki Tojo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_trinity_test_date",
+      "correctAnswer": "July 16, 1945",
+      "acceptableAlternatives": ["July 16th, 1945", "16 July 1945"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "On what date did the Trinity Test — the world's first nuclear detonation — take place in Alamogordo, New Mexico?",
+      "explanation": "On July 16, 1945, the Manhattan Project detonated the first nuclear device at the Trinity test site in the New Mexico desert. The 22-kiloton blast turned sand into a greenish glass called trinitite. Oppenheimer famously recalled reciting from the Bhagavad Gita: 'Now I am become Death, the destroyer of worlds.' The bomb dropped on Hiroshima came just three weeks later.",
+      "visualDescription": "Pixel art of a nuclear explosion in a desert at dawn, a towering orange-white fireball rising over flat terrain, a distant observer silhouette watching the horizon.",
+      "sourceName": "Wikipedia — Trinity (nuclear test)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+      "volatile": false,
+      "distractors": [
+        "August 6, 1945",
+        "August 9, 1945",
+        "June 6, 1945",
+        "September 2, 1945",
+        "July 26, 1945",
+        "January 1, 1945",
+        "April 12, 1945",
+        "December 7, 1941"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Trinity Test on July 16, 1945 was the first nuclear detonation in history. How many weeks later did the U.S. drop the bomb on Hiroshima?",
+          "correctAnswer": "Three weeks",
+          "distractors": [
+            "One week",
+            "Two weeks",
+            "Six weeks",
+            "Four months"
+          ]
+        },
+        "context": {
+          "quizQuestion": "What was the approximate yield of the Trinity Test nuclear detonation in New Mexico on July 16, 1945?",
+          "correctAnswer": "22 kilotons",
+          "distractors": [
+            "5 kilotons",
+            "50 kilotons",
+            "100 kilotons",
+            "1 megaton"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Robert Oppenheimer, upon witnessing the Trinity Test, recalled reciting the Hindu scripture line 'Now I am become Death, the destroyer of worlds.'",
+          "correctAnswer": "True — Oppenheimer later recalled quoting from the Bhagavad Gita after the detonation",
+          "distractors": [
+            "False — Oppenheimer said 'It worked' and nothing more at the time",
+            "False — it was General Groves who made the religious reference",
+            "True — but he said it during the Hiroshima bombing, not the Trinity test"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The world's first nuclear detonation, the Trinity Test, took place on ______ in Alamogordo, New Mexico.",
+          "correctAnswer": "July 16, 1945",
+          "distractors": [
+            "August 6, 1945",
+            "July 26, 1945",
+            "June 16, 1945",
+            "September 2, 1945"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_trinity_location",
+      "correctAnswer": "Alamogordo, New Mexico",
+      "acceptableAlternatives": ["New Mexico", "Trinity site, New Mexico"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Where in the United States was the Trinity Test — the first nuclear detonation in history — conducted in July 1945?",
+      "explanation": "The Trinity Test site was in the Jornada del Muerto desert, near Alamogordo, New Mexico. The detonation fused desert sand into a glassy green mineral later called 'trinitite.' Today the site is preserved as a National Historic Landmark and opened to public visits twice a year. The Manhattan Project chose this remote location for secrecy and the flat terrain needed to measure blast effects.",
+      "visualDescription": "Pixel art of a flat desert expanse with a steel tower at its center, surrounded by monitoring equipment and bunkers, the pre-dawn sky deep blue.",
+      "sourceName": "Wikipedia — Trinity (nuclear test)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+      "volatile": false,
+      "distractors": [
+        "Los Alamos, New Mexico",
+        "Nevada Test Site, Nevada",
+        "Oak Ridge, Tennessee",
+        "Hanford, Washington",
+        "White Sands, New Mexico",
+        "Yucca Flat, Nevada",
+        "Colorado Springs, Colorado",
+        "Bikini Atoll, Marshall Islands"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Trinity Test site in Alamogordo, New Mexico is notable for being the location of what world-first?",
+          "correctAnswer": "The first nuclear detonation in history (July 16, 1945)",
+          "distractors": [
+            "The first test of a hydrogen bomb",
+            "The first launch of a V-2 rocket in North America",
+            "The first B-29 bombing training exercise",
+            "The first nuclear reactor to achieve criticality"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Trinity Test detonation fused desert sand into a unique glassy green substance. What is this material called?",
+          "correctAnswer": "Trinitite",
+          "distractors": [
+            "Atomite",
+            "Manhattan glass",
+            "Fission quartz",
+            "Plutonite"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Trinity Test site in New Mexico is now preserved as a National Historic Landmark.",
+          "correctAnswer": "True — it is open to public visits twice a year",
+          "distractors": [
+            "False — it was destroyed in subsequent tests and nothing remains",
+            "False — it is classified and has never been open to the public",
+            "True — but only for military personnel and government officials"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Manhattan Project conducted the first nuclear detonation in history near ______ on July 16, 1945.",
+          "correctAnswer": "Alamogordo, New Mexico",
+          "distractors": [
+            "Los Alamos, New Mexico",
+            "Nevada Test Site, Nevada",
+            "White Sands, New Mexico",
+            "Oak Ridge, Tennessee"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_potsdam_declaration",
+      "correctAnswer": "July 26, 1945",
+      "acceptableAlternatives": ["July 26th, 1945"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did the Allies issue the Potsdam Declaration — the ultimatum warning Japan of 'prompt and utter destruction' if it did not surrender?",
+      "explanation": "The Potsdam Declaration was issued July 26, 1945 — just 10 days after the Trinity Test and 11 days before Hiroshima. Japan's initial rejection of this ultimatum has long been used to justify the decision to drop the atomic bombs. Historians debate whether Japan understood 'prompt and utter destruction' meant nuclear weapons, and whether the real motivation for surrender was the bombs or the Soviet Union's declaration of war on August 8.",
+      "visualDescription": "Pixel art of Allied leaders seated around a conference table with a formal document in the foreground, a globe visible on a shelf behind them.",
+      "sourceName": "Wikipedia — Potsdam Declaration",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Potsdam_Declaration",
+      "volatile": false,
+      "distractors": [
+        "August 6, 1945",
+        "July 16, 1945",
+        "August 1, 1945",
+        "June 26, 1945",
+        "August 9, 1945",
+        "July 4, 1945",
+        "September 2, 1945",
+        "August 15, 1945"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Potsdam Declaration warned Japan of 'prompt and utter destruction.' Japan initially rejected it. What happened less than two weeks later?",
+          "correctAnswer": "The United States dropped the atomic bomb on Hiroshima (August 6, 1945)",
+          "distractors": [
+            "The Soviet Union declared war on Japan",
+            "The United States launched Operation Downfall, the invasion of Kyushu",
+            "Japan secretly agreed to conditional surrender terms",
+            "The firebombing of Osaka began"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Potsdam Declaration was issued by the Allies but notably without one major power. Which country was NOT listed as an issuing party?",
+          "correctAnswer": "The Soviet Union (USSR)",
+          "distractors": [
+            "China",
+            "United Kingdom",
+            "United States",
+            "France"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Japan accepted the Potsdam Declaration's surrender terms immediately upon receiving it on July 26, 1945.",
+          "correctAnswer": "False — Japan initially rejected the Potsdam Declaration, which preceded the atomic bombings",
+          "distractors": [
+            "True — Japan accepted but asked to keep the emperor, which the Allies refused",
+            "True — Japan secretly accepted while publicly rejecting it",
+            "False — Japan never formally responded; it simply ignored the declaration"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The ______, issued July 26, 1945, warned Japan of 'prompt and utter destruction' but was initially rejected, leading to the atomic bombings.",
+          "correctAnswer": "Potsdam Declaration",
+          "distractors": [
+            "Cairo Declaration",
+            "Atlantic Charter",
+            "Yalta Agreement",
+            "Tehran Ultimatum"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_leyte_gulf_scale",
+      "correctAnswer": "Largest naval battle in history",
+      "acceptableAlternatives": ["largest naval battle ever", "largest naval battle by tonnage"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The Battle of Leyte Gulf (October 1944) holds what world record distinction?",
+      "explanation": "The Battle of Leyte Gulf, fought October 23–26, 1944, was the largest naval battle in history by number of ships and tonnage involved. Japan committed virtually its entire remaining fleet in a desperate gamble to destroy MacArthur's invasion force. The failure cost Japan its last major naval capability, leaving its home islands defenseless against sea-based attack.",
+      "visualDescription": "Pixel art of a massive naval engagement with dozens of warships firing, explosions on the horizon, aircraft diving through smoke over a vast dark sea.",
+      "sourceName": "Wikipedia — Battle of Leyte Gulf",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Leyte_Gulf",
+      "volatile": false,
+      "distractors": [
+        "First use of kamikaze aircraft in battle",
+        "Only naval battle fought entirely in fog",
+        "Largest amphibious landing in the Pacific",
+        "First battle where no surface ship fired on another",
+        "Longest naval blockade in WWII",
+        "First Pacific battle involving aircraft carriers alone",
+        "Only battle where Japan captured an American carrier",
+        "Largest single-day loss of American ships"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The largest naval battle in history by tonnage — the Battle of Leyte Gulf — was fought as Japan tried to stop whose return to the Philippines?",
+          "correctAnswer": "General Douglas MacArthur",
+          "distractors": [
+            "Admiral Chester Nimitz",
+            "General Walter Krueger",
+            "Admiral William Halsey",
+            "President Franklin Roosevelt"
+          ]
+        },
+        "context": {
+          "quizQuestion": "What was the strategic outcome of Japan's defeat at the Battle of Leyte Gulf in October 1944?",
+          "correctAnswer": "Japan lost its last major naval capability, leaving home islands exposed to sea-based attack",
+          "distractors": [
+            "Japan successfully evacuated 50,000 troops from Leyte before the island fell",
+            "Japan secured air superiority over the Philippines for six more months",
+            "The battle ended in a strategic draw with both sides retreating",
+            "Japan captured several American carriers, temporarily regaining naval parity"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Battle of Leyte Gulf lasted three days, from October 23 to 26, 1944.",
+          "correctAnswer": "True — it was a three-day battle across multiple engagements in the Philippine Sea",
+          "distractors": [
+            "False — it lasted six weeks",
+            "False — it was a single day of fighting",
+            "True — but only one surface engagement occurred; the rest was air combat"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Battle of Leyte Gulf (October 1944) is considered the ______ in recorded history, by number of ships and tonnage.",
+          "correctAnswer": "Largest naval battle",
+          "distractors": [
+            "Bloodiest naval battle",
+            "Longest naval siege",
+            "First carrier-dominated naval battle",
+            "Most expensive naval battle"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_leyte_gulf_ships_lost",
+      "correctAnswer": "Yamashiro and Musashi",
+      "acceptableAlternatives": ["Musashi and Yamashiro", "battleship Yamashiro and Musashi"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 5,
+      "funScore": 7,
+      "quizQuestion": "At the Battle of Leyte Gulf, Japan lost two of its massive battleships. One was the Yamashiro — what was the other?",
+      "explanation": "Japan lost the super-battleship Musashi and the battleship Yamashiro at Leyte Gulf, along with multiple aircraft carriers. The Musashi, sister ship to the Yamato and one of the largest warships ever built, was sunk by American aircraft on October 24. Its wreck was discovered by Paul Allen's team in 2015. The loss of both vessels symbolized the end of Japan's battleship era.",
+      "visualDescription": "Pixel art of a massive battleship listing heavily as explosions and fires erupt across its superstructure, surrounded by attacking aircraft and smoke.",
+      "sourceName": "Wikipedia — Battle of Leyte Gulf",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Leyte_Gulf",
+      "volatile": false,
+      "distractors": [
+        "Yamato",
+        "Nagato",
+        "Haruna",
+        "Kongo",
+        "Fuso",
+        "Hyuga",
+        "Ise",
+        "Shokaku"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The super-battleship Musashi, sunk at the Battle of Leyte Gulf, was one of the largest warships ever built. What was its sister ship — the most famous Japanese battleship of WWII?",
+          "correctAnswer": "Yamato",
+          "distractors": [
+            "Yamashiro",
+            "Nagato",
+            "Shokaku",
+            "Kongo"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The wreck of the Musashi, sunk at Leyte Gulf, was discovered in 2015 by what billionaire explorer's team?",
+          "correctAnswer": "Paul Allen",
+          "distractors": [
+            "Jeff Bezos",
+            "Elon Musk",
+            "James Cameron",
+            "Robert Ballard"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Musashi, lost at Leyte Gulf, was a sister ship of the Yamato — one of the largest battleships ever constructed.",
+          "correctAnswer": "True — both were Yamato-class super-battleships, the largest ever built",
+          "distractors": [
+            "False — the Musashi was a light cruiser, not a battleship",
+            "False — the Musashi was sunk at Midway, not Leyte Gulf",
+            "True — but the Yamato was also lost at Leyte Gulf"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "At the Battle of Leyte Gulf, Japan lost the battleships Yamashiro and ______, among its heaviest naval losses of the entire war.",
+          "correctAnswer": "Musashi",
+          "distractors": [
+            "Yamato",
+            "Nagato",
+            "Fuso",
+            "Kongo"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_singapore_fall_troops",
+      "correctAnswer": "80,000+",
+      "acceptableAlternatives": ["over 80,000", "80,000", "eighty thousand"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "When Singapore fell to Japan on February 15, 1942, approximately how many British and Commonwealth troops were captured — making it one of Britain's worst military disasters?",
+      "explanation": "Over 80,000 British, Australian, Indian, and Malayan troops surrendered to a Japanese force of roughly 36,000 — a smaller, bicycle-mounted army that had swept down the Malay Peninsula in weeks. Churchill called it 'the worst disaster and largest capitulation in British history.' Many prisoners died in brutal POW camps over the following years.",
+      "visualDescription": "Pixel art of British and Commonwealth soldiers in colonial-era uniforms laying down arms in a tropical city, a Japanese flag being raised on a government building behind them.",
+      "sourceName": "Wikipedia — Fall of Singapore",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fall_of_Singapore",
+      "volatile": false,
+      "distractors": [
+        "10,000",
+        "20,000",
+        "30,000",
+        "50,000",
+        "100,000",
+        "120,000",
+        "40,000",
+        "150,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Over 80,000 Commonwealth troops surrendered at Singapore — yet the attacking Japanese force that captured them was how large by comparison?",
+          "correctAnswer": "Roughly 36,000 — less than half the defending force",
+          "distractors": [
+            "200,000 — Japan outnumbered the defenders more than two to one",
+            "80,000 — forces were roughly equal",
+            "150,000 — Japan committed an overwhelming force",
+            "60,000 — slightly smaller but still formidable"
+          ]
+        },
+        "context": {
+          "quizQuestion": "Japan's capture of Singapore was unexpected because British defenses were oriented the wrong direction. From which direction did Japan actually attack?",
+          "correctAnswer": "From the north, overland through Malaya — not by sea",
+          "distractors": [
+            "By sea from the south, as the British had planned for",
+            "From the east via an amphibious landing on the beaches",
+            "By paratroop drop into the city center",
+            "From the west via Indonesia"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Churchill called the fall of Singapore 'the worst disaster and largest capitulation in British history.'",
+          "correctAnswer": "True — Churchill used those exact words in a directive to commanders",
+          "distractors": [
+            "False — Churchill said Dunkirk was Britain's worst disaster",
+            "False — Churchill never publicly commented on Singapore's fall",
+            "True — but he made the statement years later, not at the time"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "Over ______ British and Commonwealth troops were captured when Singapore fell to Japan on February 15, 1942.",
+          "correctAnswer": "80,000",
+          "distractors": [
+            "30,000",
+            "50,000",
+            "120,000",
+            "20,000"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_singapore_direction",
+      "correctAnswer": "From the north through Malaya (by land)",
+      "acceptableAlternatives": ["overland through Malaya", "from Malaya", "from the north"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "British defenses at Singapore were designed to repel a naval attack from the sea. Why did those defenses fail completely when Japan invaded in February 1942?",
+      "explanation": "Singapore's famous naval guns faced south, toward the sea — and Japan attacked from the north, cycling down through the Malayan jungle in a campaign lasting 70 days. British commanders had assumed the jungle was impassable. Japan's troops used bicycles on roads and trails, covering ground faster than anyone anticipated. The fortress' guns literally could not be turned to face the threat that destroyed them.",
+      "visualDescription": "Pixel art of a Japanese soldier on a bicycle moving through a dense tropical jungle path, with a distant British coastal gun battery visible behind him pointing uselessly out to sea.",
+      "sourceName": "Wikipedia — Malayan Campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Malayan_campaign",
+      "volatile": false,
+      "distractors": [
+        "Japan made an amphibious landing on Singapore's southern beaches",
+        "Japan used paratroopers to seize the island's airfields first",
+        "Japan attacked from the west via a secret sea route",
+        "British defenses collapsed due to mutiny among Indian troops",
+        "Japan tunneled under the causeway connecting Singapore to Malaya",
+        "Japan captured Singapore's water supply before the assault began",
+        "Japan launched a diversionary naval attack from the east",
+        "Britain's defenses faced north but were destroyed by Japanese air strikes first"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Japan captured Singapore by attacking overland through Malaya from the north. What mode of transport gave Japanese troops their surprising speed through the jungle?",
+          "correctAnswer": "Bicycles",
+          "distractors": [
+            "Tanks — Japan had armored divisions that the British lacked in Malaya",
+            "Trains — Japan seized Malayan rail lines in the first week",
+            "Motorcycles — faster than bicycles and easier through jungle trails",
+            "Boats — Japanese troops paddled along jungle rivers"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The fall of Singapore accelerated a broader historical decline. What long-term consequence beyond the immediate battle did it most significantly cause?",
+          "correctAnswer": "It accelerated British imperial decline in Asia",
+          "distractors": [
+            "It caused Australia to request withdrawal from the European theater",
+            "It caused the United States to declare war on Japan",
+            "It directly led to Indian independence in 1942",
+            "It forced Britain to abandon all Pacific naval operations"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: British commanders believed the Malayan jungle was impassable for a large invading army, which is why Singapore's defenses focused on the sea.",
+          "correctAnswer": "True — British planners dismissed the jungle as an effective barrier, leaving the northern approach undefended",
+          "distractors": [
+            "False — British commanders knew Japan would attack from the north but lacked enough troops",
+            "False — Singapore had no guns at all and relied entirely on naval patrols",
+            "True — and British guns could have been repositioned north but commanders refused to act"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "Singapore's coastal guns faced south toward the sea, but Japan attacked ______, making the fortress's defenses useless.",
+          "correctAnswer": "From the north through Malaya (by land)",
+          "distractors": [
+            "From the east via amphibious landing",
+            "From the west via paratrooper drop",
+            "From underwater via submarine landings",
+            "From the south, exactly as expected"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_tokyo_firebomb_casualties",
+      "correctAnswer": "~100,000",
+      "acceptableAlternatives": ["100,000", "approximately 100,000", "one hundred thousand"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The Tokyo firebombing of March 9–10, 1945 killed approximately how many civilians in a single night — rivaling the atomic bomb death tolls?",
+      "explanation": "Operation Meetinghouse targeted Tokyo with over 300 B-29s dropping incendiary bombs on a city built largely of wood and paper. The resulting firestorm killed roughly 100,000 civilians overnight — comparable to the immediate death tolls at Hiroshima or Nagasaki. About 1 million people were left homeless and 15+ square miles burned. General LeMay's decision to switch from precision to area bombing proved devastatingly effective.",
+      "visualDescription": "Pixel art of a night cityscape engulfed in a massive firestorm, tightly packed wooden buildings burning in cascading waves of orange and red, silhouettes of B-29s visible high above.",
+      "sourceName": "Wikipedia — Bombing of Tokyo (10 March 1945)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bombing_of_Tokyo_(10_March_1945)",
+      "volatile": false,
+      "distractors": [
+        "10,000",
+        "20,000",
+        "50,000",
+        "150,000",
+        "200,000",
+        "250,000",
+        "500,000",
+        "75,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Tokyo firebombing killed roughly 100,000 people in one night. What made Tokyo so vulnerable to incendiary bombing compared to a European city?",
+          "correctAnswer": "Tokyo was built largely of wood and paper, which created an uncontrollable firestorm",
+          "distractors": [
+            "Tokyo had no fire brigade or civil defense organization",
+            "The March winds made the city impossible to evacuate in time",
+            "American bombers dropped a unique chemical that ignited concrete",
+            "Tokyo's grid layout channeled wind and spread fire faster than expected"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Tokyo firebombing (Operation Meetinghouse) used more than 300 B-29s. Approximately how many square miles of Tokyo burned in that single raid?",
+          "correctAnswer": "15+ square miles",
+          "distractors": [
+            "2 square miles",
+            "5 square miles",
+            "8 square miles",
+            "30 square miles"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Tokyo firebombing of March 9–10, 1945 killed more people in a single night than the immediate death toll of either atomic bomb.",
+          "correctAnswer": "True — roughly 100,000 killed overnight, comparable to or exceeding the immediate Hiroshima (~70,000) and Nagasaki death tolls",
+          "distractors": [
+            "False — the atomic bombs killed far more people in shorter time",
+            "False — Tokyo only suffered 20,000 casualties on that night",
+            "True — and it also caused more long-term radiation deaths than the atomic bombs"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Tokyo firebombing on the night of March 9–10, 1945 killed approximately ______ civilians, making it one of the deadliest air raids in history.",
+          "correctAnswer": "100,000",
+          "distractors": [
+            "20,000",
+            "50,000",
+            "200,000",
+            "75,000"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_tokyo_firebomb_planes",
+      "correctAnswer": "300+",
+      "acceptableAlternatives": ["over 300", "more than 300", "300 B-29s"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "How many B-29 Superfortresses participated in the devastating firebombing raid on Tokyo on March 9–10, 1945?",
+      "explanation": "More than 300 B-29s flew the Tokyo raid, dropping incendiary M-69 cluster bombs rather than high explosives. General Curtis LeMay's strategy of low-altitude night raids with incendiaries proved far more destructive than high-altitude precision bombing. The same campaign targeted Osaka, Nagoya, Kobe, and other cities through the spring of 1945.",
+      "visualDescription": "Pixel art of a sky darkened by hundreds of bomber silhouettes in tight formation above a glowing city, tracer fire visible from anti-aircraft guns below.",
+      "sourceName": "Wikipedia — Bombing of Tokyo (10 March 1945)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bombing_of_Tokyo_(10_March_1945)",
+      "volatile": false,
+      "distractors": [
+        "50",
+        "100",
+        "150",
+        "200",
+        "500",
+        "700",
+        "1,000",
+        "30"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Tokyo firebombing used 300+ B-29s dropping incendiary bombs. Which general devised this low-altitude night incendiary strategy?",
+          "correctAnswer": "General Curtis LeMay",
+          "distractors": [
+            "General Douglas MacArthur",
+            "General Hap Arnold",
+            "Admiral Chester Nimitz",
+            "General Jimmy Doolittle"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Tokyo firebombing used incendiary bombs rather than high explosives. What was the primary type of incendiary weapon dropped?",
+          "correctAnswer": "M-69 cluster bombs (napalm-filled)",
+          "distractors": [
+            "White phosphorus shells",
+            "Thermite bombs",
+            "Molotov breadbasket incendiaries",
+            "Standard TNT high-explosive bombs"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The March 1945 Tokyo firebombing campaign also extended to other Japanese cities including Osaka, Nagoya, and Kobe.",
+          "correctAnswer": "True — LeMay's incendiary campaign systematically targeted Japan's major cities through spring 1945",
+          "distractors": [
+            "False — only Tokyo was targeted; other cities were spared until the atomic bombs",
+            "False — the campaign hit only military targets, not other population centers",
+            "True — but those cities were hit before Tokyo, not after"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The March 9–10, 1945 Tokyo firebombing involved ______ B-29 Superfortresses dropping incendiary bombs on the wooden city.",
+          "correctAnswer": "300+",
+          "distractors": [
+            "50",
+            "100",
+            "500",
+            "1,000"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_mariana_islands_bases",
+      "correctAnswer": "B-29 bombing bases within range of Japan",
+      "acceptableAlternatives": ["air bases for bombing Japan", "within B-29 range of Japan", "long-range bomber bases"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Why was the U.S. capture of the Mariana Islands (Saipan, Tinian, Guam) in 1944 strategically critical to the bombing campaign against Japan?",
+      "explanation": "The Marianas placed American B-29 bombers within 1,500 miles of Tokyo — within operational range for the first time. Tinian became the base from which the Enola Gay and Bockscar flew their atomic bomb missions. Without the Marianas, the massive incendiary and atomic bombing campaigns would have been physically impossible. Every B-29 that bombed Japan flew from these islands.",
+      "visualDescription": "Pixel art of a Pacific island airfield with rows of B-29 bombers being loaded and serviced, palm trees at the edges, a map pinned to a wall showing the distance arc to Japan.",
+      "sourceName": "Wikipedia — Mariana Islands campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mariana_Islands_campaign",
+      "volatile": false,
+      "distractors": [
+        "The islands provided a base to intercept Japanese merchant shipping",
+        "The islands gave the U.S. Navy a deep-water port closer to Japan than Pearl Harbor",
+        "The capture cut off Japan's oil supply from the Dutch East Indies",
+        "The islands were needed to stage the planned invasion of the Philippines",
+        "The islands provided submarine bases to blockade Japanese home ports",
+        "The Marianas were needed to cut Japanese communication cables to Southeast Asia",
+        "The islands were a stepping stone to invading Formosa first",
+        "The capture removed Japan's ability to launch carrier strikes on Hawaii"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Enola Gay and Bockscar both flew their atomic bomb missions from which captured Pacific island?",
+          "correctAnswer": "Tinian (in the Mariana Islands)",
+          "distractors": [
+            "Guam",
+            "Saipan",
+            "Iwo Jima",
+            "Okinawa"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Mariana Islands campaign captured three main islands in the summer of 1944. Name all three.",
+          "correctAnswer": "Saipan, Tinian, and Guam",
+          "distractors": [
+            "Saipan, Iwo Jima, and Guam",
+            "Tinian, Peleliu, and Guam",
+            "Saipan, Tinian, and Okinawa",
+            "Guam, Truk, and Palau"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The capture of the Mariana Islands in 1944 placed B-29 bases within operational bombing range of the Japanese home islands for the first time.",
+          "correctAnswer": "True — the Marianas were approximately 1,500 miles from Tokyo, within B-29 range",
+          "distractors": [
+            "False — B-29s were already bombing Japan from bases in China before the Marianas campaign",
+            "False — the Philippines were captured first and provided the first viable B-29 bases",
+            "True — but B-29s required mid-air refueling even from the Marianas to reach Tokyo"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The capture of the Mariana Islands in 1944 gave the U.S. ______, enabling the massive bombing campaign against Japan's home islands.",
+          "correctAnswer": "B-29 bombing bases within range of Japan",
+          "distractors": [
+            "Deep-water ports to stage the invasion of Japan",
+            "Control of Japan's submarine communication cables",
+            "A naval base closer to Japan than Pearl Harbor",
+            "Airfields to intercept Japanese merchant shipping"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_saipan_japanese_casualties",
+      "correctAnswer": "31,000",
+      "acceptableAlternatives": ["~31,000", "thirty-one thousand", "31000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Of the approximately 31,000 Japanese defenders on Saipan during the Marianas campaign, how many survived to surrender?",
+      "explanation": "Of roughly 31,000 Japanese troops defending Saipan, almost all were killed — only a few hundred surrendered. Japanese military culture, combined with orders forbidding surrender, resulted in mass suicides at the island's cliffs as well as the last major banzai charge of the Pacific war. Hundreds of Japanese civilians also died, many jumping from the cliffs rather than surrender.",
+      "visualDescription": "Pixel art of sheer Pacific island cliffs above the ocean, wildflowers and shattered tropical foliage in the foreground, the scene serene and haunting in contrast to its wartime history.",
+      "sourceName": "Wikipedia — Battle of Saipan",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Saipan",
+      "volatile": false,
+      "distractors": [
+        "500",
+        "1,000",
+        "5,000",
+        "10,000",
+        "15,000",
+        "20,000",
+        "25,000",
+        "31,000 (all surrendered)"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Almost all 31,000 Japanese defenders of Saipan were killed rather than surrender. What was the term for the final mass infantry charge Japanese forces made before defeat?",
+          "correctAnswer": "Banzai charge",
+          "distractors": [
+            "Kamikaze",
+            "Gyokusai",
+            "Tenno Heika Banzai",
+            "Bushido charge"
+          ]
+        },
+        "context": {
+          "quizQuestion": "On Saipan, hundreds of Japanese civilians died by jumping from seaside cliffs rather than surrender. What name did American troops give to these cliffs?",
+          "correctAnswer": "Suicide Cliff and Banzai Cliff",
+          "distractors": [
+            "Honor Cliff and Samurai Point",
+            "Heaven's Gate and Warrior Ridge",
+            "Imperial Cliff and Valor Point",
+            "Bushido Bluff and Spirit Cliff"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The battle for Saipan resulted in the near-total destruction of its Japanese garrison of 31,000 troops, with almost none surviving to surrender.",
+          "correctAnswer": "True — Japanese doctrine and direct orders forbade surrender; only a few hundred troops were captured",
+          "distractors": [
+            "False — about half the garrison surrendered after the commanding general was killed",
+            "False — 10,000 Japanese troops were evacuated by submarine before the island fell",
+            "True — but the garrison was only 5,000 troops, not 31,000"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The approximately ______ Japanese troops defending Saipan were nearly all killed in the battle, with almost none surrendering.",
+          "correctAnswer": "31,000",
+          "distractors": [
+            "5,000",
+            "15,000",
+            "50,000",
+            "10,000"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_oppenheimer_quote",
+      "correctAnswer": "Now I am become Death, the destroyer of worlds",
+      "acceptableAlternatives": ["I am become Death", "Now I am become Death"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "After witnessing the Trinity Test nuclear detonation in July 1945, J. Robert Oppenheimer later recalled reciting a line from the Bhagavad Gita. What was the line?",
+      "explanation": "Oppenheimer recalled: 'Now I am become Death, the destroyer of worlds.' The line is from the Bhagavad Gita, the Hindu scripture, spoken by the god Vishnu as he reveals his cosmic form to the warrior Arjuna. Oppenheimer had taught himself Sanskrit to read the original text. The quote became the defining utterance of the atomic age — the moment humanity consciously grasped it had created the power to destroy itself.",
+      "visualDescription": "Pixel art of a lone scientist silhouette watching a vast nuclear fireball rise over the desert horizon, rays of blinding light expanding outward, tiny and solitary against the explosion.",
+      "sourceName": "Wikipedia — J. Robert Oppenheimer",
+      "sourceUrl": "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer",
+      "volatile": false,
+      "distractors": [
+        "We have unleashed the power of the universe",
+        "God forgive us, what have we done",
+        "The world will never be the same",
+        "We have created something no man should possess",
+        "I am the fire that cannot be contained",
+        "Today we have ended one war and begun another",
+        "Science has reached the threshold of the divine",
+        "A thousand suns could not match this brightness"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Oppenheimer's famous quote after Trinity — 'Now I am become Death, the destroyer of worlds' — was drawn from what ancient text?",
+          "correctAnswer": "The Bhagavad Gita (Hindu scripture)",
+          "distractors": [
+            "The Iliad by Homer",
+            "The Bible (Book of Revelation)",
+            "The Upanishads",
+            "Shakespeare's Macbeth"
+          ]
+        },
+        "context": {
+          "quizQuestion": "What was J. Robert Oppenheimer's role in the Manhattan Project that led to his witnessing the Trinity Test?",
+          "correctAnswer": "Scientific Director of the Manhattan Project (head of Los Alamos laboratory)",
+          "distractors": [
+            "He led the team that enriched uranium at Oak Ridge, Tennessee",
+            "He commanded the military security division of the Manhattan Project",
+            "He was the lead engineer who designed the bomb's triggering mechanism",
+            "He was Albert Einstein's personal assistant on the project"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Oppenheimer taught himself Sanskrit specifically to read the Bhagavad Gita in its original language.",
+          "correctAnswer": "True — Oppenheimer was a polymath who taught himself Sanskrit and studied the Bhagavad Gita in the original",
+          "distractors": [
+            "False — he read it in English translation; he did not know Sanskrit",
+            "False — the quote is from a Greek text, not the Bhagavad Gita",
+            "True — but he recited the quote in English, not Sanskrit, at Trinity"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "After witnessing the Trinity Test, Oppenheimer recalled reciting: '______ — the destroyer of worlds,' a line from the Bhagavad Gita.",
+          "correctAnswer": "Now I am become Death",
+          "distractors": [
+            "We have unleashed the power of the universe",
+            "God forgive us, what have we done",
+            "Today we have ended one war and begun another",
+            "Science has reached the threshold of the divine"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_potsdam_prompt_destruction",
+      "correctAnswer": "Prompt and utter destruction",
+      "acceptableAlternatives": ["prompt and utter", "utter destruction"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The Potsdam Declaration warned Japan of what specific consequence if it did not surrender unconditionally?",
+      "explanation": "The exact phrase was 'prompt and utter destruction.' The declaration was issued July 26, 1945, just days after the successful Trinity Test gave the Allies a weapon to make that threat real. Whether Japan's leaders understood this meant nuclear weapons has been debated ever since. Japan's rejection of the declaration became the stated justification for dropping the atomic bombs 11 days later.",
+      "visualDescription": "Pixel art of a formal diplomatic document with heavy official seals, flames and a mushroom cloud visible through a window behind the desk where it rests.",
+      "sourceName": "Wikipedia — Potsdam Declaration",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Potsdam_Declaration",
+      "volatile": false,
+      "distractors": [
+        "Total annihilation and unconditional ruin",
+        "Overwhelming force and absolute defeat",
+        "Immediate and irresistible destruction",
+        "Certain and complete devastation",
+        "Swift and total obliteration",
+        "Catastrophic and inevitable defeat",
+        "Merciless and complete destruction",
+        "Total war until unconditional surrender"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Potsdam Declaration's warning of 'prompt and utter destruction' was issued 11 days before what event made the threat literal?",
+          "correctAnswer": "The atomic bombing of Hiroshima (August 6, 1945)",
+          "distractors": [
+            "The Soviet Union's declaration of war on Japan",
+            "The firebombing of Osaka",
+            "The atomic bombing of Nagasaki",
+            "The American naval blockade of Japan's home islands"
+          ]
+        },
+        "context": {
+          "quizQuestion": "The Potsdam Declaration was signed by the U.S., UK, and China. Which major Allied power was notably absent from the declaration's signatories?",
+          "correctAnswer": "The Soviet Union (USSR)",
+          "distractors": [
+            "France",
+            "Australia",
+            "Canada",
+            "Netherlands"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Potsdam Declaration was issued after the Trinity Test but before any atomic bomb had been dropped on Japan.",
+          "correctAnswer": "True — Trinity was July 16, Potsdam Declaration was July 26, Hiroshima was August 6",
+          "distractors": [
+            "False — the Potsdam Declaration was issued after Hiroshima as a final warning before Nagasaki",
+            "False — the Potsdam Declaration predated the Trinity Test by several months",
+            "True — but the declaration made no reference to any new weapon"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Potsdam Declaration warned Japan of '______ destruction' if it did not surrender unconditionally.",
+          "correctAnswer": "Prompt and utter",
+          "distractors": [
+            "Total and immediate",
+            "Overwhelming and absolute",
+            "Swift and complete",
+            "Merciless and certain"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wwii_pt_soviet_entry_date",
+      "correctAnswer": "August 8, 1945",
+      "acceptableAlternatives": ["Aug 8, 1945", "August 8th 1945"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Two days after Hiroshima and one day before Nagasaki, the Soviet Union entered the Pacific War. On what date did the USSR declare war on Japan?",
+      "explanation": "The Soviet Union declared war on Japan on August 8, 1945 — exactly as Stalin had promised at Yalta, three months after Germany's defeat. Soviet forces immediately invaded Japanese-controlled Manchuria with overwhelming force. Many historians argue that Soviet entry was as decisive as the atomic bombs in forcing Japan's surrender, since Japan's strategic plan had depended on Soviet neutrality to negotiate a conditional peace.",
+      "visualDescription": "Pixel art of Soviet tanks and infantry advancing across a vast Manchurian plain, red-starred vehicles in a massive column stretching to the horizon, artillery fire in the distance.",
+      "sourceName": "Wikipedia — Soviet–Japanese War (1945)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Japanese_War_(1945)",
+      "volatile": false,
+      "distractors": [
+        "August 6, 1945",
+        "August 9, 1945",
+        "August 15, 1945",
+        "July 26, 1945",
+        "September 2, 1945",
+        "August 1, 1945",
+        "August 12, 1945",
+        "July 16, 1945"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Soviet Union's declaration of war on Japan (August 8, 1945) fulfilled a promise Stalin made at which earlier Allied conference?",
+          "correctAnswer": "Yalta Conference",
+          "distractors": [
+            "Potsdam Conference",
+            "Tehran Conference",
+            "Cairo Conference",
+            "Quebec Conference"
+          ]
+        },
+        "context": {
+          "quizQuestion": "When the Soviet Union entered the Pacific War on August 8, 1945, what territory did Soviet forces immediately invade?",
+          "correctAnswer": "Japanese-controlled Manchuria",
+          "distractors": [
+            "The Japanese home island of Hokkaido",
+            "Korea",
+            "The Kuril Islands",
+            "Formosa (Taiwan)"
+          ]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Some historians argue that Soviet entry into the Pacific War on August 8 was as decisive as the atomic bombs in forcing Japan's surrender.",
+          "correctAnswer": "True — Japan's strategy depended on Soviet neutrality to negotiate a conditional peace; Soviet entry destroyed that option",
+          "distractors": [
+            "False — historians universally agree the atomic bombs alone caused Japan's surrender",
+            "False — the Soviet entry came too late to influence Japan's decision",
+            "True — but only because the Soviet Union also possessed nuclear weapons by 1945"
+          ]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Soviet Union declared war on Japan on ______, exactly as Stalin had promised at Yalta three months after Germany's defeat.",
+          "correctAnswer": "August 8, 1945",
+          "distractors": [
+            "August 6, 1945",
+            "August 9, 1945",
+            "August 15, 1945",
+            "July 26, 1945"
+          ]
+        }
+      }
+    }
+  ]
+}
