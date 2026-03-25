@@ -6,8 +6,8 @@ const MAX_HEAP_BYTES = 150 * 1024 * 1024
 
 async function run() {
   const browser = await chromium.launch({
-    executablePath: '/opt/google/chrome/chrome',
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    headless: true,
+    channel: 'chrome',
   })
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
 

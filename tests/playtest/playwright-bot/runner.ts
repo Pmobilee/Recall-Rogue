@@ -203,6 +203,7 @@ async function main(): Promise<void> {
 
   const browser = await chromium.launch({
     headless,
+    channel: 'chrome',
     args: [
       '--use-gl=angle',
       '--use-angle=swiftshader',

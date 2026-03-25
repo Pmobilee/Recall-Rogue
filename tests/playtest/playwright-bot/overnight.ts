@@ -172,6 +172,7 @@ function saveCombined(): void {
 async function launchBrowser(): Promise<Browser> {
   const browser = await chromium.launch({
     headless: true,
+    channel: 'chrome',
     args: BROWSER_ARGS,
   });
   currentBrowser = browser;

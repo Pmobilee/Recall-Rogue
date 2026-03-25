@@ -15,7 +15,7 @@
  *   await t.cleanup();
  */
 
-const { chromium } = require('/root/terra-miner/node_modules/playwright-core');
+const { chromium } = require('playwright');
 const fs = require('fs');
 
 /**
@@ -38,8 +38,8 @@ async function createPlaytester(opts = {}) {
   } = opts;
 
   const browser = await chromium.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: '/opt/google/chrome/chrome',
+    headless: true,
+    channel: 'chrome',
   });
   const page = await browser.newPage();
   await page.setViewportSize({ width, height });

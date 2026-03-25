@@ -3,13 +3,13 @@
  * Run with: node tests/e2e/04-desktop-layout.cjs
  * Requires: dev server running at http://localhost:5173
  */
-const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
+const { chromium } = require('playwright')
 const attachDiagnostics = require('./lib/diagnostics.cjs')
 
 ;(async () => {
   const browser = await chromium.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: '/opt/google/chrome/chrome',
+    headless: true,
+    channel: 'chrome',
   })
 
   const page = await browser.newPage()
