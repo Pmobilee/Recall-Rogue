@@ -1,0 +1,2201 @@
+{
+  "id": "wwii_wartime_culture",
+  "name": "WWII: Wartime Culture & Propaganda",
+  "domain": "history",
+  "subDomain": "world_war_ii",
+  "description": "The Second World War was fought with words, images, and music as surely as with guns. Explore the propaganda films, radio broadcasts, iconic posters, morale singers, and wartime literature that shaped how millions experienced the war.",
+  "minimumFacts": 30,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "wwii_wc_we_can_do_it",
+      "correctAnswer": "J. Howard Miller",
+      "acceptableAlternatives": [],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Norman Rockwell",
+        "James Montgomery Flagg",
+        "Ben Shahn",
+        "Thomas Hart Benton",
+        "Grant Wood",
+        "Theodor Geisel",
+        "Howard Chandler Christy",
+        "Winslow Homer"
+      ],
+      "quizQuestion": "Who created the 1943 \"We Can Do It!\" wartime poster for Westinghouse Electric, later nicknamed \"Rosie the Riveter\"?",
+      "explanation": "J. Howard Miller produced the \"We Can Do It!\" poster in 1943 for Westinghouse Electric as an internal factory morale image. It showed a woman in a red bandana with a flexed arm. The image was little-known during the war and only became widely associated with \"Rosie the Riveter\" after being rediscovered in the early 1980s. It is now one of the most reproduced images in American history.",
+      "statement": "J. Howard Miller created the \"We Can Do It!\" poster for Westinghouse Electric in 1943.",
+      "wowFactor": "During WWII, the \"We Can Do It!\" poster was displayed inside Westinghouse plants for only two weeks in February 1943 — it was essentially invisible to the public until its rediscovery forty years later.",
+      "visualDescription": "Pixel art of a determined woman in a blue work shirt and red polka-dot bandana, flexing her bicep in front of a yellow background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/We_Can_Do_It!",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "For which company did J. Howard Miller create the \"We Can Do It!\" poster in 1943?",
+          "correctAnswer": "Westinghouse Electric",
+          "distractors": [
+            "General Motors",
+            "Boeing",
+            "US Steel",
+            "Ford Motor Company"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The \"We Can Do It!\" poster was created as internal morale art for factory workers — in which year was it made?",
+          "correctAnswer": "1943",
+          "distractors": [
+            "1942",
+            "1941",
+            "1944",
+            "1945"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The \"We Can Do It!\" poster by J. Howard Miller was widely displayed across America during WWII.",
+          "correctAnswer": "False",
+          "distractors": [
+            "True"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The \"We Can Do It!\" poster was created in 1943 by ___ for Westinghouse Electric.",
+          "correctAnswer": "J. Howard Miller",
+          "distractors": [
+            "Norman Rockwell",
+            "James Montgomery Flagg",
+            "Ben Shahn",
+            "Grant Wood"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_rockwell_rosie",
+      "correctAnswer": "Saturday Evening Post",
+      "acceptableAlternatives": ["The Saturday Evening Post"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "publication_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Life magazine",
+        "Time magazine",
+        "Look magazine",
+        "Collier's Weekly",
+        "Harper's Weekly",
+        "The New Yorker",
+        "Popular Mechanics",
+        "The Atlantic"
+      ],
+      "quizQuestion": "Norman Rockwell's iconic \"Rosie the Riveter\" painting appeared on the cover of which magazine on Memorial Day, May 29, 1943?",
+      "explanation": "Norman Rockwell's Rosie the Riveter — depicting a muscular woman in work clothes eating a sandwich with a rivet gun on her lap and a copy of Mein Kampf beneath her foot — ran on the Saturday Evening Post cover on Memorial Day 1943. His model was 19-year-old Mary Louise Doyle, a telephone operator from Vermont, not an actual riveter.",
+      "statement": "Norman Rockwell's Rosie the Riveter appeared on the cover of the Saturday Evening Post on May 29, 1943.",
+      "wowFactor": "Rockwell painted Mein Kampf being crushed under Rosie's foot as a deliberate visual message — Hitler's book literally ground beneath the heel of American working women.",
+      "visualDescription": "Pixel art of a sturdy red-haired woman in work overalls holding a rivet gun, lunch box on lap, patriotic American imagery in background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rosie_the_Riveter",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who painted the Rosie the Riveter cover image for the Saturday Evening Post in 1943?",
+          "correctAnswer": "Norman Rockwell",
+          "distractors": [
+            "J. Howard Miller",
+            "James Montgomery Flagg",
+            "Grant Wood",
+            "Andrew Wyeth"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What object did Norman Rockwell place beneath Rosie the Riveter's foot in his 1943 painting?",
+          "correctAnswer": "Mein Kampf",
+          "distractors": [
+            "A Nazi flag",
+            "A German helmet",
+            "A propaganda leaflet",
+            "A swastika armband"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Norman Rockwell's Rosie the Riveter model was actually a factory riveter who worked in a wartime plant.",
+          "correctAnswer": "False",
+          "distractors": [
+            "True"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Norman Rockwell's Rosie the Riveter painting appeared on the cover of the ___ on Memorial Day, May 29, 1943.",
+          "correctAnswer": "Saturday Evening Post",
+          "distractors": [
+            "Life magazine",
+            "Time magazine",
+            "Collier's Weekly",
+            "Look magazine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_casablanca_director",
+      "correctAnswer": "Michael Curtiz",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Howard Hawks",
+        "John Ford",
+        "William Wyler",
+        "Frank Capra",
+        "Billy Wilder",
+        "Alfred Hitchcock",
+        "Preston Sturges",
+        "George Cukor"
+      ],
+      "quizQuestion": "Who directed the 1942 wartime classic Casablanca, winning the Academy Award for Best Director?",
+      "explanation": "Michael Curtiz directed Casablanca (1942), starring Humphrey Bogart and Ingrid Bergman. The film won three Academy Awards: Best Picture, Best Director, and Best Adapted Screenplay. Set in occupied Morocco, it captured the moral urgency of the war era and remains one of the most beloved films ever made.",
+      "statement": "Michael Curtiz directed Casablanca (1942), which won the Academy Award for Best Picture.",
+      "wowFactor": "Casablanca premiered in New York City on November 26, 1942 — just 18 days after the real Allied landings in North Africa, making its setting suddenly headline news and boosting its impact enormously.",
+      "visualDescription": "Pixel art noir scene of a man in a white tuxedo at a foggy airport, woman in a trench coat, wartime Morocco atmosphere",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_(film)",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Casablanca (1942) starred Humphrey Bogart and which actress?",
+          "correctAnswer": "Ingrid Bergman",
+          "distractors": [
+            "Katharine Hepburn",
+            "Bette Davis",
+            "Lauren Bacall",
+            "Veronica Lake"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many Academy Awards did Casablanca win at the 1944 ceremony?",
+          "correctAnswer": "Three",
+          "distractors": [
+            "One",
+            "Two",
+            "Five",
+            "Eight"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Casablanca won the Academy Award for Best Picture.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Casablanca (1942) was directed by ___, who won the Academy Award for Best Director for the film.",
+          "correctAnswer": "Michael Curtiz",
+          "distractors": [
+            "Howard Hawks",
+            "John Ford",
+            "Billy Wilder",
+            "William Wyler"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_casablanca_misquote",
+      "correctAnswer": "Play it, Sam",
+      "acceptableAlternatives": ["Play it Sam"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "quotes",
+      "difficulty": 4,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Play it again, Sam",
+        "Play the song, Sam",
+        "Once more, Sam",
+        "Play it for me, Sam",
+        "Play our song, Sam",
+        "Do it again, Sam",
+        "One more time, Sam",
+        "Play it once more"
+      ],
+      "quizQuestion": "What is Ilsa's actual line in Casablanca when she asks Sam to play \"As Time Goes By\"? (Hint: it is NOT the famous misquote.)",
+      "explanation": "The famous line \"Play it again, Sam\" was never spoken in Casablanca — it is one of the most famous misquotes in cinema history. What Ilsa (Ingrid Bergman) actually says is \"Play it, Sam.\" Rick (Bogart) later says \"Play it!\" — but neither character says \"again.\" The misquote became so famous that Woody Allen used it as the title of his 1972 play.",
+      "statement": "The actual line in Casablanca is \"Play it, Sam\" — \"Play it again, Sam\" is a famous misquote.",
+      "wowFactor": "The misquote \"Play it again, Sam\" became more famous than the real line — Woody Allen named an entire play after it in 1972, and it is consistently ranked among the most famous misquotations in film history.",
+      "visualDescription": "Pixel art of a pianist in a dimly lit Moroccan cafe, spotlight illuminating an ivory piano, a woman in elegant 1940s dress nearby",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Casablanca_(film)",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "\"Play it again, Sam\" is a famous misquote from Casablanca — who is the character Sam?",
+          "correctAnswer": "The piano player",
+          "distractors": [
+            "Rick's bartender",
+            "The French police captain",
+            "Ilsa's husband",
+            "The café owner"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which song does Ilsa ask Sam to play in Casablanca?",
+          "correctAnswer": "As Time Goes By",
+          "distractors": [
+            "We'll Meet Again",
+            "White Cliffs of Dover",
+            "Lili Marlene",
+            "La Marseillaise"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The line \"Play it again, Sam\" is spoken word for word in the film Casablanca.",
+          "correctAnswer": "False",
+          "distractors": [
+            "True"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The famous movie misquote \"Play it again, Sam\" from Casablanca — what Ilsa actually says is \"___, Sam.\"",
+          "correctAnswer": "Play it",
+          "distractors": [
+            "Play it again",
+            "Once more",
+            "Play the song",
+            "Do it again"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_triumph_of_will",
+      "correctAnswer": "Leni Riefenstahl",
+      "acceptableAlternatives": ["Riefenstahl"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Joseph Goebbels",
+        "Fritz Lang",
+        "G.W. Pabst",
+        "F.W. Murnau",
+        "Ernst Lubitsch",
+        "Karl Freund",
+        "Hans Steinhoff",
+        "Veit Harlan"
+      ],
+      "quizQuestion": "Who directed Triumph of the Will (1935), the Nazi propaganda film documenting the 1934 Nuremberg Party Rally?",
+      "explanation": "Leni Riefenstahl directed, produced, and edited Triumph of the Will (Triumph des Willens), commissioned directly by Adolf Hitler. The film documents the 1934 Nuremberg Party Congress, attended by over 700,000 Nazi supporters. It premiered in Berlin on 28 March 1935 and is considered one of the most technically innovative — and most disturbing — propaganda films ever made.",
+      "statement": "Leni Riefenstahl directed Triumph of the Will (1935), Hitler's commissioned propaganda film of the 1934 Nuremberg Rally.",
+      "wowFactor": "Riefenstahl shot 130,000 metres of raw film at Nuremberg and edited it down to just 3,000 metres — an astonishing 97.7% of all footage ended up on the cutting room floor.",
+      "visualDescription": "Pixel art of a female filmmaker holding a movie camera, massive crowds stretching to the horizon under Nazi banners, 1930s Germany atmosphere",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Triumph_of_the_Will",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Triumph of the Will (1935) documented which Nazi Party event?",
+          "correctAnswer": "The 1934 Nuremberg Party Rally",
+          "distractors": [
+            "The 1936 Berlin Olympics",
+            "Hitler's 1933 appointment as Chancellor",
+            "The Anschluss of Austria",
+            "The Night of the Long Knives"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "In what year did Leni Riefenstahl's Triumph of the Will premiere?",
+          "correctAnswer": "1935",
+          "distractors": [
+            "1934",
+            "1936",
+            "1937",
+            "1933"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Adolf Hitler commissioned Triumph of the Will and served as an unofficial executive producer.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Triumph of the Will (1935) was directed by ___, who filmed the 1934 Nuremberg Nazi Party Rally.",
+          "correctAnswer": "Leni Riefenstahl",
+          "distractors": [
+            "Joseph Goebbels",
+            "Fritz Lang",
+            "Veit Harlan",
+            "Hans Steinhoff"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_goebbels_ministry",
+      "correctAnswer": "Reich Ministry of Public Enlightenment and Propaganda",
+      "acceptableAlternatives": ["Ministry of Propaganda", "Reich Propaganda Ministry"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "organization_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Reich Chamber of Culture",
+        "Reich Ministry of the Interior",
+        "Reich Chancellery",
+        "Ministry of Public Information",
+        "Reich Office of Information",
+        "Bureau of National Culture",
+        "Reich Ministry of Education",
+        "Reich Security Main Office"
+      ],
+      "quizQuestion": "What was the full name of the ministry Joseph Goebbels headed from 1933, which controlled all German media, arts, and culture?",
+      "explanation": "On 13 March 1933, Goebbels was appointed head of the newly created Reich Ministry of Public Enlightenment and Propaganda (Reichsministerium für Volksaufklärung und Propaganda). The name itself was propaganda: \"enlightenment\" disguised totalitarian media control. By 1933 he also established the Reich Chamber of Culture (Reichskulturkammer), requiring every German artist, journalist, and musician to hold membership — exclusion meant a professional ban.",
+      "statement": "Joseph Goebbels headed the Reich Ministry of Public Enlightenment and Propaganda from 1933 until his death in 1945.",
+      "wowFactor": "Goebbels' Reich Chamber of Culture had seven divisions covering film, music, theatre, press, radio, visual arts, and literature — every creative profession in Germany. Exclusion from any chamber meant you could not legally work in your field.",
+      "visualDescription": "Pixel art of a suited propaganda minister behind a desk with radio microphone, newspapers and film reels, Nazi Germany office setting",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Goebbels",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which Nazi official headed the Reich Ministry of Public Enlightenment and Propaganda from 1933 to 1945?",
+          "correctAnswer": "Joseph Goebbels",
+          "distractors": [
+            "Heinrich Himmler",
+            "Hermann Göring",
+            "Rudolf Hess",
+            "Alfred Rosenberg"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Goebbels' \"Total War\" speech demanding absolute commitment to the war effort was delivered in February 1943 at which Berlin venue?",
+          "correctAnswer": "The Sportpalast",
+          "distractors": [
+            "The Reichstag",
+            "The Berlin Cathedral",
+            "Tempelhof Airport",
+            "The Olympic Stadium"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: German artists and musicians were required to hold membership in Goebbels' Reich Chamber of Culture to legally work in their profession.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Joseph Goebbels was appointed head of the ___ on 13 March 1933, giving him control of all German media and culture.",
+          "correctAnswer": "Reich Ministry of Public Enlightenment and Propaganda",
+          "distractors": [
+            "Reich Chamber of Culture",
+            "Reich Ministry of the Interior",
+            "Reich Chancellery",
+            "Reich Ministry of Education"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_bbc_london_calling",
+      "correctAnswer": "46 languages",
+      "acceptableAlternatives": ["forty-six languages"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "12 languages",
+        "25 languages",
+        "33 languages",
+        "52 languages",
+        "60 languages",
+        "8 languages",
+        "18 languages",
+        "70 languages"
+      ],
+      "quizQuestion": "By 1944, the BBC's wartime European Service was broadcasting to occupied Europe in how many languages?",
+      "explanation": "The BBC began broadcasting to German-occupied Europe almost immediately after the fall of France in 1940. By 1944, it had teams broadcasting in 46 languages, making it the most significant source of uncensored information for people living under Nazi rule. The French service Radio Londres even sent coded messages to the French Resistance. Despite Nazi jamming attempts and harsh penalties for listening, millions tuned in.",
+      "statement": "By 1944, the BBC was broadcasting to occupied Europe in 46 languages, becoming the primary source of uncensored news for people under Nazi rule.",
+      "wowFactor": "The BBC's French service Radio Londres broadcast personal coded messages like \"The elephant has a long trunk\" to secretly coordinate Resistance operations — meaningless to Germans, but clear instructions to waiting underground fighters.",
+      "visualDescription": "Pixel art of a BBC radio transmitter tower at night, coded radio waves spreading across a map of occupied Europe, family huddled around a hidden radio set",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/BBC_World_Service",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the BBC's iconic opening phrase used in wartime broadcasts to occupied Europe?",
+          "correctAnswer": "This is London calling",
+          "distractors": [
+            "Germany calling, Germany calling",
+            "London speaks to the world",
+            "Here is the news from London",
+            "Freedom broadcasting from London"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The BBC's French service Radio Londres broadcast coded messages to help coordinate which wartime group?",
+          "correctAnswer": "The French Resistance",
+          "distractors": [
+            "The British Expeditionary Force",
+            "The Free French Army",
+            "The Belgian government in exile",
+            "Allied bomber crews"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The BBC began broadcasting to German-occupied Europe almost immediately after the fall of France in 1940.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "By 1944, the BBC wartime European Service was broadcasting in ___ languages to occupied Europe.",
+          "correctAnswer": "46",
+          "distractors": [
+            "25",
+            "12",
+            "33",
+            "60"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_vera_lynn",
+      "correctAnswer": "We'll Meet Again",
+      "acceptableAlternatives": [],
+      "chainThemeId": 3,
+      "answerTypePoolId": "song_titles",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "White Cliffs of Dover",
+        "Lili Marlene",
+        "It's a Long Way to Tipperary",
+        "Keep the Home Fires Burning",
+        "Pack Up Your Troubles",
+        "The White Rose of Athens",
+        "Bluebird Over the Mountain",
+        "When You Wish Upon a Star"
+      ],
+      "quizQuestion": "Which WWII-era song, first recorded by Vera Lynn in 1939, became the defining anthem of hope for British troops and their families?",
+      "explanation": "Vera Lynn (1917–2020), known as the \"Forces' Sweetheart,\" first recorded \"We'll Meet Again\" in 1939, written by Ross Parker and Hughie Charles. The song resonated deeply with servicemen going off to fight and their families. Lynn toured Egypt, India, and Burma performing for troops as part of ENSA. In 2009, aged 92, she became the oldest living artist to have a number-one album in the UK.",
+      "statement": "Vera Lynn, the \"Forces' Sweetheart,\" first recorded \"We'll Meet Again\" in 1939 — the defining song of hope for WWII Britain.",
+      "wowFactor": "Vera Lynn died in 2020 at age 103 — making her a living link between WWII and the COVID-19 pandemic, when \"We'll Meet Again\" was sung again by people separated from loved ones during lockdown.",
+      "visualDescription": "Pixel art of a 1940s British female singer in a polka-dot dress performing on a stage for uniformed soldiers, spotlights and Union Jack bunting",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vera_Lynn",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who was the British singer nicknamed the \"Forces' Sweetheart\" who toured Egypt, India, and Burma entertaining troops?",
+          "correctAnswer": "Vera Lynn",
+          "distractors": [
+            "Gracie Fields",
+            "Anne Shelton",
+            "Marlene Dietrich",
+            "Frances Day"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "\"We'll Meet Again\" was written by Ross Parker and Hughie Charles and first recorded by Vera Lynn in which year?",
+          "correctAnswer": "1939",
+          "distractors": [
+            "1940",
+            "1941",
+            "1942",
+            "1938"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Vera Lynn toured to perform for British troops in Egypt, India, and Burma during WWII.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The WWII song \"We'll Meet Again\" is most associated with British singer ___, nicknamed the Forces' Sweetheart.",
+          "correctAnswer": "Vera Lynn",
+          "distractors": [
+            "Gracie Fields",
+            "Anne Shelton",
+            "Marlene Dietrich",
+            "Dorothy Squires"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_tokyo_rose",
+      "correctAnswer": "Iva Toguri D'Aquino",
+      "acceptableAlternatives": ["Iva Toguri", "Iva D'Aquino"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Mildred Gillars",
+        "Rita Zucca",
+        "Dorothy O'Grady",
+        "Jane Anderson",
+        "Constance Drexel",
+        "Margaret Joyce",
+        "Gertrude Hess",
+        "Velvalee Dickinson"
+      ],
+      "quizQuestion": "Which American-born woman was convicted of treason in 1949 as the supposed \"Tokyo Rose,\" only to be fully pardoned by President Ford in 1977?",
+      "explanation": "Iva Toguri D'Aquino was visiting Japan when Pearl Harbor was attacked and was stranded there. She broadcast as \"Orphan Ann\" on Japanese radio but investigators later found witnesses had been coerced into false testimony. She was convicted on one of eight treason counts and served six years in prison. President Gerald Ford granted her a full and unconditional pardon on January 19, 1977 — his last full day in office — restoring her US citizenship.",
+      "statement": "Iva Toguri D'Aquino, convicted as \"Tokyo Rose\" in 1949, was fully pardoned by President Gerald Ford in 1977 after evidence of coerced witness testimony emerged.",
+      "wowFactor": "\"Tokyo Rose\" was never the name used by any Japanese broadcaster — the term was invented by Allied troops and applied collectively to all female English-speaking Japanese radio announcers. Iva Toguri's show name was actually \"Orphan Ann.\"",
+      "visualDescription": "Pixel art of a radio broadcast studio with a woman at a microphone, Pacific ocean backdrop, WWII-era radio equipment",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Iva_Toguri_D%27Aquino",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which US president pardoned Iva Toguri D'Aquino (\"Tokyo Rose\") in 1977?",
+          "correctAnswer": "Gerald Ford",
+          "distractors": [
+            "Richard Nixon",
+            "Jimmy Carter",
+            "Dwight Eisenhower",
+            "Harry Truman"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "On-air, Iva Toguri D'Aquino used which broadcast name rather than \"Tokyo Rose\"?",
+          "correctAnswer": "Orphan Ann",
+          "distractors": [
+            "Zero Hour",
+            "Radio Tokyo",
+            "Suzy from Tokyo",
+            "Pacific Annie"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The name \"Tokyo Rose\" was an official Japanese broadcasting brand used by the Japanese government.",
+          "correctAnswer": "False",
+          "distractors": [
+            "True"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "___ was convicted of treason in 1949 as \"Tokyo Rose\" and later pardoned by President Ford in 1977.",
+          "correctAnswer": "Iva Toguri D'Aquino",
+          "distractors": [
+            "Mildred Gillars",
+            "Rita Zucca",
+            "Dorothy O'Grady",
+            "Jane Anderson"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_lord_haw_haw",
+      "correctAnswer": "William Joyce",
+      "acceptableAlternatives": ["Joyce"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Mildred Gillars",
+        "Iva Toguri",
+        "John Amery",
+        "P.G. Wodehouse",
+        "Norman Baillie-Stewart",
+        "Harold Cole",
+        "Herbert John Burgman",
+        "Jack Trevor Story"
+      ],
+      "quizQuestion": "\"Germany calling, Germany calling\" — who was the American-born broadcaster known as \"Lord Haw-Haw\" who was executed for treason in Britain in January 1946?",
+      "explanation": "William Joyce, an American-born fascist who had moved to Britain, fled to Germany before the war and became the Nazi regime's chief English-language propaganda broadcaster. His broadcasts opened with \"Germany calling, Germany calling\" in an exaggerated upper-class accent — earning the nickname \"Lord Haw-Haw\" from British journalist Jonah Barrington in September 1939. He was captured by British forces at the end of the war, tried for treason, and hanged at Wandsworth Prison on 3 January 1946, the last person executed for treason in the United Kingdom.",
+      "statement": "William Joyce, \"Lord Haw-Haw,\" broadcast Nazi propaganda to Britain with the opening \"Germany calling\" and was hanged for treason on 3 January 1946.",
+      "wowFactor": "Lord Haw-Haw was so widely listened to in Britain that the government estimated one-third of British adults tuned in regularly — partly out of morbid curiosity, and partly because his broadcasts occasionally contained accurate intelligence that alarmed the War Office.",
+      "visualDescription": "Pixel art of a suited man at a radio microphone in a German studio, transmission tower in background, dramatic 1940s broadcast atmosphere",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/William_Joyce",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the nickname given to Nazi radio propagandist William Joyce, coined by British journalist Jonah Barrington?",
+          "correctAnswer": "Lord Haw-Haw",
+          "distractors": [
+            "Axis Annie",
+            "Radio Fritz",
+            "Berlin Bertie",
+            "The Voice of Germany"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "On which date in 1946 was Lord Haw-Haw (William Joyce) hanged at Wandsworth Prison?",
+          "correctAnswer": "3 January 1946",
+          "distractors": [
+            "8 May 1945",
+            "15 August 1945",
+            "10 October 1945",
+            "22 March 1946"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: William Joyce (Lord Haw-Haw) was the last person to be executed for treason in the United Kingdom.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Nazi propaganda broadcaster Lord Haw-Haw's real name was ___, an American-born fascist who was hanged for treason in 1946.",
+          "correctAnswer": "William Joyce",
+          "distractors": [
+            "Norman Baillie-Stewart",
+            "John Amery",
+            "Harold Cole",
+            "Herbert Burgman"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_ernie_pyle",
+      "correctAnswer": "Ie Shima",
+      "acceptableAlternatives": ["Iejima", "Ie Island"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Iwo Jima",
+        "Guadalcanal",
+        "Okinawa",
+        "Tarawa",
+        "Leyte Gulf",
+        "Peleliu",
+        "Saipan",
+        "Corregidor"
+      ],
+      "quizQuestion": "On which Pacific island was beloved American war correspondent Ernie Pyle killed by Japanese machine-gun fire on April 18, 1945?",
+      "explanation": "Ernie Pyle was America's most popular WWII correspondent, syndicated in some 200 US newspapers. He covered North Africa, Sicily, Italy, and the Normandy landings, winning a Pulitzer Prize in 1944. On April 18, 1945, he came under Japanese machine-gun fire on the island of Ie Shima near Okinawa and was killed. The men of the 77th Infantry Division erected a monument reading: \"At this spot the 77th Infantry Division lost a buddy, Ernie Pyle, 18 April 1945.\"",
+      "statement": "Ernie Pyle, America's most popular WWII war correspondent and 1944 Pulitzer Prize winner, was killed on Ie Shima on April 18, 1945.",
+      "wowFactor": "Ernie Pyle was buried wearing his helmet among the battle casualties on Ie Shima — the troops he had written about and championed throughout the war insisted he be buried with the ordinary soldiers he had devoted his career to.",
+      "visualDescription": "Pixel art of a helmeted war correspondent with a notebook crouching behind cover on a Pacific island beachhead, military action in background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ernie_Pyle",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What prize did war correspondent Ernie Pyle win in 1944 for his reporting from North Africa, Sicily, Italy, and France?",
+          "correctAnswer": "The Pulitzer Prize",
+          "distractors": [
+            "The Peabody Award",
+            "The Medal of Freedom",
+            "The George Polk Award",
+            "The National Press Award"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Ernie Pyle's syndicated column reached approximately how many US newspapers?",
+          "correctAnswer": "200",
+          "distractors": [
+            "50",
+            "100",
+            "350",
+            "500"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Ernie Pyle covered the Normandy D-Day landings in June 1944.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "War correspondent Ernie Pyle was killed on the Pacific island of ___ on April 18, 1945, near the end of the war.",
+          "correctAnswer": "Ie Shima",
+          "distractors": [
+            "Iwo Jima",
+            "Guadalcanal",
+            "Okinawa",
+            "Peleliu"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_murrow_this_is_london",
+      "correctAnswer": "Edward R. Murrow",
+      "acceptableAlternatives": ["Edward Murrow", "Murrow"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Walter Cronkite",
+        "Ernie Pyle",
+        "Eric Sevareid",
+        "William L. Shirer",
+        "Howard K. Smith",
+        "Quentin Reynolds",
+        "Cecil Brown",
+        "Raymond Gram Swing"
+      ],
+      "quizQuestion": "Which CBS radio correspondent became famous for his live shortwave broadcasts from London during the Blitz, opening with \"This is London\"?",
+      "explanation": "Edward R. Murrow stayed in London when war broke out in 1939 and provided live shortwave broadcasts on CBS Radio during the Blitz — electrifying American audiences who had previously only received war news via newspaper wire reports. His signature opening \"This is London\" was suggested by his former speech teacher. His broadcasts contributed to shifting American public opinion toward supporting Britain, and his closing phrase became \"Good night, and good luck.\"",
+      "statement": "Edward R. Murrow's CBS radio broadcasts from London during the Blitz — opening with \"This is London\" — made him America's most famous wartime correspondent.",
+      "wowFactor": "Murrow broadcast live from London rooftops during actual Luftwaffe bombing raids, describing bombs falling and fires burning in real time — radio audiences heard the war happening as Murrow spoke.",
+      "visualDescription": "Pixel art of a trench-coated journalist on a London rooftop at night, city burning in background, speaking into a radio microphone under searchlight beams",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Edward_R._Murrow",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Edward R. Murrow's famous wartime broadcasts for CBS Radio closed with which catchphrase?",
+          "correctAnswer": "Good night, and good luck",
+          "distractors": [
+            "God save the King",
+            "Stay tuned to CBS",
+            "This has been London calling",
+            "Until tomorrow, stay safe"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Edward R. Murrow worked for which American radio network during his WWII London broadcasts?",
+          "correctAnswer": "CBS",
+          "distractors": [
+            "NBC",
+            "ABC",
+            "Mutual Broadcasting",
+            "BBC"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Edward R. Murrow broadcast live from London rooftops during actual Luftwaffe bombing raids.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "CBS correspondent ___ opened his live WWII broadcasts from London with the phrase \"This is London,\" becoming famous during the Blitz.",
+          "correctAnswer": "Edward R. Murrow",
+          "distractors": [
+            "Walter Cronkite",
+            "William L. Shirer",
+            "Eric Sevareid",
+            "Howard K. Smith"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_keep_calm",
+      "correctAnswer": "2.45 million",
+      "acceptableAlternatives": ["2,450,000", "two and a half million"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "50,000",
+        "250,000",
+        "500,000",
+        "1 million",
+        "5 million",
+        "10 million",
+        "100,000",
+        "750,000"
+      ],
+      "quizQuestion": "The British \"Keep Calm and Carry On\" poster was created in 1939 but almost never displayed publicly during WWII — how many copies were printed?",
+      "explanation": "The \"Keep Calm and Carry On\" poster was designed by the British Ministry of Information in 1939, with printing beginning on 23 August 1939 — the same day as the Molotov-Ribbentrop Pact. Despite 2.45 million copies being printed, the poster was rarely publicly displayed. It was only rediscovered in 2000 at Barter Books in Alnwick and became the famous icon it is today entirely in the 21st century.",
+      "statement": "The \"Keep Calm and Carry On\" poster (1939) had 2.45 million copies printed but was rarely displayed — it was unknown until rediscovered at a bookshop in 2000.",
+      "wowFactor": "Printing of \"Keep Calm and Carry On\" began on the exact same day that Nazi Germany and the USSR signed the Molotov-Ribbentrop Pact — the deal that sealed Poland's fate and made WWII inevitable.",
+      "visualDescription": "Pixel art of the iconic red poster with a crown symbol and bold white text in a 1940s British government aesthetic, wartime Britain backdrop",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Keep_Calm_and_Carry_On",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which British government body created the \"Keep Calm and Carry On\" poster in 1939?",
+          "correctAnswer": "The Ministry of Information",
+          "distractors": [
+            "The War Office",
+            "The Home Office",
+            "The BBC",
+            "The Treasury"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "In which year was the \"Keep Calm and Carry On\" poster rediscovered at Barter Books in Alnwick, sparking its modern fame?",
+          "correctAnswer": "2000",
+          "distractors": [
+            "1985",
+            "1995",
+            "2005",
+            "2010"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: \"Keep Calm and Carry On\" was widely displayed across Britain during the Blitz.",
+          "correctAnswer": "False",
+          "distractors": [
+            "True"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The \"Keep Calm and Carry On\" poster was created in ___ by the British Ministry of Information but was almost never publicly displayed during the war.",
+          "correctAnswer": "1939",
+          "distractors": [
+            "1940",
+            "1941",
+            "1942",
+            "1938"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_uncle_sam_poster",
+      "correctAnswer": "James Montgomery Flagg",
+      "acceptableAlternatives": ["Flagg"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "J. Howard Miller",
+        "Norman Rockwell",
+        "Thomas Nast",
+        "Howard Chandler Christy",
+        "Charles Dana Gibson",
+        "N.C. Wyeth",
+        "Frederic Remington",
+        "Joseph Leyendecker"
+      ],
+      "quizQuestion": "Who created the \"I Want YOU for U.S. Army\" Uncle Sam recruitment poster in 1917 — using his own face as the model — which was revived for use in WWII?",
+      "explanation": "James Montgomery Flagg created the iconic Uncle Sam poster in 1917, using his own face for the figure (adding age and a white goatee to avoid hiring a model). Over four million copies were printed during WWI. The poster was revived during WWII, becoming one of the most reproduced images in American history. Flagg was inspired by a 1914 British poster showing Lord Kitchener in a similar pointing pose.",
+      "statement": "James Montgomery Flagg created the \"I Want YOU\" Uncle Sam poster in 1917, using his own face — it was revived for WWII recruitment.",
+      "wowFactor": "Flagg used his own face for Uncle Sam simply to avoid the trouble of hiring a model. He aged the face with a white goatee and top hat, creating one of the most iconic American images entirely out of convenience.",
+      "visualDescription": "Pixel art of Uncle Sam in a star-spangled top hat pointing directly at the viewer, red white and blue palette, classic American patriotic recruitment poster style",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/James_Montgomery_Flagg",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The \"I Want YOU\" Uncle Sam poster was originally created in 1917 for which war?",
+          "correctAnswer": "World War I",
+          "distractors": [
+            "World War II",
+            "The Spanish-American War",
+            "The Korean War",
+            "The Civil War"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The American \"I Want YOU\" Uncle Sam poster was inspired by a 1914 British recruitment poster showing which military commander?",
+          "correctAnswer": "Lord Kitchener",
+          "distractors": [
+            "Winston Churchill",
+            "Field Marshal Haig",
+            "Admiral Jellicoe",
+            "General Pershing"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: James Montgomery Flagg used his own face as the model for Uncle Sam in the \"I Want YOU\" poster.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The \"I Want YOU for U.S. Army\" Uncle Sam poster was created in 1917 by ___ and revived for WWII recruitment.",
+          "correctAnswer": "James Montgomery Flagg",
+          "distractors": [
+            "Norman Rockwell",
+            "N.C. Wyeth",
+            "Howard Chandler Christy",
+            "Charles Dana Gibson"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_ensa_usp",
+      "correctAnswer": "Entertainments National Service Association",
+      "acceptableAlternatives": ["ENSA"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "organization_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "United Service Organizations",
+        "British Forces Broadcasting Service",
+        "Combined Services Entertainment",
+        "Army Entertainment Corps",
+        "Forces Broadcasting Service",
+        "Royal Army Welfare Organisation",
+        "Stars in Battledress",
+        "War Artists Advisory Committee"
+      ],
+      "quizQuestion": "What was the full name of the British organization (abbreviated ENSA) established in 1939 to provide entertainment for British armed forces personnel?",
+      "explanation": "The Entertainments National Service Association (ENSA) was founded in 1939 by Basil Dean and Leslie Henson. It provided entertainment for British armed forces worldwide and operated under the Navy, Army and Air Force Institutes. Vera Lynn performed for troops under ENSA. Its popular unofficial nickname was \"Every Night Something Awful,\" reflecting the mixed quality of acts. The American equivalent was the USO, founded February 4, 1941.",
+      "statement": "ENSA (Entertainments National Service Association) was Britain's wartime troop entertainment organization, founded in 1939 — sarcastically nicknamed \"Every Night Something Awful.\"",
+      "wowFactor": "Future stars Peter Sellers and Terry-Thomas both performed under ENSA during WWII — the organization that British troops mocked as \"Every Night Something Awful\" launched some of the greatest comedy careers of the postwar era.",
+      "visualDescription": "Pixel art of a variety show stage set up in a military camp, performers in civilian clothes entertaining rows of uniformed soldiers, wartime atmosphere",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Entertainments_National_Service_Association",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "ENSA, Britain's wartime troop entertainment organization, had what sardonic unofficial nickname among the troops?",
+          "correctAnswer": "Every Night Something Awful",
+          "distractors": [
+            "Every Night Same Amusement",
+            "Entertainment Never Satisfies Anyone",
+            "Every Night Soldiers Applaud",
+            "Even Now Still Awful"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The American equivalent of Britain's ENSA for entertaining troops was which organization, founded on February 4, 1941?",
+          "correctAnswer": "USO",
+          "distractors": [
+            "Stars and Stripes",
+            "Army Special Services",
+            "Hollywood Victory Committee",
+            "Office of War Information"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Future comedy stars Peter Sellers and Terry-Thomas performed for troops under ENSA during WWII.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Britain's wartime troop entertainment organization ___ was founded in 1939 by Basil Dean and Leslie Henson.",
+          "correctAnswer": "ENSA",
+          "distractors": [
+            "USO",
+            "Stars in Battledress",
+            "BBC Forces Programme",
+            "Army Welfare Service"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_bob_hope_uso",
+      "correctAnswer": "1941",
+      "acceptableAlternatives": [],
+      "chainThemeId": 3,
+      "answerTypePoolId": "years",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "1942",
+        "1943",
+        "1940",
+        "1944",
+        "1939",
+        "1945",
+        "1938",
+        "1946"
+      ],
+      "quizQuestion": "Bob Hope performed his first USO show at March Field in California in which year, beginning a half-century of entertaining US troops?",
+      "explanation": "Bob Hope performed his first USO show on May 6, 1941, at March Field, California. He continued performing for US troops through WWII, Korea, Vietnam, and the Gulf War — a total of 57 USO headlining performances over 50 years. In 1997, Congress named him the first \"Honorary Veteran\" in US history in recognition of his decades of troop entertainment.",
+      "statement": "Bob Hope performed his first USO show in 1941 and became the organization's most famous entertainer, earning honorary veteran status from Congress in 1997.",
+      "wowFactor": "Bob Hope was named the first Honorary Veteran in US history by Congress in 1997 — a tribute to a career of troop entertainment spanning five wars over fifty years, from WWII to the Gulf War.",
+      "visualDescription": "Pixel art of a comedian on an outdoor stage in front of thousands of uniformed troops, palm trees in background suggesting Pacific theater, microphone and spotlight",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bob_Hope",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Bob Hope was named the first Honorary Veteran in US history by Congress in which year?",
+          "correctAnswer": "1997",
+          "distractors": [
+            "1945",
+            "1953",
+            "1975",
+            "2003"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many USO headline shows did Bob Hope perform across his 50-year career entertaining US troops?",
+          "correctAnswer": "57",
+          "distractors": [
+            "12",
+            "25",
+            "43",
+            "100"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Bob Hope continued to perform USO shows for US troops well beyond WWII, including tours during Korea and Vietnam.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Bob Hope performed his first USO show at March Field, California, in ___, beginning a 50-year career of entertaining US troops.",
+          "correctAnswer": "1941",
+          "distractors": [
+            "1942",
+            "1940",
+            "1943",
+            "1939"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_anne_frank_diary",
+      "correctAnswer": "1947",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "years",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "1945",
+        "1946",
+        "1948",
+        "1950",
+        "1952",
+        "1944",
+        "1953",
+        "1955"
+      ],
+      "quizQuestion": "In which year did Otto Frank publish his daughter Anne's diary as \"Het Achterhuis\" (The Secret Annex) in Amsterdam?",
+      "explanation": "Anne Frank's diary was published on 25 June 1947 by Contact Publishing in Amsterdam as \"Het Achterhuis\" (The Annex). Otto Frank — the only member of his immediate family to survive the Holocaust — had the diary saved by his secretaries Miep Gies and Bep Voskuijl. It was first published in English in 1952 as \"The Diary of a Young Girl\" and has since been translated into over 70 languages, becoming the most widely read Holocaust memoir.",
+      "statement": "Anne Frank's diary was published in Amsterdam on 25 June 1947 as \"Het Achterhuis\" by her father Otto Frank, the family's only Holocaust survivor.",
+      "wowFactor": "Anne Frank's diary was saved during her arrest by Miep Gies, who gathered the pages from the floor of the annex after the Gestapo raid — she never read them, keeping the diary sealed for Otto Frank's return.",
+      "visualDescription": "Pixel art of a worn red-plaid diary on a wooden desk, attic window showing Amsterdam canal, hidden annex atmosphere with cramped bookshelves",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Diary_of_a_Young_Girl",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who rescued and preserved Anne Frank's diary during the Gestapo raid on the Secret Annex in August 1944?",
+          "correctAnswer": "Miep Gies",
+          "distractors": [
+            "Otto Frank",
+            "Bep Voskuijl",
+            "Jan Gies",
+            "Victor Kugler"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Anne Frank's diary was first published in English in which year, as \"The Diary of a Young Girl\"?",
+          "correctAnswer": "1952",
+          "distractors": [
+            "1947",
+            "1950",
+            "1955",
+            "1960"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Otto Frank was the only member of his immediate family to survive the Holocaust.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Anne Frank's diary was first published in Amsterdam in ___ under the Dutch title \"Het Achterhuis\" (The Secret Annex).",
+          "correctAnswer": "1947",
+          "distractors": [
+            "1945",
+            "1946",
+            "1948",
+            "1950"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_catch22",
+      "correctAnswer": "Joseph Heller",
+      "acceptableAlternatives": ["Heller"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Kurt Vonnegut",
+        "Norman Mailer",
+        "James Jones",
+        "Irwin Shaw",
+        "James Michener",
+        "Herman Wouk",
+        "Leon Uris",
+        "John Horne Burns"
+      ],
+      "quizQuestion": "Who wrote the 1961 satirical WWII novel Catch-22, based partly on his own 60 bombing missions as a B-25 bombardier?",
+      "explanation": "Joseph Heller published Catch-22 in 1961, drawing on his personal experience flying 60 bombing missions from May to October 1944. The novel follows Captain John Yossarian trying to escape further missions while bureaucratic insanity traps him in a logical paradox: to be grounded for insanity you must ask, but asking proves you're sane. The novel sold 10 million copies in the US and is one of the most significant novels of the 20th century.",
+      "statement": "Joseph Heller wrote Catch-22 (1961), a WWII satire based on his 60 bombing missions as a B-25 bombardier — the \"catch\" being that asking to be grounded proves your sanity.",
+      "wowFactor": "The term \"catch-22\" entered the English language as a common idiom meaning a no-win logical paradox — one of the few novel titles to become a dictionary word in its own right.",
+      "visualDescription": "Pixel art of a US Army Air Forces bombardier in a B-25 cockpit looking frustrated, military absurdity conveyed through comically stacked paperwork and chaotic base",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Catch-22",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In Catch-22, what type of aircraft did the protagonist Captain Yossarian fly bombing missions on?",
+          "correctAnswer": "B-25 bomber",
+          "distractors": [
+            "B-17 bomber",
+            "B-29 Superfortress",
+            "P-51 Mustang",
+            "C-47 transport"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "In which year was Catch-22 published?",
+          "correctAnswer": "1961",
+          "distractors": [
+            "1955",
+            "1958",
+            "1964",
+            "1969"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Joseph Heller flew 60 bombing missions in WWII, providing the personal experience that inspired Catch-22.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The 1961 WWII satirical novel Catch-22 was written by ___, based partly on his own experience as a WWII bombardier.",
+          "correctAnswer": "Joseph Heller",
+          "distractors": [
+            "Kurt Vonnegut",
+            "Norman Mailer",
+            "James Jones",
+            "Herman Wouk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_slaughterhouse_five",
+      "correctAnswer": "Dresden",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Hamburg",
+        "Berlin",
+        "Cologne",
+        "Nuremberg",
+        "Stuttgart",
+        "Munich",
+        "Frankfurt",
+        "Leipzig"
+      ],
+      "quizQuestion": "Kurt Vonnegut's 1969 novel Slaughterhouse-Five centers on the Allied firebombing of which German city, which Vonnegut survived as a prisoner of war?",
+      "explanation": "Kurt Vonnegut survived the Allied firebombing of Dresden (February 13-15, 1945) by sheltering in a meat locker of the slaughterhouse where he was held as a POW after capture at the Battle of the Bulge. He emerged to find the city destroyed. His 1969 novel Slaughterhouse-Five processed this trauma through the story of Billy Pilgrim, who \"becomes unstuck in time,\" and is considered one of the greatest anti-war novels ever written.",
+      "statement": "Slaughterhouse-Five (1969) by Kurt Vonnegut centers on the Allied firebombing of Dresden — a city Vonnegut survived as a POW, sheltering in a meat locker.",
+      "wowFactor": "Vonnegut spent 23 years trying to write about Dresden before finally producing Slaughterhouse-Five. He began Chapter 1 by writing: \"I was there\" — inserting himself into the novel about his own inability to process what he witnessed.",
+      "visualDescription": "Pixel art of a lone figure emerging from an underground shelter into a destroyed baroque city, flames and rubble stretching to the horizon, dawn sky",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Slaughterhouse-Five",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who wrote Slaughterhouse-Five (1969), the anti-war novel based on surviving the Allied bombing of Dresden?",
+          "correctAnswer": "Kurt Vonnegut",
+          "distractors": [
+            "Joseph Heller",
+            "Norman Mailer",
+            "James Jones",
+            "Herman Wouk"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Where did Kurt Vonnegut shelter to survive the firebombing of Dresden while a POW?",
+          "correctAnswer": "A meat locker in a slaughterhouse",
+          "distractors": [
+            "A railway tunnel",
+            "A cathedral basement",
+            "A bomb shelter bunker",
+            "An underground factory"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Kurt Vonnegut was present at the firebombing of Dresden as a prisoner of war.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Kurt Vonnegut's Slaughterhouse-Five (1969) is set around the Allied firebombing of ___, which Vonnegut survived as a POW.",
+          "correctAnswer": "Dresden",
+          "distractors": [
+            "Hamburg",
+            "Berlin",
+            "Cologne",
+            "Nuremberg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_v_for_victory",
+      "correctAnswer": "Beethoven's Fifth Symphony",
+      "acceptableAlternatives": ["Symphony No. 5", "Beethoven's Fifth", "Fifth Symphony"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "music_titles",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Beethoven's Ninth Symphony",
+        "Brahms's First Symphony",
+        "Handel's Messiah",
+        "Wagner's Ride of the Valkyries",
+        "Elgar's Enigma Variations",
+        "Holst's The Planets",
+        "Haydn's Surprise Symphony",
+        "Mendelssohn's War March"
+      ],
+      "quizQuestion": "The BBC used the Morse code for the letter V (three dots and a dash) as its wartime call-sign to occupied Europe — the same rhythm as the opening of which famous symphony?",
+      "explanation": "The Morse code for V (dot-dot-dot-dash) matches the famous four-note opening motif of Beethoven's Fifth Symphony — da-da-da-DUM. The BBC broadcast this rhythm as its call-sign to occupied Europe, because the V stood for Victory and the Beethoven motif hammered at Nazi Germany's door. Churchill first used the V hand sign publicly in July 1941 and the symbol spread across the Allied world.",
+      "statement": "The BBC's wartime V-for-Victory Morse code call-sign (dot-dot-dot-dash) matched the opening rhythm of Beethoven's Fifth Symphony, which the BBC broadcast to occupied Europe.",
+      "wowFactor": "Since WWII, Beethoven's Fifth has sometimes been called the \"Victory Symphony\" — the four-note motif that Beethoven wrote in 1808 became the sound of Allied resistance and hope for millions living under Nazi occupation.",
+      "visualDescription": "Pixel art of radio waves in the shape of musical notes spreading across a map of occupied Europe, with a V-for-Victory hand sign and Morse code dashes on the broadcast screen",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Symphony_No._5_(Beethoven)",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In WWII's V-for-Victory campaign, what did the three dots and a dash of Morse code letter V represent?",
+          "correctAnswer": "Victory",
+          "distractors": [
+            "Vengeance",
+            "Valour",
+            "Vigilance",
+            "Vanguard"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "In which year did Prime Minister Churchill first publicly use the V-for-Victory hand sign?",
+          "correctAnswer": "1941",
+          "distractors": [
+            "1940",
+            "1942",
+            "1943",
+            "1939"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Beethoven's Fifth Symphony has sometimes been called the \"Victory Symphony\" because its opening rhythm matches the Morse code for V.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The BBC broadcast the V-for-Victory Morse code rhythm to occupied Europe — it matched the famous opening of ___.",
+          "correctAnswer": "Beethoven's Fifth Symphony",
+          "distractors": [
+            "Beethoven's Ninth Symphony",
+            "Wagner's Ride of the Valkyries",
+            "Handel's Messiah",
+            "Elgar's Enigma Variations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_axis_sally",
+      "correctAnswer": "Mildred Gillars",
+      "acceptableAlternatives": ["Gillars"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Iva Toguri D'Aquino",
+        "Rita Zucca",
+        "Joyce Harte",
+        "Helen Trent",
+        "Margaret Joyce",
+        "Constance Drexel",
+        "Jane Anderson",
+        "Dorothy O'Grady"
+      ],
+      "quizQuestion": "Which American woman, nicknamed \"Axis Sally,\" broadcast Nazi propaganda for German State Radio during WWII and was convicted of treason in 1949?",
+      "explanation": "Mildred Elizabeth Gillars (1900–1988) was an American actress who obtained work with German State Radio on 6 May 1940 and became their highest-paid employee. She broadcast pro-Axis programs to Allied troops and became known as \"Axis Sally.\" She was indicted on September 10, 1948, convicted on one count of treason in March 1949, and sentenced to 10–30 years — becoming the first American woman convicted of treason. She was paroled in 1961.",
+      "statement": "Mildred Gillars (\"Axis Sally\") became Germany's highest-paid radio employee and was the first American woman convicted of treason, sentenced in March 1949.",
+      "wowFactor": "Mildred Gillars became notorious for \"Vision of Invasion,\" a broadcast featuring an American mother dreaming of her son's death at D-Day — recorded before D-Day actually happened, it was the single count on which she was convicted.",
+      "visualDescription": "Pixel art of a woman at a Nazi radio microphone in a Berlin broadcast studio, German state radio equipment and swastika flag visible, 1940s wartime atmosphere",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mildred_Gillars",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "\"Axis Sally\" Mildred Gillars was convicted of treason in 1949 specifically for which broadcast?",
+          "correctAnswer": "Vision of Invasion",
+          "distractors": [
+            "D-Day Address",
+            "The Fallen Soldier",
+            "Home to Mother",
+            "Zero Hour"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Before her treason conviction, Mildred Gillars was notable for being what at German State Radio?",
+          "correctAnswer": "Their highest-paid employee",
+          "distractors": [
+            "Their chief news editor",
+            "Their station manager",
+            "Their technical director",
+            "Their foreign correspondent chief"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Mildred Gillars (\"Axis Sally\") was the first American woman to be convicted of treason.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "\"Axis Sally,\" real name ___, broadcast Nazi propaganda for German State Radio and was convicted of treason in 1949.",
+          "correctAnswer": "Mildred Gillars",
+          "distractors": [
+            "Iva Toguri D'Aquino",
+            "Rita Zucca",
+            "Constance Drexel",
+            "Jane Anderson"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_stars_and_stripes",
+      "correctAnswer": "Over one million",
+      "acceptableAlternatives": ["1 million", "more than one million"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "50,000",
+        "100,000",
+        "250,000",
+        "500,000",
+        "2 million",
+        "5 million",
+        "75,000",
+        "150,000"
+      ],
+      "quizQuestion": "At the height of WWII, what was the estimated circulation of the Stars and Stripes European edition — the official US military newspaper?",
+      "explanation": "Stars and Stripes, the US military newspaper, was reestablished in 1942 (having first appeared in WWI). At the height of US involvement in WWII, the European edition's circulation exceeded one million. The paper was editorially independent from the military chain of command — a protection guaranteed by Congress. Notable WWII contributors included cartoonist Bill Mauldin (who won a Pulitzer in 1945), and future CBS journalist Andy Rooney.",
+      "statement": "The Stars and Stripes European edition reached a WWII circulation of over one million — serving American troops with independent news guaranteed by Congress.",
+      "wowFactor": "Andy Rooney (later of 60 Minutes fame) and Shel Silverstein (the beloved children's author) were both Stars and Stripes journalists — the wartime paper launched two of the most beloved American voices of the 20th century.",
+      "visualDescription": "Pixel art of a US Army newspaper being read by soldiers in a military camp, Stars and Stripes masthead visible, European theater backdrop",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Stars_and_Stripes_(newspaper)",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which WWII-era Stars and Stripes cartoonist created \"Willie and Joe\" and won a Pulitzer Prize in 1945 at age 23?",
+          "correctAnswer": "Bill Mauldin",
+          "distractors": [
+            "Andy Rooney",
+            "Shel Silverstein",
+            "Ernie Pyle",
+            "Rube Goldberg"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Stars and Stripes was reestablished as a daily US military newspaper in which year during WWII?",
+          "correctAnswer": "1942",
+          "distractors": [
+            "1941",
+            "1943",
+            "1940",
+            "1944"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Stars and Stripes was editorially independent from the military chain of command, with its First Amendment protection guaranteed by Congress.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Stars and Stripes European edition reached a WWII peak circulation of ___ copies.",
+          "correctAnswer": "Over one million",
+          "distractors": [
+            "250,000",
+            "500,000",
+            "100,000",
+            "2 million"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_war_bonds",
+      "correctAnswer": "$185.7 billion",
+      "acceptableAlternatives": ["185 billion dollars", "185.7 billion dollars"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "$10 billion",
+        "$50 billion",
+        "$85 billion",
+        "$120 billion",
+        "$250 billion",
+        "$500 billion",
+        "$25 billion",
+        "$300 billion"
+      ],
+      "quizQuestion": "The US government's WWII war bond campaign raised how much money from the American public — making it the largest civilian war financing effort in any nation's history?",
+      "explanation": "The US WWII war bond campaign raised $185.7 billion from 85 million Americans — more than any other country during the war. Series E Savings Bonds were sold starting May 1, 1941 (the first sold to President Roosevelt himself). Bonds were sold at 75 cents per dollar of face value. Movie stars, posters, and radio drives promoted bond purchases as patriotic duty.",
+      "statement": "US WWII war bonds raised $185.7 billion from 85 million Americans — the largest civilian war financing effort in any nation's history.",
+      "wowFactor": "President Roosevelt personally bought the very first Series E war bond on May 1, 1941, from Secretary of the Treasury Henry Morgenthau — a ceremonial purchase designed to launch the campaign with maximum publicity.",
+      "visualDescription": "Pixel art of a WWII-era US Savings Bond certificate with patriotic eagle imagery, queue of civilians at a bond sales counter with an American flag backdrop",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/War_bond",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many Americans purchased WWII war bonds during the US government's bond campaign?",
+          "correctAnswer": "85 million",
+          "distractors": [
+            "10 million",
+            "25 million",
+            "50 million",
+            "120 million"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The first US Series E war bond was sold on May 1, 1941, to which prominent figure?",
+          "correctAnswer": "President Franklin D. Roosevelt",
+          "distractors": [
+            "Secretary of War Henry Stimson",
+            "General Douglas MacArthur",
+            "Secretary of State Cordell Hull",
+            "General George Marshall"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: US WWII war bonds raised more money from civilian purchases than any other country during the war.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The US WWII war bond campaign raised ___ from 85 million Americans — more than any other nation.",
+          "correctAnswer": "$185.7 billion",
+          "distractors": [
+            "$50 billion",
+            "$85 billion",
+            "$120 billion",
+            "$250 billion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_degenerate_art",
+      "correctAnswer": "2 million",
+      "acceptableAlternatives": ["over two million", "2,009,899", "two million"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "50,000",
+        "100,000",
+        "250,000",
+        "500,000",
+        "5 million",
+        "10 million",
+        "75,000",
+        "1 million"
+      ],
+      "quizQuestion": "How many visitors attended the Nazi \"Degenerate Art\" (Entartete Kunst) exhibition in Munich in 1937, which mocked modern art confiscated from German museums?",
+      "explanation": "The Degenerate Art exhibition (Entartete Kunst), organized by the Nazi Party, ran in Munich from 19 July to 30 November 1937. It displayed 650 works confiscated from German museums, presented without frames with derogatory slogans to incite revulsion. It attracted 2,009,899 visitors — averaging 20,000 per day — making it more than three times more popular than the nearby approved \"Great German Art\" exhibition. Over 5,000 works total were seized from museums.",
+      "statement": "The Nazi \"Degenerate Art\" exhibition in Munich (1937) attracted over 2 million visitors — nearly 3.5 times more than the approved Nazi art exhibition held simultaneously.",
+      "wowFactor": "Max Beckmann, one of the artists represented in the Degenerate Art exhibition, fled Germany to Amsterdam on the very day the show opened — July 19, 1937. His works were displayed as examples of corruption while he crossed the border.",
+      "visualDescription": "Pixel art of an exhibition hall with paintings hung crookedly under mocking labels, crowds of curious visitors in 1930s German dress, museum atmosphere turned propaganda space",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Degenerate_Art_exhibition",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many artworks did the Nazis seize from German museums for the Degenerate Art campaign?",
+          "correctAnswer": "Over 5,000",
+          "distractors": [
+            "100",
+            "650",
+            "1,000",
+            "10,000"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Degenerate Art exhibition took place in Munich in 1937. How long did it run?",
+          "correctAnswer": "About four months",
+          "distractors": [
+            "One week",
+            "One month",
+            "Two months",
+            "One year"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Nazi Degenerate Art exhibition attracted more visitors than the approved \"Great German Art\" exhibition held at the same time.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Nazi Entartete Kunst (Degenerate Art) exhibition in Munich in 1937 attracted over ___ visitors, averaging 20,000 per day.",
+          "correctAnswer": "2 million",
+          "distractors": [
+            "500,000",
+            "100,000",
+            "1 million",
+            "5 million"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_martha_gellhorn",
+      "correctAnswer": "Martha Gellhorn",
+      "acceptableAlternatives": ["Gellhorn"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Marguerite Higgins",
+        "Dorothy Thompson",
+        "Lee Miller",
+        "Margaret Bourke-White",
+        "Toni Frissell",
+        "Clare Boothe Luce",
+        "Helen Kirkpatrick",
+        "Ruth Cowan Nash"
+      ],
+      "quizQuestion": "Which pioneering female war correspondent stowed away on a hospital ship to become the only woman to land at Normandy on D-Day, June 6, 1944?",
+      "explanation": "Martha Gellhorn (1908–1998), lacking official press credentials for D-Day, drove to the south coast of England, posed as a nurse, and locked herself in a bathroom aboard a US hospital ship crossing to Normandy. She landed near Omaha Beach and reported with a medical team. For breaching military regulations, she was arrested and stripped of her accreditation. She is considered one of the greatest war correspondents of the 20th century.",
+      "statement": "Martha Gellhorn was the only woman to land at Normandy on D-Day, stowing away on a hospital ship by posing as a nurse — and was arrested for it afterward.",
+      "wowFactor": "Martha Gellhorn covered virtually every major war of the 20th century — the Spanish Civil War (1937), WWII, the Arab-Israeli War, Vietnam, and the US invasion of Panama in 1989, when she was 81 years old.",
+      "visualDescription": "Pixel art of a female journalist in a nurse's uniform crouching on a Normandy beach, landing craft behind her, taking notes in a notebook under fire",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Martha_Gellhorn",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Martha Gellhorn covered her first war as a reporter for Collier's Weekly in 1937 — which conflict was it?",
+          "correctAnswer": "The Spanish Civil War",
+          "distractors": [
+            "The Italian invasion of Ethiopia",
+            "The Second Sino-Japanese War",
+            "The Finnish Winter War",
+            "The Greek-Italian War"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "After stowing away to land at Normandy on D-Day, what happened to Martha Gellhorn?",
+          "correctAnswer": "She was arrested and stripped of her press accreditation",
+          "distractors": [
+            "She was awarded a medal for bravery",
+            "She was evacuated by the military",
+            "She was promoted to official war correspondent",
+            "She was praised in the press for her initiative"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Martha Gellhorn was the only woman to land at Normandy on D-Day, June 6, 1944.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "___ was the only woman to land at Normandy on D-Day, having stowed away on a US hospital ship by posing as a nurse.",
+          "correctAnswer": "Martha Gellhorn",
+          "distractors": [
+            "Lee Miller",
+            "Margaret Bourke-White",
+            "Dorothy Thompson",
+            "Clare Boothe Luce"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_bill_mauldin",
+      "correctAnswer": "Willie and Joe",
+      "acceptableAlternatives": ["Willie & Joe"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "character_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Private Snafu",
+        "Sad Sack",
+        "Beetle Bailey",
+        "Kilroy",
+        "GI Joe and GI Jim",
+        "Dogface and Doughboy",
+        "Buck and Tom",
+        "Pvt. Breger"
+      ],
+      "quizQuestion": "What were the names of the two weary US infantrymen in cartoonist Bill Mauldin's WWII Stars and Stripes comic strip?",
+      "explanation": "Bill Mauldin drew \"Willie and Joe\" for Stars and Stripes from 1940, depicting two unshaven, exhausted GIs that perfectly captured the grunt's-eye view of the war. In 1945, at age 23, Mauldin became one of the youngest Americans to win the Pulitzer Prize for his wartime cartooning. His unsentimental portrayal of ordinary soldiers annoyed General Patton, who tried to have the strip suppressed.",
+      "statement": "Bill Mauldin's Stars and Stripes cartoon characters Willie and Joe — two exhausted GI infantrymen — won him a Pulitzer Prize at age 23 in 1945.",
+      "wowFactor": "General Patton was so offended by Mauldin's unromantic portrayal of dirty, cynical GIs that he summoned Mauldin to his headquarters to personally demand the cartoon be stopped — and failed to stop it.",
+      "visualDescription": "Pixel art of two scruffy unshaven soldiers in battered helmets and muddy uniforms, crouching in rain near ruins, weary expressions, Stars and Stripes newspaper visible",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bill_Mauldin",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Bill Mauldin won the Pulitzer Prize for cartooning in 1945 at what age, making him one of the youngest ever recipients?",
+          "correctAnswer": "23",
+          "distractors": [
+            "19",
+            "25",
+            "28",
+            "30"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which famous US general tried to have Bill Mauldin's Willie and Joe cartoon suppressed because he found it demoralizing?",
+          "correctAnswer": "General Patton",
+          "distractors": [
+            "General Eisenhower",
+            "General Bradley",
+            "General MacArthur",
+            "General Marshall"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Bill Mauldin won two Pulitzer Prizes during his career — one in 1945 for WWII cartooning and one in 1959.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Bill Mauldin's beloved WWII cartoon characters ___ appeared in Stars and Stripes and won him a Pulitzer Prize in 1945.",
+          "correctAnswer": "Willie and Joe",
+          "distractors": [
+            "Private Snafu",
+            "Sad Sack",
+            "Beetle Bailey",
+            "Pvt. Breger"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_reichskulturkammer",
+      "correctAnswer": "22 September 1933",
+      "acceptableAlternatives": ["September 1933", "September 22, 1933"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "1 January 1934",
+        "30 January 1933",
+        "5 March 1933",
+        "15 September 1935",
+        "1 April 1933",
+        "12 November 1933",
+        "7 April 1933",
+        "1 September 1939"
+      ],
+      "quizQuestion": "On what date was Goebbels' Reich Chamber of Culture (Reichskulturkammer) established by law — the body that controlled all German artists, journalists, and musicians?",
+      "explanation": "The Reich Chamber of Culture (Reichskulturkammer, or RKK) was established by law on 22 September 1933, just eight months after Hitler came to power. Every German creative professional — writers, musicians, filmmakers, journalists, visual artists, theatre performers — had to hold membership in one of its seven subdivisions. Membership required proving Aryan descent. Jews, political opponents, and artists deemed \"degenerate\" were excluded, effectively ending their careers.",
+      "statement": "The Reich Chamber of Culture was established on 22 September 1933, requiring all German artists, musicians, and journalists to prove Aryan descent for membership — exclusion meant a professional ban.",
+      "wowFactor": "German journalists had to prove Aryan ancestry back to the year 1800 — and if married, their spouse had to prove the same. This single requirement eliminated thousands of journalists in a matter of months.",
+      "visualDescription": "Pixel art of a German bureaucratic office with Nazi insignia, artists and musicians waiting in line with identity papers, a stern official checking documents",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Reich_Chamber_of_Culture",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What happened to a German artist or musician who was denied membership in the Reich Chamber of Culture?",
+          "correctAnswer": "They were effectively banned from working in their profession",
+          "distractors": [
+            "They were imprisoned immediately",
+            "They were deported",
+            "They were fined but could still work",
+            "They were required to retrain"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "German journalists applying for the Reich Chamber of Culture had to prove Aryan ancestry back to which year?",
+          "correctAnswer": "1800",
+          "distractors": [
+            "1850",
+            "1870",
+            "1900",
+            "1914"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Reich Chamber of Culture had seven subdivisions covering film, music, theatre, press, radio, visual arts, and literature.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Goebbels' Reich Chamber of Culture was established on ___, requiring all German creative professionals to prove Aryan descent for membership.",
+          "correctAnswer": "22 September 1933",
+          "distractors": [
+            "30 January 1933",
+            "15 September 1935",
+            "1 April 1933",
+            "12 November 1933"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_riefenstahl_postwar",
+      "correctAnswer": "Denazification",
+      "acceptableAlternatives": ["denazification proceedings", "Allied denazification"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_processes",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Nuremberg Trials",
+        "De-Baathification",
+        "War crimes tribunal",
+        "Allied military commission",
+        "Lustration proceedings",
+        "Deradicalization program",
+        "Reintegration tribunal",
+        "Allied occupation court"
+      ],
+      "quizQuestion": "After WWII, Leni Riefenstahl was detained by Allied forces and put through which formal process, ultimately being cleared of complicity in Nazi war crimes?",
+      "explanation": "After Germany's defeat, Riefenstahl was detained by Allied forces and subjected to denazification proceedings. She was officially cleared of complicity in Nazi war crimes, but was blacklisted and unable to make films professionally for decades. She spent the rest of her long life insisting she had been an artist, not a propagandist — a claim historians have widely disputed. She died on September 8, 2003, aged 101.",
+      "statement": "After WWII, Leni Riefenstahl underwent Allied denazification proceedings and was officially cleared of war crimes, but was blacklisted and could not work in film for decades.",
+      "wowFactor": "Riefenstahl lived to age 101, dying in 2003 — meaning one of the creators of the most famous Nazi propaganda film lived long enough to see it screened and debated at film festivals in the 21st century.",
+      "visualDescription": "Pixel art of a woman in postwar Germany standing before an Allied military tribunal desk, the contrast between her former glamour and the bleak denazification proceedings",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leni_Riefenstahl",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Although cleared by Allied denazification proceedings, Leni Riefenstahl faced what professional consequence after WWII?",
+          "correctAnswer": "She was blacklisted and could not work in film",
+          "distractors": [
+            "She was imprisoned for five years",
+            "She was deported from Germany",
+            "She was fined her entire wartime earnings",
+            "She was required to make Allied propaganda films"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "At what age did Leni Riefenstahl die in September 2003?",
+          "correctAnswer": "101",
+          "distractors": [
+            "82",
+            "88",
+            "95",
+            "107"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Leni Riefenstahl was convicted of war crimes at the Nuremberg Trials.",
+          "correctAnswer": "False",
+          "distractors": [
+            "True"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After WWII, Leni Riefenstahl underwent Allied ___ proceedings and was officially cleared of war crimes, but was blacklisted from the film industry.",
+          "correctAnswer": "denazification",
+          "distractors": [
+            "Nuremberg Trial",
+            "war crimes tribunal",
+            "occupation court",
+            "reintegration"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_goebbels_death",
+      "correctAnswer": "1 May 1945",
+      "acceptableAlternatives": ["May 1, 1945", "May 1945"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "30 April 1945",
+        "8 May 1945",
+        "20 April 1945",
+        "2 May 1945",
+        "10 May 1945",
+        "23 April 1945",
+        "7 May 1945",
+        "15 April 1945"
+      ],
+      "quizQuestion": "On which date in 1945 did Joseph Goebbels die by suicide in Berlin — one day after Hitler's death — after having his six children killed?",
+      "explanation": "On the night of 1 May 1945, after Adolf Hitler's suicide the previous day, Joseph Goebbels and his wife Magda killed their six children with cyanide in the Berlin Führerbunker, then Goebbels committed suicide alongside his wife. Goebbels had been appointed Reich Chancellor by Hitler's will the day before his own death, making him Chancellor for less than 24 hours.",
+      "statement": "Joseph Goebbels died by suicide on 1 May 1945, one day after Hitler's death, after he and his wife killed their six children — the day he had technically become Reich Chancellor.",
+      "wowFactor": "Hitler's final testament appointed Goebbels as Reich Chancellor — making him Chancellor of Germany for less than 24 hours before he took his own life, the shortest chancellorship in German history.",
+      "visualDescription": "Pixel art of the ruined Berlin Führerbunker exterior in early May 1945, Soviet flags on distant buildings, smoldering ruins of the Reich Chancellery",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Goebbels",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What title did Hitler's final testament posthumously give to Joseph Goebbels — making him effectively head of Germany for less than 24 hours?",
+          "correctAnswer": "Reich Chancellor",
+          "distractors": [
+            "Führer",
+            "Reich President",
+            "Reichsminister",
+            "Supreme Commander"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many of Goebbels' children were killed before his suicide in the Berlin bunker on 1 May 1945?",
+          "correctAnswer": "Six",
+          "distractors": [
+            "Two",
+            "Three",
+            "Four",
+            "Eight"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Joseph Goebbels was appointed Reich Chancellor in Hitler's final testament before dying by suicide on 1 May 1945.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Joseph Goebbels died by suicide on ___ in the Berlin bunker, one day after Hitler, after the killing of his six children.",
+          "correctAnswer": "1 May 1945",
+          "distractors": [
+            "30 April 1945",
+            "8 May 1945",
+            "2 May 1945",
+            "20 April 1945"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_wc_sportpalast_speech",
+      "correctAnswer": "18 February 1943",
+      "acceptableAlternatives": ["February 18, 1943", "February 1943"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "1 September 1939",
+        "22 June 1941",
+        "19 November 1942",
+        "31 January 1943",
+        "8 May 1945",
+        "30 January 1942",
+        "5 July 1943",
+        "6 June 1944"
+      ],
+      "quizQuestion": "On which date did Goebbels deliver his famous \"Total War\" speech at the Berlin Sportpalast, asking a hand-picked crowd if they wanted \"total war\"?",
+      "explanation": "On 18 February 1943 — just weeks after the catastrophic German defeat at Stalingrad — Goebbels delivered the Sportpalast speech to a carefully selected audience. He asked ten escalating rhetorical questions, each answered with thunderous \"Yes!\" and \"Jawohl!\" from the crowd. His climactic question — \"Do you want total war?\" — became one of history's most chilling propaganda moments. The speech was broadcast nationally and aimed to steel German resolve after Stalingrad.",
+      "statement": "Goebbels' \"Total War\" speech at the Berlin Sportpalast on 18 February 1943 — three weeks after Stalingrad — used staged crowd responses to manufacture the illusion of national fanatical unity.",
+      "wowFactor": "The Sportpalast audience was so carefully selected that even Goebbels later privately admitted it looked like a \"completely staged\" performance — his own diary noted that the crowd was handpicked from Nazi Party loyalists to guarantee the desired responses.",
+      "visualDescription": "Pixel art of a Nazi propaganda minister at a massive indoor arena podium, thousands of uniformed figures with arms raised, dramatic spotlights and swastika banners",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sportpalast_speech",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Goebbels' \"Total War\" speech came weeks after which catastrophic German military defeat, as an attempt to rebuild German morale?",
+          "correctAnswer": "The Battle of Stalingrad",
+          "distractors": [
+            "The Battle of El Alamein",
+            "The Battle of Kursk",
+            "The fall of Tunisia",
+            "The Allied landings in Sicily"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What was the climactic rhetorical question Goebbels asked his audience in the Sportpalast speech?",
+          "correctAnswer": "\"Do you want total war?\"",
+          "distractors": [
+            "\"Will Germany fight to the last man?\"",
+            "\"Are you ready to die for the Fatherland?\"",
+            "\"Shall we destroy our enemies?\"",
+            "\"Will you follow the Führer to victory?\""
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The audience at Goebbels' Sportpalast \"Total War\" speech was carefully selected from Nazi Party loyalists.",
+          "correctAnswer": "True",
+          "distractors": [
+            "False"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Goebbels' famous \"Total War\" speech was delivered at the Berlin Sportpalast on ___, weeks after the German defeat at Stalingrad.",
+          "correctAnswer": "18 February 1943",
+          "distractors": [
+            "1 September 1939",
+            "31 January 1943",
+            "22 June 1941",
+            "5 July 1943"
+          ]
+        }
+      ]
+    }
+  ]
+}

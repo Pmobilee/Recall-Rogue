@@ -1,0 +1,2226 @@
+{
+  "id": "wwii_china_sea_01",
+  "name": "WWII — China & Southeast Asia",
+  "domain": "history",
+  "subDomain": "world_war_ii",
+  "description": "The forgotten fronts of World War II — from the jungles of Burma to the streets of Nanjing, from the supply lines over the Himalayas to the forests of Imphal. These were the wars within a war, where China bled for eight years, jungle fighters rewrote the rules of combat, and the fate of Asia was decided.",
+  "minimumFacts": 30,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "wwii_cs_marco_polo_date",
+      "correctAnswer": "July 7, 1937",
+      "acceptableAlternatives": ["7 July 1937", "July 7th 1937"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "On what date did the Marco Polo Bridge Incident spark the Second Sino-Japanese War?",
+      "explanation": "On the night of 7 July 1937, Japanese garrison troops at the Lugou Bridge (Marco Polo Bridge) near Beijing alleged a soldier was missing and demanded entry into Wanping city. The missing soldier had already returned to his unit, but fighting broke out anyway at 04:50 on 8 July. Unlike earlier Sino-Japanese incidents, tensions did not subside — both sides escalated, triggering full-scale war across China.",
+      "statement": "The Marco Polo Bridge Incident on July 7, 1937 began the Second Sino-Japanese War.",
+      "wowFactor": "The alleged missing Japanese soldier had actually already returned to his unit before the shooting started — the entire incident began over a soldier who was never actually missing.",
+      "visualDescription": "Pixel art of an ancient stone bridge at night, lanterns flickering, silhouettes of soldiers on both ends with rifles raised in tense standoff",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo_Bridge_incident",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "September 18, 1931",
+        "December 7, 1941",
+        "August 13, 1937",
+        "October 3, 1936",
+        "January 28, 1932",
+        "March 7, 1936",
+        "May 9, 1936",
+        "April 6, 1937"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Marco Polo Bridge Incident is considered the start of which war?",
+          "correctAnswer": "The Second Sino-Japanese War",
+          "distractors": [
+            "The First Sino-Japanese War",
+            "The Pacific War",
+            "The Korean War",
+            "The Manchurian Incident"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Marco Polo Bridge Incident of 1937 took place near which city?",
+          "correctAnswer": "Beijing",
+          "distractors": [
+            "Shanghai",
+            "Nanjing",
+            "Wuhan",
+            "Tianjin"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Marco Polo Bridge Incident in July 1937 is generally regarded as the start of the Second Sino-Japanese War.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Incident on July 7, 1937 triggered the full-scale Second Sino-Japanese War.",
+          "correctAnswer": "Marco Polo Bridge",
+          "distractors": [
+            "Mukden",
+            "Manchurian",
+            "Shanghai",
+            "Nanjing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_nanjing_massacre_date",
+      "correctAnswer": "December 13, 1937",
+      "acceptableAlternatives": ["13 December 1937", "December 1937"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dates",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "On what date did Japanese forces enter Nanjing, beginning the six-week massacre?",
+      "explanation": "Japanese forces captured China's capital Nanjing on December 13, 1937, triggering what historians call the Nanjing Massacre (or Rape of Nanjing). Over the following six weeks, Imperial Japanese Army troops committed mass murder and rape on a catastrophic scale. The International Military Tribunal for the Far East estimated at least 200,000 murders and 20,000 rapes. The event remains one of the worst atrocities of the 20th century.",
+      "statement": "Japanese forces entered Nanjing on December 13, 1937, beginning six weeks of mass atrocity.",
+      "wowFactor": "A small group of Western businessmen and diplomats led by John Rabe (a Nazi Party member) established a Safety Zone that sheltered roughly 200,000 Chinese civilians from the massacre.",
+      "visualDescription": "Pixel art of a walled city gate at dusk, smoke rising from buildings within, the sky a dark orange-red, silent and ominous",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nanjing_Massacre",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "August 13, 1937",
+        "October 25, 1938",
+        "November 9, 1937",
+        "January 15, 1938",
+        "December 7, 1941",
+        "March 12, 1938",
+        "February 1, 1938",
+        "September 22, 1937"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "For approximately how long did the Nanjing Massacre last according to traditional historiography?",
+          "correctAnswer": "Six weeks",
+          "distractors": [
+            "Three days",
+            "Three months",
+            "One week",
+            "Six months"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What was the minimum death toll estimated by the International Military Tribunal for the Far East for the Nanjing Massacre?",
+          "correctAnswer": "200,000",
+          "distractors": [
+            "20,000",
+            "40,000",
+            "500,000",
+            "100,000"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Nanjing Massacre began after Japanese forces captured China's capital city in December 1937.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After capturing China's capital on December 13, 1937, Japanese forces committed the ___ Massacre.",
+          "correctAnswer": "Nanjing",
+          "distractors": [
+            "Shanghai",
+            "Wuhan",
+            "Beijing",
+            "Chongqing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_nanjing_deaths",
+      "correctAnswer": "200,000",
+      "acceptableAlternatives": ["at least 200,000", "200,000 to 300,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "How many people did the International Military Tribunal for the Far East estimate were killed in the Nanjing Massacre?",
+      "explanation": "The International Military Tribunal for the Far East (the Tokyo War Crimes Tribunal) estimated that more than 200,000 people were murdered during the Nanjing Massacre. China's official figure is 300,000. Modern scholarly estimates range broadly from 100,000 to over 300,000. The Chinese government officially commemorates December 13 as National Memorial Day for Nanjing Massacre Victims.",
+      "statement": "The IMTFE estimated over 200,000 killed in the Nanjing Massacre; China's official figure is 300,000.",
+      "wowFactor": "The massacre is still politically contentious today — Japan's government and some Japanese historians dispute the scale, while the Chinese government mandates annual national ceremonies of remembrance.",
+      "visualDescription": "Pixel art memorial monument of stone, surrounded by mournful figures in black, candles burning at the base under a grey sky",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nanjing_Massacre",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "50,000",
+        "6,000",
+        "500,000",
+        "1,000,000",
+        "80,000",
+        "150,000",
+        "25,000",
+        "350,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which international tribunal estimated 200,000+ deaths in the Nanjing Massacre?",
+          "correctAnswer": "The International Military Tribunal for the Far East",
+          "distractors": [
+            "The Nuremberg Tribunal",
+            "The Geneva Convention Committee",
+            "The League of Nations Commission",
+            "The United Nations War Crimes Commission"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What date does China observe as National Memorial Day for the Nanjing Massacre?",
+          "correctAnswer": "December 13",
+          "distractors": [
+            "December 7",
+            "August 15",
+            "September 3",
+            "November 11"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: China's official death toll figure for the Nanjing Massacre is 300,000.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Tokyo War Crimes Tribunal estimated at least ___ people were killed in the Nanjing Massacre.",
+          "correctAnswer": "200,000",
+          "distractors": [
+            "50,000",
+            "500,000",
+            "100,000",
+            "1,000,000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_sino_japanese_duration",
+      "correctAnswer": "Eight years",
+      "acceptableAlternatives": ["8 years", "1937 to 1945"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "durations",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "For how long did the Second Sino-Japanese War last, from the Marco Polo Bridge Incident to Japan's surrender?",
+      "explanation": "The Second Sino-Japanese War ran from July 7, 1937 to September 2, 1945 — eight years. It is considered the largest Asian war of the 20th century, merging into the broader Pacific War after Japan attacked Pearl Harbor in December 1941. China fought largely alone for the first four years. An academic estimate places total Chinese casualties (military and civilian) at between 15 and 20 million dead.",
+      "statement": "The Second Sino-Japanese War lasted eight years (1937–1945), the largest Asian war of the 20th century.",
+      "wowFactor": "China had been fighting Japan since 1937 — more than four years before Pearl Harbor. By the time the US entered the war, China had already suffered millions of casualties fighting essentially alone.",
+      "visualDescription": "Pixel art map of China with red arrows pushing in from the east, year counter showing 1937-1945, smoke rising from multiple cities",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "Four years",
+        "Six years",
+        "Three years",
+        "Five years",
+        "Ten years",
+        "Two years",
+        "Twelve years",
+        "Nine years"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In what year did the Second Sino-Japanese War officially begin with the Marco Polo Bridge Incident?",
+          "correctAnswer": "1937",
+          "distractors": ["1931", "1939", "1941", "1935"]
+        },
+        {
+          "type": "context",
+          "question": "Conservative academic estimates place total Chinese casualties in the Second Sino-Japanese War at between how many dead?",
+          "correctAnswer": "15 to 20 million",
+          "distractors": [
+            "1 to 2 million",
+            "5 to 8 million",
+            "25 to 30 million",
+            "3 to 4 million"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Second Sino-Japanese War is considered the largest Asian war of the 20th century.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Second Sino-Japanese War lasted from 1937 to ___, a period of eight years.",
+          "correctAnswer": "1945",
+          "distractors": ["1943", "1944", "1946", "1942"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_battle_shanghai_1937",
+      "correctAnswer": "August 13, 1937",
+      "acceptableAlternatives": ["13 August 1937", "August 1937"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did the largest and longest battle of the Second Sino-Japanese War begin?",
+      "explanation": "The Battle of Shanghai began on August 13, 1937, and lasted until November 26, 1937 — over three months. Widely regarded as the single largest and longest battle of the entire Second Sino-Japanese War, it involved massive urban fighting through one of Asia's most densely populated cities. Both sides committed enormous resources. The battle ended with Chinese forces withdrawing, but had demonstrated that China would fight fiercely rather than collapse.",
+      "statement": "The Battle of Shanghai began August 13, 1937 — the largest and longest single battle of the Second Sino-Japanese War.",
+      "wowFactor": "On 'Bloody Saturday' (August 14, 1937), Chinese bombs accidentally struck two crowded refugee areas in Shanghai's International Settlement, killing over 1,000 civilians in a single day.",
+      "visualDescription": "Pixel art of a burning Shanghai waterfront, dockside warehouses in flames, warships in the river, dark smoke billowing into a red sky",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Shanghai",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "July 7, 1937",
+        "December 13, 1937",
+        "October 1, 1937",
+        "September 5, 1937",
+        "June 15, 1937",
+        "March 8, 1937",
+        "November 1, 1937",
+        "January 28, 1937"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How long did the Battle of Shanghai last in 1937?",
+          "correctAnswer": "Over three months",
+          "distractors": [
+            "Three days",
+            "Two weeks",
+            "Six months",
+            "One month"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What is the nickname for August 14, 1937, when Chinese bombs accidentally struck refugee areas in Shanghai's International Settlement?",
+          "correctAnswer": "Bloody Saturday",
+          "distractors": [
+            "Black Sunday",
+            "Dark Tuesday",
+            "Red Wednesday",
+            "Terrible Thursday"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Battle of Shanghai (1937) is considered the single largest and longest battle of the entire Second Sino-Japanese War.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Battle of ___ in August–November 1937 was the largest single battle of the Second Sino-Japanese War.",
+          "correctAnswer": "Shanghai",
+          "distractors": [
+            "Nanjing",
+            "Wuhan",
+            "Beijing",
+            "Chongqing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_unit_731_leader",
+      "correctAnswer": "Shirō Ishii",
+      "acceptableAlternatives": ["Shiro Ishii", "General Ishii"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Who was the founder and commander of Japan's Unit 731 biological warfare program?",
+      "explanation": "General Shirō Ishii founded Unit 731 in 1936 and led its program of biological and chemical warfare research combined with lethal human experimentation. Prisoners — mainly Chinese civilians — were referred to as 'logs' by the staff. An estimated 14,000 people were killed inside the facility. After the war, MacArthur secretly granted Ishii and other Unit 731 personnel immunity from prosecution in exchange for exclusive American access to their biological warfare data.",
+      "statement": "General Shirō Ishii founded and led Unit 731, Japan's biological warfare unit, from 1936.",
+      "wowFactor": "Ishii died of throat cancer in 1959 — a free man — because the US government secretly granted him and his team immunity from war crimes prosecution in exchange for their experimental data on biological warfare.",
+      "visualDescription": "Pixel art of a secretive military research compound in Manchuria, surrounded by high walls and watchtowers, Japanese military flag flying above cold grey buildings",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Unit_731",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "Hideki Tojo",
+        "Isoroku Yamamoto",
+        "Masaharu Homma",
+        "Tomoyuki Yamashita",
+        "Iwane Matsui",
+        "Kenji Doihara",
+        "Seishiro Itagaki",
+        "Kotohito Kanin"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Unit 731 was a secret Japanese military unit dedicated to what type of research?",
+          "correctAnswer": "Biological and chemical warfare with human experimentation",
+          "distractors": [
+            "Nuclear weapons development",
+            "Naval code breaking",
+            "Aerial bomb guidance systems",
+            "Tank armor development"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What deal did General MacArthur make with Unit 731 personnel after World War II?",
+          "correctAnswer": "Granted them immunity from prosecution in exchange for their biological warfare research data",
+          "distractors": [
+            "Had them tried and executed at the Tokyo Tribunal",
+            "Imprisoned them for life without trial",
+            "Exiled them to the Soviet Union",
+            "Publicly honored them for preventing a US invasion of Japan"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Unit 731 was founded in 1936 and conducted biological warfare experiments and lethal human experimentation on prisoners.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Unit 731's biological warfare experiments in China killed an estimated ___ people inside the facility itself.",
+          "correctAnswer": "14,000",
+          "distractors": [
+            "1,000",
+            "100,000",
+            "500",
+            "50,000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_unit_731_deaths",
+      "correctAnswer": "200,000 to 500,000",
+      "acceptableAlternatives": ["hundreds of thousands", "up to 500,000"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "How many people are estimated to have died from Unit 731's biological weapons attacks on Chinese cities and villages?",
+      "explanation": "Unit 731's biological weapons — plague-infected fleas, anthrax, cholera, typhoid — were deployed against Chinese cities and villages in deliberate attacks. The first campaign (1940–1942) dispersed plague-infected fleas in port cities in northern China. A second campaign in 1943 used anthrax and glanders against villages southwest of Shanghai. Estimates for total deaths from these external attacks range from 200,000 to 500,000 — separate from the 14,000 killed in the facility itself.",
+      "statement": "Unit 731's biological weapons attacks on Chinese cities and villages killed an estimated 200,000 to 500,000 people.",
+      "wowFactor": "Unit 731 tested biological weapons by releasing plague-infected fleas from aircraft over Chinese cities — an act of biological warfare that caused real outbreaks killing tens of thousands of civilians.",
+      "visualDescription": "Pixel art of a dark aircraft dropping cylindrical containers over a Chinese city at night, small glowing particles dispersing in the moonlight",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Unit_731",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "10,000 to 20,000",
+        "1 million to 2 million",
+        "5,000 to 10,000",
+        "50,000 to 80,000",
+        "3 million",
+        "800,000 to 1 million",
+        "30,000 to 50,000",
+        "100,000 to 150,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What type of biological agent did Unit 731 disperse from aircraft over northern Chinese port cities in its first campaign (1940–1942)?",
+          "correctAnswer": "Plague-infected fleas",
+          "distractors": [
+            "Anthrax spores",
+            "Cholera-contaminated water",
+            "Smallpox virus aerosol",
+            "Typhoid-laced food drops"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "In what years did Unit 731 conduct its first biological weapons campaign, dispersing plague-infected fleas over Chinese cities?",
+          "correctAnswer": "1940 to 1942",
+          "distractors": [
+            "1937 to 1938",
+            "1943 to 1944",
+            "1944 to 1945",
+            "1936 to 1937"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Unit 731's biological weapons campaigns outside the facility are estimated to have killed between 200,000 and 500,000 people.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Unit 731's second biological weapons campaign in 1943 used ___ and glanders against Chinese villages southwest of Shanghai.",
+          "correctAnswer": "Anthrax",
+          "distractors": [
+            "Plague",
+            "Cholera",
+            "Smallpox",
+            "Typhoid"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_fall_of_hong_kong",
+      "correctAnswer": "December 25, 1941",
+      "acceptableAlternatives": ["25 December 1941", "Christmas Day 1941"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "dates",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "On what date did Hong Kong surrender to Japan, a day now remembered there as 'Black Christmas'?",
+      "explanation": "The Battle of Hong Kong lasted from 8 to 25 December 1941 — 17 days. Japan attacked simultaneously with the Pearl Harbor strike. After the British abandoned Kowloon and the New Territories within the first week, the garrison made a final stand on Hong Kong Island. At 15:30 on 25 December, Governor Young and General Maltby surrendered to General Sakai at the Peninsula Hotel. It was the first time a British Crown Colony had ever surrendered to an invading force.",
+      "statement": "Hong Kong surrendered to Japan on December 25, 1941 — 'Black Christmas' — the first British Crown Colony to fall to an invader.",
+      "wowFactor": "The surrender took place in the Peninsula Hotel — the most luxurious hotel in Hong Kong — at a meeting on the hotel's third floor, with Japan choosing the venue deliberately for its symbolic humiliation.",
+      "visualDescription": "Pixel art of Hong Kong harbour at dusk, warships in the water, Union Jack being lowered from a colonial government building as Japanese soldiers march below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Hong_Kong",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "December 7, 1941",
+        "February 15, 1942",
+        "January 2, 1942",
+        "December 8, 1941",
+        "December 10, 1941",
+        "November 25, 1941",
+        "January 15, 1942",
+        "December 31, 1941"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many days did the Battle of Hong Kong last before its surrender on December 25, 1941?",
+          "correctAnswer": "17 days",
+          "distractors": [
+            "3 days",
+            "7 days",
+            "25 days",
+            "42 days"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Where did Governor Young and General Maltby formally surrender Hong Kong to Japan on December 25, 1941?",
+          "correctAnswer": "The Peninsula Hotel",
+          "distractors": [
+            "Government House",
+            "The Hong Kong Club",
+            "Murray Barracks",
+            "Victoria Harbour naval base"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The fall of Hong Kong on December 25, 1941 was the first occasion a British Crown Colony had surrendered to an invading force.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "December 25, 1941 is known in Hong Kong as '___ Christmas' due to the British surrender that day.",
+          "correctAnswer": "Black",
+          "distractors": [
+            "Dark",
+            "Red",
+            "Bloody",
+            "Silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_sook_ching_dates",
+      "correctAnswer": "February 18 to March 4, 1942",
+      "acceptableAlternatives": ["18 February to 4 March 1942", "February–March 1942"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "During what period did Japanese forces carry out the Sook Ching massacre of ethnic Chinese in Singapore?",
+      "explanation": "The Sook Ching (meaning 'purge through cleansing' in Cantonese) took place from 18 February to 4 March 1942, just three days after Singapore's fall. All Chinese men aged 18 to 50 were ordered to report to registration centres. The Kempeitai (military police) screened them for 'anti-Japanese' elements. Those who failed were taken to outlying areas and shot. Japan later acknowledged the massacre but claimed only about 6,000 died; Singapore's first prime minister Lee Kuan Yew estimated up to 70,000 across Malaya.",
+      "statement": "The Sook Ching massacre of Singapore's Chinese community ran from February 18 to March 4, 1942, three days after the city fell.",
+      "wowFactor": "Those who passed the screening were released with 'Examined' stamped on their foreheads, faces, or clothes — a rubber stamp that meant life or death, applied by Kempeitai officers who often had no clear criteria.",
+      "visualDescription": "Pixel art of a crowded registration centre, long queues of Chinese civilians under armed Japanese guard, wooden checkpoints in harsh tropical sunlight",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sook_Ching",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "December 8–25, 1941",
+        "January 1–15, 1942",
+        "March 10–25, 1942",
+        "April 1–14, 1942",
+        "February 15, 1942 only",
+        "May 1–20, 1942",
+        "February 1–17, 1942",
+        "March 5–20, 1942"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Sook Ching massacre primarily targeted which ethnic group in Singapore after its fall in February 1942?",
+          "correctAnswer": "Ethnic Chinese",
+          "distractors": [
+            "British colonials",
+            "Malay Muslims",
+            "Indian civilians",
+            "Australian prisoners of war"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What did Japan claim was the death toll of the Sook Ching massacre, versus Lee Kuan Yew's estimate for all of Malaya?",
+          "correctAnswer": "Japan claimed 6,000; Lee Kuan Yew estimated up to 70,000",
+          "distractors": [
+            "Japan claimed 50,000; Lee Kuan Yew estimated 200,000",
+            "Japan claimed 500; Lee Kuan Yew estimated 10,000",
+            "Japan claimed 20,000; Lee Kuan Yew estimated 100,000",
+            "Japan claimed 1,000; Lee Kuan Yew estimated 30,000"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Sook Ching massacre began three days after Singapore's fall on February 15, 1942.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "During Sook Ching, Chinese males who passed Japanese screening were released with '___ ' stamped on their faces or arms.",
+          "correctAnswer": "Examined",
+          "distractors": [
+            "Released",
+            "Cleared",
+            "Safe",
+            "Approved"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_burma_road_length",
+      "correctAnswer": "717 miles",
+      "acceptableAlternatives": ["1,154 km", "about 717 miles", "roughly 720 miles"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "measurements",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "How long was the Burma Road that linked Lashio, Burma to Kunming, China?",
+      "explanation": "The Burma Road stretched 717 miles (1,154 km) through rough mountain terrain. Built in 1937–1938 by 200,000 Burmese and Chinese laborers, it ran from Lashio in Burma to Kunming in China's Yunnan province. It was the primary overland supply route for China until Japan captured Rangoon in March 1942 and cut it off, forcing the Allies to develop the aerial Hump route over the Himalayas instead.",
+      "statement": "The Burma Road was 717 miles long, linking Lashio in Burma to Kunming in China's Yunnan province.",
+      "wowFactor": "200,000 Chinese and Burmese laborers built the entire 717-mile road in just two years (1937–1938) — much of it through some of Asia's most rugged mountain terrain — with only hand tools.",
+      "visualDescription": "Pixel art of a winding mountain road cut into steep jungle-covered hillsides, a line of supply trucks and pack mules stretching into misty distance",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Burma_Road",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "300 miles",
+        "1,072 miles",
+        "250 miles",
+        "500 miles",
+        "900 miles",
+        "1,500 miles",
+        "400 miles",
+        "600 miles"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What were the two terminal cities of the Burma Road supply route built in 1937–1938?",
+          "correctAnswer": "Lashio (Burma) and Kunming (China)",
+          "distractors": [
+            "Rangoon and Chongqing",
+            "Mandalay and Beijing",
+            "Myitkyina and Shanghai",
+            "Imphal and Chengdu"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What event in 1942 forced the Allies to abandon the Burma Road as China's primary supply route?",
+          "correctAnswer": "Japan's capture of Rangoon, cutting off the road",
+          "distractors": [
+            "A massive Japanese air campaign destroyed the road surface",
+            "China redirected all supplies by sea to Shanghai",
+            "The road was permanently flooded by monsoon rains",
+            "Chiang Kai-shek ordered the road closed to prevent Japanese use"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Burma Road was built in 1937–1938 by approximately 200,000 Burmese and Chinese laborers.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Burma Road ran from Lashio in Burma to ___, the capital of China's Yunnan province.",
+          "correctAnswer": "Kunming",
+          "distractors": [
+            "Chongqing",
+            "Chengdu",
+            "Guilin",
+            "Guiyang"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_the_hump",
+      "correctAnswer": "The Hump",
+      "acceptableAlternatives": ["Hump route", "the Hump airlift"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "place_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What name did Allied pilots give to the dangerous aerial supply route flown over the eastern Himalayas from India to China?",
+      "explanation": "After Japan cut the Burma Road in March 1942 by capturing Rangoon, Allied pilots flew cargo over the eastern end of the Himalayan Mountains — nicknamed 'The Hump.' Flying over the Himalayas was extremely dangerous due to unreliable charts, no radio navigation aids, and unpredictable weather. In May 1943, President Roosevelt ordered deliveries of 10,000 tons per month to China by September 1943. Three aircraft types were trialled — C-47, C-46, and C-87/C-109 — before a low Hump route permitted use of C-54s.",
+      "statement": "Allied pilots called the Himalayan aerial supply route to China 'The Hump' — the only link to China after Japan cut the Burma Road in 1942.",
+      "wowFactor": "Flying 'The Hump' was so dangerous that for every ton of aviation fuel delivered to China, roughly one gallon of fuel was consumed by the aircraft carrying it — making it perhaps the most logistically inefficient supply route in military history.",
+      "visualDescription": "Pixel art of a lone C-46 transport aircraft banking through a storm over ice-capped Himalayan peaks, clouds swirling dangerously close to the wing tips",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Hump",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "The Ridge",
+        "The Corridor",
+        "The Roof",
+        "The Peak",
+        "The Wall",
+        "The Pass",
+        "The Spine",
+        "The Arch"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Why did Allied forces need to create the Hump airlift over the Himalayas in 1942?",
+          "correctAnswer": "Japan captured Rangoon and cut the Burma Road supply line to China",
+          "distractors": [
+            "The Burma Road was too slow to move enough supplies",
+            "China requested air deliveries instead of ground transport",
+            "The monsoon floods made the Burma Road impassable year-round",
+            "The Ledo Road was still under construction and not yet open"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "At the Trident Conference in May 1943, Roosevelt ordered The Hump airlift to deliver how many tons per month to China by September 1943?",
+          "correctAnswer": "10,000 tons",
+          "distractors": [
+            "1,000 tons",
+            "5,000 tons",
+            "25,000 tons",
+            "50,000 tons"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Hump airlift route over the Himalayas was created after Japan cut the Burma Road by capturing Rangoon in 1942.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Hump airlift flew supplies from ___ to China over the eastern Himalayas.",
+          "correctAnswer": "India",
+          "distractors": [
+            "Australia",
+            "Burma",
+            "Ceylon",
+            "The Philippines"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_ledo_road_length",
+      "correctAnswer": "1,726 kilometres",
+      "acceptableAlternatives": ["1,072 miles", "roughly 1,700 km", "1,072 mi"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "measurements",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "How long was the Ledo Road, the Allied overland supply route built through India and Burma to replace the cut Burma Road?",
+      "explanation": "The Ledo Road stretched 1,726 km (1,072 miles) — 61 km in India, 1,033 km in Burma, and 632 km in China — from Ledo in Assam to Kunming. Construction began in December 1942 and was built by 15,000 American soldiers (60 percent African-American) and 35,000 local workers at a cost of approximately $150 million. The human toll was described as 'A Man A Mile' — over 1,100 Americans died in its construction.",
+      "statement": "The Ledo Road was 1,726 km (1,072 miles) long, built at a human cost described as 'a man a mile.'",
+      "wowFactor": "60 percent of the American soldiers who built the Ledo Road were African-American — a remarkable fact given the segregated US Army of 1942–1945. They worked in brutal jungle conditions building one of the war's most ambitious engineering projects.",
+      "visualDescription": "Pixel art of African-American US Army engineers hacking a road through dense jungle with heavy machinery, mountains looming ahead in morning mist",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ledo_Road",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "500 kilometres",
+        "3,000 kilometres",
+        "800 kilometres",
+        "400 kilometres",
+        "2,500 kilometres",
+        "1,200 kilometres",
+        "250 kilometres",
+        "600 kilometres"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What percentage of the American soldiers who built the Ledo Road were African-American?",
+          "correctAnswer": "60 percent",
+          "distractors": [
+            "10 percent",
+            "25 percent",
+            "90 percent",
+            "40 percent"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many Americans died during the construction of the Ledo Road, giving rise to the phrase 'a man a mile'?",
+          "correctAnswer": "Over 1,100",
+          "distractors": [
+            "About 50",
+            "Over 5,000",
+            "Fewer than 100",
+            "About 500"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Construction of the Ledo Road began in December 1942, with 60 percent of the American military labor force being African-American soldiers.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Ledo Road's human construction toll was described as '___ a ___' due to the more than 1,100 Americans who died building it.",
+          "correctAnswer": "A man a mile",
+          "distractors": [
+            "A life a day",
+            "One per kilometre",
+            "A death a week",
+            "A grave a yard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_stilwell_nickname",
+      "correctAnswer": "Vinegar Joe",
+      "acceptableAlternatives": ["Vinegar Joe Stilwell"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "nicknames",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "What nickname was given to US General Joseph Stilwell, the acerbic commander in the China-Burma-India theater?",
+      "explanation": "General Joseph Warren Stilwell (1883–1946) earned the nickname 'Vinegar Joe' for his sharp, acerbic personality. He served as commander in the China-Burma-India theater and as Chiang Kai-shek's chief of staff. Stilwell called Chiang 'the little dummy' or 'Peanut' in his private diary and openly despised the corruption of Chiang's government. In October 1944, Chiang demanded his recall after Stilwell delivered a humiliating ultimatum threatening to cut Lend-Lease aid.",
+      "statement": "US General Joseph Stilwell was nicknamed 'Vinegar Joe' for his acerbic personality; he secretly called Chiang Kai-shek 'Peanut.'",
+      "wowFactor": "Stilwell kept a meticulous diary documenting what he saw as $380,584,000 being wasted through corruption in Chiang's government in 1944 alone — and delivered the contents to Washington, eventually contributing to his own recall.",
+      "visualDescription": "Pixel art of a lean, bespectacled US general standing in tropical jungle gear, face set in a permanent scowl, map in hand, soldiers behind him at attention",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Stilwell",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "Old Blood and Guts",
+        "The Desert Fox",
+        "Monty",
+        "Dugout Doug",
+        "Uncle Joe",
+        "Bull",
+        "Terrible Terry",
+        "Iron Mike"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What derogatory nickname did General Stilwell use for Chiang Kai-shek in his private diaries?",
+          "correctAnswer": "Peanut",
+          "distractors": [
+            "Puppet",
+            "Warlord",
+            "The Dummy",
+            "Mandarin"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "In what month and year was General Stilwell recalled from his China-Burma-India command after Chiang Kai-shek demanded his removal?",
+          "correctAnswer": "October 1944",
+          "distractors": [
+            "June 1943",
+            "January 1945",
+            "August 1944",
+            "March 1943"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: General Stilwell secretly called Chiang Kai-shek 'Peanut' in his private diaries and documented massive corruption in the Chinese government.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The US general nicknamed 'Vinegar Joe' who commanded in the China-Burma-India theater was Joseph ___.",
+          "correctAnswer": "Stilwell",
+          "distractors": [
+            "Merrill",
+            "MacArthur",
+            "Wainwright",
+            "Wedemeyer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_stilwell_recall_date",
+      "correctAnswer": "October 19, 1944",
+      "acceptableAlternatives": ["19 October 1944", "October 1944"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On what date did President Roosevelt recall General Stilwell from the China-Burma-India theater after Chiang Kai-shek demanded his removal?",
+      "explanation": "Tensions between Stilwell and Chiang Kai-shek came to a head in autumn 1944. Stilwell had delivered a blunt ultimatum from Roosevelt threatening to cut Lend-Lease aid unless Stilwell was given full command of all Chinese forces. Chiang rejected this as an affront to Chinese sovereignty. Ambassador Patrick Hurley reported that Stilwell was incapable of working with Chiang. On 19 October 1944, Roosevelt recalled Stilwell — by then a four-star general — ending the most turbulent Allied command relationship of the war.",
+      "statement": "Roosevelt recalled General Stilwell on October 19, 1944 after Chiang Kai-shek demanded his removal.",
+      "wowFactor": "Stilwell had been promoted to four-star general just weeks before his recall — rising to the highest military rank while simultaneously being fired, a uniquely awkward moment in US military history.",
+      "visualDescription": "Pixel art of a stone-faced general reading a telegram, campaign ribbons on his chest, tropical jungle in the background, other officers watching uncomfortably",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Stilwell",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "August 1, 1944",
+        "January 15, 1945",
+        "June 6, 1944",
+        "March 20, 1944",
+        "December 1, 1944",
+        "September 10, 1944",
+        "February 28, 1945",
+        "November 30, 1944"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What ultimatum did Stilwell deliver to Chiang Kai-shek on Roosevelt's behalf that contributed to his recall?",
+          "correctAnswer": "That Lend-Lease aid to China would be cut unless Stilwell was given full command of all Chinese forces",
+          "distractors": [
+            "That China must immediately open a second front against Japan in Manchuria",
+            "That Chiang must agree to a coalition government with Mao's communists",
+            "That Chinese forces must merge with British units under Slim's command",
+            "That Chiang must personally visit US forces in Burma within 30 days"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "To what rank had Stilwell been promoted just before his recall in October 1944?",
+          "correctAnswer": "Four-star general",
+          "distractors": [
+            "Three-star general",
+            "Five-star general",
+            "Two-star general",
+            "Field Marshal"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Chiang Kai-shek demanded Stilwell's recall in 1944, and Roosevelt complied by recalling Stilwell on October 19, 1944.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Chiang Kai-shek accused Stilwell of 'recklessness, insubordination, contempt, and ___' in demanding his recall.",
+          "correctAnswer": "Arrogance",
+          "distractors": [
+            "Cowardice",
+            "Incompetence",
+            "Disloyalty",
+            "Inaction"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_chindits_name",
+      "correctAnswer": "Chinthe",
+      "acceptableAlternatives": ["Chinthe (Burmese lion)", "Burmese lion"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "word_origins",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The name 'Chindits' is a corrupted form of what Burmese word for a mythological lion guardian?",
+      "explanation": "The Chindits — officially the Long Range Penetration Groups — were British and Indian special operations units formed by Brigadier Orde Wingate for operations deep behind Japanese lines in Burma. Their name is a corruption of 'Chinthe' (Burmese: ခြင်္သေ့), the mythological lion-guardian statues that stand at the entrances to Burmese pagodas. Operation Longcloth, their first operation, began on 8 February 1943 with 3,000 men marching into Burma.",
+      "statement": "The Chindits took their name from 'Chinthe,' the Burmese mythological lion-guardian — a corruption chosen by Brigadier Orde Wingate.",
+      "wowFactor": "Wingate chose the Chinthe as the unit's symbol because these mythological lion statues traditionally guard the entrances to Burmese Buddhist temples — symbolising the Chindits' role as guardians operating deep within Burma.",
+      "visualDescription": "Pixel art of a gold-painted stone lion guardian statue at a jungle temple entrance, its fierce expression half-shadowed by palm fronds, soldiers marching past in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chindits",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "Naga",
+        "Garuda",
+        "Kinnari",
+        "Manussiha",
+        "Bilu",
+        "Thagyamin",
+        "Zawgyi",
+        "Pyinsa Rupa"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Chindits were the official nickname for which type of British/Indian special operations forces in Burma?",
+          "correctAnswer": "Long Range Penetration Groups",
+          "distractors": [
+            "Special Air Service detachments",
+            "Force 136 intelligence operatives",
+            "Commando coastal raiders",
+            "Gurkha parachute battalions"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "On what date did Operation Longcloth, the first Chindit operation, begin as 3,000 men marched into Burma?",
+          "correctAnswer": "February 8, 1943",
+          "distractors": [
+            "March 5, 1944",
+            "August 7, 1943",
+            "January 12, 1943",
+            "October 3, 1943"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Chindits were formed by Brigadier Orde Wingate specifically for long-range penetration operations deep behind Japanese lines in Burma.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The first Chindit operation in 1943, Operation ___, sent 3,000 men deep into Japanese-held Burma.",
+          "correctAnswer": "Longcloth",
+          "distractors": [
+            "Thursday",
+            "Anakim",
+            "Capital",
+            "Extend"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_chindits_first_op_casualties",
+      "correctAnswer": "818 killed, wounded, or missing",
+      "acceptableAlternatives": ["818 casualties", "27 percent of the force", "27% casualties"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "numbers",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "What were the Chindits' casualties in Operation Longcloth (1943) — their first deep-penetration mission into Burma?",
+      "explanation": "Operation Longcloth (February–May 1943) sent 3,000 Chindits deep into Japanese-held Burma. They cut railway communications for roughly two weeks and demonstrated that Allied forces could operate deep in the jungle. But the cost was severe: 818 killed, wounded, or missing — 27 percent of the original force. Many of those who returned were permanently damaged by malaria, dysentery, and exhaustion, and were never fit for active service again. The military value of the operation remains controversial.",
+      "statement": "Operation Longcloth (1943) cost the Chindits 818 casualties — 27% of their original force — and sparked debate about whether the mission was worth the cost.",
+      "wowFactor": "Many of the Chindits who came back from Operation Longcloth were so physically wrecked by malaria, starvation, and exhaustion that they could never serve in combat again — meaning the unit's actual effective loss was far higher than the 27% casualty rate suggests.",
+      "visualDescription": "Pixel art of gaunt, hollow-eyed soldiers emerging from dense jungle onto a river bank, tattered uniforms, some being helped by comrades, relief and exhaustion on their faces",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chindits",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "120 casualties",
+        "2,400 casualties",
+        "45 casualties",
+        "1,500 casualties",
+        "300 casualties",
+        "200 casualties",
+        "600 casualties",
+        "50 casualties"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What percentage of the original Chindit force was killed, wounded, or missing during Operation Longcloth in 1943?",
+          "correctAnswer": "27 percent",
+          "distractors": [
+            "5 percent",
+            "50 percent",
+            "10 percent",
+            "75 percent"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What was the main military achievement of Operation Longcloth, despite its heavy casualties?",
+          "correctAnswer": "Cutting Japanese railway communications in northern Burma for roughly two weeks",
+          "distractors": [
+            "Destroying an entire Japanese division",
+            "Capturing Mandalay airfield",
+            "Establishing a permanent Allied supply base in Japanese territory",
+            "Rescuing 500 British prisoners of war"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Chindits suffered 818 casualties — approximately 27% of their force — during their first operation into Burma in 1943.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Chindits' first Burma operation in 1943 cut Japanese railway communications for approximately ___ weeks.",
+          "correctAnswer": "Two",
+          "distractors": [
+            "Six",
+            "Twelve",
+            "One",
+            "Eight"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_merrills_marauders_unit",
+      "correctAnswer": "5307th Composite Unit (Provisional)",
+      "acceptableAlternatives": ["5307th Composite Unit", "Unit 5307"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "unit_designations",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "What was the official US Army designation for the unit popularly known as 'Merrill's Marauders'?",
+      "explanation": "Merrill's Marauders — named by Time correspondent James Shepley — were officially the 5307th Composite Unit (Provisional), commanded by Brigadier General Frank Merrill. Deployed in February 1944, they fought in six combat teams (Red, White, Blue, Khaki, Green, Orange) across 750 miles of jungle. In five months they fought in five major engagements and 32 total actions. Of the 2,750 men who entered Burma, only two were never hospitalised with wounds or major illness. Every survivor received the Bronze Star.",
+      "statement": "Merrill's Marauders were officially the 5307th Composite Unit (Provisional) — every one of the 2,750 soldiers who entered Burma was eventually hospitalised with wounds or illness except two.",
+      "wowFactor": "Every single man who served in Merrill's Marauders was awarded the Bronze Star — a rare unit-wide distinction. And of 2,750 who entered Burma, all but two were hospitalised at some point, making it possibly the most physically costly US campaign of the Pacific War.",
+      "visualDescription": "Pixel art of six American soldiers in jungle fatigues moving through dense tropical undergrowth in single file, faces camouflaged, rifles at the ready",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Merrill%27s_Marauders",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "1st Special Service Force",
+        "6th Ranger Battalion",
+        "Office of Strategic Services",
+        "503rd Parachute Infantry Regiment",
+        "Alamo Scouts",
+        "Philippine Scout Rangers",
+        "Raider Battalion",
+        "Devil's Brigade"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who coined the nickname 'Merrill's Marauders'?",
+          "correctAnswer": "Time magazine correspondent James Shepley",
+          "distractors": [
+            "General Douglas MacArthur",
+            "General Joseph Stilwell",
+            "President Roosevelt",
+            "General Frank Merrill himself"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many major engagements did Merrill's Marauders fight in during their five months in Burma in 1944?",
+          "correctAnswer": "Five major engagements and 32 total actions",
+          "distractors": [
+            "One major battle and twelve skirmishes",
+            "Three major battles and eight skirmishes",
+            "Ten major battles and fifty skirmishes",
+            "Two major engagements and twenty actions"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Every soldier who served in Merrill's Marauders was awarded the Bronze Star.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Merrill's Marauders advanced ___ miles through some of the harshest jungle terrain in the world during their Burma campaign.",
+          "correctAnswer": "750",
+          "distractors": [
+            "200",
+            "1,500",
+            "400",
+            "100"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_imphal_kohima_dates",
+      "correctAnswer": "March to July 1944",
+      "acceptableAlternatives": ["March–July 1944", "April to June 1944", "spring–summer 1944"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "During what period were the twin Battles of Imphal and Kohima fought — the turning point of the Burma Campaign?",
+      "explanation": "Operation U-Go, Japan's invasion of northeast India, resulted in the Battles of Imphal and Kohima. Kohima was fought in three stages from 4 April to 22 June 1944; Imphal from March to July 1944. Together they are called the 'Stalingrad of the East.' Japan suffered 54,879 casualties including 13,376 dead, with most losses from starvation, disease, and exhaustion rather than combat. The Allies suffered 12,603 casualties. The Japanese defeat ended any prospect of invading India.",
+      "statement": "The Battles of Imphal and Kohima (March–July 1944), the 'Stalingrad of the East,' broke Japan's ability to invade India.",
+      "wowFactor": "Japan's 15th Army lost more men to starvation, disease, and exhaustion than to Allied bullets at Imphal-Kohima — the retreat through the jungle became a death march that destroyed one of Japan's finest armies.",
+      "visualDescription": "Pixel art of a jungle ridge top under intense artillery fire, British and Indian soldiers in foxholes on one side, Japanese soldiers charging uphill through smoke and fire",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Imphal",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "January to March 1944",
+        "August to October 1943",
+        "November 1944 to January 1945",
+        "June to September 1945",
+        "February to April 1943",
+        "October to December 1944",
+        "May to August 1942",
+        "July to October 1943"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Battles of Imphal and Kohima have been called the 'Stalingrad of the East' — what does this comparison highlight?",
+          "correctAnswer": "A massive Japanese offensive that was decisively defeated with enormous Japanese casualties",
+          "distractors": [
+            "A prolonged urban siege fought street by street in a major city",
+            "A battle fought entirely in winter conditions at extreme temperatures",
+            "A conflict that split the Japanese army into permanently separate commands",
+            "A surprise attack that caught Allied forces completely unprepared"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many casualties did Japan suffer at the Battles of Imphal and Kohima, including 13,376 dead?",
+          "correctAnswer": "54,879",
+          "distractors": [
+            "12,603",
+            "100,000",
+            "8,000",
+            "25,000"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: At Imphal and Kohima, Japan suffered 54,879 casualties — most of them from starvation, disease, and exhaustion rather than direct combat.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Japanese operation that led to the Battles of Imphal and Kohima was called Operation ___.",
+          "correctAnswer": "U-Go",
+          "distractors": [
+            "Ichi-Go",
+            "Ke-Go",
+            "Ha-Go",
+            "Ze-Go"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_slim_14th_army",
+      "correctAnswer": "The Forgotten Army",
+      "acceptableAlternatives": ["Forgotten Army", "British 14th Army"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "nicknames",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "What nickname was given to General Slim's British 14th Army in Burma because its operations were largely ignored by the press?",
+      "explanation": "The British Fourteenth Army — a multi-national force of British, Indian, West and East African units — was nicknamed the 'Forgotten Army' because the Burma campaign received far less media coverage than operations in Europe or the Pacific. Commanded by Lieutenant-General William Slim, the army recovered from a disastrous 900-mile retreat in 1942 to eventually achieve what Slim called the greatest defeat ever inflicted on Japan's armies, liberating Burma by May 1945.",
+      "statement": "General Slim's British 14th Army in Burma was called the 'Forgotten Army' — its campaigns were overshadowed by Europe, yet it inflicted Japan's greatest land defeat.",
+      "wowFactor": "Slim transformed his demoralized army after the 1942 retreat by enforcing anti-malarial drug use, building jungle warfare training, and winning small early victories to rebuild confidence — turning the Forgotten Army into one of the most effective fighting forces of the war.",
+      "visualDescription": "Pixel art of Indian and British soldiers in jungle gear standing in a dense tropical forest, a British flag mixed with Indian Army colors, determined expressions",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fourteenth_Army_(United_Kingdom)",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "The Lost Legion",
+        "The Jungle Rats",
+        "The Phantom Army",
+        "The Far East Force",
+        "The Desert Rats",
+        "The Invisible Army",
+        "The Shadow Force",
+        "The Abandoned Brigade"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who commanded the British 14th Army — the 'Forgotten Army' — through most of the Burma Campaign?",
+          "correctAnswer": "Lieutenant-General William Slim",
+          "distractors": [
+            "General Bernard Montgomery",
+            "General Archibald Wavell",
+            "General Claude Auchinleck",
+            "General Harold Alexander"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What major improvement did General Slim make to the 14th Army that helped reverse the disastrous losses to disease?",
+          "correctAnswer": "He enforced the use of anti-malarial drugs as part of an emphasis on individual health",
+          "distractors": [
+            "He evacuated all sick soldiers to India by air immediately",
+            "He issued each soldier a personal mosquito net and sealed jungle suit",
+            "He banned all night operations to reduce mosquito exposure",
+            "He stationed field hospitals every ten miles along the front"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The British 14th Army's Burma campaign liberation of Burma is described as the greatest defeat ever inflicted on Japan's land armies.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The British Fourteenth Army was called the 'Forgotten Army' because its Burma operations were overlooked by the ___ compared to the European theater.",
+          "correctAnswer": "Press",
+          "distractors": [
+            "Government",
+            "US military",
+            "British public",
+            "Churchill"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_ina_bose",
+      "correctAnswer": "Subhas Chandra Bose",
+      "acceptableAlternatives": ["Bose", "Netaji Bose"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Which Indian nationalist leader reorganized the Japanese-allied Indian National Army in 1943 and declared a provisional Indian government?",
+      "explanation": "Subhas Chandra Bose arrived in Southeast Asia from Nazi Germany in May 1943 and took command of the Indian National Army (INA) — formed largely from British Indian Army POWs captured by Japan. He declared a Provisional Government of Free India (Azad Hind) on October 21, 1943, which had its own currency, courts, and civil code. The INA fought alongside Japanese forces in the 1944 invasion of India but was defeated at Imphal. Bose died on August 18, 1945 from burns after a plane crash in Taiwan.",
+      "statement": "Subhas Chandra Bose reorganized the Indian National Army in 1943 and declared a Provisional Government of Free India on October 21, 1943.",
+      "wowFactor": "Bose escaped British India by disguising himself as a Pathan insurance agent named 'Ziauddin,' traveled through Afghanistan to the Soviet Union, then to Nazi Germany — and finally arrived in Japanese-held Singapore aboard a German submarine transferred to a Japanese submarine mid-ocean.",
+      "visualDescription": "Pixel art of a determined Indian leader in military uniform addressing a crowd of Indian soldiers, the rising sun flag and Indian tricolor visible behind him, Singapore skyline in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Subhas_Chandra_Bose",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "Jawaharlal Nehru",
+        "Mahatma Gandhi",
+        "Bal Gangadhar Tilak",
+        "Bhagat Singh",
+        "Rash Behari Bose",
+        "Mohan Singh",
+        "Prithvi Singh Azad",
+        "Iqbal Shedai"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "On what date did Subhas Chandra Bose declare the Provisional Government of Free India (Azad Hind)?",
+          "correctAnswer": "October 21, 1943",
+          "distractors": [
+            "December 7, 1941",
+            "August 15, 1942",
+            "January 26, 1942",
+            "March 8, 1943"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How did Subhas Chandra Bose die on August 18, 1945?",
+          "correctAnswer": "From third-degree burns after a plane crash at Taihoku Airfield, Taiwan",
+          "distractors": [
+            "In combat during the fall of Rangoon",
+            "Executed by the British after capture in Singapore",
+            "Died of illness while a prisoner in New Delhi",
+            "Shot down over the Bay of Bengal by British fighter planes"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Indian National Army under Bose fought alongside Japanese forces in the 1944 invasion of northeast India but was halted at the Battle of Imphal.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Subhas Chandra Bose's Provisional Government of Free India was also known as ___ Hind.",
+          "correctAnswer": "Azad",
+          "distractors": [
+            "Bharat",
+            "Swadeshi",
+            "Mukti",
+            "Swaraj"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_ina_size",
+      "correctAnswer": "40,000",
+      "acceptableAlternatives": ["around 40,000", "approximately 40,000"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "How large was the Indian National Army organized by Subhas Chandra Bose with Japanese support in Southeast Asia?",
+      "explanation": "With Japanese support, Subhas Chandra Bose organized the Indian National Army to a strength of approximately 40,000 men. The INA drew primarily from British Indian Army POWs captured by Japan (especially the 80,000 captured at Singapore), supplemented by Indian civilians from Malaya and Singapore who voluntarily enlisted. Around 18,000 joined from the civilian communities. The INA represented one of the largest anti-colonial armed forces of the war, fighting under the motto 'Give me blood, and I shall give you freedom.'",
+      "statement": "The Indian National Army under Bose grew to approximately 40,000 men, drawn mainly from British Indian Army POWs captured at Singapore.",
+      "wowFactor": "Bose's motto for the INA was 'Give me blood, and I shall give you freedom' (Tum mujhe khoon do, main tumhe azadi dunga) — a call to sacrifice that resonated deeply with Indian soldiers who had been captured fighting for the British Empire.",
+      "visualDescription": "Pixel art of Indian soldiers in British-style uniforms with INA insignia drilling in a jungle clearing, the Azad Hind flag visible on a bamboo pole",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Indian_National_Army",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "5,000",
+        "200,000",
+        "1,000",
+        "100,000",
+        "10,000",
+        "500,000",
+        "15,000",
+        "75,000"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "From what primary source did the Indian National Army recruit most of its 40,000 soldiers?",
+          "correctAnswer": "British Indian Army POWs captured by Japan",
+          "distractors": [
+            "Volunteers from neutral India",
+            "Japanese soldiers of Indian descent",
+            "Escaped prisoners from British jails across India",
+            "German-trained Indian nationalists from Europe"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What was Subhas Chandra Bose's famous rallying motto for the Indian National Army?",
+          "correctAnswer": "Give me blood, and I shall give you freedom",
+          "distractors": [
+            "India shall be free or India shall die fighting",
+            "March to Delhi and tear down the British flag",
+            "From the jungles of Burma, we shall liberate our nation",
+            "Every Indian soldier carries India's freedom on his bayonet"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Indian National Army under Bose was approximately 40,000 strong and drew heavily from British Indian Army POWs captured by Japan.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Around 18,000 Indian ___ living in Malaya and Singapore also voluntarily joined the Indian National Army under Bose.",
+          "correctAnswer": "Civilians",
+          "distractors": [
+            "Sailors",
+            "Merchants",
+            "Religious leaders",
+            "Students"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_viet_minh_founding",
+      "correctAnswer": "May 19, 1941",
+      "acceptableAlternatives": ["19 May 1941", "May 1941", "1941"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "On what date was the Viet Minh (League for the Independence of Vietnam) founded by Ho Chi Minh?",
+      "explanation": "Ho Chi Minh founded the Viet Nam Doc Lap Dong Minh Hoi (League for the Independence of Vietnam) — known as the Viet Minh — on 19 May 1941 in Pác Bó, Cao Bằng province in northern Vietnam. His lieutenants included Vo Nguyen Giap (military commander) and Pham Van Dong. During WWII, the Viet Minh were the only effective Vietnamese force resisting Japan's occupation of French Indochina. On V-J Day, September 2, 1945, Ho Chi Minh proclaimed the Democratic Republic of Vietnam.",
+      "statement": "Ho Chi Minh founded the Viet Minh on May 19, 1941 in northern Vietnam — the only effective resistance force against Japan's occupation of French Indochina.",
+      "wowFactor": "Ho Chi Minh quoted the American Declaration of Independence in his proclamation of Vietnamese independence on September 2, 1945 — deliberately invoking the US founding document to appeal to America as a new anti-colonial power.",
+      "visualDescription": "Pixel art of Ho Chi Minh and comrades in a limestone cave in northern Vietnam, oil lamp burning on a rough wooden table covered in maps and papers",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Viet_Minh",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "September 2, 1945",
+        "March 9, 1945",
+        "August 19, 1944",
+        "January 6, 1930",
+        "June 20, 1943",
+        "December 19, 1946",
+        "October 2, 1940",
+        "February 3, 1930"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Who served as the military commander of the Viet Minh, leading its armed forces?",
+          "correctAnswer": "Vo Nguyen Giap",
+          "distractors": [
+            "Pham Van Dong",
+            "Le Duan",
+            "Truong Chinh",
+            "Nguyen Chi Thanh"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "On what date did Ho Chi Minh proclaim the Democratic Republic of Vietnam, ending the WWII period?",
+          "correctAnswer": "September 2, 1945 (V-J Day)",
+          "distractors": [
+            "August 15, 1945",
+            "October 10, 1945",
+            "January 1, 1946",
+            "March 9, 1945"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Viet Minh were the only effective Vietnamese force resisting Japan's occupation of French Indochina during World War II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Viet Minh was founded in ___ province in northern Vietnam on May 19, 1941.",
+          "correctAnswer": "Cao Bằng",
+          "distractors": [
+            "Hanoi",
+            "Hue",
+            "Saigon",
+            "Da Nang"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_operation_ichigo",
+      "correctAnswer": "April to December 1944",
+      "acceptableAlternatives": ["1944", "April 1944 to December 1944"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "When was Operation Ichi-Go, Japan's massive 1944 offensive through Henan, Hunan, and Guangxi designed to destroy US air bases in China?",
+      "explanation": "Operation Ichi-Go was approved by Emperor Hirohito on January 24, 1944, and launched on April 17, 1944. Running until December 1944, it was Japan's largest offensive operation in China. Its twin objectives were to destroy USAAF air bases in southeast China (where bombers were attacking Japan) and to open an overland corridor to French Indochina. Japan achieved its objectives but at enormous cost — China suffered 750,000 casualties according to one estimate. The operation succeeded too late to affect the broader war's outcome.",
+      "statement": "Operation Ichi-Go (April–December 1944) was Japan's largest China offensive — achieving its goals of destroying US air bases but too late to matter.",
+      "wowFactor": "By the time Japan achieved Operation Ichi-Go's goal of destroying US air bases in southeast China, the Americans had already moved their bombers to the Mariana Islands — where they could reach Japan's home islands from an entirely different direction.",
+      "visualDescription": "Pixel art of Japanese troops advancing in a long column across a flat Chinese plain, destroyed airfield control tower visible in the background, smoke rising",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Ichi-Go",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "January to June 1943",
+        "March to September 1945",
+        "August 1942 to January 1943",
+        "November 1943 to March 1944",
+        "January to July 1942",
+        "October 1944 to March 1945",
+        "June to November 1943",
+        "February to August 1945"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What were the two primary goals of Japan's Operation Ichi-Go in 1944?",
+          "correctAnswer": "Destroy USAAF air bases in southeast China and open a land route to French Indochina",
+          "distractors": [
+            "Capture Chongqing and force Chiang Kai-shek to surrender",
+            "Eliminate Chinese communist forces and destroy the Burma Road",
+            "Capture Shanghai and cut off Lend-Lease supplies to China",
+            "Establish a defensive line across central China and destroy the 14th Army"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "According to one estimate, how many casualties did China suffer during Operation Ichi-Go?",
+          "correctAnswer": "750,000",
+          "distractors": [
+            "50,000",
+            "5,000,000",
+            "100,000",
+            "200,000"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Operation Ichi-Go succeeded in destroying US air bases in southeast China, but the Americans had already moved bombers to the Mariana Islands before Japan achieved its goal.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation Ichi-Go was approved by Emperor Hirohito on January 24, 1944, and formally launched on April ___, 1944.",
+          "correctAnswer": "17",
+          "distractors": ["1", "7", "25", "30"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_battle_wuhan_1938",
+      "correctAnswer": "October 26–27, 1938",
+      "acceptableAlternatives": ["late October 1938", "November 1938", "October 1938"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "When did Japan complete its capture of Wuhan — China's wartime political, economic, and military centre — ending a four-month siege?",
+      "explanation": "The Battle of Wuhan ran from early June to November 12, 1938. Japan deployed almost all of its armies in China, five-and-a-half divisions along the Yangtze under General Okamura, plus 120 naval ships and 500 aircraft. Japan captured Wuchang and Hankou on October 26, 1938, and Hanyang on the 27th. Despite Japan's advance, the main Chinese land force remained largely intact and retreated to Chongqing, buying time for the government to establish a wartime capital and continue the war of resistance.",
+      "statement": "Japan captured Wuhan (Wuchang and Hankou) on October 26, 1938 after a four-month battle — but China's main army survived and withdrew to Chongqing.",
+      "wowFactor": "Although Japan captured Wuhan after a massive four-month campaign deploying virtually its entire China force, China's army was not destroyed — it simply retreated deeper into the country, making this 'victory' ultimately meaningless for Japan's war aims.",
+      "visualDescription": "Pixel art of the confluence of the Yangtze and Han rivers, Japanese warships moving up the river, smoke rising from the tri-city shore, refugees streaming westward",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Wuhan",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "December 13, 1937",
+        "August 26, 1937",
+        "March 15, 1938",
+        "September 5, 1938",
+        "January 10, 1939",
+        "February 28, 1938",
+        "May 25, 1939",
+        "July 7, 1938"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Where did China's Nationalist government relocate after Japan captured Wuhan in 1938?",
+          "correctAnswer": "Chongqing",
+          "distractors": [
+            "Nanjing",
+            "Shanghai",
+            "Xi'an",
+            "Chengdu"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How many aircraft did Japan deploy in the Battle of Wuhan — one of the largest concentrations of air power used in the war in China?",
+          "correctAnswer": "More than 500",
+          "distractors": [
+            "About 50",
+            "Over 2,000",
+            "Fewer than 100",
+            "Around 200"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Despite Japan's capture of Wuhan in October 1938, the main Chinese land force escaped largely intact and withdrew westward.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Japan deployed five-and-a-half divisions along the ___ River as the main assault axis during the Battle of Wuhan.",
+          "correctAnswer": "Yangtze",
+          "distractors": [
+            "Yellow",
+            "Pearl",
+            "Han",
+            "Wei"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_burma_rangoon_falls",
+      "correctAnswer": "March 8, 1942",
+      "acceptableAlternatives": ["8 March 1942", "March 1942"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "On what date did Japan capture Rangoon, triggering the longest British retreat of the war?",
+      "explanation": "Japan captured Rangoon, Burma's capital and main port, on March 8, 1942. This cut the Burma Road supply line to China and triggered a 900-mile retreat of British and Indian forces under General Slim. The fall of Rangoon also cut off Allied forces in northern Burma, forcing the chaotic retreat through the jungle to India. General Stilwell arrived in India on foot with the remains of his command after an agonizing 140-mile jungle trek. The city would not be retaken until May 3, 1945.",
+      "statement": "Japan captured Rangoon on March 8, 1942, cutting the Burma Road to China and triggering a 900-mile British retreat.",
+      "wowFactor": "When Japan captured Rangoon in March 1942, the British set fire to the city's oil facilities to deny them to Japan — creating a massive oil fire visible for miles that burned for weeks, one of the largest deliberate demolitions of the entire Pacific War.",
+      "visualDescription": "Pixel art of a burning Rangoon oil refinery, massive black smoke columns rising into a red sky, Japanese troops marching through abandoned streets below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Burma_campaign",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "December 8, 1941",
+        "February 15, 1942",
+        "January 10, 1942",
+        "April 5, 1942",
+        "May 20, 1942",
+        "March 20, 1942",
+        "February 1, 1942",
+        "June 4, 1942"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How long was the British retreat from Burma after Rangoon fell in March 1942?",
+          "correctAnswer": "900 miles",
+          "distractors": [
+            "100 miles",
+            "300 miles",
+            "500 miles",
+            "1,500 miles"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "When did Allied forces finally retake Rangoon after its fall in March 1942?",
+          "correctAnswer": "May 3, 1945",
+          "distractors": [
+            "August 15, 1945",
+            "January 1, 1944",
+            "June 10, 1944",
+            "December 25, 1944"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The fall of Rangoon on March 8, 1942 cut the Burma Road supply line to China and triggered the longest British retreat of World War II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "General Stilwell arrived in India on foot after a ___ -mile jungle trek following the fall of Rangoon.",
+          "correctAnswer": "140",
+          "distractors": [
+            "900",
+            "50",
+            "300",
+            "20"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_slim_burma_retreat",
+      "correctAnswer": "900 miles",
+      "acceptableAlternatives": ["900-mile retreat", "approximately 900 miles"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "measurements",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How far did General Slim's forces retreat through Burma after Japan's invasion in 1942 — the longest British retreat of the war?",
+      "explanation": "When Japan invaded Burma in early 1942, General William Slim — hastily appointed to command the 1st Burma Corps in March 1942 — conducted a 900-mile retreat from superior Japanese forces that had overrun all of Burma. The retreat ended at the Indian border. Slim used the disaster as a learning experience, rebuilding his army's doctrine, morale, and health practices. By October 1943 he was given command of the 14th Army, which he led to eventual victory.",
+      "statement": "General Slim conducted a 900-mile retreat through Burma in 1942 — the longest British retreat of World War II — then rebuilt his army to win.",
+      "wowFactor": "Rather than blaming his men for the retreat disaster, Slim took personal responsibility and spent the following year rebuilding confidence through realistic training and small early victories — his approach to leadership after defeat became a classic study in military psychology.",
+      "visualDescription": "Pixel art of a long column of exhausted British and Indian soldiers moving through monsoon rain on a jungle trail, the last light of day fading behind dark hills",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/William_Slim,_1st_Viscount_Slim",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "200 miles",
+        "50 miles",
+        "1,500 miles",
+        "400 miles",
+        "600 miles",
+        "100 miles",
+        "1,200 miles",
+        "300 miles"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In what month and year was General Slim hastily appointed to command the 1st Burma Corps during Japan's invasion?",
+          "correctAnswer": "March 1942",
+          "distractors": [
+            "December 1941",
+            "August 1942",
+            "January 1943",
+            "October 1943"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What command was Slim given in October 1943 after rebuilding Allied forces in Burma?",
+          "correctAnswer": "Command of the 14th Army",
+          "distractors": [
+            "Command of South East Asia Command overall",
+            "Command of the 1st Airborne Division",
+            "Appointment as Mountbatten's deputy supreme commander",
+            "Command of all Allied forces in the China-Burma-India theater"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: General Slim's 900-mile retreat through Burma in 1942 was the longest British retreat of World War II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "After the 1942 Burma retreat, Slim rebuilt his army's effectiveness partly by enforcing the use of ___ drugs to reduce the massive disease toll.",
+          "correctAnswer": "Anti-malarial",
+          "distractors": [
+            "Antibiotic",
+            "Antiseptic",
+            "Painkiller",
+            "Anti-dysentery"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_china_total_dead",
+      "correctAnswer": "15 to 20 million",
+      "acceptableAlternatives": ["20 million", "approximately 20 million"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "What is the conservative academic estimate for total Chinese deaths (military and civilian) during the Second Sino-Japanese War of 1937–1945?",
+      "explanation": "Conservative academic estimates place total Chinese deaths directly caused by the Second Sino-Japanese War at between 15 and 20 million. China's official government figure is 20 million dead and 15 million wounded. The war also involved between 10 and 25 million displaced civilians. With Japan's Pacific War casualties added, the total conflict involving China and Japan from 1937–1945 accounts for more civilian and military deaths than any other theater of World War II.",
+      "statement": "Conservative estimates place Chinese deaths in the Second Sino-Japanese War at 15–20 million — more than any other WWII theater.",
+      "wowFactor": "China fought Japan for four years before Pearl Harbor and the US entered the war. By December 1941, China had already suffered more war deaths than the US would suffer in the entire war — yet the China theater is rarely the first thing people think of when they hear 'World War II.'",
+      "visualDescription": "Pixel art of a vast Chinese graveyard stretching to the horizon, simple wooden markers in long rows, a single flame burning in the foreground",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "1 to 2 million",
+        "3 to 4 million",
+        "50 to 60 million",
+        "500,000 to 1 million",
+        "8 to 10 million",
+        "25 to 30 million",
+        "100,000 to 200,000",
+        "40 to 50 million"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is China's official government figure for Chinese dead in the Second Sino-Japanese War?",
+          "correctAnswer": "20 million",
+          "distractors": [
+            "6 million",
+            "1 million",
+            "50 million",
+            "5 million"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "For how many years did China fight Japan before the US entered World War II at Pearl Harbor?",
+          "correctAnswer": "More than four years",
+          "distractors": [
+            "Six months",
+            "Two years",
+            "One year",
+            "Ten years"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Conservative academic estimates place Chinese deaths from the Second Sino-Japanese War at between 15 and 20 million.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "China's official government casualty figure for the Second Sino-Japanese War is 20 million dead and ___ million wounded.",
+          "correctAnswer": "15",
+          "distractors": ["5", "30", "8", "2"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_hong_kong_defenders",
+      "correctAnswer": "17 days",
+      "acceptableAlternatives": ["seventeen days"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "durations",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "For how many days did the British-led garrison hold out during the Battle of Hong Kong before surrendering on December 25, 1941?",
+      "explanation": "The Battle of Hong Kong lasted from December 8 to 25, 1941 — 17 days. Japan attacked on the same morning as Pearl Harbor. The 14,000-strong garrison included British, Canadian, Indian, and Hong Kong Volunteer Defence Corps soldiers. Allied casualties were approximately 1,111 killed, 1,167 missing, and 1,362 wounded. Japan reported 675 dead and 2,079 wounded, with Western estimates suggesting considerably higher Japanese casualties.",
+      "statement": "The Battle of Hong Kong lasted 17 days before the garrison surrendered on Christmas Day 1941.",
+      "wowFactor": "Two Canadian battalions — the Royal Rifles of Canada and the Winnipeg Grenadiers — arrived in Hong Kong just three weeks before the Japanese attack, barely enough time to unpack their equipment. They went from peacetime garrison duty to desperate combat almost immediately.",
+      "visualDescription": "Pixel art of Canadian and British soldiers in defensive trenches on Hong Kong Island hillsides, burning city below, Japanese warplanes overhead",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Hong_Kong",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "3 days",
+        "7 days",
+        "30 days",
+        "45 days",
+        "1 day",
+        "25 days",
+        "10 days",
+        "60 days"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What nations' troops formed the garrison defending Hong Kong in December 1941?",
+          "correctAnswer": "British, Canadian, Indian, and Hong Kong Volunteer Defence Corps",
+          "distractors": [
+            "British, Australian, New Zealand, and American",
+            "British, Chinese Nationalist, French, and Dutch",
+            "British, South African, Malay, and Burmese",
+            "British, Australian, Singaporean, and Indian"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Approximately how many Allied soldiers were killed during the Battle of Hong Kong?",
+          "correctAnswer": "Approximately 1,111",
+          "distractors": [
+            "About 50",
+            "Over 10,000",
+            "Approximately 5,000",
+            "Fewer than 200"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Japan attacked Hong Kong on the same morning it attacked Pearl Harbor.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The battle of Hong Kong took place from December ___ to December 25, 1941.",
+          "correctAnswer": "8",
+          "distractors": ["1", "15", "7", "10"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_viet_minh_military_leader",
+      "correctAnswer": "Vo Nguyen Giap",
+      "acceptableAlternatives": ["Giap", "General Giap"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Who served as the military commander of the Viet Minh resistance during World War II, alongside political leader Ho Chi Minh?",
+      "explanation": "Võ Nguyên Giáp served as military commander of the Viet Minh from its founding in May 1941. He organized, trained, and led the armed resistance against both French colonial forces and Japan's occupation of French Indochina during WWII. After the war, he led the Viet Minh to victory over France at Dien Bien Phu in 1954, and later commanded North Vietnamese forces throughout the Vietnam War — making him one of history's most consequential military figures.",
+      "statement": "Vo Nguyen Giap commanded the Viet Minh's military forces from 1941, later defeating France at Dien Bien Phu (1954) and leading the North in the Vietnam War.",
+      "wowFactor": "Vo Nguyen Giap was a history teacher with no formal military training before leading the Viet Minh's armed forces in 1941 — yet he went on to defeat two major Western powers (France and the US) across four decades of war.",
+      "visualDescription": "Pixel art of a lean Vietnamese general in khaki uniform studying a bamboo-framed map in a jungle command post, oil lamps casting long shadows",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Viet_Minh",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "Pham Van Dong",
+        "Le Duan",
+        "Truong Chinh",
+        "Nguyen Thi Minh Khai",
+        "Le Duc Tho",
+        "Tran Van Giau",
+        "Hoang Van Thai",
+        "Tran Quoc Hoan"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What major French defeat in 1954 was masterminded by Vo Nguyen Giap, ending French colonial rule in Vietnam?",
+          "correctAnswer": "The Battle of Dien Bien Phu",
+          "distractors": [
+            "The Battle of Hanoi",
+            "The Battle of Haiphong",
+            "The Battle of Hue",
+            "The Battle of Saigon"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What was Vo Nguyen Giap's civilian profession before he became the Viet Minh's military commander?",
+          "correctAnswer": "History teacher",
+          "distractors": [
+            "Army officer trained at the French military academy",
+            "Journalist and newspaper editor",
+            "Government tax official",
+            "Buddhist monk"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Vo Nguyen Giap served as the military commander of the Viet Minh while Ho Chi Minh was the political leader.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Viet Minh's military leader Vo Nguyen Giap later led the North Vietnamese defeat of France at the Battle of ___ Bien Phu in 1954.",
+          "correctAnswer": "Dien",
+          "distractors": [
+            "Da",
+            "Bien",
+            "Khe",
+            "An"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_ina_provisional_govt_date",
+      "correctAnswer": "October 21, 1943",
+      "acceptableAlternatives": ["21 October 1943", "October 1943"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "On what date did Subhas Chandra Bose declare the Provisional Government of Free India (Azad Hind)?",
+      "explanation": "On October 21, 1943, Subhas Chandra Bose declared the Provisional Government of Free India (Azad Hind) in Singapore with Japanese support. The government had its own currency, court, and civil code. Japan recognized it as the legitimate government of India, and several Axis-aligned nations followed. Azad Hind declared war on Britain and the US. The government nominally controlled the Andaman and Nicobar Islands, which Japan handed over as a symbolic gesture.",
+      "statement": "Bose declared the Provisional Government of Free India (Azad Hind) in Singapore on October 21, 1943, with its own currency and courts.",
+      "wowFactor": "Japan gave Bose symbolic 'control' of the Andaman and Nicobar Islands — but Bose never actually set foot on them, and Japanese military commanders retained full real authority. The handover was pure theater designed to give the INA a sense of legitimate governance.",
+      "visualDescription": "Pixel art of Subhas Chandra Bose in military dress uniform standing at a podium with the Azad Hind flag behind him, INA officers saluting in the foreground, Singapore colonial building in background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Azad_Hind",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "August 15, 1942",
+        "January 26, 1944",
+        "September 3, 1943",
+        "December 7, 1941",
+        "March 9, 1945",
+        "May 1, 1943",
+        "June 18, 1943",
+        "February 15, 1943"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which islands did Japan symbolically hand to Bose's Provisional Government of Free India as a gesture of recognition?",
+          "correctAnswer": "The Andaman and Nicobar Islands",
+          "distractors": [
+            "The Lakshadweep Islands",
+            "Ceylon (Sri Lanka)",
+            "The Maldives",
+            "Borneo"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Azad Hind declared war on which two Allied nations after its formation in October 1943?",
+          "correctAnswer": "Britain and the United States",
+          "distractors": [
+            "Britain and France",
+            "Britain and Australia",
+            "Britain and the Soviet Union",
+            "Britain and China"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Bose's Provisional Government of Free India had its own currency, court, and civil code.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Azad Hind, Bose's provisional government, was declared in ___ with Japanese support on October 21, 1943.",
+          "correctAnswer": "Singapore",
+          "distractors": [
+            "Rangoon",
+            "Bangkok",
+            "Saigon",
+            "Tokyo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_merrill_marauders_engagements",
+      "correctAnswer": "Five major engagements",
+      "acceptableAlternatives": ["5 major engagements", "five major battles"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How many major engagements did Merrill's Marauders fight during their 750-mile advance through Burma in 1944?",
+      "explanation": "In slightly more than five months of combat in 1944, Merrill's Marauders fought five major engagements: Walawbum, Shaduzup, Inkangahtawng, Nhpum Ga, and Myitkyina. They also fought in 32 separate combat actions total against the Japanese Army. The operations were under Stilwell's overall direction and played a crucial role in opening northern Burma for the Ledo Road. The unit's exhaustion and casualty rate became a major controversy, with nearly all 2,750 men eventually hospitalised.",
+      "statement": "Merrill's Marauders fought five major engagements — Walawbum, Shaduzup, Inkangahtawng, Nhpum Ga, and Myitkyina — during 750 miles of combat in Burma.",
+      "wowFactor": "The fifth major engagement — the Battle of Myitkyina — lasted 78 days and nearly destroyed the already-exhausted Marauders entirely. Stilwell's decision to keep using them in combat when they were unfit for service became one of the most controversial command decisions of the Pacific War.",
+      "visualDescription": "Pixel art of exhausted American soldiers in jungle fatigues taking cover behind jungle trees, multiple combat teams visible, an airstrip in a jungle clearing in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Merrill%27s_Marauders",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "One major engagement",
+        "Ten major engagements",
+        "Two major engagements",
+        "Eight major engagements",
+        "Three major engagements",
+        "Fifteen major engagements",
+        "Twenty major engagements",
+        "Seven major engagements"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the final — and longest — major engagement fought by Merrill's Marauders in Burma?",
+          "correctAnswer": "Myitkyina",
+          "distractors": [
+            "Walawbum",
+            "Nhpum Ga",
+            "Shaduzup",
+            "Inkangahtawng"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Approximately how many separate combat actions did Merrill's Marauders fight against Japanese forces during their Burma campaign?",
+          "correctAnswer": "32",
+          "distractors": [
+            "5",
+            "100",
+            "12",
+            "200"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Of the 2,750 Marauders who entered Burma, only two were never hospitalised with wounds or major illness.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Merrill's Marauders fought under General Stilwell's overall command and were crucial to opening northern Burma for the construction of the ___ Road.",
+          "correctAnswer": "Ledo",
+          "distractors": [
+            "Burma",
+            "Stilwell",
+            "Kunming",
+            "Mandalay"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_cs_rangoon_retaken",
+      "correctAnswer": "May 3, 1945",
+      "acceptableAlternatives": ["3 May 1945", "May 1945"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On what date did Allied forces under General Slim retake Rangoon, completing the liberation of Burma?",
+      "explanation": "Allied forces retook Rangoon on May 3, 1945, completing the liberation of Burma after more than three years of Japanese occupation. Slim's 14th Army had driven south through Burma in a sweeping campaign that cut off and destroyed multiple Japanese armies. The city was largely abandoned by Japan before the final Allied advance. With Rangoon's fall, General Slim was elevated to supreme Allied commander of ground forces in Southeast Asia, a recognition of the Burma campaign's decisive success.",
+      "statement": "Allied forces retook Rangoon on May 3, 1945, completing Burma's liberation and vindicating General Slim's 14th Army.",
+      "wowFactor": "When Allied forces entered Rangoon in May 1945, they found a message scrawled on the roof of the main jail by British prisoners — 'Japs gone. Exdigitate.' — a Latin-rooted slang phrase meaning roughly 'Get a move on' that British prisoners had left to flag their presence. It was visible from aircraft.",
+      "visualDescription": "Pixel art of Allied soldiers marching into Rangoon's Sule Pagoda district, Union Jacks being raised, local Burmese people watching from street corners",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Burma_campaign_(1944%E2%80%931945)",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "world_war_ii",
+      "distractors": [
+        "August 15, 1945",
+        "January 10, 1945",
+        "March 20, 1945",
+        "June 5, 1945",
+        "December 1, 1944",
+        "September 2, 1945",
+        "April 15, 1945",
+        "July 4, 1945"
+      ],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What honor did General Slim receive following the retaking of Rangoon on May 3, 1945?",
+          "correctAnswer": "He became supreme Allied commander of ground forces in Southeast Asia",
+          "distractors": [
+            "He was awarded the Victoria Cross for personal gallantry",
+            "He was appointed Governor-General of Burma",
+            "He was promoted to Field Marshal immediately",
+            "He was given command of all Allied forces in the Pacific"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How long was Rangoon under Japanese occupation before its liberation on May 3, 1945?",
+          "correctAnswer": "More than three years (since March 1942)",
+          "distractors": [
+            "Six months",
+            "One year",
+            "Five years",
+            "Eighteen months"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Rangoon was retaken by Allied forces on May 3, 1945, completing the liberation of Burma from Japanese occupation.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Allied forces that liberated Rangoon on May 3, 1945 were primarily from General Slim's British ___ Army.",
+          "correctAnswer": "14th",
+          "distractors": [
+            "8th",
+            "15th",
+            "3rd",
+            "12th"
+          ]
+        }
+      ]
+    }
+  ]
+}
