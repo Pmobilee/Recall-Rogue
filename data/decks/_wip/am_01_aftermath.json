@@ -1,0 +1,2116 @@
+{
+  "id": "wwii_aftermath_legacy",
+  "name": "WWII: Aftermath & Legacy",
+  "domain": "history",
+  "subDomain": "world_war_ii",
+  "description": "The war ended. The reckoning began. From the Nuremberg dock to the Berlin Airlift, from Marshall Plan dollars to the Iron Curtain's shadow — discover how the deadliest conflict in history reshaped every nation, law, and alliance on Earth.",
+  "minimumFacts": 25,
+  "targetFacts": 30,
+  "facts": [
+    {
+      "id": "wwii_am_nuremberg_defendants",
+      "correctAnswer": "24",
+      "acceptableAlternatives": ["twenty-four"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "12",
+        "18",
+        "30",
+        "36",
+        "48",
+        "7",
+        "60",
+        "16"
+      ],
+      "quizQuestion": "How many Nazi leaders were indicted at the Nuremberg Trials?",
+      "explanation": "The International Military Tribunal at Nuremberg (November 1945 – October 1946) indicted 24 Nazi leaders, including Hermann Göring, Rudolf Hess, and Albert Speer. Of these, 12 were sentenced to death, 7 imprisoned, and 3 acquitted. Göring cheated the executioner by suicide the night before his hanging. Source: Wikipedia/Nuremberg_trials",
+      "statement": "24 Nazi leaders were indicted at the Nuremberg Trials.",
+      "wowFactor": "Hermann Göring, sentenced to hang, swallowed a cyanide capsule the night before his execution — smuggled past Allied guards in a manner that remains disputed to this day.",
+      "visualDescription": "Pixel art of a packed courtroom in a grand stone building, rows of defendants in the dock wearing headphones for translation, Allied military judges seated at a long bench, spotlights casting dramatic shadows",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_trials",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Nuremberg Trials indicted 24 Nazi leaders — how many were sentenced to death?",
+          "correctAnswer": "12",
+          "distractors": ["7", "24", "18", "6"]
+        },
+        {
+          "type": "context",
+          "question": "The Nuremberg principle that 'following orders is not a defense' was established at which tribunal?",
+          "correctAnswer": "The Nuremberg Trials",
+          "distractors": [
+            "The Tokyo War Crimes Trials",
+            "The Geneva Convention",
+            "The United Nations Security Council",
+            "The Potsdam Conference"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Hermann Göring was executed by hanging at Nuremberg.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Nuremberg Trials established that ___ is not a valid defense for war crimes.",
+          "correctAnswer": "Following orders",
+          "distractors": [
+            "Self-defense",
+            "Acting under duress",
+            "National security",
+            "Military necessity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_nuremberg_no_orders_defense",
+      "correctAnswer": "Following orders",
+      "acceptableAlternatives": ["obeying orders", "superior orders"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "legal_phrases",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Acting under duress",
+        "National loyalty",
+        "Military necessity",
+        "State sovereignty",
+        "Wartime emergency",
+        "Command immunity",
+        "Diplomatic privilege",
+        "Collective guilt"
+      ],
+      "quizQuestion": "The Nuremberg Trials established that what is NOT a valid defense for crimes against humanity?",
+      "explanation": "One of Nuremberg's most consequential legal precedents: the 'following superior orders' defense (Befehl ist Befehl — 'an order is an order') was explicitly rejected. Nazi defendants who claimed they were simply obeying Hitler's commands were held personally responsible. This principle became the foundation of modern international criminal law. Source: Wikipedia/Nuremberg_principles",
+      "statement": "Nuremberg established that 'following orders' is not a defense for crimes against humanity.",
+      "wowFactor": "Every soldier in every army who commits atrocities today is legally accountable under this principle — a direct legacy of the Nuremberg dock, 1945.",
+      "visualDescription": "Pixel art of a courtroom scene where a defendant in military uniform stands at a microphone, a scroll labeled 'Nuremberg Principles' glowing on the judge's bench, red 'X' symbol overlaid on the phrase 'I was just following orders'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_principles",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which legal principle, rejected at Nuremberg, was the primary defense offered by Nazi leaders?",
+          "correctAnswer": "Superior orders (Befehl ist Befehl)",
+          "distractors": [
+            "Diplomatic immunity",
+            "Statute of limitations",
+            "Double jeopardy",
+            "Sovereign immunity"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which trials first established that individual leaders are personally responsible for crimes against humanity?",
+          "correctAnswer": "The Nuremberg Trials",
+          "distractors": [
+            "The Tokyo Trials",
+            "The Hague Tribunal",
+            "The League of Nations Court",
+            "The Versailles Treaty proceedings"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Nuremberg established that soldiers who follow illegal orders bear personal legal responsibility.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Nuremberg principle holds that ___ does not absolve individuals of responsibility for war crimes.",
+          "correctAnswer": "Following superior orders",
+          "distractors": [
+            "Acting in self-defense",
+            "Holding diplomatic status",
+            "Serving a declared war",
+            "Belonging to a military unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_marshall_plan_billions",
+      "correctAnswer": "$13 billion",
+      "acceptableAlternatives": ["13 billion dollars", "thirteen billion dollars"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "dollar_amounts",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "$5 billion",
+        "$25 billion",
+        "$50 billion",
+        "$8 billion",
+        "$100 billion",
+        "$3 billion",
+        "$40 billion",
+        "$20 billion"
+      ],
+      "quizQuestion": "How much money did the United States provide to Europe under the Marshall Plan (1948–1952)?",
+      "explanation": "Secretary of State George C. Marshall proposed the European Recovery Program, which provided $13 billion in 1948 dollars (roughly $150 billion today) to rebuild war-devastated Western Europe. The funds rebuilt infrastructure, factories, and agriculture — and are widely credited with preventing communist takeovers in France and Italy. Source: Wikipedia/Marshall_Plan",
+      "statement": "The Marshall Plan provided $13 billion (1948 dollars) to rebuild Western Europe.",
+      "wowFactor": "In 1948, communist parties were polling first place in France and Italy. Marshall Plan dollars arrived just in time to stabilize those economies — potentially preventing all of Western Europe from going red.",
+      "visualDescription": "Pixel art of a cargo ship unloading crates labeled 'Marshall Plan Aid' at a bombed-out European port, ruined buildings in the background slowly being rebuilt with scaffolding and cranes",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marshall_Plan",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which American Secretary of State proposed the European Recovery Program that became known as the Marshall Plan?",
+          "correctAnswer": "George C. Marshall",
+          "distractors": [
+            "Dean Acheson",
+            "James Byrnes",
+            "John Foster Dulles",
+            "Cordell Hull"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Marshall Plan (1948–1952) was designed to rebuild Western Europe — but what strategic purpose did it also serve?",
+          "correctAnswer": "Preventing communist takeovers",
+          "distractors": [
+            "Collecting war reparations",
+            "Establishing US military bases",
+            "Rebuilding the Soviet Union",
+            "Funding the Nuremberg Trials"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Soviet Union accepted Marshall Plan aid for Eastern European countries.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Plan provided $13 billion to rebuild Western Europe after WWII.",
+          "correctAnswer": "Marshall",
+          "distractors": [
+            "Truman",
+            "Eisenhower",
+            "Roosevelt",
+            "MacArthur"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_iron_curtain_churchill",
+      "correctAnswer": "Winston Churchill",
+      "acceptableAlternatives": ["Churchill"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Harry Truman",
+        "Charles de Gaulle",
+        "Dwight Eisenhower",
+        "Franklin Roosevelt",
+        "Joseph Stalin",
+        "Clement Attlee",
+        "George Marshall",
+        "Ernest Bevin"
+      ],
+      "quizQuestion": "Who famously declared in 1946 that an 'Iron Curtain' had descended across Europe?",
+      "explanation": "In his famous Fulton, Missouri speech (1946), former British Prime Minister Winston Churchill warned that an 'Iron Curtain' had descended from Stettin in the Baltic to Trieste in the Adriatic — separating Soviet-dominated Eastern Europe from the free West. The phrase became the defining metaphor of the Cold War for the next 45 years. Source: Wikipedia/Iron_Curtain",
+      "statement": "Winston Churchill coined the term 'Iron Curtain' in his 1946 Fulton, Missouri speech.",
+      "wowFactor": "Churchill delivered this speech as a private citizen — he had just been voted out of office in 1945, at the moment of Britain's greatest victory. He warned the world anyway.",
+      "visualDescription": "Pixel art of a stone curtain of iron bars bisecting a European city map, one side glowing with warm lights and free movement, the other side dark and guarded by silhouetted soldiers with searchlights",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Iron_Curtain",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In Churchill's 'Iron Curtain' speech, he named which two cities as the ends of the dividing line across Europe?",
+          "correctAnswer": "Stettin and Trieste",
+          "distractors": [
+            "Berlin and Warsaw",
+            "Moscow and Prague",
+            "Vienna and Budapest",
+            "Helsinki and Athens"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Where did Churchill deliver his famous 'Iron Curtain' speech in 1946?",
+          "correctAnswer": "Fulton, Missouri",
+          "distractors": [
+            "Washington D.C.",
+            "London",
+            "Potsdam",
+            "New York City"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Churchill was serving as British Prime Minister when he gave the 'Iron Curtain' speech.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Churchill warned in 1946 that an '___ Curtain' had descended across Europe, dividing East from West.",
+          "correctAnswer": "Iron",
+          "distractors": [
+            "Steel",
+            "Red",
+            "Soviet",
+            "Dark"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_berlin_airlift_months",
+      "correctAnswer": "11 months",
+      "acceptableAlternatives": ["eleven months"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "time_durations",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "3 months",
+        "6 months",
+        "1 year",
+        "2 years",
+        "18 months",
+        "4 months",
+        "8 months",
+        "2 months"
+      ],
+      "quizQuestion": "How long did the Berlin Airlift last before Stalin ended the Soviet blockade of West Berlin?",
+      "explanation": "After the Soviet Union blockaded West Berlin on June 24, 1948, the US and Britain responded with a continuous airlift of food, fuel, and supplies. For 11 months, Allied aircraft landed every few minutes, sustaining over 2 million Berliners. Stalin backed down on May 12, 1949. Source: Wikipedia/Berlin_Blockade",
+      "statement": "The Berlin Airlift sustained West Berlin for 11 months until Stalin lifted the blockade.",
+      "wowFactor": "At its peak, a cargo plane landed in West Berlin every 45 seconds. Allied pilots perfected the schedule so precisely that controllers could tell which plane was late by listening to the engine sounds.",
+      "visualDescription": "Pixel art of night sky over a ruined Berlin city, multiple propeller-engine cargo planes in formation descending through searchlight beams, crowds of Berliners watching from bombed rubble below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Berlin_Blockade",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Berlin Airlift was a response to what Soviet action in 1948?",
+          "correctAnswer": "Blockade of ground supply routes to West Berlin",
+          "distractors": [
+            "Military invasion of West Germany",
+            "Nuclear test near Berlin",
+            "Assassination of Allied commanders",
+            "Annexation of East Berlin"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "On what date did the Soviet Union begin the Berlin Blockade?",
+          "correctAnswer": "June 24, 1948",
+          "distractors": [
+            "May 8, 1945",
+            "July 4, 1947",
+            "March 12, 1947",
+            "April 4, 1949"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Berlin Airlift successfully sustained West Berlin until the Soviet blockade was lifted.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Berlin ___ (1948–49) was the West's response to the Soviet blockade, flying food and supplies into the city for 11 months.",
+          "correctAnswer": "Airlift",
+          "distractors": [
+            "Convoy",
+            "Supply Bridge",
+            "Relief Mission",
+            "Operation Lifeline"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_total_deaths",
+      "correctAnswer": "60–85 million",
+      "acceptableAlternatives": ["70 million", "80 million", "approximately 70 million"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "numbers",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "10–20 million",
+        "20–30 million",
+        "30–40 million",
+        "100–120 million",
+        "5–10 million",
+        "40–50 million",
+        "150 million",
+        "15–20 million"
+      ],
+      "quizQuestion": "What is the estimated total death toll of World War II, making it the deadliest conflict in history?",
+      "explanation": "WWII's total death toll is estimated at 60–85 million, including roughly 40–50 million civilians. The Soviet Union suffered the most (~27 million), followed by China (~20 million), Poland (~6 million), Germany (~7 million), and Japan (~3 million). For comparison, WWI killed approximately 17 million. Source: Wikipedia/World_War_II_casualties",
+      "statement": "WWII killed an estimated 60–85 million people — the deadliest conflict in human history.",
+      "wowFactor": "More Soviet civilians died in the Siege of Leningrad alone (over 1 million) than the United States lost in all of WWII combined.",
+      "visualDescription": "Pixel art of a vast white cemetery stretching to the horizon, rows of identical crosses and stars of David fading into mist, a lone figure standing before an enormous stone monument inscribed with numbers",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_II_casualties",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which country suffered the single largest death toll in WWII, estimated at approximately 27 million?",
+          "correctAnswer": "Soviet Union",
+          "distractors": [
+            "China",
+            "Germany",
+            "Poland",
+            "Japan"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Approximately what proportion of WWII's total deaths were civilian rather than military?",
+          "correctAnswer": "More than half",
+          "distractors": [
+            "About one quarter",
+            "Nearly all",
+            "About one third",
+            "Less than one fifth"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: WWII killed more people than any other war in recorded history.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "WWII's estimated death toll of 60–85 million makes it roughly ___ times deadlier than World War I.",
+          "correctAnswer": "Four to five times",
+          "distractors": [
+            "Twice",
+            "Ten times",
+            "About the same",
+            "Twenty times"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_japan_article9",
+      "correctAnswer": "Article 9",
+      "acceptableAlternatives": ["Article Nine"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "legal_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Article 5",
+        "Article 1",
+        "Article 27",
+        "Article 51",
+        "Article 14",
+        "Article 2",
+        "Article 22",
+        "Article 100"
+      ],
+      "quizQuestion": "Which article of Japan's 1947 constitution, imposed under MacArthur's occupation, renounced war and prohibited maintaining military forces?",
+      "explanation": "Japan's postwar constitution (effective May 3, 1947), drafted under American occupation General Douglas MacArthur, included Article 9 — uniquely renouncing war as a sovereign right and prohibiting Japan from maintaining war potential. Japan later created 'Self-Defense Forces' in the 1950s, which critics argue violate Article 9. The article remains a cornerstone of Japanese pacifist identity. Source: Wikipedia/Article_9_of_the_Japanese_Constitution",
+      "statement": "Japan's 1947 constitution Article 9 renounced war and prohibited Japan from maintaining military forces.",
+      "wowFactor": "Japan's Article 9 is the only constitutional provision in any modern nation that explicitly bans the country from having an army — a direct reversal engineered by the same nation that once feared Japanese militarism most.",
+      "visualDescription": "Pixel art of a Japanese constitutional scroll unrolling to reveal the number '9' in glowing calligraphy, an American general's silhouette in the background, cherry blossoms framing a peaceful Tokyo skyline with no military presence",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Article_9_of_the_Japanese_Constitution",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Under whose authority as Supreme Commander was Japan's pacifist constitution drafted in 1947?",
+          "correctAnswer": "General Douglas MacArthur",
+          "distractors": [
+            "General Dwight Eisenhower",
+            "President Harry Truman",
+            "Admiral Chester Nimitz",
+            "General Omar Bradley"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Japan's Article 9 constitution came into effect in 1947 — what did Japan develop in the 1950s that critics argued violated it?",
+          "correctAnswer": "Self-Defense Forces",
+          "distractors": [
+            "Nuclear weapons program",
+            "Naval blockade capability",
+            "Military alliance with China",
+            "Conscription program"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Japan's Article 9 is the only constitutional provision in any modern nation that explicitly renounces war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Japan's postwar constitution Article 9, imposed under American occupation, renounced ___ as a sovereign right of the nation.",
+          "correctAnswer": "War",
+          "distractors": [
+            "Nuclear weapons",
+            "Colonial expansion",
+            "Alliances",
+            "Reparations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_truman_doctrine_year",
+      "correctAnswer": "1947",
+      "acceptableAlternatives": ["March 12, 1947"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "years",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "1945",
+        "1946",
+        "1948",
+        "1949",
+        "1950",
+        "1944",
+        "1951",
+        "1953"
+      ],
+      "quizQuestion": "In what year did President Truman articulate the Truman Doctrine, committing the US to containing Soviet expansion?",
+      "explanation": "On March 12, 1947, President Truman addressed Congress to declare that the United States would support free peoples threatened by totalitarian regimes. The immediate trigger was Soviet pressure on Greece and Turkey. The Truman Doctrine became the foundational US Cold War policy of containment — later applied to Korea, Vietnam, and beyond. Source: Wikipedia/Truman_Doctrine",
+      "statement": "The Truman Doctrine was articulated on March 12, 1947, committing the US to containing Soviet expansion.",
+      "wowFactor": "The Truman Doctrine was born from a telegram from the exhausted British Empire: Britain told Washington it could no longer afford to prop up Greece and Turkey against Soviet pressure. America picked up the torch of Western leadership that day.",
+      "visualDescription": "Pixel art of President Truman at a congressional podium, a globe behind him showing red communist zones expanding from the Soviet Union toward Greece and Turkey, American eagle emblem glowing on the lectern",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Truman_Doctrine",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Truman Doctrine was triggered by Soviet pressure on which two countries in 1947?",
+          "correctAnswer": "Greece and Turkey",
+          "distractors": [
+            "France and Italy",
+            "Poland and Hungary",
+            "Iran and Iraq",
+            "Korea and China"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Truman Doctrine's policy of resisting Soviet expansion is known by what single word?",
+          "correctAnswer": "Containment",
+          "distractors": [
+            "Deterrence",
+            "Liberation",
+            "Isolationism",
+            "Rollback"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Truman Doctrine was originally proposed to prevent communist takeovers in Greece and Turkey.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Doctrine (1947) committed the United States to supporting free peoples resisting communist subjugation worldwide.",
+          "correctAnswer": "Truman",
+          "distractors": [
+            "Marshall",
+            "Eisenhower",
+            "Monroe",
+            "Nixon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_tokyo_trials_hirohito",
+      "correctAnswer": "Emperor Hirohito",
+      "acceptableAlternatives": ["Hirohito"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "General Tojo",
+        "General Yamashita",
+        "Admiral Yamamoto",
+        "Foreign Minister Matsuoka",
+        "General Homma",
+        "Prime Minister Koiso",
+        "Admiral Toyoda",
+        "General Umezu"
+      ],
+      "quizQuestion": "Who was deliberately NOT prosecuted at the Tokyo War Crimes Trials — a decision made to preserve Japanese stability during occupation?",
+      "explanation": "The International Military Tribunal for the Far East (Tokyo Trials, 1946–48) tried 24 Japanese leaders for war crimes, including General Tojo. Seven were executed and others imprisoned. However, Emperor Hirohito was not prosecuted — the Allied decision, made primarily by MacArthur, was that prosecuting the Emperor would destabilize Japan and make the occupation impossible. Source: Wikipedia/International_Military_Tribunal_for_the_Far_East",
+      "statement": "Emperor Hirohito was deliberately not prosecuted at the Tokyo War Crimes Trials to preserve Japanese stability.",
+      "wowFactor": "Japanese biological warfare scientists from Unit 731 — who conducted lethal experiments on prisoners — were also freed from prosecution in exchange for sharing their research data with American scientists. Justice was far from complete at Tokyo.",
+      "visualDescription": "Pixel art of a Tokyo courtroom with defendants at a long dock, a conspicuous empty throne-shaped seat in the shadows, Allied judges presiding under flags of the victorious nations, a tension-filled atmosphere",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/International_Military_Tribunal_for_the_Far_East",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many Japanese leaders were executed following the Tokyo War Crimes Trials?",
+          "correctAnswer": "7",
+          "distractors": ["12", "24", "4", "18"]
+        },
+        {
+          "type": "context",
+          "question": "Japanese scientists from which unit were released from prosecution at Tokyo in exchange for sharing biological warfare research data?",
+          "correctAnswer": "Unit 731",
+          "distractors": [
+            "Unit 100",
+            "The Tokkō (secret police)",
+            "The Kamikaze Corps",
+            "Unit 516"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: General Tojo was tried and executed at the Tokyo War Crimes Trials.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "At the Tokyo Trials, ___ was shielded from prosecution to maintain stability during American occupation of Japan.",
+          "correctAnswer": "Emperor Hirohito",
+          "distractors": [
+            "General Tojo",
+            "Admiral Yamamoto",
+            "Foreign Minister Shigemitsu",
+            "General Yamashita"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_nato_founding_members",
+      "correctAnswer": "12",
+      "acceptableAlternatives": ["twelve"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "numbers",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "6",
+        "8",
+        "16",
+        "20",
+        "10",
+        "14",
+        "18",
+        "4"
+      ],
+      "quizQuestion": "How many nations were founding members of NATO when it was established on April 4, 1949?",
+      "explanation": "NATO was founded on April 4, 1949, with 12 member nations: Belgium, Canada, Denmark, France, Iceland, Italy, Luxembourg, Netherlands, Norway, Portugal, the United Kingdom, and the United States. Article 5 established collective defense — an attack on one is an attack on all. The Soviet Union responded with the Warsaw Pact in 1955. Source: Wikipedia/NATO",
+      "statement": "NATO was founded on April 4, 1949, with 12 founding member nations.",
+      "wowFactor": "Iceland was a NATO founding member despite having no army — it's the only NATO country that has never had a standing military. Its contribution: a crucial mid-Atlantic airbase at Keflavik.",
+      "visualDescription": "Pixel art of 12 national flags arranged in a circle around the NATO compass rose emblem, each flag banner slightly animated, a formal treaty table in a grand Washington D.C. hall in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/NATO",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What is NATO's Article 5, established at its founding in 1949?",
+          "correctAnswer": "An attack on one member is an attack on all",
+          "distractors": [
+            "Members must spend 2% of GDP on defense",
+            "Nuclear weapons are shared among members",
+            "Members may not declare war unilaterally",
+            "The US has veto power over alliance decisions"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which alliance did the Soviet Union form in 1955 as a direct response to NATO?",
+          "correctAnswer": "The Warsaw Pact",
+          "distractors": [
+            "The Cominform",
+            "The Molotov Plan",
+            "The Soviet Alliance",
+            "The Eastern Bloc Treaty"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: France was one of the 12 founding members of NATO in 1949.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "NATO was established on April 4, ___, formalizing the Western collective defense alliance.",
+          "correctAnswer": "1949",
+          "distractors": [
+            "1945",
+            "1947",
+            "1950",
+            "1955"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_udhr_date",
+      "correctAnswer": "December 10, 1948",
+      "acceptableAlternatives": ["1948", "December 10"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "October 24, 1945",
+        "May 8, 1945",
+        "April 4, 1949",
+        "June 26, 1945",
+        "November 20, 1947",
+        "January 1, 1946",
+        "March 12, 1947",
+        "May 3, 1947"
+      ],
+      "quizQuestion": "On what date did the United Nations adopt the Universal Declaration of Human Rights, drafted largely in response to WWII atrocities?",
+      "explanation": "On December 10, 1948, the UN General Assembly adopted the Universal Declaration of Human Rights (UDHR) — 30 articles establishing fundamental human rights including life, liberty, freedom from slavery, and the right to a fair trial. December 10 is now observed globally as Human Rights Day. The Declaration was a direct response to the Holocaust and WWII war crimes. Source: Wikipedia/Universal_Declaration_of_Human_Rights",
+      "statement": "The Universal Declaration of Human Rights was adopted by the UN on December 10, 1948.",
+      "wowFactor": "Eleanor Roosevelt chaired the drafting committee — and she fought to include economic and social rights (right to education, work, adequate living standards) over fierce opposition from those who wanted only political rights.",
+      "visualDescription": "Pixel art of the UN General Assembly hall, delegates from dozens of nations raising hands to vote yes, a glowing scroll unfurling above the podium titled 'Universal Declaration of Human Rights' with 30 articles listed in miniature text",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Universal_Declaration_of_Human_Rights",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many articles does the Universal Declaration of Human Rights contain?",
+          "correctAnswer": "30",
+          "distractors": ["10", "25", "50", "15"]
+        },
+        {
+          "type": "context",
+          "question": "Who chaired the UN committee that drafted the Universal Declaration of Human Rights?",
+          "correctAnswer": "Eleanor Roosevelt",
+          "distractors": [
+            "René Cassin",
+            "Hansa Mehta",
+            "Charles Malik",
+            "Hernan Santa Cruz"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Universal Declaration of Human Rights is legally binding on all UN member states.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "December 10 is observed as Human Rights Day, marking the 1948 adoption of the Universal Declaration of Human ___.",
+          "correctAnswer": "Rights",
+          "distractors": [
+            "Dignity",
+            "Freedoms",
+            "Laws",
+            "Protections"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_israel_independence",
+      "correctAnswer": "May 14, 1948",
+      "acceptableAlternatives": ["1948", "May 1948"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "November 29, 1947",
+        "May 8, 1945",
+        "December 10, 1948",
+        "April 14, 1948",
+        "June 5, 1967",
+        "October 15, 1948",
+        "January 1, 1949",
+        "July 4, 1948"
+      ],
+      "quizQuestion": "On what date did David Ben-Gurion declare Israeli independence, directly connected to WWII's Holocaust legacy?",
+      "explanation": "David Ben-Gurion declared Israeli independence on May 14, 1948, immediately before the British Mandate expired. Arab states invaded the next day, beginning the First Arab-Israeli War (1948–49). The Holocaust profoundly accelerated international support for a Jewish homeland — WWII's genocide became a key moral argument for the UN Partition Plan of 1947. Approximately 700,000 Palestinians fled or were expelled during the 1948 war (the Nakba). Source: Wikipedia/Israeli_Declaration_of_Independence",
+      "statement": "David Ben-Gurion declared Israeli independence on May 14, 1948, with the Holocaust as a driving moral force.",
+      "wowFactor": "The US recognized Israel just 11 minutes after independence was declared — before the declaration had even been formally transmitted. Truman overruled his own State Department to do it.",
+      "visualDescription": "Pixel art of a crowded Tel Aviv hall, David Ben-Gurion at a microphone beneath a large portrait of Theodor Herzl, a blue-and-white flag raised on a pole, representatives from many nations watching",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The displacement of approximately 700,000 Palestinians during the 1948 Arab-Israeli War is known by what Arabic term meaning 'catastrophe'?",
+          "correctAnswer": "Nakba",
+          "distractors": [
+            "Intifada",
+            "Shahada",
+            "Hijra",
+            "Fatah"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The UN Partition Plan of 1947 divided Palestine between which two proposed states?",
+          "correctAnswer": "A Jewish state and an Arab state",
+          "distractors": [
+            "A British territory and an Arab state",
+            "A Jewish state and a Jordanian state",
+            "A UN mandate and a Jewish state",
+            "An Egyptian province and a Jewish state"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The United States was the first country to recognize the State of Israel in 1948.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "David ___ declared Israeli independence on May 14, 1948.",
+          "correctAnswer": "Ben-Gurion",
+          "distractors": [
+            "Weizmann",
+            "Begin",
+            "Herzl",
+            "Rabin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_operation_paperclip",
+      "correctAnswer": "Wernher von Braun",
+      "acceptableAlternatives": ["von Braun"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 10,
+      "ageGroup": "all",
+      "distractors": [
+        "Werner Heisenberg",
+        "Albert Speer",
+        "Ernst Heinkel",
+        "Fritz Haber",
+        "Kurt Debus",
+        "Walter Dornberger",
+        "Otto Hahn",
+        "Heinz Guderian"
+      ],
+      "quizQuestion": "Which former Nazi V-2 rocket engineer, recruited under Operation Paperclip, became the head of NASA's Marshall Space Flight Center?",
+      "explanation": "Operation Paperclip was the US program that recruited hundreds of German scientists after WWII. Its most famous recruit was Wernher von Braun — designer of the V-2 rocket used to bomb London. Von Braun became director of NASA's Marshall Space Flight Center and was the chief architect of the Saturn V rocket that sent Americans to the Moon. Source: Wikipedia/Operation_Paperclip",
+      "statement": "Nazi V-2 rocket engineer Wernher von Braun was recruited under Operation Paperclip and later led NASA's Moon rocket program.",
+      "wowFactor": "Satirist Tom Lehrer wrote: 'Once the rockets are up, who cares where they come down? That's not my department, says Wernher von Braun.' Von Braun had used concentration camp forced labor to build his V-2s.",
+      "visualDescription": "Pixel art split image: left side shows a V-2 rocket launching from a German wartime site with swastika flags, right side shows a Saturn V rocket launching from Cape Canaveral with American flags — same engineer, different nation, different era",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Paperclip",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Operation Paperclip recruited German scientists after WWII — what was the program's primary strategic motivation?",
+          "correctAnswer": "Exploiting German advances in rocketry and aviation before the Soviets could",
+          "distractors": [
+            "Prosecuting Nazi war criminals",
+            "Rebuilding German industry under US supervision",
+            "Transferring atomic bomb technology to Germany",
+            "Establishing a German science university in America"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Soviet Union ran a parallel program to recruit German scientists after WWII. What rocket did Soviet-era German knowledge help develop?",
+          "correctAnswer": "The R-7 intercontinental ballistic missile (which launched Sputnik)",
+          "distractors": [
+            "The T-34 tank",
+            "The MiG-15 fighter",
+            "The SS-20 missile",
+            "The Kalashnikov assault rifle"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Wernher von Braun used forced concentration camp labor to build the V-2 rockets.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Operation ___ recruited hundreds of German scientists, engineers, and technicians to the United States after WWII.",
+          "correctAnswer": "Paperclip",
+          "distractors": [
+            "Overcast",
+            "Alsos",
+            "Epsilon",
+            "Hydra"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_germany_divided_years",
+      "correctAnswer": "41 years",
+      "acceptableAlternatives": ["forty-one years", "1949 to 1990"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "time_durations",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "20 years",
+        "25 years",
+        "50 years",
+        "30 years",
+        "45 years",
+        "15 years",
+        "35 years",
+        "60 years"
+      ],
+      "quizQuestion": "For how many years did Germany remain divided into West Germany and East Germany before reunification?",
+      "explanation": "Germany was divided into four Allied occupation zones after WWII. By 1949, the Soviet zone became communist East Germany (German Democratic Republic) while the Western zones merged into West Germany (Federal Republic of Germany). Germany remained divided for 41 years until reunification in 1990, following the fall of the Berlin Wall in November 1989. Source: Wikipedia/Division_of_Germany",
+      "statement": "Germany was divided into West and East Germany for 41 years (1949–1990).",
+      "wowFactor": "Berlin itself was divided by a wall starting in 1961 — not to keep invaders out, but to keep East Germans IN. Over 140 people were killed attempting to cross it.",
+      "visualDescription": "Pixel art of a split Germany map, western half glowing with warm city lights and NATO blue, eastern half in darker tones with red Soviet star insignia, the Berlin Wall as a jagged line dividing the capital city in the center",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Division_of_Germany",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In what year did Germany officially reunify, ending its 41-year division?",
+          "correctAnswer": "1990",
+          "distractors": ["1989", "1991", "1988", "1992"]
+        },
+        {
+          "type": "context",
+          "question": "The Berlin Wall was built in 1961 primarily to prevent what?",
+          "correctAnswer": "East Germans from fleeing to West Germany",
+          "distractors": [
+            "Western spies from entering East Berlin",
+            "US military from advancing into East Germany",
+            "Nuclear missiles from being placed near Berlin",
+            "Allied aircraft from landing in East Germany"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: West Germany joined NATO in 1955.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany's four post-WWII occupation zones consolidated into two states in 1949: West Germany and ___ Germany.",
+          "correctAnswer": "East",
+          "distractors": [
+            "Soviet",
+            "Communist",
+            "Democratic",
+            "Central"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_korea_38th_parallel",
+      "correctAnswer": "38th parallel",
+      "acceptableAlternatives": ["the 38th parallel", "38 degrees north latitude"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "geographic_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "37th parallel",
+        "39th parallel",
+        "DMZ line of 1950",
+        "35th parallel",
+        "40th parallel",
+        "Yalu River",
+        "Han River",
+        "36th parallel"
+      ],
+      "quizQuestion": "At what geographic line was Korea divided in 1945, with the Soviet zone to the north and US zone to the south?",
+      "explanation": "After Japan's surrender in 1945, Korea was divided at the 38th parallel — a hasty decision made in Washington in just 30 minutes by two US colonels using a National Geographic map. The Soviet-occupied north became communist North Korea; the US-occupied south became South Korea. This division set the stage for the Korean War (1950–1953). Source: Wikipedia/Division_of_Korea",
+      "statement": "Korea was divided at the 38th parallel in 1945, setting the stage for the Korean War.",
+      "wowFactor": "The line dividing Korea into North and South was drawn by two junior American colonels with a National Geographic map and a 30-minute deadline — one of the most consequential improvised borders in modern history.",
+      "visualDescription": "Pixel art of a Korean peninsula map bisected by a glowing horizontal line labeled '38th parallel', Soviet flag colors bleeding from the north and US flag colors from the south, tiny soldiers facing each other across the line",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Division_of_Korea",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The division of Korea at the 38th parallel in 1945 directly caused which later conflict?",
+          "correctAnswer": "The Korean War (1950–1953)",
+          "distractors": [
+            "The Vietnam War",
+            "The Chinese Civil War",
+            "The Indochina War",
+            "The Taiwan Strait Crisis"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "How was the decision to divide Korea at the 38th parallel made in 1945?",
+          "correctAnswer": "Two US colonels drew it on a National Geographic map in 30 minutes",
+          "distractors": [
+            "It was established by the UN Partition Commission",
+            "Japan proposed it at the surrender ceremony",
+            "Roosevelt and Stalin agreed to it at Yalta",
+            "It followed the pre-1945 Japanese administrative border"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Korea's division at the 38th parallel was a permanent solution agreed upon at the Potsdam Conference.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In 1945, Korea was divided at the ___ parallel, with Soviets occupying the north and Americans the south.",
+          "correctAnswer": "38th",
+          "distractors": [
+            "39th",
+            "37th",
+            "40th",
+            "35th"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_japan_economic_miracle",
+      "correctAnswer": "Second",
+      "acceptableAlternatives": ["second-largest", "2nd"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "ordinal_numbers",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Third",
+        "Fourth",
+        "Sixth",
+        "Fifth",
+        "Seventh",
+        "Eighth",
+        "Tenth",
+        "First"
+      ],
+      "quizQuestion": "By the 1970s, Japan had transformed from WWII's defeated aggressor to become the world's ___-largest economy.",
+      "explanation": "Under American occupation (1945–1952), Japan was reformed: new constitution, land reform, zaibatsu (conglomerate) dissolution. Freed from military spending by Article 9, Japan invested massively in technology and manufacturing. By the 1960s–70s, companies like Toyota, Sony, Honda, and Panasonic dominated global markets. Japan became the world's second-largest economy by the late 1960s, a position it held until overtaken by China in 2010. Source: Wikipedia/Japanese_economic_miracle",
+      "statement": "Japan's postwar economic miracle made it the world's second-largest economy by the 1960s–70s.",
+      "wowFactor": "In 1945, Tokyo lay in ruins from firebombing. By 1964, Japan hosted the Olympics. By 1968, it was richer than every European nation. The speed of the transformation has no parallel in economic history.",
+      "visualDescription": "Pixel art of a time-lapse city transformation: ruined Tokyo in 1945 giving way to a gleaming 1970s skyline with bullet trains, neon Toyota and Sony signs, and a factory assembly line of futuristic cars stretching to the horizon",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_economic_miracle",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Name two Japanese companies born of the postwar economic miracle that came to dominate global markets.",
+          "correctAnswer": "Toyota and Sony (or Honda, Panasonic)",
+          "distractors": [
+            "Mitsubishi and Kawasaki (wartime manufacturers)",
+            "Fujitsu and NEC (postwar only)",
+            "Sharp and Hitachi",
+            "Toshiba and Canon"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which constitutional article, by forbidding a standing military, allowed Japan to redirect defense spending into economic development?",
+          "correctAnswer": "Article 9",
+          "distractors": [
+            "Article 1",
+            "Article 14",
+            "Article 25",
+            "Article 41"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Japan hosted the 1964 Summer Olympics in Tokyo, just 19 years after the city was largely destroyed by firebombing.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Japan's postwar '___ miracle' transformed the country from a bombed-out ruin to the world's second-largest economy within two decades.",
+          "correctAnswer": "Economic",
+          "distractors": [
+            "Industrial",
+            "Technological",
+            "Democratic",
+            "Manufacturing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_geneva_conventions_1949",
+      "correctAnswer": "1949",
+      "acceptableAlternatives": ["nineteen forty-nine"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "years",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "1945",
+        "1947",
+        "1948",
+        "1950",
+        "1929",
+        "1952",
+        "1946",
+        "1955"
+      ],
+      "quizQuestion": "In what year were the Geneva Conventions expanded and updated to four conventions — a direct response to WWII's atrocities against prisoners and civilians?",
+      "explanation": "In 1949, the international community updated the Geneva Conventions into four distinct treaties: treatment of wounded/sick soldiers; treatment of POWs; treatment of civilians in occupied territory; and protection of noncombatants. The revisions directly addressed WWII horrors — the Holocaust, Japanese POW camps, Allied civilian bombing campaigns. These conventions remain the primary legal framework governing the laws of war. Source: Wikipedia/Geneva_Conventions",
+      "statement": "The Geneva Conventions were expanded into four treaties in 1949, directly responding to WWII atrocities.",
+      "wowFactor": "WWII proved that old rules weren't enough: the 1929 Geneva Convention only covered POWs and wounded soldiers. Civilians, death camp victims, and firebombed cities were entirely unprotected. The 1949 revision tried to close those gaps.",
+      "visualDescription": "Pixel art of four glowing scrolls unfurling simultaneously, each bearing a red cross symbol and depicting a different wartime scenario: wounded soldier, prisoner of war, civilian family, and a hospital ship — all protected under new international law",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Geneva_Conventions",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The 1949 Geneva Conventions established four treaties — name one specific category of people they newly protected.",
+          "correctAnswer": "Civilians in occupied territory",
+          "distractors": [
+            "Spies and intelligence agents",
+            "Submarine crews",
+            "Resistance fighters",
+            "Strategic bombing crews"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which organization monitors adherence to the Geneva Conventions?",
+          "correctAnswer": "The International Committee of the Red Cross",
+          "distractors": [
+            "The United Nations Security Council",
+            "The International Criminal Court",
+            "NATO's legal division",
+            "The International Court of Justice"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The 1929 Geneva Convention already included comprehensive protections for civilians in occupied territories.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Conventions (1949) expanded international humanitarian law to protect civilians in occupied territory — a gap revealed by WWII.",
+          "correctAnswer": "Geneva",
+          "distractors": [
+            "Hague",
+            "Vienna",
+            "Nuremberg",
+            "Universal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_decolonization_india",
+      "correctAnswer": "1947",
+      "acceptableAlternatives": ["August 15, 1947"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "years",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "1945",
+        "1948",
+        "1950",
+        "1946",
+        "1952",
+        "1944",
+        "1955",
+        "1960"
+      ],
+      "quizQuestion": "In what year did India achieve independence from Britain, one of the first major decolonizations accelerated by WWII's weakening of European empires?",
+      "explanation": "India achieved independence on August 15, 1947, as Britain — exhausted and economically crippled by WWII — could no longer afford to maintain its empire. India's independence triggered a wave of decolonization: Indonesia (1949), then dozens of African nations through the 1960s. The UN expanded from 51 founding members (1945) to over 100 by the 1960s as new nations joined. Source: Wikipedia/Indian_independence_movement",
+      "statement": "India achieved independence from Britain in 1947, accelerated by WWII's weakening of European empires.",
+      "wowFactor": "Indian soldiers fought for Britain throughout WWII — over 2.5 million served, more than any other volunteer force in history. Yet Britain still had to grant independence. The war made empire impossible to sustain.",
+      "visualDescription": "Pixel art of an Indian independence ceremony: the British Union Jack being lowered in slow motion as the Indian tricolor rises above a vast crowd, the Ashoka Chakra wheel glowing in the center of the new flag",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Indian_independence_movement",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many nations were founding members of the UN in 1945, compared to how many had joined by the 1960s due to decolonization?",
+          "correctAnswer": "51 founding members, 100+ by the 1960s",
+          "distractors": [
+            "30 founding members, 60 by the 1960s",
+            "70 founding members, 150 by the 1960s",
+            "51 founding members, 51 remained through the 1960s",
+            "100 founding members, unchanged by the 1960s"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "WWII accelerated decolonization because European colonial powers were weakened. Which Asian nation achieved independence in 1949, soon after India?",
+          "correctAnswer": "Indonesia",
+          "distractors": [
+            "Vietnam",
+            "Malaysia",
+            "Philippines",
+            "Burma"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: More than 2 million Indian soldiers volunteered to fight for Britain in WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "WWII's decolonization wave saw European empires collapse as exhausted powers like Britain and ___ could no longer afford to hold colonies.",
+          "correctAnswer": "France",
+          "distractors": [
+            "Spain",
+            "Portugal",
+            "Italy",
+            "Belgium"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_china_communist_1949",
+      "correctAnswer": "Mao Zedong",
+      "acceptableAlternatives": ["Mao", "Mao Tse-tung"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Chiang Kai-shek",
+        "Zhou Enlai",
+        "Deng Xiaoping",
+        "Lin Biao",
+        "Zhu De",
+        "Liu Shaoqi",
+        "Chen Yi",
+        "Peng Dehuai"
+      ],
+      "quizQuestion": "Who seized power in China in 1949, completing a Communist victory in the civil war that resumed after WWII's end?",
+      "explanation": "The Chinese Civil War between the Communists (Mao Zedong) and Nationalists (Chiang Kai-shek) had been interrupted by WWII. When Japan surrendered in 1945, the civil war immediately resumed. By October 1, 1949, Mao proclaimed the People's Republic of China; Chiang and the Nationalists fled to Taiwan. China's communist transformation reshaped Asia and deepened Cold War tensions. Source: Wikipedia/Chinese_Civil_War",
+      "statement": "Mao Zedong proclaimed the People's Republic of China on October 1, 1949, completing the Communist victory over the Nationalists.",
+      "wowFactor": "After China fell to communism, the US political debate of 'Who lost China?' led to McCarthyism — the anti-communist witch hunts at home were partly a response to the shock of China's fall in 1949.",
+      "visualDescription": "Pixel art of Tiananmen Gate in October 1949, Mao Zedong standing at the microphone before an enormous crowd, red flags unfurling across the square, Communist soldiers in formation below, Nationalist forces retreating toward the coast in the background",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Chinese_Civil_War",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Chiang Kai-shek fled to which island after the Nationalist defeat in 1949?",
+          "correctAnswer": "Taiwan",
+          "distractors": [
+            "Hainan Island",
+            "Hong Kong",
+            "Okinawa",
+            "The Philippines"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Mao proclaimed the People's Republic of China from which historic Beijing landmark on October 1, 1949?",
+          "correctAnswer": "Tiananmen Gate",
+          "distractors": [
+            "The Forbidden City throne room",
+            "The Great Wall",
+            "The Temple of Heaven",
+            "The Summer Palace"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: China's Communist Party victory in 1949 was accelerated by WWII exhausting and discrediting the Nationalist government.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Mao Zedong proclaimed the People's Republic of China on October 1, ___.",
+          "correctAnswer": "1949",
+          "distractors": [
+            "1945",
+            "1947",
+            "1948",
+            "1950"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_poland_borders_shifted",
+      "correctAnswer": "Westward",
+      "acceptableAlternatives": ["moved west", "shifted west"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "directions",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Eastward",
+        "Northward",
+        "Southward",
+        "No change",
+        "Doubled in size",
+        "Halved in area",
+        "Northeastward",
+        "Southwestward"
+      ],
+      "quizQuestion": "After WWII, Poland's entire national territory was physically shifted in which direction — gaining German land while losing territory to the Soviet Union?",
+      "explanation": "At the Potsdam Conference (1945), the Allied powers approved a radical solution to Polish territory: Poland lost its eastern lands (kresy) to the Soviet Union, but gained German territory in the west (Silesia, Pomerania, part of East Prussia). Effectively, Poland's entire territory moved westward on the map. Millions of Germans were expelled from the new Polish territories; millions of Poles were relocated from the east. Source: Wikipedia/Oder-Neisse_line",
+      "statement": "Poland's postwar borders shifted westward — losing eastern territory to the USSR and gaining German territory in the west.",
+      "wowFactor": "About 12 million Germans were expelled from their homes in the newly Polish territories after 1945 — one of the largest forced population transfers in history, largely forgotten in the West.",
+      "visualDescription": "Pixel art of a before-and-after map of Poland, showing the entire country sliding westward like a puzzle piece — red arrows pointing west, old eastern border absorbed by USSR in red, new western border pushing into former Germany in blue",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oder%E2%80%93Neisse_line",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Approximately how many ethnic Germans were expelled from newly Polish territories after WWII?",
+          "correctAnswer": "12 million",
+          "distractors": ["3 million", "500,000", "25 million", "6 million"]
+        },
+        {
+          "type": "context",
+          "question": "At which conference did the Allied powers approve the westward shift of Poland's borders?",
+          "correctAnswer": "The Potsdam Conference (1945)",
+          "distractors": [
+            "The Yalta Conference",
+            "The Tehran Conference",
+            "The Paris Peace Conference",
+            "The San Francisco Conference"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Poland gained the German industrial region of Silesia as part of the postwar border settlement.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Postwar Poland's western border was established at the ___ line, giving Poland former German territory.",
+          "correctAnswer": "Oder-Neisse",
+          "distractors": [
+            "Curzon",
+            "Molotov-Ribbentrop",
+            "Potsdam",
+            "Rhine-Danube"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_baby_boom",
+      "correctAnswer": "1945–1964",
+      "acceptableAlternatives": ["1946 to 1964", "the postwar baby boom years"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "date_ranges",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "1939–1945",
+        "1940–1960",
+        "1950–1970",
+        "1945–1955",
+        "1945–1975",
+        "1948–1964",
+        "1945–1958",
+        "1943–1960"
+      ],
+      "quizQuestion": "The postwar 'Baby Boom' — a dramatic surge in birth rates as soldiers returned home — is defined as occurring in approximately which years?",
+      "explanation": "The Baby Boom (roughly 1945–1964) followed WWII as returning soldiers married and started families. The US saw 76 million births during this period. 'Boomers' grew up in postwar prosperity and went on to dominate politics, culture, and economics for decades. The boom was also seen across Western Europe, Canada, and Australia. Source: Wikipedia/Baby_boom",
+      "statement": "The postwar Baby Boom (1945–1964) produced approximately 76 million births in the US alone.",
+      "wowFactor": "Baby Boomers came of age in the 1960s and staged the youth counterculture revolution — the generation produced by WWII soldiers seeking peace and family ended up being history's most disruptive generation.",
+      "visualDescription": "Pixel art of a 1950s American suburb at dusk, rows of identical houses with lights in every window, dozens of children playing in streets, a veteran in uniform returning through a front gate, a welcoming family on the porch",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Baby_boom",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many births occurred in the United States during the Baby Boom (1945–1964)?",
+          "correctAnswer": "Approximately 76 million",
+          "distractors": [
+            "About 20 million",
+            "About 100 million",
+            "About 50 million",
+            "About 30 million"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Baby Boom generation that came of age in the 1960s is associated with which social movement?",
+          "correctAnswer": "The youth counterculture revolution",
+          "distractors": [
+            "The civil rights movement of the 1940s",
+            "The labor union movement",
+            "The temperance movement",
+            "The women's suffrage movement"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Baby Boom was exclusively a United States phenomenon.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The postwar '___ Boom' (1945–1964) occurred as returning soldiers started families, producing millions of children who shaped postwar society.",
+          "correctAnswer": "Baby",
+          "distractors": [
+            "Economic",
+            "Housing",
+            "Population",
+            "Birth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_eu_origins_ecsc",
+      "correctAnswer": "European Coal and Steel Community",
+      "acceptableAlternatives": ["ECSC", "the Coal and Steel Community"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "organization_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "The Council of Europe",
+        "The European Economic Community",
+        "The Western European Union",
+        "The Brussels Pact",
+        "The Organisation for European Economic Cooperation",
+        "The Atlantic Union",
+        "The European Defence Community",
+        "The European Parliament"
+      ],
+      "quizQuestion": "Which 1951 organization — founded to share control of France and Germany's war-making raw materials — became the direct precursor to the European Union?",
+      "explanation": "The European Coal and Steel Community (ECSC, 1951) was proposed by French Foreign Minister Robert Schuman to pool control of French and German coal and steel production — the exact raw materials needed to wage war. The idea: nations that share economic control cannot easily go to war. The ECSC's six founding members later formed the European Economic Community (1957) and eventually the European Union. Source: Wikipedia/European_Coal_and_Steel_Community",
+      "statement": "The 1951 European Coal and Steel Community (ECSC) was the founding precursor to the European Union.",
+      "wowFactor": "The EU is at its core an anti-war project: pooling France and Germany's coal and steel in 1951 made it physically impossible for them to separately arm for another war. Peace by economic entanglement.",
+      "visualDescription": "Pixel art of French and German coal miners shaking hands across a border post, a steel factory belching fire in the background, six national flags of the ECSC founding members flying above, and a small EU-logo seed glowing in the ground between them",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/European_Coal_and_Steel_Community",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which French Foreign Minister proposed pooling French and German coal and steel production in 1950, leading to the ECSC?",
+          "correctAnswer": "Robert Schuman",
+          "distractors": [
+            "Jean Monnet",
+            "Charles de Gaulle",
+            "Georges Bidault",
+            "René Pleven"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Why was coal and steel specifically chosen as the shared resource for postwar European integration?",
+          "correctAnswer": "They are the primary raw materials needed to manufacture weapons and wage war",
+          "distractors": [
+            "France and Germany had the world's largest deposits",
+            "American aid required sharing industrial resources",
+            "Both materials were needed for postwar urban reconstruction only",
+            "The Soviet Union controlled all other industrial resources"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The European Union directly evolved from an organization originally designed to prevent France and Germany from going to war again.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The European ___ and Steel Community (1951) was the direct ancestor of the European Union, designed to entangle European nations economically.",
+          "correctAnswer": "Coal",
+          "distractors": [
+            "Iron",
+            "Defense",
+            "Economic",
+            "Nuclear"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_technology_jet_nuclear",
+      "correctAnswer": "Jet aircraft and nuclear power",
+      "acceptableAlternatives": ["jet engines and atomic energy", "jet propulsion and nuclear energy"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "technology_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Satellites and radar",
+        "Radio and sonar",
+        "Tanks and submarines",
+        "Radar and chemical weapons",
+        "Television and nuclear weapons",
+        "Computers and radar",
+        "Ballistic missiles and radar",
+        "Penicillin and tanks"
+      ],
+      "quizQuestion": "Name two major technologies accelerated by WWII research that transformed postwar civilian and military life.",
+      "explanation": "WWII acted as a massive accelerator of technology. Germany deployed the world's first operational jet aircraft (Me 262, 1944); the Manhattan Project created nuclear weapons (later enabling nuclear power); early computers like Colossus (codebreaking) and ENIAC (ballistics calculations) emerged directly from wartime needs. All three technologies — jet aviation, nuclear power, and computing — became foundations of the modern world. Source: Wikipedia/Technology_during_World_War_II",
+      "statement": "WWII accelerated jet aircraft, nuclear power, and early computing — all of which transformed postwar civilization.",
+      "wowFactor": "The German Messerschmitt Me 262, the world's first operational jet fighter, was flying combat missions by 1944 — yet Germany still lost the war. The plane was real; Hitler's insistence on using it as a bomber instead of a fighter was not.",
+      "visualDescription": "Pixel art collage of three panels: a sleek jet aircraft breaking the sound barrier with a vapor cone, a cooling tower of a nuclear power plant with a peaceful glow, and an early 1940s vacuum-tube computer filling an entire room with blinking lights",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Technology_during_World_War_II",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What was the world's first operational jet-powered combat aircraft, deployed by Germany in 1944?",
+          "correctAnswer": "Messerschmitt Me 262",
+          "distractors": [
+            "Heinkel He 162",
+            "Focke-Wulf Fw 190",
+            "Junkers Ju 87",
+            "Dornier Do 335"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which WWII codebreaking computer, built in Britain, is considered a forerunner of modern computing?",
+          "correctAnswer": "Colossus",
+          "distractors": [
+            "ENIAC",
+            "Bombe",
+            "Z3",
+            "Enigma"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Germany had operational jet aircraft in combat before the war ended in 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Manhattan Project, created to build the atomic bomb, later provided the scientific foundation for civilian ___ power.",
+          "correctAnswer": "Nuclear",
+          "distractors": [
+            "Solar",
+            "Rocket",
+            "Chemical",
+            "Hydroelectric"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_cold_war_nato_warsaw",
+      "correctAnswer": "1955",
+      "acceptableAlternatives": ["nineteen fifty-five"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "years",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "1945",
+        "1947",
+        "1949",
+        "1950",
+        "1953",
+        "1957",
+        "1960",
+        "1962"
+      ],
+      "quizQuestion": "In what year did the Soviet Union form the Warsaw Pact as a direct response to West Germany joining NATO?",
+      "explanation": "When West Germany was admitted to NATO in May 1955, the Soviet Union responded just days later by forming the Warsaw Pact (May 14, 1955) — a military alliance of the USSR and seven Eastern European satellite states. This formalized the Cold War's two armed camps. The Warsaw Pact lasted until 1991, when the Soviet Union dissolved. Source: Wikipedia/Warsaw_Pact",
+      "statement": "The Soviet Union formed the Warsaw Pact in 1955 in direct response to West Germany joining NATO.",
+      "wowFactor": "The Warsaw Pact was formed just 8 days after West Germany joined NATO. The Soviet response was that fast. The Cold War's two armed camps were now fully institutionalized, mirroring each other across the Iron Curtain.",
+      "visualDescription": "Pixel art of two massive military formations facing each other across a dividing line in Europe, left side showing NATO blue helmets and flags, right side showing Warsaw Pact red stars, each side with tanks, missiles, and warplanes aligned in perfect symmetry",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Warsaw_Pact",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many Eastern European states joined the Soviet Union in the original Warsaw Pact of 1955?",
+          "correctAnswer": "Seven (plus the USSR, totaling 8)",
+          "distractors": [
+            "Four",
+            "Ten",
+            "Twelve",
+            "Three"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What specific NATO decision directly triggered the creation of the Warsaw Pact in 1955?",
+          "correctAnswer": "West Germany being admitted to NATO",
+          "distractors": [
+            "The deployment of nuclear weapons to Western Europe",
+            "The expansion of NATO to include Turkey",
+            "The establishment of US military bases in France",
+            "The Berlin Airlift's success"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Warsaw Pact outlasted the Soviet Union, surviving until the late 1990s.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ Pact (1955) was the Soviet-led military alliance formed in response to West Germany joining NATO.",
+          "correctAnswer": "Warsaw",
+          "distractors": [
+            "Moscow",
+            "Eastern",
+            "Red",
+            "Soviet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_denazification",
+      "correctAnswer": "Denazification",
+      "acceptableAlternatives": ["de-nazification", "the denazification program"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Reparations",
+        "The Marshall Plan",
+        "Operation Paperclip",
+        "The Morgenthau Plan",
+        "Occupation law",
+        "The Potsdam Directive",
+        "Lustration",
+        "Demilitarization"
+      ],
+      "quizQuestion": "What was the Allied program called that sought to remove Nazi ideology and party members from German government, education, and society after WWII?",
+      "explanation": "Denazification (1945–1952) was the Allied program to remove Nazis from German institutions — government posts, schools, judiciary, media. Millions of Germans were assessed; most received minor penalties or were cleared. The process was widely regarded as incomplete: many former Nazis were rehabilitated and returned to influential positions in West German society, business, and government by the 1950s. Source: Wikipedia/Denazification",
+      "statement": "Denazification (1945–1952) removed Nazi party members from German society, but was widely considered incomplete.",
+      "wowFactor": "A Nuremberg prosecutor once estimated that if denazification had been fully applied, half of West Germany's judges, doctors, and civil servants in the 1950s would have lost their jobs. It wasn't fully applied.",
+      "visualDescription": "Pixel art of an Allied officer with a checklist reviewing rows of German civilians, some with Nazi armbands being directed one way, others cleared and walking free, a massive bureaucratic office building with stacks of paper files stretching to the ceiling",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Denazification",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Denazification was considered incomplete by many historians — what typically happened to most former Nazi party members assessed in the program?",
+          "correctAnswer": "They received minor penalties or were cleared and rehabilitated",
+          "distractors": [
+            "They were all imprisoned for at least 10 years",
+            "They were permanently barred from all employment",
+            "They were expelled from Germany",
+            "They were executed or exiled"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Operation Paperclip, which recruited Nazi scientists for the US, represented a direct contradiction of which postwar Allied policy?",
+          "correctAnswer": "Denazification",
+          "distractors": [
+            "The Marshall Plan",
+            "The Truman Doctrine",
+            "The Nuremberg Principles",
+            "The Potsdam Declaration"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Denazification was so thorough that no former Nazi officials held government positions in West Germany by the 1960s.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "___ (1945–1952) was the Allied program to purge Nazi party members from German government, education, and public life.",
+          "correctAnswer": "Denazification",
+          "distractors": [
+            "Demilitarization",
+            "Reconstruction",
+            "Accountability",
+            "Lustration"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_displaced_persons",
+      "correctAnswer": "Displaced persons (DPs)",
+      "acceptableAlternatives": ["displaced persons", "DPs", "war refugees"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "historical_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Political prisoners",
+        "War criminals",
+        "Economic migrants",
+        "Prisoner of war survivors",
+        "Expellees",
+        "Partisans",
+        "Collaborators",
+        "Resistance fighters"
+      ],
+      "quizQuestion": "What term described the millions of homeless Europeans — Holocaust survivors, expelled Germans, and war refugees — who lived in temporary camps for years after WWII?",
+      "explanation": "WWII created tens of millions of displaced persons (DPs): Holocaust survivors with no homes to return to, ethnic Germans expelled from Poland and Czechoslovakia, Poles relocated from Soviet-annexed territory, and refugees from across Eastern Europe. DP camps run by the Allies became cities of hundreds of thousands, some persisting until the early 1950s. The crisis prompted the 1951 UN Refugee Convention. Source: Wikipedia/Displaced_persons_camps_in_post-World_War_II_Europe",
+      "statement": "Millions of displaced persons (DPs) lived in postwar camps for years — Holocaust survivors, expelled Germans, and war refugees.",
+      "wowFactor": "Some Holocaust survivors spent years in DP camps after liberation — stateless, forbidden from returning to homes where neighbors had taken their property or turned them in. Liberation did not mean freedom for many.",
+      "visualDescription": "Pixel art of a vast DP camp: rows of barracks in a muddy field, people of multiple nationalities with small bundles of belongings, children playing between the buildings, a makeshift school and synagogue visible, Allied military trucks distributing food at a gate",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Displaced_persons_camps_in_post-World_War_II_Europe",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The postwar displaced persons crisis directly inspired which 1951 international legal framework?",
+          "correctAnswer": "The UN Refugee Convention",
+          "distractors": [
+            "The Universal Declaration of Human Rights",
+            "The Geneva Conventions",
+            "The NATO Charter",
+            "The Genocide Convention"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "Which specific group of WWII survivors was often trapped in DP camps because they could not safely return home to countries where their communities had been destroyed?",
+          "correctAnswer": "Jewish Holocaust survivors",
+          "distractors": [
+            "German POWs",
+            "French resistance fighters",
+            "American soldiers awaiting transport home",
+            "Captured German officers"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: All displaced persons camps in Europe were closed within one year of WWII's end in 1945.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Postwar Europe's '___ persons' crisis involved millions of homeless Holocaust survivors, expelled Germans, and war refugees living in Allied-run camps.",
+          "correctAnswer": "Displaced",
+          "distractors": [
+            "Refugee",
+            "Stateless",
+            "Expelled",
+            "Surviving"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_appeasement_lesson",
+      "correctAnswer": "Munich Agreement",
+      "acceptableAlternatives": ["Munich", "the Munich Pact", "appeasement at Munich"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "The Versailles Treaty",
+        "The Locarno Pacts",
+        "The Kellogg-Briand Pact",
+        "The Non-Aggression Pact",
+        "The Stresa Front",
+        "The Four-Power Pact",
+        "The Hoare-Laval Pact",
+        "The Anglo-German Naval Agreement"
+      ],
+      "quizQuestion": "Which 1938 diplomatic failure became the permanent symbol of appeasement — teaching postwar leaders to take a firm stance against aggression?",
+      "explanation": "The Munich Agreement (September 1938), where Britain and France allowed Hitler to take Czechoslovakia's Sudetenland in exchange for a promise of 'peace in our time,' became history's definitive lesson in the failure of appeasement. Postwar Cold War doctrine of containment and firm deterrence was explicitly designed to avoid 'another Munich.' The word 'Munich' became synonymous with dangerous capitulation to aggressors. Source: Wikipedia/Munich_Agreement",
+      "statement": "The Munich Agreement (1938) became the defining symbol of appeasement failure, shaping all postwar deterrence doctrine.",
+      "wowFactor": "Every postwar president or prime minister who wanted to justify confronting an adversary invoked 'Munich' — from Korea to Suez to Iraq. One diplomatic disaster in 1938 permanently changed how leaders talk about standing firm.",
+      "visualDescription": "Pixel art of Neville Chamberlain holding a paper document labeled 'Peace in Our Time' outside an airplane, a look of relief on his face — while in the distance, a Nazi eagle shadow stretches across a map of Europe",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Munich_Agreement",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which British Prime Minister declared 'peace in our time' after the Munich Agreement of 1938?",
+          "correctAnswer": "Neville Chamberlain",
+          "distractors": [
+            "Winston Churchill",
+            "Clement Attlee",
+            "Anthony Eden",
+            "Stanley Baldwin"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What specific territory did Hitler gain through the Munich Agreement?",
+          "correctAnswer": "The Sudetenland of Czechoslovakia",
+          "distractors": [
+            "Austria's eastern border regions",
+            "The Rhineland",
+            "The Polish Corridor",
+            "The Alsace-Lorraine region"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Churchill supported the Munich Agreement at the time, calling it a necessary compromise.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The '___ Agreement' (1938) gave Hitler Czechoslovakia's Sudetenland and became history's most famous example of failed appeasement.",
+          "correctAnswer": "Munich",
+          "distractors": [
+            "Versailles",
+            "Locarno",
+            "Berlin",
+            "Vienna"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_soviet_death_toll",
+      "correctAnswer": "Soviet Union",
+      "acceptableAlternatives": ["USSR", "Russia"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "country_names",
+      "difficulty": 1,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "China",
+        "Germany",
+        "Poland",
+        "Japan",
+        "France",
+        "United Kingdom",
+        "United States",
+        "Yugoslavia"
+      ],
+      "quizQuestion": "Which nation suffered the greatest single-country death toll of WWII — an estimated 27 million people?",
+      "explanation": "The Soviet Union's losses in WWII were staggering: approximately 27 million dead, combining military and civilian casualties. This includes deaths from combat, the Siege of Leningrad (900 days, ~1 million dead), German occupation, starvation, and the brutal Eastern Front campaigns. The Soviet death toll was greater than all other WWII combatant nations combined. It explains why Soviet historical memory of WWII — called the 'Great Patriotic War' — is so central to Russian national identity. Source: Wikipedia/World_War_II_casualties",
+      "statement": "The Soviet Union suffered approximately 27 million deaths in WWII — more than any other nation.",
+      "wowFactor": "Roughly 1 in 7 Soviet citizens died in WWII. In some western Soviet regions, the death rate was closer to 1 in 4. Almost no Soviet family was untouched. This loss permanently shaped how Russia sees itself and the world.",
+      "visualDescription": "Pixel art of the Soviet WWII memorial at Mamayev Kurgan in Volgograd — the massive 'The Motherland Calls' statue on a hilltop, smaller figures of soldiers stretching down the slope, eternal flames burning in multiple bronze bowls, snow falling gently",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_II_casualties",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What do Russians call WWII — a name that reflects the scale of their national sacrifice?",
+          "correctAnswer": "The Great Patriotic War",
+          "distractors": [
+            "The People's War",
+            "The Eastern Crusade",
+            "The War of Liberation",
+            "The Second World War"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "The Siege of Leningrad, lasting 900 days, killed approximately how many civilians — more than the US lost in all of WWII?",
+          "correctAnswer": "Over 1 million",
+          "distractors": [
+            "100,000",
+            "500,000",
+            "5 million",
+            "200,000"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Soviet Union's WWII death toll was greater than all other combatant nations' losses combined.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "With approximately 27 million deaths, the ___ Union suffered more losses in WWII than any other nation in history.",
+          "correctAnswer": "Soviet",
+          "distractors": [
+            "British",
+            "Chinese",
+            "German",
+            "Japanese"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_war_graves_memorials",
+      "correctAnswer": "Normand Memorial / Arlington / Punchbowl",
+      "acceptableAlternatives": ["war memorials", "WWII cemeteries", "national war cemeteries"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "place_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "The Colosseum",
+        "The Eiffel Tower",
+        "The Palace of Versailles",
+        "Buckingham Palace",
+        "The Kremlin",
+        "The Berlin Wall",
+        "Big Ben",
+        "The Pantheon"
+      ],
+      "quizQuestion": "The Normandy American Cemetery — containing 9,388 graves on a cliff above the D-Day beaches — is one of how many American Battle Monuments Commission cemeteries maintained across the world?",
+      "explanation": "After WWII, the American Battle Monuments Commission established and maintains 26 overseas military cemeteries and 30 memorials across the world, containing over 218,000 graves. The Normandy American Cemetery (9,388 graves) is the most visited WWII memorial in Europe. Each white marble cross or Star of David marks an individual story. The commission ensures permanent, dignified maintenance of these sites. Source: Wikipedia/Normandy_American_Cemetery_and_Memorial",
+      "statement": "The American Battle Monuments Commission maintains 26 overseas WWII cemeteries containing over 218,000 graves.",
+      "wowFactor": "The Normandy cemetery has no unknown graves — every single one of the 9,388 men buried there was identified. The 1,557 missing are recorded on the Walls of the Missing. No one is forgotten.",
+      "visualDescription": "Pixel art aerial view of the Normandy American Cemetery at dawn — endless rows of white marble crosses and Stars of David glowing in golden morning light, the English Channel visible on the horizon, D-Day beach below the cliff, a single soldier silhouette standing before a grave",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_American_Cemetery_and_Memorial",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many graves are in the Normandy American Cemetery, overlooking the D-Day beaches?",
+          "correctAnswer": "9,388",
+          "distractors": [
+            "1,557",
+            "50,000",
+            "218,000",
+            "25,000"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What organization maintains American military cemeteries overseas, including the Normandy American Cemetery?",
+          "correctAnswer": "The American Battle Monuments Commission",
+          "distractors": [
+            "The Department of Veterans Affairs",
+            "The US Army Corps of Engineers",
+            "The National Park Service",
+            "The Department of Defense"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Normandy American Cemetery contains the graves of soldiers who died on D-Day and in subsequent Normandy campaign battles.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Normandy American ___ overlooks Omaha Beach, containing 9,388 white marble crosses and Stars of David.",
+          "correctAnswer": "Cemetery",
+          "distractors": [
+            "Memorial",
+            "Monument",
+            "Museum",
+            "Battlefield"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wwii_am_cold_war_duration",
+      "correctAnswer": "45 years",
+      "acceptableAlternatives": ["forty-five years", "1945 to 1990", "1945–1991"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "time_durations",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "20 years",
+        "30 years",
+        "50 years",
+        "10 years",
+        "60 years",
+        "25 years",
+        "35 years",
+        "70 years"
+      ],
+      "quizQuestion": "How long did the Cold War last — the ideological conflict born directly from WWII's postwar power vacuum?",
+      "explanation": "The Cold War lasted approximately 45 years, from 1945 (end of WWII, Soviet occupation of Eastern Europe) to 1990–1991 (fall of Berlin Wall, Soviet dissolution). It was a direct consequence of WWII: the war destroyed the old European power structure and left two superpowers — the US and USSR — with incompatible ideologies and competing global ambitions. Nuclear deterrence prevented direct conflict; proxy wars (Korea, Vietnam, Angola, Afghanistan) were fought instead. Source: Wikipedia/Cold_War",
+      "statement": "The Cold War lasted approximately 45 years (1945–1990), a direct consequence of WWII's postwar power vacuum.",
+      "wowFactor": "The Cold War never involved direct US-Soviet combat — yet it killed an estimated 5–8 million people through proxy wars in Korea, Vietnam, Angola, and dozens of other conflicts. A war that was never declared, never ended officially, and never stopped killing.",
+      "visualDescription": "Pixel art of a world map at night, the USSR glowing red and the USA glowing blue with influence lines radiating to proxy nations across Asia, Africa, and Latin America, nuclear missiles silhouetted on both sides facing each other across the Arctic",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cold_War",
+      "volatile": false,
+      "categoryL1": "history",
+      "categoryL2": "wwii_aftermath",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What event in 1989 marked the symbolic end of the Cold War, 44 years after WWII's end?",
+          "correctAnswer": "The fall of the Berlin Wall",
+          "distractors": [
+            "The dissolution of the Soviet Union",
+            "The signing of START I nuclear treaty",
+            "The withdrawal from Afghanistan",
+            "The first free elections in Poland"
+          ]
+        },
+        {
+          "type": "context",
+          "question": "What strategy prevented direct US-Soviet military conflict throughout the Cold War?",
+          "correctAnswer": "Nuclear deterrence (Mutually Assured Destruction)",
+          "distractors": [
+            "UN peacekeeping forces",
+            "The Geneva Conventions",
+            "Diplomatic summits",
+            "Economic interdependence"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The US and Soviet Union engaged in direct armed combat at least once during the Cold War.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Cold War's approximately 45-year duration (1945–1990) was shaped by ___ deterrence — the knowledge that direct conflict meant nuclear annihilation for both sides.",
+          "correctAnswer": "Nuclear",
+          "distractors": [
+            "Economic",
+            "Conventional",
+            "Diplomatic",
+            "Ideological"
+          ]
+        }
+      ]
+    }
+  ]
+}
