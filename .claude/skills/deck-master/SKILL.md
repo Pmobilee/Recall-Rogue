@@ -19,6 +19,50 @@ Single skill for creating high-quality curated decks. Every deck is a self-conta
 
 This section exists because every mistake listed below was actually made during the Solar System deck build (2026-03-24). Future agents MUST follow this process to avoid repeating them.
 
+### 🚨🚨🚨 ABSOLUTE RULE: SOURCE DATA BEFORE GENERATION 🚨🚨🚨
+
+**NEVER EVER generate facts from LLM training knowledge. This is the #1 content pipeline failure mode.**
+
+On 2026-03-25, an entire batch of ~270 WWII facts had to be thrown away because workers were generating facts from their training knowledge and attributing fake Wikipedia URLs they never consulted. The facts LOOKED correct but had no verified provenance.
+
+### Two-Tier Fact Production Pipeline
+
+Fact production uses a **two-tier model** that separates accuracy from quality:
+
+#### Tier 1: Sonnet Workers — Research & Extraction (Accuracy)
+- **Role**: Structured data extraction from authoritative sources
+- **Tools**: WebSearch, WebFetch to pull data from Wikipedia, Wikidata, authoritative sites
+- **Output**: Verified source data in architecture YAML — dates, numbers, names, quotes, claims, each with source URL
+- **What they do**: "Find me the exact date, casualty figure, commander names, and Wikipedia URL for the Battle of Stalingrad"
+- **What they DON'T do**: Write quiz questions, explanations, wow factors, or distractors
+- **Why Sonnet**: Cheap, fast, excellent at structured extraction. Can run many in parallel.
+
+#### Tier 2: Opus Final Pass — Curation & Writing (Quality)
+- **Role**: Craft the educational experience from verified data
+- **Input**: The verified source data from Tier 1
+- **Output**: Final DeckFact JSON with polished quizQuestion, explanation, wowFactor, distractors, variants
+- **What Opus does**:
+  - Writes quiz questions that force reasoning, not just recall
+  - Writes explanations that connect facts into narrative arcs ("This same policy of appeasement would later lead to...")
+  - Writes wow factors that make facts memorable and shareable
+  - Generates distractors that are plausible and pedagogically useful
+  - Creates variants (reverse, context, fill_blank, true_false) with craft
+  - Ensures cross-references between subdecks (20%+ of facts reference other subdecks)
+  - Applies the "dinner party test" — would mastering these facts let someone confidently discuss WWII?
+  - Calibrates difficulty and funScore with full-deck context
+- **Why Opus**: Creative judgment, narrative craft, full-deck awareness. This is where educational quality lives.
+
+#### The Pipeline in Practice:
+1. **Orchestrator** identifies topics for a subdeck (from AR doc)
+2. **Sonnet workers** (parallel, ~5 at a time) each research 10-15 topics via WebSearch/WebFetch, writing verified data + source URLs into architecture YAML sections
+3. **Orchestrator reviews** the verified data for completeness and accuracy
+4. **Opus** reads the verified data and writes the final DeckFact JSON — questions, explanations, wow factors, distractors, variants
+5. **QA pass** checks every fact against original sources
+
+**If you don't have verified source data, STOP. Do not generate. Go back to the research phase.**
+
+This applies to: dates, casualty figures, names, quotes, locations, statistics, attributions, cause-effect claims, "first/largest/longest" superlatives — EVERYTHING that is a factual claim.
+
 ### Phase 0: Research Before Implementing
 
 **NEVER approximate an algorithm. Study the actual source.** When the Anki queue system was first implemented, the agent "approximated" Anki with weighted random, then hardcoded "every 3rd charge", then burned through all new cards first. Three rewrites. The fix was studying Anki's actual Rust source code on GitHub and replicating the real algorithm.
@@ -119,6 +163,91 @@ Every fact in a curated deck must earn its place. Ask:
 - **Facts with no natural distractor pool** (orphan facts that can't participate in the confusion matrix ecosystem)
 - **Anything you'd find in a random trivia game** without the connected understanding that makes curated decks special
 
+### Comprehensive Coverage & Narrative Depth — CRITICAL
+
+**The Trust Test:** When a player masters a deck, they must be able to confidently say "I know [topic]" at a dinner party. If the deck is too shallow for that, it has failed. A curated deck is not a sampler plate — it is an education.
+
+#### Inclusion Threshold
+
+- **Include** if a casual fan would recognize the name or feel embarrassed not knowing it
+- **Include** if it's needed to understand a story that IS included (you can't tell the Trojan War without Paris, even if Paris isn't "major")
+- **Exclude** only truly academic/obscure entries that no one outside a university course would encounter
+- The threshold is NOT "does it have a Wikipedia article" — everything does. It's "would a well-read person know this?"
+
+#### Facts-Per-Entity Depth
+
+One fact per entity is a glossary, not a deck. Players must learn enough about each entity to actually understand it.
+
+| Entity importance | Facts | What they must cover |
+|---|---|---|
+| Major (Zeus, Medusa, Heracles, Lincoln, Jupiter) | 4-8 | Identity, key myth/event, origin/backstory, relationships to others, cultural legacy, counterintuitive detail, Roman equivalent or alternate name |
+| Medium (Sphinx, Artemis, Atalanta, Fillmore, Titan) | 2-4 | Key trait, key myth/event, one surprise, how they connect to other entities |
+| Minor (Griffin, Iris, Nereus, Chester Arthur) | 1-2 | The one thing that makes them distinctive and why they matter |
+
+A Monsters sub-deck with 25 creatures and 25 facts means 1 fact per creature — the player learns a name and nothing else. That's a flashcard list, not knowledge. 25 creatures with 60-80 facts means the player actually KNOWS those creatures.
+
+#### Narrative Coverage
+
+**Stories must be told as stories, not isolated facts.** This is the difference between "knowing Greek mythology" and "knowing some Greek mythology trivia."
+
+A deck that teaches "Odysseus was clever" and "Cyclops was a one-eyed giant" as separate facts has FAILED — the player never learns that Odysseus BLINDED the Cyclops by driving a burning stake into his eye, or that he escaped by hiding under sheep, or that this act caused Poseidon to curse his voyage home. The CONNECTION is the knowledge.
+
+**Rules for narrative coverage:**
+- Every major narrative arc in the domain must have enough facts to tell the story: setup, conflict, resolution, aftermath
+- Connected facts must cross-reference each other in explanations ("This is the same golden fleece Jason sailed to Colchis to find")
+- A player who masters all facts in a narrative sequence should be able to RETELL the story, not just answer isolated questions about it
+- The `explanation` field is the primary vehicle for narrative threads — use it to link facts into story arcs
+
+**During architecture phase, identify all narrative arcs:**
+- List every major story/arc in the domain
+- Each major arc needs: inciting incident, key episodes, climax, aftermath (minimum 4-6 facts)
+- Each minor arc needs: setup, key moment, outcome (minimum 2-3 facts)
+- Map which entities appear in which arcs — this reveals natural interweaving points
+
+**Examples of narrative depth:**
+- Trojan War arc (10+ facts): golden apple → Judgment of Paris → abduction of Helen → Achilles joins → Achilles' rage → Hector's death → wooden horse → fall of Troy → aftermath
+- 12 Labors of Heracles (12+ facts): each labor as its own fact, plus the setup (why he had to do them) and the aftermath
+- The Odyssey (8+ facts): each major episode (Cyclops, Circe, Sirens, Scylla/Charybdis, Calypso, Penelope's suitors, recognition scene)
+
+#### Interweaving & Cross-References
+
+**The best facts connect entities across sub-decks.** These connections build the web of understanding that makes someone actually "know" a topic rather than knowing isolated fragments.
+
+- A Medusa fact in Monsters links to Perseus in Heroes ("Perseus killed Medusa using Athena's mirrored shield")
+- A Prometheus fact in Titans links to Zeus in Olympians ("Zeus chained Prometheus to a rock for stealing fire")
+- An Underworld fact links to Orpheus in Heroes ("Orpheus descended to the Underworld to rescue his wife Eurydice")
+- A Trojan Horse fact links to Odysseus ("The wooden horse was Odysseus's idea")
+
+**Rule:** At least 20% of facts in a comprehensive deck should explicitly reference entities from OTHER sub-decks in their question or explanation. This is what transforms a collection of sub-decks into a unified body of knowledge.
+
+#### Target Fact Ranges by Domain Size
+
+| Domain scope | Target facts | Sub-decks | Examples |
+|---|---|---|---|
+| Narrow | 60-100 | Optional | Solar System, US Presidents |
+| Medium | 100-200 | Recommended | Periodic Table, US States |
+| Deep | 250-400 | Required (30+ facts each) | Greek Mythology, WWII, Ancient Rome |
+| Encyclopedic | 400+ | Required, split by era/region | World History, All Animals |
+
+The target is driven by the content, not arbitrary numbers. A topic with 50 entities at 4 facts each naturally produces ~200 facts. Don't pad to hit a number, but don't artificially constrain either.
+
+#### Sub-Deck Rules
+
+- Any deck over 100 facts MUST have sub-decks so players can focus their study
+- Each sub-deck must be independently playable (30+ facts minimum)
+- Sub-decks should be thematic and narratively coherent, not arbitrary alphabetical/numerical splits
+- A player who completes one sub-deck should feel they learned something complete and coherent
+- Sub-decks should have natural interweaving points (shared characters, cause-effect chains across sub-decks)
+
+#### Domain-Specific Pool Types
+
+Some domains benefit from pool types beyond the standard name/term/place/number:
+
+- **Mythology/History:** Add `object_names` pool for famous artifacts, weapons, and symbols (Golden Fleece, Pandora's Box, Excalibur, Holy Grail). These are essential knowledge that isn't captured by entity-name pools.
+- **Science:** Add `concept_names` pool for named laws, effects, and phenomena (greenhouse effect, plate tectonics, natural selection)
+- **Geography:** Add `landmark_names` pool for famous natural/built features
+- **Music/Art:** Add `work_names` pool for famous compositions, paintings, novels
+
 ---
 
 ## Game Modes Context
@@ -211,6 +340,9 @@ Progress does NOT transfer between modes. A curated deck's progress bar only ref
 - Scraping copyrighted content (Quizlet sets, Anki shared decks — use for demand research only, never copy content)
 - Using images/assets without verifying commercial license
 - Hardcoding data that could drift (populations, "current" leaders, living records) — these need flagging as `volatile: true`
+- Generating facts from LLM training knowledge and attributing fake source URLs (the #1 failure mode — happened 2026-03-25, 270 facts thrown away)
+- Passing workers a topic list without verified source data and asking them to "generate facts"
+- Any worker prompt that does NOT include pre-verified dates, numbers, and source URLs for every claim
 
 ---
 
@@ -387,25 +519,68 @@ volatile_facts: []
 
 **Goal:** Produce the complete fact dataset conforming to the architecture spec.
 
-### Worker setup
+### Two-Phase Generation Pipeline — MANDATORY
 
-Spawn **Sonnet** sub-agents (`model: "sonnet"`) for ALL fact generation. Haiku is not acceptable for database content.
+Deck generation uses a **two-phase pipeline** to ensure both factual accuracy and writing quality. This is non-negotiable — never skip phases or combine them.
 
-Each Sonnet worker MUST receive:
-- The architecture YAML spec (full content)
-- The master worker prompt VERBATIM from `docs/RESEARCH/SOURCES/master-worker-prompt.md` — read it fresh each time, never paraphrase or summarize it
-- Wikidata/Wikipedia structured data for the entities being processed
-- A batch of entities to process (max 10 per worker call)
-- Max 5 workers running simultaneously
-- **The programmatic sourcing rule** — every fact must cite its source
+#### Phase 1: Sonnet Workers — Truth-Grounded Fact Generation
 
-### Source verification workflow
+**Purpose:** Generate structurally complete facts grounded in ACTUAL source data. Sonnet ensures factual accuracy by working directly from fetched Wikipedia/Wikidata text.
 
-Before generating facts, the orchestrator MUST:
-1. **Fetch structured data** from Wikidata for the entities (SPARQL query or entity lookup)
-2. **Fetch Wikipedia content** for verification and explanation text
-3. **Pass this source data to workers** — workers generate facts FROM the source data, not from their training knowledge
-4. Workers MAY use world knowledge to write engaging explanations and visual descriptions, but the core fact (question + answer) must be grounded in the provided source data
+**Before spawning workers, the orchestrator MUST:**
+1. **Fetch Wikipedia articles** for all major entities using WebFetch (or read cached source files)
+2. **Fetch Wikidata structured data** via SPARQL queries where applicable (dates, measurements, relationships)
+3. **Organize source text by entity** — each worker receives the actual article text for its assigned entities
+
+**Sonnet worker setup:**
+- Spawn **Sonnet** sub-agents (`model: "sonnet"`) for ALL fact generation. Haiku is not acceptable for database content.
+- Each worker receives:
+  - The architecture spec (pool definitions, chain themes, sub-deck assignments)
+  - **ACTUAL Wikipedia/Wikidata text** for the entities being processed — this is the truth source
+  - The master worker prompt from `docs/RESEARCH/SOURCES/master-worker-prompt.md` if it exists
+  - A batch of entities to process (max 10 per worker to avoid token limits)
+  - Max 6 workers running simultaneously
+- **Core rule:** The question + correct answer of every fact MUST be verifiable in the provided source text. Workers must NOT generate facts from training knowledge alone — the source data is the ground truth.
+- Workers produce structurally complete facts with all required fields (see "Per-fact requirements" below)
+- Workers MAY use world knowledge for distractors, since plausible wrong answers don't need source verification
+
+#### Phase 2: Opus Quality Pass — Prose Polish & Narrative Interweaving
+
+**Purpose:** Elevate writing quality without changing factual content. Opus rewrites prose for engagement, adds narrative connections between sub-decks, and ensures stories read as connected arcs.
+
+**The orchestrator (Opus) reads all Sonnet-generated facts and rewrites ONLY these fields:**
+- `explanation` — make it richer, add cross-references to other entities/sub-decks
+- `wowFactor` — make it genuinely surprising and share-worthy
+- `visualDescription` — make it vivid and memorable for pixel art generation
+- `statement` — make it clear and compelling
+
+**Opus MUST NOT change these fields:**
+- `correctAnswer` — the truth stays as Sonnet verified it
+- `quizQuestion` — the question stays as written
+- `distractors` — pool-based, already correct
+- `difficulty` — calibrated by Sonnet against source material
+- `answerTypePoolId` — structural, not prose
+- `chainThemeId` — structural
+- `ageGroup` — content-based, already assessed
+- `id`, `sourceUrl`, `sourceName`, `volatile` — metadata
+
+**Narrative interweaving rules for Opus pass:**
+- At least 20% of explanations should reference entities from OTHER sub-decks
+- Narrative arcs (e.g., Trojan War, Ragnarok, 12 Labors) should have explanations that connect sequential facts ("This is the same Fleece that Jason sailed to Colchis to find")
+- Add "bridge" references between sub-decks where natural connections exist
+
+**Why two phases?**
+- Sonnet is excellent at structured extraction from source text — it stays faithful to the data
+- Opus is excellent at creative writing and seeing narrative connections — it makes facts engaging
+- Combining both in one step risks Opus "improving" facts by changing them to be more interesting but less accurate
+- Separating phases means truth is locked in before quality polish begins
+
+### Source data caching
+
+For large decks (100+ entities), source data should be cached locally:
+- Save fetched Wikipedia text to `data/deck-sources/<deck_id>/` as individual `.txt` files per entity
+- This prevents re-fetching on worker retries or subsequent generation batches
+- Cache files are NOT committed to git — add to `.gitignore`
 
 ### Per-fact requirements (each fact must include)
 
