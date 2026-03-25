@@ -2941,7 +2941,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "FDR died just weeks before Germany surrendered. On what date did he die, leaving Truman to inherit both the presidency and the atomic bomb decision?",
-      "explanation": "FDR died on April 12, 1945 at Warm Springs, Georgia — just 25 days before Germany's surrender on May 8. Truman, his Vice President, had been kept so far out of the loop that he didn't even know the Manhattan Project existed until after becoming president. The decision to use atomic bombs fell entirely on Truman.",
+      "explanation": "FDR died on April 12, 1945 at Warm Springs, Georgia — just 26 days before Germany's surrender on May 8. Truman, his Vice President, had been kept so far out of the loop that he didn't even know the Manhattan Project existed until after becoming president. The decision to use atomic bombs fell entirely on Truman.",
       "visualDescription": "Pixel art of a somber White House at dusk, American flag at half-mast, a lone figure of Truman visible in a lit window, newspapers on the ground bearing FDR's photo.",
       "sourceName": "Wikipedia — Franklin D. Roosevelt",
       "sourceUrl": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
@@ -2960,7 +2960,7 @@
         {
           "type": "reverse",
           "quizQuestion": "FDR died on April 12, 1945. How many days before Germany's surrender on May 8, 1945 was that?",
-          "correctAnswer": "25 days",
+          "correctAnswer": "26 days",
           "distractors": [
             "3 days",
             "90 days",
@@ -9687,17 +9687,17 @@
     },
     {
       "id": "wwii_ax_donitz_fuhrer",
-      "correctAnswer": "8 days",
+      "correctAnswer": "23 days",
       "acceptableAlternatives": [
-        "eight days",
-        "less than two weeks"
+        "twenty-three days",
+        "less than a month"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "number_stats",
       "difficulty": 4,
       "funScore": 10,
       "quizQuestion": "Hitler named Dönitz his successor in his political testament. How many days did Dönitz actually serve as Germany's head of state before ordering the final surrender?",
-      "explanation": "Dönitz became Führer on May 1, 1945 — one day after Hitler's suicide. He served 8 days, issuing the order for Germany's unconditional surrender on May 7-8, 1945. The shortest-lived head of state in German history, his only real act was ending the war.",
+      "explanation": "Dönitz became head of state on May 1, 1945 — one day after Hitler's suicide. His government formally dissolved on May 23, 1945, giving him 23 days as Germany's leader. During this time he oversaw Germany's unconditional surrender on May 7-8, 1945, and continued to govern briefly as Allied forces took control before finally arresting his entire cabinet at Flensburg.",
       "visualDescription": "Pixel art of Dönitz in naval uniform sitting at a sparse desk, a formal document before him, Allied flags visible through the window of the Flensburg navy barracks.",
       "sourceName": "Wikipedia — Karl Dönitz",
       "sourceUrl": "https://en.wikipedia.org/wiki/Karl_D%C3%B6nitz",
@@ -9715,7 +9715,7 @@
       "variants": [
         {
           "type": "reverse",
-          "quizQuestion": "Dönitz served as Germany's head of state for 8 days in May 1945. Why did Hitler choose the Admiral as his successor rather than Göring or Himmler?",
+          "quizQuestion": "Dönitz served as Germany's head of state for 23 days in May 1945 before his government was dissolved. Why did Hitler choose the Admiral as his successor rather than Göring or Himmler?",
           "correctAnswer": "Hitler had stripped both Göring and Himmler of their titles for insubordination near the end of the war",
           "distractors": [
             "Dönitz was the only senior leader still alive when Hitler wrote his testament",
@@ -9745,7 +9745,7 @@
         },
         {
           "type": "fill_blank",
-          "quizQuestion": "Named Hitler's successor, Dönitz served as Germany's head of state for only _____ before ordering the final surrender.",
+          "quizQuestion": "Named Hitler's successor, Dönitz served as Germany's head of state for _____ before his government was dissolved by Allied forces.",
           "correctAnswer": "8 days",
           "distractors": [
             "3 days",
@@ -11780,7 +11780,7 @@
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "When did Japan complete its capture of Wuhan — China's wartime political, economic, and military centre — ending a four-month siege?",
-      "explanation": "The Battle of Wuhan ran from early June to November 12, 1938. Japan deployed almost all of its armies in China, five-and-a-half divisions along the Yangtze under General Okamura, plus 120 naval ships and 500 aircraft. Japan captured Wuchang and Hankou on October 26, 1938, and Hanyang on the 27th. Despite Japan's advance, the main Chinese land force remained largely intact and retreated to Chongqing, buying time for the government to establish a wartime capital and continue the war of resistance.",
+      "explanation": "The Battle of Wuhan ran from early June to October 27, 1938. Japan deployed almost all of its armies in China, five-and-a-half divisions along the Yangtze under General Okamura, plus 120 naval ships and 500 aircraft. Japan captured Wuchang and Hankou on October 26, 1938, and Hanyang on the 27th, completing the battle. Despite Japan's advance, the main Chinese land force remained largely intact and retreated to Chongqing, buying time for the government to establish a wartime capital and continue the war of resistance.",
       "statement": "Japan captured Wuhan (Wuchang and Hankou) on October 26, 1938 after a four-month battle — but China's main army survived and withdrew to Chongqing.",
       "wowFactor": "Although Japan captured Wuhan after a massive four-month campaign deploying virtually its entire China force, China's army was not destroyed — it simply retreated deeper into the country, making this 'victory' ultimately meaningless for Japan's war aims.",
       "visualDescription": "Pixel art of the confluence of the Yangtze and Han rivers, Japanese warships moving up the river, smoke rising from the tri-city shore, refugees streaming westward",
@@ -12516,18 +12516,18 @@
     },
     {
       "id": "wwii_ef_barbarossa_front_width",
-      "correctAnswer": "1,000 km",
+      "correctAnswer": "2,900 km",
       "acceptableAlternatives": [
-        "1000 km",
-        "1,000 kilometers",
-        "one thousand kilometers"
+        "2900 km",
+        "1,800 miles",
+        "approximately 2,900 kilometers"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Operation Barbarossa attacked across a front of what width — a scale that made it logistically unlike any previous military campaign?",
-      "explanation": "The 1,000 km front from the Baltic to the Black Sea was both Barbarossa's greatest weapon and greatest weakness. It spread Soviet defenses impossibly thin at first, enabling rapid German advances. But it also meant Germany had to supply and reinforce an enormous line as Soviet resistance stiffened — a problem that proved fatal by winter.",
+      "explanation": "The 2,900 km (1,800 mile) front from the Baltic to the Black Sea was both Barbarossa's greatest weapon and greatest weakness. It spread Soviet defenses impossibly thin at first, enabling rapid German advances. But it also meant Germany had to supply and reinforce an enormous line as Soviet resistance stiffened — a problem that proved fatal by winter.",
       "visualDescription": "Pixel art of a map showing red arrows sweeping across a vast green-and-brown landscape from west to east, spanning from Baltic coast to Black Sea.",
       "sourceName": "Wikipedia — Operation Barbarossa",
       "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
@@ -12546,7 +12546,7 @@
         {
           "type": "reverse",
           "correctAnswer": "Operation Barbarossa",
-          "quizQuestion": "Which 1941 invasion opened across a 1,000 km front — the widest ground offensive ever launched?",
+          "quizQuestion": "Which 1941 invasion opened across a 2,900 km (1,800 mile) front — the widest ground offensive ever launched?",
           "distractors": [
             "Operation Citadel",
             "Operation Bagration",
@@ -12557,7 +12557,7 @@
         {
           "type": "context",
           "correctAnswer": "Eastern Front",
-          "quizQuestion": "Historians estimate the majority of all WWII casualties occurred on which theater, opened by Barbarossa's 1,000 km assault?",
+          "quizQuestion": "Historians estimate the majority of all WWII casualties occurred on which theater, opened by Barbarossa's 2,900 km assault?",
           "distractors": [
             "Western Front",
             "Pacific Theater",
@@ -13522,19 +13522,19 @@
     },
     {
       "id": "wwii_ef_kursk_tank_count",
-      "correctAnswer": "3,400",
+      "correctAnswer": "2,700",
       "acceptableAlternatives": [
-        "3400",
-        "approximately 3,400",
-        "over 3,000",
-        "3,400 tanks"
+        "2700",
+        "approximately 2,700",
+        "about 2,700",
+        "2,700 armored vehicles"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "How many tanks and assault guns did Germany commit to Operation Citadel at Kursk — making it the largest tank battle in history?",
-      "explanation": "Germany assembled approximately 3,400 tanks and assault guns for Operation Citadel (Kursk). The Soviets had even more — roughly 5,000 tanks — plus intelligence from the Lucy spy network that gave them full knowledge of German plans. Kursk was the first major German offensive of the war where Soviets had prepared defenses in advance. The result was a grinding defeat that ended German strategic offensive capability on the Eastern Front.",
+      "explanation": "Germany assembled approximately 2,700 tanks and assault guns for Operation Citadel (Kursk). The Soviets had even more — roughly 5,000 tanks — plus intelligence from the Lucy spy network that gave them full knowledge of German plans. Kursk was the first major German offensive of the war where Soviets had prepared defenses in advance. The result was a grinding defeat that ended German strategic offensive capability on the Eastern Front.",
       "visualDescription": "Pixel art of hundreds of tanks stretching across a flat summer steppe, a massive armored formation filling the entire horizon, dust clouds rising from every direction.",
       "sourceName": "Wikipedia — Battle of Kursk",
       "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kursk",
@@ -13553,7 +13553,7 @@
         {
           "type": "reverse",
           "correctAnswer": "Battle of Kursk",
-          "quizQuestion": "Which battle, involving ~3,400 German and ~5,000 Soviet tanks, is considered the largest tank battle in history?",
+          "quizQuestion": "Which battle, involving ~2,700 German and ~5,000 Soviet armored vehicles, is considered the largest tank battle in history?",
           "distractors": [
             "Battle of Stalingrad",
             "Battle of Moscow",
@@ -13575,7 +13575,7 @@
         {
           "type": "true_false",
           "correctAnswer": "True",
-          "quizQuestion": "True or False: The Battle of Kursk, with approximately 3,400 German and 5,000 Soviet tanks, was the largest tank battle in history.",
+          "quizQuestion": "True or False: The Battle of Kursk, with approximately 2,700 German and 5,000 Soviet armored vehicles, was the largest tank battle in history.",
           "distractors": [
             "False"
           ]
@@ -15304,17 +15304,17 @@
     },
     {
       "id": "wwii_ef_bagration_date_start",
-      "correctAnswer": "June 23, 1944",
+      "correctAnswer": "June 22, 1944",
       "acceptableAlternatives": [
         "June 1944",
-        "23 June 1944"
+        "22 June 1944"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "year_dates",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "On what date did Operation Bagration — the Soviet summer offensive that destroyed Army Group Center — begin?",
-      "explanation": "Operation Bagration launched June 23, 1944 — just 17 days after D-Day. The timing was deliberate: Germany had transferred troops west to defend against the Allied landing, weakening Army Group Center. Bagration was the largest Soviet offensive of the war and one of the largest military operations in history.",
+      "explanation": "Operation Bagration launched June 22, 1944 — exactly three years after Barbarossa began on June 22, 1941. The date was deliberately chosen by Stalin. The timing was also strategically timed: Germany had transferred troops west after D-Day (June 6), weakening Army Group Center. Bagration was the largest Soviet offensive of the war and one of the largest military operations in history.",
       "visualDescription": "Pixel art of a massive Soviet armored column stretching to the horizon in summer Belarus, aircraft flying overhead, infantry marching alongside T-34 tanks on a dusty road.",
       "sourceName": "Wikipedia — Operation Bagration",
       "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Bagration",
@@ -15332,7 +15332,7 @@
       "variants": [
         {
           "type": "reverse",
-          "quizQuestion": "Operation Bagration began on June 23, 1944 — just 17 days after which major Allied operation also launched in June 1944?",
+          "quizQuestion": "Operation Bagration began on June 22, 1944 — 16 days after which major Allied operation also launched in June 1944?",
           "correctAnswer": "D-Day (the Normandy landings)",
           "distractors": [
             "Operation Market Garden",
@@ -16531,17 +16531,17 @@
     },
     {
       "id": "wwii_ef_sevastopol_duration",
-      "correctAnswer": "300 days",
+      "correctAnswer": "250 days",
       "acceptableAlternatives": [
-        "approximately 300 days",
-        "about 300 days"
+        "approximately 250 days",
+        "about 250 days"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "How long did Soviet forces hold the fortified city of Sevastopol against the German siege that began in October 1941?",
-      "explanation": "The Siege of Sevastopol lasted from October 30, 1941 to July 4, 1942 — approximately 300 days. Soviet defenders held the Crimean fortress far longer than German planners expected, supplied by sea across the Black Sea, before finally being forced to evacuate.",
+      "explanation": "The Siege of Sevastopol lasted from October 30, 1941 to July 4, 1942 — approximately 250 days. Soviet defenders held the Crimean fortress far longer than German planners expected, supplied by sea across the Black Sea, before finally being forced to evacuate.",
       "visualDescription": "Pixel art of a coastal fortress under bombardment, smoke rising from the harbor, warships silhouetted against an orange sky, artillery flashes on the hilltops.",
       "sourceName": "Wikipedia — Siege of Sevastopol (1941–1942)",
       "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Sevastopol_(1941%E2%80%9342)",
@@ -16560,7 +16560,7 @@
         {
           "type": "reverse",
           "quizQuestion": "The Siege of Sevastopol lasted from October 30, 1941 to July 4, 1942. Approximately how many days is that?",
-          "correctAnswer": "300 days",
+          "correctAnswer": "250 days",
           "distractors": [
             "60 days",
             "150 days",
@@ -16570,7 +16570,7 @@
         },
         {
           "type": "context",
-          "quizQuestion": "How were Soviet defenders of Sevastopol supplied during the 300-day siege while surrounded by German forces on land?",
+          "quizQuestion": "How were Soviet defenders of Sevastopol supplied during the 250-day siege while surrounded by German forces on land?",
           "correctAnswer": "By sea across the Black Sea",
           "distractors": [
             "By aircraft flying low over German lines at night",
@@ -16581,7 +16581,7 @@
         {
           "type": "true_false",
           "quizQuestion": "True or False: The Siege of Sevastopol lasted less than one month before Soviet forces surrendered.",
-          "correctAnswer": "False — the siege lasted approximately 300 days before Soviets evacuated",
+          "correctAnswer": "False — the siege lasted approximately 250 days before Soviets evacuated",
           "distractors": [
             "True — Sevastopol fell within weeks of the German assault",
             "True — the siege lasted exactly 30 days",
@@ -16591,7 +16591,7 @@
         {
           "type": "fill_blank",
           "quizQuestion": "The Siege of Sevastopol lasted approximately ______, making it one of the longest sieges on the Eastern Front.",
-          "correctAnswer": "300 days",
+          "correctAnswer": "250 days",
           "distractors": [
             "60 days",
             "150 days",
@@ -17045,7 +17045,7 @@
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "After the Warsaw Uprising was suppressed, German demolition units systematically destroyed the city during what period?",
-      "explanation": "The systematic demolition of Warsaw occurred from October 2 to November 15, 1944 — after the Uprising was crushed. German engineers methodically destroyed block by block. Polish survivors were expelled from the city, leaving it an uninhabited ruin that Soviet forces entered in January 1945.",
+      "explanation": "The systematic demolition of Warsaw began October 2, 1944 — after the Uprising was crushed — and continued through October, November, and December 1944 as German engineers methodically destroyed block by block. Demolition finally ended when Soviet forces entered the ruined city in January 1945. Polish survivors were expelled before the demolition, leaving Warsaw an uninhabited ruin.",
       "visualDescription": "Pixel art of German soldiers in winter coats surveying a map of street blocks, engineers setting charges on building foundations, Warsaw rooftops in the background.",
       "sourceName": "Wikipedia — Destruction of Warsaw",
       "sourceUrl": "https://en.wikipedia.org/wiki/Destruction_of_Warsaw",
@@ -18390,17 +18390,18 @@
     },
     {
       "id": "wwii_hc_belzec_killed",
-      "correctAnswer": "500,000",
+      "correctAnswer": "440,000–453,000",
       "acceptableAlternatives": [
-        "approximately 500,000",
-        "~500,000"
+        "approximately 440,000",
+        "about 450,000",
+        "440,000 to 453,000"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "number_stats",
       "difficulty": 4,
       "funScore": 3,
       "quizQuestion": "Approximately how many people were killed at Belzec death camp?",
-      "explanation": "Belzec, in occupied Poland, was an Operation Reinhard death camp where approximately 500,000 Jews were murdered between March and December 1942. It was one of the first purpose-built death camps, using carbon monoxide gas.",
+      "explanation": "Belzec, in occupied Poland, was an Operation Reinhard death camp where approximately 440,000–453,000 Jews were murdered between March and December 1942. It was one of the first purpose-built death camps, using carbon monoxide gas.",
       "visualDescription": "Pixel art of a wide memorial plaza with a low stone wall and carved relief, bare winter trees along its edges, grey sky overhead.",
       "sourceName": "United States Holocaust Memorial Museum",
       "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/belzec",
@@ -18417,7 +18418,7 @@
       ],
       "variants": {
         "reverse": {
-          "quizQuestion": "Belzec death camp, where ~500,000 were killed, used which gas for killing — unlike Auschwitz?",
+          "quizQuestion": "Belzec death camp, where approximately 440,000–453,000 were killed, used which gas for killing — unlike Auschwitz?",
           "correctAnswer": "Carbon monoxide",
           "distractors": [
             "Zyklon B",
@@ -18443,7 +18444,7 @@
           ]
         },
         "true_false": {
-          "quizQuestion": "True or False: Approximately 500,000 people were killed at Belzec.",
+          "quizQuestion": "True or False: Approximately 440,000–453,000 people were killed at Belzec.",
           "correctAnswer": "True",
           "distractors": [
             "False"
@@ -18857,7 +18858,7 @@
       "difficulty": 3,
       "funScore": 4,
       "quizQuestion": "Who served as the commandant of Auschwitz and oversaw the murder of over a million people there?",
-      "explanation": "Rudolf Höss was the longest-serving commandant of Auschwitz, overseeing the camp from 1940 to 1943 and again briefly in 1944. Under his command the camp became the largest killing center of the Holocaust. He was arrested in 1946, tried in Poland, and executed at Auschwitz in April 1947.",
+      "explanation": "Rudolf Höss was the longest-serving commandant of Auschwitz, overseeing the camp from 1940 to 1943 and again in 1944-1945 (May 1944 through January 1945, over 8 months). Under his command the camp became the largest killing center of the Holocaust. He was arrested in 1946, tried in Poland, and executed at Auschwitz in April 1947.",
       "visualDescription": "Pixel art of a dimly lit stone commandant's office, a desk with papers and a desk lamp, a window overlooking grey barracks.",
       "sourceName": "United States Holocaust Memorial Museum",
       "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/rudolf-hoss",
@@ -20247,18 +20248,18 @@
     },
     {
       "id": "wwii_hc_denmark_rescue",
-      "correctAnswer": "About 7,200",
+      "correctAnswer": "About 7,500",
       "acceptableAlternatives": [
-        "7,200",
-        "approximately 7,200",
-        "nearly 7,000"
+        "7,500",
+        "approximately 7,500",
+        "nearly 7,500"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Approximately how many Danish Jews were rescued by evacuation to Sweden in October 1943?",
-      "explanation": "In October 1943, Danish citizens organized a remarkable rescue operation, ferrying approximately 7,200 Jews — nearly the entire Danish Jewish population — across the Øresund strait to neutral Sweden in fishing boats and other small vessels. The operation saved almost the entire community from deportation.",
+      "explanation": "In October 1943, Danish citizens organized a remarkable rescue operation, ferrying approximately 7,500 Jews — nearly the entire Danish Jewish population — across the Øresund strait to neutral Sweden in fishing boats and other small vessels. The operation saved almost the entire community from deportation.",
       "visualDescription": "Pixel art of small fishing boats crossing dark water at night, huddled figures wrapped in coats, a faint coastline with lights visible in the distant fog.",
       "sourceName": "United States Holocaust Memorial Museum — Rescue in Denmark",
       "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/rescue-in-denmark",
@@ -20276,7 +20277,7 @@
       "variants": [
         {
           "type": "reverse",
-          "quizQuestion": "In the Danish rescue operation of October 1943, approximately 7,200 Jews were evacuated to which country?",
+          "quizQuestion": "In the Danish rescue operation of October 1943, approximately 7,500 Jews were evacuated to which country?",
           "correctAnswer": "Sweden",
           "distractors": [
             "Britain",
@@ -20319,17 +20320,17 @@
     },
     {
       "id": "wwii_hc_righteous_nations_count",
-      "correctAnswer": "Over 27,000",
+      "correctAnswer": "Over 28,000",
       "acceptableAlternatives": [
-        "27,000",
-        "more than 27,000"
+        "28,000",
+        "more than 28,000"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "How many non-Jews have been recognized with the 'Righteous Among the Nations' title by Yad Vashem?",
-      "explanation": "Yad Vashem, Israel's official Holocaust memorial, awards the title 'Righteous Among the Nations' to non-Jews who risked their lives to save Jews during the Holocaust. Over 27,000 individuals from more than 50 countries have been recognized. Poland has the highest number of honorees.",
+      "explanation": "Yad Vashem, Israel's official Holocaust memorial, awards the title 'Righteous Among the Nations' to non-Jews who risked their lives to save Jews during the Holocaust. Over 28,000 individuals from more than 50 countries have been recognized. Poland has the highest number of honorees.",
       "visualDescription": "Pixel art of a tree-lined avenue in a memorial garden, small plaques visible along a stone wall, sunlight filtering through leaves onto a path of remembrance.",
       "sourceName": "Yad Vashem — Righteous Among the Nations",
       "sourceUrl": "https://www.yadvashem.org/righteous.html",
@@ -22584,17 +22585,17 @@
     },
     {
       "id": "wwii_hf_night_witches_30000_sorties",
-      "correctAnswer": "30,000",
+      "correctAnswer": "Over 23,000",
       "acceptableAlternatives": [
-        "over 30,000",
-        "30,000+"
+        "23,000",
+        "more than 23,000"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "numbers",
       "difficulty": 4,
       "funScore": 10,
       "quizQuestion": "The Soviet Night Witches — all-female bomber pilots — completed over how many combat sorties during WWII?",
-      "explanation": "The Night Witches (Nochnye Vedmy) were an all-female Soviet aviation unit led by Marina Raskova, flying wooden Polikarpov Po-2 biplanes with open cockpits at night. Their tactic: cut engines near the target to glide in silently like a witch's broom, drop bombs, then restart and escape. They completed over 30,000 combat sorties; 23 were awarded the Hero of the Soviet Union. German pilots feared them. Despite this, Soviet culture largely ignored their heroism postwar, emphasizing male combat narratives instead.",
+      "explanation": "The Night Witches (Nochnye Vedmy) were an all-female Soviet aviation unit founded by Marina Raskova and commanded by Yevdokiya Bershanskaya, flying wooden Polikarpov Po-2 biplanes with open cockpits at night. Their tactic: cut engines near the target to glide in silently like a witch's broom, drop bombs, then restart and escape. They completed over 23,000 combat sorties; 23 were awarded the Hero of the Soviet Union. German pilots feared them. Despite this, Soviet culture largely ignored their heroism postwar, emphasizing male combat narratives instead.",
       "visualDescription": "Pixel art of two female Soviet pilots in leather helmets climbing into open-cockpit biplanes at a moonlit airstrip, a German searchlight beam sweeping the horizon ahead",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/588th_Night_Bomber_Regiment",
@@ -22623,8 +22624,8 @@
         },
         {
           "type": "context",
-          "question": "Who founded and commanded the Night Witches regiment?",
-          "correctAnswer": "Marina Raskova",
+          "question": "Who founded the Night Witches regiment?",
+          "correctAnswer": "Marina Raskova (founded it; Yevdokiya Bershanskaya commanded it in combat)",
           "distractors": [
             "Lyudmila Pavlichenko",
             "Valentina Tereshkova",
@@ -22727,17 +22728,18 @@
     },
     {
       "id": "wwii_hf_bracero_4million",
-      "correctAnswer": "4 million",
+      "correctAnswer": "4.6 million",
       "acceptableAlternatives": [
         "over 4 million",
-        "more than 4 million"
+        "more than 4 million",
+        "approximately 4.6 million"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "numbers",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "How many Mexican workers came to the United States through the Bracero Program, which addressed WWII labor shortages?",
-      "explanation": "The Bracero Program (1942–1964) brought Mexican workers to the U.S. to fill labor gaps caused by military mobilization. Over 4 million braceros (Spanish for 'temporary laborers') worked in American agriculture, railroads, and industry — often for low wages in poor conditions and facing open discrimination. Postwar, rather than being recognized for their contribution, braceros were often blamed for labor problems. The program normalized the exploitation of vulnerable immigrant workers as a wartime convenience that outlasted the war by nearly two decades.",
+      "explanation": "The Bracero Program (1942–1964) brought Mexican workers to the U.S. to fill labor gaps caused by military mobilization. An estimated 4.6 million braceros (Spanish for 'temporary laborers') worked in American agriculture, railroads, and industry — often for low wages in poor conditions and facing open discrimination. Postwar, rather than being recognized for their contribution, braceros were often blamed for labor problems. The program normalized the exploitation of vulnerable immigrant workers as a wartime convenience that outlasted the war by nearly two decades.",
       "visualDescription": "Pixel art of rows of Mexican farmworkers harvesting in a California field, a foreman on horseback in the distance, a wartime labor shortage poster nailed to a fence post",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bracero_program",
@@ -23013,17 +23015,18 @@
     },
     {
       "id": "wwii_hf_us_war_production_88k_planes",
-      "correctAnswer": "88,000",
+      "correctAnswer": "Nearly 300,000",
       "acceptableAlternatives": [
-        "over 88,000",
-        "approximately 88,000"
+        "300,000",
+        "approximately 300,000",
+        "nearly 300,000 aircraft"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "numbers",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "How many aircraft did the United States produce during WWII, demonstrating the industrial output that gave the Allies decisive material superiority?",
-      "explanation": "American wartime industrial mobilization was staggering: 88,000 aircraft and 60,000 tanks produced between 1941 and 1945. Detroit's auto manufacturers retooled to build tanks and bombers. The U.S. produced more aircraft in 1944 alone than Germany produced in the entire war. This industrial dominance, combined with Lend-Lease supply to Britain and the Soviet Union, meant the Allies could absorb enormous losses and keep fighting while Germany and Japan could not replace their losses at anywhere near the same rate.",
+      "explanation": "American wartime industrial mobilization was staggering: nearly 300,000 aircraft and 60,000 tanks produced during WWII (a 1943 peak of ~85,000 aircraft in a single year). Detroit's auto manufacturers retooled to build tanks and bombers. The U.S. produced more aircraft in 1944 alone than Germany produced in the entire war. This industrial dominance, combined with Lend-Lease supply to Britain and the Soviet Union, meant the Allies could absorb enormous losses and keep fighting while Germany and Japan could not replace their losses at anywhere near the same rate.",
       "visualDescription": "Pixel art of an enormous American aircraft factory floor, dozens of B-17 bomber fuselages in various stages of assembly, 'riveting' workers on scaffolding stretching into the distance",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/American_involvement_in_World_War_II_production",
@@ -24153,18 +24156,18 @@
     },
     {
       "id": "wwii_na_tunisia_prisoners",
-      "correctAnswer": "230,000",
+      "correctAnswer": "250,000",
       "acceptableAlternatives": [
-        "230,000+",
-        "over 230,000",
-        "230K"
+        "over 250,000",
+        "more than 250,000",
+        "250K"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "How many Axis troops were captured in Tunisia in May 1943 — a mass surrender that cleared North Africa and shocked Germany?",
-      "explanation": "When Axis forces surrendered in Tunisia on May 12, 1943, over 230,000 German and Italian soldiers went into captivity — the largest Axis surrender until that point. It was Germany's 'African Stalingrad': Hitler had poured reinforcements into Tunisia rather than admit defeat, and now lost them all. North Africa was finally free of Axis forces, and the Mediterranean was open to the Allies.",
+      "explanation": "When Axis forces surrendered in Tunisia on May 13, 1943, over 250,000 German and Italian soldiers went into captivity — the largest Axis surrender until that point. It was Germany's 'African Stalingrad': Hitler had poured reinforcements into Tunisia rather than admit defeat, and now lost them all. North Africa was finally free of Axis forces, and the Mediterranean was open to the Allies.",
       "visualDescription": "Pixel art of a vast column of German and Italian POWs marching through brown Tunisian terrain, hands raised, Allied soldiers standing guard, the horizon dotted with tanks and vehicles.",
       "sourceName": "Wikipedia — Tunisian campaign",
       "sourceUrl": "https://en.wikipedia.org/wiki/Tunisian_campaign",
@@ -24183,7 +24186,7 @@
         {
           "type": "reverse",
           "correctAnswer": "Tunisia",
-          "quizQuestion": "In which country did over 230,000 Axis troops surrender in May 1943, ending the North African campaign?",
+          "quizQuestion": "In which country did over 250,000 Axis troops surrender in May 1943, ending the North African campaign?",
           "distractors": [
             "Egypt",
             "Libya",
@@ -24193,8 +24196,8 @@
         },
         {
           "type": "context",
-          "correctAnswer": "May 12, 1943",
-          "quizQuestion": "The 230,000-strong Axis surrender that cleared North Africa occurred on what date — sometimes called Germany's 'African Stalingrad'?",
+          "correctAnswer": "May 13, 1943",
+          "quizQuestion": "The 250,000-strong Axis surrender that cleared North Africa occurred on what date — sometimes called Germany's 'African Stalingrad'?",
           "distractors": [
             "November 8, 1942",
             "October 23, 1942",
@@ -24213,7 +24216,7 @@
         {
           "type": "fill_blank",
           "correctAnswer": "Mediterranean",
-          "quizQuestion": "After 230,000 Axis troops surrendered in Tunisia, the ____ Sea was fully open to Allied shipping and operations.",
+          "quizQuestion": "After over 250,000 Axis troops surrendered in Tunisia, the ____ Sea was fully open to Allied shipping and operations.",
           "distractors": [
             "Red",
             "Adriatic",
@@ -24806,7 +24809,7 @@
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "Which Libyan port city was besieged by Axis forces in 1941-42 and changed hands multiple times — its control shaping supply lines across the Western Desert?",
-      "explanation": "Tobruk was the only deep-water port between Alexandria and Tripoli — whoever held it could supply large armored forces. The garrison held out for 241 days in 1941 against Rommel's first siege, becoming a symbol of Allied resilience. But in June 1942, Rommel captured it in a single day, taking 33,000 prisoners — a blow so severe it reached Churchill as he conferred with Roosevelt in Washington. Churchill called it 'one of the heaviest blows I can recall during the war.'",
+      "explanation": "Tobruk was the only deep-water port between Alexandria and Tripoli — whoever held it could supply large armored forces. The garrison held out for 231 days in 1941 against Rommel's first siege, becoming a symbol of Allied resilience. But in June 1942, Rommel captured it in a single day, taking 33,000 prisoners — a blow so severe it reached Churchill as he conferred with Roosevelt in Washington. Churchill called it 'one of the heaviest blows I can recall during the war.'",
       "visualDescription": "Pixel art of a fortified desert town surrounded by dust and smoke, supply trucks racing through a narrow defended corridor, artillery emplacements visible along a perimeter wire.",
       "sourceName": "Wikipedia — Siege of Tobruk",
       "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Tobruk",
@@ -24824,7 +24827,7 @@
       "variants": [
         {
           "type": "reverse",
-          "correctAnswer": "241 days",
+          "correctAnswer": "231 days",
           "quizQuestion": "In 1941, British and Commonwealth forces held out in Tobruk for how long against Rommel's siege — a record that made the garrison famous as the 'Rats of Tobruk'?",
           "distractors": [
             "30 days",
@@ -24855,7 +24858,7 @@
         {
           "type": "fill_blank",
           "correctAnswer": "Rats of Tobruk",
-          "quizQuestion": "The Australian and Commonwealth troops who held Tobruk for 241 days in 1941 became known as the ____.",
+          "quizQuestion": "The Australian and Commonwealth troops who held Tobruk for 231 days in 1941 became known as the ____.",
           "distractors": [
             "Desert Rats",
             "Afrika Korps",
@@ -26009,19 +26012,19 @@
     },
     {
       "id": "wwii_na_rommel_retreat_1942",
-      "correctAnswer": "2,000 miles",
+      "correctAnswer": "Approximately 1,400 miles",
       "acceptableAlternatives": [
-        "2,000 km",
-        "over 2,000 miles",
-        "two thousand miles",
-        "roughly 2,000 miles"
+        "1,400 miles",
+        "about 1,400 miles",
+        "roughly 1,400 miles",
+        "over 1,000 miles"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "number_stats",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "How far did Rommel's forces retreat after El Alamein — pursued by Montgomery's Eighth Army from Egypt across Libya and into Tunisia?",
-      "explanation": "After El Alamein, Rommel conducted one of history's most impressive fighting retreats — withdrawing roughly 2,000 miles from Egypt to Tunisia over five months while pursued by superior forces. He kept his army intact and fighting, only surrendering when trapped with no escape route. Montgomery was criticized for not cutting off Rommel sooner, but the practical difficulties of advancing through the desert with extended supply lines were real. The pursuit itself was as remarkable as the initial defeat.",
+      "explanation": "After El Alamein, Rommel conducted one of history's most impressive fighting retreats — withdrawing approximately 1,400 miles from Egypt to Tunisia over five months while pursued by superior forces. He kept his army intact and fighting, only surrendering when trapped with no escape route. Montgomery was criticized for not cutting off Rommel sooner, but the practical difficulties of advancing through the desert with extended supply lines were real. The pursuit itself was as remarkable as the initial defeat.",
       "visualDescription": "Pixel art of a map showing a long red arrow retreating westward from Egypt past Tobruk, Benghazi, Tripoli, all the way to Tunisia, Allied pursuit arrows following behind.",
       "sourceName": "Wikipedia — Western Desert campaign",
       "sourceUrl": "https://en.wikipedia.org/wiki/Western_Desert_campaign",
@@ -26040,7 +26043,7 @@
         {
           "type": "reverse",
           "correctAnswer": "El Alamein",
-          "quizQuestion": "Rommel's 2,000-mile retreat to Tunisia began after which October 1942 defeat — the battle that permanently ended his ability to threaten Egypt?",
+          "quizQuestion": "Rommel's approximately 1,400-mile retreat to Tunisia began after which October 1942 defeat — the battle that permanently ended his ability to threaten Egypt?",
           "distractors": [
             "Kasserine Pass",
             "Battle of Sidi Barrani",
@@ -26051,7 +26054,7 @@
         {
           "type": "context",
           "correctAnswer": "five months",
-          "quizQuestion": "Rommel conducted his 2,000-mile retreat from El Alamein to Tunisia over approximately how long — keeping his army intact and fighting throughout?",
+          "quizQuestion": "Rommel conducted his approximately 1,400-mile retreat from El Alamein to Tunisia over approximately how long — keeping his army intact and fighting throughout?",
           "distractors": [
             "one month",
             "two months",
@@ -26062,7 +26065,7 @@
         {
           "type": "true_false",
           "correctAnswer": "True",
-          "quizQuestion": "True or False: Rommel's retreat from El Alamein to Tunisia is considered one of history's most skillful fighting withdrawals — keeping his army cohesive while outnumbered and outgunned.",
+          "quizQuestion": "True or False: Rommel's approximately 1,400-mile retreat from El Alamein to Tunisia is considered one of history's most skillful fighting withdrawals — keeping his army cohesive while outnumbered and outgunned.",
           "distractors": [
             "False"
           ]
@@ -26374,17 +26377,18 @@
     },
     {
       "id": "wwii_nw_bismarck_tonnage",
-      "correctAnswer": "35,000 tons (with 15-inch guns)",
+      "correctAnswer": "41,700 tons (with 15-inch guns)",
       "acceptableAlternatives": [
-        "35000 tons",
-        "35,000 tons"
+        "41700 tons",
+        "41,700 tons",
+        "approximately 41,700 tons"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "number_stats",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "The German battleship Bismarck was one of the world's most powerful warships at her launch. What was her displacement tonnage?",
-      "explanation": "Bismarck displaced 35,000 tons and carried eight 15-inch guns. She was one of the largest and most powerful battleships afloat when she sailed on her only combat mission in May 1941. Her entire operational life lasted just 9 days before the Royal Navy hunted her down.",
+      "explanation": "Bismarck displaced 41,700 tons and carried eight 15-inch guns. She was one of the largest and most powerful battleships afloat when she sailed on her only combat mission in May 1941 (Germany falsely declared 35,000 tons to comply with treaty limits). Her entire operational life lasted just 9 days before the Royal Navy hunted her down.",
       "visualDescription": "Pixel art of the Bismarck battleship at full speed in calm grey seas, her massive gun turrets trained forward, Nazi battle ensign flying from the stern",
       "sourceName": "Wikipedia — Bismarck (battleship)",
       "sourceUrl": "https://en.wikipedia.org/wiki/Bismarck_(battleship)",
@@ -26664,10 +26668,10 @@
     },
     {
       "id": "wwii_nw_yamato_displacement",
-      "correctAnswer": "46,000 tons (with 18-inch guns)",
+      "correctAnswer": "65,000 tons standard displacement (with 18-inch guns)",
       "acceptableAlternatives": [
-        "46000 tons",
-        "46,000 tons",
+        "65,000 tons",
+        "72,000 tons full load",
         "largest battleship ever built"
       ],
       "chainThemeId": 3,
@@ -26675,7 +26679,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "The Japanese battleship Yamato was the largest and most heavily armed battleship ever built. What was her displacement?",
-      "explanation": "Yamato displaced 46,000 tons and carried 18-inch guns — the largest naval guns ever fitted to a warship. She was the pinnacle of battleship engineering. And she was sunk by aircraft that never came within range of those massive guns. The irony defined the entire naval transition of WWII.",
+      "explanation": "Yamato displaced 65,000 tons standard (72,000 tons full load) and carried 18-inch guns — the largest naval guns ever fitted to a warship. She was the pinnacle of battleship engineering. And she was sunk by aircraft that never came within range of those massive guns. The irony defined the entire naval transition of WWII.",
       "visualDescription": "Pixel art of the Yamato battleship from above, her massive triple-turret 18-inch guns dominating the bow and stern, surrounded by churning white wake in the Pacific",
       "sourceName": "Wikipedia — Japanese battleship Yamato",
       "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_battleship_Yamato",
@@ -27902,18 +27906,18 @@
     },
     {
       "id": "wwii_nw_uboat_crew_deaths",
-      "correctAnswer": "Over 40,000 German submariners",
+      "correctAnswer": "28,000 dead (~75% of approximately 40,000 who served)",
       "acceptableAlternatives": [
-        "40000",
-        "40,000",
-        "more than 40000"
+        "28,000",
+        "about 28,000",
+        "28000"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 7,
-      "quizQuestion": "German U-boat service was extraordinarily lethal. How many German submariners died during WWII — the highest proportional casualty rate of any service branch on either side?",
-      "explanation": "Over 40,000 German submariners died — from a total of approximately 40,000–45,000 who served in U-boats. That's a casualty rate approaching 75–80%. These men knew the odds. When a U-boat was depth-charged, there was often no way out. They died sealed in iron tubes, crushed by water pressure, or burned by fires they couldn't escape.",
+      "quizQuestion": "German U-boat service was extraordinarily lethal. Approximately how many German submariners died during WWII — representing ~75% of all who served?",
+      "explanation": "Approximately 28,000 German submariners died — out of approximately 40,000 who served in U-boats, a casualty rate of roughly 75%. These men knew the odds. When a U-boat was depth-charged, there was often no way out. They died sealed in iron tubes, crushed by water pressure, or burned by fires they couldn't escape.",
       "visualDescription": "Pixel art of the interior of a U-boat under depth charge attack — red emergency lighting, men bracing against bulkheads, water spraying from joints, gauges spinning in the pressure",
       "sourceName": "Wikipedia — German submarine campaign of World War II",
       "sourceUrl": "https://en.wikipedia.org/wiki/German_submarine_campaign_of_World_War_II",
@@ -28629,18 +28633,18 @@
     },
     {
       "id": "wwii_pt_midway_pilots",
-      "correctAnswer": "3,500 experienced Japanese naval aviators",
+      "correctAnswer": "Approximately 3,000 Japanese personnel killed (including ~110 aircrew)",
       "acceptableAlternatives": [
-        "3500 pilots",
-        "thousands of pilots",
-        "irreplaceable naval aviators"
+        "3,000 killed",
+        "approximately 3,000",
+        "irreplaceable naval aviators and crew"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "number_stats",
       "difficulty": 4,
       "funScore": 8,
       "quizQuestion": "Beyond the four carriers, what irreplaceable loss at Midway truly crippled Japan's ability to wage offensive naval air warfare?",
-      "explanation": "Japan lost approximately 3,500 highly trained naval aviators at Midway — men who had taken years to train and had combat experience from China, Pearl Harbor, and across the Pacific. Japan's training pipeline couldn't replace them. By 1944, Japan was sending barely-trained pilots to their deaths in kamikaze attacks.",
+      "explanation": "Japan lost approximately 3,000 personnel killed at Midway — including roughly 110 experienced aircrew — men who had taken years to train and had combat experience from China, Pearl Harbor, and across the Pacific. Japan's training pipeline couldn't replace them. By 1944, Japan was sending barely-trained pilots to their deaths in kamikaze attacks.",
       "visualDescription": "Pixel art of Japanese Zero fighter planes spiraling down into the ocean in flames, the vast Pacific Ocean below, a Japanese carrier visible in the background listing from bomb damage",
       "sourceName": "Wikipedia — Battle of Midway",
       "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Midway",
@@ -28669,7 +28673,7 @@
         },
         {
           "type": "context",
-          "quizQuestion": "Why couldn't Japan quickly replace the 3,500 naval aviators lost at Midway?",
+          "quizQuestion": "Why couldn't Japan quickly replace the experienced naval aviators lost at Midway?",
           "correctAnswer": "Training a skilled naval aviator took years, and the pipeline couldn't produce replacements fast enough",
           "distractors": [
             "Japan had a small population and had already mobilized all eligible men",
@@ -28689,8 +28693,8 @@
         },
         {
           "type": "fill_blank",
-          "quizQuestion": "Japan lost approximately ____ experienced naval aviators at Midway — men whose skills had taken years to develop.",
-          "correctAnswer": "3,500",
+          "quizQuestion": "Japan lost approximately ____ personnel at Midway — including experienced aircrew whose skills had taken years to develop.",
+          "correctAnswer": "3,000",
           "distractors": [
             "500",
             "1,200",
@@ -30719,7 +30723,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "On what date did the Trinity Test — the world's first nuclear detonation — take place in Alamogordo, New Mexico?",
-      "explanation": "On July 16, 1945, the Manhattan Project detonated the first nuclear device at the Trinity test site in the New Mexico desert. The 22-kiloton blast turned sand into a greenish glass called trinitite. Oppenheimer famously recalled reciting from the Bhagavad Gita: 'Now I am become Death, the destroyer of worlds.' The bomb dropped on Hiroshima came just three weeks later.",
+      "explanation": "On July 16, 1945, the Manhattan Project detonated the first nuclear device at the Trinity test site in the New Mexico desert. The 21-kiloton blast turned sand into a greenish glass called trinitite. Oppenheimer famously recalled reciting from the Bhagavad Gita: 'Now I am become Death, the destroyer of worlds.' The bomb dropped on Hiroshima came just three weeks later.",
       "visualDescription": "Pixel art of a nuclear explosion in a desert at dawn, a towering orange-white fireball rising over flat terrain, a distant observer silhouette watching the horizon.",
       "sourceName": "Wikipedia — Trinity (nuclear test)",
       "sourceUrl": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
@@ -30747,7 +30751,7 @@
         },
         "context": {
           "quizQuestion": "What was the approximate yield of the Trinity Test nuclear detonation in New Mexico on July 16, 1945?",
-          "correctAnswer": "22 kilotons",
+          "correctAnswer": "21 kilotons",
           "distractors": [
             "5 kilotons",
             "50 kilotons",
@@ -33455,18 +33459,18 @@
     },
     {
       "id": "wwii_re_danish_jews_rescued",
-      "correctAnswer": "7,000",
+      "correctAnswer": "Approximately 7,500",
       "acceptableAlternatives": [
-        "over 7,000",
-        "more than 7,000",
-        "7,000 Jews"
+        "7,500",
+        "about 7,500",
+        "7,500 Jews"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "numbers_statistics",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "In October 1943, approximately how many Danish Jews were smuggled to safety in Sweden when Germany ordered their deportation?",
-      "explanation": "When Germany ordered the deportation of Danish Jews in October 1943, Danish fishermen and resistance members organized a remarkable rescue — smuggling over 7,000 Jews across the sea to neutral Sweden. The Swedish government accepted all refugees. Denmark's Jewish community survived the war at an extraordinary rate compared to Jews in most other occupied countries, where deportation to death camps was the fate of the majority.",
+      "explanation": "When Germany ordered the deportation of Danish Jews in October 1943, Danish fishermen and resistance members organized a remarkable rescue — smuggling approximately 7,500 Jews across the sea to neutral Sweden. The Swedish government accepted all refugees. Denmark's Jewish community survived the war at an extraordinary rate compared to Jews in most other occupied countries, where deportation to death camps was the fate of the majority.",
       "visualDescription": "Pixel art of a small wooden fishing boat at night on dark water, tightly packed figures huddled under canvas, a dim light showing the Swedish coast ahead.",
       "sourceName": "Wikipedia — Rescue of the Danish Jews",
       "sourceUrl": "https://en.wikipedia.org/wiki/Rescue_of_the_Danish_Jews",
@@ -33484,7 +33488,7 @@
       "variants": [
         {
           "type": "reverse",
-          "quizQuestion": "Denmark smuggled over 7,000 Jews to safety in 1943. Which neutral country accepted them?",
+          "quizQuestion": "Denmark smuggled approximately 7,500 Jews to safety in 1943. Which neutral country accepted them?",
           "correctAnswer": "Sweden",
           "distractors": [
             "Switzerland",
@@ -34382,17 +34386,18 @@
     },
     {
       "id": "wwii_re_dutch_hiding_numbers",
-      "correctAnswer": "300,000",
+      "correctAnswer": "25,000–30,000 Jews (out of 300,000 total people hidden)",
       "acceptableAlternatives": [
-        "over 300,000",
-        "more than 300,000"
+        "25,000 to 30,000 Jews",
+        "approximately 28,000 Jews",
+        "about 25,000 Jews"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "numbers_statistics",
       "difficulty": 4,
       "funScore": 7,
-      "quizQuestion": "Approximately how many Jews were hidden from Nazi deportation by Dutch families and underground networks in the Netherlands?",
-      "explanation": "Dutch resistance networks — working with Quakers, churches, and civic organizations — hid over 300,000 Jews from Nazi deportation across the Netherlands from 1941 to 1945. Despite the massive danger (discovery meant death for both families and those hidden), this effort resulted in a Jewish survival rate of around 25–30% in the Netherlands — higher than in France, Belgium, or Eastern Europe, though still devastatingly low. Dutch rescuers are honored as Righteous Among the Nations.",
+      "quizQuestion": "Approximately how many Jews were hidden from Nazi deportation by Dutch families and underground networks in the Netherlands? (Note: 300,000 total people were hidden, but most were Dutch men evading forced labor — not Jews.)",
+      "explanation": "Dutch resistance networks — working with Quakers, churches, and civic organizations — hid approximately 25,000–30,000 Jews from Nazi deportation across the Netherlands from 1941 to 1945. The total number of all people hidden (including Dutch men evading German forced labor conscription) was around 300,000. Despite the massive danger (discovery meant death for both families and those hidden), the Jewish survival rate in the Netherlands was around 25–30% — still devastatingly low despite the rescue effort. Dutch rescuers are honored as Righteous Among the Nations.",
       "visualDescription": "Pixel art of a Dutch family peering through a crack in the floorboards at a hidden cellar below, a woman placing bread through a gap, dark Amsterdam canal house beams overhead.",
       "sourceName": "Wikipedia — Netherlands in World War II",
       "sourceUrl": "https://en.wikipedia.org/wiki/Netherlands_in_World_War_II",
@@ -34410,7 +34415,7 @@
       "variants": [
         {
           "type": "reverse",
-          "quizQuestion": "What was the Jewish survival rate in the Netherlands despite the large-scale hiding effort?",
+          "quizQuestion": "What was the Jewish survival rate in the Netherlands, despite Dutch rescuers hiding 25,000–30,000 Jews?",
           "correctAnswer": "About 25–30% — higher than most occupied countries but still devastatingly low",
           "distractors": [
             "Over 90%",
@@ -36335,17 +36340,17 @@
     },
     {
       "id": "wwii_rtw_enabling_act_vote",
-      "correctAnswer": "441 to 94",
+      "correctAnswer": "444 to 94",
       "acceptableAlternatives": [
-        "441-94",
-        "441 for, 94 against"
+        "444-94",
+        "444 for, 94 against"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "The Enabling Act of 23 March 1933 passed by a supermajority — and only one party voted against it. What was the vote count, and which party provided the sole opposition?",
-      "explanation": "The Enabling Act passed 441 to 94, with the Social Democrats (SPD) being the only party to vote against it. Communist deputies had already been arrested or were in hiding after the Reichstag Fire Decree, eliminating their votes. The Centre Party — needing a two-thirds majority to pass — voted yes after Hitler made verbal promises to protect Catholic institutions, promises he later broke. The act transferred all legislative power to Hitler's cabinet for four years.",
+      "explanation": "The Enabling Act passed 444 to 94, with the Social Democrats (SPD) being the only party to vote against it. Communist deputies had already been arrested or were in hiding after the Reichstag Fire Decree, eliminating their votes. The Centre Party — needing a two-thirds majority to pass — voted yes after Hitler made verbal promises to protect Catholic institutions, promises he later broke. The act transferred all legislative power to Hitler's cabinet for four years.",
       "visualDescription": "Pixel art parliament chamber: rows of deputies raising hands, one small cluster of men seated with arms crossed defiantly, Nazi flags hanging from gallery",
       "sourceName": "USHMM — The Enabling Act",
       "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-enabling-act",
@@ -36364,7 +36369,7 @@
         {
           "type": "reverse",
           "question": "The SPD was the only party to vote against the Enabling Act. What was the final vote count: how many voted for it?",
-          "correctAnswer": "441",
+          "correctAnswer": "444",
           "distractors": [
             "288",
             "350",
@@ -36392,7 +36397,7 @@
         {
           "type": "fill_blank",
           "question": "The Enabling Act passed ___ to 94, with the Social Democrats as the only party casting votes against it.",
-          "correctAnswer": "441",
+          "correctAnswer": "444",
           "distractors": [
             "288",
             "350",
@@ -37632,8 +37637,8 @@
     },
     {
       "id": "wwii_rtw_013",
-      "quizQuestion": "Germany secretly violated the Treaty of Versailles throughout the 1920s with Soviet cooperation. At which Soviet locations did Germany secretly train in weapons banned by Versailles?",
-      "correctAnswer": "Lipetsk (aviation), Kazan (tanks), Saratov (chemical weapons)",
+      "quizQuestion": "Germany secretly violated the Treaty of Versailles throughout the 1920s with Soviet cooperation. At which Soviet locations did Germany secretly train in weapons banned by Versailles? (Aviation, Tanks, Chemical Weapons)",
+      "correctAnswer": "Lipetsk (aviation), Kazan (tanks), Volsk (chemical weapons)",
       "distractors": [
         "Moscow (aviation), Minsk (tanks), Kiev (chemical weapons)",
         "Leningrad (aviation), Volgograd (tanks), Odessa (chemical weapons)",
@@ -37641,10 +37646,10 @@
         "Murmansk (aviation), Irkutsk (tanks), Omsk (chemical weapons)",
         "Riga (aviation), Warsaw (tanks), Vilnius (chemical weapons)",
         "Smolensk (aviation), Kharkov (tanks), Rostov (chemical weapons)",
-        "Lipetsk (tanks), Kazan (aviation), Saratov (submarines)",
-        "Lipetsk (aviation), Kazan (chemical weapons), Saratov (tanks)"
+        "Lipetsk (tanks), Kazan (aviation), Volsk (submarines)",
+        "Lipetsk (aviation), Kazan (chemical weapons), Volsk (tanks)"
       ],
-      "explanation": "Germany and the Soviet Union began secret military cooperation in 1921 under the Treaty of Rapallo framework. Germany trained military pilots at Lipetsk (aviation school), tested and trained on tanks at Kazan, and developed chemical weapons at Saratov — all banned by Versailles. This Soviet-German military partnership persisted throughout the 1920s despite the two nations being ideological enemies. The Soviets benefited from German military expertise; Germany evaded Versailles restrictions.",
+      "explanation": "Germany and the Soviet Union began secret military cooperation in 1921 under the Treaty of Rapallo framework. Germany trained military pilots at Lipetsk (aviation school), tested and trained on tanks at Kazan, and developed chemical weapons at Volsk — all banned by Versailles. This Soviet-German military partnership persisted throughout the 1920s despite the two nations being ideological enemies. The Soviets benefited from German military expertise; Germany evaded Versailles restrictions.",
       "difficulty": 4,
       "funScore": 8,
       "sourceUrl": "https://en.wikipedia.org/wiki/German_rearmament",
@@ -37652,7 +37657,7 @@
         {
           "type": "true_false",
           "question": "True or False: Germany's secret rearmament in the 1920s was conducted with Soviet cooperation, despite the two nations being ideological enemies.",
-          "correctAnswer": "True — Germany used Soviet facilities at Lipetsk, Kazan, and Saratov from 1921 onwards to train in weapons banned by Versailles, with Soviet willingness to cooperate throughout."
+          "correctAnswer": "True — Germany used Soviet facilities at Lipetsk, Kazan, and Volsk from 1921 onwards to train in weapons banned by Versailles, with Soviet willingness to cooperate throughout."
         },
         {
           "type": "fill_blank",
@@ -38656,17 +38661,17 @@
     },
     {
       "id": "wwii_rtw_kristallnacht_synagogues",
-      "correctAnswer": "More than 1,400 synagogues burned",
+      "correctAnswer": "1,668 synagogues and prayer rooms ransacked (95 destroyed by fire)",
       "acceptableAlternatives": [
-        "1,400 synagogues",
-        "over 1,400"
+        "1,668 synagogues",
+        "over 1,400 synagogues damaged or destroyed"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "historical_events",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Kristallnacht (November 9–10, 1938) is known as the 'Night of Broken Glass.' Approximately how many synagogues were burned?",
-      "explanation": "On the night of November 9–10, 1938, more than 1,400 synagogues were burned (USHMM), approximately 7,500 Jewish businesses were vandalized, and around 30,000 Jewish men were arrested and sent to concentration camps including Dachau, Buchenwald, and Sachsenhausen. At least 91 were killed during the riots. Despite appearing spontaneous, Kristallnacht was state-organized — Nazi Propaganda Minister Joseph Goebbels gave the signal to Nazi leaders at an annual party gathering in Munich; police and fire departments were ordered not to intervene. The trigger was 17-year-old Herschel Grynszpan's shooting of German diplomat Ernst vom Rath in Paris on November 7, 1938.",
+      "explanation": "On the night of November 9–10, 1938, 1,668 synagogues and prayer rooms were ransacked, with 95 destroyed by fire. Approximately 7,500 Jewish businesses were vandalized, and around 30,000 Jewish men were arrested and sent to concentration camps including Dachau, Buchenwald, and Sachsenhausen. At least 91 were killed during the riots. Despite appearing spontaneous, Kristallnacht was state-organized — Nazi Propaganda Minister Joseph Goebbels gave the signal to Nazi leaders at an annual party gathering in Munich; police and fire departments were ordered not to intervene. The trigger was 17-year-old Herschel Grynszpan's shooting of German diplomat Ernst vom Rath in Paris on November 7, 1938.",
       "visualDescription": "Pixel art of dark cobblestone street at night, shattered glass glittering, fires visible through broken windows, a synagogue facade charred and smoking",
       "sourceName": "USHMM / History.com",
       "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-night-of-broken-glass",
@@ -39625,17 +39630,18 @@
     },
     {
       "id": "wwii_tw_v2_height",
-      "correctAnswer": "46 feet",
+      "correctAnswer": "47 feet (14 meters)",
       "acceptableAlternatives": [
-        "46 ft",
-        "approximately 46 feet"
+        "47 ft",
+        "14 meters",
+        "approximately 47 feet"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "measurements",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "How tall was the V-2, the world's first ballistic missile, developed by Germany under Wernher von Braun?",
-      "explanation": "The V-2 (Vergeltungswaffe 2) stood 46 feet tall, carried a 1-ton warhead, and reached 53 miles altitude — technically entering space on a suborbital arc. About 2,200 were built; 517 hit London, killing 2,754 people. Unlike the V-1, it arrived faster than sound, giving no warning whatsoever.",
+      "explanation": "The V-2 (Vergeltungswaffe 2) stood 47 feet (14 meters) tall, carried a 1-ton warhead, and reached 53 miles altitude — technically entering space on a suborbital arc. About 2,200 were built; 517 hit London, killing 2,754 people. Unlike the V-1, it arrived faster than sound, giving no warning whatsoever.",
       "visualDescription": "Pixel art of a sleek white rocket on a mobile launch platform in a forest clearing, technicians in gray uniforms dwarfed by its scale, dawn sky behind it.",
       "sourceName": "Wikipedia — V-2 rocket",
       "sourceUrl": "https://en.wikipedia.org/wiki/V-2_rocket",
@@ -39893,18 +39899,18 @@
     },
     {
       "id": "wwii_tw_sherman_quantity",
-      "correctAnswer": "50,000+",
+      "correctAnswer": "Nearly 50,000 (approximately 49,234)",
       "acceptableAlternatives": [
-        "over 50,000",
-        "more than 50,000",
-        "fifty thousand"
+        "49,234",
+        "nearly 50,000",
+        "approximately 49,000"
       ],
       "chainThemeId": 3,
       "answerTypePoolId": "large_numbers",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "More than how many M4 Sherman tanks were built during WWII — making it the most numerous American tank of the war?",
-      "explanation": "Over 50,000 M4 Shermans were produced — more than any other American tank. The Sherman was outgunned and out-armored by the German Tiger and Panther in direct combat. But superior American logistics meant damaged Shermans were repaired while damaged German tanks were often abandoned. The Sherman's quantity and reliability ultimately overwhelmed German qualitative superiority.",
+      "explanation": "Approximately 49,234 M4 Shermans were produced — more than any other American tank. The Sherman was outgunned and out-armored by the German Tiger and Panther in direct combat. But superior American logistics meant damaged Shermans were repaired while damaged German tanks were often abandoned. The Sherman's quantity and reliability ultimately overwhelmed German qualitative superiority.",
       "visualDescription": "Pixel art of a column of Sherman tanks rolling through a liberated French village, white star markings on their hulls, jubilant civilians tossing flowers from stone doorways.",
       "sourceName": "Wikipedia — M4 Sherman",
       "sourceUrl": "https://en.wikipedia.org/wiki/M4_Sherman",
@@ -39931,7 +39937,7 @@
           ]
         },
         "context": {
-          "quizQuestion": "The Sherman's 50,000+ production versus the Tiger's ~1,350 illustrates a core WWII industrial lesson. What was it?",
+          "quizQuestion": "The Sherman's ~49,000 production versus the Tiger's ~1,350 illustrates a core WWII industrial lesson. What was it?",
           "correctAnswer": "Industrial capacity and logistics can defeat superior individual weapon design",
           "distractors": [
             "Allied engineers copied German designs effectively",
@@ -40501,18 +40507,18 @@
     },
     {
       "id": "wwii_tw_v1_launched",
-      "correctAnswer": "~9,000",
+      "correctAnswer": "Approximately 10,000",
       "acceptableAlternatives": [
-        "about 9,000",
-        "nine thousand",
-        "approximately 9,000"
+        "about 10,000",
+        "ten thousand",
+        "10,000"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "large_numbers",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Approximately how many V-1 'Buzz Bombs' — the world's first cruise missiles — were launched at London and Antwerp from 1944 to 1945?",
-      "explanation": "About 9,000 V-1s were launched; roughly 2,400 reached London, killing over 6,000 people. The V-1's distinctive pulse-jet engine gave it the nickname 'Buzz Bomb' — Londoners dreaded the sound because silence meant the engine had cut out and the bomb was falling. Unlike the V-2, V-1s could be intercepted by fast fighters or tipped by wing-rolling them off course.",
+      "explanation": "Approximately 10,000 V-1s were launched; roughly 2,400 reached London, killing over 6,000 people. The V-1's distinctive pulse-jet engine gave it the nickname 'Buzz Bomb' — Londoners dreaded the sound because silence meant the engine had cut out and the bomb was falling. Unlike the V-2, V-1s could be intercepted by fast fighters or tipped by wing-rolling them off course.",
       "visualDescription": "Pixel art of a V-1 flying bomb silhouetted against a night sky over London rooftops, its pulse-jet engine glowing orange at the tail, searchlight beams crossing below it.",
       "sourceName": "Wikipedia — V-1 flying bomb",
       "sourceUrl": "https://en.wikipedia.org/wiki/V-1_flying_bomb",
@@ -40714,7 +40720,7 @@
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Eisenhower said this man 'won the war for us' by designing the LCVP landing craft that enabled amphibious assaults including D-Day. Who was he?",
-      "explanation": "Andrew Higgins designed the LCVP (Landing Craft, Vehicle, Personnel), known as the 'Higgins Boat.' Over 20,000 were built. Eisenhower credited Higgins directly: 'Andrew Higgins is the man who won the war for us.' The Higgins Boat's flat bow ramp allowed troops to charge directly onto beaches — a capability that was essential from D-Day to every Pacific island assault.",
+      "explanation": "Andrew Higgins designed the LCVP (Landing Craft, Vehicle, Personnel), known as the 'Higgins Boat.' Over 23,000 were built. Eisenhower credited Higgins directly: 'Andrew Higgins is the man who won the war for us.' The Higgins Boat's flat bow ramp allowed troops to charge directly onto beaches — a capability that was essential from D-Day to every Pacific island assault.",
       "visualDescription": "Pixel art of a Higgins Boat ramping open on a gray beach, soldiers streaming out into surf, another wave of landing craft approaching behind through sea spray.",
       "sourceName": "Wikipedia — Higgins boat",
       "sourceUrl": "https://en.wikipedia.org/wiki/Higgins_boat",
@@ -40741,7 +40747,7 @@
           ]
         },
         "context": {
-          "quizQuestion": "Over 20,000 Higgins Boats were built. Why did sheer production quantity matter as much as the design itself?",
+          "quizQuestion": "Over 23,000 Higgins Boats were built. Why did sheer production quantity matter as much as the design itself?",
           "correctAnswer": "Amphibious operations require simultaneous landings at multiple points; only mass production enabled this",
           "distractors": [
             "Higgins Boats were expendable and not meant to return after landing troops",
@@ -40759,7 +40765,7 @@
         },
         "fill_blank": {
           "quizQuestion": "Over ___ Higgins Boats (LCVPs) were built during WWII.",
-          "correctAnswer": "20,000",
+          "correctAnswer": "23,000",
           "distractors": [
             "500",
             "2,000",
@@ -45548,17 +45554,17 @@
     },
     {
       "id": "wwii_wf_market_garden_troops",
-      "correctAnswer": "34,000",
+      "correctAnswer": "35,000–40,000",
       "acceptableAlternatives": [
-        "over 34,000",
-        "34,000+"
+        "approximately 35,000",
+        "35,000 to 40,000"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "number_stats",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Roughly how many airborne troops were dropped during Operation Market Garden in September 1944?",
-      "explanation": "Over 34,000 paratroopers and glider troops landed across the Netherlands in the largest airborne operation in history to that point. Despite this enormous force, German defenders — including armored SS divisions that Allied intelligence had dismissed — encircled Allied troops at Arnhem. After nine days, survivors had to be evacuated, leaving thousands captured.",
+      "explanation": "Between 35,000 and 40,000 paratroopers and glider troops landed across the Netherlands in the largest airborne operation in history to that point. Despite this enormous force, German defenders — including armored SS divisions that Allied intelligence had dismissed — encircled Allied troops at Arnhem. After nine days, survivors had to be evacuated, leaving thousands captured.",
       "visualDescription": "Pixel art of a formation of C-47 transport planes dropping hundreds of parachutes over a patchwork of Dutch fields and canals, anti-aircraft bursts dotting the sky",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Market_Garden",
@@ -45576,7 +45582,7 @@
       "variants": [
         {
           "type": "reverse",
-          "question": "Market Garden dropped 34,000+ airborne troops into the Netherlands. After the operation failed, what happened to Allied troops at Arnhem?",
+          "question": "Market Garden dropped 35,000–40,000 airborne troops into the Netherlands. After the operation failed, what happened to Allied troops at Arnhem?",
           "correctAnswer": "Survivors were evacuated; thousands were captured",
           "distractors": [
             "They held the bridgehead until relieved",
@@ -45965,17 +45971,17 @@
     },
     {
       "id": "wwii_wf_hurtgen_duration",
-      "correctAnswer": "Nearly 6 months",
+      "correctAnswer": "88 days (about 3 months)",
       "acceptableAlternatives": [
-        "September 1944 to February 1945",
-        "about 5 months"
+        "September 19 to December 16, 1944",
+        "about 3 months"
       ],
       "chainThemeId": 5,
       "answerTypePoolId": "number_stats",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "How long did the Battle of Hürtgen Forest last, making it one of the longest single battles fought by the U.S. Army in World War II?",
-      "explanation": "The Battle of Hürtgen Forest began in September 1944 and ground on until February 1945 — nearly six months. American forces fought through dense forest where their greatest advantages (air power and armor) were neutralized by trees and terrain. The Germans defended bunkers and prepared positions stubbornly, inflicting over 100,000 American casualties while buying time to rebuild defenses along the Rhine.",
+      "explanation": "The Battle of Hürtgen Forest ran from September 19 to December 16, 1944 — 88 days (about 3 months). American forces fought through dense forest where their greatest advantages (air power and armor) were neutralized by trees and terrain. The Germans defended bunkers and prepared positions stubbornly, inflicting over 33,000 American casualties while buying time to rebuild defenses along the Rhine.",
       "visualDescription": "Pixel art of American soldiers advancing through a dark pine forest, snow on the ground, ruined bunkers and fallen trees blocking every path forward",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_H%C3%BCrtgen_Forest",
@@ -45993,8 +45999,8 @@
       "variants": [
         {
           "type": "reverse",
-          "question": "The Hürtgen Forest battle lasted nearly six months and inflicted massive American losses. Roughly how many U.S. casualties occurred?",
-          "correctAnswer": "Over 100,000",
+          "question": "The Hürtgen Forest battle lasted 88 days and inflicted massive American losses. Roughly how many U.S. casualties occurred?",
+          "correctAnswer": "Over 33,000",
           "distractors": [
             "5,000",
             "20,000",
@@ -46015,7 +46021,7 @@
         },
         {
           "type": "true_false",
-          "question": "True or false: The Battle of Hürtgen Forest lasted nearly six months and cost the U.S. Army over 100,000 casualties.",
+          "question": "True or false: The Battle of Hürtgen Forest lasted 88 days (Sep–Dec 1944) and cost the U.S. Army over 33,000 casualties.",
           "correctAnswer": "True",
           "distractors": [
             "False"
@@ -46023,7 +46029,7 @@
         },
         {
           "type": "fill_blank",
-          "question": "The Battle of Hürtgen Forest lasted nearly six months, neutralizing American ___ and armor advantages through dense terrain.",
+          "question": "The Battle of Hürtgen Forest lasted 88 days, neutralizing American ___ and armor advantages through dense terrain.",
           "correctAnswer": "air power",
           "distractors": [
             "artillery",
@@ -47181,7 +47187,7 @@
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "Which British territory, consisting of islands including Guernsey and Jersey, was the ONLY part of Britain conquered and occupied by Germany during World War II?",
-      "explanation": "The Channel Islands were invaded on July 1, 1940, making them the only British territory occupied by Germany during the war. Britain chose not to defend them militarily as they were strategically indefensible. The occupation lasted nearly five years until May 1945, and included forced labor, deportations, and heavy German fortification. The islands became a symbol of occupation in British memory.",
+      "explanation": "The Channel Islands occupation began on June 30, 1940, when German forces landed on Guernsey (Jersey followed on July 1, 1940), making them the only British territory occupied by Germany during the war. Britain chose not to defend them militarily as they were strategically indefensible. The occupation lasted nearly five years until May 1945, and included forced labor, deportations, and heavy German fortification. The islands became a symbol of occupation in British memory.",
       "visualDescription": "Pixel art of a British island with German occupation signs posted on country lanes, soldiers guarding a harbor, the Union Jack replaced by the German flag",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/German_occupation_of_the_Channel_Islands",
@@ -47199,7 +47205,7 @@
       "variants": [
         {
           "type": "reverse",
-          "question": "The German occupation of the Channel Islands from July 1940 to May 1945 is historically significant as the only occupation of what?",
+          "question": "The German occupation of the Channel Islands from June 30, 1940 to May 1945 is historically significant as the only occupation of what?",
           "correctAnswer": "British territory",
           "distractors": [
             "French-speaking territory",
@@ -47210,7 +47216,7 @@
         },
         {
           "type": "context",
-          "question": "The German occupation of the Channel Islands began on July 1, 1940, and lasted until which year?",
+          "question": "The German occupation of the Channel Islands began on June 30, 1940 (Guernsey), and lasted until which year?",
           "correctAnswer": "1945",
           "distractors": [
             "1944",
@@ -47221,7 +47227,7 @@
         },
         {
           "type": "true_false",
-          "question": "True or false: The Channel Islands were the only British territory occupied by Germany during World War II.",
+          "question": "True or false: The Channel Islands (occupied beginning June 30, 1940) were the only British territory occupied by Germany during World War II.",
           "correctAnswer": "True",
           "distractors": [
             "False"
@@ -47241,9 +47247,9 @@
     },
     {
       "id": "wwii_wf_channel_islands_date",
-      "correctAnswer": "July 1, 1940",
+      "correctAnswer": "June 30, 1940",
       "acceptableAlternatives": [
-        "July 1940",
+        "June 30, 1940 (Guernsey)",
         "summer 1940"
       ],
       "chainThemeId": 4,
@@ -47251,7 +47257,7 @@
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "On what date did German forces begin their occupation of the Channel Islands, starting what would become the only German occupation of British territory in the entire war?",
-      "explanation": "Germany occupied the Channel Islands beginning July 1, 1940, just weeks after France's fall. Britain had declared the islands 'open' (demilitarized) to avoid civilian casualties. The occupation lasted until May 9, 1945 — one of the last German-held territories to surrender, as the isolated garrison had no means to escape.",
+      "explanation": "Germany occupied the Channel Islands beginning June 30, 1940 (Guernsey was first; Jersey followed July 1), just weeks after France's fall. Britain had declared the islands 'open' (demilitarized) to avoid civilian casualties. The occupation lasted until May 9, 1945 — one of the last German-held territories to surrender, as the isolated garrison had no means to escape.",
       "visualDescription": "Pixel art of German troops marching down a picturesque English-looking country road, traditional British-style cottages in the background, date marker showing July 1940",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/German_occupation_of_the_Channel_Islands",
@@ -47280,7 +47286,7 @@
         },
         {
           "type": "true_false",
-          "question": "True or false: Germany occupied the Channel Islands starting in July 1940 and held them until May 1945.",
+          "question": "True or false: Germany occupied the Channel Islands starting in June 30, 1940 (Guernsey) and held them until May 1945.",
           "correctAnswer": "True",
           "distractors": [
             "False"
@@ -47288,8 +47294,8 @@
         },
         {
           "type": "fill_blank",
-          "question": "Germany began occupying the Channel Islands on July ___, 1940, after Britain declared them demilitarized.",
-          "correctAnswer": "1",
+          "question": "Germany began occupying the Channel Islands on ___ 30, 1940, after Britain declared them demilitarized (Guernsey first).",
+          "correctAnswer": "June",
           "distractors": [
             "4",
             "10",
@@ -47686,18 +47692,18 @@
     },
     {
       "id": "wwii_wf_dday_june_buildup",
-      "correctAnswer": "Over 900,000",
+      "correctAnswer": "Approximately 875,000",
       "acceptableAlternatives": [
-        "900,000+",
-        "nearly a million",
-        "more than 900,000"
+        "875,000",
+        "nearly 900,000",
+        "about 875,000"
       ],
       "chainThemeId": 0,
       "answerTypePoolId": "numbers",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "By the end of June 1944 — less than a month after D-Day — how many Allied troops had landed in Normandy?",
-      "explanation": "The D-Day assault on June 6 put 156,000 troops ashore, but that was only the beginning. By June 30, Allied logistics had pushed over 900,000 troops, 177,000 vehicles, and 586,000 tons of supplies across the Channel. The sheer scale of this buildup is what turned a beachhead into an unstoppable campaign.",
+      "explanation": "The D-Day assault on June 6 put 156,000 troops ashore, but that was only the beginning. By June 30, Allied logistics had pushed approximately 875,000 troops, 177,000 vehicles, and 586,000 tons of supplies across the Channel. The sheer scale of this buildup is what turned a beachhead into an unstoppable campaign.",
       "visualDescription": "Pixel art of a vast harbor filled with supply ships and transport vessels, trucks and tanks rolling down ramps onto a French beach under an overcast sky",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Normandy_landings",
@@ -47715,7 +47721,7 @@
       "variants": [
         {
           "type": "reverse",
-          "question": "By end of June 1944, over 900,000 Allied troops were in Normandy. How many vehicles also crossed the Channel by that point?",
+          "question": "By end of June 1944, approximately 875,000 Allied troops were in Normandy. How many vehicles also crossed the Channel by that point?",
           "correctAnswer": "177,000",
           "distractors": [
             "50,000",
@@ -47726,7 +47732,7 @@
         },
         {
           "type": "context",
-          "question": "156,000 Allied troops landed on D-Day itself. Roughly how many times larger was the Allied force in Normandy by end of June?",
+          "question": "156,000 Allied troops landed on D-Day itself. Roughly how many times larger was the Allied force in Normandy (approximately 875,000) by end of June?",
           "correctAnswer": "About 6 times larger",
           "distractors": [
             "About the same",
@@ -47737,7 +47743,7 @@
         },
         {
           "type": "true_false",
-          "question": "True or false: By the end of June 1944, over 900,000 Allied troops had landed in Normandy.",
+          "question": "True or false: By the end of June 1944, approximately 875,000 Allied troops had landed in Normandy.",
           "correctAnswer": "True",
           "distractors": [
             "False"
@@ -47745,8 +47751,8 @@
         },
         {
           "type": "fill_blank",
-          "question": "While 156,000 Allied troops stormed ashore on D-Day, the total force in Normandy had grown to over ___ by the end of June 1944.",
-          "correctAnswer": "900,000",
+          "question": "While 156,000 Allied troops stormed ashore on D-Day, the total force in Normandy had grown to approximately ___ by the end of June 1944.",
+          "correctAnswer": "875,000",
           "distractors": [
             "300,000",
             "500,000",
@@ -48186,8 +48192,8 @@
       "answerTypePoolId": "place_names",
       "difficulty": 3,
       "funScore": 7,
-      "quizQuestion": "Which costly Allied battle in a German forest lasting nearly 5 months (September 1944 – February 1945) is often called the 'forgotten battle,' partly because it was overshadowed by the Battle of the Bulge?",
-      "explanation": "The Battle of Hürtgen Forest was one of the longest single battles the U.S. Army fought in World War II — nearly 5 months of grinding combat in dense, muddy forest terrain along the German-Belgian border. Over 33,000 Americans became casualties. It was strategically inconclusive and arguably unnecessary. The battle began to be overshadowed almost immediately when the Germans launched the Bulge offensive nearby in December 1944. Ernest Hemingway reported from Hürtgen and later wrote about it in his novel 'Across the River and Into the Trees.'",
+      "quizQuestion": "Which costly Allied battle in a German forest lasting 88 days (September 19 – December 16, 1944) is often called the 'forgotten battle,' partly because it was overshadowed by the Battle of the Bulge?",
+      "explanation": "The Battle of Hürtgen Forest was one of the longest single battles the U.S. Army fought in World War II — 88 days of grinding combat in dense, muddy forest terrain along the German-Belgian border. Over 33,000 Americans became casualties. It was strategically inconclusive and arguably unnecessary. The battle began to be overshadowed almost immediately when the Germans launched the Bulge offensive nearby in December 1944. Ernest Hemingway reported from Hürtgen and later wrote about it in his novel 'Across the River and Into the Trees.'",
       "visualDescription": "Pixel art of infantrymen struggling through a snow-dusted dark pine forest, foxholes dug between massive fir roots, artillery shell bursts stripping branches, fog obscuring visibility",
       "sourceName": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_H%C3%BCrtgen_Forest",
@@ -48227,7 +48233,7 @@
         },
         {
           "type": "true_false",
-          "question": "True or false: The Battle of Hürtgen Forest lasted nearly 5 months and is sometimes called the 'forgotten battle' of the Western Front.",
+          "question": "True or false: The Battle of Hürtgen Forest lasted 88 days and is sometimes called the 'forgotten battle' of the Western Front.",
           "correctAnswer": "True",
           "distractors": [
             "False"
@@ -48235,7 +48241,7 @@
         },
         {
           "type": "fill_blank",
-          "question": "The '___ battle' of the Western Front, fought in the dense forests near the German-Belgian border from September 1944 to February 1945, cost over 33,000 American casualties.",
+          "question": "The '___ battle' of the Western Front, fought in the dense forests near the German-Belgian border from September 19 to December 16, 1944, cost over 33,000 American casualties.",
           "correctAnswer": "forgotten",
           "distractors": [
             "longest",
@@ -49939,7 +49945,7 @@
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "In February 1943, Rommel's Afrika Korps inflicted the worst American defeat of the North African campaign at what Tunisian mountain pass — forcing the US Army to completely overhaul its training and command structure?",
-      "explanation": "The Battle of Kasserine Pass (February 19-25, 1943) saw Rommel's forces break through green American troops at the Kasserine Pass in Tunisia, advancing 85 miles and inflicting nearly 7,000 American casualties. The defeat revealed catastrophic problems: poor leadership, inadequate training, faulty tactics, and communication failures. General Fredendall was replaced by Patton. The US Army conducted emergency reforms that transformed American combat effectiveness. Kasserine was a disaster but also the learning experience that produced the American Army that won the war.",
+      "explanation": "The Battle of Kasserine Pass (February 19-25, 1943) saw Rommel's forces break through green American troops at the Kasserine Pass in Tunisia, advancing over 50 miles (80 km) and inflicting nearly 7,000 American casualties. The defeat revealed catastrophic problems: poor leadership, inadequate training, faulty tactics, and communication failures. General Fredendall was replaced by Patton. The US Army conducted emergency reforms that transformed American combat effectiveness. Kasserine was a disaster but also the learning experience that produced the American Army that won the war.",
       "visualDescription": "Pixel art of American GIs retreating in disarray through a rocky mountain pass, abandoned artillery pieces on the roadside, Panzer tanks advancing through the gap in the hills as smoke rises from burning halftracks.",
       "sourceName": "Wikipedia — Battle of Kasserine Pass",
       "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kasserine_Pass",
@@ -51486,18 +51492,18 @@
     },
     {
       "id": "wwii_hf_british_evacuation_phases",
-      "correctAnswer": "1.5 million",
+      "correctAnswer": "1.5 million people",
       "acceptableAlternatives": [
         "over 1.5 million",
-        "1.5 million children",
-        "approximately 1.5 million"
+        "approximately 1.5 million",
+        "1.5 million"
       ],
       "chainThemeId": 2,
       "answerTypePoolId": "large_numbers",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Operation Pied Piper — the British child evacuation that began September 1, 1939, the day Germany invaded Poland — moved approximately how many children from cities to rural areas in the first three days alone?",
-      "explanation": "Operation Pied Piper evacuated approximately 1.5 million children in the first three days (September 1-3, 1939), plus additional teachers, pregnant mothers, and disabled people — around 3.5 million people total in the first wave. Children were sent to stay with rural host families, often complete strangers. The scheme exposed deep class divisions: urban working-class children arrived malnourished and sometimes lice-ridden, shocking middle-class rural hosts. Many children were evacuated multiple times as the threat level changed throughout the war.",
+      "explanation": "Operation Pied Piper evacuated approximately 1.5 million people in the first three days (September 1-3, 1939), including approximately 827,000 children, plus teachers, pregnant mothers, and disabled people — around 3.5 million people total in the first wave. Children were sent to stay with rural host families, often complete strangers. The scheme exposed deep class divisions: urban working-class children arrived malnourished and sometimes lice-ridden, shocking middle-class rural hosts. Many children were evacuated multiple times as the threat level changed throughout the war.",
       "visualDescription": "Pixel art of a 1939 London train station platform packed with children wearing name tags and gas mask cases, small suitcases at their feet, mothers crying behind a barrier, teachers herding groups toward waiting trains.",
       "sourceName": "Wikipedia — Evacuations of civilians in Britain during World War II",
       "sourceUrl": "https://en.wikipedia.org/wiki/Evacuations_of_civilians_in_Britain_during_World_War_II",
@@ -51534,7 +51540,7 @@
           ]
         },
         "true_false": {
-          "quizQuestion": "True or False: Operation Pied Piper evacuated approximately 1.5 million children from British cities in the first three days — beginning on September 1, 1939, the same day Germany invaded Poland.",
+          "quizQuestion": "True or False: Operation Pied Piper evacuated approximately 1.5 million people (including ~827,000 children) from British cities in the first three days — beginning on September 1, 1939, the same day Germany invaded Poland.",
           "correctAnswer": "True",
           "distractors": [
             "False"
@@ -51823,17 +51829,17 @@
     },
     {
       "id": "wwii_hf_victory_gardens_count",
-      "correctAnswer": "20 million",
+      "correctAnswer": "18 million",
       "acceptableAlternatives": [
-        "over 20 million",
-        "approximately 20 million"
+        "approximately 18 million",
+        "about 18 million"
       ],
       "chainThemeId": 1,
       "answerTypePoolId": "large_numbers",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "At their peak in 1943-44, American 'Victory Gardens' produced approximately 40% of all vegetables consumed in the US. How many Victory Gardens were planted — on rooftops, in backyards, and in public parks?",
-      "explanation": "By 1943, approximately 20 million Victory Gardens had been planted across the US — in backyards, rooftops, window boxes, school grounds, and public parks. They produced an estimated 9-10 million tons of vegetables, about 40% of US vegetable consumption. First Lady Eleanor Roosevelt planted one at the White House despite Department of Agriculture concerns it would look undignified. Similar programs existed in Britain (Dig for Victory) and Canada. Victory gardens reduced demand on commercial farms and transportation, freeing both for military supply.",
+      "explanation": "By 1943, approximately 18 million Victory Gardens had been planted across the US — in backyards, rooftops, window boxes, school grounds, and public parks. They produced an estimated 9-10 million tons of vegetables, about 40% of US vegetable consumption. First Lady Eleanor Roosevelt planted one at the White House despite Department of Agriculture concerns it would look undignified. Similar programs existed in Britain (Dig for Victory) and Canada. Victory gardens reduced demand on commercial farms and transportation, freeing both for military supply.",
       "visualDescription": "Pixel art of an American suburban backyard transformed into a productive vegetable garden, rows of tomatoes, beans, and carrots where lawn once was, a 'Victory Garden' sign on a stake, a family of four tending the plot together.",
       "sourceName": "Wikipedia — Victory garden",
       "sourceUrl": "https://en.wikipedia.org/wiki/Victory_garden",
@@ -51870,7 +51876,7 @@
           ]
         },
         "true_false": {
-          "quizQuestion": "True or False: At their 1943-1944 peak, 20 million American Victory Gardens produced approximately 40% of all vegetables consumed in the United States.",
+          "quizQuestion": "True or False: At their 1943-1944 peak, approximately 18 million American Victory Gardens produced approximately 40% of all vegetables consumed in the United States.",
           "correctAnswer": "True",
           "distractors": [
             "False"
