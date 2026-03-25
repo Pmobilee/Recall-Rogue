@@ -1,0 +1,711 @@
+{
+  "id": "wwii_technology_weapons_sup",
+  "subdeckId": "tw_02",
+  "facts": [
+    {
+      "id": "wwii_tw_german_nuclear_failure",
+      "correctAnswer": "Werner Heisenberg",
+      "acceptableAlternatives": ["Heisenberg", "W. Heisenberg"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Which Nobel Prize-winning German physicist led the Nazi atomic bomb program — which failed partly due to a miscalculation of critical mass that led the Germans to believe an impractically large reactor was needed?",
+      "explanation": "Werner Heisenberg (of the Uncertainty Principle) led Germany's nuclear program (the Uranverein). A crucial error: Heisenberg's team calculated that a critical mass of uranium would require tonnes of pure U-235, making a bomb seem impractical. The Manhattan Project discovered the actual critical mass was only a few kilograms. Germany also lost heavy water sabotage at Norsk Hydro, lacked industrial capacity, and suffered from Allied bombing. Heisenberg's postwar claim that German physicists deliberately sabotaged the program remains highly contested.",
+      "visualDescription": "Pixel art of a German physicist in a rumpled suit at a blackboard covered in equations in a blacked-out Berlin laboratory, uranium ore samples on a table beside a small experimental reactor, an expression of frustrated concentration.",
+      "sourceName": "Wikipedia — German nuclear weapons program",
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_nuclear_weapons_program",
+      "volatile": false,
+      "distractors": [
+        "Albert Einstein",
+        "Max Planck",
+        "Otto Hahn",
+        "Fritz Haber",
+        "Walter Bothe",
+        "Carl Friedrich von Weizsacker",
+        "Kurt Diebner",
+        "Hans Bethe"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Germany's nuclear program made a critical miscalculation about uranium-235 critical mass. How did their estimate compare to the actual figure the Manhattan Project determined?",
+          "correctAnswer": "Germany estimated tonnes were needed; the actual critical mass is only a few kilograms",
+          "distractors": ["Germany overestimated by a factor of two — close enough that it nearly led them to continue development", "Germany underestimated the critical mass, leading them to build bombs that were too small to detonate", "The figures were essentially identical; Germany's failure was industrial capacity, not physics", "Germany correctly estimated the mass but lacked the uranium enrichment technology to produce it"]
+        },
+        "context": {
+          "quizQuestion": "German physicists at Farm Hall (a British detention house) were secretly recorded discussing the atomic bombing of Hiroshima in August 1945. What did their reaction reveal?",
+          "correctAnswer": "The recordings show genuine shock — the scientists had not believed an atomic bomb was technically achievable yet, suggesting they had not been deliberately sabotaging the program",
+          "distractors": ["The recordings confirm that Heisenberg deliberately misled the Nazi regime about bomb feasibility", "The scientists expressed relief that Germany had not succeeded in building the bomb first", "The recordings show German physicists had independently solved the critical mass problem months earlier", "German scientists were angry at Allied bombing having destroyed their near-complete reactor prototype"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Germany's atomic bomb program failed partly because of a miscalculation of critical mass that made a bomb seem to require impractically large quantities of uranium-235.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Heisenberg's nuclear program also suffered from Allied sabotage of Norwegian heavy water production — essential for a ___ nuclear reactor design.",
+          "correctAnswer": "graphite",
+          "distractors": ["light water", "plutonium", "uranium-235", "thorium"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_p51_mustang",
+      "correctAnswer": "P-51 Mustang",
+      "acceptableAlternatives": ["North American P-51", "Mustang", "North American Mustang"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "aircraft_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What long-range American fighter — originally underpowered until fitted with the British Rolls-Royce Merlin engine — finally gave B-17 bombers escort protection all the way to Berlin and back, transforming the air war over Europe?",
+      "explanation": "The P-51 Mustang was originally powered by an Allison engine that underperformed at high altitude. Fitted with the Rolls-Royce Merlin engine (also used in the Spitfire), the P-51D became arguably the war's finest all-around fighter: 437 mph, 1,500-mile range, superior high-altitude performance. From early 1944, Mustangs escorted B-17s and B-24s all the way to Berlin and back, ending the catastrophic unescorted bombing missions. The P-51 is credited with winning air superiority over Germany, enabling D-Day.",
+      "visualDescription": "Pixel art of a P-51 Mustang with distinctive invasion stripes and a shark mouth nose, flying high over German clouds, a formation of B-17s it is escorting visible below, a Focke-Wulf 190 silhouette in its gun sights.",
+      "sourceName": "Wikipedia — North American P-51 Mustang",
+      "sourceUrl": "https://en.wikipedia.org/wiki/North_American_P-51_Mustang",
+      "volatile": false,
+      "distractors": [
+        "P-47 Thunderbolt",
+        "P-38 Lightning",
+        "P-40 Warhawk",
+        "F4U Corsair",
+        "F6F Hellcat",
+        "Spitfire Mk IX",
+        "Hawker Tempest",
+        "Republic P-43 Lancer"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The P-51's transformation from an average fighter to the war's best came from fitting it with what British engine?",
+          "correctAnswer": "The Rolls-Royce Merlin engine",
+          "distractors": ["The Bristol Hercules radial engine", "The de Havilland Gypsy Major engine", "The Armstrong Siddeley Tiger engine", "The Napier Sabre engine"]
+        },
+        "context": {
+          "quizQuestion": "Before long-range Mustang escorts became available, B-17 crews on deep missions to Germany faced catastrophic losses. What was the approximate survival rate for crews completing 25-mission tours in 1943?",
+          "correctAnswer": "About 50% — a crew had roughly even odds of surviving a 25-mission combat tour",
+          "distractors": ["Nearly 100% — the heavily armed B-17 'Flying Fortress' was well able to defend itself", "About 20% — most crews were killed or captured before completing their tour", "About 80% — German fighters were effective but the massive formations provided mutual protection", "Exactly 75% — the US Army Air Forces maintained this figure as the minimum acceptable loss rate"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The P-51 Mustang was originally underpowered with an Allison engine, but became the war's finest long-range escort fighter after being fitted with the British Rolls-Royce Merlin.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "P-51 Mustangs began escorting bombers all the way to Berlin and back in early ___, ending the catastrophic unescorted deep-penetration raids.",
+          "correctAnswer": "1944",
+          "distractors": ["1941", "1942", "1943", "1945"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_proximity_fuze_vt",
+      "correctAnswer": "Proximity fuze",
+      "acceptableAlternatives": ["VT fuze", "variable time fuze", "radio proximity fuze"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "What American secret weapon — a miniature radar inside an artillery shell that detonated automatically when it flew close enough to an aircraft — made anti-aircraft fire dramatically more lethal and helped break the German Ardennes offensive?",
+      "explanation": "The proximity fuze (or VT fuze — Variable Time) contained a miniature radio transmitter-receiver inside an artillery shell. When the shell's radio signal bounced back from a nearby target, it detonated automatically — no more need for precise time fuzes. Against aircraft, proximity fuzes were five times more effective than contact fuzes. Against troops in the open during the Battle of the Bulge (December 1944), airburst detonations killed far more German infantry than ground-burst shells. Considered so secret that the US Navy initially restricted use over enemy territory for fear of capture.",
+      "visualDescription": "Pixel art of a cross-section diagram of an artillery shell showing miniature radio components in its nose, beside an image of the same shell exploding in a burst of shrapnel above a formation of marching soldiers.",
+      "sourceName": "Wikipedia — Proximity fuze",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Proximity_fuze",
+      "volatile": false,
+      "distractors": [
+        "Time fuze",
+        "Impact fuze",
+        "Magnetic fuze",
+        "Acoustic fuze",
+        "Infrared fuze",
+        "Timed anti-personnel mine",
+        "Radio-controlled detonator",
+        "Altitude fuze"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The proximity fuze was initially restricted to use over water rather than over enemy land. Why did the US Navy impose this restriction?",
+          "correctAnswer": "Fear that a dud shell captured by the enemy would reveal the miniaturized radar technology",
+          "distractors": ["Proximity fuzes performed better in the moist air over the ocean than in dry land conditions", "The Navy had exclusive rights to the technology and refused to share it with the Army Air Forces", "A production shortage meant there were only enough fuzes for naval anti-aircraft batteries", "The fuze's radio signal interfered with shipboard communications if used at close range"]
+        },
+        "context": {
+          "quizQuestion": "Proximity fuzes proved devastating against German infantry during the Battle of the Bulge in December 1944. Why were airburst detonations more lethal than ground-burst shells against troops?",
+          "correctAnswer": "Airbursts spread shrapnel downward and outward over a wide area, whereas ground bursts lose energy into the earth",
+          "distractors": ["Airbursts prevented German infantry from using shell craters as cover from follow-up attacks", "The psychological shock of airburst explosions directly overhead was more disabling than ground blasts", "Proximity fuzes detonated at precisely the altitude that maximized the shell's explosive yield", "German troops had deeper trenches than the fuze's effective radius for ground detonations"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The proximity fuze contained a miniature radar inside the artillery shell itself, detonating automatically when it flew close enough to its target.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Against aircraft, the proximity fuze was approximately ___ times more effective than conventional contact fuzes.",
+          "correctAnswer": "five",
+          "distractors": ["twice", "ten", "fifty", "equally"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_v1_flying_bomb",
+      "correctAnswer": "V-1 flying bomb",
+      "acceptableAlternatives": ["V-1", "Vergeltungswaffe 1", "buzz bomb", "doodlebug"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "weapon_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What German pulse-jet powered weapon — nicknamed 'buzz bomb' and 'doodlebug' by Londoners for its distinctive engine sound — was the world's first operational cruise missile, with over 10,000 launched against Britain from June 1944?",
+      "explanation": "The V-1 (Fieseler Fi 103) was a pulse-jet powered cruise missile launched against London and Antwerp from June 1944. Over 10,000 were launched; about 9,500 reached Britain. The distinctive buzzing pulse-jet engine was unmistakable — and when it stopped, Londoners knew to dive for cover because the V-1 was in its terminal dive. Defenses shot down about 46%; anti-aircraft guns and fighters (including wing-tipping by Spitfires) countered them. The V-1 was the predecessor of modern cruise missiles.",
+      "visualDescription": "Pixel art of a stubby winged flying bomb with a pulse-jet tube above the fuselage humming over the London skyline at rooftop height, a Spitfire banking toward it, searchlights and anti-aircraft bursts filling the night sky.",
+      "sourceName": "Wikipedia — V-1 flying bomb",
+      "sourceUrl": "https://en.wikipedia.org/wiki/V-1_flying_bomb",
+      "volatile": false,
+      "distractors": [
+        "V-2 rocket",
+        "Me 163 Komet",
+        "Mistel composite",
+        "BV 246 glide bomb",
+        "Henschel Hs 293",
+        "Fritz X guided bomb",
+        "Natter interceptor",
+        "Fieseler Storch"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Londoners under V-1 attack learned an unsettling rule: hearing the V-1's buzz meant you were temporarily safe. When should they dive for cover?",
+          "correctAnswer": "When the buzzing stopped — meaning the engine had cut and the bomb was in its terminal dive toward the ground",
+          "distractors": ["When the buzz increased in pitch — indicating the bomb had spotted its target and accelerated", "When searchlights illuminated the V-1 — the lights guided its internal compass toward targets", "When sirens sounded three blasts — British air raid wardens tracked V-1s by radar and gave the signal", "Immediately upon hearing any buzz — safe distance from a V-1 path was impossible to determine"]
+        },
+        "context": {
+          "quizQuestion": "British Spitfire pilots developed a remarkable technique to destroy V-1s without firing. What was it?",
+          "correctAnswer": "Flying alongside and tipping the V-1's wing with their own wingtip, tumbling the gyroscope and sending it off course",
+          "distractors": ["Flying directly above the V-1 and dropping bombs on its pulse-jet intake", "Using the fighter's slipstream to create turbulence that destabilized the V-1's flight", "Cutting the V-1's command antenna with the propeller to disable its guidance system", "Flying behind and firing the cannon into the pulse-jet exhaust to cause an explosion"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The V-1 flying bomb, first used in June 1944, was powered by a pulse-jet engine and is considered the world's first operational cruise missile.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Of over 10,000 V-1s launched against Britain, approximately ___% were shot down by anti-aircraft guns, barrage balloons, or fighter aircraft before reaching their targets.",
+          "correctAnswer": "46",
+          "distractors": ["5", "25", "80", "99"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_liberty_ships",
+      "correctAnswer": "Liberty ships",
+      "acceptableAlternatives": ["Liberty ship", "EC2 cargo ship"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "equipment_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What mass-produced American cargo vessel — initially built in 244 days, reduced to 42 days by 1943, with one famously assembled in just 4 days — represented the assembly-line revolution in shipbuilding that supplied the entire Allied war effort?",
+      "explanation": "Liberty ships were standardized cargo vessels built using prefabricated sections welded together rather than the traditional riveted construction. Henry Kaiser's shipyards pioneered the technique. The Robert E. Peary was assembled and launched in 4 days, 15 hours, 29 minutes in November 1942 as a publicity stunt, though typical construction was 42 days. Over 2,700 Liberty ships were built — far faster than German U-boats could sink them. They carried the Lend-Lease supplies that kept Britain and the Soviet Union in the war.",
+      "visualDescription": "Pixel art of a Liberty ship assembly line at a California shipyard, workers welding prefabricated sections together on a slipway, a completed ship departing in the background, cranes and steel sections everywhere.",
+      "sourceName": "Wikipedia — Liberty ship",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Liberty_ship",
+      "volatile": false,
+      "distractors": [
+        "Victory ships",
+        "T2 tankers",
+        "Hog Islanders",
+        "Kaiser Frigates",
+        "Fletcher-class destroyers",
+        "LSTs",
+        "Welded cargo ships",
+        "Maritime Commission vessels"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The key innovation enabling Liberty ship mass production was abandoning traditional shipbuilding methods. What construction change made the dramatic speed increase possible?",
+          "correctAnswer": "Prefabricated sections welded together rather than individually riveted plates — allowing multiple sections to be built simultaneously",
+          "distractors": ["Using aluminum instead of steel reduced weight, enabling smaller crews and faster construction", "Assembly line workers were replaced by automated welding robots pioneered by Ford", "Liberty ships were built in sections and assembled offshore to avoid bottlenecks at limited dry docks", "Women workers proved faster at welding than male workers, doubling production rates"]
+        },
+        "context": {
+          "quizQuestion": "German U-boats sank 3.1 million tons of Allied shipping in 1942. How did Liberty ship production address this threat?",
+          "correctAnswer": "Production outpaced sinkings — Americans built more tonnage than U-boats could sink, turning the Battle of the Atlantic",
+          "distractors": ["Liberty ships were equipped with sonar that allowed them to detect and avoid submarines", "The ships were specifically designed with shallow hulls that U-boat torpedoes passed beneath", "Liberty ship routes were randomized by computer algorithms before that technology was widely available", "Liberty ships were escorted by destroyers in convoys, virtually eliminating successful U-boat attacks"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Over 2,700 Liberty ships were built during WWII — enough to replace Allied shipping losses faster than German submarines could sink them.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Liberty ship Robert E. Peary was assembled in 4 days as a publicity record in ___; typical construction was reduced to 42 days by 1943.",
+          "correctAnswer": "November 1942",
+          "distractors": ["June 1941", "December 1943", "March 1945", "September 1944"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_penicillin_production",
+      "correctAnswer": "1944",
+      "acceptableAlternatives": ["by 1944", "in 1944"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "years",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In what year did American pharmaceutical companies achieve mass production of penicillin in quantities sufficient to supply all Allied forces — transforming wound care and reducing deaths from infection that had killed more soldiers than combat in WWI?",
+      "explanation": "Fleming discovered penicillin in 1928 but couldn't mass-produce it. British scientists Howard Florey and Ernst Chain developed purification methods in 1940-1941. American pharmaceutical companies (Pfizer, Merck, Squibb) solved the deep-tank fermentation problem and by 1944 were producing 2.3 million doses per month. Penicillin was available to all Allied forces by the D-Day invasion. In WWI, infection killed more soldiers than combat; in WWII, survival rates from identical wounds were dramatically higher.",
+      "visualDescription": "Pixel art of 1940s pharmaceutical workers in white coats monitoring rows of large fermentation vats producing penicillin, mold cultures visible through observation windows, bottles of amber penicillin solution filling a production line.",
+      "sourceName": "Wikipedia — Penicillin",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Penicillin",
+      "volatile": false,
+      "distractors": [
+        "1928",
+        "1939",
+        "1940",
+        "1941",
+        "1942",
+        "1943",
+        "1945",
+        "1946"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Fleming discovered penicillin in 1928 but it took 16 years to achieve mass production. What was the key technical problem that American companies solved in 1943-1944?",
+          "correctAnswer": "Deep-tank fermentation — growing massive quantities of penicillin-producing mold in industrial vats rather than shallow trays",
+          "distractors": ["Developing a synthetic chemical route that didn't require mold cultures at all", "Finding a corn steep liquor medium that increased mold yield by a factor of 1,000 overnight", "Recruiting enough trained microbiologists from universities to staff the production facilities", "Solving the refrigeration problem that had prevented penicillin from surviving ocean shipping"]
+        },
+        "context": {
+          "quizQuestion": "In WWI, more soldiers died from infection than from wounds themselves. Which specific infections did penicillin most effectively treat?",
+          "correctAnswer": "Infected wounds, gas gangrene, pneumonia, gonorrhea, and streptococcal infections that had previously required amputation",
+          "distractors": ["Malaria and dengue fever, which had been the primary killers in tropical theaters", "Typhus and cholera from contaminated water supplies in occupied territories", "Tuberculosis, which had decimated soldiers in close-quarters trench warfare", "Influenza and its secondary complications, which had killed millions in the 1918 pandemic"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: American pharmaceutical companies achieved mass penicillin production by 1944, with 2.3 million doses per month available for Allied forces by the D-Day invasion.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Fleming discovered penicillin in 1928, but the Nobel Prize for Medicine for penicillin development was awarded in ___ to Fleming, Florey, and Chain.",
+          "correctAnswer": "1945",
+          "distractors": ["1928", "1940", "1944", "1950"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_sonar_uboats",
+      "correctAnswer": "ASDIC",
+      "acceptableAlternatives": ["sonar", "ASDIC sonar", "Anti-Submarine Detection Investigation Committee"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "technology_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "What British underwater sound detection system — developed after WWI specifically to locate submarines — gave Allied convoy escorts the ability to detect U-boats underwater and was the primary anti-submarine tool throughout the Battle of the Atlantic?",
+      "explanation": "ASDIC (named for the Anti-Submarine Detection Investigation Committee) was a British active sonar system that transmitted sound pulses underwater and detected their echo from a submarine. Developed in the 1920s, ASDIC gave Royal Navy destroyers the ability to locate submerged U-boats. Combined with depth charges, it was the primary anti-submarine weapon until radar improvements allowed detection of surfaced submarines. ASDIC's limitation: it couldn't track a submarine in the final 150 yards before depth charge drop.",
+      "visualDescription": "Pixel art of a Royal Navy destroyer in rough Atlantic seas, a sonar operator at a headset listening intently to a pinging system, depth charges ready on the stern, the shadow of a U-boat visible below the waves.",
+      "sourceName": "Wikipedia — ASDIC",
+      "sourceUrl": "https://en.wikipedia.org/wiki/ASDIC",
+      "volatile": false,
+      "distractors": [
+        "Radar",
+        "Hydrophone",
+        "Magnetic Anomaly Detector",
+        "Bathyscaph",
+        "Echo sounder",
+        "Acoustic torpedo",
+        "Active hydrophone",
+        "Depth sounding buoy"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "ASDIC had a critical blind spot that U-boat commanders learned to exploit. What was it?",
+          "correctAnswer": "ASDIC lost contact with a submarine in the final 150 yards before depth charges were dropped, giving U-boats time to maneuver",
+          "distractors": ["ASDIC couldn't detect submarines in water colder than 10°C due to thermal interference", "ASDIC's pinging was audible to U-boat crews, giving them warning to dive before the destroyer arrived", "ASDIC required calm seas to function; any wave action above 3 feet masked submarine signatures", "ASDIC couldn't distinguish between submarines and large schools of fish in shallower water"]
+        },
+        "context": {
+          "quizQuestion": "ASDIC combined with depth charges was the primary anti-submarine weapon. What killed more U-boats in the later war years as technology improved?",
+          "correctAnswer": "Centimeter-wave radar allowing aircraft to detect surfaced U-boats at night, combined with Leigh Light illumination",
+          "distractors": ["Improved ASDIC with longer range allowed destroyers to engage at 10 miles distance", "Acoustic torpedoes that homed on U-boat engine noise replaced depth charge attacks entirely by 1944", "Magnetic anomaly detectors on aircraft identified submerged submarines by their magnetic signature", "American hunter-killer groups with dedicated anti-submarine escort carriers replaced convoy protection entirely"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: ASDIC used sound pulses to detect submarines — an active sonar system that could locate U-boats underwater by listening for echoes from its transmitted pings.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "ASDIC was combined with ___ — depth-set explosive canisters rolled off the stern or thrown by hedgehog launchers — to destroy located U-boats.",
+          "correctAnswer": "depth charges",
+          "distractors": ["acoustic torpedoes", "magnetic mines", "anti-submarine rockets", "aerial bombs"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_t34_production",
+      "correctAnswer": "T-34",
+      "acceptableAlternatives": ["T34", "T-34 tank"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "equipment_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "What Soviet tank — with revolutionary sloped armor that deflected shells, a powerful diesel engine, and wide tracks for mud and snow — shocked German crews in 1941 and prompted Germany to design the Panther tank specifically to counter it?",
+      "explanation": "The T-34 entered service in 1940 and represented a generational leap: sloped armor (30-degree angle doubled effective thickness), a reliable diesel engine (less flammable than gasoline), and wide tracks for Soviet mud and snow. German crews discovered their standard anti-tank guns couldn't penetrate it from the front in 1941. Germany responded by designing the Panther specifically to match the T-34. Over 84,000 T-34s were produced — far more than any German tank. T-34 production at Tankograd (Chelyabinsk) was the backbone of Soviet armored power.",
+      "visualDescription": "Pixel art of a T-34 tank advancing through deep mud with its wide tracks, the distinctive sloped armor catching the light at an angle, a Soviet red star on the turret, German anti-tank shells sparking off the angled hull plate.",
+      "sourceName": "Wikipedia — T-34",
+      "sourceUrl": "https://en.wikipedia.org/wiki/T-34",
+      "volatile": false,
+      "distractors": [
+        "KV-1",
+        "IS-2",
+        "T-70",
+        "SU-85",
+        "BT-7",
+        "T-26",
+        "Sherman (Soviet version)",
+        "T-60"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Germany designed the Panther tank specifically to counter the T-34. What two features of the T-34 most influenced the Panther's design?",
+          "correctAnswer": "Sloped armor and a high-velocity gun capable of penetrating Soviet tank frontal armor at combat ranges",
+          "distractors": ["Wide tracks for cross-country mobility and a diesel engine for reduced fire risk", "A large turret ring allowing a more powerful gun and faster traverse speed", "Superior crew visibility and intercom communications systems lacking in Soviet tanks", "Reliability in extreme cold and simplified maintenance accessible to inexperienced Soviet tank crews"]
+        },
+        "context": {
+          "quizQuestion": "The T-34 was produced in enormous numbers at relocated factories. What advantage did Soviet mass production give over individually superior German tanks?",
+          "correctAnswer": "Three T-34s could be built for every one Tiger — and even if two were destroyed, the third could still fight",
+          "distractors": ["T-34 crews were better trained than Tiger crews because the simpler tank was easier to master", "Soviet factories could produce T-34 spare parts faster than German factories could service Tigers", "T-34s could be dropped by parachute into encircled positions; the Tiger was too heavy for air transport", "Identical production meant battle damage could be repaired using any wrecked T-34 as a parts source"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The T-34's sloped armor design meant incoming shells at a 30-degree angle had to penetrate significantly more effective steel thickness than the nominal armor plate measurement.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Over ___ T-34 tanks were produced during WWII — making it the most numerous tank in history and the backbone of Soviet armored power.",
+          "correctAnswer": "84,000",
+          "distractors": ["1,350", "5,000", "12,000", "1,000,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_napalm_development",
+      "correctAnswer": "Harvard University",
+      "acceptableAlternatives": ["Harvard", "Harvard chemists"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "institution_names",
+      "difficulty": 5,
+      "funScore": 8,
+      "quizQuestion": "Napalm — the jellied incendiary used in flamethrowers and fire bombs from 1943 — was developed by a team of chemists at what American university, where it was literally first tested in a football field?",
+      "explanation": "Napalm was developed at Harvard University in 1942 by chemist Louis Fieser and his team. The name combines 'naphthenic acid' and 'palmitic acid' (the aluminum salts used). Napalm was first tested on Harvard's Soldier Field football pitch. The incendiary mixture clung to surfaces and burned at 800-1,200°C, making it far more destructive than earlier incendiaries. First used in flamethrowers in 1943; later used in fire bombs against Japanese cities. The firebombing of Tokyo (March 9-10, 1945) killed an estimated 80,000-100,000 people.",
+      "visualDescription": "Pixel art of chemists in lab coats in a 1940s laboratory mixing substances in beakers, a clipboard labeled 'Incendiary Compound NP' on a desk, through the window a green football field is visible where a small test fire burns.",
+      "sourceName": "Wikipedia — Napalm",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Napalm",
+      "volatile": false,
+      "distractors": [
+        "MIT",
+        "Caltech",
+        "Princeton University",
+        "University of Chicago",
+        "Columbia University",
+        "Johns Hopkins University",
+        "Stanford University",
+        "Carnegie Mellon"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Napalm was first used in combat in 1943. Against what type of target did it prove most devastatingly effective in the Pacific theater?",
+          "correctAnswer": "Japanese cities — densely packed wooden buildings that burned catastrophically in mass firebombing raids",
+          "distractors": ["Japanese aircraft carriers whose aviation fuel ignited secondary explosions throughout the ship", "Coral and concrete Japanese bunkers on Pacific island beaches that conventional explosives couldn't breach", "Japanese submarine pens hewn into caves that resisted any other form of bombing attack", "Japanese supply dumps disguised as civilian buildings and protected from high-altitude precision bombing"]
+        },
+        "context": {
+          "quizQuestion": "The March 1945 firebombing of Tokyo with napalm killed an estimated 80,000-100,000 people in one night. How does this compare to the atomic bombing of Hiroshima?",
+          "correctAnswer": "Comparable — Hiroshima killed approximately 70,000-80,000 immediately; the Tokyo raid may have killed more",
+          "distractors": ["The atomic bomb was 10 times more deadly — which is why it ended the war while conventional bombing hadn't", "The Tokyo raid killed far fewer because conventional bombs could be avoided by fleeing the fire zone", "The atomic bomb's radiation deaths made it far more deadly over weeks; conventional bombing was less lethal overall", "Hiroshima killed nearly ten times more people because of the bomb's unique destructive mechanism"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Napalm was developed at Harvard University in 1942 and takes its name from a combination of two of its chemical components: naphthenic acid and palmitic acid.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Napalm burns at 800-1,200°C and clings to surfaces. Its name combines 'naphthenic' and '___ acid' — the aluminum salts that give it its sticky consistency.",
+          "correctAnswer": "palmitic",
+          "distractors": ["phosphoric", "sulfuric", "nitric", "acetic"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_me262_jet",
+      "correctAnswer": "Me 262",
+      "acceptableAlternatives": ["Messerschmitt 262", "Messerschmitt Me 262", "Schwalbe"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "aircraft_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What was the name of the world's first operational jet fighter — capable of 540 mph, over 100 mph faster than any Allied piston fighter — that Germany deployed in 1944 but which came too late and in too few numbers to change the war?",
+      "explanation": "The Me 262 Schwalbe ('Swallow') was the world's first operational jet fighter, entering service in 1944. At 541 mph it was roughly 120 mph faster than the P-51 Mustang. Had it been deployed earlier in quantity, it might have denied air superiority over Germany. Hitler infamously insisted it be converted into a bomber ('blitz bomber') rather than used as an interceptor, delaying the program. Fewer than 300 flew operationally. Its Junkers Jumo 004 engines had a life of only 10-12 hours — unreliable and dangerous.",
+      "visualDescription": "Pixel art of an Me 262 with swept wings and twin jet engines banking sharply, leaving a faint trail of exhaust, a formation of lumbering B-17s it is attacking below, Allied piston fighters struggling to keep pace in the distance.",
+      "sourceName": "Wikipedia — Messerschmitt Me 262",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Messerschmitt_Me_262",
+      "volatile": false,
+      "distractors": [
+        "Heinkel He 162",
+        "Gloster Meteor",
+        "Bell P-59 Airacomet",
+        "Me 163 Komet",
+        "Dornier Do 335",
+        "Focke-Wulf Ta 152",
+        "De Havilland Vampire",
+        "Heinkel He 280"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Hitler insisted the Me 262 be deployed as a fast bomber rather than an interceptor fighter. Why did this order devastate the program's military effectiveness?",
+          "correctAnswer": "As a bomber it carried a small bomb load for a huge cost in fuel and maintenance — wasting the jet's speed advantage against Allied fighters",
+          "distractors": ["Bomber conversions required removing two of the four cannons, reducing firepower against Allied bombers", "Bomber pylons created aerodynamic drag that reduced the Me 262's speed below that of Allied fighters", "The bomb-carrying structure required reinforcing the fuselage, adding weight that exceeded the engines' thrust", "Ordering it as a bomber rather than fighter denied it the additional crew training needed for combat effectiveness"]
+        },
+        "context": {
+          "quizQuestion": "Allied pilots countered the Me 262 despite its speed advantage. What was the primary tactic for shooting one down?",
+          "correctAnswer": "Intercepting Me 262s during takeoff and landing — the only time the jets were slow enough for piston fighters to engage",
+          "distractors": ["Radar vectored P-51s to dive on Me 262s from above — the only angle where they had a speed advantage", "B-17 tail gunners trained specifically for head-on attacks against jets coming in from behind", "Me 262 pilots were given to sustained turns in combat, and piston fighters could match turn radius at any speed", "P-38s flew at maximum altitude where the thin air reduced jet performance to piston fighter levels"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Me 262 was the world's first operational jet fighter, capable of over 540 mph — more than 100 mph faster than any Allied piston-engine fighter.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Me 262's Junkers Jumo 004 jet engines had a service life of only ___ hours before requiring replacement — a critical reliability problem that limited operational deployment.",
+          "correctAnswer": "10-12",
+          "distractors": ["1,000", "500", "100", "2"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_jeep_eisenhower",
+      "correctAnswer": "Jeep",
+      "acceptableAlternatives": ["Willys Jeep", "GP", "Willys MB"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "equipment_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Eisenhower listed three pieces of equipment as most important to Allied victory: the Dakota aircraft, the Landing Ship Tank, and what four-wheel-drive utility vehicle that became the iconic symbol of American military mobility?",
+      "explanation": "Eisenhower identified the Jeep (Willys MB/Ford GPW) as one of three tools most essential to Allied victory. Over 640,000 were produced. The Jeep could traverse terrain that defeated conventional vehicles, tow small artillery pieces, serve as an ambulance, mount machine guns, and carry everything from generals to groceries. Its simplicity meant front-line mechanics could repair it. Patton called it 'America's greatest contribution to modern warfare.' The name derives from GP (General Purpose), pronounced phonetically.",
+      "visualDescription": "Pixel art of a muddy olive-drab Jeep with a white star stencil on the hood, a machine gun mounted on the back, an officer with a map in the passenger seat, and deep wheel tracks showing it has just crossed a waterlogged field.",
+      "sourceName": "Wikipedia — Willys MB",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Willys_MB",
+      "volatile": false,
+      "distractors": [
+        "Sherman tank",
+        "Deuce-and-a-half truck",
+        "DUKW amphibious truck",
+        "M3 halftrack",
+        "Dodge WC series truck",
+        "Studebaker US6 truck",
+        "M29 Weasel carrier",
+        "Bren carrier"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Eisenhower also cited the 'Dakota' (C-47) as one of three essential tools of victory. What were all three?",
+          "correctAnswer": "The C-47 Dakota transport aircraft, the Landing Ship Tank (LST), and the Jeep",
+          "distractors": ["The Sherman tank, the B-17 bomber, and the Jeep", "The aircraft carrier, the P-51 Mustang, and the Higgins Boat", "The DUKW, the C-47, and the Higgins Boat", "The Liberty ship, the Jeep, and the proximity fuze"]
+        },
+        "context": {
+          "quizQuestion": "The Jeep's name is typically derived from 'GP' (General Purpose). What other explanation has been offered for the name?",
+          "correctAnswer": "Eugene the Jeep — a magical animal character in the Popeye comic strip who could go anywhere",
+          "distractors": ["The Jeep was secretly named after German engineer Julius Ernst Eduard Paul, who designed the prototype", "GIs corrupted the phrase 'Just Enough Equipment Period' into the nickname 'Jeep'", "The Willys factory was located in Jeep, Ohio — a small town since renamed after the vehicle", "The Army designation 'J-series Equipment Program' was abbreviated by mechanics to 'JEP' and then 'Jeep'"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Eisenhower specifically identified the Jeep, alongside the C-47 Dakota and the LST, as one of three pieces of equipment most essential to Allied victory in WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Over ___ Jeeps were produced during WWII by Willys and Ford — making it one of the most produced military vehicles in history.",
+          "correctAnswer": "640,000",
+          "distractors": ["5,000", "50,000", "1,000,000", "100,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_enigma_naval",
+      "correctAnswer": "U-boat",
+      "acceptableAlternatives": ["U-boats", "German submarines", "Kriegsmarine"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "unit_types",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Breaking which branch of the German Enigma code was considered the single most important Ultra intelligence achievement — providing convoy routing information that saved thousands of Allied ships from submarine attack?",
+      "explanation": "Breaking the Kriegsmarine (German Navy) Enigma — particularly the 4-rotor Naval Enigma used by U-boats — was considered the war's most valuable code-breaking achievement. The U-boat war in the Atlantic was existential for Britain: in early 1942, U-boats were sinking ships faster than Britain could replace them. Naval Enigma decrypts allowed convoys to be routed around submarine patrol lines (called 'wolfpacks'). Each decrypt saved ships and lives. Key captures: HMS Petard's recovery of Enigma materials from U-559 in October 1942 was crucial.",
+      "visualDescription": "Pixel art of a Bletchley Park codebreaker at a Bombe machine studying a decrypt, a North Atlantic convoy route map on the wall showing a red wolfpack patrol line and a blue diversion arrow around it.",
+      "sourceName": "Wikipedia — Naval Enigma",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Naval_Enigma",
+      "volatile": false,
+      "distractors": [
+        "Luftwaffe",
+        "Wehrmacht",
+        "SS",
+        "Abwehr",
+        "OKW (High Command)",
+        "Gestapo",
+        "Panzer Corps",
+        "Army Group South"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "HMS Petard's crew made a crucial sacrifice to obtain naval Enigma materials from U-559 in 1942. What happened to the two sailors who retrieved the materials from the sinking submarine?",
+          "correctAnswer": "They were drowned when U-559 sank faster than expected, taking them down with it",
+          "distractors": ["They were captured by a second German U-boat that arrived before the rescue ship", "They survived and received the Victoria Cross for their action in the Mediterranean", "They were killed by German gunfire while attempting to board the stricken submarine", "They became prisoners of war after a German aircraft attacked HMS Petard in retaliation"]
+        },
+        "context": {
+          "quizQuestion": "Naval Enigma decrypts allowed convoys to be routed around German wolfpack patrol lines. What was the intelligence limitation that prevented this from being a complete solution?",
+          "correctAnswer": "Decryption often took 24-48 hours, by which time U-boats might have moved from their reported positions",
+          "distractors": ["The Royal Navy lacked enough destroyers to protect all rerouted convoys from other threats", "German U-boats sometimes used hand ciphers instead of Enigma for tactical messages", "British convoy commodores often ignored Bletchley routing instructions as 'too cautious'", "The decryption process only worked in periods when Bletchley had captured current code books"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Breaking the 4-rotor Naval Enigma used by German U-boats was considered the single most important Ultra intelligence achievement — allowing convoys to be routed around submarine wolfpack patrol lines.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "In early 1942, German U-boats were sinking ships faster than Britain could replace them — a crisis historians call the 'Second Happy Time' for ___ commanders.",
+          "correctAnswer": "U-boat",
+          "distractors": ["Luftwaffe", "surface raider", "Kriegsmarine surface", "pocket battleship"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_b29_superfortress",
+      "correctAnswer": "35,000 feet",
+      "acceptableAlternatives": ["above 30,000 feet", "30,000+ feet", "over 30,000 feet"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "distances",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The B-29 Superfortress could fly above what altitude — out of range of most Japanese fighters and anti-aircraft guns — while carrying 20,000 lbs of bombs from Pacific island bases to targets in Japan?",
+      "explanation": "The B-29 Superfortress flew at 30,000-35,000+ feet with a pressurized cabin (the first mass-produced bomber with crew pressurization), a range of 3,250 miles, and a bomb load of up to 20,000 lbs. It cost more to develop than the Manhattan Project ($3 billion vs $2 billion). Initially used for high-altitude precision bombing of Japan — which failed due to jet stream winds. General Curtis LeMay switched to low-altitude night incendiary raids, including the devastating March 1945 Tokyo firebombing.",
+      "visualDescription": "Pixel art of a B-29 Superfortress at extreme altitude, the curvature of the Earth visible below it, condensation trails forming behind the four large radial engines, the Japanese coast and Mount Fuji visible far beneath through clear stratospheric air.",
+      "sourceName": "Wikipedia — Boeing B-29 Superfortress",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Boeing_B-29_Superfortress",
+      "volatile": false,
+      "distractors": [
+        "5,000 feet",
+        "10,000 feet",
+        "15,000 feet",
+        "20,000 feet",
+        "50,000 feet",
+        "100,000 feet",
+        "1,000 feet",
+        "25,000 feet"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The B-29's high-altitude precision bombing of Japan initially failed. What natural phenomenon caused bombs to miss their targets?",
+          "correctAnswer": "The jet stream — powerful high-altitude winds over Japan that scattered bombs far from their targets",
+          "distractors": ["Dense cloud cover over Japanese cities made optical bombing impossible most of the year", "Japanese radar-guided anti-aircraft guns were more accurate at high altitude than expected", "The B-29's Norden bombsight was not calibrated for the extreme cold at operating altitude", "Japanese fighters equipped with nitrous oxide boost could intercept B-29s at high altitude"]
+        },
+        "context": {
+          "quizQuestion": "General LeMay's solution to high-altitude bombing failure was switching to low-altitude night incendiary raids. What risks did this change impose on B-29 crews?",
+          "correctAnswer": "Low-altitude flight brought aircraft within range of Japanese anti-aircraft guns and allowed night fighters to engage more effectively",
+          "distractors": ["Night bombing required visual identification of targets, which was impossible without searchlight assistance", "Low altitude reduced the B-29's range so badly that it couldn't return to its Pacific island bases", "Flying below the jet stream caused the pressurization system to malfunction in cold Pacific air", "Low-altitude flight heated the engines beyond safe operating temperature, increasing mechanical failures"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The B-29 Superfortress program cost more to develop than the Manhattan Project, making it the single most expensive weapons program of World War II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The B-29 Superfortress was the first mass-produced bomber with a ___ cabin, allowing crew to operate at extreme altitudes without oxygen masks.",
+          "correctAnswer": "pressurized",
+          "distractors": ["armored", "heated", "soundproofed", "ejection-equipped"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_eniac",
+      "correctAnswer": "18,000",
+      "acceptableAlternatives": ["18,000 vacuum tubes", "approximately 18,000", "about 18,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "ENIAC — the Electronic Numerical Integrator and Computer completed in 1945 — contained approximately how many vacuum tubes, weighed 30 tons, and was originally designed to calculate artillery firing tables for the US Army?",
+      "explanation": "ENIAC (Electronic Numerical Integrator and Computer) was completed in late 1945 at the University of Pennsylvania. It contained 17,468 vacuum tubes (typically rounded to 18,000), 7,200 crystal diodes, 1,500 relays, and weighed 30 tons occupying 1,800 square feet. Originally designed to calculate ballistic firing tables for the Army's Ballistic Research Laboratory, it was completed after the war ended. ENIAC could perform 5,000 additions per second — 1,000 times faster than any previous calculator. It began a new era of electronic computing.",
+      "visualDescription": "Pixel art of a room-sized computer with rows of glowing vacuum tubes covering the walls, technicians in suits checking vacuum tubes with handheld testers, cables threading across the floor, a teletype machine printing equations at the far end.",
+      "sourceName": "Wikipedia — ENIAC",
+      "sourceUrl": "https://en.wikipedia.org/wiki/ENIAC",
+      "volatile": false,
+      "distractors": [
+        "5",
+        "100",
+        "500",
+        "2,000",
+        "50,000",
+        "100,000",
+        "1,000,000",
+        "300"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "ENIAC was designed to calculate artillery firing tables. Why did the Army urgently need a faster computer for this task?",
+          "correctAnswer": "Human 'computers' (mathematicians with calculators) took 20 hours to calculate a single trajectory; ENIAC could do it in seconds",
+          "distractors": ["German forces had captured Allied firing tables and new ones needed to be generated before reuse", "Each new artillery shell design required 10,000 unique trajectories, overwhelming the calculation capacity", "Field artillery commanders needed real-time firing solutions that paper tables couldn't provide", "Allied accuracy problems in Italy showed existing firing tables were fundamentally flawed"]
+        },
+        "context": {
+          "quizQuestion": "ENIAC could perform 5,000 additions per second. How does this compare to a modern smartphone?",
+          "correctAnswer": "A modern smartphone performs billions of operations per second — about a million times faster than ENIAC",
+          "distractors": ["ENIAC and modern smartphones perform similar operations since both use sequential logic", "ENIAC was actually comparable in speed for simple arithmetic, though modern chips handle more complex operations", "Modern computers are about 1,000 times faster than ENIAC — roughly equivalent in real-world computational tasks", "The comparison is meaningless since ENIAC performed analog calculations that digital computers cannot replicate"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: ENIAC was completed in 1945, weighed 30 tons, and was originally designed to calculate artillery firing tables for the US Army — though the war ended before it could be used for this purpose.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "ENIAC was completed at the University of ___ in 1945, marking the beginning of the electronic computing era.",
+          "correctAnswer": "Pennsylvania",
+          "distractors": ["Chicago", "MIT", "Princeton", "Harvard"]
+        }
+      }
+    },
+    {
+      "id": "wwii_tw_manhattan_trinity",
+      "correctAnswer": "Trinity",
+      "acceptableAlternatives": ["Trinity test", "Trinity nuclear test"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "operation_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "On July 16, 1945, the Manhattan Project conducted its first nuclear test at Alamogordo, New Mexico — a test codenamed what — producing a blast equivalent to 20,000 tons of TNT and prompting Oppenheimer to quote the Bhagavad Gita?",
+      "explanation": "The Trinity test (July 16, 1945) was the first detonation of a nuclear weapon, using a plutonium implosion device. The yield was approximately 20 kilotons of TNT. Oppenheimer later recalled quoting the Bhagavad Gita: 'Now I am become Death, the destroyer of worlds.' The test confirmed the bomb design before it was used on Nagasaki (a uranium 'Little Boy' was dropped on Hiroshima without testing — only one existed). Trinity was conducted at the Jornada del Muerto desert, 35 miles from Socorro, New Mexico.",
+      "visualDescription": "Pixel art of a predawn desert landscape in New Mexico, a blinding white fireball rising above the horizon silhouetting scientists in bunkers, the shock wave visible as a ring traveling outward through the desert scrub.",
+      "sourceName": "Wikipedia — Trinity (nuclear test)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+      "volatile": false,
+      "distractors": [
+        "Manhattan",
+        "Olympus",
+        "Aztec",
+        "Crossroads",
+        "Bravo",
+        "Mike",
+        "Sandstone",
+        "Ranger"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Trinity test used a plutonium implosion device. Why was the Hiroshima bomb (Little Boy) dropped without a prior test?",
+          "correctAnswer": "Little Boy used a simpler gun-trigger design — scientists were confident enough in the concept it didn't need testing, and only one had been built",
+          "distractors": ["A test would have revealed the atomic bomb's existence to Japanese spies and allowed defenses to be prepared", "Truman ordered immediate operational use to end the war before the Soviet declaration against Japan", "Little Boy was a different design that had already been tested in a sub-critical configuration", "Transportation delays meant Little Boy arrived on Tinian at the same time Trinity took place"]
+        },
+        "context": {
+          "quizQuestion": "Oppenheimer quoted the Bhagavad Gita after Trinity: 'Now I am become Death, the destroyer of worlds.' What Hindu deity is speaking this line in the original text?",
+          "correctAnswer": "Krishna, speaking as Vishnu revealing his universal form to Arjuna",
+          "distractors": ["Brahma, the creator, describing the act of creation as also an act of destruction", "Shiva, the destroyer, explaining the necessity of destruction for renewal", "Kali, the goddess of death, describing her power over mortal existence", "Indra, the war god, justifying the righteousness of the Kurukshetra battle"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Trinity test on July 16, 1945 was the world's first nuclear detonation, producing a yield of approximately 20 kilotons of TNT.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Trinity was conducted at the ___ del Muerto desert in New Mexico — a name meaning 'Journey of Death' in Spanish, grimly appropriate for the occasion.",
+          "correctAnswer": "Jornada",
+          "distractors": ["Sierra", "Camino", "Llano", "Paloma"]
+        }
+      }
+    }
+  ]
+}

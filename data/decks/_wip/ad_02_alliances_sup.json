@@ -1,0 +1,711 @@
+{
+  "id": "wwii_alliances_diplomacy_sup",
+  "subdeckId": "ad_02",
+  "facts": [
+    {
+      "id": "wwii_ad_molotov_ribbentrop_secret",
+      "correctAnswer": "Secret Protocol",
+      "acceptableAlternatives": ["secret additional protocol", "secret protocol dividing Eastern Europe"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "treaty_terms",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "The Molotov-Ribbentrop Pact had a public non-aggression clause — and a hidden document that divided Poland, Finland, Estonia, Latvia, Lithuania, and Romania into German and Soviet spheres. What was this hidden document called?",
+      "explanation": "The Secret Protocol of the Molotov-Ribbentrop Pact (August 23, 1939) divided Eastern Europe into Nazi and Soviet spheres without the knowledge of the nations involved. Germany got western Poland; the USSR got eastern Poland, Finland, Estonia, Latvia, Lithuania, and Bessarabia (Romania). The Soviet Union denied the protocol's existence until 1989 — when Gorbachev finally acknowledged it.",
+      "visualDescription": "Pixel art of two diplomats in dark suits signing papers at a table covered in maps, a swastika flag on one wall and a red star banner on the other, their shadows merging on the floor between them.",
+      "sourceName": "Wikipedia — Molotov-Ribbentrop Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Molotov%E2%80%93Ribbentrop_Pact",
+      "volatile": false,
+      "distractors": [
+        "Annex of Conquest",
+        "Protocol of Partition",
+        "Supplement of Spheres",
+        "Codicil of Division",
+        "Hidden Clause",
+        "Strategic Supplement",
+        "Territorial Addendum",
+        "Eastern Arrangement"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Secret Protocol of the Molotov-Ribbentrop Pact assigned the Baltic states (Estonia, Latvia, Lithuania) to which sphere of influence?",
+          "correctAnswer": "Soviet Union",
+          "distractors": ["Germany", "Split equally between Germany and the USSR", "Left as neutral buffer states", "Assigned to Finland as compensation"]
+        },
+        "context": {
+          "quizQuestion": "The USSR denied the Secret Protocol's existence for 50 years. When and under what leader did the Soviet Union finally acknowledge it?",
+          "correctAnswer": "1989 under Mikhail Gorbachev",
+          "distractors": ["1956 under Nikita Khrushchev", "1975 under Leonid Brezhnev", "1991 under Boris Yeltsin", "1953 under Georgy Malenkov"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Secret Protocol of the Molotov-Ribbentrop Pact divided Eastern Europe into German and Soviet spheres of influence without the knowledge of the affected nations.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Molotov-Ribbentrop Pact's Secret Protocol assigned Finland, Estonia, Latvia, and Lithuania to the ___ sphere of influence.",
+          "correctAnswer": "Soviet",
+          "distractors": ["German", "neutral", "British", "Finnish"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_anti_comintern_pact",
+      "correctAnswer": "1936",
+      "acceptableAlternatives": ["November 1936", "November 25, 1936"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "years",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "In what year did Germany and Japan sign the Anti-Comintern Pact — agreeing to oppose Soviet communism and share intelligence — which Italy later joined in 1937?",
+      "explanation": "The Anti-Comintern Pact was signed on November 25, 1936 between Germany and Japan. It committed both nations to oppose the Communist International (Comintern) and share intelligence on Soviet activities. Italy joined in 1937. The pact was a precursor to the Tripartite Pact (1940) that formally created the Axis. It signaled the ideological alignment of the three powers against Soviet communism years before WWII began.",
+      "visualDescription": "Pixel art of a 1930s diplomatic ceremony with German and Japanese flags flanking a podium, suited diplomats shaking hands over a document, portraits of Hitler and Japanese officials on the wall.",
+      "sourceName": "Wikipedia — Anti-Comintern Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Anti-Comintern_Pact",
+      "volatile": false,
+      "distractors": [
+        "1933",
+        "1934",
+        "1935",
+        "1937",
+        "1938",
+        "1939",
+        "1940",
+        "1941"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Anti-Comintern Pact committed Germany and Japan to oppose what organization?",
+          "correctAnswer": "The Communist International (Comintern)",
+          "distractors": ["The League of Nations", "The British Commonwealth", "The French Popular Front", "The Pan-Slavic Alliance"]
+        },
+        "context": {
+          "quizQuestion": "The Anti-Comintern Pact laid ideological groundwork for the Axis. What formal military alliance eventually superseded it?",
+          "correctAnswer": "The Tripartite Pact of 1940",
+          "distractors": ["The Rome Protocols of 1934", "The Berlin-Tokyo Axis Charter of 1938", "The Steel Pact of 1939", "The Pacific Defense Agreement of 1941"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Italy joined the Anti-Comintern Pact in 1937, one year after Germany and Japan originally signed it.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Anti-Comintern Pact committed its signatories to opposing the ___, the Soviet-directed international communist movement.",
+          "correctAnswer": "Comintern",
+          "distractors": ["Politburo", "Red Army", "League of Nations", "Soviet Presidium"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_rome_berlin_axis",
+      "correctAnswer": "Rome-Berlin Axis",
+      "acceptableAlternatives": ["Axis", "the Axis", "Berlin-Rome Axis"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "treaty_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What was the name of the 1936 alliance between Germany and Italy — forged after mutual support in the Spanish Civil War — that gave the WWII alliance system its defining name?",
+      "explanation": "The Rome-Berlin Axis was formalized on November 1, 1936, after Germany and Italy had supported Franco's Nationalists in the Spanish Civil War. Mussolini declared that Europe would henceforth rotate around a 'Rome-Berlin Axis.' Italy joined the Anti-Comintern Pact in 1937 and the Tripartite Pact in 1940, cementing the three-power Axis. The alliance was one of shared fascist ideology and expansionist ambition rather than coordinated military strategy.",
+      "visualDescription": "Pixel art of Mussolini and Hitler standing on a balcony reviewing troops below, both in military uniforms, Italian and German flags hanging from the balustrade above a cheering crowd.",
+      "sourceName": "Wikipedia — Rome-Berlin Axis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rome%E2%80%93Berlin_Axis",
+      "volatile": false,
+      "distractors": [
+        "Tripartite Alliance",
+        "Franco-German Accord",
+        "Mediterranean Pact",
+        "Steel Pact",
+        "Latin-Germanic Union",
+        "Fascist Solidarity Pact",
+        "European Defense Compact",
+        "Berlin Accords"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Mussolini coined the term 'Axis' to describe the Rome-Berlin partnership. What conflict had cemented German-Italian cooperation just before the alliance was formalized?",
+          "correctAnswer": "The Spanish Civil War",
+          "distractors": ["The Ethiopian War", "The Anschluss of Austria", "The Rhineland remilitarization", "The invasion of Abyssinia"]
+        },
+        "context": {
+          "quizQuestion": "Despite sharing fascist ideology, Germany and Italy often pursued independent war aims. What example best illustrates the Axis powers' lack of coordinated military strategy?",
+          "correctAnswer": "Germany invaded the Soviet Union in 1941 without warning Mussolini in advance",
+          "distractors": ["Italy and Germany signed a separate peace with France without consulting each other", "Japan attacked Pearl Harbor in direct defiance of German requests to delay", "Rommel refused Italian reinforcements in North Africa to maintain German control", "Italy invaded Greece without informing Germany, forcing Germany to intervene"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The term 'Axis Powers' originates from Mussolini's 1936 declaration that Europe would rotate around a 'Rome-Berlin Axis.'",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Rome-Berlin Axis was formalized in ___, following mutual German and Italian support for Franco in the Spanish Civil War.",
+          "correctAnswer": "1936",
+          "distractors": ["1933", "1935", "1938", "1940"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_tripartite_pact_deterrence",
+      "correctAnswer": "Deter the United States from entering the war",
+      "acceptableAlternatives": ["discourage American intervention", "threaten the US with a two-front war", "keep America neutral"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "strategic_goals",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "When Germany, Italy, and Japan signed the Tripartite Pact in September 1940, their primary strategic aim — which spectacularly failed — was to do what to the United States?",
+      "explanation": "The Tripartite Pact (September 27, 1940) committed Germany, Italy, and Japan to mutual defense if any signatory was attacked by a nation not already at war. The explicit target was the United States — the threat of fighting both Germany in the Atlantic and Japan in the Pacific was meant to keep America neutral. Instead, Pearl Harbor (1941) brought the US in, and Germany's declaration of war on America fulfilled the nightmare scenario the pact was designed to prevent.",
+      "visualDescription": "Pixel art of a large ornate signing ceremony in Berlin's Chancellery, representatives in dress uniforms at a long table, Japanese, Italian, and German flags arrayed behind them, cameras flashing.",
+      "sourceName": "Wikipedia — Tripartite Pact",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tripartite_Pact",
+      "volatile": false,
+      "distractors": [
+        "Draw the Soviet Union into a three-front war",
+        "Prevent Britain from receiving American supplies",
+        "Force France to remain neutral",
+        "Secure access to American industrial production",
+        "Divide the Americas into German and Japanese spheres",
+        "Pressure Roosevelt to resign",
+        "Block American naval expansion in the Pacific",
+        "Bring Spain into the Axis"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Tripartite Pact's deterrence strategy backfired catastrophically. What event caused Germany to declare war on the United States — the very scenario the pact was meant to prevent?",
+          "correctAnswer": "Japan's attack on Pearl Harbor in December 1941",
+          "distractors": ["Germany sinking American merchant ships in the Atlantic", "America's Lend-Lease supplies reaching the Soviet Union", "American oil embargo against Japan forcing Germany to act", "Roosevelt's Four Freedoms speech threatening Axis interests"]
+        },
+        "context": {
+          "quizQuestion": "Despite the Tripartite Pact's mutual defense clause, Axis cooperation remained limited. Which fact best illustrates this failure of coordination?",
+          "correctAnswer": "Japan and Germany both launched surprise attacks in 1941 without informing each other in advance",
+          "distractors": ["Italy refused to declare war on the Soviet Union despite German requests", "Japan sent no naval forces to assist Germany's Atlantic submarine campaign", "Germany failed to share its radar technology with Japan until 1944", "Italy negotiated a separate armistice with the Allies without German knowledge"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Tripartite Pact required each signatory to declare war on any nation that attacked another signatory, which is why Germany declared war on the US after Pearl Harbor.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Tripartite Pact was signed on September 27, ___, formalizing the military alliance between Germany, Italy, and Japan.",
+          "correctAnswer": "1940",
+          "distractors": ["1936", "1938", "1939", "1941"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_swiss_neutrality",
+      "correctAnswer": "Switzerland",
+      "acceptableAlternatives": ["Swiss Confederation"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "country_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which neutral nation — surrounded on all sides by Axis territory after 1940 — maintained its independence throughout WWII partly by threatening to destroy its own Alpine rail tunnels and banking infrastructure if invaded?",
+      "explanation": "Switzerland maintained neutrality throughout WWII despite being encircled by Axis-controlled territory after France fell in 1940. Swiss strategy relied on the National Redoubt (Réduit national) — a fortified Alpine defense and the credible threat to destroy Alpine rail tunnels vital to German logistics connecting Germany and Italy. Switzerland also served as a financial hub and neutral meeting point. Its neutrality was pragmatic: it traded with both sides.",
+      "visualDescription": "Pixel art of Swiss Alps with a fortified mountain pass, a red flag with white cross on a guardhouse, snowcapped peaks forming a natural wall, a railway tunnel entrance visible in the cliff face.",
+      "sourceName": "Wikipedia — Switzerland during World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Switzerland_during_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "Sweden",
+        "Spain",
+        "Portugal",
+        "Turkey",
+        "Ireland",
+        "Argentina",
+        "Finland",
+        "Vatican City"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Switzerland's neutrality was backed by the 'National Redoubt' strategy. What was its key deterrent against German invasion?",
+          "correctAnswer": "A fortified Alpine redoubt with the credible threat to destroy trans-Alpine rail tunnels vital to German logistics",
+          "distractors": ["A mutual defense treaty with Britain that guaranteed air cover from the RAF", "A secret agreement with the US guaranteeing American entry if Switzerland was attacked", "Massive gold reserves that Germany preferred to access through trade rather than war", "A mountainous terrain that German Panzer divisions were entirely unsuited to"]
+        },
+        "context": {
+          "quizQuestion": "Switzerland's neutrality was controversial because it traded with both sides. Which financial activity drew the most postwar criticism?",
+          "correctAnswer": "Swiss banks holding Nazi gold and assets looted from Jewish victims",
+          "distractors": ["Providing military maps to German forces in exchange for non-invasion guarantees", "Manufacturing precision weapons components sold exclusively to Germany", "Allowing German troops to transit Swiss territory to reach Italy", "Financing German war bonds through the Swiss National Bank"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: After France fell in 1940, Switzerland was completely surrounded by Axis-controlled territory.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Switzerland's wartime defensive plan, the '___ national,' concentrated Swiss forces in the Alpine core, making any invasion prohibitively costly.",
+          "correctAnswer": "Réduit",
+          "distractors": ["Fortresse", "Citadelle", "Bastion", "Redoubt"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_swedish_neutrality",
+      "correctAnswer": "Iron ore and ball bearings",
+      "acceptableAlternatives": ["iron ore / ball bearings", "steel and ball bearings", "iron ore to Germany"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "trade_goods",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Sweden maintained neutrality throughout WWII while supplying Germany with two critical war materials that kept the Nazi war machine running. What were they?",
+      "explanation": "Sweden exported high-grade iron ore to Germany — over 10 million tons annually at the war's peak — essential for German steel and armaments production. Sweden also supplied precision ball bearings through SKF, which both Germany and the Allies depended on for virtually all mechanical equipment. Allied bombing of the SKF plant at Schweinfurt (Germany) specifically targeted this dependency. Sweden's 'neutrality' was effectively a balancing act between economic dependency on Germany and political sympathy for the Allies.",
+      "visualDescription": "Pixel art of a Swedish cargo ship in a gray fjord, heavy iron ore piled on deck, a neutral flag flying at the mast, the distant outline of a German port on the horizon through morning mist.",
+      "sourceName": "Wikipedia — Sweden during World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sweden_during_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "Timber and copper",
+        "Wheat and coal",
+        "Petroleum and rubber",
+        "Aluminum and manganese",
+        "Wolfram and chrome",
+        "Fish and agricultural products",
+        "Precision optics and chemicals",
+        "Zinc and nickel"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Allied bombers specifically targeted the SKF ball bearing plant at Schweinfurt because of Swedish exports. Why were ball bearings considered so strategically vital?",
+          "correctAnswer": "Nearly all mechanical military equipment — tanks, aircraft, ships — required ball bearings to function",
+          "distractors": ["Ball bearings were used to stabilize artillery rounds in flight", "Sweden had a global monopoly on ball bearing production that couldn't be broken", "Ball bearings were the key component in German V-2 rocket guidance systems", "The Schweinfurt plant also manufactured explosives alongside ball bearings"]
+        },
+        "context": {
+          "quizQuestion": "Sweden's exports to Germany while remaining 'neutral' draw comparisons to Switzerland's wartime trade. What does this suggest about small nations surrounded by great powers?",
+          "correctAnswer": "Small neutral nations often had no choice but to trade with the dominant regional power to avoid invasion",
+          "distractors": ["Genuine neutrality required cutting off all trade with belligerents, which Sweden and Switzerland failed to do", "Sweden and Switzerland secretly coordinated their neutrality policies to maximize leverage", "Economic cooperation with Germany was morally equivalent to military alliance", "Both nations' leaders were Nazi sympathizers who chose neutrality as cover"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Sweden exported over 10 million tons of iron ore annually to Germany at the war's peak, making it a critical supplier for German steel production.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Sweden's SKF company was the world's leading manufacturer of ___, which both Germany and the Allies depended on for virtually all mechanical military equipment.",
+          "correctAnswer": "ball bearings",
+          "distractors": ["gun sights", "optical lenses", "fuel injectors", "precision gauges"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_spain_franco_neutral",
+      "correctAnswer": "Non-belligerent",
+      "acceptableAlternatives": ["neutral", "non-belligerency"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "diplomatic_terms",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Franco's Spain officially declared itself what status during WWII — a term that acknowledged Spanish sympathy for the Axis while avoiding full military commitment — before quietly shifting toward strict neutrality as Germany weakened?",
+      "explanation": "Spain declared 'non-belligerency' in 1940 — a term Italy had used before entering the war, implying sympathy for the Axis without formal alliance. Franco sent the 'Blue Division' (over 40,000 volunteers) to fight alongside Germany on the Eastern Front. But Franco demanded a price Hitler wouldn't pay — Gibraltar and French North African territory — preventing full Spanish entry. As Germany retreated, Spain quietly declared itself 'neutral' in 1943.",
+      "visualDescription": "Pixel art of Franco in a general's uniform reviewing Spanish troops, a Spanish flag behind him, the soldiers wearing a mix of Spanish and German equipment, the Rock of Gibraltar visible in the distant background.",
+      "sourceName": "Wikipedia — Spain in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spain_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "Neutral",
+        "Allied",
+        "Observer",
+        "Co-belligerent",
+        "Protected neutral",
+        "Axis associate",
+        "Active pacifist",
+        "Provisional belligerent"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Hitler met with Franco in October 1940 to negotiate Spanish entry into WWII. What was the key demand Hitler refused that kept Spain out of the war?",
+          "correctAnswer": "Franco demanded Gibraltar and French North African territories as the price of Spanish participation",
+          "distractors": ["Franco demanded German troops withdraw from the Spanish border first", "Franco required Germany to forgive all Spanish Civil War debts before entering", "Franco wanted German air support before Spanish forces attacked Gibraltar alone", "Franco demanded a guarantee that Mussolini would share North African territory"]
+        },
+        "context": {
+          "quizQuestion": "Despite non-belligerency, Spain sent the Blue Division to fight alongside Germany on the Eastern Front. How many volunteers served?",
+          "correctAnswer": "Over 40,000 volunteers",
+          "distractors": ["About 5,000 volunteers", "Approximately 15,000 volunteers", "Nearly 100,000 troops", "Around 250,000 soldiers"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Spain officially shifted from 'non-belligerency' to formal neutrality in 1943 as Germany's military fortunes declined.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Spain's 'Blue Division' — over 40,000 volunteers — fought alongside Germany on the ___ Front despite Spain's official non-belligerent status.",
+          "correctAnswer": "Eastern",
+          "distractors": ["Western", "African", "Balkan", "Italian"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_turkey_neutrality",
+      "correctAnswer": "Turkey",
+      "acceptableAlternatives": ["Turkish Republic", "Türkiye"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "country_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Which strategically vital nation — controlling the Bosphorus and Dardanelles straits connecting the Black Sea to the Mediterranean — maintained neutrality throughout most of WWII, supplying chromite to Germany while receiving pressure from both sides?",
+      "explanation": "Turkey controlled the Bosphorus and Dardanelles, making it strategically vital to both sides. Turkey signed mutual assistance treaties with Britain and France in 1939, and a friendship treaty with Germany in 1941 — playing both sides. Turkey exported chromite (essential for hardening steel armor) to Germany until 1944. As Allied victory became clear, Turkey declared war on Germany in February 1945 — too late to participate meaningfully but in time to join the United Nations.",
+      "visualDescription": "Pixel art of a map showing the Bosphorus strait with Istanbul straddling it, flags of multiple nations hovering over the city, warships from different navies passing through the narrow waterway.",
+      "sourceName": "Wikipedia — Turkey in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Turkey_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "Iran",
+        "Iraq",
+        "Egypt",
+        "Greece",
+        "Bulgaria",
+        "Hungary",
+        "Romania",
+        "Yugoslavia"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Turkey exported chromite to Germany until 1944 under Allied pressure to stop. Why was chromite so strategically important?",
+          "correctAnswer": "Chromite is essential for producing chrome-hardened steel used in tank armor and artillery",
+          "distractors": ["Chromite was the primary raw material for German synthetic rubber production", "Germany needed chromite to produce explosives since its own coal was insufficient", "Chromite was required for the glass components of German optical targeting equipment", "Germany used chromite as ballast in submarine ballast tanks"]
+        },
+        "context": {
+          "quizQuestion": "Turkey declared war on Germany in February 1945. What was the primary motivation for this last-minute declaration?",
+          "correctAnswer": "To qualify for membership in the United Nations, which required declaring war on the Axis",
+          "distractors": ["German U-boats had sunk Turkish merchant ships in the Mediterranean", "Allied pressure included a threat to occupy Istanbul if Turkey remained neutral", "Turkey genuinely believed its troops could assist in the final Allied advance", "Germany had violated Turkish airspace repeatedly during bombing raids on Soviet oil fields"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Turkey controlled the Bosphorus and Dardanelles straits, making it strategically vital to both the Allies and the Axis throughout WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Turkey exported ___, a mineral essential for hardening tank armor, to Germany until Allied pressure forced it to stop in 1944.",
+          "correctAnswer": "chromite",
+          "distractors": ["manganese", "wolfram", "bauxite", "molybdenum"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_polish_government_exile",
+      "correctAnswer": "London",
+      "acceptableAlternatives": ["London, England", "United Kingdom"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "city_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "After Poland fell in 1939, the Polish government-in-exile relocated to what city — where it maintained legal continuity, commanded the Polish armed forces, and operated one of the largest exile governments in WWII?",
+      "explanation": "The Polish government-in-exile operated from London throughout WWII, recognized by the Western Allies as the legitimate government of Poland. It commanded over 100,000 Polish troops fighting under Allied command in France, North Africa, Italy, and the RAF. The Poles cracked early Enigma codes and shared the intelligence with Britain. At Yalta (1945), the Western Allies effectively handed Poland to Soviet influence — abandoning the London Poles who had fought alongside them for six years.",
+      "visualDescription": "Pixel art of a Victorian London street with a Polish eagle emblem above an office door, RAF Polish squadron roundels on a bulletin board inside the window, a telegram being received by a uniformed Polish officer.",
+      "sourceName": "Wikipedia — Polish government-in-exile",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Polish_government-in-exile",
+      "volatile": false,
+      "distractors": [
+        "Paris",
+        "Washington D.C.",
+        "Cairo",
+        "Stockholm",
+        "Ottawa",
+        "Moscow",
+        "New York",
+        "Lisbon"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Polish government-in-exile commanded over 100,000 troops fighting under Allied command. At Yalta in 1945, what happened to the London Poles' claim to govern liberated Poland?",
+          "correctAnswer": "The Western Allies accepted Soviet-backed Polish communists as the legitimate government, abandoning the London Poles",
+          "distractors": ["The London Poles were invited to return and form a coalition government with the Soviets", "The London government held free elections in Poland as soon as Soviet forces withdrew", "Stalin agreed to recognize the London Poles in exchange for territorial concessions from Britain", "The Polish government-in-exile dissolved voluntarily once Poland was liberated from Germany"]
+        },
+        "context": {
+          "quizQuestion": "Before the war, Polish mathematicians had cracked early versions of the Enigma cipher. What did they do with this intelligence when Germany invaded?",
+          "correctAnswer": "They shared their Enigma work with British and French intelligence, enabling the codebreakers at Bletchley Park",
+          "distractors": ["They destroyed all their work to prevent it falling into German hands", "They attempted to sell the intelligence to the Soviet Union as leverage", "They kept the intelligence secret to maintain a Polish diplomatic advantage postwar", "The Enigma work was lost during the chaotic retreat from Warsaw in 1939"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Polish government-in-exile operated from London and was recognized by the Western Allies as the legitimate government of Poland throughout WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Polish government-in-exile commanded Polish troops fighting in France, North Africa, Italy, and the ___ — making Poland one of the largest Allied contributors despite being occupied.",
+          "correctAnswer": "RAF",
+          "distractors": ["Royal Navy", "US Army", "British Eighth Army", "SOE resistance network"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_free_french_recognition",
+      "correctAnswer": "Charles de Gaulle",
+      "acceptableAlternatives": ["de Gaulle", "General de Gaulle"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which French general — initially recognized only by Churchill and not by Roosevelt, who preferred to deal with Vichy France — led the Free French movement from London and eventually forced Allied recognition as the legitimate voice of France?",
+      "explanation": "Charles de Gaulle escaped to London after France's fall and broadcast his famous June 18, 1940 appeal urging French resistance. Churchill recognized him as leader of the Free French; Roosevelt was skeptical, preferring the more cooperative Vichy French officials. The Darlan Deal (November 1942) — where the Allies worked with Vichy Admiral Darlan in North Africa — deeply embarrassed de Gaulle. By 1944, Roosevelt reluctantly accepted de Gaulle as France's leader when French crowds cheered him over Vichy alternatives.",
+      "visualDescription": "Pixel art of a tall uniformed general at a BBC microphone, a French tricolor and Cross of Lorraine emblem behind him, a radio operator at a desk, the blacked-out London skyline visible through the studio window.",
+      "sourceName": "Wikipedia — Free France",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Free_France",
+      "volatile": false,
+      "distractors": [
+        "Henri Giraud",
+        "Philippe Pétain",
+        "Jean Darlan",
+        "Maxime Weygand",
+        "Georges Catroux",
+        "Jean de Lattre de Tassigny",
+        "Paul Reynaud",
+        "Maurice Gamelin"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The 'Darlan Deal' of November 1942 humiliated de Gaulle by having the Allies cooperate with which Vichy official to secure French North Africa?",
+          "correctAnswer": "Admiral François Darlan",
+          "distractors": ["Marshal Philippe Pétain", "General Maxime Weygand", "General Henri Giraud", "Premier Pierre Laval"]
+        },
+        "context": {
+          "quizQuestion": "De Gaulle's June 18, 1940 BBC broadcast — 'The flame of French resistance must not be extinguished' — is celebrated as the founding moment of the Free French. What practical problem made this appeal almost futile initially?",
+          "correctAnswer": "Fewer than a thousand French soldiers initially responded; most French forces accepted the armistice",
+          "distractors": ["The BBC refused to broadcast it live and only ran it as a recorded message once", "British authorities considered arresting de Gaulle for inciting desertion from Vichy forces", "Churchill refused to publicly endorse de Gaulle for fear of alienating Pétain", "Most French colonies immediately declared for Vichy rather than the Free French"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Roosevelt was skeptical of de Gaulle's legitimacy and preferred to deal with Vichy French officials rather than the Free French throughout much of the war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "De Gaulle made his famous appeal for continued French resistance from a ___ studio on June 18, 1940 — the day after France requested an armistice.",
+          "correctAnswer": "BBC",
+          "distractors": ["Radio Paris", "Voice of America", "Radio Free Europe", "Reuters"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_darlan_deal",
+      "correctAnswer": "Darlan Deal",
+      "acceptableAlternatives": ["Clark-Darlan Agreement", "Darlan Accord"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "diplomatic_names",
+      "difficulty": 5,
+      "funScore": 8,
+      "quizQuestion": "What was the controversial name for the November 1942 arrangement where the Allies — desperate to stop French resistance in North Africa — negotiated a ceasefire with a senior Vichy official rather than the Free French?",
+      "explanation": "After Operation Torch landings in North Africa (November 8, 1942), French Vichy forces resisted the Allied invasion, causing hundreds of Allied casualties. General Mark Clark negotiated a ceasefire with Admiral François Darlan — the commander of all Vichy French forces and a notorious Nazi collaborator — in exchange for ordering French forces to stop fighting. Darlan was assassinated on December 24, 1942. The deal provoked outrage from de Gaulle and anti-fascists who questioned Allied commitment to fighting fascism.",
+      "visualDescription": "Pixel art of an Allied general and a Vichy admiral in uniform shaking hands across a table in a whitewashed Algiers office, ceiling fans turning slowly, tension in both men's stiff postures.",
+      "sourceName": "Wikipedia — Darlan Deal",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Darlan_Deal",
+      "volatile": false,
+      "distractors": [
+        "Casablanca Compromise",
+        "Algiers Accord",
+        "Vichy Agreement",
+        "Torch Ceasefire",
+        "Clark-Pétain Settlement",
+        "North Africa Pact",
+        "French Armistice",
+        "Mediterranean Arrangement"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Admiral Darlan, who signed the ceasefire deal with the Allies in November 1942, was assassinated just six weeks later. Who killed him?",
+          "correctAnswer": "A young French royalist named Fernand Bonnier de La Chapelle",
+          "distractors": ["A German SS agent who feared Darlan would give the Allies French naval codes", "A Vichy loyalist who considered the ceasefire a betrayal of Pétain", "De Gaulle's Free French agents who opposed the deal's legitimacy", "An American intelligence officer operating outside official channels"]
+        },
+        "context": {
+          "quizQuestion": "The Darlan Deal caused a political scandal because it showed the Allies cooperating with a Nazi collaborator for military convenience. What principle did critics say it violated?",
+          "correctAnswer": "That the war was being fought for democracy and against fascism — not just for military advantage regardless of means",
+          "distractors": ["The Atlantic Charter's prohibition on territorial arrangements during the war", "FDR's Four Freedoms speech which specifically prohibited deals with collaborationist regimes", "The Casablanca unconditional surrender policy announced the following January", "The Geneva Conventions' rules about negotiating with commanders of occupied forces"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Darlan Deal was negotiated to stop French Vichy forces from resisting the Allied landings in North Africa during Operation Torch.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Admiral Darlan ordered French forces in North Africa to cease resistance in exchange for Allied recognition of his authority — a deal that outraged ___ and Free French supporters.",
+          "correctAnswer": "de Gaulle",
+          "distractors": ["Churchill", "Eisenhower", "Roosevelt", "Montgomery"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_quebec_conferences",
+      "correctAnswer": "Operation Overlord",
+      "acceptableAlternatives": ["D-Day", "the Normandy invasion", "the cross-Channel invasion"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "operation_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "At the first Quebec Conference (August 1943), Roosevelt and Churchill confirmed their commitment to launch what major operation — the cross-Channel invasion of France — in May 1944?",
+      "explanation": "The first Quebec Conference (codenamed 'Quadrant,' August 1943) confirmed the Allied commitment to Operation Overlord, the cross-Channel invasion of France, targeting May 1944 (it launched June 6, 1944). Churchill had long pushed for Mediterranean operations as an alternative; Quebec confirmed that France would be the primary theater. Eisenhower was later named Supreme Commander. The second Quebec Conference ('Octagon,' September 1944) addressed the final campaigns against Germany and Japan.",
+      "visualDescription": "Pixel art of Roosevelt and Churchill at an elegant conference table in Chateau Frontenac, Quebec City's copper rooftops visible through tall windows, maps of France and the English Channel spread before them.",
+      "sourceName": "Wikipedia — Quebec Conference (1943)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Quebec_Conference_(1943)",
+      "volatile": false,
+      "distractors": [
+        "Operation Torch",
+        "Operation Market Garden",
+        "Operation Husky",
+        "Operation Dragoon",
+        "Operation Sea Lion",
+        "Operation Downfall",
+        "Operation Bagration",
+        "Operation Barbarossa"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Churchill had consistently pushed for Mediterranean operations instead of a cross-Channel invasion. The Quebec Conference confirmed France as the primary theater. Why did Churchill prefer the Mediterranean strategy?",
+          "correctAnswer": "Churchill feared the massive casualties of a direct assault on Hitler's Atlantic Wall and preferred attacking Germany's 'soft underbelly'",
+          "distractors": ["Churchill believed Mediterranean operations would liberate more Jewish refugees faster", "The RAF was better equipped for Mediterranean weather conditions", "British shipping couldn't sustain a cross-Channel supply line beyond 6 months", "Churchill wanted to reach Vienna before the Soviets and needed a Mediterranean route"]
+        },
+        "context": {
+          "quizQuestion": "Operation Overlord was planned for May 1944 at Quebec but launched in June 1944. What caused the one-month delay?",
+          "correctAnswer": "Logistics, weather windows, and Eisenhower's decision to wait for acceptable conditions",
+          "distractors": ["A German counter-offensive in Italy forced reallocation of landing craft to that theater", "Stalin demanded the delay to coordinate a simultaneous Soviet offensive", "Intelligence revealed German reinforcements moving to Normandy that needed more preparation to overcome", "The Quebec agreement was delayed by Congressional debate over the invasion's scale"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The first Quebec Conference in 1943 confirmed the Allied commitment to invade France via a cross-Channel operation rather than continuing to focus exclusively on the Mediterranean.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The first Quebec Conference was codenamed '___ ,' reflecting the Allied commitment to a combined strategy for the final defeat of Germany.",
+          "correctAnswer": "Quadrant",
+          "distractors": ["Octagon", "Symbol", "Sextant", "Terminal"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_war_crimes_nuremberg_plan",
+      "correctAnswer": "Nuremberg",
+      "acceptableAlternatives": ["Nuremberg Trials", "Nuremberg Military Tribunals"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "place_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Allied leaders began planning postwar prosecution of Nazi war crimes as early as 1943. The trials that established a legal precedent for holding leaders accountable for crimes against humanity were eventually held in what German city?",
+      "explanation": "The Moscow Declaration (October 1943) committed the Allies to prosecuting German war criminals after the war. The trials were held in Nuremberg (1945-1946) — the city of the Nazi rallies — establishing the precedent that 'following orders' was not a defense for war crimes. Twenty-two major Nazi leaders were tried; 12 were sentenced to death. The Nuremberg Trials created the concept of 'crimes against humanity' and laid groundwork for the International Criminal Court.",
+      "visualDescription": "Pixel art of a solemn high-ceilinged courtroom with Allied judges on a raised bench, Nazi defendants in the dock wearing headphones, uniformed guards behind each prisoner, flags of four Allied nations above the judges.",
+      "sourceName": "Wikipedia — Nuremberg trials",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_trials",
+      "volatile": false,
+      "distractors": [
+        "Berlin",
+        "Munich",
+        "Hamburg",
+        "Frankfurt",
+        "Vienna",
+        "Dresden",
+        "Leipzig",
+        "Cologne"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Nuremberg Trials rejected 'following orders' as a defense for war crimes. What new legal concept did they introduce for atrocities committed against civilian populations?",
+          "correctAnswer": "Crimes against humanity",
+          "distractors": ["War crimes of the second degree", "Crimes of aggressive warfare", "Crimes of state-sponsored genocide", "Universal criminal jurisdiction"]
+        },
+        "context": {
+          "quizQuestion": "Nuremberg was chosen as the trial location partly for symbolic reasons. Why was it particularly significant to try Nazi leaders there?",
+          "correctAnswer": "Nuremberg was the site of the massive annual Nazi Party rallies that had glorified Hitler's regime",
+          "distractors": ["Nuremberg was where the first concentration camp was established in 1933", "The city was where the German army surrendered to Allied forces in May 1945", "Nuremberg hosted the signing of the original Nazi racial laws against Jews", "The city had the only surviving courthouse large enough for the proceedings"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Moscow Declaration of 1943 committed the Allies to prosecuting German war criminals after the war — establishing the political framework for the Nuremberg Trials.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Twenty-two major Nazi leaders were tried at Nuremberg; ___ were sentenced to death.",
+          "correctAnswer": "twelve",
+          "distractors": ["three", "seven", "eighteen", "all"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_atlantic_convoys_prewar",
+      "correctAnswer": "Arsenal of Democracy",
+      "acceptableAlternatives": ["arsenal of democracy speech", "Arsenal of Democracy address"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "speech_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In December 1940 — over a year before Pearl Harbor — FDR gave a radio address calling America 'the ___ ___' and laying the groundwork for Lend-Lease aid to Britain, effectively making the US a non-combat partner with the Allies.",
+      "explanation": "On December 29, 1940, Roosevelt gave his famous 'Arsenal of Democracy' fireside chat, arguing that helping Britain fight Germany was in America's self-interest — like lending a garden hose to a neighbor whose house is on fire. The speech built public support for the Lend-Lease Act (March 1941), which authorized $50+ billion in supplies to Britain, the Soviet Union, and other Allies. American naval escorts for convoys before Pearl Harbor meant the US was effectively at undeclared war with Germany in the Atlantic.",
+      "visualDescription": "Pixel art of FDR at a radio microphone in the Oval Office, the fireside glowing behind him, Americans in 1940s homes gathered around radio sets listening intently, a map of the Atlantic with supply ships on it visible on the desk.",
+      "sourceName": "Wikipedia — Arsenal of Democracy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arsenal_of_Democracy",
+      "volatile": false,
+      "distractors": [
+        "Defender of Freedom",
+        "Guardian of Liberty",
+        "Workshop of the Allies",
+        "Fortress of Democracy",
+        "Sword of Justice",
+        "Beacon of Hope",
+        "Supplier of Nations",
+        "Shield of Britain"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "FDR compared Lend-Lease to lending a garden hose to a neighbor whose house is on fire. What was the analogy meant to convey to skeptical Americans?",
+          "correctAnswer": "Helping Britain fight Germany was practical self-interest — if Britain fell, America would face Germany alone",
+          "distractors": ["America would get the garden hose back after the fire, so there was no real cost", "Fire spreads to neighbors just as fascism would spread across the Atlantic if unchecked", "The neighbor would be so grateful they would fight any future fire alongside America", "Britain had already repaid American loans from WWI so this was fair reciprocity"]
+        },
+        "context": {
+          "quizQuestion": "American naval escorts for Atlantic convoys before Pearl Harbor put US ships in direct conflict with German U-boats. What specific incident caused American casualties months before the US officially entered the war?",
+          "correctAnswer": "German U-boats attacked USS Kearny and sank USS Reuben James in October-November 1941",
+          "distractors": ["German bombers sank the US cruiser Indianapolis in the North Atlantic", "A German submarine sank the American hospital ship Mercy in August 1941", "German surface raiders captured and scuttled two American freighters in September 1941", "The German pocket battleship Scheer attacked an American convoy escort in July 1941"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: FDR's 'Arsenal of Democracy' speech in December 1940 was a fireside chat broadcast by radio to the American public — over a year before the US officially entered WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Lend-Lease Act, enabled by FDR's 'Arsenal of Democracy' speech, ultimately provided over $___ billion in supplies to Britain, the Soviet Union, and other Allies.",
+          "correctAnswer": "50",
+          "distractors": ["5", "15", "100", "200"]
+        }
+      }
+    },
+    {
+      "id": "wwii_ad_brazil_feb_campaign",
+      "correctAnswer": "Italian Campaign",
+      "acceptableAlternatives": ["Italy", "the Italian front", "fighting in Italy"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "theater_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Brazil was the only South American nation to send combat troops to Europe in WWII. The Brazilian Expeditionary Force of 25,000 soldiers fought alongside the US Fifth Army in what grueling theater?",
+      "explanation": "The Brazilian Expeditionary Force (FEB — Força Expedicionária Brasileira) deployed 25,000 troops to Italy in 1944-1945, fighting alongside the US Fifth Army against German defenders along the Gothic Line. Brazil had joined the Allies after German U-boats sank Brazilian merchant ships. Brazilian troops developed a sardonic motto: 'A cobra vai fumar' ('The snake will smoke') — mocking those who said Brazil would never fight. They fought with distinction at Monte Castelo and Montese.",
+      "visualDescription": "Pixel art of Brazilian soldiers in Allied-issue helmets advancing through Italian vineyards, a green-yellow-blue Brazilian flag patch on their shoulders, artillery smoke rising from the hills ahead.",
+      "sourceName": "Wikipedia — Brazilian Expeditionary Force",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Brazilian_Expeditionary_Force",
+      "volatile": false,
+      "distractors": [
+        "North Africa",
+        "Western France",
+        "Pacific Islands",
+        "Burma",
+        "Eastern Front",
+        "Greece",
+        "Normandy",
+        "Southern France"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Brazil entered WWII after German U-boats sank Brazilian merchant ships. How many Brazilian ships did Germany sink to trigger Brazilian entry into the war?",
+          "correctAnswer": "Over 30 Brazilian ships were sunk by German and Italian submarines",
+          "distractors": ["A single sinking of the Brazilian battleship São Paulo provoked war", "Three naval attacks on Brazilian ports within Brazilian territorial waters", "One U-boat attack killed over 200 Brazilian sailors simultaneously", "German bombers attacked Brazilian oil fields in partnership with Argentina"]
+        },
+        "context": {
+          "quizQuestion": "The Brazilian Expeditionary Force's motto was 'A cobra vai fumar' ('The snake will smoke'). What was this phrase mocking?",
+          "correctAnswer": "Those who predicted Brazil would never actually fight — saying it would happen 'when snakes smoke'",
+          "distractors": ["German propaganda claiming Brazilian troops would retreat under fire", "An American general who doubted Brazilian soldiers' training and resolve", "The jungle camouflage pattern of Brazilian uniforms which resembled snakeskin", "A reference to Brazilian cigar culture adopted as a unit mascot tradition"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Brazilian Expeditionary Force was the only South American military force to deploy combat troops to Europe during WWII.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Brazilian Expeditionary Force of ___ troops fought alongside the US Fifth Army in Italy, making Brazil the only South American nation with combat troops in Europe.",
+          "correctAnswer": "25,000",
+          "distractors": ["5,000", "10,000", "50,000", "100,000"]
+        }
+      }
+    }
+  ]
+}

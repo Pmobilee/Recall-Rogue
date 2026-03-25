@@ -1,0 +1,711 @@
+{
+  "id": "wwii_north_africa_sup",
+  "subdeckId": "na_02",
+  "facts": [
+    {
+      "id": "wwii_na_malta_george_cross",
+      "correctAnswer": "George Cross",
+      "acceptableAlternatives": ["George Cross medal", "GC"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "awards_decorations",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "In April 1942, King George VI awarded the entire island of Malta what medal — normally given only to individuals — making it the only collective award of this decoration in British history?",
+      "explanation": "Malta was awarded the George Cross on April 15, 1942, by King George VI — the only time the medal has been awarded to an entire population. Malta had endured over 3,000 Axis air raids by 1942, more than any other Allied territory. Its strategic position between Sicily and North Africa made it vital: Malta-based aircraft and submarines attacked Rommel's supply lines. Axis forces attempted to starve the island into surrender; the Malta convoy Operation Pedestal (August 1942) barely kept Malta alive.",
+      "visualDescription": "Pixel art of King George VI in military dress uniform pinning a large medal to a Maltese flag held by a civilian governor, bombed Valletta limestone buildings visible behind them, a crowd of Maltese citizens watching.",
+      "sourceName": "Wikipedia — Siege of Malta (World War II)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Malta_(World_War_II)",
+      "volatile": false,
+      "distractors": [
+        "Victoria Cross",
+        "Distinguished Service Order",
+        "Military Cross",
+        "Order of the British Empire",
+        "Order of St. Michael and St. George",
+        "Conspicuous Gallantry Medal",
+        "Distinguished Service Medal",
+        "King's Medal for Courage"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Malta's resistance to Axis siege was strategically vital because Malta-based forces attacked what critical Axis supply route?",
+          "correctAnswer": "Rommel's supply convoys crossing the Mediterranean from Italy to North Africa",
+          "distractors": ["German oil tankers traveling from Romania to Italian ports", "Axis troop transports reinforcing the Balkans from Italy", "German submarines refueling at Italian bases before Atlantic patrols", "Italian convoys supplying German forces occupying Greece and Crete"]
+        },
+        "context": {
+          "quizQuestion": "Operation Pedestal (August 1942) was a convoy mission to save Malta. Of 14 merchant ships that set out, how many reached Malta?",
+          "correctAnswer": "Five ships reached Malta, including the tanker Ohio barely afloat",
+          "distractors": ["All 14 ships arrived safely after air cover was provided from Gibraltar", "Only one ship reached Malta, but it carried enough fuel to last six months", "Nine ships arrived, providing enough supplies to sustain the island through winter", "None arrived; Malta was resupplied by submarine runs instead"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The George Cross awarded to Malta in 1942 is the only collective award of this decoration — normally reserved for individual acts of extreme bravery — in British history.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "By 1942, Malta had endured over ___ Axis air raids — more than any other Allied territory — while remaining a vital base for attacking Rommel's supply lines.",
+          "correctAnswer": "3,000",
+          "distractors": ["100", "500", "1,000", "10,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_taranto_raid_1940",
+      "correctAnswer": "Taranto",
+      "acceptableAlternatives": ["Battle of Taranto", "Taranto harbor", "Taranto 1940"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "battle_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "In November 1940, the Royal Navy launched the first carrier-based aircraft attack in history against the Italian fleet in its own harbor — a raid that Japanese naval planners studied as the blueprint for Pearl Harbor. What was the name of the Italian naval base targeted?",
+      "explanation": "The Battle of Taranto (November 11-12, 1940) saw 21 Swordfish biplanes from HMS Illustrious attack the Italian fleet in Taranto harbor, sinking or damaging three battleships for the loss of two aircraft. It was the first all-aircraft naval attack in history, and it demonstrated that aircraft carriers could neutralize an enemy fleet without surface engagement. Japanese naval attaché Minoru Genda studied the raid extensively; its lessons directly shaped the planning for Pearl Harbor on December 7, 1941.",
+      "visualDescription": "Pixel art of a Swordfish biplane dropping a torpedo in a moonlit harbor, Italian battleships illuminated by flares and anti-aircraft fire, silver torpedo tracks slicing through the dark water toward the fleet.",
+      "sourceName": "Wikipedia — Battle of Taranto",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Taranto",
+      "volatile": false,
+      "distractors": [
+        "La Spezia",
+        "Genoa",
+        "Naples",
+        "Brindisi",
+        "Palermo",
+        "Messina",
+        "Cagliari",
+        "Livorno"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Taranto raid used slow Swordfish biplanes that seemed hopelessly obsolete. What tactical factor made them effective against the well-defended Italian fleet?",
+          "correctAnswer": "Their low speed and altitude allowed torpedo drops at ranges and depths that faster aircraft couldn't achieve in confined harbor water",
+          "distractors": ["The Italian fleet had no anti-aircraft guns effective against low-flying targets", "British radar blinded Italian defenses, preventing any reaction until the attack was over", "The Swordfish flew in complete darkness and were genuinely invisible to Italian gunners", "Italian air cover was on the ground refueling during the exact window of the raid"]
+        },
+        "context": {
+          "quizQuestion": "Japanese naval planner Minoru Genda studied the Taranto raid before planning Pearl Harbor. Which specific lesson from Taranto did he apply at Pearl Harbor?",
+          "correctAnswer": "Aircraft could be modified to drop torpedoes in shallow harbor water, previously thought impossible",
+          "distractors": ["Night attacks maximized surprise and minimized defending fighter response time", "Carrier aircraft could strike targets beyond the range of enemy land-based air cover", "A single concentrated strike could cripple an entire fleet before it could get underway", "Battleships were vulnerable to air attack even when anchored in their home bases"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Battle of Taranto in 1940 was the first all-aircraft naval attack in history, with no British surface ships engaging the Italian fleet directly.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Taranto raid was carried out by ___ Swordfish torpedo biplanes launched from HMS Illustrious, sinking or disabling three Italian battleships.",
+          "correctAnswer": "21",
+          "distractors": ["5", "50", "100", "200"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_sas_founding",
+      "correctAnswer": "David Stirling",
+      "acceptableAlternatives": ["Lieutenant David Stirling", "Lt. Stirling", "Lt. Col. David Stirling"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Which British lieutenant — who reportedly walked into Middle East HQ uninvited and talked his way into a meeting with the Deputy Chief of Staff — convinced the army to create the Special Air Service (SAS) in 1941?",
+      "explanation": "David Stirling founded the SAS in July 1941 after a series of unauthorized raids behind German lines in North Africa proved the concept of small elite teams. Stirling famously broke into Middle East Headquarters in Cairo on crutches (recovering from a parachuting injury) and persuaded General Auchinleck's deputy to authorize a 65-man unit. The SAS operated deep behind enemy lines, destroying aircraft on the ground, attacking supply lines, and gathering intelligence — destroying more Axis aircraft than the RAF in some months.",
+      "visualDescription": "Pixel art of a tall British officer on crutches in a sun-bleached Cairo street outside a sandstone military headquarters, a sheaf of hand-drawn plans under his arm, looking determined in the midday heat.",
+      "sourceName": "Wikipedia — David Stirling",
+      "sourceUrl": "https://en.wikipedia.org/wiki/David_Stirling",
+      "volatile": false,
+      "distractors": [
+        "Paddy Mayne",
+        "Orde Wingate",
+        "Roger Courtney",
+        "Geoffrey Keyes",
+        "Jock Lewes",
+        "Bernard Fergusson",
+        "Freddie Spencer Chapman",
+        "Bill Stirling"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The SAS's first operations in November 1941 were a near-disaster. What was the mission and why did it fail so badly?",
+          "correctAnswer": "A parachute raid on Axis airfields in which high winds scattered the men, causing heavy casualties before they reached their targets",
+          "distractors": ["A beach landing on the Libyan coast intercepted by Italian coastguard before it started", "An attack on Rommel's HQ in which the raiders found the building empty and were ambushed escaping", "A rail sabotage mission that destroyed the wrong rail line, alerting German forces to SAS tactics", "A supply depot raid that succeeded but triggered a German retaliatory sweep that destroyed the SAS base"]
+        },
+        "context": {
+          "quizQuestion": "The SAS motto is 'Who Dares Wins.' In North Africa, the unit reportedly destroyed more Axis aircraft on the ground than the RAF shot down in the air in certain months. How did they achieve this?",
+          "correctAnswer": "Small teams penetrated deep behind enemy lines at night to plant time-delay incendiary bombs on parked aircraft",
+          "distractors": ["SAS snipers positioned near airfields shot pilots before they could board their aircraft", "SAS teams disguised as Axis mechanics sabotaged fuel systems and ignition components", "The SAS used anti-aircraft guns captured from Italian units to ambush landing aircraft", "SAS raiders poisoned airfield water supplies, grounding crew through illness"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: David Stirling founded the SAS in 1941 by convincing British high command that small elite teams operating deep behind enemy lines could destroy more Axis assets than conventional forces.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Stirling famously broke into Middle East HQ in Cairo on ___ — recovering from a parachuting injury — to pitch his concept for what became the SAS.",
+          "correctAnswer": "crutches",
+          "distractors": ["a stretcher", "a wheelchair", "a walking stick", "a borrowed bicycle"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_lrdg",
+      "correctAnswer": "Long Range Desert Group",
+      "acceptableAlternatives": ["LRDG"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "unit_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "What British special operations unit — operating in modified trucks deep in the Libyan interior — pioneered desert navigation and provided intelligence, transport, and reconnaissance that the SAS depended on to reach its targets?",
+      "explanation": "The Long Range Desert Group (LRDG) was formed in 1940 by Major Ralph Bagnold, an expert in Saharan desert navigation. LRDG patrols navigated thousands of miles through roadless desert, watching Axis supply routes, rescuing downed pilots, and ferrying SAS raiders to their targets. They used specially modified trucks loaded with extra fuel, water, and supplies. The LRDG pioneered desert navigation techniques including sun compasses and dead reckoning across featureless terrain.",
+      "visualDescription": "Pixel art of a LRDG patrol of armed jeeps and trucks moving through a vast golden Saharan erg, modified with extra fuel cans and mounted machine guns, the crew wearing Arab-style headscarves against the sun and sand.",
+      "sourceName": "Wikipedia — Long Range Desert Group",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Long_Range_Desert_Group",
+      "volatile": false,
+      "distractors": [
+        "Special Air Service",
+        "Special Boat Section",
+        "No. 8 Commando",
+        "Popski's Private Army",
+        "Desert Rats patrol unit",
+        "Middle East Commandos",
+        "No. 11 Scottish Commando",
+        "Layforce Raider Battalion"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "LRDG patrols had to navigate thousands of miles of featureless Saharan desert without roads. What navigation method did they pioneer for use when landmarks were absent?",
+          "correctAnswer": "Sun compasses and dead reckoning using speedometer readings across terrain with no landmarks",
+          "distractors": ["An early form of LORAN radio navigation adapted from merchant shipping", "Star navigation charts developed from pre-war Saharan exploration expeditions", "Captured Italian desert maps that proved far more accurate than British ones", "Local Bedouin guides who memorized dune formations across hundreds of miles"]
+        },
+        "context": {
+          "quizQuestion": "The LRDG was famous for its 'road watches' — spending days in concealed positions near Axis supply roads. What was the intelligence value of this tedious observation?",
+          "correctAnswer": "Counting and identifying all Axis vehicles gave Allied commanders accurate intelligence on German supply and reinforcement rates",
+          "distractors": ["Road watches allowed LRDG snipers to pick off senior German officers moving between positions", "Observers captured Italian dispatch riders to read orders before allowing them to continue", "The watches identified patrol schedules allowing SAS raiders to time their approach safely", "LRDG observers called in RAF air strikes on convoys they spotted from their concealed positions"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Long Range Desert Group regularly transported SAS raiders to their targets deep behind Axis lines, acting as a taxi service for special operations.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The LRDG was founded in 1940 by Major Ralph ___, an expert Saharan explorer who had crossed the desert by truck in pre-war expeditions.",
+          "correctAnswer": "Bagnold",
+          "distractors": ["Wingate", "Stirling", "Mayne", "Keyes"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_operation_compass",
+      "correctAnswer": "Operation Compass",
+      "acceptableAlternatives": ["Compass"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "operation_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "In December 1940, British General Wavell launched what operation — a five-day 'raid in force' that turned into a rout — that destroyed 10 Italian divisions, advanced 800 km in two months, and captured 130,000 prisoners with only 36,000 troops?",
+      "explanation": "Operation Compass (December 9, 1940 — February 9, 1941) was British General Archibald Wavell's offensive against Italian forces in Libya. Planned as a five-day raid, it became a stunning rout: the Western Desert Force of 36,000 troops under General Richard O'Connor destroyed 10 Italian divisions, captured 130,000 prisoners, 400 tanks, and 1,290 guns. The Italian 10th Army was annihilated. Hitler responded by sending Rommel and the Afrika Korps to rescue the situation in February 1941.",
+      "visualDescription": "Pixel art of British infantry and Matilda tanks advancing through a dust storm past hundreds of Italian prisoners with hands raised, wrecked Italian artillery and burned-out tanks scattered across the desert behind them.",
+      "sourceName": "Wikipedia — Operation Compass",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Operation_Compass",
+      "volatile": false,
+      "distractors": [
+        "Operation Battleaxe",
+        "Operation Crusader",
+        "Operation Aberdeen",
+        "Operation Lightfoot",
+        "Operation Torch",
+        "Operation Supercharge",
+        "Operation Brevity",
+        "Operation Splendour"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Operation Compass destroyed the Italian 10th Army so thoroughly that Hitler intervened. What force did he send to North Africa to rescue the Italian position in February 1941?",
+          "correctAnswer": "The Afrika Korps under General Erwin Rommel",
+          "distractors": ["Waffen-SS divisions withdrawn from France to reinforce Libya", "The Luftwaffe's X Fliegerkorps to provide air superiority over Libya", "A German armored division previously held in reserve for the invasion of Greece", "Italian reinforcements under new commander Graziani with German equipment"]
+        },
+        "context": {
+          "quizQuestion": "Compass was originally planned as a 5-day raid but became a 2-month rout. What decision by General O'Connor transformed a raid into a complete Italian collapse?",
+          "correctAnswer": "O'Connor pushed his forces beyond the original objective to cut off Italian retreat at Beda Fomm, encircling the entire 10th Army",
+          "distractors": ["Italian commander Graziani ordered a mass retreat that turned into a panic before Compass reached full strength", "Churchill ordered O'Connor to continue despite supply shortages because the political opportunity was too good to miss", "The Italian forts at Bardia unexpectedly surrendered on the first day, opening the road to deeper advance", "O'Connor captured Italian maps showing the entire defensive plan, allowing him to systematically destroy each position"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Operation Compass's 36,000 British troops captured over 130,000 Italian prisoners — more than three times the attacking force.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Operation Compass was commanded by British General Richard ___, who turned a planned 5-day raid into a 2-month campaign that annihilated the Italian 10th Army.",
+          "correctAnswer": "O'Connor",
+          "distractors": ["Wavell", "Auchinleck", "Montgomery", "Alexander"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_vichy_french_north_africa",
+      "correctAnswer": "Henri Giraud",
+      "acceptableAlternatives": ["General Giraud", "General Henri Giraud"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 5,
+      "funScore": 7,
+      "quizQuestion": "After the Darlan Deal, the Allies backed which French general as the alternative leader of French North Africa — a rival to de Gaulle whose lack of political skill eventually forced him out of power by 1944?",
+      "explanation": "After Admiral Darlan was assassinated in December 1942, the Allies backed General Henri Giraud as commander of French North Africa. Giraud was a military hero who had escaped from a German POW camp, but he was a poor politician. De Gaulle and Giraud were forced into an awkward co-leadership of the French Committee of National Liberation (FCNL) in 1943. By late 1943, de Gaulle had outmaneuvered Giraud politically, and by mid-1944 Giraud had resigned from all official positions.",
+      "visualDescription": "Pixel art of two French generals in ceremonial uniform standing stiffly at either end of a conference table in Algiers, Allied officers watching uncomfortably as the two men barely acknowledge each other.",
+      "sourceName": "Wikipedia — Henri Giraud",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Henri_Giraud",
+      "volatile": false,
+      "distractors": [
+        "Charles de Gaulle",
+        "Jean Darlan",
+        "Maxime Weygand",
+        "Alphonse Juin",
+        "Louis Koeltz",
+        "Pierre Boisson",
+        "Auguste Nogues",
+        "Georges Catroux"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The French Committee of National Liberation co-chaired by Giraud and de Gaulle in 1943 was an awkward arrangement. Why did Roosevelt prefer Giraud over de Gaulle?",
+          "correctAnswer": "Roosevelt saw Giraud as a soldier who would follow orders rather than de Gaulle's assertive nationalism",
+          "distractors": ["Giraud had more troops under his command than de Gaulle's Free French forces", "Giraud had signed a mutual defense treaty with the US that de Gaulle had refused", "Roosevelt respected Giraud's two dramatic escapes from German captivity during both world wars", "Giraud spoke English fluently while de Gaulle refused to communicate in English"]
+        },
+        "context": {
+          "quizQuestion": "France had two competing governments-in-exile by 1943: the London-based Free French and the Algiers-based French Committee. How was this resolved?",
+          "correctAnswer": "De Gaulle outmaneuvered Giraud politically; the committee merged into a single organization under de Gaulle's leadership",
+          "distractors": ["The Allies imposed a formal merger vote among French colonial administrators", "Roosevelt brokered a deal giving Giraud military command and de Gaulle political leadership permanently", "Churchill arbitrated the dispute by withdrawing British recognition from de Gaulle temporarily", "The two organizations remained separate until liberation of France when de Gaulle simply walked in as leader"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Henri Giraud was favored by the Americans as the alternative French leader to de Gaulle following the Darlan assassination, but de Gaulle eventually outmaneuvered him politically.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "After Admiral Darlan's assassination, Giraud and de Gaulle were forced into co-chairmanship of the French ___ of National Liberation based in Algiers.",
+          "correctAnswer": "Committee",
+          "distractors": ["Council", "Parliament", "Army", "Government"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_italian_east_africa",
+      "correctAnswer": "Haile Selassie",
+      "acceptableAlternatives": ["Emperor Haile Selassie", "the Emperor of Ethiopia"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The East Africa Campaign of 1940-41 ended Italian colonial rule and restored which exiled emperor to his throne — making Ethiopia the first country in WWII to be liberated from Axis occupation?",
+      "explanation": "The East Africa Campaign (June 1940 – November 1941) saw British, Commonwealth, and Free French forces defeat the Italian East African Empire (comprising Ethiopia, Eritrea, and Somaliland). Haile Selassie, who had famously appealed to the League of Nations after Italy's 1935 invasion, returned to Addis Ababa in May 1941 after a five-year exile. Ethiopia was the first Axis-occupied country to be liberated. Over 350,000 Italian troops were eventually defeated by forces including South African, Indian, Kenyan, and Sudanese units.",
+      "visualDescription": "Pixel art of an Ethiopian emperor in military uniform riding a white horse through cheering crowds in Addis Ababa, a British officer at his side, Ethiopian and British flags waving, destroyed Italian colonial buildings visible behind the crowd.",
+      "sourceName": "Wikipedia — East African campaign (World War II)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/East_African_campaign_(World_War_II)",
+      "volatile": false,
+      "distractors": [
+        "King Idris of Libya",
+        "King Farouk of Egypt",
+        "King Zog of Albania",
+        "King Peter of Yugoslavia",
+        "King Michael of Romania",
+        "King Leopold of Belgium",
+        "King Haakon of Norway",
+        "Sultan Said of Oman"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Italian East African Empire included three territories. Which three comprised Italian East Africa ('Africa Orientale Italiana')?",
+          "correctAnswer": "Ethiopia, Eritrea, and Italian Somaliland",
+          "distractors": ["Libya, Tunisia, and Ethiopia", "Ethiopia, Sudan, and Djibouti", "Somalia, Kenya, and Abyssinia", "Eritrea, Somaliland, and Tanganyika"]
+        },
+        "context": {
+          "quizQuestion": "Haile Selassie had made a famous plea to the League of Nations in 1936 after Italy's invasion. The League condemned Italy but took no action. What does this episode illustrate?",
+          "correctAnswer": "The League of Nations lacked enforcement mechanisms, foreshadowing its total failure to prevent WWII",
+          "distractors": ["European nations secretly supported Italy's African empire to contain Germany", "Selassie's English was too poor to communicate the urgency of the Ethiopian situation", "The League's structure gave permanent members a veto over sanctions, which Italy used", "Britain and France agreed to cede Ethiopia to Italy in exchange for Italian support against Germany"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Ethiopia was the first Axis-occupied country to be liberated, with Emperor Haile Selassie restored to his throne in May 1941.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Haile Selassie famously appealed to the League of Nations in 1936 after Italy's invasion of Ethiopia — but the League condemned Italy while taking ___ concrete action.",
+          "correctAnswer": "no",
+          "distractors": ["some", "minimal", "decisive", "strong"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_rommel_supply_lines",
+      "correctAnswer": "Malta-based aircraft and submarines",
+      "acceptableAlternatives": ["Malta", "RAF Malta", "submarines from Malta"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_units",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Rommel's North Africa campaign was strangled by supply shortages. The primary cause was that what Allied forces, operating from a Mediterranean island fortress, were sinking up to 75% of Axis supply ships in some months?",
+      "explanation": "Rommel famously said he could reach Cairo with just enough petrol and ammunition — but he never had enough. Malta-based aircraft and submarines attacked the Axis Mediterranean supply route between Italy and North Africa relentlessly. In November 1941, Malta forces sank 77% of supplies sent to Rommel. By 1942, Rommel's Afrika Korps was operating at sometimes 50% fuel capacity. This logistics stranglehold — not British tactical skill — ultimately doomed the North Africa campaign.",
+      "visualDescription": "Pixel art of an Italian supply convoy at sea with a British submarine periscope breaking the surface nearby, torpedo tracks converging on a cargo ship, Malta's limestone coast silhouetted in the background.",
+      "sourceName": "Wikipedia — Siege of Malta (World War II)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Malta_(World_War_II)",
+      "volatile": false,
+      "distractors": [
+        "RAF bases in Egypt",
+        "British destroyers from Alexandria",
+        "American submarines from Gibraltar",
+        "Free French torpedo boats from Tunis",
+        "British naval forces from Cyprus",
+        "Australian destroyers from Haifa",
+        "RAF Coastal Command from Gibraltar",
+        "British cruisers based in Palestine"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Rommel's Afrika Korps sometimes had fuel for fewer than 100 miles of operations. How did fuel shortages directly affect his tactical decisions?",
+          "correctAnswer": "Rommel was forced to attack before he was ready and abandon promising pursuits when fuel ran out mid-advance",
+          "distractors": ["Fuel shortages forced Rommel to use captured British trucks and vehicles instead of German ones", "The Afrika Korps began using camel caravans for local supply runs when trucks ran dry", "Rommel repeatedly requested permission to retreat to shorten supply lines but Hitler refused", "Fuel shortages caused Rommel to use his tanks as fixed artillery instead of mobile striking forces"]
+        },
+        "context": {
+          "quizQuestion": "Hitler pressured Rommel to attack Egypt despite critical supply shortages. What does this pattern — attacking before supplies were adequate — reveal about German strategic decision-making?",
+          "correctAnswer": "Hitler prioritized political and propaganda objectives over military logistics, repeatedly overriding his generals' supply concerns",
+          "distractors": ["German generals routinely underestimated supply requirements as a bureaucratic strategy to get more resources", "The German military had a cultural tradition of improvising with minimal supplies dating to WWI", "Hitler correctly understood that Rommel's talent would overcome material deficiencies", "German intelligence incorrectly assessed British supply lines as equally strained"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Malta-based forces sank up to 77% of Axis supplies destined for Rommel in some months of 1941, making Malta the decisive factor in Rommel's supply crisis.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Rommel famously declared he could capture ___ with sufficient petrol and ammunition — but Malta-based forces consistently denied him those supplies.",
+          "correctAnswer": "Cairo",
+          "distractors": ["Alexandria", "Suez", "Tripoli", "Tunis"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_sidi_barrani_graziani",
+      "correctAnswer": "Sidi Barrani",
+      "acceptableAlternatives": ["Battle of Sidi Barrani", "Sidi Barrani Egypt"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "battle_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "In September 1940, Italian General Graziani advanced 60 miles into Egypt and stopped at this small coastal town — refusing to advance further without supplies he said were inadequate — giving the British time to prepare Operation Compass?",
+      "explanation": "Italian General Rodolfo Graziani's invasion of Egypt from Libya began September 9, 1940 — Mussolini had pressured him to attack despite inadequate preparation. Graziani advanced 60 miles to Sidi Barrani, then stopped and built fortified camps rather than continuing to the vital British supply base at Mersa Matruh. He repeatedly told Mussolini his supplies were insufficient. This three-month pause gave General Wavell time to reinforce and plan Operation Compass (December 1940), which destroyed Graziani's 10th Army.",
+      "visualDescription": "Pixel art of Italian troops building a fortified desert camp at Sidi Barrani, sandbag walls around their tents, supply trucks unloading in the distance, the Mediterranean coast visible to the north, a quiet scene of missed opportunity.",
+      "sourceName": "Wikipedia — Sidi Barrani",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sidi_Barrani",
+      "volatile": false,
+      "distractors": [
+        "Mersa Matruh",
+        "Bardia",
+        "Tobruk",
+        "Benghazi",
+        "El Alamein",
+        "Sollum",
+        "Fort Capuzzo",
+        "Halfaya Pass"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Italian General Graziani halted his 1940 Egyptian offensive at Sidi Barrani despite having overwhelming numerical superiority. What was his stated reason?",
+          "correctAnswer": "He told Mussolini his supply situation was completely inadequate for a deeper advance",
+          "distractors": ["British air superiority was preventing Italian armored columns from moving without massive losses", "Graziani received intelligence that British reinforcements from Australia were arriving at Mersa Matruh", "Italian troops suffered severe heat casualties and could not continue without rest in the September heat", "Mussolini ordered the pause to allow Italian diplomatic overtures to Britain to proceed"]
+        },
+        "context": {
+          "quizQuestion": "Graziani's three-month pause at Sidi Barrani was a strategic gift to the British. What did Wavell use this time to do?",
+          "correctAnswer": "Plan and prepare Operation Compass, the offensive that destroyed Graziani's 10th Army",
+          "distractors": ["Construct the El Alamein defensive line that would later stop Rommel's advance", "Transfer the 7th Armored Division from Egypt to assist with the Greek campaign", "Reinforce Malta to prevent Axis air superiority over the supply route", "Negotiate with Graziani directly to arrange an Italian surrender without fighting"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Italian General Graziani's army entered Egypt in September 1940 but stopped at Sidi Barrani, 60 miles inside Egypt, rather than continuing to the strategically vital base at Mersa Matruh.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "After Italian forces stopped at Sidi Barrani, the British used the three-month pause to plan Operation ___, which destroyed Graziani's 10th Army in December 1940.",
+          "correctAnswer": "Compass",
+          "distractors": ["Crusader", "Battleaxe", "Brevity", "Torch"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_kasserine_pass_lessons",
+      "correctAnswer": "Kasserine Pass",
+      "acceptableAlternatives": ["Battle of Kasserine Pass", "Kasserine"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "battle_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In February 1943, Rommel's Afrika Korps inflicted the worst American defeat of the North African campaign at what Tunisian mountain pass — forcing the US Army to completely overhaul its training and command structure?",
+      "explanation": "The Battle of Kasserine Pass (February 19-25, 1943) saw Rommel's forces break through green American troops at the Kasserine Pass in Tunisia, advancing 85 miles and inflicting nearly 7,000 American casualties. The defeat revealed catastrophic problems: poor leadership, inadequate training, faulty tactics, and communication failures. General Fredendall was replaced by Patton. The US Army conducted emergency reforms that transformed American combat effectiveness. Kasserine was a disaster but also the learning experience that produced the American Army that won the war.",
+      "visualDescription": "Pixel art of American GIs retreating in disarray through a rocky mountain pass, abandoned artillery pieces on the roadside, Panzer tanks advancing through the gap in the hills as smoke rises from burning halftracks.",
+      "sourceName": "Wikipedia — Battle of Kasserine Pass",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Kasserine_Pass",
+      "volatile": false,
+      "distractors": [
+        "El Guettar",
+        "Mareth Line",
+        "Fondouk Pass",
+        "Medjez el Bab",
+        "Djebel Ksaira",
+        "Sened Station",
+        "Hill 609",
+        "Gafsa"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "After the Kasserine disaster, General Fredendall was relieved of command. Who replaced him and transformed the US II Corps into an effective fighting force?",
+          "correctAnswer": "General George S. Patton",
+          "distractors": ["General Omar Bradley", "General Mark Clark", "General Terry Allen", "General Lloyd Fredendall Jr."]
+        },
+        "context": {
+          "quizQuestion": "Kasserine revealed critical failures in the US Army's combat performance. Which specific problem was identified as the primary cause of the defeat?",
+          "correctAnswer": "Poor leadership at multiple levels, inadequate training for mobile desert warfare, and failure to coordinate infantry, armor, and artillery",
+          "distractors": ["American equipment was technically inferior to German tanks and anti-tank guns at every level", "Supply failures left American units with half their required ammunition during the battle", "American communications were compromised; German intelligence had broken US tactical codes", "Political pressure forced American commanders to defend a line that was militarily indefensible"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The defeat at Kasserine Pass was a painful but ultimately transformative experience that forced the US Army to fix critical training and command failures before the later campaigns in Sicily and France.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Kasserine Pass inflicted nearly ___ American casualties — the worst US defeat in the North African campaign — forcing an emergency overhaul of American tactics and leadership.",
+          "correctAnswer": "7,000",
+          "distractors": ["500", "2,000", "15,000", "30,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_pantelleria_air_surrender",
+      "correctAnswer": "Pantelleria",
+      "acceptableAlternatives": ["Island of Pantelleria", "Pantelleria island"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "place_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "In June 1943, Allied aircraft bombed this Italian island so heavily that it surrendered without ground assault — the only example in WWII of a garrison surrendering to air power alone. What was the island's name?",
+      "explanation": "Pantelleria, a fortified Italian island between Tunisia and Sicily, was subjected to an intensive bombing campaign (Operation Corkscrew, June 1943) to test whether an island garrison could be forced to surrender by air power alone. After 11 days of bombing — 6,200 tons of bombs — the 11,000-man garrison surrendered on June 11, 1943. The island's surrender before any ground troops landed was unprecedented; it opened the approach to Sicily for Operation Husky the following month.",
+      "visualDescription": "Pixel art of a tiny Mediterranean island seen from the air, ringed by smoke from dozens of bomb explosions, Allied bomber formations overhead, a white flag visible in the harbor of the small town below.",
+      "sourceName": "Wikipedia — Pantelleria",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pantelleria",
+      "volatile": false,
+      "distractors": [
+        "Lampedusa",
+        "Linosa",
+        "Gozo",
+        "Comino",
+        "Favignana",
+        "Lipari",
+        "Stromboli",
+        "Marittimo"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Pantelleria surrender convinced some Allied commanders that air power alone could force a garrison to capitulate. How did this theory perform when applied to more heavily defended targets later in the war?",
+          "correctAnswer": "It failed — heavily fortified positions like Monte Cassino and Okinawa's defenses required ground assault despite massive bombing",
+          "distractors": ["Air power alone proved decisive in all subsequent island assaults in the Pacific campaign", "The strategy was judged successful enough to attempt against Sardinia, which also surrendered without ground assault", "German garrisons proved more resilient than Italian ones, but bombing always reduced resistance by 80%", "The theory was validated at Iwo Jima and Okinawa, where islands surrendered after sustained bombing campaigns"]
+        },
+        "context": {
+          "quizQuestion": "Pantelleria was bombed with over 6,200 tons of bombs before its surrender. The garrison commander cited one specific cause in his surrender message. What was it?",
+          "correctAnswer": "The island's water supply had been destroyed by bombing, making continued resistance impossible",
+          "distractors": ["Allied paratroopers had captured the main airfield, cutting off the garrison's air supply", "The garrison's artillery ammunition was exhausted after defending against three failed naval bombardments", "The Italian mainland government secretly ordered surrender to spare unnecessary casualties", "RAF bombers had destroyed the garrison's radio equipment, preventing orders from Rome from reaching the island"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Pantelleria in June 1943 is the only WWII example of a military garrison surrendering to air power alone without any ground assault.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Operation Corkscrew dropped 6,200 tons of bombs on Pantelleria over ___ days before the 11,000-man Italian garrison surrendered.",
+          "correctAnswer": "eleven",
+          "distractors": ["two", "five", "thirty", "sixty"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_rommel_resupply_distance",
+      "correctAnswer": "1,400 miles",
+      "acceptableAlternatives": ["over 1,000 miles", "1,400 km", "about 1,400 miles", "2,200 kilometers"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "distances",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "At the height of Rommel's advance, the Afrika Korps was being supplied from Tripoli — over how far from the front lines — meaning every gallon of fuel burned driving supplies forward meant less fuel for combat?",
+      "explanation": "When Rommel's forces reached El Alamein in the summer of 1942, they were roughly 1,400 miles (2,250 km) from Tripoli, his main supply port. Trucks carrying fuel consumed much of that fuel getting to the front. A German truck carrying fuel from Tripoli to El Alamein burned approximately one-third of its load in transit. As supply lines lengthened, this consumption ratio worsened. Rommel was essentially a general whose army consumed itself getting to the battlefield.",
+      "visualDescription": "Pixel art of a German supply convoy stretching to the horizon across a barren Libyan desert road, each truck's fuel gauge visible in a cutaway inset showing nearly empty tanks, the distant skyline of Cairo barely visible ahead.",
+      "sourceName": "Wikipedia — North African campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/North_African_campaign",
+      "volatile": false,
+      "distractors": [
+        "50 miles",
+        "200 miles",
+        "400 miles",
+        "600 miles",
+        "900 miles",
+        "2,000 miles",
+        "3,000 miles",
+        "100 miles"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "A German supply truck driving from Tripoli to El Alamein consumed approximately what fraction of its fuel cargo in transit?",
+          "correctAnswer": "Roughly one-third of its load was consumed driving to the front",
+          "distractors": ["Less than five percent — trucks were designed for efficient long-distance desert driving", "Over half — but Hitler approved the supply runs because Rommel demanded them", "Nearly all — which is why Rommel relied on captured British fuel dumps for operations", "About ten percent — the primary supply loss came from Malta air attacks, not consumption"]
+        },
+        "context": {
+          "quizQuestion": "Rommel's supply problem was compounded by Malta's air attacks on convoys. Together, which combination best explains why Rommel couldn't sustain his advance to the Nile?",
+          "correctAnswer": "Malta destroyed supplies before they reached Libya, and the 1,400-mile road to the front consumed much of what survived",
+          "distractors": ["Churchill personally ordered Rommel's supply dumps destroyed by long-range bombing from Egypt", "Italian reluctance to deliver supplies to German rather than Italian units caused chronic shortages", "Rommel's rapid advances outran his supply dumps, which German logistics couldn't relocate fast enough", "Hitler diverted supply ships to reinforce Crete, judging that island's defense higher priority than North Africa"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: As Rommel advanced toward Egypt, his supply lines lengthened to over 1,000 miles from Tripoli, meaning a significant portion of every supply convoy's fuel was consumed in transit.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Rommel's supply situation was a 'double squeeze': Malta forces sank convoys crossing the Mediterranean, while the ___ overland route consumed supplies in transit.",
+          "correctAnswer": "1,400-mile",
+          "distractors": ["50-mile", "200-mile", "600-mile", "3,000-mile"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_montgomery_el_alamein_prep",
+      "correctAnswer": "Eight weeks",
+      "acceptableAlternatives": ["two months", "8 weeks"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "time_periods",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "When General Montgomery took command of the British Eighth Army in August 1942, he refused Rommel's immediate challenge to attack and instead spent roughly how long preparing for the Second Battle of El Alamein — a caution that Churchill found infuriating?",
+      "explanation": "Montgomery took command of the Eighth Army on August 13, 1942. Rommel attacked at Alam Halfa (August 30 - September 5) and was repulsed. Montgomery then spent eight weeks meticulously preparing for his own offensive, accumulating 230,000 troops, 1,400 tanks, and 2,182 guns. Churchill repeatedly pressed for an earlier attack; Montgomery refused. The Second Battle of El Alamein began October 23, 1942. Montgomery's caution was criticized but his preparation meant the battle was won before it started on paper.",
+      "visualDescription": "Pixel art of Montgomery in his trademark beret studying a large map covered in arrows and positions, staff officers surrounding him, through the tent flap behind him a massive supply dump of tanks and artillery stretches to the horizon.",
+      "sourceName": "Wikipedia — Second Battle of El Alamein",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_Battle_of_El_Alamein",
+      "volatile": false,
+      "distractors": [
+        "Two days",
+        "One week",
+        "Three days",
+        "Six months",
+        "One year",
+        "Three weeks",
+        "Four months",
+        "One day"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "For Second El Alamein, Montgomery amassed overwhelming superiority before attacking. What was the British-to-German ratio in tanks when the battle began?",
+          "correctAnswer": "Approximately 1,400 British tanks versus 500 German-Italian tanks — nearly 3 to 1",
+          "distractors": ["Equal numbers — Montgomery wanted quality training rather than quantity advantage", "10 to 1 — Montgomery refused to attack at anything less than overwhelming odds", "2 to 1 — Churchill forced the attack before full tank superiority was achieved", "1 to 2 — Rommel had been reinforced and Montgomery attacked despite being outnumbered"]
+        },
+        "context": {
+          "quizQuestion": "Montgomery's methodical style was criticized throughout the war for failing to exploit victories quickly enough. After El Alamein, what did critics say he failed to do?",
+          "correctAnswer": "Pursue and destroy Rommel's retreating Afrika Korps before it escaped to Tunisia",
+          "distractors": ["Attack Tripoli before Rommel could establish a new defensive line there", "Link up with Operation Torch forces fast enough to prevent Rommel's Tunisian buildup", "Advance fast enough to capture Benghazi before German reinforcements arrived by sea", "Use his paratroopers to cut off Rommel's retreat through the Libyan desert"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Montgomery refused Churchill's pressure for an immediate attack after taking command in August 1942, instead spending eight weeks preparing overwhelming superiority before launching Second El Alamein.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "For Second El Alamein, Montgomery accumulated 230,000 troops, 1,400 tanks, and ___ guns — a material superiority he considered essential before launching his attack.",
+          "correctAnswer": "2,182",
+          "distractors": ["50", "500", "10,000", "100"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_tobruk_fall_1942",
+      "correctAnswer": "June 21, 1942",
+      "acceptableAlternatives": ["June 21", "21 June 1942", "June 1942"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "On what date did Rommel's forces capture the Libyan fortress of Tobruk — taking 33,000 British and Commonwealth prisoners in a single day and prompting Churchill to call it 'one of the heaviest blows of the war'?",
+      "explanation": "The fall of Tobruk on June 21, 1942 was a catastrophic blow to British prestige. Rommel's forces overran the garrison of 33,000 troops — including the entire 2nd South African Division — in less than a day. Churchill heard the news while meeting Roosevelt in Washington and called it 'a disgrace.' The fall gave Rommel enormous captured supplies (fuel, vehicles, food) and a promotion to Field Marshal — the youngest in German history. Roosevelt immediately offered Churchill 300 Sherman tanks in sympathy. The fall opened Rommel's path toward El Alamein and the Suez Canal.",
+      "visualDescription": "Pixel art of long columns of British and South African prisoners marching through the Tobruk dust under German guard, Rommel's staff car watching from a ridge, the harbor and supply dumps behind them flying the German flag.",
+      "sourceName": "Wikipedia — Fall of Tobruk",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fall_of_Tobruk",
+      "volatile": false,
+      "distractors": [
+        "September 3, 1940",
+        "November 8, 1942",
+        "October 23, 1942",
+        "February 14, 1943",
+        "May 13, 1943",
+        "July 10, 1943",
+        "April 6, 1941",
+        "March 31, 1941"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The fall of Tobruk gave Rommel a promotion to Field Marshal. At age 50, he became the youngest Field Marshal in German history. What did this tell Churchill about the battle's significance?",
+          "correctAnswer": "Hitler saw Tobruk's capture as a major strategic victory — a sign of how badly the fall damaged Allied standing",
+          "distractors": ["Churchill used Rommel's promotion as propaganda to argue the British Army needed better commanders", "The promotion indicated Rommel was being set up as Hitler's political successor after the war", "Churchill saw it as confirmation that German logistics had caught up and Rommel could now reach the Nile", "The promotion meant Rommel would be moved to another theater, relieving British pressure in Africa"]
+        },
+        "context": {
+          "quizQuestion": "After Tobruk fell, Roosevelt immediately offered Churchill 300 Sherman tanks. What does this gesture reveal about the Allied relationship in June 1942?",
+          "correctAnswer": "The US-British alliance went beyond formal agreements — Roosevelt personally backed Churchill in a moment of military humiliation",
+          "distractors": ["Roosevelt was trying to ensure British forces could hold Egypt before American troops arrived in the theater", "The Shermans were payment for Britain's agreement to delay D-Day until American forces were ready in 1944", "The offer was motivated by American fears that Britain might negotiate a separate peace if the Egyptian front collapsed", "Roosevelt needed British airbases in Egypt for planned American bombing campaigns against Romanian oil fields"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The fall of Tobruk on June 21, 1942 resulted in 33,000 British and Commonwealth prisoners in a single day — making it one of the worst British military defeats in the entire war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "After capturing Tobruk and its enormous supply dumps, Hitler promoted Rommel to ___ — the youngest man to hold that rank in German military history.",
+          "correctAnswer": "Field Marshal",
+          "distractors": ["General", "Colonel-General", "Grand Admiral", "Reich Marshal"]
+        }
+      }
+    },
+    {
+      "id": "wwii_na_africa_korps_final",
+      "correctAnswer": "250,000",
+      "acceptableAlternatives": ["over 250,000", "approximately 250,000", "about a quarter million"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "When the North Africa campaign ended in May 1943 with the fall of Tunisia, approximately how many German and Italian troops surrendered — a loss Rommel himself called 'the Tunisian catastrophe'?",
+      "explanation": "The fall of Tunisia in May 1943 resulted in approximately 250,000 Axis prisoners being taken — the largest Axis surrender since Stalingrad three months earlier. German and Italian forces had been compressed into a shrinking Tunisian bridgehead. Hitler had ordered them to hold 'Fortress Tunisia' rather than evacuate, resulting in this massive capture. Rommel had already been recalled to Germany before the final collapse. The fall of Tunisia ended the North African campaign and opened the path to Sicily and Italy.",
+      "visualDescription": "Pixel art of endless columns of German and Italian prisoners marching past Allied guards through the Tunisian desert, discarded weapons and equipment piled roadside, a queue stretching all the way to the horizon.",
+      "sourceName": "Wikipedia — Tunisia campaign",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tunisia_campaign",
+      "volatile": false,
+      "distractors": [
+        "5,000",
+        "15,000",
+        "50,000",
+        "100,000",
+        "500,000",
+        "1,000,000",
+        "750,000",
+        "30,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Hitler ordered German and Italian forces to hold 'Fortress Tunisia' rather than evacuate by sea — similar to his order to hold Stalingrad. What common strategic error does this represent?",
+          "correctAnswer": "Sacrificing entire armies for political prestige rather than strategic withdrawal to fight another day",
+          "distractors": ["Underestimating Allied air power's ability to prevent evacuation across the Mediterranean", "Overestimating the Italian navy's ability to protect evacuation convoys from Allied ships", "Believing that holding Tunisia would prevent Allied access to Sicily and delay the invasion of Italy", "Following Mussolini's demand that Italian forces not be seen retreating from African soil"]
+        },
+        "context": {
+          "quizQuestion": "The 250,000 prisoners taken in Tunisia followed 330,000 German prisoners taken at Stalingrad just three months earlier. What does this double catastrophe reveal about German strategic reserves?",
+          "correctAnswer": "Germany was losing experienced armies faster than it could replace them — a manpower deficit that worsened throughout 1943-45",
+          "distractors": ["German reserves were actually adequate; the losses were absorbed without significant strategic impact", "These losses convinced Hitler to seek a negotiated peace in the summer of 1943", "The losses were primarily Italian, not German, so German combat power was not significantly affected", "Both armies had surrendered mainly because they ran out of ammunition rather than due to tactical defeat"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The fall of Tunisia in May 1943 resulted in approximately 250,000 Axis prisoners — the largest Axis surrender since Stalingrad earlier that year.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Rommel was recalled to Germany before Tunisia's final collapse, leaving him unable to prevent what he called 'the Tunisian ___.'",
+          "correctAnswer": "catastrophe",
+          "distractors": ["disaster", "retreat", "encirclement", "surrender"]
+        }
+      }
+    }
+  ]
+}

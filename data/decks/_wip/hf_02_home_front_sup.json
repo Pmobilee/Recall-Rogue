@@ -1,0 +1,711 @@
+{
+  "id": "wwii_home_front_sup",
+  "subdeckId": "hf_02",
+  "facts": [
+    {
+      "id": "wwii_hf_soviet_factory_1523",
+      "correctAnswer": "1,523",
+      "acceptableAlternatives": ["over 1,500", "approximately 1,500", "more than 1,000"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "When Germany invaded in June 1941, the Soviet Union conducted one of history's greatest industrial evacuations — moving approximately how many entire factories eastward beyond the Ural Mountains within 18 months to restart war production?",
+      "explanation": "The Soviet factory evacuation of 1941-1942 was a staggering logistical achievement. Approximately 1,523 industrial enterprises — entire factories including machinery, workers, and families — were dismantled and shipped east by rail to locations in Siberia, the Urals, and Central Asia beyond German bombing range. Workers reassembled factories and began production in the open in winter before walls were built. By 1942, Soviet war production had recovered and exceeded pre-war levels. This evacuation is considered one of the greatest industrial achievements in history.",
+      "visualDescription": "Pixel art of a Siberian winter landscape with factory walls being hastily erected around already-running machinery on a concrete slab, workers in thick coats assembling T-34 tanks in the open air, snow falling, train cars in the background being unloaded.",
+      "sourceName": "Wikipedia — Soviet relocation of industry (1941-1942)",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Soviet_relocation_of_industry_(1941%E2%80%931942)",
+      "volatile": false,
+      "distractors": [
+        "5",
+        "50",
+        "100",
+        "500",
+        "3,000",
+        "10,000",
+        "50,000",
+        "200"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The Soviet factory evacuation often meant workers reassembling machinery in open air before walls were built. Where were most factories relocated to?",
+          "correctAnswer": "The Ural Mountains, Siberia, and Central Asia — east of German bombing range",
+          "distractors": ["Underground facilities built beneath Moscow during the first months of German advance", "The Caucasus region, beyond the Volga River defensive line", "Eastern Siberia near the Japanese border, deemed safest from all Axis reach", "Finland and neutral Sweden, under emergency diplomatic agreements with those nations"]
+        },
+        "context": {
+          "quizQuestion": "The evacuated factories at Chelyabinsk became 'Tankograd' (Tank City). What was produced there that became crucial to Soviet survival?",
+          "correctAnswer": "T-34 tanks — Tankograd became the largest tank production facility in the world",
+          "distractors": ["Katyusha rocket launchers — the multiple rocket systems that defined Soviet artillery doctrine", "Il-2 Sturmovik ground attack aircraft — the Soviet Union's primary close air support plane", "PPSh-41 submachine guns — the mass-produced infantry weapon that equipped Soviet infantry", "Lend-Lease processing center where American equipment was checked and redistributed to Soviet units"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Soviet Union evacuated approximately 1,523 industrial enterprises eastward beyond the Ural Mountains within 18 months of the German invasion, restarting war production beyond German bombing range.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "By 1942, Soviet war production had recovered and ___ pre-war levels, despite losing the most industrialized western regions of the country to German occupation.",
+          "correctAnswer": "exceeded",
+          "distractors": ["matched", "approached", "remained below", "halved"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_chinese_nanjing_massacre",
+      "correctAnswer": "Nanjing Massacre",
+      "acceptableAlternatives": ["Rape of Nanjing", "Nanking Massacre", "Rape of Nanking"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "event_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "In December 1937, Japanese forces captured China's capital and carried out a six-week atrocity — killing an estimated 200,000-300,000 civilians and prisoners — that became the defining symbol of Chinese civilian suffering. What is this event called?",
+      "explanation": "The Nanjing Massacre (December 1937 - January 1938) occurred when Japanese forces captured Nanjing (the capital of the Republic of China). Japanese soldiers killed an estimated 200,000-300,000 Chinese civilians and prisoners of war, and committed mass rape. The International Safety Zone protected some civilians (including through the actions of German Nazi party member John Rabe). The massacre is a deeply contested topic in Japanese-Chinese relations. China's total WWII civilian death toll reached 15-20 million — the largest national civilian death toll after the Soviet Union.",
+      "visualDescription": "Pixel art of a memorial wall in Nanjing covered in names and dates from 1937-1938, Chinese citizens placing white flowers at its base, a somber gray sky, a single candle flame burning in the foreground.",
+      "sourceName": "Wikipedia — Nanjing Massacre",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nanjing_Massacre",
+      "volatile": false,
+      "distractors": [
+        "Three Alls Policy",
+        "Bataan Death March",
+        "Unit 731 Experiments",
+        "Shanghai Massacre",
+        "Wuhan Siege",
+        "Chongqing Bombing",
+        "Comfort Women System",
+        "Changsha Massacre"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "During the Nanjing Massacre, a Nazi party member named John Rabe organized an International Safety Zone that protected some civilians. What does his role reveal?",
+          "correctAnswer": "Individual moral action can save lives even in the worst atrocities — and ideology doesn't automatically determine behavior",
+          "distractors": ["Germany's Nazi government secretly opposed Japanese atrocities and instructed its citizens to help Chinese civilians", "The Safety Zone's success proved that international zones could prevent all civilian harm in occupied cities", "German-Chinese military cooperation meant the Nazis had a strategic interest in protecting some Chinese civilians", "Rabe was decorated by the German government for his humanitarian work, showing Nazi leadership opposed massacres"]
+        },
+        "context": {
+          "quizQuestion": "China's total WWII civilian death toll of 15-20 million is often overlooked in Western accounts. Where does this figure rank among all nations in WWII casualties?",
+          "correctAnswer": "Second only to the Soviet Union — China suffered more civilian deaths than any other nation except the USSR",
+          "distractors": ["Third, behind Germany and the Soviet Union in total war deaths", "Fourth — Poland lost a higher percentage of its population even if China's total numbers were greater", "First — China's death toll exceeded even the Soviet Union's when military and civilian losses are combined", "China ranked sixth — Germany, Japan, France, and Yugoslavia all had higher per-capita losses"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Nanjing Massacre of December 1937 killed an estimated 200,000-300,000 Chinese civilians and prisoners over six weeks, making it one of the worst atrocities of the entire war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "China's total WWII death toll of 15-20 million — mostly ___ — represents the largest civilian death toll after the Soviet Union.",
+          "correctAnswer": "civilians",
+          "distractors": ["soldiers", "POWs", "famine victims", "refugees"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_british_evacuation_phases",
+      "correctAnswer": "1.5 million",
+      "acceptableAlternatives": ["over 1.5 million", "1.5 million children", "approximately 1.5 million"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Operation Pied Piper — the British child evacuation that began September 1, 1939, the day Germany invaded Poland — moved approximately how many children from cities to rural areas in the first three days alone?",
+      "explanation": "Operation Pied Piper evacuated approximately 1.5 million children in the first three days (September 1-3, 1939), plus additional teachers, pregnant mothers, and disabled people — around 3.5 million people total in the first wave. Children were sent to stay with rural host families, often complete strangers. The scheme exposed deep class divisions: urban working-class children arrived malnourished and sometimes lice-ridden, shocking middle-class rural hosts. Many children were evacuated multiple times as the threat level changed throughout the war.",
+      "visualDescription": "Pixel art of a 1939 London train station platform packed with children wearing name tags and gas mask cases, small suitcases at their feet, mothers crying behind a barrier, teachers herding groups toward waiting trains.",
+      "sourceName": "Wikipedia — Evacuations of civilians in Britain during World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Evacuations_of_civilians_in_Britain_during_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "100",
+        "1,000",
+        "50,000",
+        "250,000",
+        "5 million",
+        "10 million",
+        "500",
+        "75,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "British child evacuees were sent to rural host families, often complete strangers. What social phenomenon did this create that was an unintended consequence of the evacuation?",
+          "correctAnswer": "It exposed middle-class rural families to the severe poverty and malnutrition of urban working-class children, creating political pressure for welfare reform",
+          "distractors": ["Rural families adopted evacuees permanently rather than returning them after the war, changing family structures", "Urban children introduced farming skills to the cities when they returned, boosting postwar food production", "The program created lasting rural-urban friendships that accelerated postwar political integration", "Evacuee children returned with rural accents and values, softening urban social attitudes toward the countryside"]
+        },
+        "context": {
+          "quizQuestion": "Many British children returned to cities after the 'Phoney War' period (September 1939 - May 1940) when no bombing occurred. What happened when the Blitz began in September 1940?",
+          "correctAnswer": "A second evacuation wave was needed as families who had returned to cities fled again when bombing actually began",
+          "distractors": ["The government banned children from returning, so most stayed in rural areas throughout the war", "Children in rural areas were moved again to underground shelters as German parachutists threatened the countryside", "A new scheme sent children overseas to Canada and Australia instead of just to rural Britain", "Most city children were already back in the countryside — the first evacuation had largely held"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Operation Pied Piper evacuated approximately 1.5 million children from British cities in the first three days — beginning on September 1, 1939, the same day Germany invaded Poland.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "British evacuee children were often sent to stay with rural host families with nothing but a small suitcase, a gas mask in a cardboard box, and a ___ label identifying their name and destination.",
+          "correctAnswer": "name tag",
+          "distractors": ["ration book", "identity card", "military pass", "medical certificate"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_rationing_america_points",
+      "correctAnswer": "Point rationing",
+      "acceptableAlternatives": ["point system", "OPA points", "War Ration Books"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "system_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "American rationing used War Ration Books containing stamps. The complex system where each item cost both money AND tokens — preventing hoarding of single items — was called what?",
+      "explanation": "The US Office of Price Administration (OPA) operated a point rationing system from 1943. Consumers received War Ration Books with point stamps. Purchases required both money AND point tokens — preventing wealthy people from simply buying all available rationed goods. Items rationed included meat, butter, sugar, shoes, gasoline, and canned goods. American rationing was less severe than Britain's but still significant. Black markets existed but were limited by OPA enforcement. Americans also recycled — turning in grease, tin cans, rubber, and paper.",
+      "visualDescription": "Pixel art of a 1940s American grocery store checkout, a housewife handing over both coins and colorful ration stamps from a booklet to a clerk, a sign listing rationed items and point values on the wall behind the counter.",
+      "sourceName": "Wikipedia — Rationing in the United States",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rationing_in_the_United_States",
+      "volatile": false,
+      "distractors": [
+        "Coupon rationing",
+        "Income rationing",
+        "Priority rationing",
+        "Allocation system",
+        "Certificate rationing",
+        "Token system",
+        "War credit program",
+        "Quota system"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "American rationing covered meat, butter, sugar, and other goods. Which commodity caused the most public frustration and black market activity?",
+          "correctAnswer": "Gasoline — America was car-dependent, and the 3-gallon weekly allowance severely curtailed daily life",
+          "distractors": ["Nylon stockings, which women needed to replace silk stockings after Japan cut off silk supplies", "Coffee, which was rationed after 1942 due to Atlantic convoy losses of South American imports", "Cigarettes, which soldiers demanded and civilians competed with the military for limited supply", "Rubber — bicycle tires became impossible to find and Americans had to share cars or walk"]
+        },
+        "context": {
+          "quizQuestion": "American rationing was less severe than British rationing. What does this difference reveal about the two nations' war situations?",
+          "correctAnswer": "The US mainland was never attacked or blockaded; Britain faced genuine food scarcity from submarine blockade",
+          "distractors": ["American consumers were less cooperative with rationing than British citizens who embraced sacrifice willingly", "The US had twice Britain's agricultural land per capita, making food scarcity impossible regardless of rationing policy", "American rationing was primarily symbolic — designed to make civilians feel part of the war effort rather than address real shortages", "FDR opposed strict rationing for political reasons and kept American rationing minimal despite military requests"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: American point rationing required consumers to spend both money AND ration points on restricted goods — preventing wealthy buyers from simply purchasing all available supplies.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The US ___ of Price Administration managed American rationing, issuing War Ration Books and enforcing point systems for meat, butter, sugar, gasoline, and shoes.",
+          "correctAnswer": "Office",
+          "distractors": ["Department", "Bureau", "Agency", "Commission"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_bracero_details",
+      "correctAnswer": "1964",
+      "acceptableAlternatives": ["until 1964", "1964 when it ended"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "years",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The Bracero Program brought Mexican workers to the US for WWII farm labor starting in 1942. The program was supposed to be temporary — but continued until what year, two decades after the war ended?",
+      "explanation": "The Bracero Program (1942-1964) brought Mexican agricultural workers ('braceros' — from 'brazo,' arm) to the US to replace farm laborers lost to military service. During WWII, 200,000+ braceros worked American farms. The program was renewed repeatedly because agricultural employers found cheap compliant labor profitable. Braceros were often paid less than promised, lived in poor conditions, and faced discrimination. The program ended in 1964 under pressure from US labor unions and civil rights advocates. Total participants across the program: over 4.6 million contracts.",
+      "visualDescription": "Pixel art of Mexican farmworkers harvesting crops in a California field under harsh sun, company housing visible in the distance, a government ID card and a payroll sheet with figures smaller than promised in the foreground.",
+      "sourceName": "Wikipedia — Bracero program",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bracero_program",
+      "volatile": false,
+      "distractors": [
+        "1943",
+        "1945",
+        "1946",
+        "1948",
+        "1950",
+        "1955",
+        "1960",
+        "1970"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Braceros were promised specific wages and conditions by the US government. What was the primary complaint of workers and advocates about how these promises were kept?",
+          "correctAnswer": "Braceros were routinely paid less than promised wages, housed in substandard conditions, and had no effective legal recourse",
+          "distractors": ["The government broke promises by ending the program in 1945 instead of allowing permanent residency", "Braceros were forced to buy food from company stores at inflated prices, erasing their wages", "The promised transportation home at the end of contracts was denied, stranding workers in the US", "Workers were classified as prisoners of war despite being civilian contract workers, limiting their rights"]
+        },
+        "context": {
+          "quizQuestion": "Over 4.6 million bracero contracts were issued across the program's 22 years. What does the program's continuation well past WWII reveal about the motivations for its creation?",
+          "correctAnswer": "Agricultural employers had economic incentives to use low-cost bracero labor regardless of the labor shortage that originally justified the program",
+          "distractors": ["Mexican agricultural workers preferred the US and lobbied their own government to maintain the program", "American farm productivity declined when braceros left, proving they were genuinely necessary workers", "The Cold War created new fears about Mexican instability that made controlled labor migration strategically valuable", "US farm unions supported the program as it prevented illegal immigration they considered more disruptive"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The Bracero Program, started in 1942 as a wartime emergency measure, continued until 1964 — over 22 years after the labor shortage that justified it had ended.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The Bracero Program's name comes from 'brazo,' the Spanish word for ___, reflecting the manual agricultural labor the workers were recruited to perform.",
+          "correctAnswer": "arm",
+          "distractors": ["field", "harvest", "work", "strength"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_wasp_pilots",
+      "correctAnswer": "Women Airforce Service Pilots",
+      "acceptableAlternatives": ["WASP", "WASPs"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "organization_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What American organization of female pilots — comprising 1,074 women who ferried aircraft, towed targets for live-fire training, and flew test flights — was established in 1942 under Jacqueline Cochran and later received military status only in 1977?",
+      "explanation": "The Women Airforce Service Pilots (WASP) was established in August 1943 by merging two earlier women's flying programs under Jacqueline Cochran's direction. 1,074 WASPs flew 60 million miles delivering 12,650 aircraft of 78 different types across the US. They towed targets for anti-aircraft gunners practicing with live ammunition. 38 WASPs were killed. Despite this service, they were considered civilians; their families received no military benefits when pilots died. WASPs were finally granted veteran status in 1977, full benefits in 1984, and Congressional Gold Medals in 2010.",
+      "visualDescription": "Pixel art of a female pilot in a leather flight jacket and goggles climbing into the cockpit of a P-51 Mustang at a US airfield, another WASP pilot in the background walking with a parachute pack, a clipboard of delivery orders in her hand.",
+      "sourceName": "Wikipedia — Women Airforce Service Pilots",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Women_Airforce_Service_Pilots",
+      "volatile": false,
+      "distractors": [
+        "Women's Auxiliary Army Corps",
+        "WAVES (Women Accepted for Volunteer Emergency Service)",
+        "Women's Army Corps",
+        "Air WAACs",
+        "Women's Voluntary Reserve",
+        "Civil Air Patrol Women's Wing",
+        "Female Ferry Command",
+        "Women's Auxiliary Flying Corps"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "WASP pilots flew 78 types of aircraft including fighters and bombers. What task required WASPs to fly directly into live anti-aircraft fire from their own side?",
+          "correctAnswer": "Towing aerial targets so ground-based anti-aircraft gunners could practice with live ammunition against a moving target",
+          "distractors": ["Testing newly installed anti-aircraft gun turrets on B-17s by flying through a practice gun range", "Delivering brand-new fighter aircraft from factories to combat units, often through active military zones", "Flying simulated enemy attack profiles against US aircraft carriers to train shipboard anti-aircraft crews", "Serving as decoys to lure enemy fighters away from actual bombers during training exercises"]
+        },
+        "context": {
+          "quizQuestion": "When 38 WASPs were killed in service, their families received no military death benefits. What does this reveal about the program's official status?",
+          "correctAnswer": "WASPs were classified as civilian employees, not military personnel, despite performing military duties — a distinction that denied their families standard benefits",
+          "distractors": ["The Army Air Forces classified WASP deaths as training accidents rather than service-related, denying benefits regardless of classification", "WASP families were eligible for civilian war workers' compensation, which was equivalent to military death benefits", "Congress specifically voted to deny WASP benefits in 1944 due to opposition from male pilots' unions", "The deaths were kept classified for security reasons, preventing families from making benefits claims"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The 1,074 Women Airforce Service Pilots (WASPs) were considered civilians despite delivering 12,650 aircraft and performing military duties — and received veteran status only in 1977, over 30 years after the war.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "WASPs flew ___ million miles delivering 12,650 aircraft of 78 different types across the United States, freeing male pilots for combat duty.",
+          "correctAnswer": "60",
+          "distractors": ["1", "5", "500", "1,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_black_market_wartime",
+      "correctAnswer": "OPA (Office of Price Administration)",
+      "acceptableAlternatives": ["OPA", "Office of Price Administration"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "organization_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Wartime rationing created thriving black markets in meat, gasoline, and nylon in the United States. What government agency — which set maximum prices and enforced ration limits — was the primary target of black market operators?",
+      "explanation": "The Office of Price Administration (OPA) set maximum prices and administered the point rationing system in the US. Black markets emerged wherever rationing created shortages: meat markets sold 'under the table' cuts without ration stamps; gas station owners siphoned extra gallons to favored customers; forged ration books circulated widely. The OPA employed over 60,000 volunteer price checkers. Congress repeatedly cut OPA funding, and meat rationing ended in 1945 partly due to enforcement failures. Estimates suggest 5-10% of rationed goods moved through black markets.",
+      "visualDescription": "Pixel art of a back-alley transaction in 1940s America — a butcher in an apron passing a brown paper package through a back door to a suited customer, both men glancing nervously toward the street, a 'OPA Maximum Price' sign visible through the shop window.",
+      "sourceName": "Wikipedia — Rationing in the United States",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rationing_in_the_United_States",
+      "volatile": false,
+      "distractors": [
+        "War Production Board",
+        "War Manpower Commission",
+        "National War Labor Board",
+        "War Food Administration",
+        "Office of Economic Stabilization",
+        "Board of Economic Warfare",
+        "Office of Defense Transportation",
+        "Petroleum Administration for War"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Black markets for nylon stockings emerged after nylon was diverted to parachutes and military use. How did women respond to the shortage of silk and nylon hosiery?",
+          "correctAnswer": "Women drew seam lines on their bare legs with eyebrow pencil to simulate the appearance of stockings",
+          "distractors": ["Women wore cotton stockings dyed in flesh tones as a substitute that became fashionable", "The shortage was so brief that most women simply wore bare legs without any substitute", "Wool stockings were reformulated to look like nylon and quickly replaced the synthetic material", "Women began petitioning Congress to redirect military nylon allocations back to civilian production"]
+        },
+        "context": {
+          "quizQuestion": "American black market operations were limited compared to those in occupied Europe. What explains this difference?",
+          "correctAnswer": "American rationing was less severe and enforcement more consistent; occupied Europe faced genuine starvation that made black markets a survival necessity",
+          "distractors": ["American patriotism was genuinely stronger than European; black markets were seen as unpatriotic and avoided", "US military police actively suppressed black markets in ways that German occupation forces did not", "American ration books were technically impossible to forge, while European coupon systems were easily counterfeited", "Americans were wealthier and could afford legal prices, reducing black market demand compared to poorer Europeans"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The OPA employed over 60,000 volunteer price checkers to enforce rationing and maximum price rules, but still faced black markets estimated to move 5-10% of rationed goods.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The OPA's volunteer price enforcement relied on civilians reporting violations — a system that worked partly because buying black market goods was seen as a ___ act that undermined the troops.",
+          "correctAnswer": "unpatriotic",
+          "distractors": ["legal", "taxable", "criminal", "communist"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_victory_gardens_count",
+      "correctAnswer": "20 million",
+      "acceptableAlternatives": ["over 20 million", "approximately 20 million"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "At their peak in 1943-44, American 'Victory Gardens' produced approximately 40% of all vegetables consumed in the US. How many Victory Gardens were planted — on rooftops, in backyards, and in public parks?",
+      "explanation": "By 1943, approximately 20 million Victory Gardens had been planted across the US — in backyards, rooftops, window boxes, school grounds, and public parks. They produced an estimated 9-10 million tons of vegetables, about 40% of US vegetable consumption. First Lady Eleanor Roosevelt planted one at the White House despite Department of Agriculture concerns it would look undignified. Similar programs existed in Britain (Dig for Victory) and Canada. Victory gardens reduced demand on commercial farms and transportation, freeing both for military supply.",
+      "visualDescription": "Pixel art of an American suburban backyard transformed into a productive vegetable garden, rows of tomatoes, beans, and carrots where lawn once was, a 'Victory Garden' sign on a stake, a family of four tending the plot together.",
+      "sourceName": "Wikipedia — Victory garden",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Victory_garden",
+      "volatile": false,
+      "distractors": [
+        "50",
+        "500",
+        "5,000",
+        "100,000",
+        "1 million",
+        "5 million",
+        "100 million",
+        "500 million"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Eleanor Roosevelt planted a Victory Garden at the White House despite opposition. Who objected, and why?",
+          "correctAnswer": "The Department of Agriculture worried it would signal that commercial farms were inadequate, damaging public confidence in food supply",
+          "distractors": ["The Secret Service objected because gardens required strangers — gardeners and photographers — near the White House", "FDR opposed it as undignified; Eleanor planted it anyway against his wishes", "Neighboring states complained the White House garden would receive unfair media attention over their farmers", "The Army objected that vegetable gardens near the White House created concealment for potential assassins"]
+        },
+        "context": {
+          "quizQuestion": "Britain's equivalent program was called 'Dig for Victory.' What was the key difference in emphasis between the American and British victory garden programs?",
+          "correctAnswer": "Britain's program was driven by genuine food shortage from submarine blockade; America's was more of a morale and surplus-supply program",
+          "distractors": ["Britain focused on animal husbandry while America emphasized vegetable crops", "The American program was government-mandated while the British program was entirely voluntary", "British gardens were mainly public while American gardens were exclusively private backyard plots", "Britain's program was primarily to provide food for soldiers; America's was only for civilian consumption"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: At their 1943-1944 peak, 20 million American Victory Gardens produced approximately 40% of all vegetables consumed in the United States.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Victory Gardens produced an estimated ___ million tons of vegetables in 1943 — roughly 40% of US vegetable consumption.",
+          "correctAnswer": "9",
+          "distractors": ["1", "50", "200", "1,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_conscientious_objectors_cps",
+      "correctAnswer": "Civilian Public Service",
+      "acceptableAlternatives": ["CPS", "Civilian Public Service camps"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "program_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "American conscientious objectors who refused military service on moral or religious grounds were assigned to what alternative service program — run by pacifist churches (Quakers, Mennonites, Brethren) — which sent them to work on conservation, mental health, and medical projects?",
+      "explanation": "The Civilian Public Service (CPS) was established in 1941 by the Selective Training and Service Act. Over 12,000 conscientious objectors (COs) served in 151 CPS camps, performing 'work of national importance' — forest firefighting, soil conservation, mental hospital work, and serving as human guinea pigs in medical experiments (including starvation studies). Historic peace churches (Quakers, Mennonites, Brethren) ran the camps at their own expense. Some COs served as 'smoke jumpers' parachuting to fight forest fires. Those who refused any alternative service faced prison.",
+      "visualDescription": "Pixel art of conscientious objectors in civilian work clothes planting trees on a hillside, a Mennonite church symbol on their work crew sign, a 1940s fire lookout tower visible on the ridge above, one man reading a religious text on his break.",
+      "sourceName": "Wikipedia — Civilian Public Service",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Civilian_Public_Service",
+      "volatile": false,
+      "distractors": [
+        "Alternative Service Organization",
+        "Selective Service Work Program",
+        "National War Service Agency",
+        "Pacifist Corps",
+        "Peace Workers Division",
+        "Non-Combatant Service Branch",
+        "War Objectors Corps",
+        "National Service Program"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Some CPS conscientious objectors volunteered for medical experiments rather than physical labor. What famous starvation study was conducted using CPS volunteers?",
+          "correctAnswer": "The Minnesota Starvation Experiment — studying how to rehabilitate liberated famine victims in postwar Europe",
+          "distractors": ["A blood-type study that helped develop universal donor protocols for military blood banks", "Altitude sickness research that improved high-altitude bomber crew survival rates", "A malaria drug study that helped develop chloroquine treatments for Pacific theater soldiers", "A decompression study that formed the basis for submarine escape training"]
+        },
+        "context": {
+          "quizQuestion": "About 6,000 American men refused all alternative service and were imprisoned. The Selective Service classified COs in three categories. Which group was most likely to be imprisoned?",
+          "correctAnswer": "Absolutist COs — those who refused to register or perform any government-assigned work on principle",
+          "distractors": ["Religious COs whose churches were not recognized as historic peace churches by the Selective Service", "Political COs who opposed the specific war rather than all wars — their objection was not considered valid", "African American COs who refused service to protest racial segregation in the military", "COs who had previously served in the military and changed their views after experiencing combat"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Over 12,000 American conscientious objectors served in the Civilian Public Service, performing work including forest firefighting, conservation, and serving as medical research volunteers.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The CPS program was run at the expense of the historic ___ churches — Quakers, Mennonites, and Brethren — who paid costs the government refused to cover.",
+          "correctAnswer": "peace",
+          "distractors": ["Catholic", "Protestant", "evangelical", "reform"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_war_production_record",
+      "correctAnswer": "300,000",
+      "acceptableAlternatives": ["over 300,000", "approximately 300,000"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "large_numbers",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "From 1940 to 1945, the United States produced approximately how many military aircraft — a number roughly equal to the combined production of Germany, Japan, Britain, and the Soviet Union?",
+      "explanation": "The United States produced approximately 300,000 military aircraft from 1940 to 1945 — including over 100,000 in 1944 alone. This figure is roughly comparable to the combined production of all major Axis and other Allied powers combined. The production included 98,000 bombers, 99,000 fighters, 23,000 trainers, and thousands of transport aircraft. Ford's Willow Run plant alone produced a B-24 Liberator every 63 minutes at peak production. American industrial output fundamentally changed the balance of the war.",
+      "visualDescription": "Pixel art of the Willow Run B-24 bomber factory interior — a vast hangar with aircraft in various stages of assembly stretching to vanishing point, hundreds of workers on scaffolding, a completed bomber emerging from the far end.",
+      "sourceName": "Wikipedia — United States home front during World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/United_States_home_front_during_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "100",
+        "1,000",
+        "5,000",
+        "10,000",
+        "50,000",
+        "500,000",
+        "1,000,000",
+        "30,000"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Ford's Willow Run plant produced B-24 Liberators at peak efficiency of one aircraft every 63 minutes. What management innovation made this rate possible?",
+          "correctAnswer": "Henry Ford's moving assembly line principle applied to aircraft — breaking production into sequential specialized stations",
+          "distractors": ["Hiring women workers exclusively, who proved faster at precision assembly than male workers", "A three-shift continuous operation system where no machinery ever stopped, day or night", "Importing experienced aircraft builders from Britain who taught Americans their faster methods", "Using captured German manufacturing data that revealed assembly shortcuts unknown to US engineers"]
+        },
+        "context": {
+          "quizQuestion": "American aircraft production outpaced every other nation. What resource advantage made this possible that Germany, Japan, and even Britain lacked?",
+          "correctAnswer": "An untouched industrial base, abundant raw materials, and a civilian workforce that was never bombed or invaded",
+          "distractors": ["American engineers had patented superior manufacturing techniques that other nations' factories couldn't legally copy", "FDR specifically nationalized all aircraft factories at war's start, allowing total government optimization", "American workers had more mechanical experience because the US had a higher car ownership rate than other nations", "Lend-Lease materials from Britain gave American manufacturers superior aluminum alloy specifications"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: The United States produced approximately 300,000 military aircraft during WWII — a figure roughly comparable to the combined output of all other major powers.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "In 1944 alone, the US produced over ___ military aircraft — more than Germany produced in the entire war.",
+          "correctAnswer": "100,000",
+          "distractors": ["500", "5,000", "50,000", "1,000,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_japanese_balloon_bombs",
+      "correctAnswer": "Japan",
+      "acceptableAlternatives": ["the Japanese", "Japanese military"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "country_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Which country launched over 9,000 hydrogen-filled paper balloons carrying incendiary bombs toward the continental United States — using the jet stream to cross the Pacific — in the war's only successful attack on mainland North America?",
+      "explanation": "Japan's Fu-Go program (1944-1945) launched approximately 9,300 paper and silk hydrogen balloons (Fu-Go) carrying incendiary and anti-personnel bombs across the Pacific jet stream toward North America. About 1,000 reached the US and Canada. They caused the only WWII deaths on the US mainland: six people (including five children) were killed in Oregon on May 5, 1945, when a Sunday school group encountered a downed balloon bomb. The US censored news of the balloons to prevent Japan from knowing they worked. One balloon reportedly shorted out power to a secret Manhattan Project facility in Hanford, Washington.",
+      "visualDescription": "Pixel art of a massive paper Fu-Go balloon rising above snow-covered Japanese mountains at dawn, incendiary bomb canisters attached below, prevailing wind arrows stretching across a Pacific map toward the American West Coast.",
+      "sourceName": "Wikipedia — Fu-Go balloon bomb",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fu-Go_balloon_bomb",
+      "volatile": false,
+      "distractors": [
+        "Germany",
+        "Italy",
+        "Soviet Union",
+        "China",
+        "Finland",
+        "Hungary",
+        "Romania",
+        "Bulgaria"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "The US government censored news of the Japanese balloon bombs — and this censorship policy inadvertently caused the deaths of six people in Oregon. How?",
+          "correctAnswer": "Without public warnings about downed balloons, a Sunday school group in Oregon investigated one and it exploded, killing five children and a pregnant woman",
+          "distractors": ["Emergency responders were not briefed on balloon bomb procedures and triggered the weapon while disarming it", "Local police suppressed by censorship orders failed to cordon off a balloon landing site in time", "A farmer found a downed balloon and brought it home for his children to play with, not knowing it was a weapon", "The censorship prevented firefighters from understanding what started a forest fire caused by an incendiary balloon"]
+        },
+        "context": {
+          "quizQuestion": "One Japanese balloon bomb reportedly disrupted power at a secret facility in Hanford, Washington, for three days. Why was this incident particularly alarming to US authorities?",
+          "correctAnswer": "Hanford was producing plutonium for the Manhattan Project's atomic bomb — a power outage there could have set back the bomb program",
+          "distractors": ["Hanford housed a decoded Enigma machine being analyzed by American cryptographers", "The facility was a radar development center whose disruption could have left the West Coast undefended", "Hanford was a chemical weapons storage depot whose disruption risked accidental release of nerve agents", "The facility was a naval communications center whose outage interrupted communication with the Pacific Fleet"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Japan's Fu-Go balloon bomb program caused the only combat-related deaths on US mainland territory during WWII — six people killed in Oregon in May 1945.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Japan launched approximately 9,300 Fu-Go balloons, of which about ___ reached the United States and Canada.",
+          "correctAnswer": "1,000",
+          "distractors": ["5", "50", "9,300", "100,000"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_women_wartime_wages",
+      "correctAnswer": "60 cents",
+      "acceptableAlternatives": ["60 percent", "60¢ per dollar", "about 60 cents on the dollar"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "financial_figures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "American women entered wartime industrial jobs and were generally paid approximately how many cents for every dollar earned by men doing the same work — a wage gap that persisted despite their identical productivity?",
+      "explanation": "Women defense workers in WWII typically earned 60-65 cents for every dollar paid to men performing identical work. Despite this gap, wartime factory wages were often higher than pre-war domestic service or clerical work that women had previously been confined to. The National War Labor Board's equal pay orders were widely ignored. After the war, women were pushed back into lower-paying 'women's work' as returning veterans needed jobs. The wage gap and the experience of industrial work planted seeds for postwar women's rights movements.",
+      "visualDescription": "Pixel art of two identical production line stations side by side — a woman and a man each assembling the same aircraft component — with separate wage envelopes showing different amounts, a patriotic war production poster on the factory wall above them.",
+      "sourceName": "Wikipedia — Women in World War II",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Women_in_World_War_II",
+      "volatile": false,
+      "distractors": [
+        "10 cents",
+        "25 cents",
+        "40 cents",
+        "50 cents",
+        "75 cents",
+        "90 cents",
+        "100 cents",
+        "80 cents"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Despite unequal pay, wartime factory wages represented an improvement for many women. What jobs had most working women been confined to before the war?",
+          "correctAnswer": "Domestic service, clerical work, and light manufacturing jobs that paid significantly less than defense plants",
+          "distractors": ["Agricultural work — the war's factory jobs represented the first indoor work available to most women", "Teaching and nursing — the war diverted women away from established professional careers they preferred", "Part-time casual labor — most women had not been employed before the war and had no wage baseline", "Garment factory work that paid comparable wages but lacked the prestige of defense plant employment"]
+        },
+        "context": {
+          "quizQuestion": "After WWII, women were systematically pushed out of industrial jobs to make room for returning male veterans. What long-term social effect did this forced reversal have?",
+          "correctAnswer": "Women had experienced economic independence and industrial competence — the contrast with postwar domestic expectations contributed to the 1960s feminist movement",
+          "distractors": ["Women accepted the return to domestic life willingly, since factory work had been universally exhausting", "The reversal caused immediate mass unemployment among women that sparked the 1946 recession", "Women's wartime experience primarily fed into postwar labor union activism rather than feminist politics", "Most women never returned to factory work; they entered teaching and nursing instead, changing those professions"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: American women defense workers typically earned approximately 60 cents for every dollar paid to men performing identical work, despite National War Labor Board equal pay orders.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "After WWII, women were systematically pushed out of industrial jobs — often replaced by ___ veterans who received preferential hiring under the GI Bill.",
+          "correctAnswer": "returning male",
+          "distractors": ["minority", "foreign", "older", "disabled"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_war_bonds_total",
+      "correctAnswer": "$185 billion",
+      "acceptableAlternatives": ["185 billion dollars", "over $185 billion", "approximately $185 billion"],
+      "chainThemeId": 0,
+      "answerTypePoolId": "financial_figures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "American civilians purchased approximately how much in war bonds during WWII — the government debt instruments sold to finance the war that celebrities from Bob Hope to Frank Sinatra promoted in mass rally campaigns?",
+      "explanation": "Americans purchased approximately $185 billion in war bonds (Series E bonds) during WWII — equivalent to roughly $2.5 trillion today. The Treasury Department conducted eight major war bond drives using celebrity appearances, patriotic propaganda, and public rallies. About 85 million Americans — over half the population — bought bonds at some point. War bonds paid 2.9% interest over 10 years. The bonds kept inflation in check by absorbing civilian spending power, financed 40% of the war's cost, and created a sense of civilian participation in the war effort.",
+      "visualDescription": "Pixel art of a 1940s war bond rally in a town square, a Hollywood star at a microphone on a stage, crowds of civilians lined up to buy bonds at tables, a giant thermometer chart showing bond sales progress toward the goal.",
+      "sourceName": "Wikipedia — War bond",
+      "sourceUrl": "https://en.wikipedia.org/wiki/War_bond",
+      "volatile": false,
+      "distractors": [
+        "$1 million",
+        "$10 million",
+        "$100 million",
+        "$1 billion",
+        "$10 billion",
+        "$500 billion",
+        "$1 trillion",
+        "$50 billion"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "War bond drives served a dual economic purpose beyond simply raising money. What was the second economic function?",
+          "correctAnswer": "Absorbing civilian spending power to reduce wartime inflation — money spent on bonds couldn't bid up prices for scarce goods",
+          "distractors": ["Demonstrating American economic strength to neutral nations considering which side to support", "Providing investment returns to working-class Americans who couldn't otherwise access interest-bearing savings", "Building a postwar spending fund that would prevent the Great Depression from recurring after the war", "Reducing the money supply in circulation to prevent the dollar's value from falling during the conflict"]
+        },
+        "context": {
+          "quizQuestion": "Approximately 85 million Americans — over half the population — bought war bonds. How does this compare to modern US Treasury bond participation?",
+          "correctAnswer": "Modern Treasury bonds are primarily purchased by institutional investors; WWII bonds uniquely achieved mass individual civilian participation",
+          "distractors": ["Modern savings bonds still attract 85% of Americans who consider them patriotic obligations", "Today's government debt is financed entirely by foreign governments rather than domestic citizens", "Modern bonds pay higher interest rates, so individual participation is actually higher now than during WWII", "The comparison is meaningless since modern bonds are electronically traded rather than physical paper certificates"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Americans purchased approximately $185 billion in war bonds during WWII, financing roughly 40% of the war's total cost through civilian bond purchases.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Series E war bonds paid ___ percent interest over 10 years — a modest return that civilians accepted as a patriotic contribution rather than purely an investment.",
+          "correctAnswer": "2.9",
+          "distractors": ["0", "10", "50", "25"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_axis_propaganda_comparison",
+      "correctAnswer": "Joseph Goebbels",
+      "acceptableAlternatives": ["Goebbels", "Paul Joseph Goebbels"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which Nazi official — as Reich Minister of Public Enlightenment and Propaganda — controlled all German media (newspapers, radio, cinema, art) and pioneered the use of mass media as a tool of totalitarian political control?",
+      "explanation": "Joseph Goebbels (1897-1945) controlled all German media as Reich Minister of Public Enlightenment and Propaganda from 1933. He managed newspapers, radio broadcasts, cinema, theater, music, and visual art through the Reich Chamber of Culture. Every German creative worker had to be a chamber member — Jews and political opponents were excluded. Goebbels pioneered Hitler's use of radio for mass political mobilization. As the war turned against Germany, he escalated 'total war' propaganda. On May 1, 1945, Goebbels poisoned his six children and died with his wife by suicide in Berlin.",
+      "visualDescription": "Pixel art of a 1930s German radio studio with a dramatic propagandist at a microphone, rows of loudspeakers installed in a public square visible through the window, crowds gathered around them listening, a swastika banner draped behind the speaker.",
+      "sourceName": "Wikipedia — Joseph Goebbels",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Goebbels",
+      "volatile": false,
+      "distractors": [
+        "Heinrich Himmler",
+        "Hermann Goering",
+        "Albert Speer",
+        "Rudolf Hess",
+        "Joachim von Ribbentrop",
+        "Martin Bormann",
+        "Robert Ley",
+        "Alfred Rosenberg"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Goebbels controlled the Reich Chamber of Culture, requiring all German creative workers to be members. What was the practical effect of this requirement?",
+          "correctAnswer": "Jews, political opponents, and anyone producing 'degenerate' art were excluded from the chamber — effectively banned from all creative professions",
+          "distractors": ["Chamber membership guaranteed income, making German artists among the best-paid in the world during the Nazi era", "The requirement allowed Goebbels to monitor and censor all creative output before it reached the public", "Chamber membership replaced copyright law, giving the Nazi state ownership of all German creative work", "Artists had to submit scripts and manuscripts for approval only on topics deemed politically sensitive"]
+        },
+        "context": {
+          "quizQuestion": "Goebbels made a 'total war' speech at the Berlin Sportpalast in February 1943 after Stalingrad. What was the rhetorical technique that made this speech unusually effective?",
+          "correctAnswer": "He asked the crowd a series of questions about their willingness to sacrifice, getting increasingly frenzied affirmative responses — manufacturing visible popular consent",
+          "distractors": ["Goebbels revealed classified military information about German secret weapons to prove the war was still winnable", "He announced a new rationing system and used the crowd's acceptance as democratic legitimacy for the policy", "Goebbels played recordings of German prisoners being mistreated by Soviets to manufacture outrage", "He announced the execution of defeatists in the crowd — creating fear that silenced any public opposition"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: Goebbels controlled all German media through the Reich Chamber of Culture, requiring every German journalist, filmmaker, and artist to be a chamber member — excluding Jews and political opponents entirely.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "Goebbels pioneered Hitler's use of ___ as a mass political mobilization tool — broadcasting directly into German homes in a way no previous political leader had achieved.",
+          "correctAnswer": "radio",
+          "distractors": ["cinema", "newspapers", "posters", "loudspeakers"]
+        }
+      }
+    },
+    {
+      "id": "wwii_hf_leningrad_bread_ration",
+      "correctAnswer": "125 grams",
+      "acceptableAlternatives": ["125g", "as little as 125 grams", "down to 125 grams"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "measurements",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "During the Siege of Leningrad's worst winter (1941-1942), the minimum bread ration for civilians — bread that was mostly sawdust, cotton cellulose, and paper pulp — fell to how many grams per day?",
+      "explanation": "During the Siege of Leningrad's darkest period (November 1941 - January 1942), civilian bread rations fell to 125 grams per day for non-workers — roughly the weight of a small apple. The 'bread' was a horrific mixture: only about 50% actual flour, supplemented with bran, rye wallpaper paste, sawdust, cotton fiber, and other ersatz fillers. Rations for workers reached 250 grams; children and dependents received the minimum 125g. At this level, starvation was inevitable. Over 1 million Leningraders died, most from hunger. The only supply route was the 'Road of Life' across frozen Lake Ladoga.",
+      "visualDescription": "Pixel art of a gaunt Leningrad woman clutching a tiny dark piece of bread in a bombed-out apartment, frost patterns on the broken window beside her, a ration book open on the table showing a tiny square cut from it.",
+      "sourceName": "Wikipedia — Siege of Leningrad",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Siege_of_Leningrad",
+      "volatile": false,
+      "distractors": [
+        "1 gram",
+        "10 grams",
+        "500 grams",
+        "1,000 grams",
+        "2,000 grams",
+        "50 grams",
+        "750 grams",
+        "300 grams"
+      ],
+      "variants": {
+        "reverse": {
+          "quizQuestion": "Leningrad was supplied during the siege by the 'Road of Life.' What was this route?",
+          "correctAnswer": "A truck road built across the frozen surface of Lake Ladoga — the only gap in the German encirclement",
+          "distractors": ["An underground railway tunnel built by Leningrad workers during the siege that Germans never located", "A submarine supply route under the Baltic Sea connecting Leningrad to Finnish neutral ports", "A horse-drawn supply convoy that operated nightly through a gap in the German lines near Shlisselburg", "Soviet paratroopers who air-dropped supplies over Leningrad, losing many aircraft to German interception"]
+        },
+        "context": {
+          "quizQuestion": "Leningrad's 900-day siege resulted in over 1 million civilian deaths. How does this compare to the entire Allied loss count in Western Europe (D-Day through Germany's surrender)?",
+          "correctAnswer": "The civilian deaths in Leningrad alone exceeded all Allied military and civilian deaths in the entire Western European campaign",
+          "distractors": ["The Western European campaign was more deadly overall because the casualty rate per day was higher", "Leningrad's deaths were comparable — both represent approximately the same toll across their respective durations", "D-Day alone had more deaths because the concentrated assault caused losses faster than starvation could", "German civilian deaths in the firebombing campaign exceeded Leningrad's siege deaths in absolute terms"]
+        },
+        "true_false": {
+          "quizQuestion": "True or False: During Leningrad's worst siege winter, the minimum civilian bread ration fell to just 125 grams per day — bread that was only about 50% actual flour, supplemented with sawdust and ersatz materials.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        "fill_blank": {
+          "quizQuestion": "The 'Road of Life' — the only supply route into Leningrad — ran across the frozen surface of Lake ___ and operated only in winter when the ice was thick enough to support trucks.",
+          "correctAnswer": "Ladoga",
+          "distractors": ["Neva", "Peipus", "Onega", "Baikal"]
+        }
+      }
+    }
+  ]
+}
