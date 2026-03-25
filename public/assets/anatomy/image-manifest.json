@@ -1,0 +1,104 @@
+{
+  "source": "Servier Medical Art (CC-BY 4.0)",
+  "lastUpdated": "2026-03-25",
+  "description": "Complete manifest of anatomical structure images organized by system and structure type",
+  "images": {
+    "cardiovascular": {
+      "heart": "cardiovascular/servier/heart.png",
+      "heart_overview": "cardiovascular/servier/heart_overview.png",
+      "heart_cross_section_1": "cardiovascular/servier/heart_cross_section1.png",
+      "heart_cross_section_2": "cardiovascular/servier/heart_cross_section2.png",
+      "heart_layers": "cardiovascular/servier/heart_layers.png",
+      "heart_chambers_valves": "cardiovascular/servier/heart_valves.png",
+      "heart_myocardium": "cardiovascular/servier/heart_myocardium.png",
+      "heart_vascularization": "cardiovascular/servier/heart_vascularization.png",
+      "heart_conduction_system": "cardiovascular/servier/heart_conduction.png",
+      "aorta": "cardiovascular/servier/aorta.png",
+      "abdominal_aorta": "cardiovascular/servier/abdominal_aorta.png",
+      "arterial_system_1": "cardiovascular/servier/arterial_system.png",
+      "arterial_system_2": "cardiovascular/servier/arterial_system_2.png",
+      "artery_structure": "cardiovascular/servier/artery_layers.png",
+      "vein_structure": "cardiovascular/servier/vein_structure.png",
+      "deep_venous_system": "cardiovascular/servier/deep_venous_system.png",
+      "aortic_valve_regurgitation": "cardiovascular/servier/aortic_valve_regurg.png"
+    },
+    "respiratory_system": {
+      "lungs_overview": "respiratory_system/servier/lungs_01.png",
+      "lungs_lobes": "respiratory_system/servier/lungs_lobes.png",
+      "bronchus_healthy": "respiratory_system/servier/bronchus_healthy.png",
+      "intrapulmonary_airways": "respiratory_system/servier/intrapulmonary_airways.png",
+      "gas_exchange_pulmonary": "respiratory_system/servier/gas_exchange_pulmonary.png",
+      "gas_exchange_systemic": "respiratory_system/servier/gas_exchange_systemic.png"
+    },
+    "nervous_system": {
+      "brain_01": "nervous_system/servier/brain_01.png",
+      "brain_02": "nervous_system/servier/brain_02.png",
+      "brain_zones_1": "nervous_system/servier/brain_zones.png",
+      "brain_zones_2": "nervous_system/servier/brain_zones2.png",
+      "brainstem": "nervous_system/servier/brain_brainstem.png",
+      "brain_arteries": "nervous_system/servier/brain_arteries.png",
+      "hippocampus": "nervous_system/servier/hippocampus.png"
+    },
+    "digestive_system": {
+      "colon": "digestive_system/servier/colon.png",
+      "colon_cross_section": "digestive_system/servier/colon_cross_section.png",
+      "duodenum": "digestive_system/servier/duodenum.png",
+      "bile_secretion": "digestive_system/servier/bile_secretion.png",
+      "liver_cirrhosis": "digestive_system/servier/liver_cirrhosis.png"
+    },
+    "endocrine_system": {
+      "pancreas": "endocrine_system/servier/pancreas.png",
+      "pancreas_cross_section": "endocrine_system/servier/pancreas_cross_section.png",
+      "islet_of_langerhans": "endocrine_system/servier/islet_of_langerhans.png",
+      "adrenal_gland": "endocrine_system/servier/adrenal_gland.png",
+      "adrenal_gland_cells": "endocrine_system/servier/adrenal_gland_cells.png",
+      "thyroid_normal": "endocrine_system/servier/thyroid_normal.png"
+    },
+    "muscular_system": {
+      "muscle_contraction": "muscular_system/servier/muscle_contraction.png",
+      "actin_filament": "muscular_system/servier/actin.png"
+    },
+    "skeletal_system": {
+      "arm_bones": "skeletal_system/servier/arm_bones.png",
+      "ankle_fracture": "skeletal_system/servier/ankle_fracture.png"
+    },
+    "integumentary_system": {
+      "integumentary_overview": "integumentary/servier/integumentary_system.png",
+      "epidermis": "integumentary/servier/epidermis.png",
+      "hair_structure": "integumentary/servier/hair.png",
+      "dermatomes": "integumentary/servier/dermatomes.png",
+      "melanocyte": "integumentary/servier/melanocyte.png",
+      "langerhans_cell": "integumentary/servier/langerhans.png",
+      "burns_normal_skin": "integumentary/servier/burns_normal.png",
+      "burns_1st_degree": "integumentary/servier/burns_1st.png",
+      "burns_2nd_degree": "integumentary/servier/burns_2nd.png",
+      "burns_3rd_degree": "integumentary/servier/burns_3rd.png"
+    },
+    "lymphatic_immune_system": {
+      "lymphatic_system": "lymphatic_immune/servier/lymphatic_system.png",
+      "lymphatic_circulation": "lymphatic_immune/servier/lymphatic_circulation.png",
+      "lymphatic_vessel": "lymphatic_immune/servier/lymphatic_vessel.png",
+      "lymph_node": "lymphatic_immune/servier/lymph_node.png",
+      "spleen": "lymphatic_immune/servier/spleen.png"
+    },
+    "special_senses": {
+      "eye_structure": "special_senses/servier/eye_structure.png",
+      "eye_cornea": "special_senses/servier/eye_cornea.png",
+      "eye_iris": "special_senses/servier/eye_iris.png",
+      "eye_lens": "special_senses/servier/eye_lens.png",
+      "eye_vitreous": "special_senses/servier/eye_vitreous.png",
+      "eye_muscles": "special_senses/servier/eye_muscles.png",
+      "inner_ear_cochlea": "special_senses/servier/inner_ear_cochlea.png",
+      "inner_ear_stirrup": "special_senses/servier/inner_ear_stirrup.png"
+    },
+    "urinary_system": {
+      "kidney_01": "urinary_system/servier/kidney_01.png",
+      "kidney_02": "urinary_system/servier/kidney_02.png",
+      "kidney_overview": "urinary_system/servier/kidney_overview.png",
+      "kidney_with_adrenal": "urinary_system/servier/kidney_adrenal.png",
+      "nephron_01": "urinary_system/servier/nephron_01.png",
+      "nephron_02": "urinary_system/servier/nephron_02.png",
+      "glomerulus": "urinary_system/servier/glomerulus.png"
+    }
+  }
+}

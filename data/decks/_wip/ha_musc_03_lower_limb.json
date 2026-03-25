@@ -1,0 +1,631 @@
+[
+  {
+    "id": "ha_musc_055",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Lesser trochanter of femur",
+    "acceptableAlternatives": ["lesser trochanter"],
+    "chainThemeId": "hip_muscles",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "The iliopsoas — formed by psoas major (T12-L5) and iliacus (iliac fossa) — inserts on which bony landmark of the femur?",
+    "explanation": "Both psoas major and iliacus converge into a single tendon that inserts on the lesser trochanter of the femur. As the primary hip flexor, iliopsoas is the strongest hip flexor in the body and is essential for walking, running, and climbing stairs. It is innervated by the femoral nerve (L2-L4).",
+    "visualDescription": "Pixel art anterior pelvis cross-section showing psoas major descending from lumbar spine and iliacus from iliac fossa, both converging to insert on the lesser trochanter of the femur",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Iliopsoas",
+    "volatile": false,
+    "distractors": ["Greater trochanter of femur", "Tibial tuberosity", "Iliac crest", "Ischial tuberosity", "Gluteal tuberosity", "Head of femur", "Linea aspera"],
+    "variants": [
+      {
+        "quizQuestion": "Which single muscle group, formed by psoas major and iliacus, is considered the primary and strongest hip flexor?",
+        "correctAnswer": "Iliopsoas",
+        "explanation": "Iliopsoas is the combined name for psoas major (origin: T12-L5 vertebral bodies and transverse processes) and iliacus (origin: iliac fossa). Together they insert on the lesser trochanter and generate more hip flexion force than any other muscle."
+      },
+      {
+        "quizQuestion": "Psoas major originates from the T12-L5 vertebral bodies and transverse processes. Which nerve innervates the entire iliopsoas complex?",
+        "correctAnswer": "Femoral nerve (L2-L4)",
+        "explanation": "The femoral nerve, carrying fibers from L2 to L4, innervates iliopsoas. Femoral nerve injury — from trauma, retroperitoneal hematoma, or surgical positioning — causes weakness of hip flexion and knee extension."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_056",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Gluteus maximus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hip_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which muscle is the largest muscle in the human body by mass, originating from the ilium, sacrum, and coccyx, and producing hip extension and lateral rotation?",
+    "explanation": "Gluteus maximus is the largest muscle in the body by mass. It originates from the posterior ilium, sacrum, and coccyx, and inserts via the iliotibial tract and the gluteal tuberosity of the femur. It is a powerful hip extensor and lateral rotator, critical for climbing stairs, rising from a chair, and sprinting. Innervation: inferior gluteal nerve (L5-S2).",
+    "visualDescription": "Pixel art posterior view of pelvis and thigh showing the broad gluteus maximus muscle with origin on sacrum/ilium and insertion on iliotibial tract and femoral gluteal tuberosity",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gluteus_maximus_muscle",
+    "volatile": false,
+    "distractors": ["Quadriceps femoris", "Latissimus dorsi", "Gluteus medius", "Biceps femoris", "Soleus", "Adductor magnus"],
+    "variants": [
+      {
+        "quizQuestion": "Gluteus maximus inserts on two structures. One is the gluteal tuberosity of the femur — what is the other?",
+        "correctAnswer": "Iliotibial tract",
+        "explanation": "Gluteus maximus has a dual insertion: the gluteal tuberosity of the femur (deep fibers) and the iliotibial tract (superficial fibers). The IT band portion transmits force to the tibia and helps stabilize the knee in extension during standing."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_057",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Gluteus medius",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hip_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "Which hip abductor muscle, innervated by the superior gluteal nerve (L4-S1), stabilizes the pelvis during walking — and whose paralysis causes Trendelenburg gait?",
+    "explanation": "Gluteus medius originates from the outer ilium between the anterior and posterior gluteal lines and inserts on the greater trochanter. During the stance phase of gait, it prevents the opposite hip from dropping. Loss of gluteus medius function (e.g., from superior gluteal nerve injury) causes a characteristic Trendelenburg gait, where the pelvis tilts toward the unsupported side. Gluteus minimus (same nerve, same insertion) assists with abduction and adds medial rotation.",
+    "visualDescription": "Pixel art lateral hip view showing gluteus medius fanning from outer ilium to greater trochanter, with walking figure showing Trendelenburg pelvic drop on the opposite side",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gluteus_medius_muscle",
+    "volatile": false,
+    "distractors": ["Gluteus maximus", "Gluteus minimus", "Tensor fasciae latae", "Piriformis", "Iliopsoas", "Adductor longus"],
+    "variants": [
+      {
+        "quizQuestion": "Both gluteus medius and gluteus minimus insert on the greater trochanter. What is the primary action they share?",
+        "correctAnswer": "Hip abduction",
+        "explanation": "Gluteus medius and minimus are the primary hip abductors, both originating from the outer ilium and inserting on the greater trochanter. Both are innervated by the superior gluteal nerve (L4-S1). Gluteus minimus also contributes medial rotation of the hip."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_058",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Piriformis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hip_muscles",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 9,
+    "quizQuestion": "Which lateral hip rotator originates from the anterior sacrum, inserts on the greater trochanter, and is clinically significant because the sciatic nerve passes deep to it — giving rise to piriformis syndrome?",
+    "explanation": "Piriformis is a lateral rotator of the hip, originating from the anterior surface of the sacrum and inserting on the greater trochanter. The sciatic nerve (L4-S3) normally exits the pelvis through the greater sciatic foramen deep to piriformis. In piriformis syndrome, spasm or hypertrophy of the muscle compresses the sciatic nerve, causing pain and paresthesia down the leg that mimics disc herniation. Innervation: nerve to piriformis (S1-S2).",
+    "visualDescription": "Pixel art posterior pelvis cross-section showing piriformis running from sacrum to greater trochanter, with sciatic nerve passing deep to the muscle belly highlighted in yellow",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Piriformis_muscle",
+    "volatile": false,
+    "distractors": ["Obturator internus", "Gluteus minimus", "Gemellus superior", "Quadratus femoris", "Gluteus medius", "Biceps femoris"],
+    "variants": [
+      {
+        "quizQuestion": "The sciatic nerve — the largest nerve in the body — passes deep to which hip muscle as it exits the pelvis through the greater sciatic foramen?",
+        "correctAnswer": "Piriformis",
+        "explanation": "In most people, the sciatic nerve exits the pelvis via the greater sciatic foramen, deep to piriformis. In about 15% of people the nerve passes through or above piriformis, increasing susceptibility to piriformis syndrome."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_059",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Rectus femoris",
+    "acceptableAlternatives": [],
+    "chainThemeId": "quadriceps",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Of the four quadriceps muscles, which one is unique in crossing two joints — originating from the AIIS and contributing to both knee extension and hip flexion?",
+    "explanation": "Rectus femoris originates from the anterior inferior iliac spine (AIIS) and crosses both the hip (flexion) and knee (extension) joints before inserting on the tibial tuberosity via the patellar ligament. The other three quads (vastus lateralis, medialis, intermedius) originate on the femur and cross only the knee. All four are innervated by the femoral nerve (L2-L4).",
+    "visualDescription": "Pixel art anterior thigh showing four quadriceps muscles with rectus femoris highlighted in a different color, its origin at AIIS labeled, and the dual-joint crossing illustrated",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rectus_femoris_muscle",
+    "volatile": false,
+    "distractors": ["Vastus lateralis", "Vastus medialis", "Vastus intermedius", "Sartorius", "Iliopsoas", "Tensor fasciae latae"],
+    "variants": [
+      {
+        "quizQuestion": "All four quadriceps muscles insert on the tibial tuberosity via the patellar ligament. Which of the four originates from the anterior inferior iliac spine (AIIS)?",
+        "correctAnswer": "Rectus femoris",
+        "explanation": "Rectus femoris is the only bi-articular quadriceps muscle. Its AIIS origin places it above the hip joint, enabling it to flex the hip in addition to extending the knee — important for kicking actions."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_060",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Vastus lateralis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "quadriceps",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which quadriceps muscle is the largest of the four, originating from the greater trochanter and linea aspera, and serves as a common intramuscular injection site?",
+    "explanation": "Vastus lateralis is the largest of the four quadriceps muscles. It originates from the greater trochanter and linea aspera of the femur and inserts on the tibial tuberosity via the patellar ligament. Its large bulk, predictable location, and distance from major vessels make it the preferred IM injection site in infants and the anterolateral thigh site in adults. Innervation: femoral nerve (L2-L4).",
+    "visualDescription": "Pixel art lateral thigh view showing vastus lateralis as the dominant outer quad muscle, with a syringe callout indicating IM injection technique",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vastus_lateralis_muscle",
+    "volatile": false,
+    "distractors": ["Rectus femoris", "Vastus medialis", "Vastus intermedius", "Biceps femoris", "Gluteus maximus", "Adductor magnus"],
+    "variants": [
+      {
+        "quizQuestion": "The anterolateral thigh is a preferred intramuscular injection site in adults and infants. Which specific quadriceps muscle occupies this region?",
+        "correctAnswer": "Vastus lateralis",
+        "explanation": "Vastus lateralis is the largest quad muscle and the preferred IM injection site because it is well-defined, accessible, and free of major vessels and nerves on its lateral surface."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_061",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Vastus medialis",
+    "acceptableAlternatives": ["VMO", "vastus medialis oblique"],
+    "chainThemeId": "quadriceps",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Which quadriceps muscle has a distal oblique fiber arrangement (the VMO) that provides medial stabilization of the patella — and whose weakness contributes to patellofemoral pain syndrome?",
+    "explanation": "Vastus medialis (and especially its distal oblique fibers, the VMO — vastus medialis oblique) pulls the patella medially during knee extension, counteracting the lateral pull of vastus lateralis. VMO weakness or atrophy allows the patella to track laterally, causing patellofemoral pain syndrome (runner's knee). Vastus medialis originates from the intertrochanteric line and linea aspera. Innervation: femoral nerve (L2-L4).",
+    "visualDescription": "Pixel art anterior knee showing vastus medialis with its oblique distal fibers highlighted, patella in the center with arrows showing medial vs lateral patellar tracking forces",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vastus_medialis",
+    "volatile": false,
+    "distractors": ["Vastus lateralis", "Rectus femoris", "Vastus intermedius", "Sartorius", "Gracilis", "Adductor longus"],
+    "variants": [
+      {
+        "quizQuestion": "Patellofemoral pain syndrome ('runner's knee') is often linked to weakness of which quadriceps muscle and its oblique fibers that pull the patella medially?",
+        "correctAnswer": "Vastus medialis (VMO)",
+        "explanation": "The VMO (vastus medialis oblique) is the distal portion of vastus medialis with fibers running at 50-55 degrees. It is the primary medial stabilizer of the patella; its weakness lets the patella drift laterally, causing anterior knee pain."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_062",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Vastus intermedius",
+    "acceptableAlternatives": [],
+    "chainThemeId": "quadriceps",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "Which quadriceps muscle lies deepest of the four, originating from the anterior shaft of the femur, and is largely hidden beneath rectus femoris?",
+    "explanation": "Vastus intermedius is the deepest of the four quadriceps muscles, originating from the anterior and lateral surfaces of the femoral shaft. It lies directly beneath rectus femoris. Like the other vasti, it inserts on the tibial tuberosity via the patellar ligament and is innervated by the femoral nerve (L2-L4). Its deep position makes it the most difficult to palpate or isolate clinically.",
+    "visualDescription": "Pixel art cross-sectional view of mid-thigh showing four quadriceps layers, with vastus intermedius colored to highlight its deep position between the three other quad muscles and the femur",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vastus_intermedius_muscle",
+    "volatile": false,
+    "distractors": ["Rectus femoris", "Vastus lateralis", "Vastus medialis", "Adductor longus", "Sartorius", "Pectineus"],
+    "variants": [
+      {
+        "quizQuestion": "Of the four quadriceps muscles (rectus femoris, vastus lateralis, vastus medialis, vastus intermedius), which originates from the anterior femoral shaft and is positioned deepest?",
+        "correctAnswer": "Vastus intermedius",
+        "explanation": "Vastus intermedius originates from the anterior femoral shaft and is covered superficially by rectus femoris. All four quad muscles converge on the quadriceps tendon and insert at the tibial tuberosity via the patellar ligament."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_063",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Sartorius",
+    "acceptableAlternatives": [],
+    "chainThemeId": "quadriceps",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Which is the longest muscle in the human body, originating from the ASIS and crossing obliquely to insert on the medial tibia at the pes anserinus — known as the 'tailor's muscle'?",
+    "explanation": "Sartorius, the longest muscle in the body, originates from the anterior superior iliac spine (ASIS) and runs diagonally across the thigh to insert on the medial tibia as part of the pes anserinus (along with gracilis and semitendinosus). Its actions — hip flexion, abduction, and lateral rotation combined with knee flexion — reproduce the cross-legged 'tailor's position,' hence the name (Latin: sartor = tailor). Innervation: femoral nerve (L2-L3).",
+    "visualDescription": "Pixel art anterior thigh with a long diagonal band representing sartorius running from ASIS to medial tibia, with a small icon of a cross-legged sitting tailor for the nickname reference",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sartorius_muscle",
+    "volatile": false,
+    "distractors": ["Rectus femoris", "Gracilis", "Tensor fasciae latae", "Adductor longus", "Semitendinosus", "Iliotibial band"],
+    "variants": [
+      {
+        "quizQuestion": "Sartorius, gracilis, and semitendinosus all insert on the medial tibia together. What is the anatomical name for this three-tendon insertion point?",
+        "correctAnswer": "Pes anserinus",
+        "explanation": "Pes anserinus ('goose's foot') is the combined insertion of sartorius, gracilis, and semitendinosus on the medial tibia. A useful mnemonic: 'Say Grace before Tea' (Sartorius, Gracilis, Semitendinosus). Pes anserinus bursitis is a common cause of medial knee pain."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_064",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Obturator nerve (L2-L4)",
+    "acceptableAlternatives": ["obturator nerve"],
+    "chainThemeId": "adductors",
+    "answerTypePoolId": "nerve_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Adductor longus, adductor brevis, and gracilis all share which nerve supply for hip adduction?",
+    "explanation": "Adductor longus (pubic body → linea aspera), adductor brevis (inferior pubic ramus → proximal linea aspera), and gracilis (inferior pubic ramus → pes anserinus) are all innervated by the obturator nerve (L2-L4). The obturator nerve exits through the obturator foramen and supplies the medial compartment of the thigh. Obturator nerve injury (e.g., during pelvic surgery) causes weakness of hip adduction and medial thigh sensory loss.",
+    "visualDescription": "Pixel art medial thigh view showing three adductor muscles (longus, brevis, gracilis) fanned out from pubic bone, with obturator nerve pathway highlighted passing through the obturator foramen",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Obturator_nerve",
+    "volatile": false,
+    "distractors": ["Femoral nerve (L2-L4)", "Sciatic nerve (L4-S3)", "Superior gluteal nerve (L4-S1)", "Tibial nerve (L4-S3)", "Common fibular nerve", "Inferior gluteal nerve"],
+    "variants": [
+      {
+        "quizQuestion": "Which nerve innervates the medial compartment of the thigh (adductor group), and what spinal levels does it carry?",
+        "correctAnswer": "Obturator nerve, L2-L4",
+        "explanation": "The obturator nerve (L2-L4) enters the medial thigh through the obturator foramen and supplies the adductors (longus, brevis, magnus adductor part) and gracilis, plus a cutaneous branch to the medial thigh."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_065",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Adductor magnus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "adductors",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Which is the largest adductor muscle, with a dual nerve supply — obturator nerve for its adductor part and the tibial division of the sciatic nerve for its hamstring part — and what are its two insertions?",
+    "explanation": "Adductor magnus is the largest adductor. Its adductor part originates from the ischiopubic ramus and inserts on the linea aspera (innervated by obturator nerve). Its hamstring part originates from the ischial tuberosity and inserts on the adductor tubercle (innervated by the tibial division of the sciatic nerve), functioning more like a hamstring in hip extension. This dual nerve supply reflects its embryological origin from both adductor and hamstring muscle groups.",
+    "visualDescription": "Pixel art medial and posterior thigh showing adductor magnus as a large triangular muscle, with two color-coded portions: adductor part (obturator nerve, linea aspera insertion) and hamstring part (sciatic nerve, adductor tubercle insertion)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adductor_magnus_muscle",
+    "volatile": false,
+    "distractors": ["Adductor longus", "Adductor brevis", "Gracilis", "Semimembranosus", "Biceps femoris", "Gluteus maximus"],
+    "variants": [
+      {
+        "quizQuestion": "Adductor magnus has a unique 'hiatus' — a gap in the tendon near the adductor tubercle. What passes through this adductor hiatus?",
+        "correctAnswer": "Femoral artery and vein (becoming popliteal vessels)",
+        "explanation": "The adductor hiatus is an opening in the adductor magnus tendon through which the femoral artery and vein pass to become the popliteal artery and vein behind the knee. This is a clinically important transition point."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_066",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Gracilis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "adductors",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which slender adductor muscle crosses two joints — adducting the hip and flexing the knee — inserting on the medial tibia at the pes anserinus alongside sartorius and semitendinosus?",
+    "explanation": "Gracilis (Latin: 'slender') is the only adductor that crosses the knee joint, inserting on the medial tibia at the pes anserinus. It adducts the hip and flexes the knee. Along with sartorius and semitendinosus, it forms the pes anserinus — remembered by 'Say Grace before Tea.' Innervation: obturator nerve (L2-L3). Gracilis is frequently used as a free muscle flap in reconstructive surgery due to its expendable function and reliable neurovascular pedicle.",
+    "visualDescription": "Pixel art medial thigh showing gracilis as a long, thin vertical strap muscle running from inferior pubic ramus down to medial tibia, with pes anserinus confluence labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gracilis_muscle",
+    "volatile": false,
+    "distractors": ["Adductor longus", "Sartorius", "Semitendinosus", "Semimembranosus", "Adductor brevis", "Adductor magnus"],
+    "variants": [
+      {
+        "quizQuestion": "The mnemonic 'Say Grace before Tea' refers to three muscles at the pes anserinus. What does 'Grace' stand for?",
+        "correctAnswer": "Gracilis",
+        "explanation": "'Say Grace before Tea' = Sartorius, Gracilis, Semitendinosus — the three muscles inserting at the pes anserinus on the medial tibia. 'Grace' = gracilis. This pes anserinus region is a common site of bursitis causing medial knee pain."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_067",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Ischial tuberosity",
+    "acceptableAlternatives": ["ischial tuberosities"],
+    "chainThemeId": "hamstrings",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Semitendinosus and semimembranosus both originate from which bony landmark — the bone you sit on?",
+    "explanation": "Semitendinosus and semimembranosus both originate from the ischial tuberosity (the bony prominence you sit on). The long head of biceps femoris also originates from the ischial tuberosity, making all three long hamstring heads share this origin. The short head of biceps femoris is the exception, originating from the linea aspera of the femur. Hamstring injuries (proximal avulsions) commonly occur at the ischial tuberosity during sprinting.",
+    "visualDescription": "Pixel art posterior pelvis showing ischial tuberosity prominently labeled, with three hamstring muscle origins (semimembranosus, semitendinosus, and long head of biceps femoris) radiating downward from it",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hamstring",
+    "volatile": false,
+    "distractors": ["Linea aspera", "Lesser trochanter", "Greater trochanter", "AIIS", "ASIS", "Pubic tubercle", "Sacrum"],
+    "variants": [
+      {
+        "quizQuestion": "Of the three hamstring muscles, biceps femoris has both a long and a short head. Where does the short head of biceps femoris originate — unlike the other hamstrings?",
+        "correctAnswer": "Linea aspera of the femur",
+        "explanation": "The short head of biceps femoris originates from the linea aspera (and lateral supracondylar ridge) of the femur — not the ischial tuberosity. This makes it the only hamstring portion that does NOT contribute to hip extension, and it is innervated by the common fibular nerve rather than the tibial nerve."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_068",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Biceps femoris",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hamstrings",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Which hamstring muscle inserts on the head of the fibula, producing knee flexion and lateral rotation — and is unique in having its two heads supplied by different nerves?",
+    "explanation": "Biceps femoris inserts on the head of the fibula (rather than the medial tibia like the other hamstrings). It has two heads: the long head (origin: ischial tuberosity, nerve: tibial nerve) and the short head (origin: linea aspera, nerve: common fibular nerve). Both heads flex the knee and laterally rotate the leg; the long head also extends the hip. This dual innervation means that a sciatic nerve injury at the level of the thigh may spare the short head (common fibular branch) while affecting the long head (tibial branch).",
+    "visualDescription": "Pixel art posterior thigh showing biceps femoris with its two heads merging into a single tendon inserting on the fibular head, with tibial and common fibular nerve branches labeled in different colors",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biceps_femoris_muscle",
+    "volatile": false,
+    "distractors": ["Semitendinosus", "Semimembranosus", "Gracilis", "Gastrocnemius", "Fibularis longus", "Popliteus"],
+    "variants": [
+      {
+        "quizQuestion": "Semitendinosus inserts on the medial tibia at the pes anserinus. Where does biceps femoris insert instead?",
+        "correctAnswer": "Head of fibula",
+        "explanation": "Biceps femoris inserts on the head of the fibula, on the lateral side of the knee. This lateral insertion allows it to produce lateral rotation of the leg at the knee, in contrast to semitendinosus and semimembranosus which produce medial rotation."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_069",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Semitendinosus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hamstrings",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which hamstring muscle inserts on the medial tibia as part of the pes anserinus, and is frequently harvested as a graft for ACL reconstruction due to its strong, cord-like distal tendon?",
+    "explanation": "Semitendinosus has a particularly long and strong cord-like tendon at its distal end, making it ideal for ACL reconstruction grafts (often harvested together with gracilis for a 'double-bundle' graft). It inserts on the medial tibia at the pes anserinus and produces knee flexion, medial rotation, and hip extension. Innervation: tibial nerve (L5-S2). Semimembranosus inserts separately on the medial tibial condyle.",
+    "visualDescription": "Pixel art posterior thigh showing semitendinosus with its distinctive long distal tendon inserting at pes anserinus on medial tibia, with a dotted line indicating harvest for ACL graft",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Semitendinosus_muscle",
+    "volatile": false,
+    "distractors": ["Semimembranosus", "Gracilis", "Biceps femoris", "Sartorius", "Popliteus", "Plantaris"],
+    "variants": [
+      {
+        "quizQuestion": "Semimembranosus and semitendinosus are often confused. Which one inserts on the medial tibial condyle (rather than the pes anserinus)?",
+        "correctAnswer": "Semimembranosus",
+        "explanation": "Semimembranosus inserts on the posterior medial tibial condyle. It also sends expansions to the posterior capsule of the knee (oblique popliteal ligament) and contributes to the popliteal fascia. Semitendinosus inserts at the pes anserinus alongside sartorius and gracilis."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_070",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Tibialis anterior",
+    "acceptableAlternatives": [],
+    "chainThemeId": "leg_anterior",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which leg muscle originates from the lateral tibial condyle, inserts on the medial cuneiform and base of MT1, and is the primary muscle for dorsiflexion and inversion of the foot?",
+    "explanation": "Tibialis anterior is the largest and most medially placed muscle in the anterior compartment of the leg. It originates from the lateral tibial condyle and proximal tibial shaft and inserts on the medial cuneiform and base of the first metatarsal (MT1). Its primary actions are dorsiflexion and inversion. It is innervated by the deep fibular nerve (L4-L5). Weakness causes foot drop; compartment syndrome of the anterior leg primarily affects tibialis anterior.",
+    "visualDescription": "Pixel art anterior leg showing tibialis anterior as the dominant anterior compartment muscle, with its tendon crossing medially to insert on medial cuneiform and MT1, deep fibular nerve labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tibialis_anterior_muscle",
+    "volatile": false,
+    "distractors": ["Extensor digitorum longus", "Fibularis longus", "Tibialis posterior", "Extensor hallucis longus", "Soleus", "Fibularis brevis"],
+    "variants": [
+      {
+        "quizQuestion": "Deep fibular nerve palsy causes foot drop. Which anterior compartment muscle — the primary dorsiflexor — is most directly responsible for lifting the foot during walking?",
+        "correctAnswer": "Tibialis anterior",
+        "explanation": "Tibialis anterior is the primary dorsiflexor innervated by the deep fibular nerve (L4-L5). Its paralysis (from common fibular nerve injury at the fibular head or L4-L5 disc herniation) causes foot drop — the foot cannot be lifted during swing phase, causing a steppage gait."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_071",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Deep fibular nerve",
+    "acceptableAlternatives": ["deep peroneal nerve"],
+    "chainThemeId": "leg_anterior",
+    "answerTypePoolId": "nerve_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Tibialis anterior, extensor digitorum longus, and extensor hallucis longus all share which nerve innervation in the anterior compartment of the leg?",
+    "explanation": "All muscles in the anterior compartment of the leg — tibialis anterior (dorsiflexion + inversion), extensor digitorum longus (toe extension + dorsiflexion), and extensor hallucis longus (great toe extension + dorsiflexion) — are innervated by the deep fibular nerve (also called the deep peroneal nerve). The deep fibular nerve is a branch of the common fibular nerve (L4-L5). Injury to the common fibular nerve at the fibular head causes foot drop affecting all three muscles.",
+    "visualDescription": "Pixel art anterior leg cross-section showing three anterior compartment muscles with deep fibular nerve running between tibialis anterior and extensor digitorum longus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Deep_fibular_nerve",
+    "volatile": false,
+    "distractors": ["Superficial fibular nerve", "Tibial nerve", "Femoral nerve", "Saphenous nerve", "Sural nerve", "Obturator nerve"],
+    "variants": [
+      {
+        "quizQuestion": "Extensor hallucis longus originates from the fibula and interosseous membrane and inserts on the distal phalanx of the great toe. What action does it produce?",
+        "correctAnswer": "Extension of the great toe and dorsiflexion of the foot",
+        "explanation": "Extensor hallucis longus extends the great toe (hallux) and assists with dorsiflexion of the ankle. It runs through the anterior compartment, innervated by the deep fibular nerve. Its tendon is palpable on the dorsum of the foot when the big toe is extended against resistance."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_072",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Gastrocnemius",
+    "acceptableAlternatives": [],
+    "chainThemeId": "leg_posterior",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which superficial posterior leg muscle originates from the medial and lateral femoral condyles, crosses the knee joint, and inserts on the calcaneus via the Achilles tendon?",
+    "explanation": "Gastrocnemius has two heads originating from the medial and lateral femoral condyles. It is the most superficial calf muscle and the only one crossing both the knee and ankle joints. Together with soleus, it forms the triceps surae, sharing the Achilles tendon (calcaneal tendon) insertion on the calcaneus. Actions: plantarflexion and knee flexion. Innervation: tibial nerve (S1-S2). Its bi-articular nature means it is more effective at plantarflexion with the knee extended (e.g., sprinting) than with the knee flexed.",
+    "visualDescription": "Pixel art posterior leg showing gastrocnemius as the prominent superficial calf muscle with both heads originating at femoral condyles, converging with soleus into the Achilles tendon at the calcaneus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastrocnemius_muscle",
+    "volatile": false,
+    "distractors": ["Soleus", "Tibialis posterior", "Plantaris", "Fibularis longus", "Flexor hallucis longus", "Popliteus"],
+    "variants": [
+      {
+        "quizQuestion": "Gastrocnemius and soleus merge to form which tendon — the strongest tendon in the human body — inserting on the calcaneus?",
+        "correctAnswer": "Achilles tendon (calcaneal tendon)",
+        "explanation": "The Achilles tendon (calcaneal tendon) is formed by the convergence of gastrocnemius and soleus tendons. It is the strongest tendon in the body and transmits the full force of calf contraction to the heel bone during walking, running, and jumping. Rupture (typically at 2-6 cm above insertion) causes loss of plantarflexion power and a positive Thompson test."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_073",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Soleus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "leg_posterior",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which deep calf muscle originates from the posterior tibia and fibula, does NOT cross the knee, and functions as the most important postural plantarflexor for standing upright?",
+    "explanation": "Soleus lies deep to gastrocnemius, originating from the posterior tibia and fibula. Because it does not cross the knee, it is the dominant plantarflexor when the knee is flexed (e.g., seated calf raises). It contains predominantly slow-twitch (Type I) muscle fibers, making it highly fatigue-resistant — essential for sustained standing and low-level walking. Together with gastrocnemius it forms the triceps surae. Innervation: tibial nerve (S1-S2). The soleus also acts as a 'peripheral heart,' pumping venous blood upward against gravity.",
+    "visualDescription": "Pixel art posterior leg cross-section showing soleus as a flat muscle deep to gastrocnemius, with origin points on tibia and fibula labeled, and both muscles converging on Achilles tendon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Soleus_muscle",
+    "volatile": false,
+    "distractors": ["Gastrocnemius", "Tibialis posterior", "Flexor digitorum longus", "Plantaris", "Fibularis longus", "Popliteus"],
+    "variants": [
+      {
+        "quizQuestion": "Gastrocnemius and soleus together are called the triceps surae. Which calf muscle is dominant during seated plantarflexion (knee flexed at 90 degrees) — and why?",
+        "correctAnswer": "Soleus",
+        "explanation": "With the knee flexed, gastrocnemius is shortened at its femoral origin and loses mechanical advantage. Soleus, which does not cross the knee, maintains its full length and dominates plantarflexion in this position. This is why seated calf raises primarily isolate soleus."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_074",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Tibialis posterior",
+    "acceptableAlternatives": [],
+    "chainThemeId": "leg_posterior",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 7,
+    "quizQuestion": "Which deep posterior leg muscle originates from the posterior tibia, fibula, and interosseous membrane, inserts on the navicular and plantar tarsal bones, and is the primary supporter of the medial longitudinal arch?",
+    "explanation": "Tibialis posterior is the deepest and most centrally placed muscle in the deep posterior compartment. It inserts on the navicular tuberosity and fans out to the plantar tarsal bones, forming a sling that supports the medial longitudinal arch. Its actions are inversion and plantarflexion. Tibialis posterior tendon dysfunction (TPTD) is the most common cause of acquired flat foot (adult acquired flatfoot deformity). Innervation: tibial nerve (L4-L5).",
+    "visualDescription": "Pixel art medial foot and leg cross-section showing tibialis posterior tendon curving behind the medial malleolus and fanning out to insert on navicular and plantar tarsal bones, with medial arch highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tibialis_posterior_muscle",
+    "volatile": false,
+    "distractors": ["Tibialis anterior", "Soleus", "Flexor hallucis longus", "Fibularis longus", "Flexor digitorum longus", "Popliteus"],
+    "variants": [
+      {
+        "quizQuestion": "Acquired adult flatfoot is most commonly caused by dysfunction of which single tendon that normally supports the medial longitudinal arch?",
+        "correctAnswer": "Tibialis posterior tendon",
+        "explanation": "Tibialis posterior tendon dysfunction (TPTD) — often from progressive degeneration — causes the medial longitudinal arch to collapse, producing a painful flat foot deformity with 'too many toes' sign on posterior examination. It is the most common cause of adult acquired flatfoot."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_075",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Achilles tendon",
+    "acceptableAlternatives": ["calcaneal tendon"],
+    "chainThemeId": "leg_posterior",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "Gastrocnemius and soleus together (the triceps surae) insert on the calcaneus via which tendon — the strongest tendon in the human body?",
+    "explanation": "The Achilles tendon (calcaneal tendon) is formed by the fusion of the gastrocnemius and soleus tendons and inserts on the posterior calcaneus. It is the strongest and thickest tendon in the body, capable of transmitting forces up to 12 times body weight during running. Rupture typically occurs 2-6 cm above the calcaneal insertion in the 'watershed zone' of poor blood supply. A positive Thompson (Simmonds) test — squeezing the calf produces no foot movement — confirms rupture.",
+    "visualDescription": "Pixel art lateral leg showing gastrocnemius and soleus converging into the Achilles tendon, inserting prominently on the posterior calcaneus, with rupture zone marked",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Achilles_tendon",
+    "volatile": false,
+    "distractors": ["Patellar tendon", "Quadriceps tendon", "Fibularis longus tendon", "Tibialis posterior tendon", "Plantar fascia", "Plantaris tendon"],
+    "variants": [
+      {
+        "quizQuestion": "The Thompson (Simmonds) test diagnoses rupture of which tendon by squeezing the calf and observing whether the foot plantarflexes?",
+        "correctAnswer": "Achilles tendon",
+        "explanation": "The Thompson test: with the patient prone and knee bent, squeezing the calf normally causes the foot to plantarflex. If no movement occurs, the Achilles tendon is ruptured (positive test). Acute Achilles rupture typically occurs during sudden push-off activities in recreational athletes."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_076",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Fibularis (peroneus) longus",
+    "acceptableAlternatives": ["peroneus longus", "fibularis longus"],
+    "chainThemeId": "leg_lateral",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which lateral compartment leg muscle originates from the lateral fibula, crosses under the foot to insert on the medial cuneiform and base of MT1, and is a primary evertor of the foot?",
+    "explanation": "Fibularis (peroneus) longus originates from the lateral fibula, runs behind the lateral malleolus, then crosses under the foot via the cuboid notch to insert on the medial cuneiform and base of MT1 — the same insertion as tibialis anterior (they form a 'stirrup' supporting the transverse arch). Its primary actions are eversion and plantarflexion. It also supports the lateral and transverse arches of the foot. Innervation: superficial fibular nerve.",
+    "visualDescription": "Pixel art lateral leg and plantar foot showing fibularis longus tendon routing: lateral fibula origin, behind lateral malleolus, under the cuboid notch, crossing plantarly to medial cuneiform and MT1 insertion",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibularis_longus_muscle",
+    "volatile": false,
+    "distractors": ["Fibularis brevis", "Tibialis anterior", "Extensor digitorum longus", "Tibialis posterior", "Fibularis tertius", "Soleus"],
+    "variants": [
+      {
+        "quizQuestion": "Fibularis longus and tibialis anterior have the same insertion (medial cuneiform and base of MT1) but opposite actions. What action does fibularis longus produce that tibialis anterior does NOT?",
+        "correctAnswer": "Eversion of the foot",
+        "explanation": "Tibialis anterior inverts and dorsiflexes the foot; fibularis longus everts and plantarflexes it. Despite sharing the same insertion, their differing paths (fibularis longus wraps under the foot from the lateral side) produce antagonistic eversion vs inversion forces. Together they support the transverse arch like a 'stirrup.'"
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_077",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Fibularis (peroneus) brevis",
+    "acceptableAlternatives": ["peroneus brevis", "fibularis brevis"],
+    "chainThemeId": "leg_lateral",
+    "answerTypePoolId": "muscle_names",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "Which lateral compartment leg muscle originates from the distal fibula and inserts on the base of the 5th metatarsal — the bony prominence commonly fractured in 'dancer's fracture' (avulsion injury)?",
+    "explanation": "Fibularis brevis originates from the distal two-thirds of the lateral fibula and inserts on the base (styloid process) of the 5th metatarsal (MT5). Its primary action is eversion of the foot. During sudden inversion sprains, forceful contraction of fibularis brevis can avulse the base of MT5 — this is a 'Jones-type' or 'dancer's fracture' avulsion. It is innervated by the superficial fibular nerve, along with fibularis longus.",
+    "visualDescription": "Pixel art lateral foot showing fibularis brevis tendon inserting on the prominent base of MT5 (5th metatarsal tuberosity), with an avulsion fracture fragment indicated at the insertion point",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibularis_brevis_muscle",
+    "volatile": false,
+    "distractors": ["Fibularis longus", "Fibularis tertius", "Extensor digitorum longus", "Tibialis posterior", "Flexor digiti minimi", "Abductor digiti minimi"],
+    "variants": [
+      {
+        "quizQuestion": "Both fibularis longus and fibularis brevis are innervated by which nerve — a branch of the common fibular nerve?",
+        "correctAnswer": "Superficial fibular nerve",
+        "explanation": "The superficial fibular nerve (superficial peroneal nerve) innervates both fibularis longus and brevis in the lateral compartment of the leg. It also provides cutaneous innervation to the dorsum of the foot (except the first web space, which is the deep fibular nerve)."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_078",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Superficial fibular nerve",
+    "acceptableAlternatives": ["superficial peroneal nerve"],
+    "chainThemeId": "leg_lateral",
+    "answerTypePoolId": "nerve_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which nerve innervates the lateral compartment of the leg (fibularis longus and brevis), and is a branch of the common fibular nerve?",
+    "explanation": "The superficial fibular nerve (superficial peroneal nerve) branches from the common fibular nerve near the fibular head and descends through the lateral compartment to supply fibularis longus and brevis (evertors). It then pierces the fascia in the distal leg to provide cutaneous innervation to most of the dorsum of the foot. Injury (e.g., from ankle sprain, fibular fracture, or lateral compartment syndrome) causes weakness of foot eversion and sensory loss on the dorsum of the foot.",
+    "visualDescription": "Pixel art lateral leg cross-section showing common fibular nerve splitting at fibular head into deep fibular nerve (anterior compartment) and superficial fibular nerve (lateral compartment, supplying fibularis longus and brevis)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Superficial_fibular_nerve",
+    "volatile": false,
+    "distractors": ["Deep fibular nerve", "Tibial nerve", "Sural nerve", "Saphenous nerve", "Common fibular nerve", "Sciatic nerve"],
+    "variants": [
+      {
+        "quizQuestion": "The common fibular nerve divides into two branches near the head of the fibula. Name both branches and their compartment targets.",
+        "correctAnswer": "Deep fibular nerve (anterior compartment) and superficial fibular nerve (lateral compartment)",
+        "explanation": "At the fibular neck, the common fibular nerve divides into: (1) deep fibular nerve — enters anterior compartment to innervate tibialis anterior, extensor digitorum longus, extensor hallucis longus; (2) superficial fibular nerve — enters lateral compartment to innervate fibularis longus and brevis."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_079",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Sciatic nerve",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hip_muscles",
+    "answerTypePoolId": "nerve_names",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Which nerve — the largest in the human body, carrying L4-S3 fibers — exits the pelvis through the greater sciatic foramen deep to piriformis and supplies the hamstrings and entire leg below the knee?",
+    "explanation": "The sciatic nerve (L4-S3) is the largest nerve in the body, roughly the width of a thumb. It exits the pelvis through the greater sciatic foramen, typically deep to piriformis, and descends through the posterior thigh to supply the hamstrings (via its tibial and common fibular branches). Near the popliteal fossa, it divides into the tibial nerve (posterior leg and sole) and common fibular nerve (anterior and lateral leg, dorsum of foot). Sciatic nerve injury causes global weakness below the knee and posterior thigh sensory loss.",
+    "visualDescription": "Pixel art posterior full-leg view showing sciatic nerve as a thick yellow band exiting below piriformis, traveling down posterior thigh, and dividing at the popliteal fossa into tibial and common fibular nerves",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sciatic_nerve",
+    "volatile": false,
+    "distractors": ["Femoral nerve", "Obturator nerve", "Common fibular nerve", "Tibial nerve", "Superior gluteal nerve", "Pudendal nerve"],
+    "variants": [
+      {
+        "quizQuestion": "The sciatic nerve divides into the tibial nerve and common fibular nerve near the popliteal fossa. Which spinal levels (roots) does the full sciatic nerve carry?",
+        "correctAnswer": "L4-S3",
+        "explanation": "The sciatic nerve carries ventral rami of L4, L5, S1, S2, and S3 — five spinal levels. It is actually two nerves (tibial and common fibular) bound in a common sheath. L4-L5-S1 are the most clinically important roots: L4-L5 disc herniations and L5-S1 disc herniations are the most common causes of true sciatica."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_080",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Pes anserinus",
+    "acceptableAlternatives": ["pes anserine"],
+    "chainThemeId": "hamstrings",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "Three muscles insert together on the medial tibia at a shared site called the pes anserinus ('goose's foot'). Using the mnemonic 'Say Grace before Tea,' name all three muscles.",
+    "explanation": "Pes anserinus is the common insertion of Sartorius (ASIS → medial tibia; femoral nerve), Gracilis (inferior pubic ramus → medial tibia; obturator nerve), and Semitendinosus (ischial tuberosity → medial tibia; tibial nerve). The mnemonic 'Say Grace before Tea' (S-G-S) helps remember the order. Pes anserinus bursitis, an inflammation of the bursa beneath this insertion, causes medial knee pain typically 2-3 cm below the joint line — common in obese, osteoarthritic, or diabetic patients.",
+    "visualDescription": "Pixel art medial knee showing three tendons (sartorius, gracilis, semitendinosus) converging like a goose's foot on the medial tibia, each labeled with its origin and nerve supply",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pes_anserinus_(leg)",
+    "volatile": false,
+    "distractors": ["Semimembranosus, biceps femoris, gracilis", "Sartorius, adductor longus, gracilis", "Gracilis, semimembranosus, sartorius", "Sartorius, gracilis, biceps femoris", "Semitendinosus, biceps femoris, sartorius"],
+    "variants": [
+      {
+        "quizQuestion": "Pes anserinus bursitis causes medial knee pain 2-3 cm below the joint line. Which three tendons overlie this bursa?",
+        "correctAnswer": "Sartorius, gracilis, and semitendinosus",
+        "explanation": "The pes anserinus bursa lies between the combined tendon of sartorius, gracilis, and semitendinosus, and the medial collateral ligament. Bursitis at this site is common in obese patients, those with knee osteoarthritis, and diabetics. It is treated with rest, NSAIDs, corticosteroid injection, and weight loss."
+      }
+    ]
+  }
+]

@@ -1,0 +1,634 @@
+{
+  "facts": [
+    {
+      "id": "ha_cardio_026",
+      "correctAnswer": "Aorta",
+      "acceptableAlternatives": ["the aorta"],
+      "chainThemeId": "aorta_branches",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "quizQuestion": "Which is the largest artery in the human body, originating from the left ventricle and carrying oxygenated blood to the systemic circulation?",
+      "explanation": "The aorta is the largest artery in the body. It arises from the left ventricle and is divided into four segments: the ascending aorta, the aortic arch, the thoracic descending aorta, and the abdominal aorta. All systemic arteries ultimately branch off from it.",
+      "visualDescription": "Pixel art cross-section of the chest showing a large red vessel arching up from the heart, branching into smaller arteries, labeled diagram style",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Pulmonary trunk", "Superior vena cava", "Femoral artery", "Common carotid artery", "Subclavian artery", "Coronary artery", "Celiac trunk"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ___ is the largest artery in the body, originating from the left ventricle.",
+          "correctAnswer": "aorta",
+          "distractors": ["pulmonary trunk", "femoral artery", "subclavian artery"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The aorta originates from the right ventricle.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_027",
+      "correctAnswer": "Aortic arch",
+      "acceptableAlternatives": ["arch of the aorta"],
+      "chainThemeId": "aorta_branches",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Three major arteries supplying blood to the head, neck, and upper limbs branch off which segment of the aorta?",
+      "explanation": "The aortic arch gives rise to three great vessels: the brachiocephalic trunk (which then divides into the right common carotid and right subclavian arteries), the left common carotid artery, and the left subclavian artery. These branches supply the head, neck, brain, and both upper limbs.",
+      "visualDescription": "Pixel art diagram of the aortic arch curving over the heart, with three labeled branches emerging from its top surface in sequence",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Ascending aorta", "Thoracic aorta", "Abdominal aorta", "Pulmonary trunk", "Coronary sinus", "Common iliac arteries", "Celiac trunk"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The brachiocephalic trunk, left common carotid, and left subclavian arteries all arise from which structure?",
+          "correctAnswer": "Aortic arch",
+          "distractors": ["Ascending aorta", "Abdominal aorta", "Pulmonary trunk"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_028",
+      "correctAnswer": "Brachiocephalic trunk",
+      "acceptableAlternatives": ["brachiocephalic artery", "innominate artery"],
+      "chainThemeId": "aorta_branches",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The first and largest branch off the aortic arch divides into the right common carotid and right subclavian arteries. What is this vessel called?",
+      "explanation": "The brachiocephalic trunk (also called the innominate artery) is the first branch of the aortic arch. It travels only a short distance before dividing into the right common carotid artery (supplying the right side of the brain and face) and the right subclavian artery (supplying the right arm). There is no equivalent vessel on the left — the left common carotid and left subclavian arise separately and directly from the arch.",
+      "visualDescription": "Pixel art closeup of aortic arch showing the brachiocephalic trunk as the first and largest branch, splitting into two vessels like a Y",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Left common carotid artery", "Left subclavian artery", "Celiac trunk", "Right vertebral artery", "Pulmonary trunk", "Coronary artery", "Internal carotid artery"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ___ is the first branch of the aortic arch and divides into the right common carotid and right subclavian arteries.",
+          "correctAnswer": "brachiocephalic trunk",
+          "distractors": ["celiac trunk", "left subclavian artery", "pulmonary trunk"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The left side of the aortic arch also has a brachiocephalic trunk equivalent.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_029",
+      "correctAnswer": "Internal carotid artery",
+      "acceptableAlternatives": ["internal carotid"],
+      "chainThemeId": "major_arteries",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The common carotid artery bifurcates at the level of vertebra C3/C4 into the external carotid (supplying face and neck) and which other branch that supplies the brain?",
+      "explanation": "At the level of C3/C4, the common carotid artery splits into two: the external carotid artery, which supplies the face, scalp, and neck structures, and the internal carotid artery, which ascends without branching in the neck and enters the skull to supply the brain. The carotid bifurcation contains the carotid body and sinus, important chemoreceptor and baroreceptor sites.",
+      "visualDescription": "Pixel art neck anatomy showing a vessel splitting into two labeled branches — one going toward the face, one ascending into the skull",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Vertebral artery", "External carotid artery", "Basilar artery", "Subclavian artery", "Ophthalmic artery", "Middle meningeal artery", "Facial artery"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which artery supplies blood to the brain and is a branch of the common carotid at the C3/C4 level?",
+          "correctAnswer": "Internal carotid artery",
+          "distractors": ["External carotid artery", "Vertebral artery", "Subclavian artery"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_030",
+      "correctAnswer": "Radial artery",
+      "acceptableAlternatives": ["radial"],
+      "chainThemeId": "major_arteries",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The brachial artery divides at the cubital fossa into two branches. Which lateral branch, running along the thumb side of the forearm, is routinely used for taking a pulse at the wrist?",
+      "explanation": "At the cubital fossa (the hollow in front of the elbow), the brachial artery bifurcates into the radial artery (lateral, thumb side) and the ulnar artery (medial, little-finger side). The radial artery continues down the lateral forearm and onto the wrist, where it lies superficially between the flexor carpi radialis tendon and the radial styloid — the standard site for measuring the pulse in clinical practice.",
+      "visualDescription": "Pixel art forearm and wrist showing two parallel arteries; the lateral one highlighted with a pulsing icon at the wrist",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Ulnar artery", "Brachial artery", "Axillary artery", "Palmar arch", "Interosseous artery", "Subclavian artery", "Dorsalis pedis artery"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The radial artery is on the medial (little-finger) side of the forearm.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The brachial artery splits at the cubital fossa into the ___ artery (lateral) and the ulnar artery (medial).",
+          "correctAnswer": "radial",
+          "distractors": ["axillary", "palmar", "interosseous"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_031",
+      "correctAnswer": "Celiac trunk",
+      "acceptableAlternatives": ["celiac artery", "coeliac trunk"],
+      "chainThemeId": "aorta_branches",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Which unpaired branch of the abdominal aorta supplies the foregut organs — stomach, liver, spleen, and pancreas?",
+      "explanation": "The celiac trunk is the first major unpaired branch of the abdominal aorta. It divides almost immediately into three main branches: the left gastric artery (stomach and lower esophagus), the splenic artery (spleen and pancreas), and the common hepatic artery (liver, gallbladder, duodenum). Together these branches supply all foregut-derived structures.",
+      "visualDescription": "Pixel art abdominal diagram with a short wide artery branching into three labeled vessels toward stomach, liver, and spleen",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Superior mesenteric artery", "Inferior mesenteric artery", "Renal artery", "Common iliac artery", "Hepatic portal vein", "Splenic artery", "Gastroduodenal artery"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The left gastric, splenic, and common hepatic arteries are all branches of which vessel?",
+          "correctAnswer": "Celiac trunk",
+          "distractors": ["Superior mesenteric artery", "Abdominal aorta", "Inferior mesenteric artery"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_032",
+      "correctAnswer": "Superior mesenteric artery",
+      "acceptableAlternatives": ["SMA"],
+      "chainThemeId": "aorta_branches",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Which abdominal aorta branch supplies the midgut — including the small intestine and the ascending and transverse colon?",
+      "explanation": "The superior mesenteric artery (SMA) arises from the abdominal aorta just below the celiac trunk and supplies all of the small intestine, the cecum, appendix, ascending colon, and most of the transverse colon — the embryological midgut. It is a critical vessel; SMA occlusion causes extensive bowel ischemia. The inferior mesenteric artery (IMA) supplies the hindgut (descending colon, sigmoid, rectum).",
+      "visualDescription": "Pixel art abdominal diagram with branching arteries to the looping small intestine and right colon, labeled SMA",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Inferior mesenteric artery", "Celiac trunk", "Renal artery", "Common iliac artery", "Ileocolic artery", "Hepatic artery", "Splenic artery"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The superior mesenteric artery (SMA) supplies the hindgut, including the descending colon and rectum.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_033",
+      "correctAnswer": "L4",
+      "acceptableAlternatives": ["fourth lumbar vertebra", "lumbar 4"],
+      "chainThemeId": "major_arteries",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The abdominal aorta bifurcates into the left and right common iliac arteries at the level of which lumbar vertebra?",
+      "explanation": "The abdominal aorta ends at the level of the L4 vertebra, where it bifurcates into the right and left common iliac arteries. Each common iliac then divides into the internal iliac artery (supplying pelvic organs) and the external iliac artery (continuing as the femoral artery to supply the lower limb). The L4 bifurcation is a landmark used in aortic surgery and vascular imaging.",
+      "visualDescription": "Pixel art pelvis and lumbar spine diagram showing the aorta forking into two vessels at a labeled vertebral level",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["L2", "L3", "L5", "T12", "S1", "L1", "T10"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The abdominal aorta bifurcates into the common iliac arteries at the level of vertebra ___.",
+          "correctAnswer": "L4",
+          "distractors": ["L2", "L5", "T12"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_034",
+      "correctAnswer": "Femoral artery",
+      "acceptableAlternatives": ["femoral"],
+      "chainThemeId": "major_arteries",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The external iliac artery passes under the inguinal ligament and continues as which major artery supplying the thigh?",
+      "explanation": "As the external iliac artery passes under the inguinal ligament, it becomes the femoral artery, which is the main arterial supply to the thigh. The femoral artery runs through the femoral triangle and adductor canal, then passes through the adductor hiatus to become the popliteal artery behind the knee. It is the standard site for arterial access in cardiac catheterization.",
+      "visualDescription": "Pixel art lower limb showing a vessel continuing from the pelvis down through the thigh, labeled at the groin",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Popliteal artery", "Common iliac artery", "Internal iliac artery", "Deep femoral artery", "Anterior tibial artery", "Obturator artery", "Gluteal artery"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which artery is the continuation of the external iliac artery distal to the inguinal ligament?",
+          "correctAnswer": "Femoral artery",
+          "distractors": ["Popliteal artery", "Common iliac artery", "Obturator artery"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_035",
+      "correctAnswer": "Dorsalis pedis artery",
+      "acceptableAlternatives": ["dorsalis pedis", "dorsal artery of the foot"],
+      "chainThemeId": "major_arteries",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The anterior tibial artery continues onto the dorsum of the foot as which artery, whose pulse can be palpated on the top of the foot and is routinely checked in vascular assessments?",
+      "explanation": "The anterior tibial artery crosses the ankle joint and continues onto the dorsum of the foot as the dorsalis pedis artery. Its pulse is palpable on the dorsum of the foot, lateral to the extensor hallucis longus tendon. Clinicians routinely check this pulse alongside the posterior tibial pulse to assess peripheral vascular disease in the lower limb.",
+      "visualDescription": "Pixel art top-down view of a foot with a highlighted artery running along the dorsum, pulsing indicator near the ankle",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Posterior tibial artery", "Peroneal artery", "Plantar artery", "Popliteal artery", "Anterior tibial artery", "Fibular artery", "Arcuate artery"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The dorsalis pedis artery is a continuation of the posterior tibial artery.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_036",
+      "correctAnswer": "Superior vena cava",
+      "acceptableAlternatives": ["SVC"],
+      "chainThemeId": "major_veins",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Which large vein drains deoxygenated blood from the head, neck, upper limbs, and thorax into the right atrium?",
+      "explanation": "The superior vena cava (SVC) is formed by the union of the right and left brachiocephalic veins and drains the upper half of the body — head, neck, both upper limbs, and the thoracic wall — into the right atrium. The inferior vena cava (IVC) drains the lower body. Together they return all systemic deoxygenated blood to the right heart.",
+      "visualDescription": "Pixel art chest diagram with a large blue vessel descending from the neck into the upper right chamber of the heart, labeled SVC",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Inferior vena cava", "Internal jugular vein", "Brachiocephalic vein", "Pulmonary vein", "Azygos vein", "Subclavian vein", "Hepatic vein"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ___ drains the head, neck, upper limbs, and thorax into the right atrium.",
+          "correctAnswer": "superior vena cava",
+          "distractors": ["inferior vena cava", "pulmonary vein", "azygos vein"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_037",
+      "correctAnswer": "Brachiocephalic veins",
+      "acceptableAlternatives": ["brachiocephalic vein", "left and right brachiocephalic veins"],
+      "chainThemeId": "major_veins",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "On each side, the internal jugular vein and the subclavian vein merge to form which vessels that then unite to create the superior vena cava?",
+      "explanation": "On each side of the neck, the internal jugular vein (draining brain and face) and the subclavian vein (draining the arm) merge to form the brachiocephalic vein (also called the innominate vein). The right and left brachiocephalic veins then join behind the right sternal border to form the superior vena cava, which drains into the right atrium.",
+      "visualDescription": "Pixel art neck/chest diagram showing two Y-shaped vessel mergers on each side converging into a single large vessel entering the heart",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Azygos veins", "Pulmonary veins", "Hepatic veins", "External jugular veins", "Vertebral veins", "Inferior vena cava", "Intercostal veins"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The right and left brachiocephalic veins each form from the union of which two vessels?",
+          "correctAnswer": "Internal jugular and subclavian veins",
+          "distractors": ["External jugular and axillary veins", "Vertebral and subclavian veins", "Internal jugular and axillary veins"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_038",
+      "correctAnswer": "Great saphenous vein",
+      "acceptableAlternatives": ["great saphenous", "long saphenous vein"],
+      "chainThemeId": "major_veins",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Which is the longest vein in the human body, running along the medial leg from the ankle to drain into the femoral vein at the saphenous opening, and commonly harvested for coronary artery bypass grafts?",
+      "explanation": "The great saphenous vein (GSV) is the longest vein in the body. It begins at the medial side of the foot, ascends along the medial leg and thigh, and drains into the femoral vein through the saphenous opening (an aperture in the fascia lata) in the upper thigh. Because of its length, accessibility, and caliber, it is the most commonly used conduit for coronary artery bypass grafting (CABG) when a surgeon needs to bypass blocked coronary arteries.",
+      "visualDescription": "Pixel art full-length leg with a highlighted blue vessel running along the inner side from ankle to groin",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Small saphenous vein", "Femoral vein", "Popliteal vein", "Anterior tibial vein", "External iliac vein", "Deep femoral vein", "Posterior tibial vein"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The great saphenous vein is commonly used as a graft in coronary artery bypass surgery.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ vein is the longest vein in the body and drains into the femoral vein at the saphenous opening.",
+          "correctAnswer": "great saphenous",
+          "distractors": ["small saphenous", "popliteal", "femoral"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_039",
+      "correctAnswer": "Hepatic portal vein",
+      "acceptableAlternatives": ["portal vein", "portal"],
+      "chainThemeId": "major_veins",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Which vein carries nutrient-rich blood from the gastrointestinal tract to the liver for processing, rather than returning it directly to the heart?",
+      "explanation": "The hepatic portal vein carries blood from the capillary beds of the stomach, intestines, spleen, and pancreas to the liver's sinusoids, where nutrients, toxins, and drugs are processed before blood returns to the systemic circulation via the hepatic veins and IVC. This arrangement — where one capillary bed drains into a vein that feeds a second capillary bed before reaching the heart — defines a portal system. It is the only major portal system in the body.",
+      "visualDescription": "Pixel art abdominal diagram showing blood flowing from the intestines into a vessel leading to the liver, then to the heart via another vessel",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Inferior vena cava", "Superior mesenteric vein", "Splenic vein", "Hepatic vein", "Azygos vein", "Renal vein", "Internal iliac vein"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The hepatic portal vein carries blood directly back to the right atrium without passing through the liver.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_040",
+      "correctAnswer": "Azygos vein",
+      "acceptableAlternatives": ["azygos"],
+      "chainThemeId": "major_veins",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 5,
+      "funScore": 7,
+      "quizQuestion": "Which vein drains the thoracic wall (posterior intercostal veins) and empties into the superior vena cava, serving as an important collateral route if the IVC is obstructed?",
+      "explanation": "The azygos vein runs along the right side of the vertebral column, draining the posterior intercostal veins and thoracic wall, and arches over the right lung root to empty into the posterior SVC. It communicates with the ascending lumbar veins below, linking it to the IVC territory. If the IVC is obstructed (e.g., by a tumor or thrombus), the azygos system provides an alternative route for lower-body venous return — making it clinically important as a collateral pathway.",
+      "visualDescription": "Pixel art posterior chest showing a vessel running vertically along the spine, arching forward to join the superior vena cava near the heart",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Hemiazygos vein", "Internal thoracic vein", "Intercostal vein", "Vertebral vein", "Brachiocephalic vein", "Subclavian vein", "Superior intercostal vein"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which vein drains the thoracic wall and empties into the SVC, acting as an IVC collateral when obstructed?",
+          "correctAnswer": "Azygos vein",
+          "distractors": ["Hemiazygos vein", "Intercostal vein", "Internal thoracic vein"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_041",
+      "correctAnswer": "Pulmonary circulation",
+      "acceptableAlternatives": ["the pulmonary circuit"],
+      "chainThemeId": "circulation",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which circulatory loop carries deoxygenated blood from the right ventricle to the lungs for gas exchange, then returns oxygenated blood to the left atrium via the pulmonary veins?",
+      "explanation": "Pulmonary circulation is the circuit between the heart and the lungs. Deoxygenated blood leaves the right ventricle via the pulmonary trunk, splits into right and left pulmonary arteries, passes through the lungs where CO2 is exchanged for O2, and returns via four pulmonary veins (two from each lung) to the left atrium. It is a low-pressure, high-flow circuit.",
+      "visualDescription": "Pixel art heart-lung diagram with blue arrows going right ventricle → lungs and red arrows returning from lungs → left atrium",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Systemic circulation", "Coronary circulation", "Hepatic portal circulation", "Cerebral circulation", "Renal circulation", "Lymphatic circulation", "Fetal circulation"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "___ carries deoxygenated blood from the right ventricle to the lungs and returns oxygenated blood to the left atrium.",
+          "correctAnswer": "Pulmonary circulation",
+          "distractors": ["Systemic circulation", "Coronary circulation", "Portal circulation"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_042",
+      "correctAnswer": "Deoxygenated blood",
+      "acceptableAlternatives": ["deoxygenated", "oxygen-poor blood"],
+      "chainThemeId": "circulation",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Unlike systemic arteries which carry oxygenated blood, the pulmonary arteries carry what type of blood from the right ventricle to the lungs?",
+      "explanation": "The pulmonary arteries are the only arteries in the adult body that carry deoxygenated blood. By convention, arteries are defined as vessels carrying blood away from the heart — not as vessels carrying oxygenated blood. The pulmonary trunk and its right and left pulmonary artery branches carry oxygen-poor blood from the right ventricle to the pulmonary capillaries for gas exchange. Conversely, the pulmonary veins are the only veins that carry oxygenated blood.",
+      "visualDescription": "Pixel art diagram with a blue-shaded vessel labeled 'pulmonary artery' carrying dark blood away from the right heart toward lungs",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Oxygenated blood", "Mixed blood", "Blood high in CO2 and O2", "Lymph-enriched blood", "Nutrient-rich blood", "Blood from the left ventricle", "Arterial blood"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The pulmonary arteries carry oxygenated blood from the heart to the lungs.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_043",
+      "correctAnswer": "Four pulmonary veins",
+      "acceptableAlternatives": ["4 pulmonary veins", "four veins"],
+      "chainThemeId": "circulation",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "After gas exchange in the lungs, how many pulmonary veins return oxygenated blood to the left atrium — two from the right lung and two from the left lung?",
+      "explanation": "There are four pulmonary veins in total: the right superior and right inferior pulmonary veins (from the right lung) and the left superior and left inferior pulmonary veins (from the left lung). All four drain oxygenated blood into the left atrium. This is clinically relevant because the pulmonary vein orifices are the origin sites of many atrial fibrillation triggers, and pulmonary vein isolation is a common ablation procedure.",
+      "visualDescription": "Pixel art posterior view of the left atrium showing four vessel openings labeled in pairs from each lung",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Two pulmonary veins", "Three pulmonary veins", "Six pulmonary veins", "One pulmonary vein per lung", "Eight pulmonary veins", "Five pulmonary veins", "The pulmonary trunk"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "___ pulmonary veins (two from each lung) return oxygenated blood to the left atrium.",
+          "correctAnswer": "Four",
+          "distractors": ["Two", "Six", "Three"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_044",
+      "correctAnswer": "Capillaries",
+      "acceptableAlternatives": ["capillary beds"],
+      "chainThemeId": "circulation",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "In the systemic circulation, arterioles lead to microscopic vessels where gas and nutrient exchange occurs between blood and tissues. What are these exchange vessels called?",
+      "explanation": "Capillaries are the smallest blood vessels — typically just one endothelial cell thick — and are the site of all gas, nutrient, and waste exchange between the blood and body tissues. Blood flows from arteries → arterioles → capillaries → venules → veins. The capillary wall's extreme thinness and enormous total surface area enable efficient diffusion of O2, CO2, glucose, and metabolic waste.",
+      "visualDescription": "Pixel art microscopic view of branching tiny vessels connecting a small artery to a small vein, surrounded by tissue cells",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["Arterioles", "Venules", "Sinusoids", "Lymphatics", "Metarterioles", "Anastomoses", "Thoroughfare channels"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Gas and nutrient exchange between blood and body tissues occurs primarily in arterioles.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_045",
+      "correctAnswer": "Hepatic portal system",
+      "acceptableAlternatives": ["portal system", "hepatic portal circulation"],
+      "chainThemeId": "circulation",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 5,
+      "funScore": 9,
+      "quizQuestion": "Which circulatory system is unique in having one capillary bed draining via a vein into a second capillary bed — specifically, GI capillaries draining into the liver sinusoids before returning to the heart?",
+      "explanation": "The hepatic portal system is the only portal system in the body: blood from the capillary beds of the GI tract drains into the portal vein, which then divides into the sinusoids of the liver (a second capillary bed) for nutrient processing, detoxification, and drug metabolism. The blood then exits via the hepatic veins into the IVC. No other major circuit in the body has this capillary-to-vein-to-capillary arrangement.",
+      "visualDescription": "Pixel art flowchart: intestine capillaries → portal vein → liver sinusoids → hepatic vein → IVC, with an arrow loop indicating two capillary beds",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Pulmonary circulation", "Coronary circulation", "Renal circulation", "Lymphatic circulation", "Cerebral circulation", "Systemic circulation", "Fetal circulation"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In which system does a capillary bed drain via a vein into a second capillary bed, rather than directly returning blood to the heart?",
+          "correctAnswer": "Hepatic portal system",
+          "distractors": ["Pulmonary circulation", "Renal circulation", "Coronary circulation"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_046",
+      "correctAnswer": "120 mmHg",
+      "acceptableAlternatives": ["120", "about 120 mmHg"],
+      "chainThemeId": "blood_pressure",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Systolic blood pressure is the peak arterial pressure recorded during ventricular contraction. What is the normal resting systolic value in a healthy adult?",
+      "explanation": "Normal systolic blood pressure is approximately 120 mmHg. It represents the maximum pressure in the large arteries during ventricular systole (contraction). Values consistently at or above 130 mmHg are classified as Stage 1 hypertension (per 2017 ACC/AHA guidelines). Blood pressure is measured in millimeters of mercury (mmHg).",
+      "visualDescription": "Pixel art blood pressure gauge showing the needle at 120, with the top number highlighted in red and the bottom in blue",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["80 mmHg", "100 mmHg", "140 mmHg", "60 mmHg", "160 mmHg", "90 mmHg", "180 mmHg"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Normal resting systolic blood pressure in a healthy adult is approximately ___ mmHg.",
+          "correctAnswer": "120",
+          "distractors": ["80", "100", "140"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_047",
+      "correctAnswer": "80 mmHg",
+      "acceptableAlternatives": ["80", "about 80 mmHg"],
+      "chainThemeId": "blood_pressure",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Diastolic blood pressure is the minimum arterial pressure measured during ventricular relaxation. What is the normal resting diastolic value in a healthy adult?",
+      "explanation": "Normal diastolic blood pressure is approximately 80 mmHg. It is the pressure remaining in the arteries between heartbeats, when the ventricles are relaxing and refilling. A blood pressure reading of 120/80 mmHg is considered optimal. Consistently elevated diastolic pressure (90+ mmHg) indicates hypertension and increased cardiovascular risk.",
+      "visualDescription": "Pixel art blood pressure cuff on an arm, readout showing 120/80 with the bottom number highlighted",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["120 mmHg", "60 mmHg", "100 mmHg", "40 mmHg", "90 mmHg", "70 mmHg", "50 mmHg"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Normal resting diastolic blood pressure is approximately 80 mmHg.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_048",
+      "correctAnswer": "40 mmHg",
+      "acceptableAlternatives": ["40", "approximately 40 mmHg"],
+      "chainThemeId": "blood_pressure",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Pulse pressure is the difference between systolic and diastolic blood pressure. Given a normal blood pressure of 120/80 mmHg, what is the normal pulse pressure?",
+      "explanation": "Pulse pressure = systolic pressure − diastolic pressure = 120 − 80 = 40 mmHg. It represents the force the heart generates with each beat. A widened pulse pressure (e.g., >60 mmHg) may indicate aortic regurgitation, severe anemia, or high output states; a narrowed pulse pressure (e.g., <25 mmHg) may signal cardiac tamponade or heart failure.",
+      "visualDescription": "Pixel art waveform showing two peaks with the gap between systolic (high) and diastolic (low) labeled as pulse pressure",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["20 mmHg", "60 mmHg", "80 mmHg", "30 mmHg", "50 mmHg", "100 mmHg", "10 mmHg"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "With a blood pressure of 120/80 mmHg, the pulse pressure (systolic minus diastolic) is ___ mmHg.",
+          "correctAnswer": "40",
+          "distractors": ["80", "60", "20"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_049",
+      "correctAnswer": "93 mmHg",
+      "acceptableAlternatives": ["approximately 93 mmHg", "~93 mmHg", "93"],
+      "chainThemeId": "blood_pressure",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 5,
+      "funScore": 8,
+      "quizQuestion": "Mean arterial pressure (MAP) approximates the average perfusion pressure driving blood to organs. Using the formula MAP ≈ diastolic + 1/3(pulse pressure) with a blood pressure of 120/80 mmHg, what is the approximate MAP?",
+      "explanation": "MAP ≈ diastolic + 1/3 × (systolic − diastolic) = 80 + 1/3 × (120 − 80) = 80 + 1/3 × 40 = 80 + 13.3 ≈ 93 mmHg. MAP is weighted toward diastole because the heart spends more time in diastole than systole at normal heart rates. A MAP below 60–65 mmHg is considered insufficient for adequate organ perfusion and defines circulatory shock thresholds.",
+      "visualDescription": "Pixel art pressure graph with a horizontal dashed line slightly above the midpoint between systolic and diastolic peaks, labeled MAP",
+      "sourceName": "Wikipedia — Arterial system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Arterial_system",
+      "volatile": false,
+      "distractors": ["80 mmHg", "100 mmHg", "120 mmHg", "60 mmHg", "110 mmHg", "70 mmHg", "87 mmHg"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Using MAP ≈ diastolic + 1/3(pulse pressure), a BP of 120/80 gives a MAP of approximately ___ mmHg.",
+          "correctAnswer": "93",
+          "distractors": ["80", "100", "87"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Mean arterial pressure (MAP) equals the simple average of systolic and diastolic pressure.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_cardio_050",
+      "correctAnswer": "Small saphenous vein",
+      "acceptableAlternatives": ["short saphenous vein", "small saphenous"],
+      "chainThemeId": "major_veins",
+      "answerTypePoolId": "vessel_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Which superficial vein runs along the posterior leg and drains into the popliteal vein behind the knee — the smaller counterpart to the great saphenous vein?",
+      "explanation": "The small saphenous vein (also called the short saphenous vein) begins at the lateral side of the foot and runs up the posterior calf to drain into the popliteal vein in the popliteal fossa behind the knee. It is a common site for varicose vein formation. In contrast, the great saphenous vein runs along the medial leg and drains into the femoral vein at the groin.",
+      "visualDescription": "Pixel art posterior leg view with a highlighted vessel running up the back of the calf to the knee, where it joins a deeper vessel",
+      "sourceName": "Wikipedia — Venous system",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Venous_system",
+      "volatile": false,
+      "distractors": ["Great saphenous vein", "Femoral vein", "Popliteal vein", "Anterior tibial vein", "Posterior tibial vein", "Peroneal vein", "External iliac vein"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which superficial vein of the posterior leg drains into the popliteal vein behind the knee?",
+          "correctAnswer": "Small saphenous vein",
+          "distractors": ["Great saphenous vein", "Posterior tibial vein", "Femoral vein"]
+        }
+      ]
+    }
+  ]
+}

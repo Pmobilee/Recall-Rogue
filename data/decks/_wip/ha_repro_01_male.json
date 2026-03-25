@@ -1,0 +1,916 @@
+{
+  "id": "ha_repro_01_male",
+  "name": "Reproductive System — Male",
+  "domain": "human_anatomy",
+  "subDomain": "reproductive_system",
+  "description": "Master the male reproductive system: testes, ducts, accessory glands, erectile anatomy, and spermatogenesis. Every fact is verified against Wikipedia.",
+  "minimumFacts": 20,
+  "targetFacts": 25,
+  "facts": [
+    {
+      "id": "ha_repro_001",
+      "correctAnswer": "Scrotum",
+      "acceptableAlternatives": [],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Peritoneum",
+        "Perineum",
+        "Prepuce",
+        "Inguinal canal"
+      ],
+      "quizQuestion": "In what external pouch do the testes reside, keeping them ~2–3°C below core body temperature?",
+      "explanation": "The testes are housed in the scrotum, which hangs outside the abdominal cavity. The cooler temperature (~34–35°C vs. the body's 37°C) is essential for normal spermatogenesis — heat disrupts sperm production, which is why undescended testes (cryptorchidism) impair fertility.",
+      "statement": "The testes reside in the scrotum, kept ~2–3°C below core body temperature to support spermatogenesis.",
+      "wowFactor": "The cremaster muscle can raise or lower the scrotum in seconds to fine-tune testicular temperature — it's a biological thermostat in real time.",
+      "visualDescription": "Cross-section diagram showing testes suspended in the scrotal sac with temperature gradient arrows indicating cooler external environment",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Male_reproductive_system",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The testes are kept cool inside the ___, which hangs outside the abdominal cavity.",
+          "correctAnswer": "Scrotum",
+          "distractors": ["Perineum", "Prepuce", "Peritoneum"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The scrotum keeps the testes about 2–3°C below core body temperature to support sperm production.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_002",
+      "correctAnswer": "Seminiferous tubules",
+      "acceptableAlternatives": ["Seminiferous tubule"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Rete testis",
+        "Efferent ductules",
+        "Vas deferens",
+        "Epididymis"
+      ],
+      "quizQuestion": "What highly coiled structures inside the testes are the site of sperm production?",
+      "explanation": "Each testis contains approximately 250 metres of seminiferous tubules packed into a volume about the size of a walnut. The tubule walls are lined with Sertoli cells (which nourish developing sperm) and spermatogonia (which divide to produce new sperm cells). Sperm production — spermatogenesis — occurs entirely within these tubules.",
+      "statement": "Seminiferous tubules are the tightly coiled tubes inside the testes where sperm are produced.",
+      "wowFactor": "Each testis contains roughly 250 metres of seminiferous tubules — if uncoiled and laid end to end they would stretch the length of a city block.",
+      "visualDescription": "Microscopic cross-section of a seminiferous tubule showing concentric rings of developing sperm cells, with Sertoli cell nuclei visible along the basement membrane",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Seminiferous_tubule",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Approximately how many metres of seminiferous tubules are packed into a single testis?",
+          "correctAnswer": "250 metres",
+          "distractors": ["10 metres", "50 metres", "1 kilometre"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Spermatogenesis takes place inside the ___ of the testis.",
+          "correctAnswer": "Seminiferous tubules",
+          "distractors": ["Epididymis", "Rete testis", "Vas deferens"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_003",
+      "correctAnswer": "Sertoli cells",
+      "acceptableAlternatives": ["Sertoli cell"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "cell_type_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Leydig cells",
+        "Spermatogonia",
+        "Peritubular myoid cells",
+        "Chief cells"
+      ],
+      "quizQuestion": "Which cells line the seminiferous tubules and provide structural and nutritional support for developing sperm?",
+      "explanation": "Sertoli cells are large 'nurse cells' anchored to the basement membrane of the seminiferous tubule. They secrete nutrients, growth factors, and androgen-binding protein; phagocytose excess cytoplasm shed during spermiogenesis; and form the blood-testis barrier that shields developing sperm from the immune system.",
+      "statement": "Sertoli cells line the seminiferous tubules and support, nourish, and protect developing sperm cells.",
+      "wowFactor": "Sertoli cells form an impenetrable 'blood-testis barrier' using tight junctions — without it, the immune system would recognize sperm as foreign cells and destroy them.",
+      "visualDescription": "Tall columnar Sertoli cell depicted as a tree trunk with developing sperm cells nestled in its branches at various stages of maturation",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sertoli_cell",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Sertoli cells produce testosterone inside the testis.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_004",
+      "correctAnswer": "Leydig cells",
+      "acceptableAlternatives": ["Interstitial cells", "Leydig cell", "interstitial cells of Leydig"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "cell_type_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Sertoli cells",
+        "Spermatogonia",
+        "Granulosa cells",
+        "Theca cells"
+      ],
+      "quizQuestion": "Which interstitial cells of the testis are the primary producers of testosterone?",
+      "explanation": "Leydig cells (also called interstitial cells) are found in the connective tissue between seminiferous tubules. They are stimulated by luteinizing hormone (LH) from the pituitary gland to synthesize and secrete testosterone, the principal male sex hormone responsible for secondary sexual characteristics and supporting spermatogenesis.",
+      "statement": "Leydig cells (interstitial cells) in the testis produce testosterone in response to LH from the pituitary.",
+      "wowFactor": "Leydig cells produce roughly 5–7 mg of testosterone every single day — enough to drive all the physical traits we associate with biological males.",
+      "visualDescription": "Cluster of large pale interstitial cells nestled between dark-walled seminiferous tubules in a testis cross-section, with testosterone molecule icons nearby",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leydig_cell",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Testosterone in the testis is secreted by ___ cells located in the interstitial tissue between seminiferous tubules.",
+          "correctAnswer": "Leydig",
+          "distractors": ["Sertoli", "Granulosa", "Chief"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_005",
+      "correctAnswer": "Epididymis",
+      "acceptableAlternatives": [],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Vas deferens",
+        "Rete testis",
+        "Seminal vesicle",
+        "Ejaculatory duct"
+      ],
+      "quizQuestion": "What ~6-metre coiled tube on the posterior surface of the testis is the site of sperm maturation and storage?",
+      "explanation": "The epididymis is a single tightly coiled duct approximately 6 metres long that sits on the back of each testis. Sperm leaving the seminiferous tubules are immotile and non-fertile; they gain the ability to swim and fertilize an egg during their ~12-day transit through the epididymis. The tail of the epididymis stores mature sperm until ejaculation.",
+      "statement": "The epididymis is a ~6-metre coiled tube where sperm mature and are stored for ~12 days before ejaculation.",
+      "wowFactor": "Despite being 6 metres long, the epididymis is coiled so tightly it fits in a space smaller than a grape — it takes sperm about 12 days to travel its full length.",
+      "visualDescription": "Posterior view of a testis with the coiled epididymis running along its back, with arrows showing sperm flow from head to body to tail",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Epididymis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "The epididymis has three anatomical regions. What are they?",
+          "correctAnswer": "Head, body, and tail",
+          "distractors": ["Fundus, body, and cervix", "Cortex, medulla, and hilum", "Proximal, middle, and distal"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Sperm take approximately ___ days to transit the epididymis and achieve full motility.",
+          "correctAnswer": "12",
+          "distractors": ["3", "74", "28"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_006",
+      "correctAnswer": "Vas deferens",
+      "acceptableAlternatives": ["Ductus deferens"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Epididymis",
+        "Ejaculatory duct",
+        "Urethra",
+        "Rete testis"
+      ],
+      "quizQuestion": "What ~45-cm muscular duct carries sperm from the epididymis to the ejaculatory duct, and is cut during a vasectomy?",
+      "explanation": "The vas deferens (ductus deferens) is a thick-walled muscular tube about 45 cm long. During ejaculation its smooth muscle contracts in peristaltic waves to propel sperm upward through the inguinal canal, into the pelvis, and toward the ejaculatory duct. A vasectomy surgically cuts or blocks this duct to prevent sperm from reaching semen.",
+      "statement": "The vas deferens is a ~45-cm muscular duct that transports sperm from the epididymis to the ejaculatory duct; it is cut in a vasectomy.",
+      "wowFactor": "A vasectomy works by cutting just a few centimetres of the 45-cm vas deferens — the rest of the duct, and all the accessory glands, remain fully intact and functional.",
+      "visualDescription": "Sagittal pelvis diagram with the vas deferens highlighted as it loops over the pubic bone from the scrotum to the pelvic cavity",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vas_deferens",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The vas deferens carries sperm from the epididymis and is the duct severed during a vasectomy.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "context",
+          "question": "Approximately how long is the vas deferens?",
+          "correctAnswer": "45 cm",
+          "distractors": ["6 cm", "6 m", "15 cm"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_007",
+      "correctAnswer": "Seminal vesicles",
+      "acceptableAlternatives": ["Seminal vesicle"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Prostate gland",
+        "Bulbourethral glands",
+        "Epididymis",
+        "Testes"
+      ],
+      "quizQuestion": "Which paired glands posterior to the bladder contribute approximately 60% of semen volume, secreting fructose and prostaglandins?",
+      "explanation": "The seminal vesicles are paired secretory glands lying behind the urinary bladder. Their alkaline secretion — rich in fructose (an energy source for sperm motility), prostaglandins, and other proteins — constitutes about 60% of the total semen volume. The duct of each seminal vesicle joins the vas deferens to form the ejaculatory duct.",
+      "statement": "The seminal vesicles produce ~60% of semen volume, contributing an alkaline fluid containing fructose and prostaglandins.",
+      "wowFactor": "Sperm themselves make up less than 5% of semen volume — the rest is fluid from the seminal vesicles (60%), prostate (30%), and bulbourethral glands.",
+      "visualDescription": "Posterior bladder diagram showing the paired seminal vesicles as pouched glands flanking the vas deferens before they merge into ejaculatory ducts",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Seminal_vesicle",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The seminal vesicles secrete fructose into semen, which serves as an ___ source for sperm.",
+          "correctAnswer": "Energy",
+          "distractors": ["Antibody", "Acrosome", "Lubricant"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_008",
+      "correctAnswer": "Prostate gland",
+      "acceptableAlternatives": ["Prostate"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Seminal vesicles",
+        "Bulbourethral glands",
+        "Bladder",
+        "Cowper's glands"
+      ],
+      "quizQuestion": "What walnut-sized gland sits below the bladder, surrounds the prostatic urethra, and contributes ~30% of semen volume?",
+      "explanation": "The prostate is a gland about the size of a walnut that encircles the urethra just below the bladder. Its slightly acidic secretion (~30% of semen volume) contains prostate-specific antigen (PSA), citric acid, and zinc. PSA liquefies the semen after ejaculation. The prostate commonly enlarges with age (benign prostatic hyperplasia, BPH), compressing the urethra and causing urinary symptoms.",
+      "statement": "The prostate gland surrounds the prostatic urethra below the bladder and contributes ~30% of semen, including PSA, citric acid, and zinc.",
+      "wowFactor": "PSA — the blood marker used to screen for prostate cancer — is actually an enzyme the prostate makes to liquefy semen after ejaculation so sperm can swim freely.",
+      "visualDescription": "Sagittal pelvic cross-section with the walnut-shaped prostate highlighted in orange, encircling the urethra between the bladder and penis",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Prostate",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What protein secreted by the prostate is used as a clinical marker to screen for prostate cancer?",
+          "correctAnswer": "PSA (prostate-specific antigen)",
+          "distractors": ["AFP", "CEA", "hCG"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Benign prostatic hyperplasia (BPH) is a common age-related enlargement of the prostate that can compress the urethra.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_009",
+      "correctAnswer": "Bulbourethral glands",
+      "acceptableAlternatives": ["Cowper's glands", "Cowper glands"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Bartholin's glands",
+        "Skene's glands",
+        "Prostate gland",
+        "Seminal vesicles"
+      ],
+      "quizQuestion": "What pea-sized paired glands produce an alkaline pre-ejaculate that neutralizes residual acidity in the urethra before sperm arrive?",
+      "explanation": "The bulbourethral glands (Cowper's glands) are two small glands located inferior to the prostate. They secrete a clear, viscous alkaline mucus into the urethra just before ejaculation. This fluid neutralizes acidic urine residue in the urethra and may act as a lubricant, creating a more hospitable environment for sperm passage.",
+      "statement": "The bulbourethral (Cowper's) glands secrete alkaline pre-ejaculate that neutralizes urethral acidity before sperm are ejaculated.",
+      "wowFactor": "The alkaline pre-ejaculate from Cowper's glands arrives first — it is essentially a clean-up crew that flushes acidic urine from the urethra before sperm travel through.",
+      "visualDescription": "Diagram of the male perineum showing two small pea-sized Cowper's glands flanking the bulb of the urethra, with ducts opening into the penile urethra",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bulbourethral_gland",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The bulbourethral glands are also called ___ glands.",
+          "correctAnswer": "Cowper's",
+          "distractors": ["Bartholin's", "Skene's", "Brunner's"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_010",
+      "correctAnswer": "Corpora cavernosa",
+      "acceptableAlternatives": ["Corpora cavernosa (paired)", "two corpora cavernosa"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Corpus spongiosum",
+        "Glans penis",
+        "Tunica albuginea",
+        "Dartos muscle"
+      ],
+      "quizQuestion": "Which paired dorsal erectile bodies form the main bulk of the penis and fill with blood to produce erection?",
+      "explanation": "The penis contains three erectile bodies. The two corpora cavernosa lie side by side on the dorsal (top) surface and are the primary structures that engorge with blood during erection. The single corpus spongiosum lies on the ventral (bottom) surface, surrounds the urethra, and expands at its distal end to form the glans penis.",
+      "statement": "The two corpora cavernosa are the paired dorsal erectile bodies that provide most of the rigidity during penile erection.",
+      "wowFactor": "During an erection, blood pressure inside the corpora cavernosa reaches roughly 100 mmHg — comparable to normal systemic arterial pressure — trapping blood via a veno-occlusive mechanism.",
+      "visualDescription": "Cross-section of the penis showing two circular corpora cavernosa on top and one corpus spongiosum on the bottom surrounding the urethra lumen",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Corpus_cavernosum_penis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Which of the three erectile bodies of the penis surrounds the urethra and expands distally to form the glans?",
+          "correctAnswer": "Corpus spongiosum",
+          "distractors": ["Corpora cavernosa", "Tunica albuginea", "Dartos fascia"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_011",
+      "correctAnswer": "Corpus spongiosum",
+      "acceptableAlternatives": [],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Corpora cavernosa",
+        "Glans penis",
+        "Bulb of the penis",
+        "Tunica albuginea"
+      ],
+      "quizQuestion": "Which single ventral erectile body of the penis surrounds the urethra and prevents it from being compressed during erection?",
+      "explanation": "The corpus spongiosum is the single ventral erectile body that encloses the penile urethra along its entire length. Unlike the corpora cavernosa, it maintains lower intracavernous pressure during erection, which keeps the urethra open for semen passage. Distally it expands into the glans penis.",
+      "statement": "The corpus spongiosum is the ventral erectile body surrounding the urethra; it expands distally to form the glans penis.",
+      "wowFactor": "The corpus spongiosum stays at lower pressure than the corpora cavernosa during erection specifically to keep the urethra open — otherwise ejaculation would be impossible.",
+      "visualDescription": "Longitudinal section of the penis with corpus spongiosum highlighted in blue, running ventrally and flaring into the glans at the tip",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Corpus_spongiosum_penis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The corpus spongiosum surrounds the urethra and expands to form the glans penis.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_012",
+      "correctAnswer": "Spermatogonium",
+      "acceptableAlternatives": ["Spermatogonia"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "cell_type_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Primary spermatocyte",
+        "Secondary spermatocyte",
+        "Spermatid",
+        "Spermatozoon"
+      ],
+      "quizQuestion": "What diploid (2n) stem cell at the basement membrane of the seminiferous tubule is the starting cell of spermatogenesis?",
+      "explanation": "Spermatogenesis begins with spermatogonia — diploid stem cells lining the base of the seminiferous tubule. Type A spermatogonia self-renew (maintaining the stem cell pool) while type B spermatogonia commit to differentiation, becoming primary spermatocytes that then enter meiosis. The entire process from spermatogonium to mature sperm takes approximately 74 days.",
+      "statement": "Spermatogenesis begins with diploid spermatogonia at the tubule basement membrane, which differentiate into primary spermatocytes.",
+      "wowFactor": "A single spermatogonium can ultimately give rise to 512 spermatozoa through the combined divisions of mitosis and meiosis — with about 300 million produced every day.",
+      "visualDescription": "Seminiferous tubule wall diagram showing spermatogonia at the outer basement membrane, progressing inward through spermatocyte stages to mature sperm at the lumen",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spermatogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The first cell in spermatogenesis is the diploid ___, which divides to eventually produce sperm.",
+          "correctAnswer": "Spermatogonium",
+          "distractors": ["Primary spermatocyte", "Spermatid", "Spermatozoon"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_013",
+      "correctAnswer": "Meiosis I",
+      "acceptableAlternatives": ["First meiotic division"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "biology_process_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Meiosis II",
+        "Mitosis",
+        "Spermiogenesis",
+        "Capacitation"
+      ],
+      "quizQuestion": "Which division converts a diploid primary spermatocyte into two haploid secondary spermatocytes?",
+      "explanation": "During spermatogenesis, the diploid (2n) primary spermatocyte undergoes Meiosis I — the reductional division — to produce two secondary spermatocytes, each haploid (n) but still containing paired sister chromatids. Meiosis II then separates those sister chromatids to yield four haploid spermatids. Spermiogenesis then transforms spermatids into mature spermatozoa.",
+      "statement": "Meiosis I reduces a diploid primary spermatocyte to two haploid secondary spermatocytes during spermatogenesis.",
+      "wowFactor": "Meiosis I is where genetic shuffling (crossing-over) happens — each secondary spermatocyte carries a unique combination of chromosomes never seen before in history.",
+      "visualDescription": "Flow chart: primary spermatocyte (2n) divides via Meiosis I arrow into two secondary spermatocytes (n), each with paired chromatids shown in different colors",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spermatogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "In the correct order of spermatogenesis, what cell does a primary spermatocyte become after Meiosis I?",
+          "correctAnswer": "Secondary spermatocyte",
+          "distractors": ["Spermatogonium", "Spermatid", "Spermatozoon"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_014",
+      "correctAnswer": "Spermiogenesis",
+      "acceptableAlternatives": [],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "biology_process_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Spermatogenesis",
+        "Capacitation",
+        "Acrosome reaction",
+        "Meiosis II"
+      ],
+      "quizQuestion": "What final differentiation process transforms round haploid spermatids into streamlined, motile spermatozoa with heads, midpieces, and tails?",
+      "explanation": "After Meiosis II produces haploid spermatids, spermiogenesis remodels them into mature spermatozoa. The nucleus condenses and elongates, excess cytoplasm is shed (phagocytosed by Sertoli cells), the acrosome forms over the nucleus (containing enzymes to penetrate the egg), and the flagellum (tail) develops from the centriole. The midpiece is packed with mitochondria for energy.",
+      "statement": "Spermiogenesis is the final step of sperm development, transforming round spermatids into mature, motile spermatozoa.",
+      "wowFactor": "During spermiogenesis, sperm discard almost all their cytoplasm — a mature spermatozoon is one of the smallest cells in the human body, stripped down to a genetic delivery package.",
+      "visualDescription": "Sequential transformation diagram: round spermatid → elongating nucleus → mature spermatozoon with distinct head, midpiece, and flagellum labeled",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spermiogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Spermiogenesis is the process that transforms spermatids into mature spermatozoa.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_015",
+      "correctAnswer": "74 days",
+      "acceptableAlternatives": ["~74 days", "approximately 74 days"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "28 days",
+        "12 days",
+        "14 days",
+        "6 months"
+      ],
+      "quizQuestion": "Approximately how long does the entire process of spermatogenesis take, from spermatogonium to mature spermatozoon?",
+      "explanation": "From the initial mitotic division of a spermatogonium to the release of a mature spermatozoon (spermiation) takes approximately 74 days in humans. An additional ~12 days are needed for sperm to complete maturation as they transit the epididymis, meaning a sperm cell requires roughly 86 days from its origin to being ejaculated.",
+      "statement": "Complete spermatogenesis takes approximately 74 days from spermatogonium to mature spermatozoon, plus ~12 days in the epididymis.",
+      "wowFactor": "Because spermatogenesis takes 74 days, any factor that damages sperm — fever, radiation, certain medications — can affect sperm quality for more than two months afterward.",
+      "visualDescription": "Timeline bar showing 74-day spermatogenesis period subdivided into mitosis, meiosis, and spermiogenesis phases, with a 12-day epididymal transit added at the end",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spermatogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Spermatogenesis takes approximately ___ days from spermatogonium to spermatozoon.",
+          "correctAnswer": "74",
+          "distractors": ["28", "14", "12"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_016",
+      "correctAnswer": "300 million",
+      "acceptableAlternatives": ["~300 million", "approximately 300 million", "300 million sperm"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "1 million",
+        "10 million",
+        "1 billion",
+        "3 million"
+      ],
+      "quizQuestion": "Approximately how many sperm does the male reproductive system produce per day?",
+      "explanation": "The testes produce approximately 300 million spermatozoa per day — roughly 1,500 sperm per second. This enormous output compensates for the fact that of the millions of sperm deposited during intercourse, only a few hundred actually reach the egg, and only one will fertilize it.",
+      "statement": "The testes produce approximately 300 million sperm per day — roughly 1,500 per second.",
+      "wowFactor": "Of the 300 million sperm produced daily, only 200–300 typically reach the vicinity of the egg after ejaculation — less than one in a million survives the journey.",
+      "visualDescription": "Infographic showing 300 million sperm icons, with a funnel narrowing to just a handful reaching a single egg cell",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spermatogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The human testes produce approximately 300 million sperm per day.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_017",
+      "correctAnswer": "Four spermatids",
+      "acceptableAlternatives": ["4 spermatids", "four haploid spermatids"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Two spermatids",
+        "One spermatid",
+        "Eight spermatids",
+        "Two secondary spermatocytes"
+      ],
+      "quizQuestion": "How many haploid spermatids does a single primary spermatocyte ultimately yield after both meiotic divisions?",
+      "explanation": "A single diploid primary spermatocyte completes Meiosis I to produce two secondary spermatocytes, then each secondary spermatocyte completes Meiosis II to produce two spermatids — yielding four haploid spermatids in total from each primary spermatocyte. Each spermatid then undergoes spermiogenesis to become a mature spermatozoon.",
+      "statement": "One primary spermatocyte produces four haploid spermatids after Meiosis I and Meiosis II.",
+      "wowFactor": "Unlike oogenesis, where one primary oocyte produces only one viable egg (plus two or three polar bodies), spermatogenesis is perfectly efficient — all four products of meiosis become functional sperm.",
+      "visualDescription": "Meiosis diagram: one large primary spermatocyte splits into two secondary spermatocytes (Meiosis I), then each splits again into two spermatids (Meiosis II), totaling four cells",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spermatogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "After both meiotic divisions, one primary spermatocyte yields ___ haploid spermatids.",
+          "correctAnswer": "Four",
+          "distractors": ["Two", "Eight", "One"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_018",
+      "correctAnswer": "Fructose",
+      "acceptableAlternatives": [],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "chemistry_compound_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Glucose",
+        "Lactose",
+        "Citric acid",
+        "Zinc"
+      ],
+      "quizQuestion": "What simple sugar secreted by the seminal vesicles serves as the primary energy source for sperm motility?",
+      "explanation": "The seminal vesicles secrete fructose into semen, where it serves as the primary fuel for sperm. Spermatozoa use fructose via glycolysis and oxidative phosphorylation in their mitochondria-rich midpieces to power flagellar movement. An absence of fructose in semen suggests obstruction or absence of the seminal vesicles.",
+      "statement": "Fructose, secreted by the seminal vesicles, is the primary energy source for sperm motility in semen.",
+      "wowFactor": "Clinicians use the presence or absence of fructose in semen as a diagnostic clue: no fructose usually means the ejaculatory duct is blocked or the seminal vesicles are absent.",
+      "visualDescription": "Molecular diagram of fructose next to a spermatozoon with its mitochondria-filled midpiece highlighted, indicating energy production",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Seminal_vesicle",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The seminal vesicles secrete fructose, which provides energy for sperm motility.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_019",
+      "correctAnswer": "PSA (prostate-specific antigen)",
+      "acceptableAlternatives": ["Prostate-specific antigen", "PSA"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "biology_molecule_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "AFP (alpha-fetoprotein)",
+        "CEA (carcinoembryonic antigen)",
+        "hCG (human chorionic gonadotropin)",
+        "LH (luteinizing hormone)"
+      ],
+      "quizQuestion": "What protease secreted by the prostate liquefies semen and is measured in blood as a prostate cancer screening marker?",
+      "explanation": "Prostate-specific antigen (PSA) is a serine protease secreted by prostatic epithelial cells into semen, where it liquefies the seminal coagulum within 5–30 minutes of ejaculation — freeing sperm to swim. Small amounts enter the bloodstream; elevated serum PSA can indicate prostatitis, benign prostatic hyperplasia, or prostate cancer, making it a key screening biomarker.",
+      "statement": "PSA is a prostate-secreted enzyme that liquefies semen after ejaculation and is used clinically as a prostate cancer screening marker.",
+      "wowFactor": "PSA was originally identified not as a cancer marker but as a forensic tool — it can be used to confirm the presence of seminal fluid in sexual assault investigations.",
+      "visualDescription": "Medical illustration of the prostate with PSA molecules shown diffusing into both the semen lumen and the bloodstream, with a blood test vial labeled 'PSA'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Prostate-specific_antigen",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The prostate secretes ___, a protease that liquefies semen and is used as a clinical prostate cancer marker.",
+          "correctAnswer": "PSA",
+          "distractors": ["AFP", "hCG", "CEA"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_020",
+      "correctAnswer": "Testosterone",
+      "acceptableAlternatives": [],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "biology_molecule_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Estrogen",
+        "Progesterone",
+        "FSH",
+        "LH"
+      ],
+      "quizQuestion": "What principal androgen produced by Leydig cells is essential for spermatogenesis and male secondary sexual characteristics?",
+      "explanation": "Testosterone is the primary male sex hormone, synthesized by Leydig cells under stimulation from LH. Inside the testes it maintains spermatogenesis (together with FSH). Systemically it drives secondary sexual characteristics (facial hair, deeper voice, increased muscle mass, bone density), libido, and red blood cell production.",
+      "statement": "Testosterone, produced by Leydig cells in response to LH, is the primary androgen required for spermatogenesis and male secondary sexual characteristics.",
+      "wowFactor": "Inside the testis, testosterone concentration is 100 times higher than in the blood — this locally high level is essential for keeping spermatogenesis running continuously.",
+      "visualDescription": "Chemical structure of testosterone beside an illustration of a testis, with arrows indicating LH from the pituitary stimulating Leydig cell production",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Testosterone",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Which pituitary hormone stimulates Leydig cells to produce testosterone?",
+          "correctAnswer": "LH (luteinizing hormone)",
+          "distractors": ["FSH", "GH", "ACTH"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_021",
+      "correctAnswer": "Ejaculatory duct",
+      "acceptableAlternatives": ["Ejaculatory ducts"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Urethra",
+        "Vas deferens",
+        "Seminal vesicle duct",
+        "Prostatic urethra"
+      ],
+      "quizQuestion": "What short duct is formed by the union of the vas deferens and the seminal vesicle duct, and opens into the prostatic urethra?",
+      "explanation": "The ejaculatory duct is formed when the duct of the seminal vesicle joins the ampulla of the vas deferens. The two ejaculatory ducts (one on each side) pass through the prostate and open into the prostatic urethra at the verumontanum. They are about 2 cm long and carry semen from the seminal vesicles and vas deferens into the urethra during ejaculation.",
+      "statement": "The ejaculatory duct is formed by the union of the vas deferens and seminal vesicle duct; it passes through the prostate and opens into the prostatic urethra.",
+      "wowFactor": "The ejaculatory duct passes right through the prostate itself — this is why prostate enlargement can obstruct ejaculation and cause retrograde ejaculation.",
+      "visualDescription": "Posterior view of the prostate with two ejaculatory ducts highlighted in yellow entering from above and converging on the verumontanum in the prostatic urethra",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ejaculatory_duct",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ejaculatory duct is formed by the union of the ___ and the duct of the seminal vesicle.",
+          "correctAnswer": "Vas deferens",
+          "distractors": ["Urethra", "Epididymis", "Prostatic duct"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_022",
+      "correctAnswer": "Acrosome",
+      "acceptableAlternatives": ["Acrosomal cap"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Flagellum",
+        "Midpiece",
+        "Nucleus",
+        "Mitochondrial sheath"
+      ],
+      "quizQuestion": "What enzyme-filled cap derived from the Golgi apparatus sits on the head of the spermatozoon and helps penetrate the zona pellucida of the egg?",
+      "explanation": "The acrosome is a large secretory vesicle derived from the Golgi apparatus during spermiogenesis. It caps the anterior two-thirds of the sperm nucleus. When a sperm contacts the zona pellucida of the egg, the acrosome reaction releases hydrolytic enzymes (including acrosin and hyaluronidase) that digest a path through the egg's protective coat.",
+      "statement": "The acrosome is an enzyme-filled vesicle on the sperm head that undergoes the acrosome reaction to penetrate the egg's zona pellucida.",
+      "wowFactor": "The acrosome reaction is a one-time, irreversible event — once a sperm releases its enzymes it cannot try again, making the timing of contact with the egg critical.",
+      "visualDescription": "Close-up of a spermatozoon head showing the acrosomal cap covering the anterior nucleus, with enzyme molecules illustrated bursting outward during the acrosome reaction",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Acrosome",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The acrosome contains enzymes that help the sperm penetrate the zona pellucida of the egg.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_023",
+      "correctAnswer": "Mitochondria",
+      "acceptableAlternatives": ["Mitochondrial sheath"],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "cell_organelle_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Ribosomes",
+        "Golgi apparatus",
+        "Smooth endoplasmic reticulum",
+        "Lysosomes"
+      ],
+      "quizQuestion": "What organelles are densely packed into the midpiece of the spermatozoon to power flagellar movement?",
+      "explanation": "The midpiece of a spermatozoon is wrapped in a helical sheath of mitochondria. These generate ATP via oxidative phosphorylation to power the dynein motor proteins that drive the axoneme (9+2 microtubule structure) of the flagellum. The midpiece is effectively the engine room of the sperm cell.",
+      "statement": "The midpiece of a spermatozoon is packed with mitochondria that generate ATP to power flagellar movement.",
+      "wowFactor": "Sperm mitochondria are inherited only from the father's sperm during fertilization — but they are almost immediately destroyed by the egg cell, which is why all your mitochondrial DNA comes from your mother.",
+      "visualDescription": "Electron-microscope-style illustration of a spermatozoon midpiece cross-section showing helically arranged mitochondria surrounding the central axoneme",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Spermatozoon",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The sperm midpiece is powered by a helical sheath of ___ that generate ATP for the flagellum.",
+          "correctAnswer": "Mitochondria",
+          "distractors": ["Ribosomes", "Peroxisomes", "Lysosomes"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_024",
+      "correctAnswer": "Blood-testis barrier",
+      "acceptableAlternatives": [],
+      "chainThemeId": "spermatogenesis",
+      "answerTypePoolId": "biology_process_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Blood-brain barrier",
+        "Placental barrier",
+        "Epididymal barrier",
+        "Spermatogenic compartment"
+      ],
+      "quizQuestion": "What tight-junction barrier formed by Sertoli cells prevents immune cells from attacking developing sperm antigens inside the seminiferous tubules?",
+      "explanation": "The blood-testis barrier is formed by tight junctions between adjacent Sertoli cells, dividing the seminiferous tubule into a basal compartment (accessible to blood) and an adluminal compartment (sealed off). Because haploid sperm carry novel surface antigens not present during fetal development (when immune tolerance is established), without this barrier the immune system would mount an autoimmune attack on developing sperm.",
+      "statement": "The blood-testis barrier, formed by Sertoli cell tight junctions, shields developing sperm from immune attack by isolating the adluminal compartment.",
+      "wowFactor": "If the blood-testis barrier is breached — by vasectomy, trauma, or infection — the immune system can produce anti-sperm antibodies that permanently impair fertility even after the damage heals.",
+      "visualDescription": "Seminiferous tubule diagram showing Sertoli cell tight junctions creating an immunologically privileged zone, with immune cell symbols blocked at the barrier",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Blood-testis_barrier",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The blood-testis barrier is formed by tight junctions between Sertoli cells.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_025",
+      "correctAnswer": "60% seminal vesicles, 30% prostate, <5% sperm",
+      "acceptableAlternatives": ["Seminal vesicles 60%, prostate 30%", "60% from seminal vesicles"],
+      "chainThemeId": "male_anatomy",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "50% sperm, 50% seminal fluid",
+        "90% prostate, 10% testes",
+        "Equal parts from testes, prostate, and seminal vesicles",
+        "30% seminal vesicles, 60% prostate"
+      ],
+      "quizQuestion": "By volume, semen is approximately 60% from which gland, 30% from which gland, and less than 5% sperm cells?",
+      "explanation": "Contrary to common assumption, spermatozoa themselves constitute less than 5% of semen volume. The bulk comes from the seminal vesicles (~60%) and the prostate (~30%). The bulbourethral glands and urethral glands contribute the remainder. This ratio means that a vasectomy does not meaningfully change ejaculate volume, because sperm cells are such a tiny fraction.",
+      "statement": "Semen is ~60% seminal vesicle fluid, ~30% prostate fluid, and less than 5% sperm cells by volume.",
+      "wowFactor": "After a vasectomy, ejaculate volume barely changes — sperm make up less than 5% of semen, so cutting the vas deferens is essentially imperceptible to the ejaculator.",
+      "visualDescription": "Pie chart of semen composition: large teal wedge labeled 'seminal vesicles 60%', medium orange wedge 'prostate 30%', tiny white wedge 'sperm <5%', small remaining wedge 'other'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Semen",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Sperm cells make up less than ___% of total semen volume by weight.",
+          "correctAnswer": "5",
+          "distractors": ["50", "30", "15"]
+        }
+      ]
+    }
+  ]
+}

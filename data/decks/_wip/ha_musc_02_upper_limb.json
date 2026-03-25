@@ -1,0 +1,718 @@
+{
+  "facts": [
+    {
+      "id": "ha_musc_028",
+      "correctAnswer": "Axillary nerve (C5-C6)",
+      "acceptableAlternatives": ["axillary nerve", "C5-C6"],
+      "chainThemeId": "shoulder_muscles",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The deltoid muscle — responsible for raising the arm to the side — is innervated by which nerve?",
+      "explanation": "The axillary nerve (C5-C6) innervates both the deltoid and teres minor. It wraps around the surgical neck of the humerus, which is why fractures there can cause deltoid paralysis and loss of arm abduction. The three parts of the deltoid perform different actions: anterior flexes and medially rotates, middle abducts, and posterior extends and laterally rotates.",
+      "visualDescription": "Pixel art anterior shoulder view showing the fan-shaped deltoid muscle highlighted in blue, with axillary nerve traced around surgical neck of humerus",
+      "sourceName": "Wikipedia — Deltoid muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Deltoid_muscle",
+      "volatile": false,
+      "distractors": ["Musculocutaneous nerve (C5-C6)", "Suprascapular nerve (C5-C6)", "Radial nerve (C5-C8)", "Long thoracic nerve (C5-C7)", "Upper subscapular nerve", "Median nerve (C6-C7)", "Lower subscapular nerve (C5-C6)"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The axillary nerve (C5-C6) is at risk in fractures of the surgical neck of the humerus. Which large superficial shoulder muscle does it innervate?",
+          "correctAnswer": "Deltoid",
+          "distractors": ["Supraspinatus", "Subscapularis", "Pectoralis major"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The anterior deltoid performs flexion and ___ rotation of the arm.",
+          "correctAnswer": "medial",
+          "distractors": ["lateral", "inferior", "posterior"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_029",
+      "correctAnswer": "Supraspinatus",
+      "acceptableAlternatives": ["supraspinatus muscle"],
+      "chainThemeId": "rotator_cuff",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Which rotator cuff muscle is responsible for initiating the first 15 degrees of arm abduction before the deltoid takes over?",
+      "explanation": "The supraspinatus initiates the first 15° of arm abduction. It runs through the subacromial space and is the most commonly torn rotator cuff muscle — typically from impingement or degeneration. The suprascapular nerve (C5-C6) innervates it. The 'empty can test' (arm extended, internally rotated, depressed against resistance) specifically tests supraspinatus integrity.",
+      "visualDescription": "Pixel art posterior shoulder showing supraspinatus emerging from supraspinous fossa, passing under acromion to greater tubercle, highlighted in yellow",
+      "sourceName": "Wikipedia — Supraspinatus muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Supraspinatus_muscle",
+      "volatile": false,
+      "distractors": ["Deltoid", "Infraspinatus", "Teres minor", "Subscapularis", "Teres major", "Coracobrachialis", "Biceps brachii"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The 'empty can test' is used clinically to assess which rotator cuff muscle — the one most commonly torn in shoulder impingement?",
+          "correctAnswer": "Supraspinatus",
+          "distractors": ["Infraspinatus", "Subscapularis", "Teres minor"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The supraspinatus is innervated by the axillary nerve.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_030",
+      "correctAnswer": "SITS",
+      "acceptableAlternatives": ["Supraspinatus, Infraspinatus, Teres minor, Subscapularis"],
+      "chainThemeId": "rotator_cuff",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "What mnemonic names the four muscles of the rotator cuff — the group that stabilizes the glenohumeral joint?",
+      "explanation": "SITS: Supraspinatus, Infraspinatus, Teres minor, Subscapularis. These four muscles form a cuff around the glenohumeral joint, holding the humeral head in the glenoid fossa. Three (SIT) attach to the greater tubercle; Subscapularis attaches to the lesser tubercle. Collectively they compress the joint and counteract the superior pull of the deltoid during abduction.",
+      "visualDescription": "Pixel art posterior scapula view showing all four rotator cuff muscles color-coded: supraspinatus (yellow), infraspinatus (blue), teres minor (green), subscapularis (red, anterior face)",
+      "sourceName": "Wikipedia — Rotator cuff",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rotator_cuff",
+      "volatile": false,
+      "distractors": ["SITE", "TISS", "STIS", "SPIT", "TIPS", "MIST", "FITS"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The SITS mnemonic names the four rotator cuff muscles. Which muscle is represented by the 'S' that attaches to the lesser tubercle (not the greater)?",
+          "correctAnswer": "Subscapularis",
+          "distractors": ["Supraspinatus", "Serratus anterior", "Suprascapular"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The rotator cuff SITS muscles are: Supraspinatus, Infraspinatus, Teres minor, and ___.",
+          "correctAnswer": "Subscapularis",
+          "distractors": ["Teres major", "Serratus anterior", "Subscapular"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_031",
+      "correctAnswer": "Lateral rotation of arm",
+      "acceptableAlternatives": ["lateral rotation", "external rotation of arm", "external rotation"],
+      "chainThemeId": "rotator_cuff",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Both the infraspinatus and teres minor attach to the greater tubercle of the humerus. What single primary action do they share?",
+      "explanation": "Both infraspinatus (from the infraspinous fossa) and teres minor (from the lateral border of the scapula) perform lateral rotation of the arm. Both are innervated by the suprascapular nerve (infraspinatus) and axillary nerve (teres minor). Lateral rotation is tested with the 'external rotation lag sign' — weakness suggests a combined infraspinatus/teres minor tear.",
+      "visualDescription": "Pixel art posterior view of right shoulder showing infraspinatus and teres minor side by side converging on the greater tubercle, arrow indicating lateral rotation direction",
+      "sourceName": "Wikipedia — Infraspinatus muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Infraspinatus_muscle",
+      "volatile": false,
+      "distractors": ["Medial rotation of arm", "Abduction of arm", "Adduction of arm", "Flexion of arm", "Extension of arm", "Protraction of scapula", "Elevation of scapula"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Testing 'external rotation lag' assesses the integrity of which two rotator cuff muscles that share this action?",
+          "correctAnswer": "Infraspinatus and teres minor",
+          "distractors": ["Supraspinatus and infraspinatus", "Subscapularis and teres major", "Deltoid and supraspinatus"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_032",
+      "correctAnswer": "Medial rotation of arm",
+      "acceptableAlternatives": ["medial rotation", "internal rotation of arm", "internal rotation"],
+      "chainThemeId": "rotator_cuff",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Subscapularis arises from the anterior surface of the scapula and inserts on the lesser tubercle of the humerus. What is its primary action — the opposite of infraspinatus?",
+      "explanation": "Subscapularis is the only rotator cuff muscle that medially (internally) rotates the arm. It originates from the subscapular fossa on the anterior (costal) surface of the scapula and is innervated by the upper and lower subscapular nerves (C5-C7). It is the largest and strongest rotator cuff muscle and is tested with the 'lift-off test' (arm behind back, push away from body).",
+      "visualDescription": "Pixel art anterior scapula view showing subscapularis filling the subscapular fossa, tendon crossing to lesser tubercle on anterior humerus, arrow showing internal rotation",
+      "sourceName": "Wikipedia — Subscapularis muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Subscapularis_muscle",
+      "volatile": false,
+      "distractors": ["Lateral rotation of arm", "Abduction of arm", "Extension of arm", "Flexion of arm", "Adduction of arm", "Elevation of scapula", "Retraction of scapula"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The 'lift-off test' (pressing the dorsum of the hand away from the lower back) specifically tests which rotator cuff muscle?",
+          "correctAnswer": "Subscapularis",
+          "distractors": ["Infraspinatus", "Supraspinatus", "Teres minor"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Subscapularis inserts on the greater tubercle of the humerus.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_033",
+      "correctAnswer": "Long thoracic nerve (C5-C7)",
+      "acceptableAlternatives": ["long thoracic nerve", "C5-C7"],
+      "chainThemeId": "shoulder_muscles",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Injury to which nerve causes 'winged scapula' by paralyzing the serratus anterior — leaving the medial border of the scapula protruding from the back?",
+      "explanation": "The long thoracic nerve (C5-C7) runs superficially along the lateral chest wall to reach serratus anterior. Because of its long, exposed course it is vulnerable to traction injuries (e.g., carrying a heavy backpack), stab wounds, or radical mastectomy. Serratus anterior normally holds the scapula flat against the thorax and protracts it; paralysis allows the medial border to 'wing' outward, impairing shoulder elevation above 90°.",
+      "visualDescription": "Pixel art posterior view of patient with winged scapula — right medial scapular border lifting away from rib cage, long thoracic nerve path traced in red along lateral chest",
+      "sourceName": "Wikipedia — Long thoracic nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Long_thoracic_nerve",
+      "volatile": false,
+      "distractors": ["Axillary nerve (C5-C6)", "Suprascapular nerve (C5-C6)", "Lower subscapular nerve (C5-C6)", "Dorsal scapular nerve (C5)", "Thoracodorsal nerve (C6-C8)", "Lateral pectoral nerve", "Medial pectoral nerve"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Serratus anterior protracts the scapula and holds it against the chest wall. Paralysis of this muscle causes 'winged scapula' — what nerve was injured?",
+          "correctAnswer": "Long thoracic nerve",
+          "distractors": ["Axillary nerve", "Suprascapular nerve", "Thoracodorsal nerve"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Serratus anterior attaches to ribs 1-8 and inserts on the ___ border of the scapula (anterior surface).",
+          "correctAnswer": "medial",
+          "distractors": ["lateral", "superior", "inferior"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_034",
+      "correctAnswer": "Teres major",
+      "acceptableAlternatives": ["teres major muscle"],
+      "chainThemeId": "shoulder_muscles",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Which muscle arises from the inferior angle of the scapula and performs adduction, medial rotation, and extension of the arm — making it functionally similar to latissimus dorsi despite not being part of the rotator cuff?",
+      "explanation": "Teres major originates from the inferior angle of the scapula and inserts into the intertubercular groove of the humerus (same groove as latissimus dorsi). It is innervated by the lower subscapular nerve (C5-C7). Because it performs the same actions as latissimus dorsi — adduction, medial rotation, extension — it is sometimes called 'lat's little helper.' It is NOT part of the rotator cuff (SITS).",
+      "visualDescription": "Pixel art posterior shoulder showing teres major as a thick band running from inferior scapular angle diagonally to the intertubercular groove, distinct from the smaller teres minor above it",
+      "sourceName": "Wikipedia — Teres major muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Teres_major_muscle",
+      "volatile": false,
+      "distractors": ["Teres minor", "Subscapularis", "Infraspinatus", "Latissimus dorsi", "Coracobrachialis", "Serratus anterior", "Rhomboid major"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Teres major is one of the four rotator cuff muscles.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_035",
+      "correctAnswer": "Musculocutaneous nerve (C5-C6)",
+      "acceptableAlternatives": ["musculocutaneous nerve", "C5-C6"],
+      "chainThemeId": "arm_muscles",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Biceps brachii and brachialis — the two main flexors of the forearm — are both innervated by which nerve?",
+      "explanation": "The musculocutaneous nerve (C5-C6) pierces coracobrachialis and runs between biceps brachii and brachialis, innervating all three anterior arm muscles. After supplying motor branches it continues as the lateral cutaneous nerve of the forearm. Injury (e.g., from prolonged use of a crutch or anterior shoulder dislocation) causes weakness of elbow flexion and supination, plus sensory loss over the lateral forearm.",
+      "visualDescription": "Pixel art cross-section of arm showing musculocutaneous nerve threading between biceps brachii (anterior) and brachialis (posterior/deep), with C5-C6 root labels",
+      "sourceName": "Wikipedia — Musculocutaneous nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Musculocutaneous_nerve",
+      "volatile": false,
+      "distractors": ["Radial nerve (C5-C8)", "Median nerve (C6-C7)", "Axillary nerve (C5-C6)", "Ulnar nerve (C7-T1)", "Lower subscapular nerve", "Medial brachial cutaneous nerve", "Thoracodorsal nerve"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The musculocutaneous nerve (C5-C6) innervates three anterior arm muscles. Which two are the primary forearm flexors?",
+          "correctAnswer": "Biceps brachii and brachialis",
+          "distractors": ["Brachialis and brachioradialis", "Biceps brachii and coracobrachialis", "Coracobrachialis and brachioradialis"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_036",
+      "correctAnswer": "Supination",
+      "acceptableAlternatives": ["supination of forearm", "forearm supination"],
+      "chainThemeId": "arm_muscles",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Biceps brachii is the most powerful supinator of the forearm. It achieves maximum supination force in which elbow position — flexed at 90° or fully extended?",
+      "explanation": "Biceps is most powerful at supination when the elbow is flexed at 90°, because the muscle's line of pull is then perpendicular to the radius (maximum moment arm). This is why a screwdriver is most effective when the elbow is bent. Brachialis, by contrast, flexes the forearm regardless of pronation/supination position and is considered the 'workhorse' flexor. Biceps also contributes weak shoulder flexion via its long and short heads.",
+      "visualDescription": "Pixel art arm at 90 degree elbow flexion showing biceps brachii tendon wrapping around radial tuberosity, arrow indicating clockwise supination rotation, palm turning upward",
+      "sourceName": "Wikipedia — Biceps brachii muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Biceps_brachii_muscle",
+      "volatile": false,
+      "distractors": ["Pronation", "Extension of elbow", "Adduction of arm", "Medial rotation of arm", "Wrist flexion", "Lateral rotation of arm", "Ulnar deviation"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The long head of biceps brachii originates from the ___ tubercle of the scapula.",
+          "correctAnswer": "supraglenoid",
+          "distractors": ["coracoid process", "infraglenoid", "acromion"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Brachialis is the primary forearm flexor regardless of whether the forearm is pronated or supinated.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_037",
+      "correctAnswer": "Radial tuberosity + bicipital aponeurosis",
+      "acceptableAlternatives": ["radial tuberosity", "radial tuberosity and bicipital aponeurosis"],
+      "chainThemeId": "arm_muscles",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Biceps brachii inserts via two structures — a tendon onto bone, and a flat fibrous sheet into the forearm fascia. Name both insertion points.",
+      "explanation": "Biceps inserts via its tendon onto the radial tuberosity (enabling supination) and via the bicipital aponeurosis — a flat sheet that blends into the deep fascia of the forearm medially. The aponeurosis overlies the brachial artery and median nerve at the elbow crease, which is why these structures can be compressed in distal biceps ruptures or tight casting.",
+      "visualDescription": "Pixel art anterior elbow showing bifurcated biceps insertion: tendon to radial tuberosity on lateral side, flat aponeurosis sweeping medially over forearm fascia",
+      "sourceName": "Wikipedia — Biceps brachii muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Biceps_brachii_muscle",
+      "volatile": false,
+      "distractors": ["Olecranon of ulna", "Coronoid process of ulna", "Styloid process of radius", "Lesser tubercle of humerus", "Intertubercular groove", "Base of metacarpal 2", "Pisiform bone"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The bicipital aponeurosis fans out medially from the biceps tendon at the elbow. Which two neurovascular structures lie immediately beneath it?",
+          "correctAnswer": "Brachial artery and median nerve",
+          "distractors": ["Radial artery and radial nerve", "Ulnar artery and ulnar nerve", "Anterior interosseous artery and nerve"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_038",
+      "correctAnswer": "Radial nerve (C6-C8)",
+      "acceptableAlternatives": ["radial nerve", "C6-C8"],
+      "chainThemeId": "arm_muscles",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Triceps brachii — the sole extensor of the forearm — is innervated by which nerve, which also supplies brachioradialis?",
+      "explanation": "The radial nerve (C6-C8) innervates triceps brachii, brachioradialis, and all posterior compartment muscles of the forearm. It runs in the radial groove (spiral groove) of the humerus, making it vulnerable to mid-shaft humeral fractures — causing 'Saturday night palsy' (wrist drop) when compressed against a hard surface. Triceps' three heads all converge on the olecranon; only the long head contributes to shoulder extension.",
+      "visualDescription": "Pixel art posterior arm cross-section showing radial nerve in the radial (spiral) groove between medial and lateral heads of triceps, with wrist drop illustration inset",
+      "sourceName": "Wikipedia — Radial nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Radial_nerve",
+      "volatile": false,
+      "distractors": ["Musculocutaneous nerve (C5-C6)", "Axillary nerve (C5-C6)", "Median nerve (C6-C7)", "Ulnar nerve (C7-T1)", "Posterior interosseous nerve only", "Long thoracic nerve", "Lower subscapular nerve"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "A mid-shaft humeral fracture damages the radial nerve in the spiral groove. Which clinical sign — inability to extend the wrist — would result?",
+          "correctAnswer": "Wrist drop",
+          "distractors": ["Claw hand", "Ape hand", "Winged scapula"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The three heads of triceps brachii all converge on the ___ of the ulna.",
+          "correctAnswer": "olecranon",
+          "distractors": ["coronoid process", "radial tuberosity", "styloid process"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_039",
+      "correctAnswer": "Coracobrachialis",
+      "acceptableAlternatives": ["coracobrachialis muscle"],
+      "chainThemeId": "arm_muscles",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Which anterior arm muscle originates from the coracoid process, inserts on the mid-medial shaft of the humerus, and performs flexion and adduction of the arm — and is also pierced by the musculocutaneous nerve?",
+      "explanation": "Coracobrachialis originates from the coracoid process of the scapula (sharing it with the short head of biceps) and inserts on the medial shaft of the humerus at mid-level. It is innervated by the musculocutaneous nerve (C5-C7), which characteristically pierces through it before continuing to innervate biceps and brachialis. This anatomical relationship means that coracobrachialis compression can trap the musculocutaneous nerve.",
+      "visualDescription": "Pixel art anterior arm showing coracobrachialis as a slender muscle alongside short head of biceps from coracoid process, with musculocutaneous nerve piercing through it",
+      "sourceName": "Wikipedia — Coracobrachialis muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Coracobrachialis_muscle",
+      "volatile": false,
+      "distractors": ["Brachialis", "Biceps brachii short head", "Subscapularis", "Teres major", "Deltoid anterior head", "Pectoralis minor", "Serratus anterior"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The musculocutaneous nerve pierces through coracobrachialis before innervating biceps brachii.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_040",
+      "correctAnswer": "Brachioradialis",
+      "acceptableAlternatives": ["brachioradialis muscle"],
+      "chainThemeId": "arm_muscles",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which forearm muscle originates from the lateral supracondylar ridge of the humerus, inserts on the styloid process of the radius, and is the strongest flexor of the forearm when in the mid-prone (thumb-up) position?",
+      "explanation": "Brachioradialis is anatomically a forearm muscle (it crosses the elbow anteriorly) but is innervated by the radial nerve (C5-C6), making it unique — a 'forearm flexor innervated by an extensor nerve.' It is most effective at elbow flexion when the forearm is in the neutral (mid-prone, thumb-up) position, as in a handshake or hammer grip. It forms the lateral boundary of the antecubital fossa.",
+      "visualDescription": "Pixel art lateral forearm showing brachioradialis as the most prominent anterior muscle from the lateral epicondyle region down to the radial styloid, forearm in mid-prone position",
+      "sourceName": "Wikipedia — Brachioradialis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Brachioradialis",
+      "volatile": false,
+      "distractors": ["Biceps brachii", "Brachialis", "Pronator teres", "Flexor carpi radialis", "Extensor carpi radialis longus", "Supinator", "Extensor digitorum"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Brachioradialis is innervated by the radial nerve despite being a forearm flexor. Which anatomical feature makes it the boundary of the antecubital fossa on the lateral side?",
+          "correctAnswer": "Its origin from the lateral supracondylar ridge",
+          "distractors": ["Its insertion on the olecranon", "Its origin from the medial epicondyle", "Its attachment to the coronoid process"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_041",
+      "correctAnswer": "Median nerve (C6-C7)",
+      "acceptableAlternatives": ["median nerve", "C6-C7"],
+      "chainThemeId": "forearm_flexors",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Pronator teres and flexor carpi radialis — two superficial forearm flexors from the medial epicondyle — are innervated by which nerve?",
+      "explanation": "The median nerve (C6-C7) innervates pronator teres and flexor carpi radialis, along with most other anterior forearm muscles. Pronator teres performs pronation and forearm flexion, while FCR flexes and radially deviates (abducts) the wrist. Injury to the median nerve above the elbow causes loss of pronation, wrist flexion, and finger flexion (the 'hand of benediction' at rest, with inability to make the 'OK' sign).",
+      "visualDescription": "Pixel art anterior forearm showing median nerve entering between two heads of pronator teres, with color-coded branches to pronator teres and flexor carpi radialis",
+      "sourceName": "Wikipedia — Median nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Median_nerve",
+      "volatile": false,
+      "distractors": ["Ulnar nerve (C7-T1)", "Radial nerve (C5-C6)", "Musculocutaneous nerve (C5-C6)", "Anterior interosseous nerve", "Posterior interosseous nerve", "Axillary nerve", "Medial cutaneous nerve of forearm"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The median nerve passes between the two heads of pronator teres at the elbow. What action does pronator teres perform besides forearm flexion?",
+          "correctAnswer": "Pronation",
+          "distractors": ["Supination", "Extension", "Ulnar deviation"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_042",
+      "correctAnswer": "Ulnar nerve (C7-T1)",
+      "acceptableAlternatives": ["ulnar nerve", "C7-T1"],
+      "chainThemeId": "forearm_flexors",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Flexor carpi ulnaris is the only forearm flexor not innervated by the median nerve. Which nerve supplies it — the same one that passes behind the medial epicondyle ('funny bone')?",
+      "explanation": "Flexor carpi ulnaris is innervated by the ulnar nerve (C7-T1). The ulnar nerve passes posterior to the medial epicondyle in the cubital tunnel — striking this area causes the sharp 'funny bone' sensation. FCU performs wrist flexion and ulnar deviation (adduction). Cubital tunnel syndrome (ulnar nerve compression at the elbow) causes weak FCU, hypothenar wasting, 'claw hand,' and numbness in digits 4-5.",
+      "visualDescription": "Pixel art medial elbow showing ulnar nerve passing behind medial epicondyle in cubital tunnel, branching to innervate flexor carpi ulnaris, digits 4-5 highlighted for sensory distribution",
+      "sourceName": "Wikipedia — Ulnar nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ulnar_nerve",
+      "volatile": false,
+      "distractors": ["Median nerve (C6-C7)", "Radial nerve (C5-C6)", "Musculocutaneous nerve (C5-C6)", "Posterior interosseous nerve", "Anterior interosseous nerve", "Medial cutaneous nerve", "Axillary nerve"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Cubital tunnel syndrome compresses the ulnar nerve at the medial epicondyle. Which wrist deviation does this weaken — radial or ulnar?",
+          "correctAnswer": "Ulnar deviation",
+          "distractors": ["Radial deviation", "Dorsiflexion", "Palmar flexion only"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Flexor carpi ulnaris inserts on the pisiform, hamate, and base of metacarpal ___.",
+          "correctAnswer": "5",
+          "distractors": ["2", "3", "4"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_043",
+      "correctAnswer": "Flexor digitorum superficialis",
+      "acceptableAlternatives": ["FDS", "flexor digitorum superficialis muscle"],
+      "chainThemeId": "forearm_flexors",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which forearm flexor inserts on the middle phalanges of digits 2-5 and is therefore responsible for flexing the PIP (proximal interphalangeal) joints?",
+      "explanation": "Flexor digitorum superficialis (FDS) inserts on the middle phalanges of digits 2-5, flexing the PIP joints and the wrist. It is innervated by the median nerve (C7-T1). At the finger, the FDS tendon splits to allow the deeper FDP tendon to pass through — this splitting is called Camper's chiasm. FDS is tested by holding adjacent fingers extended (to inactivate FDP) and asking the patient to flex the target finger at the PIP joint.",
+      "visualDescription": "Pixel art sagittal finger view showing FDS tendon splitting at Camper's chiasm into two slips inserting on middle phalanx, with FDP passing through underneath to reach distal phalanx",
+      "sourceName": "Wikipedia — Flexor digitorum superficialis muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Flexor_digitorum_superficialis_muscle",
+      "volatile": false,
+      "distractors": ["Flexor digitorum profundus", "Flexor pollicis longus", "Lumbricals", "Flexor digiti minimi", "Flexor carpi radialis", "Extensor digitorum", "Interossei"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Flexor digitorum superficialis inserts on the distal phalanges.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The FDS tendon splits at Camper's chiasm to allow the ___ tendon to pass through to the distal phalanx.",
+          "correctAnswer": "flexor digitorum profundus",
+          "distractors": ["extensor digitorum", "lumbrical", "flexor pollicis longus"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_044",
+      "correctAnswer": "Flexor digitorum profundus",
+      "acceptableAlternatives": ["FDP", "flexor digitorum profundus muscle"],
+      "chainThemeId": "forearm_flexors",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Which forearm flexor is the ONLY muscle capable of flexing the DIP (distal interphalangeal) joints of digits 2-5?",
+      "explanation": "Flexor digitorum profundus (FDP) is uniquely able to flex the DIP joints because it is the only tendon that inserts on the distal phalanges. It has a dual nerve supply: the median nerve (via anterior interosseous branch) innervates the radial half (digits 2-3), while the ulnar nerve innervates the ulnar half (digits 4-5). FDP is tested by holding the PIP joint extended and asking the patient to flex the fingertip. The lumbricals arise from FDP tendons.",
+      "visualDescription": "Pixel art lateral finger showing FDP tendon running through Camper's chiasm of FDS, continuing to insert on distal phalanx — only tendon reaching the fingertip",
+      "sourceName": "Wikipedia — Flexor digitorum profundus muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Flexor_digitorum_profundus_muscle",
+      "volatile": false,
+      "distractors": ["Flexor digitorum superficialis", "Lumbricals", "Palmar interossei", "Flexor pollicis longus", "Flexor digiti minimi brevis", "Extensor digitorum", "Dorsal interossei"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "FDP to digits 2-3 is supplied by the median nerve's anterior interosseous branch, while FDP to digits 4-5 is supplied by which nerve?",
+          "correctAnswer": "Ulnar nerve",
+          "distractors": ["Median nerve (main trunk)", "Radial nerve", "Posterior interosseous nerve"]
+        },
+        {
+          "type": "reverse",
+          "question": "The lumbricals of the hand arise from which forearm muscle's tendons?",
+          "correctAnswer": "Flexor digitorum profundus",
+          "distractors": ["Flexor digitorum superficialis", "Flexor carpi ulnaris", "Extensor digitorum"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_045",
+      "correctAnswer": "Anterior interosseous nerve (median)",
+      "acceptableAlternatives": ["anterior interosseous nerve", "anterior interosseous branch of median nerve"],
+      "chainThemeId": "forearm_flexors",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 5,
+      "funScore": 7,
+      "quizQuestion": "Flexor pollicis longus — the only muscle that flexes the thumb IP joint — is innervated by which branch of the median nerve?",
+      "explanation": "Flexor pollicis longus (FPL) is innervated by the anterior interosseous nerve (AIN), a purely motor branch of the median nerve arising in the forearm. The AIN also innervates FDP to digits 2-3 and pronator quadratus. AIN syndrome (compression or palsy) causes inability to flex the thumb IP joint or the index DIP joint, resulting in an inability to make the 'OK' sign (Kiloh-Nevin sign). FPL originates from the anterior radius and inserts on the distal phalanx of the thumb.",
+      "visualDescription": "Pixel art anterior forearm showing flexor pollicis longus running from radius to thumb, with anterior interosseous nerve branching from median nerve to supply it",
+      "sourceName": "Wikipedia — Flexor pollicis longus muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Flexor_pollicis_longus_muscle",
+      "volatile": false,
+      "distractors": ["Median nerve main trunk (C6-C7)", "Ulnar nerve (C7-T1)", "Posterior interosseous nerve", "Radial nerve (C5-C6)", "Recurrent branch of median nerve", "Deep branch of ulnar nerve", "Musculocutaneous nerve"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Anterior interosseous nerve palsy causes inability to flex the thumb IP joint and the index DIP joint. What clinical sign demonstrates this — the inability to form a circle with thumb and index finger?",
+          "correctAnswer": "Kiloh-Nevin sign (inability to make OK sign)",
+          "distractors": ["Froment's sign", "Phalen's sign", "Tinel's sign"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_046",
+      "correctAnswer": "Medial epicondyle",
+      "acceptableAlternatives": ["medial epicondyle of humerus"],
+      "chainThemeId": "forearm_flexors",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Most superficial forearm flexors — pronator teres, flexor carpi radialis, palmaris longus, and flexor carpi ulnaris — share a common origin from which bony landmark?",
+      "explanation": "The common flexor origin is the medial epicondyle of the humerus. Overuse inflammation of this origin causes 'golfer's elbow' (medial epicondylitis), producing pain and tenderness at the medial epicondyle worsened by resisted wrist flexion or pronation. This contrasts with 'tennis elbow' (lateral epicondylitis), which involves the common extensor origin at the lateral epicondyle.",
+      "visualDescription": "Pixel art anterior elbow showing the medial epicondyle with four forearm flexor muscles fanning out from it labeled: pronator teres, FCR, palmaris longus, FCU",
+      "sourceName": "Wikipedia — Medial epicondyle of the humerus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Medial_epicondyle_of_the_humerus",
+      "volatile": false,
+      "distractors": ["Lateral epicondyle", "Olecranon", "Coronoid process", "Radial head", "Styloid process of ulna", "Supracondylar ridge", "Coracoid process"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Inflammation of the common flexor origin at the medial epicondyle is the clinical condition known as what?",
+          "correctAnswer": "Golfer's elbow (medial epicondylitis)",
+          "distractors": ["Tennis elbow (lateral epicondylitis)", "Cubital tunnel syndrome", "Radial tunnel syndrome"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: 'Tennis elbow' involves the medial epicondyle, while 'golfer's elbow' involves the lateral epicondyle.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_047",
+      "correctAnswer": "Posterior interosseous nerve (deep radial, C7-C8)",
+      "acceptableAlternatives": ["posterior interosseous nerve", "PIN", "deep branch of radial nerve"],
+      "chainThemeId": "forearm_extensors",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Extensor digitorum, extensor carpi ulnaris, and supinator of the deep posterior forearm are all innervated by which nerve — the deep branch of the radial nerve?",
+      "explanation": "The posterior interosseous nerve (PIN) is the deep motor branch of the radial nerve that enters the posterior forearm by passing through the supinator muscle (via the radial tunnel). It innervates most posterior forearm muscles including extensor digitorum, ECU, extensor digiti minimi, extensor pollicis longus/brevis, abductor pollicis longus, and extensor indicis. PIN compression ('radial tunnel syndrome') causes weakness of finger and wrist extension without sensory loss.",
+      "visualDescription": "Pixel art posterior forearm cross-section showing posterior interosseous nerve emerging from supinator muscle to branch into extensor compartment muscles",
+      "sourceName": "Wikipedia — Posterior interosseous nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Posterior_interosseous_nerve",
+      "volatile": false,
+      "distractors": ["Radial nerve main trunk (C5-C8)", "Superficial radial nerve", "Median nerve (C6-C7)", "Ulnar nerve (C7-T1)", "Anterior interosseous nerve", "Musculocutaneous nerve", "Axillary nerve"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The posterior interosseous nerve passes through which posterior forearm muscle before branching to the extensor compartment?",
+          "correctAnswer": "Supinator",
+          "distractors": ["Extensor digitorum", "Extensor carpi radialis brevis", "Pronator teres"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_048",
+      "correctAnswer": "Extensor digitorum",
+      "acceptableAlternatives": ["extensor digitorum muscle", "ED"],
+      "chainThemeId": "forearm_extensors",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Which posterior forearm muscle originates from the lateral epicondyle and extends both the MCP joints and IP joints of digits 2-5 via extensor expansions?",
+      "explanation": "Extensor digitorum (ED) originates from the lateral epicondyle (common extensor origin) and inserts via dorsal extensor expansions (dorsal hoods) onto the dorsum of digits 2-5. It extends the MCP, PIP, and DIP joints and assists in wrist extension. The extensor expansions are complex fibrous sheets that also receive insertions from lumbricals and interossei. 'Tennis elbow' often involves ED's origin at the lateral epicondyle.",
+      "visualDescription": "Pixel art dorsal forearm and hand showing extensor digitorum tendons fanning out to digits 2-5, forming extensor hood expansions over the knuckles",
+      "sourceName": "Wikipedia — Extensor digitorum muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Extensor_digitorum_muscle",
+      "volatile": false,
+      "distractors": ["Extensor carpi ulnaris", "Extensor digiti minimi", "Extensor indicis", "Extensor carpi radialis longus", "Extensor pollicis longus", "Flexor digitorum superficialis", "Dorsal interossei"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Extensor digitorum is innervated by the posterior interosseous nerve.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_049",
+      "correctAnswer": "Extension + adduction (ulnar deviation) of wrist",
+      "acceptableAlternatives": ["extension and ulnar deviation", "wrist extension and adduction", "ulnar deviation and extension"],
+      "chainThemeId": "forearm_extensors",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Extensor carpi ulnaris originates from the lateral epicondyle and inserts on the base of metacarpal 5. What two combined wrist actions does it perform?",
+      "explanation": "Extensor carpi ulnaris (ECU) extends and adducts (ulnar deviation) the wrist. It is innervated by the posterior interosseous nerve. Together with flexor carpi ulnaris, it produces pure ulnar deviation when both contract simultaneously. ECU tendon instability (subluxation out of its groove at the ulnar head) is common in racket sports and produces a painful snap with forearm rotation.",
+      "visualDescription": "Pixel art dorsal forearm showing ECU running from lateral epicondyle along the ulnar border to base of metacarpal 5, wrist in slight ulnar deviation",
+      "sourceName": "Wikipedia — Extensor carpi ulnaris muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Extensor_carpi_ulnaris_muscle",
+      "volatile": false,
+      "distractors": ["Extension + radial deviation of wrist", "Flexion + ulnar deviation of wrist", "Extension only", "Flexion + radial deviation", "Supination + extension", "Pronation + flexion", "Ulnar deviation only"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Extensor carpi ulnaris and flexor carpi ulnaris, when contracting simultaneously, produce which pure wrist motion?",
+          "correctAnswer": "Ulnar deviation",
+          "distractors": ["Radial deviation", "Wrist extension", "Wrist flexion"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_050",
+      "correctAnswer": "Supinator",
+      "acceptableAlternatives": ["supinator muscle"],
+      "chainThemeId": "forearm_extensors",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which deep posterior forearm muscle, originating from the lateral epicondyle and supinator crest of the ulna, supinates the forearm at all elbow positions — and also wraps around the posterior interosseous nerve?",
+      "explanation": "Supinator originates from the lateral epicondyle and supinator crest of the ulna, wrapping around the proximal radius to insert on its proximal lateral surface. It supinates the forearm regardless of elbow position (unlike biceps, which supinates most effectively at 90°). The posterior interosseous nerve (deep radial) passes through the radial tunnel between supinator's superficial and deep heads — compression here causes radial tunnel syndrome.",
+      "visualDescription": "Pixel art proximal forearm cross-section showing supinator wrapping around the radius, with posterior interosseous nerve threading between its two heads in the radial tunnel",
+      "sourceName": "Wikipedia — Supinator muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Supinator_muscle",
+      "volatile": false,
+      "distractors": ["Biceps brachii", "Brachioradialis", "Pronator teres", "Extensor carpi radialis brevis", "Pronator quadratus", "Extensor digitorum", "Flexor carpi radialis"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Supinator supinates at all elbow positions, whereas biceps is the most powerful supinator only in which elbow position?",
+          "correctAnswer": "90 degrees of flexion",
+          "distractors": ["Full extension", "Full flexion", "45 degrees of flexion"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_051",
+      "correctAnswer": "Lateral epicondyle",
+      "acceptableAlternatives": ["lateral epicondyle of humerus"],
+      "chainThemeId": "forearm_extensors",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Extensor digitorum, extensor carpi ulnaris, extensor carpi radialis brevis, and extensor digiti minimi all share a common origin from which bony landmark — the site of 'tennis elbow'?",
+      "explanation": "The lateral epicondyle is the common extensor origin for most superficial posterior forearm muscles. Lateral epicondylitis ('tennis elbow') is caused by repetitive microtrauma to these tendons, especially extensor carpi radialis brevis. It causes pain at the lateral epicondyle worsened by resisted wrist extension and grip. This contrasts with 'golfer's elbow' at the medial epicondyle (common flexor origin).",
+      "visualDescription": "Pixel art lateral elbow showing the lateral epicondyle with four extensor muscles fanning out from it, 'tennis elbow' pain point marked with a red X",
+      "sourceName": "Wikipedia — Lateral epicondyle of the humerus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lateral_epicondyle_of_the_humerus",
+      "volatile": false,
+      "distractors": ["Medial epicondyle", "Olecranon", "Radial head", "Coronoid process", "Lateral supracondylar ridge", "Styloid process of radius", "Ulnar styloid"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Tennis elbow (lateral epicondylitis) most commonly involves microtears in which specific extensor tendon at the lateral epicondyle?",
+          "correctAnswer": "Extensor carpi radialis brevis",
+          "distractors": ["Extensor digitorum", "Extensor carpi ulnaris", "Extensor carpi radialis longus"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_052",
+      "correctAnswer": "Extensor carpi radialis longus and brevis",
+      "acceptableAlternatives": ["ECRL and ECRB", "extensor carpi radialis longus/brevis", "extensor carpi radialis"],
+      "chainThemeId": "forearm_extensors",
+      "answerTypePoolId": "muscle_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Which pair of posterior forearm muscles perform wrist extension combined with radial deviation (abduction), inserting on the bases of metacarpals 2 and 3 respectively?",
+      "explanation": "Extensor carpi radialis longus (ECRL) inserts on base of MC2, and extensor carpi radialis brevis (ECRB) inserts on base of MC3. Both perform wrist extension and radial deviation. ECRL originates from the lateral supracondylar ridge (radial nerve, C5-C6), while ECRB originates from the lateral epicondyle (posterior interosseous nerve). When ECRL+ECRB contract with ECU, pure wrist extension occurs without deviation.",
+      "visualDescription": "Pixel art dorsal forearm showing ECRL and ECRB running side by side down the radial side, terminating at MC2 and MC3 base, wrist in slight radial deviation",
+      "sourceName": "Wikipedia — Extensor carpi radialis longus muscle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Extensor_carpi_radialis_longus_muscle",
+      "volatile": false,
+      "distractors": ["Flexor carpi radialis and FCU", "Extensor pollicis longus and brevis", "Abductor pollicis longus and extensor pollicis brevis", "Extensor digitorum and extensor indicis", "Extensor carpi ulnaris and ECR longus", "Pronator teres and brachioradialis", "ECRL only"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Extensor carpi radialis longus inserts on the base of metacarpal ___, while extensor carpi radialis brevis inserts on metacarpal ___.",
+          "correctAnswer": "2 and 3",
+          "distractors": ["3 and 4", "1 and 2", "4 and 5"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_053",
+      "correctAnswer": "Suprascapular nerve (C5-C6)",
+      "acceptableAlternatives": ["suprascapular nerve", "C5-C6"],
+      "chainThemeId": "rotator_cuff",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Both supraspinatus and infraspinatus — two of the four rotator cuff muscles — are innervated by the same nerve. Which nerve passes through the suprascapular notch to reach them?",
+      "explanation": "The suprascapular nerve (C5-C6) passes through the suprascapular notch (under the superior transverse scapular ligament) to innervate supraspinatus, then continues around the spine of the scapula through the spinoglenoid notch to reach infraspinatus. Entrapment at the suprascapular notch affects both muscles; entrapment at the spinoglenoid notch affects only infraspinatus. Suprascapular nerve palsy causes posterosuperior shoulder pain, supraspinatus wasting, and weak abduction/external rotation.",
+      "visualDescription": "Pixel art posterior scapula view showing suprascapular nerve passing through suprascapular notch to supraspinatus, then arcing around spine of scapula through spinoglenoid notch to infraspinatus",
+      "sourceName": "Wikipedia — Suprascapular nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Suprascapular_nerve",
+      "volatile": false,
+      "distractors": ["Axillary nerve (C5-C6)", "Upper subscapular nerve", "Lower subscapular nerve (C5-C7)", "Long thoracic nerve (C5-C7)", "Dorsal scapular nerve", "Lateral pectoral nerve", "Thoracodorsal nerve"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Entrapment of the suprascapular nerve specifically at the spinoglenoid notch (rather than the suprascapular notch) would spare which muscle?",
+          "correctAnswer": "Supraspinatus",
+          "distractors": ["Infraspinatus", "Both supraspinatus and infraspinatus", "Teres minor"]
+        }
+      ]
+    },
+    {
+      "id": "ha_musc_054",
+      "correctAnswer": "Lower subscapular nerve (C5-C7)",
+      "acceptableAlternatives": ["lower subscapular nerve", "C5-C7"],
+      "chainThemeId": "shoulder_muscles",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "Teres major is innervated by which nerve — the same one that supplies the lower portion of subscapularis?",
+      "explanation": "Teres major is innervated by the lower subscapular nerve (C5-C7), which arises from the posterior cord of the brachial plexus. Subscapularis receives dual innervation from both the upper subscapular nerve (C5-C6) and lower subscapular nerve (C5-C7). The lower subscapular nerve is a branch of the posterior cord alongside the thoracodorsal and axillary nerves — all supplying posterior and medial rotator group muscles.",
+      "visualDescription": "Pixel art posterior cord of brachial plexus branching into upper subscapular, lower subscapular, thoracodorsal, axillary, and radial nerves, with lower subscapular nerve traced to teres major",
+      "sourceName": "Wikipedia — Lower subscapular nerve",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lower_subscapular_nerve",
+      "volatile": false,
+      "distractors": ["Upper subscapular nerve (C5-C6)", "Axillary nerve (C5-C6)", "Thoracodorsal nerve (C6-C8)", "Long thoracic nerve (C5-C7)", "Lateral pectoral nerve", "Suprascapular nerve (C5-C6)", "Dorsal scapular nerve"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The lower subscapular nerve is a branch of which cord of the brachial plexus — the same cord that gives rise to the axillary and radial nerves?",
+          "correctAnswer": "Posterior cord",
+          "distractors": ["Medial cord", "Lateral cord", "Superior trunk"]
+        }
+      ]
+    }
+  ]
+}

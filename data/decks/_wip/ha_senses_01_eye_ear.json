@@ -1,0 +1,784 @@
+{
+  "facts": [
+    {
+      "id": "ha_sense_001",
+      "correctAnswer": "3 tunics (layers)",
+      "acceptableAlternatives": ["Three layers", "Three coats", "Three tunics"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["2 tunics", "4 tunics", "5 tunics", "6 tunics", "1 tunic", "7 layers", "2 chambers"],
+      "quizQuestion": "The eyeball wall is composed of how many concentric tissue layers (tunics)?",
+      "explanation": "The eyeball wall has three concentric tunics (coats). The outermost fibrous tunic comprises the opaque white sclera (posterior 5/6) and the transparent cornea (anterior 1/6). The middle vascular tunic (uvea) comprises the choroid (posterior, supplies retina), ciliary body (controls lens shape), and iris (controls pupil diameter). The innermost nervous tunic is the retina, which contains the photoreceptors.",
+      "statement": "The eyeball has 3 tunics: fibrous (sclera + cornea), vascular/uvea (choroid + ciliary body + iris), and nervous (retina).",
+      "wowFactor": "The uvea — the middle vascular tunic — is the most blood-rich tissue in the entire body per unit volume. The choroid layer alone carries more blood flow per gram of tissue than even the brain or kidneys, all to supply the metabolically insatiable photoreceptors in the retina above it.",
+      "visualDescription": "Pixel art cross-section of the eyeball showing three concentric color-coded rings: white outer sclera/cornea, dark-red middle uvea with choroid/ciliary body/iris labeled, and pale inner retina",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Human_eye",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The middle tunic of the eye (the uvea) contains three structures: the ___, the ___ body, and the ___.",
+          "correctAnswer": "Choroid; ciliary; iris",
+          "distractors": ["Retina; ciliary; cornea", "Sclera; vitreous; lens", "Fovea; Schlemm's; pupil"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The cornea is part of the fibrous tunic of the eye, along with the sclera.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_002",
+      "correctAnswer": "Cornea",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Lens", "Vitreous humor", "Aqueous humor", "Sclera", "Iris", "Choroid", "Fovea"],
+      "quizQuestion": "Which avascular, transparent structure accounts for 65–70% of the eye's total refractive power?",
+      "explanation": "The cornea is responsible for the majority of the eye's refracting power — roughly 43 diopters out of a total of ~60 diopters — far more than the lens (~17–20 diopters). Being avascular (no blood vessels), the cornea receives oxygen and nutrients from the aqueous humor anteriorly and tears on its surface. It has five layers: epithelium, Bowman's layer, stroma (90% of thickness), Descemet's membrane, and endothelium. Its high density of sensory nerve endings makes it the most sensitive structure in the body.",
+      "statement": "The cornea, avascular and 5-layered, provides 65–70% of the eye's refractive power (~43 of ~60 total diopters). The most densely innervated structure in the body.",
+      "wowFactor": "The cornea is the most densely innervated tissue in the human body — it has roughly 300–600 nerve endings per square millimeter, about 300–400 times more than skin. This is why even a tiny eyelash touching your cornea triggers an intense blink reflex and why corneal injuries are so exquisitely painful.",
+      "visualDescription": "Pixel art eye front view with transparent dome-shaped cornea highlighted, with light ray arrows bending sharply as they pass through it, labeled '43 diopters'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cornea",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The cornea is avascular, receiving oxygen from the aqueous humor and tears rather than from blood vessels.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_003",
+      "correctAnswer": "Lens",
+      "acceptableAlternatives": ["Crystalline lens"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Cornea", "Vitreous humor", "Choroid", "Iris", "Ciliary body", "Retina", "Fovea"],
+      "quizQuestion": "Which biconvex, transparent structure of the eye changes shape via ciliary muscle contraction to focus on near or distant objects (accommodation)?",
+      "explanation": "The lens is a biconvex, crystalline structure suspended by zonule fibers (suspensory ligaments) attached to the ciliary body. Accommodation — the process of changing focal length — occurs when the ciliary muscle contracts, reducing tension on the zonule fibers, allowing the elastic lens to become more spherical (higher power) for near vision. Relaxation of the ciliary muscle flattens the lens for distant vision. With aging, the lens becomes less elastic (presbyopia — difficulty with near vision). Clouding of the lens is called a cataract.",
+      "statement": "The biconvex lens adjusts shape via ciliary muscle contraction (accommodation). It becomes more spherical for near vision. Clouding = cataract; aging-related stiffness = presbyopia.",
+      "wowFactor": "When your ciliary muscle relaxes during distant focus, it creates tension in the zonule fibers that pull the lens flat. When it contracts for near focus, it releases tension and lets the lens spring back to its natural spherical shape. Cataract surgery replaces the natural lens with a rigid artificial one — which is why most cataract patients still need reading glasses after surgery: the artificial lens cannot accommodate.",
+      "visualDescription": "Pixel art cross-section showing ciliary muscle relaxed with zonule fibers taut pulling lens flat (distant focus arrow), and ciliary muscle contracted with fibers loose allowing lens to round up (near focus arrow)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lens_(anatomy)",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "When the ciliary muscle CONTRACTS, what happens to the lens?",
+          "correctAnswer": "Zonule fibers loosen and the lens becomes more spherical (near vision)",
+          "distractors": ["Zonule fibers tighten and the lens flattens (distant vision)", "The iris dilates to let in more light", "The vitreous humor compresses the lens", "The lens moves forward in the eye"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Clouding of the lens is called a ___; loss of accommodation due to aging is called ___.",
+          "correctAnswer": "Cataract; presbyopia",
+          "distractors": ["Glaucoma; astigmatism", "Presbyopia; myopia", "Cataract; amblyopia"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_004",
+      "correctAnswer": "Rods and cones",
+      "acceptableAlternatives": ["Photoreceptors"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "cell_types",
+      "difficulty": 1,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Ganglion cells and bipolar cells", "Rods only", "Cones only", "Muller cells and amacrine cells", "Horizontal cells and bipolar cells", "Photopigment cells and ganglion cells", "Melanopsin cells"],
+      "quizQuestion": "The retina contains two types of photoreceptors responsible for converting light into neural signals — what are they?",
+      "explanation": "The retina contains approximately 120 million rods and 6 million cones. Rods are concentrated in the peripheral retina, are exquisitely sensitive to dim light (scotopic vision), do not distinguish color, and use the photopigment rhodopsin. Cones are concentrated in the fovea centralis (central retina), operate in bright light (photopic vision), mediate color vision, and come in three types (S/short-wavelength/blue, M/medium-wavelength/green, L/long-wavelength/red). Behind the photoreceptors lie bipolar cells, which synapse onto retinal ganglion cells whose axons form the optic nerve.",
+      "statement": "~120M rods (peripheral, dim light, rhodopsin) and ~6M cones (fovea, bright light, color: S/M/L) are the retina's photoreceptors.",
+      "wowFactor": "Rods are so sensitive that a fully dark-adapted rod can respond to a single photon. Under perfect dark-adaptation conditions, humans can detect a candle flame from about 50 kilometers away on a clear night — the limiting factor is atmospheric scattering, not your photoreceptors. Your peripheral vision at night is genuinely that sensitive.",
+      "visualDescription": "Pixel art retina cross-section showing thin rod cells (blue) densely packed in the periphery and fatter cone cells (red/green/blue tinted) concentrated in the center fovea region, with bipolar cells below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Photoreceptor_cell",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The retina contains approximately ___ rods and ___ million cones.",
+          "correctAnswer": "120 million; 6",
+          "distractors": ["6 million; 120", "50 million; 10", "200 million; 3"]
+        },
+        {
+          "type": "context",
+          "question": "Why is it easier to see a very faint star at night by looking slightly to the side of it rather than directly at it?",
+          "correctAnswer": "Rods (dim light detectors) are concentrated in the peripheral retina, not the central fovea",
+          "distractors": ["Cones can detect individual photons; rods cannot", "The cornea refracts peripheral light more efficiently", "The fovea is too close to the blind spot to detect faint light", "Peripheral retina has fewer photoreceptors but more ganglion cells"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_005",
+      "correctAnswer": "Fovea centralis",
+      "acceptableAlternatives": ["Fovea", "Central fovea"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Optic disc", "Macula lutea", "Ora serrata", "Optic nerve head", "Peripheral retina", "Choroid", "Ciliary body"],
+      "quizQuestion": "Which tiny (~1.5 mm diameter) region of the retina contains only cones and provides the highest visual acuity?",
+      "explanation": "The fovea centralis is the central pit of the macula lutea, approximately 1.5 mm in diameter. It contains no rods — only cones, packed at their highest density (~150,000–200,000 per mm²). Each cone in the fovea has a 1:1 connection to a retinal ganglion cell, providing maximum spatial resolution. When you look directly at an object, you are projecting its image onto the fovea. Reading, threading a needle, and recognizing faces all depend on the fovea.",
+      "statement": "The fovea centralis (~1.5 mm) contains only cones at highest density, no rods, and provides maximum visual acuity. Direct gaze points the fovea at a target.",
+      "wowFactor": "The fovea represents only about 1% of the retinal area but takes up roughly 50% of the primary visual cortex. Your brain devotes an enormous proportion of its processing power to that tiny central 2 degrees of your visual field — everything you are not directly staring at is processed in far less detail than it feels like it is.",
+      "visualDescription": "Pixel art retina with a small highlighted central pit labeled 'fovea centralis', packed exclusively with cone cells in a tight mosaic, with a dotted line showing the line of sight converging on it",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fovea_centralis",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The fovea centralis contains only cones (no rods) and provides the highest visual acuity.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_006",
+      "correctAnswer": "Optic disc (blind spot)",
+      "acceptableAlternatives": ["Blind spot", "Optic disc", "Optic nerve head"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": ["Fovea centralis", "Macula", "Optic chiasm", "Peripheral retina", "Ora serrata", "Choroid", "Vitreous chamber"],
+      "quizQuestion": "Which region of the retina has no photoreceptors because it is where the optic nerve exits the eye, creating a natural blind spot?",
+      "explanation": "The optic disc (optic nerve head) is where retinal ganglion cell axons converge and exit the eye as the optic nerve. It contains no photoreceptors — no rods, no cones — making it a natural scotoma (blind spot). It is located approximately 15° nasally from the fovea. You do not normally perceive the blind spot because the brain fills it in using information from the surrounding retina and the other eye. The optic disc is also where retinal blood vessels enter and exit, making it visible on ophthalmoscopy.",
+      "statement": "The optic disc (blind spot) has no photoreceptors — it is where optic nerve fibers exit. Located ~15° nasal to the fovea. Brain fills in the gap perceptually.",
+      "wowFactor": "Your blind spot is large enough to hide an object the size of your fist held at arm's length. Right now, there is a continuous hole in each of your retinas the size of about 5 full moons — and your brain has been seamlessly painting over it your entire life. You only notice it when you close one eye and use the right trick to reveal it.",
+      "visualDescription": "Pixel art retina showing a pale circular disc with no photoreceptor icons, blood vessels radiating from its center, positioned to the left of the central fovea, with a 'NO PHOTORECEPTORS' warning label",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Optic_disc",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Why don't we normally perceive our blind spot in daily vision?",
+          "correctAnswer": "The brain fills in the gap using surrounding retinal information and input from the other eye",
+          "distractors": ["The blind spot is too small to notice", "Eye movements constantly move images off the blind spot", "The optic disc actually has rods even though it lacks cones", "The vitreous humor compensates optically"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_007",
+      "correctAnswer": "Glaucoma",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "medical_conditions",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Cataract", "Macular degeneration", "Retinal detachment", "Uveitis", "Diabetic retinopathy", "Presbyopia", "Astigmatism"],
+      "quizQuestion": "Blockage of aqueous humor drainage via the canal of Schlemm causes increased intraocular pressure (IOP), which can damage the optic nerve and lead to which disease?",
+      "explanation": "Aqueous humor is produced by the ciliary body and flows from the posterior chamber through the pupil into the anterior chamber, draining via the trabecular meshwork into the canal of Schlemm. When this drainage is impaired, IOP rises. Chronically elevated IOP compresses retinal ganglion cell axons at the optic disc, causing progressive cupping of the optic disc and peripheral visual field loss. This is glaucoma — the leading cause of irreversible blindness worldwide. Primary open-angle glaucoma (most common) is asymptomatic until late stages because peripheral vision is lost first.",
+      "statement": "Aqueous humor drains via the canal of Schlemm; blocked drainage raises IOP → glaucoma (optic nerve damage), the leading cause of irreversible blindness worldwide.",
+      "wowFactor": "Glaucoma is called the 'silent thief of sight' because it destroys peripheral vision first, and the brain compensates so effectively that most patients lose 40% of their vision before noticing anything wrong. By the time central vision is affected, the damage is irreversible — which is why routine IOP screening exists even for people with no symptoms.",
+      "visualDescription": "Pixel art eye cross-section with aqueous humor blocked at the trabecular meshwork, pressure building up, compressing the optic nerve head with progressive cupping visible",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Glaucoma",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What structure drains aqueous humor from the anterior chamber of the eye?",
+          "correctAnswer": "Canal of Schlemm (trabecular meshwork)",
+          "distractors": ["Central retinal vein", "Vitreous chamber", "Nasolacrimal duct", "Choroidal vessels"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_008",
+      "correctAnswer": "LR6SO4 (CN VI to lateral rectus; CN IV to superior oblique)",
+      "acceptableAlternatives": ["LR6SO4", "Lateral rectus CN VI, superior oblique CN IV"],
+      "chainThemeId": 6,
+      "answerTypePoolId": "anatomy_mnemonics",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": ["LR4SO6", "SR6IO4", "LR3SO6", "MR6IO4", "LR6SR4", "SO4LR6", "IR6SO3"],
+      "quizQuestion": "The mnemonic 'LR6SO4' summarizes which two special cranial nerve-muscle pairings for the extraocular muscles?",
+      "explanation": "Of the six extraocular muscles, four are controlled by CN III (oculomotor): medial rectus, superior rectus, inferior rectus, and inferior oblique, as well as the levator palpebrae superioris and pupillary sphincter. The exceptions are CN VI (abducens) which controls the lateral rectus (abducts the eye), and CN IV (trochlear) which controls the superior oblique (depresses and intorts the adducted eye). LR6SO4 = Lateral Rectus (CN 6) and Superior Oblique (CN 4). CN III palsy causes the eye to deviate 'down and out'; CN VI palsy causes inability to abduct; CN IV palsy causes vertical diplopia.",
+      "statement": "LR6SO4: Lateral Rectus is innervated by CN VI (abducens); Superior Oblique by CN IV (trochlear). All other extraocular muscles are CN III (oculomotor).",
+      "wowFactor": "The superior oblique muscle routes its tendon through a tiny cartilage pulley called the trochlea — a literal anatomical pulley inside the orbit — before inserting on the eyeball. CN IV is the thinnest cranial nerve and has the longest intracranial course, making it the most vulnerable to stretch injuries from even minor head trauma.",
+      "visualDescription": "Pixel art orbit with 6 labeled muscles, lateral rectus (LR) highlighted in blue with '6' badge, superior oblique (SO) highlighted in purple with '4' badge, all others labeled '3'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Extraocular_muscles",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Paralysis of CN VI causes inability to ___ the eye; paralysis of CN IV causes ___ diplopia.",
+          "correctAnswer": "Abduct (turn outward); vertical",
+          "distractors": ["Adduct; horizontal", "Elevate; torsional", "Depress; oblique"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_009",
+      "correctAnswer": "Optic chiasm",
+      "acceptableAlternatives": ["Optic chiasma"],
+      "chainThemeId": 7,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Lateral geniculate nucleus", "Optic radiation", "Optic disc", "V1 cortex", "Optic tract", "Superior colliculus", "Pretectal nucleus"],
+      "quizQuestion": "At which structure in the visual pathway do nasal retinal fibers from each eye cross to the opposite side?",
+      "explanation": "At the optic chiasm (located just above the pituitary gland at the base of the brain), nasal retinal fibers from each eye cross (decussate) to the opposite optic tract, while temporal retinal fibers stay ipsilateral. The result: each optic tract carries information from the contralateral visual field. A pituitary tumor compressing the chiasm from below classically damages the crossing nasal fibers from both eyes, causing bitemporal hemianopia (loss of both peripheral/temporal visual fields). Post-chiasmal lesions cause homonymous hemianopia.",
+      "statement": "At the optic chiasm, nasal retinal fibers cross to the opposite side. Each optic tract carries information from the opposite visual field. Chiasm compression causes bitemporal hemianopia.",
+      "wowFactor": "A pituitary tumor growing upward produces one of neurology's most distinctive visual deficits: bitemporal hemianopia — you lose both left and right peripheral fields simultaneously, creating severe tunnel vision. The pituitary sits directly below the optic chiasm, and even a small upward extension of a tumor can press on the crossing nasal fibers from both eyes.",
+      "visualDescription": "Pixel art brain view from below showing two optic nerves converging at an X-shaped chiasm, nasal fibers crossing (shown in orange), temporal fibers continuing straight (blue), each optic tract labeled",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Optic_chiasm",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "A pituitary tumor compressing the optic chiasm from below causes which classic visual field defect?",
+          "correctAnswer": "Bitemporal hemianopia (loss of both peripheral/temporal fields)",
+          "distractors": ["Right homonymous hemianopia", "Left homonymous hemianopia", "Central scotoma", "Monocular blindness in the left eye"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_010",
+      "correctAnswer": "Primary visual cortex (V1) in the calcarine sulcus",
+      "acceptableAlternatives": ["V1", "Calcarine cortex", "Primary visual cortex"],
+      "chainThemeId": 7,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Superior colliculus", "Frontal eye fields", "Lateral geniculate nucleus", "Temporal lobe", "Parietal cortex", "Prefrontal cortex", "Occipital pole only"],
+      "quizQuestion": "Visual information from the lateral geniculate nucleus (LGN) of the thalamus projects via optic radiations to which cortical region?",
+      "explanation": "The complete visual pathway: retina to optic nerve to optic chiasm to optic tract to lateral geniculate nucleus (LGN) in the thalamus to optic radiations to primary visual cortex (V1) in the calcarine sulcus of the occipital lobe. V1 performs initial processing of edges, orientation, and contrast. Damage to V1 causes contralateral homonymous hemianopia. Meyer's loop (the inferior optic radiation) passes through the temporal lobe — temporal lobe lesions can cause a superior quadrantanopia ('pie in the sky').",
+      "statement": "Visual pathway: retina to optic nerve to chiasm to optic tract to LGN (thalamus) to optic radiations to V1 (calcarine sulcus, occipital lobe).",
+      "wowFactor": "Part of the optic radiation — called Meyer's loop — takes a detour through the temporal lobe before reaching the visual cortex. This is why temporal lobe surgery for epilepsy sometimes causes a partial visual field defect: the surgeon has to pass through or near fibers carrying visual information. Neurosurgeons map it precisely before operating.",
+      "visualDescription": "Pixel art brain side view with labeled visual pathway: optic nerve to chiasm to LGN in thalamus (blue glowing) to optic radiation sweeping to back of brain to V1 in calcarine sulcus glowing",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Visual_cortex",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The last relay station for visual information before it reaches the cortex is the ___ in the ___.",
+          "correctAnswer": "Lateral geniculate nucleus (LGN); thalamus",
+          "distractors": ["Superior colliculus; midbrain", "Optic chiasm; hypothalamus", "Pretectal nucleus; pons"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_011",
+      "correctAnswer": "Outer, middle, and inner ear",
+      "acceptableAlternatives": ["Three parts: outer, middle, inner"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_concepts",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": ["Outer and inner ear only", "Four parts", "Cochlea, vestibule, and semicircular canals", "Pinna, tympanic membrane, cochlea", "External, medial, and central", "Two chambers and one canal"],
+      "quizQuestion": "The ear is anatomically divided into which three main regions?",
+      "explanation": "The ear has three anatomical regions: the outer ear (pinna/auricle plus external auditory canal ~2.5 cm long plus tympanic membrane), the middle ear (tympanic cavity with three ossicles — malleus, incus, stapes — plus the eustachian tube connecting to the nasopharynx), and the inner ear (cochlea for hearing; semicircular canals and vestibule for balance). The eustachian tube equalizes middle ear pressure — it is why you yawn when descending in an aircraft.",
+      "statement": "The ear divides into outer (pinna, canal ~2.5 cm), middle (3 ossicles, eustachian tube), and inner (cochlea, semicircular canals, vestibule).",
+      "wowFactor": "The external auditory canal is precisely 2.5 cm long and angled so that a straight look in requires a gentle tug on the pinna to straighten it — the same pull used when doctors examine ears with an otoscope. This angled design prevents debris from reaching the eardrum directly and gives secreted earwax a tortuous path to clear.",
+      "visualDescription": "Pixel art ear cross-section divided into three color-coded zones: orange outer (pinna and canal), yellow middle (ossicle chain), blue inner (cochlear spiral and semicircular canals)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ear",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "The eustachian tube connects the middle ear to which structure, and what is its main function?",
+          "correctAnswer": "Nasopharynx; pressure equalization",
+          "distractors": ["Cochlea; lymph drainage", "External canal; wax secretion", "Mastoid air cells; infection drainage"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_012",
+      "correctAnswer": "Stapes (stirrup)",
+      "acceptableAlternatives": ["Stapes"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": ["Malleus", "Incus", "Tympanic membrane", "Oval window", "Round window", "Tympanic bone", "Cochlea"],
+      "quizQuestion": "Which ossicle is the smallest bone in the human body and transmits vibrations to the oval window of the cochlea?",
+      "explanation": "The three ossicles form a mechanical lever system: the malleus (hammer) is attached to the tympanic membrane and is the first to receive vibrations. It transmits them to the incus (anvil), which passes them to the stapes (stirrup). The stapes is the smallest bone in the body — about 3 mm long, weighing approximately 3 mg. Its footplate sits in the oval window of the cochlea, transmitting vibrations into the fluid-filled inner ear. The ossicular chain amplifies sound pressure by approximately 22-fold, partly by the area ratio of the tympanic membrane to the oval window.",
+      "statement": "Ossicle chain: malleus (tympanic membrane) to incus to stapes (oval window, cochlea). The stapes (~3 mm) is the smallest bone in the body. Chain amplifies sound ~22x.",
+      "wowFactor": "The three ear ossicles are the only bones in the human body that reach their adult size before birth and do not grow after that. The stapes — at 3 mm and 3 mg — would be lost between the keys of a keyboard. Yet these three bones are responsible for all the sound you will ever hear in your life.",
+      "visualDescription": "Pixel art middle ear with hammer-shaped malleus attached to eardrum, passing vibration to anvil-shaped incus, then stirrup-shaped stapes pressing on the oval window membrane. Stapes highlighted with '3mm' label.",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Stapes",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ossicle order from eardrum to inner ear is: ___ to ___ to ___.",
+          "correctAnswer": "Malleus; incus; stapes",
+          "distractors": ["Incus; malleus; stapes", "Stapes; incus; malleus", "Malleus; stapes; incus"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The stapes is the smallest bone in the human body and connects to the oval window of the cochlea.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_013",
+      "correctAnswer": "Cochlea",
+      "acceptableAlternatives": [],
+      "chainThemeId": 10,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Semicircular canals", "Vestibule", "Saccule", "Utricle", "Organ of Corti", "Basilar membrane", "Scala vestibuli"],
+      "quizQuestion": "Which snail-shaped structure of the inner ear, with 2.5 turns and ~35 mm uncoiled, converts mechanical vibrations into neural signals for hearing?",
+      "explanation": "The cochlea is a fluid-filled, spiral-shaped chamber making 2.5 turns. Uncoiled it would measure about 35 mm. It has three fluid-filled chambers (scalae): the scala vestibuli (perilymph), scala media (endolymph — uniquely high in K+, low in Na+), and scala tympani (perilymph). The scala media contains the organ of Corti on the basilar membrane, which houses approximately 15,000 hair cells — 3,500 inner hair cells (the actual sensory transducers, connected to 90–95% of auditory nerve fibers) and 12,000 outer hair cells (amplifiers).",
+      "statement": "The cochlea (2.5 turns, ~35 mm) has 3 fluid chambers (scala vestibuli, scala media with endolymph, scala tympani). The Organ of Corti on the basilar membrane has ~3,500 inner + ~12,000 outer hair cells.",
+      "wowFactor": "Outer hair cells physically elongate and contract at up to 20,000 times per second, mechanically amplifying quiet sounds before the inner hair cells transduce them. This is why the cochlea can detect sounds at the threshold of hearing — and why hearing loss from noise damage (which kills outer hair cells first) leads to difficulty with soft sounds and speech in noise.",
+      "visualDescription": "Pixel art spiral cochlea cut in half showing three color-coded fluid chambers, with the Organ of Corti on the basilar membrane in the middle scala, hair cells shown as tiny bristles",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cochlea",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The cochlea contains approximately ___ inner hair cells and ___ outer hair cells.",
+          "correctAnswer": "3,500; 12,000",
+          "distractors": ["12,000; 3,500", "1,000; 5,000", "6,000; 18,000"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_014",
+      "correctAnswer": "Tonotopy (base = high frequency, apex = low frequency)",
+      "acceptableAlternatives": ["Tonotopy", "Tonotopic organization"],
+      "chainThemeId": 10,
+      "answerTypePoolId": "anatomy_concepts",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Binaural processing", "Phase locking", "Temporal coding", "Frequency modulation", "Cochlear amplification", "Interaural level difference", "Otoacoustic emission"],
+      "quizQuestion": "The cochlea encodes sound frequency by location along its length — what is this spatial frequency mapping called, and how is it oriented?",
+      "explanation": "Tonotopy is the spatial organization of frequency responses along the cochlea and auditory pathway. The basilar membrane is narrow and stiff at the base (near the oval window), responding best to high frequencies (up to 20,000 Hz). It is wider and more flexible at the apex (helicotrema), responding best to low frequencies (as low as 20 Hz). This mechanical frequency separation — first described by Georg von Bekesy (Nobel Prize 1961) — allows different hair cells to respond to different frequencies. Tonotopy is preserved all the way from cochlea to auditory cortex.",
+      "statement": "Tonotopy: the cochlear base responds to high frequencies, the apex to low frequencies. This spatial frequency map is preserved through the auditory cortex. Discovered by Bekesy (Nobel 1961).",
+      "wowFactor": "Georg von Bekesy won the 1961 Nobel Prize for discovering how the basilar membrane works — studying cochleae from cadavers under a microscope. He found that high-frequency sounds create a traveling wave that peaks at the base while low-frequency sounds peak at the apex. This single mechanical principle explains how a structure the size of a pea can separate every audible frequency.",
+      "visualDescription": "Pixel art uncoiled cochlea with bass clef at the wide apex end (labeled 'LOW 20 Hz') and treble clef at the narrow base end (labeled 'HIGH 20,000 Hz'), with traveling wave peaks shown",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Tonotopy",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "In cochlear tonotopy, the ___ responds to high frequencies, while the ___ responds to low frequencies.",
+          "correctAnswer": "Base; apex",
+          "distractors": ["Apex; base", "Oval window; round window", "Scala vestibuli; scala tympani"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_015",
+      "correctAnswer": "Semicircular canals",
+      "acceptableAlternatives": ["Three semicircular canals"],
+      "chainThemeId": 11,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Utricle", "Saccule", "Cochlea", "Vestibule", "Organ of Corti", "Macula", "Otolith organs"],
+      "quizQuestion": "Which three fluid-filled loops of the inner ear detect rotational head acceleration in three planes of space?",
+      "explanation": "The three semicircular canals (anterior, posterior, and lateral/horizontal) are oriented at approximately 90° to each other, allowing detection of rotational acceleration in all three planes. Each canal has an expanded ampulla containing the crista ampullaris — a sensory structure with hair cells embedded in a gelatinous cupula. When the head rotates, endolymph flow deflects the cupula, bending the hair cell stereocilia and generating a neural signal. The canals detect angular acceleration (rotation) but NOT linear acceleration or gravity — those are handled by the otolith organs.",
+      "statement": "3 semicircular canals (anterior, posterior, lateral) detect rotational acceleration. Each ampulla contains a crista ampullaris with hair cells and gelatinous cupula deflected by endolymph flow.",
+      "wowFactor": "The three semicircular canals are perfectly arranged to sense rotation in any direction — they are essentially a biological 3D gyroscope. When you stop spinning, the endolymph keeps moving (inertia) and deflects the cupula in the opposite direction — your brain interprets this as still spinning. That is why the world seems to spin after you stop: your vestibular system is still reading motion that has already ceased.",
+      "visualDescription": "Pixel art three loops oriented at 90 degrees to each other, each with a swollen ampulla, cutaway showing gelatinous cupula deflecting in response to endolymph flow direction arrows",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Semicircular_canals",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The semicircular canals detect rotational acceleration, while the utricle and saccule detect linear acceleration and gravity.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_016",
+      "correctAnswer": "Utricle and saccule (otolith organs)",
+      "acceptableAlternatives": ["Utricle and saccule", "Otolith organs"],
+      "chainThemeId": 11,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Semicircular canals", "Crista ampullaris", "Cochlea", "Organ of Corti", "Scala vestibuli", "Endolymphatic sac", "Eustachian tube"],
+      "quizQuestion": "Which two vestibular organs in the inner ear contain calcium carbonate crystals (otoliths) and detect linear acceleration and the direction of gravity?",
+      "explanation": "The utricle and saccule are the otolith organs of the vestibule. Each contains a macula — a sensory patch with hair cells whose cilia are embedded in a gelatinous membrane topped with otoliths (calcium carbonate crystals, also called otoconia or 'ear rocks'). When the head tilts or accelerates linearly, gravity or inertia causes the heavier otolith layer to slide relative to the hair cells, bending their cilia and generating a signal. The utricle primarily detects horizontal acceleration; the saccule primarily detects vertical acceleration. BPPV (benign paroxysmal positional vertigo) occurs when displaced otoliths roll into a semicircular canal.",
+      "statement": "The utricle and saccule (otolith organs) contain macula with calcium carbonate otolith crystals that detect linear acceleration and gravity. BPPV = displaced otoliths in semicircular canals.",
+      "wowFactor": "BPPV — the most common cause of dizziness in the world — is caused by 'ear rocks' (otoliths) that have broken off the utricle and rolled into a semicircular canal. Every time the patient moves their head to the affected side, the crystals roll down the canal and generate a false rotation signal. The cure — the Epley maneuver — physically repositions the crystals back out of the canal using gravity.",
+      "visualDescription": "Pixel art vestibule cross-section showing utricle (horizontal, labeled 'horizontal accel') and saccule (vertical, labeled 'vertical accel'), both with macula showing hair cells under a crystal-dotted otolith layer",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Otolith",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Benign paroxysmal positional vertigo (BPPV) — the most common cause of dizziness — is caused by what?",
+          "correctAnswer": "Displaced otolith crystals from the utricle rolling into a semicircular canal",
+          "distractors": ["Bacterial infection of the cochlea", "Degeneration of cupula hair cells", "Elevated endolymph pressure (Meniere's disease)", "Compression of the vestibulocochlear nerve"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_017",
+      "correctAnswer": "Rhodopsin",
+      "acceptableAlternatives": [],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_molecules",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Opsin", "Retinal", "Melanopsin", "Photopsin", "Iodopsin", "Chromopsin", "Transducin"],
+      "quizQuestion": "What is the photopigment found in rod photoreceptors that is responsible for dim-light (scotopic) vision?",
+      "explanation": "Rhodopsin is the G-protein coupled receptor photopigment in rod outer segments. It consists of the protein opsin bound to the chromophore 11-cis-retinal (a derivative of vitamin A). When a photon is absorbed, 11-cis-retinal isomerizes to all-trans-retinal, triggering a conformational change in opsin and initiating the phototransduction cascade via transducin (a G protein), then phosphodiesterase, then cGMP decrease, then Na+ channel closure, then hyperpolarization, then less glutamate released, then bipolar cell activation. Rhodopsin's peak sensitivity is ~498 nm (blue-green). Vitamin A deficiency impairs rhodopsin synthesis, causing night blindness (nyctalopia).",
+      "statement": "Rhodopsin (opsin + 11-cis-retinal) is the rod photopigment for dim-light vision. Photon absorption isomerizes retinal, triggering phototransduction. Vitamin A deficiency causes night blindness.",
+      "wowFactor": "Every time a rod detects light, its rhodopsin is 'bleached' — the 11-cis-retinal flips to all-trans and detaches from opsin. Dark adaptation (the 20–30 minutes needed for eyes to fully adjust in the dark) is almost entirely the time required to regenerate rhodopsin by resetting the retinal back to 11-cis form. This requires vitamin A, which is why deficiency causes night blindness.",
+      "visualDescription": "Pixel art rod outer segment with stacked disc membranes containing rhodopsin molecules, photon arrow hitting one molecule and triggering a shape-change cascade, with cGMP channels closing below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rhodopsin",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Vitamin A deficiency impairs rhodopsin production and causes which specific type of vision loss?",
+          "correctAnswer": "Night blindness (nyctalopia) — inability to see in dim light",
+          "distractors": ["Color blindness", "Loss of central vision", "Loss of depth perception", "Tunnel vision"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_018",
+      "correctAnswer": "Inner hair cells",
+      "acceptableAlternatives": ["Inner hair cells (IHCs)"],
+      "chainThemeId": 10,
+      "answerTypePoolId": "cell_types",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Outer hair cells", "Spiral ganglion cells", "Supporting cells", "Pillar cells", "Deiters' cells", "Tectorial membrane cells", "Bipolar neurons"],
+      "quizQuestion": "Although there are only ~3,500 of them vs ~12,000 outer hair cells, which type of cochlear hair cells serve as the actual mechanosensory transducers connected to ~95% of auditory nerve fibers?",
+      "explanation": "Inner hair cells (IHCs) are the primary sensory cells for hearing. Despite being outnumbered ~3.4:1 by outer hair cells, they receive about 90–95% of all afferent auditory nerve innervation. When basilar membrane vibration deflects their stereocilia, mechanically gated ion channels open, generating a receptor potential that releases neurotransmitter (glutamate) onto the afferent auditory nerve fibers. Outer hair cells function as mechanical amplifiers, using electromotility (somatic motility driven by the protein prestin) to amplify basilar membrane movement, improving sensitivity and frequency selectivity — but they send relatively little direct information to the brain.",
+      "statement": "~3,500 inner hair cells are the actual hearing transducers (connected to 95% of auditory nerve fibers); ~12,000 outer hair cells are mechanical amplifiers using prestin-driven electromotility.",
+      "wowFactor": "The outer hair cells are essentially biological speakers built into your ear. They physically vibrate at the frequency of incoming sound, powered by a motor protein called prestin, to amplify the basilar membrane motion up to 1,000-fold before the inner hair cells measure it. When noise exposure kills outer hair cells first, you lose this amplification — sounds must be louder before the inner hair cells respond.",
+      "visualDescription": "Pixel art Organ of Corti cross-section showing one row of inner hair cells (large, yellow, many nerve connections below) alongside three rows of outer hair cells (smaller, green, fewer nerves but arrows showing motility)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Inner_hair_cell",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Outer hair cells are the primary hearing transducers in the cochlea and receive most of the auditory nerve connections.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_019",
+      "correctAnswer": "Aqueous humor",
+      "acceptableAlternatives": [],
+      "chainThemeId": 5,
+      "answerTypePoolId": "anatomy_fluids",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Vitreous humor", "Endolymph", "Perilymph", "Cerebrospinal fluid", "Lacrimal fluid", "Subretinal fluid", "Lens cortex"],
+      "quizQuestion": "Which clear fluid fills the anterior and posterior chambers of the eye, is produced by the ciliary body, and is distinct from the gel that fills the posterior cavity?",
+      "explanation": "Aqueous humor is a clear, watery fluid produced continuously by the ciliary body epithelium. It flows from the posterior chamber (behind the iris) through the pupil into the anterior chamber (between the iris and cornea), supplying nutrients and oxygen to the avascular cornea and lens. It drains via the trabecular meshwork into the canal of Schlemm and then into episcleral veins. Normal intraocular pressure is 10–21 mmHg. The posterior cavity (behind the lens) is filled not with aqueous humor but with vitreous humor — a thick, gel-like substance of hyaluronic acid and collagen that maintains eye shape and is NOT replaced.",
+      "statement": "Aqueous humor is produced by the ciliary body, flows through anterior/posterior chambers, drains via the canal of Schlemm. Normal IOP: 10–21 mmHg. Posterior cavity contains vitreous humor (gel, not replaced).",
+      "wowFactor": "Unlike aqueous humor (turnover ~2 hours), the vitreous humor in your posterior eye cavity is essentially the same fluid you were born with — it is not replaced. As you age, the vitreous liquefies and shrinks, and collagen fibers clump into visible floaters that drift across your vision. Those shadows are literally the remnants of the gel that filled your eye in childhood.",
+      "visualDescription": "Pixel art eye cross-section with pale blue aqueous humor in the front two chambers (arrows showing production from ciliary body, through pupil, to anterior chamber, to canal of Schlemm), and grey vitreous gel filling the large posterior cavity",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Aqueous_humour",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The anterior/posterior chambers are filled with ___ humor (watery, replaced continuously), while the posterior cavity is filled with ___ humor (gel, not replaced).",
+          "correctAnswer": "Aqueous; vitreous",
+          "distractors": ["Vitreous; aqueous", "Synovial; aqueous", "Endolymph; perilymph"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_020",
+      "correctAnswer": "Vestibulocochlear nerve (CN VIII)",
+      "acceptableAlternatives": ["CN VIII", "Cranial nerve VIII", "Auditory nerve", "Acoustic nerve"],
+      "chainThemeId": 12,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Facial nerve (CN VII)", "Trigeminal nerve (CN V)", "Glossopharyngeal nerve (CN IX)", "Vagus nerve (CN X)", "Optic nerve (CN II)", "Olfactory nerve (CN I)", "Hypoglossal nerve (CN XII)"],
+      "quizQuestion": "Which cranial nerve carries both auditory information from the cochlea and balance information from the vestibular apparatus?",
+      "explanation": "CN VIII (vestibulocochlear nerve) has two distinct divisions: the cochlear division (from spiral ganglion cells innervating inner hair cells) carries auditory information, and the vestibular division (from Scarpa's ganglion) carries balance/position information from the semicircular canals, utricle, and saccule. Both divisions travel through the internal auditory canal and enter the brainstem at the pontomedullary junction. Acoustic neuroma (vestibular schwannoma) is a benign tumor of CN VIII's Schwann cells, causing progressive unilateral hearing loss, tinnitus, and balance disturbance.",
+      "statement": "CN VIII (vestibulocochlear) carries hearing (cochlear division from spiral ganglion) and balance (vestibular division from Scarpa's ganglion). Acoustic neuroma = CN VIII Schwannoma.",
+      "wowFactor": "Despite being called an acoustic (hearing) neuroma, these tumors almost always arise from the vestibular division of CN VIII, not the cochlear division. The first symptoms are usually hearing loss and tinnitus because the closely adjacent cochlear fibers are compressed early — but the tumor is growing from the balance nerve. The name is doubly misleading.",
+      "visualDescription": "Pixel art CN VIII emerging from the inner ear as two bundled divisions, labeled cochlear (musical note icon) and vestibular (gyroscope icon), running through the internal auditory canal into the brainstem",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vestibulocochlear_nerve",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: CN VIII carries both hearing and balance information and is called the vestibulocochlear nerve.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_021",
+      "correctAnswer": "Iris",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Ciliary body", "Choroid", "Cornea", "Sclera", "Retina", "Lens", "Conjunctiva"],
+      "quizQuestion": "Which pigmented, muscular structure of the eye controls pupil diameter to regulate the amount of light entering?",
+      "explanation": "The iris is the pigmented, muscular ring that forms the colored part of the eye and controls pupil diameter via two opposing muscles: the sphincter pupillae (circular muscle, innervated by parasympathetic fibers via CN III) which constricts the pupil in bright light (miosis), and the dilator pupillae (radial muscle, innervated by sympathetic fibers) which dilates the pupil in dim light or during sympathetic activation (mydriasis). Iris color is determined by the amount and distribution of melanin. The pupillary light reflex (shining light in one eye causes both pupils to constrict) tests CN II and CN III integrity.",
+      "statement": "The iris controls pupil size via sphincter pupillae (parasympathetic, constriction/miosis) and dilator pupillae (sympathetic, dilation/mydriasis). Pupillary reflex tests CN II and CN III.",
+      "wowFactor": "The pupillary light reflex is one of the most informative neurological tests available — shining a light in one eye should cause BOTH pupils to constrict (the consensual reflex). The direct path uses CN II to midbrain to CN III; the consensual path crosses in the Edinger-Westphal nucleus. A single test exposes the integrity of two cranial nerves, the midbrain, and a bilateral brainstem connection simultaneously.",
+      "visualDescription": "Pixel art iris in bright light (small pupil, sphincter contracted) vs dim light (large pupil, dilator contracted), with parasympathetic and sympathetic nerve labels on respective muscles",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Iris_(anatomy)",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Pupil constriction (miosis) is controlled by the ___ (parasympathetic); pupil dilation (mydriasis) by the ___ (sympathetic).",
+          "correctAnswer": "Sphincter pupillae; dilator pupillae",
+          "distractors": ["Dilator pupillae; sphincter pupillae", "Ciliary muscle; zonule fibers", "Corneal reflex; blink reflex"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_022",
+      "correctAnswer": "Tympanic membrane (eardrum)",
+      "acceptableAlternatives": ["Eardrum", "Tympanic membrane"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Oval window", "Round window", "Basilar membrane", "Incus", "Malleus", "Cochlear membrane", "Stapes footplate"],
+      "quizQuestion": "Which thin membrane separates the outer ear from the middle ear and vibrates in response to sound waves, coupling acoustic energy to the malleus?",
+      "explanation": "The tympanic membrane (eardrum) is a thin, semi-transparent, cone-shaped membrane (~9 mm diameter) that separates the external auditory canal from the middle ear. Sound waves cause it to vibrate, and these vibrations are transmitted directly to the malleus via the handle (manubrium) of the malleus, which is attached to the membrane's center. The area ratio between the large tympanic membrane and small oval window (~17:1) is a major component of the ~22x mechanical advantage of the middle ear.",
+      "statement": "The tympanic membrane (~9 mm) vibrates with sound and transmits vibrations to the malleus handle. Its area (~17x the oval window) helps amplify sound pressure into the cochlea.",
+      "wowFactor": "The eardrum vibrates with displacements as small as the diameter of a hydrogen atom at the threshold of hearing. A structure barely larger than a fingernail moves less than an atomic diameter and your brain turns it into the experience of hearing someone whisper from across a room — it is one of the most precise mechanical sensors in biology.",
+      "visualDescription": "Pixel art cone-shaped eardrum at the end of the ear canal, with the malleus handle attached to its center, sound wave arrows pushing it inward, and the transmission chain continuing to incus and stapes",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Eardrum",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The malleus is directly attached to the tympanic membrane and is the first ossicle to receive vibrations.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_023",
+      "correctAnswer": "Choroid",
+      "acceptableAlternatives": [],
+      "chainThemeId": 1,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Sclera", "Retina", "Ciliary body", "Iris", "Cornea", "Vitreous", "Tapetum"],
+      "quizQuestion": "Which highly vascular layer of the eye lies between the retina and sclera, supplying oxygen and nutrients to the outer retinal layers?",
+      "explanation": "The choroid is the posterior portion of the uvea, forming a vascular layer between the retina and sclera. It supplies oxygen and nutrients to the outer third of the retina (including the photoreceptor layer). The choroid contains melanin pigment that absorbs scattered light, preventing glare inside the eye. In many animals, a reflective layer (tapetum lucidum) replaces some of the choroid and causes eyeshine — humans lack this layer. Choroidal neovascularization (abnormal blood vessel growth) underlies wet age-related macular degeneration.",
+      "statement": "The choroid supplies the outer retina via its dense vascularity; its melanin absorbs stray light. Abnormal choroidal neovascularization causes wet age-related macular degeneration.",
+      "wowFactor": "The choroid has the highest blood flow per gram of any tissue in the body — higher than even the brain or kidneys — because the photoreceptors it supplies have enormous metabolic demands. Yet despite carrying all this blood, the choroid is nearly invisible through the overlying retina, and most people have never heard of it.",
+      "visualDescription": "Pixel art retinal layers showing a dark-red choroidal layer packed with blood vessels beneath the retinal pigment epithelium, with nutrient arrows rising up into the photoreceptor layer above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Choroid",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Wet age-related macular degeneration (AMD) involves abnormal blood vessel growth (neovascularization) from which ocular layer?",
+          "correctAnswer": "Choroid",
+          "distractors": ["Sclera", "Vitreous humor", "Corneal stroma", "Ciliary body"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_024",
+      "correctAnswer": "~22x (approximately 22-fold)",
+      "acceptableAlternatives": ["22 times", "22-fold", "approximately 22"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["~2x", "~5x", "~10x", "~50x", "~100x", "~3x", "~200x"],
+      "quizQuestion": "By approximately how much does the middle ear ossicular chain amplify sound pressure from the tympanic membrane to the oval window?",
+      "explanation": "The middle ear achieves sound pressure amplification of approximately 22-fold (about 25–27 dB) through two mechanisms: the area ratio between the large tympanic membrane (~55 mm2) and the small oval window (~3.2 mm2) accounts for about 17-fold; the lever action of the ossicular chain adds an additional factor of ~1.3. This amplification is essential because sound crossing from air (low impedance) to fluid (high cochlear impedance) would otherwise lose ~99.9% of its energy — the middle ear acts as an impedance-matching transformer.",
+      "statement": "The middle ear amplifies sound pressure ~22x (via area ratio: tympanic membrane 55 mm2 vs oval window 3.2 mm2, plus ossicular lever action) to overcome air-to-fluid impedance mismatch.",
+      "wowFactor": "Without the middle ear, nearly all incoming sound energy would simply reflect off the fluid surface of the cochlea — the impedance mismatch between air and inner ear fluid would waste 99.9% of the acoustic energy. The entire ossicular chain exists to solve this physics problem, concentrating force from a large drum onto a tiny window to drive fluid efficiently.",
+      "visualDescription": "Pixel art diagram showing large eardrum area (55 mm2 labeled) compressing through ossicle lever to small oval window (3.2 mm2 labeled), with x22 pressure amplification arrow and fluid waves beginning in cochlea",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Middle_ear",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What physical problem does the middle ear solve by amplifying sound ~22-fold?",
+          "correctAnswer": "The impedance mismatch between air and cochlear fluid, which would otherwise reflect 99.9% of sound energy",
+          "distractors": ["The need to amplify all sounds before neural processing", "The fact that the eardrum is too stiff to vibrate at high frequencies", "The short distance between the eardrum and cochlea", "The need to protect the cochlea from loud sounds"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_025",
+      "correctAnswer": "~20 Hz to ~20,000 Hz (20 kHz)",
+      "acceptableAlternatives": ["20 Hz to 20 kHz", "20 to 20,000 Hz"],
+      "chainThemeId": 13,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["200 Hz to 200 kHz", "100 Hz to 10 kHz", "10 Hz to 100 kHz", "50 Hz to 50 kHz", "1 Hz to 10 kHz", "20 Hz to 100 kHz", "500 Hz to 5 kHz"],
+      "quizQuestion": "What is the normal human hearing frequency range?",
+      "explanation": "Healthy young adults can detect sounds in the range of approximately 20 Hz to 20,000 Hz (20 kHz). The most sensitive region is 1,000–4,000 Hz, which corresponds to the frequency range of human speech. High-frequency sensitivity declines with age (presbycusis) — the upper limit gradually falls from ~20 kHz in childhood to ~10–12 kHz by middle age. Dogs hear up to ~65 kHz; bats use echolocation at ~20–100 kHz. The cochlea's tonotopic organization maps this entire frequency range from base (high) to apex (low).",
+      "statement": "Human hearing range: ~20 Hz to 20,000 Hz (20 kHz). Most sensitive: 1–4 kHz (speech range). High-frequency sensitivity declines with age (presbycusis).",
+      "wowFactor": "The upper limit of your hearing has been shrinking since childhood. Every year after about age 20, you lose sensitivity to the highest frequencies. Some buildings use devices that emit 17–18 kHz tones to repel teenagers — adults over ~30 simply cannot hear them. The 'Mosquito' anti-loitering device is a direct application of age-related presbycusis.",
+      "visualDescription": "Pixel art frequency spectrum bar from 20 Hz (low bass) to 20,000 Hz (high treble), with a highlighted zone at 1–4 kHz labeled 'speech', and an age-related cutoff arrow moving left from the high-frequency end",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hearing_range",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The human hearing range spans approximately ___ to ___ Hz, with greatest sensitivity in the ___ Hz range.",
+          "correctAnswer": "20; 20,000; 1,000-4,000",
+          "distractors": ["100; 100,000; 10,000", "50; 50,000; 500-800", "200; 10,000; 200-500"]
+        },
+        {
+          "type": "context",
+          "question": "The age-related gradual loss of high-frequency hearing is called what?",
+          "correctAnswer": "Presbycusis",
+          "distractors": ["Tinnitus", "Conductive hearing loss", "Meniere's disease", "Presbyopia"]
+        }
+      ]
+    }
+  ]
+}

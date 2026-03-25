@@ -1,0 +1,635 @@
+[
+  {
+    "id": "ha_skel_055",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Ilium, ischium, and pubis",
+    "acceptableAlternatives": ["ilium ischium pubis"],
+    "chainThemeId": "pelvic_girdle",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "The hip bone (os coxae) is formed by the fusion of which three bones?",
+    "explanation": "Each hip bone starts as three separate bones — the ilium (the big flared wing you can feel at your hip), the ischium (what you sit on), and the pubis (at the front). They fuse completely by your mid-20s, forming one solid structure.",
+    "visualDescription": "Labeled diagram of the hip bone showing ilium, ischium, and pubis in distinct colors",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hip_bone",
+    "volatile": false,
+    "distractors": ["Femur, tibia, and fibula", "Sacrum, coccyx, and ilium", "Talus, calcaneus, and cuboid"],
+    "variants": [
+      {
+        "quizQuestion": "Which bone of the pelvic girdle is sometimes called the 'sit bone' because it bears weight when seated?",
+        "correctAnswer": "Ischium",
+        "explanation": "The ischial tuberosity — the roughened projection of the ischium — takes the load when you sit. It's one of three components of the hip bone, along with the ilium and pubis."
+      },
+      {
+        "quizQuestion": "The iliac crest is a prominent feature of which of the three hip bone components?",
+        "correctAnswer": "Ilium",
+        "explanation": "The ilium is the superior, fan-shaped portion of the hip bone. Its curved upper border — the iliac crest — is the bony ridge you can feel along your upper hip and is a common landmark for injections and bone marrow biopsies."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_056",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Acetabulum",
+    "acceptableAlternatives": [],
+    "chainThemeId": "pelvic_girdle",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What is the name of the deep cup-shaped socket in the hip bone that receives the head of the femur?",
+    "explanation": "The acetabulum — Latin for 'little vinegar cup' — is formed by contributions from all three hip bone components (ilium, ischium, and pubis). Its depth and the surrounding labrum create a very stable ball-and-socket joint, yet hip dislocations can still occur under extreme force.",
+    "visualDescription": "Cross-section of the hip joint showing the femoral head seated in the acetabulum",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hip_bone",
+    "volatile": false,
+    "distractors": ["Glenoid fossa", "Obturator foramen", "Iliac fossa"],
+    "variants": [
+      {
+        "quizQuestion": "All three components of the hip bone — ilium, ischium, and pubis — contribute to forming which anatomical structure?",
+        "correctAnswer": "Acetabulum",
+        "explanation": "The acetabulum's walls are built from portions of all three bones. This tripartite origin is visible in children as the Y-shaped (triradiate) cartilage at the center of the socket, which fuses around age 16."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_057",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Obturator foramen",
+    "acceptableAlternatives": [],
+    "chainThemeId": "pelvic_girdle",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which foramen — formed between the pubis and ischium — is the largest foramen in the human body?",
+    "explanation": "The obturator foramen is a large oval or triangular hole enclosed by the pubis and ischium. Despite its impressive size, it is almost completely covered by the obturator membrane in life, with only the obturator canal open for the passage of vessels and nerves.",
+    "visualDescription": "Anterior view of the hip bone with the obturator foramen highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hip_bone",
+    "volatile": false,
+    "distractors": ["Foramen magnum", "Sciatic notch", "Sacral foramen"],
+    "variants": [
+      {
+        "quizQuestion": "True or false: The foramen magnum is the largest foramen in the human body.",
+        "correctAnswer": "False — the obturator foramen is larger",
+        "explanation": "The foramen magnum in the skull is large and famous, but the obturator foramen — the hole formed between the pubis and ischium of the hip bone — is actually the largest foramen in the body. It is mostly covered by the obturator membrane in life."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_058",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Female",
+    "acceptableAlternatives": ["women", "female pelvis"],
+    "chainThemeId": "pelvic_girdle",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Compared to the male pelvis, which sex has a wider pelvis with a larger pelvic inlet to accommodate childbirth?",
+    "explanation": "The female pelvis is adapted for parturition (childbirth). It is broader and shallower with a wider, more circular pelvic inlet. The male pelvis is narrower and deeper with a heart-shaped inlet optimized for locomotion rather than delivery.",
+    "visualDescription": "Side-by-side comparison of male and female pelvis shapes viewed from above",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hip_bone",
+    "volatile": false,
+    "distractors": ["Male", "Both are identical", "Varies by individual regardless of sex"],
+    "variants": [
+      {
+        "quizQuestion": "Why is the female pelvis wider and shallower than the male pelvis?",
+        "correctAnswer": "To accommodate childbirth (larger pelvic inlet)",
+        "explanation": "Natural selection has shaped the female pelvis for a larger pelvic inlet that allows a baby's head to pass through during delivery. The male pelvis is narrower and optimized for different biomechanical loads."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_059",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Femur",
+    "acceptableAlternatives": ["thigh bone"],
+    "chainThemeId": "femur_patella",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which bone is the longest, heaviest, and strongest bone in the human body?",
+    "explanation": "The femur (thigh bone) wins on all three counts. At roughly 48 cm in an average adult — about 26% of a person's total height — it is the body's structural workhorse, transmitting the entire weight of the upper body to the knee and foot.",
+    "visualDescription": "Full-length femur with a ruler beside it showing approximately 48 cm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "volatile": false,
+    "distractors": ["Tibia", "Humerus", "Radius"],
+    "variants": [
+      {
+        "quizQuestion": "Approximately what percentage of a person's total height does the femur represent?",
+        "correctAnswer": "26%",
+        "explanation": "Forensic anthropologists use this relationship to estimate height from skeletal remains. The femur averages about 48 cm and accounts for roughly 26% of stature, making it the single best predictor of living height."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_060",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Femoral neck",
+    "acceptableAlternatives": ["neck of the femur", "neck of femur"],
+    "chainThemeId": "femur_patella",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which part of the femur is a common fracture site in elderly patients, often called a 'hip fracture'?",
+    "explanation": "The femoral neck angles the head into the acetabulum, but this geometry creates a stress concentration point. In osteoporotic bone, a fall — or even a spontaneous fracture — here is a leading cause of disability and death in the elderly. Surgical repair within 24–48 hours dramatically improves outcomes.",
+    "visualDescription": "Diagram of the proximal femur with the neck region highlighted in red",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "volatile": false,
+    "distractors": ["Greater trochanter", "Femoral shaft", "Lateral condyle"],
+    "variants": [
+      {
+        "quizQuestion": "A 78-year-old woman falls and is unable to bear weight on her right leg. The leg appears shortened and externally rotated. Which femoral structure is most likely fractured?",
+        "correctAnswer": "Femoral neck",
+        "explanation": "Shortening and external rotation of the leg are classic signs of a femoral neck fracture. The pull of the iliopsoas and other muscles rotates the distal fragment outward. This is one of the most common and serious injuries in elderly patients."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_061",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Greater trochanter",
+    "acceptableAlternatives": [],
+    "chainThemeId": "femur_patella",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "Which large lateral bony prominence of the proximal femur is palpable through the skin and serves as a major muscle attachment site?",
+    "explanation": "The greater trochanter is the lateral bump you can feel at the side of your hip. Numerous muscles — including the gluteus medius and minimus — attach here to abduct and stabilize the hip during walking. It is a key landmark for orthopedic surgery and is sometimes mistaken for the hip joint itself.",
+    "visualDescription": "Lateral view of the proximal femur with the greater trochanter labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "volatile": false,
+    "distractors": ["Lesser trochanter", "Femoral head", "Linea aspera"],
+    "variants": [
+      {
+        "quizQuestion": "The femur has two trochanters. Which one is located on the lateral side and is easily palpable?",
+        "correctAnswer": "Greater trochanter",
+        "explanation": "The greater trochanter sits laterally and superiorly, easily felt through skin. The lesser trochanter is posteromedial and less accessible. The iliopsoas — the primary hip flexor — attaches to the lesser trochanter."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_062",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Linea aspera",
+    "acceptableAlternatives": [],
+    "chainThemeId": "femur_patella",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "What is the name of the roughened posterior longitudinal ridge of the femoral shaft that serves as an attachment for multiple thigh muscles?",
+    "explanation": "Linea aspera is Latin for 'rough line.' This prominent posterior ridge runs most of the length of the femoral shaft and provides attachment for the adductors, vastus lateralis, vastus medialis, and biceps femoris — nearly the entire muscular powerhouse of the thigh.",
+    "visualDescription": "Posterior view of the femoral shaft with the linea aspera shown as a raised ridge",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "volatile": false,
+    "distractors": ["Pectineal line", "Intertrochanteric crest", "Spiral groove"],
+    "variants": [
+      {
+        "quizQuestion": "Latin for 'rough line,' which posterior femoral ridge is a major attachment point for thigh muscles including the adductors?",
+        "correctAnswer": "Linea aspera",
+        "explanation": "The linea aspera bifurcates at the distal femur into medial and lateral supracondylar lines. Its roughened surface (rugosity) provides maximum grip for the tendons and aponeuroses of the powerful thigh muscles."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_063",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Patella",
+    "acceptableAlternatives": ["kneecap"],
+    "chainThemeId": "femur_patella",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which bone is the largest sesamoid bone in the human body?",
+    "explanation": "A sesamoid bone develops within a tendon to reduce friction and protect the tendon from wear. The patella — embedded in the quadriceps tendon — is by far the largest sesamoid in the body. Without it, the quadriceps would lose about 33% of its mechanical leverage at the knee.",
+    "visualDescription": "Anterior view of the knee showing the patella embedded in the quadriceps tendon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Patella",
+    "volatile": false,
+    "distractors": ["Pisiform", "Fabella", "Sesamoid of the big toe"],
+    "variants": [
+      {
+        "quizQuestion": "The patella is embedded in which tendon?",
+        "correctAnswer": "Quadriceps tendon",
+        "explanation": "The patella sits within the quadriceps tendon and is connected to the tibial tuberosity below by the patellar ligament. This arrangement turns the patella into a pulley, increasing the moment arm of the quads and boosting knee extension force by about 33%."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_064",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "33%",
+    "acceptableAlternatives": ["one third", "about 33 percent"],
+    "chainThemeId": "femur_patella",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "By approximately what percentage does the patella increase the mechanical leverage (moment arm) of the quadriceps at the knee?",
+    "explanation": "By acting as a pulley, the patella shifts the quadriceps tendon anteriorly, increasing the perpendicular distance from the tendon's line of action to the knee's axis of rotation. This biomechanical advantage means the quads need to generate about 33% less force to produce the same torque — critical for activities like climbing stairs.",
+    "visualDescription": "Biomechanics diagram showing moment arm with and without patella",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Patella",
+    "volatile": false,
+    "distractors": ["10%", "50%", "20%"],
+    "variants": [
+      {
+        "quizQuestion": "Patellectomy (surgical removal of the kneecap) significantly weakens which muscle group's ability to extend the knee?",
+        "correctAnswer": "Quadriceps",
+        "explanation": "Removing the patella eliminates its pulley effect, reducing quadriceps leverage by roughly 33%. Patients who undergo patellectomy typically experience permanent weakness in knee extension and difficulty with activities requiring forceful quad contraction."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_065",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Tibia",
+    "acceptableAlternatives": ["shinbone", "shin bone"],
+    "chainThemeId": "leg_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "Which is the medial, weight-bearing bone of the leg (between knee and ankle), commonly called the shinbone?",
+    "explanation": "The tibia is the primary weight-bearing bone of the lower leg — it transmits virtually all of the load from the femur to the foot. Its medial surface has almost no muscle coverage, which is why a blow to the shin is so painful and why tibial stress fractures are common in runners.",
+    "visualDescription": "Anterior view of the lower leg showing the tibia (medial) and fibula (lateral)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tibia",
+    "volatile": false,
+    "distractors": ["Fibula", "Femur", "Talus"],
+    "variants": [
+      {
+        "quizQuestion": "Of the two bones of the lower leg, which one bears the body's weight?",
+        "correctAnswer": "Tibia",
+        "explanation": "The tibia is the robust medial bone that bears essentially all compressive load. The fibula, lateral and much more slender, mainly anchors muscles and forms the lateral part of the ankle joint — it bears very little weight."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_066",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Tibial tuberosity",
+    "acceptableAlternatives": [],
+    "chainThemeId": "leg_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the name of the bony prominence on the anterior tibia where the patellar ligament attaches?",
+    "explanation": "The tibial tuberosity is the bump you can feel just below the kneecap. It is the distal anchor for the patellar ligament (which runs from the patella down to this point), completing the extensor mechanism of the knee. In growing adolescents, repeated traction here can cause Osgood-Schlatter disease — a painful apophysitis.",
+    "visualDescription": "Anterior view of the proximal tibia with the tibial tuberosity labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tibia",
+    "volatile": false,
+    "distractors": ["Tibial plateau", "Medial malleolus", "Gerdy's tubercle"],
+    "variants": [
+      {
+        "quizQuestion": "Osgood-Schlatter disease involves painful inflammation at which tibial landmark in adolescent athletes?",
+        "correctAnswer": "Tibial tuberosity",
+        "explanation": "During growth spurts, the quadriceps pull via the patellar ligament can stress the developing tibial tuberosity apophysis. The resulting traction apophysitis — Osgood-Schlatter disease — causes a painful, sometimes swollen bump just below the knee."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_067",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Medial malleolus",
+    "acceptableAlternatives": ["medial malleolus of tibia"],
+    "chainThemeId": "leg_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "Which bony projection forms the medial (inner) ankle bump, and which bone does it belong to?",
+    "explanation": "The medial malleolus is the downward projection at the distal end of the tibia — the inner bump of the ankle. Its counterpart, the lateral malleolus, is part of the fibula and sits slightly lower. Together they form the mortise of the ankle joint that grips the talus.",
+    "visualDescription": "Anterior view of the ankle showing medial malleolus (tibia) and lateral malleolus (fibula) labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tibia",
+    "volatile": false,
+    "distractors": ["Lateral malleolus of fibula", "Medial malleolus of fibula", "Calcaneal tuberosity"],
+    "variants": [
+      {
+        "quizQuestion": "The tibia forms the medial malleolus while the fibula forms which corresponding structure?",
+        "correctAnswer": "Lateral malleolus",
+        "explanation": "The tibia's medial malleolus and the fibula's lateral malleolus form the bony mortise that encases the talus. The lateral malleolus extends more distally than the medial, which is why most ankle sprains involve lateral ligament injury when the foot inverts."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_068",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Fibula",
+    "acceptableAlternatives": [],
+    "chainThemeId": "leg_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which bone of the lower leg is the lateral, non-weight-bearing bone that forms the lateral malleolus at the ankle?",
+    "explanation": "The fibula is the slender lateral companion to the tibia. Despite running the full length of the lower leg, it bears virtually no body weight. Its main roles are anchoring lateral compartment muscles and forming the lateral part of the ankle mortise via the lateral malleolus.",
+    "visualDescription": "Lateral view of the lower leg showing the fibula running parallel to the tibia",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibula",
+    "volatile": false,
+    "distractors": ["Tibia", "Femur", "Talus"],
+    "variants": [
+      {
+        "quizQuestion": "Why are lateral ankle sprains more common than medial ankle sprains?",
+        "correctAnswer": "The lateral malleolus (fibula) extends more distally than the medial malleolus, offering less bony protection against inversion",
+        "explanation": "Because the lateral malleolus sits lower than the medial malleolus, the ankle can invert (roll outward) more freely, stretching or tearing the lateral ligaments. The taller medial malleolus provides more bony block against eversion, making medial sprains less common."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_069",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Lateral malleolus extends more distally than the medial malleolus",
+    "acceptableAlternatives": ["lateral malleolus is lower", "fibula extends lower than tibia at the ankle"],
+    "chainThemeId": "leg_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What structural difference between the medial and lateral malleoli explains why lateral ankle sprains are more common than medial sprains?",
+    "explanation": "The lateral malleolus (fibula) extends about 1 cm more distally than the medial malleolus (tibia). This asymmetry means the ankle has less bony block against inversion (rolling inward), making it easier to over-invert and tear the lateral ligaments — the classic 'rolled ankle.'",
+    "visualDescription": "Posterior ankle view showing the lateral malleolus sitting lower than the medial malleolus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibula",
+    "volatile": false,
+    "distractors": ["Medial ligaments are inherently weaker", "The medial malleolus extends more distally", "The fibula is thinner so it fractures before the ligaments tear"],
+    "variants": [
+      {
+        "quizQuestion": "A patient rolls their ankle inward (inversion). Which side of the ankle is most likely injured?",
+        "correctAnswer": "Lateral",
+        "explanation": "Inversion stress rolls the foot inward, placing the lateral ligaments under tension. Because the lateral malleolus extends lower, there is less bony block to inversion than to eversion, making lateral ankle sprains the most common ligament injury in sports."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_070",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Seven",
+    "acceptableAlternatives": ["7"],
+    "chainThemeId": "tarsal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many tarsal bones are in each foot?",
+    "explanation": "Each foot contains 7 tarsals: calcaneus, talus, navicular, cuboid, and three cuneiforms (medial, intermediate, and lateral). Together the 14 tarsals (7 per foot) are analogous to the carpals of the wrist but are adapted for weight-bearing rather than fine manipulation.",
+    "visualDescription": "Superior view of the foot bones with all 7 tarsals labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tarsal_bones",
+    "volatile": false,
+    "distractors": ["Five", "Eight", "Six"],
+    "variants": [
+      {
+        "quizQuestion": "Name the 7 tarsal bones of the foot.",
+        "correctAnswer": "Calcaneus, talus, navicular, cuboid, medial cuneiform, intermediate cuneiform, lateral cuneiform",
+        "explanation": "A common mnemonic: 'The Cunning Ninja Catches Many Loose Critters' — Talus, Calcaneus, Navicular, Cuboid, Medial cuneiform, Lateral cuneiform, (Intermediate) cuneiform. All 7 work together to form the ankle and mid-foot structure."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_071",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Calcaneus",
+    "acceptableAlternatives": ["heel bone"],
+    "chainThemeId": "tarsal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which is the largest tarsal bone, forming the heel of the foot?",
+    "explanation": "The calcaneus is the largest and strongest tarsal bone. Its posterior surface provides the attachment point for the Achilles tendon (calcaneal tendon), the thickest and strongest tendon in the body. A fall from height that compresses the calcaneus is a classic calcaneal fracture mechanism.",
+    "visualDescription": "Lateral view of the foot with the calcaneus (heel bone) highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tarsal_bones",
+    "volatile": false,
+    "distractors": ["Talus", "Navicular", "Cuboid"],
+    "variants": [
+      {
+        "quizQuestion": "The Achilles tendon (calcaneal tendon) attaches to the posterior surface of which bone?",
+        "correctAnswer": "Calcaneus",
+        "explanation": "The calcaneus (heel bone) is the insertion point for the Achilles tendon, which transmits the powerful pull of the gastrocnemius and soleus muscles to plantarflex the foot. A ruptured Achilles tendon often avulses this attachment site."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_072",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Talus",
+    "acceptableAlternatives": ["astragalus"],
+    "chainThemeId": "tarsal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which tarsal bone articulates directly with both the tibia and fibula to form the ankle joint, and uniquely has no muscle attachments?",
+    "explanation": "The talus is the keystone of the ankle. Its superior surface (trochlea) fits into the mortise formed by the tibia and fibula. Remarkably, no muscles attach directly to the talus — all forces reach it through ligaments and joint surfaces. This makes avascular necrosis a serious risk after talar fractures, since the bone's blood supply is easily disrupted.",
+    "visualDescription": "Medial view of the ankle showing the talus articulating with the tibia above and calcaneus below",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tarsal_bones",
+    "volatile": false,
+    "distractors": ["Calcaneus", "Navicular", "Cuboid"],
+    "variants": [
+      {
+        "quizQuestion": "Why is avascular necrosis a particular concern after a fracture of the talus?",
+        "correctAnswer": "The talus has no muscle attachments, so its limited blood supply enters entirely through ligaments and joint capsule, making it vulnerable to disruption after fracture",
+        "explanation": "Since no muscles attach to the talus, it has no musculo-tendinous blood supply. All its vascularity comes through the small vessels in surrounding ligaments. A displaced fracture can shear off all blood supply, leading to avascular necrosis of the talar body."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_073",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Navicular",
+    "acceptableAlternatives": [],
+    "chainThemeId": "tarsal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "Which tarsal bone sits on the medial side of the mid-foot and gets its name from the Latin word for 'little boat' due to its concave shape?",
+    "explanation": "The navicular's concave proximal surface cradles the head of the talus, while its distal surface articulates with the three cuneiforms. It is a key component of the medial longitudinal arch. Stress fractures of the navicular are a known injury in high-impact athletes.",
+    "visualDescription": "Medial view of the foot highlighting the navicular bone in the mid-foot",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tarsal_bones",
+    "volatile": false,
+    "distractors": ["Cuboid", "Intermediate cuneiform", "Talus"],
+    "variants": [
+      {
+        "quizQuestion": "The navicular bone of the foot takes its name from the Latin for 'little boat.' On which side of the foot (medial or lateral) does it sit?",
+        "correctAnswer": "Medial",
+        "explanation": "The navicular is positioned on the medial side of the mid-foot between the talus proximally and the three cuneiforms distally. Its lateral counterpart is the cuboid bone."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_074",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Cuboid",
+    "acceptableAlternatives": [],
+    "chainThemeId": "tarsal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "Which tarsal bone sits on the lateral side of the foot between the calcaneus and the 4th and 5th metatarsals?",
+    "explanation": "The cuboid is the lateral mid-foot bone, named for its roughly cube-like shape. It articulates with the calcaneus posteriorly and the 4th and 5th metatarsals anteriorly. Cuboid syndrome — subluxation of the cuboid — is a cause of lateral foot pain in dancers and athletes.",
+    "visualDescription": "Superior view of the foot with the cuboid highlighted on the lateral side",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tarsal_bones",
+    "volatile": false,
+    "distractors": ["Navicular", "Lateral cuneiform", "Calcaneus"],
+    "variants": [
+      {
+        "quizQuestion": "Which mid-foot bone is named for its roughly cube-like shape and sits on the lateral side of the foot?",
+        "correctAnswer": "Cuboid",
+        "explanation": "The cuboid occupies the lateral column of the mid-foot. The medial column is made up of the navicular and three cuneiforms. Together these bones form the transverse arch of the foot."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_075",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Three cuneiforms (medial, intermediate, and lateral)",
+    "acceptableAlternatives": ["3 cuneiforms", "medial intermediate and lateral cuneiform"],
+    "chainThemeId": "tarsal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "How many cuneiform bones are in each foot, and what are their names?",
+    "explanation": "Each foot has three cuneiform (wedge-shaped) bones: medial, intermediate, and lateral. They sit between the navicular proximally and the first three metatarsals distally. Their wedge shape contributes to the transverse arch of the foot.",
+    "visualDescription": "Superior view of the foot with three cuneiforms labeled medial, intermediate, and lateral",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tarsal_bones",
+    "volatile": false,
+    "distractors": ["Two (medial and lateral only)", "Four (medial, intermediate, lateral, and plantar)", "One (the cuneiform)"],
+    "variants": [
+      {
+        "quizQuestion": "The three cuneiform bones articulate distally with the first three metatarsals and proximally with which tarsal bone?",
+        "correctAnswer": "Navicular",
+        "explanation": "The navicular acts as a hub for the medial mid-foot: it receives the head of the talus on its proximal surface and distributes load to the three cuneiforms distally, which in turn pass it to metatarsals 1–3."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_076",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Five metatarsals",
+    "acceptableAlternatives": ["5 metatarsals", "5"],
+    "chainThemeId": "foot_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many metatarsal bones are in each foot?",
+    "explanation": "Each foot has five metatarsals (MT1–MT5), numbered from medial (big toe side) to lateral. They form the long mid-section of the foot between the tarsals and phalanges. MT5's base has a prominent tuberosity where the peroneus brevis tendon attaches — a common avulsion fracture site.",
+    "visualDescription": "Superior view of the foot with the five metatarsals labeled MT1 through MT5",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Foot",
+    "volatile": false,
+    "distractors": ["Four", "Six", "Seven"],
+    "variants": [
+      {
+        "quizQuestion": "A dancer 'rolls' their ankle and feels a pop on the lateral foot near the base of the little toe. Which structure is most commonly avulsed here?",
+        "correctAnswer": "Base of the 5th metatarsal (tuberosity)",
+        "explanation": "The peroneus brevis tendon attaches to the styloid process (tuberosity) at the base of the 5th metatarsal. Inversion injuries can avulse this attachment, producing the classic 'dancer's fracture' — a very common lateral foot injury."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_077",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "14 phalanges",
+    "acceptableAlternatives": ["fourteen", "14"],
+    "chainThemeId": "foot_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "How many phalanges (toe bones) are in each foot, and how are they distributed?",
+    "explanation": "Each foot has 14 phalanges: the big toe (hallux) has 2 (proximal and distal), while each of the other four toes has 3 (proximal, middle, and distal). This is the same arrangement as the hand — the thumb has 2 phalanges, other fingers have 3.",
+    "visualDescription": "Superior view of the toes showing 2 phalanges in the big toe and 3 in each lesser toe",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Foot",
+    "volatile": false,
+    "distractors": ["10 phalanges (2 per toe)", "15 phalanges", "12 phalanges"],
+    "variants": [
+      {
+        "quizQuestion": "Unlike the other four toes, the big toe (hallux) has only how many phalanges?",
+        "correctAnswer": "Two (proximal and distal)",
+        "explanation": "The hallux has a proximal phalanx and a distal phalanx — no middle phalanx. The same pattern applies to the thumb. This reflects the shared evolutionary origin of hands and feet, with the first digit being structurally distinct in both."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_078",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Medial longitudinal arch",
+    "acceptableAlternatives": ["medial arch"],
+    "chainThemeId": "foot_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "The foot has three arches. Which is the highest and most important for shock absorption during walking?",
+    "explanation": "The foot has a medial longitudinal arch (highest), a lateral longitudinal arch (lower and less flexible), and a transverse arch across the metatarsals. The medial arch spans from the calcaneus to the metatarsal heads and is maintained by the plantar fascia, intrinsic muscles, and the keystone talus. Its collapse causes flat-foot (pes planus).",
+    "visualDescription": "Medial view of the foot with the medial longitudinal arch curve highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Foot",
+    "volatile": false,
+    "distractors": ["Lateral longitudinal arch", "Transverse arch", "Plantar arch"],
+    "variants": [
+      {
+        "quizQuestion": "Pes planus (flat foot) is characterized by collapse of which foot arch?",
+        "correctAnswer": "Medial longitudinal arch",
+        "explanation": "Pes planus occurs when the medial longitudinal arch — the tall inner arch from heel to ball of foot — loses its height. This can cause overpronation, altered gait mechanics, and pain in the foot, ankle, knee, and even the lower back."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_079",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "30 bones per lower limb (60 total)",
+    "acceptableAlternatives": ["30", "60 total", "30 per leg"],
+    "chainThemeId": "lower_limb_joints",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "How many bones make up one complete lower limb (from femur to toe tips)?",
+    "explanation": "Each lower limb contains 30 bones: 1 femur + 1 patella + 1 tibia + 1 fibula + 7 tarsals + 5 metatarsals + 14 phalanges = 30. Both lower limbs together account for 60 bones, representing 25% of the entire skeleton's 206 bones.",
+    "visualDescription": "Full lower limb skeleton from hip to toes with bones labeled and counted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Foot",
+    "volatile": false,
+    "distractors": ["26 bones", "32 bones", "27 bones"],
+    "variants": [
+      {
+        "quizQuestion": "What fraction of the body's 206 bones are located in both lower limbs combined?",
+        "correctAnswer": "Approximately one quarter (60 out of 206)",
+        "explanation": "With 30 bones per lower limb and 60 total, the lower limbs contain roughly 29% of the body's 206 bones. Together with the upper limbs (64 bones), the appendicular skeleton accounts for about 126 bones — far more than the axial skeleton's 80."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_080",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Hip joint (ball-and-socket), knee joint (modified hinge), ankle joint (hinge/mortise)",
+    "acceptableAlternatives": ["ball and socket at hip, hinge at knee, hinge at ankle"],
+    "chainThemeId": "lower_limb_joints",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Name the three major joints of the lower limb and their joint types.",
+    "explanation": "The lower limb has three key joints: (1) Hip — ball-and-socket (femoral head in acetabulum), allowing multi-axial movement; (2) Knee — modified hinge (femoral condyles on tibial plateau), allowing flexion/extension plus slight rotation when flexed; (3) Ankle — hinge/mortise (talus in tibia-fibula mortise), primarily allowing dorsiflexion and plantarflexion. Each joint type reflects its biomechanical role.",
+    "visualDescription": "Three-panel diagram showing hip, knee, and ankle joints with joint type labels",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "volatile": false,
+    "distractors": [
+      "Hip: hinge, Knee: ball-and-socket, Ankle: pivot",
+      "Hip: saddle, Knee: condyloid, Ankle: hinge",
+      "Hip: ball-and-socket, Knee: pivot, Ankle: ball-and-socket"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "The hip joint is a ball-and-socket joint. What bone forms the 'ball' and what structure forms the 'socket'?",
+        "correctAnswer": "The femoral head is the ball; the acetabulum of the hip bone is the socket",
+        "explanation": "The spherical head of the femur articulates with the deep cup-shaped acetabulum, which is deepened further by a fibrocartilaginous rim called the acetabular labrum. This arrangement allows a large range of motion while maintaining stability — unlike the shoulder's shallower socket, which trades stability for even greater mobility."
+      }
+    ]
+  }
+]

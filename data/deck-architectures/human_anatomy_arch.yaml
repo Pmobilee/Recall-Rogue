@@ -1,0 +1,2104 @@
+deck_id: human_anatomy
+name: "Human Anatomy"
+domain: medical
+sub_domain: human_anatomy
+target_facts: 730
+minimum_facts: 650
+
+# Sourcing & licensing (MANDATORY)
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Human_anatomy
+    license: CC-BY-SA-4.0
+    usage: fact text, explanations, anatomical relationships
+  - name: OpenStax Anatomy & Physiology 2e
+    url: https://openstax.org/details/books/anatomy-and-physiology-2e/
+    license: CC-BY-4.0
+    usage: cross-reference, medical accuracy verification
+  - name: TeachMeAnatomy
+    url: https://teachmeanatomy.info/
+    license: CC-BY-SA (educational reference)
+    usage: clinical correlations, innervation details
+  - name: Wikidata
+    url: https://www.wikidata.org/
+    license: CC0
+    usage: structured data (FMA IDs, entity relationships)
+
+asset_sources:
+  - type: anatomy_illustrations
+    source: Servier Medical Art (SMART)
+    url: https://smart.servier.com/
+    license: CC-BY-4.0
+    note: "3000+ medical illustrations. Attribution: Servier Medical Art by Servier"
+  - type: anatomy_plates
+    source: "Gray's Anatomy 1918 (20th U.S. Edition)"
+    url: https://commons.wikimedia.org/wiki/Category:Gray%27s_Anatomy_plates
+    license: public domain
+    note: "1247 engravings. Copyright expired."
+
+# === VERIFIED SOURCE DATA ===
+# All numbers and facts below are sourced from Wikipedia and OpenStax A&P 2e.
+# Workers: FORMAT this data into DeckFact JSON. Do NOT invent additional facts.
+
+source_data:
+
+  # ===========================================================================
+  # SECTION 1: SKELETAL SYSTEM (target: 80 facts)
+  # ===========================================================================
+  skeletal_system:
+    wikipedia: https://en.wikipedia.org/wiki/Human_skeleton
+    target_facts: 80
+
+    overview:
+      total_bones_adult: 206
+      total_bones_infant: ~270  # cartilage ossifies and some fuse during development
+      axial_skeleton: 80
+      appendicular_skeleton: 126
+      bone_types: [long, short, flat, irregular, sesamoid]
+      bone_type_examples:
+        long: femur, humerus, tibia, fibula, radius, ulna
+        short: carpals, tarsals
+        flat: skull plates, scapula, sternum, ribs
+        irregular: vertebrae, sacrum, mandible
+        sesamoid: patella (largest sesamoid)
+      notes: "Bone is living tissue; ~10% of skeleton replaced each year via remodeling."
+
+    skull:
+      wikipedia: https://en.wikipedia.org/wiki/Human_skull
+      total_bones: 22  # not counting ear ossicles; 28 with 6 ossicles
+      cranial_bones: 8
+      cranial_bone_list: [frontal, parietal_x2, temporal_x2, occipital, sphenoid, ethmoid]
+      facial_bones: 14
+      facial_bone_list: [maxilla_x2, zygomatic_x2, mandible, nasal_x2, palatine_x2, inferior_nasal_concha_x2, lacrimal_x2, vomer]
+      ear_ossicles: 6  # 3 per ear: malleus, incus, stapes
+      ear_ossicle_list: [malleus_x2, incus_x2, stapes_x2]
+      hyoid: 1  # only bone not articulating with any other bone
+      notes:
+        - "Frontal bone: forms forehead and roof of orbits"
+        - "Mandible: only movable bone of skull; has condylar and coronoid processes"
+        - "Sphenoid: butterfly-shaped; articulates with all other cranial bones"
+        - "Hyoid: U-shaped; supports tongue; only bone not part of a joint"
+        - "Stapes: smallest bone in the body (~3mm)"
+
+    vertebral_column:
+      wikipedia: https://en.wikipedia.org/wiki/Vertebral_column
+      total_vertebrae_adult: 26  # fused count
+      total_vertebrae_unfused: 33
+      regions:
+        cervical:
+          count: 7
+          label_range: C1-C7
+          special:
+            C1: "Atlas — ring-shaped, no body, supports skull (yes/no rotation)"
+            C2: "Axis — has dens (odontoid process) that Atlas rotates around"
+            C3_to_C7: "typical cervical vertebrae"
+        thoracic:
+          count: 12
+          label_range: T1-T12
+          notes: "Articulate with ribs; have costal facets"
+        lumbar:
+          count: 5
+          label_range: L1-L5
+          notes: "Largest vertebrae; bear most body weight; no rib articulation"
+        sacrum:
+          count: 1  # 5 fused sacral vertebrae
+          fused_from: 5
+          notes: "Triangular; articulates with ileum at sacroiliac joint; contains sacral canal"
+        coccyx:
+          count: 1  # 3-5 fused coccygeal vertebrae
+          fused_from: "3-5"
+          notes: "Tailbone; vestigial tail; attachment for pelvic floor muscles"
+      curvatures:
+        primary: [thoracic, sacral]  # concave anteriorly; present at birth
+        secondary: [cervical, lumbar]  # convex anteriorly; develop after birth
+      notes: "Intervertebral discs = fibrocartilaginous pads between vertebrae (nucleus pulposus + annulus fibrosus)"
+
+    thoracic_cage:
+      wikipedia: https://en.wikipedia.org/wiki/Thoracic_cage
+      total_bones: 25  # 24 ribs + sternum
+      ribs:
+        total_pairs: 12
+        true_ribs_pairs: 7   # ribs 1-7; connect directly to sternum via costal cartilage
+        false_ribs_pairs: 3  # ribs 8-10; connect to sternum indirectly via rib 7 cartilage
+        floating_ribs_pairs: 2  # ribs 11-12; no anterior attachment
+      sternum:
+        parts: [manubrium, body, xiphoid_process]
+        notes:
+          - "Manubrium: articulates with clavicles and ribs 1-2; jugular notch at top"
+          - "Body (gladiolus): articulates with ribs 2-7"
+          - "Xiphoid process: cartilaginous in youth, ossifies with age; CPR landmark"
+
+    appendicular_skeleton:
+      wikipedia: https://en.wikipedia.org/wiki/Appendicular_skeleton
+      total_bones: 126
+      shoulder_girdle:
+        bones_total: 4
+        list: [clavicle_x2, scapula_x2]
+        notes:
+          - "Clavicle: only horizontal long bone; transmits force from arm to axial skeleton"
+          - "Scapula: has spine, acromion, coracoid process, glenoid cavity"
+      upper_limb:
+        bones_total: 60  # 30 per arm
+        per_limb:
+          humerus: 1
+          radius: 1
+          ulna: 1
+          carpals: 8  # scaphoid, lunate, triquetrum, pisiform, trapezium, trapezoid, capitate, hamate
+          metacarpals: 5
+          phalanges: 14  # 2 in thumb, 3 in each finger
+        notes:
+          - "Carpal mnemonic: 'Some Lovers Try Positions That They Cannot Handle'"
+          - "Radial head articulates with capitulum; ulnar trochlear notch with trochlea"
+      pelvic_girdle:
+        bones_total: 2  # 2 hip bones (os coxae)
+        notes:
+          - "Each hip bone = 3 fused bones: ilium + ischium + pubis"
+          - "Ilium: largest; iliac crest = palpable landmark"
+          - "Ischium: ischial tuberosity = 'sitting bone'"
+          - "Pubis: pubic symphysis = fibrocartilaginous joint between L and R pubis"
+          - "Acetabulum: socket for femoral head (formed by all 3 bones)"
+      lower_limb:
+        bones_total: 60  # 30 per leg
+        per_limb:
+          femur: 1
+          patella: 1  # largest sesamoid bone
+          tibia: 1
+          fibula: 1
+          tarsals: 7  # calcaneus, talus, navicular, cuboid, medial/intermediate/lateral cuneiform
+          metatarsals: 5
+          phalanges: 14  # 2 in hallux, 3 in each other toe
+        notes:
+          - "Femur: longest and largest bone in the body"
+          - "Tibia: weight-bearing bone of leg; medial malleolus"
+          - "Fibula: non-weight-bearing; lateral malleolus"
+          - "Calcaneus: largest tarsal; heel bone"
+          - "Talus: articulates with tibia/fibula above, calcaneus below"
+
+    special_bones:
+      stapes:
+        type: sesamoid-like ossicle
+        size_mm: ~3
+        location: middle ear
+        notes: "Smallest bone in body (~3mm)"
+      femur:
+        notes: "Longest and strongest bone in body; withstands ~1700 N during walking"
+      hyoid:
+        notes: "Only bone not articulating with another; located in throat, supports tongue"
+
+    joints:
+      wikipedia: https://en.wikipedia.org/wiki/Joint
+      classifications:
+        structural:
+          fibrous:
+            subtypes: [suture, syndesmosis, gomphosis]
+            notes:
+              suture: "Skull joints; immovable; united by fibrous tissue"
+              syndesmosis: "Interosseous membrane (e.g., tibia-fibula)"
+              gomphosis: "Tooth in socket (periodontal ligament)"
+          cartilaginous:
+            subtypes: [synchondrosis, symphysis]
+            notes:
+              synchondrosis: "Hyaline cartilage; e.g., epiphyseal plates (growth plates)"
+              symphysis: "Fibrocartilage; e.g., pubic symphysis, intervertebral discs"
+          synovial:
+            subtypes: [ball_and_socket, hinge, pivot, condyloid, saddle, gliding]
+            notes:
+              ball_and_socket: "Hip, shoulder; greatest range of motion"
+              hinge: "Elbow, knee, ankle, interphalangeal; flexion/extension only"
+              pivot: "Atlas-axis (C1-C2); proximal radioulnar; rotation only"
+              condyloid: "Radiocarpal (wrist), MCP joints; biaxial"
+              saddle: "Carpometacarpal of thumb; biaxial, thumb opposition"
+              gliding: "Intercarpal, intertarsal, acromioclavicular; translation"
+            features: "Synovial fluid, articular cartilage, joint capsule, ligaments"
+
+    bone_landmarks:
+      process: "general projection"
+      fossa: "depression or hollow"
+      foramen: "hole/opening (e.g., foramen magnum, obturator foramen)"
+      condyle: "rounded projection for articulation"
+      epicondyle: "projection above condyle"
+      trochanter: "large projection on femur (greater and lesser)"
+      tuberosity: "rough projection (e.g., deltoid tuberosity, tibial tuberosity)"
+      spine: "sharp/slender projection (e.g., iliac spine, scapular spine)"
+      crest: "ridge (e.g., iliac crest)"
+      tubercle: "small rounded projection"
+
+  # ===========================================================================
+  # SECTION 2: MUSCULAR SYSTEM (target: 80 facts)
+  # ===========================================================================
+  muscular_system:
+    wikipedia: https://en.wikipedia.org/wiki/Muscle
+    target_facts: 80
+
+    overview:
+      total_skeletal_muscles: ~600
+      muscle_types:
+        skeletal:
+          control: voluntary
+          histology: striated
+          nuclei: multinucleated (peripheral)
+          notes: "Attached to bone via tendons; produces body movement"
+        cardiac:
+          control: involuntary
+          histology: striated
+          nuclei: 1-2 central nuclei per cell
+          notes: "Heart only; intercalated discs allow electrical coupling"
+        smooth:
+          control: involuntary
+          histology: non-striated
+          nuclei: single central nucleus
+          notes: "Walls of hollow organs (gut, blood vessels, bladder)"
+
+    microstructure:
+      wikipedia: https://en.wikipedia.org/wiki/Sarcomere
+      sarcomere:
+        components: [A band, I band, H zone, Z disc, M line, titin, actin, myosin]
+        notes:
+          - "A band = full length of myosin thick filament (does NOT shorten)"
+          - "I band = actin thin filaments only (shortens during contraction)"
+          - "H zone = myosin only, no actin overlap (shortens/disappears)"
+          - "Z disc = anchors actin; one sarcomere = Z disc to Z disc"
+      sliding_filament_theory:
+        key_steps:
+          1: "AP arrives at neuromuscular junction"
+          2: "ACh released → binds nicotinic receptors on motor end plate"
+          3: "Depolarization → AP along sarcolemma → T-tubules"
+          4: "Ca2+ released from sarcoplasmic reticulum → binds troponin"
+          5: "Tropomyosin moves → exposes actin binding sites"
+          6: "Myosin cross-bridges attach → power stroke (ADP + Pi released)"
+          7: "ATP binds myosin → cross-bridge detaches → myosin cocks (ATP hydrolyzed)"
+          8: "Cycle repeats while Ca2+ present"
+      motor_unit: "single motor neuron + all muscle fibers it innervates"
+
+    head_muscles:
+      wikipedia: https://en.wikipedia.org/wiki/Muscles_of_facial_expression
+      facial_expression_nerve: "CN VII (Facial nerve) — all muscles of facial expression"
+      mastication_nerve: "CN V3 (Mandibular branch of Trigeminal) — all muscles of mastication"
+      muscles:
+        orbicularis_oculi:
+          action: "closes eyelid; responsible for squinting and blinking"
+          innervation: "CN VII"
+        frontalis:
+          action: "raises eyebrows; wrinkles forehead"
+          innervation: "CN VII"
+        orbicularis_oris:
+          action: "closes and purses lips; kissing muscle"
+          innervation: "CN VII"
+        buccinator:
+          origin: "alveolar processes of maxilla and mandible"
+          insertion: "orbicularis oris at mouth angle"
+          action: "compresses cheeks; blowing/chewing; keeps food between teeth"
+          innervation: "CN VII"
+        zygomaticus_major:
+          action: "draws corner of mouth upward and laterally; smiling muscle"
+          innervation: "CN VII"
+        masseter:
+          origin: "zygomatic arch"
+          insertion: "mandible ramus and angle"
+          action: "elevates mandible (closes jaw); strongest muscle relative to weight"
+          innervation: "CN V3"
+        temporalis:
+          origin: "temporal fossa"
+          insertion: "coronoid process of mandible"
+          action: "elevates and retracts mandible"
+          innervation: "CN V3"
+
+    neck_muscles:
+      sternocleidomastoid:
+        origin: "sternum (manubrium) and clavicle"
+        insertion: "mastoid process of temporal bone"
+        action: "bilateral — flexes neck; unilateral — rotates head to opposite side, tilts to same side"
+        innervation: "CN XI (Accessory nerve)"
+        notes: "Landmark for anterior/posterior triangles of neck"
+      scalenes:
+        members: [anterior, middle, posterior]
+        action: "flex/laterally flex neck; elevate ribs 1-2 (accessory inspiration)"
+        innervation: "anterior rami C3-C8"
+      platysma:
+        action: "depresses mandible and lower lip; tenses neck skin"
+        innervation: "CN VII"
+
+    shoulder_muscles:
+      deltoid:
+        origin: "clavicle (anterior), acromion (middle), scapular spine (posterior)"
+        insertion: "deltoid tuberosity of humerus"
+        action: "anterior=flexion/internal rotation; middle=abduction; posterior=extension/external rotation"
+        innervation: "axillary nerve (C5-C6)"
+        notes: "Primary abductor of arm (>15 degrees); IM injection site"
+      rotator_cuff:
+        wikipedia: https://en.wikipedia.org/wiki/Rotator_cuff
+        mnemonic: "SITS"
+        members:
+          supraspinatus:
+            origin: "supraspinous fossa of scapula"
+            insertion: "greater tubercle of humerus (superior facet)"
+            action: "initiates abduction (first 15 degrees)"
+            innervation: "suprascapular nerve (C5-C6)"
+          infraspinatus:
+            origin: "infraspinous fossa of scapula"
+            insertion: "greater tubercle of humerus (middle facet)"
+            action: "external rotation of arm"
+            innervation: "suprascapular nerve (C5-C6)"
+          teres_minor:
+            origin: "lateral border of scapula"
+            insertion: "greater tubercle of humerus (inferior facet)"
+            action: "external rotation and weak adduction"
+            innervation: "axillary nerve (C5-C6)"
+          subscapularis:
+            origin: "subscapular fossa (anterior scapula)"
+            insertion: "lesser tubercle of humerus"
+            action: "internal rotation of arm; stabilizes glenohumeral joint"
+            innervation: "upper and lower subscapular nerves (C5-C6)"
+        notes: "Collectively stabilize glenohumeral joint (prevents humeral head displacement)"
+
+    arm_muscles:
+      biceps_brachii:
+        origin: "short head: coracoid process; long head: supraglenoid tubercle"
+        insertion: "radial tuberosity and bicipital aponeurosis"
+        action: "elbow flexion; forearm supination (strongest supinator)"
+        innervation: "musculocutaneous nerve (C5-C6)"
+      brachialis:
+        origin: "distal anterior humerus"
+        insertion: "coronoid process and tuberosity of ulna"
+        action: "elbow flexion (strongest elbow flexor in all positions)"
+        innervation: "musculocutaneous nerve (C5-C6)"
+      triceps_brachii:
+        heads: [long, lateral, medial]
+        origin: "long head: infraglenoid tubercle; lateral: posterior humerus superior; medial: posterior humerus inferior"
+        insertion: "olecranon process of ulna"
+        action: "elbow extension; long head assists shoulder extension/adduction"
+        innervation: "radial nerve (C7-C8)"
+        notes: "Only muscle on posterior compartment of arm"
+      brachioradialis:
+        origin: "lateral supracondylar ridge of humerus"
+        insertion: "styloid process of radius"
+        action: "elbow flexion (especially when forearm semi-pronated)"
+        innervation: "radial nerve (C5-C6)"
+
+    forearm_muscles:
+      pronator_teres:
+        action: "pronation of forearm; assists elbow flexion"
+        innervation: "median nerve (C6-C7)"
+      supinator:
+        action: "supination of forearm"
+        innervation: "deep branch of radial nerve (C5-C6)"
+        notes: "Biceps brachii is the more powerful supinator"
+      flexor_carpi_radialis:
+        action: "wrist flexion and abduction (radial deviation)"
+        innervation: "median nerve (C6-C7)"
+      flexor_carpi_ulnaris:
+        action: "wrist flexion and adduction (ulnar deviation)"
+        innervation: "ulnar nerve (C7-C8)"
+      extensor_carpi_radialis_longus_and_brevis:
+        action: "wrist extension and abduction"
+        innervation: "radial nerve (C6-C7)"
+      extensor_carpi_ulnaris:
+        action: "wrist extension and adduction"
+        innervation: "deep branch of radial nerve (C7-C8)"
+
+    trunk_anterior:
+      pectoralis_major:
+        origin: "clavicle, sternum, costal cartilages 1-6"
+        insertion: "intertubercular groove of humerus (lateral lip)"
+        action: "flexion, adduction, internal rotation of humerus"
+        innervation: "medial and lateral pectoral nerves (C5-T1)"
+      rectus_abdominis:
+        origin: "pubic crest and symphysis"
+        insertion: "xiphoid process and costal cartilages 5-7"
+        action: "flexes trunk; compresses abdomen"
+        innervation: "intercostal nerves T7-T12"
+        notes: "Enclosed in rectus sheath; tendinous intersections create 'six-pack'"
+      external_oblique:
+        action: "ipsilateral lateral flexion; contralateral rotation; compresses abdomen"
+        innervation: "intercostal nerves T7-T11, subcostal nerve"
+        notes: "Fibers run inferomedially ('hands in pockets' direction)"
+      internal_oblique:
+        action: "ipsilateral rotation and lateral flexion"
+        innervation: "intercostal nerves T7-T12, L1"
+        notes: "Fibers run superomedially (perpendicular to external oblique)"
+      transversus_abdominis:
+        action: "compresses abdomen; stabilizes lumbar spine"
+        innervation: "intercostal nerves T7-T12, L1"
+        notes: "Deepest abdominal muscle; fibers run horizontally"
+
+    trunk_posterior:
+      trapezius:
+        origin: "external occipital protuberance, nuchal ligament, spinous processes C7-T12"
+        insertion: "clavicle (lateral 1/3), acromion, scapular spine"
+        action: "upper=elevates scapula; middle=retracts scapula; lower=depresses scapula; all together=rotates glenoid upward"
+        innervation: "CN XI (Accessory nerve) + proprioception C3-C4"
+      latissimus_dorsi:
+        origin: "spinous processes T7-L5, sacrum, iliac crest, ribs 9-12"
+        insertion: "intertubercular groove of humerus (floor)"
+        action: "extends, adducts, internally rotates humerus; 'swimmer's muscle'"
+        innervation: "thoracodorsal nerve (C6-C8)"
+      erector_spinae:
+        members: [iliocostalis, longissimus, spinalis]
+        action: "extends and laterally flexes vertebral column; maintains posture"
+        innervation: "dorsal rami of spinal nerves"
+      rhomboids:
+        members: [major, minor]
+        origin: "spinous processes C7-T5"
+        insertion: "medial border of scapula"
+        action: "retracts and elevates medial border of scapula"
+        innervation: "dorsal scapular nerve (C5)"
+
+    hip_muscles:
+      iliopsoas:
+        components: [psoas_major, iliacus]
+        action: "hip flexion (strongest hip flexor); flexes trunk on thigh"
+        innervation: "femoral nerve (L1-L3) for iliacus; lumbar plexus (L1-L3) for psoas"
+        notes: "Psoas: originates on lumbar vertebrae; Iliacus: originates in iliac fossa"
+      gluteus_maximus:
+        origin: "posterior ilium, sacrum, coccyx"
+        insertion: "gluteal tuberosity of femur and iliotibial band"
+        action: "powerful hip extension and external rotation"
+        innervation: "inferior gluteal nerve (L5-S2)"
+        notes: "Largest muscle in body; activated strongly when climbing or rising from chair"
+      gluteus_medius:
+        action: "hip abduction; internal rotation; stabilizes pelvis during walking"
+        innervation: "superior gluteal nerve (L4-S1)"
+        notes: "Trendelenburg gait if weak"
+      gluteus_minimus:
+        action: "hip abduction; internal rotation; pelvic stabilization"
+        innervation: "superior gluteal nerve (L4-S1)"
+      piriformis:
+        origin: "anterior sacrum"
+        insertion: "greater trochanter of femur"
+        action: "external rotation of hip; abduction when flexed"
+        innervation: "nerve to piriformis (S1-S2)"
+        notes: "Sciatic nerve passes below (or through) piriformis; piriformis syndrome"
+
+    thigh_muscles:
+      quadriceps_femoris:
+        members: [rectus_femoris, vastus_lateralis, vastus_medialis, vastus_intermedius]
+        insertion: "tibial tuberosity via patellar ligament (quadriceps tendon → patella → patellar tendon)"
+        action: "knee extension; rectus femoris also flexes hip"
+        innervation: "femoral nerve (L2-L4)"
+        notes: "Vastus lateralis = common IM injection site in infants/elderly"
+      hamstrings:
+        members: [biceps_femoris, semitendinosus, semimembranosus]
+        origin: "ischial tuberosity (except short head of biceps femoris)"
+        action: "knee flexion; hip extension; biceps femoris lateral rotation; semitendinosus/semimembranosus medial rotation"
+        innervation: "tibial division of sciatic nerve (L5-S2); biceps femoris short head: common fibular division"
+      adductors:
+        members: [adductor_longus, adductor_brevis, adductor_magnus, gracilis, pectineus]
+        action: "hip adduction; some hip flexion/extension"
+        innervation: "obturator nerve (L2-L4); adductor magnus posterior part: tibial nerve"
+      sartorius:
+        origin: "anterior superior iliac spine (ASIS)"
+        insertion: "pes anserinus on medial tibia"
+        action: "flexes, abducts, and externally rotates hip; flexes knee"
+        innervation: "femoral nerve (L2-L3)"
+        notes: "Longest muscle in body (~60cm)"
+
+    leg_muscles:
+      gastrocnemius:
+        origin: "medial and lateral condyles of femur"
+        insertion: "calcaneus via Achilles (calcaneal) tendon"
+        action: "plantarflexion; knee flexion"
+        innervation: "tibial nerve (S1-S2)"
+        notes: "Superficial calf muscle; crosses both knee and ankle"
+      soleus:
+        origin: "posterior tibia and fibula"
+        insertion: "calcaneus via Achilles tendon"
+        action: "plantarflexion (dominant when knee flexed)"
+        innervation: "tibial nerve (S1-S2)"
+        notes: "'Second heart' — venous pump for lower limb; does NOT cross knee"
+      tibialis_anterior:
+        action: "dorsiflexion; inversion of foot"
+        innervation: "deep fibular (peroneal) nerve (L4-L5)"
+      fibularis_longus:
+        action: "plantarflexion; eversion of foot; supports transverse arch"
+        innervation: "superficial fibular nerve (L5-S1)"
+
+    special_muscles:
+      diaphragm:
+        innervation: "phrenic nerve (C3, C4, C5 — 'C3-4-5 keeps the diaphragm alive')"
+        action: "primary muscle of inspiration; contracts and flattens to increase thoracic volume"
+        openings: "aortic hiatus (T12), esophageal hiatus (T10), caval opening (T8)"
+        notes: "Dome-shaped at rest; moves ~1.5cm with quiet breathing"
+      stapedius:
+        size: "~1mm"
+        action: "dampens ossicle vibration to protect inner ear from loud sounds"
+        innervation: "facial nerve (CN VII)"
+        notes: "Smallest skeletal muscle in body"
+
+  # ===========================================================================
+  # SECTION 3: CARDIOVASCULAR SYSTEM (target: 70 facts)
+  # ===========================================================================
+  cardiovascular:
+    wikipedia: https://en.wikipedia.org/wiki/Cardiovascular_system
+    target_facts: 70
+
+    heart:
+      wikipedia: https://en.wikipedia.org/wiki/Heart
+      chambers: 4
+      chamber_list: [right_atrium, right_ventricle, left_atrium, left_ventricle]
+      valves: 4
+      valve_list:
+        tricuspid:
+          location: "right AV valve (between RA and RV)"
+          cusps: 3
+        pulmonary_semilunar:
+          location: "between RV and pulmonary trunk"
+          cusps: 3
+        mitral_bicuspid:
+          location: "left AV valve (between LA and LV)"
+          cusps: 2
+          notes: "Only valve with 2 cusps"
+        aortic_semilunar:
+          location: "between LV and aorta"
+          cusps: 3
+      wall_layers: [epicardium, myocardium, endocardium]
+      pericardium_layers: [fibrous, parietal_serous, visceral_serous_epicardium]
+      position: "slightly left of midline; apex at 5th intercostal space, midclavicular line"
+      weight_g: "~250-350"
+
+    coronary_arteries:
+      wikipedia: https://en.wikipedia.org/wiki/Coronary_arteries
+      left_main_coronary:
+        branches: [left_anterior_descending, left_circumflex]
+        notes: "Arises from left aortic sinus"
+      left_anterior_descending:
+        abbreviation: LAD
+        supplies: "anterior LV wall, interventricular septum, apex"
+        notes: "'Widow maker' — most commonly occluded"
+      left_circumflex:
+        supplies: "lateral and posterior LV wall, LA"
+      right_coronary_artery:
+        abbreviation: RCA
+        branches: [SA_nodal_artery, AV_nodal_artery, right_marginal, posterior_descending_artery]
+        supplies: "RA, RV, SA node (55% of people), AV node (90% of people)"
+        notes: "Right-dominant circulation in ~70% of people"
+
+    conduction_system:
+      wikipedia: https://en.wikipedia.org/wiki/Electrical_conduction_system_of_the_heart
+      pathway_order: [SA_node, AV_node, bundle_of_His, left_bundle_branch, right_bundle_branch, Purkinje_fibers]
+      components:
+        SA_node:
+          location: "right atrium near superior vena cava"
+          intrinsic_rate_bpm: "60-100"
+          role: "pacemaker of heart (normal sinus rhythm)"
+        AV_node:
+          location: "inferior interatrial septum"
+          intrinsic_rate_bpm: "40-60"
+          role: "delays impulse 0.1s to allow ventricular filling"
+          notes: "Only normal electrical connection between atria and ventricles"
+        bundle_of_His:
+          location: "interventricular septum"
+          intrinsic_rate_bpm: "40-60"
+        bundle_branches:
+          left: "splits further into anterior and posterior fascicles"
+          right: "remains as single bundle"
+        Purkinje_fibers:
+          location: "subendocardium of both ventricles"
+          intrinsic_rate_bpm: "20-40"
+          notes: "Rapidly distribute impulse to ventricular myocardium"
+
+    cardiac_parameters:
+      cardiac_output_L_min: "~5 (at rest)"
+      stroke_volume_mL: "~70 (at rest)"
+      heart_rate_bpm: "60-100 (normal)"
+      ejection_fraction_percent: "55-70"
+      formula: "CO = SV × HR"
+      Starling_law: "greater stretch of myocardium → stronger contraction (within limits)"
+
+    major_arteries:
+      wikipedia: https://en.wikipedia.org/wiki/Artery
+      systemic:
+        aorta:
+          parts: [ascending, aortic_arch, descending_thoracic, abdominal]
+          diameter_cm: "~2.5"
+        arch_branches: [brachiocephalic_trunk, left_common_carotid, left_subclavian]
+        brachiocephalic_trunk_branches: [right_common_carotid, right_subclavian]
+        upper_limb: [subclavian, axillary, brachial, radial, ulnar]
+        abdominal_branches: [celiac_trunk, SMA, IMA, renal, gonadal, common_iliac]
+        celiac_trunk_branches: [left_gastric, splenic, common_hepatic]
+        lower_limb: [common_iliac, external_iliac, femoral, popliteal, anterior_tibial, posterior_tibial, fibular]
+        notes:
+          - "Pulse felt at: radial, brachial, femoral, popliteal, posterior tibial, dorsalis pedis"
+          - "Femoral artery: most commonly cannulated for cardiac catheterization"
+
+    major_veins:
+      wikipedia: https://en.wikipedia.org/wiki/Vein
+      SVC: "drains head, neck, upper limbs, thorax → right atrium"
+      IVC: "drains abdomen, pelvis, lower limbs → right atrium"
+      hepatic_portal_vein: "drains GI tract and spleen → liver before entering IVC via hepatic veins"
+      key_veins:
+        - "Internal jugular: drains brain; runs with carotid sheath"
+        - "Great saphenous: longest vein in body; medial leg → femoral vein; used for bypass grafts"
+        - "Azygos vein: drains posterior thoracic wall; empties into SVC"
+        - "Renal veins: left renal vein longer (crosses aorta)"
+
+    blood:
+      wikipedia: https://en.wikipedia.org/wiki/Blood
+      composition:
+        plasma_percent: 55
+        formed_elements_percent: 45  # hematocrit
+      cells:
+        RBC:
+          name: erythrocytes
+          normal_range: "4.5-5.5 million/μL"
+          lifespan_days: 120
+          notes: "No nucleus or mitochondria; carry O2 via hemoglobin"
+        WBC:
+          name: leukocytes
+          normal_range: "4,500-11,000/μL"
+          types: [neutrophils, lymphocytes, monocytes, eosinophils, basophils]
+          neutrophil_percent: "50-70%"
+        platelets:
+          name: thrombocytes
+          normal_range: "150,000-400,000/μL"
+          lifespan_days: "8-10"
+          notes: "Cell fragments from megakaryocytes; role in hemostasis"
+      blood_types:
+        system: ABO_plus_Rh
+        types: [A, B, AB, O]
+        universal_donor: "O-negative"
+        universal_recipient: "AB-positive"
+        notes:
+          - "Type A: A antigen on RBC, anti-B antibodies in plasma"
+          - "Type B: B antigen on RBC, anti-A antibodies in plasma"
+          - "Type AB: both antigens, no ABO antibodies; universal recipient"
+          - "Type O: no antigens, both anti-A and anti-B antibodies; universal donor"
+          - "Rh+: Rh (D) antigen present; Rh-: absent"
+
+    circulation:
+      pulmonary:
+        path: "RV → pulmonary trunk → pulmonary arteries → lungs → pulmonary veins → LA"
+        notes: "Only place where arteries carry deoxygenated blood and veins carry oxygenated"
+      systemic:
+        path: "LV → aorta → arteries → capillaries → veins → SVC/IVC → RA"
+
+  # ===========================================================================
+  # SECTION 4: NERVOUS SYSTEM (target: 80 facts)
+  # ===========================================================================
+  nervous_system:
+    wikipedia: https://en.wikipedia.org/wiki/Nervous_system
+    target_facts: 80
+
+    divisions:
+      CNS: "brain + spinal cord"
+      PNS: "all nervous tissue outside CNS (cranial nerves, spinal nerves, ganglia)"
+      ANS: "autonomic (sympathetic + parasympathetic); subdivision of PNS"
+
+    brain:
+      wikipedia: https://en.wikipedia.org/wiki/Brain
+      weight_g: "~1400 (adult)"
+      regions:
+        cerebrum:
+          lobes: [frontal, parietal, temporal, occipital]
+          lobe_functions:
+            frontal: "motor cortex, prefrontal cortex (executive function, personality), Broca's area (speech production)"
+            parietal: "somatosensory cortex, spatial awareness, Wernicke's area (posterior part)"
+            temporal: "auditory cortex, memory (hippocampus within), Wernicke's area (language comprehension)"
+            occipital: "primary visual cortex (V1)"
+          lateralization:
+            left: "language (Broca's + Wernicke's in 95% of right-handers), logic"
+            right: "spatial, artistic, emotional processing"
+        cerebellum:
+          location: "posterior cranial fossa"
+          function: "coordination, balance, fine motor control, motor learning"
+          notes: "Receives input from vestibular system, proprioceptors, motor cortex; outputs to thalamus → motor cortex"
+        brainstem:
+          parts: [midbrain, pons, medulla_oblongata]
+          functions:
+            midbrain: "CN III, IV; superior/inferior colliculi (visual/auditory reflexes); substantia nigra (dopamine)"
+            pons: "CN V, VI, VII, VIII; pneumotaxic/apneustic centers (breathing)"
+            medulla: "CN IX, X, XI, XII; cardiac/respiratory/vasomotor centers; pyramidal decussation"
+        diencephalon:
+          thalamus:
+            function: "relay station; all sensory except olfaction passes through thalamus to cortex"
+          hypothalamus:
+            function: "homeostasis; controls autonomic NS; regulates anterior pituitary via releasing hormones; controls circadian rhythm, hunger, thirst, body temperature, sexual behavior"
+            notes: "ADH and oxytocin are MADE here, stored/released by posterior pituitary"
+
+    cranial_nerves:
+      wikipedia: https://en.wikipedia.org/wiki/Cranial_nerves
+      mnemonic_names: "On Old Olympus Towering Top A Finn And German Viewed Some Hops"
+      mnemonic_type: "Some Say Marry Money But My Brother Says Big Brains Matter More"
+      count: 12
+      nerves:
+        I_Olfactory:
+          type: sensory
+          function: "smell"
+          origin: "olfactory epithelium → olfactory bulb → piriform cortex"
+          notes: "Only cranial nerve that does NOT synapse in thalamus first"
+        II_Optic:
+          type: sensory
+          function: "vision"
+          notes: "Technically a CNS tract (myelinated by oligodendrocytes, not Schwann cells)"
+        III_Oculomotor:
+          type: motor
+          function: "4 extraocular muscles (superior/inferior/medial rectus, inferior oblique), levator palpebrae superioris, pupillary constriction (parasympathetic), lens accommodation"
+          palsy_signs: "eye 'down and out', ptosis, dilated pupil"
+        IV_Trochlear:
+          type: motor
+          function: "superior oblique muscle (depresses adducted eye; intorts)"
+          notes: "Only cranial nerve to exit posteriorly from brainstem; smallest cranial nerve"
+        V_Trigeminal:
+          type: both
+          branches: [V1_ophthalmic, V2_maxillary, V3_mandibular]
+          function: "sensory: face/scalp/cornea; motor V3: mastication, tensor tympani, tensor veli palatini"
+        VI_Abducens:
+          type: motor
+          function: "lateral rectus muscle (abducts eye)"
+          notes: "Longest intracranial course; vulnerable to raised ICP"
+        VII_Facial:
+          type: both
+          function: "motor: all facial expression muscles; sensory: taste anterior 2/3 tongue, ear canal; parasympathetic: lacrimal/submandibular/sublingual glands"
+          palsy: "Bell's palsy = LMN VII palsy (entire face ipsilateral)"
+        VIII_Vestibulocochlear:
+          type: sensory
+          branches: [cochlear, vestibular]
+          function: "cochlear: hearing; vestibular: balance/head position"
+        IX_Glossopharyngeal:
+          type: both
+          function: "sensory: posterior 1/3 tongue taste, pharynx, carotid body/sinus; motor: stylopharyngeus; parasympathetic: parotid gland"
+        X_Vagus:
+          type: both
+          function: "parasympathetic to thorax and abdomen to splenic flexure; motor: pharynx/larynx/palate; sensory: viscera, taste epiglottis"
+          notes: "Longest cranial nerve; 'wandering nerve'"
+        XI_Accessory:
+          type: motor
+          function: "sternocleidomastoid and trapezius muscles"
+        XII_Hypoglossal:
+          type: motor
+          function: "all intrinsic and most extrinsic tongue muscles"
+          notes: "Tongue deviates TOWARD side of lesion"
+
+    spinal_cord:
+      wikipedia: https://en.wikipedia.org/wiki/Spinal_cord
+      length_cm: "~45"
+      ends_at: "L1-L2 (conus medullaris)"
+      below_L2: "cauda equina (horse's tail) — nerve roots only, no cord"
+      spinal_nerves:
+        total_pairs: 31
+        cervical: 8
+        thoracic: 12
+        lumbar: 5
+        sacral: 5
+        coccygeal: 1
+      gray_matter:
+        dorsal_horn: "sensory input"
+        ventral_horn: "motor output (alpha and gamma motor neurons)"
+        lateral_horn: "sympathetic preganglionic neurons (T1-L2 only)"
+      white_matter:
+        ascending_tracts:
+          dorsal_columns: "fine touch, vibration, proprioception; decussate in medulla"
+          spinothalamic: "pain, temperature, crude touch; decussate at spinal level"
+        descending_tracts:
+          corticospinal: "voluntary motor; lateral tract decussates in medulla"
+      dermatomes:
+        key_levels:
+          C2: "posterior scalp"
+          C3: "anterior neck"
+          C4: "cape of shoulders"
+          C5: "lateral shoulder/upper arm"
+          C6: "thumb and index finger"
+          C7: "middle finger"
+          C8: "little finger"
+          T4: "nipple line"
+          T10: "umbilicus"
+          L1: "inguinal ligament"
+          L4: "medial leg and big toe"
+          S1: "lateral foot and little toe"
+          S3_S4_S5: "perianal region ('saddle area')"
+
+    autonomic_nervous_system:
+      wikipedia: https://en.wikipedia.org/wiki/Autonomic_nervous_system
+      sympathetic:
+        origin: "T1-L2 (thoracolumbar)"
+        preganglionic_neurotransmitter: acetylcholine
+        postganglionic_neurotransmitter: norepinephrine
+        exceptions: "sweat glands use ACh; adrenal medulla is modified ganglion releasing epinephrine"
+        effects: "fight or flight: increased HR, BP, glucose; decreased GI motility; dilated pupils; bronchodilation"
+      parasympathetic:
+        origin: "craniosacral (CN III, VII, IX, X; S2-S4)"
+        preganglionic_neurotransmitter: acetylcholine
+        postganglionic_neurotransmitter: acetylcholine
+        effects: "rest and digest: decreased HR; increased GI motility/secretion; pupil constriction; bronchoconstriction"
+
+    plexuses:
+      brachial_plexus:
+        wikipedia: https://en.wikipedia.org/wiki/Brachial_plexus
+        origin: "C5-T1 ventral rami"
+        organization: "roots → trunks → divisions → cords → branches"
+        trunks: [upper_C5_C6, middle_C7, lower_C8_T1]
+        cords: [lateral, posterior, medial]
+        terminal_branches:
+          musculocutaneous: "C5-C7; biceps, brachialis, coracobrachialis; lateral forearm sensation"
+          median: "C5-T1; 'LOAF' muscles + anterior forearm flexors; palmar lateral 3.5 fingers"
+          ulnar: "C8-T1; hypothenar, medial 2 lumbricals, all interossei, adductor pollicis; medial 1.5 fingers"
+          radial: "C5-T1; all posterior compartment arm/forearm; posterior cutaneous"
+          axillary: "C5-C6; deltoid, teres minor; lateral shoulder sensation"
+        injuries:
+          Erb_Duchenne: "C5-C6 injury; 'waiter's tip' position; shoulder and elbow dysfunction"
+          Klumpke: "C8-T1 injury; intrinsic hand weakness; +Horner syndrome if T1"
+      lumbar_plexus:
+        origin: "L1-L4"
+        key_branches: [femoral_nerve, obturator_nerve, genitofemoral, lateral_femoral_cutaneous]
+      sacral_plexus:
+        origin: "L4-S3"
+        key_branches: [sciatic_nerve, pudendal, superior/inferior_gluteal]
+        sciatic_nerve:
+          notes: "Largest nerve in body (~2cm wide at origin); divides at popliteal fossa into tibial and common fibular"
+
+    meninges:
+      wikipedia: https://en.wikipedia.org/wiki/Meninges
+      layers_outside_in: [dura_mater, arachnoid_mater, pia_mater]
+      spaces:
+        epidural: "between skull/vertebrae and dura; contains fat and venous plexus"
+        subdural: "potential space between dura and arachnoid; bridging veins traverse it"
+        subarachnoid: "between arachnoid and pia; contains CSF; site of spinal anesthesia (L3-L4)"
+      CSF:
+        production_site: "choroid plexus (ventricles)"
+        volume_mL: "~150"
+        circulation: "lateral ventricles → 3rd ventricle → cerebral aqueduct → 4th ventricle → subarachnoid space → absorbed by arachnoid granulations into dural sinuses"
+
+  # ===========================================================================
+  # SECTION 5: DIGESTIVE SYSTEM (target: 60 facts)
+  # ===========================================================================
+  digestive_system:
+    wikipedia: https://en.wikipedia.org/wiki/Human_digestive_system
+    target_facts: 60
+
+    GI_tract_overview:
+      order: [mouth, pharynx, esophagus, stomach, small_intestine, large_intestine, rectum, anus]
+      total_length_m: "~9"
+
+    organs:
+      mouth:
+        teeth: "32 permanent (8 incisors, 4 canines, 8 premolars, 12 molars including 4 wisdom teeth)"
+        salivary_glands:
+          parotid: "largest; CN IX parasympathetic; produces serous saliva; Stensen's duct"
+          submandibular: "second largest; mixed serous and mucous; Wharton's duct"
+          sublingual: "smallest; mucous; multiple Rivinus' ducts"
+        enzyme: "salivary amylase (ptyalin) — begins starch digestion"
+      esophagus:
+        length_cm: ~25
+        wikipedia: https://en.wikipedia.org/wiki/Esophagus
+        sphincters: [upper_esophageal_sphincter, lower_esophageal_sphincter]
+        notes: "LES = physiologic (not anatomical); dysfunction → GERD"
+      stomach:
+        wikipedia: https://en.wikipedia.org/wiki/Stomach
+        regions: [cardia, fundus, body, pylorus]
+        capacity_L: "~1 (empty) to ~4 (full)"
+        cells:
+          parietal_cells: "secrete HCl (pH 1.5-3.5) and intrinsic factor"
+          chief_cells: "secrete pepsinogen → pepsin (by HCl); gastric lipase"
+          G_cells: "secrete gastrin → stimulates HCl"
+          mucous_cells: "protect gastric lining"
+        sphincters: [lower_esophageal_sphincter, pyloric_sphincter]
+        notes: "Intrinsic factor (parietal cells) essential for vitamin B12 absorption in ileum"
+      small_intestine:
+        wikipedia: https://en.wikipedia.org/wiki/Small_intestine
+        total_length_m: ~6  # 5.5-7m
+        sections:
+          duodenum:
+            length_cm: ~25
+            notes: "C-shaped; receives bile from common bile duct and pancreatic secretions at ampulla of Vater (hepatopancreatic ampulla); sphincter of Oddi"
+          jejunum:
+            length_m: ~2.5
+            notes: "Most absorption; prominent plicae circulares (circular folds)"
+          ileum:
+            length_m: ~3
+            notes: "Absorbs vitamin B12-IF complex, bile salts; Peyer's patches (lymphoid tissue)"
+        absorptive_structures: [plicae_circulares, villi, microvilli_brush_border]
+        absorption_increase_factor: ~600  # surface area compared to smooth tube
+      large_intestine:
+        wikipedia: https://en.wikipedia.org/wiki/Large_intestine
+        total_length_m: ~1.5
+        sections: [cecum, ascending_colon, transverse_colon, descending_colon, sigmoid_colon, rectum, anal_canal]
+        appendix: "blind pouch from cecum; immunological function (lymphoid tissue); site of appendicitis"
+        function: "water and electrolyte absorption; vitamin K and B production by gut bacteria; feces formation"
+        sphincters:
+          internal_anal: "smooth muscle, involuntary"
+          external_anal: "skeletal muscle, voluntary"
+
+    accessory_organs:
+      liver:
+        wikipedia: https://en.wikipedia.org/wiki/Liver
+        weight_kg: ~1.5
+        location: "right upper quadrant; largest internal organ"
+        lobes: [right, left, caudate, quadrate]
+        functions:
+          - "bile production (~600-1000mL/day)"
+          - "glucose metabolism (glycogen storage)"
+          - "protein synthesis (albumin, clotting factors)"
+          - "detoxification of drugs and toxins"
+          - "lipid metabolism"
+          - "urea synthesis (nitrogen waste)"
+          - "vitamin storage (A, D, B12, iron)"
+        blood_supply: "portal vein (75%) + hepatic artery (25%)"
+      gallbladder:
+        wikipedia: https://en.wikipedia.org/wiki/Gallbladder
+        capacity_mL: ~50
+        function: "stores and concentrates bile (10x concentration)"
+        duct: "cystic duct → common bile duct"
+      pancreas:
+        wikipedia: https://en.wikipedia.org/wiki/Pancreas
+        length_cm: "~15"
+        exocrine_function: "produces pancreatic juice (~1.2-1.5L/day); enzymes: trypsinogen, chymotrypsinogen, pancreatic lipase, amylase, nucleases"
+        endocrine_function: "islets of Langerhans: insulin, glucagon, somatostatin"
+        duct: "pancreatic duct → joins common bile duct → ampulla of Vater"
+
+    enzymes:
+      wikipedia: https://en.wikipedia.org/wiki/Digestive_enzyme
+      by_location:
+        mouth: "salivary amylase (starch → maltose)"
+        stomach: "pepsin (proteins → peptides); gastric lipase (fats)"
+        small_intestine_pancreatic: "trypsin, chymotrypsin (proteins); pancreatic lipase (fats); pancreatic amylase (starch); elastase, carboxypeptidase"
+        small_intestine_brush_border: "maltase, sucrase, lactase (disaccharides → monosaccharides); dipeptidases, aminopeptidases"
+      activation: "trypsinogen activated by enterokinase (enteropeptidase) → trypsin → activates other zymogens"
+
+    GI_wall_layers:
+      wikipedia: https://en.wikipedia.org/wiki/Gastrointestinal_wall
+      outside_in: [serosa_adventitia, muscularis_externa, submucosa, mucosa]
+      muscularis_externa: "outer longitudinal + inner circular smooth muscle; peristalsis"
+      submucosa: "Meissner's submucosal plexus (secretion and motility)"
+      muscularis_externa_nerve: "Auerbach's myenteric plexus (motility)"
+      mucosa_layers: [muscularis_mucosae, lamina_propria, epithelium]
+
+    peritoneum:
+      greater_omentum: "fatty apron hanging from greater curvature of stomach; 'policeman of abdomen'"
+      lesser_omentum: "connects lesser curvature of stomach to liver"
+      mesentery: "peritoneal fold attaching small intestine to posterior abdominal wall"
+      retroperitoneal_organs: "kidneys, adrenal glands, aorta, IVC, duodenum (D2-D4), pancreas (body/tail), ascending/descending colon"
+
+  # ===========================================================================
+  # SECTION 6: RESPIRATORY SYSTEM (target: 50 facts)
+  # ===========================================================================
+  respiratory_system:
+    wikipedia: https://en.wikipedia.org/wiki/Respiratory_system
+    target_facts: 50
+
+    airways:
+      conducting_zone_order: [nasal_cavity, pharynx, larynx, trachea, main_bronchi, lobar_bronchi, segmental_bronchi, bronchioles, terminal_bronchioles]
+      respiratory_zone_order: [respiratory_bronchioles, alveolar_ducts, alveolar_sacs, alveoli]
+      nasal_cavity:
+        functions: "filter (hairs and mucus), warm, and humidify air; olfaction"
+        turbinates: "3 pairs (superior, middle, inferior conchae); increase surface area"
+      pharynx:
+        regions: [nasopharynx, oropharynx, laryngopharynx]
+      larynx:
+        cartilages: [thyroid, cricoid, epiglottis, arytenoid_x2, corniculate_x2, cuneiform_x2]
+        thyroid_cartilage: "largest; 'Adam's apple'; projects anteriorly"
+        cricoid_cartilage: "only complete ring; at C6 level"
+        epiglottis: "covers laryngeal inlet during swallowing"
+        vocal_cords: "true vocal cords = vocal folds; vibrate to produce sound; controlled by CN X (recurrent laryngeal nerve)"
+      trachea:
+        length_cm: ~12
+        diameter_cm: ~2
+        cartilage_rings: "16-20 C-shaped hyaline cartilage rings"
+        carina_level: "T4/T5 (sternal angle); bifurcation into L and R main bronchi"
+        notes: "Right main bronchus wider, shorter, more vertical → foreign bodies more likely to lodge here"
+      bronchi:
+        right_main: "shorter, wider, more vertical (~25°)"
+        left_main: "longer, narrower, more horizontal (~45°)"
+        lobar_bronchi: "right=3 (UL, ML, LL); left=2 (UL, LL)"
+        bronchiole_diameter_mm: "<1 (no cartilage in walls)"
+      alveoli:
+        count: ~480_million
+        surface_area_m2: ~70
+        cells:
+          type_I: "squamous pneumocytes; 95% of alveolar surface; gas exchange"
+          type_II: "cuboidal; secrete surfactant (DPPC); precursor cells to type I"
+          macrophages: "dust cells; phagocytose pathogens and debris"
+        surfactant:
+          composition: "dipalmitoylphosphatidylcholine (DPPC)"
+          function: "reduces surface tension; prevents alveolar collapse (atelectasis)"
+          deficiency: "respiratory distress syndrome in premature infants"
+
+    lungs:
+      wikipedia: https://en.wikipedia.org/wiki/Lung
+      right_lung:
+        lobes: 3
+        lobe_names: [superior, middle, inferior]
+        fissures: [horizontal, oblique]
+        bronchopulmonary_segments: 10
+      left_lung:
+        lobes: 2
+        lobe_names: [superior, inferior]
+        fissures: [oblique_only]
+        bronchopulmonary_segments: 8  # or 9-10 depending on classification
+        lingula: "tongue-like projection of superior lobe; equivalent of right middle lobe"
+      pleura:
+        visceral_pleura: "covers lung surface; insensate"
+        parietal_pleura: "lines thoracic cavity; innervated (pain sensitive)"
+        pleural_cavity: "potential space containing ~10mL serous fluid for lubrication"
+        intrapleural_pressure: "slightly negative (~-5 cmH2O at rest); keeps lungs expanded"
+
+    gas_exchange:
+      wikipedia: https://en.wikipedia.org/wiki/Pulmonary_gas_exchange
+      alveolar_air:
+        O2_partial_pressure_mmHg: ~100
+        CO2_partial_pressure_mmHg: ~40
+      venous_blood_arriving:
+        O2_partial_pressure_mmHg: ~40
+        CO2_partial_pressure_mmHg: ~45
+      mechanism: "simple diffusion across alveolar-capillary membrane (0.2-0.5 μm thick)"
+      O2_transport: "98.5% bound to hemoglobin; 1.5% dissolved in plasma"
+      CO2_transport: "70% as bicarbonate (HCO3-); 23% bound to hemoglobin; 7% dissolved"
+
+    lung_volumes:
+      wikipedia: https://en.wikipedia.org/wiki/Lung_volumes
+      tidal_volume_mL: ~500      # normal breath
+      inspiratory_reserve_volume_mL: ~3000
+      expiratory_reserve_volume_mL: ~1200
+      residual_volume_mL: ~1200  # cannot be expelled; keeps alveoli open
+      vital_capacity_L:
+        male: ~4.8
+        female: ~3.1
+      total_lung_capacity_L: ~6
+      functional_residual_capacity_mL: ~2400  # ERV + RV
+      notes:
+        - "Residual volume CANNOT be measured by spirometry; requires body plethysmography or gas dilution"
+        - "Forced expiratory volume in 1 second (FEV1): ~80% of FVC in healthy adults"
+
+    respiratory_muscles:
+      inspiration:
+        primary: "diaphragm (descends ~1.5cm quiet breathing, up to 10cm deep breathing)"
+        accessory: [external_intercostals, scalenes, sternocleidomastoid]
+      expiration:
+        quiet: "passive (elastic recoil)"
+        forced: [internal_intercostals, rectus_abdominis, external_oblique, internal_oblique, transversus_abdominis]
+
+  # ===========================================================================
+  # SECTION 7: URINARY SYSTEM (target: 40 facts)
+  # ===========================================================================
+  urinary_system:
+    wikipedia: https://en.wikipedia.org/wiki/Urinary_system
+    target_facts: 40
+
+    kidneys:
+      wikipedia: https://en.wikipedia.org/wiki/Kidney
+      count: 2
+      dimensions_cm: "~11 × 6 × 3"
+      weight_g_each: "~150"
+      position: "retroperitoneal; T12-L3; right kidney slightly lower (liver above)"
+      cortex: "outer region; contains glomeruli and PCT/DCT"
+      medulla: "inner; contains loops of Henle and collecting ducts; pyramids (8-12)"
+      renal_columns: "cortical tissue between pyramids"
+      hilum: "medial depression; entry/exit for ureter, renal artery, renal vein, lymphatics, nerves"
+      blood_supply: "receive ~25% of cardiac output at rest (1.25 L/min)"
+      nephron_count_per_kidney: ~1_million
+
+    nephron:
+      wikipedia: https://en.wikipedia.org/wiki/Nephron
+      components_in_order: [glomerulus, Bowmans_capsule, PCT, loop_of_Henle_descending, loop_of_Henle_ascending, DCT, collecting_duct]
+      types:
+        cortical: "~85%; short loops of Henle; primarily in cortex"
+        juxtamedullary: "~15%; long loops of Henle; extend deep into medulla; concentrate urine"
+      filtration_barrier:
+        layers: [fenestrated_capillary_endothelium, basement_membrane, podocyte_filtration_slits]
+        notes: "Podocytes = octopus-like cells with foot processes; damage → proteinuria"
+
+    filtration_and_production:
+      GFR:
+        value_mL_min: ~125
+        daily_filtered_L: ~180  # 125 mL/min × 1440 min/day
+        daily_urine_produced_L: ~1.5
+        reabsorption_percent: ~99
+      PCT:
+        reabsorbs: "67% of filtered Na+, Cl-, H2O; all glucose (if normal); all amino acids; HCO3-"
+      loop_of_Henle:
+        descending_limb: "permeable to water; impermeable to solutes → water leaves"
+        ascending_limb: "impermeable to water; actively pumps Na+, K+, Cl- out"
+        function: "countercurrent multiplier; creates medullary concentration gradient"
+      DCT:
+        reabsorbs: "Na+ and Cl- (thiazide-sensitive); Ca2+ (PTH regulated)"
+      collecting_duct:
+        ADH_effect: "increases water permeability (aquaporins) → concentrated urine"
+        aldosterone_effect: "increases Na+ reabsorption and K+ secretion"
+
+    RAAS:
+      wikipedia: https://en.wikipedia.org/wiki/Renin-angiotensin_system
+      trigger: "low BP, low Na+, sympathetic activation → juxtaglomerular cells release renin"
+      pathway:
+        renin: "converts angiotensinogen (liver) → angiotensin I"
+        ACE: "angiotensin-converting enzyme (lungs, endothelium) converts → angiotensin II"
+        angiotensin_II_effects:
+          - "vasoconstriction → raises BP"
+          - "stimulates aldosterone (adrenal cortex) → Na+ retention"
+          - "stimulates ADH release"
+          - "stimulates thirst"
+          - "constricts efferent arterioles → maintains GFR"
+
+    ADH_vasopressin:
+      made_in: "hypothalamus (supraoptic nucleus)"
+      stored_and_released_from: "posterior pituitary"
+      triggers: "increased plasma osmolality (>285 mOsm/kg); hypovolemia"
+      action: "inserts aquaporin-2 channels in collecting duct → water reabsorption"
+      deficiency: "diabetes insipidus (dilute urine, polyuria)"
+
+    lower_urinary_tract:
+      ureters:
+        length_cm: ~25
+        notes: "3 points of physiologic narrowing: UPJ, crossing iliac vessels, UVJ; stones lodge here"
+      bladder:
+        capacity_mL: ~500
+        wall: "detrusor muscle (smooth)"
+        trigone: "triangular area between 2 ureteral orifices and internal urethral orifice"
+        innervation: "parasympathetic S2-S4 (micturition); sympathetic L1-L2 (storage/continence)"
+      urethra:
+        male_length_cm: ~20
+        female_length_cm: ~4
+        parts_male: [prostatic, membranous, spongy_penile]
+        notes: "Shorter female urethra → higher UTI incidence in females"
+
+  # ===========================================================================
+  # SECTION 8: REPRODUCTIVE SYSTEM (target: 50 facts)
+  # ===========================================================================
+  reproductive_system:
+    wikipedia: https://en.wikipedia.org/wiki/Human_reproductive_system
+    target_facts: 50
+
+    male:
+      wikipedia: https://en.wikipedia.org/wiki/Male_reproductive_system_(human)
+      testes:
+        location: "scrotum (~2-3°C below body temp; required for spermatogenesis)"
+        functions: "spermatogenesis (seminiferous tubules); testosterone production (Leydig cells)"
+        notes: "Sertoli cells: support spermatogenesis, form blood-testis barrier, produce inhibin"
+      sperm_pathway: [seminiferous_tubules, rete_testis, efferent_ductules, epididymis, vas_deferens, ejaculatory_duct, urethra]
+      epididymis:
+        length_coiled_m: ~6
+        function: "sperm maturation and storage; transit ~2-12 days"
+      vas_deferens:
+        length_cm: ~45
+        notes: "Vasectomy cuts/blocks here; spermatic cord contains vas deferens + testicular artery + pampiniform plexus"
+      seminal_vesicles:
+        contribution_to_semen_percent: ~60
+        secretion: "fructose (energy for sperm), prostaglandins, fibrinogen"
+      prostate:
+        size: "~3cm; walnut-sized"
+        contribution_to_semen_percent: ~30
+        secretion: "PSA (liquefies semen), zinc, citric acid, slightly acidic"
+        zones: [transition, central, peripheral]
+        notes: "BPH in transition zone; prostate cancer in peripheral zone"
+      bulbourethral_glands:
+        also_called: Cowper's glands
+        contribution_to_semen_percent: ~5
+        secretion: "alkaline mucus; neutralizes urethral acid before ejaculation"
+      penis:
+        erectile_tissue: [corpora_cavernosa_x2, corpus_spongiosum_x1]
+        notes: "Corpus spongiosum surrounds urethra; glans penis; frenulum"
+      spermatogenesis:
+        duration_days: ~74
+        cell_progression: [spermatogonium, primary_spermatocyte, secondary_spermatocyte, spermatid, spermatozoon]
+        meiosis_note: "primary → secondary: meiosis I (2n→1n); secondary → spermatid: meiosis II"
+        daily_sperm_production: "~100 million"
+
+    female:
+      wikipedia: https://en.wikipedia.org/wiki/Female_reproductive_system_(human)
+      ovaries:
+        dimensions_cm: "~3 × 1.5 × 1"
+        functions: "oogenesis; estrogen and progesterone production"
+        follicle_stages: [primordial, primary, secondary, tertiary_Graafian, corpus_luteum, corpus_albicans]
+      fallopian_tubes:
+        wikipedia: https://en.wikipedia.org/wiki/Fallopian_tube
+        regions_lateral_to_medial: [fimbriae, infundibulum, ampulla, isthmus]
+        ampulla: "site of normal fertilization"
+        notes: "Cilia sweep ovum toward uterus; ectopic pregnancy most common in ampulla"
+      uterus:
+        wikipedia: https://en.wikipedia.org/wiki/Uterus
+        dimensions_cm: "~7.5 × 5 × 2.5 (non-pregnant)"
+        layers:
+          endometrium: "inner; sheds during menstruation; implantation site"
+          myometrium: "thick smooth muscle; hypertrophies in pregnancy"
+          perimetrium: "outer serous coat (visceral peritoneum)"
+        regions: [fundus, body, isthmus, cervix]
+        normal_position: "anteverted and anteflexed"
+      cervix:
+        os: "internal os (opens to uterine body); external os (opens to vagina)"
+        transformation_zone: "squamocolumnar junction; site of Pap smear; cervical cancer origin"
+      vagina:
+        length_cm: ~9
+        pH: "3.8-4.5 (acidic; Lactobacillus)"
+        notes: "Fornices surround cervix; posterior fornix deepest"
+
+    oogenesis:
+      wikipedia: https://en.wikipedia.org/wiki/Oogenesis
+      arrested_at_birth: "primary oocytes arrested in prophase I (~1-2 million at birth, ~400,000 at puberty)"
+      ovulation: "oocyte arrested in metaphase II; completes meiosis II only if fertilized"
+      oogonia_to_oocyte: "oogonium → primary oocyte (before birth) → secondary oocyte (at ovulation) → ovum (if fertilized)"
+      number_of_oocytes:
+        at_birth: "1-2 million"
+        at_puberty: "~400,000"
+        ovulated_lifetime: "~400-500"
+
+    menstrual_cycle:
+      wikipedia: https://en.wikipedia.org/wiki/Menstrual_cycle
+      average_length_days: 28
+      phases:
+        menstrual: "days 1-5; endometrium sheds; estrogen and progesterone low"
+        follicular: "days 1-13; FSH stimulates follicle development; estrogen rises"
+        ovulation: "day 14; LH surge triggers ovulation"
+        luteal: "days 15-28; corpus luteum produces progesterone; if no fertilization, CL degenerates → P drops → menstruation"
+      key_hormones:
+        FSH: "follicle-stimulating hormone; stimulates follicle growth"
+        LH: "luteinizing hormone; LH surge triggers ovulation"
+        estrogen: "produced by developing follicle; proliferates endometrium; positive feedback → LH surge"
+        progesterone: "produced by corpus luteum; maintains/secretory endometrium; negative feedback"
+
+    reproductive_hormones:
+      testosterone:
+        produced_by: "Leydig cells of testes (males); adrenal cortex and ovaries (females)"
+        functions: "spermatogenesis, secondary sex characteristics, libido, anabolism"
+      hCG:
+        full_name: "human chorionic gonadotropin"
+        produced_by: "trophoblast of developing embryo"
+        function: "maintains corpus luteum → maintains progesterone → maintains pregnancy"
+        notes: "Detected by pregnancy tests; peaks at ~10 weeks"
+
+  # ===========================================================================
+  # SECTION 9: ENDOCRINE SYSTEM (target: 50 facts)
+  # ===========================================================================
+  endocrine_system:
+    wikipedia: https://en.wikipedia.org/wiki/Endocrine_system
+    target_facts: 50
+
+    hypothalamus:
+      wikipedia: https://en.wikipedia.org/wiki/Hypothalamus
+      releasing_hormones:
+        TRH: "thyrotropin-releasing hormone → TSH from anterior pituitary"
+        CRH: "corticotropin-releasing hormone → ACTH"
+        GnRH: "gonadotropin-releasing hormone → FSH, LH"
+        GHRH: "growth hormone-releasing hormone → GH"
+        somatostatin: "growth hormone-inhibiting hormone (also inhibits TSH)"
+        dopamine: "inhibits prolactin from anterior pituitary"
+      made_here_stored_in_posterior_pituitary: [ADH_vasopressin, oxytocin]
+
+    pituitary_gland:
+      wikipedia: https://en.wikipedia.org/wiki/Pituitary_gland
+      also_called: "hypophysis"
+      location: "sella turcica of sphenoid bone"
+      anterior_pituitary:
+        also_called: "adenohypophysis"
+        hormones:
+          GH:
+            full_name: "growth hormone (somatotropin)"
+            actions: "stimulates IGF-1 from liver; anabolism; anti-insulin effects"
+          TSH:
+            full_name: "thyroid-stimulating hormone (thyrotropin)"
+            target: "thyroid gland → T3/T4"
+          ACTH:
+            full_name: "adrenocorticotropic hormone (corticotropin)"
+            target: "adrenal cortex → cortisol"
+          FSH:
+            full_name: "follicle-stimulating hormone"
+            targets: "follicle development (F) / Sertoli cells → spermatogenesis (M)"
+          LH:
+            full_name: "luteinizing hormone"
+            targets: "ovulation and corpus luteum (F) / Leydig cells → testosterone (M)"
+          prolactin:
+            actions: "milk production; inhibited by dopamine"
+        mnemonic_FLAT_PiG: "FSH, LH, ACTH, TSH, Prolactin, (MSH), GH"
+      posterior_pituitary:
+        also_called: "neurohypophysis"
+        hormones_released_here_made_in_hypothalamus:
+          ADH_vasopressin: "water reabsorption (collecting duct); vasoconstriction"
+          oxytocin: "uterine contractions during labor; milk ejection (let-down reflex); social bonding"
+
+    thyroid:
+      wikipedia: https://en.wikipedia.org/wiki/Thyroid
+      location: "anterior neck; C5-T1; butterfly-shaped; ~25-30g"
+      hormones:
+        T3:
+          full_name: "triiodothyronine"
+          notes: "More potent; T4 is converted to T3 in peripheral tissues"
+        T4:
+          full_name: "thyroxine"
+          notes: "Prohormone; ~80% of thyroid output; converted to T3 peripherally"
+        actions_T3_T4: "increase basal metabolic rate, protein synthesis, glucose/fat metabolism; required for normal CNS development in fetus"
+        calcitonin:
+          produced_by: "parafollicular C cells (NOT follicular cells)"
+          action: "lowers blood calcium (opposes PTH); inhibits osteoclasts"
+      iodine: "required for T3/T4 synthesis; deficiency → goiter"
+
+    parathyroid:
+      wikipedia: https://en.wikipedia.org/wiki/Parathyroid_gland
+      count: 4
+      location: "posterior thyroid gland (2 superior, 2 inferior)"
+      PTH:
+        full_name: "parathyroid hormone (parathormone)"
+        actions:
+          bone: "stimulates osteoclasts → Ca2+ release (bone resorption)"
+          kidney: "increases Ca2+ reabsorption; decreases phosphate reabsorption; activates vitamin D (1,25-(OH)2D3)"
+          gut: "indirectly (via vitamin D) increases Ca2+ absorption"
+        net_effect: "raises blood Ca2+"
+        notes: "Calcium level has INVERSE relationship with phosphate (PTH adjusts both)"
+
+    adrenal_glands:
+      wikipedia: https://en.wikipedia.org/wiki/Adrenal_gland
+      count: 2
+      location: "retroperitoneal; superior to each kidney"
+      cortex:
+        mnemonic: "GFR — Glomerulosa, Fasciculata, Reticularis"
+        zona_glomerulosa:
+          hormone: "aldosterone (mineralocorticoid)"
+          action: "Na+ retention, K+ excretion in kidney collecting duct"
+          regulation: "angiotensin II, high K+"
+        zona_fasciculata:
+          hormone: "cortisol (glucocorticoid)"
+          actions: "raises blood glucose (gluconeogenesis, protein catabolism, lipolysis); anti-inflammatory; immunosuppressive; stress response"
+          regulation: "ACTH from anterior pituitary"
+        zona_reticularis:
+          hormone: "androgens (DHEA, androstenedione)"
+          notes: "Minor sex hormone production; important in females and prepubertal"
+      medulla:
+        origin: "modified sympathetic ganglion (neural crest)"
+        hormones:
+          epinephrine_percent: 80
+          norepinephrine_percent: 20
+        actions: "fight-or-flight: increased HR, BP, blood glucose; bronchodilation; redistribution of blood to muscles"
+        regulation: "sympathetic preganglionic neurons (cholinergic)"
+
+    pancreatic_islets:
+      wikipedia: https://en.wikipedia.org/wiki/Islets_of_Langerhans
+      also_called: "islets of Langerhans"
+      percent_of_pancreas: ~2
+      cell_types:
+        alpha_cells:
+          percent: ~20
+          hormone: glucagon
+          triggers: "low blood glucose, amino acids"
+          action: "glycogenolysis, gluconeogenesis → raises blood glucose"
+        beta_cells:
+          percent: ~70
+          hormone: insulin
+          triggers: "high blood glucose, amino acids, GLP-1"
+          action: "increases glucose uptake (GLUT4 in muscle/fat), glycogen synthesis, protein synthesis, lipogenesis → lowers blood glucose"
+        delta_cells:
+          percent: ~5-10
+          hormone: somatostatin
+          action: "inhibits both insulin and glucagon"
+      diabetes_notes:
+        type_1: "autoimmune destruction of beta cells; absolute insulin deficiency"
+        type_2: "insulin resistance → relative deficiency"
+
+    other_endocrine_glands:
+      pineal_gland:
+        wikipedia: https://en.wikipedia.org/wiki/Pineal_gland
+        hormone: melatonin
+        triggers: "darkness stimulates; light inhibits (via retinohypothalamic tract)"
+        function: "regulates circadian rhythm; sleep-wake cycle"
+        notes: "Calcifies with age (pineal calcification visible on X-ray)"
+      thymus:
+        wikipedia: https://en.wikipedia.org/wiki/Thymus
+        hormone: "thymosin (thymosins alpha and beta)"
+        function: "T cell maturation; thymopoiesis"
+        involution: "shrinks after puberty; largely replaced by fat in adults"
+      heart:
+        hormone: "ANP (atrial natriuretic peptide); BNP (brain natriuretic peptide)"
+        trigger: "increased atrial stretch (volume overload)"
+        action: "natriuresis and diuresis; vasodilation; reduces BP"
+      kidneys:
+        hormones: [erythropoietin, renin, calcitriol_activation]
+        erythropoietin: "stimulates RBC production in bone marrow; released by hypoxia"
+
+  # ===========================================================================
+  # SECTION 10: LYMPHATIC & IMMUNE SYSTEM (target: 40 facts)
+  # ===========================================================================
+  lymphatic_immune:
+    wikipedia: https://en.wikipedia.org/wiki/Lymphatic_system
+    target_facts: 40
+
+    lymphatic_system:
+      function: "returns interstitial fluid to blood; immune surveillance; fat absorption (chylomicrons)"
+      lymphatic_organs:
+        primary:
+          thymus: "T cell maturation; bilobed; anterior mediastinum"
+          bone_marrow: "B cell and T cell origin (all leukocytes); red marrow in flat and irregular bones and ends of long bones"
+        secondary:
+          lymph_nodes: "bean-shaped; filter lymph; germinal centers for B cell activation; ~600 in body"
+          spleen: "largest lymphoid organ (~150g); filters blood; red pulp (RBC destruction) + white pulp (lymphoid tissue); left upper quadrant"
+          tonsils: "palatine (2), pharyngeal (adenoids, 1), lingual (1), tubal (2); Waldeyer's ring"
+          MALT: "mucosa-associated lymphoid tissue; Peyer's patches (ileum), appendix"
+      lymph_drainage:
+        right_lymphatic_duct: "drains right head/neck/arm and right thorax → right subclavian vein"
+        thoracic_duct: "drains everything else (left side + both legs + abdomen) → left subclavian vein; largest lymphatic vessel"
+        cisterna_chyli: "dilated sac at L1-L2; receives lymph from both legs and abdomen"
+
+    innate_immunity:
+      wikipedia: https://en.wikipedia.org/wiki/Innate_immune_system
+      features: "non-specific; immediate (hours); no memory"
+      cells:
+        neutrophils:
+          percent_WBC: "50-70"
+          function: "first responders; phagocytosis; granule release (enzymes, ROS)"
+          lifespan_hours: "6-12 in blood; 1-4 days in tissue"
+        macrophages:
+          origin: "monocytes leave blood and differentiate in tissues"
+          function: "phagocytosis; antigen presentation (APC); cytokine production"
+          tissue_names: "Kupffer cells (liver), microglia (CNS), alveolar macrophages (lung), osteoclasts (bone)"
+        NK_cells:
+          full_name: "natural killer cells"
+          function: "kill virus-infected and tumor cells without prior sensitization; recognize absence of MHC I"
+        dendritic_cells:
+          function: "professional antigen-presenting cells; bridge innate and adaptive immunity"
+        mast_cells:
+          function: "IgE-mediated allergic reactions; contain histamine granules; in connective tissue"
+        basophils:
+          percent_WBC: "<1"
+          function: "IgE receptor; histamine release; similar to mast cells but circulating"
+        eosinophils:
+          percent_WBC: "1-4"
+          function: "anti-parasitic; involved in allergic reactions; contain major basic protein"
+      complement_system:
+        wikipedia: https://en.wikipedia.org/wiki/Complement_system
+        pathways: [classical, alternative, lectin]
+        effects: "opsonization (C3b), MAC (membrane attack complex) lysis, chemotaxis (C5a), anaphylatoxins (C3a, C5a)"
+      inflammation_signs:
+        latin: [rubor, calor, dolor, tumor]
+        english: [redness, heat, pain, swelling]
+        mechanism: "vasodilation and increased vascular permeability (histamine, bradykinin, prostaglandins)"
+
+    adaptive_immunity:
+      wikipedia: https://en.wikipedia.org/wiki/Adaptive_immune_system
+      features: "specific; delayed (days); memory (faster/stronger response on re-exposure)"
+      T_cells:
+        origin_maturation: "bone marrow → thymus (T for thymus)"
+        types:
+          helper_T_CD4:
+            surface_marker: CD4
+            function: "recognize antigen on MHC II (APCs); release cytokines (IL-2, IFN-γ); activate B cells and cytotoxic T cells"
+            HIV_target: "HIV infects CD4+ cells → AIDS"
+          cytotoxic_T_CD8:
+            surface_marker: CD8
+            function: "kill infected/tumor cells displaying antigen on MHC I; release perforin and granzymes"
+          regulatory_T_Treg:
+            function: "suppress immune response; prevent autoimmunity"
+          memory_T:
+            function: "long-lived; rapid response on re-exposure"
+      B_cells:
+        origin_maturation: "bone marrow → remain in bone marrow for maturation"
+        activation: "antigen binding + helper T cell signal → proliferate → plasma cells + memory B cells"
+        plasma_cells: "antibody-secreting factories"
+      antibodies:
+        wikipedia: https://en.wikipedia.org/wiki/Antibody
+        also_called: "immunoglobulins (Ig)"
+        structure: "Y-shaped; 2 heavy + 2 light chains; Fab (antigen binding) + Fc (effector) regions"
+        classes:
+          IgG:
+            percent_total: 75
+            features: "most abundant; crosses placenta (passive immunity to fetus); secondary response"
+          IgA:
+            features: "secretory Ig; dimers in secretions (tears, saliva, breast milk, mucus); mucosal defense"
+          IgM:
+            features: "pentamer; first antibody produced in primary response; ABO blood group antibodies"
+          IgE:
+            features: "lowest concentration; binds mast cells and basophils; allergies; anti-parasitic"
+          IgD:
+            features: "mainly on naive B cell surface; antigen receptor; function unclear"
+      MHC:
+        also_called: "HLA (human leukocyte antigens)"
+        class_I: "on all nucleated cells; presents intracellular antigens to CD8+ T cells"
+        class_II: "on APCs only (macrophages, dendritic cells, B cells); presents extracellular antigens to CD4+ T cells"
+
+  # ===========================================================================
+  # SECTION 11: SPECIAL SENSES (target: 50 facts)
+  # ===========================================================================
+  special_senses:
+    wikipedia: https://en.wikipedia.org/wiki/Special_senses
+    target_facts: 50
+
+    vision:
+      wikipedia: https://en.wikipedia.org/wiki/Eye
+      eye_layers:
+        outer_fibrous: [sclera, cornea]
+        middle_vascular_uvea: [choroid, ciliary_body, iris]
+        inner_nervous: [retina]
+      cornea:
+        function: "65-70% of total refractive power of eye (lens provides ~35%)"
+        notes: "Transparent; avascular (nourished by aqueous humor); richly innervated (CN V1)"
+      iris_and_pupil:
+        dilator_pupillae: "sympathetic; dilates pupil (mydriasis)"
+        sphincter_pupillae: "parasympathetic (CN III); constricts pupil (miosis)"
+      lens:
+        function: "fine-tunes focus; accommodation for near vision"
+        accommodation: "ciliary muscle contracts → zonular fibers relax → lens rounds → increased power"
+        notes: "Crystalline; avascular; nourished by aqueous humor; cataracts = clouding"
+      aqueous_humor:
+        produced_by: "ciliary body"
+        drains_via: "canal of Schlemm (trabecular meshwork)"
+        notes: "Obstructed drainage → glaucoma (raised IOP)"
+      retina:
+        wikipedia: https://en.wikipedia.org/wiki/Retina
+        photoreceptors:
+          rods:
+            count: ~120_million
+            function: "dim light (scotopic) vision; black-and-white; peripheral"
+            photopigment: "rhodopsin (opsin + retinal)"
+            distribution: "absent from fovea; concentrated in periphery"
+          cones:
+            count: ~6_million
+            function: "color (photopic) vision; high acuity"
+            types: [L_red, M_green, S_blue]
+            distribution: "concentrated at fovea; absent at periphery"
+        fovea:
+          centralis: "highest cone density; point of sharpest vision; avascular"
+          notes: "Located in center of macula lutea"
+        optic_disc:
+          also_called: "blind spot"
+          notes: "No photoreceptors; where optic nerve exits"
+      extraocular_muscles:
+        wikipedia: https://en.wikipedia.org/wiki/Extraocular_muscles
+        count: 6
+        list:
+          medial_rectus: "adducts (CN III)"
+          lateral_rectus: "abducts (CN VI)"
+          superior_rectus: "elevates, adducts, intorts (CN III)"
+          inferior_rectus: "depresses, adducts, extorts (CN III)"
+          superior_oblique: "depresses (when adducted), intorts (CN IV)"
+          inferior_oblique: "elevates (when adducted), extorts (CN III)"
+        mnemonic: "LR6SO4 — Lateral Rectus: CN VI; Superior Oblique: CN IV; all others: CN III"
+      visual_pathway:
+        order: [retina, optic_nerve, optic_chiasm, optic_tract, lateral_geniculate_nucleus, optic_radiations, primary_visual_cortex_V1]
+        chiasm: "nasal fibers decussate; temporal fibers stay ipsilateral"
+        lesion_effects:
+          optic_nerve: "monocular blindness ipsilateral"
+          optic_chiasm_midline: "bitemporal hemianopia (tunnel vision)"
+          optic_tract_post_chiasm: "contralateral homonymous hemianopia"
+
+    hearing_and_balance:
+      wikipedia: https://en.wikipedia.org/wiki/Ear
+      outer_ear:
+        pinna: "collects and funnels sound"
+        external_auditory_canal:
+          length_cm: ~2.5
+          cerumen: "wax produced by ceruminous glands; antimicrobial"
+        tympanic_membrane: "eardrum; vibrates with sound; separates outer from middle ear"
+      middle_ear:
+        ossicles: [malleus, incus, stapes]
+        ossicle_function: "transmit and amplify vibrations from TM to oval window (~20x amplification)"
+        malleus_attachment: "attached to TM"
+        stapes_attachment: "attached to oval window of cochlea"
+        eustachian_tube:
+          also_called: "auditory/pharyngotympanic tube"
+          function: "equalize pressure between middle ear and atmosphere"
+          connects_to: "nasopharynx"
+          muscles: "tensor veli palatini (CN V3) and levator veli palatini (CN X) open it when swallowing/yawning"
+        stapedius_muscle: "dampens ossicle vibration for loud sounds (CN VII)"
+        tensor_tympani: "tenses TM; innervated by CN V3"
+      inner_ear:
+        wikipedia: https://en.wikipedia.org/wiki/Inner_ear
+        bony_labyrinth: [cochlea, vestibule, semicircular_canals]
+        cochlea:
+          turns: 2.5
+          length_uncoiled_mm: ~35
+          ducts: [scala_vestibuli, scala_media, scala_tympani]
+          organ_of_Corti:
+            location: "basilar membrane in scala media"
+            hair_cells: ~15000
+            function: "mechanotransduction; IHC (inner hair cells) transmit signal; OHC amplify"
+          tonotopy:
+            base: "high frequency (~20,000 Hz)"
+            apex: "low frequency (~20 Hz)"
+            notes: "High-frequency hearing loss first in noise-induced hearing loss (base most vulnerable)"
+        vestibule:
+          utricle: "detects linear acceleration and static head position (gravity); maculae; otoliths"
+          saccule: "detects vertical linear acceleration; maculae; otoliths"
+        semicircular_canals:
+          count: 3
+          orientation: "anterior, posterior, lateral (horizontal)"
+          function: "detect angular/rotational acceleration; cristae ampullaris; cupula"
+          notes: "Each canal detects rotation in its plane; pairs work in opposition"
+        endolymph:
+          composition: "high K+, low Na+ (like ICF)"
+          location: "scala media, utricle, saccule, semicircular canals"
+        perilymph:
+          composition: "high Na+, low K+ (like ECF)"
+          location: "scala vestibuli, scala tympani"
+      auditory_pathway:
+        order: [CN_VIII_cochlear, cochlear_nuclei, superior_olivary_complex, inferior_colliculus, medial_geniculate_nucleus, primary_auditory_cortex_A1]
+        lateralization: "bilateral representation at cortex level (both ears processed by both hemispheres)"
+
+    taste:
+      wikipedia: https://en.wikipedia.org/wiki/Taste
+      basic_tastes: [sweet, sour, salty, bitter, umami]
+      taste_buds:
+        count: ~10000
+        location: "papillae of tongue and soft palate"
+        papillae_types:
+          fungiform: "mushroom-shaped; anterior 2/3 tongue; ~200-400; contain taste buds"
+          circumvallate_vallate: "large; V-shaped row at tongue-pharynx border; ~7-12; contain most taste buds"
+          foliate: "on lateral tongue margins; contain taste buds"
+          filiform: "most numerous; no taste buds; tactile sensation"
+      innervation:
+        anterior_2_3_tongue: "CN VII (chorda tympani branch)"
+        posterior_1_3_tongue: "CN IX"
+        epiglottis_and_larynx: "CN X"
+
+    smell:
+      wikipedia: https://en.wikipedia.org/wiki/Olfaction
+      receptor_types: ~400
+      olfactory_neurons_count: ~10_million
+      location: "olfactory epithelium; roof of nasal cavity; ~5cm²"
+      pathway: "olfactory epithelium → CN I olfactory nerve → olfactory bulb → piriform cortex → amygdala/hippocampus"
+      notes:
+        - "Only sensory system that does NOT relay through thalamus before cortex"
+        - "Direct limbic connection explains smell's strong emotional/memory associations"
+        - "Olfactory neurons regenerate throughout life (rare CNS regeneration)"
+
+    touch_mechanoreceptors:
+      wikipedia: https://en.wikipedia.org/wiki/Mechanoreceptor
+      Meissner_corpuscles:
+        location: "dermal papillae; glabrous skin (fingertips, lips)"
+        function: "light touch, texture, low-frequency vibration (~50 Hz)"
+        adapts: "rapidly"
+      Pacinian_corpuscles:
+        location: "deep dermis, subcutaneous tissue"
+        function: "deep pressure, high-frequency vibration (~300 Hz)"
+        adapts: "very rapidly"
+        notes: "Largest mechanoreceptor; onion-like lamellar structure"
+      Merkel_discs:
+        location: "epidermis, especially fingertips"
+        function: "sustained pressure, fine texture, edges"
+        adapts: "slowly"
+      Ruffini_endings:
+        location: "dermis"
+        function: "skin stretch, sustained pressure, proprioception"
+        adapts: "slowly"
+      free_nerve_endings:
+        function: "pain (nociception), temperature, itch"
+        notes: "Most common sensory receptor; unmyelinated or lightly myelinated"
+
+  # ===========================================================================
+  # SECTION 12: INTEGUMENTARY SYSTEM (target: 30 facts)
+  # ===========================================================================
+  integumentary:
+    wikipedia: https://en.wikipedia.org/wiki/Skin
+    target_facts: 30
+
+    overview:
+      largest_organ: true
+      surface_area_m2: "1.5-2"
+      weight_kg: ~3.6  # ~8 lbs; ~16% of body weight
+      functions: [protection, thermoregulation, sensation, vitamin_D_synthesis, immune_barrier, water_prevention]
+
+    layers:
+      epidermis:
+        wikipedia: https://en.wikipedia.org/wiki/Epidermis
+        cell_types:
+          keratinocytes: "90%; produce keratin; undergo keratinization"
+          melanocytes: "8-10%; neural crest origin; produce melanin; 1 per ~36 keratinocytes"
+          Langerhans_cells: "dendritic APCs; immune surveillance"
+          Merkel_cells: "slow-adapting mechanoreceptors"
+        strata_deep_to_superficial: [stratum_basale, stratum_spinosum, stratum_granulosum, stratum_lucidum, stratum_corneum]
+        strata_notes:
+          basale: "single layer stem cells; mitosis; melanocytes here; attached to basement membrane"
+          spinosum: "8-10 layers; desmosomes (spiny connections); keratinocyte protein synthesis"
+          granulosum: "3-5 layers; keratohyalin granules; lamellar granules release lipids → waterproofing"
+          lucidum: "only in thick skin (palms, soles); clear flat dead cells"
+          corneum: "25-30 layers of dead anucleate corneocytes (squames); complete keratinization; continuous shedding"
+        turnover_time_weeks: "2-4 (basale to surface)"
+        thick_vs_thin:
+          thick: "palms, soles; has lucidum layer; no hair follicles"
+          thin: "rest of body; has hair follicles; no lucidum layer"
+      dermis:
+        wikipedia: https://en.wikipedia.org/wiki/Dermis
+        layers:
+          papillary:
+            composition: "loose areolar connective tissue"
+            features: "dermal papillae (interdigitate with rete ridges of epidermis); Meissner's corpuscles; capillaries"
+            fingerprints: "formed by papillary ridges over dermal papillae"
+          reticular:
+            composition: "dense irregular connective tissue (collagen + elastin)"
+            features: "hair follicles, sweat glands, sebaceous glands, Pacinian corpuscles, deep blood vessels"
+        dermis_contents: [blood_vessels, lymphatics, nerves, hair_follicles, sebaceous_glands, sweat_glands, arrector_pili_muscles]
+      hypodermis:
+        also_called: "subcutaneous tissue (superficial fascia)"
+        composition: "areolar + adipose connective tissue"
+        functions: "insulation, energy storage, cushioning, anchors skin to deep fascia/muscle"
+        notes: "NOT technically part of skin (integument); different embryological origin in places"
+
+    hair:
+      wikipedia: https://en.wikipedia.org/wiki/Hair_follicle
+      structure:
+        follicle: "epithelial downgrowth into dermis and hypodermis"
+        bulb: "base of follicle; matrix cells produce hair"
+        shaft: "visible portion above skin"
+        arrector_pili: "smooth muscle; contracts (sympathetic) → goosebumps (piloerection)"
+      layers: [medulla, cortex, cuticle]
+      growth_phases:
+        anagen: "active growth; 2-6 years; ~85-90% of hairs"
+        catagen: "regression; 2-3 weeks; ~1-2%"
+        telogen: "resting; 3-4 months; ~10-15%; ends with shedding"
+      types:
+        lanugo: "fine hair; fetus; shed before birth"
+        vellus: "fine, lightly pigmented; body hair pre-puberty"
+        terminal: "coarse, pigmented; scalp, eyebrows, pubic, axillary, beard"
+
+    glands:
+      sebaceous:
+        wikipedia: https://en.wikipedia.org/wiki/Sebaceous_gland
+        secretion: "sebum (lipid mixture)"
+        secretion_type: "holocrine (cell disintegrates to release product)"
+        distribution: "all hairy skin; absent from palms and soles"
+        function: "waterproofs/lubricates hair and skin; antimicrobial"
+        notes: "Stimulated by androgens; acne when blocked"
+      eccrine_sweat:
+        wikipedia: https://en.wikipedia.org/wiki/Eccrine_sweat_gland
+        count: ~3_million
+        distribution: "all skin; highest density palms/soles/forehead"
+        secretion_type: "merocrine (exocytosis; cell intact)"
+        function: "thermoregulation (evaporative cooling)"
+        innervation: "cholinergic sympathetic (unusual — most sympathetic is noradrenergic)"
+        secretion: "hypotonic NaCl solution + trace urea, lactic acid"
+      apocrine_sweat:
+        wikipedia: https://en.wikipedia.org/wiki/Apocrine_sweat_gland
+        distribution: "axillae, groin, areolae, external ear canal"
+        activation: "puberty (androgen-dependent)"
+        secretion: "protein-rich; odorless; bacteria metabolize → body odor"
+        notes: "Modified apocrine glands: ceruminous (ear), mammary (breast)"
+
+    wound_healing:
+      wikipedia: https://en.wikipedia.org/wiki/Wound_healing
+      phases_in_order:
+        hemostasis:
+          timing: "seconds-minutes"
+          events: "vasoconstriction; platelet plug; coagulation cascade → fibrin clot"
+        inflammation:
+          timing: "hours-days (peaks 2-3 days)"
+          events: "vasodilation; neutrophils (first 24h) then macrophages; debris removal; cytokines"
+        proliferation:
+          timing: "days-weeks"
+          events: "fibroblasts produce collagen III; angiogenesis; epithelialization; granulation tissue"
+        remodeling:
+          timing: "weeks-months-years"
+          events: "collagen III → collagen I; scar matures; maximum tensile strength ~80% of original"
+
+    burns:
+      wikipedia: https://en.wikipedia.org/wiki/Burn
+      first_degree:
+        depth: "epidermis only"
+        appearance: "red, dry, painful"
+        example: "sunburn"
+        treatment: "self-healing; cooling, aloe"
+      second_degree:
+        depth: "epidermis into dermis (partial thickness)"
+        appearance: "red, blistered, very painful"
+        types: [superficial_partial, deep_partial]
+        notes: "Blisters = hallmark of 2nd degree"
+      third_degree:
+        depth: "full thickness (through all dermis)"
+        appearance: "white, brown, or black; leathery; painless (nerves destroyed)"
+        treatment: "skin grafting required; cannot self-heal"
+      fourth_degree:
+        depth: "into fat, muscle, or bone"
+        notes: "Some classifications include this"
+      rule_of_nines:
+        head: "9%"
+        each_arm: "9%"
+        anterior_trunk: "18%"
+        posterior_trunk: "18%"
+        each_leg: "18%"
+        perineum: "1%"
+
+# === ANSWER TYPE POOLS ===
+
+answer_type_pools:
+  - id: bone_names
+    format: name
+    members: [femur, tibia, fibula, humerus, radius, ulna, scapula, clavicle, patella, sternum, mandible, atlas, axis, sacrum, coccyx, calcaneus, talus, stapes, hyoid, malleus, incus]
+    count: 21
+    note: "Players confuse which bone is in which region or has which property."
+
+  - id: muscle_names
+    format: name
+    members: [deltoid, biceps_brachii, triceps_brachii, brachialis, masseter, sternocleidomastoid, trapezius, latissimus_dorsi, pectoralis_major, rectus_abdominis, gluteus_maximus, iliopsoas, sartorius, rectus_femoris, gastrocnemius, soleus, tibialis_anterior, diaphragm, supraspinatus, infraspinatus]
+    count: 20
+    note: "Players confuse origin/insertion/innervation of key muscles."
+
+  - id: cranial_nerve_names
+    format: name
+    members: [Olfactory, Optic, Oculomotor, Trochlear, Trigeminal, Abducens, Facial, Vestibulocochlear, Glossopharyngeal, Vagus, Accessory, Hypoglossal]
+    count: 12
+    note: "Players confuse nerve number, type (S/M/B), and function."
+
+  - id: cranial_nerve_numbers
+    format: Roman_numeral
+    members: [I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII]
+    count: 12
+    note: "Matched pair with cranial_nerve_names pool."
+
+  - id: organ_names
+    format: name
+    members: [liver, gallbladder, pancreas, duodenum, jejunum, ileum, cecum, appendix, thyroid, parathyroid, adrenal_gland, pituitary, hypothalamus, thymus, spleen, kidney, ureter, bladder]
+    count: 18
+    note: "Players confuse organ location, function, and associated hormones."
+
+  - id: hormone_names
+    format: name
+    members: [cortisol, aldosterone, ADH, oxytocin, insulin, glucagon, TSH, T3, T4, PTH, GH, FSH, LH, prolactin, estrogen, progesterone, testosterone, melatonin, calcitonin, epinephrine, norepinephrine]
+    count: 21
+    note: "Players confuse which gland produces which hormone and its effect."
+
+  - id: antibody_classes
+    format: name
+    members: [IgG, IgA, IgM, IgE, IgD]
+    count: 5
+    note: "Players confuse percent abundance, structure (pentamer/dimer), and function."
+
+  - id: bracket_numbers
+    format: bracket_number
+    note: "Runtime-generated numeric distractors for: bone counts, lengths, volumes, percentages, days."
+
+# === QUESTION TEMPLATES ===
+
+question_templates:
+  # bone names pool
+  - id: bone_from_location
+    format: "What bone is located at/in {anatomical_location}?"
+    answer_pool: bone_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: bone_from_function
+    format: "Which bone {articulates_with / connects / forms}?"
+    answer_pool: bone_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: bone_from_superlative
+    format: "Which bone is the {longest / smallest / largest / only} bone {qualifier}?"
+    answer_pool: bone_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: bone_from_landmark
+    format: "The {landmark_name} is a feature of which bone?"
+    answer_pool: bone_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: bone_count
+    format: "How many {bone_type} are in the {region}?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 2
+    difficulty: 3
+
+  # muscle names pool
+  - id: muscle_from_action
+    format: "Which muscle is primarily responsible for {action}?"
+    answer_pool: muscle_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: muscle_from_innervation
+    format: "Which muscle is innervated by the {nerve_name}?"
+    answer_pool: muscle_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: muscle_from_origin_insertion
+    format: "Which muscle originates from {origin} and inserts on {insertion}?"
+    answer_pool: muscle_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  - id: muscle_from_superlative
+    format: "Which muscle is the {longest / largest / smallest} in the body?"
+    answer_pool: muscle_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  # cranial nerve pool
+  - id: CN_name_from_number
+    format: "What is cranial nerve {Roman_numeral}?"
+    answer_pool: cranial_nerve_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: CN_number_from_name
+    format: "What number is the {nerve_name} nerve?"
+    answer_pool: cranial_nerve_numbers
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: CN_from_function
+    format: "Which cranial nerve is responsible for {function}?"
+    answer_pool: cranial_nerve_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: CN_type_from_name
+    format: "Is the {nerve_name} nerve sensory, motor, or both?"
+    answer_pool: [sensory, motor, both]
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: CN_from_muscle
+    format: "Which cranial nerve innervates the {muscle_name}?"
+    answer_pool: cranial_nerve_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  # organ/hormone pool
+  - id: organ_from_function
+    format: "Which organ {produces / stores / secretes} {substance}?"
+    answer_pool: organ_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: hormone_from_gland
+    format: "Which hormone is produced by the {gland_name}?"
+    answer_pool: hormone_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: gland_from_hormone
+    format: "Which gland produces {hormone_name}?"
+    answer_pool: organ_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: hormone_from_effect
+    format: "Which hormone {increases / decreases / stimulates} {physiological_effect}?"
+    answer_pool: hormone_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  # numeric bracket templates
+  - id: count_bones
+    format: "How many bones are in the adult human body?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: count_cranial_nerves
+    format: "How many pairs of cranial nerves are there?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: anatomy_measurement
+    format: "Approximately how {long / many / much} is the {structure}?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 2
+    difficulty: 3
+
+# === SEEDED CONFUSION PAIRS ===
+
+common_confusions:
+  # Skeletal
+  - ["radius", "ulna"]                    # Which is lateral? Which has styloid used for wrist?
+  - ["tibia", "fibula"]                   # Which is weight-bearing? Which has malleolus?
+  - ["atlas", "axis"]                     # C1 vs C2; which has dens? Which allows nodding?
+  - ["malleus", "stapes"]                 # First vs last ossicle; TM vs oval window
+  - ["trapezium", "trapezoid"]            # Adjacent carpals; naming confusion
+  # Muscular
+  - ["biceps brachii", "brachialis"]      # Both flex elbow; which is stronger?
+  - ["gastrocnemius", "soleus"]           # Both plantarflex; which crosses knee?
+  - ["supraspinatus", "infraspinatus"]    # Both rotator cuff; abduction initiation vs external rotation
+  - ["sartorius", "gracilis"]             # Both cross medial knee (pes anserinus)
+  - ["gluteus medius", "gluteus minimus"] # Nearly identical; different innervation emphasis
+  # Nervous
+  - ["CN IV Trochlear", "CN VI Abducens"] # Both motor-only; IV=SO, VI=LR
+  - ["CN VII Facial", "CN IX Glossopharyngeal"] # Taste: VII=ant 2/3, IX=post 1/3
+  - ["sympathetic", "parasympathetic"]    # Fight vs rest; T/L vs craniosacral; NE vs ACh
+  - ["Broca's area", "Wernicke's area"]   # Production vs comprehension; both left usually
+  # Digestive
+  - ["duodenum", "jejunum"]              # Both small intestine; duodenum fixed/C-shaped
+  - ["liver", "pancreas"]                # Both have exocrine/endocrine roles; bile vs insulin
+  - ["amylase", "lipase"]                # Starch vs fat; salivary vs pancreatic
+  # Endocrine
+  - ["TSH", "T3/T4"]                     # Pituitary signal vs thyroid hormone
+  - ["PTH", "calcitonin"]                # Opposite effects on calcium
+  - ["insulin", "glucagon"]              # Opposite effects on glucose; same organ different cells
+  - ["aldosterone", "cortisol"]          # Both adrenal cortex; mineralocorticoid vs glucocorticoid
+  - ["ADH", "aldosterone"]               # Both affect kidney; water vs Na+/K+
+  # Immune
+  - ["IgG", "IgM"]                       # Most abundant vs first response
+  - ["T helper CD4", "T cytotoxic CD8"]  # Helper vs killer; MHC II vs MHC I
+  - ["innate", "adaptive immunity"]      # Non-specific/immediate vs specific/memory
+  # Senses
+  - ["rods", "cones"]                    # Dim/peripheral vs color/acuity
+  - ["utricle", "saccule"]              # Linear vs vertical acceleration; both in vestibule
+  - ["Meissner's", "Pacinian"]           # Light touch vs deep pressure; papillary vs deep dermis
+
+# === SYNONYM GROUPS ===
+
+synonym_groups:
+  - id: kneecap_patella
+    terms: ["kneecap", "patella"]
+    reason: "Common name = anatomical name"
+  - id: shinbone_tibia
+    terms: ["shinbone", "tibia"]
+    reason: "Common name = anatomical name"
+  - id: collarbone_clavicle
+    terms: ["collarbone", "clavicle"]
+    reason: "Common name = anatomical name"
+  - id: shoulderblade_scapula
+    terms: ["shoulder blade", "scapula"]
+    reason: "Common name = anatomical name"
+  - id: breastbone_sternum
+    terms: ["breastbone", "sternum"]
+    reason: "Common name = anatomical name"
+  - id: tailbone_coccyx
+    terms: ["tailbone", "coccyx"]
+    reason: "Common name = anatomical name"
+  - id: bicuspid_mitral
+    terms: ["bicuspid valve", "mitral valve"]
+    reason: "Same cardiac valve, two accepted names"
+  - id: adrenaline_epinephrine
+    terms: ["adrenaline", "epinephrine"]
+    reason: "British/INN vs USAN name for same hormone"
+  - id: ADH_vasopressin
+    terms: ["ADH", "vasopressin", "antidiuretic hormone"]
+    reason: "Multiple names for same hormone"
+  - id: hypophysis_pituitary
+    terms: ["hypophysis", "pituitary gland"]
+    reason: "Greek vs common anatomical name"
+  - id: hypodermis_subcutaneous
+    terms: ["hypodermis", "subcutaneous tissue", "superficial fascia"]
+    reason: "Different terms for same layer"
+  - id: Fallopian_uterine_tubes
+    terms: ["Fallopian tube", "uterine tube", "oviduct"]
+    reason: "Eponym vs anatomical vs functional name"
+
+# === DIFFICULTY TIERS ===
+
+difficulty_tiers:
+  easy:  # universally known anatomy
+    - "206 bones in adult body"
+    - "4 chambers of the heart"
+    - "4 heart valves"
+    - "12 cranial nerves"
+    - "brain lobes (frontal/parietal/temporal/occipital)"
+    - "femur = longest bone"
+    - "stapes = smallest bone"
+    - "3 muscle types (skeletal, cardiac, smooth)"
+    - "5 basic tastes"
+    - "rods vs cones (dim light vs color)"
+    - "insulin lowers glucose; glucagon raises it"
+    - "right lung 3 lobes; left lung 2 lobes"
+
+  medium:  # commonly taught anatomy
+    - "rotator cuff muscles (SITS)"
+    - "brachial plexus origin (C5-T1)"
+    - "SA node rate (60-100 bpm)"
+    - "GFR ~125 mL/min"
+    - "RAAS pathway"
+    - "dermatome levels (T4=nipple, T10=umbilicus)"
+    - "layers of skin (epidermis/dermis/hypodermis)"
+    - "proximal vs distal gut anatomy"
+    - "Broca's vs Wernicke's area"
+    - "cranial nerve types (S/M/B)"
+
+  hard:  # requires specific knowledge
+    - "Carpal bone names (SLLT TTCH mnemonic)"
+    - "Stratum layers of epidermis in order"
+    - "Eustachian tube muscle innervation"
+    - "Chorda tympani nerve path"
+    - "Tonotopy (base=high, apex=low)"
+    - "Zona glomerulosa/fasciculata/reticularis and their hormones"
+    - "Oogenesis arrest stages (prophase I at birth, metaphase II at ovulation)"
+    - "Complement system pathways"
+    - "MHC I vs II which cells express and T cell type"
+    - "Ascending vs descending spinal tracts and decussation level"
+
+volatile_facts: []
+# Anatomy data is stable; no volatile facts anticipated

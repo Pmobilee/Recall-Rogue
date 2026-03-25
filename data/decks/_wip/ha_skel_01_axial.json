@@ -1,0 +1,655 @@
+[
+  {
+    "id": "ha_skel_001",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "8",
+    "acceptableAlternatives": ["eight"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many bones make up the cranium (cranial vault)?",
+    "explanation": "The 8 cranial bones are: frontal (1), parietal (2), temporal (2), occipital (1), sphenoid (1), and ethmoid (1). Together they encase and protect the brain. Clinically, fractures to these bones — especially the temporal bone — can lacerate the middle meningeal artery causing epidural hematoma.",
+    "visualDescription": "Lateral view of the skull with cranial bones color-coded and labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["6", "7", "9"],
+    "variants": [
+      {
+        "quizQuestion": "The cranial vault is formed by how many individual bones?",
+        "correctAnswer": "8",
+        "explanation": "Eight cranial bones — frontal, two parietals, two temporals, occipital, sphenoid, and ethmoid — fuse together in adulthood, forming the bony housing for the brain."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_002",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "14",
+    "acceptableAlternatives": ["fourteen"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many facial bones are in the human skull?",
+    "explanation": "There are 14 facial bones: maxillae (2), zygomatic (2), mandible (1), nasal (2), palatine (2), inferior nasal conchae (2), lacrimal (2), and vomer (1). The mandible is the only movable bone of the skull — crucial for chewing and speech.",
+    "visualDescription": "Anterior view of skull with facial bones highlighted and labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["12", "16", "10"],
+    "variants": [
+      {
+        "quizQuestion": "Excluding cranial bones, how many facial bones does the skull contain?",
+        "correctAnswer": "14",
+        "explanation": "The 14 facial bones give the face its structure and provide attachment points for the muscles of facial expression and mastication."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_003",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Stapes",
+    "acceptableAlternatives": ["stapes bone"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "What is the smallest bone in the human body?",
+    "explanation": "The stapes, one of the three ossicles in the middle ear, measures only about 3 mm. Despite its tiny size, it transmits vibrations from the incus to the oval window of the cochlea — without it, sound waves never reach the inner ear. Its name is Latin for 'stirrup' due to its shape.",
+    "visualDescription": "Close-up diagram of the three ear ossicles — malleus, incus, and stapes — with the stapes enlarged and labeled 3mm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Malleus", "Incus", "Lacrimal bone"],
+    "variants": [
+      {
+        "quizQuestion": "Which ear ossicle is approximately 3 mm long and is the smallest bone in the body?",
+        "correctAnswer": "Stapes",
+        "explanation": "The stapes (~3 mm) beats out the malleus and incus for 'smallest bone' honors. Its stirrup shape makes it one of anatomy's most recognizable structures."
+      },
+      {
+        "quizQuestion": "The malleus, incus, and ___ are the three ossicles of the middle ear. The last one is the smallest bone in the body.",
+        "correctAnswer": "Stapes",
+        "explanation": "The three ossicles form a mechanical chain: malleus → incus → stapes → oval window. The stapes is last in the chain and smallest in the body at ~3 mm."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_004",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Hyoid",
+    "acceptableAlternatives": ["hyoid bone"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which bone is the only one in the body that does not articulate with any other bone?",
+    "explanation": "The U-shaped hyoid bone sits at the base of the tongue and is suspended by muscles and ligaments rather than joints. Because it must be fractured with significant force, a broken hyoid is a red flag for manual strangulation in forensic medicine.",
+    "visualDescription": "Anterior neck diagram showing the hyoid bone suspended below the mandible, above the thyroid cartilage",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Patella", "Sesamoid", "Vomer"],
+    "variants": [
+      {
+        "quizQuestion": "The ___ bone is U-shaped, anchors the tongue, and uniquely does not articulate with any other bone.",
+        "correctAnswer": "Hyoid",
+        "explanation": "The hyoid is held in place entirely by muscles and ligaments. It plays a key role in swallowing and speech, and its fracture raises immediate suspicion of strangulation in forensic autopsies."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_005",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Coronal suture",
+    "acceptableAlternatives": ["coronal"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which skull suture lies between the frontal bone and the parietal bones?",
+    "explanation": "The coronal suture runs across the top of the skull from ear to ear, separating the frontal bone from the two parietal bones. Premature fusion (craniosynostosis) of the coronal suture causes the skull to compensate by growing in other directions, leading to characteristic head shape deformities.",
+    "visualDescription": "Superior view of skull with coronal suture highlighted between frontal and parietal bones",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Sagittal suture", "Lambdoid suture", "Squamous suture"],
+    "variants": [
+      {
+        "quizQuestion": "The frontal bone meets the parietal bones at which cranial suture?",
+        "correctAnswer": "Coronal suture",
+        "explanation": "The coronal suture runs coronally (ear-to-ear) across the skull vault. Its name comes from the Latin 'corona' (crown), reflecting its position arcing over the top of the skull."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_006",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Sagittal suture",
+    "acceptableAlternatives": ["sagittal"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which skull suture runs between the two parietal bones along the midline of the skull?",
+    "explanation": "The sagittal suture runs in the sagittal plane from the coronal suture anteriorly to the lambdoid suture posteriorly, joining the two parietal bones. Early fusion (scaphocephaly) produces a long, narrow skull — one of the most common forms of craniosynostosis.",
+    "visualDescription": "Superior view of skull showing sagittal suture running front-to-back along the midline",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Coronal suture", "Lambdoid suture", "Squamous suture"],
+    "variants": [
+      {
+        "quizQuestion": "The midline suture joining the left and right parietal bones is called the ___ suture.",
+        "correctAnswer": "Sagittal",
+        "explanation": "The sagittal suture lies in the mid-sagittal plane. The term 'sagittal' comes from the Latin for arrow — the suture runs straight as an arrow from front to back of the skull."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_007",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Anterior fontanelle",
+    "acceptableAlternatives": ["anterior fontanel", "frontal fontanelle"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which fontanelle is the largest and closes last, at approximately 18 months of age?",
+    "explanation": "The anterior (frontal) fontanelle is the diamond-shaped soft spot at the junction of the coronal and sagittal sutures. It closes around 18 months. Clinically it is a vital window: a bulging fontanelle suggests raised intracranial pressure, while a sunken one indicates dehydration.",
+    "visualDescription": "Superior view of infant skull with anterior fontanelle highlighted as a diamond-shaped gap",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Posterior fontanelle", "Sphenoidal fontanelle", "Mastoid fontanelle"],
+    "variants": [
+      {
+        "quizQuestion": "The 'soft spot' on an infant's skull that closes around 18 months is the ___ fontanelle.",
+        "correctAnswer": "Anterior",
+        "explanation": "The anterior fontanelle allows the skull to compress during birth and the brain to grow rapidly in infancy. Its tension reflects intracranial pressure — a key pediatric assessment tool."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_008",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Posterior fontanelle",
+    "acceptableAlternatives": ["posterior fontanel", "occipital fontanelle"],
+    "chainThemeId": "skull_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which fontanelle closes earliest, typically by 2–3 months of age?",
+    "explanation": "The posterior fontanelle sits at the junction of the sagittal and lambdoid sutures (where the two parietal bones meet the occipital bone). Being smaller than the anterior fontanelle, it closes rapidly — usually by 2–3 months after birth.",
+    "visualDescription": "Superior-posterior view of infant skull with posterior fontanelle highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Anterior fontanelle", "Sphenoidal fontanelle", "Mastoid fontanelle"],
+    "variants": [
+      {
+        "quizQuestion": "The fontanelle located at the junction of the sagittal and lambdoid sutures closes by approximately 2–3 months. Which fontanelle is this?",
+        "correctAnswer": "Posterior fontanelle",
+        "explanation": "The posterior fontanelle is triangular and much smaller than the anterior. Because it closes so early, a late-closing posterior fontanelle may indicate hypothyroidism in newborns."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_009",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "7",
+    "acceptableAlternatives": ["seven"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many cervical vertebrae are in the human vertebral column?",
+    "explanation": "Humans have 7 cervical vertebrae (C1–C7). This number is remarkably conserved — almost all mammals, from mice to giraffes, also have exactly 7 cervical vertebrae. The cervical spine supports the skull and allows the greatest range of head motion of any spinal region.",
+    "visualDescription": "Lateral view of the cervical spine with 7 vertebrae labeled C1 through C7",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["5", "6", "8"],
+    "variants": [
+      {
+        "quizQuestion": "C1 through C7 represents which region of the vertebral column, and how many vertebrae does it contain?",
+        "correctAnswer": "7",
+        "explanation": "The 7 cervical vertebrae form the neck. An easy mnemonic: there are 7 cervical vertebrae because you eat breakfast at 7 — just like there are 12 thoracic for the 12 months and 5 lumbar for 5 o'clock dinner."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_010",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Atlas",
+    "acceptableAlternatives": ["C1", "C1 atlas"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What is the name of C1, the first cervical vertebra that supports the skull?",
+    "explanation": "C1 is called the atlas — named after the Greek Titan who held up the heavens — because it literally supports the globe of the skull. Unlike all other vertebrae, the atlas has no body; it is a bony ring. The atlanto-occipital joint allows the 'yes' nodding motion.",
+    "visualDescription": "Superior view of the atlas (C1) showing its ring shape with no vertebral body, with the dens of C2 fitting into the anterior arch",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["Axis", "Vertebra prominens", "Epistropheus"],
+    "variants": [
+      {
+        "quizQuestion": "Which cervical vertebra has no vertebral body and supports the skull at the atlanto-occipital joint?",
+        "correctAnswer": "Atlas",
+        "explanation": "The atlas (C1) is a unique ring-shaped vertebra with no body — the dens of C2 occupies the space where a body would be. This arrangement allows the 'yes' nod motion at the atlanto-occipital joint."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_011",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Axis",
+    "acceptableAlternatives": ["C2", "C2 axis"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "C2, the second cervical vertebra, has a distinctive upward projection called the dens. What is C2's name?",
+    "explanation": "C2 is called the axis (also epistropheus). Its dens (odontoid process) projects upward into the ring of C1, acting as a pivot for head rotation — the 'no' shaking motion. A fractured dens from hyperflexion is known as a 'hangman's fracture' variant and can be fatal if it compresses the brainstem.",
+    "visualDescription": "Lateral view of C1 and C2 articulation showing the dens of the axis projecting upward into the atlas",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["Atlas", "Vertebra prominens", "C3"],
+    "variants": [
+      {
+        "quizQuestion": "Which cervical vertebra has the dens (odontoid process) that serves as a pivot for head rotation?",
+        "correctAnswer": "Axis",
+        "explanation": "The axis (C2) provides the pivot around which the atlas and skull rotate, enabling the 'no' shaking motion. The atlantoaxial joint is stabilized by the transverse ligament of the atlas — rupture of this ligament is dangerous in rheumatoid arthritis."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_012",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Vertebra prominens",
+    "acceptableAlternatives": ["C7", "C7 vertebra prominens"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which cervical vertebra has the most prominent spinous process and is used as a clinical landmark at the base of the neck?",
+    "explanation": "C7 is called the vertebra prominens because its long spinous process creates a visible and palpable bump at the base of the neck. Clinicians use it as a reliable reference point for counting vertebral levels — for example, finding the correct interspace for procedures like lumbar puncture starts with this landmark.",
+    "visualDescription": "Posterior view of neck showing C7 spinous process as the most prominent bump at the cervicothoracic junction",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["C6", "T1", "C5"],
+    "variants": [
+      {
+        "quizQuestion": "The 'vertebra prominens' is the clinical term for which cervical vertebra?",
+        "correctAnswer": "C7",
+        "explanation": "C7's spinous process is the most prominent in the neck, making it the go-to landmark for counting vertebral levels. Nearly all spinal procedures that require level identification begin here."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_013",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "12",
+    "acceptableAlternatives": ["twelve"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many thoracic vertebrae are in the vertebral column?",
+    "explanation": "There are 12 thoracic vertebrae (T1–T12), each articulating with one or two pairs of ribs via costal facets. The thoracic spine forms a natural kyphotic (forward-bent) curve that accommodates the heart and lungs. Exaggerated thoracic kyphosis is commonly called 'hunchback' or Scheuermann's disease in adolescents.",
+    "visualDescription": "Lateral view of the thoracic spine showing 12 vertebrae with rib articulations",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["10", "11", "14"],
+    "variants": [
+      {
+        "quizQuestion": "T1 through T12 — how many thoracic vertebrae are there, and what do they articulate with?",
+        "correctAnswer": "12",
+        "explanation": "The 12 thoracic vertebrae are unique for having costal facets that articulate with the 12 pairs of ribs, forming the posterior wall of the thoracic cage."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_014",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "5",
+    "acceptableAlternatives": ["five"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many lumbar vertebrae are in the vertebral column?",
+    "explanation": "There are 5 lumbar vertebrae (L1–L5), which are the largest of the moveable vertebrae because they bear the greatest proportion of body weight. The lumbar region has a lordotic (backward-curved) shape, and L4–L5 and L5–S1 discs are the most common sites for herniation causing sciatica.",
+    "visualDescription": "Lateral view of lumbar spine showing 5 large vertebrae with lordotic curve",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["4", "6", "7"],
+    "variants": [
+      {
+        "quizQuestion": "Which region of the vertebral column has 5 vertebrae and bears the most body weight?",
+        "correctAnswer": "Lumbar",
+        "explanation": "The 5 lumbar vertebrae (L1–L5) have the largest vertebral bodies in the spine because they must support the weight of the entire trunk. This makes them the most common site for degenerative disc disease."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_015",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Nucleus pulposus",
+    "acceptableAlternatives": ["nucleus pulposus gel center"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the name of the gel-like center of an intervertebral disc?",
+    "explanation": "The nucleus pulposus is the gelatinous inner core of an intervertebral disc, surrounded by the tough annulus fibrosus. It acts as a hydraulic shock absorber. When the annulus tears, the nucleus pulposus can herniate ('slip disc'), compressing nearby nerve roots and causing radiculopathy.",
+    "visualDescription": "Cross-section of an intervertebral disc showing the central nucleus pulposus (gel) surrounded by the annulus fibrosus (fibrous rings)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["Annulus fibrosus", "Ligamentum flavum", "Nucleus fibrosus"],
+    "variants": [
+      {
+        "quizQuestion": "An intervertebral disc has two components: a gel center and a fibrous outer ring. What is the gel center called?",
+        "correctAnswer": "Nucleus pulposus",
+        "explanation": "The nucleus pulposus is about 80% water at birth, dropping to ~70% in adulthood. This dehydration with age explains why we are slightly shorter in the evening than in the morning and why elderly people lose height."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_016",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "4",
+    "acceptableAlternatives": ["four"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "How many distinct spinal curves does the adult vertebral column have?",
+    "explanation": "The adult spine has 4 curves: cervical lordosis (concave posterior), thoracic kyphosis (convex posterior), lumbar lordosis (concave posterior), and sacral kyphosis (convex posterior). The thoracic and sacral kyphoses are primary curves present in the fetus; the cervical and lumbar lordoses develop after birth when we lift our heads and walk.",
+    "visualDescription": "Lateral view of the full vertebral column showing the S-curve with cervical lordosis, thoracic kyphosis, lumbar lordosis, and sacral kyphosis labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["2", "3", "5"],
+    "variants": [
+      {
+        "quizQuestion": "Cervical lordosis, thoracic kyphosis, lumbar lordosis, and sacral kyphosis — how many spinal curves does this describe?",
+        "correctAnswer": "4",
+        "explanation": "The four spinal curves form the characteristic S-shape of the human spine, which acts as a spring to absorb locomotion forces far more efficiently than a straight column would."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_017",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Sacrum",
+    "acceptableAlternatives": ["sacral bone"],
+    "chainThemeId": "vertebral_column",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which structure is formed by 5 fused vertebrae and articulates with the ilium at the sacroiliac joint?",
+    "explanation": "The sacrum is a triangular bone formed by the fusion of 5 sacral vertebrae. It transmits the weight of the upper body to the pelvis and lower limbs through the sacroiliac joints. Sacroiliac joint dysfunction is a common — and frequently overlooked — cause of lower back pain.",
+    "visualDescription": "Posterior view of the sacrum and coccyx showing the fused sacral segments and sacroiliac articulation points",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vertebral_column",
+    "volatile": false,
+    "distractors": ["Coccyx", "L5 vertebra", "Ilium"],
+    "variants": [
+      {
+        "quizQuestion": "How many vertebrae are fused to form the sacrum?",
+        "correctAnswer": "5",
+        "explanation": "Five sacral vertebrae fuse by early adulthood (usually complete by age 30) to form the sacrum. The sacroiliac joints connecting sacrum to ilium are among the strongest joints in the body."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_018",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "24",
+    "acceptableAlternatives": ["twenty-four", "twenty four"],
+    "chainThemeId": "thoracic_cage",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many ribs does the human thoracic cage contain in total?",
+    "explanation": "Humans have 24 ribs — 12 on each side. They form the lateral walls of the thoracic cage, protecting the heart, lungs, and great vessels. During CPR, compressions must be sufficient to compress the chest 5–6 cm, which requires enough force to be felt on these bones.",
+    "visualDescription": "Anterior view of the thoracic cage showing 12 pairs of ribs, sternum, and costal cartilages",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_cage",
+    "volatile": false,
+    "distractors": ["22", "26", "20"],
+    "variants": [
+      {
+        "quizQuestion": "The human thoracic cage has ___ ribs total, arranged in ___ pairs.",
+        "correctAnswer": "24",
+        "explanation": "24 ribs in 12 pairs — the number is symmetric, with each side having true ribs (1–7), false ribs (8–10), and floating ribs (11–12)."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_019",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "True ribs",
+    "acceptableAlternatives": ["true ribs 1-7", "ribs 1 through 7"],
+    "chainThemeId": "thoracic_cage",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "Ribs 1–7 attach directly to the sternum via their own costal cartilage. What are these ribs called?",
+    "explanation": "Ribs 1–7 are called 'true ribs' (vertebrosternal ribs) because each has its own costal cartilage connecting it directly to the sternum. Rib 1 is the most curved and least likely to fracture — it is only injured in severe trauma such as high-speed collisions.",
+    "visualDescription": "Anterior thoracic cage with ribs 1–7 highlighted connecting directly to the sternum via their individual costal cartilages",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_cage",
+    "volatile": false,
+    "distractors": ["False ribs", "Floating ribs", "Vertebrochondral ribs"],
+    "variants": [
+      {
+        "quizQuestion": "Which ribs (by number) connect directly to the sternum via their own costal cartilage?",
+        "correctAnswer": "Ribs 1–7",
+        "explanation": "Ribs 1–7 are the 'true ribs.' Their direct sternocostal connections make them the most structurally important for respiratory mechanics and chest wall integrity."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_020",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "False ribs",
+    "acceptableAlternatives": ["false ribs 8-10", "ribs 8 through 10", "vertebrochondral ribs"],
+    "chainThemeId": "thoracic_cage",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Ribs 8–10 attach indirectly to the sternum by joining the costal cartilage of rib 7. What are these ribs called?",
+    "explanation": "Ribs 8–10 are called 'false ribs' (vertebrochondral ribs) because they do not attach directly to the sternum — instead, each joins the costal cartilage of the rib above, ultimately connecting via rib 7's cartilage. This indirect attachment gives the lower chest wall flexibility during deep breathing.",
+    "visualDescription": "Anterior thoracic cage with ribs 8–10 highlighted merging into rib 7's costal cartilage",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_cage",
+    "volatile": false,
+    "distractors": ["True ribs", "Floating ribs", "Vertebrosternal ribs"],
+    "variants": [
+      {
+        "quizQuestion": "Which ribs attach indirectly to the sternum via the costal cartilage of rib 7, and are therefore called 'false' ribs?",
+        "correctAnswer": "Ribs 8–10",
+        "explanation": "Ribs 8, 9, and 10 each attach to the cartilage of the rib immediately above them, with rib 7's cartilage ultimately connecting to the sternum. Their indirect attachment distinguishes them from true ribs (1–7) and floating ribs (11–12)."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_021",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Floating ribs",
+    "acceptableAlternatives": ["floating ribs 11-12", "ribs 11 and 12", "vertebral ribs"],
+    "chainThemeId": "thoracic_cage",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Ribs 11 and 12 have no connection to the sternum at all. What are they called?",
+    "explanation": "Ribs 11 and 12 are 'floating ribs' (vertebral ribs) — they attach posteriorly to thoracic vertebrae but have no anterior attachment to the sternum or costal cartilage. They are short and vulnerable; the kidneys lie posterior to these ribs, so flank pain from kidney pathology is sometimes called 'floating rib tenderness.'",
+    "visualDescription": "Posterior thoracic view with ribs 11 and 12 highlighted as short free-ending ribs not reaching the sternum",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_cage",
+    "volatile": false,
+    "distractors": ["False ribs", "True ribs", "Accessory ribs"],
+    "variants": [
+      {
+        "quizQuestion": "Which two pairs of ribs have no anterior sternal attachment and are therefore called 'floating' ribs?",
+        "correctAnswer": "Ribs 11 and 12",
+        "explanation": "The floating ribs (11–12) are the shortest ribs and end freely in the posterior abdominal wall musculature. Their posterior location near the kidneys makes them useful landmarks in urological examinations."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_022",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Manubrium",
+    "acceptableAlternatives": ["manubrium sterni"],
+    "chainThemeId": "thoracic_cage",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which part of the sternum articulates with the clavicles and the first two pairs of ribs?",
+    "explanation": "The manubrium is the uppermost and widest part of the sternum. It articulates with the clavicles at the sternoclavicular joints and with ribs 1–2. The suprasternal (jugular) notch at its upper border is easily palpated as the 'notch at the base of the throat' and is used to locate the trachea.",
+    "visualDescription": "Anterior view of sternum with manubrium, body, and xiphoid process labeled; clavicles and first two ribs attached to manubrium highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_cage",
+    "volatile": false,
+    "distractors": ["Body of sternum", "Xiphoid process", "Gladiolus"],
+    "variants": [
+      {
+        "quizQuestion": "The sternoclavicular joint, where the clavicle meets the sternum, is located at which part of the sternum?",
+        "correctAnswer": "Manubrium",
+        "explanation": "The manubrium ('handle' in Latin) forms the handle of the sword-shaped sternum. Both clavicles articulate here, making the sternoclavicular joint the only bony link between the upper limb and the axial skeleton."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_023",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Sternal angle",
+    "acceptableAlternatives": ["angle of Louis", "manubriosternal junction"],
+    "chainThemeId": "thoracic_cage",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What is the clinical landmark at the junction of the manubrium and the body of the sternum, level with rib 2 and the T4/T5 disc?",
+    "explanation": "The sternal angle (angle of Louis) is a palpable horizontal ridge where the manubrium meets the body of the sternum. It marks the level of rib 2, the carina of the trachea, the aortic arch, and the T4/T5 intervertebral disc — making it one of the most clinically useful surface landmarks in the chest.",
+    "visualDescription": "Lateral sternal diagram with the sternal angle (angle of Louis) highlighted at the manubriosternal junction, with rib 2 and T4/T5 level indicated",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_cage",
+    "volatile": false,
+    "distractors": ["Xiphisternal junction", "Suprasternal notch", "Costal margin"],
+    "variants": [
+      {
+        "quizQuestion": "The 'angle of Louis' is another name for which sternal landmark used to identify rib 2 and the carina?",
+        "correctAnswer": "Sternal angle",
+        "explanation": "The sternal angle (angle of Louis) is the most reliable surface landmark for rib counting. It marks the T4/T5 level, the bifurcation of the trachea (carina), and the beginning and end of the aortic arch — five high-yield facts packed into one bony ridge."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_024",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Long bone",
+    "acceptableAlternatives": ["long bones"],
+    "chainThemeId": "bone_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "The femur, humerus, and phalanges all belong to which bone classification?",
+    "explanation": "Long bones are longer than they are wide and consist of a shaft (diaphysis) and two ends (epiphyses). They house red bone marrow in youth and yellow (fatty) marrow in adulthood. The femur — longest bone in the body — and the tiny phalanges are both long bones despite their size difference.",
+    "visualDescription": "Diagram showing a femur with diaphysis, epiphyses, and growth plates labeled, compared to a phalange",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Short bone", "Flat bone", "Sesamoid bone"],
+    "variants": [
+      {
+        "quizQuestion": "Which bone classification includes bones that are longer than they are wide, such as the femur and humerus?",
+        "correctAnswer": "Long bone",
+        "explanation": "Long bones are defined by shape (length > width), not size. They have a diaphysis (shaft), two epiphyses (ends), and periosteum covering. Both the humerus and a finger phalange qualify as long bones."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_025",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Flat bone",
+    "acceptableAlternatives": ["flat bones"],
+    "chainThemeId": "bone_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "The skull, sternum, and scapula are examples of which bone type — thin, protective, and providing broad muscle attachment surfaces?",
+    "explanation": "Flat bones are thin, curved plates that protect underlying organs and provide large areas for muscle attachment. They consist of two layers of compact bone (periosteal tables) with a layer of spongy bone (diploë) sandwiched between them. The skull's diploë layer buffers impact forces, and in adults it contains red bone marrow — an important haematopoietic site.",
+    "visualDescription": "Cross-section of a flat skull bone showing the outer table, diploë, and inner table",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Irregular bone", "Short bone", "Long bone"],
+    "variants": [
+      {
+        "quizQuestion": "Skull bones, the sternum, and the scapula are classified as which type of bone?",
+        "correctAnswer": "Flat bone",
+        "explanation": "Flat bones are typically thin and curved. The skull's flat bones protect the brain; the sternum protects the heart; the scapula provides a surface for shoulder muscles. All contain diploë (spongy bone) between compact outer and inner tables."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_026",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Sesamoid bone",
+    "acceptableAlternatives": ["sesamoid", "sesamoid bones"],
+    "chainThemeId": "bone_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "The patella and pisiform are examples of which bone type, which develops within a tendon and alters the direction of muscle pull?",
+    "explanation": "Sesamoid bones form within tendons and function like biological pulleys — they redirect muscle force and protect tendons from friction at joint surfaces. The patella is the largest sesamoid in the body; it increases the mechanical advantage of the quadriceps femoris by ~50% at full extension.",
+    "visualDescription": "Lateral view of the knee joint showing the patella embedded in the quadriceps tendon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Short bone", "Irregular bone", "Accessory bone"],
+    "variants": [
+      {
+        "quizQuestion": "Bones that develop within tendons — like the patella — are classified as which bone type?",
+        "correctAnswer": "Sesamoid bone",
+        "explanation": "Sesamoid bones are named after sesame seeds because of their small, seed-like appearance (except the patella, which is quite large). They reduce friction and redirect mechanical forces at high-load joints."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_027",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Foramen",
+    "acceptableAlternatives": ["foramina"],
+    "chainThemeId": "bone_landmarks",
+    "answerTypePoolId": "location_terms",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the term for a hole in a bone through which blood vessels and nerves pass?",
+    "explanation": "A foramen (plural: foramina) is a hole or opening in a bone. The foramen magnum in the occipital bone is the largest foramen in the skull — it is where the brainstem transitions into the spinal cord. Clinically, herniation of brain tissue through the foramen magnum ('coning') is a life-threatening neurological emergency.",
+    "visualDescription": "Inferior view of the skull base with the large foramen magnum highlighted along with smaller foramina for cranial nerves",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skull",
+    "volatile": false,
+    "distractors": ["Fossa", "Process", "Condyle"],
+    "variants": [
+      {
+        "quizQuestion": "In bone anatomy, what term describes an opening that typically transmits nerves or blood vessels?",
+        "correctAnswer": "Foramen",
+        "explanation": "Foramina (plural) are essential passages in bone. The foramen magnum is the most clinically significant — it connects the cranial cavity to the vertebral canal and is where increased intracranial pressure can cause fatal brainstem herniation."
+      }
+    ]
+  }
+]

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "ha_resp_001",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Nasal cavity",
+    "acceptableAlternatives": [],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which structure is the first section of the upper airway, responsible for warming, humidifying, and filtering incoming air?",
+    "explanation": "The nasal cavity is the entry point of the respiratory tract. Its rich blood supply warms air to body temperature, mucous membranes humidify it, and hairs plus cilia trap particles before air reaches the delicate lungs.",
+    "visualDescription": "Sagittal head cross-section with nasal cavity highlighted, arrows showing air path and turbinate bones labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Respiratory_system",
+    "volatile": false,
+    "distractors": ["Pharynx", "Larynx", "Trachea"],
+    "variants": [
+      {
+        "quizQuestion": "Air entering the nose is warmed, humidified, and filtered by which structure before reaching the pharynx?",
+        "correctAnswer": "Nasal cavity",
+        "explanation": "The nasal cavity's turbinate bones increase surface area to maximise warming and humidification, while mucus and cilia filter out dust and pathogens."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_002",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Three",
+    "acceptableAlternatives": ["3"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "numbers",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "How many anatomical parts does the pharynx consist of?",
+    "explanation": "The pharynx is divided into three parts: the nasopharynx (behind the nasal cavity), the oropharynx (behind the mouth), and the laryngopharynx (also called the hypopharynx, leading to the larynx and esophagus). All three serve as a shared passage for air and food.",
+    "visualDescription": "Sagittal head section with nasopharynx, oropharynx, and laryngopharynx each labeled in distinct colours",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pharynx",
+    "volatile": false,
+    "distractors": ["Two", "Four", "Five"],
+    "variants": [
+      {
+        "quizQuestion": "The pharynx is subdivided into the nasopharynx, oropharynx, and ___.",
+        "correctAnswer": "Laryngopharynx",
+        "explanation": "The laryngopharynx (hypopharynx) is the lowest of the three pharyngeal divisions, splitting into the larynx anteriorly and the esophagus posteriorly."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_003",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "C3–C6",
+    "acceptableAlternatives": ["C3 to C6", "C3-C6"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "anatomical_levels",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "At which vertebral levels does the larynx sit in the adult neck?",
+    "explanation": "The larynx occupies the anterior neck from approximately C3 to C6. It sits below the pharynx and above the trachea, housing the vocal cords and serving as both the voice box and the guardian of the lower airway.",
+    "visualDescription": "Lateral neck diagram with larynx outlined and C3–C6 vertebrae labeled alongside",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Larynx",
+    "volatile": false,
+    "distractors": ["C1–C3", "C5–C7", "C6–T1"],
+    "variants": [
+      {
+        "quizQuestion": "True or false: The larynx is located at approximately the C3–C6 vertebral level in adults.",
+        "correctAnswer": "True",
+        "explanation": "In adults the larynx spans C3 to C6; in children it sits slightly higher. Its position descends with age as the neck elongates."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_004",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Epiglottis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which leaf-shaped cartilage flap covers the laryngeal inlet during swallowing to prevent food entering the airway?",
+    "explanation": "The epiglottis is an elastic cartilage flap attached to the base of the tongue and the thyroid cartilage. During swallowing, muscles tilt it downward to seal the larynx, directing food and liquid into the esophagus. Between swallows it stands upright, keeping the airway open.",
+    "visualDescription": "Larynx cross-section showing epiglottis tilting downward like a trap-door over the laryngeal inlet during swallowing",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Epiglottis",
+    "volatile": false,
+    "distractors": ["Soft palate", "Uvula", "Cricoid cartilage"],
+    "variants": [
+      {
+        "quizQuestion": "During swallowing, which laryngeal structure acts as a lid to prevent aspiration into the trachea?",
+        "correctAnswer": "Epiglottis",
+        "explanation": "The epiglottis tips posteriorly over the glottis during the pharyngeal phase of swallowing, directing a food bolus or liquid into the esophagus rather than the trachea."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_005",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Thyroid cartilage",
+    "acceptableAlternatives": ["Adam's apple"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which laryngeal cartilage forms the visible prominence in the neck known as the 'Adam's apple'?",
+    "explanation": "The thyroid cartilage is the largest cartilage of the larynx. Its two fused plates form a V-shaped shield whose anterior angle projects forward, especially in post-pubertal males due to testosterone-driven growth, creating the externally visible Adam's apple.",
+    "visualDescription": "Anterior neck with thyroid cartilage prominence highlighted and labeled 'Adam's apple', arrows pointing to the V-angle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thyroid_cartilage",
+    "volatile": false,
+    "distractors": ["Cricoid cartilage", "Arytenoid cartilage", "Epiglottis"],
+    "variants": [
+      {
+        "quizQuestion": "The 'Adam's apple' visible in the neck is formed by which cartilage?",
+        "correctAnswer": "Thyroid cartilage",
+        "explanation": "The thyroid cartilage's anterior angle protrudes visibly, more so in males after puberty. It protects the vocal cords housed just behind it."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_006",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Cricoid cartilage",
+    "acceptableAlternatives": ["Cricoid"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which laryngeal cartilage is unique in being the only complete ring in the entire airway?",
+    "explanation": "The cricoid cartilage forms a complete ring around the airway — unlike the C-shaped tracheal rings or the other laryngeal cartilages. It sits just below the thyroid cartilage and just above the first tracheal ring. Because it completely encircles the airway, pressure on it (the Sellick manoeuvre) can temporarily occlude the esophagus behind it.",
+    "visualDescription": "Larynx diagram with cricoid cartilage highlighted as a closed signet-ring shape, contrasted with open C-shape of tracheal rings below",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cricoid_cartilage",
+    "volatile": false,
+    "distractors": ["Thyroid cartilage", "Arytenoid cartilage", "Tracheal ring"],
+    "variants": [
+      {
+        "quizQuestion": "True or false: The cricoid cartilage is the only complete cartilaginous ring in the respiratory tract.",
+        "correctAnswer": "True",
+        "explanation": "All tracheal rings are C-shaped (open posteriorly), but the cricoid is a closed ring — a clinically important landmark for surgical airway access and laryngeal pressure techniques."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_007",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~12 cm",
+    "acceptableAlternatives": ["12 cm", "12cm", "approximately 12 cm"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the approximate length of the adult trachea?",
+    "explanation": "The trachea extends approximately 12 cm from the lower border of the cricoid cartilage (C6) to the carina (T4–T5), where it bifurcates into the left and right main bronchi. It is kept patent by 16–20 C-shaped hyaline cartilage rings.",
+    "visualDescription": "Anterior torso diagram with trachea highlighted from larynx to carina, length measurement arrow showing ~12 cm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trachea",
+    "volatile": false,
+    "distractors": ["~5 cm", "~20 cm", "~30 cm"],
+    "variants": [
+      {
+        "quizQuestion": "How many C-shaped cartilage rings reinforce the trachea?",
+        "correctAnswer": "16–20",
+        "explanation": "Between 16 and 20 incomplete hyaline cartilage rings keep the tracheal lumen open. The gaps face posteriorly, bridged by the trachealis smooth muscle."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_008",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Trachealis muscle",
+    "acceptableAlternatives": ["Trachealis"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "What smooth muscle bridges the open posterior gap of each tracheal cartilage ring?",
+    "explanation": "The C-shaped tracheal rings are open at the back, and the trachealis muscle spans this gap against the anterior wall of the esophagus. This arrangement allows the esophagus to bulge into the trachea during swallowing of large food boluses, while the trachealis can contract to narrow the tracheal lumen during coughing — increasing airflow velocity to expel mucus.",
+    "visualDescription": "Trachea cross-section showing C-shaped cartilage ring with trachealis muscle closing the posterior gap, esophagus visible behind",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trachealis_muscle",
+    "volatile": false,
+    "distractors": ["Cricothyroid muscle", "Internal intercostal", "Platysma"],
+    "variants": [
+      {
+        "quizQuestion": "The posterior wall of the trachea is closed not by cartilage but by which structure?",
+        "correctAnswer": "Trachealis muscle",
+        "explanation": "The trachealis is smooth muscle connecting the free ends of the tracheal cartilage rings posteriorly. Its contraction during coughing narrows the trachea, increasing air velocity to clear secretions."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_009",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Right main bronchus",
+    "acceptableAlternatives": ["Right bronchus", "Right primary bronchus"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Foreign bodies inhaled into the airway are more likely to lodge in which main bronchus, and why?",
+    "explanation": "The right main bronchus is wider, shorter, and more vertical (more nearly aligned with the trachea) than the left, which angles more sharply to accommodate the heart. Because of this straighter, larger channel, aspirated objects — pills, peanuts, toy parts — fall preferentially into the right bronchus and its lower lobe branches.",
+    "visualDescription": "Bronchial tree diagram with right bronchus highlighted, angle measurements showing it deviates less from the tracheal axis than the left",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bronchus",
+    "volatile": false,
+    "distractors": ["Left main bronchus", "Carina", "Right middle lobe bronchus"],
+    "variants": [
+      {
+        "quizQuestion": "Compared to the left main bronchus, the right main bronchus is wider, shorter, and more ___.",
+        "correctAnswer": "Vertical",
+        "explanation": "The right main bronchus branches from the trachea at a shallower angle than the left. This anatomical difference is clinically important because aspirated foreign bodies travel more directly into the right lung."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_010",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Three",
+    "acceptableAlternatives": ["3"],
+    "chainThemeId": "lungs_pleura",
+    "answerTypePoolId": "numbers",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many lobes does the right lung have?",
+    "explanation": "The right lung has three lobes — superior, middle, and inferior — separated by two fissures: the horizontal (minor) fissure separating the superior from the middle lobe, and the oblique (major) fissure separating the middle from the inferior lobe.",
+    "visualDescription": "Right lung lateral view with three lobes color-coded and both fissures labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lung",
+    "volatile": false,
+    "distractors": ["Two", "Four", "Five"],
+    "variants": [
+      {
+        "quizQuestion": "The right lung is divided into superior, middle, and inferior lobes by which two fissures?",
+        "correctAnswer": "Horizontal and oblique fissures",
+        "explanation": "The horizontal (minor) fissure divides the superior and middle lobes; the oblique (major) fissure divides the middle and inferior lobes. The left lung has only the oblique fissure."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_011",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Two",
+    "acceptableAlternatives": ["2"],
+    "chainThemeId": "lungs_pleura",
+    "answerTypePoolId": "numbers",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many lobes does the left lung have?",
+    "explanation": "The left lung has two lobes — superior and inferior — separated by a single oblique fissure. It is smaller than the right lung because the heart displaces space on the left side, creating the cardiac notch on its medial surface.",
+    "visualDescription": "Left lung medial view with two lobes labeled, cardiac notch indentation visible on its lower medial border",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lung",
+    "volatile": false,
+    "distractors": ["Three", "Four", "One"],
+    "variants": [
+      {
+        "quizQuestion": "Why is the left lung smaller than the right lung?",
+        "correctAnswer": "Cardiac notch — the heart displaces space on the left",
+        "explanation": "The medial surface of the left lung has a cardiac notch where the heart sits. This reduces the left lung's volume relative to the right. The lingula, a tongue-like projection of the left superior lobe, is considered the anatomical equivalent of the right middle lobe."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_012",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Lingula",
+    "acceptableAlternatives": [],
+    "chainThemeId": "lungs_pleura",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which tongue-shaped projection of the left lung's superior lobe is considered the anatomical equivalent of the right middle lobe?",
+    "explanation": "The lingula (Latin: 'little tongue') is a projection of the left superior lobe that extends antero-inferiorly. Because the left lung has no middle lobe, the lingula serves the same anatomical position and is often called the functional counterpart of the right middle lobe.",
+    "visualDescription": "Left lung anterior view with lingula highlighted as a downward-pointing tongue-shaped projection from the inferior border of the superior lobe",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lingula_of_left_lung",
+    "volatile": false,
+    "distractors": ["Left inferior lobe", "Left hilum", "Cardiac notch"],
+    "variants": [
+      {
+        "quizQuestion": "True or false: The lingula is a projection of the left lung's superior lobe that corresponds to the right middle lobe.",
+        "correctAnswer": "True",
+        "explanation": "The lingula occupies the same anatomical position as the right middle lobe but is a sub-segment of the left superior lobe, not a separate lobe."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_013",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Visceral and parietal pleura",
+    "acceptableAlternatives": ["Parietal and visceral pleura"],
+    "chainThemeId": "lungs_pleura",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What are the two layers of the pleura enclosing each lung?",
+    "explanation": "Each lung is enclosed in a double-layered sac. The visceral pleura adheres directly to the lung surface, while the parietal pleura lines the inner chest wall, diaphragm, and mediastinum. The pleural cavity between them contains approximately 5 mL of serous fluid that lubricates movement during breathing.",
+    "visualDescription": "Lung cross-section showing visceral pleura touching the lung surface, parietal pleura on the chest wall, and the pleural cavity gap between them",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pleural_cavity",
+    "volatile": false,
+    "distractors": ["Endothoracic and exothoracic fascia", "Fibrous and serous pericardium", "Costal and mediastinal peritoneum"],
+    "variants": [
+      {
+        "quizQuestion": "Which layer of the pleura directly covers the lung surface?",
+        "correctAnswer": "Visceral pleura",
+        "explanation": "The visceral pleura is firmly adhered to the lung parenchyma and cannot be easily separated from it. The parietal pleura lines the thoracic cavity and reflects around the lung root to become the visceral layer."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_014",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~5 mL",
+    "acceptableAlternatives": ["5 mL", "about 5 mL"],
+    "chainThemeId": "lungs_pleura",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "How much serous fluid is normally present in the pleural cavity?",
+    "explanation": "Under normal conditions the pleural cavity contains only about 5 mL of serous fluid. This thin film acts as a lubricant, allowing the visceral and parietal pleural surfaces to glide smoothly over each other during inspiration and expiration without friction.",
+    "visualDescription": "Magnified view of pleural cavity showing thin fluid layer between visceral and parietal layers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pleural_cavity",
+    "volatile": false,
+    "distractors": ["~50 mL", "~500 mL", "~1 mL"],
+    "variants": [
+      {
+        "quizQuestion": "What condition results when air abnormally accumulates in the pleural cavity, causing the lung to collapse?",
+        "correctAnswer": "Pneumothorax",
+        "explanation": "A pneumothorax occurs when air enters the pleural space — through a chest wound, ruptured bleb, or spontaneously — disrupting the negative pressure that keeps the lung expanded. The lung collapses away from the chest wall."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_015",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~480 million",
+    "acceptableAlternatives": ["480 million", "about 480 million"],
+    "chainThemeId": "alveoli",
+    "answerTypePoolId": "numbers",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Approximately how many alveoli are present in the adult human lungs?",
+    "explanation": "Modern stereological estimates place the total alveolar count at approximately 480 million in adult lungs. Each alveolus is a tiny grape-like air sac, and together they create an enormous surface area for gas exchange.",
+    "visualDescription": "Microscopic cross-section of lung parenchyma with alveoli visible as densely packed bubbles, scale bar shown",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_alveolus",
+    "volatile": false,
+    "distractors": ["~100 million", "~200 million", "~700 million"],
+    "variants": [
+      {
+        "quizQuestion": "The total gas-exchange surface area of both lungs is approximately how large — often compared to half a tennis court?",
+        "correctAnswer": "~70 m²",
+        "explanation": "The combined surface area of ~480 million alveoli is roughly 70 square metres — about half a tennis court — packed into a volume that fits inside the chest. This extraordinary surface-to-volume ratio enables rapid gas exchange."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_016",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Type I pneumocytes",
+    "acceptableAlternatives": ["Type I cells", "Type 1 pneumocytes"],
+    "chainThemeId": "alveoli",
+    "answerTypePoolId": "cell_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which alveolar cell type is extremely thin, covers ~95% of the alveolar surface, and is the primary site of gas exchange?",
+    "explanation": "Type I pneumocytes are flat squamous epithelial cells so thin (~0.1–0.2 µm) that gases diffuse through them almost instantaneously. Despite numbering only about 40% of alveolar cells, they cover ~95% of the inner surface area because of their enormous spread. Their thinness is essential — thick cells would slow diffusion and impair oxygenation.",
+    "visualDescription": "Alveolar wall cross-section with Type I pneumocyte drawn as very flat, thin cell spanning a large area, fused to capillary endothelium",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pneumocyte",
+    "volatile": false,
+    "distractors": ["Type II pneumocytes", "Alveolar macrophages", "Club cells"],
+    "variants": [
+      {
+        "quizQuestion": "True or false: Type I pneumocytes cover approximately 95% of the alveolar surface area.",
+        "correctAnswer": "True",
+        "explanation": "Despite being fewer in number than Type II pneumocytes, Type I cells are exceptionally thin and spread over a huge area, making them the dominant cell type by surface coverage and the main gas-exchange interface."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_017",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Type II pneumocytes",
+    "acceptableAlternatives": ["Type II cells", "Type 2 pneumocytes"],
+    "chainThemeId": "alveoli",
+    "answerTypePoolId": "cell_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which cuboidal alveolar cell type produces surfactant to reduce surface tension and prevent alveolar collapse?",
+    "explanation": "Type II pneumocytes are cuboidal cells containing lamellar bodies that secrete pulmonary surfactant — a mixture of phospholipids (mainly DPPC) and proteins. Surfactant coats the alveolar surface and dramatically reduces surface tension, preventing alveoli from collapsing on expiration. Without surfactant (as in premature infants with respiratory distress syndrome), breathing requires enormous effort.",
+    "visualDescription": "Alveolar wall with Type II pneumocyte shown as cuboidal cell with lamellar bodies (small dark vesicles), surfactant layer depicted on alveolar surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pneumocyte",
+    "volatile": false,
+    "distractors": ["Type I pneumocytes", "Alveolar macrophages", "Goblet cells"],
+    "variants": [
+      {
+        "quizQuestion": "Respiratory distress syndrome in premature infants is caused by deficiency of which substance produced by Type II pneumocytes?",
+        "correctAnswer": "Surfactant",
+        "explanation": "Surfactant production begins around 26 weeks of gestation and is adequate by ~35 weeks. Premature birth before this threshold leaves alveoli prone to collapse with each breath, causing infant respiratory distress syndrome (IRDS)."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_018",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~100 mmHg",
+    "acceptableAlternatives": ["100 mmHg", "approximately 100 mmHg"],
+    "chainThemeId": "gas_exchange",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What is the approximate partial pressure of oxygen (PO₂) in the alveoli?",
+    "explanation": "Alveolar PO₂ is approximately 100 mmHg under normal conditions. Pulmonary capillary blood arriving from the right heart has a PO₂ of only ~40 mmHg, so oxygen diffuses rapidly down its concentration gradient from alveolus to blood across the thin respiratory membrane.",
+    "visualDescription": "Alveolus-capillary diagram with PO₂ values labeled: 100 mmHg in alveolar air, 40 mmHg in incoming venous blood, arrows showing O₂ diffusion direction",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Respiratory_system",
+    "volatile": false,
+    "distractors": ["~40 mmHg", "~160 mmHg", "~60 mmHg"],
+    "variants": [
+      {
+        "quizQuestion": "Oxygen diffuses from alveoli into pulmonary capillary blood because alveolar PO₂ (~100 mmHg) is higher than capillary PO₂ of approximately ___.",
+        "correctAnswer": "~40 mmHg",
+        "explanation": "Deoxygenated venous blood returning to the lungs has a PO₂ of ~40 mmHg. The 60 mmHg gradient drives rapid O₂ diffusion across the respiratory membrane until equilibrium is reached."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_019",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~500 mL",
+    "acceptableAlternatives": ["500 mL", "approximately 500 mL"],
+    "chainThemeId": "lung_volumes",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the average tidal volume — the amount of air moved in or out with each normal, resting breath?",
+    "explanation": "Tidal volume (TV) is approximately 500 mL in a resting adult. Of this, about 150 mL fills anatomical dead space (trachea and bronchi) where no gas exchange occurs, and ~350 mL reaches the alveoli. Tidal volume can increase several-fold during exercise.",
+    "visualDescription": "Spirogram graph with tidal volume section highlighted between two quiet breaths, 500 mL labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tidal_volume",
+    "volatile": false,
+    "distractors": ["~150 mL", "~1200 mL", "~2500 mL"],
+    "variants": [
+      {
+        "quizQuestion": "Of the ~500 mL tidal volume, approximately how much reaches the alveoli for gas exchange (alveolar ventilation per breath)?",
+        "correctAnswer": "~350 mL",
+        "explanation": "The ~150 mL of anatomical dead space (conducting airways from nose to terminal bronchioles) does not participate in gas exchange. Only the remaining ~350 mL reaches the alveoli."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_020",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~4800 mL",
+    "acceptableAlternatives": ["4800 mL", "approximately 4800 mL"],
+    "chainThemeId": "lung_volumes",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "What is the approximate vital capacity of the lungs — the maximum volume of air that can be exhaled after a maximum inhalation?",
+    "explanation": "Vital capacity (VC) is the sum of tidal volume (~500 mL) + inspiratory reserve volume (~3100 mL) + expiratory reserve volume (~1200 mL) = approximately 4800 mL. It represents the maximum usable ventilatory range and is an important measure of respiratory function; reduced VC indicates restrictive lung disease.",
+    "visualDescription": "Spirogram with vital capacity bracket spanning from maximum inspiration to maximum expiration, sum of TV + IRV + ERV labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vital_capacity",
+    "volatile": false,
+    "distractors": ["~2400 mL", "~3500 mL", "~6000 mL"],
+    "variants": [
+      {
+        "quizQuestion": "Vital capacity equals tidal volume plus inspiratory reserve volume plus which other lung volume?",
+        "correctAnswer": "Expiratory reserve volume",
+        "explanation": "VC = TV + IRV + ERV. The residual volume (~1200 mL) is not included because it cannot be exhaled — it remains in the lungs even after maximum expiration and can only be measured indirectly."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_021",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~6000 mL",
+    "acceptableAlternatives": ["6000 mL", "6 L", "approximately 6000 mL"],
+    "chainThemeId": "lung_volumes",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the approximate total lung capacity (TLC) in a healthy adult?",
+    "explanation": "Total lung capacity is the volume of air in the lungs after a maximum inhalation. TLC = vital capacity (~4800 mL) + residual volume (~1200 mL) ≈ 6000 mL (6 L). Because residual volume cannot be exhaled, TLC must be measured with specialised techniques such as helium dilution or whole-body plethysmography.",
+    "visualDescription": "Complete lung volume spirogram showing all subdivisions stacked, TLC bracket spanning the full height at ~6000 mL",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Total_lung_capacity",
+    "volatile": false,
+    "distractors": ["~4800 mL", "~3000 mL", "~8000 mL"],
+    "variants": [
+      {
+        "quizQuestion": "Total lung capacity equals vital capacity plus which volume that cannot be measured by spirometry alone?",
+        "correctAnswer": "Residual volume",
+        "explanation": "Residual volume (~1200 mL) remains in the lungs after maximum expiration and cannot be expelled or directly measured by a spirometer. TLC = VC + RV ≈ 6000 mL."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_022",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Diaphragm",
+    "acceptableAlternatives": [],
+    "chainThemeId": "breathing_mechanics",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which dome-shaped muscle is the primary muscle of quiet inspiration?",
+    "explanation": "The diaphragm is a dome-shaped sheet of skeletal muscle separating the thoracic and abdominal cavities. During inspiration it contracts and flattens downward, increasing thoracic volume and drawing air in. It is responsible for approximately 70–80% of the work of quiet breathing and is innervated by the phrenic nerve (C3, C4, C5 — 'C3, 4, 5 keeps the diaphragm alive').",
+    "visualDescription": "Coronal torso cross-section with diaphragm shown as a dome, arrows indicating it flattens downward during inspiration, lungs expanding above",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_diaphragm",
+    "volatile": false,
+    "distractors": ["External intercostals", "Sternocleidomastoid", "Scalenes"],
+    "variants": [
+      {
+        "quizQuestion": "The diaphragm is innervated by the phrenic nerve, which arises from which spinal cord levels?",
+        "correctAnswer": "C3, C4, C5",
+        "explanation": "The mnemonic 'C3, 4, 5 keeps the diaphragm alive' reminds students of the phrenic nerve's origin. Spinal cord injuries above C3 paralyse the diaphragm, requiring mechanical ventilation."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_023",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "External intercostals",
+    "acceptableAlternatives": ["External intercostal muscles"],
+    "chainThemeId": "breathing_mechanics",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which muscles elevate the ribs during normal inspiration, assisting the diaphragm?",
+    "explanation": "The external intercostal muscles run obliquely from the rib above to the rib below (fibres directed inferiorly and anteriorly). When they contract they elevate and evert the ribs, increasing the anteroposterior and lateral dimensions of the thoracic cage and assisting inspiration. During forced expiration the internal intercostals depress the ribs.",
+    "visualDescription": "Rib cage diagram with external intercostal muscle fibres highlighted, directional arrows showing rib elevation during contraction",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/External_intercostal_muscles",
+    "volatile": false,
+    "distractors": ["Internal intercostals", "Abdominals", "Serratus anterior"],
+    "variants": [
+      {
+        "quizQuestion": "During forced expiration, which muscles depress the ribs to actively reduce thoracic volume?",
+        "correctAnswer": "Internal intercostals",
+        "explanation": "Internal intercostals have fibres that run opposite to the external intercostals. During forced expiration (exercise, coughing), they pull ribs downward, actively reducing thoracic volume along with the abdominal muscles."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_024",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~1200 mL",
+    "acceptableAlternatives": ["1200 mL", "approximately 1200 mL"],
+    "chainThemeId": "lung_volumes",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "What is the approximate residual volume — the air remaining in the lungs after a maximum forced expiration?",
+    "explanation": "The residual volume (RV) is ~1200 mL. It cannot be expelled because airway closure and the elastic recoil of the chest wall prevent further deflation. RV keeps the alveoli partially open between breaths and prevents them from collapsing completely. Functional residual capacity (FRC) = RV + ERV ≈ 2400 mL — the volume in the lungs at end of a normal, passive expiration.",
+    "visualDescription": "Spirogram with residual volume shown below the zero expiration line, cannot-be-exhaled zone shaded, FRC bracket shown",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Residual_volume",
+    "volatile": false,
+    "distractors": ["~500 mL", "~2400 mL", "~3100 mL"],
+    "variants": [
+      {
+        "quizQuestion": "Functional residual capacity (FRC) is the sum of residual volume and which other lung volume?",
+        "correctAnswer": "Expiratory reserve volume",
+        "explanation": "FRC = RV (~1200 mL) + ERV (~1200 mL) ≈ 2400 mL. FRC is the equilibrium point of the respiratory system — the lung volume present at the end of a passive (relaxed) expiration."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_025",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~3100 mL",
+    "acceptableAlternatives": ["3100 mL", "approximately 3100 mL"],
+    "chainThemeId": "lung_volumes",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "What is the approximate inspiratory reserve volume — the extra air that can be forcefully inhaled beyond a normal tidal breath?",
+    "explanation": "The inspiratory reserve volume (IRV) is approximately 3100 mL. After a normal resting inhalation of ~500 mL (tidal volume), an additional ~3100 mL can be drawn in by maximal contraction of the diaphragm and accessory inspiratory muscles (scalenes, sternocleidomastoid, pectoralis minor). IRV is the largest lung volume subdivision and provides significant reserve for increased oxygen demand during exercise.",
+    "visualDescription": "Spirogram with IRV bracket shown above the tidal volume peak, labeled ~3100 mL, accessory muscle icons alongside",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lung_volumes",
+    "volatile": false,
+    "distractors": ["~500 mL", "~1200 mL", "~4800 mL"],
+    "variants": [
+      {
+        "quizQuestion": "Which lung volume is the largest subdivision at approximately 3100 mL, representing the extra air inhaled beyond a normal tidal breath?",
+        "correctAnswer": "Inspiratory reserve volume",
+        "explanation": "IRV (~3100 mL) is the largest of the four basic lung volumes. Combined with TV and ERV it forms vital capacity (~4800 mL), the maximum air that can be moved in one breath cycle."
+      }
+    ]
+  }
+]

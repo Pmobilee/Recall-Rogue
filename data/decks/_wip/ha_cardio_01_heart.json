@@ -1,0 +1,548 @@
+[
+  {
+    "id": "ha_cardio_001",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Four",
+    "acceptableAlternatives": ["4"],
+    "chainThemeId": "heart_chambers",
+    "answerTypePoolId": "numbers",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many chambers does the human heart have?",
+    "explanation": "The heart has four chambers: the right atrium and right ventricle on one side, and the left atrium and left ventricle on the other. This double-pump design keeps oxygenated and deoxygenated blood separated.",
+    "visualDescription": "Cross-section diagram of heart showing four labeled chambers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Two", "Three", "Six"],
+    "variants": [
+      {
+        "quizQuestion": "The heart is divided into how many distinct chambers?",
+        "correctAnswer": "Four",
+        "explanation": "Two atria (upper receiving chambers) and two ventricles (lower pumping chambers) make up the heart's four-chamber structure."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_002",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Left ventricle",
+    "acceptableAlternatives": [],
+    "chainThemeId": "heart_chambers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which heart chamber has the thickest muscular wall?",
+    "explanation": "The left ventricle has the thickest wall because it must generate enough pressure to pump oxygenated blood throughout the entire body — a far greater workload than pumping blood only to the nearby lungs.",
+    "visualDescription": "Heart cross-section with left ventricle wall highlighted as thickest",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Right ventricle", "Left atrium", "Right atrium"],
+    "variants": [
+      {
+        "quizQuestion": "Which chamber pumps oxygenated blood out to the body and has the thickest wall?",
+        "correctAnswer": "Left ventricle",
+        "explanation": "The left ventricle drives systemic circulation and must overcome the high resistance of the entire body's vasculature, requiring a very thick myocardium."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_003",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Right atrium",
+    "acceptableAlternatives": [],
+    "chainThemeId": "heart_chambers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "Which heart chamber receives deoxygenated blood from the superior and inferior vena cava?",
+    "explanation": "The right atrium collects oxygen-depleted blood returning from the body via the superior vena cava (upper body) and inferior vena cava (lower body), then passes it to the right ventricle.",
+    "visualDescription": "Heart diagram with SVC and IVC arrows pointing into right atrium",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Left atrium", "Right ventricle", "Left ventricle"],
+    "variants": [
+      {
+        "quizQuestion": "The superior vena cava and inferior vena cava both drain into which heart chamber?",
+        "correctAnswer": "Right atrium",
+        "explanation": "Both venae cavae empty deoxygenated blood into the right atrium, the entry point of systemic venous return."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_004",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Left atrium",
+    "acceptableAlternatives": [],
+    "chainThemeId": "heart_chambers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "Which heart chamber receives oxygenated blood from the four pulmonary veins?",
+    "explanation": "After gas exchange in the lungs, oxygenated blood returns via four pulmonary veins — two from each lung — draining into the left atrium before flowing to the left ventricle.",
+    "visualDescription": "Heart diagram with four pulmonary vein arrows feeding into left atrium",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Right atrium", "Left ventricle", "Right ventricle"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_005",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Tricuspid valve",
+    "acceptableAlternatives": ["Tricuspid"],
+    "chainThemeId": "heart_valves",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which valve with three cusps controls blood flow from the right atrium to the right ventricle?",
+    "explanation": "The tricuspid valve (tri = three) sits between the right atrium and right ventricle. Its three leaflets are anchored by chordae tendineae to papillary muscles, preventing the valve from inverting during ventricular contraction.",
+    "visualDescription": "Diagram of tricuspid valve with three cusps labeled between RA and RV",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Mitral valve", "Aortic valve", "Pulmonary valve"],
+    "variants": [
+      {
+        "quizQuestion": "The right atrioventricular valve is also called the _____ valve.",
+        "correctAnswer": "Tricuspid",
+        "explanation": "The right AV valve has three cusps, earning it the name 'tricuspid.' The left AV valve has two cusps and is called the mitral (or bicuspid) valve."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_006",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Mitral valve",
+    "acceptableAlternatives": ["Bicuspid valve", "Mitral", "Bicuspid"],
+    "chainThemeId": "heart_valves",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which two-cusped AV valve guards the opening between the left atrium and left ventricle?",
+    "explanation": "The mitral valve (also called the bicuspid valve) has just two leaflets — unlike the three-leaflet tricuspid on the right side. Its shape resembles a bishop's mitre, which is how it got its name. Like all AV valves, it has chordae tendineae.",
+    "visualDescription": "Diagram of mitral valve with two cusps between LA and LV",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Tricuspid valve", "Aortic valve", "Pulmonary valve"],
+    "variants": [
+      {
+        "quizQuestion": "The left atrioventricular valve is also known as the bicuspid or _____ valve.",
+        "correctAnswer": "Mitral",
+        "explanation": "The mitral valve is the only AV valve with two cusps. It sits between the left atrium and left ventricle and is the most commonly diseased valve in rheumatic heart disease."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_007",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Chordae tendineae",
+    "acceptableAlternatives": ["Chordae"],
+    "chainThemeId": "heart_valves",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What fibrous cord structures anchor the AV valve leaflets to the papillary muscles, preventing prolapse?",
+    "explanation": "Chordae tendineae — literally 'tendinous cords' — are tough fibrous strings that run from the papillary muscles to the edges of the tricuspid and mitral valve leaflets. They act like parachute strings, keeping the valves from flipping backward into the atria during systole.",
+    "visualDescription": "Close-up of mitral valve showing chordae tendineae as cord-like attachments",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Purkinje fibers", "Trabeculae carneae", "Pectinate muscles"],
+    "variants": [
+      {
+        "quizQuestion": "AV valves are prevented from prolapsing back into the atria by papillary muscles and _____ tendineae.",
+        "correctAnswer": "Chordae",
+        "explanation": "Chordae tendineae are the fibrous cords that tether AV valve leaflets. Semilunar valves (aortic and pulmonary) have no chordae — they open and close solely by blood pressure changes."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_008",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Semilunar valves",
+    "acceptableAlternatives": ["Pulmonary and aortic valves", "Aortic and pulmonary valves"],
+    "chainThemeId": "heart_valves",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which valves open by blood pressure alone and have no chordae tendineae?",
+    "explanation": "The semilunar valves — the pulmonary valve (RV to pulmonary trunk) and aortic valve (LV to aorta) — each have three half-moon-shaped cusps. They are pushed open by ventricular pressure and snap shut when pressure drops at the end of systole. No chordae needed.",
+    "visualDescription": "Diagram of aortic and pulmonary semilunar valves with three half-moon cusps",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["AV valves", "Tricuspid and mitral valves", "Mitral and aortic valves"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_009",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "S1 (lub)",
+    "acceptableAlternatives": ["S1", "The first heart sound", "Lub"],
+    "chainThemeId": "heart_valves",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "The closing of the AV valves at the start of systole produces which heart sound?",
+    "explanation": "S1 — the 'lub' — occurs when the mitral and tricuspid valves snap shut as ventricular pressure rises at the beginning of systole. S2 ('dub') follows when the semilunar valves close at the end of systole.",
+    "visualDescription": "Phonocardiogram wave labeled S1 and S2 with systole and diastole phases",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["S2 (dub)", "S3", "S4"],
+    "variants": [
+      {
+        "quizQuestion": "In the 'lub-dub' of the heartbeat, what does the 'lub' (S1) represent?",
+        "correctAnswer": "AV valves closing",
+        "explanation": "S1 marks the beginning of systole when the mitral and tricuspid valves close. The 'dub' (S2) marks the end of systole when the aortic and pulmonary valves close."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_010",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "S2 (dub)",
+    "acceptableAlternatives": ["S2", "The second heart sound", "Dub"],
+    "chainThemeId": "heart_valves",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which heart sound is produced by the closing of the semilunar valves, marking the beginning of diastole?",
+    "explanation": "S2 — the 'dub' — is produced when the aortic and pulmonary valves snap shut as ventricular pressure falls below aortic/pulmonary pressure at the end of systole. This is the start of diastole, when ventricles begin to relax and refill.",
+    "visualDescription": "Cardiac cycle diagram with S2 marked at semilunar valve closure",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["S1 (lub)", "S3", "S4"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_011",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Left anterior descending artery (LAD)",
+    "acceptableAlternatives": ["LAD", "Left anterior descending", "Anterior interventricular artery"],
+    "chainThemeId": "coronary_arteries",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which coronary artery is nicknamed the 'widow maker' because its occlusion is the most lethal?",
+    "explanation": "The LAD (left anterior descending artery) supplies the anterior left ventricle and anterior interventricular septum — the bulk of the heart's pumping muscle. Blockage here causes a massive anterior MI with very high mortality, earning its grim nickname.",
+    "visualDescription": "Heart diagram with LAD highlighted descending on anterior surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coronary_circulation",
+    "volatile": false,
+    "distractors": ["Right coronary artery", "Left circumflex artery", "Posterior descending artery"],
+    "variants": [
+      {
+        "quizQuestion": "The LAD (left anterior descending) artery supplies the anterior left ventricle and anterior interventricular _____ .",
+        "correctAnswer": "Septum",
+        "explanation": "The LAD travels down the anterior interventricular groove, supplying the anterior wall of the LV and the anterior two-thirds of the interventricular septum. Its occlusion is called the 'widow maker' MI."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_012",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Left main coronary artery",
+    "acceptableAlternatives": ["Left main", "Left main coronary"],
+    "chainThemeId": "coronary_arteries",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which coronary artery branches into the LAD and the left circumflex artery?",
+    "explanation": "The left main coronary artery is a short but critical vessel that quickly divides into the LAD (supplying the anterior heart) and the left circumflex artery (supplying the lateral and posterior left ventricle).",
+    "visualDescription": "Coronary artery diagram showing left main bifurcating into LAD and circumflex",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coronary_circulation",
+    "volatile": false,
+    "distractors": ["Right coronary artery", "Posterior descending artery", "Marginal artery"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_013",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Right coronary artery (RCA)",
+    "acceptableAlternatives": ["RCA", "Right coronary artery"],
+    "chainThemeId": "coronary_arteries",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which artery supplies the SA node in about 60% of people and the AV node in about 85% of people?",
+    "explanation": "The right coronary artery (RCA) supplies the right atrium, right ventricle, SA node (in ~60% of people), and AV node (in ~85% of people). In right-dominant hearts (85% of people), the RCA also gives rise to the posterior descending artery (PDA).",
+    "visualDescription": "Diagram of RCA traveling in right atrioventricular groove with SA/AV node supply labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coronary_circulation",
+    "volatile": false,
+    "distractors": ["Left anterior descending artery", "Left circumflex artery", "Left main coronary artery"],
+    "variants": [
+      {
+        "quizQuestion": "In right-dominant hearts (85% of people), which artery gives rise to the posterior descending artery (PDA)?",
+        "correctAnswer": "Right coronary artery (RCA)",
+        "explanation": "In right-dominant coronary anatomy — the most common pattern — the RCA gives rise to the PDA, which supplies the inferior ventricular wall and the posterior third of the interventricular septum."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_014",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Left circumflex artery",
+    "acceptableAlternatives": ["Circumflex artery", "Left circumflex"],
+    "chainThemeId": "coronary_arteries",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "Which branch of the left main coronary artery supplies the lateral and posterior left ventricle?",
+    "explanation": "The left circumflex artery wraps around the left side of the heart in the atrioventricular groove, supplying the lateral wall and posterior wall of the left ventricle. It branches off the left main coronary artery alongside the LAD.",
+    "visualDescription": "Heart diagram with left circumflex artery curving around lateral/posterior LV",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coronary_circulation",
+    "volatile": false,
+    "distractors": ["Left anterior descending artery", "Right coronary artery", "Posterior descending artery"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_015",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "SA node (sinoatrial node)",
+    "acceptableAlternatives": ["SA node", "Sinoatrial node"],
+    "chainThemeId": "conduction_system",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which structure is known as the heart's primary pacemaker?",
+    "explanation": "The sinoatrial (SA) node is a cluster of specialized cells in the right atrium near the junction with the superior vena cava. It spontaneously depolarizes at 60–100 times per minute, setting the normal heart rate. All other conduction structures have slower intrinsic rates and follow the SA node's lead.",
+    "visualDescription": "Heart diagram with SA node highlighted in upper right atrium near SVC",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["AV node", "Bundle of His", "Purkinje fibers"],
+    "variants": [
+      {
+        "quizQuestion": "The SA node is located in which heart chamber, near the junction with the superior vena cava?",
+        "correctAnswer": "Right atrium",
+        "explanation": "The SA node sits in the wall of the right atrium near where the superior vena cava empties in. Its spontaneous firing rate of 60–100 bpm establishes normal sinus rhythm."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_016",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "60–100 bpm",
+    "acceptableAlternatives": ["60 to 100 bpm", "60-100 beats per minute"],
+    "chainThemeId": "conduction_system",
+    "answerTypePoolId": "numbers",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "What is the intrinsic firing rate of the SA node?",
+    "explanation": "The SA node fires spontaneously at 60–100 beats per minute, which defines the normal resting heart rate range. If the SA node fails, the AV node takes over at its slower rate of 40–60 bpm, and if that fails, the Purkinje fibers maintain a very slow rate of 20–40 bpm.",
+    "visualDescription": "Table comparing intrinsic rates: SA 60-100, AV 40-60, Purkinje 20-40 bpm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["40–60 bpm", "20–40 bpm", "100–120 bpm"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_017",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "AV node (atrioventricular node)",
+    "acceptableAlternatives": ["AV node", "Atrioventricular node"],
+    "chainThemeId": "conduction_system",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which structure is the only normal electrical connection between the atria and ventricles, and delays the signal by about 0.1 seconds?",
+    "explanation": "The AV node sits in the interatrial septum and intentionally slows conduction by about 0.1 seconds. This delay lets the atria finish contracting and emptying into the ventricles before the ventricles contract — critical for efficient cardiac output.",
+    "visualDescription": "Conduction system diagram with AV node labeled in interatrial septum and delay arrow",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["SA node", "Bundle of His", "Left bundle branch"],
+    "variants": [
+      {
+        "quizQuestion": "Why does the AV node delay the electrical impulse by ~0.1 seconds?",
+        "correctAnswer": "To allow atria to finish contracting before the ventricles contract",
+        "explanation": "The AV node's delay ensures the atria have fully emptied blood into the ventricles before ventricular systole begins, maximizing stroke volume."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_018",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "40–60 bpm",
+    "acceptableAlternatives": ["40 to 60 bpm", "40-60 beats per minute"],
+    "chainThemeId": "conduction_system",
+    "answerTypePoolId": "numbers",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "What is the intrinsic backup pacing rate of the AV node if the SA node fails?",
+    "explanation": "If the SA node fails, the AV node takes over as a secondary pacemaker at its intrinsic rate of 40–60 bpm. This is slower than normal but still sustains life. Purkinje fibers provide the last-resort backup at just 20–40 bpm.",
+    "visualDescription": "Conduction system backup hierarchy diagram: SA (60-100) → AV (40-60) → Purkinje (20-40)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["60–100 bpm", "20–40 bpm", "80–120 bpm"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_019",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Bundle of His",
+    "acceptableAlternatives": ["His bundle"],
+    "chainThemeId": "conduction_system",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which conduction structure passes through the interventricular septum, connecting the AV node to the bundle branches?",
+    "explanation": "The bundle of His (pronounced 'hiss') is a tract of specialized cardiac muscle fibers that travels through the fibrous skeleton of the heart and into the interventricular septum, where it splits into the left and right bundle branches.",
+    "visualDescription": "Conduction diagram showing Bundle of His in interventricular septum between AV node and bundle branches",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Purkinje fibers", "SA node", "Right bundle branch"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_020",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Purkinje fibers",
+    "acceptableAlternatives": ["Purkinje fibres"],
+    "chainThemeId": "conduction_system",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which cells are the fastest-conducting in the heart and spread the electrical impulse to the ventricular myocardium?",
+    "explanation": "Purkinje fibers are specialized cardiomyocytes that conduct electrical impulses very rapidly through the ventricular walls, ensuring the ventricles contract in a coordinated, efficient squeeze from apex to base. Their intrinsic pacemaker rate is just 20–40 bpm — a last-resort backup.",
+    "visualDescription": "Conduction diagram with Purkinje fiber network spreading through ventricular walls",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Bundle of His", "SA node cells", "AV nodal cells"],
+    "variants": [
+      {
+        "quizQuestion": "Purkinje fibers serve as a pacemaker of last resort with an intrinsic rate of how many bpm?",
+        "correctAnswer": "20–40 bpm",
+        "explanation": "Purkinje fibers fire at only 20–40 bpm if both the SA and AV nodes fail — slow enough to sustain minimal circulation but not comfortable. Their primary role is rapid impulse distribution, not pacing."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_021",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Systole",
+    "acceptableAlternatives": [],
+    "chainThemeId": "cardiac_cycle",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "What term describes the phase of the cardiac cycle when the ventricles contract and pump blood out?",
+    "explanation": "Systole is the contraction phase: the ventricles squeeze, pressure rises, the semilunar valves open, and blood is ejected into the aorta and pulmonary trunk. The opposite phase — ventricular relaxation and filling — is called diastole.",
+    "visualDescription": "Cardiac cycle diagram with systole and diastole phases labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Diastole", "Depolarization", "Repolarization"],
+    "variants": [
+      {
+        "quizQuestion": "The 'relaxation and filling' phase of the cardiac cycle is called _____ .",
+        "correctAnswer": "Diastole",
+        "explanation": "During diastole, the ventricles relax and fill with blood from the atria. The AV valves are open and the semilunar valves are closed. Diastole is longer than systole at normal resting heart rates."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_022",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Cardiac output = HR × stroke volume",
+    "acceptableAlternatives": ["CO = HR × SV", "Heart rate multiplied by stroke volume"],
+    "chainThemeId": "cardiac_cycle",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the formula for cardiac output?",
+    "explanation": "Cardiac output (CO) = Heart Rate (HR) × Stroke Volume (SV). At rest, a typical CO is about 5 L/min: roughly 70 beats/min × 70 mL/beat. During intense exercise, CO can rise to 20–25 L/min in trained athletes.",
+    "visualDescription": "Formula card: CO = HR × SV with normal values annotated",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["CO = BP × HR", "CO = SV / HR", "CO = HR + SV"],
+    "variants": [
+      {
+        "quizQuestion": "At a resting heart rate of 70 bpm and stroke volume of 70 mL, what is the approximate cardiac output?",
+        "correctAnswer": "~5 L/min",
+        "explanation": "70 bpm × 70 mL = 4,900 mL/min ≈ 5 L/min. This is the typical resting cardiac output, meaning the entire blood volume is pumped approximately once per minute."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_023",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "55–70%",
+    "acceptableAlternatives": ["55 to 70 percent", "55%-70%"],
+    "chainThemeId": "cardiac_cycle",
+    "answerTypePoolId": "numbers",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "What is the normal range for left ventricular ejection fraction?",
+    "explanation": "Ejection fraction (EF) is the percentage of blood in the left ventricle that is ejected with each heartbeat. Normal EF is 55–70%. An EF below 40% indicates heart failure with reduced ejection fraction (HFrEF), a serious condition.",
+    "visualDescription": "Diagram showing ventricle at end-diastole and end-systole with EF percentage labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["30–45%", "75–90%", "45–50%"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_024",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Myocardium",
+    "acceptableAlternatives": [],
+    "chainThemeId": "heart_wall",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "Which of the three heart wall layers is the thick muscular middle layer responsible for pumping?",
+    "explanation": "The heart wall has three layers: the epicardium (outer), myocardium (middle), and endocardium (inner lining). The myocardium is by far the thickest — it is the cardiac muscle itself, and its contraction powers every heartbeat.",
+    "visualDescription": "Cross-section of heart wall showing three layers: epicardium, myocardium, endocardium",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["Epicardium", "Endocardium", "Pericardium"],
+    "variants": [
+      {
+        "quizQuestion": "Name the three layers of the heart wall from outer to inner.",
+        "correctAnswer": "Epicardium, myocardium, endocardium",
+        "explanation": "The epicardium (= visceral pericardium) is the outer layer; the myocardium is the thick muscular middle layer; the endocardium is the smooth inner lining that contacts blood in the chambers."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_025",
+    "subDeckId": "cardiovascular",
+    "correctAnswer": "Pericardial cavity",
+    "acceptableAlternatives": ["Pericardial space"],
+    "chainThemeId": "heart_wall",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "The space between the parietal and visceral layers of the serous pericardium normally contains about how much lubricating fluid?",
+    "explanation": "The pericardial cavity — between the parietal pericardium and the visceral pericardium (epicardium) — normally holds about 20 mL of serous fluid. This fluid reduces friction as the heart beats. In pericardial effusion, this fluid can accumulate to dangerous volumes and compress the heart.",
+    "visualDescription": "Diagram of pericardial layers with ~20mL fluid volume labeled in cavity",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "volatile": false,
+    "distractors": ["~200 mL", "~5 mL", "~100 mL"],
+    "variants": [
+      {
+        "quizQuestion": "The pericardium has two main layers: the outer fibrous pericardium and the inner _____ pericardium (which itself has parietal and visceral layers).",
+        "correctAnswer": "Serous",
+        "explanation": "The serous pericardium has two layers: the parietal layer lining the fibrous pericardium, and the visceral layer (epicardium) covering the heart surface. The pericardial cavity between them contains ~20 mL of lubricating fluid."
+      }
+    ]
+  }
+]

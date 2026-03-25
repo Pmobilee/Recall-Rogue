@@ -1,0 +1,912 @@
+{
+  "id": "ha_repro_02_female",
+  "name": "Reproductive System — Female & Hormones",
+  "domain": "human_anatomy",
+  "subDomain": "reproductive_system",
+  "description": "Master the female reproductive system: ovaries, uterine tubes, uterus, vagina, vulva, oogenesis, the menstrual cycle, and the hormones that coordinate it all. Every fact is verified against Wikipedia.",
+  "minimumFacts": 20,
+  "targetFacts": 25,
+  "facts": [
+    {
+      "id": "ha_repro_026",
+      "correctAnswer": "Ovaries",
+      "acceptableAlternatives": ["Ovary"],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Fallopian tubes",
+        "Uterus",
+        "Vagina",
+        "Adrenal glands"
+      ],
+      "quizQuestion": "Which paired female gonads (~3×1.5×1 cm) produce oocytes and secrete estrogen and progesterone?",
+      "explanation": "The ovaries are the primary female reproductive organs. Each is roughly the size and shape of an almond (~3×1.5×1 cm). They have two functions: producing and releasing oocytes (exocrine function) and secreting the sex hormones estrogen and progesterone (endocrine function). They are held in place by the suspensory ligament of the ovary and the ovarian ligament.",
+      "statement": "The ovaries are the paired female gonads that produce oocytes and secrete estrogen and progesterone.",
+      "wowFactor": "Unlike the testes, which produce sperm continuously from puberty onward, a female is born with her entire lifetime supply of oocytes — approximately 1–2 million — already present.",
+      "visualDescription": "Anatomical illustration of the female pelvic cavity with both almond-sized ovaries highlighted, flanking the uterus, with fallopian tubes extending laterally",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ovary",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The ovaries produce both oocytes and the sex hormones estrogen and progesterone.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_027",
+      "correctAnswer": "Graafian follicle",
+      "acceptableAlternatives": ["Mature follicle", "Graafian (mature) follicle"],
+      "chainThemeId": "oogenesis",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Primary follicle",
+        "Primordial follicle",
+        "Secondary follicle",
+        "Corpus luteum"
+      ],
+      "quizQuestion": "What fully mature ovarian follicle, named after a 17th-century Dutch anatomist, ruptures at ovulation to release the oocyte?",
+      "explanation": "The Graafian follicle (tertiary/mature follicle) is the final stage of follicular development, named after Regnier de Graaf. It contains a large fluid-filled antrum and the oocyte surrounded by cumulus oophorus cells. At ovulation, the LH surge causes the follicle to rupture, releasing the secondary oocyte into the peritoneal cavity near the fallopian tube fimbriae.",
+      "statement": "The Graafian (mature) follicle is the fully developed ovarian follicle that ruptures at ovulation, releasing the oocyte.",
+      "wowFactor": "The Graafian follicle can be up to 20–25 mm in diameter just before ovulation — large enough to be seen on ultrasound as a clearly visible cyst on the ovary surface.",
+      "visualDescription": "Cross-section of an ovary with a large fluid-filled Graafian follicle bulging from the surface, the oocyte visible within surrounded by cumulus cells",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Graafian_follicle",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "In the correct order of follicular development, what stage immediately precedes the Graafian follicle?",
+          "correctAnswer": "Tertiary (antral) follicle",
+          "distractors": ["Primordial follicle", "Primary follicle", "Corpus luteum"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_028",
+      "correctAnswer": "Corpus luteum",
+      "acceptableAlternatives": [],
+      "chainThemeId": "oogenesis",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Corpus albicans",
+        "Graafian follicle",
+        "Primordial follicle",
+        "Cumulus oophorus"
+      ],
+      "quizQuestion": "What temporary endocrine structure forms from the ruptured follicle after ovulation and secretes progesterone to maintain the endometrium?",
+      "explanation": "After ovulation the ruptured Graafian follicle collapses and the remaining granulosa and theca cells luteinize (fill with yellow lipid) to form the corpus luteum ('yellow body'). Under LH stimulation it secretes progesterone (and some estrogen) for ~14 days to maintain the uterine endometrium for a potential implantation. If no pregnancy occurs, it degenerates into the corpus albicans.",
+      "statement": "The corpus luteum forms from the ruptured follicle after ovulation, secreting progesterone to maintain the endometrium during the luteal phase.",
+      "wowFactor": "If pregnancy occurs, hCG from the embryo 'rescues' the corpus luteum, keeping it active for the first trimester until the placenta can take over progesterone production.",
+      "visualDescription": "Ovary cross-section showing a yellowish corpus luteum occupying the site of the ruptured follicle, with progesterone molecule icons radiating outward",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Corpus_luteum",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What does the corpus luteum degenerate into if fertilization does not occur?",
+          "correctAnswer": "Corpus albicans",
+          "distractors": ["Corpus striatum", "Primordial follicle", "Graafian follicle"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The corpus luteum secretes progesterone to maintain the endometrium during the luteal phase.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_029",
+      "correctAnswer": "Ampulla",
+      "acceptableAlternatives": ["Ampulla of the fallopian tube", "Ampulla of the uterine tube"],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Isthmus",
+        "Infundibulum",
+        "Fimbriae",
+        "Interstitial segment"
+      ],
+      "quizQuestion": "In which widest region of the fallopian tube does fertilization most commonly occur?",
+      "explanation": "The fallopian tube has four anatomical regions: fimbriae (finger-like projections that sweep the oocyte from the ovary), infundibulum (funnel-shaped opening), ampulla (the widest and longest segment, ~5 cm), and isthmus (narrow segment connecting to the uterus). Fertilization almost always occurs in the ampulla, where the oocyte and sperm have their most likely encounter.",
+      "statement": "Fertilization most commonly occurs in the ampulla — the widest region of the fallopian tube.",
+      "wowFactor": "An ectopic pregnancy most often occurs when a fertilized egg implants in the ampulla of the fallopian tube rather than continuing to the uterus — the tube can rupture as the embryo grows, causing a life-threatening emergency.",
+      "visualDescription": "Diagram of the right fallopian tube with its four regions labeled: fimbriae, infundibulum, ampulla (highlighted as the fertilization zone), and isthmus connecting to the uterus",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fallopian_tube",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Fertilization typically occurs in the ___ of the fallopian tube.",
+          "correctAnswer": "Ampulla",
+          "distractors": ["Isthmus", "Fimbriae", "Infundibulum"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_030",
+      "correctAnswer": "Fimbriae",
+      "acceptableAlternatives": ["Fimbria"],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Isthmus",
+        "Ampulla",
+        "Infundibulum",
+        "Cilia"
+      ],
+      "quizQuestion": "What finger-like projections at the distal end of the fallopian tube sweep the released oocyte from the ovary surface into the tube?",
+      "explanation": "The fimbriae are fringe-like projections surrounding the abdominal opening of the fallopian tube. They contain cilia that create currents in the peritoneal fluid, sweeping the oocyte from the ovarian surface into the infundibulum. One fimbria (the fimbria ovarica) is directly attached to the ovary to help guide the oocyte.",
+      "statement": "The fimbriae are finger-like projections at the fallopian tube's distal end that sweep the ovulated oocyte into the tube.",
+      "wowFactor": "The oocyte is released into the peritoneal cavity — not directly into the tube — and must be actively 'caught' by the fimbriae. Damage to fimbriae from infection is a leading cause of infertility.",
+      "visualDescription": "Close-up illustration of the fallopian tube infundibulum showing fimbriae spreading like fingers around an ovary, with an oocyte being swept inward",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fimbria_(female_reproductive_system)",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The fimbriae are finger-like projections that help sweep the ovulated oocyte into the fallopian tube.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_031",
+      "correctAnswer": "Endometrium",
+      "acceptableAlternatives": [],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Myometrium",
+        "Perimetrium",
+        "Endocervix",
+        "Decidua"
+      ],
+      "quizQuestion": "What inner mucous layer of the uterus thickens under estrogen influence and is shed during menstruation if implantation does not occur?",
+      "explanation": "The uterus has three layers: the endometrium (innermost mucosa), myometrium (thick smooth muscle), and perimetrium (outer serosa). The endometrium undergoes cyclical changes: the functional layer thickens under estrogen during the follicular phase, further develops under progesterone in the luteal phase, and is shed as menstrual flow if no embryo implants. The basal layer remains and regenerates the functional layer each cycle.",
+      "statement": "The endometrium is the inner lining of the uterus that thickens each cycle and is shed during menstruation if implantation does not occur.",
+      "wowFactor": "In a single lifetime, a woman's endometrium will go through roughly 400 cycles of growth and shedding — and yet the basal layer regenerates it perfectly every time.",
+      "visualDescription": "Uterus cross-section with three concentric layers labeled: inner endometrium (pink), middle myometrium (red), outer perimetrium (pale), with the endometrium highlighted as the shed layer",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Endometrium",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What are the three layers of the uterine wall from innermost to outermost?",
+          "correctAnswer": "Endometrium, myometrium, perimetrium",
+          "distractors": [
+            "Mucosa, submucosa, serosa",
+            "Endocervix, isthmus, fundus",
+            "Decidua, serosa, fascia"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_032",
+      "correctAnswer": "Myometrium",
+      "acceptableAlternatives": [],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Endometrium",
+        "Perimetrium",
+        "Parametrium",
+        "Perineum"
+      ],
+      "quizQuestion": "What thick smooth muscle layer of the uterus contracts powerfully during labor to expel the fetus?",
+      "explanation": "The myometrium is the middle and thickest layer of the uterine wall, composed of interlocking bundles of smooth muscle. Under oxytocin stimulation during labor, the myometrium generates the powerful contractions that dilate the cervix and expel the fetus. Outside of pregnancy and labor, weaker myometrial contractions help expel menstrual blood.",
+      "statement": "The myometrium is the thick smooth muscle middle layer of the uterus that contracts during labor to expel the fetus.",
+      "wowFactor": "The uterus grows from ~7.5 cm to ~30 cm during pregnancy, with the myometrium fibers stretching and hypertrophying — then returning to near-normal size within weeks after delivery.",
+      "visualDescription": "Uterus cross-section with the myometrium highlighted as the thick middle muscle layer, with contraction wave arrows indicating labor contractions",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Myometrium",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Labor contractions are generated by the ___, the thick smooth muscle layer of the uterus.",
+          "correctAnswer": "Myometrium",
+          "distractors": ["Endometrium", "Perimetrium", "Decidua"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_033",
+      "correctAnswer": "Cervix",
+      "acceptableAlternatives": [],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Vagina",
+        "Fundus",
+        "Isthmus of the uterus",
+        "Endocervix"
+      ],
+      "quizQuestion": "What lower cylindrical portion of the uterus connects to the vagina, produces mucus that changes with the menstrual cycle, and is sampled in a Pap smear?",
+      "explanation": "The cervix is the lower, narrow portion of the uterus that projects into the vaginal vault. It has an internal os (opening into the uterus) and external os (opening into the vagina). Cervical glands produce mucus that is thin and slippery around ovulation (facilitating sperm entry) and thick and impenetrable during the rest of the cycle (blocking pathogens and sperm). The Pap smear samples cells from the cervical transformation zone.",
+      "statement": "The cervix connects the uterus to the vagina, produces cycle-dependent mucus, and is the site of Pap smear sampling.",
+      "wowFactor": "Cervical mucus at ovulation forms microscopic channels aligned with the direction of sperm travel — essentially rolling out a red carpet for sperm at exactly the right moment.",
+      "visualDescription": "Sagittal uterus diagram with the cervix highlighted, showing internal and external os, with a Pap smear spatula sampling the transformation zone",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cervix",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Cervical mucus is thin and watery at ovulation, facilitating sperm entry.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_034",
+      "correctAnswer": "3.8–4.5",
+      "acceptableAlternatives": ["~4", "3.8 to 4.5", "acidic"],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "7.0–7.4",
+        "6.0–6.5",
+        "5.5–6.0",
+        "7.8–8.0"
+      ],
+      "quizQuestion": "What is the approximate normal pH of the vagina, maintained by Lactobacillus bacteria to protect against pathogens?",
+      "explanation": "The vaginal microbiome is dominated by Lactobacillus species, which ferment glycogen shed from vaginal epithelial cells to produce lactic acid. This maintains a vaginal pH of approximately 3.8–4.5 — strongly acidic — which inhibits growth of pathogens such as Candida, Gardnerella, and sexually transmitted organisms. The acidic environment is also hostile to sperm, which is why cervical mucus (pH ~7) is critical for sperm survival.",
+      "statement": "The normal vaginal pH is ~3.8–4.5, maintained by Lactobacillus bacteria producing lactic acid, which protects against infection.",
+      "wowFactor": "Sperm cannot survive in the acidic vagina for long — alkaline seminal fluid temporarily raises vaginal pH at ejaculation, giving sperm a brief window to escape into the cervical mucus.",
+      "visualDescription": "pH scale from 0–14 with a marker at 3.8–4.5 labeled 'vagina', Lactobacillus bacteria icons surrounding the vaginal canal diagram",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vagina",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The acidic vaginal environment (pH ~3.8–4.5) is maintained by ___ bacteria that produce lactic acid.",
+          "correctAnswer": "Lactobacillus",
+          "distractors": ["Streptococcus", "Staphylococcus", "Escherichia coli"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_035",
+      "correctAnswer": "Clitoris",
+      "acceptableAlternatives": [],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Labia majora",
+        "Labia minora",
+        "Vestibule",
+        "Mons pubis"
+      ],
+      "quizQuestion": "What erectile organ of the vulva contains approximately 8,000 nerve endings — more than any other human structure of its size — and has no reproductive function other than pleasure?",
+      "explanation": "The clitoris is an erectile organ homologous to the penis, extending internally as two crura and two vestibular bulbs. Its external visible portion (glans clitoris) contains approximately 8,000 afferent nerve endings — the densest concentration of sensory nerves in the human body. Unlike the penis, the clitoris has no role in urination or sperm delivery; its sole function is sexual sensation.",
+      "statement": "The clitoris is an erectile organ of the vulva with ~8,000 nerve endings, making it the most densely innervated structure of its size in the human body.",
+      "wowFactor": "The full internal clitoris — including crura and vestibular bulbs — is roughly 9–11 cm long, most of it hidden under the pubic skin. The external glans is just the tip.",
+      "visualDescription": "External and internal anatomy diagram of the clitoris, showing the visible glans at the top and the internal crura extending downward around the vaginal opening like an inverted wishbone",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Clitoris",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The clitoris contains approximately 8,000 nerve endings and is an erectile structure homologous to the penis.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_036",
+      "correctAnswer": "Prophase I",
+      "acceptableAlternatives": ["Prophase of meiosis I", "Diplotene stage of prophase I"],
+      "chainThemeId": "oogenesis",
+      "answerTypePoolId": "biology_process_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Metaphase II",
+        "Interphase",
+        "Prophase II",
+        "Anaphase I"
+      ],
+      "quizQuestion": "At what stage of meiosis are primary oocytes arrested from fetal life until puberty?",
+      "explanation": "Primary oocytes begin meiosis I during fetal development but arrest in the diplotene stage of prophase I before birth. They remain arrested for years or decades — some oocytes may be arrested for up to 50 years if ovulated late in reproductive life. This prolonged arrest is thought to contribute to the increased risk of chromosomal nondisjunction errors (such as trisomy 21) with advancing maternal age.",
+      "statement": "Primary oocytes are arrested at prophase I of meiosis from fetal development until puberty, when LH surge triggers completion.",
+      "wowFactor": "Some oocytes are arrested in prophase I for up to 50 years — the longest cell-cycle arrest known in human biology — which is why older mothers have higher rates of chromosomal abnormalities in eggs.",
+      "visualDescription": "Timeline diagram showing a primary oocyte frozen at prophase I from fetal life through childhood to puberty, when the LH surge unlocks meiosis resumption",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Primary oocytes are arrested at ___ of meiosis from fetal life until puberty.",
+          "correctAnswer": "Prophase I",
+          "distractors": ["Metaphase II", "Anaphase I", "Interphase"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_037",
+      "correctAnswer": "Metaphase II",
+      "acceptableAlternatives": ["Metaphase of meiosis II"],
+      "chainThemeId": "oogenesis",
+      "answerTypePoolId": "biology_process_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "Prophase I",
+        "Anaphase II",
+        "Telophase II",
+        "Metaphase I"
+      ],
+      "quizQuestion": "At what stage of meiosis is the secondary oocyte (the egg that is ovulated) arrested, completing division only if fertilization occurs?",
+      "explanation": "At ovulation, the oocyte released is technically a secondary oocyte arrested at metaphase II of meiosis — not yet a mature ovum. It remains arrested in this state. If a sperm penetrates the secondary oocyte, fertilization triggers completion of meiosis II: the second polar body is extruded and the haploid female pronucleus is formed. If no sperm arrives, the oocyte degenerates.",
+      "statement": "The ovulated oocyte is a secondary oocyte arrested at metaphase II; meiosis II is completed only upon fertilization.",
+      "wowFactor": "Technically speaking, a human egg is never fully formed until the moment a sperm enters it — the final meiotic division completes only in response to sperm penetration.",
+      "visualDescription": "Ovulated secondary oocyte depicted with chromosomes aligned on the metaphase II plate, a 'pause' symbol on it, with a sperm cell approaching to trigger resumption",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The ovulated oocyte is arrested at metaphase II and only completes meiosis if fertilization occurs.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_038",
+      "correctAnswer": "~400,000",
+      "acceptableAlternatives": ["400,000", "approximately 400,000", "~400,000 oocytes"],
+      "chainThemeId": "oogenesis",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "~1,000",
+        "~2 million",
+        "~7 million",
+        "~40,000"
+      ],
+      "quizQuestion": "Approximately how many oocytes remain in the ovaries at puberty, down from 1–2 million at birth?",
+      "explanation": "A female fetus has approximately 6–7 million germ cells at peak (around 5 months gestation), which atresia reduces to 1–2 million oocytes by birth and approximately 400,000 by puberty. Of these, only about 400–500 oocytes will ever be ovulated in a lifetime; the rest undergo atresia. The continuous loss of oocytes (regardless of ovulation) eventually leads to menopause when the supply is effectively exhausted.",
+      "statement": "Approximately 400,000 oocytes remain at puberty, down from 1–2 million at birth; only ~400 will ever be ovulated.",
+      "wowFactor": "The vast majority of oocytes — over 99.9% — are never ovulated. They silently self-destruct through a process called atresia, which continues throughout the reproductive years.",
+      "visualDescription": "Declining bar chart: 7 million (fetal peak), 1–2 million (birth), 400,000 (puberty), 400 (ovulated in lifetime), 0 (menopause)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Of the ~400,000 oocytes present at puberty, approximately how many will be ovulated in a woman's lifetime?",
+          "correctAnswer": "~400",
+          "distractors": ["~40,000", "~4,000", "~100,000"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_039",
+      "correctAnswer": "Day 14",
+      "acceptableAlternatives": ["Day 14 of the menstrual cycle", "approximately day 14"],
+      "chainThemeId": "menstrual_cycle",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Day 1",
+        "Day 7",
+        "Day 21",
+        "Day 28"
+      ],
+      "quizQuestion": "On approximately what day of a 28-day menstrual cycle does ovulation occur, triggered by a surge in LH?",
+      "explanation": "In a textbook 28-day cycle, ovulation occurs on approximately day 14. A surge in LH (luteinizing hormone) from the anterior pituitary — driven by positive feedback from peak estrogen levels — triggers final maturation of the Graafian follicle and its rupture ~36–40 hours later. Day 14 marks the boundary between the follicular phase (days 1–13) and the luteal phase (days 15–28).",
+      "statement": "Ovulation occurs on approximately day 14 of a 28-day cycle, triggered by the LH surge caused by peak estrogen levels.",
+      "wowFactor": "The LH surge is so reliably detectable in urine that home ovulation predictor kits test for it — a positive test means ovulation is about 36 hours away.",
+      "visualDescription": "28-day hormone cycle graph showing estrogen peak on days 12–13, LH surge spike on day 13, and ovulation marked on day 14 with a follicle-burst icon",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Menstrual_cycle",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Ovulation in a 28-day cycle is triggered by a surge in ___ on approximately day 14.",
+          "correctAnswer": "LH (luteinizing hormone)",
+          "distractors": ["FSH", "Progesterone", "Estrogen"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_040",
+      "correctAnswer": "Follicular phase",
+      "acceptableAlternatives": ["Proliferative phase"],
+      "chainThemeId": "menstrual_cycle",
+      "answerTypePoolId": "biology_process_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Luteal phase",
+        "Menstrual phase",
+        "Secretory phase",
+        "Ovulatory phase"
+      ],
+      "quizQuestion": "What phase of the menstrual cycle (days 1–13) is characterized by FSH-driven follicle growth and rising estrogen levels?",
+      "explanation": "The follicular phase runs concurrently with and after menstruation (days 1–13). FSH from the anterior pituitary stimulates several ovarian follicles to grow; the dominant follicle matures while others undergo atresia. The growing follicle secretes increasing amounts of estrogen, which thickens the endometrium (proliferative phase) and eventually causes the LH surge that triggers ovulation on day 14.",
+      "statement": "The follicular phase (days 1–13) is driven by FSH, which stimulates follicle development and rising estrogen that thickens the endometrium.",
+      "wowFactor": "During the follicular phase, estrogen shifts from suppressing LH to stimulating it — a rare positive feedback loop in endocrinology — which causes the LH surge that triggers ovulation.",
+      "visualDescription": "Uterine lining cross-section on day 5 and day 13 side by side, showing thin endometrium at start and thickened proliferative endometrium by day 13, with a growing follicle in the ovary above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Menstrual_cycle",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: FSH drives follicle growth and rising estrogen during the follicular phase of the menstrual cycle.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_041",
+      "correctAnswer": "Luteal phase",
+      "acceptableAlternatives": ["Secretory phase"],
+      "chainThemeId": "menstrual_cycle",
+      "answerTypePoolId": "biology_process_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Follicular phase",
+        "Menstrual phase",
+        "Proliferative phase",
+        "Ovulatory phase"
+      ],
+      "quizQuestion": "What phase of the menstrual cycle (days 15–28) is dominated by progesterone from the corpus luteum maintaining the endometrium for potential implantation?",
+      "explanation": "The luteal phase follows ovulation (days 15–28). The corpus luteum — formed from the ruptured follicle — secretes large amounts of progesterone and some estrogen. Progesterone converts the estrogen-primed endometrium into a secretory state, thickening the uterine lining with glycogen-rich glands to support a potential implanting embryo. If no implantation occurs, the corpus luteum degenerates, progesterone drops, and menstruation begins.",
+      "statement": "The luteal phase (days 15–28) is dominated by progesterone from the corpus luteum, which maintains the secretory endometrium for potential implantation.",
+      "wowFactor": "The luteal phase is almost always exactly 14 days long — it is the follicular phase that varies in length between individuals, not the luteal phase.",
+      "visualDescription": "Hormone chart showing progesterone peak during days 15–25, corpus luteum icon in ovary, and secretory endometrium with glandular pockets in uterus cross-section",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Menstrual_cycle",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The luteal phase of the menstrual cycle is dominated by ___ secreted by the corpus luteum.",
+          "correctAnswer": "Progesterone",
+          "distractors": ["Estrogen", "FSH", "LH"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_042",
+      "correctAnswer": "FSH (follicle-stimulating hormone)",
+      "acceptableAlternatives": ["Follicle-stimulating hormone", "FSH"],
+      "chainThemeId": "reproductive_hormones",
+      "answerTypePoolId": "biology_molecule_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "LH (luteinizing hormone)",
+        "Estrogen",
+        "Progesterone",
+        "Oxytocin"
+      ],
+      "quizQuestion": "What anterior pituitary hormone stimulates ovarian follicle growth in females and spermatogenesis in males?",
+      "explanation": "Follicle-stimulating hormone (FSH) is a gonadotropin released by the anterior pituitary. In females, FSH stimulates the growth and maturation of ovarian follicles and promotes estrogen secretion by granulosa cells. In males, FSH acts on Sertoli cells to support spermatogenesis. FSH release is controlled by GnRH from the hypothalamus and negatively inhibited by inhibin.",
+      "statement": "FSH is an anterior pituitary hormone that stimulates follicle growth in females and supports spermatogenesis via Sertoli cells in males.",
+      "wowFactor": "FSH levels naturally spike after menopause as the pituitary desperately tries to stimulate ovaries that no longer respond — measuring elevated FSH is one way to confirm menopause.",
+      "visualDescription": "Hypothalamic-pituitary-gonadal axis diagram with FSH arrow pointing from pituitary to both an ovary (follicle development) and a testis (spermatogenesis)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Follicle-stimulating_hormone",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: FSH stimulates follicle growth in females and supports spermatogenesis in males.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_043",
+      "correctAnswer": "LH (luteinizing hormone)",
+      "acceptableAlternatives": ["Luteinizing hormone", "LH"],
+      "chainThemeId": "reproductive_hormones",
+      "answerTypePoolId": "biology_molecule_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "adult",
+      "distractors": [
+        "FSH",
+        "Estrogen",
+        "Progesterone",
+        "hCG"
+      ],
+      "quizQuestion": "What pituitary hormone surges mid-cycle to trigger ovulation in females, and stimulates Leydig cells to produce testosterone in males?",
+      "explanation": "Luteinizing hormone (LH) is a gonadotropin from the anterior pituitary. In females, the mid-cycle LH surge (caused by peak estrogen positive feedback) triggers final maturation and rupture of the Graafian follicle (ovulation) and stimulates the formation of the corpus luteum. In males, LH acts tonically on Leydig cells to stimulate testosterone synthesis.",
+      "statement": "LH triggers ovulation via the mid-cycle LH surge in females and stimulates testosterone production by Leydig cells in males.",
+      "wowFactor": "The LH surge is one of the largest and fastest hormonal changes in human physiology — plasma LH can increase tenfold in under 24 hours.",
+      "visualDescription": "Hormone cycle graph with a dramatic LH spike on day 13–14, labeled 'LH surge', with ovulation arrow immediately following on day 14",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Luteinizing_hormone",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "In males, LH acts on ___ cells to stimulate testosterone production.",
+          "correctAnswer": "Leydig",
+          "distractors": ["Sertoli", "Spermatogonial", "Granulosa"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_044",
+      "correctAnswer": "hCG (human chorionic gonadotropin)",
+      "acceptableAlternatives": ["Human chorionic gonadotropin", "hCG"],
+      "chainThemeId": "reproductive_hormones",
+      "answerTypePoolId": "biology_molecule_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "adult",
+      "distractors": [
+        "LH",
+        "FSH",
+        "Progesterone",
+        "Estrogen"
+      ],
+      "quizQuestion": "What hormone produced by the embryo after implantation rescues the corpus luteum, maintains progesterone production, and is the basis of pregnancy tests?",
+      "explanation": "Human chorionic gonadotropin (hCG) is secreted by the trophoblast of the implanting embryo beginning around day 8–10 post-fertilization. Because it is structurally similar to LH, hCG binds LH receptors on the corpus luteum and prevents its degeneration — maintaining progesterone secretion through the first trimester until the placenta takes over. Urinary hCG is what home pregnancy tests detect.",
+      "statement": "hCG is secreted by the embryo after implantation to rescue the corpus luteum; it is structurally similar to LH and is detected by pregnancy tests.",
+      "wowFactor": "hCG levels double approximately every 48–72 hours in early healthy pregnancies — doctors track the doubling time to confirm normal embryo development.",
+      "visualDescription": "Diagram showing implanting embryo secreting hCG, arrow pointing to corpus luteum, arrow pointing to progesterone, and a pregnancy test stick showing a positive result",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Human_chorionic_gonadotropin",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: hCG is produced by the embryo after implantation and is the hormone detected by home pregnancy tests.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "context",
+          "question": "hCG maintains early pregnancy by preventing degeneration of which structure?",
+          "correctAnswer": "Corpus luteum",
+          "distractors": ["Graafian follicle", "Endometrium", "Corpus albicans"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_045",
+      "correctAnswer": "Estrogen",
+      "acceptableAlternatives": ["Estradiol", "Oestrogen"],
+      "chainThemeId": "reproductive_hormones",
+      "answerTypePoolId": "biology_molecule_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Progesterone",
+        "Testosterone",
+        "FSH",
+        "Inhibin"
+      ],
+      "quizQuestion": "What steroid hormone, produced primarily by ovarian granulosa cells, stimulates endometrial proliferation and drives female secondary sexual characteristics?",
+      "explanation": "Estrogen (principally estradiol in reproductive-age women) is secreted by granulosa cells of growing follicles and, after ovulation, by the corpus luteum. It stimulates proliferation of the endometrium during the follicular phase, promotes development of female secondary sexual characteristics (breast development, fat distribution, bone growth), and at peak levels triggers the LH surge via positive feedback on the pituitary.",
+      "statement": "Estrogen, primarily from ovarian granulosa cells, proliferates the endometrium, drives female secondary sexual characteristics, and triggers the LH surge at peak levels.",
+      "wowFactor": "Estrogen actually strengthens bones by inhibiting osteoclasts — the bone-density loss of menopause is largely because estrogen disappears, unleashing bone resorption.",
+      "visualDescription": "Estradiol molecular structure next to icons of its key effects: growing uterine lining, breast development, and an LH surge arrow on a hormone graph",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Estrogen",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The endometrial proliferative phase is driven by rising ___ secreted by the growing ovarian follicle.",
+          "correctAnswer": "Estrogen",
+          "distractors": ["Progesterone", "LH", "Inhibin"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_046",
+      "correctAnswer": "Progesterone",
+      "acceptableAlternatives": [],
+      "chainThemeId": "reproductive_hormones",
+      "answerTypePoolId": "biology_molecule_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Estrogen",
+        "hCG",
+        "FSH",
+        "LH"
+      ],
+      "quizQuestion": "What steroid hormone, secreted by the corpus luteum and later the placenta, maintains the secretory endometrium and suppresses uterine contractions during pregnancy?",
+      "explanation": "Progesterone ('pro-gestational hormone') is produced by the corpus luteum after ovulation and by the placenta from ~10 weeks gestation onward. It converts the endometrium to its secretory state, thickening glands with glycogen to nourish a potential embryo. During pregnancy it suppresses uterine smooth muscle contractions and immune responses to the fetus. A fall in progesterone at term contributes to labor onset.",
+      "statement": "Progesterone from the corpus luteum maintains the secretory endometrium and suppresses uterine contractions during pregnancy; the placenta takes over production after the first trimester.",
+      "wowFactor": "Progesterone actively suppresses the mother's immune system during pregnancy — without it the immune system would recognize the embryo as foreign tissue and reject it.",
+      "visualDescription": "Hormone bar chart comparing progesterone level (high) vs. estrogen level (moderate) during weeks 10–40 of pregnancy, with placenta illustration taking over from corpus luteum",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Progesterone",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Progesterone maintains the secretory endometrium and suppresses uterine contractions during pregnancy.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_047",
+      "correctAnswer": "Days 1–5",
+      "acceptableAlternatives": ["Days 1 to 5", "first 5 days"],
+      "chainThemeId": "menstrual_cycle",
+      "answerTypePoolId": "numerical_values",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Days 6–10",
+        "Days 14–18",
+        "Days 22–28",
+        "Days 10–14"
+      ],
+      "quizQuestion": "During which days of a 28-day menstrual cycle does the menstrual phase occur, when the functional endometrial layer is shed?",
+      "explanation": "The menstrual phase (days 1–5) marks the beginning of the cycle. With progesterone and estrogen levels having fallen at the end of the luteal phase, the spiral arteries of the endometrium contract and the functional layer (but not the basal layer) is shed as menstrual blood over ~3–7 days. Day 1 is conventionally the first day of visible menstrual bleeding.",
+      "statement": "The menstrual phase (days 1–5) involves shedding of the functional endometrial layer due to withdrawal of progesterone and estrogen.",
+      "wowFactor": "Menstrual blood does not clot like a wound because the endometrium produces plasminogen activators that actively digest fibrin — the bleeding naturally self-limits as the basal layer repairs.",
+      "visualDescription": "Uterus diagram during menstrual phase showing the functional endometrial layer peeling away, with downward arrows indicating shedding, and calendar days 1–5 highlighted",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Menstrual_cycle",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The menstrual phase of the cycle occurs on approximately days ___ of a 28-day cycle.",
+          "correctAnswer": "1–5",
+          "distractors": ["14–18", "22–28", "6–10"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_048",
+      "correctAnswer": "Bartholin's glands",
+      "acceptableAlternatives": ["Greater vestibular glands", "Bartholin glands"],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_structure_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Skene's glands",
+        "Bulbourethral glands",
+        "Cowper's glands",
+        "Lacrimal glands"
+      ],
+      "quizQuestion": "What paired glands at the vaginal opening secrete mucus for lubrication, homologous to the bulbourethral glands in males?",
+      "explanation": "Bartholin's glands (greater vestibular glands) are located at the 4 and 8 o'clock positions at the vaginal introitus. They secrete a small amount of mucus during sexual arousal to lubricate the vestibule. They are homologous to the bulbourethral (Cowper's) glands in males. Bartholin's cysts occur when the duct becomes blocked; Bartholin's abscesses are painful infections requiring drainage.",
+      "statement": "Bartholin's glands (greater vestibular glands) are paired glands at the vaginal opening that produce lubricating mucus; they are homologous to the male bulbourethral glands.",
+      "wowFactor": "Bartholin's glands produce only a few drops of mucus — they contribute far less to vaginal lubrication than transudate fluid that seeps through the vaginal walls during arousal.",
+      "visualDescription": "Diagram of the vulva/vestibule with two Bartholin's glands highlighted at the 4 and 8 o'clock positions flanking the vaginal opening, with small duct openings indicated",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bartholin%27s_gland",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Bartholin's glands in females are homologous to the ___ glands in males.",
+          "correctAnswer": "Bulbourethral (Cowper's)",
+          "distractors": ["Seminal vesicles", "Prostate", "Skene's"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_049",
+      "correctAnswer": "Anteflexed",
+      "acceptableAlternatives": ["Anteverted and anteflexed"],
+      "chainThemeId": "female_anatomy",
+      "answerTypePoolId": "anatomy_positional_terms",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "adult",
+      "distractors": [
+        "Retroflexed",
+        "Retroverted",
+        "Lateral",
+        "Perpendicular"
+      ],
+      "quizQuestion": "What is the normal anatomical position of the uterus relative to the cervix — tilted forward toward the bladder?",
+      "explanation": "In most women the uterus is in an anteverted (tilted forward toward the bladder) and anteflexed (bent forward at the junction of uterine body and cervix) position. This places the uterine fundus just behind the bladder. A retroverted or retroflexed uterus — where the body tilts backward toward the rectum — is a normal variant in about 20–25% of women and is not usually pathological.",
+      "statement": "The normal uterine position is anteflexed (and anteverted) — tilted and bent forward toward the bladder.",
+      "wowFactor": "About 20–25% of women have a naturally retroverted uterus (tilted backward) with no symptoms — it is a normal anatomical variant, not a pathology.",
+      "visualDescription": "Sagittal pelvis diagram comparing an anteverted/anteflexed uterus (tilted forward) and a retroverted/retroflexed uterus (tilted backward), with bladder and rectum labeled for reference",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Uterus",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The normal position of the uterus is anteverted and anteflexed — tilted forward toward the bladder.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_repro_050",
+      "correctAnswer": "One polar body (first polar body)",
+      "acceptableAlternatives": ["First polar body", "polar body"],
+      "chainThemeId": "oogenesis",
+      "answerTypePoolId": "cell_type_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "adult",
+      "distractors": [
+        "Second polar body",
+        "Two polar bodies",
+        "Three secondary oocytes",
+        "Secondary spermatocyte"
+      ],
+      "quizQuestion": "What small non-functional cell is extruded when a primary oocyte completes Meiosis I, preserving most cytoplasm in the secondary oocyte?",
+      "explanation": "When the primary oocyte resumes and completes Meiosis I (triggered by the LH surge just before ovulation), it divides asymmetrically: the large secondary oocyte retains almost all the cytoplasm (and thus the stored nutrients for a potential embryo), while a small, essentially cytoplasm-free first polar body is extruded. This asymmetric division is characteristic of oogenesis and contrasts sharply with the equal divisions of spermatogenesis.",
+      "statement": "Meiosis I in the primary oocyte produces a large secondary oocyte and a small, non-functional first polar body that receives minimal cytoplasm.",
+      "wowFactor": "The polar body strategy is oogenesis's way of halving the chromosome number while keeping nearly all the cytoplasm in one cell — without this trick, the egg would have too little nutrient stores to sustain early embryo development.",
+      "visualDescription": "Oogenesis diagram: large primary oocyte divides asymmetrically — most of the cell becomes the secondary oocyte (large), a tiny first polar body pinches off at the side",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oogenesis",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "reproductive_system",
+      "subDeckId": "reproductive_system",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Why does oogenesis produce polar bodies instead of four equal daughter cells like spermatogenesis?",
+          "correctAnswer": "To preserve cytoplasm (nutrients) in the egg",
+          "distractors": [
+            "To produce more chromosomes",
+            "To prevent fertilization errors",
+            "To increase hormone secretion"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In oogenesis, Meiosis I produces a large secondary oocyte and a small non-functional ___ that receives almost no cytoplasm.",
+          "correctAnswer": "First polar body",
+          "distractors": ["Second polar body", "Spermatid", "Corpus luteum"]
+        }
+      ]
+    }
+  ]
+}

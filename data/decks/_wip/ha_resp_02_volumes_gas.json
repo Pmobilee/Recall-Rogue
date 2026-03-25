@@ -1,0 +1,618 @@
+[
+  {
+    "id": "ha_resp_026",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Oxyhemoglobin",
+    "acceptableAlternatives": ["Oxyhaemoglobin"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "chemical_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What is the name of the compound formed when oxygen binds to hemoglobin in red blood cells?",
+    "explanation": "When O₂ binds to the iron-containing heme groups of hemoglobin, it forms oxyhemoglobin (HbO₂). Each hemoglobin molecule has four heme groups and can carry up to four O₂ molecules. This reversible binding is the primary mechanism for oxygen transport — approximately 98% of blood oxygen is carried this way, with only ~2% dissolved in plasma.",
+    "visualDescription": "Hemoglobin tetramer diagram with four heme groups each binding an O₂ molecule, red coloring indicating oxygenated state",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemoglobin",
+    "volatile": false,
+    "distractors": ["Carboxyhemoglobin", "Carbaminohemoglobin", "Methemoglobin"],
+    "variants": [
+      {
+        "quizQuestion": "Approximately what percentage of oxygen in arterial blood is carried bound to hemoglobin as oxyhemoglobin?",
+        "correctAnswer": "~98%",
+        "explanation": "About 98% of blood O₂ is transported bound to hemoglobin; only ~2% is dissolved in plasma. This is why hemoglobin is essential — plasma alone cannot carry nearly enough oxygen to meet tissue demand."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_027",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Bicarbonate (HCO₃⁻)",
+    "acceptableAlternatives": ["Bicarbonate", "HCO3-", "Bicarbonate ions"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "chemical_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What is the primary form in which carbon dioxide is transported in the blood, accounting for ~70% of CO₂ transport?",
+    "explanation": "Approximately 70% of CO₂ is carried as bicarbonate ions (HCO₃⁻) dissolved in plasma. CO₂ diffuses into red blood cells, where carbonic anhydrase rapidly catalyses: CO₂ + H₂O → H₂CO₃ → H⁺ + HCO₃⁻. The bicarbonate exits into plasma via the chloride shift, while H⁺ is buffered by hemoglobin. This reaction reverses in the lungs.",
+    "visualDescription": "Red blood cell diagram showing CO₂ entry, carbonic anhydrase conversion arrow, HCO₃⁻ exiting into plasma via chloride shift, H⁺ binding to hemoglobin",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carbon_dioxide",
+    "volatile": false,
+    "distractors": ["Carbaminohemoglobin", "Dissolved CO₂ in plasma", "Carbonic acid"],
+    "variants": [
+      {
+        "quizQuestion": "Which enzyme in red blood cells catalyses the rapid conversion of CO₂ and water into carbonic acid during CO₂ transport?",
+        "correctAnswer": "Carbonic anhydrase",
+        "explanation": "Carbonic anhydrase accelerates the reaction CO₂ + H₂O ⇌ H₂CO₃ by approximately 5000-fold. Without it, CO₂ would accumulate in tissues and the lungs could not expel it fast enough."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_028",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Carbaminohemoglobin",
+    "acceptableAlternatives": ["Carbaminohaemoglobin"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "chemical_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "CO₂ that binds directly to the amino groups of hemoglobin protein chains forms which compound, accounting for ~23% of CO₂ transport?",
+    "explanation": "About 23% of CO₂ binds to the N-terminal amino groups of globin chains, forming carbaminohemoglobin (HbCO₂). This is distinct from carboxyhemoglobin (HbCO), which is the toxic compound formed when carbon monoxide — not CO₂ — binds to hemoglobin. The remaining ~7% of CO₂ is transported dissolved in plasma.",
+    "visualDescription": "Hemoglobin molecule with CO₂ molecules attached to terminal amino groups of globin chains, labeled carbaminohemoglobin",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carbon_dioxide",
+    "volatile": false,
+    "distractors": ["Carboxyhemoglobin", "Oxyhemoglobin", "Bicarbonate"],
+    "variants": [
+      {
+        "quizQuestion": "Approximately what percentage of CO₂ is transported dissolved directly in blood plasma?",
+        "correctAnswer": "~7%",
+        "explanation": "Only ~7% of CO₂ is simply dissolved in plasma (as CO₂ gas in solution). The majority is converted to bicarbonate (~70%) or carried as carbaminohemoglobin (~23%)."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_029",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Bohr effect",
+    "acceptableAlternatives": ["Bohr shift"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "effect_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which physiological effect describes how a decrease in blood pH (increased acidity) causes hemoglobin to release oxygen more readily to tissues?",
+    "explanation": "The Bohr effect, described by Christian Bohr in 1904, states that lower pH (higher H⁺ concentration) decreases hemoglobin's affinity for oxygen, shifting the oxygen-hemoglobin dissociation curve to the right. Actively metabolising tissues produce CO₂ and lactic acid, lowering local pH — this triggers hemoglobin to unload more O₂ precisely where it is needed most.",
+    "visualDescription": "Oxygen-hemoglobin dissociation curve with two sigmoidal lines: one at normal pH shifted left, one at lower pH shifted right, arrows showing increased O₂ release at lower pH",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bohr_effect",
+    "volatile": false,
+    "distractors": ["Haldane effect", "Fick principle", "Dalton's law"],
+    "variants": [
+      {
+        "quizQuestion": "The Bohr effect states that lower pH shifts the oxygen-hemoglobin dissociation curve to the right. What does a rightward shift mean for oxygen delivery?",
+        "correctAnswer": "Hemoglobin releases oxygen more readily",
+        "explanation": "A rightward shift means that at any given PO₂, hemoglobin holds less O₂ — it unloads more. This is beneficial in exercising muscle where pH falls, ensuring tissues receive more O₂ when demand is highest."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_030",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Sigmoidal (S-shaped)",
+    "acceptableAlternatives": ["S-shaped", "Sigmoid"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "descriptors",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What shape is the oxygen-hemoglobin dissociation curve, and why is this physiologically advantageous?",
+    "explanation": "The curve is sigmoidal (S-shaped) due to cooperative binding: as each O₂ molecule binds to hemoglobin it increases the affinity of remaining heme groups for more O₂ (T→R state transition). The flat upper portion (high PO₂ range) means hemoglobin loads O₂ efficiently in the lungs even if PO₂ drops somewhat. The steep lower portion means hemoglobin releases large amounts of O₂ to tissues for small drops in PO₂ — maximising delivery where demand is greatest.",
+    "visualDescription": "Classic S-shaped oxygen-hemoglobin dissociation curve with PO₂ on x-axis, % saturation on y-axis; flat upper region labeled 'loading zone (lungs)', steep lower region labeled 'unloading zone (tissues)'",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oxygen%E2%80%93hemoglobin_dissociation_curve",
+    "volatile": false,
+    "distractors": ["Linear", "Hyperbolic", "Exponential"],
+    "variants": [
+      {
+        "quizQuestion": "The sigmoidal shape of the oxygen-hemoglobin dissociation curve is caused by which property of hemoglobin binding?",
+        "correctAnswer": "Cooperative binding",
+        "explanation": "Cooperative binding means each O₂ that binds changes hemoglobin's shape, increasing affinity for the next O₂. This creates the steep mid-range of the curve. Myoglobin, with no cooperative binding, shows a hyperbolic curve."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_031",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Medullary rhythmicity center",
+    "acceptableAlternatives": ["Medullary respiratory center", "Respiratory center in the medulla"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which brainstem center generates the basic, automatic rhythm of breathing?",
+    "explanation": "The medullary rhythmicity center (comprising the dorsal respiratory group and ventral respiratory group in the medulla oblongata) generates the fundamental cyclic rhythm of inspiration and expiration. It is the essential pacemaker for breathing — damage here is immediately fatal. The pontine centers modulate but do not generate the basic rhythm.",
+    "visualDescription": "Brainstem diagram with medulla oblongata highlighted, dorsal and ventral respiratory groups labeled, arrows showing rhythmic output to phrenic and intercostal nerves",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Respiratory_center",
+    "volatile": false,
+    "distractors": ["Pneumotaxic center", "Apneustic center", "Pre-Bötzinger complex only"],
+    "variants": [
+      {
+        "quizQuestion": "True or false: The basic rhythm of breathing is generated in the medulla oblongata, not in the cerebral cortex.",
+        "correctAnswer": "True",
+        "explanation": "Breathing is autonomous — it continues during sleep and unconsciousness because the medullary rhythmicity center generates it automatically. The cortex can voluntarily override this (e.g., breath-holding) but cannot sustain the rhythm on its own."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_032",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Pneumotaxic center",
+    "acceptableAlternatives": ["Pontine respiratory group"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which pontine center inhibits the inspiratory center, helping to limit the depth of each breath and regulate respiratory rate?",
+    "explanation": "The pneumotaxic center (pontine respiratory group) in the upper pons sends inhibitory signals to the inspiratory neurons of the medulla, switching off inspiration before the lungs over-inflate. Stronger pneumotaxic signals shorten inspiration and increase breathing rate; weaker signals allow deeper, slower breaths.",
+    "visualDescription": "Brainstem diagram with pons highlighted, pneumotaxic center labeled at upper pons, inhibitory arrow pointing down to medullary inspiratory neurons",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pontine_respiratory_group",
+    "volatile": false,
+    "distractors": ["Apneustic center", "Medullary rhythmicity center", "Cerebellum"],
+    "variants": [
+      {
+        "quizQuestion": "The apneustic center in the lower pons tends to prolong inspiration. Which pontine center acts against it, limiting inspiration?",
+        "correctAnswer": "Pneumotaxic center",
+        "explanation": "The apneustic center promotes prolonged inspiratory effort (apneusis if unchecked), while the pneumotaxic center in the upper pons overrides it, enabling smooth cycling between inspiration and expiration."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_033",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Central chemoreceptors",
+    "acceptableAlternatives": ["Central chemoreceptor", "Medullary chemoreceptors"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which chemoreceptors, located on the ventral surface of the medulla, are the primary sensors for changes in blood CO₂ levels?",
+    "explanation": "Central chemoreceptors on the ventral medullary surface detect changes in the pH of cerebrospinal fluid (CSF), which reflects arterial CO₂ levels. CO₂ crosses the blood-brain barrier freely and reacts with water to form H⁺, which these receptors detect. Even small rises in PCO₂ strongly stimulate ventilation. They do not detect O₂ directly.",
+    "visualDescription": "Brainstem ventral surface diagram with central chemoreceptor zones highlighted, CO₂ diffusing across blood-brain barrier shown as dashed arrows",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chemoreceptor",
+    "volatile": false,
+    "distractors": ["Peripheral chemoreceptors", "Carotid bodies", "Aortic bodies"],
+    "variants": [
+      {
+        "quizQuestion": "Central chemoreceptors detect rising CO₂ levels indirectly by sensing a fall in the pH of which fluid?",
+        "correctAnswer": "Cerebrospinal fluid (CSF)",
+        "explanation": "CO₂ crosses the blood-brain barrier and dissolves in CSF, forming carbonic acid and lowering CSF pH. Central chemoreceptors detect this pH drop and signal the medullary respiratory center to increase ventilation."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_034",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Carotid and aortic bodies",
+    "acceptableAlternatives": ["Carotid bodies and aortic bodies", "Peripheral chemoreceptors"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Where are the peripheral chemoreceptors located, and what do they primarily detect?",
+    "explanation": "Peripheral chemoreceptors are found in the carotid bodies (at the bifurcation of the common carotid arteries) and the aortic bodies (in the aortic arch). They respond to low PO₂ (hypoxia), high PCO₂, and low pH. Unlike central chemoreceptors, they are the primary sensors for arterial oxygen levels and become especially important at altitude or in severe hypoxia.",
+    "visualDescription": "Neck and chest diagram with carotid bodies highlighted at carotid bifurcations and aortic bodies at aortic arch, afferent nerve pathways labeled to brainstem",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carotid_body",
+    "volatile": false,
+    "distractors": ["Lung stretch receptors", "Juxtacapillary receptors", "Ventral medullary surface"],
+    "variants": [
+      {
+        "quizQuestion": "Peripheral chemoreceptors are the primary sensors for detecting low blood oxygen. At which two anatomical locations are they found?",
+        "correctAnswer": "Carotid bifurcation and aortic arch",
+        "explanation": "Carotid bodies sit at the fork of the common carotid arteries; aortic bodies sit near the aortic arch. Both relay signals via the glossopharyngeal (IX) and vagus (X) nerves to the respiratory centers in the medulla."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_035",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Hypercapnia (raised CO₂) is the primary driver",
+    "acceptableAlternatives": ["CO₂ / PCO₂ is the primary driver", "Carbon dioxide"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "descriptors",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Under normal physiological conditions, which factor is the primary driver of the urge to breathe — rising CO₂ or falling O₂?",
+    "explanation": "Rising arterial PCO₂ (hypercapnia) — not falling O₂ — is normally the dominant stimulus to breathe. Central chemoreceptors are exquisitely sensitive to small PCO₂ changes and respond within seconds. Falling O₂ (hypoxia) only becomes a significant breathing stimulus when PO₂ drops below ~60 mmHg. This is why breathing into a paper bag (rebreathing CO₂) causes urgent dyspnoea even when O₂ is still adequate.",
+    "visualDescription": "Graph comparing ventilatory response to increasing PCO₂ (steep, linear curve) versus decreasing PO₂ (flat until PO₂ < 60 mmHg, then steep), illustrating CO₂ dominance",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Respiratory_center",
+    "volatile": false,
+    "distractors": ["Falling O₂ is the primary driver", "Blood pH is the primary driver", "Lung stretch receptors are the primary driver"],
+    "variants": [
+      {
+        "quizQuestion": "At approximately what arterial PO₂ level does hypoxia become a significant stimulus to breathing via peripheral chemoreceptors?",
+        "correctAnswer": "Below ~60 mmHg",
+        "explanation": "The oxyhemoglobin dissociation curve is relatively flat above 60 mmHg, so hemoglobin saturation stays high even if PO₂ falls somewhat. Below 60 mmHg, saturation drops steeply and peripheral chemoreceptors fire strongly to increase ventilation."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_036",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Asthma",
+    "acceptableAlternatives": [],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which obstructive airway disease is characterised by reversible bronchospasm — episodes of airway narrowing caused by smooth muscle contraction, mucosal oedema, and mucus hypersecretion?",
+    "explanation": "Asthma is a chronic inflammatory condition of the airways. Triggers (allergens, cold air, exercise, irritants) cause bronchial smooth muscle to contract (bronchospasm), the airway mucosa to swell, and mucus glands to hypersecrete — all narrowing the lumen. Airflow obstruction is typically reversible with bronchodilators (e.g., salbutamol/albuterol). In contrast to COPD, asthma obstruction fully reverses between episodes.",
+    "visualDescription": "Bronchus cross-section comparison: normal open lumen versus asthma attack showing thickened wall, contracted smooth muscle, mucus plugging, and narrowed lumen",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Asthma",
+    "volatile": false,
+    "distractors": ["COPD", "Pulmonary embolism", "Pneumonia"],
+    "variants": [
+      {
+        "quizQuestion": "A key feature distinguishing asthma from COPD is that asthma's airflow obstruction is typically ___.",
+        "correctAnswer": "Reversible",
+        "explanation": "Asthma episodes resolve with bronchodilators and corticosteroids, and lung function returns to normal between attacks. COPD involves permanent structural damage (emphysema, chronic bronchitis) with irreversible airflow limitation."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_037",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "COPD",
+    "acceptableAlternatives": ["Chronic obstructive pulmonary disease"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which progressive lung disease caused predominantly by cigarette smoking combines emphysema (destruction of alveolar walls) and chronic bronchitis (mucus hypersecretion and cough) to produce irreversible airflow limitation?",
+    "explanation": "COPD (Chronic Obstructive Pulmonary Disease) is the third leading cause of death worldwide. Emphysema destroys alveolar walls, reducing gas-exchange surface area and losing elastic recoil — causing air trapping (hyperinflation). Chronic bronchitis is defined as productive cough for at least 3 months per year for 2 consecutive years. Unlike asthma, obstruction in COPD is not fully reversible. Smoking is responsible for ~80–90% of cases.",
+    "visualDescription": "Side-by-side: normal alveoli (tightly packed, intact walls) versus emphysematous alveoli (enlarged, broken-down walls, fewer and larger air spaces)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chronic_obstructive_pulmonary_disease",
+    "volatile": false,
+    "distractors": ["Asthma", "Pulmonary fibrosis", "Bronchiectasis"],
+    "variants": [
+      {
+        "quizQuestion": "Chronic bronchitis is clinically defined as a productive cough lasting at least 3 months per year for how many consecutive years?",
+        "correctAnswer": "2 years",
+        "explanation": "This 3-months/2-years definition distinguishes chronic bronchitis from acute bronchitis. It reflects ongoing mucus hypersecretion from enlarged bronchial glands (increased Reid index) due to years of irritant exposure, typically cigarette smoke."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_038",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Pulmonary embolism",
+    "acceptableAlternatives": ["PE"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which life-threatening condition occurs when a blood clot (usually originating in a deep leg vein) travels to the pulmonary arteries and blocks blood flow to part of the lung?",
+    "explanation": "Pulmonary embolism (PE) usually results from deep vein thrombosis (DVT), most commonly in the calf or thigh. The clot detaches, travels through the right heart, and lodges in a pulmonary artery. This creates dead space (ventilated but not perfused alveoli), right heart strain, and potentially haemodynamic collapse. Classic symptoms include sudden dyspnoea, pleuritic chest pain, haemoptysis, and tachycardia.",
+    "visualDescription": "Pulmonary artery diagram with saddle embolus lodged at the main bifurcation, blocked blood flow shown, right heart strain illustrated with dilated right ventricle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_embolism",
+    "volatile": false,
+    "distractors": ["Pneumothorax", "Pneumonia", "Pleural effusion"],
+    "variants": [
+      {
+        "quizQuestion": "A pulmonary embolism creates areas of lung that are ventilated but not perfused. What is this called in respiratory physiology?",
+        "correctAnswer": "Dead space",
+        "explanation": "Dead space is ventilation without perfusion. A PE blocks blood flow to a lung region that continues to receive air — the alveoli are inflated but cannot exchange gases with blood, wasting ventilation and impairing oxygenation."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_039",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Pneumonia",
+    "acceptableAlternatives": [],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "disease_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which lung infection causes alveoli to fill with fluid and inflammatory cells (consolidation), impairing gas exchange and causing fever, productive cough, and dyspnoea?",
+    "explanation": "Pneumonia is infection of the lung parenchyma — bacterial (most commonly Streptococcus pneumoniae), viral, or fungal. Infection triggers an inflammatory response that fills alveoli with exudate (fluid, white blood cells, debris) in a process called consolidation. Consolidated alveoli receive no airflow but remain perfused — creating a shunt (perfusion without ventilation) that drops blood oxygen. This is why pneumonia causes hypoxia.",
+    "visualDescription": "Chest X-ray-style diagram showing lobar consolidation as an opaque white area in one lung lobe, contrasted with normal translucent air-filled lung tissue",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pneumonia",
+    "volatile": false,
+    "distractors": ["Pulmonary embolism", "Asthma", "COPD"],
+    "variants": [
+      {
+        "quizQuestion": "In pneumonia, alveoli that are perfused but not ventilated (filled with fluid) create which ventilation-perfusion abnormality?",
+        "correctAnswer": "Shunt",
+        "explanation": "A shunt is the opposite of dead space: blood flows through the lung but past alveoli that cannot be ventilated (fluid-filled). This blood returns to the left heart deoxygenated, lowering arterial PO₂ — the mechanism of hypoxia in pneumonia."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_040",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~2400 mL",
+    "acceptableAlternatives": ["2400 mL", "approximately 2400 mL"],
+    "chainThemeId": "lung_volumes",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "What is the approximate functional residual capacity (FRC) — the volume of air remaining in the lungs at the end of a normal passive expiration?",
+    "explanation": "FRC = expiratory reserve volume (~1200 mL) + residual volume (~1200 mL) ≈ 2400 mL. FRC represents the equilibrium point at which the outward recoil of the chest wall exactly balances the inward recoil of the lung. It is the resting lung volume — the position the chest returns to after each quiet breath. Reduced FRC indicates loss of lung volume (e.g., obesity, pleural effusion, atelectasis).",
+    "visualDescription": "Spirogram with FRC bracket spanning from end-tidal expiration line down to zero, composed of ERV + RV, ~2400 mL labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Functional_residual_capacity",
+    "volatile": false,
+    "distractors": ["~500 mL", "~1200 mL", "~4800 mL"],
+    "variants": [
+      {
+        "quizQuestion": "FRC is the equilibrium point where the outward recoil of the chest wall balances the inward recoil of the lungs. What approximate volume is this in adults?",
+        "correctAnswer": "~2400 mL",
+        "explanation": "At FRC (~2400 mL), no respiratory muscle activity is needed to maintain lung volume. This is the natural rest position of the respiratory system. Anaesthesia and supine positioning reduce FRC, increasing risk of atelectasis."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_041",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~1200 mL",
+    "acceptableAlternatives": ["1200 mL", "approximately 1200 mL"],
+    "chainThemeId": "lung_volumes",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "What is the approximate expiratory reserve volume (ERV) — the extra air forcefully exhaled beyond a normal tidal expiration?",
+    "explanation": "After a normal tidal expiration, an additional ~1200 mL can be forcefully expelled by active contraction of internal intercostal and abdominal muscles. This is the expiratory reserve volume. Together with residual volume (~1200 mL) it forms the functional residual capacity (~2400 mL).",
+    "visualDescription": "Spirogram with ERV bracket below the resting end-expiration line, showing extra volume expelled by forced expiration, ~1200 mL labeled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lung_volumes",
+    "volatile": false,
+    "distractors": ["~500 mL", "~3100 mL", "~2400 mL"],
+    "variants": [
+      {
+        "quizQuestion": "The expiratory reserve volume plus the residual volume equals which lung capacity?",
+        "correctAnswer": "Functional residual capacity",
+        "explanation": "FRC = ERV (~1200 mL) + RV (~1200 mL) ≈ 2400 mL. FRC is the lung volume at rest after passive expiration — the balance point of respiratory mechanics."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_042",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Right shift — more O₂ released",
+    "acceptableAlternatives": ["Rightward shift", "Curve shifts right"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "descriptors",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "During exercise, rising temperature and falling pH both shift the oxygen-hemoglobin dissociation curve in which direction, and what is the physiological benefit?",
+    "explanation": "Exercise raises muscle temperature and produces lactic acid, CO₂, and H⁺ — all of which shift the oxygen-hemoglobin dissociation curve to the right (reduced O₂ affinity). At any given PO₂, hemoglobin releases more oxygen to the working muscle. This is the Bohr effect in action: the body automatically delivers more O₂ precisely where metabolic demand is greatest.",
+    "visualDescription": "Oxygen-hemoglobin dissociation curve showing baseline sigmoid curve and a rightward-shifted curve labeled 'exercise (high temp, low pH)', increased O₂ unloading at tissue PO₂ highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bohr_effect",
+    "volatile": false,
+    "distractors": ["Left shift — less O₂ released", "No change — temperature has no effect", "Left shift — more O₂ loaded in lungs"],
+    "variants": [
+      {
+        "quizQuestion": "A leftward shift of the oxygen-hemoglobin dissociation curve — for example caused by fetal hemoglobin (HbF) — means hemoglobin has a ___ affinity for oxygen.",
+        "correctAnswer": "Higher",
+        "explanation": "Left-shifted HbF has higher O₂ affinity than adult HbA, allowing the fetus to extract oxygen from maternal blood across the placenta. This is essential because fetal blood must compete with — and win oxygen from — maternal hemoglobin."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_043",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "70% bicarbonate, 23% carbaminohemoglobin, 7% dissolved",
+    "acceptableAlternatives": ["Bicarbonate 70%, carbaminohemoglobin 23%, dissolved 7%"],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "percentages",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What are the three forms of CO₂ transport in blood and their approximate percentages?",
+    "explanation": "Carbon dioxide is transported in three forms: ~70% as bicarbonate ions (HCO₃⁻) in plasma (converted by carbonic anhydrase in red blood cells), ~23% bound to hemoglobin protein chains as carbaminohemoglobin, and ~7% dissolved directly in plasma. The bicarbonate route is dominant because CO₂ is highly soluble and rapidly converted by carbonic anhydrase.",
+    "visualDescription": "Pie chart or stacked bar showing three segments: 70% bicarbonate (blue), 23% carbaminohemoglobin (red), 7% dissolved (grey)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carbon_dioxide",
+    "volatile": false,
+    "distractors": [
+      "50% bicarbonate, 40% dissolved, 10% carbaminohemoglobin",
+      "90% oxyhemoglobin, 7% carbaminohemoglobin, 3% dissolved",
+      "60% dissolved, 30% bicarbonate, 10% carbaminohemoglobin"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "The majority (~70%) of carbon dioxide transported in blood is converted to which ion by carbonic anhydrase inside red blood cells?",
+        "correctAnswer": "Bicarbonate (HCO₃⁻)",
+        "explanation": "CO₂ + H₂O → H₂CO₃ → H⁺ + HCO₃⁻. The bicarbonate exits into plasma via the chloride shift (Hamburger phenomenon), while H⁺ is buffered by hemoglobin."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_044",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Surfactant reduces surface tension, preventing alveolar collapse",
+    "acceptableAlternatives": ["Reduces surface tension to prevent collapse"],
+    "chainThemeId": "alveoli",
+    "answerTypePoolId": "mechanisms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the primary function of pulmonary surfactant, and which law explains why alveoli without it would collapse?",
+    "explanation": "Surfactant (mainly dipalmitoylphosphatidylcholine, DPPC) lines the alveolar surface and reduces surface tension, preventing alveolar collapse on expiration. Without surfactant, Laplace's law (P = 2T/r) predicts that smaller alveoli (smaller r) would have higher pressure and empty into larger ones — causing progressive atelectasis. Surfactant preferentially reduces tension in smaller alveoli, equalising pressures and keeping all sizes patent.",
+    "visualDescription": "Two alveoli of different sizes: without surfactant the smaller one collapses into the larger; with surfactant both remain open as surface tension is appropriately scaled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_surfactant",
+    "volatile": false,
+    "distractors": [
+      "Surfactant increases surface tension to maintain alveolar shape",
+      "Surfactant transports oxygen across the respiratory membrane",
+      "Surfactant acts as an immune barrier against pathogens"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "By Laplace's law, which alveoli are at greatest risk of collapsing into adjacent larger ones if surfactant is absent?",
+        "correctAnswer": "Smaller alveoli",
+        "explanation": "Laplace's law states P = 2T/r: pressure inside a sphere is inversely proportional to its radius. Smaller alveoli develop higher pressure and tend to deflate into larger ones. Surfactant counteracts this by reducing T more in smaller alveoli, stabilising them."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_045",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Terminal bronchioles → respiratory bronchioles → alveolar ducts → alveoli",
+    "acceptableAlternatives": ["Terminal bronchioles, respiratory bronchioles, alveolar ducts, alveoli"],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "sequences",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What is the correct order of airway structures from the terminal bronchioles to the alveoli?",
+    "explanation": "After the terminal bronchioles (the last purely conducting airways, with no gas exchange), the airway transitions to the respiratory zone: respiratory bronchioles (have occasional alveolar outpouchings) → alveolar ducts (walls almost entirely alveoli) → alveolar sacs → individual alveoli. The transition from terminal bronchiole to respiratory bronchiole marks the start of gas exchange.",
+    "visualDescription": "Branching airway tree with each generation labeled from terminal bronchiole to alveolus, respiratory zone shaded in pink starting at respiratory bronchioles",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bronchiole",
+    "volatile": false,
+    "distractors": [
+      "Terminal bronchioles → alveolar ducts → respiratory bronchioles → alveoli",
+      "Segmental bronchi → terminal bronchioles → alveolar sacs → alveoli",
+      "Respiratory bronchioles → terminal bronchioles → alveolar ducts → alveoli"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "True or false: Terminal bronchioles participate in gas exchange.",
+        "correctAnswer": "False",
+        "explanation": "Terminal bronchioles are purely conducting — they transport air but have no alveoli in their walls and do not exchange gases. Gas exchange begins only in the respiratory bronchioles and beyond."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_046",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~46 mmHg",
+    "acceptableAlternatives": ["46 mmHg", "approximately 46 mmHg"],
+    "chainThemeId": "gas_exchange",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "What is the approximate partial pressure of CO₂ (PCO₂) in pulmonary capillary blood returning from the body tissues?",
+    "explanation": "Venous blood returning from the systemic circulation has a PCO₂ of approximately 46 mmHg, compared to alveolar PCO₂ of ~40 mmHg. This 6 mmHg gradient drives CO₂ diffusion from blood into the alveoli, where it is exhaled. The gradient for CO₂ is much smaller than for O₂ (~60 mmHg), but CO₂ diffuses ~20 times more readily through tissues than O₂, so exchange is equally efficient.",
+    "visualDescription": "Alveolus-capillary interface with PCO₂ gradient labeled: 46 mmHg in incoming venous blood, 40 mmHg in alveolar air, arrow showing CO₂ diffusion out of blood",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Respiratory_system",
+    "volatile": false,
+    "distractors": ["~100 mmHg", "~40 mmHg", "~20 mmHg"],
+    "variants": [
+      {
+        "quizQuestion": "CO₂ diffuses from pulmonary capillary blood (~46 mmHg) into the alveoli (~40 mmHg). Despite the small 6 mmHg gradient, why is CO₂ exchange still efficient?",
+        "correctAnswer": "CO₂ diffuses ~20 times more readily than O₂ through tissues",
+        "explanation": "CO₂ has much higher solubility in tissue fluids than O₂, so it diffuses far more readily across the respiratory membrane. This compensates for the smaller pressure gradient compared to O₂."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_047",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Haldane effect",
+    "acceptableAlternatives": [],
+    "chainThemeId": "gas_transport",
+    "answerTypePoolId": "effect_names",
+    "difficulty": 4,
+    "funScore": 5,
+    "quizQuestion": "Which complementary effect to the Bohr effect describes how oxygenation of hemoglobin reduces its affinity for CO₂ and H⁺, promoting CO₂ release in the lungs?",
+    "explanation": "The Haldane effect (described by John Scott Haldane) states that oxygenated hemoglobin (HbO₂) is a weaker acid and a poorer CO₂ carrier than deoxygenated hemoglobin. When hemoglobin picks up O₂ in the lungs, it releases CO₂ and H⁺ — facilitating CO₂ elimination. This effect accounts for roughly half of the CO₂ transported between tissues and lungs, working in concert with the Bohr effect.",
+    "visualDescription": "Dual diagram: in tissues (low PO₂) deoxyHb picks up CO₂ and H⁺; in lungs (high PO₂) oxyHb releases CO₂ and H⁺, labeled Haldane effect",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Haldane_effect",
+    "volatile": false,
+    "distractors": ["Bohr effect", "Fick principle", "Starling law"],
+    "variants": [
+      {
+        "quizQuestion": "The Bohr and Haldane effects work together during gas exchange. The Bohr effect promotes O₂ unloading in tissues. What does the Haldane effect promote in the lungs?",
+        "correctAnswer": "CO₂ release (unloading) from hemoglobin",
+        "explanation": "In the lungs, O₂ binding to hemoglobin (Haldane effect) causes it to release CO₂ and H⁺. Simultaneously, the released H⁺ is buffered, shifting carbonic acid back to CO₂, which is exhaled. The two effects are reciprocal and synergistic."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_048",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Apneustic center",
+    "acceptableAlternatives": ["Apneustic centre"],
+    "chainThemeId": "breathing_control",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Which lower pontine center tends to prolong and sustain inspiration, and is normally kept in check by the pneumotaxic center?",
+    "explanation": "The apneustic center in the lower pons sends excitatory signals to the inspiratory neurons of the medulla, tending to sustain inspiration in a prolonged gasping pattern (apneusis). Under normal conditions it is continuously inhibited by the pneumotaxic center. If the pons is transected above the apneustic center but below the pneumotaxic center, prolonged inspiratory spasms (apneusis) occur.",
+    "visualDescription": "Brainstem sagittal diagram with apneustic center labeled in lower pons, pneumotaxic center labeled in upper pons, inhibitory arrow from pneumotaxic to apneustic center",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apneustic_center",
+    "volatile": false,
+    "distractors": ["Pneumotaxic center", "Dorsal respiratory group", "Pre-Bötzinger complex"],
+    "variants": [
+      {
+        "quizQuestion": "If the brainstem is transected between the pneumotaxic and apneustic centers, what abnormal breathing pattern results?",
+        "correctAnswer": "Apneusis — prolonged inspiratory spasms",
+        "explanation": "Without inhibition from the pneumotaxic center, the apneustic center drives sustained inspiration with only brief expirations. This is the experimental basis for understanding the roles of pontine respiratory centers."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_049",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "Nasal cavity → pharynx → larynx → trachea → bronchi → bronchioles → alveoli",
+    "acceptableAlternatives": [],
+    "chainThemeId": "airways",
+    "answerTypePoolId": "sequences",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What is the correct sequence of structures that air passes through from the nostrils to the alveoli?",
+    "explanation": "Air flows: nasal cavity (warms/humidifies/filters) → pharynx (3 parts) → larynx (voice box, guards airway) → trachea (~12 cm) → main bronchi → lobar bronchi → segmental bronchi → bronchioles → terminal bronchioles → respiratory bronchioles → alveolar ducts → alveoli. The conducting zone ends at terminal bronchioles; the respiratory zone begins at respiratory bronchioles.",
+    "visualDescription": "Labeled diagram of the full respiratory tract from nose to alveoli with each major structure numbered in sequence",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Respiratory_system",
+    "volatile": false,
+    "distractors": [
+      "Pharynx → nasal cavity → trachea → larynx → bronchi → alveoli",
+      "Nasal cavity → larynx → pharynx → trachea → alveoli → bronchi",
+      "Trachea → pharynx → larynx → bronchi → nasal cavity → alveoli"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "At which point in the respiratory tract does the conducting zone end and the respiratory (gas-exchange) zone begin?",
+        "correctAnswer": "At the respiratory bronchioles",
+        "explanation": "Terminal bronchioles mark the end of the conducting zone — they have no alveoli and do no gas exchange. Respiratory bronchioles are the first structures to have alveoli in their walls, marking the start of the respiratory zone."
+      }
+    ]
+  },
+  {
+    "id": "ha_resp_050",
+    "subDeckId": "respiratory_system",
+    "correctAnswer": "~70 m²",
+    "acceptableAlternatives": ["70 m²", "approximately 70 m²", "70 square metres"],
+    "chainThemeId": "alveoli",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "What is the total gas-exchange surface area provided by ~480 million alveoli — often described as roughly half a tennis court?",
+    "explanation": "The combined alveolar surface area is approximately 70 m² — about half a regulation tennis court (260 m²). This extraordinary surface-to-volume ratio is achieved by packing ~480 million tiny spherical alveoli into lungs that together weigh only about 1 kg. The enormous area, combined with the extremely thin respiratory membrane (~0.5 µm), allows the ~5 litres of blood in the body to become fully oxygenated in less than one second during each passage through the pulmonary capillaries.",
+    "visualDescription": "Side-by-side scale comparison: a tennis court outline beside the outline of both lungs, with '70 m² alveolar surface' label; inset microscopy image of packed alveoli",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_alveolus",
+    "volatile": false,
+    "distractors": ["~7 m²", "~700 m²", "~35 m²"],
+    "variants": [
+      {
+        "quizQuestion": "How thin is the respiratory membrane separating alveolar air from capillary blood, enabling near-instantaneous gas diffusion?",
+        "correctAnswer": "~0.5 µm",
+        "explanation": "The respiratory membrane — comprising alveolar epithelium (Type I pneumocyte), basement membrane, and capillary endothelium — is only ~0.5 micrometres thick. This extraordinary thinness, combined with the 70 m² surface area, allows full oxygenation of pulmonary blood in under one second."
+      }
+    ]
+  }
+]

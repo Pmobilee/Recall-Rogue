@@ -1,0 +1,370 @@
+[
+  {
+    "id": "ha_digest_031",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach"],
+    "front": "What type of muscle controls the upper esophageal sphincter?",
+    "back": "Skeletal muscle (voluntary control)",
+    "distractors": ["Smooth muscle (involuntary)", "Cardiac muscle", "Both smooth and skeletal equally"],
+    "explanation": "The upper esophageal sphincter is composed of skeletal muscle and is under voluntary control, unlike the lower esophageal sphincter which is smooth muscle.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Esophagus"
+  },
+  {
+    "id": "ha_digest_032",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach"],
+    "front": "What type of muscle controls the lower (cardiac) esophageal sphincter?",
+    "back": "Smooth muscle (involuntary control)",
+    "distractors": ["Skeletal muscle (voluntary)", "Cardiac muscle", "Striated muscle"],
+    "explanation": "The lower esophageal sphincter, also called the cardiac sphincter, is smooth muscle operating involuntarily. Its weakness causes gastroesophageal reflux disease (GERD).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Esophagus"
+  },
+  {
+    "id": "ha_digest_033",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach", "clinical_gi"],
+    "front": "What condition results from weakness of the lower esophageal sphincter?",
+    "back": "GERD (Gastroesophageal Reflux Disease)",
+    "distractors": ["Dysphagia", "Achalasia", "Pyloric stenosis"],
+    "explanation": "GERD occurs when the lower esophageal sphincter fails to maintain adequate pressure, allowing stomach acid to reflux back into the esophagus.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastroesophageal_reflux_disease"
+  },
+  {
+    "id": "ha_digest_034",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach"],
+    "front": "Which stomach cells secrete hydrochloric acid (HCl)?",
+    "back": "Parietal cells",
+    "distractors": ["Chief cells", "G cells", "Mucous cells"],
+    "explanation": "Parietal cells in the gastric mucosa secrete both HCl (creating the acidic stomach environment) and intrinsic factor (needed for B12 absorption).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parietal_cell"
+  },
+  {
+    "id": "ha_digest_035",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach"],
+    "front": "Which stomach cells secrete intrinsic factor?",
+    "back": "Parietal cells",
+    "distractors": ["Chief cells", "G cells", "Enteroendocrine cells"],
+    "explanation": "Parietal cells produce both HCl and intrinsic factor. Intrinsic factor is essential for vitamin B12 absorption in the terminal ileum.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parietal_cell"
+  },
+  {
+    "id": "ha_digest_036",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach"],
+    "front": "Which stomach cells secrete pepsinogen?",
+    "back": "Chief cells",
+    "distractors": ["Parietal cells", "G cells", "Mucous cells"],
+    "explanation": "Chief cells (also called zymogenic cells) secrete pepsinogen, the inactive precursor to pepsin. HCl in the stomach activates pepsinogen into pepsin, which digests proteins.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chief_cell"
+  },
+  {
+    "id": "ha_digest_037",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach"],
+    "front": "Which stomach cells secrete the hormone gastrin?",
+    "back": "G cells",
+    "distractors": ["Parietal cells", "Chief cells", "Mucous neck cells"],
+    "explanation": "G cells are enteroendocrine cells found mainly in the pyloric antrum of the stomach. They secrete gastrin, a hormone that stimulates acid secretion by parietal cells.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/G_cell"
+  },
+  {
+    "id": "ha_digest_038",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["esophagus_stomach"],
+    "front": "What do mucous cells in the stomach secrete, and why is it important?",
+    "back": "Protective mucus — shields the stomach lining from HCl and pepsin",
+    "distractors": ["Bicarbonate — neutralizes stomach acid in the duodenum", "Pepsinogen — initiates protein digestion", "Gastrin — stimulates acid production"],
+    "explanation": "Mucous cells line the stomach and secrete a thick alkaline mucus layer that prevents the stomach from digesting its own wall (autodigestion).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastric_mucosa"
+  },
+  {
+    "id": "ha_digest_039",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder", "clinical_gi"],
+    "front": "What is the most common type of gallstone?",
+    "back": "Cholesterol stones",
+    "distractors": ["Pigment (bilirubin) stones", "Mixed calcium stones", "Uric acid stones"],
+    "explanation": "Cholesterol gallstones are the most common type of gallstone, forming when bile contains too much cholesterol relative to bile salts and lecithin.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gallstone"
+  },
+  {
+    "id": "ha_digest_040",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder", "clinical_gi"],
+    "front": "What is the most common pathology of the bile duct?",
+    "back": "Gallstone disease (cholelithiasis)",
+    "distractors": ["Cholangitis", "Primary sclerosing cholangitis", "Bile duct cancer (cholangiocarcinoma)"],
+    "explanation": "Gallstone disease is the most common bile duct pathology. Stones can obstruct bile flow, causing pain, jaundice, and potentially life-threatening complications.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gallstone"
+  },
+  {
+    "id": "ha_digest_041",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder"],
+    "front": "What is the hepatic portal system?",
+    "back": "Venous system carrying blood from the GI tract → portal vein → liver → hepatic veins → IVC",
+    "distractors": [
+      "Arterial system supplying oxygenated blood directly to the liver",
+      "Lymphatic network draining fat from intestinal lacteals to the liver",
+      "System carrying bile from liver → gallbladder → duodenum"
+    ],
+    "explanation": "The hepatic portal system ensures all blood from the GI tract passes through the liver before entering systemic circulation, enabling first-pass metabolism of absorbed nutrients and toxins.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hepatic_portal_system"
+  },
+  {
+    "id": "ha_digest_042",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder"],
+    "front": "What is 'first-pass metabolism'?",
+    "back": "Liver processing of absorbed substances before they reach systemic circulation, via the portal vein",
+    "distractors": [
+      "Initial breakdown of food by stomach acid before reaching the intestine",
+      "The first phase of enzyme digestion occurring in the mouth",
+      "Filtering of blood by the kidneys before it reaches the heart"
+    ],
+    "explanation": "Because portal blood flows through the liver before entering the IVC, the liver can metabolize or detoxify drugs and nutrients on their first pass — significantly reducing bioavailability of many oral medications.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/First_pass_effect"
+  },
+  {
+    "id": "ha_digest_043",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder"],
+    "front": "Where does heme breakdown to produce bilirubin begin?",
+    "back": "Spleen and liver",
+    "distractors": ["Kidneys", "Bone marrow", "Duodenum"],
+    "explanation": "Old red blood cells are destroyed primarily in the spleen and liver. Their hemoglobin is broken down, with heme converted to bilirubin — the yellow pigment responsible for jaundice when elevated.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bilirubin"
+  },
+  {
+    "id": "ha_digest_044",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder"],
+    "front": "What happens to bilirubin in the liver?",
+    "back": "It is conjugated (made water-soluble) and excreted into bile",
+    "distractors": [
+      "It is broken down into hemoglobin and recycled into new red blood cells",
+      "It is filtered directly into urine without modification",
+      "It is converted to urobilinogen immediately without conjugation"
+    ],
+    "explanation": "Unconjugated bilirubin is fat-soluble and bound to albumin in blood. In the liver it is conjugated with glucuronic acid, making it water-soluble and allowing excretion into bile.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bilirubin"
+  },
+  {
+    "id": "ha_digest_045",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder"],
+    "front": "What gives stool its brown color?",
+    "back": "Stercobilin — a pigment derived from bilirubin via urobilinogen in the gut",
+    "distractors": [
+      "Melanin secreted by intestinal cells",
+      "Oxidized iron from digested food",
+      "Bile salts that remain in the colon after fat digestion"
+    ],
+    "explanation": "Bilirubin in bile → converted to urobilinogen by gut bacteria → urobilinogen oxidized to stercobilin → stercobilin gives feces its characteristic brown color.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stercobilin"
+  },
+  {
+    "id": "ha_digest_046",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["liver_gallbladder"],
+    "front": "What gives urine its yellow color?",
+    "back": "Urobilin — derived from urobilinogen reabsorbed from the gut and excreted by the kidneys",
+    "distractors": [
+      "Creatinine pigments from muscle breakdown",
+      "Stercobilin excreted through kidneys",
+      "Conjugated bilirubin filtered directly by the glomerulus"
+    ],
+    "explanation": "Some urobilinogen produced in the gut is reabsorbed into the blood, converted to urobilin, and excreted by the kidneys — giving urine its characteristic yellow color.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Urobilin"
+  },
+  {
+    "id": "ha_digest_047",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["clinical_gi"],
+    "front": "What triggers the defecation reflex?",
+    "back": "Rectal distension (feces filling the rectum)",
+    "distractors": [
+      "Voluntary contraction of abdominal muscles",
+      "Chemical signals from bile acids reaching the sigmoid colon",
+      "Parasympathetic nerve signals initiated in the spinal cord without rectal filling"
+    ],
+    "explanation": "When feces distend the rectum, stretch receptors trigger the defecation reflex — the internal anal sphincter relaxes involuntarily while the external sphincter remains under voluntary control.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Defecation"
+  },
+  {
+    "id": "ha_digest_048",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["clinical_gi"],
+    "front": "Which anal sphincter relaxes involuntarily during the defecation reflex?",
+    "back": "Internal anal sphincter",
+    "distractors": ["External anal sphincter", "Both sphincters relax simultaneously", "Puborectalis muscle"],
+    "explanation": "The internal anal sphincter is smooth muscle and relaxes involuntarily in response to rectal distension. The external anal sphincter is skeletal muscle under voluntary control, allowing defecation to be consciously delayed.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Defecation"
+  },
+  {
+    "id": "ha_digest_049",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "In what form are carbohydrates absorbed across the intestinal wall?",
+    "back": "Monosaccharides (glucose, fructose, galactose)",
+    "distractors": [
+      "Disaccharides (sucrose, lactose, maltose)",
+      "Oligosaccharides (short starch chains)",
+      "Polysaccharides after partial digestion"
+    ],
+    "explanation": "Carbohydrates must be fully broken down to monosaccharides before absorption. Glucose and galactose use active transport (SGLT1); fructose uses facilitated diffusion (GLUT5).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carbohydrate_digestion"
+  },
+  {
+    "id": "ha_digest_050",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "In what form are proteins absorbed across the intestinal wall?",
+    "back": "Amino acids (and small di/tripeptides)",
+    "distractors": [
+      "Polypeptide chains of 10–20 amino acids",
+      "Intact proteins via receptor-mediated endocytosis",
+      "Peptones (large peptide fragments)"
+    ],
+    "explanation": "Proteins are digested to individual amino acids and small di/tripeptides. Amino acids are absorbed via specific carrier proteins; di/tripeptides are absorbed via PepT1 and hydrolyzed inside enterocytes.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Protein_digestion"
+  },
+  {
+    "id": "ha_digest_051",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "In what form are fats absorbed across the intestinal wall?",
+    "back": "Fatty acids and monoglycerides (after micelle formation with bile salts)",
+    "distractors": [
+      "Triglycerides emulsified by bile salts directly",
+      "Chylomicrons formed in the intestinal lumen before absorption",
+      "Glycerol and free fatty acids via active transport only"
+    ],
+    "explanation": "Pancreatic lipase breaks triglycerides into fatty acids and monoglycerides. These are packaged into micelles with bile salts, diffuse into enterocytes, reassembled into triglycerides, packaged into chylomicrons, and secreted into lacteals.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lipid_digestion"
+  },
+  {
+    "id": "ha_digest_052",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "After absorption, where do dietary fats (as chylomicrons) enter the circulation?",
+    "back": "Lacteals (lymphatic capillaries in intestinal villi) → lymph → bloodstream",
+    "distractors": [
+      "Portal vein → liver (same as carbohydrates and amino acids)",
+      "Hepatic veins directly via intestinal blood capillaries",
+      "Mesenteric veins → inferior vena cava, bypassing the liver"
+    ],
+    "explanation": "Unlike carbohydrates and amino acids that enter portal blood, chylomicrons are too large for blood capillaries and instead enter lacteals — lymphatic vessels in each villus — traveling via the thoracic duct into venous blood.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lacteal"
+  },
+  {
+    "id": "ha_digest_053",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "Where in the GI tract is iron absorbed?",
+    "back": "Duodenum",
+    "distractors": ["Jejunum", "Terminal ileum", "Stomach"],
+    "explanation": "Iron is primarily absorbed in the duodenum. Gastric acid (HCl) helps reduce ferric iron (Fe3+) to ferrous iron (Fe2+), which is more efficiently absorbed by duodenal enterocytes.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Iron_metabolism"
+  },
+  {
+    "id": "ha_digest_054",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "Where in the GI tract is calcium absorbed, and what vitamin is required?",
+    "back": "Duodenum; requires vitamin D",
+    "distractors": [
+      "Jejunum; requires vitamin K",
+      "Terminal ileum; requires intrinsic factor",
+      "Colon; requires vitamin C"
+    ],
+    "explanation": "Calcium is absorbed mainly in the duodenum via active transport. Vitamin D stimulates synthesis of calbindin, a calcium-binding protein in enterocytes essential for this process.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Calcium_metabolism"
+  },
+  {
+    "id": "ha_digest_055",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "Where in the GI tract is vitamin B12 absorbed, and what is required for its absorption?",
+    "back": "Terminal ileum; requires intrinsic factor (produced by gastric parietal cells)",
+    "distractors": [
+      "Duodenum; requires bile salts",
+      "Jejunum; requires calcium and vitamin D",
+      "Colon; no cofactor required"
+    ],
+    "explanation": "Vitamin B12 binds intrinsic factor (secreted by parietal cells) in the stomach. The B12-intrinsic factor complex travels to the terminal ileum where specific receptors facilitate absorption.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vitamin_B12"
+  },
+  {
+    "id": "ha_digest_056",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["clinical_gi"],
+    "front": "What is the digestive function of the appendix?",
+    "back": "Vestigial — no known significant digestive function",
+    "distractors": [
+      "Secretes digestive enzymes to assist the cecum",
+      "Absorbs water from fecal matter entering the cecum",
+      "Stores bile salts for fat digestion in the large intestine"
+    ],
+    "explanation": "The appendix is considered vestigial in digestion. However, it contains lymphoid tissue and plays a role in immune function, acting as a reservoir for beneficial gut bacteria.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Appendix_(anatomy)"
+  },
+  {
+    "id": "ha_digest_057",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["clinical_gi"],
+    "front": "What is the immunological role of the appendix?",
+    "back": "Contains lymphoid tissue — contributes to gut immune function",
+    "distractors": [
+      "Produces IgA antibodies secreted directly into the colon lumen",
+      "Synthesizes complement proteins for systemic immunity",
+      "Acts as the primary site for gut-associated lymphoid tissue (GALT) in adults"
+    ],
+    "explanation": "Although vestigial in digestion, the appendix contains abundant lymphoid tissue (part of GALT) and may serve as a reservoir for beneficial gut microbiota that can repopulate the colon after illness.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Appendix_(anatomy)"
+  },
+  {
+    "id": "ha_digest_058",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["clinical_gi"],
+    "front": "What is McBurney's point, and what condition is it associated with?",
+    "back": "One-third of the way from the right ASIS to the umbilicus — point of maximal tenderness in appendicitis",
+    "distractors": [
+      "One-third of the way from the left ASIS to the umbilicus — used to locate the descending colon",
+      "The midpoint between the xiphoid process and the umbilicus — site of epigastric pain in gastritis",
+      "Two-thirds of the way from the umbilicus to the right ASIS — Murphy's sign for gallbladder disease"
+    ],
+    "explanation": "McBurney's point lies approximately 1/3 of the distance from the anterior superior iliac spine (ASIS) to the umbilicus. Tenderness here is a classic sign of acute appendicitis.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/McBurney%27s_point"
+  },
+  {
+    "id": "ha_digest_059",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "How many neurons does the enteric nervous system contain?",
+    "back": "Approximately 100 million neurons",
+    "distractors": [
+      "Approximately 10 million neurons",
+      "Approximately 500 million neurons",
+      "Approximately 1 billion neurons"
+    ],
+    "explanation": "The enteric nervous system (ENS) contains around 100 million neurons embedded in the gut wall — comparable in complexity to the spinal cord — which is why it is called the 'second brain.'",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enteric_nervous_system"
+  },
+  {
+    "id": "ha_digest_060",
+    "subDeckId": "digestive_system",
+    "chainThemeIds": ["absorption"],
+    "front": "Why is the enteric nervous system called the 'second brain'?",
+    "back": "It contains ~100 million neurons in the gut wall and can function semi-autonomously without input from the brain or spinal cord",
+    "distractors": [
+      "It processes sensory information from the gut and relays it to the cerebral cortex for conscious perception",
+      "It controls voluntary movement of intestinal smooth muscle independently of the autonomic nervous system",
+      "It produces neurotransmitters that regulate mood, making it a secondary emotional processing center"
+    ],
+    "explanation": "The ENS is a semi-autonomous neural network lining the GI tract that can regulate digestion — including peristalsis, secretion, and blood flow — independently of the central nervous system, earning its nickname 'the second brain.'",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enteric_nervous_system"
+  }
+]

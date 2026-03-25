@@ -1,0 +1,706 @@
+{
+  "subDeckId": "endocrine_system",
+  "subDeckName": "Endocrine System",
+  "facts": [
+    {
+      "id": "ha_endo_001",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["hypothalamus"],
+      "question": "What role does the hypothalamus play in the endocrine system?",
+      "correct_answer": "Master regulator — releases and inhibits hormones that control the anterior pituitary",
+      "distractors": [
+        "Stores and releases hormones produced by the posterior pituitary",
+        "Directly produces the hormones TSH, ACTH, and prolactin",
+        "Regulates only the adrenal glands via direct neural signaling"
+      ],
+      "explanation": "The hypothalamus is the master regulator of the endocrine system. It produces releasing and inhibiting hormones that control what the anterior pituitary secretes.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_002",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["hypothalamus"],
+      "question": "Which hypothalamic hormone stimulates the anterior pituitary to release TSH?",
+      "correct_answer": "TRH (thyrotropin-releasing hormone)",
+      "distractors": [
+        "CRH (corticotropin-releasing hormone)",
+        "GnRH (gonadotropin-releasing hormone)",
+        "GHRH (growth hormone-releasing hormone)"
+      ],
+      "explanation": "TRH (thyrotropin-releasing hormone) from the hypothalamus stimulates the anterior pituitary to secrete TSH, which then acts on the thyroid gland.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_003",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["hypothalamus"],
+      "question": "Which hypothalamic hormone stimulates the anterior pituitary to release ACTH?",
+      "correct_answer": "CRH (corticotropin-releasing hormone)",
+      "distractors": [
+        "TRH (thyrotropin-releasing hormone)",
+        "GHRH (growth hormone-releasing hormone)",
+        "GnRH (gonadotropin-releasing hormone)"
+      ],
+      "explanation": "CRH (corticotropin-releasing hormone) from the hypothalamus stimulates the anterior pituitary to secrete ACTH, which then stimulates cortisol release from the adrenal cortex.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_004",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["hypothalamus"],
+      "question": "Which hypothalamic hormone stimulates FSH and LH release from the anterior pituitary?",
+      "correct_answer": "GnRH (gonadotropin-releasing hormone)",
+      "distractors": [
+        "TRH (thyrotropin-releasing hormone)",
+        "CRH (corticotropin-releasing hormone)",
+        "Dopamine (prolactin-inhibiting hormone)"
+      ],
+      "explanation": "GnRH (gonadotropin-releasing hormone) from the hypothalamus stimulates the anterior pituitary to release both FSH and LH, which act on the gonads.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_005",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["hypothalamus"],
+      "question": "Somatostatin, produced by the hypothalamus, inhibits the release of which two anterior pituitary hormones?",
+      "correct_answer": "GH (growth hormone) and TSH",
+      "distractors": [
+        "ACTH and prolactin",
+        "FSH and LH",
+        "TSH and prolactin"
+      ],
+      "explanation": "Somatostatin is an inhibitory hormone from the hypothalamus that suppresses the release of both GH (growth hormone) and TSH from the anterior pituitary.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_006",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["hypothalamus"],
+      "question": "Which hypothalamic substance inhibits prolactin secretion from the anterior pituitary?",
+      "correct_answer": "Dopamine (also called prolactin-inhibiting hormone, PIH)",
+      "distractors": [
+        "Somatostatin",
+        "CRH (corticotropin-releasing hormone)",
+        "Oxytocin"
+      ],
+      "explanation": "Dopamine, released by the hypothalamus and also called prolactin-inhibiting hormone (PIH), tonically inhibits prolactin secretion from the anterior pituitary.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_007",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["hypothalamus", "posterior_pituitary"],
+      "question": "ADH and oxytocin are produced by the hypothalamus but released from which structure?",
+      "correct_answer": "The posterior pituitary (neurohypophysis)",
+      "distractors": [
+        "The anterior pituitary (adenohypophysis)",
+        "The pineal gland",
+        "The hypothalamus itself directly into the bloodstream"
+      ],
+      "explanation": "ADH (vasopressin) and oxytocin are synthesized in the hypothalamus, transported down axons, and stored in the posterior pituitary (neurohypophysis) until released.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_008",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "What is the anterior pituitary also called?",
+      "correct_answer": "Adenohypophysis",
+      "distractors": [
+        "Neurohypophysis",
+        "Pars nervosa",
+        "Infundibulum"
+      ],
+      "explanation": "The anterior pituitary is called the adenohypophysis ('adeno' = glandular tissue). The posterior pituitary is the neurohypophysis.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_009",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "Growth hormone (GH/somatotropin) from the anterior pituitary acts on the liver, bones, and muscles to produce which effects?",
+      "correct_answer": "Growth, protein synthesis, and lipolysis (fat breakdown)",
+      "distractors": [
+        "Calcium absorption, bone remodeling, and glycogen storage",
+        "Water retention, sodium balance, and uterine contractions",
+        "Follicle development, ovulation, and testosterone production"
+      ],
+      "explanation": "GH stimulates growth, promotes protein synthesis, and triggers lipolysis (breakdown of fat for energy). It acts through IGF-1 produced by the liver.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_010",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "Excess growth hormone in a child causes gigantism. What condition results from GH excess in an adult?",
+      "correct_answer": "Acromegaly",
+      "distractors": [
+        "Cushing's syndrome",
+        "Graves' disease",
+        "Addison's disease"
+      ],
+      "explanation": "In children (open growth plates), GH excess causes gigantism with extreme height. In adults (fused growth plates), GH excess causes acromegaly — enlargement of hands, feet, and facial features.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_011",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "What does TSH from the anterior pituitary do?",
+      "correct_answer": "Stimulates the thyroid gland to produce T3 and T4",
+      "distractors": [
+        "Stimulates the adrenal cortex to produce cortisol",
+        "Stimulates the gonads to produce sex hormones",
+        "Stimulates the pancreas to release insulin"
+      ],
+      "explanation": "TSH (thyroid-stimulating hormone) from the anterior pituitary acts on the thyroid gland to stimulate the production and release of T3 (triiodothyronine) and T4 (thyroxine).",
+      "difficulty": 1
+    },
+    {
+      "id": "ha_endo_012",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "ACTH from the anterior pituitary stimulates which target organ to release cortisol?",
+      "correct_answer": "The adrenal cortex",
+      "distractors": [
+        "The adrenal medulla",
+        "The thyroid gland",
+        "The pancreatic islets"
+      ],
+      "explanation": "ACTH (adrenocorticotropic hormone) travels from the anterior pituitary to the adrenal cortex, where it stimulates the release of cortisol (and other glucocorticoids).",
+      "difficulty": 1
+    },
+    {
+      "id": "ha_endo_013",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "In males, what is the primary function of FSH from the anterior pituitary?",
+      "correct_answer": "Stimulating spermatogenesis (sperm production)",
+      "distractors": [
+        "Stimulating testosterone production from Leydig cells",
+        "Triggering the release of oxytocin from the posterior pituitary",
+        "Promoting DHEA secretion from the zona reticularis"
+      ],
+      "explanation": "In males, FSH (follicle-stimulating hormone) acts on Sertoli cells in the testes to support spermatogenesis. LH, not FSH, stimulates testosterone from Leydig cells.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_014",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "In females, LH from the anterior pituitary triggers ovulation and formation of what structure?",
+      "correct_answer": "The corpus luteum",
+      "distractors": [
+        "The Graafian follicle",
+        "The zona pellucida",
+        "The endometrial lining"
+      ],
+      "explanation": "An LH surge triggers ovulation. After the egg is released, LH stimulates the ruptured follicle to become the corpus luteum, which produces progesterone and estrogen.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_015",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "In males, LH from the anterior pituitary acts on which testicular cells to stimulate testosterone production?",
+      "correct_answer": "Leydig cells (interstitial cells)",
+      "distractors": [
+        "Sertoli cells",
+        "Spermatogonia",
+        "Epididymal cells"
+      ],
+      "explanation": "In males, LH (luteinizing hormone) stimulates the Leydig cells (interstitial cells) of the testes to produce testosterone. FSH acts on Sertoli cells to support sperm development.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_016",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["anterior_pituitary"],
+      "question": "Prolactin from the anterior pituitary acts on mammary glands to stimulate what?",
+      "correct_answer": "Milk production (lactation)",
+      "distractors": [
+        "Milk ejection (let-down reflex)",
+        "Breast tissue development during puberty",
+        "Uterine contractions during labor"
+      ],
+      "explanation": "Prolactin stimulates milk production (synthesis) in mammary glands. Note: milk ejection (the let-down reflex) is triggered by oxytocin, not prolactin.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_017",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["posterior_pituitary"],
+      "question": "ADH (vasopressin) acts on the kidney collecting ducts to cause what effect?",
+      "correct_answer": "Increased water reabsorption by inserting aquaporin channels",
+      "distractors": [
+        "Increased sodium reabsorption and potassium secretion",
+        "Increased calcium reabsorption",
+        "Increased glucose reabsorption"
+      ],
+      "explanation": "ADH (antidiuretic hormone / vasopressin) acts on the kidney collecting ducts, inserting aquaporin water channels into the cell membranes to increase water reabsorption and concentrate urine.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_018",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["posterior_pituitary"],
+      "question": "Deficiency of ADH (vasopressin) causes which condition?",
+      "correct_answer": "Diabetes insipidus",
+      "distractors": [
+        "Diabetes mellitus",
+        "Addison's disease",
+        "Cushing's syndrome"
+      ],
+      "explanation": "ADH deficiency causes diabetes insipidus — the kidneys cannot concentrate urine, leading to excessive production of dilute urine (polyuria) and extreme thirst (polydipsia).",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_019",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["posterior_pituitary"],
+      "question": "Oxytocin from the posterior pituitary has two main target effects — what are they?",
+      "correct_answer": "Uterine contractions during labor, and milk ejection (let-down) from mammary glands",
+      "distractors": [
+        "Milk production in mammary glands, and water reabsorption in the kidneys",
+        "Ovulation and corpus luteum maintenance",
+        "Cervical ripening and estrogen production"
+      ],
+      "explanation": "Oxytocin stimulates uterine smooth muscle contractions during labor and triggers milk ejection (the let-down reflex) in mammary glands when an infant nurses.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_020",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["thyroid"],
+      "question": "Where is the thyroid gland located?",
+      "correct_answer": "Anterior neck, at vertebral levels C5-T1, below the thyroid cartilage",
+      "distractors": [
+        "Posterior neck, behind the trachea at C3-C5",
+        "Mediastinum, anterior to the aortic arch",
+        "Anterior neck, above the hyoid bone"
+      ],
+      "explanation": "The thyroid is a butterfly-shaped gland in the anterior neck, spanning vertebral levels C5 to T1, positioned just below the thyroid cartilage (Adam's apple) and anterolateral to the trachea.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_021",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["thyroid"],
+      "question": "T3 and T4 require which mineral for their synthesis?",
+      "correct_answer": "Iodine",
+      "distractors": [
+        "Calcium",
+        "Iron",
+        "Zinc"
+      ],
+      "explanation": "Thyroid hormones T3 (triiodothyronine — 3 iodine atoms) and T4 (thyroxine — 4 iodine atoms) require dietary iodine for their synthesis. Iodine deficiency leads to goiter.",
+      "difficulty": 1
+    },
+    {
+      "id": "ha_endo_022",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["thyroid"],
+      "question": "T3 and T4 are released by thyroid follicular cells. Which form is more abundant in the blood, and which is more biologically active?",
+      "correct_answer": "T4 is more abundant; T3 is more biologically active",
+      "distractors": [
+        "T3 is more abundant; T4 is more biologically active",
+        "Both are equally abundant and equally active",
+        "T4 is both more abundant and more active"
+      ],
+      "explanation": "The thyroid secretes mostly T4 (thyroxine), which is the storage/transport form. T4 is converted to the more active T3 (triiodothyronine) in peripheral tissues.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_023",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["thyroid"],
+      "question": "Thyroid hormones T3 and T4 have what general physiological effects?",
+      "correct_answer": "Increase metabolic rate, heat production, and support growth",
+      "distractors": [
+        "Lower blood glucose and promote glycogen storage",
+        "Raise blood calcium and stimulate bone resorption",
+        "Decrease heart rate and promote fat storage"
+      ],
+      "explanation": "T3 and T4 increase the basal metabolic rate, stimulate heat production (calorigenic effect), and are essential for normal growth and nervous system development.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_024",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["thyroid"],
+      "question": "Calcitonin is produced by which thyroid cells, and what does it do to blood calcium?",
+      "correct_answer": "Parafollicular (C) cells; calcitonin lowers blood calcium",
+      "distractors": [
+        "Follicular cells; calcitonin raises blood calcium",
+        "Chief cells; calcitonin raises blood calcium",
+        "Oxyphil cells; calcitonin lowers blood calcium"
+      ],
+      "explanation": "Calcitonin is secreted by the parafollicular (C) cells of the thyroid. It lowers blood Ca²⁺ by inhibiting osteoclasts (reducing bone resorption) and promoting calcium deposition in bone.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_025",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["thyroid"],
+      "question": "Graves' disease causes hyperthyroidism through what mechanism?",
+      "correct_answer": "Autoimmune production of TSH receptor antibodies that continuously stimulate the thyroid",
+      "distractors": [
+        "A pituitary adenoma that overproduces TSH",
+        "Excess dietary iodine intake causing runaway T4 production",
+        "Destruction of thyroid follicular cells leading to hormone dumping"
+      ],
+      "explanation": "Graves' disease is an autoimmune condition where antibodies mimic TSH and continuously stimulate TSH receptors on the thyroid, causing unregulated overproduction of T3 and T4.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_026",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["thyroid"],
+      "question": "Hashimoto's thyroiditis causes hypothyroidism, and iodine deficiency can cause hypothyroidism with an enlarged thyroid. What is the enlarged thyroid condition called?",
+      "correct_answer": "Goiter",
+      "distractors": [
+        "Myxedema",
+        "Cretinism",
+        "Exophthalmos"
+      ],
+      "explanation": "Iodine deficiency causes hypothyroidism; the pituitary responds with high TSH to stimulate the thyroid harder, causing the gland to enlarge (goiter). Hashimoto's is autoimmune destruction of the thyroid.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_027",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["parathyroid"],
+      "question": "How many parathyroid glands are there, and where are they located?",
+      "correct_answer": "Four small glands embedded in the posterior surface of the thyroid gland",
+      "distractors": [
+        "Two glands located in the adrenal medulla",
+        "Six glands distributed along the anterior neck",
+        "Four glands located in the mediastinum near the thymus"
+      ],
+      "explanation": "There are four parathyroid glands — small, pea-sized structures embedded in the posterior (back) surface of the thyroid gland, two on each lobe.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_028",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["parathyroid"],
+      "question": "PTH (parathyroid hormone) raises blood calcium through three mechanisms — what are they?",
+      "correct_answer": "Stimulates osteoclasts (bone resorption), increases renal Ca²⁺ reabsorption, and activates vitamin D to increase intestinal Ca²⁺ absorption",
+      "distractors": [
+        "Inhibits osteoclasts, increases urinary calcium excretion, and suppresses vitamin D",
+        "Promotes calcium deposition in bone, increases gut absorption, and raises urinary calcium",
+        "Stimulates calcitonin release, activates vitamin D, and increases renal Ca²⁺ reabsorption"
+      ],
+      "explanation": "PTH raises blood Ca²⁺ via: (1) osteoclast activation to resorb bone calcium, (2) increasing Ca²⁺ reabsorption in kidney tubules, and (3) activating vitamin D which increases Ca²⁺ absorption in the intestines.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_029",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["parathyroid", "thyroid"],
+      "question": "PTH and calcitonin have what relationship regarding calcium homeostasis?",
+      "correct_answer": "They are antagonistic — PTH raises blood calcium while calcitonin lowers it",
+      "distractors": [
+        "They are synergistic — both raise blood calcium together",
+        "They are synergistic — both lower blood calcium together",
+        "They act on the same receptor but at different times of day"
+      ],
+      "explanation": "PTH (from parathyroid) raises blood Ca²⁺, while calcitonin (from thyroid C cells) lowers blood Ca²⁺. They are antagonists that together maintain calcium homeostasis.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_030",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_cortex"],
+      "question": "The adrenal glands sit atop which organs?",
+      "correct_answer": "The kidneys (suprarenal position)",
+      "distractors": [
+        "The liver and spleen",
+        "The bladder and ureters",
+        "The pancreas and duodenum"
+      ],
+      "explanation": "The adrenal (suprarenal) glands sit on top of the kidneys — 'supra' means above, 'renal' means kidney. Each kidney has one adrenal gland perched on its superior pole.",
+      "difficulty": 1
+    },
+    {
+      "id": "ha_endo_031",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_cortex"],
+      "question": "The mnemonic 'GFR' describes the three zones of the adrenal cortex. What does each letter stand for, and what product does each zone make?",
+      "correct_answer": "Glomerulosa (mineralocorticoids/aldosterone), Fasciculata (glucocorticoids/cortisol), Reticularis (androgens/DHEA)",
+      "distractors": [
+        "Glomerulosa (glucocorticoids), Fasciculata (mineralocorticoids), Reticularis (epinephrine)",
+        "Glomerulosa (androgens), Fasciculata (glucocorticoids), Reticularis (mineralocorticoids)",
+        "Glomerulosa (mineralocorticoids), Fasciculata (androgens), Reticularis (glucocorticoids)"
+      ],
+      "explanation": "GFR = Glomerulosa (outermost, Salt/mineralocorticoids like aldosterone), Fasciculata (middle, Sugar/glucocorticoids like cortisol), Reticularis (innermost, Sex/androgens like DHEA). Mnemonic: 'Salt, Sugar, Sex.'",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_032",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_cortex"],
+      "question": "Aldosterone from the zona glomerulosa acts on the kidneys to produce what ion exchange?",
+      "correct_answer": "Increases sodium (Na⁺) reabsorption and potassium (K⁺) secretion",
+      "distractors": [
+        "Increases potassium (K⁺) reabsorption and sodium (Na⁺) secretion",
+        "Increases calcium (Ca²⁺) reabsorption and phosphate secretion",
+        "Increases water excretion and sodium retention only"
+      ],
+      "explanation": "Aldosterone acts on the distal tubule and collecting duct of the kidney to increase Na⁺ reabsorption (raising blood pressure and volume) and K⁺ secretion (lowering serum potassium).",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_033",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_cortex"],
+      "question": "Cortisol from the zona fasciculata has which major physiological effects?",
+      "correct_answer": "Raises blood glucose, suppresses inflammation, mediates stress response, and causes immunosuppression",
+      "distractors": [
+        "Lowers blood glucose, promotes immune activation, and increases protein synthesis",
+        "Raises blood pressure by sodium retention and stimulates bone formation",
+        "Stimulates fat storage, raises calcium, and promotes reproductive function"
+      ],
+      "explanation": "Cortisol is the primary glucocorticoid — it raises blood glucose (via gluconeogenesis), is powerfully anti-inflammatory and immunosuppressive, and mediates the body's stress response.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_034",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_cortex"],
+      "question": "DHEA, produced by the zona reticularis, is converted in peripheral tissues into what hormones?",
+      "correct_answer": "Testosterone and estrogen",
+      "distractors": [
+        "Cortisol and aldosterone",
+        "Progesterone and oxytocin",
+        "Calcitonin and PTH"
+      ],
+      "explanation": "DHEA (dehydroepiandrosterone) from the adrenal zona reticularis is a weak androgen that peripheral tissues convert into more potent testosterone and estrogen.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_035",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_medulla"],
+      "question": "The adrenal medulla is embryologically derived from and functionally equivalent to what neural structure?",
+      "correct_answer": "A modified sympathetic ganglion",
+      "distractors": [
+        "A modified parasympathetic ganglion",
+        "Neural crest cells of the dorsal root ganglia",
+        "Chromaffin cells of the anterior hypothalamus"
+      ],
+      "explanation": "The adrenal medulla develops from neural crest cells and is a modified sympathetic ganglion. Its chromaffin cells secrete catecholamines directly into the blood instead of releasing them at a synapse.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_036",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_medulla"],
+      "question": "The adrenal medulla releases approximately what ratio of epinephrine to norepinephrine?",
+      "correct_answer": "About 80% epinephrine and 20% norepinephrine",
+      "distractors": [
+        "About 20% epinephrine and 80% norepinephrine",
+        "About 50% epinephrine and 50% norepinephrine",
+        "About 95% epinephrine and 5% norepinephrine"
+      ],
+      "explanation": "The adrenal medulla releases approximately 80% epinephrine (adrenaline) and 20% norepinephrine (noradrenaline). These catecholamines drive the fight-or-flight response.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_037",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["adrenal_medulla"],
+      "question": "A pheochromocytoma is a tumor of the adrenal medulla. What are its characteristic symptoms?",
+      "correct_answer": "Hypertension, headache, sweating, and tachycardia from excess catecholamine production",
+      "distractors": [
+        "Hypotension, fatigue, hypoglycemia, and skin hyperpigmentation",
+        "Moon face, central obesity, and purple striae from excess cortisol",
+        "Weight loss, heat intolerance, and exophthalmos from excess thyroid hormone"
+      ],
+      "explanation": "Pheochromocytoma is an adrenal medullary tumor that secretes excess epinephrine and norepinephrine, causing episodic or sustained hypertension, severe headaches, profuse sweating, and rapid heart rate.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_038",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pancreas_endocrine"],
+      "question": "The endocrine function of the pancreas is carried out by what structures?",
+      "correct_answer": "The islets of Langerhans, which make up about 1-2% of the pancreas",
+      "distractors": [
+        "The acinar cells, which make up about 85% of the pancreas",
+        "The ductal cells lining the main pancreatic duct",
+        "The centroacinar cells at the pancreatic duct junctions"
+      ],
+      "explanation": "The islets of Langerhans are clusters of endocrine cells scattered throughout the pancreas, comprising only about 1-2% of its total mass. The remaining 98-99% is exocrine (digestive enzyme-producing) tissue.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_039",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pancreas_endocrine"],
+      "question": "Insulin is produced by which pancreatic islet cell type, and what percentage of islet cells are beta cells?",
+      "correct_answer": "Beta cells, comprising approximately 65-80% of islet cells",
+      "distractors": [
+        "Alpha cells, comprising approximately 65-80% of islet cells",
+        "Delta cells, comprising approximately 65-80% of islet cells",
+        "Beta cells, comprising approximately 15-20% of islet cells"
+      ],
+      "explanation": "Beta cells are the most abundant islet cell type at ~65-80% of the islet. They produce insulin, the primary hormone for lowering blood glucose.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_040",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pancreas_endocrine"],
+      "question": "Insulin lowers blood glucose through which mechanisms?",
+      "correct_answer": "Promotes glucose uptake into cells, glycogen synthesis (glycogenesis), and lipogenesis (fat storage)",
+      "distractors": [
+        "Promotes glycogenolysis and gluconeogenesis to release stored glucose",
+        "Inhibits glucose uptake while increasing fat breakdown for energy",
+        "Stimulates glucagon release and protein catabolism"
+      ],
+      "explanation": "Insulin lowers blood glucose by promoting cellular glucose uptake (via GLUT transporters), stimulating glycogen synthesis in liver and muscle, and promoting lipogenesis (fat storage).",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_041",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pancreas_endocrine"],
+      "question": "Glucagon is produced by alpha cells (~15-20% of islet cells). How does it raise blood glucose?",
+      "correct_answer": "By stimulating glycogenolysis (glycogen breakdown) and gluconeogenesis (new glucose synthesis) in the liver",
+      "distractors": [
+        "By promoting glycogen synthesis and inhibiting cellular glucose uptake",
+        "By stimulating insulin release from beta cells",
+        "By triggering lipolysis in adipose tissue and blocking ketone formation"
+      ],
+      "explanation": "Glucagon acts on the liver to trigger glycogenolysis (breaking glycogen into glucose) and gluconeogenesis (synthesizing new glucose from amino acids and fatty acids), raising blood glucose levels.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_042",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pancreas_endocrine"],
+      "question": "Delta cells in the pancreatic islets secrete somatostatin. What is its local function?",
+      "correct_answer": "Inhibits both insulin secretion from beta cells and glucagon secretion from alpha cells",
+      "distractors": [
+        "Stimulates both insulin and glucagon secretion to raise blood glucose",
+        "Inhibits insulin only, allowing glucagon to dominate after meals",
+        "Stimulates digestive enzyme release from exocrine pancreatic acinar cells"
+      ],
+      "explanation": "Somatostatin from pancreatic delta cells acts locally (paracrine) to inhibit both insulin (from beta cells) and glucagon (from alpha cells), acting as a 'brake' on both arms of glucose regulation.",
+      "difficulty": 3
+    },
+    {
+      "id": "ha_endo_043",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pancreas_endocrine"],
+      "question": "Deficiency of insulin or insulin action causes which disease?",
+      "correct_answer": "Diabetes mellitus",
+      "distractors": [
+        "Diabetes insipidus",
+        "Addison's disease",
+        "Cushing's syndrome"
+      ],
+      "explanation": "Diabetes mellitus results from absolute insulin deficiency (Type 1 — autoimmune destruction of beta cells) or relative insulin deficiency/resistance (Type 2). This causes chronic hyperglycemia.",
+      "difficulty": 1
+    },
+    {
+      "id": "ha_endo_044",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pineal_thymus"],
+      "question": "The pineal gland is located in which brain region, and what hormone does it produce?",
+      "correct_answer": "The epithalamus; it produces melatonin",
+      "distractors": [
+        "The hypothalamus; it produces serotonin",
+        "The thalamus; it produces dopamine",
+        "The basal ganglia; it produces melatonin"
+      ],
+      "explanation": "The pineal gland is a small endocrine gland located in the epithalamus (posterior diencephalon). It secretes melatonin, which regulates the sleep-wake (circadian) cycle.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_045",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pineal_thymus"],
+      "question": "How does light exposure affect melatonin production by the pineal gland?",
+      "correct_answer": "Light suppresses melatonin production; darkness increases it",
+      "distractors": [
+        "Light increases melatonin production; darkness suppresses it",
+        "Light has no effect on melatonin; production is governed by body temperature",
+        "Light increases melatonin during daytime to promote alertness"
+      ],
+      "explanation": "Melatonin production by the pineal gland increases in darkness (promoting sleep) and is suppressed by light exposure. This is how the pineal entrains the circadian rhythm to the light-dark cycle.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_046",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pineal_thymus"],
+      "question": "The thymus produces thymosin. What is thymosin's function?",
+      "correct_answer": "Promotes the maturation of T lymphocytes, which is essential for adaptive immunity",
+      "distractors": [
+        "Promotes the maturation of B lymphocytes for antibody production",
+        "Stimulates red blood cell production in bone marrow",
+        "Regulates the circadian rhythm in conjunction with melatonin"
+      ],
+      "explanation": "Thymosin (and related thymic hormones) promotes the maturation and differentiation of T lymphocytes in the thymus. This is essential for establishing adaptive cellular immunity.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_047",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["pineal_thymus"],
+      "question": "What happens to the thymus after puberty?",
+      "correct_answer": "It involutes (shrinks) and is progressively replaced by fat tissue",
+      "distractors": [
+        "It grows larger to produce more T cells as the immune system matures",
+        "It migrates to the abdominal cavity and continues T cell production",
+        "It becomes the primary site of B cell maturation in adulthood"
+      ],
+      "explanation": "The thymus is largest in childhood (critical for establishing T cell diversity) and involutes after puberty, being progressively replaced by adipose (fat) tissue. Adult immunity relies on the T cell repertoire established earlier.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_048",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["feedback_loops"],
+      "question": "Negative feedback is the most common regulatory mechanism in the endocrine system. How does it work, using the thyroid axis as an example?",
+      "correct_answer": "High T3/T4 levels inhibit further TRH release from the hypothalamus and TSH release from the pituitary, reducing thyroid stimulation",
+      "distractors": [
+        "High T3/T4 levels stimulate more TRH and TSH release to maintain hormone levels",
+        "Low T3/T4 levels inhibit TRH and TSH, conserving hypothalamic-pituitary resources",
+        "T3/T4 only feed back to the pituitary, not to the hypothalamus"
+      ],
+      "explanation": "In negative feedback, the end hormone (T3/T4) feeds back to suppress both the hypothalamus (less TRH) and the anterior pituitary (less TSH), reducing its own further production. This maintains hormone homeostasis.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_049",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["feedback_loops"],
+      "question": "Oxytocin during childbirth is a classic example of positive feedback. How does this work?",
+      "correct_answer": "Uterine contractions stimulate more oxytocin release, which intensifies contractions, which triggers even more oxytocin — a self-amplifying cycle that ends at delivery",
+      "distractors": [
+        "High oxytocin inhibits uterine contractions to pace labor and prevent fetal distress",
+        "Oxytocin levels rise steadily but are unrelated to contraction intensity",
+        "Cervical stretch inhibits oxytocin release to allow controlled dilation"
+      ],
+      "explanation": "Positive feedback amplifies the response: cervical stretch → oxytocin release → stronger contractions → more cervical stretch → more oxytocin. This escalating cycle drives labor to completion at delivery.",
+      "difficulty": 2
+    },
+    {
+      "id": "ha_endo_050",
+      "subDeckId": "endocrine_system",
+      "chainThemeIds": ["feedback_loops"],
+      "question": "Positive feedback loops are rare in the endocrine system. Why is positive feedback only useful in limited situations?",
+      "correct_answer": "Positive feedback is self-amplifying and cannot maintain stable homeostasis — it is only useful for processes that need to reach a definitive endpoint (like childbirth or ovulation)",
+      "distractors": [
+        "Positive feedback is avoided because it always leads to gland exhaustion and hormone depletion",
+        "Positive feedback is too slow to be useful and is only used as a backup when negative feedback fails",
+        "Positive feedback requires more energy than negative feedback and is metabolically costly"
+      ],
+      "explanation": "Positive feedback escalates rather than stabilizes, making it unsuitable for homeostasis. It is only adaptive in processes with a clear endpoint — like the oxytocin-labor loop (ends at delivery) or the LH surge triggering ovulation.",
+      "difficulty": 3
+    }
+  ]
+}

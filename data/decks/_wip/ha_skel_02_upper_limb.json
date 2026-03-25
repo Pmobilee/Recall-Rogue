@@ -1,0 +1,650 @@
+[
+  {
+    "id": "ha_skel_028",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Clavicle",
+    "acceptableAlternatives": ["collarbone"],
+    "chainThemeId": "shoulder_girdle",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which bone is the most commonly fractured in the human body?",
+    "explanation": "The clavicle (collarbone) is the most commonly fractured bone. Its S-shaped curve and exposed position make it vulnerable, especially during falls onto an outstretched hand or a direct blow to the shoulder. It connects the sternum to the scapula, bridging the axial and appendicular skeletons.",
+    "visualDescription": "S-shaped bone at the base of the neck, connecting breastbone to shoulder",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shoulder_girdle",
+    "volatile": false,
+    "distractors": ["Scapula", "Radius", "Humerus"],
+    "variants": [
+      {
+        "quizQuestion": "The clavicle connects which two bones?",
+        "correctAnswer": "Sternum and scapula",
+        "explanation": "The clavicle runs horizontally from the sternum (medially) to the scapula (laterally), forming the only bony connection between the upper limb and the axial skeleton."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_029",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Scapula",
+    "acceptableAlternatives": ["shoulder blade"],
+    "chainThemeId": "shoulder_girdle",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which flat triangular bone of the shoulder girdle contains the glenoid cavity?",
+    "explanation": "The scapula (shoulder blade) is a flat, triangular bone that sits on the posterior thorax. Its glenoid cavity is the shallow socket that receives the head of the humerus to form the glenohumeral (shoulder) joint. The scapula also features the acromion, coracoid process, and spine of the scapula.",
+    "visualDescription": "Triangular flat bone on the upper back with a prominent spine and bony projections",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shoulder_girdle",
+    "volatile": false,
+    "distractors": ["Clavicle", "Humerus", "Sternum"],
+    "variants": [
+      {
+        "quizQuestion": "What is the name of the bony socket on the scapula that articulates with the humerus?",
+        "correctAnswer": "Glenoid cavity",
+        "explanation": "The glenoid cavity is a shallow, oval socket on the lateral angle of the scapula. It articulates with the head of the humerus to form the shoulder joint — the most mobile and most commonly dislocated joint in the body."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_030",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Acromion",
+    "acceptableAlternatives": [],
+    "chainThemeId": "shoulder_girdle",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which bony projection of the scapula articulates with the clavicle?",
+    "explanation": "The acromion is a flat, lateral extension of the spine of the scapula. It articulates with the lateral end of the clavicle to form the acromioclavicular (AC) joint — commonly injured in shoulder separations. It also forms the roof of the shoulder, protecting the underlying rotator cuff tendons.",
+    "visualDescription": "Flat bony shelf at the tip of the shoulder, forming the roof of the joint",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shoulder_girdle",
+    "volatile": false,
+    "distractors": ["Coracoid process", "Spine of scapula", "Glenoid cavity"],
+    "variants": [
+      {
+        "quizQuestion": "The acromioclavicular (AC) joint is formed between the clavicle and which part of the scapula?",
+        "correctAnswer": "Acromion",
+        "explanation": "The AC joint connects the lateral end of the clavicle to the acromion of the scapula. It is commonly injured in contact sports — a 'shoulder separation' refers to disruption of this joint."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_031",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Humerus",
+    "acceptableAlternatives": [],
+    "chainThemeId": "arm_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What is the longest bone of the upper limb?",
+    "explanation": "The humerus is the single bone of the upper arm and the longest bone of the entire upper limb. Its rounded head articulates with the glenoid cavity of the scapula. Distally, it forms the elbow joint with the radius and ulna. Key landmarks include the greater and lesser tubercles, deltoid tuberosity, and medial/lateral epicondyles.",
+    "visualDescription": "Long bone of the upper arm with a rounded head at the top and two bumps (epicondyles) at the bottom",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Radius", "Ulna", "Clavicle"],
+    "variants": [
+      {
+        "quizQuestion": "The head of the humerus articulates with which socket on the scapula?",
+        "correctAnswer": "Glenoid cavity",
+        "explanation": "The spherical head of the humerus fits into the glenoid cavity of the scapula, forming the glenohumeral (shoulder) joint — a ball-and-socket joint that sacrifices stability for extreme range of motion."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_032",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Surgical neck",
+    "acceptableAlternatives": [],
+    "chainThemeId": "arm_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which region of the humerus is the most common fracture site?",
+    "explanation": "The surgical neck of the humerus — the narrowed region just below the greater and lesser tubercles — is the most common fracture site on the humerus. It is especially vulnerable in older adults with osteoporosis after a fall. The name 'surgical' refers to the historical frequency of surgical intervention here, as opposed to the 'anatomical neck' which is the groove around the articular head.",
+    "visualDescription": "The narrowed shaft of the humerus just below the two rounded bumps near the shoulder",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Anatomical neck", "Deltoid tuberosity", "Radial groove"],
+    "variants": [
+      {
+        "quizQuestion": "The radial groove on the posterior humerus transmits which nerve?",
+        "correctAnswer": "Radial nerve",
+        "explanation": "The radial groove (spiral groove) runs obliquely across the posterior shaft of the humerus, carrying the radial nerve and deep brachial artery. Mid-shaft humeral fractures can damage the radial nerve here, causing wrist drop — loss of wrist and finger extension."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_033",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Deltoid tuberosity",
+    "acceptableAlternatives": [],
+    "chainThemeId": "arm_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What roughened landmark on the lateral midshaft of the humerus is the attachment point for the deltoid muscle?",
+    "explanation": "The deltoid tuberosity is a V-shaped roughened area on the lateral surface of the humeral shaft, roughly at its midpoint. The powerful deltoid muscle, which abducts the arm, inserts here. Large tuberosities are bony landmarks called tuberosities — large roughened areas for muscle attachment.",
+    "visualDescription": "Rough raised patch on the outer side of the upper arm bone, midway down",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Greater tubercle", "Lesser tubercle", "Lateral epicondyle"],
+    "variants": [
+      {
+        "quizQuestion": "What type of bony landmark is defined as a large roughened area for muscle attachment?",
+        "correctAnswer": "Tuberosity",
+        "explanation": "A tuberosity is a large, roughened bony projection that serves as a muscle attachment site. The deltoid tuberosity on the humerus and the tibial tuberosity (where the patellar tendon attaches) are classic examples."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_034",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Radius",
+    "acceptableAlternatives": [],
+    "chainThemeId": "forearm_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which forearm bone is on the lateral (thumb) side?",
+    "explanation": "The radius is the lateral (thumb-side) bone of the forearm. Its head rotates on the capitulum of the humerus at the elbow, allowing forearm pronation and supination. Distally, the radial styloid process can be felt at the wrist on the thumb side.",
+    "visualDescription": "The shorter forearm bone on the thumb side, wider at the wrist end",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Ulna", "Humerus", "Scaphoid"],
+    "variants": [
+      {
+        "quizQuestion": "The head of the radius rotates against which part of the humerus at the elbow?",
+        "correctAnswer": "Capitulum",
+        "explanation": "The capitulum is the lateral, rounded condyle of the distal humerus. The disc-like head of the radius spins against it during pronation and supination, making the proximal radioulnar joint a pivot joint."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_035",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Colles' fracture",
+    "acceptableAlternatives": ["Colles fracture"],
+    "chainThemeId": "forearm_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What is the name of the most common adult forearm fracture, occurring at the distal radius after a fall on an outstretched hand?",
+    "explanation": "A Colles' fracture is a fracture of the distal radius with dorsal (posterior) displacement of the distal fragment, producing the classic 'dinner fork' deformity. It is the most common adult forearm fracture and typically occurs when someone falls onto an outstretched hand. It is named after Irish surgeon Abraham Colles who described it in 1814.",
+    "visualDescription": "Wrist with a 'dinner fork' deformity — the wrist bent backwards from a fracture just above the joint",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Smith's fracture", "Monteggia fracture", "Galeazzi fracture"],
+    "variants": [
+      {
+        "quizQuestion": "A 'dinner fork' deformity of the wrist following a fall on an outstretched hand suggests fracture of which bone?",
+        "correctAnswer": "Distal radius",
+        "explanation": "Dorsal displacement of the distal radius fragment after a Colles' fracture creates the characteristic 'dinner fork' profile when viewed from the side. The radius is the most commonly fractured bone of the adult forearm."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_036",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Ulna",
+    "acceptableAlternatives": [],
+    "chainThemeId": "forearm_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which forearm bone is on the medial (little-finger) side and forms the bony tip of the elbow?",
+    "explanation": "The ulna is the medial forearm bone, running from the elbow to the wrist on the little-finger side. The olecranon — the prominent bony point you can feel at the back of your elbow — is the proximal end of the ulna. The trochlear notch of the ulna wraps around the trochlea of the humerus, forming a stable hinge at the elbow.",
+    "visualDescription": "The longer forearm bone on the pinky side with a large hook-shaped tip at the elbow",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Radius", "Humerus", "Pisiform"],
+    "variants": [
+      {
+        "quizQuestion": "What is the name of the bony prominence at the tip of the elbow, formed by the ulna?",
+        "correctAnswer": "Olecranon",
+        "explanation": "The olecranon is the proximal posterior projection of the ulna. It forms the point of the elbow and fits into the olecranon fossa of the humerus when the arm is extended, acting as a bony stop that prevents hyperextension."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_037",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Trochlear notch",
+    "acceptableAlternatives": [],
+    "chainThemeId": "forearm_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which C-shaped notch on the proximal ulna wraps around the trochlea of the humerus to form the elbow hinge?",
+    "explanation": "The trochlear notch (semilunar notch) is a large, concave articular surface on the proximal ulna formed between the olecranon posteriorly and the coronoid process anteriorly. It wraps tightly around the trochlea of the humerus, creating an inherently stable hinge (ginglymus) joint that allows only flexion and extension.",
+    "visualDescription": "A deep C-shaped groove at the top of the ulna that clasps the pulley-shaped bottom of the humerus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Coronoid process", "Radial notch", "Olecranon fossa"],
+    "variants": [
+      {
+        "quizQuestion": "The coronoid process of the ulna is part of which articular structure?",
+        "correctAnswer": "Trochlear notch",
+        "explanation": "The coronoid process forms the anterior lip of the trochlear notch. Together with the olecranon (posterior lip), it creates the C-shaped grip around the trochlea of the humerus. The coronoid process can be fractured in elbow dislocations."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_038",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "8",
+    "acceptableAlternatives": ["eight"],
+    "chainThemeId": "carpal_bones",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "How many carpal (wrist) bones are in each wrist?",
+    "explanation": "Each wrist contains 8 carpal bones arranged in two rows of four. The proximal row (from lateral to medial): scaphoid, lunate, triquetrum, pisiform. The distal row: trapezium, trapezoid, capitate, hamate. Together both wrists have 16 carpals total. A common mnemonic: 'Some Lovers Try Positions That They Can't Handle.'",
+    "visualDescription": "Eight small irregular bones packed tightly together forming the wrist between the forearm and hand",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_bones",
+    "volatile": false,
+    "distractors": ["6", "7", "10"],
+    "variants": [
+      {
+        "quizQuestion": "Complete the carpal mnemonic: 'Some Lovers Try Positions That They Can't ___'",
+        "correctAnswer": "Handle",
+        "explanation": "The full mnemonic 'Some Lovers Try Positions That They Can't Handle' gives the 8 carpals in order from lateral to medial, proximal then distal row: Scaphoid, Lunate, Triquetrum, Pisiform, Trapezium, Trapezoid, Capitate, Hamate."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_039",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Scaphoid",
+    "acceptableAlternatives": [],
+    "chainThemeId": "carpal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which carpal bone is the most commonly fractured, and is notorious for poor healing due to its blood supply?",
+    "explanation": "The scaphoid is the most commonly fractured carpal bone, typically from a fall on an outstretched hand. Its blood supply enters distally, meaning a proximal fracture can cut off circulation to the proximal fragment — leading to avascular necrosis (bone death). Scaphoid fractures can be missed on initial X-rays, making them clinically dangerous.",
+    "visualDescription": "A boat-shaped bone at the base of the thumb side of the wrist, sitting in the anatomical snuffbox",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_bones",
+    "volatile": false,
+    "distractors": ["Lunate", "Trapezium", "Capitate"],
+    "variants": [
+      {
+        "quizQuestion": "Tenderness in the anatomical snuffbox after a wrist injury suggests fracture of which carpal?",
+        "correctAnswer": "Scaphoid",
+        "explanation": "The anatomical snuffbox is a triangular depression on the radial side of the wrist between the extensor tendons. The scaphoid lies at its floor. Snuffbox tenderness following a fall is treated as a scaphoid fracture until proven otherwise, due to the risk of avascular necrosis."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_040",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Capitate",
+    "acceptableAlternatives": [],
+    "chainThemeId": "carpal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which carpal bone is the largest?",
+    "explanation": "The capitate is the largest of the 8 carpal bones. It occupies the center of the distal carpal row and articulates with the third metacarpal (middle finger ray). Its rounded head ('caput' means head in Latin) fits into the concavity formed by the scaphoid and lunate.",
+    "visualDescription": "The large central bone of the distal wrist row, with a rounded head fitting between the two proximal row bones",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_bones",
+    "volatile": false,
+    "distractors": ["Scaphoid", "Hamate", "Lunate"],
+    "variants": [
+      {
+        "quizQuestion": "Which carpal bone occupies the center of the distal row and is the largest carpal?",
+        "correctAnswer": "Capitate",
+        "explanation": "The capitate sits centrally in the wrist and is the first carpal to ossify during fetal development (around 1-2 months of age), making it a useful landmark in pediatric wrist X-rays."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_041",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Pisiform",
+    "acceptableAlternatives": [],
+    "chainThemeId": "carpal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which carpal bone is classified as a sesamoid bone, lying within a tendon rather than directly articulating with the wrist joint?",
+    "explanation": "The pisiform is the only sesamoid carpal bone, embedded within the tendon of the flexor carpi ulnaris muscle. Unlike the other carpals, it does not directly contribute to the radiocarpal joint. It is a small, pea-shaped bone (Latin: pisum = pea) on the medial side of the proximal row, and you can feel it as a small bump at the base of the little finger on the palm.",
+    "visualDescription": "A small pea-shaped bone at the base of the palm on the pinky side, visible as a small bump",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_bones",
+    "volatile": false,
+    "distractors": ["Triquetrum", "Hamate", "Lunate"],
+    "variants": [
+      {
+        "quizQuestion": "The pisiform bone sits within the tendon of which muscle?",
+        "correctAnswer": "Flexor carpi ulnaris",
+        "explanation": "The pisiform is a sesamoid bone embedded in the flexor carpi ulnaris tendon. Sesamoid bones develop within tendons that pass over bony angles, reducing friction and improving mechanical advantage — like the patella in the quadriceps tendon."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_042",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Hamate",
+    "acceptableAlternatives": [],
+    "chainThemeId": "carpal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which carpal bone has a distinctive hook-shaped projection on its palmar surface?",
+    "explanation": "The hamate has a prominent hook (hamulus) projecting from its palmar surface, forming part of the carpal tunnel's ulnar border. The hook of hamate is a common fracture site in golfers and baseball batters when a club or bat strikes the ground — the hook is vulnerable to a direct impact from the grip. The hamate is the most medial bone in the distal carpal row.",
+    "visualDescription": "A wedge-shaped wrist bone with a distinctive hook curving out from its palm-facing surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_bones",
+    "volatile": false,
+    "distractors": ["Trapezium", "Capitate", "Triquetrum"],
+    "variants": [
+      {
+        "quizQuestion": "Fracture of the 'hook of hamate' is classically associated with which sporting activities?",
+        "correctAnswer": "Golf and baseball",
+        "explanation": "The hook of hamate projects into the palm, making it vulnerable when the grip of a golf club or baseball bat strikes the ground or is forcibly jammed. Athletes sometimes require surgical excision of the fragment if healing fails."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_043",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Trapezium",
+    "acceptableAlternatives": [],
+    "chainThemeId": "carpal_bones",
+    "answerTypePoolId": "bone_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which carpal bone forms a saddle joint with the first metacarpal, enabling thumb opposition?",
+    "explanation": "The trapezium is the most lateral bone of the distal carpal row. Its saddle-shaped (sellar) articulation with the base of the first metacarpal (MC1) creates the carpometacarpal (CMC) joint of the thumb — the most mobile CMC joint. Saddle joints allow movement in two planes, enabling the thumb's unique opposition that allows humans to grip and pinch precisely.",
+    "visualDescription": "The lateral-most distal wrist bone, forming the unique double-curved saddle joint at the base of the thumb",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carpal_bones",
+    "volatile": false,
+    "distractors": ["Trapezoid", "Scaphoid", "Capitate"],
+    "variants": [
+      {
+        "quizQuestion": "What type of synovial joint is the carpometacarpal joint of the thumb?",
+        "correctAnswer": "Saddle joint",
+        "explanation": "The thumb CMC joint between the trapezium and first metacarpal is a saddle (sellar) joint — both surfaces are concave in one direction and convex in the other, like two saddles fitting together. This allows flexion/extension AND abduction/adduction, enabling thumb opposition."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_044",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "5",
+    "acceptableAlternatives": ["five"],
+    "chainThemeId": "hand_bones",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many metacarpal bones are in each hand?",
+    "explanation": "There are 5 metacarpal bones in each hand (MC1 through MC5, lateral to medial), forming the palm. Each metacarpal has a base (articulating with carpals), a shaft, a neck, and a head (articulating with a proximal phalanx). MC5 — the little finger metacarpal — is the most commonly fractured metacarpal, often called a 'boxer's fracture' when broken at the neck.",
+    "visualDescription": "Five long bones forming the palm of the hand, fanning out from the wrist to the knuckles",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hand",
+    "volatile": false,
+    "distractors": ["4", "6", "7"],
+    "variants": [
+      {
+        "quizQuestion": "Which metacarpal articulates with the trapezium to form the thumb's carpometacarpal joint?",
+        "correctAnswer": "First metacarpal",
+        "explanation": "MC1 (the first metacarpal) is the shortest and most mobile metacarpal. Its saddle joint with the trapezium allows thumb opposition — the defining human grip adaptation. MC1 is also the only metacarpal that does NOT have a metacarpal that articulates with it proximally."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_045",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "14",
+    "acceptableAlternatives": ["fourteen"],
+    "chainThemeId": "hand_bones",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "How many phalanges (finger bones) are in each hand?",
+    "explanation": "Each hand contains 14 phalanges: the thumb has 2 (proximal and distal), while each of the 4 fingers has 3 (proximal, middle/intermediate, and distal). Together with 5 metacarpals, each hand has 19 bones. The distal phalanges bear the fingernails and are the most common site of crush injuries.",
+    "visualDescription": "Fourteen small finger bones in each hand — two for the thumb and three for each finger",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hand",
+    "volatile": false,
+    "distractors": ["12", "16", "10"],
+    "variants": [
+      {
+        "quizQuestion": "How many phalanges does the human thumb have?",
+        "correctAnswer": "2",
+        "explanation": "The thumb has only 2 phalanges (proximal and distal), unlike the fingers which have 3. This is why the thumb has only one interphalangeal (IP) joint, while each finger has a proximal IP (PIP) and a distal IP (DIP) joint."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_046",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Ball-and-socket",
+    "acceptableAlternatives": ["ball and socket"],
+    "chainThemeId": "joint_types",
+    "answerTypePoolId": "function_terms",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What type of synovial joint is the shoulder (glenohumeral) joint?",
+    "explanation": "The glenohumeral joint is a ball-and-socket joint — the spherical head of the humerus fits into the shallow glenoid cavity of the scapula. This design gives the shoulder the greatest range of motion of any joint in the body (flexion, extension, abduction, adduction, rotation, circumduction), but at the cost of stability, making it the most commonly dislocated joint.",
+    "visualDescription": "Rounded humeral head sitting in a shallow shoulder socket — like a ball resting in a shallow bowl",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Joint",
+    "volatile": false,
+    "distractors": ["Hinge joint", "Saddle joint", "Condyloid joint"],
+    "variants": [
+      {
+        "quizQuestion": "Why is the shoulder the most commonly dislocated joint despite being a ball-and-socket joint?",
+        "correctAnswer": "The glenoid cavity is very shallow",
+        "explanation": "Unlike the hip's deep acetabulum, the shoulder's glenoid cavity is shallow (covering only about 30% of the humeral head), maximizing mobility but minimizing bony stability. The joint relies on rotator cuff muscles and the glenoid labrum for stability, making it vulnerable to dislocation — most often anteriorly."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_047",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Hinge joint",
+    "acceptableAlternatives": ["ginglymus"],
+    "chainThemeId": "joint_types",
+    "answerTypePoolId": "function_terms",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What type of joint is the humeroulnar articulation at the elbow, allowing only flexion and extension?",
+    "explanation": "The humeroulnar joint — where the trochlea of the humerus articulates with the trochlear notch of the ulna — is a hinge (ginglymus) joint. It allows movement in only one plane: flexion and extension. The elbow complex also includes a pivot joint (proximal radioulnar) that allows pronation and supination, so the complete elbow is a compound joint.",
+    "visualDescription": "The elbow joint showing the pulley-shaped humerus end locked into the C-shaped ulna notch",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Joint",
+    "volatile": false,
+    "distractors": ["Ball-and-socket joint", "Pivot joint", "Condyloid joint"],
+    "variants": [
+      {
+        "quizQuestion": "Forearm pronation and supination occur at which type of joint at the elbow?",
+        "correctAnswer": "Pivot joint",
+        "explanation": "The proximal radioulnar joint, where the head of the radius rotates within the radial notch of the ulna (held by the annular ligament), is a pivot joint. This allows the radius to spin around the ulna, rotating the forearm between pronation (palm down) and supination (palm up)."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_048",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Condyloid joint",
+    "acceptableAlternatives": ["ellipsoid joint", "ellipsoidal joint"],
+    "chainThemeId": "joint_types",
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "The radiocarpal (wrist) joint — between the radius and the proximal carpal row — is classified as what type of synovial joint?",
+    "explanation": "The wrist (radiocarpal) joint is a condyloid (ellipsoid) joint: an oval-shaped convex surface fits into an oval-shaped concave socket. It allows two degrees of movement — flexion/extension AND radial/ulnar deviation — but not true rotation. This contrasts with the ball-and-socket joint which allows rotation in all planes.",
+    "visualDescription": "The wrist joint with the oval-shaped proximal carpal row fitting into the concave end of the radius",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Joint",
+    "volatile": false,
+    "distractors": ["Hinge joint", "Saddle joint", "Gliding joint"],
+    "variants": [
+      {
+        "quizQuestion": "Which joint type allows movement in two planes but NOT rotation, and is found at the wrist?",
+        "correctAnswer": "Condyloid joint",
+        "explanation": "A condyloid (ellipsoid) joint allows biaxial motion: flexion/extension and abduction/adduction. Because both articular surfaces are oval (not spherical), axial rotation is prevented. The radiocarpal joint and the metacarpophalangeal joints of the fingers are condyloid joints."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_049",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Saddle joint",
+    "acceptableAlternatives": ["sellar joint"],
+    "chainThemeId": "joint_types",
+    "answerTypePoolId": "function_terms",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which unique joint type — found at the thumb's carpometacarpal joint — allows opposition and is shaped like two saddles fitting together?",
+    "explanation": "A saddle (sellar) joint has each articular surface concave in one direction and convex in the perpendicular direction — like two riding saddles oriented at 90° to each other. This allows two planes of movement plus circumduction. The thumb CMC joint (trapezium + MC1) is the prime example; its unique mobility enables human precision grip and tool use.",
+    "visualDescription": "Two curved saddle-shaped surfaces fitting together at right angles at the base of the thumb",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Joint",
+    "volatile": false,
+    "distractors": ["Condyloid joint", "Ball-and-socket joint", "Pivot joint"],
+    "variants": [
+      {
+        "quizQuestion": "The carpometacarpal joint of the thumb is classified as a saddle joint. Which two bones form it?",
+        "correctAnswer": "Trapezium and first metacarpal",
+        "explanation": "The saddle joint of the thumb CMC is formed by the trapezium carpal bone and the base of the first metacarpal. This joint's biaxial saddle shape is what makes human thumb opposition possible — a key evolutionary trait enabling complex tool use."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_050",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Epicondyle",
+    "acceptableAlternatives": [],
+    "chainThemeId": "arm_bones",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the term for a raised bony area above a condyle that serves as a muscle attachment point?",
+    "explanation": "An epicondyle is an eminence on or above the articular condyle of a bone, serving as an origin for muscles and ligaments. The humerus has medial and lateral epicondyles. The lateral epicondyle is the origin of the forearm extensors — its inflammation causes 'tennis elbow' (lateral epicondylitis). The medial epicondyle anchors the flexors and can be fractured in childhood falls.",
+    "visualDescription": "The two bony bumps on either side of the lower end of the humerus, above the smooth articular condyles",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["Condyle", "Tuberosity", "Tubercle"],
+    "variants": [
+      {
+        "quizQuestion": "Lateral epicondylitis ('tennis elbow') involves inflammation at the origin of which muscle group?",
+        "correctAnswer": "Forearm extensors",
+        "explanation": "The common extensor origin at the lateral epicondyle of the humerus is where the forearm extensor muscles (extensor carpi radialis brevis, extensor digitorum, etc.) originate. Repetitive wrist extension — as in a tennis backhand — overloads this origin, causing lateral epicondylitis."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_051",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Glenoid cavity",
+    "acceptableAlternatives": ["glenoid fossa"],
+    "chainThemeId": "shoulder_girdle",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the name of the shallow socket on the scapula that receives the head of the humerus?",
+    "explanation": "The glenoid cavity (or glenoid fossa) is a shallow, pear-shaped articular surface on the lateral angle of the scapula. It is deepened by the fibrocartilaginous glenoid labrum. Despite this, it only contacts about 30% of the humeral head at any given time, giving the shoulder exceptional mobility at the cost of inherent bony stability.",
+    "visualDescription": "A shallow oval depression at the outer edge of the scapula, lined with cartilage to receive the ball of the humerus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shoulder_girdle",
+    "volatile": false,
+    "distractors": ["Coracoid process", "Acromion", "Subscapular fossa"],
+    "variants": [
+      {
+        "quizQuestion": "Which fibrocartilaginous rim deepens the glenoid cavity and improves shoulder joint stability?",
+        "correctAnswer": "Glenoid labrum",
+        "explanation": "The glenoid labrum is a ring of fibrocartilage attached to the rim of the glenoid cavity, effectively deepening it and increasing the contact area with the humeral head. SLAP (Superior Labrum Anterior to Posterior) tears are common labral injuries in overhead athletes."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_052",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Coracoid process",
+    "acceptableAlternatives": [],
+    "chainThemeId": "shoulder_girdle",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which hook-shaped projection of the scapula, pointing anteriorly, serves as an attachment for the pectoralis minor, short head of biceps, and coracobrachialis?",
+    "explanation": "The coracoid process (Greek: korakoeides = crow-like) is a hook-shaped bony projection from the superior surface of the scapula. It is a critical attachment site for three muscles (pectoralis minor, coracobrachialis, short head of biceps brachii) and two ligaments (coracoclavicular and coracoacromial). It is palpable just below the clavicle, medial to the shoulder joint.",
+    "visualDescription": "A hook-like bony projection at the front of the scapula, pointing forward under the clavicle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Shoulder_girdle",
+    "volatile": false,
+    "distractors": ["Acromion", "Spine of scapula", "Glenoid cavity"],
+    "variants": [
+      {
+        "quizQuestion": "The short head of the biceps brachii originates from which scapular projection?",
+        "correctAnswer": "Coracoid process",
+        "explanation": "The biceps brachii has two heads: the long head originates from the supraglenoid tubercle and travels through the intertubercular groove of the humerus, while the short head arises from the coracoid process. Both heads converge on the radial tuberosity to flex and supinate the forearm."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_053",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "30",
+    "acceptableAlternatives": ["thirty"],
+    "chainThemeId": "hand_bones",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "How many bones are in each upper limb (excluding the shoulder girdle)?",
+    "explanation": "Each upper limb contains 30 bones: 1 humerus + 2 forearm bones (radius and ulna) + 8 carpals + 5 metacarpals + 14 phalanges = 30. Adding the 2 shoulder girdle bones (clavicle + scapula) per side brings the total to 32 bones per upper extremity. Together, both upper limbs account for 64 bones, nearly one-third of the entire skeleton's 206 bones.",
+    "visualDescription": "A complete arm and hand showing 30 individual bones from shoulder to fingertips",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Upper_limb",
+    "volatile": false,
+    "distractors": ["27", "32", "24"],
+    "variants": [
+      {
+        "quizQuestion": "How many bones are in the hand alone (carpals + metacarpals + phalanges)?",
+        "correctAnswer": "27",
+        "explanation": "Each hand has 27 bones: 8 carpals + 5 metacarpals + 14 phalanges = 27. Hands and feet together account for more than half (106 of 206) of the bones in the entire adult skeleton, reflecting the evolutionary importance of dexterous manipulation and bipedal locomotion."
+      }
+    ]
+  },
+  {
+    "id": "ha_skel_054",
+    "subDeckId": "skeletal_system",
+    "correctAnswer": "Proximal interphalangeal joint",
+    "acceptableAlternatives": ["PIP joint", "PIP"],
+    "chainThemeId": "joint_types",
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "The interphalangeal (IP) joints of the fingers are classified as which joint type, permitting only flexion and extension?",
+    "explanation": "The interphalangeal joints — both proximal (PIP) and distal (DIP) — are hinge joints, allowing only flexion and extension in one plane. Each finger has two IP joints; the thumb has only one. The PIP joint is the most commonly injured finger joint, vulnerable to sprains, fractures, and dislocations. IP joint motion is critical for grip strength.",
+    "visualDescription": "The two knuckle joints along each finger — smaller joints between the large knuckle and the fingertip",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Joint",
+    "volatile": false,
+    "distractors": ["Condyloid joint", "Saddle joint", "Ball-and-socket joint"],
+    "variants": [
+      {
+        "quizQuestion": "How many interphalangeal joints does the thumb have compared to each finger?",
+        "correctAnswer": "One (thumb) versus two (finger)",
+        "explanation": "The thumb has only one IP joint (between its two phalanges), while each of the four fingers has two: the proximal interphalangeal (PIP) and distal interphalangeal (DIP) joints. This difference reflects the thumb's 2-phalanx structure versus the fingers' 3-phalanx structure."
+      }
+    ]
+  }
+]

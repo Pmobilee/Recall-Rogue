@@ -1,0 +1,655 @@
+[
+  {
+    "id": "ha_musc_001",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Skeletal",
+    "acceptableAlternatives": [],
+    "chainThemeId": "muscle_types",
+    "answerTypePoolId": "muscle_type_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which muscle type is voluntary, striated, multinucleate, and attached to bone?",
+    "explanation": "Skeletal muscle is the only voluntary muscle type. Its multinucleate cells (muscle fibers) are formed by the fusion of many precursor cells. The ~600 skeletal muscles in the body move the skeleton and maintain posture.",
+    "visualDescription": "Cross-section of striated skeletal muscle fiber showing multiple peripheral nuclei and banded pattern",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skeletal_muscle",
+    "volatile": false,
+    "distractors": ["Cardiac", "Smooth", "Involuntary striated"],
+    "variants": [
+      {
+        "quizQuestion": "Which of the three muscle types has multinucleate cells?",
+        "correctAnswer": "Skeletal",
+        "explanation": "Skeletal muscle fibers are multinucleate because they form by the fusion of many myoblasts. Cardiac and smooth muscle cells each have a single nucleus."
+      },
+      {
+        "quizQuestion": "Approximately how many skeletal muscles are in the human body?",
+        "correctAnswer": "~600",
+        "explanation": "The human body contains approximately 600 named skeletal muscles. They make up roughly 40% of body mass in a typical adult."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_002",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Cardiac",
+    "acceptableAlternatives": [],
+    "chainThemeId": "muscle_types",
+    "answerTypePoolId": "muscle_type_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which muscle type is striated and involuntary, contains intercalated discs, and has uninucleate branched cells?",
+    "explanation": "Cardiac muscle is unique: it looks striated like skeletal muscle but is involuntary like smooth muscle. Intercalated discs connect adjacent cardiomyocytes and contain gap junctions that allow electrical impulses to spread rapidly, making the heart beat as a coordinated unit.",
+    "visualDescription": "Cardiac muscle cells with visible branching and dark intercalated disc lines between cells",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cardiac_muscle",
+    "volatile": false,
+    "distractors": ["Skeletal", "Smooth", "Visceral"],
+    "variants": [
+      {
+        "quizQuestion": "What structures in cardiac muscle allow electrical coupling between adjacent cells?",
+        "correctAnswer": "Intercalated discs",
+        "explanation": "Intercalated discs are specialized junctions between cardiomyocytes. They contain gap junctions (electrical synapses) that let action potentials pass directly from cell to cell, and desmosomes that mechanically link the cells during contraction."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_003",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Smooth",
+    "acceptableAlternatives": [],
+    "chainThemeId": "muscle_types",
+    "answerTypePoolId": "muscle_type_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which muscle type is non-striated, involuntary, spindle-shaped, and found in the walls of hollow organs such as the intestines and bladder?",
+    "explanation": "Smooth muscle lacks the sarcomeric banding pattern of skeletal and cardiac muscle — hence 'smooth.' It lines the digestive tract, blood vessels, bladder, and uterus, working without conscious control to move substances through the body.",
+    "visualDescription": "Spindle-shaped smooth muscle cells arranged in parallel layers without visible striations",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Smooth_muscle_tissue",
+    "volatile": false,
+    "distractors": ["Cardiac", "Skeletal", "Visceral striated"],
+    "variants": [
+      {
+        "quizQuestion": "Which muscle type controls peristalsis in the digestive tract?",
+        "correctAnswer": "Smooth",
+        "explanation": "Peristaltic waves that push food through the gut are produced by smooth muscle in the muscularis layer of the gastrointestinal wall. This is entirely involuntary — you cannot consciously stop your intestines from contracting."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_004",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Type I (Slow Oxidative)",
+    "acceptableAlternatives": ["Type I", "Slow twitch", "Slow oxidative"],
+    "chainThemeId": "muscle_fiber_types",
+    "answerTypePoolId": "muscle_fiber_type_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which skeletal muscle fiber type is fatigue-resistant, aerobic, appears dark red due to high myoglobin content, and is used for posture and endurance activities?",
+    "explanation": "Type I fibers are the workhorses of sustained activity. Their abundant mitochondria and myoglobin (the oxygen-binding protein that gives them a dark red color) make them ideal for long-duration, low-intensity work like maintaining posture and marathon running.",
+    "visualDescription": "Dark red slow-twitch muscle fiber cross-section with dense mitochondria visible",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skeletal_muscle#Fiber_types",
+    "volatile": false,
+    "distractors": ["Type IIa", "Type IIx", "Type IIb"],
+    "variants": [
+      {
+        "quizQuestion": "Which protein gives Type I muscle fibers their characteristic dark red color?",
+        "correctAnswer": "Myoglobin",
+        "explanation": "Myoglobin is an oxygen-binding protein similar to hemoglobin. High concentrations in Type I fibers store oxygen for aerobic respiration, giving slow-twitch muscle its deep red appearance — think dark meat in poultry."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_005",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Type IIx (Fast Glycolytic)",
+    "acceptableAlternatives": ["Type IIx", "Fast glycolytic", "Fast twitch"],
+    "chainThemeId": "muscle_fiber_types",
+    "answerTypePoolId": "muscle_fiber_type_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which muscle fiber type fatigues quickly, relies on anaerobic glycolysis, has low myoglobin content, and is recruited for sprinting and power movements?",
+    "explanation": "Type IIx fibers generate force rapidly but exhaust their glycogen stores quickly and produce lactic acid. Their low myoglobin content makes them pale. Sprinters have a high proportion of these fibers, while endurance athletes tend to have more Type I fibers.",
+    "visualDescription": "Pale fast-twitch fiber cross-section showing sparse mitochondria compared to slow-twitch fiber",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skeletal_muscle#Fiber_types",
+    "volatile": false,
+    "distractors": ["Type I", "Type IIa", "Type IIc"],
+    "variants": [
+      {
+        "quizQuestion": "A sprinter's muscle biopsy would show a high proportion of which fiber type?",
+        "correctAnswer": "Type IIx (Fast Glycolytic)",
+        "explanation": "Elite sprinters have a high percentage of Type IIx fast-glycolytic fibers, which produce explosive force over short durations. Marathon runners, by contrast, tend to have predominantly Type I slow-oxidative fibers."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_006",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Sarcomere",
+    "acceptableAlternatives": [],
+    "chainThemeId": "contraction_mechanism",
+    "answerTypePoolId": "muscle_structure_terms",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What is the functional unit of a skeletal muscle fiber, defined as the segment between two Z-lines?",
+    "explanation": "The sarcomere is the repeating contractile unit of striated muscle. Each sarcomere runs from one Z-line to the next and contains interdigitating thick (myosin) and thin (actin) filaments. When thousands of sarcomeres shorten simultaneously, the entire muscle contracts.",
+    "visualDescription": "Diagram of a single sarcomere showing Z-lines at each end, A-band in the middle, and I-band near the Z-lines",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sarcomere",
+    "volatile": false,
+    "distractors": ["Myofibril", "Motor unit", "Fascicle"],
+    "variants": [
+      {
+        "quizQuestion": "The boundaries of a sarcomere are defined by which structural landmark?",
+        "correctAnswer": "Z-lines",
+        "explanation": "Z-lines (also called Z-discs) are protein structures that anchor thin actin filaments and mark the ends of each sarcomere. The distance between Z-lines shortens during contraction as actin and myosin filaments slide past each other."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_007",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Calcium ions (Ca²⁺) bind to troponin",
+    "acceptableAlternatives": ["Calcium binds troponin", "Ca2+ binds troponin"],
+    "chainThemeId": "contraction_mechanism",
+    "answerTypePoolId": "muscle_structure_terms",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "In the sliding filament model, what molecular event exposes the myosin-binding sites on actin to initiate contraction?",
+    "explanation": "At rest, tropomyosin physically blocks actin's myosin-binding sites. When Ca²⁺ is released from the sarcoplasmic reticulum, it binds to troponin — a regulatory protein complex on the thin filament. This causes a conformational shift that moves tropomyosin aside, exposing actin so myosin heads can attach and execute the power stroke.",
+    "visualDescription": "Thin filament diagram showing troponin complex, tropomyosin strand, and actin monomers with binding sites exposed after Ca2+ binding",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sliding_filament_theory",
+    "volatile": false,
+    "distractors": ["ATP binds to myosin", "ACh binds to troponin", "Tropomyosin binds calcium"],
+    "variants": [
+      {
+        "quizQuestion": "Which intracellular organelle releases calcium to trigger skeletal muscle contraction?",
+        "correctAnswer": "Sarcoplasmic reticulum",
+        "explanation": "The sarcoplasmic reticulum is a specialized form of endoplasmic reticulum that wraps around each myofibril. When an action potential travels down the T-tubules, it triggers voltage-gated channels to release a flood of Ca²⁺ from the sarcoplasmic reticulum into the cytoplasm, initiating contraction."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_008",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Acetylcholine (ACh)",
+    "acceptableAlternatives": ["ACh", "Acetylcholine"],
+    "chainThemeId": "contraction_mechanism",
+    "answerTypePoolId": "muscle_structure_terms",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What neurotransmitter does a motor neuron release at the neuromuscular junction to depolarize the motor end plate?",
+    "explanation": "When a motor neuron action potential reaches the axon terminal, synaptic vesicles fuse with the membrane and release acetylcholine into the synaptic cleft. ACh binds nicotinic receptors on the motor end plate, causing depolarization that propagates as an action potential along the muscle fiber's sarcolemma and down T-tubules.",
+    "visualDescription": "Neuromuscular junction diagram showing motor neuron terminal, synaptic cleft, and muscle fiber motor end plate",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neuromuscular_junction",
+    "volatile": false,
+    "distractors": ["Norepinephrine", "Dopamine", "Glutamate"],
+    "variants": [
+      {
+        "quizQuestion": "A motor unit consists of one motor neuron and what other component?",
+        "correctAnswer": "All the muscle fibers it innervates",
+        "explanation": "A motor unit is the functional unit of muscle control — one alpha motor neuron and every muscle fiber it contacts. Small motor units (few fibers) allow fine control; large motor units (many fibers) generate greater but less precise force."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_009",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Orbicularis oculi",
+    "acceptableAlternatives": [],
+    "chainThemeId": "facial_muscles",
+    "answerTypePoolId": "facial_muscle_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which facial muscle encircles the eye and is responsible for closing the eyelids?",
+    "explanation": "The orbicularis oculi is a sphincter muscle arranged in concentric rings around the orbital opening. Its orbital portion forcefully closes the eye (as in a tight wink), while its palpebral portion gently closes the eyelids during blinking. It is innervated by CN VII (facial nerve).",
+    "visualDescription": "Front view of face with orbicularis oculi highlighted as a ring-shaped muscle around both eyes",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orbicularis_oculi_muscle",
+    "volatile": false,
+    "distractors": ["Frontalis", "Levator palpebrae superioris", "Corrugator supercilii"],
+    "variants": [
+      {
+        "quizQuestion": "Damage to CN VII would impair the ability to close which facial structure?",
+        "correctAnswer": "Eyelids",
+        "explanation": "Bell's palsy (CN VII paralysis) causes inability to close the eye on the affected side because the orbicularis oculi, which closes the eyelids, is innervated by CN VII. This can lead to corneal damage from drying if untreated."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_010",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Zygomaticus major",
+    "acceptableAlternatives": [],
+    "chainThemeId": "facial_muscles",
+    "answerTypePoolId": "facial_muscle_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which facial muscle draws the corner of the mouth upward and laterally, producing a smile?",
+    "explanation": "The zygomaticus major runs from the zygomatic bone (cheekbone) to the corner of the mouth. Its contraction lifts the mouth corners into a smile. Along with the orbicularis oculi, it contributes to a genuine (Duchenne) smile.",
+    "visualDescription": "Lateral face diagram showing zygomaticus major running diagonally from cheekbone to mouth corner",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zygomaticus_major_muscle",
+    "volatile": false,
+    "distractors": ["Buccinator", "Risorius", "Depressor anguli oris"],
+    "variants": [
+      {
+        "quizQuestion": "All muscles of facial expression are innervated by which cranial nerve?",
+        "correctAnswer": "CN VII (Facial nerve)",
+        "explanation": "The facial nerve (CN VII) innervates all muscles of facial expression, including the orbicularis oculi, zygomaticus major, frontalis, orbicularis oris, buccinator, and platysma. This is why Bell's palsy — a CN VII lesion — causes one-sided facial drooping affecting all these muscles simultaneously."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_011",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Buccinator",
+    "acceptableAlternatives": [],
+    "chainThemeId": "facial_muscles",
+    "answerTypePoolId": "facial_muscle_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which muscle compresses the cheek to keep food between the teeth during chewing and is also used when blowing a trumpet?",
+    "explanation": "The buccinator forms the muscular wall of the cheek. During chewing it presses the cheek against the teeth to keep food on the occlusal surface. It is also the primary muscle used to blow out air — hence its name from Latin 'buccina' (trumpet). Despite assisting mastication, it is innervated by CN VII, not CN V3.",
+    "visualDescription": "Buccinator muscle highlighted on the lateral cheek wall, deep to the skin and superficial to the oral mucosa",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Buccinator_muscle",
+    "volatile": false,
+    "distractors": ["Masseter", "Medial pterygoid", "Orbicularis oris"],
+    "variants": [
+      {
+        "quizQuestion": "The buccinator muscle is innervated by which cranial nerve?",
+        "correctAnswer": "CN VII (Facial nerve)",
+        "explanation": "Although the buccinator assists in chewing, it is innervated by CN VII (facial nerve), not CN V3 like the true muscles of mastication. This distinction matters clinically — a CN VII lesion can impair chewing efficiency even though the jaw-closing muscles are intact."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_012",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Masseter",
+    "acceptableAlternatives": [],
+    "chainThemeId": "mastication_muscles",
+    "answerTypePoolId": "mastication_muscle_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which muscle of mastication is considered the strongest muscle in the body by bite force, and elevates (closes) the mandible?",
+    "explanation": "The masseter is a thick, powerful muscle running from the zygomatic arch to the angle of the mandible. It is the primary jaw-closer and generates the greatest bite force of any muscle. Like all muscles of mastication, it is innervated by CN V3 (the mandibular branch of the trigeminal nerve).",
+    "visualDescription": "Lateral skull view with masseter muscle highlighted as a broad rectangular muscle over the jaw angle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Masseter_muscle",
+    "volatile": false,
+    "distractors": ["Temporalis", "Medial pterygoid", "Lateral pterygoid"],
+    "variants": [
+      {
+        "quizQuestion": "The muscles of mastication are all innervated by which cranial nerve branch?",
+        "correctAnswer": "CN V3 (Mandibular branch of trigeminal)",
+        "explanation": "All four muscles of mastication — masseter, temporalis, medial pterygoid, and lateral pterygoid — are innervated by CN V3, the mandibular branch of the trigeminal nerve. This branch also carries sensory information from the lower jaw and teeth."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_013",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Lateral pterygoid",
+    "acceptableAlternatives": [],
+    "chainThemeId": "mastication_muscles",
+    "answerTypePoolId": "mastication_muscle_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which muscle of mastication depresses and protrudes the mandible (opens the jaw), making it unique among the four muscles of mastication?",
+    "explanation": "While the masseter, temporalis, and medial pterygoid all elevate (close) the jaw, the lateral pterygoid is the exception — it opens the jaw by depressing and protracting the mandible. It also guides lateral grinding movements by acting unilaterally.",
+    "visualDescription": "Medial view of mandible showing lateral pterygoid muscle from greater wing of sphenoid to the mandibular condyle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lateral_pterygoid_muscle",
+    "volatile": false,
+    "distractors": ["Medial pterygoid", "Temporalis", "Masseter"],
+    "variants": [
+      {
+        "quizQuestion": "Which two muscles of mastication elevate the mandible AND can retract it?",
+        "correctAnswer": "Temporalis",
+        "explanation": "The temporalis, a fan-shaped muscle filling the temporal fossa, both elevates the mandible (via its anterior fibers) and retracts the protruded jaw (via its posterior fibers). The masseter primarily elevates without significant retraction."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_014",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Sternocleidomastoid",
+    "acceptableAlternatives": ["SCM"],
+    "chainThemeId": "neck_muscles",
+    "answerTypePoolId": "neck_muscle_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which neck muscle originates from the sternum and clavicle, inserts on the mastoid process, and when acting unilaterally causes ipsilateral lateral flexion and contralateral rotation of the head?",
+    "explanation": "The sternocleidomastoid (SCM) is the strap-like muscle visible on the side of the neck. Acting on one side, it tilts the head toward the same side and rotates the face to the opposite side. Acting bilaterally, it flexes the neck (chin toward chest). It is innervated by CN XI (spinal accessory nerve).",
+    "visualDescription": "Neck with prominent sternocleidomastoid muscle highlighted running diagonally from behind the ear to the sternoclavicular joint",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sternocleidomastoid_muscle",
+    "volatile": false,
+    "distractors": ["Scalenes", "Trapezius", "Longus colli"],
+    "variants": [
+      {
+        "quizQuestion": "The sternocleidomastoid and trapezius are both innervated by which cranial nerve?",
+        "correctAnswer": "CN XI (Spinal accessory nerve)",
+        "explanation": "CN XI (spinal accessory nerve) innervates two muscles: the sternocleidomastoid and the trapezius. Because both are supplied by the same nerve, a CN XI lesion causes weakness of both ipsilateral head rotation and ipsilateral shoulder elevation."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_015",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Scalenes",
+    "acceptableAlternatives": ["Scalenus", "Anterior scalene", "Scalene muscles"],
+    "chainThemeId": "neck_muscles",
+    "answerTypePoolId": "neck_muscle_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which group of neck muscles originates from the cervical transverse processes, inserts on ribs 1–2, and acts as accessory muscles of inspiration by elevating the upper ribs?",
+    "explanation": "The scalenes (anterior, middle, and posterior) run from the transverse processes of the cervical vertebrae to the first two ribs. Their primary role is lateral neck flexion, but they are also important accessory inspiratory muscles — they lift the upper rib cage, increasing thoracic volume during deep or labored breathing.",
+    "visualDescription": "Anterior neck dissection showing three scalene muscles as columns between the cervical spine and the first two ribs",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scalene_muscles",
+    "volatile": false,
+    "distractors": ["Sternocleidomastoid", "Longus capitis", "Splenius capitis"],
+    "variants": [
+      {
+        "quizQuestion": "The scalene muscles are innervated by which nerve network?",
+        "correctAnswer": "Cervical plexus",
+        "explanation": "The scalene muscles are innervated by branches of the cervical plexus (ventral rami of C3-C8). The brachial plexus travels between the anterior and middle scalenes — this space (the scalene triangle) is clinically significant in thoracic outlet syndrome."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_016",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Pectoralis major",
+    "acceptableAlternatives": [],
+    "chainThemeId": "anterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which anterior chest muscle originates from the clavicle, sternum, and ribs 1–6, inserts on the greater tubercle of the humerus, and performs flexion, adduction, and medial rotation of the arm?",
+    "explanation": "The pectoralis major is the large fan-shaped chest muscle used for pushing movements. Its clavicular head flexes the arm, while its sternocostal head adducts and medially rotates it. It is innervated by both the medial and lateral pectoral nerves from the brachial plexus.",
+    "visualDescription": "Anterior chest with large fan-shaped pectoralis major highlighted from sternum and clavicle converging to the humerus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pectoralis_major",
+    "volatile": false,
+    "distractors": ["Pectoralis minor", "Serratus anterior", "Latissimus dorsi"],
+    "variants": [
+      {
+        "quizQuestion": "What movement does the pectoralis major perform when you do a push-up or bench press?",
+        "correctAnswer": "Horizontal adduction (and medial rotation) of the arm",
+        "explanation": "In a push-up or bench press, the pectoralis major horizontally adducts and medially rotates the humerus, pressing the arms forward and inward. The triceps extend the elbow simultaneously. Both movements are essential to the pushing pattern."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_017",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Rectus abdominis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "anterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which abdominal muscle runs from the pubic crest to the xiphoid process and ribs 5–7, is responsible for trunk flexion (sit-ups), and is divided into segments by tendinous intersections?",
+    "explanation": "The rectus abdominis is the paired strap muscle visible as the 'six-pack' when well developed. It runs vertically in the anterior abdominal wall, enclosed in the rectus sheath. It flexes the lumbar spine (e.g., in sit-ups) and compresses abdominal contents, increasing intra-abdominal pressure.",
+    "visualDescription": "Anterior abdominal wall showing rectus abdominis as segmented vertical muscles either side of the linea alba",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rectus_abdominis_muscle",
+    "volatile": false,
+    "distractors": ["External oblique", "Transversus abdominis", "Internal oblique"],
+    "variants": [
+      {
+        "quizQuestion": "The rectus abdominis is enclosed in a fibrous sheath formed by contributions from which muscles?",
+        "correctAnswer": "External oblique, internal oblique, and transversus abdominis",
+        "explanation": "The aponeuroses (flat tendon sheets) of the three lateral abdominal muscles split and interweave to form the rectus sheath that surrounds the rectus abdominis. This arrangement transfers force across the midline (linea alba) and provides structural support to the anterior abdomen."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_018",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Transversus abdominis",
+    "acceptableAlternatives": ["Transverse abdominis"],
+    "chainThemeId": "anterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which is the deepest abdominal muscle, running horizontally from the lower ribs and iliac crest to the linea alba, and acts primarily to compress the abdomen?",
+    "explanation": "The transversus abdominis (TA) is the innermost layer of the abdominal wall. Its horizontal fibers act like a corset, compressing abdominal contents and increasing intra-abdominal pressure. It is a key stabilizer of the lumbar spine and is targeted specifically in core rehabilitation programs.",
+    "visualDescription": "Lateral cross-section of abdomen showing external oblique, internal oblique, and transversus abdominis as three distinct layers with innermost having horizontal fibers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Transverse_abdominal_muscle",
+    "volatile": false,
+    "distractors": ["Internal oblique", "Rectus abdominis", "Psoas major"],
+    "variants": [
+      {
+        "quizQuestion": "When turning your torso to the right, which abdominal muscle on the LEFT side is the primary mover?",
+        "correctAnswer": "External oblique",
+        "explanation": "The external oblique performs contralateral rotation — the left external oblique rotates the trunk to the right. The internal oblique does ipsilateral rotation — the right internal oblique also rotates right. Both muscles work together for most rotational movements."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_019",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "External oblique",
+    "acceptableAlternatives": [],
+    "chainThemeId": "anterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which abdominal muscle originates from ribs 5–12 and performs contralateral trunk rotation and lateral flexion?",
+    "explanation": "The external oblique is the most superficial of the three lateral abdominal muscles. Its fibers run 'hands in pockets' direction — obliquely downward and medially. It rotates the trunk to the opposite side (right external oblique → left rotation) and is innervated by intercostal nerves T7–T12.",
+    "visualDescription": "Lateral abdominal wall with external oblique fibers running diagonally downward and medially, like fingers pointing into pockets",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Abdominal_external_oblique_muscle",
+    "volatile": false,
+    "distractors": ["Internal oblique", "Rectus abdominis", "Transversus abdominis"],
+    "variants": [
+      {
+        "quizQuestion": "Which abdominal muscle performs IPSILATERAL trunk rotation?",
+        "correctAnswer": "Internal oblique",
+        "explanation": "Internal oblique fibers run perpendicular to the external oblique — upward and medially. This means they rotate the trunk to the same side as their location (ipsilateral rotation). Paired obliques work together for lateral flexion and are antagonists to each other in rotation."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_020",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Diaphragm",
+    "acceptableAlternatives": [],
+    "chainThemeId": "respiratory_muscles",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which dome-shaped muscle is the primary muscle of inspiration and is innervated by the phrenic nerve (C3, C4, C5)?",
+    "explanation": "The diaphragm is the musculotendinous partition between the thoracic and abdominal cavities. When it contracts, its dome flattens downward, increasing thoracic volume and lowering intrathoracic pressure, causing air to flow into the lungs. The mnemonic 'C3, 4, 5 keeps the diaphragm alive' reminds students of its phrenic nerve supply.",
+    "visualDescription": "Inferior view of diaphragm as a dome-shaped muscle with central tendon, showing openings for aorta, esophagus, and inferior vena cava",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thoracic_diaphragm",
+    "volatile": false,
+    "distractors": ["External intercostals", "Scalenes", "Pectoralis minor"],
+    "variants": [
+      {
+        "quizQuestion": "Complete the mnemonic: 'C3, 4, 5 keeps the ___ alive'",
+        "correctAnswer": "Diaphragm",
+        "explanation": "This classic anatomy mnemonic reminds students that the phrenic nerve, which arises from cervical spinal levels C3, C4, and C5, innervates the diaphragm. A cervical spinal cord injury above C3 can therefore cause respiratory failure by denervating the diaphragm."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_021",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Trapezius",
+    "acceptableAlternatives": [],
+    "chainThemeId": "posterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which large, diamond-shaped posterior muscle originates from the occiput and C7–T12 spinous processes, inserts on the clavicle, acromion, and spine of scapula, and elevates, retracts, and depresses the scapula?",
+    "explanation": "The trapezius has three functional parts: the upper fibers elevate the scapula (shrugging), middle fibers retract it, and lower fibers depress it. All three parts share CN XI (spinal accessory nerve) innervation — the same nerve that supplies the sternocleidomastoid.",
+    "visualDescription": "Posterior view showing large diamond/kite-shaped trapezius muscle spanning from skull base to mid-thoracic spine and laterally to both shoulders",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trapezius_muscle",
+    "volatile": false,
+    "distractors": ["Latissimus dorsi", "Rhomboids", "Levator scapulae"],
+    "variants": [
+      {
+        "quizQuestion": "Shoulder shrugging is primarily performed by which portion of the trapezius?",
+        "correctAnswer": "Upper trapezius",
+        "explanation": "The upper trapezius fibers run from the skull and upper cervical vertebrae to the lateral clavicle. Their near-vertical orientation makes them ideal for elevating the shoulder girdle (shrugging). They work with the levator scapulae for this movement."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_022",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Latissimus dorsi",
+    "acceptableAlternatives": ["Lats", "Latissimus"],
+    "chainThemeId": "posterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which large posterior muscle originates from T7–L5 spinous processes and the iliac crest, inserts on the intertubercular groove of the humerus, and performs extension, adduction, and medial rotation of the arm?",
+    "explanation": "The latissimus dorsi ('broadest muscle of the back') is the primary pulling muscle. It is the main muscle used in pull-ups, rowing, and swimming strokes. Innervated by the thoracodorsal nerve, it works synergistically with the pectoralis major to adduct and medially rotate the arm.",
+    "visualDescription": "Posterior view with broad latissimus dorsi highlighted from lower spine and hip to the armpit, tapering to its humeral insertion",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Latissimus_dorsi_muscle",
+    "volatile": false,
+    "distractors": ["Trapezius", "Teres major", "Posterior deltoid"],
+    "variants": [
+      {
+        "quizQuestion": "The latissimus dorsi is innervated by which nerve?",
+        "correctAnswer": "Thoracodorsal nerve",
+        "explanation": "The thoracodorsal nerve (C6–C8) branches from the posterior cord of the brachial plexus to innervate the latissimus dorsi. Damage during axillary lymph node dissection (common in breast cancer surgery) can weaken this muscle, impairing pulling and swimming movements."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_023",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Erector spinae",
+    "acceptableAlternatives": ["Erector spinae group"],
+    "chainThemeId": "posterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which group of muscles running along the vertebral column originates from the iliac crest and sacrum, and extends and laterally flexes the vertebral column?",
+    "explanation": "The erector spinae is a column of three parallel muscle groups (iliocostalis, longissimus, and spinalis) running the length of the back. Acting bilaterally, they extend the spine (standing up from a forward bend); acting unilaterally, they laterally flex it. They are innervated by posterior rami of spinal nerves at each level.",
+    "visualDescription": "Posterior back dissection showing three parallel columns of erector spinae muscles flanking the vertebral spinous processes",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Erector_spinae_muscles",
+    "volatile": false,
+    "distractors": ["Multifidus", "Latissimus dorsi", "Quadratus lumborum"],
+    "variants": [
+      {
+        "quizQuestion": "The erector spinae group is innervated by which branch of spinal nerves?",
+        "correctAnswer": "Posterior rami of spinal nerves",
+        "explanation": "Each spinal nerve divides into an anterior ramus (supplying limbs and anterior body wall) and a posterior ramus (supplying the back muscles and skin). The erector spinae and other deep back muscles are innervated by these posterior (dorsal) rami at each segmental level."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_024",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Rhomboids (major and minor)",
+    "acceptableAlternatives": ["Rhomboids", "Rhomboid major", "Rhomboid minor"],
+    "chainThemeId": "posterior_trunk",
+    "answerTypePoolId": "trunk_muscle_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which muscles originating from C7–T5 spinous processes insert on the medial border of the scapula and perform scapular retraction and downward rotation?",
+    "explanation": "The rhomboids (major and minor) pull the scapula toward the midline (retraction) and rotate its inferior angle medially (downward rotation). They lie deep to the trapezius. Weakness of the rhomboids contributes to scapular winging and rounded shoulder posture.",
+    "visualDescription": "Posterior upper back with rhomboid major and minor highlighted as parallel bands between the thoracic spine and the medial scapular border",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rhomboid_major_muscle",
+    "volatile": false,
+    "distractors": ["Trapezius", "Serratus anterior", "Teres minor"],
+    "variants": [
+      {
+        "quizQuestion": "Which nerve innervates the rhomboid muscles?",
+        "correctAnswer": "Dorsal scapular nerve",
+        "explanation": "The dorsal scapular nerve (C5) innervates both the rhomboid major, rhomboid minor, and the levator scapulae. It arises directly from the C5 nerve root and travels deep to the middle scalene muscle to reach the posterior scapular region."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_025",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Frontalis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "facial_muscles",
+    "answerTypePoolId": "facial_muscle_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which scalp muscle raises the eyebrows and creates horizontal wrinkles on the forehead?",
+    "explanation": "The frontalis is the muscular layer of the forehead, technically part of the epicranius muscle. It has no bony origin — instead, it connects to the galea aponeurotica superiorly and to the skin of the eyebrows inferiorly. Contraction lifts the eyebrows and forms the characteristic surprise or worry expression.",
+    "visualDescription": "Frontal face view with frontalis highlighted as a broad flat muscle covering the forehead above the eyebrows",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Frontalis_muscle",
+    "volatile": false,
+    "distractors": ["Corrugator supercilii", "Procerus", "Temporalis"],
+    "variants": [
+      {
+        "quizQuestion": "In an upper motor neuron (UMN) facial palsy, which portion of the face is relatively SPARED compared to a lower motor neuron (LMN) palsy?",
+        "correctAnswer": "The forehead (frontalis)",
+        "explanation": "The forehead muscles, including frontalis, receive bilateral cortical innervation. In UMN lesions (e.g., stroke), the forehead is spared because the contralateral hemisphere compensates. In LMN lesions (Bell's palsy, CN VII damage), the entire ipsilateral face is paralyzed including the forehead — a key clinical distinction."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_026",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Platysma",
+    "acceptableAlternatives": [],
+    "chainThemeId": "facial_muscles",
+    "answerTypePoolId": "facial_muscle_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which thin, sheet-like muscle covering the anterior neck depresses the mandible and tenses the skin of the neck, and is a muscle of facial expression innervated by CN VII?",
+    "explanation": "The platysma is a broad, thin muscle in the subcutaneous tissue of the neck. It originates from the fascia of the deltoid and pectoralis major, sweeps upward over the clavicle and lower face, and inserts into the mandible and skin of the lower face. Despite being in the neck, it is a muscle of facial expression (CN VII), not a neck muscle in the strict anatomical sense.",
+    "visualDescription": "Anterior neck showing thin sheet-like platysma muscle covering the neck from the upper chest to the lower jaw",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Platysma_muscle",
+    "volatile": false,
+    "distractors": ["Sternocleidomastoid", "Mylohyoid", "Digastric"],
+    "variants": [
+      {
+        "quizQuestion": "Despite being located on the neck, the platysma is innervated by which nerve, classifying it as a muscle of facial expression?",
+        "correctAnswer": "CN VII (Facial nerve)",
+        "explanation": "All muscles of facial expression, including the platysma, are innervated by CN VII regardless of their anatomical location. The platysma visibly tenses and the skin of the neck ridges during maximum effort or extreme fear — visible in athletes during maximal exertion."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_027",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Type IIa (Fast Oxidative-Glycolytic)",
+    "acceptableAlternatives": ["Type IIa", "Fast oxidative-glycolytic", "Intermediate fibers"],
+    "chainThemeId": "muscle_fiber_types",
+    "answerTypePoolId": "muscle_fiber_type_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which skeletal muscle fiber type is intermediate between Type I and Type IIx, combining moderate speed and moderate fatigue resistance, and is characterized as fast oxidative-glycolytic?",
+    "explanation": "Type IIa fibers (fast oxidative-glycolytic) are the 'middle ground' fiber type. They contract faster than Type I fibers but are more fatigue-resistant than Type IIx fibers. They use both aerobic (oxidative) and anaerobic (glycolytic) pathways. They are prominent in activities requiring sustained power output, such as 400m running or cycling sprints.",
+    "visualDescription": "Three fiber type comparison diagram showing Type I (dark red), Type IIa (pink/intermediate), and Type IIx (pale white) in cross-section",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skeletal_muscle#Fiber_types",
+    "volatile": false,
+    "distractors": ["Type I", "Type IIx", "Type IIb"],
+    "variants": [
+      {
+        "quizQuestion": "Which muscle fiber type would be predominantly recruited during a 400-meter race — an activity requiring both speed and endurance?",
+        "correctAnswer": "Type IIa (Fast Oxidative-Glycolytic)",
+        "explanation": "A 400m race is too fast and intense for Type I fibers alone, but too long for Type IIx fibers to sustain without severe fatigue. Type IIa fibers are ideal: they generate speed above walking pace while sustaining output through both aerobic and glycolytic pathways for roughly 45–60 seconds."
+      }
+    ]
+  }
+]

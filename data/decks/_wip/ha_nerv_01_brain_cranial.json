@@ -1,0 +1,1108 @@
+{
+  "id": "ha_nervous_system",
+  "name": "Nervous System",
+  "domain": "human_anatomy",
+  "subDomain": "nervous_system",
+  "description": "Master the human nervous system — from the lobes of the cerebrum to the 12 cranial nerves. Learn which brain region controls speech, where memories are formed, how the brainstem keeps you alive, and exactly what each cranial nerve does.",
+  "minimumFacts": 60,
+  "targetFacts": 81,
+  "facts": [
+    {
+      "id": "ha_nerv_001",
+      "correctAnswer": "Frontal lobe",
+      "acceptableAlternatives": [],
+      "chainThemeId": "brain_lobes",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Parietal lobe",
+        "Temporal lobe",
+        "Occipital lobe",
+        "Cerebellum",
+        "Insula"
+      ],
+      "quizQuestion": "Which cerebral lobe contains the primary motor cortex and Broca's area for speech production?",
+      "explanation": "The frontal lobe sits at the front of the cerebrum and houses the primary motor cortex (which controls voluntary movement), Broca's area (which controls speech production), and the prefrontal cortex (which governs personality, planning, and judgment). Damage to Broca's area causes expressive aphasia — the person knows what they want to say but cannot produce the words.",
+      "statement": "The frontal lobe contains the primary motor cortex, Broca's speech production area, and the prefrontal cortex.",
+      "wowFactor": "Damage to the prefrontal cortex can completely change a person's personality. Phineas Gage famously survived an iron rod through his frontal lobe in 1848 but became impulsive and unreliable — a different person entirely.",
+      "visualDescription": "Cross-section of the human brain with the frontal lobe highlighted in blue, an arrow pointing to the motor strip and a speech bubble icon over Broca's area",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Frontal_lobe",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Broca's area, responsible for speech production, is located in which lobe of the cerebrum?",
+          "correctAnswer": "Frontal lobe",
+          "distractors": [
+            "Temporal lobe",
+            "Parietal lobe",
+            "Occipital lobe"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The primary motor cortex is located in the ___ lobe of the cerebrum.",
+          "correctAnswer": "frontal",
+          "distractors": [
+            "parietal",
+            "temporal",
+            "occipital"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_002",
+      "correctAnswer": "Temporal lobe",
+      "acceptableAlternatives": [],
+      "chainThemeId": "brain_lobes",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Frontal lobe",
+        "Parietal lobe",
+        "Occipital lobe",
+        "Cingulate gyrus",
+        "Insula"
+      ],
+      "quizQuestion": "Which cerebral lobe contains Wernicke's area for language comprehension and the hippocampus for memory?",
+      "explanation": "The temporal lobe contains the auditory cortex (hearing), Wernicke's area (language comprehension), and the hippocampus (memory formation). Damage to Wernicke's area causes receptive aphasia — the person can speak fluently but produces meaningless word salad and cannot understand language.",
+      "statement": "The temporal lobe contains Wernicke's area (language comprehension), the auditory cortex, and the hippocampus.",
+      "wowFactor": "Patient H.M. had his hippocampi surgically removed in 1953 to treat epilepsy. He could no longer form any new long-term memories — every conversation, every person he met, every day reset completely. He lived this way for 55 years.",
+      "visualDescription": "Side-view brain diagram with temporal lobe highlighted in green, hippocampus visible in cross-section, and a speech comprehension icon over Wernicke's area",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Temporal_lobe",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Wernicke's area, which handles language comprehension, is located in which cerebral lobe?",
+          "correctAnswer": "Temporal lobe",
+          "distractors": [
+            "Frontal lobe",
+            "Parietal lobe",
+            "Occipital lobe"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The hippocampus, which is critical for memory formation, is located in the temporal lobe.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_003",
+      "correctAnswer": "Parietal lobe",
+      "acceptableAlternatives": [],
+      "chainThemeId": "brain_lobes",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Frontal lobe",
+        "Temporal lobe",
+        "Occipital lobe",
+        "Cerebellum",
+        "Cingulate gyrus"
+      ],
+      "quizQuestion": "Which cerebral lobe contains the primary somatosensory cortex, processing touch, pain, and proprioception?",
+      "explanation": "The parietal lobe is located behind the frontal lobe and processes somatosensory information — touch, pressure, temperature, pain, and proprioception (body position sense). The primary somatosensory cortex runs along its front edge, organized as a body map called the sensory homunculus.",
+      "statement": "The parietal lobe contains the primary somatosensory cortex and processes touch, pain, and proprioception.",
+      "wowFactor": "The sensory homunculus maps body parts onto the parietal lobe — and the hands and lips have a disproportionately large area because they have the highest density of touch receptors.",
+      "visualDescription": "Top-down brain diagram with parietal lobe highlighted in orange, a sensory homunculus figure showing body parts mapped onto the cortex",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Parietal_lobe",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The primary somatosensory cortex, which processes touch and body position, is found in the ___ lobe.",
+          "correctAnswer": "parietal",
+          "distractors": [
+            "frontal",
+            "temporal",
+            "occipital"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_004",
+      "correctAnswer": "Occipital lobe",
+      "acceptableAlternatives": [],
+      "chainThemeId": "brain_lobes",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Frontal lobe",
+        "Parietal lobe",
+        "Temporal lobe",
+        "Cerebellum",
+        "Thalamus"
+      ],
+      "quizQuestion": "Which cerebral lobe contains the primary visual cortex (V1) and is dedicated to processing vision?",
+      "explanation": "The occipital lobe sits at the back of the cerebrum and is the brain's primary visual processing center. The primary visual cortex (V1) receives signals from the eyes via the optic nerves and thalamus. Damage to the occipital lobe can cause cortical blindness even if the eyes themselves are intact.",
+      "statement": "The occipital lobe contains the primary visual cortex (V1) and processes all visual information.",
+      "wowFactor": "People with damage to their occipital lobe can develop 'blindsight' — they report being completely blind yet can correctly dodge objects and guess the location of things they claim not to see, because some visual pathways bypass V1 entirely.",
+      "visualDescription": "Rear-view brain diagram with occipital lobe highlighted in purple, with two optic tract lines converging on it from illustrated eyes",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Occipital_lobe",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The primary visual cortex (V1) is located in which lobe of the cerebrum?",
+          "correctAnswer": "Occipital lobe",
+          "distractors": [
+            "Temporal lobe",
+            "Parietal lobe",
+            "Frontal lobe"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_005",
+      "correctAnswer": "Cerebellum",
+      "acceptableAlternatives": ["little brain"],
+      "chainThemeId": "brain_lobes",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 1,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Brainstem",
+        "Thalamus",
+        "Basal ganglia",
+        "Hypothalamus",
+        "Frontal lobe"
+      ],
+      "quizQuestion": "Which brain structure, nicknamed the 'little brain,' coordinates movement and balance and contains over 50% of the brain's neurons despite being only 10% of its volume?",
+      "explanation": "The cerebellum ('little brain' in Latin) sits in the posterior cranial fossa below the cerebrum. It fine-tunes motor movements, coordinates balance, and is responsible for motor learning. Despite making up only about 10% of the brain's volume, it contains more than half of all the brain's neurons — densely packed in its folded cortex.",
+      "statement": "The cerebellum coordinates movement, balance, and motor learning, and contains over 50% of the brain's neurons in just 10% of its volume.",
+      "wowFactor": "The cerebellum has about 69 billion neurons — more than the rest of the brain combined. Yet people born without a cerebellum (cerebellar agenesis) can live relatively normal lives, because the brain rewires itself to compensate.",
+      "visualDescription": "Side-view brain illustration with cerebellum prominently shown at the rear base, its distinctive folded cortex visible, glowing to indicate its high neuron density",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cerebellum",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The cerebellum contains more than 50% of the brain's neurons despite accounting for only about 10% of brain volume.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The structure nicknamed the 'little brain' that coordinates balance and movement is the ___.",
+          "correctAnswer": "cerebellum",
+          "distractors": [
+            "brainstem",
+            "thalamus",
+            "hypothalamus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_006",
+      "correctAnswer": "Medulla oblongata",
+      "acceptableAlternatives": ["medulla"],
+      "chainThemeId": "brainstem",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Pons",
+        "Midbrain",
+        "Hypothalamus",
+        "Thalamus",
+        "Cerebellum"
+      ],
+      "quizQuestion": "Which brainstem structure contains the cardiac, respiratory, and vasomotor control centers, and is where motor tracts cross sides (decussation of pyramids)?",
+      "explanation": "The medulla oblongata is the lowest part of the brainstem, continuous with the spinal cord. It contains autonomic control centers for heart rate (cardiac center), breathing (respiratory center), and blood pressure (vasomotor center). It is also where the pyramidal motor tracts cross to the opposite side — a crossing called the decussation of pyramids, which is why the left brain controls the right body.",
+      "statement": "The medulla oblongata contains cardiac, respiratory, and vasomotor centers, and is the site of the decussation of pyramids where motor tracts cross sides.",
+      "wowFactor": "Damage to the medulla is rapidly fatal because it controls heartbeat and breathing. This is why a 'brainstem death' diagnosis — when the medulla stops functioning — is considered clinical death even if the heart can be kept beating by a machine.",
+      "visualDescription": "Brainstem diagram with medulla oblongata highlighted at the bottom, arrows showing crossed motor tracts and icons for heart rate and breathing control",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Medulla_oblongata",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The decussation of pyramids — where motor tracts cross to the opposite side of the body — occurs in which brainstem structure?",
+          "correctAnswer": "Medulla oblongata",
+          "distractors": [
+            "Pons",
+            "Midbrain",
+            "Thalamus"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The cardiac and respiratory control centers are located in the ___.",
+          "correctAnswer": "medulla oblongata",
+          "distractors": [
+            "pons",
+            "midbrain",
+            "hypothalamus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_007",
+      "correctAnswer": "Pons",
+      "acceptableAlternatives": [],
+      "chainThemeId": "brainstem",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Midbrain",
+        "Medulla oblongata",
+        "Thalamus",
+        "Cerebellum",
+        "Hypothalamus"
+      ],
+      "quizQuestion": "Which brainstem structure serves as a relay between the cerebrum and cerebellum and contains a respiratory center that assists the medulla?",
+      "explanation": "The pons ('bridge' in Latin) sits between the midbrain above and the medulla below. It relays signals between the cerebrum and cerebellum and contains nuclei for several cranial nerves (V, VI, VII, VIII). It also contains the pneumotaxic and apneustic respiratory centers that work with the medulla to regulate breathing rhythm.",
+      "statement": "The pons relays signals between the cerebrum and cerebellum and contains respiratory centers that assist the medulla.",
+      "wowFactor": "REM sleep — the phase when vivid dreaming occurs — is initiated by neurons in the pons. Damage to the pons can abolish REM sleep entirely, and the person loses the ability to dream.",
+      "visualDescription": "Brainstem cross-section with pons highlighted in the middle, bridge-like connections drawn to the cerebellum on either side",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pons",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The pons is a brainstem structure that relays signals between the cerebrum and cerebellum.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_008",
+      "correctAnswer": "Substantia nigra",
+      "acceptableAlternatives": [],
+      "chainThemeId": "brainstem",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Red nucleus",
+        "Superior colliculus",
+        "Inferior colliculus",
+        "Locus coeruleus",
+        "Reticular formation"
+      ],
+      "quizQuestion": "The midbrain contains which dark-pigmented structure that produces dopamine and degenerates in Parkinson's disease?",
+      "explanation": "The substantia nigra ('black substance' in Latin) is a midbrain structure that produces dopamine, a neurotransmitter critical for smooth movement initiation. Its characteristic dark color comes from neuromelanin pigment. In Parkinson's disease, substantia nigra neurons progressively die, causing the dopamine deficit that produces tremor, rigidity, and bradykinesia.",
+      "statement": "The substantia nigra, a dopamine-producing structure in the midbrain, degenerates in Parkinson's disease.",
+      "wowFactor": "The substantia nigra appears visibly black to the naked eye in a brain autopsy — one of the few brain structures with obvious natural color. In Parkinson's patients, this darkened region becomes noticeably pale because the pigmented neurons have died.",
+      "visualDescription": "Midbrain cross-section with a dark crescent-shaped substantia nigra prominently visible, dopamine molecule icon nearby",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Substantia_nigra",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Parkinson's disease is caused by the degeneration of neurons in which midbrain structure?",
+          "correctAnswer": "Substantia nigra",
+          "distractors": [
+            "Red nucleus",
+            "Superior colliculus",
+            "Locus coeruleus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_009",
+      "correctAnswer": "Thalamus",
+      "acceptableAlternatives": [],
+      "chainThemeId": "diencephalon",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Hypothalamus",
+        "Hippocampus",
+        "Basal ganglia",
+        "Amygdala",
+        "Substantia nigra"
+      ],
+      "quizQuestion": "Which diencephalon structure acts as the brain's relay station, routing all sensory signals except smell to the cortex?",
+      "explanation": "The thalamus is a paired structure in the diencephalon that acts as the brain's central relay station. Nearly all sensory signals (vision, hearing, touch, taste) pass through the thalamus on the way to the cerebral cortex. Olfaction (smell) is the notable exception — it bypasses the thalamus and connects directly to the cortex and limbic system.",
+      "statement": "The thalamus relays all sensory information except olfaction (smell) to the cerebral cortex.",
+      "wowFactor": "The thalamus is not just a passive relay — it gates what you pay attention to. During sleep, the thalamus goes into 'bursting mode' and actively blocks sensory signals from reaching the cortex, which is why loud noises during light sleep wake you but not during deep sleep.",
+      "visualDescription": "Brain diagram showing the egg-shaped thalamus in the center of the brain, with colored arrows arriving from all sensory organs and fanning out to the cortex, with a crossed-out nose indicating smell bypasses it",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Thalamus",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The thalamus relays all sensory signals to the cortex, including smell (olfaction).",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The brain's sensory relay station, which routes all sensory input except smell to the cortex, is the ___.",
+          "correctAnswer": "thalamus",
+          "distractors": [
+            "hypothalamus",
+            "hippocampus",
+            "amygdala"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_010",
+      "correctAnswer": "Hypothalamus",
+      "acceptableAlternatives": [],
+      "chainThemeId": "diencephalon",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Thalamus",
+        "Pituitary gland",
+        "Amygdala",
+        "Hippocampus",
+        "Pineal gland"
+      ],
+      "quizQuestion": "Which diencephalon structure controls homeostasis (temperature, hunger, thirst, circadian rhythm) and directly controls the pituitary gland?",
+      "explanation": "The hypothalamus is a small but critical structure in the diencephalon that maintains the body's homeostasis. It regulates body temperature, hunger, thirst, sleep-wake cycles (circadian rhythm), and emotional responses. It also controls the pituitary gland — often called the 'master gland' — by releasing regulatory hormones, making the hypothalamus the link between the nervous and endocrine systems.",
+      "statement": "The hypothalamus controls homeostasis (temperature, hunger, thirst, circadian rhythm) and directly regulates the pituitary gland.",
+      "wowFactor": "The hypothalamus weighs only about 4 grams — less than a small coin — yet it controls whether you feel hot or cold, hungry or full, sleepy or alert, sexually aroused or not. It is arguably the most powerful small structure in the entire brain.",
+      "visualDescription": "Brain cross-section with the hypothalamus highlighted just below the thalamus, arrows pointing to pituitary gland below and icons for temperature, food, and a clock representing circadian rhythm",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hypothalamus",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which brain structure directly controls the pituitary gland and links the nervous system to the endocrine system?",
+          "correctAnswer": "Hypothalamus",
+          "distractors": [
+            "Thalamus",
+            "Amygdala",
+            "Hippocampus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_011",
+      "correctAnswer": "Amygdala",
+      "acceptableAlternatives": [],
+      "chainThemeId": "limbic_system",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Hippocampus",
+        "Hypothalamus",
+        "Cingulate gyrus",
+        "Thalamus",
+        "Basal ganglia"
+      ],
+      "quizQuestion": "Which almond-shaped limbic structure processes emotions, especially fear, and drives the 'fight-or-flight' response?",
+      "explanation": "The amygdala (from Greek for 'almond') is a pair of almond-shaped nuclei in the temporal lobe, part of the limbic system. It processes emotional memories, especially fear and aggression, and plays a key role in triggering the fight-or-flight response by activating the hypothalamus and sympathetic nervous system.",
+      "statement": "The amygdala processes emotions (especially fear) and triggers the fight-or-flight response.",
+      "wowFactor": "People with damage to both amygdalae (Urbach-Wiethe disease) have zero fear — they will pick up snakes, walk into horror houses laughing, and cannot be startled. Patient S.M., who has bilateral amygdala damage, has never felt fear in her adult life.",
+      "visualDescription": "Cutaway brain showing the limbic system, with the amygdala highlighted as two almond shapes deep in the temporal lobes, a fear/alert icon above it",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Amygdala",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The almond-shaped limbic structure most associated with fear and emotional memory is the ___.",
+          "correctAnswer": "amygdala",
+          "distractors": [
+            "hippocampus",
+            "hypothalamus",
+            "thalamus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_012",
+      "correctAnswer": "Hippocampus",
+      "acceptableAlternatives": [],
+      "chainThemeId": "limbic_system",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "Amygdala",
+        "Thalamus",
+        "Cingulate gyrus",
+        "Hypothalamus",
+        "Entorhinal cortex"
+      ],
+      "quizQuestion": "Which seahorse-shaped limbic structure in the temporal lobe is essential for forming new long-term memories?",
+      "explanation": "The hippocampus (Greek for 'seahorse,' due to its curved shape) is located in the medial temporal lobe and is critical for consolidating new declarative (explicit) memories — facts and events. It transfers information from short-term to long-term memory. Bilateral hippocampal damage results in anterograde amnesia, the inability to form new memories.",
+      "statement": "The hippocampus is essential for forming new long-term memories and is located in the medial temporal lobe.",
+      "wowFactor": "London taxi drivers, who memorize thousands of streets, have measurably larger posterior hippocampi than non-drivers. The hippocampus physically grows with use — a rare example of measurable neuroplasticity visible on MRI scans.",
+      "visualDescription": "Medial brain view showing the hippocampus curving like a seahorse in the temporal lobe, with a memory icon and arrows showing information flowing in and being stored",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hippocampus",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Anterograde amnesia (inability to form new memories) results from damage to which brain structure?",
+          "correctAnswer": "Hippocampus",
+          "distractors": [
+            "Amygdala",
+            "Thalamus",
+            "Frontal lobe"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_013",
+      "correctAnswer": "Basal ganglia",
+      "acceptableAlternatives": ["basal nuclei"],
+      "chainThemeId": "limbic_system",
+      "answerTypePoolId": "structure_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Cerebellum",
+        "Thalamus",
+        "Limbic system",
+        "Brainstem",
+        "Motor cortex"
+      ],
+      "quizQuestion": "Which group of subcortical nuclei — including the caudate, putamen, and globus pallidus — controls the initiation and smoothing of voluntary movement?",
+      "explanation": "The basal ganglia are a group of subcortical nuclei including the caudate nucleus, putamen, and globus pallidus. They work with the motor cortex to initiate and modulate voluntary movements — specifically suppressing unwanted movements and allowing desired ones. Dysfunction in the basal ganglia underlies both Parkinson's disease (too much suppression, causing rigidity) and Huntington's disease (too little suppression, causing involuntary movements).",
+      "statement": "The basal ganglia (caudate, putamen, globus pallidus) control the initiation and smoothing of voluntary movement.",
+      "wowFactor": "The basal ganglia essentially run a 'permission system' for movement — most movement signals are suppressed by default, and you consciously authorize each action. This is why hesitation and second-guessing can physically freeze movement.",
+      "visualDescription": "Brain cross-section showing the basal ganglia as three interconnected subcortical nuclei deep in the white matter, with arrows showing their connection to the motor cortex",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Basal_ganglia",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The caudate nucleus and putamen are components of the basal ganglia.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_014",
+      "correctAnswer": "Olfactory (CN I)",
+      "acceptableAlternatives": ["CN I", "Cranial nerve I", "Olfactory nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Optic (CN II)",
+        "Trigeminal (CN V)",
+        "Facial (CN VII)",
+        "Vestibulocochlear (CN VIII)",
+        "Glossopharyngeal (CN IX)"
+      ],
+      "quizQuestion": "Which cranial nerve (CN I) is a purely sensory nerve responsible for the sense of smell?",
+      "explanation": "The olfactory nerve (CN I) is a purely sensory cranial nerve responsible for the sense of smell (olfaction). Its receptor neurons are located in the olfactory epithelium of the nasal cavity. Unlike all other sensory nerves, it bypasses the thalamus and connects directly to the olfactory cortex and limbic system — which explains why smells so powerfully evoke memories and emotions.",
+      "statement": "The olfactory nerve (CN I) is a purely sensory nerve responsible for the sense of smell.",
+      "wowFactor": "The olfactory nerve is the only sensory nerve that bypasses the thalamus entirely and connects directly to the limbic system. This direct line to the emotional brain is why a single smell can instantly trigger a vivid emotional memory — the 'Proustian memory' effect.",
+      "visualDescription": "Diagram of olfactory nerve fibers passing through the cribriform plate from nasal epithelium to the olfactory bulb, labeled CN I",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olfactory_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Cranial nerve I, which carries the sense of smell, is the ___ nerve.",
+          "correctAnswer": "olfactory",
+          "distractors": [
+            "optic",
+            "facial",
+            "trigeminal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_015",
+      "correctAnswer": "Optic (CN II)",
+      "acceptableAlternatives": ["CN II", "Cranial nerve II", "Optic nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 1,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Olfactory (CN I)",
+        "Oculomotor (CN III)",
+        "Trochlear (CN IV)",
+        "Abducens (CN VI)",
+        "Facial (CN VII)"
+      ],
+      "quizQuestion": "Which purely sensory cranial nerve carries visual information from the retina to the brain?",
+      "explanation": "The optic nerve (CN II) is a purely sensory cranial nerve that transmits visual information from the retinal ganglion cells to the brain. The two optic nerves meet at the optic chiasm, where fibers from the nasal halves of each retina cross to the opposite side, allowing each hemisphere to process visual information from the opposite half of the visual field.",
+      "statement": "The optic nerve (CN II) carries visual information from the retina to the brain.",
+      "wowFactor": "The blind spot in your vision — the scotoma you normally don't notice — is caused by the optic nerve's exit point from the retina, where there are no photoreceptors. Your brain fills in the gap, which is why you never consciously notice it.",
+      "visualDescription": "Diagram showing optic nerves from both eyes meeting at the optic chiasm, with a cross-shaped crossing of fibers, labeled CN II",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Optic_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which cranial nerve number corresponds to the optic nerve, which carries visual information?",
+          "correctAnswer": "II",
+          "distractors": [
+            "I",
+            "III",
+            "VIII"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_016",
+      "correctAnswer": "Oculomotor (CN III)",
+      "acceptableAlternatives": ["CN III", "Cranial nerve III", "Oculomotor nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Trochlear (CN IV)",
+        "Abducens (CN VI)",
+        "Optic (CN II)",
+        "Facial (CN VII)",
+        "Trigeminal (CN V)"
+      ],
+      "quizQuestion": "Which cranial nerve controls four of the six extraocular muscles, pupil constriction, and the levator palpebrae muscle that opens the eyelid?",
+      "explanation": "The oculomotor nerve (CN III) is a motor nerve that controls four of the six extraocular muscles (superior rectus, inferior rectus, medial rectus, inferior oblique), the levator palpebrae superioris (which raises the eyelid), and the pupillary sphincter (constricts the pupil) and ciliary muscle (accommodation). CN III palsy causes a drooping eyelid (ptosis) and a down-and-out eye position — the eye falls to the position of the only two unaffected muscles (superior oblique and lateral rectus).",
+      "statement": "The oculomotor nerve (CN III) controls four of the six extraocular muscles, eyelid elevation, pupil constriction, and lens accommodation.",
+      "wowFactor": "A posterior communicating artery aneurysm classically compresses CN III from outside, causing a 'blown pupil' (fixed, dilated pupil) as the first sign — because the pupil fibers run on the outside of the nerve. This is a neurosurgical emergency.",
+      "visualDescription": "Diagram of the right eye showing all six extraocular muscles, with four highlighted in green for CN III control, one showing CN IV (superior oblique), one showing CN VI (lateral rectus)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Oculomotor_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The oculomotor nerve (CN III) controls pupil constriction and eyelid elevation in addition to eye movement.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_017",
+      "correctAnswer": "Trochlear (CN IV)",
+      "acceptableAlternatives": ["CN IV", "Cranial nerve IV", "Trochlear nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Oculomotor (CN III)",
+        "Abducens (CN VI)",
+        "Trigeminal (CN V)",
+        "Facial (CN VII)",
+        "Optic (CN II)"
+      ],
+      "quizQuestion": "Which cranial nerve is the smallest, exits from the posterior brainstem (uniquely), and exclusively controls the superior oblique muscle of the eye?",
+      "explanation": "The trochlear nerve (CN IV) has three distinctive features: it is the smallest cranial nerve, it is the only cranial nerve that exits from the posterior (dorsal) surface of the brainstem, and it exclusively controls the superior oblique muscle. The superior oblique intorts and depresses the eye. CN IV palsy causes vertical diplopia (double vision) and a characteristic head tilt as the patient compensates.",
+      "statement": "The trochlear nerve (CN IV) is the smallest cranial nerve, exits posteriorly from the brainstem, and controls only the superior oblique muscle.",
+      "wowFactor": "CN IV is the only cranial nerve that exits from the back of the brainstem. Every other cranial nerve exits from the front or sides. It then wraps all the way around to reach the superior oblique muscle on the opposite side — a bizarrely long path for controlling a single small muscle.",
+      "visualDescription": "Brainstem posterior view showing CN IV exiting from the dorsal midbrain, tracing around to the superior oblique muscle of the eye, labeled as the smallest cranial nerve",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Trochlear_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The trochlear nerve (CN IV) controls a single eye muscle: the ___ oblique.",
+          "correctAnswer": "superior",
+          "distractors": [
+            "inferior",
+            "medial",
+            "lateral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_018",
+      "correctAnswer": "Trigeminal (CN V)",
+      "acceptableAlternatives": ["CN V", "Cranial nerve V", "Trigeminal nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Facial (CN VII)",
+        "Glossopharyngeal (CN IX)",
+        "Oculomotor (CN III)",
+        "Vagus (CN X)",
+        "Hypoglossal (CN XII)"
+      ],
+      "quizQuestion": "Which cranial nerve is both sensory and motor — providing facial sensation via three branches (ophthalmic, maxillary, mandibular) and controlling the muscles of chewing?",
+      "explanation": "The trigeminal nerve (CN V) is the largest cranial nerve and is both sensory and motor. Its three branches cover facial sensation: V1 (ophthalmic) covers the forehead and eye, V2 (maxillary) covers the cheek and upper jaw, and V3 (mandibular) covers the lower jaw and chin. The motor component of V3 controls the muscles of mastication (chewing): masseter, temporalis, and pterygoids.",
+      "statement": "The trigeminal nerve (CN V) provides facial sensation via three branches (ophthalmic, maxillary, mandibular) and controls the muscles of mastication via its mandibular branch.",
+      "wowFactor": "Trigeminal neuralgia — sometimes called 'the suicide disease' — causes sudden electric-shock facial pain so severe that simple actions like touching the face, eating, or even a breeze can trigger an episode rated by patients as the worst pain imaginable. It is caused by compression of CN V.",
+      "visualDescription": "Front-facing head diagram showing the trigeminal nerve's three branches fanning across the face: V1 over forehead, V2 over cheek, V3 over jaw",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Trigeminal_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How many branches does the trigeminal nerve (CN V) have?",
+          "correctAnswer": "Three",
+          "distractors": [
+            "Two",
+            "Four",
+            "Five"
+          ]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The motor component of CN V (trigeminal) controls the muscles of ___, via its mandibular branch.",
+          "correctAnswer": "mastication",
+          "distractors": [
+            "facial expression",
+            "eye movement",
+            "swallowing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_019",
+      "correctAnswer": "Abducens (CN VI)",
+      "acceptableAlternatives": ["CN VI", "Cranial nerve VI", "Abducens nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Oculomotor (CN III)",
+        "Trochlear (CN IV)",
+        "Trigeminal (CN V)",
+        "Facial (CN VII)",
+        "Optic (CN II)"
+      ],
+      "quizQuestion": "Which purely motor cranial nerve controls only the lateral rectus muscle, which abducts (turns outward) the eye?",
+      "explanation": "The abducens nerve (CN VI) is a purely motor nerve that controls the lateral rectus muscle, which abducts the eye (turns it outward, away from the nose). CN VI palsy causes an inability to abduct the eye, resulting in horizontal diplopia (double vision) and an eye that is pulled medially at rest. CN VI has a long intracranial course, making it vulnerable to raised intracranial pressure.",
+      "statement": "The abducens nerve (CN VI) controls only the lateral rectus muscle, which abducts the eye.",
+      "wowFactor": "CN VI has the longest intracranial course of any cranial nerve before it exits the skull. This makes it a 'false localizing sign' in neurology — CN VI palsy can occur from raised intracranial pressure anywhere in the brain, not necessarily from a lesion near the nerve itself.",
+      "visualDescription": "Right eye diagram showing the lateral rectus muscle highlighted, with an arrow indicating outward abduction movement, labeled CN VI",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Abducens_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The abducens nerve (CN VI) controls a single eye muscle: the ___ rectus.",
+          "correctAnswer": "lateral",
+          "distractors": [
+            "medial",
+            "superior",
+            "inferior"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_020",
+      "correctAnswer": "Facial (CN VII)",
+      "acceptableAlternatives": ["CN VII", "Cranial nerve VII", "Facial nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": [
+        "Trigeminal (CN V)",
+        "Glossopharyngeal (CN IX)",
+        "Vagus (CN X)",
+        "Oculomotor (CN III)",
+        "Vestibulocochlear (CN VIII)"
+      ],
+      "quizQuestion": "Which cranial nerve controls all muscles of facial expression, provides taste from the anterior two-thirds of the tongue, and carries parasympathetic fibers to salivary and lacrimal glands?",
+      "explanation": "The facial nerve (CN VII) is both sensory and motor. Its motor fibers control all muscles of facial expression. Its sensory fibers carry taste from the anterior two-thirds of the tongue via the chorda tympani branch. Its parasympathetic fibers innervate the submandibular and sublingual salivary glands and the lacrimal (tear) glands. Bell's palsy is an acute unilateral CN VII palsy causing facial drooping.",
+      "statement": "The facial nerve (CN VII) controls facial expression muscles, carries taste from the anterior 2/3 of the tongue, and innervates salivary and lacrimal glands.",
+      "wowFactor": "Bell's palsy — CN VII paralysis — affects the entire half of the face including the forehead, which distinguishes it from a stroke. In a stroke, the upper forehead muscles are spared because they have bilateral cortical representation; in Bell's palsy, all facial muscles on that side are equally affected.",
+      "visualDescription": "Face diagram showing CN VII branching like a tree across one half of the face, with icons indicating tear production and saliva, and taste receptor on the front tongue",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Facial_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The facial nerve (CN VII) controls the muscles of facial expression.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "reverse",
+          "question": "Taste from the anterior two-thirds of the tongue is carried by which cranial nerve?",
+          "correctAnswer": "Facial (CN VII)",
+          "distractors": [
+            "Glossopharyngeal (CN IX)",
+            "Vagus (CN X)",
+            "Trigeminal (CN V)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_021",
+      "correctAnswer": "Vestibulocochlear (CN VIII)",
+      "acceptableAlternatives": ["CN VIII", "Cranial nerve VIII", "Auditory nerve", "Acoustic nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Facial (CN VII)",
+        "Glossopharyngeal (CN IX)",
+        "Vagus (CN X)",
+        "Trigeminal (CN V)",
+        "Oculomotor (CN III)"
+      ],
+      "quizQuestion": "Which purely sensory cranial nerve has two branches — one for hearing (cochlear) and one for balance (vestibular)?",
+      "explanation": "The vestibulocochlear nerve (CN VIII) is a purely sensory nerve with two distinct branches. The cochlear branch carries auditory information from the cochlea of the inner ear. The vestibular branch carries balance and spatial orientation information from the semicircular canals and otolith organs. Damage to CN VIII causes hearing loss (cochlear) or vertigo and balance disorders (vestibular).",
+      "statement": "The vestibulocochlear nerve (CN VIII) has a cochlear branch for hearing and a vestibular branch for balance.",
+      "wowFactor": "Acoustic neuromas (vestibular schwannomas) are benign tumors that grow on CN VIII. As they expand, they first cause one-sided hearing loss and tinnitus, then compress nearby structures. Remarkably, the brain gradually compensates for lost vestibular input and dizziness often improves even without treatment.",
+      "visualDescription": "Inner ear cross-section diagram showing the cochlea (labeled cochlear branch) and semicircular canals (labeled vestibular branch), both feeding into CN VIII",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vestibulocochlear_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The vestibulocochlear nerve (CN VIII) has two branches: the cochlear branch for hearing and the ___ branch for balance.",
+          "correctAnswer": "vestibular",
+          "distractors": [
+            "tympanic",
+            "auditory",
+            "labyrinthine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_022",
+      "correctAnswer": "Glossopharyngeal (CN IX)",
+      "acceptableAlternatives": ["CN IX", "Cranial nerve IX", "Glossopharyngeal nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Facial (CN VII)",
+        "Vagus (CN X)",
+        "Hypoglossal (CN XII)",
+        "Trigeminal (CN V)",
+        "Accessory (CN XI)"
+      ],
+      "quizQuestion": "Which cranial nerve provides taste from the posterior one-third of the tongue, carries sensation from the pharynx, and monitors blood pressure via the carotid body and sinus?",
+      "explanation": "The glossopharyngeal nerve (CN IX) is both sensory and motor. It carries taste from the posterior one-third of the tongue, general sensation from the pharynx (triggering the gag reflex), and provides parasympathetic innervation to the parotid salivary gland. It also carries sensory information from the carotid body (oxygen monitoring) and carotid sinus (blood pressure monitoring) to the brainstem.",
+      "statement": "The glossopharyngeal nerve (CN IX) provides taste from the posterior 1/3 of the tongue, pharynx sensation, and monitors blood pressure via the carotid sinus.",
+      "wowFactor": "The gag reflex requires both CN IX (afferent — sensation from the pharynx) and CN X (efferent — motor response). Testing the gag reflex therefore tests two cranial nerves simultaneously. A missing gag reflex can indicate CN IX or CN X palsy.",
+      "visualDescription": "Diagram showing CN IX branching to the posterior tongue (taste), pharynx (sensation), parotid gland, and carotid sinus at the neck bifurcation",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Glossopharyngeal_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Taste from the posterior one-third of the tongue is carried by which cranial nerve?",
+          "correctAnswer": "Glossopharyngeal (CN IX)",
+          "distractors": [
+            "Facial (CN VII)",
+            "Vagus (CN X)",
+            "Trigeminal (CN V)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_023",
+      "correctAnswer": "Vagus (CN X)",
+      "acceptableAlternatives": ["CN X", "Cranial nerve X", "Vagus nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "Glossopharyngeal (CN IX)",
+        "Accessory (CN XI)",
+        "Hypoglossal (CN XII)",
+        "Trigeminal (CN V)",
+        "Facial (CN VII)"
+      ],
+      "quizQuestion": "Which cranial nerve is the longest, providing parasympathetic innervation to thoracic and abdominal organs, controlling the larynx for voice, and regulating heart rate?",
+      "explanation": "The vagus nerve (CN X) — 'vagus' is Latin for 'wandering' — is the longest cranial nerve, descending from the brainstem through the neck and into the thorax and abdomen. It provides parasympathetic innervation to the heart (slowing heart rate), lungs, and most of the digestive tract. It controls the laryngeal muscles for voice production and carries sensory information from these organs back to the brain.",
+      "statement": "The vagus nerve (CN X) is the longest cranial nerve, innervating thoracic and abdominal organs with parasympathetic fibers and controlling the larynx for voice production.",
+      "wowFactor": "Vagus nerve stimulation (VNS) — electrically activating the vagus nerve via an implanted device or even just cold water on the face — can treat epilepsy, depression, and reduce inflammation. Athletes use cold-water diving reflexes (CN X response) to lower heart rate before competition.",
+      "visualDescription": "Full body diagram showing the vagus nerve descending from the brainstem, branching to the heart, lungs, stomach, and intestines — the longest path of any cranial nerve",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vagus_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ___ nerve (CN X) is the longest cranial nerve and provides parasympathetic innervation to the thoracic and abdominal organs.",
+          "correctAnswer": "vagus",
+          "distractors": [
+            "accessory",
+            "hypoglossal",
+            "glossopharyngeal"
+          ]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The vagus nerve (CN X) is the longest of all 12 cranial nerves.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_024",
+      "correctAnswer": "Accessory (CN XI)",
+      "acceptableAlternatives": ["CN XI", "Cranial nerve XI", "Accessory nerve", "Spinal accessory nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 3,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": [
+        "Vagus (CN X)",
+        "Hypoglossal (CN XII)",
+        "Facial (CN VII)",
+        "Glossopharyngeal (CN IX)",
+        "Trigeminal (CN V)"
+      ],
+      "quizQuestion": "Which purely motor cranial nerve innervates the trapezius and sternocleidomastoid muscles?",
+      "explanation": "The accessory nerve (CN XI), also called the spinal accessory nerve, is a purely motor cranial nerve that innervates two muscles: the trapezius (which shrugs the shoulder and pulls the scapula back) and the sternocleidomastoid (which rotates and tilts the head). CN XI damage causes difficulty shrugging the shoulder and turning the head against resistance.",
+      "statement": "The accessory nerve (CN XI) is a purely motor nerve that innervates the trapezius and sternocleidomastoid muscles.",
+      "wowFactor": "CN XI is tested by asking a patient to shrug their shoulders and turn their head against resistance. It is commonly injured during neck surgery or lymph node biopsy, leading to a dropped shoulder and difficulty turning the head — a subtle but functionally disabling deficit.",
+      "visualDescription": "Neck and shoulder diagram showing CN XI branching to the sternocleidomastoid muscle of the neck and the trapezius muscle of the upper back",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Accessory_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The accessory nerve (CN XI) innervates the trapezius and the ___ muscle.",
+          "correctAnswer": "sternocleidomastoid",
+          "distractors": [
+            "masseter",
+            "genioglossus",
+            "digastric"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_025",
+      "correctAnswer": "Hypoglossal (CN XII)",
+      "acceptableAlternatives": ["CN XII", "Cranial nerve XII", "Hypoglossal nerve"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "nerve_names",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": [
+        "Accessory (CN XI)",
+        "Vagus (CN X)",
+        "Glossopharyngeal (CN IX)",
+        "Facial (CN VII)",
+        "Trigeminal (CN V)"
+      ],
+      "quizQuestion": "Which purely motor cranial nerve controls all intrinsic and most extrinsic tongue muscles, enabling speech articulation and swallowing?",
+      "explanation": "The hypoglossal nerve (CN XII) is a purely motor nerve that controls all intrinsic tongue muscles and most extrinsic tongue muscles (all except palatoglossus, which is controlled by CN X). It is essential for articulating speech, chewing, and swallowing. CN XII damage causes the tongue to deviate toward the injured side when protruded (the weak side 'pushes' the tongue away less effectively).",
+      "statement": "The hypoglossal nerve (CN XII) controls all intrinsic and most extrinsic tongue muscles, enabling speech and swallowing.",
+      "wowFactor": "If you ask a patient to stick out their tongue and it deviates to one side, that points to the side of the CN XII lesion. The healthy side pushes harder. This is one of the few neurological tests where the deficit physically points you to the damaged side.",
+      "visualDescription": "Diagram of the tongue with CN XII nerve fibers branching throughout all intrinsic muscles, and the nerve exiting the hypoglossal canal of the skull",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hypoglossal_nerve",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which cranial nerve controls the tongue muscles and is tested by asking a patient to protrude their tongue?",
+          "correctAnswer": "Hypoglossal (CN XII)",
+          "distractors": [
+            "Facial (CN VII)",
+            "Glossopharyngeal (CN IX)",
+            "Vagus (CN X)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_026",
+      "correctAnswer": "\"Some Say Marry Money, But My Brother Says Big Brains Matter More\"",
+      "acceptableAlternatives": ["sensory, sensory, motor, motor, both, motor, both, sensory, both, both, motor, motor"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": [
+        "\"Some Say My Money Buys Big Beautiful Velvet Gowns Very Attractive Hair\"",
+        "\"Smart Students Must Balance Big Books Studying Before Very Good Actual Humor\"",
+        "\"Silly Students Memorize Meaningless But Beautiful Bright Vital Gorgeous Vivid Abstract Hymns\""
+      ],
+      "quizQuestion": "Which mnemonic encodes the sensory (S), motor (M), or both (B) nature of each of the 12 cranial nerves in order?",
+      "explanation": "The mnemonic 'Some Say Marry Money, But My Brother Says Big Brains Matter More' encodes the type of each cranial nerve: CN I Olfactory=Sensory, CN II Optic=Sensory, CN III Oculomotor=Motor, CN IV Trochlear=Motor, CN V Trigeminal=Both, CN VI Abducens=Motor, CN VII Facial=Both, CN VIII Vestibulocochlear=Sensory, CN IX Glossopharyngeal=Both, CN X Vagus=Both, CN XI Accessory=Motor, CN XII Hypoglossal=Motor.",
+      "statement": "The mnemonic for cranial nerve types (S/M/B) is: 'Some Say Marry Money, But My Brother Says Big Brains Matter More.'",
+      "wowFactor": "Of the 12 cranial nerves, 3 are purely sensory (I, II, VIII), 5 are purely motor (III, IV, VI, XI, XII), and 4 are mixed sensory and motor (V, VII, IX, X). The mixed nerves are all clustered in the middle of the sequence.",
+      "visualDescription": "Table of 12 cranial nerves with S/M/B type labeled for each, the mnemonic written across the top as a banner",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cranial_nerves",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Of the 12 cranial nerves, how many are purely sensory?",
+          "correctAnswer": "3",
+          "distractors": [
+            "2",
+            "4",
+            "5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_027",
+      "correctAnswer": "\"On Old Olympus's Towering Top, A Finn And German Viewed Some Hops\"",
+      "acceptableAlternatives": ["On Old Olympus Towering Top A Finn And German Viewed Some Hops"],
+      "chainThemeId": "cranial_nerves",
+      "answerTypePoolId": "function_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "ageGroup": "all",
+      "distractors": [
+        "\"Oh Oh Oh To Touch And Feel Very Good Velvet, Ah Heaven\"",
+        "\"Only Older Oafs Travel To Ancient Foreign Gardens Viewing Strange Artifacts Here\"",
+        "\"Over Ordinary Ocean Trips The Ancient Fisherman Gazes Vigilantly Seaward Among Horizons\""
+      ],
+      "quizQuestion": "Which classic mnemonic helps memorize the names of all 12 cranial nerves in order from CN I to CN XII?",
+      "explanation": "The mnemonic 'On Old Olympus's Towering Top, A Finn And German Viewed Some Hops' uses the first letter of each word to recall the 12 cranial nerves in order: Olfactory, Optic, Oculomotor, Trochlear, Trigeminal, Abducens, Facial, (Vestibulocochlear, formerly called Auditory), Glossopharyngeal, Vagus, (Accessory = Spinal accessory), Hypoglossal.",
+      "statement": "The mnemonic for the 12 cranial nerve names is: 'On Old Olympus's Towering Top, A Finn And German Viewed Some Hops.'",
+      "wowFactor": "Medical students have used cranial nerve mnemonics for over a century, and dozens of variants exist — from the clean to the profane. The 'dirty' versions are actually remembered better because emotional and surprising content activates the amygdala and hippocampus, improving memory consolidation.",
+      "visualDescription": "Illustrated mnemonic table with each cranial nerve number (I–XII) paired with its name and the corresponding mnemonic word, displayed as a colorful study card",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cranial_nerves",
+      "volatile": false,
+      "categoryL1": "human_anatomy",
+      "categoryL2": "nervous_system",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "In the cranial nerve mnemonic, 'A Finn' stands for which two cranial nerves (CN VI and CN VII)?",
+          "correctAnswer": "Abducens and Facial",
+          "distractors": [
+            "Accessory and Facial",
+            "Abducens and Frontal",
+            "Auditory and Facial"
+          ]
+        }
+      ]
+    }
+  ]
+}

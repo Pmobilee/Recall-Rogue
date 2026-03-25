@@ -1,0 +1,808 @@
+{
+  "facts": [
+    {
+      "id": "ha_sense_026",
+      "correctAnswer": "5",
+      "acceptableAlternatives": ["Five"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["4", "6", "3", "7", "8", "2", "9"],
+      "quizQuestion": "How many basic tastes can human taste receptors detect?",
+      "explanation": "The five basic tastes are sweet (sugars, energy-rich carbohydrates), sour (acids, hydrogen ions), salty (sodium chloride and other salts), bitter (toxins, alkaloids — a warning system), and umami (glutamate, savory/protein-rich foods). Each is mediated by specific receptor proteins on taste receptor cells. Umami was identified as the fifth basic taste in the 1980s–90s, supported by the discovery of specific glutamate receptors. The tongue can detect all five tastes across its entire surface — the 'tongue map' showing taste regions is a debunked myth.",
+      "statement": "The 5 basic tastes are sweet, sour, salty, bitter, and umami. The tongue detects all five across its entire surface — the regional tongue map is a myth.",
+      "wowFactor": "Bitter is the most sensitive of the five basic tastes — humans can detect bitter compounds at concentrations 1,000 times lower than sweet. This extreme sensitivity is a poison-detection system: most natural toxins are bitter, and our ancestors who were best at detecting tiny amounts of bitterness were least likely to be poisoned. Your disgust at bitter foods is ancient survival machinery.",
+      "visualDescription": "Pixel art tongue top view with five colored zones distributed across the whole surface (not the old map), each labeled with a taste and its molecular icon: glucose, H+, Na+, alkaloid ring, glutamate",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Taste",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The five basic tastes are sweet, sour, salty, bitter, and ___.",
+          "correctAnswer": "Umami",
+          "distractors": ["Spicy", "Fatty", "Astringent", "Metallic"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The traditional tongue map showing distinct taste regions (sweet at tip, bitter at back) accurately represents taste receptor distribution.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_027",
+      "correctAnswer": "~10,000",
+      "acceptableAlternatives": ["10,000", "about 10,000", "approximately 10,000"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["~100", "~500", "~50,000", "~1,000", "~100,000", "~5,000", "~200"],
+      "quizQuestion": "Approximately how many taste buds does the human mouth contain, and how many taste receptor cells does each contain?",
+      "explanation": "The human mouth contains approximately 10,000 taste buds, each housing 50–100 taste receptor cells. Taste buds are located primarily in papillae on the tongue (fungiform, circumvallate, foliate) but also on the soft palate, epiglottis, and upper esophagus. Each taste receptor cell has a lifespan of about 10 days and is continuously replaced. Taste receptor cells are not neurons — they are specialized epithelial cells that synapse onto afferent nerve fibers.",
+      "statement": "~10,000 taste buds, each containing 50–100 taste receptor cells (specialized epithelial cells replaced every ~10 days), are distributed across tongue papillae and soft palate.",
+      "wowFactor": "Taste receptor cells live only about 10 days — they are among the most rapidly replaced cells in the body. This is why the taste damage from burning your tongue heals within a week or two: the damaged taste receptor cells are replaced from stem cell precursors at the base of each taste bud. You effectively get a new set of taste cells roughly every month and a half.",
+      "visualDescription": "Pixel art taste bud cross-section showing barrel-shaped structure embedded in tongue epithelium, with 50-100 elongated taste receptor cells converging at a taste pore at the top, nerve fibers below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Taste_bud",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Why does tongue burn damage heal relatively quickly (within 1–2 weeks)?",
+          "correctAnswer": "Taste receptor cells are replaced from stem cell precursors every ~10 days",
+          "distractors": ["Saliva contains growth factors that repair neurons", "The tongue's rich blood supply speeds regeneration", "Taste buds migrate from the soft palate to replace damaged ones", "Taste receptor cells are neurons with high regenerative capacity"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_028",
+      "correctAnswer": "Circumvallate (vallate) papillae",
+      "acceptableAlternatives": ["Vallate papillae", "Circumvallate papillae"],
+      "chainThemeId": 2,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Fungiform papillae", "Filiform papillae", "Foliate papillae", "Lingual tonsils", "Salivary glands", "Taste pores", "Lingual papillae"],
+      "quizQuestion": "Which 8–12 large papillae arranged in a V-shaped row at the back of the tongue contain the most taste buds per papilla?",
+      "explanation": "There are four types of lingual papillae. Circumvallate (vallate) papillae: 8–12 large, flat-topped papillae arranged in a V-shape at the junction of the anterior 2/3 and posterior 1/3 of the tongue, each surrounded by a trench — they contain hundreds of taste buds each and are the dominant taste structures. Fungiform papillae: mushroom-shaped, scattered across the anterior 2/3, visible as small red dots, each with a few taste buds. Foliate papillae: on the lateral tongue edges, contain taste buds. Filiform papillae: most numerous, thin and thread-like, NO taste buds — purely mechanical (texture sensation, grooming).",
+      "statement": "Papillae types: circumvallate (8–12, V-row at back, most taste buds), fungiform (anterior 2/3, few buds each), foliate (lateral), filiform (most numerous, NO taste buds, mechanical only).",
+      "wowFactor": "The filiform papillae — the most numerous type covering most of the tongue's surface — contain absolutely no taste buds. They are purely mechanical: they grip food, help move it around, and give cats their rasping tongue texture used for grooming and scraping meat off bones. Your tongue's rough texture comes entirely from structures with no role in tasting.",
+      "visualDescription": "Pixel art tongue diagram with four papilla types highlighted: large flat circumvallate in V-row at back (labeled 'most taste buds'), small red mushroom fungiform scattered front, foliate folds on sides, and carpet of tiny filiform with 'NO TASTE BUDS' label",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lingual_papillae",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ___ papillae are the most numerous lingual papillae but contain NO taste buds — they are purely mechanical.",
+          "correctAnswer": "Filiform",
+          "distractors": ["Fungiform", "Circumvallate", "Foliate"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_029",
+      "correctAnswer": "Nucleus of the solitary tract (NTS)",
+      "acceptableAlternatives": ["Nucleus tractus solitarius", "Solitary nucleus", "NTS"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Trigeminal nucleus", "Nucleus ambiguus", "Hypoglossal nucleus", "Gustatory cortex", "Thalamus VPM", "Olfactory bulb", "Insula directly"],
+      "quizQuestion": "Taste information from CN VII, CN IX, and CN X first synapses in which brainstem nucleus before relaying to the thalamus and gustatory cortex?",
+      "explanation": "Taste afferents travel via three cranial nerves: CN VII (facial nerve, chorda tympani branch) from the anterior 2/3 of the tongue; CN IX (glossopharyngeal) from the posterior 1/3; CN X (vagus) from the epiglottis and upper esophagus. All three converge on the nucleus of the solitary tract (NTS) in the medulla. From there, taste information ascends to the ventral posterior medial (VPM) nucleus of the thalamus, then to the primary gustatory cortex in the anterior insula and adjacent frontal operculum.",
+      "statement": "Taste pathway: CN VII (ant. 2/3 tongue) + CN IX (post. 1/3) + CN X (epiglottis) to nucleus of solitary tract (medulla) to VPM thalamus to gustatory cortex (insula).",
+      "wowFactor": "The chorda tympani — the branch of CN VII that carries taste from the front of the tongue — routes through the middle ear cavity, running across the inner surface of the eardrum. Middle ear surgery or infections can damage it, causing permanent loss of taste on one side of the tongue and sometimes a metallic taste sensation. The nerve that tells you food tastes sweet runs right past your eardrum.",
+      "visualDescription": "Pixel art pathway diagram: tongue with CN VII/IX/X labels converging on a brainstem NTS dot, arrow to thalamus VPM, final arrow to insula cortex glowing with taste icons",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gustatory_cortex",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Taste from the anterior 2/3 of the tongue travels via CN ___, while the posterior 1/3 uses CN ___.",
+          "correctAnswer": "VII (facial); IX (glossopharyngeal)",
+          "distractors": ["V (trigeminal); VII (facial)", "IX (glossopharyngeal); X (vagus)", "XII (hypoglossal); IX (glossopharyngeal)"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_030",
+      "correctAnswer": "Olfaction (smell)",
+      "acceptableAlternatives": ["Smell", "Olfactory sense"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "anatomy_concepts",
+      "difficulty": 2,
+      "funScore": 9,
+      "ageGroup": "all",
+      "distractors": ["Vision", "Taste", "Hearing", "Touch", "Proprioception", "Vestibular sense", "Interoception"],
+      "quizQuestion": "Which is the only sense that bypasses the thalamus and projects directly to the limbic system (amygdala and hippocampus), explaining its powerful link to emotion and memory?",
+      "explanation": "All sensory systems except olfaction relay in the thalamus before reaching the cortex. Olfactory signals travel from olfactory receptors in the nasal epithelium via CN I to the olfactory bulb, then via the olfactory tract directly to the piriform cortex, amygdala, and hippocampus — bypassing the thalamic relay entirely. This direct limbic connection explains why a smell can trigger a vivid, emotionally charged memory almost instantaneously (the Proustian memory effect). The amygdala links smells to emotional responses; the hippocampus links them to explicit memories.",
+      "statement": "Olfaction is the only sense that bypasses the thalamus, projecting directly to the amygdala and hippocampus — explaining why smells trigger powerful emotional memories (Proustian effect).",
+      "wowFactor": "A smell can transport you back to a specific moment decades ago with a vividness that visual or auditory cues cannot match. This 'Proustian memory' phenomenon exists because olfaction is the only sense hardwired directly into the limbic memory system without thalamic filtering. Every other sense is preprocessed before reaching emotion and memory centers — only smell gets a direct line.",
+      "visualDescription": "Pixel art brain diagram showing all senses (vision, hearing, touch, taste) routing through a central thalamus relay, but a single olfactory pathway arrow bypassing it entirely and going straight to the amygdala and hippocampus",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olfactory_system",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Olfaction is the only sense that does not relay through the thalamus before reaching the cortex.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "context",
+          "question": "The powerful emotional memory triggered by a smell (the 'Proustian effect') is explained by olfaction's direct connection to which two limbic structures?",
+          "correctAnswer": "Amygdala and hippocampus",
+          "distractors": ["Thalamus and hypothalamus", "Basal ganglia and cerebellum", "Prefrontal cortex and cingulate", "Olfactory bulb and piriform cortex"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_031",
+      "correctAnswer": "~400 receptor types / ~10 million olfactory neurons",
+      "acceptableAlternatives": ["400 receptor types", "10 million olfactory neurons"],
+      "chainThemeId": 4,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["~50 receptor types", "~1,000 receptor types", "~100,000 neurons", "~1 billion neurons", "~4 receptor types", "~10,000 receptor types", "~1 million neurons"],
+      "quizQuestion": "How many olfactory receptor types do humans have, and roughly how many olfactory neurons line the olfactory epithelium?",
+      "explanation": "Humans have approximately 400 functional olfactory receptor genes (out of ~800 total odorant receptor genes — about half are pseudogenes). Each olfactory sensory neuron expresses only one receptor type. The olfactory epithelium in the superior nasal cavity contains approximately 10 million olfactory neurons. Despite only 400 receptor types, combinatorial coding — each odor activates a unique pattern of multiple receptors — allows humans to discriminate over one trillion different odors (Buck and Axel, Nobel Prize 2004).",
+      "statement": "Humans have ~400 functional olfactory receptor types and ~10 million olfactory neurons. Combinatorial receptor coding enables detection of over 1 trillion different odors (Buck & Axel, Nobel 2004).",
+      "wowFactor": "With only 400 receptor types, humans can distinguish over one trillion distinct odors — a number that exceeds the estimated number of stars in the Milky Way galaxy. The trick is combinatorial coding: each odor activates a unique pattern of receptors, like a chord on a piano, giving virtually unlimited discrimination from a finite number of keys.",
+      "visualDescription": "Pixel art olfactory epithelium cross-section showing millions of bipolar neurons with cilia extending into the mucus layer, each neuron labeled with one of many colored receptor types, all converging on the olfactory bulb above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olfactory_receptor",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Buck and Axel won the 2004 Nobel Prize for discovering the olfactory receptor gene family. What feature of olfactory coding allows ~400 receptor types to discriminate over 1 trillion odors?",
+          "correctAnswer": "Combinatorial coding — each odor activates a unique pattern of multiple receptor types",
+          "distractors": ["Each receptor is tuned to exactly one odor molecule", "400 receptors each detect 2.5 trillion odors independently", "Olfactory neurons multiply in adulthood to increase capacity", "The olfactory bulb amplifies signals to increase discrimination"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_032",
+      "correctAnswer": "Meissner's corpuscles",
+      "acceptableAlternatives": ["Meissner corpuscles"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Pacinian corpuscles", "Merkel discs", "Ruffini endings", "Free nerve endings", "Krause end bulbs", "Golgi tendon organs", "Muscle spindles"],
+      "quizQuestion": "Which rapidly adapting mechanoreceptors are concentrated in the fingertips and lips and are most sensitive to light touch and low-frequency vibration (~5–40 Hz)?",
+      "explanation": "Meissner's corpuscles are encapsulated rapidly adapting (RA1) mechanoreceptors located in the dermal papillae of glabrous (hairless) skin — fingertips, palms, lips, and soles. They respond best to light touch and low-frequency vibration (5–40 Hz) and are essential for grip control and texture discrimination requiring finger movement. Their high density in fingertips (~100/cm2) contributes to the high two-point discrimination threshold there. They adapt rapidly, so they respond to changes in pressure rather than sustained contact.",
+      "statement": "Meissner's corpuscles: rapidly adapting, in fingertips/lips (glabrous skin), detect light touch and low-frequency vibration (5–40 Hz). Essential for grip control.",
+      "wowFactor": "Your fingertips can detect a surface ridge as small as 0.006 mm — about 10 times thinner than a human hair. This extraordinary resolution is partly due to Meissner's corpuscles packed at ~100 per square centimeter at the fingertip. Braille reading exploits this resolution directly: each raised dot is ~0.5 mm high, well within the threshold of a trained fingertip.",
+      "visualDescription": "Pixel art fingertip cross-section showing oval Meissner's corpuscles clustered in dermal papillae just below the epidermis surface, with wavy nerve fibers wrapped through them and light-touch arrows above",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Meissner%27s_corpuscle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Match the mechanoreceptor to its specialty: Meissner's = ___ touch; Pacinian = ___; Merkel = sustained ___; Ruffini = skin ___.",
+          "correctAnswer": "Light; deep pressure/vibration; pressure/texture; stretch",
+          "distractors": ["Deep; temperature; pain; stretch", "Pain; light touch; vibration; pressure", "Vibration; pain; temperature; texture"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_033",
+      "correctAnswer": "Pacinian corpuscles",
+      "acceptableAlternatives": ["Pacinian corpuscle", "Lamellar corpuscles"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Meissner's corpuscles", "Merkel discs", "Ruffini endings", "Free nerve endings", "Muscle spindles", "Golgi tendon organs", "Hair follicle receptors"],
+      "quizQuestion": "Which large, onion-layered mechanoreceptors in the deep dermis and subcutaneous tissue detect high-frequency vibration (~250 Hz) and deep pressure?",
+      "explanation": "Pacinian corpuscles are large, rapidly adapting encapsulated mechanoreceptors found in the deep dermis, subcutaneous tissue, periosteum, mesentery, and joint capsules. Their characteristic onion-like layered capsule filters out slow changes and responds only to rapid vibrations — peak sensitivity at ~250 Hz. They are essential for detecting tool vibrations transmitted through the hand, and for detecting surface textures through scanning movement. They are also found in viscera, where they detect mechanical events in internal organs.",
+      "statement": "Pacinian corpuscles: large onion-layered, deep dermis/subcutaneous, detect high-frequency vibration (~250 Hz) and deep pressure. Also found in viscera and periosteum.",
+      "wowFactor": "When you hold a pen and write, Pacinian corpuscles in your palm and fingers detect the high-frequency vibrations transmitted through the pen — allowing you to feel the texture of the paper without touching it directly. Surgeons use this same mechanism when using laparoscopic tools: the vibrations of instruments touching tissue travel up the tool to the hand and are detected by Pacinian corpuscles, giving tactile feedback through meters of rigid metal.",
+      "visualDescription": "Pixel art deep dermis cross-section showing a large oval Pacinian corpuscle with multiple concentric lamellae like an onion slice, central nerve fiber, and high-frequency vibration waves arriving from above the skin",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Pacinian_corpuscle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Pacinian corpuscles are the deepest mechanoreceptors and are best suited for detecting high-frequency vibration (~250 Hz).",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_034",
+      "correctAnswer": "Nociceptors (free nerve endings)",
+      "acceptableAlternatives": ["Nociceptors", "Free nerve endings"],
+      "chainThemeId": 6,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Pacinian corpuscles", "Meissner's corpuscles", "Merkel discs", "Ruffini endings", "Muscle spindles", "Thermoreceptors only", "Proprioceptors"],
+      "quizQuestion": "Which unencapsulated sensory receptors detect tissue damage or potentially damaging stimuli (extreme heat, pressure, chemicals) and signal pain?",
+      "explanation": "Nociceptors are free (unencapsulated) nerve endings distributed throughout skin, muscle, joints, and viscera. They respond to noxious stimuli: extreme temperatures (>45°C or <15°C), intense mechanical force, and tissue-damaging chemicals (bradykinin, substance P, prostaglandins, histamine). Signals travel via two fiber types: A-delta fibers (myelinated, fast, sharp/immediate pain) and C fibers (unmyelinated, slow, burning/aching pain). Nociceptors can become sensitized after injury — their threshold drops, producing allodynia (normally non-painful stimuli become painful) and hyperalgesia (exaggerated pain to normally painful stimuli).",
+      "statement": "Nociceptors are free nerve endings that detect extreme temperature, pressure, and chemicals. Fast A-delta fibers carry sharp pain; slow C fibers carry burning/aching pain.",
+      "wowFactor": "The two-stage nature of pain — a sharp immediate sting followed seconds later by a throbbing ache — is because two separate nerve fiber types report to the brain at different speeds. The A-delta (myelinated) fiber carries the first sharp signal at ~20 m/s; the C fiber (unmyelinated) carries the slow aching signal at ~1 m/s. When you stub a toe, you feel the impact, then a pause, then the deep throb — that pause is the C fiber signal still en route.",
+      "visualDescription": "Pixel art skin cross-section with a thorn piercing the epidermis, bare free nerve endings branching through the dermis, two arrows leaving: fast myelinated A-delta fiber (labeled 'sharp, immediate') and slow unmyelinated C fiber (labeled 'burning, delayed')",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nociceptor",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Fast sharp pain travels via myelinated ___ fibers; slow burning pain via unmyelinated ___ fibers.",
+          "correctAnswer": "A-delta; C",
+          "distractors": ["C; A-delta", "A-beta; A-delta", "A-alpha; C"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_035",
+      "correctAnswer": "Thermoreceptors",
+      "acceptableAlternatives": ["Cold receptors and warm receptors"],
+      "chainThemeId": 6,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Nociceptors", "Meissner's corpuscles", "Ruffini endings", "Pacinian corpuscles", "Merkel discs", "Proprioceptors", "Baroreceptors"],
+      "quizQuestion": "Which two populations of free nerve endings in the skin detect temperature — one responding to 10–40°C, the other to 32–48°C — and which type is more numerous?",
+      "explanation": "Thermoreception is mediated by free nerve endings expressing temperature-sensitive TRP (transient receptor potential) ion channels. Cold receptors (more numerous, activated by 10–40°C, peak ~25°C) are primarily associated with A-delta fibers. Warm receptors (activated by 32–48°C, peak ~40°C) are associated with C fibers. Above ~45°C and below ~15°C, the same nociceptors that mediate pain are activated — extreme temperatures cause pain. Both menthol and cooling activate the same receptor (TRPM8), explaining why menthol feels cold. Capsaicin activates TRPV1 (the heat/pain receptor), explaining why chili feels hot/burning.",
+      "statement": "Cold receptors (more numerous, 10–40°C, A-delta) and warm receptors (32–48°C, C fibers) are free nerve endings. Menthol activates cold receptors (TRPM8); capsaicin activates heat receptors (TRPV1).",
+      "wowFactor": "Menthol does not actually lower your skin temperature — it directly activates the TRPM8 cold-sensing ion channel, which is the same channel that normally opens when real cold is applied. Your brain receives an identical signal whether skin temperature drops or menthol molecules bind the receptor. The 'cooling sensation' of mint is a molecular lie your skin cannot distinguish from actual cold.",
+      "visualDescription": "Pixel art two free nerve endings side by side: blue one labeled 'cold receptor' with snowflake and menthol icon, orange one labeled 'warm receptor' with flame and capsaicin pepper icon, both converging on ascending spinal pain/temp pathway",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Thermoreception",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Why does menthol produce a cooling sensation even though it does not lower skin temperature?",
+          "correctAnswer": "Menthol directly activates TRPM8, the same ion channel opened by actual cold temperatures",
+          "distractors": ["Menthol increases local blood flow away from the skin surface", "Menthol evaporates quickly, causing real cooling", "Menthol inhibits warm receptors rather than activating cold ones", "Menthol activates TRPV1, which signals cooling to the brain"]
+        }
+      ]
+    },
+    {
+      "id": "ha_sense_036",
+      "correctAnswer": "Merkel discs",
+      "acceptableAlternatives": ["Merkel cells", "Merkel's discs"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Meissner's corpuscles", "Pacinian corpuscles", "Ruffini endings", "Free nerve endings", "Krause bulbs", "Golgi tendon organs", "Muscle spindles"],
+      "quizQuestion": "Which slowly adapting mechanoreceptors in the superficial dermis respond to sustained pressure and fine spatial detail (texture discrimination without movement)?",
+      "explanation": "Merkel discs (Merkel cells associated with SA1 nerve endings) are slowly adapting type I mechanoreceptors located in the superficial dermis and epidermis. They have the smallest receptive fields of any skin mechanoreceptor and respond to sustained indentation and static pressure — they fire continuously as long as the stimulus is maintained. They are critical for detecting fine spatial details and textures even without finger movement (static touch), and their small receptive fields give them high spatial resolution. Ruffini endings, by contrast, are slowly adapting type II receptors that respond to skin stretch and lateral force.",
+      "statement": "Merkel discs: slowly adapting, superficial dermis, small receptive fields, detect sustained pressure and fine spatial detail. Ruffini endings: slowly adapting, detect skin stretch and lateral force.",
+      "wowFactor": "Merkel discs can detect the difference between smooth and textured surfaces even without movement — just holding a coin against a fingertip activates them differently for heads versus tails. They have the smallest receptive fields of any mechanoreceptor, which is why two-point discrimination is sharpest at the fingertips: there are many small-field Merkel receptors packed densely there.",
+      "visualDescription": "Pixel art superficial epidermis with disc-shaped Merkel cells nestled against basal keratinocytes, afferent SA1 fibers below, sustained pressure arrow above showing continuous firing, contrasted with Ruffini endings deeper in dermis responding to lateral stretch arrows",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Merkel_nerve_ending",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "special_senses",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Merkel discs are slowly adapting mechanoreceptors that continue firing under sustained pressure, providing information about texture and fine spatial detail.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_001",
+      "correctAnswer": "~1.5–2 m2 / ~3.6 kg",
+      "acceptableAlternatives": ["1.5 to 2 square meters", "about 2 square meters", "3.6 kilograms"],
+      "chainThemeId": 7,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["0.5 m2 / 1 kg", "5 m2 / 10 kg", "1 m2 / 8 kg", "3 m2 / 2 kg", "0.2 m2 / 0.5 kg", "10 m2 / 5 kg", "4 m2 / 15 kg"],
+      "quizQuestion": "The skin is the largest organ of the body — approximately how large is its surface area and how much does it weigh?",
+      "explanation": "Adult skin covers approximately 1.5–2 square meters of surface area and weighs approximately 3.6 kg (about 8 pounds) — making it the largest organ by both area and weight (comprising ~15% of total body weight). It performs multiple functions: physical barrier against pathogens and UV, thermoregulation (sweat, vasodilation/vasoconstriction), vitamin D synthesis, sensation, immune surveillance (Langerhans cells), and excretion (sweat). The skin is composed of three main layers: epidermis, dermis, and hypodermis (subcutaneous tissue).",
+      "statement": "Skin is the body's largest organ: ~1.5–2 m2 surface area, ~3.6 kg weight (~15% of body weight). Three main layers: epidermis, dermis, hypodermis.",
+      "wowFactor": "Stretched flat, your skin would cover roughly the area of a studio apartment floor — about 20 square feet. It is the only organ you can see and touch directly, yet most people rarely think of it as an organ at all. Its barrier function is so effective that even after heavy exercise, the bacteria living on your skin's surface barely penetrate the top dead layers.",
+      "visualDescription": "Pixel art human silhouette with skin highlighted, beside a label showing '1.5-2 m2' and a weight scale showing '3.6 kg', with a three-layer bar below labeled epidermis / dermis / hypodermis",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Skin",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The skin is the largest organ of the human body, covering approximately 1.5–2 square meters.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_002",
+      "correctAnswer": "5 strata (layers)",
+      "acceptableAlternatives": ["Five layers", "5 layers"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["3 layers", "4 layers", "6 layers", "2 layers", "7 layers", "8 layers", "1 layer"],
+      "quizQuestion": "The epidermis is stratified squamous epithelium with how many named layers (strata), and which layer is present only in thick skin?",
+      "explanation": "The epidermis has five strata (deep to superficial): stratum basale (basal layer — contains stem cells, melanocytes, and Merkel cells; site of mitosis), stratum spinosum (spiny layer — contains Langerhans cells/dendritic cells; cells connected by desmosomes giving spiny appearance), stratum granulosum (granular layer — contains keratohyalin granules), stratum lucidum (clear layer — present ONLY in thick skin: palms and soles), and stratum corneum (horny layer — 25–30 layers of dead, anucleate, keratinized cells; the barrier). Cells migrate from basale to corneum in ~28 days.",
+      "statement": "5 epidermal strata (deep to superficial): basale (stem cells, melanocytes) → spinosum (Langerhans cells) → granulosum → lucidum (thick skin only) → corneum (dead keratin barrier).",
+      "wowFactor": "The outermost layer of your skin — the part you touch and see — is entirely composed of dead cells. Every cell in the stratum corneum is anucleate and metabolically inert, a flattened sac of keratin protein. You are literally coated in a layer of your own dead cells, which you shed at a rate of 30,000–40,000 per hour. Dust in houses is largely this shed skin.",
+      "visualDescription": "Pixel art epidermis cross-section showing five labeled horizontal strata stacked deep to superficial, with blue basale cells at bottom (mitosis arrow), progressing through increasingly flat and pale cells to dead white corneum cells at top",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Epidermis",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The stratum ___ is present only in the thick skin of the palms and soles and is absent from thin skin elsewhere.",
+          "correctAnswer": "Lucidum",
+          "distractors": ["Corneum", "Granulosum", "Basale"]
+        },
+        {
+          "type": "context",
+          "question": "In which epidermal layer do Langerhans cells (dendritic antigen-presenting cells) reside?",
+          "correctAnswer": "Stratum spinosum",
+          "distractors": ["Stratum basale", "Stratum granulosum", "Stratum corneum", "Stratum lucidum"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_003",
+      "correctAnswer": "Keratinocytes",
+      "acceptableAlternatives": ["Keratinocyte"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "cell_types",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": ["Melanocytes", "Langerhans cells", "Merkel cells", "Fibroblasts", "Mast cells", "Sebocytes", "Squamous cells"],
+      "quizQuestion": "Which cell type makes up ~90% of the epidermis and produces the structural protein keratin?",
+      "explanation": "Keratinocytes constitute approximately 90% of all epidermal cells. They are produced by stem cells in the stratum basale, undergo programmed differentiation as they migrate outward through the strata, and ultimately die and flatten to form the stratum corneum. This process (cornification) takes approximately 28 days. The keratin they produce provides mechanical strength and waterproofing. Disruption of keratinocyte differentiation is central to many skin diseases including psoriasis (keratinocytes proliferate too fast) and ichthyosis (abnormal cornification).",
+      "statement": "Keratinocytes (~90% of epidermis) produce keratin and undergo programmed differentiation from stratum basale to corneum over ~28 days.",
+      "wowFactor": "Psoriasis is a disease of keratinocyte turnover gone wrong: instead of the normal 28-day journey from basale to corneum, affected keratinocytes complete the trip in 3–5 days. They arrive at the surface still nucleated, piling up as thick scaly plaques. The entire disease is essentially a keratinocyte production line running 6–10 times too fast.",
+      "visualDescription": "Pixel art keratinocyte cell at stratum basale (round, nucleated, pink) with a migration arrow leading through strata to a flat dead corneum cell (grey, no nucleus), with a timeline showing '28 days'",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Keratinocyte",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Keratinocytes make up approximately 90% of epidermal cells and take about 28 days to migrate from the basal layer to the surface.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_004",
+      "correctAnswer": "Melanocytes",
+      "acceptableAlternatives": ["Melanocyte"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "cell_types",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Keratinocytes", "Langerhans cells", "Merkel cells", "Fibroblasts", "Mast cells", "Basal cells", "Dendritic cells"],
+      "quizQuestion": "Which cells in the stratum basale produce melanin for UV protection, and why do people of different skin colors have similar numbers of them?",
+      "explanation": "Melanocytes are dendritic cells derived from neural crest cells that reside in the stratum basale (~8% of epidermal cells). They produce melanin in membrane-bound organelles called melanosomes, which are transferred to surrounding keratinocytes. All humans have approximately the same number of melanocytes per unit area of skin regardless of skin color. The difference between light and dark skin is not the number of melanocytes but the amount of melanin produced and the size, number, and distribution of melanosomes transferred to keratinocytes. Melanin absorbs and scatters UV radiation, protecting DNA from UV-induced damage.",
+      "statement": "Melanocytes (~8% of epidermis, stratum basale) produce melanin. All races have similar melanocyte numbers — skin color reflects melanin AMOUNT and distribution, not melanocyte count.",
+      "wowFactor": "All humans, regardless of race, have essentially the same number of melanocytes per square centimeter of skin — roughly 1,500 per mm2 in most body regions. What differs entirely is how much melanin each melanocyte produces and how it is packaged. The entire visual spectrum of human skin color — from palest Nordic to darkest Congolese — reflects only variations in melanin output from an identical cellular architecture.",
+      "visualDescription": "Pixel art stratum basale showing equal numbers of spider-shaped melanocytes (dark) among keratinocytes (light) in two side-by-side strips labeled 'Light skin' and 'Dark skin', with the melanocytes identical but melanin granule density vastly different",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Melanocyte",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: People of different skin colors have similar numbers of melanocytes — skin color differences come from the amount of melanin produced, not the number of melanocytes.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_005",
+      "correctAnswer": "Dermis",
+      "acceptableAlternatives": [],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Epidermis", "Hypodermis", "Stratum basale", "Subcutaneous tissue", "Periosteum", "Stratum granulosum", "Fascia"],
+      "quizQuestion": "Which layer of skin lies beneath the epidermis, contains blood vessels and nerves, and has a papillary layer (loose CT with dermal papillae) and a reticular layer (dense irregular CT)?",
+      "explanation": "The dermis is a connective tissue layer between the epidermis and hypodermis. The superficial papillary layer consists of loose connective tissue with thin collagen fibers, capillary loops, and dermal papillae — the projections that interlock with epidermal ridges to form fingerprints. The deeper reticular layer is dense irregular connective tissue with thick collagen bundles and elastic fibers providing skin strength and elasticity. The dermis also contains hair follicles, sweat glands, sebaceous glands, sensory receptors (Meissner's, Pacinian, Merkel), and a rich vascular network.",
+      "statement": "The dermis has a papillary layer (loose CT, dermal papillae forming fingerprints) and reticular layer (dense irregular CT, collagen + elastic fibers for strength and elasticity). Contains glands, follicles, and sensory receptors.",
+      "wowFactor": "Fingerprints are formed by the interlocking pattern between epidermal ridges and dermal papillae — and they are set before birth, entirely unique to each individual (even identical twins have different fingerprints), and regenerate exactly if the epidermis is damaged. The pattern is determined by mechanical buckling instabilities during fetal development, not genetics directly.",
+      "visualDescription": "Pixel art skin cross-section with epidermis on top and dermis below: papillary layer showing small dermal papillae projecting up with capillary loops, reticular layer showing thick collagen bundles in dense woven pattern with hair follicles",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Dermis",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The dermis has two layers: the superficial ___ layer (with dermal papillae) and the deeper ___ layer (dense irregular CT).",
+          "correctAnswer": "Papillary; reticular",
+          "distractors": ["Reticular; papillary", "Basale; corneal", "Stratum; granular"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_006",
+      "correctAnswer": "Hypodermis (subcutaneous tissue)",
+      "acceptableAlternatives": ["Hypodermis", "Subcutaneous tissue", "Subcutis"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 5,
+      "ageGroup": "all",
+      "distractors": ["Dermis", "Epidermis", "Fascia", "Periosteum", "Reticular layer", "Papillary layer", "Muscle fascia"],
+      "quizQuestion": "Which layer below the dermis consists primarily of adipose tissue, anchors skin to underlying structures, provides insulation, and is NOT technically considered part of the skin?",
+      "explanation": "The hypodermis (subcutaneous tissue or subcutis) lies beneath the dermis and consists primarily of adipose tissue (fat) and loose connective tissue. It anchors the skin to underlying fascia and muscle, provides thermal insulation, acts as a mechanical shock absorber, and serves as an energy reservoir. It also allows the skin to move freely over underlying structures. Subcutaneous injections (e.g., insulin, some vaccines) are administered into this layer. Despite its close functional association with skin, the hypodermis is not technically considered one of skin's layers — the skin proper consists of only the epidermis and dermis.",
+      "statement": "The hypodermis (subcutaneous tissue) is adipose tissue below the dermis that anchors skin, insulates, and absorbs shocks. Not technically part of the skin (which = epidermis + dermis only).",
+      "wowFactor": "Subcutaneous fat distribution is largely controlled by sex hormones — estrogen preferentially deposits fat in hips, thighs, and breasts (gynoid distribution), while testosterone favors abdominal deposition (android distribution). This is why body fat shifts with hormonal changes during puberty, pregnancy, and menopause. The same calorie stored as fat will end up in a completely different location depending on the hormonal environment.",
+      "visualDescription": "Pixel art skin cross-section with epidermis (thin top band), dermis (middle), and hypodermis (bottom thick layer) showing large pale adipocyte cells in lobules, with connective tissue septa and blood vessels running through them, and muscle below",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Subcutaneous_tissue",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: The hypodermis is technically part of the skin (along with the epidermis and dermis).",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_007",
+      "correctAnswer": "Sebaceous glands",
+      "acceptableAlternatives": ["Sebaceous gland"],
+      "chainThemeId": 10,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Eccrine sweat glands", "Apocrine sweat glands", "Merocrine glands", "Ceruminous glands", "Mammary glands", "Lacrimal glands", "Mucous glands"],
+      "quizQuestion": "Which skin glands use holocrine secretion, are associated with hair follicles, and produce sebum for waterproofing and lubrication?",
+      "explanation": "Sebaceous glands are holocrine glands (cells rupture to release their contents) associated with hair follicles almost everywhere on the body except the palms and soles. They secrete sebum — a mixture of triglycerides, wax esters, squalene, and free fatty acids that waterproofs and lubricates the hair and skin surface, and has mild antibacterial properties. Sebaceous activity increases dramatically at puberty under androgen stimulation. Blocked sebaceous ducts (comedones) and bacterial colonization with Cutibacterium acnes cause acne vulgaris.",
+      "statement": "Sebaceous glands: holocrine, hair follicle-associated, produce sebum (waterproofs/lubricates). Androgen-stimulated at puberty. Blocked ducts + C. acnes = acne.",
+      "wowFactor": "Sebaceous glands destroy themselves to secrete — holocrine secretion means the entire cell fills with lipid, then ruptures to release its contents as sebum. The gland is continuously rebuilt from basal stem cells as each generation of secretory cells sacrifices itself. This self-destruction-and-renewal cycle runs day and night in every hair follicle across your body.",
+      "visualDescription": "Pixel art hair follicle cross-section with a cluster of round sebaceous gland cells filled with lipid droplets emptying into the follicular canal via a short duct, labeled 'holocrine' with a cell-burst icon",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sebaceous_gland",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Sebaceous glands use ___ secretion (cells burst to release contents), while eccrine sweat glands use ___ secretion (cells remain intact).",
+          "correctAnswer": "Holocrine; merocrine",
+          "distractors": ["Merocrine; holocrine", "Apocrine; merocrine", "Eccrine; holocrine"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_008",
+      "correctAnswer": "Eccrine sweat glands (~3 million)",
+      "acceptableAlternatives": ["Eccrine glands", "Eccrine sweat glands"],
+      "chainThemeId": 10,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Apocrine sweat glands", "Sebaceous glands", "Merocrine mucous glands", "Ceruminous glands", "Apocrine glands only", "Lacrimal glands", "Salivary glands"],
+      "quizQuestion": "Which ~3 million sweat glands are distributed all over the body (especially palms and soles), use merocrine secretion, produce watery sweat for thermoregulation, and are active from birth?",
+      "explanation": "Eccrine sweat glands (~3 million total) are the primary thermoregulatory sweat glands, using merocrine (exocytosis) secretion. They produce watery, low-protein sweat containing primarily water, NaCl, small amounts of urea, lactic acid, and potassium. They are distributed across the entire body surface with highest density on the palms, soles, and forehead. They are innervated by cholinergic sympathetic fibers (unusual — most sympathetic fibers are adrenergic). Active from birth, they are not associated with hair follicles. Eccrine sweat has a slightly acidic pH (~4.5–7.5) which contributes to the skin's 'acid mantle' antibacterial defense.",
+      "statement": "~3 million eccrine glands (whole body, esp. palms/soles) use merocrine secretion to produce watery thermoregulatory sweat. Innervated by cholinergic sympathetic fibers. Active from birth.",
+      "wowFactor": "Eccrine sweat glands are innervated by sympathetic nerves — but use acetylcholine rather than norepinephrine as their neurotransmitter, making them the most prominent exception to the rule that sympathetic neurons are adrenergic. The palms, notably, sweat more in response to stress (emotional sweating via cortical input) than to heat — which is why lie detectors (galvanic skin response tests) measure palm conductance.",
+      "visualDescription": "Pixel art full body outline showing 3 million dots of eccrine glands distributed everywhere, with high-density cluster on palm inset, merocrine secretion icon (cell intact, vesicles releasing), and watery sweat droplet labeled",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Eccrine_sweat_gland",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Eccrine sweat glands are innervated by sympathetic nerves but use which unusual neurotransmitter (not the typical adrenergic one)?",
+          "correctAnswer": "Acetylcholine (cholinergic)",
+          "distractors": ["Norepinephrine (adrenergic)", "Dopamine", "Serotonin", "Substance P"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_009",
+      "correctAnswer": "Apocrine sweat glands",
+      "acceptableAlternatives": ["Apocrine glands"],
+      "chainThemeId": 10,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Eccrine sweat glands", "Sebaceous glands", "Merocrine glands", "Ceruminous glands", "Holocrine glands", "Lacrimal glands", "Mammary glands"],
+      "quizQuestion": "Which sweat glands in the axillae and groin become active at puberty, empty into hair follicles, and produce thick secretions that bacteria convert into body odor?",
+      "explanation": "Apocrine sweat glands are found in the axillae (armpits), groin, areolae, and perineum. They open into hair follicles (unlike eccrine glands which have their own ducts to the surface) and become active at puberty under androgen stimulation. Their secretion is thicker and contains proteins and lipids. Freshly secreted apocrine sweat is odorless — body odor results from bacterial (primarily Corynebacterium and Staphylococcus) breakdown of the organic components. Earwax (cerumen) is produced by ceruminous glands, a specialized apocrine variant. Modified apocrine glands also include mammary glands.",
+      "statement": "Apocrine glands: axillae/groin, activated at puberty, empty into hair follicles, produce thick secretion. Body odor comes from BACTERIAL breakdown of apocrine secretion, not the sweat itself.",
+      "wowFactor": "Freshly produced apocrine sweat is completely odorless. Body odor is entirely the product of skin bacteria — primarily Corynebacterium species — metabolizing the proteins and fatty acids in apocrine secretion into short-chain fatty acids and thioalcohols. The bacteria on your skin are producing the smell, not you directly. This is why antiperspirants (blocking the ducts) and antibacterial soaps (killing the bacteria) both work, but through completely different mechanisms.",
+      "visualDescription": "Pixel art axilla cross-section showing large coiled apocrine gland deep in dermis, duct emptying into hair follicle, bacteria on skin surface converting odorless secretion droplets into smelly molecules with wavy odor lines",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Apocrine_sweat_gland",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: Body odor is caused by bacterial breakdown of apocrine sweat — freshly produced apocrine secretion itself is odorless.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_010",
+      "correctAnswer": "Hair follicle",
+      "acceptableAlternatives": ["Hair follicles"],
+      "chainThemeId": 11,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Sebaceous gland", "Arrector pili", "Hair shaft", "Hair bulb", "Dermal papilla", "Eccrine duct", "Nail matrix"],
+      "quizQuestion": "Hair grows from which structure in the dermis, and what are the three phases of the hair growth cycle?",
+      "explanation": "Each hair grows from a hair follicle — a tubular invagination of the epidermis extending into the dermis or hypodermis. The hair matrix at the base of the follicle (bulb) contains stem cells that proliferate and differentiate into the hair shaft. The three phases of the hair growth cycle are: anagen (active growth phase, 2–6 years for scalp hair, during which the hair grows ~1 cm/month), catagen (transitional regression phase, 2–3 weeks, follicle shrinks), and telogen (resting phase, 3–4 months, hair is shed). At any time, ~85–90% of scalp hairs are in anagen. The arrector pili is a small smooth muscle attached to each follicle that contracts to produce goosebumps.",
+      "statement": "Hair grows from follicles in the dermis. Growth cycle: anagen (active, 2–6 yr) to catagen (regression, 2–3 wk) to telogen (rest/shed, 3–4 mo). Arrector pili = goosebump muscle.",
+      "wowFactor": "Scalp hair grows at about 1 cm per month, but only because 85–90% of follicles are in the 2–6 year anagen phase at any moment. Stress (physical or psychological) can synchronize thousands of follicles into telogen simultaneously — causing them all to shed 3–4 months later in a condition called telogen effluvium. This explains why people lose large amounts of hair 3 months after a major illness, surgery, or intense stress.",
+      "visualDescription": "Pixel art hair follicle cross-section showing the full tube from epidermis surface to bulb in the dermis, with three phases labeled in a cycle: anagen (long growing shaft), catagen (shrinking), telogen (short club hair ready to shed), arrector pili muscle labeled",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hair_follicle",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Hair growth cycle phases in order: ___ (active growth, 2–6 yr) to ___ (regression, 2–3 wk) to ___ (rest, 3–4 mo).",
+          "correctAnswer": "Anagen; catagen; telogen",
+          "distractors": ["Telogen; anagen; catagen", "Catagen; telogen; anagen", "Anagen; telogen; catagen"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_011",
+      "correctAnswer": "Nail matrix",
+      "acceptableAlternatives": ["The nail matrix"],
+      "chainThemeId": 12,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["Nail bed", "Lunula", "Hyponychium", "Eponychium", "Nail plate", "Nail fold", "Cuticle"],
+      "quizQuestion": "Which structure at the base of the nail is responsible for producing the nail plate, and what is the visible pale crescent at the nail's base called?",
+      "explanation": "Nails are plates of keratinized epidermal cells growing from the nail matrix — a layer of dividing epithelial cells at the base of the nail beneath the proximal nail fold. The matrix generates new nail cells that flatten, keratinize, and compact into the translucent nail plate, which grows forward over the nail bed. The lunula is the visible pale crescent at the base of the nail, representing the distal visible portion of the matrix. Fingernails grow approximately 3 mm/month (faster in summer and on the dominant hand); toenails grow approximately 1 mm/month. Nails protect the fingertip and enhance precision grip.",
+      "statement": "Nails grow from the nail matrix. The lunula (pale crescent at nail base) is the visible portion of the matrix. Fingernails grow ~3 mm/month; toenails ~1 mm/month.",
+      "wowFactor": "Fingernails grow faster on your dominant hand, faster in summer than winter, and faster during pregnancy. They also grow faster on longer fingers — the middle finger's nail grows fastest. The nail on the middle finger of your right hand (if right-handed) is essentially a biological speedometer of metabolic rate in that specific digit.",
+      "visualDescription": "Pixel art nail cross-section showing nail matrix under the proximal fold producing new cells that compact into the nail plate, lunula labeled as the pale visible crescent, nail bed underneath, with growth arrows pointing distally",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nail_(anatomy)",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Fingernails grow approximately ___ mm/month; toenails grow approximately ___ mm/month.",
+          "correctAnswer": "3; 1",
+          "distractors": ["1; 3", "10; 5", "0.5; 0.2"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_012",
+      "correctAnswer": "4 phases",
+      "acceptableAlternatives": ["Four stages", "Four phases"],
+      "chainThemeId": 13,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["2 phases", "3 phases", "5 phases", "6 phases", "7 phases", "1 phase", "8 phases"],
+      "quizQuestion": "Wound healing progresses through how many sequential overlapping phases, and what are they in order?",
+      "explanation": "Wound healing has four sequential but overlapping phases: (1) Hemostasis (seconds to hours) — vasoconstriction, platelet plug, clot formation via coagulation cascade, provisional fibrin matrix; (2) Inflammation (hours to 2–3 days) — vasodilation and increased permeability, neutrophil then macrophage recruitment, debridement and growth factor release; (3) Proliferation (days 3–21) — fibroblast migration and collagen deposition, granulation tissue formation, angiogenesis, re-epithelialization; (4) Remodeling/Maturation (21 days to 2 years) — collagen III replaced by collagen I, scar maturation, tensile strength increases to ~80% of original (never reaches 100%).",
+      "statement": "Wound healing: (1) Hemostasis (clot) to (2) Inflammation (neutrophils/macrophages, 2–3 days) to (3) Proliferation (granulation tissue, 3–21 days) to (4) Remodeling (21 days–2 years, scar matures to ~80% strength).",
+      "wowFactor": "A healed scar never recovers more than about 80% of the original skin's tensile strength — no matter how long it has been healing. The collagen in scar tissue is laid down in a disorganized parallel pattern rather than the basket-weave arrangement of normal dermis, and this structural difference permanently limits its strength. A scar from 20 years ago is still structurally weaker than the original tissue.",
+      "visualDescription": "Pixel art timeline bar with four labeled color phases: red hemostasis (tiny clot), orange inflammation (white blood cells arriving), green proliferation (fibroblasts + new capillaries), blue remodeling (collagen fibers tightening), with time markers at hours/days/weeks/months",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Wound_healing",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "In wound healing, granulation tissue (new capillaries + fibroblasts) forms during the ___ phase (days 3–21).",
+          "correctAnswer": "Proliferation",
+          "distractors": ["Inflammation", "Hemostasis", "Remodeling"]
+        },
+        {
+          "type": "context",
+          "question": "A healed scar achieves approximately what maximum percentage of the original skin's tensile strength, even after years of remodeling?",
+          "correctAnswer": "~80%",
+          "distractors": ["100%", "~50%", "~30%", "~95%"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_013",
+      "correctAnswer": "1st degree (superficial burn)",
+      "acceptableAlternatives": ["First degree burn", "First-degree burn"],
+      "chainThemeId": 14,
+      "answerTypePoolId": "medical_concepts",
+      "difficulty": 1,
+      "funScore": 6,
+      "ageGroup": "all",
+      "distractors": ["2nd degree burn", "3rd degree burn", "4th degree burn", "Superficial partial thickness", "Full thickness burn", "Deep partial thickness", "Chemical burn"],
+      "quizQuestion": "Which burn degree affects only the epidermis, produces redness and pain but no blisters, and is exemplified by a typical sunburn?",
+      "explanation": "First-degree (superficial) burns involve only the epidermis. They present with redness (erythema) due to vasodilation, pain, and warmth, but no blisters (no dermis involvement). Sunburn is the classic example. They heal within 3–5 days by epidermal regeneration from surviving keratinocytes without scarring. Second-degree (partial thickness) burns extend into the dermis and form blisters due to fluid accumulating between epidermis and dermis. Third-degree (full thickness) burns destroy both epidermis and dermis — the skin appears white or charred and is paradoxically painless because pain nerves are destroyed.",
+      "statement": "Burns: 1st degree (epidermis only, red, painful, no blisters, heals 3–5 days) | 2nd degree (into dermis, blisters, very painful) | 3rd degree (full thickness, white/charred, PAINLESS — nerve destruction).",
+      "wowFactor": "Third-degree burns are painless — not because the body has released enough endorphins, but because the sensory nerve endings in the dermis have been completely destroyed. Paradoxically, a shallower second-degree burn is far more painful than a deeper third-degree burn. The most severely burned areas of a patient's body may be the least painful, which is one of the counterintuitive challenges of burn assessment.",
+      "visualDescription": "Pixel art three-panel comparison: 1st degree (red epidermis, intact dermis, pain sparks), 2nd degree (blister bubble between layers, dermis partially damaged), 3rd degree (epidermis and dermis both grey/charred, NO pain sparks, nerve endings gone)",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Burn",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "A 3rd degree (full thickness) burn is paradoxically ___ because the ___ are destroyed.",
+          "correctAnswer": "Painless; sensory nerve endings",
+          "distractors": ["Very painful; epidermis is intact", "Itchy; immune cells are absent", "Painless; blood supply is cut off only"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_014",
+      "correctAnswer": "Rule of nines",
+      "acceptableAlternatives": ["Rule of 9s"],
+      "chainThemeId": 14,
+      "answerTypePoolId": "medical_concepts",
+      "difficulty": 2,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Lund-Browder chart", "Berkow formula", "Parkland formula", "Glasgow coma scale", "TBSA percentage", "Rule of thirds", "Rule of fives"],
+      "quizQuestion": "Which clinical tool estimates burn area by dividing the adult body surface into regions each representing 9% (or multiples thereof)?",
+      "explanation": "The Rule of Nines divides the adult body surface area into regions each comprising approximately 9% or multiples: head and neck = 9%, each arm = 9% (18% total for both), anterior trunk = 18%, posterior trunk = 18%, each leg = 18% (36% total), and perineum = 1% (totaling 100%). It provides a rapid estimate of total body surface area (TBSA) burned, which is critical for determining fluid resuscitation volume (Parkland formula: 4 mL/kg/% TBSA in first 24 hours). In children, the Rule of Nines is modified (Lund-Browder chart) because the head is proportionally larger.",
+      "statement": "Rule of nines burn assessment: head 9%, each arm 9%, anterior trunk 18%, posterior trunk 18%, each leg 18%, perineum 1% = 100% TBSA.",
+      "wowFactor": "Knowing how much of the body is burned is as important as knowing how deep the burns are — total burn area determines how much IV fluid a patient needs in the first 24 hours to prevent hypovolemic shock. The Parkland formula (4 mL of lactated Ringer's per kg per percentage of TBSA burned) can require 15–20 liters of fluid in a major burn — amounts that must be calculated precisely or the patient can die from fluid imbalance rather than the burn itself.",
+      "visualDescription": "Pixel art human body outline front/back divided into labeled sections: head (9%), each arm (9%), anterior trunk (18%), posterior trunk (18%), each leg (18%), perineum (1%), all adding to 100% with calculation shown",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rule_of_nines_(medicine)",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "In the Rule of Nines: each leg = ___%, anterior trunk = ___%, head = ___%.",
+          "correctAnswer": "18%; 18%; 9%",
+          "distractors": ["9%; 9%; 18%", "18%; 9%; 18%", "9%; 18%; 18%"]
+        }
+      ]
+    },
+    {
+      "id": "ha_integ_015",
+      "correctAnswer": "Langerhans cells",
+      "acceptableAlternatives": ["Langerhans cell"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "cell_types",
+      "difficulty": 3,
+      "funScore": 7,
+      "ageGroup": "all",
+      "distractors": ["Merkel cells", "Melanocytes", "Keratinocytes", "Fibroblasts", "Mast cells", "Dermal dendritic cells", "Macrophages"],
+      "quizQuestion": "Which epidermal cells in the stratum spinosum are dendritic antigen-presenting cells and form part of the skin's immune surveillance system?",
+      "explanation": "Langerhans cells are tissue-resident dendritic cells found in the stratum spinosum of the epidermis (comprising ~2–4% of epidermal cells). They are the skin's professional antigen-presenting cells: they capture antigens (from pathogens, allergens, or contact sensitizers), process them, and migrate to regional lymph nodes where they present antigen to naive T cells, initiating adaptive immune responses. They express unique tennis-racket-shaped organelles called Birbeck granules (visible on electron microscopy). Contact dermatitis (e.g., to nickel or poison ivy) is mediated by Langerhans cell activation of T cells.",
+      "statement": "Langerhans cells are dendritic antigen-presenting cells in the stratum spinosum (~2–4% of epidermis) that sample antigens and migrate to lymph nodes to activate T cells. Contact dermatitis is their domain.",
+      "wowFactor": "Langerhans cells are named after Paul Langerhans, who discovered them in 1868 while still a medical student. He thought they were nerve endings because of their branching shape. They were misidentified for over 100 years before being correctly recognized as dendritic cells in the 1970s. The same Paul Langerhans later discovered the islets of Langerhans in the pancreas — becoming one of the few scientists with two entirely different biological structures bearing his name.",
+      "visualDescription": "Pixel art stratum spinosum with branching Langerhans cell (star-shaped, lighter color) surrounded by keratinocytes, Birbeck granule icon labeled, migration arrow pointing toward lymph node with T cell at destination",
+      "sourceName": "Wikipedia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Langerhans_cell",
+      "volatile": false,
+      "categoryL1": "science",
+      "categoryL2": "human_anatomy",
+      "subDeckId": "integumentary",
+      "variants": [
+        {
+          "type": "context",
+          "question": "Contact dermatitis (e.g., to nickel or poison ivy) is triggered by which epidermal cells presenting allergen to T cells in lymph nodes?",
+          "correctAnswer": "Langerhans cells",
+          "distractors": ["Keratinocytes", "Melanocytes", "Mast cells", "Merkel cells"]
+        }
+      ]
+    }
+  ]
+}

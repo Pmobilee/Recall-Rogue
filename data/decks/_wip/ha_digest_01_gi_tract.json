@@ -1,0 +1,722 @@
+[
+  {
+    "id": "ha_digest_001",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Salivary amylase",
+    "acceptableAlternatives": ["amylase", "ptyalin"],
+    "chainThemeId": "enzymes",
+    "answerTypePoolId": "enzyme_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which enzyme in saliva begins the chemical digestion of starch in the mouth?",
+    "explanation": "Salivary amylase (also called ptyalin) breaks starch into maltose at the slightly neutral pH of saliva (6.8–7). Its activity stops once food reaches the acidic stomach, where the low pH denatures it.",
+    "visualDescription": "Pixel art close-up of a mouth with saliva droplets, small starch granule molecules breaking into maltose fragments",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_digestive_system",
+    "volatile": false,
+    "distractors": ["Pepsin", "Lipase", "Trypsin", "Sucrase"],
+    "variants": [
+      {
+        "quizQuestion": "What is the pH range at which salivary amylase is most active?",
+        "correctAnswer": "6.8–7",
+        "explanation": "Salivary amylase functions optimally in the near-neutral pH of the oral cavity. Stomach acid quickly denatures it, ending its starch-digesting activity."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_002",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Peristalsis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "gi_tract",
+    "answerTypePoolId": "process_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What is the term for the wave-like muscular contractions that propel food through the esophagus and intestines?",
+    "explanation": "Peristalsis is the coordinated contraction and relaxation of smooth muscle in the GI tract wall. It is forceful enough to move food even when a person is lying down or upside down, proving that gravity is not required for swallowing.",
+    "visualDescription": "Pixel art cross-section of esophagus with visible wave of muscle contraction squeezing a bolus of food downward",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_digestive_system",
+    "volatile": false,
+    "distractors": ["Segmentation", "Mastication", "Emulsification", "Deglutition"],
+    "variants": [
+      {
+        "quizQuestion": "Peristalsis is the movement mechanism of the esophagus — does it require gravity to move food to the stomach?",
+        "correctAnswer": "No",
+        "explanation": "Peristaltic muscle contractions are strong enough to move food against gravity, which is why astronauts in zero-g can still swallow normally."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_003",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "~25 cm",
+    "acceptableAlternatives": ["25 cm", "25 centimeters", "about 25 cm"],
+    "chainThemeId": "gi_tract",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Approximately how long is the adult esophagus?",
+    "explanation": "The esophagus is a muscular tube approximately 25 cm long that connects the pharynx to the stomach. It passes through the diaphragm at the T10 vertebral level via the esophageal hiatus.",
+    "visualDescription": "Pixel art sagittal torso diagram with esophagus highlighted in blue, length marked with a small ruler from pharynx to stomach",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Esophagus",
+    "volatile": false,
+    "distractors": ["~10 cm", "~40 cm", "~60 cm", "~15 cm"],
+    "variants": [
+      {
+        "quizQuestion": "At which vertebral level does the esophagus pierce the diaphragm?",
+        "correctAnswer": "T10",
+        "explanation": "The esophagus passes through the diaphragm at the T10 level, slightly above the aortic hiatus at T12."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_004",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "4",
+    "acceptableAlternatives": ["four"],
+    "chainThemeId": "stomach",
+    "answerTypePoolId": "numbers",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "The stomach is divided into how many anatomical regions?",
+    "explanation": "The stomach has four regions: the cardia (where the esophagus joins), the fundus (upper dome), the body (largest part), and the pylorus (outlet leading to the duodenum). Each region has distinct functions and cell types.",
+    "visualDescription": "Pixel art stomach diagram with four regions color-coded and labeled: cardia, fundus, body, pylorus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stomach",
+    "volatile": false,
+    "distractors": ["2", "3", "5", "6"],
+    "variants": [
+      {
+        "quizQuestion": "Which stomach region connects directly to the duodenum?",
+        "correctAnswer": "Pylorus",
+        "explanation": "The pylorus is the distal region of the stomach, ending in the pyloric sphincter which controls the release of chyme into the duodenum."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_005",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "1–2",
+    "acceptableAlternatives": ["pH 1–2", "1 to 2", "pH 1 to 2"],
+    "chainThemeId": "stomach",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the approximate pH of gastric acid (HCl) secreted by the stomach?",
+    "explanation": "The stomach secretes hydrochloric acid (HCl) via parietal cells, creating a highly acidic environment with a pH of 1–2. This kills ingested pathogens, denatures proteins, and converts inactive pepsinogen into the active protease pepsin.",
+    "visualDescription": "Pixel art stomach interior with bright red acid droplets, pH indicator strips showing deep red color",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stomach",
+    "volatile": false,
+    "distractors": ["3–4", "6–7", "5–6", "7–8"],
+    "variants": [
+      {
+        "quizQuestion": "Hydrochloric acid in the stomach converts pepsinogen into its active form. What is that active enzyme?",
+        "correctAnswer": "Pepsin",
+        "explanation": "HCl denatures the inhibitory segment of pepsinogen, releasing active pepsin. Pepsin then cleaves proteins into smaller peptide fragments in the acidic gastric environment."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_006",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Intrinsic factor",
+    "acceptableAlternatives": [],
+    "chainThemeId": "stomach",
+    "answerTypePoolId": "molecule_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which glycoprotein secreted by gastric parietal cells is essential for vitamin B12 absorption in the ileum?",
+    "explanation": "Intrinsic factor is secreted by parietal cells in the stomach. It binds vitamin B12 in the stomach, and the intrinsic factor–B12 complex is then absorbed in the terminal ileum. Without intrinsic factor, vitamin B12 cannot be absorbed, leading to pernicious anemia.",
+    "visualDescription": "Pixel art stomach parietal cell releasing a glowing molecule that binds to a B12 capsule, both traveling toward the ileum",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Intrinsic_factor",
+    "volatile": false,
+    "distractors": ["Gastrin", "Pepsinogen", "Mucin", "Lipase"],
+    "variants": [
+      {
+        "quizQuestion": "Lack of intrinsic factor causes which type of anemia due to impaired B12 absorption?",
+        "correctAnswer": "Pernicious anemia",
+        "explanation": "Pernicious anemia results from autoimmune destruction of gastric parietal cells or their intrinsic factor, preventing B12 absorption and causing megaloblastic anemia and neurological damage."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_007",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Rugae",
+    "acceptableAlternatives": ["gastric rugae", "gastric folds"],
+    "chainThemeId": "stomach",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What are the large folds in the stomach's inner lining called, which allow it to expand when filled?",
+    "explanation": "Rugae are the prominent longitudinal folds visible on the empty stomach's mucosa. When the stomach fills, the rugae flatten out, allowing the stomach to expand to a capacity of approximately 1 liter (and up to 2–3 liters when distended).",
+    "visualDescription": "Pixel art interior stomach view showing deep longitudinal folds of rugae on a reddish-pink mucosal surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastric_rugae",
+    "volatile": false,
+    "distractors": ["Villi", "Haustra", "Plicae circulares", "Taeniae coli"],
+    "variants": [
+      {
+        "quizQuestion": "What is the approximate capacity of the human stomach in a normal adult?",
+        "correctAnswer": "~1 liter",
+        "explanation": "The empty stomach holds about 75 mL but can expand to roughly 1 liter during a typical meal. Maximum distension can reach 2–3 liters."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_008",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "3",
+    "acceptableAlternatives": ["three"],
+    "chainThemeId": "stomach",
+    "answerTypePoolId": "numbers",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "How many layers of smooth muscle does the stomach wall have (unlike the rest of the GI tract which has 2)?",
+    "explanation": "The stomach wall has three smooth muscle layers — longitudinal, circular, and oblique — compared to the standard two layers found elsewhere in the GI tract. The extra oblique layer allows the churning motion that mechanically breaks down food into chyme.",
+    "visualDescription": "Pixel art stomach wall cross-section with three labeled muscle layers: outer longitudinal, middle circular, inner oblique",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stomach",
+    "volatile": false,
+    "distractors": ["2", "4", "5"],
+    "variants": [
+      {
+        "quizQuestion": "The stomach has a unique third smooth muscle layer not found elsewhere in the GI tract. What is this innermost layer called?",
+        "correctAnswer": "Oblique",
+        "explanation": "The oblique layer is the innermost of the stomach's three muscle layers and is unique to the stomach. It enables the churning and mixing movements needed to turn food into liquid chyme."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_009",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "~6 meters",
+    "acceptableAlternatives": ["6 m", "6 meters", "about 6 meters", "~6 m"],
+    "chainThemeId": "small_intestine",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What is the approximate total length of the small intestine in an adult?",
+    "explanation": "The small intestine is approximately 6 meters long and consists of three segments: the duodenum (~25 cm), jejunum (~2.5 m), and ileum (~3 m). Despite being called 'small,' it is much longer than the large intestine, which is only ~1.5 m.",
+    "visualDescription": "Pixel art abdominal diagram showing the small intestine tightly coiled in the central abdomen, with a length scale beside it",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Small_intestine",
+    "volatile": false,
+    "distractors": ["~1.5 meters", "~3 meters", "~10 meters", "~15 meters"],
+    "variants": [
+      {
+        "quizQuestion": "What are the three segments of the small intestine in order from stomach to large intestine?",
+        "correctAnswer": "Duodenum, jejunum, ileum",
+        "explanation": "Food leaves the stomach into the duodenum (site of bile and pancreatic enzyme entry), passes through the jejunum (main absorption site), then into the ileum (B12 and bile salt absorption), before entering the large intestine."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_010",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Ampulla of Vater",
+    "acceptableAlternatives": ["hepatopancreatic ampulla", "duodenal ampulla"],
+    "chainThemeId": "small_intestine",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "At which anatomical structure do the common bile duct and main pancreatic duct join and empty into the duodenum?",
+    "explanation": "The ampulla of Vater (hepatopancreatic ampulla) is where bile from the liver/gallbladder and digestive enzymes from the pancreas converge before entering the second part of the duodenum. The sphincter of Oddi controls the release of these secretions.",
+    "visualDescription": "Pixel art duodenal wall cross-section showing the ampulla of Vater as a small nipple-like opening where bile duct and pancreatic duct merge",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ampulla_of_Vater",
+    "volatile": false,
+    "distractors": ["Sphincter of Oddi", "Ileocecal valve", "Pyloric sphincter", "Cystic duct"],
+    "variants": [
+      {
+        "quizQuestion": "The sphincter of Oddi controls flow at the ampulla of Vater. Which two secretions does it regulate into the duodenum?",
+        "correctAnswer": "Bile and pancreatic juice",
+        "explanation": "The sphincter of Oddi opens in response to the hormone cholecystokinin (CCK), allowing bile and pancreatic enzymes to enter the duodenum when fat and protein are detected."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_011",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "~600 times",
+    "acceptableAlternatives": ["600x", "approximately 600 times", "600-fold"],
+    "chainThemeId": "small_intestine",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "By approximately how much do the villi and microvilli of the small intestine increase the absorptive surface area compared to a simple tube?",
+    "explanation": "Villi (finger-like projections of the mucosa) and microvilli (on each enterocyte, forming the brush border) increase the small intestine's surface area by approximately 600 times. This massive surface — roughly the size of a tennis court — allows efficient absorption of nutrients.",
+    "visualDescription": "Pixel art small intestine cross-section showing finger-like villi projecting into the lumen, with a zoomed inset showing microvilli brush border on enterocytes",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Small_intestine",
+    "volatile": false,
+    "distractors": ["~10 times", "~50 times", "~200 times", "~1000 times"],
+    "variants": [
+      {
+        "quizQuestion": "The brush border of the small intestine's villi contains enzymes that complete digestion. What is another name for these enzymes?",
+        "correctAnswer": "Brush border enzymes",
+        "explanation": "Brush border enzymes (such as lactase, sucrase, and maltase) are embedded in the microvilli membrane of enterocytes and complete the final breakdown of disaccharides and peptides at the absorption surface."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_012",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Ileum",
+    "acceptableAlternatives": ["terminal ileum"],
+    "chainThemeId": "small_intestine",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which segment of the small intestine is responsible for absorbing vitamin B12 and recycling bile salts?",
+    "explanation": "The terminal ileum contains specific receptors for the intrinsic factor–vitamin B12 complex and for bile salts, enabling their active reabsorption. Bile salts are recycled back to the liver via the portal circulation (enterohepatic circulation). The ileum also contains Peyer's patches for immune surveillance.",
+    "visualDescription": "Pixel art ileum segment with labeled receptor sites for B12–intrinsic factor complex, and arrows showing bile salt recycling to the liver",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ileum",
+    "volatile": false,
+    "distractors": ["Duodenum", "Jejunum", "Cecum", "Ascending colon"],
+    "variants": [
+      {
+        "quizQuestion": "Peyer's patches are lymphoid aggregates found in the wall of which small intestine segment?",
+        "correctAnswer": "Ileum",
+        "explanation": "Peyer's patches are organized lymphoid follicles in the ileal mucosa and submucosa that sample intestinal contents and mount immune responses against gut pathogens and antigens."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_013",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "~1.5 meters",
+    "acceptableAlternatives": ["1.5 m", "1.5 meters", "about 1.5 meters"],
+    "chainThemeId": "large_intestine",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What is the approximate total length of the large intestine (colon)?",
+    "explanation": "The large intestine is approximately 1.5 meters long — much shorter than the small intestine's 6 meters. Its main functions are water and electrolyte absorption, housing the gut microbiota (~100 trillion bacteria), and forming and storing feces.",
+    "visualDescription": "Pixel art abdominal diagram with the large intestine highlighted around the periphery of the abdominal cavity",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Large_intestine",
+    "volatile": false,
+    "distractors": ["~3 meters", "~6 meters", "~0.5 meters", "~5 meters"],
+    "variants": [
+      {
+        "quizQuestion": "What is the order of large intestine segments from cecum to rectum?",
+        "correctAnswer": "Cecum → ascending colon → transverse colon → descending colon → sigmoid colon → rectum → anus",
+        "explanation": "The large intestine frames the small intestine in the abdomen: ascending on the right, transverse across the top, descending on the left, then the sigmoid curves to the rectum and anal canal."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_014",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Taeniae coli",
+    "acceptableAlternatives": ["tenia coli", "taenia coli"],
+    "chainThemeId": "large_intestine",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "What are the three longitudinal bands of smooth muscle that run along the outer wall of the large intestine, causing it to pucker into haustra?",
+    "explanation": "The taeniae coli are three ribbon-like bands of the outer longitudinal muscle layer of the large intestine. Because they are shorter than the colon wall, they cause the wall to bunch into sac-like pouches called haustra. They are a key anatomical feature distinguishing the large intestine from the small intestine.",
+    "visualDescription": "Pixel art large intestine segment showing three white muscular bands (taeniae coli) running along the outer surface, with haustra bulging between them",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taenia_coli",
+    "volatile": false,
+    "distractors": ["Haustra", "Epiploic appendages", "Plicae circulares", "Rugae"],
+    "variants": [
+      {
+        "quizQuestion": "The large intestine has three distinctive external features that the small intestine lacks. One is taeniae coli — name one of the other two.",
+        "correctAnswer": "Haustra",
+        "explanation": "The three distinctive features of the large intestine are taeniae coli (longitudinal muscle bands), haustra (the sac-like pouches they create), and epiploic appendages (fat-filled peritoneal pouches attached to the outer wall)."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_015",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "~100 trillion",
+    "acceptableAlternatives": ["100 trillion bacteria", "about 100 trillion", "10^14"],
+    "chainThemeId": "large_intestine",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Approximately how many bacteria live in the human large intestine?",
+    "explanation": "The large intestine harbors approximately 100 trillion bacteria — more microbial cells than there are human cells in the body. These bacteria ferment undigested carbohydrates, produce vitamins (K, B12, biotin), and play a crucial role in immune system development.",
+    "visualDescription": "Pixel art large intestine interior swarming with colorful rod-shaped and round bacteria of various species",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_digestive_system",
+    "volatile": false,
+    "distractors": ["~1 million", "~1 billion", "~1 trillion", "~1 quadrillion"],
+    "variants": [
+      {
+        "quizQuestion": "Bacteria in the large intestine ferment undigested carbohydrates and produce which two vitamins as a byproduct?",
+        "correctAnswer": "Vitamin K and B vitamins (B12, biotin)",
+        "explanation": "Gut bacteria synthesize vitamin K2 (important for blood clotting) and several B vitamins including B12 and biotin, contributing meaningfully to the host's nutritional status."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_016",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "External anal sphincter",
+    "acceptableAlternatives": ["external sphincter"],
+    "chainThemeId": "large_intestine",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which of the two anal sphincters is composed of skeletal muscle and is under voluntary control?",
+    "explanation": "The external anal sphincter is made of skeletal muscle and is under voluntary (somatic) control via the pudendal nerve. The internal anal sphincter is smooth muscle and involuntary. This distinction explains why toilet training is possible — the voluntary external sphincter can override the involuntary internal one.",
+    "visualDescription": "Pixel art sagittal cross-section of the anal canal showing the involuntary internal sphincter (smooth, blue) and the voluntary external sphincter (skeletal, red) surrounding it",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/External_anal_sphincter",
+    "volatile": false,
+    "distractors": ["Internal anal sphincter", "Pyloric sphincter", "Ileocecal valve", "Upper esophageal sphincter"],
+    "variants": [
+      {
+        "quizQuestion": "The internal anal sphincter is involuntary smooth muscle. Which nerve controls the voluntary external anal sphincter?",
+        "correctAnswer": "Pudendal nerve",
+        "explanation": "The pudendal nerve (S2–S4) provides somatic motor innervation to the external anal sphincter, enabling voluntary control of defecation."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_017",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "~1.5 kg",
+    "acceptableAlternatives": ["1.5 kilograms", "about 1.5 kg", "1500 g"],
+    "chainThemeId": "liver",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What is the approximate weight of the adult human liver, making it the largest internal organ?",
+    "explanation": "The liver weighs approximately 1.5 kg in adults, making it the largest internal organ (the skin is larger but is external). It sits in the right upper quadrant of the abdomen beneath the diaphragm and has four lobes: right, left, caudate, and quadrate.",
+    "visualDescription": "Pixel art upper abdomen showing the large reddish-brown liver occupying the right upper quadrant under the diaphragm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Liver",
+    "volatile": false,
+    "distractors": ["~0.5 kg", "~3 kg", "~5 kg", "~0.3 kg"],
+    "variants": [
+      {
+        "quizQuestion": "How many lobes does the human liver have?",
+        "correctAnswer": "4",
+        "explanation": "The liver has four lobes: the large right and left lobes visible from the front, plus the smaller caudate (posterior) and quadrate (inferior) lobes visible from below."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_018",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Portal vein",
+    "acceptableAlternatives": ["hepatic portal vein", "portal venous system"],
+    "chainThemeId": "liver",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "The liver has a dual blood supply. The hepatic artery provides 25% — which vessel provides the remaining 75% of blood, carrying nutrient-rich blood from the GI tract?",
+    "explanation": "The portal vein carries nutrient-rich, partially deoxygenated blood from the intestines, stomach, spleen, and pancreas to the liver for processing. The hepatic artery provides oxygenated blood. This dual supply means the liver can both detoxify absorbed nutrients and receive adequate oxygen.",
+    "visualDescription": "Pixel art liver with two labeled incoming vessels: the smaller hepatic artery (red, 25%) and the larger portal vein (purple, 75%)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Portal_vein",
+    "volatile": false,
+    "distractors": ["Hepatic vein", "Inferior vena cava", "Superior mesenteric artery", "Cystic duct"],
+    "variants": [
+      {
+        "quizQuestion": "The liver produces 500–1000 mL of bile per day. Through which duct does bile leave the liver?",
+        "correctAnswer": "Common hepatic duct",
+        "explanation": "Bile produced by hepatocytes drains into bile canaliculi → intrahepatic ducts → left and right hepatic ducts → common hepatic duct, which then joins the cystic duct to form the common bile duct leading to the duodenum."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_019",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "500–1000 mL",
+    "acceptableAlternatives": ["500 to 1000 mL", "0.5–1 liter", "about 700 mL"],
+    "chainThemeId": "liver",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "How much bile does the liver produce each day?",
+    "explanation": "The liver produces approximately 500–1000 mL of bile daily. Bile is stored and concentrated in the gallbladder, which holds about 50 mL. Bile contains bile salts, cholesterol, bilirubin, and electrolytes — it emulsifies fats to allow lipase activity but contains no digestive enzymes.",
+    "visualDescription": "Pixel art liver with golden-green bile droplets flowing through bile canaliculi into the bile duct system",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bile",
+    "volatile": false,
+    "distractors": ["50–100 mL", "100–200 mL", "2–3 liters", "5 liters"],
+    "variants": [
+      {
+        "quizQuestion": "Bile emulsifies fats but contains no digestive enzymes. Which organ produces the lipase that actually digests the emulsified fat?",
+        "correctAnswer": "Pancreas",
+        "explanation": "Pancreatic lipase breaks down emulsified triglycerides into fatty acids and glycerol. Bile's role is emulsification — breaking large fat droplets into small ones to increase the surface area for lipase action."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_020",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "~50 mL",
+    "acceptableAlternatives": ["50 mL", "about 50 mL", "50 milliliters"],
+    "chainThemeId": "liver",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What is the storage capacity of the gallbladder?",
+    "explanation": "The gallbladder stores and concentrates bile between meals, holding approximately 50 mL. It releases bile into the cystic duct → common bile duct → duodenum in response to cholecystokinin (CCK) secreted when fat enters the duodenum.",
+    "visualDescription": "Pixel art pear-shaped gallbladder tucked under the liver, shown in cross-section with concentrated dark green bile",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gallbladder",
+    "volatile": false,
+    "distractors": ["~500 mL", "~10 mL", "~200 mL", "~1 liter"],
+    "variants": [
+      {
+        "quizQuestion": "Which hormone triggers the gallbladder to contract and release bile into the duodenum?",
+        "correctAnswer": "Cholecystokinin (CCK)",
+        "explanation": "CCK is released by duodenal I-cells in response to fat and protein. It stimulates gallbladder contraction, relaxes the sphincter of Oddi, and also stimulates pancreatic enzyme secretion."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_021",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Islets of Langerhans",
+    "acceptableAlternatives": ["pancreatic islets", "islets of Langerhans"],
+    "chainThemeId": "pancreas",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "What are the clusters of endocrine cells in the pancreas called that produce insulin and glucagon?",
+    "explanation": "The islets of Langerhans are the endocrine component of the pancreas, comprising approximately 1% of its mass. They contain alpha cells (glucagon), beta cells (insulin), and delta cells (somatostatin). The remaining 99% of the pancreas is exocrine tissue producing digestive enzymes.",
+    "visualDescription": "Pixel art pancreas cross-section showing a small bright cluster of islet cells surrounded by the larger darker exocrine acinar cells",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Islets_of_Langerhans",
+    "volatile": false,
+    "distractors": ["Acinar cells", "Brunner's glands", "Peyer's patches", "Chief cells"],
+    "variants": [
+      {
+        "quizQuestion": "The exocrine pancreas makes up 99% of the gland. What does it secrete?",
+        "correctAnswer": "Digestive enzymes (and bicarbonate)",
+        "explanation": "Exocrine pancreatic acinar cells produce digestive enzymes (trypsinogen, chymotrypsinogen, lipase, amylase, and others) in inactive forms. Ductal cells add bicarbonate to neutralize stomach acid in the duodenum."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_022",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Enterokinase",
+    "acceptableAlternatives": ["enteropeptidase"],
+    "chainThemeId": "enzymes",
+    "answerTypePoolId": "enzyme_names",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which enzyme, secreted by duodenal brush border cells, activates trypsinogen into trypsin?",
+    "explanation": "Enterokinase (enteropeptidase) is a brush border enzyme of the duodenal mucosa that cleaves trypsinogen, releasing active trypsin. Trypsin then autocatalytically activates more trypsinogen and also activates chymotrypsinogen and proelastase — it is the master activator of pancreatic proteases.",
+    "visualDescription": "Pixel art duodenal wall with an enzyme (enterokinase) cleaving an inactive trypsinogen molecule into active trypsin, which then activates more zymogens",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enteropeptidase",
+    "volatile": false,
+    "distractors": ["HCl", "Pepsin", "Bile", "Secretin"],
+    "variants": [
+      {
+        "quizQuestion": "Trypsin cleaves proteins into peptides in the small intestine. At what general pH is it most active?",
+        "correctAnswer": "Slightly alkaline (pH ~8)",
+        "explanation": "Trypsin is a serine protease optimally active at alkaline pH (~7.5–8), which is provided by the bicarbonate-rich pancreatic juice that neutralizes acidic chyme arriving from the stomach."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_023",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Pancreatic lipase",
+    "acceptableAlternatives": ["lipase"],
+    "chainThemeId": "enzymes",
+    "answerTypePoolId": "enzyme_names",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which enzyme breaks triglycerides into fatty acids and glycerol in the small intestine, requiring bile salts to emulsify the fat first?",
+    "explanation": "Pancreatic lipase cleaves ester bonds in triglycerides to release two fatty acids and one monoglyceride (not free glycerol directly). Bile salts are essential because they emulsify fat into small micelles, dramatically increasing the surface area available for lipase action.",
+    "visualDescription": "Pixel art small intestine lumen with large fat droplets being broken into tiny micelles by bile, then pancreatic lipase molecules attacking the micelle surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pancreatic_lipase",
+    "volatile": false,
+    "distractors": ["Salivary amylase", "Pepsin", "Trypsin", "Lactase"],
+    "variants": [
+      {
+        "quizQuestion": "Bile salts emulsify fat before lipase acts — emulsification means breaking large fat globules into what?",
+        "correctAnswer": "Small micelles (tiny droplets)",
+        "explanation": "Emulsification does not chemically digest fat — it physically breaks large fat globules into millions of tiny micelles, increasing surface area by orders of magnitude so lipase can work efficiently."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_024",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Lactase",
+    "acceptableAlternatives": [],
+    "chainThemeId": "enzymes",
+    "answerTypePoolId": "enzyme_names",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which brush border enzyme breaks lactose into glucose and galactose?",
+    "explanation": "Lactase is a brush border enzyme on the microvilli of small intestinal enterocytes. It cleaves the disaccharide lactose into glucose and galactose for absorption. Lactase deficiency causes lactose intolerance, affecting approximately 65% of the global adult population.",
+    "visualDescription": "Pixel art brush border of enterocyte with lactase enzyme splitting a lactose molecule into separate glucose and galactose monosaccharides",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lactase",
+    "volatile": false,
+    "distractors": ["Sucrase", "Maltase", "Amylase", "Lipase"],
+    "variants": [
+      {
+        "quizQuestion": "Sucrase is another brush border enzyme — it breaks sucrose (table sugar) into which two monosaccharides?",
+        "correctAnswer": "Glucose and fructose",
+        "explanation": "Sucrase cleaves the alpha-1,2-glycosidic bond in sucrose, releasing glucose and fructose. Both are absorbed by enterocytes via SGLT1 (glucose) and GLUT5 (fructose) transporters."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_025",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Parotid",
+    "acceptableAlternatives": ["parotid gland"],
+    "chainThemeId": "salivary_glands",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which salivary gland is the largest and produces purely serous (watery) saliva, innervated by cranial nerve IX?",
+    "explanation": "The parotid gland is the largest salivary gland, located in front of the ear. It produces serous (watery, enzyme-rich) saliva and is innervated by CN IX (glossopharyngeal nerve) via the otic ganglion. Mumps virus specifically targets the parotid gland, causing characteristic jaw swelling.",
+    "visualDescription": "Pixel art face showing the parotid gland (yellow) positioned in front of and below the ear, with its duct (Stensen's duct) opening opposite the upper second molar",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Parotid_gland",
+    "volatile": false,
+    "distractors": ["Submandibular", "Sublingual", "Minor salivary glands", "Lacrimal gland"],
+    "variants": [
+      {
+        "quizQuestion": "The submandibular gland, though not the largest salivary gland, produces the largest volume of saliva. What type of secretion does it produce?",
+        "correctAnswer": "Mixed (serous and mucous)",
+        "explanation": "The submandibular gland produces mixed serous and mucous saliva and accounts for 60–70% of total salivary volume. The smaller sublingual gland produces primarily mucous saliva."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_026",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "1–1.5 liters",
+    "acceptableAlternatives": ["1 to 1.5 liters", "1–1.5 L", "about 1 liter"],
+    "chainThemeId": "salivary_glands",
+    "answerTypePoolId": "measurements",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "How much saliva do the salivary glands collectively produce each day?",
+    "explanation": "The three major salivary gland pairs (parotid, submandibular, sublingual) plus numerous minor glands produce approximately 1–1.5 liters of saliva per day. Saliva contains water, electrolytes, salivary amylase, mucin, lysozyme, IgA, and bicarbonate.",
+    "visualDescription": "Pixel art diagram of all three salivary gland pairs on a head cross-section with a graduated cylinder showing 1–1.5 L daily output",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Salivary_gland",
+    "volatile": false,
+    "distractors": ["100–200 mL", "500 mL", "3–4 liters", "5 liters"],
+    "variants": [
+      {
+        "quizQuestion": "The sublingual gland is the smallest of the three major salivary glands. What type of secretion does it primarily produce?",
+        "correctAnswer": "Mucous",
+        "explanation": "The sublingual gland is predominantly mucous, producing thick, lubricating saliva. It has multiple small ducts (ducts of Rivinus) that open along the sublingual fold on the floor of the mouth."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_027",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Mucosa",
+    "acceptableAlternatives": ["tunica mucosa"],
+    "chainThemeId": "gi_wall",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "The GI tract wall has four layers from inside to outside. What is the innermost layer, containing the epithelium that directly contacts food?",
+    "explanation": "The mucosa is the innermost GI wall layer and consists of three sublayers: an epithelium (absorptive/secretory cells), the lamina propria (loose connective tissue with capillaries and lymphatics), and the muscularis mucosae (thin smooth muscle layer). The mucosa varies greatly by region — simple columnar in the intestines, stratified squamous in the esophagus.",
+    "visualDescription": "Pixel art GI wall cross-section with four labeled layers highlighted in different colors, with the innermost mucosa layer in pink touching the food lumen",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastrointestinal_wall",
+    "volatile": false,
+    "distractors": ["Submucosa", "Muscularis externa", "Serosa"],
+    "variants": [
+      {
+        "quizQuestion": "The submucosa (second layer of the GI wall) contains Meissner's plexus. What is Meissner's plexus also called?",
+        "correctAnswer": "Submucosal plexus",
+        "explanation": "Meissner's plexus (submucosal plexus) is one of two enteric nervous system networks in the GI wall. It primarily regulates secretion and blood flow. Auerbach's plexus (myenteric plexus), in the muscularis externa, primarily controls motility."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_028",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Auerbach's plexus",
+    "acceptableAlternatives": ["myenteric plexus", "Auerbach plexus"],
+    "chainThemeId": "gi_wall",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which nerve plexus sits between the circular and longitudinal smooth muscle layers of the muscularis externa and primarily controls GI motility?",
+    "explanation": "Auerbach's plexus (myenteric plexus) lies between the circular and longitudinal smooth muscle layers of the muscularis externa. It is the major motor control center for GI peristalsis and segmentation. Together with Meissner's plexus, it forms the enteric nervous system — often called the 'second brain,' with more neurons than the spinal cord.",
+    "visualDescription": "Pixel art muscularis externa cross-section showing circular and longitudinal muscle layers with a network of enteric neurons (Auerbach's plexus) highlighted between them",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Myenteric_plexus",
+    "volatile": false,
+    "distractors": ["Meissner's plexus", "Celiac plexus", "Submucosal plexus", "Solar plexus"],
+    "variants": [
+      {
+        "quizQuestion": "The enteric nervous system has more neurons than the spinal cord. What two plexuses make it up?",
+        "correctAnswer": "Meissner's plexus (submucosal) and Auerbach's plexus (myenteric)",
+        "explanation": "The enteric nervous system contains roughly 500 million neurons. Meissner's plexus controls secretion and blood flow; Auerbach's plexus controls motility. Together they can coordinate digestion without any input from the central nervous system."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_029",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Greater omentum",
+    "acceptableAlternatives": ["the greater omentum"],
+    "chainThemeId": "peritoneum",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which peritoneal structure hangs like a 'fatty apron' from the greater curvature of the stomach over the small intestine, and helps contain abdominal infections?",
+    "explanation": "The greater omentum is a large, fat-laden peritoneal fold that drapes from the greater curvature of the stomach down over the intestines. It is highly vascularized and mobile — omental cells migrate to sites of infection or injury to wall off inflammation, earning it the nickname 'the policeman of the abdomen.'",
+    "visualDescription": "Pixel art open abdomen showing the large yellow-green fatty greater omentum hanging as an apron over the coils of small intestine",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Greater_omentum",
+    "volatile": false,
+    "distractors": ["Lesser omentum", "Mesentery", "Falciform ligament", "Mesocolon"],
+    "variants": [
+      {
+        "quizQuestion": "The lesser omentum connects the liver to which structure?",
+        "correctAnswer": "Lesser curvature of the stomach (and duodenum)",
+        "explanation": "The lesser omentum is a double peritoneal fold extending from the lesser curvature of the stomach and the first part of the duodenum up to the undersurface of the liver. It contains the hepatic artery, portal vein, and bile duct in its free edge."
+      }
+    ]
+  },
+  {
+    "id": "ha_digest_030",
+    "subDeckId": "digestive_system",
+    "correctAnswer": "Retroperitoneal",
+    "acceptableAlternatives": ["retroperitoneal organs"],
+    "chainThemeId": "peritoneum",
+    "answerTypePoolId": "anatomical_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Organs that lie behind the peritoneum (not suspended in the peritoneal cavity) are called what?",
+    "explanation": "Retroperitoneal organs lie posterior to the peritoneum and include the kidneys, most of the pancreas, the duodenum (2nd–4th parts), the ascending and descending colon, the aorta, and inferior vena cava. The mnemonic 'SAD PUCKER' helps recall them: Suprarenal glands, Aorta/IVC, Duodenum (2nd–4th), Pancreas (most), Ureters, Colon (ascending/descending), Kidneys, Esophagus (lower), Rectum.",
+    "visualDescription": "Pixel art posterior abdominal wall with retroperitoneal organs labeled behind the parietal peritoneum layer: kidneys, pancreas, duodenum, ascending and descending colon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Retroperitoneal_space",
+    "volatile": false,
+    "distractors": ["Intraperitoneal", "Subperitoneal", "Extraperitoneal", "Mesenteric"],
+    "variants": [
+      {
+        "quizQuestion": "Use the mnemonic 'SAD PUCKER' to recall retroperitoneal organs — which glands (the 'S') are included?",
+        "correctAnswer": "Suprarenal (adrenal) glands",
+        "explanation": "'SAD PUCKER' = Suprarenal glands, Aorta/IVC, Duodenum (2nd–4th parts), Pancreas (most), Ureters, Colon (ascending/descending), Kidneys, Esophagus (lower thoracic), Rectum."
+      }
+    ]
+  }
+]

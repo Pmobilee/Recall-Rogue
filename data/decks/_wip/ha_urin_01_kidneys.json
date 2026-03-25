@@ -1,0 +1,1018 @@
+{
+  "facts": [
+    {
+      "id": "ha_urin_001",
+      "correctAnswer": "retroperitoneal",
+      "acceptableAlternatives": [],
+      "chainThemeId": "kidney_anatomy",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The kidneys sit behind the peritoneum rather than inside the peritoneal cavity. What is the anatomical term for this position?",
+      "explanation": "The kidneys are retroperitoneal — they lie posterior to the peritoneum against the posterior abdominal wall. This distinguishes them from intraperitoneal organs like the stomach and liver. Their retroperitoneal position means they are not covered by peritoneum on their anterior surface and are embedded in perirenal fat.",
+      "visualDescription": "Pixel art cross-section of the abdomen showing the kidneys nestled behind the peritoneal membrane against the posterior abdominal wall, surrounded by fat",
+      "sourceName": "Verified source data — kidney anatomy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
+      "volatile": false,
+      "distractors": ["intraperitoneal", "extraperitoneal", "subperitoneal", "transperitoneal", "preperitoneal", "supraperitoneal", "infraperitoneal", "periperitoneal"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the kidneys are intraperitoneal organs, meaning they are enclosed within the peritoneal cavity.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The kidneys lie ___ to the peritoneum, against the posterior abdominal wall.",
+          "correctAnswer": "posterior",
+          "distractors": ["anterior", "lateral", "inferior"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_002",
+      "correctAnswer": "11 cm × 6 cm × 3 cm",
+      "acceptableAlternatives": ["11 by 6 by 3 cm", "11x6x3 cm"],
+      "chainThemeId": "kidney_anatomy",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "What are the approximate dimensions (length × width × depth) of a single adult human kidney?",
+      "explanation": "Each adult kidney measures approximately 11 cm long, 6 cm wide, and 3 cm deep — roughly the size of a fist — and weighs about 150 g. These dimensions are clinically important: kidneys that are significantly smaller may indicate chronic renal disease, while enlargement can suggest obstruction, polycystic disease, or tumour.",
+      "visualDescription": "Pixel art kidney next to a ruler showing 11 cm length, with cross-section inset showing 6 cm width and 3 cm depth labels",
+      "sourceName": "Verified source data — kidney anatomy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
+      "volatile": false,
+      "distractors": ["8 cm × 4 cm × 2 cm", "15 cm × 8 cm × 4 cm", "6 cm × 3 cm × 2 cm", "13 cm × 7 cm × 4 cm", "9 cm × 5 cm × 2 cm", "11 cm × 4 cm × 2 cm"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "An adult kidney weighs approximately how much?",
+          "correctAnswer": "150 g",
+          "distractors": ["50 g", "300 g", "500 g", "75 g"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_003",
+      "correctAnswer": "right kidney",
+      "acceptableAlternatives": ["the right kidney"],
+      "chainThemeId": "kidney_anatomy",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The liver occupies most of the right upper quadrant of the abdomen. As a result, which kidney sits slightly lower than the other?",
+      "explanation": "The right kidney sits slightly lower than the left because the liver, positioned above and to the right, displaces it inferiorly. This asymmetry is clinically relevant: the lower position of the right kidney makes it slightly easier to palpate on abdominal examination, and explains why the right kidney is more accessible for percutaneous procedures.",
+      "visualDescription": "Pixel art anterior view of abdominal organs: large brown liver in right upper quadrant pushing the right kidney visibly lower than the left kidney",
+      "sourceName": "Verified source data — kidney anatomy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
+      "volatile": false,
+      "distractors": ["left kidney", "both kidneys equally", "neither — they are at the same level"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the left kidney sits lower than the right kidney because of the position of the liver.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_004",
+      "correctAnswer": "hilum",
+      "acceptableAlternatives": ["renal hilum"],
+      "chainThemeId": "kidney_anatomy",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The renal artery, renal vein, and ureter all enter or exit the kidney through a medial indentation. What is this structure called?",
+      "explanation": "The hilum is the concave medial indentation of the kidney through which the renal artery enters, the renal vein exits, and the ureter exits. It is the gateway to the renal sinus — the central cavity containing the renal pelvis, major and minor calyces, blood vessels, lymphatics, and nerves. Imaging of the hilum is essential for assessing renal vascular anatomy before surgery.",
+      "visualDescription": "Pixel art kidney viewed from the front showing the concave medial border with arrows labeling the renal artery (entering), renal vein (exiting), and ureter (exiting) at the hilum",
+      "sourceName": "Verified source data — kidney anatomy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
+      "volatile": false,
+      "distractors": ["cortex", "pelvis", "fornix", "calyx", "sinus", "capsule", "medulla", "papilla"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The renal artery, vein, and ureter pass through the ___ on the medial surface of the kidney.",
+          "correctAnswer": "hilum",
+          "distractors": ["cortex", "medulla", "pelvis"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_005",
+      "correctAnswer": "cortex",
+      "acceptableAlternatives": ["renal cortex"],
+      "chainThemeId": "kidney_anatomy",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Moving from the outer surface of the kidney inward, which zone is encountered first and contains the glomeruli?",
+      "explanation": "The renal cortex is the outermost zone of the kidney parenchyma, lying just beneath the fibrous capsule. It contains the glomeruli, Bowman's capsules, proximal convoluted tubules, and distal convoluted tubules — the filtration and most of the reabsorptive work of the kidney occurs here. The cortex has a granular appearance in cross-section due to the dense packing of glomeruli.",
+      "visualDescription": "Pixel art kidney cross-section with the outer granular cortex highlighted in lighter red, the inner medullary pyramids darker, arrows showing the layer order from capsule inward",
+      "sourceName": "Verified source data — kidney anatomy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
+      "volatile": false,
+      "distractors": ["medulla", "renal pelvis", "fibrous capsule", "renal sinus", "renal pyramid", "collecting duct", "loop of Henle"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the glomeruli are located in the renal medulla.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_006",
+      "correctAnswer": "renal pyramids",
+      "acceptableAlternatives": ["pyramids of Malpighi", "medullary pyramids"],
+      "chainThemeId": "kidney_anatomy",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "The inner zone of the kidney, the medulla, is organized into cone-shaped structures that contain the collecting ducts. What are these structures called?",
+      "explanation": "The renal medulla is composed of 8–18 renal pyramids — cone-shaped structures whose tips (papillae) point toward the renal pelvis. Each pyramid contains the loops of Henle and collecting ducts that drain urine into the minor calyces at the papillae. The striped appearance of the pyramids reflects the parallel arrangement of tubules and blood vessels.",
+      "visualDescription": "Pixel art kidney cross-section highlighting the dark striped medullary pyramids pointing inward, with labels for cortex above and renal pelvis below",
+      "sourceName": "Verified source data — kidney anatomy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Kidney",
+      "volatile": false,
+      "distractors": ["renal columns", "renal papillae", "minor calyces", "renal lobes", "nephrons", "collecting tubules", "vasa recta"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The renal medulla consists of cone-shaped ___ whose tips drain urine into the minor calyces.",
+          "correctAnswer": "renal pyramids",
+          "distractors": ["renal columns", "renal papillae", "collecting ducts"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_007",
+      "correctAnswer": "25%",
+      "acceptableAlternatives": ["one quarter", "25 percent"],
+      "chainThemeId": "kidney_anatomy",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Despite making up less than 1% of body weight, the kidneys receive a remarkably large share of cardiac output at rest. What percentage of cardiac output goes to the kidneys?",
+      "explanation": "At rest, the kidneys receive approximately 25% of cardiac output — about 1.25 L of blood per minute — despite weighing only about 300 g combined. This enormous blood flow is necessary to filter the entire blood volume roughly 300 times per day. This high flow rate also makes the kidneys particularly vulnerable to ischaemic injury during shock or hypotension.",
+      "visualDescription": "Pixel art infographic showing a heart with 4 arrows of different sizes: kidneys getting a thick 25% arrow, brain 20%, other organs sharing the rest",
+      "sourceName": "Verified source data — kidney anatomy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Renal_circulation",
+      "volatile": false,
+      "distractors": ["5%", "10%", "15%", "40%", "50%", "8%", "20%", "35%"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the kidneys receive approximately 25% of the heart's resting cardiac output.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The kidneys receive approximately ___% of resting cardiac output — about 1.25 L of blood per minute.",
+          "correctAnswer": "25",
+          "distractors": ["5", "10", "50"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_008",
+      "correctAnswer": "1 million",
+      "acceptableAlternatives": ["~1 million", "approximately 1 million", "one million"],
+      "chainThemeId": "nephron",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Each kidney contains a vast number of functional filtering units. Approximately how many nephrons does a single adult kidney contain?",
+      "explanation": "Each kidney contains approximately 1 million nephrons — the functional units responsible for filtration, reabsorption, secretion, and excretion. Humans are born with their full complement of nephrons; they cannot regenerate. This is why chronic kidney disease is progressive: once nephrons are lost to disease, injury, or ageing, the remaining nephrons must compensate by increasing their workload.",
+      "visualDescription": "Pixel art kidney with a zoomed inset showing a single coiled nephron in bright blue, surrounded by thousands of tiny dot-nephrons filling the cortex",
+      "sourceName": "Verified source data — nephron structure",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nephron",
+      "volatile": false,
+      "distractors": ["10,000", "100,000", "10 million", "500,000", "5 million", "50,000", "2 million"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: humans can regenerate nephrons lost to kidney disease.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_009",
+      "correctAnswer": "renal corpuscle",
+      "acceptableAlternatives": ["malpighian corpuscle"],
+      "chainThemeId": "nephron",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Each nephron begins with a filtration unit consisting of a glomerulus enclosed within a Bowman's capsule. What is this combined structure called?",
+      "explanation": "The renal corpuscle is the filtration unit of the nephron, consisting of the glomerulus (a tuft of fenestrated capillaries) surrounded by Bowman's capsule (a double-walled epithelial cup). Blood enters via the afferent arteriole, is filtered under pressure, and the ultrafiltrate enters the capsular space before flowing into the proximal convoluted tubule. The renal corpuscle is located in the cortex.",
+      "visualDescription": "Pixel art diagram of a renal corpuscle: round Bowman's capsule containing the tangled glomerular capillary tuft, afferent arteriole entering and efferent arteriole leaving",
+      "sourceName": "Verified source data — nephron structure",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Renal_corpuscle",
+      "volatile": false,
+      "distractors": ["juxtaglomerular apparatus", "loop of Henle", "vasa recta", "macula densa", "collecting duct", "proximal tubule", "podocyte layer"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ___ consists of the glomerulus plus Bowman's capsule and is the site of blood filtration in the nephron.",
+          "correctAnswer": "renal corpuscle",
+          "distractors": ["loop of Henle", "proximal tubule", "vasa recta"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_010",
+      "correctAnswer": "125 mL/min",
+      "acceptableAlternatives": ["~125 mL/min", "approximately 125 mL per minute"],
+      "chainThemeId": "glomerular_filtration",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The glomerular filtration rate (GFR) is the volume of fluid filtered from blood into Bowman's capsule each minute. What is the normal GFR in a healthy adult?",
+      "explanation": "The normal GFR is approximately 125 mL/min, which means roughly 180 litres of filtrate are produced every day. Since the body only excretes 1–2 L of urine per day, about 99% of the filtrate must be reabsorbed by the tubules. GFR is the primary clinical measure of kidney function — a falling GFR indicates progressive kidney disease. It is estimated clinically using serum creatinine.",
+      "visualDescription": "Pixel art diagram showing blood flowing into glomerulus, filtrate dripping out at rate of 125 mL per minute, a gauge showing GFR with green zone at 125 mL/min",
+      "sourceName": "Verified source data — glomerular filtration",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Glomerular_filtration_rate",
+      "volatile": false,
+      "distractors": ["10 mL/min", "50 mL/min", "250 mL/min", "500 mL/min", "75 mL/min", "200 mL/min", "30 mL/min", "1000 mL/min"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "At a GFR of 125 mL/min, how many litres of filtrate does the kidney produce per day?",
+          "correctAnswer": "180 L",
+          "distractors": ["1–2 L", "50 L", "300 L", "20 L"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: the normal GFR produces about 180 litres of filtrate per day.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_011",
+      "correctAnswer": "brush border",
+      "acceptableAlternatives": ["microvilli", "brush border (microvilli)"],
+      "chainThemeId": "tubular_reabsorption",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The proximal convoluted tubule (PCT) is the primary site of reabsorption in the nephron. What feature of PCT cells dramatically increases their absorptive surface area?",
+      "explanation": "PCT cells are lined with a brush border — a dense array of microvilli on their apical surface facing the tubular lumen. This dramatically increases the surface area available for reabsorption. The PCT reabsorbs approximately 65% of the filtrate, including all filtered glucose and amino acids, most sodium, water, bicarbonate, potassium, and phosphate. The brush border also contains enzymes for further digestion of small peptides.",
+      "visualDescription": "Pixel art cross-section of a PCT tube showing columnar cells with a dense fringe of microvilli on the luminal surface, Na+ and glucose transporters labeled",
+      "sourceName": "Verified source data — tubular reabsorption",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Proximal_tubule",
+      "volatile": false,
+      "distractors": ["cilia", "flagella", "basal folds", "gap junctions", "tight junctions", "stereocilia", "lamellipodia"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The PCT's apical surface is covered in a ___, which greatly increases its surface area for reabsorption.",
+          "correctAnswer": "brush border",
+          "distractors": ["basement membrane", "tight junction belt", "glycocalyx"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_012",
+      "correctAnswer": "65%",
+      "acceptableAlternatives": ["~65%", "approximately 65 percent"],
+      "chainThemeId": "tubular_reabsorption",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The proximal convoluted tubule handles the bulk of filtrate reabsorption. Approximately what percentage of the filtered load does it reabsorb?",
+      "explanation": "The PCT reabsorbs approximately 65% of the filtered water and sodium, and 100% of filtered glucose and amino acids under normal conditions. This bulk reabsorption occurs via sodium–glucose co-transporters (SGLT2) and Na+/H+ exchangers on the brush border, driven by the Na+/K+-ATPase pump on the basolateral membrane. The PCT cannot concentrate urine — it reabsorbs solutes and water in proportion.",
+      "visualDescription": "Pixel art nephron diagram with '65%' label and downward arrows on the PCT segment, showing filtered load being dramatically reduced before reaching the loop of Henle",
+      "sourceName": "Verified source data — tubular reabsorption",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Proximal_tubule",
+      "volatile": false,
+      "distractors": ["25%", "10%", "80%", "95%", "50%", "40%", "15%"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the PCT reabsorbs virtually all filtered glucose under normal blood glucose levels.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_013",
+      "correctAnswer": "descending limb",
+      "acceptableAlternatives": ["descending thin limb", "thin descending limb"],
+      "chainThemeId": "loop_of_henle",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The loop of Henle has two limbs with opposite properties. Which limb is thin-walled, permeable to water, and concentrates the filtrate as it descends into the hypertonic medulla?",
+      "explanation": "The descending limb of the loop of Henle is thin and freely permeable to water but not to solutes. As the filtrate descends into the increasingly hypertonic renal medulla, water is drawn out by osmosis, concentrating the filtrate. By the hairpin turn at the bottom of the loop, the filtrate has become highly concentrated. This is the first step in the countercurrent multiplier mechanism that allows the kidney to produce concentrated urine.",
+      "visualDescription": "Pixel art loop of Henle diagram: thin descending limb with water molecules exiting into the hypertonic medulla (shown in orange gradient), filtrate arrow pointing downward with increasing concentration",
+      "sourceName": "Verified source data — loop of Henle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Loop_of_Henle",
+      "volatile": false,
+      "distractors": ["ascending limb", "thick ascending limb", "proximal convoluted tubule", "distal convoluted tubule", "collecting duct", "Bowman's capsule"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the descending limb of the loop of Henle is impermeable to water.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_014",
+      "correctAnswer": "ascending limb",
+      "acceptableAlternatives": ["thick ascending limb", "ascending thick limb"],
+      "chainThemeId": "loop_of_henle",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In the loop of Henle, one limb is thick-walled, impermeable to water, and actively pumps Na+, K+, and Cl- into the medullary interstitium. Which limb is this?",
+      "explanation": "The thick ascending limb is impermeable to water but actively transports Na+, K+, and Cl- out of the tubular lumen into the medullary interstitium via the NKCC2 co-transporter. This dilutes the filtrate while building the high-osmolarity medullary gradient needed to concentrate urine later in the collecting duct. Loop diuretics (furosemide) block NKCC2, preventing concentration of the medullary gradient and causing profound diuresis.",
+      "visualDescription": "Pixel art loop of Henle showing the thick ascending limb with NKCC2 pump icons moving Na+/K+/Cl- outward, water molecules blocked, filtrate arrow pointing upward becoming dilute",
+      "sourceName": "Verified source data — loop of Henle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Loop_of_Henle",
+      "volatile": false,
+      "distractors": ["descending limb", "proximal convoluted tubule", "distal convoluted tubule", "collecting duct", "thin descending limb"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The thick ___ limb of the loop of Henle actively pumps Na+/K+/Cl- out but is impermeable to water, diluting the filtrate.",
+          "correctAnswer": "ascending",
+          "distractors": ["descending", "proximal", "distal"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_015",
+      "correctAnswer": "countercurrent multiplier",
+      "acceptableAlternatives": ["countercurrent multiplication", "countercurrent mechanism"],
+      "chainThemeId": "loop_of_henle",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The loop of Henle creates a progressively increasing osmotic gradient in the renal medulla by flowing in opposite directions in its two limbs. What is this mechanism called?",
+      "explanation": "The countercurrent multiplier is the mechanism by which the loop of Henle creates a high-osmolarity gradient in the renal medulla — up to ~1200 mOsm/kg at the papillary tip, compared to ~300 mOsm/kg in plasma. The descending limb loses water (concentrating filtrate), the ascending limb pumps out solutes (diluting filtrate and hyperosmotising the medulla). This gradient is then exploited by the collecting duct under ADH influence to produce concentrated urine.",
+      "visualDescription": "Pixel art diagram of loop of Henle with gradient shading in the surrounding medulla from light (isotonic) at the cortex to very dark (hypertonic) at the papilla, countercurrent flow arrows labeled",
+      "sourceName": "Verified source data — loop of Henle",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Countercurrent_exchange",
+      "volatile": false,
+      "distractors": ["countercurrent exchange", "tubuloglomerular feedback", "Starling mechanism", "pressure natriuresis", "osmotic gradient pump", "medullary recycling"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the medullary osmotic gradient created by the loop of Henle can reach ~1200 mOsm/kg at the papillary tip.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_016",
+      "correctAnswer": "aldosterone",
+      "acceptableAlternatives": [],
+      "chainThemeId": "tubular_reabsorption",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The distal convoluted tubule fine-tunes sodium reabsorption under hormonal control. Which hormone acts on the DCT to increase Na+ reabsorption?",
+      "explanation": "Aldosterone, secreted by the adrenal cortex (zona glomerulosa), acts on the DCT and collecting duct to increase the expression of Na+/K+-ATPase and epithelial sodium channels (ENaC) on principal cells. This increases Na+ reabsorption (and water follows osmotically) while increasing K+ secretion. Aldosterone is the final effector of the RAAS axis and is the primary regulator of long-term sodium balance and blood pressure.",
+      "visualDescription": "Pixel art DCT cell with aldosterone molecule binding a nuclear receptor, arrows showing Na+ moving inward and K+ moving outward into the tubule lumen",
+      "sourceName": "Verified source data — DCT hormonal regulation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Aldosterone",
+      "volatile": false,
+      "distractors": ["ADH", "ANP", "PTH", "cortisol", "insulin", "glucagon", "renin", "angiotensin II"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Aldosterone increases Na+ reabsorption in the DCT — but what ion does it simultaneously cause to be secreted?",
+          "correctAnswer": "K+",
+          "distractors": ["Ca²+", "Cl-", "HCO₃-", "Mg²+"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: aldosterone acts on the DCT to increase Na+ reabsorption and K+ secretion.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_017",
+      "correctAnswer": "PTH",
+      "acceptableAlternatives": ["parathyroid hormone"],
+      "chainThemeId": "tubular_reabsorption",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Which hormone acts on the distal convoluted tubule to increase calcium (Ca²+) reabsorption?",
+      "explanation": "Parathyroid hormone (PTH), secreted by the parathyroid glands in response to low plasma Ca²+, acts on the DCT to upregulate TRPV5 calcium channels, increasing Ca²+ reabsorption. PTH simultaneously acts on bone (releasing Ca²+) and the kidney (activating vitamin D via 1α-hydroxylase in the PCT), creating a coordinated response to restore plasma calcium. Hypoparathyroidism results in hypocalcaemia with tetany.",
+      "visualDescription": "Pixel art DCT cell with PTH molecule binding receptor, Ca²+ ions moving from tubule lumen into the cell, with a small parathyroid gland inset in the corner",
+      "sourceName": "Verified source data — DCT hormonal regulation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Parathyroid_hormone",
+      "volatile": false,
+      "distractors": ["aldosterone", "ADH", "calcitonin", "ANP", "cortisol", "insulin", "renin"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: PTH acts on the DCT to promote Ca²+ reabsorption.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_018",
+      "correctAnswer": "ADH",
+      "acceptableAlternatives": ["antidiuretic hormone", "vasopressin", "arginine vasopressin", "AVP"],
+      "chainThemeId": "hormonal_regulation",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Water reabsorption in the collecting duct is controlled by a hormone from the posterior pituitary that inserts aquaporin channels into collecting duct cells. What is this hormone?",
+      "explanation": "Antidiuretic hormone (ADH), also called vasopressin, is released from the posterior pituitary when blood osmolarity rises or blood volume falls. ADH binds V2 receptors on collecting duct principal cells, triggering insertion of aquaporin-2 (AQP2) channels into the apical membrane. This makes the collecting duct permeable to water, which is reabsorbed into the hypertonic medullary interstitium, producing concentrated urine. Without ADH, the collecting duct is impermeable and large volumes of dilute urine are produced.",
+      "visualDescription": "Pixel art collecting duct cell: ADH binding receptor on one side, aquaporin channels appearing on the apical membrane, water molecules rushing through into the hypertonic interstitium below",
+      "sourceName": "Verified source data — collecting duct / ADH",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Antidiuretic_hormone",
+      "volatile": false,
+      "distractors": ["aldosterone", "ANP", "renin", "PTH", "cortisol", "oxytocin", "erythropoietin"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "ADH inserts which specific water channels into the collecting duct apical membrane to allow water reabsorption?",
+          "correctAnswer": "aquaporin-2",
+          "distractors": ["aquaporin-1", "SGLT2", "NKCC2", "ENaC"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: without ADH, the collecting duct is impermeable to water and large volumes of dilute urine are produced.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_019",
+      "correctAnswer": "diabetes insipidus",
+      "acceptableAlternatives": ["DI"],
+      "chainThemeId": "hormonal_regulation",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "A deficiency of ADH (vasopressin) causes a condition where the kidneys cannot reabsorb water in the collecting duct, producing massive volumes of dilute urine. What is this condition called?",
+      "explanation": "Diabetes insipidus (DI) results from ADH deficiency (central DI) or resistance to ADH at the collecting duct (nephrogenic DI). Patients produce 3–20+ L of dilute urine per day (polyuria) and experience intense thirst (polydipsia). Despite the name, DI has nothing to do with blood sugar — the 'insipid' refers to the tasteless quality of the dilute urine, in contrast to the sweet urine of diabetes mellitus.",
+      "visualDescription": "Pixel art patient surrounded by many full water glasses, a graph showing urine output spiking to 20L/day, with 'NO ADH' label and a broken aquaporin channel icon",
+      "sourceName": "Verified source data — ADH / diabetes insipidus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Diabetes_insipidus",
+      "volatile": false,
+      "distractors": ["diabetes mellitus", "SIADH", "Addison's disease", "nephrotic syndrome", "Cushing's syndrome", "Conn's syndrome", "renal tubular acidosis"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: diabetes insipidus is caused by excess blood sugar, just like diabetes mellitus.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_020",
+      "correctAnswer": "renin",
+      "acceptableAlternatives": [],
+      "chainThemeId": "raas",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The RAAS begins when juxtaglomerular cells in the kidney detect low blood pressure. What enzyme do they release to start the cascade?",
+      "explanation": "Juxtaglomerular (JG) cells are modified smooth muscle cells in the wall of the afferent arteriole. When they detect reduced stretch (low blood pressure) or when the macula densa senses reduced NaCl delivery, they release renin — an aspartyl protease. Renin cleaves angiotensinogen (a protein produced by the liver) into angiotensin I, initiating the RAAS cascade that ultimately raises blood pressure.",
+      "visualDescription": "Pixel art juxtaglomerular cell releasing renin molecules (labeled R) into the bloodstream, with a low blood pressure gauge in the background and the afferent arteriole wall surrounding the cell",
+      "sourceName": "Verified source data — RAAS",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Renin%E2%80%93angiotensin_system",
+      "volatile": false,
+      "distractors": ["aldosterone", "ACE", "angiotensin I", "angiotensin II", "ADH", "ANP", "erythropoietin"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Juxtaglomerular cells detect low blood pressure and release ___, the enzyme that starts the RAAS cascade.",
+          "correctAnswer": "renin",
+          "distractors": ["aldosterone", "ACE", "angiotensin II"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_021",
+      "correctAnswer": "angiotensinogen",
+      "acceptableAlternatives": [],
+      "chainThemeId": "raas",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Renin does not directly raise blood pressure — it cleaves a precursor protein made by the liver into angiotensin I. What is this liver-produced precursor called?",
+      "explanation": "Angiotensinogen is an alpha-2 globulin produced constitutively by the liver and released into the bloodstream. Renin cleaves angiotensinogen into the decapeptide angiotensin I, which is then converted by angiotensin-converting enzyme (ACE) in the pulmonary vasculature to the active octapeptide angiotensin II. ACE inhibitors (e.g., lisinopril) lower blood pressure by blocking this conversion step.",
+      "visualDescription": "Pixel art RAAS flowchart: liver icon producing angiotensinogen → renin arrow cleaves it → angiotensin I → ACE (lungs icon) → angiotensin II",
+      "sourceName": "Verified source data — RAAS",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Renin%E2%80%93angiotensin_system",
+      "volatile": false,
+      "distractors": ["angiotensin I", "angiotensin II", "aldosterone", "bradykinin", "kininogen", "fibrinogen", "plasminogen"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In the RAAS, renin cleaves angiotensinogen into which inactive precursor?",
+          "correctAnswer": "angiotensin I",
+          "distractors": ["angiotensin II", "aldosterone", "bradykinin"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_022",
+      "correctAnswer": "lungs",
+      "acceptableAlternatives": ["pulmonary vasculature", "pulmonary endothelium", "pulmonary capillaries"],
+      "chainThemeId": "raas",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Angiotensin-converting enzyme (ACE) converts angiotensin I to the active angiotensin II. In which organ does this conversion primarily occur?",
+      "explanation": "ACE is found on the luminal surface of endothelial cells throughout the vasculature, but the conversion of angiotensin I to angiotensin II occurs predominantly in the pulmonary vasculature of the lungs, which receives the entire cardiac output. This is why ACE inhibitors are such effective antihypertensives — they block this key conversion step. The lungs also inactivate bradykinin via ACE, which is why ACE inhibitor-induced cough (from bradykinin accumulation) is a well-known side effect.",
+      "visualDescription": "Pixel art lung with ACE enzyme icons on capillary endothelium converting angiotensin I (labeled ANG I) to angiotensin II (ANG II), blood flowing through",
+      "sourceName": "Verified source data — RAAS",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Angiotensin-converting_enzyme",
+      "volatile": false,
+      "distractors": ["liver", "kidney", "adrenal gland", "heart", "spleen", "pancreas", "brain"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: ACE inhibitors lower blood pressure by blocking conversion of angiotensin I to angiotensin II.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_023",
+      "correctAnswer": "vasoconstriction and aldosterone release",
+      "acceptableAlternatives": ["vasoconstriction + aldosterone release", "raises BP and stimulates aldosterone"],
+      "chainThemeId": "raas",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Angiotensin II is the effector of the RAAS. What are its two main actions that raise blood pressure?",
+      "explanation": "Angiotensin II raises blood pressure through two complementary mechanisms: (1) direct vasoconstriction of arterioles (increasing peripheral resistance immediately), and (2) stimulation of aldosterone secretion from the adrenal cortex (increasing Na+ and water reabsorption over hours). Together these restore blood volume and pressure. Angiotensin II also stimulates thirst and ADH release, further conserving water.",
+      "visualDescription": "Pixel art angiotensin II molecule with two arrows: one pointing to constricted blood vessel labeled 'vasoconstriction', another pointing to adrenal gland releasing aldosterone",
+      "sourceName": "Verified source data — RAAS",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Angiotensin_II",
+      "volatile": false,
+      "distractors": ["vasodilation and ANP release", "vasoconstriction and ANP release", "vasodilation and aldosterone release", "vasoconstriction and ADH suppression", "Na+ excretion and K+ retention"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Angiotensin II raises blood pressure by causing ___ and stimulating aldosterone release from the adrenal cortex.",
+          "correctAnswer": "vasoconstriction",
+          "distractors": ["vasodilation", "diuresis", "natriuresis"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_024",
+      "correctAnswer": "ANP",
+      "acceptableAlternatives": ["atrial natriuretic peptide", "atrial natriuretic factor", "ANF"],
+      "chainThemeId": "hormonal_regulation",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "When blood volume is too high, atrial myocytes stretch and release a hormone that promotes sodium excretion and opposes RAAS. What is this hormone?",
+      "explanation": "Atrial natriuretic peptide (ANP) is secreted by atrial cardiomyocytes in response to atrial stretch from high blood volume. ANP promotes Na+ excretion (natriuresis) by the kidneys — water follows, reducing blood volume and pressure. ANP also inhibits renin and aldosterone release, directly opposing the RAAS. It represents a cardiac-renal feedback loop: the heart monitors volume status and signals the kidney to correct it.",
+      "visualDescription": "Pixel art heart atrium stretched by high blood volume releasing ANP molecules, arrows pointing to kidney showing Na+ and water excretion, and a crossed-out RAAS pathway",
+      "sourceName": "Verified source data — ANP / hormonal regulation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Atrial_natriuretic_peptide",
+      "volatile": false,
+      "distractors": ["ADH", "aldosterone", "BNP", "renin", "angiotensin II", "erythropoietin", "calcitonin"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: ANP is secreted by the atria of the heart in response to high blood volume and promotes sodium excretion.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "reverse",
+          "question": "ANP promotes natriuresis — meaning it causes the kidneys to excrete more of which ion?",
+          "correctAnswer": "sodium (Na+)",
+          "distractors": ["potassium (K+)", "calcium (Ca²+)", "bicarbonate (HCO₃-)"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_025",
+      "correctAnswer": "erythropoietin",
+      "acceptableAlternatives": ["EPO"],
+      "chainThemeId": "hormonal_regulation",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "In response to low oxygen levels (hypoxia), the kidneys produce a hormone that travels to bone marrow to stimulate red blood cell production. What is this hormone?",
+      "explanation": "Erythropoietin (EPO) is produced by peritubular interstitial fibroblasts in the renal cortex in response to hypoxia. EPO stimulates erythropoiesis — RBC production in bone marrow — increasing oxygen-carrying capacity. Chronic kidney disease (CKD) patients develop anaemia partly because diseased kidneys produce insufficient EPO; recombinant EPO is used as treatment. EPO is also infamously misused as a performance-enhancing drug in endurance sports.",
+      "visualDescription": "Pixel art kidney releasing EPO molecules that travel via bloodstream to bone marrow, where new red blood cells are being produced in increasing numbers",
+      "sourceName": "Verified source data — EPO / hormonal regulation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Erythropoietin",
+      "volatile": false,
+      "distractors": ["aldosterone", "ADH", "renin", "ANP", "thrombopoietin", "G-CSF", "insulin"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: chronic kidney disease can cause anaemia because damaged kidneys produce less erythropoietin.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_026",
+      "correctAnswer": "25–30 cm",
+      "acceptableAlternatives": ["25 to 30 cm", "~25–30 cm", "approximately 25–30 cm"],
+      "chainThemeId": "ureters_bladder",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 5,
+      "quizQuestion": "Each ureter transports urine from the renal pelvis to the bladder via peristalsis. What is the approximate length of each ureter?",
+      "explanation": "Each ureter is approximately 25–30 cm long and 3–4 mm in diameter. They run retroperitoneally from the renal pelvis, cross anterior to the psoas muscle, pass over the pelvic brim (crossing the iliac vessels), and enter the posterolateral wall of the bladder at an oblique angle. This oblique entry creates a valve-like mechanism that prevents vesicoureteral reflux (backflow of urine into the ureter during bladder contraction).",
+      "visualDescription": "Pixel art urinary tract showing the right ureter running from kidney to bladder, with a ruler alongside indicating 25–30 cm length, the oblique bladder entry highlighted",
+      "sourceName": "Verified source data — ureters",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ureter",
+      "volatile": false,
+      "distractors": ["5–10 cm", "10–15 cm", "40–50 cm", "60–70 cm", "15–20 cm", "50–60 cm"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the ureters enter the bladder at a right angle, which allows the bladder to squeeze urine back up if too full.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_027",
+      "correctAnswer": "3",
+      "acceptableAlternatives": ["three", "3 sites"],
+      "chainThemeId": "ureters_bladder",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Kidney stones passing down the ureter are most likely to lodge at narrow sites. How many sites of physiological narrowing are there in the ureter?",
+      "explanation": "There are 3 sites of physiological narrowing in the ureter where kidney stones most commonly become lodged: (1) the ureteropelvic junction (UPJ) — where the renal pelvis meets the ureter; (2) the crossing of the iliac vessels at the pelvic brim; and (3) the ureterovesical junction (UVJ) — where the ureter enters the bladder. The UVJ is the narrowest and most common site for stones to obstruct, causing severe colicky flank pain (ureteric colic).",
+      "visualDescription": "Pixel art ureter with three red X marks at the ureteropelvic junction, iliac vessel crossing, and ureterovesical junction, with a kidney stone icon at the UVJ",
+      "sourceName": "Verified source data — ureters / kidney stones",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ureter",
+      "volatile": false,
+      "distractors": ["1", "2", "4", "5", "6"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "There are ___ sites of physiological narrowing in the ureter where kidney stones most commonly lodge.",
+          "correctAnswer": "3",
+          "distractors": ["2", "4", "1"]
+        },
+        {
+          "type": "reverse",
+          "question": "The narrowest and most common site for kidney stones to obstruct the ureter is which junction?",
+          "correctAnswer": "ureterovesical junction",
+          "distractors": ["ureteropelvic junction", "iliac vessel crossing", "bladder neck"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_028",
+      "correctAnswer": "500 mL",
+      "acceptableAlternatives": ["~500 mL", "approximately 500 millilitres"],
+      "chainThemeId": "ureters_bladder",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The urinary bladder is a hollow muscular reservoir. What is its approximate functional capacity in an adult?",
+      "explanation": "The adult bladder has a capacity of approximately 500 mL, although the first urge to urinate typically occurs at 200–300 mL. The wall of the bladder contains the detrusor muscle — three interlacing layers of smooth muscle that contract to expel urine during micturition. The bladder can be overstretched beyond 500 mL in conditions such as urinary retention, risking detrusor damage.",
+      "visualDescription": "Pixel art bladder with a gauge showing capacity at 500 mL, a 'first urge' marker at 200–300 mL, and the three-layer detrusor muscle walls labeled",
+      "sourceName": "Verified source data — bladder",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Urinary_bladder",
+      "volatile": false,
+      "distractors": ["50 mL", "100 mL", "1000 mL", "2000 mL", "200 mL", "1500 mL", "250 mL"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The urge to urinate typically begins at what volume in the adult bladder?",
+          "correctAnswer": "200–300 mL",
+          "distractors": ["500 mL", "50 mL", "1000 mL"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_029",
+      "correctAnswer": "trigone",
+      "acceptableAlternatives": ["vesical trigone"],
+      "chainThemeId": "ureters_bladder",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The floor of the bladder contains a triangular smooth region defined by the two ureteral openings and the internal urethral orifice. What is this area called?",
+      "explanation": "The trigone is the triangular region of the bladder base (fundus) bounded by the two ureteral openings superolaterally and the internal urethral orifice inferiorly. Unlike the rest of the bladder mucosa, the trigone is smooth rather than rugated and is clinically important: it is the most common site for bladder tumours and cystitis, and its anatomical landmarks guide cystoscopy and ureteric catheterisation.",
+      "visualDescription": "Pixel art bladder interior view from above, showing the triangular trigone region highlighted at the base, two ureteral openings at the top corners and the urethral opening at the bottom point",
+      "sourceName": "Verified source data — bladder / trigone",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Trigone_of_urinary_bladder",
+      "volatile": false,
+      "distractors": ["detrusor", "dome", "neck", "fundus", "uvula vesicae", "rugae", "apex"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the trigone is the triangular smooth region of the bladder floor between the two ureteral openings and the internal urethral orifice.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_030",
+      "correctAnswer": "detrusor muscle",
+      "acceptableAlternatives": ["detrusor"],
+      "chainThemeId": "ureters_bladder",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The bladder wall contains a specialised smooth muscle arranged in three interlacing layers that contract during micturition to expel urine. What is this muscle called?",
+      "explanation": "The detrusor muscle makes up the thick muscular wall of the urinary bladder, consisting of three interlacing layers of smooth muscle (inner longitudinal, middle circular, outer longitudinal). During micturition, parasympathetic stimulation (via pelvic nerves, S2–S4) causes detrusor contraction while the internal urethral sphincter relaxes, expelling urine. Detrusor overactivity causes urgency incontinence; detrusor underactivity causes urinary retention.",
+      "visualDescription": "Pixel art bladder cross-section showing the three interlacing smooth muscle layers of the detrusor, with parasympathetic nerve fiber labeled and contraction arrows",
+      "sourceName": "Verified source data — bladder / detrusor",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Detrusor_urinae_muscle",
+      "volatile": false,
+      "distractors": ["sphincter urethrae", "trigone muscle", "rugae", "pubococcygeus", "levator ani", "bulbospongiosus"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The ___ muscle forms the three-layered smooth muscle wall of the bladder and contracts during micturition.",
+          "correctAnswer": "detrusor",
+          "distractors": ["sphincter urethrae", "levator ani", "pubococcygeus"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_031",
+      "correctAnswer": "~20 cm",
+      "acceptableAlternatives": ["20 cm", "approximately 20 cm"],
+      "chainThemeId": "ureters_bladder",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The male urethra has three segments (prostatic, membranous, spongy) and is much longer than the female urethra. What is its approximate total length?",
+      "explanation": "The male urethra is approximately 20 cm long and is divided into: the prostatic urethra (~3 cm, passes through the prostate), the membranous urethra (~2 cm, passes through the external urethral sphincter), and the spongy (penile) urethra (~15 cm, runs through the corpus spongiosum). The length of the male urethra means urinary tract infections are less common in males than females, but urethral catheterisation is more challenging.",
+      "visualDescription": "Pixel art male pelvis cross-section showing the three urethra segments labeled with their lengths: prostatic, membranous, and spongy, total length indicated as ~20 cm",
+      "sourceName": "Verified source data — male urethra",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Male_urethra",
+      "volatile": false,
+      "distractors": ["4 cm", "10 cm", "35 cm", "5 cm", "50 cm", "8 cm"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What are the three named segments of the male urethra, in order from bladder to external opening?",
+          "correctAnswer": "prostatic, membranous, spongy (penile)",
+          "distractors": ["prostatic, penile, membranous", "membranous, prostatic, spongy", "bulbar, membranous, penile"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_032",
+      "correctAnswer": "~4 cm",
+      "acceptableAlternatives": ["4 cm", "approximately 4 cm"],
+      "chainThemeId": "ureters_bladder",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The female urethra is dramatically shorter than the male's, contributing to a higher risk of urinary tract infections in women. How long is the female urethra?",
+      "explanation": "The female urethra is only approximately 4 cm long, running from the bladder neck to the external urethral orifice (located between the clitoris and vaginal opening). This short length means bacteria from the perineum can reach the bladder far more easily than in males, explaining why UTIs are ~50× more common in women. The shorter urethra also makes bladder catheterisation technically simpler in women.",
+      "visualDescription": "Pixel art side-by-side comparison: female urethra labeled 4 cm vs male urethra labeled 20 cm, UTI bacteria icons crowding the short female urethra",
+      "sourceName": "Verified source data — female urethra",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Female_urethra",
+      "volatile": false,
+      "distractors": ["1 cm", "10 cm", "20 cm", "15 cm", "8 cm", "2 cm"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the female urethra is shorter than the male urethra, which contributes to a higher UTI risk in women.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_033",
+      "correctAnswer": "sodium (Na+)",
+      "acceptableAlternatives": ["Na+", "sodium", "sodium ions"],
+      "chainThemeId": "electrolyte_balance",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Electrolyte balance is a core kidney function. Which ion is the most abundant in the extracellular fluid and is primarily regulated by aldosterone and ANP?",
+      "explanation": "Sodium (Na+) is the most abundant extracellular cation and the primary determinant of extracellular fluid volume and plasma osmolarity. It is regulated by aldosterone (promotes reabsorption in the DCT/collecting duct) and ANP (promotes excretion). Because water follows Na+ osmotically, sodium balance directly controls blood volume and blood pressure. A 1 mmol/L change in plasma Na+ can have profound neurological consequences.",
+      "visualDescription": "Pixel art cell diagram showing Na+ ions crowded outside a cell (extracellular space) and K+ ions inside, labels pointing to each compartment",
+      "sourceName": "Verified source data — electrolyte balance",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sodium_in_biology",
+      "volatile": false,
+      "distractors": ["potassium (K+)", "calcium (Ca²+)", "magnesium (Mg²+)", "chloride (Cl-)", "bicarbonate (HCO₃-)", "phosphate (PO₄³-)"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: sodium is the most abundant cation in the extracellular fluid.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_034",
+      "correctAnswer": "potassium (K+)",
+      "acceptableAlternatives": ["K+", "potassium"],
+      "chainThemeId": "electrolyte_balance",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which ion is the most abundant intracellular cation and is regulated by aldosterone-mediated secretion in the DCT?",
+      "explanation": "Potassium (K+) is the most abundant intracellular cation, with ~98% of total body K+ inside cells. Aldosterone promotes K+ secretion in the DCT/collecting duct in exchange for Na+ reabsorption. Hyperkalemia (elevated plasma K+) is a dangerous complication of kidney failure that can cause potentially fatal cardiac arrhythmias by depolarising cardiac myocytes. This is why monitoring serum K+ is essential in renal patients.",
+      "visualDescription": "Pixel art cell diagram with K+ ions densely packed inside and few outside, with a DCT cell inset showing aldosterone-driven K+ secretion into the tubule lumen",
+      "sourceName": "Verified source data — electrolyte balance",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Potassium_in_biology",
+      "volatile": false,
+      "distractors": ["sodium (Na+)", "calcium (Ca²+)", "magnesium (Mg²+)", "chloride (Cl-)", "hydrogen (H+)"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hyperkalemia — elevated plasma K+ — can cause which dangerous cardiac complication?",
+          "correctAnswer": "arrhythmias",
+          "distractors": ["hypertension", "heart failure", "pericarditis", "bradycardia only"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_035",
+      "correctAnswer": "7.35–7.45",
+      "acceptableAlternatives": ["7.35 to 7.45", "between 7.35 and 7.45"],
+      "chainThemeId": "electrolyte_balance",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "The kidneys play a central role in acid-base balance by excreting H+ and reabsorbing bicarbonate. What is the normal pH range of arterial blood?",
+      "explanation": "Normal arterial blood pH is 7.35–7.45 — a narrow range that must be maintained precisely. The kidneys contribute to acid-base balance by excreting H+ (via the intercalated cells of the collecting duct) and reabsorbing filtered HCO₃⁻ (bicarbonate) in the PCT. In acidosis (pH < 7.35), kidneys excrete more H+ and reabsorb more HCO₃⁻; in alkalosis (pH > 7.45), the opposite occurs. This renal compensation is slower than respiratory compensation but more powerful.",
+      "visualDescription": "Pixel art pH scale from 7.0 to 7.8, with a green zone highlighting 7.35–7.45 as normal blood pH, red danger zones below 7.35 (acidosis) and above 7.45 (alkalosis)",
+      "sourceName": "Verified source data — pH / electrolyte balance",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Acid%E2%80%93base_homeostasis",
+      "volatile": false,
+      "distractors": ["6.8–7.0", "7.0–7.2", "7.5–7.6", "7.6–7.8", "7.2–7.5", "7.0–7.4"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the normal arterial blood pH range is 7.35–7.45.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "A blood pH below ___ is defined as acidosis.",
+          "correctAnswer": "7.35",
+          "distractors": ["7.0", "7.45", "7.5"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_036",
+      "correctAnswer": "bicarbonate (HCO₃-)",
+      "acceptableAlternatives": ["HCO₃-", "bicarbonate", "bicarb"],
+      "chainThemeId": "electrolyte_balance",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In metabolic acidosis, the kidneys respond by excreting more H+ and reabsorbing more of which buffer ion in the proximal convoluted tubule?",
+      "explanation": "Bicarbonate (HCO₃⁻) is the main extracellular buffer. In acidosis, the PCT increases HCO₃⁻ reabsorption (via H+/HCO₃⁻ exchange mechanisms) and intercalated cells in the collecting duct secrete more H+. This combination raises blood pH back toward normal. In alkalosis, the reverse occurs — less HCO₃⁻ is reabsorbed and it is excreted in urine (making urine alkaline). Renal compensation for acid-base disturbances takes hours to days, unlike respiratory compensation which is rapid.",
+      "visualDescription": "Pixel art PCT cell showing H+ being secreted into the lumen while HCO₃⁻ moves into the peritubular capillary, an acidosis warning label above",
+      "sourceName": "Verified source data — pH / electrolyte balance",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bicarbonate",
+      "volatile": false,
+      "distractors": ["chloride (Cl-)", "phosphate (PO₄³-)", "sodium (Na+)", "calcium (Ca²+)", "albumin", "haemoglobin"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: in acidosis, the kidneys excrete more H+ and reabsorb more bicarbonate to raise blood pH.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_037",
+      "correctAnswer": "1–2 L/day",
+      "acceptableAlternatives": ["1 to 2 litres per day", "~1–2 L/day", "1000–2000 mL/day"],
+      "chainThemeId": "glomerular_filtration",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "The kidneys filter 180 litres of fluid per day but excrete far less. What is the normal daily urine output?",
+      "explanation": "Normal daily urine output is approximately 1–2 L/day, despite the kidneys filtering 180 L of fluid per day. This means ~99% of the filtered fluid is reabsorbed by the tubules. Urine output below 400 mL/day is oliguria (abnormally low — often indicating kidney failure or dehydration), and below 100 mL/day is anuria (typically indicating complete obstruction or severe renal failure). Above 3 L/day is polyuria.",
+      "visualDescription": "Pixel art infographic: 180L funnel going into nephron, with 178–179 L reabsorption arrow and 1–2 L urine dripping into a collection vessel",
+      "sourceName": "Verified source data — urine formation",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Urine",
+      "volatile": false,
+      "distractors": ["100–200 mL/day", "10–15 L/day", "500 mL/day", "5–8 L/day", "0.5 L/day", "4–5 L/day"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: urine output below 400 mL/day is called oliguria and often indicates kidney injury or severe dehydration.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_038",
+      "correctAnswer": "urea, creatinine, uric acid",
+      "acceptableAlternatives": ["urea, creatinine, and uric acid", "creatinine, urea, uric acid"],
+      "chainThemeId": "glomerular_filtration",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Urine is 95% water. What are the three main nitrogenous waste products found in the remaining 5%?",
+      "explanation": "The non-water components of urine are primarily nitrogenous wastes: urea (the main waste, from protein catabolism and the urea cycle), creatinine (from muscle creatine phosphate metabolism — used clinically to estimate GFR), and uric acid (from purine catabolism — elevated in gout). Urine also contains electrolytes (Na+, K+, Cl-), hormones, and various metabolites. Creatinine's constant production rate makes it a reliable GFR marker.",
+      "visualDescription": "Pixel art urine composition pie chart: large blue 95% water slice, and small wedges labeled urea (largest waste), creatinine, and uric acid",
+      "sourceName": "Verified source data — urine composition",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Urine",
+      "volatile": false,
+      "distractors": ["glucose, albumin, bilirubin", "ammonia, acetone, ketones", "urea, albumin, glucose", "creatinine, cholesterol, bile salts", "urea, haemoglobin, bilirubin"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Which nitrogenous waste product of muscle metabolism is used clinically as a marker to estimate GFR?",
+          "correctAnswer": "creatinine",
+          "distractors": ["urea", "uric acid", "ammonia"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_039",
+      "correctAnswer": "vasa recta",
+      "acceptableAlternatives": [],
+      "chainThemeId": "nephron",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The peritubular capillaries that dip alongside the loop of Henle into the renal medulla have a special name. These hairpin capillaries preserve the medullary osmotic gradient by using countercurrent exchange. What are they called?",
+      "explanation": "The vasa recta are long, straight, hairpin-shaped peritubular capillaries that parallel the loops of Henle deep into the medulla. They supply oxygen and nutrients to the medulla while preserving the osmotic gradient through countercurrent exchange: descending vessels lose water and gain solutes as they go deeper; ascending vessels gain water and lose solutes. If the vasa recta were straight-through capillaries, they would wash out the medullary gradient and the kidney could not concentrate urine.",
+      "visualDescription": "Pixel art showing the vasa recta as hairpin capillaries running alongside the loop of Henle into the hypertonic medulla (orange gradient), water and solute exchange arrows labeled",
+      "sourceName": "Verified source data — nephron / blood supply",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Vasa_recta_of_kidney",
+      "volatile": false,
+      "distractors": ["peritubular capillaries", "arcuate arteries", "interlobular veins", "afferent arterioles", "efferent arterioles", "renal plexus"],
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or false: the vasa recta are hairpin-shaped capillaries that preserve the medullary osmotic gradient through countercurrent exchange.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    },
+    {
+      "id": "ha_urin_040",
+      "correctAnswer": "afferent arteriole → glomerulus → efferent arteriole",
+      "acceptableAlternatives": ["afferent arteriole, glomerulus, efferent arteriole"],
+      "chainThemeId": "glomerular_filtration",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Blood flows through the glomerular capillaries between two arterioles. In correct order from entry to exit, what is the sequence?",
+      "explanation": "Blood enters the glomerulus via the afferent arteriole ('afferent' = carrying toward), is filtered under hydrostatic pressure across the fenestrated capillary wall and basement membrane into Bowman's capsule, then exits via the efferent arteriole ('efferent' = carrying away). Because both vessels are arterioles, the glomerulus is a portal system — the high pressure maintained between two resistance vessels drives filtration. Constriction of the efferent arteriole increases GFR; constriction of the afferent arteriole decreases it.",
+      "visualDescription": "Pixel art glomerulus with a red afferent arteriole entering on the left, the capillary tuft in the centre, and a narrower efferent arteriole exiting on the right, arrows showing flow direction",
+      "sourceName": "Verified source data — glomerular filtration / blood supply",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Glomerulus_(kidney)",
+      "volatile": false,
+      "distractors": ["efferent arteriole → glomerulus → afferent arteriole", "afferent venule → glomerulus → efferent venule", "afferent arteriole → Bowman's capsule → efferent arteriole", "interlobular artery → glomerulus → peritubular capillary"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Blood enters the glomerular capillaries via the ___ arteriole and exits via the efferent arteriole.",
+          "correctAnswer": "afferent",
+          "distractors": ["efferent", "arcuate", "interlobular"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: constriction of the efferent arteriole increases glomerular filtration pressure and thus increases GFR.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        }
+      ]
+    }
+  ]
+}

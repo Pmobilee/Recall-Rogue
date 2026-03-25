@@ -1,0 +1,772 @@
+{
+  "facts": [
+    {
+      "id": "ha_nerv_055",
+      "correctAnswer": "Nissl bodies",
+      "acceptableAlternatives": ["Nissl substance", "rough ER"],
+      "chainThemeId": "neuron_structure",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "The soma (cell body) of a neuron contains a nucleus and distinctive clumps of rough endoplasmic reticulum. What are these clumps called?",
+      "explanation": "Nissl bodies are large clumps of rough endoplasmic reticulum (rER) found in the soma and dendrites of neurons. They are responsible for synthesizing the proteins a neuron needs for growth, maintenance, and neurotransmitter production. Their presence distinguishes the cell body from the axon, which lacks Nissl bodies entirely.",
+      "visualDescription": "Pixel art cross-section of a neuron cell body: central nucleus with nucleolus visible, dark-staining clumps (Nissl bodies) scattered through blue cytoplasm, dendrites branching outward",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["Golgi apparatus", "synaptic vesicles", "myelin granules", "Cajal bodies", "Lewy bodies", "chromatin clumps", "axon hillocks", "dendritic spines"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Nissl bodies are large clumps of rough endoplasmic reticulum found in the soma and dendrites of neurons — but notably absent from what part of the neuron?",
+          "correctAnswer": "axon",
+          "distractors": ["dendrites", "nucleus", "cell body"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Nissl bodies are found in the axon of a neuron.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The clumps of rough endoplasmic reticulum found in a neuron's cell body are called ___ bodies.",
+          "correctAnswer": "Nissl",
+          "distractors": ["Golgi", "Lewy", "Cajal"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_056",
+      "correctAnswer": "axon hillock",
+      "acceptableAlternatives": ["hillock"],
+      "chainThemeId": "neuron_structure",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Action potentials are initiated at a specialized region where the axon originates from the cell body. What is this trigger zone called?",
+      "explanation": "The axon hillock is the cone-shaped region where the axon emerges from the soma. It has the lowest threshold for action potential generation due to its high density of voltage-gated Na+ channels. It integrates all incoming signals from dendrites and fires an action potential only when the summed input exceeds the threshold of approximately -55 mV.",
+      "visualDescription": "Pixel art neuron diagram: cell body (soma) on left, highlighted cone-shaped junction point labeled as trigger zone, long axon extending right with myelin segments",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["synaptic knob", "dendritic spine", "Ranvier node", "soma junction", "terminal bouton", "schwann junction", "myelin cap", "initial segment cap"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "A neuron only fires if the sum of excitatory and inhibitory signals exceeds a threshold of about -55 mV. Where on the neuron is this summation point and trigger zone located?",
+          "correctAnswer": "axon hillock",
+          "distractors": ["dendritic tips", "synaptic cleft", "node of Ranvier"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The trigger zone where action potentials are initiated is the axon ___.",
+          "correctAnswer": "hillock",
+          "distractors": ["terminal", "knob", "node"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_057",
+      "correctAnswer": "saltatory conduction",
+      "acceptableAlternatives": ["saltatory"],
+      "chainThemeId": "neuron_structure",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In myelinated axons, the action potential jumps from one Node of Ranvier to the next rather than traveling continuously. What is this faster, energy-efficient conduction called?",
+      "explanation": "Saltatory conduction (from Latin saltare, 'to jump') occurs in myelinated axons where the action potential leaps between exposed nodes of Ranvier — the gaps in the myelin sheath. Because ion exchange only occurs at these nodes rather than along the entire axon membrane, saltatory conduction is both faster and more energy-efficient than continuous conduction in unmyelinated axons.",
+      "visualDescription": "Pixel art myelinated axon: blue myelin segments alternating with bright orange node gaps, animated lightning bolt jumping node to node, speed lines showing rapid propagation",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["continuous conduction", "graded conduction", "ephaptic conduction", "retrograde conduction", "anterograde transmission", "axoplasmic flow", "cable conduction", "ionic relay"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Saltatory conduction is faster and more energy-efficient than continuous conduction — what structural feature of myelinated axons makes it possible?",
+          "correctAnswer": "nodes of Ranvier",
+          "distractors": ["axon hillock", "synaptic vesicles", "Nissl bodies"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Saltatory conduction is slower than continuous conduction in unmyelinated axons.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_058",
+      "correctAnswer": "20 nanometers",
+      "acceptableAlternatives": ["20 nm", "~20 nm", "approximately 20 nanometers"],
+      "chainThemeId": "neuron_structure",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The synaptic cleft is the tiny gap between a presynaptic terminal and the postsynaptic membrane. Approximately how wide is this gap?",
+      "explanation": "The synaptic cleft is approximately 20 nanometers (20 nm) wide — roughly 1/5,000th the width of a human hair. Neurotransmitters released from the presynaptic terminal must diffuse across this gap to bind receptors on the postsynaptic membrane. This small distance enables rapid synaptic transmission, typically occurring within microseconds to milliseconds.",
+      "visualDescription": "Pixel art synapse cross-section: presynaptic terminal packed with vesicles (top), tiny labeled gap (synaptic cleft), receptor-studded postsynaptic membrane (bottom), scale bar showing nanometer range",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["2 nanometers", "200 nanometers", "1 micrometer", "5 nanometers", "50 nanometers", "1 nanometer", "100 nanometers", "500 nanometers"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The synaptic cleft — the gap between a presynaptic terminal and postsynaptic membrane — is approximately ___ nanometers wide.",
+          "correctAnswer": "20",
+          "distractors": ["200", "2", "100"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The synaptic cleft is wider than 1 micrometer.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_059",
+      "correctAnswer": "multipolar",
+      "acceptableAlternatives": ["multipolar neuron"],
+      "chainThemeId": "neuron_structure",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Motor neurons in the spinal cord have one axon and many dendrites radiating from the cell body. Which neuron type — the most common in the nervous system — does this describe?",
+      "explanation": "Multipolar neurons have one axon and multiple dendrites emerging from the soma — making them the most common neuron type in the human nervous system. Motor neurons (lower motor neurons in the spinal cord), interneurons, and Purkinje cells of the cerebellum are all multipolar. By contrast, bipolar neurons (retina, olfactory epithelium) have one axon and one dendrite, while pseudounipolar neurons (sensory neurons in dorsal root ganglia) have a single process that splits into two branches.",
+      "visualDescription": "Pixel art comparison of three neuron types side by side: multipolar with star-burst dendrites, bipolar with single dendrite, pseudounipolar with T-shaped single process — multipolar highlighted in gold",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["bipolar", "pseudounipolar", "unipolar", "anaxonic", "interneuron type", "sensory type", "Purkinje type", "granule type"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Sensory neurons in the dorsal root ganglia have a single process that splits into a peripheral branch and a central branch going to the spinal cord. What type of neuron is this?",
+          "correctAnswer": "pseudounipolar",
+          "distractors": ["multipolar", "bipolar", "anaxonic"]
+        },
+        {
+          "type": "context",
+          "question": "Neurons in the retina and olfactory epithelium that have exactly one axon and one dendrite are classified as which type?",
+          "correctAnswer": "bipolar",
+          "distractors": ["multipolar", "pseudounipolar", "unipolar"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_060",
+      "correctAnswer": "oligodendrocytes",
+      "acceptableAlternatives": ["oligodendrocyte"],
+      "chainThemeId": "glial_cells",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In the central nervous system, one type of glial cell can wrap myelin around multiple axons simultaneously. What is this CNS myelinating cell called?",
+      "explanation": "Oligodendrocytes are the myelinating glial cells of the CNS. A single oligodendrocyte can extend processes to myelinate up to 50 different axon segments, making it far more efficient than its PNS counterpart. In multiple sclerosis, oligodendrocytes and their myelin sheaths are destroyed by the immune system, disrupting signal conduction and causing the progressive neurological symptoms characteristic of the disease.",
+      "visualDescription": "Pixel art CNS cross-section: one octopus-shaped oligodendrocyte cell with multiple arms each wrapping around a different axon in blue myelin, labeled '1 cell → many axons'",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["Schwann cells", "astrocytes", "microglia", "ependymal cells", "satellite cells", "Bergmann glia", "radial glia", "tanycytes"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Oligodendrocytes myelinate axons in the CNS — but which glial cell performs the equivalent myelinating role in the PNS?",
+          "correctAnswer": "Schwann cells",
+          "distractors": ["astrocytes", "microglia", "ependymal cells"]
+        },
+        {
+          "type": "context",
+          "question": "In multiple sclerosis, the immune system attacks the myelin sheaths of the CNS. Which cell type produces that myelin?",
+          "correctAnswer": "oligodendrocytes",
+          "distractors": ["Schwann cells", "astrocytes", "microglia"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: A single Schwann cell can myelinate multiple axons simultaneously.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_061",
+      "correctAnswer": "astrocytes",
+      "acceptableAlternatives": ["astrocyte"],
+      "chainThemeId": "glial_cells",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 6,
+      "quizQuestion": "Which star-shaped glial cell forms the blood-brain barrier, provides nutrients to neurons, regulates ion balance, and forms glial scars after CNS injury?",
+      "explanation": "Astrocytes (named for their star shape) are the most abundant glial cells in the CNS. Their perivascular end-feet wrap around brain capillaries to form the blood-brain barrier, controlling what substances enter the brain. They also supply neurons with nutrients, buffer extracellular potassium, recycle neurotransmitters, and respond to injury by forming glial scars — dense astroglial tissue that walls off damaged areas but can impede nerve regeneration.",
+      "visualDescription": "Pixel art brain section: star-shaped astrocyte with long processes — one end-foot touching a blood vessel (forming BBB), another process contacting a neuron synapse, labeled functions in pixel font",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["oligodendrocytes", "microglia", "Schwann cells", "ependymal cells", "satellite cells", "radial glia", "pericytes", "tanycytes"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The star-shaped CNS glial cells that maintain the blood-brain barrier and support neuronal function are called ___.",
+          "correctAnswer": "astrocytes",
+          "distractors": ["oligodendrocytes", "microglia", "ependymal cells"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Astrocytes are the immune-surveillance cells of the CNS responsible for phagocytosis.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_062",
+      "correctAnswer": "microglia",
+      "acceptableAlternatives": ["microglial cells", "microglia cells"],
+      "chainThemeId": "glial_cells",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Which CNS glial cells act as the brain's resident immune cells, performing phagocytosis to clear dead cells, pathogens, and cellular debris?",
+      "explanation": "Microglia are the CNS equivalent of macrophages — small, highly mobile phagocytic cells that continuously survey the brain for pathogens, dead neurons, and synaptic debris. Unlike other glial cells (which are derived from neural tissue), microglia originate from myeloid precursors in the yolk sac. They respond rapidly to injury or infection by changing shape, proliferating, and engulfing harmful material, making them the primary immune defense of the CNS.",
+      "visualDescription": "Pixel art brain section: small jagged-shaped microglial cell with branching processes extending outward in surveillance mode, one process engulfing a red debris particle, other cells in background",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["astrocytes", "oligodendrocytes", "ependymal cells", "Schwann cells", "neurons", "satellite cells", "pericytes", "T-cells"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The CNS's resident immune cells that perform phagocytosis are called ___.",
+          "correctAnswer": "microglia",
+          "distractors": ["astrocytes", "oligodendrocytes", "ependymal cells"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Microglia originate from neural progenitor cells like most other CNS cells.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_063",
+      "correctAnswer": "ependymal cells",
+      "acceptableAlternatives": ["ependymocytes", "ependyma"],
+      "chainThemeId": "glial_cells",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 6,
+      "quizQuestion": "Which ciliated glial cells line the brain's ventricles and form the choroid plexus that produces cerebrospinal fluid?",
+      "explanation": "Ependymal cells line the ventricles of the brain and the central canal of the spinal cord. Specialized ependymal cells in the choroid plexus actively secrete cerebrospinal fluid (CSF) into the ventricles. Their cilia beat rhythmically to help circulate CSF. Ependymal cells also form part of the blood-CSF barrier and may play a role in neural stem cell activity.",
+      "visualDescription": "Pixel art brain ventricle cross-section: single-layer of ependymal cells with cilia facing the ventricle lumen, CSF shown as blue fluid, choroid plexus visible as folded vascular structure",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["astrocytes", "microglia", "oligodendrocytes", "Schwann cells", "satellite cells", "tanycytes", "pericytes", "radial glia"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The choroid plexus produces cerebrospinal fluid — which ciliated cell type forms the choroid plexus and lines the brain ventricles?",
+          "correctAnswer": "ependymal cells",
+          "distractors": ["astrocytes", "microglia", "oligodendrocytes"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_064",
+      "correctAnswer": "-70 mV",
+      "acceptableAlternatives": ["negative 70 millivolts", "approximately -70 mV", "-70 millivolts"],
+      "chainThemeId": "action_potential",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "What is the resting membrane potential of a typical neuron?",
+      "explanation": "A neuron at rest maintains a membrane potential of approximately -70 mV (millivolts) — the inside of the cell is more negative than the outside. This is maintained by the Na+/K+ ATPase pump (which continuously moves 3 Na+ out and 2 K+ in) and by K+ leak channels that allow K+ to flow down its concentration gradient. This electrochemical gradient is the stored energy that makes action potentials possible.",
+      "visualDescription": "Pixel art neuron cross-section at rest: cell membrane shown as lipid bilayer, K+ leak channels open with K+ flowing out, Na/K pump moving 3 Na+ out / 2 K+ in, voltage meter showing -70 mV",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["-55 mV", "-90 mV", "+30 mV", "0 mV", "-40 mV", "-110 mV", "+70 mV", "-20 mV"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The Na+/K+ ATPase pump maintains the neuron's resting potential by moving 3 Na+ out and 2 K+ in per cycle. What resting membrane potential does this help establish?",
+          "correctAnswer": "-70 mV",
+          "distractors": ["-55 mV", "+30 mV", "-90 mV"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The resting membrane potential of a typical neuron is approximately ___ mV.",
+          "correctAnswer": "-70",
+          "distractors": ["-55", "+30", "-90"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_065",
+      "correctAnswer": "-55 mV",
+      "acceptableAlternatives": ["negative 55 millivolts", "approximately -55 mV", "-55 millivolts"],
+      "chainThemeId": "action_potential",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "When a neuron is sufficiently depolarized, voltage-gated Na+ channels snap open and an action potential fires. What is the approximate threshold membrane potential at which this occurs?",
+      "explanation": "The action potential threshold is approximately -55 mV. When depolarization from the resting potential (-70 mV) reaches this threshold, voltage-gated Na+ channels open explosively in a positive feedback loop — Na+ rushes in, further depolarizing the membrane and opening more channels. Below threshold, the depolarization dissipates without generating an action potential. This is the basis of the all-or-none law.",
+      "visualDescription": "Pixel art action potential graph: horizontal axis = time, vertical axis = voltage; resting line at -70 mV, dotted threshold line at -55 mV, sharp upswing to +30 mV labeled 'depolarization', then downswing",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["-70 mV", "-40 mV", "0 mV", "+30 mV", "-30 mV", "-80 mV", "-90 mV", "-65 mV"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "An action potential is triggered when the membrane potential reaches the threshold of approximately ___ mV.",
+          "correctAnswer": "-55",
+          "distractors": ["-70", "-40", "0"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_066",
+      "correctAnswer": "all-or-none law",
+      "acceptableAlternatives": ["all or none law", "all-or-none principle"],
+      "chainThemeId": "action_potential",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "An action potential either fires completely or not at all — a stronger stimulus doesn't produce a bigger action potential, only a higher firing frequency. What law describes this property?",
+      "explanation": "The all-or-none law states that an action potential fires at full amplitude whenever threshold is reached, regardless of how much the stimulus exceeds threshold. Signal intensity is therefore encoded not by the size of individual action potentials (which are always the same amplitude) but by their frequency — stronger stimuli cause more action potentials per second. This is called rate coding or frequency coding.",
+      "visualDescription": "Pixel art: two stimulus scenarios side by side — weak sub-threshold stimulus producing flat line, strong supra-threshold stimulus producing identical full-size spikes at higher frequency, labeled 'All-or-None'",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["graded potential law", "frequency coding rule", "cable theory", "refractory principle", "threshold law", "amplitude law", "Ohm's neural law", "Weber-Fechner law"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "A neuron encodes signal strength by firing action potentials more frequently rather than producing larger action potentials. Which law explains why individual action potentials cannot vary in amplitude?",
+          "correctAnswer": "all-or-none law",
+          "distractors": ["graded potential law", "Weber-Fechner law", "cable theory"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: A stronger stimulus causes a larger-amplitude action potential in the same neuron.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_067",
+      "correctAnswer": "absolute refractory period",
+      "acceptableAlternatives": ["absolute refractory"],
+      "chainThemeId": "action_potential",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Immediately after an action potential, voltage-gated Na+ channels are inactivated and no stimulus — no matter how strong — can trigger another action potential. What is this period called?",
+      "explanation": "The absolute refractory period follows immediately after an action potential, during which inactivated Na+ channels cannot be reopened by any stimulus. This sets the maximum firing frequency of a neuron and ensures that action potentials are discrete, one-directional events. It is followed by the relative refractory period, when Na+ channels have recovered but K+ channels are still open — meaning a stronger-than-normal stimulus can trigger a new action potential.",
+      "visualDescription": "Pixel art action potential waveform: full spike shown, dark shaded zone beneath (absolute refractory) labeled 'no fire possible', lighter shaded zone afterward (relative refractory) labeled 'stronger stimulus needed'",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["relative refractory period", "hyperpolarization phase", "depolarization block", "refractory window", "post-spike silence", "dead time interval", "inactivation pause", "Na+ lockout phase"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "During the relative refractory period, a stronger-than-normal stimulus CAN trigger an action potential. What period immediately precedes it, during which NO stimulus can trigger firing?",
+          "correctAnswer": "absolute refractory period",
+          "distractors": ["hyperpolarization phase", "depolarization phase", "resting phase"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The period immediately after an action potential during which no stimulus can trigger another is called the ___ refractory period.",
+          "correctAnswer": "absolute",
+          "distractors": ["relative", "extended", "total"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_068",
+      "correctAnswer": "acetylcholine",
+      "acceptableAlternatives": ["ACh"],
+      "chainThemeId": "neurotransmitters",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "At the neuromuscular junction, motor neurons release a neurotransmitter that binds nicotinic receptors on muscle fibers to trigger contraction. Which neurotransmitter is this?",
+      "explanation": "Acetylcholine (ACh) is the neurotransmitter released at the neuromuscular junction (NMJ), where motor neurons synapse with skeletal muscle fibers. It binds nicotinic acetylcholine receptors to depolarize the muscle fiber and initiate contraction. ACh also transmits signals at all autonomic ganglia, postganglionic parasympathetic synapses, and is important for memory and learning in the CNS. Diseases like myasthenia gravis involve autoimmune attacks on these ACh receptors.",
+      "visualDescription": "Pixel art NMJ: motor neuron terminal (top) releasing red ACh vesicles across synaptic cleft to folded muscle membrane (bottom), muscle fiber shown in cross-section with striations",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["dopamine", "serotonin", "norepinephrine", "GABA", "glutamate", "glycine", "substance P", "nitric oxide"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Acetylcholine is released at the neuromuscular junction — but in the CNS, ACh is particularly important for which cognitive function?",
+          "correctAnswer": "memory",
+          "distractors": ["pain perception", "blood pressure regulation", "visual processing"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The neurotransmitter released at the neuromuscular junction is ___.",
+          "correctAnswer": "acetylcholine",
+          "distractors": ["dopamine", "serotonin", "norepinephrine"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_069",
+      "correctAnswer": "dopamine",
+      "acceptableAlternatives": [],
+      "chainThemeId": "neurotransmitters",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Loss of neurons in the substantia nigra that produce which neurotransmitter is the defining pathological feature of Parkinson's disease?",
+      "explanation": "Parkinson's disease is caused by the progressive loss of dopaminergic neurons in the substantia nigra pars compacta, which project to the striatum via the nigrostriatal pathway. Dopamine is critical for smooth, coordinated movement. Its deficiency disrupts the basal ganglia circuitry, producing the characteristic tremor, rigidity, bradykinesia (slowness of movement), and postural instability of Parkinson's. Dopamine also plays key roles in reward and motivation via the mesolimbic/mesocortical pathways.",
+      "visualDescription": "Pixel art midbrain cross-section: substantia nigra highlighted in black with normal neuron cluster on left side vs depleted neuron cluster on right side, arrows pointing to striatum, dopamine molecules shown as colored orbs",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["serotonin", "acetylcholine", "GABA", "norepinephrine", "glutamate", "endorphin", "histamine", "glycine"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "The mesolimbic dopamine pathway (VTA → nucleus accumbens) mediates reward and motivation — but the nigrostriatal dopamine pathway (substantia nigra → striatum) mediates what function?",
+          "correctAnswer": "movement / motor control",
+          "distractors": ["mood regulation", "pain suppression", "memory formation"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Parkinson's disease results from the loss of ___ neurons in the substantia nigra.",
+          "correctAnswer": "dopaminergic",
+          "distractors": ["serotonergic", "cholinergic", "GABAergic"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_070",
+      "correctAnswer": "GABA",
+      "acceptableAlternatives": ["gamma-aminobutyric acid", "gamma aminobutyric acid"],
+      "chainThemeId": "neurotransmitters",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Which neurotransmitter is the primary inhibitory signal in the brain, and is the main target of benzodiazepines (e.g., diazepam/Valium)?",
+      "explanation": "GABA (gamma-aminobutyric acid) is the principal inhibitory neurotransmitter in the CNS. It binds GABA-A receptor-channels, causing Cl- influx that hyperpolarizes the postsynaptic neuron, making it less likely to fire. Benzodiazepines (Valium, Xanax) work by binding an allosteric site on GABA-A receptors, increasing the frequency of Cl- channel opening and enhancing GABA's inhibitory effect. This produces the sedative, anxiolytic, and anticonvulsant effects of these drugs.",
+      "visualDescription": "Pixel art CNS synapse: GABA-releasing presynaptic terminal, GABA-A receptor on postsynaptic membrane shown open with Cl- ions flowing in, small benzodiazepine molecule binding the receptor's allosteric site",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["glutamate", "dopamine", "serotonin", "glycine", "acetylcholine", "norepinephrine", "endorphin", "adenosine"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Benzodiazepines reduce anxiety and seizures by enhancing which inhibitory neurotransmitter's effect at its receptor?",
+          "correctAnswer": "GABA",
+          "distractors": ["serotonin", "glycine", "dopamine"]
+        },
+        {
+          "type": "context",
+          "question": "Glutamate is the primary EXCITATORY neurotransmitter in the brain. What is the primary INHIBITORY neurotransmitter?",
+          "correctAnswer": "GABA",
+          "distractors": ["serotonin", "dopamine", "acetylcholine"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_071",
+      "correctAnswer": "serotonin",
+      "acceptableAlternatives": ["5-HT", "5-hydroxytryptamine"],
+      "chainThemeId": "neurotransmitters",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "SSRIs (selective serotonin reuptake inhibitors) treat depression by increasing which neurotransmitter's availability in the synapse? This NT is produced mainly in the raphe nuclei and regulates mood, sleep, and appetite.",
+      "explanation": "Serotonin (5-HT, 5-hydroxytryptamine) is synthesized mainly in the raphe nuclei of the brainstem and projects widely throughout the CNS. It regulates mood, sleep, appetite, and social behavior. SSRIs (like fluoxetine/Prozac, sertraline/Zoloft) block the serotonin transporter (SERT), preventing reuptake of serotonin from the synaptic cleft and prolonging its action. Low serotonin activity is associated with depression, anxiety, and sleep disorders.",
+      "visualDescription": "Pixel art synapse: raphe nucleus neuron terminal releasing serotonin (green orbs), synapse with SERT reuptake transporter shown blocked by SSRI pill, serotonin accumulating in cleft, mood thermometer rising",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["dopamine", "norepinephrine", "GABA", "acetylcholine", "glutamate", "histamine", "oxytocin", "cortisol"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "SSRIs treat depression by preventing reuptake of ___ in the synaptic cleft.",
+          "correctAnswer": "serotonin",
+          "distractors": ["dopamine", "norepinephrine", "GABA"]
+        },
+        {
+          "type": "reverse",
+          "question": "Serotonin is produced primarily in the raphe nuclei — but where in the brain is the primary nucleus for norepinephrine production?",
+          "correctAnswer": "locus coeruleus",
+          "distractors": ["substantia nigra", "ventral tegmental area", "raphe nuclei"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_072",
+      "correctAnswer": "endorphins",
+      "acceptableAlternatives": ["endorphin", "endogenous opioids", "beta-endorphin"],
+      "chainThemeId": "neurotransmitters",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "During intense exercise, the brain releases natural pain-relieving neuropeptides from the CNS and pituitary that produce the 'runner's high' and feelings of euphoria. What are these endogenous opioid peptides called?",
+      "explanation": "Endorphins (endogenous morphine) are neuropeptides produced by the CNS and pituitary gland that bind opioid receptors to produce analgesia (pain relief) and euphoria. The 'runner's high' experienced during sustained aerobic exercise is largely attributed to endorphin release, though recent research suggests endocannabinoids also contribute. Opioid drugs like morphine and heroin work by mimicking endorphins at the same receptors.",
+      "visualDescription": "Pixel art: runner mid-stride with euphoric expression, brain glowing with golden endorphin molecules binding opioid receptors, pain signal being blocked, small pituitary gland highlighted at brain base",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["dopamine", "serotonin", "adrenaline", "cortisol", "oxytocin", "enkephalins", "substance P", "glutamate"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Morphine and heroin produce pain relief and euphoria by binding opioid receptors — which endogenous peptides do they mimic?",
+          "correctAnswer": "endorphins",
+          "distractors": ["dopamine", "serotonin", "enkephalins"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The natural pain-relieving neuropeptides responsible for 'runner's high' are called ___.",
+          "correctAnswer": "endorphins",
+          "distractors": ["dopamine", "serotonin", "cortisol"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_073",
+      "correctAnswer": "150 mL",
+      "acceptableAlternatives": ["approximately 150 mL", "about 150 mL", "150 milliliters"],
+      "chainThemeId": "ventricles_csf",
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The brain and spinal cord float in cerebrospinal fluid, which is produced at a rate of ~500 mL per day. How much CSF is present in the CNS at any given moment?",
+      "explanation": "Although approximately 500 mL of CSF is produced by the choroid plexus each day, only about 150 mL is present in the CNS at any one time — meaning the entire CSF volume is replaced roughly 3–4 times daily. This continuous production and reabsorption is essential for clearing metabolic waste from the brain (via the glymphatic system), regulating intracranial pressure, and delivering nutrients. Blockage of CSF flow causes hydrocephalus.",
+      "visualDescription": "Pixel art brain cross-section: ventricles shown in blue filled with CSF, choroid plexus as red vascular folds, arachnoid granulations for reabsorption, arrows showing CSF flow from lateral to 3rd to 4th ventricle",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["500 mL", "50 mL", "1000 mL", "300 mL", "75 mL", "250 mL", "30 mL", "600 mL"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Only ~150 mL of CSF is present at any time despite continuous production — how much CSF does the choroid plexus produce per day?",
+          "correctAnswer": "500 mL",
+          "distractors": ["150 mL", "1000 mL", "300 mL"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Approximately ___ mL of cerebrospinal fluid is present in the CNS at any given moment.",
+          "correctAnswer": "150",
+          "distractors": ["500", "50", "300"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_074",
+      "correctAnswer": "cerebral aqueduct",
+      "acceptableAlternatives": ["aqueduct of Sylvius", "aqueductus cerebri"],
+      "chainThemeId": "ventricles_csf",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "CSF flows from the third ventricle to the fourth ventricle through a narrow passage in the midbrain. What is this channel called?",
+      "explanation": "The cerebral aqueduct (aqueduct of Sylvius) is a narrow canal passing through the midbrain (mesencephalon) that connects the third ventricle to the fourth ventricle. Because of its narrow diameter, it is the most common site of obstruction in non-communicating (obstructive) hydrocephalus. From the fourth ventricle, CSF exits via the foramina of Luschka and Magendie into the subarachnoid space, where it bathes the brain and spinal cord.",
+      "visualDescription": "Pixel art sagittal brain section: lateral ventricles (blue, top) → foramen of Monro → 3rd ventricle → narrow midbrain aqueduct highlighted in bright blue → 4th ventricle → central canal, flow arrows throughout",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["foramen of Monro", "foramen of Luschka", "foramen of Magendie", "interventricular foramen", "central canal", "cisterna magna", "lateral aperture", "subarachnoid foramen"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Obstructive hydrocephalus most commonly results from blockage of a narrow midbrain passage. CSF backs up because it cannot flow from the 3rd to 4th ventricle. What is this passage?",
+          "correctAnswer": "cerebral aqueduct",
+          "distractors": ["foramen of Monro", "central canal", "foramen of Magendie"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The ___ aqueduct (of Sylvius) connects the third and fourth ventricles.",
+          "correctAnswer": "cerebral",
+          "distractors": ["spinal", "pontine", "midbrain"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_075",
+      "correctAnswer": "hydrocephalus",
+      "acceptableAlternatives": ["hydrocephaly"],
+      "chainThemeId": "ventricles_csf",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Obstruction of CSF drainage or overproduction of CSF causes the ventricles to enlarge and intracranial pressure to rise. What condition is this?",
+      "explanation": "Hydrocephalus ('water on the brain') occurs when CSF accumulates excessively, typically due to blockage of flow (non-communicating/obstructive type) or failure of reabsorption (communicating type). The resulting increase in intracranial pressure can compress brain tissue and cause headache, vomiting, and cognitive impairment. In infants before skull fusion, it causes visible head enlargement. Treatment typically involves a surgical CSF shunt.",
+      "visualDescription": "Pixel art infant head cross-section: grossly enlarged lateral ventricles filled with blue CSF compressing thin cortical rim, compared to normal ventricle size in adjacent panel",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["meningitis", "encephalitis", "increased ICP alone", "ventriculitis", "syringomyelia", "arachnoid cyst", "subdural hygroma", "cerebral edema"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Excessive accumulation of CSF in the brain's ventricles, causing increased intracranial pressure, is called ___.",
+          "correctAnswer": "hydrocephalus",
+          "distractors": ["meningitis", "encephalitis", "syringomyelia"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_076",
+      "correctAnswer": "ischemic stroke",
+      "acceptableAlternatives": ["ischemic", "ischaemic stroke"],
+      "chainThemeId": "clinical_neuro",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Approximately 87% of all strokes are caused by a blood clot blocking an artery to the brain. What type of stroke is this?",
+      "explanation": "Ischemic strokes account for approximately 87% of all strokes and occur when a thrombus (clot) or embolus (traveling clot) obstructs a cerebral artery, cutting off blood supply to brain tissue. Without oxygen and glucose, neurons begin dying within minutes. Treatment with tPA (tissue plasminogen activator) can dissolve the clot if given within 4.5 hours. The remaining ~13% of strokes are hemorrhagic — caused by a ruptured blood vessel.",
+      "visualDescription": "Pixel art brain: blocked artery highlighted in red with dark infarct zone (dead tissue) spreading from occlusion site, adjacent tissue labeled 'ischemic penumbra', blood clot shown as dark plug in vessel",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["hemorrhagic stroke", "transient ischemic attack", "subarachnoid hemorrhage", "intracerebral hemorrhage", "lacunar infarct", "cerebral vasospasm", "venous sinus thrombosis", "hypoxic encephalopathy"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Ischemic strokes account for 87% of strokes — what percentage are hemorrhagic (caused by vessel rupture)?",
+          "correctAnswer": "13%",
+          "distractors": ["30%", "50%", "5%"]
+        },
+        {
+          "type": "context",
+          "question": "tPA (tissue plasminogen activator) is a clot-dissolving drug used to treat acute stroke within 4.5 hours — which type of stroke is it appropriate for?",
+          "correctAnswer": "ischemic stroke",
+          "distractors": ["hemorrhagic stroke", "subarachnoid hemorrhage", "both types"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_077",
+      "correctAnswer": "multiple sclerosis",
+      "acceptableAlternatives": ["MS"],
+      "chainThemeId": "clinical_neuro",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Which autoimmune disease causes the immune system to attack and destroy myelin sheaths in the CNS, disrupting nerve signal conduction and causing episodes of weakness, vision loss, and coordination problems?",
+      "explanation": "Multiple sclerosis (MS) is a chronic autoimmune disease in which the immune system attacks oligodendrocytes and their myelin sheaths throughout the CNS, leaving demyelinated plaques (scleroses). This disrupts saltatory conduction along affected axons. Symptoms vary depending on which CNS areas are affected and include weakness, sensory disturbances, optic neuritis, and ataxia. MS follows a relapsing-remitting course in most patients, with periods of attack and partial recovery.",
+      "visualDescription": "Pixel art spinal cord cross-section: normal myelinated axon on left vs. demyelinated axon with patchy myelin loss on right, immune cells (lymphocytes) attacking the myelin, signal conduction shown as fragmented lightning bolt",
+      "sourceName": "Wikipedia — Neuroglia",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuroglia",
+      "volatile": false,
+      "distractors": ["Parkinson's disease", "Guillain-Barré syndrome", "ALS", "myasthenia gravis", "Huntington's disease", "cerebral palsy", "neuromyelitis optica", "transverse myelitis"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Multiple sclerosis destroys oligodendrocytes and myelin in the CNS — which glial cell does the equivalent damage target in Guillain-Barré syndrome?",
+          "correctAnswer": "Schwann cells",
+          "distractors": ["oligodendrocytes", "astrocytes", "microglia"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Multiple sclerosis is an autoimmune disease causing ___ of CNS axons.",
+          "correctAnswer": "demyelination",
+          "distractors": ["degeneration", "ischemia", "inflammation only"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_078",
+      "correctAnswer": "Alzheimer's disease",
+      "acceptableAlternatives": ["Alzheimer disease", "Alzheimer's"],
+      "chainThemeId": "clinical_neuro",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "This neurodegenerative disease is characterized by amyloid plaques and neurofibrillary tangles, with the hippocampus affected earliest — causing progressive memory loss. What is it?",
+      "explanation": "Alzheimer's disease is the most common cause of dementia, characterized pathologically by two hallmarks: extracellular amyloid-beta plaques and intracellular neurofibrillary tangles (composed of hyperphosphorylated tau protein). The hippocampus — essential for forming new memories — is disproportionately affected early, explaining why short-term memory loss is typically the first symptom. As the disease progresses, it spreads to the cortex, impairing language, reasoning, and behavior.",
+      "visualDescription": "Pixel art brain: hippocampus highlighted in orange (early damage), microscope inset showing amyloid plaques (brown clumps outside cells) and neurofibrillary tangles (dark threads inside neurons), progressive shrinkage arrows",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["Parkinson's disease", "vascular dementia", "Huntington's disease", "frontotemporal dementia", "Lewy body dementia", "Pick's disease", "Creutzfeldt-Jakob disease", "normal pressure hydrocephalus"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Alzheimer's disease affects the hippocampus earliest — which brain structure's early damage best explains why new memory formation is the first ability lost?",
+          "correctAnswer": "hippocampus",
+          "distractors": ["amygdala", "prefrontal cortex", "cerebellum"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The two pathological hallmarks of Alzheimer's disease are amyloid plaques and neurofibrillary ___.",
+          "correctAnswer": "tangles",
+          "distractors": ["plaques", "deposits", "lesions"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_079",
+      "correctAnswer": "epilepsy",
+      "acceptableAlternatives": ["epileptic disorder", "seizure disorder"],
+      "chainThemeId": "clinical_neuro",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 1,
+      "funScore": 7,
+      "quizQuestion": "Which neurological disorder is defined by recurrent, unprovoked seizures caused by abnormal excessive or synchronous neuronal firing in the brain?",
+      "explanation": "Epilepsy is a neurological disorder characterized by recurrent spontaneous seizures caused by abnormal, excessive, or synchronous neuronal discharge. Seizures can be focal (originating in one brain region) or generalized (involving the whole brain). The underlying cause may be genetic, structural (e.g., cortical scarring from stroke), or unknown. Anti-epileptic drugs (AEDs) such as valproate, levetiracetam, and phenytoin work by reducing neuronal excitability, often by enhancing GABA inhibition or blocking Na+ channels.",
+      "visualDescription": "Pixel art EEG readout: normal wave pattern on left transitioning to jagged, high-amplitude synchronized spike-wave discharges on right, brain cross-section above showing spreading discharge from focal origin point",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["narcolepsy", "Parkinson's disease", "multiple sclerosis", "Tourette syndrome", "meningitis", "encephalitis", "migraine disorder", "tremor disorder"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "Many anti-epileptic drugs work by enhancing GABA-mediated inhibition or blocking voltage-gated Na+ channels. What is the goal of these mechanisms in treating epilepsy?",
+          "correctAnswer": "reduce abnormal excessive neuronal firing",
+          "distractors": ["increase dopamine transmission", "dissolve amyloid plaques", "restore myelin"]
+        }
+      ]
+    },
+    {
+      "id": "ha_nerv_080",
+      "correctAnswer": "Bell's palsy",
+      "acceptableAlternatives": ["facial nerve palsy", "idiopathic facial paralysis"],
+      "chainThemeId": "clinical_neuro",
+      "answerTypePoolId": "anatomy_terms",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Sudden paralysis of the facial muscles on one side — causing the face to droop, the eye to be unable to close, and the smile to be one-sided — results from dysfunction of which cranial nerve?",
+      "explanation": "Bell's palsy is an acute, unilateral peripheral facial nerve (CN VII) palsy that causes sudden weakness or paralysis of all facial muscles on the affected side — including inability to close the eye, forehead weakness, and drooping of the mouth corner. Unlike central lesions (e.g., stroke), which spare the forehead, Bell's palsy affects the entire face because it is a peripheral CN VII lesion. Most cases are believed to be caused by herpes simplex virus reactivation and resolve within weeks to months, often with corticosteroid treatment.",
+      "visualDescription": "Pixel art face split down the middle: normal side on left, right side drooping with eye unable to close and mouth corner pulled down, CN VII nerve pathway highlighted from brainstem to facial muscles",
+      "sourceName": "Wikipedia — Neuron",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+      "volatile": false,
+      "distractors": ["CN V (trigeminal)", "CN III (oculomotor)", "CN VI (abducens)", "CN IX (glossopharyngeal)", "CN X (vagus)", "CN XII (hypoglossal)", "CN VIII (vestibulocochlear)", "CN IV (trochlear)"],
+      "variants": [
+        {
+          "type": "context",
+          "question": "In a stroke causing facial weakness, the forehead is typically spared (central lesion — forehead has bilateral cortical representation). In Bell's palsy, the forehead IS affected. What does this tell us about the level of the lesion?",
+          "correctAnswer": "peripheral (CN VII distal to brainstem)",
+          "distractors": ["central (above brainstem)", "brainstem nucleus only", "cortical"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Bell's palsy is caused by dysfunction of cranial nerve ___ (the facial nerve).",
+          "correctAnswer": "VII",
+          "distractors": ["V", "III", "X"]
+        }
+      ]
+    }
+  ]
+}

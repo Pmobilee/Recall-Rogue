@@ -1,0 +1,722 @@
+[
+  {
+    "id": "ha_integ_001",
+    "subDeckId": "integumentary",
+    "correctAnswer": "skin",
+    "acceptableAlternatives": ["integument"],
+    "chainThemeId": "skin_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What is the largest organ of the human body?",
+    "explanation": "The skin is the largest organ, covering roughly 1.5–2 square metres and weighing about 3.6 kg in adults.",
+    "visualDescription": "Full-body silhouette with skin surface highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skin",
+    "volatile": false,
+    "distractors": ["liver", "lungs", "small intestine"],
+    "variants": [
+      {
+        "quizQuestion": "Which organ covers approximately 1.5–2 square metres of surface area in adults?",
+        "correctAnswer": "skin",
+        "explanation": "The skin spans 1.5–2 m² and is classified as the body's largest organ by surface area."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_002",
+    "subDeckId": "integumentary",
+    "correctAnswer": "three",
+    "acceptableAlternatives": ["3"],
+    "chainThemeId": "skin_layers",
+    "answerTypePoolId": "numbers",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "How many main layers does human skin have?",
+    "explanation": "Skin has three main layers: the epidermis (outermost), the dermis (middle), and the hypodermis (deepest, also called the subcutaneous layer).",
+    "visualDescription": "Cross-section diagram showing three stacked skin layers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skin",
+    "volatile": false,
+    "distractors": ["two", "four", "five"],
+    "variants": [
+      {
+        "quizQuestion": "Epidermis, dermis, and hypodermis — how many layers is that?",
+        "correctAnswer": "three",
+        "explanation": "Those three names — epidermis, dermis, and hypodermis — are the three principal layers of skin."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_003",
+    "subDeckId": "integumentary",
+    "correctAnswer": "epidermis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "epidermis",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "What is the outermost layer of human skin called?",
+    "explanation": "The epidermis is the outermost of the three skin layers. It is avascular (has no blood vessels) and is renewed continuously as cells migrate from the deepest stratum up to the surface.",
+    "visualDescription": "Skin cross-section with the top layer labelled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Epidermis",
+    "volatile": false,
+    "distractors": ["dermis", "hypodermis", "periosteum"],
+    "variants": [
+      {
+        "quizQuestion": "Which avascular skin layer renews itself as keratinocytes migrate toward the surface?",
+        "correctAnswer": "epidermis",
+        "explanation": "The epidermis has no blood vessels of its own; it is nourished by diffusion from the dermis and is constantly renewed as cells travel from the stratum basale to the surface."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_004",
+    "subDeckId": "integumentary",
+    "correctAnswer": "five",
+    "acceptableAlternatives": ["5"],
+    "chainThemeId": "epidermis",
+    "answerTypePoolId": "numbers",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "How many strata (sublayers) does the epidermis contain in thick skin?",
+    "explanation": "Thick skin (e.g., palms and soles) has five epidermal strata: basale, spinosum, granulosum, lucidum, and corneum. Thin skin lacks the stratum lucidum.",
+    "visualDescription": "Zoomed epidermis cross-section labelling five strata",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Epidermis",
+    "volatile": false,
+    "distractors": ["three", "four", "six"],
+    "variants": [
+      {
+        "quizQuestion": "Which skin type has all five epidermal strata, including the stratum lucidum?",
+        "correctAnswer": "thick skin",
+        "explanation": "Only thick skin (palms, soles) contains all five strata. Thin skin found elsewhere on the body lacks the stratum lucidum."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_005",
+    "subDeckId": "integumentary",
+    "correctAnswer": "stratum basale",
+    "acceptableAlternatives": ["basale", "stratum germinativum"],
+    "chainThemeId": "epidermis",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "In which epidermal stratum are new keratinocytes continuously produced by mitosis?",
+    "explanation": "The stratum basale is the deepest epidermal layer, resting on the basement membrane. Stem cells here divide by mitosis to produce new keratinocytes that gradually migrate upward.",
+    "visualDescription": "Epidermis cross-section with the deepest stratum highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stratum_basale",
+    "volatile": false,
+    "distractors": ["stratum corneum", "stratum spinosum", "stratum granulosum"],
+    "variants": [
+      {
+        "quizQuestion": "Which epidermal stratum contains melanocytes alongside dividing keratinocyte stem cells?",
+        "correctAnswer": "stratum basale",
+        "explanation": "Melanocytes and Merkel cells are both found in the stratum basale alongside the mitotically active keratinocyte stem cells."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_006",
+    "subDeckId": "integumentary",
+    "correctAnswer": "stratum corneum",
+    "acceptableAlternatives": ["corneum"],
+    "chainThemeId": "epidermis",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "What is the name of the outermost epidermal stratum, composed of dead, flattened, keratinised cells?",
+    "explanation": "The stratum corneum is the final stage of keratinocyte differentiation. Cells (now called corneocytes) are dead, anucleate, and filled with keratin, forming a tough water-resistant barrier.",
+    "visualDescription": "Epidermis cross-section with outermost stratum highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stratum_corneum",
+    "volatile": false,
+    "distractors": ["stratum lucidum", "stratum granulosum", "stratum spinosum"],
+    "variants": [
+      {
+        "quizQuestion": "Which epidermal stratum provides the body's primary water-resistant barrier through dead, keratin-packed cells?",
+        "correctAnswer": "stratum corneum",
+        "explanation": "Corneocytes in the stratum corneum are filled with keratin and embedded in lipids, creating the skin's main barrier against water loss and pathogens."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_007",
+    "subDeckId": "integumentary",
+    "correctAnswer": "keratinocytes",
+    "acceptableAlternatives": ["keratinocyte"],
+    "chainThemeId": "epidermis",
+    "answerTypePoolId": "cell_types",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "What cell type makes up approximately 90% of the epidermis?",
+    "explanation": "Keratinocytes are the dominant epidermal cell, accounting for about 90% of its cells. They produce keratin, a fibrous structural protein that gives skin its strength and water resistance.",
+    "visualDescription": "Epidermis diagram with keratinocytes labelled in majority",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Keratinocyte",
+    "volatile": false,
+    "distractors": ["melanocytes", "Langerhans cells", "fibroblasts"],
+    "variants": [
+      {
+        "quizQuestion": "Which protein-producing cells form about 90% of epidermal cells and are responsible for the skin's barrier function?",
+        "correctAnswer": "keratinocytes",
+        "explanation": "Keratinocytes synthesise keratin and migrate from the stratum basale to the surface, gradually differentiating into the dead corneocytes of the stratum corneum."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_008",
+    "subDeckId": "integumentary",
+    "correctAnswer": "melanocytes",
+    "acceptableAlternatives": ["melanocyte"],
+    "chainThemeId": "epidermis",
+    "answerTypePoolId": "cell_types",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which cells in the stratum basale produce the pigment responsible for skin colour?",
+    "explanation": "Melanocytes make up about 8% of epidermal cells and sit in the stratum basale. They synthesise melanin and transfer it via dendritic processes to surrounding keratinocytes, shielding their nuclei from UV radiation.",
+    "visualDescription": "Stratum basale showing branched melanocyte among keratinocytes",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Melanocyte",
+    "volatile": false,
+    "distractors": ["Langerhans cells", "Merkel cells", "fibroblasts"],
+    "variants": [
+      {
+        "quizQuestion": "What is the name of the pigment produced by melanocytes that protects skin from UV radiation?",
+        "correctAnswer": "melanin",
+        "explanation": "Melanin is synthesised in melanocytes and transferred to keratinocytes, where it forms a protective cap over their nuclei to absorb UV radiation."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_009",
+    "subDeckId": "integumentary",
+    "correctAnswer": "Langerhans cells",
+    "acceptableAlternatives": ["Langerhans cell"],
+    "chainThemeId": "epidermis",
+    "answerTypePoolId": "cell_types",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which dendritic immune cells, found in the stratum spinosum, act as the skin's first-line antigen-presenting cells?",
+    "explanation": "Langerhans cells are resident macrophage-like dendritic cells in the stratum spinosum. They capture antigens and migrate to lymph nodes to activate T cells, making them crucial to skin immunity.",
+    "visualDescription": "Stratum spinosum cross-section with a dendritic Langerhans cell highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Langerhans_cell",
+    "volatile": false,
+    "distractors": ["Merkel cells", "mast cells", "plasma cells"],
+    "variants": [
+      {
+        "quizQuestion": "In which epidermal stratum are Langerhans cells (immune sentinel cells) located?",
+        "correctAnswer": "stratum spinosum",
+        "explanation": "Langerhans cells reside primarily in the stratum spinosum, where their branching dendrites allow them to sample antigens across a wide area."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_010",
+    "subDeckId": "integumentary",
+    "correctAnswer": "dermis",
+    "acceptableAlternatives": [],
+    "chainThemeId": "dermis",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "Which skin layer lies between the epidermis and the hypodermis and contains blood vessels, hair follicles, and nerve endings?",
+    "explanation": "The dermis is the middle skin layer. It is vascular, contains collagen and elastic fibres, and houses hair follicles, sweat glands, sebaceous glands, blood vessels, lymphatics, and sensory receptors.",
+    "visualDescription": "Skin cross-section with middle layer highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermis",
+    "volatile": false,
+    "distractors": ["epidermis", "hypodermis", "periosteum"],
+    "variants": [
+      {
+        "quizQuestion": "In which skin layer would you find Meissner's corpuscles, hair follicles, and the blood supply that nourishes the epidermis?",
+        "correctAnswer": "dermis",
+        "explanation": "The dermis contains the skin's blood vessels (which also nourish the avascular epidermis), sensory receptors such as Meissner's corpuscles, and the bases of hair follicles and glands."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_011",
+    "subDeckId": "integumentary",
+    "correctAnswer": "papillary dermis",
+    "acceptableAlternatives": ["papillary layer"],
+    "chainThemeId": "dermis",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which dermal sublayer is composed of loose connective tissue and forms the dermal ridges responsible for fingerprints?",
+    "explanation": "The papillary dermis is the superficial portion of the dermis. Its finger-like projections (dermal papillae) interlock with the epidermis, increasing surface area and creating the friction ridges seen as fingerprints.",
+    "visualDescription": "Dermis cross-section showing wavy papillary-epidermal junction",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermis",
+    "volatile": false,
+    "distractors": ["reticular dermis", "stratum basale", "hypodermis"],
+    "variants": [
+      {
+        "quizQuestion": "What structural feature of the papillary dermis creates the unique friction ridge patterns visible as fingerprints?",
+        "correctAnswer": "dermal papillae",
+        "explanation": "Dermal papillae are upward projections of the papillary dermis that push into the epidermis; their pattern determines the unique fingerprint ridge arrangement."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_012",
+    "subDeckId": "integumentary",
+    "correctAnswer": "reticular dermis",
+    "acceptableAlternatives": ["reticular layer"],
+    "chainThemeId": "dermis",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "Which deeper dermal sublayer is composed of dense irregular connective tissue with abundant collagen and elastic fibres?",
+    "explanation": "The reticular dermis is the thicker, deeper portion of the dermis. Its dense irregular arrangement of collagen and elastic fibres gives skin its strength, elasticity, and ability to resist tearing from multiple directions.",
+    "visualDescription": "Dermis cross-section with deeper dense layer highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermis",
+    "volatile": false,
+    "distractors": ["papillary dermis", "stratum spinosum", "hypodermis"],
+    "variants": [
+      {
+        "quizQuestion": "The strength and stretch of skin is primarily due to collagen and elastic fibres found in which layer?",
+        "correctAnswer": "reticular dermis",
+        "explanation": "The reticular dermis contains densely packed collagen type I fibres and elastic fibres arranged irregularly, giving skin its tensile strength and elasticity."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_013",
+    "subDeckId": "integumentary",
+    "correctAnswer": "hypodermis",
+    "acceptableAlternatives": ["subcutaneous layer", "subcutis", "superficial fascia"],
+    "chainThemeId": "skin_layers",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "What is the deepest layer of skin, composed mainly of adipose tissue, that provides insulation and energy storage?",
+    "explanation": "The hypodermis (subcutaneous layer) sits below the dermis and consists largely of fat (adipose tissue). It insulates the body, cushions underlying structures, and anchors skin to deeper tissues.",
+    "visualDescription": "Skin cross-section with the bottom fatty layer highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Subcutaneous_tissue",
+    "volatile": false,
+    "distractors": ["dermis", "deep fascia", "periosteum"],
+    "variants": [
+      {
+        "quizQuestion": "Injections delivered 'subcutaneously' (SC) go into which skin layer?",
+        "correctAnswer": "hypodermis",
+        "explanation": "Subcutaneous injections are deposited into the hypodermis — the fatty layer beneath the dermis — where drugs are absorbed slowly into the bloodstream."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_014",
+    "subDeckId": "integumentary",
+    "correctAnswer": "hair follicle",
+    "acceptableAlternatives": ["follicle"],
+    "chainThemeId": "hair",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "What skin structure anchors each strand of hair and contains the cells responsible for hair growth?",
+    "explanation": "The hair follicle is a tube-like pocket of epidermal cells that extends into the dermis (and sometimes the hypodermis). The matrix cells at its base divide to produce the hair shaft.",
+    "visualDescription": "Skin cross-section showing a hair follicle extending into dermis",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hair_follicle",
+    "volatile": false,
+    "distractors": ["sebaceous gland", "sweat gland", "arrector pili"],
+    "variants": [
+      {
+        "quizQuestion": "Which skin structure, extending into the dermis, must remain intact for a hair to regrow after being plucked?",
+        "correctAnswer": "hair follicle",
+        "explanation": "As long as the hair follicle — especially the dermal papilla and germinal matrix at its base — is undamaged, a new hair can grow back after the old one is removed."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_015",
+    "subDeckId": "integumentary",
+    "correctAnswer": "arrector pili",
+    "acceptableAlternatives": ["arrector pili muscle"],
+    "chainThemeId": "hair",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What tiny smooth muscle, attached to each hair follicle, contracts to cause goosebumps?",
+    "explanation": "The arrector pili is a small bundle of smooth muscle running from the hair follicle to the dermis. When it contracts (from cold or fear), it pulls the follicle erect, creating the dimpled goosebump effect.",
+    "visualDescription": "Hair follicle diagram with arrector pili muscle labelled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arrector_pili_muscle",
+    "volatile": false,
+    "distractors": ["papillary muscle", "detrusor muscle", "cremaster muscle"],
+    "variants": [
+      {
+        "quizQuestion": "Contraction of which smooth muscle is responsible for piloerection (goosebumps) in cold or frightening situations?",
+        "correctAnswer": "arrector pili",
+        "explanation": "The arrector pili muscles are innervated by sympathetic nerves; adrenaline and cold trigger their contraction, erecting the hair and producing goosebumps."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_016",
+    "subDeckId": "integumentary",
+    "correctAnswer": "anagen",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hair",
+    "answerTypePoolId": "phase_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the name of the active growth phase of the hair cycle, lasting 2–6 years for scalp hair?",
+    "explanation": "During the anagen phase, matrix cells in the follicle divide rapidly to elongate the hair shaft. Scalp hair stays in anagen for 2–6 years, which is why it can grow quite long.",
+    "visualDescription": "Hair cycle diagram with anagen phase highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hair_follicle",
+    "volatile": false,
+    "distractors": ["catagen", "telogen", "exogen"],
+    "variants": [
+      {
+        "quizQuestion": "At any given moment, approximately what percentage of scalp hairs are in the anagen (active growth) phase?",
+        "correctAnswer": "85–90%",
+        "explanation": "Because anagen lasts 2–6 years while telogen lasts only 3–4 months, the vast majority (roughly 85–90%) of scalp hairs are actively growing at any time."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_017",
+    "subDeckId": "integumentary",
+    "correctAnswer": "catagen",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hair",
+    "answerTypePoolId": "phase_names",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "What is the name of the brief transitional phase of the hair cycle, lasting 2–3 weeks, during which the follicle regresses?",
+    "explanation": "The catagen phase is a short transitional period lasting 2–3 weeks. Mitosis in the matrix stops, the follicle shrinks, and the hair shaft is cut off from its blood supply as it converts to a club hair.",
+    "visualDescription": "Hair cycle diagram with catagen phase highlighted as a short transition",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hair_follicle",
+    "volatile": false,
+    "distractors": ["anagen", "telogen", "exogen"],
+    "variants": [
+      {
+        "quizQuestion": "Which hair cycle phase is characterised by cessation of mitosis, follicle regression, and formation of the club hair — and lasts only 2–3 weeks?",
+        "correctAnswer": "catagen",
+        "explanation": "Catagen is the shortest phase of the hair cycle. The follicle involutes to about one-sixth of its length, and the hair becomes a non-growing club hair before entering the resting telogen phase."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_018",
+    "subDeckId": "integumentary",
+    "correctAnswer": "telogen",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hair",
+    "answerTypePoolId": "phase_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "In which resting phase of the hair cycle, lasting 3–4 months, does the club hair remain in the follicle before shedding?",
+    "explanation": "Telogen is the resting phase of the hair cycle, lasting 3–4 months. The follicle is quiescent and the hair is a keratinised club hair anchored in place. It is eventually shed or pushed out by the new anagen hair.",
+    "visualDescription": "Hair cycle diagram with telogen phase highlighted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hair_follicle",
+    "volatile": false,
+    "distractors": ["anagen", "catagen", "exogen"],
+    "variants": [
+      {
+        "quizQuestion": "Telogen effluvium — excessive hair shedding after stress — results from many follicles simultaneously entering which phase?",
+        "correctAnswer": "telogen",
+        "explanation": "Physical or emotional stress can synchronise follicles into the telogen (resting) phase; when they all shed at once 2–3 months later, it produces noticeable hair loss called telogen effluvium."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_019",
+    "subDeckId": "integumentary",
+    "correctAnswer": "lunula",
+    "acceptableAlternatives": [],
+    "chainThemeId": "nails",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What is the name of the pale crescent-shaped region visible at the base of a fingernail?",
+    "explanation": "The lunula (Latin for 'little moon') is the visible portion of the nail matrix — the cells still actively dividing. It appears white because the thicker nail plate here hides the underlying pink capillaries.",
+    "visualDescription": "Close-up of fingernail base with pale crescent labelled",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nail_(anatomy)",
+    "volatile": false,
+    "distractors": ["nail bed", "eponychium", "hyponychium"],
+    "variants": [
+      {
+        "quizQuestion": "The pale crescent at the base of the nail (lunula) is actually the visible part of which nail structure?",
+        "correctAnswer": "nail matrix",
+        "explanation": "The lunula is the distal visible portion of the nail matrix — the germinal layer that produces the nail plate. Its white appearance comes from the thicker, less transparent nail plate over the matrix."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_020",
+    "subDeckId": "integumentary",
+    "correctAnswer": "3 mm per month",
+    "acceptableAlternatives": ["about 3 mm/month", "~3 mm per month", "3mm per month"],
+    "chainThemeId": "nails",
+    "answerTypePoolId": "measurements",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Approximately how fast do fingernails grow?",
+    "explanation": "Fingernails grow approximately 3 mm per month (about 0.1 mm per day). Toenails grow more slowly, at roughly 1 mm per month. Growth is faster in summer, on the dominant hand, and in younger individuals.",
+    "visualDescription": "Ruler next to fingernail showing monthly growth increment",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nail_(anatomy)",
+    "volatile": false,
+    "distractors": ["1 mm per month", "6 mm per month", "10 mm per month"],
+    "variants": [
+      {
+        "quizQuestion": "Toenails grow at approximately 1 mm per month — about how much slower is that than fingernails?",
+        "correctAnswer": "three times slower",
+        "explanation": "Fingernails grow ~3 mm/month and toenails ~1 mm/month, making toenails roughly three times slower. This is why toenails take longer to recover after injury or fungal infection."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_021",
+    "subDeckId": "integumentary",
+    "correctAnswer": "sebaceous glands",
+    "acceptableAlternatives": ["sebaceous gland", "oil glands"],
+    "chainThemeId": "glands",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Which skin glands secrete sebum (oil) via a holocrine mechanism directly into hair follicles?",
+    "explanation": "Sebaceous glands are holocrine glands — their cells accumulate sebum and then rupture to release it into the hair follicle canal. Sebum lubricates and waterproofs the hair and skin surface and has mild antimicrobial properties.",
+    "visualDescription": "Hair follicle diagram with sebaceous gland highlighted alongside it",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sebaceous_gland",
+    "volatile": false,
+    "distractors": ["eccrine glands", "apocrine glands", "ceruminous glands"],
+    "variants": [
+      {
+        "quizQuestion": "What term describes the secretion mechanism of sebaceous glands, in which the entire cell disintegrates to release its product?",
+        "correctAnswer": "holocrine",
+        "explanation": "Holocrine secretion means the entire cell fills with product (sebum) and then bursts to release it — unlike merocrine (exocytosis) or apocrine (budding) mechanisms."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_022",
+    "subDeckId": "integumentary",
+    "correctAnswer": "eccrine sweat glands",
+    "acceptableAlternatives": ["eccrine glands", "merocrine sweat glands"],
+    "chainThemeId": "glands",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which type of sweat gland, numbering approximately 3 million over the whole body, is the primary gland for thermoregulation?",
+    "explanation": "Eccrine sweat glands are distributed across most of the body surface (~3 million total) and open directly onto the skin surface. They secrete a watery sweat that cools the body through evaporation.",
+    "visualDescription": "Skin cross-section with coiled eccrine gland extending to skin surface",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eccrine_sweat_gland",
+    "volatile": false,
+    "distractors": ["apocrine sweat glands", "sebaceous glands", "ceruminous glands"],
+    "variants": [
+      {
+        "quizQuestion": "How do eccrine sweat glands deliver sweat onto the skin surface?",
+        "correctAnswer": "through their own duct opening directly onto the skin",
+        "explanation": "Unlike apocrine glands (which open into hair follicles), eccrine glands have their own duct that opens directly onto the epidermis surface, allowing rapid widespread sweat release for cooling."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_023",
+    "subDeckId": "integumentary",
+    "correctAnswer": "apocrine sweat glands",
+    "acceptableAlternatives": ["apocrine glands"],
+    "chainThemeId": "glands",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which sweat glands, found mainly in the axillae and groin, become active at puberty and open into hair follicles?",
+    "explanation": "Apocrine sweat glands are located in the axillae (armpits), groin, and areolae. They become active at puberty under hormonal influence and secrete a thick, protein-rich fluid into hair follicles; bacteria on the skin break it down into the compounds associated with body odour.",
+    "visualDescription": "Axillary skin cross-section showing apocrine gland opening into a hair follicle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apocrine_sweat_gland",
+    "volatile": false,
+    "distractors": ["eccrine sweat glands", "sebaceous glands", "mammary glands"],
+    "variants": [
+      {
+        "quizQuestion": "Body odour arises when skin bacteria act on secretions from which type of sweat gland?",
+        "correctAnswer": "apocrine sweat glands",
+        "explanation": "Apocrine glands secrete a lipid- and protein-rich fluid that is odourless on its own; skin surface bacteria metabolise these compounds into volatile, malodorous molecules."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_024",
+    "subDeckId": "integumentary",
+    "correctAnswer": "hemostasis",
+    "acceptableAlternatives": ["haemostasis"],
+    "chainThemeId": "wound_healing",
+    "answerTypePoolId": "phase_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the first phase of wound healing, in which blood vessels constrict and a clot forms to stop bleeding?",
+    "explanation": "Hemostasis is the immediate response to injury: vessels vasoconstrict, platelets aggregate, and the coagulation cascade forms a fibrin clot. This phase typically completes within minutes to hours and creates the scaffold for subsequent healing.",
+    "visualDescription": "Wound cross-section showing clot formation at injury site",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wound_healing",
+    "volatile": false,
+    "distractors": ["inflammation", "proliferation", "remodeling"],
+    "variants": [
+      {
+        "quizQuestion": "Put the four wound-healing phases in correct order — which phase comes first?",
+        "correctAnswer": "hemostasis",
+        "explanation": "The correct order is hemostasis → inflammation → proliferation → remodeling. Hemostasis stops the bleeding; only then can immune cells (inflammation) and new tissue (proliferation) follow."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_025",
+    "subDeckId": "integumentary",
+    "correctAnswer": "proliferation",
+    "acceptableAlternatives": ["proliferative phase"],
+    "chainThemeId": "wound_healing",
+    "answerTypePoolId": "phase_names",
+    "difficulty": 2,
+    "funScore": 2,
+    "quizQuestion": "Which wound-healing phase involves angiogenesis, granulation tissue formation, and re-epithelialisation?",
+    "explanation": "The proliferation phase (days 4–21) rebuilds the wound with granulation tissue rich in new capillaries (angiogenesis) and fibroblast-deposited collagen. Keratinocytes migrate across the surface to restore the epithelial barrier.",
+    "visualDescription": "Wound cross-section showing new tissue filling the defect",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wound_healing",
+    "volatile": false,
+    "distractors": ["hemostasis", "inflammation", "remodeling"],
+    "variants": [
+      {
+        "quizQuestion": "Granulation tissue — the pink, granular tissue seen in a healing wound — forms during which phase of wound healing?",
+        "correctAnswer": "proliferation",
+        "explanation": "Granulation tissue consists of new capillaries, fibroblasts, and loose collagen laid down during the proliferation phase. Its granular appearance under a microscope gives it its name."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_026",
+    "subDeckId": "integumentary",
+    "correctAnswer": "remodeling",
+    "acceptableAlternatives": ["maturation", "remodelling"],
+    "chainThemeId": "wound_healing",
+    "answerTypePoolId": "phase_names",
+    "difficulty": 3,
+    "funScore": 2,
+    "quizQuestion": "Which final phase of wound healing, lasting months to years, involves replacement of type III collagen with stronger type I collagen and scar maturation?",
+    "explanation": "The remodeling (maturation) phase begins around 3 weeks after injury and can continue for up to 2 years. Fibroblasts replace the initial type III collagen with more organised type I collagen, increasing tensile strength. Fully healed skin reaches only about 80% of its original strength.",
+    "visualDescription": "Timeline showing four wound-healing phases with remodeling as the longest",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wound_healing",
+    "volatile": false,
+    "distractors": ["proliferation", "inflammation", "hemostasis"],
+    "variants": [
+      {
+        "quizQuestion": "Healed skin only reaches about what percentage of the original tensile strength even after complete wound remodeling?",
+        "correctAnswer": "80%",
+        "explanation": "Even after months of remodeling, scar tissue achieves only approximately 80% of the tensile strength of unwounded skin because scar collagen fibres are less organised than normal dermal collagen."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_027",
+    "subDeckId": "integumentary",
+    "correctAnswer": "first-degree burn",
+    "acceptableAlternatives": ["superficial burn", "first degree burn"],
+    "chainThemeId": "burns",
+    "answerTypePoolId": "burn_classification",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "A burn that affects only the epidermis, causing redness and pain but no blisters, is classified as which degree?",
+    "explanation": "A first-degree (superficial) burn damages only the epidermis. It presents as red, dry, and painful skin — sunburn is the classic example. These burns heal within 3–5 days without scarring.",
+    "visualDescription": "Skin cross-section showing burn limited to the epidermis layer",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Burn",
+    "volatile": false,
+    "distractors": ["second-degree burn", "third-degree burn", "fourth-degree burn"],
+    "variants": [
+      {
+        "quizQuestion": "A typical sunburn is an example of which degree of burn?",
+        "correctAnswer": "first-degree burn",
+        "explanation": "Most sunburns are first-degree burns, affecting only the epidermis. They cause redness and pain but do not blister and heal without permanent scarring."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_028",
+    "subDeckId": "integumentary",
+    "correctAnswer": "second-degree burn",
+    "acceptableAlternatives": ["partial thickness burn", "second degree burn"],
+    "chainThemeId": "burns",
+    "answerTypePoolId": "burn_classification",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "A burn that extends into the dermis and forms fluid-filled blisters is classified as which degree?",
+    "explanation": "Second-degree (partial thickness) burns damage the epidermis and part of the dermis. Blister formation is the hallmark sign. They are painful and can heal in 2–3 weeks; deep partial-thickness burns may scar.",
+    "visualDescription": "Skin cross-section showing burn extending into dermis with a blister",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Burn",
+    "volatile": false,
+    "distractors": ["first-degree burn", "third-degree burn", "fourth-degree burn"],
+    "variants": [
+      {
+        "quizQuestion": "Why do second-degree burns form blisters while first-degree burns do not?",
+        "correctAnswer": "damaged dermal capillaries allow plasma to accumulate between the epidermis and dermis",
+        "explanation": "When the dermal capillaries are damaged by heat, plasma leaks into the space between the epidermis and dermis, forming the characteristic fluid-filled blisters of second-degree burns."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_029",
+    "subDeckId": "integumentary",
+    "correctAnswer": "third-degree burn",
+    "acceptableAlternatives": ["full thickness burn", "third degree burn"],
+    "chainThemeId": "burns",
+    "answerTypePoolId": "burn_classification",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "A full-thickness burn that destroys all skin layers, often appearing white or charred and painless, is classified as which degree?",
+    "explanation": "Third-degree (full-thickness) burns destroy the entire epidermis and dermis, and may extend into the hypodermis. They are painless because nerve endings are destroyed. The wound cannot self-regenerate skin and typically requires grafting.",
+    "visualDescription": "Skin cross-section showing burn through all layers with charred appearance",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Burn",
+    "volatile": false,
+    "distractors": ["second-degree burn", "first-degree burn", "fourth-degree burn"],
+    "variants": [
+      {
+        "quizQuestion": "Why are third-degree burns often painless, despite being the most severe superficial burn category?",
+        "correctAnswer": "nerve endings in the skin are destroyed",
+        "explanation": "Third-degree burns destroy all layers of skin including the dermis where pain receptors reside, so there is no signal to transmit pain."
+      }
+    ]
+  },
+  {
+    "id": "ha_integ_030",
+    "subDeckId": "integumentary",
+    "correctAnswer": "rule of nines",
+    "acceptableAlternatives": ["Wallace rule of nines"],
+    "chainThemeId": "burns",
+    "answerTypePoolId": "clinical_tools",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What clinical formula divides the body surface into regions of 9% (or multiples of 9%) to estimate total burn surface area?",
+    "explanation": "The Rule of Nines assigns 9% TBSA to the head, 9% to each arm, 18% to the anterior trunk, 18% to the posterior trunk, 18% to each leg, and 1% to the perineum (totalling 100%). It is used to guide fluid resuscitation in burn victims.",
+    "visualDescription": "Body diagram with percentage regions labelled by the Rule of Nines",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wallace_rule_of_nines",
+    "volatile": false,
+    "distractors": ["Glasgow Coma Scale", "Lund and Browder chart", "APACHE II score"],
+    "variants": [
+      {
+        "quizQuestion": "Using the Rule of Nines, what percentage of total body surface area (TBSA) does each arm represent?",
+        "correctAnswer": "9%",
+        "explanation": "In the Rule of Nines each upper extremity counts as 9% TBSA. This helps clinicians quickly estimate fluid replacement needs (e.g., Parkland formula) after burns."
+      }
+    ]
+  }
+]

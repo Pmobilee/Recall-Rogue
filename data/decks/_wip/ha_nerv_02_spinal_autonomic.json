@@ -1,0 +1,756 @@
+[
+  {
+    "id": "ha_nerv_028",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "31",
+    "acceptableAlternatives": ["31 pairs"],
+    "chainThemeId": "spinal_cord",
+    "answerTypePoolId": "spinal_nerve_counts",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "How many pairs of spinal nerves does the human body have?",
+    "explanation": "There are 31 pairs of spinal nerves: 8 cervical, 12 thoracic, 5 lumbar, 5 sacral, and 1 coccygeal. Notably, there are 8 cervical nerve pairs but only 7 cervical vertebrae — C1 exits above the C1 (atlas) vertebra, so an extra nerve is created below C7.",
+    "visualDescription": "Posterior view of spinal column with spinal nerve pairs labeled and color-coded by region",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spinal_nerve",
+    "volatile": false,
+    "distractors": ["28", "33", "30"],
+    "variants": [
+      {
+        "quizQuestion": "How many thoracic spinal nerve pairs are there?",
+        "correctAnswer": "12",
+        "explanation": "T1 through T12 give 12 thoracic spinal nerve pairs. Each exits below its corresponding thoracic vertebra and serves the chest wall, abdominal wall, and upper limb (T1)."
+      },
+      {
+        "quizQuestion": "Why are there 8 cervical spinal nerves but only 7 cervical vertebrae?",
+        "correctAnswer": "C1 exits above the atlas (C1 vertebra), creating an extra nerve below C7",
+        "explanation": "Cervical nerves C1–C7 each exit above their corresponding vertebra. Since C1 exits above the atlas, a 'space' is created for C8, which exits below C7 — giving 8 cervical nerves for only 7 vertebrae."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_029",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "L1–L2 (conus medullaris)",
+    "acceptableAlternatives": ["L1", "L2", "L1-L2"],
+    "chainThemeId": "spinal_cord",
+    "answerTypePoolId": "spinal_cord_landmarks",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "At what vertebral level does the spinal cord end (the conus medullaris) in adults?",
+    "explanation": "The spinal cord tapers to a point called the conus medullaris at approximately the L1–L2 level in adults. Below this, the vertebral canal contains only the cauda equina — a bundle of nerve roots that fan out like a horse's tail.",
+    "visualDescription": "Sagittal diagram of lumbar spine showing conus medullaris at L1-L2 and the cauda equina below",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spinal_cord",
+    "volatile": false,
+    "distractors": ["T12", "L4–L5", "S1"],
+    "variants": [
+      {
+        "quizQuestion": "What is the name for the tapering end of the spinal cord?",
+        "correctAnswer": "Conus medullaris",
+        "explanation": "The conus medullaris is the tapered inferior tip of the spinal cord, typically at L1–L2. The filum terminale — a thread of fibrous tissue — continues downward from the conus to anchor the cord to the coccyx."
+      },
+      {
+        "quizQuestion": "What structure occupies the lumbar vertebral canal below the conus medullaris?",
+        "correctAnswer": "Cauda equina",
+        "explanation": "Below L1–L2, the spinal cord has ended but lumbar and sacral nerve roots must travel down to their exit foramina. This bundle of roots is called the cauda equina (Latin: horse's tail) because of its appearance."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_030",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "L3–L4 or L4–L5",
+    "acceptableAlternatives": ["L3-L4", "L4-L5", "L3/L4", "L4/L5"],
+    "chainThemeId": "spinal_cord",
+    "answerTypePoolId": "spinal_cord_landmarks",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "At which intervertebral level is a lumbar puncture (spinal tap) performed, and why?",
+    "explanation": "Lumbar punctures are performed at L3–L4 or L4–L5. Because the spinal cord ends at L1–L2, inserting a needle between these lower vertebrae enters only the subarachnoid space containing CSF and the cauda equina nerve roots — not the cord itself. Nerve roots float aside rather than being pierced.",
+    "visualDescription": "Sagittal cross-section showing lumbar puncture needle entering subarachnoid space between L3-L4 vertebrae below the conus medullaris",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lumbar_puncture",
+    "volatile": false,
+    "distractors": ["L1–L2", "T12–L1", "L5–S1"],
+    "variants": [
+      {
+        "quizQuestion": "Why is lumbar puncture safe at L3–L4 but not at T12–L1?",
+        "correctAnswer": "The spinal cord ends at L1–L2; below this, only cauda equina nerve roots are present",
+        "explanation": "At T12–L1, the spinal cord itself is present and could be damaged by a needle. At L3–L4, the cord has ended and the space contains only the cauda equina roots floating in CSF, which can move out of the needle's way."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_031",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Receptor → afferent neuron → integration center → efferent neuron → effector",
+    "acceptableAlternatives": ["sensory → spinal cord → motor", "5-component reflex arc"],
+    "chainThemeId": "spinal_cord",
+    "answerTypePoolId": "reflex_arc_components",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What are the five components of a spinal reflex arc in correct order?",
+    "explanation": "A reflex arc has five components in sequence: (1) receptor detects stimulus, (2) afferent (sensory) neuron carries signal to the spinal cord, (3) integration center in the spinal cord processes it, (4) efferent (motor) neuron carries response signal out, (5) effector (muscle or gland) produces the response — all without requiring brain input.",
+    "visualDescription": "Diagram of knee-jerk reflex arc showing receptor in patellar tendon, sensory neuron, synapse in spinal cord gray matter, motor neuron, and quadriceps muscle",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reflex_arc",
+    "volatile": false,
+    "distractors": [
+      "Receptor → efferent neuron → brain → afferent neuron → effector",
+      "Effector → afferent neuron → spinal cord → efferent neuron → receptor",
+      "Brain → efferent neuron → spinal cord → afferent neuron → effector"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What term describes the sensory neuron carrying signals toward the spinal cord in a reflex arc?",
+        "correctAnswer": "Afferent neuron",
+        "explanation": "Afferent means 'carrying toward' (toward the CNS). Sensory neurons are afferent. Efferent neurons carry signals away from the CNS to effectors. A helpful mnemonic: Afferent = Arrive, Efferent = Exit."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_032",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "T4 = nipple line; T10 = umbilicus",
+    "acceptableAlternatives": ["T4 nipples", "T10 navel"],
+    "chainThemeId": "dermatomes",
+    "answerTypePoolId": "dermatome_landmarks",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which thoracic dermatomes correspond to the nipple line and the umbilicus?",
+    "explanation": "Dermatomes are skin areas innervated by a single spinal nerve. T4 innervates the nipple line and T10 innervates the umbilicus — two clinically important landmarks. These help localize the level of spinal cord injury or anesthesia spread.",
+    "visualDescription": "Anterior torso dermatome map highlighting T4 band across nipples and T10 band across navel",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermatome_(anatomy)",
+    "volatile": false,
+    "distractors": [
+      "T2 = nipple line; T8 = umbilicus",
+      "T6 = nipple line; T12 = umbilicus",
+      "T3 = nipple line; T10 = umbilicus"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which dermatome covers the umbilicus?",
+        "correctAnswer": "T10",
+        "explanation": "T10 innervates the skin around the umbilicus. This is clinically useful: appendicitis pain initially refers to the periumbilical area (T10) before shifting to the right iliac fossa as the parietal peritoneum becomes involved."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_033",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "C6 = thumb; C7 = middle finger; C8 = little finger",
+    "acceptableAlternatives": ["C6 thumb", "C7 middle", "C8 pinky"],
+    "chainThemeId": "dermatomes",
+    "answerTypePoolId": "dermatome_landmarks",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which cervical dermatomes correspond to the thumb, middle finger, and little finger?",
+    "explanation": "Key upper limb dermatomes: C6 = thumb and lateral forearm, C7 = middle finger and posterior forearm, C8 = little finger and medial forearm. These are tested clinically to locate disc herniations — a C6-C7 disc herniation compresses the C7 root, causing numbness in the middle finger.",
+    "visualDescription": "Hand diagram color-coded by cervical dermatome: C6 shading lateral hand/thumb, C7 middle finger, C8 medial hand/little finger",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermatome_(anatomy)",
+    "volatile": false,
+    "distractors": [
+      "C5 = thumb; C6 = middle finger; C7 = little finger",
+      "C7 = thumb; C8 = middle finger; T1 = little finger",
+      "C6 = thumb; C8 = middle finger; T1 = little finger"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Numbness in the middle finger following a disc herniation suggests compression of which nerve root?",
+        "correctAnswer": "C7",
+        "explanation": "C7 innervates the middle finger (dermatome) and also controls the triceps and wrist extensors (myotome). A C6–C7 disc herniation typically compresses the C7 root, producing middle-finger numbness, triceps weakness, and a reduced triceps reflex."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_034",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "L4 = medial leg; L5 = dorsum of foot; S1 = lateral foot",
+    "acceptableAlternatives": ["L4 medial leg", "L5 top of foot", "S1 lateral foot"],
+    "chainThemeId": "dermatomes",
+    "answerTypePoolId": "dermatome_landmarks",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which lower limb dermatomes cover the medial leg, dorsum of foot, and lateral foot?",
+    "explanation": "Key lower limb dermatomes: L4 = medial leg and medial ankle, L5 = dorsum of foot and big toe, S1 = lateral foot and little toe. A herniated L4–L5 disc compresses L5, causing numbness on the top of the foot; L5–S1 disc herniation compresses S1, causing lateral foot numbness.",
+    "visualDescription": "Leg dermatome map showing L4 on medial leg, L5 on dorsum of foot, S1 on lateral foot and sole",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dermatome_(anatomy)",
+    "volatile": false,
+    "distractors": [
+      "L3 = medial leg; L4 = dorsum of foot; L5 = lateral foot",
+      "L4 = lateral leg; L5 = medial foot; S1 = plantar foot",
+      "L5 = medial leg; S1 = dorsum of foot; S2 = lateral foot"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Numbness over the dorsum (top) of the foot suggests compression of which spinal nerve root?",
+        "correctAnswer": "L5",
+        "explanation": "L5 innervates the dorsum of the foot and the big toe. An L4–L5 disc herniation compresses the L5 root, producing this pattern along with weakness of great toe extension (extensor hallucis longus)."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_035",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Dorsal horn (sensory), ventral horn (motor), lateral horn (autonomic)",
+    "acceptableAlternatives": ["dorsal = sensory, ventral = motor, lateral = autonomic"],
+    "chainThemeId": "spinal_cord",
+    "answerTypePoolId": "spinal_cord_anatomy",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What are the three horns of spinal cord gray matter and their functions?",
+    "explanation": "Spinal cord gray matter (butterfly-shaped in cross-section) has three horns: the dorsal (posterior) horn receives sensory input, the ventral (anterior) horn contains lower motor neurons for voluntary movement, and the lateral horn (present only at T1–L2) houses preganglionic sympathetic neurons.",
+    "visualDescription": "Spinal cord cross-section showing butterfly-shaped gray matter with dorsal horn labeled sensory, ventral horn labeled motor, and lateral horn labeled autonomic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spinal_cord",
+    "volatile": false,
+    "distractors": [
+      "Dorsal horn (motor), ventral horn (sensory), lateral horn (autonomic)",
+      "Dorsal horn (sensory), ventral horn (autonomic), lateral horn (motor)",
+      "Dorsal horn (motor), ventral horn (autonomic), lateral horn (sensory)"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "At which spinal levels is the lateral horn of gray matter present?",
+        "correctAnswer": "T1–L2",
+        "explanation": "The lateral horn is only present at T1–L2 (the thoracolumbar levels). It contains cell bodies of preganglionic sympathetic neurons. There is no lateral horn in cervical, lower lumbar, or sacral segments."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_036",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Dorsal columns carry touch/proprioception; spinothalamic tract carries pain/temperature",
+    "acceptableAlternatives": ["dorsal columns = touch and proprioception", "spinothalamic = pain and temperature"],
+    "chainThemeId": "spinal_cord",
+    "answerTypePoolId": "spinal_cord_tracts",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which two major ascending tracts carry sensory information in the spinal cord white matter, and what does each carry?",
+    "explanation": "White matter ascending tracts: dorsal columns (posterior funiculus) carry fine touch, vibration, and proprioception — these fibers ipsilaterally ascend and decussate in the medulla. The spinothalamic tract carries pain and temperature — these fibers decussate within 1–2 spinal segments of entry. This distinction explains hemisection (Brown-Séquard) syndrome.",
+    "visualDescription": "Spinal cord cross-section with ascending tracts highlighted: dorsal columns posterior, spinothalamic tract anterolateral",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spinal_cord",
+    "volatile": false,
+    "distractors": [
+      "Dorsal columns carry pain/temperature; spinothalamic carries touch/proprioception",
+      "Corticospinal tract carries touch; dorsal columns carry motor commands",
+      "Spinothalamic carries proprioception; spinocerebellar carries pain"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Where do dorsal column fibers decussate (cross to the opposite side)?",
+        "correctAnswer": "Medulla oblongata",
+        "explanation": "Dorsal column fibers ascend ipsilaterally the entire length of the spinal cord and decussate in the medulla at the sensory decussation (at the level of the nucleus gracilis and nucleus cuneatus). This is why a left cortical stroke causes right-sided sensory loss."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_037",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Dura mater (outermost), arachnoid mater (middle), pia mater (innermost)",
+    "acceptableAlternatives": ["dura, arachnoid, pia"],
+    "chainThemeId": "meninges",
+    "answerTypePoolId": "meningeal_layers",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What are the three meningeal layers surrounding the brain and spinal cord, from outermost to innermost?",
+    "explanation": "The three meninges are: dura mater (tough outer layer, derived from 'tough mother'), arachnoid mater (web-like middle layer), and pia mater (delicate inner layer that directly adheres to the brain and cord surface). Between arachnoid and pia is the subarachnoid space, which contains CSF.",
+    "visualDescription": "Cross-section of skull and brain showing three meningeal layers: dura mater against skull, arachnoid mater below, pia mater on brain surface, with subarachnoid space containing CSF",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Meninges",
+    "volatile": false,
+    "distractors": [
+      "Pia mater (outermost), arachnoid mater (middle), dura mater (innermost)",
+      "Dura mater (outermost), pia mater (middle), arachnoid mater (innermost)",
+      "Arachnoid mater (outermost), dura mater (middle), pia mater (innermost)"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which meningeal layer directly adheres to the surface of the brain and spinal cord?",
+        "correctAnswer": "Pia mater",
+        "explanation": "The pia mater (Latin: 'tender mother') is the thinnest and innermost of the three meninges. It is highly vascular and follows every fold and groove of the brain surface. It cannot be separated from the neural tissue without damage."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_038",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Subarachnoid space (between arachnoid and pia mater)",
+    "acceptableAlternatives": ["subarachnoid space"],
+    "chainThemeId": "meninges",
+    "answerTypePoolId": "csf_anatomy",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "In which space does cerebrospinal fluid (CSF) circulate around the brain and spinal cord?",
+    "explanation": "CSF circulates in the subarachnoid space — between the arachnoid mater and the pia mater. CSF is produced by the choroid plexus in the brain's ventricles, totals approximately 150 mL at any given time, and is replaced 3–4 times per day. It cushions the brain, removes waste, and provides nutrients.",
+    "visualDescription": "Brain cross-section highlighting subarachnoid space filled with CSF between the arachnoid and pia mater layers",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Subarachnoid_space",
+    "volatile": false,
+    "distractors": [
+      "Epidural space (between dura and skull)",
+      "Subdural space (between dura and arachnoid)",
+      "Intraventricular space only"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Where is CSF produced?",
+        "correctAnswer": "Choroid plexus (in the brain's ventricles)",
+        "explanation": "The choroid plexus is a network of specialized ependymal cells and capillaries lining the walls of all four brain ventricles. It secretes roughly 500 mL of CSF per day — about 3–4 times the total volume present — keeping the CSF constantly refreshed."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_039",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "T1–L2 (thoracolumbar)",
+    "acceptableAlternatives": ["thoracolumbar", "T1-L2"],
+    "chainThemeId": "autonomic_ns",
+    "answerTypePoolId": "ans_origins",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "From which spinal cord levels does the sympathetic nervous system originate?",
+    "explanation": "The sympathetic division originates from T1–L2, called the thoracolumbar outflow. Preganglionic neurons in the lateral horn synapse in the sympathetic chain ganglia (paravertebral) or prevertebral ganglia. The parasympathetic division has a craniosacral origin (cranial nerves III, VII, IX, X and sacral levels S2–S4).",
+    "visualDescription": "Spinal cord diagram with T1-L2 highlighted in orange for sympathetic origin and craniosacral regions in blue for parasympathetic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sympathetic_nervous_system",
+    "volatile": false,
+    "distractors": [
+      "C1–T4 (cervicothoracic)",
+      "L1–S3 (lumbosacral)",
+      "Craniosacral (same as parasympathetic)"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What is the spinal origin of the parasympathetic nervous system?",
+        "correctAnswer": "Craniosacral: cranial nerves III, VII, IX, X and sacral levels S2–S4",
+        "explanation": "Parasympathetic fibers originate from two regions: the brainstem (cranial nerves III, VII, IX, and X) and the sacral spinal cord at S2–S4. The vagus nerve (CN X) alone carries roughly 75% of all parasympathetic outflow, reaching the heart, lungs, and GI tract down to the splenic flexure."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_040",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Sympathetic = fight-or-flight; parasympathetic = rest-and-digest",
+    "acceptableAlternatives": ["sympathetic fight or flight", "parasympathetic rest and digest"],
+    "chainThemeId": "autonomic_ns",
+    "answerTypePoolId": "ans_functions",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What are the classic functional descriptions for the sympathetic and parasympathetic nervous systems?",
+    "explanation": "The sympathetic system is 'fight-or-flight': it prepares the body for action — increasing heart rate, dilating bronchi, raising blood pressure, dilating pupils, and diverting blood to muscles. The parasympathetic system is 'rest-and-digest': it slows the heart, constricts bronchi, increases GI motility, and contracts the bladder.",
+    "visualDescription": "Side-by-side comparison: sympathetic side shows running figure with dilated pupils, fast heartbeat, and dilated airways; parasympathetic side shows resting figure with slowed heart and active digestion",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Autonomic_nervous_system",
+    "volatile": false,
+    "distractors": [
+      "Sympathetic = rest-and-digest; parasympathetic = fight-or-flight",
+      "Sympathetic = feed-and-breed; parasympathetic = fight-or-flight",
+      "Both systems have the same functional role but different speeds"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which division of the autonomic nervous system increases GI motility?",
+        "correctAnswer": "Parasympathetic",
+        "explanation": "The parasympathetic nervous system promotes digestion by increasing GI motility and secretion. Sympathetic activation decreases GI motility — diverting energy away from digestion during stress. This is why stress can cause digestive symptoms."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_041",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Both use acetylcholine (ACh) as the preganglionic neurotransmitter",
+    "acceptableAlternatives": ["ACh for both preganglionic"],
+    "chainThemeId": "autonomic_ns",
+    "answerTypePoolId": "ans_neurotransmitters",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What neurotransmitter do BOTH sympathetic and parasympathetic preganglionic neurons release?",
+    "explanation": "Both divisions use acetylcholine (ACh) at the preganglionic synapse. The key difference is at the postganglionic synapse: sympathetic postganglionic neurons release norepinephrine (NE) onto target organs, while parasympathetic postganglionic neurons release ACh. Exception: sympathetic fibers to sweat glands and some blood vessels release ACh.",
+    "visualDescription": "Two-neuron ANS chain diagram: preganglionic (both): ACh; sympathetic postganglionic: norepinephrine; parasympathetic postganglionic: ACh",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Autonomic_nervous_system",
+    "volatile": false,
+    "distractors": [
+      "Sympathetic preganglionic = norepinephrine; parasympathetic preganglionic = ACh",
+      "Sympathetic preganglionic = dopamine; parasympathetic preganglionic = ACh",
+      "Both use norepinephrine as the preganglionic neurotransmitter"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What neurotransmitter do sympathetic postganglionic neurons release onto most target organs?",
+        "correctAnswer": "Norepinephrine (NE)",
+        "explanation": "Sympathetic postganglionic neurons release norepinephrine (also called noradrenaline) onto adrenergic receptors on target organs. The adrenal medulla also releases adrenaline (epinephrine) directly into the bloodstream — it is essentially a modified sympathetic ganglion."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_042",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Sympathetic dilates pupils (mydriasis); parasympathetic constricts pupils (miosis)",
+    "acceptableAlternatives": ["sympathetic mydriasis", "parasympathetic miosis"],
+    "chainThemeId": "autonomic_ns",
+    "answerTypePoolId": "ans_eye_effects",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "What are the sympathetic and parasympathetic effects on the pupils, and what are the clinical terms for each?",
+    "explanation": "Sympathetic stimulation dilates the pupil via the dilator pupillae muscle — this is mydriasis. Parasympathetic stimulation (via CN III) constricts the pupil via the sphincter pupillae muscle — this is miosis. Horner's syndrome (loss of sympathetic innervation) causes miosis; a CN III palsy causes mydriasis and drooping eyelid.",
+    "visualDescription": "Two eye diagrams side by side: sympathetic activation showing widely dilated pupil (mydriasis), parasympathetic activation showing constricted pupil (miosis)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pupillary_response",
+    "volatile": false,
+    "distractors": [
+      "Sympathetic constricts pupils (miosis); parasympathetic dilates pupils (mydriasis)",
+      "Both sympathetic and parasympathetic dilate the pupil under different conditions",
+      "Sympathetic dilates pupils (miosis); parasympathetic constricts pupils (mydriasis)"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What is the medical term for pupil dilation?",
+        "correctAnswer": "Mydriasis",
+        "explanation": "Mydriasis is pupil dilation, caused by sympathetic activation of the dilator pupillae muscle. Miosis is pupil constriction, caused by parasympathetic activation. Eye drops used for eye exams cause mydriasis (e.g., tropicamide, which blocks the parasympathetic constrictor)."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_043",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Sympathetic increases heart rate; parasympathetic decreases heart rate",
+    "acceptableAlternatives": ["sympathetic speeds heart", "parasympathetic slows heart"],
+    "chainThemeId": "autonomic_ns",
+    "answerTypePoolId": "ans_cardiac_effects",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What are the opposing effects of the sympathetic and parasympathetic systems on heart rate?",
+    "explanation": "The sympathetic system increases heart rate (positive chronotropy) and force of contraction (positive inotropy) via norepinephrine on beta-1 receptors. The parasympathetic system (via the vagus nerve, CN X) decreases heart rate (negative chronotropy) via ACh on muscarinic receptors. Resting heart rate reflects dominant parasympathetic tone.",
+    "visualDescription": "Heart diagram with dual innervation: sympathetic fibers (orange) from T1-T4 speeding heartbeat, vagal fibers (blue) slowing it",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Autonomic_nervous_system",
+    "volatile": false,
+    "distractors": [
+      "Sympathetic decreases heart rate; parasympathetic increases heart rate",
+      "Sympathetic increases heart rate; parasympathetic has no effect on heart rate",
+      "Both systems increase heart rate under different conditions"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which cranial nerve carries parasympathetic fibers to the heart to slow it?",
+        "correctAnswer": "Vagus nerve (CN X)",
+        "explanation": "The vagus nerve (CN X) carries parasympathetic fibers from the dorsal motor nucleus of the vagus in the brainstem to the sinoatrial node of the heart. It releases ACh, slowing the rate of spontaneous depolarization. Cutting the vagus nerve causes the heart to speed up to its intrinsic rate of ~100 bpm."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_044",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Roots → Trunks → Divisions → Cords → Branches (C5–T1)",
+    "acceptableAlternatives": ["Robert Taylor Drinks Cold Beer", "C5-T1 brachial plexus"],
+    "chainThemeId": "brachial_plexus",
+    "answerTypePoolId": "brachial_plexus_structure",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "What is the structural organization of the brachial plexus, and which spinal levels contribute to it?",
+    "explanation": "The brachial plexus (C5–T1) is organized: Roots → Trunks → Divisions → Cords → Branches. The mnemonic 'Robert Taylor Drinks Cold Beer' helps recall this order. It supplies all motor and most sensory innervation to the upper limb. The five terminal branches are musculocutaneous, median, ulnar, radial, and axillary.",
+    "visualDescription": "Brachial plexus diagram showing roots C5-T1 forming upper/middle/lower trunks, then dividing into anterior/posterior divisions, forming lateral/medial/posterior cords, then five terminal nerve branches",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Brachial_plexus",
+    "volatile": false,
+    "distractors": [
+      "Roots → Divisions → Trunks → Branches → Cords (C5–T1)",
+      "Trunks → Roots → Cords → Divisions → Branches (C4–T1)",
+      "Roots → Cords → Trunks → Divisions → Branches (C5–T1)"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What mnemonic helps recall the order of brachial plexus components (Roots-Trunks-Divisions-Cords-Branches)?",
+        "correctAnswer": "Robert Taylor Drinks Cold Beer",
+        "explanation": "Robert (Roots) Taylor (Trunks) Drinks (Divisions) Cold (Cords) Beer (Branches). This order reflects the anatomical pathway from the spinal cord to the terminal nerves of the upper limb. Each letter matches: R-T-D-C-B."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_045",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Musculocutaneous, median, ulnar, radial, axillary",
+    "acceptableAlternatives": ["5 terminal branches of brachial plexus"],
+    "chainThemeId": "brachial_plexus",
+    "answerTypePoolId": "brachial_plexus_branches",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What are the five terminal branches of the brachial plexus?",
+    "explanation": "The five terminal branches of the brachial plexus are: (1) musculocutaneous (C5–C7) — biceps and brachialis, (2) median (C6–T1) — most forearm flexors and thenar muscles, (3) ulnar (C8–T1) — intrinsic hand muscles, (4) radial (C5–T1) — all extensors of arm and forearm, (5) axillary (C5–C6) — deltoid and teres minor.",
+    "visualDescription": "Upper limb diagram with five terminal nerves color-coded: musculocutaneous (anterior arm), median (anterior forearm/hand), ulnar (medial forearm/hand), radial (posterior arm/forearm), axillary (deltoid region)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Brachial_plexus",
+    "volatile": false,
+    "distractors": [
+      "Musculocutaneous, median, ulnar, radial, femoral",
+      "Median, ulnar, radial, axillary, suprascapular",
+      "Musculocutaneous, median, ulnar, sciatic, axillary"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which terminal branch of the brachial plexus innervates the deltoid muscle?",
+        "correctAnswer": "Axillary nerve (C5–C6)",
+        "explanation": "The axillary nerve (C5–C6) innervates the deltoid and teres minor muscles, and provides sensation to the skin over the deltoid ('regimental badge area'). It is commonly injured in anterior shoulder dislocation or fractures of the surgical neck of humerus, causing inability to abduct the arm and a sensory patch over the lateral shoulder."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_046",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Median nerve (C6–T1): thenar muscles and lateral 3.5 digits",
+    "acceptableAlternatives": ["median nerve thenar", "C6-T1 median"],
+    "chainThemeId": "brachial_plexus",
+    "answerTypePoolId": "brachial_plexus_branches",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Which brachial plexus branch innervates the thenar muscles (thumb movement) and sensation to the lateral 3.5 digits?",
+    "explanation": "The median nerve (C6–T1) innervates the thenar eminence (abductor pollicis brevis, opponens pollicis, flexor pollicis brevis) and provides sensation to the thumb, index, middle, and lateral half of the ring finger. Carpal tunnel syndrome compresses the median nerve, causing thenar wasting and numbness in those digits.",
+    "visualDescription": "Hand diagram showing median nerve distribution: thenar muscles highlighted and lateral 3.5 digits shaded for sensation",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Median_nerve",
+    "volatile": false,
+    "distractors": [
+      "Ulnar nerve: thenar muscles and lateral 3.5 digits",
+      "Radial nerve: thenar muscles and lateral 3.5 digits",
+      "Musculocutaneous nerve: thenar muscles and lateral 3.5 digits"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which nerve is compressed in carpal tunnel syndrome?",
+        "correctAnswer": "Median nerve",
+        "explanation": "Carpal tunnel syndrome compresses the median nerve as it passes under the flexor retinaculum at the wrist. This causes pain, tingling, and numbness in the thumb, index, middle, and lateral ring finger, plus weakness of the thenar muscles. The little finger is spared (ulnar nerve territory)."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_047",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Ulnar nerve (C8–T1): most intrinsic hand muscles and medial 1.5 digits",
+    "acceptableAlternatives": ["ulnar nerve intrinsic hand", "C8-T1 ulnar"],
+    "chainThemeId": "brachial_plexus",
+    "answerTypePoolId": "brachial_plexus_branches",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which brachial plexus branch innervates most intrinsic hand muscles and sensation to the medial 1.5 digits, and where is it vulnerable at the elbow?",
+    "explanation": "The ulnar nerve (C8–T1) supplies most intrinsic hand muscles (interossei, hypothenar muscles, medial two lumbricals, adductor pollicis) and sensation to the little finger and medial half of the ring finger. It passes behind the medial epicondyle of the humerus — the 'funny bone' — where it is exposed and vulnerable to injury.",
+    "visualDescription": "Elbow diagram showing ulnar nerve path around medial epicondyle ('funny bone'), with hand diagram showing medial 1.5 digit sensory zone and hypothenar/interossei muscles",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ulnar_nerve",
+    "volatile": false,
+    "distractors": [
+      "Median nerve: most intrinsic hand muscles and medial 1.5 digits",
+      "Radial nerve: most intrinsic hand muscles and medial 1.5 digits",
+      "Musculocutaneous nerve: most intrinsic hand muscles and medial 1.5 digits"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What common term refers to striking the ulnar nerve at the medial epicondyle?",
+        "correctAnswer": "Funny bone",
+        "explanation": "The 'funny bone' sensation comes from striking the ulnar nerve as it passes in the cubital tunnel posterior to the medial epicondyle. The electric, tingling sensation radiates to the little finger and ring finger — the ulnar nerve's sensory territory. The name may also be a pun on 'humerus' (the arm bone)."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_048",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Radial nerve (C5–T1): all extensors of the arm and forearm",
+    "acceptableAlternatives": ["radial nerve extensors", "C5-T1 radial"],
+    "chainThemeId": "brachial_plexus",
+    "answerTypePoolId": "brachial_plexus_branches",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which brachial plexus nerve innervates all the extensors of the arm and forearm, and what is the classic injury caused by its damage?",
+    "explanation": "The radial nerve (C5–T1) innervates all extensors: triceps, brachioradialis, and all forearm extensors (wrist and finger extensors). Damage produces 'wrist drop' — inability to extend the wrist — because the wrist extensors are denervated. The radial nerve spirals around the humeral shaft, making it vulnerable in mid-shaft humeral fractures.",
+    "visualDescription": "Arm diagram showing radial nerve path spiraling around posterior humerus, with wrist drop position illustrated below",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Radial_nerve",
+    "volatile": false,
+    "distractors": [
+      "Median nerve: all extensors; injury causes wrist drop",
+      "Ulnar nerve: all extensors; injury causes wrist drop",
+      "Axillary nerve: all extensors; injury causes wrist drop"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What deformity results from radial nerve palsy at the arm?",
+        "correctAnswer": "Wrist drop",
+        "explanation": "Radial nerve palsy at or above the elbow denervates the wrist and finger extensors, producing wrist drop — the wrist hangs limp in flexion. The patient cannot extend the wrist or fingers against gravity. Common causes: mid-shaft humeral fracture ('Saturday night palsy' from prolonged compression against a hard surface)."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_049",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Sciatic nerve (L4–S3): largest nerve in the body",
+    "acceptableAlternatives": ["sciatic nerve", "L4-S3"],
+    "chainThemeId": "key_nerves",
+    "answerTypePoolId": "major_nerve_facts",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "Which nerve is the largest in the human body, what are its spinal roots, and how does it exit the pelvis?",
+    "explanation": "The sciatic nerve (L4–S3) is the largest nerve in the body, about 2 cm wide at its origin. It exits the pelvis through the greater sciatic foramen below the piriformis muscle. It travels down the posterior thigh and splits into the tibial nerve and common fibular (peroneal) nerve at the level of the knee.",
+    "visualDescription": "Posterior view of pelvis and leg showing sciatic nerve exiting greater sciatic foramen, traveling down posterior thigh, splitting into tibial and common fibular nerves at popliteal fossa",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sciatic_nerve",
+    "volatile": false,
+    "distractors": [
+      "Femoral nerve (L2–L4): largest nerve in the body",
+      "Vagus nerve (CN X): largest nerve in the body",
+      "Tibial nerve (L4–S3): largest nerve in the body"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Into which two nerves does the sciatic nerve divide at the knee?",
+        "correctAnswer": "Tibial nerve and common fibular (peroneal) nerve",
+        "explanation": "The sciatic nerve divides into the tibial nerve (medial popliteal fossa) and the common fibular nerve (lateral popliteal fossa) at the apex of the popliteal fossa. In some individuals this division occurs higher in the thigh or even within the pelvis."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_050",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Vagus nerve (CN X): longest cranial nerve, parasympathetic to heart/lungs/GI to splenic flexure",
+    "acceptableAlternatives": ["CN X", "vagus nerve"],
+    "chainThemeId": "key_nerves",
+    "answerTypePoolId": "major_nerve_facts",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which cranial nerve is the longest, and what parasympathetic territory does it supply?",
+    "explanation": "The vagus nerve (CN X) is the longest cranial nerve, traveling from the brainstem into the chest and abdomen. It carries parasympathetic fibers to the heart (slows rate), lungs (bronchoconstriction), and gastrointestinal tract as far as the splenic flexure of the colon. Beyond the splenic flexure, parasympathetic supply switches to sacral nerves S2–S4.",
+    "visualDescription": "Full-body diagram tracing vagus nerve from brainstem nucleus down the neck, branching to heart, lungs, esophagus, stomach, liver, small intestine, and colon to splenic flexure",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vagus_nerve",
+    "volatile": false,
+    "distractors": [
+      "Trigeminal nerve (CN V): longest cranial nerve",
+      "Facial nerve (CN VII): longest cranial nerve",
+      "Glossopharyngeal nerve (CN IX): longest cranial nerve"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "As far as which colonic landmark does the vagus nerve supply parasympathetic innervation?",
+        "correctAnswer": "Splenic flexure of the colon",
+        "explanation": "The vagus nerve supplies parasympathetic innervation to the GI tract as far as the splenic flexure (left colic flexure). Distal to this — the descending and sigmoid colon, rectum — parasympathetic supply comes from the pelvic splanchnic nerves (S2–S4). This boundary is surgically significant in Hirschsprung's disease."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_051",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Phrenic nerve (C3–C5): motor to the diaphragm",
+    "acceptableAlternatives": ["C3,4,5 phrenic nerve", "C3-C5"],
+    "chainThemeId": "key_nerves",
+    "answerTypePoolId": "major_nerve_facts",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Which nerve drives breathing by supplying the diaphragm, and from which spinal roots does it arise?",
+    "explanation": "The phrenic nerve (C3–C5) provides all motor innervation to the diaphragm, the main muscle of breathing. The classic mnemonic is 'C3, 4, 5 keeps the diaphragm alive.' A cervical spinal cord injury above C3 paralyzes the diaphragm, requiring mechanical ventilation. The phrenic nerve also carries sensory fibers from the central diaphragm.",
+    "visualDescription": "Neck and chest diagram showing phrenic nerve origin at C3-C5, course past the heart, and branching across the diaphragm",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phrenic_nerve",
+    "volatile": false,
+    "distractors": [
+      "Vagus nerve (CN X): motor to the diaphragm from cranial origin",
+      "Intercostal nerves (T1–T12): sole motor supply to diaphragm",
+      "Hypoglossal nerve (CN XII): motor to the diaphragm"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What is the mnemonic for remembering the spinal root origin of the phrenic nerve?",
+        "correctAnswer": "C3, 4, 5 keeps the diaphragm alive",
+        "explanation": "'C3, 4, 5 keeps the diaphragm alive' reminds us the phrenic nerve arises from C3, C4, and C5. It is the most clinically important mnemonic in spinal cord injury: a fracture at or above C3 will paralyze breathing because the phrenic nerve is no longer functional."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_052",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Femoral nerve (L2–L4): quadriceps motor + anterior thigh and medial leg sensation",
+    "acceptableAlternatives": ["femoral nerve L2-L4", "L2-L4 femoral"],
+    "chainThemeId": "key_nerves",
+    "answerTypePoolId": "major_nerve_facts",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which nerve (L2–L4) supplies motor innervation to the quadriceps and sensation to the anterior thigh and medial leg?",
+    "explanation": "The femoral nerve (L2–L4) enters the thigh under the inguinal ligament lateral to the femoral artery. It provides motor innervation to the quadriceps femoris (knee extension) and sensation to the anterior thigh. Its longest branch, the saphenous nerve, carries sensation down the medial leg and foot.",
+    "visualDescription": "Anterior thigh diagram showing femoral nerve entering below inguinal ligament, motor branch to quadriceps, and saphenous nerve continuing to medial leg",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femoral_nerve",
+    "volatile": false,
+    "distractors": [
+      "Obturator nerve (L2–L4): quadriceps motor + anterior thigh sensation",
+      "Sciatic nerve (L4–S3): quadriceps motor + anterior thigh sensation",
+      "Lateral femoral cutaneous nerve (L2–L3): quadriceps motor + anterior thigh sensation"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "What is the longest branch of the femoral nerve, and where does it provide sensation?",
+        "correctAnswer": "Saphenous nerve — medial leg and foot",
+        "explanation": "The saphenous nerve is the terminal sensory branch of the femoral nerve. It follows the femoral artery into Hunter's canal, emerges behind the knee, and runs down the medial leg to the foot. It is the only part of the femoral nerve that extends below the knee."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_053",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Sympathetic dilates bronchi; parasympathetic constricts bronchi",
+    "acceptableAlternatives": ["sympathetic bronchodilation", "parasympathetic bronchoconstriction"],
+    "chainThemeId": "autonomic_ns",
+    "answerTypePoolId": "ans_respiratory_effects",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What are the opposing effects of the sympathetic and parasympathetic systems on the bronchi?",
+    "explanation": "Sympathetic activation dilates the bronchi (bronchodilation) via beta-2 receptors on bronchial smooth muscle, increasing airflow during fight-or-flight. Parasympathetic activation constricts the bronchi (bronchoconstriction) via muscarinic receptors. Asthma drugs exploit this: beta-2 agonists (e.g., salbutamol) mimic sympathetic bronchodilation; anticholinergics (e.g., ipratropium) block parasympathetic bronchoconstriction.",
+    "visualDescription": "Bronchiole cross-section comparison: sympathetic branch showing wide-open lumen, parasympathetic branch showing constricted lumen",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Autonomic_nervous_system",
+    "volatile": false,
+    "distractors": [
+      "Sympathetic constricts bronchi; parasympathetic dilates bronchi",
+      "Both sympathetic and parasympathetic dilate bronchi under different conditions",
+      "Sympathetic has no effect on bronchi; parasympathetic constricts them"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which class of asthma rescue inhaler drugs mimics sympathetic bronchodilation?",
+        "correctAnswer": "Beta-2 agonists (e.g., salbutamol/albuterol)",
+        "explanation": "Beta-2 agonists activate the same beta-2 adrenergic receptors that sympathetic norepinephrine targets, causing bronchial smooth muscle relaxation and bronchodilation. Short-acting beta-2 agonists like salbutamol (albuterol) are the first-line rescue medication for acute asthma."
+      }
+    ]
+  },
+  {
+    "id": "ha_nerv_054",
+    "subDeckId": "nervous_system",
+    "correctAnswer": "Sympathetic relaxes bladder detrusor; parasympathetic contracts detrusor (enables urination)",
+    "acceptableAlternatives": ["sympathetic relaxes detrusor", "parasympathetic contracts detrusor"],
+    "chainThemeId": "autonomic_ns",
+    "answerTypePoolId": "ans_bladder_effects",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What are the opposing effects of the sympathetic and parasympathetic systems on the urinary bladder detrusor muscle?",
+    "explanation": "The detrusor muscle (bladder wall) is controlled by the autonomic system. Sympathetic activation (via beta-3 receptors on detrusor and alpha receptors on internal sphincter) relaxes the detrusor and contracts the sphincter — storing urine. Parasympathetic activation (S2–S4, pelvic nerves) contracts the detrusor and relaxes the sphincter — enabling urination. Spinal cord injury above S2 disrupts voluntary bladder control.",
+    "visualDescription": "Bladder diagram showing sympathetic innervation relaxing detrusor (storage mode) and parasympathetic innervation contracting detrusor and opening sphincter (voiding mode)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Urinary_bladder",
+    "volatile": false,
+    "distractors": [
+      "Sympathetic contracts detrusor (enables urination); parasympathetic relaxes detrusor",
+      "Both divisions relax the detrusor; voiding is purely voluntary",
+      "Sympathetic has no role in bladder control; only parasympathetic matters"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which sacral levels carry parasympathetic fibers to the bladder, enabling urination?",
+        "correctAnswer": "S2–S4 (pelvic splanchnic nerves)",
+        "explanation": "The pelvic splanchnic nerves from S2–S4 carry parasympathetic fibers to the bladder detrusor muscle. When they fire, the detrusor contracts and the internal urethral sphincter relaxes, initiating urination. These nerves also supply the distal colon and rectum — explaining loss of bowel and bladder control in sacral spinal cord injuries."
+      }
+    ]
+  }
+]

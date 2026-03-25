@@ -1,0 +1,468 @@
+[
+  {
+    "id": "ha_cardio_051",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "~5 litres",
+    "acceptableAlternatives": ["5 L", "5 liters", "approximately 5 litres"],
+    "chainThemeId": "blood_components",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What is the approximate total blood volume in a healthy adult?",
+    "explanation": "An adult human body contains roughly 5 litres of blood, accounting for about 7–8% of body weight. Blood maintains a slightly alkaline pH of 7.35–7.45. Even a loss of 15–20% (around 750 mL) triggers measurable physiological responses.",
+    "visualDescription": "Cross-sectional diagram of a blood-filled vessel with total volume annotation",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood",
+    "volatile": false,
+    "distractors": ["~2 litres", "~8 litres", "~12 litres"],
+    "variants": [
+      {
+        "quizQuestion": "What is the normal pH range of human blood?",
+        "correctAnswer": "7.35–7.45",
+        "explanation": "Blood is maintained within the narrow range of 7.35–7.45 by buffer systems, the respiratory system, and the kidneys. A pH below 7.35 is acidosis; above 7.45 is alkalosis — both are life-threatening if severe."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_052",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Plasma",
+    "acceptableAlternatives": [],
+    "chainThemeId": "blood_components",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What is the name of the liquid component of blood that makes up approximately 55% of its volume?",
+    "explanation": "Plasma is the straw-coloured liquid matrix of blood. It is roughly 92% water and carries proteins (albumin, globulins, fibrinogen), electrolytes, nutrients, hormones, waste products, and dissolved gases. The remaining 45% of blood volume is formed elements (cells and platelets).",
+    "visualDescription": "Centrifuged blood tube showing pale yellow plasma layer above a thin buffy coat and a red RBC pellet",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_plasma",
+    "volatile": false,
+    "distractors": ["Serum", "Interstitial fluid", "Lymph"],
+    "variants": [
+      {
+        "quizQuestion": "What percentage of blood plasma is water?",
+        "correctAnswer": "~92%",
+        "explanation": "About 92% of plasma is water, which acts as the solvent for all dissolved substances. The remaining 8% includes proteins, electrolytes, nutrients, hormones, and metabolic waste products."
+      },
+      {
+        "quizQuestion": "What term describes the 45% of blood volume occupied by red blood cells, measured after centrifugation?",
+        "correctAnswer": "Hematocrit",
+        "explanation": "Hematocrit (packed cell volume) is the percentage of blood volume consisting of red blood cells after spinning. Normal ranges are roughly 41–53% in males and 36–46% in females. Low hematocrit indicates anaemia; high values may indicate polycythaemia."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_053",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Albumin",
+    "acceptableAlternatives": [],
+    "chainThemeId": "blood_components",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which plasma protein is the most abundant, making up ~54% of all plasma proteins, and is chiefly responsible for maintaining osmotic pressure?",
+    "explanation": "Albumin accounts for about 54% of plasma proteins and is the primary contributor to oncotic (colloid osmotic) pressure, which keeps fluid from leaking out of capillaries. It also transports fatty acids, hormones, and drugs. Globulins (38%) include antibodies; fibrinogen (7%) is essential for clotting.",
+    "visualDescription": "Protein composition pie chart of plasma showing albumin, globulins, and fibrinogen fractions",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood",
+    "volatile": false,
+    "distractors": ["Fibrinogen", "Globulin", "Thrombin"],
+    "variants": [
+      {
+        "quizQuestion": "Which plasma protein, accounting for ~7% of plasma proteins, is the inactive precursor to fibrin in blood clotting?",
+        "correctAnswer": "Fibrinogen",
+        "explanation": "Fibrinogen is converted to fibrin by thrombin during the coagulation cascade. Fibrin strands form the structural mesh of a blood clot. Fibrinogen is synthesised in the liver, as are most clotting factors."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_054",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Red blood cells (erythrocytes)",
+    "acceptableAlternatives": ["erythrocytes", "RBCs"],
+    "chainThemeId": "red_blood_cells",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What type of blood cell is a biconcave disc, has no nucleus when mature, and carries oxygen via haemoglobin?",
+    "explanation": "Red blood cells (erythrocytes) are the most numerous blood cells: 4.5–5.5 million per microlitre. Their biconcave shape maximises surface area for gas exchange. They shed their nucleus during maturation so more space is available for haemoglobin, which binds and transports oxygen.",
+    "visualDescription": "Illustration of biconcave red blood cells viewed from the side and above, showing the characteristic disc shape",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red_blood_cell",
+    "volatile": false,
+    "distractors": ["White blood cells", "Platelets", "Plasma cells"],
+    "variants": [
+      {
+        "quizQuestion": "Approximately how many red blood cells are found in one microlitre (µL) of blood?",
+        "correctAnswer": "4.5–5.5 million",
+        "explanation": "A single microlitre of blood contains 4.5–5.5 million erythrocytes. Because they are so numerous, RBCs account for nearly the entire formed-element fraction of blood and give blood its red colour."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_055",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "~120 days",
+    "acceptableAlternatives": ["120 days", "about 120 days"],
+    "chainThemeId": "red_blood_cells",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What is the average lifespan of a red blood cell?",
+    "explanation": "Red blood cells circulate for about 120 days before being removed by macrophages in the spleen, liver, and bone marrow. Haemoglobin is then recycled — the iron is reused for new RBCs, and the porphyrin ring becomes bilirubin, excreted via bile.",
+    "visualDescription": "Diagram of the RBC lifecycle from bone marrow production to splenic destruction and haemoglobin recycling",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red_blood_cell",
+    "volatile": false,
+    "distractors": ["~10 days", "~30 days", "~365 days"],
+    "variants": [
+      {
+        "quizQuestion": "What process describes the production of red blood cells in red bone marrow, stimulated by the hormone EPO?",
+        "correctAnswer": "Erythropoiesis",
+        "explanation": "Erythropoiesis is the production of red blood cells. The kidneys sense low oxygen levels and release erythropoietin (EPO), which stimulates stem cells in red bone marrow to differentiate into erythrocytes. Athletes have exploited synthetic EPO as a performance-enhancing drug."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_056",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Haemoglobin",
+    "acceptableAlternatives": ["hemoglobin", "Hb"],
+    "chainThemeId": "red_blood_cells",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 4,
+    "quizQuestion": "What oxygen-carrying protein fills red blood cells, consisting of four subunits each containing an iron-bearing heme group?",
+    "explanation": "Haemoglobin (Hb) is composed of 4 globin chains (2 alpha + 2 beta), each with a heme group containing an Fe²⁺ iron atom. Each heme group binds one O₂ molecule, so each Hb molecule can carry up to 4 oxygen molecules. Normal Hb levels are 13.5–17.5 g/dL in males and 12–16 g/dL in females.",
+    "visualDescription": "Molecular ribbon diagram of haemoglobin showing four coloured subunits, each with a heme disc at the centre",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemoglobin",
+    "volatile": false,
+    "distractors": ["Myoglobin", "Ferritin", "Transferrin"],
+    "variants": [
+      {
+        "quizQuestion": "How many oxygen molecules can a single haemoglobin molecule carry at maximum capacity?",
+        "correctAnswer": "4",
+        "explanation": "Each of haemoglobin's four subunits has one heme group, and each heme group can bind one O₂ molecule. So one Hb molecule transports up to 4 O₂ molecules. This cooperative binding (each O₂ increases affinity for the next) is called the Hill effect."
+      },
+      {
+        "quizQuestion": "Why does carbon monoxide poisoning prevent oxygen delivery to tissues?",
+        "correctAnswer": "CO binds haemoglobin 200–250× more strongly than O₂, blocking O₂ binding sites",
+        "explanation": "Carbon monoxide (CO) occupies the same heme binding sites as oxygen but with 200–250 times greater affinity. This forms carboxyhaemoglobin, which cannot carry O₂ and also shifts the O₂ dissociation curve left, impairing release of any remaining bound oxygen."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_057",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "White blood cells (leukocytes)",
+    "acceptableAlternatives": ["leukocytes", "WBCs"],
+    "chainThemeId": "white_blood_cells",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What class of blood cells, present at 4,500–11,000 per µL, forms the cellular arm of immune defence?",
+    "explanation": "White blood cells (leukocytes) are the immune cells of the blood. They are far less numerous than RBCs but are essential for defence against pathogens, foreign particles, and abnormal cells. The normal count is 4,500–11,000 per µL; values outside this range suggest infection, inflammation, or immune disorders.",
+    "visualDescription": "Microscope blood smear showing a large purple-staining leukocyte alongside much smaller red blood cells",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/White_blood_cell",
+    "volatile": false,
+    "distractors": ["Red blood cells", "Platelets", "Mast cells"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_058",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Neutrophils",
+    "acceptableAlternatives": [],
+    "chainThemeId": "white_blood_cells",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which leukocyte type is the most abundant (60–70% of WBCs) and acts as a first-responder phagocyte against bacterial infection?",
+    "explanation": "Neutrophils are granulocytes that arrive first at sites of infection. They engulf and destroy bacteria via phagocytosis, release antimicrobial enzymes, and form neutrophil extracellular traps (NETs). They are short-lived (hours to days) and their remnants form pus.",
+    "visualDescription": "Multi-lobed neutrophil nucleus visible in a blood smear, characteristic of the polymorphonuclear appearance",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neutrophil",
+    "volatile": false,
+    "distractors": ["Eosinophils", "Basophils", "Monocytes"],
+    "variants": [
+      {
+        "quizQuestion": "Which WBC type (2–4% of leukocytes) is elevated in parasitic infections and allergic reactions?",
+        "correctAnswer": "Eosinophils",
+        "explanation": "Eosinophils are granulocytes named for their affinity for the acidic dye eosin. They release cytotoxic granules to combat parasites and modulate allergic inflammatory responses. Counts rise dramatically during helminth infections and in conditions like asthma."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_059",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Basophils",
+    "acceptableAlternatives": [],
+    "chainThemeId": "white_blood_cells",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Which rarest granulocyte (0.5–1% of WBCs) releases histamine and heparin, contributing to allergic and inflammatory responses?",
+    "explanation": "Basophils are the least common granulocyte. Their granules contain histamine (which dilates blood vessels and increases permeability during inflammation) and heparin (an anticoagulant). They play a role in allergic reactions and are closely related to tissue mast cells.",
+    "visualDescription": "Basophil in blood smear showing large dark-blue granules that often obscure the bilobed nucleus",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Basophil",
+    "volatile": false,
+    "distractors": ["Neutrophils", "Eosinophils", "Monocytes"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_060",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Lymphocytes",
+    "acceptableAlternatives": [],
+    "chainThemeId": "white_blood_cells",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which agranulocyte type (20–40% of WBCs) includes T cells, B cells, and natural killer cells?",
+    "explanation": "Lymphocytes are the primary cells of adaptive immunity. B cells produce antibodies; T cells include cytotoxic T cells (kill infected/cancerous cells) and helper T cells (coordinate immune responses); natural killer (NK) cells attack tumour cells and virus-infected cells without prior sensitisation.",
+    "visualDescription": "Small round lymphocyte with large nucleus filling most of the cell, contrasted against red blood cells in a blood smear",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lymphocyte",
+    "volatile": false,
+    "distractors": ["Monocytes", "Neutrophils", "Basophils"],
+    "variants": [
+      {
+        "quizQuestion": "Which WBC type (2–8% of leukocytes) migrates into tissues and differentiates into macrophages?",
+        "correctAnswer": "Monocytes",
+        "explanation": "Monocytes are large agranulocytes that circulate briefly in blood and then enter tissues, where they mature into macrophages. Macrophages are long-lived phagocytes that engulf pathogens, dead cells, and debris, and also present antigens to T cells to activate adaptive immunity."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_061",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Platelets (thrombocytes)",
+    "acceptableAlternatives": ["thrombocytes", "platelets"],
+    "chainThemeId": "platelets",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What are the small, anucleate cell fragments, derived from megakaryocytes, that are essential for forming a primary clot?",
+    "explanation": "Platelets (thrombocytes) are not true cells — they are cytoplasmic fragments pinched off from large bone-marrow cells called megakaryocytes. Normal count is 150,000–400,000 per µL. They circulate for 8–10 days and aggregate at sites of vessel injury to form a platelet plug, the first step in haemostasis.",
+    "visualDescription": "Electron micrograph showing small irregularly shaped platelets between much larger red blood cells",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Platelet",
+    "volatile": false,
+    "distractors": ["Red blood cells", "White blood cells", "Mast cells"],
+    "variants": [
+      {
+        "quizQuestion": "What is the normal platelet count range per microlitre of blood?",
+        "correctAnswer": "150,000–400,000 per µL",
+        "explanation": "A count below 150,000/µL is thrombocytopenia (bleeding risk); above 400,000/µL is thrombocytosis (clotting risk). Platelets survive 8–10 days. Low counts can result from bone marrow failure, immune destruction, or drugs."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_062",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Haemostasis",
+    "acceptableAlternatives": ["hemostasis"],
+    "chainThemeId": "hemostasis",
+    "answerTypePoolId": "function_terms",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What is the term for the three-step process — vascular spasm, platelet plug formation, and coagulation cascade — that stops bleeding?",
+    "explanation": "Haemostasis is the body's mechanism to stop bleeding. Step 1: vascular spasm (immediate vasoconstriction reduces blood flow). Step 2: platelet plug (platelets adhere and aggregate at the injury). Step 3: coagulation cascade (a series of clotting factor reactions produce fibrin, reinforcing the plug into a stable clot).",
+    "visualDescription": "Three-panel diagram showing vascular spasm, platelet aggregation, and fibrin mesh formation at a vessel breach",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemostasis",
+    "volatile": false,
+    "distractors": ["Fibrinolysis", "Thrombosis", "Diapedesis"],
+    "variants": [
+      {
+        "quizQuestion": "Which vitamin is required for the liver to produce clotting factors II, VII, IX, and X?",
+        "correctAnswer": "Vitamin K",
+        "explanation": "Vitamin K is a fat-soluble vitamin essential for the gamma-carboxylation of clotting factors II (prothrombin), VII, IX, and X, which enables them to bind calcium and activate. Warfarin (a blood thinner) works by antagonising vitamin K, reducing production of these factors."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_063",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Fibrin",
+    "acceptableAlternatives": [],
+    "chainThemeId": "hemostasis",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What insoluble protein forms the mesh that reinforces a platelet plug into a stable blood clot?",
+    "explanation": "Fibrin is produced when thrombin cleaves fibrinogen (a soluble plasma protein). Fibrin strands polymerise into a mesh that traps red blood cells and platelets, solidifying the clot. The intrinsic and extrinsic coagulation pathways converge on a common pathway that generates thrombin, which then produces fibrin.",
+    "visualDescription": "Scanning electron micrograph of red blood cells trapped in a fibrin mesh, forming a blood clot",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fibrin",
+    "volatile": false,
+    "distractors": ["Collagen", "Fibronectin", "Elastin"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_064",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Type O negative",
+    "acceptableAlternatives": ["O-", "O negative", "type O-"],
+    "chainThemeId": "blood_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 5,
+    "quizQuestion": "Which blood type is known as the universal red blood cell donor because its RBCs carry no ABO or Rh antigens?",
+    "explanation": "Type O negative RBCs have no A, B, or Rh D antigens on their surface. Any recipient's immune system has nothing to recognise as foreign, so O- can be transfused safely in emergencies regardless of the recipient's blood type. About 7% of the US population is O-.",
+    "visualDescription": "Blood type compatibility chart highlighting O- as the sole universal RBC donor pointing to all other types",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_type",
+    "volatile": false,
+    "distractors": ["Type AB positive", "Type A negative", "Type B negative"],
+    "variants": [
+      {
+        "quizQuestion": "Which blood type is the universal recipient, able to receive red blood cells from any ABO/Rh donor?",
+        "correctAnswer": "AB positive",
+        "explanation": "AB+ individuals have A, B, and Rh antigens on their RBCs and carry no anti-A, anti-B, or anti-Rh antibodies in their plasma. This means their immune system will not react against any donated RBCs. About 3% of the US population is AB+."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_065",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Type A: A antigens + anti-B antibodies",
+    "acceptableAlternatives": ["A antigens, anti-B antibodies", "A antigens and anti-B antibodies"],
+    "chainThemeId": "blood_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "In the ABO blood system, what antigens are on the red blood cells and what antibodies are in the plasma of a Type A person?",
+    "explanation": "Type A blood has A antigens displayed on RBC surfaces and carries anti-B antibodies in the plasma. If Type B blood were transfused into a Type A person, the anti-B antibodies would attack the incoming B-antigen RBCs, causing a haemolytic transfusion reaction.",
+    "visualDescription": "Diagram of a Type A red blood cell showing A-antigen spikes on surface with anti-B antibodies floating in surrounding plasma",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_type",
+    "volatile": false,
+    "distractors": ["B antigens + anti-A antibodies", "A antigens + no antibodies", "A+B antigens + anti-A antibodies"],
+    "variants": [
+      {
+        "quizQuestion": "In the ABO system, what antigens and antibodies does Type AB blood have?",
+        "correctAnswer": "A and B antigens; no ABO antibodies",
+        "explanation": "Type AB individuals express both A and B antigens on their RBCs and produce neither anti-A nor anti-B antibodies (the immune system recognises both as 'self'). Because their plasma has no ABO antibodies to attack donor RBCs, AB individuals can receive from any ABO type."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_066",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Type O: no antigens + anti-A and anti-B antibodies",
+    "acceptableAlternatives": ["No antigens, anti-A and anti-B antibodies", "no ABO antigens; anti-A + anti-B antibodies"],
+    "chainThemeId": "blood_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What is the antigen and antibody profile of Type O blood?",
+    "explanation": "Type O RBCs carry no A or B antigens, which is why they can be donated to any ABO type without triggering an antigen-driven immune attack. However, Type O plasma contains both anti-A and anti-B antibodies, so Type O individuals can only receive Type O red blood cells.",
+    "visualDescription": "Type O red blood cell shown with no surface antigen projections, contrasted with A- and B-type cells",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_type",
+    "volatile": false,
+    "distractors": ["No antigens + no antibodies", "A antigens + anti-B antibodies", "No antigens + anti-A antibodies only"],
+    "variants": []
+  },
+  {
+    "id": "ha_cardio_067",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "O positive (O+)",
+    "acceptableAlternatives": ["O+", "type O+", "O positive"],
+    "chainThemeId": "blood_types",
+    "answerTypePoolId": "number_stats",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which blood type is the most common in the United States, found in approximately 38% of the population?",
+    "explanation": "O+ is the most frequent blood type in the US at ~38%, followed by A+ (~34%), B+ (~9%), O- (~7%), A- (~6%), AB+ (~3%), B- (~2%), and AB- (~1%). O+ is also highly valuable for transfusion as it can be given to any Rh+ recipient — the vast majority of people.",
+    "visualDescription": "Pie chart of US blood type distribution with O+ as the largest segment",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_type",
+    "volatile": false,
+    "distractors": ["A positive (A+)", "B positive (B+)", "AB positive (AB+)"],
+    "variants": [
+      {
+        "quizQuestion": "What is the rarest blood type in the United States by ABO/Rh classification?",
+        "correctAnswer": "AB negative (AB-)",
+        "explanation": "AB- is present in only ~1% of the US population, making it the rarest of the eight common blood types. Despite its rarity, AB- plasma (which contains no ABO or Rh antibodies) is valuable as a universal plasma donor."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_068",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Rh factor (Rh D antigen)",
+    "acceptableAlternatives": ["Rh antigen", "Rh D antigen", "Rhesus factor"],
+    "chainThemeId": "blood_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What surface antigen determines whether a blood type is positive (+) or negative (−) in the Rh blood group system?",
+    "explanation": "The Rh system is defined primarily by the presence (Rh+, ~85% of people) or absence (Rh−, ~15%) of the Rh D antigen on RBC surfaces. Unlike ABO antibodies, anti-Rh antibodies only develop after exposure to Rh+ blood — through transfusion or pregnancy.",
+    "visualDescription": "Diagram comparing an Rh+ RBC (D antigen present on surface) with an Rh- RBC (smooth surface, no D antigen)",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_type",
+    "volatile": false,
+    "distractors": ["ABO antigen", "Kell antigen", "Lewis antigen"],
+    "variants": [
+      {
+        "quizQuestion": "What percentage of the human population is Rh positive?",
+        "correctAnswer": "~85%",
+        "explanation": "Approximately 85% of people have the Rh D antigen on their RBCs and are Rh+. The remaining ~15% are Rh−. Prevalence varies by ethnicity — certain African populations have near-100% Rh+ frequency, while Rh− is more common in people of Basque descent."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_069",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "Haemolytic disease of the newborn (HDN)",
+    "acceptableAlternatives": ["HDN", "erythroblastosis fetalis", "Rh incompatibility disease"],
+    "chainThemeId": "blood_types",
+    "answerTypePoolId": "function_terms",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What condition occurs when an Rh− mother develops anti-Rh antibodies that cross the placenta and destroy red blood cells of a subsequent Rh+ fetus?",
+    "explanation": "During a first Rh-incompatible pregnancy, fetal RBCs can enter the mother's circulation at delivery, causing her immune system to produce anti-Rh (anti-D) antibodies. In a subsequent Rh+ pregnancy, these IgG antibodies cross the placenta and attack fetal RBCs, causing haemolytic disease. It is prevented by giving the mother RhoGAM (anti-D immunoglobulin) within 72 hours of delivery.",
+    "visualDescription": "Diagram showing Rh- mother with anti-D antibodies crossing the placenta to attack Rh+ fetal red blood cells in a second pregnancy",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemolytic_disease_of_the_newborn",
+    "volatile": false,
+    "distractors": ["Sickle cell anaemia", "Thalassaemia", "Aplastic anaemia"],
+    "variants": [
+      {
+        "quizQuestion": "What injection is given to an Rh− mother after delivery of an Rh+ baby to prevent sensitisation in future pregnancies?",
+        "correctAnswer": "RhoGAM (anti-D immunoglobulin)",
+        "explanation": "RhoGAM contains anti-D antibodies that neutralise any Rh+ fetal RBCs that entered the mother's bloodstream before her immune system can mount a response. Administered within 72 hours of delivery (and sometimes at 28 weeks gestation), it has made haemolytic disease of the newborn rare in developed countries."
+      }
+    ]
+  },
+  {
+    "id": "ha_cardio_070",
+    "subDeckId": "cardiovascular_system",
+    "correctAnswer": "AB positive (AB+)",
+    "acceptableAlternatives": ["AB+", "type AB+", "AB positive"],
+    "chainThemeId": "blood_types",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Which blood type is the universal plasma donor because its plasma contains no ABO antibodies that could attack a recipient's red blood cells?",
+    "explanation": "AB+ plasma carries no anti-A or anti-B antibodies (AB individuals recognise both antigens as 'self') and no Rh antibodies, so it can be transfused to any patient without risk of an antibody-mediated reaction. This makes AB+ plasma particularly valuable in massive transfusions before blood typing is possible.",
+    "visualDescription": "Transfusion compatibility chart highlighting AB+ as the universal plasma donor with arrows pointing to all other blood types",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_type",
+    "volatile": false,
+    "distractors": ["Type O negative", "Type A positive", "Type B negative"],
+    "variants": [
+      {
+        "quizQuestion": "Why is Type O negative considered the safest choice for emergency red blood cell transfusion before a patient's blood type is known?",
+        "correctAnswer": "O- RBCs have no A, B, or Rh antigens, so no recipient antibodies can trigger a haemolytic reaction",
+        "explanation": "O- red blood cells lack all three major surface antigens (A, B, and Rh D) that trigger transfusion reactions. This means any patient — regardless of their blood type — can receive O- RBCs without a compatibility test, making it the default emergency donor type kept in trauma bays."
+      }
+    ]
+  }
+]
