@@ -1,0 +1,2919 @@
+[
+  {
+    "id": "ha_visual_130",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/servier/nasal_cavity.png",
+    "correctAnswer": "Nasal cavity",
+    "acceptableAlternatives": [
+      "Nasal passage",
+      "Nasal airway"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the anatomical structure shown in this illustration.",
+    "explanation": "This is the nasal cavity — the space inside the nose lined with mucosa. It warms, humidifies, and filters inhaled air before it reaches the lungs. The nasal conchae (turbinates) increase surface area for conditioning air. Olfactory epithelium in the roof detects odors. Mucus traps particles; cilia sweep debris toward the pharynx.",
+    "visualDescription": "Medical illustration of the nasal cavity in sagittal cross-section",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Paranasal sinuses",
+      "Nasopharynx",
+      "Larynx",
+      "Pharynx"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the nasal cavity?",
+        "correctAnswer": "Nasal cavity",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_131",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/servier/paranasal_sinuses.png",
+    "correctAnswer": "Paranasal sinuses",
+    "acceptableAlternatives": [
+      "Sinuses",
+      "Nasal sinuses"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Name the air-filled cavities surrounding the nasal cavity shown here.",
+    "explanation": "These are the paranasal sinuses — air-filled spaces in the facial bones that drain into the nasal cavity. The four pairs are: frontal (forehead), maxillary (cheeks, largest), ethmoid (between eyes), and sphenoid (deep, behind ethmoid). They lighten the skull, resonate voice, and produce mucus. Blockage causes sinusitis.",
+    "visualDescription": "Medical illustration showing the four pairs of paranasal sinuses in facial bones",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Nasal cavity",
+      "Mastoid air cells",
+      "Middle ear",
+      "Auditory tube"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the paranasal sinuses?",
+        "correctAnswer": "Paranasal sinuses",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_132",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/servier/pneumothorax.png",
+    "correctAnswer": "Pneumothorax",
+    "acceptableAlternatives": [
+      "Collapsed lung",
+      "Lung collapse"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What pathological condition of the lung is illustrated here?",
+    "explanation": "This illustrates pneumothorax — air accumulating in the pleural space between the lung and chest wall. The positive pressure collapses the lung. Spontaneous pneumothorax occurs in tall thin young men (ruptured blebs); traumatic from penetrating chest wounds. Tension pneumothorax shifts the mediastinum and is a life-threatening emergency requiring immediate needle decompression.",
+    "visualDescription": "Medical illustration of pneumothorax showing air in pleural space and collapsed lung",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Pleural effusion",
+      "Pulmonary embolism",
+      "Atelectasis",
+      "Hemothorax"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a pneumothorax?",
+        "correctAnswer": "Pneumothorax",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_133",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/servier/swallowing.png",
+    "correctAnswer": "Swallowing mechanism",
+    "acceptableAlternatives": [
+      "Deglutition",
+      "Swallowing reflex",
+      "Swallowing"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "This illustration depicts which physiological process protecting the airway?",
+    "explanation": "This illustrates the swallowing mechanism (deglutition) — the process by which food passes from mouth to esophagus while protecting the airway. During swallowing, the soft palate elevates to close the nasopharynx, the larynx rises, and the epiglottis folds down over the laryngeal inlet, directing food into the esophagus rather than the trachea.",
+    "visualDescription": "Medical illustration of swallowing mechanism showing epiglottis covering the larynx during deglutition",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Cough reflex",
+      "Valsalva maneuver",
+      "Hiccup reflex",
+      "Gag reflex"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the swallowing mechanism?",
+        "correctAnswer": "Swallowing mechanism",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_134",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/servier/trachea_bronchi.png",
+    "correctAnswer": "Trachea and bronchi",
+    "acceptableAlternatives": [
+      "Tracheobronchial tree",
+      "Trachea and bronchial tree",
+      "Airway tree"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify the conducting airways shown in this illustration.",
+    "explanation": "This shows the trachea and bronchi — the major conducting airways. The trachea (windpipe) begins at the cricoid cartilage and bifurcates at the carina (T4-T5) into left and right main bronchi. The right main bronchus is shorter, wider, and more vertical — making it the more common site of foreign body aspiration. C-shaped cartilage rings keep the airway patent.",
+    "visualDescription": "Medical illustration of the trachea branching into primary bronchi and lung lobes",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Esophagus",
+      "Pulmonary vasculature",
+      "Larynx",
+      "Bronchioles"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the trachea and bronchi?",
+        "correctAnswer": "Trachea and bronchi",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_135",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/servier/olfactory_bulb.png",
+    "correctAnswer": "Olfactory bulb",
+    "acceptableAlternatives": [
+      "Olfactory bulb (CN I)",
+      "First cranial nerve bulb"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this brain structure that processes smell shown in this illustration.",
+    "explanation": "This is the olfactory bulb — an extension of the frontal lobe that receives axons from olfactory receptor neurons in the nasal epithelium. Olfactory nerve (CN I) axons pass through the cribriform plate of the ethmoid bone to synapse in the olfactory bulb. It is the only sensory system with direct cortical projection bypassing the thalamus. Damage causes anosmia (loss of smell).",
+    "visualDescription": "Medical illustration of the olfactory bulb receiving input from olfactory neurons through the cribriform plate",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Hippocampus",
+      "Amygdala",
+      "Pineal gland",
+      "Hypothalamus"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the olfactory bulb?",
+        "correctAnswer": "Olfactory bulb",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_136",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/muscular_system/servier/smooth_muscle_fiber.png",
+    "correctAnswer": "Smooth muscle fiber",
+    "acceptableAlternatives": [
+      "Smooth muscle",
+      "Smooth muscle cell",
+      "Visceral muscle"
+    ],
+    "chainThemeId": "visual_muscular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this type of muscle cell based on its structural characteristics.",
+    "explanation": "This is a smooth muscle fiber — involuntary, non-striated muscle found in organ walls (GI tract, blood vessels, uterus, bladder). Each cell has a single central nucleus and lacks the sarcomere striation of skeletal or cardiac muscle. Smooth muscle is controlled by the autonomic nervous system and hormones. It can sustain prolonged contraction without fatigue.",
+    "visualDescription": "Medical illustration of smooth muscle fibers showing spindle-shaped cells with central nuclei",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Skeletal muscle fiber",
+      "Cardiac muscle fiber",
+      "Collagen fiber",
+      "Elastic fiber"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a smooth muscle fiber?",
+        "correctAnswer": "Smooth muscle fiber",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_137",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/muscular_system/servier/tendon_structure.png",
+    "correctAnswer": "Tendon",
+    "acceptableAlternatives": [
+      "Tendon structure",
+      "Dense regular connective tissue"
+    ],
+    "chainThemeId": "visual_muscular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What connective tissue structure connecting muscle to bone is shown here?",
+    "explanation": "This is a tendon — dense regular connective tissue composed of parallel collagen fiber bundles (type I collagen) produced by tenocytes. Tendons transmit forces from muscle contractions to bone, enabling movement. They are highly resistant to tensile stress but have poor vascularity, making healing slow. Tendons attach at the enthesis on bone; the muscle-tendon junction is called the musculotendinous junction.",
+    "visualDescription": "Medical illustration of tendon structure showing parallel collagen fiber bundles",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Ligament",
+      "Fascia",
+      "Aponeurosis",
+      "Cartilage"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows tendon structure?",
+        "correctAnswer": "Tendon",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_138",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/disc_herniation_2.png",
+    "correctAnswer": "Disc herniation",
+    "acceptableAlternatives": [
+      "Herniated disc",
+      "Intervertebral disc herniation",
+      "Slipped disc",
+      "Ruptured disc"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What spinal pathology is illustrated in this image?",
+    "explanation": "This illustrates disc herniation — protrusion of the nucleus pulposus through a tear in the annulus fibrosus of an intervertebral disc. The extruded material compresses adjacent nerve roots causing radiculopathy (shooting pain, numbness, weakness in the distribution of the affected nerve). Most common at L4-L5 and L5-S1. Conservative management (rest, NSAIDs, PT) resolves most cases; surgery reserved for refractory cases.",
+    "visualDescription": "Medical illustration of intervertebral disc herniation compressing spinal nerve roots",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Spinal stenosis",
+      "Spondylolisthesis",
+      "Vertebral fracture",
+      "Osteoarthritis"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows disc herniation?",
+        "correctAnswer": "Disc herniation",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_139",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/elbow_frontal.png",
+    "correctAnswer": "Elbow joint (frontal view)",
+    "acceptableAlternatives": [
+      "Elbow joint",
+      "Elbow (frontal)",
+      "Cubital joint (frontal)"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this joint as seen from the frontal perspective.",
+    "explanation": "This is the elbow joint in frontal view — a hinge joint formed by articulations of the humerus, radius, and ulna. The trochlea of the humerus articulates with the trochlear notch of the ulna (hinge motion); the capitulum articulates with the radial head (pivot for pronation/supination). The medial epicondyle is the site of the ulnar nerve groove; injury causes 'funny bone' sensation.",
+    "visualDescription": "Medical illustration of the elbow joint from the frontal (anterior) perspective",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Wrist joint",
+      "Shoulder joint",
+      "Knee joint",
+      "Ankle joint"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the elbow joint from the frontal view?",
+        "correctAnswer": "Elbow joint (frontal view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_140",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/elbow_lateral.png",
+    "correctAnswer": "Elbow joint (lateral view)",
+    "acceptableAlternatives": [
+      "Elbow joint",
+      "Elbow (lateral)",
+      "Cubital joint (lateral)"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "This lateral view shows which upper limb joint?",
+    "explanation": "This is the elbow joint in lateral view. The lateral view clearly shows the radial head articulating with the capitulum, the olecranon process of the ulna posteriorly (forming the 'point' of the elbow), and the relationship between the three bones. The lateral collateral ligament complex stabilizes the joint against varus stress. Tennis elbow (lateral epicondylitis) affects the lateral epicondyle.",
+    "visualDescription": "Medical illustration of the elbow joint from the lateral perspective",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Knee joint (lateral)",
+      "Wrist joint (lateral)",
+      "Shoulder joint (lateral)",
+      "Hip joint (lateral)"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the elbow joint from the lateral view?",
+        "correctAnswer": "Elbow joint (lateral view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_141",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/elbow_posterior.png",
+    "correctAnswer": "Elbow joint (posterior view)",
+    "acceptableAlternatives": [
+      "Elbow joint",
+      "Elbow (posterior)",
+      "Cubital joint (posterior)"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this joint as seen from the posterior perspective.",
+    "explanation": "This is the elbow joint in posterior view — prominently showing the olecranon process of the ulna and the medial and lateral epicondyles of the humerus forming an isosceles triangle. In a normal elbow, these three bony landmarks form a straight line when the elbow is extended; they form a triangle when flexed. The ulnar nerve runs in the cubital tunnel behind the medial epicondyle.",
+    "visualDescription": "Medical illustration of the elbow joint from the posterior perspective showing olecranon and epicondyles",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Knee joint (posterior)",
+      "Shoulder joint (posterior)",
+      "Wrist joint (posterior)",
+      "Hip joint (posterior)"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the elbow joint from the posterior view?",
+        "correctAnswer": "Elbow joint (posterior view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_142",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/female_pelvis.png",
+    "correctAnswer": "Female pelvis",
+    "acceptableAlternatives": [
+      "Pelvis (female)",
+      "Female pelvic girdle",
+      "Gynecoid pelvis"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this bony structure adapted for childbirth shown in this illustration.",
+    "explanation": "This is the female pelvis — characterized by a wider, rounder pelvic inlet (gynecoid type), a broader subpubic angle (>90°), more flared iliac wings, and a shallower greater pelvis compared to the male. These features accommodate fetal passage during childbirth. The obstetric conjugate (true conjugate minus 1.5 cm) is the critical measurement for determining if vaginal delivery is possible.",
+    "visualDescription": "Medical illustration of the female pelvis showing its broad, rounded shape optimized for childbirth",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Male pelvis",
+      "Sacrum",
+      "Lumbar vertebrae",
+      "Hip joint"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the female pelvis?",
+        "correctAnswer": "Female pelvis",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_143",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/femur_01.png",
+    "correctAnswer": "Femur",
+    "acceptableAlternatives": [
+      "Thigh bone",
+      "Femoral bone"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify the longest bone in the human body shown here.",
+    "explanation": "This is the femur — the longest, heaviest, and strongest bone in the body. Key features include: the femoral head (articulates with acetabulum at hip joint), femoral neck (common fracture site, especially in elderly with osteoporosis), greater and lesser trochanters (muscle attachments), shaft, medial and lateral condyles (articulate with tibia at knee). The femoral angle of inclination is ~126° in adults.",
+    "visualDescription": "Medical illustration of the femur (thigh bone) showing all major anatomical landmarks",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Tibia",
+      "Fibula",
+      "Humerus",
+      "Radius"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the femur?",
+        "correctAnswer": "Femur",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_144",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/fetus_skeleton.png",
+    "correctAnswer": "Fetal skeleton",
+    "acceptableAlternatives": [
+      "Fetus skeleton",
+      "Fetal skeletal system",
+      "Embryonic skeleton"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "This illustration shows the skeletal system at what developmental stage?",
+    "explanation": "This is the fetal skeleton — characterized by a large cranium relative to body size, incomplete ossification, presence of fontanelles (membranous gaps between skull bones), and primarily cartilaginous long bone epiphyses. The fetal skeleton begins forming in the 4th week of embryogenesis; most long bones ossify via endochondral ossification. Wormian (sutural) bones may be visible in the skull.",
+    "visualDescription": "Medical illustration of the fetal skeleton showing proportionally large head and cartilaginous elements",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Newborn skeleton",
+      "Child skeleton",
+      "Adult skeleton",
+      "Infant skeleton"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the fetal skeleton?",
+        "correctAnswer": "Fetal skeleton",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_145",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/finger_fractures.png",
+    "correctAnswer": "Phalanx fractures",
+    "acceptableAlternatives": [
+      "Finger fractures",
+      "Phalangeal fractures",
+      "Digital fractures"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What type of skeletal injury is depicted in this illustration?",
+    "explanation": "This illustrates phalanx fractures — breaks of the finger bones (proximal, middle, or distal phalanges). These are among the most common hand injuries. Types include: transverse, oblique, spiral (from torsion), and comminuted. Mallet finger (avulsion of the extensor tendon at the distal phalanx) and Boxer's fracture (5th metacarpal neck) are common clinical variants. Treatment depends on stability and displacement.",
+    "visualDescription": "Medical illustration showing various types of phalanx (finger bone) fractures",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Metacarpal fractures",
+      "Carpal fractures",
+      "Wrist fracture",
+      "Thumb dislocation"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows phalanx fractures?",
+        "correctAnswer": "Phalanx fractures",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_146",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/foot_01.png",
+    "correctAnswer": "Foot skeleton",
+    "acceptableAlternatives": [
+      "Foot bones",
+      "Pedal skeleton",
+      "Bones of the foot"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify the bony structure of the lower extremity shown in this illustration.",
+    "explanation": "This is the foot skeleton — comprising 26 bones: 7 tarsals (calcaneus, talus, navicular, cuboid, 3 cuneiforms), 5 metatarsals, and 14 phalanges. The calcaneus is the largest tarsal (heel bone). The medial longitudinal arch (supported by plantar fascia and intrinsic muscles) absorbs weight-bearing forces. Flat feet (pes planus) occur with arch collapse; pes cavus is an exaggerated arch.",
+    "visualDescription": "Medical illustration of the foot skeleton showing tarsal, metatarsal, and phalangeal bones",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Hand skeleton",
+      "Ankle joint",
+      "Knee joint",
+      "Leg bones"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the foot skeleton?",
+        "correctAnswer": "Foot skeleton",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_147",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/hip_replacement.png",
+    "correctAnswer": "Hip replacement prosthesis",
+    "acceptableAlternatives": [
+      "Total hip arthroplasty",
+      "Hip arthroplasty",
+      "Hip prosthesis",
+      "THR"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What orthopedic implant is shown in this illustration?",
+    "explanation": "This is a hip replacement prosthesis (total hip arthroplasty) — surgical replacement of the hip joint with artificial components. It consists of a femoral stem (inserted into the femoral canal), femoral head (metal or ceramic ball), acetabular cup (polyethylene or metal liner in a metal shell). Indicated for severe osteoarthritis, femoral neck fractures, avascular necrosis. Most common orthopedic procedure in the elderly.",
+    "visualDescription": "Medical illustration of a total hip replacement prosthesis showing femoral stem and acetabular cup components",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Knee replacement prosthesis",
+      "Shoulder replacement",
+      "Spinal implant",
+      "Tibial nail"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a hip replacement prosthesis?",
+        "correctAnswer": "Hip replacement prosthesis",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_148",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/knee_replacement.png",
+    "correctAnswer": "Knee replacement prosthesis",
+    "acceptableAlternatives": [
+      "Total knee arthroplasty",
+      "Knee arthroplasty",
+      "Knee prosthesis",
+      "TKA",
+      "TKR"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Identify this orthopedic implant of the lower extremity.",
+    "explanation": "This is a knee replacement prosthesis (total knee arthroplasty) — replacement of the knee joint surfaces with metal and polyethylene components. It consists of a femoral component (metal), tibial tray (metal platform), polyethylene insert (bearing surface), and optionally a patellar button. Indicated for end-stage osteoarthritis with pain unresponsive to conservative treatment. Surgery requires strict PT rehabilitation for recovery.",
+    "visualDescription": "Medical illustration of a total knee replacement prosthesis showing femoral, tibial, and patellar components",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Hip replacement prosthesis",
+      "Ankle replacement",
+      "Shoulder replacement",
+      "Tibial plateau fixation"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a knee replacement prosthesis?",
+        "correctAnswer": "Knee replacement prosthesis",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_149",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/osteon_01.png",
+    "correctAnswer": "Osteon (Haversian system)",
+    "acceptableAlternatives": [
+      "Haversian system",
+      "Osteon",
+      "Secondary osteon"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this basic structural unit of compact bone shown in this histological illustration.",
+    "explanation": "This is an osteon (Haversian system) — the structural unit of compact bone. It consists of concentric lamellae of mineralized collagen surrounding a central Haversian canal containing blood vessels and nerves. Osteocytes sit in lacunae between lamellae and communicate via canaliculi. Volkmann's canals run perpendicular to Haversian canals, connecting them. Osteons are formed by osteoclast resorption tunnels followed by osteoblast deposition.",
+    "visualDescription": "Medical illustration of an osteon (Haversian system) showing concentric lamellae and central canal",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Cancellous bone trabecula",
+      "Bone marrow unit",
+      "Epiphyseal plate",
+      "Periosteum"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an osteon (Haversian system)?",
+        "correctAnswer": "Osteon (Haversian system)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_150",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/osteon_02.png",
+    "correctAnswer": "Osteon (Haversian system)",
+    "acceptableAlternatives": [
+      "Haversian system",
+      "Osteon",
+      "Compact bone microstructure"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "This cross-sectional view reveals which microscopic bone structure?",
+    "explanation": "This is another view of the osteon (Haversian system) in cross-section — revealing the concentric ring pattern of bone lamellae around the central Haversian canal. The alternating orientation of collagen fibers in adjacent lamellae provides mechanical strength resisting torsional forces. Interstitial lamellae between osteons are remnants of older remodeled osteons. This image emphasizes the canal's vascular content.",
+    "visualDescription": "Medical illustration of an osteon in cross-section highlighting the concentric lamellar structure",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Trabecular bone",
+      "Osteoclast resorption pit",
+      "Growth plate",
+      "Bone marrow sinusoid"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the Haversian system in cross-section?",
+        "correctAnswer": "Osteon (Haversian system)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_151",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/shoulder_fracture.png",
+    "correctAnswer": "Shoulder fracture",
+    "acceptableAlternatives": [
+      "Proximal humerus fracture",
+      "Humeral fracture",
+      "Shoulder bone fracture"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What injury of the shoulder girdle is depicted in this illustration?",
+    "explanation": "This illustrates a shoulder fracture — most commonly involving the proximal humerus (surgical neck is the most common site, especially in osteoporotic elderly after a fall). Neer classification (1-4 parts based on displaced segments: head, greater tuberosity, lesser tuberosity, shaft) guides treatment. Axillary nerve injury can occur with proximal humeral fractures, causing deltoid weakness and lateral shoulder numbness.",
+    "visualDescription": "Medical illustration of a shoulder fracture showing fracture lines in the proximal humerus",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Shoulder dislocation",
+      "Clavicle fracture",
+      "Rotator cuff tear",
+      "Acromioclavicular separation"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a shoulder fracture?",
+        "correctAnswer": "Shoulder fracture",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_152",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skeleton_back.png",
+    "correctAnswer": "Skeleton (back view)",
+    "acceptableAlternatives": [
+      "Human skeleton (posterior)",
+      "Posterior skeleton",
+      "Skeleton posterior view"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "This posterior view shows which anatomical overview?",
+    "explanation": "This is the human skeleton from the posterior (back) view — revealing structures better visualized from behind: the vertebral column (cervical, thoracic, lumbar curves), scapulae (shoulder blades), posterior iliac crests, sacrum, and coccyx. The posterior superior iliac spines (PSIS) create visible dimples in the skin. The spinous processes of thoracic vertebrae are especially prominent posteriorly.",
+    "visualDescription": "Medical illustration of the complete human skeleton from the posterior (back) view",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Skeleton (front view)",
+      "Skeleton (lateral view)",
+      "Muscular system (back)",
+      "Skeleton (profile view)"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skeleton from the back (posterior) view?",
+        "correctAnswer": "Skeleton (back view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_153",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skeleton_face.png",
+    "correctAnswer": "Skull (facial view)",
+    "acceptableAlternatives": [
+      "Facial skeleton",
+      "Viscerocranium",
+      "Skull frontal view",
+      "Face skeleton"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "This illustration focuses on the skeletal structure of which body region?",
+    "explanation": "This is the facial skeleton — the viscerocranium comprising 14 bones: 2 nasal, 2 lacrimal, 2 palatine, 2 inferior nasal conchae, 2 zygomatic, 2 maxillae, 1 vomer, 1 mandible. The orbit (eye socket) is formed by contributions from 7 bones. Facial fractures are classified by Le Fort type (I-III, based on fracture lines through the midface). The mandible is the only movable facial bone.",
+    "visualDescription": "Medical illustration of the facial skeleton showing all 14 facial bones",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Skull (lateral view)",
+      "Skull base",
+      "Mandible only",
+      "Neurocranium"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the facial skeleton?",
+        "correctAnswer": "Skull (facial view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_154",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skeleton_floating_ribs.png",
+    "correctAnswer": "Floating ribs",
+    "acceptableAlternatives": [
+      "Floating ribs (11th and 12th)",
+      "False floating ribs",
+      "Ribs 11 and 12"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "This illustration highlights which unique subtype of ribs?",
+    "explanation": "This highlights the floating ribs — ribs 11 and 12, which have no anterior attachment. Unlike true ribs (1-7, articulating directly with sternum) and false ribs (8-10, connecting via costal cartilage to rib 7), floating ribs have only a posterior attachment to thoracic vertebrae. They protect the kidneys and upper abdominal organs. Their lack of anterior fixation makes them more mobile but also more prone to fracture.",
+    "visualDescription": "Medical illustration of the rib cage highlighting the floating ribs (11th and 12th) with no anterior attachment",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "True ribs",
+      "False ribs",
+      "Costal cartilage",
+      "Sternum"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image highlights the floating ribs?",
+        "correctAnswer": "Floating ribs",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_155",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skeleton_front.png",
+    "correctAnswer": "Skeleton (frontal view)",
+    "acceptableAlternatives": [
+      "Human skeleton (anterior)",
+      "Anterior skeleton",
+      "Skeleton anterior view"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "Identify this complete anatomical overview shown from the front.",
+    "explanation": "This is the human skeleton in frontal (anterior) view — showing the complete 206-bone adult skeleton. The axial skeleton (skull, vertebral column, thoracic cage) forms the central axis. The appendicular skeleton (pectoral and pelvic girdles, upper and lower limbs) attaches to it. The anterior view clearly reveals the sternum, clavicles, anterior rib cage, and the carrying angle of the elbows (cubitus valgus).",
+    "visualDescription": "Medical illustration of the complete human skeleton from the frontal (anterior) view",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Muscular system (front)",
+      "Skeleton (back view)",
+      "Skeleton (profile view)",
+      "Ligamentous system"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skeleton from the frontal (anterior) view?",
+        "correctAnswer": "Skeleton (frontal view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_156",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skeleton_profile.png",
+    "correctAnswer": "Skeleton (profile view)",
+    "acceptableAlternatives": [
+      "Human skeleton (lateral)",
+      "Lateral skeleton",
+      "Skeleton lateral view"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "This lateral view shows which anatomical overview?",
+    "explanation": "This is the human skeleton in profile (lateral) view — best demonstrating the normal spinal curves: cervical lordosis, thoracic kyphosis, lumbar lordosis, and sacral kyphosis. These balanced curves distribute weight and absorb impact. The profile view also shows the relationship between the ear canal, shoulder, hip, knee, and ankle — the plumb line of ideal posture. Deviations cause scoliosis, kyphosis, or hyperlordosis.",
+    "visualDescription": "Medical illustration of the complete human skeleton from the lateral (profile) view showing spinal curves",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Skeleton (frontal view)",
+      "Skeleton (back view)",
+      "Muscular system (lateral)",
+      "Skeleton (oblique view)"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skeleton from the lateral (profile) view?",
+        "correctAnswer": "Skeleton (profile view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_157",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skull_01.png",
+    "correctAnswer": "Skull",
+    "acceptableAlternatives": [
+      "Human skull",
+      "Cranium",
+      "Skull (anterior)"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify this structure that protects the brain shown in this illustration.",
+    "explanation": "This is the skull — comprising 22 bones: 8 neurocranium bones (frontal, 2 parietal, occipital, 2 temporal, sphenoid, ethmoid) protecting the brain, and 14 viscerocranium bones forming the face. Sutures are fibrous joints between skull bones; major ones are coronal (frontal-parietal), sagittal (between parietals), lambdoid (parietal-occipital), and squamous. The foramen magnum allows passage of the brainstem/spinal cord.",
+    "visualDescription": "Medical illustration of the human skull showing all major bones and sutures",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Mandible",
+      "Facial skeleton",
+      "Temporal bone",
+      "Cervical vertebrae"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skull?",
+        "correctAnswer": "Skull",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_158",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skull_02.png",
+    "correctAnswer": "Skull",
+    "acceptableAlternatives": [
+      "Human skull",
+      "Cranium",
+      "Skull (lateral)"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "This illustration shows a different view of which cranial structure?",
+    "explanation": "This is another view of the skull — possibly lateral or inferior, highlighting different features. The lateral view reveals the pterion (junction of frontal, parietal, temporal, sphenoid bones) — clinically important because the underlying middle meningeal artery can be torn in temporal trauma, causing epidural hematoma. The temporal fossa and external acoustic meatus are also prominent in lateral view.",
+    "visualDescription": "Medical illustration of the human skull from an alternative viewpoint",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Skull fractures",
+      "Facial skeleton",
+      "Mandible",
+      "Skull base"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skull from this alternative view?",
+        "correctAnswer": "Skull",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_159",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skull_03.png",
+    "correctAnswer": "Skull",
+    "acceptableAlternatives": [
+      "Human skull",
+      "Cranium",
+      "Skull base"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the cranial structure highlighted in this third illustration.",
+    "explanation": "This is a third view of the skull — likely the base (inferior view) or internal surface. The skull base has three fossae: anterior (frontal lobes, olfactory bulbs), middle (temporal lobes, pituitary gland in sella turcica), and posterior (cerebellum, brainstem). Multiple foramina transmit cranial nerves and vessels: foramen ovale (CN V3), foramen rotundum (CN V2), jugular foramen (CN IX, X, XI), hypoglossal canal (CN XII).",
+    "visualDescription": "Medical illustration of the human skull showing base or internal cranial features",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Skull fractures",
+      "Facial skeleton",
+      "Cervical spine",
+      "Temporal bone"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows this view of the skull?",
+        "correctAnswer": "Skull",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_160",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/skull_fractures.png",
+    "correctAnswer": "Skull fractures",
+    "acceptableAlternatives": [
+      "Cranial fractures",
+      "Head fractures",
+      "Skull bone fractures"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What cranial pathology is depicted in this illustration?",
+    "explanation": "This illustrates skull fractures — classified as linear (most common, 80%, from blunt trauma), depressed (bone fragments driven inward, risk of dural tear and brain injury), basilar (base of skull, associated with Battle's sign — retroauricular ecchymosis, CSF otorrhea/rhinorrhea, raccoon eyes, hemotympanum), or diastatic (sutural widening). Basilar skull fractures are diagnosed clinically; CT scan may miss them.",
+    "visualDescription": "Medical illustration showing types of skull fractures including linear and depressed fracture patterns",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Skull (normal)",
+      "Phalanx fractures",
+      "Vertebral fracture",
+      "Sternal fracture"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows skull fractures?",
+        "correctAnswer": "Skull fractures",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_161",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/sternal_fracture.png",
+    "correctAnswer": "Sternal fracture",
+    "acceptableAlternatives": [
+      "Sternum fracture",
+      "Fractured sternum",
+      "Sternal break"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "What thoracic cage injury is illustrated here?",
+    "explanation": "This illustrates a sternal fracture — a break in the sternum (breastbone), usually from blunt chest trauma (steering wheel impact, CPR). Composed of manubrium, body, and xiphoid process. The manubriosternal joint (sternal angle of Louis) is at the level of T4-T5, where the 2nd rib articulates — a key anatomical landmark for rib counting. Sternal fractures raise concern for cardiac contusion and great vessel injury.",
+    "visualDescription": "Medical illustration of a sternal fracture showing the fracture line through the sternum",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Rib fractures",
+      "Clavicle fracture",
+      "Costal cartilage injury",
+      "Pneumothorax"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a sternal fracture?",
+        "correctAnswer": "Sternal fracture",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_162",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/vertebra_01.png",
+    "correctAnswer": "Vertebra",
+    "acceptableAlternatives": [
+      "Vertebral body",
+      "Spinal vertebra",
+      "Single vertebra"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this basic unit of the spinal column shown in this illustration.",
+    "explanation": "This is a vertebra — the basic structural unit of the vertebral column. Each vertebra has: a body (weight-bearing), vertebral arch (pedicles + laminae forming the neural canal), spinous process (posterior), transverse processes (lateral, muscle attachments), superior and inferior articular processes (facet joints). The vertebral foramen contains the spinal cord. Intervertebral discs (nucleus pulposus + annulus fibrosus) sit between adjacent vertebral bodies.",
+    "visualDescription": "Medical illustration of a single vertebra showing all major anatomical processes",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Intervertebral disc",
+      "Sacrum",
+      "Coccyx",
+      "Rib"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the structure of a vertebra?",
+        "correctAnswer": "Vertebra",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_163",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/vertebra_02.png",
+    "correctAnswer": "Vertebra",
+    "acceptableAlternatives": [
+      "Vertebral structure",
+      "Spinal vertebra",
+      "Vertebral body (detail)"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "This detailed view of a vertebral unit highlights which spinal structure?",
+    "explanation": "This is an alternative view of a vertebra, possibly showing a specific region (cervical, thoracic, or lumbar). Cervical vertebrae (C3-C7) have a bifid spinous process and transverse foramina for the vertebral artery. Thoracic vertebrae have costal facets for rib articulation. Lumbar vertebrae are the largest, with wide transverse processes and rounded spinous processes — adapted for weight-bearing and limited rotation.",
+    "visualDescription": "Medical illustration of a vertebra from an alternative view or showing a specific spinal region",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Disc herniation",
+      "Sacrum",
+      "Intervertebral disc",
+      "Vertebral fracture"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows this vertebral structure?",
+        "correctAnswer": "Vertebra",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_164",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/vertebral_column_detail.png",
+    "correctAnswer": "Vertebral column (detail)",
+    "acceptableAlternatives": [
+      "Spine (detail)",
+      "Spinal column detail",
+      "Vertebral column close-up"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "This close-up view details the anatomy of which axial structure?",
+    "explanation": "This is a detailed view of the vertebral column showing intervertebral relationships, ligaments, and joint structures. Key ligaments include: anterior longitudinal ligament (ALL), posterior longitudinal ligament (PLL), ligamentum flavum (connects laminae — may hypertrophy causing spinal stenosis), interspinous, and supraspinous ligaments. Facet joints (zygapophyseal joints) between articular processes guide and limit motion at each spinal level.",
+    "visualDescription": "Medical illustration of the vertebral column in detail showing multiple vertebrae, discs, and ligaments",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Vertebral column overview",
+      "Disc herniation",
+      "Spinal cord",
+      "Sacrum detail"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the vertebral column in detail?",
+        "correctAnswer": "Vertebral column (detail)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_165",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/duodenum_cross_section.png",
+    "correctAnswer": "Duodenum (cross-section)",
+    "acceptableAlternatives": [
+      "Duodenum cross-section",
+      "Duodenal wall layers",
+      "Duodenum histology"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "This histological cross-section shows the wall layers of which digestive segment?",
+    "explanation": "This is a cross-section of the duodenum — the first and shortest (~25 cm) segment of the small intestine. Key distinguishing histological feature: Brunner's glands (submucosal mucous glands that secrete alkaline mucus to neutralize acidic gastric chyme). The duodenum receives chyme from the stomach via the pylorus, bile from the common bile duct, and pancreatic enzymes via the hepatopancreatic ampulla (of Vater) at the major duodenal papilla.",
+    "visualDescription": "Medical illustration of duodenum cross-section highlighting wall layers and Brunner's glands",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Jejunum cross-section",
+      "Ileum cross-section",
+      "Esophagus cross-section",
+      "Colon cross-section"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a duodenum cross-section?",
+        "correctAnswer": "Duodenum (cross-section)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_166",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/esophagus_cross_section.png",
+    "correctAnswer": "Esophagus (cross-section)",
+    "acceptableAlternatives": [
+      "Esophagus cross-section",
+      "Esophageal wall layers",
+      "Esophagus histology"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the GI segment shown in this cross-sectional histological view.",
+    "explanation": "This is an esophagus cross-section — notable for being lined with non-keratinized stratified squamous epithelium (unlike the columnar epithelium of the rest of the GI tract). Key histological feature: the adventitia (not serosa) as the outermost layer, since the esophagus lacks a peritoneal covering. Barrett's esophagus is pathological metaplasia to columnar epithelium from chronic GERD and carries risk of adenocarcinoma.",
+    "visualDescription": "Medical illustration of esophagus cross-section showing stratified squamous epithelium and wall layers",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Stomach cross-section",
+      "Trachea cross-section",
+      "Duodenum cross-section",
+      "Colon cross-section"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an esophagus cross-section?",
+        "correctAnswer": "Esophagus (cross-section)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_167",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/gallbladder.png",
+    "correctAnswer": "Gallbladder",
+    "acceptableAlternatives": [
+      "Gall bladder",
+      "Biliary storage organ"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify this bile storage organ of the digestive system.",
+    "explanation": "This is the gallbladder — a pear-shaped sac (~8 cm) on the inferior surface of the liver, concentrating and storing bile produced by hepatocytes. It has a fundus, body, and neck (leading to the cystic duct). During digestion, cholecystokinin (CCK) from the duodenum triggers gallbladder contraction, releasing bile into the common bile duct and then the duodenum to emulsify fats. Gallstones (cholelithiasis) are common, especially in 'fat, female, forty, fertile' patients.",
+    "visualDescription": "Medical illustration of the gallbladder showing its pear-shaped structure and relationship to the liver",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Liver",
+      "Pancreas",
+      "Spleen",
+      "Appendix"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the gallbladder?",
+        "correctAnswer": "Gallbladder",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_168",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/gallbladder_cross_section.png",
+    "correctAnswer": "Gallbladder (cross-section)",
+    "acceptableAlternatives": [
+      "Gallbladder wall",
+      "Gallbladder histology",
+      "Gallbladder internal structure"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "This cross-sectional view shows the internal wall structure of which organ?",
+    "explanation": "This is a gallbladder cross-section — showing the characteristic rugae (mucosal folds) lined by simple columnar epithelium specialized for water and electrolyte absorption that concentrates bile 5-10x. Rokitansky-Aschoff sinuses are invaginations of the mucosa into the muscular wall. In chronic cholecystitis, the gallbladder wall thickens. Porcelain gallbladder (calcified wall) is associated with gallbladder carcinoma risk.",
+    "visualDescription": "Medical illustration of gallbladder cross-section showing mucosal folds and wall layers",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Stomach cross-section",
+      "Urinary bladder cross-section",
+      "Cystic duct",
+      "Common bile duct"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a gallbladder cross-section?",
+        "correctAnswer": "Gallbladder (cross-section)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_169",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/intestinal_villi.png",
+    "correctAnswer": "Intestinal villi",
+    "acceptableAlternatives": [
+      "Villi",
+      "Small intestine villi",
+      "Intestinal villus"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Identify these microscopic projections that increase intestinal absorptive surface area.",
+    "explanation": "These are intestinal villi — finger-like projections of the small intestinal mucosa that increase the absorptive surface area ~10-fold. Each villus contains a central lacteal (lymphatic vessel for fat absorption) and capillary network. Villi are covered with enterocytes bearing microvilli (brush border) — adding another ~20-fold increase (total: ~600-fold). Villous atrophy (e.g., celiac disease) causes malabsorption. Goblet cells between enterocytes secrete mucus.",
+    "visualDescription": "Medical illustration of intestinal villi showing finger-like projections with central lacteals and capillaries",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Gastric rugae",
+      "Colonic haustra",
+      "Liver sinusoids",
+      "Hepatic lobule"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows intestinal villi?",
+        "correctAnswer": "Intestinal villi",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_170",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/intestine.png",
+    "correctAnswer": "Small intestine",
+    "acceptableAlternatives": [
+      "Small bowel",
+      "Small intestine (overview)",
+      "Jejunum and ileum"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify this primary site of nutrient absorption in the digestive system.",
+    "explanation": "This is the small intestine — a ~6-7 meter tube divided into duodenum (25 cm), jejunum (~2.5 m), and ileum (~3.5 m). Primary site of digestion and absorption. The jejunum is wider with taller villi and more circular folds (plicae circulares); the ileum has Peyer's patches (lymphoid tissue), and is the only site that absorbs vitamin B12 (ileal intrinsic factor receptors) and bile acids. The ileocecal valve connects it to the large intestine.",
+    "visualDescription": "Medical illustration of the small intestine showing its coiled arrangement in the abdominal cavity",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Large intestine",
+      "Stomach",
+      "Esophagus",
+      "Sigmoid colon"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the small intestine?",
+        "correctAnswer": "Small intestine",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_171",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/liver_gallbladder.png",
+    "correctAnswer": "Liver and gallbladder",
+    "acceptableAlternatives": [
+      "Hepatobiliary system",
+      "Liver with gallbladder",
+      "Liver and biliary tree"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "This illustration shows the relationship between which two digestive organs?",
+    "explanation": "This shows the liver and gallbladder together — the hepatobiliary unit. The liver (right upper quadrant, 1.5 kg) produces bile; the gallbladder stores and concentrates it. Bile flows: hepatocytes → bile canaliculi → bile ducts → hepatic ducts → common hepatic duct → (cystic duct to gallbladder) → common bile duct → hepatopancreatic ampulla → duodenum. The portal triad (branch of portal vein, hepatic artery, bile duct) is the functional unit.",
+    "visualDescription": "Medical illustration showing the liver with the attached gallbladder and biliary ducts",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Liver only",
+      "Pancreas and duodenum",
+      "Liver and spleen",
+      "Gallbladder only"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the liver and gallbladder together?",
+        "correctAnswer": "Liver and gallbladder",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_172",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/liver_lobule.png",
+    "correctAnswer": "Hepatic lobule",
+    "acceptableAlternatives": [
+      "Liver lobule",
+      "Classical liver lobule",
+      "Hepatic lobular structure"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this microscopic structural unit of the liver shown here.",
+    "explanation": "This is the hepatic (classical) lobule — the hexagonal functional unit of the liver. A central vein is at the center; portal triads (portal vein branch, hepatic artery branch, bile ductule) sit at the six corners. Hepatocytes form radial cords from center to periphery; blood flows from portal triads → sinusoids → central vein. Zone 1 (periportal) receives highest oxygen and is first affected in toxic injury; Zone 3 (centrilobular) is most susceptible to ischemia.",
+    "visualDescription": "Medical illustration of the hepatic lobule showing hexagonal structure with central vein and portal triads",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Renal tubule",
+      "Intestinal crypt",
+      "Pancreatic acinus",
+      "Bile duct"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the hepatic lobule?",
+        "correctAnswer": "Hepatic lobule",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_173",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/mouth.png",
+    "correctAnswer": "Mouth/oral cavity",
+    "acceptableAlternatives": [
+      "Oral cavity",
+      "Mouth",
+      "Buccal cavity"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "Identify the initial segment of the digestive tract shown here.",
+    "explanation": "This is the mouth/oral cavity — the entry point of the digestive system. Key structures: lips (vermilion border), teeth (incisors, canines, premolars, molars), tongue (intrinsic and extrinsic muscles), hard palate (anterior bony), soft palate (posterior muscular, with uvula), tonsils, and salivary glands. Saliva contains amylase (starch digestion begins here) and lingual lipase. The oral cavity is bounded anteriorly by the lips and posteriorly by the oropharynx.",
+    "visualDescription": "Medical illustration of the open mouth showing oral cavity structures including teeth, tongue, and palate",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Pharynx",
+      "Larynx",
+      "Esophagus",
+      "Nasal cavity"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the mouth and oral cavity?",
+        "correctAnswer": "Mouth/oral cavity",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_174",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/oral_cavity.png",
+    "correctAnswer": "Oral cavity",
+    "acceptableAlternatives": [
+      "Mouth anatomy",
+      "Oral cavity (detail)",
+      "Buccal anatomy"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 2,
+    "quizQuestion": "This detailed illustration shows the internal anatomy of which structure?",
+    "explanation": "This is the oral cavity — a detailed view highlighting specific anatomical features. Wharton's duct (submandibular gland) opens at the sublingual caruncle near the frenulum. Stensen's duct (parotid gland) opens at the upper second molar (parotid papilla). The floor of the mouth contains the sublingual gland. The hard palate contains rugae anteriorly. Koplik's spots (white spots on buccal mucosa) are pathognomonic for measles.",
+    "visualDescription": "Medical illustration of the oral cavity in detail showing glands, frenulum, and mucosal landmarks",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Pharynx",
+      "Nasopharynx",
+      "Hypopharynx",
+      "Larynx"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the oral cavity anatomy in detail?",
+        "correctAnswer": "Oral cavity",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_175",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/pancreas_anatomy.png",
+    "correctAnswer": "Pancreas (anatomy)",
+    "acceptableAlternatives": [
+      "Pancreas",
+      "Pancreatic anatomy",
+      "Pancreatic gland"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this dual-function accessory digestive organ shown in this illustration.",
+    "explanation": "This is the pancreas — a retroperitoneal gland with exocrine (acinar cells secrete digestive enzymes: lipase, amylase, proteases) and endocrine (islets of Langerhans: alpha = glucagon, beta = insulin, delta = somatostatin) functions. Divided into head (in duodenal C-loop), neck, body, and tail (reaches splenic hilum). The main pancreatic duct (of Wirsung) joins the common bile duct at the ampulla of Vater. Annular pancreas can obstruct the duodenum.",
+    "visualDescription": "Medical illustration of the pancreas showing its anatomical divisions and relationship to surrounding structures",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Spleen",
+      "Left adrenal gland",
+      "Stomach",
+      "Duodenum"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the pancreas anatomy?",
+        "correctAnswer": "Pancreas (anatomy)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_176",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/parotid_gland.png",
+    "correctAnswer": "Parotid gland",
+    "acceptableAlternatives": [
+      "Parotid salivary gland",
+      "Parotis"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this largest salivary gland shown in this illustration.",
+    "explanation": "This is the parotid gland — the largest of the three major salivary glands (parotid, submandibular, sublingual). Located anterior to the ear, superficial to the masseter muscle. Secretes serous (watery) saliva via Stensen's duct, which opens at the upper second molar. The facial nerve (CN VII) passes through the parotid gland, dividing it into superficial and deep lobes — making parotid tumors clinically significant (risk of facial nerve injury during parotidectomy). Mumps causes painful parotitis.",
+    "visualDescription": "Medical illustration of the parotid gland with Stensen's duct and its anatomical relationship to the facial nerve",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Submandibular gland",
+      "Sublingual gland",
+      "Thyroid gland",
+      "Lymph node"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the parotid gland?",
+        "correctAnswer": "Parotid gland",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_177",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/taste_papillae.png",
+    "correctAnswer": "Taste papillae",
+    "acceptableAlternatives": [
+      "Lingual papillae",
+      "Tongue papillae",
+      "Gustatory papillae"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "These tongue surface structures responsible for taste perception are called what?",
+    "explanation": "These are taste papillae — specialized structures on the tongue dorsum housing taste buds. Four types: fungiform (scattered on anterior 2/3, contain taste buds, innervated by CN VII), circumvallate (8-12, V-shaped row at posterior tongue, CN IX), foliate (lateral folds, CN IX), and filiform (most numerous, NO taste buds, give tongue texture, innervated by CN V3). Taste buds detect sweet, salty, sour, bitter, and umami via type I-III taste cells.",
+    "visualDescription": "Medical illustration of tongue taste papillae showing fungiform, circumvallate, and foliate types",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Intestinal villi",
+      "Olfactory neurons",
+      "Salivary gland ducts",
+      "Sublingual glands"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows taste papillae?",
+        "correctAnswer": "Taste papillae",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_178",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/atherosclerosis.png",
+    "correctAnswer": "Atherosclerotic plaque",
+    "acceptableAlternatives": [
+      "Atherosclerosis",
+      "Atheromatous plaque",
+      "Arterial plaque"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "What vascular pathology is depicted in this cross-sectional illustration?",
+    "explanation": "This is atherosclerotic plaque — the hallmark of atherosclerosis, a chronic inflammatory condition of arterial walls. Plaque consists of a lipid-rich necrotic core, foam cells (cholesterol-laden macrophages), smooth muscle cells, fibrous cap (collagen), and calcifications. Plaque rupture exposes thrombogenic material, triggering platelet aggregation and thrombus — the mechanism of acute MI and ischemic stroke. Risk factors: hypertension, dyslipidemia, DM, smoking.",
+    "visualDescription": "Medical illustration of an arterial cross-section showing atherosclerotic plaque narrowing the lumen",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Thrombus",
+      "Arterial aneurysm",
+      "Vasculitis",
+      "Arteriovenous fistula"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an atherosclerotic plaque?",
+        "correctAnswer": "Atherosclerotic plaque",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_179",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/blood_pressure.png",
+    "correctAnswer": "Blood pressure measurement",
+    "acceptableAlternatives": [
+      "Blood pressure",
+      "Sphygmomanometry",
+      "BP measurement"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "What clinical procedure for assessing cardiovascular status is shown here?",
+    "explanation": "This illustrates blood pressure measurement — using a sphygmomanometer (cuff + pressure gauge). Systolic BP = pressure when Korotkoff sounds first appear (Phase I = cuff pressure > systolic). Diastolic BP = when sounds disappear (Phase V). Normal adult BP: <120/80 mmHg. Stage 1 HTN: 130-139/80-89; Stage 2 HTN: ≥140/90. The brachial artery is the standard site; the auscultatory gap can cause underestimation in the elderly.",
+    "visualDescription": "Medical illustration of blood pressure measurement technique with sphygmomanometer on the arm",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Pulse oximetry",
+      "ECG measurement",
+      "Cardiac auscultation",
+      "Venipuncture"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows blood pressure measurement?",
+        "correctAnswer": "Blood pressure measurement",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_180",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/bloodstream.png",
+    "correctAnswer": "Blood circulation",
+    "acceptableAlternatives": [
+      "Bloodstream",
+      "Circulatory flow",
+      "Blood flow"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "This overview illustration depicts which fundamental cardiovascular concept?",
+    "explanation": "This illustrates blood circulation — the continuous flow of blood through the cardiovascular system. The systemic circulation carries oxygenated blood from the left heart to body tissues; deoxygenated blood returns via veins to the right heart. The pulmonary circulation carries deoxygenated blood from the right heart to the lungs for gas exchange, returning oxygenated blood to the left heart. The total blood volume (~5 L) circulates approximately once per minute at rest.",
+    "visualDescription": "Medical illustration showing the dual circulation (systemic and pulmonary) with arrows indicating blood flow direction",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Lymphatic circulation",
+      "Portal circulation",
+      "Coronary circulation",
+      "Cerebral circulation"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the blood circulation overview?",
+        "correctAnswer": "Blood circulation",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_181",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/coronary_perfusion.png",
+    "correctAnswer": "Coronary perfusion",
+    "acceptableAlternatives": [
+      "Coronary circulation",
+      "Coronary blood supply",
+      "Coronary arteries"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "This illustration depicts the blood supply to which specific organ?",
+    "explanation": "This is coronary perfusion — the blood supply to the heart muscle itself. The right coronary artery (RCA) supplies the right ventricle and inferior wall of the left ventricle. The left anterior descending (LAD) artery — 'widow maker' — supplies the anterior wall and interventricular septum. The left circumflex (LCx) supplies the lateral wall. Coronary perfusion occurs mainly during diastole (heart relaxation). RCA occlusion causes inferior MI; LAD occlusion causes anteroseptal MI.",
+    "visualDescription": "Medical illustration showing the coronary arteries perfusing the heart muscle",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Pulmonary circulation",
+      "Cerebral perfusion",
+      "Renal perfusion",
+      "Hepatic blood supply"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows coronary perfusion?",
+        "correctAnswer": "Coronary perfusion",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_182",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/heart_valves_overview.png",
+    "correctAnswer": "Heart valves (overview)",
+    "acceptableAlternatives": [
+      "Cardiac valves",
+      "Heart valves",
+      "Valvular anatomy overview"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "This overview illustration shows the complete set of which cardiac structures?",
+    "explanation": "This shows all four heart valves in overview — the tricuspid (right AV), mitral/bicuspid (left AV), pulmonary (right semilunar), and aortic (left semilunar) valves. AV valves prevent backflow during ventricular systole; semilunar valves prevent backflow during diastole. The aortic and mitral valves are most commonly affected by disease. Mitral stenosis (often rheumatic) and aortic stenosis (calcific) are the most common valvular conditions in developed countries.",
+    "visualDescription": "Medical illustration showing all four heart valves in a superior cross-sectional overview",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Heart chambers overview",
+      "Coronary arteries",
+      "Heart conduction system",
+      "Pericardium"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an overview of all heart valves?",
+        "correctAnswer": "Heart valves (overview)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_183",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/mi_anteroseptal.png",
+    "correctAnswer": "Myocardial infarction (anteroseptal)",
+    "acceptableAlternatives": [
+      "Anteroseptal MI",
+      "Anterior MI",
+      "Anteroseptal myocardial infarction",
+      "LAD territory infarction"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "This illustration shows necrosis in which specific cardiac territory?",
+    "explanation": "This illustrates an anteroseptal myocardial infarction — infarction of the anterior wall and interventricular septum, typically due to occlusion of the left anterior descending (LAD) artery. On ECG: ST elevation in leads V1-V4. Anteroseptal MI carries high mortality because the LAD ('widow maker') supplies a large myocardial territory including the apex and bundle branches. Complications: complete heart block (septal necrosis), ventricular septal defect, apical aneurysm.",
+    "visualDescription": "Medical illustration of the heart showing anteroseptal myocardial infarction territory highlighted",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Inferior MI",
+      "Lateral MI",
+      "Posterior MI",
+      "Right ventricular MI"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an anteroseptal myocardial infarction?",
+        "correctAnswer": "Myocardial infarction (anteroseptal)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_184",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/mi_posteroinferior.png",
+    "correctAnswer": "Myocardial infarction (posteroinferior)",
+    "acceptableAlternatives": [
+      "Inferior MI",
+      "Posteroinferior MI",
+      "RCA territory infarction",
+      "Inferior myocardial infarction"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "This illustration shows cardiac necrosis in which distribution?",
+    "explanation": "This illustrates a posteroinferior myocardial infarction — typically from occlusion of the right coronary artery (RCA), which supplies the inferior wall of the left ventricle, posterior descending artery, and the SA and AV nodes. ECG: ST elevation in leads II, III, aVF. Complications: bradycardia, AV blocks (nodal ischemia), right ventricular infarction. Right-sided leads (V4R) should be obtained in inferior MI to detect concomitant RV involvement.",
+    "visualDescription": "Medical illustration of the heart showing posteroinferior myocardial infarction territory highlighted",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Anteroseptal MI",
+      "Lateral MI",
+      "Anterior MI",
+      "Atrial infarction"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a posteroinferior myocardial infarction?",
+        "correctAnswer": "Myocardial infarction (posteroinferior)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_185",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/pacemaker.png",
+    "correctAnswer": "Cardiac pacemaker",
+    "acceptableAlternatives": [
+      "Pacemaker",
+      "Implantable pacemaker",
+      "Artificial pacemaker",
+      "Cardiac device"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Identify this implantable cardiac device shown in this illustration.",
+    "explanation": "This is a cardiac pacemaker — an implantable device that delivers electrical impulses to regulate heart rhythm. A generator (battery + circuitry) is implanted subcutaneously (usually left subclavicular area); leads are threaded via subclavian/cephalic vein into the right ventricle (and right atrium in dual-chamber devices). Indications: complete heart block, symptomatic bradycardia, sick sinus syndrome. Modern ICDs (implantable cardioverter-defibrillators) combine pacing with shock therapy for VT/VF.",
+    "visualDescription": "Medical illustration of an implantable cardiac pacemaker showing generator and pacing leads in the heart",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Implantable defibrillator",
+      "Cardiac monitor",
+      "Heart valve prosthesis",
+      "Ventricular assist device"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a cardiac pacemaker?",
+        "correctAnswer": "Cardiac pacemaker",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_186",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/pericarditis.png",
+    "correctAnswer": "Pericarditis",
+    "acceptableAlternatives": [
+      "Pericardial inflammation",
+      "Pericardial disease"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "What inflammatory condition of the heart's outer covering is shown here?",
+    "explanation": "This illustrates pericarditis — inflammation of the pericardium (fibrous sac surrounding the heart). Causes: viral (Coxsackievirus B most common), bacterial, autoimmune (Dressler's syndrome post-MI), uremic (in renal failure). Classic presentation: sharp pleuritic chest pain worse supine, relieved leaning forward; pericardial friction rub on auscultation; ECG shows diffuse saddle-shaped ST elevation with PR depression. Pericardial effusion can progress to cardiac tamponade (Beck's triad: hypotension, JVD, muffled heart sounds).",
+    "visualDescription": "Medical illustration of pericarditis showing inflammation of the pericardial layers around the heart",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Myocarditis",
+      "Endocarditis",
+      "Pericardial effusion",
+      "Cardiac tamponade"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows pericarditis?",
+        "correctAnswer": "Pericarditis",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_187",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/pulmonary_circulation.png",
+    "correctAnswer": "Pulmonary circulation",
+    "acceptableAlternatives": [
+      "Lesser circulation",
+      "Pulmonary circuit",
+      "Pulmonary blood flow"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the circuit that oxygenates blood at the lung shown here.",
+    "explanation": "This is the pulmonary circulation — the 'lesser circuit' carrying deoxygenated blood from the right heart to the lungs and oxygenated blood back. Route: right ventricle → pulmonary trunk → left and right pulmonary arteries → pulmonary capillaries (gas exchange) → 4 pulmonary veins → left atrium. Unique: pulmonary arteries carry deoxygenated blood (unlike systemic arteries). Normal pulmonary artery pressure: ~25/10 mmHg. Pulmonary HTN (>25 mmHg mean) causes right heart failure.",
+    "visualDescription": "Medical illustration of pulmonary circulation showing deoxygenated blood flow to lungs and oxygenated return",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Systemic circulation",
+      "Coronary circulation",
+      "Portal circulation",
+      "Fetal circulation"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows pulmonary circulation?",
+        "correctAnswer": "Pulmonary circulation",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_188",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/pulmonary_embolism.png",
+    "correctAnswer": "Pulmonary embolism",
+    "acceptableAlternatives": [
+      "PE",
+      "Pulmonary thromboembolism",
+      "Lung embolism"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "What life-threatening vascular occlusion is illustrated here?",
+    "explanation": "This illustrates pulmonary embolism (PE) — occlusion of a pulmonary artery by a thrombus (usually from DVT in lower extremity veins). Massive PE causes hemodynamic collapse; saddle embolism straddles the bifurcation of the pulmonary trunk. Classic presentation: sudden dyspnea, pleuritic chest pain, hemoptysis, tachycardia. CT pulmonary angiography is the gold standard for diagnosis. Treatment: anticoagulation (heparin → warfarin/DOAC); thrombolysis or embolectomy for massive PE.",
+    "visualDescription": "Medical illustration of pulmonary embolism showing a clot blocking the pulmonary artery",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Pneumothorax",
+      "Pleural effusion",
+      "Aortic dissection",
+      "Myocardial infarction"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a pulmonary embolism?",
+        "correctAnswer": "Pulmonary embolism",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_189",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/thrombus.png",
+    "correctAnswer": "Thrombus",
+    "acceptableAlternatives": [
+      "Blood clot",
+      "Intravascular thrombus",
+      "Arterial thrombus"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Identify this intravascular coagulation product shown in this illustration.",
+    "explanation": "This is a thrombus — a solid blood clot formed within a blood vessel or the heart. Virchow's triad explains thrombogenesis: endothelial injury, stasis/turbulence, hypercoagulability. Arterial thrombi (white clot) = platelet-rich, form at sites of plaque rupture, cause MI and stroke. Venous thrombi (red clot) = fibrin-rich RBC mesh, form in stasis, cause DVT and PE. Emboli occur when thrombi detach and travel distally.",
+    "visualDescription": "Medical illustration of a thrombus within a blood vessel showing the clot structure",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Atherosclerotic plaque",
+      "Embolus",
+      "Vasospasm",
+      "Arterial dissection"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a thrombus?",
+        "correctAnswer": "Thrombus",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_190",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/vasoconstriction.png",
+    "correctAnswer": "Vasoconstriction",
+    "acceptableAlternatives": [
+      "Arterial vasoconstriction",
+      "Vascular narrowing"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which vascular physiological process is illustrated here?",
+    "explanation": "This illustrates vasoconstriction — narrowing of blood vessel lumen due to smooth muscle contraction in the vessel wall. Triggered by: sympathetic activation (norepinephrine → α1 receptors), endothelin-1, angiotensin II, cold temperature, hypoxia (in pulmonary vasculature). Effects: increased peripheral vascular resistance, increased blood pressure, reduced organ blood flow. Alpha-1 blockers (prazosin) and calcium channel blockers prevent vasoconstriction. Raynaud's phenomenon is episodic excessive vasoconstriction.",
+    "visualDescription": "Medical illustration comparing normal vessel diameter with vasoconstricted (narrowed) state",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Vasodilation",
+      "Atherosclerosis",
+      "Vasospasm",
+      "Arterial stenosis"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows vasoconstriction?",
+        "correctAnswer": "Vasoconstriction",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_191",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/vasodilation.png",
+    "correctAnswer": "Vasodilation",
+    "acceptableAlternatives": [
+      "Arterial vasodilation",
+      "Vascular widening"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Which vascular response increasing blood flow is illustrated here?",
+    "explanation": "This illustrates vasodilation — widening of blood vessel lumen due to smooth muscle relaxation. Triggered by: NO (nitric oxide from endothelium), parasympathetic activation, prostacyclin, histamine, bradykinin, heat, hypercapnia, hypoxia (systemic). Effects: decreased peripheral resistance, decreased blood pressure, increased organ perfusion. Nitrates cause vasodilation (venodilation reduces preload; arterial dilation reduces afterload). Septic shock features profound vasodilation causing distributive shock.",
+    "visualDescription": "Medical illustration comparing normal vessel diameter with vasodilated (widened) state",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Vasoconstriction",
+      "Arterial aneurysm",
+      "Inflammatory hyperemia",
+      "Venous congestion"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows vasodilation?",
+        "correctAnswer": "Vasodilation",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_192",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/vein_cross_section.png",
+    "correctAnswer": "Vein (cross-section)",
+    "acceptableAlternatives": [
+      "Venous cross-section",
+      "Vein wall layers",
+      "Vein histology"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "This cross-sectional view shows the wall structure of which blood vessel type?",
+    "explanation": "This is a vein in cross-section — characterized by thinner walls and larger lumen compared to arteries of equivalent caliber. Veins have three tunics: intima (endothelium), media (less smooth muscle and elastic tissue than arteries), and adventitia (thickest layer in veins, unlike arteries where media dominates). Large veins have bicuspid valves preventing retrograde flow. Veins carry ~70% of total blood volume; venous compliance makes them the capacitance vessels.",
+    "visualDescription": "Medical illustration of a vein cross-section showing its thin wall and large lumen compared to artery",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Artery cross-section",
+      "Capillary",
+      "Lymphatic vessel",
+      "Arteriole"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a vein in cross-section?",
+        "correctAnswer": "Vein (cross-section)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_193",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/venous_circulation.png",
+    "correctAnswer": "Venous circulation",
+    "acceptableAlternatives": [
+      "Venous system",
+      "Venous return",
+      "Veins overview"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the system returning blood to the heart shown in this illustration.",
+    "explanation": "This is the venous circulation — the network of veins returning deoxygenated blood to the heart. The superior vena cava (SVC) drains the upper body (head, neck, arms); the inferior vena cava (IVC) drains the lower body. Venous return is aided by: one-way valves, skeletal muscle pump (calf muscles squeeze veins during walking), respiratory pump (inspiration reduces intrathoracic pressure), and residual arterial pressure. Varicose veins result from valve incompetence causing venous pooling.",
+    "visualDescription": "Medical illustration of the venous system showing major veins returning blood to the heart",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Arterial system",
+      "Lymphatic system",
+      "Portal venous system",
+      "Pulmonary veins"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the venous circulation?",
+        "correctAnswer": "Venous circulation",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_194",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/servier/neuron_types.png",
+    "correctAnswer": "Neuron types",
+    "acceptableAlternatives": [
+      "Types of neurons",
+      "Neuronal classification",
+      "Neuron morphology types"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "This illustration compares the morphology of which nervous system cells?",
+    "explanation": "This shows neuron types — classified by morphology: unipolar (one process, embryonic), pseudo-unipolar (single process splits into two, dorsal root ganglion sensory neurons), bipolar (two processes, retinal and olfactory neurons), and multipolar (one axon + multiple dendrites, most CNS neurons, motor neurons). Classified by function: sensory (afferent, toward CNS), motor (efferent, away from CNS), and interneurons (integrating within CNS, >99% of all neurons).",
+    "visualDescription": "Medical illustration comparing unipolar, bipolar, and multipolar neuron morphologies",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Glial cell types",
+      "Muscle fiber types",
+      "Blood cell types",
+      "Cardiac cell types"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the different types of neurons?",
+        "correctAnswer": "Neuron types",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_195",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/servier/synapse.png",
+    "correctAnswer": "Neuromuscular synapse",
+    "acceptableAlternatives": [
+      "Neuromuscular junction",
+      "NMJ",
+      "Motor end plate",
+      "Synapse"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Identify this specialized junction between nerve and muscle shown in this illustration.",
+    "explanation": "This is the neuromuscular synapse (neuromuscular junction, NMJ) — the synapse between a motor neuron axon terminal and skeletal muscle fiber. Key components: presynaptic terminal (contains ACh vesicles), synaptic cleft, postsynaptic motor end plate (with nicotinic ACh receptors). Signal: ACh released → binds nAChR → end plate potential → muscle contraction. Myasthenia gravis = autoantibodies against nAChRs (ptosis, diplopia, weakness). Succinylcholine blocks this synapse for intubation.",
+    "visualDescription": "Medical illustration of the neuromuscular junction showing motor neuron terminal, synaptic cleft, and muscle end plate",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Central synapse",
+      "Ganglionic synapse",
+      "Gap junction",
+      "Inhibitory synapse"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the neuromuscular synapse?",
+        "correctAnswer": "Neuromuscular synapse",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_196",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/lymphatic_immune/servier/IgG.png",
+    "correctAnswer": "Immunoglobulin G (IgG)",
+    "acceptableAlternatives": [
+      "IgG",
+      "IgG antibody",
+      "Gamma globulin"
+    ],
+    "chainThemeId": "visual_lymphatic_immune",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this most abundant serum antibody shown in its molecular illustration.",
+    "explanation": "This is IgG — the most abundant serum immunoglobulin (~75% of total), a Y-shaped molecule with two heavy (γ) and two light chains. IgG is the only Ig that crosses the placenta (providing passive neonatal immunity). It is the predominant antibody in secondary immune responses. Functions: opsonization, complement activation (classical pathway), ADCC. Four subclasses (IgG1-4). IgG4 is associated with IgG4-related disease (autoimmune fibroinflammatory condition).",
+    "visualDescription": "Medical illustration of the IgG antibody molecule showing Y-shaped structure with Fab and Fc regions",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "IgM",
+      "IgA",
+      "IgE",
+      "IgD"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows Immunoglobulin G (IgG)?",
+        "correctAnswer": "Immunoglobulin G (IgG)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_197",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/lymphatic_immune/servier/IgM.png",
+    "correctAnswer": "Immunoglobulin M (IgM)",
+    "acceptableAlternatives": [
+      "IgM",
+      "IgM antibody",
+      "Pentameric antibody"
+    ],
+    "chainThemeId": "visual_lymphatic_immune",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this pentameric antibody that is first produced in immune responses.",
+    "explanation": "This is IgM — a pentameric immunoglobulin (5 Y-shaped monomers joined by J chains and disulfide bonds), making it the largest antibody. IgM is the first antibody produced in a primary immune response; it is the best activator of complement (classical pathway) due to its multiple Fc regions. Found on naive B cell surface as a monomer (antigen receptor). ABO blood group antibodies are IgM. High IgM in a neonate suggests congenital infection (TORCH).",
+    "visualDescription": "Medical illustration of the IgM pentameric antibody showing five Y-shaped monomers joined by a J chain",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "IgG",
+      "IgA dimer",
+      "IgE",
+      "Complement complex"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows Immunoglobulin M (IgM)?",
+        "correctAnswer": "Immunoglobulin M (IgM)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_198",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/lymphatic_immune/servier/basophil.png",
+    "correctAnswer": "Basophil",
+    "acceptableAlternatives": [
+      "Basophil granulocyte",
+      "Basophilic granulocyte"
+    ],
+    "chainThemeId": "visual_lymphatic_immune",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this rare circulating granulocyte shown in this illustration.",
+    "explanation": "This is a basophil — the rarest circulating granulocyte (<1% of WBCs). Characterized by large, dark-blue (basophilic) cytoplasmic granules containing histamine, heparin, and leukotrienes. Bilobed nucleus often obscured by granules. Basophils express FcεRI receptors binding IgE; cross-linking by allergen triggers degranulation → type I hypersensitivity reactions (anaphylaxis, asthma, urticaria). Tissue-resident equivalent: mast cells. Elevated in basophilia (CML).",
+    "visualDescription": "Medical illustration of a basophil showing large dark-blue granules and bilobed nucleus",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Eosinophil",
+      "Neutrophil",
+      "Mast cell",
+      "Monocyte"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a basophil?",
+        "correctAnswer": "Basophil",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_199",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/lymphatic_immune/servier/eosinophil_progenitor.png",
+    "correctAnswer": "Eosinophil progenitor",
+    "acceptableAlternatives": [
+      "Eosinophil precursor",
+      "Eosinophilic progenitor cell",
+      "Eosinophiloblast"
+    ],
+    "chainThemeId": "visual_lymphatic_immune",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Identify this bone marrow precursor cell shown in this illustration.",
+    "explanation": "This is an eosinophil progenitor — a bone marrow precursor cell in the eosinophil lineage of myeloid development. Eosinophils develop from myeloid stem cells → common myeloid progenitor → eosinophil progenitor → eosinophilobl  ast → eosinophil. IL-5 is the key cytokine driving eosinophil proliferation and differentiation. Progenitors are found in bone marrow and can be mobilized to peripheral blood in certain conditions. Final eosinophils have bilobed nucleus and large orange-red granules.",
+    "visualDescription": "Medical illustration of an eosinophil progenitor cell in bone marrow development",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Mature eosinophil",
+      "Neutrophil progenitor",
+      "Myeloblast",
+      "Basophil progenitor"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an eosinophil progenitor?",
+        "correctAnswer": "Eosinophil progenitor",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_200",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/lymphatic_immune/servier/megakaryocyte.png",
+    "correctAnswer": "Megakaryocyte",
+    "acceptableAlternatives": [
+      "Megakaryoblast",
+      "Platelet precursor cell",
+      "Thrombocyte precursor"
+    ],
+    "chainThemeId": "visual_lymphatic_immune",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this giant bone marrow cell that produces platelets.",
+    "explanation": "This is a megakaryocyte — the giant bone marrow cell (50-150 μm) that produces platelets by cytoplasmic fragmentation. It undergoes endomitosis (DNA replication without cell division), becoming polyploid (up to 64N). Cytoplasmic extensions called proplatelets protrude into marrow sinusoids and fragment into 2,000-5,000 platelets. Thrombopoietin (TPO, from liver) is the primary regulator. In immune thrombocytopenia (ITP), increased megakaryocytes paradoxically produce fewer functional platelets due to anti-platelet antibody destruction.",
+    "visualDescription": "Medical illustration of a megakaryocyte showing its characteristically large size and multilobulated nucleus",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Giant cell",
+      "Macrophage",
+      "Monocyte",
+      "Erythroblast"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a megakaryocyte?",
+        "correctAnswer": "Megakaryocyte",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_201",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/lymphatic_immune/servier/myeloid_stem_cell.png",
+    "correctAnswer": "Myeloid stem cell",
+    "acceptableAlternatives": [
+      "Common myeloid progenitor",
+      "Myeloid progenitor",
+      "CMP"
+    ],
+    "chainThemeId": "visual_lymphatic_immune",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Identify this bone marrow progenitor that gives rise to granulocytes, monocytes, and platelets.",
+    "explanation": "This is the myeloid stem cell (common myeloid progenitor, CMP) — the bone marrow precursor that differentiates into all myeloid lineages: granulocytes (neutrophils, eosinophils, basophils), monocytes/macrophages, erythrocytes, and megakaryocytes/platelets. It arises from the hematopoietic stem cell (HSC) alongside the common lymphoid progenitor (CLP). Growth factors guiding differentiation: G-CSF (neutrophils), M-CSF (monocytes), EPO (erythrocytes), TPO (megakaryocytes), IL-5 (eosinophils).",
+    "visualDescription": "Medical illustration of the myeloid stem cell in the context of hematopoietic differentiation",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Lymphoid stem cell",
+      "Hematopoietic stem cell",
+      "Erythroid progenitor",
+      "Granulocyte progenitor"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the myeloid stem cell?",
+        "correctAnswer": "Myeloid stem cell",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_202",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/lymphatic_immune/servier/platelet_02.png",
+    "correctAnswer": "Platelet",
+    "acceptableAlternatives": [
+      "Thrombocyte",
+      "Blood platelet",
+      "Platelet (detail)"
+    ],
+    "chainThemeId": "visual_lymphatic_immune",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Identify this anucleate cell fragment essential for primary hemostasis.",
+    "explanation": "This is a platelet (thrombocyte) — a second detailed illustration showing platelet ultrastructure. Platelets contain: alpha granules (fibrinogen, vWF, P-selectin, Factor V), dense granules (ADP, ATP, serotonin, calcium), and a surface glycoprotein receptor system (GPIb binds vWF; GPIIb/IIIa binds fibrinogen for aggregation). Platelet activation sequence: adhesion (GPIb-vWF) → shape change → degranulation → aggregation (GPIIb/IIIa crosslinking). Aspirin irreversibly acetylates COX-1, blocking TXA2-mediated platelet activation.",
+    "visualDescription": "Medical illustration of a platelet showing its ultrastructure with granules and surface receptors",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Red blood cell",
+      "White blood cell",
+      "Megakaryocyte fragment",
+      "Erythrocyte"
+    ],
+    "examTags": [
+      "USMLE_Step1",
+      "image_identification",
+      "high_yield"
+    ],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a platelet?",
+        "correctAnswer": "Platelet",
+        "quizMode": "image_answers"
+      }
+    ]
+  }
+]
