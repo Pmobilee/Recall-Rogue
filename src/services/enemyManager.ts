@@ -5,19 +5,19 @@
 import type { EnemyTemplate, EnemyInstance, EnemyIntent, EnemyTurnStartContext } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue } from '../data/balance';
+import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER } from '../data/balance';
 import { resolvePoisonTickBonus } from './relicEffectResolver';
 
 /**
  * Computes HP scaling factor for a given floor.
  *
- * Floor 1 = 1.0x, each subsequent floor adds 12%.
+ * Floor 1 = 1.0x, each subsequent floor adds 10%.
  *
  * @param floor - The current floor number (1-indexed).
  * @returns The HP scaling multiplier.
  */
 export function getFloorScaling(floor: number): number {
-  return 1.0 + (floor - 1) * 0.12;
+  return 1.0 + (floor - 1) * 0.10;
 }
 
 /**
@@ -72,7 +72,7 @@ export function createEnemy(
 ): EnemyInstance {
   const hpMultiplier = options?.hpMultiplier ?? 1;
   const difficultyVariance = options?.difficultyVariance ?? 1;
-  const scaledHP = Math.max(1, Math.round(template.baseHP * getFloorScaling(floor) * hpMultiplier * difficultyVariance));
+  const scaledHP = Math.max(1, Math.round(template.baseHP * ENEMY_BASE_HP_MULTIPLIER * getFloorScaling(floor) * hpMultiplier * difficultyVariance));
   return {
     template,
     currentHP: scaledHP,

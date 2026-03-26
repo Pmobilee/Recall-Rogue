@@ -218,8 +218,8 @@ export const POOL_SUBCATEGORY_MAX_PCT = 0.35;
 // Uses Record<string, number> instead of Record<CardType, number> to avoid
 // circular imports (balance.ts should NOT import from card-types.ts).
 export const BASE_EFFECT: Record<string, number> = {
-  attack: 9,
-  shield: 6,
+  attack: 4,
+  shield: 3,
   utility: 0,
   buff: 0,
   debuff: 0,
@@ -241,7 +241,16 @@ export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
   3: TIER_MULTIPLIER['3'],
 };
 
-/** Charge play multiplier for correct answers — flat for all tiers (nerfed from 2.5-3.5x for mastery system). */
+/**
+ * Flat Charge Correct multiplier applied to quickPlayValue. The real power scaling
+ * comes from mastery level bonuses (getMasteryBaseBonus) and tier multipliers (T1=1.0×,
+ * T2a=1.3×, T2b=1.6×), NOT from increasing this multiplier. This is intentionally 1.5×.
+ *
+ * Runtime formula: CC damage = (quickPlayValue + masteryBonus) × 1.5 × tierMult × chainMult × ...
+ *
+ * Note: The `chargeCorrectValue` field in mechanics.ts is DEAD DATA — the resolver
+ * always computes CC as quickPlayValue × this constant. Do not read chargeCorrectValue.
+ */
 export const CHARGE_CORRECT_MULTIPLIER = 1.5;
 
 /** @deprecated Use CHARGE_CORRECT_MULTIPLIER instead. Kept for backward compat. */
@@ -380,7 +389,7 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.03;
+export const POST_ENCOUNTER_HEAL_PCT = 0.07;
 /** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.03;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
@@ -394,8 +403,10 @@ export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   3: 0.80,   // Segment 3 (floors 13-18): cap at 80%
   4: 0.65,   // Segment 4 (floors 19-24): cap at 65%
 };
-/** HP multiplier for mini-bosses on floors 1-3 (makes early mini-bosses less tanky). */
-export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.60;
+/** Global base HP multiplier for all enemies. Ensures early fights require 2+ turns. */
+export const ENEMY_BASE_HP_MULTIPLIER = 2.0;
+/** HP multiplier for mini-bosses on floors 1-3 (1.0 = no reduction, proper base HP handles early balance). */
+export const EARLY_MINI_BOSS_HP_MULTIPLIER = 1.0;
 
 // === AUTO-CALIBRATION (Difficulty Calibration System) ===
 /** Maximum per-domain offset magnitude from auto-calibration. */
@@ -431,10 +442,10 @@ export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 20,
-  2: 25,
-  3: 30,
-  4: 40,
+  1: 5,    // was 6
+  2: 6,    // was 7
+  3: 7,    // was 9
+  4: 10,   // was 12
   endless: null,
 };
 

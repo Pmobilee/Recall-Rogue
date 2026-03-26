@@ -134,3 +134,34 @@ export function isKanaOnlyEnabled(): boolean {
 export function setKanaOnlyEnabled(enabled: boolean): void {
   setDeckOption('ja', 'kanaOnly', enabled)
 }
+
+// ---- Chinese pinyin ----
+
+/** Check if pinyin is enabled for Chinese cards. Defaults to true. */
+export function isPinyinEnabled(): boolean {
+  return getDeckOption('zh', 'pinyin', true)
+}
+
+export function setPinyinEnabled(enabled: boolean): void {
+  setDeckOption('zh', 'pinyin', enabled)
+}
+
+/** Check if pinyin-only mode is enabled for Chinese cards. Defaults to false. */
+export function isPinyinOnlyEnabled(): boolean {
+  return getDeckOption('zh', 'pinyinOnly', false)
+}
+
+export function setPinyinOnlyEnabled(enabled: boolean): void {
+  setDeckOption('zh', 'pinyinOnly', enabled)
+}
+
+// ---- Korean romanization ----
+
+/** Check if romanization is enabled for Korean cards. Defaults to false. */
+export function isKoreanRomanizationEnabled(): boolean {
+  return getDeckOption('ko', 'romanization', false)
+}
+
+export function setKoreanRomanizationEnabled(enabled: boolean): void {
+  setDeckOption('ko', 'romanization', enabled)
+}

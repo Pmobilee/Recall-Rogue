@@ -277,7 +277,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
   }
 
@@ -320,7 +320,7 @@
   }
 
   .level-badge {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 14px;
     color: #fbbf24;
     white-space: nowrap;

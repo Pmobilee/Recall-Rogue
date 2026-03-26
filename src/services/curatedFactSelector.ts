@@ -83,12 +83,13 @@ export function selectFactForCharge(
     }
   }
 
-  // Shuffle new cards so we don't always introduce in file order
-  // (Anki: "Random" new card gather order is the default)
-  for (let i = newCards.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [newCards[i], newCards[j]] = [newCards[j], newCards[i]];
-  }
+  // Sort new cards by difficulty (ascending) with random tiebreaking.
+  // Easier facts are introduced first, matching the DECKBUILDER spec:
+  // "At mastery 0, the system prefers to select easier facts."
+  newCards.sort((a, b) => {
+    const diffDelta = (a.difficulty ?? 3) - (b.difficulty ?? 3);
+    return diffDelta !== 0 ? diffDelta : rand() - 0.5;
+  });
 
   // Anki Intersperser: proportional mixing
   if (dueReviews.length > 0 && newCards.length > 0) {
@@ -96,7 +97,7 @@ export function selectFactForCharge(
     if (rand() < reviewProb) {
       return { fact: dueReviews[Math.floor(rand() * dueReviews.length)], selectionReason: 'moderate' };
     } else {
-      return { fact: newCards[Math.floor(rand() * newCards.length)], selectionReason: 'unseen' };
+      return { fact: newCards[0], selectionReason: 'unseen' };
     }
   }
 
@@ -105,7 +106,7 @@ export function selectFactForCharge(
   }
 
   if (newCards.length > 0) {
-    return { fact: newCards[Math.floor(rand() * newCards.length)], selectionReason: 'unseen' };
+    return { fact: newCards[0], selectionReason: 'unseen' };
   }
 
   // === PRIORITY 3: Ahead learning (not yet due, but nothing else available) ===

@@ -96,7 +96,7 @@
     align-items: flex-start;
   }
   .season-name {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     color: #fff;
     font-weight: bold;
@@ -112,7 +112,7 @@
     gap: 6px;
   }
   .days-remaining {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
     color: var(--accent-color);
     font-weight: bold;

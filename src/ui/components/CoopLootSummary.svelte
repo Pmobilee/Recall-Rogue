@@ -66,7 +66,7 @@
     padding: 28px; min-width: 320px; max-width: 480px;
     display: flex; flex-direction: column; align-items: center; gap: 16px;
   }
-  .title { font-family: 'Press Start 2P', monospace; font-size: 13px; color: #4ecca3; margin: 0; }
+  .title { font-family: var(--font-rpg); font-size: 13px; color: #4ecca3; margin: 0; }
   .coop-badge { background: #4ecca3; color: #16213e; padding: 4px 12px; border-radius: 4px; font-size: 11px; }
   .split-columns { display: flex; gap: 24px; width: 100%; justify-content: center; }
   .player-col { flex: 1; display: flex; flex-direction: column; gap: 4px; }
@@ -80,6 +80,6 @@
   .no-loot { color: #555; font-size: 11px; }
   .done-btn {
     padding: 12px 32px; background: #e94560; color: #fff; border: none;
-    border-radius: 6px; font-family: 'Press Start 2P', monospace; font-size: 11px; cursor: pointer;
+    border-radius: 6px; font-family: var(--font-rpg); font-size: 11px; cursor: pointer;
   }
 </style>

@@ -66,7 +66,7 @@
     border-top: 2px solid #0f3460;
   }
   .hp-section { display: flex; align-items: center; gap: calc(8px * var(--layout-scale, 1)); margin-bottom: calc(8px * var(--layout-scale, 1)); }
-  .hp-label { font-family: 'Press Start 2P', monospace; font-size: calc(9px * var(--text-scale, 1)); color: #ccc; width: calc(80px * var(--layout-scale, 1)); text-align: right; }
+  .hp-label { font-family: var(--font-rpg); font-size: calc(9px * var(--text-scale, 1)); color: #ccc; width: calc(80px * var(--layout-scale, 1)); text-align: right; }
   .hp-bar { flex: 1; height: calc(12px * var(--layout-scale, 1)); background: #1a1a2e; border-radius: 6px; overflow: hidden; }
   .hp-fill { height: 100%; border-radius: 6px; transition: width 0.3s ease; }
   .hp-fill.creature { background: #e94560; }
@@ -77,17 +77,17 @@
     background: #0f3460; border-radius: 6px; padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)); margin: calc(8px * var(--layout-scale, 1)) 0;
   }
   .log-text { color: #e0e0e0; font-size: calc(11px * var(--text-scale, 1)); margin: 0; flex: 1; }
-  .turn-counter { font-family: 'Press Start 2P', monospace; font-size: calc(8px * var(--text-scale, 1)); color: #888; }
+  .turn-counter { font-family: var(--font-rpg); font-size: calc(8px * var(--text-scale, 1)); color: #888; }
   .combat-actions { display: grid; grid-template-columns: 1fr 1fr; gap: calc(8px * var(--layout-scale, 1)); }
   .action-btn {
     padding: calc(12px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)); border: none; border-radius: 6px;
-    font-family: 'Press Start 2P', monospace; font-size: calc(10px * var(--text-scale, 1)); cursor: pointer; color: white;
+    font-family: var(--font-rpg); font-size: calc(10px * var(--text-scale, 1)); cursor: pointer; color: white;
   }
   .action-btn.attack { background: #e94560; }
   .action-btn.quiz { background: #3498db; }
   .action-btn.defend { background: #f39c12; }
   .action-btn.flee { background: #666; }
   .combat-result { text-align: center; padding: calc(16px * var(--layout-scale, 1)); }
-  .result-text { font-family: 'Press Start 2P', monospace; font-size: calc(16px * var(--text-scale, 1)); color: #e94560; margin: 0; }
+  .result-text { font-family: var(--font-rpg); font-size: calc(16px * var(--text-scale, 1)); color: #e94560; margin: 0; }
   .combat-result.victory .result-text { color: #2ecc71; }
 </style>

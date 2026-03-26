@@ -71,7 +71,7 @@
   }
 
   .options-header {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(12px * var(--text-scale, 1));
     color: #e94560;
     margin: 0 0 calc(16px * var(--layout-scale, 1)) 0;

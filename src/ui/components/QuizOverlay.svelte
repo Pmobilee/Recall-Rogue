@@ -63,6 +63,13 @@
     mnemonic?: string
     /** Layer challenge progress (e.g., question 2 of 3). */
     layerChallengeProgress?: { current: number; total: number }
+    /** Quiz presentation mode: 'text' (default), 'image_question' (image above question),
+     *  'image_answers' (2x2 image grid instead of text buttons). */
+    quizMode?: 'text' | 'image_question' | 'image_answers'
+    /** Path to the question image (used when quizMode === 'image_question'). */
+    imageAssetPath?: string
+    /** Parallel image paths for each choice (used when quizMode === 'image_answers'). */
+    answerImagePaths?: string[]
     onAnswer: (correct: boolean) => void
     /** Callback for 3-button study responses: quality 1=didn't get it, 4=got it, 5=easy */
     onStudyResponse?: (quality: number) => void
@@ -89,7 +96,7 @@
     }
   }
 
-  let { fact, choices, mode, gateProgress, isConsistencyPenalty = false, responseMode = 'standard', showMnemonic = false, mnemonic = '', layerChallengeProgress, onAnswer, onStudyResponse, onClose }: Props = $props()
+  let { fact, choices, mode, gateProgress, isConsistencyPenalty = false, responseMode = 'standard', showMnemonic = false, mnemonic = '', layerChallengeProgress, quizMode = 'text', imageAssetPath, answerImagePaths, onAnswer, onStudyResponse, onClose }: Props = $props()
 
   let selectedAnswer = $state<string | null>(null)
   let isCorrect = $state<boolean | null>(null)
@@ -139,6 +146,28 @@
   const kanaOnly = $derived.by(() => {
     const opts = $deckOptions
     return opts?.ja?.kanaOnly ?? false
+  })
+
+  /** Parsed CJK question parts for Chinese pinyin display. */
+  const chineseParts = $derived.by(() => {
+    if (fact.language !== 'zh' || !fact.pronunciation) return null
+    const opts = $deckOptions
+    if (!(opts?.zh?.pinyin ?? true)) return null  // pinyin disabled
+    return parseJapaneseQuestion(fact.quizQuestion, fact.pronunciation)
+  })
+
+  /** Whether pinyin-only mode is active for Chinese questions. */
+  const pinyinOnly = $derived.by(() => {
+    const opts = $deckOptions
+    return opts?.zh?.pinyinOnly ?? false
+  })
+
+  /** Parsed CJK question parts for Korean romanization display. */
+  const koreanParts = $derived.by(() => {
+    if (fact.language !== 'ko' || !fact.pronunciation) return null
+    const opts = $deckOptions
+    if (!(opts?.ko?.romanization ?? false)) return null  // romanization disabled
+    return parseJapaneseQuestion(fact.quizQuestion, fact.pronunciation)
   })
 
   const resultClass = $derived.by(() => {
@@ -420,9 +449,23 @@
         </div>
       {/if}
 
+      {#if quizMode === 'image_question' && imageAssetPath}
+        <div class="quiz-image-container">
+          <img src={imageAssetPath} alt="Identify this" class="quiz-image" />
+        </div>
+      {/if}
+
       {#if japaneseParts}
         <p class="question {questionLengthClass}" data-testid="quiz-question">
           {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
+        </p>
+      {:else if chineseParts}
+        <p class="question {questionLengthClass}" data-testid="quiz-question">
+          {chineseParts.before}<FuriganaText text={pinyinOnly && chineseParts.reading ? chineseParts.reading : chineseParts.word} reading={chineseParts.reading} size="md" />{chineseParts.after}
+        </p>
+      {:else if koreanParts}
+        <p class="question {questionLengthClass}" data-testid="quiz-question">
+          {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
         </p>
       {:else}
         <p class="question {questionLengthClass}" data-testid="quiz-question">{fact.quizQuestion}</p>
@@ -432,23 +475,46 @@
         <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>
       {/if}
 
-      <div class="choices choices-landscape" class:choices-landscape-5={choices.length === 5}>
-        {#each choices as choice, i}
-          <button
-            class={`choice-button ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
-            class:choice-kbd-highlight={kbdHighlightIndex === i}
-            style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
-            type="button"
-            disabled={showResult}
-            aria-label="Choice {i + 1}: {choice}"
-            onclick={() => void handleAnswer(choice)}
-            data-testid="quiz-answer-{i}"
-          >
-            <span class="key-badge" aria-hidden="true">{i + 1}</span>
-            <span class="choice-text">{choice}</span>
-          </button>
-        {/each}
-      </div>
+      {#if quizMode === 'image_answers' && answerImagePaths?.length}
+        <div class="choices-image-grid">
+          {#each choices as choice, i}
+            <button
+              class="image-choice-btn {getChoiceClass(choice)} {getResultAnimClass(choice)} choice-stagger"
+              class:choice-kbd-highlight={kbdHighlightIndex === i}
+              style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
+              type="button"
+              disabled={showResult}
+              aria-label="Choice {i + 1}: {choice}"
+              onclick={() => void handleAnswer(choice)}
+              data-testid="quiz-answer-{i}"
+            >
+              <span class="key-badge" aria-hidden="true">{i + 1}</span>
+              <img src={answerImagePaths[i]} alt="" class="choice-flag-img" />
+              {#if showResult}
+                <span class="image-choice-label">{choice}</span>
+              {/if}
+            </button>
+          {/each}
+        </div>
+      {:else}
+        <div class="choices choices-landscape" class:choices-landscape-5={choices.length === 5}>
+          {#each choices as choice, i}
+            <button
+              class={`choice-button ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
+              class:choice-kbd-highlight={kbdHighlightIndex === i}
+              style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
+              type="button"
+              disabled={showResult}
+              aria-label="Choice {i + 1}: {choice}"
+              onclick={() => void handleAnswer(choice)}
+              data-testid="quiz-answer-{i}"
+            >
+              <span class="key-badge" aria-hidden="true">{i + 1}</span>
+              <span class="choice-text">{choice}</span>
+            </button>
+          {/each}
+        </div>
+      {/if}
 
       {#if isDev && !showResult}
         <button class="dev-skip-btn" type="button" onclick={() => onAnswer(true)}>⏭ Skip (✓)</button>
@@ -552,6 +618,12 @@
       </div>
     {/if}
 
+    {#if quizMode === 'image_question' && imageAssetPath}
+      <div class="quiz-image-container">
+        <img src={imageAssetPath} alt="Identify this" class="quiz-image" />
+      </div>
+    {/if}
+
     {#if showMnemonic && !showResult}
       <div class="gaia-mnemonic-bubble">
         <img src="/assets/sprites/dome/gaia_thinking.png" alt="GAIA" class="mnemonic-avatar" width="32" height="32" />
@@ -569,6 +641,14 @@
       <p class="question {questionLengthClass}" data-testid="quiz-question">
         {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
       </p>
+    {:else if chineseParts}
+      <p class="question {questionLengthClass}" data-testid="quiz-question">
+        {chineseParts.before}<FuriganaText text={pinyinOnly && chineseParts.reading ? chineseParts.reading : chineseParts.word} reading={chineseParts.reading} size="md" />{chineseParts.after}
+      </p>
+    {:else if koreanParts}
+      <p class="question {questionLengthClass}" data-testid="quiz-question">
+        {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
+      </p>
     {:else}
       <p class="question {questionLengthClass}" data-testid="quiz-question">{fact.quizQuestion}</p>
     {/if}
@@ -577,22 +657,44 @@
       <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>
     {/if}
 
-    <div class="choices">
-      {#each choices as choice, i}
-        <button
-          class={`choice-button ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
-          style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
-          type="button"
-          disabled={showResult}
-          aria-label="Choice {i + 1}: {choice}"
-          onclick={() => void handleAnswer(choice)}
-          data-testid="quiz-answer-{i}"
-        >
-          <span class="key-badge" aria-hidden="true">{i + 1}</span>
-          <span class="choice-text">{choice}</span>
-        </button>
-      {/each}
-    </div>
+    {#if quizMode === 'image_answers' && answerImagePaths?.length}
+      <div class="choices-image-grid">
+        {#each choices as choice, i}
+          <button
+            class="image-choice-btn {getChoiceClass(choice)} {getResultAnimClass(choice)} choice-stagger"
+            style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
+            type="button"
+            disabled={showResult}
+            aria-label="Choice {i + 1}: {choice}"
+            onclick={() => void handleAnswer(choice)}
+            data-testid="quiz-answer-{i}"
+          >
+            <span class="key-badge" aria-hidden="true">{i + 1}</span>
+            <img src={answerImagePaths[i]} alt="" class="choice-flag-img" />
+            {#if showResult}
+              <span class="image-choice-label">{choice}</span>
+            {/if}
+          </button>
+        {/each}
+      </div>
+    {:else}
+      <div class="choices">
+        {#each choices as choice, i}
+          <button
+            class={`choice-button ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
+            style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
+            type="button"
+            disabled={showResult}
+            aria-label="Choice {i + 1}: {choice}"
+            onclick={() => void handleAnswer(choice)}
+            data-testid="quiz-answer-{i}"
+          >
+            <span class="key-badge" aria-hidden="true">{i + 1}</span>
+            <span class="choice-text">{choice}</span>
+          </button>
+        {/each}
+      </div>
+    {/if}
 
     {#if isDev && !showResult}
       <button class="dev-skip-btn" type="button" onclick={() => onAnswer(true)}>
@@ -867,6 +969,92 @@
     letter-spacing: calc(0.5px * var(--layout-scale, 1));
     margin-top: calc(-0.4rem * var(--layout-scale, 1));
     font-style: italic;
+  }
+
+  /* ── Image quiz modes ─────────────────────────────────────────────────── */
+
+  .quiz-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+  }
+
+  .quiz-image {
+    width: calc(200px * var(--layout-scale, 1));
+    height: auto;
+    max-height: calc(140px * var(--layout-scale, 1));
+    object-fit: contain;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    box-shadow: 0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
+  }
+
+  .choices-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(12px * var(--layout-scale, 1));
+    max-width: calc(500px * var(--layout-scale, 1));
+    margin: 0 auto;
+  }
+
+  .image-choice-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(8px * var(--layout-scale, 1));
+    border: calc(2px * var(--layout-scale, 1)) solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    background: var(--card-bg, rgba(0, 0, 0, 0.3));
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .image-choice-btn:hover:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+  }
+
+  .image-choice-btn .key-badge {
+    position: absolute;
+    top: calc(4px * var(--layout-scale, 1));
+    left: calc(4px * var(--layout-scale, 1));
+    z-index: 1;
+  }
+
+  .choice-flag-img {
+    width: 100%;
+    height: auto;
+    max-height: calc(100px * var(--layout-scale, 1));
+    object-fit: contain;
+    border-radius: calc(2px * var(--layout-scale, 1));
+  }
+
+  .image-choice-label {
+    margin-top: calc(4px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+  }
+
+  .image-choice-btn.choice-correct {
+    border-color: #4ecca3;
+    background: rgba(78, 204, 163, 0.15);
+  }
+
+  .image-choice-btn.choice-wrong {
+    border-color: #e94560;
+    background: rgba(233, 69, 96, 0.15);
+  }
+
+  .image-choice-btn.anim-correct-pulse {
+    animation: correct-pulse 600ms ease-out;
+  }
+
+  .image-choice-btn.anim-wrong-shake {
+    animation: wrong-shake 400ms ease-out;
   }
 
   .question {
@@ -1158,7 +1346,7 @@
     color: white;
     border: 1px solid #ff6666;
     padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(0.55rem * var(--layout-scale, 1));
     cursor: pointer;
     border-radius: 4px;

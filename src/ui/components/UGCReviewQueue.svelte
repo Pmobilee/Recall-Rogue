@@ -255,7 +255,7 @@
     margin-bottom: 12px;
   }
   .review-header h2 {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 12px;
     color: #e94560;
     margin: 0;
@@ -398,7 +398,7 @@
     padding: 10px;
     border: none;
     border-radius: 4px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     cursor: pointer;
   }

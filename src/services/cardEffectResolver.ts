@@ -17,7 +17,7 @@ import {
 } from '../data/balance';
 import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
 import { isVulnerable } from '../data/statusEffects';
-import { getMechanicDefinition, type PlayMode } from '../data/mechanics';
+import { getMechanicDefinition, MECHANIC_DEFINITIONS, type PlayMode } from '../data/mechanics';
 import { resolveAttackModifiers, resolveShieldModifiers, resolvePoisonDurationBonus } from './relicEffectResolver';
 
 export interface CardEffectResult {
@@ -213,6 +213,18 @@ export interface CardEffectResult {
       statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
     }>;
   };
+  /**
+   * Card picker deferred choice — when set, the UI shows CardPickerOverlay with candidate cards.
+   * Used by Transmute, Adapt, Conjure, Scavenge, Forge, Mimic.
+   */
+  pendingCardPick?: {
+    type: 'transmute' | 'adapt' | 'conjure' | 'scavenge' | 'forge' | 'mimic';
+    sourceCardId: string;
+    candidates: import('../data/card-types').Card[];
+    pickCount: number;
+    allowSkip: boolean;
+    title: string;
+  };
 }
 
 export interface AdvancedResolveOptions {
@@ -308,6 +320,41 @@ function getBaseEffect(cardType: string): number {
     if (cardType === 'shield' && overrides.baseEffectShield !== undefined) return overrides.baseEffectShield;
   }
   return BASE_EFFECT[cardType as keyof typeof BASE_EFFECT] ?? 0;
+}
+
+/** Generate 3 candidate cards for Transmute card picker */
+function generateTransmuteCandidates(sourceMasteryLevel: number): Card[] {
+  const types: CardType[] = ['attack', 'shield'];
+  const thirdType: CardType = (['utility', 'buff', 'debuff'] as CardType[])[Math.floor(Math.random() * 3)];
+  types.push(thirdType);
+
+  return types.map((cardType, i) => {
+    const pool = MECHANIC_DEFINITIONS.filter(m => m.type === cardType);
+    if (pool.length === 0) return null;
+    const mechanic = pool[Math.floor(Math.random() * pool.length)];
+
+    // Determine mastery level of the candidate
+    let candidateMastery = 0;
+    if (sourceMasteryLevel >= 3) candidateMastery = sourceMasteryLevel;
+    else if (sourceMasteryLevel >= 2) candidateMastery = 1;
+    else if (sourceMasteryLevel >= 1 && i === 0) candidateMastery = 1; // First option gets mastery at level 1
+
+    return {
+      id: `transmute_candidate_${i}`,
+      factId: '',
+      cardType,
+      mechanicId: mechanic.id,
+      mechanicName: mechanic.name,
+      apCost: mechanic.apCost,
+      baseEffectValue: mechanic.baseValue,
+      originalBaseEffectValue: mechanic.baseValue,
+      effectMultiplier: 1.0,
+      tier: '1' as const,
+      domain: 'general_knowledge',
+      chainType: Math.floor(Math.random() * 6),
+      masteryLevel: candidateMastery,
+    } satisfies Card;
+  }).filter(Boolean) as Card[];
 }
 
 export function resolveCardEffect(
@@ -610,7 +657,27 @@ export function resolveCardEffect(
       return result;
     }
     case 'transmute': {
-      result.applyTransmute = true;
+      const candidates = generateTransmuteCandidates(card.masteryLevel ?? 0);
+      result.pendingCardPick = {
+        type: 'transmute',
+        sourceCardId: card.id,
+        candidates,
+        pickCount: (card.masteryLevel ?? 0) >= 3 ? 2 : 1,
+        allowSkip: true,
+        title: 'Transform Card',
+      };
+      return result;
+    }
+    case 'conjure': {
+      const candidates = generateTransmuteCandidates(card.masteryLevel ?? 0);
+      result.pendingCardPick = {
+        type: 'conjure',
+        sourceCardId: card.id,
+        candidates,
+        pickCount: 1,
+        allowSkip: true,
+        title: 'Conjure — Choose a Card',
+      };
       return result;
     }
     case 'immunity': {
@@ -664,15 +731,46 @@ export function resolveCardEffect(
       return result;
     }
     case 'adapt': {
-      const intentType = enemy.nextIntent.type;
-      if (intentType === 'attack' || intentType === 'multi_attack') {
-        result.shieldApplied = applyShieldRelics(finalValue);
-      } else if (intentType === 'debuff') {
-        result.adaptCleanse = true;
-      } else {
-        // defend, buff, heal, or unknown — go offensive
-        applyAttackDamage(finalValue);
-      }
+      const masteryLvl = card.masteryLevel ?? 0;
+      const masteryBonus = getMasteryBaseBonus('adapt', masteryLvl);
+      const baseDmg = (mechanic?.quickPlayValue ?? 4) + masteryBonus;
+      const baseBlock = (mechanic?.quickPlayValue ?? 4) + masteryBonus;
+
+      const candidates: Card[] = [
+        {
+          id: 'adapt_attack',
+          factId: '', cardType: 'attack',
+          mechanicId: 'strike', mechanicName: `Attack (${baseDmg} dmg)`,
+          apCost: 0, baseEffectValue: baseDmg, originalBaseEffectValue: baseDmg,
+          effectMultiplier: 1.0, tier: '1' as const, domain: 'general_knowledge', chainType: 0,
+          masteryLevel: 0,
+        },
+        {
+          id: 'adapt_shield',
+          factId: '', cardType: 'shield',
+          mechanicId: 'block', mechanicName: `Shield (${baseBlock} block)`,
+          apCost: 0, baseEffectValue: baseBlock, originalBaseEffectValue: baseBlock,
+          effectMultiplier: 1.0, tier: '1' as const, domain: 'general_knowledge', chainType: 0,
+          masteryLevel: 0,
+        },
+        {
+          id: 'adapt_utility',
+          factId: '', cardType: 'utility',
+          mechanicId: 'cleanse', mechanicName: 'Cleanse + Draw 1',
+          apCost: 0, baseEffectValue: 1, originalBaseEffectValue: 1,
+          effectMultiplier: 1.0, tier: '1' as const, domain: 'general_knowledge', chainType: 0,
+          masteryLevel: 0,
+        },
+      ];
+
+      result.pendingCardPick = {
+        type: 'adapt',
+        sourceCardId: card.id,
+        candidates,
+        pickCount: 1,
+        allowSkip: true,
+        title: 'Adapt — Choose Form',
+      };
       return result;
     }
     // AR-203: Ignite — sets a buff so the NEXT attack card played adds Burn stacks.
@@ -805,12 +903,28 @@ export function resolveCardEffect(
       result.siftParams = { lookAt: siftLookAt, discardCount: siftDiscard };
       return result;
     }
-    // New: Scavenge — retrieve card(s) from discard to top of draw
+    // New: Scavenge — retrieve a card from the discard pile to hand (player picks)
     case 'scavenge': {
-      const scavengeCount = isChargeCorrect ? 2 : 1;
-      // L3+ on QP: also retrieves 2 (same as CC)
-      const masteryScavengeBonus = (!isChargeCorrect && !isChargeWrong && (card.masteryLevel ?? 0) >= 3) ? 1 : 0;
-      result.scavengeCount = scavengeCount + masteryScavengeBonus;
+      result.pendingCardPick = {
+        type: 'scavenge',
+        sourceCardId: card.id,
+        candidates: [], // Populated by turnManager from actual discard pile
+        pickCount: 1,
+        allowSkip: true,
+        title: 'Scavenge — Retrieve from Discard',
+      };
+      return result;
+    }
+    // New: Forge — upgrade a card in hand for this encounter (player picks)
+    case 'forge': {
+      result.pendingCardPick = {
+        type: 'forge',
+        sourceCardId: card.id,
+        candidates: [], // Populated by turnManager from hand
+        pickCount: (card.masteryLevel ?? 0) >= 3 ? 2 : 1,
+        allowSkip: true,
+        title: 'Forge — Upgrade a Card',
+      };
       return result;
     }
     // New: Precision Strike — damage; timer extension handled by quiz system reading mechanic tag
@@ -1512,17 +1626,16 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Mimic — replay card from discard pile at reduced power (copies BASE mechanic values)
+    // Mimic — copy a card from the discard pile to hand (player picks)
     case 'mimic': {
-      const masteryL3Mimic = (card.masteryLevel ?? 0) >= 3;
-      const mimicMult = isChargeCorrect ? 1.0 : (isChargeWrong ? 0.5 : 0.8);
-      // For QP: random card; for CC: CardBrowser lets player choose; for CW: random.
-      // L3 QP: also lets player choose (mimic_choose_qp tag) — turnManager opens CardBrowser.
-      // If discard pile is empty, no effect (no crash).
-      // turnManager selects the mechanic ID and passes it back here is not needed;
-      // we emit mimicReplay as a sentinel — turnManager resolves actual replay.
-      // mechanicId will be set by turnManager after discard selection.
-      result.mimicReplay = { mechanicId: '__pending__', multiplier: mimicMult, fromDiscard: true };
+      result.pendingCardPick = {
+        type: 'mimic',
+        sourceCardId: card.id,
+        candidates: [], // Populated by turnManager from discard pile
+        pickCount: 1,
+        allowSkip: true,
+        title: 'Mimic — Copy a Card',
+      };
       return result;
     }
 

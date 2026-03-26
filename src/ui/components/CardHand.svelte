@@ -128,7 +128,7 @@
   let viewportWidth = $state(typeof window !== 'undefined' ? Math.min(window.innerWidth, window.innerHeight * GAME_ASPECT_RATIO) : BASE_WIDTH)
 
   /** Scale cards down for large hands so each card remains readable. Kicks in above 6 cards. */
-  const handScaleFactor = $derived(cards.length > 6 ? Math.max(0.65, 1 - (cards.length - 6) * 0.07) : 1)
+  const handScaleFactor = $derived(cards.length > 6 ? Math.max(0.75, 1 - (cards.length - 6) * 0.05) : 1)
 
   const cardSpacing = $derived.by(() => {
     const total = cards.length
@@ -152,6 +152,13 @@
     return -totalWidth / 2 + cardSpacing * index
   }
 
+  function effectTextSizeClass(card: Card): string {
+    const desc = getShortCardDescription(card) || ''
+    if (desc.length > 35) return 'effect-text-sm'
+    if (desc.length > 20) return 'effect-text-md'
+    return ''
+  }
+
   function getEffectValue(card: Card, chargeMode: boolean = false): number {
     const mechanic = getMechanicDefinition(card.mechanicId)
     if (mechanic) {
@@ -159,7 +166,9 @@
       const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
       return baseVal + masteryBonus
     }
-    return Math.round(card.baseEffectValue * card.effectMultiplier)
+    const base = Math.round(card.baseEffectValue * card.effectMultiplier);
+    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+    return chargeMode ? Math.round(base * CHARGE_CORRECT_MULTIPLIER) + masteryBonus : base + masteryBonus;
   }
 
   function shouldShowFrontValue(card: Card): boolean {
@@ -809,16 +818,14 @@
                 style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
               />
             {/if}
-            <!-- AP cost overlay -->
-            <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
             <!-- Mechanic name overlay -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <!-- Card type label overlay -->
             <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
             <!-- Effect description text -->
-            <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
+            <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
-                {#each getCardDescriptionParts(card, undefined, isChargePreview ? getEffectValue(card, true) : undefined) as part}
+                {#each getCardDescriptionParts(card, undefined, getEffectValue(card, isChargePreview)) as part}
                   {#if part.type === 'number'}
                     <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'}>{part.value}</span>
                   {:else if part.type === 'keyword'}
@@ -834,6 +841,8 @@
               </span>
             </div>
           </div>
+          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
+          <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
           {/if}
@@ -977,10 +986,11 @@
                 style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
               />
             {/if}
-            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
           </div>
+          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
+          <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -1098,7 +1108,7 @@
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const effectVal = getEffectValue(card, isChargePreview)}
-    {@const descPower = isChargePreview ? getEffectValue(card, true) : undefined}
+    {@const descPower = getEffectValue(card, isChargePreview)}
 
     <button
       class="card-in-hand card-has-frame"
@@ -1180,14 +1190,12 @@
                 style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
               />
             {/if}
-            <!-- AP cost overlay -->
-            <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
             <!-- Mechanic name overlay -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <!-- Card type label overlay -->
             <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
             <!-- Effect description text -->
-            <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
+            <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, descPower) as part}
                   {#if part.type === 'number'}
@@ -1205,6 +1213,8 @@
               </span>
             </div>
           </div>
+          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
+          <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
           {/if}
@@ -1285,6 +1295,11 @@
         CHARGE
         <span class="charge-ap-badge" class:momentum-active={isMomentumMatch && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
       </button>
+    {/if}
+
+    <!-- Overflow scroll hint: visible only when hand has 8+ cards -->
+    {#if i === cards.length - 1 && cards.length > 7}
+      <div class="hand-overflow-hint">›</div>
     {/if}
 
     <!-- AR-74: Mouse hover tooltip for landscape mode — fixed at bottom-left above End Turn -->
@@ -1373,10 +1388,11 @@
                 style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
               />
             {/if}
-            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
           </div>
+          <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
+          <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -1410,7 +1426,7 @@
   .card-hand-landscape {
     /* Card height = 80% of 27vh strip, scaled down for large hands via --hand-scale (set by JS handScaleFactor).
        Width derived from height via aspect ratio (1.42 tall : 1 wide → invert).
-       --hand-scale defaults to 1 (≤6 cards) and shrinks toward 0.65 for 10+ cards. */
+       --hand-scale defaults to 1 (≤6 cards) and shrinks toward 0.75 for 11+ cards. */
     --hand-scale: 1;
     --card-h: calc(27vh * 0.92 * var(--hand-scale));
     --card-w: calc(var(--card-h) / 1.42);
@@ -1428,6 +1444,37 @@
     gap: calc(8px * var(--hand-scale));
     padding: 0 calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+    pointer-events: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .card-hand-landscape:has(.card-selected),
+  .card-hand-landscape:has(.drag-ready),
+  .card-hand-landscape:has(.drag-charge-zone) {
+    overflow: visible;
+  }
+
+  .card-hand-landscape::-webkit-scrollbar {
+    height: calc(4px * var(--layout-scale, 1));
+  }
+
+  .card-hand-landscape::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: calc(2px * var(--layout-scale, 1));
+  }
+
+  .hand-overflow-hint {
+    position: sticky;
+    right: 0;
+    display: flex;
+    align-items: center;
+    font-size: calc(20px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.4);
+    padding: 0 calc(4px * var(--layout-scale, 1));
     pointer-events: none;
   }
 
@@ -1450,6 +1497,7 @@
     position: relative;
     width: var(--card-w);
     height: var(--card-h);
+    min-width: calc(72px * var(--layout-scale, 1));
     background-color: #1e2d3d;
     border: 2px solid;
     border-radius: 8px;
@@ -1687,23 +1735,23 @@
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
     font-size: calc(var(--card-w) * 0.18);
-    color: #fbbf24;
-    -webkit-text-stroke: 2px #000;
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px #000;
     text-shadow:
-      2px 2px 0 #000, -2px -2px 0 #000,
-      2px -2px 0 #000, -2px 2px 0 #000,
-      0 3px 6px rgba(0,0,0,0.8),
-      0 0 4px rgba(0,0,0,0.9), 0 1px 2px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5);
+      1px 1px 0 #000, -1px -1px 0 #000,
+      1px -1px 0 #000, -1px 1px 0 #000,
+      0 2px 4px rgba(0,0,0,0.7);
     line-height: 1;
+    overflow: visible;
   }
 
   .v2-mechanic-name {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 700;
     font-size: calc(var(--card-w) * 0.09);
-    color: #ffffff;
+    color: #000000;
     text-transform: capitalize;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.7);
+    text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 8px rgba(255,255,255,0.6);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1745,9 +1793,20 @@
     text-align: center;
     line-height: 1.3;
     overflow: hidden;
+    overflow-wrap: break-word;
+    word-break: break-word;
     /* AR-220 sub-step 7: padding to prevent text touching frame edges */
     padding: calc(4px * var(--layout-scale, 1));
     box-sizing: border-box;
+  }
+
+  .v2-effect-text.effect-text-md {
+    font-size: calc(var(--card-w) * 0.078);
+  }
+
+  .v2-effect-text.effect-text-sm {
+    font-size: calc(var(--card-w) * 0.065);
+    line-height: 1.2;
   }
 
   .desc-number {
@@ -1906,9 +1965,20 @@
     pointer-events: none;
   }
 
-  .insufficient-ap {
-    opacity: 0.45;
-    filter: grayscale(0.5);
+  .card-in-hand.insufficient-ap:not(.card-selected) {
+    filter: saturate(0.35) brightness(0.7);
+    opacity: 0.6;
+    transition: filter 200ms ease, opacity 200ms ease;
+  }
+
+  .card-in-hand.insufficient-ap .v2-ap-cost {
+    color: #ef4444 !important;
+    animation: ap-pulse-red 1.5s ease-in-out infinite;
+  }
+
+  @keyframes ap-pulse-red {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
   }
 
   .tier-2a {

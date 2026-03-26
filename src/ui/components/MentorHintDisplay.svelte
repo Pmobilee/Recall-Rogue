@@ -46,7 +46,7 @@
     border-radius: 6px;
     padding: 10px 12px;
     margin-top: 10px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
   }
 
   .hint-header {
@@ -91,7 +91,7 @@
     border: 1px solid #555;
     border-radius: 3px;
     color: #aaa;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 7px;
     padding: 4px 7px;
     cursor: pointer;

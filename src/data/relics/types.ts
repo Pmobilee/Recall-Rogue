@@ -45,7 +45,11 @@ export type RelicTrigger =
   | 'on_charge_wrong'
   | 'on_chain_complete'
   | 'on_surge_start'
-  | 'on_elite_kill';
+  | 'on_elite_kill'
+  | 'on_hp_loss'        // Player loses HP from any source (enemy attack, self-damage, etc.)
+  | 'on_exhaust'        // A card is exhausted (Inscriptions, Volatile Slash CC, etc.)
+  | 'on_discard'        // A card is discarded (end of turn, Swap, Sift, etc.)
+  | 'on_chain_break';   // Knowledge chain is broken (different domain played)
 
 /** A single mechanical effect within a relic. */
 export interface RelicEffect {

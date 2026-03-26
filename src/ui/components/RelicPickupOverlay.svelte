@@ -60,7 +60,7 @@
   }
   .tier-label { font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 8px; text-transform: uppercase; }
   .relic-icon { font-size: 3rem; margin: 8px 0; }
-  .relic-name { font-size: 1.1rem; margin: 8px 0 4px; font-family: 'Press Start 2P', monospace; }
+  .relic-name { font-size: 1.1rem; margin: 8px 0 4px; font-family: var(--font-rpg); }
   .relic-desc { font-size: 0.85rem; margin: 0 0 8px; }
   .relic-effects { margin: 8px 0; }
   .effect-line { font-size: 0.75rem; color: #88cc88; margin: 2px 0; }

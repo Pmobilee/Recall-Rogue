@@ -1,6 +1,7 @@
 <script lang="ts">
   import {
     difficultyMode,
+    fontChoice,
     highContrastMode,
     isSlowReader,
     reduceMotionMode,
@@ -8,6 +9,7 @@
     onboardingState,
     getDifficultyDisplayName,
     type DifficultyMode,
+    type FontChoice,
     type TextSize,
   } from '../../services/cardPreferences'
   import { STORY_MODE_FORCED_RUNS } from '../../data/balance'
@@ -75,6 +77,18 @@
 
   function setTextScale(size: TextSize): void {
     textSize.set(size)
+    unlockCardAudio()
+    playCardAudio('card-cast')
+  }
+
+  let currentFont = $state<FontChoice>('rpg')
+  $effect(() => {
+    const unsub = fontChoice.subscribe((fc) => { currentFont = fc })
+    return () => unsub()
+  })
+
+  function setFont(fc: FontChoice): void {
+    fontChoice.set(fc)
     unlockCardAudio()
     playCardAudio('card-cast')
   }
@@ -239,6 +253,20 @@
               onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('slowReader', c) }}
             />
           </label>
+          <div class="setting-group">
+            <span class="setting-label">Font</span>
+            <div class="pill-group">
+              {#each (['rpg', 'dyslexic', 'system'] as FontChoice[]) as fc}
+                <button
+                  class="pill-btn"
+                  class:active={currentFont === fc}
+                  onclick={() => setFont(fc)}
+                >
+                  {fc === 'rpg' ? 'Fantasy' : fc === 'dyslexic' ? 'Easy Read' : 'System'}
+                </button>
+              {/each}
+            </div>
+          </div>
           <label class="slider-row">
             <span>Answer Display Speed</span>
             <input
@@ -402,6 +430,21 @@
           onchange={(event) => trackSettingChange('slowReader', (event.currentTarget as HTMLInputElement).checked)}
         />
       </label>
+
+      <div class="setting-group">
+        <span class="setting-label">Font</span>
+        <div class="pill-group">
+          {#each (['rpg', 'dyslexic', 'system'] as FontChoice[]) as fc}
+            <button
+              class="pill-btn"
+              class:active={currentFont === fc}
+              onclick={() => setFont(fc)}
+            >
+              {fc === 'rpg' ? 'Fantasy' : fc === 'dyslexic' ? 'Easy Read' : 'System'}
+            </button>
+          {/each}
+        </div>
+      </div>
 
       <label class="slider-row">
         <span>Answer Display Speed</span>
@@ -827,5 +870,49 @@
   :global([data-layout="landscape"]) .slider-row:hover {
     background: rgba(255, 255, 255, 0.03);
     border-radius: calc(8px * var(--layout-scale, 1));
+  }
+
+  .setting-group {
+    display: flex;
+    align-items: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    min-height: calc(48px * var(--layout-scale, 1));
+  }
+
+  .setting-label {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #dbeafe;
+    min-width: calc(60px * var(--layout-scale, 1));
+  }
+
+  .pill-group {
+    display: flex;
+    gap: calc(6px * var(--layout-scale, 1));
+    flex-wrap: wrap;
+  }
+
+  .pill-btn {
+    border: 1px solid #334155;
+    background: #1f2c42;
+    color: #cbd5e1;
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
+    border-radius: 20px;
+    font-size: calc(11px * var(--text-scale, 1));
+    cursor: pointer;
+    transition: background 150ms ease, border-color 150ms ease;
+  }
+
+  .pill-btn:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(15, 41, 66, 0.7);
+    color: #f8fafc;
+  }
+
+  .pill-btn.active {
+    border: 2px solid #38bdf8;
+    background: #0f2942;
+    color: #f8fafc;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25);
   }
 </style>

@@ -1,12 +1,5 @@
 {
   "mcpServers": {
-    "playwright": {
-      "command": "/Users/damion/.local/share/fnm/node-versions/v22.22.0/installation/bin/npx",
-      "args": ["-y", "@playwright/mcp@latest", "--timeout-action", "30000", "--timeout-navigation", "30000"],
-      "env": {
-        "PW_TEST_SCREENSHOT_NO_FONTS_READY": "1"
-      }
-    },
     "svelte": {
       "type": "http",
       "url": "https://mcp.svelte.dev/mcp"
@@ -14,6 +7,17 @@
     "context7": {
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "cloudflare": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.cloudflare.com/mcp"],
+      "env": {
+        "CLOUDFLARE_API_TOKEN": "cfat_ltzYymSGmfRydtL6qUux8bce7Rj6yAXYzGFfdr2Ab20ff2c0"
+      }
+    },
+    "wikidata": {
+      "command": "/Users/damion/.pyenv/versions/3.12.12/bin/uvx",
+      "args": ["--from", "mcp-server-sparql", "mcp-server-sparql", "--endpoint", "https://query.wikidata.org/sparql"]
     }
   }
 }

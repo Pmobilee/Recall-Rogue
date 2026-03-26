@@ -309,7 +309,7 @@
     background: #0a0a1a;
     display: flex;
     flex-direction: column;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     color: #ccc;
   }
   .report-header {

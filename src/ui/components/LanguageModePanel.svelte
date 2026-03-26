@@ -116,7 +116,7 @@
     margin-bottom: 12px;
   }
   .panel-header h2 {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 13px;
     color: #e94560;
     margin: 0;
@@ -182,7 +182,7 @@
     color: #888;
   }
   .level-id {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
     color: #e94560;
     width: 30px;
@@ -218,7 +218,7 @@
     border: none;
     padding: 12px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
     cursor: pointer;
     width: 100%;
@@ -229,7 +229,7 @@
     border: 1px solid #333;
     padding: 10px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     cursor: pointer;
     width: 100%;

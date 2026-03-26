@@ -92,9 +92,10 @@
   }
 
   rt {
-    font-size: 0.5em;
-    color: var(--color-text-muted, #888);
-    font-weight: normal;
+    font-size: 0.65em;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    padding-bottom: 0.1em;
   }
 
   .romaji {

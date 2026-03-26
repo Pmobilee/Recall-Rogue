@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte'
-  import type { Card, FactDomain, CardType } from '../../data/card-types'
+  import type { Card, FactDomain } from '../../data/card-types'
   import { isLandscape } from '../../stores/layoutStore'
   import { inputService } from '../../services/inputService'
   import { getDomainMetadata } from '../../data/domainMetadata'
@@ -9,7 +9,6 @@
   import { getBorderUrl, getBannerUrl, getBaseFrameUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
-  import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { getMechanicDefinition } from '../../data/mechanics'
   import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
   import {
@@ -23,6 +22,8 @@
   import KeywordPopup from './KeywordPopup.svelte'
   import FuriganaText from '../FuriganaText.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
+  import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
+  import { getLanguageConfig } from '../../types/vocabulary'
 
   interface Props {
     card: Card
@@ -31,11 +32,9 @@
     correctAnswer: string
     timerDuration: number
     timerEnabled?: boolean
-    hintsRemaining: number
     speedBonusThreshold?: number
     timerColorVariant?: 'default' | 'gold' | 'slowReader'
     showMasteryTrialHeader?: boolean
-    highlightHint?: boolean
     allowCancel?: boolean
     questionImageUrl?: string
     /** AR-220: When true, show the charged effect value (1.5x + mastery bonus) instead of base. */
@@ -44,10 +43,21 @@
     factLanguage?: string
     /** Pronunciation/reading string from the fact. Used to parse furigana from the question. */
     factPronunciation?: string
+    /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
+    quizMode?: 'text' | 'image_question' | 'image_answers'
+    /** Path to the image shown above the question in image_question mode. */
+    imageAssetPath?: string
+    /** Parallel image paths for each answer choice in image_answers mode. */
+    answerImagePaths?: string[]
+    /** Optional deck display name shown in the card header (e.g., "Japanese → N3 Vocabulary"). */
+    deckDisplayName?: string
+    /** Quiz variant/template type (e.g. 'reading', 'forward', 'reverse'). Suppresses furigana on reading questions to avoid giving away the answer. */
+    quizVariantType?: string
+    /** Language code for the settings cogwheel (shows only when language has configurable options). */
+    quizLanguageCode?: string
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
-    onusehint?: () => void
   }
 
   let {
@@ -57,30 +67,24 @@
     correctAnswer,
     timerDuration,
     timerEnabled = true,
-    hintsRemaining,
     speedBonusThreshold = 0.25,
     timerColorVariant = 'default',
     showMasteryTrialHeader = false,
-    highlightHint = false,
     allowCancel = true,
     questionImageUrl,
     isCharging = true,
     factLanguage,
     factPronunciation,
+    quizMode = 'text',
+    imageAssetPath,
+    answerImagePaths,
+    deckDisplayName,
+    quizLanguageCode,
+    quizVariantType,
     onanswer,
     onskip,
     oncancel,
-    onusehint = () => {},
   }: Props = $props()
-
-  const EFFECT_DESCRIPTIONS: Record<CardType, string> = {
-    attack: 'Deal N Damage',
-    shield: 'Block N Damage',
-    buff: 'Buff +N%',
-    debuff: 'Apply Debuff',
-    utility: 'Utility',
-    wild: 'Adaptive',
-  }
 
   let chargedEffectValue = $derived.by(() => {
     const mechanic = getMechanicDefinition(card.mechanicId)
@@ -90,10 +94,6 @@
     }
     return Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
   })
-  let effectValue = $derived(isCharging ? chargedEffectValue : Math.round(card.baseEffectValue * card.effectMultiplier))
-  let effectDescription = $derived(
-    EFFECT_DESCRIPTIONS[card.cardType].replace('N', String(effectValue)),
-  )
   let domainColor = $derived(getDomainMetadata(card.domain).colorTint)
   let domainName = $derived(getDomainMetadata(card.domain).displayName)
   let typeIconCandidates = $derived(getCardTypeIconCandidates(card.cardType))
@@ -132,9 +132,6 @@
   let waitingForGotIt = $state(false)
   let showTimerExpiredLabel = $state(false)
   let touchStartY = $state<number | null>(null)
-  let showHintMenu = $state(false)
-  let hintUsed = $state(false)
-  let firstLetterHint = $state<string | null>(null)
   let eliminatedIndices = $state<Set<number>>(new Set())
   let activeKeyword = $state<{ id: string; x: number; y: number } | null>(null)
 
@@ -148,6 +145,20 @@
 
   /** Whether the current fact is Japanese. */
   const isJapaneseFact = $derived(factLanguage === 'ja')
+  /** Whether the current fact is Chinese. */
+  const isChineseFact = $derived(factLanguage === 'zh')
+  /** Whether the current fact is Korean. */
+  const isKoreanFact = $derived(factLanguage === 'ko')
+
+  /** Whether the cogwheel settings button should be shown (language has configurable options). */
+  const hasLanguageOptions = $derived(
+    quizLanguageCode
+      ? (getLanguageConfig(quizLanguageCode)?.options?.length ?? 0) > 0
+      : false
+  )
+
+  /** Local state for the in-card settings popup. */
+  let showSettings = $state(false)
 
   /** Whether kana-only mode is active (read from deckOptions store). */
   const kanaOnly = $derived.by(() => {
@@ -162,7 +173,8 @@
    * Returns null if the question cannot be parsed.
    */
   function parseJapaneseQuestion(q: string, pronunciation?: string): { before: string; word: string; reading: string; after: string } | null {
-    const match = q.match(/^(.*?)'([^']+)'(?:\s*\(([^)]+)\))?\s*(.*)$/)
+    // Match both single quotes ('食べる') and double quotes ("食べる") with optional inline reading
+    const match = q.match(/^(.*?)['""「]([^'""」]+)['""」](?:\s*[(\uff08]([^)\uff09]+)[)\uff09])?\s*(.*)$/)
     if (!match) return null
     const [, before, word, inlineReading, after] = match
     const reading = inlineReading ?? pronunciation ?? ''
@@ -174,8 +186,42 @@
    * Parsed Japanese parts for the question, or null for non-Japanese / unparseable questions.
    */
   const japaneseParts = $derived.by(() => {
-    if (!isJapaneseFact || !factPronunciation) return null
+    if (!isJapaneseFact) return null
+    if (quizVariantType === 'reading') return null  // Reading questions: furigana gives away the answer
+    // Try parsing even without factPronunciation — reading may be inline in the question
     return parseJapaneseQuestion(question, factPronunciation)
+  })
+
+  /** Parsed CJK question parts for Chinese pinyin display. */
+  const chineseParts = $derived.by(() => {
+    if (!isChineseFact || !factPronunciation) return null
+    if (quizVariantType === 'reading') return null  // Reading questions: pinyin gives away the answer
+    const opts = $deckOptions
+    if (!(opts?.zh?.pinyin ?? true)) return null  // pinyin disabled
+    return parseJapaneseQuestion(question, factPronunciation)
+  })
+
+  /** Whether pinyin-only mode is active for Chinese questions. */
+  const pinyinOnly = $derived.by(() => {
+    const opts = $deckOptions
+    return opts?.zh?.pinyinOnly ?? false
+  })
+
+  /** Parsed CJK question parts for Korean romanization display. */
+  const koreanParts = $derived.by(() => {
+    if (!isKoreanFact || !factPronunciation) return null
+    if (quizVariantType === 'reading') return null  // Reading questions: romanization gives away the answer
+    const opts = $deckOptions
+    if (!(opts?.ko?.romanization ?? false)) return null  // romanization disabled
+    return parseJapaneseQuestion(question, factPronunciation)
+  })
+
+  $effect(() => {
+    if (import.meta.env.DEV) {
+      if (factLanguage || quizLanguageCode) {
+        console.log('[CardExpanded] Language props:', { factLanguage, quizLanguageCode, factPronunciation: factPronunciation?.substring(0, 20), isJapaneseFact, japaneseParts: japaneseParts ? 'parsed' : 'null', question: question?.substring(0, 60) })
+      }
+    }
   })
 
   /**
@@ -227,9 +273,6 @@
     timerExpired = false
     waitingForGotIt = false
     showTimerExpiredLabel = false
-    showHintMenu = false
-    hintUsed = false
-    firstLetterHint = null
     eliminatedIndices = new Set()
     if (timerEnabled) {
       rafId = requestAnimationFrame(timerTick)
@@ -360,33 +403,6 @@
     touchStartY = null
   }
 
-  function toggleHintMenu(): void {
-    if (answersDisabled || hintsRemaining <= 0 || hintUsed) return
-    showHintMenu = !showHintMenu
-  }
-
-  function applyHint(type: 'eliminate' | 'time_boost' | 'first_letter'): void {
-    if (hintUsed || answersDisabled || hintsRemaining <= 0) return
-
-    if (type === 'eliminate') {
-      const wrongIndices = answers
-        .map((answer, index) => ({ answer, index }))
-        .filter((entry) => entry.answer !== correctAnswer && !eliminatedIndices.has(entry.index))
-      if (wrongIndices.length > 0) {
-        const removeIndex = wrongIndices[Math.floor(Math.random() * wrongIndices.length)].index
-        eliminatedIndices = new Set([...eliminatedIndices, removeIndex])
-      }
-    } else if (type === 'time_boost') {
-      timerTotalMs += 5000
-    } else {
-      firstLetterHint = correctAnswer[0] ?? null
-    }
-
-    hintUsed = true
-    showHintMenu = false
-    onusehint()
-  }
-
   let kbdHighlightTimeoutId: ReturnType<typeof setTimeout> | undefined
 
   /**
@@ -446,42 +462,35 @@
   <div class="card-header">
     <span class="header-domain">
       <img class="header-domain-icon" src={domainIconPath} alt={`${domainName} icon`} />
-      {domainName}
+      {deckDisplayName ?? domainName}
       {#if tierLabel}
         <span class="tier-stars">{tierLabel}</span>
       {/if}
     </span>
     <span class="header-icon">
-      {#if typeIconPath}
-        <img
-          class="header-type-icon"
-          src={typeIconPath}
-          alt=""
-          onerror={() => { typeIconAttempt += 1 }}
-        />
-      {:else}
-        <span>{typeIconFallback}</span>
+      {#if hasLanguageOptions && quizLanguageCode}
+        <button
+          class="card-settings-btn"
+          onclick={() => { showSettings = !showSettings }}
+          aria-label="Language display settings"
+        >⚙</button>
       {/if}
     </span>
   </div>
+  {#if showSettings && quizLanguageCode}
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="settings-modal-backdrop" onclick={() => { showSettings = false }}>
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <div class="settings-modal-container" onclick={(e) => e.stopPropagation()}>
+        <div class="settings-modal-header">
+          <span class="settings-modal-title">Display Settings</span>
+          <button class="settings-modal-close" onclick={() => { showSettings = false }} aria-label="Close settings">✕</button>
+        </div>
+        <DeckOptionsPanel languageCode={quizLanguageCode} />
+      </div>
+    </div>
+  {/if}
 
-  <div class="card-effect-desc">
-    <span class="effect-value">{effectValue}</span>
-    <span class="effect-label">{EFFECT_DESCRIPTIONS[card.cardType].replace('N', '').trim()}</span>
-  </div>
-  <div class="expanded-desc-parts">
-    {#each getCardDescriptionParts(card, undefined, isCharging ? chargedEffectValue : undefined) as part}
-      {#if part.type === 'number'}
-        <span class="exp-desc-number">{part.value}</span>
-      {:else if part.type === 'keyword'}
-        <button class="exp-desc-keyword" onclick={(e) => handleKeywordTap(e, part.keywordId)}>{part.value}</button>
-      {:else if part.type === 'conditional-number'}
-        <span class="exp-desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-      {:else}
-        {part.value}
-      {/if}
-    {/each}
-  </div>
   {#if questionImageUrl}
     <div class="question-image-container">
       <img
@@ -492,21 +501,34 @@
       />
     </div>
   {/if}
+  {#if quizMode === 'image_question' && imageAssetPath}
+    <div class="quiz-asset-image-container">
+      <img src={imageAssetPath} alt="Identify this" class="quiz-asset-image" />
+    </div>
+  {/if}
   <div class="card-question {questionLengthClass}">
     {#if japaneseParts}
       {japaneseParts.before}<FuriganaText
         text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word}
         reading={japaneseParts.reading}
         size="md"
-      />{japaneseParts.after}
+      /> {japaneseParts.after}
+    {:else if chineseParts}
+      {chineseParts.before}<FuriganaText
+        text={pinyinOnly && chineseParts.reading ? chineseParts.reading : chineseParts.word}
+        reading={chineseParts.reading}
+        size="md"
+      /> {chineseParts.after}
+    {:else if koreanParts}
+      {koreanParts.before}<FuriganaText
+        text={koreanParts.word}
+        reading={koreanParts.reading}
+        size="md"
+      /> {koreanParts.after}
     {:else}
       {question}
     {/if}
   </div>
-  {#if firstLetterHint}
-    <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
-  {/if}
-
   {#if timerEnabled}
     <div class="timer-bar-container">
       <div
@@ -524,33 +546,54 @@
     {/if}
   {/if}
 
-  <div
-    class="card-answers"
-    class:card-answers-landscape={$isLandscape}
-    class:card-answers-landscape-2={$isLandscape && answers.length === 2}
-    class:card-answers-landscape-3={$isLandscape && answers.length === 3}
-    class:card-answers-landscape-4={$isLandscape && answers.length >= 4}
-  >
-    {#each answers as answer, i}
-      <button
-        class="answer-btn {getAnswerClass(i)}"
-        class:answer-kbd-highlight={keyboardHighlightIndex === i}
-        data-testid="quiz-answer-{i}"
-        disabled={answersDisabled || eliminatedIndices.has(i)}
-        aria-label={eliminatedIndices.has(i) ? `${answer} — eliminated by hint` : answer}
-        onclick={() => handleAnswer(i)}
-      >
-        {#if $isLandscape}
+  {#if quizMode === 'image_answers' && answerImagePaths?.length}
+    <div class="card-answers-image-grid">
+      {#each answers as answer, i}
+        <button
+          class="answer-image-btn {getAnswerClass(i)}"
+          class:answer-kbd-highlight={keyboardHighlightIndex === i}
+          data-testid="quiz-answer-{i}"
+          disabled={answersDisabled || eliminatedIndices.has(i)}
+          aria-label={eliminatedIndices.has(i) ? `${answer} — eliminated by hint` : answer}
+          onclick={() => handleAnswer(i)}
+        >
           <span class="kbd-hint" aria-hidden="true">{i + 1}</span>
-        {/if}
-        {#if isJapaneseFact && hasJapanese(answer)}
-          <FuriganaText text={answer} size="sm" />
-        {:else}
-          {answer}
-        {/if}
-      </button>
-    {/each}
-  </div>
+          <img src={answerImagePaths[i]} alt="" class="answer-flag-img" />
+          {#if selectedAnswerIndex !== null}
+            <span class="answer-image-label">{answer}</span>
+          {/if}
+        </button>
+      {/each}
+    </div>
+  {:else}
+    <div
+      class="card-answers"
+      class:card-answers-landscape={$isLandscape}
+      class:card-answers-landscape-2={$isLandscape && answers.length === 2}
+      class:card-answers-landscape-3={$isLandscape && answers.length === 3}
+      class:card-answers-landscape-4={$isLandscape && answers.length >= 4}
+    >
+      {#each answers as answer, i}
+        <button
+          class="answer-btn {getAnswerClass(i)}"
+          class:answer-kbd-highlight={keyboardHighlightIndex === i}
+          data-testid="quiz-answer-{i}"
+          disabled={answersDisabled || eliminatedIndices.has(i)}
+          aria-label={eliminatedIndices.has(i) ? `${answer} — eliminated by hint` : answer}
+          onclick={() => handleAnswer(i)}
+        >
+          {#if $isLandscape}
+            <span class="kbd-hint" aria-hidden="true">{i + 1}</span>
+          {/if}
+          {#if isJapaneseFact && hasJapanese(answer)}
+            <FuriganaText text={answer} size="sm" />
+          {:else}
+            {answer}
+          {/if}
+        </button>
+      {/each}
+    </div>
+  {/if}
 
   {#if waitingForGotIt}
     <button
@@ -567,25 +610,6 @@
 
   {#if showSpeedBonus}
     <div class="speed-bonus-badge" aria-live="polite" role="status">SPEED BONUS</div>
-  {/if}
-
-  <div class="action-row">
-    <button
-      class="action-btn hint-btn"
-      class:hint-highlight={highlightHint && !answersDisabled && hintsRemaining > 0 && !hintUsed}
-      onclick={toggleHintMenu}
-      disabled={answersDisabled || hintsRemaining <= 0 || hintUsed}
-    >
-      Hint ({hintsRemaining})
-    </button>
-  </div>
-
-  {#if showHintMenu}
-    <div class="hint-menu">
-      <button class="hint-item" onclick={() => applyHint('eliminate')}>Remove Wrong</button>
-      <button class="hint-item" onclick={() => applyHint('time_boost')}>+5 Seconds</button>
-      <button class="hint-item" onclick={() => applyHint('first_letter')}>First Letter</button>
-    </div>
   {/if}
 
   {#if activeKeyword}
@@ -618,6 +642,8 @@
 <style>
   .card-expanded {
     position: fixed;
+    /* Needed so absolute-positioned children (settings popup) anchor here */
+    isolation: isolate;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -629,10 +655,11 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     background:
-      linear-gradient(rgba(14, 20, 30, 0.95), rgba(14, 20, 30, 0.97)),
+      linear-gradient(rgba(14, 20, 30, 1.0), rgba(16, 22, 32, 1.0)),
       #1a2332;
     border-radius: 12px;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(100, 140, 200, 0.25);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5), 0 0 calc(20px * var(--layout-scale, 1)) rgba(80, 120, 180, 0.15);
     z-index: 30;
     animation: slide-up 200ms ease-out;
   }
@@ -646,7 +673,7 @@
     width: 58vw;
     max-width: 58vw;
     /* Vertically: fill arena above stats bar + card hand */
-    top: 0;
+    top: calc(56px * var(--layout-scale, 1));
     bottom: calc(27vh + 36px);
     /* Center content vertically within the panel */
     display: flex;
@@ -665,10 +692,10 @@
     animation: slide-from-left 200ms ease-out;
     /* Enhanced dark background for landscape quiz panel */
     background:
-      linear-gradient(180deg, rgba(12, 16, 28, 0.98) 0%, rgba(8, 11, 20, 0.99) 100%),
+      linear-gradient(180deg, rgba(12, 16, 28, 1.0) 0%, rgba(8, 11, 20, 1.0) 100%),
       #0a0e1a;
-    border-right: 1px solid rgba(100, 110, 130, 0.2);
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    border-right: 1px solid rgba(100, 140, 200, 0.25);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 0 calc(20px * var(--layout-scale, 1)) rgba(80, 120, 180, 0.15);
   }
 
   @keyframes slide-from-left {
@@ -713,7 +740,7 @@
     background: rgba(200, 180, 120, 0.2);
     border: 1px solid rgba(200, 180, 120, 0.4);
     font-size: calc(10px * var(--layout-scale, 1));
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     color: #c8b478;
     margin-right: calc(10px * var(--layout-scale, 1));
     flex-shrink: 0;
@@ -804,7 +831,7 @@
 
   .header-domain {
     font-size: calc(9px * var(--layout-scale, 1));
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     color: #c8b478;
     display: inline-flex;
     align-items: center;
@@ -823,11 +850,77 @@
   .header-icon {
     font-size: calc(14px * var(--layout-scale, 1));
     display: inline-flex;
-    width: calc(16px * var(--layout-scale, 1));
-    height: calc(16px * var(--layout-scale, 1));
     align-items: center;
     justify-content: center;
+    gap: calc(4px * var(--layout-scale, 1));
     opacity: 0.7;
+  }
+
+  /* In-card settings cogwheel button */
+  .card-settings-btn {
+    background: #b45309;
+    color: #fff;
+    border: none;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+    box-shadow: 0 calc(1px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.4);
+  }
+
+  .card-settings-btn:hover {
+    background: #92400e;
+  }
+
+  /* Settings modal — centered overlay */
+  .settings-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .settings-modal-container {
+    background: #1a1a2e;
+    border: 1px solid #b45309;
+    border-radius: calc(12px * var(--layout-scale, 1));
+    padding: calc(16px * var(--layout-scale, 1));
+    width: calc(340px * var(--layout-scale, 1));
+    max-width: 90vw;
+    box-shadow: 0 calc(8px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.8);
+  }
+
+  .settings-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+  }
+
+  .settings-modal-title {
+    font-size: calc(15px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+
+  .settings-modal-close {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: calc(18px * var(--text-scale, 1));
+    cursor: pointer;
+    padding: calc(4px * var(--layout-scale, 1));
+    line-height: 1;
+  }
+
+  .settings-modal-close:hover {
+    color: #e2e8f0;
   }
 
   .header-type-icon {
@@ -844,34 +937,14 @@
     color: #d4af37;
   }
 
-  /* ── Card effect: number in amber, label lighter ── */
-  .card-effect-desc {
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    font-size: calc(9px * var(--text-scale, 1));
-    padding: 0 calc(12px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
-    display: flex;
-    align-items: baseline;
-    gap: calc(5px * var(--layout-scale, 1));
-  }
-
-  .effect-value {
-    color: #f59e0b;
-    font-weight: 900;
-    font-size: calc(11px * var(--text-scale, 1));
-  }
-
-  .effect-label {
-    color: #7c8fa8;
-    font-size: calc(8px * var(--text-scale, 1));
-  }
-
   /* ── Question text: pixel font, auto-scales by length ── */
   .card-question {
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(11px * var(--text-scale, 1));
     color: #e8edf5;
     line-height: 1.6;
     padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    text-align: center;
   }
 
   /* AR-221: Auto-scaling font sizes based on question character count */
@@ -885,13 +958,6 @@
 
   .card-question.quiz-text-long {
     font-size: calc(14px * var(--text-scale, 1));
-  }
-
-  .first-letter-hint {
-    margin: 0 calc(12px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    font-size: calc(10px * var(--text-scale, 1));
-    color: #facc15;
   }
 
   .card-answers {
@@ -908,7 +974,7 @@
     border: 1.5px solid rgba(150, 160, 180, 0.3);
     border-radius: 6px;
     color: #e2e8f0;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(11px * var(--text-scale, 1));
     line-height: 1.5;
     padding: calc(14px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
@@ -953,7 +1019,7 @@
     top: calc(40px * var(--layout-scale, 1));
     background: #2563eb;
     color: #fff;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(9px * var(--text-scale, 1));
     font-weight: 700;
     border-radius: 8px;
@@ -985,70 +1051,9 @@
     position: absolute;
     right: calc(8px * var(--layout-scale, 1));
     top: calc(-18px * var(--layout-scale, 1));
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(10px * var(--text-scale, 1));
     color: #94a3b8;
-  }
-
-  .action-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: calc(8px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-  }
-
-  .action-btn {
-    min-height: calc(40px * var(--layout-scale, 1));
-    border-radius: 6px;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    font-size: calc(9px * var(--text-scale, 1));
-    cursor: pointer;
-    transition: all 150ms ease;
-  }
-
-  /* ── Hint button: dark blue-toned game style ── */
-  .hint-btn {
-    background: linear-gradient(180deg, rgba(40, 50, 70, 0.9), rgba(30, 38, 55, 0.95));
-    border: 1px solid rgba(100, 130, 200, 0.3);
-    color: #8ba4d0;
-    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
-  }
-
-  .hint-btn:hover:not(:disabled) {
-    border-color: rgba(100, 130, 200, 0.6);
-    background: linear-gradient(180deg, rgba(50, 60, 85, 0.9), rgba(38, 48, 68, 0.95));
-  }
-
-  .hint-btn.hint-highlight {
-    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.8), 0 0 14px rgba(250, 204, 21, 0.35);
-  }
-
-  .hint-btn:disabled {
-    opacity: 0.45;
-  }
-
-  .hint-menu {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: calc(6px * var(--layout-scale, 1));
-    padding: 0 calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-  }
-
-  .hint-item {
-    min-height: calc(40px * var(--layout-scale, 1));
-    border: 1px solid rgba(100, 130, 200, 0.25);
-    border-radius: 6px;
-    background: linear-gradient(180deg, rgba(30, 38, 55, 0.9), rgba(20, 28, 45, 0.95));
-    color: #8ba4d0;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    font-size: calc(8px * var(--layout-scale, 1));
-    cursor: pointer;
-    transition: all 150ms ease;
-  }
-
-  .hint-item:hover {
-    border-color: rgba(100, 130, 200, 0.5);
-    background: linear-gradient(180deg, rgba(40, 50, 72, 0.9), rgba(28, 38, 60, 0.95));
   }
 
   .question-image-container {
@@ -1067,45 +1072,91 @@
     padding: calc(4px * var(--layout-scale, 1));
   }
 
-  .expanded-desc-parts {
-    text-align: center;
-    font-size: calc(15px * var(--layout-scale, 1));
-    line-height: 1.5;
-    color: #e2e8f0;
-    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    font-family: 'Cinzel', 'Georgia', serif;
+  /* ── Image quiz modes ──────────────────────────────────────────────────── */
+
+  .quiz-asset-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) 0;
   }
 
-  .exp-desc-number {
-    font-weight: 900;
-    color: #fbbf24;
+  .quiz-asset-image {
+    width: calc(340px * var(--layout-scale, 1));
+    height: auto;
+    max-height: calc(240px * var(--layout-scale, 1));
+    object-fit: contain;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    box-shadow: 0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
   }
 
-  .exp-desc-keyword {
-    font-weight: 800;
-    color: #93c5fd;
-    background: none;
-    border: none;
-    border-bottom: 1px dashed rgba(147, 197, 253, 0.5);
+  .card-answers-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+  }
+
+  .answer-image-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(8px * var(--layout-scale, 1));
+    border: calc(2px * var(--layout-scale, 1)) solid rgba(150, 160, 180, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    background: linear-gradient(180deg, rgba(30, 40, 60, 0.95) 0%, rgba(20, 28, 45, 0.98) 100%);
     cursor: pointer;
-    padding: 0;
-    font: inherit;
-    font-weight: 800;
-    -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.2s, transform 0.2s;
   }
 
-  .exp-desc-keyword:active {
-    color: #60a5fa;
+  .answer-image-btn:hover:not(:disabled) {
+    border-color: rgba(200, 180, 120, 0.5);
+    transform: translateY(-1px);
   }
 
-  .exp-desc-conditional {
-    color: #9ca3af;
-    font-weight: 700;
+  .answer-image-btn .kbd-hint {
+    position: absolute;
+    top: calc(4px * var(--layout-scale, 1));
+    left: calc(4px * var(--layout-scale, 1));
   }
 
-  .exp-desc-conditional.active {
-    color: #22c55e;
-    font-weight: 900;
+  .answer-flag-img {
+    width: 100%;
+    height: auto;
+    max-height: calc(90px * var(--layout-scale, 1));
+    object-fit: contain;
+    border-radius: calc(2px * var(--layout-scale, 1));
+  }
+
+  .answer-image-label {
+    margin-top: calc(4px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-family: var(--font-rpg);
+  }
+
+  .answer-image-btn.answer-correct {
+    border-color: rgba(34, 197, 94, 0.7);
+    background: linear-gradient(180deg, rgba(5, 46, 22, 0.97) 0%, rgba(3, 32, 14, 0.99) 100%);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+  }
+
+  .answer-image-btn.answer-wrong {
+    border-color: rgba(220, 38, 38, 0.7);
+    background: linear-gradient(180deg, rgba(63, 18, 23, 0.97) 0%, rgba(45, 12, 16, 0.99) 100%);
+  }
+
+  .answer-image-btn.answer-reveal-correct {
+    border-color: rgba(234, 179, 8, 0.8);
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.2), inset 0 0 0 1px rgba(234, 179, 8, 0.4);
+  }
+
+  .answer-image-btn.answer-eliminated {
+    opacity: 0.35;
   }
 
   /* §1 Quiz Result overlay — landscape only, flashes over the quiz panel */
@@ -1174,7 +1225,7 @@
     border: 1.5px solid rgba(100, 140, 220, 0.5);
     border-radius: 8px;
     color: #93c5fd;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(10px * var(--text-scale, 1));
     font-weight: 700;
     text-align: center;
@@ -1197,7 +1248,7 @@
   .timer-expired-label {
     text-align: center;
     color: #94a3b8;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(8px * var(--text-scale, 1));
     padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     animation: fade-in-out 2s ease forwards;

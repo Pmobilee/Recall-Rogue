@@ -82,3 +82,16 @@ button, [role="button"], a[href] {
   outline: 3px solid #4fc3f7;
   outline-offset: 2px;
 }
+
+/* ── Font accessibility options ───────────────────────── */
+.font-dyslexic {
+  --font-rpg: 'OpenDyslexic', sans-serif;
+  --font-body: 'OpenDyslexic', sans-serif;
+  --font-pixel: 'OpenDyslexic', sans-serif;
+}
+
+.font-system {
+  --font-rpg: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-pixel: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}

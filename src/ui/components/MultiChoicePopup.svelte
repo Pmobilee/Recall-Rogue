@@ -108,7 +108,7 @@
   }
 
   .prompt-text {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     color: #e0e0e0;
     text-align: center;

@@ -5,6 +5,7 @@ import { MAX_ASCENSION_LEVEL } from './ascension'
 
 export type DifficultyMode = 'relaxed' | 'normal'
 export type TextSize = 'small' | 'medium' | 'large'
+export type FontChoice = 'rpg' | 'dyslexic' | 'system'
 
 export interface OnboardingState {
   hasCompletedOnboarding: boolean
@@ -64,6 +65,7 @@ function persistedWritable<T>(key: string, initial: T): Writable<T> {
 export const difficultyMode = persistedWritable<DifficultyMode>('card:difficultyMode', 'normal')
 export const isSlowReader = persistedWritable<boolean>('card:isSlowReader', false)
 export const textSize = persistedWritable<TextSize>('card:textSize', 'medium')
+export const fontChoice = persistedWritable<FontChoice>('recall-rogue-font-choice', 'rpg')
 export const highContrastMode = persistedWritable<boolean>('card:highContrastMode', false)
 export const reduceMotionMode = persistedWritable<boolean>('card:reduceMotionMode', false)
 export const onboardingState = persistedWritable<OnboardingState>('card:onboardingState', defaultOnboardingState)

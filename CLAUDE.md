@@ -212,6 +212,20 @@ Every code change that touches gameplay MUST have corresponding documentation up
 - If a worker's PR/task does not update docs where required, the orchestrator MUST spawn a follow-up worker to fix it before the task is considered done
 - Stale docs are treated as bugs — they have the same priority as broken tests
 
+### Source File → GDD Section Mapping (Quick Reference)
+
+| Source File | GDD Section |
+|-------------|-------------|
+| `src/data/enemies.ts` | §8 Enemy Design |
+| `src/data/relics/starters.ts` + `unlockable.ts` | §16 Relic System |
+| `src/data/statusEffects.ts` | §4.5 Status Effects |
+| `src/data/mechanics.ts` | §6 Card Mechanics |
+| `src/data/balance.ts` | Inline (referenced throughout) |
+| `src/services/ascension.ts` | §27 Ascension Mode |
+| `src/data/domainMetadata.ts` | §28 Fact Database |
+
+See `.claude/skills/game-design-sync/SKILL.md` for complete per-element checklists and audit commands.
+
 ## Inspection Registry — MANDATORY
 
 The game element inspection registry at `data/inspection-registry.json` tracks **449 elements** across 24 tables. It is the single source of truth for what exists in the game and when each element was last verified.

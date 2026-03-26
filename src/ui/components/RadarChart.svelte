@@ -45,7 +45,7 @@
     }
 
     // Draw axis lines and labels
-    ctx.font = `${Math.max(8, size * 0.035)}px 'Press Start 2P', monospace`
+    ctx.font = `${Math.max(8, size * 0.035)}px 'Lora', 'Georgia', serif`
     ctx.fillStyle = '#888'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'

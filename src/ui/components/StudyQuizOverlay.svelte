@@ -71,9 +71,32 @@
       </div>
 
       {#if currentQuestion}
+        {#if currentQuestion.quizMode === 'image_question' && currentQuestion.imageAssetPath}
+          <div class="study-quiz-image-container">
+            <img src={currentQuestion.imageAssetPath} alt="Identify this" class="study-quiz-image" />
+          </div>
+        {/if}
         <p class="question-text">{currentQuestion.question}</p>
 
         {#key currentIndex}
+        {#if currentQuestion.quizMode === 'image_answers' && currentQuestion.answerImagePaths?.length}
+          <div class="answers-image-grid">
+            {#each currentQuestion.answers as answer, i}
+              <button
+                class="answer-img-btn {getAnswerClass(answer)}"
+                onclick={() => selectAnswer(answer)}
+                disabled={showFeedback}
+                aria-label="Choice {i + 1}: {answer}"
+              >
+                <span class="study-kbd-hint" aria-hidden="true">{i + 1}</span>
+                <img src={currentQuestion.answerImagePaths![i]} alt="" class="study-flag-img" />
+                {#if showFeedback}
+                  <span class="study-image-label">{answer}</span>
+                {/if}
+              </button>
+            {/each}
+          </div>
+        {:else}
         <div class="answers-grid">
           {#each currentQuestion.answers as answer}
             <button
@@ -85,6 +108,7 @@
             </button>
           {/each}
         </div>
+        {/if}
         {/key}
 
         {#if showFeedback}
@@ -194,6 +218,85 @@
     text-align: center;
     line-height: 1.5;
     margin: 0;
+  }
+
+  .study-quiz-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .study-quiz-image {
+    width: calc(200px * var(--layout-scale, 1));
+    height: auto;
+    max-height: calc(140px * var(--layout-scale, 1));
+    object-fit: contain;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    box-shadow: 0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
+  }
+
+  .answers-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(10px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .answer-img-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(8px * var(--layout-scale, 1));
+    border: calc(2px * var(--layout-scale, 1)) solid #484F58;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    background: #1E2D3D;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .answer-img-btn:not(:disabled):hover {
+    border-color: #7C3AED;
+    background: #1E2540;
+  }
+
+  .answer-img-btn:disabled {
+    cursor: default;
+  }
+
+  .answer-img-btn.correct {
+    border-color: #2ECC71;
+    background: #0f2a1a;
+  }
+
+  .answer-img-btn.wrong {
+    border-color: #E74C3C;
+    background: #2a0f0f;
+  }
+
+  .study-kbd-hint {
+    position: absolute;
+    top: calc(4px * var(--layout-scale, 1));
+    left: calc(4px * var(--layout-scale, 1));
+    font-size: calc(9px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .study-flag-img {
+    width: 100%;
+    height: auto;
+    max-height: calc(90px * var(--layout-scale, 1));
+    object-fit: contain;
+    border-radius: calc(2px * var(--layout-scale, 1));
+  }
+
+  .study-image-label {
+    margin-top: calc(4px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
   }
 
   .answers-grid {

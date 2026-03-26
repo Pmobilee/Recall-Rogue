@@ -29,6 +29,10 @@ import {
   resolveChronometerModifiers,
   resolveChainMultiplierBonus,
   resolveChainMultiplierIsOverridden,
+  resolveHpLossEffects,
+  resolveExhaustEffects,
+  resolveChainBreakEffects,
+  resolveHealModifiers,
 } from '../relicEffectResolver';
 
 // ─── Shared test context helpers ─────────────────────────────────────
@@ -273,37 +277,22 @@ describe('chain_link_charm (uncommon)', () => {
   });
 });
 
-describe('worn_shield (uncommon)', () => {
-  it('2nd shield card gets +3 block', () => {
-    const result = resolveShieldModifiers(
-      new Set(['worn_shield']),
-      { shieldCardPlayCountThisEncounter: 2 },
-    );
-    expect(result.wornShieldBonus).toBe(3);
-  });
-
-  it('4th shield card gets +3 block', () => {
-    const result = resolveShieldModifiers(
-      new Set(['worn_shield']),
-      { shieldCardPlayCountThisEncounter: 4 },
-    );
-    expect(result.wornShieldBonus).toBe(3);
-  });
-
-  it('1st shield card gets no bonus', () => {
+describe('worn_shield (uncommon, reworked)', () => {
+  it('grants thorns and reduces block percentage', () => {
     const result = resolveShieldModifiers(
       new Set(['worn_shield']),
       { shieldCardPlayCountThisEncounter: 1 },
     );
-    expect(result.wornShieldBonus).toBe(0);
+    expect(result.grantsThorns).toBe(1);
+    expect(result.percentBlockBonus).toBe(-20);
   });
 
-  it('3rd shield card gets no bonus', () => {
+  it('does NOT grant thorns when relic not held', () => {
     const result = resolveShieldModifiers(
-      new Set(['worn_shield']),
-      { shieldCardPlayCountThisEncounter: 3 },
+      new Set([]),
+      { shieldCardPlayCountThisEncounter: 1 },
     );
-    expect(result.wornShieldBonus).toBe(0);
+    expect(result.grantsThorns).toBeUndefined();
   });
 });
 
@@ -961,5 +950,279 @@ describe('volatile_manuscript (cursed rare)', () => {
       makeChargeCorrectCtx({ totalChargesThisRun: 3 }),
     );
     expect(result.selfBurnApply).toBe(0);
+  });
+});
+
+// ─── Batch E: Reworked Relics ─────────────────────────────────────────
+
+describe('whetstone (reworked)', () => {
+  it('grants +3 flat attack damage', () => {
+    const result = resolveAttackModifiers(new Set(['whetstone']), makeAttackCtx());
+    expect(result.flatDamageBonus).toBeGreaterThanOrEqual(3);
+  });
+
+  it('applies -1 block penalty on shields', () => {
+    const result = resolveShieldModifiers(new Set(['whetstone']), {});
+    expect(result.flatBlockBonus).toBeLessThan(0);
+  });
+});
+
+describe('iron_shield (reworked)', () => {
+  it('grants 3 block at turn start', () => {
+    const result = resolveTurnStartEffects(new Set(['iron_shield']));
+    expect(result.bonusBlock).toBe(3);
+  });
+});
+
+describe('thick_skin (reworked)', () => {
+  it('increases damage taken by 2', () => {
+    const result = resolveDamageTakenEffects(new Set(['thick_skin']), makeDamageTakenCtx());
+    expect(result.flatDamageIncrease).toBe(2);
+  });
+});
+
+// ─── Batch F: New Relics ──────────────────────────────────────────────
+
+describe('pain_conduit (tradeoff)', () => {
+  it('reflects HP loss as damage to enemy', () => {
+    const result = resolveHpLossEffects(new Set(['pain_conduit']), { hpLost: 8, source: 'enemy' });
+    expect(result.reflectDamage).toBe(8);
+  });
+
+  it('reflects self-damage too', () => {
+    const result = resolveHpLossEffects(new Set(['pain_conduit']), { hpLost: 3, source: 'self' });
+    expect(result.reflectDamage).toBe(3);
+  });
+
+  it('no reflect when relic not held', () => {
+    const result = resolveHpLossEffects(new Set([]), { hpLost: 8, source: 'enemy' });
+    expect(result.reflectDamage).toBe(0);
+  });
+
+  it('no reflect when 0 HP lost', () => {
+    const result = resolveHpLossEffects(new Set(['pain_conduit']), { hpLost: 0, source: 'enemy' });
+    expect(result.reflectDamage).toBe(0);
+  });
+});
+
+describe('pain_conduit healing penalty', () => {
+  it('halves healing', () => {
+    const result = resolveHealModifiers(new Set(['pain_conduit']));
+    expect(result.healingReductionPercent).toBe(50);
+  });
+
+  it('no penalty without relic', () => {
+    const result = resolveHealModifiers(new Set([]));
+    expect(result.healingReductionPercent ?? 0).toBe(0);
+  });
+});
+
+describe('bloodletter (conditional)', () => {
+  it('grants +3 next attack on self-damage', () => {
+    const result = resolveHpLossEffects(new Set(['bloodletter']), { hpLost: 5, source: 'self' });
+    expect(result.nextAttackBonus).toBe(3);
+  });
+
+  it('does NOT trigger on enemy damage', () => {
+    const result = resolveHpLossEffects(new Set(['bloodletter']), { hpLost: 5, source: 'enemy' });
+    expect(result.nextAttackBonus).toBe(0);
+  });
+
+  it('armed bonus applies to attack modifiers', () => {
+    const result = resolveAttackModifiers(new Set(['bloodletter']), makeAttackCtx({ bloodletterArmed: true }));
+    expect(result.flatDamageBonus).toBeGreaterThanOrEqual(3);
+  });
+
+  it('no attack bonus when not armed', () => {
+    const result = resolveAttackModifiers(new Set(['bloodletter']), makeAttackCtx({ bloodletterArmed: false }));
+    const resultWithout = resolveAttackModifiers(new Set([]), makeAttackCtx({ bloodletterArmed: false }));
+    expect(result.flatDamageBonus).toBe(resultWithout.flatDamageBonus);
+  });
+});
+
+describe('exhaustion_engine (conditional)', () => {
+  it('draws 2 cards on exhaust', () => {
+    const result = resolveExhaustEffects(new Set(['exhaustion_engine']));
+    expect(result.bonusCardDraw).toBe(2);
+  });
+
+  it('no draw without relic', () => {
+    const result = resolveExhaustEffects(new Set([]));
+    expect(result.bonusCardDraw).toBe(0);
+  });
+});
+
+describe('chain break hook', () => {
+  it('returns triggered: false with no chain-break relics', () => {
+    const result = resolveChainBreakEffects(new Set([]), { previousChainLength: 3 });
+    expect(result.triggered).toBe(false);
+  });
+});
+
+describe('ritual_blade (tradeoff)', () => {
+  it('doubles first card damage', () => {
+    const result = resolveAttackModifiers(new Set(['ritual_blade']), makeAttackCtx({ isFirstCardThisTurn: true }));
+    expect(result.percentDamageBonus).toBeGreaterThanOrEqual(100);
+  });
+
+  it('reduces subsequent card damage by 25%', () => {
+    const result = resolveAttackModifiers(new Set(['ritual_blade']), makeAttackCtx({ isFirstCardThisTurn: false }));
+    expect(result.percentDamageBonus).toBeLessThanOrEqual(-25);
+  });
+});
+
+describe('momentum_wheel (conditional)', () => {
+  it('grants +100% on 4th card', () => {
+    const result = resolveAttackModifiers(new Set(['momentum_wheel']), makeAttackCtx({ cardPlayIndex: 4 }));
+    expect(result.percentDamageBonus).toBeGreaterThanOrEqual(100);
+  });
+
+  it('no bonus on 3rd card', () => {
+    const base = resolveAttackModifiers(new Set([]), makeAttackCtx({ cardPlayIndex: 3 }));
+    const withRelic = resolveAttackModifiers(new Set(['momentum_wheel']), makeAttackCtx({ cardPlayIndex: 3 }));
+    expect(withRelic.percentDamageBonus).toBe(base.percentDamageBonus);
+  });
+});
+
+describe('hollow_armor (tradeoff)', () => {
+  it('disables block gain after turn 0', () => {
+    const result = resolveShieldModifiers(new Set(['hollow_armor']), { encounterTurnNumber: 1 });
+    expect(result.blockGainDisabled).toBe(true);
+  });
+
+  it('allows block on turn 0 (starting block applies separately)', () => {
+    const result = resolveShieldModifiers(new Set(['hollow_armor']), { encounterTurnNumber: 0 });
+    expect(result.blockGainDisabled).toBeFalsy();
+  });
+
+  it('grants starting block at encounter start', () => {
+    const result = resolveEncounterStartEffects(new Set(['hollow_armor']), {});
+    expect(result.startingBlock).toBe(20);
+  });
+});
+
+describe('overclocked_mind (tradeoff)', () => {
+  it('grants +2 card draw at turn start', () => {
+    const result = resolveTurnStartEffects(new Set(['overclocked_mind']));
+    expect(result.bonusCardDraw).toBe(2);
+  });
+});
+
+describe('berserkers_focus (tradeoff)', () => {
+  it('reduces max AP by 1', () => {
+    const result = resolveTurnStartEffects(new Set(['berserkers_focus']));
+    expect(result.maxApReduction).toBe(1);
+  });
+
+  it('no AP reduction without relic', () => {
+    const result = resolveTurnStartEffects(new Set([]));
+    expect(result.maxApReduction ?? 0).toBe(0);
+  });
+});
+
+describe('overclocked_mind turn end', () => {
+  it('forces discard of 2 cards', () => {
+    const result = resolveTurnEndEffects(new Set(['overclocked_mind']), {
+      damageDealtThisTurn: 0, cardsPlayedThisTurn: 3, isPerfectTurn: false,
+    });
+    expect(result.forceDiscard).toBe(2);
+  });
+});
+
+describe('thorn_mantle (conditional)', () => {
+  it('grants thorns when block >= 10', () => {
+    const result = resolveTurnEndEffects(new Set(['thorn_mantle']), {
+      damageDealtThisTurn: 0, cardsPlayedThisTurn: 2, isPerfectTurn: false, currentBlock: 12,
+    });
+    expect(result.grantThorns).toBe(4);
+  });
+
+  it('no thorns when block < 10', () => {
+    const result = resolveTurnEndEffects(new Set(['thorn_mantle']), {
+      damageDealtThisTurn: 0, cardsPlayedThisTurn: 2, isPerfectTurn: false, currentBlock: 8,
+    });
+    expect(result.grantThorns ?? 0).toBe(0);
+  });
+});
+
+describe('quiz_master (conditional)', () => {
+  it('grants +2 AP next turn after 3+ charge corrects', () => {
+    const result = resolveTurnEndEffects(new Set(['quiz_master']), {
+      damageDealtThisTurn: 0, cardsPlayedThisTurn: 3, isPerfectTurn: false, chargeCorrectsThisTurn: 3,
+    });
+    expect(result.bonusApNextTurn).toBeGreaterThanOrEqual(2);
+  });
+
+  it('no AP bonus with only 2 charge corrects', () => {
+    const result = resolveTurnEndEffects(new Set(['quiz_master']), {
+      damageDealtThisTurn: 0, cardsPlayedThisTurn: 2, isPerfectTurn: false, chargeCorrectsThisTurn: 2,
+    });
+    expect(result.bonusApNextTurn ?? 0).toBe(0);
+  });
+});
+
+describe('glass_lens (tradeoff) — charge correct', () => {
+  it('grants +50% charge correct bonus', () => {
+    const result = resolveChargeCorrectEffects(new Set(['glass_lens']), makeChargeCorrectCtx());
+    expect(result.chargeCorrectBonusPercent).toBe(50);
+  });
+});
+
+describe('knowledge_tax (tradeoff) — charge correct', () => {
+  it('grants gold and penalizes CC', () => {
+    const result = resolveChargeCorrectEffects(new Set(['knowledge_tax']), makeChargeCorrectCtx());
+    expect(result.goldBonus).toBeGreaterThanOrEqual(10);
+    expect(result.chargeCorrectPenaltyPercent).toBe(10);
+  });
+
+  it('no effect without relic', () => {
+    const result = resolveChargeCorrectEffects(new Set([]), makeChargeCorrectCtx());
+    expect(result.chargeCorrectPenaltyPercent ?? 0).toBe(0);
+  });
+});
+
+describe('glass_lens (tradeoff) — charge wrong', () => {
+  it('deals 3 self-damage on wrong', () => {
+    const result = resolveChargeWrongEffects(new Set(['glass_lens']), { factId: 'test' });
+    expect(result.selfDamage).toBeGreaterThanOrEqual(3);
+  });
+});
+
+describe('mnemonic_scar (tradeoff)', () => {
+  it('resolves at CC power when fact previously correct', () => {
+    const result = resolveChargeWrongEffects(new Set(['mnemonic_scar']), { factId: 'test', factPreviouslyCorrect: true });
+    expect(result.resolveAtCcPower).toBe(true);
+  });
+
+  it('deals 5 self-damage on new fact wrong', () => {
+    const result = resolveChargeWrongEffects(new Set(['mnemonic_scar']), { factId: 'test', factPreviouslyCorrect: false });
+    expect(result.selfDamage).toBeGreaterThanOrEqual(5);
+  });
+
+  it('no effect without relic', () => {
+    const result = resolveChargeWrongEffects(new Set([]), { factId: 'test', factPreviouslyCorrect: false });
+    expect(result.resolveAtCcPower).toBeFalsy();
+  });
+});
+
+describe('chain_addict (conditional)', () => {
+  it('heals 5 HP on 3+ chain', () => {
+    const result = resolveChainCompleteEffects(new Set(['chain_addict']), { chainLength: 3, firstCardId: 'x' });
+    expect(result.healAmount).toBe(5);
+  });
+
+  it('heals on 5-chain too', () => {
+    const result = resolveChainCompleteEffects(new Set(['chain_addict']), { chainLength: 5, firstCardId: 'x' });
+    expect(result.healAmount).toBe(5);
+  });
+
+  it('no heal on 2-chain', () => {
+    const result = resolveChainCompleteEffects(new Set(['chain_addict']), { chainLength: 2, firstCardId: 'x' });
+    expect(result.healAmount ?? 0).toBe(0);
+  });
+
+  it('no heal without relic', () => {
+    const result = resolveChainCompleteEffects(new Set([]), { chainLength: 3, firstCardId: 'x' });
+    expect(result.healAmount ?? 0).toBe(0);
   });
 });

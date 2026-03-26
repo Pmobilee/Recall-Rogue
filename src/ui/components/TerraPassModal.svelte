@@ -243,7 +243,7 @@
     max-width: 380px;
     width: 100%;
     position: relative;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     max-height: 90vh;
     overflow-y: auto;
   }
@@ -289,7 +289,7 @@
     color: #e5e7eb;
     border: none;
     border-radius: 8px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 9px;
     cursor: pointer;
   }
@@ -394,7 +394,7 @@
     color: white;
     border: none;
     border-radius: 8px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 9px;
     cursor: pointer;
   }

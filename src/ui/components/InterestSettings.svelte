@@ -202,7 +202,7 @@
     color: #e0e0e0;
     display: flex;
     flex-direction: column;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     z-index: 200;
     overflow: hidden;
     pointer-events: auto;

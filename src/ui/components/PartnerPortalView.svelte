@@ -324,7 +324,7 @@
     border: 1px solid #2D5382;
   }
   .portal-title {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 14px;
     color: #e94560;
     margin: 0 0 8px;
@@ -386,7 +386,7 @@
     border: none;
     padding: 12px 24px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     cursor: pointer;
     width: 100%;

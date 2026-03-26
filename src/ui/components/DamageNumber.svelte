@@ -1,5 +1,5 @@
 <script lang="ts">
-  type DamageNumberType = 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical'
+  type DamageNumberType = 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical' | 'status' | 'buff'
 
   interface Props {
     value: string
@@ -21,6 +21,8 @@
     bleed:    '#CC1111',
     gold:     '#FFD700',
     critical: '#E74C3C',
+    status:   '#4ADE80',
+    buff:     '#38BDF8',
   }
 
   // Text-shadow glow mapping per type (rgba of the color at low opacity)
@@ -33,6 +35,8 @@
     bleed:    'rgba(204, 17, 17, 0.5)',
     gold:     'rgba(255, 215, 0, 0.5)',
     critical: 'rgba(231, 76, 60, 0.6)',
+    status:   'rgba(74, 222, 128, 0.5)',
+    buff:     'rgba(56, 189, 248, 0.5)',
   }
 
   // Derive effective type: if isCritical and type is damage, treat as critical for color
@@ -44,10 +48,13 @@
   let numericValue = $derived(parseInt(value.match(/\d+/)?.[0] ?? '0', 10))
 
   // Scale font size proportionally: small hits = small text, big hits = big text
+  // Status/buff types use a fixed smaller size since they display text labels, not big numbers
   let fontSize = $derived(
-    isCritical
-      ? (numericValue <= 5 ? 32 : numericValue >= 20 ? 44 : 32 + Math.round(((numericValue - 5) / 15) * 12))
-      : (numericValue <= 5 ? 24 : numericValue >= 20 ? 36 : 24 + Math.round(((numericValue - 5) / 15) * 12))
+    (type === 'status' || type === 'buff')
+      ? 18
+      : isCritical
+        ? (numericValue <= 5 ? 32 : numericValue >= 20 ? 44 : 32 + Math.round(((numericValue - 5) / 15) * 12))
+        : (numericValue <= 5 ? 24 : numericValue >= 20 ? 36 : 24 + Math.round(((numericValue - 5) / 15) * 12))
   )
 
   // Random arc direction: left (-1) or right (+1)

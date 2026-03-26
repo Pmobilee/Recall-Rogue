@@ -123,6 +123,10 @@ export interface Fact {
 
   // Media (future)
   imageUrl?: string
+  /** Path to image asset for image-based quiz modes (e.g. flags). */
+  imageAssetPath?: string
+  /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
+  quizMode?: 'text' | 'image_question' | 'image_answers'
   mnemonic?: string
 
   // Phase 11 extended fields

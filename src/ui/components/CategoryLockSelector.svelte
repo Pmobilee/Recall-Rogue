@@ -148,7 +148,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     box-shadow: 0 0 24px rgba(78, 204, 163, 0.25);
   }
 
@@ -233,7 +233,7 @@
     border: 1px solid rgba(78, 204, 163, 0.2);
     border-radius: 2px;
     color: #e0e0e0;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 8px;
     cursor: pointer;
     text-align: left;
@@ -292,7 +292,7 @@
     border: 1px solid rgba(78, 204, 163, 0.3);
     border-radius: 2px;
     color: rgba(78, 204, 163, 0.7);
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 8px;
     cursor: pointer;
     transition: background 0.15s, border-color 0.15s;

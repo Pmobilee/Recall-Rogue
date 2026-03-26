@@ -4,7 +4,7 @@
   import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
-  import { isAnyCardPlayable } from '../../services/turnManager'
+  import { isAnyCardPlayable, resolveTransmutePick } from '../../services/turnManager'
   import { FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
   import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
@@ -57,6 +57,7 @@
   import { getMechanicDefinition } from '../../data/mechanics'
   import ExhaustPileViewer from './ExhaustPileViewer.svelte'
   import MultiChoicePopup from './MultiChoicePopup.svelte'
+  import CardPickerOverlay from './CardPickerOverlay.svelte'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../../data/curatedDeckStore'
   import { getDeckById } from '../../data/deckRegistry'
@@ -90,6 +91,14 @@
           extraCardsDrawn?: number
           statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>
         }>
+      }
+      pendingCardPick?: {
+        type: string
+        sourceCardId: string
+        candidates: Card[]
+        pickCount: number
+        allowSkip: boolean
+        title: string
       }
     } | void
     onskipcard: (cardId: string) => void
@@ -205,6 +214,17 @@
     isChargeCorrect: boolean
   }
   let pendingChoicePopup = $state<PendingChoicePopup | null>(null)
+
+  // ─── CardPickerOverlay state ───────────────────────────────────────────────
+  let pendingCardPickState = $state<{
+    type: string;
+    sourceCardId: string;
+    candidates: Card[];
+    pickCount: number;
+    allowSkip: boolean;
+    title: string;
+    selectedCards: Card[];
+  } | null>(null)
 
   /** Resolved options from the resolver's pendingChoice — used by handlePendingChoice after popup dismissal. */
   type PendingChoiceOption = {
@@ -1848,6 +1868,104 @@
     }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION))
   }
 
+  // ─── CardPickerOverlay handlers ────────────────────────────────────────────
+
+  function handleCardPickSelect(card: Card): void {
+    if (!pendingCardPickState) return
+
+    const state = pendingCardPickState
+    const newSelected = [...state.selectedCards, card]
+
+    if (newSelected.length >= state.pickCount) {
+      // All picks made — resolve based on type
+      pendingCardPickState = null
+
+      if (state.type === 'transmute' && turnState) {
+        resolveTransmutePick(turnState, state.sourceCardId, newSelected)
+        // handCards is derived from turnState.deck.hand — Svelte will reactively update
+      }
+
+      if (state.type === 'adapt' && turnState) {
+        const chosen = newSelected[0]
+        if (chosen.id === 'adapt_attack') {
+          if (turnState.enemy) {
+            const dmg = Math.max(0, chosen.baseEffectValue - turnState.enemy.block)
+            turnState.enemy.block = Math.max(0, turnState.enemy.block - chosen.baseEffectValue)
+            turnState.enemy.currentHP = Math.max(0, turnState.enemy.currentHP - dmg)
+          }
+        } else if (chosen.id === 'adapt_shield') {
+          turnState.playerState.shield = (turnState.playerState.shield ?? 0) + chosen.baseEffectValue
+        } else if (chosen.id === 'adapt_utility') {
+          const debuffTypes = new Set(['poison', 'weakness', 'vulnerable', 'burn', 'bleed', 'freeze'])
+          turnState.playerState.statusEffects = turnState.playerState.statusEffects.filter(s => !debuffTypes.has(s.type))
+          if (turnState.deck.drawPile.length > 0) {
+            turnState.deck.hand.push(turnState.deck.drawPile.pop()!)
+          }
+        }
+      }
+
+      if (state.type === 'conjure' && turnState) {
+        const chosen = newSelected[0]
+        const conjured: Card = {
+          ...chosen,
+          id: 'conjured_' + Math.random().toString(36).slice(2, 6),
+          isTransmuted: true,
+          originalCard: undefined,
+        }
+        turnState.deck.hand.push(conjured)
+      }
+
+      if (state.type === 'scavenge' && turnState) {
+        const chosen = newSelected[0]
+        const idx = turnState.deck.discardPile.findIndex(c => c.id === chosen.id)
+        if (idx >= 0) {
+          turnState.deck.discardPile.splice(idx, 1)
+          turnState.deck.hand.push(chosen)
+        }
+      }
+
+      if (state.type === 'forge' && turnState) {
+        for (const chosen of newSelected) {
+          const handCard = turnState.deck.hand.find(c => c.id === chosen.id)
+          if (handCard) {
+            const upgradeAmount = state.pickCount >= 2 ? 2 : 1
+            handCard.masteryLevel = (handCard.masteryLevel ?? 0) + upgradeAmount
+          }
+        }
+      }
+
+      if (state.type === 'mimic' && turnState) {
+        const chosen = newSelected[0]
+        const mimicDiscardIdx = turnState.deck.discardPile.findIndex(c => c.id === state.sourceCardId)
+        if (mimicDiscardIdx >= 0) {
+          const mimicCard = turnState.deck.discardPile[mimicDiscardIdx]
+          const copy: Card = {
+            ...chosen,
+            id: mimicCard.id + '_mimic',
+            factId: mimicCard.factId,
+            isTransmuted: true,
+            originalCard: { ...mimicCard },
+          }
+          turnState.deck.discardPile.splice(mimicDiscardIdx, 1)
+          turnState.deck.hand.push(copy)
+        }
+      }
+    } else {
+      // More picks needed — remove selected card from candidates to prevent double-pick
+      pendingCardPickState = {
+        ...state,
+        selectedCards: newSelected,
+        candidates: state.candidates.filter(c => c.id !== card.id),
+      }
+    }
+  }
+
+  function handleCardPickSkip(): void {
+    pendingCardPickState = null
+    // AP already spent, no effect applied
+    console.log('[CardPicker] Skipped')
+  }
+
   function handleAnswer(answerIndex: number, isCorrect: boolean, speedBonus: boolean): void {
     if (!committedCard) return
     const card = committedCard
@@ -1938,9 +2056,18 @@
       const _chargePreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
       const _chargePrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
       const chargeResult = onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge')
-      // Only spawn status floaters when no pendingChoice — deferred choices apply effects later
-      if (!chargeResult?.pendingChoice) {
+      // Only spawn status floaters when no pendingChoice/pendingCardPick — deferred choices apply effects later
+      if (!chargeResult?.pendingChoice && !chargeResult?.pendingCardPick) {
         spawnStatusFloaters(_chargePreEnemy, _chargePrePlayer)
+      }
+
+      // CardPickerOverlay: resolver returned pendingCardPick — show card picker and defer effect
+      if (chargeResult?.pendingCardPick) {
+        pendingCardPickState = {
+          ...chargeResult.pendingCardPick,
+          selectedCards: [],
+        }
+        return // Don't continue turn until pick is resolved
       }
 
       // Phase Shift QP/CW or Unstable Flux CC: resolver returned pendingChoice — defer effect to popup
@@ -2629,6 +2756,17 @@
   <ExhaustPileViewer
     exhaustedCards={turnState.deck.exhaustPile}
     onDismiss={() => { showExhaustViewer = false }}
+  />
+{/if}
+
+<!-- CardPickerOverlay: Transmute, Adapt, Conjure, Scavenge, Forge, Mimic -->
+{#if pendingCardPickState}
+  <CardPickerOverlay
+    title={pendingCardPickState.title}
+    cards={pendingCardPickState.candidates}
+    onselect={handleCardPickSelect}
+    onskip={handleCardPickSkip}
+    pickCount={pendingCardPickState.pickCount}
   />
 {/if}
 

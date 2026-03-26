@@ -126,7 +126,7 @@
     margin-bottom: 16px;
   }
   .progress-header h3 {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 12px;
     color: #e94560;
     margin: 0;
@@ -194,7 +194,7 @@
     margin-bottom: 10px;
   }
   .level-badge {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     color: #e94560;
     background: #1a1a2e;

@@ -142,7 +142,7 @@
     max-width: 340px;
     width: 90%;
     text-align: center;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
   }
   .pioneer-title {
     color: #e2b714;
@@ -183,7 +183,7 @@
     color: #1a1a2e;
     border: none;
     border-radius: 8px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     cursor: pointer;
     margin-bottom: 8px;
@@ -206,7 +206,7 @@
     color: #6b7280;
     border: 1px solid #374151;
     border-radius: 8px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 8px;
     cursor: pointer;
   }

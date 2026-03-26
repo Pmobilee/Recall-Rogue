@@ -337,19 +337,19 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(24);
   });
 
-  it('page_flutter has 19 baseHP (AR-59.13 v2 stats)', () => {
+  it('page_flutter has 5 baseHP (AR-59.13 v2 stats)', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'page_flutter');
-    expect(bat?.baseHP).toBe(19);
+    expect(bat?.baseHP).toBe(5);
   });
 
-  it('thesis_construct has 32 baseHP (AR-99 balance tuning)', () => {
+  it('thesis_construct has 5 baseHP (AR-99 balance tuning)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'thesis_construct');
-    expect(golem?.baseHP).toBe(32);
+    expect(golem?.baseHP).toBe(5);
   });
 
-  it('algorithm has 80 baseHP (AR-59.13 v2 stats)', () => {
+  it('algorithm has 12 baseHP (AR-59.13 v2 stats)', () => {
     const archivist = ENEMY_TEMPLATES.find(t => t.id === 'algorithm');
-    expect(archivist?.baseHP).toBe(80);
+    expect(archivist?.baseHP).toBe(12);
   });
 
   it('peer_reviewer has no immuneDomain (removed in consolidation)', () => {
@@ -384,16 +384,16 @@ describe('Enemy Manager', () => {
       expect(getFloorScaling(1)).toBe(1.0);
     });
 
-    it('returns 1.12 for floor 2', () => {
-      expect(getFloorScaling(2)).toBeCloseTo(1.12);
+    it('returns 1.10 for floor 2', () => {
+      expect(getFloorScaling(2)).toBeCloseTo(1.10);
     });
 
-    it('scales linearly at 12% per floor', () => {
-      expect(getFloorScaling(5)).toBeCloseTo(1.48);
+    it('scales linearly at 10% per floor', () => {
+      expect(getFloorScaling(5)).toBeCloseTo(1.40);
     });
 
-    it('returns 2.08 for floor 10', () => {
-      expect(getFloorScaling(10)).toBeCloseTo(2.08);
+    it('returns 1.90 for floor 10', () => {
+      expect(getFloorScaling(10)).toBeCloseTo(1.90);
     });
   });
 
@@ -401,15 +401,16 @@ describe('Enemy Manager', () => {
     it('creates enemy with scaled HP for floor 1', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 1);
-      expect(enemy.currentHP).toBe(20);
-      expect(enemy.maxHP).toBe(20);
+      // 20 * 2.0 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 40
+      expect(enemy.currentHP).toBe(40);
+      expect(enemy.maxHP).toBe(40);
     });
 
     it('scales HP for higher floors', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 5);
-      // 20 * 1.48 = 29.6 → round to 30
-      expect(enemy.currentHP).toBe(Math.round(20 * getFloorScaling(5)));
+      // 20 * 2.0 * 1.40 (floor 5) = 56
+      expect(enemy.currentHP).toBe(Math.round(20 * 2.0 * getFloorScaling(5)));
     });
 
     it('starts in phase 1', () => {
@@ -506,11 +507,11 @@ describe('Enemy Manager', () => {
   describe('executeEnemyIntent', () => {
     it('returns damage for attack intent', () => {
       const enemy = mockEnemyInstance({
-        nextIntent: { type: 'attack', value: 10, weight: 1, telegraph: 'Strike' },
+        nextIntent: { type: 'attack', value: 5, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
       // Floor 1 applies 1.0x base damage scaling (early game nerf removed).
-      expect(result.damage).toBe(10);
+      expect(result.damage).toBe(5);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -519,16 +520,17 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: 10 * 1.5 * 1.0 = 15 (early game scaling removed)
-      expect(result.damage).toBe(15);
+      // Floor 1: 10 * 1.5 * 1.0 = 15, capped at 5 per segment 1
+      expect(result.damage).toBe(5);
     });
 
     it('calculates multi_attack damage correctly', () => {
       const enemy = mockEnemyInstance({
-        nextIntent: { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Flurry', hitCount: 4 },
+        nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      expect(result.damage).toBe(12); // 3 * 4
+      // 5 * 1.0 (strength) * 1.0 (floor) * 4 hits = 20, capped at 5 per segment 1
+      expect(result.damage).toBe(5);
     });
 
     it('returns player debuffs for debuff intent', () => {
@@ -913,14 +915,14 @@ describe('Card Effect Resolver', () => {
       const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 1.0, 0, 'shield');
       expect(result.effectType).toBe('shield');
-      expect(result.shieldApplied).toBe(6);
+      expect(result.shieldApplied).toBe(3);
     });
 
     it('wild defaults to attack when no lastCardType', () => {
       const card = mockCard({ cardType: 'wild', baseEffectValue: 8, tier: '1', effectMultiplier: 1.0 });
       const result = resolveCardEffect(card, defaultPlayer, defaultEnemy, 1.0, 0);
       expect(result.effectType).toBe('attack');
-      expect(result.damageDealt).toBe(9);
+      expect(result.damageDealt).toBe(4);
     });
 
     it('blocked card returns targetHit=false', () => {

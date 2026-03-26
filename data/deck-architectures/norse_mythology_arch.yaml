@@ -1,0 +1,231 @@
+deck_id: norse_mythology
+name: "Norse Mythology"
+domain: mythology_folklore
+sub_domain: norse
+target_facts: 223
+minimum_facts: 200
+current_facts: 147
+expansion_facts: 76
+
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Norse_mythology
+    license: CC-BY-SA-4.0
+    usage: fact text, explanations, verified claims
+  - name: Wikidata
+    url: https://www.wikidata.org/wiki/Q764
+    license: CC0
+    usage: structured data verification
+
+source_files_directory: data/deck-sources/norse_mythology/
+
+# EXISTING pools (with new members to add)
+answer_type_pools:
+  - id: god_names
+    format: name
+    current_count: 47
+    new_members: []
+    note: "No new gods being added in this expansion"
+
+  - id: creature_names
+    format: name
+    current_count: 22
+    new_members:
+      - "Tanngrisnir and Tanngnjóstr"  # Thor's goats
+      - "Draugr"  # Norse undead
+      - "Kraken"  # Sea monster
+    target_count: 25
+
+  - id: realm_names
+    format: name
+    current_count: 13
+    new_members: []
+    note: "New facts about realms use existing realm names as answers. Landmarks within realms (Hvergelmir, Eljudnir) go in object_names."
+    target_count: 13
+
+  - id: hero_names
+    format: name
+    current_count: 6
+    new_members:
+      - "Ragnar Lothbrok"  # Legendary Viking hero
+      - "Hervor"  # Shieldmaiden, claimed Tyrfing
+      - "Starkad"  # Hero cursed by Thor
+      - "Sigmund"  # Father of Sigurd
+      - "Signy"  # Sigmund's twin sister
+      - "Volsung"  # Ancestor of Sigurd's line
+      - "Leif Erikson"  # First European to reach North America
+      - "Lagertha"  # Legendary shieldmaiden
+    target_count: 14
+
+  - id: object_names
+    format: name
+    current_count: 40
+    new_members:
+      - "Megingjord"  # Thor's belt of strength
+      - "Naglfar"  # Ship of dead men's nails
+      - "Andvaranaut"  # Cursed ring
+      - "Tyrfing"  # Cursed sword
+      - "Barnstokkr"  # Great tree in Volsung's hall
+      - "Eljudnir"  # Hel's hall in Helheim
+    target_count: 46
+
+  - id: giant_names
+    format: name
+    current_count: 11
+    new_members:
+      - "Thrym"  # Stole Mjolnir
+      - "Hrungnir"  # Strongest giant, stone head
+      - "Hymir"  # Fished with Thor
+      - "Elli"  # Old age personified
+      - "Mokkurkalfi"  # Clay giant
+    target_count: 16
+
+# NEW question templates
+new_question_templates:
+  - id: hero_from_saga
+    answerPoolId: hero_names
+    questionFormat: "Which hero {action} in the {saga_name}?"
+    availableFromMastery: 2
+    difficulty: 3
+    reverseCapable: true
+
+  - id: object_from_story
+    answerPoolId: object_names
+    questionFormat: "Which legendary object {description}?"
+    availableFromMastery: 3
+    difficulty: 3
+    reverseCapable: true
+
+  - id: giant_from_encounter
+    answerPoolId: giant_names
+    questionFormat: "Which giant {challenged/tricked} Thor?"
+    availableFromMastery: 2
+    difficulty: 3
+    reverseCapable: true
+
+  - id: realm_detail
+    answerPoolId: realm_names
+    questionFormat: "Which realm contains {landmark}?"
+    availableFromMastery: 3
+    difficulty: 4
+    reverseCapable: true
+
+# CONFUSION PAIRS to seed (new + audit of existing)
+common_confusions:
+  # NEW pairs from expansion
+  - ["Thrym", "Hrungnir"]  # Both giants Thor fights
+  - ["Tanngrisnir", "Tanngnjóstr"]  # Thor's two goats, near-identical names
+  - ["Ragnar Lothbrok", "Sigurd"]  # Both legendary warrior heroes
+  - ["Andvaranaut", "Draupnir"]  # Both magical gold rings
+  - ["Modi", "Magni"]  # Thor's sons, both strength-related names
+  - ["Hervor", "Brynhild"]  # Both shieldmaiden figures
+  # AUDIT of existing 147 facts - overlooked pairs
+  - ["Tyr", "Thor"]  # Both warrior gods, names start with T
+  - ["Niflheim", "Helheim"]  # Both cold/death realms
+  - ["Skoll", "Hati"]  # Both wolves chasing celestial bodies
+  - ["Gungnir", "Mjolnir"]  # Both signature god weapons
+  - ["Fenrir", "Jormungandr"]  # Both Loki's monstrous children
+  - ["Vanaheim", "Alfheim"]  # Both "light" peaceful realms
+
+# SYNONYM GROUPS (existing + new)
+synonym_groups:
+  - id: sigurd_siegfried
+    members: ["Sigurd", "Siegfried"]
+    reason: "Same hero, Norse/German name variants"
+    note: "Verify new Volsung saga facts join this group"
+  - id: freyja_frigg
+    members: ["Freyja", "Frigg"]
+    reason: "Scholars debate if originally same goddess"
+  - id: jotunheim_utgard
+    members: ["Jotunheim", "Utgard"]
+    reason: "Sometimes used interchangeably for giant homeland"
+
+# SUB-DECK expansion targets
+sub_deck_expansion:
+  - id: thor_adventures
+    current: 3
+    target: 25
+    new_facts: 22
+    narrative_arcs:
+      - "Thrym's Theft of Mjolnir (5 facts)"
+      - "Utgard-Loki Journey expansion (5 facts)"
+      - "Fishing for Jormungandr expansion (3 facts)"
+      - "Thor's Goats & Belt (3 facts)"
+      - "Additional Thor myths - Hrungnir, Modi/Magni, Harbard, Protector role (4 facts)"
+      - "Thor's disguise comedy + feast scene (2 facts from Thrym arc)"
+
+  - id: heroes_sagas
+    current: 14
+    target: 35
+    new_facts: 21
+    narrative_arcs:
+      - "Sigurd/Fafnir expansion (6 facts)"
+      - "Ragnar Lothbrok (4 facts)"
+      - "Volsung Saga expansion (3 facts)"
+      - "Additional Heroes: Hervor, Starkad, Leif Erikson, Lagertha, Berserkers, Shieldmaidens, Einherjar, Andvaranaut curse (8 facts)"
+    removed_entities:
+      - "Erik the Red — purely historical"
+      - "Bjorn Ironside Luna anecdote — historical, not mythological"
+
+  - id: nine_realms
+    current: 14
+    target: 25
+    new_facts: 11
+
+  - id: trickery_fate_runes
+    current: 15
+    target: 25
+    new_facts: 10
+    narrative_arcs:
+      - "Loki's Other Tricks (5 facts)"
+      - "Runes & Magic (3 facts)"
+      - "Fate & Destiny (2 facts)"
+
+  - id: creatures_monsters
+    current: 32
+    target: 35
+    new_facts: 3
+
+  - id: creation_ragnarok
+    current: 21
+    target: 30
+    new_facts: 9
+    narrative_arcs:
+      - "Creation expansion (5 facts)"
+      - "Ragnarok expansion (4 facts)"
+
+# DIFFICULTY TIERS for new facts
+difficulty_tiers:
+  easy:
+    - "Thor's goats basics"
+    - "Thrym steals Mjolnir"
+    - "Creation of Midgard"
+    - "Ragnar Lothbrok basics"
+    - "Kraken"
+  medium:
+    - "Utgard-Loki contests"
+    - "Sigurd/Fafnir expansion"
+    - "Realm details"
+    - "Loki's tricks (Sif's hair, Thiazi)"
+    - "Buri/Audhumla"
+  hard:
+    - "Andvaranaut curse"
+    - "Naglfar ship"
+    - "Volsung saga details"
+    - "Starkad's curse"
+    - "Seidr practitioners"
+    - "Harbard poem"
+
+# AGE GROUP distribution target
+age_group_targets:
+  all_minimum_percentage: 40
+  estimated_all: 45
+  estimated_teen_plus: 31
+  teen_plus_triggers:
+    - "Execution/death (Ragnar snake pit, Fafnir stabbing)"
+    - "Body horror (lips sewn shut, Odin self-sacrifice)"
+    - "Revenge plots (Signy)"
+    - "Adult themes (Svadilfari/Loki, Lokasenna insults)"
+    - "Berserker frenzy/violence"
+    - "Mass slaughter (Thrym's feast ending)"
+    - "Undead/necromancy (Draugr, Hervor)"

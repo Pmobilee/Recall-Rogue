@@ -253,7 +253,7 @@
   }
 
   .browser-title {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
     color: #e0e0e0;
     letter-spacing: 0.5px;
@@ -305,7 +305,7 @@
     font-size: 12px;
     text-align: center;
     padding: 32px 16px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
   }
 
   /* Card row */
@@ -375,7 +375,7 @@
 
   .removed-badge {
     font-size: 8px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     color: #f39c12;
     margin-left: 6px;
     vertical-align: middle;

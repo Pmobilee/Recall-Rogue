@@ -1,0 +1,688 @@
+{
+  "facts": [
+    {
+      "id": "wwii_rtw_001",
+      "quizQuestion": "Article 231 of the Treaty of Versailles is called the 'War Guilt Clause' — but what word does the actual text of Article 231 notably NOT contain?",
+      "correctAnswer": "Guilt",
+      "distractors": [
+        "Responsibility",
+        "Aggression",
+        "Damage",
+        "Reparations",
+        "Allies",
+        "Germany",
+        "War",
+        "Cause"
+      ],
+      "explanation": "Article 231 never uses the word 'guilt.' It states only that Germany 'accepts the responsibility' for losses caused by 'the aggression of Germany and her allies.' The term 'War Guilt Clause' was invented by critics and historians — not by the treaty itself. The article's legal purpose was to establish the basis for reparations, not to formally assign moral blame.",
+      "difficulty": 4,
+      "funScore": 9,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "treaties", "versailles", "myth_busters"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Article_231_of_the_Treaty_of_Versailles",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or False: Article 231 of the Treaty of Versailles explicitly uses the word 'guilt' to condemn Germany.",
+          "answer": "False — the word 'guilt' appears nowhere in Article 231; that label was applied by critics and historians."
+        },
+        {
+          "type": "fill_blank",
+          "question": "Article 231 is nicknamed the '_____ Clause,' though that word never appears in the actual text.",
+          "answer": "War Guilt"
+        },
+        {
+          "type": "context",
+          "question": "If Article 231 never uses the word 'guilt,' why was it the most bitterly resented clause in the treaty?",
+          "answer": "Because it required Germany to formally accept 'responsibility' for the entire war as the legal foundation for imposing reparations — which Germans experienced as a humiliation regardless of exact wording."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_002",
+      "quizQuestion": "The London Schedule of Payments (1921) set Germany's reparations at 132 billion gold marks — but what was Germany's actual legally required payment under the 'A' and 'B' bonds?",
+      "correctAnswer": "50 billion gold marks",
+      "distractors": [
+        "132 billion gold marks",
+        "82 billion gold marks",
+        "36 billion gold marks",
+        "200 billion gold marks",
+        "12 billion gold marks",
+        "75 billion gold marks",
+        "100 billion gold marks",
+        "25 billion gold marks"
+      ],
+      "explanation": "The headline figure of 132 billion gold marks was deliberately theatrical. Germany was only required to pay via 'A' bonds and 'B' bonds — totaling 50 billion gold marks (~$12.5 billion USD in 1921). The remaining ~82 billion in 'C' bonds were fictitious: they were never expected to be paid, and Germany was privately told as much. The large number was designed to satisfy Allied publics demanding punishment, not to be collected.",
+      "difficulty": 5,
+      "funScore": 9,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "versailles", "reparations", "economics"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_I_reparations",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or False: The 'C' bonds in Germany's reparations schedule were deliberately designed to be fictitious — the Allies privately never expected them to be paid.",
+          "answer": "True — the C bonds (~82 billion marks) were theatrical. Germany was told as much privately; the real obligation was 50 billion via A and B bonds."
+        },
+        {
+          "type": "reverse",
+          "question": "What name is given to the 1921 agreement that set out Germany's reparations schedule, including the famous 132 billion gold mark headline figure?",
+          "answer": "The London Schedule of Payments (5 May 1921)"
+        },
+        {
+          "type": "context",
+          "question": "Why would Allied governments design a reparations schedule with a fictitious headline number far larger than Germany was expected to pay?",
+          "answer": "To satisfy domestic publics and nationalist politicians demanding severe punishment of Germany, while privately keeping the real obligation at a level that might actually be paid — a diplomatic fiction for political consumption."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_003",
+      "quizQuestion": "The Treaty of Versailles capped Germany's army at 100,000 men. Germany's pre-war army in 1914 was approximately 1.9 million — what percentage reduction is that?",
+      "correctAnswer": "95%",
+      "distractors": [
+        "50%",
+        "75%",
+        "80%",
+        "60%",
+        "90%",
+        "85%",
+        "70%",
+        "99%"
+      ],
+      "explanation": "Reducing from 1.9 million to 100,000 men is a cut of 1.8 million soldiers — approximately 95% of the entire military force. The treaty also eliminated the General Staff, banned tanks, airplanes, submarines, and poison gas, and rationed ammunition. This was total military emasculation, not just a trim.",
+      "difficulty": 2,
+      "funScore": 7,
+      "chainTheme": 1,
+      "categories": ["wwii_road_to_war", "versailles", "military", "germany"],
+      "sourceUrl": "https://www.britannica.com/event/Treaty-of-Versailles-1919/German-reparations-and-military-limitations",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The Treaty of Versailles limited Germany's army to _____ men and restricted the officer corps to 4,000.",
+          "answer": "100,000"
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The Treaty of Versailles allowed Germany to maintain a General Staff as long as the army stayed under 100,000 men.",
+          "answer": "False — the General Staff was explicitly eliminated by the treaty."
+        },
+        {
+          "type": "reverse",
+          "question": "Which treaty article section (by part name) contained all of Germany's military restrictions, from army size to the ban on submarines and aircraft?",
+          "answer": "Part V — Military, Naval, and Air Clauses (Articles 159–213)"
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_004",
+      "quizQuestion": "The United States negotiated the Treaty of Versailles under President Wilson — but what happened when the treaty came before the US Senate?",
+      "correctAnswer": "The Senate rejected it twice, and the US never ratified it",
+      "distractors": [
+        "The Senate ratified it with reservations about the League of Nations",
+        "The Senate ratified it unanimously after Wilson's lobbying tour",
+        "The Senate ratified it but withdrew in 1921",
+        "The Senate sent it back for renegotiation and a revised version was approved",
+        "The Senate approved it but Congress refused to fund US participation in the League",
+        "Wilson withdrew the treaty before the Senate could vote",
+        "The Senate ratified only the reparations clauses, not the League covenant",
+        "The Supreme Court ruled the treaty unconstitutional"
+      ],
+      "explanation": "The Senate rejected the Treaty of Versailles twice — in November 1919 and March 1920 — primarily because of Senator Henry Cabot Lodge's objections to the League of Nations covenant. The US never formally ended WWI via Versailles; instead, it signed a separate peace treaty with Germany in 1921. Wilson had championed the League of Nations, but his own country refused to join it.",
+      "difficulty": 3,
+      "funScore": 8,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "versailles", "usa", "diplomacy"],
+      "sourceUrl": "https://www.history.com/articles/treaty-of-versailles-provisions",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or False: The United States ratified the Treaty of Versailles and joined the League of Nations.",
+          "answer": "False — the Senate rejected the treaty twice (November 1919 and March 1920). The US made a separate peace with Germany in 1921 and never joined the League."
+        },
+        {
+          "type": "fill_blank",
+          "question": "The US Senate voted on the Treaty of Versailles _____ times and rejected it both times.",
+          "answer": "Two (November 1919 and March 1920)"
+        },
+        {
+          "type": "context",
+          "question": "How did the US formally end its state of war with Germany if it never ratified the Treaty of Versailles?",
+          "answer": "Through a separate peace treaty signed in 1921 — the Knox-Porter Resolution and subsequent Treaty of Berlin with Germany."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_005",
+      "quizQuestion": "Germany's final reparations payment on post-WWI bonds was made in what year — decades after WWII ended?",
+      "correctAnswer": "2010",
+      "distractors": [
+        "1953",
+        "1971",
+        "1989",
+        "1999",
+        "2001",
+        "1945",
+        "1932",
+        "2018"
+      ],
+      "explanation": "Germany made a final payment in October 2010 to settle remaining interest on post-WWI bonds. The Young Plan (1929) had extended payments through 1988, but WWII and the Hoover Moratorium (1931) interrupted them. Payments resumed after German reunification under the 1990 Two Plus Four Agreement. The last WWI reparations bond interest was cleared 91 years after the treaty was signed.",
+      "difficulty": 4,
+      "funScore": 9,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "versailles", "reparations", "surprising_facts"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_I_reparations",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or False: Germany completed its final WWI reparations-related payment in the 21st century.",
+          "answer": "True — Germany made a final payment in October 2010 to settle remaining interest on post-WWI bonds, 91 years after the Treaty of Versailles was signed."
+        },
+        {
+          "type": "reverse",
+          "question": "The Young Plan (1929) reduced Germany's total reparations to 36 billion Reichsmarks and set a final payment deadline — what year was that deadline?",
+          "answer": "1988"
+        },
+        {
+          "type": "context",
+          "question": "Hitler ended all German reparations payments after taking power — so how did Germany end up making a payment in 2010?",
+          "answer": "Post-WWII West Germany resumed honouring outstanding bond interest under the 1953 London Debt Agreement; reunified Germany cleared the last remaining interest on post-WWI bonds in October 2010."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_006",
+      "quizQuestion": "At the peak of German hyperinflation in November 1923, approximately how many marks did it cost to buy one US dollar?",
+      "correctAnswer": "4.2 trillion marks",
+      "distractors": [
+        "1 billion marks",
+        "4.2 million marks",
+        "500 billion marks",
+        "1 trillion marks",
+        "10 trillion marks",
+        "42 billion marks",
+        "100 billion marks",
+        "4.2 billion marks"
+      ],
+      "explanation": "At the peak around 20 November 1923, the exchange rate reached 4,200,000,000,000 (4.2 trillion) marks per US dollar. Before WWI, the rate had been approximately 4.2 marks per dollar — meaning the mark lost roughly one trillion times its pre-war value. The Rentenmark, introduced on 15 November 1923, was exchanged at 1 Rentenmark = 1 trillion Papiermarks, restoring the pre-war dollar parity.",
+      "difficulty": 3,
+      "funScore": 8,
+      "chainTheme": 3,
+      "categories": ["wwii_road_to_war", "weimar", "hyperinflation", "economics"],
+      "sourceUrl": "https://www.britannica.com/event/hyperinflation-in-the-Weimar-Republic",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "At peak hyperinflation (November 1923), 1 US dollar bought approximately _____ German marks.",
+          "answer": "4.2 trillion (4,200,000,000,000)"
+        },
+        {
+          "type": "reverse",
+          "question": "What was the approximate exchange rate between the German mark and the US dollar BEFORE WWI — the rate that hyperinflation would eventually amplify by a factor of one trillion?",
+          "answer": "Approximately 4.2 marks per dollar"
+        },
+        {
+          "type": "context",
+          "question": "The Ruhr occupation of January 1923 dramatically worsened Germany's hyperinflation. How?",
+          "answer": "France and Belgium occupied the Ruhr to seize reparations goods after Germany defaulted. The German government ordered a general strike ('passive resistance') and printed money to pay striking workers, flooding the economy with paper marks and accelerating the hyperinflation spiral."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_007",
+      "quizQuestion": "Germany's hyperinflation was ended by a new currency introduced on 15 November 1923. What was this currency, and what gave it value when the old marks were worthless?",
+      "correctAnswer": "The Rentenmark, backed by mortgages on German land and industrial assets",
+      "distractors": [
+        "The Goldmark, backed by German gold reserves seized from banks",
+        "The Reichsmark, backed by a US Federal Reserve guarantee under the Dawes Plan",
+        "The Papermark, backed by League of Nations emergency credit",
+        "The Deutschmark, backed by British Treasury bonds",
+        "The Silbermark, backed by German silver stockpiles",
+        "The Stabilmark, backed by tax receipts pledged to the Reichsbank",
+        "The Bondmark, backed by French reparations guarantees",
+        "The Rentenmark, backed by German government gold reserves"
+      ],
+      "explanation": "The Rentenmark (introduced 15 November 1923) was not backed by gold — Germany had none — but by mortgages on German land and industrial assets, indexed to the gold price. The exchange rate was 1 Rentenmark = 1 trillion Papiermarks = 4.2 US cents (the pre-war parity). The key architect was Hjalmar Schacht, appointed Reich Currency Commissioner in November 1923. Crucially, the currency worked primarily because people trusted it — not because of its actual backing.",
+      "difficulty": 3,
+      "funScore": 7,
+      "chainTheme": 3,
+      "categories": ["wwii_road_to_war", "weimar", "hyperinflation", "economics"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Rentenmark",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The Rentenmark exchange rate set 1 Rentenmark equal to _____ old Papiermarks.",
+          "answer": "1 trillion (1,000,000,000,000)"
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The Rentenmark had full legal-tender status when introduced in November 1923.",
+          "answer": "False — the Rentenmark had no legal-tender status initially, but public trust made it function as a stable currency anyway."
+        },
+        {
+          "type": "reverse",
+          "question": "Who was appointed Reich Currency Commissioner in November 1923 and is credited as the key architect of the Rentenmark stabilization?",
+          "answer": "Hjalmar Schacht"
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_008",
+      "quizQuestion": "How many different individuals served as Chancellor of Germany during the Weimar Republic (1919–1933)?",
+      "correctAnswer": "14",
+      "distractors": [
+        "7",
+        "9",
+        "11",
+        "16",
+        "20",
+        "6",
+        "18",
+        "12"
+      ],
+      "explanation": "Fourteen distinct individuals served as Chancellor of the Weimar Republic between 1919 and 1933 — an average of roughly one per year. This extreme instability made it impossible to build lasting economic or foreign policy. The last three chancellors (Brüning, Papen, Schleicher) each served less than a year. Adolf Hitler was appointed the 15th Chancellor on 30 January 1933.",
+      "difficulty": 2,
+      "funScore": 7,
+      "chainTheme": 3,
+      "categories": ["wwii_road_to_war", "weimar", "political_instability", "germany"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Weimar_Republic",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The Weimar Republic had _____ different Chancellors in its 14-year existence — an average of roughly one per year.",
+          "answer": "14"
+        },
+        {
+          "type": "reverse",
+          "question": "Who was the last Chancellor of the Weimar Republic before Adolf Hitler was appointed on 30 January 1933?",
+          "answer": "Kurt von Schleicher (1932–33)"
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The Weimar Republic had more Chancellors than years of existence.",
+          "answer": "True — 14 Chancellors across approximately 14 years (1919–1933), with several chancellors (like Papen and Schleicher) serving only months."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_009",
+      "quizQuestion": "Between 1919 and the mid-1920s, how many politically motivated murders were committed by right-wing groups in Weimar Germany — with near-total judicial impunity?",
+      "correctAnswer": "At least 354",
+      "distractors": [
+        "At least 12",
+        "At least 47",
+        "At least 89",
+        "At least 200",
+        "At least 500",
+        "At least 1,000",
+        "At least 22",
+        "At least 150"
+      ],
+      "explanation": "At least 354 politically motivated murders were committed by right-wing groups in just the first few years of the Weimar Republic. By contrast, left-wing groups committed a minimum of 22. The perpetrators largely faced lenient or sympathetic judges — members of Organisation Consul (which killed Foreign Minister Rathenau) faced minimal legal consequences. This judicial double standard signaled to extremists that political violence against the republic was essentially legal.",
+      "difficulty": 3,
+      "funScore": 8,
+      "chainTheme": 3,
+      "categories": ["wwii_road_to_war", "weimar", "political_violence", "political_instability"],
+      "sourceUrl": "https://www.history.com/articles/political-assassinations-germany-weimar-republic",
+      "variants": [
+        {
+          "type": "context",
+          "question": "What does the near-total judicial impunity for 354+ right-wing murders in Weimar Germany reveal about the republic's foundations?",
+          "answer": "The judiciary — staffed largely by conservative judges carried over from the imperial era — was institutionally sympathetic to nationalist violence and hostile to the republic it was supposed to protect. The rule of law was selective from the republic's birth."
+        },
+        {
+          "type": "fill_blank",
+          "question": "In the first years of the Weimar Republic, right-wing groups committed at least _____ politically motivated murders; left-wing groups committed a minimum of 22.",
+          "answer": "354"
+        },
+        {
+          "type": "reverse",
+          "question": "What right-wing paramilitary organization was responsible for the assassinations of both Finance Minister Matthias Erzberger (1921) and Foreign Minister Walther Rathenau (1922)?",
+          "answer": "Organisation Consul"
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_010",
+      "quizQuestion": "Walther Rathenau — Germany's Foreign Minister and a prominent Jewish industrialist — was assassinated in 1922. How was he killed?",
+      "correctAnswer": "Shot with a submachine gun from a passing car in Berlin-Grunewald on 24 June 1922",
+      "distractors": [
+        "Poisoned at a state dinner in Berlin on 12 March 1922",
+        "Shot by a lone gunman outside the Reichstag on 3 August 1922",
+        "Stabbed by a mob outside his home in Munich on 24 June 1922",
+        "Killed by a bomb planted in his automobile on 7 November 1921",
+        "Assassinated by his own bodyguard in the Foreign Ministry on 24 June 1922",
+        "Shot by a sniper while giving a speech in Hamburg on 2 May 1922",
+        "Strangled in his hotel room during the Genoa Conference in April 1922",
+        "Killed in a staged car accident on the road to Potsdam on 1 June 1922"
+      ],
+      "explanation": "Walther Rathenau was assassinated on 24 June 1922 in Berlin-Grunewald when Organisation Consul members shot him with a submachine gun from a passing car. Rathenau had negotiated the Treaty of Rapallo with Soviet Russia just two months earlier. His murder — as a Jewish politician serving the hated republic — was both antisemitic and anti-republican. The killers were former German officers who faced minimal legal consequences due to sympathetic judges.",
+      "difficulty": 3,
+      "funScore": 7,
+      "chainTheme": 3,
+      "categories": ["wwii_road_to_war", "weimar", "political_violence", "assassinations"],
+      "sourceUrl": "https://www.history.com/articles/political-assassinations-germany-weimar-republic",
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "What position did Walther Rathenau hold when he was assassinated by Organisation Consul on 24 June 1922?",
+          "answer": "Foreign Minister of Germany"
+        },
+        {
+          "type": "fill_blank",
+          "question": "Finance Minister Matthias Erzberger — who had signed the 1918 armistice — was assassinated on _____ while walking in the Black Forest.",
+          "answer": "26 August 1921"
+        },
+        {
+          "type": "context",
+          "question": "Both Erzberger and Rathenau were targeted because they had worked with the republic and with Germany's enemies. What does this pattern tell us about the political atmosphere of Weimar Germany?",
+          "answer": "Politicians who engaged with the post-WWI order — signing the armistice, negotiating treaties — were branded as 'November criminals' by nationalists and targeted for death. Pragmatic statesmanship was treated as treason by the far right."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_011",
+      "quizQuestion": "The Bauhaus school — which unified art, craft, and industrial design — was founded in April 1919. In what German city was it founded, and who was its founder?",
+      "correctAnswer": "Weimar, founded by architect Walter Gropius",
+      "distractors": [
+        "Berlin, founded by painter Paul Klee",
+        "Dessau, founded by architect Ludwig Mies van der Rohe",
+        "Munich, founded by architect Bruno Taut",
+        "Hamburg, founded by designer László Moholy-Nagy",
+        "Frankfurt, founded by architect Walter Gropius",
+        "Dresden, founded by sculptor Marcel Breuer",
+        "Weimar, founded by painter Wassily Kandinsky",
+        "Leipzig, founded by architect Hans Poelzig"
+      ],
+      "explanation": "The Bauhaus (full name: Staatliches Bauhaus Weimar) was founded in April 1919 in Weimar, Germany, by architect Walter Gropius. Its philosophy was to unite fine art, craftsmanship, and industrial technology into a single practice. Notable faculty included Paul Klee, Wassily Kandinsky, and Marcel Breuer. The school moved to Dessau in 1925, then briefly to Berlin before being closed under Nazi pressure in July 1933.",
+      "difficulty": 2,
+      "funScore": 6,
+      "chainTheme": 3,
+      "categories": ["wwii_road_to_war", "weimar_culture", "bauhaus", "art_history"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Bauhaus",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The Bauhaus school was founded in _____ in Weimar, Germany, by architect Walter Gropius.",
+          "answer": "April 1919"
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: The Bauhaus was primarily a fine arts painting school with little focus on industrial or practical design.",
+          "answer": "False — the Bauhaus explicitly trained designers, craftspeople, and architects with industrial applications in mind, uniting art with craft and technology."
+        },
+        {
+          "type": "reverse",
+          "question": "Under what circumstances did the Bauhaus close in 1933 — and what did its directors choose to do?",
+          "answer": "The Bauhaus was closed in July 1933 under Nazi pressure; rather than accept Nazi-imposed conditions, the directors voted to dissolve the school themselves."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_012",
+      "quizQuestion": "Fritz Lang's 1927 science-fiction film 'Metropolis' is a landmark of Weimar cinema. What was its commercial fate on initial release?",
+      "correctAnswer": "It was a box-office failure",
+      "distractors": [
+        "It was the highest-grossing German film of the 1920s",
+        "It was banned by the Weimar government for political content",
+        "It broke European box-office records before being suppressed by the Nazis",
+        "It was a modest success that recouped its budget within a year",
+        "It won the first German national film prize and earned international distribution immediately",
+        "It was acclaimed but restricted to art-house cinemas due to its length",
+        "It became a massive popular hit in Germany while being ignored abroad",
+        "It was seized and destroyed by Communist protesters who objected to its portrayal of workers"
+      ],
+      "explanation": "Metropolis (1927, directed by Fritz Lang) was one of the most expensive silent films ever made — and a box-office failure on initial release. Its cultural prestige as a landmark of expressionist cinema and science fiction came decades later. This is a recurring pattern in Weimar culture: works that were commercially marginal or politically suppressed at the time are now considered defining achievements of the era.",
+      "difficulty": 3,
+      "funScore": 7,
+      "chainTheme": 3,
+      "categories": ["wwii_road_to_war", "weimar_culture", "film", "surprising_facts"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Metropolis_(1927_film)",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Fritz Lang's Metropolis (1927) was one of the most expensive _____ films ever made — yet it was a commercial failure on release.",
+          "answer": "silent"
+        },
+        {
+          "type": "reverse",
+          "question": "What German expressionist film movement produced not only Metropolis (1927) but also The Cabinet of Dr. Caligari (1920) and Nosferatu (1922)?",
+          "answer": "German Expressionism — characterized by distorted, angular, non-realistic sets and themes of madness and trauma"
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Fritz Lang's Metropolis was celebrated as a massive popular hit in Germany immediately upon its 1927 release.",
+          "answer": "False — Metropolis was a box-office failure on initial release; its reputation as a landmark film developed much later."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_013",
+      "quizQuestion": "Germany secretly violated the Treaty of Versailles throughout the 1920s with Soviet cooperation. At which Soviet locations did Germany secretly train in weapons banned by Versailles?",
+      "correctAnswer": "Lipetsk (aviation), Kazan (tanks), Saratov (chemical weapons)",
+      "distractors": [
+        "Moscow (aviation), Minsk (tanks), Kiev (chemical weapons)",
+        "Leningrad (aviation), Volgograd (tanks), Odessa (chemical weapons)",
+        "Baku (aviation), Stalingrad (tanks), Tashkent (chemical weapons)",
+        "Murmansk (aviation), Irkutsk (tanks), Omsk (chemical weapons)",
+        "Riga (aviation), Warsaw (tanks), Vilnius (chemical weapons)",
+        "Smolensk (aviation), Kharkov (tanks), Rostov (chemical weapons)",
+        "Lipetsk (tanks), Kazan (aviation), Saratov (submarines)",
+        "Lipetsk (aviation), Kazan (chemical weapons), Saratov (tanks)"
+      ],
+      "explanation": "Germany and the Soviet Union began secret military cooperation in 1921 under the Treaty of Rapallo framework. Germany trained military pilots at Lipetsk (aviation school), tested and trained on tanks at Kazan, and developed chemical weapons at Saratov — all banned by Versailles. This Soviet-German military partnership persisted throughout the 1920s despite the two nations being ideological enemies. The Soviets benefited from German military expertise; Germany evaded Versailles restrictions.",
+      "difficulty": 4,
+      "funScore": 8,
+      "chainTheme": 1,
+      "categories": ["wwii_road_to_war", "rearmament", "german_soviet", "versailles_violations"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_rearmament",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or False: Germany's secret rearmament in the 1920s was conducted with Soviet cooperation, despite the two nations being ideological enemies.",
+          "answer": "True — Germany used Soviet facilities at Lipetsk, Kazan, and Saratov from 1921 onwards to train in weapons banned by Versailles, with Soviet willingness to cooperate throughout."
+        },
+        {
+          "type": "fill_blank",
+          "question": "Germany's secret military cooperation with the Soviet Union began in _____ under the Treaty of Rapallo framework.",
+          "answer": "1921"
+        },
+        {
+          "type": "context",
+          "question": "Why were the Soviets willing to help Germany secretly rearm in the 1920s, given that German nationalists were violently anti-Communist?",
+          "answer": "Both nations were pariah states excluded from the Western-led international order after WWI. The Soviets gained access to German military expertise and technology; Germany gained facilities to evade Versailles. Mutual interest overrode ideological enmity."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_014",
+      "quizQuestion": "Hitler publicly announced the existence of the Luftwaffe and the reintroduction of military conscription in March 1935. What army size did he announce — directly flouting the Versailles limit of 100,000?",
+      "correctAnswer": "550,000 men",
+      "distractors": [
+        "200,000 men",
+        "300,000 men",
+        "750,000 men",
+        "1 million men",
+        "400,000 men",
+        "150,000 men",
+        "500,000 men",
+        "250,000 men"
+      ],
+      "explanation": "On 16 March 1935, Hitler announced the reintroduction of conscription and a peacetime army of 550,000 men — 5.5 times the Versailles cap of 100,000. The Luftwaffe had been formally founded by secret decree on 26 February 1935, with Göring as Commander-in-Chief, but the public announcement came only in March when Britain announced RAF expansion. France and Britain protested at the Stresa Conference (April 1935) but took no military action. This same unemployment crisis that drove voters to the Nazis also gave Hitler the political capital to tear up Versailles.",
+      "difficulty": 3,
+      "funScore": 7,
+      "chainTheme": 1,
+      "categories": ["wwii_road_to_war", "rearmament", "luftwaffe", "versailles_violations"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/German_rearmament",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Hitler signed a secret decree officially founding the Luftwaffe on _____, naming Göring as Commander-in-Chief.",
+          "answer": "26 February 1935"
+        },
+        {
+          "type": "reverse",
+          "question": "What was Hitler's stated pretext for publicly revealing the Luftwaffe's existence in March 1935?",
+          "answer": "Britain had announced it was strengthening the RAF, which Hitler used as justification to openly reveal Germany's air force in defiance of Versailles."
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: By announcing conscription on 16 March 1935, Hitler formally and publicly repudiated the military clauses of the Treaty of Versailles.",
+          "answer": "True — the announcement was an open, declared violation of Versailles Articles 159–213, done in public with no attempt at concealment."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_015",
+      "quizQuestion": "On 7 March 1936, Hitler sent troops into the demilitarized Rhineland. What secret orders did the German generals carry in case France mobilized to resist?",
+      "correctAnswer": "Orders to retreat immediately if French forces moved against them",
+      "distractors": [
+        "Orders to hold the Rhine crossings at all costs and await reinforcements",
+        "Orders to advance on Paris if France mobilized, to force a negotiated settlement",
+        "Orders to dig in and defend until British mediation could be arranged",
+        "Orders to bomb French border towns if French troops crossed the Maginot Line",
+        "Orders to declare martial law in the Rhineland and appeal to the League of Nations",
+        "Orders to surrender to French forces and request a diplomatic conference",
+        "Orders to fall back to the Siegfried Line and await Hitler's personal authorization",
+        "Orders to retreat only if attacked, but to hold ground against any French deployment"
+      ],
+      "explanation": "Hitler's remilitarization of the Rhineland on 7 March 1936 was a calculated gamble. The approximately 20,000 German troops sent in carried orders to retreat immediately if France moved militarily — the German army in 1936 was not strong enough to resist France. Hitler told Albert Speer the 48 hours after the march were 'the most nerve-wracking of his life.' France and Britain condemned the move but took no military steps. This success taught Hitler that Western democracies would not fight for treaty obligations.",
+      "difficulty": 3,
+      "funScore": 9,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "rhineland", "appeasement", "hitler_gambles"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Remilitarisation_of_the_Rhineland",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "German forces entered the Rhineland on _____, violating both the Treaty of Versailles and the Locarno Treaties.",
+          "answer": "7 March 1936"
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: Hitler was confident his military could defeat France if it resisted the Rhineland remilitarization in 1936.",
+          "answer": "False — Hitler knew his army in 1936 could not resist France. His troops had orders to retreat immediately if France moved militarily; he described the following 48 hours as 'the most nerve-wracking of his life.'"
+        },
+        {
+          "type": "context",
+          "question": "What lesson did Hitler draw from France and Britain's non-response to the Rhineland remilitarization?",
+          "answer": "That the Western democracies would not use military force to defend treaty obligations — a lesson that emboldened him for every subsequent gamble: Austria (1938), Sudetenland (1938), and Czechoslovakia (1939)."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_016",
+      "quizQuestion": "The 1925 Locarno Treaties guaranteed Germany's western borders with France and Belgium — but what critical category of borders was deliberately LEFT without a military guarantee?",
+      "correctAnswer": "Germany's eastern borders with Poland and Czechoslovakia",
+      "distractors": [
+        "Germany's northern border with Denmark",
+        "Germany's border with Austria in the south",
+        "The Rhineland demilitarized zone itself",
+        "Germany's overseas colonial possessions",
+        "Germany's naval limits in the Baltic Sea",
+        "Germany's border with the Saar under League of Nations administration",
+        "Germany's western border with Belgium only (France was excluded)",
+        "All borders — Locarno guaranteed nothing militarily"
+      ],
+      "explanation": "The Locarno Treaties guaranteed the Franco-German and Belgo-German western frontiers as inviolable, with Britain and Italy as guarantors. But Germany's eastern borders with Poland and Czechoslovakia received only arbitration agreements — disputes would go to mediation, but there was no military guarantee from Britain or Italy. This asymmetry was deliberate: Germany was implicitly reserving the right to seek peaceful revision of its eastern frontiers. Poland, which lost the security guarantee it had hoped for, was right to see Locarno as a defeat.",
+      "difficulty": 3,
+      "funScore": 8,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "locarno", "diplomacy", "eastern_europe"],
+      "sourceUrl": "https://www.britannica.com/event/Pact-of-Locarno",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or False: The Locarno Treaties of 1925 provided equal military guarantees for all of Germany's post-WWI borders — east and west.",
+          "answer": "False — only Germany's western borders (with France and Belgium) were militarily guaranteed. Eastern borders with Poland and Czechoslovakia received only arbitration agreements, with no military commitment from Britain."
+        },
+        {
+          "type": "fill_blank",
+          "question": "At Locarno, Germany's western borders were declared inviolable with Britain and Italy as guarantors — but its eastern borders received only _____ agreements.",
+          "answer": "Arbitration"
+        },
+        {
+          "type": "reverse",
+          "question": "Which three foreign ministers — from Germany, France, and Britain — negotiated the Locarno Treaties, and which two (from Germany and France) later received the Nobel Peace Prize for it?",
+          "answer": "Gustav Stresemann (Germany), Aristide Briand (France), and Sir Austen Chamberlain (Britain). Stresemann and Briand received the 1926 Nobel Peace Prize."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_017",
+      "quizQuestion": "The Kellogg-Briand Pact (1928) outlawed war as an instrument of national policy. Despite failing to prevent WWII, what lasting legal significance did it have?",
+      "correctAnswer": "It provided the legal basis for prosecuting aggressive war as a crime at the Nuremberg Trials (1945–46)",
+      "distractors": [
+        "It established the International Court of Justice at The Hague",
+        "It was used to justify the post-war UN Security Council veto system",
+        "It formed the legal basis for the Marshall Plan as war reparations",
+        "It created the first international framework for nuclear non-proliferation",
+        "It was invoked to invalidate the Munich Agreement of 1938 retroactively",
+        "It provided the basis for the Tokyo War Crimes Tribunal only, not Nuremberg",
+        "It was used at Nuremberg only for Japanese defendants, not German ones",
+        "It established the principle of diplomatic immunity for heads of state"
+      ],
+      "explanation": "The Kellogg-Briand Pact (signed 27 August 1928, named for US Secretary of State Frank Kellogg and French Foreign Minister Aristide Briand) is still technically in force. Though it had no enforcement mechanism and failed to prevent WWII, its prohibition on aggressive war became the cornerstone of the Nuremberg Trials' legal framework — establishing that leaders who wage aggressive war commit a crime against international law. Kellogg received the Nobel Peace Prize in 1929. Japan's invasion of Manchuria (1931), Italy's invasion of Abyssinia (1935), and Germany's invasion of Poland (1939) all violated it with zero enforcement.",
+      "difficulty": 3,
+      "funScore": 8,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "kellogg_briand", "diplomacy", "international_law"],
+      "sourceUrl": "https://www.britannica.com/event/Kellogg-Briand-Pact",
+      "variants": [
+        {
+          "type": "true_false",
+          "question": "True or False: The Kellogg-Briand Pact has been formally abrogated (canceled) since WWII proved it ineffective.",
+          "answer": "False — the Kellogg-Briand Pact is still technically in force and has never been abrogated."
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Kellogg-Briand Pact was signed on _____ in Paris and was named after the US Secretary of State and the French Foreign Minister.",
+          "answer": "27 August 1928"
+        },
+        {
+          "type": "context",
+          "question": "If the Kellogg-Briand Pact had no enforcement mechanism, how did it still influence post-WWII justice?",
+          "answer": "It established the principle in international law that aggressive war is illegal — not just immoral. The Nuremberg prosecutors used this to charge Nazi leaders with 'crimes against peace,' establishing individual criminal liability for starting wars."
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_018",
+      "quizQuestion": "The Stresa Front (April 1935) united France, Britain, and Italy against German rearmament — but it collapsed within how many days when Britain secretly signed a naval agreement with Germany?",
+      "correctAnswer": "65 days",
+      "distractors": [
+        "6 months",
+        "180 days",
+        "30 days",
+        "1 year",
+        "10 days",
+        "100 days",
+        "45 days",
+        "90 days"
+      ],
+      "explanation": "The Stresa Front was declared on 14 April 1935. On 18 June 1935 — just 65 days later — Britain signed the Anglo-German Naval Agreement without informing France or Italy, allowing Germany to build a navy up to 35% of British tonnage. This legitimized German rearmament and destroyed the Stresa coalition. Mussolini was furious at being excluded and began moving toward Germany instead. Italy's invasion of Abyssinia in October 1935 completed the collapse, and the Rome-Berlin Axis was announced on 25 October 1936.",
+      "difficulty": 3,
+      "funScore": 8,
+      "chainTheme": 5,
+      "categories": ["wwii_road_to_war", "stresa_front", "appeasement", "diplomacy"],
+      "sourceUrl": "https://en.wikipedia.org/wiki/Stresa_Front",
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Britain destroyed the Stresa Front by signing the Anglo-German Naval Agreement on _____, allowing Germany a navy up to 35% of British tonnage.",
+          "answer": "18 June 1935"
+        },
+        {
+          "type": "true_false",
+          "question": "True or False: In 1934–35, Mussolini was a potential ally against Hitler — Italy had even mobilized troops on the Brenner Pass to deter a German annexation of Austria.",
+          "answer": "True — Italy mobilized on the Brenner in July 1934 after a failed Nazi coup attempt in Vienna. The failure of Stresa and the Abyssinia crisis turned Mussolini toward Germany instead."
+        },
+        {
+          "type": "context",
+          "question": "What was Britain's rationale for secretly negotiating the Anglo-German Naval Agreement behind its Stresa partners' backs?",
+          "answer": "Britain hoped to lock Germany into a fixed ratio (35% of British tonnage) rather than facing unconstrained naval rearmament — a form of pragmatic appeasement. Britain prioritized managing German power over maintaining coalition solidarity with France and Italy."
+        }
+      ]
+    }
+  ]
+}

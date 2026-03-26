@@ -28,7 +28,11 @@ export interface MechanicDefinition {
   unlockLevel: number;
   /** Quick Play base value (no quiz). */
   quickPlayValue: number;
-  /** Charged Correct base value (answered correctly). */
+  /**
+   * @deprecated INFORMATIONAL ONLY — the runtime does NOT read this field.
+   * Charge Correct damage is computed as `quickPlayValue × CHARGE_CORRECT_MULTIPLIER (1.5)`.
+   * This field exists for documentation/reference purposes only.
+   */
   chargeCorrectValue: number;
   /** Charged Wrong base value (answered incorrectly). */
   chargeWrongValue: number;
@@ -45,13 +49,13 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'strike', name: 'Strike', type: 'attack',
     description: 'Deal damage.',
     baseValue: 8, apCost: 1, maxPerPool: 0, tags: ['strike'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 6,
+    quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
   },
   {
     id: 'multi_hit', name: 'Multi-Hit', type: 'attack',
     description: 'Hit 3 times.',
     baseValue: 4, apCost: 2, maxPerPool: 0, secondaryValue: 3, tags: ['multi'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 3,
+    quickPlayValue: 2, chargeCorrectValue: 12, chargeWrongValue: 2,
   },
 
   // Attack (phase 1 promoted)
@@ -59,31 +63,31 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'heavy_strike', name: 'Heavy Strike', type: 'attack',
     description: 'High damage. Costs 3 AP.',
     baseValue: 20, apCost: 3, maxPerPool: 3, tags: ['strike', 'heavy'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 20, chargeCorrectValue: 60, chargeWrongValue: 14,
+    quickPlayValue: 10, chargeCorrectValue: 60, chargeWrongValue: 7,
   },
   {
     id: 'piercing', name: 'Piercing', type: 'attack',
     description: 'Ignores enemy block.',
     baseValue: 6, apCost: 1, maxPerPool: 0, tags: ['pierce'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 18, chargeWrongValue: 2,
   },
   {
     id: 'reckless', name: 'Reckless', type: 'attack',
     description: 'High damage, self-damage.',
     baseValue: 12, apCost: 1, maxPerPool: 0, secondaryValue: 3, tags: ['risk'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 12, chargeCorrectValue: 36, chargeWrongValue: 8,
+    quickPlayValue: 6, chargeCorrectValue: 36, chargeWrongValue: 4,
   },
   {
     id: 'execute', name: 'Execute', type: 'attack',
     description: 'Bonus damage below 30% HP.',
     baseValue: 6, apCost: 1, maxPerPool: 0, secondaryValue: 8, secondaryThreshold: 0.3, tags: ['finisher'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 18, chargeWrongValue: 2,
   },
   {
     id: 'lifetap', name: 'Lifetap', type: 'attack',
     description: 'Deal damage. Heal 20% of damage dealt.',
     baseValue: 8, apCost: 2, maxPerPool: 0, tags: ['lifetap'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 6,
+    quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
   },
 
   // Attack (phase 2)
@@ -94,19 +98,19 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'block', name: 'Block', type: 'shield',
     description: 'Gain block.',
     baseValue: 6, apCost: 1, maxPerPool: 0, tags: ['block'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 18, chargeWrongValue: 2,
   },
   {
     id: 'thorns', name: 'Thorns', type: 'shield',
     description: 'Gain 6 block and reflect 3 damage when hit.',
     baseValue: 6, apCost: 1, maxPerPool: 0, secondaryValue: 3, tags: ['retaliate'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 18, chargeWrongValue: 2,
   },
   {
     id: 'emergency', name: 'Emergency', type: 'shield',
     description: 'Gain block. Double if HP below 30%.',
     baseValue: 4, apCost: 1, maxPerPool: 0, tags: ['emergency'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 3,
+    quickPlayValue: 2, chargeCorrectValue: 12, chargeWrongValue: 2,
   },
 
   // Shield (phase 1 promoted)
@@ -114,7 +118,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'fortify', name: 'Fortify', type: 'shield',
     description: 'Gain 7 persistent block into next turn.',
     baseValue: 7, apCost: 2, maxPerPool: 0, tags: ['persistent_block'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 7, chargeCorrectValue: 21, chargeWrongValue: 5,
+    quickPlayValue: 4, chargeCorrectValue: 21, chargeWrongValue: 3,
   },
   {
     id: 'brace', name: 'Brace', type: 'shield',
@@ -126,7 +130,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'overheal', name: 'Overheal', type: 'shield',
     description: 'Gain 10 block. Double if HP below 50%.',
     baseValue: 10, apCost: 2, maxPerPool: 0, secondaryValue: 2, tags: ['overheal'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+    quickPlayValue: 5, chargeCorrectValue: 30, chargeWrongValue: 4,
   },
 
   // Shield (phase 2)
@@ -134,7 +138,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'parry', name: 'Parry', type: 'shield',
     description: 'Block + draw if enemy attacks.',
     baseValue: 3, apCost: 1, maxPerPool: 0, secondaryValue: 1, tags: ['parry'], launchPhase: 2, unlockLevel: 0,
-    quickPlayValue: 3, chargeCorrectValue: 9, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 9, chargeWrongValue: 1,
   },
 
   // Buff (phase 1)
@@ -142,7 +146,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'empower', name: 'Empower', type: 'buff',
     description: 'Next card deals 50% more damage.',
     baseValue: 50, apCost: 1, maxPerPool: 0, tags: ['buff'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 50, chargeCorrectValue: 75, chargeWrongValue: 35,
+    quickPlayValue: 35, chargeCorrectValue: 75, chargeWrongValue: 25,
   },
   {
     id: 'quicken', name: 'Quicken', type: 'buff',
@@ -164,7 +168,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'double_strike', name: 'Double Strike', type: 'buff',
     description: 'Next attack card hits twice at full power.',
     baseValue: 100, apCost: 2, maxPerPool: 0, secondaryValue: 100, tags: ['double_strike'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 100, chargeCorrectValue: 100, chargeWrongValue: 100,
+    quickPlayValue: 75, chargeCorrectValue: 100, chargeWrongValue: 75,
     chargeBonusEffect: 'double_strike_pierce',
   },
 
@@ -173,7 +177,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'weaken', name: 'Weaken', type: 'debuff',
     description: 'Apply weakness.',
     baseValue: 2, apCost: 1, maxPerPool: 0, tags: ['weakness'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 2, chargeCorrectValue: 6, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 6, chargeWrongValue: 1,
   },
   {
     id: 'expose', name: 'Expose', type: 'debuff',
@@ -187,7 +191,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'hex', name: 'Hex', type: 'debuff',
     description: 'Apply poison 3 for 3 turns.',
     baseValue: 3, apCost: 1, maxPerPool: 0, secondaryValue: 3, tags: ['poison'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 3, chargeCorrectValue: 8, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 8, chargeWrongValue: 1,
   },
   {
     id: 'slow', name: 'Slow', type: 'debuff',
@@ -210,13 +214,13 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'scout', name: 'Scout', type: 'utility',
     description: 'Draw 2 cards.',
     baseValue: 2, apCost: 1, maxPerPool: 0, tags: ['draw'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
   {
     id: 'recycle', name: 'Recycle', type: 'utility',
     description: 'Draw 3 cards.',
     baseValue: 3, apCost: 1, maxPerPool: 0, tags: ['cycle'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 3, chargeCorrectValue: 4, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 4, chargeWrongValue: 2,
     chargeBonusEffect: 'recycle_from_discard',
   },
 
@@ -225,11 +229,23 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'foresight', name: 'Foresight', type: 'utility',
     description: 'Draw 2 cards.',
     baseValue: 2, apCost: 0, maxPerPool: 0, tags: ['foresight'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
     chargeBonusEffect: 'foresight_intent',
   },
 
   // Utility (phase 2)
+  {
+    id: 'conjure', name: 'Conjure', type: 'utility',
+    description: 'Summon one of three cards to your hand this encounter.',
+    baseValue: 0, apCost: 1, maxPerPool: 2, tags: ['conjure'], launchPhase: 2, unlockLevel: 5,
+    quickPlayValue: 0, chargeCorrectValue: 0, chargeWrongValue: 0,
+  },
+  {
+    id: 'forge', name: 'Forge', type: 'buff',
+    description: 'Upgrade a card in your hand for this encounter.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['forge'], launchPhase: 2, unlockLevel: 7,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 0,
+  },
   {
     id: 'transmute', name: 'Transmute', type: 'utility',
     description: 'Transform your weakest hand card into a different type.',
@@ -242,7 +258,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'immunity', name: 'Immunity', type: 'utility',
     description: 'Absorb next damage instance (up to 8).',
     baseValue: 8, apCost: 1, maxPerPool: 0, tags: ['immunity'], launchPhase: 2, unlockLevel: 0,
-    quickPlayValue: 8, chargeCorrectValue: 8, chargeWrongValue: 8,
+    quickPlayValue: 4, chargeCorrectValue: 8, chargeWrongValue: 4,
   },
 
   // Wild (phase 1)
@@ -264,7 +280,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'overclock', name: 'Overclock', type: 'wild',
     description: 'Next card 2x effect.',
     baseValue: 2, apCost: 2, maxPerPool: 0, tags: ['overclock'], launchPhase: 2, unlockLevel: 0,
-    quickPlayValue: 2, chargeCorrectValue: 2, chargeWrongValue: 2,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 2,
   },
 
   // ── AR-206: Phase 1 Expansion Cards ─────────────────────────────────────────
@@ -274,49 +290,49 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'power_strike', name: 'Power Strike', type: 'attack',
     description: 'A heavier strike that deals more damage.',
     baseValue: 10, apCost: 1, maxPerPool: 3, tags: ['strike'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+    quickPlayValue: 5, chargeCorrectValue: 30, chargeWrongValue: 4,
   },
   {
     id: 'twin_strike', name: 'Twin Strike', type: 'attack',
     description: 'Hit twice. Each hit triggers Burn and Bleed separately.',
     baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 2, tags: ['strike', 'multi'], launchPhase: 1, unlockLevel: 2,
-    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+    quickPlayValue: 3, chargeCorrectValue: 15, chargeWrongValue: 2,
   },
   {
     id: 'iron_wave', name: 'Iron Wave', type: 'attack',
     description: 'Deal damage and gain block.',
     baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 5, tags: ['strike'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+    quickPlayValue: 3, chargeCorrectValue: 15, chargeWrongValue: 2,
   },
   {
     id: 'reinforce', name: 'Reinforce', type: 'shield',
     description: 'Gain more block than a basic shield.',
     baseValue: 8, apCost: 1, maxPerPool: 3, tags: ['block'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 6,
+    quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
   },
   {
     id: 'shrug_it_off', name: 'Shrug It Off', type: 'shield',
     description: 'Gain block and draw a card on Quick Play or Charge.',
     baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['block', 'draw'], launchPhase: 1, unlockLevel: 2,
-    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 18, chargeWrongValue: 2,
   },
   {
     id: 'bash', name: 'Bash', type: 'attack',
     description: 'Deal damage and apply Vulnerable.',
     baseValue: 10, apCost: 2, maxPerPool: 2, tags: ['strike'], launchPhase: 1, unlockLevel: 1,
-    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+    quickPlayValue: 5, chargeCorrectValue: 30, chargeWrongValue: 4,
   },
   {
     id: 'guard', name: 'Guard', type: 'shield',
     description: 'Gain a large amount of block.',
     baseValue: 14, apCost: 2, maxPerPool: 2, tags: ['block'], launchPhase: 1, unlockLevel: 1,
-    quickPlayValue: 14, chargeCorrectValue: 42, chargeWrongValue: 10,
+    quickPlayValue: 7, chargeCorrectValue: 42, chargeWrongValue: 5,
   },
   {
     id: 'sap', name: 'Sap', type: 'debuff',
     description: 'Deal damage and apply Weakness.',
     baseValue: 3, apCost: 1, maxPerPool: 2, tags: ['weakness'], launchPhase: 1, unlockLevel: 1,
-    quickPlayValue: 3, chargeCorrectValue: 9, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 9, chargeWrongValue: 1,
   },
 
   // Bleed cards (2)
@@ -324,13 +340,13 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'rupture', name: 'Rupture', type: 'attack',
     description: 'Deal damage and apply Bleed.',
     baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 3, tags: ['strike', 'bleed'], launchPhase: 1, unlockLevel: 4,
-    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+    quickPlayValue: 3, chargeCorrectValue: 15, chargeWrongValue: 2,
   },
   {
     id: 'lacerate', name: 'Lacerate', type: 'debuff',
     description: 'Deal damage and apply Bleed.',
     baseValue: 4, apCost: 1, maxPerPool: 2, secondaryValue: 4, tags: ['bleed'], launchPhase: 1, unlockLevel: 4,
-    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 3,
+    quickPlayValue: 2, chargeCorrectValue: 12, chargeWrongValue: 2,
   },
 
   // Burn cards (2)
@@ -338,13 +354,13 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'kindle', name: 'Kindle', type: 'attack',
     description: 'Deal damage, apply Burn, and immediately trigger it.',
     baseValue: 4, apCost: 1, maxPerPool: 2, secondaryValue: 4, tags: ['strike', 'burn'], launchPhase: 1, unlockLevel: 5,
-    quickPlayValue: 4, chargeCorrectValue: 8, chargeWrongValue: 3,
+    quickPlayValue: 2, chargeCorrectValue: 8, chargeWrongValue: 2,
   },
   {
     id: 'ignite', name: 'Ignite', type: 'buff',
     description: 'Your next attack applies Burn.',
     baseValue: 4, apCost: 1, maxPerPool: 2, tags: ['burn', 'buff'], launchPhase: 1, unlockLevel: 5,
-    quickPlayValue: 4, chargeCorrectValue: 8, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 8, chargeWrongValue: 1,
   },
 
   // Basic new cards (14)
@@ -352,31 +368,31 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'overcharge', name: 'Overcharge', type: 'attack',
     description: 'Deal damage. On Charge: scales with Charges played this encounter.',
     baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 1, unlockLevel: 5,
-    quickPlayValue: 6, chargeCorrectValue: 6, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 6, chargeWrongValue: 2,
   },
   {
     id: 'riposte', name: 'Riposte', type: 'attack',
     description: 'Deal damage and gain block.',
     baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 4, tags: ['strike'], launchPhase: 1, unlockLevel: 3,
-    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+    quickPlayValue: 3, chargeCorrectValue: 15, chargeWrongValue: 2,
   },
   {
     id: 'absorb', name: 'Absorb', type: 'shield',
     description: 'Gain block. On Charge Correct: also draw a card.',
     baseValue: 5, apCost: 1, maxPerPool: 2, tags: ['block'], launchPhase: 1, unlockLevel: 4,
-    quickPlayValue: 5, chargeCorrectValue: 5, chargeWrongValue: 3,
+    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 2,
   },
   {
     id: 'reactive_shield', name: 'Reactive Shield', type: 'shield',
     description: 'Gain block and apply Thorns for 1 turn.',
     baseValue: 4, apCost: 1, maxPerPool: 2, secondaryValue: 2, tags: ['block', 'retaliate'], launchPhase: 1, unlockLevel: 5,
-    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 3,
+    quickPlayValue: 2, chargeCorrectValue: 12, chargeWrongValue: 2,
   },
   {
     id: 'sift', name: 'Sift', type: 'utility',
     description: 'Look at top cards of your draw pile and discard some.',
     baseValue: 3, apCost: 1, maxPerPool: 2, tags: ['scry'], launchPhase: 1, unlockLevel: 3,
-    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 5, chargeWrongValue: 2,
   },
   {
     id: 'scavenge', name: 'Scavenge', type: 'utility',
@@ -388,7 +404,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'precision_strike', name: 'Precision Strike', type: 'attack',
     description: 'Deal damage. Charge timer is 50% longer.',
     baseValue: 8, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 1, unlockLevel: 4,
-    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 5,
+    quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
   },
   {
     id: 'stagger', name: 'Stagger', type: 'debuff',
@@ -400,7 +416,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'corrode', name: 'Corrode', type: 'debuff',
     description: "Remove enemy block and apply Weakness.",
     baseValue: 5, apCost: 1, maxPerPool: 1, tags: ['weakness'], launchPhase: 1, unlockLevel: 5,
-    quickPlayValue: 5, chargeCorrectValue: 0, chargeWrongValue: 3,
+    quickPlayValue: 3, chargeCorrectValue: 0, chargeWrongValue: 2,
   },
   {
     id: 'swap', name: 'Swap', type: 'utility',
@@ -412,25 +428,25 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'siphon_strike', name: 'Siphon Strike', type: 'attack',
     description: 'Deal damage and heal based on overkill damage (min 2, max 10).',
     baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['strike', 'lifetap'], launchPhase: 1, unlockLevel: 11,
-    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 18, chargeWrongValue: 2,
   },
   {
     id: 'aegis_pulse', name: 'Aegis Pulse', type: 'shield',
     description: 'Gain block. On Charge Correct: same-chain cards in hand gain +2 block.',
     baseValue: 5, apCost: 1, maxPerPool: 2, tags: ['block'], launchPhase: 1, unlockLevel: 6,
-    quickPlayValue: 5, chargeCorrectValue: 5, chargeWrongValue: 3,
+    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 2,
   },
   {
     id: 'inscription_fury', name: 'Inscription of Fury', type: 'buff',
     description: 'All attacks deal bonus damage for the rest of combat.',
     baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['inscription'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 2, chargeCorrectValue: 4, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 4, chargeWrongValue: 1,
   },
   {
     id: 'inscription_iron', name: 'Inscription of Iron', type: 'buff',
     description: 'Gain block at the start of each turn for the rest of combat.',
     baseValue: 3, apCost: 2, maxPerPool: 1, tags: ['inscription'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 3, chargeCorrectValue: 6, chargeWrongValue: 1,
+    quickPlayValue: 2, chargeCorrectValue: 6, chargeWrongValue: 1,
   },
 
   // ── AR-207: Phase 2 Identity / Flagship Cards ─────────────────────────────
@@ -440,7 +456,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'gambit', name: 'Gambit', type: 'attack',
     description: 'HP swing. QP: deal damage, lose HP. CC: deal damage, heal HP. CW: deal damage, lose more HP.',
     baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['strike', 'risk'], launchPhase: 2, unlockLevel: 6,
-    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+    quickPlayValue: 5, chargeCorrectValue: 30, chargeWrongValue: 4,
   },
 
   // Attack — chain scaling
@@ -448,7 +464,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'chain_lightning', name: 'Chain Lightning', type: 'attack',
     description: 'CC: deal 8 × chain length (counts itself). Requires answering correctly.',
     baseValue: 8, apCost: 2, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 8,
-    quickPlayValue: 8, chargeCorrectValue: 8, chargeWrongValue: 5,
+    quickPlayValue: 4, chargeCorrectValue: 8, chargeWrongValue: 3,
   },
 
   // Attack — exhaust-on-charge burst
@@ -456,7 +472,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'volatile_slash', name: 'Volatile Slash', type: 'attack',
     description: 'CC: 30 dmg then EXHAUST this card. QP/CW: standard damage.',
     baseValue: 10, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 2, unlockLevel: 7,
-    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+    quickPlayValue: 5, chargeCorrectValue: 30, chargeWrongValue: 4,
   },
 
   // Shield — exhaust-on-charge burst (mirror of Volatile Slash)
@@ -464,7 +480,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'burnout_shield', name: 'Burnout Shield', type: 'shield',
     description: 'CC: 24 block then EXHAUST this card. QP/CW: standard block.',
     baseValue: 8, apCost: 1, maxPerPool: 2, tags: ['block'], launchPhase: 2, unlockLevel: 7,
-    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 6,
+    quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
   },
 
   // Shield — domain diversity
@@ -472,7 +488,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'knowledge_ward', name: 'Knowledge Ward', type: 'shield',
     description: 'Gain 4 block per unique domain in hand. CC: ×1.5. CW: ×0.7.',
     baseValue: 4, apCost: 1, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 6,
-    quickPlayValue: 4, chargeCorrectValue: 6, chargeWrongValue: 3,
+    quickPlayValue: 2, chargeCorrectValue: 6, chargeWrongValue: 2,
   },
 
   // Buff — Strength + free Charge
@@ -480,7 +496,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'warcry', name: 'Warcry', type: 'buff',
     description: 'QP: +2 Str (this turn). CC: +2 Str (permanent) + next Charge free. CW: +1 Str (this turn).',
     baseValue: 2, apCost: 1, maxPerPool: 1, tags: ['buff', 'strength'], launchPhase: 2, unlockLevel: 6,
-    quickPlayValue: 2, chargeCorrectValue: 2, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
   },
 
   // Buff — draw + lockout
@@ -488,7 +504,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'battle_trance', name: 'Battle Trance', type: 'buff',
     description: 'Draw 3. CC: no restriction. QP/CW: cannot play or Charge more cards this turn.',
     baseValue: 3, apCost: 1, maxPerPool: 1, tags: ['draw', 'buff'], launchPhase: 2, unlockLevel: 7,
-    quickPlayValue: 3, chargeCorrectValue: 3, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
 
   // Debuff — charge damage percent amplifier
@@ -496,7 +512,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'curse_of_doubt', name: 'Curse of Doubt', type: 'debuff',
     description: 'Enemy takes +30% damage from Charged attacks (2t). CC: +50% (3t). CW: +20% (1t).',
     baseValue: 30, apCost: 1, maxPerPool: 1, tags: ['debuff'], launchPhase: 2, unlockLevel: 6,
-    quickPlayValue: 30, chargeCorrectValue: 50, chargeWrongValue: 20,
+    quickPlayValue: 20, chargeCorrectValue: 50, chargeWrongValue: 15,
   },
 
   // Debuff — charge damage flat amplifier
@@ -504,7 +520,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'mark_of_ignorance', name: 'Mark of Ignorance', type: 'debuff',
     description: 'Enemy takes +3 flat damage from Charged attacks (2t). CC: +5 (3t). CW: +2 (1t).',
     baseValue: 3, apCost: 1, maxPerPool: 1, tags: ['debuff'], launchPhase: 2, unlockLevel: 8,
-    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 5, chargeWrongValue: 1,
   },
 
   // Debuff — 0-AP weakness
@@ -512,7 +528,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'corroding_touch', name: 'Corroding Touch', type: 'debuff',
     description: '0 AP. Apply Weakness. CC: more stacks + Vulnerable. Charge costs standard +1 AP surcharge.',
     baseValue: 2, apCost: 0, maxPerPool: 2, tags: ['weakness'], launchPhase: 2, unlockLevel: 7,
-    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
 
   // Wild — choice: damage or block
@@ -520,7 +536,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'phase_shift', name: 'Phase Shift', type: 'wild',
     description: 'QP/CW: CHOOSE 8 dmg OR 8 block. CC: 12 dmg AND 12 block.',
     baseValue: 8, apCost: 1, maxPerPool: 1, tags: ['choice'], launchPhase: 2, unlockLevel: 7,
-    quickPlayValue: 8, chargeCorrectValue: 12, chargeWrongValue: 4,
+    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 2,
   },
 
   // Wild — copy last card
@@ -536,7 +552,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'dark_knowledge', name: 'Dark Knowledge', type: 'wild',
     description: 'Deal 3 dmg per cursed fact. CC: 5/curse. CW: 1/curse.',
     baseValue: 3, apCost: 1, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 8,
-    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 1,
+    quickPlayValue: 2, chargeCorrectValue: 5, chargeWrongValue: 1,
   },
 
   // Wild — chain anchor (sets next chain start to 2)
@@ -552,7 +568,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'unstable_flux', name: 'Unstable Flux', type: 'wild',
     description: 'QP/CW: random effect (dmg/block/draw/debuff) at 1.0×/0.7×. CC: CHOOSE at 1.5×.',
     baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['random', 'choice'], launchPhase: 2, unlockLevel: 6,
-    quickPlayValue: 10, chargeCorrectValue: 10, chargeWrongValue: 10,
+    quickPlayValue: 5, chargeCorrectValue: 10, chargeWrongValue: 5,
   },
 
   // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────────
@@ -564,7 +580,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'smite', name: 'Smite', type: 'attack',
     description: 'CC: 10 + (3 × avg hand mastery) damage. QP: 10 dmg. CW: 7 dmg.',
     baseValue: 10, apCost: 2, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 9,
-    quickPlayValue: 10, chargeCorrectValue: 10, chargeWrongValue: 7,
+    quickPlayValue: 5, chargeCorrectValue: 10, chargeWrongValue: 4,
   },
 
   // Feedback Loop — high CC / total fizzle on CW
@@ -572,7 +588,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'feedback_loop', name: 'Feedback Loop', type: 'attack',
     description: 'QP: 5 dmg. CC: 20 dmg. CW: 0 (complete fizzle — no damage at all).',
     baseValue: 5, apCost: 1, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 10,
-    quickPlayValue: 5, chargeCorrectValue: 20, chargeWrongValue: 0,
+    quickPlayValue: 3, chargeCorrectValue: 20, chargeWrongValue: 0,
   },
 
   // Recall — scales with discard pile size
@@ -588,7 +604,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'hemorrhage', name: 'Hemorrhage', type: 'attack',
     description: 'QP: 4+(4×Bleed) dmg, consume all Bleed. CC: 4+(6×Bleed). CW: 4+(2×Bleed).',
     baseValue: 4, apCost: 2, maxPerPool: 1, tags: ['strike', 'bleed'], launchPhase: 2, unlockLevel: 7,
-    quickPlayValue: 4, chargeCorrectValue: 4, chargeWrongValue: 4,
+    quickPlayValue: 2, chargeCorrectValue: 4, chargeWrongValue: 2,
   },
 
   // Eruption — X-cost attack (consumes all remaining AP)
@@ -596,7 +612,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'eruption', name: 'Eruption', type: 'attack',
     description: 'X-cost: consumes all remaining AP. QP: 8 dmg/AP. CC: 12 dmg/AP (surcharge first). CW: 5 dmg/AP.',
     baseValue: 8, apCost: 0, maxPerPool: 1, tags: ['strike', 'x_cost'], launchPhase: 2, unlockLevel: 12,
-    quickPlayValue: 8, chargeCorrectValue: 12, chargeWrongValue: 5,
+    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 3,
   },
 
   // ── Shields (3) ──────────────────────────────────────────────────────────
@@ -606,7 +622,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'bulwark', name: 'Bulwark', type: 'shield',
     description: 'QP: 18 block. CC: 36 block then EXHAUST. CW: 10 block.',
     baseValue: 18, apCost: 3, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 9,
-    quickPlayValue: 18, chargeCorrectValue: 36, chargeWrongValue: 10,
+    quickPlayValue: 9, chargeCorrectValue: 36, chargeWrongValue: 5,
   },
 
   // Conversion — convert block to damage (1:1)
@@ -614,7 +630,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'conversion', name: 'Conversion', type: 'shield',
     description: 'Convert up to 10 block into damage (1:1). CC: up to 15. CW: up to 5. Block is lost.',
     baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 10,
-    quickPlayValue: 10, chargeCorrectValue: 15, chargeWrongValue: 5,
+    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
   },
 
   // Ironhide — block + Strength (temp QP, permanent CC)
@@ -622,7 +638,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'ironhide', name: 'Ironhide', type: 'shield',
     description: 'QP: 6 block + 1 Str (this turn). CC: 6 block + 1 Str (permanent). CW: 4 block.',
     baseValue: 6, apCost: 2, maxPerPool: 1, tags: ['block', 'strength'], launchPhase: 2, unlockLevel: 8,
-    quickPlayValue: 6, chargeCorrectValue: 6, chargeWrongValue: 4,
+    quickPlayValue: 3, chargeCorrectValue: 6, chargeWrongValue: 2,
   },
 
   // ── Buffs (3) ────────────────────────────────────────────────────────────
@@ -632,7 +648,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'frenzy', name: 'Frenzy', type: 'buff',
     description: 'QP: next 2 cards cost 0 AP. CC: next 3. CW: next 1. Eruption X drain still fires.',
     baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['buff', 'ap_free'], launchPhase: 2, unlockLevel: 10,
-    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
 
   // Mastery Surge — instant mastery level bump to 1 or 2 random hand cards
@@ -648,7 +664,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'war_drum', name: 'War Drum', type: 'buff',
     description: 'QP: all hand cards gain +2 base effect this turn. CC: +4. CW: +1.',
     baseValue: 2, apCost: 1, maxPerPool: 1, tags: ['buff'], launchPhase: 2, unlockLevel: 8,
-    quickPlayValue: 2, chargeCorrectValue: 4, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 4, chargeWrongValue: 1,
   },
 
   // ── Debuffs (1) ──────────────────────────────────────────────────────────
@@ -658,7 +674,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'entropy', name: 'Entropy', type: 'debuff',
     description: 'QP: 3 Burn + 2 Poison(2t). CC: 6 Burn + 4 Poison(3t). CW: 2 Burn + 1 Poison(1t).',
     baseValue: 3, apCost: 2, maxPerPool: 1, tags: ['burn', 'poison'], launchPhase: 2, unlockLevel: 9,
-    quickPlayValue: 3, chargeCorrectValue: 6, chargeWrongValue: 2,
+    quickPlayValue: 2, chargeCorrectValue: 6, chargeWrongValue: 1,
   },
 
   // ── Utility (6) ──────────────────────────────────────────────────────────
@@ -676,7 +692,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'reflex', name: 'Reflex', type: 'utility',
     description: 'QP: draw 2. CC: draw 3. CW: draw 1. PASSIVE: when discarded from hand, gain 3 block.',
     baseValue: 2, apCost: 1, maxPerPool: 2, tags: ['draw', 'passive'], launchPhase: 2, unlockLevel: 6,
-    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
 
   // Recollect — return exhausted card(s) to discard
@@ -692,7 +708,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'synapse', name: 'Synapse', type: 'utility',
     description: 'QP/CW: draw 2/1. CC: draw 2 + wildcard chain link (extends active chain by 1).',
     baseValue: 2, apCost: 1, maxPerPool: 1, tags: ['draw', 'chain'], launchPhase: 2, unlockLevel: 10,
-    quickPlayValue: 2, chargeCorrectValue: 2, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
   },
 
   // Siphon Knowledge — draw + brief answer preview overlay (FLAGSHIP)
@@ -700,7 +716,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'siphon_knowledge', name: 'Siphon Knowledge', type: 'utility',
     description: 'QP: draw 2, see answers 3s. CC: draw 3, 5s. CW: draw 1, 2s.',
     baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['draw'], launchPhase: 2, unlockLevel: 13,
-    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+    quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
 
   // Tutor — search draw pile for any card and add to hand
@@ -718,7 +734,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'sacrifice', name: 'Sacrifice', type: 'wild',
     description: 'Lose 5 HP. QP: draw 2 + gain 1 AP. CC: draw 3 + gain 2 AP. CW: draw 1 + gain 1 AP.',
     baseValue: 5, apCost: 0, maxPerPool: 1, tags: ['risk', 'ap_gain'], launchPhase: 2, unlockLevel: 8,
-    quickPlayValue: 5, chargeCorrectValue: 5, chargeWrongValue: 5,
+    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 3,
   },
 
   // Catalyst — double Poison (and on CC also Burn)
@@ -750,7 +766,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'knowledge_bomb', name: 'Knowledge Bomb', type: 'wild',
     description: 'QP/CW: 4 dmg flat. CC: 4 × correctChargesThisEncounter dmg (own CC counts).',
     baseValue: 4, apCost: 2, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 13,
-    quickPlayValue: 4, chargeCorrectValue: 4, chargeWrongValue: 4,
+    quickPlayValue: 2, chargeCorrectValue: 4, chargeWrongValue: 2,
   },
 
   // ── Inscription (1) ───────────────────────────────────────────────────────

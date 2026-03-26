@@ -46,8 +46,7 @@ export class CardGameManager {
       height: bootCanvas.height,
       backgroundColor: startAnimation ? 'rgba(0,0,0,0)' : '#0D1117',
       scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
+        mode: Phaser.Scale.RESIZE,
       },
       scene: startAnimation
         ? [BootAnimScene, BootScene, CombatScene, RewardRoomScene]

@@ -8,24 +8,18 @@
       "Glob(*)",
       "Grep(*)",
       "Agent(*)",
-      "mcp__playwright__browser_snapshot",
-      "mcp__playwright__browser_install",
-      "mcp__playwright__browser_navigate",
-      "mcp__playwright__browser_run_code",
+      "WebSearch",
       "mcp__svelte__*",
       "mcp__context7__*",
-      "mcp__playwright__browser_click",
-      "mcp__playwright__browser_evaluate",
-      "mcp__playwright__browser_close",
-      "WebSearch",
-      "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_console_messages",
-      "mcp__playwright__browser_resize"
+      "mcp__cloudflare__*",
+      "mcp__wikidata__*",
+      "mcp__claude-in-chrome__*"
     ]
   },
   "enabledMcpjsonServers": [
     "svelte",
-    "playwright",
-    "context7"
+    "context7",
+    "cloudflare",
+    "wikidata"
   ]
 }

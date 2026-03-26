@@ -623,24 +623,44 @@ Because the counter persists across encounters, Surge timing becomes unpredictab
 
 ## 4.5. Status Effects & Combat Buffs
 
-### Debuffs (applied to enemy or player)
+### Complete Status Effect Reference
 
-| Effect | Description |
-|--------|-------------|
-| **Weakness** | Reduces attack damage by 25% (2 turns base) |
-| **Vulnerable** | Increases incoming damage by 50% (1 turn base) |
-| **Poison** | Deals flat damage per turn (stacks additively) |
-| **Slow** | Skips enemy's next defend/buff action |
-| **Burn** | On-hit amplifier: next hit deals +N bonus damage (N = current stacks), then stacks halve (round down). Expires at 0. Does NOT trigger on Thorns/reflect damage. Stacks additively. Multi-hit cards trigger Burn once per hit. Self-Burn variant: player's own Burn triggers when hit by enemy attack (infrastructure for AR-211 Volatile Manuscript relic). |
-| **Bleed** | Persistent amplifier: each card-play attack against the target deals +N bonus damage (N = stacks). Does NOT trigger on Poison ticks, Thorns, or Burn. Stacks additively. Decays by 1 at end of each enemy turn. Does not deal independent damage. |
+| Effect | Type | Stacking | Per-Turn | Trigger | Decay | Notes |
+|--------|------|----------|----------|---------|-------|-------|
+| **Poison** | Debuff | Additive | Deals value as damage | Start of turn | −1 stack/turn after tick | Blocked by Immunity |
+| **Burn** | Debuff | Additive | None (trigger-based) | On card-play hit | Halves after each trigger | Deals current stacks as bonus damage on hit; multi-hit cards trigger once per hit |
+| **Bleed** | Debuff | Additive | None | Per card play | −1 stack/turn (end of enemy turn) | +1 flat damage per stack per card play (BLEED_BONUS_PER_STACK) |
+| **Weakness** | Debuff | Additive | None | Passive | Decrements turns | −25% damage per stack (min multiplier 0.25×) |
+| **Vulnerable** | Debuff | Boolean | None | Passive | Decrements turns | +50% incoming damage |
+| **Strength** | Buff | Additive | None | Passive | Decrements turns | +25% damage per stack |
+| **Regen** | Buff | Additive | Heals value | Start of turn | Decrements turns | — |
+| **Immunity** | Buff | Boolean | None | On poison tick | Consumed on use | Absorbs next poison tick (immunity expires after blocking) |
+| **Charge Dmg Amp %** | Debuff | Additive | None | On Charge | Decrements turns | +X% Charge damage (AR-207: Curse of Doubt) |
+| **Charge Dmg Amp Flat** | Debuff | Additive | None | On Charge | Decrements turns | +X flat Charge damage (AR-207: Mark of Ignorance) |
 
-### Buffs (applied to player)
+### Debuff Details (applied to enemy or player)
 
-| Effect | Description |
-|--------|-------------|
-| **Empower** | Next card deals +50% damage (Quick Play) / +75% (Charged Correct) |
-| **Block** | Absorbs incoming damage. Resets to 0 each turn (unless Fortify) |
-| **Strength** | Permanent flat damage bonus to all attacks (gained via relics or enemy debuffs) |
+**Weakness:** Reduces attack damage by 25% per stack (minimum multiplier 0.25×). Stacks additively. Duration decrements per turn.
+
+**Vulnerable:** Increases incoming damage by 50%. Boolean effect (present or not). Duration decrements per turn.
+
+**Poison:** Deals flat damage per turn equal to stacks. On each turn, poison damage is applied first, then all effects decrement. Blocked by Immunity (Immunity is consumed when it blocks one poison tick). Stacks additively — multiple poison applications add their values and take the maximum duration.
+
+**Burn:** On-hit amplifier triggered when the target is hit by a card-play attack. Deals bonus damage equal to current Burn stacks, then stacks halve (floor). Expires when stacks reach 0. Does NOT trigger on Thorns/reflect damage or passive damage sources. Stacks additively. Multi-hit cards trigger Burn once per hit.
+
+**Bleed:** Persistent amplifier. Each card-play attack against the target deals +1 bonus damage per stack (BLEED_BONUS_PER_STACK = 1 from balance.ts). Does NOT trigger on Poison ticks, Thorns, Burn, or passive damage. Decays by 1 at end of each enemy turn. Stacks additively.
+
+**Charge Damage Amplifiers (AR-207):** Two variants introduced with the Curse of Doubt and Mark of Ignorance relics.
+- **Charge Dmg Amp %:** Curse of Doubt. Percentage bonus to Charge damage (e.g., 30 = +30% multiplier). Stacks additively. Duration decrements per turn.
+- **Charge Dmg Amp Flat:** Mark of Ignorance. Flat bonus to Charge damage (e.g., 3 = +3 damage). Stacks additively. Duration decrements per turn.
+
+### Buff Details (applied to player)
+
+**Strength:** +25% damage per stack. Applied via relics, enemy debuffs, or card mechanics. Stacks additively. Duration decrements per turn.
+
+**Regen:** Heals the player by its value each turn (at the start of the turn, alongside other per-turn effects). Stacks additively. Duration decrements per turn.
+
+**Immunity:** Blocks the next poison tick, then expires (consumes on use). Boolean effect. Can be applied for multiple turns but only blocks one poison instance.
 
 ### Player Turn Buffs (from card mechanics, last 1 turn)
 
@@ -655,13 +675,13 @@ Because the counter persists across encounters, Surge timing becomes unpredictab
 
 ### Enemy-Specific Interactions (v2)
 
-- **Examiner:** Gains +3 Strength every turn you don't Charge at least 1 card
-- **Scholar:** Heals 5 HP when you answer correctly on a Charge
-- **Shadow Mimic:** Copies card effect against you when you answer wrong on a Charged card
-- **Bone Collector (AR-123):** Steals up to 5 block from the player when they miss a Charge. Enemy gains that stolen block as HP.
-- **Void Mite (AR-123):** Gains 8 block when the player answers wrong on a Charge. Only Charge facts you know — guessing makes it tankier.
-- **Core Harbinger (AR-123):** Quick Play deals only 30% damage. Charge for full effect. No longer immune — now resistant.
-- **Knowledge Siphon (AR-123):** Gains +2 base damage every time the player Charges correctly. Kill it fast or play defensively.
+- **The Peer Reviewer:** Gains +3 Strength every turn you don't Charge at least 1 card
+- **The Algorithm:** Heals 8 HP when you answer correctly on a Charge (boss phase)
+- **The Crib Sheet:** Copies card damage against you when you answer wrong on a Charged card
+- **The Citation Needed:** Steals up to 5 block from the player when they miss a Charge. Enemy gains that stolen block as HP.
+- **The Burnout:** Gains block when the player plays without Charging. Play with purpose — don't waste turns.
+- **The Blank Spot:** Weaken effects (opponent reduction). Play Strength and Regen to overcome it. Vulnerable to direct damage.
+- **The Spark Note:** Gains +2 base damage every time the player Charges correctly. Kill it fast or play defensively.
 
 ### Enemy Combat Traits (AR-99 Phase 3)
 
@@ -670,29 +690,20 @@ Enemies can have passive traits that modify how specific play styles interact wi
 #### chargeResistant
 Quick Play attacks deal **50% damage** to this enemy. Charged attacks (correct or wrong) deal full damage. Rewards players who invest AP to Charge their cards.
 
-Enemies with chargeResistant: iron_beetle, geode_beetle, crystal_golem, basalt_crawler, quartz_elemental, iron_core_golem, rock_hermit, tectonic_scarab, granite_hound, tome_mimic, pressure_djinn
+Enemies with chargeResistant: thesis_construct, staple_bug, crambot, watchdog, dropout, rote_memory, hidden_gem, thesis_djinn, sacred_text, institution, fake_news
 
 #### quickPlayDamageMultiplier (AR-123)
 Quick Play attacks deal only **X% damage** (e.g., 30%) to this enemy instead of zero. A softer version of `quickPlayImmune` — players can still chip with Quick Play, but Charging is dramatically more efficient.
 
-Enemies with quickPlayDamageMultiplier: core_harbinger (0.3)
+Enemies with quickPlayDamageMultiplier: singularity (0.3)
 
 #### chainVulnerable
 Chain attacks (Knowledge Chain multiplier > 1.0×) deal **+50% bonus damage** to this enemy. Rewards players who build and sustain chains by answering varied card types correctly.
 
-Enemies with chainVulnerable: cave_spider, root_strangler, stalactite_drake, ember_skeleton, fossil_raptor, lava_crawler, obsidian_shard, blind_grub
+Enemies with chainVulnerable: bookmark_vine, index_weaver, eraser_worm, thesis_dragon, writers_block, outdated_fact, rushing_student, ember_skeleton
 
 #### quickPlayPunish (mini-boss trait, implemented via onPlayerNoCharge)
 If the player makes no Charge plays during their turn, the enemy gains **+1 Strength** (permanent for the encounter). Applied to: crystal_guardian, stone_sentinel, iron_archon, obsidian_knight, glyph_warden.
-
-### Stacking Rules
-
-- Multiple Weakness applications extend duration, don't stack intensity
-- Poison stacks additively (3 poison + 3 poison = 6 poison per turn, each instance decays independently)
-- Block stacks additively within a turn
-- Empower consumes on first card played (not on Charge activation)
-- Burn stacks additively (6 Burn + 4 Burn = 10 Burn). Expires by halving to 0 on each hit, not by turn countdown.
-- Bleed stacks additively. Decays by 1 at end of each enemy turn. Does not trigger on passive damage sources.
 
 ---
 
@@ -908,7 +919,7 @@ Small (Act 1 fodder), Medium (Act 2 standard), Large (bosses). Size affects spri
 
 ### Enemy Roster Summary
 
-See §8 for complete enemy roster with quiz integration behaviors.
+See §8 for the complete 89-enemy roster with HP, intents, traits, and quiz integration behaviors.
 
 ---
 
@@ -1091,7 +1102,8 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 | Mechanic | AP | Quick Play | Charged Correct | Charged Wrong | Notes |
 |----------|----|------------|-----------------|---------------|-------|
 | **Mirror** | 1 | Copy last card effect (1.0×) | Copy at 1.3× power | Copy at 0.7× | Mirrors the chain too |
-| **Adapt** | 1 | Auto best effect at 1.0× | Auto best effect at 1.5× | Auto best effect at 0.7× | Enemy attacking → Block; debuffing → Cleanse; else → Attack. Card text: "Smart: ATK/DEF/Cleanse" |
+| **Adapt** | 1 | Shows CardPickerOverlay: choose attack form, shield form, or cleanse+draw form | Same forms at 1.5× power | Forms at 0.7× power | REWORKED: player picks form each play via overlay instead of auto-selecting |
+| **Transmute** | 1 | Shows CardPickerOverlay: choose 1 of 3 cards to become for this encounter | At M3: choose up to 2 of 3 (all at Transmute's mastery level) | Card reverts to Transmute at encounter end | REWORKED: self-transforms into player's choice (M1: 1 option at M1; M2: all options at M1; M3: 2 picks at Transmute mastery). Player can always skip. |
 
 ### Key Balance Principles (v2)
 
@@ -1101,6 +1113,17 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 4. **0-AP cards cost 1 AP to Charge.** Quicken, Foresight, Swap, Corroding Touch, and Sacrifice become "free quiz cards" — the quiz IS the AP cost.
 5. **Chain multipliers stack with Charge multipliers.** Planning chains + Charging = exponential payoff.
 6. **Unlock gating creates a progression curve.** Levels 0–3 (first ~5 runs) = basics. Levels 4–6 (runs 6–15) = the game's unique mechanics. Levels 7–10 (runs 15–30) = advanced archetypes. Levels 11–13 (runs 30–60) = chase unlocks.
+
+### Encounter-Scoped Transform System
+
+Cards can be temporarily transformed for the duration of a single encounter and then revert:
+
+- A transformed card has `isTransmuted: true` and an `originalCard` reference stored on it
+- At the end of every encounter, `revertTransmutedCards()` in `turnManager.ts` restores all such cards to their original state
+- **Transmute** uses this to self-transform into a player-chosen card type for one encounter
+- **Conjure** creates temporary cards added to hand (also `isTransmuted: true`) that are removed at encounter end
+- **Mimic** copies a discard card for the current turn only (per-turn variant of the same pattern)
+- Mastery level of the temporary form can differ from the source card's mastery level
 
 ### New Mechanic Summary by Type
 
@@ -1165,7 +1188,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 
 | # | Name | AP | QP | CC | Unlock | Notes |
 |---|------|----|----|-----|--------|-------|
-| U1 | Scavenge | 1 | Put 1 discard card on top of draw | Put 2 on top | 4 | STS Headbutt style |
+| U1 | Scavenge | 1 | Shows CardPickerOverlay with up to 3 discard cards; picked card added directly to hand | Same; M2+: retrieved card gets +1 temporary mastery | 4 | REWORKED: player picks from discard via overlay instead of auto-retrieving |
 | U2 | Sift | 1 | Look at top 3 draw, discard 1 | Look at top 5, discard 2 | 3 | Scry mechanic |
 | U3 | Siphon Knowledge | 2 | Draw 2 + see quiz answers 3s | Draw 3 + see answers 5s | 9 | FLAGSHIP. Study in combat |
 | U4 | Swap | 0 | Discard 1, draw 1 | Discard 1, draw 2 | 2 | 0-cost cycling |
@@ -1174,6 +1197,8 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 | U7 | Synapse | 1 | Draw 2 | Draw 2 + wildcard chain link | 10 | Chain wildcard |
 | U9 | Archive | 1 | Retain 1 hand card (doesn't discard) | Retain 2 cards | 5 | Combo setup |
 | U10 | Reflex | 1 | Draw 2 | Draw 3 | 6 | Passive: +3 block when discarded from hand |
+| U11 | Conjure | 1 | Shows CardPickerOverlay with 1 attack, 1 shield, 1 other card; selected card added to hand as temporary (removed at encounter end). Exhausts after use. | Same; M1: one option is T2a; M2: all T2a; M3: all T2b | 5 | NEW (Phase 2). Temporary card summon via picker. |
+| U12 | Forge | 1 | Shows CardPickerOverlay with up to 3 hand cards; selected card gains +1 mastery for this encounter. Discards normally (reusable). | M2: +2 mastery to 1 card; M3: +2 mastery to 2 cards | 7 | NEW (Phase 2). Temporary mastery boost via picker. |
 
 #### New Wild Mechanics (10)
 
@@ -1186,7 +1211,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 | W5 | Catalyst | 1 | Double all Poison on enemy | Double Poison + double Burn | 10 | STS classic |
 | W6 | Chain Anchor | 1 | Draw 1 | Set chain to 2 + draw 1 | 9 | Chain starter |
 | W7 | Sacrifice | 0 | Lose 5 HP, draw 2, gain 1 AP | Lose 5 HP, draw 3, gain 2 AP | 8 | STS Offering |
-| W8 | Mimic | 1 | Random discard card at 0.8× | Choose discard card at 1.0× | 11 | Discard pile toolbox |
+| W8 | Mimic | 1 | Shows CardPickerOverlay with 3 random discard cards; copies chosen at 0.8× (M0-1) or full power (M2-3) | Shows best 3 discard cards; copies at 1.0× (M2) or 1.2× (M3) | 11 | REWORKED: always shows picker overlay (M0-1: 3 random; M2-3: best 3). Discard pile toolbox. |
 | W9 | Unstable Flux | 1 | Random effect at 1.0× | CHOOSE effect at 1.5× | 6 | FLAGSHIP. Knowledge = control |
 | W10 | Aftershock | 1 | Repeat last QP card at 0.5× | Repeat last Charged card at 0.7× | 10 | Mode-aware copy |
 
@@ -1236,7 +1261,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0�
 | Shop | 0–1 | Early purchases, card removal |
 | Mini-Boss | 1 | Act gate, first relic choice (1 of 3) |
 
-Enemy pool: Cave Bat, Crystal Golem, Toxic Spore. Teaches basic Quick Play rhythm, introduces Charge as optional power boost.
+Enemy pool: Page Flutter, Thesis Construct, Mold Puff. Teaches basic Quick Play rhythm, introduces Charge as optional power boost.
 
 ### Act 2: The Depths (Floors 5–8)
 
@@ -1248,9 +1273,9 @@ Enemy pool: Cave Bat, Crystal Golem, Toxic Spore. Teaches basic Quick Play rhyth
 | Shop/Mystery | 0–1 | Deck refinement |
 | Boss | 1 | Act gate with Quiz Phase at 50% HP |
 
-Elite encounters force Charging via enemy special abilities (Fossil Guardian gains Strength if you don't Charge). This is where quiz skill becomes non-optional.
+Elite encounters force Charging via enemy special abilities (The Peer Reviewer gains Strength if you don't Charge). This is where quiz skill becomes non-optional.
 
-**Boss Quiz Phase (The Archivist at 50% HP):** Combat pauses. 5 rapid questions. Each correct = boss loses 10% remaining HP + player gains buff. Each wrong = boss gains +3 Strength. Then combat resumes.
+**Boss Quiz Phase (The Algorithm at 50% HP):** Combat pauses. 5 rapid questions. Each correct = boss loses 10% remaining HP + player gains buff. Each wrong = boss gains +3 Strength. Then combat resumes.
 
 ### Act 3: The Archive (Floors 9–12)
 
@@ -1262,7 +1287,7 @@ Elite encounters force Charging via enemy special abilities (Fossil Guardian gai
 | Shop | 0–1 | Final purchases |
 | Final Boss | 1 | Extended fight with 2 Quiz Phases |
 
-**Final Boss (The Curator):** Quiz phases at 66% and 33% HP. The 33% phase is RAPID FIRE — 8 questions, 4-second timers, each correct = 5 direct damage, each wrong = boss heals 5 HP. The climactic test of everything learned.
+**Final Boss (The Final Lesson):** Quiz phases at 66% and 33% HP. The 33% phase is RAPID FIRE — 8 questions, 4-second timers, each correct = 5 direct damage, each wrong = boss heals 5 HP. The climactic test of everything learned.
 
 ### Total Run Metrics
 
@@ -1507,92 +1532,440 @@ Run state saved after each completed node. On resume, player returns to the map 
 
 ---
 
-## 8. Enemy Design (12 Quiz-Integrated Enemies)
+## 8. Enemy Design (89 Quiz-Integrated Enemies)
 
 ### Design Philosophy
 
 Single enemies only (no multi-enemy encounters at launch). Variety comes from enemy BEHAVIOR, not COUNT. Each enemy archetype creates different pressure on the Charge system.
 
-### Act 1 Enemies (The Shallows)
+**Trait legend:** `chargeResistant` = Quick Play deals 50% damage; `chainVulnerable` = chain attacks deal +50% damage; `quickPlayImmune` = Quick Play deals 0 damage; `quickPlayDamageMultiplier` = Quick Play deals that fraction of normal damage; `chainMultiplierOverride` = forces all chain multipliers to a fixed value; `immuneDomain` = cards of that domain deal 0 damage.
 
-**Cave Bat** — Common
-HP: 19 | Damage: 8–11
-Standard enemy. Telegraphed attacks. Teaches basic Quick Play combat.
-*No special mechanics. Pure intro.*
+**Reactive hooks:** `onPlayerChargeWrong` = fires after a wrong Charge answer; `onPlayerChargeCorrect` = fires after a correct Charge; `onPlayerNoCharge` = fires at end of player turn if no Charge was made that turn; `onEnemyTurnStart` = fires at the start of each enemy turn.
 
-**Crystal Golem** — Common
-HP: 38 | Damage: 12 every 2 turns
-Defends on off-turns (gains block). Can charge for 25 dmg spike.
-*Teaches reading enemy intents. Enemy Charge turn = you should Charge too for burst.*
+---
 
-**Toxic Spore** — Common
-HP: 15 | Damage: 8 + poison
-Low HP, applies DoT. Teaches "kill fast or suffer."
-*Charging for burst damage is the correct response.*
+### Act 1 — Shallow Depths
 
-**Venomfang** — Mini-Boss (Act 1 gate)
-HP: 45 | Damage: 12, enrages after turn 4 (+5/turn)
-Must kill fast. Charging for burst is essential.
-*Teaches new players: Charging is necessary for tough enemies.*
+#### Common Enemies
 
-### Act 2 Enemies (The Depths)
+**Page Flutter** (`page_flutter`) — Common (standard, weight 10)
+HP: 5 | Intents: Attack 2 (wt 3), Attack 2 (wt 2), Buff +1 Strength 2t (wt 1), Defend 1 (wt 1)
+*Common cave predator. Fast and fragile. First thing you'll see down here.*
 
-**Shadow Mimic** — Common
-HP: 30 | Damage: 8
-When you answer wrong on a Charged card, Mimic copies that card's effect against you.
-*Creates genuine tension: only Charge facts you're confident about.*
+**Thesis Construct** (`thesis_construct`) — Common (standard, weight 10) | `chargeResistant`
+HP: 5 | Intents: Attack 2 (wt 2), Defend 2 (wt 2), Charge 4 bypass-cap (wt 1), Multi-attack 2×2 (wt 1)
+*Crystal-encrusted and slow. Blocks on off-turns, then charges a heavy spike.*
 
-**Fossil Guardian** — Elite
-HP: 55 | Damage: 10
-Gains +3 Strength every turn you don't Charge at least 1 card.
-*Forces quiz engagement without feeling forced. You CHOOSE when to Charge.*
+**Mold Puff** (`mold_puff`) — Common (standard, weight 10)
+HP: 7 | Intents: Attack 2 (wt 2), Debuff Poison 2/3t (wt 3), Debuff Weakness 1/2t (wt 1)
+*Low HP fungus. Stacks poison fast. Kill it before it stacks.*
 
-**Bone Collector** — Common (AR-123 redesign)
-HP: 30 | Damage: 10
-Steals up to 5 block from the player when they miss a Charge. That stolen block heals the enemy.
-*Block theft punishes unprotected guessing. Build shields before risking a quiz.*
+**Ink Slug** (`ink_slug`) — Common (standard, weight 10)
+HP: 7 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 3), Defend 1 (wt 1)
+*Slug-shaped and wet. Poison seeps from its touch.*
 
-**The Archivist** — Boss (Act 2)
-HP: 80 | Damage: 12
-Phase 1: Standard combat, medium damage.
-**Quiz Phase at 50% HP:** 5 rapid questions. Correct = boss loses 10% HP + player gets buff. Wrong = boss gains +3 Strength.
-Phase 2: Resume with accumulated buffs/debuffs.
+**Bookmark Vine** (`bookmark_vine`) — Common (uncommon, weight 5) | `chainVulnerable`
+HP: 4 | Intents: Multi-attack 2×3 (wt 3), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+*Roots that move on their own. Vines, poison, persistence.*
 
-### Act 3 Enemies (The Archive)
+**Staple Bug** (`staple_bug`) — Common (standard, weight 10) | `chargeResistant`
+HP: 7 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Multi-attack 2×2 (wt 1)
+*Heavy carapace. Prefers to block and wait.*
 
-**Void Mite** — Common (AR-123 redesign v2)
-HP: 40 | Damage: 6
-Gains 8 block when the player answers wrong on a Charge. Only Charge facts you know — guessing makes it tankier.
-*Rewards confident knowledge. Wrong answers make the fight harder without punishing correct ones.*
+**Margin Gremlin** (`margin_gremlin`) — Common (uncommon, weight 5)
+HP: 4 | Intents: Attack 2 (wt 3), Buff +1 Strength 2t (wt 2), Attack 2 (wt 1)
+*Pale limestone imp. Quick, aggressive, annoying.*
 
-**The Grade Curve (knowledge_siphon)** — Common (AR-123 new)
-HP: 45 | Damage: 8–10
-Gains +2 base damage every time the player Charges correctly (stacks indefinitely).
-*Kill fast or accept mounting risk. Tests when to Quick Play vs. Charge.*
+**Index Weaver** (`index_weaver`) — Common (standard, weight 10) | `chainVulnerable`
+HP: 4 | Intents: Multi-attack 2×3 (wt 3), Debuff Poison 2/3t (wt 2), Attack 2 (wt 1)
+*Venomous and fast. Multiple attacks per encounter.*
 
-**Mantle Dragon** — Elite
-HP: 70 | Damage: 14
-Negates all chain bonuses. Chains still form visually but give 1.0× multiplier.
-*Forces non-chain strategies. Tests build versatility.*
+**Overdue Golem** (`overdue_golem`) — Common (standard, weight 10)
+HP: 7 | Intents: Heal 6 (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+*Bog water and peat, barely held together. Heals from the muck.*
 
-**Core Harbinger** — Elite (AR-123 redesign)
-HP: 65 | Damage: 12
-Quick Play deals only 30% damage. Charge for full effect.
-*Softer wall than full immunity. Quick Play chips are viable but inefficient — Charging is the clear correct play.*
+**Pop Quiz** (`pop_quiz`) — Common (uncommon, weight 5)
+HP: 7 | Intents: Debuff Poison 2/3t (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+*Young fungus. Spores before strikes.*
 
-### Intent Variation (AR-123)
-Three Act 1–2 enemies gained a low-weight (1) 4th intent for rare surprise variation:
-- **crystal_golem**: Occasionally uses `Crystal barrage` (multi_attack ×2, 6 dmg) instead of its standard single-hit/defend/charge pattern
-- **cave_bat**: Occasionally uses `Wing cover` (defend 4) instead of always attacking
-- **shadow_mimic**: Occasionally uses `Shadow copies` (multi_attack ×2, 4 dmg) in addition to its existing 3-hit flurry
+**Eraser Worm** (`eraser_worm`) — Common (rare, weight 2) | `chainVulnerable`
+HP: 4 | Intents: Multi-attack 2×4 (wt 3), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+*No eyes, hunts by vibration. Never stops biting.*
 
-**The Curator** — Final Boss (Act 3)
-HP: 120 | Damage: 15
-Phase 1: Heavy attacks, telegraphed. Standard combat.
-**Quiz Phase 1 at 66%:** 5 questions from your weakest domain. Correct = 10% HP loss to boss.
-Phase 2: Adds debuffs, harder patterns.
-**Quiz Phase 2 at 33%:** RAPID FIRE — 8 questions, 4-second timers. Each correct = 5 direct damage. Each wrong = boss heals 5 HP.
-Final Phase: If boss survives, enraged. 3 turns of combat.
+#### Mini-Boss Enemies
+
+**The Plagiarist** (`plagiarist`) — Mini-Boss
+HP: 7 | Intents: Attack 2 (wt 3), Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 1)
+Reactive: `onEnemyTurnStart` — from turn 4 onward, gains +5 `enrageBonusDamage` every turn.
+*Gets deadlier each turn. Survive to turn 4 and it permanently gains +5 damage per turn after that.*
+
+**The Card Catalogue** (`card_catalogue`) — Mini-Boss
+HP: 8 | Intents: Heal 8 (wt 2), Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 1), Attack 2 (wt 1)
+*The source of all those roots. Old, vast, and furious.*
+
+**The Headmistress** (`headmistress`) — Mini-Boss
+HP: 8 | Intents: Defend 2 (wt 3), Charge 5 (wt 1), Buff +1 Strength 2t (wt 1), Attack 2 (wt 1)
+*A colony of iron beetles, stacked and coordinated. Doesn't yield.*
+
+**The Tutor** (`tutor`) — Mini-Boss
+HP: 6 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 6 (wt 1), Attack 2 (wt 1)
+*Swamp hag. Curses and weakens before she bothers to hit.*
+
+**The Study Group** (`study_group`) — Mini-Boss
+HP: 8 | Intents: Debuff Poison 3/3t (wt 2), Buff +2 Strength 2t (wt 1), Defend 2 (wt 1), Attack 2 (wt 1)
+*Crowned fungus. Rules its colony through poison.*
+
+#### Elite Enemies
+
+**The Librarian** (`librarian`) — Elite
+HP: 12 | Phase 1: Attack 2 (wt 2), Defend 2 (wt 1), Charge 5 (wt 1), Buff +2 Strength 2t (wt 1)
+Phase transition at 40% HP → Phase 2: Attack 3 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1)
+*Thick hide, slow temper. Wound it and it stops being slow.*
+
+#### Boss Enemies
+
+**The Final Exam** (`final_exam`) — Boss
+HP: 11 | Phase 1: Attack 2 (wt 2), Multi-attack 2×4 (wt 1), Defend 2 (wt 1), Debuff Weakness 1/2t (wt 1)
+Phase transition at 40% HP → Phase 2: Attack 4 (wt 2), Multi-attack 2×3 (wt 2), Defend 2 (wt 1), Charge 6 bypass-cap (wt 1)
+*An old mining rig, still running. Nobody told it to stop.*
+
+**The Burning Deadline** (`burning_deadline`) — Boss
+HP: 11 | Phase 1: Attack 2 (wt 1), Attack 2 (wt 1), Debuff Poison 3/3t (wt 1), Buff +2 Strength 3t (wt 1)
+Phase transition at 40% HP → Phase 2: Attack 4 (wt 2), Multi-attack 2×4 (wt 1), Debuff Poison 4/3t (wt 1)
+*Molten rock, given shape. The heat alone is a threat.*
+
+---
+
+### Act 2 — Deep Caverns & The Abyss
+
+Act 2 spans two regions. Deep Caverns enemies appear in early Act 2; The Abyss enemies appear in late Act 2. Both pools are drawn from in the same act.
+
+#### Common Enemies — Deep Caverns
+
+**The Crib Sheet** (`crib_sheet`) — Common (standard, weight 10)
+HP: 4 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1)
+Reactive: `onPlayerChargeWrong` — mirrors card's base damage back to player (`_mirrorDamage`).
+*Mirrors your failures. Miss a Charge and it hits you back for the same damage.*
+
+**The Citation Needed** (`citation_needed`) — Common (standard, weight 10)
+HP: 7 | Intents: Attack 2 (wt 3), Heal 5 (wt 2), Defend 1 (wt 1), Debuff Weakness 1/2t (wt 1)
+Reactive: `onPlayerChargeWrong` — steals up to 5 block from player; enemy heals for stolen amount.
+*Steals your block when you miss a Charge. Build defenses before risking a quiz.*
+
+**The Grade Curve** (`grade_curve`) — Common (standard, weight 8)
+HP: 7 | Intents: Attack 2 (wt 3), Defend 1 (wt 2), Attack 2 (wt 1)
+Reactive: `onPlayerChargeCorrect` — gains +2 `enrageBonusDamage` per correct Charge.
+*Gains +2 Strength every time you Charge correctly. Kill fast or play safe.*
+
+**The Crambot** (`crambot`) — Common (standard, weight 10) | `chargeResistant`
+HP: 5 | Intents: Defend 1 (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+*Basalt-skinned reptile. Attacks and blocks in equal measure.*
+
+**The All-Nighter** (`all_nighter`) — Common (standard, weight 10)
+HP: 5 | Intents: Debuff Weakness 1/2t (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+*Salt crystals, loosely haunting. Saps strength on contact.*
+
+**The Spark Note** (`spark_note`) — Common (standard, weight 10)
+HP: 5 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+*Carved from burning coal, still burning. Leaves poison behind.*
+
+**The Watchdog** (`watchdog`) — Common (uncommon, weight 5) | `chargeResistant`
+HP: 4 | Intents: Multi-attack 2×3 (wt 3), Attack 2 (wt 1), Attack 2 (wt 1)
+*Stone wolf. Hunts in the dark, bites multiple times.*
+
+**The Red Herring** (`red_herring`) — Common (standard, weight 10)
+HP: 7 | Intents: Debuff Poison 2/3t (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+*Born from a vent. Toxic by nature, multiple debuffs.*
+
+**The Anxiety Tick** (`anxiety_tick`) — Common (standard, weight 10)
+HP: 7 | Intents: Attack 2 (wt 2), Buff +1 Strength 2t (wt 2), Heal 4 (wt 1)
+*Feeds on magma. The heat heals it.*
+
+**The Trick Question** (`trick_question`) — Common (uncommon, weight 5)
+HP: 5 | Intents: Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+*Adapted to total darkness. Leaves you vulnerable.*
+
+**The Dropout** (`dropout`) — Common (standard, weight 10) | `chargeResistant`
+HP: 7 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+*Crustacean in a geode shell. Stubborn and difficult to crack.*
+
+**The Brain Fog** (`brain_fog`) — Common (uncommon, weight 5)
+HP: 7 | Intents: Debuff Poison 2/3t (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+*Gas that haunts. Poisons and weakens on contact.*
+
+**The Thesis Dragon** (`thesis_dragon`) — Common (rare, weight 2) | `chainVulnerable`
+HP: 4 | Intents: Multi-attack 2×3 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+*Hangs from the ceiling and drops on you. Fast attacker.*
+
+**The Burnout** (`burnout`) — Common (standard, weight 10)
+HP: 5 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+*Moth on fire. Leaves scorch-poison on contact.*
+
+#### Common Enemies — The Abyss
+
+**The Writer's Block** (`writers_block`) — Common (standard, weight 10) | `chainVulnerable`
+HP: 4 | Intents: Multi-attack 2×4 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+*Obsidian shard, floating and sharp. Attacks in volleys.*
+
+**The Information Overload** (`information_overload`) — Common (standard, weight 10)
+HP: 5 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+*Lava that moves with purpose. Leaves burn-poison.*
+
+**The Rote Memory** (`rote_memory`) — Common (standard, weight 10) | `chargeResistant`
+HP: 7 | Intents: Defend 2 (wt 2), Attack 2 (wt 2), Buff +1 Strength 2t (wt 1)
+*Pure crystal, animated. Blocks and attacks with equal comfort.*
+
+**The Outdated Fact** (`outdated_fact`) — Common (uncommon, weight 5) | `chainVulnerable`
+HP: 4 | Intents: Multi-attack 2×3 (wt 3), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+*Dinosaur skeleton, still furious. Fast and relentless.*
+
+**The Hidden Gem** (`hidden_gem`) — Common (standard, weight 10) | `chargeResistant`
+HP: 7 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+*Crystalline shell. Nearly impossible to reach through all that block.*
+
+**The Rushing Student** (`rushing_student`) — Common (standard, weight 10) | `chainVulnerable`
+HP: 5 | Intents: Debuff Poison 2/3t (wt 2), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
+*Magma centipede. The trail it leaves burns.*
+
+**The Echo Chamber** (`echo_chamber`) — Common (uncommon, weight 5)
+HP: 4 | Intents: Attack 2 (wt 3), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
+*Crystal wings. Each swoop is a blade.*
+
+**The Blank Spot** (`blank_spot`) — Common (standard, weight 10)
+HP: 6 | Intents: Attack 2 (wt 3), Defend 2 (wt 2), Heal 5 (wt 1)
+Reactive: `onPlayerChargeWrong` — gains +8 block.
+*Gains 8 block when you answer wrong on a Charge. Only Charge facts you know.*
+
+**The Burnout Phantom** (`burnout_phantom`) — Common (standard, weight 10)
+HP: 5 | Intents: Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+*Ash from old eruptions. Leaves you open to damage.*
+
+**Prismatic Jelly** (`prismatic_jelly`) — Common (uncommon, weight 5)
+HP: 7 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+*Iridescent and toxic. Stacks weakness and vulnerability.*
+
+**Ember Skeleton** (`ember_skeleton`) — Common (rare, weight 2) | `chainVulnerable`
+HP: 6 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Buff +1 Strength 2t (wt 1)
+*Burning skeleton. Gets stronger while it burns.*
+
+#### Mini-Boss Enemies
+
+**The Tenure Guardian** (`tenure_guardian`) — Mini-Boss
+HP: 8 | Intents: Attack 2 (wt 3), Defend 1 (wt 3), Attack 2 (wt 1)
+Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
+*Crystal-armored golem. Blocks accumulate each turn.*
+
+**The Proctor** (`proctor`) — Mini-Boss
+HP: 9 | Intents: Attack 2 (wt 2), Defend 2 (wt 3), Buff +1 Strength 3t (wt 1), Charge 5 (wt 1)
+Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
+*Old stone warrior. Very slow, very durable. A war of attrition.*
+
+**The Harsh Grader** (`harsh_grader`) — Mini-Boss
+HP: 8 | Intents: Debuff Poison 3/3t (wt 2), Debuff Weakness 1/2t (wt 1), Multi-attack 2×3 (wt 1), Attack 2 (wt 1)
+*Crystallized sulfur, given authority. Stacks poison fast.*
+
+**The Textbook** (`textbook`) — Mini-Boss
+HP: 8 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
+*Solid granite, enormous. Damage barely registers.*
+
+**The Imposter Syndrome** (`imposter_syndrome`) — Mini-Boss
+HP: 8 | Intents: Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1), Attack 2 (wt 1)
+*Deep cave predator. Patient, then very fast.*
+
+**The Pressure Cooker** (`pressure_cooker`) — Mini-Boss
+HP: 8 | Intents: Attack 2 (wt 2), Debuff Poison 3/2t (wt 2), Defend 2 (wt 1), Attack 2 (wt 1)
+*Lava-formed lizard. Bites and burns.*
+
+**The Grade Dragon** (`grade_dragon`) — Mini-Boss
+HP: 8 | Intents: Attack 2 (wt 3), Attack 2 (wt 2), Debuff Poison 2/2t (wt 1)
+*Small and vicious. Hits hard, breaks easy.*
+
+**The Comparison Trap** (`comparison_trap`) — Mini-Boss
+HP: 6 | Intents: Attack 2 (wt 3), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1)
+*Copies your last card type. Nastier than The Crib Sheet.*
+
+**The Perfectionist** (`perfectionist`) — Mini-Boss
+HP: 9 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 2)
+Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
+*Obsidian glass forged into armor. Blocks well, then cuts.*
+
+**The Hydra Problem** (`hydra_problem`) — Mini-Boss
+HP: 8 | Intents: Multi-attack 2×3 (wt 2), Defend 2 (wt 1), Heal 6 (wt 1), Attack 2 (wt 1)
+*Three crystal heads. At least one is always healing.*
+
+**The Ivory Tower** (`ivory_tower`) — Mini-Boss
+HP: 8 | Intents: Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2)
+*Ancient bones, reanimated and airborne. Drops fast.*
+
+**The Helicopter Parent** (`helicopter_parent`) — Mini-Boss
+HP: 9 | Intents: Multi-attack 2×3 (wt 2), Debuff Poison 3/3t (wt 2), Defend 2 (wt 1), Attack 2 (wt 1)
+*Lava spider, large. Floods the field with spawn and poison.*
+
+#### Elite Enemies
+
+**The Deadline Serpent** (`deadline_serpent`) — Elite
+HP: 7 | Phase 1: Attack 2 (wt 2), Debuff Poison 3/3t (wt 2), Multi-attack 2×2 (wt 1), Attack 2 (wt 1)
+Phase transition at 50% HP → Phase 2: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1)
+*Lava-formed cobra. Deadly at range and up close.*
+
+**The Standardized Test** (`standardized_test`) — Elite
+HP: 12 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Buff +2 Strength 2t (wt 1), Attack 2 (wt 1)
+*Basalt column, upright and hostile. Hits slowly, hits hard.*
+
+**The Emeritus** (`emeritus`) — Elite
+HP: 12 | Phase 1: Defend 2 (wt 2), Heal 7 (wt 1), Attack 2 (wt 1), Buff +2 Strength 2t (wt 1)
+Phase transition at 50% HP → Phase 2: Multi-attack 2×3 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
+*Crystal-built, hard to kill. Becomes far more dangerous at half HP.*
+
+**The Student Debt** (`student_debt`) — Elite
+HP: 7 | Phase 1: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1), Attack 2 (wt 1)
+Phase transition at 40% HP → Phase 2: Attack 3 (wt 2), Multi-attack 2×4 (wt 2), Attack 2 (wt 1)
+*Deep-abyss serpent. Wound it and it stops caring about defense.*
+
+**The Publish-or-Perish** (`publish_or_perish`) — Elite | `immuneDomain: natural_sciences`
+HP: 12 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 8 (wt 1), Attack 2 (wt 1)
+*Crystal lich. Natural science cards do nothing to it. Debuffs everything.*
+
+#### Boss Enemies
+
+**The Algorithm** (`algorithm`) — Boss
+HP: 12 | Phase 1: Attack 2 (wt 2), Defend 2 (wt 1), Debuff Vulnerable 1/2t (wt 1), Heal 8 (wt 1)
+Phase transition at 50% HP → Phase 2: Attack 2 (wt 2), Multi-attack 2×4 (wt 1), Debuff Weakness 2/2t (wt 1), Heal 10 (wt 1)
+Quiz Phase at 50% HP: 5 questions.
+*Old archive AI. Still running, still territorial. Triggers a quiz phase at half health.*
+
+**The Curriculum** (`curriculum`) — Boss
+HP: 14 | Intents: Attack 2 (wt 4), Defend 2 (wt 3), Multi-attack 2×3 (wt 2), Heal 8 (wt 1)
+*Living crystal. Status effects don't stick. It just keeps coming.*
+
+**The Group Project** (`group_project`) — Boss
+HP: 16 | Phase 1: Attack 2 (wt 35), Multi-attack 2×3 (wt 30), Debuff Poison 3/3t (wt 20), Attack 2 (wt 15)
+Phase transition at 50% HP → Phase 2: Multi-attack 2×2 (wt 3), Multi-attack 2×4 (wt 2), Debuff Poison 4/3t (wt 2), Attack 3 (wt 1)
+*Shadow serpent with multiple heads. At half HP, a second head wakes up.*
+
+**The Rabbit Hole** (`rabbit_hole`) — Boss
+HP: 19 | Intents: Attack 3 (wt 4), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 15), Debuff Weakness 1/2t (wt 15), Defend 2 (wt 1)
+*Something from between spaces. Its attacks hit your hand as much as your health.*
+
+---
+
+### Act 3 — The Archive
+
+#### Common Enemies
+
+**The Thesis Djinn** (`thesis_djinn`) — Common (standard, weight 10) | `chargeResistant`
+HP: 6 | Intents: Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+*Compressed air elemental. The pressure alone opens wounds.*
+
+**The Gut Feeling** (`gut_feeling`) — Common (standard, weight 10)
+HP: 6 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
+*Iron-bodied worm from the core. Bites repeatedly.*
+
+**The Bright Idea** (`bright_idea`) — Common (standard, weight 10)
+HP: 6 | Intents: Debuff Weakness 1/2t (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+*Bioluminescent jellyfish. Its sting saps strength.*
+
+**The Sacred Text** (`sacred_text`) — Common (standard, weight 10) | `chargeResistant`
+HP: 7 | Intents: Defend 2 (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+*Plated beetle, massive. Difficult to damage through that shell.*
+
+**The Devil's Advocate** (`devils_advocate`) — Common (uncommon, weight 5)
+HP: 6 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Buff +1 Strength 2t (wt 1)
+*Mantle-born demon. Burns, poisons, and gets stronger doing it.*
+
+**The Institution** (`institution`) — Common (standard, weight 10) | `chargeResistant`
+HP: 8 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Charge 4 (wt 1)
+*Pure iron golem. Dense enough that most damage just doesn't register.*
+
+**The Rosetta Slab** (`rosetta_slab`) — Common (uncommon, weight 5)
+HP: 6 | Intents: Defend 2 (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+*Inscribed stone tablet, floating. Curses weaken on contact.*
+
+**The Moth of Enlightenment** (`moth_of_enlightenment`) — Common (standard, weight 10)
+HP: 5 | Intents: Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+*Eats books and scrolls. Leaves you vulnerable.*
+
+**The Hyperlink** (`hyperlink`) — Common (uncommon, weight 5)
+HP: 5 | Intents: Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 2), Attack 2 (wt 1)
+*Weaves runic webs. The threads poison.*
+
+**The Unknown Unknown** (`unknown_unknown`) — Common (rare, weight 2)
+HP: 6 | Intents: Attack 2 (wt 2), Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2)
+*Tendril from somewhere else. Weakens and exposes in equal measure.*
+
+**The Fake News** (`fake_news`) — Common (standard, weight 10) | `chargeResistant`
+HP: 6 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Defend 1 (wt 1)
+*Shaped like a tome, moves like a predator.*
+
+#### Mini-Boss Enemies
+
+**The First Question** (`first_question`) — Mini-Boss
+HP: 9 | Phase 1: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
+Phase transition at 50% HP → Phase 2: Attack 2 (wt 2), Multi-attack 2×4 (wt 2)
+*Old enough to remember the world's formation. Wound it and you'll know.*
+
+**The Dean** (`dean`) — Mini-Boss
+HP: 9 | Intents: Attack 2 (wt 2), Defend 2 (wt 2), Buff +2 Strength 2t (wt 1), Debuff Vulnerable 1/2t (wt 1)
+Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
+*Iron-forged and magnetic. Fights without favoring offense or defense.*
+
+**The Dissertation** (`dissertation`) — Mini-Boss
+HP: 11 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 2)
+*Ultra-dense golem under extreme pressure. Barely flinches.*
+
+**The Eureka** (`eureka`) — Mini-Boss
+HP: 9 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 7 (wt 1), Attack 2 (wt 1)
+*Bioluminescent butterfly, vast and old. Curses you while healing itself.*
+
+**The Paradigm Shift** (`paradigm_shift`) — Mini-Boss
+HP: 11 | Intents: Attack 2 (wt 2), Charge 5 (wt 1), Multi-attack 2×3 (wt 2)
+*A living earthquake. Stone given will and direction.*
+
+**The Ancient Tongue** (`ancient_tongue`) — Mini-Boss
+HP: 9 | Intents: Defend 2 (wt 2), Heal 7 (wt 1), Attack 2 (wt 1), Buff +1 Strength 3t (wt 1)
+Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
+*Built from protective runes. Hard to chip down, keeps healing.*
+
+**The Lost Thesis** (`lost_thesis`) — Mini-Boss
+HP: 8 | Intents: Debuff Weakness 1/2t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1), Heal 6 (wt 1)
+*The ghost of a librarian. Still cataloguing. Still territorial.*
+
+#### Elite Enemies
+
+**The Dunning-Kruger** (`dunning_kruger`) — Elite | `chainMultiplierOverride: 1.0`
+HP: 9 | Intents: Attack 2 (wt 3), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1)
+*Chain multipliers don't work while this is alive. Knowledge Chains flatline at 1.0×.*
+
+**The Singularity** (`singularity`) — Elite | `quickPlayDamageMultiplier: 0.3`
+HP: 9 | Intents: Attack 2 (wt 3), Buff +2 Strength 3t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1)
+*Resistant to Quick Play — only deals 30% damage. Charge for full effect.*
+
+#### Boss Enemies
+
+**The Omnibus** (`omnibus`) — Boss
+HP: 17 | Intents: Attack 2 (wt 35), Attack 3 (wt 25), Defend 2 (wt 20), Buff +2 Strength 3t (wt 20), Charge 5 (wt 1)
+*Built from compressed books. Wrong answers feed it power.*
+
+**The Final Lesson** (`final_lesson`) — Boss
+HP: 17 | Phase 1: Attack 2 (wt 3), Multi-attack 2×4 (wt 2), Debuff Weakness 2/2t (wt 2), Buff +2 Strength 3t (wt 2), Heal 12 (wt 1)
+Phase transition at 33% HP → Phase 2: Attack 2 (wt 3), Multi-attack 2×4 (wt 2), Debuff Vulnerable 2/3t (wt 2), Heal 10 (wt 1), Buff +3 Strength 5t (wt 1)
+Quiz Phase 1 at 66% HP: 5 questions. Quiz Phase 2 at 33% HP: 8 questions, 4-second timers, Rapid Fire.
+*Final guardian. Quiz phases at 66% and 33% HP. The second one is Rapid Fire.*
+
+---
+
+### Deprecated Enemies (kept for save compatibility, not in active pools)
+
+**The Bookwyrm** (`bookwyrm`) — *Deprecated Elite*
+HP: 7 | Phase 1: Attack 2 (wt 2), Attack 2 (wt 1), Defend 1 (wt 1) | Phase transition at 50%
+*Pre-v2 roster. Not spawned in current runs.*
+
+**The Peer Reviewer** (`peer_reviewer`) — *Deprecated Elite*
+HP: 7 | Intents: Attack 2 (wt 3), Buff +1 Strength 2t (wt 2), Attack 2 (wt 1)
+Reactive: `onPlayerNoCharge` — gained +3 permanent Strength per no-Charge turn.
+*Pre-v2 roster. Not spawned in current runs.*
+
+---
 
 ### Boss Quiz Phase UX
 
@@ -1650,8 +2023,16 @@ See §3 for full detail. Summary for quick reference:
 
 - Charge AP cost is flat +1 regardless of floor depth
 - Charge multipliers do NOT scale with floor depth — only with fact tier (FSRS-driven)
-- Enemy damage scales with floor depth (+5% per floor above floor 6)
+- **Enemy HP scales with floor depth:** `1.0 + (floor - 1) × 0.10` (10% per floor above floor 1). Multiplied by global `ENEMY_BASE_HP_MULTIPLIER = 2.0`, making floor 1 commons ~10 HP each
+- **Enemy HP Variance by Tier:** Commons are classified into 3 HP tiers based on their intent pools:
+  - **Glass** (baseHP 4): Aggressive enemies with mostly attack intents — kill fast or take big hits. Floor 1 effective HP: 8
+  - **Standard** (baseHP 5): Balanced intent mix — average encounters. Floor 1 effective HP: 10
+  - **Tanky** (baseHP 7): Defensive enemies with defend/buff/heal intents — war of attrition. Floor 1 effective HP: 14
+  - Elites also have variance: Glass (7), Standard (9), Tanky (12)
+  - `difficultyVariance` (0.85–1.15× random) applies to both commons AND elites. Mini-bosses and bosses have natural variance from varied `baseHP` values.
+- **Enemy damage scales with floor depth** (+5% per floor above floor 6). Further modulated by Canary system (see below)
 - Timer shortens with floor depth (12s → 9s → 7s → 5s → 4s)
+- **Early mini-boss HP:** EARLY_MINI_BOSS_HP_MULTIPLIER = 1.0 (no reduction; floor 1–3 mini-bosses use standard HP scaling)
 
 ### Canary System (Invisible Adaptive Difficulty)
 
@@ -2082,7 +2463,7 @@ The exact order of damage calculation for all attack cards. **The combo multipli
 ### Core Rules
 
 - **5 active relic slots** per run. Expandable to 6 via Scholar's Gambit (rare, cursed).
-- **91 total relics** (41 original + 36 expansion + 8 tradeoff + 6 conditional; 5 original stat-sticks reworked into tradeoffs). Echo Chamber relic removed; not counted.
+- **90 total relics** — 40 starter relics (available to all players, unlocked by level) + 50 unlockable relics (purchased in the Relic Archive via level gates).
 - **No starter relic selection** — all players start the run with no relics. First relic earned at Act 1 mini-boss.
 
 ### Acquisition
@@ -2157,269 +2538,444 @@ The archetype selection screen exists in code but is currently disabled. All run
 | Burst Master | Save AP, one massive turn | Capacitor, Overflow Gem, Double Down | Defend → Defend → NUKE |
 | Knowledge Engine | Quiz mastery = combat mastery | Scholar's Crown, Memory Nexus, Insight Prism | Charge everything, learn everything |
 
-### Complete Relic Catalogue (42 Relics)
+### Complete Relic Catalogue (90 Relics — 40 Starter + 50 Unlockable)
 
-#### Chain Relics (Build-Around)
+Entries are grouped by archetype category. Each entry shows: **Name** — Rarity (Starter or Unlockable, unlock level). Curse/tradeoff note where applicable.
 
-**Chain Reactor** — Rare
-Knowledge Chains of 2+ deal 6 splash damage per chain link.
-*Synergy: Tag Magnet + Swift Boots + any multi-hit cards*
+---
 
-**Resonance Crystal** — Uncommon
+#### Chain Relics
+
+**Tag Magnet** — Uncommon (Starter)
+When drawing cards, +30% chance to draw cards sharing a chain type with your last played card.
+*Makes chains more consistent. Excellent with Resonance Crystal and Chain Reactor.*
+
+**Resonance Crystal** — Uncommon (Starter)
 Each chain link beyond 2 draws +1 card at end of turn.
-*Long chains refill your hand, enabling longer chains next turn. Snowball engine.*
+*Long chains refill your hand and enable longer chains next turn. Core chain snowball engine.*
 
-**Tag Magnet** — Uncommon
-When drawing cards, +30% chance to draw cards sharing a `chainType` with your last played card.
-*Makes chains more consistent.*
+**Chain Link Charm** — Uncommon (Starter, Level 1)
+Earn +5 gold per chain link in a completed Knowledge Chain.
+*Chains pay for themselves. Pairs well with chain-focused builds.*
 
-#### Speed Relics (Build-Around)
+**Chain Reactor** — Rare (Unlockable, Level 1)
+Knowledge Chains of 2+ deal 6 splash damage per chain link.
+*6 damage × chain length on every chain. Scales explosively. Core chain damage relic.*
 
-**Quicksilver Quill** — Rare
-Charged quizzes answered in under 2 seconds get an additional 1.5× multiplier.
-*3.0× × 1.5× = 4.5× for fast correct answers.*
+**Chain Forge** — Rare (Unlockable, Level 8)
+Once per encounter: a card that would break a chain continues it instead, gains current multiplier, and the chain count increments.
+*One free chain extension per encounter. Prevents accidental chain breaks at the worst moment.*
 
-**Adrenaline Shard** — Uncommon
-Correct Charged answers in under 3 seconds refund 1 AP (once per turn).
-*Fast answerers effectively get 4 AP per turn.*
+**Chromatic Chain** — Rare (Unlockable, Level 11)
+Completing a 3+ chain primes the next chain to start at length 2. Carries across turns. Once per encounter.
+*Sustained chain pressure. Every long chain gives the next chain a head start.*
 
-**Time Warp** — Rare
-On Knowledge Surge turns, quiz timer is halved but Charge multiplier increases to 5.0× and gain +1 AP.
-*High-risk, high-reward Surge turns.*
-
-#### Glass Cannon Relics (Build-Around)
-
-**Volatile Core** — Uncommon (Cursed)
-All attacks deal +50% damage. Wrong Charged answers deal 3 damage to you AND the enemy.
-*Even failures deal enemy damage. Pure aggression.*
-
-**Reckless Resolve** — Uncommon
-Below 40% HP: all attacks +50% damage. Above 80% HP: attacks −15% damage.
-*Forces edge-of-death play.*
-
-**Crit Lens** — Rare
-Charged correct answers have 25% chance to DOUBLE the final damage (after all multipliers).
-*The occasional CRITICAL hit.*
-
-#### Defense Relics (Build-Around)
-
-**Aegis Stone** — Uncommon
-Block from shield cards carries between turns (max 15). At 15 block, gain Thorns 2.
-*Completely changes shield card evaluation.*
-Constant: `RELIC_AEGIS_STONE_MAX_CARRY = 15`
-
-**Regeneration Orb** — Uncommon
-Heal 3 HP at end of each turn where you played 2+ shield cards.
-
-**Thorn Crown** — Rare
-When you have 15+ block at start of turn, reflect 5 damage per enemy attack.
-
-**Bastion's Will** — Rare
-Charged shield cards gain +75% block. Quick Play shield cards gain +25% block.
-*Makes Charging defensive cards worthwhile.*
-
-#### Poison Relics (Build-Around)
-
-**Plague Flask** — Uncommon
-All poison ticks deal +2 extra damage. Poison lasts 1 extra turn.
-*Hex goes from 9 total to 20 total damage.*
-
-**Festering Wound** — Rare
-When enemy has 3+ poison stacks, all attacks deal +40% damage.
-
-**Toxic Bloom** — Uncommon
-When enemy dies from poison, spread 3 poison to all other enemies (reserved for future multi-enemy encounters).
-
-#### Burst Relics (Build-Around)
-
-**Capacitor** — Rare
-Unused AP at end of turn stores as Charge (max 3). Next turn, gain stored Charge as bonus AP.
-*Enables "save up" turns.*
-Constant: `RELIC_CAPACITOR_MAX_STORED_AP = 3`
-
-**Overflow Gem** — Uncommon
-When you spend 4+ AP in a single turn, the last card played gets +75% effect.
-
-**Double Down** — Rare
-Once per encounter: Charge same card twice. Answer 2 questions. Both correct: 5× power. One correct: 1.5×. Both wrong: 0.3×.
-*Ultimate high-stakes play.*
-
-#### Knowledge Relics (Build-Around)
-
-**Scholar's Crown** — Rare
-Mastery 0–1 Charged cards get +10% power. Mastery 2–3 get +40%. Mastery 4–5 get +75%. (References card slot mastery, not FSRS tier.)
-
-**Memory Nexus** — Uncommon
-When you correctly Charge 3 cards in one encounter (cumulative), draw 2 extra next turn.
-
-**Insight Prism** — Uncommon
-Wrong Charged answers reveal correct answer AND next appearance of that fact auto-succeeds.
-*Turns failures into future guaranteed wins.*
-
-**Domain Mastery Sigil** — Rare (ID: `domain_mastery_sigil`, fixed from old ID `domain_mastery`)
-Since all runs use a single curated deck from one domain, this relic always activates. All cards in the run get +30% base damage (even Quick Play). Effectively a permanent flat damage boost on any curated deck run.
-
-#### Economy Relics (Utility)
-
-**Gold Magnet** — Common | +30% gold from all sources.
-
-**Merchant's Favor** — Common | Shops offer 1 additional card and 1 additional relic choice.
-
-**Lucky Coin** — Common | Start each encounter with 1 random buff (Empower, +2 block, +1 AP, or Draw 1).
-
-**Scavenger's Eye** — Common | See 4 card choices after combat instead of 3.
-
-#### Stat Stick Relics (Reworked as Tradeoffs)
-
-**Whetstone** — Common | All attack cards +3 base damage / all shield cards −1 base block.
-*Offence over defence. A real choice now.*
-
-**Iron Shield** — Common | Start each turn with 3 block / draw 1 fewer card on turn 1 of each encounter.
-*Reliable early defence at a tempo cost.*
-
-**Thick Skin** — Common | First debuff each encounter is immune / take +2 damage from all sources.
-*Debuff immunity with a permanent HP tax.*
-
-**Worn Shield** — Common | Shield cards grant 1 Thorns for the turn / shield value −20%.
-*Damage reflection at the cost of raw mitigation.*
-
-**Quick Study** — Common | After 3 Charge Correct in an encounter, preview the answer for the next quiz for 2 seconds / wrong answers deal +2 self-damage.
-*Knowledge preview for the informed player — but mistakes sting harder.*
-
-**Vitality Ring** — Common | +20 max HP. Applied at run start (max HP increased immediately on pickup).
-
-**Herbal Pouch** — Common | Heal 8 HP after each combat encounter.
-
-**Swift Boots** — Common | Draw 6 cards per turn instead of 5.
-
-**Combo Ring** — Common | First Charged correct answer each turn grants +1 damage to all attacks that turn.
-
-**Steel Skin** — Common | Take 3 less damage from all sources (min 1).
-
-**Last Breath** — Uncommon | Once per encounter: survive lethal at 1 HP, gain 8 block.
-
-#### Special / Cursed Relics
-
-**Blood Price** — Uncommon (Cursed)
-+1 AP per turn. Lose 2 HP per turn.
-*4 AP is transformative. HP drain creates urgency.*
-
-**Phoenix Feather** — Rare
-Once per run: on death, resurrect at 15% HP. All cards auto-Charge free for 1 turn.
-
-**Scholar's Gambit** — Rare (Cursed)
-5 relic slots → 6. Wrong Charged answers deal 3 damage to you.
-*More relics, higher quiz penalty.*
-
-**Prismatic Shard** — Legendary (1 per run max)
+**Prismatic Shard** — Legendary (Unlockable, Level 20)
 All chain multipliers +0.5×. 5-chains grant +1 AP.
-*THE chain capstone. 5-chain = 3.5× + free AP.*
+*The chain capstone. 5-chain hits 3.5× and refunds an AP. Pairs with Chain Reactor for massive turns.*
 
-**Mirror of Knowledge** — Legendary
+**Singularity** — Legendary (Unlockable, Level 23)
+Completing a 5-chain deals bonus damage equal to the total chain damage dealt (doubles 5-chain output).
+*A finished 5-chain fires twice. Combined with Chain Reactor and Prismatic Shard, a single 5-chain can end a fight.*
+
+**Chain Addict** — Rare (Unlockable, Level 6 — conditional)
+Complete a 3+ chain: heal 5 HP.
+*Sustain woven into chain play. Chains that deal damage also heal.*
+
+---
+
+#### Speed Relics
+
+**Adrenaline Shard** — Uncommon (Starter)
+Correct Charged answers in under 3 seconds refund 1 AP (once per turn).
+*Fast answerers effectively get 4 AP per turn. Works with any Charge-heavy build.*
+
+**Quicksilver Quill** — Rare (Unlockable, Level 5)
+Charged quizzes answered in under 2 seconds get an additional 1.5× multiplier.
+*3.0× × 1.5× = 4.5× for the fastest answers. Stacks with all other multipliers.*
+
+**Time Warp** — Rare (Unlockable, Level 6)
+On Knowledge Surge turns, quiz timer is halved but Charge multiplier increases to 5.0× and gain +1 AP.
+*Extremely high-risk, high-reward on Surge turns. Best paired with speed practice.*
+
+---
+
+#### Glass Cannon Relics
+
+**Volatile Core** — Uncommon (Starter) *(Cursed)*
+All attacks +50% damage. Wrong Charged answers deal 3 damage to you AND the enemy.
+*Curse: Wrong Charges deal 3 self-damage. Even failures deal enemy damage — pure aggression.*
+
+**Reckless Resolve** — Uncommon (Starter)
+Below 40% HP: all attacks +50% damage. Above 80% HP: attacks −15% damage.
+*Forces edge-of-death play. The bonus activates when you need it most.*
+
+**Obsidian Dice** — Uncommon (Starter, Level 5)
+Each correct Charge: 60% chance +50% multiplier, 40% chance −25% multiplier.
+*High-variance Charge payoff. Average positive, but variance is real.*
+
+**Crit Lens** — Rare (Unlockable, Level 8)
+Charged correct answers have 25% chance to DOUBLE the final damage (after all multipliers).
+*25% crit on every correct Charge. Stacks devastatingly with high-multiplier turns.*
+
+**Berserker's Oath** — Rare (Unlockable, Level 9) *(Cursed)*
+Start run with −30 max HP. All attacks +40% damage.
+*Curse: −30 max HP permanently this run. Very strong burst damage; fragile.*
+
+**Bloodstone Pendant** — Rare (Unlockable, Level 11 — conditional)
+Taking damage grants 1 Fury stack. Each Fury = +1 damage on next attack, then consumed.
+*Convert incoming hits into stacked attack damage. Rewards tanking hits.*
+
+---
+
+#### Defense Relics
+
+**Iron Shield** — Common (Starter) *(Tradeoff)*
+Start each turn with 3 block. Draw 1 fewer card on turn 1.
+*Tradeoff: lose a card on the opening draw. Reliable defense every turn.*
+
+**Steel Skin** — Common (Starter)
+Take 3 less damage from all sources (min 1).
+*Flat damage reduction. Synergizes with all defensive builds.*
+
+**Thick Skin** — Common (Starter) *(Tradeoff)*
+Immune to the first debuff each encounter. Take +2 damage from all sources.
+*Tradeoff: +2 damage taken permanently. Strong vs. enemy debuff-heavy encounters.*
+
+**Worn Shield** — Uncommon (Starter, Level 2) *(Tradeoff)*
+Every shield card grants 1 Thorns (this turn). All block values −20%.
+*Tradeoff: −20% block on all shields. Converts defensive play into passive retaliation.*
+
+**Scar Tissue** — Uncommon (Starter, Level 4)
+Cursed cards use 0.85× Quick Play power instead of 0.70×.
+*Softens the Quick Play penalty for cursed relics. Useful in cursed-heavy builds.*
+
+**Aegis Stone** — Uncommon (Starter)
+Block from shield cards carries between turns (max 15). At 15 block, gain Thorns 2.
+*Completely changes shield card evaluation. Constant: `RELIC_AEGIS_STONE_MAX_CARRY = 15`*
+
+**Regeneration Orb** — Uncommon (Starter)
+Heal 3 HP at end of each turn where you played 2+ shield cards.
+*Sustain through defensive play. Rewards stacking shield cards.*
+
+**Thorn Crown** — Rare (Unlockable, Level 10)
+When you have 15+ block at start of turn, reflect 5 damage per enemy attack received.
+*5 reflected damage per hit at high block. Pairs with Aegis Stone.*
+
+**Bastion's Will** — Rare (Unlockable, Level 11)
+Charged shield cards gain +75% block. Quick Play shield cards gain +25% block.
+*Makes Charging defensive cards worthwhile. Best defensive relic for Charge-focused play.*
+
+**Thorn Mantle** — Rare (Unlockable, Level 6 — conditional)
+End turn with 10+ block: deal 4 thorns damage when hit.
+*Thorns 4 whenever you end a turn heavily shielded. Pairs with Aegis Stone.*
+
+---
+
+#### Poison / Bleed Relics
+
+**Plague Flask** — Uncommon (Starter)
+All poison ticks deal +2 extra damage. Poison lasts 1 extra turn.
+*Amplifies every poison source in your deck. Hex goes from 9 total to 20 total damage.*
+
+**Bleedstone** — Uncommon (Starter, Level 2)
+Bleed you apply stacks +2 higher. Bleed decays 1 turn slower.
+*+2 stacks and longer duration on every Bleed application.*
+
+**Ember Core** — Uncommon (Starter, Level 3)
+Burn you apply stacks +2 higher. Enemy with 5+ Burn stacks: +20% attack damage.
+*Escalating Burn payoff. Doubles as an offensive amplifier at high Burn.*
+
+**Festering Wound** — Rare (Unlockable, Level 13)
+When enemy has 3+ poison stacks, all attacks deal +40% damage.
+*+40% attack once poison is applied. Potent in any deck with even light poison.*
+
+**Hemorrhage Lens** — Rare (Unlockable, Level 7)
+Multi-hit attacks apply 1 Bleed per hit (on subsequent hits).
+*Turns multi-hit cards into reliable Bleed applicators.*
+
+**Toxic Bloom** — Uncommon (Unlockable, Level 24)
+When an enemy dies from poison, your next attack applies +3 bonus poison.
+*Reserved for future multi-enemy encounters. Poison kill feeds the next fight.*
+
+---
+
+#### Burst Relics
+
+**Overflow Gem** — Uncommon (Starter)
+When you spend 4+ AP in a single turn, the last card played gets +75% effect.
+*Spend big, finish big. Rewards high-AP turns.*
+
+**Surge Capacitor** — Uncommon (Starter, Level 5)
+On Knowledge Surge turns: +1 AP and draw 2 extra cards.
+*Surge turns become full-power turns. Strong with Time Warp.*
+
+**Capacitor** — Rare (Unlockable, Level 14)
+Unused AP at end of turn stores as Charge (max 3). Next turn, gain stored Charge as bonus AP.
+*Enables deliberate "save up" turns. Constant: `RELIC_CAPACITOR_MAX_STORED_AP = 3`*
+
+**Double Down** — Rare (Unlockable, Level 15)
+Once per encounter: Charge same card twice. Both correct: 5× power. One correct: 1.5×. Both wrong: 0.3×.
+*Ultimate high-stakes play. Use on your best card when confident.*
+
+**Quiz Master** — Rare (Unlockable, Level 8 — conditional)
+3+ Charge Corrects in one turn: +2 AP next turn.
+*Strong turns generate stronger follow-up turns. Snowball engine.*
+
+**Momentum Wheel** — Rare (Unlockable, Level 7 — conditional)
+Play 4+ cards in a turn: last card +100% effect.
+*The 4th card in a big turn doubles its output.*
+
+**Entropy Engine** — Rare (Unlockable, Level 9 — conditional)
+If you play 3+ different card types in one turn: deal 5 damage and gain 5 block.
+*Rewards playing varied hands. Free 5 damage + 5 block for diverse turns.*
+
+---
+
+#### Knowledge Relics
+
+**Memory Nexus** — Uncommon (Starter)
+When you correctly Charge 3 cards in one encounter (cumulative), draw 2 extra next turn.
+*3 correct Charges → a free draw next turn. Snowballs through long encounters.*
+
+**Insight Prism** — Uncommon (Starter)
+Wrong Charged answers reveal the correct answer AND next appearance of that fact auto-succeeds.
+*Turns failures into future guaranteed wins. Strong in early runs with unfamiliar facts.*
+
+**Scholar's Crown** — Rare (Unlockable, Level 16)
+Tier 1 Charged facts get +10% power. Tier 2+ get +40%. Tier 3 auto-Charged get +75%.
+*Rewards fact mastery. More mastered facts = larger multipliers.*
+
+**Domain Mastery Sigil** — Rare (Unlockable, Level 18)
+If deck has 4+ facts from same domain, all same-domain cards get +30% base damage (even Quick Play).
+*Since all curated deck runs concentrate on one domain, this always activates. Effectively a permanent +30% damage.*
+
+**Chronometer** — Rare (Unlockable, Level 6) *(Tradeoff)*
+Quiz timer +3 seconds. All Charge multipliers −15%.
+*Tradeoff: 3 more seconds to answer at the cost of 15% multiplier. For players who need more time.*
+
+**Soul Jar** — Rare (Unlockable, Level 7)
+Every 5 correct Charges stores 1 charge. Spend a charge to auto-succeed a quiz (GUARANTEED button).
+*Saved correct answers bank into guaranteed future correct answers.*
+
+**Archive Codex** — Rare (Unlockable, Level 8)
+After combat: +1 flat damage per 10 total mastery levels across your deck.
+*Mastery across the run translates to stacking flat damage.*
+
+**Deja Vu** — Rare (Unlockable, Level 9)
+Turn 1 of each encounter: 1 card from your discard appears in hand at −1 AP cost. Level 15+: 2 cards.
+*Opens every fight with a familiar card at a discount.*
+
+**Mind Palace** — Rare (Unlockable, Level 10)
+Track correct Charge streak across the run. 1 wrong per 10 freezes instead of resets. At 10/20/30 streak: +3/+6/+10 to all effects.
+*Long-run streak relic. Forgives occasional mistakes without collapsing progress.*
+
+**Quick Study** — Common (Starter) *(Tradeoff)*
+After 3+ correct Charges in an encounter, preview 1 answer. Wrong answers deal +2 self-damage rest of encounter.
+*Tradeoff: knowledge preview once you're on a streak, but wrong answers sting harder.*
+
+**Akashic Record** — Legendary (Unlockable, Level 22)
+Tier 2b+ facts: previously-wrong answer is subtly highlighted. Tier 3 auto-Charge multiplier is 1.5× (not 1.2×).
+*Uses your mistake history to help you learn. Tier 3 auto-Charges are 25% stronger.*
+
+**Mirror of Knowledge** — Legendary (Unlockable, Level 22)
 Once per encounter: after correct Charge, replay card at 1.5× (no quiz, no AP).
+*One free card replay per encounter. Use on your most powerful card.*
 
-**Volatile Manuscript** — Rare (Cursed)
-All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self-Burn triggers when hit by enemy attacks.
+**Omniscience** — Legendary (Unlockable, Level 20)
+3 correct Charges in one turn → the 4th auto-succeeds.
+*By the fourth answer, you don't need to answer. Strong with Knowledge Engine builds.*
 
-> **Removed relics (historical note):** Echo Lens, Echo Chamber, Phantom Limb were removed when the Echo system was removed. Cursed Card relics (Scar Tissue referenced `CURSED_QP_MULTIPLIER`) will need to be re-specified now that the Cursed Card system is removed. Combo Ring was removed with the combo system.
+---
 
-### New Expansion Relics (36 Added)
+#### Economy Relics
 
-#### New Common Relics (5)
+**Gold Magnet** — Common (Starter)
++30% gold from all sources.
+*Flat gold multiplier for the entire run.*
 
-| ID | Name | Trigger | Effect |
-|----|------|---------|--------|
-| `quick_study` | Quick Study | on_charge_correct / on_charge_wrong | After 3 CC in an encounter, preview answer for next quiz (2s) / wrong answers deal +2 self-damage |
-| `thick_skin` | Thick Skin | permanent | First debuff each encounter is immune / +2 damage taken from all sources |
-| `tattered_notebook` | Tattered Notebook | on_charge_correct | +5 gold on first correct Charge per encounter |
-| `battle_scars` | Battle Scars | on_damage_taken | Next attack deals +3 damage after taking a hit (once/turn) |
-| `brass_knuckles` | Brass Knuckles | on_attack | Every 3rd attack card played deals +6 bonus damage |
+**Merchant's Favor** — Common (Starter)
+Shops offer 1 additional card and 1 additional relic choice.
+*More options every visit. Compounds over a long run.*
 
-#### New Uncommon Relics (12)
+**Lucky Coin** — Common (Starter)
+Start each encounter with 1 random buff (Empower, +2 block, +1 AP, or Draw 1).
+*Random but always useful. Effective as an opener.*
 
-| ID | Name | Trigger | Effect |
-|----|------|---------|--------|
-| `pocket_watch` | Pocket Watch | on_turn_start | +1 draw on turns 1 and 5 of each encounter |
-| `chain_link_charm` | Chain Link Charm | on_chain_complete | +5 gold per chain link in completed chains |
-| `worn_shield` | Worn Shield | on_block | Shield cards grant Thorns 1 for the turn / shield value −20% *(reworked from stat-stick)* |
-| `bleedstone` | Bleedstone | permanent | Bleed stacks applied by you are +2 higher; Bleed decays 1 slower |
-| `ember_core` | Ember Core | permanent | Burn applied by you starts +2 extra stacks. Enemy at 5+ Burn: attacks +20% |
-| `gambler_s_token` | Gambler's Token | on_charge_wrong | Wrong Charge = +3 gold |
-| `thoughtform` | Thoughtform | on_perfect_turn | +1 permanent Strength when ALL cards in a turn were Charged correctly |
-| `scar_tissue` | Scar Tissue | permanent | **NEEDS REDESIGN** — originally softened Cursed Card penalty; Cursed Card system has been removed. Re-specify for v3 (candidate: wrong Charge at any mastery deals 0.75× instead of 0.7×) |
-| `surge_capacitor` | Surge Capacitor | on_surge_start | Surge turns: +1 AP and draw 2 extra cards |
-| `obsidian_dice` | Obsidian Dice | on_charge_correct | 60% chance: +50% Charge mult. 40% chance: −25% Charge mult |
-| `living_grimoire` | Living Grimoire | on_encounter_end | If 3+ Charges correct in encounter, heal 3 HP |
-| `gladiator_s_mark` | Gladiator's Mark | on_encounter_start | Start each encounter with +1 Strength for 3 turns |
+**Scavenger's Eye** — Common (Starter)
+See 4 card choices after combat instead of 3.
+*+1 card choice on every reward. More likely to find what you want.*
 
-#### New Rare Relics (15)
+**Tattered Notebook** — Common (Starter, Level 0)
++5 gold on your first correct Charge each encounter.
+*Free gold whenever you Charge anything. Stacks up over a full run.*
 
-| ID | Name | Trigger | Effect |
-|----|------|---------|--------|
-| `red_fang` | Red Fang | on_encounter_start | First attack each encounter +30% damage |
-| `chronometer` | Chronometer | permanent | All quiz timers +3s. All Charge multipliers −15% |
-| `soul_jar` | Soul Jar | on_charge_correct | 1 charge per 5 correct Charges. CHARGE button shows "GUARANTEED" — click to auto-succeed |
-| `null_shard` | Null Shard | permanent | All chain multipliers = 1.0× (chains disabled). All attack cards +25% base damage |
-| `hemorrhage_lens` | Hemorrhage Lens | on_multi_hit | Multi-Hit attacks apply 1 Bleed per hit |
-| `archive_codex` | Archive Codex | on_encounter_end | +1 damage per 10 total mastery levels across deck |
-| `berserker_s_oath` | Berserker's Oath | on_run_start | −30 max HP. All attacks +40% damage |
-| `chain_forge` | Chain Forge | on_chain_complete | Once per encounter: a card that would break a chain continues instead |
-| `deja_vu` | Deja Vu | on_turn_start | Turn 1: add 1 random discard card to hand at −1 AP. When charged, fact selection biases toward facts answered correctly this run |
-| `inferno_crown` | Inferno Crown | permanent | Enemy has BOTH Burn and Poison: all damage +30% |
-| `mind_palace` | Mind Palace | permanent | Track consecutive correct Charges. Forgiveness: 1 wrong per 10 freezes progress. At 10/20/30 streak: +3/+6/+10 all effects |
-| `entropy_engine` | Entropy Engine | on_turn_end | If 3+ different card types played this turn: deal 5 dmg + gain 5 block |
-| `bloodstone_pendant` | Bloodstone Pendant | on_damage_taken | Each hit received → +1 Fury stack. Each Fury = +1 damage to next attack (consumed) |
-| `chromatic_chain` | Chromatic Chain | on_chain_complete | Once per encounter: completing 3+ chain makes next chain start at length 2 |
-| `dragon_s_heart` | Dragon's Heart | on_elite_kill / on_boss_kill | Elite kill: +5 max HP + heal 30%. Boss kill: +15 max HP + full heal + random Legendary. Passive: +2 attack damage always |
-| `volatile_manuscript` | Volatile Manuscript | permanent | All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself |
+**Gambler's Token** — Uncommon (Starter, Level 3)
+Wrong Charged answers grant +3 gold.
+*Converts failures into income. Softens the cost of learning new facts.*
 
-#### New Legendary Relics (4)
+**Knowledge Tax** — Uncommon (Unlockable, Level 5) *(Tradeoff)*
+Gain 10 gold per Charge Correct. Charge Correct values −10%.
+*Tradeoff: every Charge Correct earns 10 gold at the cost of 10% power.*
 
-| ID | Name | Trigger | Effect |
-|----|------|---------|--------|
-| `omniscience` | Omniscience | on_charge_correct | 3 correct Charges in one turn → 4th Charge auto-succeeds |
-| `paradox_engine` | Paradox Engine | on_charge_wrong | Wrong Charges resolve at 0.3× AND deal 5 piercing damage. +1 AP per turn |
-| `akashic_record` | Akashic Record | on_charge_correct | **NEEDS REDESIGN** — originally referenced Tier 3 auto-charge (removed). Candidate redesign: Mastery 4–5 cards: one wrong answer subtly highlighted in the quiz. Mastery 5 correct Charge = 4.5× (up from 4.0×). |
-| `singularity` | Singularity | on_chain_complete | Completing a 5-chain deals BONUS damage equal to total chain damage (doubles 5-chain output) |
+---
 
-#### New Tradeoff Relics (8)
+#### Stat Stick / Sustain Relics
 
-High-risk relics that offer a strong upside with an explicit downside. Each is a meaningful build commitment.
+**Vitality Ring** — Common (Starter)
++20 max HP this run.
+*Simple and reliable. Applied immediately on pickup.*
 
-| ID | Name | Rarity | Upside | Downside |
-|----|------|--------|--------|----------|
-| `berserkers_focus` | Berserker's Focus | Rare | Free Charge surcharge (all Charges cost base AP only) | Max AP reduced to 2 |
-| `glass_lens` | Glass Lens | Rare | +50% CC power multiplier | Take 3 damage on Charge Wrong |
-| `pain_conduit` | Pain Conduit | Rare | Reflect HP loss as piercing damage to enemy | Healing effects halved |
-| `ritual_blade` | Ritual Blade | Uncommon | First card played each turn ×2 effect | All other cards that turn −25% |
-| `hollow_armor` | Hollow Armor | Uncommon | Start each encounter with 20 block | No new block can be gained during combat |
-| `overclocked_mind` | Overclocked Mind | Uncommon | +2 cards drawn per turn | Discard 2 cards at end of each turn |
-| `mnemonic_scar` | Mnemonic Scar | Rare | CW on a previously-seen fact triggers CC power instead | CW on a new (unseen) fact deals 5 self-damage |
-| `knowledge_tax` | Knowledge Tax | Uncommon | +10 gold per CC | All CC values −10% |
+**Herbal Pouch** — Common (Starter)
+Heal 8 HP after each combat encounter.
+*Consistent out-of-combat healing. Scales well in long dungeons.*
 
-#### New Conditional Relics (6)
+**Swift Boots** — Common (Starter)
+Draw 6 cards per turn instead of 5.
+*+1 card draw every turn. One of the most consistent relics in the pool.*
 
-Relics that activate only when a specific combat condition is met. They reward specific play patterns.
+**Whetstone** — Common (Starter) *(Tradeoff)*
+All attacks +3 base damage. All shields −1 block.
+*Tradeoff: offense over defense. A real choice.*
 
-| ID | Name | Rarity | Trigger | Effect |
-|----|------|--------|---------|--------|
-| `bloodletter` | Bloodletter | Uncommon | on_hp_loss | +3 to next attack when you lose HP from any source |
-| `chain_addict` | Chain Addict | Uncommon | on_chain_complete | Heal 5 HP when completing a 3+ chain |
-| `quiz_master` | Quiz Master | Rare | on_turn_end | If 3+ CC in current turn: gain +2 AP next turn |
-| `exhaustion_engine` | Exhaustion Engine | Uncommon | on_exhaust | Draw 2 cards when any card is exhausted |
-| `momentum_wheel` | Momentum Wheel | Rare | on_card_play | 4th+ card played in a turn resolves at +100% effect |
-| `thorn_mantle` | Thorn Mantle | Uncommon | on_turn_end | If you end a turn with 10+ block: gain Thorns 4 next turn |
+**Last Breath** — Uncommon (Starter)
+Once per encounter: survive lethal at 1 HP, gain 8 block.
+*One free death prevention per encounter. Can turn losing fights.*
 
-#### New Trigger Types (4)
+**Living Grimoire** — Uncommon (Starter, Level 4)
+After combat, if 3+ Charges correct, heal 3 HP.
+*Healing tied to Charge performance. Consistent in any Charge-focused build.*
 
-Four new relic trigger types added to support tradeoff and conditional relics above:
+**Pocket Watch** — Uncommon (Starter, Level 1)
+Draw 1 extra card on turns 1 and 5 of each encounter.
+*Two free extra draws per encounter at predictable timings.*
+
+**Gladiator's Mark** — Uncommon (Starter, Level 2)
+Start each encounter with +1 Strength for 3 turns.
+*Free Strength opener every fight. Strong in aggressive builds.*
+
+**Thoughtform** — Uncommon (Starter, Level 4)
+When ALL cards in a turn are Charged correctly, gain +1 permanent Strength.
+*Permanent Strength accumulates through perfect turns. Long-run scaling relic.*
+
+**Red Fang** — Rare (Unlockable, Level 6)
+First attack each encounter deals +30% damage.
+*Free 30% opener every fight. Simple but reliable.*
+
+**Dragon's Heart** — Rare (Unlockable, Level 12)
+Passive: +2 all attacks. Elite kill: +5 max HP + heal 30%. Boss kill: +15 max HP + full heal + random Legendary relic.
+*Snowballs elite/boss kills into growing power and HP. Late-run payoff is enormous.*
+
+**Phoenix Feather** — Rare (Unlockable, Level 18)
+Once per run: on death, resurrect at 15% HP. All cards auto-Charge free for 1 turn.
+*One free resurrection per run. Follow-up turn is free Charges on everything.*
+
+---
+
+#### Offensive / Tactical Relics
+
+**Battle Scars** — Common (Starter, Level 0)
+After taking a hit, your next attack deals +3 bonus damage (once per turn).
+*Converts incoming damage into increased outgoing damage.*
+
+**Brass Knuckles** — Common (Starter, Level 0)
+Every 3rd attack card played deals +6 bonus damage.
+*Consistent bonus on heavy attack rotation.*
+
+**Null Shard** — Rare (Unlockable, Level 7)
+Chain multipliers are locked at 1.0×. All attacks +25% damage.
+*Anti-chain relic. Sacrifices all chain value for flat +25% attack. Use in non-chain decks.*
+
+**Inferno Crown** — Rare (Unlockable, Level 10)
+When the enemy has both Burn and Poison, all your damage +30%.
+*Dual condition bonus. Pairs Plague Flask + Ember Core for a permanent +30% damage.*
+
+**Bloodletter** — Rare (Unlockable, Level 7 — conditional)
+When you take self-damage: next attack +3 damage.
+*Synergizes with Volatile Core, Blood Price, Volatile Manuscript, and any cursed relic.*
+
+**Exhaustion Engine** — Rare (Unlockable, Level 9 — conditional)
+When a card is exhausted: draw 2 cards.
+*Turns any exhaust effect into card advantage. Strong with exhaust-heavy decks.*
+
+---
+
+#### Cursed / Tradeoff Relics
+
+**Blood Price** — Uncommon (Starter) *(Cursed)*
++1 AP per turn. Lose 2 HP per turn.
+*Curse: −2 HP per turn. 4 AP is transformative. HP drain creates urgency.*
+
+**Scholar's Gambit** — Rare (Unlockable, Level 20) *(Cursed)*
+5 relic slots → 6. Wrong Charged answers deal 3 damage to you.
+*Curse: wrong Charges deal 3 self-damage. One extra relic slot.*
+
+**Volatile Manuscript** — Rare (Unlockable, Level 12) *(Cursed)*
+All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself.
+*Curse: every 3rd Charge gives you 4 Burn stacks. Powerful multiplier at a self-damage cost.*
+
+**Paradox Engine** — Legendary (Unlockable, Level 21) *(Cursed)*
+Wrong Charges resolve at 0.3× AND deal 5 piercing damage. Gain +1 AP every turn permanently.
+*Curse: wrong Charges resolve worse than Quick Play AND deal 5 piercing damage. The +1 AP/turn is not a gift — it is bait.*
+
+**Berserker's Focus** — Uncommon (Unlockable, Level 5) *(Tradeoff)*
+Charge surcharge costs 0 AP. Max AP per turn reduced to 2.
+*Tradeoff: free Charge surcharges, but capped at 2 AP. Locks you into Charge-heavy play.*
+
+**Glass Lens** — Uncommon (Unlockable, Level 6) *(Tradeoff)*
+Charge Correct values +50%. Take 3 damage on Charge Wrong.
+*Tradeoff: 3 self-damage per wrong Charge. Enormous upside for accurate players.*
+
+**Pain Conduit** — Uncommon (Unlockable, Level 8) *(Tradeoff)*
+When you lose HP: deal that much damage to enemy. Healing is halved.
+*Tradeoff: all healing halved. Converts every hit you take into reflected damage.*
+
+**Ritual Blade** — Uncommon (Unlockable, Level 7) *(Tradeoff)*
+First card each turn deals double damage. Other cards deal −25%.
+*Tradeoff: −25% on all non-first cards. Rewards single big opening plays.*
+
+**Hollow Armor** — Uncommon (Unlockable, Level 9) *(Tradeoff)*
+Start each encounter with 20 block. Cannot gain new block.
+*Tradeoff: no block gains during combat. Your 20 starting block is all you get.*
+
+**Overclocked Mind** — Uncommon (Unlockable, Level 6) *(Tradeoff)*
+Draw 2 extra cards per turn. Discard 2 cards at end of turn.
+*Tradeoff: 2 random cards discarded each turn. More options to play, but you can't keep them all.*
+
+**Mnemonic Scar** — Uncommon (Unlockable, Level 10) *(Tradeoff)*
+Wrong on a previously-correct fact: resolves at CC power. Wrong on a new fact: take 5 damage.
+*Tradeoff: wrong answers on unknown facts deal 5 self-damage. Rewards focusing on mastered facts.*
+
+---
+
+> **Removed relics (historical note):** Echo Lens, Echo Chamber, Phantom Limb were removed when the Echo system was removed. Combo Ring was removed with the combo system.
+
+#### Relic Trigger Reference
 
 | Trigger | Fires When |
 |---------|-----------|
-| `on_hp_loss` | Player loses any HP (from enemy attack, self-damage, cursed relic drain, etc.) |
-| `on_exhaust` | Any card is moved to the exhaust pile (via Exhaust keyword, Burnout Shield CC, etc.) |
-| `on_discard` | Any card is discarded from hand (end-of-turn discard, Battle Trance, Overclocked Mind penalty, etc.) |
-| `on_chain_break` | An active chain is broken (Quick Play, Wrong Charge, or turn end while chain length ≥ 2) |
+| `permanent` | Always active (passive stat change) |
+| `on_run_start` | Once at the start of a run |
+| `on_encounter_start` | At the start of each combat encounter |
+| `on_encounter_end` | After combat ends |
+| `on_turn_start` | At the start of each turn |
+| `on_turn_end` | At the end of each turn |
+| `on_card_play` | Whenever any card is played |
+| `on_attack` | Whenever an attack card is played |
+| `on_block` | Whenever a shield card is played |
+| `on_charge_correct` | Charged quiz answered correctly |
+| `on_charge_wrong` | Charged quiz answered incorrectly |
+| `on_damage_taken` | Player takes damage |
+| `on_hp_loss` | Player loses any HP (attacks, self-damage, cursed relic drain) |
+| `on_lethal` | Player would be reduced to 0 HP |
+| `on_chain_complete` | A Knowledge Chain finishes |
+| `on_surge_start` | A Knowledge Surge turn begins |
+| `on_multi_hit` | A multi-hit attack resolves |
+| `on_exhaust` | A card is moved to the exhaust pile |
+| `on_discard` | A card is discarded from hand |
+| `on_chain_break` | An active chain breaks |
+| `on_elite_kill` | An elite enemy is defeated |
+| `on_perfect_turn` | All cards in a turn Charged correctly |
 
 ### Relic Archive (Hub — Meta-Progression)
 
@@ -2487,7 +3043,7 @@ Enemy intent icon and damage preview shown above enemy sprite at all times. Thre
 **Healing must be scarce and strategic — never automatic or generous.**
 
 - **Post-encounter healing vials** appear on the reward screen as small health potions (2-6% of max HP). They do NOT always appear — probability-based, not guaranteed.
-- **POST_ENCOUNTER_HEAL_PCT stays at 3%** — this is the tiny passive recovery (bandaging wounds). NOT a full heal.
+- **POST_ENCOUNTER_HEAL_PCT is 7%** — passive recovery between encounters to sustain longer fights. Increased from 3% to support higher enemy HP (AR-259 rebalance). NOT a full heal.
 - **Rest rooms are the primary healing source** — 30% HP heal, but costs a room choice (opportunity cost vs shop/mystery).
 - **Shop food** — buyable healing at gold cost (rations, elixirs). Strategic resource decision.
 - **If healing is too generous, HP management becomes trivial** and the game loses tension. The player should feel pressure to play well (shields, correct answers) to AVOID damage, not rely on healing it away.
@@ -3071,7 +3627,7 @@ Displayed prominently on the Run End screen for `defeat` and `victory` results (
 
 | Grade | Condition | Color | Flavor |
 |-------|-----------|-------|--------|
-| S | Victory (defeated The Curator) | Gold `#FFD700` | "Knowledge is power!" |
+| S | Victory (defeated The Final Lesson) | Gold `#FFD700` | "Knowledge is power!" |
 | A+ | Floor ≥ 22 | Purple `#7C4DFF` | "Scholar material!" |
 | A | Floor ≥ 19 | Cyan `#00BCD4` | "Scholar material!" |
 | B+ | Floor ≥ 16 | Green `#4CAF50` | "Impressive run!" |
@@ -3090,24 +3646,51 @@ The badge uses a spring-bounce entry animation and a continuous shimmer glow eff
 
 **Status: Implemented.**
 
-Unlocks after first successful run completion (reach Act 3+ and retreat, or defeat The Curator).
+Ascension is the difficulty scaling system for experienced players. Each of 20 levels adds a permanent challenge modifier AND a compensating buff, creating interesting risk/reward tradeoffs. All modifiers are cumulative—Ascension 10 includes all challenges and buffs from levels 1–9.
 
-10 Ascension levels, each adds a permanent modifier (all previous levels stack):
+Unlocks after first successful run completion (reach Act 3+ and retreat, or defeat The Final Lesson).
 
-| Level | Modifier | Effect |
-|-------|----------|--------|
-| 1 | Tougher Enemies | All enemies +10% HP |
-| 2 | Aggressive Foes | All enemies +10% damage |
-| 3 | Fewer Shields | Shield cards 20% less effective |
-| 4 | Shorter Fuse | Timer −1s base on all questions |
-| 5 | Thin Deck | Start with 10 cards instead of... 10. (Adds to other deck-size constraints.) |
-| 6 | Iron Will | No retreat from encounters once committed |
-| 7 | Harsh Grading | Close-distractor answers more common at all mastery levels (confusion-weighted distractors applied from mastery 0) |
-| 8 | Elite Surge | Elites gain boss-tier attacks |
-| 9 | Endurance | Must reach Act 2+ to retain rewards on defeat |
-| 10 | Heart of the Archive | The Curator gains a secret third phase |
+### Ascension Level Table
 
-**Design philosophy:** Early levels (1–4) are stat adjustments. Mid levels (5–8) restrict strategies. Late levels (9–10) fundamentally alter the run.
+| Level | Name | Challenge | Buff |
+|-------|------|-----------|------|
+| 1 | First Trial | +1 elite per segment | Choose 1 of 3 starter relics |
+| 2 | Aggressive Foes | Enemies +10% damage | +1 AP on first turn of each encounter |
+| 3 | Scarce Healing | Rest heals 25% instead of 30% | Free card removal at rest |
+| 4 | Quick Thinking | Timer −1s on all questions | Start with a random uncommon card |
+| 5 | Lean Start | Start with 12 cards | One free card removal per shop visit |
+| 6 | No Escape | Cannot flee encounters | Heal 5 HP on 3+ combo |
+| 7 | Harsh Grading | Close distractors more common | Charged correct +15% damage |
+| 8 | Elite Surge | Mini-bosses gain boss-tier attacks | Mini-boss victories always drop a relic |
+| 9 | Undying Foes | Enemies regenerate 2 HP/turn | Start encounters with 3 shield |
+| 10 | Cursed Start | Start with a Curse card in deck | Choose a 2nd starter relic + 1 free relic reroll per boss |
+| 11 | Slim Pickings | Boss relics reduced to 2 choices | Relics trigger +50% more |
+| 12 | Deep Knowledge | Tier 1 cards use 4-option MCQ | Tier 1 charged correct +20% damage |
+| 13 | Fragile | Player max HP reduced to 80 | Start with Vitality Ring (+20 HP, takes slot) |
+| 14 | Combo Breaker | Combo resets each turn | Perfect turns grant +1 AP next turn |
+| 15 | Boss Rush | Bosses +25% HP | Boss defeat fully heals player |
+| 16 | No Echo | Echo mechanic disabled | Discarding a card grants 1 shield |
+| 17 | Scholar's Burden | Wrong answers deal 3 self-damage | Correct answers heal 1 HP |
+| 18 | Minimalist | Start with 10 cards | Choose starting hand each encounter |
+| 19 | True Test | All questions use hard formats | Charge plays cost 0 extra AP |
+| 20 | Heart of the Archive | Final boss gains second phase | Start with 3 relics (choose from 7) |
+
+### Design Philosophy
+
+Each ascension level pairs a difficulty increase with a strategic benefit:
+
+- **Levels 1–5:** Gentle difficulty ramp with strong compensations. Early buffs establish core strategies (starter relic choice, card removal, AP acceleration).
+- **Levels 6–10:** Significant mechanical changes. Fleeing becomes impossible; regen and curses introduce persistent threats. Mid-tier buffs (relic guarantees, shield generation, combo healing) create adaptive playstyles.
+- **Levels 11–15:** Deep system modifications. Relic pools shrink; question formats shift to 4-option; HP scaling changes. Buffs become specific to question difficulty (Tier 1 boosts, perfect turn synergy).
+- **Levels 16–20:** Extreme challenge with powerful but narrow compensations. Echo disabled, damage self-infliction, strict hand-size constraints. Highest-tier buffs unlock (hand selection, free charging, three-relic starts).
+
+### Implementation
+
+- **File:** `src/services/ascension.ts`
+- **Modifiers:** Applied via `getAscensionModifiers(level)` — all challenges and buffs are cumulative
+- **Rule lookup:** `getAscensionRule(level)` returns the level name and description for UI display
+- **Enemy adjustments:** `applyAscensionEnemyTemplateAdjustments()` handles mini-boss boss-tier attacks and final boss second phase
+- **Max level:** `MAX_ASCENSION_LEVEL = 20`
 
 ---
 
@@ -3342,7 +3925,7 @@ An 8-second cinematic intro sequence plays on first launch only (controlled by t
 
 ## 31. App Store Review Prompt
 
-Timing: After defeating The Archivist (Act 2 boss, first victory feeling) or after completing a Mastery Trial (emotional high). Never on failure, never mid-run.
+Timing: After defeating The Algorithm (Act 2 boss, first victory feeling) or after completing a Mastery Trial (emotional high). Never on failure, never mid-run.
 
 ---
 

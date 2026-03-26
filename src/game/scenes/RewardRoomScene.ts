@@ -130,6 +130,7 @@ export class RewardRoomScene extends Phaser.Scene {
 
     this.load.json('gold_tiers', '/assets/reward_room/gold_tiers.json' + cb)
     this.load.json('cloth_spawn_zone', '/assets/reward_room/cloth_spawn_zone.json' + cb)
+    this.load.json('cloth_spawn_zone_landscape', '/assets/reward_room/cloth_spawn_zone_landscape.json')
 
     // Preload all known card frame textures
     const MECHANIC_IDS = [
@@ -339,13 +340,16 @@ export class RewardRoomScene extends Phaser.Scene {
     // The landscape image has the stone centered — cloth is roughly the lower-center.
     let adjustedBounds: typeof bounds
     if (isLandscape) {
-      // Landscape cloth region in landscape image coords (2752x1536)
-      // Centered on the stone's front cloth area
-      adjustedBounds = {
-        minX: bgW * 0.30,   // ~826  — left edge of cloth on stone
-        maxX: bgW * 0.70,   // ~1926 — right edge
-        minY: bgH * 0.45,   // ~691  — top of cloth drape
-        maxY: bgH * 0.65,   // ~998  — bottom of cloth
+      const landscapeClothData = this.cache.json.get('cloth_spawn_zone_landscape')
+      if (landscapeClothData?.bounds) {
+        adjustedBounds = landscapeClothData.bounds
+      } else {
+        adjustedBounds = {
+          minX: bgW * 0.30,
+          maxX: bgW * 0.70,
+          minY: bgH * 0.45,
+          maxY: bgH * 0.65,
+        }
       }
     } else {
       adjustedBounds = bounds
@@ -394,32 +398,48 @@ export class RewardRoomScene extends Phaser.Scene {
   private computeClothLayout(count: number, cx: number, cy: number, w: number, h: number): Array<{x: number, y: number}> {
     if (count <= 0) return []
 
-    // Place items using predefined scatter positions across the cloth
-    // These are normalized offsets from center (-0.5 to 0.5 range)
-    const scatterPatterns: Record<number, Array<{dx: number, dy: number}>> = {
-      1: [{ dx: 0, dy: 0 }],
-      2: [{ dx: -0.25, dy: -0.05 }, { dx: 0.25, dy: 0.08 }],
-      3: [{ dx: -0.32, dy: 0.10 }, { dx: 0.05, dy: -0.15 }, { dx: 0.30, dy: 0.12 }],
-      4: [
-        { dx: -0.30, dy: -0.18 }, { dx: 0.22, dy: -0.12 },
-        { dx: -0.15, dy: 0.20 }, { dx: 0.32, dy: 0.15 },
-      ],
-      5: [
-        { dx: -0.35, dy: -0.08 }, { dx: 0.0, dy: -0.22 }, { dx: 0.33, dy: -0.05 },
-        { dx: -0.20, dy: 0.22 }, { dx: 0.25, dy: 0.20 },
-      ],
-      6: [
-        { dx: -0.35, dy: -0.18 }, { dx: 0.02, dy: -0.22 }, { dx: 0.36, dy: -0.12 },
-        { dx: -0.28, dy: 0.20 }, { dx: 0.08, dy: 0.22 }, { dx: 0.35, dy: 0.18 },
-      ],
+    const positions: Array<{x: number, y: number}> = []
+    const minDist = Math.min(w, h) / (count <= 2 ? 3 : count <= 4 ? 3.5 : 4)
+    const maxAttempts = 100
+
+    for (let i = 0; i < count; i++) {
+      let bestPos = { x: cx, y: cy }
+      let placed = false
+
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        const angle = Math.random() * Math.PI * 2
+        const radiusX = (Math.random() * 0.42 + 0.05) * w
+        const radiusY = (Math.random() * 0.42 + 0.05) * h
+        const x = cx + Math.cos(angle) * radiusX
+        const y = cy + Math.sin(angle) * radiusY
+
+        let tooClose = false
+        for (const existing of positions) {
+          const dx = x - existing.x
+          const dy = y - existing.y
+          if (Math.sqrt(dx * dx + dy * dy) < minDist) {
+            tooClose = true
+            break
+          }
+        }
+
+        if (!tooClose) {
+          bestPos = { x, y }
+          placed = true
+          break
+        }
+      }
+
+      if (!placed) {
+        const angle = (i / count) * Math.PI * 2 + Math.random() * 0.3
+        const r = Math.min(w, h) * 0.3
+        bestPos = { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r }
+      }
+
+      positions.push(bestPos)
     }
 
-    const pattern = scatterPatterns[Math.min(count, 6)] ?? scatterPatterns[6]
-
-    return pattern.slice(0, count).map(p => ({
-      x: cx + p.dx * w * 0.85 + (Math.random() - 0.5) * 10,
-      y: cy + p.dy * h * 0.85 + (Math.random() - 0.5) * 10,
-    }))
+    return positions
   }
 
   private createItemAt(
@@ -470,6 +490,7 @@ export class RewardRoomScene extends Phaser.Scene {
         alpha: 1,
         scaleX: targetScaleX,
         scaleY: targetScaleY,
+        angle: { from: 0, to: Phaser.Math.Between(-8, 8) },
         duration: 350,
         ease: 'Back.easeOut',
       })

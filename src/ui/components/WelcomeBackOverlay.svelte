@@ -79,11 +79,11 @@
     line-height: 60px;
     font-size: 28px;
     color: white;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     margin-bottom: 16px;
   }
   .welcome-title {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 16px;
     color: #e94560;
     margin: 0 0 12px;
@@ -114,7 +114,7 @@
     margin-bottom: 12px;
   }
   .reward-amount {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 20px;
     color: #e94560;
     margin: 0 0 8px;
@@ -130,7 +130,7 @@
     border: none;
     padding: 12px 28px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
     cursor: pointer;
     pointer-events: auto;

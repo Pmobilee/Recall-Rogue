@@ -4,7 +4,7 @@
 
 import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
-import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice } from './turnManager';
+import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice, revertTransmutedCards } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard, shuffleFactsAtEncounterEnd } from './deckManager';
 import { createEnemy } from './enemyManager';
@@ -20,7 +20,7 @@ import {
   playerSave,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER, POST_ENCOUNTER_HEAL_CAP, getBalanceValue, STARTER_DECK_COMPOSITION } from '../data/balance';
+import { HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, POST_ENCOUNTER_HEAL_CAP, getBalanceValue, STARTER_DECK_COMPOSITION } from '../data/balance';
 import { generateCurrencyReward } from './encounterRewards';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
@@ -344,16 +344,35 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
             funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
           });
         } else {
-          // Single curated deck — build general pool but stamp the deck's domain onto cards.
-          activeRunPool = buildGeneralRunPool(reviewStates, {
-            categoryFilters,
-            funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
-          });
-          const curatedDeck = getCuratedDeck(studyDeckId);
-          if (curatedDeck) {
-            const deckDomain = curatedDeck.domain as FactDomain;
-            for (const card of activeRunPool) {
-              card.domain = deckDomain;
+          // Single curated deck.
+          // Check if it's a vocabulary deck (ID starts with a known language prefix).
+          const LANG_PREFIX_TO_CODE: Record<string, string> = {
+            japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',
+            spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
+            czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
+            arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
+          };
+          const deckPrefix = studyDeckId.indexOf('_') > 0 ? studyDeckId.substring(0, studyDeckId.indexOf('_')) : studyDeckId;
+          const langCode = LANG_PREFIX_TO_CODE[deckPrefix];
+
+          if (langCode) {
+            // Vocabulary deck — use language-specific pool so facts have language field
+            activeRunPool = buildLanguageRunPool(langCode, reviewStates, {
+              categoryFilters,
+              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+            });
+          } else {
+            // Knowledge curated deck — build general pool and stamp domain
+            activeRunPool = buildGeneralRunPool(reviewStates, {
+              categoryFilters,
+              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+            });
+            const curatedDeck = getCuratedDeck(studyDeckId);
+            if (curatedDeck) {
+              const deckDomain = curatedDeck.domain as FactDomain;
+              for (const card of activeRunPool) {
+                card.domain = deckDomain;
+              }
             }
           }
         }
@@ -484,13 +503,9 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     ascensionModifiers.enemyHpMultiplier *
     (ascensionTemplate.category === 'boss' ? ascensionModifiers.bossHpMultiplier : 1)
   );
-  // Early mini-bosses (floors 1-3) have reduced HP for smoother difficulty curve
-  if (ascensionTemplate.category === 'mini_boss' && run.floor.currentFloor <= 3) {
-    enemyHpMultiplier *= EARLY_MINI_BOSS_HP_MULTIPLIER;
-  }
-  // Roll difficulty variance for common enemies (0.8-1.2x HP and damage)
-  const difficultyVariance = ascensionTemplate.category === 'common'
-    ? 0.8 + Math.random() * 0.4
+  // Roll difficulty variance for common and elite enemies (0.85-1.15x HP and damage)
+  const difficultyVariance = (ascensionTemplate.category === 'common' || ascensionTemplate.category === 'elite')
+    ? 0.85 + Math.random() * 0.30
     : 1.0;
   const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance });
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp, run.globalTurnCounter ?? 1);
@@ -540,6 +555,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   }
   if (encounterStartFx.bonusAP > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + encounterStartFx.bonusAP);
+  }
+  // hollow_armor: grant starting block at encounter start (block gain disabled after turn 0)
+  if (encounterStartFx.startingBlock) {
+    turnState.playerState.shield += encounterStartFx.startingBlock;
   }
 
   turnState.activePassives = [];
@@ -599,6 +618,14 @@ export function handlePlayCard(
       extraCardsDrawn?: number;
       statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
     }>;
+  };
+  pendingCardPick?: {
+    type: string;
+    sourceCardId: string;
+    candidates: Card[];
+    pickCount: number;
+    allowSkip: boolean;
+    title: string;
   };
 } {
   const turnState = get(activeTurnState);
@@ -830,6 +857,8 @@ export function handlePlayCard(
 
       activeRunState.set(run);
     }
+    // Revert any Transmute-transformed cards back to their original form before next encounter
+    if (activeDeck) revertTransmutedCards(activeDeck);
     setTimeout(() => {
       activeTurnState.set(null);
       notifyEncounterComplete('victory');
@@ -855,6 +884,7 @@ export function handlePlayCard(
   return {
     curedCursedFact: result.curedCursedFact ?? false,
     pendingChoice: result.pendingChoice,
+    pendingCardPick: result.pendingCardPick,
   };
 }
 

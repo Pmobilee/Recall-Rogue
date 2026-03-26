@@ -56,6 +56,14 @@ import {
   resolvePrismaticShardApBonus,
   resolveDoubleDownBonus,
   resolveDrawBias,
+  resolveEncounterStartEffects,
+  resolveShieldModifiers,
+  resolveChargeWrongEffects,
+  resolveChainCompleteEffects,
+  resolveHealModifiers,
+  resolveHpLossEffects,
+  resolveExhaustEffects,
+  resolveChainBreakEffects,
 } from './relicEffectResolver';
 
 /** Maps a status effect type to its apply audio cue. No-ops for unmapped types. */
@@ -285,6 +293,17 @@ export interface TurnState {
    * Threaded in from encounterBridge at encounter start.
    */
   characterLevel: number;
+  /**
+   * bloodletter relic: armed flag — set to true when player takes self-damage with bloodletter held.
+   * The next attack this turn gets +3 damage. Cleared at turn start.
+   */
+  bloodletterArmed: boolean;
+  /**
+   * quiz_master relic: number of correctly Charged cards this turn.
+   * Used by resolveTurnEndEffects to grant +2 AP next turn if 3+ correct Charges.
+   * Cleared at turn start.
+   */
+  chargeCorrectsThisTurn: number;
 }
 
 export interface PlayCardResult {
@@ -318,6 +337,18 @@ export interface PlayCardResult {
       extraCardsDrawn?: number;
       statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
     }>;
+  };
+  /**
+   * Card picker deferred choice — when set, the UI shows CardPickerOverlay with candidate cards.
+   * Bubbled up from CardEffectResult.pendingCardPick.
+   */
+  pendingCardPick?: {
+    type: string;
+    sourceCardId: string;
+    candidates: import('../data/card-types').Card[];
+    pickCount: number;
+    allowSkip: boolean;
+    title: string;
   };
 }
 
@@ -504,6 +535,8 @@ export function startEncounter(
     totalChargesThisRun: 0,
     dejaVuUsedThisEncounter: false,
     characterLevel: 0,
+    bloodletterArmed: false,
+    chargeCorrectsThisTurn: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -718,6 +751,9 @@ export function playCardAction(
       const prevChainLengthWrong = getCurrentChainLength();
       extendOrResetChain(null); // null chainType resets chain
       if (prevChainLengthWrong > 0) playCardAudio('chain-break');
+      if (prevChainLengthWrong > 0 && turnState.activeRelicIds.size > 0) {
+        resolveChainBreakEffects(turnState.activeRelicIds, { previousChainLength: prevChainLengthWrong });
+      }
       const chainState = getChainState();
       turnState.chainMultiplier = 1.0;
       turnState.chainLength = chainState.length;
@@ -879,6 +915,32 @@ export function playCardAction(
     if (fizzledEffect.shieldApplied > 0) applyShield(playerState, fizzledEffect.shieldApplied);
     if (fizzledEffect.healApplied > 0) healPlayer(playerState, fizzledEffect.healApplied);
 
+    // resolveChargeWrongEffects: volatile_core, scholars_gambit, glass_lens, mnemonic_scar, etc.
+    if (playMode === 'charge' && turnState.activeRelicIds.size > 0 && card.factId) {
+      const runStateForCW = get(activeRunState);
+      const factPreviouslyCorrect = runStateForCW?.factsAnsweredCorrectly?.has(card.factId) ?? false;
+      const chargeWrongFx = resolveChargeWrongEffects(turnState.activeRelicIds, {
+        factId: card.factId,
+        factPreviouslyCorrect,
+      });
+      if (chargeWrongFx.selfDamage > 0) {
+        playerState.hp = Math.max(0, playerState.hp - chargeWrongFx.selfDamage);
+        if (playerState.hp <= 0) {
+          turnState.result = 'defeat';
+          turnState.phase = 'encounter_end';
+        }
+      }
+      if (chargeWrongFx.enemyDamage > 0) {
+        const cwEnemyResult = applyDamageToEnemy(enemy, chargeWrongFx.enemyDamage);
+        fizzledEffect.enemyDefeated = cwEnemyResult.defeated;
+        turnState.damageDealtThisTurn += chargeWrongFx.enemyDamage;
+        if (cwEnemyResult.defeated) {
+          turnState.result = 'victory';
+          turnState.phase = 'encounter_end';
+        }
+      }
+    }
+
     // Step 5a (AR-59.13): onPlayerChargeWrong callback — normal mode, Charge plays only
     if (playMode === 'charge' && enemy.template.onPlayerChargeWrong) {
       const ctx: EnemyReactContext = {
@@ -969,6 +1031,9 @@ export function playCardAction(
     const prevChainLengthQuick = getCurrentChainLength();
     extendOrResetChain(null);
     if (prevChainLengthQuick > 0) playCardAudio('chain-break');
+    if (prevChainLengthQuick > 0 && turnState.activeRelicIds.size > 0) {
+      resolveChainBreakEffects(turnState.activeRelicIds, { previousChainLength: prevChainLengthQuick });
+    }
   }
   const chainState = getChainState();
   turnState.chainMultiplier = currentChainMultiplier;
@@ -999,6 +1064,24 @@ export function playCardAction(
   const prismaticApBonus = resolvePrismaticShardApBonus(turnState.activeRelicIds, chainState.length);
   if (prismaticApBonus > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + prismaticApBonus);
+  }
+
+  // Chain complete effects: fire on each Charge card that extends the chain to 2+
+  // chain_addict: heal 5 HP on chains of 3+; resonance_crystal/chain_reactor: handled elsewhere
+  if (playMode === 'charge' && chainState.length >= 2 && turnState.activeRelicIds.size > 0) {
+    const chainCompleteFx = resolveChainCompleteEffects(turnState.activeRelicIds, {
+      chainLength: chainState.length,
+      firstCardId: card.id,
+    });
+    if ((chainCompleteFx.healAmount ?? 0) > 0) {
+      const chainHealAmt = chainCompleteFx.healAmount!;
+      playerState.hp = Math.min(playerState.maxHP, playerState.hp + chainHealAmt);
+      turnState.turnLog.push({
+        type: 'heal',
+        message: `Chain Addict: healed ${chainHealAmt} HP (chain length ${chainState.length})`,
+        value: chainHealAmt,
+      });
+    }
   }
 
   const speedBonus = speedBonusEarned ? 1.5 : 1.0;
@@ -1096,6 +1179,58 @@ export function playCardAction(
         mechanicId: effect.pendingChoice.mechanicId,
         options: effect.pendingChoice.options,
       },
+    };
+  }
+
+  // Pending card pick: Transmute, Adapt, Conjure, Scavenge, Forge, Mimic — player picks from candidates.
+  // The card has been played (removed from hand, AP deducted) but the effect is not yet resolved.
+  // Return early; the UI shows CardPickerOverlay and applies the effect after selection.
+  if (effect.pendingCardPick) {
+    // Populate candidates from game state for mechanics that need live deck data
+    if (effect.pendingCardPick.type === 'scavenge') {
+      const available = deck.discardPile.filter(c => c.id !== effect.pendingCardPick!.sourceCardId);
+      const shuffled = [...available].sort(() => Math.random() - 0.5);
+      effect.pendingCardPick.candidates = shuffled.slice(0, 3);
+    }
+    if (effect.pendingCardPick.type === 'forge') {
+      const available = deck.hand.filter(c => c.id !== effect.pendingCardPick!.sourceCardId);
+      const shuffled = [...available].sort(() => Math.random() - 0.5);
+      effect.pendingCardPick.candidates = shuffled.slice(0, 3);
+    }
+    if (effect.pendingCardPick.type === 'mimic') {
+      const available = deck.discardPile.filter(c => c.id !== effect.pendingCardPick!.sourceCardId);
+      const masteryLvl = card.masteryLevel ?? 0;
+      let selected: Card[];
+      if (masteryLvl >= 2) {
+        // Show best 3 (highest baseEffectValue)
+        selected = [...available].sort((a, b) => (b.baseEffectValue ?? 0) - (a.baseEffectValue ?? 0)).slice(0, 3);
+      } else {
+        // Random 3
+        selected = [...available].sort(() => Math.random() - 0.5).slice(0, 3);
+      }
+      effect.pendingCardPick.candidates = selected;
+    }
+    turnState.cardsPlayedThisTurn += 1;
+    if (playMode === 'charge') {
+      enemy.playerChargedThisTurn = true;
+      turnState.encounterChargesTotal += 1;
+    }
+    if (isChargeCorrect) {
+      turnState.consecutiveCorrectThisEncounter += 1;
+      turnState.cardsCorrectThisTurn += 1;
+      turnState.totalChargesThisRun += 1;
+    }
+    return {
+      effect,
+      enemyDefeated: false,
+      fizzled: false,
+      blocked: false,
+      isPerfectTurn: turnState.isPerfectTurn,
+      turnState,
+      usedFreeCharge,
+      masteryChange: null,
+      masteryChangedCardId: null,
+      pendingCardPick: effect.pendingCardPick,
     };
   }
 
@@ -1225,6 +1360,39 @@ export function playCardAction(
         cardId,
       });
     }
+
+    // glass_lens — +50% to charge-correct effect value
+    if ((chargeFx.chargeCorrectBonusPercent ?? 0) > 0) {
+      const bonusMult = 1 + chargeFx.chargeCorrectBonusPercent! / 100;
+      if (effect.damageDealt > 0) {
+        effect.damageDealt = Math.round(effect.damageDealt * bonusMult);
+        effect.finalValue = Math.round(effect.finalValue * bonusMult);
+        effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+      } else if (effect.shieldApplied > 0) {
+        effect.shieldApplied = Math.round(effect.shieldApplied * bonusMult);
+        effect.finalValue = effect.shieldApplied;
+      } else if (effect.healApplied > 0) {
+        effect.healApplied = Math.round(effect.healApplied * bonusMult);
+        effect.finalValue = effect.healApplied;
+      }
+    }
+
+    // knowledge_tax — -10% charge-correct effect value + gold bonus per Charge
+    if ((chargeFx.chargeCorrectPenaltyPercent ?? 0) > 0) {
+      const penaltyMult = 1 - chargeFx.chargeCorrectPenaltyPercent! / 100;
+      if (effect.damageDealt > 0) {
+        effect.damageDealt = Math.max(1, Math.round(effect.damageDealt * penaltyMult));
+        effect.finalValue = Math.max(1, Math.round(effect.finalValue * penaltyMult));
+        effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+      } else if (effect.shieldApplied > 0) {
+        effect.shieldApplied = Math.max(0, Math.round(effect.shieldApplied * penaltyMult));
+        effect.finalValue = effect.shieldApplied;
+      } else if (effect.healApplied > 0) {
+        effect.healApplied = Math.max(0, Math.round(effect.healApplied * penaltyMult));
+        effect.finalValue = effect.healApplied;
+      }
+    }
+    // knowledge_tax gold bonus is handled in encounterBridge via goldBonus field
   }
 
   // double_down — once per encounter: correct Charge → 5× damage, wrong Charge → 0.3× damage
@@ -1366,11 +1534,37 @@ export function playCardAction(
   if (effect.selfDamage && effect.selfDamage > 0) {
     // Reckless self-damage ignores shield.
     playerState.hp = Math.max(0, playerState.hp - effect.selfDamage);
+    // on_hp_loss: pain_conduit reflect + bloodletter arm (self-damage source)
+    if (turnState.activeRelicIds.size > 0) {
+      const selfHpLossFx = resolveHpLossEffects(turnState.activeRelicIds, {
+        hpLost: effect.selfDamage,
+        source: 'self',
+      });
+      if (selfHpLossFx.reflectDamage > 0) {
+        const selfReflectResult = applyDamageToEnemy(enemy, selfHpLossFx.reflectDamage);
+        effect.enemyDefeated = selfReflectResult.defeated;
+        turnState.damageDealtThisTurn += selfHpLossFx.reflectDamage;
+      }
+      if (selfHpLossFx.nextAttackBonus > 0) {
+        turnState.bloodletterArmed = true;
+      }
+    }
   }
 
   if (effect.shieldApplied > 0) {
-    playCardAudio('shield-gain');
-    applyShield(playerState, effect.shieldApplied);
+    // hollow_armor: block gain is disabled after turn 0 (only starting block is allowed)
+    const shieldMods = turnState.activeRelicIds.size > 0
+      ? resolveShieldModifiers(turnState.activeRelicIds, {
+          shieldCardPlayCountThisEncounter: 0,
+          encounterTurnNumber: turnState.encounterTurnNumber,
+        })
+      : null;
+    if (shieldMods?.blockGainDisabled) {
+      effect.shieldApplied = 0;
+    } else {
+      playCardAudio('shield-gain');
+      applyShield(playerState, effect.shieldApplied);
+    }
   }
   if (effect.shieldApplied > 0 && turnState.ascensionShieldCardMultiplier !== 1) {
     const adjustedShield = Math.max(0, Math.round(effect.shieldApplied * turnState.ascensionShieldCardMultiplier));
@@ -1444,7 +1638,7 @@ export function playCardAction(
   if (effect.applyOverclock) turnState.overclockReady = true;
   if (effect.applySlow) turnState.slowEnemyIntent = true;
   if (effect.applyForesight) turnState.foresightTurnsRemaining = 2;
-  if (effect.applyTransmute) transmuteWeakestHandCard(turnState);
+  // applyTransmute removed — Transmute now uses CardPickerOverlay (pendingCardPick flow)
 
   // cleanse: remove all debuff-type status effects from player
   if (effect.applyCleanse) {
@@ -1622,6 +1816,13 @@ export function playCardAction(
         message: `${card.mechanicName ?? card.mechanicId}: exhausted after Charge`,
         cardId,
       });
+      // on_exhaust: exhaustion_engine draws 2 extra cards
+      if (turnState.activeRelicIds.size > 0) {
+        const exhaustFx = resolveExhaustEffects(turnState.activeRelicIds);
+        if (exhaustFx.bonusCardDraw > 0) {
+          drawHand(deck, exhaustFx.bonusCardDraw);
+        }
+      }
     }
   }
 
@@ -1794,6 +1995,10 @@ export function playCardAction(
     // but only for cards of the same chain type (color-specific momentum).
     if (playMode === 'charge' && CHAIN_MOMENTUM_ENABLED) {
       turnState.nextChargeFreeForChainType = card.chainType ?? null;
+    }
+    // quiz_master: track charge-correct count for +2 AP next turn trigger
+    if (playMode === 'charge') {
+      turnState.chargeCorrectsThisTurn = (turnState.chargeCorrectsThisTurn ?? 0) + 1;
     }
   }
   turnState.isPerfectTurn = (
@@ -2000,6 +2205,24 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     playerDefeated = damageResult.defeated;
     blockAbsorbedAll = shieldBefore > 0 && damageResult.actualDamage === 0;
 
+    // on_hp_loss: pain_conduit reflect + bloodletter arm
+    if (damageResult.actualDamage > 0 && turnState.activeRelicIds.size > 0) {
+      const hpLossFx = resolveHpLossEffects(turnState.activeRelicIds, {
+        hpLost: damageResult.actualDamage,
+        source: 'enemy',
+      });
+      if (hpLossFx.reflectDamage > 0) {
+        const reflectResult = applyDamageToEnemy(enemy, hpLossFx.reflectDamage);
+        if (reflectResult.defeated) {
+          turnState.result = 'victory';
+          turnState.phase = 'encounter_end';
+        }
+      }
+      if (hpLossFx.nextAttackBonus > 0) {
+        turnState.bloodletterArmed = true;
+      }
+    }
+
     if (damageTakenFx.thornReflect > 0) {
       applyDamageToEnemy(enemy, damageTakenFx.thornReflect);
       turnState.triggeredRelicId = 'thorned_vest';
@@ -2174,6 +2397,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     damageDealtThisTurn: turnState.damageDealtThisTurn,
     cardsPlayedThisTurn: turnState.cardsPlayedThisTurn,
     isPerfectTurn: turnState.isPerfectTurn,
+    currentBlock: playerState.shield,
+    chargeCorrectsThisTurn: turnState.chargeCorrectsThisTurn ?? 0,
   });
   const carryShield = turnEndFx.blockCarries
     ? playerState.shield
@@ -2183,6 +2408,26 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   if (turnEndFx.bonusApFromAfterimage > 0) {
     turnState.bonusApNextTurn += turnEndFx.bonusApFromAfterimage;
     turnState.triggeredRelicId = 'afterimage';
+  }
+
+  // overclocked_mind: discard 2 random cards from hand at turn end
+  if ((turnEndFx.forceDiscard ?? 0) > 0) {
+    for (let i = 0; i < turnEndFx.forceDiscard! && turnState.deck.hand.length > 0; i++) {
+      const randomIdx = Math.floor(Math.random() * turnState.deck.hand.length);
+      const discarded = turnState.deck.hand.splice(randomIdx, 1)[0];
+      turnState.deck.discardPile.push(discarded);
+    }
+  }
+
+  // thorn_mantle: grant 4 thorns when player has 10+ block at turn end
+  if ((turnEndFx.grantThorns ?? 0) > 0) {
+    turnState.thornsActive = true;
+    turnState.thornsValue = (turnState.thornsValue ?? 0) + turnEndFx.grantThorns!;
+  }
+
+  // quiz_master: +2 AP next turn if 3+ correct Charges this turn
+  if ((turnEndFx.bonusApNextTurn ?? 0) > 0) {
+    turnState.bonusApNextTurn = (turnState.bonusApNextTurn ?? 0) + turnEndFx.bonusApNextTurn!;
   }
 
   resetTurnState(playerState);
@@ -2205,6 +2450,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.firstAttackUsed = false;
   turnState.apCurrent = Math.min(turnState.apMax, START_AP_PER_TURN + turnState.bonusApNextTurn);
   turnState.bonusApNextTurn = 0;
+  // Reset per-turn relic tracking fields
+  turnState.bloodletterArmed = false;
+  turnState.chargeCorrectsThisTurn = 0;
 
   // Capture chainType BEFORE reset — used by tag_magnet to bias the next draw
   const chainTypeBeforeReset = turnState.chainType;
@@ -2449,5 +2697,69 @@ export function applyPendingChoice(
   }
 
   return { damageDealt, shieldApplied, extraCardsDrawn, enemyDefeated };
+}
+
+/**
+ * Resolve a Transmute card pick — replace the source card in hand with the chosen card(s).
+ * The chosen card is marked as transmuted so it can revert at encounter end.
+ */
+export function resolveTransmutePick(
+  turnState: TurnState,
+  sourceCardId: string,
+  selectedCards: Card[],
+): void {
+  const { hand, discardPile } = turnState.deck;
+
+  // Find the transmute card (might be in discard since it was "played")
+  const discardIdx = discardPile.findIndex(c => c.id === sourceCardId);
+  let sourceCard: Card | undefined;
+
+  if (discardIdx >= 0) {
+    sourceCard = discardPile[discardIdx];
+    discardPile.splice(discardIdx, 1);
+  }
+
+  if (!sourceCard) return;
+
+  // Create transformed card(s) and add to hand
+  for (const selected of selectedCards) {
+    const transformed: Card = {
+      ...selected,
+      id: sourceCard.id + '_transmuted_' + Math.random().toString(36).slice(2, 6),
+      factId: sourceCard.factId, // Keep the fact binding
+      isTransmuted: true,
+      originalCard: { ...sourceCard }, // Save original for revert
+    };
+    hand.push(transformed);
+  }
+}
+
+/**
+ * Revert all transmuted cards back to their original form.
+ * Called at encounter end.
+ */
+export function revertTransmutedCards(deck: CardRunState): void {
+  const revert = (cards: Card[]): Card[] => {
+    const result: Card[] = [];
+    const reverted = new Set<string>();
+
+    for (const card of cards) {
+      if (card.isTransmuted && card.originalCard) {
+        // Only add the original once (mastery 3 splits into 2, merge back to 1)
+        const origId = card.originalCard.id;
+        if (!reverted.has(origId)) {
+          result.push({ ...card.originalCard });
+          reverted.add(origId);
+        }
+      } else {
+        result.push(card);
+      }
+    }
+    return result;
+  };
+
+  deck.hand = revert(deck.hand);
+  deck.drawPile = revert(deck.drawPile);
+  deck.discardPile = revert(deck.discardPile);
 }
 

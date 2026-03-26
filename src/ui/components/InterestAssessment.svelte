@@ -189,7 +189,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     z-index: 200;
     overflow-y: auto;
     pointer-events: auto;

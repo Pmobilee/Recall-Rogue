@@ -89,7 +89,7 @@
   }
   .tap-hint {
     color: #a0a0a0;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     margin-top: 20px;
     animation: blink 1.5s ease-in-out infinite;
@@ -107,7 +107,7 @@
     margin-bottom: 16px;
   }
   .reward-title {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 14px;
     color: #e94560;
     margin: 0 0 8px;
@@ -125,7 +125,7 @@
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 10px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     text-transform: uppercase;
     margin-bottom: 16px;
   }
@@ -137,7 +137,7 @@
     border: none;
     padding: 10px 32px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 12px;
     cursor: pointer;
   }

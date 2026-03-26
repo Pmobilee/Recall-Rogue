@@ -1,0 +1,1247 @@
+deck_id: us_states
+name: "US States"
+domain: geography
+sub_domain: united_states
+target_facts: 85
+minimum_facts: 70
+
+# Sourcing & licensing (MANDATORY)
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/List_of_U.S._states_by_date_of_admission_to_the_Union
+    license: CC-BY-SA-4.0
+    usage: fact text, explanations, historical context, wow factors
+  - name: Wikidata
+    url: https://www.wikidata.org/wiki/Q30
+    license: CC0
+    usage: structured data (capitals, admission dates, nicknames, populations, area)
+  - name: US Census Bureau
+    url: https://www.census.gov/
+    license: public domain
+    usage: population figures (2020 Census), area data
+
+asset_sources:
+  - type: state_illustrations
+    source: custom pixel art
+    license: original work
+    note: "Generate via ComfyUI if needed"
+
+# === VERIFIED SOURCE DATA (from Wikidata + Wikipedia + US Census 2020) ===
+# Notes fields: world-knowledge educational facts for fact-writers.
+# Admission order derived from admission dates.
+# "Capital is NOT the largest city" flagged explicitly where applicable.
+
+source_data:
+
+  # -------------------------------------------------------------------------
+  # NORTHEAST (11 states) — original colonies + early industrial corridor
+  # -------------------------------------------------------------------------
+  northeast:
+    Maine:
+      capital: Augusta
+      nickname: "The Pine Tree State"
+      admission_date: "1820-03-15"
+      admission_order: 23
+      region: Northeast
+      population: 1362359
+      area_km2: 91646
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Portland is Maine's largest city, not Augusta.
+        Maine is the only US state that borders exactly one other state (New Hampshire).
+        Was part of Massachusetts until 1820, when it was admitted as a free state under
+        the Missouri Compromise (paired with slave state Missouri to maintain Senate balance).
+        Produces ~90% of the nation's wild blueberries. Famous for lobster — Maine is
+        America's leading lobster-producing state. Easternmost state in the continental US
+        (the first place to see the sunrise). Acadia National Park is one of the most visited
+        national parks in the US. Stephen King's home state.
+
+    New Hampshire:
+      capital: Concord
+      nickname: "The Granite State"
+      admission_date: "1788-06-21"
+      admission_order: 9
+      region: Northeast
+      population: 1377529
+      area_km2: 24214
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Manchester is New Hampshire's largest city, not Concord.
+        Was the 9th state to ratify the Constitution — its ratification put the Constitution over
+        the required 9-state threshold, making it officially effective. "Live Free or Die" is the
+        state motto (considered the most striking state motto in the US). Holds the first
+        presidential primary of every election cycle — enormous political influence. Mount
+        Washington (1917 m) held the world wind speed record (231 mph / 372 km/h) for 62 years
+        until 1996. The White Mountains are a major winter tourism destination.
+
+    Vermont:
+      capital: Montpelier
+      nickname: "The Green Mountain State"
+      admission_date: "1791-03-04"
+      admission_order: 14
+      region: Northeast
+      population: 643077
+      area_km2: 24923
+      notes: >
+        Montpelier is the smallest state capital by population in the entire United States
+        (fewer than 8,000 people). Vermont was an independent republic (the Vermont Republic)
+        from 1777 to 1791 before joining the US — the first state admitted after the original
+        13 colonies. Leading maple syrup producer in the US (produces over 40% of US supply).
+        The name comes from French "Verts Monts" (Green Mountains). Ben & Jerry's ice cream
+        was founded in Burlington, Vermont (1978). Vermont was the first state to abolish
+        adult slavery in its constitution (1777, as an independent republic).
+
+    Massachusetts:
+      capital: Boston
+      nickname: "The Bay State"
+      admission_date: "1788-02-06"
+      admission_order: 6
+      region: Northeast
+      population: 7029917
+      area_km2: 27336
+      notes: >
+        One of the original 13 colonies and a center of the American Revolution. Boston
+        was the site of the Boston Tea Party (1773), the Boston Massacre (1770), and the
+        start of the revolutionary war (Lexington and Concord, 1775). Home to Harvard
+        University (1636, oldest in the US) and MIT. The Pilgrims landed at Plymouth Rock
+        (1620). Salem witch trials took place in 1692. Basketball and volleyball were both
+        invented in Massachusetts (Springfield). Cape Cod and Martha's Vineyard are famous
+        tourist destinations. The Kennedy family's political dynasty is rooted here.
+
+    Rhode Island:
+      capital: Providence
+      nickname: "The Ocean State"
+      admission_date: "1790-05-29"
+      admission_order: 13
+      region: Northeast
+      population: 1097379
+      area_km2: 3144
+      notes: >
+        Smallest state in the US by area (~4,001 km² total). Official full name is "Rhode
+        Island and Providence Plantations" — the longest official state name (though
+        "Plantations" was voted to be dropped in 2020). Last of the original 13 colonies
+        to ratify the Constitution (1790) and only did so after the new government threatened
+        trade sanctions. Coffeemilk (coffee syrup + milk) is the official state drink.
+        Newport was the Gilded Age resort for America's wealthiest families (the "cottages"
+        were actually mansions). Roger Williams founded Providence in 1636 as a colony of
+        religious tolerance.
+
+    Connecticut:
+      capital: Hartford
+      nickname: "The Constitution State"
+      additional_nicknames: ["The Nutmeg State", "The Land of Steady Habits"]
+      admission_date: "1788-01-09"
+      admission_order: 5
+      region: Northeast
+      population: 3605944
+      area_km2: 14357
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Bridgeport is Connecticut's largest city, not Hartford.
+        One of the original 13 colonies. The Fundamental Orders of Connecticut (1638) is
+        considered one of the first written constitutions in the world. Home to Yale University
+        (1701). Mark Twain lived and wrote in Hartford. Nickname "Nutmeg State" comes from
+        alleged colonial-era merchants who sold wooden nutmegs as real ones (a tall tale of
+        Yankee shrewdness). The highest per-capita income state in the US. ESPN headquarters
+        is in Bristol, Connecticut.
+
+    New York:
+      capital: Albany
+      nickname: "The Empire State"
+      admission_date: "1788-07-26"
+      admission_order: 11
+      region: Northeast
+      population: 20201249
+      area_km2: 141300
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — New York City is vastly larger than Albany; Albany
+        is the capital. New York City is the most populous city in the US (~8.3 million). The
+        Statue of Liberty was a gift from France (1886). Ellis Island processed ~12 million
+        immigrants (1892-1954). Wall Street and the NYSE are the world's largest stock exchange.
+        Niagara Falls is on the New York/Ontario border. The Erie Canal (1825) connected the
+        Great Lakes to the Atlantic and made New York City the dominant US port. Broadway is
+        the center of American theater. New York was the nation's first capital (1789-1790).
+
+    New Jersey:
+      capital: Trenton
+      nickname: "The Garden State"
+      admission_date: "1787-12-18"
+      admission_order: 3
+      region: Northeast
+      population: 9288994
+      area_km2: 22591
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Newark is New Jersey's largest city, not Trenton.
+        Despite the "Garden State" nickname, New Jersey is the most densely populated state
+        in the US. Thomas Edison built his famous Menlo Park laboratory here (invented the
+        phonograph, practical lightbulb, and motion pictures). The Battle of Trenton (1776)
+        was Washington's famous Christmas night crossing of the Delaware River. Atlantic City
+        was the original inspiration for the Monopoly board game — all street names on the
+        board are real Atlantic City streets. Princeton University is located here.
+
+    Pennsylvania:
+      capital: Harrisburg
+      nickname: "The Keystone State"
+      additional_nicknames: ["Quaker State"]
+      admission_date: "1787-12-12"
+      admission_order: 2
+      region: Northeast
+      population: 13002700
+      area_km2: 119283
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Philadelphia is Pennsylvania's largest city, not
+        Harrisburg. The Declaration of Independence was signed in Philadelphia (1776), as was
+        the US Constitution (1787). Independence Hall and the Liberty Bell are here. William
+        Penn founded Pennsylvania as a Quaker colony of religious tolerance (1681). The
+        "Keystone State" nickname comes from Pennsylvania being the central (keystone) state
+        among the original 13 colonies. The Battle of Gettysburg (1863), the bloodiest battle
+        of the Civil War, was fought here. Pittsburgh was the center of US steel production.
+        The Pennsylvania Dutch are actually German-speaking settlers ("Deutsch" = German).
+
+    Delaware:
+      capital: Dover
+      nickname: "The First State"
+      admission_date: "1787-12-07"
+      admission_order: 1
+      region: Northeast
+      population: 989948
+      area_km2: 6452
+      notes: >
+        Delaware was the FIRST state to ratify the US Constitution (December 7, 1787) —
+        hence "The First State." The smallest state by population after Wyoming (under 1 million).
+        Despite its tiny size, more than 60% of Fortune 500 companies are incorporated in
+        Delaware due to its business-friendly laws and specialized Court of Chancery (a
+        corporate law court with no juries). The Du Pont family/company has dominated
+        Delaware's economy for over 200 years. Joe Biden represented Delaware in the US
+        Senate for 36 years before becoming president.
+
+    Maryland:
+      capital: Annapolis
+      nickname: "Old Line State"
+      admission_date: "1788-04-28"
+      admission_order: 7
+      region: Northeast
+      population: 6177224
+      area_km2: 32131
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Baltimore is Maryland's largest city, not Annapolis.
+        Maryland physically surrounds Washington D.C. on three sides. The "Star-Spangled
+        Banner" (US national anthem) was written by Francis Scott Key during the Battle of
+        Baltimore (1814) — he watched the bombardment of Fort McHenry from a ship. Annapolis
+        is home to the US Naval Academy (founded 1845). Maryland was a slave state that stayed
+        in the Union during the Civil War. The Chesapeake Bay, the largest estuary in the US,
+        is famous for its blue crabs. The "Old Line State" nickname refers to Maryland troops'
+        bravery during the Revolutionary War.
+
+  # -------------------------------------------------------------------------
+  # SOUTH (16 states) — confederate states + border states + Texas + Oklahoma
+  # -------------------------------------------------------------------------
+  south:
+    Virginia:
+      capital: Richmond
+      nickname: "Old Dominion"
+      additional_nicknames: ["Mother of Presidents"]
+      admission_date: "1788-06-25"
+      admission_order: 10
+      region: South
+      population: 8631393
+      area_km2: 110862
+      notes: >
+        Called "Mother of Presidents" — 8 US presidents were born here (Washington, Jefferson,
+        Madison, Monroe, Harrison, Tyler, Taylor, Wilson). Virginia was the most important
+        colony; Jamestown (1607) was the first permanent English settlement in the Americas.
+        Richmond was the capital of the Confederacy during the Civil War. Arlington National
+        Cemetery and the Pentagon are in the Virginia suburbs of Washington D.C. The
+        Shenandoah Valley and Blue Ridge Mountains dominate western Virginia. Virginia Tech
+        and the University of Virginia (founded by Thomas Jefferson) are major universities.
+
+    West Virginia:
+      capital: Charleston
+      nickname: "Mountain State"
+      admission_date: "1863-06-20"
+      admission_order: 35
+      region: South
+      population: 1793716
+      area_km2: 62755
+      notes: >
+        West Virginia is the ONLY state created by seceding from another state during the Civil
+        War — western Virginia counties refused to secede from the Union with the rest of
+        Virginia (1863). This is why Virginia and West Virginia exist as separate states.
+        Bordered by five states (Virginia, Kentucky, Ohio, Pennsylvania, Maryland). The New
+        River Gorge (one of the deepest gorges in the eastern US) is a national park. Coal
+        mining has historically dominated the economy. The only state entirely within the
+        Appalachian Mountains. Charleston should not be confused with Charleston, South Carolina.
+
+    Kentucky:
+      capital: Frankfort
+      nickname: "Bluegrass State"
+      admission_date: "1792-06-01"
+      admission_order: 15
+      region: South
+      population: 4505836
+      area_km2: 104659
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Louisville is Kentucky's largest city, not Frankfort.
+        Home to the Kentucky Derby (held at Churchill Downs since 1875) — the oldest
+        continuously held major sporting event in the US. Produces 95% of the world's bourbon
+        whiskey. Mammoth Cave is the world's longest known cave system (over 650 km of
+        explored passages). Abraham Lincoln was born in Kentucky (though he is associated
+        with Illinois). Both Abraham Lincoln AND Jefferson Davis (Confederate president) were
+        born in Kentucky. Lexington is famous for thoroughbred horse farming.
+
+    Tennessee:
+      capital: Nashville
+      nickname: "The Volunteer State"
+      admission_date: "1796-06-01"
+      admission_order: 16
+      region: South
+      population: 6910840
+      area_km2: 109247
+      notes: >
+        Nashville is the capital AND the country music capital of the world — home to the Grand
+        Ole Opry (since 1925) and Music Row. Memphis is where Elvis Presley's Graceland is
+        located. Birthplace of the blues (Memphis) and country music (Nashville). Tennessee
+        borders 8 states — more than any other state. The Great Smoky Mountains National Park
+        (straddling Tennessee/North Carolina) is the most visited national park in the US.
+        Nickname comes from the large number of volunteers who answered Andrew Jackson's call
+        during the War of 1812. Dolly Parton is Tennessee's most beloved cultural icon.
+
+    North Carolina:
+      capital: Raleigh
+      nickname: "Tar Heel State"
+      additional_nicknames: ["Old North State"]
+      admission_date: "1789-11-21"
+      admission_order: 12
+      region: South
+      population: 10439388
+      area_km2: 139390
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Charlotte is North Carolina's largest city, not Raleigh.
+        The Wright Brothers made the world's first powered airplane flight at Kitty Hawk, NC
+        (December 17, 1903). The "Lost Colony" of Roanoke (1587) — the first English settlement
+        in America — mysteriously vanished without explanation. The Research Triangle (Raleigh,
+        Durham, Chapel Hill) is a major tech and biotech hub. Home to the University of North
+        Carolina (1789, first public university in the US to admit students). The Outer Banks
+        barrier islands are a major tourist destination. "Tar Heel" nickname comes from the
+        Civil War (North Carolina soldiers held their ground as if they had tar on their heels).
+
+    South Carolina:
+      capital: Columbia
+      nickname: "The Palmetto State"
+      admission_date: "1788-05-23"
+      admission_order: 8
+      region: South
+      population: 5118425
+      area_km2: 82931
+      notes: >
+        The first state to secede from the Union (December 20, 1860), triggering the Civil War.
+        The first shots of the Civil War were fired at Fort Sumter in Charleston Harbor (April
+        12, 1861). The palmetto tree on the state flag commemorates how Fort Moultrie (made of
+        palmetto logs) repelled a British naval attack in 1776 — the spongy logs absorbed
+        cannonballs without shattering. Charleston is one of the oldest and best-preserved
+        colonial cities in America. Famous for peaches (often more than Georgia), sweet tea,
+        and lowcountry cuisine. Hilton Head Island is a major resort destination.
+
+    Georgia:
+      capital: Atlanta
+      nickname: "Peach State"
+      admission_date: "1788-01-02"
+      admission_order: 4
+      region: South
+      population: 10711908
+      area_km2: 153909
+      notes: >
+        Despite the "Peach State" nickname, Georgia actually produces more peanuts and pecans
+        than peaches — South Carolina often produces more peaches. Atlanta is home to Coca-Cola
+        (founded 1886 in Atlanta) and CNN headquarters. Martin Luther King Jr. was born in
+        Atlanta. The 1996 Summer Olympics were held in Atlanta. Hartsfield-Jackson Atlanta
+        International Airport is typically the world's busiest airport by passenger traffic.
+        Georgia was founded as a British colony in 1733 by James Oglethorpe, partially to
+        rehabilitate debtors. The Golden Isles and Okefenokee Swamp are notable geographic features.
+
+    Florida:
+      capital: Tallahassee
+      nickname: "The Sunshine State"
+      admission_date: "1845-03-03"
+      admission_order: 27
+      region: South
+      population: 21538187
+      area_km2: 170304
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Jacksonville is Florida's largest city (and the
+        largest city by area in the contiguous US), not Tallahassee. Florida is the flattest
+        state in the US (highest point: 105 m). Home to Walt Disney World (Orlando, opened 1971),
+        the most visited theme park complex in the world. Kennedy Space Center at Cape Canaveral
+        is NASA's primary launch site. The Everglades is the largest subtropical wilderness in
+        the US. Miami is a major international gateway to Latin America. St. Augustine (1565)
+        is the oldest continuously occupied European settlement in the continental US.
+        More lightning strikes than any other US state.
+
+    Alabama:
+      capital: Montgomery
+      nickname: "Heart of Dixie"
+      additional_nicknames: ["The Yellowhammer State"]
+      admission_date: "1819-12-14"
+      admission_order: 22
+      region: South
+      population: 5024279
+      area_km2: 135765
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Birmingham is Alabama's largest city, not Montgomery.
+        Montgomery was the first capital of the Confederacy (before Richmond, Virginia). The
+        Civil Rights Movement: Rosa Parks refused to give up her bus seat in Montgomery (1955),
+        triggering the Montgomery Bus Boycott. Martin Luther King Jr. led the Selma to
+        Montgomery marches (1965). The US Space & Rocket Center in Huntsville — where much of
+        NASA's Saturn V rocket (which sent men to the Moon) was developed. The University of
+        Alabama Crimson Tide football program is one of the most successful in college football history.
+
+    Mississippi:
+      capital: Jackson
+      nickname: "The Magnolia State"
+      admission_date: "1817-12-10"
+      admission_order: 20
+      region: South
+      population: 2961279
+      area_km2: 125443
+      notes: >
+        Named after the Mississippi River (which forms its western border). The state name
+        comes from Ojibwe "Misi-ziibi" (great river). The Mississippi Delta (northwest corner
+        of the state) is the birthplace of the blues — musicians like Robert Johnson, Muddy
+        Waters, B.B. King, and Elvis Presley trace their roots here. Despite being named after
+        it, Mississippi doesn't have as much river frontage as Missouri (which is entirely along
+        the river's west bank). Vicksburg was the site of a pivotal Civil War siege (1863).
+        Consistently ranked among the lowest states in median income and education metrics.
+
+    Louisiana:
+      capital: Baton Rouge
+      nickname: "Pelican State"
+      admission_date: "1812-04-30"
+      admission_order: 18
+      region: South
+      population: 4657757
+      area_km2: 135382
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — New Orleans is Louisiana's largest city, not Baton Rouge.
+        Named after King Louis XIV of France. The only state with civil law tradition (based on
+        French/Spanish civil law) rather than English common law — still uses "parishes" instead
+        of "counties." New Orleans is below sea level and protected by levees. Hurricane Katrina
+        (2005) caused catastrophic flooding and ~1,800 deaths. Mardi Gras in New Orleans is
+        one of the world's largest festivals. Louisiana Creole and Cajun cuisine are globally
+        renowned. The Mississippi River delta (where the river meets the Gulf) is in Louisiana.
+        Jazz music developed in New Orleans in the early 1900s.
+
+    Arkansas:
+      capital: Little Rock
+      nickname: "The Natural State"
+      admission_date: "1836-06-15"
+      admission_order: 25
+      region: South
+      population: 3011524
+      area_km2: 137733
+      notes: >
+        The only diamond-producing state in the US — Crater of Diamonds State Park allows
+        visitors to dig for and keep real diamonds. Bill Clinton was born in Hope, Arkansas,
+        and served as governor before becoming president. Walmart was founded by Sam Walton
+        in Rogers/Bentonville, Arkansas (1962); the Walmart headquarters remains there.
+        The name is pronounced "AR-kan-saw" not "Ar-KAN-zas" — the state legislature made
+        the pronunciation official by law. The Buffalo National River (1972) was the first
+        national river in the US. Hot Springs National Park contains 47 hot springs.
+
+    Texas:
+      capital: Austin
+      nickname: "The Lone Star State"
+      admission_date: "1845-12-29"
+      admission_order: 28
+      region: South
+      population: 29145505
+      area_km2: 696241
+      notes: >
+        Second largest state by area (after Alaska) and population (after California). Texas
+        was an independent nation — the Republic of Texas — from 1836 to 1845 after winning
+        independence from Mexico (Battle of San Jacinto; the Alamo fell during that war). The
+        only state that was previously a fully independent country. "Don't Mess with Texas" was
+        originally an anti-littering campaign slogan (1986). The King Ranch in south Texas
+        is larger than the entire state of Rhode Island. Houston is home to NASA's Johnson
+        Space Center ("Houston, we have a problem"). Dallas/Fort Worth is the 4th largest metro
+        area in the US. No state income tax. Produces more oil than any other US state.
+
+    Oklahoma:
+      capital: Oklahoma City
+      nickname: "Sooner State"
+      admission_date: "1907-11-16"
+      admission_order: 46
+      region: South
+      population: 3959353
+      area_km2: 181195
+      notes: >
+        Oklahoma City IS the capital AND the largest city (unusual alignment). "Sooners" were
+        settlers who illegally entered the Oklahoma Territory before the official land runs
+        (1889 Land Run). The Oklahoma Land Run of April 22, 1889 — at noon, settlers raced
+        to claim land; Oklahoma City went from empty prairie to a city of 10,000 in one day.
+        Oklahoma has more Native American tribes (39 federally recognized) than any other state.
+        The Trail of Tears ended here — forced relocation of Cherokee and other tribes from
+        the Southeast. The Oklahoma City bombing (1995) was the deadliest domestic terrorist
+        attack before 9/11. Located in "Tornado Alley" — more tornadoes per area than almost
+        anywhere on Earth.
+
+    Missouri:
+      capital: Jefferson City
+      nickname: "The Show Me State"
+      admission_date: "1821-08-10"
+      admission_order: 24
+      region: South
+      population: 6154913
+      area_km2: 181533
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Kansas City is Missouri's largest city, not Jefferson
+        City. Kansas City, Missouri should not be confused with Kansas City, Kansas — they are
+        twin cities straddling the border, but Kansas City, Missouri is larger. The Gateway Arch
+        in St. Louis (192 m) is the tallest man-made monument in the US. The Missouri Compromise
+        (1820) admitted Missouri as a slave state paired with Maine as a free state to maintain
+        Senate balance. Lewis and Clark's expedition set out from St. Louis (1804). The 1904
+        World's Fair in St. Louis introduced the ice cream cone. Birthplace of Mark Twain
+        (Hannibal) and Harry S. Truman (Independence).
+
+  # -------------------------------------------------------------------------
+  # MIDWEST (12 states) — Great Lakes + Great Plains
+  # -------------------------------------------------------------------------
+  midwest:
+    Ohio:
+      capital: Columbus
+      nickname: "The Buckeye State"
+      admission_date: "1803-03-01"
+      admission_order: 17
+      region: Midwest
+      population: 11799448
+      area_km2: 116096
+      notes: >
+        Columbus IS the capital AND the largest city. Ohio has produced more US presidents
+        than any other state (8: Grant, Hayes, Garfield, Benjamin Harrison, McKinley, Taft,
+        Harding, and Warren Harding). Neil Armstrong (first man on the Moon) and John Glenn
+        (first American to orbit Earth) were both from Ohio. The Wright Brothers were from
+        Dayton, Ohio (though they flew at Kitty Hawk, NC). Cleveland's Rock and Roll Hall of
+        Fame is located here. The name "Ohio" comes from Seneca/Iroquois meaning "great river."
+        Ohio is called "the Buckeye State" after the Ohio buckeye tree, whose nut resembles
+        a deer's eye.
+
+    Indiana:
+      capital: Indianapolis
+      nickname: "The Hoosier State"
+      admission_date: "1816-12-11"
+      admission_order: 19
+      region: Midwest
+      population: 6785528
+      area_km2: 94321
+      notes: >
+        Indianapolis IS the capital AND the largest city. Home to the Indianapolis 500 (the
+        "Indy 500") — one of the oldest auto races in the world, held annually since 1911.
+        The origin of "Hoosier" is debated — no one knows for certain what it means or where
+        it came from. The University of Notre Dame's Fighting Irish football team is one of
+        the most famous in college football. Indiana was the heartland of the Ku Klux Klan in
+        the 1920s (a dark chapter often overlooked). Birthplace of Michael Jackson (Gary) and
+        David Letterman (Indianapolis). The Calumet region (northwest corner) is heavily
+        industrialized — part of the Chicago metro area.
+
+    Illinois:
+      capital: Springfield
+      nickname: "Land of Lincoln"
+      additional_nicknames: ["Prairie State"]
+      admission_date: "1818-12-03"
+      admission_order: 21
+      region: Midwest
+      population: 12812508
+      area_km2: 149998
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Chicago is by far Illinois's largest city, not
+        Springfield. Abraham Lincoln lived in Springfield and practiced law there; his home and
+        presidential library are here. Chicago is the third largest US city and a global financial
+        center. The Chicago fire of 1871 destroyed much of the city. Chicago is nicknamed "The
+        Windy City" (more about boastful politicians than actual wind). The world's first
+        skyscraper was built in Chicago (Home Insurance Building, 1885). Deep-dish pizza and
+        Chicago-style hot dogs are cultural institutions. Midway Airport and O'Hare (one of
+        the world's busiest airports) are in Chicago.
+
+    Michigan:
+      capital: Lansing
+      nickname: "The Great Lakes State"
+      admission_date: "1837-01-26"
+      admission_order: 26
+      region: Midwest
+      population: 10077331
+      area_km2: 250493
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Detroit is Michigan's largest city, not Lansing.
+        Michigan is the only US state consisting of two separate peninsulas (Upper and Lower)
+        connected only by the Mackinac Bridge (one of the longest suspension bridges in the
+        world). Touches four of the five Great Lakes (all except Lake Ontario). Detroit is the
+        automotive capital of the US — home to the "Big Three" (Ford, GM, Chrysler). Henry Ford
+        built his first car in Detroit and pioneered the assembly line. Motown Records was
+        founded in Detroit. Michigan has more coastline than any other state except Alaska.
+        The Sleeping Bear Dunes on Lake Michigan are a national lakeshore.
+
+    Wisconsin:
+      capital: Madison
+      nickname: "America's Dairyland"
+      additional_nicknames: ["The Badger State"]
+      admission_date: "1848-05-29"
+      admission_order: 30
+      region: Midwest
+      population: 5893718
+      area_km2: 169640
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Milwaukee is Wisconsin's largest city, not Madison.
+        Produces more cheese than any other US state (~26% of national output) — hence the
+        "Cheeseheads" nickname for Wisconsin sports fans (worn as foam hats). Famous for
+        beer: Milwaukee was once the top beer-producing city in the US (Pabst, Miller, Schlitz,
+        Blatz). The Republican Party was founded in Ripon, Wisconsin (1854). Harley-Davidson
+        motorcycles are manufactured in Milwaukee. The Wisconsin Dells are a major tourist
+        attraction. Frank Lloyd Wright was born in Richland Center, Wisconsin.
+
+    Minnesota:
+      capital: Saint Paul
+      nickname: "Land of 10,000 Lakes"
+      additional_nicknames: ["Gopher State"]
+      admission_date: "1858-05-11"
+      admission_order: 32
+      region: Midwest
+      population: 5706494
+      area_km2: 225163
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Minneapolis is Minnesota's largest city; Saint Paul
+        is the capital. Minneapolis and Saint Paul together form the "Twin Cities." Minnesota
+        actually has 11,842 lakes (more than 10 acres each) — the nickname undersells it.
+        The source of the Mississippi River is Lake Itasca in northern Minnesota — a quiet lake
+        you can wade across. Has the most shoreline of any state except Alaska and Michigan.
+        The Mall of America (Bloomington) was the largest mall in the US when opened (1992).
+        Known for long, brutal winters (International Falls is called "the icebox of the nation").
+        Prince and Bob Dylan are both from Minnesota.
+
+    Iowa:
+      capital: Des Moines
+      nickname: "The Hawkeye State"
+      admission_date: "1846-12-28"
+      admission_order: 29
+      region: Midwest
+      population: 3190369
+      area_km2: 145746
+      notes: >
+        Des Moines IS the capital AND the largest city. Iowa is the only state whose east and
+        west borders are both formed entirely by rivers (Mississippi on the east, Missouri/Big
+        Sioux on the west). Iowa's presidential caucuses are the first major electoral event of
+        every presidential primary cycle, making Iowa enormously politically influential.
+        Produces ~20% of US corn and ~20% of US soybeans. The "Field of Dreams" movie
+        baseball field (from the 1989 Kevin Costner film) is a tourist site. John Wayne was
+        born in Winterset, Iowa. The Iowa State Fair (since 1854) is one of the largest state
+        fairs in the US.
+
+    North Dakota:
+      capital: Bismarck
+      nickname: "Peace Garden State"
+      admission_date: "1889-11-02"
+      admission_order: 39
+      region: Midwest
+      population: 779094
+      area_km2: 183108
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Fargo is North Dakota's largest city, not Bismarck.
+        North Dakota and South Dakota were admitted on the same day (November 2, 1889) — President
+        Cleveland signed both bills with the papers shuffled so no one would know which was signed
+        first, making the order technically random. Theodore Roosevelt National Park honors the
+        president who fell in love with the North Dakota Badlands. The state has the highest
+        percentage of farmland of any state. Oil production from the Bakken Formation made North
+        Dakota briefly the 2nd largest oil-producing state. Fargo (the city) was made famous
+        by the Coen Brothers' 1996 film of the same name.
+
+    South Dakota:
+      capital: Pierre
+      nickname: "The Mount Rushmore State"
+      admission_date: "1889-11-02"
+      admission_order: 40
+      region: Midwest
+      population: 886667
+      area_km2: 199729
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Sioux Falls is South Dakota's largest city; Pierre
+        (pronounced "Peer") is the capital. Mount Rushmore (carved 1927-1941) features the faces
+        of Washington, Jefferson, Theodore Roosevelt, and Lincoln — carved into the Black Hills.
+        The Crazy Horse Memorial (started 1948) is being carved nearby and will be larger than
+        Rushmore when completed. The Badlands National Park features dramatic eroded landscapes.
+        Wounded Knee (1890) was the site of the last major armed conflict between the US Army
+        and Native Americans. The Black Hills were sacred Sioux territory before gold was
+        discovered there (1874), triggering broken treaties. Deadwood was a lawless gold rush town
+        (Wild Bill Hickok was killed there in 1876).
+
+    Nebraska:
+      capital: Lincoln
+      nickname: "Cornhusker State"
+      admission_date: "1867-03-01"
+      admission_order: 37
+      region: Midwest
+      population: 1961504
+      area_km2: 200520
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Omaha is Nebraska's largest city, not Lincoln.
+        Nebraska is the only state with a unicameral (one-chamber) legislature. The Great Platte
+        River Road was the primary route for western pioneers — the Oregon Trail, Mormon Trail,
+        and California Trail all passed through Nebraska. Warren Buffett, one of the world's
+        wealthiest people, lives in Omaha and has run Berkshire Hathaway there for decades.
+        Chimney Rock was the most-recognized landmark for Oregon Trail pioneers. The name
+        Nebraska comes from Otoe "Nibthaska" (flat water), referring to the Platte River.
+        Boys Town, a community for troubled youth founded in 1917, is near Omaha.
+
+    Kansas:
+      capital: Topeka
+      nickname: "The Sunflower State"
+      admission_date: "1861-01-29"
+      admission_order: 34
+      region: Midwest
+      population: 2937880
+      area_km2: 213100
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Wichita is Kansas's largest city, not Topeka.
+        The geographic center of the contiguous 48 states is in Smith County, Kansas. "Bleeding
+        Kansas" (1854-1861) was a series of violent confrontations between pro-slavery and
+        anti-slavery settlers, a preview of the Civil War. Dodge City was the archetypal Wild
+        West cattle town (Wyatt Earp served as lawman here). The Wizard of Oz (set in Kansas)
+        established the cultural image of Kansas as the ultimate American heartland. Amelia
+        Earhart, first female pilot to fly solo across the Atlantic, was born in Atchison, Kansas.
+        Pizza Hut and White Castle were both founded in Kansas.
+
+  # -------------------------------------------------------------------------
+  # WEST (13 states) — Mountain West + Pacific Coast + Non-contiguous
+  # -------------------------------------------------------------------------
+  west:
+    Montana:
+      capital: Helena
+      nickname: "Big Sky Country"
+      additional_nicknames: ["Treasure State"]
+      admission_date: "1889-11-08"
+      admission_order: 41
+      region: West
+      population: 1084225
+      area_km2: 381154
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Billings is Montana's largest city, not Helena.
+        Fourth largest state by area but one of the least densely populated. Glacier National
+        Park straddles the Continental Divide and borders Canada's Waterton Lakes Park (together
+        they form the first "International Peace Park"). The Battle of Little Bighorn (1876) —
+        "Custer's Last Stand" — took place in Montana; Sioux and Cheyenne warriors under Sitting
+        Bull and Crazy Horse annihilated Custer's 7th Cavalry. Montana has more cattle than
+        people. The "Triple Divide Peak" in Glacier is where water flows to the Pacific,
+        Atlantic, and Arctic Oceans. One of the few states where you can see the Milky Way
+        clearly due to low light pollution.
+
+    Wyoming:
+      capital: Cheyenne
+      nickname: "Equality State"
+      admission_date: "1890-07-10"
+      admission_order: 44
+      region: West
+      population: 576851
+      area_km2: 253348
+      notes: >
+        Cheyenne IS the capital AND the largest city. Least populous state in the US.
+        Wyoming was the FIRST territory/state to grant women the right to vote (1869) and
+        the first to elect a female governor (Nellie Tayloe Ross, 1925) — hence "Equality State."
+        Yellowstone National Park (1872) was the world's FIRST national park. The park sits atop
+        a supervolcano — a Yellowstone eruption would be a global catastrophe. The Grand Teton
+        mountains are some of the youngest and most dramatic peaks in the Rockies. Fewer people
+        live in Wyoming than in any US state. Has more elk than people. Major coal, oil, and
+        natural gas producer.
+
+    Colorado:
+      capital: Denver
+      nickname: "The Centennial State"
+      admission_date: "1876-08-01"
+      admission_order: 38
+      region: West
+      population: 5773714
+      area_km2: 269837
+      notes: >
+        Denver IS the capital AND the largest city (approximately). Admitted in 1876, the
+        100th anniversary of American independence — hence "Centennial State." Has 53 mountain
+        peaks over 14,000 feet (4,267 m) — called "14ers" — more than any other state. Denver
+        is called the "Mile High City" because it sits at exactly 5,280 feet (1,609 m) elevation.
+        Home to Rocky Mountain National Park. The Columbine High School shooting (1999) occurred
+        here. Colorado was among the first states to legalize recreational marijuana (2012).
+        Skiing in Aspen, Vail, Breckenridge, and Telluride makes it a major winter tourism destination.
+
+    New Mexico:
+      capital: Santa Fe
+      nickname: "Land of Enchantment"
+      admission_date: "1912-01-06"
+      admission_order: 47
+      region: West
+      population: 2117522
+      area_km2: 315194
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Albuquerque is New Mexico's largest city; Santa Fe
+        is the capital and the highest state capital in elevation (2,194 m). Santa Fe is the
+        oldest state capital in the US (founded 1610 by the Spanish, making it older than the US
+        itself). The Trinity Site (White Sands, near Alamogordo) was where the first nuclear bomb
+        was detonated (July 16, 1945). Los Alamos National Laboratory (where the Manhattan Project
+        was centered) is here. The Roswell UFO incident (1947) made New Mexico famous in UFO
+        culture. White Sands National Park has the world's largest gypsum dune field.
+        Has the highest percentage of Hispanic population of any US state.
+
+    Arizona:
+      capital: Phoenix
+      nickname: "The Grand Canyon State"
+      admission_date: "1912-02-14"
+      admission_order: 48
+      region: West
+      population: 7151502
+      area_km2: 295234
+      notes: >
+        Phoenix IS the capital AND the largest city. The Grand Canyon (277 miles long, up to
+        18 miles wide, over a mile deep) is one of the Seven Natural Wonders of the World.
+        Arizona is the last of the contiguous 48 states admitted to the union (February 14, 1912).
+        The Sonoran Desert (covering much of southern Arizona) is the hottest desert in North
+        America. Sedona is famous for its red rock formations and considered a spiritual/New Age
+        destination. Tombstone was the site of the Gunfight at the O.K. Corral (1881, Wyatt Earp
+        and Doc Holliday). The London Bridge (the real one, sold in 1962) was moved brick by brick
+        and rebuilt in Lake Havasu City, Arizona. Monument Valley straddles Arizona/Utah.
+
+    Utah:
+      capital: Salt Lake City
+      nickname: "Beehive State"
+      admission_date: "1896-01-04"
+      admission_order: 45
+      region: West
+      population: 3271616
+      area_km2: 219653
+      notes: >
+        Salt Lake City IS the capital AND the largest city. Settled by Mormon (LDS Church)
+        pioneers led by Brigham Young in 1847 — the LDS Church, headquartered in Salt Lake City,
+        continues to heavily influence state culture and politics. The Great Salt Lake is the
+        largest salt lake in the Western Hemisphere (saltier than the ocean, but shrinking due
+        to water diversion). Arches National Park, Bryce Canyon, Zion, Canyonlands, and Capitol
+        Reef are all in Utah — more national parks than almost any other state (5 national parks).
+        The 2002 Winter Olympics were held in Salt Lake City. The famous "Golden Spike" completing
+        the First Transcontinental Railroad was driven at Promontory Summit, Utah (1869). Bryce
+        Canyon's hoodoos (rock spires) are among the most otherworldly landscapes in the US.
+
+    Nevada:
+      capital: Carson City
+      nickname: "Silver State"
+      admission_date: "1864-10-31"
+      admission_order: 36
+      region: West
+      population: 3104614
+      area_km2: 286380
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Las Vegas is Nevada's largest city, not Carson City.
+        Admitted October 31, 1864 — Halloween — in a rush to help Lincoln win reelection (Nevada
+        was expected to vote Republican). Nevada was admitted before it had enough population
+        (the enabling act was rushed through Congress). Las Vegas is the entertainment capital
+        of the world — home to the Las Vegas Strip, casinos, and the motto "What happens in
+        Vegas stays in Vegas." The Hoover Dam (on the Nevada/Arizona border) was the largest
+        dam in the world when built (1936). Area 51 (classified military base near Rachel) is
+        the center of UFO conspiracy theories. Nevada is the driest state in the US and has
+        more mountain ranges than any other state except Alaska.
+
+    Idaho:
+      capital: Boise
+      nickname: "Gem State"
+      admission_date: "1890-07-03"
+      admission_order: 43
+      region: West
+      population: 1839106
+      area_km2: 216699
+      notes: >
+        Boise IS the capital AND the largest city. Produces roughly one-third of all potatoes
+        grown in the US — the Idaho Russet Burbank potato is internationally famous. The state
+        name "Idaho" was actually a made-up word presented as a Native American word (it isn't),
+        yet the name stuck after initial rejection. Craters of the Moon National Monument is a
+        vast lava field — NASA astronauts trained here for Moon missions. The Frank Church-River
+        of No Return Wilderness (2.4 million acres) is the largest contiguous wilderness area in
+        the lower 48 states. The Snake River Plain runs across southern Idaho. Has the deepest
+        gorge in North America: Hells Canyon (deeper than the Grand Canyon at 2,436 m).
+
+    Washington:
+      capital: Olympia
+      nickname: "The Evergreen State"
+      admission_date: "1889-11-11"
+      admission_order: 42
+      region: West
+      population: 7705281
+      area_km2: 184827
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Seattle is Washington's largest city, not Olympia.
+        Washington STATE should not be confused with Washington D.C. (the nation's capital).
+        Named after George Washington — the only state named after a US president. Seattle is
+        home to Boeing (aircraft manufacturing), Amazon, and Microsoft (Redmond). Starbucks
+        was founded in Seattle (1971). Mount Rainier (4,392 m) is the highest peak in the
+        Cascade Range and a potentially active volcano. Mount St. Helens erupted catastrophically
+        in 1980, the deadliest volcanic event in modern US history. Apple Cup is the famous
+        rivalry game between University of Washington and Washington State. The Olympic Peninsula
+        has temperate rainforest.
+
+    Oregon:
+      capital: Salem
+      nickname: "Beaver State"
+      admission_date: "1859-02-14"
+      admission_order: 33
+      region: West
+      population: 4237256
+      area_km2: 255026
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Portland is Oregon's largest city, not Salem.
+        Oregon was the terminus of the Oregon Trail — hundreds of thousands of pioneers
+        traveled 3,500 km overland from Missouri to Oregon in the 1840s-1860s. Crater Lake
+        (1,943 m deep) is the deepest lake in the US, formed by a massive volcanic collapse
+        (~7,700 years ago). Portland is famous for its coffee culture, craft beer, and
+        quirky "Keep Portland Weird" ethos. Nike was founded in Eugene/Beaverton, Oregon.
+        Oregon has no sales tax. Haystack Rock in Cannon Beach is one of the most iconic
+        natural landmarks on the Pacific Coast. Oregon's coast is all public land — no private
+        beach ownership.
+
+    California:
+      capital: Sacramento
+      nickname: "The Golden State"
+      admission_date: "1850-09-09"
+      admission_order: 31
+      region: West
+      population: 39538223
+      area_km2: 423970
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Los Angeles is California's largest city; Sacramento
+        is the capital. Most populous state in the US (nearly 40 million people — more than
+        Canada). If California were a country, its economy (~$4 trillion GDP) would be the
+        5th largest in the world. The Gold Rush of 1849 brought 300,000 people to California.
+        Silicon Valley (San Jose area) is the global center of the technology industry. Hollywood
+        is the center of the global film industry. Home to both the lowest point in North America
+        (Death Valley: 86 m below sea level) and the tallest trees on Earth (coastal redwoods)
+        and tallest living things (Giant Sequoias in Sierra Nevada). Yosemite, Death Valley,
+        Joshua Tree, and Channel Islands are among its 9 national parks.
+
+    Alaska:
+      capital: Juneau
+      nickname: "The Last Frontier"
+      admission_date: "1959-01-03"
+      admission_order: 49
+      region: West
+      population: 733391
+      area_km2: 1717856
+      notes: >
+        CAPITAL IS NOT THE LARGEST CITY — Anchorage is Alaska's largest city; Juneau (the
+        capital) is not accessible by road — only by boat or plane. Largest state by area
+        — larger than the next 3 largest states (Texas, California, Montana) combined. The
+        US purchased Alaska from Russia in 1867 for $7.2 million ("Seward's Folly" — mocked
+        at the time as a worthless icebox). Has 17 of the 20 highest peaks in the US, including
+        Denali (6,190 m), the highest point in North America. The Trans-Alaska Pipeline (1977)
+        carries oil from Prudhoe Bay 1,300 km to Valdez. The Exxon Valdez oil spill (1989) was
+        one of the worst environmental disasters in US history. Has more coastline than all other
+        states combined. Northern lights (aurora borealis) are regularly visible.
+
+    Hawaii:
+      capital: Honolulu
+      nickname: "The Aloha State"
+      admission_date: "1959-08-21"
+      admission_order: 50
+      region: West
+      population: 1455271
+      area_km2: 28311
+      notes: >
+        Honolulu IS the capital AND the largest city. The 50th and last state admitted to
+        the Union. The only state composed entirely of islands and located in the Pacific Ocean
+        (not geographically in North America). The only state that grows coffee, cacao, and
+        vanilla commercially. Pearl Harbor (Oahu) — the Japanese attack on December 7, 1941
+        ("a date which will live in infamy") brought the US into World War II. The Hawaiian
+        Islands are the most isolated island chain in the world (3,800 km from the nearest
+        continent). Active volcanoes: Kilauea on the Big Island has been continuously erupting.
+        The Big Island is still growing as lava flows into the ocean. Queen Liliuokalani was
+        the last Hawaiian monarch, deposed in 1893 in a US-backed coup.
+
+# === ANSWER TYPE POOLS ===
+
+answer_type_pools:
+  - id: state_names
+    format: name
+    members:
+      - Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware
+      - Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky
+      - Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi
+      - Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico
+      - New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania
+      - Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont
+      - Virginia, Washington, West Virginia, Wisconsin, Wyoming
+    count: 50
+    note: "Primary pool. Players confuse which state has which property — especially M-states, N-states, and Virginia/West Virginia."
+
+  - id: state_capitals
+    format: name
+    members:
+      - Montgomery, Juneau, Phoenix, Little Rock, Sacramento, Denver, Hartford, Dover
+      - Tallahassee, Atlanta, Honolulu, Boise, Springfield, Indianapolis, Des Moines
+      - Topeka, Frankfort, Baton Rouge, Augusta, Annapolis, Boston, Lansing, Saint Paul
+      - Jackson, Jefferson City, Helena, Lincoln, Carson City, Concord, Trenton
+      - Santa Fe, Albany, Raleigh, Bismarck, Columbus, Oklahoma City, Salem
+      - Harrisburg, Providence, Columbia, Pierre, Nashville, Austin, Salt Lake City
+      - Montpelier, Richmond, Olympia, Charleston, Madison, Cheyenne
+    count: 50
+    note: "Capital recognition pool. Tricky capitals: Pierre (SD), Montpelier (VT), Frankfort (KY), Augusta (ME), Concord (NH), Annapolis (MD), Jefferson City (MO), Helena (MT), Juneau (AK), Olympia (WA)."
+
+  - id: us_regions
+    format: term
+    members:
+      - Northeast
+      - South
+      - Midwest
+      - Mountain West
+      - Pacific Northwest
+      - Southwest
+      - West
+    count: 7
+    note: "Regional classification pool."
+
+  - id: bracket_numbers
+    format: bracket_number
+    note: "Runtime-generated for: admission years (1787-1959), admission order (1-50), population figures, area figures."
+
+# === QUESTION TEMPLATES ===
+
+question_templates:
+  # state_names pool — core identification questions
+  - id: state_from_capital
+    format: "What US state has {capital} as its capital?"
+    answer_pool: state_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: state_from_nickname
+    format: "Which US state is known as '{nickname}'?"
+    answer_pool: state_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: state_from_landmark
+    format: "In which US state is {landmark} located?"
+    answer_pool: state_names
+    available_from_mastery: 0
+    difficulty: 2
+
+  - id: state_from_fact
+    format: "Which US state {distinctive_fact}?"
+    answer_pool: state_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: state_from_historical_event
+    format: "In which state did {historical_event} take place?"
+    answer_pool: state_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: state_from_superlative
+    format: "Which US state {superlative_property}?"
+    answer_pool: state_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: state_from_founding_context
+    format: "Which state was the {ordinal} to ratify the US Constitution / join the Union?"
+    answer_pool: state_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  - id: state_from_counterintuitive
+    format: "Counterintuitive: which state {surprising_fact}?"
+    answer_pool: state_names
+    available_from_mastery: 4
+    difficulty: 5
+
+  # state_capitals pool
+  - id: capital_from_state
+    format: "What is the capital of {state}?"
+    answer_pool: state_capitals
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: capital_from_clue
+    format: "Which state capital {distinctive_capital_fact}?"
+    answer_pool: state_capitals
+    available_from_mastery: 2
+    difficulty: 3
+
+  # us_regions pool
+  - id: region_from_state
+    format: "In which region of the US is {state} located?"
+    answer_pool: us_regions
+    available_from_mastery: 1
+    difficulty: 2
+
+  # bracket_numbers pool
+  - id: admission_year
+    format: "In what year did {state} become a US state?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: admission_order
+    format: "What number state was {state} when it joined the Union?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 3
+    difficulty: 4
+
+# === SEEDED CONFUSION PAIRS ===
+
+common_confusions:
+  # Virginia pair — created by Civil War secession
+  - ["Virginia", "West Virginia"]             # West Virginia split FROM Virginia during Civil War; same-name confusion
+  # Carolina pairs
+  - ["North Carolina", "South Carolina"]      # Sister states; confused capitals (Raleigh vs Columbia), nicknames
+  # Dakota pairs
+  - ["North Dakota", "South Dakota"]          # Admitted same day; confused capitals (Bismarck vs Pierre), largest cities (Fargo vs Sioux Falls)
+  # New England "New" states
+  - ["New York", "New Jersey"]                # Adjacent, both major metro areas; confused capitals (Albany vs Trenton)
+  - ["New York", "New Hampshire"]             # Name similarity; both northeastern
+  - ["New Jersey", "New Hampshire"]           # "New" + starts with same letter combination
+  # M-state cluster (6 states starting with M — high confusion zone)
+  - ["Missouri", "Mississippi"]               # Both southern M-states; confused capitals (Jefferson City vs Jackson)
+  - ["Missouri", "Michigan"]                  # Both large M-states; different regions
+  - ["Missouri", "Minnesota"]                 # M-states; Minnesota is Midwest (north), Missouri is South
+  - ["Mississippi", "Michigan"]               # Both M-states; very different regions
+  - ["Minnesota", "Michigan"]                 # Both Great Lakes states; twin cities vs Detroit area confusion
+  - ["Montana", "Minnesota"]                  # Both northern M-states; Montana is West, Minnesota is Midwest
+  # Washington confusion
+  - ["Washington", "Washington D.C."]         # State vs federal district; critical and constant confusion
+  # Capital vs largest city — the most common category of confusion
+  - ["New York (Albany)", "New York City"]    # Albany is capital, NYC is largest city
+  - ["Illinois (Springfield)", "Chicago"]     # Springfield is capital, Chicago is largest
+  - ["California (Sacramento)", "Los Angeles"] # Sacramento is capital, LA is largest
+  - ["Florida (Tallahassee)", "Jacksonville"] # Tallahassee is capital, Jacksonville is largest
+  - ["Michigan (Lansing)", "Detroit"]         # Lansing is capital, Detroit is largest
+  - ["Texas (Austin)", "Houston"]             # Austin is capital, Houston is largest
+  - ["Pennsylvania (Harrisburg)", "Philadelphia"] # Harrisburg is capital, Philadelphia is largest
+  - ["Nevada (Carson City)", "Las Vegas"]     # Carson City is capital, Las Vegas is largest
+  # Similar nickname confusions
+  - ["Delaware", "Pennsylvania"]              # Both original colony; first vs second to ratify
+  - ["Georgia", "South Carolina"]             # Both southeast; confused because SC fired first Civil War shots
+  - ["Ohio", "Indiana"]                       # Adjacent midwest states; both have major industrial history
+  - ["Oregon", "Washington"]                  # Adjacent Pacific Northwest; both have "evergreen" associations
+  - ["Idaho", "Wyoming"]                      # Adjacent mountain west; similar landscape, low population
+  - ["Utah", "Colorado"]                      # Both Mountain West; national parks vs skiing associations
+  - ["Alaska", "Hawaii"]                      # Both last two states admitted (49th and 50th) same year (1959)
+
+# === SYNONYM GROUPS ===
+
+synonym_groups:
+  - id: washington_disambiguation
+    fact_ids: []
+    reason: "Washington state vs Washington D.C. — entirely different entities, constant confusion"
+  - id: kansas_city_disambiguation
+    fact_ids: []
+    reason: "Kansas City, Missouri vs Kansas City, Kansas — twin cities, different states, Missouri is larger"
+  - id: charleston_disambiguation
+    fact_ids: []
+    reason: "Charleston, SC (major city) vs Charleston, WV (state capital) — same name, very different states"
+  - id: west_virginia_independence
+    fact_ids: []
+    reason: "West Virginia is NOT a western part of Virginia — it's a fully separate state that seceded from Virginia"
+  - id: new_mexico_age
+    fact_ids: []
+    reason: "Santa Fe was founded in 1610, decades before the Pilgrims arrived — older than the US itself"
+  - id: dakota_same_day
+    fact_ids: []
+    reason: "North and South Dakota were admitted on the exact same day (November 2, 1889) — no official first vs second"
+  - id: rhode_island_size
+    fact_ids: []
+    reason: "Rhode Island is the smallest state by area; Wyoming is the smallest by population (Alaska is largest by area)"
+  - id: hawaii_only_island_state
+    fact_ids: []
+    reason: "Hawaii is the only US state made entirely of islands AND the only state not in North America geographically"
+
+# === DIFFICULTY TIERS ===
+
+difficulty_tiers:
+  easy:  # universally known facts
+    - "California — Golden State, largest population, Sacramento capital"
+    - "Texas — Lone Star State, 2nd largest area and population, Austin capital"
+    - "New York — Empire State, Albany capital (not NYC)"
+    - "Florida — Sunshine State, Disney World, Tallahassee capital"
+    - "Alaska — Last Frontier, largest area, 49th state"
+    - "Hawaii — Aloha State, 50th state, only island state"
+    - "Delaware — First State, 1st to ratify Constitution"
+    - "Massachusetts — Bay State, Boston Tea Party, Harvard"
+    - "Washington — Evergreen State, always confused with D.C."
+  medium:  # commonly known with some education
+    - "Illinois — Land of Lincoln, Springfield capital (not Chicago)"
+    - "Ohio — Buckeye State, Columbus capital, 8 presidents born here"
+    - "Pennsylvania — Keystone State, Harrisburg capital (not Philadelphia)"
+    - "Virginia — Old Dominion, Mother of Presidents, Richmond capital"
+    - "North Carolina and South Carolina — sister states, Raleigh vs Columbia"
+    - "North Dakota and South Dakota — admitted same day, Bismarck vs Pierre"
+    - "Wyoming — Equality State, Yellowstone, least populous, Cheyenne capital"
+    - "Montana — Big Sky Country, Helena capital, Little Bighorn"
+    - "Colorado — Centennial State, Denver capital, 53 peaks over 14000 ft"
+    - "Utah — Beehive State, Salt Lake City capital, 5 national parks"
+    - "Tennessee — Volunteer State, Nashville capital and country music center"
+    - "Louisiana — Pelican State, Baton Rouge capital (not New Orleans)"
+  hard:  # requires specific knowledge
+    - "Montpelier — Vermont capital, smallest state capital by population"
+    - "Pierre — South Dakota capital, pronounced 'Peer'"
+    - "Frankfort — Kentucky capital (not Frankfurt, not Louisville)"
+    - "Augusta — Maine capital (not Portland)"
+    - "Concord — New Hampshire capital (not Manchester)"
+    - "Jefferson City — Missouri capital (not Kansas City or St. Louis)"
+    - "Juneau — Alaska capital, only state capital not accessible by road"
+    - "Olympia — Washington state capital (not Seattle)"
+    - "Rhode Island — 13th state, last original colony to ratify"
+    - "Nebraska — only state with unicameral (one-chamber) legislature"
+    - "Missouri Compromise — Missouri (slave) paired with Maine (free) in 1820"
+    - "Oklahoma Land Run of 1889 — city of 10,000 appeared in one day"
+    - "West Virginia — only state created by seceding from another state during the Civil War"
+
+# === SUB-DECKS ===
+
+sub_decks:
+  - id: northeast_states
+    name: "Northeast States"
+    description: "The 11 northeastern states including original colonies and New England"
+    region: Northeast
+    states: [Maine, "New Hampshire", Vermont, Massachusetts, "Rhode Island", Connecticut, "New York", "New Jersey", Pennsylvania, Delaware, Maryland]
+    estimated_facts: 22
+    factIds: []
+
+  - id: southern_states
+    name: "Southern States"
+    description: "The 16 southern states including the Deep South, border states, Texas, and Oklahoma"
+    region: South
+    states: [Virginia, "West Virginia", Kentucky, Tennessee, "North Carolina", "South Carolina", Georgia, Florida, Alabama, Mississippi, Louisiana, Arkansas, Texas, Oklahoma, Missouri]
+    estimated_facts: 30
+    note: "Missouri included in South per admission history and Civil War context (though often called Midwest)"
+    factIds: []
+
+  - id: midwest_states
+    name: "Midwest States"
+    description: "The 12 midwestern states spanning the Great Lakes and Great Plains"
+    region: Midwest
+    states: [Ohio, Indiana, Illinois, Michigan, Wisconsin, Minnesota, Iowa, "North Dakota", "South Dakota", Nebraska, Kansas]
+    estimated_facts: 22
+    note: "Missouri sometimes counted as Midwest; placed in South sub-deck here for Civil War thematic grouping"
+    factIds: []
+
+  - id: western_states
+    name: "Western States"
+    description: "The 13 western states including Mountain West, Pacific Coast, Alaska, and Hawaii"
+    region: West
+    states: [Montana, Wyoming, Colorado, "New Mexico", Arizona, Utah, Nevada, Idaho, Washington, Oregon, California, Alaska, Hawaii]
+    estimated_facts: 26
+    factIds: []
+
+  - id: original_13_colonies
+    name: "Original 13 Colonies"
+    description: "The states that ratified the Constitution and formed the original United States"
+    states: [Delaware, Pennsylvania, "New Jersey", Georgia, Connecticut, Massachusetts, Maryland, "South Carolina", "New Hampshire", Virginia, "New York", "North Carolina", "Rhode Island"]
+    admission_order_range: "1-13"
+    estimated_facts: 15
+    factIds: []
+
+  - id: capital_traps
+    name: "Capital Traps"
+    description: "States where the capital is NOT the largest city — the most common source of confusion"
+    states: [Maine, "New Hampshire", Vermont, Connecticut, "New York", "New Jersey", Pennsylvania, Maryland, Virginia, Kentucky, Tennessee, "North Carolina", Georgia, Florida, Alabama, Louisiana, Arkansas, Illinois, Michigan, Wisconsin, Minnesota, "North Dakota", "South Dakota", Nebraska, Kansas, Montana, "New Mexico", Nevada, Idaho, Washington, Oregon, California, Alaska]
+    estimated_facts: 20
+    factIds: []
+
+volatile_facts: []
+# US state data is stable; capitals, admission dates, and admission order do not change.
+# Population figures from 2020 Census — will become stale as new data is released.

@@ -13,8 +13,9 @@
   --color-text-dim: #999;
   --color-success: #4ecca3;
   --color-warning: #ffd369;
-  --font-pixel: 'Press Start 2P', 'Courier New', monospace;
-  --font-body: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-rpg: 'Lora', 'Georgia', serif;
+  --font-body: 'Lora', system-ui, -apple-system, sans-serif;
+  --font-pixel: var(--font-rpg); /* backward compat alias */
 
   --safe-top:    env(safe-area-inset-top, 0px);
   --safe-right:  env(safe-area-inset-right, 0px);
@@ -38,7 +39,7 @@ html, body {
   position: fixed;
   background: #000;
   color: var(--color-text);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-rpg);
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   user-select: none;

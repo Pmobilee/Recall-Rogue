@@ -152,7 +152,7 @@
     margin-bottom: 16px;
   }
   .panel-header h2 {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 12px;
     color: #e94560;
     margin: 0;
@@ -226,7 +226,7 @@
     border: none;
     padding: 12px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
     cursor: pointer;
     margin-top: 8px;
@@ -239,7 +239,7 @@
     border: 1px solid #e94560;
     padding: 10px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     cursor: pointer;
     margin-top: 8px;

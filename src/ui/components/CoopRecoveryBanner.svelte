@@ -22,7 +22,7 @@
   .recovery-banner {
     position: fixed; top: 0; left: 0; right: 0;
     background: #e94560; color: #fff; text-align: center;
-    padding: 8px; font-size: 11px; font-family: 'Press Start 2P', monospace;
+    padding: 8px; font-size: 11px; font-family: var(--font-rpg);
     z-index: 150; pointer-events: none;
   }
 </style>

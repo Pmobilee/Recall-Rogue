@@ -38,6 +38,21 @@ WRANGLER=npx wrangler
 DB_NAME=recall-rogue-db
 ```
 
+## Cloudflare MCP Integration
+
+The `mcp__cloudflare__*` MCP tools provide direct API access to Cloudflare without shelling out to wrangler. **Use MCP tools when available; fall back to wrangler CLI for operations not yet supported.**
+
+| Operation | Prefer | Fallback |
+|---|---|---|
+| Query D1 (subscribers) | `mcp__cloudflare__execute` (D1 query API) | `npx wrangler d1 execute` |
+| Check worker status | `mcp__cloudflare__execute` (Workers API) | `curl` |
+| View DNS records | `mcp__cloudflare__execute` (DNS API) | `npx wrangler` |
+| Deploy worker | `npx wrangler deploy` (still preferred) | — |
+| Tail logs | `npx wrangler tail` (streaming not supported via MCP) | — |
+| Read KV/R2 | `mcp__cloudflare__execute` | `npx wrangler` |
+
+**Discovery pattern:** When unsure of the API, use `mcp__cloudflare__search("D1 query database")` to find the right endpoint, then `mcp__cloudflare__execute` to call it.
+
 ## Steps by Subcommand
 
 ### `status`
@@ -46,6 +61,7 @@ DB_NAME=recall-rogue-db
    ```bash
    curl -s -o /dev/null -w '%{http_code}' https://recallrogue.com
    ```
+   Alternative: Use `mcp__cloudflare__execute` to check worker status via API if wrangler is unavailable.
 
 2. Query subscriber count from D1:
    ```bash
@@ -93,6 +109,8 @@ cd /Users/damion/CODE/recall_rogue_site && npx wrangler deploy
 
 ### `subscribers`
 
+**Prefer Cloudflare MCP:** For subscriber queries, `mcp__cloudflare__execute` can query D1 directly via the API without requiring a shell in the site repo directory.
+
 All queries use remote D1:
 
 **count:**
@@ -111,6 +129,8 @@ cd /Users/damion/CODE/recall_rogue_site && npx wrangler d1 execute recall-rogue-
 ```
 
 ### `logs`
+
+**Note:** Log tailing requires streaming, which the MCP doesn't support. Continue using `npx wrangler tail` for this.
 
 Tail live worker logs:
 ```bash

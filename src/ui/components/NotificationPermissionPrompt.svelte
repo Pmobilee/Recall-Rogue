@@ -52,11 +52,11 @@
     line-height: 40px;
     font-size: 20px;
     color: white;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     margin-bottom: 10px;
   }
   h3 {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 12px;
     color: #e94560;
     margin: 0 0 8px;
@@ -83,7 +83,7 @@
     border: none;
     padding: 10px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     cursor: pointer;
   }
@@ -94,7 +94,7 @@
     border: 1px solid #333;
     padding: 10px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     cursor: pointer;
   }

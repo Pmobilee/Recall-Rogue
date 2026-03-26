@@ -79,7 +79,7 @@
   }
 
   .timer-label {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 10px;
     min-width: 24px;
     text-align: right;

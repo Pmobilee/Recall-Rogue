@@ -140,7 +140,7 @@ export function getAllDomainMetadata(): DomainMetadata[] {
 
 export function getKnowledgeDomains(): CanonicalFactDomain[] {
   return getAllDomainMetadata()
-    .filter((domain) => domain.id !== 'language')
+    .filter((domain) => domain.id !== 'language' && domain.id !== 'geography_drill')
     .map((domain) => domain.id)
 }
 

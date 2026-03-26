@@ -45,7 +45,7 @@ Chain themes are NOT required for initial deck builds — facts use generic chai
 
 | # | Deck Name | Domain | Pool Potential | Demand Signal | Difficulty | Priority |
 |---|-----------|--------|----------------|---------------|------------|----------|
-| H-01 | US Presidents | history | president_names (46), party_names (8+), home_states (30+) | Students, trivia, Jeopardy fans | Easy — Wikipedia-rich | **Tier 1** |
+| H-01 | US Presidents | history | president_names (46), party_names (8+), home_states (30+) | Students, trivia, Jeopardy fans | Easy — Wikipedia-rich | **SHIPPED** |
 | H-02 | World War II | history | TBD — needs architecture | History buffs, students | Easy | **Tier 1** |
 | H-03 | Ancient Rome | history | TBD — needs architecture | Classics students, hobbyists | Easy | **Tier 1** |
 | H-04 | Ancient Greece | history | TBD — needs architecture | Students, philosophy fans | Easy | **Tier 1** |
@@ -105,7 +105,7 @@ Chain themes are NOT required for initial deck builds — facts use generic chai
 
 | # | Deck Name | Domain | Pool Potential | Demand Signal | Difficulty | Priority |
 |---|-----------|--------|----------------|---------------|------------|----------|
-| NS-01 | Periodic Table of Elements | natural_sciences | element_names (118), element_symbols (118), element_groups (9+), atomic_numbers (118) | Chemistry students, science enthusiasts, AP Chem | Easy — well-documented | **Tier 1** |
+| NS-01 | Periodic Table of Elements | natural_sciences | element_names (118), element_symbols (118), element_groups (9+), atomic_numbers (118) | Chemistry students, science enthusiasts, AP Chem | Easy — well-documented | **SHIPPED** |
 | NS-02 | Human Anatomy | natural_sciences | TBD — needs architecture | Pre-med students, biology students, nurses | Easy | **Tier 1** |
 | NS-03 | Famous Scientists & Discoveries | natural_sciences | TBD — needs architecture | Students, history of science fans | Easy | **Tier 1** |
 | NS-04 | Physics Concepts & Laws | natural_sciences | TBD — needs architecture | AP Physics students, science enthusiasts | Medium | **Tier 1** |
@@ -136,7 +136,7 @@ Chain themes are NOT required for initial deck builds — facts use generic chai
 | # | Deck Name | Domain | Pool Potential | Demand Signal | Difficulty | Priority |
 |---|-----------|--------|----------------|---------------|------------|----------|
 | SA-01 | The Solar System | space_astronomy | planet_names (8), moon_names (20+), planet_types (4) | Kids, space enthusiasts, students | Easy | **Tier 1** |
-| SA-02 | NASA Missions — All Time | space_astronomy | mission_names (55+), program_names (8+), mission_types (5+) | Space enthusiasts, history crossover | Easy | **Tier 1** |
+| SA-02 | NASA Missions — All Time | space_astronomy | mission_names (55+), program_names (8+), mission_types (5+) | Space enthusiasts, history crossover | Easy | **SHIPPED** |
 | SA-03 | Stars & Stellar Objects | space_astronomy | TBD — needs architecture | Astronomy hobbyists, physics students | Medium | **Tier 1** |
 | SA-04 | Constellations | space_astronomy | constellation_names (88), sky_regions (5), mythology_origins (10+) | Stargazers, astrology-adjacent interest | Easy | **Tier 2** |
 | SA-05 | Planets — Deep Dive | space_astronomy | TBD — needs architecture | Students, space fans | Easy | **Tier 2** |
@@ -171,7 +171,7 @@ Chain themes are NOT required for initial deck builds — facts use generic chai
 
 | # | Deck Name | Domain | Pool Potential | Demand Signal | Difficulty | Priority |
 |---|-----------|--------|----------------|---------------|------------|----------|
-| MF-01 | Greek Mythology | mythology_folklore | deity_names (30+), creature_names (20+), myth_categories (5+) | Students, Percy Jackson fans, D&D players | Easy | **Tier 1** |
+| MF-01 | Greek Mythology | mythology_folklore | deity_names (30+), creature_names (20+), myth_categories (5+) | Students, Percy Jackson fans, D&D players | Easy | **SHIPPED** |
 | MF-02 | Norse Mythology | mythology_folklore | deity_names (20+), realm_names (9), creature_names (15+) | Fantasy fans, Viking interest, Marvel crossover | Easy | **Tier 1** |
 | MF-03 | Egyptian Mythology | mythology_folklore | deity_names (30+), sacred_animals (10+), myth_categories (5+) | History crossover, Egypt enthusiasts | Easy | **Tier 1** |
 | MF-04 | Roman Mythology | mythology_folklore | TBD — needs architecture | Students, classics fans | Easy | **Tier 2** |

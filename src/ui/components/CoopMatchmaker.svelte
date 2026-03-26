@@ -155,18 +155,18 @@
     padding: 24px; width: 340px; display: flex; flex-direction: column; gap: 12px;
   }
   .mm-header { display: flex; justify-content: space-between; align-items: center; }
-  .mm-header h2 { font-family: 'Press Start 2P', monospace; font-size: 12px; color: #e94560; margin: 0; }
+  .mm-header h2 { font-family: var(--font-rpg); font-size: 12px; color: #e94560; margin: 0; }
   .close-x { background: none; border: none; color: #888; font-size: 22px; cursor: pointer; }
   .tab-row { display: flex; gap: 6px; }
   .tab-btn {
-    flex: 1; padding: 8px 4px; font-size: 10px; font-family: 'Press Start 2P', monospace;
+    flex: 1; padding: 8px 4px; font-size: 10px; font-family: var(--font-rpg);
     background: #0f3460; border: 1px solid #1a4a8a; border-radius: 4px; color: #aaa; cursor: pointer;
   }
   .tab-btn.active { background: #1a4a8a; color: #fff; border-color: #4ecca3; }
   .mm-desc { color: #aaa; font-size: 12px; margin: 0; }
   .action-btn {
     padding: 12px; background: #e94560; color: #fff; border: none; border-radius: 6px;
-    font-family: 'Press Start 2P', monospace; font-size: 11px; cursor: pointer;
+    font-family: var(--font-rpg); font-size: 11px; cursor: pointer;
   }
   .action-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .cancel-btn {
@@ -175,7 +175,7 @@
   }
   .code-input {
     padding: 10px; background: #0f3460; border: 1px solid #1a4a8a; border-radius: 4px;
-    color: #fff; font-family: 'Press Start 2P', monospace; font-size: 16px;
+    color: #fff; font-family: var(--font-rpg); font-size: 16px;
     text-align: center; letter-spacing: 4px; text-transform: uppercase;
   }
   .status-text { color: #e94560; font-size: 11px; text-align: center; }

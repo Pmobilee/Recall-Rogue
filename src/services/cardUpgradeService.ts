@@ -30,19 +30,19 @@ export interface MasteryUpgradeDef {
 /** Mastery scaling definitions for each mechanic. */
 export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   // Attacks
-  strike:        { perLevelDelta: 2 },                           // 8 -> 18
+  strike:        { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
   multi_hit:     { perLevelDelta: 1 },                           // per hit
-  heavy_strike:  { perLevelDelta: 2 },                           // 14 -> 24
-  piercing:      { perLevelDelta: 1 },                           // 6 -> 11
-  reckless:      { perLevelDelta: 2 },                           // 12 -> 22
+  heavy_strike:  { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
+  piercing:      { perLevelDelta: 2 },                           // 4 -> 14 (base 4 + 5×2)
+  reckless:      { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
   execute:       { perLevelDelta: 0, secondaryPerLevelDelta: 2 }, // bonus 8 -> 18
-  lifetap:       { perLevelDelta: 1 },                           // 8 -> 13
+  lifetap:       { perLevelDelta: 2 },                           // 4 -> 14 (base 4 + 5×2)
   double_strike: { perLevelDelta: 1 },                           // per hit
   // Shields
-  block:         { perLevelDelta: 2 },                           // 6 -> 16
+  block:         { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
   fortify:       { perLevelDelta: 1 },                           // 7 -> 12
   parry:         { perLevelDelta: 1 },                           // 3 -> 8
-  brace:         { perLevelDelta: 2 },                           // 5 -> 15
+  brace:         { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
   emergency:     { perLevelDelta: 1 },                           // 4 -> 9
   overheal:      { perLevelDelta: 2 },                           // 10 -> 20
   thorns:        { perLevelDelta: 0, secondaryPerLevelDelta: 1 }, // retaliate 3 -> 8
@@ -65,17 +65,19 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   immunity:      { perLevelDelta: 0, maxLevel: 2 },              // binary
   overclock:     { perLevelDelta: 0, apCostReductionAtLevels: [3], maxLevel: 3 }, // AP-1 at L3
   transmute:     { perLevelDelta: 0.2, maxLevel: 3 },            // floor'd: 1 -> 2 at L3
+  conjure:       { perLevelDelta: 0, maxLevel: 3 },              // Mastery improves candidate tier (handled via sourceMasteryLevel)
+  forge:         { perLevelDelta: 0, maxLevel: 3 },              // Mastery improves upgrade amount and pick count
 
   // ── AR-206: Phase 1 Expansion Cards ─────────────────────────────────────────
 
   // Filler cards
-  power_strike:      { perLevelDelta: 2 },                           // 10 -> 20
+  power_strike:      { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
   twin_strike:       { perLevelDelta: 1 },                           // 5x2 -> 10x2 per hit
   iron_wave:         { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 5+5 -> 10+10
-  reinforce:         { perLevelDelta: 2 },                           // 8 -> 18
+  reinforce:         { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
   shrug_it_off:      { perLevelDelta: 1, addTagAtLevel: [3, 'draw2'] }, // 6 -> 11; L3: draws 2
-  bash:              { perLevelDelta: 2, addTagAtLevel: [3, 'vuln_ext'] }, // 10 -> 20; L3: +1t Vuln
-  guard:             { perLevelDelta: 2 },                           // 14 -> 24
+  bash:              { perLevelDelta: 3, addTagAtLevel: [3, 'vuln_ext'] }, // 4 -> 19 (base 4 + 5×3); L3: +1t Vuln
+  guard:             { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
   sap:               { perLevelDelta: 1, addTagAtLevel: [3, 'weak_ext'] }, // 3 -> 8; L3: +1t Weakness
 
   // Bleed cards
@@ -93,7 +95,7 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   reactive_shield:   { perLevelDelta: 1, addTagAtLevel: [3, 'thorns_ext'] }, // 4 -> 9; L3: +1 Thorns
   sift:              { perLevelDelta: 1 },                           // look 3 -> look 8 cards
   scavenge:          { perLevelDelta: 0, addTagAtLevel: [3, 'scavenge2'], maxLevel: 3 }, // L3: QP puts 2 on top
-  precision_strike:  { perLevelDelta: 2, addTagAtLevel: [3, 'timer_ext75'] }, // 8 -> 18; L3: timer +75%
+  precision_strike:  { perLevelDelta: 3, addTagAtLevel: [3, 'timer_ext75'] }, // 4 -> 19 (base 4 + 5×3); L3: timer +75%
   stagger:           { perLevelDelta: 0, addTagAtLevel: [3, 'weak_apply'], maxLevel: 3 }, // L3: QP applies 1t Weakness
   corrode:           { perLevelDelta: 1, addTagAtLevel: [3, 'weak_ext'] }, // 5 -> 10 block removed; L3: +1t Weakness
   swap:              { perLevelDelta: 0, addTagAtLevel: [3, 'draw3cc'], maxLevel: 3 }, // L3: CC draws 3

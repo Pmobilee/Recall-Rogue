@@ -162,7 +162,7 @@
     margin-bottom: 12px;
   }
   .ugc-header h2 {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 13px;
     color: #e94560;
     margin: 0;
@@ -272,7 +272,7 @@
     border: none;
     padding: 12px;
     border-radius: 6px;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: 11px;
     cursor: pointer;
     margin-top: 16px;

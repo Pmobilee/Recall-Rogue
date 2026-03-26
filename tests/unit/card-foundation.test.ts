@@ -218,7 +218,7 @@ describe('cardFactory', () => {
 
     it('keeps baseEffectValue independent of tier and marks mastery trials', () => {
       const t1 = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
-      expect(t1.baseEffectValue).toBe(9);
+      expect(t1.baseEffectValue).toBe(4);
       expect(t1.tier).toBe('1');
 
       resetCardIdCounter();
@@ -227,7 +227,7 @@ describe('cardFactory', () => {
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: false }),
         'attack',
       );
-      expect(t2bTrial.baseEffectValue).toBe(9);
+      expect(t2bTrial.baseEffectValue).toBe(4);
       expect(t2bTrial.tier).toBe('2b');
       expect(t2bTrial.isMasteryTrial).toBe(true);
 
@@ -237,7 +237,7 @@ describe('cardFactory', () => {
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: true }),
         'attack',
       );
-      expect(t3.baseEffectValue).toBe(9);
+      expect(t3.baseEffectValue).toBe(4);
       expect(t3.tier).toBe('3');
       expect(t3.isMasteryTrial).toBe(false);
     });

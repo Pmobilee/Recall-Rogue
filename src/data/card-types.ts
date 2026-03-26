@@ -114,6 +114,10 @@ export interface Card {
    * Cannot be Recollected by the Recollect mechanic (AR-208).
    */
   isRemovedFromGame?: boolean;
+  /** When true, this card is a temporary transform (e.g., from Transmute) */
+  isTransmuted?: boolean;
+  /** Original card data to revert to at encounter end */
+  originalCard?: Card;
 }
 
 // === Card Run State ===

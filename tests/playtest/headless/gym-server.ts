@@ -35,7 +35,6 @@ import type { RoomOption } from '../../../src/services/floorManager.js';
 import {
   resolveEncounterEndCurrency,
   resolveBaseDrawCount,
-  resolveComboStartValue,
   resolveFloorAdvanceHeal,
 } from '../../../src/services/relicEffectResolver.js';
 import readline from 'readline';
@@ -1107,7 +1106,7 @@ function handleStep(actionId: number): object {
         }
 
         // Apply starting combo from relics (combo_ring)
-        const comboStart = resolveComboStartValue(relicIdSetCombat);
+        const comboStart = 0;
         if (comboStart > 0 && run.turnState) {
           run.turnState.comboCount = comboStart;
           run.turnState.baseComboCount = comboStart;
@@ -1208,7 +1207,7 @@ function handleStep(actionId: number): object {
         }
 
         // Apply starting combo from relics (combo_ring)
-        const comboStartDefault = resolveComboStartValue(relicIdSetDefault);
+        const comboStartDefault = 0;
         if (comboStartDefault > 0 && run.turnState) {
           run.turnState.comboCount = comboStartDefault;
           run.turnState.baseComboCount = comboStartDefault;

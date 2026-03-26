@@ -1,0 +1,470 @@
+{
+  "facts": [
+    {
+      "id": "wwii_rtw_peace_for_our_time_quote",
+      "correctAnswer": "Peace for our time",
+      "acceptableAlternatives": ["peace for our time"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "famous_quotes",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "Everyone misquotes Chamberlain's 1938 speech. What was his EXACT phrase — 'peace IN our time' or 'peace FOR our time'?",
+      "explanation": "On September 30, 1938, from a second-floor window at 10 Downing Street, Chamberlain declared: 'I believe it is peace for our time.' The phrase is almost universally misquoted as 'peace in our time.' The correct preposition is FOR. Chamberlain was consciously echoing Benjamin Disraeli's 1878 declaration after the Congress of Berlin. Churchill's devastating response: 'You were given the choice between war and dishonour. You chose dishonour and you will have war.'",
+      "visualDescription": "Pixel art of a suited man waving a paper from a Georgian window to a cheering crowd below, London street, 1930s",
+      "sourceName": "History.com / Britannica",
+      "sourceUrl": "https://www.history.com/this-day-in-history/september-30/munich-pact-signed",
+      "volatile": false,
+      "distractors": ["Peace in our time", "Peace at our time", "Peace of our time", "Peace through our time", "Peace within our time", "Peace upon our time", "Peace beyond our time", "Peace across our time", "Peace from our time", "Peace despite our time"],
+      "variants": [
+        {"type": "reverse", "question": "Chamberlain said 'I believe it is peace for our time' from a window at which London address on September 30, 1938?", "correctAnswer": "10 Downing Street", "distractors": ["Heston Aerodrome", "Buckingham Palace", "Westminster Palace", "the Foreign Office"]},
+        {"type": "context", "question": "Churchill responded to the Munich Agreement with which cutting verdict?", "correctAnswer": "You were given the choice between war and dishonour. You chose dishonour and you will have war.", "distractors": ["This is the gravest threat England has ever faced.", "We shall never surrender our allies.", "An agreement signed under duress is no agreement at all.", "The price of appeasement is always war."]},
+        {"type": "true_false", "question": "True or false: Chamberlain delivered his 'peace for our time' speech at the airport upon landing from Munich.", "correctAnswer": "False", "distractors": ["True"]},
+        {"type": "fill_blank", "question": "Chamberlain's exact phrase was 'I believe it is peace ___ our time' — not 'in' as commonly quoted.", "correctAnswer": "for", "distractors": ["in", "of", "at"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_chamberlain_rationale",
+      "correctAnswer": "Military unpreparedness and public anti-war sentiment",
+      "acceptableAlternatives": ["Britain was not ready for war", "rearmament was incomplete", "public opposition to war"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Appeasement is now synonymous with failure, but at the time it was mainstream policy. Which best describes Chamberlain's actual reasoning?",
+      "explanation": "Per Britannica, appeasement was driven by genuine military unpreparedness — Chamberlain 'immediately ordered the acceleration of the British rearmament program' after Munich, revealing that rearmament was still incomplete. Strong public revulsion against another WWI-scale war, fear of aerial bombing (Guernica had just proved this real), and belief that Hitler could be reasoned with all combined. Neither France nor Britain felt ready to fight. Appeasement was a popular and seemingly pragmatic policy — Churchill was the outlier, not Chamberlain. Thousands cheered Chamberlain along the five-mile route from Heston Aerodrome to Buckingham Palace.",
+      "visualDescription": "Pixel art of cheering London crowds lining a street, people waving, a motorcade passing, 1930s scene",
+      "sourceName": "Britannica / USHMM",
+      "sourceUrl": "https://www.britannica.com/biography/Neville-Chamberlain",
+      "volatile": false,
+      "distractors": ["Sympathy for German territorial grievances", "Secret alliance with Germany against the USSR", "Belief that France alone could stop Hitler", "Desire to buy time while secretly rearming", "Churchill's advice to delay confrontation", "Economic depression preventing military spending", "League of Nations pressure against rearmament", "Distrust of French military capability", "Intelligence failure about German strength", "Personal friendship between Chamberlain and Hitler"],
+      "variants": [
+        {"type": "context", "question": "After Munich, Chamberlain 'immediately ordered the acceleration' of what British program, inadvertently revealing that it was still incomplete?", "correctAnswer": "British rearmament", "distractors": ["The RAF expansion", "Colonial demobilization", "The naval treaty with Germany", "Conscription implementation"]},
+        {"type": "true_false", "question": "True or false: At the time, appeasement was an unpopular policy opposed by most of the British public.", "correctAnswer": "False", "distractors": ["True"]},
+        {"type": "context", "question": "King George VI made what 'unprecedented gesture' when Chamberlain returned from Munich?", "correctAnswer": "Allowed Chamberlain alone to receive the crowd's applause from the Buckingham Palace balcony", "distractors": ["Awarded Chamberlain the Victoria Cross", "Gave a radio address praising the agreement", "Personally met Chamberlain at the airport", "Hosted a state dinner in Chamberlain's honor"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_anschluss_date_plebiscite",
+      "correctAnswer": "March 12, 1938",
+      "acceptableAlternatives": ["March 12", "1938"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "On what date did German troops enter Austria in the Anschluss?",
+      "explanation": "German troops entered Austria on March 12, 1938 — Hitler personally crossed the border and received enthusiastic crowds. The formal proclamation of annexation came on March 13. A Nazi-controlled plebiscite held on April 10, 1938 produced a result of 99.7% approval — widely recognized as manipulated, since the real independence vote that Austrian Chancellor Schuschnigg had called was cancelled under German pressure. Schuschnigg was imprisoned by the Nazis and not released until 1945.",
+      "visualDescription": "Pixel art of German military vehicles crossing a border checkpoint into a mountain town, cheering crowds waving, Austrian Alps backdrop",
+      "sourceName": "Britannica / History.com",
+      "sourceUrl": "https://www.britannica.com/event/Anschluss",
+      "volatile": false,
+      "distractors": ["September 1, 1938", "March 15, 1939", "November 9, 1938", "July 20, 1944", "October 1, 1938", "January 30, 1938", "April 1, 1938", "February 12, 1938"],
+      "variants": [
+        {"type": "reverse", "question": "The April 10, 1938 Nazi-controlled plebiscite on the Anschluss produced what suspiciously high approval result?", "correctAnswer": "99.7%", "distractors": ["87%", "92%", "78%", "95%"]},
+        {"type": "context", "question": "Austrian Chancellor Kurt von Schuschnigg, who resigned under Nazi pressure before the Anschluss, was imprisoned until which year?", "correctAnswer": "1945", "distractors": ["1941", "1943", "1939", "1946"]},
+        {"type": "true_false", "question": "True or false: Britain and France took military action to prevent the Anschluss.", "correctAnswer": "False", "distractors": ["True"]},
+        {"type": "fill_blank", "question": "The Nazi-controlled plebiscite following the Anschluss returned a ___% approval rating, widely recognized as manipulated.", "correctAnswer": "99.7", "distractors": ["87", "95", "78"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_sudetenland_ethnic_exclusion",
+      "correctAnswer": "Czechoslovakia was excluded from the negotiations",
+      "acceptableAlternatives": ["Czech diplomats waited outside", "Czechoslovakia was not invited", "Prague was not consulted"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "At the Munich Conference that decided Czechoslovakia's fate, how was Czechoslovakia itself involved in the negotiations?",
+      "explanation": "Czechoslovakia was not consulted at Munich — Czech diplomats waited in a hotel while the four powers (Germany, Britain, France, Italy) decided their country's fate. Czechoslovakia was then given an ultimatum: resist Germany alone, or submit. The Sudetenland contained approximately 3 million ethnic Germans, and Czechoslovakia also lost 11,000 square miles of territory plus its border fortifications — its primary defensive line. Despite having a genuine military capable of resistance, Czechoslovakia was not permitted to fight. France had a mutual defense treaty with Czechoslovakia but did not honor it.",
+      "visualDescription": "Pixel art of a dark hotel corridor, two anxious diplomats waiting on chairs, a closed conference door in background, 1930s European setting",
+      "sourceName": "Britannica",
+      "sourceUrl": "https://www.britannica.com/event/Munich-Agreement",
+      "volatile": false,
+      "distractors": ["Czechoslovakia sent observers who had no vote", "Czech President Beneš personally attended but was overruled", "Czechoslovakia signed the agreement under protest", "A Czech representative participated in drafting the terms", "Czechoslovakia was represented by Britain as proxy", "Czech diplomats attended but were ejected before signing", "Beneš agreed to the terms in a separate meeting", "Czechoslovakia vetoed the agreement but was overridden", "Czech diplomats signed under duress in the same room", "The Czech government learned of the agreement by telephone"],
+      "variants": [
+        {"type": "reverse", "question": "The Sudetenland contained approximately how many ethnic Germans whose 'protection' Hitler used to justify the Munich Agreement?", "correctAnswer": "3 million", "distractors": ["1.5 million", "500,000", "5 million", "750,000"]},
+        {"type": "context", "question": "What ultimatum did Britain and France give to Czechoslovakia after the Munich Agreement?", "correctAnswer": "Resist Germany alone or submit", "distractors": ["Accept German occupation for two years, then hold a plebiscite", "Allow a League of Nations peacekeeping force", "Cede Sudetenland but keep the fortifications", "Submit to a joint Anglo-French guarantee"]},
+        {"type": "true_false", "question": "True or false: Czechoslovakia had no military capability and could not have resisted Germany in 1938.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_munich_four_signatories",
+      "correctAnswer": "Germany, Britain, France, and Italy",
+      "acceptableAlternatives": ["Hitler, Chamberlain, Daladier, Mussolini"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Munich is often remembered as a deal between Hitler and Chamberlain. In reality, how many powers signed the Munich Agreement?",
+      "explanation": "The Munich Agreement of September 29–30, 1938 was signed by four powers: Adolf Hitler (Germany), Neville Chamberlain (Great Britain), Édouard Daladier (France), and Benito Mussolini (Italy). Czechoslovakia was entirely excluded — no Czech representative was admitted to the conference room. Czechoslovakia was presented with a fait accompli. Hitler reportedly told aides afterward that he had been 'cheated' out of the military victory he wanted — he wanted war, not diplomatic concession.",
+      "visualDescription": "Pixel art of four suited figures at a large table signing documents, flags of four nations visible, 1930s European conference hall",
+      "sourceName": "Britannica / USHMM",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/timeline-event/holocaust/1933-1938/munich-agreement",
+      "volatile": false,
+      "distractors": ["Germany and Britain only", "Germany, Britain, and France", "Five powers including Poland", "Germany, Britain, France, Italy, and the USSR", "The League of Nations Council", "Germany, Britain, France, and the USA", "Six powers including Czechoslovakia", "Germany, Britain, France, Italy, and Japan", "Germany and France only", "Germany, Italy, and Japan"],
+      "variants": [
+        {"type": "reverse", "question": "Who represented France at the Munich Conference that signed away Czechoslovakia's Sudetenland?", "correctAnswer": "Édouard Daladier", "distractors": ["Léon Blum", "Paul Reynaud", "Georges Clemenceau", "Pierre Laval"]},
+        {"type": "context", "question": "The 'Italian plan' presented at Munich was later revealed to have actually been drafted by whom?", "correctAnswer": "The German Foreign Office", "distractors": ["The British Foreign Office", "Mussolini personally", "A League of Nations committee", "Czech diplomats who leaked it"]},
+        {"type": "true_false", "question": "True or false: Hitler was pleased with the Munich Agreement as a diplomatic triumph.", "correctAnswer": "False", "distractors": ["True"]},
+        {"type": "fill_blank", "question": "The Munich Agreement was signed by ___ powers — Germany, Britain, France, and Italy — while Czechoslovakia was excluded.", "correctAnswer": "four", "distractors": ["two", "three", "five"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_munich_italian_plan",
+      "correctAnswer": "The German Foreign Office — not Italy",
+      "acceptableAlternatives": ["drafted by Germany", "German-authored", "not genuinely Italian"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "At the Munich Conference, Mussolini presented a 'compromise plan' that appeared to be an Italian initiative. Who actually drafted it?",
+      "explanation": "The 'Italian plan' presented at Munich by Mussolini had actually been drafted by the German Foreign Office (Britannica) — not genuinely Italian. The agreement thus appeared more multilateral and diplomatically balanced than it was in reality: it looked like a four-power negotiation with Italy mediating, when in fact Germany had written the outcome in advance. Mussolini's role was that of a stage prop lending credibility to a German-scripted event. Czechoslovakia was not admitted to the conference room and was presented with a fait accompli. Hitler later privately told aides he had been 'cheated' out of the military victory he wanted — he had wanted war, not a diplomatic agreement.",
+      "visualDescription": "Pixel art of Mussolini at a conference table presenting a document to the other leaders, but papers behind him show German diplomatic letterhead, 1930s European conference room",
+      "sourceName": "Britannica",
+      "sourceUrl": "https://www.britannica.com/event/Munich-Agreement",
+      "volatile": false,
+      "distractors": ["Mussolini personally, over a weekend in Rome", "A League of Nations mediation committee", "The British Foreign Office presented as Italian", "Édouard Daladier as a compromise position", "A joint Anglo-French draft presented through Italy", "The Czech government's concession proposal", "A Vatican diplomatic initiative", "Chamberlain drafted it but gave Mussolini credit", "A neutral Swiss diplomatic committee", "The German army's General Staff"],
+      "variants": [
+        {"type": "reverse", "question": "What did the Munich Agreement require Czechoslovakia to surrender beyond the Sudetenland's 11,000 square miles?", "correctAnswer": "Its border fortifications — its primary defensive line", "distractors": ["Its entire air force", "The city of Prague for five years", "Access to the Danube River", "Its naval fleet on the Vltava"]},
+        {"type": "context", "question": "Hitler privately expressed what reaction after the Munich Agreement was signed — despite getting everything he demanded?", "correctAnswer": "He felt 'cheated' out of the military victory he had wanted", "distractors": ["He celebrated it as his greatest diplomatic triumph", "He immediately began planning to honor his promises to Chamberlain", "He ordered rearmament halted as unnecessary", "He privately thanked Mussolini for the Italian plan"]},
+        {"type": "true_false", "question": "True or false: The 'Italian plan' at Munich was genuinely authored by the Italian Foreign Ministry as a neutral compromise.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_czech_dismemberment_hacha",
+      "correctAnswer": "March 15, 1939",
+      "acceptableAlternatives": ["March 1939", "March 15"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "On what date did German troops pour into Bohemia and Moravia, completing Czechoslovakia's destruction — just six months after Munich?",
+      "explanation": "On March 15, 1939, German troops occupied Bohemia and Moravia. The night before, Czech President Emil Hacha was summoned to Berlin where Hitler threatened to bomb Prague. Hacha reportedly suffered a heart attack during the meeting and had to be revived by Hitler's doctor, before signing away his country under extreme duress. Hitler entered Prague in triumph by evening. This violated his Munich promise that the Sudetenland was his 'last territorial demand in Europe' — proving expansionism was not about protecting Germans abroad. Chamberlain definitively repudiated appeasement and issued guarantees to Poland within weeks.",
+      "visualDescription": "Pixel art of German troops marching through rain-wet cobblestone streets of a European city, a castle visible on a hill in background, grim faces of onlookers",
+      "sourceName": "History.com / Britannica",
+      "sourceUrl": "https://www.history.com/this-day-in-history/march-15/nazis-take-czechoslovakia",
+      "volatile": false,
+      "distractors": ["September 30, 1938", "March 12, 1938", "September 1, 1939", "April 1, 1939", "October 1, 1938", "January 30, 1939", "November 9, 1938", "August 23, 1939"],
+      "variants": [
+        {"type": "reverse", "question": "Czech President Emil Hacha was summoned to Berlin on the night of March 14–15, 1939. What physical event reportedly occurred during the meeting?", "correctAnswer": "Hacha suffered a heart attack and had to be revived", "distractors": ["Hacha fainted from hunger and stress", "Hacha wept openly and then signed", "Hacha attempted to flee the room", "Hacha collapsed from an asthma attack"]},
+        {"type": "context", "question": "Occupation of Bohemia and Moravia in March 1939 finally ended appeasement because, unlike the Sudetenland, this territory was populated primarily by whom?", "correctAnswer": "Ethnic Czechs, not Germans", "distractors": ["Ethnic Germans who had not been 'rescued' yet", "Slovaks demanding their own state", "Poles fleeing German territory", "Jews being protected from persecution"]},
+        {"type": "true_false", "question": "True or false: Hacha technically signed an invitation for German troops to enter Czechoslovakia, which Hitler used as legal cover.", "correctAnswer": "True", "distractors": ["False"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_mussolini_not_in_rome",
+      "correctAnswer": "He was in Milan, waiting to flee to Switzerland if it failed",
+      "acceptableAlternatives": ["He was in Milan", "Mussolini was in Milan, not Rome"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "During the famous 'March on Rome' that brought Mussolini to power in October 1922, where was Mussolini himself?",
+      "explanation": "Mussolini was not in Rome during the March on Rome — he was in Milan, reportedly ready to flee to Switzerland if the coup failed. He arrived in Rome on October 30 by train, after King Victor Emmanuel III had already invited him to form a government. The march involved approximately 50,000 Fascist forces (Mussolini later claimed 300,000 — widely considered propaganda). The King refused to sign the state of siege that would have authorized the army to disperse the marchers, even though the army was capable of stopping them. Mussolini came to power through constitutional procedure, not force. Per Britannica: the March was 'a transfer of power within the framework of the constitution, a transfer made possible by the surrender of public authorities in the face of fascist intimidation.'",
+      "visualDescription": "Pixel art of a suited man on a train platform at night, uniformed fascist marchers visible through the train window heading toward a distant city",
+      "sourceName": "Britannica",
+      "sourceUrl": "https://www.britannica.com/event/March-on-Rome",
+      "volatile": false,
+      "distractors": ["Leading the march at the front of the columns", "At Fascist headquarters in Florence", "Meeting with the King at the palace gates", "Commanding troops from the Vatican border", "Waiting in Naples with reserves", "On a warship in the Mediterranean", "At Fascist Party headquarters in Bologna", "In a hotel in Genoa", "At the Austrian border negotiating support", "Hidden in a Rome safe house"],
+      "variants": [
+        {"type": "reverse", "question": "How many Fascist marchers converged on Rome during the 'March on Rome' — the verified estimate, not Mussolini's inflated claim?", "correctAnswer": "~50,000", "distractors": ["300,000", "150,000", "12,000", "5,000"]},
+        {"type": "context", "question": "King Victor Emmanuel III's decision NOT to do what was the decisive act that handed power to Mussolini?", "correctAnswer": "Declare martial law (sign the state of siege)", "distractors": ["Dissolve the Italian parliament", "Call for elections", "Request German military support", "Ask the Pope to mediate"]},
+        {"type": "true_false", "question": "True or false: Mussolini seized power through armed force during the March on Rome, overthrowing the constitutional government.", "correctAnswer": "False", "distractors": ["True"]},
+        {"type": "fill_blank", "question": "Mussolini arrived in Rome by ___ on October 30, 1922 — after the King had already invited him to form a government.", "correctAnswer": "train", "distractors": ["car", "military convoy", "aircraft"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_ethiopia_mustard_gas_oil",
+      "correctAnswer": "Mustard gas — and oil was excluded from League sanctions",
+      "acceptableAlternatives": ["mustard gas / yperite", "League excluded oil from sanctions"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Italy's invasion of Ethiopia (1935–36) featured two damning international failures. What chemical weapon did Italy use, and what crucial commodity did the League of Nations deliberately exclude from its sanctions?",
+      "explanation": "Italy invaded Ethiopia on October 3, 1935 with approximately 400,000 troops and used mustard gas (yperite) extensively — including against Red Cross hospitals and medical personnel. The League of Nations declared Italy the aggressor within days, but its economic sanctions were deliberately weak: oil was excluded from sanctions, which would have grounded the Italian military. Britain and France also refused to close the Suez Canal to Italian shipping. Emperor Haile Selassie gave a famous appeal to the League in June 1936; the League took no effective action and lifted sanctions after Ethiopia was conquered. This failure emboldened Hitler and pushed Mussolini toward Germany.",
+      "visualDescription": "Pixel art of Ethiopian soldiers retreating through desert scrub from advancing Italian aircraft dropping chemical bombs, toxic yellow-green clouds spreading",
+      "sourceName": "Britannica",
+      "sourceUrl": "https://www.britannica.com/event/Italo-Ethiopian-War-1935-1936",
+      "volatile": false,
+      "distractors": ["Chlorine gas — and steel was excluded", "Phosgene — and coal was excluded", "Napalm — and rubber was excluded", "Nerve agents — and grain was excluded", "Tear gas — and iron ore was excluded", "Hydrogen cyanide — and copper was excluded", "White phosphorus — and aluminum was excluded", "Sarin — and cotton was excluded", "Lewisite — and chrome was excluded", "Cyanide — and manganese was excluded"],
+      "variants": [
+        {"type": "reverse", "question": "On what date did Italy invade Ethiopia, using approximately 400,000 troops?", "correctAnswer": "October 3, 1935", "distractors": ["September 18, 1935", "July 7, 1935", "March 12, 1936", "October 7, 1935"]},
+        {"type": "context", "question": "The League's failure to stop Italy in Ethiopia had a direct strategic consequence: it pushed Mussolini away from what previous policy?", "correctAnswer": "Protecting Austrian independence against Germany", "distractors": ["Maintaining the Franco-Italian alliance", "Supporting the League's peacekeeping role", "Opposing Japanese expansion in Asia", "Maintaining naval parity with Britain"]},
+        {"type": "true_false", "question": "True or false: The League of Nations included oil in its sanctions against Italy during the Ethiopian invasion.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_rome_berlin_axis_not_military",
+      "correctAnswer": "It was a political alignment, not a military alliance",
+      "acceptableAlternatives": ["informal political understanding", "not a military commitment"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The Rome-Berlin Axis of October 1936 is often thought to be the founding military pact of the Axis powers. What did it actually commit Germany and Italy to?",
+      "explanation": "The Rome-Berlin Axis, proclaimed by Mussolini on November 1, 1936 (protocol signed October 25), was an informal political alignment — NOT a military alliance. Germany's concrete concession was recognizing Italy's conquest of Ethiopia. Italy was not obligated to fight alongside Germany until the Pact of Steel in May 1939. The word 'Axis' was Mussolini's metaphor: that Europe would rotate around an axis running between Rome and Berlin. The full military alliance came with the Pact of Steel (May 22, 1939) and the Tripartite Pact (September 27, 1940). The 1936 Axis was negotiated by Galeazzo Ciano, Mussolini's son-in-law and Foreign Minister.",
+      "visualDescription": "Pixel art of two suited diplomats shaking hands at a formal table, Italian and German flags crossed behind them, 1930s European setting",
+      "sourceName": "Britannica",
+      "sourceUrl": "https://www.britannica.com/topic/Rome-Berlin-Axis",
+      "volatile": false,
+      "distractors": ["A full military alliance with automatic war obligations", "A secret treaty to partition Europe", "A customs union with shared economic policy", "A defensive pact triggered by Soviet aggression", "A naval sharing agreement", "A joint command structure for combined operations", "An agreement to coordinate military production", "A treaty to divide Africa between them", "A pledge of mutual nuclear research", "A formal declaration of ideological unity under fascism"],
+      "variants": [
+        {"type": "reverse", "question": "Which later agreement between Germany and Italy (May 22, 1939) finally created the full military alliance that the Rome-Berlin Axis was not?", "correctAnswer": "Pact of Steel", "distractors": ["Tripartite Pact", "Anti-Comintern Pact", "Munich Agreement", "Locarno Treaty"]},
+        {"type": "context", "question": "The Rome-Berlin Axis protocol was negotiated by Galeazzo Ciano, who held what unique relationship to Mussolini?", "correctAnswer": "He was Mussolini's son-in-law and Foreign Minister", "distractors": ["He was Mussolini's brother and Army Chief of Staff", "He was Mussolini's chosen successor and deputy", "He was Italy's ambassador to Germany and a personal friend", "He was Mussolini's chief of secret police"]},
+        {"type": "true_false", "question": "True or false: The term 'Axis powers' specifically refers to the October 1936 bilateral Rome-Berlin agreement.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_guernica_bombing",
+      "correctAnswer": "April 26, 1937",
+      "acceptableAlternatives": ["April 1937", "April 26"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "On what date did Germany's Condor Legion bomb the Basque town of Guernica during the Spanish Civil War?",
+      "explanation": "Guernica was bombed on April 26, 1937 by the German Condor Legion — the attack began at 4:30 PM during the busiest hour of market day and lasted approximately 3 hours. One-third of Guernica's 5,000 inhabitants were killed or wounded (History.com); more than 1,000 residents were killed. The attack pioneered carpet-bombing and terror-bombing tactics; by 1942, all major WWII participants had adopted the bombing innovations developed at Guernica. Pablo Picasso painted his famous response in 1937; the painting was not displayed in Spain until September 1981 — Picasso refused to return it while Franco ruled.",
+      "visualDescription": "Pixel art of a Spanish market town in flames, civilian figures fleeing through smoke, aircraft silhouettes overhead, church tower collapsing",
+      "sourceName": "History.com",
+      "sourceUrl": "https://www.history.com/this-day-in-history/april-26/nazis-test-luftwaffe-on-guernica",
+      "volatile": false,
+      "distractors": ["July 7, 1937", "September 18, 1937", "March 28, 1937", "November 9, 1937", "August 1, 1936", "October 1, 1937", "January 26, 1937", "May 5, 1937", "December 13, 1937", "February 26, 1937"],
+      "variants": [
+        {"type": "reverse", "question": "Guernica was bombed at what time of day — deliberately chosen to maximize civilian casualties?", "correctAnswer": "4:30 PM, during market day", "distractors": ["6:00 AM, before civilians were awake", "12:00 noon, during the lunch rush", "9:00 PM, to maximize disorientation", "2:00 AM, under cover of darkness"]},
+        {"type": "context", "question": "Picasso's painting 'Guernica' was held at New York's MOMA and deliberately kept outside Spain until what condition was met?", "correctAnswer": "Franco's death and the return of democracy to Spain", "distractors": ["Germany paid reparations to the Basque people", "The Spanish Civil War was officially recognized as a war crime", "UNESCO declared Guernica a world heritage site", "Spain joined the United Nations"]},
+        {"type": "fill_blank", "question": "The Guernica bombing on April 26, 1937 was carried out by the German ___ Legion, testing the Luftwaffe's new carpet-bombing tactics.", "correctAnswer": "Condor", "distractors": ["Afrika", "Stuka", "Panzer"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_international_brigades",
+      "correctAnswer": "60,000 volunteers from approximately 50 countries",
+      "acceptableAlternatives": ["~60,000 from 50 nations", "60,000 volunteers", "50 countries"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "How many volunteers, from how many countries, fought for the Spanish Republic as International Brigades?",
+      "explanation": "The International Brigades drew approximately 60,000 volunteers over the war's duration from about 50 nations (Britannica) — though never more than 20,000 at one time. France sent the largest contingent (~28,000); approximately 2,800 Americans fought in the Abraham Lincoln Battalion, with ~900 killed. The Brigades were organized by the Communist International (Comintern). They were formally withdrawn in late 1938; a farewell parade was held in Barcelona on November 15, 1938. Franco survived in power until 1975 — long after his WWII-era Axis allies were defeated.",
+      "visualDescription": "Pixel art of a parade of soldiers from diverse nations marching through a Spanish city street, various flags, civilians watching and cheering",
+      "sourceName": "Britannica",
+      "sourceUrl": "https://www.britannica.com/topic/International-Brigades",
+      "volatile": false,
+      "distractors": ["20,000 volunteers from 12 countries", "35,000 volunteers from 30 countries", "10,000 volunteers from 8 countries", "100,000 volunteers from 20 countries", "45,000 volunteers from 35 countries", "25,000 volunteers from 15 countries", "80,000 volunteers from 60 countries", "15,000 volunteers from 10 countries", "50,000 volunteers from 40 countries", "30,000 volunteers from 25 countries"],
+      "variants": [
+        {"type": "reverse", "question": "Which country sent the largest contingent (~28,000) to the International Brigades fighting for the Spanish Republic?", "correctAnswer": "France", "distractors": ["United States", "Soviet Union", "Britain", "Germany"]},
+        {"type": "context", "question": "The International Brigades were organized by which Soviet-controlled international organization?", "correctAnswer": "Communist International (Comintern)", "distractors": ["The League of Nations", "The Socialist Workers' International", "The Soviet Red Army High Command", "The Spanish Republican Government"]},
+        {"type": "true_false", "question": "True or false: The International Brigades were still fighting when the Spanish Civil War ended in April 1939.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_kristallnacht_synagogues",
+      "correctAnswer": "More than 1,400 synagogues burned",
+      "acceptableAlternatives": ["1,400 synagogues", "over 1,400"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Kristallnacht (November 9–10, 1938) is known as the 'Night of Broken Glass.' Approximately how many synagogues were burned?",
+      "explanation": "On the night of November 9–10, 1938, more than 1,400 synagogues were burned (USHMM), approximately 7,500 Jewish businesses were vandalized, and around 30,000 Jewish men were arrested and sent to concentration camps including Dachau, Buchenwald, and Sachsenhausen. At least 91 were killed during the riots. Despite appearing spontaneous, Kristallnacht was state-organized — Nazi Propaganda Minister Joseph Goebbels gave the signal to Nazi leaders at an annual party gathering in Munich; police and fire departments were ordered not to intervene. The trigger was 17-year-old Herschel Grynszpan's shooting of German diplomat Ernst vom Rath in Paris on November 7, 1938.",
+      "visualDescription": "Pixel art of dark cobblestone street at night, shattered glass glittering, fires visible through broken windows, a synagogue facade charred and smoking",
+      "sourceName": "USHMM / History.com",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-night-of-broken-glass",
+      "volatile": false,
+      "distractors": ["267 synagogues burned", "500 synagogues burned", "91 synagogues burned", "3,000 synagogues burned", "700 synagogues burned", "2,000 synagogues burned", "150 synagogues burned", "50 synagogues burned", "800 synagogues burned", "4,000 synagogues burned"],
+      "variants": [
+        {"type": "reverse", "question": "What was the name of the 17-year-old whose shooting of a German diplomat in Paris was used as the pretext for Kristallnacht?", "correctAnswer": "Herschel Grynszpan", "distractors": ["Ernst vom Rath", "Leon Blum", "Viktor Frankl", "Rudolf Vrba"]},
+        {"type": "context", "question": "Who gave the signal for Kristallnacht to Nazi leaders at a Munich party gathering, instructing them to allow or encourage 'spontaneous demonstrations'?", "correctAnswer": "Joseph Goebbels", "distractors": ["Heinrich Himmler", "Hermann Göring", "Reinhard Heydrich", "Rudolf Hess"]},
+        {"type": "true_false", "question": "True or false: Kristallnacht was a spontaneous popular uprising against Jews, not state-organized.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_kristallnacht_fine_on_victims",
+      "correctAnswer": "1 billion Reichsmarks — imposed on the Jewish victims themselves",
+      "acceptableAlternatives": ["1 billion Reichsmarks", "one billion RM fine on Jews", "victims were fined"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "After Kristallnacht destroyed Jewish property across Germany, the Nazi government imposed a 1 billion Reichsmark fine. Who was forced to pay it?",
+      "explanation": "The Nazi government imposed a collective fine of 1 billion Reichsmarks (~$400 million in 1938 dollars) on the Jewish community for 'provoking' the violence — meaning the victims were charged for the damage done to their own property by the state. Insurance companies were also ordered to pay damages not to Jewish owners but to the German state. This stunning inversion — fining the victims of a state-organized pogrom — illustrated the extent to which Jews had been stripped of legal standing. Approximately 30,000 Jewish men were arrested in the aftermath and sent to concentration camps, with many released only on condition they agreed to emigrate.",
+      "visualDescription": "Pixel art of a Nazi official handing a formal document to a frightened Jewish businessman in a ruined shop, broken glass everywhere, bureaucratic callousness in every detail",
+      "sourceName": "USHMM / History.com",
+      "sourceUrl": "https://www.history.com/this-day-in-history/november-9/nazis-launch-kristallnacht",
+      "volatile": false,
+      "distractors": ["German insurance companies", "The Nazi Party treasury", "French and British governments as appeasement payment", "Local German municipalities", "The Vatican as a gesture of opposition", "The German military", "International Jewish aid organizations", "The League of Nations", "American Jewish charities", "The German banking sector"],
+      "variants": [
+        {"type": "reverse", "question": "How many Jewish men were arrested during and after Kristallnacht and sent to concentration camps including Dachau and Buchenwald?", "correctAnswer": "~30,000", "distractors": ["~5,000", "~91", "~100,000", "~7,500"]},
+        {"type": "context", "question": "The 1 billion Reichsmark fine was approximately how much in 1938 US dollars?", "correctAnswer": "$400 million", "distractors": ["$40 million", "$4 billion", "$100 million", "$1 billion"]},
+        {"type": "true_false", "question": "True or false: The 1 billion Reichsmark fine after Kristallnacht was paid by insurance companies on behalf of Jewish property owners.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_anglo_polish_two_stages",
+      "correctAnswer": "March 31 unilateral guarantee vs. August 25 formal treaty",
+      "acceptableAlternatives": ["two separate acts", "March guarantee vs August treaty", "unilateral promise then binding treaty"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Britain's commitment to defend Poland in 1939 actually happened in two separate stages. What were they, and when?",
+      "explanation": "Stage one: On March 31, 1939 — 16 days after the German occupation of Czechoslovakia — Chamberlain gave a unilateral guarantee in Parliament that Britain would give Poland 'all support in its power' if her independence were threatened. This was a political promise, not yet a binding treaty. Stage two: The formal Anglo-Polish Treaty of Mutual Assistance was signed on August 25, 1939 — just one week before Germany invaded Poland and two days after the Molotov-Ribbentrop Pact. Hitler had hoped the Nazi-Soviet deal would intimidate Britain into abandoning Poland; instead, Britain signed the formal treaty. Britain was then bound by treaty to declare war when Germany invaded — which is why WWII began on September 3, not September 1.",
+      "visualDescription": "Pixel art of a suited British diplomat shaking hands with a Polish officer in Warsaw, a newspaper headline visible reading 'Britain Guarantees Poland', 1939",
+      "sourceName": "Britannica",
+      "sourceUrl": "https://www.britannica.com/event/Anglo-Polish-Pact-of-Mutual-Assistance-1939",
+      "volatile": false,
+      "distractors": ["A single treaty signed June 1939", "Two secret treaties, both in August 1939", "A League of Nations resolution and a separate bilateral pact", "A March guarantee and a July confirmation", "A Parliament vote and a royal decree", "An April guarantee and a September treaty", "An informal understanding and a May formal pact", "A February guarantee and a July treaty", "A joint Anglo-French declaration and a separate British treaty", "A Commons resolution and a Cabinet order"],
+      "variants": [
+        {"type": "reverse", "question": "The formal Anglo-Polish Treaty of Mutual Assistance was signed on August 25, 1939 — how many days before Germany invaded Poland?", "correctAnswer": "7 days", "distractors": ["30 days", "2 days", "14 days", "1 day"]},
+        {"type": "context", "question": "Britain's formal treaty with Poland was signed two days after what other pivotal August 1939 event that Hitler hoped would intimidate Britain into backing down?", "correctAnswer": "Molotov-Ribbentrop Pact", "distractors": ["German invasion of Danzig", "Hossbach Memorandum revealed", "Hitler's 16-point ultimatum to Poland", "Soviet invasion of Finland"]},
+        {"type": "true_false", "question": "True or false: The March 31, 1939 guarantee was a full binding treaty with automatic military obligations.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_anti_comintern_secret_protocol",
+      "correctAnswer": "A secret protocol explicitly targeting the Soviet Union — neither party would assist the USSR if it attacked the other",
+      "acceptableAlternatives": ["secret anti-Soviet protocol", "secret protocol against the USSR"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The Anti-Comintern Pact of November 25, 1936 was publicly an intelligence-sharing agreement against Communist subversion. What was in its secret protocol?",
+      "explanation": "The Anti-Comintern Pact was signed in Berlin on November 25, 1936, by German Ambassador-at-Large Joachim von Ribbentrop and Japanese Ambassador Kintomo Mushanokoji. Its public content committed Germany and Japan to cooperate against the Communist International (Comintern). But the secret protocol specified a joint policy explicitly against the Soviet Union: if either party was attacked by the USSR without provocation, the other would not assist the Soviet Union and would void any bilateral treaties with the Soviets. Italy joined on November 6, 1937. The pact was dramatically undermined by the Molotov-Ribbentrop Pact of August 1939 — Germany allied with the very Soviet Union the pact was directed against, shocking Japan and revealing that Germany's anti-communism was purely tactical.",
+      "visualDescription": "Pixel art of two diplomats signing a document in a formal Berlin office, a hidden compartment with a second document visible beneath the main table, 1936 setting",
+      "sourceName": "Avalon Project",
+      "sourceUrl": "https://avalon.law.yale.edu/wwii/tri1.asp",
+      "volatile": false,
+      "distractors": ["A secret military alliance committing to mutual war if either was attacked by any power", "Secret territorial division of Asia between Germany and Japan", "A secret promise to help each other conquer China and Eastern Europe", "A covert agreement to share nuclear research against Britain and France", "A hidden protocol granting Japan control of German Pacific colonies", "A secret naval coordination treaty for joint Atlantic and Pacific operations", "A classified trade agreement giving Japan preferential access to German technology", "A hidden clause committing Italy to join automatically if Germany went to war", "A secret agreement to coordinate propaganda operations in neutral countries", "A covert commitment to exchange prisoners of war with each other"],
+      "variants": [
+        {"type": "reverse", "question": "Italy joined the Anti-Comintern Pact on what date, completing the original Axis triangle?", "correctAnswer": "November 6, 1937", "distractors": ["September 27, 1940", "October 25, 1936", "May 22, 1939", "March 27, 1939"]},
+        {"type": "context", "question": "The Anti-Comintern Pact's secret anti-Soviet protocol was dramatically undermined by what 1939 event?", "correctAnswer": "The Molotov-Ribbentrop Pact — Germany allied with the USSR it had pledged to oppose", "distractors": ["Japan's defeat at Khalkhin Gol forced a strategic pivot away from the USSR", "Italy refused to honor the secret protocol after the Ethiopian campaign", "The Soviet Union discovered and published the secret protocol", "Britain and France threatened military action if the protocol was activated"]},
+        {"type": "true_false", "question": "True or false: The Anti-Comintern Pact was a full military alliance committing each signatory to go to war if the other was attacked.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_mukden_false_flag",
+      "correctAnswer": "Japan staged the explosion — but it was too small to destroy the track",
+      "acceptableAlternatives": ["false flag operation", "staged explosion", "a train passed over the undamaged section"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The Mukden Incident of September 18, 1931, supposedly a Chinese sabotage of a Japanese railway, triggered the invasion of Manchuria. What actually happened?",
+      "explanation": "The Mukden Incident was a false flag operation. Lieutenant Suemori Kawamoto of the Kwantung Army detonated the explosive near the South Manchurian Railway track — but it was too weak to even destroy the track. A train passed over the damaged section minutes later. Kwantung Army officers Colonel Seishiro Itagaki and Lieutenant Colonel Kanji Ishiwara masterminded and planned the operation. The civilian Japanese government did NOT authorize the invasion — rogue army officers presented Tokyo with a fait accompli. Japan went on to establish the puppet state of Manchukuo (proclaimed March 1, 1932) with the last Qing emperor Puyi installed as ruler.",
+      "visualDescription": "Pixel art of a Japanese soldier crouching near railway tracks at night, planting an explosive, Manchurian landscape under moonlight",
+      "sourceName": "Britannica / National WWII Museum",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mukden_incident",
+      "volatile": false,
+      "distractors": ["Chinese troops destroyed the railway in a genuine sabotage attack", "Chinese warlord troops fired on Japanese soldiers unprovoked", "A coal train derailment was misattributed to sabotage", "Korean resistance fighters planted the bomb and fled", "The explosion was an accidental munitions discharge by Japanese troops", "Chinese Nationalist agents were caught planting the device", "A Soviet-backed saboteur destroyed the track to provoke war", "Local Manchurian rebels attacked the railway garrison", "The incident was fabricated entirely in Japanese newspapers", "Both sides exchanged fire and the railway was caught in the crossfire"],
+      "variants": [
+        {"type": "reverse", "question": "Who physically detonated the explosive at the South Manchurian Railway that launched the Mukden Incident?", "correctAnswer": "Lieutenant Suemori Kawamoto", "distractors": ["Colonel Seishiro Itagaki", "Lieutenant Colonel Kanji Ishiwara", "General Hideki Tojo", "Ambassador Yosuke Matsuoka"]},
+        {"type": "context", "question": "Manchukuo, the puppet state created after the Mukden Incident, was officially proclaimed on what date?", "correctAnswer": "March 1, 1932", "distractors": ["September 18, 1931", "January 30, 1933", "March 1, 1934", "July 7, 1937"]},
+        {"type": "true_false", "question": "True or false: The Japanese civilian government authorized the Kwantung Army to stage the Mukden Incident.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_japan_leaves_league",
+      "correctAnswer": "42-1 vote, with Japan as the sole dissenter",
+      "acceptableAlternatives": ["42 to 1", "42 votes to 1", "only Japan voted against"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On February 24, 1933, Japan's delegation walked out of the League of Nations. What vote result triggered the walkout?",
+      "explanation": "The League of Nations Assembly voted 42-1 (Japan the sole dissenter, Siam abstaining) to adopt the Lytton Report, which required Japan to withdraw from Manchuria, recognized Chinese sovereignty, and refused to recognize the puppet state of Manchukuo. Ambassador Yosuke Matsuoka led the Japanese delegation out of the assembly chamber. Japan formally notified the League of its withdrawal on March 27, 1933. Under League rules, withdrawal required two years' notice, so it legally took effect in March 1935 — yet Japan had stopped participating immediately. Japanese newspapers celebrated the withdrawal as national pride.",
+      "visualDescription": "Pixel art of a suited Japanese diplomat standing and pointing accusingly at a vast assembly hall before turning to walk out, other delegates watching",
+      "sourceName": "Britannica / EBSCO",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Japanese_invasion_of_Manchuria",
+      "volatile": false,
+      "distractors": ["15-8 vote with 3 abstentions", "Unanimous vote against Japan", "32-5 vote, with Germany and Italy also dissenting", "A tied vote where the chairman broke the deadlock", "27-1 vote with 10 abstentions", "50-0 unanimous vote", "38-2 vote with France also dissenting", "29-3 vote with Italy and Germany opposing", "A procedural ruling with no formal vote", "35-7 vote after three days of debate"],
+      "variants": [
+        {"type": "reverse", "question": "Who led the Japanese delegation walkout from the League of Nations on February 24, 1933?", "correctAnswer": "Yosuke Matsuoka", "distractors": ["Hideki Tojo", "Emperor Hirohito", "Puyi of Manchukuo", "Kanji Ishiwara"]},
+        {"type": "context", "question": "Though Japan walked out on February 24, 1933, its League withdrawal only legally took effect in March 1935. Why the delay?", "correctAnswer": "League rules required two years' notice for withdrawal", "distractors": ["Japan appealed the Lytton Report findings for two years", "A probationary period allowed Japan to reconsider", "Economic sanctions had to expire before legal withdrawal", "The League Assembly had to vote a second time"]},
+        {"type": "fill_blank", "question": "The League vote that triggered Japan's walkout was ___-1, with Japan as the sole dissenter and Siam abstaining.", "correctAnswer": "42", "distractors": ["27", "35", "50"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_nanjing_massacre",
+      "correctAnswer": "December 13, 1937 — Prince Asaka issued the 'kill all captives' order and was never prosecuted",
+      "acceptableAlternatives": ["December 13 1937", "Prince Asaka", "never prosecuted due to imperial immunity"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "Japanese forces entered Nanjing on what date in 1937, beginning weeks of mass atrocity? And what happened to Prince Asaka — the imperial family member who ordered 'kill all captives'?",
+      "explanation": "Japanese forces entered Nanjing on December 13, 1937, beginning approximately six weeks of mass killing and sexual violence. Prince Yasuhiko Asaka — Emperor Hirohito's uncle by marriage — issued the 'kill all captives' order as temporary commander of the final assault. He was never prosecuted because General Douglas MacArthur granted immunity to the Imperial Family. Asaka lived freely until 1981. Casualty estimates range widely: the IMTFE documented at least 200,000 dead; China's official figure is 300,000; nationalist Japanese minimizers claim 40,000–50,000. The scholarly consensus range is 100,000–300,000+. John Rabe, a German Nazi Party member, protected approximately 250,000 civilians in the Nanking Safety Zone — his Nazi Party membership gave him leverage with Japanese officers due to the Anti-Comintern Pact.",
+      "visualDescription": "Pixel art of a European man in a suit standing at a gate beneath a Nazi flag, crowds of Chinese civilians pressing behind the gate for shelter, 1937 setting",
+      "sourceName": "Wikipedia / IMTFE records",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Nanjing_Massacre",
+      "volatile": false,
+      "distractors": ["October 7, 1937 — General Matsui was executed at the Tokyo Trials", "November 25, 1937 — Emperor Hirohito was tried but acquitted by MacArthur", "January 1, 1938 — Prince Asaka was executed at the Tokyo Trials", "December 7, 1937 — all commanders were prosecuted equally", "November 13, 1937 — Prince Asaka fled to the Soviet Union after the war", "December 13, 1937 — Prince Asaka received a 20-year prison sentence", "March 1, 1938 — MacArthur prosecuted the entire Imperial Family", "December 13, 1937 — Prince Asaka escaped to South America", "October 30, 1937 — all officers involved were executed at Nuremberg", "December 13, 1937 — Asaka was tried but acquitted due to insufficient evidence"],
+      "variants": [
+        {"type": "reverse", "question": "German businessman John Rabe, credited with protecting ~250,000 civilians in Nanjing, was paradoxically effective because of his membership in which organization?", "correctAnswer": "Nazi Party", "distractors": ["Red Cross", "Catholic Church", "Freemasons", "League of Nations relief mission"]},
+        {"type": "context", "question": "What is the range of scholarly casualty estimates for the Nanjing Massacre according to mainstream academic consensus?", "correctAnswer": "100,000–300,000+", "distractors": ["10,000–40,000", "50,000–100,000", "300,000–500,000", "exactly 200,000"]},
+        {"type": "true_false", "question": "True or false: Prince Asaka, who ordered 'kill all captives' at Nanjing, was tried at the Tokyo War Crimes Trials.", "correctAnswer": "False", "distractors": ["True"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_khalkhin_gol_pivot",
+      "correctAnswer": "It caused Japan to abandon 'Strike North' against the USSR and pivot to 'Strike South' — directly leading to Pearl Harbor",
+      "acceptableAlternatives": ["killed the Strike North doctrine", "pivoted Japan to the Pacific", "caused the Pearl Harbor pivot"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "The Battles of Khalkhin Gol (May–September 1939) are obscure in Western history. Why were they strategically decisive for the entire Pacific War?",
+      "explanation": "Japan's decisive defeat at Khalkhin Gol by Soviet forces under Georgy Zhukov destroyed the 'Strike North' (Hokushin-ron) doctrine — the Army's plan to expand into Siberia and fight the USSR. Japan permanently shifted to 'Strike South' (Nanshin-ron) — seizing Southeast Asia and the Pacific. This pivot directly led to Pearl Harbor. The ceasefire was signed September 15, 1939 — just two weeks after Germany invaded Poland — meaning the USSR was fighting Japan in Asia while partitioning Poland in the west. Zhukov was essentially unknown before this battle; it launched his career. He would later defend Moscow, command at Kursk, and capture Berlin. Japan's official casualty figures were dramatically understated — Kwantung Army medical records showed nearly 20,000 casualties.",
+      "visualDescription": "Pixel art of Soviet T-34 tanks advancing across a vast Mongolian steppe, Japanese infantry retreating, dust clouds and smoke on the horizon",
+      "sourceName": "Wikipedia / National WWII Museum",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battles_of_Khalkhin_Gol",
+      "volatile": false,
+      "distractors": ["It proved Japan's military superiority and encouraged the attack on Malaya", "It caused Stalin to transfer troops west, enabling Germany's early victories", "It demonstrated Soviet weakness and encouraged Japan to attack Siberia in 1941", "It convinced Japan to join the Tripartite Pact to counter Soviet pressure", "It persuaded Japan to invade China more aggressively to compensate for the defeat", "It forced Japan into an alliance with Britain to balance Soviet power", "It caused the Soviet Union to sign the Molotov-Ribbentrop Pact to avoid a two-front war", "It had no strategic impact — Japan continued planning the Strike North strategy until 1941", "It led to the Soviet invasion of Finland as Stalin tested his armies", "It convinced the US to impose oil sanctions on Japan in 1939"],
+      "variants": [
+        {"type": "reverse", "question": "Which Soviet general commanded the decisive offensive at Khalkhin Gol on August 20, 1939 — a battle that launched his career?", "correctAnswer": "Georgy Zhukov", "distractors": ["Semyon Timoshenko", "Kliment Voroshilov", "Aleksandr Vasilevsky", "Ivan Konev"]},
+        {"type": "context", "question": "The Khalkhin Gol ceasefire was signed on September 15, 1939 — just two weeks after what other world-historical event?", "correctAnswer": "Germany invaded Poland (September 1, 1939)", "distractors": ["Japan bombed Pearl Harbor", "The Munich Agreement was signed", "The Tripartite Pact was signed", "France fell to Germany"]},
+        {"type": "fill_blank", "question": "Japan's defeat at Khalkhin Gol killed the '___' (Strike North) doctrine and permanently shifted Japan toward the Pacific.", "correctAnswer": "Hokushin-ron", "distractors": ["Nanshin-ron", "Kodoha", "Toseiha"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_molotov_ribbentrop_secret_protocol",
+      "correctAnswer": "The USSR denied it existed until December 24, 1989",
+      "acceptableAlternatives": ["denied until 1989", "not acknowledged until 1989", "50 years of denial"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "historical_events",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "The Molotov-Ribbentrop Pact of August 23, 1939 contained a secret protocol dividing Eastern Europe. How long did the Soviet Union deny the secret protocol existed?",
+      "explanation": "The Soviet Union denied the secret protocol's existence from 1939 until December 24, 1989 — when the Congress of People's Deputies officially declared the protocols null and void from the moment of signing. This was 50 years of denial, even as Western copies had existed since the Nuremberg trials in 1945. The secret protocol assigned Finland, Estonia, Latvia, and Bessarabia to the Soviet sphere; Lithuania was initially in the German sphere. The pact shocked the Communist world: the USSR and Nazi Germany were supposed to be ideological enemies. Foreign Communists had been told fascism was the ultimate evil. The Federal Republic of Germany had already declared the protocols invalid on September 1, 1989.",
+      "visualDescription": "Pixel art of two foreign ministers shaking hands over a map of Eastern Europe divided by a bold line, Stalin watching in background, flash photography, 1939 Kremlin setting",
+      "sourceName": "USHMM / Avalon Project",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/german-soviet-pact",
+      "volatile": false,
+      "distractors": ["The USSR admitted the secret protocol in 1945 at the Nuremberg Trials", "The USSR acknowledged it in 1953 after Stalin's death", "The USSR admitted it in 1956 during Khrushchev's de-Stalinization speech", "The secret protocol was never secret — both nations publicized it in 1939", "The Soviet Union admitted the protocol in 1975 after détente with the West", "The protocol was revealed by a Soviet defector in 1961", "The USSR acknowledged it in 1985 when Gorbachev came to power", "The protocol was admitted in 1943 as part of the Grand Alliance negotiations", "The Soviets admitted it immediately after WWII in exchange for Marshall Plan aid", "The protocol was publicly admitted at the Helsinki Accords in 1975"],
+      "variants": [
+        {"type": "reverse", "question": "The secret Molotov-Ribbentrop protocol assigned Finland, Estonia, Latvia, and Bessarabia to whose sphere of influence?", "correctAnswer": "Soviet Union", "distractors": ["Germany", "Split equally between both", "Left as neutral buffer states", "Assigned to Italy as compensation"]},
+        {"type": "context", "question": "The Molotov-Ribbentrop Pact 'shocked the Communist world' because the USSR and Nazi Germany were supposed to be what to each other?", "correctAnswer": "Ideological enemies — Communists had been told fascism was the ultimate evil", "distractors": ["Long-standing military rivals without any diplomatic relations", "Natural allies sharing an anti-British foreign policy", "Economic competitors for Eastern European resources", "Neutral states with no ideological conflict"]},
+        {"type": "fill_blank", "question": "On December 24, ___, the Congress of People's Deputies of the Soviet Union finally declared the Molotov-Ribbentrop secret protocols null and void.", "correctAnswer": "1989", "distractors": ["1945", "1956", "1975"]}
+      ]
+    },
+    {
+      "id": "wwii_rtw_hossbach_memorandum",
+      "correctAnswer": "November 5, 1937 — Hitler stated Austria and Czechoslovakia must be seized 'as early as 1938'",
+      "acceptableAlternatives": ["November 5 1937", "as early as 1938", "1937 meeting about Austria and Czechoslovakia"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The Hossbach Memorandum recorded a secret meeting where Hitler revealed his timeline for conquest. When was the meeting, and what specific targets and timeframe did he name?",
+      "explanation": "On November 5, 1937, Hitler told his military chiefs (including War Minister von Blomberg, Army Commander von Fritsch, Navy Chief Raeder, Luftwaffe Chief Göring, and Foreign Minister von Neurath) that Germany must acquire Lebensraum by seizing Austria and Czechoslovakia — 'as early as 1938, no later than 1943.' Both conquests occurred roughly as described: Austria in March 1938, Czechoslovakia in March 1939. The memorandum was written by Colonel Friedrich Hossbach from memory five days after the meeting. American prosecutors at Nuremberg used it as key evidence of a premeditated Nazi conspiracy to launch WWII. Historians debate whether it represents a long-term master plan (Intentionalists) or improvised response to economic crisis (Functionalists).",
+      "visualDescription": "Pixel art of Hitler at the head of a long conference table, five uniformed military chiefs listening intently, wall maps of Central Europe visible, dark formal setting",
+      "sourceName": "Avalon Project / Harvard Nuremberg Archive",
+      "sourceUrl": "https://avalon.law.yale.edu/imt/hossbach.asp",
+      "volatile": false,
+      "distractors": ["January 30, 1937 — France and Poland as targets by 1940", "September 30, 1938 — Britain and France as targets by 1942", "August 23, 1939 — USSR and Poland as targets within six months", "March 15, 1939 — Balkans and Romania as targets by 1941", "July 7, 1937 — China and Southeast Asia as targets by 1940", "November 9, 1938 — Britain as the primary target for 1939", "April 20, 1938 — Denmark and Norway as targets by 1939", "October 25, 1936 — Spain and France as targets by 1940", "February 26, 1936 — Austria alone as a target before 1938", "September 1, 1939 — Yugoslavia and Greece as the next targets"],
+      "variants": [
+        {"type": "reverse", "question": "The Hossbach Memorandum was written how many days after the actual meeting it recorded, raising questions about its accuracy?", "correctAnswer": "5 days after, from memory", "distractors": ["Immediately during the meeting as official minutes", "30 days later from Hossbach's diary notes", "2 years later, reconstructed from other documents", "1 day after, with participants' signatures"]},
+        {"type": "context", "question": "American prosecutors at Nuremberg used the Hossbach Memorandum as key evidence for what legal charge against Nazi leaders?", "correctAnswer": "Conspiracy to launch a war of aggression", "distractors": ["Crimes against humanity for the Holocaust", "War crimes for the bombing of civilian cities", "Violation of the Versailles Treaty's disarmament clauses", "Illegal annexation of League of Nations territories"]},
+        {"type": "true_false", "question": "True or false: The Hossbach Memorandum was a classified wartime secret, only revealed to the public after the war.", "correctAnswer": "False — it was captured by the Allies after WWII, but was not a specially guarded secret", "distractors": ["True"]}
+      ]
+    }
+  ]
+}

@@ -252,6 +252,7 @@
     flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(calc(300px * var(--layout-scale, 1)), 1fr));
+    grid-auto-rows: 1fr;
     gap: calc(14px * var(--layout-scale, 1));
     padding: calc(16px * var(--layout-scale, 1));
     overflow-y: auto;

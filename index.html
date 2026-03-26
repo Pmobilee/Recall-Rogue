@@ -35,6 +35,31 @@
       }
     </style>
 
+    <!-- Lora font (self-hosted RPG body font) -->
+    <style>
+      @font-face {
+        font-family: 'Lora';
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+        src: url(/fonts/lora-latin.woff2) format('woff2');
+      }
+      @font-face {
+        font-family: 'OpenDyslexic';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(/fonts/opendyslexic-regular.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'OpenDyslexic';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(/fonts/opendyslexic-bold.woff) format('woff');
+      }
+    </style>
+
     <!-- Resource hints: preload WASM for sql.js (used by factsDB, loaded after first paint) -->
     <link rel="preload" href="/sql-wasm.wasm" as="fetch" crossorigin>
 

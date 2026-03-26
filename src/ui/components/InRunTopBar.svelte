@@ -137,8 +137,6 @@
     <span class="segment-name">{segmentName}</span>
     <span class="progress-divider">·</span>
     <span class="floor-label">Floor {currentFloor}</span>
-    <span class="progress-divider">·</span>
-    <span class="encounter-label">{currentEncounter}/{encountersPerFloor}</span>
     {#if ascensionLevel > 0}
       <span class="ascension-badge" aria-label="Ascension {ascensionLevel}">
         A{ascensionLevel}
@@ -256,6 +254,7 @@
     flex: 0 1 auto;
     justify-content: center;
     gap: calc(6px * var(--layout-scale, 1));
+    margin-left: calc(12px * var(--layout-scale, 1));
   }
 
   .section-right {
@@ -364,13 +363,6 @@
     white-space: nowrap;
   }
 
-  .encounter-label {
-    font-family: var(--font-pixel, monospace);
-    font-size: calc(10px * var(--text-scale, 1));
-    color: rgba(255, 255, 255, 0.5);
-    white-space: nowrap;
-  }
-
   .progress-divider {
     color: rgba(255, 255, 255, 0.25);
     font-size: calc(10px * var(--text-scale, 1));
@@ -433,8 +425,8 @@
     width: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.65);
     height: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.65);
     border-radius: calc(4px * var(--layout-scale, 1));
-    background: rgba(24, 33, 46, 0.9);
-    border: 1.5px solid #c9a227;
+    background: transparent;
+    border: none;
     display: grid;
     place-items: center;
     overflow: hidden;
@@ -550,10 +542,11 @@
     align-items: center;
     justify-content: center;
     width: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.65);
-    height: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.65);
+    height: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.85);
+    max-height: 100%;
     border-radius: calc(4px * var(--layout-scale, 1));
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    border: none;
     cursor: pointer;
     flex-shrink: 0;
     padding: 0;
@@ -571,7 +564,7 @@
   }
 
   .pause-icon {
-    font-size: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.42);
+    font-size: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.55);
     line-height: 1;
     color: rgba(255, 255, 255, 0.75);
   }

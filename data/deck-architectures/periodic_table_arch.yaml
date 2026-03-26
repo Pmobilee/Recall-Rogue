@@ -1,0 +1,1795 @@
+deck_id: periodic_table
+name: "Periodic Table of Elements"
+domain: natural_sciences
+sub_domain: chemistry
+target_facts: 90
+minimum_facts: 70
+
+# Sourcing & licensing (MANDATORY)
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Periodic_table
+    license: CC-BY-SA-4.0
+    usage: fact text, explanations, wow factors, element applications
+  - name: Wikidata
+    url: https://www.wikidata.org/wiki/Q11448
+    license: CC0
+    usage: structured data (atomic numbers, symbols, groups, discovery dates)
+  - name: PubChem
+    url: https://pubchem.ncbi.nlm.nih.gov/
+    license: public domain
+    usage: element properties verification
+  - name: IUPAC
+    url: https://iupac.org/what-we-do/periodic-table-of-elements/
+    license: public domain
+    usage: official element names and symbols
+
+asset_sources:
+  - type: element_illustrations
+    source: custom pixel art
+    license: original work
+    note: "Generate via ComfyUI if needed"
+
+# === VERIFIED SOURCE DATA (from Wikidata SPARQL + Wikipedia, 2026-03-25) ===
+# Notes fields: world-knowledge educational facts for fact-writers.
+# Corrupt Wikidata discoverer fields (genid URLs, Q-IDs) replaced with known values.
+
+source_data:
+
+  # -------------------------------------------------------------------------
+  # ALKALI METALS — Group 1, highly reactive, soft, low density
+  # -------------------------------------------------------------------------
+  alkali_metals:
+    Lithium:
+      symbol: Li
+      atomicNumber: 3
+      group: 1
+      period: 2
+      category: Alkali metal
+      discoverer: Johan August Arfwedson
+      discoveryYear: 1817
+      notes: >
+        Lightest solid element. Used in rechargeable lithium-ion batteries (phones, EVs)
+        and in mood-stabilizing psychiatric medication. Burns with a crimson-red flame.
+        Name from Greek "lithos" (stone) — found in rocks, unlike other alkali metals
+        found in plants/ash. Reacts vigorously with water. Least dense solid element (0.534 g/cm³).
+
+    Sodium:
+      symbol: Na
+      atomicNumber: 11
+      group: 1
+      period: 3
+      category: Alkali metal
+      discoverer: Humphry Davy
+      discoveryYear: 1807
+      latin_name: Natrium
+      symbol_origin: "Na from Latin 'Natrium' (sodium carbonate, natron)"
+      notes: >
+        Symbol Na from Latin "Natrium." Essential for nerve function and fluid balance
+        in all animals. Table salt is sodium chloride (NaCl). Burns with a vivid
+        yellow flame — the same yellow as sodium street lamps. Extremely reactive:
+        explodes on contact with water. 6th most abundant element in Earth's crust.
+        Humphry Davy isolated it by electrolysis in 1807, same year as potassium.
+
+    Potassium:
+      symbol: K
+      atomicNumber: 19
+      group: 1
+      period: 4
+      category: Alkali metal
+      discoverer: Humphry Davy
+      discoveryYear: 1807
+      latin_name: Kalium
+      symbol_origin: "K from Latin/Arabic 'Kalium' (potash, plant ash)"
+      notes: >
+        Symbol K from Latin "Kalium" (potash = plant ash). Essential electrolyte for
+        heart and muscle function. Bananas are famously high in potassium. Burns with
+        a lilac/violet flame. More reactive than sodium. Reacts explosively with water.
+        Discovered by Humphry Davy in 1807, same year as sodium — he was on a roll.
+        Most abundant intracellular cation in the human body.
+
+    Rubidium:
+      symbol: Rb
+      atomicNumber: 37
+      group: 1
+      period: 5
+      category: Alkali metal
+      discoverer: Gustav Kirchhoff, Robert Bunsen
+      discoveryYear: 1861
+      notes: >
+        Discovered via spectroscopy by Bunsen and Kirchhoff — named for its deep-red
+        spectral lines (Latin "rubidus" = deep red). One of the first elements found
+        by spectroscopy. Soft enough to cut with a knife. Ignites spontaneously in air.
+        Used in atomic clocks and GPS technology. Radioactive Rb-87 is used for
+        radiometric dating of ancient rocks.
+
+    Caesium:
+      symbol: Cs
+      atomicNumber: 55
+      group: 1
+      period: 6
+      category: Alkali metal
+      discoverer: Gustav Kirchhoff, Robert Bunsen
+      discoveryYear: 1860
+      notes: >
+        Named for its sky-blue spectral lines (Latin "caesius" = sky blue). First element
+        discovered by spectroscopy (1860). Caesium-133 defines the SI second — atomic
+        clocks based on caesium are accurate to 1 second per 300 million years. Melts
+        at just 28.5°C (you could melt it in your hand if it weren't explosive).
+        Most electropositive stable element. Reacts explosively with water.
+
+    Francium:
+      symbol: Fr
+      atomicNumber: 87
+      group: 1
+      period: 7
+      category: Alkali metal
+      discoverer: Marguerite Perey
+      discoveryYear: 1939
+      notes: >
+        Rarest naturally occurring element on Earth — less than 30 grams exist in
+        Earth's crust at any given time. Discovered by French physicist Marguerite
+        Perey, who named it after France. Most unstable of the naturally occurring
+        elements (longest-lived isotope has half-life of only 22 minutes). Most
+        reactive metal theoretically, but too rare to observe bulk reactions.
+        Perey was the last person to discover a natural element.
+
+  # -------------------------------------------------------------------------
+  # ALKALINE EARTH METALS — Group 2, reactive but less so than alkali metals
+  # -------------------------------------------------------------------------
+  alkaline_earth_metals:
+    Beryllium:
+      symbol: Be
+      atomicNumber: 4
+      group: 2
+      period: 2
+      category: Alkaline earth metal
+      discoverer: Friedrich Wöhler, Louis Nicolas Vauquelin, Antoine Bussy
+      discoveryYear: 1798
+      notes: >
+        Extremely lightweight yet very stiff — used in aerospace and X-ray windows
+        (X-rays pass through it easily). Toxic: beryllium dust causes a severe chronic
+        lung disease (berylliosis). Despite being in Group 2, behaves unusually and
+        resembles aluminum more than calcium (diagonal relationship). Hardest of the
+        alkaline earth metals. Found in emeralds and aquamarine (beryl minerals).
+
+    Magnesium:
+      symbol: Mg
+      atomicNumber: 12
+      group: 2
+      period: 3
+      category: Alkaline earth metal
+      discoverer: Joseph Black
+      discoveryYear: 1755
+      notes: >
+        Burns with an intensely bright white flame — used in flares, fireworks, and
+        WWII incendiary bombs. Chlorophyll (the green pigment in plants) has a magnesium
+        atom at its center, just like hemoglobin has iron. Essential mineral in human
+        diet (muscle/nerve function). Lightweight structural metal: used in car wheels,
+        laptop cases. Named after Magnesia, a district in Greece.
+
+    Calcium:
+      symbol: Ca
+      atomicNumber: 20
+      group: 2
+      period: 4
+      category: Alkaline earth metal
+      discoverer: Humphry Davy
+      discoveryYear: 1808
+      notes: >
+        Most abundant metal in the human body — bones and teeth are primarily calcium
+        phosphate. 5th most abundant element in Earth's crust. Limestone, marble, and
+        chalk are all calcium carbonate (CaCO3). Burns with a brick-red flame. Name
+        from Latin "calx" (lime). Dairy products are the classic dietary source.
+        Stalactites and stalagmites are calcium carbonate deposits.
+
+    Strontium:
+      symbol: Sr
+      atomicNumber: 38
+      group: 2
+      period: 5
+      category: Alkaline earth metal
+      discoverer: William Cruickshank
+      discoveryYear: 1787
+      notes: >
+        Burns with a brilliant crimson-red flame — the classic red color in fireworks.
+        Radioactive strontium-90 (a nuclear fallout product) is dangerous because the
+        body treats it like calcium and incorporates it into bones. Strontium ranelate
+        was used as a bone-density medication. Named after Strontian, a village in
+        Scotland where its ore was found.
+
+    Barium:
+      symbol: Ba
+      atomicNumber: 56
+      group: 2
+      period: 6
+      category: Alkaline earth metal
+      discoverer: Humphry Davy
+      discoveryYear: 1808
+      notes: >
+        "Barium meal" (barium sulfate suspension) is drunk before GI X-rays — it's
+        opaque to X-rays, outlining the digestive tract. Despite barium compounds being
+        used medically, the pure metal and soluble barium compounds are toxic. Burns
+        with a green flame. Name from Greek "barys" (heavy) — its ore barite is
+        unusually dense. Used in drilling muds for oil wells.
+
+    Radium:
+      symbol: Ra
+      atomicNumber: 88
+      group: 2
+      period: 7
+      category: Alkaline earth metal
+      discoverer: Marie Curie, Pierre Curie
+      discoveryYear: 1898
+      notes: >
+        Discovered by Marie and Pierre Curie in 1898, who coined the term "radioactivity."
+        Marie Curie won her first Nobel Prize (Chemistry, 1911) specifically for discovering
+        radium. Glows faintly blue-green in the dark from its own radioactivity. Was used
+        in the 1920s-30s to paint glow-in-the-dark watch dials (the "Radium Girls" scandal).
+        Decays to radon gas. Named from Latin "radius" (ray). Lethal — destroyed Marie
+        Curie's health and is why her notebooks are still kept in lead-lined boxes.
+
+  # -------------------------------------------------------------------------
+  # TRANSITION METALS — d-block, periods 4-7, groups 3-12
+  # -------------------------------------------------------------------------
+  transition_metals:
+    # Period 4 (Sc through Zn)
+    Scandium:
+      symbol: Sc
+      atomicNumber: 21
+      group: 3
+      period: 4
+      category: Transition metal
+      discoverer: Lars Fredrik Nilson
+      discoveryYear: 1879
+      notes: >
+        Named after Scandinavia. Predicted by Mendeleev (as "eka-boron") before
+        discovery. Used in aluminium-scandium alloys for high-performance sports
+        equipment (baseball bats, bicycle frames, lacrosse sticks). Also used in
+        metal-halide lamps that mimic daylight. Relatively rare and expensive.
+
+    Titanium:
+      symbol: Ti
+      atomicNumber: 22
+      group: 4
+      period: 4
+      category: Transition metal
+      discoverer: William Gregor (1791), isolated by Friedrich Wöhler
+      discoveryYear: 1791
+      notes: >
+        Highest strength-to-weight ratio of any metal — as strong as steel but 45%
+        lighter. Completely corrosion-resistant (forms a tough oxide layer). Biocompatible:
+        used in surgical implants, joint replacements, dental implants (bones grow onto it).
+        Used in aerospace (jet engines, airframes), high-end bikes, and golf clubs.
+        Named after the Titans of Greek mythology. Not a rare element — 9th most abundant
+        in Earth's crust — but expensive to refine.
+
+    Vanadium:
+      symbol: V
+      atomicNumber: 23
+      group: 5
+      period: 4
+      category: Transition metal
+      discoverer: Andrés Manuel del Río
+      discoveryYear: 1801
+      notes: >
+        Named after Vanadis (Freyja), Norse goddess of beauty, for its colorful compounds.
+        Steel alloyed with vanadium (vanadium steel) is much harder — used in tools,
+        crankshafts, armor plate. Henry Ford pioneered its use in car manufacturing.
+        Vanadium redox batteries are promising for grid-scale energy storage.
+
+    Chromium:
+      symbol: Cr
+      atomicNumber: 24
+      group: 6
+      period: 4
+      category: Transition metal
+      discoverer: Louis Nicolas Vauquelin
+      discoveryYear: 1797
+      notes: >
+        Name from Greek "chroma" (color) — its compounds are brilliantly colored (chrome
+        yellow, chrome green, chrome red). Used to make stainless steel (10-30% chromium).
+        Chrome plating gives a shiny, corrosion-resistant finish to car parts. Rubies are
+        red because of chromium impurities in aluminum oxide. Emeralds also get their
+        green from chromium. Hardest of the transition metals.
+
+    Manganese:
+      symbol: Mn
+      atomicNumber: 25
+      group: 7
+      period: 4
+      category: Transition metal
+      discoverer: Johan Gottlieb Gahn
+      discoveryYear: 1774
+      notes: >
+        Essential in steel production — virtually all steel contains manganese to increase
+        hardness and remove oxygen/sulfur impurities. The brain cannot function without
+        manganese (cofactor for many enzymes). Manganese nodules are found on the ocean
+        floor and are a potential future resource. Potassium permanganate (KMnO4) is
+        a powerful oxidizing agent used to purify water.
+
+    Iron:
+      symbol: Fe
+      atomicNumber: 26
+      group: 8
+      period: 4
+      category: Transition metal
+      discoverer: known since antiquity
+      discoveryYear: "c. -3000 (Iron Age)"
+      latin_name: Ferrum
+      symbol_origin: "Fe from Latin 'Ferrum'"
+      notes: >
+        Symbol Fe from Latin "Ferrum." Most widely used metal in the world — steel
+        (iron + carbon) is the backbone of modern civilization. 4th most abundant
+        element in Earth's crust; most abundant by mass in Earth as a whole (iron core).
+        Hemoglobin's iron atom is what carries oxygen in blood (iron makes blood red).
+        Most stable isotope (Fe-56) — nuclear fusion ends here (iron is the endpoint of
+        stellar nucleosynthesis). Rusts when exposed to oxygen and water (iron oxide).
+        The Iron Age (~1200 BCE) transformed human civilization.
+
+    Cobalt:
+      symbol: Co
+      atomicNumber: 27
+      group: 9
+      period: 4
+      category: Transition metal
+      discoverer: Georg Brandt
+      discoveryYear: 1735
+      notes: >
+        Named from German "Kobold" (goblin) — miners named it for the toxic fumes it
+        released (arsenic) when smelted. Cobalt blue has been used in art for centuries
+        (Vermeer's blue pigments). Vitamin B12 has a cobalt atom at its center. Used
+        in superalloys for jet engines (can withstand extreme heat). Cobalt-60 is used
+        in cancer radiotherapy. Critical component of lithium cobalt oxide batteries.
+        The Democratic Republic of Congo produces ~70% of world supply.
+
+    Nickel:
+      symbol: Ni
+      atomicNumber: 28
+      group: 10
+      period: 4
+      category: Transition metal
+      discoverer: Axel Fredrik Cronstedt
+      discoveryYear: 1751
+      notes: >
+        Named from "Kupfernickel" (Old Nick's copper) — German miners' name for an ore
+        that looked like copper but yielded none. The US 5-cent coin (nickel) is 75%
+        copper and only 25% nickel. Used in stainless steel, rechargeable batteries
+        (NiMH, NiCd), and coins worldwide. Nickel carbonyl is one of the most toxic
+        compounds known. Earth's core contains significant amounts of nickel. Most
+        meteorites contain nickel-iron alloys.
+
+    Copper:
+      symbol: Cu
+      atomicNumber: 29
+      group: 11
+      period: 4
+      category: Transition metal
+      discoverer: known since antiquity
+      discoveryYear: "c. -9000"
+      latin_name: Cuprum
+      symbol_origin: "Cu from Latin 'Cuprum' (from Cyprus, main ancient source)"
+      notes: >
+        Symbol Cu from Latin "Cuprum" (from Cyprus, the main ancient mining source).
+        One of the few metals found in nature in pure form. The Bronze Age (copper + tin).
+        Best electrical conductor among common metals — essentially all electrical wiring.
+        Naturally antimicrobial: hospital door handles are switching back to copper.
+        Turns green (verdigris) when oxidized — that's why the Statue of Liberty is green.
+        Octopus and horseshoe crab blood is blue because their oxygen carrier uses copper
+        (hemocyanin) instead of iron (hemoglobin). Essential trace element for life.
+
+    Zinc:
+      symbol: Zn
+      atomicNumber: 30
+      group: 12
+      period: 4
+      category: Transition metal
+      discoverer: Andreas Sigismund Marggraf (pure isolation)
+      discoveryYear: 1746
+      notes: >
+        Galvanization — coating steel with zinc to prevent rust — is one of the most
+        important industrial applications. Brass is copper + zinc. Essential trace element:
+        needed for immune function, wound healing, and hundreds of enzymes. Zinc oxide
+        (white) is used in sunscreen and calamine lotion. Zinc deficiency affects ~2
+        billion people worldwide. Die-casting zinc is used for toy cars and bathroom
+        hardware. The "penny" (US) is mostly zinc (97.5%) with copper plating.
+
+    # Period 5 (Y through Cd)
+    Yttrium:
+      symbol: Y
+      atomicNumber: 39
+      group: 3
+      period: 5
+      category: Transition metal
+      discoverer: Friedrich Wöhler, Johan Gadolin
+      discoveryYear: 1787
+      notes: >
+        Named after Ytterby, a village in Sweden that gave its name to FOUR elements
+        (yttrium, ytterbium, erbium, terbium). Yttrium aluminum garnet (YAG) is used
+        in industrial lasers and synthetic gemstones. Added to LEDs and phosphors to
+        produce white light. Used in superconducting materials (YBCO). Yttrium-90 is
+        used in cancer treatment (radioembolization).
+
+    Zirconium:
+      symbol: Zr
+      atomicNumber: 40
+      group: 4
+      period: 5
+      category: Transition metal
+      discoverer: Jöns Jacob Berzelius, Martin Heinrich Klaproth
+      discoveryYear: 1789
+      notes: >
+        Cubic zirconia (zirconium dioxide) is the classic cheap diamond simulant.
+        Nuclear reactor fuel rods are clad in zirconium alloy (zircaloy) because it's
+        transparent to neutrons and highly corrosion-resistant at high temperatures.
+        Zircon (ZrSiO4) crystals are the oldest minerals on Earth — Jack Hills zircons
+        in Australia date to 4.4 billion years ago, older than the oldest rocks.
+
+    Niobium:
+      symbol: Nb
+      atomicNumber: 41
+      group: 5
+      period: 5
+      category: Transition metal
+      discoverer: Charles Hatchett
+      discoveryYear: 1801
+      notes: >
+        Originally named columbium (Cb) in the US; IUPAC adopted niobium (from Niobe,
+        daughter of Tantalus in mythology, since it was found alongside tantalum). Added
+        to stainless steel in tiny amounts to dramatically improve strength — used in
+        pipelines, cars, jet engines. Superconducting niobium-titanium alloy is used in
+        MRI machines. Brazil produces ~92% of the world's niobium.
+
+    Molybdenum:
+      symbol: Mo
+      atomicNumber: 42
+      group: 6
+      period: 5
+      category: Transition metal
+      discoverer: Carl Wilhelm Scheele
+      discoveryYear: 1778
+      notes: >
+        Highest melting point of any element after tungsten and rhenium (2623°C). Used
+        in high-strength steel alloys for aircraft, missiles, and drill bits. The enzyme
+        nitrogenase — which fixes atmospheric nitrogen into ammonia for all life — requires
+        molybdenum at its active site. Named from Greek "molybdos" (lead) because its ore
+        was confused with lead ore. China produces more than half the world supply.
+
+    Technetium:
+      symbol: Tc
+      atomicNumber: 43
+      group: 7
+      period: 5
+      category: Transition metal
+      discoverer: Emilio G. Segrè, Carlo Perrier
+      discoveryYear: 1937
+      notes: >
+        First element to be artificially produced — synthesized in a cyclotron (1937).
+        All technetium isotopes are radioactive, which is why there's essentially none
+        left in Earth's crust from its formation. Its existence was predicted by
+        Mendeleev as "eka-manganese." Technetium-99m is the most widely used
+        radioactive tracer in nuclear medicine (about 40 million procedures per year
+        for bone scans, cardiac imaging). Named from Greek "technetos" (artificial).
+
+    Ruthenium:
+      symbol: Ru
+      atomicNumber: 44
+      group: 8
+      period: 5
+      category: Transition metal
+      discoverer: Karl Ernst Claus
+      discoveryYear: 1844
+      notes: >
+        Named after Ruthenia (Latin for Russia/Rus). One of the platinum group metals.
+        Tiny amounts added to platinum or palladium increase their hardness dramatically
+        (fountain pen nibs, electrical contacts). Ruthenium tetroxide is a powerful
+        oxidizing agent used in organic chemistry. Grubbs catalyst (for olefin metathesis,
+        Nobel Prize 2005) sometimes uses ruthenium complexes.
+
+    Rhodium:
+      symbol: Rh
+      atomicNumber: 45
+      group: 9
+      period: 5
+      category: Transition metal
+      discoverer: William Hyde Wollaston
+      discoveryYear: 1803
+      notes: >
+        Typically the most expensive naturally occurring metal — rarer than gold, and
+        used in automotive catalytic converters to reduce NOx emissions. The world's
+        catalytic converters consume ~80% of rhodium supply. Named from Greek "rhodon"
+        (rose) for the rose-red color of its salts. Also used in jewelry as plating over
+        white gold to increase brightness. Discovered by William Wollaston while
+        analyzing platinum ore — same year he found palladium.
+
+    Palladium:
+      symbol: Pd
+      atomicNumber: 46
+      group: 10
+      period: 5
+      category: Transition metal
+      discoverer: William Hyde Wollaston
+      discoveryYear: 1803
+      notes: >
+        Named after the asteroid Pallas, discovered just before it. Used in catalytic
+        converters (oxidizes CO and unburned hydrocarbons). Palladium can absorb up to
+        900 times its own volume of hydrogen gas — used in hydrogen purification.
+        Used in electronics (multilayer ceramic capacitors in smartphones). Cross-coupling
+        reactions using palladium catalysts won the 2010 Nobel Prize in Chemistry.
+
+    Silver:
+      symbol: Ag
+      atomicNumber: 47
+      group: 11
+      period: 5
+      category: Transition metal
+      discoverer: known since antiquity
+      discoveryYear: "c. -3000"
+      latin_name: Argentum
+      symbol_origin: "Ag from Latin 'Argentum'"
+      notes: >
+        Symbol Ag from Latin "Argentum." Best electrical and thermal conductor of all
+        elements. Best reflector of visible light (used in mirrors). Natural antimicrobial:
+        silver nitrate was used to prevent eye infections in newborns, silver-coated
+        catheters reduce infections. Used in jewelry, tableware, coins, photography (silver
+        halides), and solar panels. Argentina is named after silver (argentum) — Spanish
+        explorers expected to find silver there. Sterling silver is 92.5% silver + 7.5% copper.
+
+    Cadmium:
+      symbol: Cd
+      atomicNumber: 48
+      group: 12
+      period: 5
+      category: Transition metal
+      discoverer: Karl Samuel Leberecht Hermann, Friedrich Stromeyer
+      discoveryYear: 1817
+      notes: >
+        Toxic heavy metal — cadmium poisoning ("itai-itai" disease) devastated communities
+        in Japan near zinc smelters. Used in NiCd rechargeable batteries (largely replaced
+        by NiMH and Li-ion) and in yellow/orange/red pigments (cadmium yellow used by
+        Monet and van Gogh). Cadmium-114 has historically been used to define atomic mass
+        standards. Restricted under RoHS regulations due to toxicity. Named from Greek
+        "kadmeia" (calamine, the zinc ore it was found in).
+
+    # Period 6 transition metals (Hf through Hg)
+    Hafnium:
+      symbol: Hf
+      atomicNumber: 72
+      group: 4
+      period: 6
+      category: Transition metal
+      discoverer: George de Hevesy, Dirk Coster
+      discoveryYear: 1922
+      notes: >
+        Named after Hafnia (Latin for Copenhagen). Last stable element to be discovered
+        (1923). Has the highest neutron absorption cross-section of any element — hafnium
+        control rods are critical in nuclear reactors for controlling fission reactions.
+        Used in semiconductor chips (hafnium dioxide replaces silicon dioxide as gate
+        dielectric in modern transistors). Very hard to separate from zirconium because
+        they are chemically nearly identical.
+
+    Tantalum:
+      symbol: Ta
+      atomicNumber: 73
+      group: 5
+      period: 6
+      category: Transition metal
+      discoverer: Anders Gustaf Ekeberg
+      discoveryYear: 1802
+      notes: >
+        Named after Tantalus (Greek myth) — "tantalized" by water it cannot absorb (the
+        element is extremely corrosion-resistant, "refuses" to react with acids). Used in
+        capacitors for smartphones and electronics (tantalum capacitors). Biocompatible:
+        used in surgical implants and bone repair. Primary ore (coltan) is mined heavily
+        in the DRC, where mining has fueled conflict ("conflict minerals"). Very high
+        melting point (2996°C).
+
+    Tungsten:
+      symbol: W
+      atomicNumber: 74
+      group: 6
+      period: 6
+      category: Transition metal
+      discoverer: Fausto Elhuyar, Juan José Elhuyar
+      discoveryYear: 1783
+      latin_name: Wolfram
+      symbol_origin: "W from German/Swedish 'Wolfram' (the ore wolframite)"
+      notes: >
+        Symbol W from "Wolfram" — the German/Swedish name still used in many languages.
+        Highest melting point of ANY element (3422°C) and highest boiling point.
+        Highest tensile strength of any metal. Used in incandescent light bulb filaments
+        (can glow at 2500°C without melting). Used in X-ray tubes (high-energy
+        electrons strike tungsten to produce X-rays). Tungsten carbide is used in drill
+        bits and cutting tools. Densest common metal after osmium and iridium.
+        Name "Wolfram" from wolf + rahm (cream/soot) — it consumed tin in smelting "like
+        a wolf devours sheep."
+
+    Rhenium:
+      symbol: Re
+      atomicNumber: 75
+      group: 7
+      period: 6
+      category: Transition metal
+      discoverer: Walter Noddack, Ida Noddack, Otto Berg
+      discoveryYear: 1925
+      notes: >
+        Last stable element to be discovered (1925). One of the rarest elements in Earth's
+        crust. Named after the Rhine River. Has the 3rd highest melting point (3186°C).
+        Used in high-performance superalloys for jet engine turbine blades (withstands
+        extreme temperatures). Also used in platinum-rhenium catalysts for petroleum
+        refining. Production is ~50 tonnes per year globally — one of the scarcest
+        commercially used elements.
+
+    Osmium:
+      symbol: Os
+      atomicNumber: 76
+      group: 8
+      period: 6
+      category: Transition metal
+      discoverer: Smithson Tennant
+      discoveryYear: 1804
+      notes: >
+        Densest naturally occurring element (22.59 g/cm³) — denser than gold (19.3)
+        or lead (11.3). So dense a 12cm osmium cube weighs as much as a grown man.
+        Named from Greek "osme" (smell) — osmium tetroxide has a pungent, acrid odor and
+        is highly toxic. Used in fountain pen tips and electrical contacts (alloy with
+        iridium). Extremely hard and resistant to wear. Blue-silver color.
+
+    Iridium:
+      symbol: Ir
+      atomicNumber: 77
+      group: 9
+      period: 6
+      category: Transition metal
+      discoverer: Smithson Tennant
+      discoveryYear: 1803
+      notes: >
+        Second densest element (22.56 g/cm³). Most corrosion-resistant metal — resists
+        virtually all acids. Named from Greek "iris" (rainbow) for the varied colors of
+        its salts. The Cretaceous-Paleogene boundary (the K-Pg layer that marks the
+        dinosaur extinction) is rich in iridium — evidence for the asteroid impact theory
+        (asteroids have higher iridium concentrations than Earth's crust). Used in spark
+        plugs, crucibles, and the original standard kilogram weights (platinum-iridium alloy).
+
+    Platinum:
+      symbol: Pt
+      atomicNumber: 78
+      group: 10
+      period: 6
+      category: Transition metal
+      discoverer: Julius Caesar Scaliger, Antonio de Ulloa
+      discoveryYear: 1557
+      notes: >
+        Name from Spanish "platina" (little silver) — Spanish conquistadors found it in
+        Colombia and dismissed it as inferior silver. Catalytic converters use platinum
+        to oxidize CO and hydrocarbons. Used in jewelry, laboratory equipment, and fuel
+        cells. The original SI kilogram was a platinum-iridium cylinder (kept in Paris
+        until 2019). Platinum resistance thermometers define temperature standards.
+        Exceptional corrosion resistance and high melting point (1768°C). The word
+        "platinum" in music/awards (platinum album, platinum credit card) denotes
+        the highest tier.
+
+    Gold:
+      symbol: Au
+      atomicNumber: 79
+      group: 11
+      period: 6
+      category: Transition metal
+      discoverer: known since antiquity
+      discoveryYear: "c. -6000"
+      latin_name: Aurum
+      symbol_origin: "Au from Latin 'Aurum'"
+      notes: >
+        Symbol Au from Latin "Aurum." The most corrosion-resistant common metal — never
+        tarnishes or rusts, which is why it's found as pure nuggets in nature. Most
+        malleable metal: 1 gram can be beaten into 1 square meter of gold leaf. Most
+        ductile metal: 1 gram can be drawn into 2.4 km of wire. All the gold ever mined
+        (~200,000 tonnes) would fit in a cube ~22m on each side. Color comes from
+        relativistic effects on electrons. Used in electronics (contacts in phones/computers),
+        dentistry, and space (gold-coated visors reflect solar radiation). Cosmic origin:
+        gold is made in neutron star collisions (kilonovae).
+
+    Mercury:
+      symbol: Hg
+      atomicNumber: 80
+      group: 12
+      period: 6
+      category: Transition metal
+      discoverer: known since antiquity
+      discoveryYear: "c. -1500"
+      latin_name: Hydrargyrum
+      symbol_origin: "Hg from Latin 'Hydrargyrum' (liquid silver)"
+      notes: >
+        Symbol Hg from Latin "Hydrargyrum" (water-silver). The ONLY metal that is liquid
+        at room temperature (and standard pressure). Only element named after a planet.
+        Also called "quicksilver" (from Old English/Latin). Density so high that lead floats
+        in it. Highly toxic: causes neurological damage (Mad Hatter disease — hat makers
+        used mercury in felt processing). Used in thermometers, barometers, fluorescent
+        lights (being phased out). Amalgamates with gold — historically used in gold mining.
+        Cinnabar (mercury sulfide, HgS) is a brilliant red pigment used since antiquity.
+
+  # -------------------------------------------------------------------------
+  # POST-TRANSITION METALS — between transition metals and metalloids
+  # -------------------------------------------------------------------------
+  post_transition_metals:
+    Aluminium:
+      symbol: Al
+      atomicNumber: 13
+      group: 13
+      period: 3
+      category: Post-transition metal
+      discoverer: Hans Christian Ørsted, Humphry Davy
+      discoveryYear: 1825
+      notes: >
+        3rd most abundant element in Earth's crust (after oxygen and silicon). Was once
+        more valuable than gold — the Washington Monument's apex is aluminum (a symbol
+        of prestige in 1884). Became cheap after the Hall-Héroult electrolysis process
+        (1886). Most recycled metal — recycling uses only 5% of the energy needed for
+        primary production. Lightweight, strong, non-rusting (forms protective oxide
+        layer). Foil, cans, aircraft, bikes. American English: "aluminum"; IUPAC: "aluminium."
+
+    Gallium:
+      symbol: Ga
+      atomicNumber: 31
+      group: 13
+      period: 4
+      category: Post-transition metal
+      discoverer: Paul-Émile Lecoq de Boisbaudran
+      discoveryYear: 1875
+      notes: >
+        Melts in your hand — melting point 29.76°C (just above room temperature).
+        Named after Gallia (Latin for France) — discovered by French chemist Lecoq
+        de Boisbaudran. Gallium arsenide (GaAs) and gallium nitride (GaN) are
+        semiconductors used in solar cells, LEDs, laser diodes, and high-frequency
+        electronics (your phone's amplifier likely uses GaAs). Predicted by Mendeleev
+        as "eka-aluminum" — one of his most famous successful predictions.
+
+    Indium:
+      symbol: In
+      atomicNumber: 49
+      group: 13
+      period: 5
+      category: Post-transition metal
+      discoverer: Ferdinand Reich, Hieronymous Theodor Richter
+      discoveryYear: 1863
+      notes: >
+        Indium tin oxide (ITO) is the transparent conductor used in virtually all LCD
+        touchscreens, flat panel displays, and smartphone screens — you touch indium
+        hundreds of times a day. Extremely soft and malleable (emits a "tin cry" when
+        bent). Named for the indigo spectral line used to discover it. Produced primarily
+        as a byproduct of zinc refining.
+
+    Tin:
+      symbol: Sn
+      atomicNumber: 50
+      group: 14
+      period: 5
+      category: Post-transition metal
+      discoverer: known since antiquity
+      discoveryYear: "c. -3500"
+      latin_name: Stannum
+      symbol_origin: "Sn from Latin 'Stannum'"
+      notes: >
+        Symbol Sn from Latin "Stannum." Bronze = copper + tin, making the Bronze Age
+        possible. "Tin cans" are actually steel coated with a thin tin layer (electroplating).
+        Tin pest: below 13.2°C, white tin transforms to grey tin, crumbling to powder.
+        Napoleon's army may have suffered from "tin button disease" in the Russian winter.
+        Emits an audible "tin cry" (creak) when bent. Lead-free solder is primarily tin.
+        Organ pipes are made from tin-lead alloys.
+
+    Thallium:
+      symbol: Tl
+      atomicNumber: 81
+      group: 13
+      period: 6
+      category: Post-transition metal
+      discoverer: William Crookes
+      discoveryYear: 1861
+      notes: >
+        Highly toxic — was used as rat poison and in some notorious murder cases
+        (dubbed "the poisoner's poison" — tasteless, odorless, symptoms delayed).
+        Named from Greek "thallos" (green twig) for its bright green spectral line.
+        Used in infrared optical equipment (thallium bromoiodide). Thallium sulfate
+        was used as a pesticide until banned. Soluble thallium compounds are as toxic
+        as lead but more easily absorbed through skin.
+
+    Lead:
+      symbol: Pb
+      atomicNumber: 82
+      group: 14
+      period: 6
+      category: Post-transition metal
+      discoverer: known since antiquity
+      discoveryYear: "c. -6500"
+      latin_name: Plumbum
+      symbol_origin: "Pb from Latin 'Plumbum'"
+      notes: >
+        Symbol Pb from Latin "Plumbum" — also the origin of "plumbing" (Roman pipes
+        were lead). Densest of the common metals. Excellent radiation shielding —
+        lead aprons in X-ray rooms, lead-lined containers for radioactive materials.
+        Toxic: causes neurological damage especially in children (tetraethyl lead in
+        gasoline caused a public health crisis). Used in car batteries (lead-acid).
+        Lead crystal glass (not actually crystal) contains lead oxide for brilliance.
+        Leaded paint was common until the 1970s.
+
+    Bismuth:
+      symbol: Bi
+      atomicNumber: 83
+      group: 15
+      period: 6
+      category: Post-transition metal
+      discoverer: known since antiquity, isolated by Claude François Geoffroy
+      discoveryYear: 1753
+      notes: >
+        Heaviest element with at least one stable (or near-stable) isotope — Bi-209 has
+        a half-life of 1.9 × 10^19 years (a billion times the age of the universe). Most
+        diamagnetic metal — repelled by magnetic fields. Pepto-Bismol's active ingredient
+        is bismuth subsalicylate. Bismuth crystals are stunning — staircase-like iridescent
+        hopper crystals with rainbow oxide tarnish. Low toxicity compared to lead, making
+        it a lead-replacement in some applications. Expands when it solidifies (like water/ice).
+
+    Polonium:
+      symbol: Po
+      atomicNumber: 84
+      group: 16
+      period: 6
+      category: Post-transition metal
+      discoverer: Marie Curie, Pierre Curie
+      discoveryYear: 1898
+      notes: >
+        Named by Marie Curie after her homeland Poland (then under Russian occupation).
+        One of the first elements discovered by the Curies, who named "radioactivity."
+        Extremely radioactive (alpha emitter) — barely detectable amounts are lethal.
+        Used in the assassination of Alexander Litvinenko (2006) — a tiny amount of
+        Po-210 in his tea caused radiation sickness and death. Used in antistatic
+        devices and once in nuclear weapon triggers. Occurs naturally in tobacco smoke.
+
+  # -------------------------------------------------------------------------
+  # METALLOIDS — intermediate properties between metals and nonmetals
+  # -------------------------------------------------------------------------
+  metalloids:
+    Boron:
+      symbol: B
+      atomicNumber: 5
+      group: 13
+      period: 2
+      category: Metalloid
+      discoverer: Humphry Davy
+      discoveryYear: 1892  # isolated; compound known earlier
+      notes: >
+        Boron nitride (BN) is a superhard material rivaling diamond. Borosilicate glass
+        (Pyrex) contains boron — highly heat-resistant (used in cookware and lab glassware).
+        Used in semiconductors, detergents (borax = sodium borate), and wood preservatives.
+        Boron-10 is an excellent neutron absorber — used in nuclear reactor control rods.
+        Boron fibers (boron carbide) are used in bullet-proof vests. Named from Arabic
+        "buraq" (borax). Semiconducting properties between metals and insulators.
+
+    Silicon:
+      symbol: Si
+      atomicNumber: 14
+      group: 14
+      period: 3
+      category: Metalloid
+      discoverer: Jöns Jacob Berzelius
+      discoveryYear: 1823
+      notes: >
+        2nd most abundant element in Earth's crust (after oxygen) — makes up ~28%.
+        "Silicon Valley" is named after it because silicon semiconductors underpin all
+        modern computing. Sand, glass, and quartz are all silicon dioxide (SiO2).
+        Silicon is to electronics as carbon is to organic chemistry — the framework element.
+        Purified to extreme degrees for semiconductors (11 nines pure, 99.999999999%).
+        Solar cells are primarily silicon. Despite being in the same group as carbon,
+        silicon-based life is not viable — Si-Si bonds are much weaker than C-C bonds.
+
+    Germanium:
+      symbol: Ge
+      atomicNumber: 32
+      group: 14
+      period: 4
+      category: Metalloid
+      discoverer: Clemens Winkler
+      discoveryYear: 1886
+      notes: >
+        Predicted by Mendeleev as "eka-silicon" — its discovery in 1886 confirmed his
+        periodic table with remarkable accuracy. Used in early transistors (before silicon
+        took over). Still used in infrared optics (germanium is transparent to IR —
+        night-vision lenses), fiber optic cables, and solar cells. Semiconducting properties
+        are intermediate between silicon and a metal. Named after Germania (Germany).
+
+    Arsenic:
+      symbol: As
+      atomicNumber: 33
+      group: 15
+      period: 4
+      category: Metalloid
+      discoverer: Albertus Magnus
+      discoveryYear: 1250
+      notes: >
+        The "king of poisons" — favorite of Renaissance poisoners (Napoleon may have
+        been poisoned by arsenic in his wallpaper). Arsenic trioxide is used to treat
+        certain leukemias. Arsenic-containing pesticides (lead arsenate) were used widely
+        and left soil contaminated. Arsenic occurs naturally in groundwater in Bangladesh,
+        India, and parts of the US — a massive public health problem. Gallium arsenide
+        is a crucial semiconductor. Ancient glass and pottery often contain arsenic.
+
+    Antimony:
+      symbol: Sb
+      atomicNumber: 51
+      group: 15
+      period: 5
+      category: Metalloid
+      discoverer: known since antiquity
+      discoveryYear: "c. 1450 (isolated)"
+      latin_name: Stibium
+      symbol_origin: "Sb from Latin 'Stibium' (stibnite ore)"
+      notes: >
+        Symbol Sb from Latin "Stibium." Ancient Egyptians used kohl (antimony sulfide)
+        as eye makeup. Added to lead to harden it — used in bullets, type metal (printing
+        presses), and lead-acid batteries. Flame-retardant materials often use antimony
+        oxide. Antimony trioxide is added to plastics and textiles to prevent burning.
+        Has both metallic and non-metallic forms (allotropes). Etymology uncertain — possibly
+        from Greek "anti-monos" (not alone) because it was rarely found pure.
+
+    Tellurium:
+      symbol: Te
+      atomicNumber: 52
+      group: 16
+      period: 5
+      category: Metalloid
+      discoverer: Franz-Joseph Müller von Reichenstein
+      discoveryYear: 1783
+      notes: >
+        Named after Latin "tellus" (Earth) — sister name to selenium (moon). Among the
+        rarest stable elements in Earth's crust. Used in cadmium telluride (CdTe) thin-film
+        solar cells. Bismuth telluride is used in thermoelectric coolers (Peltier devices
+        that cool without moving parts). Even tiny amounts make breath smell of garlic
+        ("tellurium breath") — so extreme that people avoid handling it. Found in gold
+        telluride ores.
+
+  # -------------------------------------------------------------------------
+  # REACTIVE NONMETALS — diverse group; many are essential for life
+  # -------------------------------------------------------------------------
+  reactive_nonmetals:
+    Hydrogen:
+      symbol: H
+      atomicNumber: 1
+      group: 1
+      period: 1
+      category: Reactive nonmetal
+      discoverer: Henry Cavendish
+      discoveryYear: 1766
+      notes: >
+        Most abundant element in the universe (~75% by mass). Simplest atom: 1 proton,
+        1 electron. Stars are powered by hydrogen fusion. Water (H2O) is the most
+        important hydrogen compound. Lightest of all elements (density = 0.08988 g/L).
+        Extremely flammable — the Hindenburg disaster (1937). Hydrogen fuel cells
+        produce electricity with water as the only byproduct. Liquid hydrogen is a
+        rocket fuel (SpaceX, NASA). Future "hydrogen economy" candidate for green energy.
+        Name from Greek "hydro + genes" (water former) — Cavendish noticed it formed water.
+
+    Carbon:
+      symbol: C
+      atomicNumber: 6
+      group: 14
+      period: 2
+      category: Reactive nonmetal
+      discoverer: Antoine Lavoisier
+      discoveryYear: 1789
+      notes: >
+        The basis of all known life — "organic chemistry" is essentially carbon chemistry.
+        4th most abundant element in the universe. Forms more compounds than any other
+        element. Allotropes include: diamond (hardest natural substance), graphite (soft,
+        used in pencils), graphene (one atom thick, exceptional electrical conductor),
+        fullerenes/buckyballs (C60), and carbon nanotubes. Carbon-14 radioactive decay
+        is used in radiocarbon dating (up to ~50,000 years). Carbon dioxide (CO2) is
+        the primary greenhouse gas driving climate change. Coal = mostly carbon.
+        All organic molecules (DNA, proteins, fats, sugars) are carbon-based.
+
+    Nitrogen:
+      symbol: N
+      atomicNumber: 7
+      group: 15
+      period: 2
+      category: Reactive nonmetal
+      discoverer: Daniel Rutherford
+      discoveryYear: 1772
+      notes: >
+        Makes up ~78% of Earth's atmosphere (most abundant gas by far). Essential for
+        life — in DNA, proteins, and amino acids. Liquid nitrogen (boiling point -196°C)
+        is used for cryogenic freezing. The Haber-Bosch process fixes atmospheric nitrogen
+        into ammonia for fertilizer — feeds ~half the world's population. Nitrogen gas
+        (N2) is extremely inert (strong triple bond) — hence most air is chemically unreactive.
+        Nitrous oxide (N2O) is laughing gas. TNT, dynamite, nitroglycerin are nitrogen
+        compounds. Named from Latin "nitrum" + Greek "genes" (niter-forming).
+
+    Oxygen:
+      symbol: O
+      atomicNumber: 8
+      group: 16
+      period: 2
+      category: Reactive nonmetal
+      discoverer: Carl Wilhelm Scheele
+      discoveryYear: 1774
+      notes: >
+        Most abundant element in Earth's crust (~46% by mass) when including combined forms.
+        3rd most abundant in the universe. Essential for aerobic respiration. Discovered
+        independently by Scheele (1772) and Priestley (1774) — Lavoisier named it "oxygen"
+        (acid-former, mistakenly thinking all acids contain oxygen). Liquid oxygen (LOX)
+        is a rocket oxidizer. Ozone (O3) in the stratosphere absorbs UV radiation.
+        Makes up 21% of Earth's atmosphere. Supports combustion — things burn in oxygen.
+        Paramagnetic: liquid oxygen is attracted to a magnet.
+
+    Fluorine:
+      symbol: F
+      atomicNumber: 9
+      group: 17
+      period: 2
+      category: Reactive nonmetal
+      discoverer: André-Marie Ampère, Henri Moissan
+      discoveryYear: 1810
+      notes: >
+        Most electronegative and most reactive element — reacts with almost everything,
+        including noble gases (it can react with xenon and krypton). Fluorine gas is
+        so reactive it's essentially impossible to store — it corrodes through containers.
+        Teflon (PTFE, polytetrafluoroethylene) is fluorine-based — nothing sticks to it.
+        Fluoride in toothpaste and water prevents tooth decay. HF (hydrofluoric acid)
+        is uniquely dangerous — painlessly penetrates skin and attacks bones. Freons
+        (CFCs) that destroyed the ozone layer are fluorine compounds. Named from Latin
+        "fluere" (to flow) — from the mineral fluorite (used as a flux in metallurgy).
+
+    Phosphorus:
+      symbol: P
+      atomicNumber: 15
+      group: 15
+      period: 3
+      category: Reactive nonmetal
+      discoverer: Hennig Brand
+      discoveryYear: 1669
+      notes: >
+        First element discovered by a known individual — Hennig Brand, a German alchemist,
+        found it in 1669 while trying to make the Philosopher's Stone by distilling urine
+        (phosphorus is excreted in urine). Name from Greek "phosphoros" (light-bearer) —
+        white phosphorus glows in the dark (chemiluminescence). DNA and RNA backbones are
+        phosphate groups. ATP (energy currency of cells) contains phosphorus. Essential
+        for bones and teeth (calcium phosphate). White phosphorus is extremely toxic and
+        ignites spontaneously in air. Used in fertilizers, detergents, and matches.
+
+    Sulfur:
+      symbol: S
+      atomicNumber: 16
+      group: 16
+      period: 3
+      category: Reactive nonmetal
+      discoverer: Antoine Lavoisier
+      discoveryYear: 1777
+      notes: >
+        Known since antiquity as "brimstone" — the "fire and brimstone" of the Bible.
+        Yellowish solid that burns with a blue flame producing choking SO2 (sulfur dioxide).
+        Sulfuric acid (H2SO4) is the most widely produced industrial chemical (car batteries,
+        fertilizers, chemical processing). Amino acids cysteine and methionine contain sulfur.
+        The smell of rotten eggs is hydrogen sulfide (H2S). Volcanoes release sulfur compounds.
+        Found naturally in pure form near volcanic vents. Critical in vulcanizing rubber
+        (Charles Goodyear, 1839). 5th most common element on Earth.
+
+    Chlorine:
+      symbol: Cl
+      atomicNumber: 17
+      group: 17
+      period: 3
+      category: Reactive nonmetal
+      discoverer: Carl Wilhelm Scheele
+      discoveryYear: 1774
+      notes: >
+        First chemical weapon used in WWI — Germany released chlorine gas at Ypres (1915).
+        Now: chlorine is used to disinfect drinking water and swimming pools (saves millions
+        of lives). Table salt (NaCl) is sodium chloride. PVC (polyvinyl chloride) is a
+        chlorine compound — one of the world's most common plastics. Chlorofluorocarbons
+        (CFCs) depleted the ozone layer. Hydrochloric acid (HCl) is produced in the
+        stomach for digestion. Name from Greek "chloros" (yellow-green) — the gas is
+        yellow-green and toxic. Only non-metallic element that is a gas at room temperature
+        (besides noble gases, hydrogen, oxygen, nitrogen, and fluorine).
+
+    Selenium:
+      symbol: Se
+      atomicNumber: 34
+      group: 16
+      period: 4
+      category: Reactive nonmetal
+      discoverer: Jöns Jacob Berzelius, Johan Gottlieb Gahn
+      discoveryYear: 1817
+      notes: >
+        Named after Selene, Greek goddess of the Moon (companion to tellurium = Earth).
+        Essential trace element in human diet — selenium-containing proteins (selenoproteins)
+        are important antioxidants. Deficiency causes Keshan disease (heart condition).
+        But only a tiny amount needed — doses 10-100x above the dietary requirement are toxic.
+        Selenium's electrical conductivity increases with light exposure (photoconductive) —
+        used in early photocopiers (xerography) and solar cells. Selenium sulfide is in
+        anti-dandruff shampoos.
+
+    Bromine:
+      symbol: Br
+      atomicNumber: 35
+      group: 17
+      period: 4
+      category: Reactive nonmetal
+      discoverer: Carl Jacob Löwig, Antoine Jérôme Balard
+      discoveryYear: 1825
+      notes: >
+        One of only two elements that are liquid at room temperature (the other is mercury).
+        Named from Greek "bromos" (stench) — has a strong, offensive smell. Red-brown
+        liquid. Flame retardants (polybrominated diphenyl ethers) are controversial
+        brominated compounds. Silver bromide (AgBr) was the light-sensitive compound in
+        photographic film. Used in pesticides, pharmaceuticals, and dyes. Some marine
+        organisms concentrate bromine (e.g., murex snails historically produced Tyrian
+        purple from a brominated compound).
+
+    Iodine:
+      symbol: I
+      atomicNumber: 53
+      group: 17
+      period: 5
+      category: Reactive nonmetal
+      discoverer: Bernard Courtois
+      discoveryYear: 1811
+      notes: >
+        Essential trace element for thyroid function — iodine deficiency causes goiter
+        (enlarged thyroid) and is the leading preventable cause of intellectual disability
+        worldwide. Table salt is iodized to prevent deficiency. Iodine solution is used
+        as an antiseptic (iodine + potassium iodide = Lugol's solution; betadine). Iodine-131
+        is used in thyroid cancer treatment. Solid at room temperature but sublimes to
+        a violet vapor — named from Greek "iodes" (violet). Stains starch blue-black
+        (iodine starch test). 53 protons; heaviest stable halogen element.
+
+  # -------------------------------------------------------------------------
+  # NOBLE GASES — Group 18, inert (mostly), colorless, odorless
+  # -------------------------------------------------------------------------
+  noble_gases:
+    Helium:
+      symbol: He
+      atomicNumber: 2
+      group: 18
+      period: 1
+      category: Noble gas
+      discoverer: Norman Lockyer, Pierre Janssen, William Ramsay
+      discoveryYear: 1868
+      notes: >
+        2nd most abundant element in the universe (~24% by mass) but rare on Earth
+        (escapes into space). Discovered in the Sun by spectroscopy (1868) before found
+        on Earth — named from Greek "Helios" (Sun). Non-renewable resource: once
+        released, it escapes into space. Only element that remains liquid at absolute zero
+        (at normal pressure) — liquid helium (4.2K/-269°C) is used to cool MRI magnets and
+        particle accelerators. Boosts voice pitch when inhaled (party trick — but dangerous
+        in excess). Helium-3 (He-3) is potential future fusion fuel. Used in party balloons,
+        weather balloons, and as a shielding gas in welding.
+
+    Neon:
+      symbol: Ne
+      atomicNumber: 10
+      group: 18
+      period: 2
+      category: Noble gas
+      discoverer: Morris Travers, William Ramsay
+      discoveryYear: 1898
+      notes: >
+        "Neon signs" glow orange-red — other colors use different gases (argon+mercury
+        for blue, krypton for green, etc.) but all called "neon." Named from Greek "neos"
+        (new). 5th most abundant element in the universe but rare on Earth. Totally inert —
+        forms no stable chemical compounds whatsoever. Used in lasers (helium-neon laser),
+        cryogenics, and high-voltage indicators. Ukraine produces a large share of neon
+        used in semiconductor manufacturing (Russian invasion disrupted supply).
+
+    Argon:
+      symbol: Ar
+      atomicNumber: 18
+      group: 18
+      period: 3
+      category: Noble gas
+      discoverer: John Strutt (Lord Rayleigh), William Ramsay
+      discoveryYear: 1894
+      notes: >
+        3rd most abundant gas in Earth's atmosphere (~0.93% — more than CO2). Named from
+        Greek "argos" (idle/lazy) — it's totally inert. Discovered because air was
+        slightly denser than expected after removing nitrogen and oxygen. Used as an inert
+        shielding gas in welding (prevents oxidation), in incandescent and fluorescent
+        bulbs, and to preserve documents (argon atmosphere in Declaration of Independence
+        case). Argon-40 accumulates from radioactive decay of potassium-40 — used in
+        K-Ar radiometric dating of rocks.
+
+    Krypton:
+      symbol: Kr
+      atomicNumber: 36
+      group: 18
+      period: 4
+      category: Noble gas
+      discoverer: Morris Travers, William Ramsay
+      discoveryYear: 1898
+      notes: >
+        Named from Greek "kryptos" (hidden) — same root as "cryptography." Krypton-86
+        was the standard definition of the meter from 1960-1983 (based on wavelength of
+        its orange spectral line). Used in certain photography flashes and energy-efficient
+        light bulbs (krypton-filled incandescent bulbs). Krypton fluoride (KrF) laser is
+        used in LASIK eye surgery and semiconductor lithography. Superman's home planet
+        Krypton is named after this element.
+
+    Xenon:
+      symbol: Xe
+      atomicNumber: 54
+      group: 18
+      period: 5
+      category: Noble gas
+      discoverer: Morris Travers, William Ramsay
+      discoveryYear: 1898
+      notes: >
+        Named from Greek "xenos" (stranger). Despite being a "noble gas," xenon does form
+        compounds with fluorine and oxygen (XeF2, XeF4, XeO3) — the first noble gas
+        compounds synthesized (1962, by Neil Bartlett, shaking up chemistry). Used as
+        an anesthetic (inhaled xenon causes anesthesia). Ion propulsion in spacecraft
+        (Dawn, Hayabusa) ionizes xenon for efficient thrust. Used in high-intensity
+        lamps (car headlights, cinema projectors). Xenon-135 is a neutron "poison" that
+        contributed to the Chernobyl disaster.
+
+    Radon:
+      symbol: Rn
+      atomicNumber: 86
+      group: 18
+      period: 6
+      category: Noble gas
+      discoverer: Ernest Rutherford, Friedrich Ernst Dorn, Robert Bowie Owens
+      discoveryYear: 1899
+      notes: >
+        Radioactive noble gas — densest gas at standard conditions. 2nd leading cause of
+        lung cancer in the US (after smoking) — seeps naturally from soil into buildings.
+        Colorless, odorless, tasteless — completely undetectable without instruments.
+        Radon test kits are recommended for all homes. Decays to polonium, which then
+        decays to lead. Produced by uranium and radium decay in rocks and soil.
+        Named from radium (which produces it by alpha decay).
+
+    Oganesson:
+      symbol: Og
+      atomicNumber: 118
+      group: 18
+      period: 7
+      category: Noble gas
+      discoverer: Joint Institute for Nuclear Research
+      discoveryYear: 2002
+      notes: >
+        The heaviest known element and the last element of the periodic table as currently
+        completed. Only a few atoms have ever been made; each decays in milliseconds.
+        Named after physicist Yuri Oganessian, who is still alive — one of the very few
+        elements named after a living person. Classified as a noble gas by position but
+        theoretical calculations suggest it may actually be reactive (relativistic effects).
+        It has never been observed in macroscopic amounts and its properties are almost
+        entirely theoretical.
+
+  # -------------------------------------------------------------------------
+  # LANTHANIDES (Rare Earth Elements) — Z=57-71
+  # Mostly listed for completeness; few will get individual facts
+  # -------------------------------------------------------------------------
+  lanthanides:
+    Lanthanum:
+      symbol: La
+      atomicNumber: 57
+      group: 3
+      period: 6
+      category: Lanthanide
+      discoverer: Carl Gustaf Mosander
+      discoveryYear: 1839
+    Cerium:
+      symbol: Ce
+      atomicNumber: 58
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Jöns Jacob Berzelius, Martin Heinrich Klaproth
+      discoveryYear: 1804
+      notes: "Most abundant rare earth element. Used in catalytic converters and glass polishing."
+    Praseodymium:
+      symbol: Pr
+      atomicNumber: 59
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Carl Auer von Welsbach
+      discoveryYear: 1885
+    Neodymium:
+      symbol: Nd
+      atomicNumber: 60
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Carl Auer von Welsbach
+      discoveryYear: 1885
+      notes: "Neodymium magnets (Nd2Fe14B) are the strongest permanent magnets — used in speakers, hard drives, EVs."
+    Promethium:
+      symbol: Pm
+      atomicNumber: 61
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Charles D. Coryell, Jacob Akiba Marinsky, Lawrence E. Glendenin
+      discoveryYear: 1945
+      notes: "Only lanthanide with no stable isotopes. Practically no natural occurrence. Radioactive."
+    Samarium:
+      symbol: Sm
+      atomicNumber: 62
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Paul-Émile Lecoq de Boisbaudran
+      discoveryYear: 1879
+      notes: "Samarium-cobalt magnets used in aerospace. Named after mineral samarskite."
+    Europium:
+      symbol: Eu
+      atomicNumber: 63
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Eugène-Anatole Demarçay
+      discoveryYear: 1901
+      notes: "Used in euro banknote security features (red phosphor). Most reactive rare earth."
+    Gadolinium:
+      symbol: Gd
+      atomicNumber: 64
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Jean Charles Galissard de Marignac
+      discoveryYear: 1880
+      notes: "MRI contrast agent (gadolinium chelates injected to improve scan contrast). Strong neutron absorber."
+    Terbium:
+      symbol: Tb
+      atomicNumber: 65
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Carl Gustaf Mosander
+      discoveryYear: 1843
+    Dysprosium:
+      symbol: Dy
+      atomicNumber: 66
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Paul-Émile Lecoq de Boisbaudran
+      discoveryYear: 1886
+      notes: "Added to neodymium magnets to maintain performance at high temperatures. Name from Greek 'dysprositos' (hard to get)."
+    Holmium:
+      symbol: Ho
+      atomicNumber: 67
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Jacques-Louis Soret, Marc Delafontaine, Per Teodor Cleve
+      discoveryYear: 1878
+      notes: "Highest magnetic moment of any natural element."
+    Erbium:
+      symbol: Er
+      atomicNumber: 68
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Carl Gustaf Mosander
+      discoveryYear: 1843
+      notes: "Erbium-doped fiber amplifiers (EDFA) are essential for long-distance fiber optic communications."
+    Thulium:
+      symbol: Tm
+      atomicNumber: 69
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Per Teodor Cleve
+      discoveryYear: 1879
+      notes: "Rarest stable lanthanide. Named after Thule (mythical northernmost land = Scandinavia)."
+    Ytterbium:
+      symbol: Yb
+      atomicNumber: 70
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Jean Charles Galissard de Marignac
+      discoveryYear: 1878
+      notes: "Named after Ytterby, Sweden — 4th element named after that single village."
+    Lutetium:
+      symbol: Lu
+      atomicNumber: 71
+      group: null
+      period: 6
+      category: Lanthanide
+      discoverer: Carl Auer von Welsbach, Georges Urbain
+      discoveryYear: 1906
+      notes: "Last and heaviest of the lanthanides. Named after Lutetia (Latin for Paris)."
+
+  # -------------------------------------------------------------------------
+  # ACTINIDES — Z=89-103, all radioactive
+  # Notable ones: Th, U, Pu, Ra get detailed entries; others listed briefly
+  # -------------------------------------------------------------------------
+  actinides:
+    Actinium:
+      symbol: Ac
+      atomicNumber: 89
+      group: 3
+      period: 7
+      category: Actinide
+      discoverer: André-Louis Debierne
+      discoveryYear: 1899
+      notes: "Gives its name to the actinide series. Named from Greek 'aktis' (ray). Used in cancer treatment (Ac-225)."
+
+    Thorium:
+      symbol: Th
+      atomicNumber: 90
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Jöns Jacob Berzelius
+      discoveryYear: 1828
+      notes: >
+        Named after Thor, Norse god of thunder. Earth contains more thorium than uranium.
+        Thorium-232 is the basis of the thorium fuel cycle — a potential alternative to
+        uranium in nuclear reactors (India's nuclear program is heavily thorium-based).
+        Used in gas mantles (camping lanterns) for their brilliant white glow. Previously
+        used in camera lenses for its high refractive index. All naturally occurring
+        isotopes are radioactive.
+
+    Protactinium:
+      symbol: Pa
+      atomicNumber: 91
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Lise Meitner, Otto Hahn, Kazimierz Fajans
+      discoveryYear: 1917
+      notes: "Highly toxic and radioactive. Extremely rare. Decays to uranium. Named 'proto-actinium' (before actinium in decay chain)."
+
+    Uranium:
+      symbol: U
+      atomicNumber: 92
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Martin Heinrich Klaproth
+      discoveryYear: 1789
+      notes: >
+        Named after the planet Uranus, discovered 8 years earlier. The fuel of nuclear
+        reactors and atomic bombs. U-235 (0.7% of natural uranium) is the fissile isotope
+        used in chain reactions. U-238 (99.3%) can be converted to plutonium in breeder
+        reactors. One kilogram of U-235 can produce as much energy as ~3,000 tonnes of coal.
+        "Depleted uranium" (mostly U-238) is used in armor-piercing ammunition and armor
+        plating — extremely dense (19.1 g/cm³). Before its radioactivity was understood,
+        uranium glass was popular (it glows green under UV). Heaviest naturally
+        occurring element in significant quantities.
+
+    Neptunium:
+      symbol: Np
+      atomicNumber: 93
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Edwin McMillan, Philip Abelson
+      discoveryYear: 1940
+      notes: "First transuranium element synthesized. Named after planet Neptune. Produced as a byproduct in nuclear reactors."
+
+    Plutonium:
+      symbol: Pu
+      atomicNumber: 94
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Edwin McMillan, Glenn T. Seaborg, Arthur Wahl, Joseph W. Kennedy
+      discoveryYear: 1941
+      notes: >
+        The fuel of nuclear weapons. The Nagasaki bomb (Fat Man) used plutonium-239;
+        the Hiroshima bomb used uranium-235. Plutonium-238 (not fissile) generates steady
+        heat from radioactive decay — used as a power source in spacecraft radioisotope
+        thermoelectric generators (RTGs). Voyager, Cassini, New Horizons, and Curiosity
+        all use/used Pu-238 RTGs. Extremely toxic (alpha emitter) and one of the most
+        dangerous substances known. Pyrophoric in powder form (ignites spontaneously).
+        Named after Pluto, following uranium (Uranus) and neptunium (Neptune).
+
+    Americium:
+      symbol: Am
+      atomicNumber: 95
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg
+      discoveryYear: 1944
+      notes: >
+        The one transuranic element found in nearly every home: smoke detectors use
+        americium-241, which ionizes air so that smoke disrupts the current and triggers
+        the alarm. Named after the Americas. Discovered at the University of Chicago
+        Manhattan Project. Glenn Seaborg announced its discovery on a children's radio
+        show (Quiz the Experts), to the surprise of his colleagues.
+
+    Curium:
+      symbol: Cm
+      atomicNumber: 96
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg
+      discoveryYear: 1944
+      notes: "Named after Marie and Pierre Curie. Used in alpha particle X-ray spectrometers on Mars rovers."
+
+    Berkelium:
+      symbol: Bk
+      atomicNumber: 97
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg, Albert Ghiorso, Stanley Gerald Thompson
+      discoveryYear: 1949
+      notes: "Named after Berkeley, California (where it was synthesized at UC Berkeley)."
+
+    Californium:
+      symbol: Cf
+      atomicNumber: 98
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg, Albert Ghiorso, Kenneth Street Jr., Stanley Gerald Thompson
+      discoveryYear: 1950
+      notes: "Named after California. Cf-252 is the most intense neutron source known — used to detect gold/silver in ore and in cancer treatment."
+
+    Einsteinium:
+      symbol: Es
+      atomicNumber: 99
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg, Albert Ghiorso
+      discoveryYear: 1952
+      notes: "Discovered in fallout from first hydrogen bomb test (Ivy Mike, 1952). Named after Albert Einstein."
+
+    Fermium:
+      symbol: Fm
+      atomicNumber: 100
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg
+      discoveryYear: 1952
+      notes: "Also discovered in Ivy Mike H-bomb fallout. Named after Enrico Fermi. Heaviest element that can be produced in a nuclear reactor."
+
+    Mendelevium:
+      symbol: Md
+      atomicNumber: 101
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg
+      discoveryYear: 1955
+      notes: "Named after Dmitri Mendeleev, creator of the periodic table."
+
+    Nobelium:
+      symbol: No
+      atomicNumber: 102
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Glenn T. Seaborg
+      discoveryYear: 1958
+      notes: "Named after Alfred Nobel (chemist, inventor of dynamite, founder of Nobel Prizes)."
+
+    Lawrencium:
+      symbol: Lr
+      atomicNumber: 103
+      group: null
+      period: 7
+      category: Actinide
+      discoverer: Albert Ghiorso
+      discoveryYear: 1961
+      notes: "Last of the actinide series. Named after Ernest O. Lawrence, inventor of the cyclotron."
+
+# === ANSWER TYPE POOLS ===
+
+answer_type_pools:
+  - id: element_names
+    format: name
+    members:
+      - Hydrogen, Helium, Lithium, Beryllium, Boron, Carbon, Nitrogen, Oxygen, Fluorine, Neon
+      - Sodium, Magnesium, Aluminium, Silicon, Phosphorus, Sulfur, Chlorine, Argon, Potassium, Calcium
+      - Scandium, Titanium, Vanadium, Chromium, Manganese, Iron, Cobalt, Nickel, Copper, Zinc
+      - Gallium, Germanium, Arsenic, Selenium, Bromine, Krypton, Rubidium, Strontium, Yttrium, Zirconium
+      - Niobium, Molybdenum, Technetium, Ruthenium, Rhodium, Palladium, Silver, Cadmium, Indium, Tin
+      - Antimony, Tellurium, Iodine, Xenon, Caesium, Barium, Lanthanum, Cerium, Neodymium, Gadolinium
+      - Hafnium, Tantalum, Tungsten, Rhenium, Osmium, Iridium, Platinum, Gold, Mercury, Thallium
+      - Lead, Bismuth, Polonium, Radon, Francium, Radium, Thorium, Uranium, Plutonium, Americium
+      - Curium, Oganesson
+    count: 82
+    note: "Primary pool. Players confuse which element has which property, symbol, or atomic number."
+
+  - id: element_symbols
+    format: name
+    members:
+      - H, He, Li, Be, B, C, N, O, F, Ne
+      - Na, Mg, Al, Si, P, S, Cl, Ar, K, Ca
+      - Sc, Ti, V, Cr, Mn, Fe, Co, Ni, Cu, Zn
+      - Ga, Ge, As, Se, Br, Kr, Rb, Sr, Y, Zr
+      - Nb, Mo, Tc, Ru, Rh, Pd, Ag, Cd, In, Sn
+      - Sb, Te, I, Xe, Cs, Ba, La, Ce, Nd, Gd
+      - Hf, Ta, W, Re, Os, Ir, Pt, Au, Hg, Tl
+      - Pb, Bi, Po, Rn, Fr, Ra, Th, U, Pu, Am
+      - Cm, Og
+    count: 82
+    note: "Symbol recognition pool. Especially tricky for Latin-derived symbols: Fe, Au, Ag, Na, K, Sn, Pb, Hg, Cu, Sb, W."
+
+  - id: element_categories
+    format: term
+    members:
+      - Alkali metal
+      - Alkaline earth metal
+      - Transition metal
+      - Post-transition metal
+      - Metalloid
+      - Reactive nonmetal
+      - Noble gas
+      - Lanthanide
+      - Actinide
+    count: 9
+    note: "Category classification pool. Players learn element groupings."
+
+  - id: bracket_numbers
+    format: bracket_number
+    note: "Runtime-generated numeric distractors for: atomic numbers, discovery years, group numbers."
+
+# === QUESTION TEMPLATES ===
+
+question_templates:
+  # element_names pool
+  - id: name_from_symbol
+    format: "Which element has the chemical symbol {symbol}?"
+    answer_pool: element_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: name_from_description
+    format: "Which element is {description}?"
+    answer_pool: element_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: name_from_property
+    format: "Which element {distinctive_property}?"
+    answer_pool: element_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: name_from_use
+    format: "Which element is commonly used in {application}?"
+    answer_pool: element_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: name_from_group_context
+    format: "Which {category} is used in {context}?"
+    answer_pool: element_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  - id: name_from_counterintuitive
+    format: "Counterintuitive comparative questions"
+    answer_pool: element_names
+    available_from_mastery: 4
+    difficulty: 5
+
+  # element_symbols pool
+  - id: symbol_from_name
+    format: "What is the chemical symbol for {element}?"
+    answer_pool: element_symbols
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: symbol_from_latin
+    format: "Which symbol comes from the Latin name '{latin_name}'?"
+    answer_pool: element_symbols
+    available_from_mastery: 2
+    difficulty: 3
+
+  # element_categories pool
+  - id: category_from_element
+    format: "What type of element is {element}?"
+    answer_pool: element_categories
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: category_from_property
+    format: "Which element category {property}?"
+    answer_pool: element_categories
+    available_from_mastery: 2
+    difficulty: 3
+
+  # bracket number templates
+  - id: atomic_number_from_name
+    format: "What is the atomic number of {element}?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: discovery_year
+    format: "In what year was {element} discovered?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 3
+    difficulty: 4
+
+# === SEEDED CONFUSION PAIRS ===
+
+common_confusions:
+  - ["Sodium", "Potassium"]           # Both alkali metals, both Latin-derived symbols (Na/K)
+  - ["Iron", "Copper"]                # Both common metals, both Latin symbols (Fe/Cu)
+  - ["Gold", "Silver"]                # Both precious metals, both Latin symbols (Au/Ag)
+  - ["Helium", "Neon"]                # Both noble gases, both used in lighting/signs
+  - ["Fluorine", "Chlorine"]          # Both halogens, similar reactivity confusion
+  - ["Bromine", "Iodine"]             # Both halogens, confused properties
+  - ["Nitrogen", "Oxygen"]            # Both atmospheric gases, neighbors
+  - ["Platinum", "Palladium"]         # Both precious metals, similar uses
+  - ["Cobalt", "Nickel"]              # Neighbor transition metals
+  - ["Uranium", "Plutonium"]          # Both nuclear, confused roles
+  - ["Tin", "Lead"]                   # Both Latin symbols (Sn/Pb), both soft metals
+  - ["Tungsten", "Titanium"]          # Both "T" metals, confused properties
+  - ["Silicon", "Carbon"]             # Both group 14, both form basis of chemistry
+  - ["Aluminium", "Silicon"]          # Neighbors, both abundant in Earth's crust
+  - ["Mercury", "Lead"]               # Both toxic heavy metals
+  - ["Osmium", "Iridium"]             # Both densest element competitors
+  - ["Rhodium", "Platinum"]           # Both catalytic converter metals, precious
+  - ["Caesium", "Francium"]           # Both most reactive alkali metals
+  - ["Argon", "Neon"]                 # Both noble gases in common lighting uses
+  - ["Technetium", "Promethium"]      # Both radioactive, no stable isotopes
+
+# === SYNONYM GROUPS ===
+
+synonym_groups:
+  - id: mercury_names
+    fact_ids: []
+    reason: "Mercury / Quicksilver — same element, different names"
+  - id: tungsten_names
+    fact_ids: []
+    reason: "Tungsten / Wolfram — same element (symbol W from Wolfram)"
+  - id: potassium_kalium
+    fact_ids: []
+    reason: "Potassium / Kalium — Latin name explains K symbol"
+  - id: sodium_natrium
+    fact_ids: []
+    reason: "Sodium / Natrium — Latin name explains Na symbol"
+  - id: iron_ferrum
+    fact_ids: []
+    reason: "Iron / Ferrum — Latin name explains Fe symbol"
+  - id: gold_aurum
+    fact_ids: []
+    reason: "Gold / Aurum — Latin name explains Au symbol"
+  - id: silver_argentum
+    fact_ids: []
+    reason: "Silver / Argentum — Latin name explains Ag symbol"
+  - id: lead_plumbum
+    fact_ids: []
+    reason: "Lead / Plumbum — Latin name explains Pb symbol"
+  - id: tin_stannum
+    fact_ids: []
+    reason: "Tin / Stannum — Latin name explains Sn symbol"
+  - id: copper_cuprum
+    fact_ids: []
+    reason: "Copper / Cuprum — Latin name explains Cu symbol"
+  - id: antimony_stibium
+    fact_ids: []
+    reason: "Antimony / Stibium — Latin name explains Sb symbol"
+
+# === DIFFICULTY TIERS ===
+
+difficulty_tiers:
+  easy:  # universally known
+    - Hydrogen, Helium, Carbon, Nitrogen, Oxygen, Gold, Silver, Iron, Copper, Sodium
+  medium:  # commonly known with some education
+    - Silicon, Aluminium, Chlorine, Potassium, Calcium, Zinc, Tin, Lead, Uranium, Neon, Argon, Platinum
+  hard:  # requires specific knowledge
+    - Tungsten, Rhodium, Osmium, Iridium, Antimony, Bismuth, Selenium, Tellurium, Gallium, Germanium
+
+# === SUB-DECKS ===
+
+sub_decks:
+  - id: common_elements
+    name: "Common Elements"
+    description: "The ~40 elements most people encounter in everyday life"
+    estimated_facts: 40
+    includes: "H, He, Li, C, N, O, F, Ne, Na, Mg, Al, Si, P, S, Cl, Ar, K, Ca, Fe, Cu, Zn, Br, Ag, Sn, I, Xe, W, Pt, Au, Hg, Pb, U plus select others"
+
+volatile_facts: []
+# Periodic table data is stable — no volatile facts

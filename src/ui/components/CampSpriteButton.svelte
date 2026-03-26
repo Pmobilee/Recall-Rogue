@@ -130,7 +130,7 @@
   .sprite-label {
     position: absolute;
     transform: translateX(-50%);
-    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-family: var(--font-rpg);
     font-size: 9px;
     color: #ffe8c2;
     text-shadow:

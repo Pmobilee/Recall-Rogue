@@ -1,0 +1,222 @@
+[
+  {
+    "id": "wwii_rtw_weimar_culture",
+    "correctAnswer": "Bauhaus",
+    "acceptableAlternatives": ["Bauhaus school", "Bauhaus movement"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "organization_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What influential German art and design school, founded in 1919 and closed by the Nazis in 1933, represented the creative flowering of the Weimar era before it was crushed?",
+    "explanation": "The Bauhaus (1919-1933) was founded in Weimar by architect Walter Gropius, combining fine arts with crafts and industrial design. Its revolutionary approach — 'form follows function' — influenced modernist architecture, graphic design, and industrial design worldwide. It attracted teachers like Paul Klee, Wassily Kandinsky, and László Moholy-Nagy. The Nazis saw it as degenerate, cosmopolitan, and Jewish — the school moved from Weimar to Dessau to Berlin as pressure mounted, before finally closing itself in 1933 rather than submit to Nazi control. Its teachers and students fled to Britain, the US, and Israel, spreading its influence globally. The Nazi destruction of German modernist culture exemplifies the broader cultural catastrophe of the Third Reich.",
+    "visualDescription": "Pixel art of a modernist school building with large windows and clean geometric lines, students painting and building in workshops, art and design tools visible, 1920s German setting",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bauhaus",
+    "volatile": false,
+    "distractors": ["Expressionist movement", "Berlin Philharmonic", "German Werkbund", "Deutscher Künstlerbund", "Jugendstil movement", "Degenerate Art Exhibition", "Neue Sachlichkeit", "Academy of Arts Berlin"],
+    "variants": [
+      {"type": "reverse", "question": "The Bauhaus school was founded in 1919 by which German architect?", "correctAnswer": "Walter Gropius", "distractors": ["Ludwig Mies van der Rohe", "Le Corbusier", "Bruno Taut", "Erich Mendelsohn"]},
+      {"type": "context", "question": "The Nazis closed the Bauhaus in 1933 and labeled its art 'degenerate.' Where did its displaced teachers and students spread its influence?", "correctAnswer": "Britain, the United States, and Israel", "distractors": ["France, Switzerland, and Sweden", "Soviet Union and Eastern Europe", "South America and Mexico", "Japan and China"]},
+      {"type": "true_false", "question": "True or false: The Bauhaus school voluntarily closed itself in 1933 rather than accept Nazi control over its curriculum.", "correctAnswer": "True", "distractors": ["False"]},
+      {"type": "fill_blank", "question": "The ___ design school, founded in 1919, represented Weimar Germany's cultural renaissance before the Nazis closed it in 1933 as 'degenerate.'", "correctAnswer": "Bauhaus", "distractors": ["Expressionist movement", "Jugendstil movement", "German Werkbund"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_degenerate_art",
+    "correctAnswer": "Entartete Kunst",
+    "acceptableAlternatives": ["Degenerate Art", "degenerate art exhibition"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "military_terms",
+    "difficulty": 4,
+    "funScore": 8,
+    "quizQuestion": "What was the German term for the 1937 Nazi exhibition designed to mock modern art — expressionism, cubism, and works by Jewish artists — framing it as evidence of cultural decline?",
+    "explanation": "In July 1937, the Nazis opened the Entartete Kunst (Degenerate Art) exhibition in Munich, displaying 650 modernist works by Picasso, Ernst Kirchner, Marc Chagall, Wassily Kandinsky, and others, hanging them crookedly with mocking captions. Ironically, more than 2 million people attended — nearly three times more than the concurrent 'Great German Art' exhibition showcasing approved Nazi art. The works on display were later sold abroad for hard currency or burned. This cultural purge was part of the broader Gleichschaltung (coordination) — Nazi takeover of all German cultural, intellectual, and social institutions — that eliminated any form of independent thought or expression.",
+    "visualDescription": "Pixel art of a 1930s exhibition hall with modern paintings displayed at crooked angles, mocking labels on the walls, uniformed Nazi officials watching, German civilians looking curious",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Degenerate_art_exhibition",
+    "volatile": false,
+    "distractors": ["Neue Sachlichkeit", "Kulturkampf", "Volkskunst", "Reichskunstkammer", "Blut und Boden art", "Aryan Art Exhibition", "German Art Week", "Reich Culture Chamber"],
+    "variants": [
+      {"type": "reverse", "question": "The 1937 Entartete Kunst exhibition ironically became more popular than the concurrent 'Great German Art' show. How many people attended the Degenerate Art exhibition?", "correctAnswer": "Over 2 million", "distractors": ["200,000", "500,000", "1 million", "5 million"]},
+      {"type": "context", "question": "The Entartete Kunst exhibition was part of the broader Nazi policy of Gleichschaltung. What does Gleichschaltung mean?", "correctAnswer": "Coordination — Nazi takeover of all German cultural, intellectual, and social institutions", "distractors": ["Purification of German racial stock", "Military rearmament in secret", "Economic central planning", "Youth indoctrination program"]},
+      {"type": "true_false", "question": "True or false: The works in the Entartete Kunst exhibition were all destroyed by the Nazis after the show.", "correctAnswer": "False", "distractors": ["True"]},
+      {"type": "fill_blank", "question": "___, or 'Degenerate Art,' was the 1937 Nazi exhibition mocking modernism — ironically drawing three times more visitors than the Nazi-approved 'Great German Art' show.", "correctAnswer": "Entartete Kunst", "distractors": ["Kulturkampf", "Volkskunst", "Neue Sachlichkeit"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_soviet_purges",
+    "correctAnswer": "Great Purge",
+    "acceptableAlternatives": ["Great Terror", "Stalin's purges", "Soviet purges"],
+    "chainThemeId": 0,
+    "answerTypePoolId": "battle_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What was the name of Stalin's 1936-1938 mass political repression that killed 750,000 people and devastated the Red Army's officer corps — helping explain its poor early performance in WWII?",
+    "explanation": "Stalin's Great Purge (1936-1938) eliminated perceived political rivals, 'counter-revolutionaries,' and anyone suspected of disloyalty. Three of the five Soviet marshals, 13 of 15 army commanders, and more than half of all military officers above the rank of colonel were shot or imprisoned. This devastated Soviet military effectiveness at a critical moment — the purge coincided precisely with Germany's rearmament and territorial expansion. When Finland invaded in 1939 (the Winter War), the Red Army performed catastrophically, appearing weak and confirming Hitler's belief that the USSR would collapse quickly when attacked. The purge's military consequences directly contributed to the near-disaster of Operation Barbarossa in 1941.",
+    "visualDescription": "Pixel art of a Soviet tribunal chamber, uniformed officers standing trial before judges, Stalin portraits on walls, 1930s Soviet judicial setting with implied grim outcome",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Purge",
+    "volatile": false,
+    "distractors": ["Red Terror", "Holodomor", "Gulag expansion", "Collectivization campaign", "Show trials only", "NKVD reorganization", "Party Congress purges", "Soviet internal exile"],
+    "variants": [
+      {"type": "reverse", "question": "Stalin's Great Purge devastated the Red Army by eliminating what proportion of officers above the rank of colonel?", "correctAnswer": "More than half", "distractors": ["About 10%", "About 25%", "About 75%", "Virtually all"]},
+      {"type": "context", "question": "Stalin's Great Purge contributed to the Red Army's catastrophic performance in which 1939-1940 conflict, convincing Hitler the USSR would collapse quickly when attacked?", "correctAnswer": "The Winter War against Finland", "distractors": ["The Khalkhin Gol battles with Japan", "The Spanish Civil War", "The Polish campaign", "The Manchurian conflicts"]},
+      {"type": "true_false", "question": "True or false: Stalin's Great Purge (1936-1938) strengthened the Red Army by eliminating politically unreliable officers before WWII.", "correctAnswer": "False", "distractors": ["True"]},
+      {"type": "fill_blank", "question": "Stalin's ___ of 1936-1938 killed three of five Soviet marshals and half the officer corps, leaving the Red Army dangerously weakened as war approached.", "correctAnswer": "Great Purge", "distractors": ["Red Terror", "Holodomor", "Collectivization campaign"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_winter_war",
+    "correctAnswer": "Winter War",
+    "acceptableAlternatives": ["Soviet-Finnish War", "Russo-Finnish War"],
+    "chainThemeId": 2,
+    "answerTypePoolId": "battle_names",
+    "difficulty": 3,
+    "funScore": 9,
+    "quizQuestion": "What was the name of the 1939-1940 conflict in which tiny Finland inflicted massive casualties on the Soviet invasion force, causing Hitler to underestimate the USSR's military capacity?",
+    "explanation": "The Winter War (November 30, 1939 – March 13, 1940) began when the Soviet Union invaded Finland after Finland rejected demands for border adjustments near Leningrad. Finnish forces, under General Carl Gustaf Emil Mannerheim, used the Mannerheim Line and guerrilla tactics to inflict catastrophic casualties on a poorly led Soviet force — the USSR suffered approximately 126,000 killed versus Finland's 25,000. The League of Nations expelled the USSR. The Red Army's humiliation confirmed Hitler's belief that the Soviet Union was militarily weak — a fatal miscalculation contributing to his decision to invade in June 1941. Finland was ultimately forced to cede territory but maintained independence.",
+    "visualDescription": "Pixel art of Finnish ski troops in white winter camouflage moving silently through a snow-covered forest, Soviet army vehicles stuck in snowdrifts in the background",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Winter_War",
+    "volatile": false,
+    "distractors": ["Continuation War", "Lapland War", "Soviet-Japanese border war", "Operation Barbarossa", "Operation Sea Lion", "Spanish Civil War", "Battle of Britain", "Fall Weiss"],
+    "variants": [
+      {"type": "reverse", "question": "Finland's defense during the Winter War relied on which defensive fortification named after its military commander?", "correctAnswer": "Mannerheim Line", "distractors": ["Maginot Line", "Siegfried Line", "Molotov Line", "Karelian Wall"]},
+      {"type": "context", "question": "The Winter War's revelation of Soviet military weakness had what catastrophic consequence when Hitler drew the wrong conclusion from it?", "correctAnswer": "Hitler underestimated the USSR and launched Operation Barbarossa expecting a quick collapse", "distractors": ["It convinced Stalin to sign the Molotov-Ribbentrop Pact", "It emboldened Japan to attack the Soviet Far East", "It caused Britain to withdraw its Poland guarantee", "It led to the Soviet Union joining the Axis"]},
+      {"type": "true_false", "question": "True or false: Finland successfully repelled the Soviet invasion and maintained all its territory after the Winter War.", "correctAnswer": "False", "distractors": ["True"]},
+      {"type": "fill_blank", "question": "The ___ of 1939-1940, in which Finland inflicted massive losses on Soviet forces, convinced Hitler the USSR would collapse quickly — a fatal miscalculation.", "correctAnswer": "Winter War", "distractors": ["Continuation War", "Operation Barbarossa", "Lapland War"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_article_231",
+    "correctAnswer": "Article 231",
+    "acceptableAlternatives": ["war guilt clause"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "military_terms",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What was the number of the 'war guilt clause' in the Treaty of Versailles that forced Germany to accept sole responsibility for starting World War I?",
+    "explanation": "Article 231 of the Treaty of Versailles stated: 'Germany accepts the responsibility of Germany and her allies for causing all the loss and damage to which the Allied and Associated Governments and their nationals have been subjected as a consequence of the war imposed upon them by the aggression of Germany and her allies.' This legal basis justified reparations but was historically questionable — WWI began through a complex chain of escalating mobilizations in which all major powers bore some responsibility. German nationalists called it the 'war guilt lie' (Kriegsschuldlüge) and Hitler repeatedly cited it as evidence that Germany had been humiliated. The clause unified German political opinion against Versailles across the political spectrum.",
+    "visualDescription": "Pixel art of a document with the number 231 prominently visible, a German delegate's bitter expression as he signs under Allied pressure, ornate Hall of Mirrors, 1919",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/War_guilt_clause",
+    "volatile": false,
+    "distractors": ["Article 48", "Article 119", "Article 160", "Article 45", "Article 80", "Article 198", "Article 311", "Article 22"],
+    "variants": [
+      {"type": "reverse", "question": "German nationalists called Article 231 the 'Kriegsschuldlüge.' What does this translate to?", "correctAnswer": "War guilt lie", "distractors": ["War guilt law", "War responsibility clause", "War punishment decree", "War shame article"]},
+      {"type": "context", "question": "Article 231's war guilt clause was the legal justification for what specific Versailles provision that most destabilized Weimar Germany?", "correctAnswer": "Reparations payments", "distractors": ["Territorial losses", "Military restrictions", "Occupation of the Rhineland", "Loss of colonies"]},
+      {"type": "true_false", "question": "True or false: Article 231 of the Treaty of Versailles provided the legal basis for demanding reparations from Germany.", "correctAnswer": "True", "distractors": ["False"]},
+      {"type": "fill_blank", "question": "___, the 'war guilt clause' of the Treaty of Versailles, forced Germany to accept sole responsibility for WWI and provided the legal basis for reparations — becoming Hitler's most effective propaganda target.", "correctAnswer": "Article 231", "distractors": ["Article 48", "Article 160", "Article 22"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_nuremberg_rallies",
+    "correctAnswer": "Nuremberg rallies",
+    "acceptableAlternatives": ["Nuremberg Party Rallies", "Reichsparteitag"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "battle_names",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What were the massive annual Nazi Party spectacles held in Nuremberg from 1933-1938, designed by Albert Speer as 'cathedrals of light' to demonstrate regime power?",
+    "explanation": "The Nuremberg rallies were the Third Reich's most spectacular propaganda events, held annually in September from 1933 to 1938. Architect Albert Speer designed the 'cathedral of light' — 130 anti-aircraft searchlights shining vertically to create glowing walls in the night sky. Hundreds of thousands attended. Leni Riefenstahl's 1935 film 'Triumph of the Will,' documenting the 1934 rally, became one of history's most technically sophisticated propaganda films. The rallies were carefully choreographed to demonstrate mass loyalty to Hitler, making individuals feel part of an overwhelming collective will. The 1935 rally announced the Nuremberg Laws stripping Jews of citizenship. The planned 1939 rally, cancelled when war began, was ironically titled 'Rally of Peace.'",
+    "visualDescription": "Pixel art of massive Nuremberg stadium at night, searchlights creating columns of light reaching into dark sky, tiny figures of hundreds of thousands in formation, Nazi eagles silhouetted",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nuremberg_rallies",
+    "volatile": false,
+    "distractors": ["Berlin Olympics 1936", "Tempelhof Field rallies", "Munich Party Days", "Reichstag sessions", "Berlin parade grounds", "Hamburg naval reviews", "Dresden art festival", "Frankfurt motor show"],
+    "variants": [
+      {"type": "reverse", "question": "Leni Riefenstahl's documentary about the 1934 Nuremberg Rally became one of history's most influential propaganda films. What was it titled?", "correctAnswer": "Triumph of the Will", "distractors": ["The Will to Power", "Germany Awaken", "Victory of Faith", "The German Soul"]},
+      {"type": "context", "question": "Albert Speer designed the Nuremberg rally's most spectacular visual effect — 130 searchlights creating what phenomenon that became the event's iconic image?", "correctAnswer": "A 'cathedral of light' with vertical light columns reaching into the sky", "distractors": ["Massive bonfires arranged in a swastika pattern", "Synchronized torch processions across the entire stadium", "Laser projections on artificial cloud formations", "Reflected city lights amplified by mirrors into the sky"]},
+      {"type": "true_false", "question": "True or false: The Nuremberg Laws stripping Jews of citizenship were announced at the 1935 Nuremberg Rally.", "correctAnswer": "True", "distractors": ["False"]},
+      {"type": "fill_blank", "question": "The annual ___, spectacular Nazi propaganda events designed by Albert Speer featuring the iconic 'cathedral of light,' were held in September from 1933 to 1938.", "correctAnswer": "Nuremberg rallies", "distractors": ["Berlin Olympics", "Munich demonstrations", "Tempelhof rallies"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_berlin_olympics",
+    "correctAnswer": "1936 Berlin Olympics",
+    "acceptableAlternatives": ["Berlin Olympics", "1936 Olympics"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "battle_names",
+    "difficulty": 2,
+    "funScore": 9,
+    "quizQuestion": "What international sporting event did Hitler use for propaganda purposes in 1936, while Jesse Owens undermined Nazi racial ideology by winning four gold medals?",
+    "explanation": "The 1936 Berlin Olympics were a propaganda triumph Hitler nearly squandered. Germany spent lavishly, temporarily toned down anti-Jewish signs, and showcased a peaceful, modern Germany. African-American Jesse Owens won four gold medals in sprinting and the long jump — the most decorated athlete of the Games — directly contradicting Nazi claims of Aryan physical superiority. Hitler reportedly refused to publicly congratulate Owens, though Owens himself later said the snub came from President Roosevelt, who never sent a telegram. German broadcaster Leni Riefenstahl's film 'Olympia' became another masterpiece of propaganda filmmaking. The US debated boycotting over Nazi antisemitism but ultimately participated.",
+    "visualDescription": "Pixel art of a 1930s Olympic stadium with swastika flags alongside Olympic rings, a sprinter crossing the finish line triumphantly, crowd roaring in the stands, Berlin summer sky",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1936_Summer_Olympics",
+    "volatile": false,
+    "distractors": ["1932 Los Angeles Olympics", "1928 Amsterdam Olympics", "1940 Tokyo Olympics", "1948 London Olympics", "1938 World Cup", "1936 Winter Olympics", "1933 World Athletic Championships", "1937 European Games"],
+    "variants": [
+      {"type": "reverse", "question": "Jesse Owens won four gold medals at the 1936 Berlin Olympics. In which events did he win?", "correctAnswer": "100m, 200m, long jump, and 4x100m relay", "distractors": ["100m, 400m, hurdles, and long jump", "100m, 200m, hurdles, and triple jump", "100m, 200m, high jump, and decathlon", "Sprints, jumping, javelin, and relay"]},
+      {"type": "context", "question": "Hitler used the 1936 Olympics as propaganda, temporarily removing what visible sign of Nazi antisemitism to present a friendly Germany to foreign visitors?", "correctAnswer": "Anti-Jewish signs and restrictions", "distractors": ["SA stormtroopers from public spaces", "Nazi uniforms from government buildings", "Swastika flags from Olympic venues", "Nazi salutes from athletes"]},
+      {"type": "true_false", "question": "True or false: Jesse Owens' four gold medals at the 1936 Berlin Olympics directly contradicted Nazi claims of Aryan racial superiority.", "correctAnswer": "True", "distractors": ["False"]},
+      {"type": "fill_blank", "question": "The ___ were Hitler's showcase for Nazi Germany, but Jesse Owens won four gold medals, making a mockery of Aryan supremacy ideology on the world stage.", "correctAnswer": "1936 Berlin Olympics", "distractors": ["1932 Los Angeles Olympics", "1940 Tokyo Olympics", "1936 Winter Olympics"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_memel",
+    "correctAnswer": "Memel Territory",
+    "acceptableAlternatives": ["Memel", "Klaipėda"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "place_names",
+    "difficulty": 5,
+    "funScore": 7,
+    "quizQuestion": "What German-majority coastal territory was taken from Germany by Versailles, given to Lithuania, then demanded and received by Hitler in March 1939 — his last territorial gain before invading Poland?",
+    "explanation": "The Memel Territory (now Klaipėda, Lithuania) was a German-populated Baltic port region detached from Germany by the Treaty of Versailles and placed under French administration before Lithuania annexed it in 1923. On March 22, 1939 — just a week after seizing the rest of Czechoslovakia — Hitler demanded and received the territory from Lithuania under threat of force. This was his last bloodless territorial gain. One week later, Britain issued its guarantee to Poland. The speed of the Memel annexation — Hitler had simply escalated from one target to the next — made clear that Polish territory would be next. By this point, only war could stop German expansion.",
+    "visualDescription": "Pixel art of a small Baltic port city with German and Lithuanian populations visible, a warship in the harbor, the German flag being raised on a government building, March wind",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Memel_Territory",
+    "volatile": false,
+    "distractors": ["Danzig", "Sudetenland", "Rhineland", "Saarland", "East Prussia", "Upper Silesia", "Eupen-Malmedy", "Schleswig"],
+    "variants": [
+      {"type": "reverse", "question": "Hitler's annexation of the Memel Territory in March 1939 was significant because it was followed within days by what British action?", "correctAnswer": "Britain issuing its guarantee to defend Poland", "distractors": ["Britain declaring war on Germany", "France mobilizing its army", "The League of Nations expelling Germany", "The US revoking its neutrality laws"]},
+      {"type": "context", "question": "Memel's annexation was Germany's last pre-war territorial gain before the invasion of Poland. Which country had controlled it since 1923?", "correctAnswer": "Lithuania", "distractors": ["Poland", "Latvia", "Estonia", "France"]},
+      {"type": "true_false", "question": "True or false: Germany's annexation of the Memel Territory in March 1939 involved military combat.", "correctAnswer": "False", "distractors": ["True"]},
+      {"type": "fill_blank", "question": "The ___, a German-majority Baltic port, was Hitler's last bloodless territorial grab in March 1939 — the week before Britain issued its guarantee to Poland.", "correctAnswer": "Memel Territory", "distractors": ["Danzig", "Saarland", "Sudetenland"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_four_year_plan",
+    "correctAnswer": "Four Year Plan",
+    "acceptableAlternatives": ["Four-Year Plan", "Vierjahresplan"],
+    "chainThemeId": 1,
+    "answerTypePoolId": "military_terms",
+    "difficulty": 4,
+    "funScore": 6,
+    "quizQuestion": "What 1936 Nazi economic program, headed by Hermann Göring, accelerated German rearmament by aiming to make Germany self-sufficient in key war materials within four years?",
+    "explanation": "Announced at the 1936 Nuremberg Rally, the Four Year Plan placed Hermann Göring in charge of preparing the German economy for war. Its goals were to make Germany self-sufficient in strategic materials (synthetic rubber, synthetic fuel, metals) and ready for total war within four years. The plan represented Hitler's intention to go to war by 1940 regardless of Germany's economic readiness — a view that put him in conflict with more cautious economists like Hjalmar Schacht. The plan vastly expanded synthetic fuel production and rearmament, but Germany was never fully economically self-sufficient. When war came in 1939, Germany depended on Soviet oil deliveries secured by the Molotov-Ribbentrop Pact — making the 1941 invasion partly an economic necessity.",
+    "visualDescription": "Pixel art of 1930s German factory floor, workers operating heavy machinery producing steel and synthetic fuel, Nazi production quota posters on walls, industrial wartime energy",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Four_Year_Plan",
+    "volatile": false,
+    "distractors": ["New Economic Policy", "Dawes Plan", "Marshall Plan", "New Deal", "Five Year Plan", "Schacht Plan", "Todt Organization", "Reichsbank Economic Program"],
+    "variants": [
+      {"type": "reverse", "question": "Hermann Göring headed the Four Year Plan, but which conservative economist did the plan's war-focus put Hitler in conflict with?", "correctAnswer": "Hjalmar Schacht", "distractors": ["Albert Speer", "Walther Funk", "Ludwig Erhard", "Robert Ley"]},
+      {"type": "context", "question": "Germany's failure to achieve full economic self-sufficiency under the Four Year Plan meant it depended on what critical import, secured by the Molotov-Ribbentrop Pact?", "correctAnswer": "Soviet oil deliveries", "distractors": ["Romanian wheat", "Swedish iron ore", "Swiss financial credit", "Spanish tungsten"]},
+      {"type": "true_false", "question": "True or false: The Four Year Plan of 1936 was designed to make Germany economically self-sufficient in preparation for war.", "correctAnswer": "True", "distractors": ["False"]},
+      {"type": "fill_blank", "question": "The ___ of 1936, headed by Göring, aimed to make Germany war-ready in four years through synthetic fuel, rubber, and accelerated rearmament.", "correctAnswer": "Four Year Plan", "distractors": ["New Economic Policy", "Dawes Plan", "Schacht Plan"]}
+    ]
+  },
+  {
+    "id": "wwii_rtw_final_diplomatic_failure",
+    "correctAnswer": "August 23, 1939",
+    "acceptableAlternatives": ["1939", "August 1939"],
+    "chainThemeId": 5,
+    "answerTypePoolId": "year_dates",
+    "difficulty": 3,
+    "funScore": 8,
+    "quizQuestion": "What date was the Molotov-Ribbentrop Pact signed, sealing the diplomatic failure that made WWII inevitable just nine days before Germany's invasion of Poland?",
+    "explanation": "The signing of the Molotov-Ribbentrop Pact on August 23, 1939, was the final diplomatic coup that made war inevitable. Britain and France had been slowly negotiating with the Soviet Union for a mutual defense treaty — negotiations that Stalin ultimately concluded were insincere, as the Allies were hoping Germany would attack eastward. Hitler offered Stalin concrete territorial gains in a secret protocol; the Allies could offer only vague commitments. When the pact was announced, it stunned the world and destroyed any possibility that the USSR would oppose German aggression. Nine days later, on September 1, Germany invaded Poland. Britain and France declared war on September 3, 1939. The road to war that began with the Treaty of Versailles in 1919 had reached its destination.",
+    "visualDescription": "Pixel art of Ribbentrop and Molotov signing documents in a Moscow room, Stalin looking on approvingly, Soviet officials smiling, the date visible, late summer 1939 atmosphere",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Molotov%E2%80%93Ribbentrop_Pact",
+    "volatile": false,
+    "distractors": ["August 25, 1939", "September 1, 1939", "July 23, 1939", "August 31, 1939", "September 3, 1939", "August 15, 1939", "July 31, 1939", "August 30, 1939"],
+    "variants": [
+      {"type": "reverse", "question": "Britain and France had been negotiating a defensive pact with the Soviet Union before the Molotov-Ribbentrop Pact. Why did Stalin ultimately choose Germany's offer instead?", "correctAnswer": "Hitler offered concrete territorial gains; the Allies only offered vague commitments", "distractors": ["Germany promised not to invade Poland", "Britain refused to include eastern Poland in the defense guarantee", "France insisted the pact include military action against Japan", "The Allied negotiators kept delaying and sending junior officials"]},
+      {"type": "context", "question": "How many days after the Molotov-Ribbentrop Pact's signing did Germany invade Poland?", "correctAnswer": "Nine days", "distractors": ["One day", "Three days", "Two weeks", "One month"]},
+      {"type": "true_false", "question": "True or false: The Molotov-Ribbentrop Pact was signed on August 23, 1939, just nine days before Germany invaded Poland.", "correctAnswer": "True", "distractors": ["False"]},
+      {"type": "fill_blank", "question": "The Molotov-Ribbentrop Pact was signed on ___, ending all possibility of Soviet opposition to Germany and making WWII inevitable.", "correctAnswer": "August 23, 1939", "distractors": ["September 1, 1939", "August 25, 1939", "July 23, 1939"]}
+    ]
+  }
+]

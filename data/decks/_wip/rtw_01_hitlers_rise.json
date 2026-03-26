@@ -1,0 +1,844 @@
+{
+  "facts": [
+    {
+      "id": "wwii_rtw_putsch_sentence",
+      "correctAnswer": "5 years",
+      "acceptableAlternatives": ["five years"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Hitler was convicted of high treason for the Beer Hall Putsch — a crime that carried the minimum sentence of how long under German law?",
+      "explanation": "Hitler received the minimum possible 5-year sentence from a sympathetic, nationalist-leaning judge after his conviction for high treason. He then served only 9 months of that sentence, released on 20 December 1924 — making his treason trial one of the most leniently prosecuted in Weimar Germany. The trial itself became a propaganda platform, giving Hitler national publicity he would exploit for years.",
+      "visualDescription": "Pixel art courtroom scene: uniformed judge at bench, Hitler standing defiantly at defendant's podium, crowded gallery, Weimar-era German flags",
+      "sourceName": "USHMM Encyclopedia",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/beer-hall-putsch-munich-putsch",
+      "volatile": false,
+      "distractors": ["10 years", "25 years", "life imprisonment", "2 years", "20 years", "3 years", "7 years", "death penalty"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hitler served only 9 months in prison after being convicted of high treason — but what was his original sentence?",
+          "correctAnswer": "5 years",
+          "distractors": ["10 years", "20 years", "2 years", "life imprisonment"]
+        },
+        {
+          "type": "context",
+          "question": "The Beer Hall Putsch trial gave Hitler unexpected national fame. How long did he actually serve in prison after his treason conviction?",
+          "correctAnswer": "9 months",
+          "distractors": ["5 years", "2 years", "18 months"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Hitler received the maximum possible sentence for his role in the Beer Hall Putsch.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hitler was convicted of high treason for the Beer Hall Putsch and sentenced to ___ years in prison.",
+          "correctAnswer": "5",
+          "distractors": ["10", "2", "15"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_putsch_conditions",
+      "correctAnswer": "Landsberg Prison",
+      "acceptableAlternatives": ["Landsberg am Lech", "Landsberg"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "place_names",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "While Hitler was incarcerated for treason after the Beer Hall Putsch, prison authorities allowed him civilian clothes, visitors, letter privileges, and his personal secretary. At which prison did Hitler dictate Mein Kampf under these remarkably comfortable conditions?",
+      "explanation": "At Landsberg Prison, Hitler was permitted civilian clothing, unrestricted visitors, extensive letter privileges, and his personal secretary Rudolf Hess — conditions that allowed him to dictate Mein Kampf. He began dictating in April 1924 and was released on 20 December 1924 after serving only 9 months. The failure of the Beer Hall Putsch thus directly produced both his manifesto and his shift toward seeking power through legal electoral means.",
+      "visualDescription": "Pixel art prison room with large window, typewriter on desk, Hitler in civilian clothes dictating to a seated figure, books and papers stacked neatly — surprisingly comfortable cell",
+      "sourceName": "Warfare History Network — Hitler's Time in Landsberg Prison",
+      "sourceUrl": "https://warfarehistorynetwork.com/article/adolf-hitlers-time-in-landsberg-prison/",
+      "volatile": false,
+      "distractors": ["Spandau Prison", "Moabit Prison", "Plötzensee Prison", "Dachau detention center", "Brandenburg Prison", "Tegel Prison", "Stadelheim Prison", "Berlin jail"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Landsberg Prison is historically significant because a famous political prisoner dictated a manifesto there in 1924. Who was that prisoner?",
+          "correctAnswer": "Adolf Hitler",
+          "distractors": ["Rudolf Hess", "Hermann Göring", "Ernst Röhm"]
+        },
+        {
+          "type": "context",
+          "question": "Hitler began dictating Mein Kampf to Rudolf Hess in April 1924. To whom did he dictate the book — and where?",
+          "correctAnswer": "Rudolf Hess, at Landsberg Prison",
+          "distractors": ["Emil Maurice, at Spandau Prison", "Hermann Göring, at Moabit Prison", "Julius Streicher, at Stadelheim Prison"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Hitler was held in solitary confinement and denied visitors during his imprisonment after the Beer Hall Putsch.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hitler dictated Mein Kampf from ___ Prison, where he was allowed civilian clothes and personal visitors.",
+          "correctAnswer": "Landsberg",
+          "distractors": ["Spandau", "Moabit", "Stadelheim"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_mein_kampf_dictation",
+      "correctAnswer": "Rudolf Hess",
+      "acceptableAlternatives": ["Hess"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Hitler dictated Mein Kampf to two men while imprisoned at Landsberg. One was Emil Maurice. Who was the other — later to become Hitler's Deputy Führer?",
+      "explanation": "Hitler dictated Mein Kampf to Rudolf Hess and Emil Maurice, both fellow prisoners at Landsberg am Lech. Hess would later become Deputy Führer of Nazi Germany. The book was published in two volumes: Volume I in July 1925 and Volume II in December 1926. Sales were modest until Hitler became Chancellor in 1933, after which it became a bestseller.",
+      "visualDescription": "Pixel art prison room, two men seated at typewriters, one pacing and gesturing — low-resolution pixel art with bars visible through window",
+      "sourceName": "Britannica — Mein Kampf",
+      "sourceUrl": "https://www.britannica.com/topic/Mein-Kampf",
+      "volatile": false,
+      "distractors": ["Hermann Göring", "Heinrich Himmler", "Joseph Goebbels", "Julius Streicher", "Martin Bormann", "Reinhard Heydrich", "Albert Speer", "Ernst Röhm"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Rudolf Hess served as Hitler's secretary in Landsberg Prison. What book did he help Hitler produce there?",
+          "correctAnswer": "Mein Kampf",
+          "distractors": ["The Second Book", "Germany's Renewal", "My New Order"]
+        },
+        {
+          "type": "context",
+          "question": "Mein Kampf was published in two volumes — Volume I in 1925 and Volume II in 1926. Where was the book dictated?",
+          "correctAnswer": "Landsberg Prison",
+          "distractors": ["Berlin headquarters", "Munich NSDAP offices", "Vienna apartment"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Mein Kampf was a bestseller in Germany from the moment it was first published in 1925.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hitler dictated Mein Kampf to Rudolf ___ and Emil Maurice while imprisoned after the Beer Hall Putsch.",
+          "correctAnswer": "Hess",
+          "distractors": ["Göring", "Goebbels", "Himmler"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_mein_kampf_wedding",
+      "correctAnswer": "Wedding gift",
+      "acceptableAlternatives": ["wedding gifts", "given to newlyweds"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 10,
+      "quizQuestion": "By 1939, Mein Kampf had sold 5.2 million copies in Germany and been translated into 11 languages — helped enormously by the Nazi government distributing it free of charge in one specific context. What was that occasion?",
+      "explanation": "The Nazi government distributed free copies of Mein Kampf as wedding gifts to all newlywed couples in Germany, helping drive its circulation to 5.2 million copies by 1939. The book had been translated into 11 languages by the same year. Sales had been modest when it was first published (Volume I in July 1925, Volume II in December 1926) and only surged after Hitler became Chancellor in 1933.",
+      "visualDescription": "Pixel art wedding scene: couple at altar receiving a book from a uniformed official, Nazi banners in background, guests watching",
+      "sourceName": "Britannica — Mein Kampf",
+      "sourceUrl": "https://www.britannica.com/topic/Mein-Kampf",
+      "volatile": false,
+      "distractors": ["school graduation ceremony", "military enlistment", "Nazi Party membership initiation", "birthday gift for Hitler's admirers", "Christmas gift from the state", "university enrollment", "first communion", "party rally attendance"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Nazi government gave free copies of Mein Kampf to all German newlyweds. How many copies had been sold in Germany by 1939?",
+          "correctAnswer": "5,200,000",
+          "distractors": ["1,000,000", "10,000,000", "500,000"]
+        },
+        {
+          "type": "context",
+          "question": "Mein Kampf reached 5.2 million copies sold in Germany by 1939 and was translated into 11 languages. Into how many languages was it translated?",
+          "correctAnswer": "11",
+          "distractors": ["5", "20", "30"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Nazi government distributed free copies of Mein Kampf to German newlyweds as a wedding gift.",
+          "correctAnswer": "True",
+          "distractors": ["False"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "By 1939, Mein Kampf had sold ___ copies in Germany and been distributed free as a wedding gift to newlyweds.",
+          "correctAnswer": "5,200,000",
+          "distractors": ["1,000,000", "500,000", "10,000,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_chancellor_appointment",
+      "correctAnswer": "30 January 1933",
+      "acceptableAlternatives": ["January 30, 1933", "January 30th 1933"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "Hitler was appointed Chancellor of Germany — not elected. At what time on what date did President Hindenburg make the appointment, despite having twice refused Hitler previously?",
+      "explanation": "President Paul von Hindenburg appointed Adolf Hitler as Chancellor at 11:30 AM on 30 January 1933, despite having refused him twice before and personally despising him. Hitler had never won an outright electoral majority — the Nazis peaked at 37.4% of the vote in July 1932. This same Enabling Act process that followed the appointment would give Hitler dictatorial power two months later.",
+      "visualDescription": "Pixel art scene: elderly Hindenburg at ornate desk signing document, uniformed Hitler standing stiffly, stone government building interior",
+      "sourceName": "History.com — Hitler Named Chancellor",
+      "sourceUrl": "https://www.history.com/this-day-in-history/january-30/adolf-hitler-is-named-chancellor-of-germany",
+      "volatile": false,
+      "distractors": ["12 March 1933", "5 November 1932", "20 January 1933", "15 February 1933", "9 November 1933", "1 September 1933", "4 March 1932", "23 March 1933"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "On 30 January 1933, Hitler became Chancellor of Germany. Who appointed him — and at what time of day?",
+          "correctAnswer": "President Hindenburg, at 11:30 AM",
+          "distractors": ["The Reichstag, by majority vote", "Kaiser Wilhelm II, by royal decree", "The German Supreme Court, by ruling"]
+        },
+        {
+          "type": "context",
+          "question": "The Nazis peaked at 37.4% of the vote in July 1932 — not a majority. Despite this, Hitler became Chancellor. How?",
+          "correctAnswer": "He was appointed by President Hindenburg",
+          "distractors": ["He won a runoff election in January 1933", "He staged a legal coup with military support", "He was elected in a special emergency session"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Hitler won an outright majority in a democratic election before becoming Chancellor of Germany.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "At 11:30 AM on 30 January 1933, President ___ appointed Hitler as Chancellor of Germany.",
+          "correctAnswer": "Hindenburg",
+          "distractors": ["Schleicher", "Papen", "Hugenberg"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_papen_corner",
+      "correctAnswer": "Franz von Papen",
+      "acceptableAlternatives": ["Papen", "von Papen"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Which former Chancellor convinced Hindenburg to appoint Hitler, then boasted 'In two months, we'll have pushed Hitler so far into the corner that he'll squeal' — predicting he could control him?",
+      "explanation": "Franz von Papen, former Chancellor and newly appointed Vice-Chancellor, convinced President Hindenburg to appoint Hitler on 30 January 1933. He believed that with Hitler holding only 1 of 3 Nazi posts in the 11-man cabinet, conservatives could control him. This calculation proved catastrophically wrong — within two months, the Enabling Act gave Hitler dictatorial power. Papen himself narrowly escaped death during the Night of the Long Knives in June 1934.",
+      "visualDescription": "Pixel art scene: two men in top hats and suits shaking hands smugly outside the Reich Chancellery, unaware figure in Nazi uniform watches from a window above",
+      "sourceName": "USHMM — Hitler Comes to Power",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/hitler-comes-to-power",
+      "volatile": false,
+      "distractors": ["Kurt von Schleicher", "Alfred Hugenberg", "Paul von Hindenburg", "Ernst Röhm", "Heinrich Brüning", "Erich Ludendorff", "Wilhelm Frick", "Otto Meissner"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Papen boasted he could push Hitler 'into the corner' within two months. What role did Papen take in the new government he helped create?",
+          "correctAnswer": "Vice-Chancellor",
+          "distractors": ["Foreign Minister", "Interior Minister", "Finance Minister"]
+        },
+        {
+          "type": "context",
+          "question": "When Hitler became Chancellor, only 3 of the 11 cabinet posts went to Nazis. How many Nazis were in that initial cabinet?",
+          "correctAnswer": "3",
+          "distractors": ["6", "8", "1"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Franz von Papen, who helped put Hitler in power believing he could control him, was later killed during the Night of the Long Knives.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Franz von Papen boasted he would push Hitler 'into the ___' within two months of his appointment as Chancellor.",
+          "correctAnswer": "corner",
+          "distractors": ["grave", "abyss", "trap"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_reichstag_fire",
+      "correctAnswer": "Marinus van der Lubbe",
+      "acceptableAlternatives": ["van der Lubbe"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "On the night of 27 February 1933 — just four weeks after Hitler became Chancellor — the Reichstag building burned. Who was arrested at the scene with fire-starting materials and later executed?",
+      "explanation": "Marinus van der Lubbe, a Dutch communist, was caught at the scene of the Reichstag fire with fire-starting materials on 27 February 1933. He was convicted and executed on 10 January 1934. Most historians now believe van der Lubbe acted alone, though the Nazis used the fire to claim communist revolution was imminent and pushed through emergency decrees the very next day. The four communist co-defendants were all acquitted at trial.",
+      "visualDescription": "Pixel art night scene: large domed parliament building with flames and smoke pouring from windows, silhouetted police figures in the foreground",
+      "sourceName": "Britannica — Reichstag Fire",
+      "sourceUrl": "https://www.britannica.com/event/Reichstag-fire",
+      "volatile": false,
+      "distractors": ["Ernst Torgler", "Georgi Dimitrov", "Otto Braun", "Simon Popov", "Wilhelm Pieck", "Walter Ulbricht", "Ernst Thälmann", "Max Hoelz"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Marinus van der Lubbe was executed on 10 January 1934. What crime had he been convicted of?",
+          "correctAnswer": "Arson of the Reichstag",
+          "distractors": ["Assassination attempt on Hitler", "Bombing the Munich Beer Hall", "Communist espionage"]
+        },
+        {
+          "type": "context",
+          "question": "The Reichstag fire occurred on 27 February 1933 — just four weeks after Hitler became Chancellor. How quickly did Hitler respond with new emergency powers?",
+          "correctAnswer": "The next day — 28 February 1933",
+          "distractors": ["One week later", "One month later", "After a trial concluded"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: All four communist co-defendants accused of helping plan the Reichstag fire were found guilty at the Leipzig trial.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Reichstag fire occurred on the night of 27 ___ 1933, just four weeks after Hitler became Chancellor.",
+          "correctAnswer": "February",
+          "distractors": ["March", "January", "April"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_fire_decree",
+      "correctAnswer": "28 February 1933",
+      "acceptableAlternatives": ["February 28, 1933", "February 28th 1933"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The Reichstag burned on 27 February 1933. Hitler signed the Reichstag Fire Decree suspending civil liberties in how many days after the fire?",
+      "explanation": "The Reichstag Fire Decree was signed on 28 February 1933 — the day after the fire — suspending civil liberties across Germany. This decree enabled mass arrests of communists and political opponents immediately before the 5 March 1933 elections, the last multi-party elections until after World War II. The Enabling Act, which transferred all legislative power to Hitler's cabinet, followed just three weeks later on 23 March 1933.",
+      "visualDescription": "Pixel art scene: Hitler and officials around a large desk with documents, burning building visible through tall windows in background, stamps and seals being applied",
+      "sourceName": "USHMM — The Reichstag Fire",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-reichstag-fire",
+      "volatile": false,
+      "distractors": ["27 February 1933", "1 March 1933", "5 March 1933", "15 March 1933", "23 March 1933", "1 April 1933", "10 February 1933", "30 January 1933"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Reichstag Fire Decree suspended civil liberties across Germany. The day after it was signed came the last multi-party elections until after WWII — on what date were those elections held?",
+          "correctAnswer": "5 March 1933",
+          "distractors": ["1 April 1933", "23 March 1933", "30 January 1933"]
+        },
+        {
+          "type": "context",
+          "question": "The Reichstag Fire Decree of 28 February 1933 enabled mass arrests before the March elections. What happened exactly three weeks later on 23 March 1933?",
+          "correctAnswer": "The Enabling Act was passed, giving Hitler dictatorial power",
+          "distractors": ["Hitler was elected President", "The Night of the Long Knives began", "The Nuremberg Laws were announced"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Reichstag Fire Decree was signed more than one week after the fire that prompted it.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Reichstag Fire Decree suspending civil liberties was signed on ___ February 1933, one day after the fire.",
+          "correctAnswer": "28",
+          "distractors": ["27", "1", "5"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_enabling_act_vote",
+      "correctAnswer": "441 to 94",
+      "acceptableAlternatives": ["441-94", "441 for, 94 against"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The Enabling Act of 23 March 1933 passed by a supermajority — and only one party voted against it. What was the vote count, and which party provided the sole opposition?",
+      "explanation": "The Enabling Act passed 441 to 94, with the Social Democrats (SPD) being the only party to vote against it. Communist deputies had already been arrested or were in hiding after the Reichstag Fire Decree, eliminating their votes. The Centre Party — needing a two-thirds majority to pass — voted yes after Hitler made verbal promises to protect Catholic institutions, promises he later broke. The act transferred all legislative power to Hitler's cabinet for four years.",
+      "visualDescription": "Pixel art parliament chamber: rows of deputies raising hands, one small cluster of men seated with arms crossed defiantly, Nazi flags hanging from gallery",
+      "sourceName": "USHMM — The Enabling Act",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-enabling-act",
+      "volatile": false,
+      "distractors": ["Communists (KPD)", "German National People's Party (DNVP)", "Centre Party (Zentrum)", "Democratic Party (DDP)", "Bavarian People's Party", "German People's Party (DVP)", "Conservative People's Party", "Reichslandbund"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The SPD was the only party to vote against the Enabling Act. What was the final vote count: how many voted for it?",
+          "correctAnswer": "441",
+          "distractors": ["288", "350", "500"]
+        },
+        {
+          "type": "context",
+          "question": "The Enabling Act required a two-thirds supermajority — but the Nazis held only ~44% of seats. Which party's votes were critical to reaching the threshold?",
+          "correctAnswer": "The Centre Party (Zentrum)",
+          "distractors": ["The Social Democrats (SPD)", "The Communists (KPD)", "The German National People's Party (DNVP)"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Communist Party (KPD) deputies voted against the Enabling Act alongside the Social Democrats.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Enabling Act passed ___ to 94, with the Social Democrats as the only party casting votes against it.",
+          "correctAnswer": "441",
+          "distractors": ["288", "350", "500"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_enabling_act_power",
+      "correctAnswer": "Law to Remedy the Distress of the People and the Reich",
+      "acceptableAlternatives": ["Gesetz zur Behebung der Not von Volk und Reich", "Ermächtigungsgesetz"],
+      "chainThemeId": 5,
+      "answerTypePoolId": "organization_names",
+      "difficulty": 5,
+      "funScore": 9,
+      "quizQuestion": "The Enabling Act gave Hitler dictatorial power through an ostensibly legal parliamentary vote. What was the official name of this act — designed to sound benevolent rather than authoritarian?",
+      "explanation": "The official German name was 'Gesetz zur Behebung der Not von Volk und Reich' — 'Law to Remedy the Distress of the People and the Reich.' By framing dictatorial power as emergency relief, Hitler maintained the facade of constitutional legality. The act allowed Hitler's cabinet to pass laws without Reichstag approval for four years, with laws permitted to deviate from the Weimar Constitution. This same legal framework would be used to pass the Nuremberg Laws two years later in 1935.",
+      "visualDescription": "Pixel art: ornate document with German text under official Nazi eagle seal, fountain pen signing it, parliament building visible through arched window",
+      "sourceName": "Britannica — Enabling Act",
+      "sourceUrl": "https://www.britannica.com/topic/Enabling-Act",
+      "volatile": false,
+      "distractors": ["Law for the Restoration of National Order", "Emergency Powers Act of the German People", "National Security and Unity Law", "Act for the Defense of the German Republic", "Law Protecting the German Fatherland", "Emergency Constitutional Measures Act", "Law for National Reconstruction", "Decree for the Protection of the State"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Enabling Act was officially named the 'Law to Remedy the Distress of the People and the Reich.' How long did it grant Hitler's cabinet the power to rule by decree?",
+          "correctAnswer": "4 years",
+          "distractors": ["1 year", "10 years", "indefinitely"]
+        },
+        {
+          "type": "context",
+          "question": "The Enabling Act passed on 23 March 1933. Two years later, it provided the legal framework for what racial legislation?",
+          "correctAnswer": "The Nuremberg Laws",
+          "distractors": ["The Reichstag Fire Decree", "The Night of the Long Knives", "The Anti-Jewish Boycott"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Enabling Act was passed through an armed coup, not a parliamentary vote.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Enabling Act officially allowed Hitler's cabinet to pass laws without ___ approval for four years.",
+          "correctAnswer": "Reichstag",
+          "distractors": ["presidential", "judicial", "constitutional"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_long_knives_purge",
+      "correctAnswer": "Ernst Röhm",
+      "acceptableAlternatives": ["Röhm", "Roehm"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "On 30 June 1934, Hitler personally traveled to a hotel in Bad Wiessee, Bavaria, to arrest which SA leader — his longtime ally and Chief of Staff of the Brownshirts — at approximately 6 AM?",
+      "explanation": "Hitler personally arrested Ernst Röhm, Chief of Staff of the SA (Sturmabteilung), at the Hotel Hanselbauer in Bad Wiessee at approximately 6–7 AM on 30 June 1934. Röhm was executed by two SS guards on 1 July 1934. The purge, known as the Night of the Long Knives, lasted three days (30 June – 2 July) and permanently broke the power of the SA while elevating the SS. Hitler officially claimed 77 killed; historians estimate at least 85 and possibly over 150.",
+      "visualDescription": "Pixel art dawn scene: BMW motorcade arriving at lakeside hotel, uniformed figures rushing toward entrance, mountains in background, early morning light",
+      "sourceName": "USHMM — Röhm Purge",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/roehm-purge",
+      "volatile": false,
+      "distractors": ["Gregor Strasser", "Kurt von Schleicher", "Gustav von Kahr", "Victor Lutze", "Edmund Heines", "Wilhelm Brückner", "Franz von Papen", "August Schneidhuber"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Ernst Röhm was executed on 1 July 1934 — one day after Hitler arrested him personally. What organization had Röhm led?",
+          "correctAnswer": "The SA (Sturmabteilung)",
+          "distractors": ["The SS (Schutzstaffel)", "The Gestapo", "The Wehrmacht"]
+        },
+        {
+          "type": "context",
+          "question": "The Night of the Long Knives is often called a single event, but it actually lasted how many days?",
+          "correctAnswer": "Three days (30 June – 2 July 1934)",
+          "distractors": ["One night only", "One week", "Five days"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Hitler delegated the arrest of Ernst Röhm to Heinrich Himmler rather than going himself.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hitler personally arrested SA Chief Ernst Röhm at a hotel in ___, Bavaria, at approximately 6 AM on 30 June 1934.",
+          "correctAnswer": "Bad Wiessee",
+          "distractors": ["Munich", "Nuremberg", "Berlin"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_long_knives_victims",
+      "correctAnswer": "Kurt von Schleicher",
+      "acceptableAlternatives": ["Schleicher", "von Schleicher"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "The Night of the Long Knives eliminated more than just SA rivals — it settled political scores. Which man, Hitler's immediate predecessor as Chancellor, was shot at his own home along with his wife during the purge?",
+      "explanation": "Kurt von Schleicher, the Chancellor of Germany immediately before Hitler (he resigned on 28 January 1933), was shot at his home along with his wife during the Night of the Long Knives. Gustav von Kahr — who had betrayed Hitler during the 1923 Beer Hall Putsch — was also murdered, demonstrating Hitler using the purge to settle decade-old scores. Hitler officially claimed 77 killed; historian Heinrich Bennecke estimated at least 85.",
+      "visualDescription": "Pixel art: military officer's home study, broken window, overturned furniture, single uniformed figure standing in shadow — conveying the horror of political assassination",
+      "sourceName": "Britannica — Night of the Long Knives",
+      "sourceUrl": "https://www.britannica.com/event/Night-of-the-Long-Knives",
+      "volatile": false,
+      "distractors": ["Franz von Papen", "Alfred Hugenberg", "Heinrich Brüning", "Gregor Strasser", "Otto von Bismarck Jr.", "Wilhelm Groener", "Hans von Seeckt", "Erich von Falkenhayn"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Schleicher was shot at his home during the Night of the Long Knives. What had his role been before Hitler became Chancellor?",
+          "correctAnswer": "Chancellor of Germany",
+          "distractors": ["President of Germany", "Commander of the Army", "Foreign Minister"]
+        },
+        {
+          "type": "context",
+          "question": "Gustav von Kahr — murdered in the Night of the Long Knives — had betrayed Hitler 11 years earlier. During what event had Kahr betrayed him?",
+          "correctAnswer": "The Beer Hall Putsch of 1923",
+          "distractors": ["The Spartacist Uprising", "The Kapp Putsch", "The Ruhr Crisis"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Night of the Long Knives was limited to killing SA leaders — no civilians or conservatives were targeted.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hitler officially claimed ___ people were killed during the Night of the Long Knives; historians estimate at least 85.",
+          "correctAnswer": "77",
+          "distractors": ["20", "150", "500"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_fuehrer_offices",
+      "correctAnswer": "2 August 1934",
+      "acceptableAlternatives": ["August 2, 1934", "August 2nd 1934"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Hitler merged the offices of Chancellor and President into a single title — Führer und Reichskanzler. On what date did this happen, triggered by the death of which official?",
+      "explanation": "President Paul von Hindenburg died on 2 August 1934 at 9:00 AM, automatically triggering a law Hitler's cabinet had pre-arranged and passed the day before (1 August). This law merged the presidency and chancellorship into the single title of Führer und Reichskanzler. On the same day, the entire German armed forces swore a personal oath of loyalty to Hitler rather than to Germany or the constitution.",
+      "visualDescription": "Pixel art: ornate presidential office, elderly man's vacant chair, Hitler standing at window overlooking Berlin, military aides in background",
+      "sourceName": "History.com — Hitler Becomes Führer",
+      "sourceUrl": "https://www.history.com/this-day-in-history/august-2/hitler-becomes-fuhrer",
+      "volatile": false,
+      "distractors": ["30 January 1933", "23 March 1933", "1 July 1934", "30 June 1934", "19 August 1934", "1 September 1934", "15 September 1935", "3 July 1934"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hitler became Führer on 2 August 1934 when Hindenburg died. The enabling law was actually passed by cabinet on what date — before Hindenburg was even dead?",
+          "correctAnswer": "1 August 1934",
+          "distractors": ["2 August 1934", "30 July 1934", "28 July 1934"]
+        },
+        {
+          "type": "context",
+          "question": "On 2 August 1934 — the same day Hitler became Führer — the entire German armed forces swore a personal oath. To whom was this oath sworn?",
+          "correctAnswer": "To Adolf Hitler personally",
+          "distractors": ["To Germany and the constitution", "To the German people", "To the Nazi Party"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The law merging the offices of Chancellor and President was passed by the cabinet after Hindenburg died.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hitler's title as Führer combined both the ___ (head of state) and the Chancellor (head of government) into one position.",
+          "correctAnswer": "Presidency",
+          "distractors": ["Foreign Ministry", "Army Command", "Party Chairmanship"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_army_oath",
+      "correctAnswer": "Personal oath of loyalty to Hitler",
+      "acceptableAlternatives": ["oath to Hitler personally", "personal loyalty oath to Hitler"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "military_terms",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "On 2 August 1934, the day Hitler became Führer, the entire German armed forces swore a new oath — notable because it broke from tradition. What made this oath different from all previous German military oaths?",
+      "explanation": "The German armed forces swore their oath not to Germany or the Weimar Constitution, but to Adolf Hitler personally as Führer. This personal oath bound individual soldiers and officers to Hitler rather than to the state, making military resistance to Hitler's orders legally and morally fraught for German officers who took their oaths seriously. This same day, Hitler assumed the merged title of Führer und Reichskanzler after President Hindenburg's death at 9:00 AM.",
+      "visualDescription": "Pixel art parade ground: ranks of uniformed soldiers with right arms raised in oath, Hitler standing at podium reviewing them, eagle standards in background",
+      "sourceName": "Deutschlandmuseum — Hitler Acclaimed as Führer",
+      "sourceUrl": "https://www.deutschlandmuseum.de/en/history/calendar/1934-08-01-hitler-acclaimed-as-fuehrer-and-reich-chancellor/",
+      "volatile": false,
+      "distractors": ["oath to Germany and the constitution", "oath to the German people", "oath to the Nazi Party", "oath to defend the Weimar Republic", "oath to the Reichstag", "oath to the German Reich", "oath to the armed forces leadership", "oath to defend German territory"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The German military's personal oath to Hitler on 2 August 1934 made later military resistance harder. What did officers struggle to justify when resisting him?",
+          "correctAnswer": "Breaking their personal oath of loyalty",
+          "distractors": ["Disobeying orders without legal basis", "Acting against the constitution", "Violating international law"]
+        },
+        {
+          "type": "context",
+          "question": "The army swore its oath to Hitler on 2 August 1934. What event that morning had made this oath possible?",
+          "correctAnswer": "President Hindenburg died at 9:00 AM",
+          "distractors": ["Hitler won a national referendum", "The Reichstag voted to grant him new powers", "The Night of the Long Knives concluded"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The German military oath sworn on 2 August 1934 was made to Germany and the Weimar Constitution, as was traditional.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "On 2 August 1934, the entire German armed forces swore an oath of personal loyalty not to Germany, but to Adolf ___ as Führer.",
+          "correctAnswer": "Hitler",
+          "distractors": ["Hindenburg", "Himmler", "Göring"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_nuremberg_laws_date",
+      "correctAnswer": "15 September 1935",
+      "acceptableAlternatives": ["September 15, 1935", "September 15th 1935"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The two Nuremberg Laws were passed unanimously by the Reichstag on 15 September 1935. This was the only time during Nazi rule that the Reichstag convened outside which city?",
+      "explanation": "The Nuremberg Laws were passed at the 7th Annual Nazi Party Rally in Nuremberg on 15 September 1935 — the only Reichstag session held outside Berlin during the entire Nazi era. The two laws were the Reich Citizenship Law (stripping Jews of full citizenship) and the Law for the Protection of German Blood and German Honor (banning marriage and sexual relations between Jews and non-Jewish Germans). A supplementary decree on 14 November 1935 then defined 'Jewishness' by ancestry.",
+      "visualDescription": "Pixel art rally hall: massive swastika banners, packed audience, podium at far end, uniformed officials raising arms in unison vote, torchlight atmosphere",
+      "sourceName": "USHMM — Nuremberg Laws",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/nuremberg-laws",
+      "volatile": false,
+      "distractors": ["Munich", "Frankfurt", "Hamburg", "Cologne", "Vienna", "Leipzig", "Dresden", "Stuttgart"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Reichstag met in Nuremberg on 15 September 1935 — the only time it met outside Berlin. What two laws did it pass?",
+          "correctAnswer": "The Reich Citizenship Law and the Law for the Protection of German Blood and German Honor",
+          "distractors": ["The Enabling Act and the Reichstag Fire Decree", "The Anti-Jewish Boycott Law and the Press Law", "The Law Against Treachery and the Aryanization Law"]
+        },
+        {
+          "type": "context",
+          "question": "The Nuremberg Laws were passed at the 7th Annual Nazi Party Rally. What additional decree on 14 November 1935 defined who was legally 'Jewish'?",
+          "correctAnswer": "The First Supplementary Decree, defining Jewishness by ancestry (grandparents)",
+          "distractors": ["The Second Nuremberg Law itself", "The Enabling Act extension", "The Reich Citizenship Amendment"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Nuremberg Laws were debated and passed after weeks of Reichstag deliberation in Berlin.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Nuremberg Laws were passed on 15 September ___ — the only Reichstag session held outside Berlin under Nazi rule.",
+          "correctAnswer": "1935",
+          "distractors": ["1933", "1934", "1936"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_nuremberg_ancestry",
+      "correctAnswer": "3 or 4 Jewish grandparents",
+      "acceptableAlternatives": ["three or four Jewish grandparents", "three Jewish grandparents", "4 Jewish grandparents"],
+      "chainThemeId": 3,
+      "answerTypePoolId": "number_stats",
+      "difficulty": 4,
+      "funScore": 9,
+      "quizQuestion": "The Nuremberg Laws defined 'Jewish' by ancestry, not religion — catching people who had converted to Christianity. According to the 14 November 1935 supplementary decree, how many Jewish grandparents classified a person as Jewish under law?",
+      "explanation": "The 14 November 1935 supplementary decree classified anyone with 3 or 4 Jewish grandparents as legally Jewish — regardless of personal religious practice or conversion to Christianity. Those with 2 Jewish grandparents were classified as Mischling (mixed-blood) first degree; those with 1 were Mischling second degree with fewer restrictions. This racial definition — based on ancestry rather than belief — was designed to make Jewish identity inescapable.",
+      "visualDescription": "Pixel art: German bureaucratic office, family tree diagram pinned to wall with colored circles marking grandparents, official stamping a document, frightened family waiting at counter",
+      "sourceName": "USHMM — Nuremberg Laws",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/nuremberg-laws",
+      "volatile": false,
+      "distractors": ["1 Jewish grandparent", "2 Jewish grandparents", "at least 1 Jewish parent", "any Jewish ancestor at all", "having a Jewish name", "practicing Judaism", "speaking Yiddish", "having attended a synagogue"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Under the Nuremberg Laws, a person with 3–4 Jewish grandparents was classified as Jewish. What was a person with exactly 2 Jewish grandparents called?",
+          "correctAnswer": "Mischling first degree",
+          "distractors": ["Half-Jew", "Mischling second degree", "State subject"]
+        },
+        {
+          "type": "context",
+          "question": "The Nuremberg Laws classified 'Jewishness' by ancestry. Why did this catch many people who identified as Christian?",
+          "correctAnswer": "Because it was based on grandparents' religion, not personal belief or practice",
+          "distractors": ["Because converted Jews were still required to register", "Because church records were compared to racial records", "Because the law targeted anyone born before 1880"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Under the Nuremberg Laws, a person who had converted to Christianity was exempt from being classified as Jewish.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The Nuremberg Laws defined 'Jewish' as having ___ or more Jewish grandparents — regardless of personal religious practice.",
+          "correctAnswer": "3",
+          "distractors": ["1", "2", "4"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_goebbels_ministry",
+      "correctAnswer": "13 March 1933",
+      "acceptableAlternatives": ["March 13, 1933", "March 13th 1933"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Joseph Goebbels was appointed Reich Minister for Public Enlightenment and Propaganda — the youngest minister in Hitler's cabinet at age 35. On what date was this ministry established, just weeks after Hitler became Chancellor?",
+      "explanation": "The Reich Ministry for Public Enlightenment and Propaganda (RMVP) was established on 13 March 1933 — just six weeks after Hitler became Chancellor on 30 January 1933. Goebbels, who was 35 years old, was the youngest minister in the cabinet. His ministry controlled all German press, radio, cinema, theater, literature, music, and fine arts, and also created the Reichskulturkammer (Reich Chamber of Culture), which required all artists and media workers to be members.",
+      "visualDescription": "Pixel art: formal ministry building exterior with new sign being hung, Goebbels in suit standing before reporters, swastika flags being raised, crowd watching",
+      "sourceName": "German History Intersections — Goebbels Appointment",
+      "sourceUrl": "https://germanhistory-intersections.org/en/knowledge-and-education/ghis:document-158",
+      "volatile": false,
+      "distractors": ["30 January 1933", "27 February 1933", "23 March 1933", "1 April 1933", "10 May 1933", "1 March 1933", "15 February 1933", "5 March 1933"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Goebbels became propaganda minister on 13 March 1933 — 6 weeks after Hitler became Chancellor. Which of these did his ministry NOT directly control?",
+          "correctAnswer": "The army and military affairs",
+          "distractors": ["Radio broadcasts", "Cinema and film", "Newspapers and press"]
+        },
+        {
+          "type": "context",
+          "question": "Goebbels' ministry created the Reichskulturkammer to control all cultural workers. What happened to Jews and political opponents who were excluded from membership?",
+          "correctAnswer": "They were barred from working in any cultural profession in Germany",
+          "distractors": ["They were imprisoned immediately", "They were fined and taxed", "They were forced into military service"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: Joseph Goebbels had always been an antisemite and had no Jewish friends or relationships before joining the Nazi Party.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Goebbels was ___ years old when he became the youngest minister in Hitler's cabinet as Reich Minister for Public Enlightenment and Propaganda.",
+          "correctAnswer": "35",
+          "distractors": ["28", "42", "30"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_book_burnings",
+      "correctAnswer": "10 May 1933",
+      "acceptableAlternatives": ["May 10, 1933", "May 10th 1933"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "On what date in 1933 did pro-Nazi university students burn over 25,000 books at more than 20 university towns across Germany — with Goebbels delivering a speech to approximately 40,000 people at the main Berlin event?",
+      "explanation": "The primary book burnings occurred on 10 May 1933, organized by the Deutsche Studentenschaft (pro-Nazi university students' union), not the government directly. At Berlin's Opernplatz (now Bebelplatz), approximately 40,000 people gathered and roughly 20,000 volumes were burned while Goebbels spoke. Over 25,000 books were burned nationally that night. Among the authors targeted: Sigmund Freud, Karl Marx, Erich Maria Remarque, and Heinrich Heine — who had written in 1821: 'Where they burn books, they will ultimately burn people too.'",
+      "visualDescription": "Pixel art night scene: large bonfire in a city square, silhouetted crowd throwing books into flames, classical building facade in background, dramatic orange glow",
+      "sourceName": "USHMM — Book Burning",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/book-burning",
+      "volatile": false,
+      "distractors": ["30 January 1933", "27 February 1933", "23 March 1933", "1 April 1933", "13 March 1933", "15 September 1935", "9 November 1933", "5 March 1933"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The book burnings of 10 May 1933 were organized not by the government but by a specific organization. Who organized them?",
+          "correctAnswer": "The Deutsche Studentenschaft (pro-Nazi university students' union)",
+          "distractors": ["Goebbels' propaganda ministry directly", "The SS", "The Hitler Youth"]
+        },
+        {
+          "type": "context",
+          "question": "Heinrich Heine's works were among those burned on 10 May 1933. Heine had written a prophetic line in 1821. What did he predict?",
+          "correctAnswer": "'Where they burn books, they will ultimately burn people too'",
+          "distractors": ["'The state that silences art will silence its people'", "'Ignorance is the first weapon of tyrants'", "'A people who destroy their past have no future'"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Berlin book burning of 10 May 1933 was a small private event — Goebbels' radio broadcast of it was the main public element.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Approximately ___ people gathered at Berlin's Opernplatz for the main book burning on 10 May 1933, while Goebbels delivered a speech broadcast on national radio.",
+          "correctAnswer": "40,000",
+          "distractors": ["5,000", "100,000", "10,000"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_hitler_youth_compulsory",
+      "correctAnswer": "1 December 1936",
+      "acceptableAlternatives": ["December 1, 1936", "December 1936"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "year_dates",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The Hitler Youth had existed since March 1922 — over a decade before Hitler came to power. On what date was a law passed making membership legally compulsory for all 'Aryan' German youth?",
+      "explanation": "The 'Law on the Hitler Youth' passed on 1 December 1936 made membership legally compulsory for all racially approved German youth. The organization had been founded as the Jugendbund der NSDAP in March 1922 and received its formal Hitler Youth name on 4 July 1926. By 1935, nearly 60% of all German boys were already members. Jewish children were excluded — registration at age 10 included investigation for 'racial purity.'",
+      "visualDescription": "Pixel art: column of uniformed youth marching in formation through a German town street, flags and banners, civilians watching from sidewalk",
+      "sourceName": "USHMM — Hitler Youth",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/hitler-youth-2",
+      "volatile": false,
+      "distractors": ["30 January 1933", "23 March 1933", "4 July 1926", "1 September 1939", "15 September 1935", "1 July 1936", "1 April 1933", "2 August 1934"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The Law on the Hitler Youth made membership compulsory in December 1936. What percentage of German boys were already members by 1935 — before compulsion?",
+          "correctAnswer": "Nearly 60%",
+          "distractors": ["Nearly 90%", "About 25%", "About 40%"]
+        },
+        {
+          "type": "context",
+          "question": "The Hitler Youth had parallel organizations for girls. Boys aged 10–14 were in the Deutsches Jungvolk. What was the girls' equivalent organization for the same age range?",
+          "correctAnswer": "The Jungmädel",
+          "distractors": ["The Bund Deutscher Mädel", "The Reichsjugend", "The Frauenschaft"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Hitler Youth was founded in 1933, the year Hitler came to power.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Boys aged 14–18 were in the Hitlerjugend proper; boys aged ___ were in the younger Deutsches Jungvolk.",
+          "correctAnswer": "10–14",
+          "distractors": ["8–12", "12–16", "6–10"]
+        }
+      ]
+    },
+    {
+      "id": "wwii_rtw_hitler_youth_structure",
+      "correctAnswer": "Baldur von Schirach",
+      "acceptableAlternatives": ["von Schirach", "Schirach"],
+      "chainThemeId": 1,
+      "answerTypePoolId": "person_names",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "In 1931, Hitler appointed the first Reichsjugendführer (Reich Youth Leader) to oversee what would become the Hitler Youth. Who was this leader, later convicted at the Nuremberg trials?",
+      "explanation": "Baldur von Schirach was appointed first Reichsjugendführer in 1931, two years before Hitler became Chancellor, and led the organization through its massive expansion. He served until 1940, when Artur Axmann replaced him. Schirach was later appointed Gauleiter of Vienna and was convicted at the Nuremberg trials. The Hitler Youth was founded in March 1922 and received its formal name on 4 July 1926 — predating Hitler's chancellorship by over a decade.",
+      "visualDescription": "Pixel art: young uniformed official at podium addressing ranks of Hitler Youth, eagle symbol behind him, large outdoor rally setting",
+      "sourceName": "Wikipedia — Baldur von Schirach",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Baldur_von_Schirach",
+      "volatile": false,
+      "distractors": ["Heinrich Himmler", "Artur Axmann", "Reinhard Heydrich", "Ernst Röhm", "Julius Streicher", "Fritz Wittmann", "Alfred Rosenberg", "Konstantin Hierl"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Baldur von Schirach led the Hitler Youth from 1931 to 1940. Who replaced him as Reichsjugendführer in 1940?",
+          "correctAnswer": "Artur Axmann",
+          "distractors": ["Heinrich Himmler", "Reinhard Heydrich", "Albert Speer"]
+        },
+        {
+          "type": "context",
+          "question": "The Hitler Youth formally received its name on 4 July 1926. Under what earlier name was the organization founded in March 1922?",
+          "correctAnswer": "Jugendbund der NSDAP (Youth League of the NSDAP)",
+          "distractors": ["Grossdeutsche Jugendbewegung", "Reichsjugend", "Deutsches Jungvolk"]
+        },
+        {
+          "type": "true_false",
+          "question": "True or false: The Hitler Youth was founded in 1933 as part of the Nazi seizure of power.",
+          "correctAnswer": "False",
+          "distractors": ["True"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Baldur von Schirach, the first Reichsjugendführer, was later convicted at the ___ trials for his role in Nazi crimes.",
+          "correctAnswer": "Nuremberg",
+          "distractors": ["Tokyo", "Frankfurt", "Berlin"]
+        }
+      ]
+    }
+  ]
+}

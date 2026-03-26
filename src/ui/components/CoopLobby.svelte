@@ -146,7 +146,7 @@
     max-width: 380px; width: 100%; border: 1px solid #0f3460;
   }
   .lobby-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-  .lobby-header h2 { font-family: 'Press Start 2P', monospace; font-size: 13px; color: #e94560; margin: 0; }
+  .lobby-header h2 { font-family: var(--font-rpg); font-size: 13px; color: #e94560; margin: 0; }
   .close-x { background: none; border: none; color: #888; font-size: 24px; cursor: pointer; padding: 0; }
   .loading, .error-text { color: #888; text-align: center; font-size: 13px; }
   .player-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
@@ -161,11 +161,11 @@
   .player-name { flex: 1; color: #e0e0e0; font-size: 13px; }
   .host-badge { font-size: 9px; color: #e94560; background: #1a1a2e; padding: 2px 6px; border-radius: 8px; }
   .lobby-code { text-align: center; color: #888; font-size: 12px; margin: 12px 0; }
-  .lobby-code strong { color: #e94560; font-family: 'Press Start 2P', monospace; font-size: 14px; letter-spacing: 2px; }
+  .lobby-code strong { color: #e94560; font-family: var(--font-rpg); font-size: 14px; letter-spacing: 2px; }
   .lobby-actions { display: flex; flex-direction: column; gap: 8px; }
   .ready-btn, .start-btn {
     width: 100%; padding: 12px; border: none; border-radius: 6px;
-    font-family: 'Press Start 2P', monospace; font-size: 11px; cursor: pointer;
+    font-family: var(--font-rpg); font-size: 11px; cursor: pointer;
   }
   .ready-btn { background: #2ecc71; color: white; }
   .start-btn { background: #e94560; color: white; }

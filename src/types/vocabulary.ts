@@ -232,7 +232,10 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'TOPIK6', name: 'TOPIK 6', wordCount: 5400, order: 6 }
     ],
     voiceId: 'ko-KR-SunHiNeural',
-    subdecks: ['korean_beginner', 'korean_intermediate', 'korean_advanced']
+    subdecks: ['korean_beginner', 'korean_intermediate', 'korean_advanced'],
+    options: [
+      { id: 'romanization', label: 'Show Romanization', description: 'Display romanized pronunciation', type: 'toggle', default: false },
+    ]
   },
   {
     code: 'zh',
@@ -247,7 +250,11 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'HSK6', name: 'HSK 6', wordCount: 5456, order: 6 }
     ],
     voiceId: 'zh-CN-XiaoxiaoNeural',
-    subdecks: ['chinese_hsk1', 'chinese_hsk2', 'chinese_hsk3', 'chinese_hsk4', 'chinese_hsk5', 'chinese_hsk6', 'chinese_hsk7']
+    subdecks: ['chinese_hsk1', 'chinese_hsk2', 'chinese_hsk3', 'chinese_hsk4', 'chinese_hsk5', 'chinese_hsk6', 'chinese_hsk7'],
+    options: [
+      { id: 'pinyin', label: 'Show Pinyin', description: 'Display pinyin pronunciation above characters', type: 'toggle', default: true },
+      { id: 'pinyinOnly', label: 'Pinyin Only', description: 'Replace characters with pinyin (for beginners)', type: 'toggle', default: false },
+    ]
   },
 ]
 
