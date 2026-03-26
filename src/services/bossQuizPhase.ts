@@ -25,6 +25,12 @@ export interface QuizQuestion {
   answers: string[];
   correctAnswer: string;
   categoryL2?: string;
+  /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
+  quizMode?: 'text' | 'image_question' | 'image_answers';
+  /** Path to the question image asset (image_question mode). */
+  imageAssetPath?: string;
+  /** Parallel image paths for each answer choice (image_answers mode). */
+  answerImagePaths?: string[];
 }
 
 export interface QuizPhaseOutcome {
@@ -109,6 +115,7 @@ export function generateQuizPhaseQuestions(
         inRunTracker,
         1,
         runState.runSeed + i * 997,
+        runState.deckMode.examTags,
       );
       if (q) {
         questions.push({
@@ -116,6 +123,9 @@ export function generateQuizPhaseQuestions(
           question: q.question,
           answers: q.choices,
           correctAnswer: q.correctAnswer,
+          quizMode: q.quizMode,
+          imageAssetPath: q.imageAssetPath,
+          answerImagePaths: q.answerImagePaths,
         });
       }
     }

@@ -44,8 +44,16 @@ export interface DeckFact {
   targetLanguageWord?: string;
   reading?: string;
   language?: string;
+  /** Pronunciation / reading for the target word (e.g., hiragana for Japanese kanji). */
+  pronunciation?: string;
   /** Part of speech: verb, noun, adjective, adverb, etc. Used for POS-matched distractors. */
   partOfSpeech?: string;
+  /** Exam relevance tags for filtering study sessions. E.g. "USMLE_Step1", "high_yield", "clinical_correlation" */
+  examTags?: string[];
+  /** Path to image asset (relative to /public/). For image-based quiz modes. */
+  imageAssetPath?: string;
+  /** Quiz presentation: 'text' (default), 'image_question' (image shown, text answers), 'image_answers' (text shown, image answer grid). */
+  quizMode?: 'text' | 'image_question' | 'image_answers';
 }
 
 export interface AnswerTypePool {

@@ -1863,8 +1863,8 @@ export function onMasteryChallengeResolved(passed: boolean): void {
 export function openCampfire(): void {
   const currentState = get(gameFlowState);
   campfireReturnScreen.set(currentState);
-  // Auto-save when entering campfire
-  autoSaveRun('campfire');
+  // Auto-save with the original screen so a reload restores the correct encounter
+  autoSaveRun(currentState);
   gameFlowState.set('campfire');
   currentScreen.set('campfire');
 }
@@ -2041,6 +2041,7 @@ export function generateStudyQuestions(): QuizQuestion[] {
         inRunTracker,
         1,
         run.runSeed + i * 1000,
+        run.deckMode.examTags,
       );
       if (q) {
         questions.push({
@@ -2048,6 +2049,9 @@ export function generateStudyQuestions(): QuizQuestion[] {
           question: q.question,
           answers: q.choices,
           correctAnswer: q.correctAnswer,
+          quizMode: q.quizMode,
+          imageAssetPath: q.imageAssetPath,
+          answerImagePaths: q.answerImagePaths,
         });
       }
     }

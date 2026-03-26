@@ -6,7 +6,7 @@
 
 import type { CuratedDeck, DeckFact, AnswerTypePool, SynonymGroup } from './curatedDeckTypes';
 import { registerDeck } from './deckRegistry';
-import { registerDeckFacts, getSubDeckFactIds } from './deckFactIndex';
+import { registerDeckFacts, getSubDeckFactIds, getTagFactIds } from './deckFactIndex';
 import type { DeckRegistryEntry } from './deckRegistry';
 import type { CanonicalFactDomain } from './card-types';
 import { getDomainMetadata } from './domainMetadata';
@@ -27,13 +27,29 @@ export function getCuratedDeckFact(deckId: string, factId: string): DeckFact | u
 /**
  * Get all facts for a deck.
  * If subDeckId is provided, filters to only facts belonging to that sub-deck.
+ * If examTags is provided (non-empty), further filters to facts carrying at least one matching tag.
+ * Tag filtering is applied AFTER subdeck filtering (most restrictive wins).
  */
-export function getCuratedDeckFacts(deckId: string, subDeckId?: string): DeckFact[] {
+export function getCuratedDeckFacts(deckId: string, subDeckId?: string, examTags?: string[]): DeckFact[] {
   const deck = loadedDecks.get(deckId);
   if (!deck) return [];
-  if (!subDeckId) return deck.facts;
-  const subDeckFactIds = new Set(getSubDeckFactIds(deckId, subDeckId));
-  return deck.facts.filter(f => subDeckFactIds.has(f.id));
+
+  // Start with subdeck-filtered pool (or all facts).
+  let facts: DeckFact[];
+  if (subDeckId) {
+    const subDeckFactIds = new Set(getSubDeckFactIds(deckId, subDeckId));
+    facts = deck.facts.filter(f => subDeckFactIds.has(f.id));
+  } else {
+    facts = deck.facts;
+  }
+
+  // Apply exam tag filter if tags were selected.
+  if (examTags && examTags.length > 0) {
+    const tagFactIds = new Set(getTagFactIds(deckId, examTags));
+    facts = facts.filter(f => tagFactIds.has(f.id));
+  }
+
+  return facts;
 }
 
 /** Get the answer type pool for a pool ID within a deck. */
@@ -147,10 +163,24 @@ function loadDeck(deck: CuratedDeck): void {
   };
   registerDeck(registryEntry);
 
+  // Build tag index from facts that carry examTags.
+  const tagIndex: Record<string, string[]> = {};
+  for (const fact of deck.facts) {
+    if (fact.examTags && fact.examTags.length > 0) {
+      for (const tag of fact.examTags) {
+        if (!tagIndex[tag]) tagIndex[tag] = [];
+        tagIndex[tag].push(fact.id);
+      }
+    }
+  }
+  const allTags = Object.keys(tagIndex).sort();
+
   // Register fact IDs in the fact index.
   registerDeckFacts(deck.id, {
     allFacts: deck.facts.map(f => f.id),
     subDecks: Object.keys(subDecksRecord).length > 0 ? subDecksRecord : undefined,
+    tagIndex: allTags.length > 0 ? tagIndex : undefined,
+    allTags: allTags.length > 0 ? allTags : undefined,
   });
 }
 

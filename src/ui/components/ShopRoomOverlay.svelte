@@ -191,6 +191,7 @@
           run.inRunFactTracker ?? null,
           1,
           run.runSeed,
+          run.deckMode.examTags,
         )
         if (q) {
           // NonCombatQuizQuestion maps to the Fact-shaped state used by the haggle display

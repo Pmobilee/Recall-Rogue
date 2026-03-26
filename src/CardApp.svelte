@@ -104,7 +104,7 @@
   import { POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST } from './data/balance'
   import { RELIC_BY_ID } from './data/relics/index'
   import { getMaxRelicSlots, isRelicSlotsFull } from './services/relicEffectResolver'
-  import { isSlowReader, onboardingState, textSize } from './services/cardPreferences'
+  import { isSlowReader, onboardingState, textSize, fontChoice, type FontChoice } from './services/cardPreferences'
   import { unlockCardAudio, playCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
   import { getDueReviews, playerSave, persistPlayer } from './ui/stores/playerData'
@@ -165,6 +165,16 @@
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
     updateRichPresence($currentScreen)
+  })
+
+  // Apply font accessibility class to document.body based on user preference.
+  $effect(() => {
+    const unsub = fontChoice.subscribe((fc: FontChoice) => {
+      document.body.classList.remove('font-dyslexic', 'font-system')
+      if (fc === 'dyslexic') document.body.classList.add('font-dyslexic')
+      else if (fc === 'system') document.body.classList.add('font-system')
+    })
+    return () => unsub()
   })
 
   function transitionScreen(target: Screen): void {
@@ -234,12 +244,12 @@
     transitionScreen('deckSelectionHub')
   }
 
-  function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string }): void {
+  function handleDungeonRunStart(config: { mode: 'trivia'; domains: string[]; subdomains?: Record<string, string[]> } | { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }): void {
     // Set the deck mode in playerSave so the run uses it
     if (config.mode === 'trivia') {
       playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'trivia' as const, domains: config.domains, subdomains: config.subdomains } } : s)
     } else {
-      playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'study' as const, deckId: config.deckId, subDeckId: config.subDeckId } } : s)
+      playerSave.update(s => s ? { ...s, activeDeckMode: { type: 'study' as const, deckId: config.deckId, subDeckId: config.subDeckId, examTags: config.examTags } } : s)
     }
     persistPlayer()
     // Navigate back to hub, then start the run

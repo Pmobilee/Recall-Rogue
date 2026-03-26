@@ -3,11 +3,26 @@
   import type { DeckProgress } from '../../services/deckProgressService';
   import { getSubDeckProgress } from '../../services/deckProgressService';
   import { playCardAudio } from '../../services/cardAudioManager';
+  import { getDeckTags, getTagFactIds } from '../../data/deckFactIndex';
+
+  /** Human-readable display labels for known exam tags. */
+  const TAG_DISPLAY: Record<string, string> = {
+    USMLE_Step1: 'USMLE Step 1',
+    USMLE_Step2: 'USMLE Step 2',
+    NBME_Shelf: 'NBME Shelf',
+    COMLEX: 'COMLEX',
+    PLAB: 'PLAB (UK)',
+    AMC: 'AMC (AU)',
+    MCAT: 'MCAT',
+    high_yield: 'High Yield',
+    clinical_correlation: 'Clinical',
+    image_identification: 'Visual ID',
+  };
 
   interface Props {
     deck: DeckRegistryEntry;
     progress: DeckProgress;
-    onStartRun: (deckId: string, subDeckId?: string) => void;
+    onStartRun: (deckId: string, subDeckId?: string, examTags?: string[]) => void;
     onClose: () => void;
     onAddToCustom?: (deckId: string, subDeckId?: string) => void;
   }
@@ -42,10 +57,39 @@
   const hasSubDecks = $derived(!!deck.subDecks && deck.subDecks.length > 0);
 
   let selectedSubDeck = $state<string | null>(null);
+  let selectedTags = $state<Set<string>>(new Set());
+
+  /** All exam tags present in this deck. */
+  const deckTags = $derived(getDeckTags(deck.id));
+  const hasExamTags = $derived(deckTags.length > 0);
+
+  /**
+   * Count of facts matching the selected tags (union).
+   * When no tags selected, equals total facts (or subdeck total).
+   */
+  const tagFilteredCount = $derived.by(() => {
+    if (selectedTags.size === 0) return deck.factCount;
+    return getTagFactIds(deck.id, Array.from(selectedTags)).length;
+  });
+
+  function toggleTag(tag: string) {
+    const next = new Set(selectedTags);
+    if (next.has(tag)) {
+      next.delete(tag);
+    } else {
+      next.add(tag);
+    }
+    selectedTags = next;
+  }
+
+  function getTagCount(tag: string): number {
+    return getTagFactIds(deck.id, [tag]).length;
+  }
 
   function handleStartRun() {
     playCardAudio('run-start');
-    onStartRun(deck.id, selectedSubDeck ?? undefined);
+    const tags = selectedTags.size > 0 ? Array.from(selectedTags) : undefined;
+    onStartRun(deck.id, selectedSubDeck ?? undefined, tags);
   }
 
   function handleAddToCustom() {
@@ -157,6 +201,32 @@
             </label>
           {/each}
         </div>
+      </div>
+    {/if}
+
+    <!-- Exam Tag Filter Section -->
+    {#if hasExamTags}
+      <div class="tag-section">
+        <div class="section-label">Filter by Exam</div>
+        <div class="tag-chips">
+          {#each deckTags as tag (tag)}
+            <button
+              class="tag-chip"
+              class:active={selectedTags.has(tag)}
+              onclick={() => toggleTag(tag)}
+              type="button"
+              aria-pressed={selectedTags.has(tag)}
+            >
+              {TAG_DISPLAY[tag] ?? tag}
+              <span class="tag-count">({getTagCount(tag)})</span>
+            </button>
+          {/each}
+        </div>
+        {#if selectedTags.size > 0}
+          <div class="tag-filter-info">
+            {tagFilteredCount} fact{tagFilteredCount !== 1 ? 's' : ''} match selected filter{selectedTags.size !== 1 ? 's' : ''}
+          </div>
+        {/if}
       </div>
     {/if}
 
@@ -441,5 +511,63 @@
   .btn-start:disabled {
     opacity: 0.45;
     cursor: not-allowed;
+  }
+
+  /* Exam tag filter section */
+  .tag-section {
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+  }
+
+  .tag-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(6px * var(--layout-scale, 1));
+    margin-bottom: calc(6px * var(--layout-scale, 1));
+  }
+
+  .tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    border-radius: calc(20px * var(--layout-scale, 1));
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    background: transparent;
+    color: #94a3b8;
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+
+  .tag-chip:hover {
+    background: rgba(99, 102, 241, 0.12);
+    border-color: rgba(99, 102, 241, 0.6);
+    color: #c7d2fe;
+  }
+
+  .tag-chip.active {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: #818cf8;
+    color: #c7d2fe;
+  }
+
+  .tag-chip.active:hover {
+    background: rgba(99, 102, 241, 0.35);
+  }
+
+  .tag-count {
+    opacity: 0.65;
+    font-size: calc(10px * var(--text-scale, 1));
+  }
+
+  .tag-filter-info {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #818cf8;
+    margin-top: calc(4px * var(--layout-scale, 1));
   }
 </style>

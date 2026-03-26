@@ -1,0 +1,680 @@
+[
+  {
+    "id": "ha_musc_111",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Supraspinatus",
+    "acceptableAlternatives": ["supraspinatus tendon"],
+    "chainThemeId": "rotator_cuff",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which rotator cuff muscle is torn in the vast majority of rotator cuff injuries, making it the most clinically significant tendon in shoulder pathology?",
+    "explanation": "The supraspinatus tendon is the most frequently injured rotator cuff tendon. It originates from the supraspinous fossa of the scapula, passes under the acromion, and inserts onto the superior facet of the greater tuberosity of the humerus. It initiates the first 15 degrees of shoulder abduction and is innervated by the suprascapular nerve (C5–C6). Its tendon passes through the subacromial space, a narrow corridor prone to impingement, explaining the high rate of tears.",
+    "visualDescription": "Posterior view of the shoulder: supraspinatus muscle highlighted in the supraspinous fossa, tendon passing under the acromion and inserting onto the greater tuberosity",
+    "sourceName": "Medbullets — Rotator Cuff Injury",
+    "sourceUrl": "https://step2.medbullets.com/orthopedics/120532/rotator-cuff-injury",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX", "high_yield"],
+    "distractors": ["Infraspinatus", "Subscapularis", "Teres minor", "Teres major", "Deltoid"],
+    "variants": [
+      {
+        "quizQuestion": "Which rotator cuff muscle initiates abduction of the arm from 0–15 degrees before the deltoid takes over?",
+        "correctAnswer": "Supraspinatus",
+        "explanation": "The supraspinatus initiates abduction (0–15°). After that, the deltoid (axillary nerve, C5–C6) is the primary abductor from 15° to 180°. Loss of the supraspinatus causes weakness initiating abduction but the deltoid can still complete the arc once abduction is started passively."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_112",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Empty can test (Jobe test)",
+    "acceptableAlternatives": ["Jobe test", "empty can", "supraspinatus test"],
+    "chainThemeId": "rotator_cuff",
+    "answerTypePoolId": "clinical_tests",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "The shoulder is placed in 90° abduction, 30° forward flexion, and full internal rotation (thumb pointing down, like an empty can). Weakness or pain with downward resistance in this position indicates a positive result for which special test?",
+    "explanation": "The Empty Can Test (Jobe test) assesses the supraspinatus muscle and tendon. Positioning the shoulder in the scapular plane (30° forward flexion) with full internal rotation isolates the supraspinatus. A positive test — pain or weakness against downward resistance — suggests a supraspinatus tear or suprascapular nerve neuropathy. Sensitivity is approximately 69–86% and specificity 60–74% for detecting supraspinatus pathology.",
+    "visualDescription": "Pixel art showing examiner pressing down on patient's arm held at 90° abduction in the scapular plane with thumb pointing downward like an empty can",
+    "sourceName": "Physiopedia — Empty Can Test",
+    "sourceUrl": "https://www.physio-pedia.com/Empty_Can_Test",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX", "high_yield"],
+    "distractors": ["Drop arm test", "Neer impingement test", "Hawkins-Kennedy test", "Speed test", "O'Brien test"],
+    "variants": [
+      {
+        "quizQuestion": "A positive empty can test with weakness (not just pain) suggests what pathology more specifically?",
+        "correctAnswer": "Full-thickness supraspinatus tear",
+        "explanation": "Pain alone on the empty can test may indicate impingement or partial thickness tear. Weakness in addition to pain is more specific for a full-thickness supraspinatus tear. The presence of muscle weakness distinguishes structural tear from tendinopathy."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_113",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Resisted external rotation of the arm at the side",
+    "acceptableAlternatives": ["resisted external rotation", "external rotation test"],
+    "chainThemeId": "rotator_cuff",
+    "answerTypePoolId": "clinical_tests",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "The infraspinatus is the second most commonly torn rotator cuff muscle and is the primary external rotator of the shoulder. Which clinical maneuver specifically tests infraspinatus integrity?",
+    "explanation": "The infraspinatus is tested by resisted external rotation with the elbow flexed at 90° and the arm held at the side. Weakness indicates infraspinatus pathology or damage to the suprascapular nerve (which innervates both the supraspinatus and infraspinatus). The infraspinatus originates from the infraspinous fossa and inserts on the middle facet of the greater tuberosity. It externally rotates and stabilises the humeral head.",
+    "visualDescription": "Posterior shoulder with infraspinatus highlighted, arrow showing external rotation direction, examiner resisting the motion at the wrist",
+    "sourceName": "Stanford Medicine 25 — Shoulder Exam",
+    "sourceUrl": "https://med.stanford.edu/stanfordmedicine25/the25/shoulder.html",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Resisted internal rotation", "Resisted abduction at 90°", "Resisted flexion to 90°", "Resisted adduction", "Scapular retraction test"],
+    "variants": [
+      {
+        "quizQuestion": "Both the supraspinatus and infraspinatus are innervated by the same nerve. Which nerve is it?",
+        "correctAnswer": "Suprascapular nerve (C5–C6)",
+        "explanation": "The suprascapular nerve (C5–C6) passes through the suprascapular notch (under the superior transverse scapular ligament) to supply the supraspinatus, then curves around the spinoglenoid notch to supply the infraspinatus. A ganglion cyst at the spinoglenoid notch can selectively damage the infraspinatus branch while sparing the supraspinatus."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_114",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Extensor pollicis longus (medial/ulnar border)",
+    "acceptableAlternatives": ["extensor pollicis longus", "EPL"],
+    "chainThemeId": "wrist_thumb_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "The anatomical snuffbox is a triangular depression on the dorsal wrist best seen with the thumb extended. Which single tendon forms its medial (ulnar) border?",
+    "explanation": "The anatomical snuffbox is bounded medially (ulnar side) by the tendon of extensor pollicis longus (EPL), and laterally (radial side) by the tendons of abductor pollicis longus (APL) and extensor pollicis brevis (EPB). The floor contains the scaphoid and trapezium bones. The radial artery passes through the floor of the snuffbox. Tenderness in the snuffbox after a fall on an outstretched hand should raise concern for scaphoid fracture, even if initial X-rays are normal.",
+    "visualDescription": "Dorsal view of the thumb-abducted wrist showing the triangular snuffbox depression with EPL labeled on the ulnar border and APL+EPB on the radial border",
+    "sourceName": "TeachMeAnatomy — Anatomical Snuffbox",
+    "sourceUrl": "https://teachmeanatomy.info/upper-limb/areas/anatomical-snuffbox/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Extensor pollicis brevis", "Abductor pollicis longus", "Extensor carpi radialis longus", "Extensor carpi radialis brevis", "Flexor pollicis longus"],
+    "variants": [
+      {
+        "quizQuestion": "Tenderness in the anatomical snuffbox after a fall on an outstretched hand should raise concern for fracture of which carpal bone?",
+        "correctAnswer": "Scaphoid",
+        "explanation": "The scaphoid bone forms the floor of the anatomical snuffbox. Scaphoid fractures are the most common carpal fractures and can be occult on initial X-ray. Snuffbox tenderness with normal X-rays warrants MRI or CT. Avascular necrosis of the proximal scaphoid fragment is a serious complication due to the tenuous blood supply entering distally."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_115",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Abductor pollicis longus and extensor pollicis brevis (lateral/radial border)",
+    "acceptableAlternatives": ["APL and EPB", "abductor pollicis longus and extensor pollicis brevis"],
+    "chainThemeId": "wrist_thumb_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "The lateral (radial) border of the anatomical snuffbox is formed by the tendons of which two muscles, both of which are tested in de Quervain tenosynovitis?",
+    "explanation": "The lateral (radial) border of the anatomical snuffbox is formed by the tendons of abductor pollicis longus (APL) and extensor pollicis brevis (EPB), which run together in the first dorsal compartment of the wrist. De Quervain tenosynovitis is inflammation of these two tendons, causing pain and swelling at the radial wrist. It is tested by the Finkelstein test (thumb placed in palm, wrist ulnar-deviated — sharp pain is positive).",
+    "visualDescription": "Radial side of the wrist showing APL and EPB tendons running side-by-side in the first dorsal extensor compartment, forming the radial border of the snuffbox",
+    "sourceName": "NCBI Bookshelf — Anatomy, Hand Anatomical Snuff Box",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482228/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Extensor pollicis longus and extensor carpi radialis longus", "Flexor pollicis longus and abductor pollicis brevis", "Extensor indicis and extensor digitorum", "Extensor carpi radialis brevis and longus", "Extensor pollicis longus and brevis only"],
+    "variants": [
+      {
+        "quizQuestion": "De Quervain tenosynovitis affects tendons in the first dorsal compartment at the wrist. Which clinical test confirms it?",
+        "correctAnswer": "Finkelstein test",
+        "explanation": "The Finkelstein test: the thumb is placed in the palm and the wrist is ulnar-deviated. Reproduction of sharp pain over the radial styloid is a positive result, indicating de Quervain tenosynovitis (inflammation of APL and EPB in the first dorsal compartment). It is common in new mothers and repetitive-use activities."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_116",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Tibialis posterior",
+    "acceptableAlternatives": ["tibialis posterior muscle", "posterior tibialis"],
+    "chainThemeId": "foot_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which deep posterior compartment muscle is the primary dynamic stabiliser of the medial longitudinal arch of the foot, inserting mainly onto the navicular tuberosity?",
+    "explanation": "Tibialis posterior is the primary dynamic stabiliser of the medial longitudinal arch. It originates from the posterolateral tibia, posteromedial fibula, and interosseous membrane, then passes posterior to the medial malleolus before inserting primarily onto the navicular tuberosity (with slips to the cuneiforms, cuboid, and 2nd–4th metatarsal bases). It also inverts the foot. Blood supply is poorest posterior to the medial malleolus — the most common site of tendon rupture.",
+    "visualDescription": "Medial view of the foot and lower leg: tibialis posterior tendon curving behind the medial malleolus and fanning out to insert on the navicular and surrounding tarsal bones",
+    "sourceName": "StatPearls — Posterior Tibial Tendon Dysfunction",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK542160/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Tibialis anterior", "Peroneus longus", "Flexor hallucis longus", "Flexor digitorum longus", "Gastrocnemius"],
+    "variants": [
+      {
+        "quizQuestion": "Dysfunction of the posterior tibial tendon (PTTD) causes collapse of which foot structure, resulting in acquired adult flatfoot?",
+        "correctAnswer": "Medial longitudinal arch",
+        "explanation": "When the posterior tibial tendon is inflamed or torn, it can no longer support the medial longitudinal arch, causing progressive arch collapse (pes planus/flatfoot), hindfoot valgus, and forefoot abduction. The classic presentation is a middle-aged woman with medial ankle pain and the 'too many toes' sign on posterior view."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_117",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Peroneus (fibularis) tertius",
+    "acceptableAlternatives": ["fibularis tertius", "peroneus tertius"],
+    "chainThemeId": "foot_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which muscle of the anterior compartment of the leg dorsiflexes and everts the foot, inserting onto the base of the 5th metatarsal, and is often confused with the peroneals despite being innervated by the deep peroneal nerve?",
+    "explanation": "Peroneus (fibularis) tertius is an anterior compartment muscle innervated by the deep peroneal nerve (unlike peroneus longus and brevis, which are lateral compartment muscles innervated by the superficial peroneal nerve). It originates from the distal fibula and inserts onto the dorsal base of the 5th metatarsal. Its actions are dorsiflexion and eversion. It is absent in approximately 8–9% of individuals.",
+    "visualDescription": "Anterior view of the lower leg and foot: peroneus tertius highlighted alongside extensor digitorum longus, its tendon running to the dorsal 5th metatarsal base",
+    "sourceName": "Physiopedia — Tibialis Posterior",
+    "sourceUrl": "https://www.physio-pedia.com/Tibialis_Posterior",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Peroneus longus", "Peroneus brevis", "Extensor digitorum longus", "Tibialis anterior", "Extensor hallucis longus"],
+    "variants": [
+      {
+        "quizQuestion": "Peroneus tertius is innervated by a different nerve than peroneus longus and brevis. What is its nerve supply?",
+        "correctAnswer": "Deep peroneal (fibular) nerve",
+        "explanation": "Peroneus tertius is innervated by the deep peroneal nerve (L4–S1) because it belongs to the anterior compartment. Peroneus longus and brevis, lateral compartment muscles, are innervated by the superficial peroneal nerve. This distinction matters clinically: lateral compartment syndrome or superficial peroneal nerve damage spares peroneus tertius."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_118",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "T8 — inferior vena cava",
+    "acceptableAlternatives": ["IVC at T8", "vena cava hiatus at T8"],
+    "chainThemeId": "diaphragm",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Using the mnemonic 'I Ate 10 Eggs At 12,' which structure passes through the diaphragm at the T8 vertebral level?",
+    "explanation": "The diaphragm has three major openings: at T8, the caval hiatus transmits the inferior vena cava (IVC) and right phrenic nerve; at T10, the esophageal hiatus transmits the esophagus and vagus nerves (CN X); at T12, the aortic hiatus transmits the aorta, azygos vein, and thoracic duct. The mnemonic 'I Ate 10 Eggs At 12' uses the number of letters: I(VC) = 8 letters, (10) Eggs = esophagus at 10, At(12) = aorta at 12.",
+    "visualDescription": "Inferior view of the diaphragm showing three labeled openings: T8 caval hiatus (IVC), T10 esophageal hiatus, T12 aortic hiatus with arrows at each vertebral level",
+    "sourceName": "First Aid Team — Mnemonic Monday",
+    "sourceUrl": "https://firstaidteam.com/2020/03/02/mnemonic-monday-structures-of-the-diaphragm/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX", "high_yield"],
+    "distractors": ["Aorta", "Esophagus", "Thoracic duct", "Azygos vein", "Left phrenic nerve"],
+    "variants": [
+      {
+        "quizQuestion": "At which vertebral level does the esophageal hiatus of the diaphragm lie, and what additional structures pass through it alongside the esophagus?",
+        "correctAnswer": "T10 — esophagus and vagus nerves (CN X)",
+        "explanation": "The esophageal hiatus is at T10 and is surrounded by the right crus of the diaphragm. The esophagus and both vagus nerves (left becomes anterior, right becomes posterior after esophageal rotation) pass through. A hiatal hernia results from widening of this opening, allowing the stomach to herniate into the thorax."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_119",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "T12 — aorta, azygos vein, and thoracic duct",
+    "acceptableAlternatives": ["aorta at T12", "aortic hiatus at T12"],
+    "chainThemeId": "diaphragm",
+    "answerTypePoolId": "anatomy_landmarks",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "The most inferior diaphragmatic opening, at T12, forms the aortic hiatus. Which three structures pass through it?",
+    "explanation": "The aortic hiatus at T12 transmits the descending aorta, azygos vein, and thoracic duct. It is strictly speaking posterior to the diaphragm (between the crura and the vertebral column), so the diaphragm does not compress the aorta during contraction — which is why the aortic pulse is not affected by breathing. The thoracic duct, the main lymphatic collecting vessel, also passes here before ascending to drain into the left subclavian vein.",
+    "visualDescription": "Sagittal cross-section at T12 showing the aortic hiatus posterior to the diaphragmatic crura, with aorta, azygos vein, and thoracic duct passing through",
+    "sourceName": "First Aid Team — Mnemonic Monday",
+    "sourceUrl": "https://firstaidteam.com/2020/03/02/mnemonic-monday-structures-of-the-diaphragm/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX", "high_yield"],
+    "distractors": ["Aorta and inferior vena cava only", "Aorta and thoracic duct only", "Aorta, thoracic duct, and esophagus", "Aorta, left phrenic nerve, and azygos vein", "Aorta only"],
+    "variants": [
+      {
+        "quizQuestion": "The central tendon of the diaphragm is pierced by which structure at T8?",
+        "correctAnswer": "Inferior vena cava (IVC)",
+        "explanation": "The IVC passes through the central tendon of the diaphragm at T8. Because the IVC is embedded in the central tendon, diaphragmatic contraction during inspiration actually widens the caval hiatus, facilitating venous return to the right heart. This is the physiological basis for the respiratory variation in venous pressure."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_120",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Central tendon",
+    "acceptableAlternatives": ["central tendinous area", "trifoil tendon"],
+    "chainThemeId": "diaphragm",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "The diaphragm has a central aponeurotic structure with no muscle fibres, shaped like a trefoil clover. What is it called?",
+    "explanation": "The central tendon of the diaphragm is a trifoil (three-leafed) aponeurosis located near the top of the diaphragm. Muscle fibres from the sternal, costal, and lumbar origins of the diaphragm all converge and insert onto it. It contains the caval hiatus (T8). The right and left phrenic nerves (C3, C4, C5) pierce the central tendon to supply the diaphragm from its inferior surface.",
+    "visualDescription": "Superior view of the diaphragm showing the trefoil-shaped central tendon in pale yellow at the apex, with radial muscle fibre bundles converging from the costal margins, sternum, and lumbar crura",
+    "sourceName": "Kenhub — Diaphragm",
+    "sourceUrl": "https://www.kenhub.com/en/library/anatomy/diaphragm",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Right crus", "Left crus", "Linea alba", "Lumbar aponeurosis", "Costal cartilage"],
+    "variants": [
+      {
+        "quizQuestion": "The diaphragm is supplied by two phrenic nerves. Which spinal roots form the phrenic nerve, and which side also receives accessory supply from intercostal nerves?",
+        "correctAnswer": "C3, C4, C5 — right phrenic also has accessory supply",
+        "explanation": "The phrenic nerve arises from C3, C4, C5 (mnemonic: C3, 4, 5 keeps the diaphragm alive). The right phrenic nerve receives variable contributions from the lower intercostal nerves. Damage to C3–C5 (e.g., high cervical cord injury) causes diaphragmatic paralysis requiring mechanical ventilation."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_121",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "External intercostals — elevate ribs during forced inspiration",
+    "acceptableAlternatives": ["external intercostal muscles", "external intercostals"],
+    "chainThemeId": "thoracic_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Of the three layers of intercostal muscles, which is the outermost layer and what respiratory action does its contraction produce?",
+    "explanation": "The external intercostal muscles are the outermost layer. Their fibres run obliquely downward and forward (like hands in pockets). Contraction elevates the ribs in a 'bucket handle' motion, increasing the transverse diameter of the thorax, thereby facilitating forced inspiration. They are present from the tubercle of the rib posteriorly down to the costochondral junction, where they become the external intercostal membrane anteriorly.",
+    "visualDescription": "Cross-section of two adjacent ribs showing external intercostal muscle fibres running obliquely forward and downward with an upward arrow indicating rib elevation",
+    "sourceName": "Kenhub — Intercostal Muscles",
+    "sourceUrl": "https://www.kenhub.com/en/library/anatomy/intercostal-muscles",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Internal intercostals — depress ribs during expiration", "Innermost intercostals — maintain pleural apposition", "Subcostalis muscles — elevate during quiet breathing", "Transversus thoracis — elevate ribs", "Serratus anterior — lateral rib elevation"],
+    "variants": [
+      {
+        "quizQuestion": "The internal intercostal muscles run perpendicular to the external intercostals. What respiratory action do they assist?",
+        "correctAnswer": "Forced expiration (depress ribs, reduce thoracic volume)",
+        "explanation": "The internal intercostals run obliquely downward and backward. Their contraction depresses the ribs, reducing thoracic volume and assisting forced expiration (as does the innermost layer). At rest, expiration is passive due to elastic recoil; the internal and innermost intercostals are recruited during forceful exhalation (exercise, coughing, sneezing)."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_122",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Innermost intercostal muscles",
+    "acceptableAlternatives": ["innermost intercostals", "intercostalis intimus"],
+    "chainThemeId": "thoracic_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "The intercostal neurovascular bundle (vein, artery, nerve in order from superior to inferior) runs between which two layers of intercostal muscles?",
+    "explanation": "The intercostal neurovascular bundle runs in the costal groove on the inferior border of each rib, between the internal intercostal muscle and the innermost intercostal muscle. The mnemonic VAN (Vein, Artery, Nerve) describes the order from top to bottom within the costal groove. This anatomy is critical for correct placement of a chest drain, which should be inserted just above the upper border of the rib below to avoid the neurovascular bundle.",
+    "visualDescription": "Cross-section of an intercostal space showing three muscle layers: external, internal, and innermost intercostals, with the VAN bundle running between the internal and innermost layers in the costal groove",
+    "sourceName": "Kenhub — Intercostal Muscles",
+    "sourceUrl": "https://www.kenhub.com/en/library/anatomy/intercostal-muscles",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Between the skin and external intercostals", "Between the external and internal intercostals", "On the superior surface of each rib", "Deep to the innermost intercostals", "Between the internal intercostals and the pleura"],
+    "variants": [
+      {
+        "quizQuestion": "When inserting a chest drain, the needle is directed just above the rib below the target intercostal space. Why?",
+        "correctAnswer": "To avoid the intercostal neurovascular bundle (VAN) in the costal groove",
+        "explanation": "The intercostal vein, artery, and nerve (VAN) lie in the costal groove along the inferior border of each rib. Inserting a chest drain just above the rib below avoids lacerating these vessels and the nerve, reducing risk of haemothorax and neuralgia. The safe triangle for chest drain insertion is bounded by the anterior border of latissimus dorsi, the lateral border of pectoralis major, and the 5th intercostal space."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_123",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Genioglossus",
+    "acceptableAlternatives": ["genioglossus muscle"],
+    "chainThemeId": "tongue_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "The largest and most clinically important extrinsic muscle of the tongue, the one that protrudes the tongue when both sides contract, arises from the mental spine (genial tubercle) of the mandible. Name it.",
+    "explanation": "The genioglossus is the largest extrinsic tongue muscle, forming most of the tongue's bulk. It arises from the superior mental spine on the inner surface of the mandible. Bilateral contraction protrudes the tongue; unilateral contraction deviates the tongue toward the contralateral side. It is innervated by CN XII (hypoglossal nerve). Because it pulls the tongue forward, anterior displacement (as in neck extension or mandibular repositioning) opens the airway — clinically relevant in airway management.",
+    "visualDescription": "Sagittal section of the mouth and tongue: large fan-shaped genioglossus muscle arising from the mental spine of the mandible and inserting throughout the tongue body and hyoid bone",
+    "sourceName": "Wikipedia — Genioglossus",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Genioglossus",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Hyoglossus", "Styloglossus", "Palatoglossus", "Mylohyoid", "Geniohyoid"],
+    "variants": [
+      {
+        "quizQuestion": "A patient with a right CN XII (hypoglossal nerve) lesion is asked to stick out their tongue. To which side does it deviate, and why?",
+        "correctAnswer": "To the right (side of the lesion), due to unopposed left genioglossus",
+        "explanation": "The genioglossus protrudes the tongue toward the opposite side. With a right CN XII LMN lesion, the right genioglossus is weak or paralysed, and the intact left genioglossus pushes the tongue to the right (ipsilateral to the lesion). Mnemonic: tongue 'licks the wound' — deviates toward the side of the lesion."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_124",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "CN XII (hypoglossal nerve) — tongue deviates toward the side of the lesion",
+    "acceptableAlternatives": ["hypoglossal nerve", "cranial nerve 12", "CN 12"],
+    "chainThemeId": "tongue_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "All extrinsic and intrinsic muscles of the tongue are innervated by the same cranial nerve, except palatoglossus (CN X). Which nerve is it, and what deviation do you expect with a unilateral lower motor neuron lesion?",
+    "explanation": "CN XII (hypoglossal nerve) innervates all tongue muscles except palatoglossus (CN X via pharyngeal plexus). With a lower motor neuron lesion (damage to the nucleus or nerve itself), the ipsilateral genioglossus is weakened, and the tongue deviates toward the side of the lesion on protrusion. There is also ipsilateral atrophy and fasciculations (LMN signs). An upper motor neuron lesion causes contralateral tongue weakness without atrophy.",
+    "visualDescription": "Anterior view of protruded tongue deviating to the right, with a lesion marker on the right CN XII pathway",
+    "sourceName": "StatPearls — Neuroanatomy, Cranial Nerve 12",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK532869/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["CN V (trigeminal)", "CN IX (glossopharyngeal)", "CN X (vagus)", "CN VII (facial)", "CN XI (accessory)"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_125",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "CN X (vagus nerve) via the pharyngeal plexus — all pharyngeal constrictors",
+    "acceptableAlternatives": ["vagus nerve", "CN X", "cranial nerve 10 via pharyngeal plexus"],
+    "chainThemeId": "pharyngeal_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "The pharyngeal plexus innervates the superior, middle, and inferior pharyngeal constrictor muscles. Which cranial nerve is the dominant motor contributor to this plexus?",
+    "explanation": "The pharyngeal plexus is formed by branches of CN IX, CN X, and sympathetic fibres. However, the motor supply to all three pharyngeal constrictors (superior, middle, inferior) comes entirely from CN X (vagus nerve) via the pharyngeal plexus. CN IX (glossopharyngeal) contributes sensory fibres and coordinates the pharyngeal plexus innervation but does not directly supply the constrictors. The only pharyngeal muscle supplied by CN IX is the stylopharyngeus.",
+    "visualDescription": "Posterior view of the pharynx showing the three overlapping constrictor muscles with CN X pharyngeal branches forming the plexus on the posterior pharyngeal wall",
+    "sourceName": "PMC — Cranial Nerves IX, X, XI, XII",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2882282/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["CN IX (glossopharyngeal)", "CN V3 (mandibular branch)", "CN XII (hypoglossal)", "CN XI (accessory)", "CN VII (facial)"],
+    "variants": [
+      {
+        "quizQuestion": "The stylopharyngeus is the only pharyngeal muscle not innervated by CN X. Which cranial nerve supplies it, and what is the clinical significance?",
+        "correctAnswer": "CN IX (glossopharyngeal nerve)",
+        "explanation": "Stylopharyngeus, which elevates the larynx and pharynx during swallowing, is the only muscle supplied by CN IX. This is a favourite USMLE fact. Testing stylopharyngeus clinically involves assessing elevation of the larynx with swallowing. CN IX damage (e.g., jugular foramen lesion) impairs stylopharyngeus along with loss of the gag reflex (sensory CN IX, motor CN X) and parotid gland secretion."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_126",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Stylopharyngeus — CN IX (glossopharyngeal nerve)",
+    "acceptableAlternatives": ["stylopharyngeus", "CN IX", "glossopharyngeal nerve"],
+    "chainThemeId": "pharyngeal_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "Which is the only pharyngeal muscle innervated by CN IX (glossopharyngeal nerve), making it the exception to the rule that the pharyngeal plexus (CN X) supplies all pharyngeal muscles?",
+    "explanation": "Stylopharyngeus is the sole pharyngeal muscle innervated by CN IX. It originates from the styloid process, descends between the superior and middle constrictors, and inserts into the thyroid cartilage and pharyngeal wall. Its action is to elevate and widen the pharynx during swallowing. As a CN IX-innervated muscle, its testing and the gag reflex are key tools for assessing CN IX integrity.",
+    "visualDescription": "Lateral view of the pharynx: stylopharyngeus muscle shown in a different colour descending from the styloid process between the superior and middle constrictors",
+    "sourceName": "PMC — Cranial Nerves IX, X, XI, XII",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2882282/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Superior pharyngeal constrictor", "Middle pharyngeal constrictor", "Inferior pharyngeal constrictor", "Palatopharyngeus", "Salpingopharyngeus"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_127",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Cricothyroid muscle — external branch of the superior laryngeal nerve (CN X branch)",
+    "acceptableAlternatives": ["cricothyroid", "superior laryngeal nerve external branch", "external superior laryngeal nerve"],
+    "chainThemeId": "laryngeal_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 7,
+    "quizQuestion": "All intrinsic laryngeal muscles are innervated by the recurrent laryngeal nerve EXCEPT one. Which muscle is the exception, and which nerve supplies it?",
+    "explanation": "The cricothyroid muscle is the sole intrinsic laryngeal muscle innervated by the external branch of the superior laryngeal nerve (a branch of CN X). All other intrinsic laryngeal muscles — including the posterior cricoarytenoid (sole abductor of the vocal cords), lateral cricoarytenoid, thyroarytenoid, transverse arytenoid, and oblique arytenoid — are supplied by the recurrent laryngeal nerve (RLN). The cricothyroid tenses the vocal cords, raising pitch. Superior laryngeal nerve injury impairs high-pitched phonation.",
+    "visualDescription": "Anterior view of the larynx: cricothyroid muscle highlighted between the cricoid and thyroid cartilages, with the external branch of the superior laryngeal nerve labeled",
+    "sourceName": "StatPearls — Anatomy, Head and Neck: Laryngeal Nerves",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557742/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX", "high_yield"],
+    "distractors": ["Posterior cricoarytenoid", "Thyroarytenoid", "Lateral cricoarytenoid", "Transverse arytenoid", "Vocalis"],
+    "variants": [
+      {
+        "quizQuestion": "Recurrent laryngeal nerve damage (e.g., during thyroidectomy) causes hoarseness. Which intrinsic laryngeal muscle is the sole abductor of the vocal cords that is supplied by the RLN?",
+        "correctAnswer": "Posterior cricoarytenoid (PCA)",
+        "explanation": "The posterior cricoarytenoid (PCA) is the only intrinsic laryngeal muscle that abducts (opens) the vocal cords. It is innervated by the RLN. Bilateral RLN damage (e.g., bilateral total thyroidectomy) causes both PCAs to be paralysed, resulting in both vocal cords adducting toward the midline, causing airway obstruction requiring emergency tracheostomy."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_128",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Recurrent laryngeal nerve (branch of CN X)",
+    "acceptableAlternatives": ["RLN", "recurrent laryngeal", "inferior laryngeal nerve"],
+    "chainThemeId": "laryngeal_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 1,
+    "funScore": 7,
+    "quizQuestion": "Which nerve innervates all intrinsic laryngeal muscles except the cricothyroid, and is at particular risk during thyroid and parathyroid surgery?",
+    "explanation": "The recurrent laryngeal nerve (RLN) is a branch of the vagus nerve (CN X) that loops under the arch of the aorta on the left and under the right subclavian artery on the right, then ascends in the tracheoesophageal groove. It innervates all intrinsic laryngeal muscles except the cricothyroid. Surgical damage causes hoarseness (unilateral) or life-threatening airway compromise (bilateral). It also provides sensory innervation below the level of the vocal folds.",
+    "visualDescription": "Anterior neck view: left RLN looping under the aortic arch and right RLN looping under the right subclavian artery, both ascending in the tracheoesophageal groove toward the larynx",
+    "sourceName": "StatPearls — Anatomy, Head and Neck: Laryngeal Nerves",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557742/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Superior laryngeal nerve (external branch)", "Superior laryngeal nerve (internal branch)", "Ansa cervicalis", "Hypoglossal nerve (CN XII)", "Glossopharyngeal nerve (CN IX)"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_129",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "CN IV (trochlear nerve) — 'SO4, LR6' mnemonic",
+    "acceptableAlternatives": ["trochlear nerve", "cranial nerve IV", "CN 4"],
+    "chainThemeId": "eye_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Using the mnemonic 'SO4, LR6, everything else 3,' which cranial nerve innervates the superior oblique muscle of the eye?",
+    "explanation": "The mnemonic 'SO4, LR6, rest 3' encodes extraocular muscle innervation: Superior Oblique = CN IV (trochlear); Lateral Rectus = CN VI (abducens); all other extraocular muscles (superior rectus, inferior rectus, medial rectus, inferior oblique, levator palpebrae superioris) = CN III (oculomotor). CN IV has the longest intracranial course and is the most commonly injured cranial nerve in closed head trauma.",
+    "visualDescription": "Diagram of the right orbit viewed from the front: six extraocular muscles labeled with colour coding matching CN III, CN IV, and CN VI innervation zones",
+    "sourceName": "StatPearls — Neuroanatomy, Cranial Nerve 4 (Trochlear)",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537244/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["CN III (oculomotor nerve)", "CN VI (abducens nerve)", "CN V1 (ophthalmic branch)", "CN II (optic nerve)", "CN VII (facial nerve)"],
+    "variants": [
+      {
+        "quizQuestion": "A CN IV palsy causes the affected eye to appear higher than the other (hypertropia) and the patient tilts their head away from the lesion. Why does head tilt compensate for CN IV palsy?",
+        "correctAnswer": "Head tilt away from the lesion reduces the extorsion caused by the weak superior oblique",
+        "explanation": "The superior oblique primarily intorts the eye. With CN IV palsy, the affected eye is extorted (rotated outward). Tilting the head toward the opposite shoulder uses the intact superior oblique on the contralateral side to compensate, reducing the diplopia. Bielschowsky's head tilt test exploits this: tilting toward the affected eye worsens the hypertropia, confirming a CN IV lesion."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_130",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Depression of the adducted eye (downgaze in adduction)",
+    "acceptableAlternatives": ["depress the adducted eye", "depression when the eye is turned inward", "downgaze in adduction"],
+    "chainThemeId": "eye_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 3,
+    "funScore": 7,
+    "quizQuestion": "The superior oblique muscle acts primarily as an intorter in the primary position, but its clinically tested action in the adducted position is different. What action does testing specifically assess?",
+    "explanation": "When the eye is adducted (turned inward), the superior oblique becomes the primary depressor of that eye. This is how CN IV function is isolated clinically: ask the patient to look down and in (adduct, then depress) — the superior oblique is the only muscle capable of depressing an adducted eye. A CN IV palsy manifests as vertical diplopia (worse going downstairs) because the affected eye cannot depress in adduction. The Parks-Bielschowsky three-step test is used for formal diagnosis.",
+    "visualDescription": "Right eye viewed from the front: in adducted position with a downward arrow labeled 'superior oblique action — depression in adduction'",
+    "sourceName": "EyeWiki — Cranial Nerve 4 Palsy",
+    "sourceUrl": "https://eyewiki.org/Cranial_Nerve_4_Palsy",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Elevation of the adducted eye", "Abduction of the eye", "Intorsion of the abducted eye", "Adduction of the eye", "Extorsion in primary gaze"],
+    "variants": [
+      {
+        "quizQuestion": "CN IV palsy classically causes patients to complain of diplopia when performing which everyday activity?",
+        "correctAnswer": "Walking downstairs (looking down and inward)",
+        "explanation": "Descending stairs requires looking down and slightly inward, exactly the action that isolates the superior oblique. CN IV palsy patients tilt their head to compensate and often complain that descending stairs or reading (downgaze) causes double vision. Holding a book further away or tilting the head helps reduce the diplopia."
+      }
+    ]
+  },
+  {
+    "id": "ha_musc_131",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Rotator cuff: SITS — Supraspinatus, Infraspinatus, Teres minor, Subscapularis",
+    "acceptableAlternatives": ["SITS", "supraspinatus infraspinatus teres minor subscapularis"],
+    "chainThemeId": "rotator_cuff",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "The four rotator cuff muscles stabilise the glenohumeral joint by compressing the humeral head into the glenoid. What is the classic mnemonic that names all four?",
+    "explanation": "The mnemonic SITS names the four rotator cuff muscles: Supraspinatus (abducts, empty can test), Infraspinatus (external rotates, second most common tear), Teres minor (external rotates, axillary nerve), Subscapularis (internal rotates, belly press/lift-off test, only muscle anterior to the joint). The supraspinatus is the most commonly torn; the subscapularis is the largest and strongest. All except teres minor are innervated by the suprascapular nerve (supraspinatus, infraspinatus) or lower subscapular nerve (subscapularis, teres major).",
+    "visualDescription": "Posterior view of the scapula and humerus with all four SITS muscles highlighted in different colours, showing origins on the scapula and insertions on the greater and lesser tuberosities",
+    "sourceName": "Medbullets — Rotator Cuff Injury",
+    "sourceUrl": "https://step2.medbullets.com/orthopedics/120532/rotator-cuff-injury",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["TISS — Teres, Infraspinatus, Supraspinatus, Subscapularis", "SIST — Subscapularis, Infraspinatus, Supraspinatus, Teres", "TIPS — Teres, Infraspinatus, Pectoralis, Supraspinatus", "SINS — Subscapularis, Infraspinatus, Nerve, Supraspinatus"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_132",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Subscapularis — internal rotation; tested by lift-off or belly-press test",
+    "acceptableAlternatives": ["subscapularis", "subscapularis muscle"],
+    "chainThemeId": "rotator_cuff",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Which rotator cuff muscle is the only one originating from the anterior (costal) surface of the scapula, internally rotates the humerus, and is tested by the belly-press or lift-off test?",
+    "explanation": "The subscapularis arises from the subscapular fossa (costal/anterior scapular surface) and inserts onto the lesser tuberosity of the humerus. It is the largest and most powerful rotator cuff muscle and internally rotates the arm. The lift-off test (placing the dorsum of the hand on the lower back and lifting away) and belly-press test (pressing the palm on the abdomen while keeping the elbow forward) specifically test subscapularis integrity. It is innervated by the upper and lower subscapular nerves (C5–C6).",
+    "visualDescription": "Anterior view of the scapula with the subscapular fossa and subscapularis muscle highlighted, tendon inserting on the lesser tuberosity; inset showing belly-press test position",
+    "sourceName": "Medbullets — Rotator Cuff Injury",
+    "sourceUrl": "https://step2.medbullets.com/orthopedics/120532/rotator-cuff-injury",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Supraspinatus", "Infraspinatus", "Teres minor", "Teres major", "Pectoralis major"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_133",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Hyoglossus (depresses and retracts tongue) — CN XII",
+    "acceptableAlternatives": ["hyoglossus", "hyoglossus muscle"],
+    "chainThemeId": "tongue_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which extrinsic tongue muscle arises from the hyoid bone, depresses and retracts the tongue, is innervated by CN XII, and has the lingual artery passing deep to it?",
+    "explanation": "The hyoglossus is a flat, quadrilateral extrinsic tongue muscle arising from the greater cornu and body of the hyoid bone and inserting into the side of the tongue. It depresses and retracts the tongue (opposing the genioglossus). It is innervated by CN XII. The lingual artery passes deep (medial) to the hyoglossus, while the lingual nerve and hypoglossal nerve pass superficial (lateral) to it — an important surgical landmark. The submandibular duct also crosses superficial to hyoglossus.",
+    "visualDescription": "Lateral view of the hyoid and tongue: flat hyoglossus muscle rising from the hyoid and blending into the tongue, with the lingual artery labeled deep to it and CN XII superficial",
+    "sourceName": "Wikipedia — Genioglossus",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Genioglossus",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Genioglossus", "Styloglossus", "Palatoglossus", "Mylohyoid", "Digastric"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_134",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Styloglossus — retracts and elevates tongue; CN XII",
+    "acceptableAlternatives": ["styloglossus"],
+    "chainThemeId": "tongue_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 5,
+    "quizQuestion": "Which extrinsic tongue muscle arises from the styloid process of the temporal bone, retracts and elevates the tongue during swallowing, and is the only extrinsic tongue muscle that elevates the tongue posteriorly?",
+    "explanation": "The styloglossus arises from the anterior border of the styloid process and the stylohyoid ligament. It passes forward and downward to blend with the intrinsic muscles of the lateral tongue. Its actions are retraction and elevation (curling the tongue upward and backward during swallowing). It is innervated by CN XII. Styloglossus works in conjunction with stylohyoid (CN VII) and stylopharyngeus (CN IX) in the swallowing mechanism.",
+    "visualDescription": "Lateral view of the skull base and tongue: styloglossus descending from the styloid process and entering the lateral tongue, with the styloid process landmark labeled",
+    "sourceName": "Wikipedia — Genioglossus",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Genioglossus",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Hyoglossus", "Genioglossus", "Palatoglossus", "Superior longitudinal muscle", "Geniohyoid"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_135",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Palatoglossus — CN X (vagus nerve via pharyngeal plexus)",
+    "acceptableAlternatives": ["palatoglossus", "CN X", "vagus via pharyngeal plexus"],
+    "chainThemeId": "tongue_muscles",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "Which extrinsic tongue muscle is the exception to the rule that all tongue muscles are innervated by CN XII? It forms the palatoglossal arch (anterior tonsillar pillar) and is innervated instead by CN X.",
+    "explanation": "Palatoglossus is the only tongue muscle NOT innervated by CN XII. It is instead innervated by CN X (vagus nerve) via the pharyngeal plexus, consistent with its developmental origin as a pharyngeal arch muscle. It elevates the posterior tongue, approximates the palatoglossal arches to close off the oral cavity from the oropharynx, and assists swallowing initiation. It forms the anterior pillar of the fauces (palatoglossal arch), which is visible on oropharyngeal examination.",
+    "visualDescription": "Open mouth view: left and right palatoglossal arches (anterior tonsillar pillars) highlighted as the visible folds, with palatoglossus muscle running from the soft palate to the tongue",
+    "sourceName": "StatPearls — Neuroanatomy, Cranial Nerve 12",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK532869/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Genioglossus", "Hyoglossus", "Styloglossus", "Superior longitudinal lingual muscle", "Transverse lingual muscle"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_136",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Posterior cricoarytenoid — the sole abductor of the vocal cords",
+    "acceptableAlternatives": ["posterior cricoarytenoid", "PCA muscle"],
+    "chainThemeId": "laryngeal_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 2,
+    "funScore": 8,
+    "quizQuestion": "Which intrinsic laryngeal muscle is the ONLY muscle that abducts (opens) the vocal cords? Its bilateral paralysis is a surgical emergency causing airway obstruction.",
+    "explanation": "The posterior cricoarytenoid (PCA) is the only muscle that abducts the vocal cords by rotating the arytenoid cartilages laterally, drawing the vocal processes apart and opening the rima glottidis. It is innervated by the recurrent laryngeal nerve (RLN). Bilateral RLN damage (e.g., bilateral thyroidectomy, mediastinal tumour) paralyses both PCAs, causing both vocal cords to fall toward the midline, producing stridor and potentially fatal airway obstruction requiring emergency tracheostomy.",
+    "visualDescription": "Superior view of the larynx looking down at the vocal cords: PCA muscles highlighted on each side with arrows showing lateral rotation of arytenoids opening the glottis",
+    "sourceName": "StatPearls — Anatomy, Head and Neck: Laryngeal Nerves",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557742/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX", "high_yield"],
+    "distractors": ["Cricothyroid", "Lateral cricoarytenoid", "Transverse arytenoid", "Thyroarytenoid", "Vocalis"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_137",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Tibialis posterior dysfunction → hindfoot valgus, medial arch collapse, forefoot abduction ('too many toes' sign)",
+    "acceptableAlternatives": ["hindfoot valgus and flatfoot", "acquired adult flatfoot", "progressive collapse flatfoot"],
+    "chainThemeId": "foot_muscles",
+    "answerTypePoolId": "clinical_presentations",
+    "difficulty": 2,
+    "funScore": 6,
+    "quizQuestion": "Posterior tibial tendon dysfunction (PTTD) causes a classic triad of deformity. What are the three components, and what is the name of the classic clinical sign observed from behind the patient?",
+    "explanation": "PTTD produces: (1) hindfoot valgus (calcaneus tilts outward), (2) medial longitudinal arch collapse (flatfoot), and (3) forefoot abduction. The 'too many toes' sign is seen from behind: more than the normal 1–2 lateral toes are visible because of forefoot abduction. PTTD is the most common cause of adult-acquired flatfoot. It is most common in middle-aged women and is linked to obesity, hypertension, and diabetes. The 'single-heel-raise test' (inability to invert heel while standing on tiptoe on one foot) is the key functional test.",
+    "visualDescription": "Posterior view of both feet: right hindfoot in valgus with flatfoot deformity, excess lateral toes visible ('too many toes' sign) compared to normal left foot",
+    "sourceName": "StatPearls — Posterior Tibial Tendon Dysfunction",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK542160/",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Hindfoot varus, arch elevation, forefoot adduction", "Hindfoot varus, medial arch collapse, claw toes", "Hindfoot valgus, arch elevation, hallux valgus", "Plantar fasciitis with normal arch", "Hindfoot equinus with forefoot supination"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_138",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Teres minor — axillary nerve (C5–C6); external rotation",
+    "acceptableAlternatives": ["teres minor", "axillary nerve"],
+    "chainThemeId": "rotator_cuff",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 2,
+    "funScore": 5,
+    "quizQuestion": "Of the four rotator cuff muscles, which one is innervated by the axillary nerve (NOT the suprascapular or subscapular nerves), and what is its primary action?",
+    "explanation": "Teres minor is unique among the rotator cuff muscles in being innervated by the axillary nerve (C5–C6), which also innervates the deltoid. The other cuff muscles are innervated by the suprascapular nerve (supraspinatus, infraspinatus) and subscapular nerves (subscapularis). Teres minor externally rotates the humerus and assists adduction. An axillary nerve injury (e.g., from anterior shoulder dislocation or proximal humerus fracture) damages both teres minor and the deltoid.",
+    "visualDescription": "Posterior view of the shoulder: teres minor highlighted between infraspinatus above and teres major below, with the axillary nerve labeled",
+    "sourceName": "StatPearls — Neuroanatomy, Cranial Nerve 4 (Trochlear)",
+    "sourceUrl": "https://step2.medbullets.com/orthopedics/120532/rotator-cuff-injury",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Supraspinatus — suprascapular nerve", "Infraspinatus — suprascapular nerve", "Subscapularis — subscapular nerves", "Teres major — lower subscapular nerve", "Deltoid — radial nerve"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_139",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "Superior oblique — intorsion (primary), depression (in adduction), abduction (in abduction)",
+    "acceptableAlternatives": ["intortion and depression", "intorts and depresses the adducted eye"],
+    "chainThemeId": "eye_muscles",
+    "answerTypePoolId": "anatomy_actions",
+    "difficulty": 3,
+    "funScore": 6,
+    "quizQuestion": "The superior oblique passes through a fibrocartilaginous pulley (the trochlea) before inserting on the superior-posterior surface of the globe. What are its three actions in order of clinical importance?",
+    "explanation": "The superior oblique acts on the eye in three ways depending on eye position: (1) Intorsion (primary position) — the main action, rotating the 12 o'clock position of the cornea inward; (2) Depression — strongest in adduction, the clinically tested action for CN IV; (3) Abduction — minimal secondary action. The trochlea redirects the muscle's pull so that the effective line of force is directed posteriorly and laterally from the back of the eye rather than straight back, which produces intorsion rather than simple retraction.",
+    "visualDescription": "Superior view of the right orbit: superior oblique tendon bending 90° around the trochlea and inserting on the posterior-superior globe; arrows showing intorsion and depression directions",
+    "sourceName": "Wikipedia — Superior oblique muscle",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Superior_oblique_muscle",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX"],
+    "distractors": ["Extorsion, elevation, adduction", "Depression, adduction, extorsion", "Elevation, intorsion, adduction", "Abduction only", "Intorsion and elevation"],
+    "variants": []
+  },
+  {
+    "id": "ha_musc_140",
+    "subDeckId": "muscular_system",
+    "correctAnswer": "C3, C4, C5 — phrenic nerve",
+    "acceptableAlternatives": ["C3 C4 C5 keeps the diaphragm alive", "phrenic nerve C3-C5"],
+    "chainThemeId": "diaphragm",
+    "answerTypePoolId": "anatomy_terms",
+    "difficulty": 1,
+    "funScore": 8,
+    "quizQuestion": "The diaphragm is the primary muscle of inspiration and is innervated by the phrenic nerve. The classic mnemonic is 'C3, C4, C5 keeps the diaphragm ___.' Complete the mnemonic and give the nerve name.",
+    "explanation": "The phrenic nerve arises from cervical roots C3, C4, C5 ('C3, 4, 5 keeps the diaphragm alive'). It is the sole motor supply to the diaphragm and provides sensory supply to the central diaphragm and pericardium. Injury at or above C3–C5 (e.g., high cervical cord injury) eliminates diaphragmatic function and requires mechanical ventilation. The referred pain from diaphragmatic irritation (e.g., subphrenic abscess, ruptured spleen) travels via the phrenic nerve to the C3–C5 dermatomes, producing shoulder tip pain.",
+    "visualDescription": "Cervical spine diagram showing C3, C4, C5 nerve roots converging to form the phrenic nerve descending alongside the heart to innervate the diaphragm; an inset shows referred shoulder tip pain from diaphragm irritation",
+    "sourceName": "Kenhub — Diaphragm",
+    "sourceUrl": "https://www.kenhub.com/en/library/anatomy/diaphragm",
+    "volatile": false,
+    "examTags": ["USMLE_Step1", "COMLEX", "high_yield"],
+    "distractors": ["C2, C3, C4 — phrenic nerve", "C4, C5, C6 — phrenic nerve", "T1, T2, T3 — intercostal nerves", "C5, C6, C7 — brachial plexus", "C3, C4, C5 — vagus nerve"],
+    "variants": [
+      {
+        "quizQuestion": "A patient develops left shoulder tip pain after a ruptured spleen. Which nerve accounts for this referred pain pattern?",
+        "correctAnswer": "Left phrenic nerve (C3–C5)",
+        "explanation": "Blood from a ruptured spleen pools under the left diaphragm, irritating it. The diaphragm is innervated by the phrenic nerve (C3–C5). Pain is referred to the C3–C5 dermatome, which includes the shoulder tip. This is Kehr's sign — left shoulder pain in the setting of intra-abdominal pathology — a classic USMLE vignette."
+      }
+    ]
+  }
+]

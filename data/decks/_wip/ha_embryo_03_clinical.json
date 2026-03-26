@@ -1,0 +1,928 @@
+{
+  "facts": [
+    {
+      "id": "ha_embryo_061",
+      "subDeckId": "embryology",
+      "correctAnswer": "22q11.2 deletion",
+      "acceptableAlternatives": ["22q11.2", "chromosome 22q11.2 microdeletion", "del 22q11.2"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "genetic_loci",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "DiGeorge syndrome results from haploinsufficiency of genes in which chromosomal region, with TBX1 being the key gene responsible for most cardiac and pharyngeal arch features?",
+      "explanation": "DiGeorge syndrome is caused by a microdeletion of chromosome 22q11.2, the most common interstitial deletion in humans, occurring in approximately 1 in 4,000 live births. TBX1 haploinsufficiency is responsible for most of the characteristic features. TBX1 is expressed in the pharyngeal apparatus during early embryogenesis where it regulates development of structures from the 3rd and 4th pharyngeal pouches and arches, including the thymus, parathyroids, and cardiac outflow tract.",
+      "visualDescription": "Pixel art chromosome 22: q11.2 region highlighted with deletion marker, TBX1 gene labeled in red, cartoon thymus and parathyroid icons floating nearby",
+      "sourceName": "StatPearls — DiGeorge Syndrome; Wikipedia — DiGeorge Syndrome",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK549798/",
+      "volatile": false,
+      "distractors": ["15q11 deletion", "7q11.23 deletion", "11p13 deletion", "17p13.3 deletion", "22q13 deletion", "5p deletion"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The 22q11.2 deletion causes DiGeorge syndrome. The haploinsufficiency of which single gene is most responsible for the cardiac outflow tract and pharyngeal defects?",
+          "correctAnswer": "TBX1",
+          "distractors": ["COMT", "DGCR8", "CRKL", "VEGF"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "DiGeorge syndrome is caused by a microdeletion of chromosome ___, and occurs in approximately 1 in 4,000 live births.",
+          "correctAnswer": "22q11.2",
+          "distractors": ["15q11", "7q11.23", "11p13"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_062",
+      "subDeckId": "embryology",
+      "correctAnswer": "Absent thymus and parathyroid glands",
+      "acceptableAlternatives": ["thymic aplasia and hypoparathyroidism", "no thymus, no parathyroids", "T cell deficiency and hypocalcemia"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "In DiGeorge syndrome, failure of development of the 3rd and 4th pharyngeal pouches leads to the absence or hypoplasia of which two glandular structures?",
+      "explanation": "The thymus develops from the 3rd pharyngeal pouch (and partly the 4th), while the parathyroid glands develop from the 3rd and 4th pharyngeal pouches. In DiGeorge syndrome, TBX1 haploinsufficiency disrupts this development, resulting in thymic aplasia or hypoplasia (causing T cell deficiency and susceptibility to infections) and parathyroid hypoplasia (causing hypoparathyroidism → hypocalcemia → neonatal tetany and seizures). Neonatal hypocalcemia and absent thymic shadow on chest X-ray are classic early presentations.",
+      "visualDescription": "Pixel art neck/chest diagram: pharyngeal pouches 3 and 4 labeled, absent thymic shadow on chest X-ray inset, hypocalcemia warning icon, T cell count bar showing depletion",
+      "sourceName": "StatPearls — DiGeorge Syndrome; Embryology Pharyngeal Pouch",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK549798/",
+      "volatile": false,
+      "distractors": ["Thyroid and adrenal glands", "Pituitary and thymus", "Parathyroid and adrenal glands", "Thymus and parotid", "Pituitary and parathyroid"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A neonate presents with seizures due to hypocalcemia and absent thymic shadow on CXR. Which syndrome explains both findings?",
+          "correctAnswer": "DiGeorge syndrome (22q11.2 deletion)",
+          "distractors": ["Turner syndrome", "Down syndrome", "Wiskott-Aldrich syndrome"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Thymic hypoplasia in DiGeorge syndrome causes a ___ cell immunodeficiency, increasing susceptibility to viral and fungal infections.",
+          "correctAnswer": "T",
+          "distractors": ["B", "NK", "Mast"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_063",
+      "subDeckId": "embryology",
+      "correctAnswer": "Conotruncal cardiac defects (tetralogy of Fallot, truncus arteriosus, interrupted aortic arch)",
+      "acceptableAlternatives": ["tetralogy of Fallot", "truncus arteriosus", "interrupted aortic arch", "conotruncal malformations"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "DiGeorge syndrome causes cardiac defects by disrupting neural crest cell migration into the cardiac outflow tract. What category of cardiac defect is most characteristic?",
+      "explanation": "Cardiac abnormalities in DiGeorge syndrome result from abnormal migration and differentiation of cardiac neural crest cells, which normally form the aorticoseptal septum and aortic arch. TBX1 haploinsufficiency disrupts this process, leading to conotruncal malformations: tetralogy of Fallot (most common), truncus arteriosus, interrupted aortic arch (type B), and ventricular septal defects. Interrupted aortic arch type B is strongly associated with 22q11.2 deletion and should prompt genetic testing. The CATCH-22 mnemonic covers cardiac defects, abnormal facies, thymic hypoplasia, cleft palate, and hypocalcemia.",
+      "visualDescription": "Pixel art heart showing conotruncal region: aorta and pulmonary artery with abnormal septation, neural crest cell migration pathway shown with dashed arrows, CATCH-22 mnemonic listed",
+      "sourceName": "StatPearls — DiGeorge Syndrome; PubMed — 22q11 TBX1 Pharyngeal Cardiovascular Development",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK549798/",
+      "volatile": false,
+      "distractors": ["AV canal defects", "Tricuspid atresia", "Ebstein's anomaly", "Total anomalous pulmonary venous return", "Hypoplastic left heart syndrome"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Interrupted aortic arch type B in a neonate should prompt genetic testing for which chromosomal deletion?",
+          "correctAnswer": "22q11.2 deletion (DiGeorge syndrome)",
+          "distractors": ["Trisomy 21", "Turner syndrome (45,X)", "Trisomy 18"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The CATCH-22 mnemonic for DiGeorge syndrome includes Cardiac defects, Abnormal facies, Thymic hypoplasia, Cleft palate, and ___.",
+          "correctAnswer": "Hypocalcemia (22q11.2 deletion)",
+          "distractors": ["Hydrocephalus", "Hypospadias", "Hypersplenism"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_064",
+      "subDeckId": "embryology",
+      "correctAnswer": "45,X (monosomy X)",
+      "acceptableAlternatives": ["45X", "45,X0", "monosomy X", "45,XO"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "genetic_loci",
+      "difficulty": 1,
+      "funScore": 8,
+      "quizQuestion": "Turner syndrome affects 1 in 2,500 live female births and results from loss of a sex chromosome. What is the classic karyotype?",
+      "explanation": "Turner syndrome is caused by meiotic or mitotic errors resulting in a lack of a second X chromosome, giving the karyotype 45,X (also written 45,XO or 45,X0). Only females are affected. It affects approximately 1 in 2,500 live female births. The lost chromosome is most often paternal in origin. Clinical features include short stature, primary amenorrhea, infertility (streak gonads), webbed neck, shield chest, and congenital heart and kidney defects. Most affected pregnancies (>99%) spontaneously abort.",
+      "visualDescription": "Pixel art karyotype: 22 pairs of autosomes arranged normally, sex chromosomes showing only one X and absent second chromosome, single X highlighted in teal",
+      "sourceName": "Wikipedia — Turner Syndrome; StatPearls — Genetics Gonadal Dysgenesis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gonadal_dysgenesis_Turner_type",
+      "volatile": false,
+      "distractors": ["47,XXX", "47,XXY", "46,XY", "45,Y", "46,XX with deletions", "47,XYY"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A female with short stature, webbed neck, and primary amenorrhea has a 45,X karyotype. What syndrome does she have?",
+          "correctAnswer": "Turner syndrome",
+          "distractors": ["Noonan syndrome", "DiGeorge syndrome", "Fragile X syndrome"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Turner syndrome has a karyotype of ___, representing loss of one sex chromosome in phenotypic females.",
+          "correctAnswer": "45,X",
+          "distractors": ["47,XXY", "46,XX", "47,XYY"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_065",
+      "subDeckId": "embryology",
+      "correctAnswer": "Coarctation of the aorta and horseshoe kidney",
+      "acceptableAlternatives": ["coarctation of aorta, horseshoe kidney", "aortic coarctation and horseshoe kidney"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Turner syndrome is associated with two distinctive structural anomalies — one cardiovascular and one renal — that are caused by fetal lymphedema deforming developing structures. What are they?",
+      "explanation": "Turner syndrome is associated with coarctation of the aorta (narrowing of the aorta, typically at the isthmus near the ductus arteriosus, occurring in ~15% of cases) and horseshoe kidney (kidneys fused at their lower poles in a U-shape, occurring in ~10% vs. <0.5% of the general population). Both are thought to result from fetal lymphedema and hypoalbuminemia deforming developing structures. The horseshoe kidney is trapped below the inferior mesenteric artery, which prevents its normal ascent. Bicuspid aortic valve is the most common cardiac defect (~30%).",
+      "visualDescription": "Pixel art: left panel shows aortic arch with narrowing at coarctation site labeled, right panel shows horseshoe kidney with fused lower poles below inferior mesenteric artery",
+      "sourceName": "Wikipedia — Turner Syndrome; PMC — Turner Syndrome Renal Ultrasonographic Findings",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8613554/",
+      "volatile": false,
+      "distractors": ["VSD and polycystic kidneys", "Tetralogy of Fallot and duplicated ureters", "ASD and renal agenesis", "Patent ductus arteriosus and pelvic kidney"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Coarctation of the aorta in Turner syndrome typically occurs at which anatomical site?",
+          "correctAnswer": "Aortic isthmus (near the ductus arteriosus / ligamentum arteriosum)",
+          "distractors": ["Aortic valve", "Descending thoracic aorta", "Abdominal aorta"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Horseshoe kidney occurs in ~10% of Turner syndrome patients because the fused kidney is trapped below the ___ artery, preventing normal ascent.",
+          "correctAnswer": "Inferior mesenteric",
+          "distractors": ["Inferior epigastric", "Common iliac", "Superior mesenteric"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_066",
+      "subDeckId": "embryology",
+      "correctAnswer": "Trisomy 21",
+      "acceptableAlternatives": ["trisomy 21", "extra chromosome 21", "+21"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "genetic_loci",
+      "difficulty": 1,
+      "funScore": 8,
+      "quizQuestion": "Down syndrome is the most common viable autosomal trisomy and the leading genetic cause of intellectual disability. What is the chromosomal basis?",
+      "explanation": "Down syndrome results from an extra copy of chromosome 21 (trisomy 21). Approximately 95% of cases arise from nondisjunction during maternal meiosis I, producing a gamete with two copies of chromosome 21. About 4% are due to Robertsonian translocation (most commonly to chromosome 14), and 1% are mosaic. The risk increases with maternal age. Down syndrome affects approximately 1 in 700 live births and is the most common chromosomal cause of intellectual disability.",
+      "visualDescription": "Pixel art karyotype: chromosome 21 shown in triplicate highlighted in yellow, all other pairs normal, maternal age risk graph inset",
+      "sourceName": "StatPearls — Down Syndrome",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK526016/",
+      "volatile": false,
+      "distractors": ["Trisomy 18", "Trisomy 13", "Trisomy 22", "Monosomy 21", "Translocation 13;21"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A 4% minority of Down syndrome cases are caused by a Robertsonian translocation rather than free trisomy 21. What is the clinical significance of this?",
+          "correctAnswer": "A Robertsonian translocation carrier parent has a significantly increased recurrence risk in future pregnancies",
+          "distractors": ["These cases are always mosaic", "These cases have milder features", "There is no increased recurrence risk"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Approximately 95% of Down syndrome cases result from meiotic nondisjunction, producing a gamete with two copies of chromosome ___.",
+          "correctAnswer": "21",
+          "distractors": ["18", "13", "22"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_067",
+      "subDeckId": "embryology",
+      "correctAnswer": "Atrioventricular (AV) canal defect (endocardial cushion defect)",
+      "acceptableAlternatives": ["AV canal defect", "AVSD", "atrioventricular septal defect", "endocardial cushion defect"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Down syndrome (trisomy 21) is strongly associated with which cardiac defect, caused by failure of endocardial cushion fusion between weeks 5–8 of embryogenesis?",
+      "explanation": "Approximately 1 in 6 individuals with both Down syndrome and congenital heart disease have an atrioventricular septal defect (AVSD, or AV canal defect). The defect arises from failure of endocardial cushion fusion between gestational weeks 5–8. The increased cell adhesiveness of trisomy 21 cells may prevent the cushion from fusing. Complete AVSD involves both an ASD (primum type) and VSD, plus common AV valve. AVSD is the most common cardiac defect in Down syndrome (vs. VSD being most common overall in the population).",
+      "visualDescription": "Pixel art four-chamber heart: large communication between atria and ventricles at the endocardial cushion region, single common AV valve labeled, Down syndrome karyotype inset",
+      "sourceName": "StatPearls — Down Syndrome; Embryology Atrioventricular Septum",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK526016/",
+      "volatile": false,
+      "distractors": ["Tetralogy of Fallot", "Transposition of great vessels", "Hypoplastic left heart", "Coarctation of aorta", "Interrupted aortic arch"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A complete AVSD in a neonate should raise strong suspicion for which chromosomal syndrome?",
+          "correctAnswer": "Down syndrome (trisomy 21)",
+          "distractors": ["DiGeorge syndrome", "Turner syndrome", "Edwards syndrome"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "AV canal defect in Down syndrome results from failure of ___ cushion fusion between weeks 5–8 of embryogenesis.",
+          "correctAnswer": "Endocardial",
+          "distractors": ["Neural crest", "Mesenchymal", "Conotruncal"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_068",
+      "subDeckId": "embryology",
+      "correctAnswer": "Duodenal atresia (double bubble sign on X-ray)",
+      "acceptableAlternatives": ["duodenal atresia", "double bubble sign", "duodenal obstruction"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 10,
+      "quizQuestion": "Down syndrome is associated with failure of duodenal recanalization during weeks 8–10. What GI anomaly results, and what is its classic radiological sign?",
+      "explanation": "Duodenal atresia occurs when the duodenum fails to recanalize during weeks 8–10 of embryogenesis. Approximately 30–40% of infants with duodenal atresia have Down syndrome (trisomy 21). The classic 'double bubble' sign on abdominal X-ray shows two gas-filled bubbles: the stomach (left) and the proximal duodenum (right), with no distal gas. Clinically, bilious vomiting begins within hours of birth. Brushfield spots (tan/white spots on the iris in Down syndrome) are unrelated but another characteristic finding.",
+      "visualDescription": "Pixel art abdominal X-ray: two large air bubbles labeled 'stomach' and 'proximal duodenum', no distal bowel gas, Down syndrome trisomy 21 label, Brushfield spots eye inset",
+      "sourceName": "StatPearls — Duodenal Atresia and Stenosis; PMC — The Double Bubble Sign",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK470548/",
+      "volatile": false,
+      "distractors": ["Jejunal atresia (triple bubble sign)", "Pyloric stenosis (olive mass, metabolic alkalosis)", "Malrotation (bird beak sign)", "Hirschsprung disease (transition zone sign)", "Tracheoesophageal fistula (gasless abdomen)"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The 'double bubble' sign on neonatal abdominal X-ray indicates duodenal atresia. In what percentage of these cases is Down syndrome present?",
+          "correctAnswer": "30–40%",
+          "distractors": ["5–10%", "60–70%", "Nearly 100%"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Brushfield spots — tan spots around the periphery of the iris — are a characteristic ocular finding in ___.",
+          "correctAnswer": "Down syndrome (trisomy 21)",
+          "distractors": ["Turner syndrome", "DiGeorge syndrome", "Trisomy 18"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_069",
+      "subDeckId": "embryology",
+      "correctAnswer": "Trisomy 18 (Edwards syndrome)",
+      "acceptableAlternatives": ["Edwards syndrome", "trisomy 18", "+18"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "genetic_loci",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Which autosomal trisomy, caused by nondisjunction of chromosome 18, is characterized by clenched fists with overlapping fingers, rocker-bottom feet, and VSD — with a median survival of days?",
+      "explanation": "Trisomy 18 (Edwards syndrome) is the second most common autosomal trisomy after trisomy 21, caused by an extra copy of chromosome 18. Hallmark features include clenched hands with overlapping index fingers (camptodactyly), rocker-bottom feet with prominent calcanei, and congenital heart defects (especially VSD and polyvalvular disease). Microcephaly with prominent occiput, low-set ears, and micrognathia are also characteristic. The prognosis is very poor: median survival without intervention is 7–14 days, with only 10–19% surviving the first year.",
+      "visualDescription": "Pixel art neonate: clenched hands with index finger overlapping third finger, rocker-bottom foot shown, VSD heart diagram, trisomy 18 karyotype",
+      "sourceName": "StatPearls — Edwards Syndrome; Wikipedia — Trisomy 18",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK570597/",
+      "volatile": false,
+      "distractors": ["Trisomy 13 (Patau syndrome)", "Trisomy 21 (Down syndrome)", "Turner syndrome (45,X)", "Klinefelter syndrome (47,XXY)", "22q11 deletion"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A neonate with clenched fists with overlapping fingers, rocker-bottom feet, and VSD has what chromosomal diagnosis?",
+          "correctAnswer": "Trisomy 18 (Edwards syndrome)",
+          "distractors": ["Trisomy 13 (Patau syndrome)", "Trisomy 21 (Down syndrome)", "DiGeorge syndrome"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Trisomy 18 (Edwards syndrome) is the ___ most common autosomal trisomy.",
+          "correctAnswer": "Second",
+          "distractors": ["Third", "First", "Fourth"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_070",
+      "subDeckId": "embryology",
+      "correctAnswer": "Trisomy 13 (Patau syndrome)",
+      "acceptableAlternatives": ["Patau syndrome", "trisomy 13", "+13"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "genetic_loci",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Which trisomy, caused by an extra chromosome 13, presents with holoprosencephaly, midline cleft lip/palate, polydactyly, and microphthalmia — and is the most common cause of holoprosencephaly?",
+      "explanation": "Trisomy 13 (Patau syndrome) occurs in approximately 1 in 10,000–21,700 live births. Features reflect midline developmental failure: holoprosencephaly (failure of forebrain to divide into two hemispheres, ~50% of cases), cyclopia, cleft lip/palate (45% of cases), postaxial polydactyly (63–67% of cases), microphthalmia/anophthalmia, cardiac defects (VSD, ASD, PDA), and scalp defects (cutis aplasia). Trisomy 13 is the most common cause of holoprosencephaly. Median survival without intervention is 7–10 days.",
+      "visualDescription": "Pixel art neonate face: midline cleft lip, small eyes (microphthalmia), polydactyly hand showing extra digit, brain diagram with alobar holoprosencephaly (single undivided forebrain)",
+      "sourceName": "StatPearls — Trisomy 13; Wikipedia — Patau Syndrome",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559091/",
+      "volatile": false,
+      "distractors": ["Trisomy 18 (Edwards syndrome)", "Trisomy 21 (Down syndrome)", "DiGeorge syndrome", "Turner syndrome", "Smith-Lemli-Opitz syndrome"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Holoprosencephaly is most commonly caused by which trisomy?",
+          "correctAnswer": "Trisomy 13 (Patau syndrome)",
+          "distractors": ["Trisomy 18", "Trisomy 21", "Trisomy 22"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Postaxial polydactyly occurs in ___% of trisomy 13 cases, making it a high-yield distinguishing feature from trisomy 18.",
+          "correctAnswer": "63–67",
+          "distractors": ["10–15", "30–40", "90–95"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_071",
+      "subDeckId": "embryology",
+      "correctAnswer": "Bilateral renal agenesis → oligohydramnios → pulmonary hypoplasia and limb deformities",
+      "acceptableAlternatives": ["renal agenesis causes oligohydramnios causing pulmonary hypoplasia", "Potter sequence pathophysiology"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Potter sequence follows a cascade: bilateral renal agenesis → oligohydramnios → then what two major consequences?",
+      "explanation": "Potter sequence is initiated by bilateral renal agenesis (no fetal urine production) causing severe oligohydramnios. Fetal urine normally constitutes most of the amniotic fluid after 16 weeks; without it, amniotic fluid is absent. Pulmonary hypoplasia results because the lungs require hydrodynamic pressure from swallowed amniotic fluid for alveolar development. Limb deformities (joint contractures, clubfoot, flexion deformities) result from uterine wall compression of the fetus without the cushioning amniotic fluid. The characteristic facies (flattened nose, low-set ears, skin folds) also result from compression.",
+      "visualDescription": "Pixel art flow diagram: absent kidneys → no fetal urine → oligohydramnios → two branches: (1) hypoplastic lungs with small alveoli, (2) fetus compressed against uterine wall showing limb deformities and facial compression",
+      "sourceName": "StatPearls — Potter Syndrome; Wikipedia — Potter Sequence",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK560858/",
+      "volatile": false,
+      "distractors": ["Hydronephrosis and hepatomegaly", "Cardiac defects and clubfoot", "Anencephaly and pulmonary hypoplasia", "Renal dysplasia and polyhydramnios", "Polycystic kidneys and normal lungs"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In Potter sequence, pulmonary hypoplasia is fatal at birth. Mechanistically, why does oligohydramnios cause lung hypoplasia?",
+          "correctAnswer": "Fetal lung expansion requires swallowed amniotic fluid to generate hydrodynamic pressure for alveolar development",
+          "distractors": ["The absent kidneys fail to produce surfactant", "Urine directly enters the lungs during fetal development", "Oligohydramnios prevents diaphragm movement"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Potter sequence is initiated by bilateral ___, which eliminates the main source of amniotic fluid after 16 weeks.",
+          "correctAnswer": "Renal agenesis",
+          "distractors": ["Cardiac defects", "Placental insufficiency", "Tracheoesophageal fistula"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_072",
+      "subDeckId": "embryology",
+      "correctAnswer": "Spina bifida occulta",
+      "acceptableAlternatives": ["spina bifida occulta"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "A posterior vertebral arch defect is found incidentally on X-ray in an adult. The overlying skin shows a dimple or tuft of hair. No meningeal sac protrudes. What is the diagnosis?",
+      "explanation": "Spina bifida occulta is the mildest form of neural tube defect: there is a posterior arch vertebral defect (failure of the arches to fuse) but the meninges and spinal cord remain in the spinal canal. The defect is 'occult' (hidden) under intact skin, though cutaneous stigmata — a hairy patch, skin dimple, hemangioma, or lipoma — may overlie it. Neurological function is normal in most cases. It is a common incidental finding on X-ray. It differs fundamentally from meningocele (meninges herniate, no neural elements involved) and myelomeningocele (meninges and neural tissue both herniate).",
+      "visualDescription": "Pixel art lumbosacral spine: vertebral arch with unfused posterior elements shown from above, intact skin surface with a small dimple and hair tuft marker, no sac protruding",
+      "sourceName": "StatPearls — Spina Bifida; Wikipedia — Spina Bifida",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559265/",
+      "volatile": false,
+      "distractors": ["Meningocele", "Myelomeningocele", "Meningomyelocele", "Diastematomyelia", "Lipomyelomeningocele"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "How does meningocele differ from myelomeningocele?",
+          "correctAnswer": "Meningocele contains only meninges and CSF (no neural elements); myelomeningocele also contains spinal cord/nerve roots and causes neurological deficits",
+          "distractors": ["Meningocele is covered by skin; myelomeningocele is not", "Meningocele contains cord; myelomeningocele contains only CSF", "There is no clinical difference between them"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In spina bifida occulta, cutaneous stigmata such as a hairy patch, skin dimple, or hemangioma may overlie the ___ arch defect.",
+          "correctAnswer": "Posterior vertebral",
+          "distractors": ["Anterior vertebral", "Costal", "Transverse process"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_073",
+      "subDeckId": "embryology",
+      "correctAnswer": "Omphalocele is midline, covered by peritoneum/amnion; gastroschisis is to the right of the umbilicus, uncovered",
+      "acceptableAlternatives": ["omphalocele has a peritoneal sac; gastroschisis has no covering", "omphalocele central with sac, gastroschisis lateral without sac"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Two abdominal wall defects are confused on USMLE: omphalocele vs. gastroschisis. What are the two key distinguishing features?",
+      "explanation": "Omphalocele involves herniation of abdominal contents through the umbilical ring (midline) at the base of the umbilical cord. The herniated contents are covered by a 3-layer sac (inner peritoneum, middle Wharton's jelly, outer amnion). Omphalocele is strongly associated with chromosomal anomalies (trisomies 13, 18, 21). Gastroschisis involves herniation through a right paraumbilical defect (right of the umbilicus) with NO covering sac — bowel is exposed to amniotic fluid. Gastroschisis is rarely associated with chromosomal anomalies but often has intestinal atresia.",
+      "visualDescription": "Pixel art two newborn abdomens: left shows omphalocele with glistening sac at umbilicus, shiny peritoneal covering visible; right shows gastroschisis with bowel loops protruding through defect to the right of the umbilical cord, no covering",
+      "sourceName": "StatPearls — Omphalocele; PMC — Abdominal Wall Defects",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK519010/",
+      "volatile": false,
+      "distractors": ["Gastroschisis is midline with a sac; omphalocele is lateral without a sac", "Both have a peritoneal sac; they differ only in size", "Omphalocele is associated with maternal diabetes; gastroschisis with chromosomal anomalies", "They are anatomically identical — the terms are interchangeable"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "An abdominal wall defect at birth, to the right of the umbilicus with no covering sac, is associated with which chromosomal anomalies?",
+          "correctAnswer": "Rarely associated with chromosomal anomalies (unlike omphalocele)",
+          "distractors": ["Trisomy 18 and 13", "Down syndrome (trisomy 21)", "Turner syndrome (45,X)"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Omphalocele is located at the umbilical ___, while gastroschisis typically occurs to the ___ of the umbilicus.",
+          "correctAnswer": "Ring (midline); right",
+          "distractors": ["Cord; left", "Stalk; left", "Ring; lateral (either side)"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_074",
+      "subDeckId": "embryology",
+      "correctAnswer": "Failure of neural crest cell migration into the distal hindgut",
+      "acceptableAlternatives": ["arrested neural crest migration", "neural crest cells fail to colonize the hindgut", "absent ganglia due to failed neural crest migration"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Hirschsprung disease (congenital aganglionic megacolon) is caused by what embryological failure?",
+      "explanation": "Hirschsprung disease is caused by failure of neural crest cells to complete their caudal migration along the gut wall. Neural crest cells emerge from the neural tube at week 4 and normally colonize the entire hindgut by week 7. When migration stops prematurely, the distal colon (most commonly the rectosigmoid) is left without enteric ganglion cells (Meissner's and Auerbach's plexuses). This aganglionic segment cannot relax, causing functional obstruction and proximal dilation (megacolon). RET pathway mutations are the most common genetic cause.",
+      "visualDescription": "Pixel art sagittal colon cross-section: neural crest cell migration arrows stopping partway along the colon, aganglionic segment in red/gray labeled 'no ganglion cells', dilated proximal colon, normal distal segment",
+      "sourceName": "PMC — Developmental Etiology of Hirschsprung Disease; Wikipedia — Hirschsprung's Disease",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3691347/",
+      "volatile": false,
+      "distractors": ["Failure of intestinal rotation (malrotation)", "Failure of duodenal recanalization", "Abnormal mesenteric artery development", "Failure of hindgut to separate from the cloaca", "Absent smooth muscle in the colon wall"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hirschsprung disease is diagnosed by biopsy showing absence of ganglion cells in the affected bowel. Which genetic pathway is most commonly mutated?",
+          "correctAnswer": "RET proto-oncogene pathway",
+          "distractors": ["BRAF pathway", "TP53 pathway", "PTEN pathway"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In Hirschsprung disease, the aganglionic (non-relaxing) segment is most commonly located in the ___ colon.",
+          "correctAnswer": "Rectosigmoid",
+          "distractors": ["Cecum", "Transverse", "Ascending"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_075",
+      "subDeckId": "embryology",
+      "correctAnswer": "Failure of fusion of the maxillary prominence with the medial nasal process",
+      "acceptableAlternatives": ["maxillary and medial nasal prominence fail to fuse", "non-fusion of maxillary and medial nasal processes"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Cleft lip results from which embryological failure during weeks 4–7?",
+      "explanation": "Upper lip formation requires fusion between the maxillary prominence (laterally) and the medial nasal process (medially), which occurs around weeks 4–7 of gestation. Failure of this fusion produces a cleft lip, which may be unilateral or bilateral and is often associated with cleft of the primary palate. In contrast, cleft palate results from failure of the lateral palatal shelves (secondary palate) to fuse with each other and with the primary palate during weeks 7–8. Cleft lip and palate are the most common craniofacial birth defects, occurring in approximately 1 in 700 births.",
+      "visualDescription": "Pixel art facial development week 6: frontonasal prominence at top, two maxillary prominences with medial nasal processes shown, gap where fusion should occur forming a cleft lip, normal fusion shown in comparison panel",
+      "sourceName": "StatPearls — Embryology Face; PMC — Revisiting the Embryogenesis of Lip and Palate Development",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10234451/",
+      "volatile": false,
+      "distractors": ["Failure of palatal shelves to fuse", "Failure of mandibular prominences to fuse at the midline", "Failure of lateral nasal process and maxillary prominence to fuse", "Failure of intermaxillary segment to form"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Cleft palate (isolated, without cleft lip) results from failure of which embryological fusion during weeks 7–8?",
+          "correctAnswer": "Failure of the lateral palatal shelves to fuse with each other and the primary palate",
+          "distractors": ["Failure of maxillary and medial nasal prominences to fuse", "Failure of nasal septum to form", "Failure of mandibular arch to fuse"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Cleft lip results from failure of fusion between the maxillary prominence and the ___ nasal process during weeks 4–7.",
+          "correctAnswer": "Medial",
+          "distractors": ["Lateral", "Inferior", "Frontonasal"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_076",
+      "subDeckId": "embryology",
+      "correctAnswer": "Fetal alcohol syndrome",
+      "acceptableAlternatives": ["FAS", "fetal alcohol spectrum disorder"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "syndrome_names",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "A neonate born to a mother with chronic alcohol use presents with smooth philtrum, thin upper lip, short palpebral fissures, microcephaly, and a VSD. What is the diagnosis?",
+      "explanation": "Fetal alcohol syndrome (FAS) is caused by prenatal ethanol exposure. The three diagnostic facial features are: smooth (absent) philtrum, thin upper vermilion border (thin upper lip), and short palpebral fissures. Other features include microcephaly, intellectual disability, and cardiac defects (VSD, ASD, coarctation of aorta, seen in ~30%). Alcohol disrupts glycosylation and cell migration, causing neuronal and glial migration errors that produce the CNS abnormalities. FAS is the leading preventable cause of intellectual disability. There is no safe level of alcohol in pregnancy.",
+      "visualDescription": "Pixel art infant face: smooth philtrum (no groove), thin upper lip, short palpebral fissures labeled with arrows, microcephaly shown with small head circumference, VSD heart diagram",
+      "sourceName": "Wikipedia — Fetal Alcohol Spectrum Disorder; CDC — About FASDs",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Fetal_alcohol_spectrum_disorder",
+      "volatile": false,
+      "distractors": ["DiGeorge syndrome", "Turner syndrome", "Down syndrome", "Trisomy 18", "Noonan syndrome"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The three cardinal facial features diagnostic of fetal alcohol syndrome are short palpebral fissures, a smooth philtrum, and which third finding?",
+          "correctAnswer": "Thin upper vermilion border (thin upper lip)",
+          "distractors": ["Cleft palate", "Epicanthal folds", "Low-set ears"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Fetal alcohol syndrome is the leading ___ cause of intellectual disability.",
+          "correctAnswer": "Preventable",
+          "distractors": ["Genetic", "Chromosomal", "Infectious"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_077",
+      "subDeckId": "embryology",
+      "correctAnswer": "Myelomeningocele",
+      "acceptableAlternatives": ["meningomyelocele", "open myelomeningocele"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The most severe form of spina bifida, where both the meninges and functional spinal cord/nerve roots herniate through the defect and are exposed (usually not skin-covered), causing neurological deficits depending on level, is called what?",
+      "explanation": "Myelomeningocele is the most severe form of spina bifida, involving herniation of meninges, CSF, and functional neural elements (spinal cord and/or nerve roots) through a posterior vertebral defect. The herniated neural tissue is usually not covered by skin (open defect), leaving it exposed to amniotic fluid, which damages the tissue. Neurological deficits depend on the level: lumbar lesions cause paraplegia, bladder/bowel dysfunction; all levels are associated with Arnold-Chiari II malformation (hindbrain herniation) and hydrocephalus. Folic acid supplementation before conception reduces neural tube defect risk by ~70%.",
+      "visualDescription": "Pixel art lower spine: large posterior vertebral defect, meninges and spinal cord both herniated into thin-walled sac protruding from back, nerve roots visible within the sac, no skin covering",
+      "sourceName": "StatPearls — Myelomeningocele; Wikipedia — Spina Bifida",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK546696/",
+      "volatile": false,
+      "distractors": ["Meningocele", "Spina bifida occulta", "Encephalocele", "Diastematomyelia", "Lipomyelomeningocele"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Myelomeningocele is associated with which hindbrain malformation that causes hydrocephalus?",
+          "correctAnswer": "Arnold-Chiari II malformation",
+          "distractors": ["Dandy-Walker malformation", "Chiari I malformation", "Holoprosencephaly"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Folic acid supplementation before conception reduces the risk of neural tube defects including myelomeningocele by approximately ___.",
+          "correctAnswer": "70%",
+          "distractors": ["20%", "90%", "50%"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_078",
+      "subDeckId": "embryology",
+      "correctAnswer": "Turner syndrome has lymphedema, short stature, and ovarian dysgenesis; Noonan syndrome has similar facies but normal karyotype, right-sided heart defects, and affects both sexes",
+      "acceptableAlternatives": ["Turner is 45,X females only; Noonan is autosomal dominant both sexes", "Turner karyotypic, Noonan phenocopy with normal karyotype"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "syndrome_names",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Turner syndrome and Noonan syndrome share webbed neck, short stature, and cardiac defects, but differ in karyotype, sex, and which cardiac lesion. What are the key differences?",
+      "explanation": "Turner syndrome (45,X) affects females only, with coarctation of the aorta (left-sided), primary ovarian failure, and lymphedema. Noonan syndrome is autosomal dominant (PTPN11 gene most commonly), affects both males and females, and is associated with pulmonary stenosis (right-sided) rather than coarctation. Both have webbed neck and short stature, but Noonan has normal karyotype (46,XX or 46,XY). Noonan is the 'male Turner equivalent' though it affects females too. Hypertrophic cardiomyopathy is also associated with Noonan syndrome.",
+      "visualDescription": "Pixel art split comparison: left — Turner syndrome (female silhouette, 45X karyotype, left-sided coarctation arrow); right — Noonan syndrome (male and female, normal karyotype, pulmonary stenosis arrow)",
+      "sourceName": "Wikipedia — Turner Syndrome; StatPearls — Genetics Gonadal Dysgenesis",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gonadal_dysgenesis_Turner_type",
+      "volatile": false,
+      "distractors": ["They are caused by the same PTPN11 mutation", "Both affect females only", "Turner has pulmonary stenosis; Noonan has coarctation", "They are clinically identical and distinguished only by karyotype"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A male with webbed neck, short stature, and pulmonary stenosis has a normal karyotype (46,XY). Which syndrome does he likely have?",
+          "correctAnswer": "Noonan syndrome",
+          "distractors": ["Turner syndrome", "Klinefelter syndrome", "DiGeorge syndrome"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Noonan syndrome is most commonly caused by mutations in the ___ gene and follows autosomal dominant inheritance.",
+          "correctAnswer": "PTPN11",
+          "distractors": ["TBX1", "FBN1", "NF1"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_079",
+      "subDeckId": "embryology",
+      "correctAnswer": "3rd and 4th pharyngeal pouches",
+      "acceptableAlternatives": ["pharyngeal pouches 3 and 4", "pouch 3 and 4"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Both the thymus and the inferior parathyroid glands develop from which pharyngeal pouch?",
+      "explanation": "The 3rd pharyngeal pouch gives rise to the thymus (ventral portion) and the inferior parathyroid glands (dorsal portion). The 4th pharyngeal pouch gives rise to the superior parathyroid glands (dorsal portion) and contributes to the parafollicular C cells of the thyroid (from the ultimobranchial body). Notably, the inferior parathyroids migrate further than the superior ones because they originate from the 3rd pouch and must travel with the thymus. In DiGeorge syndrome, 3rd and 4th pouch derivatives are affected by the 22q11.2 deletion.",
+      "visualDescription": "Pixel art embryonic pharyngeal pouches 1–5 labeled from top to bottom: pouch 3 highlighted with thymus (ventral) and inferior parathyroids (dorsal), pouch 4 showing superior parathyroids and C cells",
+      "sourceName": "StatPearls — Embryology Pharyngeal Pouch",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557724/",
+      "volatile": false,
+      "distractors": ["1st and 2nd pouches", "2nd and 3rd pouches", "4th and 5th pouches", "1st and 3rd pouches", "2nd pouch only"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The inferior parathyroids migrate further than the superior parathyroids during development. Why?",
+          "correctAnswer": "The inferior parathyroids originate from the 3rd pouch and must travel with the thymus, while the superior come from the 4th pouch and travel less",
+          "distractors": ["The inferior parathyroids are larger", "The superior parathyroids are embedded in the thyroid", "There is no developmental explanation"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The superior parathyroid glands originate from the ___ pharyngeal pouch.",
+          "correctAnswer": "4th",
+          "distractors": ["3rd", "2nd", "5th"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_080",
+      "subDeckId": "embryology",
+      "correctAnswer": "Week 4 (from the neural tube); hindgut colonization completed by week 7",
+      "acceptableAlternatives": ["week 4 to week 7", "week 4 start, week 7 completion", "4th week of gestation"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Neural crest cells that form the enteric nervous system begin migrating from the neural tube in what week, and by what week should they have colonized the entire hindgut?",
+      "explanation": "In humans, vagal neural crest cells emerge from the neural tube at postconception week 4 and migrate caudally along the developing gut. They must reach and colonize the entire hindgut (including the rectum) by week 7. Failure or arrest of this migration — due to mutations in RET, GDNF, EDN3, or EDNRB — results in an aganglionic segment, clinically manifesting as Hirschsprung disease. The extent of aganglionosis depends on how early the migration arrested; total colonic aganglionosis implies very early arrest.",
+      "visualDescription": "Pixel art embryonic gut diagram: neural crest cells as small colored dots migrating from neural tube along esophagus, stomach, small bowel, toward colon, timeline showing week 4 start and week 7 completion",
+      "sourceName": "PMC — Developmental Etiology and Pathogenesis of Hirschsprung Disease",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3691347/",
+      "volatile": false,
+      "distractors": ["Week 2 start, week 5 completion", "Week 6 start, week 12 completion", "Week 8 start, week 20 completion", "Week 3 start, week 10 completion"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Neural crest cell colonization of the hindgut should be complete by postconception week ___; failure to reach the distal bowel causes Hirschsprung disease.",
+          "correctAnswer": "7",
+          "distractors": ["12", "4", "20"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_081",
+      "subDeckId": "embryology",
+      "correctAnswer": "Lateral palatal shelves fail to fuse with each other and with the primary palate",
+      "acceptableAlternatives": ["palatal shelf fusion failure", "secondary palate formation failure"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Isolated cleft palate (without cleft lip) occurs during weeks 7–8 when which specific fusion event fails?",
+      "explanation": "The secondary palate forms during weeks 7–8 from two lateral palatal shelves — medial outgrowths of the maxillary processes. These shelves initially project vertically beside the tongue; by week 7–8, they elevate to a horizontal position and fuse with each other (at the midline), with the primary palate anteriorly, and with the nasal septum superiorly. Failure of this fusion produces a cleft palate. Isolated cleft palate has different risk factors and genetics from cleft lip ± palate — they are embryologically distinct defects.",
+      "visualDescription": "Pixel art embryonic palate development: two lateral palatal shelves shown first vertical then rotating horizontal, fusion point at midline, failure of fusion shown as gap, week 7–8 label",
+      "sourceName": "StatPearls — Cleft Palate; PMC — Cellular and Molecular Mechanisms of Cleft Palate Development",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK563128/",
+      "volatile": false,
+      "distractors": ["Failure of maxillary and medial nasal prominences to fuse", "Failure of the primary palate to form at all", "Failure of Meckel's cartilage resorption", "Failure of frontonasal process to elevate"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "The secondary palate forms from two lateral palatal shelves that must fuse at the midline and with the primary palate during weeks ___.",
+          "correctAnswer": "7–8",
+          "distractors": ["4–5", "10–12", "3–4"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_082",
+      "subDeckId": "embryology",
+      "correctAnswer": "Week 6 (physiological herniation), fully reduced by week 10–12",
+      "acceptableAlternatives": ["week 6 herniation, returns by week 10", "6 weeks, reduced by 10–12 weeks"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In normal embryogenesis, the midgut temporarily herniates into the umbilical cord. When does this physiological herniation occur, and by what week should the gut have fully returned to the abdominal cavity?",
+      "explanation": "At approximately week 6 of development, the growing midgut loops herniate into the base of the umbilical cord as physiological umbilical herniation. This occurs because the abdominal cavity is too small for the rapidly growing gut at this stage. During this herniation, the midgut undergoes its 270-degree counterclockwise rotation around the superior mesenteric artery. By weeks 10–12, the abdominal cavity has grown sufficiently for the gut to return (reduce). Failure to return by week 12 results in an omphalocele (persistent physiological herniation). Gastroschisis has a different mechanism.",
+      "visualDescription": "Pixel art timeline: week 6 — midgut loops shown in umbilical cord with rotation arrows; week 10–12 — gut returned to abdominal cavity; failure to return shown as omphalocele comparison",
+      "sourceName": "StatPearls — Omphalocele; PMC — Abdominal Wall Defects",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK519010/",
+      "volatile": false,
+      "distractors": ["Week 3, returns by week 6", "Week 8, returns by week 14", "Week 10, returns by week 16", "Week 4, returns by week 8"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The midgut undergoes 270 degrees of rotation during its temporary herniation into the umbilical cord at week 6. In what direction does this rotation occur?",
+          "correctAnswer": "Counterclockwise (when viewed from the front)",
+          "distractors": ["Clockwise", "No rotation occurs during herniation", "90 degrees clockwise followed by 90 degrees counterclockwise"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Omphalocele results when the physiological midgut herniation fails to reduce by approximately week ___.",
+          "correctAnswer": "10–12",
+          "distractors": ["6", "16", "20"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_083",
+      "subDeckId": "embryology",
+      "correctAnswer": "Smooth philtrum and thin upper lip are the most specific; short palpebral fissures complete the triad",
+      "acceptableAlternatives": ["smooth philtrum, thin upper lip, short palpebral fissures"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "clinical_features",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "What are the three cardinal facial features required for a diagnosis of fetal alcohol syndrome?",
+      "explanation": "The three cardinal facial features of fetal alcohol syndrome (FAS) are: (1) smooth philtrum (absent or markedly reduced philtrum groove); (2) thin upper vermilion border (thin upper lip); and (3) short palpebral fissures. These features result from alcohol-induced disruption of midface development during the first trimester. The smooth philtrum and thin upper lip are the most specific — they are rated using a validated lip/philtrum guide (ranks 1–5 with 4–5 being diagnostic). Documentation requires evidence of prenatal alcohol exposure plus these features plus CNS abnormalities or growth deficiency.",
+      "visualDescription": "Pixel art infant face: labeled pointer to smooth philtrum (absent groove between nose and lip), thin upper lip (narrow vermilion), and short palpebral fissures (small horizontal eye openings)",
+      "sourceName": "PMC — The Diagnosis of Fetal Alcohol Syndrome; CDC — About FASDs",
+      "sourceUrl": "https://www.cdc.gov/fasd/about/index.html",
+      "volatile": false,
+      "distractors": ["Cleft lip, microphthalmia, polydactyly", "Microcephaly, hearing loss, cataracts", "Epicanthal folds, macroglossia, single palmar crease", "Upslanting eyes, brushfield spots, protruding tongue"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "In fetal alcohol syndrome, the smooth philtrum refers to an absent or markedly reduced ___ groove between the nose and upper lip.",
+          "correctAnswer": "Philtrum",
+          "distractors": ["Nasolabial", "Labiomental", "Columellar"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_084",
+      "subDeckId": "embryology",
+      "correctAnswer": "Postaxial polydactyly and holoprosencephaly",
+      "acceptableAlternatives": ["postaxial polydactyly and holoprosencephaly", "polydactyly and undivided forebrain"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "clinical_features",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "In trisomy 13 (Patau syndrome), which two findings help distinguish it from trisomy 18 (Edwards syndrome) — one neurological and one musculoskeletal?",
+      "explanation": "Key distinguishing features of trisomy 13 vs. trisomy 18: Trisomy 13 characteristically has (1) holoprosencephaly (failure of forebrain division, seen in ~50% of cases — trisomy 13 is the most common chromosomal cause) and (2) postaxial polydactyly (extra digit on the ulnar/fibular side, seen in 63–67% of cases). Trisomy 18 has clenched fists with overlapping fingers and rocker-bottom feet, but NOT polydactyly or holoprosencephaly. Both have midline clefts and cardiac defects, but the CNS and digit abnormalities differ.",
+      "visualDescription": "Pixel art comparison: trisomy 13 column shows alobar holoprosencephaly brain diagram and extra digit (postaxial polydactyly); trisomy 18 column shows clenched overlapping fingers and rocker-bottom foot",
+      "sourceName": "StatPearls — Trisomy 13; Wikipedia — Patau Syndrome",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559091/",
+      "volatile": false,
+      "distractors": ["Clenched fists and rocker-bottom feet", "Agenesis of the corpus callosum and micrognathia", "Cyclopia and short sternum", "Choroid plexus cysts and single umbilical artery"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Trisomy 13 is the most common chromosomal cause of ___, in which the forebrain fails to divide into two hemispheres.",
+          "correctAnswer": "Holoprosencephaly",
+          "distractors": ["Lissencephaly", "Hydrocephalus", "Agenesis of the corpus callosum"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_085",
+      "subDeckId": "embryology",
+      "correctAnswer": "COMT haploinsufficiency leads to increased dopamine in the prefrontal cortex",
+      "acceptableAlternatives": ["COMT haploinsufficiency, elevated prefrontal dopamine", "reduced COMT activity, excess dopamine"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "DiGeorge syndrome (22q11.2 deletion) is associated with a 30-fold increased risk of schizophrenia-spectrum disorders. Haploinsufficiency of which gene in the deleted region provides the neurochemical explanation?",
+      "explanation": "COMT (catechol-O-methyltransferase) is located within the 22q11.2 deleted region. COMT metabolizes catecholamines including dopamine in the prefrontal cortex. Haploinsufficiency of COMT leads to reduced dopamine degradation, causing elevated dopamine levels in the prefrontal cortex — a finding consistent with the dopamine hyperactivity hypothesis of schizophrenia. This makes 22q11.2 deletion the single most common genetic risk factor for schizophrenia, responsible for approximately 1–2% of all schizophrenia cases.",
+      "visualDescription": "Pixel art prefrontal cortex synapse: dopamine molecules accumulating due to absent COMT enzyme, schizophrenia risk icon, chromosome 22q11.2 with COMT gene labeled",
+      "sourceName": "StatPearls — DiGeorge Syndrome; Wikipedia — DiGeorge Syndrome",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK549798/",
+      "volatile": false,
+      "distractors": ["TBX1 haploinsufficiency causing cortical dysplasia", "DGCR8 leading to miRNA processing failure in prefrontal neurons", "VEGF haploinsufficiency causing cortical hypoperfusion", "NF1 leading to dopamine receptor overexpression"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "22q11.2 deletion is the most common genetic risk factor for schizophrenia. Approximately what percentage of all schizophrenia cases are attributable to this deletion?",
+          "correctAnswer": "1–2%",
+          "distractors": ["10–15%", "0.1%", "25%"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "COMT (catechol-O-methyltransferase) metabolizes ___ in the prefrontal cortex; its haploinsufficiency in 22q11.2 deletion elevates dopamine and increases schizophrenia risk.",
+          "correctAnswer": "Dopamine",
+          "distractors": ["Serotonin", "Norepinephrine", "GABA"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_086",
+      "subDeckId": "embryology",
+      "correctAnswer": "Bicuspid aortic valve (~30–50% of Turner syndrome patients)",
+      "acceptableAlternatives": ["bicuspid aortic valve", "BAV", "bicuspid aortic valve is most common cardiac defect in Turner"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "While coarctation of the aorta is the most famous cardiovascular defect in Turner syndrome, what is actually the single most common cardiac defect in Turner syndrome by prevalence?",
+      "explanation": "Bicuspid aortic valve (BAV) is the most common cardiovascular defect in Turner syndrome, occurring in approximately 30–50% of patients. Coarctation of the aorta is the second most common major cardiac defect (~15%). The high prevalence of BAV in Turner syndrome likely reflects the underlying lymphatic and vascular development abnormalities. BAV is associated with progressive aortic dilatation and an increased lifetime risk of aortic dissection, making regular echocardiographic surveillance essential for all Turner syndrome patients.",
+      "visualDescription": "Pixel art aortic valve from above: two-leaflet bicuspid configuration (vs. normal three-leaflet), labeled 'most common cardiac defect in Turner syndrome', Turner karyotype 45,X inset",
+      "sourceName": "PMC — Main Physical Features Echocardiographic and Renal Ultrasonographic Findings of Turner Syndrome",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8613554/",
+      "volatile": false,
+      "distractors": ["Ventricular septal defect", "Atrial septal defect", "Coarctation of the aorta", "Pulmonary stenosis", "Patent ductus arteriosus"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "A patient with Turner syndrome and bicuspid aortic valve requires lifelong monitoring for which life-threatening complication?",
+          "correctAnswer": "Aortic dissection",
+          "distractors": ["Mitral valve prolapse", "Coronary artery disease", "Pulmonary hypertension"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In Turner syndrome, bicuspid aortic valve occurs in approximately ___% of patients, making it the most common cardiac defect.",
+          "correctAnswer": "30–50",
+          "distractors": ["5–10", "70–80", "15–20"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_087",
+      "subDeckId": "embryology",
+      "correctAnswer": "Meningocele",
+      "acceptableAlternatives": ["posterior meningocele"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 7,
+      "quizQuestion": "A neonate has a soft, translucent, fluid-filled sac protruding from the lower back. Transillumination is positive. Neurological examination is completely normal. There is no bowel or bladder dysfunction. What is the diagnosis?",
+      "explanation": "Meningocele is a form of spina bifida in which the meninges (but NOT neural tissue) herniate through a posterior vertebral defect, forming a CSF-filled sac covered by thin skin or meninges. Since no neural elements are involved, there are usually no neurological deficits. The sac transilluminates because it contains only CSF. It is rarer than myelomeningocele and has a much better prognosis with surgical repair. If the sac contains neural elements (spinal cord or nerve roots), the lesion is myelomeningocele and neurological deficits are expected.",
+      "visualDescription": "Pixel art lower back: meninges-lined sac protruding, CSF inside shown as clear fluid with light transillumination glow, spinal cord stays within the canal (no neural elements in sac), normal neurological status icon",
+      "sourceName": "StatPearls — Meningocele; Wikipedia — Spina Bifida",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK562174/",
+      "volatile": false,
+      "distractors": ["Myelomeningocele", "Spina bifida occulta", "Sacrococcygeal teratoma", "Pilonidal cyst", "Lipomyelomeningocele"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Meningocele differs from myelomeningocele in that it contains only meninges and CSF — with ___ neural elements — resulting in no neurological deficits.",
+          "correctAnswer": "No",
+          "distractors": ["Partial", "Damaged", "Compressed"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_088",
+      "subDeckId": "embryology",
+      "correctAnswer": "3rd pharyngeal arch → stylohyoid, posterior belly of digastric, and stapedius muscles; styloid process and part of hyoid",
+      "acceptableAlternatives": ["pharyngeal arch 3 gives styloid, hyoid, stylohyoid, posterior digastric", "arch 3 derivatives"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 6,
+      "quizQuestion": "In DiGeorge syndrome, the 3rd pharyngeal arch is also affected. What are the muscular and skeletal derivatives of the 3rd pharyngeal arch?",
+      "explanation": "Each pharyngeal arch contributes muscles, skeletal elements, a nerve, and an artery. The 3rd pharyngeal arch: (1) Muscle — stylopharyngeus (innervated by CN IX, the only muscle of the 3rd arch). (2) Skeletal — contributes to the lower part of the body of the hyoid and greater cornua of the hyoid. (3) Nerve — glossopharyngeal nerve (CN IX). (4) Artery — common carotid artery and proximal internal carotid artery. DiGeorge syndrome affects the 3rd and 4th pouch derivatives (thymus, parathyroids) but the arch musculoskeletal derivatives are also subtly affected in severe cases.",
+      "visualDescription": "Pixel art embryonic pharyngeal arch diagram: arch 3 highlighted, stylopharyngeus muscle labeled, hyoid bone with greater cornua, CN IX arc, carotid artery",
+      "sourceName": "StatPearls — Embryology Pharyngeal Pouch; NCBI — Embryology Craniofacial",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK572156/",
+      "volatile": false,
+      "distractors": ["Muscles of mastication and mandible", "Stapedius and stapes bone", "Tensor veli palatini and soft palate", "Mylohyoid and anterior belly of digastric"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "The stylopharyngeus muscle is the only muscle derived from the 3rd pharyngeal arch. Which cranial nerve innervates it?",
+          "correctAnswer": "Glossopharyngeal nerve (CN IX)",
+          "distractors": ["Vagus nerve (CN X)", "Facial nerve (CN VII)", "Trigeminal nerve (CN V3)"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The 3rd pharyngeal arch artery gives rise to the ___ carotid and proximal ___ carotid arteries.",
+          "correctAnswer": "Common; internal",
+          "distractors": ["External; internal", "Subclavian; external", "Internal; external"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield"]
+    },
+    {
+      "id": "ha_embryo_089",
+      "subDeckId": "embryology",
+      "correctAnswer": "Oligohydramnios (Potter sequence) → pulmonary hypoplasia, limb contractures, flattened facies; Polyhydramnios → GI obstruction (e.g., esophageal/duodenal atresia, anencephaly)",
+      "acceptableAlternatives": ["oligohydramnios causes pulmonary hypoplasia; polyhydramnios suggests GI obstruction or CNS defect preventing swallowing"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "On prenatal ultrasound, abnormal amniotic fluid levels predict specific fetal anomalies. What does oligohydramnios predict vs. polyhydramnios?",
+      "explanation": "Oligohydramnios (too little amniotic fluid) results from conditions that reduce fetal urine production: bilateral renal agenesis (Potter sequence → pulmonary hypoplasia, limb contractures, flattened facies), bilateral renal obstruction, or severe placental insufficiency. Polyhydramnios (too much fluid) results from reduced fetal swallowing: GI obstruction (esophageal atresia, duodenal atresia — double bubble), or CNS defects preventing swallowing (anencephaly, encephalocele). Recognizing this distinction guides targeted fetal anatomical survey for each finding.",
+      "visualDescription": "Pixel art prenatal ultrasound split: left shows oligohydramnios with absent kidney shadow and Potter sequence features; right shows polyhydramnios with dilated stomach/duodenum (double bubble) or absent cranial vault (anencephaly)",
+      "sourceName": "StatPearls — Potter Syndrome; Wikipedia — Potter Sequence",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Potter_sequence",
+      "volatile": false,
+      "distractors": ["Both indicate chromosomal anomalies and require amniocentesis", "Oligohydramnios predicts GI obstruction; polyhydramnios predicts renal anomalies", "Oligohydramnios is always placental insufficiency; polyhydramnios is always trisomy 21"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Esophageal atresia without tracheoesophageal fistula presents at birth with inability to swallow and drooling. What prenatal amniotic fluid finding should prompt this diagnosis?",
+          "correctAnswer": "Polyhydramnios (fetus cannot swallow amniotic fluid)",
+          "distractors": ["Oligohydramnios", "Normal amniotic fluid", "Anhydramnios"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    },
+    {
+      "id": "ha_embryo_090",
+      "subDeckId": "embryology",
+      "correctAnswer": "Lymphedema (fetal) — causing webbing, cardiovascular deformity, and renal malposition",
+      "acceptableAlternatives": ["fetal lymphedema", "fetal edema from hypoalbuminemia causing structural deformities"],
+      "chainThemeId": 8,
+      "answerTypePoolId": "anatomy_mechanisms",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "The diverse structural anomalies in Turner syndrome (webbed neck, coarctation, horseshoe kidney) are thought to share a common embryological mechanism. What is that mechanism?",
+      "explanation": "Many of the structural anomalies in Turner syndrome — including webbed neck, low hairline, coarctation of the aorta, horseshoe kidney, nail dysplasia, and nipple spacing — are thought to result from fetal lymphedema and hypoalbuminemia during critical developmental periods. Turner fetuses have reduced serum albumin, causing fluid accumulation that deforms developing structures. The webbed neck (pterygium colli) results from fetal nuchal edema (seen as increased nuchal translucency on first-trimester ultrasound). The horseshoe kidney cannot ascend normally, and lymphedema explains the shield chest and peripheral lymphedema at birth.",
+      "visualDescription": "Pixel art Turner syndrome fetus: nuchal edema (cystic hygroma) visible on neck, fluid accumulation shown at peripheral structures, lymphatic vessels shown underdeveloped, resulting adult Turner features labeled: webbed neck, horseshoe kidney, coarctation",
+      "sourceName": "PMC — Pathogenesis of Congenital Defects Associated with Turner Syndrome; Wikipedia — Turner Syndrome",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8613554/",
+      "volatile": false,
+      "distractors": ["Neural crest cell migration failure", "Abnormal HIF1A expression causing vascular remodeling failure", "Haploinsufficiency of SHOX gene only", "Failure of X-chromosome inactivation causing gene dosage excess"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Increased nuchal translucency on first-trimester ultrasound is a marker for which condition that can result from fetal lymphedema in Turner syndrome?",
+          "correctAnswer": "Cystic hygroma (nuchal cystic lymphangioma)",
+          "distractors": ["Anencephaly", "Spina bifida", "Duodenal atresia"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In Turner syndrome, the webbed neck (pterygium colli) results from fetal nuchal edema — seen prenatally as increased ___ on first-trimester ultrasound.",
+          "correctAnswer": "Nuchal translucency",
+          "distractors": ["Crown-rump length discordance", "Biparietal diameter asymmetry", "Umbilical artery resistance"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "high_yield", "clinical_correlation"]
+    }
+  ]
+}

@@ -274,7 +274,7 @@ export function createRunState(
   // Study mode: initialize in-run fact tracker
   if (options?.deckMode?.type === 'study') {
     const tracker = new InRunFactTracker();
-    const deckFacts = getCuratedDeckFacts(options.deckMode.deckId, options.deckMode.subDeckId);
+    const deckFacts = getCuratedDeckFacts(options.deckMode.deckId, options.deckMode.subDeckId, options.deckMode.examTags);
     const factIds = deckFacts.map(f => f.id);
     const reviewStates = get(playerSave)?.reviewStates ?? [];
     tracker.seedFromGlobalFSRS(factIds, (factId: string) => {

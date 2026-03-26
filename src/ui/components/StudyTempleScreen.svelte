@@ -18,7 +18,7 @@
 
   interface Props {
     onback: () => void;
-    onStartRun: (config: { mode: 'study'; deckId: string; subDeckId?: string }) => void;
+    onStartRun: (config: { mode: 'study'; deckId: string; subDeckId?: string; examTags?: string[] }) => void;
   }
 
   let { onback, onStartRun }: Props = $props();
@@ -46,9 +46,43 @@
   };
 
   const rawDecks = $derived.by<DeckRegistryEntry[]>(() => {
-    if (activeTab === null) return getAllDecks().filter(d => d.status === 'available');
-    if (activeTab === 'vocabulary') return getDecksForDomain('vocabulary').filter(d => d.status === 'available');
-    return getDecksForDomain(activeTab as any).filter(d => d.status === 'available');
+    const allAvailable = getAllDecks().filter(d => d.status === 'available');
+    if (activeTab === null) {
+      // ALL tab: show knowledge decks + one representative per language for vocab
+      const knowledgeDecks = allAvailable.filter(d => d.domain !== 'vocabulary');
+      const vocabDecks = allAvailable.filter(d => d.domain === 'vocabulary');
+      // Keep only one deck per language prefix (e.g., "japanese", "korean")
+      const seenLanguages = new Set<string>();
+      const representativeVocab: DeckRegistryEntry[] = [];
+      for (const deck of vocabDecks) {
+        const idx = deck.id.indexOf('_');
+        const langKey = idx > 0 ? deck.id.substring(0, idx) : deck.id;
+        if (!seenLanguages.has(langKey)) {
+          seenLanguages.add(langKey);
+          // Create a synthetic "parent" entry showing language name and total facts
+          const langVocabDecks = vocabDecks.filter(d => {
+            const di = d.id.indexOf('_');
+            return (di > 0 ? d.id.substring(0, di) : d.id) === langKey;
+          });
+          const totalFacts = langVocabDecks.reduce((sum, d) => sum + d.factCount, 0);
+          const LANG_NAMES: Record<string, string> = {
+            japanese: 'Japanese', korean: 'Korean', mandarin: 'Mandarin Chinese',
+            chinese: 'Chinese', spanish: 'Spanish', french: 'French',
+            german: 'German', dutch: 'Dutch', czech: 'Czech',
+          };
+          representativeVocab.push({
+            ...deck,
+            id: 'all:' + langKey,
+            name: LANG_NAMES[langKey] ?? langKey.charAt(0).toUpperCase() + langKey.slice(1),
+            description: `${langVocabDecks.length} decks · ${totalFacts} facts`,
+            factCount: totalFacts,
+          });
+        }
+      }
+      return [...knowledgeDecks, ...representativeVocab];
+    }
+    if (activeTab === 'vocabulary') return allAvailable.filter(d => d.domain === 'vocabulary');
+    return allAvailable.filter(d => d.domain === activeTab);
   });
 
   const languageGroups = $derived.by(() => {
@@ -131,6 +165,11 @@
   }
 
   function handleDeckSelect(deckId: string) {
+    if (deckId.startsWith('all:')) {
+      // Switch to vocabulary tab to show all decks for this language
+      activeTab = 'vocabulary';
+      return;
+    }
     selectedDeckId = deckId;
   }
 
@@ -138,7 +177,7 @@
     selectedDeckId = null;
   }
 
-  function handleStartStudyRun(deckId: string, subDeckId?: string) {
+  function handleStartStudyRun(deckId: string, subDeckId?: string, examTags?: string[]) {
     selectedDeckId = null;
     playerSave.update(s => s ? {
       ...s,
@@ -149,7 +188,7 @@
       },
     } : s);
     persistPlayer();
-    onStartRun({ mode: 'study', deckId, subDeckId });
+    onStartRun({ mode: 'study', deckId, subDeckId, examTags });
   }
 
   function handleStudyAllLanguage(languageCode: string) {

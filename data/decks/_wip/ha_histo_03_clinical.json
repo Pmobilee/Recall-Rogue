@@ -1,0 +1,958 @@
+{
+  "facts": [
+    {
+      "id": "ha_histo_061",
+      "subDeckId": "histology",
+      "correctAnswer": "Zone 3 (centrilobular) — most susceptible; zone 1 (periportal) — most resistant",
+      "acceptableAlternatives": ["zone 3 most susceptible", "centrilobular most affected", "zone 3 vulnerable"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_zones",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "In the liver acinus, blood flows from portal triads (zone 1) to the central vein (zone 3). Which zone is first to undergo ischemic necrosis in right-heart failure, and which zone is first to regenerate after injury?",
+      "explanation": "Zone 1 (periportal) is closest to the portal triad and receives the most oxygenated blood first — it is most resistant to ischemia and first to regenerate. Zone 3 (centrilobular/pericentral) is furthest from the portal triad, receives the least oxygen, and is the LAST to get blood — making it the first zone to undergo ischemic/congestive necrosis in right-heart failure (centrilobular necrosis, 'nutmeg liver'). Zone 3 also has the highest CYP450 activity, explaining centrilobular necrosis from acetaminophen. Zone 2 is intermediate.",
+      "visualDescription": "Pixel art liver acinus: portal triad left side, central vein right side, oxygen gradient arrow from left to right, zone 1 green (oxygenated, resistant), zone 3 red (hypoxic, susceptible), nutmeg liver pattern inset",
+      "sourceName": "Wikipedia — Lobules of Liver; PMC — Metabolic Zonation of the Liver",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Lobules_of_liver",
+      "volatile": false,
+      "distractors": ["Zone 1 is most susceptible to ischemia; zone 3 regenerates first", "All zones are equally susceptible to ischemia", "Zone 2 is most susceptible; zone 1 regenerates first", "Zone 3 regenerates first because it has stem cell populations"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Right-heart failure causes 'nutmeg liver' — a histological pattern of centrilobular congestion and necrosis. Which hepatic acinus zone shows this damage?",
+          "correctAnswer": "Zone 3 (centrilobular/pericentral)",
+          "distractors": ["Zone 1 (periportal)", "Zone 2 (midzonal)", "All zones equally"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In yellow fever, the midzonal pattern of hepatocyte necrosis selectively damages ___ while sparing zones 1 and 3.",
+          "correctAnswer": "Zone 2",
+          "distractors": ["Zone 1", "Zone 3", "The portal triads"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_062",
+      "subDeckId": "histology",
+      "correctAnswer": "Glomerular filtration barrier: fenestrated endothelium → glomerular basement membrane (GBM) → podocyte slit diaphragm",
+      "acceptableAlternatives": ["endothelium, GBM, podocytes", "fenestrated capillary endothelium, GBM, podocyte foot processes"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The renal glomerular filtration barrier consists of three layers from the capillary lumen to Bowman's space. List them in order.",
+      "explanation": "The glomerular filtration barrier has three layers: (1) Fenestrated capillary endothelium (pores 70–100 nm, no diaphragm — allows water, ions; negatively charged glycocalyx repels albumin); (2) Glomerular basement membrane (GBM, 250–400 nm thick, contains collagen IV, laminin-521, and heparan sulfate — charge and size selective); (3) Podocyte slit diaphragm (interdigitating foot processes bridged by nephrin/podocin — final size filter). Albumin (anionic, 3.6 nm) is repelled at all three levels. In minimal change disease, foot process effacement (seen only on EM) disrupts the slit diaphragm, causing massive proteinuria.",
+      "visualDescription": "Pixel art cross-section: capillary lumen left to right → fenestrated endothelium with pores → GBM middle layer (mesh) → podocyte foot processes with slit diaphragm → Bowman's space, filtrate droplets passing through",
+      "sourceName": "StatPearls — Histology Kidney and Glomerulus; PMC — Glomerular Filtration Barrier Assembly",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554544/",
+      "volatile": false,
+      "distractors": ["Bowman's capsule → GBM → podocytes", "Mesangium → endothelium → GBM", "GBM → Bowman's capsule → podocytes", "Endothelium → mesangium → GBM"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In minimal change disease, heavy proteinuria occurs despite light microscopy appearing normal. What does electron microscopy reveal?",
+          "correctAnswer": "Diffuse podocyte foot process effacement (fusion) obliterating the slit diaphragm",
+          "distractors": ["Subepithelial immune deposits (spike-and-dome pattern)", "Subendothelial immune deposits", "Thickened GBM with splitting (tram-track pattern)"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The slit diaphragm between podocyte foot processes contains the proteins ___ and podocin — mutations in either cause congenital nephrotic syndrome.",
+          "correctAnswer": "Nephrin",
+          "distractors": ["Laminin", "Collagen IV", "Fibronectin"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_063",
+      "subDeckId": "histology",
+      "correctAnswer": "A band contains thick filaments (myosin); I band contains thin filaments only (actin); H zone contains thick filaments only (no actin overlap); Z disc is the sarcomere boundary; M line is the central myosin anchor",
+      "acceptableAlternatives": ["A band myosin, I band actin only, H zone myosin only, Z disc boundary, M line center"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "Name the five histological landmarks of the sarcomere and what filament types each region contains.",
+      "explanation": "The sarcomere is the basic contractile unit, bounded by two Z discs. Key bands: A band (Anisotropic — dark) = entire thick filament (myosin) region, including overlap with thin filaments; I band (Isotropic — light) = thin filaments (actin) only, with no thick filament overlap; H zone = center of A band containing thick filaments with NO actin overlap (disappears with contraction); M line = central transverse line within the H zone where myosin filaments are anchored by myomesin; Z disc (Z line) = boundary of each sarcomere, anchors actin filaments via alpha-actinin. During contraction: I band and H zone shorten; A band stays constant.",
+      "visualDescription": "Pixel art sarcomere labeled diagram: Z discs at each end, A band (dark, wide center), I bands (light, flanking), H zone (lighter center of A band), M line (thin dark center of H zone), myosin (thick) and actin (thin) filaments drawn",
+      "sourceName": "Wikipedia — Sarcomere; StatPearls — Histology Muscle; NCBI Bookshelf — Basic Neurochemistry Muscle Fibers",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sarcomere",
+      "volatile": false,
+      "distractors": ["A band = thin only; I band = thick only", "H zone = thin + thick overlap; A band = thick only", "Z disc is in the middle of the sarcomere; M line is at the boundary", "I band remains constant during contraction; A band shortens"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "During muscle contraction, which sarcomere bands SHORTEN and which remains CONSTANT in length?",
+          "correctAnswer": "I band and H zone shorten; A band stays constant (thick filaments don't change length)",
+          "distractors": ["A band shortens; I band stays constant", "All bands shorten proportionally", "H zone stays constant; I band and A band both shorten"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The H zone is the region in the center of the A band that contains ___ filaments only, with no overlapping actin.",
+          "correctAnswer": "Thick (myosin)",
+          "distractors": ["Thin (actin)", "Both thick and thin", "Elastic (titin)"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_064",
+      "subDeckId": "histology",
+      "correctAnswer": "Thymic cortex (positive selection — MHC recognition); thymic medulla (negative selection — self-antigen tolerance, Hassall's corpuscles)",
+      "acceptableAlternatives": ["cortex = positive selection; medulla = negative selection", "cortex positive, medulla negative"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_regions",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "T cell education in the thymus occurs in two distinct locations. Which compartment performs positive selection (MHC recognition) and which performs negative selection (self-tolerance)?",
+      "explanation": "Positive selection occurs in the thymic cortex, where cortical epithelial cells present peptide-MHC complexes to developing T cells (thymocytes). Only T cells whose TCR recognizes self-MHC with appropriate (not too high or too low) affinity survive. Negative selection occurs in the thymic medulla, where medullary epithelial cells (expressing tissue-specific antigens via the AIRE gene) and dendritic cells present self-antigens. T cells with too-high affinity for self undergo apoptosis (clonal deletion). Hassall's corpuscles are concentric whorls of eosinophilic medullary epithelial cells, acting as APC-instructive structures for regulatory T cell generation.",
+      "visualDescription": "Pixel art thymus cross-section: dark cortex with small thymocytes, lighter medulla with larger cells, Hassall's corpuscle shown as concentric whorl in medulla, arrows: 'positive selection' in cortex, 'negative selection' in medulla",
+      "sourceName": "Wikipedia — Thymus; StatPearls — Anatomy Head and Neck Thymus; PMC — T Cell Selection in the Thymus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Thymus",
+      "volatile": false,
+      "distractors": ["Cortex = negative selection; medulla = positive selection", "Both positive and negative selection occur only in the medulla", "Positive selection occurs in lymph nodes; negative in the thymus", "Hassall's corpuscles are found in the cortex and mediate positive selection"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hassall's corpuscles are found in the thymic medulla. What functional role do they play in T cell education?",
+          "correctAnswer": "They instruct dendritic cells to induce regulatory T cell (CD4+CD25+ Treg) development",
+          "distractors": ["They are the site of positive selection for MHC recognition", "They are dead cell debris with no functional role", "They produce thymosin hormone for T cell maturation"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The AIRE gene, expressed by medullary thymic epithelial cells, drives ___ gene expression of peripheral tissue antigens to enable negative selection.",
+          "correctAnswer": "Promiscuous",
+          "distractors": ["Constitutive", "Inducible", "Suppressive"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_065",
+      "subDeckId": "histology",
+      "correctAnswer": "Germinal center: somatic hypermutation (dark zone) and antigen-driven selection / class switch recombination (light zone)",
+      "acceptableAlternatives": ["somatic hypermutation in dark zone, selection and class switching in light zone", "germinal centers = somatic hypermutation and class switching"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Within the secondary lymphoid follicle, the germinal center has a dark zone and a light zone. What process occurs in each?",
+      "explanation": "Germinal centers form within lymphoid follicles after B cell activation. The dark zone (dense B cells, proximal to T cell zone) is the site of rapid B cell proliferation and somatic hypermutation — AID introduces random point mutations into immunoglobulin variable regions. The light zone (sparse B cells, follicular dendritic cells) is the site of antigen-driven affinity selection — only B cells with improved antigen affinity can acquire antigen from FDCs and present to T follicular helper cells to receive survival signals. Class switch recombination is largely a pre-GC event. Affinity maturation cycles B cells between dark and light zones, progressively improving antibody affinity.",
+      "visualDescription": "Pixel art lymphoid follicle: pale germinal center divided into dark zone (dense B cells, mutation arrows) and light zone (sparse B cells, FDCs shown as irregular cells, selection arrows), mantle zone surrounding",
+      "sourceName": "Wikipedia — Germinal Center; PMC — GERMINAL CENTER B CELL DYNAMICS",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Germinal_center",
+      "volatile": false,
+      "distractors": ["Dark zone = antigen selection; light zone = mutation", "Both zones perform somatic hypermutation simultaneously", "The light zone is where T cell help occurs; no B cell function", "Class switch recombination only occurs in the dark zone"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Somatic hypermutation in the germinal center dark zone is mediated by which enzyme?",
+          "correctAnswer": "AID (activation-induced cytidine deaminase)",
+          "distractors": ["RAG1/RAG2", "Terminal deoxynucleotidyl transferase (TdT)", "DNA polymerase beta"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "B cells cycle between the dark zone (mutation) and light zone (selection) in the germinal center — this iterative process is called ___ maturation.",
+          "correctAnswer": "Affinity",
+          "distractors": ["Clonal", "Isotype", "Somatic"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_066",
+      "subDeckId": "histology",
+      "correctAnswer": "Multinucleated (6–50 nuclei), ruffled border adjacent to bone, derived from monocyte/macrophage lineage, activated by RANKL",
+      "acceptableAlternatives": ["multinucleated, ruffled border, RANKL activation, monocyte lineage"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_cells",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Osteoclasts are the bone-resorbing cells. What are their key histological features and what signaling molecule activates them?",
+      "explanation": "Osteoclasts are large multinucleated cells (typically 6–50 nuclei) derived from monocyte/macrophage precursors (hematopoietic lineage, unlike osteoblasts which are mesenchymal). Their unique histological feature is the ruffled border — deeply interfolded plasma membrane projections that increase surface area for acid secretion (HCl dissolves mineral) and lysosomal enzymes (cathepsins degrade collagen). Osteoblasts express RANKL (receptor activator of nuclear factor-κB ligand), which binds RANK on osteoclast precursors to drive osteoclastogenesis. OPG (osteoprotegerin), also secreted by osteoblasts, is a decoy receptor that inhibits RANKL-RANK interaction, thus inhibiting bone resorption.",
+      "visualDescription": "Pixel art bone surface: large multinucleated osteoclast with ruffled border pressed against bone matrix, Howship's lacuna resorption pit visible, RANKL-RANK-OPG pathway diagram inset",
+      "sourceName": "StatPearls — Histology Osteoclasts; PMC — Functions of RANKL/RANK/OPG in Bone Modeling",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554489/",
+      "volatile": false,
+      "distractors": ["Mononucleated, smooth border, derived from osteoblast precursors, activated by OPG", "Binucleated, flat border, derived from fibroblasts, activated by PTH directly", "Multinucleated, derived from T cell lineage, activated by RANKL", "Uninucleated, activated by OPG which directly stimulates bone resorption"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Denosumab (a monoclonal antibody used in osteoporosis) inhibits bone resorption by blocking which molecule?",
+          "correctAnswer": "RANKL",
+          "distractors": ["OPG", "RANK", "PTH receptor"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "OPG (osteoprotegerin) is a ___ receptor for RANKL — it binds RANKL and prevents it from activating RANK on osteoclast precursors.",
+          "correctAnswer": "Decoy",
+          "distractors": ["Co-receptor", "Agonist", "Allosteric"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_067",
+      "subDeckId": "histology",
+      "correctAnswer": "Osteocyte in lacunae communicating via canaliculi — mechanosensory function",
+      "acceptableAlternatives": ["osteocytes in lacunae, connected by canaliculi, mechanosensors"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_cells",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The most abundant bone cell type lives embedded in tiny spaces within the bone matrix and extends long processes through tiny canals to communicate with neighboring cells. What cell is this, and what is its primary function?",
+      "explanation": "Osteocytes are terminally differentiated osteoblasts that become embedded in the bone matrix within lacunae during bone formation. They extend dendritic processes through narrow channels called canaliculi, forming a syncytium of gap junctions with neighboring osteocytes and surface osteoblasts — creating a 'bone-spanning communication network.' Their primary function is mechanosensation: they detect mechanical loading/strain and translate it into biochemical signals that direct bone remodeling. They secrete sclerostin (inhibits bone formation when unloaded) and regulate phosphate metabolism via FGF23.",
+      "visualDescription": "Pixel art bone cross-section: osteocyte in lacuna (dark oval space) with long processes extending through canaliculi (tiny channels) connecting to adjacent osteocytes, bone lamellae surrounding, load-sensing icon above",
+      "sourceName": "StatPearls — Histology Osteoclasts (comparison); PMC — Functions of RANKL/RANK/OPG",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554489/",
+      "volatile": false,
+      "distractors": ["Osteoblast on bone surface in Howship's lacunae — bone formation", "Osteoclast in lacunae — bone resorption", "Periosteal cell in Haversian canals — vascular supply", "Chondrocyte in lacunae — cartilage synthesis"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Osteocytes secrete sclerostin, which inhibits Wnt signaling in osteoblasts and thereby inhibits bone formation. When is sclerostin upregulated?",
+          "correctAnswer": "During unloading/immobilization (signals reduced mechanical strain)",
+          "distractors": ["During mechanical loading", "During fracture repair", "During estrogen deficiency"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Osteocyte processes extend through ___ in the bone matrix, forming a communication network via gap junctions.",
+          "correctAnswer": "Canaliculi",
+          "distractors": ["Haversian canals", "Volkmann canals", "Lacunae"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_068",
+      "subDeckId": "histology",
+      "correctAnswer": "Respiratory membrane: alveolar surfactant → type I pneumocyte → fused basement membranes → capillary endothelium (0.1–1.5 μm total)",
+      "acceptableAlternatives": ["type I pneumocyte, basement membrane, endothelium", "alveolar epithelium, shared BM, capillary endothelium"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The respiratory membrane (blood-gas barrier) in the lung is extremely thin to allow rapid gas diffusion. List its layers from the alveolar air side to the capillary blood side.",
+      "explanation": "The respiratory membrane layers (alveolar air → capillary blood): (1) Alveolar surfactant layer (type II pneumocytes secrete surfactant — reduces surface tension); (2) Type I pneumocyte (flat squamous epithelium, makes up 90–95% of alveolar surface area, very thin); (3) Fused basement membranes of type I pneumocyte + capillary endothelium (in thin areas, the basement membranes fuse — total barrier 0.1–1.5 μm); (4) Capillary endothelium (continuous, not fenestrated). Type II pneumocytes (5% of alveolar surface area) produce surfactant, repair alveoli, and are the stem cells after injury.",
+      "visualDescription": "Pixel art alveolar wall cross-section: alveolar air space top, thin type I pneumocyte, fused basement membranes (labeled BM), capillary endothelium, blood with red cells, total 0.1–1.5 μm thickness shown, type II cell inset secreting surfactant",
+      "sourceName": "StatPearls — Histology Lung; Histology Alveolar Cells",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK534789/",
+      "volatile": false,
+      "distractors": ["Type II pneumocyte → thick basement membrane → fenestrated endothelium → interstitium", "Alveolar macrophage → alveolar wall → capillary lumen", "Ciliated epithelium → goblet cells → endothelium", "Interstitium → type I pneumocyte → endothelium → capillary lumen"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Type II pneumocytes serve as progenitors for alveolar repair and secrete surfactant. In respiratory distress syndrome of prematurity, which component of the respiratory membrane is deficient?",
+          "correctAnswer": "Surfactant (insufficient type II pneumocyte maturity)",
+          "distractors": ["Basement membrane (absent collagen IV)", "Type I pneumocytes (absent from preterm lung)", "Capillary endothelium (immature)"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Type I pneumocytes make up approximately ___ % of the alveolar surface area and are specialized for gas exchange due to their extremely thin, flat morphology.",
+          "correctAnswer": "90–95",
+          "distractors": ["5–10", "50–60", "30–40"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_069",
+      "subDeckId": "histology",
+      "correctAnswer": "Cirrhosis — bridging fibrosis connecting portal tracts and central veins with regenerative nodules surrounded by fibrous bands",
+      "acceptableAlternatives": ["bridging fibrosis and regenerative nodules = cirrhosis", "cirrhosis defined by regenerative nodules and fibrous bands"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The histological definition of cirrhosis requires two features: bands of fibrous tissue connecting portal tracts and/or central veins, and what other feature?",
+      "explanation": "Cirrhosis is defined histologically as diffuse bridging fibrosis PLUS the formation of regenerative nodules — islands of regenerating hepatocytes surrounded by fibrous bands. Bridging fibrosis is portal-to-portal or portal-to-central fibrous connections. Regenerative nodules represent the liver's attempt to replace lost hepatocytes. The fibrous bands distort hepatic architecture, causing portal hypertension, loss of hepatocyte polarity, and impaired bile flow. Histological staging uses the Metavir or Ishak scoring systems. Masson's trichrome stain (collagen = blue/green) or Sirius Red best visualizes fibrosis.",
+      "visualDescription": "Pixel art liver H&E: fibrous bands (pale blue Masson-stained) connecting portal tracts across the lobule, rounded regenerative nodules of hepatocytes encircled by fibrous septa, loss of normal acinar architecture",
+      "sourceName": "PMC — Histopathological Evaluation of Liver Fibrosis and Cirrhosis Regression; PMC — Liver Fibrosis Leading to Cirrhosis",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5760001/",
+      "volatile": false,
+      "distractors": ["Portal-only fibrosis and lobular inflammation", "Centrilobular necrosis without fibrosis", "Perisinusoidal collagen without regeneration", "Bile duct proliferation only"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In advanced cirrhosis, which histochemical stain is most commonly used to highlight fibrous bands (collagen appearing blue/green)?",
+          "correctAnswer": "Masson's trichrome",
+          "distractors": ["H&E (hematoxylin and eosin)", "PAS (periodic acid-Schiff)", "Silver stain (reticulin)"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Cirrhosis is histologically defined by regenerative nodules surrounded by ___ fibrous tissue connecting portal tracts and central veins.",
+          "correctAnswer": "Bridging",
+          "distractors": ["Perisinusoidal", "Periportal", "Lobular"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_070",
+      "subDeckId": "histology",
+      "correctAnswer": "Emphysema — permanent abnormal enlargement of airspaces distal to the terminal bronchiole with destruction of alveolar walls, without fibrosis",
+      "acceptableAlternatives": ["emphysema definition: permanent airspace enlargement, alveolar wall destruction, no fibrosis"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The histological definition of emphysema includes permanent enlargement of which airspaces AND what key negative feature (absent on microscopy)?",
+      "explanation": "Emphysema is defined as abnormal, permanent enlargement of air spaces distal to the terminal bronchiole with destruction of their walls, WITHOUT FIBROSIS. The 'without fibrosis' is key — distinguishing emphysema from conditions like usual interstitial pneumonia (UIP/IPF) which has fibrosis. The mechanism involves protease-antiprotease imbalance: elastase destroys elastin → loss of elastic recoil → air trapping and bullae. Centrilobular (centriacinar) emphysema affects the proximal acinus (most common, smoking). Panacinar emphysema (alpha-1 antitrypsin deficiency) affects the whole acinus. Loss of surface area impairs gas exchange.",
+      "visualDescription": "Pixel art lung histology: enlarged, irregular airspaces (bullae), thinned and ruptured alveolar walls shown as broken lines, no fibrosis present (contrast shown with UIP panel with fibrosis), residual alveolar wall fragments",
+      "sourceName": "StatPearls — Emphysema; Wikipedia — Emphysema",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482217/",
+      "volatile": false,
+      "distractors": ["Abnormal airspace enlargement WITH fibrosis (UIP pattern)", "Airspace collapse without destruction (atelectasis)", "Airspace filling with exudate (pneumonia)", "Normal airspace size with wall thickening only"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Panacinar emphysema uniformly destroys all parts of the acinus. Which enzyme deficiency causes this pattern?",
+          "correctAnswer": "Alpha-1 antitrypsin deficiency (AAT deficiency)",
+          "distractors": ["Elastase deficiency", "Superoxide dismutase deficiency", "Surfactant protein B deficiency"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Centrilobular emphysema, associated with smoking, primarily affects the ___ acinus (proximal to the terminal bronchiole).",
+          "correctAnswer": "Proximal",
+          "distractors": ["Distal", "Entire (pan)", "Subpleural"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_071",
+      "subDeckId": "histology",
+      "correctAnswer": "H&E: hematoxylin stains nuclei blue/violet, eosin stains cytoplasm and extracellular matrix pink/red",
+      "acceptableAlternatives": ["hematoxylin blue nuclei, eosin pink cytoplasm", "H&E routine stain"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_techniques",
+      "difficulty": 1,
+      "funScore": 7,
+      "quizQuestion": "H&E is the standard histological stain used in pathology. What color does hematoxylin stain nuclei, and what does eosin stain and what color?",
+      "explanation": "H&E (hematoxylin and eosin) is the most widely used histological stain. Hematoxylin (a basic dye) stains nuclei and other basophilic structures (ribosomes, rough ER) blue/violet — 'basophilic.' Eosin (an acidic dye) stains cytoplasm, extracellular matrix, red blood cells, and eosinophil granules pink/red — 'eosinophilic.' The reciprocal relationship (basic structures attract basic dye, acidic structures attract acidic dye) reflects the underlying chemistry. Any structure described as 'basophilic' is stained by hematoxylin (e.g., plasma cells with lots of rough ER, bone matrix); 'eosinophilic' structures stain with eosin (e.g., Mallory hyaline, Russell bodies).",
+      "visualDescription": "Pixel art H&E microscopy: cell nuclei in purple-blue, cytoplasm in pink, red blood cells in bright pink-red, collagen in pale pink, goblet cell mucus (clear/unstained), labeled with dye names",
+      "sourceName": "StatPearls — Histology Staining; PMC — Histological Stains A Literature Review",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557663/",
+      "volatile": false,
+      "distractors": ["Hematoxylin stains cytoplasm pink; eosin stains nuclei blue", "Both hematoxylin and eosin stain nuclei — eosin redder, hematoxylin bluer", "Hematoxylin stains collagen; eosin stains muscle", "H&E stains carbohydrates; PAS stains nuclei"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Plasma cells, which have abundant rough ER, appear deeply basophilic (blue) on H&E. Why?",
+          "correctAnswer": "Ribosomes and rough ER are rich in RNA (polyanionic) — attracting the cationic hematoxylin dye",
+          "distractors": ["Plasma cells produce acid that attracts hematoxylin", "Plasma cell cytoplasm contains hematoxylin precursors", "The immunoglobulin in plasma cells binds hematoxylin directly"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "On H&E, eosinophil granules and muscle cytoplasm appear bright ___ due to their protein-rich content attracting the acidic eosin dye.",
+          "correctAnswer": "Pink/red (eosinophilic)",
+          "distractors": ["Blue/violet", "Clear (unstained)", "Green"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_072",
+      "subDeckId": "histology",
+      "correctAnswer": "PAS stain: periodic acid-Schiff — stains glycogen, glycoproteins, and basement membranes magenta/pink; used to detect thickened GBM in diabetes and fungal cell walls",
+      "acceptableAlternatives": ["PAS stains glycogen and basement membranes pink/magenta", "PAS periodic acid-Schiff glycogen fungi BM"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_techniques",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "The PAS stain (periodic acid-Schiff) oxidizes polysaccharides to form aldehydes that react with Schiff reagent, producing a magenta color. What are its key clinical applications in pathology?",
+      "explanation": "PAS stain detects structures rich in glycogen, polysaccharides, and glycoproteins — all of which are oxidized by periodic acid to produce aldehydes that react with Schiff reagent turning magenta/bright pink. Key uses: (1) Detection of glycogen in hepatocytes (glycogen storage diseases — PAS-positive, diastase-labile) and rhabdomyosarcoma; (2) Basement membrane visualization (PAS-positive due to glycoproteins — thickened in diabetic nephropathy); (3) Fungal cell walls (PAS-positive — Histoplasma, Candida, Aspergillus, Cryptococcus — the mucoid capsule of Cryptococcus is PAS-negative but the wall is positive); (4) GBM thickening in nephrotic syndromes. PAS is less sensitive than silver stain for fungal organisms.",
+      "visualDescription": "Pixel art PAS-stained section: kidney glomerulus with thickened magenta basement membrane, hepatocyte glycogen granules in magenta, fungal hyphae outlined in magenta, Schiff reagent bottle icon",
+      "sourceName": "StatPearls — Histology Staining; PMC — Role of Special Stains in Diagnostic Liver Pathology",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557663/",
+      "volatile": false,
+      "distractors": ["PAS stains collagen blue; used for fibrosis assessment", "PAS stains nucleic acids; used for cell counting", "PAS stains lipids; used for fat quantification in NAFLD", "PAS stains reticulin fibers; used for liver architecture assessment"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In diabetic nephropathy, the glomerular basement membrane thickens. Which special stain best highlights this change by staining the membrane magenta?",
+          "correctAnswer": "PAS (periodic acid-Schiff)",
+          "distractors": ["Masson's trichrome", "Silver stain (reticulin)", "Oil Red O"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "PAS-positive, diastase-labile material in hepatocytes indicates ___, which is digested by diastase (amylase) enzyme treatment.",
+          "correctAnswer": "Glycogen",
+          "distractors": ["Mucin", "Collagen", "Lipofuscin"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_073",
+      "subDeckId": "histology",
+      "correctAnswer": "Masson's trichrome: collagen and fibrosis = blue/green; muscle = red; nuclei = dark brown/black",
+      "acceptableAlternatives": ["Masson trichrome collagen blue, muscle red", "trichrome: blue collagen, red muscle"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_techniques",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Masson's trichrome stain uses three dyes to distinguish connective tissue from muscle and cells. What are the signature colors for collagen/fibrosis and for muscle?",
+      "explanation": "Masson's trichrome is a three-color stain: collagen and bone appear blue or green (depending on the recipe); muscle, keratin, and red blood cells appear red; and nuclei appear dark brown to black. It is used for: (1) Liver fibrosis staging — the collagen bands of bridging fibrosis and cirrhosis stain blue distinctly against red hepatocyte cytoplasm; (2) Myocardial infarction — infarcted myocardium replaced by blue collagen scar vs. viable red myocytes; (3) Renal pathology — mesangial expansion and glomerular fibrosis; (4) Muscle disorders — distinguishing fibrosis from muscle atrophy. It is the most important special stain for fibrosis assessment after H&E.",
+      "visualDescription": "Pixel art Masson-stained liver section: blue collagen bands crisscrossing liver, red hepatocyte cytoplasm, dark nuclei; MI heart section inset showing blue scar vs. red viable myocardium",
+      "sourceName": "Wikipedia — Masson's Trichrome Stain; PMC — Role of Special Stains in Diagnostic Liver Pathology",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Masson%27s_trichrome_stain",
+      "volatile": false,
+      "distractors": ["Collagen = red; muscle = blue in Masson's trichrome", "Collagen = black; nuclei = blue in Masson's trichrome", "Muscle = green; collagen = red in Masson's trichrome", "Collagen = magenta; muscle = blue in Masson's trichrome"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In a myocardial infarction section stained with Masson's trichrome, a blue patch in the left ventricle wall indicates what?",
+          "correctAnswer": "Fibrous scar (collagen replacement of dead myocardium)",
+          "distractors": ["Viable myocardium", "Hemorrhage", "Inflammatory infiltrate"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In Masson's trichrome, muscle appears ___ while collagen appears blue or green.",
+          "correctAnswer": "Red",
+          "distractors": ["Blue", "Black", "Yellow"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_074",
+      "subDeckId": "histology",
+      "correctAnswer": "Silver stain (reticulin stain): highlights reticulin (type III collagen) fibers in black; used for liver architecture assessment and bone marrow biopsy",
+      "acceptableAlternatives": ["silver stain reticulin type III collagen black liver bone marrow", "reticulin stain silver type III collagen"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_techniques",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The reticulin stain uses silver impregnation to highlight which collagen type in black, and what is its primary use in hepatic pathology?",
+      "explanation": "The reticulin (silver) stain uses silver impregnation to stain reticulin fibers — type III collagen — black against a pale background. In liver pathology, it highlights the normal reticulin framework of hepatic plates (normally one cell thick). In cirrhosis, the reticulin framework is disrupted (thickened, disorganized) within regenerative nodules. Loss of reticulin framework occurs in hepatocellular carcinoma (HCC), where the normal one-cell-thick plate architecture is replaced by thick plates (>3 cells). In bone marrow biopsies, reticulin staining grades fibrosis (MF-0 to MF-3 scale) for myelofibrosis diagnosis.",
+      "visualDescription": "Pixel art silver-stained liver section: thin black reticulin fibers outlining normal hepatic plates (one cell thick), comparison panel showing disorganized thick plates in HCC, bone marrow section with MF grading scale",
+      "sourceName": "PMC — Role of Special Stains in Diagnostic Liver Pathology; StatPearls — Histology Staining",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6448668/",
+      "volatile": false,
+      "distractors": ["Silver stain highlights type I collagen in blue; used for fibrosis only", "Silver stain highlights DNA/RNA in black; used for nuclear counting", "Silver stain highlights type IV collagen in GBM; used for glomerular diseases", "Silver stain highlights amyloid; used for systemic amyloidosis"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In hepatocellular carcinoma, the reticulin stain shows disrupted architecture with abnormally thick plates. What is the normal hepatic plate thickness seen on reticulin stain?",
+          "correctAnswer": "One hepatocyte thick (1-cell-thick plates)",
+          "distractors": ["Two cells thick", "Three cells thick", "There is no normal reticulin pattern in the liver"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In bone marrow biopsy, the reticulin stain grades ___ fibrosis on a scale of MF-0 to MF-3.",
+          "correctAnswer": "Myelofibrosis (bone marrow)",
+          "distractors": ["Hepatic", "Renal", "Pulmonary"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_075",
+      "subDeckId": "histology",
+      "correctAnswer": "Granulation tissue: fibroblasts + new thin-walled capillaries (angiogenesis) + macrophages in loose ECM — replaces the provisional fibrin clot during wound healing",
+      "acceptableAlternatives": ["granulation tissue = fibroblasts, new capillaries, macrophages", "fibroblasts and angiogenesis in granulation tissue"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "During the proliferative phase of wound healing, what is the composition of granulation tissue histologically?",
+      "explanation": "Granulation tissue forms during the proliferative phase (days 3–14) of wound healing, replacing the provisional fibrin clot. Histologically it contains: (1) Proliferating fibroblasts (main ECM-producing cells, deposit type III collagen initially); (2) New thin-walled capillaries (angiogenesis — driven by VEGF, FGF, PDGF); (3) Macrophages; (4) Randomly organized type III collagen (replaced by type I in remodeling). Clinically, granulation tissue appears moist, beefy-red, and granular — the 'grains' correspond to new capillary loops. Its presence indicates a healing wound. It is distinguished from unwounded dermis by its high vascularity and cellular density.",
+      "visualDescription": "Pixel art wound cross-section day 5: surface re-epithelializing, below showing beefy-red granulation tissue with many fibroblast spindle cells, thin-walled capillary loops (angiogenesis), scattered macrophages, loose collagen III scaffold",
+      "sourceName": "StatPearls — Physiology Granulation Tissue; Wikipedia — Granulation Tissue",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554402/",
+      "volatile": false,
+      "distractors": ["Dense type I collagen + myofibroblasts only (scar tissue)", "Neutrophils + fibrin clot (inflammatory phase)", "Squamous epithelium + basement membrane (epithelial phase)", "Chondrocytes + hyaline cartilage (bone repair)"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In granulation tissue, type III collagen is initially deposited by fibroblasts. During remodeling (weeks to months), it is progressively replaced by which collagen type to form a mature scar?",
+          "correctAnswer": "Type I collagen",
+          "distractors": ["Type II collagen", "Type IV collagen", "Type VII collagen"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Angiogenesis in granulation tissue is primarily driven by ___ (vascular endothelial growth factor).",
+          "correctAnswer": "VEGF",
+          "distractors": ["TGF-beta", "IL-6", "TNF-alpha"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_076",
+      "subDeckId": "histology",
+      "correctAnswer": "Keloid: extends beyond wound margins, type I collagen excess (20-fold), does not regress; hypertrophic scar: stays within wound margins, type I/III collagen excess (3-fold), may regress",
+      "acceptableAlternatives": ["keloid beyond wound margins 20x collagen; hypertrophic within margins 3x collagen may regress"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "What is the histological difference between a keloid scar and a hypertrophic scar in wound healing?",
+      "explanation": "Both keloid and hypertrophic scars result from TGF-β dysregulation causing excess collagen production. Key differences: (1) Extent: hypertrophic scars stay WITHIN wound margins; keloids EXTEND BEYOND wound margins into surrounding normal tissue. (2) Collagen excess: hypertrophic scars show a 3-fold increase in collagen; keloids show a 20-fold increase. (3) Natural history: hypertrophic scars may regress over years; keloids do NOT regress and often recur after excision. (4) Histology: keloids have thick, disorganized, glassy collagen bundles (hyalinized collagen); hypertrophic scars have nodular fascicles of collagen with myofibroblasts. (5) Risk: keloids more common in darker-pigmented skin.",
+      "visualDescription": "Pixel art wound cross-section split: left hypertrophic scar stays within dotted wound margin lines with moderate collagen; right keloid extends far beyond wound margins as raised nodule, thick glassy collagen bundles shown",
+      "sourceName": "StatPearls — Hypertrophic Scarring Keloids; PMC — Extracellular Matrix Reorganization During Wound Healing",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537058/",
+      "volatile": false,
+      "distractors": ["Keloids stay within wound margins; hypertrophic scars extend beyond", "Both extend beyond wound margins — they are histologically identical", "Keloids resolve spontaneously; hypertrophic scars are permanent", "Hypertrophic scars have 20-fold collagen increase; keloids only 3-fold"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "TGF-β dysregulation is implicated in keloid formation. Which TGF-β isoform ratio promotes abnormal scar formation (keloid/hypertrophic)?",
+          "correctAnswer": "Overexpression of TGF-β1 and TGF-β2 with decreased TGF-β3 (anti-fibrotic isoform)",
+          "distractors": ["Overexpression of TGF-β3 with decreased TGF-β1", "Equal upregulation of all TGF-β isoforms", "Absent TGF-β in keloid tissue"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Keloids contain approximately a ___ increase in collagen production compared to normal healing, while hypertrophic scars show only a 3-fold increase.",
+          "correctAnswer": "20-fold",
+          "distractors": ["3-fold", "50-fold", "10-fold"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_077",
+      "subDeckId": "histology",
+      "correctAnswer": "Membranous nephropathy: subepithelial granular IgG deposits, spike-and-dome pattern on EM, GBM thickening",
+      "acceptableAlternatives": ["membranous nephropathy subepithelial deposits spike and dome", "membranous GN GBM thickening granular IgG"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "The most common cause of primary nephrotic syndrome in White adults shows subepithelial electron-dense deposits and a 'spike-and-dome' appearance on EM. What is this glomerulonephritis?",
+      "explanation": "Membranous nephropathy (MN) is the most common cause of primary nephrotic syndrome in White adults. Pathogenesis involves subepithelial deposition of immune complexes (IgG + anti-PLA2R autoantibodies in 70–80% of primary cases) between the GBM and podocyte foot processes. Light microscopy: GBM thickening. Immunofluorescence: granular IgG deposits along the capillary wall ('string of beads'). Electron microscopy: subepithelial electron-dense deposits with GBM material growing up between them as 'spikes.' The spikes are GBM material (new basement membrane) growing up between deposits, creating the spike-and-dome pattern.",
+      "visualDescription": "Pixel art glomerular capillary wall EM: normal endothelium, thickened GBM with spike projections growing upward between subepithelial deposits (labeled as dome-shaped deposits), podocyte foot processes above, IgG antibody icons near deposits",
+      "sourceName": "StatPearls — Membranous Nephropathy; PMC — Immunological Pathogenesis of Membranous Nephropathy",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK559169/",
+      "volatile": false,
+      "distractors": ["IgA nephropathy: mesangial IgA deposits", "Minimal change disease: normal LM, foot process effacement on EM", "Focal segmental glomerulosclerosis: segmental sclerosis", "Poststreptococcal GN: subendothelial 'humps' on EM"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Anti-PLA2R (phospholipase A2 receptor) antibodies are detected in 70–80% of which glomerular disease?",
+          "correctAnswer": "Primary membranous nephropathy",
+          "distractors": ["IgA nephropathy", "Minimal change disease", "Focal segmental glomerulosclerosis"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In membranous nephropathy, immunofluorescence shows ___ deposits of IgG along the capillary wall (subepithelial pattern).",
+          "correctAnswer": "Granular",
+          "distractors": ["Linear", "Mesangial", "Subendothelial"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_078",
+      "subDeckId": "histology",
+      "correctAnswer": "IgA nephropathy (Berger disease): mesangial IgA deposits → hematuria within 24–48 hours of mucosal infection",
+      "acceptableAlternatives": ["IgA nephropathy", "Berger's disease", "mesangial IgA deposition"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 9,
+      "quizQuestion": "The most common glomerulonephritis worldwide shows mesangial IgA deposits on immunofluorescence and causes episodic gross hematuria DURING or within 1–2 days of a mucosal (upper respiratory or GI) infection. What is the diagnosis?",
+      "explanation": "IgA nephropathy (Berger's disease) is the most common GN worldwide. The pathogenesis involves elevated circulating galactose-deficient IgA1 (from mucosal plasma cells) that deposits in the mesangium and activates complement and mesangial cells. Hematuria occurs during/within 48 hours of a mucosal infection ('synpharyngitic hematuria') — distinguishing it from post-streptococcal GN (hematuria 1–3 weeks after pharyngitis). Immunofluorescence: dominant mesangial IgA staining. EM: mesangial electron-dense deposits. Light microscopy: mesangial proliferation. Course is variable: some progress to ESRD, some remit.",
+      "visualDescription": "Pixel art mesangium IF staining: mesangial cells highlighted with IgA antibody markers in green (IF stain), glomerular capillary loops normal surrounding, upper respiratory infection → hematuria timeline diagram",
+      "sourceName": "StatPearls — Glomerulonephritis; PMC — Glomerulonephritis Immunopathogenesis",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK560644/",
+      "volatile": false,
+      "distractors": ["Post-streptococcal GN: hematuria 1–3 weeks after pharyngitis, subepithelial humps", "Membranous nephropathy: proteinuria, subepithelial IgG deposits", "Lupus nephritis: full-house IF pattern", "Anti-GBM disease: linear IgG deposits"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "IgA nephropathy causes 'synpharyngitic' hematuria — within 24–48 hours of a URI. Post-streptococcal GN causes hematuria how long after pharyngitis?",
+          "correctAnswer": "1–3 weeks after pharyngitis (latent period)",
+          "distractors": ["Within 24 hours", "4–6 weeks after", "Simultaneous with pharyngitis"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "IgA nephropathy is diagnosed by immunofluorescence showing ___ dominant deposits in the mesangium.",
+          "correctAnswer": "IgA",
+          "distractors": ["IgG", "IgM", "C3"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_079",
+      "subDeckId": "histology",
+      "correctAnswer": "Crescentic glomerulonephritis (rapidly progressive GN): fibrocellular crescents of parietal cells + macrophages filling Bowman's space, obliterating capillary tuft",
+      "acceptableAlternatives": ["crescents in Bowman's space", "RPGN crescentic GN", "fibrocellular crescents"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "The most severe histological pattern of glomerulonephritis shows crescents filling Bowman's space, causing rapid deterioration to renal failure over weeks. What is this pattern called?",
+      "explanation": "Crescentic glomerulonephritis (rapidly progressive GN, RPGN) is defined by crescents in >50% of glomeruli on biopsy. Crescents are composed of proliferating parietal epithelial cells of Bowman's capsule and infiltrating monocytes/macrophages, forming in response to fibrin leakage through the damaged GBM into Bowman's space. Three immunopathological types: Type I = linear anti-GBM IgG (Goodpasture syndrome); Type II = immune complex GN (granular IF — lupus, IgA nephropathy, post-infectious); Type III = pauci-immune (no IF deposits — ANCA-associated vasculitis). Untreated, RPGN causes dialysis-dependent renal failure within weeks.",
+      "visualDescription": "Pixel art H&E glomerulus: crescent of cells (parietal epithelial cells + macrophages) filling Bowman's space, compressing residual glomerular tuft, fibrin matrix in crescent, Bowman's capsule intact",
+      "sourceName": "StatPearls — Rapidly Progressive Glomerulonephritis; PMC — Glomerulonephritis Immunopathogenesis",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557430/",
+      "volatile": false,
+      "distractors": ["Minimal change disease: foot process effacement, normal LM", "Membranoproliferative GN: tram-track GBM splitting", "Focal segmental glomerulosclerosis: segmental scarring of some glomeruli", "Mesangial proliferative GN: mesangial hypercellularity only"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "ANCA-associated vasculitis (e.g., granulomatosis with polyangiitis) causes pauci-immune RPGN. Why is it called 'pauci-immune'?",
+          "correctAnswer": "Immunofluorescence shows little to no immune deposits ('few' deposits) despite severe glomerular injury",
+          "distractors": ["The immune system is suppressed in these patients", "Only a few patients develop glomerulonephritis", "The crescents contain few cells"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In RPGN Type I (Goodpasture syndrome), immunofluorescence shows ___ anti-GBM IgG deposits along the glomerular basement membrane.",
+          "correctAnswer": "Linear",
+          "distractors": ["Granular", "Mesangial", "Subepithelial"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_080",
+      "subDeckId": "histology",
+      "correctAnswer": "Myomesin anchors thick filaments at the M line; alpha-actinin anchors thin filaments at the Z disc",
+      "acceptableAlternatives": ["M line: myomesin anchors myosin; Z disc: alpha-actinin anchors actin"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "Two scaffolding proteins anchor the contractile filaments at the sarcomere's structural lines. Which protein anchors myosin at the M line, and which anchors actin at the Z disc?",
+      "explanation": "The M line (center of the A band/H zone) contains myomesin, a protein that cross-links adjacent myosin (thick) filaments, providing structural stability to the thick filament lattice. The Z disc (sarcomere boundary) contains alpha-actinin, which cross-links and anchors actin (thin) filaments and titin elastic filaments. Titin (the largest protein in the human body) connects the Z disc to the M line, acting as a molecular spring that provides passive elasticity to the sarcomere. Loss of titin or alpha-actinin mutations cause dilated cardiomyopathy. Loss of dystrophin (links actin to extracellular matrix) causes Duchenne muscular dystrophy.",
+      "visualDescription": "Pixel art sarcomere scaffold: Z disc ends with alpha-actinin shown as cross-linking proteins between actin filaments; M line center with myomesin cross-links between thick myosin filaments; titin elastic spring spanning from Z to M",
+      "sourceName": "PMC — The M-band: The Underestimated Part of the Sarcomere; PMC — The Vertebrate Muscle Z-disc",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7023976/",
+      "volatile": false,
+      "distractors": ["Myomesin at Z disc; alpha-actinin at M line", "Dystrophin at M line; titin at Z disc", "Alpha-actinin at M line; nebulin at Z disc", "Nebulin anchors myosin at Z disc; titin anchors actin at M line"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Mutations in titin (the largest human protein) are the most common genetic cause of which cardiac condition?",
+          "correctAnswer": "Dilated cardiomyopathy",
+          "distractors": ["Hypertrophic cardiomyopathy", "Arrhythmogenic right ventricular cardiomyopathy", "Restrictive cardiomyopathy"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Titin extends from the Z disc to the M line and functions as a molecular ___ that provides passive elasticity to the sarcomere.",
+          "correctAnswer": "Spring",
+          "distractors": ["Motor", "Ratchet", "Scaffold only (non-elastic)"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_081",
+      "subDeckId": "histology",
+      "correctAnswer": "Type II pneumocytes: cuboidal cells with lamellar bodies, secrete surfactant, proliferate to repair alveolar epithelium after injury",
+      "acceptableAlternatives": ["type II pneumocytes secreting surfactant via lamellar bodies, alveolar repair"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_cells",
+      "difficulty": 2,
+      "funScore": 8,
+      "quizQuestion": "Alveolar epithelium contains two cell types. Type I covers most of the surface for gas exchange. What is the function of type II pneumocytes, and what are their distinctive histological features?",
+      "explanation": "Type II pneumocytes (granular pneumocytes) make up only 5–10% of alveolar surface area but are functionally critical: (1) They produce surfactant (phospholipids predominantly DPPC + surfactant proteins SP-A, B, C, D), stored in lamellar bodies (unique electron-dense organelles visible on EM); (2) They are the progenitor/stem cells of the alveolar epithelium — they proliferate and differentiate into type I cells after injury; (3) They regulate fluid balance. Histologically: cuboidal cells at alveolar corners, basophilic cytoplasm due to numerous lamellar bodies. In adult RDS/DAD (diffuse alveolar damage), type II cell hyperplasia is the histological marker of regeneration.",
+      "visualDescription": "Pixel art alveolar wall: flat type I cells covering most of surface, cuboidal type II cell at corner with lamellar bodies (concentric electron-dense granules) visible, surfactant being secreted into alveolar lining fluid",
+      "sourceName": "StatPearls — Histology Alveolar Cells; PMC — Micromechanics of Lung Alveoli",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557542/",
+      "volatile": false,
+      "distractors": ["Type II pneumocytes are flat for gas exchange and do not produce surfactant", "Type II cells produce mucus and are the source of alveolar macrophages", "Type II cells are only found in the conducting airways, not alveoli", "Type I cells produce surfactant; type II cells provide structural support"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In diffuse alveolar damage (DAD) — the histological correlate of ARDS — type II pneumocyte hyperplasia appears in the organizing phase. What does this represent?",
+          "correctAnswer": "Regeneration — type II cells proliferate to replace lost type I cells",
+          "distractors": ["Malignant transformation of alveolar cells", "Inflammatory infiltration of the alveolar wall", "Surfactant overproduction causing alveolar flooding"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The lamellar bodies of type II pneumocytes store ___, which is secreted into the alveolar lining fluid to reduce surface tension.",
+          "correctAnswer": "Surfactant",
+          "distractors": ["Mucin", "Immunoglobulin A", "Lysozyme"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_082",
+      "subDeckId": "histology",
+      "correctAnswer": "Hassall's corpuscles: concentric whorls of eosinophilic type VI epithelial cells in the thymic medulla",
+      "acceptableAlternatives": ["Hassall corpuscles in thymic medulla, concentric whorls of epithelial cells", "eosinophilic concentric whorls in medulla"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "A histological section of the thymus shows the medulla containing striking concentric whorls of eosinophilic, keratinized epithelial cells. What are these structures, and in which thymic compartment are they found?",
+      "explanation": "Hassall's corpuscles (thymic corpuscles) are distinctive structures of the thymic medulla, formed from concentric whorls of type VI thymic medullary epithelial cells that have undergone terminal differentiation with keratin and keratohyalin. They are unique to the thymic medulla (diagnostic marker of thymic medullary tissue on biopsy). Functionally, Hassall's corpuscles secrete TSLP (thymic stromal lymphopoietin), which instructs dendritic cells to promote regulatory T cell (CD4+CD25+ Treg) generation. Their absence is a feature of DiGeorge syndrome (thymic aplasia).",
+      "visualDescription": "Pixel art thymic medulla section: concentric rings of pale pink (eosinophilic) keratinized epithelial cells forming Hassall's corpuscle (onion-like structure), surrounding thymocytes in medulla, darker cortex visible in background",
+      "sourceName": "Wikipedia — Hassall's Corpuscles; StatPearls — Anatomy Head and Neck Thymus",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hassall%27s_corpuscles",
+      "volatile": false,
+      "distractors": ["Keratin pearls in the thymic cortex from squamous metaplasia", "Follicular dendritic cells in the thymic cortex forming germinal centers", "Calcium deposits in the thymus seen in elderly involution", "B cell aggregates in the thymic medulla forming secondary follicles"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In DiGeorge syndrome, thymic aplasia means no thymic medullary tissue is present. What is therefore also absent on thymic biopsy?",
+          "correctAnswer": "Hassall's corpuscles (present only in the thymic medulla)",
+          "distractors": ["Germinal centers", "T cell receptor gene rearrangement", "MHC class II expression"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Hassall's corpuscles instruct ___ cells to generate regulatory T cells (CD4+CD25+ Tregs) within the thymic medulla via TSLP secretion.",
+          "correctAnswer": "Dendritic",
+          "distractors": ["B", "NK", "Mast"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_083",
+      "subDeckId": "histology",
+      "correctAnswer": "Membranoproliferative (mesangiocapillary) GN Type I: tram-track GBM splitting due to subendothelial deposits + mesangial interposition",
+      "acceptableAlternatives": ["MPGN tram-track pattern", "tram-track appearance in MPGN from GBM duplication"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 4,
+      "funScore": 7,
+      "quizQuestion": "A glomerular biopsy shows a 'tram-track' (double-contour) appearance of the glomerular basement membrane on silver stain. What condition causes this, and what is the mechanism?",
+      "explanation": "The tram-track (double contour or double-basement membrane) appearance is characteristic of membranoproliferative glomerulonephritis (MPGN, also called mesangiocapillary GN). The mechanism: subendothelial immune deposits attract mesangial cell migration into the capillary loops (mesangial interposition). The migrating mesangial cells lay down new basement membrane material on the inner aspect of the existing GBM, creating a 'duplicated' or double-contour appearance. Type I MPGN has subendothelial and mesangial deposits (immune complex mediated, e.g., hepatitis C). Type II (dense deposit disease) has intramembranous deposits (complement dysregulation, C3 nephritic factor).",
+      "visualDescription": "Pixel art silver-stained glomerular capillary loop: normal outer GBM line, inner new BM line laid by mesangial cells (tram-track), immune deposits between the lines, mesangial cell process visible extending into capillary wall",
+      "sourceName": "PMC — Membranoproliferative Glomerulonephritis; Wikipedia — Membranoproliferative GN",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2887509/",
+      "volatile": false,
+      "distractors": ["Minimal change disease: foot process effacement on EM only", "Membranous nephropathy: spike-and-dome pattern, subepithelial deposits", "IgA nephropathy: mesangial deposits, no GBM duplication", "Focal segmental glomerulosclerosis: segmental sclerosis of capillary tuft"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Type II MPGN (dense deposit disease) is driven by dysregulated complement activation via the alternative pathway. Which autoantibody stabilizes the C3 convertase, causing uncontrolled complement consumption?",
+          "correctAnswer": "C3 nephritic factor (C3NeF)",
+          "distractors": ["Anti-GBM antibody", "Anti-PLA2R antibody", "ANCA (PR3 or MPO)"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The tram-track pattern in MPGN results from ___ cell migration into the capillary loop and deposition of new basement membrane on the inner aspect of the GBM.",
+          "correctAnswer": "Mesangial",
+          "distractors": ["Endothelial", "Podocyte", "Parietal epithelial"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_084",
+      "subDeckId": "histology",
+      "correctAnswer": "Centrilobular emphysema: proximal acinus affected (respiratory bronchiole and proximal alveolar ducts); panacinar emphysema: entire acinus from respiratory bronchiole to alveolar sacs",
+      "acceptableAlternatives": ["centrilobular = proximal acinus; panacinar = whole acinus"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_regions",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "Emphysema has two main subtypes based on which part of the acinus is destroyed. How do centrilobular and panacinar emphysema differ in their anatomical distribution within the acinus?",
+      "explanation": "Centrilobular (centriacinar) emphysema destroys the PROXIMAL acinus — primarily the respiratory bronchioles and proximal alveolar ducts. It is strongly associated with cigarette smoking and is most severe in the UPPER lobes. Panacinar (panlobular) emphysema destroys the ENTIRE acinus uniformly — from the respiratory bronchiole to the terminal alveolar sacs. It is associated with alpha-1 antitrypsin deficiency and is most severe in the LOWER lobes (where blood flow and enzyme delivery are greatest). Distinguishing them histologically requires identifying the spared vs. affected portions of the acinar unit.",
+      "visualDescription": "Pixel art acinus comparison: left (centrilobular) shows destruction only at center (respiratory bronchiole and proximal ducts), peripheral alveoli spared; right (panacinar) shows uniform destruction of entire acinus from bronchiole to sacs",
+      "sourceName": "StatPearls — Emphysema; Wikipedia — Emphysema",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482217/",
+      "volatile": false,
+      "distractors": ["Centrilobular = distal acinus; panacinar = proximal only", "Centrilobular = lower lobes; panacinar = upper lobes", "They are identical histologically — the terms are interchangeable", "Centrilobular affects type II pneumocytes; panacinar affects type I pneumocytes"],
+      "variants": [
+        {
+          "type": "fill_blank",
+          "question": "Panacinar emphysema due to alpha-1 antitrypsin deficiency is most severe in the ___ lobes.",
+          "correctAnswer": "Lower",
+          "distractors": ["Upper", "Middle", "Apical"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_085",
+      "subDeckId": "histology",
+      "correctAnswer": "Diffuse alveolar damage (DAD): exudative phase — hyaline membranes (fibrin-rich protein lining alveoli) + type I cell necrosis; organizing phase — type II cell hyperplasia + fibroblast proliferation",
+      "acceptableAlternatives": ["DAD hyaline membranes exudative phase, type II hyperplasia organizing phase"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 8,
+      "quizQuestion": "Diffuse alveolar damage (DAD) is the histological pattern of ARDS. What are the key histological features of its exudative phase vs. the organizing phase?",
+      "explanation": "DAD (the histological substrate of ARDS) evolves in phases: (1) Exudative phase (days 1–7): protein-rich exudate + fibrin form eosinophilic HYALINE MEMBRANES lining the alveolar walls — the pathognomonic feature of DAD. Type I pneumocyte necrosis and interstitial edema are also present. (2) Organizing phase (days 7–21): type II pneumocyte hyperplasia (regeneration), proliferating fibroblasts invading the alveolar space, inflammatory cells. (3) Fibrotic phase (>3 weeks): progressive fibrosis with collagen deposition. Hyaline membranes are formed from fibrin and protein, NOT from surfactant — do not confuse with surfactant deficiency disease.",
+      "visualDescription": "Pixel art alveolar wall timeline: left (exudative) — pink hyaline membrane lining denuded alveolar wall, edema, necrotic type I cells; right (organizing) — type II cell hyperplasia, fibroblasts in alveolar lumen",
+      "sourceName": "StatPearls — Histology Lung; StatPearls — Histology Alveolar Cells",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK534789/",
+      "volatile": false,
+      "distractors": ["Exudative: neutrophil-only infiltrate; organizing: fibrosis only", "DAD has no organizing phase — it is purely exudative", "Hyaline membranes consist of surfactant accumulation in the alveoli", "Exudative phase: type II hyperplasia; organizing phase: hyaline membranes"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Hyaline membranes in DAD (ARDS) are composed primarily of which material?",
+          "correctAnswer": "Fibrin and protein-rich exudate lining the denuded alveolar walls",
+          "distractors": ["Accumulated surfactant from type II cells", "Dead neutrophils and cellular debris", "Mucus secreted by goblet cells"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "In the organizing phase of diffuse alveolar damage, ___ pneumocyte hyperplasia is the histological marker of alveolar regeneration.",
+          "correctAnswer": "Type II",
+          "distractors": ["Type I", "Endothelial", "Squamous"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_086",
+      "subDeckId": "histology",
+      "correctAnswer": "Hepatic sinusoids lined by fenestrated endothelium (no diaphragm or basement membrane); Kupffer cells are resident macrophages on the sinusoidal wall; space of Disse between endothelium and hepatocytes",
+      "acceptableAlternatives": ["sinusoids: fenestrated endothelium, Kupffer cells, space of Disse", "hepatic sinusoid structure"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "The hepatic sinusoid has distinctive histological features that allow efficient exchange between blood and hepatocytes. Name three key components of the sinusoid wall and the perisinusoidal space.",
+      "explanation": "Hepatic sinusoids are specialized capillaries with: (1) Fenestrated endothelium WITHOUT a basement membrane (unlike most capillaries) — allows free exchange of plasma proteins, including albumin and lipoproteins, with hepatocytes; (2) Kupffer cells — resident tissue macrophages located within the sinusoid lumen, phagocytosing pathogens, old cells, and particles from portal blood; (3) Space of Disse — the perisinusoidal space between the endothelium and hepatocytes, containing hepatic stellate cells (Ito cells, store fat/vitamin A in normal liver — transform to collagen-producing myofibroblasts in fibrosis). Lymph is formed in the space of Disse.",
+      "visualDescription": "Pixel art hepatic sinusoid cross-section: blood flowing in center, fenestrated endothelium cells with pores labeled, Kupffer cell bulging into lumen, space of Disse between endothelium and hepatocyte, stellate cell (Ito) storing fat droplets in Disse space",
+      "sourceName": "StatPearls — Anatomy Abdomen and Pelvis Liver; PMC — Microscopic Anatomy of the Liver",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6448667/",
+      "volatile": false,
+      "distractors": ["Continuous endothelium with thick basement membrane + mast cells", "Fenestrated endothelium + B lymphocytes + space of Mall", "Non-fenestrated endothelium + NK cells + sinusoidal space", "Pericytes + smooth muscle cells + portal space"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "In liver fibrosis (cirrhosis), hepatic stellate cells (Ito cells) in the space of Disse transform into collagen-producing cells. What triggers this transformation?",
+          "correctAnswer": "Activation by TGF-β1 from Kupffer cells and injured hepatocytes, causing myofibroblast transformation",
+          "distractors": ["Increased portal blood flow activating stellate cells", "Loss of fenestrations triggering stellate cell proliferation", "Direct hepatocyte replacement by stellate cells"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The space of Disse lies between the hepatic sinusoidal endothelium and the hepatocyte surface, and is the site of ___ production in the liver.",
+          "correctAnswer": "Lymph",
+          "distractors": ["Bile", "Glucose", "Albumin secretion"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX"]
+    },
+    {
+      "id": "ha_histo_087",
+      "subDeckId": "histology",
+      "correctAnswer": "Osteoid (unmineralized bone matrix) accumulates — seen in osteomalacia/rickets as wide pink seams of osteoid on Goldner's trichrome stain or H&E",
+      "acceptableAlternatives": ["osteoid accumulation in osteomalacia", "unmineralized matrix wide osteoid seams"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 3,
+      "funScore": 7,
+      "quizQuestion": "In osteomalacia (vitamin D deficiency in adults) and rickets (in children), mineralization of new bone matrix is impaired. What histological finding is characteristic on bone biopsy?",
+      "explanation": "Normal bone formation: osteoblasts deposit osteoid (unmineralized collagen matrix) which is then mineralized with hydroxyapatite within days. In osteomalacia/rickets, vitamin D deficiency impairs calcium/phosphate absorption, preventing normal mineralization. Bone biopsy shows wide osteoid seams — layers of unmineralized pink matrix surrounding trabeculae (normally thin). In adults (osteomalacia), fractures and bone pain occur. In children (rickets), growth plate abnormalities dominate: wide, disorganized cartilage with a cupped, frayed metaphysis. Histology is confirmed by tetracycline double labeling (tetracycline binds mineralizing fronts — absent/reduced labeling = mineralization defect).",
+      "visualDescription": "Pixel art bone biopsy: trabecular bone in center, wide pale pink osteoid seam surrounding it (labeled, excessively thick), normal thin osteoid seam shown in comparison panel, vitamin D deficiency icon",
+      "sourceName": "StatPearls — Histology Osteoclasts (bone formation section); PMC — RANKL/RANK/OPG",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554489/",
+      "volatile": false,
+      "distractors": ["Thinned cortical bone with empty lacunae (osteonecrosis)", "Increased osteoclasts in Howship's lacunae (hyperparathyroidism)", "Woven bone replacing lamellar bone (Paget disease)", "Dense sclerotic bone with no medullary cavity (osteopetrosis)"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Tetracycline double labeling of bone biopsy is used to assess mineralization. In osteomalacia, what does tetracycline labeling show?",
+          "correctAnswer": "Absent or reduced tetracycline labeling at the mineralization front (impaired mineral deposition)",
+          "distractors": ["Increased tetracycline labeling (accelerated mineralization)", "Normal double labeling with wider interlabel distance only", "Labeling only present in osteoclast resorption zones"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The wide pink osteoid seams in osteomalacia represent accumulation of ___ bone matrix that has failed to undergo normal hydroxyapatite mineralization.",
+          "correctAnswer": "Unmineralized (osteoid)",
+          "distractors": ["Woven", "Lamellar sclerotic", "Calcified cartilage"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_088",
+      "subDeckId": "histology",
+      "correctAnswer": "Paget disease of bone: woven bone replacing lamellar; mosaic cement lines (jigsaw pattern) from cycles of resorption and formation; enlarged osteoclasts (up to 100 nuclei)",
+      "acceptableAlternatives": ["Paget disease: mosaic cement lines, woven bone, giant osteoclasts"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_defects",
+      "difficulty": 4,
+      "funScore": 8,
+      "quizQuestion": "Bone biopsy shows a 'mosaic' or 'jigsaw puzzle' pattern of cement lines in lamellar bone, with giant osteoclasts containing up to 100 nuclei. What metabolic bone disease has this histological appearance?",
+      "explanation": "Paget disease of bone (osteitis deformans) is characterized by disorganized, excessive bone remodeling. The histological hallmarks are: (1) Mosaic cement lines — irregular, haphazard cement lines in trabecular bone from repeated cycles of resorption and disorganized formation, creating a 'jigsaw puzzle' pattern of lamellar units; (2) Giant osteoclasts with up to 100 nuclei (vs. 6–50 in normal osteoclasts); (3) Woven bone replacing normal lamellar bone — resulting in mechanically weaker bone. The pagetic bone is hypervascular. Complications include pathological fractures, deformity, deafness (skull involvement), and sarcomatous transformation (osteosarcoma in ~1% of cases).",
+      "visualDescription": "Pixel art bone biopsy: irregular mosaic cement lines creating jigsaw puzzle pattern within trabecula, giant multinucleated osteoclast (100+ nuclei) in Howship's lacuna, woven disorganized collagen pattern labeled",
+      "sourceName": "StatPearls — Histology Osteoclasts; PMC — RANKL/RANK/OPG",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK554489/",
+      "volatile": false,
+      "distractors": ["Osteoporosis: thinned trabeculae without cellular changes", "Osteomalacia: wide osteoid seams, no cement lines", "Hyperparathyroidism: osteoclastic tunneling (dissecting resorption)", "Multiple myeloma: plasma cell infiltration with focal lytic lesions"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Paget disease of the skull can cause deafness. What mechanism explains hearing loss in this condition?",
+          "correctAnswer": "Pagetic bone compresses or encases the cochlea and ossicles, impairing sound transmission and sensorineural function",
+          "distractors": ["Calcium deposits in the tympanic membrane", "Vascular insufficiency to the cochlea from pagetic vessels", "Infiltration of the cochlear nerve by abnormal osteoclasts"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The mosaic cement line pattern in Paget disease reflects repeated cycles of ___ and disorganized bone formation.",
+          "correctAnswer": "Resorption",
+          "distractors": ["Mineralization failure", "Woven bone maturation", "Periosteal thickening"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_089",
+      "subDeckId": "histology",
+      "correctAnswer": "Non-caseating granulomas: compact collections of epithelioid macrophages + multinucleated Langhans giant cells + lymphocytes, WITHOUT central necrosis",
+      "acceptableAlternatives": ["non-caseating granuloma epithelioid macrophages Langhans giant cells no necrosis"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_structures",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Sarcoidosis is characterized by a specific type of granuloma. What is its histological description, and what is the key feature that distinguishes it from tuberculosis granulomas?",
+      "explanation": "Sarcoidosis granulomas are NON-CASEATING: epithelioid macrophages (elongated pale macrophages that resemble epithelial cells) cluster tightly with multinucleated Langhans giant cells (nuclei arranged in a horseshoe/peripheral arc at the periphery), surrounded by a rim of lymphocytes. NO CENTRAL NECROSIS is the key distinguishing feature from TB, which has caseating granulomas with central creamy necrosis. Sarcoidosis granulomas may contain asteroid bodies (star-shaped inclusions) or Schaumann bodies (laminated calcified inclusions) — non-specific but classic associations. These granulomas can affect any organ: lungs (>90%), lymph nodes, skin, eyes, liver, heart, CNS.",
+      "visualDescription": "Pixel art sarcoid granuloma: central cluster of elongated pink epithelioid macrophages, Langhans giant cell with horseshoe nucleus arrangement at edge, lymphocyte rim, NO central necrosis (contrast with TB panel showing creamy central necrosis)",
+      "sourceName": "StatPearls — Histology Staining; PMC — Histological Stains in the Past Present and Future",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557663/",
+      "volatile": false,
+      "distractors": ["Caseating granulomas with central cheese-like necrosis (same as TB)", "Neutrophil-predominant abscesses with central suppuration", "Eosinophilic granulomas with Langerhans cells (CD1a+)", "Fibrous granulomas without giant cells"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Both sarcoidosis and tuberculosis form granulomas. What is the key histological difference?",
+          "correctAnswer": "TB granulomas are caseating (central cheese-like necrosis); sarcoidosis granulomas are non-caseating (no central necrosis)",
+          "distractors": ["TB has epithelioid macrophages; sarcoidosis has foamy macrophages", "Sarcoidosis has giant cells; TB does not", "Both are identical — only culture distinguishes them"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "Langhans giant cells have nuclei arranged in a ___ or peripheral arc pattern — distinguishing them from foreign body giant cells.",
+          "correctAnswer": "Horseshoe",
+          "distractors": ["Central cluster", "Linear single file", "Rosette"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    },
+    {
+      "id": "ha_histo_090",
+      "subDeckId": "histology",
+      "correctAnswer": "Congo red stain: amyloid appears red/orange under regular light and shows apple-green birefringence under polarized light",
+      "acceptableAlternatives": ["Congo red apple-green birefringence under polarized light", "amyloid Congo red green birefringence"],
+      "chainThemeId": 9,
+      "answerTypePoolId": "anatomy_techniques",
+      "difficulty": 2,
+      "funScore": 9,
+      "quizQuestion": "Which histological stain is used to diagnose amyloid deposition, and what is the pathognomonic appearance under polarized light?",
+      "explanation": "Congo red is the standard stain for amyloid. Under regular light: amyloid appears red/orange (salmon-pink). Under polarized light: amyloid shows APPLE-GREEN (or yellow-green) BIREFRINGENCE — this is pathognomonic for amyloid, due to the parallel beta-pleated sheet fibrils interacting with polarized light in a specific orientation. No other tissue deposits produce this appearance. Congo red staining is used to diagnose systemic amyloidosis (AL, AA), cardiac amyloidosis (ATTR), and local amyloid deposits (cerebral plaques in Alzheimer, islet amyloid in type 2 diabetes). Confirmation by typing requires immunohistochemistry or mass spectrometry.",
+      "visualDescription": "Pixel art kidney biopsy split-panel: left shows regular light Congo red with salmon-pink amyloid deposits in glomeruli and vessels; right shows polarized light with same deposits glowing bright apple-green against dark background",
+      "sourceName": "StatPearls — Histology Staining; PMC — Histological Stains in the Past Present and Future",
+      "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK557663/",
+      "volatile": false,
+      "distractors": ["PAS stain: amyloid appears magenta-purple under regular light", "Silver stain: amyloid shows black color under regular light", "Thioflavin T: shows yellow fluorescence under UV, not polarized light (this is actually correct as a second method, but not Congo red)", "Von Kossa: amyloid appears brown-black under regular light"],
+      "variants": [
+        {
+          "type": "reverse",
+          "question": "Amyloid shows apple-green birefringence with Congo red under polarized light because of which structural property?",
+          "correctAnswer": "Parallel beta-pleated sheet fibril arrangement interacting with polarized light at a specific angle",
+          "distractors": ["High calcium content refracting light", "Presence of glycosaminoglycans orienting the dye", "Parallel collagen fibers intercalating the Congo red dye"]
+        },
+        {
+          "type": "fill_blank",
+          "question": "The islets of Langerhans in type 2 diabetes accumulate ___ amyloid (IAPP — islet amyloid polypeptide), which stains positive with Congo red.",
+          "correctAnswer": "Islet (IAPP)",
+          "distractors": ["AL (light chain)", "AA (serum amyloid A)", "ATTR (transthyretin)"]
+        }
+      ],
+      "examTags": ["USMLE_Step1", "COMLEX", "clinical_correlation"]
+    }
+  ]
+}

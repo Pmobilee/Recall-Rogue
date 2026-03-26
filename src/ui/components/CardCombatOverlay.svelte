@@ -21,7 +21,6 @@
   import KeyboardShortcutHelp from './KeyboardShortcutHelp.svelte'
   import CardHand from './CardHand.svelte'
   import CardExpanded from './CardExpanded.svelte'
-  import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
   import DamageNumber from './DamageNumber.svelte'
   import ChainCounter from './ChainCounter.svelte'
@@ -60,12 +59,14 @@
   import MultiChoicePopup from './MultiChoicePopup.svelte'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../../data/curatedDeckStore'
+  import { getDeckById } from '../../data/deckRegistry'
   import { selectFactForCharge } from '../../services/curatedFactSelector'
   import { selectQuestionTemplate } from '../../services/questionTemplateSelector'
   import { selectDistractors, getDistractorCount } from '../../services/curatedDistractorSelector'
   import { getConfusionMatrix, saveConfusionMatrix } from '../../services/confusionMatrixStore'
   import { isNumericalAnswer, getNumericalDistractors, displayAnswer as displayNumericalAnswer } from '../../services/numericalDistractorService'
   import type { Fact } from '../../data/types'
+  import { REGION_NAMES, rollFlagQuestionType } from '../../services/nonCombatQuizSelector'
 
   interface Props {
     turnState: TurnState | null
@@ -111,6 +112,14 @@
     language?: string
     /** Pronunciation/reading string of the source fact. Used for furigana parsing. */
     pronunciation?: string
+    /** Quiz presentation mode: 'text' (default), 'image_question', 'image_answers'. */
+    quizMode?: 'text' | 'image_question' | 'image_answers'
+    /** Path to the question image asset (image_question mode). */
+    imageAssetPath?: string
+    /** Parallel image paths for each answer choice (image_answers mode). */
+    answerImagePaths?: string[]
+    /** Quiz variant/template type identifier (e.g. 'reading', 'forward', 'reverse'). Used to suppress furigana on reading questions. */
+    variantType?: string
   }
 
   let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -120,8 +129,7 @@
   let committedCardIndex = $state<number | null>(null)
   let committedQuizData = $state<QuizData | null>(null)
   let committedAtMs = $state(0)
-  /** Whether the combat quiz language-options popup is open. */
-  let showCombatSettings = $state(false)
+  // showCombatSettings removed — cogwheel moved into CardExpanded
 
   // V2 Echo: "Must Charge!" tooltip state — shown when Quick Play is attempted on an Echo card
   let showMustChargeTooltip = $state(false)
@@ -162,8 +170,16 @@
     root.style.setProperty('--discard-pile-y', `${discardRect.top + discardRect.height / 2}px`)
   })
 
+  let keyboardDetected = $state(false)
+
+  $effect(() => {
+    const handler = () => { keyboardDetected = true }
+    window.addEventListener('keydown', handler, { once: true })
+    return () => window.removeEventListener('keydown', handler)
+  })
+
   let answeredThisTurn = $state(0)
-  let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean; type?: 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical'; position?: 'enemy' | 'player' }>>([])
+  let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean; type?: 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical' | 'status' | 'buff'; position?: 'enemy' | 'player' }>>([])
   /** AR-222: timer handle for pending auto-end-turn (cleared if player acts first) */
   let autoEndTurnTimer: ReturnType<typeof setTimeout> | null = null
   let cardAnimations = $state<Record<string, CardAnimPhase>>({})
@@ -229,6 +245,35 @@
   let wowFactorVisible = $state(false)
   let wowFactorCount = $state(0)
   const WOW_FACTOR_MAX_PER_ENCOUNTER = 3
+
+  // Turn transition banner state
+  let turnBannerText = $state<string | null>(null)
+  let turnBannerVisible = $state(false)
+  let _turnBannerTimer: ReturnType<typeof setTimeout> | null = null
+
+  $effect(() => {
+    const phase = turnState?.phase
+    const turnNum = turnState?.turnNumber ?? 0
+    if (phase === 'player_action') {
+      // Skip the very first player action — it's obvious it's your turn
+      if (turnNum <= 1) return
+      if (_turnBannerTimer) clearTimeout(_turnBannerTimer)
+      turnBannerText = 'YOUR TURN'
+      turnBannerVisible = true
+      _turnBannerTimer = setTimeout(() => {
+        turnBannerVisible = false
+        _turnBannerTimer = setTimeout(() => { turnBannerText = null }, 200)
+      }, 800)
+    } else if (phase === 'enemy_turn') {
+      if (_turnBannerTimer) clearTimeout(_turnBannerTimer)
+      turnBannerText = 'ENEMY TURN'
+      turnBannerVisible = true
+      _turnBannerTimer = setTimeout(() => {
+        turnBannerVisible = false
+        _turnBannerTimer = setTimeout(() => { turnBannerText = null }, 200)
+      }, 800)
+    }
+  })
 
   // Synergy flash: subtle pulse when a hidden combo activates
   let synergyFlashText = $state<string | null>(null)
@@ -388,15 +433,17 @@
 
   function showIntentName() {
     if (intentNameTimer) clearTimeout(intentNameTimer)
+    if (intentNameVisible) {
+      intentNameVisible = false
+      intentNameTimer = null
+      return
+    }
     intentNameVisible = true
     intentNameTimer = setTimeout(() => {
       intentNameVisible = false
       intentNameTimer = null
     }, 3000)
   }
-
-  /** §9 Landscape-only: enemy area hover tooltip state */
-  let showEnemyTooltip = $state(false)
 
   function pileTooltip(label: string, cards: Card[], fromTop = true): string {
     if (cards.length === 0) return `${label}: empty`
@@ -546,6 +593,23 @@
       ? (getLanguageConfig(committedQuizLanguage)?.options?.length ?? 0) > 0
       : false
   )
+
+  /**
+   * Deck display name for the card header (e.g. "Japanese → N3 Vocabulary").
+   * Only set in study mode; falls back to domain name for other modes.
+   */
+  const deckDisplayName = $derived.by(() => {
+    const runState = $activeRunState
+    if (!runState?.deckMode) return undefined
+    if (runState.deckMode.type === 'study') {
+      const deckId = runState.deckMode.deckId
+      const deck = getDeckById(deckId)
+      if (deck) return deck.name
+      // Fallback: humanize the ID
+      return deckId.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())
+    }
+    return undefined
+  })
 
   function applyAscensionQuestionPresentation(card: Card, base: ReturnType<typeof getQuestionPresentation>) {
     const tier1OptionCount = turnState?.ascensionTier1OptionCount ?? 3
@@ -737,11 +801,73 @@
   function spawnDamageNumber(
     value: string,
     isCritical: boolean,
-    type: 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical' = 'damage',
+    type: 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical' | 'status' | 'buff' = 'damage',
     position: 'enemy' | 'player' = 'enemy',
   ): void {
     const id = damageIdCounter++
     damageNumbers = [...damageNumbers, { id, value, isCritical, type, position }]
+  }
+
+  /** Human-readable labels for status effect types shown in floating text. */
+  const STATUS_LABELS: Record<string, string> = {
+    poison:                  'Poison',
+    burn:                    'Burn',
+    bleed:                   'Bleed',
+    weakness:                'Weak',
+    vulnerable:              'Vuln',
+    strength:                'STR',
+    regen:                   'Regen',
+    immunity:                'Immune',
+    charge_damage_amp_flat:  'Amp',
+    charge_damage_amp_percent: 'Amp%',
+  }
+
+  /**
+   * Snapshot current status effects for a target as a value map (type -> stacks).
+   * Used to diff before/after a card play to detect newly applied effects.
+   */
+  function snapshotEffects(effects: Array<{ type: string; value: number; turnsRemaining: number }>): Map<string, number> {
+    const map = new Map<string, number>()
+    for (const e of effects) {
+      if (e.turnsRemaining > 0) map.set(e.type, e.value)
+    }
+    return map
+  }
+
+  /**
+   * After a card is played, diff enemy and player status effects against pre-play snapshots
+   * and spawn floating text for any newly applied or increased status effects.
+   *
+   * @param preEnemy  - Snapshot of enemy status effects before the card play.
+   * @param prePlayer - Snapshot of player status effects before the card play.
+   */
+  function spawnStatusFloaters(
+    preEnemy: Map<string, number>,
+    prePlayer: Map<string, number>,
+  ): void {
+    if (!turnState) return
+
+    // Check enemy effects (debuffs applied to enemy → show on enemy side, green)
+    const postEnemy = snapshotEffects(turnState.enemy?.statusEffects ?? [])
+    for (const [type, newVal] of postEnemy) {
+      const oldVal = preEnemy.get(type) ?? 0
+      const delta = newVal - oldVal
+      if (delta > 0) {
+        const label = STATUS_LABELS[type] ?? type
+        spawnDamageNumber(`+${delta} ${label}`, false, 'status', 'enemy')
+      }
+    }
+
+    // Check player effects (buffs applied to player → show on player side, blue)
+    const postPlayer = snapshotEffects(turnState.playerState?.statusEffects ?? [])
+    for (const [type, newVal] of postPlayer) {
+      const oldVal = prePlayer.get(type) ?? 0
+      const delta = newVal - oldVal
+      if (delta > 0) {
+        const label = STATUS_LABELS[type] ?? type
+        spawnDamageNumber(`+${delta} ${label}`, false, 'buff', 'player')
+      }
+    }
   }
 
   /**
@@ -897,8 +1023,11 @@
 
   /**
    * Study mode quiz: dynamically select fact, template, and distractors from curated deck.
+   *
+   * @param useReverse - When true and the fact supports it, flip image_question → image_answers
+   *                     (show country name, pick flag image) instead of the default direction.
    */
-  function getStudyModeQuiz(card: Card, runState: NonNullable<typeof $activeRunState>): QuizData {
+  function getStudyModeQuiz(card: Card, runState: NonNullable<typeof $activeRunState>, useReverse = false): QuizData {
     const deckMode = runState.deckMode
     if (!deckMode || deckMode.type !== 'study') {
       return { question: 'Error: not in study mode', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
@@ -910,7 +1039,7 @@
     }
 
     const tracker = runState.inRunFactTracker!
-    const factPool = getCuratedDeckFacts(deckMode.deckId, deckMode.subDeckId)
+    const factPool = getCuratedDeckFacts(deckMode.deckId, deckMode.subDeckId, deckMode.examTags)
 
     if (factPool.length === 0) {
       return { question: 'Error: empty deck', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
@@ -956,7 +1085,25 @@
     }
 
     // Strip brace markers from correct answer for display
-    const correctAnswerDisplay = displayNumericalAnswer(templateResult.correctAnswer)
+    // Declared as let so continent/not_elimination modes can override it.
+    let correctAnswerDisplay = displayNumericalAnswer(templateResult.correctAnswer)
+
+    // Reading template: distractors must be hiragana readings, not English translations.
+    // Pool-based selectDistractors returns correctAnswer (English) values — replace them here.
+    if (templateResult.template.id === 'reading') {
+      const otherReadings = factPool
+        .filter(f => f.reading && f.id !== fact.id && f.reading !== correctAnswerDisplay)
+        .map(f => f.reading!)
+      // Deterministic shuffle seeded on fact id so results are consistent per fact
+      const seed = fact.id.charCodeAt(0) + (fact.id.charCodeAt(Math.min(3, fact.id.length - 1)) || 0)
+      for (let i = otherReadings.length - 1; i > 0; i--) {
+        const j = Math.abs((seed * 31 + i) % (i + 1))
+        ;[otherReadings[i], otherReadings[j]] = [otherReadings[j], otherReadings[i]]
+      }
+      if (otherReadings.length >= distractorCount) {
+        distractorAnswers = otherReadings.slice(0, distractorCount)
+      }
+    }
 
     // 4. Shuffle answers — deduplicate distractors that match the correct answer first
     const cleanDistractors = distractorAnswers.filter(
@@ -972,20 +1119,125 @@
     ;(card as any).__studyFactCorrectAnswer = correctAnswerDisplay
     ;(card as any).__studyDistractorMap = distractorMap
 
+    // 6. Build image quiz fields if this fact uses an image-based quiz mode.
+    //    For flag facts (image_question + imageAssetPath), roll among 5 question types
+    //    for variety. The `useReverse` param from tier logic is superseded by the roller
+    //    for these facts — tier 1 is no longer excluded from reverse mode.
+    //    Non-flag image facts fall through to the original behavior.
+    let quizMode: 'text' | 'image_question' | 'image_answers' | undefined
+    let imageAssetPath: string | undefined
+    let answerImagePaths: string[] | undefined
+    // Start with the template's rendered question; may be overridden per question type.
+    let displayQuestion = templateResult.renderedQuestion
+
+    if (fact.quizMode === 'image_question' && fact.imageAssetPath) {
+      const questionType = rollFlagQuestionType()
+
+      switch (questionType) {
+        case 'identify':
+          // Standard: show flag image, pick country name (text answers).
+          quizMode = 'image_question'
+          imageAssetPath = fact.imageAssetPath
+          // displayQuestion stays as template default.
+          break
+
+        case 'reverse': {
+          // Show country name as question, pick correct flag from image grid.
+          quizMode = 'image_answers'
+          const imageByAnswerRev = new Map<string, string>()
+          for (const df of factPool) {
+            if (df.imageAssetPath) {
+              imageByAnswerRev.set(df.correctAnswer.toLowerCase(), df.imageAssetPath)
+              const display = displayNumericalAnswer(df.correctAnswer)
+              imageByAnswerRev.set(display.toLowerCase(), df.imageAssetPath)
+            }
+          }
+          answerImagePaths = allAnswers.map(a => imageByAnswerRev.get(a.toLowerCase()) ?? '')
+          displayQuestion = `Select the flag of ${correctAnswerDisplay}`
+          break
+        }
+
+        case 'continent': {
+          // Show flag image, pick which continent the country belongs to (5 text choices).
+          quizMode = 'image_question'
+          imageAssetPath = fact.imageAssetPath
+          displayQuestion = 'This flag belongs to a country on which continent?'
+          const correctContinent = REGION_NAMES[fact.chainThemeId] ?? 'Europe'
+          // Replace allAnswers with all 5 continent names, shuffled.
+          const continentChoices = [...REGION_NAMES].sort(() => Math.random() - 0.5)
+          allAnswers.length = 0
+          allAnswers.push(...continentChoices)
+          correctAnswerDisplay = correctContinent
+          break
+        }
+
+        case 'not_elimination': {
+          // Show 4 flags (3 from one continent + 1 odd-one-out). Pick the one NOT from
+          // the majority continent. The current fact is the odd-one-out (correct answer).
+          const factContinent = fact.chainThemeId
+          const otherContinentIdx = ((factContinent + 1 + Math.floor(Math.random() * 4)) % 5)
+          const otherContinentName = REGION_NAMES[otherContinentIdx]
+          const sameRegionFacts = factPool.filter(
+            df => df.chainThemeId === otherContinentIdx && !!df.imageAssetPath && df.id !== fact.id
+          )
+
+          if (sameRegionFacts.length >= 3) {
+            quizMode = 'image_answers'
+            const shuffledSame = [...sameRegionFacts].sort(() => Math.random() - 0.5).slice(0, 3)
+            const notChoices = [...shuffledSame.map(f => f.correctAnswer), fact.correctAnswer]
+            // Fisher-Yates shuffle.
+            for (let i = notChoices.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [notChoices[i], notChoices[j]] = [notChoices[j], notChoices[i]]
+            }
+            const imageByAnswerNot = new Map<string, string>()
+            for (const df of factPool) {
+              if (df.imageAssetPath) {
+                imageByAnswerNot.set(df.correctAnswer.toLowerCase(), df.imageAssetPath)
+              }
+            }
+            answerImagePaths = notChoices.map(a => imageByAnswerNot.get(a.toLowerCase()) ?? '')
+            allAnswers.length = 0
+            allAnswers.push(...notChoices)
+            displayQuestion = `Which of these flags is NOT from ${otherContinentName}?`
+            correctAnswerDisplay = displayNumericalAnswer(fact.correctAnswer)
+          } else {
+            // Fallback: not enough facts in target continent — use standard identify.
+            quizMode = 'image_question'
+            imageAssetPath = fact.imageAssetPath
+          }
+          break
+        }
+      }
+    } else if (fact.quizMode && fact.quizMode !== 'text') {
+      // Non-flag image facts (future use): preserve original behavior.
+      quizMode = fact.quizMode
+      if (fact.quizMode === 'image_question') {
+        imageAssetPath = fact.imageAssetPath
+      }
+    }
+
     return {
-      question: templateResult.renderedQuestion,
+      question: displayQuestion,
       answers: allAnswers,
       correctAnswer: correctAnswerDisplay,
       variantIndex: 0,
       acceptableAnswers: fact.acceptableAlternatives.length > 0 ? fact.acceptableAlternatives : undefined,
+      language: fact.language ?? undefined,
+      // DeckFact may not have pronunciation — fall back to reading field, or look up from trivia DB
+      pronunciation: fact.pronunciation ?? fact.reading ?? (factsDB.isReady() ? factsDB.getById(fact.id)?.pronunciation : undefined) ?? undefined,
+      quizMode,
+      imageAssetPath,
+      answerImagePaths,
+      variantType: templateResult.template.id,
     }
   }
 
-  function getQuizForCard(card: Card, optionCount: number): QuizData {
+  function getQuizForCard(card: Card, optionCount: number, useReverse = false): QuizData {
     // Study mode: dynamic fact assignment from curated deck
     const runState = $activeRunState
     if (runState?.deckMode?.type === 'study' && runState.inRunFactTracker) {
-      return getStudyModeQuiz(card, runState)
+      return getStudyModeQuiz(card, runState, useReverse)
     }
 
     // === Existing trivia mode code below (unchanged) ===
@@ -1046,6 +1298,7 @@
     let correctAnswer: string
     let distractorSource: string[]
     let acceptableAnswers: string[] | undefined
+    let legacyVariantType: string | undefined
 
     if (hasVariantsArray) {
       // Use the fact's variants array — handle both string[] and object[] formats
@@ -1079,6 +1332,7 @@
         const factVariantLevel = card.factId ? ($activeRunState?.factVariantLevel?.[card.factId] ?? undefined) : undefined
         const variant = selectVariant(cardTier, fact, factVariantLevel)
         const variantQ = buildVariantQuestion(fact, variant)
+        legacyVariantType = variant
 
         question = variantQ.questionText
         correctAnswer = variantQ.correctAnswer
@@ -1155,6 +1409,7 @@
       acceptableAnswers,
       language: factLanguageCode,
       pronunciation: factPronunciation,
+      variantType: legacyVariantType ?? 'forward',
     }
   }
 
@@ -1176,7 +1431,6 @@
     committedCardSnapshot = null
     committedQuizData = null
     committedAtMs = 0
-    showCombatSettings = false
     // Slide enemy back to center if quiz was active in landscape
     if ($isLandscape) {
       getCombatScene()?.slideEnemyForQuiz(false)
@@ -1354,7 +1608,10 @@
     cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
 
     // Fire the play immediately with playMode: 'quick'
+    const _qpPreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
+    const _qpPrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
     onplaycard(cardId, true, false, undefined, undefined, 'quick')
+    spawnStatusFloaters(_qpPreEnemy, _qpPrePlayer)
 
     const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
     const quickEffectVal = Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
@@ -1410,7 +1667,10 @@
       maybeShowComparisonBanner('charge')
       animatingCards = [...animatingCards, card]
       cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
+      const _soulPreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
+      const _soulPrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
       const chargeResult = onplaycard(cardId, true, false, undefined, undefined, 'charge')
+      spawnStatusFloaters(_soulPreEnemy, _soulPrePlayer)
       if (chargeResult?.curedCursedFact) {
         cureFlashes = { ...cureFlashes, [cardId]: true }
         setTimeout(() => {
@@ -1463,7 +1723,7 @@
     } else {
       effectiveOptionCount = Math.max(effectiveOptionCount, MASTERY_UPGRADED_DISTRACTORS + 1); // 4 options min
     }
-    committedQuizData = getQuizForCard(selectedCard, effectiveOptionCount)
+    committedQuizData = getQuizForCard(selectedCard, effectiveOptionCount, selectedPresentation.useReverse)
     committedAtMs = Date.now()
     selectedIndex = null
     // Slide enemy right in landscape when quiz activates
@@ -1675,7 +1935,13 @@
       // returns pendingChoice (no effect applied yet). We then show the popup and apply
       // the chosen effect via handlePendingChoice after dismissal.
       animatingCards = [...animatingCards, card]
+      const _chargePreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
+      const _chargePrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
       const chargeResult = onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge')
+      // Only spawn status floaters when no pendingChoice — deferred choices apply effects later
+      if (!chargeResult?.pendingChoice) {
+        spawnStatusFloaters(_chargePreEnemy, _chargePrePlayer)
+      }
 
       // Phase Shift QP/CW or Unstable Flux CC: resolver returned pendingChoice — defer effect to popup
       if (chargeResult?.pendingChoice) {
@@ -2031,7 +2297,7 @@
     {/if}
 
     {#if turnState && enemyName}
-      <div class="enemy-name-header" style="color: {categoryColor}" role="heading" aria-level="2" aria-label="{enemyName}">
+      <div class="enemy-name-header" role="heading" aria-level="2" aria-label="{enemyName}">
         {enemyName}
         <span class="turn-counter-label">Turn {turnState.turnNumber}</span>
       </div>
@@ -2059,7 +2325,7 @@
     <div class="pile-indicator draw-pile-indicator" bind:this={drawPileEl} aria-label="Draw pile: {drawPileCount}" title={pileTooltip('Draw', turnState.deck.drawPile)}>
       <div class="pile-icon" style="--stack-count: {drawStackCount}">
         {#each Array(drawStackCount) as _, idx}
-          <div class="pile-card-stack" style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1));"></div>
+          <div class="pile-card-stack" style="transform: translate(calc({idx * 2}px * var(--layout-scale, 1)), calc({-idx * 2}px * var(--layout-scale, 1)));"></div>
         {/each}
       </div>
       <span class="pile-count-label">{drawPileCount}</span>
@@ -2068,7 +2334,7 @@
     <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}" title={pileTooltip('Discard', turnState.deck.discardPile, false)}>
       <div class="pile-icon" style="--stack-count: {discardStackCount}">
         {#each Array(Math.max(1, discardStackCount)) as _, idx}
-          <div class="pile-card-stack" class:pile-empty={discardStackCount === 0} style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1)); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
+          <div class="pile-card-stack" class:pile-empty={discardStackCount === 0} style="transform: translate(calc({idx * 2}px * var(--layout-scale, 1)), calc({-idx * 2}px * var(--layout-scale, 1))); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
         {/each}
       </div>
       <span class="pile-count-label">{discardPileCount}</span>
@@ -2086,6 +2352,11 @@
         <span class="exhaust-icon">✕</span>
         <span class="exhaust-count">{exhaustPileCount}</span>
       </button>
+    {/if}
+
+    <!-- Quiz backdrop scrim — covers canvas when quiz is active -->
+    {#if cardPlayStage === 'committed'}
+      <div class="quiz-backdrop"></div>
     {/if}
 
     <!-- AR-113: Mastery upgrade/downgrade popups -->
@@ -2107,28 +2378,26 @@
           aria-label={intentDetailText}
           onclick={() => { showIntentName() }}
         >
-          <div class="intent-bubble-summary">
-            <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
-              onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
-            <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
-            {#if intentDisplay.text}
-              <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
-                class:intent-value-defend={intentDisplay.type === 'defend'}
-                class:intent-value-heal={intentDisplay.type === 'heal'}
-                class:intent-value-buff={intentDisplay.type === 'buff'}
-                class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
-            {/if}
-          </div>
+          {#if intentNameVisible && intentDisplay.telegraph}
+            <div class="intent-expanded-text">
+              <strong>{intentDisplay.telegraph}</strong>: {intentDetailText}
+            </div>
+          {:else}
+            <div class="intent-bubble-summary">
+              <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
+                onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
+              <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
+              {#if intentDisplay.text}
+                <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
+                  class:intent-value-defend={intentDisplay.type === 'defend'}
+                  class:intent-value-heal={intentDisplay.type === 'heal'}
+                  class:intent-value-buff={intentDisplay.type === 'buff'}
+                  class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
+              {/if}
+            </div>
+          {/if}
         </button>
       {/key}
-      {#if intentNameVisible && intentDisplay.telegraph}
-        <div
-          class="intent-name-label"
-          style="color: {INTENT_DARK_COLORS[intentDisplay.type] ?? '#1a1a2e'}; background: {intentDisplay.borderColor};"
-        >
-          "{intentDisplay.telegraph}"
-        </div>
-      {/if}
     {/if}
 
 
@@ -2177,18 +2446,6 @@
         class="quiz-wrapper"
         out:fade={{ duration: 200 }}
       >
-        {#if committedQuizHasLanguageOptions && committedQuizLanguage}
-          <button
-            class="combat-quiz-settings"
-            onclick={() => { showCombatSettings = !showCombatSettings }}
-            aria-label="Language display settings"
-          >⚙</button>
-          {#if showCombatSettings}
-            <div class="combat-quiz-settings-popup">
-              <DeckOptionsPanel languageCode={committedQuizLanguage} />
-            </div>
-          {/if}
-        {/if}
         <CardExpanded
           card={committedCard}
           question={committedQuizData.question}
@@ -2197,18 +2454,21 @@
           questionImageUrl={committedQuizData.questionImageUrl}
           timerDuration={effectiveTimerSeconds}
           timerEnabled={timerEnabled}
-          hintsRemaining={turnState.deck.hintsRemaining}
           speedBonusThreshold={speedBonusThreshold}
           showMasteryTrialHeader={committedCard.isMasteryTrial === true}
           timerColorVariant={timerColorVariant}
-          highlightHint={turnState.canaryQuestionBias < 0}
           allowCancel={false}
           factLanguage={committedQuizData.language}
           factPronunciation={committedQuizData.pronunciation}
+          quizVariantType={committedQuizData.variantType}
+          quizMode={committedQuizData.quizMode}
+          imageAssetPath={committedQuizData.imageAssetPath}
+          answerImagePaths={committedQuizData.answerImagePaths}
+          deckDisplayName={deckDisplayName}
+          quizLanguageCode={committedQuizHasLanguageOptions ? (committedQuizLanguage ?? undefined) : undefined}
           onanswer={handleAnswer}
           onskip={handleSkip}
           oncancel={() => {}}
-          onusehint={onusehint}
         />
       </div>
     {/if}
@@ -2223,6 +2483,10 @@
 
     {#if wowFactorText}
       <div class="wow-factor-overlay" class:wow-visible={wowFactorVisible}>{wowFactorText}</div>
+    {/if}
+
+    {#if turnBannerText}
+      <div class="turn-banner" class:turn-banner-visible={turnBannerVisible} class:enemy-turn={turnBannerText === 'ENEMY TURN'}>{turnBannerText}</div>
     {/if}
 
     <StatusEffectBar effects={playerEffects} position="player" />
@@ -2315,8 +2579,8 @@
     </div>
   {/if}
 
-  <!-- AR-74: Keyboard help button (landscape only) -->
-  {#if $isLandscape}
+  <!-- AR-74: Keyboard help button (landscape only, shown only after keyboard usage detected) -->
+  {#if $isLandscape && keyboardDetected}
     <button
       class="kbd-help-trigger"
       type="button"
@@ -2337,17 +2601,6 @@
     </div>
 
     <div class="landscape-stats-bar" aria-label="Player status">
-      <!-- HP bar: centered, block count shown inline in text -->
-      <div class="lsb-hp">
-        <div class="lsb-hp-track">
-          <div
-            class="lsb-hp-fill"
-            class:hp-critical={isHpCritical}
-            style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
-          ></div>
-          <span class="lsb-hp-text">{playerShield > 0 ? `(${playerShield}) ` : ''}{playerHpCurrent}/{playerHpMax}</span>
-        </div>
-      </div>
     </div>
 
     <!-- Chain indicator: to the right of the card hand, vertically centered with cards -->
@@ -2362,42 +2615,6 @@
       </div>
     {/if}
 
-    <!-- §9 Landscape: enemy hover zone — covers the right portion of the arena (enemy area).
-         When quiz is not active the enemy is centered; in quiz it slides right.
-         We place the hover zone over the enemy's default center position. -->
-    {#if cardPlayStage !== 'committed'}
-      <div
-        class="enemy-hover-zone"
-        role="button"
-        tabindex="-1"
-        aria-label="Enemy info"
-        onmouseenter={() => { showEnemyTooltip = true }}
-        onmouseleave={() => { showEnemyTooltip = false }}
-      >
-        {#if showEnemyTooltip && intentDisplay}
-          <div class="enemy-tooltip" transition:fade={{ duration: 100 }}>
-            <div class="enemy-tooltip-header" style="color: {categoryColor}">{enemyName}</div>
-            <div class="enemy-tooltip-intent">
-              <span class="enemy-tooltip-label">Next:</span>
-              <span class="enemy-tooltip-value">{intentDetailText}</span>
-            </div>
-            {#if enemyEffects.length > 0}
-              <div class="enemy-tooltip-effects">
-                <span class="enemy-tooltip-label">Effects:</span>
-                {#each enemyEffects as effect}
-                  <span class="enemy-tooltip-effect-badge">
-                    {effect.type} {effect.value > 0 ? `×${effect.value}` : ''} ({effect.turnsRemaining}t)
-                  </span>
-                {/each}
-              </div>
-            {/if}
-            {#if intentDisplay.telegraph}
-              <div class="enemy-tooltip-telegraph">{intentDisplay.telegraph}</div>
-            {/if}
-          </div>
-        {/if}
-      </div>
-    {/if}
   {/if}
 </div>
 
@@ -2578,7 +2795,7 @@
   .ap-number {
     position: relative;
     z-index: 2;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-rpg);
     font-size: calc(28px * var(--layout-scale, 1));
     font-weight: 800;
     color: #ffffff;
@@ -2626,14 +2843,15 @@
   .enemy-intent-bubble {
     --intent-expanded-width: calc(200px * var(--layout-scale, 1));
     position: fixed;
-    top: calc(calc(32px * var(--layout-scale, 1)) + var(--safe-top));
+    top: calc(16% + var(--safe-top));
     left: 50%;
     transform: translateX(-50%);
     z-index: 12;
     border: 2px solid;
     border-radius: 14px;
-    width: calc(72px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    width: auto;
+    min-width: calc(80px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
     cursor: pointer;
     font: inherit;
@@ -2643,7 +2861,6 @@
     align-items: flex-start;
     gap: calc(4px * var(--layout-scale, 1));
     color: inherit;
-    overflow: hidden;
     -webkit-tap-highlight-color: transparent;
     transition: width 220ms cubic-bezier(0.22, 1, 0.36, 1), padding 160ms ease;
   }
@@ -2661,20 +2878,16 @@
     width: 100%;
   }
 
-  .intent-name-label {
-    position: fixed;
-    top: calc(12% + calc(56px * var(--layout-scale, 1)));
-    left: 30%;
+  .intent-expanded-text {
     font-size: calc(13px * var(--text-scale, 1));
-    font-weight: 700;
-    font-style: italic;
-    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    border-radius: calc(6px * var(--layout-scale, 1));
-    z-index: 13;
-    pointer-events: none;
+    color: #e2e8f0;
+    text-align: center;
+    line-height: 1.3;
     white-space: nowrap;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .intent-expanded-text strong {
+    font-weight: 800;
   }
 
   .intent-bubble-tail {
@@ -2691,8 +2904,8 @@
   }
 
   .intent-icon-img {
-    width: 2em;
-    height: 2em;
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -2704,8 +2917,8 @@
   }
 
   .intent-value {
-    font-size: calc(22px * var(--layout-scale, 1));
-    font-weight: 900;
+    font-size: calc(18px * var(--text-scale, 1));
+    font-weight: 700;
     font-family: 'Georgia', serif;
     color: #e2e8f0;
     text-shadow:
@@ -2714,26 +2927,32 @@
       -1px 1px 0 rgba(0,0,0,0.5),
       1px 1px 0 rgba(0,0,0,0.5);
     text-align: center;
+    min-width: calc(24px * var(--layout-scale, 1));
   }
 
   .intent-value-attack {
-    color: #ef4444;
+    color: #ff4444;
+    text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) rgba(255, 68, 68, 0.5);
   }
 
   .intent-value-defend {
-    color: #3b82f6;
+    color: #4499ff;
+    text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) rgba(68, 153, 255, 0.5);
   }
 
   .intent-value-heal {
-    color: #38bdf8;
+    color: #44ff88;
+    text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) rgba(68, 255, 136, 0.5);
   }
 
   .intent-value-buff {
-    color: #eab308;
+    color: #f0c860;
+    text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) rgba(240, 200, 96, 0.5);
   }
 
   .intent-value-debuff {
-    color: #a855f7;
+    color: #c084fc;
+    text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) rgba(192, 132, 252, 0.5);
   }
 
   .popup-val-attack {
@@ -2770,11 +2989,12 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
+    color: #ffffff;
     font-size: calc(24px * var(--text-scale, 1));
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: var(--font-rpg);
     text-shadow:
       -2px -2px 0 #000,
       2px -2px 0 #000,
@@ -3051,7 +3271,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(9px * var(--layout-scale, 1));
     color: #fff;
     letter-spacing: 0.5px;
@@ -3127,6 +3347,35 @@
     .wow-factor-overlay.wow-visible {
       transform: none;
     }
+  }
+
+  .turn-banner {
+    position: absolute;
+    top: calc(35% - calc(20px * var(--layout-scale, 1)));
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    z-index: 15;
+    font-size: calc(22px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: calc(3px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    color: #f0e6c0;
+    text-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(240, 200, 96, 0.6), 0 calc(2px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.8);
+    background: linear-gradient(90deg, transparent, rgba(10, 8, 20, 0.75) 20%, rgba(10, 8, 20, 0.75) 80%, transparent);
+    padding: calc(8px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+
+  .turn-banner-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .turn-banner.enemy-turn {
+    color: #ff6b6b;
+    text-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(255, 107, 107, 0.6), 0 calc(2px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.8);
   }
 
   .screen-edge-pulse {
@@ -3248,7 +3497,7 @@
   }
 
   .exhaust-count {
-    font-family: 'Press Start 2P', monospace;
+    font-family: var(--font-rpg);
     font-size: calc(8px * var(--layout-scale, 1));
     color: #aaa;
     line-height: 1;
@@ -3258,10 +3507,17 @@
     width: calc(72px * var(--layout-scale, 1));
     height: calc(92px * var(--layout-scale, 1));
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .pile-card-stack {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(-36px * var(--layout-scale, 1));
+    margin-left: calc(-26px * var(--layout-scale, 1));
     width: calc(52px * var(--layout-scale, 1));
     height: calc(72px * var(--layout-scale, 1));
     border-radius: 3px;
@@ -3294,6 +3550,8 @@
     font-weight: 800;
     color: #f8fafc;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    width: 100%;
   }
 
   .reshuffle-fly-zone {
@@ -3417,14 +3675,16 @@
     max-width: calc(240px * var(--layout-scale, 1));
   }
 
-  /* Intent bubble: left of HP bar — HP bar is centered at ~50% horizontal, 15% from top */
+  /* Intent bubble: upper-left of enemy sprite (sprite centered at 50% X, 45% Y) */
   .layout-landscape .enemy-intent-bubble {
     position: fixed;
-    top: 14%;
-    right: calc(50% + calc(100px * var(--layout-scale, 1)));
-    left: auto;
+    top: 28%;
+    right: auto;
+    left: calc(50% - calc(220px * var(--layout-scale, 1)));
     bottom: auto;
-    transform: translateY(-50%);
+    transform: translateX(-100%);
+    transition: left 350ms cubic-bezier(0.33, 1, 0.68, 1), top 350ms cubic-bezier(0.33, 1, 0.68, 1);
+    min-width: calc(90px * var(--layout-scale, 1));
   }
 
   /* Quiz-active landscape: enemy slides to right ~72% — reposition overlay elements to match */
@@ -3436,10 +3696,10 @@
   }
 
   .layout-landscape.quiz-active .enemy-intent-bubble {
-    left: auto;
-    right: calc(28% + calc(60px * var(--layout-scale, 1)));
-    top: 14%;
-    transform: translateY(-50%);
+    left: calc(72% - calc(220px * var(--layout-scale, 1)));
+    right: auto;
+    top: 28%;
+    transform: translateX(-100%);
   }
 
   :global(.layout-landscape.quiz-active .status-effect-bar-enemy) {
@@ -3448,21 +3708,23 @@
     transform: none;
   }
 
-  /* Pile indicators: bottom-left, just above stats bar */
+  /* Pile indicators: bottom-left/right, just above card hand strip in landscape */
   .layout-landscape .draw-pile-indicator {
     position: fixed;
-    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(8px * var(--layout-scale, 1)));
-    left: 2%;
+    bottom: calc(30vh + calc(8px * var(--layout-scale, 1)));
+    left: calc(8px * var(--layout-scale, 1));
     right: auto;
-    transform: none;
+    transform: scale(0.85);
+    transform-origin: bottom left;
   }
 
   .layout-landscape .discard-pile-indicator {
     position: fixed;
-    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(8px * var(--layout-scale, 1)));
-    right: 2%;
+    bottom: calc(30vh + calc(8px * var(--layout-scale, 1)));
+    right: calc(8px * var(--layout-scale, 1));
     left: auto;
-    transform: none;
+    transform: scale(0.85);
+    transform-origin: bottom right;
   }
 
   /* End turn button: bottom-LEFT, just above card hover tooltip */
@@ -3653,41 +3915,6 @@
     letter-spacing: 0.5px;
   }
 
-  .lsb-hp {
-    width: min(calc(400px * var(--layout-scale, 1)), 50%);
-    padding: 0 calc(8px * var(--layout-scale, 1));
-  }
-
-  .lsb-hp-track {
-    height: calc(22px * var(--layout-scale, 1));
-    border-radius: 999px;
-    border: 1px solid rgba(100, 116, 139, 0.7);
-    background: rgba(15, 23, 42, 0.82);
-    overflow: hidden;
-    position: relative;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
-  }
-
-  .lsb-hp-fill {
-    height: 100%;
-    min-width: 4px;
-    border-radius: 999px;
-    transition: width 160ms ease, background 160ms ease;
-  }
-
-  .lsb-hp-text {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Press Start 2P', monospace;
-    font-size: calc(10px * var(--text-scale, 1));
-    color: #fff;
-    text-shadow: -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
-    pointer-events: none;
-  }
-
   /* ── Landscape chain indicator: right of card hand ──── */
   .lsb-chain-indicator {
     display: none; /* hidden in portrait */
@@ -3726,139 +3953,30 @@
     line-height: 1;
   }
 
+  /* Quiz backdrop scrim — dims the Phaser canvas behind the quiz panel */
+  .quiz-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 25;
+    pointer-events: none;
+    animation: scrim-fade-in 200ms ease-out;
+  }
+
+  @keyframes scrim-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   /* §7: Quiz wrapper — transparent passthrough; Svelte out:fade applies opacity on exit */
   .quiz-wrapper {
     display: contents;
   }
 
-  /* Combat quiz language settings cogwheel */
-  .combat-quiz-settings {
-    position: fixed;
-    top: calc(8px * var(--layout-scale, 1));
-    right: calc(8px * var(--layout-scale, 1));
-    z-index: 120;
-    background: #b45309;
-    color: #fff;
-    border: none;
-    border-radius: calc(6px * var(--layout-scale, 1));
-    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    font-size: calc(14px * var(--text-scale, 1));
-    font-weight: 700;
-    cursor: pointer;
-    line-height: 1;
-    box-shadow: 0 calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.4);
-  }
-
-  .combat-quiz-settings:hover {
-    background: #92400e;
-  }
-
-  .combat-quiz-settings-popup {
-    position: fixed;
-    top: calc(36px * var(--layout-scale, 1));
-    right: calc(8px * var(--layout-scale, 1));
-    z-index: 120;
-    background: #1e1b2e;
-    border: 1px solid #b45309;
-    border-radius: calc(8px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1));
-    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.6);
-    min-width: calc(180px * var(--layout-scale, 1));
-  }
-
-  /* ── §9 Landscape: Enemy hover zone + tooltip ─────────── */
-
-  /* Hover zone covers the center-right of the arena (enemy default position).
-     Positioned: starts at 40% from left, takes ~50% width, fills arena height. */
-  .enemy-hover-zone {
-    display: none; /* hidden in portrait */
-  }
-
-  .layout-landscape .enemy-hover-zone {
-    display: block;
-    position: fixed;
-    left: 40%;
-    right: 0;
-    top: 0;
-    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)));
-    z-index: 8;
-    pointer-events: auto;
-    cursor: default;
-  }
-
-  .enemy-tooltip {
-    position: absolute;
-    /* Position to the LEFT of the enemy zone (slide out to the left) */
-    right: calc(100% + 8px);
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(8, 12, 24, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    padding: calc(12px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
-    min-width: calc(200px * var(--layout-scale, 1));
-    max-width: calc(280px * var(--layout-scale, 1));
-    pointer-events: none;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    gap: calc(8px * var(--layout-scale, 1));
-  }
-
-  .enemy-tooltip-header {
-    font-size: calc(14px * var(--layout-scale, 1));
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: calc(6px * var(--layout-scale, 1));
-    margin-bottom: calc(2px * var(--layout-scale, 1));
-  }
-
-  .enemy-tooltip-intent {
-    display: flex;
-    flex-direction: column;
-    gap: calc(2px * var(--layout-scale, 1));
-  }
-
-  .enemy-tooltip-label {
-    font-size: calc(10px * var(--layout-scale, 1));
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.45);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .enemy-tooltip-value {
-    font-size: calc(12px * var(--layout-scale, 1));
-    color: #e2e8f0;
-    line-height: 1.3;
-  }
-
-  .enemy-tooltip-effects {
-    display: flex;
-    flex-direction: column;
-    gap: calc(4px * var(--layout-scale, 1));
-  }
-
-  .enemy-tooltip-effect-badge {
-    display: inline-flex;
-    align-items: center;
-    font-size: calc(11px * var(--layout-scale, 1));
-    color: #a78bfa;
-    background: rgba(139, 92, 246, 0.12);
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    border-radius: 6px;
-    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
-  }
-
-  .enemy-tooltip-telegraph {
-    font-size: calc(11px * var(--layout-scale, 1));
-    color: rgba(255, 255, 255, 0.5);
-    font-style: italic;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: calc(6px * var(--layout-scale, 1));
-    margin-top: calc(2px * var(--layout-scale, 1));
-  }
+  /* Combat quiz settings moved into CardExpanded.svelte */
 
   /* M-3: Backdrop cancel hint — visible cue that tapping the backdrop cancels selection */
   .backdrop-cancel-hint {
@@ -3912,10 +4030,10 @@
     display: block;
     font-size: calc(13px * var(--text-scale, 1));
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.45);
+    color: #ffffff;
     text-transform: none;
     letter-spacing: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-rpg);
     margin-top: 1px;
   }
 
