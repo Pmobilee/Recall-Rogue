@@ -7,6 +7,7 @@ import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
 import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER } from '../data/balance';
 import { resolvePoisonTickBonus } from './relicEffectResolver';
+import { getAuraState } from './knowledgeAuraSystem';
 
 /**
  * Computes HP scaling factor for a given floor.
@@ -73,7 +74,7 @@ export function createEnemy(
   const hpMultiplier = options?.hpMultiplier ?? 1;
   const difficultyVariance = options?.difficultyVariance ?? 1;
   const scaledHP = Math.max(1, Math.round(template.baseHP * ENEMY_BASE_HP_MULTIPLIER * getFloorScaling(floor) * hpMultiplier * difficultyVariance));
-  return {
+  const instance: EnemyInstance = {
     template,
     currentHP: scaledHP,
     maxHP: scaledHP,
@@ -88,6 +89,11 @@ export function createEnemy(
     enrageBonusDamage: 0,
     playerChargedThisTurn: false,
   };
+  // AR-263: Initialize hardcover armor from template if defined (The Textbook)
+  if (template.hardcoverArmor !== undefined) {
+    instance._hardcover = template.hardcoverArmor;
+  }
+  return instance;
 }
 
 /**
@@ -153,6 +159,10 @@ export function applyDamageToEnemy(
   ) {
     enemy.phase = 2;
     rollNextIntent(enemy);
+    // AR-263: Fire onPhaseTransition callback for instance-level overrides (e.g. The Curriculum)
+    if (enemy.template.onPhaseTransition) {
+      enemy.template.onPhaseTransition(enemy);
+    }
   }
 
   return {
@@ -178,14 +188,21 @@ function getSegmentForFloor(floor: number): 1 | 2 | 3 | 4 | 'endless' {
 /**
  * Dispatches the onEnemyTurnStart callback for the given enemy, if defined.
  * Called at the start of each enemy turn (after player ends their turn).
- * Used for enrage logic (Timer Wyrm) and other per-turn enemy effects.
+ * Used for enrage logic (Timer Wyrm), mastery erosion (Brain Fog), and other per-turn enemy effects.
  *
  * @param enemy - The enemy instance (mutated in place by callback).
  * @param turnNumber - The current turn number (1-indexed).
+ * @param playerChargedCorrectLastTurn - Whether the player made at least 1 correct Charge last turn.
+ * @param playerHand - The actual card objects in the player's current hand (mutations affect real hand).
  */
-export function dispatchEnemyTurnStart(enemy: EnemyInstance, turnNumber: number): void {
+export function dispatchEnemyTurnStart(
+  enemy: EnemyInstance,
+  turnNumber: number,
+  playerChargedCorrectLastTurn: boolean,
+  playerHand: Array<{ id: string; masteryLevel?: number }>,
+): void {
   if (enemy.template.onEnemyTurnStart) {
-    const ctx: EnemyTurnStartContext = { enemy, turnNumber };
+    const ctx: EnemyTurnStartContext = { enemy, turnNumber, playerChargedCorrectLastTurn, playerHand };
     enemy.template.onEnemyTurnStart(ctx);
   }
 }
@@ -203,7 +220,14 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
   damage: number;
   playerEffects: StatusEffect[];
   enemyHealed: number;
+  stunned: boolean;
 } {
+  // AR-263: Pop Quiz stun — if stunned, skip action entirely
+  if (enemy._stunNextTurn) {
+    enemy._stunNextTurn = false;
+    return { damage: 0, playerEffects: [], enemyHealed: 0, stunned: true };
+  }
+
   const intent = enemy.nextIntent;
   const strengthMod = getStrengthModifier(enemy.statusEffects);
 
@@ -269,6 +293,11 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
     damage = Math.round(damage * enemy.difficultyVariance);
   }
 
+  // AR-261: Brain Fog — player's poor answer accuracy makes enemy hits 20% harder
+  if (damage > 0 && getAuraState() === 'brain_fog') {
+    damage = Math.round(damage * 1.2);
+  }
+
   // Apply per-turn damage cap by segment (AR-32)
   // Charged attacks (marked with bypassDamageCap) bypass the cap
   if (damage > 0 && !intent.bypassDamageCap) {
@@ -280,7 +309,7 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
     }
   }
 
-  return { damage, playerEffects, enemyHealed };
+  return { damage, playerEffects, enemyHealed, stunned: false };
 }
 
 /**

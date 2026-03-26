@@ -57,6 +57,11 @@ export type MysteryEffect =
   | { type: 'transformCard' }
   | { type: 'compound'; effects: MysteryEffect[] }
   | { type: 'random'; outcomes: MysteryEffect[][] }
+  | { type: 'quiz'; questionCount: number; difficulty: 'easy' | 'normal' | 'hard'; perCorrectRewards: MysteryEffect[]; perWrongPenalty?: MysteryEffect }
+  | { type: 'rivalDuel'; questionCount: number; rivalAccuracy: number; winEffect: MysteryEffect; tieEffect: MysteryEffect; loseEffect: MysteryEffect }
+  | { type: 'study'; factIds: string[] }
+  | { type: 'reviewMuseum' }
+  | { type: 'meditation' }
 
 // ============================================================
 // Room type weights by segment
@@ -121,16 +126,26 @@ const TIER_1_EVENTS: MysteryEvent[] = [
     effect: { type: 'upgradeRandomCard' },
   },
   {
-    id: 'scattered_coins',
-    name: 'Scattered Coins',
-    description: 'Someone left in a hurry. Their loss is your gain.',
-    effect: { type: 'currency', amount: 25 },
+    id: 'flashcard_merchant',
+    name: 'The Flashcard Merchant',
+    description: "A merchant sells knowledge bundles. 'Study now, profit later.'",
+    effect: { type: 'study', factIds: [] },
   },
   {
-    id: 'healing_fountain',
-    name: 'The Healing Fountain',
-    description: 'Crystal-clear water flows from a crack in the wall. It tastes like remembering something you forgot.',
-    effect: { type: 'healPercent', percent: 15 },
+    id: 'tutors_office',
+    name: "The Tutor's Office",
+    description: "An old scholar offers to review your knowledge. 'Answer well and I'll make it worth your while.'",
+    effect: {
+      type: 'quiz',
+      questionCount: 3,
+      difficulty: 'easy',
+      perCorrectRewards: [
+        { type: 'healPercent', percent: 5 },
+        { type: 'currency', amount: 10 },
+        { type: 'upgradeRandomCard' },
+      ],
+      perWrongPenalty: { type: 'nothing', message: 'The tutor corrects you gently.' },
+    },
   },
   {
     id: 'whispering_shelf',
@@ -178,17 +193,10 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     },
   },
   {
-    id: 'knowledge_tax',
-    name: 'Knowledge Tax',
-    description: "A toll booth carved into the stone. 'Knowledge has a price,' reads the sign.",
-    effect: {
-      type: 'choice',
-      options: [
-        { label: 'Pay 30 gold (heal 20% HP)', effect: { type: 'compound', effects: [{ type: 'currency', amount: -30 }, { type: 'healPercent', percent: 20 }] } },
-        { label: 'Pay with blood (take 12 dmg, gain 40 gold)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 12 }, { type: 'currency', amount: 40 }] } },
-        { label: 'Refuse', effect: { type: 'nothing', message: 'You walk past. The toll booth watches.' } },
-      ],
-    },
+    id: 'wrong_answer_museum',
+    name: 'The Wrong Answer Museum',
+    description: "Your mistakes line the walls. Study them to grow stronger.",
+    effect: { type: 'reviewMuseum' },
   },
   {
     id: 'copyists_workshop',
@@ -228,15 +236,16 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     },
   },
   {
-    id: 'gamblers_tome',
-    name: "The Gambler's Tome",
-    description: 'A tome bound in shuffled cards. Opening it could be enlightening — or painful.',
+    id: 'rival_student',
+    name: 'The Rival Student',
+    description: "A fellow scholar challenges you. 'Think you know more than me?'",
     effect: {
-      type: 'choice',
-      options: [
-        { label: 'Open it (risk 15 HP for a card upgrade)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 15 }, { type: 'upgradeRandomCard' }] } },
-        { label: 'Walk away', effect: { type: 'nothing', message: 'Discretion is the better part of valor.' } },
-      ],
+      type: 'rivalDuel',
+      questionCount: 5,
+      rivalAccuracy: 0.65,
+      winEffect: { type: 'compound', effects: [{ type: 'freeCard' }, { type: 'healPercent', percent: 10 }] },
+      tieEffect: { type: 'currency', amount: 15 },
+      loseEffect: { type: 'nothing', message: 'Better luck next time.' },
     },
   },
 ]
@@ -245,13 +254,18 @@ const TIER_3_EVENTS: MysteryEvent[] = [
   {
     id: 'burning_library',
     name: 'The Burning Library',
-    description: 'Fire crawls across the shelves. You could save something if you\u2019re fast enough.',
+    description: 'Books are falling from the shelves! Save what you can!',
     effect: {
-      type: 'choice',
-      options: [
-        { label: 'Rush in! (lose 15 HP, upgrade a card + gain a card)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 15 }, { type: 'upgradeRandomCard' }, { type: 'freeCard' }] } },
-        { label: 'Watch it burn', effect: { type: 'nothing', message: 'You watch centuries of knowledge turn to ash.' } },
+      type: 'quiz',
+      questionCount: 4,
+      difficulty: 'easy',
+      perCorrectRewards: [
+        { type: 'currency', amount: 15 },
+        { type: 'upgradeRandomCard' },
+        { type: 'healPercent', percent: 10 },
+        { type: 'upgradeRandomCard' },
       ],
+      perWrongPenalty: { type: 'nothing', message: 'That book is lost to the flames.' },
     },
   },
   {
@@ -308,15 +322,15 @@ const TIER_3_EVENTS: MysteryEvent[] = [
 
 const TIER_4_EVENTS: MysteryEvent[] = [
   {
-    id: 'final_wager',
-    name: 'The Final Wager',
-    description: "A figure shuffles a single card. 'Your health against my prize. Fifty-fifty. Interested?'",
+    id: 'knowledge_gamble',
+    name: 'The Knowledge Gamble',
+    description: 'One question. Everything on the line.',
     effect: {
-      type: 'choice',
-      options: [
-        { label: 'Accept the wager (50/50: heal 20% + 30g, or lose half HP)', effect: { type: 'random', outcomes: [[{ type: 'healPercent', percent: 20 }, { type: 'currency', amount: 30 }], [{ type: 'damage', amount: 50 }]] } },
-        { label: 'No deal', effect: { type: 'nothing', message: "The figure shrugs and fades." } },
-      ],
+      type: 'quiz',
+      questionCount: 1,
+      difficulty: 'hard',
+      perCorrectRewards: [{ type: 'healPercent', percent: 100 }],
+      perWrongPenalty: { type: 'maxHpChange', amount: -8 },
     },
   },
   {
@@ -326,17 +340,10 @@ const TIER_4_EVENTS: MysteryEvent[] = [
     effect: { type: 'removeRandomCard' },
   },
   {
-    id: 'the_recursion',
-    name: 'The Recursion',
-    description: "A figure in familiar armor sits exhausted against the wall. It\u2019s you — from a run that didn\u2019t make it this far.",
-    effect: {
-      type: 'choice',
-      options: [
-        { label: 'Share knowledge (upgrade a card)', effect: { type: 'upgradeRandomCard' } },
-        { label: 'Take their supplies (heal 15% + 20 gold)', effect: { type: 'compound', effects: [{ type: 'healPercent', percent: 15 }, { type: 'currency', amount: 20 }] } },
-        { label: 'Walk away', effect: { type: 'nothing', message: 'You leave yourself behind.' } },
-      ],
-    },
+    id: 'meditation_chamber',
+    name: 'The Meditation Chamber',
+    description: "Silence. Your mind reflects on what you know — and what you don't.",
+    effect: { type: 'meditation' },
   },
   {
     id: 'eraser_storm',

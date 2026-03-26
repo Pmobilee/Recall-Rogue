@@ -325,18 +325,18 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   },
 
   // Mystery event by ID examples
-  'mystery-healing-fountain': {
+  'mystery-tutors-office': {
     screen: 'mysteryEvent',
-    mysteryEventId: 'healing_fountain',
+    mysteryEventId: 'tutors_office',
   },
-  'mystery-gamblers-tome': {
+  'mystery-rival-student': {
     screen: 'mysteryEvent',
-    mysteryEventId: 'gamblers_tome',
+    mysteryEventId: 'rival_student',
     floor: 4,
   },
-  'mystery-final-wager': {
+  'mystery-knowledge-gamble': {
     screen: 'mysteryEvent',
-    mysteryEventId: 'final_wager',
+    mysteryEventId: 'knowledge_gamble',
     floor: 10,
   },
 
@@ -1370,8 +1370,8 @@ function printHelp(): void {
     '',
     'MYSTERY EVENT HELPERS',
     '  __terraScenario.listMysteryEvents()      List all event IDs (logs table)',
-    '  load("mystery-healing-fountain")         Load event by ID preset',
-    '  loadCustom({ screen:"mysteryEvent", mysteryEventId:"healing_fountain" })',
+    '  load("mystery-tutors-office")            Load event by ID preset',
+    '  loadCustom({ screen:"mysteryEvent", mysteryEventId:"tutors_office" })',
     '',
     'SCREEN NAVIGATION SCENARIOS',
     '  onboarding, domain-selection, archetype-selection, relic-sanctum',

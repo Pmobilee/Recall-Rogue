@@ -247,6 +247,10 @@ export const synergyFlash = singletonWritable<string | null>('synergyFlash', nul
 export interface RewardBundle {
   goldEarned: number
   healAmount: number
+  /** AR-262: Accuracy grade from the encounter's charge performance. */
+  accuracyGrade?: import('../../services/accuracyGradeSystem').AccuracyGrade
+  /** AR-262: Accuracy percentage (0-100) for display. */
+  accuracyPct?: number
 }
 
 export type RewardRevealStep = 'gold' | 'heal' | 'card'

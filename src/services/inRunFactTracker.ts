@@ -8,6 +8,10 @@ export interface InRunFactState {
   confusedWith: string[];       // Fact IDs this was confused with (wrong answer selections)
   averageResponseTimeMs: number;
   streak: number;               // Current consecutive correct (resets on wrong)
+  /** Flat damage multiplier bonus granted by Tutor's Office or Study sessions (e.g. 0.3 = +30%). Stacks additively. */
+  damageBonus: number;
+  /** Encounter number at which the tutor damage bonus expires (inclusive). Undefined = no expiry. */
+  tutorBonusExpiresAtEncounter?: number;
 }
 
 /**
@@ -67,6 +71,7 @@ export class InRunFactTracker {
             confusedWith: [],
             averageResponseTimeMs: 0,
             streak: 0,
+            damageBonus: 0,
           });
         } else if (stability > 30) {
           this.states.set(factId, {
@@ -77,6 +82,7 @@ export class InRunFactTracker {
             confusedWith: [],
             averageResponseTimeMs: 0,
             streak: 0,
+            damageBonus: 0,
           });
         }
         // else: no pre-seeded state, will be created on first encounter
@@ -105,6 +111,7 @@ export class InRunFactTracker {
         confusedWith: [],
         averageResponseTimeMs: 0,
         streak: 0,
+        damageBonus: 0,
       };
       this.states.set(factId, state);
     }
@@ -242,5 +249,57 @@ export class InRunFactTracker {
 
   getRecentTemplateIds(): string[] {
     return [...this.recentTemplateIds];
+  }
+
+  /**
+   * Add a damage bonus multiplier to a specific fact.
+   * Bonuses are additive (e.g. two +0.3 bonuses = +0.6 total).
+   * Creates the fact state entry if it doesn't exist yet.
+   */
+  addDamageBonus(factId: string, bonus: number): void {
+    let state = this.states.get(factId);
+    if (!state) {
+      state = {
+        factId,
+        correctCount: 0,
+        wrongCount: 0,
+        lastSeenEncounter: 0,
+        confusedWith: [],
+        averageResponseTimeMs: 0,
+        streak: 0,
+        damageBonus: 0,
+      };
+      this.states.set(factId, state);
+    }
+    state.damageBonus += bonus;
+  }
+
+  /**
+   * Get the current damage bonus multiplier for a fact (0 if none / fact not tracked).
+   */
+  getDamageBonus(factId: string): number {
+    return this.states.get(factId)?.damageBonus ?? 0;
+  }
+
+  /**
+   * Decay (clear) tutor damage bonuses that have expired.
+   * Call at the start of each encounter.
+   * @param currentEncounterNumber - The current encounter number from floor state.
+   */
+  decayTutorBonuses(currentEncounterNumber: number): void {
+    for (const state of this.states.values()) {
+      if (
+        state.tutorBonusExpiresAtEncounter !== undefined &&
+        currentEncounterNumber > state.tutorBonusExpiresAtEncounter
+      ) {
+        state.damageBonus = Math.max(0, state.damageBonus - 0.3); // Remove tutor portion
+        state.tutorBonusExpiresAtEncounter = undefined;
+      }
+    }
+  }
+
+  /** Get all tracked fact states (for review museum, meditation UI, etc.) */
+  getAllStates(): InRunFactState[] {
+    return Array.from(this.states.values());
   }
 }

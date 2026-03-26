@@ -73,6 +73,12 @@ export interface TurnStartEffects {
    * 0 if relic not held.
    */
   maxApReduction?: number;
+  /**
+   * AP modifier from domain_mastery_sigil based on Knowledge Aura state.
+   * +1 in Flow State, -1 in Brain Fog, 0 in Neutral.
+   * Applied in addition to bonusAP; caller enforces AP min/max caps.
+   */
+  auraApModifier?: number;
 }
 
 /**
@@ -85,6 +91,11 @@ export interface TurnStartContext {
   characterLevel: number;
   /** Whether Deja Vu has already been used this encounter. */
   dejaVuUsedThisEncounter: boolean;
+  /**
+   * Current Knowledge Aura state (domain_mastery_sigil v3: AP modifier).
+   * 'brain_fog' | 'neutral' | 'flow_state'. Optional; ignored if domain_mastery_sigil not held.
+   */
+  auraState?: 'brain_fog' | 'neutral' | 'flow_state';
 }
 
 /**
@@ -150,12 +161,24 @@ export function resolveTurnStartEffects(
     maxApReduction = 1;
   }
 
+  // domain_mastery_sigil (v3) — +1 AP in Flow State, -1 AP in Brain Fog
+  let auraApModifier: number | undefined;
+  if (relicIds.has('domain_mastery_sigil') && context?.auraState) {
+    if (context.auraState === 'flow_state') {
+      auraApModifier = 1;
+    } else if (context.auraState === 'brain_fog') {
+      auraApModifier = -1;
+    } else {
+      auraApModifier = 0;
+    }
+  }
+
   // Audio: fire once if any turn-start relic produced a non-zero effect
   const relicFired = bonusBlock > 0 || capacitorReleasedAP > 0 || bonusAP > 0;
   if (relicFired) playCardAudio('relic-trigger');
   if (dejaVuCardSpawn) playCardAudio('relic-card-spawn');
 
-  return { bonusBlock, capacitorReleasedAP, bonusAP, pocketWatchDrawBonus, dejaVuCardSpawn, bonusCardDraw, maxApReduction };
+  return { bonusBlock, capacitorReleasedAP, bonusAP, pocketWatchDrawBonus, dejaVuCardSpawn, bonusCardDraw, maxApReduction, auraApModifier };
 }
 
 // ─── Encounter Start ────────────────────────────────────────────────
@@ -173,9 +196,9 @@ export interface EncounterStartEffects {
   /** Whether the player permanently sees 2 enemy intents (cartographers_lens v1 legacy). */
   permanentForesight: boolean;
   /**
-   * Random buff from lucky_coin (v2).
-   * One of: 'empower' | 'block_2' | 'ap_1' | 'draw_1' | null.
-   * Caller applies the buff effect; null if lucky_coin not held.
+   * Random buff from lucky_coin (v2 legacy — v3 reworked to on_charge_wrong safety net).
+   * Always null in v3. Field kept for backwards compatibility.
+   * @deprecated lucky_coin v3 fires on wrong Charges, not encounter start.
    */
   luckyBuff: 'empower' | 'block_2' | 'ap_1' | 'draw_1' | null;
   /**
@@ -195,7 +218,7 @@ export interface EncounterStartEffects {
   startingBlock?: number;
 }
 
-/** Buff pool for lucky_coin (v2). */
+/** @deprecated lucky_coin v3 no longer uses a buff pool (moved to on_charge_wrong). */
 const LUCKY_BUFF_POOL: Array<'empower' | 'block_2' | 'ap_1' | 'draw_1'> = [
   'empower', 'block_2', 'ap_1', 'draw_1',
 ];
@@ -223,10 +246,10 @@ export function resolveEncounterStartEffects(
     }
   }
 
-  // lucky_coin (v2) — random buff each encounter start
-  const luckyBuff: EncounterStartEffects['luckyBuff'] = relicIds.has('lucky_coin')
-    ? LUCKY_BUFF_POOL[Math.floor(Math.random() * LUCKY_BUFF_POOL.length)]
-    : null;
+  // lucky_coin (v3) — effect moved to resolveChargeWrongEffects (safety net after 3 wrong Charges).
+  // Encounter start no longer triggers lucky_coin.
+  const luckyBuff: EncounterStartEffects['luckyBuff'] = null;
+  void LUCKY_BUFF_POOL; // suppress unused warning
 
   // red_fang — first attack each encounter +30% damage (informational; caller applies to first attack only)
   const firstAttackDamageBonus = relicIds.has('red_fang') ? 0.30 : 0;
@@ -340,6 +363,11 @@ export interface AttackContext {
    * Set to true by resolveHpLossEffects when source === 'self'.
    */
   bloodletterArmed?: boolean;
+  /**
+   * Accumulated wrong Charges this run (scar_tissue v3: +2 flat damage per stack).
+   * Caller passes runState.scarTissueStacks. 0 or undefined = no stacks.
+   */
+  scarTissueStacks?: number;
 }
 
 /**
@@ -443,12 +471,12 @@ export function resolveAttackModifiers(
     percentDamageBonus += 0.40;
   }
 
-  // domain_mastery_sigil (v2) — deck has 4+ cards of same domain: all same-domain cards +30% damage
-  if (relicIds.has('domain_mastery_sigil') && context.cardDomain && context.deckDomainCounts) {
-    const domainCount = context.deckDomainCounts[context.cardDomain] ?? 0;
-    if (domainCount >= 4) {
-      percentDamageBonus += 0.30;
-    }
+  // domain_mastery_sigil (v3) — effect moved to resolveTurnStartEffects (Aura-based AP modifier).
+  // The old domain_concentration_bonus (+30% for 4+ same-domain) has been removed.
+
+  // scar_tissue (v3) — +2 flat damage per accumulated wrong Charge this run
+  if (relicIds.has('scar_tissue') && (context.scarTissueStacks ?? 0) > 0) {
+    flatDamageBonus += (context.scarTissueStacks ?? 0) * 2;
   }
 
   // === EXPANSION RELICS ===
@@ -1395,8 +1423,8 @@ export interface ChargeCorrectEffects {
    */
   shieldBonus: number;
   /**
-   * Scholar's Crown bonus for tier 1/2/3 facts.
-   * 0 = no bonus, 10 = +10% (tier 1), 40 = +40% (tier 2+), 75 = +75% (tier 3 auto-Charged).
+   * Scholar's Crown bonus (v3: review queue based).
+   * 40 = +40% for Review Queue facts; 10 = +10% for other correct Charges. 0 if relic not held.
    */
   scholarsCrownBonus: number;
   /**
@@ -1429,15 +1457,30 @@ export interface ChargeCorrectEffects {
   autoSucceedNextCharge: boolean;
   /**
    * Akashic Record Tier 3 multiplier override.
-   * When relic held and cardTier >= 3: tier3 auto-Charge uses 1.5× instead of 1.2×.
-   * 0 = no override, 1.5 = override active.
+   * @deprecated v3 — akashic_record reworked to akashicChargeBonus. Always 0.
    */
   akashicTier3MultiplierOverride: number;
   /**
    * Akashic Record hint: factId of previously-wrong answer to subtly highlight in quiz UI.
-   * null if relic not held, fact tier < 2, or no previous wrong on this fact.
+   * @deprecated v3 — akashic_record reworked. Always null.
    */
   akashicRecordHintFactId: string | null;
+  /**
+   * Akashic Record v3 bonus: +50% damage when fact not seen in 3+ encounters.
+   * 50 if the spacing condition is met, 0 otherwise.
+   */
+  akashicChargeBonus: number;
+  /**
+   * Akashic Record v3 draw bonus: draw 1 extra card next turn when spacing condition fires.
+   * 1 if the spacing condition is met, 0 otherwise.
+   */
+  akashicBonusDraw: number;
+  /**
+   * Lucky Coin v3: armed flag — +50% damage bonus on next correct Charge.
+   * true when lucky_coin held AND 3 wrong Charges have been accumulated this encounter.
+   * Caller consumes this flag after applying the bonus (resets wrongChargesThisEncounter).
+   */
+  luckyCoinArmed: boolean;
   /**
    * Volatile Manuscript self-Burn: stacks of Burn to apply to player.
    * 4 stacks every 3rd total Charge this run. 0 otherwise.
@@ -1470,6 +1513,33 @@ export interface ChargeCorrectContext {
   mirrorUsedThisEncounter: boolean;
   /** Whether the adrenaline_shard has already refunded AP this turn. */
   adrenalineShard_usedThisTurn: boolean;
+  /**
+   * Whether this fact is currently in the Review Queue (scholars_crown v3).
+   * True = +40% bonus; false/undefined = +10% base bonus.
+   */
+  wasReviewQueueFact?: boolean;
+  /**
+   * Cumulative wrong Charges accumulated this encounter (lucky_coin v3).
+   * lucky_coin arms when this reaches 3 and luckyCoinArmed is not yet set.
+   */
+  wrongChargesThisEncounter?: number;
+  /**
+   * Whether lucky_coin safety net is currently armed (lucky_coin v3).
+   * When true, the next correct Charge gets +50% damage.
+   * Caller must reset this flag after consuming.
+   */
+  luckyCoinArmed?: boolean;
+  /**
+   * Accumulated wrong Charges this run (scar_tissue v3 stack counter).
+   * Used to compute flat damage bonus: scar_tissue_stacks × 2.
+   */
+  scarTissueStacks?: number;
+  /**
+   * AR-269: Akashic Record spacing — number of encounters since this fact was last charged.
+   * 0 = never seen before (grants bonus); positive = encounters elapsed since last charge.
+   * factEncounterGap >= 3 OR factEncounterGap === 0 triggers the Akashic bonus.
+   */
+  factEncounterGap?: number;
 }
 
 /**
@@ -1503,11 +1573,11 @@ export function resolveChargeCorrectEffects(
     apRefund = 1;
   }
 
-  // memory_nexus — 3rd cumulative Charged correct in encounter draws 2 extra next turn
+  // memory_nexus (v3) — draw 2 on every 3rd correct Charge in encounter (repeating)
   if (
     relicIds.has('memory_nexus') &&
-    context.chargeCountThisEncounter >= 3 &&
-    (context.chargeCountThisEncounter - 1) < 3 // only triggers exactly on the 3rd
+    context.chargeCountThisEncounter > 0 &&
+    context.chargeCountThisEncounter % 3 === 0
   ) {
     drawBonus = 2;
   }
@@ -1520,15 +1590,9 @@ export function resolveChargeCorrectEffects(
     shieldBonus = 75;
   }
 
-  // scholars_crown — tier bonus
+  // scholars_crown (v3) — +40% on Review Queue facts, +10% on all other correct Charges
   if (relicIds.has('scholars_crown')) {
-    if (context.cardTier >= 3) {
-      scholarsCrownBonus = 75;
-    } else if (context.cardTier >= 2) {
-      scholarsCrownBonus = 40;
-    } else if (context.cardTier >= 1) {
-      scholarsCrownBonus = 10;
-    }
+    scholarsCrownBonus = context.wasReviewQueueFact ? 40 : 10;
   }
 
   // mirror_of_knowledge — available if not yet used this encounter
@@ -1550,13 +1614,32 @@ export function resolveChargeCorrectEffects(
   const autoSucceedNextCharge =
     relicIds.has('omniscience') && context.correctChargesThisTurn >= 3;
 
-  // akashic_record — Tier 3 auto-Charge uses 1.5× instead of 1.2×
-  const akashicTier3MultiplierOverride =
-    relicIds.has('akashic_record') && context.cardTier >= 3 ? 1.5 : 0;
+  // akashic_record (v3) — +50% damage + draw 1 when fact not seen in 3+ encounters.
+  // factEncounterGap === 0 means the fact has never been charged before (new fact = bonus).
+  // factEncounterGap >= 3 means 3 or more encounters have elapsed since last charge (bonus).
+  // factEncounterGap = 1 or 2 means recently seen (no bonus). undefined defaults to bonus (safe).
+  const akashicGap = context.factEncounterGap;
+  const akashicSpacingMet = akashicGap === undefined || akashicGap === 0 || akashicGap >= 3;
+  const akashicChargeBonus = (relicIds.has('akashic_record') && akashicSpacingMet) ? 50 : 0;
+  const akashicBonusDraw = (relicIds.has('akashic_record') && akashicSpacingMet) ? 1 : 0;
 
-  // akashic_record — hint: return factId to subtly highlight previously-wrong answer in UI
-  // (UI-only effect; resolver signals the caller to apply the hint for tier 2+ facts)
-  const akashicRecordHintFactId: string | null = null; // UI layer reads context.factId and applies hint
+  // akashic_record legacy fields — kept for interface compatibility; deprecated in v3
+  const akashicTier3MultiplierOverride = 0;
+  const akashicRecordHintFactId: string | null = null;
+
+  // scar_tissue (v3) — flat damage bonus from accumulated wrong Charges (stacks × 2)
+  // Applied as flatDamageBonus in resolveAttackModifiers; surfaced here for charge-correct context
+  // (already wired below via return; caller also uses scarTissueStacks directly in damage pipeline)
+  const scarTissueFlatBonus = relicIds.has('scar_tissue')
+    ? (context.scarTissueStacks ?? 0) * 2
+    : 0;
+  // Note: flatDamageBonus is part of AttackModifiers, not ChargeCorrectEffects.
+  // The scarTissueFlatBonus is returned here as chargeCorrectBonusPercent is not the right slot.
+  // The caller (turnManager) must read scarTissueStacks from run state and pass it to resolveAttackModifiers.
+  void scarTissueFlatBonus; // surfaced via context; direct wiring in turnManager
+
+  // lucky_coin (v3) — +50% damage on next correct Charge after 3 wrong Charges this encounter
+  const luckyCoinArmed = !!(relicIds.has('lucky_coin') && context.luckyCoinArmed);
 
   // volatile_manuscript — +0.5× to all Charge multipliers; every 3rd total Charge applies 4 self-Burn
   if (relicIds.has('volatile_manuscript')) {
@@ -1596,6 +1679,16 @@ export function resolveChargeCorrectEffects(
   }
   const finalGoldBonus = goldBonus + (relicIds.has('knowledge_tax') ? 10 : 0);
 
+  // lucky_coin v3 — apply +50% damage boost when armed
+  if (luckyCoinArmed) {
+    extraMultiplier *= 1.5;
+  }
+
+  // akashic_record v3 — +50% damage on all correct Charges
+  if (akashicChargeBonus > 0) {
+    extraMultiplier *= (1 + akashicChargeBonus / 100);
+  }
+
   return {
     extraMultiplier,
     apRefund,
@@ -1609,9 +1702,12 @@ export function resolveChargeCorrectEffects(
     autoSucceedNextCharge,
     akashicTier3MultiplierOverride,
     akashicRecordHintFactId,
+    akashicChargeBonus,
+    akashicBonusDraw,
     selfBurnApply,
     chargeCorrectBonusPercent,
     chargeCorrectPenaltyPercent,
+    luckyCoinArmed,
   };
 }
 
@@ -1646,6 +1742,18 @@ export interface ChargeWrongEffects {
    * mnemonic_scar: true if the fact was previously answered correctly (saves from penalty).
    */
   resolveAtCcPower?: boolean;
+  /**
+   * Scar Tissue v3: caller should increment scarTissueStacks in run state by 1.
+   * true if scar_tissue held.
+   */
+  scarTissueStackIncrement: boolean;
+  /**
+   * Lucky Coin v3: the updated wrong-Charge counter for this encounter after this wrong answer.
+   * Caller stores this in encounter state. When it reaches 3, set luckyCoinArmed = true
+   * in the next ChargeCorrectContext to trigger the +50% bonus.
+   * -1 if lucky_coin not held (sentinel: caller ignores).
+   */
+  luckyCoinWrongCount: number;
 }
 
 /** Context for resolveChargeWrongEffects. */
@@ -1657,6 +1765,11 @@ export interface ChargeWrongContext {
    * If true, mnemonic_scar resolves at charge-correct power instead of dealing self-damage.
    */
   factPreviouslyCorrect?: boolean;
+  /**
+   * Current wrong-Charge count this encounter BEFORE this wrong answer (lucky_coin v3).
+   * Resolver increments and returns the new count via luckyCoinWrongCount.
+   */
+  wrongChargesThisEncounter?: number;
 }
 
 /**
@@ -1710,9 +1823,21 @@ export function resolveChargeWrongEffects(
     playCardAudio('relic-trigger');
   }
 
+  // scar_tissue (v3) — wrong Charge adds +2 flat damage to all future correct Charges this run.
+  // Caller increments scarTissueStacks in run state and passes it via ChargeCorrectContext.scarTissueStacks.
+  const scarTissueStackIncrement = relicIds.has('scar_tissue');
+
+  // lucky_coin (v3) — track wrong Charges per encounter; arm +50% on next correct Charge at 3.
+  // Returns the incremented wrong-Charge counter for this encounter.
+  let luckyCoinWrongCount = -1; // -1 = not held (sentinel)
+  if (relicIds.has('lucky_coin')) {
+    luckyCoinWrongCount = (context.wrongChargesThisEncounter ?? 0) + 1;
+    playCardAudio('relic-trigger');
+  }
+
   void context; // factId used by caller to update run state
 
-  return { selfDamage, enemyDamage, revealAndAutopass, goldBonus, multiplierOverride, piercingDamage, resolveAtCcPower };
+  return { selfDamage, enemyDamage, revealAndAutopass, goldBonus, multiplierOverride, piercingDamage, resolveAtCcPower, scarTissueStackIncrement, luckyCoinWrongCount };
 }
 
 // ─── V2 Chain Complete Effects ──────────────────────────────────────

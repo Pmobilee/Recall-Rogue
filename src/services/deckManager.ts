@@ -406,6 +406,11 @@ export function discardCard(deck: CardRunState, cardId: string): Card {
 export function discardHand(deck: CardRunState): Card[] {
   if (deck.hand.length === 0) return [];
   const discarded = [...deck.hand];
+  // AR-268: Clear Trick Question lock flags when cards leave the hand
+  for (const card of discarded) {
+    card.isLocked = undefined;
+    card.lockedFactId = undefined;
+  }
   deck.discardPile.push(...discarded);
   deck.hand = [];
   return discarded;

@@ -5,6 +5,8 @@ import type { StatusEffect, StatusEffectType } from '../../src/data/statusEffect
 import type { Fact } from '../../src/data/types';
 import type { PlayerCombatState } from '../../src/services/playerCombatState';
 import type { TurnState } from '../../src/services/turnManager';
+import { resetAura } from '../../src/services/knowledgeAuraSystem';
+import { resetReviewQueue } from '../../src/services/reviewQueueSystem';
 
 // Status Effects
 import {
@@ -401,16 +403,16 @@ describe('Enemy Manager', () => {
     it('creates enemy with scaled HP for floor 1', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 1);
-      // 20 * 2.0 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 40
-      expect(enemy.currentHP).toBe(40);
-      expect(enemy.maxHP).toBe(40);
+      // 20 * 4.0 (ENEMY_BASE_HP_MULTIPLIER) * 1.0 (floor 1) = 80
+      expect(enemy.currentHP).toBe(80);
+      expect(enemy.maxHP).toBe(80);
     });
 
     it('scales HP for higher floors', () => {
       const template = mockEnemyTemplate({ baseHP: 20 });
       const enemy = createEnemy(template, 5);
-      // 20 * 2.0 * 1.40 (floor 5) = 56
-      expect(enemy.currentHP).toBe(Math.round(20 * 2.0 * getFloorScaling(5)));
+      // 20 * 4.0 * 1.40 (floor 5) = 112
+      expect(enemy.currentHP).toBe(Math.round(20 * 4.0 * getFloorScaling(5)));
     });
 
     it('starts in phase 1', () => {
@@ -979,6 +981,8 @@ describe('Turn Manager', () => {
 
   beforeEach(() => {
     resetCardIdCounter();
+    resetAura();
+    resetReviewQueue();
     const cards = makeCards(20);
     deck = createDeck(cards);
     enemy = createEnemy(mockEnemyTemplate({ baseHP: 50 }), 1);
@@ -1161,10 +1165,10 @@ describe('Turn Manager', () => {
     it('draws new hand', () => {
       const ts = startEncounter(deck, enemy);
       ts.apCurrent = 99; // bypass AP gating for this legacy full-hand drain test
-      // Play all cards to empty hand
+      // Play all cards to empty hand (use quick play to avoid Aura changes affecting draw count)
       while (ts.deck.hand.length > 0) {
         const cardId = ts.deck.hand[0].id;
-        const play = playCardAction(ts, cardId, true, false);
+        const play = playCardAction(ts, cardId, false, false, 'quick');
         if (play.blocked) break;
         if (ts.result) break;
       }

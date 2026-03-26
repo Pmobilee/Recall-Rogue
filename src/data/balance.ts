@@ -404,7 +404,7 @@ export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   4: 0.65,   // Segment 4 (floors 19-24): cap at 65%
 };
 /** Global base HP multiplier for all enemies. Ensures early fights require 2+ turns. */
-export const ENEMY_BASE_HP_MULTIPLIER = 2.0;
+export const ENEMY_BASE_HP_MULTIPLIER = 4.0;
 /** HP multiplier for mini-bosses on floors 1-3 (1.0 = no reduction, proper base HP handles early balance). */
 export const EARLY_MINI_BOSS_HP_MULTIPLIER = 1.0;
 

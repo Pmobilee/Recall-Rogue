@@ -7,6 +7,8 @@ import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier }
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, extendOrResetChain, getChainState, getCurrentChainLength } from './chainSystem';
+import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
+import { resetReviewQueue, addToReviewQueue, clearReviewQueueFact, isReviewQueueFact } from './reviewQueueSystem';
 import { CHAIN_MOMENTUM_ENABLED, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
 import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
@@ -65,6 +67,44 @@ import {
   resolveExhaustEffects,
   resolveChainBreakEffects,
 } from './relicEffectResolver';
+
+// ─── AR-269: Akashic Record — fact spacing tracker ──────────────────────────
+/**
+ * Module-level map: factId → last encounter number it was charged in.
+ * Persists across encounters within a run; reset at run start via resetFactLastSeenEncounter().
+ * "Encounter number" = the value of turnState.encounterNumber when the card was charged.
+ */
+const _factLastSeenEncounterMap = new Map<string, number>();
+
+/**
+ * Reset the fact-last-seen map. Call at the start of every new run so spacing
+ * doesn't carry over from a previous run in the same session.
+ */
+export function resetFactLastSeenEncounter(): void {
+  _factLastSeenEncounterMap.clear();
+  // Also reset run-scoped relic state so scar_tissue stacks don't bleed across runs
+  _scarTissueStacks = 0;
+}
+
+// ─── Relic encounter-state counters ─────────────────────────────────────────
+/**
+ * Scar Tissue (v3): accumulates +1 per wrong Charge across the entire run.
+ * Each stack adds +2 flat damage to attack cards via resolveAttackModifiers.
+ * Reset at run start (not per-encounter).
+ */
+let _scarTissueStacks = 0;
+
+/**
+ * Lucky Coin (v3): wrong Charges accumulated this encounter.
+ * Resets to 0 at encounter start and after arming.
+ */
+let _wrongChargesForLuckyCoin = 0;
+
+/**
+ * Lucky Coin (v3): armed flag — true when 3 wrong Charges have been accumulated
+ * this encounter. Next correct Charge gets +50% damage multiplier, then resets.
+ */
+let _luckyCoinArmed = false;
 
 /** Maps a status effect type to its apply audio cue. No-ops for unmapped types. */
 function playStatusAudio(statusType: string): void {
@@ -304,6 +344,18 @@ export interface TurnState {
    * Cleared at turn start.
    */
   chargeCorrectsThisTurn: number;
+  /**
+   * AR-262: Total correct Charge answers this encounter (does NOT reset on wrong answer).
+   * Used together with encounterChargesTotal to compute the post-encounter accuracy grade.
+   * encounterChargesTotal = attempted, chargesCorrectThisEncounter = correct.
+   */
+  chargesCorrectThisEncounter: number;
+  /**
+   * AR-269: Monotonically increasing encounter counter for this run.
+   * Set from run.floor.currentEncounter at encounter start via encounterBridge.
+   * Used by Akashic Record spacing mechanic: tracks which encounter each fact was last charged.
+   */
+  encounterNumber: number;
 }
 
 export interface PlayCardResult {
@@ -526,6 +578,7 @@ export function startEncounter(
     staggeredEnemyNextTurn: false,
     ignitePendingBurn: 0,
     encounterChargesTotal: 0,
+    chargesCorrectThisEncounter: 0,
     battleTranceRestriction: false,
     warcryFreeChargeActive: false,
     chainAnchorActive: false,
@@ -537,10 +590,17 @@ export function startEncounter(
     characterLevel: 0,
     bloodletterArmed: false,
     chargeCorrectsThisTurn: 0,
+    encounterNumber: 0,
   };
 
   // Reset chain at encounter start (clean slate)
   resetChain();
+  // AR-261: Reset Knowledge Aura and Review Queue at encounter start
+  resetAura();
+  resetReviewQueue();
+  // Reset Lucky Coin per-encounter counters (scar_tissue stacks persist across encounters)
+  _wrongChargesForLuckyCoin = 0;
+  _luckyCoinArmed = false;
 
   // Ensure hand is empty before drawing — move any leftover cards to discard
   // (can happen if previous encounter ended without a full turn cycle)
@@ -564,6 +624,7 @@ export function playCardAction(
   answeredCorrectly: boolean,
   speedBonusEarned: boolean,
   playMode: PlayMode = 'charge',
+  distractorCount?: number,
 ): PlayCardResult {
   // AR-207: Battle Trance restriction — block all card plays and Charges after QP/CW
   if (turnState.battleTranceRestriction) {
@@ -619,6 +680,27 @@ export function playCardAction(
   const { deck, playerState, enemy } = turnState;
   const cardInHand = deck.hand.find((card) => card.id === cardId);
   if (!cardInHand) throw new Error(`Card ${cardId} not found in hand`);
+
+  // AR-268: Trick Question lock — block Quick Play on locked cards
+  if (cardInHand.isLocked && playMode === 'quick') {
+    const lockedBlockEffect: CardEffectResult = createNoEffect(cardInHand);
+    turnState.turnLog.push({
+      type: 'blocked',
+      message: 'Card is locked — must Charge to unlock',
+      cardId,
+    });
+    return {
+      effect: lockedBlockEffect,
+      enemyDefeated: false,
+      fizzled: false,
+      blocked: true,
+      isPerfectTurn: turnState.isPerfectTurn,
+      turnState,
+      usedFreeCharge: false,
+      masteryChange: null,
+      masteryChangedCardId: null,
+    };
+  }
 
   // Phoenix Feather post-resurrection: auto-Charge free for this turn.
   // Override answeredCorrectly and playMode so the card resolves as a correct Charge.
@@ -769,6 +851,11 @@ export function playCardAction(
       // AP is NOT refunded — wrong answers always cost AP regardless of mode
       const fizzledEffect = createNoEffect(card);
       turnState.consecutiveCorrectThisEncounter = 0;
+      // AR-261: Wrong charge answer — drop aura, add fact to review queue
+      adjustAura(-2);
+      if (card.factId) {
+        addToReviewQueue(card.factId);
+      }
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
 
@@ -798,6 +885,8 @@ export function playCardAction(
             turnState.playerState.shield = Math.max(0, turnState.playerState.shield - clamped);
           },
         };
+        // AR-268: pass the failed factId so Trick Question hook can set _lockedFactId
+        (ctx as any)._failedFactId = card.factId;
         enemy.template.onPlayerChargeWrong(ctx);
         const mirrorDmg = (ctx as any)._mirrorDamage as number | undefined;
         if (mirrorDmg && mirrorDmg > 0) {
@@ -861,6 +950,11 @@ export function playCardAction(
 
 
     turnState.consecutiveCorrectThisEncounter = 0;
+    // AR-261: Wrong charge answer — drop aura, add fact to review queue
+    adjustAura(-2);
+    if (card.factId) {
+      addToReviewQueue(card.factId);
+    }
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
 
@@ -922,6 +1016,7 @@ export function playCardAction(
       const chargeWrongFx = resolveChargeWrongEffects(turnState.activeRelicIds, {
         factId: card.factId,
         factPreviouslyCorrect,
+        wrongChargesThisEncounter: _wrongChargesForLuckyCoin,
       });
       if (chargeWrongFx.selfDamage > 0) {
         playerState.hp = Math.max(0, playerState.hp - chargeWrongFx.selfDamage);
@@ -939,6 +1034,18 @@ export function playCardAction(
           turnState.phase = 'encounter_end';
         }
       }
+      // scar_tissue (v3): increment run-level stack counter on every wrong Charge
+      if (chargeWrongFx.scarTissueStackIncrement) {
+        _scarTissueStacks++;
+      }
+      // lucky_coin (v3): track wrong Charges this encounter; arm on reaching 3
+      if (chargeWrongFx.luckyCoinWrongCount !== -1) {
+        _wrongChargesForLuckyCoin = chargeWrongFx.luckyCoinWrongCount;
+        if (_wrongChargesForLuckyCoin >= 3) {
+          _luckyCoinArmed = true;
+          _wrongChargesForLuckyCoin = 0;
+        }
+      }
     }
 
     // Step 5a (AR-59.13): onPlayerChargeWrong callback — normal mode, Charge plays only
@@ -954,6 +1061,8 @@ export function playCardAction(
           turnState.playerState.shield = Math.max(0, turnState.playerState.shield - clamped);
         },
       };
+      // AR-268: pass the failed factId so Trick Question hook can set _lockedFactId
+      (ctx as any)._failedFactId = card.factId;
       enemy.template.onPlayerChargeWrong(ctx);
       const mirrorDmg = (ctx as any)._mirrorDamage as number | undefined;
       if (mirrorDmg && mirrorDmg > 0) {
@@ -1084,7 +1193,30 @@ export function playCardAction(
     }
   }
 
-  const speedBonus = speedBonusEarned ? 1.5 : 1.0;
+  // AR-268: Trick Question lock — if this card is locked and was Charged correctly with the matching fact,
+  // apply a 2x power bonus (unlocked knowledge) and clear the lock.
+  // Note: `card` is a spread copy of `cardInHand`; clear lock on both so the discard pile entry is clean.
+  let trickQuestionBonusMultiplier = 1.0;
+  if (card.isLocked && playMode === 'charge' && answeredCorrectly && card.lockedFactId === card.factId) {
+    trickQuestionBonusMultiplier = 2.0;
+    // Clear on the copy (used by resolveCardEffect) and the original (will move to discard)
+    card.isLocked = false;
+    card.lockedFactId = undefined;
+    cardInHand.isLocked = undefined;
+    cardInHand.lockedFactId = undefined;
+    // Also clear the enemy's lock so it doesn't re-apply next turn
+    if (enemy._lockedFactId === card.factId) {
+      enemy._lockedFactId = undefined;
+      enemy._lockTurnsRemaining = 0;
+    }
+    turnState.turnLog.push({
+      type: 'play',
+      message: 'Trick Question lock broken — 2× power bonus applied!',
+      cardId,
+    });
+  }
+
+  const speedBonus = (speedBonusEarned ? 1.5 : 1.0) * trickQuestionBonusMultiplier;
   const useDoubleStrike = turnState.doubleStrikeReady && card.cardType === 'attack';
   const useFocus = turnState.focusReady;
   const useOverclock = turnState.overclockReady;
@@ -1114,6 +1246,29 @@ export function playCardAction(
   // AR-207: dark_knowledge — snapshot cursed fact count from run state.
   const cursedFactCount = get(activeRunState)?.cursedFactIds?.size ?? 0;
 
+  // AR-261: wasReviewQueueFact — peek at review queue before resolving (clearReviewQueueFact runs after).
+  // Only meaningful on a correct Charge play; false on all other play modes.
+  const wasReviewQueueFact = isChargeCorrect && card.factId
+    ? isReviewQueueFact(card.factId)
+    : false;
+
+  // AR-264: distractorCount — number of wrong-answer options shown in the quiz.
+  // If not passed by the caller, fall back to a mastery-based estimate.
+  const resolvedDistractorCount = distractorCount ?? Math.min(2 + (card.masteryLevel ?? 0), 4);
+
+  // AR-273: Per-fact damage bonus from mystery event study sessions.
+  // Only applies to charge plays (not Quick Play — studying a fact helps you during combat Charges).
+  const factDamageBonus = (isChargeCorrect && card.factId)
+    ? (get(activeRunState)?.inRunFactTracker?.getDamageBonus(card.factId) ?? 0)
+    : 0;
+
+  // AR-262/208: correctChargesThisEncounter — pass the count INCLUDING this play (pre-incremented).
+  // The actual mutation of turnState happens later; we pass the prospective value here so the
+  // resolver has the correct context (see comment in cardEffectResolver knowledge_bomb case).
+  const correctChargesForResolver = isChargeCorrect
+    ? turnState.chargesCorrectThisEncounter + 1
+    : turnState.chargesCorrectThisEncounter;
+
   const effect = resolveCardEffect(
     card,
     playerState,
@@ -1136,6 +1291,11 @@ export function playCardAction(
       inscriptionFuryBonus,
       handDomains,
       cursedFactCount,
+      wasReviewQueueFact,
+      distractorCount: resolvedDistractorCount,
+      correctChargesThisEncounter: correctChargesForResolver,
+      scarTissueStacks: _scarTissueStacks,
+      factDamageBonus,
     },
   );
 
@@ -1161,8 +1321,14 @@ export function playCardAction(
     // Track charge streak for relic purposes — still counts as a correct charge attempt
     if (isChargeCorrect) {
       turnState.consecutiveCorrectThisEncounter += 1;
+      turnState.chargesCorrectThisEncounter += 1; // AR-262: accuracy grade counter
       turnState.cardsCorrectThisTurn += 1;
       turnState.totalChargesThisRun += 1;
+      // AR-261: Correct charge answer — raise aura, clear from review queue
+      adjustAura(1);
+      if (card.factId) {
+        clearReviewQueueFact(card.factId);
+      }
     }
     return {
       effect,
@@ -1217,8 +1383,14 @@ export function playCardAction(
     }
     if (isChargeCorrect) {
       turnState.consecutiveCorrectThisEncounter += 1;
+      turnState.chargesCorrectThisEncounter += 1; // AR-262: accuracy grade counter
       turnState.cardsCorrectThisTurn += 1;
       turnState.totalChargesThisRun += 1;
+      // AR-261: Correct charge answer — raise aura, clear from review queue
+      adjustAura(1);
+      if (card.factId) {
+        clearReviewQueueFact(card.factId);
+      }
     }
     return {
       effect,
@@ -1284,6 +1456,12 @@ export function playCardAction(
     const tierStr = card.tier ?? '1';
     const cardTierNum = tierStr === '3' ? 3 : (tierStr === '2a' || tierStr === '2b') ? 2 : 1;
     const cardTypeForRelic = card.cardType === 'shield' ? 'shield' : card.cardType === 'attack' ? 'attack' : 'utility';
+    // AR-269: Compute Akashic Record encounter gap for this fact.
+    // gap = 0 means never seen (new fact → bonus). gap >= 3 means spaced enough → bonus.
+    const factLastSeen = _factLastSeenEncounterMap.get(card.factId);
+    const factEncounterGap = factLastSeen === undefined
+      ? 0  // never seen → treat as gap 0 (qualifies for Akashic bonus)
+      : turnState.encounterNumber - factLastSeen;
     const chargeFx = resolveChargeCorrectEffects(turnState.activeRelicIds, {
       answerTimeMs: 9999, // timing not available here; speed relics handled upstream
       cardTier: cardTierNum,
@@ -1295,7 +1473,32 @@ export function playCardAction(
       totalChargesThisRun: (turnState.totalChargesThisRun ?? 0) + 1,
       mirrorUsedThisEncounter: turnState.mirrorUsedThisEncounter,
       adrenalineShard_usedThisTurn: false, // adrenaline_shard handled upstream
+      factEncounterGap,
+      wasReviewQueueFact,
+      luckyCoinArmed: _luckyCoinArmed,
+      scarTissueStacks: _scarTissueStacks,
     });
+    // lucky_coin (v3): consume the armed flag after it fires
+    if (_luckyCoinArmed && chargeFx.luckyCoinArmed) {
+      _luckyCoinArmed = false;
+    }
+
+    // AR-271: Apply extraMultiplier (lucky_coin +50%, obsidian_dice, akashic_record, etc.)
+    // This multiplier is returned by resolveChargeCorrectEffects and applies to the primary effect.
+    if ((chargeFx.extraMultiplier ?? 1.0) > 1.0) {
+      const em = chargeFx.extraMultiplier;
+      if (effect.damageDealt > 0) {
+        effect.damageDealt = Math.round(effect.damageDealt * em);
+        effect.finalValue = Math.round(effect.finalValue * em);
+        effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+      } else if (effect.shieldApplied > 0) {
+        effect.shieldApplied = Math.round(effect.shieldApplied * em);
+        effect.finalValue = Math.round(effect.finalValue * em);
+      } else if (effect.healApplied > 0) {
+        effect.healApplied = Math.round(effect.healApplied * em);
+        effect.finalValue = Math.round(effect.finalValue * em);
+      }
+    }
 
     // scholars_crown: apply tier-based % bonus to the primary effect value
     if (chargeFx.scholarsCrownBonus > 0) {
@@ -1393,6 +1596,17 @@ export function playCardAction(
       }
     }
     // knowledge_tax gold bonus is handled in encounterBridge via goldBonus field
+
+    // akashic_record — draw 1 extra card next turn when spacing condition fires
+    if ((chargeFx.akashicBonusDraw ?? 0) > 0) {
+      turnState.bonusDrawNextTurn += chargeFx.akashicBonusDraw!;
+    }
+  }
+
+  // AR-269: Update fact-last-seen map for Akashic Record spacing.
+  // Runs on ALL charge plays (correct + wrong) so the spacing is based on charge attempts.
+  if (playMode === 'charge') {
+    _factLastSeenEncounterMap.set(card.factId, turnState.encounterNumber);
   }
 
   // double_down — once per encounter: correct Charge → 5× damage, wrong Charge → 0.3× damage
@@ -1416,8 +1630,22 @@ export function playCardAction(
 
   // AR-123: quickPlayDamageMultiplier — Quick Play deals a reduced fraction of normal damage.
   // E.g. 0.3 = 30% damage. Encourages Charging without fully neutering Quick Play.
-  if (effect.damageDealt > 0 && playMode === 'quick' && enemy.template.quickPlayDamageMultiplier !== undefined) {
-    effect.damageDealt = Math.max(1, Math.round(effect.damageDealt * enemy.template.quickPlayDamageMultiplier));
+  // AR-263: _quickPlayDamageMultiplierOverride on instance takes precedence (used by The Curriculum phase 2).
+  if (effect.damageDealt > 0 && playMode === 'quick') {
+    const qpMultiplierOverride = enemy._quickPlayDamageMultiplierOverride;
+    const qpMultiplierTemplate = enemy.template.quickPlayDamageMultiplier;
+    const qpMultiplier = qpMultiplierOverride !== undefined ? qpMultiplierOverride : qpMultiplierTemplate;
+    if (qpMultiplier !== undefined) {
+      effect.damageDealt = qpMultiplier === 0 ? 0 : Math.max(1, Math.round(effect.damageDealt * qpMultiplier));
+      effect.finalValue = effect.damageDealt;
+      effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+    }
+  }
+
+  // AR-263: Hardcover armor (The Textbook) — reduces Quick Play damage by hardcover amount (min 1).
+  // Charged plays bypass hardcover entirely (studying cracks it, not reckless attacks).
+  if (effect.damageDealt > 0 && playMode === 'quick' && (enemy._hardcover ?? 0) > 0 && !enemy._hardcoverBroken) {
+    effect.damageDealt = Math.max(1, effect.damageDealt - (enemy._hardcover ?? 0));
     effect.finalValue = effect.damageDealt;
     effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
   }
@@ -1991,6 +2219,12 @@ export function playCardAction(
   if (playMode !== 'quick') {
     turnState.cardsCorrectThisTurn += 1;
     turnState.consecutiveCorrectThisEncounter += 1;
+    turnState.chargesCorrectThisEncounter += 1; // AR-262: accuracy grade counter
+    // AR-261: Correct charge answer — raise aura, clear from review queue
+    adjustAura(1);
+    if (card.factId) {
+      clearReviewQueueFact(card.factId);
+    }
     // Chain Momentum (AR-122): correct Charge earns a free surcharge on the NEXT Charge this turn,
     // but only for cards of the same chain type (color-specific momentum).
     if (playMode === 'charge' && CHAIN_MOMENTUM_ENABLED) {
@@ -2126,13 +2360,15 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // Step 5d (AR-59.13): Reset playerChargedThisTurn for the next player turn
   enemy.playerChargedThisTurn = false;
 
-  // Step 4 (AR-59.13): Dispatch onEnemyTurnStart for enrage logic (Timer Wyrm)
-  dispatchEnemyTurnStart(enemy, turnState.turnNumber);
+  // Step 4 (AR-59.13): Dispatch onEnemyTurnStart for enrage logic (Timer Wyrm), mastery erosion (Brain Fog)
+  // Pass whether the player made any correct Charges this turn (read before reset) and the actual hand objects.
+  const playerChargedCorrectThisTurn = turnState.cardsCorrectThisTurn > 0;
+  dispatchEnemyTurnStart(enemy, turnState.turnNumber, playerChargedCorrectThisTurn, deck.hand);
 
   // Block decays each turn — enemy must re-defend to maintain it (STS-style)
   enemy.block = 0;
 
-  let intentResult = { damage: 0, playerEffects: [] as StatusEffect[], enemyHealed: 0 };
+  let intentResult = { damage: 0, playerEffects: [] as StatusEffect[], enemyHealed: 0, stunned: false };
   let intentSkipped = false;
   if (turnState.staggeredEnemyNextTurn) {
     // AR-206: Stagger — skip enemy action entirely. Turn counter advances, enrage still ticks.
@@ -2146,6 +2382,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.slowEnemyIntent = false;
   } else {
     intentResult = executeEnemyIntent(enemy);
+    // AR-263: Pop Quiz stun — enemy skipped its action
+    if (intentResult.stunned) {
+      intentSkipped = true;
+    }
   }
   const executedIntentType = intentSkipped ? 'none' as const : enemy.nextIntent.type;
 
@@ -2505,8 +2745,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     });
   }
 
-  const drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
+  let drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
   turnState.pendingDrawCountOverride = null;
+  // AR-261: Flow State bonus — draw one extra card per turn when in flow_state
+  if (getAuraState() === 'flow_state') {
+    drawCount += 1;
+  }
 
   // tag_magnet relic: bias draw toward last turn's chain type
   const drawBias = resolveDrawBias(turnState.activeRelicIds, chainTypeBeforeReset ?? undefined);
@@ -2515,6 +2759,20 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     : undefined;
   drawHand(deck, drawCount + turnState.bonusDrawNextTurn, { tagMagnetBias });
   turnState.bonusDrawNextTurn = 0;
+
+  // AR-268: Trick Question lock — apply lock to a random hand card if _lockedFactId is set
+  if (enemy._lockedFactId && (enemy._lockTurnsRemaining ?? 0) > 0) {
+    const hand = deck.hand;
+    if (hand.length > 0) {
+      const randomIdx = Math.floor(Math.random() * hand.length);
+      hand[randomIdx].isLocked = true;
+      hand[randomIdx].lockedFactId = enemy._lockedFactId;
+    }
+    enemy._lockTurnsRemaining = (enemy._lockTurnsRemaining ?? 0) - 1;
+    if ((enemy._lockTurnsRemaining ?? 0) <= 0) {
+      enemy._lockedFactId = undefined;
+    }
+  }
 
   turnState.phase = 'player_action';
   turnState.turnLog = [];
@@ -2527,6 +2785,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       turnNumberThisEncounter: turnState.encounterTurnNumber,
       characterLevel: turnState.characterLevel,
       dejaVuUsedThisEncounter: turnState.dejaVuUsedThisEncounter,
+      auraState: getAuraState(),
     },
   );
   if (turnStartFx.bonusBlock > 0) {
@@ -2536,6 +2795,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   if (turnStartFx.bonusAP > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + turnStartFx.bonusAP);
     turnState.triggeredRelicId = 'blood_price';
+  }
+  // domain_mastery_sigil (v3): apply aura-based AP modifier (+1 flow_state / -1 brain_fog)
+  if (turnStartFx.auraApModifier !== undefined && turnStartFx.auraApModifier !== 0) {
+    turnState.apCurrent = Math.max(1, Math.min(turnState.apMax, turnState.apCurrent + turnStartFx.auraApModifier));
+    turnState.triggeredRelicId = 'domain_mastery_sigil';
   }
 
   // Deja Vu: spawn cards from discard into hand on turn 1 of encounter

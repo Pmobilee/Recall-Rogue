@@ -19,6 +19,7 @@ import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeServ
 import { isVulnerable } from '../data/statusEffects';
 import { getMechanicDefinition, MECHANIC_DEFINITIONS, type PlayMode } from '../data/mechanics';
 import { resolveAttackModifiers, resolveShieldModifiers, resolvePoisonDurationBonus } from './relicEffectResolver';
+import { getAuraLevel, getAuraState, adjustAura } from './knowledgeAuraSystem';
 
 export interface CardEffectResult {
   effectType: CardType;
@@ -301,6 +302,35 @@ export interface AdvancedResolveOptions {
   lastQPMechanicThisTurn?: string | null;
   lastCCMechanicThisTurn?: string | null;
   lastAnyMechanicThisTurn?: string | null;
+
+  /**
+   * AR-261 Review Queue: true if this card's factId was in the review queue
+   * (i.e., was previously answered wrong this encounter) and was cleared by this correct Charge.
+   * Used by cards like Recall to grant bonus effects on review-queue facts.
+   */
+  wasReviewQueueFact?: boolean;
+
+  /**
+   * AR-264 Precision Strike: number of wrong-answer options shown in the quiz question.
+   * Determined by card mastery level (mastery 0 = 2 distractors, mastery 3+ = 4 distractors).
+   * Populated by turnManager at resolve time from the quiz context.
+   */
+  distractorCount?: number;
+
+  /**
+   * Scar Tissue (v3): accumulated wrong Charges this run.
+   * Passed to resolveAttackModifiers for +2 flat damage per stack.
+   * Populated by turnManager module-level counter.
+   */
+  scarTissueStacks?: number;
+
+  /**
+   * Per-fact damage bonus from mystery event study sessions (Tutor's Office, Flashcard Merchant, etc.).
+   * Applied as a multiplier to attack damage: damage *= (1 + factDamageBonus).
+   * Populated by turnManager from InRunFactTracker.getDamageBonus(card.factId).
+   * 0 = no bonus.
+   */
+  factDamageBonus?: number;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -484,6 +514,7 @@ export function resolveCardEffect(
         enemyPoisonStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'poison').reduce((sum, s) => sum + (s.value ?? 0), 0),
         cardDomain: card.domain,
         deckDomainCounts: advanced.deckDomainCounts,
+        scarTissueStacks: advanced.scarTissueStacks,
       })
     : null;
 
@@ -499,9 +530,15 @@ export function resolveCardEffect(
     ? 1 + relicAttackMods.percentDamageBonus
     : 1;
 
+  // Per-fact study bonus from mystery events (Tutor's Office, Flashcard Merchant, etc.).
+  // Applied only to attack cards as a multiplicative bonus.
+  const factDamageBonusMult = (effectiveType === 'attack' && (advanced.factDamageBonus ?? 0) > 0)
+    ? 1 + (advanced.factDamageBonus ?? 0)
+    : 1;
+
   const rawValue = effectiveBase * focusAdjustedMultiplier;
   result.rawValue = rawValue;
-  const scaledValue = Math.round(rawValue * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
+  const scaledValue = Math.round(rawValue * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier * factDamageBonusMult);
   // Apply flat relic attack bonus after all multipliers (so it isn't multiplied by combo/chain).
   const relicFlatAttackBonus = relicAttackMods?.flatDamageBonus ?? 0;
   const finalValue = effectiveType === 'attack'
@@ -927,10 +964,16 @@ export function resolveCardEffect(
       };
       return result;
     }
-    // New: Precision Strike — damage; timer extension handled by quiz system reading mechanic tag
+    // AR-264: Precision Strike — CC scales with distractor count (question difficulty)
     case 'precision_strike': {
-      applyAttackDamage(finalValue);
-      // Timer extension (+50%, or +75% at L3+) is handled by the quiz timer system via mechanic ID.
+      if (isChargeCorrect) {
+        // CC: 8 × (distractorCount + 1). At mastery 0 (2 distractors): 24. At mastery 3+ (4 distractors): 40.
+        const distractorCount = advanced.distractorCount ?? 2;
+        mechanicBaseValue = 8 * (distractorCount + 1);
+        applyAttackDamage(mechanicBaseValue);
+      } else {
+        applyAttackDamage(finalValue); // QP: 8, CW: 4 (from mechanic definition)
+      }
       return result;
     }
     // New: Stagger — skip enemy next action
@@ -1055,15 +1098,22 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Knowledge Ward — block per unique domain in hand
+    // AR-264: Knowledge Ward — block scales with correct charges this encounter
     case 'knowledge_ward': {
-      // handDomains is populated by turnManager; fallback to 1 domain if absent.
-      const domains = advanced.handDomains ?? [];
-      const uniqueDomainCount = new Set(domains.filter(Boolean)).size || 1;
-      // finalValue = per-domain block value (QP/CC/CW base + mastery bonus already applied).
-      const blockTotal = Math.round(finalValue * uniqueDomainCount);
-      result.shieldApplied = applyShieldRelics(blockTotal);
-      result.knowledgeWardBlock = finalValue; // per-domain value for UI
+      // correctCharges: clamped to [1, 5]. 0 correct charges is treated as 1 (min).
+      const correctCharges = Math.min(Math.max(advanced.correctChargesThisEncounter ?? 0, 1), 5);
+      if (isChargeCorrect) {
+        // CC: 10 × correctCharges
+        const kwCCBlock = 10 * correctCharges;
+        result.shieldApplied = applyShieldRelics(kwCCBlock);
+      } else if (isQuickPlay) {
+        // QP: 6 × correctCharges
+        const kwQPBlock = 6 * correctCharges;
+        result.shieldApplied = applyShieldRelics(kwQPBlock);
+      } else {
+        // CW: 4 flat
+        result.shieldApplied = applyShieldRelics(4);
+      }
       return result;
     }
 
@@ -1273,46 +1323,43 @@ export function resolveCardEffect(
 
     // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────
 
-    // Smite — QP: flat damage + mastery bonus; CC: 10 + (3 × avgHandMastery); CW: 7
+    // AR-264: Smite — CC scales with Knowledge Aura; CW extra Aura penalty
     case 'smite': {
       if (isChargeCorrect) {
-        // avgHandMastery: floor of average mastery of all hand cards (cursed = 0)
-        const masteryValues = advanced.handMasteryValues ?? [];
-        const avgMastery = masteryValues.length > 0
-          ? Math.floor(masteryValues.reduce((a, b) => a + b, 0) / masteryValues.length)
-          : 0;
-        const smiteCCBase = 10 + (3 * avgMastery);
-        // Apply mastery bonus to CC path (perLevelDelta=2 applies to QP base; CC shares it)
-        const smiteMasteryBonus = getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0);
-        applyAttackDamage(smiteCCBase + smiteMasteryBonus);
+        // CC: 10 + (6 × auraLevel). At Aura 5 (neutral): 40. At Aura 8 (Flow): 58. At Aura 3 (Brain Fog): 28.
+        const auraLevel = getAuraLevel();
+        mechanicBaseValue = 10 + (6 * auraLevel);
+        applyAttackDamage(mechanicBaseValue);
       } else if (isChargeWrong) {
-        applyAttackDamage(7); // CW fixed; mastery does not apply
+        // CW: 6 damage + Aura drops by 1 (extra penalty on top of standard -2 from wrong charge)
+        applyAttackDamage(6);
+        adjustAura(-1);
       } else {
-        applyAttackDamage(finalValue); // QP: 10 + mastery bonus already in finalValue
+        applyAttackDamage(finalValue); // QP: 10 (quickPlayValue from mechanic definition)
       }
       return result;
     }
 
-    // Feedback Loop — QP/CC heavy damage; CW = complete fizzle (0 damage)
+    // AR-264: Feedback Loop — Flow State bonus on CC; Aura crash on CW
     case 'feedback_loop': {
       if (isChargeWrong) {
-        // Complete fizzle — 0 damage, no effect. Distinct from any other CW.
+        // Complete fizzle — 0 damage + Aura crashes by 3 (total -5 with standard -2)
         result.damageDealt = 0;
         result.rawValue = 0;
         result.finalValue = 0;
+        adjustAura(-3);
         return result;
       }
-      // QP: 5 + mastery bonus (already in finalValue). CC: 20 + mastery bonus.
       if (isChargeCorrect) {
-        // CC base is 20; apply mastery bonus (+2/level for CC path uses secondaryPerLevelDelta analog)
-        // Per spec: perLevelDelta +2 QP / +4 CC per level. CC base at L0 = 20.
-        const flMasteryLevel = card.masteryLevel ?? 0;
-        const flCCValue = 20 + (flMasteryLevel * 4);
-        applyAttackDamage(flCCValue);
-        // L3: QP also applies 1 Weakness — checked by tag 'feedback_weakness'
-        // (L3 check is on QP not CC; no additional effect on CC)
+        // CC: 40 damage base. Flow State bonus: +16 if Aura >= 7 (flow_state threshold).
+        mechanicBaseValue = 40;
+        if (getAuraState() === 'flow_state') {
+          mechanicBaseValue += 16; // Total: 56 in Flow State
+        }
+        applyAttackDamage(mechanicBaseValue);
+        // L3 mastery: QP applies 1 Weakness (preserved from original — L3 check on QP, not CC)
       } else {
-        // QP: finalValue already has mastery bonus applied
+        // QP: 5 damage flat
         applyAttackDamage(finalValue);
         // L3 bonus: apply 1 Weakness on QP
         if ((card.masteryLevel ?? 0) >= 3) {
@@ -1322,26 +1369,23 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Recall — damage per card in discard pile
+    // AR-264: Recall — Review Queue redemption card
     case 'recall': {
-      const discardSize = advanced.discardPileSize ?? 0;
-      const masteryLevelRecall = card.masteryLevel ?? 0;
-      // perLevelDelta = +0.2 per level on QP per-card; QP base = 1.0
-      const qpPerCard = 1.0 + (0.2 * masteryLevelRecall);
-      const ccPerCard = 2.0; // CC per-card is fixed at 2.0 (spec); mastery applies to QP
-      const cwPerCard = 0.5; // CW fixed
-      let recallDmg: number;
       if (isChargeCorrect) {
-        recallDmg = Math.floor(ccPerCard * discardSize);
-      } else if (isChargeWrong) {
-        recallDmg = Math.floor(cwPerCard * discardSize);
+        // CC base: round(10 × 1.5) = 15 from pipeline. Override mechanicBaseValue for custom scaling.
+        const wasReviewFact = advanced.wasReviewQueueFact ?? false;
+        if (wasReviewFact) {
+          // Review Queue bonus: override to 30 total damage + heal 6
+          mechanicBaseValue = 30;
+          result.healApplied = 6;
+        } else {
+          // Normal CC: override to 20 damage
+          mechanicBaseValue = 20;
+        }
+        applyAttackDamage(mechanicBaseValue);
       } else {
-        recallDmg = Math.floor(qpPerCard * discardSize);
-      }
-      if (recallDmg > 0) applyAttackDamage(recallDmg);
-      // L3: draw 1 card after resolving
-      if (masteryLevelRecall >= 3) {
-        result.extraCardsDrawn = (result.extraCardsDrawn ?? 0) + 1;
+        // QP: 10 damage, CW: 6 damage (from quickPlayValue/chargeWrongValue in mechanic def, already in finalValue)
+        applyAttackDamage(finalValue);
       }
       return result;
     }

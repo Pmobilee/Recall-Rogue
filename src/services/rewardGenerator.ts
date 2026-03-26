@@ -104,6 +104,9 @@ export function generateRewardTypeOptions(
 /**
  * Generate one preview reward card per selected type.
  * Optionally applies floor-based upgrade probability to pre-upgrade cards.
+ *
+ * @param typeCount - Number of card type options to generate (default 3). Pass 4 for A/S grade bonus.
+ * @param guaranteeUncommon - When true, at least one card is replaced with an uncommon+ tier card.
  */
 export function generateCardRewardOptionsByType(
   runPool: Card[],
@@ -111,9 +114,11 @@ export function generateCardRewardOptionsByType(
   consumedRewardFactIds: Set<string>,
   archetype: RewardArchetype,
   currentFloor: number = 1,
+  typeCount: number = 3,
+  guaranteeUncommon: boolean = false,
 ): Card[] {
   const eligible = filterEligible(runPool, activeDeckFactIds, consumedRewardFactIds);
-  const typeOptions = generateRewardTypeOptions(runPool, activeDeckFactIds, consumedRewardFactIds, archetype, 3);
+  const typeOptions = generateRewardTypeOptions(runPool, activeDeckFactIds, consumedRewardFactIds, archetype, typeCount);
   const selected: Card[] = [];
   const usedFactIds = new Set<string>();
   const usedMechanicIds = new Set<string>();
@@ -158,6 +163,25 @@ export function generateCardRewardOptionsByType(
       );
       if (altCard) {
         selected[selected.length - 1] = altCard;
+      }
+    }
+  }
+
+  // === AR-262: S-Grade Guarantee — at least one upgraded (Tier 2a/2b) card ===
+  // When guaranteeUncommon is true (S grade, 90%+ accuracy), ensure at least one
+  // card in the reward pool is Tier 2a or 2b (upgraded/active tier).
+  if (guaranteeUncommon && selected.length > 0) {
+    const hasUpgraded = selected.some(c => c.tier === '2a' || c.tier === '2b' || c.isUpgraded);
+    if (!hasUpgraded) {
+      // Try to find an upgraded card from the eligible pool
+      const allUsedFactIds = new Set(selected.map(c => c.factId));
+      const upgradedCandidate = eligible.find(c =>
+        (c.tier === '2a' || c.tier === '2b' || c.isUpgraded) &&
+        !allUsedFactIds.has(c.factId)
+      );
+      if (upgradedCandidate) {
+        // Replace the last card in selected (lowest priority position)
+        selected[selected.length - 1] = upgradedCandidate;
       }
     }
   }

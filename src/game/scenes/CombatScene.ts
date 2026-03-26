@@ -14,6 +14,9 @@ import { BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
 
+/** Shared font stack for all Phaser text objects in CombatScene. */
+const GAME_FONT = '"Lora", "Georgia", serif'
+
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
 const ENEMY_X_PCT = 0.50
@@ -34,7 +37,7 @@ const LANDSCAPE = {
   ENEMY_PANEL_X_START: 0.70,  // Kept for reference; enemy now centers by default
   ENEMY_X_PCT: 0.50,          // Enemy CENTERED in arena by default (spec: center, slides right on quiz)
   ENEMY_Y_PCT: 0.45,          // Vertically centered in arena
-  ENEMY_HP_Y_PCT: 0.15,       // HP bar near top of arena
+  ENEMY_HP_Y_PCT: 0.12,       // HP bar near top of arena
   PLAYER_HP_BAR_X_PCT: 0.68,  // Left edge (unused — player HP now in Svelte stats bar)
   PLAYER_HP_BAR_TOP: 0.20,
   PLAYER_HP_BAR_BOTTOM: 0.80,
@@ -67,9 +70,9 @@ const ENEMY_SIZE_BOSS = 400
  * The right 30% panel is 384px at 1280 game width. Enemy must fit comfortably within it.
  * These are raw pixel values used directly without scaleFactor multiplication.
  */
-const LANDSCAPE_ENEMY_SIZE_COMMON = 400
-const LANDSCAPE_ENEMY_SIZE_ELITE = 480
-const LANDSCAPE_ENEMY_SIZE_BOSS = 560
+const LANDSCAPE_ENEMY_SIZE_COMMON = 300
+const LANDSCAPE_ENEMY_SIZE_ELITE = 360
+const LANDSCAPE_ENEMY_SIZE_BOSS = 420
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c
@@ -543,7 +546,7 @@ export class CombatScene extends Phaser.Scene {
     const loadBarBg = this.add.rectangle(pw / 2, ph / 2, 200, 16, 0x333333)
     const loadBarFill = this.add.rectangle(pw / 2 - 100, ph / 2, 0, 16, 0xf1c40f).setOrigin(0, 0.5)
     const loadText = this.add.text(pw / 2, ph / 2 - 24, 'Loading...', {
-      fontFamily: '"Lora", "Georgia", serif', fontSize: '12px', color: '#cccccc',
+      fontFamily: GAME_FONT, fontSize: '12px', color: '#cccccc',
     }).setOrigin(0.5, 0.5)
 
     this.load.on('progress', (value: number) => {
@@ -629,7 +632,7 @@ export class CombatScene extends Phaser.Scene {
 
     // ── Floor counter (top-left) ──────────────────────────
     this.floorCounterText = this.add.text(12, Math.round(FLOOR_COUNTER_Y * this.scaleFactor), this.floorLabel(), {
-      fontFamily: '"Lora", "Georgia", serif',
+      fontFamily: GAME_FONT,
       fontSize: `${Math.round(13 * this.scaleFactor)}px`,
       color: '#cccccc',
     })
@@ -638,7 +641,7 @@ export class CombatScene extends Phaser.Scene {
     // ── Enemy intent ──────────────────────────────────────
     const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
     this.intentText = this.add.text(w / 2, enemyHpY + Math.round(INTENT_ICON_OFFSET_Y * this.scaleFactor), '', {
-      fontFamily: '"Lora", "Georgia", serif',
+      fontFamily: GAME_FONT,
       fontSize: `${Math.round(16 * this.scaleFactor)}px`,
       color: '#ff9999',
       align: 'center',
@@ -663,11 +666,11 @@ export class CombatScene extends Phaser.Scene {
     )
 
     this.enemyHpText = this.add.text(w / 2, enemyHpY, '', {
-      fontFamily: '"Lora", "Georgia", serif',
-      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
+      fontFamily: GAME_FONT,
+      fontSize: `${Math.round(11 * this.scaleFactor)}px`,
       color: '#ffffff',
       stroke: '#000000',
-      strokeThickness: 3,
+      strokeThickness: 1,
       align: 'center',
     }).setOrigin(0.5, 0.5).setDepth(13)
 
@@ -684,7 +687,7 @@ export class CombatScene extends Phaser.Scene {
 
     this.enemyBlockText = this.add.text(
       w / 2 - scaledEnemyHpBarW / 2 - Math.round(20 * this.scaleFactor), enemyHpY + Math.round(12 * this.scaleFactor),
-      '', { fontFamily: '"Lora", "Georgia", serif', fontSize: `${Math.round(10 * this.scaleFactor)}px`, color: '#3498db' }
+      '', { fontFamily: GAME_FONT, fontSize: `${Math.round(10 * this.scaleFactor)}px`, color: '#3498db' }
     ).setOrigin(0.5, 0.5).setDepth(12).setVisible(false)
 
     // ── Enemy sprite system ─────────────────────────────
@@ -695,9 +698,11 @@ export class CombatScene extends Phaser.Scene {
     this.enemySpriteSystem = new EnemySpriteSystem(this)
 
     this.enemyNameText = this.add.text(w * ENEMY_X_PCT, enemyY + baseEnemySize / 2 + Math.round(12 * this.scaleFactor), '', {
-      fontFamily: '"Lora", "Georgia", serif',
-      fontSize: `${Math.round(13 * this.scaleFactor)}px`,
+      fontFamily: GAME_FONT,
+      fontSize: `${Math.round(14 * this.scaleFactor)}px`,
       color: '#ffffff',
+      stroke: '#000000',
+      strokeThickness: 1,
       align: 'center',
     }).setOrigin(0.5, 0).setDepth(7)
     this.enemyNameText.setVisible(false)
@@ -727,29 +732,29 @@ export class CombatScene extends Phaser.Scene {
     const initialHpRatio = this.currentPlayerMaxHP > 0 ? this.currentPlayerHP / this.currentPlayerMaxHP : 0
     const hpColorCss = colorToCssHex(playerHpColor(initialHpRatio))
     this.playerHpCurrentText = this.add.text(barX, barTop - Math.round(22 * this.scaleFactor), `${this.currentPlayerHP}`, {
-      fontFamily: '"Lora", "Georgia", serif',
-      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
+      fontFamily: GAME_FONT,
+      fontSize: `${Math.round(11 * this.scaleFactor)}px`,
       color: hpColorCss,
       stroke: '#000000',
-      strokeThickness: 3,
+      strokeThickness: 1,
       align: 'center',
     }).setOrigin(0.5, 1).setDepth(8)
 
     this.playerHpSlashText = this.add.text(barX, barTop - Math.round(12 * this.scaleFactor), '/', {
-      fontFamily: '"Lora", "Georgia", serif',
-      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
+      fontFamily: GAME_FONT,
+      fontSize: `${Math.round(11 * this.scaleFactor)}px`,
       color: hpColorCss,
       stroke: '#000000',
-      strokeThickness: 3,
+      strokeThickness: 1,
       align: 'center',
     }).setOrigin(0.5, 1).setDepth(8)
 
     this.playerHpMaxText = this.add.text(barX, barTop - Math.round(2 * this.scaleFactor), `${this.currentPlayerMaxHP}`, {
-      fontFamily: '"Lora", "Georgia", serif',
-      fontSize: `${Math.round(8 * this.scaleFactor)}px`,
+      fontFamily: GAME_FONT,
+      fontSize: `${Math.round(11 * this.scaleFactor)}px`,
       color: hpColorCss,
       stroke: '#000000',
-      strokeThickness: 3,
+      strokeThickness: 1,
       align: 'center',
     }).setOrigin(0.5, 1).setDepth(8)
 
@@ -766,12 +771,12 @@ export class CombatScene extends Phaser.Scene {
     }).setOrigin(0.5, 0.5).setVisible(false).setDepth(12)
 
     this.playerBlockText = this.add.text(barX - Math.round(42 * this.scaleFactor), barTop - Math.round(15 * this.scaleFactor), '', {
-      fontFamily: '"Lora", "Georgia", serif',
-      fontSize: `${Math.round(9 * this.scaleFactor)}px`,
+      fontFamily: GAME_FONT,
+      fontSize: `${Math.round(11 * this.scaleFactor)}px`,
       color: '#7dd3fc',
       align: 'center',
       stroke: '#000000',
-      strokeThickness: 3,
+      strokeThickness: 1,
     }).setOrigin(0, 0.5).setVisible(false).setDepth(13)
 
     if (USE_OVERLAY_PLAYER_HUD) {
@@ -1099,7 +1104,7 @@ export class CombatScene extends Phaser.Scene {
     relics.forEach((relic, i) => {
       const bg = this.add.rectangle(startX + i * spacing, 0, 28, 28, 0x444466, 0.8)
       const txt = this.add.text(startX + i * spacing, 0, relic.label.charAt(0).toUpperCase(), {
-        fontFamily: '"Lora", "Georgia", serif',
+        fontFamily: GAME_FONT,
         fontSize: '14px',
         color: '#ccccff',
         align: 'center',
@@ -1365,7 +1370,7 @@ export class CombatScene extends Phaser.Scene {
       this.displayH * 0.35,
       'FAST!',
       {
-        fontFamily: '"Lora", "Georgia", serif',
+        fontFamily: GAME_FONT,
         fontSize: '28px',
         color: '#AADDFF',
         stroke: '#000000',

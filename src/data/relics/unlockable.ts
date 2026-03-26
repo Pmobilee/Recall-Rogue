@@ -208,16 +208,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'scholars_crown',
     name: "Scholar's Crown",
-    description: 'Tier 1 Charged facts get +10% power. Tier 2+ get +40%. Tier 3 auto-Charged get +75%.',
+    description: '+40% damage on Review Queue facts. +10% on all other correct Charges.',
     flavorText: 'The laurel of a master archivist who climbed every floor and remembered every fact. Knowledge mastered is knowledge weaponized.',
     visualDescription: 'A golden scholar\'s crown with scrolls worked into the band and glowing runes across each point. Tier symbols orbit the crown. 32x32 pixel art.',
     rarity: 'rare',
     category: 'knowledge',
     trigger: 'on_charge_correct',
     effects: [
-      { effectId: 'tier1_charge_bonus', description: '+10% power for Tier 1 Charged facts', value: 10 },
-      { effectId: 'tier2_charge_bonus', description: '+40% power for Tier 2+ Charged facts', value: 40 },
-      { effectId: 'tier3_charge_bonus', description: '+75% power for Tier 3 auto-Charged facts', value: 75 },
+      { effectId: 'review_queue_damage_bonus', description: '+40% damage on Review Queue facts, +10% on other correct Charges', value: 40, secondaryValue: 10 },
     ],
     icon: '👑',
     unlockCost: 55,
@@ -229,14 +227,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'domain_mastery_sigil',
     name: 'Domain Mastery Sigil',
-    description: 'If deck has 4+ facts from same domain, all same-domain cards get +30% base damage (even Quick Play).',
+    description: 'Flow State: +1 AP per turn. Brain Fog: -1 AP per turn.',
     flavorText: 'A specialist\'s sigil that awakens when the bearer demonstrates deep expertise. Concentrate your knowledge and every card in that domain strikes with mastery\'s edge.',
     visualDescription: 'A golden pentagon seal with a different domain symbol on each face, the dominant face blazing with white-hot energy. Mastery crown hovering above. 32x32 pixel art.',
     rarity: 'rare',
     category: 'knowledge',
-    trigger: 'permanent',
+    trigger: 'on_turn_start',
     effects: [
-      { effectId: 'domain_concentration_bonus', description: '+30% base damage for concentrated domain (4+ facts)', value: 30, secondaryValue: 4 },
+      { effectId: 'aura_ap_modifier', description: '+1 AP in Flow State, -1 AP in Brain Fog', value: 1 },
     ],
     icon: '🏆',
     unlockCost: 55,
@@ -664,15 +662,17 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'akashic_record',
     name: 'Akashic Record',
-    description: 'Tier 2b+ facts: previously-wrong answer is subtly highlighted. Tier 3 auto-Charge multiplier is 1.5× (not 1.2×).',
+    description: '+50% damage on correct Charges. (Future: bonus also draws 1 card when fact not seen in 3+ encounters.)',
     flavorText: 'The record exists outside time. It has seen every answer you have ever given — and every one you got wrong. It uses that knowledge quietly.',
     visualDescription: 'An ancient floating tome that rewrites its own pages as facts are mastered. Wrong answers from past runs appear as ghost text that fades as you learn. 32x32 pixel art, legendary silver aura.',
     rarity: 'legendary',
     category: 'knowledge',
     trigger: 'on_charge_correct',
     effects: [
-      { effectId: 'akashic_hint_wrong_answer', description: 'Tier 2b+: previously-wrong answer subtly highlighted', value: 1 },
-      { effectId: 'akashic_tier3_mult_override', description: 'Tier 3 auto-Charge: 1.5× multiplier (not 1.2×)', value: 1.5 },
+      // TODO(AR-265): Full mechanic — +50% damage + draw 1 when fact not seen in 3+ encounters.
+      // Requires InRunFactState.lastSeenEncounter tracking in turnManager.
+      // Simplified version: flat +50% on all correct Charges.
+      { effectId: 'akashic_charge_bonus', description: '+50% damage on correct Charges', value: 50 },
     ],
     icon: '📜',
     unlockCost: 75,

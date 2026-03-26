@@ -129,6 +129,18 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'overclock':
       return `Next card effect is doubled.` + apSuffix;
 
+    // AR-264: Quiz-integrated cards
+    case 'recall':
+      return `QP: 10 damage. CC: 20 damage (30 on Review Queue fact + heal 6). CW: 6 damage.` + apSuffix;
+    case 'precision_strike':
+      return `QP: 8 damage. CC: scales with question difficulty (8 × options). CW: 4 damage.` + apSuffix;
+    case 'knowledge_ward':
+      return `Block scales with correct Charges this encounter. QP: 6×Charges. CC: 10×Charges. CW: 4 block.` + apSuffix;
+    case 'smite':
+      return `QP: 10 damage. CC: 10 + (6 × Aura level) damage. CW: 6 damage + Aura −1.` + apSuffix;
+    case 'feedback_loop':
+      return `QP: 5 damage. CC: 40 damage (+16 in Flow State). CW: 0 damage + Aura −3 crash.` + apSuffix;
+
     default:
       return (mechanic.description || (GENERIC_TYPE_DESCRIPTIONS[card.cardType] ?? '')) + apSuffix;
   }
@@ -176,14 +188,14 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'reckless': return `${power} dmg, ${secondary ?? 3} self`;
     case 'execute': return `${power}+${secondary ?? 8} <30%`;
     case 'block': return `${power} block`;
-    case 'thorns': return `${power} block +${secondary ?? 3} reflect`;
-    case 'fortify': return `${power} persistent`;
+    case 'thorns': return `${power} block, ${secondary ?? 3} reflect`;
+    case 'fortify': return `${power} block, persists`;
     case 'parry': return `${power} block +draw`;
     case 'brace': return 'Match telegraph';
     case 'cleanse': return 'Purge debuffs';
-    case 'overheal': return `${power} block ×2 <50%`;
+    case 'overheal': return `${power} block ×2<50%`;
     case 'lifetap': return `${power} drain`;
-    case 'emergency': return `${power} block ×2`;
+    case 'emergency': return `${power} block ×2<30%`;
     case 'immunity': return `Absorb next hit`;
     case 'empower': return `Next +${power}%`;
     case 'quicken': return '+1 AP';
@@ -194,12 +206,19 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'slow': return 'Skip action';
     case 'hex': return `${power} poison ×${secondary ?? 3}`;
     case 'scout': return `Draw ${power}`;
-    case 'recycle': return 'Draw 3 cards';
-    case 'foresight': return `Draw ${power}`;
+    case 'recycle': return 'Draw 3';
+    case 'foresight': return `Draw ${power}, peek`;
     case 'transmute': return 'Transform card';
     case 'mirror': return 'Copy last';
-    case 'adapt': return 'Smart: ATK/DEF/Cleanse';
+    case 'adapt': return 'Smart: ATK/DEF';
     case 'overclock': return '2× effect';
+    // AR-264: Quiz-integrated cards
+    case 'recall': return '10 dmg / review bonus';
+    case 'precision_strike': return '8×options dmg';
+    case 'knowledge_ward': return 'Block×charges';
+    case 'smite': return '10+6×Aura dmg';
+    case 'feedback_loop': return '40 dmg / Flow+16';
+
     default: return mechanic.name;
   }
 }
@@ -368,6 +387,18 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Auto: '), kw('Block', 'block'), txt('/ATK/'), kw('Cleanse', 'cleanse'), txt(' vs intent')];
     case 'overclock':
       return [txt('Next card ×2 effect')];
+
+    // AR-264: Quiz-integrated cards
+    case 'recall':
+      return [txt('CC: '), num(20), txt(' dmg. Review Queue: '), num(30), txt(' dmg + heal '), num(6)];
+    case 'precision_strike':
+      return [txt('CC: '), num(8), txt(' × (options+1) damage')];
+    case 'knowledge_ward':
+      return [txt('QP: '), num(6), txt('×Charges block. CC: '), num(10), txt('×Charges block')];
+    case 'smite':
+      return [txt('CC: '), num(10), txt(' + '), num(6), txt('×Aura dmg. CW: Aura −1')];
+    case 'feedback_loop':
+      return [txt('CC: '), num(40), txt(' dmg (+'), num(16), txt(' in '), kw('Flow State', 'flow_state'), txt('). CW: Aura −3')];
 
     default:
       return [txt(mechanic.name)];

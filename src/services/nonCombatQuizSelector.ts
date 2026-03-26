@@ -65,6 +65,7 @@ export function selectNonCombatStudyQuestion(
   cardMasteryLevel: number,
   runSeed: number,
   examTags?: string[],
+  meditatedThemeId?: number,
 ): NonCombatQuizQuestion | null {
   const deck = getCuratedDeck(deckId);
   if (!deck) return null;
@@ -87,7 +88,8 @@ export function selectNonCombatStudyQuestion(
   const templateResult = selectQuestionTemplate(fact, deck, cardMasteryLevel, [], effectiveSeed);
 
   // Select distractors
-  const distractorCount = getDistractorCount(cardMasteryLevel);
+  // AR-273: Pass meditation params so meditated theme gets fewer distractors.
+  const distractorCount = getDistractorCount(cardMasteryLevel, meditatedThemeId, fact.chainThemeId);
   const pool = deck.answerTypePools.find(p => p.id === templateResult.answerPoolId);
 
   let choices: string[];

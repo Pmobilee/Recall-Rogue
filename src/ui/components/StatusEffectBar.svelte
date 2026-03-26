@@ -32,6 +32,15 @@
     burn: { name: 'Burn', icon: '🔥', color: '#f97316', desc: (v) => `Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
     bleed: { name: 'Bleed', icon: '🩸', color: '#ef4444', desc: (v) => `Bleed [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
     freeze: { name: 'Freeze', icon: '❄️', color: '#38bdf8', desc: (v, t) => `Frozen — skips action (${t} turn${t !== 1 ? 's' : ''} left)` },
+    // Knowledge Aura states (AR-261)
+    brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => `Brain Fog: enemies deal +20% damage. Aura: ${v}/10` },
+    flow_state: { name: 'Flow State', icon: '✨', color: '#fbbf24', desc: (v) => `Flow State: draw +1 card per turn. Aura: ${v}/10` },
+    // Enemy-specific mechanics (AR-263)
+    stunned: { name: 'Stunned', icon: '💫', color: '#fbbf24', desc: () => `Stunned — skips next action` },
+    hardcover: { name: 'Hardcover', icon: '📖', color: '#a78bfa', desc: (v) => `Hardcover armor: ${v}. Reduces Quick Play damage. Charges strip it away.` },
+    locked: { name: 'Locked', icon: '🔒', color: '#f87171', desc: () => `A card is locked — must Charge with the locked fact to unlock` },
+    // Accuracy grade (AR-262)
+    accuracy_s: { name: 'S Grade', icon: '⭐', color: '#fbbf24', desc: () => `Perfect accuracy — bonus rewards incoming` },
   }
 
   function getInfo(type: string) {
@@ -51,7 +60,7 @@
 </script>
 
 {#if grouped.length > 0}
-  <div class="effect-bar" class:effect-bar-enemy={position === 'enemy'} class:effect-bar-player={position === 'player'}>
+  <div class="effect-bar" class:effect-bar-enemy={position === 'enemy'} class:effect-bar-player={position === 'player'} class:status-effect-bar-enemy={position === 'enemy'} class:status-effect-bar-player={position === 'player'}>
     {#each grouped as effect}
       {@const info = getInfo(effect.type)}
       <button

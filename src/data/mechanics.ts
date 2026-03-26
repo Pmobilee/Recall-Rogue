@@ -402,9 +402,9 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   },
   {
     id: 'precision_strike', name: 'Precision Strike', type: 'attack',
-    description: 'Deal damage. Charge timer is 50% longer.',
-    baseValue: 8, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 1, unlockLevel: 4,
-    quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
+    description: 'CC scales with question difficulty.',
+    baseValue: 8, apCost: 1, maxPerPool: 2, tags: ['strike', 'knowledge'], launchPhase: 1, unlockLevel: 4,
+    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 4,
   },
   {
     id: 'stagger', name: 'Stagger', type: 'debuff',
@@ -483,12 +483,12 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
   },
 
-  // Shield — domain diversity
+  // Shield — correct-charges scaling
   {
     id: 'knowledge_ward', name: 'Knowledge Ward', type: 'shield',
-    description: 'Gain 4 block per unique domain in hand. CC: ×1.5. CW: ×0.7.',
-    baseValue: 4, apCost: 1, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 6,
-    quickPlayValue: 2, chargeCorrectValue: 6, chargeWrongValue: 2,
+    description: 'Block scales with correct Charges.',
+    baseValue: 6, apCost: 1, maxPerPool: 1, tags: ['block', 'knowledge'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 6, chargeCorrectValue: 10, chargeWrongValue: 4,
   },
 
   // Buff — Strength + free Charge
@@ -575,28 +575,29 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
 
   // ── Attacks (5) ──────────────────────────────────────────────────────────
 
-  // Smite — mastery-weighted bonus damage on CC
+  // Smite — Knowledge Aura scaling
   {
     id: 'smite', name: 'Smite', type: 'attack',
-    description: 'CC: 10 + (3 × avg hand mastery) damage. QP: 10 dmg. CW: 7 dmg.',
-    baseValue: 10, apCost: 2, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 9,
-    quickPlayValue: 5, chargeCorrectValue: 10, chargeWrongValue: 4,
+    description: 'CC scales with Knowledge Aura.',
+    baseValue: 10, apCost: 2, maxPerPool: 1, tags: ['strike', 'knowledge', 'heavy'], launchPhase: 2, unlockLevel: 9,
+    quickPlayValue: 10, chargeCorrectValue: 40, chargeWrongValue: 6,
   },
 
-  // Feedback Loop — high CC / total fizzle on CW
+  // Feedback Loop — Flow State bonus / Aura crash on wrong
   {
     id: 'feedback_loop', name: 'Feedback Loop', type: 'attack',
-    description: 'QP: 5 dmg. CC: 20 dmg. CW: 0 (complete fizzle — no damage at all).',
-    baseValue: 5, apCost: 1, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 10,
-    quickPlayValue: 3, chargeCorrectValue: 20, chargeWrongValue: 0,
+    description: 'Flow State bonus. CW: 0 dmg + Aura crash.',
+    baseValue: 5, apCost: 1, maxPerPool: 1, tags: ['strike', 'knowledge', 'risky'], launchPhase: 2, unlockLevel: 10,
+    quickPlayValue: 5, chargeCorrectValue: 40, chargeWrongValue: 0,
   },
 
-  // Recall — scales with discard pile size
+  // Recall — Review Queue redemption card
   {
     id: 'recall', name: 'Recall', type: 'attack',
-    description: 'Deal 1 dmg per card in discard pile. CC: 2/card. CW: 0.5/card (round down).',
-    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 11,
-    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
+    description: 'CC on Review Queue fact: bonus dmg + heal.',
+    baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['strike', 'knowledge'], launchPhase: 2, unlockLevel: 11,
+    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 6,
+    chargeBonusEffect: 'review_queue_recall',
   },
 
   // Hemorrhage — Bleed finisher

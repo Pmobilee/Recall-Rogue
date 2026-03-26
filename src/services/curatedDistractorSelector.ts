@@ -10,11 +10,31 @@ export interface DistractorSelectionResult {
 
 /**
  * Get the number of distractors for a given card mastery level (§4.5).
+ *
+ * @param cardMasteryLevel - The card's current mastery level (0–5).
+ * @param meditatedThemeId - Optional: if set, and factThemeId matches, reduce count by 1 (min 2).
+ * @param factThemeId - Optional: the chainThemeId of the fact being quizzed.
  */
-export function getDistractorCount(cardMasteryLevel: number): number {
-  if (cardMasteryLevel <= 0) return 2;
-  if (cardMasteryLevel <= 2) return 3;
-  return 4;  // mastery 3-5
+export function getDistractorCount(
+  cardMasteryLevel: number,
+  meditatedThemeId?: number,
+  factThemeId?: number,
+): number {
+  let count: number;
+  if (cardMasteryLevel <= 0) count = 2;
+  else if (cardMasteryLevel <= 2) count = 3;
+  else count = 4;  // mastery 3-5
+
+  // AR-273: Meditation Chamber bonus — reduce distractor count by 1 for the meditated theme.
+  if (
+    meditatedThemeId !== undefined &&
+    factThemeId !== undefined &&
+    meditatedThemeId === factThemeId
+  ) {
+    count = Math.max(2, count - 1);
+  }
+
+  return count;
 }
 
 /**

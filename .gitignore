@@ -78,10 +78,15 @@ scripts/fact-audit-report.json
 scripts/fact-audit-report.md
 scripts/distractor-expansion-queue.json
 
-# Dev/debug screenshots (root level)
+# Dev/debug screenshots and media (root level)
 *.png
+*.gif
+*.jpeg
+*.mp4
+*.webp
 # But keep public assets and sprite-gen registry tracked
 !public/**/*.png
+!public/**/*.webp
 !sprite-gen/sprite-registry.json
 
 # Sprite generation intermediate output (keep registry, ignore raw output)
@@ -153,3 +158,16 @@ data/playtests/reports/
 # RL training artifacts
 tests/playtest/rl/logs/
 tests/playtest/rl/models/
+
+# Stale AI tool configs (project uses Claude Code)
+.codex/
+.opencode/
+opencode.json
+
+# Temporary directories
+.cache/
+audit/
+_archived_assets/
+
+# Playwright MCP configs (local dev uses .mcp.json)
+.playwright-mcp-config*.json

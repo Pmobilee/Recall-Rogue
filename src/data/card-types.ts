@@ -118,6 +118,16 @@ export interface Card {
   isTransmuted?: boolean;
   /** Original card data to revert to at encounter end */
   originalCard?: Card;
+  /**
+   * AR-268: Trick Question — when true, this card was locked by The Trick Question enemy.
+   * Quick Play is blocked; must be Charged with the matching fact to unlock with 2× power.
+   */
+  isLocked?: boolean;
+  /**
+   * AR-268: Trick Question — the factId this card is locked to.
+   * Cleared when the card is successfully Charged with the matching fact.
+   */
+  lockedFactId?: string;
 }
 
 // === Card Run State ===

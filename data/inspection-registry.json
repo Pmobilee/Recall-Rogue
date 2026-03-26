@@ -3885,32 +3885,32 @@
         "notes": ""
       },
       {
-        "id": "scattered_coins",
-        "name": "Scattered Coins",
+        "id": "flashcard_merchant",
+        "name": "The Flashcard Merchant",
         "category": "tier1",
-        "description": "Gain 25 gold",
+        "description": "Choice: buy bundle (25g→upgrade card) or browse free (+10g) or walk away",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-26",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-266: Replaced scattered_coins. TODO: add study mechanic for bonus charges"
       },
       {
-        "id": "healing_fountain",
-        "name": "Healing Fountain",
+        "id": "tutors_office",
+        "name": "The Tutor's Office",
         "category": "tier1",
-        "description": "Heal 15% HP",
+        "description": "Heal 10% HP (simplified — TODO: preview 3 facts with +30% charge bonus)",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-26",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-266: Replaced healing_fountain. TODO: add study mechanic"
       },
       {
         "id": "whispering_shelf",
@@ -3983,18 +3983,18 @@
         "notes": ""
       },
       {
-        "id": "knowledge_tax",
-        "name": "Knowledge Tax",
+        "id": "wrong_answer_museum",
+        "name": "The Wrong Answer Museum",
         "category": "tier2",
-        "description": "Pay gold to heal OR take damage",
+        "description": "Gain 15 gold (simplified — TODO: display wrong facts, +1g per studied, reduce wrongCount)",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-26",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-266: Replaced knowledge_tax event. TODO: add reviewMuseum mechanic"
       },
       {
         "id": "copyists_workshop",
@@ -4053,32 +4053,32 @@
         "notes": ""
       },
       {
-        "id": "gamblers_tome",
-        "name": "Gamblers Tome",
+        "id": "rival_student",
+        "name": "The Rival Student",
         "category": "tier2",
-        "description": "Risk HP for card upgrade",
+        "description": "Accept challenge (upgrade + heal 10%) or decline",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-26",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-266: Replaced gamblers_tome. TODO: add rivalDuel mechanic — 5 MCQs vs 65% rival"
       },
       {
         "id": "burning_library",
-        "name": "Burning Library",
+        "name": "The Burning Library",
         "category": "tier3",
-        "description": "Lose HP for upgrade+card",
+        "description": "Rush in (risk 15 HP for upgrade+card) or watch it burn",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-26",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-266: Rethemed with new description. TODO: add escalating quiz mechanic (4 easy questions)"
       },
       {
         "id": "mirror_scholar",
@@ -4151,18 +4151,18 @@
         "notes": ""
       },
       {
-        "id": "final_wager",
-        "name": "Final Wager",
+        "id": "knowledge_gamble",
+        "name": "The Knowledge Gamble",
         "category": "tier4",
-        "description": "50/50 heal or lose half HP",
+        "description": "Random: full heal (correct) or lose 8 max HP (wrong)",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-26",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-266: Replaced final_wager. TODO: add hardest-question mechanic (mastery-5, choice on correct)"
       },
       {
         "id": "the_purge",
@@ -4179,18 +4179,18 @@
         "notes": ""
       },
       {
-        "id": "the_recursion",
-        "name": "The Recursion",
+        "id": "meditation_chamber",
+        "name": "The Meditation Chamber",
         "category": "tier4",
-        "description": "Upgrade, heal, or leave",
+        "description": "Choice: upgrade card, rest+heal (15%+20g), or continue onward",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-26",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-266: Replaced the_recursion. TODO: add meditation mechanic — accuracy stats + theme -1 distractor"
       },
       {
         "id": "eraser_storm",

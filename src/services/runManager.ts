@@ -151,6 +151,12 @@ export interface RunState {
    * Independent of card tier — tracks mastery of the question format per fact.
    */
   factVariantLevel: Record<string, number>;
+  /**
+   * AR-273: Meditation Chamber — chain theme ID the player has meditated on.
+   * When set, distractors for facts belonging to this chainThemeId are reduced by 1 (min 2).
+   * Cleared on new run.
+   */
+  meditatedThemeId?: number;
 }
 
 export interface RunEndData {

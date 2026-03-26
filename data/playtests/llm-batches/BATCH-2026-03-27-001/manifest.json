@@ -1,0 +1,12 @@
+{
+  "batchId": "BATCH-2026-03-27-001",
+  "createdAt": "2026-03-27T16:20:00Z",
+  "testers": ["quiz-quality"],
+  "args": {
+    "runs": 3,
+    "domain": "general_knowledge"
+  },
+  "status": "running",
+  "smokeTestPassed": true,
+  "reports": {}
+}

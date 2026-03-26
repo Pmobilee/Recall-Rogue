@@ -857,16 +857,18 @@ describe('paradox_engine (legendary)', () => {
   });
 });
 
-describe('akashic_record (legendary)', () => {
-  it('Tier 3 correct Charge: tier3AutoChargeMultiplierOverride = 1.5', () => {
+// akashic_record was reworked in AR-265 (v3): no longer uses tier3AutoChargeMultiplierOverride.
+// The field is deprecated and always returns 0. v3 behavior tested in relicEffectResolver.ar265.test.ts.
+describe('akashic_record (legendary) [v3 — tier override deprecated]', () => {
+  it('tier3AutoChargeMultiplierOverride is always 0 (deprecated in v3)', () => {
     const result = resolveChargeCorrectEffects(
       new Set(['akashic_record']),
       makeChargeCorrectCtx({ cardTier: 3 }),
     );
-    expect(result.akashicTier3MultiplierOverride).toBe(1.5);
+    expect(result.akashicTier3MultiplierOverride).toBe(0);
   });
 
-  it('Tier 2 correct Charge: NO multiplier override applied', () => {
+  it('Tier 2 correct Charge: tier3AutoChargeMultiplierOverride is 0 (unchanged)', () => {
     const result = resolveChargeCorrectEffects(
       new Set(['akashic_record']),
       makeChargeCorrectCtx({ cardTier: 2 }),

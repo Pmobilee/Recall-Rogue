@@ -935,12 +935,21 @@ function openCardReward(): void {
   const run = get(activeRunState);
   if (!run) return;
 
+  // AR-262: Apply accuracy grade bonuses to reward generation
+  const rewardBundle = get(activeRewardBundle);
+  const accuracyGrade = rewardBundle?.accuracyGrade;
+  const bonusCardOptions = (accuracyGrade === 'S' || accuracyGrade === 'A') ? 1 : 0;
+  const guaranteeUncommon = accuracyGrade === 'S';
+  const typeCount = 3 + bonusCardOptions;
+
   const options = generateCardRewardOptionsByType(
     getRunPoolCards(),
     getActiveDeckFactIds(),
     run.consumedRewardFactIds,
     run.selectedArchetype,
     run.floor.currentFloor,
+    typeCount,
+    guaranteeUncommon,
   );
 
   if (options.length === 0) {

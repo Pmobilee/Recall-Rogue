@@ -100,6 +100,9 @@
   // Derive reward bundle from store
   let bundle = $derived($activeRewardBundle)
   let rewardStep = $derived($activeRewardRevealStep)
+  /** AR-262: Accuracy grade from the most recent encounter. Only show badge for A or S. */
+  let accuracyGrade = $derived(bundle?.accuracyGrade ?? null)
+  let accuracyPct = $derived(bundle?.accuracyPct ?? 0)
 
   function setRewardStep(step: 'gold' | 'heal' | 'card'): void {
     console.log('[RewardScreen] step transition:', step)
@@ -344,7 +347,19 @@
     <section class={`altar-shell biome-${altarBiome.id}`} class:ceremony-phase-1={altarCeremonyPhase >= 1} class:ceremony-phase-2={altarCeremonyPhase >= 2} class:ceremony-phase-3={altarCeremonyPhase >= 3} class:ceremony-phase-4={altarCeremonyPhase >= 4}>
       <header class="altar-header">
         <h1>Choose a Card</h1>
-        <p>{altarBiome.title} • {altarBiome.subtitle}</p>
+        {#if accuracyGrade === 'S'}
+          <div class="accuracy-grade-badge grade-s" title="S Grade: {accuracyPct}% accuracy — bonus card option + upgraded card!">
+            <span class="grade-label">S</span>
+            <span class="grade-subtext">{accuracyPct}% accuracy — Bonus reward!</span>
+          </div>
+        {:else if accuracyGrade === 'A'}
+          <div class="accuracy-grade-badge grade-a" title="A Grade: {accuracyPct}% accuracy — bonus card option!">
+            <span class="grade-label">A</span>
+            <span class="grade-subtext">{accuracyPct}% accuracy — Bonus option!</span>
+          </div>
+        {:else}
+          <p>{altarBiome.title} • {altarBiome.subtitle}</p>
+        {/if}
       </header>
 
       <div class="altar-surface" style={`--focus-x: ${focusX()};`}>
@@ -741,6 +756,54 @@
     margin: calc(4px * var(--layout-scale, 1)) 0 0;
     color: #c8d0dc;
     font-size: calc(14px * var(--layout-scale, 1));
+  }
+
+  /* AR-262: Accuracy Grade Badge */
+  .accuracy-grade-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    margin: calc(4px * var(--layout-scale, 1)) 0 0;
+    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    border-radius: calc(20px * var(--layout-scale, 1));
+    border: calc(1.5px * var(--layout-scale, 1)) solid currentColor;
+    font-weight: 700;
+    animation: gradeBadgeIn 0.4s ease-out;
+  }
+
+  @keyframes gradeBadgeIn {
+    from { opacity: 0; transform: scale(0.85) translateY(calc(-4px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .accuracy-grade-badge.grade-s {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(255, 180, 0, 0.08));
+    color: #ffd700;
+    border-color: #ffd700;
+    box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.35);
+    animation: gradeBadgeIn 0.4s ease-out, gradeShimmerS 2.5s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes gradeShimmerS {
+    0%, 100% { box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.35); }
+    50%       { box-shadow: 0 0 calc(22px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.65); }
+  }
+
+  .accuracy-grade-badge.grade-a {
+    background: rgba(192, 192, 192, 0.12);
+    color: #d0d8e4;
+    border-color: #a0aabb;
+  }
+
+  .grade-label {
+    font-size: calc(20px * var(--layout-scale, 1));
+    line-height: 1;
+  }
+
+  .grade-subtext {
+    font-size: calc(12px * var(--layout-scale, 1));
+    font-weight: 500;
+    opacity: 0.9;
   }
 
   .altar-surface {

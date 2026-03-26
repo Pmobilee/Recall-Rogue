@@ -52,20 +52,22 @@
   }: Props = $props()
 
   // ============================================================
-  // HP bar color derived from percentage
+  // HP bar color derived from percentage (blue when block is active)
   // ============================================================
   const hpPercent = $derived(
     playerMaxHp > 0 ? Math.max(0, Math.min(100, (playerHp / playerMaxHp) * 100)) : 0,
   )
 
   const hpBarColor = $derived(
-    hpPercent > 60
-      ? '#22c55e'
-      : hpPercent > 30
-        ? '#eab308'
-        : hpPercent > 15
-          ? '#f97316'
-          : '#ef4444',
+    playerBlock > 0
+      ? '#38bdf8'
+      : hpPercent > 60
+        ? '#22c55e'
+        : hpPercent > 30
+          ? '#eab308'
+          : hpPercent > 15
+            ? '#f97316'
+            : '#ef4444',
   )
 
   const segmentName = $derived(SEGMENT_NAMES[segment] ?? 'Unknown')
@@ -107,16 +109,11 @@
        LEFT — Player Vitals
        ============================================================ -->
   <div class="section section-left">
-    {#if playerBlock > 0}
-      <div class="block-badge" aria-label="Block: {playerBlock}">
-        <span class="block-icon">🛡</span>
-        <span class="block-value">{playerBlock}</span>
-      </div>
-    {/if}
-
-    <div class="hp-group" aria-label="HP: {playerHp} of {playerMaxHp}">
-      <span class="hp-label">HP</span>
-      <div class="hp-bar-track">
+    <div class="hp-group" aria-label="{playerBlock > 0 ? `Block: ${playerBlock}, ` : ''}HP: {playerHp} of {playerMaxHp}">
+      <div
+        class="hp-bar-track"
+        class:hp-bar-blocked={playerBlock > 0}
+      >
         <div
           class="hp-bar-fill"
           style="width: {hpPercent}%; background: {hpBarColor};"
@@ -125,7 +122,9 @@
           aria-valuemin={0}
           aria-valuemax={playerMaxHp}
         ></div>
-        <span class="hp-text">{playerHp}/{playerMaxHp}</span>
+        <span class="hp-text">
+          {#if playerBlock > 0}🛡{playerBlock} {/if}{playerHp}/{playerMaxHp}
+        </span>
       </div>
     </div>
   </div>
@@ -265,46 +264,13 @@
   }
 
   /* ============================================================
-     Block Badge
-     ============================================================ */
-  .block-badge {
-    display: flex;
-    align-items: center;
-    gap: calc(2px * var(--layout-scale, 1));
-    flex-shrink: 0;
-  }
-
-  .block-icon {
-    font-size: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.42);
-    line-height: 1;
-  }
-
-  .block-value {
-    font-family: var(--font-pixel, monospace);
-    font-size: calc(11px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #93c5fd;
-    line-height: 1;
-  }
-
-  /* ============================================================
      HP Bar
      ============================================================ */
   .hp-group {
     display: flex;
     align-items: center;
-    gap: calc(5px * var(--layout-scale, 1));
     flex: 1;
     min-width: 0;
-  }
-
-  .hp-label {
-    font-family: var(--font-pixel, monospace);
-    font-size: calc(9px * var(--text-scale, 1));
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    flex-shrink: 0;
   }
 
   .hp-bar-track {
@@ -318,6 +284,12 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
+    transition: box-shadow 300ms ease;
+  }
+
+  .hp-bar-track.hp-bar-blocked {
+    box-shadow: 0 0 calc(6px * var(--layout-scale, 1)) rgba(56, 189, 248, 0.5);
+    border-color: rgba(56, 189, 248, 0.35);
   }
 
   .hp-bar-fill {
@@ -334,7 +306,7 @@
     z-index: 1;
     width: 100%;
     text-align: center;
-    font-family: var(--font-pixel, monospace);
+    font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(9px * var(--text-scale, 1));
     font-weight: 700;
     color: #fff;
@@ -348,7 +320,7 @@
      Center — Progress Info
      ============================================================ */
   .segment-name {
-    font-family: var(--font-pixel, monospace);
+    font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(10px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.85);
     font-weight: 600;
@@ -357,7 +329,7 @@
   }
 
   .floor-label {
-    font-family: var(--font-pixel, monospace);
+    font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(10px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.6);
     white-space: nowrap;
@@ -370,7 +342,7 @@
   }
 
   .ascension-badge {
-    font-family: var(--font-pixel, monospace);
+    font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(8px * var(--text-scale, 1));
     font-weight: 700;
     color: #f59e0b;
@@ -389,7 +361,7 @@
   .gold-counter {
     display: flex;
     align-items: center;
-    gap: calc(3px * var(--layout-scale, 1));
+    gap: calc(5px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 
@@ -399,7 +371,7 @@
   }
 
   .gold-value {
-    font-family: var(--font-pixel, monospace);
+    font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(12px * var(--text-scale, 1));
     font-weight: 700;
     color: #fbbf24;
@@ -518,7 +490,7 @@
   }
 
   .tooltip-name {
-    font-family: var(--font-pixel, monospace);
+    font-family: var(--font-pixel, var(--font-rpg));
     font-size: calc(9px * var(--text-scale, 1));
     font-weight: 700;
     color: #f4d35e;

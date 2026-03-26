@@ -740,6 +740,78 @@ An Inscription card played via Quick Play applies its effect at **0.7×** the ba
 
 ---
 
+## 4.7 Knowledge Aura (AR-261)
+
+Per-encounter gauge (0–10) driven by Charge accuracy. Starts at 5 each encounter.
+
+**Aura Changes:**
+
+| Event | Delta |
+|-------|-------|
+| Correct Charge | +1 |
+| Wrong Charge | −2 |
+| Quick Play | 0 |
+
+**Aura States:**
+
+| Range | State | Effect |
+|-------|-------|--------|
+| 0–3 | Brain Fog | Enemies deal +20% damage |
+| 4–6 | Neutral | No effect |
+| 7–10 | Flow State | Draw +1 card per turn |
+
+Quick Play doesn't drain Aura — QP is already punished through lower multipliers, no chains, no mastery progress. Aura purely tracks Charge accuracy.
+
+Cards and relics can reference Aura state (e.g., Smite scales with Aura level, Domain Mastery Sigil grants ±1 AP based on state).
+
+**Implementation:** `src/services/knowledgeAuraSystem.ts` — pure module with `resetAura()`, `adjustAura()`, `getAuraState()`, `getAuraLevel()`.
+
+---
+
+## 4.8 Review Queue (AR-261)
+
+Per-encounter list of fact IDs from wrong Charge answers. Resets each encounter.
+
+When a Charge answer is wrong, the fact ID is added to the Review Queue. If a subsequent Charge correctly answers a Review Queue fact, it is cleared from the queue and triggers bonus effects on cards/relics that reference it (e.g., Recall deals bonus damage + heal on Review Queue facts, Scholar's Crown grants +40% damage).
+
+The queue is displayed as small icons near the chain counter (top 3 shown, overflow badge for more).
+
+**Implementation:** `src/services/reviewQueueSystem.ts` — pure module with `resetReviewQueue()`, `addToReviewQueue()`, `clearReviewQueueFact()`, `isReviewQueueFact()`.
+
+---
+
+## 4.9 Accuracy Grade (AR-262)
+
+Post-encounter accuracy grade based on Charge quiz performance. Pure upside — no penalties for low accuracy, only bonuses for excellence.
+
+At the end of each combat encounter, the game calculates:
+```
+accuracy = chargesCorrectThisEncounter / encounterChargesTotal × 100%
+```
+
+| Accuracy | Grade | Effect |
+|----------|-------|--------|
+| 90%+ | **S** | +1 card option (4 total) AND guaranteed Tier 2a/2b card in options |
+| 80–89% | **A** | +1 card option (4 total) |
+| 60–79% | **B** | Standard rewards (3 card options) |
+| Below 60% | **C** | Standard rewards (3 card options) |
+
+**Edge cases:**
+- 0 charges attempted (Quick Play-only encounter) → grade C, standard rewards
+- Grade is stored in `activeRewardBundle.accuracyGrade` and read by `openCardReward()` in `gameFlowController.ts`
+
+**Badge display:** Grade badge shown on the card reward screen's header for A and S grades. S grade has a gold shimmer animation. B/C grades show no badge (no negative feedback).
+
+**Implementation files:**
+- `src/services/accuracyGradeSystem.ts` — pure `calculateAccuracyGrade(attempted, correct)` module
+- `src/services/turnManager.ts` — `chargesCorrectThisEncounter` counter (alongside `encounterChargesTotal`)
+- `src/services/encounterBridge.ts` — computes grade at encounter victory, stores in `activeRewardBundle`
+- `src/services/gameFlowController.ts` — `openCardReward()` reads grade and passes `typeCount`/`guaranteeUncommon` to reward generator
+- `src/services/rewardGenerator.ts` — `generateCardRewardOptionsByType()` accepts `typeCount` and `guaranteeUncommon` params
+- `src/ui/components/CardRewardScreen.svelte` — grade badge UI
+
+---
+
 ## 5. Card Tiers and Mastery
 
 ### FSRS Tiers (Long-Term Knowledge Tracking — Decoupled from Combat Power)
@@ -1542,95 +1614,97 @@ Single enemies only (no multi-enemy encounters at launch). Variety comes from en
 
 **Reactive hooks:** `onPlayerChargeWrong` = fires after a wrong Charge answer; `onPlayerChargeCorrect` = fires after a correct Charge; `onPlayerNoCharge` = fires at end of player turn if no Charge was made that turn; `onEnemyTurnStart` = fires at the start of each enemy turn.
 
+**HP Source of Truth:** All enemy HP values live exclusively in `src/data/enemies.ts`. Effective HP = `baseHP × ENEMY_BASE_HP_MULTIPLIER × floorScaling`. The GDD documents enemy tiers and intent pools only — not specific HP numbers. See `balance.ts` for the current multiplier value.
+
 ---
 
 ### Act 1 — Shallow Depths
 
 #### Common Enemies
 
-**Page Flutter** (`page_flutter`) — Common (standard, weight 10)
-HP: 5 | Intents: Attack 2 (wt 3), Attack 2 (wt 2), Buff +1 Strength 2t (wt 1), Defend 1 (wt 1)
+**Page Flutter** (`page_flutter`) — Common (standard, weight 10) | Standard tier
+Intents: Attack 2 (wt 3), Attack 2 (wt 2), Buff +1 Strength 2t (wt 1), Defend 1 (wt 1)
 *Common cave predator. Fast and fragile. First thing you'll see down here.*
 
-**Thesis Construct** (`thesis_construct`) — Common (standard, weight 10) | `chargeResistant`
-HP: 5 | Intents: Attack 2 (wt 2), Defend 2 (wt 2), Charge 4 bypass-cap (wt 1), Multi-attack 2×2 (wt 1)
+**Thesis Construct** (`thesis_construct`) — Common (standard, weight 10) | `chargeResistant` | Standard tier
+Intents: Attack 2 (wt 2), Defend 2 (wt 2), Charge 4 bypass-cap (wt 1), Multi-attack 2×2 (wt 1)
 *Crystal-encrusted and slow. Blocks on off-turns, then charges a heavy spike.*
 
-**Mold Puff** (`mold_puff`) — Common (standard, weight 10)
-HP: 7 | Intents: Attack 2 (wt 2), Debuff Poison 2/3t (wt 3), Debuff Weakness 1/2t (wt 1)
+**Mold Puff** (`mold_puff`) — Common (standard, weight 10) | Tanky tier
+Intents: Attack 2 (wt 2), Debuff Poison 2/3t (wt 3), Debuff Weakness 1/2t (wt 1)
 *Low HP fungus. Stacks poison fast. Kill it before it stacks.*
 
-**Ink Slug** (`ink_slug`) — Common (standard, weight 10)
-HP: 7 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 3), Defend 1 (wt 1)
+**Ink Slug** (`ink_slug`) — Common (standard, weight 10) | Tanky tier
+Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 3), Defend 1 (wt 1)
 *Slug-shaped and wet. Poison seeps from its touch.*
 
-**Bookmark Vine** (`bookmark_vine`) — Common (uncommon, weight 5) | `chainVulnerable`
-HP: 4 | Intents: Multi-attack 2×3 (wt 3), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+**Bookmark Vine** (`bookmark_vine`) — Common (uncommon, weight 5) | `chainVulnerable` | Glass tier
+Intents: Multi-attack 2×3 (wt 3), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
 *Roots that move on their own. Vines, poison, persistence.*
 
-**Staple Bug** (`staple_bug`) — Common (standard, weight 10) | `chargeResistant`
-HP: 7 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Multi-attack 2×2 (wt 1)
+**Staple Bug** (`staple_bug`) — Common (standard, weight 10) | `chargeResistant` | Tanky tier
+Intents: Defend 2 (wt 3), Attack 2 (wt 2), Multi-attack 2×2 (wt 1)
 *Heavy carapace. Prefers to block and wait.*
 
-**Margin Gremlin** (`margin_gremlin`) — Common (uncommon, weight 5)
-HP: 4 | Intents: Attack 2 (wt 3), Buff +1 Strength 2t (wt 2), Attack 2 (wt 1)
+**Margin Gremlin** (`margin_gremlin`) — Common (uncommon, weight 5) | Glass tier
+Intents: Attack 2 (wt 3), Buff +1 Strength 2t (wt 2), Attack 2 (wt 1)
 *Pale limestone imp. Quick, aggressive, annoying.*
 
-**Index Weaver** (`index_weaver`) — Common (standard, weight 10) | `chainVulnerable`
-HP: 4 | Intents: Multi-attack 2×3 (wt 3), Debuff Poison 2/3t (wt 2), Attack 2 (wt 1)
+**Index Weaver** (`index_weaver`) — Common (standard, weight 10) | `chainVulnerable` | Glass tier
+Intents: Multi-attack 2×3 (wt 3), Debuff Poison 2/3t (wt 2), Attack 2 (wt 1)
 *Venomous and fast. Multiple attacks per encounter.*
 
-**Overdue Golem** (`overdue_golem`) — Common (standard, weight 10)
-HP: 7 | Intents: Heal 6 (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+**Overdue Golem** (`overdue_golem`) — Common (standard, weight 10) | Tanky tier
+Intents: Heal 6 (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
 *Bog water and peat, barely held together. Heals from the muck.*
 
-**Pop Quiz** (`pop_quiz`) — Common (uncommon, weight 5)
-HP: 7 | Intents: Debuff Poison 2/3t (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+**Pop Quiz** (`pop_quiz`) — Common (uncommon, weight 5) | Tanky tier
+Intents: Debuff Poison 2/3t (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
 *Young fungus. Spores before strikes.*
 
-**Eraser Worm** (`eraser_worm`) — Common (rare, weight 2) | `chainVulnerable`
-HP: 4 | Intents: Multi-attack 2×4 (wt 3), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+**Eraser Worm** (`eraser_worm`) — Common (rare, weight 2) | `chainVulnerable` | Glass tier
+Intents: Multi-attack 2×4 (wt 3), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
 *No eyes, hunts by vibration. Never stops biting.*
 
 #### Mini-Boss Enemies
 
-**The Plagiarist** (`plagiarist`) — Mini-Boss
-HP: 7 | Intents: Attack 2 (wt 3), Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 1)
+**The Plagiarist** (`plagiarist`) — Mini-Boss | Light tier
+Intents: Attack 2 (wt 3), Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 1)
 Reactive: `onEnemyTurnStart` — from turn 4 onward, gains +5 `enrageBonusDamage` every turn.
 *Gets deadlier each turn. Survive to turn 4 and it permanently gains +5 damage per turn after that.*
 
-**The Card Catalogue** (`card_catalogue`) — Mini-Boss
-HP: 8 | Intents: Heal 8 (wt 2), Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 1), Attack 2 (wt 1)
+**The Card Catalogue** (`card_catalogue`) — Mini-Boss | Medium tier
+Intents: Heal 8 (wt 2), Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 1), Attack 2 (wt 1)
 *The source of all those roots. Old, vast, and furious.*
 
-**The Headmistress** (`headmistress`) — Mini-Boss
-HP: 8 | Intents: Defend 2 (wt 3), Charge 5 (wt 1), Buff +1 Strength 2t (wt 1), Attack 2 (wt 1)
+**The Headmistress** (`headmistress`) — Mini-Boss | Medium tier
+Intents: Defend 2 (wt 3), Charge 5 (wt 1), Buff +1 Strength 2t (wt 1), Attack 2 (wt 1)
 *A colony of iron beetles, stacked and coordinated. Doesn't yield.*
 
-**The Tutor** (`tutor`) — Mini-Boss
-HP: 6 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 6 (wt 1), Attack 2 (wt 1)
+**The Tutor** (`tutor`) — Mini-Boss | Light tier
+Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 6 (wt 1), Attack 2 (wt 1)
 *Swamp hag. Curses and weakens before she bothers to hit.*
 
-**The Study Group** (`study_group`) — Mini-Boss
-HP: 8 | Intents: Debuff Poison 3/3t (wt 2), Buff +2 Strength 2t (wt 1), Defend 2 (wt 1), Attack 2 (wt 1)
+**The Study Group** (`study_group`) — Mini-Boss | Medium tier
+Intents: Debuff Poison 3/3t (wt 2), Buff +2 Strength 2t (wt 1), Defend 2 (wt 1), Attack 2 (wt 1)
 *Crowned fungus. Rules its colony through poison.*
 
 #### Elite Enemies
 
 **The Librarian** (`librarian`) — Elite
-HP: 12 | Phase 1: Attack 2 (wt 2), Defend 2 (wt 1), Charge 5 (wt 1), Buff +2 Strength 2t (wt 1)
+Phase 1: Attack 2 (wt 2), Defend 2 (wt 1), Charge 5 (wt 1), Buff +2 Strength 2t (wt 1)
 Phase transition at 40% HP → Phase 2: Attack 3 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1)
 *Thick hide, slow temper. Wound it and it stops being slow.*
 
 #### Boss Enemies
 
 **The Final Exam** (`final_exam`) — Boss
-HP: 11 | Phase 1: Attack 2 (wt 2), Multi-attack 2×4 (wt 1), Defend 2 (wt 1), Debuff Weakness 1/2t (wt 1)
+Phase 1: Attack 2 (wt 2), Multi-attack 2×4 (wt 1), Defend 2 (wt 1), Debuff Weakness 1/2t (wt 1)
 Phase transition at 40% HP → Phase 2: Attack 4 (wt 2), Multi-attack 2×3 (wt 2), Defend 2 (wt 1), Charge 6 bypass-cap (wt 1)
 *An old mining rig, still running. Nobody told it to stop.*
 
 **The Burning Deadline** (`burning_deadline`) — Boss
-HP: 11 | Phase 1: Attack 2 (wt 1), Attack 2 (wt 1), Debuff Poison 3/3t (wt 1), Buff +2 Strength 3t (wt 1)
+Phase 1: Attack 2 (wt 1), Attack 2 (wt 1), Debuff Poison 3/3t (wt 1), Buff +2 Strength 3t (wt 1)
 Phase transition at 40% HP → Phase 2: Attack 4 (wt 2), Multi-attack 2×4 (wt 1), Debuff Poison 4/3t (wt 1)
 *Molten rock, given shape. The heat alone is a threat.*
 
@@ -1642,209 +1716,209 @@ Act 2 spans two regions. Deep Caverns enemies appear in early Act 2; The Abyss e
 
 #### Common Enemies — Deep Caverns
 
-**The Crib Sheet** (`crib_sheet`) — Common (standard, weight 10)
-HP: 4 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1)
+**The Crib Sheet** (`crib_sheet`) — Common (standard, weight 10) | Glass tier
+Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1)
 Reactive: `onPlayerChargeWrong` — mirrors card's base damage back to player (`_mirrorDamage`).
 *Mirrors your failures. Miss a Charge and it hits you back for the same damage.*
 
-**The Citation Needed** (`citation_needed`) — Common (standard, weight 10)
-HP: 7 | Intents: Attack 2 (wt 3), Heal 5 (wt 2), Defend 1 (wt 1), Debuff Weakness 1/2t (wt 1)
+**The Citation Needed** (`citation_needed`) — Common (standard, weight 10) | Tanky tier
+Intents: Attack 2 (wt 3), Heal 5 (wt 2), Defend 1 (wt 1), Debuff Weakness 1/2t (wt 1)
 Reactive: `onPlayerChargeWrong` — steals up to 5 block from player; enemy heals for stolen amount.
 *Steals your block when you miss a Charge. Build defenses before risking a quiz.*
 
-**The Grade Curve** (`grade_curve`) — Common (standard, weight 8)
-HP: 7 | Intents: Attack 2 (wt 3), Defend 1 (wt 2), Attack 2 (wt 1)
+**The Grade Curve** (`grade_curve`) — Common (standard, weight 8) | Tanky tier
+Intents: Attack 2 (wt 3), Defend 1 (wt 2), Attack 2 (wt 1)
 Reactive: `onPlayerChargeCorrect` — gains +2 `enrageBonusDamage` per correct Charge.
 *Gains +2 Strength every time you Charge correctly. Kill fast or play safe.*
 
-**The Crambot** (`crambot`) — Common (standard, weight 10) | `chargeResistant`
-HP: 5 | Intents: Defend 1 (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Crambot** (`crambot`) — Common (standard, weight 10) | `chargeResistant` | Standard tier
+Intents: Defend 1 (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
 *Basalt-skinned reptile. Attacks and blocks in equal measure.*
 
-**The All-Nighter** (`all_nighter`) — Common (standard, weight 10)
-HP: 5 | Intents: Debuff Weakness 1/2t (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+**The All-Nighter** (`all_nighter`) — Common (standard, weight 10) | Standard tier
+Intents: Debuff Weakness 1/2t (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
 *Salt crystals, loosely haunting. Saps strength on contact.*
 
-**The Spark Note** (`spark_note`) — Common (standard, weight 10)
-HP: 5 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+**The Spark Note** (`spark_note`) — Common (standard, weight 10) | Standard tier
+Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
 *Carved from burning coal, still burning. Leaves poison behind.*
 
-**The Watchdog** (`watchdog`) — Common (uncommon, weight 5) | `chargeResistant`
-HP: 4 | Intents: Multi-attack 2×3 (wt 3), Attack 2 (wt 1), Attack 2 (wt 1)
+**The Watchdog** (`watchdog`) — Common (uncommon, weight 5) | `chargeResistant` | Glass tier
+Intents: Multi-attack 2×3 (wt 3), Attack 2 (wt 1), Attack 2 (wt 1)
 *Stone wolf. Hunts in the dark, bites multiple times.*
 
-**The Red Herring** (`red_herring`) — Common (standard, weight 10)
-HP: 7 | Intents: Debuff Poison 2/3t (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+**The Red Herring** (`red_herring`) — Common (standard, weight 10) | Tanky tier
+Intents: Debuff Poison 2/3t (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
 *Born from a vent. Toxic by nature, multiple debuffs.*
 
-**The Anxiety Tick** (`anxiety_tick`) — Common (standard, weight 10)
-HP: 7 | Intents: Attack 2 (wt 2), Buff +1 Strength 2t (wt 2), Heal 4 (wt 1)
+**The Anxiety Tick** (`anxiety_tick`) — Common (standard, weight 10) | Tanky tier
+Intents: Attack 2 (wt 2), Buff +1 Strength 2t (wt 2), Heal 4 (wt 1)
 *Feeds on magma. The heat heals it.*
 
-**The Trick Question** (`trick_question`) — Common (uncommon, weight 5)
-HP: 5 | Intents: Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Trick Question** (`trick_question`) — Common (uncommon, weight 5) | Standard tier
+Intents: Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
 *Adapted to total darkness. Leaves you vulnerable.*
 
-**The Dropout** (`dropout`) — Common (standard, weight 10) | `chargeResistant`
-HP: 7 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Dropout** (`dropout`) — Common (standard, weight 10) | `chargeResistant` | Tanky tier
+Intents: Defend 2 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
 *Crustacean in a geode shell. Stubborn and difficult to crack.*
 
-**The Brain Fog** (`brain_fog`) — Common (uncommon, weight 5)
-HP: 7 | Intents: Debuff Poison 2/3t (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+**The Brain Fog** (`brain_fog`) — Common (uncommon, weight 5) | Tanky tier
+Intents: Debuff Poison 2/3t (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
 *Gas that haunts. Poisons and weakens on contact.*
 
-**The Thesis Dragon** (`thesis_dragon`) — Common (rare, weight 2) | `chainVulnerable`
-HP: 4 | Intents: Multi-attack 2×3 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Thesis Dragon** (`thesis_dragon`) — Common (rare, weight 2) | `chainVulnerable` | Glass tier
+Intents: Multi-attack 2×3 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
 *Hangs from the ceiling and drops on you. Fast attacker.*
 
-**The Burnout** (`burnout`) — Common (standard, weight 10)
-HP: 5 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+**The Burnout** (`burnout`) — Common (standard, weight 10) | Standard tier
+Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
 *Moth on fire. Leaves scorch-poison on contact.*
 
 #### Common Enemies — The Abyss
 
-**The Writer's Block** (`writers_block`) — Common (standard, weight 10) | `chainVulnerable`
-HP: 4 | Intents: Multi-attack 2×4 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Writer's Block** (`writers_block`) — Common (standard, weight 10) | `chainVulnerable` | Glass tier
+Intents: Multi-attack 2×4 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
 *Obsidian shard, floating and sharp. Attacks in volleys.*
 
-**The Information Overload** (`information_overload`) — Common (standard, weight 10)
-HP: 5 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
+**The Information Overload** (`information_overload`) — Common (standard, weight 10) | Standard tier
+Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Attack 2 (wt 1)
 *Lava that moves with purpose. Leaves burn-poison.*
 
-**The Rote Memory** (`rote_memory`) — Common (standard, weight 10) | `chargeResistant`
-HP: 7 | Intents: Defend 2 (wt 2), Attack 2 (wt 2), Buff +1 Strength 2t (wt 1)
+**The Rote Memory** (`rote_memory`) — Common (standard, weight 10) | `chargeResistant` | Tanky tier
+Intents: Defend 2 (wt 2), Attack 2 (wt 2), Buff +1 Strength 2t (wt 1)
 *Pure crystal, animated. Blocks and attacks with equal comfort.*
 
-**The Outdated Fact** (`outdated_fact`) — Common (uncommon, weight 5) | `chainVulnerable`
-HP: 4 | Intents: Multi-attack 2×3 (wt 3), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+**The Outdated Fact** (`outdated_fact`) — Common (uncommon, weight 5) | `chainVulnerable` | Glass tier
+Intents: Multi-attack 2×3 (wt 3), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
 *Dinosaur skeleton, still furious. Fast and relentless.*
 
-**The Hidden Gem** (`hidden_gem`) — Common (standard, weight 10) | `chargeResistant`
-HP: 7 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Hidden Gem** (`hidden_gem`) — Common (standard, weight 10) | `chargeResistant` | Tanky tier
+Intents: Defend 2 (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
 *Crystalline shell. Nearly impossible to reach through all that block.*
 
-**The Rushing Student** (`rushing_student`) — Common (standard, weight 10) | `chainVulnerable`
-HP: 5 | Intents: Debuff Poison 2/3t (wt 2), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
+**The Rushing Student** (`rushing_student`) — Common (standard, weight 10) | `chainVulnerable` | Standard tier
+Intents: Debuff Poison 2/3t (wt 2), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
 *Magma centipede. The trail it leaves burns.*
 
-**The Echo Chamber** (`echo_chamber`) — Common (uncommon, weight 5)
-HP: 4 | Intents: Attack 2 (wt 3), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
+**The Echo Chamber** (`echo_chamber`) — Common (uncommon, weight 5) | Glass tier
+Intents: Attack 2 (wt 3), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
 *Crystal wings. Each swoop is a blade.*
 
-**The Blank Spot** (`blank_spot`) — Common (standard, weight 10)
-HP: 6 | Intents: Attack 2 (wt 3), Defend 2 (wt 2), Heal 5 (wt 1)
+**The Blank Spot** (`blank_spot`) — Common (standard, weight 10) | Standard tier
+Intents: Attack 2 (wt 3), Defend 2 (wt 2), Heal 5 (wt 1)
 Reactive: `onPlayerChargeWrong` — gains +8 block.
 *Gains 8 block when you answer wrong on a Charge. Only Charge facts you know.*
 
-**The Burnout Phantom** (`burnout_phantom`) — Common (standard, weight 10)
-HP: 5 | Intents: Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Burnout Phantom** (`burnout_phantom`) — Common (standard, weight 10) | Standard tier
+Intents: Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
 *Ash from old eruptions. Leaves you open to damage.*
 
-**Prismatic Jelly** (`prismatic_jelly`) — Common (uncommon, weight 5)
-HP: 7 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+**Prismatic Jelly** (`prismatic_jelly`) — Common (uncommon, weight 5) | Tanky tier
+Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
 *Iridescent and toxic. Stacks weakness and vulnerability.*
 
-**Ember Skeleton** (`ember_skeleton`) — Common (rare, weight 2) | `chainVulnerable`
-HP: 6 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Buff +1 Strength 2t (wt 1)
+**Ember Skeleton** (`ember_skeleton`) — Common (rare, weight 2) | `chainVulnerable` | Standard tier
+Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Buff +1 Strength 2t (wt 1)
 *Burning skeleton. Gets stronger while it burns.*
 
 #### Mini-Boss Enemies
 
-**The Tenure Guardian** (`tenure_guardian`) — Mini-Boss
-HP: 8 | Intents: Attack 2 (wt 3), Defend 1 (wt 3), Attack 2 (wt 1)
+**The Tenure Guardian** (`tenure_guardian`) — Mini-Boss | Medium tier
+Intents: Attack 2 (wt 3), Defend 1 (wt 3), Attack 2 (wt 1)
 Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
 *Crystal-armored golem. Blocks accumulate each turn.*
 
-**The Proctor** (`proctor`) — Mini-Boss
-HP: 9 | Intents: Attack 2 (wt 2), Defend 2 (wt 3), Buff +1 Strength 3t (wt 1), Charge 5 (wt 1)
+**The Proctor** (`proctor`) — Mini-Boss | Medium tier
+Intents: Attack 2 (wt 2), Defend 2 (wt 3), Buff +1 Strength 3t (wt 1), Charge 5 (wt 1)
 Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
 *Old stone warrior. Very slow, very durable. A war of attrition.*
 
-**The Harsh Grader** (`harsh_grader`) — Mini-Boss
-HP: 8 | Intents: Debuff Poison 3/3t (wt 2), Debuff Weakness 1/2t (wt 1), Multi-attack 2×3 (wt 1), Attack 2 (wt 1)
+**The Harsh Grader** (`harsh_grader`) — Mini-Boss | Medium tier
+Intents: Debuff Poison 3/3t (wt 2), Debuff Weakness 1/2t (wt 1), Multi-attack 2×3 (wt 1), Attack 2 (wt 1)
 *Crystallized sulfur, given authority. Stacks poison fast.*
 
-**The Textbook** (`textbook`) — Mini-Boss
-HP: 8 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
+**The Textbook** (`textbook`) — Mini-Boss | Medium tier
+Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
 *Solid granite, enormous. Damage barely registers.*
 
-**The Imposter Syndrome** (`imposter_syndrome`) — Mini-Boss
-HP: 8 | Intents: Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1), Attack 2 (wt 1)
+**The Imposter Syndrome** (`imposter_syndrome`) — Mini-Boss | Medium tier
+Intents: Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1), Attack 2 (wt 1)
 *Deep cave predator. Patient, then very fast.*
 
-**The Pressure Cooker** (`pressure_cooker`) — Mini-Boss
-HP: 8 | Intents: Attack 2 (wt 2), Debuff Poison 3/2t (wt 2), Defend 2 (wt 1), Attack 2 (wt 1)
+**The Pressure Cooker** (`pressure_cooker`) — Mini-Boss | Medium tier
+Intents: Attack 2 (wt 2), Debuff Poison 3/2t (wt 2), Defend 2 (wt 1), Attack 2 (wt 1)
 *Lava-formed lizard. Bites and burns.*
 
-**The Grade Dragon** (`grade_dragon`) — Mini-Boss
-HP: 8 | Intents: Attack 2 (wt 3), Attack 2 (wt 2), Debuff Poison 2/2t (wt 1)
+**The Grade Dragon** (`grade_dragon`) — Mini-Boss | Medium tier
+Intents: Attack 2 (wt 3), Attack 2 (wt 2), Debuff Poison 2/2t (wt 1)
 *Small and vicious. Hits hard, breaks easy.*
 
-**The Comparison Trap** (`comparison_trap`) — Mini-Boss
-HP: 6 | Intents: Attack 2 (wt 3), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1)
+**The Comparison Trap** (`comparison_trap`) — Mini-Boss | Light tier
+Intents: Attack 2 (wt 3), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1)
 *Copies your last card type. Nastier than The Crib Sheet.*
 
-**The Perfectionist** (`perfectionist`) — Mini-Boss
-HP: 9 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 2)
+**The Perfectionist** (`perfectionist`) — Mini-Boss | Medium tier
+Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 2)
 Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
 *Obsidian glass forged into armor. Blocks well, then cuts.*
 
-**The Hydra Problem** (`hydra_problem`) — Mini-Boss
-HP: 8 | Intents: Multi-attack 2×3 (wt 2), Defend 2 (wt 1), Heal 6 (wt 1), Attack 2 (wt 1)
+**The Hydra Problem** (`hydra_problem`) — Mini-Boss | Medium tier
+Intents: Multi-attack 2×3 (wt 2), Defend 2 (wt 1), Heal 6 (wt 1), Attack 2 (wt 1)
 *Three crystal heads. At least one is always healing.*
 
-**The Ivory Tower** (`ivory_tower`) — Mini-Boss
-HP: 8 | Intents: Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2)
+**The Ivory Tower** (`ivory_tower`) — Mini-Boss | Medium tier
+Intents: Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 2)
 *Ancient bones, reanimated and airborne. Drops fast.*
 
-**The Helicopter Parent** (`helicopter_parent`) — Mini-Boss
-HP: 9 | Intents: Multi-attack 2×3 (wt 2), Debuff Poison 3/3t (wt 2), Defend 2 (wt 1), Attack 2 (wt 1)
+**The Helicopter Parent** (`helicopter_parent`) — Mini-Boss | Medium tier
+Intents: Multi-attack 2×3 (wt 2), Debuff Poison 3/3t (wt 2), Defend 2 (wt 1), Attack 2 (wt 1)
 *Lava spider, large. Floods the field with spawn and poison.*
 
 #### Elite Enemies
 
 **The Deadline Serpent** (`deadline_serpent`) — Elite
-HP: 7 | Phase 1: Attack 2 (wt 2), Debuff Poison 3/3t (wt 2), Multi-attack 2×2 (wt 1), Attack 2 (wt 1)
+Phase 1: Attack 2 (wt 2), Debuff Poison 3/3t (wt 2), Multi-attack 2×2 (wt 1), Attack 2 (wt 1)
 Phase transition at 50% HP → Phase 2: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1)
 *Lava-formed cobra. Deadly at range and up close.*
 
 **The Standardized Test** (`standardized_test`) — Elite
-HP: 12 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Buff +2 Strength 2t (wt 1), Attack 2 (wt 1)
+Intents: Defend 2 (wt 2), Charge 5 (wt 1), Buff +2 Strength 2t (wt 1), Attack 2 (wt 1)
 *Basalt column, upright and hostile. Hits slowly, hits hard.*
 
 **The Emeritus** (`emeritus`) — Elite
-HP: 12 | Phase 1: Defend 2 (wt 2), Heal 7 (wt 1), Attack 2 (wt 1), Buff +2 Strength 2t (wt 1)
+Phase 1: Defend 2 (wt 2), Heal 7 (wt 1), Attack 2 (wt 1), Buff +2 Strength 2t (wt 1)
 Phase transition at 50% HP → Phase 2: Multi-attack 2×3 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
 *Crystal-built, hard to kill. Becomes far more dangerous at half HP.*
 
 **The Student Debt** (`student_debt`) — Elite
-HP: 7 | Phase 1: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1), Attack 2 (wt 1)
+Phase 1: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 1), Attack 2 (wt 1)
 Phase transition at 40% HP → Phase 2: Attack 3 (wt 2), Multi-attack 2×4 (wt 2), Attack 2 (wt 1)
 *Deep-abyss serpent. Wound it and it stops caring about defense.*
 
 **The Publish-or-Perish** (`publish_or_perish`) — Elite | `immuneDomain: natural_sciences`
-HP: 12 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 8 (wt 1), Attack 2 (wt 1)
+Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 8 (wt 1), Attack 2 (wt 1)
 *Crystal lich. Natural science cards do nothing to it. Debuffs everything.*
 
 #### Boss Enemies
 
 **The Algorithm** (`algorithm`) — Boss
-HP: 12 | Phase 1: Attack 2 (wt 2), Defend 2 (wt 1), Debuff Vulnerable 1/2t (wt 1), Heal 8 (wt 1)
+Phase 1: Attack 2 (wt 2), Defend 2 (wt 1), Debuff Vulnerable 1/2t (wt 1), Heal 8 (wt 1)
 Phase transition at 50% HP → Phase 2: Attack 2 (wt 2), Multi-attack 2×4 (wt 1), Debuff Weakness 2/2t (wt 1), Heal 10 (wt 1)
 Quiz Phase at 50% HP: 5 questions.
 *Old archive AI. Still running, still territorial. Triggers a quiz phase at half health.*
 
 **The Curriculum** (`curriculum`) — Boss
-HP: 14 | Intents: Attack 2 (wt 4), Defend 2 (wt 3), Multi-attack 2×3 (wt 2), Heal 8 (wt 1)
+Intents: Attack 2 (wt 4), Defend 2 (wt 3), Multi-attack 2×3 (wt 2), Heal 8 (wt 1)
 *Living crystal. Status effects don't stick. It just keeps coming.*
 
 **The Group Project** (`group_project`) — Boss
-HP: 16 | Phase 1: Attack 2 (wt 35), Multi-attack 2×3 (wt 30), Debuff Poison 3/3t (wt 20), Attack 2 (wt 15)
+Phase 1: Attack 2 (wt 35), Multi-attack 2×3 (wt 30), Debuff Poison 3/3t (wt 20), Attack 2 (wt 15)
 Phase transition at 50% HP → Phase 2: Multi-attack 2×2 (wt 3), Multi-attack 2×4 (wt 2), Debuff Poison 4/3t (wt 2), Attack 3 (wt 1)
 *Shadow serpent with multiple heads. At half HP, a second head wakes up.*
 
 **The Rabbit Hole** (`rabbit_hole`) — Boss
-HP: 19 | Intents: Attack 3 (wt 4), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 15), Debuff Weakness 1/2t (wt 15), Defend 2 (wt 1)
+Intents: Attack 3 (wt 4), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1/2t (wt 15), Debuff Weakness 1/2t (wt 15), Defend 2 (wt 1)
 *Something from between spaces. Its attacks hit your hand as much as your health.*
 
 ---
@@ -1853,101 +1927,101 @@ HP: 19 | Intents: Attack 3 (wt 4), Multi-attack 2×3 (wt 2), Debuff Vulnerable 1
 
 #### Common Enemies
 
-**The Thesis Djinn** (`thesis_djinn`) — Common (standard, weight 10) | `chargeResistant`
-HP: 6 | Intents: Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+**The Thesis Djinn** (`thesis_djinn`) — Common (standard, weight 10) | `chargeResistant` | Standard tier
+Intents: Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
 *Compressed air elemental. The pressure alone opens wounds.*
 
-**The Gut Feeling** (`gut_feeling`) — Common (standard, weight 10)
-HP: 6 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
+**The Gut Feeling** (`gut_feeling`) — Common (standard, weight 10) | Standard tier
+Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Attack 2 (wt 1)
 *Iron-bodied worm from the core. Bites repeatedly.*
 
-**The Bright Idea** (`bright_idea`) — Common (standard, weight 10)
-HP: 6 | Intents: Debuff Weakness 1/2t (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Bright Idea** (`bright_idea`) — Common (standard, weight 10) | Standard tier
+Intents: Debuff Weakness 1/2t (wt 3), Attack 2 (wt 2), Attack 2 (wt 1)
 *Bioluminescent jellyfish. Its sting saps strength.*
 
-**The Sacred Text** (`sacred_text`) — Common (standard, weight 10) | `chargeResistant`
-HP: 7 | Intents: Defend 2 (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
+**The Sacred Text** (`sacred_text`) — Common (standard, weight 10) | `chargeResistant` | Tanky tier
+Intents: Defend 2 (wt 2), Attack 2 (wt 2), Attack 2 (wt 1)
 *Plated beetle, massive. Difficult to damage through that shell.*
 
-**The Devil's Advocate** (`devils_advocate`) — Common (uncommon, weight 5)
-HP: 6 | Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Buff +1 Strength 2t (wt 1)
+**The Devil's Advocate** (`devils_advocate`) — Common (uncommon, weight 5) | Standard tier
+Intents: Attack 2 (wt 2), Debuff Poison 2/2t (wt 2), Buff +1 Strength 2t (wt 1)
 *Mantle-born demon. Burns, poisons, and gets stronger doing it.*
 
-**The Institution** (`institution`) — Common (standard, weight 10) | `chargeResistant`
-HP: 8 | Intents: Defend 2 (wt 3), Attack 2 (wt 2), Charge 4 (wt 1)
+**The Institution** (`institution`) — Common (standard, weight 10) | `chargeResistant` | Tanky tier
+Intents: Defend 2 (wt 3), Attack 2 (wt 2), Charge 4 (wt 1)
 *Pure iron golem. Dense enough that most damage just doesn't register.*
 
-**The Rosetta Slab** (`rosetta_slab`) — Common (uncommon, weight 5)
-HP: 6 | Intents: Defend 2 (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
+**The Rosetta Slab** (`rosetta_slab`) — Common (uncommon, weight 5) | Standard tier
+Intents: Defend 2 (wt 2), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 1)
 *Inscribed stone tablet, floating. Curses weaken on contact.*
 
-**The Moth of Enlightenment** (`moth_of_enlightenment`) — Common (standard, weight 10)
-HP: 5 | Intents: Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
+**The Moth of Enlightenment** (`moth_of_enlightenment`) — Common (standard, weight 10) | Standard tier
+Intents: Attack 2 (wt 2), Debuff Vulnerable 1/2t (wt 2), Attack 2 (wt 1)
 *Eats books and scrolls. Leaves you vulnerable.*
 
-**The Hyperlink** (`hyperlink`) — Common (uncommon, weight 5)
-HP: 5 | Intents: Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 2), Attack 2 (wt 1)
+**The Hyperlink** (`hyperlink`) — Common (uncommon, weight 5) | Standard tier
+Intents: Multi-attack 2×3 (wt 2), Debuff Poison 2/3t (wt 2), Attack 2 (wt 1)
 *Weaves runic webs. The threads poison.*
 
-**The Unknown Unknown** (`unknown_unknown`) — Common (rare, weight 2)
-HP: 6 | Intents: Attack 2 (wt 2), Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2)
+**The Unknown Unknown** (`unknown_unknown`) — Common (rare, weight 2) | Standard tier
+Intents: Attack 2 (wt 2), Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2)
 *Tendril from somewhere else. Weakens and exposes in equal measure.*
 
-**The Fake News** (`fake_news`) — Common (standard, weight 10) | `chargeResistant`
-HP: 6 | Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Defend 1 (wt 1)
+**The Fake News** (`fake_news`) — Common (standard, weight 10) | `chargeResistant` | Standard tier
+Intents: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Defend 1 (wt 1)
 *Shaped like a tome, moves like a predator.*
 
 #### Mini-Boss Enemies
 
-**The First Question** (`first_question`) — Mini-Boss
-HP: 9 | Phase 1: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
+**The First Question** (`first_question`) — Mini-Boss | Medium tier
+Phase 1: Attack 2 (wt 2), Multi-attack 2×3 (wt 2), Charge 5 (wt 1), Attack 2 (wt 1)
 Phase transition at 50% HP → Phase 2: Attack 2 (wt 2), Multi-attack 2×4 (wt 2)
 *Old enough to remember the world's formation. Wound it and you'll know.*
 
-**The Dean** (`dean`) — Mini-Boss
-HP: 9 | Intents: Attack 2 (wt 2), Defend 2 (wt 2), Buff +2 Strength 2t (wt 1), Debuff Vulnerable 1/2t (wt 1)
+**The Dean** (`dean`) — Mini-Boss | Medium tier
+Intents: Attack 2 (wt 2), Defend 2 (wt 2), Buff +2 Strength 2t (wt 1), Debuff Vulnerable 1/2t (wt 1)
 Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
 *Iron-forged and magnetic. Fights without favoring offense or defense.*
 
-**The Dissertation** (`dissertation`) — Mini-Boss
-HP: 11 | Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 2)
+**The Dissertation** (`dissertation`) — Mini-Boss | Heavy tier
+Intents: Defend 2 (wt 2), Charge 5 (wt 1), Attack 2 (wt 2)
 *Ultra-dense golem under extreme pressure. Barely flinches.*
 
-**The Eureka** (`eureka`) — Mini-Boss
-HP: 9 | Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 7 (wt 1), Attack 2 (wt 1)
+**The Eureka** (`eureka`) — Mini-Boss | Medium tier
+Intents: Debuff Weakness 1/2t (wt 2), Debuff Vulnerable 1/2t (wt 2), Heal 7 (wt 1), Attack 2 (wt 1)
 *Bioluminescent butterfly, vast and old. Curses you while healing itself.*
 
-**The Paradigm Shift** (`paradigm_shift`) — Mini-Boss
-HP: 11 | Intents: Attack 2 (wt 2), Charge 5 (wt 1), Multi-attack 2×3 (wt 2)
+**The Paradigm Shift** (`paradigm_shift`) — Mini-Boss | Heavy tier
+Intents: Attack 2 (wt 2), Charge 5 (wt 1), Multi-attack 2×3 (wt 2)
 *A living earthquake. Stone given will and direction.*
 
-**The Ancient Tongue** (`ancient_tongue`) — Mini-Boss
-HP: 9 | Intents: Defend 2 (wt 2), Heal 7 (wt 1), Attack 2 (wt 1), Buff +1 Strength 3t (wt 1)
+**The Ancient Tongue** (`ancient_tongue`) — Mini-Boss | Medium tier
+Intents: Defend 2 (wt 2), Heal 7 (wt 1), Attack 2 (wt 1), Buff +1 Strength 3t (wt 1)
 Reactive: `onPlayerNoCharge` — gains +1 permanent Strength per turn without a Charge.
 *Built from protective runes. Hard to chip down, keeps healing.*
 
-**The Lost Thesis** (`lost_thesis`) — Mini-Boss
-HP: 8 | Intents: Debuff Weakness 1/2t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1), Heal 6 (wt 1)
+**The Lost Thesis** (`lost_thesis`) — Mini-Boss | Medium tier
+Intents: Debuff Weakness 1/2t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1), Heal 6 (wt 1)
 *The ghost of a librarian. Still cataloguing. Still territorial.*
 
 #### Elite Enemies
 
 **The Dunning-Kruger** (`dunning_kruger`) — Elite | `chainMultiplierOverride: 1.0`
-HP: 9 | Intents: Attack 2 (wt 3), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1)
+Intents: Attack 2 (wt 3), Debuff Weakness 1/2t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1)
 *Chain multipliers don't work while this is alive. Knowledge Chains flatline at 1.0×.*
 
 **The Singularity** (`singularity`) — Elite | `quickPlayDamageMultiplier: 0.3`
-HP: 9 | Intents: Attack 2 (wt 3), Buff +2 Strength 3t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1)
+Intents: Attack 2 (wt 3), Buff +2 Strength 3t (wt 2), Attack 2 (wt 2), Defend 2 (wt 1)
 *Resistant to Quick Play — only deals 30% damage. Charge for full effect.*
 
 #### Boss Enemies
 
 **The Omnibus** (`omnibus`) — Boss
-HP: 17 | Intents: Attack 2 (wt 35), Attack 3 (wt 25), Defend 2 (wt 20), Buff +2 Strength 3t (wt 20), Charge 5 (wt 1)
+Intents: Attack 2 (wt 35), Attack 3 (wt 25), Defend 2 (wt 20), Buff +2 Strength 3t (wt 20), Charge 5 (wt 1)
 *Built from compressed books. Wrong answers feed it power.*
 
 **The Final Lesson** (`final_lesson`) — Boss
-HP: 17 | Phase 1: Attack 2 (wt 3), Multi-attack 2×4 (wt 2), Debuff Weakness 2/2t (wt 2), Buff +2 Strength 3t (wt 2), Heal 12 (wt 1)
+Phase 1: Attack 2 (wt 3), Multi-attack 2×4 (wt 2), Debuff Weakness 2/2t (wt 2), Buff +2 Strength 3t (wt 2), Heal 12 (wt 1)
 Phase transition at 33% HP → Phase 2: Attack 2 (wt 3), Multi-attack 2×4 (wt 2), Debuff Vulnerable 2/3t (wt 2), Heal 10 (wt 1), Buff +3 Strength 5t (wt 1)
 Quiz Phase 1 at 66% HP: 5 questions. Quiz Phase 2 at 33% HP: 8 questions, 4-second timers, Rapid Fire.
 *Final guardian. Quiz phases at 66% and 33% HP. The second one is Rapid Fire.*
@@ -1957,11 +2031,11 @@ Quiz Phase 1 at 66% HP: 5 questions. Quiz Phase 2 at 33% HP: 8 questions, 4-seco
 ### Deprecated Enemies (kept for save compatibility, not in active pools)
 
 **The Bookwyrm** (`bookwyrm`) — *Deprecated Elite*
-HP: 7 | Phase 1: Attack 2 (wt 2), Attack 2 (wt 1), Defend 1 (wt 1) | Phase transition at 50%
+Phase 1: Attack 2 (wt 2), Attack 2 (wt 1), Defend 1 (wt 1) | Phase transition at 50%
 *Pre-v2 roster. Not spawned in current runs.*
 
 **The Peer Reviewer** (`peer_reviewer`) — *Deprecated Elite*
-HP: 7 | Intents: Attack 2 (wt 3), Buff +1 Strength 2t (wt 2), Attack 2 (wt 1)
+Intents: Attack 2 (wt 3), Buff +1 Strength 2t (wt 2), Attack 2 (wt 1)
 Reactive: `onPlayerNoCharge` — gained +3 permanent Strength per no-Charge turn.
 *Pre-v2 roster. Not spawned in current runs.*
 
@@ -2023,12 +2097,12 @@ See §3 for full detail. Summary for quick reference:
 
 - Charge AP cost is flat +1 regardless of floor depth
 - Charge multipliers do NOT scale with floor depth — only with fact tier (FSRS-driven)
-- **Enemy HP scales with floor depth:** `1.0 + (floor - 1) × 0.10` (10% per floor above floor 1). Multiplied by global `ENEMY_BASE_HP_MULTIPLIER = 2.0`, making floor 1 commons ~10 HP each
+- **Enemy HP scales with floor depth:** `1.0 + (floor - 1) × 0.10` (10% per floor above floor 1). Multiplied by global `ENEMY_BASE_HP_MULTIPLIER = 4.0`, making floor 1 commons ~20 HP each
 - **Enemy HP Variance by Tier:** Commons are classified into 3 HP tiers based on their intent pools:
-  - **Glass** (baseHP 4): Aggressive enemies with mostly attack intents — kill fast or take big hits. Floor 1 effective HP: 8
-  - **Standard** (baseHP 5): Balanced intent mix — average encounters. Floor 1 effective HP: 10
-  - **Tanky** (baseHP 7): Defensive enemies with defend/buff/heal intents — war of attrition. Floor 1 effective HP: 14
-  - Elites also have variance: Glass (7), Standard (9), Tanky (12)
+  - **Glass** (baseHP 4): Aggressive enemies with mostly attack intents — kill fast or take big hits. Floor 1 effective HP: 16
+  - **Standard** (baseHP 5): Balanced intent mix — average encounters. Floor 1 effective HP: 20
+  - **Tanky** (baseHP 7): Defensive enemies with defend/buff/heal intents — war of attrition. Floor 1 effective HP: 28
+  - Elites also have variance: Glass (7) → 28, Standard (9) → 36, Tanky (12) → 48
   - `difficultyVariance` (0.85–1.15× random) applies to both commons AND elites. Mini-bosses and bosses have natural variance from varied `baseHP` values.
 - **Enemy damage scales with floor depth** (+5% per floor above floor 6). Further modulated by Canary system (see below)
 - Timer shortens with floor depth (12s → 9s → 7s → 5s → 4s)
@@ -4228,7 +4302,7 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 
 ## Appendix: Agent Skills Catalog
 
-> Complete list of Claude agent capabilities. For detailed descriptions, see `CLAUDE_CAPABILITIES.md` in project root.
+> Complete list of Claude agent capabilities. For detailed descriptions, see `docs/CLAUDE_CAPABILITIES.md`.
 
 ### Always Active (auto-triggered)
 | Skill | Purpose |

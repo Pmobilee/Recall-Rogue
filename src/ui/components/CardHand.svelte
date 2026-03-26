@@ -154,18 +154,30 @@
 
   function effectTextSizeClass(card: Card): string {
     const desc = getShortCardDescription(card) || ''
-    if (desc.length > 35) return 'effect-text-sm'
-    if (desc.length > 20) return 'effect-text-md'
+    if (desc.length > 25) return 'effect-text-sm'
+    if (desc.length > 15) return 'effect-text-md'
     return ''
   }
 
+  /**
+   * Returns the display value for a card's primary effect.
+   * Uses mechanic.quickPlayValue as the base (Quick Play = no quiz).
+   * Charge mode applies the CHARGE_CORRECT_MULTIPLIER.
+   * Mastery bonus is included.
+   * NOTE: Relic flat damage bonuses (e.g. Whetstone +3) are NOT shown here
+   * because CardHand does not receive relic state. The value shown is accurate
+   * for the base case (no relics). To show relic-adjusted values, a
+   * `relicFlatAttackBonus` prop would need to be threaded from CardCombatOverlay.
+   */
   function getEffectValue(card: Card, chargeMode: boolean = false): number {
     const mechanic = getMechanicDefinition(card.mechanicId)
     if (mechanic) {
+      // Use quickPlayValue (the actual Quick Play damage), NOT baseValue
       const baseVal = chargeMode ? Math.round(mechanic.quickPlayValue * CHARGE_CORRECT_MULTIPLIER) : mechanic.quickPlayValue
       const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
       return baseVal + masteryBonus
     }
+    // Fallback when mechanic definition is missing — use card's own stored values
     const base = Math.round(card.baseEffectValue * card.effectMultiplier);
     const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
     return chargeMode ? Math.round(base * CHARGE_CORRECT_MULTIPLIER) + masteryBonus : base + masteryBonus;
@@ -770,6 +782,7 @@
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       class:card--cursed={card.isCursed && !cureFlashes[card.id]}
       class:card--curing={cureFlashes[card.id]}
+      class:card--locked={card.isLocked}
       style="
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${cardDragX}px, ${isSelected ? `-${riseAmount}px` : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
@@ -862,6 +875,13 @@
         <span class="cursed-orb cursed-orb-2" aria-hidden="true"></span>
         <span class="cursed-orb cursed-orb-3" aria-hidden="true"></span>
         <span class="cursed-orb cursed-orb-4" aria-hidden="true"></span>
+      {/if}
+
+      {#if card.isLocked}
+        <div class="card-lock-overlay" aria-label="Card locked — must Charge to unlock">
+          <span class="card-lock-icon" aria-hidden="true">🔒</span>
+          <span class="card-lock-label">CHARGE ONLY</span>
+        </div>
       {/if}
 
       {#if isTierUp}
@@ -1145,6 +1165,7 @@
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       class:card--cursed={card.isCursed && !cureFlashes[card.id]}
       class:card--curing={cureFlashes[card.id]}
+      class:card--locked={card.isLocked}
       style="
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -riseAmount : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -riseAmount : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         animation-delay: {i * 80}ms;
@@ -1234,6 +1255,13 @@
         <span class="cursed-orb cursed-orb-2" aria-hidden="true"></span>
         <span class="cursed-orb cursed-orb-3" aria-hidden="true"></span>
         <span class="cursed-orb cursed-orb-4" aria-hidden="true"></span>
+      {/if}
+
+      {#if card.isLocked}
+        <div class="card-lock-overlay" aria-label="Card locked — must Charge to unlock">
+          <span class="card-lock-icon" aria-hidden="true">🔒</span>
+          <span class="card-lock-label">CHARGE ONLY</span>
+        </div>
       {/if}
 
       {#if isTierUp}
@@ -1751,7 +1779,11 @@
     font-size: calc(var(--card-w) * 0.09);
     color: #000000;
     text-transform: capitalize;
-    text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 8px rgba(255,255,255,0.6);
+    text-shadow:
+      -1px -1px 0 #fff,
+       1px -1px 0 #fff,
+      -1px  1px 0 #fff,
+       1px  1px 0 #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1782,12 +1814,13 @@
   }
 
   .v2-effect-text {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: var(--font-rpg, 'Cinzel', 'Georgia', serif);
     font-size: calc(var(--card-w) * 0.095);
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -1801,11 +1834,11 @@
   }
 
   .v2-effect-text.effect-text-md {
-    font-size: calc(var(--card-w) * 0.078);
+    font-size: calc(var(--card-w) * 0.076);
   }
 
   .v2-effect-text.effect-text-sm {
-    font-size: calc(var(--card-w) * 0.065);
+    font-size: calc(var(--card-w) * 0.062);
     line-height: 1.2;
   }
 
@@ -1822,6 +1855,7 @@
 
   .parchment-inner {
     display: inline;
+    text-align: center;
   }
 
   .desc-conditional {
@@ -2074,6 +2108,40 @@
     15%  { opacity: 0.85; }
     80%  { opacity: 0.4; }
     100% { transform: translateY(calc(-20px * var(--layout-scale, 1))); opacity: 0; }
+  }
+
+  /* AR-268: Trick Question lock — card tint and lock overlay */
+  .card--locked {
+    filter: brightness(0.75) sepia(0.5) hue-rotate(180deg) saturate(1.5);
+  }
+
+  .card-lock-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 15;
+    background: rgba(30, 40, 80, 0.45);
+    border-radius: inherit;
+  }
+
+  .card-lock-icon {
+    font-size: calc(20px * var(--layout-scale, 1));
+    line-height: 1;
+    filter: drop-shadow(0 0 calc(4px * var(--layout-scale, 1)) rgba(100, 140, 255, 0.9));
+  }
+
+  .card-lock-label {
+    margin-top: calc(4px * var(--layout-scale, 1));
+    font-size: calc(8px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #aac8ff;
+    text-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(80, 120, 255, 0.8);
+    text-transform: uppercase;
   }
 
   /* AR-202: Cure animation — cursed card cured by correct Charge */

@@ -56,6 +56,10 @@ export interface EnemyTurnStartContext {
   enemy: EnemyInstance;
   /** Current turn number (1-indexed). */
   turnNumber: number;
+  /** Whether the player made at least 1 correct Charge last turn. */
+  playerChargedCorrectLastTurn: boolean;
+  /** Minimal card info from the player's current hand (for mastery erosion). These are the ACTUAL card objects — mutations affect the real hand. */
+  playerHand: Array<{ id: string; masteryLevel?: number }>;
 }
 
 /**
@@ -128,6 +132,17 @@ export interface EnemyTemplate {
    */
   chainMultiplierOverride?: number;
   /**
+   * AR-263: Called when the enemy transitions from phase 1 to phase 2.
+   * Fired by applyDamageToEnemy after setting enemy.phase = 2.
+   * Use to apply instance-level overrides that differ from template defaults.
+   */
+  onPhaseTransition?: (enemy: EnemyInstance) => void;
+  /**
+   * AR-263: The Textbook — starting hardcover armor value.
+   * Instance copies this to _hardcover at creation time (in enemyManager.createEnemy).
+   */
+  hardcoverArmor?: number;
+  /**
    * If true, Quick Play card plays deal 0 damage to this enemy.
    * Charge plays (correct or wrong) deal normal damage.
    * Used by The Librarian.
@@ -191,6 +206,38 @@ export interface EnemyInstance {
    * Read by onPlayerNoCharge logic at end-of-player-turn.
    */
   playerChargedThisTurn: boolean;
+  /**
+   * AR-263: Pop Quiz — if true, enemy skips its next action (stunned by correct Charge).
+   * Set by onPlayerChargeCorrect, cleared after the skipped turn.
+   */
+  _stunNextTurn?: boolean;
+  /**
+   * AR-263: The Textbook — Hardcover armor value. Reduces Quick Play damage by this amount.
+   * Starts at 16, reduced by 4 per correct Charge, increased by 2 per wrong Charge.
+   * Once broken (reaches 0), it stays broken.
+   */
+  _hardcover?: number;
+  /**
+   * AR-263: The Textbook — true once _hardcover has reached 0 for the first time.
+   * Prevents hardcover from being restored after being broken.
+   */
+  _hardcoverBroken?: boolean;
+  /**
+   * AR-263: The Curriculum — instance-level quickPlayDamageMultiplier override.
+   * Set to 0 at phase 2 transition to make QP attacks deal 0 damage.
+   * Takes precedence over template.quickPlayDamageMultiplier when set.
+   */
+  _quickPlayDamageMultiplierOverride?: number;
+  /**
+   * AR-268: Trick Question — the factId of the card that was wrongly Charged.
+   * Set by onPlayerChargeWrong; cleared after the lock expires.
+   */
+  _lockedFactId?: string;
+  /**
+   * AR-268: Trick Question — how many player turns the lock remains active.
+   * Decremented each turn start; when it reaches 0 the lock is cleared.
+   */
+  _lockTurnsRemaining?: number;
 }
 
 // ============================================================
@@ -417,8 +464,21 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Shard storm', hitCount: 3 },
       { type: 'heal', value: 8, weight: 1, telegraph: 'Crystalline mend' },
     ],
-    description: 'Living crystal. Status effects don\'t stick. It just keeps coming.',
+    // AR-263: Phase 2 at 50% HP. Quick Play attacks deal 0 damage in phase 2 — only Charge works.
+    phaseTransitionAt: 0.5,
+    phase2IntentPool: [
+      { type: 'attack', value: 3, weight: 4, telegraph: 'Final Exam: Prismatic barrage' },
+      { type: 'defend', value: 3, weight: 3, telegraph: 'Crystal fortress' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Final Exam: Shard storm', hitCount: 4 },
+      { type: 'heal', value: 6, weight: 1, telegraph: 'Crystalline mend' },
+    ],
+    description: 'Phase 2: Quick Play deals 0 damage. Only Charged knowledge can penetrate Final Exam mode.',
     animArchetype: 'slammer',
+    onPhaseTransition: (enemy) => {
+      // Final Exam mode: QP attacks deal 0 damage, +2 Strength
+      enemy._quickPlayDamageMultiplierOverride = 0.0;
+      enemy.enrageBonusDamage = (enemy.enrageBonusDamage ?? 0) + 2;
+    },
   },
 
   {
@@ -754,10 +814,19 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Fungal decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 2, weight: 1, telegraph: 'Cap strike' },
     ],
-    description: 'Young fungus. Spores before strikes.',
+    description: 'Correct Charge stuns it next turn. No Charge makes it stronger permanently.',
     rarity: 'uncommon',
     spawnWeight: 5,
     animArchetype: 'caster',
+    // AR-263: quiz-reactive hooks
+    onPlayerChargeCorrect: (ctx) => {
+      // Correct Charge → stun enemy (skip its next action)
+      ctx.enemy._stunNextTurn = true;
+    },
+    onPlayerNoCharge: (ctx) => {
+      // No Charge this turn → gains +1 permanent Strength
+      ctx.enemy.enrageBonusDamage = (ctx.enemy.enrageBonusDamage ?? 0) + 1;
+    },
   },
 
   {
@@ -985,10 +1054,22 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 2, weight: 2, telegraph: 'Fin slash' },
       { type: 'attack', value: 2, weight: 1, telegraph: 'Snap' },
     ],
-    description: 'Adapted to total darkness. Leaves you vulnerable.',
+    description: 'Wrong Charge heals it 8 HP. Getting tricked has consequences.',
     rarity: 'uncommon',
     spawnWeight: 5,
     animArchetype: 'floater',
+    // AR-268: quiz-reactive hooks — full lock mechanic
+    onPlayerChargeWrong: (ctx) => {
+      // Wrong Charge → heal enemy 8 HP (quiz punishment)
+      ctx.enemy.currentHP = Math.min(ctx.enemy.maxHP, ctx.enemy.currentHP + 8);
+      // Store the failed factId so turnManager can lock that card next turn.
+      // _failedFactId is set by turnManager on the ctx object before calling this hook.
+      const failedFactId = (ctx as any)._failedFactId as string | undefined;
+      if (failedFactId) {
+        ctx.enemy._lockedFactId = failedFactId;
+        ctx.enemy._lockTurnsRemaining = 2;
+      }
+    },
   },
 
   {
@@ -1020,10 +1101,21 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 2, weight: 1, telegraph: 'Ethereal touch' },
     ],
-    description: 'Gas that haunts. Poisons and weakens on contact.',
+    description: 'Skip Charging and it erodes your card mastery. Keep studying or lose ground.',
     rarity: 'uncommon',
     spawnWeight: 5,
     animArchetype: 'floater',
+    // AR-268: Mastery erosion — if player made no correct Charges last turn, erode one random
+    // hand card's mastery by 1 (only cards with masteryLevel >= 2 are eligible).
+    onEnemyTurnStart: (ctx) => {
+      if (!ctx.playerChargedCorrectLastTurn) {
+        const eligible = ctx.playerHand.filter(c => (c.masteryLevel ?? 0) >= 2);
+        if (eligible.length > 0) {
+          const target = eligible[Math.floor(Math.random() * eligible.length)];
+          target.masteryLevel = (target.masteryLevel ?? 0) - 1;
+        }
+      }
+    },
   },
 
   {
@@ -1090,8 +1182,24 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'charge', value: 5, weight: 1, telegraph: 'Charging: Granite slam!' },
       { type: 'attack', value: 2, weight: 1, telegraph: 'Heavy strike' },
     ],
-    description: 'Solid granite, enormous. Damage barely registers.',
+    // AR-263: Hardcover armor mechanic. Starts at 16. Correct Charge: -4. Wrong Charge: +2.
+    // At 0: Vulnerable 2 turns. QP damage reduced by hardcover amount (min 1). Charge unaffected.
+    hardcoverArmor: 16,
+    description: 'Hardcover armor blocks Quick Play. Correct Charges crack it open. Wrong answers reinforce it.',
     animArchetype: 'slammer',
+    onPlayerChargeCorrect: (ctx) => {
+      if (ctx.enemy._hardcoverBroken) return;
+      ctx.enemy._hardcover = Math.max(0, (ctx.enemy._hardcover ?? 0) - 4);
+      if (ctx.enemy._hardcover === 0) {
+        // Hardcover broken! Apply Vulnerable 2 turns
+        applyStatusEffect(ctx.enemy.statusEffects, { type: 'vulnerable', value: 1, turnsRemaining: 2 });
+        ctx.enemy._hardcoverBroken = true;
+      }
+    },
+    onPlayerChargeWrong: (ctx) => {
+      if (ctx.enemy._hardcoverBroken) return;
+      ctx.enemy._hardcover = Math.min(16, (ctx.enemy._hardcover ?? 0) + 2);
+    },
   },
 
   {

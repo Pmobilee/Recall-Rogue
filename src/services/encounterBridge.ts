@@ -4,7 +4,7 @@
 
 import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
-import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice, revertTransmutedCards } from './turnManager';
+import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice, revertTransmutedCards, resetFactLastSeenEncounter } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard, shuffleFactsAtEncounterEnd } from './deckManager';
 import { createEnemy } from './enemyManager';
@@ -48,6 +48,7 @@ import { getCuratedDeck } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
 import { calculateFunnessBoostFactor } from './funnessBoost';
+import { calculateAccuracyGrade } from './accuracyGradeSystem';
 import {
   calculateDeckMastery,
   getCombinedPoolRewardMultiplier,
@@ -509,6 +510,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     : 1.0;
   const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance });
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp, run.globalTurnCounter ?? 1);
+  // AR-269: Thread encounter number for Akashic Record fact-spacing mechanic.
+  // Use a global encounter counter = (floor - 1) * encountersPerFloor + currentEncounter.
+  // This gives a monotonically increasing number across the entire run.
+  turnState.encounterNumber = ((run.floor.currentFloor - 1) * (run.floor.encountersPerFloor ?? 3)) + run.floor.currentEncounter;
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
   // Tick encounter cooldowns at the start of each new encounter
   tickFactCooldowns(activeDeck);
@@ -605,6 +610,7 @@ export function handlePlayCard(
   responseTimeMs?: number,
   variantIndex?: number,
   playMode: PlayMode = 'charge',
+  distractorCount?: number,
 ): {
   curedCursedFact: boolean;
   pendingChoice?: {
@@ -634,7 +640,7 @@ export function handlePlayCard(
   const playedCard = turnState.deck.hand.find((card) => card.id === cardId);
   const previousReviewState = playedCard?.factId ? getReviewStateByFactId(playedCard.factId) : undefined;
   const previousTier = previousReviewState ? getCardTier(previousReviewState) : null;
-  const result = playCardAction(turnState, cardId, correct, speedBonus, playMode);
+  const result = playCardAction(turnState, cardId, correct, speedBonus, playMode, distractorCount);
   const run = get(activeRunState);
 
   // AR-204: Inscription detection — if the played card is an Inscription, register it,
@@ -849,10 +855,18 @@ export function handlePlayCard(
       );
       run.currency += currencyReward;
 
+      // AR-262: Compute post-encounter accuracy grade from charge statistics
+      const gradeResult = calculateAccuracyGrade(
+        result.turnState.encounterChargesTotal,
+        result.turnState.chargesCorrectThisEncounter,
+      );
+
       // Capture reward data for step-by-step reveal
       activeRewardBundle.set({
         goldEarned: currencyReward,
         healAmount: actualHeal,
+        accuracyGrade: gradeResult.grade,
+        accuracyPct: gradeResult.accuracy,
       });
 
       activeRunState.set(run);
@@ -1142,4 +1156,6 @@ export function resetEncounterBridge(): void {
   activeTurnState.set(null);
   activeDeck = null;
   activeRunPool = [];
+  // AR-269: Clear Akashic Record fact-spacing history so it doesn't persist across runs.
+  resetFactLastSeenEncounter();
 }
