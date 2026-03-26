@@ -1,0 +1,1788 @@
+[
+  {
+    "id": "ha_visual_203",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/alveolus_detail.jpg",
+    "correctAnswer": "Alveolar structures",
+    "acceptableAlternatives": [
+      "Alveolus",
+      "Alveoli",
+      "Alveolar sac"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the pulmonary structures shown in this detailed cross-section.",
+    "explanation": "This image shows the terminal respiratory unit: respiratory bronchioles branching into alveolar ducts, which open into alveolar sacs lined with alveoli. Type I pneumocytes (squamous) cover ~95% of the surface and enable gas exchange. Type II pneumocytes (cuboidal) produce surfactant, which reduces surface tension and prevents alveolar collapse. Alveolar macrophages patrol the lumen. The respiratory zone is where O2 and CO2 cross the thin blood-air barrier (~0.5 µm).",
+    "visualDescription": "Detailed illustration of alveolar anatomy showing respiratory bronchioles, alveolar ducts, alveoli, and pneumocyte types",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+    "volatile": false,
+    "distractors": [
+      "Bronchioles",
+      "Terminal bronchioles",
+      "Pulmonary capillaries",
+      "Pleural membranes"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the alveolar structures?",
+        "correctAnswer": "Alveolar structures",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_204",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/larynx.jpg",
+    "correctAnswer": "Larynx",
+    "acceptableAlternatives": [
+      "Voice box",
+      "Laryngeal structure"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the cartilaginous structure shown at the level of C3–C6.",
+    "explanation": "The larynx (voice box) sits at vertebral levels C3–C6 and connects the pharynx to the trachea. Its framework consists of nine cartilages: three unpaired (thyroid, cricoid, epiglottis) and three paired (arytenoid, corniculate, cuneiform). The thyroid cartilage forms the laryngeal prominence ('Adam's apple'). The cricoid is the only complete cartilaginous ring in the airway. The larynx functions in phonation, airway protection during swallowing, and coughing.",
+    "visualDescription": "Illustration of the larynx showing thyroid cartilage, cricoid cartilage, and surrounding structures at cervical vertebral level",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+    "volatile": false,
+    "distractors": [
+      "Trachea",
+      "Pharynx",
+      "Thyroid gland",
+      "Epiglottis"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the larynx?",
+        "correctAnswer": "Larynx",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_205",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/larynx_cartilages.jpg",
+    "correctAnswer": "Laryngeal cartilages and vocal cords",
+    "acceptableAlternatives": [
+      "Laryngeal cartilages",
+      "Vocal cords",
+      "True vocal folds"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the laryngeal structures including the true and false vocal folds shown here.",
+    "explanation": "The true vocal cords (vocal folds) are composed of the vocalis muscle covered by stratified squamous epithelium; vibration produces voice. The vestibular folds (false vocal cords) lie superior and help close the airway during swallowing. The rima glottidis is the space between the true vocal cords — it is the narrowest part of the adult larynx. The arytenoid cartilages rotate to abduct/adduct the vocal cords, controlling pitch and phonation.",
+    "visualDescription": "Diagram of laryngeal cartilages from superior or posterior view showing true vocal folds, vestibular folds, and arytenoid cartilages",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+    "volatile": false,
+    "distractors": [
+      "Tracheal cartilages",
+      "Pharyngeal muscles",
+      "Epiglottis only",
+      "Cricothyroid membrane"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the laryngeal cartilages and vocal cords?",
+        "correctAnswer": "Laryngeal cartilages and vocal cords",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_206",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/nose_pharynx_larynx.jpg",
+    "correctAnswer": "Upper airway (sagittal)",
+    "acceptableAlternatives": [
+      "Upper airway",
+      "Nose pharynx and larynx",
+      "Upper respiratory tract"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the sagittal section showing the complete upper airway from nose to larynx.",
+    "explanation": "This sagittal cross-section shows the upper airway: (1) nasal cavity — warms, humidifies, filters air via conchae and mucosa; (2) pharynx — shared digestive and respiratory pathway divided into naso-, oro-, and laryngopharynx; (3) larynx — protected by the epiglottis during swallowing. The hard and soft palate separate the nasal from the oral cavity. The auditory (Eustachian) tube opens into the nasopharynx. This view is essential for understanding airway management and nasopharyngeal anatomy.",
+    "visualDescription": "Midsagittal section of the head and neck showing nasal cavity, pharynx divisions, larynx, and related structures",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+    "volatile": false,
+    "distractors": [
+      "Lower airway",
+      "Oral cavity only",
+      "Trachea and bronchi",
+      "Cervical spine"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the upper airway (sagittal)?",
+        "correctAnswer": "Upper airway (sagittal)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_207",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/pharynx_divisions.jpg",
+    "correctAnswer": "Pharynx divisions",
+    "acceptableAlternatives": [
+      "Pharynx",
+      "Nasopharynx oropharynx laryngopharynx",
+      "Three parts of the pharynx"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the three anatomical divisions of the pharynx shown in this diagram.",
+    "explanation": "The pharynx is a muscular funnel (~13 cm) divided into three regions: (1) Nasopharynx — posterior to nasal cavity, above soft palate; contains pharyngeal tonsil (adenoids) and auditory tube openings; (2) Oropharynx — posterior to oral cavity, between soft palate and epiglottis; contains palatine and lingual tonsils; (3) Laryngopharynx (hypopharynx) — from epiglottis to esophagus/larynx. Shared by digestive and respiratory systems; the epiglottis directs food away from the airway.",
+    "visualDescription": "Diagram illustrating the three divisions of the pharynx: nasopharynx, oropharynx, and laryngopharynx with labeled boundaries",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+    "volatile": false,
+    "distractors": [
+      "Laryngeal divisions",
+      "Esophageal regions",
+      "Nasal conchae",
+      "Oral cavity divisions"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the pharynx divisions?",
+        "correctAnswer": "Pharynx divisions",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_208",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/respiratory_organs.jpg",
+    "correctAnswer": "Major respiratory organs",
+    "acceptableAlternatives": [
+      "Respiratory system overview",
+      "Complete respiratory system",
+      "Respiratory organs"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify this overview diagram showing the complete respiratory system from nose to diaphragm.",
+    "explanation": "The respiratory system consists of conducting and respiratory zones. Conducting zone (nose → terminal bronchioles) warms, humidifies, and filters air but performs no gas exchange. Respiratory zone (respiratory bronchioles → alveoli) is where O2/CO2 exchange occurs. Major landmarks: nasal cavity, pharynx, larynx, trachea (branches at carina into left and right main bronchi at T4/5), lungs (right has 3 lobes, left has 2), and the diaphragm — the primary muscle of inspiration (innervated by phrenic nerve, C3–C5).",
+    "visualDescription": "Full anatomical diagram of the respiratory system showing all major structures from nasal cavity to diaphragm",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+    "volatile": false,
+    "distractors": [
+      "Digestive system organs",
+      "Cardiovascular system",
+      "Thoracic cage only",
+      "Lymphatic system"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the major respiratory organs?",
+        "correctAnswer": "Major respiratory organs",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_209",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/respiratory_zone.jpg",
+    "correctAnswer": "Respiratory zone",
+    "acceptableAlternatives": [
+      "Gas exchange zone",
+      "Alveolar zone",
+      "Respiratory acinus"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the terminal airways where gas exchange occurs, shown in this illustration.",
+    "explanation": "The respiratory zone begins at respiratory bronchioles (which have alveolar outpouchings in their walls) and extends through alveolar ducts to alveolar sacs. This is the only region where O2 and CO2 exchange occurs across the thin blood-air barrier. Total alveolar surface area is ~70 m² in adults — roughly the size of a singles tennis court. The respiratory zone contains ~300 million alveoli. Contrast with the conducting zone (trachea through terminal bronchioles), which is anatomical dead space (~150 mL).",
+    "visualDescription": "Detailed diagram of the respiratory zone showing respiratory bronchioles, alveolar ducts, and alveolar sacs",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-2-the-lungs",
+    "volatile": false,
+    "distractors": [
+      "Conducting zone",
+      "Terminal bronchioles",
+      "Bronchial tree",
+      "Pulmonary vasculature"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the respiratory zone?",
+        "correctAnswer": "Respiratory zone",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_210",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/respiratory_system/openstax/trachea.jpg",
+    "correctAnswer": "Trachea",
+    "acceptableAlternatives": [
+      "Windpipe",
+      "Tracheal structure"
+    ],
+    "chainThemeId": "visual_respiratory",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the airway structure with C-shaped cartilage rings shown in this illustration.",
+    "explanation": "The trachea (windpipe) is a 10–12 cm tube extending from the larynx (C6) to the carina (T4/5), where it bifurcates into right and left main bronchi. It contains 16–20 C-shaped hyaline cartilage rings that keep it patent; the open posterior portion is bridged by the trachealis smooth muscle, which contracts during coughing and borders the esophagus. The mucosa is pseudostratified ciliated columnar epithelium (respiratory epithelium) with goblet cells. The right main bronchus is wider, shorter, and more vertical — aspirated objects more commonly lodge on the right.",
+    "visualDescription": "Anatomical illustration of the trachea showing C-shaped cartilage rings, trachealis muscle, and bifurcation at the carina",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system",
+    "volatile": false,
+    "distractors": [
+      "Esophagus",
+      "Bronchi",
+      "Larynx",
+      "Bronchioles"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the trachea?",
+        "correctAnswer": "Trachea",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_211",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/endocrine_system/openstax/anterior_pituitary.jpg",
+    "correctAnswer": "Anterior pituitary",
+    "acceptableAlternatives": [
+      "Adenohypophysis",
+      "Anterior pituitary gland"
+    ],
+    "chainThemeId": "visual_endocrine",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the glandular portion of the pituitary that receives hypothalamic releasing hormones via a portal system.",
+    "explanation": "The anterior pituitary (adenohypophysis) is a true endocrine gland derived from oral ectoderm (Rathke's pouch). It receives hypothalamic releasing and inhibiting hormones via the hypothalamic-hypophyseal portal system — not direct nerve fibers. It secretes 6 major hormones: GH, TSH, ACTH, FSH, LH, and prolactin. Cell types: somatotrophs (GH), thyrotrophs (TSH), corticotrophs (ACTH), gonadotrophs (FSH/LH), lactotrophs (prolactin). Adenomas of the anterior pituitary are the most common pituitary tumors.",
+    "visualDescription": "Illustration of the anterior pituitary gland (adenohypophysis) showing its relationship to the hypothalamic portal system",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus",
+    "volatile": false,
+    "distractors": [
+      "Posterior pituitary",
+      "Thyroid gland",
+      "Adrenal cortex",
+      "Pineal gland"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the anterior pituitary?",
+        "correctAnswer": "Anterior pituitary",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_212",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/endocrine_system/openstax/hypothalamus_pituitary.jpg",
+    "correctAnswer": "Hypothalamus-pituitary complex",
+    "acceptableAlternatives": [
+      "Hypothalamus and pituitary",
+      "Hypothalamic-pituitary axis",
+      "Pituitary stalk complex"
+    ],
+    "chainThemeId": "visual_endocrine",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the master endocrine connection shown here, linking the brain to the pituitary via the infundibulum.",
+    "explanation": "The hypothalamus-pituitary complex is the master controller of the endocrine system. The hypothalamus connects to the pituitary via the infundibulum (pituitary stalk). Two distinct connections: (1) hypothalamic-hypophyseal portal system — blood vessels carrying releasing/inhibiting hormones to the anterior pituitary; (2) hypothalamic-hypophyseal tract — axons of paraventricular and supraoptic nuclei projecting directly to the posterior pituitary, where ADH and oxytocin are released. The pituitary sits in the sella turcica of the sphenoid bone.",
+    "visualDescription": "Diagram showing the hypothalamus connected to the pituitary gland via the infundibular stalk, illustrating both portal blood supply and direct neural projections",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus",
+    "volatile": false,
+    "distractors": [
+      "Pineal gland complex",
+      "Thalamus only",
+      "Cerebellum-brainstem connection",
+      "Adrenal gland"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the hypothalamus-pituitary complex?",
+        "correctAnswer": "Hypothalamus-pituitary complex",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_213",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/endocrine_system/openstax/pituitary_hormones.jpg",
+    "correctAnswer": "Major pituitary hormones",
+    "acceptableAlternatives": [
+      "Pituitary hormones",
+      "Anterior and posterior pituitary hormones",
+      "Pituitary hormone targets"
+    ],
+    "chainThemeId": "visual_endocrine",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this summary diagram showing all major hormones released by both lobes of the pituitary and their target organs.",
+    "explanation": "Anterior pituitary hormones: GH (growth, IGF-1 stimulation), TSH (thyroid), ACTH (adrenal cortex → cortisol), FSH (gonads — follicle development, spermatogenesis), LH (gonads — ovulation, testosterone), prolactin (mammary glands). Posterior pituitary releases: ADH/vasopressin (kidney collecting ducts → water retention; vasoconstriction at high doses) and oxytocin (uterine contractions, milk let-down). Both posterior hormones are synthesized in the hypothalamus and stored/released from the posterior pituitary.",
+    "visualDescription": "Comprehensive diagram mapping all pituitary hormones from anterior and posterior lobes to their respective target organs",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus",
+    "volatile": false,
+    "distractors": [
+      "Thyroid hormone pathways",
+      "Adrenal hormone overview",
+      "Pancreatic hormone targets",
+      "Gonadal steroid synthesis"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the major pituitary hormones?",
+        "correctAnswer": "Major pituitary hormones",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_214",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/endocrine_system/openstax/posterior_pituitary.jpg",
+    "correctAnswer": "Posterior pituitary",
+    "acceptableAlternatives": [
+      "Neurohypophysis",
+      "Posterior pituitary gland"
+    ],
+    "chainThemeId": "visual_endocrine",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the neural lobe of the pituitary gland that stores and releases ADH and oxytocin.",
+    "explanation": "The posterior pituitary (neurohypophysis) is NOT an endocrine gland — it is neural tissue (axon terminals) derived from a downgrowth of the hypothalamus. ADH (antidiuretic hormone/vasopressin) and oxytocin are synthesized in hypothalamic nuclei (supraoptic and paraventricular) and transported down axons to be stored and released from the posterior pituitary into the systemic circulation. ADH deficiency causes central diabetes insipidus (copious dilute urine). Syndrome of inappropriate ADH secretion (SIADH) causes hyponatremia.",
+    "visualDescription": "Illustration of the posterior pituitary (neurohypophysis) showing axon terminals from hypothalamic nuclei releasing ADH and oxytocin",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus",
+    "volatile": false,
+    "distractors": [
+      "Anterior pituitary",
+      "Pineal gland",
+      "Hypothalamus",
+      "Adrenal medulla"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the posterior pituitary?",
+        "correctAnswer": "Posterior pituitary",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_215",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/cochlea.jpg",
+    "correctAnswer": "Cochlea",
+    "acceptableAlternatives": [
+      "Cochlear structure",
+      "Inner ear cochlea"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify the snail-shaped inner ear structure responsible for sound transduction shown here.",
+    "explanation": "The cochlea is the auditory portion of the inner ear, a fluid-filled bony spiral (~2.75 turns). It has three compartments: scala vestibuli (perilymph, above), scala media/cochlear duct (endolymph, contains organ of Corti), and scala tympani (perilymph, below). The organ of Corti on the basilar membrane contains inner and outer hair cells — the mechanosensory receptors that transduce sound vibration into nerve impulses via CN VIII. High-frequency sounds are encoded near the base; low-frequency near the apex (tonotopic organization).",
+    "visualDescription": "Cross-sectional illustration of the cochlea showing scala vestibuli, scala media, scala tympani, basilar membrane, and organ of Corti",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Semicircular canals",
+      "Vestibule",
+      "Middle ear ossicles",
+      "Tympanic membrane"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the cochlea?",
+        "correctAnswer": "Cochlea",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_216",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/color_sensitivity.jpg",
+    "correctAnswer": "Color sensitivity (cone spectral tuning)",
+    "acceptableAlternatives": [
+      "Cone color sensitivity",
+      "Photoreceptor spectral sensitivity",
+      "Color vision"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this graph showing the spectral sensitivity curves of the three types of cone photoreceptors.",
+    "explanation": "Human color vision depends on three cone types (trichromacy): S-cones (short wavelength, ~420 nm, blue), M-cones (~530 nm, green), and L-cones (~560 nm, red/yellow). Color perception arises from opponent-process comparison of cone outputs in retinal ganglion cells and lateral geniculate nucleus. Deficiencies: red-green color blindness (most common, X-linked recessive) involves mutations in L or M cone opsin genes. Rods peak at ~498 nm and mediate scotopic (dim-light) vision only.",
+    "visualDescription": "Graph displaying spectral sensitivity curves for S, M, and L cone photoreceptors across visible wavelengths",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Rod sensitivity curve",
+      "Auditory frequency tuning",
+      "Olfactory receptor tuning",
+      "Taste receptor sensitivity"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the color sensitivity (cone spectral tuning)?",
+        "correctAnswer": "Color sensitivity (cone spectral tuning)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_217",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/ear_structures.jpg",
+    "correctAnswer": "Ear structures",
+    "acceptableAlternatives": [
+      "Anatomy of the ear",
+      "Outer middle and inner ear",
+      "Ear anatomy overview"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this overview diagram showing the three divisions of the ear.",
+    "explanation": "The ear has three divisions: (1) Outer ear — auricle (pinna) and external auditory canal, separated from middle ear by tympanic membrane; (2) Middle ear — contains three ossicles (malleus, incus, stapes), Eustachian tube (equalizes pressure), and oval/round windows; (3) Inner ear — bony and membranous labyrinth housing the cochlea (hearing) and vestibular apparatus (balance). CN VII (facial nerve) passes through the facial canal in the middle ear — vulnerable in otitis media. CN VIII transmits signals from both cochlea and vestibule to brainstem.",
+    "visualDescription": "Anatomical cross-section of the complete ear showing outer, middle, and inner ear structures with labeled components",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Eye anatomy",
+      "Nasal structures",
+      "Vestibular system only",
+      "Cochlea only"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the ear structures?",
+        "correctAnswer": "Ear structures",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_218",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/extraocular_muscles.jpg",
+    "correctAnswer": "Extraocular muscles",
+    "acceptableAlternatives": [
+      "Eye muscles",
+      "Ocular muscles",
+      "Muscles of the eye"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the six muscles responsible for eye movement shown in this orbital diagram.",
+    "explanation": "The six extraocular muscles: four recti (superior, inferior, medial, lateral) and two obliques (superior, inferior). Innervation: CN III (oculomotor) — medial, superior, inferior rectus + inferior oblique; CN IV (trochlear) — superior oblique (SO4); CN VI (abducens) — lateral rectus (LR6). Mnemonic: LR6SO4. CN III palsy: eye is 'down and out' with ptosis and pupil dilation. CN VI palsy: medial deviation (esotropia). CN IV palsy: hypertropia — head tilt to compensate. All muscles arise from the annulus of Zinn at the orbital apex.",
+    "visualDescription": "Anatomical diagram of the orbit showing all six extraocular muscles and their attachment points on the globe",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Facial muscles",
+      "Orbital fat pads",
+      "Lacrimal apparatus",
+      "Ciliary muscle"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the extraocular muscles?",
+        "correctAnswer": "Extraocular muscles",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_219",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/eye_in_orbit.jpg",
+    "correctAnswer": "Eye in orbit",
+    "acceptableAlternatives": [
+      "Orbital contents",
+      "Eye within the orbit",
+      "Globe and orbit"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this diagram showing the globe situated within the bony orbital socket.",
+    "explanation": "The orbit is a bony pyramid formed by seven bones: frontal, zygomatic, maxilla, palatine, lacrimal, ethmoid, and sphenoid. The globe (eyeball) occupies the anterior orbit, surrounded by orbital fat, extraocular muscles, and the lacrimal gland (superolateral). The optic canal transmits CN II and the ophthalmic artery. The superior orbital fissure transmits CN III, IV, VI, and V1 (ophthalmic division of trigeminal). Blowout fracture typically involves the orbital floor (maxilla/ethmoid) — can entrap the inferior rectus causing diplopia.",
+    "visualDescription": "Cross-sectional illustration of the eye positioned within the bony orbit, showing surrounding structures and orbital contents",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Eye structure only",
+      "Nasal cavity",
+      "Paranasal sinuses",
+      "Temporal fossa"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the eye in orbit?",
+        "correctAnswer": "Eye in orbit",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_220",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/eye_structure.jpg",
+    "correctAnswer": "Eye structure",
+    "acceptableAlternatives": [
+      "Internal eye anatomy",
+      "Eyeball cross-section",
+      "Anatomy of the eye"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this cross-sectional diagram of the internal anatomy of the eyeball.",
+    "explanation": "The eye has three tunics (layers): (1) Fibrous tunic — sclera (white, posterior 5/6) and cornea (transparent, anterior 1/6; major refracting surface); (2) Vascular tunic/uvea — choroid (posterior, nourishes retina), ciliary body (adjusts lens shape for accommodation), iris (controls pupil diameter); (3) Neural tunic — retina with photoreceptors. Internal chambers: anterior chamber (aqueous humor, between cornea and iris), posterior chamber (aqueous humor, behind iris), and vitreous chamber (vitreous humor, large posterior space). Aqueous humor drains via Canal of Schlemm; blockage → glaucoma.",
+    "visualDescription": "Cross-sectional anatomical illustration of the eyeball showing all three tunics, chambers, lens, retina, and optic nerve",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Ear anatomy",
+      "Lacrimal apparatus",
+      "Orbital bones",
+      "Optic chiasm"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the eye structure?",
+        "correctAnswer": "Eye structure",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_221",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/frequency_coding.jpg",
+    "correctAnswer": "Frequency coding in the cochlea",
+    "acceptableAlternatives": [
+      "Tonotopic map",
+      "Cochlear frequency map",
+      "Basilar membrane frequency coding"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "Identify this diagram showing how the cochlea encodes different sound frequencies along its length.",
+    "explanation": "The basilar membrane encodes sound frequency tonotopically (place coding): high frequencies (20,000 Hz) resonate near the stiff, narrow base of the cochlea; low frequencies (20 Hz) near the wide, flexible apex. This is the basis of von Békésy's traveling wave theory (Nobel Prize 1961). Hair cells at each location are maximally activated by their characteristic frequency. Noise-induced hearing loss (NIHL) typically affects the 4 kHz region first (high-frequency region near base). Presbycusis (age-related) also primarily affects high frequencies.",
+    "visualDescription": "Diagram of the uncoiled cochlea or basilar membrane illustrating the tonotopic frequency map from apex to base",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Visual frequency coding",
+      "Olfactory tuning map",
+      "Vestibular frequency response",
+      "Somatotopic map"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the frequency coding in the cochlea?",
+        "correctAnswer": "Frequency coding in the cochlea",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_222",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/hair_cell.jpg",
+    "correctAnswer": "Hair cell (mechanosensory)",
+    "acceptableAlternatives": [
+      "Hair cell",
+      "Cochlear hair cell",
+      "Mechanosensory hair cell"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "Identify this specialized mechanosensory receptor cell with stereocilia at its apex shown in this diagram.",
+    "explanation": "Hair cells are mechanosensory receptor cells in the inner ear (cochlea for hearing; vestibular apparatus for balance). Their apical surface bears stereocilia (modified microvilli) arranged in rows of increasing height, connected by tip links. Sound vibration deflects stereocilia toward the tallest row, opening mechanically gated K+/Ca2+ channels → depolarization → neurotransmitter release → CN VIII stimulation. Inner hair cells (3,500) are the primary sensory transducers. Outer hair cells (12,000) amplify basilar membrane motion. Hair cells do NOT regenerate in mammals — aminoglycoside antibiotics and cisplatin are ototoxic because they destroy hair cells.",
+    "visualDescription": "Detailed diagram of an inner ear hair cell showing stereocilia, tip links, synaptic terminal, and mechanotransduction channels",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Rod photoreceptor",
+      "Olfactory receptor cell",
+      "Taste receptor cell",
+      "Merkel cell"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the hair cell (mechanosensory)?",
+        "correctAnswer": "Hair cell (mechanosensory)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_223",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/maculae_equilibrium.jpg",
+    "correctAnswer": "Maculae (vestibular equilibrium)",
+    "acceptableAlternatives": [
+      "Macula utriculi",
+      "Macula sacculi",
+      "Vestibular maculae",
+      "Otolith organs"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Identify the otolith-bearing vestibular sensory patches that detect linear acceleration and head tilt.",
+    "explanation": "The maculae are sensory patches in the utricle (horizontal plane, detects horizontal acceleration and head tilt) and saccule (vertical plane, detects vertical acceleration). They consist of hair cells embedded in a gelatinous otolithic membrane containing calcium carbonate crystals (otoliths/otoconia). Gravity and linear acceleration shift the otolithic membrane relative to hair cells, bending stereocilia → signal via vestibular branch of CN VIII. Dislodged otoconia entering the semicircular canals cause benign paroxysmal positional vertigo (BPPV) — treated with the Epley maneuver.",
+    "visualDescription": "Diagram of the vestibular maculae showing hair cells, otolithic membrane, and calcium carbonate otoconia crystals",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Semicircular canals",
+      "Cochlear organ of Corti",
+      "Retinal macula",
+      "Crista ampullaris"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the maculae (vestibular equilibrium)?",
+        "correctAnswer": "Maculae (vestibular equilibrium)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_224",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/olfaction.jpg",
+    "correctAnswer": "Olfaction (smell pathway)",
+    "acceptableAlternatives": [
+      "Olfactory system",
+      "Smell pathway",
+      "Olfactory epithelium"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this diagram showing the olfactory receptor neurons and the pathway from nose to brain.",
+    "explanation": "Olfactory receptor neurons (ORNs) in the nasal roof's olfactory epithelium have cilia bearing G-protein-coupled olfactory receptors (~400 functional types in humans). Odorant binding → adenylyl cyclase → cAMP → cyclic nucleotide-gated channels → depolarization. Unmyelinated ORN axons bundle as the olfactory nerve (CN I — the only cranial nerve with neurogenesis capability), pass through the cribriform plate of the ethmoid, and synapse in the olfactory bulb (glomeruli). Signal travels to piriform cortex and amygdala without a thalamic relay — unique among sensory systems. Anosmia can be an early sign of Parkinson's disease or COVID-19.",
+    "visualDescription": "Diagram of olfactory receptor neurons in nasal epithelium with axons passing through the cribriform plate to the olfactory bulb",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Taste pathway",
+      "Visual pathway",
+      "Auditory pathway",
+      "Trigeminal pathway"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the olfaction (smell pathway)?",
+        "correctAnswer": "Olfaction (smell pathway)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_225",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/receptor_types.jpg",
+    "correctAnswer": "Sensory receptor types",
+    "acceptableAlternatives": [
+      "Receptor types",
+      "Cutaneous receptors",
+      "Somatosensory receptors"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this diagram classifying the major types of sensory receptors by stimulus type.",
+    "explanation": "Sensory receptors are classified by adequate stimulus: mechanoreceptors (touch, pressure, vibration, proprioception — Meissner's, Pacinian, Merkel, Ruffini corpuscles; muscle spindles), thermoreceptors (temperature), nociceptors (pain; free nerve endings), photoreceptors (light; rods and cones), and chemoreceptors (taste, smell, oxygen/CO2 levels). By location: exteroceptors (external stimuli), interoceptors (visceral), proprioceptors (body position). By structure: encapsulated (Meissner's, Pacinian) vs. free nerve endings. Rapidly vs. slowly adapting receptors govern which sensations persist vs. habituate.",
+    "visualDescription": "Classification diagram of sensory receptor types organized by modality with illustrations of their structural forms",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Motor neuron types",
+      "Neurotransmitter receptors",
+      "Hormonal receptor classification",
+      "Immune receptor types"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the sensory receptor types?",
+        "correctAnswer": "Sensory receptor types",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_226",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/rods_and_cones.jpg",
+    "correctAnswer": "Rods and cones",
+    "acceptableAlternatives": [
+      "Photoreceptors",
+      "Retinal photoreceptors",
+      "Rod and cone cells"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify the two types of photoreceptor cells shown in this retinal cell diagram.",
+    "explanation": "Rods (~120 million): cylindrical outer segments containing stacks of discs loaded with rhodopsin (opsin + 11-cis retinal); mediate scotopic (dim-light, black-and-white) vision; absent from fovea; abundant in periphery. Cones (~6 million): conical outer segments; mediate photopic (bright-light, color) vision; densely packed in the fovea; three types (S/M/L) for trichromatic color vision. Phototransduction: light isomerizes retinal → conformation change in opsin → activates transducin (G-protein) → phosphodiesterase → hydrolyzes cGMP → Na+ channels close → hyperpolarization → less glutamate released onto bipolar cells.",
+    "visualDescription": "Detailed cellular diagram comparing the structure of rod and cone photoreceptors with labeled outer segments, nuclei, and synaptic terminals",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Bipolar cells",
+      "Retinal ganglion cells",
+      "Müller glia",
+      "Hair cells"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the rods and cones?",
+        "correctAnswer": "Rods and cones",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_227",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/semicircular_canals.jpg",
+    "correctAnswer": "Semicircular canals",
+    "acceptableAlternatives": [
+      "Semicircular ducts",
+      "Vestibular semicircular canals"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the three fluid-filled loops that detect rotational (angular) acceleration of the head.",
+    "explanation": "The three semicircular canals (anterior/superior, posterior, lateral/horizontal) lie in three orthogonal planes, allowing detection of rotational acceleration in any direction. Each canal has an ampulla at one end containing the crista ampullaris — a sensory ridge with hair cells embedded in a gelatinous cupula. Rotational head movement causes endolymph to lag behind (inertia), deflecting the cupula and bending hair cells. Signal travels via vestibular branch of CN VIII. The lateral canal is tested by the caloric test (cold/warm water irrigation of external ear canal). Lesions cause nystagmus and vertigo.",
+    "visualDescription": "Anatomical diagram of the three semicircular canals showing their orientation in three orthogonal planes and the ampullae",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Cochlear ducts",
+      "Utricle and saccule",
+      "Auditory ossicles",
+      "Endolymphatic sac"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the semicircular canals?",
+        "correctAnswer": "Semicircular canals",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_228",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/sound_ossicles.jpg",
+    "correctAnswer": "Sound transmission and ossicles",
+    "acceptableAlternatives": [
+      "Middle ear ossicles",
+      "Auditory ossicles",
+      "Malleus incus stapes"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the three smallest bones in the body that mechanically amplify sound vibrations in the middle ear.",
+    "explanation": "The three ossicles — malleus (hammer), incus (anvil), and stapes (stirrup) — form a mechanical lever chain transmitting tympanic membrane vibration to the oval window. The stapes footplate seats in the oval window, compressing cochlear perilymph. The ossicular lever system provides ~1.3× mechanical advantage; the large-to-small area ratio (tympanic membrane:oval window ≈ 17:1) provides impedance matching between air and fluid. This amplifies pressure ~22× total. The stapedius (CN VII) and tensor tympani (CN V3) muscles dampen ossicle movement to protect against loud sounds. Conductive hearing loss results from ossicular dysfunction (e.g., otosclerosis — abnormal bone growth fixing the stapes).",
+    "visualDescription": "Diagram of the middle ear showing the three ossicles (malleus, incus, stapes) and their connection between the tympanic membrane and oval window",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Inner ear hair cells",
+      "Tympanic membrane only",
+      "Cochlear basilar membrane",
+      "Eustachian tube"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the sound transmission and ossicles?",
+        "correctAnswer": "Sound transmission and ossicles",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_229",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/special_senses/openstax/tongue_papillae.jpg",
+    "correctAnswer": "Tongue papillae",
+    "acceptableAlternatives": [
+      "Lingual papillae",
+      "Taste papillae",
+      "Tongue taste buds"
+    ],
+    "chainThemeId": "visual_special_senses",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the four types of lingual papillae on the tongue surface shown in this diagram.",
+    "explanation": "Four papillae types: (1) Filiform — most numerous, no taste buds, provide texture/sensation (CN V3); (2) Fungiform — mushroom-shaped, scattered across anterior 2/3, contain taste buds (CN VII via chorda tympani); (3) Circumvallate/vallate — 7–12 large papillae forming a V-row at the junction of anterior 2/3 and posterior 1/3, contain hundreds of taste buds (CN IX); (4) Foliate — ridges on lateral tongue, some taste buds (CN IX). Five basic tastes: sweet, salty, sour, bitter, umami. Taste receptor cells (TRCs) in taste buds are chemoreceptors; they synapse onto CN VII, IX, and X fibers.",
+    "visualDescription": "Diagram of the dorsal tongue surface showing the four types of papillae: filiform, fungiform, circumvallate, and foliate",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception",
+    "volatile": false,
+    "distractors": [
+      "Taste bud ultrastructure",
+      "Salivary gland ducts",
+      "Lingual tonsil",
+      "Sublingual mucosa"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the tongue papillae?",
+        "correctAnswer": "Tongue papillae",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_230",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/muscular_system/servier/muscle_01.png",
+    "correctAnswer": "Skeletal muscle anatomy",
+    "acceptableAlternatives": [
+      "Skeletal muscle structure",
+      "Muscle anatomy overview",
+      "Striated muscle"
+    ],
+    "chainThemeId": "visual_muscular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this overview illustration of skeletal muscle organization.",
+    "explanation": "Skeletal muscle is the voluntary, striated muscle attached to bone via tendons. Structural hierarchy: muscle → fascicles (bundles of fibers wrapped in perimysium) → muscle fibers (cells, wrapped in endomysium) → myofibrils → sarcomeres (functional units). The whole muscle is wrapped in epimysium. Each muscle fiber is a multinucleate syncytium formed by fusion of myoblasts. Motor units (one motor neuron + all muscle fibers it innervates) are the basic functional unit of force production. Large muscles have large motor units (coarse control); hand/eye muscles have small motor units (fine control).",
+    "visualDescription": "Hierarchical illustration of skeletal muscle organization from whole muscle to fascicle to fiber to myofibril",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Cardiac muscle",
+      "Smooth muscle",
+      "Tendon structure",
+      "Ligament anatomy"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skeletal muscle anatomy?",
+        "correctAnswer": "Skeletal muscle anatomy",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_231",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/muscular_system/servier/muscle_contraction_1.png",
+    "correctAnswer": "Muscle contraction mechanism",
+    "acceptableAlternatives": [
+      "Sliding filament mechanism",
+      "Cross-bridge cycle",
+      "Sarcomere contraction"
+    ],
+    "chainThemeId": "visual_muscular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify this diagram illustrating the sliding filament mechanism of muscle contraction.",
+    "explanation": "Muscle contraction follows the sliding filament theory (Huxley, 1954): thick filaments (myosin) and thin filaments (actin) overlap and slide past each other without changing length. The cross-bridge cycle: (1) ATP binds myosin head → releases from actin; (2) ATP hydrolysis → myosin head cocks (high-energy state); (3) Myosin attaches to actin; (4) Power stroke — Pi release → myosin head pivots, pulling actin; (5) New ATP binds to restart. Trigger: Ca2+ release from SR binds troponin C → tropomyosin shifts → exposes actin binding sites. Rigor mortis occurs when ATP is depleted (step 1 cannot occur).",
+    "visualDescription": "Diagram of the cross-bridge cycle and sliding filament mechanism showing myosin heads, actin, and sarcomere shortening",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Nerve action potential propagation",
+      "Neuromuscular junction",
+      "Muscle fiber type classification",
+      "Cardiac action potential"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the muscle contraction mechanism?",
+        "correctAnswer": "Muscle contraction mechanism",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_232",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/muscular_system/servier/muscle_fascicle.png",
+    "correctAnswer": "Muscle fascicle",
+    "acceptableAlternatives": [
+      "Muscle bundle",
+      "Fascicle anatomy",
+      "Muscle fiber bundle"
+    ],
+    "chainThemeId": "visual_muscular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the connective tissue-wrapped bundle of muscle fibers shown in this cross-sectional diagram.",
+    "explanation": "A fascicle is a bundle of skeletal muscle fibers (cells) wrapped in perimysium (dense irregular connective tissue). Each individual fiber within is wrapped in endomysium; the whole muscle is wrapped in epimysium, continuous with the tendon. Fascicular arrangement determines muscle architecture and force-velocity characteristics: parallel (strap) muscles — long fibers, long ROM, less force; pennate muscles (unipennate, bipennate, multipennate) — shorter fibers at an angle to the tendon, more fibers per unit volume, more force but shorter ROM. The biceps brachii is a fusiform (spindle-shaped) muscle.",
+    "visualDescription": "Cross-sectional diagram of a muscle fascicle showing individual muscle fibers surrounded by endomysium within a perimysium sheath",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Nerve fascicle",
+      "Collagen bundle",
+      "Tendon cross-section",
+      "Blood vessel cross-section"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the muscle fascicle?",
+        "correctAnswer": "Muscle fascicle",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_233",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/muscular_system/servier/muscle_fiber.png",
+    "correctAnswer": "Muscle fiber",
+    "acceptableAlternatives": [
+      "Skeletal muscle cell",
+      "Muscle cell",
+      "Myocyte"
+    ],
+    "chainThemeId": "visual_muscular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the individual multinucleate skeletal muscle cell shown in this detailed illustration.",
+    "explanation": "A skeletal muscle fiber (cell) is a large, multinucleate syncytium (formed by myoblast fusion during development) up to 30 cm long, with peripherally located nuclei. The sarcolemma (plasma membrane) has T-tubule invaginations that carry action potentials deep into the cell. The sarcoplasm contains abundant mitochondria and the sarcoplasmic reticulum (SR) — specialized ER that stores and releases Ca2+. Myofibrils are the contractile elements; each myofibril is ~1–2 µm in diameter and contains sarcomeres in series. The striated appearance results from regular A-bands (myosin+actin overlap, dark) and I-bands (actin only, light).",
+    "visualDescription": "Detailed illustration of a single skeletal muscle fiber showing sarcolemma, T-tubules, sarcoplasmic reticulum, myofibrils, and peripheral nuclei",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Cardiac muscle fiber",
+      "Smooth muscle cell",
+      "Neuron",
+      "Osteocyte"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the muscle fiber?",
+        "correctAnswer": "Muscle fiber",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_234",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/cranial_fossae.jpg",
+    "correctAnswer": "Cranial fossae",
+    "acceptableAlternatives": [
+      "Cranial fossa",
+      "Base of skull fossae",
+      "Anterior middle and posterior cranial fossae"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this superior view of the internal skull base showing the three cranial fossae.",
+    "explanation": "The internal base of the skull has three stepped fossae: (1) Anterior cranial fossa — frontal and ethmoid bones; houses frontal lobes and olfactory bulbs; cribriform plate transmits CN I; (2) Middle cranial fossa — sphenoid and temporal bones; houses temporal lobes; key foramina: optic canal (CN II, ophthalmic artery), superior orbital fissure (CN III/IV/VI/V1), foramen rotundum (V2), foramen ovale (V3), foramen spinosum (middle meningeal artery — laceration causes epidural hematoma); (3) Posterior cranial fossa — occipital and temporal bones; houses cerebellum and brainstem; foramen magnum, internal acoustic meatus (CN VII/VIII), jugular foramen (CN IX/X/XI).",
+    "visualDescription": "Superior view of the internal skull base showing the three cranial fossae and their key foramina",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "External skull base",
+      "Orbital cavities",
+      "Paranasal sinuses",
+      "Vertebral foramina"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the cranial fossae?",
+        "correctAnswer": "Cranial fossae",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_235",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/ethmoid.jpg",
+    "correctAnswer": "Ethmoid bone",
+    "acceptableAlternatives": [
+      "Ethmoid",
+      "Ethmoid bone anatomy"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Identify this delicate, sieve-like midline skull bone that forms the roof of the nasal cavity.",
+    "explanation": "The ethmoid bone is an unpaired, delicate midline bone at the roof of the nasal cavity. Key features: (1) Cribriform plate — horizontal plate with many small foramina (cribriform = 'sieve-like') transmitting CN I (olfactory nerve) fibers from nasal epithelium to olfactory bulb. Fractures here cause CSF rhinorrhea and anosmia; (2) Crista galli — superior vertical projection anchoring the falx cerebri; (3) Perpendicular plate — forms the upper nasal septum; (4) Lateral masses (labyrinths) with superior and middle nasal conchae; ethmoid air cells (paranasal sinuses). The ethmoid forms part of the medial orbital wall (lamina papyracea — extremely thin, 'paper-thin').",
+    "visualDescription": "Isolated ethmoid bone illustration showing cribriform plate, crista galli, perpendicular plate, and lateral masses with air cells",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Sphenoid bone",
+      "Vomer",
+      "Lacrimal bone",
+      "Palatine bone"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the ethmoid bone?",
+        "correctAnswer": "Ethmoid bone",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_236",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/hyoid.jpg",
+    "correctAnswer": "Hyoid bone",
+    "acceptableAlternatives": [
+      "Hyoid",
+      "U-shaped neck bone"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the only bone in the body that does not articulate with any other bone, located in the anterior neck.",
+    "explanation": "The hyoid bone is a U-shaped bone suspended in the anterior neck at the level of C3, held in place by muscles and ligaments — it has NO bony articulations. It consists of a body, two greater horns, and two lesser horns. The hyoid serves as an attachment point for muscles of the floor of the mouth, tongue, pharynx, and larynx. It is critical for swallowing and speech. Fracture of the hyoid is uncommon due to its protected position but is classically associated with strangulation (manual or ligature) — a key forensic finding. In embalming and laryngoscopy, hyoid position is a surgical landmark.",
+    "visualDescription": "Illustration of the isolated hyoid bone showing the body, greater horns, and lesser horns in anterior and lateral views",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-3-the-vertebral-column",
+    "volatile": false,
+    "distractors": [
+      "Thyroid cartilage",
+      "Cricoid cartilage",
+      "Clavicle",
+      "Styloid process"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the hyoid bone?",
+        "correctAnswer": "Hyoid bone",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_237",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/mandible.jpg",
+    "correctAnswer": "Mandible",
+    "acceptableAlternatives": [
+      "Lower jaw",
+      "Mandibular bone"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the only moveable bone of the skull shown in this illustration.",
+    "explanation": "The mandible (lower jaw) is the only moveable skull bone and the largest, strongest facial bone. Key features: body (horizontal portion bearing the lower teeth), two rami (vertical portions), mandibular angle (junction of body and ramus), condylar process (condyle articulates with temporal bone at the TMJ — only true joint of the skull), and coronoid process (attachment of temporalis muscle). The mandibular foramen (on medial ramus) transmits the inferior alveolar nerve and artery — target for dental blocks (inferior alveolar nerve block). The mental foramen (lateral body) transmits the mental nerve (V3 branch). Mandible fracture is the second most common facial fracture.",
+    "visualDescription": "Lateral and anterior view illustrations of the mandible showing body, ramus, condyle, coronoid process, and key foramina",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Maxilla",
+      "Zygomatic bone",
+      "Temporal bone",
+      "Palatine bone"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the mandible?",
+        "correctAnswer": "Mandible",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_238",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/maxilla.jpg",
+    "correctAnswer": "Maxilla",
+    "acceptableAlternatives": [
+      "Maxillary bone",
+      "Upper jaw"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the paired facial bones that form the upper jaw, floor of the orbit, and roof of the mouth.",
+    "explanation": "The maxillae (paired) fuse at the intermaxillary suture to form the upper jaw. The maxilla contributes to: (1) alveolar process — houses upper teeth; (2) palatine process — anterior 3/4 of hard palate (failure to fuse causes cleft palate); (3) orbital floor and inferior orbital rim; (4) anterior nasal floor; (5) medial orbital wall. The infraorbital foramen transmits the infraorbital nerve (V2 branch) — anesthetized for upper lip/anterior teeth blocks. The maxillary sinus (largest paranasal sinus) is housed within the maxilla — the largest sinus and most commonly affected by sinusitis. Le Fort fractures involve the maxilla.",
+    "visualDescription": "Isolated maxilla bone illustration showing alveolar process, palatine process, orbital surface, and infraorbital foramen",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Mandible",
+      "Zygomatic bone",
+      "Palatine bone only",
+      "Frontal bone"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the maxilla?",
+        "correctAnswer": "Maxilla",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_239",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/nasal_cavity.jpg",
+    "correctAnswer": "Nasal cavity (skeletal)",
+    "acceptableAlternatives": [
+      "Bony nasal cavity",
+      "Nasal cavity bones",
+      "Skeletal nasal cavity"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this diagram showing the bony framework and nasal conchae of the nasal cavity.",
+    "explanation": "The bony nasal cavity is framed by: nasal bones (bridge), maxillae (floor and lateral walls), ethmoid (roof — cribriform plate, and superior/middle conchae), inferior nasal conchae (separate bones, largest conchae), vomer (inferior nasal septum), and perpendicular plate of ethmoid (superior septum). The three pairs of conchae (superior, middle, inferior) create turbulence to warm and humidify air and dramatically increase mucosal surface area. Beneath each concha is a meatus: inferior meatus receives the nasolacrimal duct (tearing into the nose). Nasal polyps most commonly arise from the middle meatus.",
+    "visualDescription": "Coronal or sagittal cross-section of the bony nasal cavity showing conchae, nasal septum, and bony contributions of surrounding bones",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Paranasal sinuses",
+      "Oral cavity",
+      "Nasopharynx",
+      "Orbits"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the nasal cavity (skeletal)?",
+        "correctAnswer": "Nasal cavity (skeletal)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_240",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/orbit_bones.jpg",
+    "correctAnswer": "Orbital bones",
+    "acceptableAlternatives": [
+      "Bones of the orbit",
+      "Orbital cavity bones"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Identify the seven bones that form the bony orbit of the eye shown in this illustration.",
+    "explanation": "The bony orbit is formed by seven bones (mnemonic: 'My Flat Zeal Surprises Posh Elderly Ladies'): Maxilla (floor and medial wall), Frontal (roof), Zygomatic (lateral wall and floor), Sphenoid (posterior lateral wall and apex — optic canal and SOF), Palatine (posteromedial floor), Ethmoid (medial wall — lamina papyracea, very thin), Lacrimal (anteromedial wall — lacrimal fossa for lacrimal sac). Key openings: optic canal (CN II, ophthalmic artery), superior orbital fissure (CN III/IV/VI/V1, ophthalmic veins), inferior orbital fissure (V2, infraorbital vessels). The orbital floor is the weakest wall — blowout fractures here.",
+    "visualDescription": "Anterior and/or lateral view of the bony orbit with all seven contributing bones labeled and color-coded",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Cranial fossae",
+      "Temporal fossa",
+      "Pterygoid fossae",
+      "Nasal cavity bones"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the orbital bones?",
+        "correctAnswer": "Orbital bones",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_241",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/paranasal_sinuses.jpg",
+    "correctAnswer": "Paranasal sinuses (skeletal)",
+    "acceptableAlternatives": [
+      "Paranasal sinuses",
+      "Cranial sinuses",
+      "Facial air sinuses"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this diagram showing the four pairs of air-filled sinuses within the facial bones.",
+    "explanation": "The four paired paranasal sinuses: (1) Maxillary — largest, in maxilla; drain into middle meatus via ostium high on medial wall (poor gravitational drainage → most prone to infection); roof is floor of orbit; floor is alveolar process (upper molar roots may project into it); (2) Frontal — in frontal bone; drain via frontonasal duct into middle meatus; (3) Ethmoid — anterior/posterior cells between orbits; complex drainage; (4) Sphenoid — in sphenoid body; drain into sphenoethmoidal recess above superior concha. All lined with pseudostratified ciliated columnar epithelium. Functions: lighten skull, warm/humidify air, resonate voice, cushion facial trauma.",
+    "visualDescription": "Frontal and lateral skull views showing the locations and relative sizes of the four pairs of paranasal sinuses",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Mastoid air cells",
+      "Nasal conchae",
+      "Cranial fossae",
+      "Middle ear cavities"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the paranasal sinuses (skeletal)?",
+        "correctAnswer": "Paranasal sinuses (skeletal)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_242",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/skull_anterior.jpg",
+    "correctAnswer": "Anterior skull (frontal view)",
+    "acceptableAlternatives": [
+      "Skull frontal view",
+      "Anterior view of skull",
+      "Front of skull"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this frontal view of the adult human skull showing facial bones and sutures.",
+    "explanation": "The anterior skull shows: cranium (neurocranium) — frontal bone (forehead, with frontal sinuses); facial bones — nasal bones (bridge), zygomatic bones (cheekbones), maxillae (upper jaw), mandible (lower jaw, only moveable skull bone), and the orbits. Sutures visible anteriorly: coronal suture (frontal-parietal), frontonasal suture. Key foramina visible anteriorly: supraorbital foramen/notch (V1 branch, supraorbital nerve), infraorbital foramen (V2, infraorbital nerve), mental foramen (V3 branch, mental nerve). The skull has 22 bones total: 8 cranial and 14 facial.",
+    "visualDescription": "Anterior (frontal) view of the human skull with labeled bones, sutures, and foramina",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Posterior skull",
+      "Lateral skull",
+      "Skull base",
+      "Sagittal skull section"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the anterior skull (frontal view)?",
+        "correctAnswer": "Anterior skull (frontal view)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_243",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/skull_base.jpg",
+    "correctAnswer": "Skull base (external)",
+    "acceptableAlternatives": [
+      "External skull base",
+      "Inferior skull base",
+      "Base of skull exterior"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this inferior view of the skull base showing the foramina and occipital region.",
+    "explanation": "The external skull base (inferior view) shows key structures: occipital bone (foramen magnum — transmits medulla oblongata, vertebral arteries, CN XI spinal roots; occipital condyles articulate with C1/atlas), temporal bone (styloid process — attachment of styloid muscles; stylomastoid foramen transmits CN VII exiting skull; carotid canal; jugular foramen — CN IX/X/XI, sigmoid sinus), sphenoid (pterygoid plates, foramen ovale — CN V3, foramen spinosum — middle meningeal artery), and the hard palate (maxilla anteriorly, palatine posteriorly). The mastoid process (temporal bone) is the posterior attachment of the SCM.",
+    "visualDescription": "Inferior view of the external skull base with labeled bones, foramina, processes, and key landmarks",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Internal skull base",
+      "Anterior skull",
+      "Posterior skull",
+      "Lateral skull"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skull base (external)?",
+        "correctAnswer": "Skull base (external)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_244",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/skull_lateral.jpg",
+    "correctAnswer": "Lateral skull",
+    "acceptableAlternatives": [
+      "Skull lateral view",
+      "Side view of skull",
+      "Lateral view of skull"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this lateral view of the skull showing the cranial bones, sutures, and temporal region.",
+    "explanation": "The lateral skull shows the major cranial bones and sutures: frontal (anterior), parietal (superior and lateral), temporal (lateral — contains external acoustic meatus, mastoid process, zygomatic process), occipital (posterior), sphenoid (pterion region). Sutures: coronal (frontal-parietal), squamous/squamosal (temporal-parietal), lambdoid (parietal-occipital). The pterion (H-shaped junction of frontal, parietal, temporal, sphenoid) is the thinnest point of the skull — the middle meningeal artery runs here; trauma → epidural hematoma (biconvex on CT, arterial bleed, lucid interval). The zygomatic arch: temporal process of zygomatic + zygomatic process of temporal.",
+    "visualDescription": "Lateral view of the skull with all major bones, sutures, foramina, and landmarks labeled",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Posterior skull",
+      "Anterior skull",
+      "Skull base",
+      "Sagittal skull section"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the lateral skull?",
+        "correctAnswer": "Lateral skull",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_245",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/skull_parts.jpg",
+    "correctAnswer": "Skull parts overview",
+    "acceptableAlternatives": [
+      "Skull bones overview",
+      "Parts of the skull",
+      "Cranial and facial bones"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this labeled overview diagram identifying the major bones of the skull.",
+    "explanation": "The skull has 22 bones: Cranial bones (8) — frontal (1), parietal (2), temporal (2), occipital (1), sphenoid (1, 'keystone' of skull base), ethmoid (1); Facial bones (14) — mandible (1), maxillae (2), zygomatic (2), nasal (2), lacrimal (2), palatine (2), inferior nasal conchae (2), vomer (1). The cranial bones form the neurocranium protecting the brain; facial bones form the viscerocranium. At birth, the skull has fontanelles (fibrous membranes between incompletely ossified bones) — anterior fontanelle closes at ~18 months, posterior at ~3 months.",
+    "visualDescription": "Labeled diagram identifying all major skull bones from multiple views or an exploded diagram",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Vertebral column overview",
+      "Pectoral girdle",
+      "Pelvic girdle",
+      "Appendicular skeleton"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skull parts overview?",
+        "correctAnswer": "Skull parts overview",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_246",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/skull_posterior.jpg",
+    "correctAnswer": "Posterior skull",
+    "acceptableAlternatives": [
+      "Skull posterior view",
+      "Back of skull",
+      "Occipital region"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify this posterior view of the skull showing the occipital bone and lambdoid suture.",
+    "explanation": "The posterior skull view features: occipital bone — the large posterior cranial bone bearing the external occipital protuberance (EOP/inion, palpable midline bump — nuchal ligament attachment), superior and inferior nuchal lines (attachment of suboccipital/neck muscles), and the foramen magnum (inferiorly). The lambdoid suture (inverted V-shape) separates the parietal bones from the occipital bone. Parietal foramina (emissary veins). The asterion is the landmark at the junction of lambdoid, occipitomastoid, and parietomastoid sutures — overlies the transverse-sigmoid sinus junction. Wormian (sutural) bones are accessory ossification centers within sutures; excess numbers suggest osteogenesis imperfecta.",
+    "visualDescription": "Posterior view of the skull showing the occipital bone, lambdoid suture, parietal bones, and key landmarks",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Anterior skull",
+      "Lateral skull",
+      "Skull base",
+      "Cranial fossae"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the posterior skull?",
+        "correctAnswer": "Posterior skull",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_247",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/skull_sagittal.jpg",
+    "correctAnswer": "Skull sagittal section",
+    "acceptableAlternatives": [
+      "Midsagittal skull",
+      "Sagittal skull section",
+      "Skull interior midsagittal view"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this midsagittal cross-section of the skull showing the internal bones and nasal septum.",
+    "explanation": "The midsagittal skull section reveals internal structures invisible from outside: (1) nasal septum — perpendicular plate of ethmoid (superior) + vomer (inferior) + septal cartilage (anterior); (2) hard palate — palatine process of maxilla (anterior 3/4) + horizontal plate of palatine bone (posterior 1/4); (3) internal occipital protuberance; (4) sella turcica — depression in sphenoid body housing the pituitary gland; (5) anterior cranial fossa floor (cribriform plate of ethmoid); (6) clivus — sloping posterior part of sphenoid/occipital bodies, where basilar artery lies against it.",
+    "visualDescription": "Midsagittal section of the skull showing nasal septum, hard palate, sella turcica, internal cranial base, and all contributing bones",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Coronal skull section",
+      "Axial skull section",
+      "External skull lateral view",
+      "Orbital anatomy"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the skull sagittal section?",
+        "correctAnswer": "Skull sagittal section",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_248",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/sphenoid.jpg",
+    "correctAnswer": "Sphenoid bone",
+    "acceptableAlternatives": [
+      "Sphenoid",
+      "Sphenoid bone anatomy"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Identify the butterfly-shaped bone that forms the central keystone of the skull base.",
+    "explanation": "The sphenoid is an unpaired 'keystone' bone articulating with all other cranial bones. Bat/butterfly shape: body (center — contains sphenoid sinuses; sella turcica houses pituitary; optic chiasm sits in optic groove), greater wings (form middle cranial fossa floor, pterion region, infratemporal and temporal fossae), lesser wings (form posterior part of anterior cranial fossa and superior orbital fissure — CN III/IV/VI/V1), and pterygoid processes (hang down — attachment for pterygoid muscles of mastication; medial pterygoid plate ends at pterygoid hamulus). Key foramina: optic canal (lesser wing), superior orbital fissure (between greater/lesser wings), foramen rotundum (V2), foramen ovale (V3), foramen spinosum (middle meningeal artery).",
+    "visualDescription": "Superior view and/or anterior view of the isolated sphenoid bone showing body, greater wings, lesser wings, pterygoid processes, and key foramina",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Ethmoid bone",
+      "Temporal bone",
+      "Occipital bone",
+      "Frontal bone"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the sphenoid bone?",
+        "correctAnswer": "Sphenoid bone",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_249",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/openstax/temporal_bone.jpg",
+    "correctAnswer": "Temporal bone",
+    "acceptableAlternatives": [
+      "Temporal bone anatomy"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 3,
+    "quizQuestion": "Identify the complex paired bone forming the lateral skull, housing the organs of hearing and balance.",
+    "explanation": "The temporal bone consists of four parts: squamous (forms lateral skull wall, zygomatic process), petrous ('rocky' medial part — hardest bone in the body; houses cochlea and semicircular canals within the bony labyrinth; contains internal acoustic meatus transmitting CN VII and CN VIII), mastoid (posterior — mastoid process with air cells that communicate with middle ear; mastoiditis is a complication of otitis media), and tympanic (surrounds external acoustic meatus). CN VII exits via the stylomastoid foramen (between styloid and mastoid). The carotid canal transmits the internal carotid artery. Temporal bone fractures: longitudinal (90%, tympanic membrane tear, conductive hearing loss) vs transverse (sensorineural hearing loss, CN VII palsy).",
+    "visualDescription": "Medial and/or lateral view of the isolated temporal bone showing squamous, petrous, mastoid, and tympanic portions with labeled processes and foramina",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull",
+    "volatile": false,
+    "distractors": [
+      "Sphenoid bone",
+      "Parietal bone",
+      "Occipital bone",
+      "Frontal bone"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the temporal bone?",
+        "correctAnswer": "Temporal bone",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_250",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/skeletal_system/servier/male_pelvis.png",
+    "correctAnswer": "Male pelvis",
+    "acceptableAlternatives": [
+      "Male pelvic bones",
+      "Male bony pelvis"
+    ],
+    "chainThemeId": "visual_skeletal",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this illustration of the male bony pelvis showing its characteristic narrow shape.",
+    "explanation": "The male pelvis differs from the female in several clinically important ways: (1) Male pelvic inlet is heart-shaped (narrower); female is oval/round; (2) Male pubic arch angle <90° (acute); female >90° (obtuse, called subpubic angle); (3) Male ischial spines are more prominent and closer together (smaller interspinous diameter); (4) Male sacrum is narrower and more curved; (5) Overall, male pelvis is narrower, deeper, and heavier with more pronounced muscle markings. The pelvis consists of two hip bones (each = ilium + ischium + pubis, fused at triradiate cartilage), the sacrum, and the coccyx. The pelvic outlet is bounded by the coccyx (posteriorly), ischial tuberosities (laterally), and pubic arch (anteriorly).",
+    "visualDescription": "Anterior view illustration of the male bony pelvis showing the characteristic narrow inlet, acute pubic arch, and prominent ischial spines",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Female pelvis",
+      "Lumbar vertebrae",
+      "Hip joint only",
+      "Sacrum only"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the male pelvis?",
+        "correctAnswer": "Male pelvis",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_251",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/reproductive_system/openstax/breast_lactation.jpg",
+    "correctAnswer": "Breast and lactation anatomy",
+    "acceptableAlternatives": [
+      "Breast anatomy",
+      "Mammary gland",
+      "Lactating breast"
+    ],
+    "chainThemeId": "visual_reproductive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify this cross-sectional diagram of the female breast showing its glandular and ductal anatomy.",
+    "explanation": "The breast (mammary gland) is a modified apocrine sweat gland consisting of 15–25 lobes of tubuloalveolar glands arranged radially around the nipple, separated by adipose tissue and Cooper's ligaments (suspensory ligaments attaching breast to overlying skin and underlying fascia). Each lobe drains via a lactiferous duct to the nipple; ducts dilate near the nipple as lactiferous sinuses. Blood supply: internal thoracic (internal mammary) artery and lateral thoracic artery. Lymphatic drainage is critical in breast cancer: ~75% drains to axillary nodes (sentinel node biopsy); medial breast drains to parasternal nodes. Prolactin (anterior pituitary) stimulates milk production; oxytocin triggers milk ejection ('let-down' reflex). Breast tissue extends to the axillary tail of Spence.",
+    "visualDescription": "Sagittal cross-section of the female breast showing lobes, lactiferous ducts, lactiferous sinuses, nipple, areola, Cooper's ligaments, and surrounding adipose tissue",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-1-anatomy-and-physiology-of-the-female-reproductive-system",
+    "volatile": false,
+    "distractors": [
+      "Lymph node",
+      "Sebaceous gland",
+      "Ovarian follicle",
+      "Uterine wall structure"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the breast and lactation anatomy?",
+        "correctAnswer": "Breast and lactation anatomy",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_252",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/reproductive_system/openstax/female_hormones.jpg",
+    "correctAnswer": "Female reproductive hormones",
+    "acceptableAlternatives": [
+      "Female hormonal cycle",
+      "Ovarian and uterine hormone cycle",
+      "Menstrual cycle hormones"
+    ],
+    "chainThemeId": "visual_reproductive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 4,
+    "funScore": 4,
+    "quizQuestion": "Identify this diagram showing the cyclical hormonal changes that govern the female reproductive cycle.",
+    "explanation": "The female reproductive cycle is governed by a hormonal cascade: Hypothalamus → GnRH (pulsatile) → Anterior pituitary → FSH (follicle development) and LH (midcycle surge → ovulation; stimulates theca cells → androgens). Ovarian phases: Follicular phase (days 1–14) — rising estradiol from granulosa cells; Ovulation (day 14) — LH surge triggers follicle rupture; Luteal phase (days 15–28) — corpus luteum secretes progesterone + estrogen. Progesterone: prepares endometrium for implantation, inhibits further ovulation, raises basal body temperature. If no fertilization, corpus luteum degenerates → progesterone/estrogen fall → menstruation. Estrogen feedback: early follicular = negative; late follicular (high E2) = positive → LH surge.",
+    "visualDescription": "Multi-panel diagram showing FSH, LH, estrogen, and progesterone levels across the menstrual cycle alongside follicular and uterine changes",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-female-reproductive-system",
+    "volatile": false,
+    "distractors": [
+      "Male reproductive hormones",
+      "Thyroid hormone cycle",
+      "Adrenal hormone rhythm",
+      "Growth hormone pulsatility"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification", "high_yield"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the female reproductive hormones?",
+        "correctAnswer": "Female reproductive hormones",
+        "quizMode": "image_answers"
+      }
+    ]
+  }
+]

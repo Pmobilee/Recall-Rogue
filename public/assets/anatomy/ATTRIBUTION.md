@@ -25,6 +25,14 @@ Select plates are sourced from **Henry Gray's Anatomy of the Human Body**, 20th 
 - **Original work**: Gray, Henry. *Anatomy of the Human Body*. Philadelphia: Lea & Febiger, 1918.
 - No attribution legally required, but credited here for scholarly integrity.
 
+## Supplementary Source: OpenStax Anatomy & Physiology 2e
+
+Select figures are sourced from **OpenStax Anatomy & Physiology 2e** (https://openstax.org/details/books/anatomy-and-physiology-2e/).
+
+- **License**: Creative Commons Attribution 4.0 International (CC-BY 4.0)
+- **Original source**: https://philschatz.com/anatomy-book/
+- **Attribution**: "OpenStax Anatomy and Physiology 2e. OpenStax CNX. CC BY 4.0."
+
 ## Usage in Recall Rogue
 
 These illustrations are used in the Human Anatomy curated deck to help players learn anatomical structures visually. All usage complies with the respective licenses.
