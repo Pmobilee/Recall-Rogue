@@ -1,0 +1,1857 @@
+[
+  {
+    "id": "ha_visual_357",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/accessory_organs.jpg",
+    "correctAnswer": "Accessory digestive organs",
+    "acceptableAlternatives": [
+      "Accessory organs of digestion",
+      "Liver, gallbladder, and pancreas"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structures shown in this digestive system illustration.",
+    "explanation": "The accessory digestive organs — liver, gallbladder, and pancreas — support digestion without food passing through them. The liver produces bile, which emulsifies dietary fats. Bile is stored and concentrated in the gallbladder, then released into the duodenum via the common bile duct. The pancreas secretes digestive enzymes (amylase, lipase, proteases) and bicarbonate into the duodenum. Gallstones form when bile becomes supersaturated with cholesterol, a key USMLE clinical correlation.",
+    "visualDescription": "Illustration of the accessory digestive organs including liver, gallbladder, and pancreas with their ductal connections to the duodenum",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Primary digestive organs",
+      "Endocrine pancreas only",
+      "Respiratory accessory muscles",
+      "Lymphatic organs"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the accessory digestive organs?",
+        "correctAnswer": "Accessory digestive organs",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_358",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/esophagus.jpg",
+    "correctAnswer": "Esophagus",
+    "acceptableAlternatives": [
+      "Esophageal wall layers",
+      "Esophageal anatomy"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structure shown in this GI tract illustration.",
+    "explanation": "The esophagus is a muscular tube approximately 25 cm long connecting the pharynx to the stomach. It passes through the esophageal hiatus of the diaphragm. Its wall layers (mucosa, submucosa, muscularis, adventitia) propel food via peristalsis. The upper third contains skeletal muscle, the lower third smooth muscle, and the middle third a mixture. The lower esophageal sphincter (LES) prevents gastroesophageal reflux; LES incompetence underlies GERD.",
+    "visualDescription": "Cross-sectional and longitudinal illustration of the esophagus showing wall layers and relationship to surrounding structures",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Trachea",
+      "Small intestine",
+      "Duodenum",
+      "Pharynx"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the esophagus?",
+        "correctAnswer": "Esophagus",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_359",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/gallbladder_detail.jpg",
+    "correctAnswer": "Gallbladder",
+    "acceptableAlternatives": [
+      "Gallbladder anatomy",
+      "Gallbladder and bile ducts"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structure shown in this detailed illustration.",
+    "explanation": "The gallbladder is a pear-shaped sac on the inferior surface of the liver that stores and concentrates bile up to 10-fold. Bile enters via the cystic duct and is released into the common bile duct in response to cholecystokinin (CCK) from the duodenum. The gallbladder wall consists of mucosa, muscularis, and serosa. Acute cholecystitis typically results from cystic duct obstruction by gallstones and presents with right upper quadrant pain (Murphy's sign).",
+    "visualDescription": "Detailed illustration of the gallbladder showing its fundus, body, neck, and cystic duct connecting to the biliary tree",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Liver lobule",
+      "Pancreatic duct",
+      "Spleen",
+      "Appendix"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the gallbladder in detail?",
+        "correctAnswer": "Gallbladder",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_360",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/large_intestine.jpg",
+    "correctAnswer": "Large intestine",
+    "acceptableAlternatives": [
+      "Colon",
+      "Large bowel"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the organ shown in this GI illustration.",
+    "explanation": "The large intestine (~1.5 m) consists of the cecum, colon (ascending, transverse, descending, sigmoid), rectum, and anal canal. Its primary role is water and electrolyte absorption and compaction of feces. Distinguishing features include haustra (pouches), taeniae coli (three longitudinal muscle bands), and epiploic appendages (fat tags). The ileocecal valve separates the small from large intestine. Colorectal cancer most commonly arises in the sigmoid and rectum.",
+    "visualDescription": "Illustration of the large intestine showing cecum, ascending colon, transverse colon, descending colon, sigmoid colon, and rectum",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Small intestine",
+      "Stomach",
+      "Urinary bladder",
+      "Uterus"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the large intestine?",
+        "correctAnswer": "Large intestine",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_361",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/liver_microscopic.jpg",
+    "correctAnswer": "Liver histology",
+    "acceptableAlternatives": [
+      "Hepatic lobule",
+      "Liver microanatomy"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the microscopic structure shown in this liver slide.",
+    "explanation": "The classic hepatic lobule is a hexagonal unit with a central vein at its core and portal triads (portal vein branch, hepatic artery branch, bile ductule) at the corners. Hepatocytes radiate as cords between sinusoids lined with Kupffer cells (resident macrophages). Blood flows from portal triads inward to the central vein; bile flows outward to bile ductules. Zone 1 (periportal) is most oxygenated; Zone 3 (centrilobular) is most susceptible to ischemia and acetaminophen toxicity.",
+    "visualDescription": "Microscopic cross-section of liver tissue showing hepatic lobule architecture with central vein, portal triads, and hepatocyte cords",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Kidney cortex histology",
+      "Pancreatic histology",
+      "Spleen histology",
+      "Lung alveolar histology"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows liver histology?",
+        "correctAnswer": "Liver histology",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_362",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/mouth_structures.jpg",
+    "correctAnswer": "Oral cavity structures",
+    "acceptableAlternatives": [
+      "Mouth anatomy",
+      "Structures of the oral cavity"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the anatomical region shown in this illustration.",
+    "explanation": "The oral cavity includes the lips, cheeks, hard and soft palate, uvula, tongue, teeth, and gingiva. The vestibule lies between the cheeks/lips and the teeth; the oral cavity proper lies posterior to the teeth. The hard palate (palatine processes of maxilla + horizontal plates of palatine bones) separates the oral and nasal cavities. The soft palate, bearing the uvula, elevates during swallowing to prevent nasopharyngeal regurgitation. Cleft palate results from failed fusion of palatal shelves.",
+    "visualDescription": "Illustration of the open oral cavity showing teeth, tongue, hard and soft palate, uvula, and associated structures",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Pharynx",
+      "Nasal cavity",
+      "Larynx",
+      "Sinuses"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the oral cavity structures?",
+        "correctAnswer": "Oral cavity structures",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_363",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/pancreas_exocrine_endocrine.jpg",
+    "correctAnswer": "Pancreas (exocrine and endocrine)",
+    "acceptableAlternatives": [
+      "Pancreatic anatomy",
+      "Exocrine and endocrine pancreas"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the organ and its dual function shown in this illustration.",
+    "explanation": "The pancreas has both exocrine (acinar cells, ~95% of mass) and endocrine (islets of Langerhans, ~2%) components. Acinar cells secrete digestive enzymes into ducts emptying at the ampulla of Vater. Islets contain alpha cells (glucagon), beta cells (insulin), delta cells (somatostatin), and PP cells (pancreatic polypeptide). Destruction of beta cells by autoimmune attack causes Type 1 diabetes mellitus. Pancreatic head carcinoma classically obstructs the common bile duct, causing painless jaundice.",
+    "visualDescription": "Illustration of the pancreas showing its head, body, and tail, with inset of islets of Langerhans and surrounding acinar tissue",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Liver and gallbladder",
+      "Adrenal gland",
+      "Thyroid gland",
+      "Spleen"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the pancreas with its exocrine and endocrine components?",
+        "correctAnswer": "Pancreas (exocrine and endocrine)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_364",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/pharynx.jpg",
+    "correctAnswer": "Pharynx",
+    "acceptableAlternatives": [
+      "Pharyngeal anatomy",
+      "Nasopharynx, oropharynx, and laryngopharynx"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structure shown at the crossroads of the respiratory and digestive tracts.",
+    "explanation": "The pharynx is a funnel-shaped musculomembranous tube divided into three parts: nasopharynx (posterior to nasal cavity, contains pharyngeal tonsil and eustachian tube openings), oropharynx (posterior to oral cavity, contains palatine tonsils), and laryngopharynx/hypopharynx (opens into both the larynx anteriorly and esophagus posteriorly). During swallowing, the epiglottis folds over the laryngeal inlet to prevent aspiration. Peritonsillar abscess is a complication of tonsillitis, often caused by Streptococcus pyogenes.",
+    "visualDescription": "Sagittal illustration of the pharynx showing the three regions, epiglottis, and connections to nasal cavity, oral cavity, larynx, and esophagus",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Larynx",
+      "Esophagus",
+      "Oral cavity",
+      "Nasal cavity"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the pharynx?",
+        "correctAnswer": "Pharynx",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_365",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/salivary_glands.jpg",
+    "correctAnswer": "Salivary glands",
+    "acceptableAlternatives": [
+      "Major salivary glands",
+      "Parotid, submandibular, and sublingual glands"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the glands shown in this head and neck illustration.",
+    "explanation": "The three paired major salivary glands produce ~1–1.5 L of saliva daily. The parotid glands (serous secretion) drain via Stensen's duct opposite the upper second molar. The submandibular glands (mixed, predominantly serous) drain via Wharton's duct at the sublingual caruncle. The sublingual glands (mixed, predominantly mucous) drain via multiple ducts. Saliva contains amylase, lingual lipase, mucins, IgA, and lysozyme. Mumps virus preferentially infects the parotid glands; Sjögren syndrome causes autoimmune destruction of salivary and lacrimal glands.",
+    "visualDescription": "Illustration of the lateral face and neck showing the three major salivary glands and their ducts",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Lymph nodes of the neck",
+      "Thyroid and parathyroid glands",
+      "Lacrimal glands",
+      "Sebaceous glands"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the major salivary glands?",
+        "correctAnswer": "Salivary glands",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_366",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/small_intestine.jpg",
+    "correctAnswer": "Small intestine",
+    "acceptableAlternatives": [
+      "Small bowel",
+      "Duodenum, jejunum, and ileum"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the organ shown in this digestive system illustration.",
+    "explanation": "The small intestine (~6–7 m) is the primary site of nutrient digestion and absorption. It is divided into the duodenum (25 cm; receives bile and pancreatic juices), jejunum (~2.4 m; major absorption site), and ileum (~3.5 m; absorbs vitamin B12 and bile salts). Surface area is amplified ~600-fold by plicae circulares, villi, and microvilli. Celiac disease (gluten-induced autoimmune enteropathy) destroys villi, causing malabsorption. Meckel's diverticulum is the most common congenital GI anomaly, found in the ileum.",
+    "visualDescription": "Illustration of the small intestine coiled within the abdominal cavity, with labels for duodenum, jejunum, and ileum",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Large intestine",
+      "Stomach",
+      "Esophagus",
+      "Ureter"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the small intestine?",
+        "correctAnswer": "Small intestine",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_367",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/small_intestine_histology.jpg",
+    "correctAnswer": "Small intestine histology",
+    "acceptableAlternatives": [
+      "Intestinal villus histology",
+      "Small bowel microanatomy"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the microscopic structure shown in this intestinal slide.",
+    "explanation": "Small intestinal histology shows finger-like villi projecting into the lumen, each with a core of lamina propria containing a lacteal (lymphatic capillary for fat absorption) and blood capillaries. Crypts of Lieberkühn lie between villi and harbor intestinal stem cells, Paneth cells (antimicrobial secretion), and goblet cells (mucus). The enterocyte brush border (microvilli) expresses disaccharidases and peptidases. Lactase deficiency causes lactose intolerance; brush border enzyme loss occurs in rotavirus infection.",
+    "visualDescription": "Histological cross-section of small intestine showing villi, crypts of Lieberkühn, goblet cells, and submucosal layers",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Large intestine histology",
+      "Stomach histology",
+      "Esophageal histology",
+      "Liver histology"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows small intestine histology?",
+        "correctAnswer": "Small intestine histology",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_368",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/stomach.jpg",
+    "correctAnswer": "Stomach",
+    "acceptableAlternatives": [
+      "Gastric anatomy",
+      "Stomach gross anatomy"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify the organ shown in this digestive illustration.",
+    "explanation": "The stomach is a J-shaped muscular organ in the left upper quadrant with four regions: cardia (near esophageal junction), fundus (dome above cardia), body (main portion), and pylorus (distal funnel leading to duodenum). Its muscularis has three layers (oblique, circular, longitudinal) for churning. Parietal cells secrete HCl and intrinsic factor; chief cells secrete pepsinogen. H. pylori infection (colonizes antrum) causes most peptic ulcers. Intrinsic factor deficiency causes pernicious anemia.",
+    "visualDescription": "Gross anatomical illustration of the stomach showing fundus, body, cardia, pylorus, greater and lesser curvatures",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Urinary bladder",
+      "Gallbladder",
+      "Small intestine",
+      "Spleen"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the stomach?",
+        "correctAnswer": "Stomach",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_369",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/stomach_histology.jpg",
+    "correctAnswer": "Stomach histology",
+    "acceptableAlternatives": [
+      "Gastric wall microanatomy",
+      "Gastric gland histology"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the microscopic structure shown in this gastric slide.",
+    "explanation": "Stomach histology reveals gastric pits that open into gastric glands. The mucosa is lined by surface mucous cells secreting protective alkaline mucus. Gastric glands contain mucous neck cells, parietal cells (eosinophilic, HCl and intrinsic factor), chief cells (basophilic, pepsinogen), and enteroendocrine cells (G cells in antrum secrete gastrin; D cells secrete somatostatin). The thick muscularis externa has three layers. NSAIDs inhibit prostaglandins, disrupting the mucus-bicarbonate barrier and predisposing to ulcers.",
+    "visualDescription": "Histological section of the stomach wall showing gastric pits, glands, and distinct cell types within the mucosa",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Small intestine histology",
+      "Esophageal histology",
+      "Colon histology",
+      "Liver histology"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows stomach histology?",
+        "correctAnswer": "Stomach histology",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_370",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/teeth.jpg",
+    "correctAnswer": "Teeth (dental anatomy overview)",
+    "acceptableAlternatives": [
+      "Dentition",
+      "Types of teeth"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the dental structures shown in this illustration.",
+    "explanation": "Adult dentition comprises 32 permanent teeth: 8 incisors, 4 canines, 8 premolars, and 12 molars (including 4 third molars/wisdom teeth). Each tooth type has a distinct morphology suited to its function — incisors cut, canines tear, premolars and molars grind. Primary (deciduous) dentition has 20 teeth. Each tooth has a crown (visible), neck (at gum line), and root (embedded in alveolar bone). Third molar impaction is the most common dental surgical procedure.",
+    "visualDescription": "Illustration showing the upper and lower dental arches with labeled tooth types including incisors, canines, premolars, and molars",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Bone histology",
+      "Salivary gland ducts",
+      "Tongue papillae",
+      "Temporomandibular joint"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows dental anatomy (teeth overview)?",
+        "correctAnswer": "Teeth (dental anatomy overview)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_371",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/tongue.jpg",
+    "correctAnswer": "Tongue",
+    "acceptableAlternatives": [
+      "Tongue anatomy",
+      "Lingual surface and papillae"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structure shown in this oral anatomy illustration.",
+    "explanation": "The tongue is a muscular organ with intrinsic (within tongue) and extrinsic muscles (genioglossus, hyoglossus, styloglossus, palatoglossus). The dorsal surface has four types of papillae: filiform (most numerous, no taste buds), fungiform (scattered, taste buds), circumvallate/vallate (row of ~7–12 at junction of anterior 2/3 and posterior 1/3, taste buds), and foliate (lateral edges). Taste (CN VII anterior 2/3; CN IX posterior 1/3) and general sensation (CN V3 anterior 2/3; CN IX posterior 1/3) are carried by distinct nerves.",
+    "visualDescription": "Illustration of the tongue from above showing papillae distributions, taste zones, and underlying musculature",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Hard palate",
+      "Epiglottis",
+      "Soft palate",
+      "Uvula"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the tongue anatomy?",
+        "correctAnswer": "Tongue",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_372",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/openstax/tooth.jpg",
+    "correctAnswer": "Tooth cross-section",
+    "acceptableAlternatives": [
+      "Tooth anatomy",
+      "Internal tooth structure"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structure shown in this detailed cross-sectional illustration.",
+    "explanation": "A cross-sectioned tooth reveals enamel (hardest substance in the body, produced by ameloblasts) covering the crown; dentin (mineralized connective tissue produced by odontoblasts) beneath the enamel; pulp cavity (loose connective tissue, vessels, nerves) in the center; cementum (covering the root, produced by cementoblasts) anchoring to the periodontal ligament; and the root canal carrying neurovascular structures to the apical foramen. Dental caries (tooth decay) begins with demineralization of enamel by bacterial acid, progressing to dentin and pulp.",
+    "visualDescription": "Longitudinal cross-section of a molar tooth showing enamel, dentin, pulp cavity, cementum, root, and periodontal structures",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Bone cross-section",
+      "Nail structure",
+      "Hair follicle",
+      "Cartilage histology"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a tooth cross-section?",
+        "correctAnswer": "Tooth cross-section",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_373",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/rectum.png",
+    "correctAnswer": "Rectum",
+    "acceptableAlternatives": [
+      "Rectal anatomy",
+      "Rectum and anal canal"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the terminal GI structure shown in this illustration.",
+    "explanation": "The rectum (approximately 12–15 cm) connects the sigmoid colon to the anal canal. It has three lateral curves creating three transverse folds (Houston's valves). The anal canal (~4 cm) has an internal anal sphincter (smooth muscle, involuntary) and external anal sphincter (skeletal muscle, voluntary). The pectinate (dentate) line divides the upper (visceral innervation, columnar epithelium) from the lower (somatic innervation, stratified squamous epithelium) anal canal. Hemorrhoids above the dentate line are internal; below are external.",
+    "visualDescription": "Medical illustration of the rectum and anal canal showing Houston's valves, sphincter muscles, and the dentate line",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Sigmoid colon",
+      "Urinary bladder",
+      "Uterus",
+      "Prostate gland"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the rectum?",
+        "correctAnswer": "Rectum",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_374",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/salivary_glands.png",
+    "correctAnswer": "Salivary glands",
+    "acceptableAlternatives": [
+      "Major salivary glands",
+      "Parotid, submandibular, and sublingual glands"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the glands shown in this head and neck illustration.",
+    "explanation": "The three paired major salivary glands are the parotid (largest, located anterior to the ear, purely serous), submandibular (under the mandible floor, mixed with predominantly serous secretion), and sublingual (under the tongue, mixed with predominantly mucous secretion). The facial nerve (CN VII) passes through the parotid gland, making it vulnerable during parotid surgery. Sjögren syndrome is characterized by autoimmune destruction of salivary and lacrimal glands, producing dry mouth (xerostomia) and dry eyes (keratoconjunctivitis sicca).",
+    "visualDescription": "Servier medical art illustration of the head showing the three major salivary glands and their anatomical positions",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Lymph nodes of the neck",
+      "Thyroid and parathyroid glands",
+      "Lacrimal glands",
+      "Thymus gland"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the salivary glands (Servier illustration)?",
+        "correctAnswer": "Salivary glands",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_375",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/stomach_cross_section.png",
+    "correctAnswer": "Stomach cross-section",
+    "acceptableAlternatives": [
+      "Gastric wall layers",
+      "Stomach wall cross-section"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structure shown in this cross-sectional illustration.",
+    "explanation": "A cross-section of the stomach reveals its four wall layers: mucosa (gastric pits and glands), submucosa (connective tissue with vessels and Meissner's plexus), muscularis externa (three layers: inner oblique, middle circular, outer longitudinal — unique to the stomach — with Auerbach's plexus between the inner two), and serosa (visceral peritoneum). The thick muscularis allows vigorous churning to produce chyme. Hiatal hernias occur when the stomach herniates through the esophageal hiatus into the thorax.",
+    "visualDescription": "Cross-sectional medical illustration of the stomach wall showing distinct muscle layers and mucosal folding (rugae)",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Small intestine cross-section",
+      "Colon cross-section",
+      "Esophageal cross-section",
+      "Urinary bladder cross-section"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a stomach cross-section?",
+        "correctAnswer": "Stomach cross-section",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_376",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/tongue.png",
+    "correctAnswer": "Tongue",
+    "acceptableAlternatives": [
+      "Tongue (Servier illustration)",
+      "Lingual anatomy"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the muscular organ shown in this illustration.",
+    "explanation": "The tongue comprises intrinsic muscles (superior and inferior longitudinal, transverse, vertical — altering tongue shape) and extrinsic muscles (genioglossus, hyoglossus, styloglossus, palatoglossus — positioning the tongue). All tongue muscles are innervated by CN XII (hypoglossal nerve), except palatoglossus (CN X). The tongue is the primary organ of taste; taste buds on the circumvallate papillae are innervated by CN IX. A unilateral CN XII lesion causes the tongue to deviate toward the side of the lesion.",
+    "visualDescription": "Servier medical art illustration of the tongue showing its dorsal surface and anatomical position within the oral cavity",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Epiglottis",
+      "Soft palate",
+      "Uvula",
+      "Pharyngeal wall"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the tongue (Servier illustration)?",
+        "correctAnswer": "Tongue",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_377",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/digestive_system/servier/tooth.png",
+    "correctAnswer": "Tooth cross-section",
+    "acceptableAlternatives": [
+      "Tooth anatomy (Servier)",
+      "Internal tooth structure"
+    ],
+    "chainThemeId": "visual_digestive",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the structure shown in this cross-sectional medical illustration.",
+    "explanation": "The tooth's internal architecture includes enamel (96% mineral, hardest biological material), dentin (70% mineral, slightly elastic, produced throughout life by odontoblasts), pulp (central cavity with nerves and blood vessels through the root canal), cementum (covers the root, anchoring to alveolar bone via the periodontal ligament). The periodontal ligament acts as a shock absorber during chewing. Dental pulpitis causes severe pain; untreated, infection spreads apically, forming a periapical abscess requiring root canal treatment.",
+    "visualDescription": "Servier medical art cross-section of a tooth clearly showing enamel, dentin, pulp, and root anatomy",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Bone cross-section",
+      "Hair follicle",
+      "Nail bed anatomy",
+      "Cartilage structure"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a tooth cross-section (Servier illustration)?",
+        "correctAnswer": "Tooth cross-section",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_378",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/urinary_system/openstax/jga_glomerulus.jpg",
+    "correctAnswer": "Juxtaglomerular apparatus and glomerulus",
+    "acceptableAlternatives": [
+      "JGA and glomerulus",
+      "Juxtaglomerular apparatus"
+    ],
+    "chainThemeId": "visual_urinary",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the renal microstructure shown in this illustration.",
+    "explanation": "The juxtaglomerular apparatus (JGA) consists of three components: macula densa (specialized distal tubule cells sensing NaCl concentration), juxtaglomerular (granular) cells (modified smooth muscle in afferent arteriole wall, secreting renin), and extraglomerular mesangial (lacis) cells. Renin cleaves angiotensinogen → angiotensin I, initiating the RAAS cascade. The glomerulus is a tuft of capillaries enclosed in Bowman's capsule, driving ultrafiltration. Diabetic nephropathy causes glomerular basement membrane thickening and Kimmelstiel-Wilson nodular glomerulosclerosis.",
+    "visualDescription": "Detailed illustration of the glomerulus and juxtaglomerular apparatus showing afferent/efferent arterioles, macula densa, and Bowman's capsule",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Renal medullary papilla",
+      "Loop of Henle",
+      "Collecting duct",
+      "Renal pelvis"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the juxtaglomerular apparatus and glomerulus?",
+        "correctAnswer": "Juxtaglomerular apparatus and glomerulus",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_379",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/urinary_system/openstax/podocytes.jpg",
+    "correctAnswer": "Podocytes",
+    "acceptableAlternatives": [
+      "Glomerular podocytes",
+      "Visceral epithelial cells of the glomerulus"
+    ],
+    "chainThemeId": "visual_urinary",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the specialized renal cells shown in this illustration.",
+    "explanation": "Podocytes are highly specialized visceral epithelial cells that wrap around glomerular capillaries with interdigitating foot processes (pedicels). The narrow filtration slits between pedicels are bridged by slit diaphragms (nephrin, podocin) that are critical for selective filtration. Podocyte injury — whether by immune complexes, minimal change disease, or FSGS — leads to foot process effacement and proteinuria. Minimal change disease (lipoid nephrosis), the most common nephrotic syndrome in children, shows diffuse foot process effacement on electron microscopy.",
+    "visualDescription": "Electron microscopy-style illustration of podocytes showing foot processes wrapping around a glomerular capillary with filtration slits",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Mesangial cells",
+      "Macula densa cells",
+      "Proximal tubule cells",
+      "Collecting duct principal cells"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows podocytes?",
+        "correctAnswer": "Podocytes",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_380",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/urinary_system/servier/urinary_female.png",
+    "correctAnswer": "Female urinary system",
+    "acceptableAlternatives": [
+      "Female urinary tract",
+      "Urinary system (female)"
+    ],
+    "chainThemeId": "visual_urinary",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the organ system shown in this female anatomy illustration.",
+    "explanation": "The female urinary system consists of the kidneys, ureters, urinary bladder, and urethra. Key difference from males: the female urethra is only ~4 cm long (vs ~20 cm in males), making women significantly more susceptible to ascending urinary tract infections (UTIs). Escherichia coli is the most common UTI pathogen. The bladder neck in females is supported by pubourethral ligaments; pelvic floor weakness can cause stress urinary incontinence. The trigone of the bladder (between ureteral orifices and internal urethral orifice) is embryologically distinct from the rest of the bladder.",
+    "visualDescription": "Servier medical art illustration of the female urinary system showing kidneys, ureters, and urinary bladder in anatomical position",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Female reproductive system",
+      "Male urinary system",
+      "Lymphatic system",
+      "Endocrine system"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the female urinary system?",
+        "correctAnswer": "Female urinary system",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_381",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/urinary_system/servier/urinary_male.png",
+    "correctAnswer": "Male urinary system",
+    "acceptableAlternatives": [
+      "Male urinary tract",
+      "Urinary system (male)"
+    ],
+    "chainThemeId": "visual_urinary",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the organ system shown in this male anatomy illustration.",
+    "explanation": "The male urinary system includes kidneys, ureters, urinary bladder, and a ~20 cm urethra. The male urethra passes through three regions: prostatic (passes through prostate, receives ejaculatory ducts), membranous (passes through urogenital diaphragm, site of external sphincter), and spongy/penile (traverses corpus spongiosum). Benign prostatic hyperplasia (BPH) — hyperplasia of the transitional zone — compresses the prostatic urethra, causing obstructive lower urinary tract symptoms. PSA screening detects prostate cancer arising most often from the peripheral zone.",
+    "visualDescription": "Servier medical art illustration of the male urinary system showing kidneys, ureters, and bladder with the prostate gland visible",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Male reproductive system",
+      "Female urinary system",
+      "Digestive system",
+      "Cardiovascular system"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the male urinary system?",
+        "correctAnswer": "Male urinary system",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_382",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/capillary.png",
+    "correctAnswer": "Capillary",
+    "acceptableAlternatives": [
+      "Blood capillary",
+      "Capillary microanatomy"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the smallest blood vessel type shown in this illustration.",
+    "explanation": "Capillaries are the smallest blood vessels (diameter 5–10 µm), consisting of a single layer of endothelium on a thin basement membrane. Three types exist: continuous (most common, tight junctions — muscle, skin, lung), fenestrated (pores for rapid exchange — kidney, intestinal villi, endocrine glands), and sinusoidal/discontinuous (large gaps — liver, spleen, bone marrow). Starling forces govern fluid exchange: hydrostatic pressure drives filtration at the arteriolar end; oncotic pressure drives reabsorption at the venular end. Edema results when these forces are imbalanced.",
+    "visualDescription": "Illustration of a capillary showing single-layer endothelium, pericytes, and its relationship to surrounding tissue",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Arteriole",
+      "Venule",
+      "Lymphatic capillary",
+      "Sinusoid"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a capillary?",
+        "correctAnswer": "Capillary",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_383",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/circle_of_willis.png",
+    "correctAnswer": "Circle of Willis",
+    "acceptableAlternatives": [
+      "Cerebral arterial circle",
+      "Willis circle"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the cerebrovascular structure shown in this illustration.",
+    "explanation": "The Circle of Willis is an anastomotic ring of arteries at the base of the brain formed by the internal carotid arteries, anterior cerebral arteries (ACAs), anterior communicating artery (ACoA), posterior cerebral arteries (PCAs), and posterior communicating arteries (PCoAs). It provides collateral circulation between the anterior and posterior circulations. Berry aneurysms occur most commonly at bifurcation points, especially the ACoA (most common), MCA bifurcation, and PCoA junction. ACoA aneurysm rupture causes subarachnoid hemorrhage with possible visual field deficits.",
+    "visualDescription": "Inferior view illustration of the brain showing the Circle of Willis with labeled arteries including ACA, MCA, PCA, ACoA, and PCoA",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Dural venous sinuses",
+      "Basilar artery only",
+      "Vertebral arteries",
+      "Carotid siphon"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the Circle of Willis?",
+        "correctAnswer": "Circle of Willis",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_384",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/erythrocyte.png",
+    "correctAnswer": "Erythrocyte (red blood cell)",
+    "acceptableAlternatives": [
+      "Red blood cell",
+      "RBC morphology"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify the blood cell shown in this illustration.",
+    "explanation": "Erythrocytes (RBCs) are biconcave discs (~7–8 µm diameter) lacking a nucleus and organelles, maximizing space for hemoglobin (~280 million molecules per cell). The biconcave shape maximizes surface area-to-volume ratio for gas exchange and allows deformation through narrow capillaries. RBC lifespan is ~120 days; senescent RBCs are destroyed in the spleen. Hemoglobin carries O2 (cooperative binding via T→R state shift) and CO2. Sickle cell disease (HbS mutation) causes RBCs to polymerize under low O2, producing vaso-occlusive crises.",
+    "visualDescription": "Illustration of an erythrocyte showing its characteristic biconcave disc shape from multiple perspectives",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Platelet",
+      "Neutrophil",
+      "Lymphocyte",
+      "Reticulocyte"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an erythrocyte (red blood cell)?",
+        "correctAnswer": "Erythrocyte (red blood cell)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_385",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/head_veins.png",
+    "correctAnswer": "Veins of the head and neck",
+    "acceptableAlternatives": [
+      "Head and neck venous drainage",
+      "Cranial and cervical veins"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the vascular structures shown in this head and neck illustration.",
+    "explanation": "Venous drainage of the head and neck includes the external and internal jugular veins. Cerebral blood drains via dural venous sinuses (superior sagittal, inferior sagittal, transverse, sigmoid) into the internal jugular vein. The external jugular vein drains the scalp and face into the subclavian vein. The internal jugular vein is used for central venous access. Elevated intracranial pressure is transmitted to the internal jugular, causing jugular venous distension (JVD). Cavernous sinus thrombosis is a dangerous complication of facial infections spreading via the facial and ophthalmic veins.",
+    "visualDescription": "Illustration of the head and neck showing external and internal jugular veins, facial vein, and connections to dural sinuses",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Arteries of the head and neck",
+      "Lymphatics of the head",
+      "Dural venous sinuses only",
+      "Vertebral veins"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the veins of the head and neck?",
+        "correctAnswer": "Veins of the head and neck",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_386",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/mitral_valve.png",
+    "correctAnswer": "Mitral valve",
+    "acceptableAlternatives": [
+      "Bicuspid valve",
+      "Left atrioventricular valve"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the cardiac valve shown in this illustration.",
+    "explanation": "The mitral (bicuspid) valve guards the left atrioventricular orifice, with two leaflets (anterior and posterior) attached to the left ventricular papillary muscles via chordae tendineae. During systole, it closes to prevent regurgitation into the left atrium. Mitral stenosis (often rheumatic fever sequela) restricts flow from LA to LV, causing LA enlargement, atrial fibrillation, and pulmonary hypertension. Mitral regurgitation produces a holosystolic murmur at the apex radiating to the axilla. Mitral valve prolapse (myxomatous degeneration) causes a mid-systolic click.",
+    "visualDescription": "Detailed illustration of the mitral valve showing its two leaflets, chordae tendineae, and papillary muscle attachments",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Tricuspid valve",
+      "Aortic valve",
+      "Pulmonary valve",
+      "Eustachian valve"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the mitral valve?",
+        "correctAnswer": "Mitral valve",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_387",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/reticulocyte.png",
+    "correctAnswer": "Reticulocyte",
+    "acceptableAlternatives": [
+      "Immature red blood cell",
+      "Reticulocyte (immature RBC)"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the immature blood cell shown in this illustration.",
+    "explanation": "Reticulocytes are immature red blood cells that have extruded their nucleus but retain residual ribosomal RNA (visible as a blue reticular network with new methylene blue staining). They circulate for ~1–2 days before maturing into erythrocytes. The reticulocyte count is a key marker of erythropoietic activity: elevated in hemolytic anemia or acute blood loss (regenerative anemia), and low in aplastic anemia or iron/B12/folate deficiency (hypoproliferative anemia). Erythropoietin (produced by peritubular cells in the kidney) drives reticulocyte production.",
+    "visualDescription": "Illustration of a reticulocyte showing its residual ribosomal network compared to a mature erythrocyte",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Mature erythrocyte",
+      "Platelet",
+      "Basophil",
+      "Normoblast"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a reticulocyte?",
+        "correctAnswer": "Reticulocyte",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_388",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/cardiovascular/servier/venous_system.png",
+    "correctAnswer": "Systemic venous system",
+    "acceptableAlternatives": [
+      "Venous system",
+      "Major veins of the body"
+    ],
+    "chainThemeId": "visual_cardiovascular",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the vascular system shown in this full-body illustration.",
+    "explanation": "The systemic venous system returns deoxygenated blood to the right atrium via the superior vena cava (SVC) and inferior vena cava (IVC). The SVC drains the head, neck, upper limbs, and thorax. The IVC drains the abdomen, pelvis, and lower limbs. At any given time, about 65% of total blood volume resides in the venous system, making veins the primary capacitance (reservoir) vessels. Deep vein thrombosis (DVT), most commonly in the lower extremities, risks pulmonary embolism if a clot propagates and embolizes to the pulmonary circulation.",
+    "visualDescription": "Full body illustration showing the major veins including jugular, subclavian, cephalic, basilic, portal, femoral, saphenous veins, SVC and IVC",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Systemic arterial system",
+      "Lymphatic system",
+      "Portal venous system only",
+      "Pulmonary venous system"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the systemic venous system?",
+        "correctAnswer": "Systemic venous system",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_389",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/basal_nuclei.jpg",
+    "correctAnswer": "Basal nuclei (basal ganglia)",
+    "acceptableAlternatives": [
+      "Basal ganglia",
+      "Striatum and associated nuclei"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the deep brain structures shown in this illustration.",
+    "explanation": "The basal nuclei (basal ganglia) include the caudate nucleus, putamen (together = striatum), globus pallidus (internal and external segments), subthalamic nucleus, and substantia nigra. They form circuits that modulate voluntary movement, motor learning, and habit formation via the direct (facilitatory) and indirect (inhibitory) pathways. Parkinson's disease results from loss of dopaminergic neurons in the substantia nigra pars compacta, causing bradykinesia, tremor, rigidity, and postural instability. Huntington's disease preferentially destroys the striatum (caudate and putamen).",
+    "visualDescription": "Coronal or 3D illustration of the brain showing the basal nuclei including caudate, putamen, globus pallidus, and their spatial relationships",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Limbic system structures",
+      "Thalamic nuclei",
+      "Cerebellar nuclei",
+      "Hypothalamic nuclei"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the basal nuclei (basal ganglia)?",
+        "correctAnswer": "Basal nuclei (basal ganglia)",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_390",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/brainstem.jpg",
+    "correctAnswer": "Brainstem",
+    "acceptableAlternatives": [
+      "Brain stem",
+      "Midbrain, pons, and medulla oblongata"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the brain region shown in this illustration.",
+    "explanation": "The brainstem consists of the midbrain (mesencephalon), pons, and medulla oblongata. The midbrain contains the cerebral peduncles, superior and inferior colliculi (visual and auditory reflexes), red nucleus, and substantia nigra. The pons relays signals between cerebrum and cerebellum and houses CN V–VIII nuclei and respiratory control centers. The medulla controls vital functions (cardiac, respiratory, vasomotor centers) and houses CN IX–XII nuclei. Lateral medullary (Wallenberg) syndrome — posterior inferior cerebellar artery (PICA) occlusion — causes ipsilateral facial numbness, contralateral body loss of pain/temperature, dysphasia, and Horner syndrome.",
+    "visualDescription": "Posterior or lateral illustration of the brainstem showing midbrain, pons, and medulla with cranial nerve exit points",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Cerebellum",
+      "Diencephalon",
+      "Cerebral cortex",
+      "Basal ganglia"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the brainstem?",
+        "correctAnswer": "Brainstem",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_391",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/brodmann_areas.jpg",
+    "correctAnswer": "Brodmann areas",
+    "acceptableAlternatives": [
+      "Cortical Brodmann areas",
+      "Functional cortical map"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 4,
+    "quizQuestion": "Identify the cortical mapping system shown in this brain illustration.",
+    "explanation": "Brodmann areas are regions of the cerebral cortex defined by cytoarchitecture (cell layer composition and thickness). Key areas: 1, 2, 3 (primary somatosensory cortex, postcentral gyrus), 4 (primary motor cortex, precentral gyrus), 6 (premotor and supplementary motor cortex), 17 (primary visual cortex, calcarine sulcus), 22 (Wernicke's area in dominant hemisphere), 41/42 (primary auditory cortex), 44/45 (Broca's area in dominant hemisphere). Lesions of Broca's area (44/45) cause expressive aphasia; Wernicke's area (22) lesions cause receptive aphasia.",
+    "visualDescription": "Lateral and medial view of the cerebral cortex with numbered Brodmann areas color-coded by function",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Cortical gyri and sulci map",
+      "Dermatome map",
+      "Visual field map",
+      "Cortical homunculus"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the Brodmann areas of the cortex?",
+        "correctAnswer": "Brodmann areas",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_392",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/cerebellum.jpg",
+    "correctAnswer": "Cerebellum",
+    "acceptableAlternatives": [
+      "Cerebellar anatomy",
+      "Cerebellum and folia"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the brain structure shown in this illustration.",
+    "explanation": "The cerebellum is located in the posterior cranial fossa and accounts for ~10% of brain weight but ~50% of neurons. It coordinates movement, balance, and motor learning via the spinocerebellar, vestibulocerebellar, and corticocerebellar circuits. It is organized into three lobes (anterior, posterior, flocculonodular) and three functional divisions: vestibulocerebellum (balance), spinocerebellum (limb and trunk coordination), and cerebrocerebellum (planning, fine motor). Cerebellar lesions cause ipsilateral deficits: ataxia, dysmetria (past-pointing), dysdiadochokinesia, intention tremor, and nystagmus (DANISH mnemonic).",
+    "visualDescription": "Posterior or inferior view of the cerebellum showing folia, vermis, hemispheres, and fissures",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Brainstem",
+      "Cerebral cortex",
+      "Thalamus",
+      "Hippocampus"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the cerebellum?",
+        "correctAnswer": "Cerebellum",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_393",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/cerebral_lobes.jpg",
+    "correctAnswer": "Cerebral lobes",
+    "acceptableAlternatives": [
+      "Lobes of the cerebrum",
+      "Frontal, parietal, temporal, and occipital lobes"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the cortical regions shown in this lateral brain illustration.",
+    "explanation": "The cerebral cortex is divided into four lobes: frontal (anterior to central sulcus — motor cortex, prefrontal cortex, Broca's area), parietal (posterior to central sulcus — somatosensory cortex, spatial processing), temporal (below lateral sulcus — auditory cortex, Wernicke's area, memory), and occipital (posterior pole — primary and association visual cortex). The insula is a fifth lobe hidden within the lateral sulcus. Middle cerebral artery (MCA) stroke is the most common stroke syndrome, affecting the lateral cortex (frontal, parietal, temporal) and causing contralateral hemiplegia, hemisensory loss, and aphasia (dominant hemisphere).",
+    "visualDescription": "Lateral view of the left cerebral hemisphere with color-coded frontal, parietal, temporal, and occipital lobes",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Brodmann areas",
+      "Basal ganglia",
+      "Limbic system",
+      "Brainstem regions"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the cerebral lobes?",
+        "correctAnswer": "Cerebral lobes",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_394",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/cerebrum.jpg",
+    "correctAnswer": "Cerebrum",
+    "acceptableAlternatives": [
+      "Cerebral hemispheres",
+      "Cerebrum overview"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify the largest brain structure shown in this illustration.",
+    "explanation": "The cerebrum is the largest part of the brain (~85% of total brain weight), consisting of two hemispheres connected by the corpus callosum. The cerebral cortex (gray matter, ~3 mm thick) contains 6 layers in most regions (neocortex). Gyri are folds; sulci are grooves; fissures are deep sulci. The longitudinal fissure divides the hemispheres. The left hemisphere is dominant for language in ~95% of right-handed individuals. Glioblastoma multiforme (GBM), the most aggressive primary brain tumor, most commonly arises in the cerebral hemispheres.",
+    "visualDescription": "Superior or lateral view of the cerebrum showing the two hemispheres, major gyri and sulci, and the longitudinal fissure",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Cerebellum",
+      "Brainstem",
+      "Diencephalon",
+      "Limbic system"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the cerebrum?",
+        "correctAnswer": "Cerebrum",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_395",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/cns_glia.jpg",
+    "correctAnswer": "CNS glial cells",
+    "acceptableAlternatives": [
+      "Central nervous system glia",
+      "Astrocytes, oligodendrocytes, microglia, and ependymal cells"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the non-neuronal brain cells shown in this illustration.",
+    "explanation": "CNS glial cells include: astrocytes (star-shaped, blood-brain barrier maintenance, scar formation, metabolic support — GFAP marker), oligodendrocytes (myelinate multiple CNS axons — each oligodendrocyte myelinates up to 30 axons; destroyed in multiple sclerosis), microglia (resident CNS macrophages derived from mesoderm, surveillance and phagocytosis), and ependymal cells (line ventricles, produce and circulate CSF). Gliomas (astrocytoma, glioblastoma, oligodendroglioma) are the most common primary brain tumors. Reactive astrogliosis forms glial scars after CNS injury.",
+    "visualDescription": "Illustration showing the different types of CNS glial cells: astrocytes, oligodendrocytes, microglia, and ependymal cells with distinguishing features",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "PNS glial cells",
+      "Neuron types",
+      "Blood-brain barrier cells only",
+      "Cortical interneurons"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows CNS glial cells?",
+        "correctAnswer": "CNS glial cells",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_396",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/cranial_nerves.jpg",
+    "correctAnswer": "Cranial nerves",
+    "acceptableAlternatives": [
+      "12 cranial nerves",
+      "Cranial nerve overview"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 4,
+    "quizQuestion": "Identify the peripheral nervous system structures shown in this inferior brain illustration.",
+    "explanation": "The 12 cranial nerves (CN I–XII) emerge directly from the brain and brainstem. Mnemonic for their nature (S=sensory, M=motor, B=both): 'Some Say Marry Money But My Brother Says Big Brains Matter More' (CN I–XII: S,S,M,M,B,B,B,S,B,M,B,B). Key clinical correlations: CN III palsy (posterior communicating artery aneurysm, herniation — 'down and out' eye with ptosis and mydriasis); CN VII palsy (Bell's palsy, Lyme disease, parotid tumor); CN X (vagus, parasympathetic to thoracoabdominal organs).",
+    "visualDescription": "Inferior view of the brain base showing the 12 cranial nerve origins with labels",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Spinal nerve roots",
+      "Brachial plexus",
+      "Autonomic ganglia",
+      "Peripheral nerve plexuses"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the cranial nerves?",
+        "correctAnswer": "Cranial nerves",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_397",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/diencephalon.jpg",
+    "correctAnswer": "Diencephalon",
+    "acceptableAlternatives": [
+      "Thalamus and hypothalamus",
+      "Diencephalon (thalamus, hypothalamus, epithalamus)"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the deep brain structure shown in this midsagittal illustration.",
+    "explanation": "The diencephalon consists of the thalamus, hypothalamus, epithalamus (pineal gland, habenula), and subthalamus. The thalamus is the relay station for all sensory information (except smell) going to the cortex; it also relays motor information from the basal ganglia and cerebellum. The hypothalamus controls the autonomic nervous system, endocrine function (via pituitary), temperature regulation, appetite, and circadian rhythms. The pineal gland produces melatonin for sleep-wake cycles. Parinaud's syndrome (vertical gaze palsy, loss of accommodation, convergence nystagmus) results from pineal mass compressing the superior colliculus.",
+    "visualDescription": "Midsagittal section of the brain showing the diencephalon with thalamus, hypothalamus, and epithalamus labeled",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Basal ganglia",
+      "Limbic system",
+      "Brainstem",
+      "Cerebellum"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the diencephalon?",
+        "correctAnswer": "Diencephalon",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_398",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/myelinated_neuron.jpg",
+    "correctAnswer": "Myelinated neuron",
+    "acceptableAlternatives": [
+      "Myelinated nerve fiber",
+      "Neuron with myelin sheath"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the nerve cell structure shown in this illustration.",
+    "explanation": "Myelinated neurons have their axons wrapped by myelin sheaths, formed by Schwann cells (PNS) or oligodendrocytes (CNS). Nodes of Ranvier are gaps between adjacent myelin segments where the axon membrane is exposed and voltage-gated Na+ channels are concentrated, enabling saltatory conduction (signal jumps node to node), greatly increasing conduction velocity. Multiple sclerosis (MS) is an autoimmune demyelinating disease destroying oligodendrocytes in the CNS, causing plaques of demyelination with slowed conduction. Guillain-Barré syndrome (GBS) demyelinates peripheral nerves.",
+    "visualDescription": "Illustration of a myelinated neuron showing axon, myelin sheath segments, nodes of Ranvier, and terminal boutons",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Unmyelinated neuron",
+      "Motor end plate",
+      "Synaptic knob",
+      "Dendritic spine"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a myelinated neuron?",
+        "correctAnswer": "Myelinated neuron",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_399",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/nerve_plexuses.jpg",
+    "correctAnswer": "Nerve plexuses",
+    "acceptableAlternatives": [
+      "Brachial and lumbosacral plexuses",
+      "Peripheral nerve plexuses"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the peripheral nerve networks shown in this illustration.",
+    "explanation": "The major nerve plexuses are formed by the ventral rami of spinal nerves: cervical plexus (C1–C4 — phrenic nerve to diaphragm, cutaneous neck/shoulder), brachial plexus (C5–T1 — all upper limb innervation), lumbar plexus (L1–L4 — femoral, obturator nerves), and sacral plexus (L4–S3 — sciatic nerve, largest nerve in the body). Erb's palsy (upper trunk C5–C6 injury — 'waiter's tip') and Klumpke's palsy (lower trunk C8–T1 — claw hand, Horner syndrome) are brachial plexus injuries seen in birth trauma.",
+    "visualDescription": "Illustration showing the major peripheral nerve plexuses including the brachial plexus, lumbar plexus, and sacral plexus",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Cranial nerves",
+      "Autonomic ganglia",
+      "Spinal cord tracts",
+      "Dermatome map"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the nerve plexuses?",
+        "correctAnswer": "Nerve plexuses",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_400",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/nerve_structure.jpg",
+    "correctAnswer": "Peripheral nerve structure",
+    "acceptableAlternatives": [
+      "Nerve anatomy",
+      "Nerve fiber bundles (epineurium, perineurium, endoneurium)"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the cross-sectional structure shown in this nerve illustration.",
+    "explanation": "A peripheral nerve is organized into nested layers: individual nerve fibers (axons with myelin) wrapped by endoneurium; bundles of fibers (fascicles) wrapped by perineurium; and the entire nerve wrapped by epineurium. The perineurium forms a blood-nerve barrier analogous to the blood-brain barrier. Nerve injuries are classified by Seddon's system: neuropraxia (conduction block, intact axon — best prognosis), axonotmesis (axon disrupted, endoneurium intact — Wallerian degeneration but can regenerate), neurotmesis (complete nerve transection — requires surgical repair).",
+    "visualDescription": "Cross-sectional illustration of a peripheral nerve showing epineurium, perineurium, endoneurium, fascicles, and individual myelinated fibers",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Spinal cord cross-section",
+      "Tendon structure",
+      "Blood vessel wall layers",
+      "Skeletal muscle fascicle"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows peripheral nerve structure?",
+        "correctAnswer": "Peripheral nerve structure",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_401",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/neuron.jpg",
+    "correctAnswer": "Neuron",
+    "acceptableAlternatives": [
+      "Nerve cell",
+      "Multipolar neuron"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 1,
+    "funScore": 3,
+    "quizQuestion": "Identify the fundamental unit of the nervous system shown in this illustration.",
+    "explanation": "A neuron consists of a cell body (soma, containing nucleus and organelles), dendrites (short branched processes receiving inputs — contain Nissl bodies/rough ER), and a single axon (conducts impulses away from soma, wrapped in myelin). The axon hillock is where action potentials are initiated (lowest threshold). Synaptic terminals at the axon endings release neurotransmitters. Neurons cannot regenerate after death (with limited exceptions in olfactory epithelium and hippocampus). ALS (amyotrophic lateral sclerosis) destroys both upper and lower motor neurons, causing progressive weakness without sensory loss.",
+    "visualDescription": "Classic illustration of a multipolar neuron showing soma, multiple dendrites, axon hillock, myelinated axon, and terminal boutons",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Astrocyte",
+      "Oligodendrocyte",
+      "Schwann cell",
+      "Microglia"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a neuron?",
+        "correctAnswer": "Neuron",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_402",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/neuron_types.jpg",
+    "correctAnswer": "Neuron types",
+    "acceptableAlternatives": [
+      "Types of neurons",
+      "Unipolar, bipolar, and multipolar neurons"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the classification of nerve cells shown in this comparative illustration.",
+    "explanation": "Neurons are classified by number of processes: unipolar (one process — dorsal root ganglion sensory neurons in adults, really pseudounipolar with one process that divides into central and peripheral branches), bipolar (two processes — retinal bipolar cells, vestibular and cochlear neurons), and multipolar (one axon + multiple dendrites — most CNS neurons, motor neurons). They can also be classified functionally: sensory (afferent), motor (efferent), and interneurons (association). Interneurons constitute ~99% of all neurons.",
+    "visualDescription": "Comparative illustration showing the structural differences between unipolar, bipolar, and multipolar neuron types",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Glial cell types",
+      "Muscle fiber types",
+      "Cortical layer neuron arrangement",
+      "Autonomic neuron arrangement"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the different types of neurons?",
+        "correctAnswer": "Neuron types",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_403",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/pns_glia.jpg",
+    "correctAnswer": "PNS glial cells",
+    "acceptableAlternatives": [
+      "Peripheral nervous system glia",
+      "Schwann cells and satellite cells"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the non-neuronal cells of the peripheral nervous system shown in this illustration.",
+    "explanation": "PNS glial cells include Schwann cells and satellite cells. Schwann cells myelinate peripheral axons (one Schwann cell per myelin segment, unlike oligodendrocytes which myelinate multiple axons). They also guide peripheral nerve regeneration after injury. Satellite cells surround neuron cell bodies in dorsal root and autonomic ganglia, providing metabolic support. Schwannomas (benign Schwann cell tumors) most commonly affect the vestibulocochlear nerve (acoustic neuroma / CN VIII), causing unilateral sensorineural hearing loss. Neurofibromatosis type 1 (von Recklinghausen's) involves multiple peripheral nerve neurofibromas (Schwann cell + fibroblast).",
+    "visualDescription": "Illustration showing Schwann cells wrapping peripheral nerve axons and satellite cells surrounding neuronal somata in ganglia",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "CNS glial cells",
+      "Neuron types",
+      "Autonomic ganglia neurons",
+      "Ependymal cells"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows PNS glial cells?",
+        "correctAnswer": "PNS glial cells",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_404",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/openstax/spinal_cord_cross.jpg",
+    "correctAnswer": "Spinal cord cross-section",
+    "acceptableAlternatives": [
+      "Spinal cord transverse section",
+      "Gray and white matter of the spinal cord"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the CNS structure shown in this cross-sectional illustration.",
+    "explanation": "The spinal cord cross-section has a butterfly-shaped central gray matter (H-shape) surrounded by white matter. The gray matter dorsal horns contain sensory neurons; ventral horns contain motor neurons (alpha and gamma motor neurons); lateral horns (T1–L2 and S2–S4) contain autonomic preganglionic neurons. White matter columns carry ascending (sensory) and descending (motor) tracts. Key tracts: dorsal columns (ipsilateral fine touch, proprioception), spinothalamic tract (contralateral pain/temperature), corticospinal tract (ipsilateral motor). Brown-Séquard syndrome (hemisection) causes ipsilateral motor loss + proprioception loss with contralateral pain/temperature loss below the lesion.",
+    "visualDescription": "Cross-sectional illustration of the spinal cord showing butterfly-shaped gray matter, white matter columns, and labeled tracts",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "sourceUrl": "https://openstax.org/books/anatomy-and-physiology-2e/",
+    "volatile": false,
+    "distractors": [
+      "Brainstem cross-section",
+      "Peripheral nerve cross-section",
+      "Cerebral cortex cross-section",
+      "Vertebral foramen"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows a spinal cord cross-section?",
+        "correctAnswer": "Spinal cord cross-section",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_405",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/servier/astrocyte.png",
+    "correctAnswer": "Astrocyte",
+    "acceptableAlternatives": [
+      "Astrocyte (CNS glial cell)",
+      "Star-shaped CNS glial cell"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the CNS glial cell shown in this Servier illustration.",
+    "explanation": "Astrocytes are the most abundant cells in the CNS, identifiable by their star-like shape with numerous radiating processes. Functions: (1) Blood-brain barrier maintenance — astrocytic endfeet cover >99% of brain capillary surface; (2) Neurotransmitter recycling (glutamate-glutamine cycle, GABA uptake); (3) Potassium buffering; (4) Metabolic support via lactate shuttle; (5) Reactive astrogliosis and glial scar formation after injury. GFAP (glial fibrillary acidic protein) is the astrocyte marker. Astrocytomas (WHO grade I–IV) range from pilocytic astrocytoma (benign, children) to glioblastoma multiforme (GBM, most malignant).",
+    "visualDescription": "Servier medical art illustration of an astrocyte showing its characteristic star shape with processes contacting both neurons and blood vessels",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Oligodendrocyte",
+      "Microglia",
+      "Schwann cell",
+      "Ependymal cell"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows an astrocyte?",
+        "correctAnswer": "Astrocyte",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_406",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/servier/cerebellum.png",
+    "correctAnswer": "Cerebellum",
+    "acceptableAlternatives": [
+      "Cerebellum (Servier illustration)",
+      "Cerebellar structure"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the brain structure shown in this Servier medical illustration.",
+    "explanation": "The cerebellum ('little brain') lies in the posterior fossa and connects to the brainstem via three cerebellar peduncles: superior (output to thalamus/red nucleus), middle (input from pons/cortex), and inferior (input/output from medulla/spinal cord). Its cortex has three layers: molecular, Purkinje cell (only output), and granular. Purkinje cells project inhibitory signals to deep cerebellar nuclei (dentate, interposed, fastigial). The cerebellum fine-tunes movement by comparing intended vs. actual motor output (comparator function). Medulloblastoma, a malignant tumor arising from cerebellar germinal matrix, is the most common brain tumor in children.",
+    "visualDescription": "Servier medical art illustration of the cerebellum showing its folia, vermis, and hemispheres from a posterior or lateral perspective",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Brainstem",
+      "Hippocampus",
+      "Cerebral cortex",
+      "Thalamus"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the cerebellum (Servier illustration)?",
+        "correctAnswer": "Cerebellum",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_407",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/servier/circle_of_willis.png",
+    "correctAnswer": "Circle of Willis",
+    "acceptableAlternatives": [
+      "Cerebral arterial circle (Servier)",
+      "Willis arterial ring"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the cerebrovascular anastomosis shown in this Servier illustration.",
+    "explanation": "The Circle of Willis ensures collateral cerebral blood supply by connecting the anterior and posterior circulations. The anterior circulation (internal carotid arteries → ACAs via ACoA) supplies the frontal, parietal, and medial temporal lobes. The posterior circulation (vertebral arteries → basilar artery → PCAs via PCoAs) supplies the occipital lobe, brainstem, and cerebellum. Anatomical variants are common — a complete circle is present in only ~20–25% of individuals. PCoA aneurysm is a classic cause of a painful CN III palsy (blown pupil) — an emergency requiring neurosurgical intervention.",
+    "visualDescription": "Servier medical art inferior view of the brain showing the Circle of Willis with arterial components labeled",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Dural venous sinuses",
+      "Vertebral artery only",
+      "Middle meningeal artery",
+      "Basilar artery plexus"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the Circle of Willis (Servier illustration)?",
+        "correctAnswer": "Circle of Willis",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_408",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/servier/csf.png",
+    "correctAnswer": "Cerebrospinal fluid (CSF) circulation",
+    "acceptableAlternatives": [
+      "CSF pathway",
+      "Ventricular system and CSF flow"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 3,
+    "funScore": 3,
+    "quizQuestion": "Identify the CNS fluid circulation system shown in this illustration.",
+    "explanation": "CSF (~150 mL total, produced at ~500 mL/day) is produced by choroid plexus in the lateral ventricles, flows through the interventricular foramina of Monro into the third ventricle, through the cerebral aqueduct (aqueduct of Sylvius) into the fourth ventricle, through the foramina of Luschka and Magendie into the subarachnoid space, and is reabsorbed by arachnoid granulations into the dural venous sinuses. CSF pressure is ~10–15 cmH2O. Communicating hydrocephalus results from impaired reabsorption; non-communicating (obstructive) from obstruction within the ventricular system (e.g., aqueductal stenosis).",
+    "visualDescription": "Servier medical art sagittal illustration showing the ventricular system and CSF flow pathway from production through reabsorption",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Blood-brain barrier anatomy",
+      "Dural venous sinuses only",
+      "Lymphatic drainage of the brain",
+      "Subarachnoid space only"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the CSF circulation pathway?",
+        "correctAnswer": "Cerebrospinal fluid (CSF) circulation",
+        "quizMode": "image_answers"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_409",
+    "subDeckId": "visual_anatomy",
+    "quizMode": "image_question",
+    "imageAssetPath": "/assets/anatomy/nervous_system/servier/sciatic_nerve.png",
+    "correctAnswer": "Sciatic nerve",
+    "acceptableAlternatives": [
+      "Sciatic nerve anatomy",
+      "Nervus ischiadicus"
+    ],
+    "chainThemeId": "visual_nervous",
+    "answerTypePoolId": "structure_names",
+    "difficulty": 2,
+    "funScore": 3,
+    "quizQuestion": "Identify the largest peripheral nerve shown in this illustration.",
+    "explanation": "The sciatic nerve (L4–S3) is the largest and longest peripheral nerve in the body (~2 cm wide at its origin). It exits the greater sciatic foramen below the piriformis muscle, descends through the posterior thigh, and divides at the popliteal fossa into the tibial nerve (innervates posterior leg and sole) and common fibular (peroneal) nerve (innervates anterior and lateral leg and dorsum of foot). Piriformis syndrome compresses the sciatic nerve, causing sciatica. The most common cause of true sciatica is lumbar disc herniation (most commonly L4/L5 or L5/S1 levels), compressing the nerve root.",
+    "visualDescription": "Servier medical art illustration of the sciatic nerve tracing from the pelvis through the posterior thigh to its bifurcation at the knee",
+    "sourceName": "Servier Medical Art",
+    "sourceUrl": "https://smart.servier.com/",
+    "volatile": false,
+    "distractors": [
+      "Femoral nerve",
+      "Obturator nerve",
+      "Common peroneal nerve",
+      "Tibial nerve"
+    ],
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizQuestion": "Which image shows the sciatic nerve?",
+        "correctAnswer": "Sciatic nerve",
+        "quizMode": "image_answers"
+      }
+    ]
+  }
+]

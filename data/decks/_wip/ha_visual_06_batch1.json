@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "ha_visual_303",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Lungs (gross anatomy)",
+    "distractors": [
+      "Heart (gross anatomy)",
+      "Liver (gross anatomy)",
+      "Kidney (gross anatomy)"
+    ],
+    "explanation": "Gross anatomy of the lungs showing lobes, fissures, and surface landmarks including the hilum where bronchi and vessels enter.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/respiratory_system/openstax/lungs_gross.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Lungs (gross anatomy)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_304",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Pleura (parietal and visceral layers)",
+    "distractors": [
+      "Pericardium layers",
+      "Peritoneum layers",
+      "Meninges layers"
+    ],
+    "explanation": "The pleura consists of two serous membrane layers: the visceral pleura adhering to the lung surface and the parietal pleura lining the thoracic wall, with the pleural cavity between them.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/respiratory_system/openstax/pleura.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Pleura (parietal and visceral layers)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_305",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Adrenal glands (suprarenal glands)",
+    "distractors": [
+      "Thyroid gland",
+      "Parathyroid glands",
+      "Pancreatic islets"
+    ],
+    "explanation": "The adrenal (suprarenal) glands sit atop each kidney and consist of an outer cortex (producing steroid hormones) and an inner medulla (producing catecholamines).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/endocrine_system/openstax/adrenal_glands.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Adrenal glands (suprarenal glands)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_306",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Thyroid gland (with parathyroid glands)",
+    "distractors": [
+      "Thymus gland",
+      "Parotid gland",
+      "Submandibular gland"
+    ],
+    "explanation": "The thyroid gland is a butterfly-shaped endocrine gland in the anterior neck with two lobes connected by an isthmus. The four parathyroid glands are embedded on its posterior surface.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/endocrine_system/openstax/thyroid.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Thyroid gland (with parathyroid glands)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_307",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Optic pathways (optic chiasm, optic tract)",
+    "distractors": [
+      "Auditory pathways (cochlear nuclei)",
+      "Olfactory pathways (olfactory bulb)",
+      "Trigeminal pathways (somatosensory)"
+    ],
+    "explanation": "The optic pathways carry visual information from the retina through the optic nerves, optic chiasm (where nasal fibers decussate), optic tracts, lateral geniculate nucleus, and optic radiations to the visual cortex.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/special_senses/servier/optic_pathways.png",
+    "sourceName": "Servier Medical Art",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Optic pathways (optic chiasm, optic tract)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_308",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Retina (layers and photoreceptors)",
+    "distractors": [
+      "Cornea (epithelium and stroma)",
+      "Lens (capsule and fibers)",
+      "Choroid (vascular layer)"
+    ],
+    "explanation": "The retina contains 10 layers including photoreceptors (rods and cones), bipolar cells, and ganglion cells whose axons form the optic nerve. The macula lutea contains the fovea centralis for highest visual acuity.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/special_senses/servier/retina.png",
+    "sourceName": "Servier Medical Art",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Retina (layers and photoreceptors)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_309",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Anterior neck muscles (infrahyoid and suprahyoid groups)",
+    "distractors": [
+      "Posterior neck muscles (suboccipital group)",
+      "Lateral neck muscles (scalene group)",
+      "Deep cervical muscles (longus colli)"
+    ],
+    "explanation": "The anterior neck muscles include the suprahyoid group (digastric, mylohyoid, geniohyoid, stylohyoid) and infrahyoid strap muscles (sternohyoid, sternothyroid, thyrohyoid, omohyoid) that move the hyoid bone and larynx.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/anterior_neck.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Anterior neck muscles (infrahyoid and suprahyoid groups)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_310",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Extraocular muscles (six muscles of the orbit)",
+    "distractors": [
+      "Intrinsic muscles of the larynx",
+      "Muscles of the soft palate",
+      "Muscles of the pharynx"
+    ],
+    "explanation": "The six extraocular muscles (superior/inferior/medial/lateral rectus and superior/inferior oblique) move the eyeball. The levator palpebrae superioris is often shown as a seventh muscle that elevates the upper eyelid.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/extraocular_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Extraocular muscles (six muscles of the orbit)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_311",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Facial muscles (muscles of facial expression)",
+    "distractors": [
+      "Muscles of mastication (temporalis, masseter)",
+      "Muscles of the scalp (epicranius)",
+      "Platysma and neck superficial muscles"
+    ],
+    "explanation": "The muscles of facial expression are derived from the second pharyngeal arch (CN VII) and include orbicularis oculi, orbicularis oris, zygomaticus major/minor, buccinator, frontalis, and many others that move skin rather than bone.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/facial_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Facial muscles (muscles of facial expression)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_312",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Intrinsic muscles of the foot (plantar layers)",
+    "distractors": [
+      "Intrinsic muscles of the hand (thenar eminence)",
+      "Extrinsic muscles acting on the foot (peroneal group)",
+      "Muscles of the dorsum of the foot (extensor digitorum brevis)"
+    ],
+    "explanation": "The intrinsic foot muscles are organized in four plantar layers. They include the flexor digitorum brevis, quadratus plantae, lumbricals, and interossei, which support the longitudinal arch and assist toe movements.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/foot_intrinsic.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Intrinsic muscles of the foot (plantar layers)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_313",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Forearm muscles (flexor and extensor compartments)",
+    "distractors": [
+      "Arm muscles (biceps brachii, brachialis, triceps)",
+      "Thigh muscles (anterior and posterior compartments)",
+      "Leg muscles (tibialis anterior, gastrocnemius)"
+    ],
+    "explanation": "The forearm contains an anterior (flexor/pronator) compartment and a posterior (extensor/supinator) compartment, separated by the interosseous membrane. Key muscles include flexor carpi radialis, pronator teres, extensor carpi radialis, and supinator.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/forearm_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Forearm muscles (flexor and extensor compartments)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_314",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Gluteal muscles (gluteus maximus, medius, minimus)",
+    "distractors": [
+      "Hamstring muscles (biceps femoris, semitendinosus, semimembranosus)",
+      "Deep hip rotator muscles (piriformis, obturators)",
+      "Quadriceps femoris (rectus femoris, vasti)"
+    ],
+    "explanation": "The gluteal muscles form the buttock. Gluteus maximus is the largest and strongest hip extensor. Gluteus medius and minimus are hip abductors and medial rotators. The deep lateral rotators (piriformis, obturator internus/externus, gemelli, quadratus femoris) lie deep to gluteus maximus.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/gluteal_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Gluteal muscles (gluteus maximus, medius, minimus)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_315",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Intrinsic muscles of the hand (thenar, hypothenar, lumbricals, interossei)",
+    "distractors": [
+      "Intrinsic muscles of the foot (plantar layers)",
+      "Extrinsic flexors of the digits (flexor digitorum superficialis)",
+      "Extrinsic extensors of the digits (extensor digitorum)"
+    ],
+    "explanation": "The intrinsic hand muscles include the thenar group (abductor/flexor/opponens pollicis, adductor pollicis), hypothenar group (abductor/flexor/opponens digiti minimi), four lumbricals, and seven interossei (3 palmar, 4 dorsal).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/hand_intrinsic.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Intrinsic muscles of the hand (thenar, hypothenar, lumbricals, interossei)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_316",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Jaw muscles (muscles of mastication)",
+    "distractors": [
+      "Muscles of facial expression (orbicularis oris)",
+      "Suprahyoid muscles (mylohyoid, digastric)",
+      "Infrahyoid strap muscles (omohyoid, sternothyroid)"
+    ],
+    "explanation": "The four muscles of mastication are the masseter, temporalis, medial pterygoid, and lateral pterygoid, all innervated by the mandibular branch of the trigeminal nerve (CN V3). They close the jaw (elevation), protrude, retract, and grind.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/jaw_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Jaw muscles (muscles of mastication)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_317",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Leg muscles (anterior, posterior, and lateral compartments)",
+    "distractors": [
+      "Thigh muscles (quadriceps, hamstrings, adductors)",
+      "Forearm muscles (flexor and extensor compartments)",
+      "Foot intrinsic muscles (plantar layers)"
+    ],
+    "explanation": "The leg has three compartments: anterior (tibialis anterior, extensor digitorum longus, extensor hallucis longus — dorsiflexion), posterior (gastrocnemius, soleus, tibialis posterior — plantarflexion), and lateral (fibularis longus and brevis — eversion).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/leg_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Leg muscles (anterior, posterior, and lateral compartments)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_318",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Motor end plate (neuromuscular junction)",
+    "distractors": [
+      "Synapse (axodendritic chemical synapse)",
+      "Gap junction (electrical synapse between cardiac cells)",
+      "Myotendinous junction (muscle-tendon interface)"
+    ],
+    "explanation": "The motor end plate is the specialized region of the muscle fiber membrane (sarcolemma) where the motor neuron terminal synapses. Acetylcholine released from synaptic vesicles binds nicotinic receptors, triggering an end-plate potential and muscle contraction.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/motor_end_plate.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Motor end plate (neuromuscular junction)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_319",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Muscle fiber structure (myofibrils, T-tubules, sarcoplasmic reticulum)",
+    "distractors": [
+      "Sarcomere organization (Z-lines, A-band, I-band)",
+      "Neuromuscular junction (motor end plate)",
+      "Muscle connective tissue layers (epimysium, perimysium, endomysium)"
+    ],
+    "explanation": "A skeletal muscle fiber contains parallel myofibrils surrounded by the sarcoplasmic reticulum (SR), a specialized ER that stores and releases Ca²⁺. T-tubules (transverse tubules) invaginate the sarcolemma and contact the SR at triads to transmit the action potential deep into the fiber.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/muscle_fiber_structure.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Muscle fiber structure (myofibrils, T-tubules, sarcoplasmic reticulum)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_320",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Neck and back muscles (erector spinae and deep posterior group)",
+    "distractors": [
+      "Anterior neck muscles (infrahyoid strap muscles)",
+      "Posterior abdominal muscles (quadratus lumborum)",
+      "Lateral thoracic muscles (serratus anterior)"
+    ],
+    "explanation": "The posterior neck and back muscles include the superficial erector spinae column (iliocostalis, longissimus, spinalis), the transversospinalis group (semispinalis, multifidus, rotatores), and the suboccipital muscles. They extend and stabilize the vertebral column.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/neck_back_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Neck and back muscles (erector spinae and deep posterior group)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_321",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Pectoral girdle muscles (pectoralis major/minor, serratus anterior, trapezius)",
+    "distractors": [
+      "Rotator cuff muscles (supraspinatus, infraspinatus, teres minor, subscapularis)",
+      "Muscles of the arm (biceps brachii, coracobrachialis, brachialis)",
+      "Muscles of the back (latissimus dorsi, rhomboids, levator scapulae)"
+    ],
+    "explanation": "Muscles acting on the pectoral girdle stabilize and move the scapula and clavicle. Key muscles include pectoralis minor (protracts/depresses scapula), serratus anterior (protracts/rotates scapula upward), and trapezius (elevates, retracts, and rotates scapula).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/pectoral_girdle_muscles.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Pectoral girdle muscles (pectoralis major/minor, serratus anterior, trapezius)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_322",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Posterior neck muscles (suboccipital triangle and semispinalis group)",
+    "distractors": [
+      "Anterior neck muscles (sternocleidomastoid, scalenes)",
+      "Erector spinae group (thoracic and lumbar regions)",
+      "Deep cervical flexors (longus colli, longus capitis)"
+    ],
+    "explanation": "The posterior neck muscles include the suboccipital muscles (rectus capitis posterior major/minor, obliquus capitis superior/inferior) forming the suboccipital triangle, and the semispinalis capitis/cervicis group. They extend, rotate, and tilt the head.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/posterior_neck.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Posterior neck muscles (suboccipital triangle and semispinalis group)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_323",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Sarcomere (Z-line, A-band, I-band, H-zone)",
+    "distractors": [
+      "Muscle fiber structure (T-tubules, sarcoplasmic reticulum)",
+      "Motor end plate (neuromuscular junction)",
+      "Tendon structure (collagen fibers, tenocytes)"
+    ],
+    "explanation": "The sarcomere is the functional unit of skeletal muscle, bounded by Z-lines. The A-band (dark) contains thick myosin filaments and overlapping actin. The I-band (light) contains only thin actin filaments. The H-zone in the center of the A-band contains only myosin; the M-line bisects it.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/muscular_system/openstax/sarcomere.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Sarcomere (Z-line, A-band, I-band, H-zone)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_324",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Appendicular skeleton (bones of upper and lower limbs plus girdles)",
+    "distractors": [
+      "Axial skeleton (skull, vertebral column, thoracic cage)",
+      "Pectoral girdle alone (clavicle and scapula)",
+      "Pelvic girdle alone (hip bones)"
+    ],
+    "explanation": "The appendicular skeleton comprises 126 bones: the pectoral girdles (clavicles and scapulae), upper limbs (humeri, radii, ulnae, carpals, metacarpals, phalanges), pelvic girdle (hip bones), and lower limbs (femora, patellae, tibiae, fibulae, tarsals, metatarsals, phalanges).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/appendicular_skeleton.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Appendicular skeleton (bones of upper and lower limbs plus girdles)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_325",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Bone blood supply (nutrient artery, periosteal vessels, metaphyseal vessels)",
+    "distractors": [
+      "Bone marrow (red versus yellow marrow distribution)",
+      "Bone remodeling (osteoclast resorption pit)",
+      "Endochondral ossification (primary ossification center)"
+    ],
+    "explanation": "Long bone blood supply arrives via a nutrient artery entering the diaphysis through the nutrient foramen, periosteal arteries supplying the cortex, and metaphyseal/epiphyseal vessels. Venous drainage parallels arterial supply. Disruption can cause avascular necrosis.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/bone_blood_supply.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Bone blood supply (nutrient artery, periosteal vessels, metaphyseal vessels)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_326",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Bone cells (osteoblast, osteocyte, osteoclast, osteogenic cell)",
+    "distractors": [
+      "Cartilage cells (chondroblast, chondrocyte, perichondrium)",
+      "Blood cells (erythrocyte, leukocyte, thrombocyte)",
+      "Connective tissue cells (fibroblast, macrophage, mast cell)"
+    ],
+    "explanation": "Four main bone cell types: osteogenic cells (stem cells in periosteum/endosteum), osteoblasts (secrete osteoid matrix, become trapped as osteocytes), osteocytes (mature cells in lacunae maintaining matrix), and osteoclasts (multinucleated macrophage derivatives that resorb bone via acidification).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/bone_cells.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Bone cells (osteoblast, osteocyte, osteoclast, osteogenic cell)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_327",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Bone surface markings (processes, fossae, foramina, facets)",
+    "distractors": [
+      "Bone gross anatomy (diaphysis, epiphysis, metaphysis)",
+      "Bone histology (osteon, lamellae, canaliculi)",
+      "Bone development (intramembranous ossification)"
+    ],
+    "explanation": "Bone markings are surface features that indicate sites of muscle attachment, joint articulation, or neurovascular passage. Projections include processes, trochanters, tuberosities, and tubercles. Depressions include fossae, grooves, and sulci. Openings include foramina and canals.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/bone_markings.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Bone surface markings (processes, fossae, foramina, facets)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_328",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Carpal tunnel (transverse carpal ligament and contents)",
+    "distractors": [
+      "Cubital tunnel (ulnar nerve at medial epicondyle)",
+      "Tarsal tunnel (flexor retinaculum of ankle)",
+      "Guyon's canal (ulnar nerve at wrist)"
+    ],
+    "explanation": "The carpal tunnel is an osseofibrous passage at the wrist formed by the carpal bones posteriorly and the transverse carpal ligament (flexor retinaculum) anteriorly. It transmits the median nerve and nine flexor tendons (flexor digitorum superficialis ×4, profundus ×4, flexor pollicis longus).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/carpal_tunnel.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Carpal tunnel (transverse carpal ligament and contents)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_329",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Cervical vertebrae (atlas, axis, and typical C3–C7)",
+    "distractors": [
+      "Thoracic vertebrae (costal facets, long spinous process)",
+      "Lumbar vertebrae (large body, no costal facets)",
+      "Sacrum and coccyx (fused vertebral segments)"
+    ],
+    "explanation": "The seven cervical vertebrae are distinguished by bifid spinous processes (C2–C6) and transverse foramina for the vertebral arteries. C1 (atlas) has no body or spinous process; C2 (axis) has the dens (odontoid process); C7 (vertebra prominens) has the longest non-bifid spinous process.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/cervical_vertebrae.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Cervical vertebrae (atlas, axis, and typical C3–C7)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_330",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Compact bone (osteon/Haversian system structure)",
+    "distractors": [
+      "Spongy (cancellous) bone (trabeculae and red marrow)",
+      "Cartilage histology (hyaline cartilage, lacunae, matrix)",
+      "Periosteum and endosteum layers"
+    ],
+    "explanation": "Compact bone is organized into cylindrical osteons (Haversian systems). Each osteon consists of concentric lamellae surrounding a central Haversian canal carrying blood vessels. Osteocytes in lacunae communicate via canaliculi. Perforating (Volkmann's) canals run perpendicular, connecting Haversian canals.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/compact_bone_osteon.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Compact bone (osteon/Haversian system structure)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_331",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Femur and patella (anterior and posterior surfaces)",
+    "distractors": [
+      "Tibia and fibula (proximal and distal ends)",
+      "Humerus (greater/lesser tubercles, capitulum, trochlea)",
+      "Hip bone (ilium, ischium, pubis landmarks)"
+    ],
+    "explanation": "The femur is the longest bone in the body. Proximal landmarks include the head, neck, greater and lesser trochanters, and intertrochanteric line/crest. Distal landmarks include the medial and lateral condyles and epicondyles. The patella is a sesamoid bone in the quadriceps tendon.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/femur_patella.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Femur and patella (anterior and posterior surfaces)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_332",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Flat bone structure (inner/outer compact tables with diplöe)",
+    "distractors": [
+      "Long bone cross-section (compact cortex with medullary cavity)",
+      "Short bone (spongy core with thin compact shell)",
+      "Sesamoid bone (embedded in tendon, small and round)"
+    ],
+    "explanation": "Flat bones (skull, sternum, ribs, scapula) consist of two layers of compact bone (outer and inner tables) sandwiching a layer of spongy bone (diploë). The diploë contains red bone marrow. The inner table of the calvaria is thinner and more brittle.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/flat_bone.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Flat bone structure (inner/outer compact tables with diplöe)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_333",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Foot bones (tarsals, metatarsals, and phalanges)",
+    "distractors": [
+      "Hand and wrist bones (carpals, metacarpals, and phalanges)",
+      "Ankle joint (distal tibia, fibula, and talus)",
+      "Leg bones (tibia and fibula with interosseous membrane)"
+    ],
+    "explanation": "The foot contains 26 bones: 7 tarsals (calcaneus, talus, navicular, cuboid, 3 cuneiforms), 5 metatarsals, and 14 phalanges (2 in the hallux, 3 in each lesser toe). The calcaneus is the largest tarsal bone.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/foot_bones.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Foot bones (tarsals, metatarsals, and phalanges)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_334",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Hand and wrist bones (carpals, metacarpals, and phalanges)",
+    "distractors": [
+      "Foot bones (tarsals, metatarsals, and phalanges)",
+      "Distal forearm (distal radius, ulna, and radiocarpal joint)",
+      "Wrist ligaments (scapholunate and lunotriquetral ligaments)"
+    ],
+    "explanation": "The hand contains 27 bones: 8 carpals in two rows (proximal: scaphoid, lunate, triquetrum, pisiform; distal: trapezium, trapezoid, capitate, hamate), 5 metacarpals, and 14 phalanges (2 in the thumb, 3 in each finger).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/hand_wrist.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Hand and wrist bones (carpals, metacarpals, and phalanges)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_335",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Hip bone (ilium, ischium, pubis, and acetabulum)",
+    "distractors": [
+      "Sacrum and coccyx (posterior pelvis)",
+      "Femur proximal end (femoral head and neck)",
+      "Pelvis overview (full pelvic girdle with sacrum)"
+    ],
+    "explanation": "The hip (coxal) bone is formed by fusion of three bones at the acetabulum: the ilium (superior, forms the iliac crest and greater sciatic notch), ischium (posteroinferior, forms the ischial tuberosity and spine), and pubis (anterior, forms the pubic symphysis).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/hip_bone.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Hip bone (ilium, ischium, pubis, and acetabulum)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_336",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Humerus and elbow joint (epicondyles, condyles, olecranon fossa)",
+    "distractors": [
+      "Femur and knee joint (condyles, intercondylar notch)",
+      "Radius and ulna (proximal ends, radial head, coronoid process)",
+      "Shoulder joint (glenohumeral joint, glenoid fossa)"
+    ],
+    "explanation": "The humerus articulates at the elbow with the radius (capitulum) and ulna (trochlea). Key landmarks include the medial and lateral epicondyles, olecranon fossa (posterior), coronoid fossa (anterior), radial groove (spiral groove for radial nerve), and deltoid tuberosity.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/humerus_elbow.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Humerus and elbow joint (epicondyles, condyles, olecranon fossa)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_337",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Intervertebral disc (nucleus pulposus and annulus fibrosus)",
+    "distractors": [
+      "Costovertebral joint (rib articulation with thoracic vertebra)",
+      "Zygapophyseal (facet) joint (between articular processes)",
+      "Pubic symphysis (fibrocartilaginous secondary cartilaginous joint)"
+    ],
+    "explanation": "The intervertebral disc is a fibrocartilaginous secondary cartilaginous joint. The central nucleus pulposus (gelatinous, high water content) absorbs compressive loads. The annulus fibrosus (concentric fibrocartilage lamellae) resists tension. Herniation occurs when the nucleus pulposus protrudes through a tear in the annulus.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/intervertebral_disc.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Intervertebral disc (nucleus pulposus and annulus fibrosus)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_338",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Long bone anatomy (diaphysis, epiphysis, metaphysis, medullary cavity)",
+    "distractors": [
+      "Flat bone structure (inner/outer compact tables with diplöe)",
+      "Short bone anatomy (e.g., carpal bone cross-section)",
+      "Irregular bone (vertebra body and arches)"
+    ],
+    "explanation": "A long bone consists of the diaphysis (shaft of compact bone enclosing the medullary cavity), two epiphyses (articular ends of spongy bone covered by hyaline cartilage), the metaphysis (flared zone between diaphysis and epiphysis containing the growth plate in children), periosteum (outer fibrous layer), and endosteum (inner lining of medullary cavity).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/long_bone_anatomy.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Long bone anatomy (diaphysis, epiphysis, metaphysis, medullary cavity)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_339",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Lumbar vertebra (large body, transverse and spinous processes, no costal facets)",
+    "distractors": [
+      "Thoracic vertebra (costal facets on body and transverse process)",
+      "Cervical vertebra (bifid spinous process, transverse foramen)",
+      "Sacral vertebra (fused sacral segments)"
+    ],
+    "explanation": "Lumbar vertebrae (L1–L5) are the largest moveable vertebrae and bear the most body weight. They are distinguished by their kidney-shaped bodies, short stout spinous processes projecting horizontally, absence of costal facets, and lack of transverse foramina. Mammillary processes are unique to lumbar vertebrae.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/lumbar_vertebra.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Lumbar vertebra (large body, transverse and spinous processes, no costal facets)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_340",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Male and female pelvis comparison (anatomical differences)",
+    "distractors": [
+      "Pediatric versus adult pelvis (ossification and proportions)",
+      "Osteoporotic pelvis (trabecular loss and fracture risk)",
+      "Pelvic inlet measurements (obstetric conjugates)"
+    ],
+    "explanation": "The female pelvis is adapted for childbirth: wider pelvic inlet (oval vs. heart-shaped), larger subpubic angle (>80° vs. <70°), more circular pubic arch, wider greater sciatic notch, and a more shallow overall structure. The male pelvis is narrower and deeper with a more prominent sacral promontory.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/male_female_pelvis.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Male and female pelvis comparison (anatomical differences)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_341",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Pectoral girdle (clavicle and scapula)",
+    "distractors": [
+      "Pelvic girdle (hip bones and sacrum)",
+      "Shoulder joint (glenohumeral articulation)",
+      "Acromioclavicular joint (lateral clavicle and acromion)"
+    ],
+    "explanation": "The pectoral girdle consists of two bones on each side: the clavicle (S-shaped, connecting sternum to scapula via the sternoclavicular and acromioclavicular joints) and the scapula (triangular flat bone with glenoid cavity, spine, acromion, coracoid process, and three angles).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/pectoral_girdle.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Pectoral girdle (clavicle and scapula)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_342",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Pelvis overview (pelvic inlet, outlet, and bony landmarks)",
+    "distractors": [
+      "Hip bone (individual os coxae with ilium, ischium, pubis)",
+      "Male and female pelvis comparison",
+      "Sacrum and coccyx (posterior pelvic wall)"
+    ],
+    "explanation": "The pelvis is formed by two hip bones, the sacrum, and the coccyx. The pelvic brim (arcuate line, iliopectineal line, sacral promontory) divides the greater (false) pelvis above from the lesser (true) pelvis below. Key landmarks include the ischial spines, used to gauge fetal descent during labor.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/pelvis.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Pelvis overview (pelvic inlet, outlet, and bony landmarks)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_343",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Periosteum and endosteum (outer and inner bone membrane layers)",
+    "distractors": [
+      "Compact bone osteon (Haversian system with lamellae)",
+      "Bone blood supply (nutrient artery, periosteal arterioles)",
+      "Articular cartilage (hyaline cartilage at joint surface)"
+    ],
+    "explanation": "The periosteum is a fibrous connective tissue sheath covering the outer bone surface (except articular surfaces). It has an outer fibrous layer and an inner osteogenic layer with osteoprogenitor cells. The endosteum lines internal bony surfaces (medullary cavity, Haversian canals) and also contains osteoprogenitor cells.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/periosteum_endosteum.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Periosteum and endosteum (outer and inner bone membrane layers)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_344",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Rib cage (thoracic cage with sternum, ribs, and costal cartilages)",
+    "distractors": [
+      "Thoracic vertebrae column (T1–T12 articulations)",
+      "Pectoral girdle (clavicle and scapula)",
+      "Mediastinum overview (contents between lungs)"
+    ],
+    "explanation": "The thoracic cage consists of 12 pairs of ribs, 12 thoracic vertebrae, and the sternum (manubrium, body, xiphoid process). Ribs 1–7 are true ribs (attach directly to sternum via costal cartilage); ribs 8–10 are false ribs (join costal cartilage of rib 7); ribs 11–12 are floating ribs with no anterior attachment.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/rib_cage.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Rib cage (thoracic cage with sternum, ribs, and costal cartilages)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_345",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Sacrum and coccyx (fused vertebral segments with foramina)",
+    "distractors": [
+      "Lumbar vertebrae (L4–L5 with spinous processes)",
+      "Pelvis overview (full pelvic ring including hip bones)",
+      "Coccygeal plexus (nerve supply to pelvic floor)"
+    ],
+    "explanation": "The sacrum is formed by fusion of 5 sacral vertebrae. It has an anterior (pelvic) surface with anterior sacral foramina for ventral rami, and a posterior surface with dorsal sacral foramina for dorsal rami. The sacral promontory (S1 superior edge) is the most prominent point of the pelvic brim. The coccyx consists of 3–5 fused rudimentary vertebrae.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/sacrum_coccyx.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Sacrum and coccyx (fused vertebral segments with foramina)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_346",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Scapula (spine, acromion, coracoid process, glenoid cavity)",
+    "distractors": [
+      "Clavicle (sternal and acromial ends)",
+      "Sternum (manubrium, body, xiphoid process)",
+      "Hip bone (ilium, ischium, pubis landmarks)"
+    ],
+    "explanation": "The scapula is a triangular flat bone with three angles (superior, inferior, lateral), three borders (superior, medial/vertebral, lateral/axillary), and key processes: the spine (dividing supraspinous and infraspinous fossae), the acromion (roof of shoulder), and the coracoid process (attachment for pectoralis minor, short head of biceps, coracobrachialis).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/scapula.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Scapula (spine, acromion, coracoid process, glenoid cavity)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_347",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Spongy (cancellous) bone (trabeculae and red bone marrow)",
+    "distractors": [
+      "Compact bone (osteon/Haversian system)",
+      "Flat bone structure (diplöe sandwiched between compact tables)",
+      "Cartilage histology (chondrocytes in lacunae)"
+    ],
+    "explanation": "Spongy (cancellous) bone consists of an interconnecting lattice of bony trabeculae (plates and rods of bone tissue) with spaces filled by red bone marrow in actively hematopoietic sites. The trabeculae align along lines of mechanical stress, providing strength with minimal mass. It is found in epiphyses and diplöe.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/spongy_bone.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Spongy (cancellous) bone (trabeculae and red bone marrow)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_348",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Synovial joint structure (articular cartilage, synovial membrane, joint capsule)",
+    "distractors": [
+      "Fibrous joint (suture or gomphosis — no cavity)",
+      "Primary cartilaginous joint (synchondrosis — e.g., epiphyseal plate)",
+      "Secondary cartilaginous joint (symphysis — e.g., pubic symphysis)"
+    ],
+    "explanation": "A synovial (diarthrosis) joint is characterized by a joint cavity filled with synovial fluid, articular cartilage (hyaline) covering the bone ends, a fibrous joint capsule lined by synovial membrane, and accessory structures (ligaments, menisci, bursae). It allows the greatest range of motion.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/synovial_joint.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Synovial joint structure (articular cartilage, synovial membrane, joint capsule)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_349",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Synovial joint types (ball-and-socket, hinge, pivot, condyloid, saddle, plane)",
+    "distractors": [
+      "Fibrous joint types (suture, gomphosis, syndesmosis)",
+      "Cartilaginous joint types (synchondrosis, symphysis)",
+      "Tendon sheath types (synovial sheaths around tendons)"
+    ],
+    "explanation": "The six types of synovial joints are classified by the shape of their articular surfaces and the movements they permit: plane (gliding), hinge (uniaxial flexion/extension), pivot (uniaxial rotation), condyloid (biaxial: flexion/extension + abduction/adduction), saddle (biaxial + opposition), and ball-and-socket (multiaxial).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/synovial_joint_types.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Synovial joint types (ball-and-socket, hinge, pivot, condyloid, saddle, plane)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_350",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Thoracic vertebra (costal facets on body and transverse process)",
+    "distractors": [
+      "Lumbar vertebra (large body, no costal facets, no transverse foramen)",
+      "Cervical vertebra (transverse foramen, bifid spinous process)",
+      "Sacrum (fused vertebrae with anterior foramina)"
+    ],
+    "explanation": "Thoracic vertebrae (T1–T12) are distinguished by costal facets (demifacets on the body for articulation with rib heads) and costal facets on the transverse processes (for rib tubercle articulation, T1–T10). Their spinous processes are long and angled sharply inferiorly. The vertebral foramen is roughly circular and smaller than cervical vertebrae.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/thoracic_vertebra.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Thoracic vertebra (costal facets on body and transverse process)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_351",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Tibia and fibula (medial and lateral leg bones with landmarks)",
+    "distractors": [
+      "Radius and ulna (forearm bones with landmarks)",
+      "Femur (thigh bone with condyles and trochanters)",
+      "Humerus (arm bone with epicondyles and tuberosities)"
+    ],
+    "explanation": "The tibia (medial leg bone) is the weight-bearing bone with the tibial plateau (medial/lateral condyles), tibial tuberosity (patellar tendon attachment), medial malleolus (ankle mortise), and anterior border (shin). The fibula (lateral leg bone) is slender and non-weight-bearing, with the fibular head (peroneal nerve at risk) and lateral malleolus.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/tibia_fibula.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Tibia and fibula (medial and lateral leg bones with landmarks)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_352",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Ulna and radius (forearm bones with interosseous membrane)",
+    "distractors": [
+      "Tibia and fibula (leg bones with interosseous membrane)",
+      "Humerus and elbow joint (distal humerus with condyles)",
+      "Wrist and hand bones (carpals, metacarpals, phalanges)"
+    ],
+    "explanation": "The ulna (medial forearm bone) has the olecranon process (forms the elbow point), coronoid process, trochlear notch, and styloid process. The radius (lateral forearm bone) has the radial head (articulates with capitulum), radial tuberosity (biceps tendon), and a broader distal end. The interosseous membrane connects them and transmits forces.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/ulna_radius.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Ulna and radius (forearm bones with interosseous membrane)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_353",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Typical vertebra (body, arch, pedicles, laminae, processes)",
+    "distractors": [
+      "Intervertebral disc (nucleus pulposus and annulus fibrosus)",
+      "Vertebral ligaments (anterior longitudinal, posterior longitudinal, ligamentum flavum)",
+      "Spinal cord cross-section (gray and white matter horns)"
+    ],
+    "explanation": "A typical vertebra consists of a body (weight-bearing), a vertebral arch (formed by two pedicles and two laminae), and seven processes: one spinous process (posterior), two transverse processes (lateral), and four articular processes (two superior, two inferior) forming zygapophyseal (facet) joints.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/vertebra_typical.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Typical vertebra (body, arch, pedicles, laminae, processes)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_354",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Vertebral column (cervical, thoracic, lumbar, sacral, and coccygeal regions with curvatures)",
+    "distractors": [
+      "Spinal cord (with nerve roots and meninges)",
+      "Axial skeleton overview (skull, vertebral column, thoracic cage combined)",
+      "Intervertebral foramina (lateral view with nerve root exit)"
+    ],
+    "explanation": "The adult vertebral column has 33 vertebrae (7 cervical, 12 thoracic, 5 lumbar, 5 fused sacral, 4 fused coccygeal) and four curvatures: cervical lordosis, thoracic kyphosis, lumbar lordosis (secondary curvatures that develop postnatally), and sacral kyphosis (primary curvature present at birth).",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/openstax/vertebral_column.jpg",
+    "sourceName": "OpenStax Anatomy & Physiology 2e",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Vertebral column (cervical, thoracic, lumbar, sacral, and coccygeal regions with curvatures)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_355",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Osteoclast (multinucleated bone-resorbing cell with ruffled border)",
+    "distractors": [
+      "Osteoblast (bone-forming cell secreting osteoid)",
+      "Osteocyte (mature bone cell in lacuna with canaliculi)",
+      "Macrophage (tissue monocyte with phagocytic function)"
+    ],
+    "explanation": "Osteoclasts are large multinucleated cells (up to 50 nuclei) derived from monocyte/macrophage precursors. They resorb bone by creating a sealed acidic microenvironment via the ruffled border (extensive membrane infolding), secreting H⁺ (via V-ATPase) and cathepsin K to dissolve mineral and matrix. Bisphosphonates inhibit osteoclast function.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/servier/osteoclast.png",
+    "sourceName": "Servier Medical Art",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Osteoclast (multinucleated bone-resorbing cell with ruffled border)?"
+      }
+    ]
+  },
+  {
+    "id": "ha_visual_356",
+    "subDeckId": "visual_anatomy",
+    "question": "Identify this anatomical image.",
+    "correctAnswer": "Osteocyte (mature bone cell within lacuna, connected via canaliculi)",
+    "distractors": [
+      "Osteoclast (multinucleated bone-resorbing cell)",
+      "Osteoblast (cuboidal bone-forming cell on osteoid surface)",
+      "Chondrocyte (cartilage cell within lacuna, no canaliculi)"
+    ],
+    "explanation": "Osteocytes are former osteoblasts that have become embedded in the mineralized bone matrix within lacunae. They extend long cytoplasmic processes through canaliculi that form gap junctions with neighboring osteocytes, creating a syncytial network for mechanosensing, Ca²⁺ signaling, and communication with surface osteoblasts and osteoclasts.",
+    "quizMode": "image_question",
+    "imageUrl": "/assets/anatomy/skeletal_system/servier/osteocyte.png",
+    "sourceName": "Servier Medical Art",
+    "examTags": ["USMLE_Step1", "image_identification"],
+    "variants": [
+      {
+        "quizMode": "image_answers",
+        "question": "Which image shows the Osteocyte (mature bone cell within lacuna, connected via canaliculi)?"
+      }
+    ]
+  }
+]
