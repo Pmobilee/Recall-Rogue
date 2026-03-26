@@ -1,7 +1,7 @@
 ---
 name: inspect
 description: |
-  MASTER TEST ORCHESTRATOR — the ONLY way to verify game elements. Fires ALL applicable testing methods in parallel (unit tests, headless sim, LLM strategic analysis, Rogue Brain neural agent, visual inspection, UX review), combines cross-method insights, and auto-updates the inspection registry. This is the GROUND TRUTH for whether something works. If it hasn't been through /inspect, it is UNVERIFIED. No exceptions. ALWAYS suggest this skill when ANY testing, verification, or quality question arises.
+  MASTER TEST ORCHESTRATOR — the ONLY way to verify game elements. Fires ALL applicable testing methods in parallel (unit tests, headless sim, LLM strategic analysis, Rogue Brain neural agent, visual inspection, UX review, LLM live playtest), combines cross-method insights, and auto-updates the inspection registry. This is the GROUND TRUTH for whether something works. If it hasn't been through /inspect, it is UNVERIFIED. No exceptions. ALWAYS suggest this skill when ANY testing, verification, or quality question arises.
 user_invocable: true
 ---
 
@@ -44,7 +44,7 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 
 ---
 
-## The Six Testing Methods
+## The Seven Testing Methods
 
 ### 1. Unit Tests (vitest)
 **What it catches:** Logic errors, wrong calculations, broken imports, regression from refactors
@@ -82,26 +82,32 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 **Speed:** ~30 seconds per screen
 **Blind spots:** Cannot test game logic or balance. Screenshot-based — may miss animation-only issues.
 
+### 7. LLM Live Playtest (/llm-playtest)
+**What it catches:** Quiz content quality issues (bad distractors, wrong answers, truncated questions), live balance curve problems (floor-by-floor HP/gold/damage progression), subjective fun/engagement issues (dead draws, forced choices, pacing), study mode flow bugs
+**How:** Spawns Sonnet sub-agents that actually PLAY the game through Playwright + `__terraPlay` API, recording objective data and subjective assessments
+**Speed:** ~15 minutes for full batch (4 testers sequential)
+**Blind spots:** Cannot test at statistical scale (use headless sim for that). Cannot test visual rendering (use /visual-inspect). Cannot do deep per-state strategic analysis (use /strategy-analysis).
+
 ---
 
 ## Test Method Matrix — Which Methods Apply to What
 
 This is the ground truth for what gets tested and how. If a cell says YES, that method MUST run for that element type. No skipping.
 
-| Element Type | Unit Tests | Headless Sim | LLM Strategic | Rogue Brain | Visual Inspect | UX Review |
-|---|---|---|---|---|---|---|
-| **Cards** | YES — per-card effect logic | YES — win rate contribution | YES — strategic value | YES — play frequency | YES — art, text, frame | YES — readability, touch |
-| **Relics** | YES — trigger logic | YES — relic audit | YES — relic value reasoning | YES — relic acquisition | YES — icon, tooltip | NO |
-| **Enemies** | YES — intent/behavior | YES — encounter stats | YES — threat assessment | YES — fight patterns | YES — sprite, HP bar | NO |
-| **Screens** | NO | NO | NO | NO | YES — layout, errors | YES — full UX audit |
-| **Systems** (AP, combo, chain) | YES — core logic | YES — system impact | NO | YES — system exploitation | YES — display | YES — usability |
-| **Mystery Events** | YES — outcome logic | NO | NO | NO | YES — UI | YES — choice clarity |
-| **Status Effects** | YES — application/tick | YES — effect impact | YES — strategic use | YES — effect exploitation | YES — icon display | NO |
-| **Rooms** | YES — generation logic | YES — room distribution | NO | YES — room choice patterns | YES — UI | YES — navigation |
-| **Quiz Systems** | YES — SM-2, validation | NO | NO | NO | YES — quiz UI | YES — answer layout |
-| **Domains** | YES — fact coverage | NO | NO | NO | NO | NO |
-| **Chain Types** | YES — chain mechanics | YES — chain impact | YES — chain strategy | YES — chain patterns | YES — chain display | NO |
-| **Reward Types** | YES — reward logic | YES — reward impact | NO | NO | YES — reward UI | YES — selection UX |
+| Element Type | Unit Tests | Headless Sim | LLM Strategic | Rogue Brain | Visual Inspect | UX Review | LLM Playtest |
+|---|---|---|---|---|---|---|---|
+| **Cards** | YES — per-card effect logic | YES — win rate contribution | YES — strategic value | YES — play frequency | YES — art, text, frame | YES — readability, touch | YES — fun/engagement |
+| **Relics** | YES — trigger logic | YES — relic audit | YES — relic value reasoning | YES — relic acquisition | YES — icon, tooltip | NO | NO |
+| **Enemies** | YES — intent/behavior | YES — encounter stats | YES — threat assessment | YES — fight patterns | YES — sprite, HP bar | NO | YES — balance curve |
+| **Screens** | NO | NO | NO | NO | YES — layout, errors | YES — full UX audit | YES — study temple |
+| **Systems** (AP, combo, chain) | YES — core logic | YES — system impact | NO | YES — system exploitation | YES — display | YES — usability | YES — live balance |
+| **Mystery Events** | YES — outcome logic | NO | NO | NO | YES — UI | YES — choice clarity | NO |
+| **Status Effects** | YES — application/tick | YES — effect impact | YES — strategic use | YES — effect exploitation | YES — icon display | NO | NO |
+| **Rooms** | YES — generation logic | YES — room distribution | NO | YES — room choice patterns | YES — UI | YES — navigation | YES — balance curve |
+| **Quiz Systems** | YES — SM-2, validation | NO | NO | NO | YES — quiz UI | YES — answer layout | YES — quiz quality |
+| **Domains** | YES — fact coverage | NO | NO | NO | NO | NO | YES — quiz quality |
+| **Chain Types** | YES — chain mechanics | YES — chain impact | YES — chain strategy | YES — chain patterns | YES — chain display | NO | NO |
+| **Reward Types** | YES — reward logic | YES — reward impact | NO | NO | YES — reward UI | YES — selection UX | YES — balance curve |
 
 ---
 
@@ -114,7 +120,7 @@ This is the ground truth for what gets tested and how. If a cell says YES, that 
 2. Parse user command to determine target elements
 3. For each target element:
    a. Look up element type in testingRecommendations
-   b. Determine which 6 methods apply (from matrix above)
+   b. Determine which 7 methods apply (from matrix above)
    c. Check last inspection dates — flag if never inspected or stale (>7 days)
 4. Build execution plan: list of (element, method) pairs to run
 5. Show plan to user: "Will run X methods across Y elements (~Z minutes)"
@@ -136,6 +142,13 @@ Parallel batch 2 (needs Playwright, sequential screenshots):
 
 Parallel batch 3 (LLM-intensive):
 └── Worker F: Strategy analysis — generate states from current data, spawn Haiku agents
+
+Parallel batch 4 (browser + LLM, runs after batch 2 releases browser):
+└── Worker G: LLM Playtest — /llm-playtest {relevant testers based on element types}
+    Quiz Systems / Domains → quiz tester
+    Enemies / Rooms / Systems / Reward Types → balance tester
+    Cards → fun/engagement tester
+    Screens (study) → study temple tester
 ```
 
 ### Phase 2: Collect & Cross-Reference Results
@@ -173,6 +186,8 @@ for each element inspected:
         element.strategicAnalysisDate = today  # new field
     if rogue_brain_ran:
         element.neuralAgentDate = today  # new field
+    if llm_playtest_ran:
+        element.llmPlaytestDate = today  # new field
 
     element.lastInspectedDate = today
     element.lastInspectionMethods = [list of methods that ran]
@@ -191,7 +206,7 @@ Output a single report that merges all findings:
 | Metric | Value |
 |---|---|
 | Elements inspected | 31 |
-| Methods executed | 6 |
+| Methods executed | 7 |
 | Total findings | 14 |
 | Confirmed (3+ methods) | 3 |
 | Likely (2 methods) | 5 |
@@ -331,6 +346,7 @@ function checkOcclusion(element) {
 | `/rogue-brain` | Neural agent patterns | Worker C — 100-200 episodes |
 | `/visual-inspect` | Screenshot verification | Worker D — per-element scenarios |
 | `/ux-review` | Design quality audit | Worker E — DOM scan + principles |
+| `/llm-playtest` | Live play quality & balance | Worker G — 4 tester agents sequential |
 | `/advanced-balance` | Per-card metrics, tension | Included in Worker B output |
 | `/sim-report` | Post-sim analysis | Runs on Worker B output |
 | `/issue-triage` | Deduplicate findings | Runs in Phase 2 |
