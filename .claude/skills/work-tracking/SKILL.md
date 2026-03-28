@@ -1,177 +1,120 @@
 ---
 name: work-tracking
-description: Enforces AR-based work tracking for all implementation tasks. Ensures every session has a phase doc before any code is touched. Always active — check before starting any implementation work.
+description: Enforces plan-before-code discipline using Claude planning mode and task tracking. Always active — ensures non-trivial work is planned before implementation begins.
 ---
-
-# 🚨🚨🚨 THIS IS THE MOST IMPORTANT RULE IN THE ENTIRE PROJECT 🚨🚨🚨
-#
-# EVERY non-trivial task MUST have an AR phase doc BEFORE any code is written.
-# This means: new features, multi-file changes, content batches, refactors,
-# balance changes, UI updates — EVERYTHING that takes more than 2 minutes.
-#
-# The AR doc goes in `docs/roadmap/phases/AR-NN-SHORT-NAME.md` and contains:
-# - Overview of what's being done and why
-# - Numbered TODO checklist with acceptance criteria per item
-# - Files affected table
-# - Verification gate (typecheck, build, tests)
-#
-# When ALL TODOs are checked off → move to `docs/roadmap/completed/`
-#
-# AGENTS: You are the #1 violator of this rule. DO NOT start coding without
-# checking if an AR doc exists. If it doesn't exist, CREATE ONE FIRST.
-#
-# ⚠️ AR DOCS MUST BE WRITTEN BY THE OPUS ORCHESTRATOR DIRECTLY ⚠️
-# NEVER delegate AR doc creation to Haiku or Sonnet sub-agents.
-# Sub-agents lose critical conversation context and produce shallow specs.
-# The orchestrator writes the AR doc, then delegates IMPLEMENTATION to workers.
-# 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
 
 # Work Tracking Enforcement
 
-## ⛔ ABSOLUTE BLOCKER — READ THIS FIRST ⛔
+## Core Rule
 
-**YOU MUST NOT WRITE A SINGLE LINE OF CODE, DELEGATE TO ANY SUB-AGENT, OR EDIT ANY FILE UNTIL YOU HAVE:**
+**YOU MUST NOT WRITE A SINGLE LINE OF CODE, DELEGATE TO ANY SUB-AGENT, OR EDIT ANY FILE UNTIL YOU HAVE A PLAN.**
 
-1. Listed `docs/roadmap/phases/` to see active work
-2. Found or created an AR phase doc for your current task
-3. Read the phase doc — it is your implementation spec
-4. Loaded the phase doc's TODO items into your `TodoWrite` session tracker
+For non-trivial tasks: use `/plan` (Claude planning mode) to plan before implementing. The plan file IS the spec — workers receive their instructions from it. Planning mode handles context preservation natively.
 
-**This is NON-NEGOTIABLE. No exceptions. No "I'll do it after." No "let me just quickly..."**
+Once the plan exists: use `TaskCreate` to break implementation into trackable tasks. Use `TaskUpdate` to mark progress as you go.
 
-## How It Works
+## What Requires Planning Mode
 
-- **`docs/roadmap/phases/`** = active/pending work. If a doc is here, it's not done.
-- **`docs/roadmap/completed/`** = finished work. Moved here when all sub-steps pass.
-- **There is NO index file.** The phase docs ARE the tracking system.
-- To find next AR number: check both `phases/` and `completed/` directories.
+Use `/plan` before starting any of these:
+- New features or game mechanics
+- Multi-file changes (touching 3+ files)
+- Content pipeline batches
+- Balance adjustments
+- UI/UX modifications
+- Refactors
+- Any task with more than 2-3 discrete steps
 
-## Phase Doc Format — MANDATORY TODO Checklist
+**Exceptions (no plan needed — these are genuinely trivial):**
+- Single-line bug fix
+- Typo or comment correction
+- Simple config value change (one number, one flag)
 
-Every AR phase doc MUST be structured as a comprehensive, granular TODO checklist. Each task is a single atomic action (one file, one edit, one verification). The format:
+## Implementation Tracking
 
-```markdown
-# AR-NN: Phase Name
+1. **Before starting**: `TaskCreate` for each discrete chunk of work
+2. **When beginning a task**: `TaskUpdate` → `in_progress`
+3. **When done with a task**: `TaskUpdate` → `completed`
+4. **ONE task at a time** — finish and mark complete before starting the next
+5. **If a task reveals new work**: create new tasks immediately, don't let them float in your head
+6. **Use `TaskList` periodically** to confirm you're tracking everything and nothing is orphaned
 
-**Status:** In Progress | Complete
-**Created:** YYYY-MM-DD
-**Depends on:** AR-XX (status)
+## Visual Inspection — NON-NEGOTIABLE
 
-## Overview
-One paragraph: what this phase delivers and why.
+After completing ANY task that touches UI, visuals, gameplay, or layout, the Opus orchestrator MUST visually inspect using Playwright MCP before marking the task complete.
 
-## Deliverables
-Total: N files created/modified, M verification steps
+### How to Take Screenshots
 
-## Tasks
+```javascript
+// CORRECT — always use this:
+browser_evaluate(() => window.__terraScreenshotFile())
+// Saves to /tmp/terra-screenshot.jpg — then Read("/tmp/terra-screenshot.jpg") to view
 
-### Section A: [Group Name]
-
-- [ ] **A.1** Create `path/to/file.mjs` — [one-line description of what it does]
-  - Acceptance: [what must be true when this is done]
-- [ ] **A.2** Edit `path/to/other.mjs` — [what changes]
-  - Acceptance: [verification criteria]
-- [ ] **A.3** Run `node scripts/verify.mjs` — all checks pass
-  - Acceptance: exit code 0, no FAIL results
-
-### Section B: [Next Group]
-
-- [ ] **B.1** ...
-
-## Verification Gate
-
-- [ ] `npm run typecheck` — clean
-- [ ] `npx vitest run` — all pass
-- [ ] Manual verification: [specific check]
-- [ ] All section tasks checked off above
-
-## Files Affected
-
-| File | Action | Task |
-|------|--------|------|
-| `path/to/file.mjs` | NEW | A.1 |
-| `path/to/other.mjs` | EDIT | A.2 |
+// NEVER use these (they hang/timeout due to Phaser's RAF loop):
+// mcp__playwright__browser_take_screenshot
+// page.screenshot() via browser_run_code
+// page.context().newCDPSession()
+// raw __terraScreenshot() — base64 exceeds tool output limits
 ```
 
-### Rules for Writing Phase Docs
+### Standard Visual Inspection Sequence
 
-0. **AR docs are ALWAYS written by the Opus orchestrator** — NEVER delegated to sub-agents. Sub-agents lack the conversation context needed to write accurate specs.
-1. **Every task gets a checkbox** — `- [ ]` for pending, `- [x]` for done
-2. **Tasks are atomic** — one file, one operation, one verifiable outcome
-3. **Tasks have acceptance criteria** — what must be true when done
-4. **Tasks are numbered** — `A.1`, `A.2`, `B.1` etc. for cross-referencing
-5. **Verification gates are explicit** — exact commands to run, expected outcomes
-6. **Files affected table** — every file touched, what action (NEW/EDIT/DELETE), which task
-7. **No vague tasks** — "improve performance" is banned. "Reduce query time in fetch.mjs from 5s to <1s by adding batch caching" is correct.
-8. **Estimate deliverable count** — "Total: 6 new files, 3 edits, 2 verification steps"
+1. Ensure dev server is running (`npm run dev`)
+2. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
+3. Disable animations: `browser_evaluate(() => document.documentElement.setAttribute('data-pw-animations', 'disabled'))`
+4. Take screenshot: `browser_evaluate(() => window.__terraScreenshotFile())` → `Read("/tmp/terra-screenshot.jpg")`
+5. DOM snapshot: `mcp__playwright__browser_snapshot`
+6. Console check: `mcp__playwright__browser_console_messages`
 
-## Live Tracking During Sessions
+### Quick Game State Setup
 
-### Starting a Phase
+Use `__terraScenario` to jump directly to any state — never navigate through menus manually:
 
-1. **Read the phase doc** from `docs/roadmap/phases/`
-2. **Load all unchecked tasks into `TodoWrite`** — mirror the phase doc's checkboxes
-3. **Mark each task `in_progress` → `completed`** as you work through them
-4. **Update the phase doc checkbox** (`- [ ]` → `- [x]`) immediately after completing each task — not at the end
+```javascript
+await page.evaluate(() => window.__terraScenario.load('combat-basic'));
+await page.evaluate(() => window.__terraScenario.load('combat-boss'));
+await page.evaluate(() => window.__terraScenario.load('shop'));
+await page.evaluate(() => window.__terraScenario.load('reward-room'));
+// Full list: window.__terraScenario.list()
+```
 
-### During Work
+### What to Do When It Looks Wrong
 
-- **ONE task at a time** — mark it `in_progress` in TodoWrite, do it, mark `completed`, check it off in the phase doc
-- **Never batch completions** — check off each task the moment it's done
-- **If a task reveals new work** — add new sub-tasks to the phase doc AND to TodoWrite
-- **If a task is blocked** — note the blocker in the phase doc, move to the next unblocked task
-- **After every 3-5 completed tasks** — re-read the phase doc to confirm you're on track
+If the visual result doesn't match expectations: **fix it before reporting done**. Spawn another worker, iterate, re-inspect. Never tell the user "it should work" — confirm it works. This rule has been violated repeatedly and the user has paid the price.
 
-### 🚨 Visual Inspection After EVERY Task — NON-NEGOTIABLE 🚨
+## Verification Gates
 
-After completing ANY task that touches UI, visuals, gameplay, or layout:
-1. **The Opus orchestrator MUST visually inspect** using Playwright MCP (screenshot + snapshot + console)
-2. **Navigate to the affected screen** and verify it looks correct as the user would see it
-3. **If it doesn't look right: FIX IT** — spawn another worker, iterate, re-inspect
-4. **NEVER report a task as done without visual confirmation**
-5. **Edge cases must be examined programmatically** — run unit tests, use `browser_evaluate` for boundary conditions
+Run these after every implementation batch — not just visual tasks:
 
-This applies to every single fix, implementation, and AR completion. Even if it costs more tokens. It is ALWAYS worth it. The user has been burned repeatedly by changes that "should work" but don't look right visually.
+```bash
+npm run typecheck          # TypeScript/Svelte type errors
+npm run build              # Production build (catches bundler issues)
+npx vitest run             # 1900+ unit tests — run after any logic/data changes
+```
 
-### Completing a Phase
+Hardcoded px values (Dynamic Scaling Rule violation) are treated as bugs. Every CSS change must use `calc(Npx * var(--layout-scale, 1))` for layout values and `calc(Npx * var(--text-scale, 1))` for font sizes — never bare `px` values.
 
-When ALL checkboxes in the phase doc are `[x]`:
+## Documentation Sync
 
-1. **Run the verification gate** — every command must pass
-2. **VISUALLY INSPECT with Playwright** — screenshot every affected screen, check for visual regressions
-3. **Set status to `Complete`** in the phase doc header
-4. **Move the phase doc** from `docs/roadmap/phases/` to `docs/roadmap/completed/`
-5. **Update `docs/roadmap/PROGRESS.md`** — check off the phase
-6. **Update `docs/GAME_DESIGN.md`** and `docs/ARCHITECTURE.md` if changes affect gameplay/systems/files
-6. **Clear TodoWrite** — remove all completed tasks for this phase
+Any change touching gameplay, balance, UI, mechanics, enemies, cards, relics, or player-facing systems MUST update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` in the same task — never as a follow-up. Stale docs are bugs with the same priority as broken tests.
 
-Do NOT leave a completed phase in `phases/`. Do NOT leave unchecked boxes in a moved phase doc.
+## Content Pipeline — Verified Source Data
 
-## After Context Compaction
+When working on fact/content generation, the following rules are absolute:
 
-When resuming after compaction:
-1. List `docs/roadmap/phases/` to find active phase docs
-2. Re-read the active phase doc — **scan for unchecked `- [ ]` boxes**
-3. Re-read any canonical spec documents referenced in the phase doc
-4. **Reload unchecked tasks into TodoWrite** — pick up where you left off
-5. **NEVER continue from memory alone** — always re-read the source documents
+1. **NEVER generate facts from LLM training knowledge.** Workers format pre-verified data — they do not invent it.
+2. Every fact-generation worker prompt MUST include verified source data (dates, numbers, names from Wikipedia/Wikidata looked up before the prompt is written).
+3. Distractors MUST be generated by an LLM reading the specific question — NEVER pulled from `correct_answer` values of other facts in the database.
+4. Source URLs must have been actually consulted, not assumed. Fake sourceUrls are worse than no sources.
+5. QA by another LLM has the same blind spots as generation — human spot-check is required for numerical facts.
 
-## Content Pipeline Work — Additional Rules
+When working on content pipeline: read `docs/RESEARCH/SOURCES/content-pipeline-spec.md` first. Update `docs/RESEARCH/SOURCES/content-pipeline-progress.md` after every batch operation.
 
-When working on content pipeline (knowledge facts, vocabulary, geography):
-1. **ALWAYS read `docs/RESEARCH/SOURCES/content-pipeline-spec.md` FIRST** — it is the canonical spec
-2. **ALWAYS update `docs/RESEARCH/SOURCES/content-pipeline-progress.md`** after every batch operation
-3. **NEVER generate facts without curated entity input** — follow the spec's Stage 2 pipeline
-4. **NEVER tell Sonnet workers to "pick entities"** — workers receive structured entity data FROM you
-5. The spec defines exact methodologies for entity selection, subcategory quotas, validation gates — follow them exactly
+## Common Violations
 
-## Common Violations (DON'T DO THESE)
-
-- ❌ Starting code before reading the phase doc
-- ❌ Writing a phase doc with vague tasks like "implement feature"
-- ❌ Forgetting to check off tasks as they're completed
-- ❌ Leaving a fully-complete phase in `phases/` instead of moving to `completed/`
-- ❌ Batching checkbox updates at session end instead of doing them per-task
-- ❌ Not using TodoWrite to track live progress
-- ❌ Continuing after compaction without re-reading the phase doc
-- ❌ Creating tasks that aren't atomic (one task = one file operation or one verification)
+- Starting code before a plan exists
+- Skipping visual inspection because "it's probably fine"
+- Batching TaskUpdate calls at the end of a session instead of updating per-task
+- Telling the user a fix "should work" without confirming it visually
+- Generating content from LLM training knowledge instead of verified source data
+- Hardcoding px values in CSS
+- Skipping doc updates because "it's just a small change"

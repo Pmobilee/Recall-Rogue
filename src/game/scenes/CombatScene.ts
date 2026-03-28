@@ -667,11 +667,12 @@ export class CombatScene extends Phaser.Scene {
 
     this.enemyHpText = this.add.text(w / 2, enemyHpY, '', {
       fontFamily: GAME_FONT,
-      fontSize: `${Math.round(11 * this.scaleFactor)}px`,
+      fontSize: `${Math.round(10 * this.scaleFactor)}px`,
       color: '#ffffff',
       stroke: '#000000',
       strokeThickness: 1,
       align: 'center',
+      fixedWidth: Math.round(ENEMY_HP_BAR_W * this.scaleFactor),
     }).setOrigin(0.5, 0.5).setDepth(13)
 
     // ── Damage preview ghost bar (enemy HP) ────────────────

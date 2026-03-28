@@ -147,6 +147,12 @@ export const screenTransitionActive = singletonWritable<boolean>('screenTransiti
 /** Controls the opaque loading cover during asset preloading. */
 export const screenTransitionLoading = singletonWritable<boolean>('screenTransitionLoading', true)
 
+/** Set to true when combat ends victoriously, triggering the exit-forward parallax transition. */
+export const combatExitRequested = singletonWritable<boolean>('combatExitRequested', false)
+
+/** Stores the defeated enemy's template ID for the exit transition, captured before activeTurnState is cleared. */
+export const combatExitEnemyId = singletonWritable<string | null>('combatExitEnemyId', null)
+
 let _transitionTimer: ReturnType<typeof setTimeout> | null = null
 let _transitionHeld = false
 let _holdSafetyTimer: ReturnType<typeof setTimeout> | null = null

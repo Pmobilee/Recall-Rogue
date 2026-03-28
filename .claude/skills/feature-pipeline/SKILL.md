@@ -1,7 +1,7 @@
 ---
 name: feature-pipeline
 description: |
-  Enforces a rigorous 7-phase workflow for ALL non-trivial tasks: Clarify, Research, Propose, Plan, Implement, Verify, Complete. Always active — triggers for any feature, refactor, content pipeline, balance change, UI modification, or system change that is not a single-line bugfix. Prevents blind implementation by requiring intent verification, proactive research, alternative proposals, AR documentation, visual testing, and doc sync. This is the master workflow skill that governs how work gets done.
+  Enforces a rigorous 7-phase workflow for ALL non-trivial tasks: Clarify, Research, Propose, Plan, Implement, Verify, Complete. Always active — triggers for any feature, refactor, content pipeline, balance change, UI modification, or system change that is not a single-line bugfix. Prevents blind implementation by requiring intent verification, proactive research, alternative proposals, a finalized plan (via /plan + TaskCreate), visual testing, and doc sync. This is the master workflow skill that governs how work gets done.
 user_invocable: false
 ---
 
@@ -31,7 +31,7 @@ EVERY task that is NOT a trivial single-line bugfix or config tweak. This includ
 - System integrations
 - Any task with more than 2-3 discrete steps
 
-**Bug fixes**: If the fix touches more than 3 files or requires design decisions, use the full pipeline. If it's a clear, isolated fix, start at Phase 4 (create a minimal AR doc) and skip Phases 1-3.
+**Bug fixes**: If the fix touches more than 3 files or requires design decisions, use the full pipeline. If it's a clear, isolated fix, start at Phase 4 (finalize a minimal plan) and skip Phases 1-3.
 
 If in doubt, use this pipeline. The cost of following it for a simple task is low. The cost of NOT following it for a complex task is enormous.
 
@@ -48,18 +48,18 @@ These are the ONLY conditions under which phases may be skipped. When in doubt, 
 
 **Never skip Phases 4, 5, 6, or 7** — these are mandatory for all non-trivial work regardless of how simple the task seems.
 
-## Parallel AR Handling
+## Parallel Task Handling
 
-If a new request arrives while you are mid-AR:
-1. **Finish the current task** within the AR and commit that progress.
-2. **Assess urgency**: If the new request is blocking or urgent, pause the AR by noting progress in the doc and switch. If it's not urgent, finish the current AR first.
-3. **Never interleave two ARs** in the same session without explicit user approval — context switching mid-AR produces sloppy, inconsistent work.
+If a new request arrives while you are mid-implementation:
+1. **Finish the current task** and commit that progress.
+2. **Assess urgency**: If the new request is blocking or urgent, pause by noting progress via TaskUpdate and switch. If it's not urgent, finish the current work first.
+3. **Never interleave two separate workstreams** in the same session without explicit user approval — context switching mid-implementation produces sloppy, inconsistent work.
 
 ## The 7 Phases
 
 ### Phase 1: CLARIFY — Understand Intent, Not Just Words
 
-**Before touching any code or creating any AR, interrogate the request.**
+**Before touching any code or finalizing any plan, interrogate the request.**
 
 1. Restate the user's request in your own words — what is the GOAL, not just the action?
 2. Identify ambiguities, unstated assumptions, and missing context
@@ -82,7 +82,7 @@ If a new request arrives while you are mid-AR:
 
 1. **Codebase exploration**: Use Explore agents to understand existing patterns, related systems, and potential conflicts
 2. **Online research** (when useful): Search for best practices, library docs, design patterns relevant to the task. Use WebSearch and WebFetch proactively — don't guess when you can know.
-3. **Check existing work**: Read `docs/roadmap/phases/` for related ARs, check git log for recent changes in affected areas
+3. **Check existing work**: Check git log for recent changes in affected areas, and check auto-memory for related prior sessions or patterns discovered previously
 4. **Read related docs**: `docs/GAME_DESIGN.md`, `docs/ARCHITECTURE.md`, and any referenced specs
 5. **Identify risks**: What could go wrong? What are the edge cases? What existing systems might break?
 
@@ -103,69 +103,70 @@ If a new request arrives while you are mid-AR:
 
 **If the user rejects the proposal**: Ask what they dislike specifically. Revise the proposal and re-present. Don't just accept a vague "do it differently" — understand WHY before changing course.
 
-**GATE**: Get user approval on the approach before creating the AR.
+**GATE**: Get user approval on the approach before finalizing the plan.
 
 ---
 
-### Phase 4: PLAN — Create the AR Phase Doc
+### Phase 4: PLAN — Finalize the Plan
 
-1. Create `docs/roadmap/phases/AR-NNN-SHORT-NAME.md` following the work-tracking skill format
-2. The AR MUST contain:
+1. **Use `/plan` (Claude planning mode) to produce the implementation plan.** The plan IS the spec. Workers receive it directly. It must be complete enough that a worker can implement a task without reading other docs.
+2. The plan MUST contain:
    - Overview with goal and reasoning
-   - Numbered TODO checklist with atomic tasks and acceptance criteria per item
-   - Files affected table
+   - Numbered task list with atomic items and acceptance criteria per item
+   - Files affected (created / modified / deleted)
    - **Verification tests** — specific tests (unit, visual, or behavioral) that MUST pass before completion
    - Verification gate with exact commands
-3. The AR is written by the **Opus orchestrator directly — NEVER delegated** to sub-agents. Opus writes the spec; Sonnet 4.5 executes it.
-4. Include a "Testing Plan" section that specifies:
+3. **Use TaskCreate to break the plan into trackable tasks.** Each task should map to one or a few items from the plan, with clear acceptance criteria. Tasks are the execution engine — they track what's in progress, what's done, and what's left.
+4. Include a "Testing Plan" section in the plan that specifies:
    - Which unit tests to create or update
    - Which visual inspections to perform (specific screens/states)
    - Which edge cases to verify
    - What the user should see when it's working correctly
 
-**GATE**: AR doc exists and covers the full scope. If anything was missed from Phase 1, catch it here.
+**GATE**: Plan exists (via `/plan`), tasks are created (via TaskCreate), and the full scope is covered. If anything was missed from Phase 1, catch it here.
 
 ---
 
-### Phase 5: IMPLEMENT — Execute the AR Spec
+### Phase 5: IMPLEMENT — Execute the Plan
 
 > **Anti-pattern warning — "Entity Names Without Data"**: Verify you are building the real thing, not just a skeleton. If you're implementing a pipeline step, confirm data actually flows through it end-to-end.
 
 > **Anti-pattern warning — "Silent Incompleteness"**: Explicitly state what IS and IS NOT done after each task. If you can't complete something, say so immediately — don't let it silently disappear.
 
-1. Follow the work-tracking skill: one task at a time, check off as completed
-2. **Delegate to Sonnet 4.5 workers** (`model: "sonnet"`) for all implementation tasks. Haiku may be used for trivial/mechanical subtasks (formatting, boilerplate) but Sonnet 4.5 is the default executor for all AR work.
+1. Use TaskUpdate to mark each task `in_progress` when you start it and `completed` when it passes verification — one task at a time
+2. **Delegate to Sonnet 4.5 workers** (`model: "sonnet"`) for all implementation tasks. Haiku may be used for trivial/mechanical subtasks (formatting, boilerplate) but Sonnet 4.5 is the default executor for all implementation work.
 3. **Every worker prompt MUST include**:
    - "Update docs/GAME_DESIGN.md and docs/ARCHITECTURE.md if your changes affect gameplay, balance, systems, or file structure"
    - "After implementation, run npm run typecheck and npm run build"
-   - The specific acceptance criteria from the AR
+   - The specific acceptance criteria from the plan
 4. After each worker completes: commit if the task passes verification (see Git Strategy below)
 5. After each worker completes: visually inspect with Playwright if UI/visual
 6. If a worker's output doesn't meet acceptance criteria: iterate (see Failure Escalation below)
-7. **Scope creep guard**: If during implementation you discover the task is significantly bigger than planned, STOP and tell the user: "This is bigger than we planned. Here's what I found: [details]. Should I update the AR scope, split into a follow-up AR, or descope?"
-8. **Mid-implementation check-in**: For large ARs (10+ tasks), pause after ~50% completion and give the user a brief progress update: what's done, what's remaining, any surprises.
+7. **Scope creep guard**: If during implementation you discover the task is significantly bigger than planned, STOP and tell the user: "This is bigger than we planned. Here's what I found: [details]. Should I update the plan scope, split into follow-up tasks, or descope?"
+8. **Mid-implementation check-in**: For large plans (10+ tasks), pause after ~50% completion and give the user a brief progress update: what's done, what's remaining, any surprises.
 
-**GATE**: All AR tasks checked off, all acceptance criteria met.
+**GATE**: All plan tasks marked completed, all acceptance criteria met.
 
 ### Git Strategy During Implementation
 
 **When to commit**: After each worker task completes and passes verification (typecheck clean, tests pass, visual OK). Don't batch multiple tasks into one commit — granular commits make rollback surgical.
 
-**Commit message format**: Reference the AR number in every commit.
+**Commit message format**: Use conventional commits.
 ```
-feat(AR-120): add relic tooltip system
-fix(AR-120): correct tooltip positioning on mobile viewport
-docs(AR-120): update GAME_DESIGN.md with tooltip mechanic
+feat: add relic tooltip system
+fix: correct tooltip positioning on mobile viewport
+docs: update GAME_DESIGN.md with tooltip mechanic
+refactor: extract tooltip logic into shared helper
 ```
 
-**Feature branches**: For large ARs (5+ tasks) or ARs that touch core systems (combat, save/load, floor generation), create a feature branch:
+**Feature branches**: For large implementations (5+ tasks) or changes that touch core systems (combat, save/load, floor generation), create a feature branch:
 ```
-git checkout -b ar-120-relic-tooltip
+git checkout -b feat/relic-tooltip
 # ... implement ...
-git checkout main && git merge ar-120-relic-tooltip
+git checkout main && git merge feat/relic-tooltip
 ```
 
-For small ARs (1-4 tasks) on non-critical systems, committing directly to main is acceptable.
+For small changes (1-4 tasks) on non-critical systems, committing directly to main is acceptable.
 
 ### Worker Failure Escalation
 
@@ -209,7 +210,7 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    - **THIS MUST HAPPEN AFTER EVERY SUB-AGENT BATCH** — not just at the end. If 3 agents run in parallel and return, inspect ALL 3 results before committing ANY of them
    - **NEVER commit visual/UI changes without seeing them first** — sub-agents making CSS/layout changes are the HIGHEST RISK for regressions
    - If you cannot take a screenshot or snapshot, TELL THE USER you couldn't verify and ask them to check
-4. **Run or create specific tests** from the AR's Testing Plan:
+4. **Run or create specific tests** from the plan's Testing Plan:
    - If unit tests were specified, run them and confirm they pass
    - If visual tests were specified, perform them with Playwright
    - If behavioral tests were specified, use browser_evaluate to check state
@@ -241,10 +242,10 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    - If an element was removed: set status to `"deprecated"`
    - Consult `testingRecommendations` table to identify what testing is now needed
    - This is NON-NEGOTIABLE — a change without a registry update is incomplete
-3. **Move AR to completed**: `docs/roadmap/phases/` → `docs/roadmap/completed/`
+3. **Mark all tasks as completed** via TaskUpdate — every task created in Phase 4 should be in `completed` state
 4. **Confirm with user**: Brief summary of what was done, with screenshot if visual
 5. **Recommend next steps** (MANDATORY — never skip this):
-   After every completed AR, present **carefully considered next steps**. These are not throwaway suggestions — think deeply about what the user should do next based on:
+   After every completed task set, present **carefully considered next steps**. These are not throwaway suggestions — think deeply about what the user should do next based on:
    - What you learned during implementation (new risks, opportunities, rough edges discovered)
    - What adjacent systems were affected or exposed as fragile
    - What the user's likely next priority is given the project's current state
@@ -262,7 +263,7 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    Good example: "The new relic tooltip system exposed that 3 relics have empty `description` fields — these will render as blank tooltips. I'd recommend fixing those before the next playtest."
 
 6. **Save learnings to memory**: If this work revealed a non-obvious pattern, anti-pattern, or surprise — save it to auto-memory. Ask: "What would have saved me time if I knew it at the start? Would a future session benefit from knowing this?" Only save things that are genuinely non-obvious. Skip routine implementation notes.
-7. **Post-ship check flag**: Note this AR as needing a spot-check at the start of the next session. At the beginning of the next conversation, if there are recently completed ARs (last 1-2 sessions), do a quick smoke test: load the affected screen, check the console, confirm the feature still works. This catches silent regressions from unrelated changes.
+7. **Post-ship check flag**: Note this work as needing a spot-check at the start of the next session. At the beginning of the next conversation, if there are recently completed tasks (last 1-2 sessions), do a quick smoke test: load the affected screen, check the console, confirm the feature still works. This catches silent regressions from unrelated changes.
 
 ---
 
@@ -278,7 +279,7 @@ Follow the escalation ladder: iterate with more context → fresh worker with le
 Don't patch. Stop, roll back to the last good commit, return to Phase 3 with new knowledge. Tell the user exactly what happened and why.
 
 ### Scope explodes mid-implementation
-STOP immediately. Tell the user exactly what happened: "While implementing [task], I discovered [unexpected complexity]. The scope is now [N times] larger than planned." Give clear options: expand the current AR, split into a follow-up AR, or descope. Never silently absorb scope explosion and deliver a surprise.
+STOP immediately. Tell the user exactly what happened: "While implementing [task], I discovered [unexpected complexity]. The scope is now [N times] larger than planned." Give clear options: expand the current plan, split into follow-up tasks, or descope. Never silently absorb scope explosion and deliver a surprise.
 
 ---
 
@@ -314,11 +315,11 @@ A feature works when you navigate directly to it via dev tools or test scenarios
 
 ## Relationship to Other Skills
 
-This skill is the **outer workflow wrapper**. It governs WHAT work happens and in what order. The `work-tracking` skill is the **inner execution engine** — it governs HOW tasks within an AR are tracked and checked off. Use both together:
-- `feature-pipeline` decides when to create an AR, what goes in it, and when it's truly done
-- `work-tracking` manages the task-by-task execution within Phase 5
-- `game-design-sync` is automatically enforced during Phases 5 and 7
-- `quick-verify` is the toolset used during Phase 6
+This skill is the **outer workflow wrapper**. It governs WHAT work happens and in what order. The other skills fit into it like this:
+- `feature-pipeline` (this skill) — governs the full lifecycle: when to plan, when to implement, when it's truly done
+- `work-tracking` — enforces plan-before-code; ensures every session has a finalized plan and tasks before any code is touched
+- `game-design-sync` — automatically enforced during Phases 5 and 7; ensures docs stay in sync with every gameplay change
+- `quick-verify` — the toolset used during Phase 6; typecheck, build, tests, and Playwright visual verification
 
 ## Quick Reference: When to Start at Each Phase
 
@@ -332,14 +333,14 @@ This skill is the **outer workflow wrapper**. It governs WHAT work happens and i
 - Continuing from a previous conversation where Phase 1 already happened
 
 **Phase 3 (Propose)** — start here when:
-- Research is complete and you have a strong recommendation but want approval before writing the AR
+- Research is complete and you have a strong recommendation but want approval before finalizing the plan
 
 **Phase 4 (Plan)** — start here when:
-- For isolated bug fixes that don't require design decisions — jump straight to writing a minimal AR
+- For isolated bug fixes that don't require design decisions — jump straight to a minimal plan and tasks
 - Approach is already agreed upon from a prior conversation
 
 **Phase 5 (Implement)** — start here when:
-- Continuing work from a previous session with an existing AR — re-read the AR first
+- Continuing work from a previous session with an existing plan — use TaskList to review outstanding tasks first
 
 **Phases 4, 5, 6, 7 are never skipped for non-trivial work.**
 

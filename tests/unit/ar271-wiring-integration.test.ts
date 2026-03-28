@@ -126,10 +126,9 @@ describe('AR-271 Card Mechanic: Recall + Review Queue', () => {
    * The review_queue_recall bonus path overrides mechanicBaseValue to 30.
    */
   it('Recall CC on a Review Queue fact deals bonus damage (30)', () => {
-    const factId = 'recall_review_fact';
     const recallCard = makeCard({
       id: 'recall_card',
-      factId,
+      factId: 'recall_review_fact',
       cardType: 'attack',
       mechanicId: 'recall',
       mechanicName: 'Recall',
@@ -138,6 +137,9 @@ describe('AR-271 Card Mechanic: Recall + Review Queue', () => {
     });
 
     const turnState = setupEncounter(recallCard);
+    // Get the actual factId assigned to the card in hand (drawHand may reassign factIds)
+    const cardInHand = turnState.deck.hand.find(c => c.id === 'recall_card');
+    const factId = cardInHand?.factId ?? 'recall_review_fact';
     // Re-add after startEncounter (which resets the queue)
     addToReviewQueue(factId);
     expect(isReviewQueueFact(factId)).toBe(true);
@@ -181,16 +183,18 @@ describe('AR-271 Card Mechanic: Recall + Review Queue', () => {
    * Test 1c: Wrong charge adds fact to review queue via AR-261 wiring.
    */
   it('wrong Charge adds the fact to the review queue', () => {
-    const factId = 'wrong_charge_queues';
     const wrongCard = makeCard({
       id: 'wrong_card',
-      factId,
+      factId: 'wrong_charge_queues',
       cardType: 'attack',
       apCost: 1,
       baseEffectValue: 8,
     });
 
     const turnState = setupEncounter(wrongCard);
+    // Get the actual factId assigned to the card in hand (drawHand may reassign factIds)
+    const cardInHand = turnState.deck.hand.find(c => c.id === 'wrong_card');
+    const factId = cardInHand?.factId ?? 'wrong_charge_queues';
     expect(isReviewQueueFact(factId)).toBe(false);
 
     playCardAction(turnState, 'wrong_card', false, false, 'charge');

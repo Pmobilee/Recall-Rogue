@@ -850,7 +850,7 @@
     position: fixed;
     inset: 0;
     pointer-events: auto;
-    z-index: 50;
+    z-index: 210;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1519,18 +1519,18 @@
   .quiz-options-cogwheel {
     position: absolute;
     top: calc(8px * var(--layout-scale, 1));
-    right: calc(52px * var(--layout-scale, 1));
+    right: calc(12px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(36px * var(--layout-scale, 1));
-    height: calc(36px * var(--layout-scale, 1));
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
     background: transparent;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.35);
-    font-size: calc(16px * var(--text-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     transition: color 0.15s, background 0.15s;
     z-index: 10;
     padding: 0;

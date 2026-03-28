@@ -13,6 +13,8 @@
     releaseScreenTransition,
     activeRewardBundle,
     activeRewardRevealStep,
+    combatExitRequested,
+    combatExitEnemyId,
   } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen } from './services/screenController'
@@ -86,6 +88,7 @@
     canRerollRelicSelection,
     rerollRelicSelection,
     isRelicPityActive,
+    onCombatExitComplete,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -378,6 +381,7 @@
   let combatTransitionActive = $state(false)
   let combatTransitionType = $state<'enter' | 'exit-forward'>('enter')
   let prevScreen = $state('')
+  let exitEnemyId = $state<string | null>(null)
 
   let showArcanePassModal = $state(false)
   let showSeasonPassModal = $state(false)
@@ -879,6 +883,21 @@
     prevScreen = screen
   })
 
+  // Combat exit transition: show parallax walk-forward when combat ends
+  $effect(() => {
+    if ($combatExitRequested && $currentScreen === 'combat') {
+      // Use store captured BEFORE activeTurnState was cleared by encounterBridge
+      const enemyId = $combatExitEnemyId
+      if (enemyId) {
+        exitEnemyId = enemyId
+        combatTransitionType = 'exit-forward'
+        combatTransitionActive = true
+      } else {
+        onCombatExitComplete()
+      }
+    }
+  })
+
   function updateLayoutScale(): void {
     const container = document.querySelector('.card-app') as HTMLElement | null
     if (!container) return
@@ -1130,13 +1149,22 @@
       onclick={handlePause}
       aria-label="Pause"
     ><span class="pause-icon" aria-hidden="true"></span></button>
-    {#if combatTransitionActive && $activeTurnState?.enemy?.template?.id}
-      <ParallaxTransition
-        imageUrl={getCombatBgForEnemy($activeTurnState.enemy.template.id)}
-        depthUrl={getCombatDepthMap($activeTurnState.enemy.template.id)}
-        type={combatTransitionType}
-        onComplete={() => { combatTransitionActive = false }}
-      />
+    {#if combatTransitionActive}
+      {@const enemyId = combatTransitionType === 'exit-forward' ? exitEnemyId : $activeTurnState?.enemy?.template?.id}
+      {#if enemyId}
+        <ParallaxTransition
+          imageUrl={getCombatBgForEnemy(enemyId)}
+          depthUrl={getCombatDepthMap(enemyId)}
+          type={combatTransitionType}
+          onComplete={() => {
+            combatTransitionActive = false
+            if (combatTransitionType === 'exit-forward') {
+              exitEnemyId = null
+              onCombatExitComplete()
+            }
+          }}
+        />
+      {/if}
     {/if}
   {/if}
 

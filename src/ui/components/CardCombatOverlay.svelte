@@ -2444,7 +2444,6 @@
     {#if turnState && enemyName}
       <div class="enemy-name-header" role="heading" aria-level="2" aria-label="{enemyName}">
         {enemyName}
-        <span class="turn-counter-label">Turn {turnState.turnNumber}</span>
       </div>
     {/if}
 
@@ -3141,7 +3140,7 @@
 
   .enemy-name-header {
     position: fixed;
-    top: calc(4vh + var(--safe-top));
+    top: calc(6vh + var(--safe-top));
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
@@ -4182,18 +4181,6 @@
   /* L-13: End Turn dim when AP remains */
   .end-turn-btn.has-ap-remaining {
     opacity: 0.6;
-  }
-
-  /* L-1: Turn counter label inside enemy name header */
-  .turn-counter-label {
-    display: block;
-    font-size: calc(13px * var(--text-scale, 1));
-    font-weight: 600;
-    color: #ffffff;
-    text-transform: none;
-    letter-spacing: 0;
-    font-family: var(--font-rpg);
-    margin-top: 1px;
   }
 
   /* L-1: Intent pulse on content change (triggered by {#key} remount) */

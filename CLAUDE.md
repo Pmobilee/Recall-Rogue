@@ -387,13 +387,13 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 - To check if a DOM button is actually clickable, use `browser_evaluate` to test: visibility, disabled state, pointer-events, and z-index occlusion
 - For Phaser-specific state, use `window.__terraDebug()` which exposes active scene, input handler count, and last click coordinates
 
-## Roadmap Workflow — MANDATORY
+## Planning Workflow — MANDATORY
 
-### 🚨 THE #1 RULE: AR DOCS BEFORE CODE 🚨
+### Plan Before Code
 
-**EVERY non-trivial task MUST have an AR phase doc BEFORE any code is written.** This is the single most important workflow rule in this project. Agents consistently violate it and it causes chaos.
+**For non-trivial tasks, use `/plan` (Claude planning mode) before writing any code.** This is non-negotiable. The plan file IS the implementation spec.
 
-**What requires an AR doc (EVERYTHING except trivial fixes):**
+**What requires planning mode (EVERYTHING except trivial fixes):**
 - New features or mechanics
 - Multi-file changes
 - Content pipeline batches
@@ -402,42 +402,20 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 - Refactors
 - Any task with more than 2-3 discrete steps
 
-**What does NOT require an AR doc (trivial fixes only):**
+**What does NOT require planning mode (trivial fixes only):**
 - Single-line bug fix
 - Typo correction
 - Simple config value change
 
-**The workflow is: AR doc → user review → implement → check off TODOs → move to completed. NEVER skip steps 1-2.**
+**The workflow is: `/plan` → user reviews plan → implement with TaskCreate/TaskUpdate → verify → done.**
 
-### 🚨 AR DOCS MUST BE WRITTEN BY OPUS — NEVER DELEGATED 🚨
+### Task Tracking During Implementation
 
-**AR phase docs MUST ALWAYS be written directly by the active Opus orchestrator agent.** NEVER delegate AR doc creation to Haiku or Sonnet sub-agents. Sub-agents lose critical context, produce shallow specs, and miss important design nuances that only the orchestrator has from the conversation. The orchestrator has the full conversation context, understands the user's intent, and can write specs that workers can implement without ambiguity. This rule is absolute — no exceptions.
+Use `TaskCreate` to break the plan into trackable tasks. Use `TaskUpdate` to mark `in_progress` → `completed` as you work. One task at a time. The `feature-pipeline` skill governs the full 7-phase lifecycle (Clarify, Research, Propose, Plan, Implement, Verify, Complete).
 
-### Phase Documents = Source of Truth
-- **`docs/roadmap/phases/`** = active/pending work. If a doc is here, it's not done.
-- **`docs/roadmap/completed/`** = finished work. Moved here when all sub-steps pass.
-- There is NO index file. The phase docs themselves are the only tracking mechanism.
-- Naming: `AR-NN-SHORT-NAME.md` (e.g., `AR-35-COMBAT-UI-CARD-SIZE.md`)
-- To find active work: `ls docs/roadmap/phases/`
-- To find next AR number: check both `phases/` and `completed/` directories
-
-### Phase Doc Requirements
-Each phase doc MUST contain:
-  1. **Overview**: Goal, dependencies, estimated complexity
-  2. **Sub-steps**: Numbered, granular tasks with exact file paths and expected behavior
-  3. **Acceptance Criteria**: Per sub-step — what must be true for the step to be done
-  4. **Files Affected**: Explicit list of files created/modified
-  5. **Verification Gate**: Final checklist (typecheck, build, tests, screenshots)
-- Workers receiving a phase doc should be able to implement it WITHOUT reading other docs
-
-### Workflow for Executing a Phase
-1. Orchestrator lists `docs/roadmap/phases/` → picks the relevant phase doc
-2. Orchestrator reads the phase doc — it is the implementation spec
-3. Orchestrator spawns coding workers with the phase doc content as their spec
-4. Workers implement, orchestrator verifies (typecheck, build, Playwright, acceptance criteria)
-5. **Orchestrator VISUALLY INSPECTS the result** using Playwright (`browser_evaluate(() => window.__terraScreenshotFile())` to save, `Read()` to view + `browser_snapshot` + console). If it doesn't look right, iterate — spawn another worker, fix it, re-inspect. Never skip this step.
-6. Orchestrator verifies doc files (`GAME_DESIGN.md`, `ARCHITECTURE.md`) reflect changes
-7. On completion: check off all sub-steps, move the phase doc to `docs/roadmap/completed/`
+### Historical Reference
+- **`docs/roadmap/completed/`** = archive of 254 completed phase docs from previous workflow
+- **`docs/roadmap/archived-futures/`** = feature specs/ideas saved for reference
 
 ## Sub-Agent Rules (Agent Tool)
 - **Complex tasks** (system integration, architecture, multi-file changes, debugging): use `model: "sonnet"`, `subagent_type: "general-purpose"`
@@ -447,7 +425,7 @@ Each phase doc MUST contain:
 - Always provide sub-agents with full context: file paths, expected behavior, verification commands
 - Parallelize independent sub-agent tasks whenever possible
 - The orchestrator must NEVER edit code files directly — always delegate via Agent tool
-- **EXCEPTION: AR phase docs** — the orchestrator MUST write AR docs directly (never delegate to sub-agents). AR docs require full conversation context that sub-agents don't have.
+- **Plans are written by the orchestrator** in planning mode — never delegated to sub-agents. Plans require full conversation context.
 - **EVERY worker task prompt MUST include**: "Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` if your changes affect gameplay, balance, systems, or file structure. Stale docs = bugs."
 - **EVERY worker task prompt MUST include**: "After implementation, run `npm run typecheck` and `npm run build`. Then verify visually with Playwright if the change is UI/visual: use `browser_evaluate(() => window.__terraScreenshotFile())` to save, then `Read()` to view (NEVER `mcp__playwright__browser_take_screenshot` — it times out) — the orchestrator will inspect too."
 - **After EVERY worker completes**: The Opus orchestrator MUST visually inspect the result using Playwright MCP (`browser_evaluate(() => window.__terraScreenshotFile())` to save, `Read()` to view + `browser_snapshot` + console). If the result doesn't match expectations, iterate immediately. NEVER report done without visual confirmation.

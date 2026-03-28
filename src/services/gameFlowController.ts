@@ -3,7 +3,7 @@
  */
 
 import { writable, get } from 'svelte/store';
-import { currentScreen, activeRewardBundle, activeRewardRevealStep, holdScreenTransition } from '../ui/stores/gameState';
+import { currentScreen, activeRewardBundle, activeRewardRevealStep, holdScreenTransition, combatExitRequested, combatExitEnemyId } from '../ui/stores/gameState';
 import type { RunState, RunEndData } from './runManager';
 import { createRunState, endRun } from './runManager';
 import type { RewardArchetype } from './runManager';
@@ -26,6 +26,7 @@ import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_D
 import { generateCardRewardOptionsByType, rerollRewardCardInType } from './rewardGenerator';
 import {
   addRewardCardToActiveDeck,
+  activeTurnState,
   getActiveDeckCards,
   getActiveDeckFactIds,
   getRunPoolCards,
@@ -167,6 +168,16 @@ export const activeShopInventory = writable<ShopInventory | null>(null);
 let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
 let pendingClearedFloor = 0;
+let pendingPostCombatAction: (() => void) | null = null;
+
+/**
+ * Guard against `onEncounterComplete` being called more than once per encounter.
+ * Set to true when the handler starts processing and cleared when `proceedAfterReward`
+ * navigates back to the dungeon map (i.e. the reward flow is fully complete).
+ * Prevents a stale encounterBridge 550 ms timer from triggering a spurious second
+ * completion in the rare case where it fires after a new encounter has started.
+ */
+let isProcessingEncounterResult = false;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
 type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge'
 let activeRunMode: ActiveRunMode = 'standard'
@@ -188,6 +199,15 @@ export function getPendingSwapRelicId(): string | null {
 /** Clears the pending swap relic without acquiring it. */
 export function clearPendingSwapRelicId(): void {
   pendingSwapRelicId = null;
+}
+
+/** Called by CardApp when the combat exit transition animation finishes. */
+export function onCombatExitComplete(): void {
+  combatExitRequested.set(false);
+  combatExitEnemyId.set(null);
+  const action = pendingPostCombatAction;
+  pendingPostCombatAction = null;
+  if (action) action();
 }
 
 /** Resets the reroll counter and session-seen IDs for the current relic selection screen. */
@@ -526,6 +546,8 @@ export function rescheduleNotificationsFromPlayerState(): void {
 }
 
 function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
+  // Always clear the encounter-result guard when a run ends, regardless of path.
+  isProcessingEncounterResult = false;
   if (activeRunMode === 'daily_expedition') {
     const score = calculateDailyExpeditionScore(endData)
     const completedAttempt = completeDailyExpeditionAttempt({
@@ -850,6 +872,7 @@ async function proceedAfterReward(): Promise<void> {
     }
 
     // Non-boss node cleared — return to dungeon map
+    isProcessingEncounterResult = false;
     gameFlowState.set('dungeonMap');
     currentScreen.set('dungeonMap');
     autoSaveRun('dungeonMap');
@@ -889,6 +912,8 @@ async function proceedAfterReward(): Promise<void> {
 
   // After encounter 2, auto-start encounter 3 (mini-boss/boss) — no room selection
   if (run.floor.currentEncounter === run.floor.encountersPerFloor) {
+    // Reset guard now — encounter 3 will need its own onEncounterComplete call
+    isProcessingEncounterResult = false;
     gameFlowState.set('combat');
     holdScreenTransition();
     currentScreen.set('combat');
@@ -914,6 +939,7 @@ async function proceedAfterReward(): Promise<void> {
     }
   }
   activeRunState.set(run);
+  isProcessingEncounterResult = false;
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
 }
@@ -1226,6 +1252,17 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   const run = get(activeRunState);
   if (!run) return;
 
+  // Guard: prevent double-processing if a stale 550 ms timer fires after the reward flow
+  // has already completed and a new encounter has started. This is the root cause of Bug 9
+  // (second encounter immediately skips to reward) and Bug 10 (broken third encounter state).
+  if (isProcessingEncounterResult) {
+    if (import.meta.env.DEV) console.warn('[GameFlow] onEncounterComplete called while already processing — ignoring duplicate call');
+    return;
+  }
+  isProcessingEncounterResult = true;
+
+  // Enemy ID for exit transition is captured by encounterBridge BEFORE clearing activeTurnState
+
   run.encountersTotal += 1;
   if (result === 'victory') {
     run.encountersWon += 1;
@@ -1280,6 +1317,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     applyRunCompletionBonuses(run);
     markRunCompleted();
     const endData = endRun(run, 'defeat');
+    isProcessingEncounterResult = false;
     finishRunAndReturnToHub(run, endData);
     return;
   }
@@ -1317,39 +1355,45 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   // Relic acquisition — priority: boss > elite > first-mini-boss > subsequent-mini-boss > regular
   const relicPool = buildRelicPool();
 
+  // Determine post-combat action, then trigger exit transition
   if (wasBoss && relicPool.length > 0) {
     const choices = generateBossRelicChoices(relicPool);
     if (choices.length > 0) {
-      resetRelicSelectionRerolls();
-      openRelicChoiceRewardRoom(choices, false);
+      pendingPostCombatAction = () => {
+        resetRelicSelectionRerolls();
+        openRelicChoiceRewardRoom(choices, false);
+      };
+      combatExitRequested.set(true);
       return;
     }
   } else if (wasElite && relicPool.length > 0) {
-    // Elite: choose-1-of-3 with regular weights (same as first mini-boss)
     const choices = generateMiniBossRelicChoices(relicPool);
     if (choices.length > 0) {
-      resetRelicSelectionRerolls();
-      openRelicChoiceRewardRoom(choices, false);
+      pendingPostCombatAction = () => {
+        resetRelicSelectionRerolls();
+        openRelicChoiceRewardRoom(choices, false);
+      };
+      combatExitRequested.set(true);
       return;
     }
   } else if (wasMiniBoss && !run.firstMiniBossRelicAwarded && relicPool.length > 0) {
-    // First mini-boss: choose-1-of-3
     run.firstMiniBossRelicAwarded = true;
     activeRunState.set(run);
     const choices = generateMiniBossRelicChoices(relicPool);
     if (choices.length > 0) {
-      resetRelicSelectionRerolls();
-      openRelicChoiceRewardRoom(choices, false);
+      pendingPostCombatAction = () => {
+        resetRelicSelectionRerolls();
+        openRelicChoiceRewardRoom(choices, false);
+      };
+      combatExitRequested.set(true);
       return;
     }
   } else if (wasMiniBoss && run.firstMiniBossRelicAwarded && relicPool.length > 0) {
-    // Subsequent mini-boss: single random toast drop with full rarity table
     const drop = generateRandomRelicDrop(relicPool, RELIC_RARITY_WEIGHTS, isRelicPityActive());
     if (drop) {
       giveRelicAsToastDrop(drop);
     }
   } else if (!wasBoss && !wasMiniBoss && !wasElite && shouldDropRandomRelic() && relicPool.length > 0) {
-    // Regular combat: 10% random toast drop with full rarity table
     const drop = generateRandomRelicDrop(relicPool, RELIC_RARITY_WEIGHTS, isRelicPityActive());
     if (drop) {
       giveRelicAsToastDrop(drop);
@@ -1358,25 +1402,30 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
 
   // Post-mini-boss rest: heal + optional upgrade (for non-first mini-bosses)
   if (wasMiniBoss && run.firstMiniBossRelicAwarded) {
-    openPostMiniBossRest();
+    pendingPostCombatAction = () => openPostMiniBossRest();
+    combatExitRequested.set(true);
     return;
   }
 
   // Mystery-room combat: skip card reward and return to map
   if (isMysteryRoomCombat) {
     isMysteryRoomCombat = false;
-    const freshRun = get(activeRunState);
-    if (freshRun) {
-      freshRun.floor.lastSlotWasEvent = true;
-      activeRunState.set(freshRun);
-      activeRoomOptions.set(generateCombatRoomOptions(freshRun.floor.currentFloor));
-    }
-    gameFlowState.set('dungeonMap');
-    currentScreen.set('dungeonMap');
+    pendingPostCombatAction = () => {
+      const freshRun = get(activeRunState);
+      if (freshRun) {
+        freshRun.floor.lastSlotWasEvent = true;
+        activeRunState.set(freshRun);
+        activeRoomOptions.set(generateCombatRoomOptions(freshRun.floor.currentFloor));
+      }
+      gameFlowState.set('dungeonMap');
+      currentScreen.set('dungeonMap');
+    };
+    combatExitRequested.set(true);
     return;
   }
 
-  openCardReward();
+  pendingPostCombatAction = () => openCardReward();
+  combatExitRequested.set(true);
 }
 
 registerEncounterCompleteHandler(onEncounterComplete)
@@ -1690,6 +1739,7 @@ export function onDelve(): void {
   // Generate a new act map for the next segment (seed offset by segment for deterministic but varied maps)
   run.floor.actMap = generateActMap(run.floor.segment, run.runSeed + run.floor.segment);
   activeRunState.set(run);
+  isProcessingEncounterResult = false;
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
 }

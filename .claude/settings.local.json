@@ -1,4 +1,19 @@
 {
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git commit *)",
+            "command": ".claude/hooks/pre-commit-verify.sh",
+            "timeout": 300
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(*)",
@@ -13,13 +28,15 @@
       "mcp__context7__*",
       "mcp__cloudflare__*",
       "mcp__wikidata__*",
-      "mcp__claude-in-chrome__*"
+      "mcp__claude-in-chrome__*",
+      "mcp__sqlite__*"
     ]
   },
   "enabledMcpjsonServers": [
     "svelte",
     "context7",
     "cloudflare",
-    "wikidata"
+    "wikidata",
+    "sqlite"
   ]
 }

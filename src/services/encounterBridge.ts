@@ -37,7 +37,7 @@ import {
   applyAscensionEnemyTemplateAdjustments,
   getAscensionModifiers,
 } from './ascension';
-import { activeRewardBundle, releaseScreenTransition } from '../ui/stores/gameState';
+import { activeRewardBundle, releaseScreenTransition, combatExitEnemyId } from '../ui/stores/gameState';
 import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
@@ -150,6 +150,14 @@ function notifyEncounterComplete(result: EncounterCompletionResult): void {
 
 let activeDeck: CardRunState | null = null;
 let activeRunPool: Card[] = [];
+
+/**
+ * Monotonically increasing counter incremented every time a new encounter starts.
+ * The victory/defeat 550 ms timers capture this value and abort if the generation
+ * has changed by the time they fire — preventing a completed encounter's timeout
+ * from accidentally clearing and completing a freshly-started second encounter.
+ */
+let encounterGeneration = 0;
 
 function cloneCard(card: Card): Card {
   return { ...card }
@@ -562,6 +570,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
 
   turnState.activePassives = [];
 
+  // Increment generation so any stale 550ms victory/defeat timers from the previous
+  // encounter will abort before clearing this new encounter's state.
+  encounterGeneration++;
+
   activeTurnState.set(freshTurnState(turnState));
   syncCombatScene(turnState);
 
@@ -860,7 +872,20 @@ export function handlePlayCard(
     }
     // Revert any Transmute-transformed cards back to their original form before next encounter
     if (activeDeck) revertTransmutedCards(activeDeck);
+    const victoryGeneration = encounterGeneration;
     setTimeout(() => {
+      // Guard: if a new encounter started while this timer was pending, abort.
+      // Without this check a quick map-node tap can start encounter N+1 before this timer
+      // fires, causing the timer to wipe encounter N+1's state and immediately complete it.
+      if (encounterGeneration !== victoryGeneration) {
+        if (import.meta.env.DEV) console.debug('[encounterBridge] Stale victory timer discarded (generation mismatch)');
+        return;
+      }
+      // Capture enemy ID for exit transition BEFORE clearing activeTurnState
+      const ts = get(activeTurnState);
+      if (ts?.enemy?.template?.id) {
+        combatExitEnemyId.set(ts.enemy.template.id);
+      }
       activeTurnState.set(null);
       notifyEncounterComplete('victory');
     }, turboDelay(550));
@@ -1078,7 +1103,12 @@ export async function handleEndTurn(): Promise<void> {
         activeDeck.consecutiveCursedDraws = 0;
       }
     }
+    const defeatGeneration = encounterGeneration;
     setTimeout(() => {
+      if (encounterGeneration !== defeatGeneration) {
+        if (import.meta.env.DEV) console.debug('[encounterBridge] Stale defeat timer discarded (generation mismatch)');
+        return;
+      }
       playCardAudio('encounter-defeat');
       activeTurnState.set(null);
       activeDeck = null;
@@ -1143,6 +1173,8 @@ export function resetEncounterBridge(): void {
   activeTurnState.set(null);
   activeDeck = null;
   activeRunPool = [];
+  // Invalidate any pending victory/defeat timers from the previous run.
+  encounterGeneration++;
   // AR-269: Clear Akashic Record fact-spacing history so it doesn't persist across runs.
   resetFactLastSeenEncounter();
 }

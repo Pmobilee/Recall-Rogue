@@ -964,7 +964,7 @@ describe('whetstone (reworked)', () => {
   });
 
   it('applies -1 block penalty on shields', () => {
-    const result = resolveShieldModifiers(new Set(['whetstone']), {});
+    const result = resolveShieldModifiers(new Set(['whetstone']), { shieldCardPlayCountThisEncounter: 0 });
     expect(result.flatBlockBonus).toBeLessThan(0);
   });
 });
@@ -1088,17 +1088,17 @@ describe('momentum_wheel (conditional)', () => {
 
 describe('hollow_armor (tradeoff)', () => {
   it('disables block gain after turn 0', () => {
-    const result = resolveShieldModifiers(new Set(['hollow_armor']), { encounterTurnNumber: 1 });
+    const result = resolveShieldModifiers(new Set(['hollow_armor']), { shieldCardPlayCountThisEncounter: 0, encounterTurnNumber: 1 });
     expect(result.blockGainDisabled).toBe(true);
   });
 
   it('allows block on turn 0 (starting block applies separately)', () => {
-    const result = resolveShieldModifiers(new Set(['hollow_armor']), { encounterTurnNumber: 0 });
+    const result = resolveShieldModifiers(new Set(['hollow_armor']), { shieldCardPlayCountThisEncounter: 0, encounterTurnNumber: 0 });
     expect(result.blockGainDisabled).toBeFalsy();
   });
 
   it('grants starting block at encounter start', () => {
-    const result = resolveEncounterStartEffects(new Set(['hollow_armor']), {});
+    const result = resolveEncounterStartEffects(new Set(['hollow_armor']));
     expect(result.startingBlock).toBe(20);
   });
 });

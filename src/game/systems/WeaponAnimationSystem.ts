@@ -115,8 +115,8 @@ export class WeaponAnimationSystem {
 
     // ── Arm + Tome container ──────────────────────────────
     // arm.webp is 1136x973, tome.webp is 1300x929
-    // Large first-person feel: ~350px wide at base 390 width
-    const armTargetW = 350 * scale
+    // Large first-person feel: ~280px wide at base 390 width
+    const armTargetW = 280 * scale
     const armNativeW = 1136
     const armScale = armTargetW / armNativeW
 
@@ -140,8 +140,8 @@ export class WeaponAnimationSystem {
     this.armTomeContainer.add([this.armSprite, this.tomeGlow, this.tomeSprite])
 
     // ── Shield sprite ─────────────────────────────────────
-    // shield.png is 1400x1897 — large first-person feel: ~280px wide at base 390 width
-    const shieldTargetW = 280 * scale
+    // shield.png is 1400x1897 — large first-person feel: ~220px wide at base 390 width
+    const shieldTargetW = 220 * scale
     const shieldNativeW = 1400
     const shieldScale = shieldTargetW / shieldNativeW
 

@@ -1564,7 +1564,7 @@
        Place button bottom at riseAmount + card height + 8px from the container bottom,
        which puts it ~8px above the risen card's top edge.
        AR-220 sub-step 5: left/transform set via inline style to follow selected card's xOffset. */
-    bottom: calc(var(--card-h) * 0.5 + var(--card-h) + 8px);
+    bottom: calc(var(--card-h) * 0.5 + var(--card-h) + calc(20px * var(--layout-scale, 1)));
     white-space: nowrap;
     /* §7 spec: charge button appear = 100ms fade-in */
     animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
@@ -1762,7 +1762,7 @@
   .v2-ap-cost {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
-    font-size: calc(var(--card-w) * 0.18);
+    font-size: calc(var(--card-w) * 0.14);
     color: #ffffff;
     -webkit-text-stroke: 1.5px #000;
     text-shadow:
@@ -1776,7 +1776,7 @@
   .v2-mechanic-name {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.09);
+    font-size: calc(var(--card-w) * 0.075);
     color: #000000;
     text-transform: capitalize;
     text-shadow:

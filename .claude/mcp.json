@@ -7,6 +7,15 @@
         "@modelcontextprotocol/server-postgres",
         "postgresql://terra:terra_dev_2026@localhost:5432/terra_miner"
       ]
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic-ai/mcp-server-sqlite",
+        "--db-path",
+        "public/data/facts.db"
+      ]
     }
   }
 }

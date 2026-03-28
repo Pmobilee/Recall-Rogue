@@ -15,9 +15,7 @@ import type { Card } from '../data/card-types';
 // Mock factsDB for generateQuizPhaseQuestions tests
 // ---------------------------------------------------------------------------
 
-vi.mock('./factsDB', () => ({
-  factsDB: {
-    getAll: vi.fn(() => [
+const mockFacts = [
       {
         id: 'fact_1',
         quizQuestion: 'Q1?',
@@ -93,7 +91,12 @@ vi.mock('./factsDB', () => ({
         funScore: 5,
         ageRating: 'all',
       },
-    ]),
+];
+
+vi.mock('./factsDB', () => ({
+  factsDB: {
+    getAll: vi.fn(() => mockFacts),
+    getTriviaFacts: vi.fn(() => mockFacts),
   },
 }));
 
