@@ -10,6 +10,8 @@ import {
 } from './playtestDescriber'
 import { readStore } from './storeBridge'
 import { isTurboMode, turboDelay } from '../utils/turboMode'
+import { factsDB } from '../services/factsDB'
+import { RELIC_BY_ID } from '../data/relics'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -133,19 +135,57 @@ function getCombatState(): Record<string, unknown> | null {
   const turnState = readStore<any>('terra:activeTurnState');
   if (!turnState) return null;
   const runState = readStore<any>('terra:activeRunState');
+  const enemy = turnState.enemy;
   return {
+    // Player
     playerHp: turnState.playerHP,
-    enemyHp: turnState.enemy?.health,
-    enemyMaxHp: turnState.enemy?.maxHealth,
-    enemyName: turnState.enemy?.name,
-    enemyAction: turnState.enemy?.currentAction,
-    handSize: turnState.deck?.hand?.length ?? 0,
-    hand: (turnState.deck?.hand ?? []).map((c: any) => ({
-      type: c.cardType,
-      factQuestion: c.fact?.question,
-      tier: c.tier,
+    playerMaxHp: turnState.playerState?.maxHP,
+    playerBlock: turnState.playerState?.shield ?? 0,
+    playerStatusEffects: (turnState.playerState?.statusEffects ?? []).map((s: any) => ({
+      type: s.type, value: s.value, turnsRemaining: s.turnsRemaining,
     })),
+    ap: turnState.apCurrent,
+    apMax: turnState.apMax,
+    // Enemy
+    enemyName: enemy?.template?.name ?? enemy?.name ?? 'Unknown',
+    enemyHp: enemy?.currentHP ?? enemy?.health,
+    enemyMaxHp: enemy?.maxHP ?? enemy?.maxHealth,
+    enemyBlock: enemy?.block ?? 0,
+    enemyIntent: enemy?.nextIntent ? {
+      type: enemy.nextIntent.type,
+      value: enemy.nextIntent.value,
+      telegraph: enemy.nextIntent.telegraph,
+      hitCount: enemy.nextIntent.hitCount,
+      statusEffect: enemy.nextIntent.statusEffect ?? null,
+    } : null,
+    enemyStatusEffects: (enemy?.statusEffects ?? []).map((s: any) => ({
+      type: s.type, value: s.value, turnsRemaining: s.turnsRemaining,
+    })),
+    // Hand
+    handSize: turnState.deck?.hand?.length ?? 0,
+    hand: (turnState.deck?.hand ?? []).map((c: any) => {
+      const fact = c.factId && factsDB.isReady() ? factsDB.getById(c.factId) : null;
+      return {
+        type: c.cardType,
+        mechanic: c.mechanicId ?? null,
+        mechanicName: c.mechanicName ?? null,
+        tier: c.tier,
+        apCost: c.apCost ?? 1,
+        baseEffectValue: c.baseEffectValue,
+        domain: c.domain ?? null,
+        factId: c.factId ?? null,
+        factQuestion: fact?.quizQuestion ?? null,
+        factAnswer: fact?.correctAnswer ?? null,
+        isLocked: c.isLocked ?? false,
+        isCursed: c.isCursed ?? false,
+        isUpgraded: c.isUpgraded ?? false,
+        masteryLevel: c.masteryLevel ?? 0,
+        chainType: c.chainType ?? null,
+      };
+    }),
+    // Turn & Run
     turn: turnState.turn,
+    cardsPlayedThisTurn: turnState.cardsPlayedThisTurn ?? 0,
     floor: runState?.currentFloor,
     segment: runState?.currentSegment,
     gold: runState?.currency,
@@ -242,6 +282,51 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
   });
 }
 
+/** Preview the quiz that would appear if a card is charge-played. Does NOT play the card or consume AP. */
+async function previewCardQuiz(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const { activeTurnState } = await import('../services/encounterBridge');
+    const { get } = await import('svelte/store');
+    const turnState = get(activeTurnState);
+    if (!turnState) return { ok: false, message: 'No active turn state — are you in combat?' };
+
+    const hand = turnState.deck?.hand;
+    if (!Array.isArray(hand) || index < 0 || index >= hand.length) {
+      return { ok: false, message: `Card index ${index} is out of range (hand size: ${hand?.length ?? 0})` };
+    }
+
+    const card = hand[index];
+    if (!card?.factId) {
+      return { ok: false, message: `Card at index ${index} has no fact assigned` };
+    }
+
+    const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null;
+    if (!fact) {
+      return { ok: false, message: `Fact '${card.factId}' not found in factsDB` };
+    }
+
+    const { getQuizChoices } = await import('../services/quizService');
+    const { displayAnswer } = await import('../services/numericalDistractorService');
+    const choices = getQuizChoices(fact);
+    const correctAnswer = displayAnswer(fact.correctAnswer ?? '');
+    const correctIndex = choices.indexOf(correctAnswer);
+
+    return {
+      ok: true,
+      message: `Quiz preview for card ${index}`,
+      state: {
+        question: fact.quizQuestion ?? '',
+        choices,
+        correctAnswer,
+        correctIndex: correctIndex >= 0 ? correctIndex : 0,
+        factId: card.factId,
+        domain: card.domain ?? null,
+        cardType: card.cardType,
+      },
+    };
+  });
+}
+
 /** End the current combat turn. */
 async function endTurn(): Promise<PlayResult> {
   return safeAction(async () => {
@@ -330,15 +415,22 @@ async function selectRelic(index: number): Promise<PlayResult> {
   });
 }
 
-/** Get detailed relic information from the active run. */
-function getRelicDetails(): Array<{ definitionId: string; acquiredAtFloor: number; triggerCount: number }> {
+/** Get detailed relic information from the active run, including definitions. */
+function getRelicDetails(): Array<Record<string, unknown>> {
   const runState = readStore<any>('terra:activeRunState');
   if (!runState?.runRelics) return [];
-  return runState.runRelics.map((r: any) => ({
-    definitionId: r.definitionId ?? '',
-    acquiredAtFloor: r.acquiredAtFloor ?? 0,
-    triggerCount: r.triggerCount ?? 0,
-  }));
+  return runState.runRelics.map((r: any) => {
+    const def = RELIC_BY_ID[r.definitionId];
+    return {
+      id: r.definitionId ?? '',
+      name: def?.name ?? r.definitionId ?? '',
+      description: def?.description ?? '',
+      rarity: def?.rarity ?? 'common',
+      trigger: def?.trigger ?? 'unknown',
+      acquiredAtFloor: r.acquiredAtFloor ?? 0,
+      triggerCount: r.triggerCount ?? 0,
+    };
+  });
 }
 
 /** Retreat at a checkpoint (cash out). */
@@ -409,6 +501,114 @@ async function mysteryContinue(): Promise<PlayResult> {
     btn.click();
     await wait(turboDelay(1000));
     return { ok: true, message: `Mystery resolved. Screen: ${getScreen()}` };
+  });
+}
+
+/** Get the current shop inventory (relics, cards, prices). */
+async function getShopInventory(): Promise<Record<string, unknown> | null> {
+  const { activeShopInventory } = await import('../services/gameFlowController');
+  const { get } = await import('svelte/store');
+  const inventory = get(activeShopInventory);
+  if (!inventory) return null;
+  return {
+    relics: (inventory.relics ?? []).map((item: any, i: number) => {
+      const def = RELIC_BY_ID[item.relic?.definitionId];
+      return {
+        index: i,
+        id: item.relic?.definitionId ?? '',
+        name: def?.name ?? item.relic?.definitionId ?? '',
+        description: def?.description ?? '',
+        rarity: def?.rarity ?? 'common',
+        price: item.price ?? 0,
+        sold: item.sold ?? false,
+      };
+    }),
+    cards: (inventory.cards ?? []).map((item: any, i: number) => {
+      const fact = item.card?.factId && factsDB.isReady() ? factsDB.getById(item.card.factId) : null;
+      return {
+        index: i,
+        type: item.card?.cardType ?? '',
+        mechanic: item.card?.mechanicId ?? null,
+        mechanicName: item.card?.mechanicName ?? null,
+        domain: item.card?.domain ?? null,
+        factQuestion: fact?.quizQuestion ?? null,
+        price: item.price ?? 0,
+        sold: item.sold ?? false,
+      };
+    }),
+    removalCost: inventory.removalCost ?? null,
+  };
+}
+
+/** Buy a relic from the shop by index. */
+async function shopBuyRelic(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector(`[data-testid="shop-relic-${index}"]`) as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: `Shop relic button ${index} not found` };
+    if (btn.disabled) return { ok: false, message: `Shop relic ${index} is not purchasable (sold or not enough gold)` };
+    btn.click();
+    await wait(turboDelay(1000));
+    return { ok: true, message: `Bought shop relic ${index}. Screen: ${getScreen()}` };
+  });
+}
+
+/** Buy a card from the shop by index. */
+async function shopBuyCard(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector(`[data-testid="shop-card-${index}"]`) as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: `Shop card button ${index} not found` };
+    if (btn.disabled) return { ok: false, message: `Shop card ${index} is not purchasable (sold or not enough gold)` };
+    btn.click();
+    await wait(turboDelay(1000));
+    return { ok: true, message: `Bought shop card ${index}. Screen: ${getScreen()}` };
+  });
+}
+
+/** Click the meditate option in a rest room. */
+async function restMeditate(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="rest-meditate"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Rest meditate button not found' };
+    if (btn.disabled) return { ok: false, message: 'Meditate is currently disabled' };
+    btn.click();
+    await wait(turboDelay(1000));
+    return { ok: true, message: `Meditating. Screen: ${getScreen()}` };
+  });
+}
+
+/** Reroll the current card reward options. */
+async function rerollReward(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="reward-reroll"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Reward reroll button not found' };
+    if (btn.disabled) return { ok: false, message: 'No rerolls remaining' };
+    btn.click();
+    await wait(turboDelay(500));
+    return { ok: true, message: 'Rerolled card reward' };
+  });
+}
+
+/** Get mystery event choices from the DOM. */
+function getMysteryEventChoices(): Array<{ index: number; text: string }> {
+  const choices: Array<{ index: number; text: string }> = [];
+  for (let i = 0; i < 5; i++) {
+    const btn = document.querySelector(`[data-testid="mystery-choice-${i}"]`) as HTMLElement | null;
+    if (!btn) break;
+    const style = getComputedStyle(btn);
+    if (style.display === 'none' || style.visibility === 'hidden') continue;
+    choices.push({ index: i, text: btn.textContent?.trim() ?? '' });
+  }
+  return choices;
+}
+
+/** Select a mystery event choice by index. */
+async function selectMysteryChoice(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector(`[data-testid="mystery-choice-${index}"]`) as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: `Mystery choice ${index} not found` };
+    btn.click();
+    await wait(turboDelay(1000));
+    return { ok: true, message: `Selected mystery choice ${index}. Screen: ${getScreen()}` };
   });
 }
 
@@ -493,7 +693,7 @@ async function forceQuizForFact(factId: string): Promise<PlayResult> {
 /** Navigate to the study screen and optionally start a session. */
 async function startStudy(size?: number): Promise<PlayResult> {
   return safeAction(async () => {
-    writeStore('terra:currentScreen', 'study');
+    writeStore('terra:currentScreen', 'restStudy');
     await wait(turboDelay(500));
 
     if (size) {
@@ -815,6 +1015,7 @@ export function initPlaytestAPI(): void {
     playCard,
     quickPlayCard,
     chargePlayCard,
+    previewCardQuiz,
     endTurn,
     // Card Roguelite — Room & Reward
     selectRoom,
@@ -828,7 +1029,14 @@ export function initPlaytestAPI(): void {
     getRunState,
     restHeal,
     restUpgrade,
+    restMeditate,
     mysteryContinue,
+    getShopInventory,
+    shopBuyRelic,
+    shopBuyCard,
+    rerollReward,
+    getMysteryEventChoices,
+    selectMysteryChoice,
     // Quiz
     getQuiz,
     answerQuiz,

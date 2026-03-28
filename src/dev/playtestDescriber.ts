@@ -6,6 +6,8 @@
  */
 
 import { readStore } from './storeBridge'
+import { factsDB } from '../services/factsDB'
+import { RELIC_BY_ID } from '../data/relics'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -140,22 +142,62 @@ export function look(): string {
       const turnState = readStore<any>('terra:activeTurnState');
       const runState = readStore<any>('terra:activeRunState');
       const playerHp = turnState?.playerHP ?? '?';
-      const enemyHp = turnState?.enemy?.health ?? '?';
-      const enemyMaxHp = turnState?.enemy?.maxHealth ?? '?';
-      const enemyName = turnState?.enemy?.name ?? 'Unknown';
+      const playerMaxHp = turnState?.playerState?.maxHP ?? '?';
+      const playerBlock = turnState?.playerState?.shield ?? 0;
+      const ap = turnState?.apCurrent ?? '?';
+      const apMax = turnState?.apMax ?? '?';
+      const enemy = turnState?.enemy;
+      const enemyHp = enemy?.currentHP ?? enemy?.health ?? '?';
+      const enemyMaxHp = enemy?.maxHP ?? enemy?.maxHealth ?? '?';
+      const enemyName = enemy?.template?.name ?? enemy?.name ?? 'Unknown';
+      const enemyBlock = enemy?.block ?? 0;
       const turn = turnState?.turn ?? '?';
       const floor = runState?.currentFloor ?? '?';
       const handSize = turnState?.deck?.hand?.length ?? 0;
 
       lines.push(`SCREEN: combat (Floor ${floor}, Turn ${turn})`);
-      lines.push(`PLAYER HP: ${playerHp}  ENEMY: ${enemyName} (${enemyHp}/${enemyMaxHp})`);
+      lines.push(`PLAYER: ${playerHp}/${playerMaxHp} HP${playerBlock > 0 ? `, ${playerBlock} Block` : ''}  AP: ${ap}/${apMax}`);
+
+      // Player status effects
+      const playerStatuses = turnState?.playerState?.statusEffects ?? [];
+      if (playerStatuses.length > 0) {
+        const statusStr = playerStatuses.map((s: any) => `${s.type}(${s.value}, ${s.turnsRemaining}t)`).join(', ');
+        lines.push(`  Buffs/Debuffs: ${statusStr}`);
+      }
+
+      lines.push(`ENEMY: ${enemyName} — ${enemyHp}/${enemyMaxHp} HP${enemyBlock > 0 ? `, ${enemyBlock} Block` : ''}`);
+
+      // Enemy intent
+      if (enemy?.nextIntent) {
+        const intent = enemy.nextIntent;
+        const hitStr = intent.hitCount && intent.hitCount > 1 ? ` x${intent.hitCount}` : '';
+        lines.push(`  Intent: ${intent.telegraph ?? intent.type} (${intent.type} ${intent.value}${hitStr})`);
+      }
+
+      // Enemy status effects
+      const enemyStatuses = enemy?.statusEffects ?? [];
+      if (enemyStatuses.length > 0) {
+        const statusStr = enemyStatuses.map((s: any) => `${s.type}(${s.value}, ${s.turnsRemaining}t)`).join(', ');
+        lines.push(`  Statuses: ${statusStr}`);
+      }
+
       lines.push(`HAND: ${handSize} cards`);
       lines.push('');
 
       if (turnState?.deck?.hand) {
         lines.push('HAND:');
         (turnState.deck.hand as any[]).forEach((c: any, i: number) => {
-          lines.push(`  [${i}] ${c.cardType ?? '?'} — ${c.fact?.question?.slice(0, 60) ?? 'no fact'}`);
+          const fact = c.factId && factsDB.isReady() ? factsDB.getById(c.factId) : null;
+          const q = fact?.quizQuestion?.slice(0, 60) ?? 'no fact';
+          const mechLabel = c.mechanicName ?? c.cardType ?? '?';
+          const apCost = c.apCost ?? 1;
+          const domain = c.domain ?? '';
+          const extras: string[] = [];
+          if (c.isLocked) extras.push('LOCKED');
+          if (c.isCursed) extras.push('CURSED');
+          if (c.isUpgraded) extras.push('UP');
+          const extrasStr = extras.length > 0 ? ` [${extras.join(',')}]` : '';
+          lines.push(`  [${i}] ${mechLabel} (${domain}, ${apCost}AP)${extrasStr} — ${q}`);
         });
         lines.push('');
       }
@@ -165,6 +207,23 @@ export function look(): string {
     case 'cardReward': {
       lines.push('SCREEN: cardReward');
       lines.push('Choose a card type to add to your deck.');
+      // Read reward type buttons from DOM
+      const rewardBtns = document.querySelectorAll('[data-testid^="reward-type-"]');
+      if (rewardBtns.length > 0) {
+        lines.push('REWARD TYPES:');
+        rewardBtns.forEach((el) => {
+          const htmlEl = el as HTMLButtonElement;
+          const testId = htmlEl.getAttribute('data-testid') ?? '';
+          const typeName = testId.replace('reward-type-', '');
+          const disabled = htmlEl.disabled ? ' [DISABLED]' : '';
+          lines.push(`  ${typeName}${disabled}`);
+        });
+      }
+      // Check for reroll button
+      const rerollBtn = document.querySelector('[data-testid="reward-reroll"]') as HTMLButtonElement | null;
+      if (rerollBtn) {
+        lines.push(`REROLL: ${rerollBtn.disabled ? 'DISABLED' : 'available'}`);
+      }
       lines.push('');
       break;
     }
@@ -195,15 +254,46 @@ export function look(): string {
     }
 
     case 'shopRoom': {
+      const runState = readStore<any>('terra:activeRunState');
+      const gold = runState?.currency ?? '?';
       lines.push('SCREEN: shopRoom');
-      lines.push('Browse and buy relics or cards.');
+      lines.push(`GOLD: ${gold}`);
+
+      // Read shop items from DOM
+      const relicEls = document.querySelectorAll('[data-testid^="shop-relic-"]');
+      if (relicEls.length > 0) {
+        lines.push('RELICS:');
+        relicEls.forEach((el, i) => {
+          const text = (el as HTMLElement).textContent?.trim() ?? '';
+          const sold = (el as HTMLButtonElement).disabled ? ' [SOLD/UNAVAILABLE]' : '';
+          lines.push(`  [${i}] ${text}${sold}`);
+        });
+      }
+
+      const cardEls = document.querySelectorAll('[data-testid^="shop-card-"]');
+      if (cardEls.length > 0) {
+        lines.push('CARDS:');
+        cardEls.forEach((el, i) => {
+          const text = (el as HTMLElement).textContent?.trim() ?? '';
+          const sold = (el as HTMLButtonElement).disabled ? ' [SOLD/UNAVAILABLE]' : '';
+          lines.push(`  [${i}] ${text}${sold}`);
+        });
+      }
+
       lines.push('');
       break;
     }
 
     case 'restRoom': {
       lines.push('SCREEN: restRoom');
-      lines.push('Choose to heal HP or upgrade a card.');
+      const healBtn = document.querySelector('[data-testid="rest-heal"]') as HTMLButtonElement | null;
+      const upgradeBtn = document.querySelector('[data-testid="rest-upgrade"]') as HTMLButtonElement | null;
+      const meditateBtn = document.querySelector('[data-testid="rest-meditate"]') as HTMLButtonElement | null;
+      lines.push('OPTIONS:');
+      if (healBtn) lines.push(`  Heal: ${healBtn.disabled ? 'DISABLED' : 'available'} — ${healBtn.textContent?.trim() ?? ''}`);
+      if (upgradeBtn) lines.push(`  Upgrade: ${upgradeBtn.disabled ? 'DISABLED' : 'available'} — ${upgradeBtn.textContent?.trim() ?? ''}`);
+      if (meditateBtn) lines.push(`  Meditate: ${meditateBtn.disabled ? 'DISABLED' : 'available'} — ${meditateBtn.textContent?.trim() ?? ''}`);
+      if (!healBtn && !upgradeBtn && !meditateBtn) lines.push('  Choose to heal HP or upgrade a card.');
       lines.push('');
       break;
     }
@@ -214,6 +304,19 @@ export function look(): string {
       if (event) {
         lines.push(`EVENT: ${event.title ?? event.id ?? 'Unknown'}`);
         lines.push(`DESC: ${event.description ?? ''}`);
+      }
+      // Read choice buttons from DOM
+      const choiceBtns: HTMLElement[] = [];
+      for (let i = 0; i < 5; i++) {
+        const btn = document.querySelector(`[data-testid="mystery-choice-${i}"]`) as HTMLElement | null;
+        if (!btn) break;
+        choiceBtns.push(btn);
+      }
+      if (choiceBtns.length > 0) {
+        lines.push('CHOICES:');
+        choiceBtns.forEach((btn, i) => {
+          lines.push(`  [${i}] ${btn.textContent?.trim() ?? ''}`);
+        });
       }
       lines.push('');
       break;

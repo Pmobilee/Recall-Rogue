@@ -33,13 +33,10 @@ const __dirname = dirname(__filename);
 const PROJECT_ROOT = resolve(__dirname, '../..');
 
 const COMFYUI_URL = 'http://localhost:8188';
-const COMFYUI_DIR = '/Users/damion/CODE/Terry-pron/runtime/comfyui';
+const COMFYUI_DIR = '/Users/damion/CODE/ComfyUI';
 const COMFYUI_PYTHON = `${COMFYUI_DIR}/.venv/bin/python`;
 const WORKFLOW_PATH = join(PROJECT_ROOT, 'sprite-gen/workflows/ltx-sprite-animate-api.json');
 const DEFAULT_OUTPUT_DIR = join(PROJECT_ROOT, 'sprite-gen/output/animations');
-
-/** Padding ratio added by the workflow around the sprite before generation */
-const PADDING_RATIO = 100 / 1224;
 
 const DEFAULT_NEGATIVE =
   'Negative prompt:\nCamera movement, zoom, pan, tilt, background scenery, realistic, 3D render, smooth animation, environment, floor texture, shadows on background, swaying up and down, morphing shape, extra limbs, deformation, melting';
@@ -65,8 +62,30 @@ try {
 // ---------------------------------------------------------------------------
 
 /**
+ * Flattens an RGBA sprite onto a white background so LTX-2.3 doesn't see
+ * transparent pixels as black. Saves to a temp file and returns its path.
+ * @param {string} spritePath - Path to the original RGBA sprite
+ * @returns {Promise<string>} Path to the flattened RGB PNG
+ */
+async function flattenSprite(spritePath) {
+  const meta = await sharp(spritePath).metadata();
+  if (!meta.hasAlpha) return spritePath; // Already opaque, no flattening needed
+
+  const flatPath = spritePath.replace(/\.png$/i, '_flat.png');
+  await sharp(spritePath)
+    .flatten({ background: { r: 255, g: 255, b: 255 } })
+    .png()
+    .toFile(flatPath);
+
+  console.log(`  Flattened RGBA → RGB on white bg: ${flatPath}`);
+  return flatPath;
+}
+
+/**
  * Uploads a sprite PNG to ComfyUI's input directory via multipart form.
- * @param {string} spritePath - Absolute path to the sprite PNG
+ * IMPORTANT: Sprites MUST be flattened first (no transparency) or LTX will
+ * generate black frames. Use flattenSprite() before calling this.
+ * @param {string} spritePath - Absolute path to the sprite PNG (should be RGB)
  * @param {string} comfyuiUrl - Base URL of the ComfyUI server
  * @returns {Promise<string>} The filename as stored by ComfyUI
  */
@@ -107,6 +126,32 @@ async function uploadSprite(spritePath, comfyuiUrl) {
 }
 
 // ---------------------------------------------------------------------------
+// Dimension helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Calculates generation dimensions that fit the original sprite's aspect ratio
+ * within the target size, rounded to the nearest multiple of 32 (LTX requirement).
+ * @param {number} origWidth - Original sprite width in pixels
+ * @param {number} origHeight - Original sprite height in pixels
+ * @param {number} targetSize - Maximum dimension (longer edge)
+ * @returns {{ width: number, height: number }}
+ */
+function calculateDimensions(origWidth, origHeight, targetSize) {
+  const aspect = origWidth / origHeight;
+  let w, h;
+  if (aspect >= 1) {
+    // wider than tall
+    w = targetSize;
+    h = Math.round(targetSize / aspect / 32) * 32;
+  } else {
+    h = targetSize;
+    w = Math.round(targetSize * aspect / 32) * 32;
+  }
+  return { width: w, height: h };
+}
+
+// ---------------------------------------------------------------------------
 // Step 2: Build workflow from template
 // ---------------------------------------------------------------------------
 
@@ -137,9 +182,12 @@ function buildWorkflow(templatePath, { imageName, prompt, duration, width, heigh
   wf['43'].inputs.filename_prefix = `sprite-anim/${name}`;
   wf['224'].inputs.filename_prefix = `sprite-anim-frames/${name}`;
 
-  // Resize targets (2x for pre-padding by workflow)
-  wf['219'].inputs.target_width = width * 2;
-  wf['219'].inputs.target_height = height * 2;
+  // ResizeAndPadImage: fit sprite into box before padding.
+  // This is a fixed pre-padding target, not tied to generation resolution.
+  // The sprite gets fit into this, then 256px padding added on each side (25% of 1024),
+  // then ImageResizeKJv2 resizes everything down to the generation width x height.
+  wf['219'].inputs.target_width = 1024;
+  wf['219'].inputs.target_height = 1024;
 
   return wf;
 }
@@ -181,7 +229,7 @@ async function submitWorkflow(workflow, comfyuiUrl) {
  * @param {number} [timeoutMs=600000] - Max wait time in milliseconds (10 minutes)
  * @returns {Promise<object>} The completed history entry
  */
-async function pollUntilDone(promptId, comfyuiUrl, timeoutMs = 600_000) {
+async function pollUntilDone(promptId, comfyuiUrl, timeoutMs = 1_800_000) {
   const start = Date.now();
   let lastStatus = '';
 
@@ -257,33 +305,34 @@ async function downloadFrames(historyData, name, comfyuiUrl, outputDir) {
 }
 
 // ---------------------------------------------------------------------------
-// Step 5: Background removal + crop (via rembg in ComfyUI Python venv)
+// Step 5: Background removal + resize (via rembg in ComfyUI Python venv)
 // ---------------------------------------------------------------------------
 
 /**
- * Runs rembg background removal on all raw frames, crops padding added by the
- * workflow, and writes sequentially numbered RGBA PNGs for ffmpeg.
+ * Runs rembg background removal on all raw frames, resizes to the original
+ * sprite's dimensions, and writes sequentially numbered RGBA PNGs for ffmpeg.
  * @param {string} framesDir - Directory containing raw frames
  * @param {string} outputDir - Root output directory
  * @param {string} name - Sprite name
- * @param {number} paddingRatio - Fraction of width that is padding on each side
- * @param {number} width - Target output width (used to compute pad pixels)
+ * @param {number} origWidth - Original sprite width to resize frames to
+ * @param {number} origHeight - Original sprite height to resize frames to
+ * @param {string} rembgModel - rembg model name (e.g. "birefnet-general")
  * @returns {Promise<string>} Path to the RGBA frames directory
  */
-async function removeBackgrounds(framesDir, outputDir, name, paddingRatio, width) {
+async function removeBackgrounds(framesDir, outputDir, name, origWidth, origHeight, rembgModel) {
   const rgbaDir = join(outputDir, name, 'rgba-frames');
   await mkdir(rgbaDir, { recursive: true });
 
-  const padPx = Math.round(width * paddingRatio);
-
   const script = `
 import os, sys
-from rembg import remove
+from rembg import remove, new_session
 from PIL import Image
 
 frames_dir = sys.argv[1]
 rgba_dir = sys.argv[2]
-pad = int(sys.argv[3])
+orig_width = int(sys.argv[3])
+orig_height = int(sys.argv[4])
+model_name = sys.argv[5]
 
 frames = sorted([f for f in os.listdir(frames_dir) if f.endswith('.png')])
 total = len(frames)
@@ -292,25 +341,27 @@ if total == 0:
     print('ERROR: No PNG frames found in ' + frames_dir, flush=True)
     sys.exit(1)
 
-print(f'Processing {total} frames with pad={pad}px...', flush=True)
+print(f'Processing {total} frames, model={model_name}, resize to {orig_width}x{orig_height}...', flush=True)
+
+session = new_session(model_name)
 
 for i, fname in enumerate(frames):
     img = Image.open(os.path.join(frames_dir, fname)).convert('RGBA')
     # Remove background
-    result = remove(img)
-    # Crop padding on all four sides
+    result = remove(img, session=session)
+    # Crop out the padding border that was added during generation.
+    # Workflow: sprite fit to 1024x1024 (ResizeAndPadImage), then 256px padding each side (25% per side)
+    # (ImagePadKJ) = 1536x1536, then resized to generation dims. Padding ratio per side = 256/1536.
+    padding_ratio = 256.0 / 1536.0
     w, h = result.size
-    left = pad
-    top = pad
-    right = w - pad
-    bottom = h - pad
-    if right > left and bottom > top:
-        cropped = result.crop((left, top, right, bottom))
-    else:
-        cropped = result
+    pad_x = int(w * padding_ratio)
+    pad_y = int(h * padding_ratio)
+    cropped = result.crop((pad_x, pad_y, w - pad_x, h - pad_y))
+    # Resize the cropped (sprite-only) region to original sprite dimensions
+    resized = cropped.resize((orig_width, orig_height), Image.LANCZOS)
     # Save with sequential naming for ffmpeg
     out_name = f'{i:05d}.png'
-    cropped.save(os.path.join(rgba_dir, out_name))
+    resized.save(os.path.join(rgba_dir, out_name))
     print(f'  [{i+1}/{total}] {fname} -> {out_name}', flush=True)
 
 print(f'Done: {total} frames processed', flush=True)
@@ -321,8 +372,8 @@ print(f'Done: {total} frames processed', flush=True)
 
   try {
     execSync(
-      `"${COMFYUI_PYTHON}" "${tmpScript}" "${framesDir}" "${rgbaDir}" ${padPx}`,
-      { stdio: 'inherit', timeout: 300_000 }
+      `"${COMFYUI_PYTHON}" "${tmpScript}" "${framesDir}" "${rgbaDir}" ${origWidth} ${origHeight} "${rembgModel}"`,
+      { stdio: 'inherit', timeout: 900_000 }
     );
   } finally {
     await unlink(tmpScript).catch(() => {});
@@ -347,15 +398,26 @@ print(f'Done: {total} frames processed', flush=True)
  * @returns {Promise<{webmPath: string, spritesheetPath: string, previewPath: string}>}
  */
 async function encodeOutputs(rgbaDir, outputDir, name, fps = 24) {
+  const apngPath = join(outputDir, name, `${name}_idle.apng`);
   const webmPath = join(outputDir, name, `${name}_idle.webm`);
   const spritesheetPath = join(outputDir, name, `${name}_idle_sheet.png`);
   const previewPath = join(outputDir, name, `${name}_idle_preview.mp4`);
 
-  // Transparent WebM (VP9 with alpha channel)
-  console.log('  Encoding transparent WebM...');
+  // Animated PNG with alpha (primary transparent format — VP9 alpha is unreliable)
+  console.log('  Encoding transparent APNG...');
   execSync(
     `ffmpeg -y -framerate ${fps} -i "${rgbaDir}/%05d.png"` +
-      ` -c:v libvpx-vp9 -pix_fmt yuva420p -b:v 0 -crf 30 -auto-alt-ref 0 -an` +
+      ` -plays 0` +
+      ` "${apngPath}"`,
+    { stdio: 'inherit' }
+  );
+  console.log(`  APNG: ${apngPath}`);
+
+  // WebM preview (no alpha, smaller file for sharing)
+  console.log('  Encoding WebM preview...');
+  execSync(
+    `ffmpeg -y -framerate ${fps} -i "${rgbaDir}/%05d.png"` +
+      ` -c:v libvpx-vp9 -b:v 0 -crf 30 -an` +
       ` "${webmPath}"`,
     { stdio: 'inherit' }
   );
@@ -365,7 +427,7 @@ async function encodeOutputs(rgbaDir, outputDir, name, fps = 24) {
   console.log('  Encoding preview MP4...');
   execSync(
     `ffmpeg -y -framerate ${fps} -i "${rgbaDir}/%05d.png"` +
-      ` -c:v libx264 -pix_fmt yuv420p -crf 23` +
+      ` -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2" -c:v libx264 -pix_fmt yuv420p -crf 23` +
       ` "${previewPath}"`,
     { stdio: 'inherit' }
   );
@@ -406,7 +468,7 @@ async function encodeOutputs(rgbaDir, outputDir, name, fps = 24) {
     console.warn('  Warning: No frames found for spritesheet — skipping');
   }
 
-  return { webmPath, spritesheetPath, previewPath };
+  return { apngPath, webmPath, spritesheetPath, previewPath };
 }
 
 // ---------------------------------------------------------------------------
@@ -436,16 +498,18 @@ function generateDefaultPrompt(name) {
 async function main() {
   const { values: args } = parseArgs({
     options: {
-      sprite:           { type: 'string' },
-      prompt:           { type: 'string' },
-      duration:         { type: 'string',  default: '3' },
-      width:            { type: 'string',  default: '512' },
-      height:           { type: 'string',  default: '512' },
-      seed:             { type: 'string' },
-      name:             { type: 'string' },
-      'output-dir':     { type: 'string',  default: DEFAULT_OUTPUT_DIR },
-      'comfyui-url':    { type: 'string',  default: COMFYUI_URL },
-      'skip-generate':  { type: 'boolean', default: false },
+      sprite:             { type: 'string' },
+      prompt:             { type: 'string' },
+      duration:           { type: 'string',  default: '3' },
+      width:              { type: 'string' },
+      height:             { type: 'string' },
+      'target-size':      { type: 'string',  default: '768' },
+      seed:               { type: 'string' },
+      name:               { type: 'string' },
+      'output-dir':       { type: 'string',  default: DEFAULT_OUTPUT_DIR },
+      'comfyui-url':      { type: 'string',  default: COMFYUI_URL },
+      'rembg-model':      { type: 'string',  default: 'birefnet-general' },
+      'skip-generate':    { type: 'boolean', default: false },
       'skip-postprocess': { type: 'boolean', default: false },
     },
     strict: true,
@@ -458,8 +522,10 @@ async function main() {
         '  --sprite <path>        (required) Path to sprite PNG\n' +
         '  --prompt <text>        Custom animation prompt\n' +
         '  --duration <n>         Seconds (default: 3)\n' +
-        '  --width <n>            Output width in px (default: 512)\n' +
-        '  --height <n>           Output height in px (default: 512)\n' +
+        '  --target-size <n>      Max dimension for generation (default: 768); aspect ratio auto-calculated\n' +
+        '  --width <n>            Override generation width explicitly (bypasses --target-size)\n' +
+        '  --height <n>           Override generation height explicitly (bypasses --target-size)\n' +
+        '  --rembg-model <name>   rembg model to use (default: birefnet-general)\n' +
         '  --seed <n>             RNG seed (random if omitted)\n' +
         '  --name <str>           Output name (derived from filename if omitted)\n' +
         '  --output-dir <path>    Output directory (default: sprite-gen/output/animations)\n' +
@@ -474,15 +540,30 @@ async function main() {
   const name        = args.name || basename(spritePath, extname(spritePath));
   const seed        = args.seed ? parseInt(args.seed, 10) : Math.floor(Math.random() * 999_999);
   const duration    = parseInt(args.duration, 10);
-  const width       = parseInt(args.width, 10);
-  const height      = parseInt(args.height, 10);
   const outputDir   = resolve(args['output-dir']);
   const comfyuiUrl  = args['comfyui-url'];
+  const rembgModel  = args['rembg-model'];
   const prompt      = args.prompt || generateDefaultPrompt(name);
 
+  // Read original sprite dimensions for aspect-ratio-aware generation and post-process resize
+  const spriteMeta = await sharp(spritePath).metadata();
+  const origWidth  = spriteMeta.width;
+  const origHeight = spriteMeta.height;
+
+  // Resolve generation dimensions: explicit --width/--height override; otherwise auto from --target-size
+  let width, height;
+  if (args.width && args.height) {
+    width  = parseInt(args.width, 10);
+    height = parseInt(args.height, 10);
+  } else {
+    const targetSize = parseInt(args['target-size'], 10);
+    ({ width, height } = calculateDimensions(origWidth, origHeight, targetSize));
+  }
+
   console.log(`\n=== Sprite Animate: ${name} ===`);
-  console.log(`  Sprite:     ${spritePath}`);
-  console.log(`  Resolution: ${width}x${height}  Duration: ${duration}s  Seed: ${seed}`);
+  console.log(`  Sprite:     ${spritePath} (original: ${origWidth}x${origHeight})`);
+  console.log(`  Generation: ${width}x${height}  Duration: ${duration}s  Seed: ${seed}`);
+  console.log(`  rembg model: ${rembgModel}`);
   console.log(`  Output:     ${outputDir}/${name}/`);
   if (args['skip-generate'])    console.log('  [FLAG] --skip-generate: using existing raw-frames');
   if (args['skip-postprocess']) console.log('  [FLAG] --skip-postprocess: skipping bg removal + encoding');
@@ -496,8 +577,9 @@ async function main() {
     // -----------------------------------------------------------------------
     // Step 1: Upload sprite
     // -----------------------------------------------------------------------
-    console.log('[1/4] Uploading sprite to ComfyUI...');
-    const imageName = await uploadSprite(spritePath, comfyuiUrl);
+    console.log('[1/4] Flattening & uploading sprite to ComfyUI...');
+    const flatPath = await flattenSprite(spritePath);
+    const imageName = await uploadSprite(flatPath, comfyuiUrl);
     console.log(`  Uploaded as: ${imageName}`);
 
     // -----------------------------------------------------------------------
@@ -537,15 +619,16 @@ async function main() {
 
   if (!args['skip-postprocess']) {
     // -----------------------------------------------------------------------
-    // Step 5: Background removal
+    // Step 5: Background removal + resize to original dimensions
     // -----------------------------------------------------------------------
     console.log('\n[Post 1/2] Removing backgrounds via rembg...');
     const rgbaDir = await removeBackgrounds(
       framesDir,
       outputDir,
       name,
-      PADDING_RATIO,
-      width
+      origWidth,
+      origHeight,
+      rembgModel
     );
 
     // -----------------------------------------------------------------------
@@ -555,7 +638,8 @@ async function main() {
     const outputs = await encodeOutputs(rgbaDir, outputDir, name, 24);
 
     console.log('\n=== Done! ===');
-    console.log(`  WebM (transparent): ${outputs.webmPath}`);
+    console.log(`  APNG (transparent): ${outputs.apngPath}`);
+    console.log(`  WebM (preview):     ${outputs.webmPath}`);
     console.log(`  Spritesheet (PNG):  ${outputs.spritesheetPath}`);
     console.log(`  Preview (MP4):      ${outputs.previewPath}`);
   } else {

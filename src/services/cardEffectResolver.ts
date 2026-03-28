@@ -1323,31 +1323,31 @@ export function resolveCardEffect(
 
     // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────
 
-    // AR-264: Smite — CC scales with Knowledge Aura; CW extra Aura penalty
+    // AR-264: Smite — CC scales inversely with fog; CW extra fog penalty
     case 'smite': {
       if (isChargeCorrect) {
-        // CC: 10 + (6 × auraLevel). At Aura 5 (neutral): 40. At Aura 8 (Flow): 58. At Aura 3 (Brain Fog): 28.
-        const auraLevel = getAuraLevel();
-        mechanicBaseValue = 10 + (6 * auraLevel);
+        // CC: damage scales inversely with fog. At fog 0 (flow): 70. At fog 5 (neutral): 40. At fog 10 (max fog): 10.
+        const fogLevel = getAuraLevel();
+        mechanicBaseValue = 10 + (6 * (10 - fogLevel));
         applyAttackDamage(mechanicBaseValue);
       } else if (isChargeWrong) {
-        // CW: 6 damage + Aura drops by 1 (extra penalty on top of standard -2 from wrong charge)
+        // CW: 6 damage + fog increases by 1 (extra penalty on top of standard +2 from wrong charge)
         applyAttackDamage(6);
-        adjustAura(-1);
+        adjustAura(1);  // Increase fog
       } else {
         applyAttackDamage(finalValue); // QP: 10 (quickPlayValue from mechanic definition)
       }
       return result;
     }
 
-    // AR-264: Feedback Loop — Flow State bonus on CC; Aura crash on CW
+    // AR-264: Feedback Loop — Flow State bonus on CC; fog crash on CW
     case 'feedback_loop': {
       if (isChargeWrong) {
-        // Complete fizzle — 0 damage + Aura crashes by 3 (total -5 with standard -2)
+        // Complete fizzle — 0 damage + fog crashes by 3 (total +5 with standard +2)
         result.damageDealt = 0;
         result.rawValue = 0;
         result.finalValue = 0;
-        adjustAura(-3);
+        adjustAura(3);  // Fog crash — increases fog massively
         return result;
       }
       if (isChargeCorrect) {

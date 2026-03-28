@@ -6,7 +6,7 @@ import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice, revertTransmutedCards, resetFactLastSeenEncounter } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
-import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard, shuffleFactsAtEncounterEnd } from './deckManager';
+import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
@@ -42,7 +42,6 @@ import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
 } from './relicEffectResolver';
-import { resolveDistributionForDomain, createDefaultCalibrationState } from './difficultyCalibration';
 import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
 import { getCuratedDeck } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
@@ -402,15 +401,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       const subscriberCategoryFilters = save && isSubscriber(save)
         ? (save.subscriberCategoryFilters ?? undefined)
         : undefined;
-      const calibration = save?.calibrationState ?? createDefaultCalibrationState();
-      const primaryDistribution = resolveDistributionForDomain(run.primaryDomain, calibration);
-      const secondaryDistribution = resolveDistributionForDomain(run.secondaryDomain, calibration);
       activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
         probeRunNumber: run.primaryDomainRunNumber,
         probeDomain: run.primaryDomain,
         subscriberCategoryFilters,
-        primaryDistribution,
-        secondaryDistribution,
         funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
       });
     }
@@ -777,10 +771,10 @@ export function handlePlayCard(
       else scene.playPlayerCastAnimation(playedCard?.cardType);
     }
 
-    scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
-    scene.updateEnemyBlock(result.turnState.enemy.block, true);
-    scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
-    scene.updatePlayerBlock(result.turnState.playerState.shield, true);
+    scene.updateEnemyHP(result.turnState.enemy?.currentHP ?? 0, true);
+    scene.updateEnemyBlock(result.turnState.enemy?.block ?? 0, true);
+    scene.updatePlayerHP(result.turnState.playerState?.hp ?? 0, result.turnState.playerState?.maxHP ?? 0, true);
+    scene.updatePlayerBlock(result.turnState.playerState?.shield ?? 0, true);
     if (result.enemyDefeated) {
       const runForVictory = get(activeRunState);
       const isBossVictory = runForVictory && isBossFloor(runForVictory.floor.currentFloor) && runForVictory.floor.currentEncounter === runForVictory.floor.encountersPerFloor;
@@ -819,13 +813,6 @@ export function handlePlayCard(
         activeDeck.consecutiveCursedDraws = 0;
       }
 
-      // AR-223: Shuffle fact assignments across all card slots between encounters so the
-      // NEXT encounter sees fresh card–fact pairings while the current fight remains stable.
-      // Must run AFTER addFactsToCooldown (so new cooldowns are respected in the shuffle)
-      // and AFTER auto-cure (so the updated cursedFactIds set is used for isCursed re-derivation).
-      const runForShuffle = get(activeRunState);
-      const cursedIdsForShuffle = runForShuffle?.cursedFactIds ?? new Set<string>();
-      shuffleFactsAtEncounterEnd(activeDeck, cursedIdsForShuffle);
     }
     // Post-encounter healing: restore a percentage of max HP
     // Boss/mini-boss encounters grant bonus healing (AR-32)

@@ -849,14 +849,6 @@ export const FACT_COOLDOWN_MIN = 3;
 /** Maximum encounter cooldown applied to a fact after it is answered. */
 export const FACT_COOLDOWN_MAX = 5;
 
-/**
- * AR-223: When true, facts are assigned to cards once per encounter (stable binding)
- * rather than being randomly reassigned on every draw. Facts are shuffled across
- * card slots at encounter END (between encounters), not at draw time. This means
- * a card's question stays consistent for the entire fight, improving readability
- * and strategic planning. When false, the old AR-93 per-draw assignment runs instead.
- */
-export const STABLE_ENCOUNTER_FACTS_ENABLED = true;
 
 // === PARAMETER SWEEP: Balance Override System ===
 // Module-level mutable context for runtime balance overrides.

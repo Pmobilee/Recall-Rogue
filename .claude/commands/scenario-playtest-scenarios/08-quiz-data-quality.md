@@ -6,6 +6,8 @@ Play through 10+ quizzes verifying question quality: unique choices, complete te
 ## Preset
 URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
+**Pre-flight:** Run `node scripts/audit-quiz-display.mjs` first to catch template rendering issues offline before live testing.
+
 ## Steps
 
 1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s

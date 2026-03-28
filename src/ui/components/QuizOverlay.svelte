@@ -26,6 +26,7 @@
   import { getLanguageConfig } from '../../types/vocabulary'
   import { inputService } from '../../services/inputService'
   import { turboDelay } from '../../utils/turboMode'
+  import { displayAnswer } from '../../services/numericalDistractorService'
 
   // GAIA sprite imports for reaction bubble
   const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
@@ -468,7 +469,7 @@
           {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
         </p>
       {:else}
-        <p class="question {questionLengthClass}" data-testid="quiz-question">{fact.quizQuestion}</p>
+        <p class="question {questionLengthClass}" data-testid="quiz-question">{displayAnswer(fact.quizQuestion)}</p>
       {/if}
 
       {#if mode === 'gate'}
@@ -491,7 +492,7 @@
               <span class="key-badge" aria-hidden="true">{i + 1}</span>
               <img src={answerImagePaths[i]} alt="" class="choice-flag-img" />
               {#if showResult}
-                <span class="image-choice-label">{choice}</span>
+                <span class="image-choice-label">{displayAnswer(choice)}</span>
               {/if}
             </button>
           {/each}
@@ -510,7 +511,7 @@
               data-testid="quiz-answer-{i}"
             >
               <span class="key-badge" aria-hidden="true">{i + 1}</span>
-              <span class="choice-text">{choice}</span>
+              <span class="choice-text">{displayAnswer(choice)}</span>
             </button>
           {/each}
         </div>
@@ -650,7 +651,7 @@
         {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
       </p>
     {:else}
-      <p class="question {questionLengthClass}" data-testid="quiz-question">{fact.quizQuestion}</p>
+      <p class="question {questionLengthClass}" data-testid="quiz-question">{displayAnswer(fact.quizQuestion)}</p>
     {/if}
 
     {#if mode === 'gate'}
@@ -672,7 +673,7 @@
             <span class="key-badge" aria-hidden="true">{i + 1}</span>
             <img src={answerImagePaths[i]} alt="" class="choice-flag-img" />
             {#if showResult}
-              <span class="image-choice-label">{choice}</span>
+              <span class="image-choice-label">{displayAnswer(choice)}</span>
             {/if}
           </button>
         {/each}
@@ -690,7 +691,7 @@
             data-testid="quiz-answer-{i}"
           >
             <span class="key-badge" aria-hidden="true">{i + 1}</span>
-            <span class="choice-text">{choice}</span>
+            <span class="choice-text">{displayAnswer(choice)}</span>
           </button>
         {/each}
       </div>

@@ -291,11 +291,11 @@ describe('Knowledge Ward (AR-264)', () => {
 
 describe('Smite (AR-264)', () => {
   beforeEach(() => {
-    resetAura(); // starts at 5
+    resetAura(); // starts at 0 (fog=0, flow_state)
     resetReviewQueue();
   });
 
-  it('QP: deals 10 damage (flat, independent of Aura)', () => {
+  it('QP: deals 10 damage (flat, independent of fog)', () => {
     const card = makeCard({ mechanicId: 'smite' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'quick',
@@ -303,43 +303,8 @@ describe('Smite (AR-264)', () => {
     expect(result.damageDealt).toBe(10);
   });
 
-  it('CC at Aura 5 (neutral, start): deals 40 damage (10 + 6×5)', () => {
-    const card = makeCard({ mechanicId: 'smite' });
-    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
-      playMode: 'charge_correct',
-    });
-    expect(result.damageDealt).toBe(40);
-  });
-
-  it('CC at Aura 0: deals 10 damage (10 + 6×0)', () => {
-    adjustAura(-5); // bring to 0
-    const card = makeCard({ mechanicId: 'smite' });
-    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
-      playMode: 'charge_correct',
-    });
-    expect(result.damageDealt).toBe(10);
-  });
-
-  it('CC at Aura 3 (Brain Fog): deals 28 damage (10 + 6×3)', () => {
-    adjustAura(-2); // 5 → 3
-    const card = makeCard({ mechanicId: 'smite' });
-    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
-      playMode: 'charge_correct',
-    });
-    expect(result.damageDealt).toBe(28);
-  });
-
-  it('CC at Aura 8 (Flow State): deals 58 damage (10 + 6×8)', () => {
-    adjustAura(3); // 5 → 8
-    const card = makeCard({ mechanicId: 'smite' });
-    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
-      playMode: 'charge_correct',
-    });
-    expect(result.damageDealt).toBe(58);
-  });
-
-  it('CC at Aura 10 (max Flow State): deals 70 damage (10 + 6×10)', () => {
-    adjustAura(5); // 5 → 10
+  it('CC at fog 0 (flow_state, start): deals 70 damage (10 + 6×(10-0))', () => {
+    // fog starts at 0 after resetAura(); formula: 10 + 6*(10-fog) = 10 + 60 = 70
     const card = makeCard({ mechanicId: 'smite' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
@@ -347,15 +312,51 @@ describe('Smite (AR-264)', () => {
     expect(result.damageDealt).toBe(70);
   });
 
-  it('CW: deals 6 damage and reduces Aura by 1', () => {
-    // Aura starts at 5
+  it('CC at fog 10 (max brain_fog): deals 10 damage (10 + 6×(10-10))', () => {
+    adjustAura(10); // 0 → 10
+    const card = makeCard({ mechanicId: 'smite' });
+    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
+      playMode: 'charge_correct',
+    });
+    expect(result.damageDealt).toBe(10);
+  });
+
+  it('CC at fog 7 (brain_fog): deals 28 damage (10 + 6×(10-7))', () => {
+    adjustAura(7); // 0 → 7
+    const card = makeCard({ mechanicId: 'smite' });
+    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
+      playMode: 'charge_correct',
+    });
+    expect(result.damageDealt).toBe(28);
+  });
+
+  it('CC at fog 2 (flow_state): deals 58 damage (10 + 6×(10-2))', () => {
+    adjustAura(2); // 0 → 2
+    const card = makeCard({ mechanicId: 'smite' });
+    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
+      playMode: 'charge_correct',
+    });
+    expect(result.damageDealt).toBe(58);
+  });
+
+  it('CC at fog 0 (max flow_state): deals 70 damage (10 + 6×(10-0))', () => {
+    // Already at 0 after resetAura(); same as start state
+    const card = makeCard({ mechanicId: 'smite' });
+    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
+      playMode: 'charge_correct',
+    });
+    expect(result.damageDealt).toBe(70);
+  });
+
+  it('CW: deals 6 damage and increases fog by 1', () => {
+    // fog starts at 0; CW adjustAura(+1) → fog = 1
     const card = makeCard({ mechanicId: 'smite' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_wrong',
     });
     expect(result.damageDealt).toBe(6);
-    // Aura should be 5 - 1 = 4 (the extra -1 from Smite CW)
-    expect(getAuraLevel()).toBe(4);
+    // fog should be 0 + 1 = 1 (the extra +1 fog from Smite CW)
+    expect(getAuraLevel()).toBe(1);
   });
 });
 
@@ -365,7 +366,7 @@ describe('Smite (AR-264)', () => {
 
 describe('Feedback Loop (AR-264)', () => {
   beforeEach(() => {
-    resetAura(); // starts at 5
+    resetAura(); // starts at 0 (fog=0, flow_state)
     resetReviewQueue();
   });
 
@@ -377,25 +378,8 @@ describe('Feedback Loop (AR-264)', () => {
     expect(result.damageDealt).toBe(5);
   });
 
-  it('CC in neutral state (Aura 5): deals 40 damage', () => {
-    const card = makeCard({ mechanicId: 'feedback_loop' });
-    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
-      playMode: 'charge_correct',
-    });
-    expect(result.damageDealt).toBe(40);
-  });
-
-  it('CC in brain_fog state (Aura ≤ 3): deals 40 damage (no bonus)', () => {
-    adjustAura(-2); // 5 → 3 (brain_fog threshold)
-    const card = makeCard({ mechanicId: 'feedback_loop' });
-    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
-      playMode: 'charge_correct',
-    });
-    expect(result.damageDealt).toBe(40);
-  });
-
-  it('CC in flow_state (Aura ≥ 7): deals 56 damage (40 + 16)', () => {
-    adjustAura(2); // 5 → 7 (flow_state threshold)
+  it('CC at fog 0 (flow_state, start): deals 56 damage (40 + 16 bonus)', () => {
+    // fog=0 → flow_state; CC grants +16 bonus
     const card = makeCard({ mechanicId: 'feedback_loop' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
@@ -403,13 +387,31 @@ describe('Feedback Loop (AR-264)', () => {
     expect(result.damageDealt).toBe(56);
   });
 
-  it('CC at Aura 10 (max flow_state): deals 56 damage', () => {
-    adjustAura(5); // 5 → 10
+  it('CC in brain_fog state (fog ≥ 7): deals 40 damage (no bonus)', () => {
+    adjustAura(7); // 0 → 7 (brain_fog threshold)
+    const card = makeCard({ mechanicId: 'feedback_loop' });
+    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
+      playMode: 'charge_correct',
+    });
+    expect(result.damageDealt).toBe(40);
+  });
+
+  it('CC in flow_state (fog ≤ 2): deals 56 damage (40 + 16)', () => {
+    // fog=0 is already flow_state; no adjustment needed
     const card = makeCard({ mechanicId: 'feedback_loop' });
     const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_correct',
     });
     expect(result.damageDealt).toBe(56);
+  });
+
+  it('CC at fog 10 (max brain_fog): deals 40 damage (no bonus)', () => {
+    adjustAura(10); // 0 → 10
+    const card = makeCard({ mechanicId: 'feedback_loop' });
+    const result = resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
+      playMode: 'charge_correct',
+    });
+    expect(result.damageDealt).toBe(40);
   });
 
   it('CW: deals 0 damage', () => {
@@ -421,22 +423,22 @@ describe('Feedback Loop (AR-264)', () => {
     expect(result.finalValue).toBe(0);
   });
 
-  it('CW: reduces Aura by 3 (extra crash penalty)', () => {
-    // Aura starts at 5; CW adjustAura(-3) brings it to 2
+  it('CW: increases fog by 3 (extra fog penalty)', () => {
+    // fog starts at 0; CW adjustAura(+3) brings it to 3
     const card = makeCard({ mechanicId: 'feedback_loop' });
     resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_wrong',
     });
-    expect(getAuraLevel()).toBe(2);
+    expect(getAuraLevel()).toBe(3);
   });
 
-  it('CW at Aura 2: crashes to 0 (clamped at min)', () => {
-    adjustAura(-3); // 5 → 2
+  it('CW at fog 8: crashes to 10 (clamped at max)', () => {
+    adjustAura(8); // 0 → 8
     const card = makeCard({ mechanicId: 'feedback_loop' });
     resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, {
       playMode: 'charge_wrong',
     });
-    expect(getAuraLevel()).toBe(0); // 2 - 3 clamped to 0
+    expect(getAuraLevel()).toBe(10); // 8 + 3 clamped to 10
   });
 
   it('L3 mastery QP: applies 1 Weakness to enemy', () => {

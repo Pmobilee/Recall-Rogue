@@ -67,6 +67,34 @@ Parse from the user's invocation message:
 
 ---
 
+## Known Behaviors (Not Bugs) — READ BEFORE REPORTING
+
+Testers MUST understand these design-intentional behaviors. Do NOT report them as issues.
+
+### 1. Fact Repetition Is the Learning Algorithm Working
+
+Seeing ~9 unique facts across 22 quiz charges is **expected Anki-faithful behavior**, not "fact pool starvation." The `InRunFactTracker` uses a three-state model (NEW → LEARNING → GRADUATED) with:
+- **MAX_LEARNING = 8**: Only 8 facts can be in the learning state simultaneously
+- **STEP_DELAYS = [2, 5]**: A new fact repeats after 2 charges, then 5 charges, before graduating
+- **GRADUATE_DELAY = 10**: Graduated facts don't return for 10 charges
+- New facts only enter when a learning slot frees up
+
+This means in a 3-encounter session (~22 charges), the system intentionally drills ~8-10 facts repeatedly to cement them. This IS the spaced repetition model. Report it as a finding only if the repetition pattern is *wrong* (e.g., a graduated fact returning too early, or new facts never introduced).
+
+### 2. Quick Play IS Base Damage — Charge Is the Bonus
+
+- **Quick play** = `quickPlayValue` (this is the BASE, not a penalty)
+- **Charge correct** = `quickPlayValue × CHARGE_CORRECT_MULTIPLIER (1.5x)`
+- **Charge wrong (cursed)** = `quickPlayValue × 0.5`
+
+Do NOT report "quick play damage is low compared to charge" — that's the intended 1:1.5 ratio. The `devpreset=post_tutorial` loads level 25 + all relics, which stack mastery and relic bonuses onto charge plays, making the ratio appear much larger (3-6x). To measure true base ratios, test without devpreset relics or account for relic effects in your analysis.
+
+### 3. Audio Muting for Bot Play
+
+Before each tester runs, the orchestrator mutes audio via Svelte stores (`sfxEnabled`, `musicEnabled` → false, volumes → 0). If sound still leaks, the Phaser AudioManager may have its own channel — this is a known gap, not a game bug.
+
+---
+
 ## Phase 0: Smoke Test (Orchestrator Runs Directly — NOT Sub-Agent)
 
 Before spawning any testers, the orchestrator MUST verify the game is running and APIs are accessible. Run these 6 checks via Playwright MCP directly:
@@ -258,17 +286,39 @@ All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__ter
 - `selectMapNode(nodeId)` — Select a map node. Use `'r0-n0'` for first available. Returns `{ok: boolean}`.
 
 **Combat:**
-- `getCombatState()` — Returns: `{playerHp, playerMaxHp, playerBlock, enemyHp, enemyMaxHp, enemyName, enemyAction, handSize, hand: [{type, factQuestion, tier, ap, chainType}], turn, floor, segment, gold}`. The `hand` array is the KEY source for quiz question text.
+- `getCombatState()` — Returns full combat state:
+  ```
+  {
+    // Player
+    playerHp, playerMaxHp, playerBlock,
+    playerStatusEffects: [{type, value, turnsRemaining}],
+    ap, apMax,
+    // Enemy
+    enemyName, enemyHp, enemyMaxHp, enemyBlock,
+    enemyIntent: {type, value, telegraph, hitCount, statusEffect},
+    enemyStatusEffects: [{type, value, turnsRemaining}],
+    // Hand
+    handSize,
+    hand: [{
+      type, mechanic, mechanicName, tier, apCost, baseEffectValue,
+      domain, factId, factQuestion, factAnswer,
+      isLocked, isCursed, isUpgraded, masteryLevel, chainType
+    }],
+    // Turn & Run
+    turn, cardsPlayedThisTurn, floor, segment, gold
+  }
+  ```
+- `previewCardQuiz(index)` — Preview the quiz for a card WITHOUT playing it. Returns: `{ok, state: {question, choices[], correctAnswer, correctIndex, factId, domain, cardType}}`. Use this to see the question before deciding whether to answer correctly or incorrectly.
 - `quickPlayCard(index)` — Play card at index without quiz. Returns `{ok: boolean, damage?, block?}`.
 - `chargePlayCard(index, answerCorrectly)` — Play card with quiz. `answerCorrectly` is boolean — `true` = correct answer, `false` = wrong. Returns `{ok: boolean, damage?, quizData?}`. NOTE: This bypasses the visual quiz UI — the quiz is answered programmatically.
 - `endTurn()` — End player turn. Returns `{ok: boolean}`.
-- `getQuiz()` — Returns active quiz: `{question, choices: string[], correctIndex: number, mode: string}` or null if no active quiz. Call this BEFORE `chargePlayCard` to capture quiz data (during the brief window when a quiz is queued but not yet answered), OR after loading a scenario to read pre-loaded quiz data.
+- `getQuiz()` — Returns active quiz: `{question, choices: string[], correctIndex: number, mode: string}` or null if no active quiz.
 
-**QUIZ DATA CAPTURE STRATEGY**: Since `chargePlayCard` answers the quiz automatically, the recommended approach is:
-1. Read `getCombatState()` → extract `hand[i].factQuestion` for all cards (gives question text, though not distractors)
-2. Call `getQuiz()` immediately BEFORE calling `chargePlayCard` — if a quiz is pre-loaded, you'll get full data including `choices[]`
-3. After `chargePlayCard`, call `getRecentEvents(5)` to see the quiz result in the event log
-4. For distractor analysis: after combat, navigate to study mode (`startStudy(10)`) and use `getStudyCard()` which returns the full question+answer+distractors
+**QUIZ DATA CAPTURE STRATEGY**:
+1. Call `getCombatState()` → each card now has `factQuestion`, `factAnswer`, `factId`, `domain`
+2. For detailed quiz data (including distractors): call `previewCardQuiz(index)` → returns full `{question, choices[], correctAnswer, correctIndex}`
+3. Play the card: `chargePlayCard(index, true/false)` — answer based on your assessment
+4. `previewCardQuiz` does NOT consume AP or play the card — it's purely informational
 
 **Post-Combat:**
 - `getRunState()` — Returns: `{floor, segment, currency, deckSize, relics: string[], playerHp, playerMaxHp, encountersCompleted}`.
@@ -277,7 +327,14 @@ All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__ter
 - `delve()` — Delve deeper at checkpoint screen.
 - `retreat()` — Cash out at checkpoint screen.
 - `restHeal()` — Heal at rest room.
+- `restMeditate()` — Meditate at rest room.
 - `mysteryContinue()` — Continue past mystery event.
+- `getShopInventory()` — Returns shop items: `{relics: [{index, id, name, description, price, sold}], cards: [{index, type, domain, factQuestion, price, sold}], removalCost}`.
+- `shopBuyRelic(index)` — Buy a relic from shop.
+- `shopBuyCard(index)` — Buy a card from shop.
+- `rerollReward()` — Reroll card reward options.
+- `getMysteryEventChoices()` — Returns: `[{index, text}]`.
+- `selectMysteryChoice(index)` — Select a mystery event choice.
 
 **Study Mode:**
 - `startStudy(size)` — Start study session with N cards.
@@ -295,12 +352,13 @@ Apply this protocol whenever any API call returns unexpected results:
 2. **Stuck detection**: If `getScreen()` returns the same value for 10+ consecutive calls without progress, take a screenshot, call `look()` to dump full state, then try `getAllText()` to see UI options.
 3. **Unknown screen**: If `getScreen()` returns an unexpected value, call `getAllText()` to read what's on screen, then handle it.
 4. **After combat ends**: Always check `getScreen()` to determine what comes next:
-   - `'cardReward'` → `acceptReward()`
+   - `'cardReward'` → `rerollReward()` (optional) or `acceptReward()`
    - `'rewardRoom'` → call `look()` to see reward types, then `acceptReward()`
    - `'retreatOrDelve'` → always `delve()` (to keep the run going)
    - `'dungeonMap'` → `selectMapNode('r0-n0')` or next available
-   - `'restRoom'` → `restHeal()`
-   - `'mysteryEvent'` → `mysteryContinue()`
+   - `'shopRoom'` → `getShopInventory()` to see items, then `shopBuyRelic(0)` or `shopBuyCard(0)` or skip
+   - `'restRoom'` → `restHeal()` or `restMeditate()`
+   - `'mysteryEvent'` → `getMysteryEventChoices()` to see choices, then `selectMysteryChoice(0)` or `mysteryContinue()`
    - `'runEnd'` → run is over; start a new run if encounters target not met
 
 ---
@@ -326,9 +384,8 @@ For each combat encounter:
 a) Call `getCombatState()` — record all `hand[i].factQuestion` values (these are the question texts).
 
 b) For each card in hand (index 0 to handSize-1):
-   - Call `getQuiz()` — capture question+choices if available
-   - Call `chargePlayCard(index, true)` — always answer correctly for quiz quality assessment
-   - Call `getRecentEvents(3)` — capture event log
+   - Call `previewCardQuiz(index)` — capture full quiz: question, choices, correctAnswer, correctIndex
+   - Call `chargePlayCard(index, true)` — answer correctly
    - Wait 500ms
 
 c) If out of AP, call `endTurn()`.
@@ -503,21 +560,42 @@ All calls go through `mcp__playwright__browser_evaluate`.
 - `selectMapNode(nodeId)` — Select map node. Use: `'r0-n0'` for first available
 
 **Combat:**
-- `getCombatState()` — Returns: `{playerHp, playerMaxHp, playerBlock, enemyHp, enemyMaxHp, enemyName, enemyAction, handSize, hand: [{type, factQuestion, tier, ap, chainType}], turn, floor, segment, gold}`
+- `getCombatState()` — Returns full combat state:
+  ```
+  {
+    playerHp, playerMaxHp, playerBlock,
+    playerStatusEffects: [{type, value, turnsRemaining}],
+    ap, apMax,
+    enemyName, enemyHp, enemyMaxHp, enemyBlock,
+    enemyIntent: {type, value, telegraph, hitCount, statusEffect},
+    enemyStatusEffects: [{type, value, turnsRemaining}],
+    handSize,
+    hand: [{type, mechanic, mechanicName, tier, apCost, baseEffectValue, domain, factId, factQuestion, factAnswer, isLocked, isCursed, isUpgraded, masteryLevel, chainType}],
+    turn, cardsPlayedThisTurn, floor, segment, gold
+  }
+  ```
+- `previewCardQuiz(index)` — Preview the quiz for a card WITHOUT playing it. Returns: `{ok, state: {question, choices[], correctAnswer, correctIndex, factId, domain, cardType}}`. Use this to see quiz difficulty before choosing quick vs charge play.
 - `quickPlayCard(index)` — Quick play (1x damage, 1 AP). Returns: `{ok, damage?, block?}`
 - `chargePlayCard(index, answerCorrectly)` — Charge play with quiz (1.5x if correct, ~0.7x if wrong). Returns: `{ok, damage?, quizData?}`
 - `endTurn()` — End turn. Returns: `{ok}`
 - `getRunState()` — Returns: `{floor, segment, currency, deckSize, relics: string[], playerHp, playerMaxHp, encountersCompleted}`
-- `getRelicDetails()` — Returns: `[{definitionId, acquiredAtFloor, triggerCount}]`
+- `getRelicDetails()` — Returns: `[{id, name, description, rarity, trigger, acquiredAtFloor, triggerCount}]`
 
 **Post-Combat:**
 - `acceptReward()` — Accept first card reward
 - `selectRewardType(cardType)` — Pick reward card by type
 - `selectRelic(index)` — Pick relic by index
+- `rerollReward()` — Reroll card reward options
 - `delve()` — Delve deeper
 - `retreat()` — Cash out
 - `restHeal()` — Heal at rest room
+- `restMeditate()` — Meditate at rest room
 - `mysteryContinue()` — Continue past mystery event
+- `getShopInventory()` — Returns shop items: `{relics: [{index, id, name, description, price, sold}], cards: [{index, type, domain, factQuestion, price, sold}], removalCost}`
+- `shopBuyRelic(index)` — Buy a relic from shop
+- `shopBuyCard(index)` — Buy a card from shop
+- `getMysteryEventChoices()` — Returns: `[{index, text}]`
+- `selectMysteryChoice(index)` — Select a mystery event choice
 
 ---
 
@@ -526,12 +604,13 @@ All calls go through `mcp__playwright__browser_evaluate`.
 1. **`{ok: false}`**: Log error, retry once, skip and continue
 2. **Stuck (same screen 10+ calls)**: Take screenshot, call `look()`, then `getAllText()`
 3. **After combat ends**: Check `getScreen()`:
-   - `'cardReward'` → `acceptReward()`
+   - `'cardReward'` → `rerollReward()` (optional) or `acceptReward()`
    - `'rewardRoom'` → `acceptReward()`
    - `'retreatOrDelve'` → `delve()` (always — to continue the run)
    - `'dungeonMap'` → `selectMapNode('r0-n0')`
-   - `'restRoom'` → `restHeal()`
-   - `'mysteryEvent'` → `mysteryContinue()`
+   - `'shopRoom'` → `getShopInventory()` to see items, then `shopBuyRelic(0)` or `shopBuyCard(0)` or skip
+   - `'restRoom'` → `restHeal()` or `restMeditate()`
+   - `'mysteryEvent'` → `getMysteryEventChoices()` to see choices, then `selectMysteryChoice(0)` or `mysteryContinue()`
    - `'runEnd'` → Run over; start a new run if not done
 
 ---
@@ -542,6 +621,8 @@ Simulate a realistic mixed-skill player:
 - **70% correct quiz answers** — use `chargePlayCard(i, Math.random() < 0.7)` for charge plays
 - **Mix quick and charge plays** — roughly 40% quick, 60% charge (to simulate a player who sometimes can't remember)
 - **Card selection**: prefer high-AP offensive cards when enemy HP > 50%; prefer defensive/block cards when player HP < 30%
+- **Use `previewCardQuiz(index)`** to see quiz difficulty before choosing quick vs charge play — harder questions are more likely to be played quick
+- **Use `getCombatState()`** to read `enemyIntent` (type, value, telegraph, hitCount) for tactical decisions, and track `playerStatusEffects` / `enemyStatusEffects` to measure buff/debuff impact
 - **DO NOT play optimally** — this is a balance curve check, not optimal play. Play like a typical student who knows the game basics but makes occasional suboptimal decisions.
 
 ---
@@ -676,17 +757,25 @@ All calls via `mcp__playwright__browser_evaluate`.
 - `selectMapNode(nodeId)` — Enter map node: `'r0-n0'`
 
 **Combat:**
-- `getCombatState()` — Returns: `{playerHp, playerMaxHp, playerBlock, enemyHp, enemyMaxHp, enemyName, enemyAction, handSize, hand: [{type, factQuestion, tier, ap, chainType}], turn, floor, segment, gold}`
+- `getCombatState()` — Returns full combat state including `playerHp, playerMaxHp, playerBlock, playerStatusEffects, ap, apMax, enemyName, enemyHp, enemyMaxHp, enemyBlock, enemyIntent: {type, value, telegraph, hitCount}, enemyStatusEffects, handSize, hand: [{type, mechanic, mechanicName, tier, apCost, domain, factQuestion, factAnswer, chainType}], turn, floor, segment, gold`
+- `previewCardQuiz(index)` — Preview the quiz for a card WITHOUT playing it. Returns: `{ok, state: {question, choices[], correctAnswer, correctIndex, domain, cardType}}`. Use before deciding whether to quick-play or charge-play.
 - `quickPlayCard(index)` — Quick play
 - `chargePlayCard(index, answerCorrectly)` — Charge play with quiz (true = correct)
 - `endTurn()` — End turn
 
 **Post-Combat:**
 - `acceptReward()` — Accept first card reward
+- `rerollReward()` — Reroll card reward options
 - `delve()` — Delve deeper
 - `retreat()` — Cash out
 - `restHeal()` — Heal
+- `restMeditate()` — Meditate at rest room
 - `mysteryContinue()` — Continue past mystery
+- `getShopInventory()` — Returns shop items: `{relics: [{index, id, name, description, price, sold}], cards: [{index, type, domain, factQuestion, price, sold}], removalCost}`
+- `shopBuyRelic(index)` — Buy a relic from shop
+- `shopBuyCard(index)` — Buy a card from shop
+- `getMysteryEventChoices()` — Returns: `[{index, text}]`
+- `selectMysteryChoice(index)` — Select a mystery event choice
 
 ---
 
@@ -695,12 +784,13 @@ All calls via `mcp__playwright__browser_evaluate`.
 1. **`{ok: false}`**: Log, retry once, skip and continue
 2. **Stuck**: Screenshot, `look()`, `getAllText()`
 3. **After combat**: Check `getScreen()`:
-   - `'cardReward'` → `acceptReward()`
+   - `'cardReward'` → `rerollReward()` (optional, to see variety) or `acceptReward()`
    - `'rewardRoom'` → `acceptReward()`
    - `'retreatOrDelve'` → `delve()`
    - `'dungeonMap'` → `selectMapNode('r0-n0')`
-   - `'restRoom'` → `restHeal()`
-   - `'mysteryEvent'` → `mysteryContinue()`
+   - `'shopRoom'` → `getShopInventory()` to see items, then `shopBuyRelic(0)` or `shopBuyCard(0)` or skip
+   - `'restRoom'` → `restHeal()` or `restMeditate()`
+   - `'mysteryEvent'` → `getMysteryEventChoices()` to see choices, then `selectMysteryChoice(0)` or `mysteryContinue()`
    - `'runEnd'` → Start new run if not done
 
 ---

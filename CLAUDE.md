@@ -469,7 +469,7 @@ When generating sprites, delegate to a sub-agent with these instructions:
 - Validate output (correct dimensions, transparent background, PNG format)
 - Save to appropriate location under `src/assets/`
 - Reference `docs/SPRITE_PIPELINE.md` for prompt templates and resolution targets
-- ComfyUI Python venv: `/opt/comfyui-env`, Models: `/opt/ComfyUI/models/`
+- ComfyUI Python venv: `/Users/damion/CODE/ComfyUI/.venv`, Models: `/Users/damion/CODE/ComfyUI/models/`
 
 ## Context Guide — What to Read
 - Game mechanics and design → `docs/GAME_DESIGN.md` (v3 — curated deck system)

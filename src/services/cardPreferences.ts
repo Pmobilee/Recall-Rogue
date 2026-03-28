@@ -70,7 +70,6 @@ export const highContrastMode = persistedWritable<boolean>('card:highContrastMod
 export const reduceMotionMode = persistedWritable<boolean>('card:reduceMotionMode', false)
 export const onboardingState = persistedWritable<OnboardingState>('card:onboardingState', defaultOnboardingState)
 export const ascensionProfile = persistedWritable<AscensionProfile>('card:ascensionProfile', defaultAscensionProfile)
-export const knowledgeLevelSelected = persistedWritable<boolean>('card:knowledgeLevelSelected', false)
 
 function clampAscensionLevel(level: number): number {
   if (!Number.isFinite(level)) return 0

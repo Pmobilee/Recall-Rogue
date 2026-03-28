@@ -1,0 +1,14 @@
+{
+  "batchId": "BATCH-2026-03-27-002",
+  "createdAt": "2026-03-27T13:11:00Z",
+  "testers": ["quiz-quality"],
+  "args": {
+    "runs": 2,
+    "domain": "general_knowledge"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "reports": {
+    "quiz-quality": { "status": "complete", "verdict": "ISSUES", "criticalCount": 1, "highCount": 1, "mediumCount": 2, "lowCount": 2 }
+  }
+}

@@ -170,15 +170,6 @@ export function getMysteryEventIconPath(effectType: string): string {
 }
 
 /**
- * Get the knowledge level icon path (tier icons for facts).
- * @param level - The knowledge level (learning, seedling, mastered)
- * @returns The path to the level icon
- */
-export function getKnowledgeLevelIconPath(level: string): string {
-	return `/assets/sprites/icons/icon_level_${level}.png`
-}
-
-/**
  * Get the synergy icon path.
  * @param synergyId - The synergy identifier (e.g., 'deep_diver', 'scholars_blessing')
  * @returns The path to the synergy icon
@@ -318,19 +309,4 @@ const MYSTERY_EMOJI: Record<string, string> = {
  */
 export function getMysteryEventEmoji(effectType: string): string {
 	return MYSTERY_EMOJI[effectType] ?? '❓'
-}
-
-const KNOWLEDGE_LEVEL_EMOJI: Record<string, string> = {
-	casual: '🌱',
-	normal: '📖',
-	scholar: '🎓',
-}
-
-/**
- * Get emoji fallback for knowledge levels.
- * @param level - The knowledge level identifier
- * @returns An emoji representation of the level
- */
-export function getKnowledgeLevelEmoji(level: string): string {
-	return KNOWLEDGE_LEVEL_EMOJI[level] ?? '❓'
 }

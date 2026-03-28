@@ -30,7 +30,6 @@ export type Screen =
   | 'relicReward' // deprecated: now handled by rewardRoom Phaser scene
   | 'onboarding'
   | 'settings'
-  | 'topicInterests'
   | 'upgradeSelection'
   | 'postMiniBossRest'
   | 'dungeonMap'
@@ -69,7 +68,6 @@ const VALID_SCREENS: Screen[] = [
   'relicReward',
   'onboarding',
   'settings',
-  'topicInterests',
   'upgradeSelection',
   'postMiniBossRest',
   'dungeonMap',
@@ -93,7 +91,6 @@ const PERSISTABLE_SCREENS = new Set<Screen>([
   'leaderboards',
   'social',
   'relicSanctum',
-  'topicInterests',
   'deckSelectionHub',
 ])
 

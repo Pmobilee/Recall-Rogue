@@ -31,7 +31,6 @@
     onOpenSocial: () => void
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
     onOpenDeckBuilder?: () => void
-    onOpenTopicInterests?: () => void
     onReplayBootAnim?: () => void
     disableEffects?: boolean
   }
@@ -49,7 +48,6 @@
     onOpenSocial,
     onOpenRelicSanctum,
     onOpenDeckBuilder,
-    onOpenTopicInterests,
     onReplayBootAnim,
     disableEffects = false,
   }: Props = $props()

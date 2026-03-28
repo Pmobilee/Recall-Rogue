@@ -448,8 +448,8 @@ describe('AR-271 Relic Mechanic: Domain Mastery Sigil AP modifier', () => {
     const card = makeCard({ id: 'dms_card', factId: 'dms_fact' });
     const turnState = setupEncounter(card, relics);
 
-    // Force Flow State (aura ≥ 7). resetAura() set it to 5; +5 takes it to 10.
-    adjustAura(5);
+    // Force Flow State (fog ≤ 2). resetAura() sets fog to 0 (already flow_state).
+    // fog=0 is already flow_state; no adjustment needed.
     expect(getAuraState()).toBe('flow_state');
 
     // End turn — this triggers enemy turn + turn-start effects for the new player turn
@@ -469,8 +469,8 @@ describe('AR-271 Relic Mechanic: Domain Mastery Sigil AP modifier', () => {
     const card = makeCard({ id: 'dms_fog_card', factId: 'dms_fog_fact' });
     const turnState = setupEncounter(card, relics);
 
-    // Force Brain Fog (aura ≤ 3). resetAura() set it to 5; -5 takes it to 0.
-    adjustAura(-5);
+    // Force Brain Fog (fog ≥ 7). resetAura() sets fog to 0; +7 takes it to 7.
+    adjustAura(7);
     expect(getAuraState()).toBe('brain_fog');
 
     endPlayerTurn(turnState);
@@ -488,7 +488,8 @@ describe('AR-271 Relic Mechanic: Domain Mastery Sigil AP modifier', () => {
     const card = makeCard({ id: 'dms_neut_card', factId: 'dms_neut_fact' });
     const turnState = setupEncounter(card, relics);
 
-    // Aura starts at 5 (neutral) from resetAura() via startEncounter
+    // Set fog to 4 (neutral range: 3-6). resetAura() sets fog to 0 (flow_state).
+    adjustAura(4);
     expect(getAuraState()).toBe('neutral');
 
     endPlayerTurn(turnState);
@@ -631,11 +632,11 @@ describe('AR-271 Relic Mechanic: Lucky Coin armed flag', () => {
 
 describe('AR-271 Aura States: Brain Fog and Flow State via gameplay', () => {
   /**
-   * Test 7: Wrong Charges push aura into Brain Fog (≤ 3).
-   * Starting at 5, each wrong Charge drops aura by 2.
-   * After 2 wrong Charges: 5 - 2 - 2 = 1 → brain_fog.
+   * Test 7: Wrong Charges increase fog toward Brain Fog (≥ 7).
+   * Starting at 0, each wrong Charge raises fog by 2.
+   * After 2 wrong Charges: 0 + 2 + 2 = 4 → neutral.
    */
-  it('aura state becomes brain_fog after 2 wrong Charges (drops from 5 to 1)', () => {
+  it('wrong Charges increase fog (2 wrongs: fog rises from 0 to 4, neutral)', () => {
     const w0 = makeCard({ id: 'fog_w0', factId: 'fog_wf0', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
     const w1 = makeCard({ id: 'fog_w1', factId: 'fog_wf1', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
     const padding: Card[] = Array.from({ length: 18 }, (_, i) =>
@@ -648,24 +649,24 @@ describe('AR-271 Aura States: Brain Fog and Flow State via gameplay', () => {
     injectIntoHand(turnState, w0);
     injectIntoHand(turnState, w1);
 
-    expect(getAuraState()).toBe('neutral');
-    expect(getAuraLevel()).toBe(5);
+    expect(getAuraState()).toBe('flow_state');
+    expect(getAuraLevel()).toBe(0);
 
     playCardAction(turnState, 'fog_w0', false, false, 'charge');
-    expect(getAuraLevel()).toBe(3); // 5 - 2 = 3 (right at threshold)
+    expect(getAuraLevel()).toBe(2); // 0 + 2 = 2 (still flow_state)
 
     playCardAction(turnState, 'fog_w1', false, false, 'charge');
-    expect(getAuraLevel()).toBe(1); // 3 - 2 = 1 → brain_fog
+    expect(getAuraLevel()).toBe(4); // 2 + 2 = 4 → neutral
 
-    expect(getAuraState()).toBe('brain_fog');
+    expect(getAuraState()).toBe('neutral');
   });
 
   /**
-   * Test 8: Correct Charges push aura into Flow State (≥ 7).
-   * Starting at 5, each correct Charge raises aura by 1.
-   * After 2 correct Charges: 5 + 1 + 1 = 7 → flow_state.
+   * Test 8: Correct Charges decrease fog toward Flow State (≤ 2).
+   * Starting at fog 4 (neutral), each correct Charge lowers fog by 1.
+   * After 2 correct Charges: 4 - 1 - 1 = 2 → flow_state.
    */
-  it('aura state becomes flow_state after 2 correct Charges (rises from 5 to 7)', () => {
+  it('correct Charges decrease fog into flow_state (2 corrects: fog drops from 4 to 2)', () => {
     const c0 = makeCard({ id: 'flow_c0', factId: 'flow_cf0', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
     const c1 = makeCard({ id: 'flow_c1', factId: 'flow_cf1', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
     const padding: Card[] = Array.from({ length: 18 }, (_, i) =>
@@ -678,25 +679,27 @@ describe('AR-271 Aura States: Brain Fog and Flow State via gameplay', () => {
     injectIntoHand(turnState, c0);
     injectIntoHand(turnState, c1);
 
+    // Start at fog 4 (neutral) so we can demonstrate correct answers reducing fog
+    adjustAura(4); // 0 → 4 (neutral)
     expect(getAuraState()).toBe('neutral');
-    expect(getAuraLevel()).toBe(5);
+    expect(getAuraLevel()).toBe(4);
 
     playCardAction(turnState, 'flow_c0', true, false, 'charge');
-    expect(getAuraLevel()).toBe(6); // 5 + 1
+    expect(getAuraLevel()).toBe(3); // 4 - 1 = 3 (still neutral)
 
     playCardAction(turnState, 'flow_c1', true, false, 'charge');
-    expect(getAuraLevel()).toBe(7); // 6 + 1 → flow_state
+    expect(getAuraLevel()).toBe(2); // 3 - 1 = 2 → flow_state
 
     expect(getAuraState()).toBe('flow_state');
   });
 
   /**
-   * Test: aura resets to neutral (5) at the start of each new encounter.
+   * Test: fog resets to 0 (flow_state) at the start of each new encounter.
    */
-  it('aura resets to 5 (neutral) at the start of each encounter', () => {
-    // Set aura to extreme before encounter
-    adjustAura(5); // 5+5 = 10
-    expect(getAuraState()).toBe('flow_state');
+  it('fog resets to 0 (flow_state) at the start of each encounter', () => {
+    // Set fog to extreme (brain_fog) before encounter
+    adjustAura(10); // 0+10 = 10
+    expect(getAuraState()).toBe('brain_fog');
 
     const card = makeCard({ id: 'reset_c', factId: 'reset_f' });
     const deck = makeDeck([card, ...Array.from({ length: 19 }, (_, i) =>
@@ -705,8 +708,8 @@ describe('AR-271 Aura States: Brain Fog and Flow State via gameplay', () => {
     // startEncounter calls resetAura() internally
     startEncounter(deck, makeEnemy());
 
-    expect(getAuraLevel()).toBe(5);
-    expect(getAuraState()).toBe('neutral');
+    expect(getAuraLevel()).toBe(0);
+    expect(getAuraState()).toBe('flow_state');
   });
 
   /**
@@ -730,22 +733,26 @@ describe('AR-271 Aura States: Brain Fog and Flow State via gameplay', () => {
    * Test: correct Charge clears the fact from the review queue.
    */
   it('correct Charge removes the fact from the review queue', () => {
-    const factId = 'cleared_by_correct';
     const card = makeCard({
       id: 'rq_correct',
-      factId,
+      factId: 'cleared_by_correct',
       cardType: 'attack',
       apCost: 1,
       baseEffectValue: 8,
     });
 
     const turnState = setupEncounter(card);
-    // Manually add to queue (simulating prior wrong answer)
-    addToReviewQueue(factId);
-    expect(isReviewQueueFact(factId)).toBe(true);
+    // After setupEncounter, drawHand may have reassigned factId from the fact pool.
+    // Find the card in hand and use its ACTUAL factId.
+    const cardInHand = turnState.deck.hand.find(c => c.id === 'rq_correct');
+    const actualFactId = cardInHand?.factId ?? 'cleared_by_correct';
+
+    // Manually add the card's actual factId to queue (simulating prior wrong answer)
+    addToReviewQueue(actualFactId);
+    expect(isReviewQueueFact(actualFactId)).toBe(true);
 
     playCardAction(turnState, 'rq_correct', true, false, 'charge');
 
-    expect(isReviewQueueFact(factId)).toBe(false);
+    expect(isReviewQueueFact(actualFactId)).toBe(false);
   });
 });

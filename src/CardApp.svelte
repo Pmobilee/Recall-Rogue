@@ -147,20 +147,17 @@
   import PostMiniBossRestOverlay from './ui/components/PostMiniBossRestOverlay.svelte'
   import DungeonMap from './ui/components/DungeonMap.svelte'
   // StarterRelicSelection removed in AR-59.12 — file kept as dead code pending deletion approval
-  import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
   import DeckSelectionHub from './ui/components/DeckSelectionHub.svelte'
   import TriviaDungeonScreen from './ui/components/TriviaDungeonScreen.svelte'
   import StudyTempleScreen from './ui/components/StudyTempleScreen.svelte'
-  import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
-  import { knowledgeLevelSelected } from './services/cardPreferences'
   import RewardCardDetail from './ui/components/RewardCardDetail.svelte'
   import { rewardCardDetail, getCardDetailCallbacks } from './services/rewardRoomBridge'
-  import { createDefaultCalibrationState, setGlobalKnowledgeLevel } from './services/difficultyCalibration'
-  import type { KnowledgeLevel } from './services/difficultyCalibration'
   import { updateRichPresence } from './services/steamService'
   import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
   import InRunTopBar from './ui/components/InRunTopBar.svelte'
+  import { getReviewQueueLength } from './services/reviewQueueSystem'
+  import { getAuraLevel, getAuraState } from './services/knowledgeAuraSystem'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -278,15 +275,6 @@
     startNewRun({ includeOutsideDueReviews })
   }
 
-  function handleKnowledgeLevelSelect(level: KnowledgeLevel): void {
-    const save = get(playerSave)
-    if (save) {
-      const calibration = save.calibrationState ?? createDefaultCalibrationState()
-      const updated = setGlobalKnowledgeLevel(level, calibration)
-      playerSave.update(s => s ? { ...s, calibrationState: updated } : s)
-    }
-    knowledgeLevelSelected.set(true)
-  }
 
   let libraryInitialTab = $state<'knowledge' | 'deckbuilder' | undefined>(undefined)
 
@@ -320,9 +308,6 @@
     transitionScreen('social')
   }
 
-  function handleOpenTopicInterests(): void {
-    transitionScreen('topicInterests')
-  }
 
   function handleReplayBootAnim(): void {
     if (import.meta.env.DEV) console.log('[BootAnim] Replay triggered, phaserBooted:', phaserBooted)
@@ -1010,6 +995,9 @@
       triggeredRelicId={$activeTurnState?.triggeredRelicId ?? null}
       maxRelicSlots={topBarMaxRelicSlots}
       ascensionLevel={$activeRunState?.ascensionLevel ?? 0}
+      reviewQueueLength={$activeTurnState != null ? getReviewQueueLength() : 0}
+      fogLevel={$activeTurnState != null ? getAuraLevel() : 0}
+      fogState={$activeTurnState != null ? getAuraState() : undefined}
       onpause={handlePause}
     />
   {/if}
@@ -1113,9 +1101,6 @@
   </div>
   {/if}
 
-  {#if $currentScreen === 'hub' && $onboardingState.hasCompletedOnboarding && !$knowledgeLevelSelected}
-    <KnowledgeLevelPopup onselect={handleKnowledgeLevelSelect} />
-  {/if}
 
   {#if $currentScreen === 'archetypeSelection'}
     <div in:fly={{ y: 8, duration: 350 }}>
@@ -1380,11 +1365,6 @@
     </div>
   {/if}
 
-  {#if $currentScreen === 'topicInterests'}
-    <div in:fly={{ y: 8, duration: 350 }}>
-      <TopicInterestsPage onBack={handleBackToMenu} />
-    </div>
-  {/if}
 
   {#if $currentScreen === 'deckSelectionHub'}
     <div in:fly={{ y: 8, duration: 350 }}>

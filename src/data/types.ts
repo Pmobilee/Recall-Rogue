@@ -1,7 +1,6 @@
 import type { InterestConfig } from './interestConfig'
 import { CATEGORIES, type FactDomain, isFactDomain } from './categories'
 import type { StudyPreset, DeckMode, LastDungeonSelection } from './studyPreset'
-import type { CalibrationState } from '../services/difficultyCalibration'
 
 /** Visual upgrade tier for a hub floor. 0 = bare scaffolding, 3 = premium. */
 export type FloorUpgradeTier = 0 | 1 | 2 | 3
@@ -534,8 +533,6 @@ export interface PlayerSave {
   seasonPassProgress?: { seasonId: string; points: number; claimedFree: number[]; claimedPremium: number[]; hasPremium: boolean }
   /** Arcane Pass subscriber sub-category filters (domainId -> enabled subcategory labels). */
   subscriberCategoryFilters?: Record<string, string[]>
-  /** Difficulty calibration state: global knowledge level + per-domain adjustments + auto-calibrate. */
-  calibrationState?: CalibrationState
   /** Dust spent this calendar week (resets Monday 00:00 UTC) */
   weeklyDustSpent?: number
   /** ISO date of last weekly maintenance charge */

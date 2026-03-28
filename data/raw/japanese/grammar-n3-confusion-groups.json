@@ -1,0 +1,1994 @@
+{
+  "syntacticSlots": {
+    "particle_post_noun": { "label": "Post-noun particles", "description": "Follows nouns: N + _" },
+    "particle_post_verb": { "label": "Post-verb expressions", "description": "Follows verb plain form: V + _" },
+    "te_form_auxiliary": { "label": "Te-form auxiliaries", "description": "Follows te-form: Vて + _" },
+    "verb_suffix": { "label": "Verb stem suffixes", "description": "Attaches to verb stem: Vます-stem + _" },
+    "clause_connector": { "label": "Clause connectors", "description": "Connects two clauses: S1 + _ + S2" },
+    "sentence_ender": { "label": "Sentence-final", "description": "Ends a sentence: S + _" },
+    "adverbial": { "label": "Adverbial expressions", "description": "Standalone adverb/phrase: _ + S" },
+    "conditional": { "label": "Conditional forms", "description": "If/when constructions" },
+    "copula_form": { "label": "Copula/state forms", "description": "N/Na-adj + _" }
+  },
+  "confusionGroups": [
+    {
+      "id": "degree_particles",
+      "label": "Degree/Limit Particles",
+      "description": "Particles expressing degree, limitation, emphasis, or exclusion after nouns/phrases",
+      "members": ["1304", "1199", "253", "1595", "1502"],
+      "pedagogicalNote": "Students confuse which particle expresses 'only/even/just/to the extent of' in context. さえ emphasizes an extreme case; しか requires negative verb; こそ intensifies; くらい/ぐらい indicates approximate degree; ばかり indicates 'just did' or 'nothing but'"
+    },
+    {
+      "id": "hearsay_conjecture",
+      "label": "Hearsay & Conjecture",
+      "description": "Expressions conveying reported information or probabilistic inference",
+      "members": ["663", "854", "861", "633", "856", "1501", "1713"],
+      "pedagogicalNote": "そう(hearsay) = I heard; らしい = apparently/evidently; よう = seems like (speaker inference); みたい = looks like (casual); だろう = probably; であろう = formal probably; の様 = seems like (formal/written). Key distinction: information source and formality level"
+    },
+    {
+      "id": "appearance_tendency",
+      "label": "Appearance & Tendency",
+      "description": "Expressions describing how something appears or a habitual tendency",
+      "members": ["1530", "1238", "1645", "1408"],
+      "pedagogicalNote": "っぽい = -ish, characteristic feel; がち = tend to (often negative); やすい = easy to do; にくい = hard to do. All attach to verb stems or nouns but convey different nuances of tendency"
+    },
+    {
+      "id": "te_form_auxiliaries",
+      "label": "Te-form Auxiliaries",
+      "description": "Auxiliary verbs following the te-form expressing aspect, direction, or social relationship",
+      "members": ["783", "718", "1400", "784", "1559", "1127", "1312", "1596", "846"],
+      "pedagogicalNote": "Critical to distinguish: ている (ongoing/state), てしまう (completion/regret), てある (resultant state purposely made), てみる (try), てくる (come back after doing / gradual change), てあげる/てくれる/てもらう (giving/receiving of actions with directionality)"
+    },
+    {
+      "id": "purpose_intent",
+      "label": "Purpose & Intent",
+      "description": "Expressions conveying purpose, intent, or goal-directed action",
+      "members": ["1130", "1268", "1629", "1769", "1504", "1523", "1482", "1632"],
+      "pedagogicalNote": "ために = concrete purpose or cause; ように = goal state (used with intransitive/potential); ことにする = decide to do; ことになる = it has been decided (external); ようになる = change to be able to; 意向形と思う = I think I will; 予定 = planned; 積もりだった = had intended but didn't"
+    },
+    {
+      "id": "cause_reason",
+      "label": "Cause & Reason",
+      "description": "Expressions linking cause to effect or explaining reasons",
+      "members": ["55", "1320", "1163", "1583", "1623", "1486", "1499"],
+      "pedagogicalNote": "おかげで = thanks to (positive cause); せいで = because of (negative cause/blame); ことから = reason based on observable fact; ものだから = unavoidable/justifying excuse; なぜなら = because (formal, front-loaded); それで = and so, as a result; し = and also (multiple reasons stacked)"
+    },
+    {
+      "id": "temporal",
+      "label": "Temporal Expressions",
+      "description": "Expressing when, during, while, or simultaneous events",
+      "members": ["509", "1131", "589", "888", "1162", "1621", "917", "739", "1737", "1719"],
+      "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+    },
+    {
+      "id": "topic_reference",
+      "label": "Topic & Reference Particles",
+      "description": "Post-noun particles expressing various relationships: about, toward, for, as, against, through",
+      "members": ["1305", "522", "117", "585", "100", "1295", "1249", "976", "1679"],
+      "pedagogicalNote": "について = about/regarding (topic); に対して = toward/in contrast; にとって = for (perspective of); として = as/in capacity of; に反して = against/contrary to; を中心に = centering on; によって(1249) = by/due to (agent/means); によって(976) = depending on (variation); を通して = through/by means of"
+    },
+    {
+      "id": "contrast_concession",
+      "label": "Contrast & Concession",
+      "description": "Expressing contrast, unexpected results, or concession",
+      "members": ["1493", "551", "1593", "1481", "1289", "410", "660"],
+      "pedagogicalNote": "のに(contrast 1493) = but/although (emotional/surprising); のに(purpose 551) = in order to; のに(wish 1593) = I wish; 反面 = on the other hand; にしては = for/considering; としても = even if/assuming; は(660) = contrastive topic marker"
+    },
+    {
+      "id": "obligation_modal",
+      "label": "Obligation & Modal",
+      "description": "Expressions conveying obligation, prohibition, permission, expectation, or conjecture",
+      "members": ["779", "1709", "1772", "1519", "1661", "1154", "1482", "1632"],
+      "pedagogicalNote": "べき = should (moral/rational expectation); なければならない = must; せねばならない = must (formal/literary); てはいけない = must not; はず = supposed to be/expected; 予定 = planned/scheduled; 積もりだった = had intended (but didn't)"
+    },
+    {
+      "id": "verb_completion",
+      "label": "Verb Completion & Continuation",
+      "description": "Verb suffixes expressing completion, continuation, beginning, or mutual action",
+      "members": ["859", "800", "1728", "1662", "882", "1685", "1626"],
+      "pedagogicalNote": "切る = completely/to the end; 続ける = keep doing; 出す(1728) = suddenly begin; 出す(1662) = begin (same); 合う = do together/mutually; 直す = do again/redo; 出す(1626) = pay/issue/stick out (different meaning)"
+    },
+    {
+      "id": "conditional",
+      "label": "Conditional Forms",
+      "description": "If/when/given constructions",
+      "members": ["780", "1368", "732", "410", "1519"],
+      "pedagogicalNote": "なら = if (given the situation); と = when/if (automatic consequence, natural sequence); ば(条件形) = if (hypothetical, focus on condition); としても = even if (concessive conditional); せねばならない shares conditional ば form"
+    },
+    {
+      "id": "comparison_extent",
+      "label": "Comparison & Extent",
+      "description": "Expressing degree of comparison or extent to which something applies",
+      "members": ["1760", "789", "1300", "1595", "1508", "1300"],
+      "pedagogicalNote": "ほど = to the extent that / not as~as~; より = than/rather than; に比べて = compared to; くらい/ぐらい = about/approximately/to the extent; 比べものにならない = no comparison possible"
+    },
+    {
+      "id": "decision_change",
+      "label": "Decision & Change of State",
+      "description": "Expressions about decisions made or changes in state/ability",
+      "members": ["1629", "1769", "1732", "649", "687", "1504"],
+      "pedagogicalNote": "ことにする(1629/1769) = decide to do (volitional); ことになる(1732) = it has been decided (external/natural); にする = decide on (choose from options); になる = become; ようになる = come to be able to (gradual change)"
+    },
+    {
+      "id": "without_negation",
+      "label": "Without / Negation",
+      "description": "Expressions meaning 'without doing' or negating necessity",
+      "members": ["1561", "1203", "1673"],
+      "pedagogicalNote": "ずに = without doing (literary/formal negative gerund); なし = without (noun modifier); なくてもすむ = don't need to / can get by without"
+    },
+    {
+      "id": "manner_similarity",
+      "label": "Manner & Similarity",
+      "description": "Expressing how something is done or that it resembles something else",
+      "members": ["633", "861", "1268", "1713", "1768"],
+      "pedagogicalNote": "みたい = looks like/seems (casual appearance); よう = seems/in the manner of; ように = in order to / so that; の様 = seems like (formal); のような = just like/similar to"
+    },
+    {
+      "id": "question_wonder",
+      "label": "Question & Wonder Particles",
+      "description": "Sentence-final particles expressing questions, wonder, or uncertainty",
+      "members": ["737", "749", "714", "1774", "1773", "693", "893"],
+      "pedagogicalNote": "の(question) = question (female/casual); かな = I wonder; だい = casual question (male); かしら = I wonder (female); かい = casual yes/no question (male); か = question; かどうか = whether or not"
+    },
+    {
+      "id": "emphasis_assertion",
+      "label": "Emphasis & Assertion Particles",
+      "description": "Particles that add emphasis, emotional color, or assertion",
+      "members": ["752", "652", "776", "1516", "879"],
+      "pedagogicalNote": "よ = assertion/new info; なあ/な = emotional emphasis/reflection; わ = mild emphasis (female); ってば = emotional insistence; って = quotation/assertion marker"
+    },
+    {
+      "id": "assumption_supposition",
+      "label": "Assumption & Supposition",
+      "description": "Expressing assumptions, hypotheticals, or regarding something as X",
+      "members": ["541", "1597", "856", "1501", "502", "633"],
+      "pedagogicalNote": "とする = assume/regard as; として(try 1597) = try to (volitional+として); だろう = probably/I suppose; であろう = formal probably; からして = even/judging from; みたい = like/as if (assumption)"
+    },
+    {
+      "id": "advisory_permission",
+      "label": "Advisory, Permission & Prohibition",
+      "description": "Expressions giving advice, permission, or prohibition",
+      "members": ["705", "658", "786", "779", "1661", "1723"],
+      "pedagogicalNote": "な(prohibition) = don't do (command); なさい = do (informal imperative); 方がいい = it would be better to; べき = should; てはいけない = must not; てもいいですか = may I/do you mind if"
+    },
+    {
+      "id": "polite_request",
+      "label": "Polite Requests & Formulas",
+      "description": "Fixed polite expressions for requests, messages, and social formulas",
+      "members": ["1720", "1598", "1717", "1734"],
+      "pedagogicalNote": "くださいませんか = would you please (polite request); と伝えていただけませんか = please convey my message; どうぞ = please/go ahead; ということですね = so your point is"
+    },
+    {
+      "id": "giving_receiving",
+      "label": "Giving & Receiving Actions",
+      "description": "Verbs of giving and receiving, including beneficial actions",
+      "members": ["1312", "1596", "846"],
+      "pedagogicalNote": "てあげる = do for someone (outward, speaker gives); てくれる = do for me (inward, speaker receives); てもらう = have/get someone do for me. Direction of benefit is the key distinction"
+    },
+    {
+      "id": "location_direction",
+      "label": "Location, Direction & Movement",
+      "description": "Particles and expressions marking location, direction, or path",
+      "members": ["1387", "766", "767", "1517"],
+      "pedagogicalNote": "で/に/前 = place/time prepositions; を(area) = area moved through; を(departure) = marks departure point; 〜中に/上に/下に = relative spatial location (inside/above/below)"
+    },
+    {
+      "id": "informational_clause",
+      "label": "Informational Clauses & Nominalizers",
+      "description": "Expressions that nominalize or frame clauses as information units",
+      "members": ["781", "544", "641", "1731", "693"],
+      "pedagogicalNote": "わけ = meaning/reason/circumstances (logical conclusion); わけではない = doesn't necessarily mean; の(nominalizer) = turns verb phrase into noun; のだ = explanation/reason; か(embedded) = the question of whether"
+    },
+    {
+      "id": "formal_connectors",
+      "label": "Formal Connectors & Discourse Markers",
+      "description": "Words that connect ideas, add information, or organize discourse",
+      "members": ["1711", "1637", "868", "1407", "1706"],
+      "pedagogicalNote": "その上 = moreover/besides; それに = and furthermore; ところで = by the way (topic shift); そうすると = if that's the case/then; さもないと = or else/otherwise"
+    },
+    {
+      "id": "gradual_change",
+      "label": "Gradual Change & Progression",
+      "description": "Expressions indicating gradual change over time",
+      "members": ["1667", "1585", "1504"],
+      "pedagogicalNote": "次第に = gradually/little by little; 今では = by now/nowadays (implies change from before); ようになる = come to do (gradual change to new state)"
+    },
+    {
+      "id": "mental_state",
+      "label": "Mental State & Emotion",
+      "description": "Expressions about inner mental or emotional states",
+      "members": ["1117", "1639", "886", "947"],
+      "pedagogicalNote": "気がする = feel/have a feeling that; 気になる = be worried/concerned about; 儚い = fleeting/hopeless (adjective state); つい = unthinkingly/despite oneself"
+    },
+    {
+      "id": "misc_adverbial",
+      "label": "Miscellaneous Adverbials",
+      "description": "Standalone adverbial expressions that don't fit other groups",
+      "members": ["1175", "1473", "1478", "1475", "1776", "1477", "852", "1652", "1631", "1494", "1648"],
+      "pedagogicalNote": "どうせ = after all/anyway; できるだけ = as much as possible; 少しも~ない = not at all; なんとなく = vaguely/somehow; どうしても = absolutely/no matter what; どちらかといえば = if I had to say; せっかく = with effort/since we're here; あっと言う間 = in a flash; とっさに = reflexively; だからこそ = precisely because; とても~ない = can't possibly"
+    },
+    {
+      "id": "limit_frequency",
+      "label": "Limit & Frequency",
+      "description": "Expressions about limits, doing something to excess, or frequency",
+      "members": ["143", "1651", "978"],
+      "pedagogicalNote": "に限って = of all people/things (ironic limit); ~放題 = as much as one likes/unlimited; 挙げ句 = in the end after all that (negative outcome after prolonged effort)"
+    },
+    {
+      "id": "misc_conjunction",
+      "label": "Miscellaneous Conjunctions",
+      "description": "Conjunctions and clause linkers that don't fit main groups",
+      "members": ["609", "513", "1499", "1707", "1783", "1781"],
+      "pedagogicalNote": "て(connect) = sequential/parallel verb connector; と共に = along with/at the same time; し = and/plus (multiple reasons); か何か = or something like that; というのに = although/despite; であろうが = whether A or B it doesn't matter"
+    },
+    {
+      "id": "misc_reference",
+      "label": "Miscellaneous Reference Expressions",
+      "description": "Reference, equivalence, and labeling expressions",
+      "members": ["1145", "974", "1779", "1669", "1675", "1682"],
+      "pedagogicalNote": "と言うと = speaking of/when you mention; によると = according to; とのこと = according to (reported speech); 旨 = that/concerning; と同様 = in the same way as; 並みに = to the same degree as"
+    },
+    {
+      "id": "misc_grammar_forms",
+      "label": "Miscellaneous Grammar Forms",
+      "description": "Grammar forms that are syntactically isolated or highly specific",
+      "members": ["733", "640", "638", "1502", "1657", "1587", "1623"],
+      "pedagogicalNote": "である = formal copula; なる(adj) = used like な of na-adjectives; な(particle) = na-adjective particle; ばかり = have just done; わざとらしい = fake/pretending; もとい = rather/correction; なぜなら = because (formal)"
+    },
+    {
+      "id": "misc_sentence_final",
+      "label": "Miscellaneous Sentence-Final",
+      "description": "Sentence-final expressions for emotion, memory, or modality",
+      "members": ["1710", "1784", "1787", "1593", "1131"],
+      "pedagogicalNote": "~たっけ = was it~/did I recall correctly; ~なかったろう = probably didn't; よくも~ものだ = how dare/how could; のに(wish) = I wish; うちに = while (before it changes)"
+    },
+    {
+      "id": "misc_misc",
+      "label": "Miscellaneous (Low Frequency / Edge Cases)",
+      "description": "Grammar points with unique roles or very low usage counts",
+      "members": ["1677", "1497", "1588", "1598", "1786", "1789"],
+      "pedagogicalNote": "Various low-frequency expressions"
+    },
+    {
+      "id": "comparison_similarity",
+      "label": "Comparison & Similarity (Formal)",
+      "description": "Formal expressions for comparing or equating things",
+      "members": ["1508", "1675", "1682", "516"],
+      "pedagogicalNote": "比べものにならない = no comparison possible; と同様 = same way as; 並みに = to same degree as; とは限らない = not necessarily/not always true"
+    },
+    {
+      "id": "passive_causative",
+      "label": "Passive & Causative",
+      "description": "Make/let/have someone do; passive expressions",
+      "members": ["1302"],
+      "pedagogicalNote": "させる = causative (make/let someone do). Related to passive forms but here focused on causative usage"
+    },
+    {
+      "id": "frequency_habituation",
+      "label": "Frequency & Habit",
+      "description": "Expressions about habitual actions, repeated occurrences, or tendencies",
+      "members": ["1238", "1621", "947"],
+      "pedagogicalNote": "がち = tend to (often negative habit); まま = remaining unchanged (habitual state); つい = reflexive habit despite intention"
+    },
+    {
+      "id": "first_time_recurrence",
+      "label": "First Time & Recurrence",
+      "description": "Expressions about doing something for the first time in a while or redoing",
+      "members": ["1686", "1685"],
+      "pedagogicalNote": "~ぶり = first time in ~ (time span); ~直す = to do over/redo from scratch"
+    },
+    {
+      "id": "topic_discourse",
+      "label": "Topic & Discourse Markers (は, って)",
+      "description": "Topic marking and discourse-level particles",
+      "members": ["660", "879", "1516", "1145"],
+      "pedagogicalNote": "は(contrast) = contrastive topic; って = quotation/topic (casual); ってば = insistence on topic; と言うと = speaking of (topic introduction)"
+    },
+    {
+      "id": "misc_clause_final",
+      "label": "Clause-Final Expressions",
+      "description": "Expressions that end subordinate clauses with special nuance",
+      "members": ["1163", "1481", "1320", "1671", "1565"],
+      "pedagogicalNote": "ものだから = because (unavoidable excuse); 反面 = on the other hand; ことから = from the fact that; おうとすると = just when trying to do (interrupted); ようとする = try to do (unsuccessful)"
+    }
+  ],
+  "grammarPoints": [
+    {
+      "sourceId": "1304",
+      "point": "さえ",
+      "meaning": "even; only; just",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["degree_particles"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1295",
+      "point": "を中心に",
+      "meaning": "center on, in the middle of",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "509",
+      "point": "〜時",
+      "meaning": "when",
+      "syntacticSlots": ["clause_connector", "particle_post_verb"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "585",
+      "point": "として",
+      "meaning": "as; in the capacity of",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference", "assumption_supposition"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "100",
+      "point": "に反して",
+      "meaning": "against, contrary to",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference", "contrast_concession"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1486",
+      "point": "それで",
+      "meaning": "and then, after that; due to that",
+      "syntacticSlots": ["adverbial", "clause_connector"],
+      "confusionGroupIds": ["cause_reason"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1493",
+      "point": "〜なのに",
+      "meaning": "but, although (contrast, surprising)",
+      "syntacticSlots": ["clause_connector", "sentence_ender"],
+      "confusionGroupIds": ["contrast_concession"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1238",
+      "point": "がち",
+      "meaning": "tend to",
+      "syntacticSlots": ["verb_suffix", "particle_post_noun"],
+      "confusionGroupIds": ["appearance_tendency", "frequency_habituation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "544",
+      "point": "訳ではない",
+      "meaning": "it does not necessarily mean that",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["informational_clause"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "856",
+      "point": "だろう",
+      "meaning": "is, would be, probably",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["hearsay_conjecture", "assumption_supposition"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "143",
+      "point": "に限って",
+      "meaning": "of all the/especially/only",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["limit_frequency"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1199",
+      "point": "しか",
+      "meaning": "but, only, just",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["degree_particles"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1387",
+      "point": "で・に・前",
+      "meaning": "time and place prepositions",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["location_direction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1530",
+      "point": "っぽい",
+      "meaning": "-like",
+      "syntacticSlots": ["verb_suffix", "particle_post_noun"],
+      "confusionGroupIds": ["appearance_tendency"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "737",
+      "point": "〜の",
+      "meaning": "? (question particle) [F]",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["question_wonder"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1249",
+      "point": "によって",
+      "meaning": "by; according to; due to",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1300",
+      "point": "〜に比べて",
+      "meaning": "compared to",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["comparison_extent"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1320",
+      "point": "〜ことから",
+      "meaning": "because",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["cause_reason", "misc_clause_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "253",
+      "point": "〜こそ",
+      "meaning": "this, especially (emphasis)",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["degree_particles", "emphasis_assertion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "781",
+      "point": "訳",
+      "meaning": "meaning; reason; circumstances",
+      "syntacticSlots": ["sentence_ender", "particle_post_verb"],
+      "confusionGroupIds": ["informational_clause"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "972",
+      "point": "に従って; に従い",
+      "meaning": "following; in accordance with",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1596",
+      "point": "くれる",
+      "meaning": "to give me, to do for me",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries", "giving_receiving"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "893",
+      "point": "かどうか",
+      "meaning": "whether, if",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["question_wonder"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "917",
+      "point": "ついでに",
+      "meaning": "while doing A, do B",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "974",
+      "point": "によると",
+      "meaning": "according to",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1138",
+      "point": "を聞いた",
+      "meaning": "I heard",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["hearsay_conjecture"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "522",
+      "point": "に対して",
+      "meaning": "toward; in contrast to; regarding",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference", "contrast_concession"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "609",
+      "point": "〜て",
+      "meaning": "verb-te, connects two sentences",
+      "syntacticSlots": ["te_form_auxiliary", "clause_connector"],
+      "confusionGroupIds": ["misc_conjunction"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "732",
+      "point": "条件形",
+      "meaning": "if",
+      "syntacticSlots": ["conditional"],
+      "confusionGroupIds": ["conditional"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "780",
+      "point": "なら",
+      "meaning": "if",
+      "syntacticSlots": ["conditional"],
+      "confusionGroupIds": ["conditional"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1302",
+      "point": "させる",
+      "meaning": "make, let someone do something",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["passive_causative"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1368",
+      "point": "〜と",
+      "meaning": "(on when) doing, if",
+      "syntacticSlots": ["conditional", "clause_connector"],
+      "confusionGroupIds": ["conditional"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1312",
+      "point": "上げる",
+      "meaning": "to do something for someone",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries", "giving_receiving"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "55",
+      "point": "おかげで",
+      "meaning": "thanks to",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["cause_reason"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "502",
+      "point": "からして",
+      "meaning": "even; given, judging from",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["assumption_supposition"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "633",
+      "point": "みたい",
+      "meaning": "looks like",
+      "syntacticSlots": ["sentence_ender", "copula_form"],
+      "confusionGroupIds": ["hearsay_conjecture", "manner_similarity", "assumption_supposition"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "779",
+      "point": "べき",
+      "meaning": "should do",
+      "syntacticSlots": ["sentence_ender", "particle_post_verb"],
+      "confusionGroupIds": ["obligation_modal", "advisory_permission"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "882",
+      "point": "合う",
+      "meaning": "verb~together, mutually",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "947",
+      "point": "つい",
+      "meaning": "without thinking, despite myself",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["mental_state", "frequency_habituation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1130",
+      "point": "為",
+      "meaning": "in order to, because of, for",
+      "syntacticSlots": ["clause_connector", "particle_post_verb"],
+      "confusionGroupIds": ["purpose_intent", "cause_reason"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1499",
+      "point": "し",
+      "meaning": "and",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["cause_reason", "misc_conjunction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1517",
+      "point": "〜中に、〜上に、〜下に",
+      "meaning": "relative location",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["location_direction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1621",
+      "point": "まま",
+      "meaning": "as it is, remain unchanged",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["temporal", "frequency_habituation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1652",
+      "point": "あっと言う間",
+      "meaning": "in a flash, before one knows it",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "541",
+      "point": "とする",
+      "meaning": "assume, regard X as ~",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["assumption_supposition"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "693",
+      "point": "〜か",
+      "meaning": "whether, the question of",
+      "syntacticSlots": ["clause_connector", "sentence_ender"],
+      "confusionGroupIds": ["question_wonder", "informational_clause"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "705",
+      "point": "〜な",
+      "meaning": "negative command",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["advisory_permission"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "786",
+      "point": "方が",
+      "meaning": "(it'd be better to do __)",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["advisory_permission"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "789",
+      "point": "より",
+      "meaning": "than, rather than",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["comparison_extent"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "854",
+      "point": "らしい",
+      "meaning": "seem, apparently",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["hearsay_conjecture"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1408",
+      "point": "にくい",
+      "meaning": "is difficult to do",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["appearance_tendency"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1504",
+      "point": "ようになる",
+      "meaning": "indicates a change which has taken place",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["purpose_intent", "decision_change", "gradual_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1508",
+      "point": "比べものにならない",
+      "meaning": "there is no point comparing",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["comparison_extent", "comparison_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1595",
+      "point": "くらい、ぐらい",
+      "meaning": "to the extent that; so~that~",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["degree_particles", "comparison_extent"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "551",
+      "point": "のに",
+      "meaning": "in order to, to",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["contrast_concession"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "589",
+      "point": "〜ところ(だ)",
+      "meaning": "I am about to / I was about to",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "660",
+      "point": "〜は",
+      "meaning": "ha(wa) used to indicate contrast",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["contrast_concession", "topic_discourse"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "663",
+      "point": "そう",
+      "meaning": "I hear that",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["hearsay_conjecture"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "752",
+      "point": "〜よ",
+      "meaning": "emphasis, new information",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["emphasis_assertion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "759",
+      "point": "ように言う",
+      "meaning": "to say to (do something)",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["manner_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "861",
+      "point": "よう",
+      "meaning": "appearance, seems",
+      "syntacticSlots": ["sentence_ender", "copula_form"],
+      "confusionGroupIds": ["hearsay_conjecture", "manner_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "868",
+      "point": "ところで",
+      "meaning": "by the way",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["formal_connectors"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1728",
+      "point": "~出す",
+      "meaning": "begin/start",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "641",
+      "point": "〜の",
+      "meaning": "turn phrase into noun phrase",
+      "syntacticSlots": ["particle_post_verb"],
+      "confusionGroupIds": ["informational_clause"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "652",
+      "point": "なあ、な〜、な",
+      "meaning": "emphasis",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["emphasis_assertion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "658",
+      "point": "なさい",
+      "meaning": "informal imperative",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["advisory_permission"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "749",
+      "point": "〜かな",
+      "meaning": "I wonder",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["question_wonder"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "852",
+      "point": "せっかく",
+      "meaning": "with effort",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "888",
+      "point": "ところ",
+      "meaning": "place, time, occasion",
+      "syntacticSlots": ["particle_post_verb"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1163",
+      "point": "〜ものだから",
+      "meaning": "so, therefore (unavoidable)",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["cause_reason", "misc_clause_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1481",
+      "point": "〜反面",
+      "meaning": "on the other hand",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["contrast_concession", "misc_clause_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1565",
+      "point": "〜ようとする",
+      "meaning": "try to do something (but unsuccessful)",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["misc_clause_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "556",
+      "point": "がする",
+      "meaning": "to affect senses (taste, smell, feel)",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["mental_state"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "714",
+      "point": "〜だい",
+      "meaning": "? (casual questions)",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["question_wonder"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "718",
+      "point": "しまう",
+      "meaning": "definitely, completely [often regret]",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "733",
+      "point": "である",
+      "meaning": "to be (formal)",
+      "syntacticSlots": ["copula_form"],
+      "confusionGroupIds": ["misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "757",
+      "point": "たい",
+      "meaning": "wanting to do",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["obligation_modal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "766",
+      "point": "〜を",
+      "meaning": "area passed through",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["location_direction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "767",
+      "point": "〜を",
+      "meaning": "(marks departure point)",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["location_direction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "784",
+      "point": "て形+ある",
+      "meaning": "something purposely put into a state",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "1127",
+      "point": "て形+くる",
+      "meaning": "do something, and return",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "1145",
+      "point": "と言うと",
+      "meaning": "when you talk of, speaking of",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["misc_reference", "topic_discourse"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1482",
+      "point": "予定",
+      "meaning": "be planning to do~",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["purpose_intent", "obligation_modal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1559",
+      "point": "て形+みる",
+      "meaning": "to try (out)",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "1626",
+      "point": "出す、出して、出した",
+      "meaning": "to pay, place, issue, stick out",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1639",
+      "point": "気になる",
+      "meaning": "thinking about, worried about",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["mental_state"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1671",
+      "point": "〜おうとすると",
+      "meaning": "voluntary action stopped before completion",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["misc_clause_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1760",
+      "point": "ほど-2",
+      "meaning": "to the extent of; not as~as~; about",
+      "syntacticSlots": ["particle_post_noun", "clause_connector"],
+      "confusionGroupIds": ["comparison_extent"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1776",
+      "point": "どうしても",
+      "meaning": "absolutely, by all means, no matter what",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "638",
+      "point": "〜な",
+      "meaning": "particle used with na-adjectives",
+      "syntacticSlots": ["copula_form"],
+      "confusionGroupIds": ["misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1502",
+      "point": "ばかり",
+      "meaning": "have just done something",
+      "syntacticSlots": ["particle_post_verb"],
+      "confusionGroupIds": ["degree_particles", "misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1597",
+      "point": "として",
+      "meaning": "try to",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["assumption_supposition"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1657",
+      "point": "わざとらしい",
+      "meaning": "fake, pretending",
+      "syntacticSlots": ["sentence_ender", "copula_form"],
+      "confusionGroupIds": ["misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1716",
+      "point": "-方",
+      "meaning": "how to, way to",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1737",
+      "point": "までに",
+      "meaning": "by (day, date, time)",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1772",
+      "point": "なければなりません",
+      "meaning": "must; really should",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["obligation_modal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1788",
+      "point": "ことで",
+      "meaning": "by doing this",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["cause_reason"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "640",
+      "point": "なる",
+      "meaning": "used like な of na-adjectives",
+      "syntacticSlots": ["copula_form"],
+      "confusionGroupIds": ["misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "649",
+      "point": "にする",
+      "meaning": "to decide on, to choose",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["decision_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "783",
+      "point": "て形+いる",
+      "meaning": "doing currently, continuing states",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "1203",
+      "point": "なし",
+      "meaning": "without",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["without_negation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1561",
+      "point": "ずに",
+      "meaning": "without",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["without_negation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1629",
+      "point": "ことにする",
+      "meaning": "decide to do something",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["purpose_intent", "decision_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1648",
+      "point": "とても〜ない",
+      "meaning": "can't possibly",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1731",
+      "point": "のだ",
+      "meaning": "explanation",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["informational_clause"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1732",
+      "point": "ことになる",
+      "meaning": "it has been decided that",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["decision_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1774",
+      "point": "かしら",
+      "meaning": "I wonder if",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["question_wonder"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1675",
+      "point": "と同様",
+      "meaning": "the same way as",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["comparison_similarity", "misc_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1734",
+      "point": "ということですね",
+      "meaning": "your message is that",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["polite_request"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1768",
+      "point": "〜のような",
+      "meaning": "just like, similar to",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["manner_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1773",
+      "point": "かい",
+      "meaning": "question mark",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["question_wonder"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1795",
+      "point": "~上げる",
+      "meaning": "something just finished",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1117",
+      "point": "気がする",
+      "meaning": "to feel, realize",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["mental_state"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1154",
+      "point": "筈",
+      "meaning": "believe that it is so, supposed to be",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["obligation_modal", "hearsay_conjecture"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1289",
+      "point": "〜にしては",
+      "meaning": "even though; for",
+      "syntacticSlots": ["particle_post_noun", "particle_post_verb"],
+      "confusionGroupIds": ["contrast_concession"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "516",
+      "point": "とは限らない",
+      "meaning": "not always, not necessarily",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["comparison_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "476",
+      "point": "あまり+動詞否定形",
+      "meaning": "not very, not much",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "988",
+      "point": "こんな",
+      "meaning": "such; this; like this",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["manner_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "117",
+      "point": "にとって",
+      "meaning": "to; for",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1583",
+      "point": "せいで",
+      "meaning": "because of (negative)",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["cause_reason"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1661",
+      "point": "て形+はいけない",
+      "meaning": "you shouldn't, must not",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["obligation_modal", "advisory_permission"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "1400",
+      "point": "て形+しまう",
+      "meaning": "wind up, end up, finish",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "308",
+      "point": "向き",
+      "meaning": "for, facing, toward, aimed at",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "846",
+      "point": "貰う",
+      "meaning": "to get",
+      "syntacticSlots": ["te_form_auxiliary"],
+      "confusionGroupIds": ["te_form_auxiliaries", "giving_receiving"],
+      "conjugationFamily": "te_form"
+    },
+    {
+      "sourceId": "513",
+      "point": "と共に",
+      "meaning": "as well as; with; at the same time",
+      "syntacticSlots": ["particle_post_noun", "clause_connector"],
+      "confusionGroupIds": ["misc_conjunction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1131",
+      "point": "うちに",
+      "meaning": "while; during; as",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["temporal", "misc_sentence_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1162",
+      "point": "ところに、ところへ、ところを",
+      "meaning": "(just) when",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1523",
+      "point": "意向形と思う",
+      "meaning": "I think I will (do)",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["purpose_intent"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "886",
+      "point": "儚い",
+      "meaning": "hopeless, fleeting, transient",
+      "syntacticSlots": ["copula_form"],
+      "confusionGroupIds": ["mental_state"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1632",
+      "point": "積もりだった",
+      "meaning": "I had the intention to do (but didn't)",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["purpose_intent", "obligation_modal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "410",
+      "point": "〜としても",
+      "meaning": "even if; assuming",
+      "syntacticSlots": ["clause_connector", "conditional"],
+      "confusionGroupIds": ["contrast_concession", "conditional"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1645",
+      "point": "やすい",
+      "meaning": "easy to V",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["appearance_tendency"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "800",
+      "point": "続ける",
+      "meaning": "keep on doing",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "879",
+      "point": "って",
+      "meaning": "said; no matter what",
+      "syntacticSlots": ["particle_post_noun", "sentence_ender"],
+      "confusionGroupIds": ["emphasis_assertion", "topic_discourse"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1627",
+      "point": "あまり",
+      "meaning": "not really",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "976",
+      "point": "によって",
+      "meaning": "depending on",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1175",
+      "point": "どうせ",
+      "meaning": "after all; eventually",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1501",
+      "point": "であろう",
+      "meaning": "I guess, probably",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["hearsay_conjecture", "assumption_supposition"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "687",
+      "point": "になる",
+      "meaning": "to become",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["decision_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "776",
+      "point": "〜わ",
+      "meaning": "(emphasis) [female]",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["emphasis_assertion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "859",
+      "point": "切る",
+      "meaning": "verb-totally",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1305",
+      "point": "について",
+      "meaning": "regarding, about",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1711",
+      "point": "其の上",
+      "meaning": "moreover; besides",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["formal_connectors"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1722",
+      "point": "もしかして",
+      "meaning": "is it possible",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["hearsay_conjecture"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1709",
+      "point": "なければならない",
+      "meaning": "must",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["obligation_modal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1721",
+      "point": "そうもない",
+      "meaning": "no way; impossible",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["hearsay_conjecture"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1706",
+      "point": "さもないと",
+      "meaning": "or else, otherwise",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["formal_connectors"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1707",
+      "point": "か何か",
+      "meaning": "or something like that",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["misc_conjunction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1710",
+      "point": "~たっけ",
+      "meaning": "was it~; did you say~",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["misc_sentence_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1713",
+      "point": "の様",
+      "meaning": "seems like; looks like",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["hearsay_conjecture", "manner_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1720",
+      "point": "下さいませんか",
+      "meaning": "would you please",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["polite_request"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1723",
+      "point": "~てもいいですか",
+      "meaning": "do you mind if~",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["advisory_permission"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1717",
+      "point": "どうぞ",
+      "meaning": "go ahead; be my guest",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["polite_request"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1719",
+      "point": "時間がたつ",
+      "meaning": "passing of time",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "739",
+      "point": "じゅう／ちゅう",
+      "meaning": "throughout, through, during all",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["temporal"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1268",
+      "point": "ように",
+      "meaning": "in order to",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["purpose_intent", "manner_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1473",
+      "point": "できるだけ",
+      "meaning": "as soon/early as possible",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1519",
+      "point": "せねばならない",
+      "meaning": "have to, feel obliged to",
+      "syntacticSlots": ["sentence_ender", "conditional"],
+      "confusionGroupIds": ["obligation_modal", "conditional"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1520",
+      "point": "ましてや",
+      "meaning": "let alone, still, much less",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["formal_connectors"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1679",
+      "point": "を通して",
+      "meaning": "through, by use of",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1478",
+      "point": "少しも〜ない",
+      "meaning": "not at all",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1494",
+      "point": "だからこそ",
+      "meaning": "(just) because of",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial", "cause_reason"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1516",
+      "point": "ってば",
+      "meaning": "emphasize emotion/desire/will",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["emphasis_assertion", "topic_discourse"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1585",
+      "point": "今では",
+      "meaning": "(by) now; nowadays",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["gradual_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1686",
+      "point": "~ぶり",
+      "meaning": "first time in ~",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["first_time_recurrence"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1477",
+      "point": "どちらかといえば",
+      "meaning": "if I had to say",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1651",
+      "point": "〜放題",
+      "meaning": "as you like",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["limit_frequency"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1685",
+      "point": "~直す",
+      "meaning": "to do something again",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion", "first_time_recurrence"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1407",
+      "point": "そうすると",
+      "meaning": "that means, if that's the case",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["formal_connectors"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1475",
+      "point": "なんとなく",
+      "meaning": "vaguely, somehow",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1497",
+      "point": "ひとつとっても",
+      "meaning": "one example being",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1593",
+      "point": "のに",
+      "meaning": "wish",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["contrast_concession", "misc_sentence_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1624",
+      "point": "未だ",
+      "meaning": "yet / as yet / not yet",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1631",
+      "point": "とっさに",
+      "meaning": "reflexively react",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1662",
+      "point": "stem+出す",
+      "meaning": "begin to ~",
+      "syntacticSlots": ["verb_suffix"],
+      "confusionGroupIds": ["verb_completion"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1673",
+      "point": "なくてもすむ",
+      "meaning": "don't have to",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["without_negation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1678",
+      "point": "ときたら",
+      "meaning": "when it comes to~ (neg. sense)",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_discourse"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1681",
+      "point": "〜ひいては",
+      "meaning": "which in turn",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["formal_connectors"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1778",
+      "point": "からして",
+      "meaning": "since; because",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["cause_reason"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1781",
+      "point": "であろうが",
+      "meaning": "A or B doesn't matter",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["misc_conjunction"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1587",
+      "point": "もとい",
+      "meaning": "is wrong, rather",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1598",
+      "point": "と伝えていただけませんか",
+      "meaning": "politely asking to convey message",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["polite_request"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1637",
+      "point": "それに",
+      "meaning": "moreover, and what's more",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["formal_connectors"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1650",
+      "point": "より",
+      "meaning": "from",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["comparison_extent"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1667",
+      "point": "次第に",
+      "meaning": "gradually, little by little",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["gradual_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1669",
+      "point": "旨",
+      "meaning": "concerning, regarding, that",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["misc_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1682",
+      "point": "並みに",
+      "meaning": "as...as, to same degree",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["comparison_similarity", "misc_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1687",
+      "point": "~なき",
+      "meaning": "~less, without",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["without_negation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1769",
+      "point": "ことにする",
+      "meaning": "has/have decided that",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["purpose_intent", "decision_change"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1771",
+      "point": "Q~でも",
+      "meaning": "question word + demo = ever",
+      "syntacticSlots": ["adverbial"],
+      "confusionGroupIds": ["misc_adverbial"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1785",
+      "point": "のなさ",
+      "meaning": "lack of something",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["without_negation"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1787",
+      "point": "よくも〜ものだ",
+      "meaning": "how is it possible that...?",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["misc_sentence_final"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1623",
+      "point": "なぜなら",
+      "meaning": "because",
+      "syntacticSlots": ["adverbial", "clause_connector"],
+      "confusionGroupIds": ["cause_reason", "misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1659",
+      "point": "とは限りません",
+      "meaning": "not necessarily",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["comparison_similarity"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1677",
+      "point": "はっちゃける",
+      "meaning": "to party, unwind",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["misc_grammar_forms"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1688",
+      "point": "~に基づいて",
+      "meaning": "based on~",
+      "syntacticSlots": ["particle_post_noun"],
+      "confusionGroupIds": ["topic_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1779",
+      "point": "とのこと",
+      "meaning": "according to",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["misc_reference"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1783",
+      "point": "というのに",
+      "meaning": "although; despite",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["misc_conjunction", "contrast_concession"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "1784",
+      "point": "〜なかったろう",
+      "meaning": "probable negative",
+      "syntacticSlots": ["sentence_ender"],
+      "confusionGroupIds": ["misc_sentence_final", "hearsay_conjecture"],
+      "conjugationFamily": null
+    },
+    {
+      "sourceId": "978",
+      "point": "挙げ句",
+      "meaning": "in the end, after all",
+      "syntacticSlots": ["clause_connector"],
+      "confusionGroupIds": ["limit_frequency"],
+      "conjugationFamily": null
+    }
+  ],
+  "conjugationTable": {
+    "te_form": {
+      "ている": {
+        "past": "ていた",
+        "polite": "ています",
+        "negative": "ていない",
+        "past_negative": "ていなかった"
+      },
+      "てしまう": {
+        "past": "てしまった",
+        "polite": "てしまいます",
+        "negative": "てしまわない",
+        "past_negative": "てしまわなかった"
+      },
+      "ておく": {
+        "past": "ておいた",
+        "polite": "ておきます",
+        "negative": "ておかない",
+        "past_negative": "ておかなかった"
+      },
+      "てある": {
+        "past": "てあった",
+        "polite": "てあります",
+        "negative": "てない",
+        "past_negative": "てなかった"
+      },
+      "てみる": {
+        "past": "てみた",
+        "polite": "てみます",
+        "negative": "てみない",
+        "past_negative": "てみなかった"
+      },
+      "てくる": {
+        "past": "てきた",
+        "polite": "てきます",
+        "negative": "てこない",
+        "past_negative": "てこなかった"
+      },
+      "てあげる": {
+        "past": "てあげた",
+        "polite": "てあげます",
+        "negative": "てあげない",
+        "past_negative": "てあげなかった"
+      },
+      "てもらう": {
+        "past": "てもらった",
+        "polite": "てもらいます",
+        "negative": "てもらわない",
+        "past_negative": "てもらわなかった"
+      },
+      "てくれる": {
+        "past": "てくれた",
+        "polite": "てくれます",
+        "negative": "てくれない",
+        "past_negative": "てくれなかった"
+      },
+      "ていく": {
+        "past": "ていった",
+        "polite": "ていきます",
+        "negative": "ていかない",
+        "past_negative": "ていかなかった"
+      },
+      "てはいけない": {
+        "past": "てはいけなかった",
+        "polite": "てはいけません",
+        "negative": "てはいけなくない",
+        "past_negative": "てはいけなくなかった"
+      }
+    }
+  },
+  "synonymGroups": [
+    {
+      "id": "syn_because",
+      "reason": "から and ので are often interchangeable for 'because', but ので is softer and more objective; から is more direct and subjective",
+      "memberIds": ["1320", "55", "1583", "1163", "1623", "1778"]
+    },
+    {
+      "id": "syn_seems",
+      "reason": "らしい, よう, みたい, そう(hearsay), の様 all express 'seems/apparently' but differ in formality, information source, and directness of inference",
+      "memberIds": ["854", "861", "633", "663", "1713"]
+    },
+    {
+      "id": "syn_must",
+      "reason": "なければならない, せねばならない, なければなりません are near-synonyms for obligation, differing mainly in formality and register",
+      "memberIds": ["1709", "1519", "1772"]
+    },
+    {
+      "id": "syn_decide",
+      "reason": "ことにする (1629 and 1769 are the same pattern, different IDs — volitional decision) vs ことになる (external/natural result that has been decided)",
+      "memberIds": ["1629", "1769", "1732"]
+    },
+    {
+      "id": "syn_only",
+      "reason": "しか (requires negative verb), さえ (even/only — extremity marker), だけ (just/only — neutral), ばかり (nothing but/just did), こそ (emphasis on this one thing)",
+      "memberIds": ["1199", "1304", "1502", "253"]
+    }
+  ]
+}

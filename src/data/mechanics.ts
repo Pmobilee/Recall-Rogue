@@ -61,8 +61,8 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   // Attack (phase 1 promoted)
   {
     id: 'heavy_strike', name: 'Heavy Strike', type: 'attack',
-    description: 'High damage. Costs 3 AP.',
-    baseValue: 20, apCost: 3, maxPerPool: 3, tags: ['strike', 'heavy'], launchPhase: 1, unlockLevel: 0,
+    description: 'High damage. Costs 2 AP.',
+    baseValue: 20, apCost: 2, maxPerPool: 3, tags: ['strike', 'heavy'], launchPhase: 1, unlockLevel: 0,
     quickPlayValue: 10, chargeCorrectValue: 60, chargeWrongValue: 7,
   },
   {

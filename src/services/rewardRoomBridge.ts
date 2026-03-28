@@ -182,7 +182,7 @@ export async function openTestRewardRoom(): Promise<void> {
     { id: 'adapt', name: 'Adapt', type: 'buff' as const, ap: 1, effect: 1 },
     { id: 'execute', name: 'Execute', type: 'attack' as const, ap: 2, effect: 5 },
     { id: 'lifetap', name: 'Lifetap', type: 'attack' as const, ap: 2, effect: 8 },
-    { id: 'heavy_strike', name: 'Heavy Strike', type: 'attack' as const, ap: 3, effect: 18 },
+    { id: 'heavy_strike', name: 'Heavy Strike', type: 'attack' as const, ap: 2, effect: 18 },
     { id: 'expose', name: 'Expose', type: 'debuff' as const, ap: 1, effect: 1 },
     { id: 'recycle', name: 'Recycle', type: 'utility' as const, ap: 1, effect: 3 },
     { id: 'mirror', name: 'Mirror', type: 'buff' as const, ap: 1, effect: 1 },

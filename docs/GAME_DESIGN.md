@@ -740,29 +740,31 @@ An Inscription card played via Quick Play applies its effect at **0.7×** the ba
 
 ---
 
-## 4.7 Knowledge Aura (AR-261)
+## 4.7 Brain Fog (AR-261)
 
-Per-encounter gauge (0–10) driven by Charge accuracy. Starts at 5 each encounter.
+Per-encounter fog gauge (0–10) driven by Charge accuracy. Starts at 0 (clear) each encounter. Higher fog = worse for the player.
 
-**Aura Changes:**
+**Fog Changes:**
 
 | Event | Delta |
 |-------|-------|
-| Correct Charge | +1 |
-| Wrong Charge | −2 |
+| Wrong Charge | +2 (fog increases) |
+| Correct Charge | −1 (fog decreases) |
 | Quick Play | 0 |
 
-**Aura States:**
+**Fog States:**
 
 | Range | State | Effect |
 |-------|-------|--------|
-| 0–3 | Brain Fog | Enemies deal +20% damage |
-| 4–6 | Neutral | No effect |
-| 7–10 | Flow State | Draw +1 card per turn |
+| 0–2 | Flow State | Draw +1 card per turn |
+| 3–6 | Neutral | No effect |
+| 7–10 | Brain Fog | Enemies deal +20% damage |
 
-Quick Play doesn't drain Aura — QP is already punished through lower multipliers, no chains, no mastery progress. Aura purely tracks Charge accuracy.
+Quick Play doesn't affect fog — QP is already punished through lower multipliers, no chains, no mastery progress. Fog purely tracks Charge accuracy.
 
-Cards and relics can reference Aura state (e.g., Smite scales with Aura level, Domain Mastery Sigil grants ±1 AP based on state).
+Cards and relics can reference fog state (e.g., Smite scales inversely with fog level — clearer mind hits harder; Domain Mastery Sigil grants ±1 AP based on state; Feedback Loop gets bonus damage in Flow State).
+
+**UI:** Fog is displayed as a wing extending below the left section of the top bar, with a quarter-circle bottom-right corner. Shows fog icon (✨ for Flow State, 🌫️ otherwise) and numeric level. Animated mist overlay intensifies with higher fog. Golden glow in Flow State.
 
 **Implementation:** `src/services/knowledgeAuraSystem.ts` — pure module with `resetAura()`, `adjustAura()`, `getAuraState()`, `getAuraLevel()`.
 
@@ -774,7 +776,7 @@ Per-encounter list of fact IDs from wrong Charge answers. Resets each encounter.
 
 When a Charge answer is wrong, the fact ID is added to the Review Queue. If a subsequent Charge correctly answers a Review Queue fact, it is cleared from the queue and triggers bonus effects on cards/relics that reference it (e.g., Recall deals bonus damage + heal on Review Queue facts, Scholar's Crown grants +40% damage).
 
-The queue is displayed as small icons near the chain counter (top 3 shown, overflow badge for more).
+The queue count is displayed as a 📝 pill badge in the top bar center section, next to the floor/segment info.
 
 **Implementation:** `src/services/reviewQueueSystem.ts` — pure module with `resetReviewQueue()`, `addToReviewQueue()`, `clearReviewQueueFact()`, `isReviewQueueFact()`.
 

@@ -515,6 +515,80 @@ volatile_facts: []
 
 ---
 
+## Deck Provenance Documentation — MANDATORY
+
+**Every curated deck MUST have a provenance document at `docs/deck-provenance/{deck_id}.md`.** No deck is considered complete without this. The provenance doc is the permanent record of HOW the deck was built — every source, every step, every decision.
+
+### When to Create
+- Create the provenance doc at the START of generation (Phase 3), not after
+- Update it as each pipeline step runs
+- Finalize it when the deck is complete
+
+### Required Sections
+
+Every provenance doc MUST contain:
+
+#### 1. Sources
+For every source used:
+- **Name**: Human-readable source name (e.g., "Full Japanese Study Deck", "Wikipedia", "Wikidata")
+- **URL**: Direct link to the source
+- **License**: Exact license (CC BY-SA 4.0, CC-BY 2.0, public domain, etc.)
+- **What was taken**: Exactly what data came from this source
+- **Commercial use**: Confirmed yes/no with any conditions (attribution, share-alike)
+
+#### 2. Pipeline Steps
+For every step in the generation process:
+- **Step name**: What was done (e.g., "Grammar point extraction", "Fill-blank generation")
+- **Input**: What data went in (file paths, record counts)
+- **Process**: How it was transformed (script name, agent type, algorithm)
+- **Output**: What came out (file paths, record counts)
+- **Validation**: What checks were run on the output
+
+#### 3. Distractor Generation
+- **Method**: How distractors were generated (confusion groups, LLM, conjugation tables, etc.)
+- **Sources**: Where distractor content came from
+- **Validation**: How distractors were checked for correctness (not accidentally correct, semantically plausible)
+
+#### 4. Fact Verification
+- **Method**: How factual accuracy was verified
+- **Sources checked**: Which sources were consulted
+- **Known limitations**: Any facts that couldn't be fully verified
+- **Error rate**: If QA was run, what was found and fixed
+
+#### 5. Quality Assurance
+- **Checks run**: typecheck, build, unit tests, visual inspection, playtest
+- **Sample review**: Spot-check results (10+ random facts reviewed)
+- **Known issues**: Any quality concerns or limitations
+
+#### 6. Attribution Requirements
+- **Exact attribution text** needed for commercial use
+- **Where to display**: In-app credits, about page, etc.
+- **Share-alike obligations**: If CC-BY-SA, what this means for derivative works
+
+#### 7. Reproduction Steps
+- **Exact commands** to regenerate the deck from scratch
+- **Prerequisites**: What tools/data must be available
+- **Environment**: Any environment requirements (Node version, etc.)
+
+### Per-Sub-Deck Documentation
+If the deck has sub-decks, each sub-deck gets its own section within the provenance doc documenting any sub-deck-specific sources, steps, or decisions.
+
+### Example Path
+```
+docs/deck-provenance/
+├── japanese_n3_grammar.md
+├── solar_system.md
+├── us_presidents.md
+└── world_war_2.md
+```
+
+### Enforcement
+- The orchestrator MUST verify the provenance doc exists and is complete before marking a deck as done
+- Workers MUST update the provenance doc as part of their generation task
+- Missing or incomplete provenance docs are treated as blocking issues — the deck cannot ship without one
+
+---
+
 ## Phase 3: Generation
 
 **Goal:** Produce the complete fact dataset conforming to the architecture spec.
@@ -1204,6 +1278,18 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/playtest-curate
 - Total issues found (exit code 1 if any)
 
 **Run BOTH all-correct and wrong-rate tests.** All-correct verifies new card introduction. Wrong-rate verifies the learning queue brings back wrong answers aggressively.
+
+---
+
+## Runtime Rendering Validation
+
+After generating or modifying a curated deck, run the audit script to verify questions render correctly in-game:
+
+```bash
+node scripts/audit-quiz-display.mjs
+```
+
+This renders every questionTemplate × fact combination exactly as players see it, and flags: trivial questions (answer in question text), short questions (<15 chars), missing distractors, and duplicate distractors. Fix all flags before publishing.
 
 ---
 

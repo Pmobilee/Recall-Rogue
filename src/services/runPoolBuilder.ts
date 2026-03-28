@@ -10,7 +10,11 @@ import { selectRunChainTypes } from '../data/chainTypes';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
 import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
-import type { DifficultyDistribution } from './difficultyCalibration';
+interface DifficultyDistribution {
+  easyPct: number;
+  mediumPct: number;
+  hardPct: number;
+}
 import { funScoreWeight } from './funnessBoost';
 
 const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {

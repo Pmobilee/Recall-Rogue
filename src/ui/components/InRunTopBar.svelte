@@ -32,6 +32,9 @@
     triggeredRelicId?: string | null
     maxRelicSlots?: number
     ascensionLevel?: number
+    reviewQueueLength?: number
+    fogLevel?: number
+    fogState?: 'brain_fog' | 'neutral' | 'flow_state'
     onpause: () => void
   }
 
@@ -48,6 +51,9 @@
     triggeredRelicId = null,
     maxRelicSlots = 5,
     ascensionLevel = 0,
+    reviewQueueLength = 0,
+    fogLevel = 0,
+    fogState = undefined,
     onpause,
   }: Props = $props()
 
@@ -123,7 +129,10 @@
           aria-valuemax={playerMaxHp}
         ></div>
         <span class="hp-text">
-          {#if playerBlock > 0}🛡{playerBlock} {/if}{playerHp}/{playerMaxHp}
+          {#if playerBlock > 0}
+            <span class="shield-badge" aria-label="Block: {playerBlock}">🛡️{playerBlock}</span>
+          {/if}
+          <span class="hp-value">{playerHp}/{playerMaxHp}</span>
         </span>
       </div>
     </div>
@@ -139,6 +148,11 @@
     {#if ascensionLevel > 0}
       <span class="ascension-badge" aria-label="Ascension {ascensionLevel}">
         A{ascensionLevel}
+      </span>
+    {/if}
+    {#if reviewQueueLength > 0}
+      <span class="review-queue-pill" aria-label="{reviewQueueLength} facts in review queue">
+        📝 {reviewQueueLength}
       </span>
     {/if}
   </div>
@@ -209,6 +223,18 @@
     </button>
   </div>
 </div>
+
+<!-- Brain Fog Wing — extends below top bar -->
+{#if fogState !== undefined}
+  <div class="fog-wing" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'} aria-label="Brain Fog: {fogLevel} of 10">
+    <div class="fog-wing-content">
+      <span class="fog-icon" aria-hidden="true">{fogState === 'flow_state' ? '✨' : '🌫️'}</span>
+      <span class="fog-level">{fogLevel}</span>
+    </div>
+    <!-- Animated fog overlay — opacity scales with fog level -->
+    <div class="fog-mist" style="opacity: {(fogLevel ?? 0) / 10 * 0.7};"></div>
+  </div>
+{/if}
 
 <style>
   /* ============================================================
@@ -305,15 +331,38 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(4px * var(--layout-scale, 1));
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
     font-weight: 700;
     color: #fff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     line-height: 1;
     letter-spacing: 0.03em;
     pointer-events: none;
+  }
+
+  .hp-value {
+    font-size: calc(9px * var(--text-scale, 1));
+  }
+
+  .shield-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(2px * var(--layout-scale, 1));
+    padding: calc(1px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
+    background: rgba(56, 189, 248, 0.25);
+    border: 1px solid rgba(56, 189, 248, 0.5);
+    border-radius: 999px;
+    font-size: calc(7px * var(--text-scale, 1));
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.03em;
+    line-height: 1;
   }
 
   /* ============================================================
@@ -353,6 +402,23 @@
     letter-spacing: 0.06em;
     white-space: nowrap;
     flex-shrink: 0;
+  }
+
+  .review-queue-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(8px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #fcd34d;
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    padding: calc(1px * var(--layout-scale, 1)) calc(5px * var(--layout-scale, 1));
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1;
+    letter-spacing: 0.03em;
   }
 
   /* ============================================================
@@ -539,5 +605,101 @@
     font-size: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.55);
     line-height: 1;
     color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* ============================================================
+     Brain Fog Wing
+     ============================================================ */
+  .fog-wing {
+    position: fixed;
+    top: var(--topbar-height, clamp(36px, 4.5vh, 56px));
+    left: 0;
+    width: 35%;
+    height: calc(28px * var(--layout-scale, 1));
+    background: rgba(10, 15, 25, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom-right-radius: calc(16px * var(--layout-scale, 1));
+    z-index: 199;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    pointer-events: none;
+    transition: background 400ms ease, box-shadow 400ms ease;
+  }
+
+  .fog-wing-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+    padding: 0 calc(10px * var(--layout-scale, 1));
+  }
+
+  .fog-icon {
+    font-size: calc(12px * var(--text-scale, 1));
+    line-height: 1;
+  }
+
+  .fog-level {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  /* Danger state — brain fog active */
+  .fog-wing-danger {
+    background: rgba(25, 10, 30, 0.92);
+    box-shadow: inset 0 0 calc(12px * var(--layout-scale, 1)) rgba(129, 140, 248, 0.3);
+    border-color: rgba(129, 140, 248, 0.3);
+  }
+
+  .fog-wing-danger .fog-level {
+    color: #a78bfa;
+  }
+
+  /* Flow state — low fog */
+  .fog-wing-flow {
+    box-shadow: inset 0 0 calc(10px * var(--layout-scale, 1)) rgba(251, 191, 36, 0.15);
+  }
+
+  .fog-wing-flow .fog-level {
+    color: #fbbf24;
+  }
+
+  /* Animated mist overlay */
+  .fog-mist {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(129, 140, 248, 0.05) 0%,
+      rgba(129, 140, 248, 0.2) 30%,
+      rgba(129, 140, 248, 0.1) 60%,
+      rgba(129, 140, 248, 0.25) 100%
+    );
+    animation: fogDrift 4s ease-in-out infinite alternate;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  @keyframes fogDrift {
+    0% {
+      background-position: 0% 50%;
+      filter: blur(0px);
+    }
+    100% {
+      background-position: 100% 50%;
+      filter: blur(1px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fog-mist { animation: none; }
   }
 </style>

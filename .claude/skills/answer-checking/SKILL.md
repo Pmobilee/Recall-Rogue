@@ -129,6 +129,10 @@ These gates apply to ALL facts entering or being fixed in the database:
 
 **28 required schema fields:** `id`, `type`, `domain`, `subdomain`, `categoryL1`, `categoryL2`, `categoryL3`, `statement`, `quizQuestion`, `correctAnswer`, `distractors`, `acceptableAnswers`, `explanation`, `wowFactor`, `visualDescription`, `variants`, `difficulty`, `funScore`, `noveltyScore`, `ageRating`, `rarity`, `sourceName`, `sourceUrl`, `contentVolatility`, `sensitivityLevel`, `sensitivityNote`, `tags`, `_haikuProcessed`, `_haikuProcessedAt`.
 
+### Template Rendering Check
+
+For curated decks, also run `node scripts/audit-quiz-display.mjs` to verify that questionTemplates render correctly with actual fact data. This catches issues the DB-level checks miss (e.g., template placeholders producing nonsensical questions).
+
 ## Tagged Fact Variants
 Use `--tags` and `--tag-mode` with `check` or `export-flagged`.
 

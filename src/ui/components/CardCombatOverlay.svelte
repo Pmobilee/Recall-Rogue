@@ -68,8 +68,7 @@
   import { isNumericalAnswer, getNumericalDistractors, displayAnswer as displayNumericalAnswer } from '../../services/numericalDistractorService'
   import type { Fact } from '../../data/types'
   import { REGION_NAMES, rollFlagQuestionType } from '../../services/nonCombatQuizSelector'
-  import { getAuraLevel, getAuraState, type AuraState } from '../../services/knowledgeAuraSystem'
-  import { getReviewQueueLength } from '../../services/reviewQueueSystem'
+
 
   interface Props {
     turnState: TurnState | null
@@ -359,12 +358,7 @@
   let discardPileCount = $derived(turnState?.deck.discardPile.length ?? 0)
   let exhaustPileCount = $derived(turnState?.deck.exhaustPile.length ?? 0)
 
-  // AR-261: Knowledge Aura + Review Queue — re-read module state whenever turnState changes
-  // (these are module-level variables, not Svelte stores, so we derive from turnState as a trigger)
-  let auraLevel = $derived(turnState != null ? getAuraLevel() : 5)
-  let auraState = $derived(turnState != null ? getAuraState() : ('neutral' as AuraState))
-  let reviewQueueLength = $derived(turnState != null ? getReviewQueueLength() : 0)
-  /** Number of visual card stacks to show (1-5 based on pile size). */
+/** Number of visual card stacks to show (1-5 based on pile size). */
   let drawStackCount = $derived(Math.max(1, Math.min(5, Math.ceil(drawPileCount / 3))))
   let discardStackCount = $derived(Math.max(0, Math.min(5, Math.ceil(discardPileCount / 3))))
 
@@ -447,13 +441,6 @@
       }
       if (turnState.phoenixRageTurnsRemaining > 0) {
         effects.push({ type: 'strength', value: 1, turnsRemaining: turnState.phoenixRageTurnsRemaining })
-      }
-      // AR-261: Knowledge Aura state as virtual effects
-      if (auraState === 'brain_fog') {
-        effects.push({ type: 'brain_fog', value: auraLevel, turnsRemaining: 999 })
-      }
-      if (auraState === 'flow_state') {
-        effects.push({ type: 'flow_state', value: auraLevel, turnsRemaining: 999 })
       }
       // AR-268: Locked card indicator
       const lockedCards = turnState.deck?.hand?.filter((c: any) => c.isLocked) ?? []
@@ -2672,14 +2659,6 @@
 
     <ChainCounter {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} />
 
-    <!-- AR-261: Review Queue badge — shown only when queue is non-empty -->
-    {#if reviewQueueLength > 0}
-      <div class="review-queue-badge" aria-label="{reviewQueueLength} facts in review queue">
-        <span class="review-queue-icon">📝</span>
-        <span class="review-queue-count">{reviewQueueLength}</span>
-      </div>
-    {/if}
-
     <CardHand
       cards={handCards}
       {animatingCards}
@@ -3489,36 +3468,6 @@
     50% { opacity: 0.7; box-shadow: 0 0 12px rgba(239, 68, 68, 0.9); }
   }
 
-
-  /* AR-261: Review Queue badge */
-  .review-queue-badge {
-    position: absolute;
-    /* Sits just above the ChainCounter area, bottom-right of the combo strip */
-    bottom: calc(calc(68px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
-    left: calc(12px * var(--layout-scale, 1));
-    z-index: 9;
-    display: inline-flex;
-    align-items: center;
-    gap: calc(3px * var(--layout-scale, 1));
-    padding: 0 calc(7px * var(--layout-scale, 1));
-    min-height: calc(20px * var(--layout-scale, 1));
-    border-radius: 999px;
-    border: 1px solid rgba(251, 191, 36, 0.4);
-    background: rgba(20, 15, 5, 0.75);
-    pointer-events: none;
-  }
-
-  .review-queue-icon {
-    font-size: calc(10px * var(--text-scale, 1));
-    line-height: 1;
-  }
-
-  .review-queue-count {
-    font-size: calc(11px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #fcd34d;
-    line-height: 1;
-  }
 
   .wow-factor-overlay {
     position: absolute;

@@ -851,8 +851,8 @@ export function playCardAction(
       // AP is NOT refunded — wrong answers always cost AP regardless of mode
       const fizzledEffect = createNoEffect(card);
       turnState.consecutiveCorrectThisEncounter = 0;
-      // AR-261: Wrong charge answer — drop aura, add fact to review queue
-      adjustAura(-2);
+      // AR-261: Wrong charge answer — increase fog, add fact to review queue
+      adjustAura(2);
       if (card.factId) {
         addToReviewQueue(card.factId);
       }
@@ -950,8 +950,8 @@ export function playCardAction(
 
 
     turnState.consecutiveCorrectThisEncounter = 0;
-    // AR-261: Wrong charge answer — drop aura, add fact to review queue
-    adjustAura(-2);
+    // AR-261: Wrong charge answer — increase fog, add fact to review queue
+    adjustAura(2);
     if (card.factId) {
       addToReviewQueue(card.factId);
     }
@@ -1324,8 +1324,8 @@ export function playCardAction(
       turnState.chargesCorrectThisEncounter += 1; // AR-262: accuracy grade counter
       turnState.cardsCorrectThisTurn += 1;
       turnState.totalChargesThisRun += 1;
-      // AR-261: Correct charge answer — raise aura, clear from review queue
-      adjustAura(1);
+      // AR-261: Correct charge answer — decrease fog, clear from review queue
+      adjustAura(-1);
       if (card.factId) {
         clearReviewQueueFact(card.factId);
       }
@@ -1386,8 +1386,8 @@ export function playCardAction(
       turnState.chargesCorrectThisEncounter += 1; // AR-262: accuracy grade counter
       turnState.cardsCorrectThisTurn += 1;
       turnState.totalChargesThisRun += 1;
-      // AR-261: Correct charge answer — raise aura, clear from review queue
-      adjustAura(1);
+      // AR-261: Correct charge answer — decrease fog, clear from review queue
+      adjustAura(-1);
       if (card.factId) {
         clearReviewQueueFact(card.factId);
       }
@@ -2220,8 +2220,8 @@ export function playCardAction(
     turnState.cardsCorrectThisTurn += 1;
     turnState.consecutiveCorrectThisEncounter += 1;
     turnState.chargesCorrectThisEncounter += 1; // AR-262: accuracy grade counter
-    // AR-261: Correct charge answer — raise aura, clear from review queue
-    adjustAura(1);
+    // AR-261: Correct charge answer — decrease fog, clear from review queue
+    adjustAura(-1);
     if (card.factId) {
       clearReviewQueueFact(card.factId);
     }
@@ -2241,10 +2241,10 @@ export function playCardAction(
   );
   turnState.lastCardType = effect.effectType;
 
-  // AR-202: Cure cursed fact on correct Charge.
+  // AR-202: Cure cursed fact on any successful play (quick or charge correct).
   // If the card's fact is in cursedFactIds, remove it (cure). Mark on result for UI animation.
   let curedCursedFact = false;
-  if (playMode === 'charge' && card.factId) {
+  if (card.factId && card.isCursed) {
     const runStateForCure = get(activeRunState);
     if (runStateForCure && runStateForCure.cursedFactIds.has(card.factId)) {
       runStateForCure.cursedFactIds.delete(card.factId);

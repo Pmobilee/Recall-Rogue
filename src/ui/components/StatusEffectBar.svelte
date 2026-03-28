@@ -33,8 +33,8 @@
     bleed: { name: 'Bleed', icon: '🩸', color: '#ef4444', desc: (v) => `Bleed [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
     freeze: { name: 'Freeze', icon: '❄️', color: '#38bdf8', desc: (v, t) => `Frozen — skips action (${t} turn${t !== 1 ? 's' : ''} left)` },
     // Knowledge Aura states (AR-261)
-    brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => `Brain Fog: enemies deal +20% damage. Aura: ${v}/10` },
-    flow_state: { name: 'Flow State', icon: '✨', color: '#fbbf24', desc: (v) => `Flow State: draw +1 card per turn. Aura: ${v}/10` },
+    brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => `Brain Fog: enemies deal +20% damage. Fog: ${v}/10` },
+    flow_state: { name: 'Flow State', icon: '✨', color: '#fbbf24', desc: (v) => `Flow State: draw +1 card per turn. Fog: ${v}/10` },
     // Enemy-specific mechanics (AR-263)
     stunned: { name: 'Stunned', icon: '💫', color: '#fbbf24', desc: () => `Stunned — skips next action` },
     hardcover: { name: 'Hardcover', icon: '📖', color: '#a78bfa', desc: (v) => `Hardcover armor: ${v}. Reduces Quick Play damage. Charges strip it away.` },
