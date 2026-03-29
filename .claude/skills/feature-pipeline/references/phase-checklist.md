@@ -184,7 +184,7 @@ If Phase 5 or 6 reveals the approach is fundamentally wrong:
 
 > **"Should Work" warning**: Confirm, don't assume. Either say "I confirmed it works" or "I cannot verify this." Never say "this should work."
 
-> **"Test Screen Only" warning**: Verify via the real user path (hub → menus → gameplay), not just via `__terraScenario`.
+> **"Test Screen Only" warning**: Verify via the real user path (hub → menus → gameplay), not just via `__rrScenario`.
 
 ```
 VERIFY Progress:
@@ -227,11 +227,11 @@ Run the sim BEFORE making changes to get a baseline, then AFTER to compare. Docu
 ### Visual inspection commands:
 ```
 1. mcp__playwright__browser_navigate → http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial
-2. browser_evaluate(() => window.__terraScreenshotFile()) — saves to /tmp/terra-screenshot.jpg, returns path. Use Read("/tmp/terra-screenshot.jpg") to view
+2. browser_evaluate(() => window.__rrScreenshotFile()) — saves to /tmp/rr-screenshot.jpg, returns path. Use Read("/tmp/rr-screenshot.jpg") to view
 3. mcp__playwright__browser_snapshot
 4. mcp__playwright__browser_console_messages
-5. For Phaser canvas: browser_evaluate(() => window.__terraDebug())
-6. For specific states: browser_evaluate(() => window.__terraScenario.load('scenario-name'))
+5. For Phaser canvas: browser_evaluate(() => window.__rrDebug())
+6. For specific states: browser_evaluate(() => window.__rrScenario.load('scenario-name'))
 ```
 
 ### If Phase 6 reveals a fundamental flaw:
@@ -285,7 +285,7 @@ Skip routine notes like "this file was changed" or "I used this service." Only s
 
 ### Post-ship check:
 At the start of the NEXT session, if this AR was completed in the last 1-2 sessions:
-1. Load the affected screen (via Playwright or `__terraScenario`)
+1. Load the affected screen (via Playwright or `__rrScenario`)
 2. Check the console for new errors
 3. Confirm the feature still works as expected
 4. Note the result — "AR-NNN smoke test: passed" or escalate if broken

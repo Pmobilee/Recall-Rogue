@@ -47,7 +47,7 @@ function nowIso() {
 
   const step = async (turn, action, meta = {}) => {
     const snap = await page.evaluate(() => {
-      const api = window.__terraPlay;
+      const api = window.__rrPlay;
       return {
         screen: api?.getScreen?.() ?? 'unknown',
         look: api?.look?.() ?? '',
@@ -63,11 +63,11 @@ function nowIso() {
     });
     await page.waitForTimeout(1800);
 
-    const apiReady = await page.evaluate(() => !!window.__terraPlay);
+    const apiReady = await page.evaluate(() => !!window.__rrPlay);
     if (!apiReady) {
       report.errors.push({
         type: 'setup_error',
-        message: 'window.__terraPlay unavailable',
+        message: 'window.__rrPlay unavailable',
       });
       report.result = 'error';
     } else {
@@ -75,7 +75,7 @@ function nowIso() {
 
       for (let turn = 1; turn <= MAX_TURNS; turn++) {
         const state = await page.evaluate(() => ({
-          screen: window.__terraPlay?.getScreen?.() ?? 'unknown',
+          screen: window.__rrPlay?.getScreen?.() ?? 'unknown',
         }));
 
         let action = 'noop';
@@ -83,44 +83,44 @@ function nowIso() {
 
         if (state.screen === 'hub' || state.screen === 'base') {
           action = 'startRun';
-          actionResult = await page.evaluate(() => window.__terraPlay.startRun());
+          actionResult = await page.evaluate(() => window.__rrPlay.startRun());
         } else if (state.screen === 'domainSelection') {
           action = 'selectDomain';
-          actionResult = await page.evaluate(() => window.__terraPlay.selectDomain('general_knowledge'));
+          actionResult = await page.evaluate(() => window.__rrPlay.selectDomain('general_knowledge'));
         } else if (state.screen === 'archetypeSelection') {
           action = 'selectArchetype';
-          actionResult = await page.evaluate(() => window.__terraPlay.selectArchetype('balanced'));
+          actionResult = await page.evaluate(() => window.__rrPlay.selectArchetype('balanced'));
         } else if (state.screen === 'combat') {
-          const quiz = await page.evaluate(() => window.__terraPlay.getQuiz());
+          const quiz = await page.evaluate(() => window.__rrPlay.getQuiz());
           if (quiz && quiz.question) {
             action = 'answerQuizCorrectly';
-            actionResult = await page.evaluate(() => window.__terraPlay.answerQuizCorrectly());
+            actionResult = await page.evaluate(() => window.__rrPlay.answerQuizCorrectly());
           } else {
             action = 'playCard';
-            actionResult = await page.evaluate(() => window.__terraPlay.playCard(0));
+            actionResult = await page.evaluate(() => window.__rrPlay.playCard(0));
             if (!actionResult || !actionResult.ok) {
               action = 'endTurn';
-              actionResult = await page.evaluate(() => window.__terraPlay.endTurn());
+              actionResult = await page.evaluate(() => window.__rrPlay.endTurn());
             }
           }
         } else if (state.screen === 'roomSelection') {
           action = 'selectRoom';
-          actionResult = await page.evaluate(() => window.__terraPlay.selectRoom(0));
+          actionResult = await page.evaluate(() => window.__rrPlay.selectRoom(0));
         } else if (state.screen === 'cardReward') {
           action = 'acceptReward';
           actionResult = await page.evaluate(() => {
-            window.__terraPlay.selectRewardType('attack');
-            return window.__terraPlay.acceptReward();
+            window.__rrPlay.selectRewardType('attack');
+            return window.__rrPlay.acceptReward();
           });
         } else if (state.screen === 'restRoom') {
           action = 'restHeal';
-          actionResult = await page.evaluate(() => window.__terraPlay.restHeal());
+          actionResult = await page.evaluate(() => window.__rrPlay.restHeal());
         } else if (state.screen === 'mysteryEvent') {
           action = 'mysteryContinue';
-          actionResult = await page.evaluate(() => window.__terraPlay.mysteryContinue());
+          actionResult = await page.evaluate(() => window.__rrPlay.mysteryContinue());
         } else if (state.screen === 'retreatOrDelve') {
           action = 'delve';
-          actionResult = await page.evaluate(() => window.__terraPlay.delve());
+          actionResult = await page.evaluate(() => window.__rrPlay.delve());
         } else if (state.screen === 'runEnd') {
           report.result = 'completed';
           await step(turn, 'runEnd');

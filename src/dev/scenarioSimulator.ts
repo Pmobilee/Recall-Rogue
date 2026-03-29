@@ -1,22 +1,22 @@
 /**
- * Scenario Simulator — registers window.__terraScenario in dev mode.
+ * Scenario Simulator — registers window.__rrScenario in dev mode.
  * Lets developers instantly jump to specific game states for visual testing.
  *
  * Usage (browser console):
- *   __terraScenario.list()                    // List all available scenarios
- *   __terraScenario.load('combat-boss')       // Load a named scenario
- *   __terraScenario.loadCustom({ ... })       // Load a custom config
- *   __terraScenario.help()                    // Print full reference
+ *   __rrScenario.list()                    // List all available scenarios
+ *   __rrScenario.load('combat-boss')       // Load a named scenario
+ *   __rrScenario.loadCustom({ ... })       // Load a custom config
+ *   __rrScenario.help()                    // Print full reference
  *
  * Mid-combat state overrides (callable any time during combat):
- *   __terraScenario.setPlayerHp(50)
- *   __terraScenario.setEnemyHp(1)
- *   __terraScenario.setPlayerBlock(10)
- *   __terraScenario.setEnemyBlock(5)
- *   __terraScenario.setGold(999)
- *   __terraScenario.forceHand(['heavy_strike', 'strike', 'block'])
- *   __terraScenario.addRelic('whetstone')
- *   __terraScenario.setFloor(5)
+ *   __rrScenario.setPlayerHp(50)
+ *   __rrScenario.setEnemyHp(1)
+ *   __rrScenario.setPlayerBlock(10)
+ *   __rrScenario.setEnemyBlock(5)
+ *   __rrScenario.setGold(999)
+ *   __rrScenario.forceHand(['heavy_strike', 'strike', 'block'])
+ *   __rrScenario.addRelic('whetstone')
+ *   __rrScenario.setFloor(5)
  *
  * DEV MODE ONLY — never included in production builds.
  */
@@ -457,7 +457,7 @@ async function bootstrapRun(config: ScenarioConfig): Promise<boolean> {
     for (const relicId of config.relics) {
       const def = RELIC_BY_ID[relicId];
       if (!def) {
-        console.warn(`[__terraScenario] Unknown relic ID: '${relicId}' — skipping`);
+        console.warn(`[__rrScenario] Unknown relic ID: '${relicId}' — skipping`);
         continue;
       }
       const alreadyHeld = run.runRelics.some(r => r.definitionId === relicId);
@@ -636,7 +636,7 @@ function buildHandFromMechanicIds(
   const result: any[] = targetIds.map((mId, i) => {
     const mechanic = MECHANIC_BY_ID[mId];
     if (!mechanic) {
-      console.warn(`[__terraScenario] Unknown mechanic ID: '${mId}' — using bare card`);
+      console.warn(`[__rrScenario] Unknown mechanic ID: '${mId}' — using bare card`);
       return { ...templateCard, id: `scenario_${i}`, mechanicId: mId, mechanicName: mId };
     }
 
@@ -693,7 +693,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       if (r.type === 'health_vial') return { type: 'health_vial', size: r.size ?? 'small', healAmount: r.healAmount ?? 15 };
       if (r.type === 'card') {
         const mechanic = MECHANIC_BY_ID[r.mechanicId];
-        if (!mechanic) { console.warn(`[__terraScenario] Unknown mechanic: ${r.mechanicId}`); return null; }
+        if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${r.mechanicId}`); return null; }
         return {
           type: 'card',
           card: {
@@ -713,7 +713,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       }
       if (r.type === 'relic') {
         const def = RELIC_BY_ID[r.relicId];
-        if (!def) { console.warn(`[__terraScenario] Unknown relic: ${r.relicId}`); return null; }
+        if (!def) { console.warn(`[__rrScenario] Unknown relic: ${r.relicId}`); return null; }
         return { type: 'relic', relic: def };
       }
       return null;
@@ -744,7 +744,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     if (config.shopRelics) {
       for (const relicId of config.shopRelics) {
         const def = RELIC_BY_ID[relicId];
-        if (!def) { console.warn(`[__terraScenario] Unknown relic: ${relicId}`); continue; }
+        if (!def) { console.warn(`[__rrScenario] Unknown relic: ${relicId}`); continue; }
         const basePrice = def.rarity === 'common' ? 100 : def.rarity === 'uncommon' ? 150 : def.rarity === 'rare' ? 250 : 400;
         inventory.relics.push({ relic: def, price: calculateShopPrice(basePrice, floor) });
       }
@@ -753,7 +753,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     if (config.shopCards) {
       for (const mId of config.shopCards) {
         const mechanic = MECHANIC_BY_ID[mId];
-        if (!mechanic) { console.warn(`[__terraScenario] Unknown mechanic: ${mId}`); continue; }
+        if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${mId}`); continue; }
         const card = {
           id: `shop_${mId}_${Math.random().toString(36).slice(2, 6)}`,
           factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
@@ -895,7 +895,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     if (config.cardRewardMechanics && config.cardRewardMechanics.length > 0) {
       const cards = config.cardRewardMechanics.map((mId, i) => {
         const mechanic = MECHANIC_BY_ID[mId];
-        if (!mechanic) { console.warn(`[__terraScenario] Unknown mechanic: ${mId}`); return null; }
+        if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${mId}`); return null; }
         return {
           id: `reward_${mId}_${i}_${Math.random().toString(36).slice(2, 6)}`,
           factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
@@ -1095,7 +1095,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     const questions = generateStudyQuestions();
 
     // Store on a well-known symbol so CardApp's $effect can read them
-    const sym = Symbol.for('terra:scenarioStudyQuestions');
+    const sym = Symbol.for('rr:scenarioStudyQuestions');
     (globalThis as any)[sym] = questions;
 
     gameFlowState.set('restStudy' as any);
@@ -1342,13 +1342,13 @@ async function listMysteryEvents(): Promise<string[]> {
 function printHelp(): void {
   const lines: string[] = [
     '╔══════════════════════════════════════════════════╗',
-    '║      window.__terraScenario  —  Dev Scenario API ║',
+    '║      window.__rrScenario  —  Dev Scenario API ║',
     '╚══════════════════════════════════════════════════╝',
     '',
     'SCENARIO LOADING',
-    '  __terraScenario.list()                   List all scenario names',
-    '  __terraScenario.load(name)               Load a named preset',
-    '  __terraScenario.loadCustom(config)       Load a custom ScenarioConfig',
+    '  __rrScenario.list()                   List all scenario names',
+    '  __rrScenario.load(name)               Load a named preset',
+    '  __rrScenario.loadCustom(config)       Load a custom ScenarioConfig',
     '',
     'AVAILABLE SCENARIOS',
     ...Object.entries(SCENARIOS).map(([name, cfg]) =>
@@ -1356,20 +1356,20 @@ function printHelp(): void {
     ),
     '',
     'MID-COMBAT OVERRIDES  (usable any time during combat)',
-    '  __terraScenario.setPlayerHp(hp, maxHp?)  Set player HP',
-    '  __terraScenario.setEnemyHp(hp)           Set enemy HP',
-    '  __terraScenario.setPlayerBlock(block)    Set player block',
-    '  __terraScenario.setEnemyBlock(block)     Set enemy block',
-    '  __terraScenario.setGold(amount)          Set gold',
-    '  __terraScenario.pause()                  Pause Phaser + CSS for screenshots',
-    '  __terraScenario.resume()                 Resume after screenshot',
-    '  __terraScenario.setFloor(floor)          Set floor number',
-    '  __terraScenario.forceHand(mechanicIds)   Replace hand cards',
-    '  __terraScenario.addRelic(relicId)        Add a relic',
-    '  __terraScenario.removeRelic(relicId)     Remove a relic',
+    '  __rrScenario.setPlayerHp(hp, maxHp?)  Set player HP',
+    '  __rrScenario.setEnemyHp(hp)           Set enemy HP',
+    '  __rrScenario.setPlayerBlock(block)    Set player block',
+    '  __rrScenario.setEnemyBlock(block)     Set enemy block',
+    '  __rrScenario.setGold(amount)          Set gold',
+    '  __rrScenario.pause()                  Pause Phaser + CSS for screenshots',
+    '  __rrScenario.resume()                 Resume after screenshot',
+    '  __rrScenario.setFloor(floor)          Set floor number',
+    '  __rrScenario.forceHand(mechanicIds)   Replace hand cards',
+    '  __rrScenario.addRelic(relicId)        Add a relic',
+    '  __rrScenario.removeRelic(relicId)     Remove a relic',
     '',
     'MYSTERY EVENT HELPERS',
-    '  __terraScenario.listMysteryEvents()      List all event IDs (logs table)',
+    '  __rrScenario.listMysteryEvents()      List all event IDs (logs table)',
     '  load("mystery-tutors-office")            Load event by ID preset',
     '  loadCustom({ screen:"mysteryEvent", mysteryEventId:"tutors_office" })',
     '',
@@ -1427,7 +1427,7 @@ function printHelp(): void {
 // Registration
 // ---------------------------------------------------------------------------
 
-/** Initialize the scenario simulator on window.__terraScenario. Dev mode only. */
+/** Initialize the scenario simulator on window.__rrScenario. Dev mode only. */
 export function initScenarioSimulator(): void {
   if (!import.meta.env.DEV) return;
 
@@ -1472,7 +1472,7 @@ export function initScenarioSimulator(): void {
 
       // 3. Pause Phaser game loop if running
       const reg = globalThis as Record<symbol, unknown>;
-      const mgr = reg[Symbol.for('terra:cardGameManager')] as { getGame(): { loop: { sleep(): void; wake(): void } } | null } | undefined;
+      const mgr = reg[Symbol.for('rr:cardGameManager')] as { getGame(): { loop: { sleep(): void; wake(): void } } | null } | undefined;
       const game = mgr?.getGame();
       if (game) {
         game.loop.sleep();
@@ -1497,7 +1497,7 @@ export function initScenarioSimulator(): void {
 
       // 3. Resume Phaser
       const reg = globalThis as Record<symbol, unknown>;
-      const mgr = reg[Symbol.for('terra:cardGameManager')] as { getGame(): { loop: { sleep(): void; wake(): void } } | null } | undefined;
+      const mgr = reg[Symbol.for('rr:cardGameManager')] as { getGame(): { loop: { sleep(): void; wake(): void } } | null } | undefined;
       const game = mgr?.getGame();
       if (game) {
         game.loop.wake();
@@ -1518,7 +1518,10 @@ export function initScenarioSimulator(): void {
     scenarios: SCENARIOS,
   };
 
-  (window as any).__terraScenario = api;
+  (window as any).__rrScenario = api;
 
-  console.log('[dev] __terraScenario ready. Type __terraScenario.help() for usage.');
+  // Backward compat — remove after 2026-06-01
+  (window as any).__terraScenario = (window as any).__rrScenario;
+
+  console.log('[dev] __rrScenario ready. Type __rrScenario.help() for usage.');
 }

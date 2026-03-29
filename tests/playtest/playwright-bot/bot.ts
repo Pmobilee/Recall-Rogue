@@ -2,8 +2,8 @@
  * Playwright Game Bot — Main Bot Loop
  *
  * Drives a single complete game run using the real Recall Rogue browser app.
- * Reads game state from window.__terraDebug() / window.__terraPlay and
- * interacts via DOM data-testid elements and the __terraPlay API.
+ * Reads game state from window.__rrDebug() / window.__rrPlay and
+ * interacts via DOM data-testid elements and the __rrPlay API.
  */
 
 import type { Page } from 'playwright';
@@ -182,7 +182,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       ];
 
       // Read the playerSave Svelte store
-      const sym = Symbol.for('terra:playerSave');
+      const sym = Symbol.for('rr:playerSave');
       const store = (globalThis as any)[sym];
       if (!store?.subscribe || !store?.set) return;
 
@@ -204,7 +204,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
 
       // Persist to localStorage (profile key)
       // Find the active save key
-      const profileSym = Symbol.for('terra:profileStore');
+      const profileSym = Symbol.for('rr:profileStore');
       const profileStore = (globalThis as any)[profileSym];
       let profileData: any = null;
       if (profileStore?.subscribe) {
@@ -212,12 +212,12 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       }
       const saveKey = profileData?.activeProfileId
         ? 'rr-profile-' + profileData.activeProfileId
-        : 'terra_save';
+        : 'rr_save';
       localStorage.setItem(saveKey, JSON.stringify(save));
     });
 
     // Start the run via API
-    const startResult = await page.evaluate(() => (window as any).__terraPlay?.startRun?.());
+    const startResult = await page.evaluate(() => (window as any).__rrPlay?.startRun?.());
     if (!startResult?.ok) {
       // Fallback: click the button
       const clicked = await clickTestId(page, 'btn-start-run', 3000);
@@ -233,7 +233,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
     // Handle archetype selection
     let afterStart = await readGameState(page);
     if (afterStart.currentScreen === 'archetypeSelection' || afterStart.currentScreen === 'archetype_select') {
-      await page.evaluate(() => (window as any).__terraPlay?.selectArchetype?.('balanced'));
+      await page.evaluate(() => (window as any).__rrPlay?.selectArchetype?.('balanced'));
       await page.waitForTimeout(30);
       afterStart = await readGameState(page);
     }
@@ -269,7 +269,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       if (mapNodes.length > 0) {
         const nodeId = mapNodes[0].replace('map-node-', '');
         const selectResult = await page.evaluate(
-          (id) => (window as any).__terraPlay?.selectMapNode?.(id),
+          (id) => (window as any).__rrPlay?.selectMapNode?.(id),
           nodeId,
         );
         if (selectResult?.ok) {
@@ -295,7 +295,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
     for (let waitAttempt = 0; waitAttempt < 20; waitAttempt++) {
       await page.waitForTimeout(500);
       const ready = await page.evaluate(`(function() {
-        var play = window.__terraPlay;
+        var play = window.__rrPlay;
         if (!play || !play.getCombatState) return false;
         var cs = play.getCombatState();
         if (!cs) return false;
@@ -333,7 +333,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       if (retryNodes.length > 0) {
         const nodeId = retryNodes[0].replace('map-node-', '');
         await page.evaluate(
-          (id) => (window as any).__terraPlay?.selectMapNode?.(id),
+          (id) => (window as any).__rrPlay?.selectMapNode?.(id),
           nodeId,
         );
         await page.waitForTimeout(2000);
@@ -482,7 +482,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       // Secondary run-end check via API (only every 50 iterations to avoid perf hit)
       if (iterations % 50 === 0) {
         const runEndCheck = await page.evaluate(() => {
-          const play = (window as any).__terraPlay;
+          const play = (window as any).__rrPlay;
           const rs = play?.getRunState?.();
           return rs?.completed ?? false;
         });
@@ -584,7 +584,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
           const visibleIds = await getVisibleTestIds(page);
           const handled = await handleGenericAction(page);
           if (!handled) {
-            await page.evaluate(() => (window as any).__terraPlay?.navigate?.('dungeonMap'));
+            await page.evaluate(() => (window as any).__rrPlay?.navigate?.('dungeonMap'));
             await page.waitForTimeout(20);
             const afterEscape = await readGameState(page);
             if (afterEscape.currentScreen !== state.currentScreen) {
@@ -758,7 +758,7 @@ async function selectCardIndex(
 
   // Read detailed combat state for smart selection
   const combat = await page.evaluate(`(function() {
-    var play = window.__terraPlay;
+    var play = window.__rrPlay;
     if (!play || !play.getCombatState) return null;
     var cs = play.getCombatState();
     if (!cs) return null;
@@ -948,7 +948,7 @@ async function handleScreen(
           for (const idx of tryOrder) {
             if (played) break;
             const r = await page.evaluate(
-              ([ii, correct]) => (window as any).__terraPlay?.chargePlayCard?.(ii, correct),
+              ([ii, correct]) => (window as any).__rrPlay?.chargePlayCard?.(ii, correct),
               [idx, answerCorrectly] as [number, boolean],
             );
             if (r?.ok) {
@@ -973,7 +973,7 @@ async function handleScreen(
           for (const idx of tryOrder) {
             if (played) break;
             const r = await page.evaluate(
-              (ii) => (window as any).__terraPlay?.quickPlayCard?.(ii),
+              (ii) => (window as any).__rrPlay?.quickPlayCard?.(ii),
               idx,
             );
             if (r?.ok) {
@@ -1002,13 +1002,13 @@ async function handleScreen(
 
       // After playing all cards, end the turn
       if (cardsPlayedThisTurn > 0) {
-        const endResult = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
+        const endResult = await page.evaluate(() => (window as any).__rrPlay?.endTurn?.());
         if (endResult?.ok) {
           stats.totalTurns++;
         }
       } else {
         // No cards played at all — try endTurn anyway
-        const endResult = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
+        const endResult = await page.evaluate(() => (window as any).__rrPlay?.endTurn?.());
         if (endResult?.ok) {
           stats.totalTurns++;
         } else {
@@ -1065,10 +1065,10 @@ async function handleScreen(
         const firstRowNodes = rows.get(sortedRows[0]) || [];
         const pick = firstRowNodes[Math.floor(rng() * firstRowNodes.length)];
 
-        // Use __terraPlay.selectMapNode API for reliable node selection
+        // Use __rrPlay.selectMapNode API for reliable node selection
         const nodeId = pick.replace('map-node-', '');
         const selectResult = await page.evaluate(
-          (id) => (window as any).__terraPlay?.selectMapNode?.(id),
+          (id) => (window as any).__rrPlay?.selectMapNode?.(id),
           nodeId,
         );
         if (!selectResult?.ok) {
@@ -1102,11 +1102,11 @@ async function handleScreen(
           const newSegCount = ctx.segmentsCompleted + 1;
           ctx.onSegmentComplete(newSegCount);
           // Always delve deeper — never retreat. Push until death or game victory.
-          const delveResult = await page.evaluate(() => (window as any).__terraPlay?.delve?.());
+          const delveResult = await page.evaluate(() => (window as any).__rrPlay?.delve?.());
           if (!delveResult?.ok) {
-            await page.evaluate(() => (window as any).__terraPlay?.navigate?.('retreatOrDelve'));
+            await page.evaluate(() => (window as any).__rrPlay?.navigate?.('retreatOrDelve'));
             await page.waitForTimeout(20);
-            await page.evaluate(() => (window as any).__terraPlay?.delve?.());
+            await page.evaluate(() => (window as any).__rrPlay?.delve?.());
           }
           ctx.encountersAtLastDelve = stats.encountersWon;
           await page.waitForTimeout(20);
@@ -1121,7 +1121,7 @@ async function handleScreen(
           await page.waitForTimeout(50);
         }
         // Try enterRoom or generic fallbacks
-        await page.evaluate(() => (window as any).__terraPlay?.enterRoom?.());
+        await page.evaluate(() => (window as any).__rrPlay?.enterRoom?.());
         await chooseRoom(page, profile, state, rng);
       }
       await page.waitForTimeout(10);
@@ -1138,7 +1138,7 @@ async function handleScreen(
       await page.waitForTimeout(800); // Let scene spawn items
 
       const rewardResult = await page.evaluate(`(function() {
-        var mgr = globalThis[Symbol.for('terra:cardGameManager')];
+        var mgr = globalThis[Symbol.for('rr:cardGameManager')];
         if (!mgr) return { ok: false, reason: 'no-manager' };
         var scene = mgr.getRewardRoomScene ? mgr.getRewardRoomScene() : null;
         if (!scene) return { ok: false, reason: 'no-scene' };
@@ -1237,7 +1237,7 @@ async function handleScreen(
 
     // ── Relic reward ─────────────────────────────────────────────────────────
     case 'relicReward': {
-      const relicPicked = await page.evaluate(() => (window as any).__terraPlay?.selectRelic?.(0));
+      const relicPicked = await page.evaluate(() => (window as any).__rrPlay?.selectRelic?.(0));
       if (relicPicked?.ok) {
         if (relicPicked.relicId) stats.relicsEarned.push(String(relicPicked.relicId));
       } else {
@@ -1272,7 +1272,7 @@ async function handleScreen(
       ctx.encountersAtLastDelve = stats.encountersWon;
 
       // Always delve — never retreat. Push until death or game-declared victory.
-      const delveResult = await page.evaluate(() => (window as any).__terraPlay?.delve?.());
+      const delveResult = await page.evaluate(() => (window as any).__rrPlay?.delve?.());
       if (!delveResult?.ok) {
         // Fallback: click the delve button directly
         await clickTestId(page, 'btn-delve', 1000);
@@ -1342,7 +1342,7 @@ async function handleScreen(
       }
 
       // Default: Heal
-      const healed = await page.evaluate(() => (window as any).__terraPlay?.restHeal?.());
+      const healed = await page.evaluate(() => (window as any).__rrPlay?.restHeal?.());
       if (!healed?.ok) {
         await clickTestId(page, 'rest-heal', 1000)
           || await clickTestId(page, 'rest-study', 1000)
@@ -1538,7 +1538,7 @@ async function handleScreen(
     case 'base': {
       // Quick-try knowledge level popup (no wait if not found)
       await page.locator('[data-testid="knowledge-level-normal"]').click({ timeout: 100 }).catch(() => {});
-      await page.evaluate(() => (window as any).__terraPlay?.startRun?.());
+      await page.evaluate(() => (window as any).__rrPlay?.startRun?.());
       await page.waitForTimeout(30);
       break;
     }
@@ -1546,7 +1546,7 @@ async function handleScreen(
     // ── Archetype selection ──────────────────────────────────────────────────
     case 'archetypeSelection':
     case 'archetype_select': {
-      await page.evaluate(() => (window as any).__terraPlay?.selectArchetype?.('balanced'));
+      await page.evaluate(() => (window as any).__rrPlay?.selectArchetype?.('balanced'));
       await page.waitForTimeout(20);
       break;
     }
@@ -1555,7 +1555,7 @@ async function handleScreen(
     case 'onboarding':
     case 'boot': {
       await page.evaluate(() => {
-        const sym = Symbol.for('terra:currentScreen');
+        const sym = Symbol.for('rr:currentScreen');
         const store = (globalThis as Record<symbol, unknown>)[sym] as { set?: (v: string) => void } | undefined;
         if (store?.set) store.set('hub');
       });
@@ -1612,7 +1612,7 @@ async function handleScreen(
     // ── Post Mini-Boss Rest ──────────────────────────────────────────────────
     case 'postMiniBossRest': {
       recordRoom(stats, 'post_miniboss');
-      const healed2 = await page.evaluate(() => (window as any).__terraPlay?.restHeal?.());
+      const healed2 = await page.evaluate(() => (window as any).__rrPlay?.restHeal?.());
       if (!healed2?.ok) {
         await clickTestId(page, 'rest-heal', 1000)
           || await clickTestId(page, 'post-miniboss-continue', 1000)
@@ -1643,7 +1643,7 @@ async function handleScreen(
     case 'runComplete': {
       // Record result from run state
       const endResult = await page.evaluate(() => {
-        const play = (window as any).__terraPlay;
+        const play = (window as any).__rrPlay;
         const rs = play?.getRunState?.();
         return rs?.result ?? null;
       });

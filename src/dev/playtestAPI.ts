@@ -1,5 +1,5 @@
 /**
- * Playtest gameplay API — registers window.__terraPlay in dev mode.
+ * Playtest gameplay API — registers window.__rrPlay in dev mode.
  * Lets AI models play Recall Rogue programmatically via action and perception methods.
  * DEV MODE ONLY — never included in production builds.
  */
@@ -34,7 +34,7 @@ function writeStore<T>(key: string, value: T): void {
 
 /** Get the GameManager instance from the store. */
 function getGM(): any {
-  return readStore('terra:gameManagerStore');
+  return readStore('rr:gameManagerStore');
 }
 
 
@@ -60,9 +60,9 @@ async function safeAction(fn: () => Promise<PlayResult>): Promise<PlayResult> {
 /** Navigate to a screen by writing the currentScreen store. */
 async function navigate(screen: string): Promise<PlayResult> {
   return safeAction(async () => {
-    writeStore('terra:currentScreen', screen);
+    writeStore('rr:currentScreen', screen);
     await wait(turboDelay(300));
-    const actual = readStore<string>('terra:currentScreen');
+    const actual = readStore<string>('rr:currentScreen');
     if (actual === screen) {
       return { ok: true, message: `Navigated to ${screen}` };
     }
@@ -72,7 +72,7 @@ async function navigate(screen: string): Promise<PlayResult> {
 
 /** Get the current screen name. */
 function getScreen(): string {
-  return readStore<string>('terra:currentScreen') ?? 'unknown';
+  return readStore<string>('rr:currentScreen') ?? 'unknown';
 }
 
 /** Get the list of available screens based on current state. */
@@ -81,7 +81,7 @@ function getAvailableScreens(): string[] {
   const screen = getScreen();
   const extras: string[] = [];
 
-  const runState = readStore<any>('terra:activeRunState');
+  const runState = readStore<any>('rr:activeRunState');
   if (runState) {
     extras.push('combat', 'dungeonMap', 'cardReward', 'retreatOrDelve');
   }
@@ -132,9 +132,9 @@ async function selectArchetype(archetype: string): Promise<PlayResult> {
 
 /** Get the current combat state. */
 function getCombatState(): Record<string, unknown> | null {
-  const turnState = readStore<any>('terra:activeTurnState');
+  const turnState = readStore<any>('rr:activeTurnState');
   if (!turnState) return null;
-  const runState = readStore<any>('terra:activeRunState');
+  const runState = readStore<any>('rr:activeRunState');
   const enemy = turnState.enemy;
   return {
     // Player
@@ -403,7 +403,7 @@ async function selectRelic(index: number): Promise<PlayResult> {
     await wait(turboDelay(1000));
 
     // Read the run state to get the latest relic
-    const runState = readStore<any>('terra:activeRunState');
+    const runState = readStore<any>('rr:activeRunState');
     const relics = runState?.runRelics ?? [];
     const lastRelic = relics[relics.length - 1];
 
@@ -417,7 +417,7 @@ async function selectRelic(index: number): Promise<PlayResult> {
 
 /** Get detailed relic information from the active run, including definitions. */
 function getRelicDetails(): Array<Record<string, unknown>> {
-  const runState = readStore<any>('terra:activeRunState');
+  const runState = readStore<any>('rr:activeRunState');
   if (!runState?.runRelics) return [];
   return runState.runRelics.map((r: any) => {
     const def = RELIC_BY_ID[r.definitionId];
@@ -457,7 +457,7 @@ async function delve(): Promise<PlayResult> {
 
 /** Get the current run state. */
 function getRunState(): Record<string, unknown> | null {
-  const runState = readStore<any>('terra:activeRunState');
+  const runState = readStore<any>('rr:activeRunState');
   if (!runState) return null;
   return {
     floor: runState.currentFloor,
@@ -618,7 +618,7 @@ async function selectMysteryChoice(index: number): Promise<PlayResult> {
 
 /** Get the current active quiz data from the store. */
 function getQuiz(): { question: string; choices: string[]; correctIndex: number; mode: string } | null {
-  const quiz = readStore<any>('terra:activeQuiz');
+  const quiz = readStore<any>('rr:activeQuiz');
   if (!quiz) return null;
 
   return {
@@ -680,7 +680,7 @@ async function forceQuizForFact(factId: string): Promise<PlayResult> {
       quizType: 'random',
     };
 
-    writeStore('terra:activeQuiz', quiz);
+    writeStore('rr:activeQuiz', quiz);
     await wait(turboDelay(300));
     return { ok: true, message: `Forced quiz for fact '${factId}': ${fact.question}`, state: { factId, question: fact.question } };
   });
@@ -693,7 +693,7 @@ async function forceQuizForFact(factId: string): Promise<PlayResult> {
 /** Navigate to the study screen and optionally start a session. */
 async function startStudy(size?: number): Promise<PlayResult> {
   return safeAction(async () => {
-    writeStore('terra:currentScreen', 'restStudy');
+    writeStore('rr:currentScreen', 'restStudy');
     await wait(turboDelay(500));
 
     if (size) {
@@ -747,7 +747,7 @@ async function endStudy(): Promise<PlayResult> {
       btn.click();
       await wait(turboDelay(500));
     } else {
-      writeStore('terra:currentScreen', 'base');
+      writeStore('rr:currentScreen', 'base');
       await wait(turboDelay(300));
     }
     return { ok: true, message: `Study ended. Screen: ${getScreen()}` };
@@ -777,7 +777,7 @@ function getLeechInfo(): { suspended: any[]; nearLeech: any[]; totalLeeches: num
 /** Enter a specific dome room by navigating to it. */
 async function enterRoom(roomId: string): Promise<PlayResult> {
   return safeAction(async () => {
-    writeStore('terra:currentScreen', roomId);
+    writeStore('rr:currentScreen', roomId);
     await wait(turboDelay(300));
     return { ok: true, message: `Entered room: ${roomId}`, state: { screen: getScreen() } };
   });
@@ -786,7 +786,7 @@ async function enterRoom(roomId: string): Promise<PlayResult> {
 /** Exit the current room and return to base/dome. */
 async function exitRoom(): Promise<PlayResult> {
   return safeAction(async () => {
-    writeStore('terra:currentScreen', 'base');
+    writeStore('rr:currentScreen', 'base');
     await wait(turboDelay(300));
     return { ok: true, message: 'Returned to base' };
   });
@@ -798,12 +798,12 @@ async function exitRoom(): Promise<PlayResult> {
 
 /** Get the current inventory from the store. */
 function getInventory(): any[] {
-  return readStore<any[]>('terra:inventory') ?? [];
+  return readStore<any[]>('rr:inventory') ?? [];
 }
 
 /** Get the full player save state. */
 function getSave(): any {
-  return readStore<any>('terra:playerSave') ?? null;
+  return readStore<any>('rr:playerSave') ?? null;
 }
 
 /** Extract key stats from the save. */
@@ -830,7 +830,7 @@ function getStats(): Record<string, unknown> {
 /** Manipulate save timestamps to simulate time passing (for SM-2 testing). */
 async function fastForward(hours: number): Promise<PlayResult> {
   return safeAction(async () => {
-    const sym = Symbol.for('terra:playerSave');
+    const sym = Symbol.for('rr:playerSave');
     const store = (globalThis as Record<symbol, unknown>)[sym] as any;
     if (!store?.update) return { ok: false, message: 'playerSave store not found' };
 
@@ -877,7 +877,7 @@ async function fastForward(hours: number): Promise<PlayResult> {
 /** Seed a dense review state fixture for 7-day drift testing. */
 async function seedDriftFixture(factCount = 30, maxIntervalDays = 3): Promise<PlayResult> {
   return safeAction(async () => {
-    const sym = Symbol.for('terra:playerSave');
+    const sym = Symbol.for('rr:playerSave');
     const store = (globalThis as Record<symbol, unknown>)[sym] as any;
     if (!store?.update) return { ok: false, message: 'playerSave store not found' };
 
@@ -938,8 +938,8 @@ async function resetToPreset(presetId: string): Promise<PlayResult> {
 
     const save = preset.buildSave(Date.now());
     localStorage.clear();
-    localStorage.setItem('terra_save', JSON.stringify(save));
-    localStorage.setItem('terra_onboarding_complete', 'true');
+    localStorage.setItem('rr_save', JSON.stringify(save));
+    localStorage.setItem('rr_onboarding_complete', 'true');
     // Ensure onboarding state marks runs as completed so explorer mode doesn't get stuck
     localStorage.setItem('card:onboardingState', JSON.stringify({
       hasCompletedOnboarding: true,
@@ -960,16 +960,16 @@ async function resetToPreset(presetId: string): Promise<PlayResult> {
   });
 }
 
-/** Get the last N entries from the __terraLog ring buffer. */
+/** Get the last N entries from the __rrLog ring buffer. */
 function getRecentEvents(n?: number): Array<{ ts: number; type: string; detail: string }> {
-  const log = (window as any).__terraLog as Array<{ ts: number; type: string; detail: string }> | undefined;
+  const log = (window as any).__rrLog as Array<{ ts: number; type: string; detail: string }> | undefined;
   if (!Array.isArray(log)) return [];
   return log.slice(-(n ?? 20));
 }
 
-/** Aggregate __terraLog into a summary stats object. */
+/** Aggregate __rrLog into a summary stats object. */
 function getSessionSummary(): Record<string, unknown> {
-  const log = (window as any).__terraLog as Array<{ ts: number; type: string; detail: string }> | undefined;
+  const log = (window as any).__rrLog as Array<{ ts: number; type: string; detail: string }> | undefined;
   if (!Array.isArray(log) || log.length === 0) {
     return { eventCount: 0 };
   }
@@ -997,7 +997,7 @@ function getSessionSummary(): Record<string, unknown> {
 // Registration
 // ---------------------------------------------------------------------------
 
-/** Initialize the playtest API on window.__terraPlay. Dev mode only. */
+/** Initialize the playtest API on window.__rrPlay. Dev mode only. */
 export function initPlaytestAPI(): void {
   if (!import.meta.env.DEV && !new URLSearchParams(window.location.search).has('playtest')) return;
 
@@ -1072,5 +1072,8 @@ export function initPlaytestAPI(): void {
     validateScreen,
   };
 
-  (window as any).__terraPlay = api;
+  (window as any).__rrPlay = api;
+
+  // Backward compat — remove after 2026-06-01
+  (window as any).__terraPlay = (window as any).__rrPlay;
 }

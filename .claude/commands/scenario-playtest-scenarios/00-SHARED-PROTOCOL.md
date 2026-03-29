@@ -34,19 +34,19 @@ This document is included in every playtest worker's prompt. It contains the uni
 
 ## Instant Scene Loading (PREFERRED)
 
-Instead of clicking through hub -> domain -> archetype -> combat, use `__terraScenario` to instantly jump to any game state:
+Instead of clicking through hub -> domain -> archetype -> combat, use `__rrScenario` to instantly jump to any game state:
 
 ```javascript
 // In browser_evaluate:
-await window.__terraScenario.load('combat-basic');     // instant combat
-await window.__terraScenario.load('combat-boss');      // boss encounter
-await window.__terraScenario.load('shop-loaded');      // shop with 1000g
-await window.__terraScenario.load('mystery-healing-fountain'); // specific mystery event
-await window.__terraScenario.load('run-end-victory');  // victory screen
-await window.__terraScenario.load('card-reward-attacks'); // card reward
+await window.__rrScenario.load('combat-basic');     // instant combat
+await window.__rrScenario.load('combat-boss');      // boss encounter
+await window.__rrScenario.load('shop-loaded');      // shop with 1000g
+await window.__rrScenario.load('mystery-healing-fountain'); // specific mystery event
+await window.__rrScenario.load('run-end-victory');  // victory screen
+await window.__rrScenario.load('card-reward-attacks'); // card reward
 
 // Custom config:
-await window.__terraScenario.loadCustom({
+await window.__rrScenario.loadCustom({
   screen: 'combat',
   enemy: 'the_archivist',
   playerHp: 30,
@@ -61,9 +61,9 @@ await window.__terraScenario.loadCustom({
 document.documentElement.setAttribute('data-pw-animations', 'disabled');
 ```
 
-**Full preset list:** Call `window.__terraScenario.list()` or see `/visual-inspect` skill.
+**Full preset list:** Call `window.__rrScenario.list()` or see `/visual-inspect` skill.
 
-**Rule:** ALWAYS prefer `__terraScenario` over manual navigation. Manual clicks through menus are fragile and slow. Use manual navigation ONLY when testing the navigation flow itself (e.g., onboarding scenario).
+**Rule:** ALWAYS prefer `__rrScenario` over manual navigation. Manual clicks through menus are fragile and slow. Use manual navigation ONLY when testing the navigation flow itself (e.g., onboarding scenario).
 
 ---
 
@@ -123,7 +123,7 @@ Use this instead of raw console messages — filters out environment noise:
     /GPU stall/i, /net::ERR_/i, /CORS/i, /api\//i,
     /favicon/i, /service.worker/i, /hmr/i,
   ];
-  const log = window.__terraLog;
+  const log = window.__rrLog;
   if (!Array.isArray(log)) return [];
   return log.filter(e => e.type === 'error' && !NOISE.some(p => p.test(e.detail))).slice(-10);
 })()
@@ -162,13 +162,13 @@ Use this instead of raw console messages — filters out environment noise:
 
 ## Screenshot Rules
 
-- **Max 8 screenshots per scenario** — ALWAYS use `browser_evaluate(() => window.__terraScreenshotFile())` which saves to `/tmp/terra-screenshot.jpg` and returns the path. Then use `Read("/tmp/terra-screenshot.jpg")` to view the screenshot.
-- **NEVER** use raw `__terraScreenshot()` — base64 exceeds tool output limits
+- **Max 8 screenshots per scenario** — ALWAYS use `browser_evaluate(() => window.__rrScreenshotFile())` which saves to `/tmp/rr-screenshot.jpg` and returns the path. Then use `Read("/tmp/rr-screenshot.jpg")` to view the screenshot.
+- **NEVER** use raw `__rrScreenshot()` — base64 exceeds tool output limits
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's continuous RAF loop causes a permanent 30s timeout
 - **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
 - **NEVER** use `page.context().newCDPSession()` — it hangs permanently
 - Use `browser_snapshot` (DOM snapshot) for supplementary DOM state checks — it always works
-- **Naming**: Use returned path from `__terraScreenshotFile()` directly (saved as `/tmp/terra-screenshot.jpg`)
+- **Naming**: Use returned path from `__rrScreenshotFile()` directly (saved as `/tmp/rr-screenshot.jpg`)
 - **Prefer browser_snapshot** (DOM text, cheap) over screenshots for state checks
 - Take screenshots ONLY at designated checkpoints listed in each scenario
 
@@ -326,7 +326,7 @@ For EVERY element in your generated checklist:
 - Do NOT give generic assessments like "looks fine." Be specific: "The End Turn button at 38x36px is undersized (needs 44x44), positioned at Y=780 which IS in the thumb zone"
 - Do NOT invent elements that aren't there. Only evaluate what discovery found.
 - ALWAYS note the total element count discovered vs elements evaluated — they must match.
-- For Phaser canvas content, also run `window.__terraDebug()` and evaluate canvas-rendered sprites, HP bars, etc.
+- For Phaser canvas content, also run `window.__rrDebug()` and evaluate canvas-rendered sprites, HP bars, etc.
 
 ### Step 4: Subjective Gameplay Assessment
 
@@ -460,7 +460,7 @@ Also write a short markdown summary to `/tmp/playtest-{scenario}-summary.md`.
 For workers WITHOUT MCP Playwright tools, use this Node.js script pattern:
 
 ```javascript
-const { chromium } = require('/root/terra-miner/node_modules/playwright-core');
+const { chromium } = require('/root/recall-rogue/node_modules/playwright-core');
 const fs = require('fs');
 
 (async () => {
@@ -520,7 +520,7 @@ Before starting, verify the dev server is running:
 ```
 curl -s -o /dev/null -w "%{http_code}" http://localhost:5173
 ```
-If not 200, start it: `cd /root/terra-miner && npm run dev &` and wait 8 seconds.
+If not 200, start it: `cd /root/recall-rogue && npm run dev &` and wait 8 seconds.
 
 ---
 

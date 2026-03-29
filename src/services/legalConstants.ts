@@ -5,7 +5,7 @@
  */
 
 /** localStorage key under which the player's age bracket is stored. */
-export const AGE_BRACKET_KEY = 'terra_age_bracket' as const
+export const AGE_BRACKET_KEY = 'rr_age_bracket' as const
 
 /**
  * The three age brackets that the AgeGate can produce.

@@ -624,23 +624,8 @@ export interface PlayerSave {
   /** Number of times "The Deep" has been entered. */
   theDeepVisits?: number
 
-  // Phase 37: Advanced Pet System
-  /** Whether the Dust Cat has been received (given after first completed dome tour). */
-  dustCatUnlocked?: boolean
-  /** Current happiness score 0–100. Decays by 2/hour while unlocked. */
-  dustCatHappiness?: number
-  /** Unix timestamp of last happiness decay calculation. */
-  dustCatLastDecayAt?: number
-  /** Assigned personality trait IDs (exactly 2, assigned at unlock, permanent). */
-  dustCatTraits?: [string, string]
-  /** Currently equipped cosmetic IDs for the Dust Cat. Keys: 'hat' | 'accessory' | 'color'. */
-  dustCatCosmetics?: Record<string, string>
   /** Evolution stage for each companion (0-3, extending Phase 8's 0-2). */
   companionLegendaryStages?: Record<string, boolean>  // companionId → has reached stage 3
-  /** Unix timestamp of last feeding mini-game (60-minute cooldown). */
-  dustCatLastFed?: number
-  /** Unix timestamp of last grooming mini-game (90-minute cooldown). */
-  dustCatLastGroomed?: number
 
   // Phase 42: Viral Growth
   /** Phase 42.2: Extended referral statistics with tier progress and yearly cap. */

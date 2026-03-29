@@ -1,12 +1,12 @@
 /**
  * Session Timer — tracks daily play time and enforces parental time limits.
- * Time is tracked in seconds, persisted to localStorage under 'terra_session_<ISO_date>'.
+ * Time is tracked in seconds, persisted to localStorage under 'rr_session_<ISO_date>'.
  * The ticker runs via a 1-second setInterval started by SessionTimer.start().
  *
  * DD-V2-181: Gentle warning at limit-5min; hard stop at limit; PIN override available.
  */
 
-const STORAGE_PREFIX = 'terra_session_'
+const STORAGE_PREFIX = 'rr_session_'
 
 export interface SessionTimerState {
   /** Seconds played today. */

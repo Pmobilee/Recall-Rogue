@@ -19,7 +19,7 @@
 
 | Capability | How to Invoke | What It Does |
 |-----------|---------------|-------------|
-| Visual Inspect | `/visual-inspect` | Instant jump to any game state via Playwright + __terraScenario |
+| Visual Inspect | `/visual-inspect` | Instant jump to any game state via Playwright + __rrScenario |
 | Playthrough | `/playthrough` | Full visual playthrough with screenshots at each stage |
 | Scenario Testing | `/playthrough-scenarios:XX` | 12 targeted test scenarios (combat, rooms, menus, etc.) |
 
@@ -59,7 +59,7 @@
 
 | Capability | How to Invoke | What It Does |
 |-----------|---------------|-------------|
-| Phaser Perf | `/phaser-perf` | Canvas vs WebGL benchmarking, mobile optimization, Phaser Debugger extension guide, __terraDebug extensions |
+| Phaser Perf | `/phaser-perf` | Canvas vs WebGL benchmarking, mobile optimization, Phaser Debugger extension guide, __rrDebug extensions |
 | Mobile Debug | `/mobile-debug` | Capacitor debugging: chrome://inspect, Inspect.dev, WebDebugX, native profiler workflows |
 
 ## Deployment
@@ -84,7 +84,7 @@ These are areas where Claude has limited capability. Mitigations are documented 
 
 | Blindspot | Severity | Mitigation |
 |-----------|----------|-----------|
-| **Phaser 3 deep internals** | Medium | Phaser Debugger extension, __terraDebug extensions, Canvas renderer for mobile (`/phaser-perf`) |
+| **Phaser 3 deep internals** | Medium | Phaser Debugger extension, __rrDebug extensions, Canvas renderer for mobile (`/phaser-perf`) |
 | **Mobile native debugging** | Medium | chrome://inspect workflow, Inspect.dev, diagnostics panel (`/mobile-debug`) |
 | **Game balance "feel"** | Medium | LLM playtesting for qualitative reasoning, tension metrics for feel proxies (`/llm-playtest`, `/advanced-balance`) |
 | **Visual/UX design origination** | Medium | Reference-driven design, juice presets library, design token system |

@@ -475,8 +475,11 @@ export function updateReviewStateByButton(
   playerSave.update((save) => {
     if (!save) return save
 
-    const existingState = save.reviewStates.find(s => s.factId === factId)
-    if (!existingState) return save
+    let existingState = save.reviewStates.find(s => s.factId === factId)
+    const isNew = !existingState
+    if (!existingState) {
+      existingState = createReviewState(factId)
+    }
 
     const migrated = migrateToFsrsState(existingState)
     const newState = reviewFactFsrs(
@@ -545,9 +548,14 @@ export function updateReviewStateByButton(
 
     return {
       ...save,
-      reviewStates: save.reviewStates.map((state) =>
-        state.factId === factId ? boostedState : state,
-      ),
+      reviewStates: isNew
+        ? [...save.reviewStates, boostedState]
+        : save.reviewStates.map((state) =>
+            state.factId === factId ? boostedState : state,
+          ),
+      learnedFacts: isNew && !save.learnedFacts.includes(factId)
+        ? [...save.learnedFacts, factId]
+        : save.learnedFacts,
       behavioralSignals: updatedSignals,
       stats: {
         ...save.stats,
@@ -1416,123 +1424,6 @@ export function setFloorWallpaper(floorId: string, wallpaperId: string | null): 
         activeWallpapers: { ...s.hubState.activeWallpapers, [floorId]: wallpaperId },
       },
     }
-  })
-  persistPlayer()
-}
-
-// =========================================================
-// Phase 37: Advanced Pet System — Dust Cat functions
-// =========================================================
-
-// petTraits.ts and dustCatCosmetics.ts archived — inline stubs
-function assignTraits(_seed: number): [string, string] { return ['friendly', 'curious'] }
-function playerOwnsDustCatCosmetic(_id: string, _owned: string[]): boolean { return false }
-
-/**
- * Decay Dust Cat happiness based on elapsed real time.
- * Rate: -2 per hour. Floor: 0. Ceil: 100.
- * Called on app focus and blur to avoid mid-session decay jumps.
- */
-export function tickDustCatHappiness(): void {
-  playerSave.update(s => {
-    if (!s || !s.dustCatUnlocked || s.dustCatHappiness === undefined) return s
-    const now = Date.now()
-    const lastDecay = s.dustCatLastDecayAt ?? now
-    const elapsedHours = (now - lastDecay) / 3_600_000
-    let decayRate = 2  // 2 points per hour base rate
-
-    // Apply trait modifiers
-    if (s.dustCatTraits) {
-      for (const trait of s.dustCatTraits) {
-        if (trait === 'stubborn') decayRate *= 0.75
-        if (trait === 'nocturnal') {
-          const h = new Date().getHours()
-          if (h >= 22 || h < 6) decayRate *= 0.5
-        }
-      }
-    }
-
-    const decay = elapsedHours * decayRate
-
-    // Respect 'lazy' trait happiness floor
-    let happinessFloor = 0
-    if (s.dustCatTraits?.includes('lazy')) happinessFloor = 20
-
-    return {
-      ...s,
-      dustCatHappiness: Math.max(happinessFloor, (s.dustCatHappiness ?? 100) - decay),
-      dustCatLastDecayAt: now,
-    }
-  })
-}
-
-/**
- * Add happiness to the Dust Cat. Clamps to [0, 100].
- * Call persistPlayer() after if the change should be immediately saved.
- *
- * @param amount - Amount to add (can be negative to subtract).
- */
-export function addDustCatHappiness(amount: number): void {
-  playerSave.update(s => {
-    if (!s || !s.dustCatUnlocked) return s
-    return {
-      ...s,
-      dustCatHappiness: Math.max(0, Math.min(100, (s.dustCatHappiness ?? 0) + amount)),
-    }
-  })
-}
-
-/**
- * Unlock the Dust Cat for this player. Assigns two permanent personality traits
- * using the player's ID as the random seed. (DD-V2-042)
- */
-export function unlockDustCat(): void {
-  playerSave.update(s => {
-    if (!s) return s
-    if (s.dustCatUnlocked) return s  // idempotent
-    const seed = parseInt(s.playerId.replace(/\D/g, '').slice(0, 8) || '42', 10)
-    const [traitA, traitB] = assignTraits(seed)
-    return {
-      ...s,
-      dustCatUnlocked: true,
-      dustCatHappiness: 100,
-      dustCatLastDecayAt: Date.now(),
-      dustCatTraits: [traitA, traitB],
-      dustCatCosmetics: {},
-    }
-  })
-  persistPlayer()
-}
-
-/**
- * Equip a Dust Cat cosmetic. Only applies if player owns it.
- *
- * @param slot - 'hat' | 'accessory' | 'color'
- * @param cosmeticId - The cosmetic ID to equip.
- */
-export function equipDustCatCosmetic(slot: string, cosmeticId: string): void {
-  playerSave.update(s => {
-    if (!s) return s
-    const owned = playerOwnsDustCatCosmetic(cosmeticId, s.ownedCosmetics)
-    if (!owned) return s
-    return {
-      ...s,
-      dustCatCosmetics: { ...(s.dustCatCosmetics ?? {}), [slot]: cosmeticId },
-    }
-  })
-  persistPlayer()
-}
-
-/**
- * Unlock a Dust Cat cosmetic (adds to ownedCosmetics if not already there).
- *
- * @param cosmeticId - The cosmetic ID to unlock.
- */
-export function unlockDustCatCosmetic(cosmeticId: string): void {
-  playerSave.update(s => {
-    if (!s) return s
-    if (s.ownedCosmetics.includes(cosmeticId)) return s
-    return { ...s, ownedCosmetics: [...s.ownedCosmetics, cosmeticId] }
   })
   persistPlayer()
 }

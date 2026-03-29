@@ -10,7 +10,7 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
 1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
 2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
-3. Load card reward: `window.__terraScenario.load('card-reward-attacks')`
+3. Load card reward: `window.__rrScenario.load('card-reward-attacks')`
 4. Wait 500ms, take **Screenshot #1 (reward-options)**
 
 ### Reward Selection
@@ -24,7 +24,7 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 11. Verify screen transitioned (roomSelection or combat)
 
 ### Second Reward (if reachable)
-12. Load alternate reward: `window.__terraScenario.load('card-reward-mixed')`
+12. Load alternate reward: `window.__rrScenario.load('card-reward-mixed')`
 13. Wait 500ms, test selecting a DIFFERENT reward type
 14. Accept it
 

@@ -10,7 +10,7 @@ export interface MonetizationPurchaseResult {
 }
 
 const SUBSCRIPTION_PRODUCTS: Record<string, { tier: string; durationDays: number }> = {
-  'com.terragacha.terrapass.monthly': { tier: 'terra_pass', durationDays: 30 },
+  'com.terragacha.terrapass.monthly': { tier: 'rogue_pass', durationDays: 30 },
   'com.terragacha.patron.season': { tier: 'expedition_patron', durationDays: 120 },
   'com.terragacha.patron.annual': { tier: 'grand_patron', durationDays: 365 },
 }

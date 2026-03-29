@@ -112,7 +112,7 @@ function devScreenshotEndpoint(): Plugin {
           const mime = mimeMatch?.[1] ?? 'image/png'
           const ext = mime === 'image/jpeg' ? 'jpg' : 'png'
           const base64 = dataUrl.replace(/^data:image\/[a-z]+;base64,/, '')
-          const filePath = `/tmp/terra-screenshot.${ext}`
+          const filePath = `/tmp/rr-screenshot.${ext}`
           const { writeFile } = await import('fs/promises')
           await writeFile(filePath, Buffer.from(base64, 'base64'))
           res.setHeader('Content-Type', 'application/json')

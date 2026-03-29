@@ -1,11 +1,11 @@
 /**
  * Playwright Game Bot — State Reader
  *
- * Reads game state from the browser using window.__terraDebug() and
- * window.__terraPlay (the playtestAPI).
+ * Reads game state from the browser using window.__rrDebug() and
+ * window.__rrPlay (the playtestAPI).
  *
- * The __terraDebug() snapshot provides current screen and interactive elements.
- * The __terraPlay.getCombatState() / getRunState() give richer combat data.
+ * The __rrDebug() snapshot provides current screen and interactive elements.
+ * The __rrPlay.getCombatState() / getRunState() give richer combat data.
  */
 
 import type { Page } from 'playwright';
@@ -13,13 +13,13 @@ import type { GameState, QuizState } from './types.js';
 
 /**
  * Reads the current game state from the browser.
- * Combines data from window.__terraDebug() (screen, phaser) and
- * window.__terraPlay (run/combat state).
+ * Combines data from window.__rrDebug() (screen, phaser) and
+ * window.__rrPlay (run/combat state).
  */
 export async function readGameState(page: Page): Promise<GameState> {
   // Use string-based evaluate to avoid tsx __name decorator injection
   return page.evaluate(`(() => {
-    var debug = window.__terraDebug && window.__terraDebug();
+    var debug = window.__rrDebug && window.__rrDebug();
     var currentScreen = (debug && debug.currentScreen) || 'unknown';
 
     var readStoreValue = function(key) {
@@ -67,12 +67,12 @@ export async function readGameState(page: Page): Promise<GameState> {
 }
 
 /**
- * Reads quiz state from window.__terraPlay.getQuiz().
+ * Reads quiz state from window.__rrPlay.getQuiz().
  * Returns null if no active quiz.
  */
 export async function readQuizState(page: Page): Promise<QuizState | null> {
   return page.evaluate((): QuizState | null => {
-    const play = (window as any).__terraPlay;
+    const play = (window as any).__rrPlay;
     const quiz = play?.getQuiz?.();
     if (!quiz) return null;
     return {
@@ -215,7 +215,7 @@ export async function readDetailedState(page: Page): Promise<{
  */
 export async function getVisibleTestIds(page: Page): Promise<string[]> {
   return page.evaluate((): string[] => {
-    const debug = (window as any).__terraDebug?.();
+    const debug = (window as any).__rrDebug?.();
     if (!debug?.interactiveElements) return [];
     return (debug.interactiveElements as Array<{ testId: string; visible: boolean }>)
       .filter((el) => el.visible)

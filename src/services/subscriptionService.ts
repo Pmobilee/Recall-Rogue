@@ -1,7 +1,7 @@
 /**
  * Subscription management service (DD-V2-145).
  * Wraps iapService for subscription-specific logic.
- * Terra Pass ($4.99/mo), Expedition Patron ($24.99/season), Grand Patron ($49.99/yr).
+ * Rogue Pass ($4.99/mo), Expedition Patron ($24.99/season), Grand Patron ($49.99/yr).
  */
 
 import type { PlayerSave } from '../data/types'
@@ -30,7 +30,7 @@ export function getSubscriptionTier(save: PlayerSave): string | null {
 /** Arcane Pass access gate (includes all paid subscription tiers). */
 export function hasArcanePass(save: PlayerSave): boolean {
   const tier = getSubscriptionTier(save)
-  return tier === 'terra_pass' || tier === 'expedition_patron' || tier === 'grand_patron'
+  return tier === 'rogue_pass' || tier === 'terra_pass' || tier === 'expedition_patron' || tier === 'grand_patron'
 }
 
 /** True when one-time ad-removal has been purchased. */
@@ -45,8 +45,8 @@ export function isPatron(save: PlayerSave): boolean {
   return tier === 'expedition_patron' || tier === 'grand_patron'
 }
 
-/** Attempt to subscribe to Terra Pass */
-export async function subscribeTerraPass(): Promise<{ success: boolean; error?: string }> {
+/** Attempt to subscribe to Rogue Pass */
+export async function subscribeRoguePass(): Promise<{ success: boolean; error?: string }> {
   return purchaseProduct('com.terragacha.terrapass.monthly')
 }
 

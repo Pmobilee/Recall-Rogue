@@ -67,7 +67,7 @@ export const authStore = {
   clear(): void {
     _auth.set({ isLoggedIn: false, userId: null, email: null, displayName: null })
     apiClient.logout()
-    localStorage.removeItem('terra_guest_mode')
+    localStorage.removeItem('rr_guest_mode')
   },
 }
 

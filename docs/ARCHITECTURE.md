@@ -762,7 +762,7 @@ Two buses:
 ## 10. Save/Load Architecture
 
 - Full save: `PlayerSave` in `src/data/types.ts`
-- Save key: `terra_save_<profileId>` (fallback: `terra_save`)
+- Save key: `rr_save_<profileId>` (fallback: `rr_save`)
 - Mid-run checkpoint: saved after every encounter via `runSaveService.ts`
 - Save version migrations: in-code, field-by-field in `saveService.ts`
 - Optional sub-document split: `saveSubDocs.ts` (core, knowledge, inventory, analytics)
@@ -906,7 +906,7 @@ CardGameManager (globalThis symbol registry)
   → scenes/BootAnimScene (first-launch only), scenes/BootScene, scenes/CombatScene
 
 encounterBridge
-  → CardGameManager (via globalThis[Symbol.for('terra:cardGameManager')])
+  → CardGameManager (via globalThis[Symbol.for('rr:cardGameManager')])
   → services/turnManager
   → services/deckManager + runPoolBuilder + cardFactory
   → services/enemyManager

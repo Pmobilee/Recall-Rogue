@@ -34,7 +34,7 @@ async function getSqlWasmUrl(): Promise<string> {
 }
 
 /**
- * Maps the raw `terra_age_bracket` localStorage string to the canonical
+ * Maps the raw `rr_age_bracket` localStorage string to the canonical
  * `AgeRating` type used throughout the app.
  *
  * - 'under_13' → 'kid'
@@ -80,7 +80,7 @@ class FactsDB {
    * Returns the shared singleton instance of FactsDB.
    */
   static getInstance(): FactsDB {
-    const sym = Symbol.for('terra:factsDB')
+    const sym = Symbol.for('rr:factsDB')
     const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
     if (!(sym in singletonRegistry)) {
       singletonRegistry[sym] = new FactsDB()

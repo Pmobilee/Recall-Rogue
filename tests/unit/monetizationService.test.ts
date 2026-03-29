@@ -33,7 +33,7 @@ describe('monetizationService', () => {
     const inFiveDays = new Date(now + 5 * 86_400_000).toISOString()
     const save = makeSave({
       subscription: {
-        type: 'terra_pass',
+        type: 'rogue_pass',
         source: 'web',
         expiresAt: inFiveDays,
       },
@@ -43,7 +43,7 @@ describe('monetizationService', () => {
     const newExpiry = new Date(updated.subscription?.expiresAt ?? '').getTime()
     const deltaMs = newExpiry - new Date(inFiveDays).getTime()
 
-    expect(updated.subscription?.type).toBe('terra_pass')
+    expect(updated.subscription?.type).toBe('rogue_pass')
     expect(deltaMs).toBeGreaterThanOrEqual(29 * 86_400_000)
     expect(deltaMs).toBeLessThanOrEqual(31 * 86_400_000)
   })

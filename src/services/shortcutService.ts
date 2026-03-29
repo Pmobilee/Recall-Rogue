@@ -2,7 +2,7 @@
  * Centralized keyboard shortcut service.
  *
  * Default bindings are defined here. Players can override them via the Settings
- * screen. Bindings are persisted to localStorage under "terra_shortcuts_v1".
+ * screen. Bindings are persisted to localStorage under "rr_shortcuts_v1".
  *
  * Usage:
  *   shortcutService.on('dive', () => gm.goToDivePrep())
@@ -27,7 +27,7 @@ export interface ShortcutBinding {
   global?: boolean
 }
 
-const STORAGE_KEY = 'terra_shortcuts_v1'
+const STORAGE_KEY = 'rr_shortcuts_v1'
 
 const DEFAULT_BINDINGS: Record<ShortcutId, Omit<ShortcutBinding, 'id'>> = {
   dive:          { label: 'Dive / Enter Mine',   defaultKey: 'd', key: 'd' },

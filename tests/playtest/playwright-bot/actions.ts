@@ -1,7 +1,7 @@
 /**
  * Playwright Game Bot — Actions
  *
- * All DOM interactions the bot can perform. Prefers window.__terraPlay API
+ * All DOM interactions the bot can perform. Prefers window.__rrPlay API
  * calls (which are more reliable than raw DOM clicks) when available, but
  * falls back to direct data-testid clicks for elements not covered by the API.
  */
@@ -44,13 +44,13 @@ export async function clickTestId(page: Page, testId: string, timeoutMs = 5000):
 }
 
 /**
- * Calls a window.__terraPlay method by name and returns the result.
+ * Calls a window.__rrPlay method by name and returns the result.
  * Returns null if the API or method is unavailable.
  */
 async function callPlayAPI(page: Page, method: string, ...args: unknown[]): Promise<unknown> {
   return page.evaluate(
     ([m, a]: [string, unknown[]]) => {
-      const play = (window as any).__terraPlay;
+      const play = (window as any).__rrPlay;
       if (!play || typeof play[m] !== 'function') return null;
       return play[m](...a);
     },
@@ -63,7 +63,7 @@ async function callPlayAPI(page: Page, method: string, ...args: unknown[]): Prom
 // ---------------------------------------------------------------------------
 
 /**
- * Starts a new run from the hub screen using __terraPlay.startRun().
+ * Starts a new run from the hub screen using __rrPlay.startRun().
  */
 export async function startRun(page: Page): Promise<boolean> {
   const result = await callPlayAPI(page, 'startRun') as { ok: boolean } | null;
@@ -73,7 +73,7 @@ export async function startRun(page: Page): Promise<boolean> {
 }
 
 /**
- * Selects a domain by name using __terraPlay.selectDomain().
+ * Selects a domain by name using __rrPlay.selectDomain().
  * Falls back to clicking the first visible domain card.
  */
 export async function selectDomain(page: Page, domain: string): Promise<boolean> {
@@ -114,7 +114,7 @@ export async function playCard(page: Page, _profile: BotProfile, state: GameStat
   const pickIdx = Math.floor(rng() * visibleIndices.length);
   const cardIndex = visibleIndices[pickIdx];
 
-  // Use __terraPlay.playCard which handles the click and waits for state update
+  // Use __rrPlay.playCard which handles the click and waits for state update
   const result = await callPlayAPI(page, 'playCard', cardIndex) as { ok: boolean } | null;
   if (result?.ok) return cardIndex;
 
@@ -124,7 +124,7 @@ export async function playCard(page: Page, _profile: BotProfile, state: GameStat
 }
 
 /**
- * Ends the current combat turn using __terraPlay.endTurn().
+ * Ends the current combat turn using __rrPlay.endTurn().
  */
 export async function endTurn(page: Page): Promise<boolean> {
   const result = await callPlayAPI(page, 'endTurn') as { ok: boolean } | null;
@@ -165,7 +165,7 @@ export async function answerQuiz(page: Page, profile: BotProfile, quiz: QuizStat
     targetIndex = Math.floor(rng() * answerCount);
   }
 
-  // Use __terraPlay.answerQuiz for reliability
+  // Use __rrPlay.answerQuiz for reliability
   const result = await callPlayAPI(page, 'answerQuiz', targetIndex) as { ok: boolean } | null;
   if (result?.ok) return targetIndex === correctIndex;
 

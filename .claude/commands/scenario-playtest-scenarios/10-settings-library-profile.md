@@ -11,7 +11,7 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 ### Settings
 1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
 2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
-3. Load settings: `window.__terraScenario.load('settings')`
+3. Load settings: `window.__rrScenario.load('settings')`
 4. Wait 500ms, take **Screenshot #1 (settings)**
 5. CHECK: settings panel renders with options
 6. CHECK: no "undefined"/"null" text
@@ -19,7 +19,7 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 8. Navigate back to hub
 
 ### Library
-9. Load library: `window.__terraScenario.load('library')`
+9. Load library: `window.__rrScenario.load('library')`
 10. Wait 500ms, take **Screenshot #2 (library)**
 11. CHECK: card browser renders
 12. CHECK: deck builder section accessible
@@ -28,14 +28,14 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 15. Navigate back to hub
 
 ### Profile
-16. Load profile: `window.__terraScenario.load('profile')`
+16. Load profile: `window.__rrScenario.load('profile')`
 17. Wait 500ms, take **Screenshot #3 (profile)**
 18. CHECK: player stats displayed (runs completed, facts learned, etc.)
 19. CHECK: values are numbers not NaN/undefined
 20. Navigate back to hub
 
 ### Deck Builder (if accessible from library)
-21. Load library again: `window.__terraScenario.load('library')`
+21. Load library again: `window.__rrScenario.load('library')`
 22. Navigate to deck builder section
 23. Take **Screenshot #4 (deck-builder)**
 24. CHECK: cards listed

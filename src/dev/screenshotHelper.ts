@@ -1,7 +1,8 @@
 /**
  * Dev-mode screenshot helper — html2canvas compositing.
  * Captures the full game view (Phaser WebGL canvas + Svelte DOM overlay) as a composited image.
- * Called via window.__terraScreenshot() and window.__terraScreenshotFile() from Playwright tests.
+ * Called via window.__rrScreenshot() and window.__rrScreenshotFile() from Playwright tests.
+ * Backward compat aliases: window.__terraScreenshot and window.__terraScreenshotFile (remove after 2026-06-01).
  *
  * Compositing strategy:
  * 1. Grab the Phaser canvas pixels directly via drawImage() (WebGL canvas, requires
@@ -12,8 +13,8 @@
  * 3. Draw Phaser canvas first (background layer), then html2canvas result on top
  * 4. Optionally downscale and encode as JPEG for smaller output
  *
- * window.__terraScreenshot()     → small JPEG (scale 0.5, quality 0.7) for tool consumption
- * window.__terraScreenshotFile() → POSTs image to /__dev/screenshot, returns server file path.
+ * window.__rrScreenshot()     → small JPEG (scale 0.5, quality 0.7) for tool consumption
+ * window.__rrScreenshotFile() → POSTs image to /__dev/screenshot, returns server file path.
  *                                   Falls back to the data URL if the endpoint is unavailable.
  */
 
@@ -145,7 +146,7 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
  * If the endpoint is unavailable (e.g. production build or endpoint not running),
  * falls back to returning the data URL directly.
  *
- * Exposed as window.__terraScreenshotFile() in dev mode.
+ * Exposed as window.__rrScreenshotFile() in dev mode.
  */
 export async function captureScreenshotToFile(): Promise<string> {
   const dataUrl = await captureScreenshot({ scale: 0.5, quality: 0.7, format: 'jpeg' });
@@ -169,7 +170,11 @@ export async function captureScreenshotToFile(): Promise<string> {
 export function initScreenshotHelper(): void {
   const win = window as unknown as Record<string, unknown>;
   /** Small JPEG (scale 0.5, quality 0.7) for tool consumption — default args unchanged */
-  win.__terraScreenshot = captureScreenshot;
+  win.__rrScreenshot = captureScreenshot;
   /** POSTs to /__dev/screenshot, returns server-side file path */
-  win.__terraScreenshotFile = captureScreenshotToFile;
+  win.__rrScreenshotFile = captureScreenshotToFile;
+
+  // Backward compat — remove after 2026-06-01
+  (window as any).__terraScreenshot = (window as any).__rrScreenshot;
+  (window as any).__terraScreenshotFile = (window as any).__rrScreenshotFile;
 }

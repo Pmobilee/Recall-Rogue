@@ -1,7 +1,7 @@
 /**
  * Parental control settings store.
  * PIN is stored as a SHA-256 hex digest. Plaintext never leaves the browser.
- * localStorage key: 'terra_parental_v1'
+ * localStorage key: 'rr_parental_v1'
  */
 
 import { writable, get } from 'svelte/store'
@@ -25,7 +25,7 @@ export interface ParentalSettings {
   unlockedFloors?: string[]
 }
 
-const STORAGE_KEY = 'terra_parental_v1'
+const STORAGE_KEY = 'rr_parental_v1'
 
 function loadFromStorage(): ParentalSettings {
   if (typeof localStorage === 'undefined') return defaultSettings()

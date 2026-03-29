@@ -1,6 +1,6 @@
 # Scenario 07: Sprite & Visual Audit
 
-> **IMPORTANT: Use `window.__terraScenario.load('combat-basic')` to instantly enter combat. Do NOT navigate through hub → dungeon → map → node manually. Other scenarios: 'combat-boss', 'combat-10-cards', 'combat-scholar', 'combat-elite'. Always call `document.documentElement.setAttribute('data-pw-animations', 'disabled')` before screenshots.**
+> **IMPORTANT: Use `window.__rrScenario.load('combat-basic')` to instantly enter combat. Do NOT navigate through hub → dungeon → map → node manually. Other scenarios: 'combat-boss', 'combat-10-cards', 'combat-scholar', 'combat-elite'. Always call `document.documentElement.setAttribute('data-pw-animations', 'disabled')` before screenshots.**
 
 ## Goal
 Verify enemy sprites load correctly, card art renders, backgrounds display, and no visual placeholders appear.
@@ -15,17 +15,17 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 3. Take **Screenshot #1 (hub)** — check hub background, camp buttons have sprites
 
 ### Combat Visual Check
-4. Load combat: `window.__terraScenario.load('combat-basic')`
+4. Load combat: `window.__rrScenario.load('combat-basic')`
 5. Wait 500ms, take **Screenshot #2 (combat-enemy-1)**
 6. Visual check: enemy sprite visible? Not a placeholder rectangle? Background loaded?
 
 ### Second Enemy (different preset)
-7. Load elite encounter: `window.__terraScenario.load('combat-elite')`
+7. Load elite encounter: `window.__rrScenario.load('combat-elite')`
 8. Wait 500ms, take **Screenshot #3 (combat-enemy-2)**
 9. Visual check: different enemy sprite? Still renders correctly?
 
 ### Boss Enemy
-10. Load boss: `window.__terraScenario.load('combat-boss')`
+10. Load boss: `window.__rrScenario.load('combat-boss')`
 11. Wait 500ms, verify boss sprite is distinct and renders at correct scale
 
 ### Card Hand Visual Check
@@ -43,12 +43,12 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 21. CHECK: overlay doesn't overflow viewport
 
 ### Shop Room Visual Check
-22. Load shop: `window.__terraScenario.load('shop-loaded')`
+22. Load shop: `window.__rrScenario.load('shop-loaded')`
 23. Wait 500ms, take **Screenshot #6 (special-room-shop)**
 24. CHECK: room background loaded, shop items displayed, prices visible
 
 ### Rest Room Visual Check
-25. Load rest: `window.__terraScenario.load('rest-site')`
+25. Load rest: `window.__rrScenario.load('rest-site')`
 26. Wait 500ms, take **Screenshot #7 (special-room-rest)**
 27. CHECK: rest room background loaded, heal/study buttons visible and styled
 

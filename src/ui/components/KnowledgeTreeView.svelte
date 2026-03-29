@@ -112,7 +112,7 @@
   }
 
   // ─── Subcategory discovery tracking ───────────────────────────────────────
-  const SEEN_KEY = 'terra_seen_subcats'
+  const SEEN_KEY = 'rr_seen_subcats'
   let seenSubcats = $state<Set<string>>(
     new Set(JSON.parse(localStorage.getItem(SEEN_KEY) ?? '[]'))
   )

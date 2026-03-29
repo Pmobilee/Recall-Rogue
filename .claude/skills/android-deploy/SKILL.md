@@ -70,7 +70,7 @@ adb reverse tcp:5173 tcp:5173
 ### Install/update the APK
 ```bash
 # Pull APK from remote server
-scp root@<SERVER_IP>:/root/terra-miner/android/app/build/outputs/apk/debug/app-debug.apk ~/Desktop/app-debug.apk
+scp root@<SERVER_IP>:/root/recall-rogue/android/app/build/outputs/apk/debug/app-debug.apk ~/Desktop/app-debug.apk
 
 # Install on connected phone (-r = replace existing)
 adb install -r ~/Desktop/app-debug.apk

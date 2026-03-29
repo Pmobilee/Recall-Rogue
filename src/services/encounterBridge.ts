@@ -80,7 +80,7 @@ function freshTurnState(ts: TurnState): TurnState {
 export function getCombatScene(): CombatScene | null {
   try {
     const reg = globalThis as Record<symbol, unknown>;
-    const sym = Symbol.for('terra:cardGameManager');
+    const sym = Symbol.for('rr:cardGameManager');
     const mgr = reg[sym] as { getCombatScene(): CombatScene | null; startCombat(): void } | undefined;
     return mgr?.getCombatScene() ?? null;
   } catch {
@@ -91,7 +91,7 @@ export function getCombatScene(): CombatScene | null {
 function ensureCombatStarted(): void {
   try {
     const reg = globalThis as Record<symbol, unknown>;
-    const sym = Symbol.for('terra:cardGameManager');
+    const sym = Symbol.for('rr:cardGameManager');
     const mgr = reg[sym] as { startCombat(): void } | undefined;
     mgr?.startCombat();
   } catch {

@@ -29,7 +29,7 @@ import type { PlayerSave } from '../data/types'
 const SYNC_DEBOUNCE_MS = 30_000
 
 /** localStorage key used to persist the last-successful-sync timestamp. */
-const LAST_SYNC_KEY = 'terra_last_sync_time'
+const LAST_SYNC_KEY = 'rr_last_sync_time'
 
 /**
  * Within this window (ms) two competing saves are considered "tied" on time

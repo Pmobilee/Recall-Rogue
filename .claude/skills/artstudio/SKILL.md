@@ -73,6 +73,8 @@ the room has strong depth perspective with a visible stone floor receding toward
 | Card art | 512 | 512 | Square, matches existing art |
 | Relic icons | 512 | 512 | Square, downscaled later |
 | Card frames | 512 | 729 | Card aspect ratio |
+| Icons | 512 | 512 | Generated 512x512 → 256x256 final (nearest-neighbor resize, ISNet bg removal via ComfyUI workflow) |
+| Deck Fronts | 960 | 540 | 16:9 illustrated style (lanczos3 resize) |
 
 ### Resize
 Sharp uses `kernel: sharp.kernel.nearest` for ALL pixel art — prevents bilinear blur artifacts on upscale.
@@ -87,13 +89,38 @@ Sharp uses `kernel: sharp.kernel.nearest` for ALL pixel art — prevents bilinea
 
 ## Categories
 
+### Art Categories (OpenRouter)
 | Category | Description |
 |----------|-------------|
 | `cardframes` | Card border frames |
 | `enemies` | Enemy combat sprites |
 | `cardart` | Card illustration art |
 | `backgrounds` | Per-enemy combat backgrounds (portrait + landscape) |
-| `relicicons` | Relic inventory icons |
+
+### ComfyUI Categories (Flux Schnell + ISNet bg removal)
+| Category | Description |
+|----------|-------------|
+| `relicicons` | Relic inventory icons (512→512) |
+| `deckfronts` | Curated deck cover art (no bg removal) |
+| `cardtype_icons` | Card type combat icons — attack, shield, utility, buff, debuff, wild, heal, regen |
+| `domain_icons` | Knowledge domain icons — animals, food, geography, etc. |
+| `status_icons` | Status effect icons — poison, regen, strength, burn, bleed, etc. |
+| `intent_icons` | Enemy intent telegraph icons — multi_attack, buff_self, debuff_player |
+| `reward_icons` | Reward altar choice icons (24 variants) |
+| `nav_icons` | Hub navigation menu icons — journal, library, profile, settings, etc. |
+| `hub_icons` | Hub location icons — archive, command, lab, market, museum, workshop |
+| `archetype_icons` | Player deck archetype icons — aggressive, balanced, control, etc. |
+| `lb_icons` | Leaderboard ranking icons — medals, streaks, dives, etc. |
+| `mystery_icons` | Mystery event type icons — choice, damage, free_card, heal, nothing |
+| `disc_icons` | Data disc category icons — culture, geo, history, life, space, tech |
+| `synergy_icons` | Run synergy bonus icons |
+| `ui_icons` | UI element icons — fallback, loading, trophy, levels, etc. |
+| `map_icons` | Room/encounter type map icons — boss, combat, elite, rest, shop, etc. |
+| `currency_icons` | Currency/resource icons — gold, crystal, dust, essence, etc. |
+| `misc_icons` | Legacy domain icons — arts, math, science, medicine, etc. |
+
+### Future Icons — MANDATORY
+When adding ANY new icon to the game, you MUST also add a corresponding entry to `artstudio-items.json` under the appropriate icon category with a proper pixel-art prompt. This ensures all icons can be regenerated via the Art Studio ComfyUI pipeline. If no existing category fits, create a new one.
 
 ## API Endpoints
 
@@ -114,10 +141,46 @@ Sharp uses `kernel: sharp.kernel.nearest` for ALL pixel art — prevents bilinea
 4. PNG saved to `artstudio-output/{category}/{id}/variant-{n}.png`
 5. Auto-retry: 3 attempts on text-only responses from Gemini
 
+## Remote ComfyUI (Icons, Relic Icons & Deck Fronts)
+
+Icons, Relic Icons, and Deck Fronts generate via FLUX Schnell GGUF on a remote ComfyUI instance (OpenCode VM, RTX 3060 12GB).
+
+### Connection
+- **URL**: `http://100.74.153.81:8188` (Tailscale)
+- **Env var**: `COMFYUI_REMOTE_URL` in `.env`
+- **Health check**: `GET /api/comfyui/status` — shown in UI header
+
+### Starting ComfyUI
+```bash
+ssh opencode 'cd /opt/ComfyUI && nohup /opt/comfyui-env/bin/python main.py --listen 0.0.0.0 --port 8188 > /tmp/comfyui.log 2>&1 &'
+```
+
+### Models Used
+- **FLUX Schnell** Q4_K_S GGUF — 4-step generation, fast
+- **clip_l** + **t5-v1_1-xxl** Q4_K_S — text encoders
+- **ae.safetensors** — FLUX VAE
+
+### Workflows
+| Workflow | File | Used By |
+|----------|------|---------|
+| Base (no bg removal) | `sprite-gen/workflows/API versions/flux_schnell_gguf_api.json` | `deckfronts` |
+| With bg removal | `sprite-gen/workflows/API versions/flux_schnell_gguf_rmbg_api.json` | `icons`, `relicicons` |
+
+Parameterizable nodes: 4 (prompt), 5 (resolution), 9 (seed), 15 or 12 (filename prefix)
+
+### Background Removal (Icons & Relic Icons)
+ISNet (Intermediate Segmentation Network) runs in-workflow via ComfyUI nodes on CPU (zero VRAM impact — necessary because Flux Schnell uses ~11GB of 12GB):
+1. `RemBGSession+` — creates ISNet ONNX session (model: `isnet-general-use`, provider: CPU)
+2. `ImageRemoveBackground+` — removes background, produces image + mask
+3. `SaveImageWithAlpha` — saves PNG with transparency baked in
+
+No SSH commands or external tools needed — all processing happens within the ComfyUI workflow. ISNet is a salient object detection neural network that produces clean masks with edge feathering.
+
 ## Environment
 
 - Requires `OPENROUTER_API_KEY` in `.env` at project root
 - Model: `OPENROUTER_MODEL=google/gemini-3.1-flash-image-preview`
+- Optional: `COMFYUI_REMOTE_URL=http://100.74.153.81:8188` (for remote ComfyUI icons, relic icons & deck fronts generation)
 
 ## Common Tasks
 

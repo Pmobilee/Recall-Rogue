@@ -1,13 +1,13 @@
 ---
 name: visual-inspect
-description: Instantly jump to any game state for visual inspection using Playwright + __terraScenario. Use for ALL visual testing, UI verification, screenshot capture, and playtest scenarios. Replaces manual navigation entirely.
+description: Instantly jump to any game state for visual inspection using Playwright + __rrScenario. Use for ALL visual testing, UI verification, screenshot capture, and playtest scenarios. Replaces manual navigation entirely.
 user_invocable: true
 model: sonnet
 ---
 
 # Visual Inspect -- Instant Game State Viewer
 
-Jump to ANY game state instantly via Playwright MCP + `window.__terraScenario`. This is the ONLY way to visually verify the game. Never navigate through menus manually.
+Jump to ANY game state instantly via Playwright MCP + `window.__rrScenario`. This is the ONLY way to visually verify the game. Never navigate through menus manually.
 
 ## Prerequisites
 
@@ -32,11 +32,11 @@ const { chromium } = require('playwright');
   await page.waitForTimeout(5000);
 
   // Load scenario
-  await page.evaluate(() => window.__terraScenario?.load('combat-basic'));
+  await page.evaluate(() => window.__rrScenario?.load('combat-basic'));
   await page.waitForTimeout(5000);
 
   // Take composite screenshot (Phaser canvas + Svelte DOM via html2canvas)
-  const path = await page.evaluate(() => window.__terraScreenshotFile?.());
+  const path = await page.evaluate(() => window.__rrScreenshotFile?.());
   console.log('Screenshot:', path);
 
   // Get DOM audit data
@@ -47,21 +47,21 @@ const { chromium } = require('playwright');
 })();
 ```
 
-Then use `Read("/tmp/terra-screenshot.jpg")` to view the screenshot.
+Then use `Read("/tmp/rr-screenshot.jpg")` to view the screenshot.
 
 ### Fallback: Playwright MCP Tools (if available)
 
 If `mcp__playwright__*` tools are loaded:
 1. `mcp__playwright__browser_navigate` -> `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
-2. `browser_evaluate` -> `window.__terraScenario.load('combat-basic')`
+2. `browser_evaluate` -> `window.__rrScenario.load('combat-basic')`
 3. Wait 5 seconds
-4. `browser_evaluate(() => window.__terraScreenshotFile())` -> saves to `/tmp/terra-screenshot.jpg`
-5. `Read("/tmp/terra-screenshot.jpg")` to view
+4. `browser_evaluate(() => window.__rrScreenshotFile())` -> saves to `/tmp/rr-screenshot.jpg`
+5. `Read("/tmp/rr-screenshot.jpg")` to view
 6. `mcp__playwright__browser_snapshot` for DOM state (supplementary)
 
 ### Screenshot Compositing
 
-`__terraScreenshotFile()` uses html2canvas to composite:
+`__rrScreenshotFile()` uses html2canvas to composite:
 1. Draws Phaser WebGL canvas directly (preserveDrawingBuffer: true)
 2. Temporarily clears all opaque DOM backgrounds so Phaser layer shows through
 3. Runs html2canvas on document.body (transparent bg, ignoring canvas elements)
@@ -128,7 +128,7 @@ If `mcp__playwright__*` tools are loaded:
 | `mystery-gamblers-tome` | Gambler's Tome, floor 4 |
 | `mystery-final-wager` | Final Wager, floor 10 |
 
-Use `__terraScenario.listMysteryEvents()` for all valid event IDs.
+Use `__rrScenario.listMysteryEvents()` for all valid event IDs.
 
 ### Other Screens
 | Preset | Screen |
@@ -208,7 +208,7 @@ Use `__terraScenario.listMysteryEvents()` for all valid event IDs.
 ### Valid IDs
 
 **Enemies** (sample): `cave_bat`, `crystal_golem`, `the_archivist`, `cave_guardian`, `scholar`, `the_librarian`
-- Full list: `window.__terraScenario.help()` or check `src/data/enemies.ts`
+- Full list: `window.__rrScenario.help()` or check `src/data/enemies.ts`
 
 **Mechanics** (sample): `strike`, `block`, `heavy_strike`, `multi_hit`, `lifetap`, `expose`, `reckless`, `thorns`, `focus`, `parry`, `brace`, `overheal`, `piercing`, `fortify`, `cleanse`, `quicken`, `adapt`, `execute`, `recycle`, `mirror`, `foresight`, `scout`, `empower`, `weaken`, `hex`
 - Full list: check `src/data/mechanics.ts`
@@ -223,26 +223,26 @@ Use `__terraScenario.listMysteryEvents()` for all valid event IDs.
 After loading a combat scenario, use these to tweak state live:
 
 ```javascript
-await page.evaluate(() => __terraScenario.setPlayerHp(50, 100));
-await page.evaluate(() => __terraScenario.setEnemyHp(1));
-await page.evaluate(() => __terraScenario.setGold(999));
-await page.evaluate(() => __terraScenario.setFloor(20));
-await page.evaluate(() => __terraScenario.forceHand(['heavy_strike', 'strike', 'block']));
-await page.evaluate(() => __terraScenario.addRelic('combo_ring'));
-await page.evaluate(() => __terraScenario.removeRelic('whetstone'));
-await page.evaluate(() => __terraScenario.setPlayerBlock(15));
-await page.evaluate(() => __terraScenario.setEnemyBlock(10));
-await page.evaluate(() => __terraScenario.setCombo(8));
+await page.evaluate(() => __rrScenario.setPlayerHp(50, 100));
+await page.evaluate(() => __rrScenario.setEnemyHp(1));
+await page.evaluate(() => __rrScenario.setGold(999));
+await page.evaluate(() => __rrScenario.setFloor(20));
+await page.evaluate(() => __rrScenario.forceHand(['heavy_strike', 'strike', 'block']));
+await page.evaluate(() => __rrScenario.addRelic('combo_ring'));
+await page.evaluate(() => __rrScenario.removeRelic('whetstone'));
+await page.evaluate(() => __rrScenario.setPlayerBlock(15));
+await page.evaluate(() => __rrScenario.setEnemyBlock(10));
+await page.evaluate(() => __rrScenario.setCombo(8));
 ```
 
 ## Runtime Debug Tools
 
 ```javascript
 // Full debug snapshot (screen, Phaser state, interactive elements, errors)
-await page.evaluate(() => window.__terraDebug());
+await page.evaluate(() => window.__rrDebug());
 
 // Recent log events
-await page.evaluate(() => window.__terraLog.slice(-20));
+await page.evaluate(() => window.__rrLog.slice(-20));
 
 // Read any store
 await page.evaluate(() => {
@@ -258,9 +258,9 @@ await page.evaluate(() => {
 ```
 1. browser_navigate -> http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial
 2. browser_evaluate -> disable animations
-3. browser_evaluate -> __terraScenario.loadCustom({ screen: 'combat', enemy: 'the_archivist', playerHp: 30, hand: ['heavy_strike', 'block', 'lifetap'], relics: ['whetstone'] })
+3. browser_evaluate -> __rrScenario.loadCustom({ screen: 'combat', enemy: 'the_archivist', playerHp: 30, hand: ['heavy_strike', 'block', 'lifetap'], relics: ['whetstone'] })
 4. wait 500ms
-5. browser_evaluate(() => window.__terraScreenshotFile()) -> saves to /tmp/terra-screenshot.jpg (Phaser + DOM composite). Use Read("/tmp/terra-screenshot.jpg") to view.
+5. browser_evaluate(() => window.__rrScreenshotFile()) -> saves to /tmp/rr-screenshot.jpg (Phaser + DOM composite). Use Read("/tmp/rr-screenshot.jpg") to view.
 6. browser_snapshot -> check DOM state (supplementary)
 7. browser_console_messages -> check errors
 8. If issues found -> fix code -> repeat from step 3

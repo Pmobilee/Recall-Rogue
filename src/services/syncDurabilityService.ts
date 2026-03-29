@@ -1,6 +1,6 @@
 import { syncService } from './syncService'
 
-const LISTENER_KEY = Symbol.for('terra:sync-durability-listener-registered')
+const LISTENER_KEY = Symbol.for('rr:sync-durability-listener-registered')
 
 /**
  * Registers a single visibilitychange listener that triggers cloud sync when

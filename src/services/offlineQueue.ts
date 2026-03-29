@@ -29,7 +29,7 @@ interface QueuedOperation {
 // ============================================================
 
 /** localStorage key used to persist the queue across page reloads. */
-const QUEUE_KEY = 'terra_offline_queue'
+const QUEUE_KEY = 'rr_offline_queue'
 
 /** Operations that have failed this many times are dropped permanently. */
 const MAX_ATTEMPTS = 5

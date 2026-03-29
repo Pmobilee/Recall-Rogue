@@ -29,7 +29,7 @@ export class CardGameManager {
 
     // Register on globalThis so encounterBridge can access without circular imports
     const reg = globalThis as Record<symbol, unknown>
-    reg[Symbol.for('terra:cardGameManager')] = this
+    reg[Symbol.for('rr:cardGameManager')] = this
 
     // Boot Phaser with the correct canvas dimensions for the current layout mode.
     // Using the right dimensions at construction time avoids a post-boot resize race
@@ -37,7 +37,7 @@ export class CardGameManager {
     const bootMode = get(layoutMode)
     const bootCanvas = getCanvasForMode(bootMode)
 
-    const isBotMode = (globalThis as Record<symbol, unknown>)[Symbol.for('terra:botMode')] === true;
+    const isBotMode = (globalThis as Record<symbol, unknown>)[Symbol.for('rr:botMode')] === true;
 
     this.game = new Phaser.Game({
       type: isBotMode ? Phaser.HEADLESS : Phaser.AUTO,

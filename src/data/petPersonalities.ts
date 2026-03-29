@@ -90,14 +90,10 @@ export const PET_PERSONALITY_TEMPLATES: Record<string, PetPersonality[]> = {
 
 /** Companion synergy bonuses when paired together */
 export interface CompanionSynergy {
-  companionA: string                    // fossil companion ID (e.g. 'comp_borebot')
-  companionB: string                    // 'dust_cat' for Dust Cat synergies
+  companionA: string
+  companionB: string
   synergyName: string
   description: string
-  /** Minimum Dust Cat happiness required (0 for non-Dust Cat synergies). */
-  minHappiness: number
-  /** TraitId that must be present in dustCatTraits, or null for any trait. */
-  dustCatTraitRequired: string | null
   bonus: {
     type: 'mineral_bonus' | 'fact_bonus' | 'defense_bonus' | 'speed_bonus'
           | 'o2_bonus' | 'quiz_bonus' | 'xp_bonus'
@@ -106,63 +102,11 @@ export interface CompanionSynergy {
 }
 
 export const COMPANION_SYNERGIES: CompanionSynergy[] = [
-  { companionA: 'crystal_fox', companionB: 'lava_gecko', synergyName: 'Elemental Duo', description: 'Crystal and fire combine: +15% mineral drops', minHappiness: 0, dustCatTraitRequired: null, bonus: { type: 'mineral_bonus', magnitude: 0.15 } },
-  { companionA: 'moss_turtle', companionB: 'void_moth', synergyName: 'Scholar\'s Pair', description: 'Calm wisdom meets cosmic curiosity: +10% fact quality', minHappiness: 0, dustCatTraitRequired: null, bonus: { type: 'fact_bonus', magnitude: 0.10 } },
-  { companionA: 'trilobite', companionB: 'moss_turtle', synergyName: 'Ancient Bond', description: 'Two ancient survivors: +20% defense', minHappiness: 0, dustCatTraitRequired: null, bonus: { type: 'defense_bonus', magnitude: 0.20 } },
-  { companionA: 'crystal_fox', companionB: 'void_moth', synergyName: 'Light & Shadow', description: 'Prismatic and void energies intertwine: +10% speed', minHappiness: 0, dustCatTraitRequired: null, bonus: { type: 'speed_bonus', magnitude: 0.10 } },
-  { companionA: 'lava_gecko', companionB: 'trilobite', synergyName: 'Fire & Earth', description: 'Volcanic heat meets primordial shell: +12% mineral drops', minHappiness: 0, dustCatTraitRequired: null, bonus: { type: 'mineral_bonus', magnitude: 0.12 } },
-
-  // Dust Cat synergies (companionB = 'dust_cat')
-  { companionA: 'comp_borebot', companionB: 'dust_cat', synergyName: 'Iron Paws',
-    description: 'Borebot\'s drilling rhythm matches the cat\'s energetic pace: +8% mineral drops',
-    minHappiness: 60, dustCatTraitRequired: 'energetic',
-    bonus: { type: 'mineral_bonus', magnitude: 0.08 } },
-
-  { companionA: 'comp_lumis', companionB: 'dust_cat', synergyName: 'Dark Explorer',
-    description: 'Lumis lights the way; the curious cat finds more: +1 sonar pulse per layer',
-    minHappiness: 60, dustCatTraitRequired: 'curious',
-    bonus: { type: 'speed_bonus', magnitude: 0.10 } },
-
-  { companionA: 'comp_medi', companionB: 'dust_cat', synergyName: 'Steady Presence',
-    description: 'The loyal cat\'s calming aura amplifies Medi\'s regen: +4 O2 per layer',
-    minHappiness: 60, dustCatTraitRequired: 'loyal',
-    bonus: { type: 'o2_bonus', magnitude: 4 } },
-
-  { companionA: 'comp_archivist', companionB: 'dust_cat', synergyName: 'Scholar\'s Circle',
-    description: 'Cat and Archivist in perfect academic accord: +10% quiz XP',
-    minHappiness: 60, dustCatTraitRequired: 'scholar',
-    bonus: { type: 'quiz_bonus', magnitude: 0.10 } },
-
-  { companionA: 'comp_carapace', companionB: 'dust_cat', synergyName: 'Fortified Bond',
-    description: 'Brave cat + armored shell: lethal absorb triggers one extra time per dive',
-    minHappiness: 60, dustCatTraitRequired: 'brave',
-    bonus: { type: 'defense_bonus', magnitude: 1 } },
-
-  // Generic Dust Cat synergies (no trait requirement — only happiness threshold)
-  { companionA: 'comp_borebot', companionB: 'dust_cat', synergyName: 'Happy Digger',
-    description: 'A content cat inspires better drilling: +4% mineral drops',
-    minHappiness: 80, dustCatTraitRequired: null,
-    bonus: { type: 'mineral_bonus', magnitude: 0.04 } },
-
-  { companionA: 'comp_lumis', companionB: 'dust_cat', synergyName: 'Warm Light',
-    description: 'Happy cat makes tunnels feel safer: +5% move speed',
-    minHappiness: 80, dustCatTraitRequired: null,
-    bonus: { type: 'speed_bonus', magnitude: 0.05 } },
-
-  { companionA: 'comp_medi', companionB: 'dust_cat', synergyName: 'Comfort Care',
-    description: 'A happy cat reduces anxiety, boosting Medi\'s efficiency: +2 O2/layer',
-    minHappiness: 80, dustCatTraitRequired: null,
-    bonus: { type: 'o2_bonus', magnitude: 2 } },
-
-  { companionA: 'comp_archivist', companionB: 'dust_cat', synergyName: 'Attentive Audience',
-    description: 'The cat\'s rapt attention sharpens recall: +5% quiz XP',
-    minHappiness: 80, dustCatTraitRequired: null,
-    bonus: { type: 'quiz_bonus', magnitude: 0.05 } },
-
-  { companionA: 'comp_carapace', companionB: 'dust_cat', synergyName: 'Shield of Affection',
-    description: 'Even Carapace is inspired by the happy cat: +5% damage reduction',
-    minHappiness: 80, dustCatTraitRequired: null,
-    bonus: { type: 'defense_bonus', magnitude: 0.05 } },
+  { companionA: 'crystal_fox', companionB: 'lava_gecko', synergyName: 'Elemental Duo', description: 'Crystal and fire combine: +15% mineral drops', bonus: { type: 'mineral_bonus', magnitude: 0.15 } },
+  { companionA: 'moss_turtle', companionB: 'void_moth', synergyName: 'Scholar\'s Pair', description: 'Calm wisdom meets cosmic curiosity: +10% fact quality', bonus: { type: 'fact_bonus', magnitude: 0.10 } },
+  { companionA: 'trilobite', companionB: 'moss_turtle', synergyName: 'Ancient Bond', description: 'Two ancient survivors: +20% defense', bonus: { type: 'defense_bonus', magnitude: 0.20 } },
+  { companionA: 'crystal_fox', companionB: 'void_moth', synergyName: 'Light & Shadow', description: 'Prismatic and void energies intertwine: +10% speed', bonus: { type: 'speed_bonus', magnitude: 0.10 } },
+  { companionA: 'lava_gecko', companionB: 'trilobite', synergyName: 'Fire & Earth', description: 'Volcanic heat meets primordial shell: +12% mineral drops', bonus: { type: 'mineral_bonus', magnitude: 0.12 } },
 ]
 
 /** Get personality for a pet species (random from available templates) */
@@ -178,30 +122,4 @@ export function findSynergy(speciesA: string, speciesB: string): CompanionSynerg
     (s.companionA === speciesA && s.companionB === speciesB) ||
     (s.companionA === speciesB && s.companionB === speciesA)
   ) ?? null
-}
-
-/**
- * Find active synergy between a fossil companion and the Dust Cat.
- * Returns the highest-magnitude applicable synergy, or null.
- *
- * @param companionId - The active fossil companion ID.
- * @param dustCatHappiness - Current Dust Cat happiness (0-100).
- * @param dustCatTraits - Assigned trait IDs for the Dust Cat.
- */
-export function findDustCatSynergy(
-  companionId: string,
-  dustCatHappiness: number,
-  dustCatTraits: [string, string] | undefined,
-): CompanionSynergy | null {
-  const eligible = COMPANION_SYNERGIES.filter(s =>
-    s.companionB === 'dust_cat' &&
-    s.companionA === companionId &&
-    dustCatHappiness >= s.minHappiness &&
-    (s.dustCatTraitRequired === null || dustCatTraits?.includes(s.dustCatTraitRequired))
-  )
-  if (eligible.length === 0) return null
-  // Return the entry with highest magnitude
-  return eligible.reduce((best, s) =>
-    s.bonus.magnitude > best.bonus.magnitude ? s : best
-  )
 }

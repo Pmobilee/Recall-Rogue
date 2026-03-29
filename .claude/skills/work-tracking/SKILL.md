@@ -46,14 +46,14 @@ After completing ANY task that touches UI, visuals, gameplay, or layout, the Opu
 
 ```javascript
 // CORRECT — always use this:
-browser_evaluate(() => window.__terraScreenshotFile())
-// Saves to /tmp/terra-screenshot.jpg — then Read("/tmp/terra-screenshot.jpg") to view
+browser_evaluate(() => window.__rrScreenshotFile())
+// Saves to /tmp/rr-screenshot.jpg — then Read("/tmp/rr-screenshot.jpg") to view
 
 // NEVER use these (they hang/timeout due to Phaser's RAF loop):
 // mcp__playwright__browser_take_screenshot
 // page.screenshot() via browser_run_code
 // page.context().newCDPSession()
-// raw __terraScreenshot() — base64 exceeds tool output limits
+// raw __rrScreenshot() — base64 exceeds tool output limits
 ```
 
 ### Standard Visual Inspection Sequence
@@ -61,20 +61,20 @@ browser_evaluate(() => window.__terraScreenshotFile())
 1. Ensure dev server is running (`npm run dev`)
 2. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 3. Disable animations: `browser_evaluate(() => document.documentElement.setAttribute('data-pw-animations', 'disabled'))`
-4. Take screenshot: `browser_evaluate(() => window.__terraScreenshotFile())` → `Read("/tmp/terra-screenshot.jpg")`
+4. Take screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` → `Read("/tmp/rr-screenshot.jpg")`
 5. DOM snapshot: `mcp__playwright__browser_snapshot`
 6. Console check: `mcp__playwright__browser_console_messages`
 
 ### Quick Game State Setup
 
-Use `__terraScenario` to jump directly to any state — never navigate through menus manually:
+Use `__rrScenario` to jump directly to any state — never navigate through menus manually:
 
 ```javascript
-await page.evaluate(() => window.__terraScenario.load('combat-basic'));
-await page.evaluate(() => window.__terraScenario.load('combat-boss'));
-await page.evaluate(() => window.__terraScenario.load('shop'));
-await page.evaluate(() => window.__terraScenario.load('reward-room'));
-// Full list: window.__terraScenario.list()
+await page.evaluate(() => window.__rrScenario.load('combat-basic'));
+await page.evaluate(() => window.__rrScenario.load('combat-boss'));
+await page.evaluate(() => window.__rrScenario.load('shop'));
+await page.evaluate(() => window.__rrScenario.load('reward-room'));
+// Full list: window.__rrScenario.list()
 ```
 
 ### What to Do When It Looks Wrong

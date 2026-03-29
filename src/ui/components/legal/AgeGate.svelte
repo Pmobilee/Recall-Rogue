@@ -4,7 +4,7 @@
   interface Props {
     /**
      * Called after the player selects an age bracket.
-     * The result is also persisted to localStorage under `terra_age_bracket`.
+     * The result is also persisted to localStorage under `rr_age_bracket`.
      */
     onSelect: (bracket: AgeBracket) => void
   }

@@ -72,7 +72,7 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 
 ### 5. Visual Inspection (/visual-inspect)
 **What it catches:** Missing sprites, broken art, rendering glitches, z-order issues, animation failures, layout overflow, text truncation
-**How:** Playwright + `__terraScenario` — loads specific game states, takes screenshots, checks DOM + canvas
+**How:** Playwright + `__rrScenario` — loads specific game states, takes screenshots, checks DOM + canvas
 **Speed:** ~10 seconds per screen
 **Blind spots:** Cannot assess design quality or UX best practices. Only catches errors, not improvements.
 
@@ -84,7 +84,7 @@ No single testing method is sufficient. Unit tests miss visual bugs. Screenshots
 
 ### 7. LLM Live Playtest (/llm-playtest)
 **What it catches:** Quiz content quality issues (bad distractors, wrong answers, truncated questions), live balance curve problems (floor-by-floor HP/gold/damage progression), subjective fun/engagement issues (dead draws, forced choices, pacing), study mode flow bugs
-**How:** Spawns Sonnet sub-agents that actually PLAY the game through Playwright + `__terraPlay` API, recording objective data and subjective assessments
+**How:** Spawns Sonnet sub-agents that actually PLAY the game through Playwright + `__rrPlay` API, recording objective data and subjective assessments
 **Speed:** ~15 minutes for full batch (4 testers sequential)
 **Blind spots:** Cannot test at statistical scale (use headless sim for that). Cannot test visual rendering (use /visual-inspect). Cannot do deep per-state strategic analysis (use /strategy-analysis).
 
@@ -137,7 +137,7 @@ Parallel batch 1 (fast, no browser needed):
 └── Worker C: Rogue Brain — python3 analyze.py --episodes 100 (if model exists)
 
 Parallel batch 2 (needs Playwright, sequential screenshots):
-├── Worker D: Visual inspection — load each element via __terraScenario, screenshot
+├── Worker D: Visual inspection — load each element via __rrScenario, screenshot
 └── Worker E: UX review — DOM scan + screenshot + principle evaluation
 
 Parallel batch 3 (LLM-intensive):
@@ -287,7 +287,7 @@ function checkOcclusion(element) {
 }
 ```
 
-**For screenshots**, ALWAYS use `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. Captures both Phaser canvas and DOM overlays. NEVER use raw `__terraScreenshot()` (base64 exceeds limits) or `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout). The `elementFromPoint()` occlusion check above runs via `browser_evaluate` and catches occlusion as a complementary check.
+**For screenshots**, ALWAYS use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures both Phaser canvas and DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits) or `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout). The `elementFromPoint()` occlusion check above runs via `browser_evaluate` and catches occlusion as a complementary check.
 
 **This check is NON-NEGOTIABLE. If a visual inspection worker skips it, the inspection is INCOMPLETE and MUST be flagged as such.**
 

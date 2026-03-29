@@ -14,9 +14,9 @@
  * - `syncPacks()` fails silently so offline users are never blocked.
  */
 
-const PACK_VERSION_KEY = 'terra_fact_pack_version'
-const PACK_DATA_KEY = 'terra_fact_pack_data'
-const PACK_LAST_SYNC_KEY = 'terra_fact_pack_last_sync'
+const PACK_VERSION_KEY = 'rr_fact_pack_version'
+const PACK_DATA_KEY = 'rr_fact_pack_data'
+const PACK_LAST_SYNC_KEY = 'rr_fact_pack_last_sync'
 const SYNC_INTERVAL_MS = 7 * 24 * 60 * 60 * 1000 // 7 days
 
 /** A single entry within a FactPack. */

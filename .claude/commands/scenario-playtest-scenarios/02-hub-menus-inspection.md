@@ -37,7 +37,7 @@ After testing navigation targets:
 
 ### Hub Visual Inspection
 13. Return to hub, take **Screenshot #4 (hub-final)**
-14. Run `window.__terraDebug()` — check interactiveElements for occluded buttons
+14. Run `window.__rrDebug()` — check interactiveElements for occluded buttons
 15. Check all camp buttons are visible and not disabled
 
 ## Element Discovery & Evaluation — MANDATORY

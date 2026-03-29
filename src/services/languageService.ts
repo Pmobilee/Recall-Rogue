@@ -10,7 +10,7 @@ export interface LanguageModeState {
   showGeneralFacts: boolean   // Mix general facts with language facts
 }
 
-const LANG_MODE_KEY = 'terra_language_mode'
+const LANG_MODE_KEY = 'rr_language_mode'
 
 const defaultState: LanguageModeState = {
   enabled: false,

@@ -20,7 +20,7 @@ const DEFAULT_CONTROLS: ParentalControls = {
   weeklyReportEmail: ''
 }
 
-const CONTROLS_KEY = 'terra_parental_controls'
+const CONTROLS_KEY = 'rr_parental_controls'
 
 class KidModeService {
   private controls: ParentalControls = DEFAULT_CONTROLS
@@ -94,7 +94,7 @@ class KidModeService {
     this.sessionStartTime = Date.now()
     // Load today's accumulated time
     const today = new Date().toISOString().slice(0, 10)
-    const stored = localStorage.getItem(`terra_playtime_${today}`)
+    const stored = localStorage.getItem(`rr_playtime_${today}`)
     this.dailyPlayedMinutes = stored ? parseFloat(stored) : 0
   }
 
@@ -103,7 +103,7 @@ class KidModeService {
     const sessionMinutes = (Date.now() - this.sessionStartTime) / (1000 * 60)
     this.dailyPlayedMinutes += sessionMinutes
     const today = new Date().toISOString().slice(0, 10)
-    localStorage.setItem(`terra_playtime_${today}`, String(this.dailyPlayedMinutes))
+    localStorage.setItem(`rr_playtime_${today}`, String(this.dailyPlayedMinutes))
   }
 
   /** Check if social features are allowed */

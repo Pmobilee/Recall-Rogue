@@ -50,7 +50,7 @@ This skill is for **visual, browser-based** testing. For headless mathematical s
    ```bash
    curl -s -o /dev/null -w "%{http_code}" http://localhost:5173
    ```
-   If not running: `cd /root/terra-miner && npm run dev &` and wait 8s.
+   If not running: `cd /root/recall-rogue && npm run dev &` and wait 8s.
 
 3. **For each scenario**, spawn a Haiku worker (`model: "haiku"`) with:
    - The shared protocol (read from `.claude/commands/scenario-playtest-scenarios/00-SHARED-PROTOCOL.md`)
@@ -78,7 +78,7 @@ Use MCP Playwright tools to interact with the game:
 - browser_navigate: go to URLs
 - browser_click: click elements by CSS selector (always use force: true)
 - browser_evaluate: run JavaScript in the page
-- browser_evaluate(() => window.__terraScreenshotFile()): save screenshot to `/tmp/terra-screenshot.jpg`, returns path. Then use `Read("/tmp/terra-screenshot.jpg")` to view (max 8 per scenario). NEVER use raw `__terraScreenshot()` (base64 exceeds limits). NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs permanently).
+- browser_evaluate(() => window.__rrScreenshotFile()): save screenshot to `/tmp/rr-screenshot.jpg`, returns path. Then use `Read("/tmp/rr-screenshot.jpg")` to view (max 8 per scenario). NEVER use raw `__rrScreenshot()` (base64 exceeds limits). NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs permanently).
 - browser_snapshot: read DOM text (cheap, use liberally)
 - browser_console_messages: check for JS errors
 
@@ -171,7 +171,7 @@ For tracked, repeatable playtests:
 
 ---
 
-## API Reference — window.__terraPlay
+## API Reference — window.__rrPlay
 
 Available in dev mode. Workers can use these via `browser_evaluate`:
 

@@ -1,7 +1,7 @@
 ---
 name: llm-playtest
 description: |
-  Batch LLM playtest orchestrator. Spawns Sonnet sub-agents to actually PLAY the game through Playwright MCP + __terraPlay API, each with a unique testing focus (quiz quality, balance curve, fun/engagement, study temple). Produces per-tester reports and a combined summary in data/playtests/llm-batches/. Complements /strategy-analysis (static reasoning about hypothetical states) and /visual-inspect (screenshots) by providing live gameplay with LLM reasoning — the only method that tests real quiz content, actual run flow, and subjective engagement.
+  Batch LLM playtest orchestrator. Spawns Sonnet sub-agents to actually PLAY the game through Playwright MCP + __rrPlay API, each with a unique testing focus (quiz quality, balance curve, fun/engagement, study temple). Produces per-tester reports and a combined summary in data/playtests/llm-batches/. Complements /strategy-analysis (static reasoning about hypothetical states) and /visual-inspect (screenshots) by providing live gameplay with LLM reasoning — the only method that tests real quiz content, actual run flow, and subjective engagement.
 user_invocable: true
 model: sonnet
 ---
@@ -10,7 +10,7 @@ model: sonnet
 
 ## What This Skill Does
 
-Spawns Sonnet sub-agents that **actually play the game** through Playwright MCP using the `window.__terraPlay` API. Each agent has a different testing focus and writes a structured report. The orchestrator aggregates all reports into a combined `SUMMARY.md`.
+Spawns Sonnet sub-agents that **actually play the game** through Playwright MCP using the `window.__rrPlay` API. Each agent has a different testing focus and writes a structured report. The orchestrator aggregates all reports into a combined `SUMMARY.md`.
 
 This is NOT screenshot-based visual testing, NOT static balance analysis, NOT a heuristic bot. This is an LLM with real reasoning that interacts with live game systems, reads quiz content, makes choices, and reports what it finds.
 
@@ -108,23 +108,23 @@ Before spawning any testers, the orchestrator MUST verify the game is running an
 const result = await page.evaluate(async () => {
   const checks = {};
 
-  // Check 1: __terraPlay exists
-  checks.terraPlayExists = typeof window.__terraPlay !== 'undefined';
+  // Check 1: __rrPlay exists
+  checks.terraPlayExists = typeof window.__rrPlay !== 'undefined';
 
   // Check 2: getScreen() works
-  try { checks.getScreen = window.__terraPlay.getScreen(); } catch(e) { checks.getScreen = 'ERROR: ' + e.message; }
+  try { checks.getScreen = window.__rrPlay.getScreen(); } catch(e) { checks.getScreen = 'ERROR: ' + e.message; }
 
   // Check 3: look() returns state
-  try { const s = window.__terraPlay.look(); checks.lookWorks = !!s && typeof s === 'object'; } catch(e) { checks.lookWorks = 'ERROR: ' + e.message; }
+  try { const s = window.__rrPlay.look(); checks.lookWorks = !!s && typeof s === 'object'; } catch(e) { checks.lookWorks = 'ERROR: ' + e.message; }
 
-  // Check 4: __terraScenario exists
-  checks.terraScenarioExists = typeof window.__terraScenario !== 'undefined';
+  // Check 4: __rrScenario exists
+  checks.terraScenarioExists = typeof window.__rrScenario !== 'undefined';
 
-  // Check 5: __terraScreenshotFile exists
-  checks.screenshotFnExists = typeof window.__terraScreenshotFile === 'function';
+  // Check 5: __rrScreenshotFile exists
+  checks.screenshotFnExists = typeof window.__rrScreenshotFile === 'function';
 
-  // Check 6: __terraDebug exists
-  checks.debugFnExists = typeof window.__terraDebug === 'function';
+  // Check 6: __rrDebug exists
+  checks.debugFnExists = typeof window.__rrDebug === 'function';
 
   return checks;
 });
@@ -132,7 +132,7 @@ const result = await page.evaluate(async () => {
 
 **Smoke test PASS criteria:** All 6 checks truthy. If any fail:
 - If dev server not running: tell user `npm run dev` is needed, abort
-- If APIs missing: warn that `__terraPlay` may not be initialized yet (game may still be loading) — wait 5 more seconds and retry once
+- If APIs missing: warn that `__rrPlay` may not be initialized yet (game may still be loading) — wait 5 more seconds and retry once
 - If still failing after retry: report which checks failed, abort with instructions
 
 If `smoke-only` was requested, stop here after reporting results.
@@ -246,14 +246,14 @@ Report the batch directory path and overall verdict to the user.
 
 **QUIZ QUALITY TESTER — SELF-CONTAINED PROMPT**
 
-You are the Quiz Quality Tester for Recall Rogue, a card roguelite where every card is a trivia question. Your job is to play through the game for {RUNS} combat encounters using the `window.__terraPlay` API via Playwright MCP, capture all quiz content you encounter (questions, answers, distractors), and evaluate it against both objective quality checks and subjective educational quality assessments.
+You are the Quiz Quality Tester for Recall Rogue, a card roguelite where every card is a trivia question. Your job is to play through the game for {RUNS} combat encounters using the `window.__rrPlay` API via Playwright MCP, capture all quiz content you encounter (questions, answers, distractors), and evaluate it against both objective quality checks and subjective educational quality assessments.
 
 **Your output**: Write a markdown report to `{BATCH_DIR}/quiz-quality.md` using the standard report format defined at the end of this prompt.
 
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` to capture screenshots — saves to `/tmp/terra-screenshot.jpg`, then `Read("/tmp/terra-screenshot.jpg")` to view
+- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` to capture screenshots — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's RAF loop blocks it permanently (30s timeout)
 - **NEVER** use `page.screenshot()` — same RAF issue
 - **NEVER** use `page.context().newCDPSession()` — hangs permanently
@@ -268,9 +268,9 @@ You are the Quiz Quality Tester for Recall Rogue, a card roguelite where every c
 
 ---
 
-### The `window.__terraPlay` API — Full Reference
+### The `window.__rrPlay` API — Full Reference
 
-All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__terraPlay.getScreen()`.
+All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__rrPlay.getScreen()`.
 
 **Navigation & State:**
 - `getScreen()` — Returns current screen name (string). Possible values: `'hub'`, `'domainSelect'`, `'archetypeSelect'`, `'dungeonMap'`, `'combat'`, `'cardReward'`, `'rewardRoom'`, `'restRoom'`, `'mysteryEvent'`, `'retreatOrDelve'`, `'runEnd'`
@@ -529,7 +529,7 @@ You are the Balance Curve Tester for Recall Rogue. Your job is to play {RUNS} co
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, then `Read("/tmp/terra-screenshot.jpg")` to view
+- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser RAF blocks it (30s timeout)
 - **NEVER** use `page.screenshot()` — same RAF issue
 
@@ -543,7 +543,7 @@ You are the Balance Curve Tester for Recall Rogue. Your job is to play {RUNS} co
 
 ---
 
-### The `window.__terraPlay` API — Full Reference
+### The `window.__rrPlay` API — Full Reference
 
 All calls go through `mcp__playwright__browser_evaluate`.
 
@@ -727,7 +727,7 @@ You are the Fun & Engagement Tester for Recall Rogue. Your job is to play {RUNS}
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, then `Read("/tmp/terra-screenshot.jpg")` to view
+- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser RAF blocks it (30s timeout)
 
 ---
@@ -740,7 +740,7 @@ You are the Fun & Engagement Tester for Recall Rogue. Your job is to play {RUNS}
 
 ---
 
-### The `window.__terraPlay` API — Full Reference
+### The `window.__rrPlay` API — Full Reference
 
 All calls via `mcp__playwright__browser_evaluate`.
 
@@ -911,7 +911,7 @@ You are the Study Temple Tester for Recall Rogue. Your job is to verify the stud
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, then `Read("/tmp/terra-screenshot.jpg")` to view
+- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser RAF blocks it
 
 ---
@@ -924,7 +924,7 @@ You are the Study Temple Tester for Recall Rogue. Your job is to verify the stud
 
 ---
 
-### The `window.__terraPlay` API — Study-Relevant Methods
+### The `window.__rrPlay` API — Study-Relevant Methods
 
 All calls via `mcp__playwright__browser_evaluate`.
 

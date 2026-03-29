@@ -12,18 +12,18 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
 
 ### Shop Room
-3. Load shop: `window.__terraScenario.load('shop-loaded')`
+3. Load shop: `window.__rrScenario.load('shop-loaded')`
 4. Wait 500ms, take **Screenshot #1 (shop-room)**
 5. Check shop UI: relic items displayed with prices? Buy buttons visible?
 6. Click a buy button if affordable
 
 ### Rest Room
-7. Load rest: `window.__terraScenario.load('rest-site')`
+7. Load rest: `window.__rrScenario.load('rest-site')`
 8. Wait 500ms, take **Screenshot #2 (rest-room)**
 9. Check: heal button visible? Study button visible?
 
 ### Mystery Event
-10. Load mystery: `window.__terraScenario.load('mystery-healing-fountain')`
+10. Load mystery: `window.__rrScenario.load('mystery-healing-fountain')`
 11. Wait 500ms, take **Screenshot #3 (mystery-event)**
 12. Check: event name "The Healing Fountain"? Continue button visible?
 13. Click continue, verify screen transitions

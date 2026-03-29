@@ -6,8 +6,8 @@
 
 import type { AuthResponse } from './apiClient'
 
-const LOCAL_ACCOUNTS_KEY = 'terra_local_accounts'
-const LOCAL_CURRENT_USER_KEY = 'terra_local_user'
+const LOCAL_ACCOUNTS_KEY = 'rr_local_accounts'
+const LOCAL_CURRENT_USER_KEY = 'rr_local_user'
 
 interface LocalAccount {
   id: string
@@ -20,7 +20,7 @@ interface LocalAccount {
 /** Simple hash function for local password storage (not cryptographically secure — local only) */
 async function hashPassword(password: string): Promise<string> {
   const encoder = new TextEncoder()
-  const data = encoder.encode(password + 'terra_salt_2026')
+  const data = encoder.encode(password + 'terra_salt_2026') // FROZEN: changing this salt breaks existing password hashes
   const hashBuffer = await crypto.subtle.digest('SHA-256', data)
   const hashArray = Array.from(new Uint8Array(hashBuffer))
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')

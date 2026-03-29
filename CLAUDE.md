@@ -261,13 +261,13 @@ node -e "const r=JSON.parse(require('fs').readFileSync('data/inspection-registry
 
 **After EVERY sub-agent returns from a visual/UI/CSS task, the orchestrator MUST visually inspect the result BEFORE committing.** This is non-negotiable. On 2026-03-21, skipping this step caused 10+ visual regressions to ship (duplicate HP text, moved buttons, bloated bars, clutter labels). The user caught it, not the agent.
 
-- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` to take screenshots — saves to `/tmp/terra-screenshot.jpg` server-side, returns the path — then `Read()` the file to view
+- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` to take screenshots — saves to `/tmp/rr-screenshot.jpg` server-side, returns the path — then `Read()` the file to view
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing a permanent 30s timeout
 - **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
 - **NEVER** use `page.context().newCDPSession()` — it HANGS permanently and blocks the session
-- **NEVER** use raw `__terraScreenshot()` via browser_evaluate — the base64 exceeds tool output character limits
+- **NEVER** use raw `__rrScreenshot()` via browser_evaluate — the base64 exceeds tool output character limits
 - `mcp__playwright__browser_snapshot` (DOM snapshot) is still valid as a supplementary tool for DOM state
-- If `__terraScreenshotFile()` fails or is unavailable, TELL THE USER you couldn't verify and ask them to check
+- If `__rrScreenshotFile()` fails or is unavailable, TELL THE USER you couldn't verify and ask them to check
 - Sub-agents making CSS/layout changes are the HIGHEST RISK — always verify their output
 - **Never batch-commit multiple visual agent results without inspecting each one**
 
@@ -275,15 +275,15 @@ Two tools available — use the right one for the job:
 
 ### Quick Combat Setup (use instead of clicking through menus)
 
-**ALWAYS use `__terraScenario` to instantly enter any game state. Do NOT navigate through hub → dungeon → map → node manually.**
+**ALWAYS use `__rrScenario` to instantly enter any game state. Do NOT navigate through hub → dungeon → map → node manually.**
 
 ```javascript
 // In browser_evaluate:
-await page.evaluate(() => window.__terraScenario.load('combat-basic'));  // instant combat
-await page.evaluate(() => window.__terraScenario.load('combat-boss'));   // boss with relics
-await page.evaluate(() => window.__terraScenario.load('combat-10-cards')); // 10-card hand
-await page.evaluate(() => window.__terraScenario.load('shop'));          // shop with 500g
-await page.evaluate(() => window.__terraScenario.load('reward-room'));   // reward room
+await page.evaluate(() => window.__rrScenario.load('combat-basic'));  // instant combat
+await page.evaluate(() => window.__rrScenario.load('combat-boss'));   // boss with relics
+await page.evaluate(() => window.__rrScenario.load('combat-10-cards')); // 10-card hand
+await page.evaluate(() => window.__rrScenario.load('shop'));          // shop with 500g
+await page.evaluate(() => window.__rrScenario.load('reward-room'));   // reward room
 ```
 
 **Before taking screenshots, ALWAYS disable animations:**
@@ -291,17 +291,17 @@ await page.evaluate(() => window.__terraScenario.load('reward-room'));   // rewa
 await page.evaluate(() => document.documentElement.setAttribute('data-pw-animations', 'disabled'));
 ```
 
-**Full scenario list:** `window.__terraScenario.list()` or see `src/dev/scenarioSimulator.ts`
+**Full scenario list:** `window.__rrScenario.list()` or see `src/dev/scenarioSimulator.ts`
 
 **Screenshot method — CRITICAL:**
-- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` to take screenshots — saves to `/tmp/terra-screenshot.jpg` server-side, returns the path
-- Then use `Read("/tmp/terra-screenshot.jpg")` to view the image
+- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` to take screenshots — saves to `/tmp/rr-screenshot.jpg` server-side, returns the path
+- Then use `Read("/tmp/rr-screenshot.jpg")` to view the image
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing a permanent 30s timeout
 - **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
 - **NEVER** use `page.context().newCDPSession()` — it hangs permanently and blocks the entire session
-- **NEVER** use raw `__terraScreenshot()` via browser_evaluate — the base64 exceeds tool output character limits
+- **NEVER** use raw `__rrScreenshot()` via browser_evaluate — the base64 exceeds tool output character limits
 - `mcp__playwright__browser_snapshot` (DOM snapshot) is still valid as a supplementary tool for DOM state
-- The `__terraScreenshotFile()` function (defined in `src/dev/screenshotHelper.ts`) composites the Phaser WebGL canvas + Svelte DOM overlays via SVG foreignObject, saves via a Vite dev server endpoint (`POST /__dev/screenshot`), and returns the file path
+- The `__rrScreenshotFile()` function (defined in `src/dev/screenshotHelper.ts`) composites the Phaser WebGL canvas + Svelte DOM overlays via SVG foreignObject, saves via a Vite dev server endpoint (`POST /__dev/screenshot`), and returns the file path
 
 ### CRITICAL: Playwright WebGL Requirement
 **Playwright's bundled Chromium does NOT have WebGL on macOS ARM64** (no SwiftShader). The game requires WebGL for Phaser 3. When launching Playwright programmatically, ALWAYS use system Chrome:
@@ -319,7 +319,7 @@ const browser = await chromium.launch({ headless: true, channel: 'chrome' });
 **Standard debug sequence:**
 1. `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 2. `mcp__playwright__browser_snapshot` → inspect DOM / find errors
-3. `browser_evaluate(() => window.__terraScreenshotFile())` → visual check (saves to `/tmp/terra-screenshot.jpg`), then `Read("/tmp/terra-screenshot.jpg")` to view
+3. `browser_evaluate(() => window.__rrScreenshotFile())` → visual check (saves to `/tmp/rr-screenshot.jpg`), then `Read("/tmp/rr-screenshot.jpg")` to view
 4. `mcp__playwright__browser_console_messages` → check JS errors
 
 ### 2. E2E Scripts (automated — use for CI and end-of-session verification)
@@ -350,7 +350,7 @@ node tests/e2e/03-save-resume.cjs
 **Visual inspection workflow:**
 1. Ensure dev server is running (`npm run dev`)
 2. Navigate with Playwright MCP: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
-3. Take screenshot: `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, then `Read("/tmp/terra-screenshot.jpg")` to view
+3. Take screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
 4. Take DOM snapshot: `mcp__playwright__browser_snapshot`
 5. Check console: `mcp__playwright__browser_console_messages`
 6. **If the visual result doesn't match expectations: FIX IT before reporting done.** Update the AR, spawn another worker, iterate. Do NOT tell the user "it should work" — CONFIRM it works.
@@ -362,30 +362,30 @@ node tests/e2e/03-save-resume.cjs
 - Test with different screen sizes, empty data, edge-case inputs
 - If an AR touches multiple screens/flows, inspect ALL of them
 
-**This rule applies to workers too:** Every sub-agent task prompt MUST include: "After implementation, verify visually with Playwright (`browser_evaluate(() => window.__terraScreenshotFile())` to save screenshot, then `Read()` to view + `browser_snapshot` for DOM + console check). If anything looks wrong, fix it before returning."
+**This rule applies to workers too:** Every sub-agent task prompt MUST include: "After implementation, verify visually with Playwright (`browser_evaluate(() => window.__rrScreenshotFile())` to save screenshot, then `Read()` to view + `browser_snapshot` for DOM + console check). If anything looks wrong, fix it before returning."
 
 ### Standard verification checklist
 - After ANY bug fix, VERIFY it works before reporting done (Playwright screenshot+snapshot, console logs, or tests)
 - Never say "this should fix it" — either confirm it works or say "I cannot verify this runtime behavior"
 - If a fix can't be visually confirmed (e.g., Phaser canvas), add temporary `console.log` and check via `browser_console_messages` or `browser_evaluate` before removing them
-- Use `window.__terraDebug()` (available in dev mode) to check runtime state: current screen, Phaser scene, combat state, interactive element health
-- Use `window.__terraLog` (ring buffer of last 100 events) to trace what actually happened after an interaction
+- Use `window.__rrDebug()` (available in dev mode) to check runtime state: current screen, Phaser scene, combat state, interactive element health
+- Use `window.__rrLog` (ring buffer of last 100 events) to trace what actually happened after an interaction
 
 ## Debugging Approach — MANDATORY
 When fixing interaction/visual bugs:
 1. **ADD LOGGING** first to confirm what's actually happening (don't guess)
-2. **READ THE LOGS** via `browser_console_messages` or `browser_evaluate(() => window.__terraLog)`
+2. **READ THE LOGS** via `browser_console_messages` or `browser_evaluate(() => window.__rrLog)`
 3. **FIX** based on evidence
-4. **VERIFY** the fix with logs, Playwright screenshot, or `window.__terraDebug()`
+4. **VERIFY** the fix with logs, Playwright screenshot, or `window.__rrDebug()`
 Never skip to step 3 — guessing at fixes without evidence wastes cycles and creates fix-loops.
 
 ## Phaser Canvas Debugging
 - Playwright CANNOT interact with Phaser canvas objects — clicks don't reach Phaser's input system
 - To debug Phaser interactions in the combat scene: add `this.input.on('pointerdown', (p: any) => console.log('scene click', p.x, p.y))` at scene level first to confirm clicks reach Phaser
 - Common Phaser click failures in combat scene: missing `setInteractive()`, z-order occlusion, camera/scale mismatch, Svelte DOM overlay blocking canvas
-- Use devpresets and `globalThis[Symbol.for('terra:currentScreen')].set('screenName')` for testing game states instead of clicking canvas
+- Use devpresets and `globalThis[Symbol.for('rr:currentScreen')].set('screenName')` for testing game states instead of clicking canvas
 - To check if a DOM button is actually clickable, use `browser_evaluate` to test: visibility, disabled state, pointer-events, and z-index occlusion
-- For Phaser-specific state, use `window.__terraDebug()` which exposes active scene, input handler count, and last click coordinates
+- For Phaser-specific state, use `window.__rrDebug()` which exposes active scene, input handler count, and last click coordinates
 
 ## Planning Workflow — MANDATORY
 
@@ -427,8 +427,8 @@ Use `TaskCreate` to break the plan into trackable tasks. Use `TaskUpdate` to mar
 - The orchestrator must NEVER edit code files directly — always delegate via Agent tool
 - **Plans are written by the orchestrator** in planning mode — never delegated to sub-agents. Plans require full conversation context.
 - **EVERY worker task prompt MUST include**: "Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` if your changes affect gameplay, balance, systems, or file structure. Stale docs = bugs."
-- **EVERY worker task prompt MUST include**: "After implementation, run `npm run typecheck` and `npm run build`. Then verify visually with Playwright if the change is UI/visual: use `browser_evaluate(() => window.__terraScreenshotFile())` to save, then `Read()` to view (NEVER `mcp__playwright__browser_take_screenshot` — it times out) — the orchestrator will inspect too."
-- **After EVERY worker completes**: The Opus orchestrator MUST visually inspect the result using Playwright MCP (`browser_evaluate(() => window.__terraScreenshotFile())` to save, `Read()` to view + `browser_snapshot` + console). If the result doesn't match expectations, iterate immediately. NEVER report done without visual confirmation.
+- **EVERY worker task prompt MUST include**: "After implementation, run `npm run typecheck` and `npm run build`. Then verify visually with Playwright if the change is UI/visual: use `browser_evaluate(() => window.__rrScreenshotFile())` to save, then `Read()` to view (NEVER `mcp__playwright__browser_take_screenshot` — it times out) — the orchestrator will inspect too."
+- **After EVERY worker completes**: The Opus orchestrator MUST visually inspect the result using Playwright MCP (`browser_evaluate(() => window.__rrScreenshotFile())` to save, `Read()` to view + `browser_snapshot` + console). If the result doesn't match expectations, iterate immediately. NEVER report done without visual confirmation.
 - **EVERY worker that touches gameplay, UI, or balance MUST update docs IN THE SAME TASK** — not as a follow-up. If the worker adds a new screen, mechanic, relic, enemy, card type, or changes any player-facing behavior, the doc updates are PART of the task, not optional. The orchestrator MUST verify docs were updated before marking the task complete.
 - **CRITICAL — EVERY fact-generation worker MUST receive verified source data in its prompt.** Workers format pre-verified data into JSON — they NEVER generate factual content from LLM training knowledge. See "Fact Generation Sourcing" section. Violating this wastes ALL generated work.
 

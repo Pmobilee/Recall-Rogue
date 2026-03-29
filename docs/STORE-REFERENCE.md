@@ -83,5 +83,5 @@ File: `src/ui/stores/settings.ts`
 
 ## Notes on singleton behavior
 
-- Most gameplay/settings stores use `Symbol.for('terra:<key>')` wrappers to survive code-split module re-evaluation.
+- Most gameplay/settings stores use `Symbol.for('rr:<key>')` wrappers to survive code-split module re-evaluation.
 - This reduces duplicate store instances when Vite/Rollup chunk boundaries re-import modules.

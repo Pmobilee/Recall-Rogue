@@ -194,7 +194,7 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
 
 > **Anti-pattern warning — "Should Work"**: Never report a feature as done without confirming it works in the running game. Either say "I confirmed it works" or "I cannot verify this runtime behavior." Never say "this should work."
 
-> **Anti-pattern warning — "Test Screen Only"**: A feature that works via `__terraScenario` but can't be reached by a real user is not done. Always verify via the real user path.
+> **Anti-pattern warning — "Test Screen Only"**: A feature that works via `__rrScenario` but can't be reached by a real user is not done. Always verify via the real user path.
 
 1. Run full verification gate: `npm run typecheck`, `npm run build`, `npx vitest run`
 2. **Balance simulation gate** (mandatory if the change touches gameplay/balance — enemies, cards, relics, damage, HP, costs, turn economy):
@@ -203,8 +203,8 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    ```
    Compare results against the pre-change baseline. If win rates, clear rates, or economy metrics shift significantly, investigate before declaring done.
 3. **Visual inspection** of EVERY affected screen — MANDATORY, NO EXCEPTIONS:
-   - Navigate to each affected screen using `__terraScenario.load()`
-   - Take screenshot using `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. Captures Phaser canvas + DOM overlays. NEVER use raw `__terraScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs)
+   - Navigate to each affected screen using `__rrScenario.load()`
+   - Take screenshot using `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures Phaser canvas + DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs)
    - Check console for errors via `browser_console_messages`
    - Verify the feature works as a user would experience it
    - **THIS MUST HAPPEN AFTER EVERY SUB-AGENT BATCH** — not just at the end. If 3 agents run in parallel and return, inspect ALL 3 results before committing ANY of them

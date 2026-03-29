@@ -1,6 +1,6 @@
 /**
  * Debug bridge for AI agent (Claude) to query game state via Playwright's browser_evaluate.
- * Exposes window.__terraDebug() snapshot and window.__terraLog ring buffer.
+ * Exposes window.__rrDebug() snapshot and window.__rrLog ring buffer.
  * DEV MODE ONLY — never included in production builds.
  */
 
@@ -8,7 +8,7 @@ import { initPlaytestAPI } from './playtestAPI'
 import { initScenarioSimulator } from './scenarioSimulator'
 import { initScreenshotHelper } from './screenshotHelper'
 
-export interface TerraDebugSnapshot {
+export interface RRDebugSnapshot {
   currentScreen: string;
   timestamp: number;
   phaser: {
@@ -43,7 +43,7 @@ const logBuffer: LogEntry[] = [];
 const errorBuffer: string[] = [];
 
 /** Push an event into the ring buffer log. */
-export function terraLog(type: string, detail: string): void {
+export function rrLog(type: string, detail: string): void {
   logBuffer.push({ ts: Date.now(), type, detail });
   if (logBuffer.length > MAX_LOG) logBuffer.shift();
 }
@@ -60,8 +60,8 @@ function readSymbolStore(key: string): unknown {
   return value;
 }
 
-function getPhaserState(): TerraDebugSnapshot['phaser'] {
-  const gm = readSymbolStore('terra:gameManagerStore') as Record<string, unknown> | undefined;
+function getPhaserState(): RRDebugSnapshot['phaser'] {
+  const gm = readSymbolStore('rr:gameManagerStore') as Record<string, unknown> | undefined;
   if (!gm) return null;
   try {
     const game = (gm as { game?: { scene?: unknown; input?: unknown } }).game;
@@ -81,9 +81,9 @@ function getPhaserState(): TerraDebugSnapshot['phaser'] {
   }
 }
 
-function getInteractiveElements(): TerraDebugSnapshot['interactiveElements'] {
+function getInteractiveElements(): RRDebugSnapshot['interactiveElements'] {
   const els = document.querySelectorAll('[data-testid]');
-  const result: TerraDebugSnapshot['interactiveElements'] = [];
+  const result: RRDebugSnapshot['interactiveElements'] = [];
   els.forEach((el) => {
     const htmlEl = el as HTMLElement;
     const rect = htmlEl.getBoundingClientRect();
@@ -109,13 +109,13 @@ function getInteractiveElements(): TerraDebugSnapshot['interactiveElements'] {
   return result;
 }
 
-function buildSnapshot(): TerraDebugSnapshot {
-  const screen = readSymbolStore('terra:currentScreen');
-  const knownKeys = ['terra:currentScreen', 'terra:gameManagerStore', 'terra:inventoryStore', 'terra:profileStore', 'terra:settingsStore'];
+function buildSnapshot(): RRDebugSnapshot {
+  const screen = readSymbolStore('rr:currentScreen');
+  const knownKeys = ['rr:currentScreen', 'rr:gameManagerStore', 'rr:inventoryStore', 'rr:profileStore', 'rr:settingsStore'];
   const stores: Record<string, unknown> = {};
   for (const key of knownKeys) {
     const val = readSymbolStore(key);
-    if (val !== undefined) stores[key.replace('terra:', '')] = val;
+    if (val !== undefined) stores[key.replace('rr:', '')] = val;
   }
   return {
     currentScreen: typeof screen === 'string' ? screen : 'unknown',
@@ -128,12 +128,12 @@ function buildSnapshot(): TerraDebugSnapshot {
   };
 }
 
-/** Initialize the debug bridge. Attaches __terraDebug and __terraLog to window. Only works in dev mode. */
+/** Initialize the debug bridge. Attaches __rrDebug and __rrLog to window. Only works in dev mode. */
 export function initDebugBridge(): void {
   if (!import.meta.env.DEV) return;
 
-  (window as unknown as Record<string, unknown>).__terraDebug = buildSnapshot;
-  (window as unknown as Record<string, unknown>).__terraLog = logBuffer;
+  (window as unknown as Record<string, unknown>).__rrDebug = buildSnapshot;
+  (window as unknown as Record<string, unknown>).__rrLog = logBuffer;
 
   // Register combat/run stores to globalThis so dev tools can read them
   registerStoresLazy();
@@ -141,27 +141,75 @@ export function initDebugBridge(): void {
   window.addEventListener('error', (e) => {
     errorBuffer.push(`${e.message} (${e.filename}:${e.lineno})`);
     if (errorBuffer.length > MAX_ERRORS) errorBuffer.shift();
-    terraLog('error', e.message);
+    rrLog('error', e.message);
   });
 
   window.addEventListener('unhandledrejection', (e) => {
     const msg = e.reason instanceof Error ? e.reason.message : String(e.reason);
     errorBuffer.push(`Unhandled rejection: ${msg}`);
     if (errorBuffer.length > MAX_ERRORS) errorBuffer.shift();
-    terraLog('error', `Unhandled rejection: ${msg}`);
+    rrLog('error', `Unhandled rejection: ${msg}`);
   });
 
-  terraLog('state-change', 'Debug bridge initialized');
+  rrLog('state-change', 'Debug bridge initialized');
 
-  // Initialize the playtest gameplay API (window.__terraPlay)
+  // Auto-apply URL dev params (?giveDust=20000&setLevel=25)
+  const devParams = new URLSearchParams(window.location.search);
+  const giveDustParam = devParams.get('giveDust');
+  const setLevelParam = devParams.get('setLevel');
+  if (giveDustParam || setLevelParam) {
+    // Defer to next tick so stores are initialized
+    setTimeout(async () => {
+      if (giveDustParam) {
+        const amount = parseInt(giveDustParam, 10) || 20000;
+        const { addMinerals } = await import('../ui/stores/playerData');
+        addMinerals('dust', amount);
+        console.log(`[DEV] Auto-added ${amount} dust via URL param`);
+      }
+      if (setLevelParam) {
+        const level = parseInt(setLevelParam, 10) || 1;
+        const { cumulativeXpForLevel } = await import('../services/characterLevel');
+        const { playerSave, persistPlayer } = await import('../ui/stores/playerData');
+        const targetXP = cumulativeXpForLevel(level);
+        playerSave.update(s => s ? { ...s, totalXP: targetXP, characterLevel: level } : s);
+        persistPlayer();
+        console.log(`[DEV] Auto-set level to ${level} via URL param`);
+      }
+    }, 500);
+  }
+
+  // Dev cheats
+  (window as unknown as Record<string, unknown>).__rrGiveDust = async (amount: number = 20000) => {
+    const { addMinerals } = await import('../ui/stores/playerData');
+    addMinerals('dust', amount);
+    console.log(`[DEV] Added ${amount} dust`);
+  };
+
+  (window as unknown as Record<string, unknown>).__rrSetLevel = async (level: number) => {
+    const { cumulativeXpForLevel } = await import('../services/characterLevel');
+    const { playerSave, persistPlayer } = await import('../ui/stores/playerData');
+    const targetXP = cumulativeXpForLevel(level);
+    playerSave.update(s => s ? { ...s, totalXP: targetXP, characterLevel: level } : s);
+    persistPlayer();
+    console.log(`[DEV] Set level to ${level} (totalXP = ${targetXP}, characterLevel = ${level})`);
+  };
+
+  // Initialize the playtest gameplay API (window.__rrPlay)
   initPlaytestAPI();
 
-  // Initialize the scenario simulator (window.__terraScenario)
+  // Initialize the scenario simulator (window.__rrScenario)
   initScenarioSimulator();
 
-  // Initialize the screenshot helper (window.__terraScreenshot)
+  // Initialize the screenshot helper (window.__rrScreenshot)
   initScreenshotHelper();
-  terraLog('state-change', 'Screenshot helper initialized');
+  rrLog('state-change', 'Screenshot helper initialized');
+
+  // Backward compat aliases — remove after 2026-06-01
+  const win = window as unknown as Record<string, unknown>;
+  win.__terraDebug = win.__rrDebug;
+  win.__terraLog = win.__rrLog;
+  win.__terraGiveDust = win.__rrGiveDust;
+  win.__terraSetLevel = win.__rrSetLevel;
 }
 
 /**
@@ -174,8 +222,8 @@ async function registerStoresLazy(): Promise<void> {
     const { activeTurnState } = await import('../services/encounterBridge');
     const { activeRunState } = await import('../services/runStateStore');
     const g = globalThis as Record<symbol, unknown>;
-    g[Symbol.for('terra:activeTurnState')] = activeTurnState;
-    g[Symbol.for('terra:activeRunState')] = activeRunState;
+    g[Symbol.for('rr:activeTurnState')] = activeTurnState;
+    g[Symbol.for('rr:activeRunState')] = activeRunState;
   } catch {
     // Silently ignore — stores may not be available yet
   }

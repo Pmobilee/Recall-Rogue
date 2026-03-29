@@ -1,7 +1,7 @@
 ---
 name: phaser-perf
 description: |
-  Phaser 3 performance optimization and debugging. Canvas vs WebGL benchmarking, mobile-specific optimizations, Phaser Debugger Chrome extension, __terraDebug extensions, draw call monitoring, and texture atlas management. PROACTIVELY SUGGEST when FPS drops, rendering issues, or mobile performance problems arise.
+  Phaser 3 performance optimization and debugging. Canvas vs WebGL benchmarking, mobile-specific optimizations, Phaser Debugger Chrome extension, __rrDebug extensions, draw call monitoring, and texture atlas management. PROACTIVELY SUGGEST when FPS drops, rendering issues, or mobile performance problems arise.
 user_invocable: true
 ---
 
@@ -71,9 +71,9 @@ const renderer = Capacitor.isNativePlatform() ? Phaser.CANVAS : Phaser.AUTO;
 - [ ] Use `Phaser.Math.Interpolation` for simple movements instead of full tweens
 - [ ] Pause off-screen animations
 
-## Extending __terraDebug
+## Extending __rrDebug
 
-Add these to the existing `window.__terraDebug()` output:
+Add these to the existing `window.__rrDebug()` output:
 ```typescript
 {
   fps: game.loop.actualFps,

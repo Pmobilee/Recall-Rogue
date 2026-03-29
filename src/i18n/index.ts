@@ -108,7 +108,7 @@ export const SUPPORTED_LOCALES = Object.keys(LOCALE_META) as LocaleCode[]
 // LOCALE DETECTION
 // ================================================================
 
-const LOCALE_STORAGE_KEY = 'terra_ui_locale'
+const LOCALE_STORAGE_KEY = 'rr_ui_locale'
 
 /**
  * Detects the preferred locale from:

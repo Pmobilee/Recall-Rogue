@@ -66,7 +66,7 @@ Frequently used `data-testid` selectors in E2E flows:
 
 ## Runtime debug hooks (dev)
 
-- `window.__terraDebug()` for current screen/scene/input diagnostics
-- `window.__terraLog` ring buffer for recent app events
+- `window.__rrDebug()` for current screen/scene/input diagnostics
+- `window.__rrLog` ring buffer for recent app events
 
 These are initialized via `src/dev/debugBridge.ts` in dev mode.

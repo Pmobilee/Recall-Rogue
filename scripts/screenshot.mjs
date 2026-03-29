@@ -46,14 +46,14 @@ async function main() {
   try {
     await page.waitForSelector('[data-testid="btn-start-run"]', { timeout: 10000 });
   } catch {
-    // Fallback: wait for __terraScenario
-    await page.waitForFunction(() => window.__terraScenario, { timeout: 10000 });
+    // Fallback: wait for __rrScenario
+    await page.waitForFunction(() => window.__rrScenario, { timeout: 10000 });
     await page.waitForTimeout(2000);
   }
   await page.waitForTimeout(300);
 
   if (scenario) {
-    await page.evaluate((s) => window.__terraScenario.load(s), scenario);
+    await page.evaluate((s) => window.__rrScenario.load(s), scenario);
     await page.waitForTimeout(wait);
   }
 

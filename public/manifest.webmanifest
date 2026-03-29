@@ -1,7 +1,7 @@
 {
   "name": "Recall Rogue",
   "short_name": "Recall Rogue",
-  "description": "Mine Deep. Learn Everything. A spaced-repetition mining adventure set on a far-future Earth.",
+  "description": "Descend into arcane dungeons. Master knowledge through card combat. A spaced-repetition roguelite.",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
   "display": "standalone",
@@ -39,9 +39,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Dive into the Mine",
-      "short_name": "Dive",
-      "description": "Jump straight to the dive prep screen",
+      "name": "Enter the Dungeon",
+      "short_name": "Dungeon",
+      "description": "Jump straight to the dungeon prep screen",
       "url": "/?action=dive&utm_source=pwa_shortcut",
       "icons": [{ "src": "/icons/shortcut-dive.png", "sizes": "96x96" }]
     },
@@ -58,13 +58,13 @@
       "src": "/screenshots/screen-dome.png",
       "sizes": "390x844",
       "type": "image/png",
-      "label": "Dome Hub — upgrade your base and feed your pets"
+      "label": "Camp Hub — upgrade your gear and prepare for battle"
     },
     {
       "src": "/screenshots/screen-mine.png",
       "sizes": "390x844",
       "type": "image/png",
-      "label": "The Mine — dig through 20 procedural layers"
+      "label": "The Dungeon — descend through procedurally generated floors"
     },
     {
       "src": "/screenshots/screen-quiz.png",

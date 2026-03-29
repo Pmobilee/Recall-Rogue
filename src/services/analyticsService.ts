@@ -542,8 +542,8 @@ export function isKidMode(): boolean {
 
 const FLUSH_INTERVAL_MS = 30_000
 const MAX_QUEUE_BEFORE_FLUSH = 50
-const QUEUE_KEY = 'terra_analytics_queue'
-const SESSION_KEY = 'terra_analytics_session'
+const QUEUE_KEY = 'rr_analytics_queue'
+const SESSION_KEY = 'rr_analytics_session'
 
 /** PII field names that must never appear in event properties. */
 const PII_FIELDS = ['email', 'password', 'displayName', 'name']
@@ -734,18 +734,18 @@ export class AnalyticsService {
   // ── Monetization tracking (Phase 21.3 / DD-V2-181) ──────────────────────────
 
   /**
-   * Track a Terra Pass modal view.
+   * Track a Rogue Pass modal view.
    *
    * @param source - Where the modal was triggered from.
    */
-  trackTerraPassViewed(source: 'dome' | 'pre_dive' | 'oxygen_empty'): void {
+  trackRoguePassViewed(source: 'dome' | 'pre_dive' | 'oxygen_empty'): void {
     this.track({ name: 'terra_pass_viewed', properties: { source } })
   }
 
   /**
    * Track the start of an IAP purchase flow.
    *
-   * @param productId - The store product identifier (e.g. "terra_pass_monthly").
+   * @param productId - The store product identifier (e.g. "rogue_pass_monthly").
    */
   trackIAPPurchaseStarted(productId: string): void {
     this.track({ name: 'iap_purchase_started', properties: { productId } })

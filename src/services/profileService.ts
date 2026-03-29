@@ -1,15 +1,15 @@
 import type { PlayerProfile, ProfilesStore } from '../data/profileTypes'
 import { generateUUID } from '../utils/uuid'
 
-const PROFILES_KEY = 'terra_profiles'
-const SAVE_KEY_PREFIX = 'terra_save_'
+const PROFILES_KEY = 'rr_profiles'
+const SAVE_KEY_PREFIX = 'rr_save_'
 const MAX_PROFILES = 4
 
 const AVATAR_OPTIONS = ['⛏', '🪨', '💎', '🦕', '🌋', '🔭', '🧬', '🌿']
 
 /**
  * Manages multiple player profiles stored in localStorage.
- * Each profile has its own namespaced save key (terra_save_<id>).
+ * Each profile has its own namespaced save key (rr_save_<id>).
  */
 export class ProfileService {
   private store: ProfilesStore
@@ -133,12 +133,12 @@ export class ProfileService {
 
   /**
    * Returns the localStorage key to use for saving/loading the active profile's game data.
-   * Falls back to the legacy 'terra_save' key when no profiles exist (backward compat).
+   * Falls back to the legacy 'rr_save' key when no profiles exist (backward compat).
    */
   getSaveKey(): string {
     return this.store.activeProfileId
       ? SAVE_KEY_PREFIX + this.store.activeProfileId
-      : 'terra_save'
+      : 'rr_save'
   }
 
   /**

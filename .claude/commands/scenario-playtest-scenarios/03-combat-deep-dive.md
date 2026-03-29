@@ -1,6 +1,6 @@
 # Scenario 03: Combat Deep Dive
 
-> **IMPORTANT: Use `window.__terraScenario.load('combat-basic')` to instantly enter combat. Do NOT navigate through hub → dungeon → map → node manually. Other scenarios: 'combat-boss', 'combat-10-cards', 'combat-scholar', 'combat-elite'. Always call `document.documentElement.setAttribute('data-pw-animations', 'disabled')` before screenshots.**
+> **IMPORTANT: Use `window.__rrScenario.load('combat-basic')` to instantly enter combat. Do NOT navigate through hub → dungeon → map → node manually. Other scenarios: 'combat-boss', 'combat-10-cards', 'combat-scholar', 'combat-elite'. Always call `document.documentElement.setAttribute('data-pw-animations', 'disabled')` before screenshots.**
 
 ## Goal
 Play 3 full combat encounters testing card play mechanics, quiz answers (correct + wrong), damage numbers, combo counter, and turn flow.
@@ -12,17 +12,17 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
 1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
 2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
-3. Load combat scenario: `window.__terraScenario.load('combat-basic')`
+3. Load combat scenario: `window.__rrScenario.load('combat-basic')`
 4. Wait 500ms, take **Screenshot #1 (combat-start)**
 
 ### Encounter 1: Basic combat
 (use combat-basic — already loaded)
 
 ### Encounter 2: Elite combat
-After encounter 1, reload: `window.__terraScenario.load('combat-elite')`
+After encounter 1, reload: `window.__rrScenario.load('combat-elite')`
 
 ### Encounter 3: Boss combat
-`window.__terraScenario.load('combat-boss')`
+`window.__rrScenario.load('combat-boss')`
 
 ### For Each Encounter (repeat 3 times):
 
@@ -34,7 +34,7 @@ After encounter 1, reload: `window.__terraScenario.load('combat-elite')`
 6. Click `card-hand-0`, wait 1s — quiz should appear
 7. Read quiz: question + 3 choices
 8. CHECK: question not empty, 3 unique non-empty choices, no "undefined"/"null"
-9. Answer CORRECTLY: click `quiz-answer-{correctIndex}` (use `window.__terraPlay.getQuiz().correctIndex` if available, otherwise click `quiz-answer-0`)
+9. Answer CORRECTLY: click `quiz-answer-{correctIndex}` (use `window.__rrPlay.getQuiz().correctIndex` if available, otherwise click `quiz-answer-0`)
 10. Wait 2s, read state — CHECK: enemy HP decreased or card effect applied
 11. Record: { question, answered, correct, hpBefore, hpAfter, combo }
 

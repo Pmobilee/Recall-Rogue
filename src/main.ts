@@ -1,5 +1,9 @@
 import './app.css'
 import './ui/styles/overlay.css'
+import { runStorageMigrations } from './services/storageMigration'
+
+// Migrate legacy terra_ localStorage keys to rr_ before any other reads.
+runStorageMigrations()
 
 // CSS code-splitting: load desktop.css only on non-mobile screens (saves ~4KB on mobile)
 if (window.matchMedia('(min-width: 768px)').matches) {
@@ -7,9 +11,9 @@ if (window.matchMedia('(min-width: 768px)').matches) {
 }
 
 // CSS code-splitting: load rtl.css only when an RTL locale is active (saves ~3KB for LTR users)
-// Uses the same storage key as src/i18n/index.ts (LOCALE_STORAGE_KEY = 'terra_ui_locale').
+// Uses the same storage key as src/i18n/index.ts (LOCALE_STORAGE_KEY = 'rr_ui_locale').
 const rtlLocales = new Set(['ar', 'he'])
-const storedLocale = localStorage.getItem('terra_ui_locale') ?? 'en'
+const storedLocale = localStorage.getItem('rr_ui_locale') ?? 'en'
 if (rtlLocales.has(storedLocale)) {
   import('./ui/styles/rtl.css')
 }
@@ -105,7 +109,7 @@ import('./services/browserCompat').then(({ checkBrowserCompat, applyCompatPatche
 // Start Core Web Vitals collection (deferred — can begin after first paint)
 import('./services/perfService').then(m => m.perfService.observe())
 
-// Initialize dev debug bridge (window.__terraDebug, window.__terraLog) — DEV only, deferred
+// Initialize dev debug bridge (window.__rrDebug, window.__rrLog) — DEV only, deferred
 if (import.meta.env.DEV) {
   import('./dev/debugBridge').then(m => m.initDebugBridge())
 }
@@ -176,12 +180,12 @@ async function bootGame(): Promise<void> {
   // Turbo mode: skip all animations for bot testing (game logic unchanged)
   const turboMode = import.meta.env.DEV && urlParams.has('turbo');
   if (turboMode) {
-    (globalThis as Record<symbol, unknown>)[Symbol.for('terra:turboMode')] = true;
+    (globalThis as Record<symbol, unknown>)[Symbol.for('rr:turboMode')] = true;
   }
 
   // Bot mode: disable Phaser rendering for headless simulation (massive CPU savings)
   if (import.meta.env.DEV && urlParams.has('botMode')) {
-    (globalThis as Record<symbol, unknown>)[Symbol.for('terra:botMode')] = true;
+    (globalThis as Record<symbol, unknown>)[Symbol.for('rr:botMode')] = true;
   }
   if (!hasDevPreset) {
     // Only navigate to hub if we're not already on a valid hub screen
@@ -234,10 +238,10 @@ async function bootGame(): Promise<void> {
   if (import.meta.env.DEV) {
     const scenarioParam = urlParams.get('scenario')
     if (scenarioParam) {
-      // Wait for debug bridge (which registers __terraScenario) to be ready, then load.
+      // Wait for debug bridge (which registers __rrScenario) to be ready, then load.
       // The bridge is initialized via a deferred import above, so we poll briefly.
       const tryLoadScenario = async (attemptsLeft: number): Promise<void> => {
-        const scenarioApi = (window as any).__terraScenario
+        const scenarioApi = (window as any).__rrScenario
         if (scenarioApi) {
           console.log(`[dev] Auto-loading scenario from URL: "${scenarioParam}"`)
           const result = await scenarioApi.load(scenarioParam)
@@ -247,7 +251,7 @@ async function bootGame(): Promise<void> {
         } else if (attemptsLeft > 0) {
           setTimeout(() => tryLoadScenario(attemptsLeft - 1), 200)
         } else {
-          console.warn('[dev] __terraScenario not available — scenario URL param ignored')
+          console.warn('[dev] __rrScenario not available — scenario URL param ignored')
         }
       }
       setTimeout(() => tryLoadScenario(20), 500)

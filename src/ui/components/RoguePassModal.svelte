@@ -56,8 +56,8 @@
   }
 </script>
 
-<div class="terra-pass-overlay" data-testid="terra-pass-modal">
-  <div class="terra-pass-modal">
+<div class="rogue-pass-overlay" data-testid="rogue-pass-modal">
+  <div class="rogue-pass-modal">
     <button class="close-btn" onclick={onClose} aria-label="Close">&times;</button>
     <h2 class="modal-title">Arcane Pass</h2>
 
@@ -118,9 +118,9 @@
         </ul>
       </div>
 
-      <!-- Terra Pass -->
+      <!-- Rogue Pass -->
       <div class="tier-card">
-        <h3 class="tier-name">Terra Pass</h3>
+        <h3 class="tier-name">Rogue Pass</h3>
         <p class="tier-price">$4.99/month</p>
         <ul class="tier-benefits">
           <li>Unlimited oxygen tanks</li>
@@ -131,7 +131,7 @@
           class:ask-parent-btn={isKidMode}
           onclick={() => handleSubscribe('com.terragacha.terrapass.monthly')}
           disabled={purchasing}
-          aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Terra Pass'}
+          aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Rogue Pass'}
         >
           {purchasing ? 'Processing...' : isKidMode ? 'Ask a Parent' : 'Subscribe'}
         </button>
@@ -212,7 +212,7 @@
     {#if isIOS}
       <!-- Required Apple subscription language (Guideline 3.1.2) -->
       <p class="subscription-terms">
-        Payment will be charged to your Apple ID at confirmation. Terra Pass ($4.99/month)
+        Payment will be charged to your Apple ID at confirmation. Rogue Pass ($4.99/month)
         auto-renews unless cancelled at least 24 hours before the renewal date. Manage or cancel
         in Settings &gt; [Your Name] &gt; Subscriptions. No refunds for partial months.
         <a href="https://terragacha.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |
@@ -223,7 +223,7 @@
 </div>
 
 <style>
-  .terra-pass-overlay {
+  .rogue-pass-overlay {
     position: fixed;
     inset: 0;
     z-index: 1000;
@@ -235,7 +235,7 @@
     overflow-y: auto;
     padding: 16px;
   }
-  .terra-pass-modal {
+  .rogue-pass-modal {
     background: linear-gradient(135deg, #1a1a2e, #16213e);
     border: 2px solid #a78bfa;
     border-radius: 12px;

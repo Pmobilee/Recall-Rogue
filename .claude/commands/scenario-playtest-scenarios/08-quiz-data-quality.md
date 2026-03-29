@@ -12,7 +12,7 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
 1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
 2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
-3. Load combat: `window.__terraScenario.load('combat-basic')`
+3. Load combat: `window.__rrScenario.load('combat-basic')`
 4. Wait 500ms
 
 ### Quiz Collection Loop (repeat 10+ times)
@@ -21,7 +21,7 @@ For each quiz encountered during combat:
 5. Click a card (`card-hand-{n}`) to trigger quiz
 6. Read quiz data via evaluate:
 ```javascript
-window.__terraPlay.getQuiz()
+window.__rrPlay.getQuiz()
 ```
 7. Record: { question, choices, correctIndex }
 

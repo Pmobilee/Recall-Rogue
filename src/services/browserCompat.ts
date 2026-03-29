@@ -65,7 +65,7 @@ export function applyCompatPatches(report: CompatReport): void {
   // WebKit: ensure AudioContext resumes after user gesture
   if (report.engine === 'webkit') {
     document.addEventListener('touchstart', () => {
-      const ctx = (window as unknown as Record<string, unknown>).__terraAudioContext
+      const ctx = (window as unknown as Record<string, unknown>).__rrAudioContext
       if (ctx && (ctx as { state?: string; resume?: () => void }).state === 'suspended') {
         (ctx as { state?: string; resume?: () => void }).resume?.()
       }

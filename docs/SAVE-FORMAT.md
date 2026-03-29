@@ -19,8 +19,8 @@ Source files:
 
 Resolved by `profileService.getSaveKey()` in `src/services/profileService.ts`:
 
-- active profile: `terra_save_<profileId>`
-- no profile fallback: `terra_save`
+- active profile: `rr_save_<profileId>`
+- no profile fallback: `rr_save`
 
 Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save'` as a legacy constant, but active save/read path uses `getActiveSaveKey()` -> `profileService.getSaveKey()`.
 

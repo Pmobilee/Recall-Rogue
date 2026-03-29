@@ -24,7 +24,7 @@ export function getCardDetailCallbacks(): { onAccept: () => void; onReject: () =
 /** Get the CardGameManager singleton. */
 function getManager(): any {
   const reg = globalThis as Record<symbol, unknown>;
-  return reg[Symbol.for('terra:cardGameManager')] ?? null;
+  return reg[Symbol.for('rr:cardGameManager')] ?? null;
 }
 
 /**

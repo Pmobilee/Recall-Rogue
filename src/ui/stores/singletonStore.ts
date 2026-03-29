@@ -4,7 +4,7 @@ import type { Readable, Writable } from 'svelte/store'
 const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
 
 function singletonSymbol(key: string): symbol {
-  return Symbol.for(`terra:${key}`)
+  return Symbol.for(`rr:${key}`)
 }
 
 /** Creates or returns a globally shared writable store singleton. */

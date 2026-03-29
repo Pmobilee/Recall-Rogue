@@ -21,15 +21,15 @@ module.exports = function attachDiagnostics(page) {
       const js = await page.evaluate(() => ({
         currentScreen: (() => {
           try {
-            const sym = Symbol.for('terra:currentScreen')
+            const sym = Symbol.for('rr:currentScreen')
             let v; const s = globalThis[sym]; if (s) s.subscribe(x => { v = x })(); return v
           } catch { return 'unknown' }
         })(),
         phaserCanvas: !!document.querySelector('canvas'),
         canvasDimensions: (() => { const c = document.querySelector('canvas'); return c ? `${c.width}x${c.height}` : null })(),
         hasSave: !!localStorage.getItem('recall-rogue-save'),
-        ageBracket: localStorage.getItem('terra_age_bracket'),
-        isGuest: localStorage.getItem('terra_guest_mode'),
+        ageBracket: localStorage.getItem('rr_age_bracket'),
+        isGuest: localStorage.getItem('rr_guest_mode'),
       }))
       return { ...d, js }
     }

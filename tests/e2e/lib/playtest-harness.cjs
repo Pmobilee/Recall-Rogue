@@ -1,5 +1,5 @@
 /**
- * Playtest harness — wraps window.__terraPlay for Node.js Playwright scripts.
+ * Playtest harness — wraps window.__rrPlay for Node.js Playwright scripts.
  * Used by Codex workers, GPT 5.1 mini, and other AI tools for visual playtesting.
  *
  * Usage:
@@ -55,8 +55,8 @@ async function createPlaytester(opts = {}) {
   // Inject save state if provided, otherwise use preset
   if (save) {
     await page.evaluate((s) => {
-      localStorage.setItem('terra_guest_mode', 'true');
-      localStorage.setItem('terra_age_bracket', 'teen');
+      localStorage.setItem('rr_guest_mode', 'true');
+      localStorage.setItem('rr_age_bracket', 'teen');
       localStorage.setItem('recall-rogue-save', JSON.stringify(s));
     }, save);
   }
@@ -69,9 +69,9 @@ async function createPlaytester(opts = {}) {
   await page.waitForTimeout(3000); // wait for game to initialize
 
   // Verify API is available
-  const apiReady = await page.evaluate(() => typeof window.__terraPlay?.look === 'function');
+  const apiReady = await page.evaluate(() => typeof window.__rrPlay?.look === 'function');
   if (!apiReady) {
-    throw new Error('window.__terraPlay not available — is the dev server running?');
+    throw new Error('window.__rrPlay not available — is the dev server running?');
   }
 
   // Create wrapper methods that call page.evaluate for each API method
@@ -81,143 +81,143 @@ async function createPlaytester(opts = {}) {
 
     // ── Perception ──────────────────────────
     async look() {
-      return page.evaluate(() => window.__terraPlay.look());
+      return page.evaluate(() => window.__rrPlay.look());
     },
     async getAllText() {
-      return page.evaluate(() => window.__terraPlay.getAllText());
+      return page.evaluate(() => window.__rrPlay.getAllText());
     },
     async getQuizText() {
-      return page.evaluate(() => window.__terraPlay.getQuizText());
+      return page.evaluate(() => window.__rrPlay.getQuizText());
     },
     async getStudyCardText() {
-      return page.evaluate(() => window.__terraPlay.getStudyCardText());
+      return page.evaluate(() => window.__rrPlay.getStudyCardText());
     },
     async getHUDText() {
-      return page.evaluate(() => window.__terraPlay.getHUDText());
+      return page.evaluate(() => window.__rrPlay.getHUDText());
     },
     async getNotifications() {
-      return page.evaluate(() => window.__terraPlay.getNotifications());
+      return page.evaluate(() => window.__rrPlay.getNotifications());
     },
     async validateScreen() {
-      return page.evaluate(() => window.__terraPlay.validateScreen());
+      return page.evaluate(() => window.__rrPlay.validateScreen());
     },
 
     // ── Navigation ──────────────────────────
     async navigate(screen) {
-      return page.evaluate((s) => window.__terraPlay.navigate(s), screen);
+      return page.evaluate((s) => window.__rrPlay.navigate(s), screen);
     },
     async getScreen() {
-      return page.evaluate(() => window.__terraPlay.getScreen());
+      return page.evaluate(() => window.__rrPlay.getScreen());
     },
     async getAvailableScreens() {
-      return page.evaluate(() => window.__terraPlay.getAvailableScreens());
+      return page.evaluate(() => window.__rrPlay.getAvailableScreens());
     },
 
     // ── Card Roguelite — Run Management ─────
     async startRun() {
-      return page.evaluate(() => window.__terraPlay.startRun());
+      return page.evaluate(() => window.__rrPlay.startRun());
     },
     async selectDomain(domain) {
-      return page.evaluate((d) => window.__terraPlay.selectDomain(d), domain);
+      return page.evaluate((d) => window.__rrPlay.selectDomain(d), domain);
     },
     async selectArchetype(archetype) {
-      return page.evaluate((a) => window.__terraPlay.selectArchetype(a), archetype);
+      return page.evaluate((a) => window.__rrPlay.selectArchetype(a), archetype);
     },
 
     // ── Card Roguelite — Combat ─────────────
     async getCombatState() {
-      return page.evaluate(() => window.__terraPlay.getCombatState());
+      return page.evaluate(() => window.__rrPlay.getCombatState());
     },
     async playCard(index) {
-      return page.evaluate((i) => window.__terraPlay.playCard(i), index);
+      return page.evaluate((i) => window.__rrPlay.playCard(i), index);
     },
     async endTurn() {
-      return page.evaluate(() => window.__terraPlay.endTurn());
+      return page.evaluate(() => window.__rrPlay.endTurn());
     },
 
     // ── Card Roguelite — Room & Reward ──────
     async selectRoom(index) {
-      return page.evaluate((i) => window.__terraPlay.selectRoom(i), index);
+      return page.evaluate((i) => window.__rrPlay.selectRoom(i), index);
     },
     async acceptReward() {
-      return page.evaluate(() => window.__terraPlay.acceptReward());
+      return page.evaluate(() => window.__rrPlay.acceptReward());
     },
     async selectRewardType(cardType) {
-      return page.evaluate((t) => window.__terraPlay.selectRewardType(t), cardType);
+      return page.evaluate((t) => window.__rrPlay.selectRewardType(t), cardType);
     },
     async retreat() {
-      return page.evaluate(() => window.__terraPlay.retreat());
+      return page.evaluate(() => window.__rrPlay.retreat());
     },
     async delve() {
-      return page.evaluate(() => window.__terraPlay.delve());
+      return page.evaluate(() => window.__rrPlay.delve());
     },
     async getRunState() {
-      return page.evaluate(() => window.__terraPlay.getRunState());
+      return page.evaluate(() => window.__rrPlay.getRunState());
     },
     async restHeal() {
-      return page.evaluate(() => window.__terraPlay.restHeal());
+      return page.evaluate(() => window.__rrPlay.restHeal());
     },
     async restUpgrade() {
-      return page.evaluate(() => window.__terraPlay.restUpgrade());
+      return page.evaluate(() => window.__rrPlay.restUpgrade());
     },
     async mysteryContinue() {
-      return page.evaluate(() => window.__terraPlay.mysteryContinue());
+      return page.evaluate(() => window.__rrPlay.mysteryContinue());
     },
 
     // ── Quiz ────────────────────────────────
     async getQuiz() {
-      return page.evaluate(() => window.__terraPlay.getQuiz());
+      return page.evaluate(() => window.__rrPlay.getQuiz());
     },
     async answerQuiz(choiceIndex) {
-      return page.evaluate((i) => window.__terraPlay.answerQuiz(i), choiceIndex);
+      return page.evaluate((i) => window.__rrPlay.answerQuiz(i), choiceIndex);
     },
     async answerQuizCorrectly() {
-      return page.evaluate(() => window.__terraPlay.answerQuizCorrectly());
+      return page.evaluate(() => window.__rrPlay.answerQuizCorrectly());
     },
     async answerQuizIncorrectly() {
-      return page.evaluate(() => window.__terraPlay.answerQuizIncorrectly());
+      return page.evaluate(() => window.__rrPlay.answerQuizIncorrectly());
     },
 
     // ── Study ───────────────────────────────
     async startStudy(size) {
-      return page.evaluate((s) => window.__terraPlay.startStudy(s), size);
+      return page.evaluate((s) => window.__rrPlay.startStudy(s), size);
     },
     async getStudyCard() {
-      return page.evaluate(() => window.__terraPlay.getStudyCard());
+      return page.evaluate(() => window.__rrPlay.getStudyCard());
     },
     async gradeCard(button) {
-      return page.evaluate((b) => window.__terraPlay.gradeCard(b), button);
+      return page.evaluate((b) => window.__rrPlay.gradeCard(b), button);
     },
     async endStudy() {
-      return page.evaluate(() => window.__terraPlay.endStudy());
+      return page.evaluate(() => window.__rrPlay.endStudy());
     },
 
     // ── Dome ────────────────────────────────
     async enterRoom(roomId) {
-      return page.evaluate((r) => window.__terraPlay.enterRoom(r), roomId);
+      return page.evaluate((r) => window.__rrPlay.enterRoom(r), roomId);
     },
     async exitRoom() {
-      return page.evaluate(() => window.__terraPlay.exitRoom());
+      return page.evaluate(() => window.__rrPlay.exitRoom());
     },
 
     // ── Economy/State ───────────────────────
     async getInventory() {
-      return page.evaluate(() => window.__terraPlay.getInventory());
+      return page.evaluate(() => window.__rrPlay.getInventory());
     },
     async getSave() {
-      return page.evaluate(() => window.__terraPlay.getSave());
+      return page.evaluate(() => window.__rrPlay.getSave());
     },
     async getStats() {
-      return page.evaluate(() => window.__terraPlay.getStats());
+      return page.evaluate(() => window.__rrPlay.getStats());
     },
     async fastForward(hours) {
-      return page.evaluate((h) => window.__terraPlay.fastForward(h), hours);
+      return page.evaluate((h) => window.__rrPlay.fastForward(h), hours);
     },
     async getRecentEvents(n) {
-      return page.evaluate((num) => window.__terraPlay.getRecentEvents(num), n);
+      return page.evaluate((num) => window.__rrPlay.getRecentEvents(num), n);
     },
     async getSessionSummary() {
-      return page.evaluate(() => window.__terraPlay.getSessionSummary());
+      return page.evaluate(() => window.__rrPlay.getSessionSummary());
     },
 
     // ── Utilities ───────────────────────────
@@ -436,7 +436,7 @@ async function createPlaytester(opts = {}) {
           /GPU stall/i, /net::ERR_/i, /CORS/i, /api\//i,
           /favicon/i, /service.worker/i, /hmr/i,
         ];
-        const log = window.__terraLog;
+        const log = window.__rrLog;
         if (!Array.isArray(log)) return [];
         return log
           .filter(e => e.type === 'error' && !NOISE.some(p => p.test(e.detail)))

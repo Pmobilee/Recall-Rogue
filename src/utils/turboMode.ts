@@ -6,7 +6,7 @@
 
 /** Check if turbo mode is enabled. */
 export function isTurboMode(): boolean {
-  return (globalThis as Record<symbol, unknown>)[Symbol.for('terra:turboMode')] === true;
+  return (globalThis as Record<symbol, unknown>)[Symbol.for('rr:turboMode')] === true;
 }
 
 /** Returns 5ms in turbo mode (minimum for async state flush), otherwise the given duration. */

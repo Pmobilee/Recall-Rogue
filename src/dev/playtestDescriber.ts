@@ -1,6 +1,6 @@
 /**
  * Playtest perception system — text descriptions of game state.
- * Used by window.__terraPlay.look() and related methods.
+ * Used by window.__rrPlay.look() and related methods.
  * Lets cheap AI models "see" the game without screenshots.
  * DEV MODE ONLY — never included in production builds.
  */
@@ -70,9 +70,9 @@ function testIdText(id: string): string | null {
   return textOf(`[data-testid="${id}"]`);
 }
 
-/** Get the last N entries from the __terraLog ring buffer. */
+/** Get the last N entries from the __rrLog ring buffer. */
 function recentEvents(n: number): string[] {
-  const log = (window as unknown as Record<string, unknown>).__terraLog as
+  const log = (window as unknown as Record<string, unknown>).__rrLog as
     Array<{ ts: number; type: string; detail: string }> | undefined;
   if (!Array.isArray(log)) return [];
   return log.slice(-n).map(e => `[${e.type}] ${e.detail}`);
@@ -589,9 +589,9 @@ export function validateScreen(): ValidationResult {
     if (!study.question) issues.push('Study card question is empty');
   }
 
-  // Check interactive elements for anomalies via __terraDebug
+  // Check interactive elements for anomalies via __rrDebug
   try {
-    const debugFn = (window as unknown as Record<string, unknown>).__terraDebug as
+    const debugFn = (window as unknown as Record<string, unknown>).__rrDebug as
       (() => { interactiveElements?: Array<{ testId: string; visible: boolean; occluded: boolean }> }) | undefined;
     if (typeof debugFn === 'function') {
       const snap = debugFn();

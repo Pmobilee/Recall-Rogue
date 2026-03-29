@@ -23,7 +23,7 @@ export interface BotProfile {
   surgeChargeRate: number;
 }
 
-/** Game state read from the browser via window.__terraDebug() and window.__terraPlay. */
+/** Game state read from the browser via window.__rrDebug() and window.__rrPlay. */
 export interface GameState {
   currentScreen: string;
   playerHP: number;
@@ -45,7 +45,7 @@ export interface GameState {
   chainMultiplier: number;
 }
 
-/** Quiz state read from window.__terraPlay.getQuiz(). */
+/** Quiz state read from window.__rrPlay.getQuiz(). */
 export interface QuizState {
   question: string;
   choices: string[];

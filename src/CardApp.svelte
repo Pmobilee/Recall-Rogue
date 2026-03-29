@@ -613,7 +613,7 @@
   // and the normal flow hasn't already populated studyQuestions.
   $effect(() => {
     if ($currentScreen === 'restStudy' && studyQuestions.length === 0) {
-      const sym = Symbol.for('terra:scenarioStudyQuestions')
+      const sym = Symbol.for('rr:scenarioStudyQuestions')
       const injected = (globalThis as any)[sym]
       if (Array.isArray(injected) && injected.length > 0) {
         studyQuestions = injected
@@ -811,7 +811,7 @@
     }
   }
 
-  const loadTerraPassModal = createLazyLoader(() => import('./ui/components/TerraPassModal.svelte'))
+  const loadRoguePassModal = createLazyLoader(() => import('./ui/components/RoguePassModal.svelte'))
   const loadSeasonPassView = createLazyLoader(() => import('./ui/components/SeasonPassView.svelte'))
   const loadCosmeticStoreModal = createLazyLoader(() => import('./ui/components/CosmeticStoreModal.svelte'))
 
@@ -1483,9 +1483,9 @@
   {/if}
 
   {#if showArcanePassModal}
-    {#await loadTerraPassModal() then module}
-      {@const TerraPassModalView = module.default}
-      <TerraPassModalView onClose={() => { showArcanePassModal = false }} />
+    {#await loadRoguePassModal() then module}
+      {@const RoguePassModalView = module.default}
+      <RoguePassModalView onClose={() => { showArcanePassModal = false }} />
     {/await}
   {/if}
 

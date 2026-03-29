@@ -72,7 +72,7 @@
   function getLangSubdeckCount(langCode: string, token: string): number {
     if (!langSubdeckCountCache) {
       langSubdeckCountCache = new Map()
-      const sym = Symbol.for('terra:factsDB')
+      const sym = Symbol.for('rr:factsDB')
       const db = (globalThis as any)[sym]
       if (!db?.isReady?.() || !db?.getAll) return 0
       for (const fact of db.getAll()) {

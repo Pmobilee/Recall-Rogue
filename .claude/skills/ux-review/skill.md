@@ -31,7 +31,7 @@ The principles are drawn from Nielsen, Pinelle (CHI 2008), PLAY (Desurvire & Wib
 | `/ux-review reward` | Reward room | Card/relic reward selection |
 | `/ux-review hub` | Hub screen | Main menu and navigation |
 | `/ux-review all` | All presets | Comprehensive sweep (15+ screens) |
-| `/ux-review {preset}` | Any preset | Audit a specific `__terraScenario` preset |
+| `/ux-review {preset}` | Any preset | Audit a specific `__rrScenario` preset |
 
 ---
 
@@ -39,7 +39,7 @@ The principles are drawn from Nielsen, Pinelle (CHI 2008), PLAY (Desurvire & Wib
 
 ### Phase 1: DOM Scan (Programmatic — via browser_evaluate)
 
-Load the target screen using `__terraScenario`, then extract a complete DOM inventory. This is the discovery phase — capture everything needed to generate the checklist.
+Load the target screen using `__rrScenario`, then extract a complete DOM inventory. This is the discovery phase — capture everything needed to generate the checklist.
 
 ```javascript
 // 1. Collect all interactive elements with extended context
@@ -233,7 +233,7 @@ Disable animations, then capture:
 ```javascript
 document.documentElement.setAttribute('data-pw-animations', 'disabled');
 ```
-Take screenshot via `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. Captures both Phaser canvas + DOM overlays. NEVER use raw `__terraScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently). Use `browser_snapshot` for supplementary DOM state.
+Take screenshot via `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures both Phaser canvas + DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently). Use `browser_snapshot` for supplementary DOM state.
 
 ### Phase 3: Evaluate
 
@@ -243,7 +243,7 @@ Work through BOTH the generated technical checklist (Phase 1.5) AND the subjecti
 2. **Subjective per-element checks**: For every button, text, card, and image discovered, answer the Phase 1.6 subjective questions. Be specific — "End Turn button label is clear" not "buttons look fine."
 3. **Screenshot-only checks** (visual hierarchy, feedback affordance, zone clarity, color semantics, cognitive density): evaluate by examining the screenshot holistically against the principles.
 4. **Holistic subjective assessment**: Answer all "screen as a whole" questions from Phase 1.6. Include emotional assessment, first-impression analysis, and comparison to reference games.
-5. **Phaser canvas checks**: for screens with canvas content, run `window.__terraDebug()` to check sprite positions and canvas-rendered elements DOM analysis can't reach.
+5. **Phaser canvas checks**: for screens with canvas content, run `window.__rrDebug()` to check sprite positions and canvas-rendered elements DOM analysis can't reach.
 
 **CRITICAL: Only produce findings for elements that actually exist. Do not invent checks for elements not discovered in Phase 1. Do not skip discovered elements. Every element gets both technical AND subjective evaluation.**
 
@@ -251,7 +251,7 @@ Work through BOTH the generated technical checklist (Phase 1.5) AND the subjecti
 
 For screens with Phaser canvas content (combat, reward room):
 ```javascript
-window.__terraDebug()
+window.__rrDebug()
 ```
 This surfaces sprite positions, scene state, and canvas-rendered UI that DOM analysis misses. Cross-reference with screenshot to identify any canvas elements that should be evaluated (e.g., enemy health bars rendered in Phaser, not in DOM).
 
@@ -594,7 +594,7 @@ Return findings as structured JSON:
 ```json
 {
   "screen": "combat | shop | reward | hub | etc",
-  "preset_used": "__terraScenario preset name",
+  "preset_used": "__rrScenario preset name",
   "device_width": 393,
   "device_height": 852,
   "timestamp": "ISO timestamp",
