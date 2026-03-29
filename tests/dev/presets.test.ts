@@ -43,6 +43,6 @@ describe('SCENARIO_PRESETS', () => {
   it('empty_inventory preset has zero resources', () => {
     const save = SCENARIO_PRESETS.find(p => p.id === 'empty_inventory')!.buildSave(Date.now())
     expect(save.oxygen).toBe(0)
-    expect(save.minerals.dust).toBe(0)
+    expect(save.minerals.greyMatter).toBe(0)
   })
 })

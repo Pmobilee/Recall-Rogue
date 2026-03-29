@@ -669,7 +669,7 @@ export class EnemySpriteSystem {
     const { attack } = this.animConfig
     this.isAnimating = true
     this.stopIdle()
-    this.scene.cameras.main.shake(130, attack.shakeIntensity * this.effectScale, true)
+    ;(this.scene as any).screenShake?.trigger('medium')
 
     return new Promise<void>((resolve) => {
       // Phase 1: lunge forward
@@ -733,7 +733,7 @@ export class EnemySpriteSystem {
 
     this.isAnimating = true
     this.stopIdle()
-    this.scene.cameras.main.shake(100, 0.0025 * this.effectScale, true)
+    ;(this.scene as any).screenShake?.trigger('micro')
 
     // White flash on main sprite
     if (this.mainSprite) {
@@ -946,11 +946,7 @@ export class EnemySpriteSystem {
       timeScale: this.animSpeed,
       onComplete: () => {
         // Camera shake on landing
-        this.scene.cameras.main.shake(
-          isBoss ? 150 : 80,
-          (isBoss ? 0.004 : 0.002) * this.effectScale,
-          true
-        )
+        ;(this.scene as any).screenShake?.trigger(isBoss ? 'medium' : 'micro')
 
         // Phase 2: Settle back to 1.0
         this.scene.tweens.add({

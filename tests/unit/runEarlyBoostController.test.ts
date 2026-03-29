@@ -23,7 +23,7 @@ function makeSave(): PlayerSave {
     lastPlayedAt: Date.now(),
     domainRunCounts: {},
     oxygen: 3,
-    minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 },
+    minerals: { greyMatter: 0 },
     learnedFacts: [],
     reviewStates: [],
     soldFacts: [],

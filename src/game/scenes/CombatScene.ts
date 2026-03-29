@@ -221,7 +221,7 @@ export class CombatScene extends Phaser.Scene {
   private atmosphereSystem!: CombatAtmosphereSystem
   private statusEffectVisuals!: StatusEffectVisualSystem
   private weaponAnimations!: WeaponAnimationSystem
-  private screenShake!: ScreenShakeSystem
+  public screenShake!: ScreenShakeSystem
 
   // ── Atmosphere color grading ──────────────────────
   private _colorMatrixFx: Phaser.FX.ColorMatrix | null = null

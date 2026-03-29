@@ -18,7 +18,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['limestone_caves', 'clay_basin', 'root_tangle'],
     depthRange: [1, 5],
     factCategory: 'Natural Sciences',
-    loot: [{ mineralTier: 'dust', amount: 8 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 8 }],
     spriteKey: 'creature_sprite',
     tintColor: 0x88ffcc,
   },
@@ -32,7 +32,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['iron_seam', 'basalt_maze', 'salt_flats'],
     depthRange: [1, 5],
     factCategory: 'Geology',
-    loot: [{ mineralTier: 'dust', amount: 12 }, { mineralTier: 'shard', amount: 1 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 12 }, { mineralTier: 'greyMatter', amount: 25 }],
     spriteKey: 'creature_crab',
     ability: {
       name: 'Shell Lock',
@@ -50,7 +50,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['peat_bog', 'coal_veins'],
     depthRange: [2, 5],
     factCategory: 'Natural Sciences',
-    loot: [{ mineralTier: 'dust', amount: 20 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 20 }],
     spriteKey: 'creature_mite',
   },
 
@@ -65,7 +65,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['sulfur_springs', 'granite_canyon', 'obsidian_rift'],
     depthRange: [6, 10],
     factCategory: 'Geology',
-    loot: [{ mineralTier: 'shard', amount: 3 }, { mineralTier: 'crystal', amount: 1 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 75 }, { mineralTier: 'greyMatter', amount: 100 }],
     spriteKey: 'creature_salamander',
     tintColor: 0xff4400,
     ability: {
@@ -84,7 +84,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['quartz_halls', 'crystal_geode'],
     depthRange: [6, 10],
     factCategory: 'Geology',
-    loot: [{ mineralTier: 'crystal', amount: 2 }, { mineralTier: 'shard', amount: 5 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 200 }, { mineralTier: 'greyMatter', amount: 125 }],
     spriteKey: 'creature_golem_minor',
     ability: {
       name: 'Crystal Armor',
@@ -102,7 +102,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['coal_veins', 'basalt_maze', 'magma_shelf'],
     depthRange: [6, 10],
     factCategory: 'History',
-    loot: [{ mineralTier: 'shard', amount: 4 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 100 }],
     spriteKey: 'creature_eel',
     tintColor: 0x220055,
   },
@@ -118,7 +118,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['tectonic_scar', 'iron_core_fringe', 'pressure_dome'],
     depthRange: [11, 15],
     factCategory: 'General Knowledge',
-    loot: [{ mineralTier: 'crystal', amount: 3 }, { mineralTier: 'geode', amount: 1 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 300 }, { mineralTier: 'greyMatter', amount: 500 }],
     spriteKey: 'creature_crawler',
     ability: {
       name: 'Phase Shift',
@@ -136,7 +136,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['magma_shelf', 'obsidian_rift', 'tectonic_scar'],
     depthRange: [11, 15],
     factCategory: 'Geology',
-    loot: [{ mineralTier: 'geode', amount: 2 }, { mineralTier: 'essence', amount: 1 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 1000 }, { mineralTier: 'greyMatter', amount: 2000 }],
     spriteKey: 'creature_golem_magma',
     tintColor: 0xff3300,
   },
@@ -150,7 +150,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['fossil_layer', 'primordial_mantle'],
     depthRange: [11, 15],
     factCategory: 'Life Sciences',
-    loot: [{ mineralTier: 'geode', amount: 3 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 1500 }],
     spriteKey: 'creature_worm',
     ability: {
       name: 'Tunnel Collapse',
@@ -170,7 +170,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['echo_chamber', 'temporal_rift', 'void_pocket'],
     depthRange: [16, 20],
     factCategory: 'General Knowledge',
-    loot: [{ mineralTier: 'essence', amount: 2 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 4000 }],
     spriteKey: 'creature_wraith',
     tintColor: 0x8855ff,
     ability: {
@@ -189,7 +189,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['void_pocket', 'alien_intrusion', 'bioluminescent'],
     depthRange: [16, 20],
     factCategory: 'General Knowledge',
-    loot: [{ mineralTier: 'essence', amount: 4 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 8000 }],
     spriteKey: 'creature_horror',
   },
   {
@@ -202,7 +202,7 @@ export const CREATURE_TEMPLATES: Omit<Creature, 'hp' | 'state'>[] = [
     biomeAffinity: ['deep_biolume', 'pressure_dome', 'iron_core_fringe'],
     depthRange: [16, 20],
     factCategory: 'Life Sciences',
-    loot: [{ mineralTier: 'geode', amount: 4 }, { mineralTier: 'essence', amount: 1 }],
+    loot: [{ mineralTier: 'greyMatter', amount: 2000 }, { mineralTier: 'greyMatter', amount: 2000 }],
     spriteKey: 'creature_spectre',
     tintColor: 0x00ffbb,
     ability: {

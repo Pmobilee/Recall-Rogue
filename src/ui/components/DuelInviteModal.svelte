@@ -54,8 +54,8 @@
   const buttonsDisabled = $derived(accepting || declining)
 
   const wagerLabel = $derived(
-    duel.wagerDust > 0
-      ? `${duel.wagerDust} dust wager`
+    duel.wagerGreyMatter > 0
+      ? `${duel.wagerGreyMatter} grey matter wager`
       : 'No wager'
   )
 
@@ -98,10 +98,10 @@
       <!-- Wager -->
       <div
         class="dim-wager-pill"
-        class:dim-wager-none={duel.wagerDust === 0}
+        class:dim-wager-none={duel.wagerGreyMatter === 0}
         aria-label="{wagerLabel}"
       >
-        <span aria-hidden="true">{duel.wagerDust > 0 ? '💎' : '🤝'}</span>
+        <span aria-hidden="true">{duel.wagerGreyMatter > 0 ? '💎' : '🤝'}</span>
         <span>{wagerLabel}</span>
       </div>
 

@@ -1,12 +1,13 @@
 <script lang="ts">
   interface Props {
     label: string;
+    count?: number;
     isSelected: boolean;
     colorTint: string;
     ontoggle: () => void;
   }
 
-  let { label, isSelected, colorTint, ontoggle }: Props = $props();
+  let { label, count, isSelected, colorTint, ontoggle }: Props = $props();
 </script>
 
 <button
@@ -19,6 +20,9 @@
   aria-pressed={isSelected}
 >
   {label}
+  {#if count != null}
+    <span class="count">{count}</span>
+  {/if}
 </button>
 
 <style>
@@ -49,5 +53,16 @@
   .chip.selected {
     /* background and border-color are set via inline style using colorTint */
     color: #e2e8f0;
+  }
+
+  .count {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #4b5563;
+    margin-left: calc(4px * var(--layout-scale, 1));
+    opacity: 0.7;
+  }
+
+  .chip.selected .count {
+    color: #94a3b8;
   }
 </style>

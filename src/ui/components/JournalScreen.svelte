@@ -64,6 +64,8 @@
         rewardMultiplier: 1,
         currencyEarned: summary.goldEarned,
         isPracticeRun: false,
+        defeatedEnemyIds: [],
+        factStateSummary: { seen: 0, reviewing: 0, mastered: 0 },
       })
       shareState = 'done'
     } catch {

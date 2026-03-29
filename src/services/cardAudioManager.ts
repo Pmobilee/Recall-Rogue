@@ -108,6 +108,24 @@ export type CardAudioCue =
   | 'shop-purchase'
   | 'shop-insufficient'
   | 'shop-close'
+  | 'shop-sell'
+  | 'shop-haggle-correct'
+  | 'shop-haggle-wrong'
+  | 'shop-removal-burn'
+  | 'shop-removal-complete'
+  | 'shop-transform-shimmer'
+  | 'shop-transform-dissolve'
+  | 'shop-transform-vortex'
+  | 'shop-transform-split'
+  | 'shop-transform-materialize'
+  | 'shop-transform-reveal'
+  | 'shop-transform-confirm'
+  | 'shop-price-tick'
+  | 'shop-unaffordable'
+  | 'shop-card-appear'
+  | 'shop-card-flip'
+  | 'shop-coin-fly'
+  | 'shop-bark'
   // Rest
   | 'rest-open'
   | 'rest-heal'
@@ -135,6 +153,10 @@ export type CardAudioCue =
   | 'run-victory'
   | 'run-defeat'
   | 'stat-tick'
+  | 'enemy-badge-tick'
+  | 'fact-badge-tick'
+  | 'grey-matter-tally-tick'
+  | 'grade-reveal'
   | 'xp-award'
   | 'level-up'
   // UI
@@ -143,6 +165,7 @@ export type CardAudioCue =
   | 'toggle-on'
   | 'toggle-off'
   | 'tab-switch'
+  | 'deck-shuffle'
   | 'notification-ping'
   | 'error-deny'
   // Progression
@@ -272,6 +295,24 @@ const CUE_TO_SOUND: Record<CardAudioCue, SoundName> = {
   'shop-purchase': 'shop_purchase',
   'shop-insufficient': 'shop_insufficient_gold',
   'shop-close': 'shop_close',
+  'shop-sell': 'shop_sell',
+  'shop-haggle-correct': 'quiz_correct',
+  'shop-haggle-wrong': 'quiz_wrong',
+  'shop-removal-burn': 'shop_removal_burn',
+  'shop-removal-complete': 'shop_removal_complete',
+  'shop-transform-shimmer': 'shop_transform_shimmer',
+  'shop-transform-dissolve': 'shop_transform_dissolve',
+  'shop-transform-vortex': 'shop_transform_vortex',
+  'shop-transform-split': 'shop_transform_split',
+  'shop-transform-materialize': 'shop_transform_materialize',
+  'shop-transform-reveal': 'shop_transform_reveal',
+  'shop-transform-confirm': 'shop_transform_confirm',
+  'shop-price-tick': 'shop_price_tick',
+  'shop-unaffordable': 'shop_unaffordable',
+  'shop-card-appear': 'shop_card_appear',
+  'shop-card-flip': 'shop_card_flip',
+  'shop-coin-fly': 'shop_coin_fly',
+  'shop-bark': 'shop_bark',
   // Rest
   'rest-open': 'rest_open',
   'rest-heal': 'rest_heal',
@@ -299,6 +340,10 @@ const CUE_TO_SOUND: Record<CardAudioCue, SoundName> = {
   'run-victory': 'run_victory',
   'run-defeat': 'run_defeat',
   'stat-tick': 'stat_tick',
+  'enemy-badge-tick': 'stat_tick',
+  'fact-badge-tick': 'stat_tick',
+  'grey-matter-tally-tick': 'stat_tick',
+  'grade-reveal': 'mastery_glow',
   'xp-award': 'xp_award',
   'level-up': 'level_up',
   // UI
@@ -307,6 +352,7 @@ const CUE_TO_SOUND: Record<CardAudioCue, SoundName> = {
   'toggle-on': 'toggle_on',
   'toggle-off': 'toggle_off',
   'tab-switch': 'tab_switch',
+  'deck-shuffle': 'card_shuffle',
   'notification-ping': 'notification_ping',
   'error-deny': 'error_deny',
   // Progression

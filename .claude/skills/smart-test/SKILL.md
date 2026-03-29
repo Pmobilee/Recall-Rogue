@@ -69,10 +69,14 @@ Summarize:
 - Especially useful during rapid iteration on a single feature
 - The full suite should still run before commits (the pre-commit hook handles this)
 
-## Fallback
+## If `--related` Fails
 
-If `--related` fails or produces errors, fall back to the full suite:
+If `--related` fails or produces errors:
+1. **DIAGNOSE** — check the error output. Common causes: broken import paths, missing test files, vitest config issues
+2. **FIX** — resolve the root cause (fix the import, update the config, etc.)
+3. **RETRY** — run `--related` again
+4. If the `--related` flag itself is broken (vitest bug), run the full suite as an interim measure while investigating:
 ```bash
 npx vitest run
 ```
-Better to run everything than to miss a regression.
+But file an issue or fix the `--related` functionality — don't permanently accept the slower workflow.

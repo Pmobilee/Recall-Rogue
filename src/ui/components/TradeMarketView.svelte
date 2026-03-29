@@ -265,7 +265,7 @@
           </select>
 
           <div class="price-filter">
-            <label class="price-label" for="price-range">Max: {filterPriceMax} dust</label>
+            <label class="price-label" for="price-range">Max: {filterPriceMax} grey matter</label>
             <input
               id="price-range"
               class="price-slider"
@@ -274,7 +274,7 @@
               max="9999"
               step="100"
               bind:value={filterPriceMax}
-              aria-label="Maximum price in dust"
+              aria-label="Maximum price in grey matter"
             />
           </div>
         </div>
@@ -300,7 +300,7 @@
                   <span class="seller-name">@{listing.sellerName}</span>
                 </div>
                 <div class="card-footer">
-                  <span class="price">{listing.price} dust</span>
+                  <span class="price">{listing.price} grey matter</span>
                   <button
                     class="btn-buy"
                     type="button"
@@ -339,7 +339,7 @@
                 <p class="fact-preview mono">{card.factId}</p>
                 <div class="card-footer">
                   {#if card.listPrice !== undefined}
-                    <span class="price">{card.listPrice} dust</span>
+                    <span class="price">{card.listPrice} grey matter</span>
                   {/if}
                   <button
                     class="btn-delist"
@@ -370,8 +370,8 @@
                     <span class="offer-from">From: <strong>{offer.offererName}</strong></span>
                     <span class="offer-detail">Offering: {offer.offeredCardPreview}</span>
                     <span class="offer-detail">For: {offer.requestedCardPreview}</span>
-                    {#if offer.additionalDust > 0}
-                      <span class="offer-dust">+{offer.additionalDust} dust sweetener</span>
+                    {#if offer.additionalGreyMatter > 0}
+                      <span class="offer-dust">+{offer.additionalGreyMatter} grey matter sweetener</span>
                     {/if}
                   </div>
                   <div class="offer-actions">

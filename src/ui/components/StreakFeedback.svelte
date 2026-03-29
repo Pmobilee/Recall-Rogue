@@ -1,7 +1,7 @@
 <script lang="ts">
   interface Props {
     streakCount: number   // Current consecutive correct count (0 = hidden)
-    multiplier: number    // Current XP/dust multiplier (from BALANCE or QuizManager)
+    multiplier: number    // Current XP/grey matter multiplier (from BALANCE or QuizManager)
   }
 
   let { streakCount, multiplier }: Props = $props()
@@ -22,9 +22,9 @@
   })
 
   const labelText = $derived.by(() => {
-    if (tier === 3) return `×${streakCount} STREAK — +${bonusPct}% dust`
-    if (tier === 2) return `×${streakCount} STREAK — +${bonusPct}% dust`
-    return `×${streakCount} streak — +${bonusPct}% dust`
+    if (tier === 3) return `×${streakCount} STREAK — +${bonusPct}% grey matter`
+    if (tier === 2) return `×${streakCount} STREAK — +${bonusPct}% grey matter`
+    return `×${streakCount} streak — +${bonusPct}% grey matter`
   })
 </script>
 

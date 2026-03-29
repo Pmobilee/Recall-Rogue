@@ -107,9 +107,21 @@ function deriveArtPlaceholder(
       dutch: '\u{1F1F3}\u{1F1F1}',
       czech: '\u{1F1E8}\u{1F1FF}',
     };
+    const PREFIX_COLORS: Record<string, string> = {
+      japanese: '#E11D48',   // rose red
+      korean: '#7C3AED',    // violet
+      mandarin: '#DC2626',  // red
+      chinese: '#DC2626',   // red
+      spanish: '#F59E0B',   // amber
+      french: '#3B82F6',    // blue
+      german: '#EAB308',    // yellow
+      dutch: '#F97316',     // orange
+      czech: '#14B8A6',     // teal
+    };
     const underscoreIdx = deckId.indexOf('_');
     const prefix = underscoreIdx > 0 ? deckId.substring(0, underscoreIdx) : deckId;
     icon = PREFIX_FLAGS[prefix] ?? '\u{1F4DA}'; // stack of books fallback
+    colorTint = PREFIX_COLORS[prefix] ?? colorTint;
   }
 
   return {

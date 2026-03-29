@@ -1,6 +1,7 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { mixArtifacts } from '../stores/playerData'
+  import { getGreyMatterIconPath } from '../utils/iconAssets'
   import type { ArtifactCard } from '../../data/types'
 
   interface DuplicateGroup {
@@ -62,8 +63,8 @@
   let animating = $state(false)
   let errorMessage = $state('')
 
-  const dustBalance = $derived($playerSave?.minerals.dust ?? 0)
-  const canAffordFee = $derived(dustBalance >= 100)
+  const greyMatterBalance = $derived($playerSave?.minerals.greyMatter ?? 0)
+  const canAffordFee = $derived(greyMatterBalance >= 100)
 
   function selectDuplicate(group: DuplicateGroup): void {
     selectedGroup = group
@@ -80,7 +81,7 @@
   function performMix(): void {
     if (!selectedGroup) return
     if (!canAffordFee) {
-      errorMessage = `Not enough dust. Need ${100}.`
+      errorMessage = `Not enough grey matter. Need ${100}.`
       return
     }
 
@@ -99,7 +100,7 @@
       mixResult = { upgraded, newRarity: outputRarity }
       selectedGroup = null
     } else {
-      errorMessage = 'Mix failed. Check your cards and dust balance.'
+      errorMessage = 'Mix failed. Check your cards and grey matter balance.'
     }
 
     mixing = false
@@ -141,7 +142,7 @@
     <div class="modal-body">
       <p class="description">
         Combine <strong>{3} duplicate cards</strong> of the same type to potentially upgrade their rarity.
-        Fee: <strong>{100} dust</strong> per mix.
+        Fee: <strong>{100} grey matter</strong> per mix.
       </p>
 
       {#if errorMessage}
@@ -157,9 +158,9 @@
         <span class="odds-item odds-fail">{60}% same</span>
       </div>
 
-      <!-- Dust balance -->
-      <div class="dust-balance" class:dust-low={!canAffordFee}>
-        Dust: {dustBalance} (fee: {100})
+      <!-- Grey matter balance -->
+      <div class="gm-balance" class:gm-low={!canAffordFee}>
+        <img class="gm-inline-icon" src={getGreyMatterIconPath()} alt="" aria-hidden="true" /> {greyMatterBalance} (fee: 100)
       </div>
 
       <!-- 3 slots -->
@@ -403,14 +404,25 @@
   .odds-fail { color: #f87171; }
   .odds-divider { color: #475569; }
 
-  .dust-balance {
+  .gm-balance {
     font-size: 0.78rem;
     color: #4ecca3;
     font-weight: 600;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
-  .dust-low {
+  .gm-inline-icon {
+    width: calc(14px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
+    object-fit: contain;
+    vertical-align: middle;
+  }
+
+  .gm-low {
     color: #f87171;
   }
 

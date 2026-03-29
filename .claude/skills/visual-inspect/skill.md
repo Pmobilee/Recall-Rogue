@@ -49,15 +49,24 @@ const { chromium } = require('playwright');
 
 Then use `Read("/tmp/rr-screenshot.jpg")` to view the screenshot.
 
-### Fallback: Playwright MCP Tools (if available)
+### Alternative: Playwright MCP Tools
 
-If `mcp__playwright__*` tools are loaded:
+If `mcp__playwright__*` tools are loaded, they can be used instead of the script approach:
 1. `mcp__playwright__browser_navigate` -> `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 2. `browser_evaluate` -> `window.__rrScenario.load('combat-basic')`
 3. Wait 5 seconds
 4. `browser_evaluate(() => window.__rrScreenshotFile())` -> saves to `/tmp/rr-screenshot.jpg`
 5. `Read("/tmp/rr-screenshot.jpg")` to view
 6. `mcp__playwright__browser_snapshot` for DOM state (supplementary)
+
+### CRITICAL: Fix Tools, Never Fallback
+
+If ANY screenshot or browser tool fails (Playwright won't launch, Chrome not connected, `__rrScreenshotFile()` errors, MCP tools unavailable):
+1. **STOP** — do NOT skip visual inspection or accept the failure
+2. **DIAGNOSE** — check what's wrong (port in use, Chrome already open, missing deps, server not running)
+3. **FIX** — resolve the root cause (kill stale processes, restart dev server, reconnect browser)
+4. **RETRY** — take the screenshot with the fixed tool
+5. **NEVER** report "couldn't verify" — verification is the whole point of this skill
 
 ### Screenshot Compositing
 

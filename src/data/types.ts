@@ -218,8 +218,10 @@ export interface ReviewState {
 /** Forward-compatible alias used by card-roguelite systems after FSRS migration. */
 export type PlayerFactState = ReviewState
 
-/** Mineral currency tiers — ordered from common (surface) to rare (extreme depth) */
-export type MineralTier = 'dust' | 'shard' | 'crystal' | 'geode' | 'essence'
+/** Player mineral balance — single currency after tier simplification. */
+export interface PlayerMinerals {
+  greyMatter: number
+}
 
 // ============================================================
 // SOCIAL TYPES — Phase 22
@@ -280,8 +282,8 @@ export interface DuelStats {
   losses: number;
   ties: number;
   totalDuels: number;
-  totalDustWon: number;
-  totalDustLost: number;
+  totalGreyMatterWon: number;
+  totalGreyMatterLost: number;
   currentWinStreak: number;
   longestWinStreak: number;
 }
@@ -292,7 +294,7 @@ export interface DuelRecord {
   opponentId: string;
   opponentName: string;
   status: 'pending' | 'challenger_done' | 'opponent_done' | 'completed' | 'timed_out' | 'declined';
-  wagerDust: number;
+  wagerGreyMatter: number;
   myScore?: number;
   opponentScore?: number;
   createdAt: number;
@@ -317,7 +319,7 @@ export interface TradeOffer {
   receiverId: string;
   offeredCardInstanceId: string;
   requestedCardInstanceId: string;
-  additionalDust: number;
+  additionalGreyMatter: number;
   status: 'pending' | 'accepted' | 'declined' | 'expired';
   expiresAt: number;
 }
@@ -399,7 +401,7 @@ export interface PlayerSave {
 
   // Resources
   oxygen: number              // Current stored oxygen tanks
-  minerals: Record<MineralTier, number>
+  minerals: PlayerMinerals
 
   // Knowledge
   learnedFacts: string[]      // Fact IDs the player has ingested

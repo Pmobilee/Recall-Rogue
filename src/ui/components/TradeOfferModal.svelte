@@ -35,7 +35,7 @@
   // Selections
   let selectedMyCard = $state<ArtifactCard | null>(null)
   let selectedReceiverCard = $state<ReceiverCard | null>(null)
-  let dustSweetener = $state(0)
+  let gmSweetener = $state(0)
 
   // UI state
   let showMyPicker = $state(false)
@@ -104,7 +104,7 @@
         receiverId,
         offeredCardInstanceId: selectedMyCard.instanceId,
         requestedCardInstanceId: selectedReceiverCard.instanceId,
-        additionalDust: dustSweetener,
+        additionalGreyMatter: gmSweetener,
       })
       sentSuccess = true
       showConfirm = false
@@ -138,7 +138,7 @@
 
   function handleDustInput(e: Event): void {
     const val = parseInt((e.target as HTMLInputElement).value, 10)
-    dustSweetener = isNaN(val) ? 0 : Math.max(0, Math.min(500, val))
+    gmSweetener = isNaN(val) ? 0 : Math.max(0, Math.min(500, val))
   }
 
   function rarityColor(rarity: string): string {
@@ -265,20 +265,20 @@
           {/if}
         </div>
 
-        <!-- Dust sweetener -->
+        <!-- Grey matter sweetener -->
         <div class="trade-section">
-          <h3 class="section-label">Dust Sweetener: <span class="dust-amount">{dustSweetener}</span></h3>
+          <h3 class="section-label">Grey Matter Sweetener: <span class="gm-amount">{gmSweetener}</span></h3>
           <input
-            class="dust-slider"
+            class="gm-slider"
             type="range"
             min="0"
             max="500"
             step="10"
-            value={dustSweetener}
+            value={gmSweetener}
             oninput={handleDustInput}
-            aria-label="Additional dust to add to offer, 0 to 500"
+            aria-label="Additional grey matter to add to offer, 0 to 500"
           />
-          <p class="dust-hint">Add up to 500 dust to sweeten the deal.</p>
+          <p class="gm-hint">Add up to 500 grey matter to sweeten the deal.</p>
         </div>
 
         <!-- Send button -->
@@ -404,8 +404,8 @@
       {#if selectedReceiverCard}
         <p class="confirm-detail">Requesting: <span style="color: {rarityColor(selectedReceiverCard.rarity)}">{formatRarity(selectedReceiverCard.rarity)}</span> card</p>
       {/if}
-      {#if dustSweetener > 0}
-        <p class="confirm-detail confirm-dust">+{dustSweetener} dust sweetener</p>
+      {#if gmSweetener > 0}
+        <p class="confirm-detail confirm-gm">+{gmSweetener} grey matter sweetener</p>
       {/if}
       <div class="confirm-actions">
         <button
@@ -606,18 +606,18 @@
 
   .btn-pick-card:active { transform: translateY(1px); }
 
-  .dust-slider {
+  .gm-slider {
     width: 100%;
     accent-color: #f59e0b;
     cursor: pointer;
   }
 
-  .dust-amount {
+  .gm-amount {
     color: #f59e0b;
     font-weight: 700;
   }
 
-  .dust-hint {
+  .gm-hint {
     font-size: 0.7rem;
     color: #64748b;
     margin: 0;
@@ -768,7 +768,7 @@
     margin: 0;
   }
 
-  .confirm-dust { color: #f59e0b; }
+  .confirm-gm { color: #f59e0b; }
 
   .confirm-actions {
     display: flex;

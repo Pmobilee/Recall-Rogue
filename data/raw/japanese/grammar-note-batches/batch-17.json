@@ -1,0 +1,587 @@
+[
+  {
+    "id": "ja-gram-n3-509-fill-0",
+    "point": "〜時",
+    "meaning": "when",
+    "quizQuestion": "私は日本に行った{___}日本語を勉強した\n(When  I was in Japan, I studied Japanese.)",
+    "correctAnswer": "時",
+    "distractors": [
+      "ところ(だ) (所だ・処だ)",
+      "ところに、ところへ、ところを",
+      "ところ",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-509-fill-1",
+    "point": "〜時",
+    "meaning": "when",
+    "quizQuestion": "いつでも都合のいい{___}にお金を返してください。\n(Pay me back when it's convenient.)",
+    "correctAnswer": "時",
+    "distractors": [
+      "うちに",
+      "ところに、ところへ、ところを",
+      "時間がたつ",
+      "まま"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-917-fill-0",
+    "point": "ついでに",
+    "meaning": "while doing A, do B",
+    "quizQuestion": "実家に帰った{___}昔の学校に行ってみた。\n(At the time I went back to my hometown, I also took the opportunity to go see my old school.)",
+    "correctAnswer": "ついでに",
+    "distractors": [
+      "ところに、ところへ、ところを",
+      "ところ(だ) (所だ・処だ)",
+      "ところ",
+      "時間がたつ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-917-fill-1",
+    "point": "ついでに",
+    "meaning": "while doing A, do B",
+    "quizQuestion": "仕事へ行く{___}、郵便局で手紙を出した。\n(While on my way to work, I mailed a letter at the post office)",
+    "correctAnswer": "ついでに",
+    "distractors": [
+      "うちに",
+      "ところに、ところへ、ところを",
+      "ところ",
+      "までに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-917-fill-2",
+    "point": "ついでに",
+    "meaning": "while doing A, do B",
+    "quizQuestion": "出て行く{___}頼むのは悪いけど、ゴミを捨ててくれる？\n(I hate to ask you to do this, but since you are going out anyway, would you get rid of the garbage bag?)",
+    "correctAnswer": "ついでに",
+    "distractors": [
+      "時間がたつ",
+      "ところに、ところへ、ところを",
+      "時",
+      "ところ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-917-fill-3",
+    "point": "ついでに",
+    "meaning": "while doing A, do B",
+    "quizQuestion": "パリへ行く{___}ロンドンに寄る\n(Since I am going to go to Paris, anyway, I will also drop by London)",
+    "correctAnswer": "ついでに",
+    "distractors": [
+      "まま",
+      "ところ(だ) (所だ・処だ)",
+      "じゅう／ちゅう",
+      "までに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-917-fill-4",
+    "point": "ついでに",
+    "meaning": "while doing A, do B",
+    "quizQuestion": "デパートへ行った{___}、そこで開かれていた展覧会を見た。\n(While out at the department store, I also took the opportunity to see the exhibition being held there.)",
+    "correctAnswer": "ついでに",
+    "distractors": [
+      "時",
+      "ところ(だ) (所だ・処だ)",
+      "時間がたつ",
+      "ところに、ところへ、ところを"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1621-fill-0",
+    "point": "まま",
+    "meaning": "as it is, remain unchanged",
+    "quizQuestion": "２つの問題が未解決の{___}であった。\n(Two problems remained unsolved.)",
+    "correctAnswer": "まま",
+    "distractors": [
+      "時",
+      "つい",
+      "じゅう／ちゅう",
+      "がち"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1621-fill-1",
+    "point": "まま",
+    "meaning": "as it is, remain unchanged",
+    "quizQuestion": "この家はこの{___}にしておきたい。\n(I like this house as it is.)",
+    "correctAnswer": "まま",
+    "distractors": [
+      "までに",
+      "ついでに",
+      "時",
+      "ところ(だ) (所だ・処だ)"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1621-fill-2",
+    "point": "まま",
+    "meaning": "as it is, remain unchanged",
+    "quizQuestion": "この家は今の{___}では売れないだろう。\n(This house will not sell as it stands.)",
+    "correctAnswer": "まま",
+    "distractors": [
+      "ところに、ところへ、ところを",
+      "がち",
+      "つい",
+      "ところ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1621-fill-3",
+    "point": "まま",
+    "meaning": "as it is, remain unchanged",
+    "quizQuestion": "この自転車は今月の初めからここに置かれた{___}だ。\n(This bicycle has been left here since the beginning of this month.)",
+    "correctAnswer": "まま",
+    "distractors": [
+      "うちに",
+      "ところに、ところへ、ところを",
+      "ところ",
+      "ついでに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1621-fill-4",
+    "point": "まま",
+    "meaning": "as it is, remain unchanged",
+    "quizQuestion": "この窓は一ヶ月割れた{___}になっている。\n(This window has been broken for a month.)",
+    "correctAnswer": "まま",
+    "distractors": [
+      "時",
+      "ところに、ところへ、ところを",
+      "時間がたつ",
+      "までに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-589-fill-0",
+    "point": "〜ところ(だ)",
+    "meaning": "I am about to / I was about to",
+    "quizQuestion": "私は息子がクッキーを盗み食いしようとしている{___}を見つけた。\n(I caught my son stealing from a cookie jar.)",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "時間がたつ",
+      "まま",
+      "ところに、ところへ、ところを",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-589-fill-1",
+    "point": "〜ところ(だ)",
+    "meaning": "I am about to / I was about to",
+    "quizQuestion": "バスは発車する{___}だった。\n(The bus was about to start.)",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "ついでに",
+      "まま",
+      "までに",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-589-fill-3",
+    "point": "〜ところ(だ)",
+    "meaning": "I am about to / I was about to",
+    "quizQuestion": "これから、部屋を掃除する{___}です。\n(I'm just about to start cleaning up my room.)",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "ついでに",
+      "時間がたつ",
+      "うちに",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-888-fill-0",
+    "point": "ところ",
+    "meaning": "place, time, occasion",
+    "quizQuestion": "今着いた{___}です\n(I am just now arriving (Lit: now arrival time is))",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "ところ(だ) (所だ・処だ)",
+      "まま",
+      "じゅう／ちゅう",
+      "ついでに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-888-fill-2",
+    "point": "ところ",
+    "meaning": "place, time, occasion",
+    "quizQuestion": "あなたはそれを終えましたか。それどこか、今始めた{___}です。\n(Have you finished it? On the contrary, I've just begun.)",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "までに",
+      "ところに、ところへ、ところを",
+      "うちに",
+      "時間がたつ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-888-fill-3",
+    "point": "ところ",
+    "meaning": "place, time, occasion",
+    "quizQuestion": "あなたは昨晩私が彼女と二人っきりでいる{___}を見つけて驚いたにちがいない。\n(You must have been surprised to find me with her alone last night.)",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "時",
+      "まま",
+      "ところに、ところへ、ところを",
+      "までに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-888-fill-4",
+    "point": "ところ",
+    "meaning": "place, time, occasion",
+    "quizQuestion": "あなたは当分の間私の{___}にいても良い。\n(You may stay with me for the time being.)",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "うちに",
+      "ついでに",
+      "までに",
+      "時間がたつ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1737-fill-0",
+    "point": "までに",
+    "meaning": "by (day, date, time)",
+    "quizQuestion": "明日{___}それを済ませてしまうべきです。\n(You ought to have done it by tomorrow.)",
+    "correctAnswer": "までに",
+    "distractors": [
+      "ところに、ところへ、ところを",
+      "ところ(だ) (所だ・処だ)",
+      "ところ",
+      "まま"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1737-fill-1",
+    "point": "までに",
+    "meaning": "by (day, date, time)",
+    "quizQuestion": "お昼{___}戻らないといけない。\n((I) need to be back by noon.)",
+    "correctAnswer": "までに",
+    "distractors": [
+      "時間がたつ",
+      "ところに、ところへ、ところを",
+      "ところ",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1737-fill-2",
+    "point": "までに",
+    "meaning": "by (day, date, time)",
+    "quizQuestion": "書類を夜{___}ださなければなりません。\n(Document must be submitted by  evening.)",
+    "correctAnswer": "までに",
+    "distractors": [
+      "時",
+      "ところに、ところへ、ところを",
+      "ところ(だ) (所だ・処だ)",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1131-fill-0",
+    "point": "うちに",
+    "meaning": "while; during; as",
+    "quizQuestion": "若い{___}本をたくさん読みなさい。\n(While you are young, read many books.)",
+    "correctAnswer": "うちに",
+    "distractors": [
+      "よくも〜ものだ",
+      "時間がたつ",
+      "ついでに",
+      "ところ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1131-fill-1",
+    "point": "うちに",
+    "meaning": "while; during; as",
+    "quizQuestion": "暇な{___}、遊びに来てください。\n(While you are free, come here and play with me please.)",
+    "correctAnswer": "うちに",
+    "distractors": [
+      "時",
+      "ところ",
+      "まま",
+      "時間がたつ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1131-fill-2",
+    "point": "うちに",
+    "meaning": "while; during; as",
+    "quizQuestion": "暗黙の{___}承諾する。\n(Accept implicitly.)",
+    "correctAnswer": "うちに",
+    "distractors": [
+      "たっけ",
+      "ところに、ところへ、ところを",
+      "ところ(だ) (所だ・処だ)",
+      "までに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1131-fill-3",
+    "point": "うちに",
+    "meaning": "while; during; as",
+    "quizQuestion": "みるみる{___}太った。\n(He gained weight just while I was watching him.)",
+    "correctAnswer": "うちに",
+    "distractors": [
+      "時",
+      "ついでに",
+      "なかったろう",
+      "時間がたつ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1131-fill-4",
+    "point": "うちに",
+    "meaning": "while; during; as",
+    "quizQuestion": "どうぞ、熱い{___}、食べて下さい。\n(Please go ahead and eat it while it's still hot)",
+    "correctAnswer": "うちに",
+    "distractors": [
+      "なかったろう",
+      "たっけ",
+      "ついでに",
+      "のに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1162-fill-0",
+    "point": "ところに、ところへ、ところを",
+    "meaning": "(just) when",
+    "quizQuestion": "こっそりたばこを吸っている{___}妹に見られた。\n(I was having a cheeky cigarette and on that occasion, I was seen by my little sister)",
+    "correctAnswer": "ところを",
+    "distractors": [
+      "時間がたつ",
+      "ついでに",
+      "ところ(だ) (所だ・処だ)",
+      "ところ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1162-fill-1",
+    "point": "ところに、ところへ、ところを",
+    "meaning": "(just) when",
+    "quizQuestion": "ぐっすり寝ている{___}地震が起きて、はっと目が覚めた。\n(An earthquake hit right when I was soundly asleep, and I jerked awake.)",
+    "correctAnswer": "ところに",
+    "distractors": [
+      "うちに",
+      "時間がたつ",
+      "ところ",
+      "ついでに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1162-fill-2",
+    "point": "ところに、ところへ、ところを",
+    "meaning": "(just) when",
+    "quizQuestion": "彼女に電話をかけようとした{___}へ、彼女のほうからかかってきた。\n(Just when I had decided to give her a call, she phoned me.)",
+    "correctAnswer": "ところ",
+    "distractors": [
+      "うちに",
+      "までに",
+      "まま",
+      "ついでに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1162-fill-3",
+    "point": "ところに、ところへ、ところを",
+    "meaning": "(just) when",
+    "quizQuestion": "犯人は、店から出てきた{___}、警官に捕らえられた。\n(Just as the thief left the store, a policeman arrested him.)",
+    "correctAnswer": "ところを",
+    "distractors": [
+      "時間がたつ",
+      "ついでに",
+      "うちに",
+      "までに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1162-fill-4",
+    "point": "ところに、ところへ、ところを",
+    "meaning": "(just) when",
+    "quizQuestion": "お忙しい{___}来てくださって、ありがとうございます。\n(Thank you very much for coming when you're so busy.)",
+    "correctAnswer": "ところを",
+    "distractors": [
+      "まま",
+      "じゅう／ちゅう",
+      "うちに",
+      "ついでに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1719-fill-0",
+    "point": "時間がたつ",
+    "meaning": "passing of time",
+    "quizQuestion": "{___}のも忘れちゃったよ\n(I lost track of time.)",
+    "correctAnswer": "時間がたつ",
+    "distractors": [
+      "までに",
+      "ついでに",
+      "ところ(だ) (所だ・処だ)",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1719-fill-1",
+    "point": "時間がたつ",
+    "meaning": "passing of time",
+    "quizQuestion": "私は{___}のを待った。\n(I waited for time to pass .)",
+    "correctAnswer": "時間がたつ",
+    "distractors": [
+      "ところに、ところへ、ところを",
+      "まま",
+      "ところ",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1719-fill-2",
+    "point": "時間がたつ",
+    "meaning": "passing of time",
+    "quizQuestion": "忙しいときは{___}のが早い。\n(Time passes quickly when you're busy.)",
+    "correctAnswer": "時間がたつ",
+    "distractors": [
+      "ところ(だ) (所だ・処だ)",
+      "ついでに",
+      "時",
+      "ところ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1719-fill-3",
+    "point": "時間がたつ",
+    "meaning": "passing of time",
+    "quizQuestion": "楽しいとき、{___}のは早い。\n(Time flies when you are having fun.)",
+    "correctAnswer": "時間がたつ",
+    "distractors": [
+      "まま",
+      "ところ(だ) (所だ・処だ)",
+      "ところ",
+      "じゅう／ちゅう"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-1719-fill-4",
+    "point": "時間がたつ",
+    "meaning": "passing of time",
+    "quizQuestion": "コンデンサは{___}と電荷を失う。\n(Capacitors lose their charge over time.)",
+    "correctAnswer": "時間がたつ",
+    "distractors": [
+      "時",
+      "ところに、ところへ、ところを",
+      "まま",
+      "ついでに"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-739-fill-2",
+    "point": "じゅう／ちゅう",
+    "meaning": "throughout, through, during all",
+    "quizQuestion": "会議中（{___}）にお腹がグーグー鳴っていて困ったよ。\n(My stomach started growling right there in the meeting. It was embarrassing.)",
+    "correctAnswer": "ちゅう",
+    "distractors": [
+      "ところ",
+      "ついでに",
+      "うちに",
+      "ところに、ところへ、ところを"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  },
+  {
+    "id": "ja-gram-n3-739-fill-4",
+    "point": "じゅう／ちゅう",
+    "meaning": "throughout, through, during all",
+    "quizQuestion": "家内は海外旅行中（{___}）よく電話をかけてきた。\n(My wife often rang me up during her travel abroad.)",
+    "correctAnswer": "ちゅう",
+    "distractors": [
+      "時",
+      "まま",
+      "ところに、ところへ、ところを",
+      "時間がたつ"
+    ],
+    "groupId": "temporal",
+    "pedagogicalNote": "時 = when (general); うちに = while (before change); ところ = just at the moment of; まま = as it remains; ついでに = while already doing something else; じゅう/ちゅう = throughout (all of); までに = by (deadline); 時間がたつ = time passing"
+  }
+]

@@ -1,0 +1,1118 @@
+deck_id: ancient_greece
+name: "Ancient Greece"
+domain: history
+sub_domain: ancient_greece
+target_facts: 250
+minimum_facts: 200
+data_sources:
+- name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ancient_Greece
+  license: CC-BY-SA-4.0
+  usage: fact text, explanations, biographical details, historical context
+- name: Wikidata
+  url: https://www.wikidata.org/wiki/Q11812
+  license: CC0
+  usage: structured data (dates, locations, rulers, battles)
+asset_sources:
+- type: historical_illustrations
+  source: custom pixel art
+  license: original work
+  note: Generate via ComfyUI — Greek hoplites, philosophers, temples, maps, pottery
+
+# ============================================================
+# SOURCE DATA — 7 chain themes
+# All facts verified against Wikipedia URLs listed per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+# ============================================================
+source_data:
+
+  # ----------------------------------------------------------
+  # THEME 0: City-States — Athens vs Sparta
+  # ----------------------------------------------------------
+  city_states:
+    Cleisthenes_Reforms_508BCE:
+      date: '508/507 BCE'
+      location: 'Athens, Attica, Greece'
+      key_terms: 'Cleisthenes, Father of Athenian Democracy, ten tribes, sortition, isonomia, ostracism, demes, Boule 500'
+      notes: >
+        Cleisthenes (c. 570–508 BCE) reformed the Athenian constitution in 508/507 BCE. He is called
+        the "Father of Athenian Democracy." He replaced four family-based tribes with ten new tribes
+        (phylai) organized by geography (demes), breaking aristocratic power networks. He expanded
+        the council (Boule) from 400 to 500 members (50 per tribe), introduced sortition (random
+        selection by lot) for government positions, and established isonomia ("equality before the
+        law") for all male citizens. He also introduced the mechanism of ostracism (first actually
+        used 487 BCE). Before his reforms, traditional tribal organization based on family had enabled
+        tyranny under Hippias.
+      source_url: 'https://en.wikipedia.org/wiki/Cleisthenes'
+
+    Athenian_Assembly_Ecclesia:
+      date: '5th–4th century BCE'
+      location: 'Athens — met at the Pnyx hill'
+      key_terms: 'Ecclesia, assembly, adult male citizens, direct democracy, 6000 quorum, show of hands'
+      notes: >
+        The Ecclesia was the central democratic institution of Athens. Open to all adult male citizens
+        over age 20. Met 10 times yearly in the 5th century BCE, expanded to 40 times annually by
+        the 4th century. Functions included making decrees, electing officials, legislating, and trying
+        political crimes. Voting occurred by show of hands; for certain decisions (e.g., citizenship
+        grants) a quorum of 6,000 votes was required, using colored stones. Only 10–20% of the total
+        population could participate — excluded women, slaves, metics, and children.
+      source_url: 'https://en.wikipedia.org/wiki/Athenian_democracy'
+
+    Boule_Council_of_500:
+      date: 'Established by Cleisthenes 508/507 BCE'
+      location: 'Bouleuterion in the Agora, Athens'
+      key_terms: 'Boule, 500 members, lottery, 30 years old minimum, prytaneis, 36-day rotating committee, Bouleuterion'
+      notes: >
+        Expanded from Solon's original 400-member council. 500 members selected by lottery annually —
+        50 from each of the 10 tribes. Members had to be at least 30 years old. Responsibilities:
+        managing finances, military affairs, and drafting proposals for the Assembly's consideration.
+        A rotating standing committee (prytaneis) of 50 served 36-day terms. Members swore a
+        democratic oath to "advise according to the laws what was best for the people." Met in the
+        Bouleuterion in the Agora.
+      source_url: 'https://en.wikipedia.org/wiki/Athenian_democracy'
+
+    Ostracism:
+      date: 'Introduced c. 506 BCE; first used 487 BCE; last used c. 417 BCE'
+      location: 'Athens'
+      key_terms: 'ostraka, pottery shards, ten-year exile, 6000 quorum, Themistocles, Aristides, Cimon'
+      notes: >
+        An Athenian democratic procedure allowing citizens to expel any citizen from Athens for ten
+        years. Citizens wrote names on pottery shards called ostraka — broken pottery that was
+        "abundant and virtually free." Two-stage process: first a vote on whether to hold an ostracism;
+        second the actual vote requiring a quorum of at least 6,000. The person receiving the most
+        votes had ten days to leave. Exile lasted exactly ten years; individuals were allowed to return
+        without stigma and property was not confiscated. Notable victims: Themistocles, Aristides,
+        Cimon. Last usage c. 417 BCE (Hyperbolus). Approximately 12+ individuals total were ostracized.
+      source_url: 'https://en.wikipedia.org/wiki/Ostracism'
+
+    Athenian_Agora:
+      date: 'Developed from 6th century BCE; major excavations began 1931'
+      location: 'Northwest of the Acropolis, Athens'
+      key_terms: 'agora, marketplace, civic heart, Stoa of Attalos, Bouleuterion, Tholos, Temple of Hephaestus, Bema, speakers platform'
+      notes: >
+        The Agora served dual functions: both a marketplace AND the civic heart of democratic Athens.
+        Located northwest of the Acropolis, bounded on the south by the hill of the Areopagus.
+        Key buildings: Stoa of Attalos (2nd century BCE, reconstructed as museum), Tholos (circular
+        administrative building), Bouleuterion (council chamber), Temple of Hephaestus (best preserved
+        Greek temple — converted to church 7th century CE), Monument of the Eponymous Heroes (public
+        notice board for legislation and conscription). Also contained the Bema (speakers' platform).
+        Major systematic excavations began 1931 by the American School of Classical Studies.
+      source_url: 'https://en.wikipedia.org/wiki/Agora_of_Athens'
+
+    Acropolis_and_Parthenon:
+      date: 'Parthenon built c. 447–432 BCE'
+      location: 'Acropolis, Athens'
+      key_terms: 'Parthenon, Athena Parthenos, Ictinus, Callicrates, Phidias, chryselephantine, Pericles, Propylaea, Erechtheion'
+      notes: >
+        The Acropolis is "an ancient citadel located on a rocky outcrop above the city of Athens."
+        The Parthenon was built under Pericles' leadership; construction c. 447–432 BCE (rebuilding
+        after Persian destruction in 480 BCE). Architects: Ictinus and Callicrates, working under
+        sculptor Phidias. Dedicated to Athena Parthenos (Athena the Virgin). Inside stood a massive
+        chryselephantine (gold and ivory) statue of Athena Parthenos by Phidias, approximately 12
+        meters tall. Also on the Acropolis: Propylaea, Erechtheion, Temple of Athena Nike — all
+        commissioned by Pericles. The Parthenon was severely damaged in 1687 when a Venetian artillery
+        shell ignited the Ottoman gunpowder magazine stored inside.
+      source_url: 'https://en.wikipedia.org/wiki/Acropolis_of_Athens'
+
+    Long_Walls:
+      date: 'Built 462–458 BCE; destroyed 404 BCE; rebuilt 395–391 BCE'
+      location: 'Athens to Piraeus, Attica, Greece'
+      key_terms: 'Long Walls, Piraeus, six kilometers, Athens an island, naval strategy, destroyed by Sparta 404 BCE'
+      notes: >
+        Defensive fortifications connecting Athens to its port at Piraeus (and originally also
+        Phaleron). Approximately 6 kilometers (3.7 miles) in total length. Effectively made Athens
+        "an island within the mainland" — impossible to besiege by land. Built 462–458 BCE (completed
+        shortly after the Battle of Tanagra in 457 BCE). A Middle Wall was added in the 440s BCE.
+        Strategic purpose: guaranteed Athens would "never be cut off from supplies as long as she
+        controlled the sea." Destroyed 404 BCE following Athens' defeat in the Peloponnesian War —
+        Sparta demanded their demolition. Rebuilt 395–391 BCE during the Corinthian War with Persian
+        financial support. Final destruction 87–86 BCE by Roman general Sulla.
+      source_url: 'https://en.wikipedia.org/wiki/Long_Walls'
+
+    Athenian_Trireme:
+      date: 'Fleet of 200 built 483 BCE; decisive use at Salamis 480 BCE'
+      location: 'Piraeus, Athens; Aegean Sea'
+      key_terms: 'trireme, 170 rowers, bronze ram, 200 crew, Themistocles, Laurion silver mines, three tiers of oars, parexeiresia'
+      notes: >
+        An ancient warship with three rows of oars (hence "tri-reme"). Crew: approximately 200
+        personnel total — 170 rowers arranged in three tiers (thranitai, zygitai, thalamitai),
+        deck crew, officers, helmsman, and 10–20 marines. Three rows were staggered vertically via
+        an outrigger called the parexeiresia. Primary weapon: a bronze ram (embolon) projecting from
+        the bow. Speed: ~6 knots cruising; maximum 9 knots (achieved by reconstructed Olympias).
+        Daily range 80–100 km. In 483 BCE, Themistocles persuaded Athens to use silver from the
+        Laurion mines to build a fleet of 200 triremes. Athens contributed 180 ships of the 371–378
+        Greek triremes at Salamis. The trireme "formed the source and foundation of Athens' power."
+      source_url: 'https://en.wikipedia.org/wiki/Trireme'
+
+    Sparta_Government:
+      date: 'Classical period c. 600–371 BCE'
+      location: 'Sparta (Lacedaemon), Eurotas Valley, Peloponnese, Greece'
+      key_terms: 'dual kingship, Agiad dynasty, Eurypontid dynasty, five ephors, Gerousia, 30 members, Heracles descent'
+      notes: >
+        Sparta (Lacedaemon) was ruled by two hereditary kings simultaneously from two separate royal
+        families — the Agiad and Eurypontid dynasties — both claiming descent from Heracles. Kings
+        held primarily religious, judicial, and military duties. Their powers diminished over time as
+        the five ephors gained influence. Ephors: exactly five, elected by popular assembly via
+        acclamation (loudness of shouts), served one year, and could accompany kings on campaigns.
+        Plato called the ephors "tyrants, who ran Sparta as despots while the kings were little more
+        than generals." The Gerousia (council of elders): 30 members total (the two kings plus 28
+        elected elders), minimum age 60, held office for life, the highest court for capital cases.
+      source_url: 'https://en.wikipedia.org/wiki/Sparta'
+
+    Agoge_Spartan_Military_Education:
+      date: 'Classical period'
+      location: 'Sparta, Peloponnese, Greece'
+      key_terms: 'agoge, age 7, three divisions, barefoot, steal food, Krypteia, helot control, hypomeiones'
+      notes: >
+        Boys entered the agoge at age 7 and continued until age 21; a Spartan man could "graduate
+        from the agoge at age 30." Three age divisions: Paides (ages 7–14), Paidiskoi (ages 15–19),
+        Hebontes (ages 20–29). Training included military exercises, pain tolerance, hunting, dancing,
+        singing, and rhetoric. Boys faced deliberate deprivation: minimal food, sleep, and shelter.
+        Walked barefoot; received only one cloak annually after age 12. Boys were expected to steal
+        food — beaten if caught, not for stealing but for getting caught. The Krypteia: exceptional
+        graduates selected for a secretive unit tasked with controlling enslaved helots through
+        violence — functions as both initiation rite and terror mechanism. Those not accepted into a
+        syssition (communal mess) did not become Spartiates — they became hypomeiones (inferiors).
+      source_url: 'https://en.wikipedia.org/wiki/Agoge'
+
+    Helots:
+      date: 'Conquered c. 8th century BCE; major revolt 464 BCE'
+      location: 'Messenia and Laconia, Peloponnese, Greece'
+      key_terms: 'helots, Messenia, enslaved population, seven helots per Spartan, annual war declaration, Krypteia, Great Helot Revolt 464 BCE'
+      notes: >
+        The helots were the enslaved population of Sparta, from two regions: Messenia (conquered
+        during the Messenian Wars, 8th century BCE — the majority) and Laconia. At the Battle of
+        Plataea (479 BCE), Herodotus recorded "seven helots for each of the 5,000 Spartan soldiers"
+        (~35,000 helots present). By the 4th century BCE: estimated 170,000–224,000 helots vs.
+        declining Spartan citizens. Helots could retain half their agricultural yield and could marry.
+        According to Aristotle, ephors "annually declared war on the helots," allowing Spartans to
+        kill them without religious pollution. The Krypteia — young Spartan graduates conducted raids
+        targeting helots — ritualized terror to maintain control. Great Helot Revolt (464 BCE):
+        following a major earthquake, helots and perioeci held positions on Mt. Ithome — the most
+        significant uprising in helot history.
+      source_url: 'https://en.wikipedia.org/wiki/Helots'
+
+    Laconic_Speech:
+      date: 'Classical period'
+      location: 'Laconia (region containing Sparta), Peloponnese, Greece'
+      key_terms: 'laconic phrase, terse, Laconia, "If", molon labe, Philip II, Dienekes, Thermopylae'
+      notes: >
+        A "laconic phrase" is a concise or terse statement — the term derives from Laconia, the
+        Greek region containing Sparta. Ancient Spartans cultivated verbal economy; Plato's Protagoras
+        suggests Spartans strategically concealed philosophical sophistication behind apparent bluntness.
+        Famous examples: Philip II of Macedon threatened "If I invade Laconia, I shall turn you out" —
+        the Spartan ephors replied with a single word: "If." At Thermopylae, a Persian boasted arrows
+        would "block out the sun"; Spartan Dienekes replied: "Then we will fight in the shade"
+        (Herodotus 7.226). At Thermopylae, Xerxes demanded surrender of weapons; Leonidas replied:
+        "Molon labe" ("Come and take them") — confirmed by Plutarch's Sayings of the Spartans.
+      source_url: 'https://en.wikipedia.org/wiki/Laconic_phrase'
+
+    Peloponnesian_War:
+      date: 'April 431 BCE – April 404 BCE (27 years)'
+      location: 'Greek world: Athens, Sparta, Sicily, Aegean'
+      key_terms: 'Peloponnesian War, 27 years, Plague of Athens 430 BCE, Sicilian Expedition 415-413 BCE, Alcibiades, Thirty Tyrants, Lysander'
+      notes: >
+        Athens (Delian League) vs. Sparta (Peloponnesian League), duration 27 years. Plague of
+        Athens (430–426 BCE): killed approximately 75,000–100,000 (~25% of Athens' population);
+        killed Pericles (died 429 BCE); Thucydides contracted it and survived. Sicilian Expedition
+        (415–413 BCE): Athens launched an ambitious invasion of Sicily under Alcibiades, Nicias, and
+        Lamachus; Alcibiades was recalled mid-voyage, defected to Sparta; entire Athenian
+        expeditionary force was killed, captured, or enslaved — ~7,000 survivors imprisoned in stone
+        quarries near Syracuse. Spartan general Lysander destroyed 168 Athenian ships at Aegospotami
+        (405 BCE). Athens surrendered 404 BCE. Thirty Tyrants installed by Sparta (404–403 BCE):
+        ruled 8 months, led by Critias, executed approximately 1,500 people without trial (~5% of
+        Athens' population). Overthrown by Thrasybulus; Amnesty of 403 restored democratic governance.
+      source_url: 'https://en.wikipedia.org/wiki/Peloponnesian_War'
+
+  # ----------------------------------------------------------
+  # THEME 1: Persian Wars
+  # ----------------------------------------------------------
+  persian_wars:
+    Ionian_Revolt:
+      date: '499–493 BCE'
+      location: 'Asia Minor and Cyprus'
+      key_terms: 'Ionian Revolt, Aristagoras, Miletus, Sardis burned, Athens 20 triremes, Battle of Lade, Darius vengeance'
+      notes: >
+        Duration: 499–493 BCE (six years). Primary causes: dissatisfaction with Persian-appointed
+        tyrants; failed expedition to conquer Naxos (499 BCE) prompted Aristagoras to incite
+        rebellion. In 498 BCE Athenian (20 triremes) and Eretrian (5 triremes) forces joined —
+        Greeks captured and burned Sardis (satrapal capital). In 494 BCE, at the Battle of Lade
+        the Ionian fleet was defeated after Samian defection; Miletus fell, its population enslaved
+        or deported. In 493 BCE Persian forces captured remaining cities. Darius swore vengeance
+        against Athens and Eretria: "Master, remember the Athenians" (Herodotus 5.105). Led
+        directly to the First Persian Invasion (492 BCE) and the Battle of Marathon (490 BCE).
+      source_url: 'https://en.wikipedia.org/wiki/Ionian_Revolt'
+
+    Battle_of_Marathon:
+      date: 'September 12, 490 BCE'
+      location: 'Marathon, Attica, Greece'
+      key_terms: 'Miltiades, 10000 Greeks, 6400 Persians killed, 192 Athenians killed, flanking wings, Pheidippides, 240km to Sparta'
+      notes: >
+        Date: September 12, 490 BCE (6 Boedromion). Commander: Miltiades. Greek forces: approximately
+        10,000–11,000 (9,000 Athenians + 1,000 Plataeans). Persian forces: modern estimates ~25,000
+        infantry + ~1,000 cavalry. Outcome: decisive Greek victory. Casualties per Herodotus: 192
+        Athenians + 11 Plataeans killed; 6,400 Persians counted on battlefield. Tactical innovation:
+        Miltiades strengthened the flanking wings while thinning the center — the Persian cavalry
+        was never deployed effectively. Pheidippides ran approximately 240 km to Sparta in two days
+        to request military aid BEFORE the battle (Herodotus confirms this). The later legend of a
+        messenger running 40 km from Marathon to Athens dying with the news of victory is NOT in
+        Herodotus — attributed by Lucian centuries later, widely called "a likely romantic invention."
+        The 42-km marathon race at the 1896 Olympics was inspired by this later legend.
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Marathon'
+
+    Xerxes_Invasion_Preparations:
+      date: '483–480 BCE'
+      location: 'Persia; Hellespont, Thrace; Mt. Athos peninsula'
+      key_terms: 'Xerxes I, canal Mount Athos, pontoon bridges Hellespont, whipped 300 times, second Persian invasion'
+      notes: >
+        Xerxes I (reigned October 486–August 465 BCE) inherited the task of invading Greece from
+        Darius I after his death in October 486 BCE. Preparations: a canal was dug through the
+        Mount Athos peninsula (Xerxes Canal); provisions were stored at stations on the road through
+        Thrace; two pontoon bridges were built across the Hellespont. When a storm destroyed the
+        initial bridge cables, Xerxes "ordered the Hellespont whipped 300 times" and had fetters
+        thrown into the water (Herodotus). After defeating Greek forces at Thermopylae and Artemisium,
+        Xerxes captured and destroyed Athens (480 BCE). He was defeated at the Battle of Salamis
+        (September 480 BCE). Xerxes was assassinated in August 465 BCE by Artabanus, commander of
+        the royal bodyguard.
+      source_url: 'https://en.wikipedia.org/wiki/Xerxes_I'
+
+    Battle_of_Thermopylae:
+      date: '480 BCE (three days, exact date July–September disputed)'
+      location: 'Pass of Thermopylae, central Greece'
+      key_terms: 'Leonidas, 300 Spartans, 7000 Greeks total, Ephialtes traitor, Anopaea path, Immortals, molon labe'
+      notes: >
+        Greek forces: ~7,000 total — 300 Spartans (the famous core), 700 Thespians, 400 Thebans,
+        1,000 Phocians, and other contingents. Greek commander: Leonidas I of Sparta. Persian forces:
+        modern scholars estimate 120,000–300,000 (Herodotus claimed 2.6 million — widely considered
+        inflated). Persian commander: Xerxes I. Famous phrase from Leonidas when demanded to surrender
+        weapons: "Molon labe" ("Come and take them") — confirmed by Plutarch. The Betrayal: a local
+        named Ephialtes revealed the Anopaea mountain path to the Persians, allowing them to outflank
+        the Greeks. Ephialtes was motivated by desire for monetary compensation; his name became
+        synonymous with "traitor" in Greek culture; Greeks placed a bounty on his head; he was killed
+        c. 470 BCE. The Immortals (Persian elite 10,000-strong force) could not break Greek defenses
+        by frontal assault. Outcome: Persian victory after flanking; 300 Spartans and 700 Thespians
+        fought to the last, buying Greece time to prepare.
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Thermopylae'
+
+    Battle_of_Salamis:
+      date: '26–27 September 480 BCE'
+      location: 'Straits between mainland Greece and Salamis Island, Saronic Gulf'
+      key_terms: 'Themistocles, narrow straits, 371 Greek triremes, Sicinnus deception, Xerxes throne, Artemisia I, 200-300 Persian ships destroyed'
+      notes: >
+        Date: 26–27 September 480 BCE. Greek fleet: 371–378 triremes (Athens contributed 180 ships).
+        Persian fleet: modern historians estimate 600–800 vessels present. Themistocles' strategy:
+        persuaded the Greek fleet to engage in the narrow straits, negating Persian numerical
+        superiority. Deception: Themistocles sent his servant Sicinnus to Xerxes with a false
+        message that the Greek fleet was disintegrating (Herodotus 8.75). Xerxes "ordered a throne
+        to be set up on the slopes of Mount Aigaleo" to watch. Artemisia I of Caria (queen of
+        Halicarnassus) was the only naval commander who advised against the battle; during the fight
+        she rammed a friendly Calyndian vessel to escape an Athenian pursuer; Xerxes — thinking she
+        sank an enemy ship — declared: "My men have become women; and my women, men" (Herodotus 8.88).
+        Outcome: Greeks destroyed approximately 200–300 Persian ships while losing only ~40 vessels,
+        "securing Greece's survival as an independent civilization."
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Salamis'
+
+    Battle_of_Plataea:
+      date: 'August 27 or 28, 479 BCE'
+      location: 'Plataea, Boeotia, Greece'
+      key_terms: 'Pausanias, Mardonius killed, 75000 Greeks, decisive Greek victory, end of Persian invasion, Battle of Mycale simultaneous'
+      notes: >
+        Date: August 27 or 28, 479 BCE. Greek commanders: Pausanias (Spartan regent, overall
+        commander), Aristides (Athens). Persian commanders: Mardonius (killed in battle), Artabazos.
+        Greek forces: approximately 75,000–85,000 (modern estimates). Persian forces: 70,000–120,000
+        (modern consensus). Outcome: decisive Greek victory — the Persian left wing routed after
+        Mardonius was killed. "Decisively ended the invasion." Combined with the simultaneous Battle
+        of Mycale, terminated the Second Persian Invasion. Pausanias's later fate: accused of
+        conspiring with Xerxes I (478 BCE); when he sought sanctuary in the Temple of Athena,
+        Spartans bricked up the entrance and starved him; his own mother reportedly participated in
+        sealing the temple.
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Plataea'
+
+    Delian_League:
+      date: 'Founded 478 BCE; treasury moved 454 BCE; dissolved 404 BCE'
+      location: 'Originally Delos; treasury moved to Athens 454 BCE'
+      key_terms: 'Delian League, 150-330 city-states, Delos treasury, Pericles moved treasury 454 BCE, Athenian Empire, dissolved 404 BCE'
+      notes: >
+        Founded in 478 BCE as a confederacy of 150–330 Greek city-states under Athenian leadership.
+        Stated objective: "avenge the wrongs they suffered by ravaging the territory of the king" —
+        i.e., continue fighting Persia. Member states chose between armed forces OR monetary tributes;
+        most chose financial contributions, which strengthened Athens's naval dominance while
+        weakening allies' military independence. Treasury location: originally on the sacred island
+        of Delos. In 454 BCE Pericles transferred the treasury from Delos to Athens, enabling funding
+        for the Parthenon and other construction projects. By the mid-5th century, the league had
+        evolved into what historians call the "Athenian Empire." Dissolved 404 BCE when Sparta
+        defeated Athens.
+      source_url: 'https://en.wikipedia.org/wiki/Delian_League'
+
+  # ----------------------------------------------------------
+  # THEME 2: Golden Age of Athens
+  # ----------------------------------------------------------
+  golden_age_athens:
+    Pericles:
+      date: 'c. 495–429 BCE; dominated Athens 461–429 BCE'
+      location: 'Athens'
+      key_terms: 'Pericles, strategos, first citizen, Funeral Oration 431/430 BCE, Parthenon building program, Aspasia, Plague of Athens'
+      notes: >
+        Born c. 495 BCE in Athens; died 429 BCE from the Plague of Athens (aged ~66). His primary
+        official role was strategos (general/military commander), an elected position; he held it
+        repeatedly. Thucydides described him as "the first citizen of Athens" (not a formal title).
+        He dominated Athenian politics from approximately 461–429 BCE. He initiated the building
+        program on the Acropolis (Parthenon, Propylaea, Erechtheion), funded by the Delian League
+        treasury moved to Athens in 454 BCE. His famous Funeral Oration was delivered in winter
+        431/430 BCE to honor soldiers who died in the first year of the Peloponnesian War. He
+        promoted populist policies: paid jury service, public funding for theater attendance. Military
+        strategy: advocated defensive naval power, avoided direct land battles with Sparta.
+        Thucydides wrote Athens was "in name a democracy but, in fact, governed by its first citizen."
+      source_url: 'https://en.wikipedia.org/wiki/Pericles'
+
+    Phidias:
+      date: 'c. 480–430 BCE'
+      location: 'Athens; Olympia'
+      key_terms: 'Phidias, chryselephantine, Athena Parthenos, Statue of Zeus at Olympia, Seven Wonders, Athena Promachos, imprisoned'
+      notes: >
+        Considered "one of the greatest of all ancient Greek sculptors." Specialized in chryselephantine
+        (gold and ivory) statues. Supervised the entire sculptural program of the Parthenon,
+        commissioned by Pericles in 447 BCE. Major works: (1) Athena Parthenos — housed inside the
+        Parthenon, gold and ivory, c. 438 BCE, now lost; (2) Statue of Zeus at Olympia — c. 432 BCE,
+        one of the Seven Wonders of the Ancient World, now lost; (3) Athena Promachos — colossal
+        bronze statue on the Acropolis, now lost. Fate: accused of embezzlement and impiety (charges
+        likely politically motivated to attack Pericles); "Plutarch records that Phidias was
+        imprisoned and died in jail." Archaeological evidence: excavations at Olympia (1954–1958)
+        uncovered his workshop and a cup inscribed "I belong to Phidias."
+      source_url: 'https://en.wikipedia.org/wiki/Phidias'
+
+    Aeschylus:
+      date: 'c. 525/524–456/455 BCE'
+      location: 'Athens; fought at Marathon 490 BCE and Salamis 480 BCE; died in Gela, Sicily'
+      key_terms: 'Aeschylus, Father of Tragedy, second actor, Oresteia 458 BCE, The Persians 472 BCE, 70-90 plays, 7 survive'
+      notes: >
+        Born c. 525/524 BCE in Eleusis; died c. 456/455 BCE in Gela, Sicily. Wrote an estimated
+        70–90 plays; only 7 survive complete. He fought at Marathon (490 BCE) and Salamis (480 BCE) —
+        battles, not plays, were on his epitaph. Dramatic innovation: added a SECOND actor to Greek
+        drama (previously only one actor plus chorus), enabling true dramatic conflict — confirmed
+        by Aristotle. The Oresteia (458 BCE) — his only surviving complete trilogy: 1) Agamemnon
+        (king returns from Troy, murdered by wife Clytemnestra); 2) The Libation Bearers (son Orestes
+        takes revenge); 3) The Eumenides (Orestes tried in Athens; first jury trial in mythology).
+        Other surviving plays: The Persians (472 BCE — based on Battle of Salamis), Seven Against
+        Thebes (467 BCE), The Suppliants (463 BCE).
+      source_url: 'https://en.wikipedia.org/wiki/Aeschylus'
+
+    Sophocles:
+      date: 'c. 497/496–406/405 BCE'
+      location: 'Athens'
+      key_terms: 'Sophocles, third actor, Oedipus Rex, Antigone, 120+ plays, 7 survive, won 24 of 30 contests, never below second'
+      notes: >
+        Born c. 497/496 BCE in Colonus; died winter 406/405 BCE (aged ~90–91). Wrote more than 120
+        plays; only 7 survive complete. Dramatic innovation: added a THIRD actor to Greek drama
+        (Aeschylus had added the second); reduced the chorus's narrative role. Also credited with
+        introducing scenery-painting techniques (skenographia). Dominated Athenian dramatic
+        competitions for nearly 50 years; won 24 of 30 contests; never placed below second. Major
+        surviving plays: Oedipus Rex (widely considered the greatest Greek tragedy); Antigone (duty
+        to the state vs. duty to the gods/family); Oedipus at Colonus (written near end of his life,
+        performed posthumously); Ajax, Electra, Philoctetes, Women of Trachis. Note: the Theban
+        plays were written separately for different competitions, years apart — not a deliberate trilogy.
+      source_url: 'https://en.wikipedia.org/wiki/Sophocles'
+
+    Euripides:
+      date: 'c. 480–406 BCE; born on Salamis Island, died in Macedon'
+      location: 'Athens'
+      key_terms: 'Euripides, 19 plays survive, Medea 431 BCE, Bacchae, psychological depth, deus ex machina, ordinary people extraordinary circumstances'
+      notes: >
+        Born c. 480 BCE on Salamis Island; died c. 406 BCE in Macedon. 19 plays survive complete —
+        the most of any Greek tragedian, more than Aeschylus and Sophocles combined. Won only 5
+        dramatic competitions during his lifetime (less celebrated than Sophocles). Dramatic
+        innovation: portrayed mythical heroes as "ordinary people in extraordinary circumstances";
+        pioneered psychological depth; used irony for both dramatic and comic effect. Enormous
+        influence on Roman drama and the "rebirth of tragedy in Renaissance Europe." Major works:
+        Medea (431 BCE — sorceress kills her own children to avenge husband Jason's betrayal);
+        Hippolytus (428 BCE); The Trojan Women (c. 415 BCE); The Bacchae (405 BCE, performed
+        posthumously); Electra (c. 420 BCE). Used the deus ex machina device extensively — more than
+        half his surviving tragedies employ it.
+      source_url: 'https://en.wikipedia.org/wiki/Euripides'
+
+    Aristophanes:
+      date: 'c. 446–386 BCE'
+      location: 'Athens'
+      key_terms: 'Aristophanes, Father of Comedy, 40 plays, 11 survive, The Clouds 423 BCE Socrates, Lysistrata 411 BCE, political satire'
+      notes: >
+        Born c. 446 BCE in Athens; died c. 386 BCE. Known as "The Father of Comedy" and "the Prince
+        of Ancient Comedy." Career span: 427 BCE – 386 BCE. Wrote approximately 40 plays; 11 survive
+        virtually complete — the most valuable examples of Old Comedy. His plays are political satires
+        targeting Athenian politicians, intellectuals, and social trends. Major works: The Acharnians
+        (425 BCE — first surviving comedy, antiwar satire); The Clouds (423 BCE — satirizes Socrates;
+        Plato credited it as contributing to Socrates' trial, though this is debated); The Birds
+        (414 BCE — considered his most imaginative work); Lysistrata (411 BCE — women withhold sex
+        to end the Peloponnesian War); The Frogs (405 BCE — Dionysus travels to Hades to bring back
+        Euripides).
+      source_url: 'https://en.wikipedia.org/wiki/Aristophanes'
+
+    Herodotus_and_Thucydides:
+      date: 'Herodotus c. 484–425 BCE; Thucydides c. 460–400 BCE'
+      location: 'Herodotus born Halicarnassus; Thucydides born Alimos (near Athens)'
+      key_terms: 'Herodotus, Father of History, Histories, Thucydides, scientific history, Peloponnesian War history, Melian Dialogue, exiled 20 years'
+      notes: >
+        Herodotus: born c. 484 BCE in Halicarnassus (modern Bodrum, Turkey — then under Persian
+        control); died c. 425 BCE. Title "Father of History" conferred by Roman orator Cicero.
+        Major work: Histories — comprehensive account of the Greco-Persian Wars covering the rise
+        of the Persian Empire, major battles, and extensive cultural digressions. Represents "the
+        earliest Greek prose to have survived intact." Thucydides: born c. 460 BCE; died c. 400 BCE.
+        Major work: History of the Peloponnesian War. Key innovation: "scientific history" — strict
+        impartiality, prioritized eyewitness testimony, excluded divine explanations. Served as an
+        Athenian general; exiled for 20 years after failing to prevent the Spartan capture of
+        Amphipolis (424/423 BCE). Survived the Plague of Athens. His history breaks off at 411 BCE
+        (the war ended 404 BCE). Famous reconstructed speech: the Melian Dialogue (realpolitik
+        between Athens and Melos, 416 BCE).
+      source_url: 'https://en.wikipedia.org/wiki/Herodotus'
+
+    Hippocrates:
+      date: 'c. 460–370 BCE; born on island of Kos'
+      location: 'Kos; practiced across Greek world'
+      key_terms: 'Hippocrates, Father of Medicine, natural causes of disease, humoral theory, four humors, Hippocratic Oath, Hippocratic Corpus'
+      notes: >
+        Born c. 460 BCE on the Greek island of Kos; died c. 370 BCE in Larissa (aged ~83–90). Title:
+        "Father of Medicine." First person credited with believing diseases had natural (not
+        supernatural) causes; separated medicine from religion. Developed clinical observation,
+        prognosis, and systematic disease categorization. Humoral theory (four humors: blood, phlegm,
+        yellow bile, black bile) dominated medicine for ~2,000 years. Hippocratic Oath: attributed
+        to Hippocrates; "serves as a foundation for other, similar oaths and laws that define good
+        medical practice." Modern medical graduates typically take derivatives of this oath. His
+        school produced the Hippocratic Corpus — a collection of ~60 medical texts.
+      source_url: 'https://en.wikipedia.org/wiki/Hippocrates'
+
+  # ----------------------------------------------------------
+  # THEME 3: Greek Philosophy
+  # ----------------------------------------------------------
+  greek_philosophy:
+    Pre_Socratic_Philosophers:
+      date: 'Thales c. 626–548 BCE; Anaximander c. 610–546 BCE; Heraclitus c. 504–501 BCE active; Parmenides c. 515–450s BCE; Pythagoras c. 570–495 BCE; Democritus c. 460–370 BCE; Empedocles c. 494–434 BCE'
+      location: 'Miletus (Thales, Anaximander); Ephesus (Heraclitus); Elea/southern Italy (Parmenides); Samos/Croton (Pythagoras); Abdera (Democritus); Akragas/Sicily (Empedocles)'
+      key_terms: 'pre-Socratic, Thales water, Anaximander apeiron, Heraclitus logos flux fire, Parmenides Being, Pythagoras numbers theorem, Democritus atomism void, Empedocles four elements love strife'
+      notes: >
+        Thales of Miletus: first philosopher in the Western tradition, first to use rational/natural
+        explanations; proposed water is the fundamental substance (arche); predicted a solar eclipse
+        in 585 BCE; one of the Seven Sages of Greece. Anaximander: succeeded Thales; proposed the
+        apeiron (indefinite, boundless) as the origin — not water or any single element; created one
+        of the first world maps; developed early evolutionary theories (humans descended from
+        fish-like creatures). Heraclitus: doctrine of flux ("everything flows," panta rhei); fire as
+        primary element; the Logos as a rational divine principle; known as "the Obscure"; "You cannot
+        step into the same river twice." Parmenides: "founder of ontology"; only Being exists —
+        eternal, unchanging; non-being cannot exist; influenced Plato's Theory of Forms.
+        Pythagoras: Pythagorean Theorem (Babylonians knew it earlier; he is credited with formal proof
+        in Greek tradition); founded secretive Pythagorean Brotherhood in Croton c. 530 BCE; believed
+        numbers underlie all reality. Democritus: formulated atomic theory — all matter consists of
+        indivisible atoms moving through void; proposed multiple worlds; called "the Laughing
+        Philosopher." Empedocles: four elements (earth, water, fire, air) — "became the standard
+        dogma for the next two thousand years"; two cosmic forces: Love (attraction) and Strife
+        (separation); the last Greek philosopher to record ideas in verse.
+      source_url: 'https://en.wikipedia.org/wiki/Pre-Socratic_philosophy'
+
+    Socrates:
+      date: 'c. 470–399 BCE; executed 399 BCE'
+      location: 'Athens'
+      key_terms: 'Socratic method, elenchus, I know that I know nothing, wrote nothing, Plato Xenophon sources, trial impiety, 500 jurors, hemlock'
+      notes: >
+        Born c. 470 BCE in Athens; died 399 BCE (aged ~71) — executed by drinking hemlock. Son of
+        Sophroniscus (stoneworker) and Phaenarete (midwife). The Socratic Method: a questioning
+        technique — systematic dialogue to examine beliefs and reveal contradictions; also called
+        elenchus. "I know that I know nothing" — associated with Socrates, though the exact phrase
+        is a later paraphrase; the concept comes from Plato's Apology. Wrote nothing: all knowledge
+        of him comes from Plato, Xenophon, and Aristophanes. Trial (399 BCE): charged with impiety
+        (asebeia) and corrupting the youth; tried before a jury of ~500 Athenians; found guilty;
+        proposed the "punishment" of free meals from the state — jury rejected this and sentenced him
+        to death. Refused offers to escape; spent his final night in prison with friends. Key source:
+        Plato's Apology (his account of Socrates' defense speech).
+      source_url: 'https://en.wikipedia.org/wiki/Socrates'
+
+    Plato:
+      date: 'c. 428/427–348/347 BCE; founded the Academy c. 387 BCE'
+      location: 'Athens'
+      key_terms: 'Plato, Academy 387 BCE, Theory of Forms, Republic, Allegory of the Cave, philosopher-kings, Symposium, operated 900 years'
+      notes: >
+        Born c. 428/427 BCE in Athens; died 348/347 BCE (aged ~80). Student of Socrates; after
+        Socrates' execution (399 BCE) Plato traveled extensively. The Academy (c. 387 BCE): founded
+        near a sacred grove of Hecademus — considered the first institution of higher learning in the
+        Western world; operated for ~900 years until closed by Emperor Justinian in 529 CE. Theory
+        of Forms: two realms — the material world (perceived by senses, constantly changing) and an
+        unchanging world of Forms (abstract ideals); a chair is an imperfect copy of the Form of
+        "Chair-ness." Republic: his most famous work — describes the ideal state governed by
+        philosopher-kings; includes the Allegory of the Cave (prisoners mistake shadows for reality);
+        divides the soul into reason, spirit, and appetite. Symposium: dialogue exploring love (eros)
+        through speeches at a banquet. His dialogues feature Socrates as the main speaker.
+      source_url: 'https://en.wikipedia.org/wiki/Plato'
+
+    Aristotle:
+      date: '384–322 BCE; founded the Lyceum 335 BCE; tutored Alexander 343/342 BCE'
+      location: 'Stagira (born); Athens (Academy, Lyceum); Mieza (tutored Alexander)'
+      key_terms: 'Aristotle, Lyceum 335 BCE, Peripatetics, Nicomachean Ethics, Politics man is political animal, Poetics catharsis, logic Organon, tutor Alexander'
+      notes: >
+        Born 384 BCE in Stagira, Chalcidice (northern Greece); died 322 BCE in Chalcis, Euboea
+        (aged 62). Student of Plato at the Academy; remained there ~20 years until c. 347 BCE.
+        Tutor to Alexander: hired by Philip II of Macedon in 343/342 BCE to tutor the young Alexander
+        at Mieza; tutored him for ~3 years; gifted him an annotated copy of the Iliad. The Lyceum
+        (founded 335 BCE): as a resident alien (metic), he could not own property, so he rented the
+        Lyceum; his followers called "Peripatetics" (from walking while teaching). Developed "the
+        earliest systematic study of logic" compiled into the Organon. Medieval Christian scholars
+        called him "The Philosopher"; Islamic scholars called him "The First Teacher." Major works:
+        Nicomachean Ethics (virtue ethics; happiness/eudaimonia as the highest good); Politics
+        ("Man is a political animal"); Poetics (theory of tragedy; catharsis); Physics, Metaphysics,
+        On the Soul, Rhetoric, History of Animals. Essentially invented multiple academic disciplines.
+      source_url: 'https://en.wikipedia.org/wiki/Aristotle'
+
+    Hellenistic_Philosophers:
+      date: 'Diogenes c. 413–324 BCE; Zeno c. 334–262 BCE; Epicurus 341–270 BCE; Pyrrho c. 360–270 BCE; Protagoras c. 490–420 BCE; Gorgias c. 483–375 BCE'
+      location: 'Diogenes in Athens and Corinth; Zeno founded Stoicism at Stoa Poikile Athens c. 300 BCE; Epicurus founded the Garden Athens c. 306 BCE; Pyrrho traveled with Alexander to India'
+      key_terms: 'Diogenes Cynic jar cosmopolitan, Zeno Stoic virtue reason, Epicurus ataraxia aponia Garden women students, Pyrrho epoché skepticism, Protagoras sophist man measure, Gorgias rhetoric father of sophistry'
+      notes: >
+        Diogenes of Sinope: founder of Cynicism; lived in a large ceramic storage jar (pithos — NOT
+        a barrel, per Latin mistranslation); when Alexander offered to grant him anything he replied
+        "Stand a little out of my sun"; coined the term "cosmopolitan" (citizen of the world); Plato
+        called him "Socrates gone mad." Zeno of Citium: founded Stoicism at the Stoa Poikile
+        (Painted Porch) in Athens c. 300 BCE; core teaching: virtue as the only true good; living
+        according to nature and reason; achieving peace of mind (apatheia) through rational alignment
+        with universal principles. Epicurus: core philosophy: ataraxia (freedom from fear and mental
+        pain) NOT active pleasure; the Garden (c. 306 BCE) welcomed male and female students — unusual;
+        Tetrapharmakos (Four-fold remedy): don't fear god, don't worry about death, good is easy to
+        get, terrible is easy to endure. Pyrrho: founded Pyrrhonism (first major Greek skepticism);
+        traveled with Alexander to India; core practice: epoché (suspension of judgment); left no
+        written works. Protagoras (Sophist): "Man is the measure of all things"; friend of Pericles;
+        charged with agnosticism about gods. Gorgias: "father of sophistry"; rhetorical innovations;
+        wrote "On Non-Being" (likely a parody of Parmenides).
+      source_url: 'https://en.wikipedia.org/wiki/Hellenistic_philosophy'
+
+  # ----------------------------------------------------------
+  # THEME 4: Alexander the Great
+  # ----------------------------------------------------------
+  alexander_the_great:
+    Philip_II_and_Rise_of_Macedon:
+      date: 'Philip II reigned 359–336 BCE; assassinated October 336 BCE'
+      location: 'Macedon; Chaeronea, Boeotia; Aigai, Macedon'
+      key_terms: 'Philip II, Macedon, Battle of Chaeronea 338 BCE, League of Corinth 337 BCE, Sacred Band of Thebes, assassinated Pausanias'
+      notes: >
+        Philip II of Macedon (born 382 BCE) reigned 359–336 BCE. He transformed Macedonia from a
+        peripheral kingdom into the dominant Greek power through military reforms and strategic
+        conquests. Battle of Chaeronea (August 2, 338 BCE): Philip defeated allied Athenian-Theban
+        forces near Chaeronea in Boeotia. Macedonian force ~30,000 infantry and 2,000 cavalry; over
+        1,000 Athenians killed with 2,000 captured. The young Alexander (age 18) commanded the left
+        wing and "succeeded in rupturing the allied line," destroying the Sacred Band of Thebes.
+        Modern excavations found 254 remains beneath the Lion of Chaeronea monument. League of
+        Corinth (338–337 BCE): a federation of Greek states under Macedonian hegemony; Sparta refused
+        to join; declared war on Persia. Assassination: October 336 BCE at Aigai by Pausanias of
+        Orestis (one of his seven royal bodyguards) — stabbed while entering the theatre for his
+        daughter's wedding celebration.
+      source_url: 'https://en.wikipedia.org/wiki/Philip_II_of_Macedon'
+
+    Alexander_Early_Life:
+      date: 'Born July 20/21, 356 BCE; became king October 336 BCE'
+      location: 'Pella, Macedon; Mieza (tutored by Aristotle)'
+      key_terms: 'Alexander the Great, Pella, Olympias of Epirus, Aristotle tutor 343 BCE, Bucephalus tamed 344 BCE, never defeated in battle'
+      notes: >
+        Alexander the Great was born on July 20/21, 356 BCE in Pella, Macedon, to Philip II and his
+        wife Olympias of Epirus. He became King of Macedon in October 336 BCE, aged approximately 20,
+        following his father's assassination. He was never defeated in battle during his military
+        career. In 343/342 BCE, Philip II invited Aristotle to tutor his 13-year-old son at Mieza,
+        "in the gardens of the Nymphs, the royal estate near Pella." Aristotle taught ethics, politics,
+        and literature; gifted Alexander an annotated copy of the Iliad, which became "one of
+        Alexander's most prized possessions." Around 344 BCE (aged ~12–13), Alexander tamed the horse
+        Bucephalus by noticing it feared its own shadow and turning its head toward the sun. The
+        horse's name means "ox-headed." Philip II reportedly told his son: "O my son, look thee out
+        a kingdom equal to and worthy of thyself, for Macedonia is too little for thee."
+      source_url: 'https://en.wikipedia.org/wiki/Alexander_the_Great'
+
+    Alexanders_Persian_Campaign:
+      date: '334–323 BCE'
+      location: 'Asia Minor, Egypt, Persia, Mesopotamia, Bactria, India'
+      key_terms: 'Hellespont crossed 334 BCE, Granicus May 334 BCE, Issus November 333 BCE, Gaugamela October 331 BCE, Persepolis burned 330 BCE, 5.2 million km2 empire'
+      notes: >
+        Crossing the Hellespont (334 BCE): Alexander crossed into Asia, drove a spear into the ground
+        claiming Asia "won by the spear." Battle of the Granicus (May 334 BCE): first major battle in
+        Asia — Macedonian casualties ~115 killed; Persian casualties ~1,000 cavalry killed and 2,000
+        Greek mercenaries captured. Siege of Tyre (January–July 332 BCE): Alexander built a ~1 km
+        causeway across the sea; assembled a fleet of 223 galleys; after capturing the city ~6,000–7,000
+        defenders killed, 2,000 crucified, ~30,000 residents enslaved. Battle of Issus (November 5,
+        333 BCE): defeated Darius III; Darius fled, leaving behind his family and treasury. Battle of
+        Gaugamela (October 1, 331 BCE): decisively defeated Darius III; Darius later murdered by his
+        general Bessus; traditionally considered to have ended the Achaemenid Persian Empire. Burning
+        of Persepolis (330 BCE): one account says deliberate revenge for Persian destruction of Athens;
+        another attributes it to the courtesan Thaïs during a drunken celebration. At its greatest
+        extent, Alexander's empire covered approximately 5.2 million km² — one of history's largest —
+        stretching from Greece and Egypt to northwestern India.
+      source_url: 'https://en.wikipedia.org/wiki/Alexander_the_Great'
+
+    Alexandria_and_Egypt:
+      date: 'Egypt conquered 332 BCE; Alexandria founded 331 BCE'
+      location: 'Egypt; Mediterranean coast'
+      key_terms: 'Alexandria founded 331 BCE, Egypt conquered 332 BCE, Pharaoh, Library of Alexandria founded Ptolemy II, Pharos Lighthouse Seven Wonders'
+      notes: >
+        Alexander conquered Egypt in 332 BCE and was welcomed as a liberator from Persian rule;
+        declared Pharaoh. Founded the city of Alexandria on Egypt's Mediterranean coast in 331 BCE —
+        "to bear his name" as a large Greek city. Alexandria eventually became the largest city in the
+        world; estimated population 216,000–500,000 by the 1st century CE. Library of Alexandria:
+        probably founded during Ptolemy II Philadelphus (283–246 BCE); held an estimated 40,000–400,000
+        scrolls; part of the Mouseion research institution; scholars included Eratosthenes (calculated
+        Earth's circumference), Zenodotus (standardized Homer), Aristarchus, Callimachus. Multiple
+        destruction events: Caesar's siege (48 BCE), Aurelian (272 CE), Theodosius (391 CE). Lighthouse
+        (Pharos): built 284–246 BCE; architect Sostratus of Cnidus (disputed); height ~103–118 meters
+        (338–387 feet); one of the Seven Wonders of the Ancient World; destroyed by earthquakes,
+        final collapse by 1480 CE.
+      source_url: 'https://en.wikipedia.org/wiki/Alexandria'
+
+    Battle_of_Hydaspes_and_Return:
+      date: 'May 326 BCE battle; army refused to continue August 326 BCE'
+      location: 'Hydaspes River (modern Jhelum River), Punjab, Pakistan; Hyphasis River (Beas River), India'
+      key_terms: 'Hydaspes 326 BCE, Porus "as a king", Bucephalus died, Boukephala city, army refused march, 8 years of campaigning, returned westward'
+      notes: >
+        Battle of the Hydaspes (May 326 BCE): Alexander defeated King Porus — his final major battle.
+        After the battle, Alexander treated Porus with respect; when asked how he wished to be treated,
+        Porus replied "as a king would treat another king" — Alexander honored this and made him a
+        satrap. Alexander's horse Bucephalus died during or after the battle from old age or battle
+        wounds. Alexander founded the city of Boukephala (Bucephala) on the west bank to honor the
+        horse. After the battle (326 BCE): Alexander's exhausted army refused to advance further into
+        India, halting at the Hyphasis River — Alexander's farthest advance. By 326 BCE the army had
+        campaigned for nearly eight years. This forced Alexander to begin his return journey. He died
+        before reaching Macedon.
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_the_Hydaspes'
+
+    Death_of_Alexander_and_Hellenistic_Period:
+      date: 'Died June 10–11, 323 BCE; Hellenistic period 323–30 BCE'
+      location: 'Babylon; empire divided among Diadochi'
+      key_terms: 'death Babylon age 32, typhoid fever debate, Diadochi successors, Ptolemy Egypt, Seleucus Persia, Koine Greek lingua franca, Hellenization, Hellenistic period 323-30 BCE'
+      notes: >
+        Alexander the Great died between June 10–11, 323 BCE in Babylon, aged 32, after 12–14 days
+        of feverish illness. Leading theories: (1) typhoid fever (1998 University of Maryland report);
+        (2) malaria; (3) poisoning — considered "technically implausible" by historian Robin Lane Fox
+        given the 12-day duration; (4) acute pancreatitis; (5) Guillain-Barré syndrome. No definitive
+        cause established. Diadochi ("Successors"): his generals fought wars to control the empire
+        until the Battle of Ipsus (301 BCE) broadly settled the division. Main Diadochi: Ptolemy
+        (Egypt), Antigonus (Asia Minor), Cassander (Macedon), Seleucus (Babylonia/Persia), Lysimachus
+        (Thrace). Three major dynasties emerged: Ptolemaic Egypt (to 30 BCE), Seleucid Empire,
+        Antigonid Macedonia. Koine Greek ("common Greek"): emerged "as a common dialect within the
+        armies of Alexander," used ~300 BCE–600 CE; became the language of the Septuagint and New
+        Testament. Hellenization: spreading of Greek culture across three continents; Hellenistic
+        period spans 323–30 BCE. Alexander founded over 20 cities named after himself.
+      source_url: 'https://en.wikipedia.org/wiki/Death_of_Alexander_the_Great'
+
+  # ----------------------------------------------------------
+  # THEME 5: Greek Religion & Mythology (Institutional Focus)
+  # ----------------------------------------------------------
+  greek_religion_mythology:
+    Twelve_Olympians:
+      date: 'Classical period; cult established by at least 6th century BCE'
+      location: 'Mount Olympus; temples throughout Greek world'
+      key_terms: 'Twelve Olympians, Zeus Jupiter, Hera Juno, Poseidon Neptune, Athena Minerva, Apollo, Artemis Diana, Aphrodite Venus, Ares Mars, Hephaestus Vulcan, Hermes Mercury, Demeter Ceres, Dionysus Liber'
+      notes: >
+        The ancient Greeks recognized twelve principal deities (the Twelve Olympians) believed to
+        reside on Mount Olympus. There is "no single canonical list" — eleven appear consistently,
+        but the twelfth varies between Hestia (goddess of the hearth) and Dionysus (god of wine
+        and theatre). Verified table of all twelve with Roman equivalents: Zeus (Jupiter) — king of
+        gods, sky, lightning, law; Hera (Juno) — queen, marriage, women; Poseidon (Neptune) — seas,
+        earthquakes, horses; Demeter (Ceres) — harvest, agriculture; Apollo (Apollo) — sun, prophecy,
+        music, medicine; Artemis (Diana) — hunt, moon, wilderness; Ares (Mars) — war, violence;
+        Athena (Minerva) — wisdom, warfare, handicraft; Hephaestus (Vulcan) — blacksmith, fire,
+        craftsmanship; Aphrodite (Venus) — love, beauty, desire; Hermes (Mercury) — messenger,
+        travel, commerce, guide of souls; Hestia OR Dionysus (Vesta OR Liber) — hearth/fire OR wine,
+        festivity, theatre.
+      source_url: 'https://en.wikipedia.org/wiki/Twelve_Olympians'
+
+    Oracle_at_Delphi:
+      date: 'Operating c. 8th century BCE to ~390 CE'
+      location: 'Temple of Apollo, Delphi, central Greece'
+      key_terms: 'Oracle Delphi, Pythia, Apollo, tripod, adyton, know thyself, Croesus ambiguous prophecy, political influence, Theodosius closed 390 CE'
+      notes: >
+        The Oracle at Delphi was the most famous and influential oracle in ancient Greece, operating
+        approximately 1,000 years. The Pythia was the high priestess who delivered prophecies while
+        seated on a tripod in the adyton (inner sanctum), holding laurel leaves. Initially young
+        virgins were selected; after an assault incident in the late 3rd century BCE, older women
+        over fifty were chosen instead. Geological research suggests hallucinogenic gases (possibly
+        ethylene) from underground fault lines may have induced visionary states. Three maxims were
+        inscribed on the temple: "Know thyself" (gnōthi seauton), "Nothing to excess," and "Surety
+        brings ruin." Enormous political influence: "no expedition was undertaken, no colony sent out"
+        without consultation. King Croesus of Lydia (~561–547 BCE) consulted the oracle before
+        attacking Persia and received the ambiguous prophecy: "if you attack Persia, a great empire
+        will be destroyed" — he attacked and destroyed his own empire. Emperor Theodosius I ordered
+        the temple destroyed ~390 CE.
+      source_url: 'https://en.wikipedia.org/wiki/Oracle_at_Delphi'
+
+    Eleusinian_Mysteries:
+      date: 'c. 6th century BCE (Peisistratos made pan-Hellenic); ended 392 CE'
+      location: 'Panhellenic Sanctuary of Eleusis, Attica, Greece'
+      key_terms: 'Eleusinian Mysteries, Demeter, Persephone, Lesser Mysteries, Greater Mysteries, initiation, two millennia, death penalty revealing secrets, Aeschylus trial'
+      notes: >
+        The most famous secret religious initiation rites of ancient Greece, held annually at Eleusis
+        in honor of Demeter and Persephone. Two tiers: Lesser Mysteries (February/March) and Greater
+        Mysteries (September/October, lasting ten days). Men, women, and even slaves could be initiated
+        if they spoke Greek and had no "blood guilt." After Peisistratos made them pan-Hellenic (~6th
+        century BCE), participation expanded greatly. The penalty for revealing the core secrets was
+        death — the playwright Aeschylus faced trial for allegedly revealing mysteries in his plays
+        (he was acquitted). The mysteries ended in 392 CE under Emperor Theodosius I, after
+        approximately two millennia of continuous practice.
+      source_url: 'https://en.wikipedia.org/wiki/Eleusinian_Mysteries'
+
+    Homer_and_Hesiod:
+      date: 'Homer c. 8th century BCE; Hesiod c. 750–650 BCE'
+      location: 'Ionia (Homer traditional); Ascra, Boeotia (Hesiod)'
+      key_terms: 'Homer, Iliad Trojan War, Odyssey ten-year journey, oral tradition, Homeric Question, Hesiod, Theogony creation gods, Works and Days Pandora five ages'
+      notes: >
+        Homer, believed to have lived around the 8th century BCE, is traditionally credited with the
+        Iliad and the Odyssey — the two foundational epics of Western literature. The Iliad centers
+        on "a quarrel between King Agamemnon and the warrior Achilles during the last year of the
+        Trojan War." The Odyssey follows "the ten-year journey of Odysseus, king of Ithaca, back to
+        his home after the fall of Troy." To Plato, Homer "has educated Greece." Most researchers
+        believe the poems "were originally transmitted orally." Aristotle gifted Alexander an
+        annotated copy of the Iliad. The Homeric Question: scholars debate whether "Homer" was one
+        person or multiple — contemporary consensus holds the Iliad and Odyssey came from separate
+        authors. Oral-Formulaic Theory (Milman Parry and Albert Lord): explains how large-scale oral
+        composition was possible using traditional formulas. Hesiod (c. 750–650 BCE): Theogony —
+        describes origins of the gods and Zeus's rise to power; Works and Days — presents the five
+        Ages of Man, the myth of Pandora's box, practical farming wisdom. Ancient authors credited
+        both Hesiod and Homer with "establishing Greek religious customs." Hesiod is "the first
+        Western poet to present himself as an individual with a distinctive voice in his work."
+      source_url: 'https://en.wikipedia.org/wiki/Homer'
+
+    Greek_Temples_and_Wonders:
+      date: 'Parthenon 447–432 BCE; Temple of Zeus at Olympia 472–456 BCE; Temple of Artemis at Ephesus c. 550 BCE'
+      location: 'Athens (Parthenon); Olympia, Peloponnese (Zeus); Ephesus, Asia Minor (Artemis)'
+      key_terms: 'Temple of Zeus Olympia, Phidias Zeus statue Seven Wonders, Temple of Artemis Ephesus Seven Wonders, Herostratus arson July 21 356 BCE same day Alexander born'
+      notes: >
+        Temple of Zeus at Olympia (built ~472–456 BCE): designed by architect Libon; measured 236 by
+        98 feet (72 by 30 m); housed Phidias's chryselephantine statue of Zeus (~43 feet/13 m tall),
+        one of the Seven Wonders; destroyed in 426 CE. Temple of Artemis at Ephesus: most famous
+        version began construction ~550 BCE, funded by King Croesus of Lydia; measured 115 by 46
+        meters. On July 21, 356 BCE — the same day Alexander the Great was born — an arsonist named
+        Herostratus burned the temple seeking fame. When Alexander later offered to fund the rebuilding,
+        the Ephesians diplomatically declined, saying "it would be improper for one god to build a
+        temple to another." A third, larger temple (137 by 69 m) was rebuilt after Alexander's death
+        and lasted ~600 years. Temple of Hephaestus (Hephaisteion) in Athens (built ~449–415 BCE):
+        best-preserved ancient Greek temple, located above the Agora; converted to a Greek Orthodox
+        church in the 7th century CE, which contributed to its preservation.
+      source_url: 'https://en.wikipedia.org/wiki/Temple_of_Zeus,_Olympia'
+
+  # ----------------------------------------------------------
+  # THEME 6: Olympics & Culture
+  # ----------------------------------------------------------
+  olympics_and_culture:
+    Ancient_Olympic_Games:
+      date: 'Traditionally 776 BCE; ended 393 CE by Theodosius I'
+      location: 'Olympia, valley of the Alfeiós River, western Peloponnese — never moved'
+      key_terms: 'Olympic Games, 776 BCE, Olympia, four years, ekecheiria sacred truce, olive wreath kotinos, Koroibos first champion, stadion original event, 23 events, Theodosius ended 393 CE'
+      notes: >
+        Founded traditionally 776 BCE — this is the conventional date, when Koroibos of Elis won the
+        first recorded stadion race. Always held at Olympia; the games never moved. Frequency: every
+        four years (one Olympiad). Sacred truce (ekecheiria): during competition, three messengers
+        announced the truce throughout Greece, allowing athletes and pilgrims to travel safely.
+        Participants: only freeborn Greek men could compete; athletes performed nude; women barred
+        from competing AND attending (except as owners of victorious chariots — exception for Spartan
+        women; the only exception was the priestess of Demeter who had a reserved seat). Victor's
+        prize: olive leaf wreath (kotinos) — no monetary prize. The stadion (~192 meters) was the
+        original and only event at the first 13 Olympic Games (776–728 BCE); the word "stadium"
+        derives from this distance. Events expanded over time to 23 contests including pentathlon
+        (added 708 BCE), pankration (added 648 BCE), chariot racing, boxing, and wrestling. Ended
+        with last recorded celebration 393 CE by order of Emperor Theodosius I.
+      source_url: 'https://en.wikipedia.org/wiki/Ancient_Olympic_Games'
+
+    Olympic_Events:
+      date: 'Pentathlon added 708 BCE; pankration added 648 BCE; chariot racing ancient'
+      location: 'Olympia, western Peloponnese'
+      key_terms: 'pentathlon five events long jump javelin discus sprint wrestling, pankration all power kicking chokes no weight class, Arrhichion died winning, Polydamas lion, chariot tethrippon'
+      notes: >
+        Pentathlon (added 708 BCE): five events: long jump (halma), javelin throw (akontion), discus
+        throw (diskos), stadion sprint (~192 meters), wrestling (palé). Aristotle praised pentathletes
+        as having "a body capable of enduring all efforts." Victory signified elite versatility. The
+        pankration (added 648 BCE): name means "all of power" (pan + kratos); combined boxing and
+        wrestling with striking and grappling; allowed kicking, joint locks, chokes, throws, takedowns;
+        forbidden — eye gouging and biting (EXCEPT in Sparta where these were permitted locally); no
+        weight classes; no time limits; ended when one competitor submitted (raised index finger) or
+        was unconscious/dead. Famous champion: Arrhichion of Phigalia — died from a choke while
+        simultaneously winning by breaking his opponent's toe; his corpse was crowned victor. Chariot
+        racing (tethrippon): the most prestigious equestrian event; teams of four horses; owners, not
+        drivers, received the victory crown.
+      source_url: 'https://en.wikipedia.org/wiki/Pankration'
+
+    Greek_Theater:
+      date: 'Theater of Dionysus: first orchestra mid-6th century BCE; stone theater 4th century BCE; City Dionysia established 6th century BCE under Peisistratus'
+      location: 'Theater of Dionysus, south slope of the Acropolis, Athens'
+      key_terms: 'Theater of Dionysus, world first theater, orchestra, skene, theatron, capacity 25000, deus ex machina mechane, City Dionysia spring festival, tragic trilogy plus satyr play'
+      notes: >
+        Theater of Dionysus: located on the south slope of the Acropolis; the world's first theater;
+        hosted works by Aeschylus, Sophocles, Euripides, Aristophanes. Capacity after 4th-century BCE
+        expansion: up to 25,000 spectators. Three structural components: (1) Orchestra — circular
+        "dancing place" at the base where chorus and actors performed; (2) Skene — backdrop structure
+        used for scene-setting and costume changes; (3) Theatron — tiered seating carved into the
+        hillside. Theatrical masks: made from stiffened linen, leather, or cork; covered entire face
+        and head; allowed male actors to play female roles and one actor to play multiple characters.
+        Chorus: typically 12–15 members. Deus ex machina: the mechane — a crane device that lifted
+        actors playing gods onto the stage; introduced by Aeschylus, popularized by Euripides;
+        Aristotle criticized it. City Dionysia: annual dramatic festival honoring Dionysus, held in
+        spring; structure: 3 tragedians each submitted a trilogy plus satyr play; comedy competition
+        added 487/486 BCE; winners received ivy wreath.
+      source_url: 'https://en.wikipedia.org/wiki/Theatre_of_Dionysus'
+
+    Greek_Art_and_Sculpture:
+      date: 'Black-figure pottery: emerged Corinth c. 700 BCE, Athens c. 600 BCE; red-figure: emerged c. 530 BCE; Contrapposto: c. 480 BCE'
+      location: 'Corinth, Athens (pottery); Athens (Kritios Boy sculpture)'
+      key_terms: 'black-figure pottery, red-figure pottery, contrapposto, Kritios Boy 480 BCE first contrapposto, kouros kore archaic, Polykleitos Doryphoros Canon'
+      notes: >
+        Black-figure pottery: emerged in Corinth c. 700 BCE; adopted in Athens c. 600 BCE. Technique:
+        figures painted in black clay slip on red clay body; details incised; complex three-phase kiln
+        firing. Red-figure pottery: emerged c. 530 BCE, "presumably by the Andokides Painter" —
+        reversed the color scheme (red figures on black background); allowed more naturalistic anatomy;
+        by early 5th century BCE "all painters of repute" had switched to red-figure. Contrapposto:
+        technique where a figure stands with most weight on one foot, causing hips and shoulders to
+        angle in opposite directions. Emerged early 5th century BCE c. 480 BCE. Earliest known example:
+        the Kritios Boy (c. 480 BCE) — "the first known Greek statue to use contrapposto"; "the first
+        time in Western art that the human body is used to express a psychological disposition."
+        Before contrapposto: Archaic period kouros (male) and kore (female) figures were rigid,
+        frontal, symmetrical — influenced by Egyptian style. After: Polykleitos formalized contrapposto;
+        his Doryphoros (Spear-Bearer, c. 450 BCE) embodied the "Canon" — ideal proportions of the
+        human body.
+      source_url: 'https://en.wikipedia.org/wiki/Black-figure_pottery'
+
+    Greek_Alphabet_and_Language:
+      date: 'Greek alphabet emerged c. 800 BCE; Koine Greek 300 BCE–600 CE'
+      location: 'Ionia (alphabet origin); throughout Greek world (Koine)'
+      key_terms: 'Greek alphabet, Phoenician abjad, vowels added, 24 letters Euclidean, ancestor Latin Gothic Cyrillic, Koine Greek lingua franca New Testament Septuagint'
+      notes: >
+        The Greek alphabet emerged "some time in the late 9th or early 8th century BCE, conventionally
+        around 800 BCE." Adapted from the Phoenician alphabet (a consonant-only abjad). Key
+        innovation: Greeks added vowels — making it the first true alphabet in the strict sense. Five
+        Phoenician consonants were repurposed as vowels: aleph→alpha (a), he→epsilon (e), yodh→iota
+        (i), waw→upsilon (u), ayin→omicron (o). Also added eta and omega for long vowel sounds.
+        Standard form: 24 letters (the Ionic-based Euclidean alphabet), established by the 4th
+        century BCE. Historical influence: ancestor of Latin alphabet, Gothic script, Coptic script,
+        and Cyrillic script — thus the basis for most Western writing systems. Koine Greek: emerged
+        "as a common dialect within the armies of Alexander the Great," used approximately 300 BCE
+        to 600 CE; became the language of the Septuagint (Greek translation of the Hebrew Bible)
+        and the New Testament.
+      source_url: 'https://en.wikipedia.org/wiki/Greek_alphabet'
+
+# ============================================================
+# ANSWER TYPE POOLS
+# Distractors for quiz questions are selected from these pools.
+# Workers MUST use LLM generation for distractors — NEVER pull
+# from correct_answer values of other facts in this dataset.
+# ============================================================
+answer_type_pools:
+
+  philosopher_names:
+    description: 'Names of Greek philosophers — used as distractors for philosopher identification questions'
+    members:
+      - Socrates
+      - Plato
+      - Aristotle
+      - Thales
+      - Pythagoras
+      - Heraclitus
+      - Parmenides
+      - Democritus
+      - Empedocles
+      - Diogenes
+      - Zeno
+      - Epicurus
+      - Protagoras
+      - Gorgias
+      - Anaximander
+      - Pyrrho
+
+  ruler_general_names:
+    description: 'Names of Greek and Persian rulers and generals — distractors for leadership/command questions'
+    members:
+      - Alexander
+      - Philip II
+      - Pericles
+      - Leonidas
+      - Themistocles
+      - Miltiades
+      - Xerxes
+      - Darius I
+      - Pausanias
+      - Alcibiades
+      - Cimon
+      - Cleisthenes
+      - Lysander
+      - Mardonius
+      - Cyrus the Great
+
+  god_names:
+    description: 'Names of the Twelve Olympian gods — distractors for deity domain questions'
+    members:
+      - Zeus
+      - Hera
+      - Poseidon
+      - Athena
+      - Apollo
+      - Artemis
+      - Aphrodite
+      - Ares
+      - Hephaestus
+      - Hermes
+      - Demeter
+      - Dionysus
+
+  battle_names:
+    description: 'Names of significant Greek battles — distractors for battle identification questions'
+    members:
+      - Marathon
+      - Thermopylae
+      - Salamis
+      - Plataea
+      - Issus
+      - Gaugamela
+      - Chaeronea
+      - Granicus
+      - Hydaspes
+      - Aegospotami
+      - Mycale
+      - Artemisium
+
+  city_state_names:
+    description: 'Names of significant Greek city-states and locations — distractors for geography questions'
+    members:
+      - Athens
+      - Sparta
+      - Corinth
+      - Thebes
+      - Macedon
+      - Syracuse
+      - Argos
+      - Miletus
+      - Delphi
+      - Olympia
+      - Ephesus
+      - Elis
+
+  date_events:
+    description: 'Key dates in ancient Greek history — distractors for date identification questions'
+    members:
+      - '508/507 BCE — Cleisthenes reforms'
+      - '499 BCE — Ionian Revolt begins'
+      - '490 BCE — Battle of Marathon'
+      - '480 BCE — Battles of Thermopylae and Salamis'
+      - '479 BCE — Battle of Plataea'
+      - '478 BCE — Delian League founded'
+      - '454 BCE — Delian treasury moved to Athens'
+      - '447 BCE — Parthenon construction begins'
+      - '431 BCE — Peloponnesian War begins'
+      - '399 BCE — Trial and death of Socrates'
+      - '387 BCE — Plato founds the Academy'
+      - '338 BCE — Battle of Chaeronea'
+      - '336 BCE — Alexander becomes king'
+      - '334 BCE — Alexander crosses the Hellespont'
+      - '323 BCE — Death of Alexander the Great'
+      - '776 BCE — First Olympic Games (traditional)'
+
+  work_text_names:
+    description: 'Titles of significant Greek literary and philosophical works — distractors for authorship questions'
+    members:
+      - Republic
+      - Iliad
+      - Odyssey
+      - Oedipus Rex
+      - Medea
+      - Nicomachean Ethics
+      - Apology
+      - The Clouds
+      - Theogony
+      - Works and Days
+      - Histories
+      - Oresteia
+      - Lysistrata
+      - Symposium
+      - The Persians
+      - Antigone
+
+  structure_names:
+    description: 'Names of significant Greek buildings and structures — distractors for architecture questions'
+    members:
+      - Parthenon
+      - Acropolis
+      - Agora
+      - Temple of Zeus at Olympia
+      - Temple of Artemis at Ephesus
+      - Theater of Dionysus
+      - Long Walls
+      - Lighthouse of Alexandria
+      - Library of Alexandria
+      - Temple of Hephaestus
+      - Erechtheion
+      - Propylaea
+
+  concept_terms:
+    description: 'Key political, social, and cultural concepts from ancient Greece — distractors for concept questions'
+    members:
+      - democracy
+      - oligarchy
+      - ostracism
+      - rhetoric
+      - polis
+      - agora
+      - agoge
+      - helot
+      - ekecheiria
+      - Hellenization
+      - sortition
+      - isonomia
+      - eudaimonia
+      - ataraxia
+      - logos
+
+# ============================================================
+# FACT GENERATION GUIDANCE
+# ============================================================
+fact_generation:
+  target_distribution:
+    city_states: 45
+    persian_wars: 40
+    golden_age_athens: 35
+    greek_philosophy: 50
+    alexander_the_great: 40
+    greek_religion_mythology: 30
+    olympics_and_culture: 30
+    total_target: 270
+
+  priority_topics:
+    - Cleisthenes reforms and Athenian democracy (sortition, Boule, Ecclesia, ostracism)
+    - Sparta: agoge, helots, dual kingship, ephors, laconic speech
+    - Persian Wars: Marathon, Thermopylae, Salamis, Plataea — verified numbers and key figures
+    - Athens Golden Age: Pericles, Parthenon, Phidias, the three great tragedians
+    - Pre-Socratic philosophers (one or two key facts per thinker)
+    - Socrates, Plato, Aristotle — methods, works, legacy
+    - Alexander: battles in sequence, Bucephalus, death controversy, Diadochi
+    - Olympic events: pankration, pentathlon, stadion, chariot — rules and champions
+    - Greek theater: structure (orchestra, skene, theatron), City Dionysia, masks, chorus
+    - The Twelve Olympians: individual domains and Roman equivalents
+    - Oracle at Delphi: Pythia, ambiguous prophecies, "Know Thyself"
+
+  question_format_guidance:
+    - Generate multiple question formats per topic: what/who/when/where/how
+    - Include "what did X innovate or invent" questions (Aeschylus adding second actor, etc.)
+    - Include number-based questions (300 Spartans, 500 Boule members, 170 rowers, etc.)
+    - Include "what does the term mean" questions (laconic, agoge, pankration, ekecheiria, etc.)
+    - Include roman equivalent questions for the Twelve Olympians
+    - Include "who said" questions for verified quotes (molon labe, "If", etc.)
+
+  critical_accuracy_rules:
+    - DO NOT use Herodotus's inflated numbers — use modern scholarly estimates for battle sizes
+    - Pheidippides: his run to SPARTA before the battle is historical (Herodotus); the run from Marathon to Athens after is NOT in Herodotus — never present it as fact
+    - 300 Spartans is confirmed; total Greek force at Thermopylae was ~7,000
+    - "Et tu, Brute?" is Shakespeare only — does not apply to Greek facts but serves as model for accuracy discipline
+    - Molon labe at Thermopylae is confirmed by Plutarch — safe to use as a fact
+    - The "come back with your shield or on it" quote is attributed to Spartan mothers generally — treat as cultural tradition, not a verified individual quote
+    - Koine Greek emerged from Alexander's armies; it later became the language of the New Testament
+
+  overlap_exclusions:
+    - The existing greek_mythology.json deck covers god stories, hero myths (Heracles, Theseus, Perseus), and mythological creatures — DO NOT duplicate those; focus on INSTITUTIONAL religion (temples, oracles, festivals, practices)
+    - Do not duplicate facts from ancient_rome deck (e.g., details about Alexandria post-30 BCE)
+
+  distractor_rule: >
+    MANDATORY: ALL distractors MUST be generated by the LLM reading each specific question and
+    producing plausible wrong answers. NEVER pull correct_answer values from other facts in this
+    dataset as distractors. Answer type pools above provide semantic categories for structuring
+    distractor quality — use them as inspiration, NOT as a pool to draw from directly.
+    Post-generation validation against the dataset is permitted to ensure no distractor
+    accidentally matches another correct answer.
+
+  source_fidelity_rule: >
+    Workers MUST copy facts FROM the verified source data above — they MUST NOT generate factual
+    content (dates, numbers, names, claims) from LLM training knowledge. Every date, casualty
+    figure, and biographical detail in this file has been verified against Wikipedia. If a worker
+    needs additional detail not in this file, it must use WebSearch/WebFetch tools and cite what
+    it finds.

@@ -16,8 +16,8 @@ export type MonetizationEvent =
   | { name: 'subscription_started'; properties: { productId: string; tier: string } }
   | { name: 'subscription_cancelled'; properties: { productId: string; daysActive: number } }
   | { name: 'season_pass_milestone_claimed'; properties: { milestone: number; track: 'free' | 'premium' } }
-  | { name: 'economy_dust_spent'; properties: { amount: number; category: string } }
-  | { name: 'economy_wealth_snapshot'; properties: { dustHeld: number; shardHeld: number; crystalHeld: number; totalDustEquivalent: number } }
+  | { name: 'economy_grey_matter_spent'; properties: { amount: number; category: string } }
+  | { name: 'economy_wealth_snapshot'; properties: { greyMatterHeld: number } }
 
 /** Social & Multiplayer analytics events — Phase 22 */
 export type SocialEvent =
@@ -25,11 +25,11 @@ export type SocialEvent =
   | { name: 'guestbook_entry_written'; properties: { targetPlayerId: string; messageLength: number } }
   | { name: 'gift_sent'; properties: { giftType: 'minerals' | 'fact_link'; recipientId: string } }
   | { name: 'gift_claimed'; properties: { giftType: 'minerals' | 'fact_link'; delayMs: number } }
-  | { name: 'duel_challenged'; properties: { wagerDust: number } }
-  | { name: 'duel_accepted'; properties: { wagerDust: number } }
-  | { name: 'duel_completed'; properties: { outcome: 'win' | 'loss' | 'tie'; wagerDust: number; myScore: number; opponentScore: number } }
-  | { name: 'trade_offer_sent'; properties: { additionalDust: number } }
-  | { name: 'trade_offer_accepted'; properties: { additionalDust: number } }
+  | { name: 'duel_challenged'; properties: { wagerGreyMatter: number } }
+  | { name: 'duel_accepted'; properties: { wagerGreyMatter: number } }
+  | { name: 'duel_completed'; properties: { outcome: 'win' | 'loss' | 'tie'; wagerGreyMatter: number; myScore: number; opponentScore: number } }
+  | { name: 'trade_offer_sent'; properties: { additionalGreyMatter: number } }
+  | { name: 'trade_offer_accepted'; properties: { additionalGreyMatter: number } }
   | { name: 'guild_joined'; properties: { guildId: string; isOpen: boolean } }
   | { name: 'guild_challenge_contributed'; properties: { challengeType: string; contribution: number } }
   | { name: 'referral_link_shared'; properties: { platform: 'copy' | 'native_share' } }

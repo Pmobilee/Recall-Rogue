@@ -24,7 +24,7 @@
     mythic: '#e94560',
   }
 
-  const sellDustValues: Record<Rarity, number> = {
+  const sellGMValues: Record<Rarity, number> = {
     common: 5,
     uncommon: 10,
     rare: 20,
@@ -35,7 +35,7 @@
 
   const categoryPath = $derived(fact.category.join(' > '))
   const rarityColor = $derived(rarityColors[fact.rarity])
-  const sellHint = $derived(`Sell for ${sellDustValues[fact.rarity]} Dust`)
+  const sellHint = $derived(`Sell for ${sellGMValues[fact.rarity]} Grey Matter`)
 
   /** Map rarity to the trigger used for GAIA expression selection */
   const rarityTrigger = $derived.by(() => {

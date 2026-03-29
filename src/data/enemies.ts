@@ -441,8 +441,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     description: 'Old archive AI. Still running, still territorial. Triggers a quiz phase at half health.',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'attack', value: 2, weight: 2, telegraph: 'Archive purge' },
-      { type: 'multi_attack', value: 2, weight: 1, telegraph: 'Rapid queries', hitCount: 4 },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Archive purge' },
+      { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Rapid queries', hitCount: 4 },
       { type: 'debuff', value: 3, weight: 1, telegraph: 'Memory wipe', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
       { type: 'heal', value: 10, weight: 1, telegraph: 'Backup restore' },
     ],
@@ -534,8 +534,15 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'buff', value: 2, weight: 20, telegraph: 'Absorb text', statusEffect: { type: 'strength', value: 2, turns: 3 } },
       { type: 'charge', value: 5, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
-    description: 'Built from compressed books. Wrong answers feed it power.',
+    description: 'Built from compressed books. At half health, unleashes stored knowledge as devastating attacks.',
     animArchetype: 'slammer',
+    phaseTransitionAt: 0.5,
+    phase2IntentPool: [
+      { type: 'attack', value: 4, weight: 3, telegraph: 'Tome crush' },
+      { type: 'multi_attack', value: 2, weight: 2, telegraph: 'Page storm', hitCount: 3 },
+      { type: 'buff', value: 3, weight: 1, telegraph: 'Knowledge consumed', statusEffect: { type: 'strength', value: 3, turns: 3 } },
+      { type: 'charge', value: 6, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
+    ],
   },
 
   // AR-59.13: The Curator is the Act 3 final boss with 2 quiz phases at 66% and 33% HP.
@@ -552,7 +559,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'buff', value: 3, weight: 2, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 2, turns: 3 } },
       { type: 'heal', value: 12, weight: 1, telegraph: 'Restoration protocol' },
     ],
-    description: 'Final guardian. Quiz phases at 66% and 33% HP. The second one is Rapid Fire.',
+    description: 'Final guardian. Quiz phases at 66% and 33% HP. Wrong Charge answers make it stronger. The second quiz phase is Rapid Fire.',
     phaseTransitionAt: 0.33,
     phase2IntentPool: [
       { type: 'attack', value: 2, weight: 3, telegraph: 'Judgement' },
@@ -566,6 +573,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { hpThreshold: 0.66, questionCount: 5 },
       { hpThreshold: 0.33, questionCount: 8, timerSeconds: 4, rapidFire: true },
     ],
+    onPlayerChargeWrong: (ctx) => {
+      // Wrong answers strengthen the Final Lesson — knowledge IS power
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 2,
+        turnsRemaining: 999,
+      });
+    },
   },
 
   // ── MINI-BOSS (6) ──

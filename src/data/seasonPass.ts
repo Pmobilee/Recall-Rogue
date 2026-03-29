@@ -9,7 +9,7 @@ export interface SeasonReward {
   points: number
   name: string
   description: string
-  type: 'dust' | 'consumable' | 'artifact' | 'fossil' | 'cosmetic' | 'knowledge' | 'title'
+  type: 'greyMatter' | 'consumable' | 'artifact' | 'fossil' | 'cosmetic' | 'knowledge' | 'title'
 }
 
 export interface SeasonDefinition {
@@ -46,12 +46,12 @@ export const SEASON_1: SeasonDefinition = {
   endDate: null, // Never expires
 
   freeTrack: [
-    { milestone: 1, points: 50, name: '200 Dust + 1 Bomb', description: 'Starting supplies for your expedition', type: 'dust' },
-    { milestone: 2, points: 150, name: 'Uncommon Artifact + 1 Shard', description: 'A relic from the deep past', type: 'artifact' },
+    { milestone: 1, points: 50, name: '200 Grey Matter + 1 Bomb', description: 'Starting supplies for your expedition', type: 'greyMatter' },
+    { milestone: 2, points: 150, name: 'Uncommon Artifact + 50 Grey Matter', description: 'A relic from the deep past', type: 'artifact' },
     { milestone: 3, points: 300, name: 'Trilobite Fossil Fragment', description: 'Guaranteed trilobite fossil', type: 'fossil' },
     { milestone: 4, points: 500, name: '5 Consumables + Streak Freeze', description: 'Tools for the journey ahead', type: 'consumable' },
     { milestone: 5, points: 750, name: 'Random Data Disc', description: 'Knowledge from the archives', type: 'knowledge' },
-    { milestone: 6, points: 1000, name: '1 Crystal + KP Voucher (200)', description: 'Premium resources', type: 'knowledge' },
+    { milestone: 6, points: 1000, name: '500 Grey Matter + KP Voucher (200)', description: 'Premium resources', type: 'knowledge' },
     { milestone: 7, points: 1500, name: 'Rare+ Artifact Guarantee', description: 'A significant discovery', type: 'artifact' },
     { milestone: 8, points: 2000, name: 'Fossil Egg (Cosmetic Companion)', description: 'Hatch a companion from the deep past', type: 'fossil' },
   ],

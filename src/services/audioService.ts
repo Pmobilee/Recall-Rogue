@@ -149,6 +149,22 @@ export type SoundName =
   | 'shop_haggle_start'
   | 'shop_haggle_success'
   | 'shop_close'
+  | 'shop_sell'
+  | 'shop_removal_burn'
+  | 'shop_removal_complete'
+  | 'shop_transform_shimmer'
+  | 'shop_transform_dissolve'
+  | 'shop_transform_vortex'
+  | 'shop_transform_split'
+  | 'shop_transform_materialize'
+  | 'shop_transform_reveal'
+  | 'shop_transform_confirm'
+  | 'shop_price_tick'
+  | 'shop_unaffordable'
+  | 'shop_card_appear'
+  | 'shop_card_flip'
+  | 'shop_coin_fly'
+  | 'shop_bark'
   // --- Rest Site ---
   | 'rest_open'
   | 'rest_heal'
@@ -1719,6 +1735,147 @@ function playShopClose(ctx: AnyAudioContext, master: GainNode): void {
   scheduleOscillator(ctx, master, 1047, 'sine', 0.1, 0.3, now + 0.05)
 }
 
+/** Sell card — short white noise burst, like tearing paper. */
+function playShopSell(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleNoiseBurst(ctx, master, 0.18, 0.15, ctx.currentTime)
+}
+
+/** Card removal burn — bandpass-filtered noise crackle, 600ms. */
+function playShopRemovalBurn(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleFilteredNoise(ctx, master, 0.14, 0.6, 'bandpass', 800)
+}
+
+/** Card removal complete — low sine gong at 80Hz, slow decay. */
+function playShopRemovalComplete(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleOscillator(ctx, master, 80, 'sine', 0.2, 0.3, ctx.currentTime)
+}
+
+/** Transform shimmer — high sine sweep upward, 400ms. */
+function playShopTransformShimmer(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const osc = ctx.createOscillator()
+  const gain = ctx.createGain()
+  osc.type = 'sine'
+  osc.frequency.setValueAtTime(1200, now)
+  osc.frequency.exponentialRampToValueAtTime(3200, now + 0.4)
+  gain.gain.setValueAtTime(0.12, now)
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4)
+  osc.connect(gain)
+  gain.connect(master)
+  osc.start(now)
+  osc.stop(now + 0.42)
+}
+
+/** Transform dissolve — highpass-swept noise, 600ms. */
+function playShopTransformDissolve(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const sampleRate = ctx.sampleRate
+  const frameCount = Math.ceil(sampleRate * 0.65)
+  const buffer = ctx.createBuffer(1, frameCount, sampleRate)
+  const data = buffer.getChannelData(0)
+  for (let i = 0; i < frameCount; i++) data[i] = Math.random() * 2 - 1
+  const source = ctx.createBufferSource()
+  source.buffer = buffer
+  const filter = ctx.createBiquadFilter()
+  filter.type = 'highpass'
+  filter.frequency.setValueAtTime(400, now)
+  filter.frequency.exponentialRampToValueAtTime(4000, now + 0.6)
+  const gain = ctx.createGain()
+  gain.gain.setValueAtTime(0.1, now)
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6)
+  source.connect(filter)
+  filter.connect(gain)
+  gain.connect(master)
+  source.start(now)
+}
+
+/** Transform vortex — bandpass-swept noise swirl, 400ms. */
+function playShopTransformVortex(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  const sampleRate = ctx.sampleRate
+  const frameCount = Math.ceil(sampleRate * 0.45)
+  const buffer = ctx.createBuffer(1, frameCount, sampleRate)
+  const data = buffer.getChannelData(0)
+  for (let i = 0; i < frameCount; i++) data[i] = Math.random() * 2 - 1
+  const source = ctx.createBufferSource()
+  source.buffer = buffer
+  const filter = ctx.createBiquadFilter()
+  filter.type = 'bandpass'
+  filter.frequency.setValueAtTime(200, now)
+  filter.frequency.exponentialRampToValueAtTime(2000, now + 0.2)
+  filter.frequency.exponentialRampToValueAtTime(300, now + 0.4)
+  const gain = ctx.createGain()
+  gain.gain.setValueAtTime(0.12, now)
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4)
+  source.connect(filter)
+  filter.connect(gain)
+  gain.connect(master)
+  source.start(now)
+}
+
+/** Transform split — very short highpass noise crack, 100ms. */
+function playShopTransformSplit(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleFilteredNoise(ctx, master, 0.2, 0.1, 'highpass', 3000)
+}
+
+/** Transform materialize — dual sine bell tone, 150ms. */
+function playShopTransformMaterialize(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleOscillator(ctx, master, 800, 'sine', 0.14, 0.15, now)
+  scheduleOscillator(ctx, master, 1200, 'sine', 0.1, 0.15, now)
+}
+
+/** Transform reveal — card flip, quick noise + low tone. */
+function playShopTransformReveal(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleNoiseBurst(ctx, master, 0.15, 0.08, now)
+  scheduleOscillator(ctx, master, 400, 'sine', 0.08, 0.12, now + 0.02)
+}
+
+/** Transform confirm — positive ascending chime. */
+function playShopTransformConfirm(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleOscillator(ctx, master, 880, 'sine', 0.12, 0.15, now)
+  scheduleOscillator(ctx, master, 1100, 'sine', 0.1, 0.15, now + 0.08)
+  scheduleOscillator(ctx, master, 1320, 'sine', 0.1, 0.2, now + 0.15)
+}
+
+/** Price tick — very short soft sine click, 50ms. */
+function playShopPriceTick(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleOscillator(ctx, master, 1000, 'sine', 0.07, 0.05, ctx.currentTime)
+}
+
+/** Unaffordable — low dull thud, 80ms. */
+function playShopUnaffordable(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleOscillator(ctx, master, 100, 'sine', 0.15, 0.08, ctx.currentTime)
+}
+
+/** Card appear — soft card place sound. */
+function playShopCardAppear(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleNoiseBurst(ctx, master, 0.08, 0.06, now)
+  scheduleOscillator(ctx, master, 350, 'sine', 0.07, 0.1, now + 0.02)
+}
+
+/** Card flip — quick noise burst with mid tone. */
+function playShopCardFlip(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleNoiseBurst(ctx, master, 0.12, 0.05, now)
+  scheduleOscillator(ctx, master, 500, 'sine', 0.06, 0.08, now + 0.01)
+}
+
+/** Coin fly — bright clink, 120ms. */
+function playShopCoinFly(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleNoiseBurst(ctx, master, 0.1, 0.03, now)
+  scheduleOscillator(ctx, master, 1800, 'sine', 0.1, 0.12, now + 0.01)
+}
+
+/** Shop keeper bark — subtle UI blip. */
+function playShopBark(ctx: AnyAudioContext, master: GainNode): void {
+  scheduleOscillator(ctx, master, 600, 'sine', 0.08, 0.06, ctx.currentTime)
+}
+
 // ---------------------------------------------------------------------------
 // Rest Site
 // ---------------------------------------------------------------------------
@@ -2492,6 +2649,22 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
   shop_haggle_start: playShopHaggleStart,
   shop_haggle_success: playShopHaggleSuccess,
   shop_close: playShopClose,
+  shop_sell: playShopSell,
+  shop_removal_burn: playShopRemovalBurn,
+  shop_removal_complete: playShopRemovalComplete,
+  shop_transform_shimmer: playShopTransformShimmer,
+  shop_transform_dissolve: playShopTransformDissolve,
+  shop_transform_vortex: playShopTransformVortex,
+  shop_transform_split: playShopTransformSplit,
+  shop_transform_materialize: playShopTransformMaterialize,
+  shop_transform_reveal: playShopTransformReveal,
+  shop_transform_confirm: playShopTransformConfirm,
+  shop_price_tick: playShopPriceTick,
+  shop_unaffordable: playShopUnaffordable,
+  shop_card_appear: playShopCardAppear,
+  shop_card_flip: playShopCardFlip,
+  shop_coin_fly: playShopCoinFly,
+  shop_bark: playShopBark,
   // --- Rest Site ---
   rest_open: playRestOpen,
   rest_heal: playRestHeal,

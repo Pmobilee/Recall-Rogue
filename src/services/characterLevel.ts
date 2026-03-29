@@ -298,7 +298,7 @@ export function calculateRunXP(stats: RunXPStats, isDailyFirstRun: boolean): Run
 
 export interface LevelReward {
   relicIds: string[];
-  dustBonus: number;
+  greyMatterBonus: number;
   title?: string;
   cosmetic?: string;
 }
@@ -308,31 +308,31 @@ export interface LevelReward {
  * Maps the 18 unlockable relics from src/data/relics/unlockable.ts across levels 1-24.
  */
 const LEVEL_REWARDS: Record<number, LevelReward> = {
-  1:  { relicIds: ['chain_reactor'], dustBonus: 0 },
-  2:  { relicIds: [], dustBonus: 200 },
-  3:  { relicIds: [], dustBonus: 300 },
-  4:  { relicIds: [], dustBonus: 300 },
-  5:  { relicIds: ['quicksilver_quill'], dustBonus: 0, title: 'Novice' },
-  6:  { relicIds: ['time_warp'], dustBonus: 0 },
-  7:  { relicIds: [], dustBonus: 400 },
-  8:  { relicIds: ['crit_lens'], dustBonus: 0 },
-  9:  { relicIds: [], dustBonus: 500 },
-  10: { relicIds: ['thorn_crown'], dustBonus: 0, cosmetic: 'cardback-bronze' },
-  11: { relicIds: ['bastions_will'], dustBonus: 0 },
-  12: { relicIds: [], dustBonus: 600 },
-  13: { relicIds: ['festering_wound'], dustBonus: 0 },
-  14: { relicIds: ['capacitor'], dustBonus: 0 },
-  15: { relicIds: ['double_down'], dustBonus: 0, title: 'Adept' },
-  16: { relicIds: ['scholars_crown'], dustBonus: 0 },
-  17: { relicIds: [], dustBonus: 800 },
-  18: { relicIds: ['domain_mastery_sigil', 'phoenix_feather'], dustBonus: 0 },
-  19: { relicIds: [], dustBonus: 1000 },
-  20: { relicIds: ['scholars_gambit', 'prismatic_shard'], dustBonus: 0, title: 'Master' },
-  21: { relicIds: [], dustBonus: 0, cosmetic: 'cardframe-gold' },
-  22: { relicIds: ['mirror_of_knowledge'], dustBonus: 0 },
-  23: { relicIds: [], dustBonus: 0, title: 'Sage' },
-  24: { relicIds: ['toxic_bloom'], dustBonus: 0 },
-  25: { relicIds: [], dustBonus: 0, title: 'Grand Scholar', cosmetic: 'legendary-frame' },
+  1:  { relicIds: ['chain_reactor'], greyMatterBonus: 0 },
+  2:  { relicIds: [], greyMatterBonus: 200 },
+  3:  { relicIds: [], greyMatterBonus: 300 },
+  4:  { relicIds: [], greyMatterBonus: 300 },
+  5:  { relicIds: ['quicksilver_quill'], greyMatterBonus: 0, title: 'Novice' },
+  6:  { relicIds: ['time_warp'], greyMatterBonus: 0 },
+  7:  { relicIds: [], greyMatterBonus: 400 },
+  8:  { relicIds: ['crit_lens'], greyMatterBonus: 0 },
+  9:  { relicIds: [], greyMatterBonus: 500 },
+  10: { relicIds: ['thorn_crown'], greyMatterBonus: 0, cosmetic: 'cardback-bronze' },
+  11: { relicIds: ['bastions_will'], greyMatterBonus: 0 },
+  12: { relicIds: [], greyMatterBonus: 600 },
+  13: { relicIds: ['festering_wound'], greyMatterBonus: 0 },
+  14: { relicIds: ['capacitor'], greyMatterBonus: 0 },
+  15: { relicIds: ['double_down'], greyMatterBonus: 0, title: 'Adept' },
+  16: { relicIds: ['scholars_crown'], greyMatterBonus: 0 },
+  17: { relicIds: [], greyMatterBonus: 800 },
+  18: { relicIds: ['domain_mastery_sigil', 'phoenix_feather'], greyMatterBonus: 0 },
+  19: { relicIds: [], greyMatterBonus: 1000 },
+  20: { relicIds: ['scholars_gambit', 'prismatic_shard'], greyMatterBonus: 0, title: 'Master' },
+  21: { relicIds: [], greyMatterBonus: 0, cosmetic: 'cardframe-gold' },
+  22: { relicIds: ['mirror_of_knowledge'], greyMatterBonus: 0 },
+  23: { relicIds: [], greyMatterBonus: 0, title: 'Sage' },
+  24: { relicIds: ['toxic_bloom'], greyMatterBonus: 0 },
+  25: { relicIds: [], greyMatterBonus: 0, title: 'Grand Scholar', cosmetic: 'legendary-frame' },
 };
 
 /** Get the reward for a specific level. */
@@ -372,7 +372,7 @@ export function processXPGain(
   newLevel: number;
   levelsGained: number;
   rewards: LevelReward[];
-  totalDustAwarded: number;
+  totalGreyMatterAwarded: number;
   relicsUnlocked: string[];
 } {
   const oldLevel = getLevelFromXP(currentTotalXP);
@@ -381,17 +381,17 @@ export function processXPGain(
   const levelsGained = newLevel - oldLevel;
 
   const rewards: LevelReward[] = [];
-  let totalDustAwarded = 0;
+  let totalGreyMatterAwarded = 0;
   const relicsUnlocked: string[] = [];
 
   for (let L = oldLevel + 1; L <= newLevel; L++) {
     const reward = LEVEL_REWARDS[L];
     if (reward) {
       rewards.push(reward);
-      totalDustAwarded += reward.dustBonus;
+      totalGreyMatterAwarded += reward.greyMatterBonus;
       relicsUnlocked.push(...reward.relicIds);
     }
   }
 
-  return { newTotalXP, oldLevel, newLevel, levelsGained, rewards, totalDustAwarded, relicsUnlocked };
+  return { newTotalXP, oldLevel, newLevel, levelsGained, rewards, totalGreyMatterAwarded, relicsUnlocked };
 }

@@ -24,6 +24,7 @@ import { existsSync, readdirSync, statSync, mkdirSync, writeFileSync, readFileSy
 import { submitCardback, waitForCompletion, readComfyUIOutput } from './comfyui-queue.mjs';
 import { submitStyledCardback, waitForStyledCompletion, readStyledOutput } from './stylelab-queue.mjs';
 import { processCardback } from './image-pipeline.mjs';
+import { submitRemoteWorkflow, waitForRemoteCompletion, downloadRemoteImage, checkRemoteHealth } from './remote-comfyui-queue.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = resolve(__dirname, '../..');
@@ -36,7 +37,9 @@ const HIRES_DIR = resolve(PROJECT_ROOT, 'public/assets/cardbacks/hires');
 const LOWRES_DIR = resolve(PROJECT_ROOT, 'public/assets/cardbacks/lowres');
 const STYLELAB_OUTPUT_DIR = resolve(__dirname, 'stylelab-output');
 const PROMPTLAB_OUTPUT_DIR = resolve(__dirname, 'promptlab-output');
-const RELIC_SPRITES_DIR = resolve(__dirname, 'relic-sprites-output');
+const COMFYUI_REMOTE_URL = process.env.COMFYUI_REMOTE_URL || 'http://100.74.153.81:8188';
+const COMFYUI_WORKFLOW_PATH = resolve(__dirname, '..', 'workflows', 'API versions', 'flux_schnell_gguf_api.json');
+const COMFYUI_WORKFLOW_RMBG_PATH = resolve(__dirname, '..', 'workflows', 'API versions', 'flux_schnell_gguf_rmbg_api.json');
 
 const PLAYTEST_DIR = resolve(PROJECT_ROOT, 'data/playtests');
 const PLAYTEST_LOGS_DIR = resolve(PLAYTEST_DIR, 'logs');
@@ -48,7 +51,6 @@ mkdirSync(HIRES_DIR, { recursive: true });
 mkdirSync(LOWRES_DIR, { recursive: true });
 mkdirSync(STYLELAB_OUTPUT_DIR, { recursive: true });
 mkdirSync(PROMPTLAB_OUTPUT_DIR, { recursive: true });
-mkdirSync(RELIC_SPRITES_DIR, { recursive: true });
 
 const MANIFEST_PATH = resolve(PROJECT_ROOT, 'public/assets/cardbacks/manifest.json');
 
@@ -119,25 +121,6 @@ db.exec(`
     created_at TEXT DEFAULT (datetime('now')),
     completed_at TEXT,
     UNIQUE(fact_id, strategy_id)
-  );
-`);
-
-// Relic sprites table
-db.exec(`
-  CREATE TABLE IF NOT EXISTS relic_sprites (
-    relic_id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    category TEXT NOT NULL,
-    rarity TEXT NOT NULL,
-    icon TEXT NOT NULL DEFAULT '',
-    visual_description TEXT NOT NULL DEFAULT '',
-    status TEXT DEFAULT 'pending',
-    file_path TEXT,
-    seed INTEGER,
-    comfyui_prompt_id TEXT,
-    generated_at TEXT,
-    reviewed_at TEXT,
-    generation_count INTEGER DEFAULT 0
   );
 `);
 
@@ -523,21 +506,6 @@ const stmtSelectPendingOrRejected = db.prepare(`
   WHERE status IN ('pending', 'rejected')
   ORDER BY domain, fact_id
 `);
-
-const stmtRelicsList = db.prepare(`SELECT * FROM relic_sprites ORDER BY category, name`);
-const stmtRelicGet = db.prepare(`SELECT * FROM relic_sprites WHERE relic_id = ?`);
-const stmtRelicUpsert = db.prepare(`
-  INSERT INTO relic_sprites (relic_id, name, category, rarity, icon, visual_description)
-  VALUES (@relic_id, @name, @category, @rarity, @icon, @visual_description)
-  ON CONFLICT(relic_id) DO UPDATE SET
-    name = @name, category = @category, rarity = @rarity, icon = @icon,
-    visual_description = @visual_description
-`);
-const stmtRelicUpdateDesc = db.prepare(`UPDATE relic_sprites SET visual_description = ? WHERE relic_id = ?`);
-const stmtRelicSetGenerating = db.prepare(`UPDATE relic_sprites SET status = 'generating', comfyui_prompt_id = ?, seed = ?, generation_count = generation_count + 1 WHERE relic_id = ?`);
-const stmtRelicSetGenerated = db.prepare(`UPDATE relic_sprites SET status = 'generated', file_path = ?, generated_at = datetime('now') WHERE relic_id = ?`);
-const stmtRelicSetStatus = db.prepare(`UPDATE relic_sprites SET status = ?, reviewed_at = datetime('now') WHERE relic_id = ?`);
-const stmtRelicSetError = db.prepare(`UPDATE relic_sprites SET status = 'error' WHERE relic_id = ?`);
 
 // --- Batch Controller ---
 class BatchController {
@@ -1739,159 +1707,46 @@ app.get('/api/playtest/report/:id', (req, res) => {
   }
 });
 
-// --- Relic Sprites API ---
-
-// List all relic sprites
-app.get('/api/relics/list', (req, res) => {
-  const rows = stmtRelicsList.all();
-  res.json(rows);
-});
-
-// Bulk upsert relics (called from frontend with full relic catalogue)
-app.post('/api/relics/sync', express.json({ limit: '1mb' }), (req, res) => {
-  const relics = req.body.relics;
-  if (!Array.isArray(relics)) return res.status(400).json({ error: 'relics array required' });
-  const upsertMany = db.transaction((items) => {
-    for (const r of items) {
-      stmtRelicUpsert.run({
-        relic_id: r.id,
-        name: r.name,
-        category: r.category,
-        rarity: r.rarity,
-        icon: r.icon || '',
-        visual_description: r.visualDescription || '',
-      });
-    }
-  });
-  upsertMany(relics);
-  res.json({ synced: relics.length });
-});
-
-// Update visual description for a single relic
-app.post('/api/relics/update-description/:id', express.json(), (req, res) => {
-  const { visualDescription } = req.body;
-  if (!visualDescription) return res.status(400).json({ error: 'visualDescription required' });
-  stmtRelicUpdateDesc.run(visualDescription, req.params.id);
-  res.json({ ok: true });
-});
-
-// Generate a relic sprite via ComfyUI
-app.post('/api/relics/generate/:id', express.json(), async (req, res) => {
-  const relic = stmtRelicGet.get(req.params.id);
-  if (!relic) return res.status(404).json({ error: 'Relic not found' });
-  if (!relic.visual_description) return res.status(400).json({ error: 'No visual description' });
-
-  try {
-    const seed = req.body.seed ?? Math.floor(Math.random() * 2 ** 32);
-    const promptId = await submitCardback(relic.visual_description, seed);
-    stmtRelicSetGenerating.run(promptId, seed, relic.relic_id);
-    res.json({ promptId, seed });
-
-    // Wait for completion in background
-    (async () => {
-      try {
-        const outputFiles = await waitForCompletion(promptId);
-        const rawPng = await readComfyUIOutput(outputFiles[0]);
-        // Save to relic sprites dir
-        const outPath = join(RELIC_SPRITES_DIR, `${relic.relic_id}.png`);
-        const { writeFile } = await import('fs/promises');
-        // Process with sharp: center crop to square, resize to 128x128 for display
-        const sharp = (await import('sharp')).default;
-        const processed = await sharp(rawPng)
-          .resize(128, 128, { fit: 'cover', position: 'centre', kernel: sharp.kernel.nearest })
-          .png({ compressionLevel: 9 })
-          .toBuffer();
-        await writeFile(outPath, processed);
-        stmtRelicSetGenerated.run(outPath, relic.relic_id);
-        console.log(`[relic] Generated sprite for ${relic.relic_id}`);
-      } catch (err) {
-        console.error(`[relic] Error generating ${relic.relic_id}:`, err.message);
-        stmtRelicSetError.run(relic.relic_id);
-      }
-    })();
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Serve a relic sprite image
-app.get('/api/relics/image/:id', (req, res) => {
-  const imgPath = join(RELIC_SPRITES_DIR, `${req.params.id}.png`);
-  if (!existsSync(imgPath)) return res.status(404).json({ error: 'Image not found' });
-  res.setHeader('Content-Type', 'image/png');
-  res.setHeader('Cache-Control', 'no-store');
-  res.sendFile(imgPath);
-});
-
-// Review a relic sprite (approve/reject)
-app.post('/api/relics/review/:id', express.json(), (req, res) => {
-  const { status } = req.body;
-  if (!['approved', 'rejected', 'pending'].includes(status)) {
-    return res.status(400).json({ error: 'status must be approved, rejected, or pending' });
-  }
-  stmtRelicSetStatus.run(status, req.params.id);
-  res.json({ ok: true });
-});
-
-// Batch generate all pending relics
-let relicBatchRunning = false;
-let relicBatchAbort = false;
-
-app.post('/api/relics/batch-generate', express.json(), async (req, res) => {
-  if (relicBatchRunning) return res.status(409).json({ error: 'Batch already running' });
-  relicBatchRunning = true;
-  relicBatchAbort = false;
-
-  const pendingRelics = db.prepare(`SELECT * FROM relic_sprites WHERE status IN ('pending', 'rejected', 'error') AND visual_description != '' ORDER BY category, name`).all();
-  res.json({ queued: pendingRelics.length });
-
-  (async () => {
-    for (const relic of pendingRelics) {
-      if (relicBatchAbort) break;
-      try {
-        const seed = Math.floor(Math.random() * 2 ** 32);
-        const promptId = await submitCardback(relic.visual_description, seed);
-        stmtRelicSetGenerating.run(promptId, seed, relic.relic_id);
-        const outputFiles = await waitForCompletion(promptId);
-        const rawPng = await readComfyUIOutput(outputFiles[0]);
-        const outPath = join(RELIC_SPRITES_DIR, `${relic.relic_id}.png`);
-        const { writeFile } = await import('fs/promises');
-        const sharp = (await import('sharp')).default;
-        const processed = await sharp(rawPng)
-          .resize(128, 128, { fit: 'cover', position: 'centre', kernel: sharp.kernel.nearest })
-          .png({ compressionLevel: 9 })
-          .toBuffer();
-        await writeFile(outPath, processed);
-        stmtRelicSetGenerated.run(outPath, relic.relic_id);
-        console.log(`[relic-batch] Generated ${relic.relic_id}`);
-      } catch (err) {
-        console.error(`[relic-batch] Error ${relic.relic_id}:`, err.message);
-        stmtRelicSetError.run(relic.relic_id);
-      }
-    }
-    relicBatchRunning = false;
-    console.log(`[relic-batch] Batch complete.`);
-  })();
-});
-
-app.post('/api/relics/batch-stop', (req, res) => {
-  relicBatchAbort = true;
-  res.json({ ok: true });
-});
-
-app.get('/api/relics/batch-status', (req, res) => {
-  const total = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE visual_description != ''`).get().c;
-  const generated = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status IN ('generated', 'approved')`).get().c;
-  const pending = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status IN ('pending', 'rejected', 'error') AND visual_description != ''`).get().c;
-  const generating = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status = 'generating'`).get().c;
-  res.json({ running: relicBatchRunning, total, generated, pending, generating });
-});
 
 // ── Art Studio Controller ──────────────────────────────────────────────
 
 const ARTSTUDIO_ITEMS_PATH = resolve(__dirname, 'artstudio-items.json');
 const ARTSTUDIO_OUTPUT_DIR = resolve(__dirname, 'artstudio-output');
-const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons', 'noncombat', 'mysteryrooms', 'rewardrooms'];
+const ARTSTUDIO_CATEGORIES = [
+  'cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons',
+  'noncombat', 'mysteryrooms', 'rewardrooms', 'deckfronts',
+  // Icon categories (all use ComfyUI + ISNet bg removal)
+  'cardtype_icons', 'domain_icons', 'status_icons', 'intent_icons',
+  'reward_icons', 'nav_icons', 'archetype_icons',
+  'lb_icons', 'mystery_icons', 'synergy_icons',
+  'ui_icons', 'map_icons', 'enemy_power_icons', 'currency_icons',
+];
+
+/** Categories that use remote ComfyUI instead of OpenRouter */
+/** Shared config for all icon categories: 512 gen → ISNet bg removal → 256 final */
+const ICON_COMFYUI_CONFIG = { defaultWidth: 512, defaultHeight: 512, bgRemoval: 'workflow', finalWidth: 256, finalHeight: 256, resizeKernel: 'nearest' };
+
+const COMFYUI_CATEGORIES = {
+  relicicons: { defaultWidth: 512, defaultHeight: 512, bgRemoval: 'workflow', finalWidth: 512, finalHeight: 512, resizeKernel: 'nearest' },
+  deckfronts: { defaultWidth: 512, defaultHeight: 728, bgRemoval: false,      finalWidth: 512, finalHeight: 728, resizeKernel: 'nearest' },
+  // All icon categories share same config
+  cardtype_icons:  ICON_COMFYUI_CONFIG,
+  domain_icons:    ICON_COMFYUI_CONFIG,
+  status_icons:    ICON_COMFYUI_CONFIG,
+  intent_icons:    ICON_COMFYUI_CONFIG,
+  reward_icons:    ICON_COMFYUI_CONFIG,
+  nav_icons:       ICON_COMFYUI_CONFIG,
+  hub_icons:       ICON_COMFYUI_CONFIG,
+  archetype_icons: ICON_COMFYUI_CONFIG,
+  lb_icons:        ICON_COMFYUI_CONFIG,
+  mystery_icons:   ICON_COMFYUI_CONFIG,
+  disc_icons:      ICON_COMFYUI_CONFIG,
+  synergy_icons:   ICON_COMFYUI_CONFIG,
+  ui_icons:        ICON_COMFYUI_CONFIG,
+  map_icons:       ICON_COMFYUI_CONFIG,
+  currency_icons:  ICON_COMFYUI_CONFIG,
+  enemy_power_icons: ICON_COMFYUI_CONFIG,
+};
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_MODEL_PORTRAIT = process.env.OPENROUTER_MODEL_PORTRAIT || 'google/gemini-2.5-flash-image';          // Nano Banana (original) — for portrait
@@ -1914,11 +1769,17 @@ for (const cat of ARTSTUDIO_CATEGORIES) {
 }
 
 function readArtStudioItems() {
+  let data;
   try {
-    return JSON.parse(readFileSync(ARTSTUDIO_ITEMS_PATH, 'utf-8'));
+    data = JSON.parse(readFileSync(ARTSTUDIO_ITEMS_PATH, 'utf-8'));
   } catch {
-    return { cardframes: [], enemies: [], cardart: [], backgrounds: [], relicicons: [], noncombat: [], mysteryrooms: [], rewardrooms: [] };
+    data = {};
   }
+  // Ensure all categories exist (handles files from before new categories were added)
+  for (const cat of ARTSTUDIO_CATEGORIES) {
+    if (!data[cat]) data[cat] = [];
+  }
+  return data;
 }
 
 function writeArtStudioItems(data) {
@@ -1991,6 +1852,35 @@ async function artStudioCallOpenRouter(prompt, targetWidth, targetHeight, model)
   }
 }
 
+/**
+ * Check if an art studio item has been deployed to public/assets/.
+ * @param {string} category - The art studio category key
+ * @param {string} itemId - The item's id
+ * @returns {boolean|null} true if deployed, false if not, null if category unknown
+ */
+function checkDeployed(category, itemId) {
+  const DEPLOY_PATHS = {
+    cardtype_icons:    `public/assets/sprites/icons/icon_cardtype_${itemId}.png`,
+    domain_icons:      `public/assets/sprites/icons/icon_domain_${itemId}.png`,
+    status_icons:      `public/assets/sprites/icons/icon_status_${itemId}.png`,
+    intent_icons:      `public/assets/sprites/icons/icon_intent_${itemId}.png`,
+    reward_icons:      `public/assets/sprites/icons/icon_reward_${itemId}.png`,
+    nav_icons:         `public/assets/sprites/icons/icon_nav_${itemId}.png`,
+    archetype_icons:   `public/assets/sprites/icons/icon_archetype_${itemId}.png`,
+    lb_icons:          `public/assets/sprites/icons/icon_lb_${itemId}.png`,
+    mystery_icons:     `public/assets/sprites/icons/icon_mystery_${itemId}.png`,
+    ui_icons:          `public/assets/sprites/icons/icon_ui_${itemId}.png`,
+    map_icons:         `public/assets/sprites/map-icons/${itemId}.webp`,
+    enemy_power_icons: `public/assets/sprites/icons/icon_power_${itemId}.png`,
+    currency_icons:    `public/assets/sprites/icons/icon_currency_${itemId}.png`,
+    relicicons:        `public/assets/sprites/icons/icon_relic_${itemId}.png`,
+    enemies:           `public/assets/sprites/enemies/${itemId}.png`,
+  };
+  const relPath = DEPLOY_PATHS[category];
+  if (!relPath) return null;
+  return existsSync(resolve(PROJECT_ROOT, relPath));
+}
+
 // GET /api/artstudio/items?category=cardframes|enemies|cardart
 app.get('/api/artstudio/items', (req, res) => {
   const { category } = req.query;
@@ -1998,7 +1888,11 @@ app.get('/api/artstudio/items', (req, res) => {
     return res.status(400).json({ error: `category must be one of: ${ARTSTUDIO_CATEGORIES.join(', ')}` });
   }
   const data = readArtStudioItems();
-  res.json(data[category] || []);
+  const items = (data[category] || []).map(item => ({
+    ...item,
+    deployed: checkDeployed(category, item.id)
+  }));
+  res.json(items);
 });
 
 // POST /api/artstudio/items — upsert an item
@@ -2018,12 +1912,70 @@ app.post('/api/artstudio/items', express.json(), (req, res) => {
   res.json({ ok: true });
 });
 
+/**
+ * Generate a variant using remote ComfyUI (FLUX Schnell GGUF).
+ * @param {object} item - The art studio item
+ * @param {string} category - Category name
+ * @param {object} variant - Variant object with seed
+ * @param {string} itemDir - Output directory for this item
+ */
+async function generateViaComfyUI(item, category, variant, itemDir) {
+  const { writeFile } = await import('fs/promises');
+  const sharp = (await import('sharp')).default;
+  const config = COMFYUI_CATEGORIES[category];
+
+  // Load and parameterize workflow
+  const workflowPath = config.bgRemoval === 'workflow' ? COMFYUI_WORKFLOW_RMBG_PATH : COMFYUI_WORKFLOW_PATH;
+  const workflow = JSON.parse(readFileSync(workflowPath, 'utf-8'));
+  workflow['4'].inputs.text = item.prompt;
+  workflow['5'].inputs.width = item.targetWidth || config.defaultWidth;
+  workflow['5'].inputs.height = item.targetHeight || config.defaultHeight;
+  workflow['9'].inputs.noise_seed = variant.seed;
+  const saveNodeId = workflow['15'] ? '15' : '12';
+  workflow[saveNodeId].inputs.filename_prefix = `artstudio_${category}_${item.id}`;
+
+  console.log(`[artstudio:comfyui] Submitting ${category}/${item.id} variant ${variant.variant} (seed ${variant.seed})`);
+
+  // Submit to remote ComfyUI
+  const promptId = await submitRemoteWorkflow(COMFYUI_REMOTE_URL, workflow);
+  console.log(`[artstudio:comfyui] Submitted, prompt_id=${promptId}`);
+
+  // Wait for completion — 1hr timeout for deep batch queues (100+ jobs × ~30-60s each)
+  const images = await waitForRemoteCompletion(COMFYUI_REMOTE_URL, promptId, 3600000);
+  if (!images.length) throw new Error('No output images from ComfyUI');
+
+  // Download the first output image
+  let imgBuffer = await downloadRemoteImage(
+    COMFYUI_REMOTE_URL,
+    images[0].filename,
+    images[0].subfolder,
+    images[0].type
+  );
+  console.log(`[artstudio:comfyui] Downloaded ${images[0].filename} (${imgBuffer.length} bytes)`);
+
+  // Resize to final dimensions
+  const outPath = resolve(itemDir, `variant-${variant.variant}.png`);
+  const fw = config.finalWidth;
+  const fh = config.finalHeight;
+  const processed = await sharp(imgBuffer)
+    .ensureAlpha()
+    .resize(fw, fh, { fit: 'cover', kernel: sharp.kernel[config.resizeKernel] || sharp.kernel.lanczos3 })
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+  await writeFile(outPath, processed);
+  console.log(`[artstudio:comfyui] Saved ${outPath} (${fw}x${fh})`);
+}
+
 // POST /api/artstudio/generate — generate variants for an item
 app.post('/api/artstudio/generate', express.json(), async (req, res) => {
   const { id, category, count = 3 } = req.body;
   if (!id || !category) return res.status(400).json({ error: 'id and category required' });
   if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
-  if (!OPENROUTER_API_KEY) return res.status(503).json({ error: 'OPENROUTER_API_KEY not configured' });
+  if (COMFYUI_CATEGORIES[category]) {
+    // ComfyUI categories don't need OpenRouter key — skip to generation
+  } else if (!OPENROUTER_API_KEY) {
+    return res.status(503).json({ error: 'OPENROUTER_API_KEY not configured' });
+  }
 
   const data = readArtStudioItems();
   const item = data[category].find(i => i.id === id);
@@ -2058,21 +2010,27 @@ app.post('/api/artstudio/generate', express.json(), async (req, res) => {
       writeArtStudioItems(d);
 
       try {
-        const itemModel = getModelForItem(item);
-        console.log(`[artstudio] Generating ${category}/${id} variant ${v.variant} (seed ${v.seed}) model=${itemModel}`);
-        const apiData = await artStudioCallOpenRouter(item.prompt, item.targetWidth || 1024, item.targetHeight || 1024, itemModel);
-        const base64 = artStudioExtractImageBase64(apiData);
-        const imgBuffer = Buffer.from(base64, 'base64');
+        if (COMFYUI_CATEGORIES[category]) {
+          // ComfyUI remote generation
+          await generateViaComfyUI(item, category, v, itemDir);
+        } else {
+          // Existing OpenRouter generation (unchanged)
+          const itemModel = getModelForItem(item);
+          console.log(`[artstudio] Generating ${category}/${id} variant ${v.variant} (seed ${v.seed}) model=${itemModel}`);
+          const apiData = await artStudioCallOpenRouter(item.prompt, item.targetWidth || 1024, item.targetHeight || 1024, itemModel);
+          const base64 = artStudioExtractImageBase64(apiData);
+          const imgBuffer = Buffer.from(base64, 'base64');
 
-        // Save resized output at target dimensions
-        const outPath = resolve(itemDir, `variant-${v.variant}.png`);
-        const tw = item.targetWidth || 1024;
-        const th = item.targetHeight || 1024;
-        const processed = await sharp(imgBuffer)
-          .resize(tw, th, { fit: 'cover', kernel: sharp.kernel.nearest })
-          .png({ compressionLevel: 9 })
-          .toBuffer();
-        await writeFile(outPath, processed);
+          // Save resized output at target dimensions
+          const outPath = resolve(itemDir, `variant-${v.variant}.png`);
+          const tw = item.targetWidth || 1024;
+          const th = item.targetHeight || 1024;
+          const processed = await sharp(imgBuffer)
+            .resize(tw, th, { fit: 'cover', kernel: sharp.kernel.nearest })
+            .png({ compressionLevel: 9 })
+            .toBuffer();
+          await writeFile(outPath, processed);
+        }
 
         // Mark as done
         const d2 = readArtStudioItems();
@@ -2135,6 +2093,16 @@ app.delete('/api/artstudio/item/:category/:id', (req, res) => {
   data[category] = data[category].filter(i => i.id !== id);
   writeArtStudioItems(data);
   res.json({ ok: true, removed: before - data[category].length });
+});
+
+// GET /api/comfyui/status — check remote ComfyUI health
+app.get('/api/comfyui/status', async (req, res) => {
+  try {
+    const health = await checkRemoteHealth(COMFYUI_REMOTE_URL);
+    res.json({ ...health, url: COMFYUI_REMOTE_URL });
+  } catch (err) {
+    res.json({ online: false, error: err.message });
+  }
 });
 
 // --- Music BGM System ---

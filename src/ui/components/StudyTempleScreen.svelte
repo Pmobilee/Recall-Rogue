@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, untrack } from 'svelte';
   import { playCardAudio } from '../../services/cardAudioManager';
   import { getAllDecks, getDecksForDomain } from '../../data/deckRegistry';
   import type { DeckRegistryEntry } from '../../data/deckRegistry';
@@ -8,8 +8,7 @@
   import CategoryTabs from './CategoryTabs.svelte';
   import DeckTileV2 from './DeckTileV2.svelte';
   import DeckDetailModal from './DeckDetailModal.svelte';
-  import LanguageGroupHeader from './LanguageGroupHeader.svelte';
-  import DeckSearchBar from './DeckSearchBar.svelte';
+import DeckSearchBar from './DeckSearchBar.svelte';
   import DeckSortDropdown from './DeckSortDropdown.svelte';
   import DeckFilterChips from './DeckFilterChips.svelte';
   import PlaylistBar from './PlaylistBar.svelte';
@@ -28,10 +27,13 @@
   let sortOption = $state<'alpha' | 'progress-high' | 'progress-low' | 'facts' | 'newest'>('alpha');
   let activeFilters = $state<Array<'in-progress' | 'not-started' | 'mastered'>>([]);
   let selectedDeckId = $state<string | null>(null);
+  let syntheticLanguageDeck = $state<DeckRegistryEntry | null>(null);
   let customPlaylists = $state<CustomPlaylist[]>([]);
   let activePlaylistId = $state<string | null>(null);
   let showPlaylistPicker = $state(false);
   let pendingCustomItem = $state<CustomPlaylistItem | null>(null);
+  let dealKey = $state(0);
+  let initialTabSet = false;
 
   const LANGUAGE_MAP: Record<string, { name: string; flag: string }> = {
     japanese: { name: 'Japanese', flag: '\u{1F1EF}\u{1F1F5}' },
@@ -76,12 +78,43 @@
             name: LANG_NAMES[langKey] ?? langKey.charAt(0).toUpperCase() + langKey.slice(1),
             description: `${langVocabDecks.length} decks · ${totalFacts} facts`,
             factCount: totalFacts,
+            subDecks: langVocabDecks.map(d => ({ id: d.id, name: d.name, factCount: d.factCount })),
           });
         }
       }
       return [...knowledgeDecks, ...representativeVocab];
     }
-    if (activeTab === 'vocabulary') return allAvailable.filter(d => d.domain === 'vocabulary');
+    if (activeTab === 'vocabulary') {
+      const vocabDecks = allAvailable.filter(d => d.domain === 'vocabulary');
+      const seenLanguages = new Set<string>();
+      const result: DeckRegistryEntry[] = [];
+      for (const deck of vocabDecks) {
+        const idx = deck.id.indexOf('_');
+        const langKey = idx > 0 ? deck.id.substring(0, idx) : deck.id;
+        if (!seenLanguages.has(langKey)) {
+          seenLanguages.add(langKey);
+          const langVocabDecks = vocabDecks.filter(d => {
+            const di = d.id.indexOf('_');
+            return (di > 0 ? d.id.substring(0, di) : d.id) === langKey;
+          });
+          const totalFacts = langVocabDecks.reduce((sum, d) => sum + d.factCount, 0);
+          const LANG_NAMES: Record<string, string> = {
+            japanese: 'Japanese', korean: 'Korean', mandarin: 'Mandarin Chinese',
+            chinese: 'Chinese', spanish: 'Spanish', french: 'French',
+            german: 'German', dutch: 'Dutch', czech: 'Czech',
+          };
+          result.push({
+            ...deck,
+            id: 'all:' + langKey,
+            name: LANG_NAMES[langKey] ?? langKey.charAt(0).toUpperCase() + langKey.slice(1),
+            description: `${langVocabDecks.length} decks · ${totalFacts} facts`,
+            factCount: totalFacts,
+            subDecks: langVocabDecks.map(d => ({ id: d.id, name: d.name, factCount: d.factCount })),
+          });
+        }
+      }
+      return result;
+    }
     return allAvailable.filter(d => d.domain === activeTab);
   });
 
@@ -107,7 +140,7 @@
   });
 
   const filteredDecks = $derived.by<DeckRegistryEntry[]>(() => {
-    let decks = activeTab === 'vocabulary' ? [] : [...rawDecks];
+    let decks = [...rawDecks];
 
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
@@ -142,13 +175,41 @@
     return decks;
   });
 
-  const selectedDeck = $derived(selectedDeckId ? getAllDecks().find(d => d.id === selectedDeckId) ?? null : null);
-  const selectedProgress = $derived(selectedDeck ? getDeckProgress(selectedDeck.id) : null);
+  const selectedDeck = $derived.by(() => {
+    if (syntheticLanguageDeck) return syntheticLanguageDeck;
+    return selectedDeckId ? getAllDecks().find(d => d.id === selectedDeckId) ?? null : null;
+  });
+
+  const selectedProgress = $derived.by(() => {
+    if (!selectedDeck) return null;
+    if (selectedDeck.id.startsWith('all:')) {
+      // Aggregate progress across all subdecks
+      const subDecks = selectedDeck.subDecks ?? [];
+      let totalFacts = 0, encountered = 0, mastered = 0;
+      for (const sd of subDecks) {
+        const p = getDeckProgress(sd.id);
+        totalFacts += p.totalFacts;
+        encountered += p.factsEncountered;
+        mastered += p.factsMastered;
+      }
+      return {
+        deckId: selectedDeck.id,
+        totalFacts,
+        factsEncountered: encountered,
+        factsMastered: mastered,
+        averageStability: 0,
+        progressPercent: totalFacts > 0 ? (mastered / totalFacts) * 100 : 0,
+      };
+    }
+    return getDeckProgress(selectedDeck.id);
+  });
   const activePlaylist = $derived(activePlaylistId ? customPlaylists.find(p => p.id === activePlaylistId) ?? null : null);
   const showPlaylistBar = $derived(customPlaylists.length > 0 && customPlaylists.some(p => p.items.length > 0));
 
   onMount(() => {
     playCardAudio('modal-open');
+    // Trigger initial deal animation after tiles have mounted
+    requestAnimationFrame(() => { dealKey++; });
     const save = $playerSave;
     if (save?.lastDungeonSelection?.mode === 'study' && save.lastDungeonSelection.studyConfig) {
       // Could restore tab from deckId's domain — skip for simplicity
@@ -166,33 +227,58 @@
 
   function handleDeckSelect(deckId: string) {
     if (deckId.startsWith('all:')) {
-      // Switch to vocabulary tab to show all decks for this language
-      activeTab = 'vocabulary';
-      return;
+      // Find the synthetic language deck and open the modal
+      const syntheticDeck = rawDecks.find(d => d.id === deckId);
+      if (syntheticDeck) {
+        syntheticLanguageDeck = syntheticDeck;
+        return;
+      }
     }
     selectedDeckId = deckId;
   }
 
   function handleModalClose() {
     selectedDeckId = null;
+    syntheticLanguageDeck = null;
   }
 
   function handleStartStudyRun(deckId: string, subDeckId?: string, examTags?: string[]) {
     selectedDeckId = null;
+    syntheticLanguageDeck = null;
+
+    // For language group decks, resolve the actual deckId
+    let actualDeckId = deckId;
+    let actualSubDeckId = subDeckId;
+
+    if (deckId.startsWith('all:')) {
+      if (subDeckId) {
+        // A specific sub-deck was selected — use it as the real deck id
+        actualDeckId = subDeckId;
+        actualSubDeckId = undefined;
+      } else {
+        // "All sub-decks" selected — fall back to the first matching deck for this language.
+        // TODO: ideally merge facts from all sub-decks so the user gets all levels combined.
+        const langKey = deckId.slice(4); // e.g. 'dutch' from 'all:dutch'
+        const allDecks = getAllDecks();
+        const firstMatch = allDecks.find(d => d.id.startsWith(langKey + '_') && d.status === 'available');
+        if (firstMatch) {
+          actualDeckId = firstMatch.id;
+        }
+        // else: actualDeckId stays as 'all:dutch' and will fail gracefully downstream
+        actualSubDeckId = undefined;
+      }
+    }
+
     playerSave.update(s => s ? {
       ...s,
       lastDungeonSelection: {
         ...s.lastDungeonSelection,
         mode: 'study' as const,
-        studyConfig: { deckId, subDeckId },
+        studyConfig: { deckId: actualDeckId, subDeckId: actualSubDeckId },
       },
     } : s);
     persistPlayer();
-    onStartRun({ mode: 'study', deckId, subDeckId, examTags });
-  }
-
-  function handleStudyAllLanguage(languageCode: string) {
-    handleStartStudyRun('all:' + languageCode);
+    onStartRun({ mode: 'study', deckId: actualDeckId, subDeckId: actualSubDeckId, examTags });
   }
 
   function makeId(): string {
@@ -267,7 +353,16 @@
 
   $effect(() => {
     void activeTab;
-    selectedDeckId = null;
+    untrack(() => {
+      selectedDeckId = null;
+      if (!initialTabSet) {
+        // Skip the first run — initial deal is triggered from onMount
+        initialTabSet = true;
+        return;
+      }
+      dealKey++;
+      playCardAudio('deck-shuffle');
+    });
   });
 </script>
 
@@ -284,36 +379,29 @@
 
   <CategoryTabs {activeTab} onTabChange={(t) => { activeTab = t; }} />
 
+  <div class="deck-summary">
+    {filteredDecks.length} deck{filteredDecks.length !== 1 ? 's' : ''}
+    {#if searchQuery || activeFilters.length > 0}
+      <span class="summary-filter-note">(filtered)</span>
+    {/if}
+  </div>
+
+  <div class="deck-scroll">
   <div class="deck-grid">
-    {#if activeTab === 'vocabulary'}
-      {#each languageGroups as group (group.languageCode)}
-        <div class="lang-header-row">
-          <LanguageGroupHeader
-            languageCode={group.languageCode}
-            languageName={group.languageName}
-            languageFlag={group.languageFlag}
-            deckCount={group.decks.length}
-            totalFacts={group.totalFacts}
-            onStudyAll={handleStudyAllLanguage}
-          />
-        </div>
-        {#each group.decks as deck (deck.id)}
-          {@const progress = getDeckProgress(deck.id)}
-          <DeckTileV2 {deck} {progress} onclick={() => handleDeckSelect(deck.id)} />
-        {/each}
-      {/each}
-    {:else if filteredDecks.length === 0}
+    {#if filteredDecks.length === 0}
       <div class="empty-state">
         <p class="empty-title">{searchQuery ? 'No matching decks' : 'No decks available'}</p>
         <p class="empty-sub">{searchQuery ? 'Try a different search term' : 'Decks for this category are coming soon.'}</p>
       </div>
     {:else}
-      {#each filteredDecks as deck (deck.id)}
+      {#each filteredDecks as deck, i (deck.id)}
         {@const progress = getDeckProgress(deck.id)}
-        <DeckTileV2 {deck} {progress} onclick={() => handleDeckSelect(deck.id)} />
+        <DeckTileV2 {deck} {progress} onclick={() => handleDeckSelect(deck.id)} dealIndex={i} {dealKey} />
       {/each}
     {/if}
   </div>
+  </div>
+  <div class="scroll-fade" aria-hidden="true"></div>
 
   {#if showPlaylistBar}
     <PlaylistBar
@@ -402,36 +490,49 @@
     flex-wrap: wrap;
   }
 
-  .deck-grid {
+  .deck-scroll {
     flex: 1;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: calc(16px * var(--layout-scale, 1));
-    padding: calc(16px * var(--layout-scale, 1));
     overflow-y: auto;
+    min-height: 0;
+    position: relative;
+  }
+
+  .scroll-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(80px * var(--layout-scale, 1));
+    background: linear-gradient(transparent, rgba(10, 14, 26, 0.95));
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .deck-summary {
+    padding: calc(6px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #4b5563;
+    flex-shrink: 0;
+  }
+
+  .summary-filter-note {
+    color: #6366f1;
+    margin-left: calc(4px * var(--layout-scale, 1));
+  }
+
+  .deck-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(240px * var(--layout-scale, 1)), 1fr));
+    gap: calc(20px * var(--layout-scale, 1));
+    padding: calc(20px * var(--layout-scale, 1));
+    padding-bottom: calc(96px * var(--layout-scale, 1));
     align-content: start;
   }
 
-  @media (max-width: 1500px) {
-    .deck-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 1100px) {
-    .deck-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 800px) {
+  @media (max-width: 400px) {
     .deck-grid {
       grid-template-columns: 1fr;
     }
-  }
-
-  .lang-header-row {
-    grid-column: 1 / -1;
   }
 
   .empty-state {

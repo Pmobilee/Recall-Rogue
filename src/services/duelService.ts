@@ -36,12 +36,12 @@ export const duelService = {
    * The challenger answers first; the opponent has 48 hours to respond.
    *
    * @param opponentId - The friend's player ID.
-   * @param wagerDust - Amount of dust wagered (must be > 0; server enforces max).
+   * @param wagerGreyMatter - Amount of grey matter wagered (must be > 0; server enforces max).
    * @returns The newly created duel's ID.
    * @throws {ApiError} 400 on invalid wager, 404 if opponent not found, 409 if duel already pending.
    */
-  async challengeDuel(opponentId: string, wagerDust: number): Promise<{ duelId: string }> {
-    const response = await authedPost('/duels/challenge', { opponentId, wagerDust })
+  async challengeDuel(opponentId: string, wagerGreyMatter: number): Promise<{ duelId: string }> {
+    const response = await authedPost('/duels/challenge', { opponentId, wagerGreyMatter })
     const data = (await response.json()) as { id?: string; duelId?: string }
     return { duelId: data.duelId ?? data.id ?? '' }
   },
@@ -86,7 +86,7 @@ export const duelService = {
   /**
    * Submit the authenticated player's answers for a duel.
    * The server scores timing-weighted answers, resolves the duel if both sides
-   * have now submitted, and transfers wager dust accordingly.
+   * have now submitted, and transfers wager grey matter accordingly.
    *
    * @param duelId - The duel record ID.
    * @param answers - The player's answers, one per duel question.
@@ -146,8 +146,8 @@ export const duelService = {
       losses: summary.losses ?? 0,
       ties: summary.ties ?? 0,
       totalDuels: summary.total ?? 0,
-      totalDustWon: 0,
-      totalDustLost: 0,
+      totalGreyMatterWon: 0,
+      totalGreyMatterLost: 0,
       currentWinStreak: 0,
       longestWinStreak: 0,
     }

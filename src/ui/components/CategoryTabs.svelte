@@ -2,6 +2,7 @@
   import { getDomainMetadata } from '../../data/domainMetadata';
   import { getAllDecks } from '../../data/deckRegistry';
   import { playCardAudio } from '../../services/cardAudioManager';
+  import { getDomainIconPath } from '../utils/iconAssets';
 
   interface Props {
     activeTab: string | null; // null = "All" tab, domain ID string, or 'vocabulary'
@@ -14,13 +15,14 @@
     const decks = getAllDecks().filter(d => d.status === 'available');
     const domains = new Set(decks.map(d => d.domain));
 
-    const result: Array<{ id: string | null; label: string; icon: string; colorTint: string }> = [
-      { id: null, label: 'All', icon: '', colorTint: '#6366f1' },
+    const result: Array<{ id: string | null; label: string; icon: string; colorTint: string; count: number }> = [
+      { id: null, label: 'All', icon: '', colorTint: '#6366f1', count: decks.length },
     ];
 
     // Add 'vocabulary' if it exists
     if (domains.has('vocabulary')) {
-      result.push({ id: 'vocabulary', label: 'Languages', icon: '', colorTint: '#34D399' });
+      const vocabCount = decks.filter(d => d.domain === 'vocabulary').length;
+      result.push({ id: 'vocabulary', label: 'Languages', icon: '', colorTint: '#34D399', count: vocabCount });
     }
 
     // Add knowledge domains
@@ -28,7 +30,8 @@
       if (domain === 'vocabulary') continue;
       try {
         const meta = getDomainMetadata(domain);
-        result.push({ id: domain, label: meta.shortName, icon: meta.icon, colorTint: meta.colorTint });
+        const domainCount = decks.filter(d => d.domain === domain).length;
+        result.push({ id: domain, label: meta.shortName, icon: getDomainIconPath(domain), colorTint: meta.colorTint, count: domainCount });
       } catch { /* skip unknown domains */ }
     }
 
@@ -50,9 +53,10 @@
       onclick={() => handleTabClick(tab.id)}
     >
       {#if tab.icon}
-        <span class="tab-icon">{tab.icon}</span>
+        <img class="tab-icon" src={tab.icon} alt="" />
       {/if}
       <span class="tab-label">{tab.label}</span>
+      <span class="tab-count">{tab.count}</span>
     </button>
   {/each}
 </div>
@@ -115,11 +119,23 @@
   }
 
   .tab-icon {
-    font-size: calc(14px * var(--text-scale, 1));
-    line-height: 1;
+    width: calc(18px * var(--layout-scale, 1));
+    height: calc(18px * var(--layout-scale, 1));
+    object-fit: contain;
+    flex-shrink: 0;
   }
 
   .tab-label {
     line-height: 1;
+  }
+
+  .tab-count {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #4b5563;
+    font-weight: 500;
+  }
+
+  .tab-btn.active .tab-count {
+    color: #818cf8;
   }
 </style>

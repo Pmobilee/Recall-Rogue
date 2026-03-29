@@ -187,7 +187,7 @@
         <div class="bonus-card" aria-label="Bonus reward">
           <span class="bonus-icon" aria-hidden="true">💎</span>
           <p class="bonus-text">
-            <strong>Bonus:</strong> If your friend builds a <strong>7-day streak</strong>, you both earn bonus dust!
+            <strong>Bonus:</strong> If your friend builds a <strong>7-day streak</strong>, you both earn bonus grey matter!
           </p>
         </div>
 

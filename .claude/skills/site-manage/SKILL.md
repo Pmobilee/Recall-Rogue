@@ -40,9 +40,9 @@ DB_NAME=recall-rogue-db
 
 ## Cloudflare MCP Integration
 
-The `mcp__cloudflare__*` MCP tools provide direct API access to Cloudflare without shelling out to wrangler. **Use MCP tools when available; fall back to wrangler CLI for operations not yet supported.**
+The `mcp__cloudflare__*` MCP tools provide direct API access to Cloudflare without shelling out to wrangler. **Use MCP tools as the primary interface; wrangler CLI is the alternative for operations not supported via MCP API.**
 
-| Operation | Prefer | Fallback |
+| Operation | Primary Tool | Alternative |
 |---|---|---|
 | Query D1 (subscribers) | `mcp__cloudflare__execute` (D1 query API) | `npx wrangler d1 execute` |
 | Check worker status | `mcp__cloudflare__execute` (Workers API) | `curl` |
@@ -50,6 +50,8 @@ The `mcp__cloudflare__*` MCP tools provide direct API access to Cloudflare witho
 | Deploy worker | `npx wrangler deploy` (still preferred) | — |
 | Tail logs | `npx wrangler tail` (streaming not supported via MCP) | — |
 | Read KV/R2 | `mcp__cloudflare__execute` | `npx wrangler` |
+
+**If any tool fails:** Diagnose the error (auth token expired? API endpoint changed? network issue?), fix the root cause, and retry. Do not silently switch tools without understanding why the primary failed.
 
 **Discovery pattern:** When unsure of the API, use `mcp__cloudflare__search("D1 query database")` to find the right endpoint, then `mcp__cloudflare__execute` to call it.
 

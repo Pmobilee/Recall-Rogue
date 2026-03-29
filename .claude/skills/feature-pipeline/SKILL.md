@@ -209,7 +209,7 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    - Verify the feature works as a user would experience it
    - **THIS MUST HAPPEN AFTER EVERY SUB-AGENT BATCH** — not just at the end. If 3 agents run in parallel and return, inspect ALL 3 results before committing ANY of them
    - **NEVER commit visual/UI changes without seeing them first** — sub-agents making CSS/layout changes are the HIGHEST RISK for regressions
-   - If you cannot take a screenshot or snapshot, TELL THE USER you couldn't verify and ask them to check
+   - If a screenshot or snapshot tool fails, **STOP AND FIX IT** — diagnose why it failed (server not running? Chrome port conflict? missing deps?), resolve the root cause, and retry. NEVER skip visual verification or accept "couldn't verify"
 4. **Run or create specific tests** from the plan's Testing Plan:
    - If unit tests were specified, run them and confirm they pass
    - If visual tests were specified, perform them with Playwright
@@ -291,7 +291,7 @@ These are consolidated here as a "lessons learned" reference. Inline warnings at
 Building the scaffolding of a feature without the actual substance. Example: creating a list of Wikipedia entity names but never fetching the actual Wikipedia articles. **Always ask: "Am I building the real thing, or just a skeleton?"**
 
 ### The "Should Work" Anti-Pattern
-Reporting a feature as done without actually verifying it works in the running game. **Never say "this should work" — either confirm it works or say "I cannot verify this."**
+Reporting a feature as done without actually verifying it works in the running game. **Never say "this should work" — confirm it works. If a verification tool is broken, fix the tool first, then verify.**
 
 ### The "Silent Incompleteness" Anti-Pattern
 Implementing 80% of what was asked without mentioning the missing 20%. **Always explicitly state what IS and IS NOT included in your implementation.** If you can't do something, say so upfront.

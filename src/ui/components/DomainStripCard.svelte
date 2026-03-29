@@ -34,7 +34,11 @@
     {#if isLocked}
       <span class="lock-overlay">&#128274;</span>
     {/if}
-    {icon}
+    {#if icon.startsWith('/')}
+      <img class="icon-img" src={icon} alt="" />
+    {:else}
+      {icon}
+    {/if}
   </span>
   <span class="name">{shortName}</span>
   {#if isSelected}
@@ -87,6 +91,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .icon-img {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    object-fit: contain;
   }
 
   .lock-overlay {

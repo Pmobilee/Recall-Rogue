@@ -388,7 +388,7 @@
     position: relative;
     width: 140px;
     height: 200px;
-    background: #111;
+    background: #fff;
     border: 2px solid #333;
     border-radius: 8px;
     display: flex;
@@ -461,7 +461,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.88);
+    background: rgba(0,0,0,0.95);
     z-index: 1000;
     align-items: center;
     justify-content: center;
@@ -570,6 +570,31 @@
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
+  .comfyui-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid #333;
+    background: #151525;
+  }
+  .comfyui-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+  }
+  .comfyui-dot.online { background: #4ecca3; }
+  .comfyui-dot.offline { background: #e74c3c; }
+
+  /* Checkerboard transparency background for icons */
+  .checker-bg {
+    background: #fff;
+  }
+
 </style>
 </head>
 <body>
@@ -581,9 +606,12 @@
       <a class="nav-link" href="/">Dashboard</a>
       <a class="nav-link" href="/stylelab.html">Style Lab</a>
       <a class="nav-link" href="/promptlab.html">Prompt Lab</a>
-      <a class="nav-link" href="/relics.html">Relics</a>
-      <a class="nav-link active" href="/artstudio.html">Art Studio</a>
+<a class="nav-link active" href="/artstudio.html">Art Studio</a>
     </div>
+    <span class="comfyui-status" id="comfyui-status" title="Remote ComfyUI VM">
+      <span class="comfyui-dot" id="comfyui-dot"></span>
+      <span id="comfyui-label">ComfyUI: —</span>
+    </span>
   </div>
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('cardframes')">Card Frames</button>
@@ -594,7 +622,21 @@
     <button class="tab-btn" onclick="switchTab('mysteryrooms')">Mystery Rooms</button>
     <button class="tab-btn" onclick="switchTab('rewardrooms')">Reward Rooms</button>
     <button class="tab-btn" onclick="switchTab('relicicons')">Relic Icons</button>
+    <button class="tab-btn" onclick="switchTab('deckfronts')">Deck Fronts</button>
     <button class="tab-btn" onclick="switchTab('music')">Music</button>
+    <!-- Icon Categories -->
+    <button class="tab-btn" onclick="switchTab('cardtype_icons')">Card Types</button>
+    <button class="tab-btn" onclick="switchTab('domain_icons')">Domains</button>
+    <button class="tab-btn" onclick="switchTab('status_icons')">Status FX</button>
+    <button class="tab-btn" onclick="switchTab('intent_icons')">Intents</button>
+    <button class="tab-btn" onclick="switchTab('reward_icons')">Rewards</button>
+    <button class="tab-btn" onclick="switchTab('nav_icons')">Navigation</button>
+    <button class="tab-btn" onclick="switchTab('archetype_icons')">Archetypes</button>
+    <button class="tab-btn" onclick="switchTab('lb_icons')">Leaderboard</button>
+    <button class="tab-btn" onclick="switchTab('mystery_icons')">Mystery</button>
+    <button class="tab-btn" onclick="switchTab('ui_icons')">UI</button>
+    <button class="tab-btn" onclick="switchTab('map_icons')">Map Rooms</button>
+    <button class="tab-btn" onclick="switchTab('enemy_power_icons')">Enemy Powers</button>
   </div>
 </header>
 
@@ -623,6 +665,19 @@
   <div class="tab-panel" id="panel-mysteryrooms"></div>
   <div class="tab-panel" id="panel-rewardrooms"></div>
   <div class="tab-panel" id="panel-relicicons"></div>
+  <div class="tab-panel" id="panel-deckfronts"></div>
+  <div class="tab-panel" id="panel-cardtype_icons"></div>
+  <div class="tab-panel" id="panel-domain_icons"></div>
+  <div class="tab-panel" id="panel-status_icons"></div>
+  <div class="tab-panel" id="panel-intent_icons"></div>
+  <div class="tab-panel" id="panel-reward_icons"></div>
+  <div class="tab-panel" id="panel-nav_icons"></div>
+  <div class="tab-panel" id="panel-archetype_icons"></div>
+  <div class="tab-panel" id="panel-lb_icons"></div>
+  <div class="tab-panel" id="panel-mystery_icons"></div>
+  <div class="tab-panel" id="panel-ui_icons"></div>
+  <div class="tab-panel" id="panel-map_icons"></div>
+  <div class="tab-panel" id="panel-enemy_power_icons"></div>
   <div class="tab-panel" id="panel-music"></div>
 </div>
 
@@ -671,16 +726,20 @@
 </div>
 
 <script>
+  const ALL_CATEGORIES = [
+    'cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'mysteryrooms', 'rewardrooms', 'relicicons', 'deckfronts',
+    'cardtype_icons', 'domain_icons', 'status_icons', 'intent_icons', 'reward_icons', 'nav_icons', 'hub_icons',
+    'archetype_icons', 'lb_icons', 'mystery_icons', 'ui_icons', 'map_icons', 'enemy_power_icons',
+  ];
   let currentTab = 'cardframes';
-  let allItems = { cardframes: [], enemies: [], cardart: [], backgrounds: [], noncombat: [], mysteryrooms: [], rewardrooms: [], relicicons: [], music: [] };
+  let allItems = Object.fromEntries([...ALL_CATEGORIES, 'music'].map(c => [c, []]));
   let pollTimers = {};
 
   // ── Tab switching ──────────────────────────────────────────
   function switchTab(tab) {
     currentTab = tab;
-    document.querySelectorAll('.tab-btn').forEach((b, i) => {
-      const tabs = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'mysteryrooms', 'rewardrooms', 'relicicons', 'music'];
-      b.classList.toggle('active', tabs[i] === tab);
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('onclick')?.includes("'" + tab + "'"));
     });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.getElementById(`panel-${tab}`).classList.add('active');
@@ -691,7 +750,7 @@
   async function loadItems() {
     document.getElementById('statusText').textContent = 'Loading...';
     try {
-      const results = await Promise.all(['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'mysteryrooms', 'rewardrooms', 'relicicons'].map(async cat => {
+      const results = await Promise.all(ALL_CATEGORIES.map(async cat => {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 5000);
         try {
@@ -701,14 +760,7 @@
           return await r.json();
         } catch { clearTimeout(timeout); return []; }
       }));
-      allItems.cardframes = results[0];
-      allItems.enemies = results[1];
-      allItems.cardart = results[2];
-      allItems.backgrounds = results[3];
-      allItems.noncombat = results[4];
-      allItems.mysteryrooms = results[5];
-      allItems.rewardrooms = results[6];
-      allItems.relicicons = results[7];
+      ALL_CATEGORIES.forEach((cat, i) => { allItems[cat] = results[i]; });
       renderItems();
       document.getElementById('statusText').textContent = `Loaded`;
     } catch (e) {
@@ -903,10 +955,16 @@
 
     const generatingCount = item.variants.filter(v => v.status === 'generating' || v.status === 'pending').length;
 
+    const deployedBadge = item.deployed === true
+      ? '<span style="background:#27ae60;color:#fff;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:8px;font-weight:600;">✅ IN GAME</span>'
+      : item.deployed === false
+      ? '<span style="background:#e74c3c;color:#fff;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:8px;font-weight:600;">NOT DEPLOYED</span>'
+      : '';
+
     card.innerHTML = `
       <div class="item-header">
         <div class="item-meta">
-          <div class="item-name">${esc(item.name)}</div>
+          <div class="item-name">${esc(item.name)}${deployedBadge}</div>
           <div class="item-id">${esc(item.id)}</div>
           <div class="item-concept">${esc(item.concept || '')}</div>
           <div class="item-dims">${item.targetWidth} &times; ${item.targetHeight} px</div>
@@ -974,7 +1032,39 @@
       `;
     }
 
-    // Default: plain image preview for cardframes/enemies
+    // Icons: checkerboard background + dual-size preview (256px + 64px)
+    if (currentTab === 'icons') {
+      return `
+        <div class="variant-card" id="vc-${item.id}-${v.variant}">
+          <div class="variant-img-wrap checker-bg ${v.accepted ? 'accepted' : ''}" style="width:180px;height:180px;"
+               onclick="${v.status === 'done' ? `openLightbox('${imgUrl}', '${esc(item.name)} — Variant ${v.variant}')` : ''}">
+            ${v.status === 'generating' || v.status === 'pending'
+              ? '<div class="variant-spinner"></div>'
+              : v.status === 'error'
+                ? `<span style="color:#ff6666;font-size:0.7rem;padding:8px;text-align:center">Error</span>`
+                : `<img src="${imgUrl}" alt="Variant ${v.variant}" loading="lazy" style="width:128px;height:128px;object-fit:contain;">`}
+            <span class="variant-status-badge badge-${v.status}">${v.status}</span>
+            ${v.accepted ? '<span class="accepted-badge">Accepted</span>' : ''}
+          </div>
+          ${v.status === 'done' ? `
+          <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+            <div class="checker-bg" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:4px;border:1px solid #333;" title="64px preview">
+              <img src="${imgUrl}" alt="" loading="lazy" style="width:48px;height:48px;object-fit:contain;image-rendering:pixelated;">
+            </div>
+            <div class="checker-bg" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;border:1px solid #333;" title="32px preview">
+              <img src="${imgUrl}" alt="" loading="lazy" style="width:28px;height:28px;object-fit:contain;image-rendering:pixelated;">
+            </div>
+          </div>` : ''}
+          <div class="variant-label">Variant ${v.variant}</div>
+          <div class="variant-btn-row">
+            ${v.status === 'done' ? `<button class="btn-accept ${v.accepted ? 'accepted' : ''}"
+              onclick="acceptVariant('${item.id}', ${v.variant})">${v.accepted ? 'Accepted' : 'Accept'}</button>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // Default: plain image preview for cardframes/enemies/etc.
     return `
       <div class="variant-card" id="vc-${item.id}-${v.variant}">
         <div class="variant-img-wrap ${v.accepted ? 'accepted' : ''}"
@@ -1183,6 +1273,33 @@
 
   // ── Init ──────────────────────────────────────────────────
   loadItems();
+
+  // ── ComfyUI Status Polling ──────────────────────────────────
+  async function pollComfyUIStatus() {
+    try {
+      const r = await fetch('/api/comfyui/status');
+      const data = await r.json();
+      const dot = document.getElementById('comfyui-dot');
+      const label = document.getElementById('comfyui-label');
+      if (data.online) {
+        dot.className = 'comfyui-dot online';
+        const vram = data.vramFreeMB ? ` | ${Math.round(data.vramFreeMB / 1024 * 10) / 10}GB free` : '';
+        const queue = data.queueSize != null ? ` | Q:${data.queueSize}` : '';
+        label.textContent = `ComfyUI: Online${vram}${queue}`;
+      } else {
+        dot.className = 'comfyui-dot offline';
+        label.textContent = 'ComfyUI: Offline';
+      }
+    } catch {
+      const dot = document.getElementById('comfyui-dot');
+      const label = document.getElementById('comfyui-label');
+      if (dot) dot.className = 'comfyui-dot offline';
+      if (label) label.textContent = 'ComfyUI: Offline';
+    }
+  }
+  // Poll immediately and then every 30 seconds
+  pollComfyUIStatus();
+  setInterval(pollComfyUIStatus, 30000);
 </script>
 </body>
 </html>

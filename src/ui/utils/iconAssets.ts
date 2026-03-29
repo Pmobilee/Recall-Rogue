@@ -122,14 +122,6 @@ export function getNavIconPath(navKey: string): string {
 	return `/assets/sprites/icons/icon_nav_${navKey}.png`
 }
 
-/**
- * Get the hub location icon path.
- * @param locationId - The location identifier (command, lab, workshop, museum, market, archive)
- * @returns The path to the location icon
- */
-export function getHubLocationIconPath(locationId: string): string {
-	return `/assets/sprites/icons/icon_hub_${locationId}.png`
-}
 
 /**
  * Get the archetype icon path.
@@ -140,16 +132,6 @@ export function getArchetypeIconPath(archetypeId: string): string {
 	return `/assets/sprites/icons/icon_archetype_${archetypeId}.png`
 }
 
-/**
- * Get the data disc icon path.
- * @param discId - The disc identifier (e.g., 'disc_space', 'disc_history')
- * @returns The path to the disc icon
- */
-export function getDataDiscIconPath(discId: string): string {
-	// Normalize disc_* IDs to clean key
-	const cleanKey = discId.replace(/^disc_/, '')
-	return `/assets/sprites/icons/icon_disc_${cleanKey}.png`
-}
 
 /**
  * Get the leaderboard ranking icon path.
@@ -169,14 +151,6 @@ export function getMysteryEventIconPath(effectType: string): string {
 	return `/assets/sprites/icons/icon_mystery_${effectType}.png`
 }
 
-/**
- * Get the synergy icon path.
- * @param synergyId - The synergy identifier (e.g., 'deep_diver', 'scholars_blessing')
- * @returns The path to the synergy icon
- */
-export function getSynergyIconPath(synergyId: string): string {
-	return `/assets/sprites/icons/icon_synergy_${synergyId}.png`
-}
 
 /**
  * Get a miscellaneous UI icon path.
@@ -188,12 +162,63 @@ export function getUIIconPath(elementId: string): string {
 }
 
 /**
+ * Get the enemy power badge icon path.
+ * @param powerId - The power identifier (e.g., 'charge_resistant', 'chain_vulnerable')
+ * @returns The path to the power badge icon
+ */
+export function getEnemyPowerIconPath(powerId: string): string {
+	return `/assets/sprites/icons/icon_power_${powerId}.png`
+}
+
+/**
  * Get the domain icon path (for Knowledge Library categories).
  * @param domainId - The domain identifier (e.g., 'animals_wildlife', 'space_astronomy')
  * @returns The path to the domain icon
  */
 export function getDomainIconPath(domainId: string): string {
 	return `/assets/sprites/icons/icon_domain_${domainId}.png`
+}
+
+/**
+ * Gold tier thresholds — matches gold_tiers.json in reward_room assets.
+ * Returns the appropriate gold pile icon based on currency amount.
+ */
+const GOLD_TIERS = [
+  { min: 1, max: 10, tier: 0 },
+  { min: 11, max: 30, tier: 1 },
+  { min: 31, max: 60, tier: 2 },
+  { min: 61, max: 100, tier: 3 },
+  { min: 101, max: 200, tier: 4 },
+  { min: 201, max: Infinity, tier: 5 },
+] as const
+
+/**
+ * Get the gold tier icon path based on amount.
+ * Higher amounts show larger gold piles (6 tiers: 0–5).
+ * @param amount - The gold amount to determine tier for
+ * @returns The path to the appropriate gold tier icon (WebP format)
+ */
+export function getGoldTierIconPath(amount: number): string {
+  const entry = GOLD_TIERS.find(t => amount >= t.min && amount <= t.max)
+  const tier = entry?.tier ?? 5
+  return `/assets/reward_room/gold_tier_${tier}.webp`
+}
+
+/**
+ * Get the gold coin icon path (single coin, for HUD/UI display).
+ * Use this for small inline gold displays. Use getGoldTierIconPath() for reward screens.
+ * @returns The path to the gold coin icon (WebP format)
+ */
+export function getGoldCoinIconPath(): string {
+  return '/assets/sprites/icons/icon_currency_gold.webp'
+}
+
+/**
+ * Get the grey matter (persistent hub currency) icon path.
+ * @returns The path to the grey matter icon (WebP format)
+ */
+export function getGreyMatterIconPath(): string {
+  return '/assets/sprites/icons/icon_grey_matter.webp'
 }
 
 // ============================================================
@@ -219,23 +244,6 @@ export function getNavEmoji(key: string): string {
 	return NAV_EMOJI[key] ?? '❓'
 }
 
-const HUB_LOCATION_EMOJI: Record<string, string> = {
-	command: '🏠',
-	lab: '🔬',
-	workshop: '⚒️',
-	museum: '🏛️',
-	market: '🏪',
-	archive: '📚',
-}
-
-/**
- * Get emoji fallback for hub locations.
- * @param key - The location identifier
- * @returns An emoji representation of the location
- */
-export function getHubLocationEmoji(key: string): string {
-	return HUB_LOCATION_EMOJI[key] ?? '❓'
-}
 
 const ARCHETYPE_EMOJI: Record<string, string> = {
 	balanced: '⚖️',
@@ -275,24 +283,6 @@ export function getLeaderboardEmoji(key: string): string {
 	return LEADERBOARD_EMOJI[key] ?? '🏆'
 }
 
-const DATA_DISC_EMOJI: Record<string, string> = {
-	culture: '🎭',
-	geo: '🌍',
-	history: '📜',
-	life: '🧬',
-	space: '🚀',
-	tech: '💻',
-}
-
-/**
- * Get emoji fallback for data discs.
- * @param key - The disc identifier (without 'disc_' prefix)
- * @returns An emoji representation of the disc
- */
-export function getDataDiscEmoji(key: string): string {
-	const cleanKey = key.replace(/^disc_/, '')
-	return DATA_DISC_EMOJI[cleanKey] ?? '💿'
-}
 
 const MYSTERY_EMOJI: Record<string, string> = {
 	choice: '❓',

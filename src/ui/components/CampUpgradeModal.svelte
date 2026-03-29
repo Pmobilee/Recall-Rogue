@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { campState, getCampUpgradeCost, setCampTier, CAMP_MAX_TIERS } from '../stores/campState'
+  import { campState, getCampUpgradeCost, setCampTier, setCampForm, CAMP_MAX_TIERS } from '../stores/campState'
   import type { CampElement } from '../stores/campState'
-  import { playerSave, spendDust } from '../stores/playerData'
+  import { playerSave, spendGreyMatter } from '../stores/playerData'
   import { getCampUpgradeUrl } from '../utils/campArtManifest'
-  import { getLevelProgress, getUnlockedRelicIds, getRelicUnlockLevel, MAX_LEVEL, getLevelReward } from '../../services/characterLevel'
-  import type { LevelReward } from '../../services/characterLevel'
+  import { getLevelProgress, MAX_LEVEL } from '../../services/characterLevel'
   import { UNLOCKABLE_RELICS } from '../../data/relics/unlockable'
+  import { isLandscape } from '../../stores/layoutStore'
+  import { getGreyMatterIconPath } from '../utils/iconAssets'
 
   interface Props {
     onClose: () => void
@@ -15,10 +16,11 @@
 
   let activeTab = $state<'upgrades' | 'relics'>('upgrades')
 
-  let dustBalance = $derived($playerSave?.minerals?.dust ?? 0)
+  let greyMatterBalance = $derived($playerSave?.minerals?.greyMatter ?? 0)
   let totalXP = $derived($playerSave?.totalXP ?? 0)
   let levelInfo = $derived(getLevelProgress(totalXP))
-  let unlockedRelicIds = $derived(new Set(getUnlockedRelicIds(levelInfo.level)))
+  // Use stored characterLevel as primary (survives XP desync), fall back to XP-derived
+  let effectiveLevel = $derived(Math.max($playerSave?.characterLevel ?? 0, levelInfo.level))
 
   const ELEMENT_CONFIG: { element: CampElement; name: string }[] = [
     { element: 'tent', name: 'Tent' },
@@ -36,7 +38,7 @@
     const currentTier = $campState.tiers[element]
     const cost = getCampUpgradeCost(element, currentTier)
     if (cost === null) return
-    if (spendDust(cost)) {
+    if (spendGreyMatter(cost)) {
       setCampTier(element, currentTier + 1)
     }
   }
@@ -73,11 +75,11 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div class="modal-overlay" onclick={onClose}>
-  <div class="modal-card" onclick={(e) => e.stopPropagation()}>
+  <div class="modal-card" class:landscape={$isLandscape} onclick={(e) => e.stopPropagation()}>
 
     <div class="modal-header">
       <h2>Camp Shop</h2>
-      <span class="dust-pill">✦ {dustBalance} Dust</span>
+      <span class="gm-pill"><img class="gm-pill-icon" src={getGreyMatterIconPath()} alt="" aria-hidden="true" /> {greyMatterBalance} Grey Matter</span>
       <button type="button" class="close-btn" onclick={onClose} aria-label="Close">&times;</button>
     </div>
 
@@ -100,16 +102,41 @@
           {@const tier = $campState.tiers[element]}
           {@const maxTier = CAMP_MAX_TIERS[element]}
           {@const cost = getCampUpgradeCost(element, tier)}
-          {@const canAfford = cost !== null && dustBalance >= cost}
+          {@const canAfford = cost !== null && greyMatterBalance >= cost}
           {@const isMaxed = tier >= maxTier}
 
+          {@const currentForm = $campState.forms?.[element] ?? tier}
+
           <div class="upgrade-card" class:maxed={isMaxed}>
-            <div
-              class="card-preview"
-              style="background-image: url({getCampUpgradeUrl(element, tier)}); {getPreviewBgStyle(element)}"
-              role="img"
-              aria-label={name}
-            ></div>
+            <div class="preview-with-form">
+              {#if tier > 0}
+                <button
+                  class="form-arrow form-arrow-left"
+                  onclick={() => setCampForm(element, currentForm - 1)}
+                  disabled={currentForm <= 0}
+                  aria-label="Previous form"
+                >◀</button>
+              {/if}
+              <div class="card-preview-wrapper">
+                <div
+                  class="card-preview"
+                  style="background-image: url({getCampUpgradeUrl(element, currentForm)}); {getPreviewBgStyle(element)}"
+                  role="img"
+                  aria-label={name}
+                ></div>
+                {#if tier > 0}
+                  <span class="form-label">{currentForm}/{tier}</span>
+                {/if}
+              </div>
+              {#if tier > 0}
+                <button
+                  class="form-arrow form-arrow-right"
+                  onclick={() => setCampForm(element, currentForm + 1)}
+                  disabled={currentForm >= tier}
+                  aria-label="Next form"
+                >▶</button>
+              {/if}
+            </div>
             <div class="card-info">
               <span class="element-name">{name}</span>
               <div class="tier-pips">
@@ -129,7 +156,7 @@
                   disabled={!canAfford}
                   onclick={() => handleUpgrade(element)}
                 >
-                  Upgrade<br /><span class="cost-label">{cost} Dust</span>
+                  Upgrade<br /><span class="cost-label">{cost} Grey Matter</span>
                 </button>
               {/if}
             </div>
@@ -140,7 +167,7 @@
       <div class="relics-content">
         <!-- Level + XP Progress Bar -->
         <div class="level-header">
-          <span class="level-badge">Lv. {levelInfo.level}</span>
+          <span class="level-badge">Lv. {effectiveLevel}</span>
           <div class="xp-bar-container">
             <div class="xp-bar-fill" style="width: {levelInfo.isMaxLevel ? 100 : levelInfo.progress * 100}%"></div>
           </div>
@@ -156,8 +183,8 @@
         <!-- Relic Grid -->
         <div class="relic-grid">
           {#each UNLOCKABLE_RELICS as relic}
-            {@const unlockLevel = getRelicUnlockLevel(relic.id) ?? 99}
-            {@const isUnlocked = unlockedRelicIds.has(relic.id)}
+            {@const unlockLevel = relic.unlockLevel ?? 0}
+            {@const isUnlocked = effectiveLevel >= unlockLevel}
 
             <div class="relic-card" class:locked={!isUnlocked}>
               <div class="relic-icon-box">
@@ -190,15 +217,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   .modal-card {
     background: #0f172a;
     border: 1px solid rgba(148, 163, 184, 0.34);
-    border-radius: 16px;
+    border-radius: calc(16px * var(--layout-scale, 1));
     width: 100%;
-    max-width: 640px;
+    max-width: calc(640px * var(--layout-scale, 1));
     max-height: 85vh;
     display: flex;
     flex-direction: column;
@@ -210,39 +237,48 @@
   .modal-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px 16px;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     border-bottom: 1px solid rgba(148, 163, 184, 0.2);
     flex-shrink: 0;
   }
 
   .modal-header h2 {
     margin: 0;
-    font-size: 18px;
+    font-size: calc(18px * var(--text-scale, 1));
     color: #ffe0a6;
     flex: 1;
   }
 
-  .dust-pill {
-    display: inline-block;
-    padding: 5px 12px;
+  .gm-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: calc(5px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     border-radius: 999px;
     border: 1px solid rgba(255, 214, 143, 0.5);
     background: rgba(54, 38, 22, 0.7);
     color: #ffd89d;
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     white-space: nowrap;
   }
 
+  .gm-pill-icon {
+    width: calc(14px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: calc(2px * var(--layout-scale, 1));
+  }
+
   .close-btn {
-    width: 32px;
-    height: 32px;
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
     border-radius: 50%;
     border: 1px solid rgba(148, 163, 184, 0.4);
     background: rgba(30, 41, 59, 0.8);
     color: #e2e8f0;
-    font-size: 20px;
+    font-size: calc(20px * var(--text-scale, 1));
     line-height: 1;
     cursor: pointer;
     display: flex;
@@ -259,32 +295,32 @@
   /* ── Tab bar ── */
   .tab-bar {
     display: flex;
-    gap: 4px;
-    margin: 0 12px 12px;
+    gap: calc(4px * var(--layout-scale, 1));
+    margin: 0 calc(12px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: rgba(15, 23, 42, 0.6);
-    border-radius: 8px;
-    padding: 3px;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(3px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 
   .tab-btn {
     flex: 1;
-    padding: 10px 16px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     border: none;
-    border-radius: 6px;
+    border-radius: calc(6px * var(--layout-scale, 1));
     background: transparent;
     color: #94a3b8;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
     font-family: var(--font-rpg);
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
   }
 
   .tab-btn.active {
     background: rgba(255, 224, 166, 0.15);
     color: #ffe0a6;
-    box-shadow: 0 0 8px rgba(255, 200, 100, 0.3);
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(255, 200, 100, 0.3);
   }
 
   .tab-btn:not(.active):hover {
@@ -305,33 +341,33 @@
   /* ── Relics tab ── */
   .relics-content {
     overflow-y: auto;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
   }
 
   .level-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-    padding: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
     background: rgba(30, 41, 59, 0.8);
-    border-radius: 10px;
+    border-radius: calc(10px * var(--layout-scale, 1));
     border: 1px solid rgba(148, 163, 184, 0.2);
   }
 
   .level-badge {
     font-family: var(--font-rpg);
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     color: #fbbf24;
     white-space: nowrap;
-    min-width: 60px;
+    min-width: calc(60px * var(--layout-scale, 1));
   }
 
   .xp-bar-container {
     flex: 1;
-    height: 12px;
+    height: calc(12px * var(--layout-scale, 1));
     background: #1e293b;
-    border-radius: 6px;
+    border-radius: calc(6px * var(--layout-scale, 1));
     overflow: hidden;
     border: 1px solid rgba(148, 163, 184, 0.2);
   }
@@ -339,32 +375,32 @@
   .xp-bar-fill {
     height: 100%;
     background: linear-gradient(90deg, #f59e0b, #fbbf24);
-    border-radius: 6px;
+    border-radius: calc(6px * var(--layout-scale, 1));
     transition: width 0.5s ease;
   }
 
   .xp-text {
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     color: #94a3b8;
     white-space: nowrap;
-    min-width: 80px;
+    min-width: calc(80px * var(--layout-scale, 1));
     text-align: right;
   }
 
   .relic-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .relic-card {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
     background: #1e293b;
     border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 10px;
+    border-radius: calc(10px * var(--layout-scale, 1));
   }
 
   .relic-card.locked {
@@ -373,14 +409,14 @@
   }
 
   .relic-icon-box {
-    width: 40px;
-    height: 40px;
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: calc(24px * var(--text-scale, 1));
     background: rgba(15, 23, 42, 0.6);
-    border-radius: 8px;
+    border-radius: calc(8px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 
@@ -394,23 +430,23 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
   }
 
   .relic-name {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     color: #e2e8f0;
   }
 
   .relic-desc-text {
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     color: #94a3b8;
     line-height: 1.3;
   }
 
   .relic-lock-text {
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     color: #64748b;
     font-style: italic;
   }
@@ -418,21 +454,27 @@
   /* ── Scrollable grid ── */
   .upgrade-grid {
     overflow-y: auto;
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(10px * var(--layout-scale, 1));
+  }
+
+  .upgrade-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
   }
 
   /* ── Individual upgrade card ── */
   .upgrade-card {
     background: #1e293b;
     border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 12px;
+    border-radius: calc(12px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
     transition: border-color 0.2s;
   }
 
@@ -443,13 +485,13 @@
 
   /* ── Sprite thumbnail ── */
   .card-preview {
-    width: 56px;
-    height: 56px;
+    width: calc(56px * var(--layout-scale, 1));
+    height: calc(56px * var(--layout-scale, 1));
     flex-shrink: 0;
-    border-radius: 8px;
+    border-radius: calc(8px * var(--layout-scale, 1));
     overflow: hidden;
     background-color: rgba(15, 23, 42, 0.6);
-    border: 2px solid #000;
+    border: calc(2px * var(--layout-scale, 1)) solid #000;
     image-rendering: pixelated;
   }
 
@@ -459,11 +501,11 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: calc(5px * var(--layout-scale, 1));
   }
 
   .element-name {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
     color: #e2e8f0;
     white-space: nowrap;
@@ -473,13 +515,13 @@
 
   .tier-pips {
     display: flex;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
     flex-wrap: wrap;
   }
 
   .pip {
-    width: 10px;
-    height: 10px;
+    width: calc(10px * var(--layout-scale, 1));
+    height: calc(10px * var(--layout-scale, 1));
     border-radius: 50%;
     background: #334155;
     border: 1px solid rgba(148, 163, 184, 0.25);
@@ -489,11 +531,11 @@
   .pip.filled {
     background: #f59e0b;
     border-color: #fbbf24;
-    box-shadow: 0 0 4px rgba(251, 191, 36, 0.5);
+    box-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(251, 191, 36, 0.5);
   }
 
   .tier-label {
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     color: #64748b;
   }
 
@@ -507,24 +549,24 @@
 
   .max-badge {
     display: inline-block;
-    padding: 5px 10px;
+    padding: calc(5px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: 999px;
     background: rgba(78, 204, 163, 0.15);
     border: 1px solid rgba(78, 204, 163, 0.5);
     color: #4ecca3;
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
   .upgrade-btn {
-    padding: 7px 12px;
-    border-radius: 8px;
+    padding: calc(7px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
     border: 1px solid rgba(100, 70, 20, 0.6);
     background: rgba(30, 20, 5, 0.8);
     color: #64748b;
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     font-weight: 700;
     cursor: not-allowed;
     text-align: center;
@@ -550,8 +592,77 @@
   }
 
   .cost-label {
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     font-weight: 400;
     opacity: 0.85;
+  }
+
+  /* ── Form picker ── */
+  .preview-with-form {
+    display: flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .card-preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(2px * var(--layout-scale, 1));
+  }
+
+  .form-arrow {
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: 1px solid rgba(255, 180, 60, 0.4);
+    background: rgba(61, 46, 10, 0.8);
+    color: #ffe0a6;
+    font-size: calc(10px * var(--text-scale, 1));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .form-arrow:hover:not(:disabled) {
+    background: rgba(77, 58, 15, 0.9);
+    border-color: rgba(255, 200, 80, 0.7);
+  }
+
+  .form-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .form-label {
+    font-size: calc(9px * var(--text-scale, 1));
+    color: #94a3b8;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ── Landscape overrides ── */
+  .modal-card.landscape {
+    max-width: calc(900px * var(--layout-scale, 1));
+  }
+
+  .modal-card.landscape .upgrade-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .modal-card.landscape .upgrade-card:last-child:nth-child(odd) {
+    max-width: 100%;
+    grid-column: auto;
+    justify-self: auto;
+  }
+
+  .modal-card.landscape .card-preview {
+    width: calc(64px * var(--layout-scale, 1));
+    height: calc(64px * var(--layout-scale, 1));
   }
 </style>

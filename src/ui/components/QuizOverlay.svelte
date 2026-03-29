@@ -775,8 +775,8 @@
 {/if}
 
 <style>
-  /* ── Outcome animations (dust-burst for correct, border-ripple for wrong) ── */
-  @keyframes dust-burst {
+  /* ── Outcome animations (matter-burst for correct, border-ripple for wrong) ── */
+  @keyframes matter-burst {
     0%   { transform: scale(1); opacity: 1; }
     50%  { transform: scale(1.05); }
     100% { transform: scale(1); opacity: 1; }
@@ -789,7 +789,7 @@
   }
 
   .correct-animation {
-    animation: dust-burst 800ms ease-out;
+    animation: matter-burst 800ms ease-out;
   }
 
   /* Kid Mode Wow Stars result display */
@@ -978,17 +978,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: calc(12px * var(--layout-scale, 1));
+    margin-bottom: calc(8px * var(--layout-scale, 1));
+    flex-shrink: 1;
+    min-height: 0;
   }
 
   .quiz-image {
-    width: calc(200px * var(--layout-scale, 1));
+    width: auto;
+    max-width: calc(200px * var(--layout-scale, 1));
     height: auto;
-    max-height: calc(140px * var(--layout-scale, 1));
+    max-height: calc(120px * var(--layout-scale, 1));
+    min-height: calc(40px * var(--layout-scale, 1));
     object-fit: contain;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: calc(4px * var(--layout-scale, 1));
     box-shadow: 0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
+    flex-shrink: 1;
   }
 
   .choices-image-grid {
@@ -1092,22 +1097,23 @@
   }
 
   .choice-button {
-    min-height: calc(58px * var(--layout-scale, 1));
+    min-height: calc(52px * var(--layout-scale, 1));
     width: 100%;
-    border: 2px solid var(--color-primary);
+    border: calc(2px * var(--layout-scale, 1)) solid var(--color-primary);
     border-radius: 999px;
-    padding: calc(0.85rem * var(--layout-scale, 1)) calc(1.25rem * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     background: var(--color-bg);
-    color: var(--color-text);
+    color: #fbbf24;
     font: inherit;
-    font-size: calc(1.05rem * var(--layout-scale, 1));
+    font-size: calc(1.2rem * var(--text-scale, 1));
+    font-weight: 600;
     text-align: center;
     cursor: pointer;
     transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
     /* Always flex so key-badge is visible */
     display: flex;
     align-items: center;
-    gap: calc(0.5rem * var(--layout-scale, 1));
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .choice-button:active:not(:disabled) {
@@ -1161,6 +1167,7 @@
     flex: 1;
     overflow-wrap: break-word;
     word-break: break-word;
+    text-shadow: 0 calc(1px * var(--layout-scale, 1)) calc(2px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5);
   }
 
   .result-text {
@@ -1446,7 +1453,7 @@
   /* ── AR-76: Landscape quiz layout ─────────────────────────────────────── */
 
   /**
-   * Transparent backdrop covering center stage (left 70%, above 26vh card hand).
+   * Transparent backdrop covering center stage (left 70%, above card hand).
    * Does NOT cover the right-30% enemy panel.
    */
   .quiz-landscape-stage {
@@ -1454,15 +1461,12 @@
     left: 0;
     right: 30%;
     top: 0;
-    bottom: 26vh;
+    bottom: calc(80px * var(--layout-scale, 1));
     z-index: 50;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
-    /* subtle backdrop only in center stage */
     background: rgba(0, 0, 0, 0.45);
-    font-family: 'Courier New', monospace;
     animation: landscape-stage-fade-in 200ms ease-out both;
   }
 
@@ -1476,23 +1480,17 @@
     position: relative;
     width: min(50vw, calc(640px * var(--layout-scale, 1)));
     max-width: min(50vw, calc(640px * var(--layout-scale, 1)));
-    max-height: calc(74vh - 26vh);
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
+    max-height: 74vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    border: 2px solid var(--color-primary);
-    border-radius: 16px;
-    padding: 1.1rem 1.25rem;
+    gap: calc(8px * var(--layout-scale, 1));
+    border: calc(2px * var(--layout-scale, 1)) solid var(--color-primary);
+    border-radius: calc(16px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     background: var(--color-surface);
     color: var(--color-text);
     pointer-events: auto;
-  }
-
-  .quiz-landscape-panel::-webkit-scrollbar {
-    display: none;
   }
 
   /** Landscape answer grid: 2 columns for 3-4 options, 3+2 for 5 */
@@ -1500,7 +1498,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: calc(8px * var(--layout-scale, 1));
-    flex-direction: unset;
+    flex-shrink: 0;
   }
 
   /** 5-option landscape: first 3 in top row via spanning trick */

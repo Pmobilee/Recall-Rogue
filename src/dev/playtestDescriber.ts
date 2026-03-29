@@ -115,7 +115,7 @@ export function look(): string {
     case 'hub':
     case 'base': {
       const save = readStore<Record<string, unknown>>('terra:playerSave') as Record<string, unknown> | undefined;
-      const currency = (save as any)?.minerals?.dust ?? '?';
+      const currency = (save as any)?.minerals?.greyMatter ?? '?';
       const streak = (save as any)?.stats?.currentStreak ?? 0;
       const runsCompleted = (save as any)?.stats?.totalRunsCompleted ?? 0;
       lines.push('SCREEN: hub');

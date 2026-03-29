@@ -8,10 +8,13 @@ export type CampPet = 'cat' | 'owl' | 'fox' | 'dragon_whelp'
 
 export interface CampState {
   tiers: Record<CampElement, number>
+  forms: Record<CampElement, number>
   outfit: CampOutfit
   activePet: CampPet
   unlockedPets: CampPet[]
 }
+
+export const CAMP_ELEMENTS: CampElement[] = ['tent', 'campfire', 'character', 'pet', 'library', 'questboard', 'shop', 'journal', 'doorway']
 
 const STORAGE_KEY = 'recall-rogue-camp-state'
 
@@ -34,6 +37,17 @@ const DEFAULT_CAMP_STATE: CampState = {
     character: 0,
     pet: 0,
     campfire: 0,
+    library: 0,
+    questboard: 0,
+    shop: 0,
+    journal: 0,
+    doorway: 0,
+  },
+  forms: {
+    tent: 0,
+    campfire: 0,
+    character: 0,
+    pet: 0,
     library: 0,
     questboard: 0,
     shop: 0,
@@ -78,18 +92,32 @@ function sanitizeState(raw: unknown): CampState {
   const clampTier = (el: CampElement, raw: unknown): number =>
     Math.max(0, Math.min(CAMP_MAX_TIERS[el], Number(raw ?? 0)))
 
+  const sanitizedTiers: Record<CampElement, number> = {
+    tent: clampTier('tent', tiers.tent),
+    character: clampTier('character', tiers.character),
+    pet: clampTier('pet', tiers.pet),
+    campfire: clampTier('campfire', tiers.campfire),
+    library: clampTier('library', tiers.library),
+    questboard: clampTier('questboard', tiers.questboard),
+    shop: clampTier('shop', tiers.shop),
+    journal: clampTier('journal', tiers.journal),
+    doorway: clampTier('doorway', tiers.doorway),
+  }
+
+  // Sanitize forms — default to current tier for missing/invalid values
+  const rawForms = (candidate.forms ?? {}) as Record<string, unknown>
+  const sanitizedForms = { ...DEFAULT_CAMP_STATE.forms } as Record<CampElement, number>
+  for (const el of CAMP_ELEMENTS) {
+    const formVal = rawForms[el]
+    const tierVal = sanitizedTiers[el]
+    sanitizedForms[el] = (typeof formVal === 'number' && formVal >= 0 && formVal <= tierVal)
+      ? formVal
+      : tierVal  // default to current tier for missing/invalid forms
+  }
+
   const next: CampState = {
-    tiers: {
-      tent: clampTier('tent', tiers.tent),
-      character: clampTier('character', tiers.character),
-      pet: clampTier('pet', tiers.pet),
-      campfire: clampTier('campfire', tiers.campfire),
-      library: clampTier('library', tiers.library),
-      questboard: clampTier('questboard', tiers.questboard),
-      shop: clampTier('shop', tiers.shop),
-      journal: clampTier('journal', tiers.journal),
-      doorway: clampTier('doorway', tiers.doorway),
-    },
+    tiers: sanitizedTiers,
+    forms: sanitizedForms,
     outfit: candidate.outfit === 'warden' || candidate.outfit === 'scholar' || candidate.outfit === 'vanguard'
       ? candidate.outfit
       : 'scout',
@@ -135,13 +163,33 @@ export function getCampUpgradeCost(element: CampElement, currentTier: number): n
 }
 
 export function setCampTier(element: CampElement, tier: number): void {
-  campState.update((state) => ({
-    ...state,
-    tiers: {
-      ...state.tiers,
-      [element]: Math.max(0, Math.min(CAMP_MAX_TIERS[element], tier)),
-    },
-  }))
+  campState.update((state) => {
+    const newTier = Math.max(0, Math.min(CAMP_MAX_TIERS[element], tier))
+    const oldTier = state.tiers[element]
+    const currentForm = state.forms?.[element] ?? oldTier
+    // Auto-advance form if user was tracking the latest tier
+    const newForm = (currentForm >= oldTier) ? newTier : currentForm
+    return {
+      ...state,
+      tiers: { ...state.tiers, [element]: newTier },
+      forms: { ...state.forms, [element]: newForm },
+    }
+  })
+}
+
+/** Set the visual form (appearance tier) for a camp element. Clamps to [0, unlockedTier]. */
+export function setCampForm(element: CampElement, form: number): void {
+  campState.update((state) => {
+    const maxForm = state.tiers[element]
+    const clamped = Math.max(0, Math.min(maxForm, form))
+    return {
+      ...state,
+      forms: {
+        ...state.forms,
+        [element]: clamped,
+      },
+    }
+  })
 }
 
 export function setCampOutfit(outfit: CampOutfit): void {

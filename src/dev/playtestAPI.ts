@@ -819,7 +819,7 @@ function getStats(): Record<string, unknown> {
     currentStreak: save.stats?.currentStreak ?? 0,
     bestStreak: save.stats?.bestStreak ?? 0,
     learnedFactCount: Array.isArray(save.learnedFacts) ? save.learnedFacts.length : 0,
-    currency: save.minerals?.dust ?? 0,
+    currency: save.minerals?.greyMatter ?? 0,
   };
 }
 

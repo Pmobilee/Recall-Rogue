@@ -99,6 +99,108 @@ This applies to: dates, casualty figures, names, quotes, locations, statistics, 
 | Arbitrary fact counts | "Let's do 50 facts" with no rationale | Let pool-first design dictate count. A deck needs enough facts per pool for good distractors, not a round number. |
 | Pool pollution | "Medium-sized (G-type)" in planet_names pool | Audit every pool: does each member's `correctAnswer` make sense as a distractor for every other member? |
 | Hardcoding magic numbers | "Every 3rd charge, introduce a new card" | Use proportional ratios from the source algorithm. No hardcoded rates. |
+| Parallel workers generating duplicate facts | 3 Sonnet workers each covered overlapping topics → 7 duplicate facts with same correctAnswer in same pool (Ancient Rome, 2026-03-29) | Split themes with ZERO overlap between workers. After merging, run dedup check: scan each pool for duplicate correctAnswer values. |
+| answerTypePools as object instead of array | Worker wrote pools as `{0: {...}, 1: {...}}` instead of `[{...}, {...}]` → runtime couldn't iterate pools (Ancient Rome, 2026-03-29) | ALWAYS verify `Array.isArray(deck.answerTypePools)` after assembly. The `CuratedDeck` interface requires arrays. |
+| difficultyTiers wrong format | Workers wrote `[{id: "easy", minDifficulty: 1}]` or `{easy: [...]}` instead of `[{tier: "easy", factIds: [...]}]` (Ancient Rome + Human Anatomy, 2026-03-29) | The ONLY valid format is `[{tier: "easy", factIds: [...]}, {tier: "medium", factIds: [...]}, {tier: "hard", factIds: [...]}]`. Tier names MUST be strings "easy", "medium", "hard". Build programmatically from fact difficulty values. |
+| Facts referencing non-existent pools | Human Anatomy had 779 facts referencing 134 pool IDs that didn't exist in answerTypePools (2026-03-29). WIP facts from different generation batches used inconsistent pool naming. | ALWAYS verify every fact's `answerTypePoolId` exists in `answerTypePools`. Run `facts.filter(f => !poolIds.has(f.answerTypePoolId))` — result must be empty. |
+| Pool factIds arrays empty or missing | Human Anatomy's 13 pools had zero factIds despite 2,009 facts (2026-03-29). Pools were defined as schemas without being populated. | ALWAYS build pool factIds programmatically by scanning facts: `pool.factIds = deck.facts.filter(f => f.answerTypePoolId === pool.id).map(f => f.id)`. Never hand-craft factIds. |
+| Domain field not matching canonical domains | Human Anatomy used `"domain": "medical"` which is not a CanonicalFactDomain (2026-03-29). Runtime cast it through without error but domain-dependent features broke silently. | Domain MUST be one of: general_knowledge, natural_sciences, space_astronomy, geography, geography_drill, history, mythology_folklore, animals_wildlife, human_body_health, food_cuisine, art_architecture, language. Check `src/data/card-types.ts` CANONICAL_FACT_DOMAINS. |
+| WIP decks published without structural audit | Human Anatomy's 2,009 WIP facts had been assembled from 49 separate generation batches with no unified pool schema — each batch invented its own pool IDs (2026-03-29). | Before publishing ANY WIP deck: run the full structural validation script (see below). WIP decks are drafts, not finished products. |
+
+---
+
+### 🚨 Structural Validation Script — MANDATORY AFTER EVERY DECK BUILD 🚨
+
+**Run this BEFORE committing any new or modified deck.** This catches every structural issue found in the Ancient Rome and Human Anatomy builds (2026-03-29).
+
+```bash
+node << 'VALIDATE'
+const fs = require("fs");
+const deck = JSON.parse(fs.readFileSync("data/decks/DECK_ID_HERE.json"));
+const issues = [];
+
+// 1. Envelope structure
+["id","name","domain","description","minimumFacts","targetFacts","facts","answerTypePools","synonymGroups","questionTemplates"].forEach(k => {
+  if (!(k in deck)) issues.push("ENVELOPE: missing " + k);
+});
+if (!Array.isArray(deck.answerTypePools)) issues.push("CRITICAL: answerTypePools is not an array — runtime will break");
+if (!Array.isArray(deck.facts)) issues.push("CRITICAL: facts is not an array");
+
+// 2. Domain validation
+const VALID_DOMAINS = ["general_knowledge","natural_sciences","space_astronomy","geography","geography_drill","history","mythology_folklore","animals_wildlife","human_body_health","food_cuisine","art_architecture","language"];
+if (!VALID_DOMAINS.includes(deck.domain)) issues.push("DOMAIN: '" + deck.domain + "' is not a CanonicalFactDomain — check src/data/card-types.ts");
+
+// 3. DifficultyTiers format
+if (!deck.difficultyTiers) issues.push("MISSING: difficultyTiers");
+else if (!Array.isArray(deck.difficultyTiers)) issues.push("CRITICAL: difficultyTiers must be array, got " + typeof deck.difficultyTiers);
+else deck.difficultyTiers.forEach((t, i) => {
+  if (!["easy","medium","hard"].includes(t.tier)) issues.push("TIER[" + i + "]: tier must be 'easy'/'medium'/'hard', got '" + t.tier + "'");
+  if (!Array.isArray(t.factIds)) issues.push("TIER[" + i + "]: missing factIds array");
+});
+
+// 4. Facts validation
+const allIds = new Set();
+const poolIds = new Set((deck.answerTypePools || []).map(p => p.id));
+deck.facts.forEach((f, i) => {
+  if (allIds.has(f.id)) issues.push("DUPE ID: " + f.id);
+  allIds.add(f.id);
+  if (!poolIds.has(f.answerTypePoolId)) issues.push("ORPHAN POOL: fact " + f.id + " references pool '" + f.answerTypePoolId + "' which doesn't exist");
+  if (f.distractors && f.distractors.includes(f.correctAnswer)) issues.push("ANSWER IN DISTRACTORS: " + f.id);
+  if (f.distractors && f.distractors.length < 3) issues.push("LOW DISTRACTORS: " + f.id + " has only " + f.distractors.length);
+  if (f.difficulty < 1 || f.difficulty > 5) issues.push("DIFFICULTY RANGE: " + f.id + " = " + f.difficulty);
+  if (f.funScore < 1 || f.funScore > 10) issues.push("FUNSCORE RANGE: " + f.id + " = " + f.funScore);
+});
+
+// 5. Pool integrity — factIds must match reality
+(deck.answerTypePools || []).forEach(p => {
+  if (!p.factIds || p.factIds.length === 0) issues.push("EMPTY POOL: " + p.id + " has no factIds");
+  const claiming = deck.facts.filter(f => f.answerTypePoolId === p.id).map(f => f.id);
+  const missing = claiming.filter(fid => !(p.factIds || []).includes(fid));
+  if (missing.length) issues.push("POOL MISMATCH: " + p.id + " is missing " + missing.length + " facts that claim it");
+  (p.factIds || []).forEach(fid => { if (!allIds.has(fid)) issues.push("POOL ORPHAN: " + p.id + " references deleted fact " + fid); });
+});
+
+// 6. Duplicate correctAnswers in same pool (causes "two right answers" at runtime)
+(deck.answerTypePools || []).forEach(p => {
+  const seen = {};
+  (p.factIds || []).forEach(fid => {
+    const f = deck.facts.find(x => x.id === fid);
+    if (!f) return;
+    const a = f.correctAnswer.toLowerCase().trim();
+    if (seen[a]) issues.push("POOL DUPE ANSWER: pool " + p.id + " has '" + f.correctAnswer + "' in both " + seen[a] + " and " + fid);
+    else seen[a] = fid;
+  });
+});
+
+// 7. Report
+if (issues.length === 0) console.log("✓ CLEAN — " + deck.facts.length + " facts, " + deck.answerTypePools.length + " pools, all checks pass");
+else { console.log("✗ " + issues.length + " ISSUES:"); issues.forEach(i => console.log("  " + i)); process.exit(1); }
+VALIDATE
+```
+
+**Zero issues = ship it. Any issues = fix before committing.**
+
+### Parallel Worker Deduplication Rules
+
+When splitting fact generation across multiple parallel workers:
+
+1. **Theme boundaries are HARD WALLS.** Worker A gets themes 0-2, Worker B gets themes 3-5, Worker C gets themes 6-7. NO overlap.
+2. **After merging, scan for duplicate `correctAnswer` values within the same `answerTypePoolId`.** Two facts about the same topic in different themes will produce the same answer in the same pool — this causes "two correct answers" at runtime.
+3. **Resolution options for pool duplicates:**
+   - Delete the lower-quality fact
+   - Move one fact to a different (more specific) pool
+   - If both are genuinely different questions about the same answer, keep both but ensure the pool can handle it
+4. **Run the structural validation script (above) after EVERY merge.** Workers will independently invent formats, miss fields, and create subtle incompatibilities.
+
+### Pool Consolidation Rules (for WIP/Legacy Decks)
+
+When publishing a deck assembled from WIP fragments (like Human Anatomy's 49 batches):
+
+1. **Inventory all pool IDs used by facts** — `new Set(deck.facts.map(f => f.answerTypePoolId))`
+2. **Map orphan pools to canonical pools** using semantic similarity (e.g., `anatomy_structures` → `structure_names`)
+3. **Create new pools only when no existing pool fits** (e.g., `immune_terms` for immunology-specific content)
+4. **Rebuild ALL pool factIds from scratch** — never trust existing factIds arrays from WIP batches
+5. **Accept that consolidated pools will have duplicate answers** — multiple facts about "skull" in `structure_names` is educationally valid. The runtime handles this correctly (those facts won't distract each other).
 
 ---
 
@@ -979,6 +1081,15 @@ The final deck JSON file is NOT a flat array of facts. It MUST be wrapped in the
 ```
 
 **Build the envelope programmatically** — scan the facts array to populate `answerTypePools[].factIds`, `difficultyTiers[].factIds`, and `synonymGroups[].factIds`. Never hand-craft these arrays.
+
+**CRITICAL structural checks after assembly:**
+- `Array.isArray(deck.answerTypePools)` — MUST be true (not an object with numeric keys)
+- `Array.isArray(deck.difficultyTiers)` — MUST be true
+- Every tier has `.tier` as string ("easy"/"medium"/"hard") and `.factIds` as array
+- Every fact's `answerTypePoolId` exists in `answerTypePools`
+- Every pool's `factIds` matches reality (scan facts, don't trust pre-built arrays)
+- `deck.domain` is a valid `CanonicalFactDomain` from `src/data/card-types.ts`
+- Run the structural validation script from the "Implementation Discipline" section before committing
 
 **After writing the deck JSON**, update `data/decks/manifest.json` to include the new deck filename in the `decks` array. The manifest is a flat array of filename strings:
 

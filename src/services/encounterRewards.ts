@@ -12,7 +12,7 @@ import { shuffled } from './randomUtils';
 export interface EncounterRewardOptions {
   /** Card choices for the player to pick from. */
   cardChoices: Card[];
-  /** Currency (dust) reward amount. */
+  /** Currency (grey matter) reward amount. */
   currencyReward: number;
 }
 

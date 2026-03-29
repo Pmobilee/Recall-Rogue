@@ -64,11 +64,7 @@ export function BASE_SAVE(now: number): PlayerSave {
     // Resources
     oxygen: 3, // legacy mining field
     minerals: {
-      dust: 0,
-      shard: 0,
-      crystal: 0,
-      geode: 0,
-      essence: 0,
+      greyMatter: 0,
     },
 
     // Knowledge
@@ -212,11 +208,11 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   {
     id: 'new_player',
     label: 'New Player',
-    description: 'Completely fresh save. Zero progress, 50 dust, only command room unlocked.',
+    description: 'Completely fresh save. Zero progress, 50 grey matter, only command room unlocked.',
     buildSave(now) {
       return {
         ...BASE_SAVE(now),
-        minerals: { dust: 50, shard: 0, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 50 },
         unlockedRooms: ['command'],
       }
     },
@@ -228,14 +224,14 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   {
     id: 'post_tutorial',
     label: 'Post Tutorial',
-    description: '5 facts learned, 180 dust, 2 shards, 1 dive completed, 2 rooms unlocked.',
+    description: '5 facts learned, 180 grey matter, 2 shards, 1 dive completed, 2 rooms unlocked.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(5)
       return {
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 180, shard: 2, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 230 },
         unlockedRooms: ['command', 'lab'],
         stats: {
           totalDivesCompleted: 1,
@@ -259,14 +255,14 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   {
     id: 'first_pet',
     label: 'Early Game',
-    description: '10 facts learned, 600 dust, 15 shards, workshop unlocked.',
+    description: '10 facts learned, 600 grey matter, 15 shards, workshop unlocked.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(10)
       return {
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 600, shard: 15, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 975 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         stats: {
@@ -291,7 +287,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   {
     id: 'mid_game_3_rooms',
     label: 'Mid Game (3 Rooms)',
-    description: '25 facts, 2400 dust, 80 shards, 15 crystals, 3 rooms, 240 KP.',
+    description: '25 facts, 2400 grey matter, 80 shards, 15 crystals, 3 rooms, 240 KP.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(25)
       // Make first 5 review states mature for realistic mid-game data
@@ -302,7 +298,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 2400, shard: 80, crystal: 15, geode: 0, essence: 0 },
+        minerals: { greyMatter: 5900 },
         knowledgePoints: 240,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 0, collection: 0 } },
@@ -328,7 +324,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   {
     id: 'endgame_all_rooms',
     label: 'Endgame (All Rooms)',
-    description: '80 facts, 18 000 dust, all rooms unlocked, 2800 KP, titles, premium materials.',
+    description: '80 facts, 18 000 grey matter, all rooms unlocked, 2800 KP, titles, premium materials.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(80, true)
       const allRoomIds = ["command", "lab", "workshop", "museum", "market", "archive"]
@@ -336,7 +332,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 18_000, shard: 400, crystal: 80, geode: 20, essence: 5 },
+        minerals: { greyMatter: 46_000 },
         knowledgePoints: 2800,
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
@@ -383,7 +379,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 50_000, shard: 1500, crystal: 300, geode: 80, essence: 20 },
+        minerals: { greyMatter: 197_500 },
         knowledgePoints: 5000,
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
@@ -430,7 +426,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         learnedFacts,
         reviewStates,
         oxygen: 0,
-        minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 0 },
         knowledgePoints: 180,
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
@@ -466,7 +462,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 22_000, shard: 500, crystal: 100, geode: 25, essence: 6 },
+        minerals: { greyMatter: 69_000 },
         knowledgePoints: 3200,
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
@@ -499,14 +495,14 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   {
     id: 'first_fossil_found',
     label: 'Early Run',
-    description: '4 runs completed, 8 facts, 350 dust.',
+    description: '4 runs completed, 8 facts, 350 grey matter.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(8)
       return {
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 350, shard: 8, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 550 },
         unlockedRooms: ['command', 'lab'],
         stats: {
           totalDivesCompleted: 4,
@@ -536,7 +532,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
+        minerals: { greyMatter: 1725 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
@@ -576,7 +572,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 1500, shard: 50, crystal: 10, geode: 0, essence: 0 },
+        minerals: { greyMatter: 3750 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
@@ -611,7 +607,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 99_999, shard: 5000, crystal: 500, geode: 100, essence: 20 },
+        minerals: { greyMatter: 364_999 },
         knowledgePoints: 10_000,
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
@@ -651,7 +647,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         tutorialComplete: false,
         runCount: 0,
         oxygen: 0,
-        minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 0 },
       }
     },
   },
@@ -662,7 +658,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   {
     id: 'workshop_unlocked',
     label: 'Workshop Just Unlocked',
-    description: '3 dives, 3 rooms unlocked, 450 dust, 12 shards, 8 facts. Workshop just accessible.',
+    description: '3 dives, 3 rooms unlocked, 450 grey matter, 12 shards, 8 facts. Workshop just accessible.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(8)
       const yesterday = new Date(now - 86_400_000).toISOString().split('T')[0]
@@ -670,7 +666,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 450, shard: 12, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 750 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
@@ -708,7 +704,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
+        minerals: { greyMatter: 1725 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
@@ -744,7 +740,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 5000, shard: 150, crystal: 30, geode: 5, essence: 0 },
+        minerals: { greyMatter: 14_250 },
         knowledgePoints: 800,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'zoo'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'zoo', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 1, zoo: 0, collection: 0 } },
@@ -783,7 +779,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 1200, shard: 40, crystal: 5, geode: 0, essence: 0 },
+        minerals: { greyMatter: 2700 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         lastPlayDate: twoDaysAgo,
@@ -823,7 +819,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 320, shard: 8, crystal: 1, geode: 0, essence: 0 },
+        minerals: { greyMatter: 620 },
         unlockedRooms: ['command', 'lab'],
         lastPlayDate: today,
         lastDiveBiome: 'limestone_caves',
@@ -867,7 +863,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 3000, shard: 80, crystal: 15, geode: 0, essence: 0 },
+        minerals: { greyMatter: 6500 },
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 0, collection: 0 } },
         tutorialComplete: true,
@@ -903,7 +899,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 800, shard: 30, crystal: 5, geode: 0, essence: 0 },
+        minerals: { greyMatter: 2050 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         craftedItems: { reinforced_tank: 1 },
@@ -948,7 +944,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 1200, shard: 35, crystal: 5, geode: 0, essence: 0 },
+        minerals: { greyMatter: 2575 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
@@ -985,7 +981,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 12_000, shard: 300, crystal: 60, geode: 15, essence: 3 },
+        minerals: { greyMatter: 39_000 },
         knowledgePoints: 2000,
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
@@ -1024,7 +1020,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 2000, shard: 60, crystal: 10, geode: 0, essence: 0 },
+        minerals: { greyMatter: 4500 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
@@ -1078,7 +1074,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 5000, shard: 120, crystal: 20, geode: 3, essence: 0 },
+        minerals: { greyMatter: 11_500 },
         knowledgePoints: 1500,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'market'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'farm', 'workshop', 'collection', 'market'], floorTiers: { starter: 1, study: 0, farm: 0, workshop: 0, collection: 0, market: 0 } },
@@ -1118,7 +1114,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
-        minerals: { dust: 120, shard: 3, crystal: 0, geode: 0, essence: 0 },
+        minerals: { greyMatter: 195 },
         unlockedRooms: ['command', 'lab'],
         tutorialComplete: true,
         runCount: 1,

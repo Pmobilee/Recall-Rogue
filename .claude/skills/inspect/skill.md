@@ -300,10 +300,10 @@ function checkOcclusion(element) {
 ```
 1. Scan the test method matrix for this element type
 2. If any required method FAILED TO RUN (timeout, error, missing tool):
-   - Flag as "INCOMPLETE INSPECTION" in the registry
-   - List which methods are missing
-   - Do NOT update inspection dates for missing methods
-   - Warn the user: "Inspection incomplete — {method} failed. Results may have blind spots."
+   - **STOP AND FIX THE TOOL** — diagnose the failure (missing dep? port conflict? stale process? config issue?)
+   - Resolve the root cause and RETRY the failed method
+   - Only after exhausting fixes (3+ attempts with different approaches): flag as "INCOMPLETE INSPECTION", list which methods failed and WHY, and update the registry accordingly
+   - NEVER silently skip a method or accept "it didn't work" without investigation
 
 3. Scan for STRUCTURAL blind spots:
    - Any element type with no unit tests? → Create a task to add them

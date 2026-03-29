@@ -117,7 +117,7 @@ import { factsDB } from './factsDB';
 import { selectNonCombatStudyQuestion } from './nonCombatQuizSelector';
 import { getConfusionMatrix } from './confusionMatrixStore';
 import type { ShopInventory } from './shopService';
-import { generateShopRelics, priceShopCards, removalPrice } from './shopService';
+import { generateShopRelics, priceShopCards, removalPrice, transformPrice, applySaleDiscount, getSalePrice } from './shopService';
 import type { DeckMode } from '../data/studyPreset'
 import { generateActMap, selectMapNode, deriveFloorFromNode, type ActMap } from './mapGenerator'
 import { getBossForFloor } from './floorManager'
@@ -625,7 +625,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   resetEncounterBridge()
   clearActiveRun();
 
-  // Award run currency as dust (skip for practice runs)
+  // Award run currency as grey matter (skip for practice runs)
   if (!endData.isPracticeRun && endData.currencyEarned > 0) {
     playerSave.update(s => {
       if (!s) return s;
@@ -633,7 +633,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
         ...s,
         minerals: {
           ...s.minerals,
-          dust: (s.minerals?.dust ?? 0) + endData.currencyEarned,
+          greyMatter: (s.minerals?.greyMatter ?? 0) + endData.currencyEarned,
         },
       };
     });
@@ -1518,10 +1518,19 @@ function openShopRoom(): void {
   const shopCardCount = hasMerchantsFavor ? 4 : 3; // merchants_favor: +1 card option
   const shopCards = priceShopCards(cardRewardOptions.slice(0, shopCardCount), run.floor.currentFloor);
 
+  // One random card per visit gets a 50% sale discount (applied after floor discount).
+  // Haggle still works on top of this price multiplicatively.
+  const saleIndex = shopCards.length > 0 ? Math.floor(Math.random() * shopCards.length) : undefined;
+  if (saleIndex !== undefined) {
+    applySaleDiscount(shopCards, saleIndex);
+  }
+
   const inventory: ShopInventory = {
     relics: shopRelics,
     cards: shopCards,
     removalCost: removalPrice(run.cardsRemovedAtShop ?? 0),
+    saleCardIndex: saleIndex,
+    transformCost: transformPrice(run.cardsTransformedAtShop ?? 0),
   };
   activeShopInventory.set(inventory);
 
@@ -1668,6 +1677,92 @@ export function onShopBuyRemoval(cardId: string, haggled = false): boolean {
     },
   });
   return true;
+}
+
+/**
+ * Handler for card transformation: deducts gold, destroys the selected card,
+ * and generates 3 replacement card options for the player to choose from.
+ * Price escalates with each transformation: 35g base +25g per prior transform.
+ * When haggled=true, applies 30% discount before deducting.
+ *
+ * @param cardId - ID of the card to transform.
+ * @param haggled - Whether a haggle discount was applied.
+ * @returns Array of 3 replacement Card options, or empty array if insufficient funds or card not found.
+ */
+export function onShopTransformCard(cardId: string, haggled = false): Card[] {
+  const run = get(activeRunState);
+  if (!run) return [];
+
+  const cost = transformPrice(run.cardsTransformedAtShop ?? 0);
+  const effectiveCost = haggled ? Math.floor(cost * (1 - SHOP_HAGGLE_DISCOUNT)) : cost;
+
+  if (run.currency < effectiveCost) return [];
+
+  const { soldCard } = sellCardFromActiveDeck(cardId);
+  if (!soldCard) return [];
+
+  run.currency -= effectiveCost;
+  if (haggled) run.haggleSuccesses = (run.haggleSuccesses ?? 0) + 1;
+  run.cardsTransformedAtShop = (run.cardsTransformedAtShop ?? 0) + 1;
+
+  // Update transform cost in shop inventory to reflect new count
+  const inventory = get(activeShopInventory);
+  if (inventory) {
+    inventory.transformCost = transformPrice(run.cardsTransformedAtShop);
+    activeShopInventory.set(inventory);
+  }
+
+  // Generate 3 replacement card options
+  const options = generateCardRewardOptionsByType(
+    getRunPoolCards() as any,
+    getActiveDeckFactIds(),
+    run.consumedRewardFactIds,
+    run.selectedArchetype,
+    run.floor.currentFloor,
+  ).slice(0, 3);
+
+  activeRunState.set(run);
+
+  analyticsService.track({
+    name: 'shop_transform',
+    properties: {
+      floor: run.floor.currentFloor,
+      card_id: cardId,
+      card_type: soldCard.cardType,
+      tier: soldCard.tier,
+      cost: effectiveCost,
+      base_cost: cost,
+      haggled,
+      options: options.length,
+    },
+  });
+
+  return options;
+}
+
+/**
+ * Handler for selecting a replacement card after transformation.
+ * Adds the chosen card to the active deck and marks its fact as consumed.
+ *
+ * @param card - The replacement card chosen by the player.
+ */
+export function onShopTransformSelect(card: Card): void {
+  addRewardCardToActiveDeck(card);
+
+  const run = get(activeRunState);
+  if (run) {
+    run.consumedRewardFactIds.add(card.factId);
+    activeRunState.set(run);
+  }
+
+  analyticsService.track({
+    name: 'shop_transform_select',
+    properties: {
+      card_type: card.cardType,
+      tier: card.tier,
+      fact_id: card.factId,
+    },
+  });
 }
 
 /**

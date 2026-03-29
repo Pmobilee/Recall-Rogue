@@ -125,7 +125,7 @@ export const tradingService = {
     receiverId: string
     offeredCardInstanceId: string
     requestedCardInstanceId: string
-    additionalDust: number
+    additionalGreyMatter: number
   }): Promise<void> {
     await authedPost('/trading/offers/create', input)
   },

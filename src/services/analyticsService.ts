@@ -327,6 +327,31 @@ interface ShopBuyRemovalEvent {
   }
 }
 
+/** Fired when the player uses the card transformation service in the shop. */
+interface ShopTransformEvent {
+  name: 'shop_transform'
+  properties: {
+    floor: number
+    card_id: string
+    card_type: string
+    tier: string
+    cost: number
+    base_cost: number
+    haggled: boolean
+    options: number
+  }
+}
+
+/** Fired when the player selects a replacement card after transformation. */
+interface ShopTransformSelectEvent {
+  name: 'shop_transform_select'
+  properties: {
+    card_type: string
+    tier: string
+    fact_id: string
+  }
+}
+
 interface RoomSelectedEvent {
   name: 'room_selected'
   properties: {
@@ -499,6 +524,8 @@ export type AnalyticsEvent =
   | ShopBuyRelicEvent
   | ShopBuyCardEvent
   | ShopBuyRemovalEvent
+  | ShopTransformEvent
+  | ShopTransformSelectEvent
   | RoomSelectedEvent
   | CardPlayEvent
   | AnswerCorrectEvent

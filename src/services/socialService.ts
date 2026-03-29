@@ -88,7 +88,7 @@ export const socialService = {
   /**
    * Send a gift to another player.
    * Gift types:
-   *  - `'minerals'`: payload must include `{ amount: number }` (100 dust, server enforces).
+   *  - `'minerals'`: payload must include `{ amount: number }` (100 grey matter, server enforces).
    *  - `'fact_link'`: payload must include `{ factId: string }`.
    *
    * Server enforces a daily gift limit (3 gifts sent per calendar day).
@@ -104,7 +104,7 @@ export const socialService = {
     payload: object,
   ): Promise<void> {
     const mappedPayload = type === 'minerals'
-      ? { dust: Number((payload as { amount?: unknown }).amount ?? 0) }
+      ? { greyMatter: Number((payload as { amount?: unknown }).amount ?? 0) }
       : payload
     await authedPost(`/players/${encodeURIComponent(playerId)}/gift`, { type, payload: mappedPayload })
   },
@@ -123,7 +123,7 @@ export const socialService = {
       const payloadRaw = (gift.payload as Record<string, unknown> | undefined) ?? {}
       const amount = typeof payloadRaw.amount === 'number'
         ? payloadRaw.amount
-        : (typeof payloadRaw.dust === 'number' ? payloadRaw.dust : undefined)
+        : (typeof payloadRaw.greyMatter === 'number' ? payloadRaw.greyMatter : undefined)
       return {
         id: String(gift.id ?? ''),
         senderId: String(gift.senderId ?? ''),

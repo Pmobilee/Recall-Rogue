@@ -348,7 +348,7 @@ All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__rrP
 
 Apply this protocol whenever any API call returns unexpected results:
 
-1. **`{ok: false}` returned**: Log the error, retry the call once after 1 second. If still failing, skip this action and continue.
+1. **`{ok: false}` returned**: Log the error, retry the call once after 1 second. If still failing, diagnose the cause (check console errors, game state, screen). Fix the underlying issue (e.g., wrong screen state, missing prerequisite action) and retry. Only after 3+ failed attempts with different approaches, log the failure with full diagnostics and continue.
 2. **Stuck detection**: If `getScreen()` returns the same value for 10+ consecutive calls without progress, take a screenshot, call `look()` to dump full state, then try `getAllText()` to see UI options.
 3. **Unknown screen**: If `getScreen()` returns an unexpected value, call `getAllText()` to read what's on screen, then handle it.
 4. **After combat ends**: Always check `getScreen()` to determine what comes next:

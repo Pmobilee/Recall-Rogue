@@ -54,14 +54,14 @@ const BOUNTY_TEMPLATES: BountyTemplate[] = [
     id: 'flawless_three',
     name: 'Flawless Descent',
     description: 'Win 3 encounters without wrong answers',
-    rewardLabel: '+50% dust',
+    rewardLabel: '+50% grey matter',
     condition: { type: 'flawless_encounters', count: 3 },
   },
   {
     id: 'floor_six',
     name: 'Deep Delve',
     description: 'Reach Floor 6',
-    rewardLabel: '+50% dust',
+    rewardLabel: '+50% grey matter',
     condition: { type: 'reach_floor', floor: 6 },
   },
   {
@@ -82,7 +82,7 @@ const BOUNTY_TEMPLATES: BountyTemplate[] = [
     id: 'knowledge_twenty',
     name: 'Knowledge Seeker',
     description: 'Get 20 correct answers',
-    rewardLabel: '+30% dust',
+    rewardLabel: '+30% grey matter',
     condition: { type: 'total_correct', count: 20 },
   },
   {

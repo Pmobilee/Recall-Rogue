@@ -22,7 +22,7 @@
   // CONSTANTS
   // ============================================================
 
-  const GIFT_DUST_AMOUNT = 100
+  const GIFT_GREY_MATTER_AMOUNT = 100
   const DAILY_GIFT_LIMIT = 3
 
   // ============================================================
@@ -122,7 +122,7 @@
     try {
       let payload: object
       if (selectedType === 'minerals') {
-        payload = { amount: GIFT_DUST_AMOUNT }
+        payload = { amount: GIFT_GREY_MATTER_AMOUNT }
       } else {
         if (!selectedFact) {
           step = 'pick_fact'
@@ -260,7 +260,7 @@
         </div>
       {:else}
         <div class="gift-options">
-          <!-- Option 1: Send Dust -->
+          <!-- Option 1: Send Grey Matter -->
           <button
             class="gift-option-btn"
             type="button"
@@ -268,7 +268,7 @@
           >
             <span class="gift-option-icon" aria-hidden="true">&#x1F4B0;</span>
             <div class="gift-option-info">
-              <span class="gift-option-title">Send {GIFT_DUST_AMOUNT} Dust</span>
+              <span class="gift-option-title">Send {GIFT_GREY_MATTER_AMOUNT} Grey Matter</span>
               <span class="gift-option-desc">A small mineral gift from your stockpile</span>
             </div>
             <span class="gift-option-arrow" aria-hidden="true">&#8594;</span>
@@ -349,7 +349,7 @@
           <p class="confirm-sending-to">Sending to <strong>{safeOwnerName}</strong></p>
           {#if selectedType === 'minerals'}
             <p class="confirm-what">
-              <strong>{GIFT_DUST_AMOUNT} Dust</strong>
+              <strong>{GIFT_GREY_MATTER_AMOUNT} Grey Matter</strong>
             </p>
             <p class="confirm-note">
               This will be deducted from your stockpile upon confirmation.

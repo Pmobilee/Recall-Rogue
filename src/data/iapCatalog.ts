@@ -68,7 +68,7 @@ export const ONE_TIME_PRODUCTS: IAPProduct[] = [
   {
     id: 'com.terragacha.pioneerpack',
     name: 'Pioneer Pack',
-    description: '500 dust, Rare+ artifact, Pioneer Pickaxe, 3 bonus tanks, Pioneer badge',
+    description: '500 grey matter, Rare+ artifact, Pioneer Pickaxe, 3 bonus tanks, Pioneer badge',
     priceUSD: 4.99,
     tier: 'one_time',
     isSubscription: false,

@@ -182,7 +182,7 @@ If Phase 5 or 6 reveals the approach is fundamentally wrong:
 
 ## Phase 6: VERIFY Checklist
 
-> **"Should Work" warning**: Confirm, don't assume. Either say "I confirmed it works" or "I cannot verify this." Never say "this should work."
+> **"Should Work" warning**: Confirm, don't assume. Never say "this should work." If a verification tool is broken, fix the tool first, then verify. Never accept "I cannot verify" — fix the blocker.
 
 > **"Test Screen Only" warning**: Verify via the real user path (hub → menus → gameplay), not just via `__rrScenario`.
 

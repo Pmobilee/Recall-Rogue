@@ -21,7 +21,7 @@ export const BALANCE = {
   MORNING_REVIEW_END: 11,
   EVENING_REVIEW_HOUR: 19,              // 7 PM - 11 PM
   EVENING_REVIEW_END: 23,
-  RITUAL_BONUS_DUST: 25,                // bonus dust for completing a ritual
+  RITUAL_BONUS_GREY_MATTER: 25,         // bonus grey matter for completing a ritual
   RITUAL_CARD_COUNT: 5,                 // cards per ritual session
   MORNING_REVIEW_FACT_COUNT: 5,       // Facts required to claim morning bonus
   EVENING_REVIEW_FACT_COUNT: 5,       // Facts required to claim evening bonus
@@ -46,14 +46,14 @@ export const BALANCE = {
 
   // === MASTERY CELEBRATIONS (DD-V2-108, DD-V2-119) ===
   MASTERY_CELEBRATION_THRESHOLDS: [
-    { count: 1,   tier: 'fullscreen', dustBonus: 0,    title: null,            gaiaKey: 'firstMastery' },
-    { count: 5,   tier: 'mini',       dustBonus: 15,   title: null,            gaiaKey: 'mastery5' },
-    { count: 10,  tier: 'banner',     dustBonus: 50,   title: null,            gaiaKey: 'mastery10' },
-    { count: 25,  tier: 'medium',     dustBonus: 100,  title: 'Scholar',       gaiaKey: 'mastery25' },
-    { count: 50,  tier: 'medium',     dustBonus: 200,  title: 'Researcher',    gaiaKey: 'mastery50' },
-    { count: 100, tier: 'major',      dustBonus: 500,  title: 'Archivist',     gaiaKey: 'mastery100' },
-    { count: 250, tier: 'major',      dustBonus: 1000, title: 'Encyclopedist', gaiaKey: 'mastery250' },
-    { count: 500, tier: 'fullscreen', dustBonus: 2500, title: 'Omniscient',    gaiaKey: 'mastery500' },
+    { count: 1,   tier: 'fullscreen', greyMatterBonus: 0,    title: null,            gaiaKey: 'firstMastery' },
+    { count: 5,   tier: 'mini',       greyMatterBonus: 15,   title: null,            gaiaKey: 'mastery5' },
+    { count: 10,  tier: 'banner',     greyMatterBonus: 50,   title: null,            gaiaKey: 'mastery10' },
+    { count: 25,  tier: 'medium',     greyMatterBonus: 100,  title: 'Scholar',       gaiaKey: 'mastery25' },
+    { count: 50,  tier: 'medium',     greyMatterBonus: 200,  title: 'Researcher',    gaiaKey: 'mastery50' },
+    { count: 100, tier: 'major',      greyMatterBonus: 500,  title: 'Archivist',     gaiaKey: 'mastery100' },
+    { count: 250, tier: 'major',      greyMatterBonus: 1000, title: 'Encyclopedist', gaiaKey: 'mastery250' },
+    { count: 500, tier: 'fullscreen', greyMatterBonus: 2500, title: 'Omniscient',    gaiaKey: 'mastery500' },
   ] as const,
 
   // === NEAR-MISS MESSAGES (Phase 17.1) ===
@@ -775,8 +775,14 @@ export const SHOP_MAX_DISCOUNT = 0.40;
 export const SHOP_REMOVAL_BASE_PRICE = 50;
 /** Additional gold cost per subsequent card removal in the same run (+25g each). */
 export const SHOP_REMOVAL_PRICE_INCREMENT = 25;
+/** Base price for the shop card transformation service — first transform in run. */
+export const SHOP_TRANSFORM_BASE_PRICE = 35;
+/** Additional gold cost per subsequent card transformation in the same run (+25g each). */
+export const SHOP_TRANSFORM_PRICE_INCREMENT = 25;
 /** Haggle discount fraction (0.30 = 30% off — player pays 70% of base price). */
 export const SHOP_HAGGLE_DISCOUNT = 0.30;
+/** Sale discount fraction applied to one random card per shop visit (0.50 = 50% off). */
+export const SHOP_SALE_DISCOUNT = 0.50;
 
 /** Number of food/consumable items offered per shop visit. */
 export const SHOP_FOOD_COUNT = 3;

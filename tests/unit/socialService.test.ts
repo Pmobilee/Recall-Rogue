@@ -67,14 +67,14 @@ describe('socialService', () => {
     expect(snapshot.knowledgeTree.totalFacts).toBe(0)
   })
 
-  it('maps mineral gift payload amount -> dust', async () => {
+  it('maps mineral gift payload amount -> greyMatter', async () => {
     vi.mocked(authedPost).mockResolvedValueOnce(mockResponse({ ok: true }))
 
     await socialService.sendGift('player-2', 'minerals', { amount: 125 })
 
     expect(authedPost).toHaveBeenCalledWith('/players/player-2/gift', {
       type: 'minerals',
-      payload: { dust: 125 },
+      payload: { greyMatter: 125 },
     })
   })
 
@@ -86,7 +86,7 @@ describe('socialService', () => {
           senderId: 's1',
           senderDisplayName: 'Sender One',
           type: 'minerals',
-          payload: { dust: 80 },
+          payload: { greyMatter: 80 },
           createdAt: 1111,
           claimedAt: null,
         },

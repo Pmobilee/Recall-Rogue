@@ -1,24 +1,24 @@
 import type { CardType, FactDomain } from '../../data/card-types'
 
 export const DOMAIN_ICON_PATHS: Record<FactDomain, string> = {
-  general_knowledge: '/assets/sprites/icons/icon_science.webp',
-  natural_sciences: '/assets/sprites/icons/icon_science.webp',
-  space_astronomy: '/assets/sprites/icons/icon_science.webp',
-  history: '/assets/sprites/icons/icon_history.webp',
-  geography: '/assets/sprites/icons/icon_geography.webp',
-  geography_drill: '/assets/sprites/icons/icon_geography.webp',
-  language: '/assets/sprites/icons/icon_language.webp',
-  mythology_folklore: '/assets/sprites/icons/icon_arts.webp',
-  animals_wildlife: '/assets/sprites/icons/icon_medicine.webp',
-  human_body_health: '/assets/sprites/icons/icon_medicine.webp',
-  food_cuisine: '/assets/sprites/icons/icon_arts.webp',
-  art_architecture: '/assets/sprites/icons/icon_arts.webp',
-  // Legacy aliases.
-  science: '/assets/sprites/icons/icon_science.webp',
-  math: '/assets/sprites/icons/icon_math.webp',
-  arts: '/assets/sprites/icons/icon_arts.webp',
-  medicine: '/assets/sprites/icons/icon_medicine.webp',
-  technology: '/assets/sprites/icons/icon_technology.webp',
+  general_knowledge: '/assets/sprites/icons/icon_domain_general_knowledge.png',
+  natural_sciences: '/assets/sprites/icons/icon_domain_natural_sciences.png',
+  space_astronomy: '/assets/sprites/icons/icon_domain_space_astronomy.png',
+  history: '/assets/sprites/icons/icon_domain_history.png',
+  geography: '/assets/sprites/icons/icon_domain_geography.png',
+  geography_drill: '/assets/sprites/icons/icon_domain_geography_drill.png',
+  language: '/assets/sprites/icons/icon_domain_language.png',
+  mythology_folklore: '/assets/sprites/icons/icon_domain_mythology_folklore.png',
+  animals_wildlife: '/assets/sprites/icons/icon_domain_animals_wildlife.png',
+  human_body_health: '/assets/sprites/icons/icon_domain_human_body_health.png',
+  food_cuisine: '/assets/sprites/icons/icon_domain_food_cuisine.png',
+  art_architecture: '/assets/sprites/icons/icon_domain_art_architecture.png',
+  // Legacy aliases — mapped to closest domain-specific icon.
+  science: '/assets/sprites/icons/icon_domain_natural_sciences.png',
+  math: '/assets/sprites/icons/icon_domain_general_knowledge.png',
+  arts: '/assets/sprites/icons/icon_domain_art_architecture.png',
+  medicine: '/assets/sprites/icons/icon_domain_human_body_health.png',
+  technology: '/assets/sprites/icons/icon_domain_general_knowledge.png',
 }
 
 export function getDomainIconPath(domain: FactDomain): string {

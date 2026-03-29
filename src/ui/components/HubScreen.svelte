@@ -65,27 +65,31 @@
 
   // Derived tier values — reactively update sprite URLs when upgrades are purchased
   let tiers = $derived($campState.tiers)
+  // Forms — which visual form to display per element (may differ from tier when user previews a lower form)
+  let forms = $derived($campState.forms ?? $campState.tiers)
 
   // Preload all camp images before revealing screen
   const _campImagesToPreload = [
     getCampBackgroundUrl(),
     getCampBackgroundWideUrl(),
-    getCampUpgradeUrl('doorway', $campState.tiers.doorway),
-    getCampUpgradeUrl('library', $campState.tiers.library),
+    getCampUpgradeUrl('doorway', $campState.forms?.doorway ?? $campState.tiers.doorway),
+    getCampUpgradeUrl('library', $campState.forms?.library ?? $campState.tiers.library),
     getCampSettingsUrl(),
-    getCampUpgradeUrl('campfire', $campState.tiers.campfire),
-    getCampUpgradeUrl('tent', $campState.tiers.tent),
-    getCampUpgradeUrl('character', $campState.tiers.character),
-    getCampUpgradeUrl('pet', $campState.tiers.pet),
-    getCampUpgradeUrl('journal', $campState.tiers.journal),
-    getCampUpgradeUrl('questboard', $campState.tiers.questboard),
-    getCampUpgradeUrl('shop', $campState.tiers.shop),
+    getCampUpgradeUrl('campfire', $campState.forms?.campfire ?? $campState.tiers.campfire),
+    getCampUpgradeUrl('tent', $campState.forms?.tent ?? $campState.tiers.tent),
+    getCampUpgradeUrl('character', $campState.forms?.character ?? $campState.tiers.character),
+    getCampUpgradeUrl('pet', $campState.forms?.pet ?? $campState.tiers.pet),
+    getCampUpgradeUrl('journal', $campState.forms?.journal ?? $campState.tiers.journal),
+    getCampUpgradeUrl('questboard', $campState.forms?.questboard ?? $campState.tiers.questboard),
+    getCampUpgradeUrl('shop', $campState.forms?.shop ?? $campState.tiers.shop),
   ]
   holdScreenTransition()
   preloadImages(_campImagesToPreload).then(releaseScreenTransition)
 
-  let dustBalance = $derived($playerSave?.minerals.dust ?? 0)
+  let greyMatterBalance = $derived($playerSave?.minerals.greyMatter ?? 0)
   let levelProgress = $derived(getLevelProgress($playerSave?.totalXP ?? 0))
+  // Use stored characterLevel as primary (survives XP desync), fall back to XP-derived
+  let effectiveLevel = $derived(Math.max($playerSave?.characterLevel ?? 0, levelProgress.level))
 
   $effect(() => {
     playCardAudio('hub-welcome')
@@ -151,6 +155,38 @@
     transitionActive = true
   }
 
+  async function fakeRunEnd(): Promise<void> {
+    const scenario = (globalThis as any).__rrScenario
+    if (!scenario) return
+    const results = ['victory', 'defeat', 'retreat'] as const
+    const result = results[Math.floor(Math.random() * results.length)]
+    const allEnemyIds = ENEMY_TEMPLATES.map((t: any) => t.id)
+    const enemyCount = 3 + Math.floor(Math.random() * 10)
+    const defeatedEnemyIds = Array.from({ length: enemyCount }, () =>
+      allEnemyIds[Math.floor(Math.random() * allEnemyIds.length)]
+    )
+    const seen = Math.floor(Math.random() * 15) + 3
+    const reviewing = Math.floor(Math.random() * 20) + 5
+    const mastered = Math.floor(Math.random() * 8)
+    const floor = 1 + Math.floor(Math.random() * 10)
+    await scenario.loadCustom({
+      screen: 'runEnd',
+      runEndResult: result,
+      floor,
+      runEndStats: {
+        floorReached: floor,
+        defeatedEnemyIds,
+        factStateSummary: { seen, reviewing, mastered },
+        encountersWon: defeatedEnemyIds.length,
+        encountersTotal: defeatedEnemyIds.length + Math.floor(Math.random() * 3),
+        accuracy: 50 + Math.floor(Math.random() * 50),
+        bestCombo: 1 + Math.floor(Math.random() * 15),
+        currencyEarned: 50 + Math.floor(Math.random() * 500),
+        relicsCollected: Math.floor(Math.random() * 6),
+      },
+    })
+  }
+
   function onTransitionComplete(): void {
     transitionActive = false
   }
@@ -174,11 +210,11 @@
 
     <!-- Center column: portrait 9:16 hotspot container (transparent — wide bg shows through) -->
     <div class="hub-center">
-      <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
+      <CampHudOverlay {streak} {greyMatterBalance} {hasActiveRunBanner} />
 
       <!-- 1. Dungeon Gate - Start Run -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('doorway', tiers.doorway)}
+        spriteUrl={getCampUpgradeUrl('doorway', forms.doorway)}
         label="Start Run"
         testId="btn-start-run"
         zIndex={5}
@@ -189,7 +225,7 @@
 
       <!-- 2. Library (Bookshelf) -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('library', tiers.library)}
+        spriteUrl={getCampUpgradeUrl('library', forms.library)}
         label="Library"
         zIndex={10}
         onclick={onOpenLibrary}
@@ -209,7 +245,7 @@
 
       <!-- 5. Quest Board - Leaderboards -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('questboard', tiers.questboard)}
+        spriteUrl={getCampUpgradeUrl('questboard', forms.questboard)}
         label="Leaderboards"
         zIndex={15}
         onclick={onOpenLeaderboards}
@@ -219,7 +255,7 @@
 
       <!-- 6. Journal -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('journal', tiers.journal)}
+        spriteUrl={getCampUpgradeUrl('journal', forms.journal)}
         label="Journal"
         zIndex={15}
         onclick={onOpenJournal}
@@ -229,7 +265,7 @@
 
       <!-- 7. Shop (Treasure Chest) -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('shop', tiers.shop)}
+        spriteUrl={getCampUpgradeUrl('shop', forms.shop)}
         label="Relic Collection"
         zIndex={15}
         onclick={openUpgradeModal}
@@ -239,7 +275,7 @@
 
       <!-- 8. Tent - Social -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('tent', tiers.tent)}
+        spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
         label="Social"
         zIndex={20}
         onclick={onOpenSocial}
@@ -249,7 +285,7 @@
 
       <!-- 9. Campfire - Sparkle burst on click -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('campfire', tiers.campfire)}
+        spriteUrl={getCampUpgradeUrl('campfire', forms.campfire)}
         label="Campfire"
         zIndex={25}
         onclick={handleCampfireClick}
@@ -273,7 +309,7 @@
 
       <!-- 10. Character - Profile -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('character', tiers.character)}
+        spriteUrl={getCampUpgradeUrl('character', forms.character)}
         label="Profile"
         zIndex={30}
         onclick={onOpenProfile}
@@ -284,7 +320,7 @@
 
       <!-- 11. Pet (Cat) - shows speech bubble -->
       <CampSpriteButton
-        spriteUrl={getCampUpgradeUrl('pet', tiers.pet)}
+        spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
         label="Pet"
         zIndex={35}
         onclick={showPetBubble}
@@ -302,7 +338,7 @@
 
       <!-- Player level badge -->
       <div class="camp-level-badge">
-        <div class="level-number">Lv.{levelProgress.level}</div>
+        <div class="level-number">Lv.{effectiveLevel}</div>
         {#if !levelProgress.isMaxLevel}
           <div class="level-xp-bar">
             <div class="level-xp-fill" style="width: {levelProgress.progress * 100}%"></div>
@@ -318,12 +354,14 @@
         <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
       {/if}
 
-      <!-- Replay boot animation (dev) -->
-      {#if onReplayBootAnim}
-        <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
-      {/if}
-      <button class="preview-transition-btn" onclick={previewEnter}>Enter</button>
-      <button class="preview-transition-btn preview-exit-btn" onclick={previewExit}>Exit</button>
+      <div class="dev-btn-row">
+        {#if onReplayBootAnim}
+          <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
+        {/if}
+        <button class="dev-btn" onclick={previewEnter}>Enter</button>
+        <button class="dev-btn" onclick={previewExit}>Exit</button>
+        <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
+      </div>
 
       {#if transitionActive}
         <ParallaxTransition
@@ -341,7 +379,7 @@
 {:else}
   <!-- ═══ PORTRAIT LAYOUT — PIXEL-IDENTICAL TO PRE-PORT ════════════════════ -->
   <section class="camp-hub" aria-label="Camp hub">
-    <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
+    <CampHudOverlay {streak} {greyMatterBalance} {hasActiveRunBanner} />
 
     <img
       class="camp-bg"
@@ -354,7 +392,7 @@
 
     <!-- 1. Dungeon Gate - Start Run -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('doorway', tiers.doorway)}
+      spriteUrl={getCampUpgradeUrl('doorway', forms.doorway)}
       label="Start Run"
       testId="btn-start-run"
       zIndex={5}
@@ -366,7 +404,7 @@
 
     <!-- 2. Library (Bookshelf) -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('library', tiers.library)}
+      spriteUrl={getCampUpgradeUrl('library', forms.library)}
       label="Library"
       zIndex={10}
       onclick={onOpenLibrary}
@@ -386,7 +424,7 @@
 
     <!-- 5. Quest Board - Leaderboards -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('questboard', tiers.questboard)}
+      spriteUrl={getCampUpgradeUrl('questboard', forms.questboard)}
       label="Leaderboards"
       zIndex={15}
       onclick={onOpenLeaderboards}
@@ -396,7 +434,7 @@
 
     <!-- 6. Journal -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('journal', tiers.journal)}
+      spriteUrl={getCampUpgradeUrl('journal', forms.journal)}
       label="Journal"
       zIndex={15}
       onclick={onOpenJournal}
@@ -406,7 +444,7 @@
 
     <!-- 7. Shop (Treasure Chest) -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('shop', tiers.shop)}
+      spriteUrl={getCampUpgradeUrl('shop', forms.shop)}
       label="Relic Collection"
       zIndex={15}
       onclick={openUpgradeModal}
@@ -416,7 +454,7 @@
 
     <!-- 8. Tent - Social -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('tent', tiers.tent)}
+      spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
       label="Social"
       zIndex={20}
       onclick={onOpenSocial}
@@ -426,7 +464,7 @@
 
     <!-- 9. Campfire - Sparkle burst on click -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('campfire', tiers.campfire)}
+      spriteUrl={getCampUpgradeUrl('campfire', forms.campfire)}
       label="Campfire"
       zIndex={25}
       onclick={handleCampfireClick}
@@ -450,7 +488,7 @@
 
     <!-- 10. Character - Profile -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('character', tiers.character)}
+      spriteUrl={getCampUpgradeUrl('character', forms.character)}
       label="Profile"
       zIndex={30}
       onclick={onOpenProfile}
@@ -461,7 +499,7 @@
 
     <!-- 11. Pet (Cat) - shows speech bubble -->
     <CampSpriteButton
-      spriteUrl={getCampUpgradeUrl('pet', tiers.pet)}
+      spriteUrl={getCampUpgradeUrl('pet', forms.pet)}
       label="Pet"
       zIndex={35}
       onclick={showPetBubble}
@@ -495,12 +533,14 @@
       <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
     {/if}
 
-    <!-- Replay boot animation (dev) -->
-    {#if onReplayBootAnim}
-      <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
-    {/if}
-    <button class="preview-transition-btn" onclick={previewEnter}>Enter</button>
-    <button class="preview-transition-btn preview-exit-btn" onclick={previewExit}>Exit</button>
+    <div class="dev-btn-row">
+      {#if onReplayBootAnim}
+        <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
+      {/if}
+      <button class="dev-btn" onclick={previewEnter}>Enter</button>
+      <button class="dev-btn" onclick={previewExit}>Exit</button>
+      <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
+    </div>
 
     {#if transitionActive}
       <ParallaxTransition
@@ -622,20 +662,27 @@
     }
   }
 
-  .replay-boot-btn {
+  .dev-btn-row {
     position: absolute;
-    bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
-    left: calc(12px * var(--layout-scale, 1));
-    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    font-size: calc(11px * var(--text-scale, 1));
-    color: rgba(255,255,255,0.5);
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 6px;
+    bottom: calc(max(110px, 106px + var(--safe-bottom, 0px)));
+    right: calc(12px * var(--layout-scale, 1));
+    display: flex;
+    gap: calc(6px * var(--layout-scale, 1));
     z-index: 50;
-    cursor: pointer;
   }
-  .replay-boot-btn:active {
+
+  .dev-btn {
+    padding: calc(3px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
+    color: rgba(255,255,255,0.45);
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .dev-btn:active {
     background: rgba(255,255,255,0.1);
   }
 
@@ -704,27 +751,5 @@
     font-size: calc(13px * var(--text-scale, 1));
   }
 
-  /* ═══ TRANSITION PREVIEW ═══════════════════════════════════════════════ */
-
-  .preview-transition-btn {
-    position: absolute;
-    bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
-    left: calc(80px * var(--layout-scale, 1));
-    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    font-size: calc(11px * var(--text-scale, 1));
-    color: rgba(255,255,255,0.5);
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 6px;
-    z-index: 50;
-    cursor: pointer;
-  }
-  .preview-transition-btn:active {
-    background: rgba(255,255,255,0.1);
-  }
-
-  .preview-exit-btn {
-    left: calc(130px * var(--layout-scale, 1));
-  }
 
 </style>

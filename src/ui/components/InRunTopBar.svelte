@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getRelicIconPath } from '../utils/iconAssets'
+  import { getRelicIconPath, getGoldCoinIconPath } from '../utils/iconAssets'
 
   // ============================================================
   // Segment name lookup
@@ -172,7 +172,7 @@
       onmouseleave={() => { goldTooltipOpen = false }}
       onclick={() => { goldTooltipOpen = !goldTooltipOpen }}
     >
-      <span class="gold-icon" aria-hidden="true">🪙</span>
+      <img class="gold-icon-img" src={getGoldCoinIconPath()} alt="" aria-hidden="true" />
       <span class="gold-value">{currency}</span>
       {#if goldTooltipOpen}
         <div class="gold-tooltip">
@@ -467,9 +467,10 @@
     margin-left: calc(8px * var(--layout-scale, 1));
   }
 
-  .gold-icon {
-    font-size: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.4);
-    line-height: 1;
+  .gold-icon-img {
+    width: calc(18px * var(--layout-scale, 1));
+    height: calc(18px * var(--layout-scale, 1));
+    object-fit: contain;
   }
 
   .gold-value {

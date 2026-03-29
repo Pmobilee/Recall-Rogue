@@ -4,11 +4,9 @@
   interface Props {
     node: MapNodeData
     onclick: () => void
-    /** When true, renders at the larger "choice" size with a room-type label below. */
-    prominent?: boolean
   }
 
-  let { node, onclick, prominent = false }: Props = $props()
+  let { node, onclick }: Props = $props()
 
   const TYPE_BORDER: Record<MapNodeData['type'], string> = {
     combat:   '#E74C3C',
@@ -40,21 +38,9 @@
     shop:     'Shop',
   }
 
-  /** Short display label shown below prominent nodes */
-  const TYPE_SHORT_LABEL: Record<MapNodeData['type'], string> = {
-    combat:   'Combat',
-    elite:    'Elite',
-    boss:     'Boss',
-    mystery:  'Mystery',
-    rest:     'Rest',
-    treasure: 'Treasure',
-    shop:     'Shop',
-  }
-
   let borderColor  = $derived(TYPE_BORDER[node.type])
   let iconUrl      = $derived(TYPE_ICON[node.type])
   let label        = $derived(TYPE_LABEL[node.type])
-  let shortLabel   = $derived(TYPE_SHORT_LABEL[node.type])
   let isClickable  = $derived(node.state === 'available')
 
   /** Sprite URL for boss node only — shows the actual boss enemy instead of an emoji. */
@@ -65,7 +51,7 @@
   )
 </script>
 
-<div class="node-wrapper" class:prominent>
+<div class="node-wrapper">
   <button
     class="map-node"
     class:state-visited={node.state === 'visited'}
@@ -74,7 +60,6 @@
     class:state-current={node.state === 'current'}
     class:type-boss={node.type === 'boss'}
     class:type-elite={node.type === 'elite'}
-    class:prominent
     style="--node-color: {borderColor};"
     aria-label="{label} — {node.state}"
     data-testid="map-node-{node.id}"
@@ -90,37 +75,20 @@
       <span class="visited-check" aria-hidden="true">✓</span>
     {/if}
   </button>
-  {#if prominent}
-    <span class="node-type-label" aria-hidden="true">{shortLabel}</span>
-  {/if}
 </div>
 
 <style>
-  /* Wrapper enables the label-below layout for prominent nodes */
+  /* Wrapper enables absolute positioning by parent layout */
   .node-wrapper {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: calc(8px * var(--layout-scale, 1));
-  }
-
-  /* Room type label — only visible on prominent (choice) nodes */
-  .node-type-label {
-    font-size: calc(11px * var(--text-scale, 1));
-    font-weight: 700;
-    letter-spacing: calc(1.5px * var(--layout-scale, 1));
-    text-transform: uppercase;
-    color: rgba(245, 240, 230, 0.75);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-    pointer-events: none;
-    white-space: nowrap;
-    user-select: none;
   }
 
   .map-node {
     position: relative;
-    width: calc(68px * var(--layout-scale, 1));
-    height: calc(68px * var(--layout-scale, 1));
+    width: calc(52px * var(--layout-scale, 1));
+    height: calc(52px * var(--layout-scale, 1));
     border-radius: 50%;
     border: 2.5px solid var(--node-color);
     background: linear-gradient(135deg, #0f1520, #1a2235);
@@ -139,21 +107,15 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Prominent (choice) nodes: larger, brighter border, more shadow */
-  .map-node.prominent {
-    width: calc(88px * var(--layout-scale, 1));
-    height: calc(88px * var(--layout-scale, 1));
-    border-width: 3px;
-    box-shadow:
-      0 4px 16px rgba(0, 0, 0, 0.6),
-      0 0 20px color-mix(in srgb, var(--node-color) 35%, transparent),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  /* Elite node: slightly larger */
+  .map-node.type-elite {
+    width: calc(60px * var(--layout-scale, 1));
+    height: calc(60px * var(--layout-scale, 1));
+    animation: elitePulse 2s ease-in-out infinite;
+    border-width: 2.5px;
   }
-
-  /* Boss prominent node overrides (boss already has its own larger size below) */
-  .map-node.type-boss.prominent {
-    width: calc(104px * var(--layout-scale, 1));
-    height: calc(104px * var(--layout-scale, 1));
+  .map-node.type-elite.state-visited {
+    animation: none;
   }
 
   .map-node:disabled {
@@ -163,14 +125,15 @@
 
   /* --- visited --- */
   .map-node.state-visited {
-    opacity: 0.25;
-    filter: grayscale(1);
+    opacity: 0.3;
+    filter: grayscale(0.8);
   }
 
   /* --- locked --- */
   .map-node.state-locked {
-    opacity: 0.7;
+    opacity: 0.45;
     border-style: dashed;
+    filter: saturate(0.5);
   }
 
   /* --- available --- */
@@ -185,10 +148,26 @@
     outline: none;
   }
 
-  /* --- current --- */
+  /* --- current: "You Are Here" — dramatic pulsing ring + sonar ping --- */
   .map-node.state-current {
     animation: currentPulse 1.6s ease-in-out infinite;
     border-width: 3px;
+  }
+
+  .map-node.state-current::after {
+    content: '';
+    position: absolute;
+    inset: calc(-6px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: 2px solid var(--node-color);
+    opacity: 0;
+    animation: sonarPing 2s ease-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes sonarPing {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
   }
 
   @keyframes nodePulse {
@@ -212,23 +191,23 @@
   }
 
   .node-icon {
-    width: calc(44px * var(--layout-scale, 1));
-    height: calc(44px * var(--layout-scale, 1));
+    width: calc(34px * var(--layout-scale, 1));
+    height: calc(34px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     pointer-events: none;
     display: block;
   }
 
-  /* Larger icon inside prominent nodes */
-  .map-node.prominent .node-icon {
-    width: calc(56px * var(--layout-scale, 1));
-    height: calc(56px * var(--layout-scale, 1));
+  /* Larger icon inside elite nodes */
+  .map-node.type-elite .node-icon {
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
   }
 
   .node-sprite {
-    width: calc(60px * var(--layout-scale, 1));
-    height: calc(60px * var(--layout-scale, 1));
+    width: calc(54px * var(--layout-scale, 1));
+    height: calc(54px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: auto; /* bilinear — good for downscaling */
     border-radius: 50%;
@@ -236,12 +215,6 @@
     animation: spriteFloat 3s ease-in-out infinite;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
     pointer-events: none;
-  }
-
-  /* Larger sprite inside prominent boss nodes */
-  .map-node.prominent .node-sprite {
-    width: calc(80px * var(--layout-scale, 1));
-    height: calc(80px * var(--layout-scale, 1));
   }
 
   /* Override sprite animation for boss — slower, more dramatic float */
@@ -319,21 +292,12 @@
 
   /* --- boss node: dramatic slow pulse with large glow, always active, larger --- */
   .map-node.type-boss {
-    width: calc(84px * var(--layout-scale, 1));
-    height: calc(84px * var(--layout-scale, 1));
+    width: calc(80px * var(--layout-scale, 1));
+    height: calc(80px * var(--layout-scale, 1));
     animation: bossPulse 3s ease-in-out infinite;
     border-width: 3px;
   }
   .map-node.type-boss.state-visited {
-    animation: none;
-  }
-
-  /* --- elite node: menacing purple pulse, always active --- */
-  .map-node.type-elite {
-    animation: elitePulse 2s ease-in-out infinite;
-    border-width: 2.5px;
-  }
-  .map-node.type-elite.state-visited {
     animation: none;
   }
 
@@ -377,6 +341,9 @@
     .map-node.state-current,
     .map-node.type-boss,
     .map-node.type-elite {
+      animation: none;
+    }
+    .map-node.state-current::after {
       animation: none;
     }
     .node-sprite {

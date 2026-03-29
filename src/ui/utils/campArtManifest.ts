@@ -19,23 +19,3 @@ export function getCampBackgroundWideUrl(): string {
 export function getCampSettingsUrl(): string {
   return '/assets/camp/upgrades/settings/tier-0.webp'
 }
-
-// ---------------------------------------------------------------------------
-// Deprecated: legacy sprite system — still used by HubScreen.svelte
-// ---------------------------------------------------------------------------
-
-/** @deprecated Use getCampUpgradeUrl instead. */
-export type CampSpriteId =
-  | 'dungeon-gate' | 'bookshelf' | 'signpost' | 'anvil'
-  | 'campfire' | 'tent' | 'character' | 'cat'
-  | 'journal' | 'quest-board' | 'treasure-chest' | 'scroll'
-
-/** @deprecated Use getCampUpgradeUrl instead. Returns the URL for a camp scene sprite by its ID. */
-export function getCampSpriteUrl(id: CampSpriteId): string {
-  return `/assets/camp/sprites/${id}/${id}-base.png`
-}
-
-/** @deprecated No-op. The tier-based system requires no async initialisation. */
-export function initCampArtManifest(): Promise<void> {
-  return Promise.resolve()
-}

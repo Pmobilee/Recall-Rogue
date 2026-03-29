@@ -84,10 +84,13 @@ export interface ScenarioConfig {
     bestCombo: number;
     cardsEarned: number;
     encountersWon: number;
+    encountersTotal: number;
     elitesDefeated: number;
     bossesDefeated: number;
     currencyEarned: number;
     relicsCollected: number;
+    defeatedEnemyIds: string[];
+    factStateSummary: { seen: number; reviewing: number; mastered: number };
   }>;
   /** Ascension level for the run. */
   ascension?: number;
@@ -258,19 +261,48 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'runEnd',
     runEndResult: 'victory',
     floor: 10,
-    runEndStats: { floorReached: 10, accuracy: 92, bestCombo: 12, encountersWon: 15, bossesDefeated: 2, currencyEarned: 500, relicsCollected: 5 },
+    runEndStats: {
+      floorReached: 10, accuracy: 92, bestCombo: 12, encountersWon: 15, bossesDefeated: 2, currencyEarned: 500, relicsCollected: 5,
+      defeatedEnemyIds: ['page_flutter', 'mold_puff', 'ink_wraith', 'page_flutter', 'thesis_construct', 'citation_sentinel', 'mold_puff', 'dialectic_knight', 'algorithm', 'page_flutter', 'thesis_construct', 'ink_wraith', 'citation_sentinel', 'dialectic_knight', 'algorithm'],
+      factStateSummary: { seen: 14, reviewing: 22, mastered: 6 },
+    },
   },
   'run-end-defeat': {
     screen: 'runEnd',
     runEndResult: 'defeat',
     floor: 4,
-    runEndStats: { floorReached: 4, accuracy: 65, bestCombo: 3, encountersWon: 5, currencyEarned: 80 },
+    runEndStats: {
+      floorReached: 4, accuracy: 65, bestCombo: 3, encountersWon: 5, currencyEarned: 80,
+      defeatedEnemyIds: ['page_flutter', 'mold_puff', 'ink_wraith', 'page_flutter', 'thesis_construct'],
+      factStateSummary: { seen: 8, reviewing: 5, mastered: 1 },
+    },
   },
   'run-end-retreat': {
     screen: 'runEnd',
     runEndResult: 'retreat',
     floor: 6,
-    runEndStats: { floorReached: 6, accuracy: 78, bestCombo: 8, encountersWon: 9, currencyEarned: 200 },
+    runEndStats: {
+      floorReached: 6, accuracy: 78, bestCombo: 8, encountersWon: 9, currencyEarned: 200,
+      defeatedEnemyIds: ['page_flutter', 'mold_puff', 'ink_wraith', 'thesis_construct', 'page_flutter', 'citation_sentinel', 'mold_puff', 'dialectic_knight', 'algorithm'],
+      factStateSummary: { seen: 10, reviewing: 14, mastered: 3 },
+    },
+  },
+  'run-end-low-grade': {
+    // 99% accuracy but only floor 3 — tests the grade explanation line
+    // "You aced what you faced — but only explored 40% of the dungeon"
+    screen: 'runEnd',
+    runEndResult: 'defeat',
+    floor: 3,
+    runEndStats: {
+      accuracy: 99,
+      correctAnswers: 41,
+      factsAnswered: 42,
+      encountersWon: 4,
+      encountersTotal: 10,
+      bestCombo: 12,
+      defeatedEnemyIds: ['page_flutter', 'mold_puff', 'ink_wraith', 'thesis_construct'],
+      factStateSummary: { seen: 8, reviewing: 22, mastered: 12 },
+    },
   },
 
   // === More combat presets ===
@@ -407,7 +439,7 @@ async function safeAction(fn: () => Promise<ScenarioResult>): Promise<ScenarioRe
 
 /** Get current screen. */
 function getScreen(): string {
-  return readStore<string>('terra:currentScreen') ?? 'unknown';
+  return readStore<string>('rr:currentScreen') ?? 'unknown';
 }
 
 // ---------------------------------------------------------------------------
@@ -520,7 +552,7 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
   const { gameFlowState } = await import('../services/gameFlowController');
   gameFlowState.set('combat');
   // Navigate to combat screen
-  writeStore('terra:currentScreen', 'combat');
+  writeStore('rr:currentScreen', 'combat');
   await wait(500);
 
   // --- Post-launch overrides ---
@@ -725,7 +757,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       (heal: number) => console.log('[Scenario] Vial collected:', heal),
       (card: any) => console.log('[Scenario] Card accepted:', card.mechanicName),
       (relic: any) => console.log('[Scenario] Relic accepted:', relic.name),
-      () => { console.log('[Scenario] Reward room complete'); writeStore('terra:currentScreen', 'hub'); },
+      () => { console.log('[Scenario] Reward room complete'); writeStore('rr:currentScreen', 'hub'); },
     );
     return { ok: true, message: `Reward room with ${rewards.length} items`, state: { rewards } };
   }
@@ -777,7 +809,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     }
 
     activeShopInventory.set(inventory);
-    writeStore('terra:currentScreen', 'shopRoom');
+    writeStore('rr:currentScreen', 'shopRoom');
     await wait(300);
     return { ok: true, message: `Shop opened with ${inventory.relics.length} relics, ${inventory.cards.length} cards` };
   }
@@ -802,7 +834,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     }
 
     activeMysteryEvent.set(event);
-    writeStore('terra:currentScreen', 'mysteryEvent');
+    writeStore('rr:currentScreen', 'mysteryEvent');
     await wait(300);
     return { ok: true, message: `Mystery event: ${event.name} (${event.id})` };
   }
@@ -816,7 +848,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     const { rollSpecialEvent } = await import('../data/specialEvents');
     const event = rollSpecialEvent();
     activeSpecialEvent.set(event);
-    writeStore('terra:currentScreen', 'specialEvent');
+    writeStore('rr:currentScreen', 'specialEvent');
     await wait(300);
     return { ok: true, message: `Special event: ${event.name} (${event.id})` };
   }
@@ -880,7 +912,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     }
 
     activeUpgradeCandidates.set(candidates);
-    writeStore('terra:currentScreen', 'upgradeSelection');
+    writeStore('rr:currentScreen', 'upgradeSelection');
     await wait(300);
     return { ok: true, message: `Upgrade selection opened with ${candidates.length} candidate(s)` };
   }
@@ -912,7 +944,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       activeCardRewardOptions.set(cards as any);
     }
 
-    writeStore('terra:currentScreen', 'cardReward');
+    writeStore('rr:currentScreen', 'cardReward');
     await wait(300);
     return { ok: true, message: 'Card reward screen opened' };
   }
@@ -944,12 +976,14 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       rewardMultiplier: 1.5,
       currencyEarned: 250,
       relicsCollected: 3,
+      defeatedEnemyIds: ['page_flutter', 'mold_puff', 'ink_wraith', 'thesis_construct', 'citation_sentinel', 'dialectic_knight', 'algorithm', 'page_flutter'],
+      factStateSummary: { seen: 12, reviewing: 18, mastered: 5 },
       isPracticeRun: false,
     };
 
     const endData = { ...defaults, ...(config.runEndStats ?? {}) };
     activeRunEndData.set(endData as any);
-    writeStore('terra:currentScreen', 'runEnd');
+    writeStore('rr:currentScreen', 'runEnd');
     await wait(300);
     return { ok: true, message: `Run end screen: ${endData.result}` };
   }
@@ -959,7 +993,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // -----------------------------------------------------------------------
   if (screen === 'retreatOrDelve') {
     await bootstrapRun(config);
-    writeStore('terra:currentScreen', 'retreatOrDelve');
+    writeStore('rr:currentScreen', 'retreatOrDelve');
     await wait(300);
     return { ok: true, message: `Retreat/Delve on floor ${config.floor ?? 1}` };
   }
@@ -1000,7 +1034,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       activeUpgradeCandidates.set(candidates);
     }
 
-    writeStore('terra:currentScreen', screen);
+    writeStore('rr:currentScreen', screen);
     await wait(300);
     return { ok: true, message: `Rest room opened on floor ${config.floor ?? 1}` };
   }
@@ -1010,7 +1044,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // -----------------------------------------------------------------------
   if (screen === 'dungeonMap') {
     await bootstrapRun(config);
-    writeStore('terra:currentScreen', 'dungeonMap');
+    writeStore('rr:currentScreen', 'dungeonMap');
     await wait(300);
     return { ok: true, message: `Dungeon map on floor ${config.floor ?? 1}` };
   }
@@ -1019,7 +1053,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // onboarding
   // -----------------------------------------------------------------------
   if (screen === 'onboarding') {
-    writeStore('terra:currentScreen', 'onboarding');
+    writeStore('rr:currentScreen', 'onboarding');
     await wait(300);
     return { ok: true, message: 'Onboarding cutscene opened' };
   }
@@ -1028,7 +1062,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // archetypeSelection
   // -----------------------------------------------------------------------
   if (screen === 'archetypeSelection') {
-    writeStore('terra:currentScreen', 'archetypeSelection');
+    writeStore('rr:currentScreen', 'archetypeSelection');
     await wait(300);
     return { ok: true, message: 'Archetype selection screen opened' };
   }
@@ -1037,7 +1071,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // relicSanctum
   // -----------------------------------------------------------------------
   if (screen === 'relicSanctum') {
-    writeStore('terra:currentScreen', 'relicSanctum');
+    writeStore('rr:currentScreen', 'relicSanctum');
     await wait(300);
     return { ok: true, message: 'Relic sanctum opened' };
   }
@@ -1046,7 +1080,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // library, profile, journal, settings
   // -----------------------------------------------------------------------
   if (['library', 'profile', 'journal', 'settings'].includes(screen)) {
-    writeStore('terra:currentScreen', screen);
+    writeStore('rr:currentScreen', screen);
     await wait(300);
     return { ok: true, message: `${screen} screen opened` };
   }
@@ -1074,7 +1108,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     };
     activeMasteryChallenge.set(challenge as any);
     gameFlowState.set('masteryChallenge' as any);
-    writeStore('terra:currentScreen', 'masteryChallenge');
+    writeStore('rr:currentScreen', 'masteryChallenge');
     await wait(300);
     return { ok: true, message: 'Mastery challenge screen opened' };
   }
@@ -1099,7 +1133,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     (globalThis as any)[sym] = questions;
 
     gameFlowState.set('restStudy' as any);
-    writeStore('terra:currentScreen', 'restStudy');
+    writeStore('rr:currentScreen', 'restStudy');
     await wait(300);
 
     return { ok: true, message: `Study quiz opened with ${questions.length} questions` };
@@ -1112,7 +1146,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     await bootstrapRun(config);
   }
 
-  writeStore('terra:currentScreen', screen);
+  writeStore('rr:currentScreen', screen);
   await wait(300);
 
   return {
@@ -1128,10 +1162,10 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
 
 /** Set player HP in the active turn state. */
 function setPlayerHp(hp: number, maxHp?: number): ScenarioResult {
-  const ts = readStore<any>('terra:activeTurnState');
+  const ts = readStore<any>('rr:activeTurnState');
   if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
 
-  updateStore<any>('terra:activeTurnState', (s) => {
+  updateStore<any>('rr:activeTurnState', (s) => {
     if (!s) return s;
     return {
       ...s,
@@ -1144,7 +1178,7 @@ function setPlayerHp(hp: number, maxHp?: number): ScenarioResult {
   });
 
   // Also sync run state
-  updateStore<any>('terra:activeRunState', (r) => {
+  updateStore<any>('rr:activeRunState', (r) => {
     if (!r) return r;
     return { ...r, playerHp: Math.max(1, hp), ...(maxHp !== undefined ? { playerMaxHp: maxHp } : {}) };
   });
@@ -1154,11 +1188,11 @@ function setPlayerHp(hp: number, maxHp?: number): ScenarioResult {
 
 /** Set enemy HP in the active turn state. */
 function setEnemyHp(hp: number): ScenarioResult {
-  const ts = readStore<any>('terra:activeTurnState');
+  const ts = readStore<any>('rr:activeTurnState');
   if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
   if (!ts.enemy) return { ok: false, message: 'No enemy in current turn state' };
 
-  updateStore<any>('terra:activeTurnState', (s) => {
+  updateStore<any>('rr:activeTurnState', (s) => {
     if (!s || !s.enemy) return s;
     return {
       ...s,
@@ -1175,7 +1209,7 @@ function setEnemyHp(hp: number): ScenarioResult {
 
 /** Set gold in the active run state. */
 function setGold(amount: number): ScenarioResult {
-  updateStore<any>('terra:activeRunState', (r) => {
+  updateStore<any>('rr:activeRunState', (r) => {
     if (!r) return r;
     return { ...r, currency: Math.max(0, amount) };
   });
@@ -1184,7 +1218,7 @@ function setGold(amount: number): ScenarioResult {
 
 /** Set floor in the active run state. */
 function setFloor(floor: number): ScenarioResult {
-  updateStore<any>('terra:activeRunState', (r) => {
+  updateStore<any>('rr:activeRunState', (r) => {
     if (!r) return r;
     return {
       ...r,
@@ -1199,11 +1233,11 @@ function setFloor(floor: number): ScenarioResult {
 
 /** Replace the current hand with cards for the given mechanic IDs. */
 function forceHand(mechanicIds: string[]): ScenarioResult {
-  const ts = readStore<any>('terra:activeTurnState');
+  const ts = readStore<any>('rr:activeTurnState');
   if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
 
   const newHand = buildHandFromMechanicIds(mechanicIds, ts.deck?.hand ?? []);
-  updateStore<any>('terra:activeTurnState', (s) => {
+  updateStore<any>('rr:activeTurnState', (s) => {
     if (!s) return s;
     return { ...s, deck: { ...s.deck, hand: newHand } };
   });
@@ -1219,14 +1253,14 @@ function addRelic(relicId: string): ScenarioResult {
     return { ok: false, message: `Unknown relic ID: '${relicId}'. Sample valid IDs: ${valid} ...` };
   }
 
-  const run = readStore<any>('terra:activeRunState');
+  const run = readStore<any>('rr:activeRunState');
   if (!run) return { ok: false, message: 'No active run state — start a run first' };
 
   if (run.runRelics.some((r: any) => r.definitionId === relicId)) {
     return { ok: false, message: `Relic '${relicId}' is already equipped` };
   }
 
-  updateStore<any>('terra:activeRunState', (r) => {
+  updateStore<any>('rr:activeRunState', (r) => {
     if (!r) return r;
     return {
       ...r,
@@ -1238,7 +1272,7 @@ function addRelic(relicId: string): ScenarioResult {
   });
 
   // Also sync relic IDs into turn state so relic effects resolve correctly
-  updateStore<any>('terra:activeTurnState', (s) => {
+  updateStore<any>('rr:activeTurnState', (s) => {
     if (!s) return s;
     const newIds = new Set(s.activeRelicIds);
     newIds.add(relicId);
@@ -1250,10 +1284,10 @@ function addRelic(relicId: string): ScenarioResult {
 
 /** Remove a relic from the active run. */
 function removeRelic(relicId: string): ScenarioResult {
-  const run = readStore<any>('terra:activeRunState');
+  const run = readStore<any>('rr:activeRunState');
   if (!run) return { ok: false, message: 'No active run state — start a run first' };
 
-  updateStore<any>('terra:activeRunState', (r) => {
+  updateStore<any>('rr:activeRunState', (r) => {
     if (!r) return r;
     return {
       ...r,
@@ -1261,7 +1295,7 @@ function removeRelic(relicId: string): ScenarioResult {
     };
   });
 
-  updateStore<any>('terra:activeTurnState', (s) => {
+  updateStore<any>('rr:activeTurnState', (s) => {
     if (!s) return s;
     const newIds = new Set(s.activeRelicIds);
     newIds.delete(relicId);
@@ -1273,9 +1307,9 @@ function removeRelic(relicId: string): ScenarioResult {
 
 /** Set player block in active combat. */
 function setPlayerBlock(block: number): ScenarioResult {
-  const ts = readStore<any>('terra:activeTurnState');
+  const ts = readStore<any>('rr:activeTurnState');
   if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
-  updateStore<any>('terra:activeTurnState', (s) => {
+  updateStore<any>('rr:activeTurnState', (s) => {
     if (!s) return s;
     return { ...s, playerState: { ...s.playerState, block } };
   });
@@ -1284,10 +1318,10 @@ function setPlayerBlock(block: number): ScenarioResult {
 
 /** Set enemy block in active combat. */
 function setEnemyBlock(block: number): ScenarioResult {
-  const ts = readStore<any>('terra:activeTurnState');
+  const ts = readStore<any>('rr:activeTurnState');
   if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
   if (!ts.enemy) return { ok: false, message: 'No enemy in current turn state' };
-  updateStore<any>('terra:activeTurnState', (s) => {
+  updateStore<any>('rr:activeTurnState', (s) => {
     if (!s?.enemy) return s;
     return { ...s, enemy: { ...s.enemy, block } };
   });

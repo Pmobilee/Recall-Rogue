@@ -1,13 +1,14 @@
 <script lang="ts">
   import { isLandscape } from '../../stores/layoutStore'
+  import { getGreyMatterIconPath } from '../utils/iconAssets'
 
   interface Props {
     streak: number
-    dustBalance: number
+    greyMatterBalance: number
     hasActiveRunBanner?: boolean
   }
 
-  let { streak, dustBalance, hasActiveRunBanner = false }: Props = $props()
+  let { streak, greyMatterBalance, hasActiveRunBanner = false }: Props = $props()
 </script>
 
 <!-- In landscape, this component is rendered inside .hub-center (position: relative),
@@ -18,9 +19,9 @@
     <span class="hud-icon">&#x1F525;</span>
     <span class="hud-value">{streak}</span>
   </div>
-  <div class="hud-pill hud-right" aria-label="Dust">
-    <span class="hud-icon">✦</span>
-    <span class="hud-value">{dustBalance}</span>
+  <div class="hud-pill hud-right" aria-label="Grey Matter">
+    <img class="hud-icon-img" src={getGreyMatterIconPath()} alt="" aria-hidden="true" />
+    <span class="hud-value">{greyMatterBalance}</span>
   </div>
 </div>
 
@@ -59,6 +60,17 @@
   .hud-icon {
     font-size: calc(14px * var(--text-scale, 1));
     line-height: 1;
+  }
+
+  .hud-icon-img {
+    width: calc(16px * var(--layout-scale, 1));
+    height: calc(16px * var(--layout-scale, 1));
+    object-fit: contain;
+  }
+
+  .hud-overlay.landscape .hud-icon-img {
+    width: calc(22px * var(--layout-scale, 1));
+    height: calc(22px * var(--layout-scale, 1));
   }
 
   .hud-value {

@@ -2,7 +2,6 @@ import { BALANCE } from '../data/balance'
 import { generateUUID } from '../utils/uuid'
 import type {
   AgeRating,
-  MineralTier,
   PlayerSave,
   PlayerStats,
   ReviewState,
@@ -30,12 +29,8 @@ function getActiveSaveKey(): string {
   return profileService.getSaveKey()
 }
 
-const EMPTY_MINERALS: Record<MineralTier, number> = {
-  dust: 0,
-  shard: 0,
-  crystal: 0,
-  geode: 0,
-  essence: 0,
+const EMPTY_MINERALS = {
+  greyMatter: 0,
 }
 
 const EMPTY_STATS: PlayerStats = {
@@ -74,19 +69,17 @@ export function load(): PlayerSave | null {
     const parsed = JSON.parse(raw) as PlayerSave & {
       minerals: Record<string, number>
     }
-    // Backward compatibility: migrate old tier names to new ones (geode/essence)
+    // Backward compatibility: collapse all legacy mineral tiers into greyMatter
     if (parsed.minerals) {
-      if ('coreFragment' in parsed.minerals) {
-        parsed.minerals.geode = (parsed.minerals.geode ?? 0) + (parsed.minerals.coreFragment ?? 0)
-        delete parsed.minerals.coreFragment
+      let total = parsed.minerals.greyMatter ?? 0
+      // Legacy tier conversions (approx GM equivalents)
+      for (const [key, mult] of [['shard', 25], ['crystal', 100], ['geode', 500], ['essence', 2000], ['coreFragment', 500], ['primordialEssence', 2000]] as const) {
+        if (key in parsed.minerals) {
+          total += (parsed.minerals[key] ?? 0) * mult
+          delete parsed.minerals[key]
+        }
       }
-      if ('primordialEssence' in parsed.minerals) {
-        parsed.minerals.essence = (parsed.minerals.essence ?? 0) + (parsed.minerals.primordialEssence ?? 0)
-        delete parsed.minerals.primordialEssence
-      }
-      // Ensure new fields exist with defaults
-      parsed.minerals.geode = parsed.minerals.geode ?? 0
-      parsed.minerals.essence = parsed.minerals.essence ?? 0
+      parsed.minerals.greyMatter = total
     }
     // Backward compatibility: ensure crafting fields exist
     const parsedAny = parsed as unknown as Record<string, unknown>

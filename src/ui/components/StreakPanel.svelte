@@ -28,7 +28,7 @@
   const claimedMilestones = $derived(save?.claimedMilestones ?? [])
   const titles = $derived(save?.titles ?? [])
   const activeTitle = $derived(save?.activeTitle ?? null)
-  const dust = $derived(save?.minerals.dust ?? 0)
+  const greyMatter = $derived(save?.minerals.greyMatter ?? 0)
 
   const freezeCost = 200 // legacy mining cost
   const maxFreezes = 3 // STREAK_FREEZE_MAX was 3;
@@ -220,11 +220,11 @@
       <button
         class="freeze-btn buy-freeze-btn"
         type="button"
-        disabled={streakFreezes >= maxFreezes || dust < freezeCost}
+        disabled={streakFreezes >= maxFreezes || greyMatter < freezeCost}
         onclick={handleBuyFreeze}
-        aria-label="Buy freeze for {freezeCost} dust"
+        aria-label="Buy freeze for {freezeCost} grey matter"
       >
-        Buy Freeze ({freezeCost} dust)
+        Buy Freeze ({freezeCost} grey matter)
       </button>
     </div>
 
@@ -237,7 +237,7 @@
         You have {streakFreezes} freeze{streakFreezes > 1 ? 's' : ''} ready to use.
       </p>
     {:else}
-      <p class="freeze-note dim">No freezes available. Buy one for {freezeCost} dust.</p>
+      <p class="freeze-note dim">No freezes available. Buy one for {freezeCost} grey matter.</p>
     {/if}
   </div>
 

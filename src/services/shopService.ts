@@ -17,6 +17,9 @@ import {
   SHOP_FOOD_ITEMS,
   SHOP_REMOVAL_BASE_PRICE,
   SHOP_REMOVAL_PRICE_INCREMENT,
+  SHOP_SALE_DISCOUNT,
+  SHOP_TRANSFORM_BASE_PRICE,
+  SHOP_TRANSFORM_PRICE_INCREMENT,
 } from '../data/balance';
 
 /** A purchasable relic in the shop. */
@@ -44,6 +47,10 @@ export interface ShopInventory {
   cards: ShopCardItem[];
   /** Price for card removal service this visit (escalates per removal in run). */
   removalCost?: number;
+  /** Index into `cards` of the sale card this visit (50% off). Undefined if no cards. */
+  saleCardIndex?: number;
+  /** Price for card transformation service this visit (escalates per transform in run). */
+  transformCost?: number;
 }
 
 /** Rarity weights for shop relic selection. */
@@ -156,6 +163,33 @@ export function priceShopCards(cards: Card[], floor: number): ShopCardItem[] {
 }
 
 /**
+ * Returns the sale price for a card: 50% off, rounded down.
+ *
+ * Applied after any floor discount. The haggle system can stack on top multiplicatively.
+ *
+ * @param originalPrice - The already floor-discounted price.
+ * @returns The halved price (floor division).
+ */
+export function getSalePrice(originalPrice: number): number {
+  return Math.floor(originalPrice * SHOP_SALE_DISCOUNT);
+}
+
+/**
+ * Applies a 50% sale discount to the card at `saleIndex` in-place.
+ * Returns the mutated array for convenience.
+ *
+ * @param cards - Array of priced shop cards.
+ * @param saleIndex - Index of the card receiving the discount.
+ * @returns The same array with the sale card's price halved.
+ */
+export function applySaleDiscount(cards: ShopCardItem[], saleIndex: number): ShopCardItem[] {
+  if (saleIndex >= 0 && saleIndex < cards.length) {
+    cards[saleIndex].price = getSalePrice(cards[saleIndex].price);
+  }
+  return cards;
+}
+
+/**
  * Calculates the card removal service price for a given removal count.
  * Base price is 50g; each subsequent removal in the same run costs +25g more.
  *
@@ -164,6 +198,17 @@ export function priceShopCards(cards: Card[], floor: number): ShopCardItem[] {
  */
 export function removalPrice(cardsRemovedCount: number): number {
   return SHOP_REMOVAL_BASE_PRICE + cardsRemovedCount * SHOP_REMOVAL_PRICE_INCREMENT;
+}
+
+/**
+ * Calculates the card transformation service price for a given transform count.
+ * Base price is 35g; each subsequent use in the same run costs +25g more.
+ *
+ * @param transformsUsed - Number of cards already transformed this run.
+ * @returns Gold cost for the next transformation.
+ */
+export function transformPrice(transformsUsed: number): number {
+  return SHOP_TRANSFORM_BASE_PRICE + transformsUsed * SHOP_TRANSFORM_PRICE_INCREMENT;
 }
 
 /**

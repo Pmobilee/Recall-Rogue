@@ -13,7 +13,7 @@ function makeMinimalSave(overrides: Partial<PlayerSave> = {}): PlayerSave {
     createdAt: 0,
     lastPlayedAt: 0,
     oxygen: 3,
-    minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0, flame: 0 },
+    minerals: { greyMatter: 0 },
     learnedFacts: [],
     reviewStates: [],
     soldFacts: [],

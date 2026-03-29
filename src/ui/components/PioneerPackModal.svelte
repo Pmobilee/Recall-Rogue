@@ -51,7 +51,7 @@
         return {
           ...s,
           hasPioneerPack: true,
-          minerals: { ...s.minerals, dust: (s.minerals.dust ?? 0) + 500 },
+          minerals: { ...s.minerals, greyMatter: (s.minerals.greyMatter ?? 0) + 500 },
           tankBank: (extra.tankBank ?? 0) + 3,
           purchasedProducts: [...(extra.purchasedProducts ?? []), 'com.terragacha.pioneerpack'],
           ownedCosmetics: [...s.ownedCosmetics, 'pioneer_pickaxe'],
@@ -87,7 +87,7 @@
       <div class="pioneer-items">
         <div class="item">
           <span class="item-icon">💎</span>
-          <span class="item-text">500 Dust</span>
+          <span class="item-text">500 Grey Matter</span>
         </div>
         <div class="item">
           <span class="item-icon">🏆</span>

@@ -28,7 +28,7 @@
     challengerId: string
     opponentId: string
     status: 'pending' | 'active' | 'awaiting_results' | 'completed' | 'declined'
-    wagerDust: number
+    wagerGreyMatter: number
     createdAt: number
     resolvedAt?: number | null
     challengerResult?: ApiDuelResult | null
@@ -91,9 +91,9 @@
     return Math.round((duelStats.wins / duelStats.totalDuels) * 100)
   })
 
-  const netDust = $derived.by(() => {
+  const netGreyMatter = $derived.by(() => {
     if (!duelStats) return 0
-    return duelStats.totalDustWon - duelStats.totalDustLost
+    return duelStats.totalGreyMatterWon - duelStats.totalGreyMatterLost
   })
 
   // ============================================================
@@ -252,7 +252,7 @@
       opponentId,
       opponentName: `Rogue-${opponentId.slice(0, 6)}`,
       status,
-      wagerDust: duel.wagerDust,
+      wagerGreyMatter: duel.wagerGreyMatter,
       myScore,
       opponentScore,
       createdAt: duel.createdAt,
@@ -271,8 +271,8 @@
 
   function dustDelta(duel: DuelRecord): number {
     const result = duelResult(duel)
-    if (result === 'win') return duel.wagerDust
-    if (result === 'loss') return -duel.wagerDust
+    if (result === 'win') return duel.wagerGreyMatter
+    if (result === 'loss') return -duel.wagerGreyMatter
     return 0
   }
 
@@ -372,9 +372,9 @@
             </div>
 
             <!-- Wager slider -->
-            <div class="field-group" aria-label="Dust wager">
+            <div class="field-group" aria-label="Grey matter wager">
               <label class="field-label" for="wager-slider">
-                Wager: <span class="wager-value">{wager} dust</span>
+                Wager: <span class="wager-value">{wager} grey matter</span>
               </label>
               <input
                 id="wager-slider"
@@ -384,7 +384,7 @@
                 max="50"
                 step="5"
                 bind:value={wager}
-                aria-label="Wager amount in dust, 0 to 50"
+                aria-label="Wager amount in grey matter, 0 to 50"
               />
               <div class="wager-labels" aria-hidden="true">
                 <span>0</span>
@@ -442,8 +442,8 @@
                     <span class="duel-opponent">⚔️ {duel.opponentName}</span>
                     <span class="duel-status-badge">{statusLabel(duel)}</span>
                   </div>
-                  {#if duel.wagerDust > 0}
-                    <p class="duel-wager">💎 Wager: {duel.wagerDust} dust</p>
+                  {#if duel.wagerGreyMatter > 0}
+                    <p class="duel-wager">💎 Wager: {duel.wagerGreyMatter} grey matter</p>
                   {/if}
                   <p class="duel-expires">Expires {formatDate(duel.expiresAt)}</p>
                   <div class="duel-card-actions">
@@ -521,11 +521,11 @@
                   </div>
                   <div class="duel-history-right">
                     <span class="duel-history-date">{formatDate(duel.createdAt)}</span>
-                    {#if duel.wagerDust > 0}
+                    {#if duel.wagerGreyMatter > 0}
                       <span
                         class="duel-history-dust"
-                        class:dust-positive={delta > 0}
-                        class:dust-negative={delta < 0}
+                        class:gm-positive={delta > 0}
+                        class:gm-negative={delta < 0}
                       >
                         {delta >= 0 ? '+' : ''}{delta} 💎
                       </span>
@@ -579,21 +579,21 @@
                 <span class="stat-row-value">{duelStats.longestWinStreak}🔥</span>
               </div>
               <div class="stat-row">
-                <span class="stat-row-label">Total Dust Won</span>
-                <span class="stat-row-value dust-positive">+{duelStats.totalDustWon} 💎</span>
+                <span class="stat-row-label">Total Grey Matter Won</span>
+                <span class="stat-row-value gm-positive">+{duelStats.totalGreyMatterWon} 💎</span>
               </div>
               <div class="stat-row">
-                <span class="stat-row-label">Total Dust Lost</span>
-                <span class="stat-row-value dust-negative">-{duelStats.totalDustLost} 💎</span>
+                <span class="stat-row-label">Total Grey Matter Lost</span>
+                <span class="stat-row-value gm-negative">-{duelStats.totalGreyMatterLost} 💎</span>
               </div>
               <div class="stat-row stat-row-net">
-                <span class="stat-row-label">Net Dust</span>
+                <span class="stat-row-label">Net Grey Matter</span>
                 <span
                   class="stat-row-value"
-                  class:dust-positive={netDust >= 0}
-                  class:dust-negative={netDust < 0}
+                  class:gm-positive={netGreyMatter >= 0}
+                  class:gm-negative={netGreyMatter < 0}
                 >
-                  {netDust >= 0 ? '+' : ''}{netDust} 💎
+                  {netGreyMatter >= 0 ? '+' : ''}{netGreyMatter} 💎
                 </span>
               </div>
             </div>
@@ -1184,9 +1184,9 @@
     color: #e2e8f0;
   }
 
-  /* ---- Dust colors ---- */
-  .dust-positive { color: #4ade80; }
-  .dust-negative { color: #f87171; }
+  /* ---- Grey matter colors ---- */
+  .gm-positive { color: #4ade80; }
+  .gm-negative { color: #f87171; }
 
   /* ---- Responsive ---- */
   @media (max-width: 520px) {

@@ -20,9 +20,43 @@
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
-  import { getSynergyLabel } from '../../data/synergies'
+  import { getSynergyLabel, findSynergies } from '../../data/synergies'
   import { getActiveDeckCards } from '../../services/encounterBridge'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
+  import { getShopkeeperBark, type ShopBarkTrigger } from '../../data/shopkeeperBarks'
+  import { fade } from 'svelte/transition'
+
+  function getEffectLabel(card: Card): string {
+    const base = Math.round(card.baseEffectValue * card.effectMultiplier)
+    const masteryBonus = card.mechanicId ? getMasteryBaseBonus(card.mechanicId, card.masteryLevel ?? 0) : 0
+    const total = base + masteryBonus
+
+    switch (card.cardType) {
+      case 'attack': return `${total} dmg`
+      case 'shield': return `${total} shield`
+      case 'buff': return `${total}% buff`
+      case 'debuff': return `${total} turns`
+      case 'utility': return total > 0 ? `Draw ${total}` : 'Utility'
+      case 'wild': return 'Wildcard'
+      default: return `${total}`
+    }
+  }
+
+  function getMasteryIconFilter(level: number): string {
+    switch (level) {
+      case 1: return 'none' // green (default)
+      case 2: return 'hue-rotate(100deg)' // blue
+      case 3: return 'hue-rotate(200deg)' // purple
+      case 4: return 'hue-rotate(-40deg)' // orange
+      case 5: return 'hue-rotate(60deg) saturate(2)' // gold
+      default: return 'none'
+    }
+  }
+
+  function getMasteryBonusValue(card: Card): number {
+    return card.mechanicId ? getMasteryBaseBonus(card.mechanicId, card.masteryLevel ?? 0) : 0
+  }
 
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
@@ -38,6 +72,7 @@
     relics: ShopRelicItem[]
     cards: ShopCardItem[]
     removalCost?: number
+    saleCardIndex?: number
   }
 
   type PendingPurchase =
@@ -95,6 +130,93 @@
   let quizResult = $state<'correct' | 'wrong' | null>(null)
   let quizSelectedAnswer = $state<string | null>(null)
 
+  // === Purchase animation state ===
+  let purchasedItemId = $state<string | null>(null)
+
+  // === Entrance stagger animation (P3-B) ===
+  let entranceComplete = $state(false)
+  $effect(() => {
+    const timer = setTimeout(() => { entranceComplete = true }, 2200)
+    return () => clearTimeout(timer)
+  })
+
+  // === Sell animation (P3-C) ===
+  let sellingCardId = $state<string | null>(null)
+
+  function handleSell(cardId: string) {
+    sellingCardId = cardId
+    playCardAudio('shop-sell')
+    showBark('sell')
+    setTimeout(() => {
+      onsell(cardId)
+      sellingCardId = null
+    }, 600)
+  }
+
+  // === Gold counter animation (P3-E) ===
+  let goldFlash = $state<'gain' | 'loss' | null>(null)
+  let previousCurrency = $state(currency)
+
+  $effect(() => {
+    if (currency !== previousCurrency) {
+      goldFlash = currency > previousCurrency ? 'gain' : 'loss'
+      previousCurrency = currency
+      setTimeout(() => { goldFlash = null }, 400)
+    }
+  })
+
+  // === Synergy cross-highlighting (P3-A) ===
+  let highlightedMechanics = $state<Set<string>>(new Set())
+
+  function onCardHover(card: Card) {
+    if (!card.mechanicId) return
+    const synergies = findSynergies(card.mechanicId, cards.map(c => c.mechanicId).filter((id): id is string => !!id))
+    highlightedMechanics = new Set(synergies)
+  }
+
+  function onCardLeave() {
+    highlightedMechanics = new Set()
+  }
+
+  // === Removal burn animation (P2-D) ===
+  let burningCardId = $state<string | null>(null)
+
+  // === Shopkeeper bark state ===
+  let currentBark = $state<string | null>(null)
+  let barkTimer: ReturnType<typeof setTimeout> | null = null
+
+  function showBark(trigger: ShopBarkTrigger) {
+    if (barkTimer) clearTimeout(barkTimer)
+    currentBark = getShopkeeperBark(trigger)
+    barkTimer = setTimeout(() => { currentBark = null }, 3000)
+  }
+
+  // === Affordability shake + tooltip state ===
+  let shakeItemId = $state<string | null>(null)
+  let needMoreGold = $state<{ amount: number; x: number; y: number } | null>(null)
+
+  function handleUnaffordableTap(price: number, itemId: string, event: MouseEvent) {
+    const need = price - currency
+    shakeItemId = itemId
+    needMoreGold = { amount: need, x: event.clientX, y: event.clientY + 30 }
+    setTimeout(() => { shakeItemId = null; needMoreGold = null }, 2000)
+  }
+
+  // === Relic tooltip state ===
+  let relicTooltip = $state<{ relic: ShopRelicItem['relic']; x: number; y: number } | null>(null)
+  let relicTooltipTimer: ReturnType<typeof setTimeout> | null = null
+
+  function showRelicTooltip(relic: ShopRelicItem['relic'], event: MouseEvent) {
+    if (relicTooltipTimer) clearTimeout(relicTooltipTimer)
+    relicTooltip = { relic, x: event.clientX, y: event.clientY }
+    relicTooltipTimer = setTimeout(() => { relicTooltip = null }, 3000)
+  }
+
+  function dismissRelicTooltip() {
+    if (relicTooltipTimer) clearTimeout(relicTooltipTimer)
+    relicTooltip = null
+  }
+
   // === Removal picker state ===
   let showRemovalPicker = $state(false)
   let pendingRemovalHaggled = $state(false)
@@ -103,6 +225,34 @@
   let removableCards = $derived(getActiveDeckCards())
   /** Whether deck is large enough to remove a card (must keep > 5) */
   let canRemoveCard = $derived(removableCards.length > 5)
+
+  let deckCount = $derived(getActiveDeckCards().length)
+
+  // Get floor from run state
+  let floor = $derived.by(() => {
+    const run = get(activeRunState)
+    return run?.floor?.currentFloor ?? 1
+  })
+
+  function handleLeaveShop() {
+    // If player has gold and at least one item is affordable, confirm
+    const hasAffordableItem = shopInventory && (
+      shopInventory.relics.some(r => currency >= r.price) ||
+      shopInventory.cards.some(c => currency >= c.price) ||
+      (shopInventory.removalCost != null && currency >= shopInventory.removalCost)
+    )
+    if (hasAffordableItem && currency > 0) {
+      if (confirm('Leave without buying?')) {
+        showBark('leave_with_gold')
+        playCardAudio('shop-close')
+        ondone()
+      }
+    } else {
+      showBark(currency <= 0 ? 'leave_broke' : 'leave_bought')
+      playCardAudio('shop-close')
+      ondone()
+    }
+  }
 
   /** Mechanic IDs present in the full active deck, for synergy detection. */
   let deckMechanics = $derived(
@@ -125,9 +275,9 @@
   })
 
   function sellPrice(card: Card): number {
-    if (card.tier === '3') return 3
-    if (card.tier === '2a' || card.tier === '2b') return 2
-    return 1
+    if (card.tier === '3') return 28
+    if (card.tier === '2a' || card.tier === '2b') return 16
+    return 10
   }
 
   function tierLabel(card: Card): string {
@@ -160,6 +310,13 @@
       playCardAudio('shop-insufficient')
       return
     }
+    // Set purchase animation target
+    if (pendingPurchase.type === 'relic') {
+      purchasedItemId = pendingPurchase.relicId
+    } else if (pendingPurchase.type === 'card') {
+      purchasedItemId = `card-${pendingPurchase.cardIndex}`
+    }
+    setTimeout(() => { purchasedItemId = null }, 1200)
     playCardAudio('shop-purchase')
     if (pendingPurchase.type === 'relic') {
       onbuyRelic(pendingPurchase.relicId, haggled)
@@ -168,6 +325,7 @@
     } else if (pendingPurchase.type === 'removal') {
       onbuyRemoval(pendingPurchase.cardId, haggled)
     }
+    showBark('purchase')
     closePurchaseModal()
   }
 
@@ -274,8 +432,14 @@
   }
 
   function pickCardForRemoval(cardId: string) {
-    onbuyRemoval(cardId, pendingRemovalHaggled)
-    showRemovalPicker = false
+    burningCardId = cardId
+    playCardAudio('shop-removal-burn')
+    showBark('confirm_removal')
+    setTimeout(() => {
+      onbuyRemoval(cardId, pendingRemovalHaggled)
+      showRemovalPicker = false
+      burningCardId = null
+    }, 800)
   }
 
   let modalAffordable = $derived(
@@ -287,30 +451,52 @@
 
   $effect(() => {
     playCardAudio('shop-open')
+    showBark('enter_shop')
   })
 </script>
 
-<section class="shop-overlay" class:landscape={$isLandscape} aria-label="Shop room">
+<section class="shop-overlay" class:landscape={$isLandscape} aria-label="Shop room" onclick={() => { entranceComplete = true }}>
   <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
-  <div class="shop-header">
-    <h1>Shop Room</h1>
-    <div class="gold">Gold: {currency}</div>
+  <div class="shop-hud">
+    <button type="button" class="hud-back" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
+    <div class="hud-gold">
+      <span class="gold-icon">🪙</span>
+      <span class="gold-amount" class:gold-gain={goldFlash === 'gain'} class:gold-loss={goldFlash === 'loss'}>{currency}g</span>
+    </div>
+    <span class="hud-info">Shop · Floor {floor}</span>
+    <span class="hud-deck">Deck: {deckCount} cards</span>
   </div>
 
-  {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
-    <div class="section-header">Buy</div>
+  {#if currentBark}
+    <div class="shopkeeper-bark" transition:fade={{ duration: 200 }}>
+      <span class="bark-icon">🧙</span>
+      <span class="bark-text">{currentBark}</span>
+    </div>
+  {/if}
 
+  {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
     {#if shopInventory.relics.length > 0}
-      <div class="subsection-label">Relics</div>
-      <div class="card-list">
+      <div class="section-label">RELICS</div>
+      <div class="card-list" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 700ms">
         {#each shopInventory.relics as item (item.relic.id)}
           {@const canAfford = currency >= item.price}
-          <article class="card-item relic-item" style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}40">
+          <article
+            class="card-item relic-item"
+            class:unaffordable={!canAfford}
+            class:shake={shakeItemId === item.relic.id}
+            class:purchased={purchasedItemId === item.relic.id}
+            style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}40"
+            onmouseenter={(e) => showRelicTooltip(item.relic, e)}
+            onmouseleave={dismissRelicTooltip}
+            onclick={(e) => !canAfford && handleUnaffordableTap(item.price, item.relic.id, e)}
+          >
             <div class="meta">
               <span class="icon">{item.relic.icon}</span>
               <div class="text">
                 <div class="name" style="color: {RARITY_COLORS[item.relic.rarity] ?? '#e6edf3'}">{item.relic.name}</div>
-                <div class="sub">{item.relic.description}</div>
+                <span class="rarity-pill" style="background: {RARITY_COLORS[item.relic.rarity]}20; color: {RARITY_COLORS[item.relic.rarity]}; border: 1px solid {RARITY_COLORS[item.relic.rarity]}40;">
+                  {item.relic.rarity}
+                </span>
               </div>
             </div>
             <button
@@ -320,7 +506,7 @@
               disabled={!canAfford}
               data-testid="shop-buy-relic-{item.relic.id}"
               aria-label="Buy {item.relic.name} for {item.price}g"
-              onclick={() => openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
+              onclick={() => canAfford && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
             >
               {item.price}g
             </button>
@@ -330,12 +516,24 @@
     {/if}
 
     {#if shopInventory.cards.length > 0}
-      <div class="subsection-label">Cards</div>
-      <div class="card-list">
+      <div class="section-label">LEARNING CARDS</div>
+      <div class="card-list" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 1200ms">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
           {@const shopCardSynergy = item.card.mechanicId ? getSynergyLabel(item.card.mechanicId, deckMechanics) : null}
-          <article class="card-item" style="border-top: 6px solid {getChainColor(item.card.chainType ?? 0)}; border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};">
+          <article
+            class="card-item"
+            class:unaffordable={!canAfford}
+            class:shake={shakeItemId === `card-${idx}`}
+            class:purchased={purchasedItemId === 'card-' + idx}
+            style="border-top: 6px solid {getChainColor(item.card.chainType ?? 0)}; border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};"
+            onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
+            onmouseenter={() => onCardHover(item.card)}
+            onmouseleave={onCardLeave}
+          >
+            {#if shopInventory.saleCardIndex === idx}
+              <div class="sale-ribbon">SALE</div>
+            {/if}
             <div class="meta">
               <span class="icon">
                 <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt={item.card.cardType}
@@ -343,10 +541,20 @@
                 <span style="display:none">{TYPE_EMOJI[item.card.cardType] ?? '🃏'}</span>
               </span>
               <div class="text">
-                <div class="name">{item.card.mechanicName ?? item.card.cardType.toUpperCase()} • {tierLabel(item.card)}</div>
-                <div class="sub">Power {Math.round(item.card.baseEffectValue * item.card.effectMultiplier)}</div>
+                <div class="name">
+                  {item.card.mechanicName ?? item.card.cardType.toUpperCase()} • {tierLabel(item.card)}
+                  {#if (item.card.masteryLevel ?? 0) > 0}
+                    <span class="mastery-indicator">
+                      <span class="mastery-icon" style="filter: {getMasteryIconFilter(item.card.masteryLevel ?? 0)}">✦</span>
+                      <span class="mastery-bonus">+{getMasteryBonusValue(item.card)}</span>
+                    </span>
+                  {/if}
+                </div>
+                <div class="sub">{getEffectLabel(item.card)}</div>
                 {#if shopCardSynergy}
-                  <div class="synergy-badge">Synergy: {shopCardSynergy}</div>
+                  <div class="synergy-badge synergy-match">Synergy: {shopCardSynergy}</div>
+                {:else}
+                  <div class="synergy-badge synergy-none">No synergies</div>
                 {/if}
               </div>
             </div>
@@ -357,9 +565,13 @@
               disabled={!canAfford}
               data-testid="shop-buy-card-{idx}"
               aria-label="Buy {item.card.mechanicName ?? item.card.cardType} for {item.price}g"
-              onclick={() => openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()} (${tierLabel(item.card)})` })}
+              onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()} (${tierLabel(item.card)})` })}
             >
-              {item.price}g
+              {#if shopInventory?.saleCardIndex === idx}
+                <span class="original-price">{item.price * 2}g</span> {item.price}g
+              {:else}
+                {item.price}g
+              {/if}
             </button>
           </article>
         {/each}
@@ -367,42 +579,60 @@
     {/if}
 
     {#if shopInventory.removalCost != null}
-      <div class="subsection-label">Services</div>
-      <div class="card-list">
-        <article class="card-item service-item">
-          <div class="meta">
-            <span class="icon">🗑</span>
-            <div class="text">
-              <div class="name">Card Removal</div>
-              <div class="sub">Permanently remove a card from your deck</div>
-            </div>
+      <div class="section-label">SERVICES</div>
+      <div class="services-row" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 1600ms">
+        <!-- Card Removal -->
+        <article class="service-card service-removal">
+          <div class="service-icon">🔥</div>
+          <div class="service-header">
+            <span class="service-title">Card Removal</span>
+            <span class="service-price" class:unaffordable-price={!canRemoveCard || currency < shopInventory.removalCost}>{shopInventory.removalCost}g</span>
           </div>
-          <div class="buy-wrapper">
-            <button
-              type="button"
-              class="buy"
-              class:disabled={!canRemoveCard || currency < shopInventory.removalCost}
-              disabled={!canRemoveCard || currency < shopInventory.removalCost}
-              data-testid="shop-buy-removal"
-              aria-label="Buy Card Removal for {shopInventory.removalCost}g"
-              onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
-            >
-              {shopInventory.removalCost}g
-            </button>
-            {#if !canRemoveCard}
-              <span class="disable-reason">Need more than 5 cards</span>
-            {/if}
+          <div class="service-desc">Destroy a card from your deck permanently. A leaner deck draws stronger hands.</div>
+          <button
+            type="button"
+            class="service-action"
+            disabled={!canRemoveCard || currency < shopInventory.removalCost}
+            data-testid="shop-buy-removal"
+            onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
+          >
+            Choose a card →
+          </button>
+          {#if !canRemoveCard}
+            <span class="service-note">Need more than 5 cards</span>
+          {/if}
+        </article>
+
+        <!-- Card Transformation (placeholder — logic not wired yet) -->
+        <article class="service-card service-transform">
+          <div class="service-icon">✨</div>
+          <div class="service-header">
+            <span class="service-title">Card Transform</span>
+            <span class="service-price service-price-disabled">Coming soon</span>
           </div>
+          <div class="service-desc">Destroy a card, replaced by one of 3 random options. A gamble — will fate favor you?</div>
+          <button
+            type="button"
+            class="service-action"
+            disabled
+          >
+            Choose a card →
+          </button>
         </article>
       </div>
     {/if}
   {/if}
 
   {#if cards.length > 0}
-    <div class="section-header">Sell</div>
-    <div class="card-list">
+    <div class="section-label">YOUR DECK</div>
+    <div class="card-list" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 1800ms">
       {#each cards as card (card.id)}
-        <article class="card-item" style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(card.chainType ?? 0)};">
+        <article
+          class="card-item"
+          class:synergy-highlight={card.mechanicId && highlightedMechanics.has(card.mechanicId)}
+          class:selling={sellingCardId === card.id}
+          style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(card.chainType ?? 0)};"
+        >
           <div class="meta">
             <span class="icon">
               <img class="type-icon-img" src={getCardTypeIconPath(card.cardType)} alt={card.cardType}
@@ -411,11 +641,11 @@
             </span>
             <div class="text">
               <div class="name">{card.mechanicName ?? card.cardType.toUpperCase()} • {tierLabel(card)}</div>
-              <div class="sub">Power {Math.round(card.baseEffectValue * card.effectMultiplier)}</div>
+              <div class="sub">{getEffectLabel(card)}</div>
             </div>
           </div>
-          <button type="button" class="sell" onclick={() => onsell(card.id)}>
-            Sell +{sellPrice(card)}g
+          <button type="button" class="sell" onclick={() => handleSell(card.id)}>
+            Sell · {sellPrice(card)}g
           </button>
         </article>
       {/each}
@@ -424,7 +654,6 @@
     <div class="empty">Nothing available.</div>
   {/if}
 
-  <button type="button" class="done" data-testid="btn-leave-shop" onclick={() => { playCardAudio('shop-close'); ondone() }}>Leave Shop</button>
 </section>
 
 <!-- Purchase Modal -->
@@ -540,6 +769,7 @@
           <button
             type="button"
             class="removal-card-btn"
+            class:burning={burningCardId === card.id}
             onclick={() => pickCardForRemoval(card.id)}
           >
             <span class="removal-card-info">
@@ -551,7 +781,7 @@
                 </span>
               {/if}
             </span>
-            <span class="removal-card-power">Power {Math.round(card.baseEffectValue * card.effectMultiplier)}</span>
+            <span class="removal-card-power">{getEffectLabel(card)}</span>
           </button>
         {/each}
       </div>
@@ -559,6 +789,27 @@
         Cancel
       </button>
     </div>
+  </div>
+{/if}
+
+{#if needMoreGold}
+  <div class="need-more-tooltip" style="left: {Math.min(needMoreGold.x, globalThis.innerWidth - 160)}px; top: {needMoreGold.y}px;">
+    Need {needMoreGold.amount} more gold
+  </div>
+{/if}
+
+{#if relicTooltip}
+  <button class="tooltip-backdrop" onclick={dismissRelicTooltip} aria-label="Dismiss tooltip"></button>
+  <div
+    class="relic-tooltip"
+    role="tooltip"
+    style="left: {Math.min(relicTooltip.x, globalThis.innerWidth - 230)}px; top: {Math.max(relicTooltip.y - 120, 8)}px;"
+  >
+    <div class="relic-tooltip-name" style="color: {RARITY_COLORS[relicTooltip.relic.rarity] ?? '#fbbf24'}">
+      {relicTooltip.relic.icon} {relicTooltip.relic.name}
+    </div>
+    <div class="relic-tooltip-desc">{relicTooltip.relic.description}</div>
+    <div class="relic-tooltip-trigger">Trigger: Permanent</div>
   </div>
 {/if}
 
@@ -590,57 +841,91 @@
     z-index: 220;
     background: linear-gradient(180deg, rgba(16, 18, 20, 0.75) 0%, rgba(31, 35, 41, 0.75) 100%);
     color: #e6edf3;
-    padding: calc((20px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    padding: 0 calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     display: grid;
     align-content: start;
     gap: calc(8px * var(--layout-scale, 1));
     overflow-y: auto;
   }
 
-  .shop-header {
+  .shop-hud {
     position: sticky;
     top: 0;
-    z-index: 5;
-    background: rgba(13, 17, 23, 0.95);
-    padding-bottom: calc(8px * var(--layout-scale, 1));
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
+    background: rgba(13, 17, 23, 0.98);
+    padding: 0 calc(12px * var(--layout-scale, 1));
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    margin: 0 calc(-16px * var(--layout-scale, 1));
   }
 
-  h1 {
-    margin: calc(4px * var(--layout-scale, 1)) 0 0;
-    font-size: calc(24px * var(--layout-scale, 1));
-    color: #f1c40f;
-    letter-spacing: 0.8px;
-  }
-
-  .gold {
-    font-size: calc(26px * var(--layout-scale, 1));
-    font-weight: 800;
-    color: #f9d56e;
-    margin-top: calc(2px * var(--layout-scale, 1));
-    text-shadow: 0 0 8px rgba(249, 213, 110, 0.5);
-    letter-spacing: 0.5px;
-  }
-
-  .section-header {
-    margin-top: calc(8px * var(--layout-scale, 1));
-    font-size: calc(16px * var(--layout-scale, 1));
-    font-weight: 700;
+  .hud-back {
+    background: none;
+    border: none;
     color: #e6edf3;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #3b434f;
-    padding-bottom: calc(4px * var(--layout-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
+    cursor: pointer;
+    padding: calc(8px * var(--layout-scale, 1));
+    min-width: calc(36px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(8px * var(--layout-scale, 1));
   }
 
-  .subsection-label {
-    font-size: calc(13px * var(--layout-scale, 1));
+  .hud-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hud-gold {
+    display: flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+  }
+
+  .gold-icon {
+    font-size: calc(16px * var(--layout-scale, 1));
+  }
+
+  .gold-amount {
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #f59e0b;
+  }
+
+  .hud-info {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #64748b;
+    margin-left: auto;
+  }
+
+  .hud-deck {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #64748b;
+  }
+
+  .section-label {
+    margin-top: calc(20px * var(--layout-scale, 1));
+    margin-bottom: calc(8px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
     font-weight: 600;
-    color: #8b949e;
+    color: #64748b;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: calc(4px * var(--layout-scale, 1));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: calc(4px * var(--layout-scale, 1));
+    letter-spacing: calc(2px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(100, 116, 139, 0.2);
   }
 
   .card-list {
@@ -664,9 +949,97 @@
     border-width: 2px;
   }
 
-  .service-item {
-    border-color: #6b4f00;
-    background: rgba(20, 14, 0, 0.82);
+  .services-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(10px * var(--layout-scale, 1));
+  }
+
+  .service-card {
+    border-radius: calc(12px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .service-removal {
+    border: 1px solid #7F77DD;
+    background: rgba(127, 119, 221, 0.05);
+  }
+
+  .service-transform {
+    border: 1px solid #D85A30;
+    background: rgba(216, 90, 48, 0.05);
+  }
+
+  .service-icon {
+    font-size: calc(24px * var(--layout-scale, 1));
+  }
+
+  .service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .service-title {
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 500;
+    color: #e6edf3;
+  }
+
+  .service-price {
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #f59e0b;
+  }
+
+  .service-price-disabled {
+    color: #6b7280;
+    font-weight: 400;
+    font-size: calc(11px * var(--text-scale, 1));
+  }
+
+  .unaffordable-price {
+    color: #ef4444;
+  }
+
+  .service-desc {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #9ba4ad;
+    line-height: 1.4;
+  }
+
+  .service-action {
+    margin-top: auto;
+    background: none;
+    border: none;
+    color: #93c5fd;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    padding: calc(6px * var(--layout-scale, 1)) 0;
+  }
+
+  .service-action:disabled {
+    color: #4b5563;
+    cursor: not-allowed;
+  }
+
+  .service-action:hover:not(:disabled) {
+    color: #bfdbfe;
+    text-decoration: underline;
+  }
+
+  .service-note {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #94a3b8;
+  }
+
+  .shop-overlay:not(.landscape) .services-row {
+    grid-template-columns: 1fr;
   }
 
   .meta {
@@ -722,29 +1095,22 @@
     border-radius: 8px;
     font-size: calc(10px * var(--layout-scale, 1));
     font-weight: 700;
-    color: #4ade80;
-    background: rgba(74, 222, 128, 0.12);
-    border: 1px solid rgba(74, 222, 128, 0.35);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
   }
 
-  .buy-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-    gap: calc(2px * var(--layout-scale, 1));
+  .synergy-match {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.35);
   }
 
-  .disable-reason {
-    font-size: calc(10px * var(--text-scale, 1));
-    color: #94a3b8;
-    margin-top: calc(2px * var(--layout-scale, 1));
-    text-align: center;
-    white-space: nowrap;
+  .synergy-none {
+    color: #6b7280;
+    background: rgba(107, 114, 128, 0.12);
+    border: 1px solid rgba(107, 114, 128, 0.25);
   }
 
   .buy {
@@ -776,28 +1142,122 @@
   .sell {
     min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
-    border: 1px solid #2f914f;
-    background: #1f6d39;
-    color: #f0fff4;
+    border: 1px solid #f59e0b;
+    background: #92400e;
+    color: #fef3c7;
     padding: 0 calc(10px * var(--layout-scale, 1));
     font-weight: 700;
     white-space: nowrap;
     flex-shrink: 0;
   }
 
-  .done {
-    position: sticky;
-    bottom: 0;
-    margin-top: calc(8px * var(--layout-scale, 1));
-    min-height: calc(54px * var(--layout-scale, 1));
-    border-radius: 10px;
-    border: 1px solid #4b5563;
-    background: #1f2937;
-    color: #e5e7eb;
+  /* === Affordability states === */
+  .unaffordable {
+    opacity: 0.4;
+    transition: opacity 300ms ease;
+  }
+
+  .unaffordable .buy {
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.1) !important;
+  }
+
+  .shake {
+    animation: shake-horizontal 150ms ease;
+  }
+
+  @keyframes shake-horizontal {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(calc(-4px * var(--layout-scale, 1))); }
+    50% { transform: translateX(calc(4px * var(--layout-scale, 1))); }
+    75% { transform: translateX(calc(-4px * var(--layout-scale, 1))); }
+    100% { transform: translateX(0); }
+  }
+
+  .need-more-tooltip {
+    position: fixed;
+    z-index: 200;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 600;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* === Relic tooltip === */
+  .tooltip-backdrop {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    z-index: 199;
+    border: none;
+    padding: 0;
+    cursor: default;
+  }
+
+  .relic-tooltip {
+    position: fixed;
+    z-index: 200;
+    max-width: calc(220px * var(--layout-scale, 1));
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5);
+  }
+
+  .relic-tooltip-name {
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 800;
+    margin-bottom: calc(4px * var(--layout-scale, 1));
+  }
+
+  .relic-tooltip-desc {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #e2e8f0;
+    line-height: 1.4;
+    margin-bottom: calc(4px * var(--layout-scale, 1));
+  }
+
+  .relic-tooltip-trigger {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #64748b;
+  }
+
+  .rarity-pill {
+    font-size: calc(9px * var(--text-scale, 1));
     font-weight: 700;
-    font-size: calc(16px * var(--text-scale, 1));
-    z-index: 10;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+    padding: 1px calc(5px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    white-space: nowrap;
+  }
+
+  /* === Sale ribbon === */
+  .sale-ribbon {
+    position: absolute;
+    top: calc(6px * var(--layout-scale, 1));
+    right: calc(-4px * var(--layout-scale, 1));
+    background: #dc2626;
+    color: white;
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    border-radius: calc(3px * var(--layout-scale, 1));
+    z-index: 2;
+    letter-spacing: 1px;
+  }
+
+  .original-price {
+    text-decoration: line-through;
+    color: #6b7280;
+    font-weight: 400;
+    margin-right: calc(4px * var(--layout-scale, 1));
   }
 
   .empty {
@@ -1029,11 +1489,6 @@
     box-sizing: border-box;
   }
 
-  .shop-overlay.landscape h1 {
-    padding-top: calc(20px * var(--layout-scale, 1));
-    margin: 0;
-  }
-
   .shop-overlay.landscape .card-list {
     /* In landscape: items in a horizontal row */
     display: flex;
@@ -1046,8 +1501,146 @@
     min-width: calc(240px * var(--layout-scale, 1));
   }
 
-  .shop-overlay.landscape .done {
-    width: min(90vw, calc(1200px * var(--layout-scale, 1)));
-    margin-bottom: calc(20px * var(--layout-scale, 1));
+  /* === Mastery indicator === */
+  .mastery-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(3px * var(--layout-scale, 1));
+    margin-left: calc(6px * var(--layout-scale, 1));
   }
+
+  .mastery-icon {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #4ade80;
+  }
+
+  .mastery-bonus {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #22c55e;
+    font-weight: 700;
+  }
+
+  /* === Purchase exit animation === */
+  .purchased {
+    animation: purchase-exit 800ms ease-out forwards;
+  }
+
+  @keyframes purchase-exit {
+    0% { transform: scale(1); opacity: 1; }
+    30% { transform: scale(1.02); opacity: 1; filter: brightness(1.3); }
+    100% { transform: scale(0.8) translateY(calc(20px * var(--layout-scale, 1))); opacity: 0; }
+  }
+
+  /* === Affordability pulse (newly affordable) === */
+  .newly-affordable {
+    animation: afford-pulse 600ms ease;
+  }
+
+  @keyframes afford-pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; border-color: #22c55e; box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.3); }
+    100% { opacity: 1; }
+  }
+
+  /* === Shopkeeper bark === */
+  .shopkeeper-bark {
+    position: sticky;
+    top: calc(44px * var(--layout-scale, 1));
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    margin: calc(4px * var(--layout-scale, 1)) 0;
+  }
+
+  .bark-icon {
+    font-size: calc(20px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .bark-text {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #94a3b8;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* === Entrance stagger animation (P3-B) === */
+  .entrance-stagger {
+    opacity: 0;
+    transform: translateY(calc(20px * var(--layout-scale, 1)));
+    animation: slide-up-in 400ms ease-out forwards;
+    animation-delay: var(--stagger-delay, 0ms);
+  }
+
+  @keyframes slide-up-in {
+    from { opacity: 0; transform: translateY(calc(20px * var(--layout-scale, 1))); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === Sell tear animation (P3-C) === */
+  .selling {
+    animation: sell-tear 600ms ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes sell-tear {
+    0% { transform: scale(1); opacity: 1; }
+    30% { transform: scale(1.02); clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%); }
+    60% { transform: scale(1.02); clip-path: polygon(0 0, 45% 0, 52% 100%, 0 100%); opacity: 0.7; }
+    100% { transform: scale(0.9) translateY(calc(-10px * var(--layout-scale, 1))); opacity: 0; clip-path: polygon(0 0, 40% 0, 55% 100%, 0 100%); }
+  }
+
+  /* === Gold counter animation (P3-E) === */
+  .gold-gain {
+    animation: gold-flash-green 400ms ease;
+  }
+
+  .gold-loss {
+    animation: gold-flash-red 400ms ease;
+  }
+
+  @keyframes gold-flash-green {
+    0% { color: #f59e0b; }
+    30% { color: #22c55e; transform: scale(1.1); }
+    100% { color: #f59e0b; transform: scale(1); }
+  }
+
+  @keyframes gold-flash-red {
+    0% { color: #f59e0b; }
+    30% { color: #ef4444; transform: scale(1.1); }
+    100% { color: #f59e0b; transform: scale(1); }
+  }
+
+  /* === Synergy cross-highlight (P3-A) === */
+  .synergy-highlight {
+    animation: synergy-pulse 600ms ease;
+    border-color: #22c55e !important;
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.4) !important;
+  }
+
+  @keyframes synergy-pulse {
+    0% { box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
+    50% { box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.5); }
+    100% { box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.4); }
+  }
+
+  /* === Card burn animation (P2-D) === */
+  .burning {
+    animation: card-burn 800ms ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes card-burn {
+    0% { transform: scale(1); opacity: 1; filter: brightness(1); }
+    20% { transform: scale(1.05); filter: brightness(1.5) saturate(2); }
+    50% { filter: brightness(2) saturate(3) hue-rotate(-15deg); opacity: 0.8; }
+    80% { transform: scale(0.95); filter: brightness(1.5) saturate(1.5) hue-rotate(-30deg); opacity: 0.4; }
+    100% { transform: scale(0.8) translateY(calc(-10px * var(--layout-scale, 1))); opacity: 0; filter: brightness(0.5); }
+  }
+
 </style>

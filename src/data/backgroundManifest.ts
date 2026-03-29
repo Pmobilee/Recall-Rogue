@@ -128,3 +128,13 @@ export function getMysteryEventBg(eventId: string): string {
   // The caller should handle 404s by falling back to getRandomRoomBg('mystery').
   return `/assets/backgrounds/mystery/${eventId}/${orientation}.webp`
 }
+
+/**
+ * Get a depth map for a specific mystery event's background.
+ * @param eventId The mystery event's id string (e.g. 'burning_library')
+ * @returns A WebP depth map path for the current orientation
+ */
+export function getMysteryEventDepthMap(eventId: string): string {
+  const orientation = getOrientation()
+  return `/assets/backgrounds/mystery/${eventId}/${orientation}_depth.webp`
+}

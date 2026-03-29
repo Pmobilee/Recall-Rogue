@@ -1,8 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { playCardAudio } from '../../services/cardAudioManager';
-  import { getKnowledgeDomains } from '../../data/domainMetadata';
+  import { getKnowledgeDomains, getDomainMetadata } from '../../data/domainMetadata';
   import { playerSave, persistPlayer } from '../stores/playerData';
+  import { factsDB } from '../../services/factsDB';
+  import { normalizeFactDomain } from '../../data/card-types';
+  import { resolveDomain } from '../../services/domainResolver';
   import DomainStrip from './DomainStrip.svelte';
   import LoadoutCard from './LoadoutCard.svelte';
 
@@ -14,12 +17,20 @@
   const { onback, onStartRun }: Props = $props();
 
   // State
-  let selectedDomains = $state<string[]>(getKnowledgeDomains());
+  let selectedDomains = $state<string[]>(getKnowledgeDomains().filter(id => !getDomainMetadata(id).comingSoon));
   let subdomainSelections = $state<Record<string, string[]>>({});
   let searchQuery = $state('');
 
   // Derived
   const canStart = $derived(selectedDomains.length > 0);
+
+  const totalFacts = $derived(() => {
+    if (!factsDB.isReady()) return 0;
+    return factsDB.getAll().filter(f => {
+      const domain = normalizeFactDomain(resolveDomain(f));
+      return selectedDomains.includes(domain);
+    }).length;
+  });
 
   // Restore from save on mount
   onMount(() => {
@@ -95,10 +106,6 @@
       <div class="header-right">
         <input class="search-input" type="text" placeholder="Search domains..."
                bind:value={searchQuery} aria-label="Search domains" />
-        <button class="start-run-btn" class:enabled={canStart}
-                disabled={!canStart} onclick={handleStartRun}>
-          Start Run &#9654;
-        </button>
       </div>
     </div>
   </header>
@@ -107,27 +114,29 @@
   <DomainStrip {selectedDomains} onDomainsChange={handleDomainsChange} />
 
   <!-- Loadout Cards Grid -->
-  <div class="loadout-grid">
-    {#if selectedDomains.length === 0}
-      <div class="empty-state">
-        <p class="empty-title">No domains selected</p>
-        <p class="empty-sub">Toggle domains above to build your knowledge loadout</p>
-      </div>
-    {:else}
-      {#each selectedDomains as domainId (domainId)}
-        <LoadoutCard
-          {domainId}
-          selectedSubcategories={subdomainSelections[domainId] ?? []}
-          onSubcategoriesChange={handleSubcategoriesChange}
-        />
-      {/each}
-    {/if}
+  <div class="loadout-grid-wrapper">
+    <div class="loadout-grid">
+      {#if selectedDomains.length === 0}
+        <div class="empty-state">
+          <p class="empty-title">No domains selected</p>
+          <p class="empty-sub">Toggle domains above to build your knowledge loadout</p>
+        </div>
+      {:else}
+        {#each selectedDomains as domainId (domainId)}
+          <LoadoutCard
+            {domainId}
+            selectedSubcategories={subdomainSelections[domainId] ?? []}
+            onSubcategoriesChange={handleSubcategoriesChange}
+          />
+        {/each}
+      {/if}
+    </div>
   </div>
 
   <!-- Footer Status Bar -->
   <footer class="footer">
     <span class="footer-text">
-      {selectedDomains.length} domain{selectedDomains.length !== 1 ? 's' : ''} selected
+      {selectedDomains.length} domain{selectedDomains.length !== 1 ? 's' : ''} · {totalFacts()} facts
     </span>
     <button class="footer-start-btn" class:enabled={canStart}
             disabled={!canStart} onclick={handleStartRun}>
@@ -157,7 +166,7 @@
 
   .header-grid {
     display: grid;
-    grid-template-columns: 1fr auto auto 1fr;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: calc(12px * var(--layout-scale, 1));
   }
@@ -197,7 +206,6 @@
     display: flex;
     align-items: center;
     gap: calc(10px * var(--layout-scale, 1));
-    grid-column: 3 / 5;
     justify-content: flex-end;
   }
 
@@ -222,37 +230,30 @@
     border-color: rgba(255, 255, 255, 0.25);
   }
 
-  .start-run-btn {
-    height: calc(38px * var(--layout-scale, 1));
-    padding: 0 calc(18px * var(--layout-scale, 1));
-    background: linear-gradient(135deg, #16a34a, #15803d);
-    border: none;
-    border-radius: calc(8px * var(--layout-scale, 1));
-    color: #fff;
-    font-size: calc(14px * var(--text-scale, 1));
-    font-weight: 600;
-    white-space: nowrap;
-    cursor: not-allowed;
-    opacity: 0.45;
-    transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
-  }
-
-  .start-run-btn.enabled {
-    cursor: pointer;
-    opacity: 1;
-  }
-
-  .start-run-btn.enabled:hover {
-    transform: scale(1.03);
-    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(22, 163, 74, 0.4);
-  }
-
   /* ── Loadout Grid ── */
-  .loadout-grid {
+  .loadout-grid-wrapper {
+    position: relative;
     flex: 1;
+    overflow: hidden;
+  }
+
+  .loadout-grid-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(60px * var(--layout-scale, 1));
+    background: linear-gradient(transparent, rgba(13, 17, 23, 0.95));
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .loadout-grid {
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(calc(300px * var(--layout-scale, 1)), 1fr));
-    grid-auto-rows: 1fr;
+    grid-auto-rows: max-content;
     gap: calc(14px * var(--layout-scale, 1));
     padding: calc(16px * var(--layout-scale, 1));
     overflow-y: auto;

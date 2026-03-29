@@ -113,8 +113,10 @@ When working on content pipeline: read `docs/RESEARCH/SOURCES/content-pipeline-s
 
 - Starting code before a plan exists
 - Skipping visual inspection because "it's probably fine"
+- Accepting tool failures (Playwright, browser, screenshots) instead of fixing them immediately
 - Batching TaskUpdate calls at the end of a session instead of updating per-task
 - Telling the user a fix "should work" without confirming it visually
+- Using fallback/workaround approaches when the primary tool breaks instead of diagnosing and fixing the root cause
 - Generating content from LLM training knowledge instead of verified source data
 - Hardcoding px values in CSS
 - Skipping doc updates because "it's just a small change"

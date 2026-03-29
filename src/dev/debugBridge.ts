@@ -163,8 +163,8 @@ export function initDebugBridge(): void {
       if (giveDustParam) {
         const amount = parseInt(giveDustParam, 10) || 20000;
         const { addMinerals } = await import('../ui/stores/playerData');
-        addMinerals('dust', amount);
-        console.log(`[DEV] Auto-added ${amount} dust via URL param`);
+        addMinerals('greyMatter', amount);
+        console.log(`[DEV] Auto-added ${amount} grey matter via URL param`);
       }
       if (setLevelParam) {
         const level = parseInt(setLevelParam, 10) || 1;
@@ -181,8 +181,8 @@ export function initDebugBridge(): void {
   // Dev cheats
   (window as unknown as Record<string, unknown>).__rrGiveDust = async (amount: number = 20000) => {
     const { addMinerals } = await import('../ui/stores/playerData');
-    addMinerals('dust', amount);
-    console.log(`[DEV] Added ${amount} dust`);
+    addMinerals('greyMatter', amount);
+    console.log(`[DEV] Added ${amount} grey matter`);
   };
 
   (window as unknown as Record<string, unknown>).__rrSetLevel = async (level: number) => {

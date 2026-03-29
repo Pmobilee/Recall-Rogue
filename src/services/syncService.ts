@@ -52,7 +52,7 @@ const LEADERBOARD_EXTRACTORS: Record<string, (s: PlayerSave) => number> = {
   deepest_dive: (s) => s.stats.bestFloor,
   facts_mastered: (s) => s.stats.totalFactsLearned,
   longest_streak: (s) => s.stats.bestStreak,
-  total_dust: (s) => s.minerals?.dust ?? 0,
+  total_grey_matter: (s) => s.minerals?.greyMatter ?? 0,
 }
 
 // ============================================================

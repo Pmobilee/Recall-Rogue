@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import type { ActMap, MapNode } from '../../services/mapGenerator'
+  import type { ActMap } from '../../services/mapGenerator'
   import MapNodeComponent from './MapNode.svelte'
+  import MapAmbientParticles from './MapAmbientParticles.svelte'
   import { BASE_WIDTH } from '../../data/layout'
   import { isLandscape } from '../../stores/layoutStore'
   import { playCardAudio } from '../../services/cardAudioManager'
-  import { MAP_CINEMATIC_ENABLED } from '../../data/balance'
 
   // =========================================================
   // Props
@@ -44,10 +44,8 @@
   /** Max container width — centred on wide screens. */
   const MAX_WIDTH = 680
 
-  /**
-   * Base vertical spacing between history rows (unscaled px).
-   */
-  const ROW_HEIGHT_BASE = 100
+  /** Base vertical spacing between rows (unscaled px). */
+  const ROW_SPACING_BASE = 90
 
   // =========================================================
   // Reactive state
@@ -68,77 +66,124 @@
   /** Segment name from act number. */
   let segmentName = $derived(SEGMENT_NAMES[map.segment])
 
+  const SEGMENT_BG: Record<1 | 2 | 3 | 4, string> = {
+    1: 'radial-gradient(ellipse at 50% 80%, #1a150e 0%, #0d0a06 50%, #080604 100%)',  // Shallow Depths — warm brown
+    2: 'radial-gradient(ellipse at 50% 70%, #141820 0%, #0a0e14 50%, #060810 100%)',  // Deep Caverns — cool blue-grey
+    3: 'radial-gradient(ellipse at 50% 60%, #10121c 0%, #0a0c16 50%, #060810 100%)',  // The Abyss — icy blue-purple
+    4: 'radial-gradient(ellipse at 50% 50%, #140e18 0%, #0c0812 50%, #08060e 100%)',  // The Archive — arcane purple-teal
+  }
+  let segmentBg = $derived(SEGMENT_BG[map.segment])
+
+  /** Row index of the current node (or lowest available node as fallback). */
+  let currentRow = $derived.by(() => {
+    if (map.currentNodeId && map.nodes[map.currentNodeId]) {
+      return map.nodes[map.currentNodeId].row
+    }
+    const available = Object.values(map.nodes).filter(n => n.state === 'available')
+    if (available.length > 0) return Math.min(...available.map(n => n.row))
+    return 0
+  })
+
   /** HP percentage 0–100. */
   let hpPercent = $derived(playerMaxHp > 0 ? Math.round((playerHp / playerMaxHp) * 100) : 0)
 
-  // =========================================================
-  // Progressive view data derivation
-  // =========================================================
-
-  /** Nodes currently selectable (state === 'available'). Rendered at the TOP. */
+  /** Nodes currently selectable (state === 'available'). */
   let availableNodes = $derived(
     Object.values(map.nodes).filter(n => n.state === 'available'),
   )
 
-  /**
-   * Decision history with resolved node objects.
-   * Displayed newest-first (top = most recent past step).
-   */
-  interface ResolvedDecision {
-    selectedNode: MapNode
-    altNodes: MapNode[]
+  // =========================================================
+  // Map canvas sizing
+  // =========================================================
+
+  let rowSpacing = $derived(ROW_SPACING_BASE * layoutScale)
+  let canvasHeight = $derived(map.rows.length * rowSpacing + 2 * ROW_SPACING_BASE * layoutScale)
+
+  // =========================================================
+  // Edge data derivation
+  // =========================================================
+
+  interface EdgeData {
+    x1: number
+    y1: number
+    x2: number
+    y2: number
+    state: 'traveled' | 'available' | 'locked'
+    fogOpacity: number
+    sourceRow: number
   }
 
-  let resolvedHistory = $derived.by<ResolvedDecision[]>(() => {
-    return map.decisionHistory
-      .map(d => {
-        const selectedNode = map.nodes[d.selectedId]
-        if (!selectedNode) return null
-        const altNodes = d.availableIds
-          .filter(id => id !== d.selectedId)
-          .map(id => map.nodes[id])
-          .filter((n): n is MapNode => n !== undefined)
-        return { selectedNode, altNodes }
-      })
-      .filter((d): d is ResolvedDecision => d !== null)
+  let edges = $derived.by<EdgeData[]>(() => {
+    const result: EdgeData[] = []
+    for (const node of Object.values(map.nodes)) {
+      const nx = node.x * containerWidth
+      const ny = canvasHeight - (node.row * rowSpacing + rowSpacing / 2)
+      for (const childId of node.childIds) {
+        const child = map.nodes[childId]
+        if (!child) continue
+        const cx = child.x * containerWidth
+        const cy = canvasHeight - (child.row * rowSpacing + rowSpacing / 2)
+        const nodeVisited = node.state === 'visited' || node.state === 'current'
+        const childVisited = child.state === 'visited' || child.state === 'current'
+        const childAvailable = child.state === 'available'
+        let edgeState: 'traveled' | 'available' | 'locked' = 'locked'
+        if (nodeVisited && childVisited) edgeState = 'traveled'
+        else if (nodeVisited && childAvailable) edgeState = 'available'
+        const nodeDist = Math.abs(node.row - currentRow)
+        const childDist = Math.abs(child.row - currentRow)
+        const maxDist = Math.max(nodeDist, childDist)
+        const fogOpacity = maxDist <= 1 ? 1 : maxDist <= 3 ? 0.7 : 0.4
+        result.push({ x1: nx, y1: ny, x2: cx, y2: cy, state: edgeState, fogOpacity, sourceRow: node.row })
+      }
+    }
+    return result
   })
 
   // =========================================================
-  // Scaled layout helpers (used only for history section)
+  // Row markers — floor depth labels
   // =========================================================
 
-  let rowH = $derived(ROW_HEIGHT_BASE * layoutScale)
+  interface RowMarker {
+    y: number
+    label: string
+  }
 
-  /** Total height of the history canvas. */
-  let historyCanvasHeight = $derived(
-    resolvedHistory.length * rowH + 48 * layoutScale,
-  )
+  let rowMarkers = $derived.by<RowMarker[]>(() => {
+    const markers: RowMarker[] = []
+    const totalRows = map.rows.length
+    // Bottom marker — entry floor
+    markers.push({
+      y: canvasHeight - rowSpacing * 0.1,
+      label: `Floor ${map.startFloor}`,
+    })
+    // Boss marker near the top
+    if (totalRows >= 3) {
+      markers.push({
+        y: canvasHeight - ((totalRows - 1) * rowSpacing + rowSpacing * 0.8),
+        label: 'Boss',
+      })
+    }
+    return markers
+  })
+
+  // =========================================================
+  // SVG path helper
+  // =========================================================
 
   /**
-   * Horizontal centre pixel for node index within a row group.
-   * Uses padding to keep nodes away from edges.
+   * Cubic bezier path between two pixel coordinates.
+   * Control points blend the X positions so curves feel more natural
+   * and directional — leftward edges clearly go left, rightward go right.
    */
-  function nodeGroupX(index: number, total: number, width: number): number {
-    const padding = 64 * layoutScale
-    const usable = width - padding * 2
-    if (total === 1) return width / 2
-    return padding + (index / (total - 1)) * usable
-  }
-
-  /** Cubic-bezier SVG path between two pixel coords. */
-  function arrowPath(px: number, py: number, tx: number, ty: number): string {
-    const midY = (py + ty) / 2
-    return `M ${px} ${py} C ${px} ${midY}, ${tx} ${midY}, ${tx} ${ty}`
-  }
-
-  /** Y centre of a history row's node (rowIndex 0 = most recent). */
-  function historyNodeY(rowIndex: number): number {
-    return rowIndex * rowH + rowH * 0.52
-  }
-
-  /** Y for the connector SVG top within a history row. */
-  function historyConnectorTopY(rowIndex: number): number {
-    return rowIndex * rowH + rowH * 0.08
+  function edgePath(ax: number, ay: number, bx: number, by: number): string {
+    const dy = by - ay
+    // Control points at ~35% and ~65% of the vertical span,
+    // with X blended 25% toward the destination so curves lean into direction
+    const c1x = ax + (bx - ax) * 0.25
+    const c1y = ay + dy * 0.35
+    const c2x = bx - (bx - ax) * 0.25
+    const c2y = ay + dy * 0.65
+    return `M ${ax} ${ay} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${bx} ${by}`
   }
 
   // =========================================================
@@ -159,23 +204,23 @@
     })
     if (scrollContainer) observer.observe(scrollContainer)
 
-    // Snap to top so choices are immediately visible
-    if (scrollContainer) scrollContainer.scrollTop = 0
-
     return () => observer.disconnect()
   })
 
-  // Jump to top whenever choices update (new room selected → new choices appear)
+  // Auto-scroll to show current available nodes whenever they change
   $effect(() => {
-    // Reactive trigger: watch available node count
     void availableNodes.length
-    if (scrollContainer && !MAP_CINEMATIC_ENABLED) {
-      scrollContainer.scrollTop = 0
-    }
+    if (!scrollContainer) return
+    requestAnimationFrame(() => {
+      const availableEl = scrollContainer?.querySelector('.state-available')
+      if (availableEl) {
+        availableEl.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    })
   })
 </script>
 
-<div class="dungeon-map-overlay" data-testid="dungeon-map">
+<div class="dungeon-map-overlay" style="background: {segmentBg};" data-testid="dungeon-map">
   <!-- Fixed HUD -->
   <header class="map-hud">
     <h1 class="hud-title">{segmentName}</h1>
@@ -188,104 +233,71 @@
     </div>
   </header>
 
-  <!-- Scrollable content — choices centered, history below -->
+  <!-- Ambient particles — segment-themed floating dust/wisps -->
+  <MapAmbientParticles segment={map.segment} />
+
+  <!-- Vignette overlay — darkens edges, draws focus to center -->
+  <div class="vignette-overlay" aria-hidden="true"></div>
+
+  <!-- Scrollable map area -->
   <div class="map-scroll-container" bind:this={scrollContainer}>
-
-    <!-- =================================================
-         SECTION 1: Centered choices — fills available space
-         ================================================= -->
-    <section class="choices-center-area" aria-label="Choose your next room">
-      <p class="section-label choices-label">Choose your path</p>
-
-      <div class="choices-nodes-row" style="width: {containerWidth}px;">
-        {#each availableNodes as node, i (node.id)}
-          <MapNodeComponent
-            {node}
-            prominent={true}
-            onclick={() => onNodeSelect(node.id)}
+    <div
+      class="map-canvas"
+      style="width: {containerWidth}px; height: {canvasHeight}px;"
+    >
+      <!-- Edge SVG layer — rendered behind nodes -->
+      <svg
+        class="edge-layer"
+        width={containerWidth}
+        height={canvasHeight}
+        aria-hidden="true"
+      >
+        {#each edges as edge, i (i)}
+          {#if edge.state === 'traveled'}
+            <!-- Glow trail underneath traveled edges -->
+            <path
+              class="edge-path edge-traveled-glow edge-enter"
+              d={edgePath(edge.x1, edge.y1, edge.x2, edge.y2)}
+              opacity={edge.fogOpacity}
+              style="animation-delay: {edge.sourceRow * 60 + 30}ms;"
+            />
+          {/if}
+          <path
+            class="edge-path edge-{edge.state} edge-enter"
+            d={edgePath(edge.x1, edge.y1, edge.x2, edge.y2)}
+            opacity={edge.fogOpacity}
+            style="animation-delay: {edge.sourceRow * 60 + 30}ms;"
           />
         {/each}
+      </svg>
 
-        {#if availableNodes.length === 0}
-          <p class="no-choices-hint">Entering room…</p>
-        {/if}
-      </div>
-    </section>
-
-    <!-- =================================================
-         SECTION 2: Decision history — below the choices
-         Newest entry at top, oldest at bottom.
-         ================================================= -->
-    {#if resolvedHistory.length > 0}
-      <section class="history-section" aria-label="Path history">
-        <p class="section-label history-label">Your path</p>
-
+      <!-- Node layer — positioned absolutely over the SVG -->
+      {#each Object.values(map.nodes) as node (node.id)}
+        {@const nx = node.x * containerWidth}
+        {@const ny = canvasHeight - (node.row * rowSpacing + rowSpacing / 2)}
+        {@const rowDist = Math.abs(node.row - currentRow)}
+        {@const fogOpacity = rowDist <= 1 ? 1 : rowDist <= 3 ? 0.7 : 0.45}
+        {@const fogBlur = rowDist <= 1 ? 0 : rowDist <= 3 ? 0.5 : 1}
         <div
-          class="history-canvas"
-          style="width: {containerWidth}px; height: {historyCanvasHeight}px;"
+          class="node-position node-entrance"
+          style="left: {nx}px; top: {ny}px; opacity: {fogOpacity}; filter: blur({fogBlur}px); animation-delay: {node.row * 60}ms;"
         >
-          {#each [...resolvedHistory].reverse() as decision, reverseIdx (decision.selectedNode.id)}
-            {@const histIdx = resolvedHistory.length - 1 - reverseIdx}
-
-            <!-- Connector arrow pointing UPWARD from this row's node toward the row above (newer step) -->
-            <svg
-              class="connector-svg history-connector"
-              width={containerWidth}
-              height={rowH * 0.88}
-              style="top: {historyConnectorTopY(histIdx)}px;"
-              aria-hidden="true"
-            >
-              <defs>
-                <!-- Arrow head points toward the top (upward) -->
-                <marker
-                  id="arrow-hist-{histIdx}"
-                  markerWidth="7"
-                  markerHeight="7"
-                  refX="2"
-                  refY="3.5"
-                  orient="auto"
-                >
-                  <path d="M 7 1 L 0 3.5 L 7 6 Z" fill="#F5F0E6" opacity="0.5" />
-                </marker>
-              </defs>
-              <!-- Path goes FROM bottom (this row's node) UPWARD TO the row above — arrowhead at top -->
-              <path
-                class="connector-path connector-history"
-                d={arrowPath(
-                  containerWidth / 2, rowH * 0.82,
-                  containerWidth / 2, 0
-                )}
-                marker-end="url(#arrow-hist-{histIdx})"
-              />
-            </svg>
-
-            <!-- History row: selected node centred, alts dimmed -->
-            <div class="history-row" style="top: {historyNodeY(histIdx)}px;">
-              <!-- Unchosen alternatives at 30% opacity -->
-              {#each decision.altNodes as altNode, ai (altNode.id)}
-                {@const altTotal = decision.altNodes.length}
-                {@const altOffset = ai < Math.floor(altTotal / 2) ? -1 : 1}
-                <div
-                  class="node-slot node-slot-alt"
-                  style="left: {containerWidth / 2 + altOffset * (80 * layoutScale)}px;"
-                  aria-label="Not chosen: {altNode.type}"
-                >
-                  <div class="alt-node-wrap">
-                    <MapNodeComponent node={altNode} onclick={() => {}} />
-                  </div>
-                </div>
-              {/each}
-
-              <!-- Selected node — full opacity, centred -->
-              <div class="node-slot node-slot-selected" style="left: {containerWidth / 2}px;">
-                <MapNodeComponent node={decision.selectedNode} onclick={() => {}} />
-              </div>
-            </div>
-          {/each}
+          <MapNodeComponent
+            {node}
+            onclick={() => node.state === 'available' && onNodeSelect(node.id)}
+          />
         </div>
-      </section>
-    {/if}
+      {/each}
 
+      <!-- Floor depth markers — subtle row labels -->
+      {#each rowMarkers as marker}
+        <div class="row-marker" style="top: {marker.y}px;">
+          <span class="row-marker-line"></span>
+          <span class="row-marker-label">{marker.label}</span>
+          <span class="row-marker-line"></span>
+        </div>
+      {/each}
+    </div>
   </div>
 </div>
 
@@ -296,11 +308,18 @@
   .dungeon-map-overlay {
     position: fixed;
     inset: 0;
-    background: #080d14;
     display: flex;
     flex-direction: column;
     z-index: 200;
     overflow: hidden;
+  }
+
+  .vignette-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+    pointer-events: none;
+    z-index: 3;
   }
 
   /* =========================================================
@@ -322,12 +341,12 @@
   }
 
   .hud-title {
-    font-size: calc(20px * var(--layout-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     color: #f1f5f9;
     margin: 0;
     letter-spacing: 0.5px;
     text-align: center;
-    text-shadow: 0 0 16px rgba(74, 158, 255, 0.4);
+    text-shadow: 0 0 calc(16px * var(--layout-scale, 1)) rgba(74, 158, 255, 0.4);
   }
 
   /* AR-243: Hide segment title in landscape — shown in top bar */
@@ -362,7 +381,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
     color: #e6edf3;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
@@ -370,7 +389,7 @@
   }
 
   /* =========================================================
-     Scrollable area — flex column, centers choices, history below
+     Scrollable map container
      ========================================================= */
   .map-scroll-container {
     flex: 1;
@@ -380,7 +399,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: var(--safe-bottom, calc(16px * var(--layout-scale, 1)));
+    padding-top: calc(16px * var(--layout-scale, 1));
+    padding-bottom: max(var(--safe-bottom, 0px), calc(16px * var(--layout-scale, 1)));
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -390,165 +410,151 @@
   }
 
   /* =========================================================
-     Choices center area — fills available vertical space,
-     vertically and horizontally centers the choice nodes.
+     Map canvas — absolute-positioned container for nodes + SVG
      ========================================================= */
-  .choices-center-area {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* Subtle radial glow behind the nodes */
-    background: radial-gradient(
-      ellipse at 50% 50%,
-      rgba(74, 158, 255, 0.07) 0%,
-      transparent 65%
-    );
-    /* Minimum height so it doesn't collapse on very small viewports */
-    min-height: calc(220px * var(--layout-scale, 1));
-    gap: calc(28px * var(--layout-scale, 1));
-    padding: calc(24px * var(--layout-scale, 1)) 0;
-  }
-
-  /* The row of choice nodes — flex, horizontally centered, spaced */
-  .choices-nodes-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: calc(48px * var(--layout-scale, 1));
-    flex-wrap: nowrap;
-  }
-
-  /* =========================================================
-     Section labels
-     ========================================================= */
-  .section-label {
-    text-align: center;
-    letter-spacing: calc(1.5px * var(--layout-scale, 1));
-    text-transform: uppercase;
-    font-weight: 600;
-    pointer-events: none;
-    margin: 0;
-  }
-
-  .choices-label {
-    font-size: calc(11px * var(--text-scale, 1));
-    color: rgba(245, 240, 230, 0.6);
-  }
-
-  .history-label {
-    font-size: calc(10px * var(--text-scale, 1));
-    color: rgba(245, 240, 230, 0.35);
-    margin-bottom: calc(8px * var(--layout-scale, 1));
-  }
-
-  .no-choices-hint {
-    text-align: center;
-    color: rgba(245, 240, 230, 0.4);
-    font-size: calc(13px * var(--text-scale, 1));
-    font-style: italic;
-    margin: 0;
-  }
-
-  /* =========================================================
-     History section — naturally sized below choices
-     ========================================================= */
-  .history-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-top: 1px solid rgba(245, 240, 230, 0.07);
-    padding-top: calc(16px * var(--layout-scale, 1));
-    padding-bottom: calc(16px * var(--layout-scale, 1));
-    flex-shrink: 0;
-  }
-
-  /* Absolute-positioned canvas for the history rows */
-  .history-canvas {
+  .map-canvas {
     position: relative;
+    margin: 0 auto;
     flex-shrink: 0;
   }
 
-  .history-row {
-    position: absolute;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-  }
-
   /* =========================================================
-     Node slots (used in history only)
+     SVG edge layer
      ========================================================= */
-  .node-slot {
+  .edge-layer {
     position: absolute;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-
-  /* Dimmed alternative nodes */
-  .node-slot-alt {
-    opacity: 0.3;
+    top: 0;
+    left: 0;
     pointer-events: none;
     z-index: 1;
   }
 
-  .alt-node-wrap {
-    filter: grayscale(0.5);
-  }
-
-  /* Chosen history node */
-  .node-slot-selected {
-    opacity: 1;
-    pointer-events: none;
-  }
-
-  /* =========================================================
-     SVG connector overlays (history only)
-     ========================================================= */
-  .connector-svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-  }
-
-  .history-connector {
-    /* top set inline per row */
-    top: unset;
-  }
-
-  :global(.connector-path) {
+  /* Base path style applied to all edges */
+  :global(.edge-path) {
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
 
-  /* Active choice connectors — bright off-white dashes with soft glow */
-  :global(.connector-active) {
+  /* Glow trail — wide blurred duplicate rendered beneath traveled edges */
+  :global(.edge-traveled-glow) {
     stroke: #F5F0E6;
-    stroke-width: 1.5px;
-    stroke-dasharray: 6px 5px;
-    opacity: 0.85;
-    filter: drop-shadow(0 0 3px rgba(245, 240, 230, 0.35));
+    stroke-width: 6px;
+    opacity: 0.08;
+    filter: blur(3px);
   }
 
-  /* History connectors — dimmer */
-  :global(.connector-history) {
+  /* Traveled edges — solid bright line (both endpoints visited/current) */
+  :global(.edge-traveled) {
     stroke: #F5F0E6;
+    stroke-width: 2.5px;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 calc(3px * var(--layout-scale, 1)) rgba(245, 240, 230, 0.3));
+  }
+
+  /* Available edges — animated marching dashes (parent visited, child available) */
+  :global(.edge-available) {
+    stroke: #F5F0E6;
+    stroke-width: 2px;
+    stroke-dasharray: 6 4;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 calc(4px * var(--layout-scale, 1)) rgba(245, 240, 230, 0.4));
+    animation: marchingAnts 0.8s linear infinite;
+  }
+
+  /* Locked edges — thin dim dotted lines */
+  :global(.edge-locked) {
+    stroke: rgba(245, 240, 230, 0.12);
     stroke-width: 1px;
-    stroke-dasharray: 5px 6px;
-    opacity: 0.45;
+    stroke-dasharray: 3 5;
+  }
+
+  @keyframes marchingAnts {
+    to {
+      stroke-dashoffset: -10;
+    }
+  }
+
+  /* =========================================================
+     Node positioning wrapper
+     ========================================================= */
+  .node-position {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  /* =========================================================
+     Node entrance animation — row-by-row reveal from bottom
+     ========================================================= */
+  .node-entrance {
+    animation: nodeEnter 0.4s ease-out both;
+  }
+
+  @keyframes nodeEnter {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateY(calc(12px * var(--layout-scale, 1)));
+    }
+    to {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+  }
+
+  /* =========================================================
+     Edge entrance animation
+     ========================================================= */
+  :global(.edge-enter) {
+    animation: edgeEnter 0.3s ease-out both;
+  }
+
+  @keyframes edgeEnter {
+    from {
+      opacity: 0;
+    }
+  }
+
+  /* =========================================================
+     Floor depth markers
+     ========================================================= */
+  .row-marker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: 0 calc(40px * var(--layout-scale, 1));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .row-marker-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(245, 240, 230, 0.06);
+  }
+
+  .row-marker-label {
+    font-size: calc(9px * var(--text-scale, 1));
+    color: rgba(245, 240, 230, 0.2);
+    text-transform: uppercase;
+    letter-spacing: calc(2px * var(--layout-scale, 1));
+    font-weight: 600;
+    white-space: nowrap;
   }
 
   /* =========================================================
      Reduced-motion
      ========================================================= */
   @media (prefers-reduced-motion: reduce) {
-    :global(.connector-active) {
+    .node-entrance {
+      animation: none;
+    }
+    :global(.edge-available) {
+      animation: none;
+    }
+    :global(.edge-enter) {
       animation: none;
     }
   }

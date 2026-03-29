@@ -19,7 +19,7 @@ export const PET_PERSONALITY_TEMPLATES: Record<string, PetPersonality[]> = {
   trilobite: [
     {
       primary: 'curious', secondary: 'timid', quirk: 'Hides behind rocks when startled, then peeks out with one eye',
-      favoriteActivity: 'exploring', favoriteMineral: 'dust',
+      favoriteActivity: 'exploring', favoriteMineral: 'greyMatter',
       moodResponses: {
         happy: ['Trilobite clicks its mandibles contentedly.', 'It rolls into a ball and back out — its version of a happy dance.'],
         neutral: ['Trilobite surveys the area methodically.', 'It taps its antennae against the ground.'],

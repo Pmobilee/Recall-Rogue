@@ -14,13 +14,13 @@
 
   let activeEffectType = $state<string | null>(null)
 
-  const EFFECT_INFO: Record<string, { name: string; icon: string; color: string; desc: (v: number, t: number) => string }> = {
-    poison: { name: 'Poison', icon: '☠️', color: '#22c55e', desc: (v, t) => `${v} poison damage at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
-    weakness: { name: 'Weakness', icon: '⬇', color: '#a78bfa', desc: (v, t) => `Attacks deal 25% less damage (${t} turn${t !== 1 ? 's' : ''} left)` },
-    vulnerable: { name: 'Vulnerable', icon: '🎯', color: '#f87171', desc: (v, t) => `Takes 50% more damage (${t} turn${t !== 1 ? 's' : ''} left)` },
-    strength: { name: 'Strength', icon: '💪', color: '#fbbf24', desc: (v, t) => `Attacks deal +25% damage per stack (${v} stack${v !== 1 ? 's' : ''})` },
-    regen: { name: 'Regen', icon: '💚', color: '#4ade80', desc: (v, t) => `Heals ${v} HP at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
-    immunity: { name: 'Immunity', icon: '✨', color: '#60a5fa', desc: () => `Absorbs next poison instance` },
+  const EFFECT_INFO: Record<string, { name: string; icon: string; spriteIcon?: string; color: string; desc: (v: number, t: number) => string }> = {
+    poison: { name: 'Poison', icon: '☠️', spriteIcon: '/assets/sprites/icons/icon_status_poison.png', color: '#22c55e', desc: (v, t) => `${v} poison damage at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
+    weakness: { name: 'Weakness', icon: '⬇', spriteIcon: '/assets/sprites/icons/icon_status_weakness.png', color: '#a78bfa', desc: (v, t) => `Attacks deal 25% less damage (${t} turn${t !== 1 ? 's' : ''} left)` },
+    vulnerable: { name: 'Vulnerable', icon: '🎯', spriteIcon: '/assets/sprites/icons/icon_status_vulnerable.png', color: '#f87171', desc: (v, t) => `Takes 50% more damage (${t} turn${t !== 1 ? 's' : ''} left)` },
+    strength: { name: 'Strength', icon: '💪', spriteIcon: '/assets/sprites/icons/icon_status_strength.png', color: '#fbbf24', desc: (v, t) => `Attacks deal +25% damage per stack (${v} stack${v !== 1 ? 's' : ''})` },
+    regen: { name: 'Regen', icon: '💚', spriteIcon: '/assets/sprites/icons/icon_status_regen.png', color: '#4ade80', desc: (v, t) => `Heals ${v} HP at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
+    immunity: { name: 'Immunity', icon: '✨', spriteIcon: '/assets/sprites/icons/icon_status_immunity.png', color: '#60a5fa', desc: () => `Absorbs next poison instance` },
     thorns: { name: 'Thorns', icon: '🌿', color: '#86efac', desc: (v) => `Deals ${v} damage back when hit this turn` },
     empower: { name: 'Empower', icon: '⚡', color: '#fcd34d', desc: (v) => `Next card gets +${v}% effect` },
     double_strike: { name: 'Double Strike', icon: '⚔️', color: '#fb923c', desc: (v) => `Next attack hits twice at ${v}%` },
@@ -29,8 +29,8 @@
     fortify: { name: 'Fortify', icon: '🏰', color: '#94a3b8', desc: (v) => `${v} block persists into next turn` },
     overclock: { name: 'Overclock', icon: '⚙️', color: '#e879f9', desc: () => `Next card effect doubled, draw -1 next turn` },
     slow: { name: 'Slow', icon: '🐌', color: '#a1a1aa', desc: (v, t) => `Skips next defend/buff action (${t} turn${t !== 1 ? 's' : ''} left)` },
-    burn: { name: 'Burn', icon: '🔥', color: '#f97316', desc: (v) => `Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
-    bleed: { name: 'Bleed', icon: '🩸', color: '#ef4444', desc: (v) => `Bleed [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
+    burn: { name: 'Burn', icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png', color: '#f97316', desc: (v) => `Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
+    bleed: { name: 'Bleed', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png', color: '#ef4444', desc: (v) => `Bleed [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
     freeze: { name: 'Freeze', icon: '❄️', color: '#38bdf8', desc: (v, t) => `Frozen — skips action (${t} turn${t !== 1 ? 's' : ''} left)` },
     // Knowledge Aura states (AR-261)
     brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => `Brain Fog: enemies deal +20% damage. Fog: ${v}/10` },
@@ -43,7 +43,7 @@
     accuracy_s: { name: 'S Grade', icon: '⭐', color: '#fbbf24', desc: () => `Perfect accuracy — bonus rewards incoming` },
   }
 
-  function getInfo(type: string) {
+  function getInfo(type: string): { name: string; icon: string; spriteIcon?: string; color: string; desc: (v: number, t: number) => string } {
     return EFFECT_INFO[type] ?? { name: type, icon: '❓', color: '#94a3b8', desc: (v: number, t: number) => `${type}: value ${v}, ${t} turns.` }
   }
 
@@ -68,7 +68,11 @@
         onclick={() => showEffect(effect.type)}
         aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
       >
-        <span class="effect-emoji">{info.icon}</span>
+        {#if info.spriteIcon}
+          <img src={info.spriteIcon} alt={info.name} class="effect-sprite-icon" />
+        {:else}
+          <span class="effect-emoji">{info.icon}</span>
+        {/if}
         {#if effect.value > 1}
           <span class="effect-stack" style="background: {info.color};">{effect.value}</span>
         {/if}
@@ -85,7 +89,11 @@
       <div class="effect-popup-backdrop" onclick={dismissPopup} onkeydown={() => {}}>
         <div class="effect-popup" class:popup-enemy={position === 'enemy'} class:popup-player={position === 'player'}>
           <div class="popup-row">
-            <span class="popup-icon" style="color: {info.color};">{info.icon}</span>
+            {#if info.spriteIcon}
+              <img src={info.spriteIcon} alt={info.name} class="popup-sprite-icon" />
+            {:else}
+              <span class="popup-icon" style="color: {info.color};">{info.icon}</span>
+            {/if}
             <div class="popup-text">
               <span class="popup-name" style="color: {info.color};">{info.name}</span>
               <span class="popup-desc">{info.desc(activeEffect.value, activeEffect.turnsRemaining)}</span>
@@ -235,5 +243,20 @@
     font-size: calc(11px * var(--layout-scale, 1));
     color: #94a3b8;
     line-height: 1.3;
+  }
+
+  .effect-sprite-icon {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+
+  .popup-sprite-icon {
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
+    image-rendering: pixelated;
+    object-fit: contain;
+    flex-shrink: 0;
   }
 </style>

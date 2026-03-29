@@ -1,12 +1,10 @@
-import type { MineralTier } from './types'
-
 export interface DailyDeal {
   id: string
   name: string
   description: string
   icon: string
   category: 'mineral_pack' | 'oxygen_boost' | 'recipe_discount' | 'cosmetic_discount' | 'mystery_box'
-  cost: Partial<Record<MineralTier, number>>
+  cost: { greyMatter: number }
   reward: DealReward
   /** Which market slot this deal occupies (1 = Consumable, 2 = Special, 3 = Featured). */
   slot: 1 | 2 | 3
@@ -17,7 +15,7 @@ export interface DailyDeal {
 }
 
 export type DealReward =
-  | { type: 'minerals'; tier: MineralTier; amount: number }
+  | { type: 'minerals'; amount: number }
   | { type: 'oxygen_tanks'; amount: number }
   | { type: 'recipe_discount'; recipeId: string; discountPercent: number }
   | { type: 'random_minerals'; minDust: number; maxDust: number }
@@ -26,31 +24,13 @@ export type DealReward =
 // === Slot 1: Consumable pool (20% discount) ===
 const CONSUMABLE_POOL: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
   {
-    id: 'shard_bundle',
-    name: 'Shard Bundle',
-    description: '5 shards at a discount',
-    icon: '💎',
-    category: 'mineral_pack',
-    cost: { dust: 120 }, // 20% off normal 150
-    reward: { type: 'minerals', tier: 'shard', amount: 5 },
-  },
-  {
     id: 'oxygen_surplus',
     name: 'Oxygen Surplus',
     description: '+1 oxygen tank',
     icon: '🫧',
     category: 'oxygen_boost',
-    cost: { dust: 240, shard: 4 }, // 20% off
+    cost: { greyMatter: 300 },
     reward: { type: 'oxygen_tanks', amount: 1 },
-  },
-  {
-    id: 'dust_sale',
-    name: 'Dust Clearance',
-    description: 'Bulk dust cheap',
-    icon: '✨',
-    category: 'mineral_pack',
-    cost: { shard: 2 }, // 20% off 3
-    reward: { type: 'minerals', tier: 'dust', amount: 200 },
   },
   {
     id: 'bomb_discount',
@@ -58,7 +38,7 @@ const CONSUMABLE_POOL: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay
     description: 'Bomb kit at 50% off',
     icon: '💣',
     category: 'recipe_discount',
-    cost: { dust: 120, shard: 4 }, // 20% off
+    cost: { greyMatter: 200 },
     reward: { type: 'recipe_discount', recipeId: 'bomb_kit', discountPercent: 50 },
   },
   {
@@ -67,7 +47,7 @@ const CONSUMABLE_POOL: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay
     description: 'Reinforced tank at 40% off',
     icon: '🫧',
     category: 'recipe_discount',
-    cost: { dust: 96, shard: 2 }, // 20% off
+    cost: { greyMatter: 150 },
     reward: { type: 'recipe_discount', recipeId: 'reinforced_tank', discountPercent: 40 },
   },
 ]
@@ -75,82 +55,37 @@ const CONSUMABLE_POOL: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay
 // === Slot 2: Special/Cosmetic pool (no discount) ===
 const SPECIAL_POOL: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
   {
-    id: 'crystal_special',
-    name: 'Crystal Special',
-    description: '2 crystals for shards',
-    icon: '🔮',
-    category: 'mineral_pack',
-    cost: { shard: 15 },
-    reward: { type: 'minerals', tier: 'crystal', amount: 2 },
-  },
-  {
     id: 'mystery_minerals',
     name: 'Mystery Cache',
     description: 'Random mineral windfall',
     icon: '❓',
     category: 'mystery_box',
-    cost: { dust: 100 },
+    cost: { greyMatter: 100 },
     reward: { type: 'random_minerals', minDust: 50, maxDust: 250 },
-  },
-  {
-    id: 'geode_deal',
-    name: 'Geode Deal',
-    description: '1 geode at a steal',
-    icon: '🪨',
-    category: 'mineral_pack',
-    cost: { crystal: 8 },
-    reward: { type: 'minerals', tier: 'geode', amount: 1 },
   },
 ]
 
 // === Slot 3: Featured pool (7-day rotation; day 7 = rare+ pity) ===
 const FEATURED_UNCOMMON: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
   {
-    id: 'feat_shard_pack',
-    name: 'Shard Mega-Pack',
-    description: '10 shards',
-    icon: '💎',
-    category: 'mineral_pack',
-    cost: { dust: 350 },
-    reward: { type: 'minerals', tier: 'shard', amount: 10 },
-  },
-  {
-    id: 'feat_crystal_2',
-    name: 'Crystal Duo',
-    description: '2 crystals',
-    icon: '🔮',
-    category: 'mineral_pack',
-    cost: { shard: 12 },
-    reward: { type: 'minerals', tier: 'crystal', amount: 2 },
-  },
-  {
     id: 'feat_o2_double',
     name: 'Double Refill',
     description: '+2 oxygen tanks',
     icon: '🫧',
     category: 'oxygen_boost',
-    cost: { dust: 500, shard: 8 },
+    cost: { greyMatter: 600 },
     reward: { type: 'oxygen_tanks', amount: 2 },
   },
 ]
 
 const FEATURED_RARE: Omit<DailyDeal, 'slot' | 'discountPercent' | 'featuredDay'>[] = [
   {
-    id: 'feat_geode_rare',
-    name: 'Rare Geode Bundle',
-    description: '2 geodes (pity deal)',
-    icon: '🪨',
-    category: 'mineral_pack',
-    cost: { crystal: 12 },
-    reward: { type: 'minerals', tier: 'geode', amount: 2 },
-  },
-  {
     id: 'feat_mystery_rare',
     name: 'Golden Cache',
     description: 'Premium mineral haul',
     icon: '✨',
     category: 'mystery_box',
-    cost: { dust: 200, shard: 5 },
+    cost: { greyMatter: 300 },
     reward: { type: 'random_minerals', minDust: 200, maxDust: 500 },
   },
 ]

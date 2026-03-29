@@ -47,6 +47,8 @@ export interface RunState {
   elitesDefeated: number;
   miniBossesDefeated: number;
   bossesDefeated: number;
+  /** Template IDs of enemies defeated during this run (in order of defeat). */
+  defeatedEnemyIds?: string[];
   currentEncounterWrongAnswers: number;
   bounties: ActiveBounty[];
   canary: CanaryState;
@@ -115,6 +117,8 @@ export interface RunState {
   cardsUpgraded: number;
   /** Cards removed via shop removal service this run. Affects removal price escalation. */
   cardsRemovedAtShop: number;
+  /** Cards transformed via shop transformation service this run. Affects transform price escalation. */
+  cardsTransformedAtShop?: number;
   /** Total haggle attempts this run (telemetry). */
   haggleAttempts: number;
   /** Successful haggle attempts this run (telemetry). */
@@ -174,6 +178,10 @@ export interface RunEndData {
   elitesDefeated: number;
   miniBossesDefeated: number;
   bossesDefeated: number;
+  /** Template IDs of enemies defeated during this run. */
+  defeatedEnemyIds: string[];
+  /** Breakdown of fact mastery states for facts touched this run. */
+  factStateSummary: { seen: number; reviewing: number; mastered: number };
   completedBounties: string[];
   duration: number;
   runDurationMs: number;
@@ -235,6 +243,7 @@ export function createRunState(
     elitesDefeated: 0,
     miniBossesDefeated: 0,
     bossesDefeated: 0,
+    defeatedEnemyIds: [],
     currentEncounterWrongAnswers: 0,
     bounties: selectRunBounties(primary, secondary, bountyCount),
     canary: createCanaryState(),
@@ -387,6 +396,8 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     elitesDefeated: state.elitesDefeated,
     miniBossesDefeated: state.miniBossesDefeated,
     bossesDefeated: state.bossesDefeated,
+    defeatedEnemyIds: state.defeatedEnemyIds ?? [],
+    factStateSummary: { seen: 0, reviewing: 0, mastered: 0 },
     completedBounties,
     duration,
     runDurationMs: duration,

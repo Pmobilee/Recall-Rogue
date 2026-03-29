@@ -156,10 +156,24 @@ export const SUBCATEGORY_TAXONOMY: Partial<Record<CanonicalFactDomain, Subcatego
   ],
 }
 
-/** Look up the display label for a subcategory ID within a domain. Returns the raw ID if not found. */
+/** Look up the display label for a subcategory ID within a domain.
+ *  Falls back to a cross-domain search, then title-cases the raw ID as a last resort. */
 export function getSubcategoryLabel(domain: CanonicalFactDomain, subcategoryId: string): string {
+  // 1. Try the specified domain first
   const defs = SUBCATEGORY_TAXONOMY[domain]
-  if (!defs) return subcategoryId
-  const match = defs.find((d) => d.id === subcategoryId)
-  return match ? match.label : subcategoryId
+  if (defs) {
+    const match = defs.find((d) => d.id === subcategoryId)
+    if (match) return match.label
+  }
+
+  // 2. Cross-domain fallback — search all domains
+  for (const entries of Object.values(SUBCATEGORY_TAXONOMY)) {
+    const match = entries.find((d) => d.id === subcategoryId)
+    if (match) return match.label
+  }
+
+  // 3. Last resort: title-case the raw ID
+  return subcategoryId
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase())
 }

@@ -1,0 +1,1312 @@
+deck_id: ancient_rome
+name: "Ancient Rome"
+domain: history
+sub_domain: ancient_rome
+target_facts: 280
+minimum_facts: 200
+data_sources:
+- name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ancient_Rome
+  license: CC-BY-SA-4.0
+  usage: fact text, explanations, biographical details, historical context
+- name: Wikidata
+  url: https://www.wikidata.org/wiki/Q1747689
+  license: CC0
+  usage: structured data (dates, locations, rulers, battles)
+asset_sources:
+- type: historical_illustrations
+  source: custom pixel art
+  license: original work
+  note: Generate via ComfyUI — Roman legionaries, emperors, architectural ruins, maps
+
+# ============================================================
+# SOURCE DATA — 8 chain themes
+# All facts verified against Wikipedia URLs listed per entry.
+# Workers MUST copy facts FROM this verified data — never invent.
+# ============================================================
+source_data:
+
+  # ----------------------------------------------------------
+  # THEME 0: Republic to Empire
+  # ----------------------------------------------------------
+  republic_to_empire:
+    Founding_of_Rome:
+      date: '753 BCE (traditional, established by Varro chronology)'
+      location: 'Seven hills along the Tiber River, Italy'
+      key_terms: 'Romulus and Remus legend, Palatine Hill, seven kings, Lupercal cave'
+      notes: >
+        Traditional founding date 753 BCE; modern archaeology shows settlement from ~1600 BCE
+        with gradual coalescence of hill villages. Ancient historians proposed dates ranging
+        753–728 BCE. Romulus is traditionally the first king; quarrelled with twin Remus over
+        which hill to found the city on; Remus was killed. The she-wolf suckled the twins at
+        the Lupercal cave; they were raised by a shepherd. The name "Romulus" is now believed
+        to be retrojected from the city's name rather than a real person.
+      source_url: 'https://en.wikipedia.org/wiki/Founding_of_Rome'
+
+    Roman_Kingdom_Seven_Kings:
+      date: '753–509 BCE'
+      location: 'Rome, Italy'
+      key_terms: 'Romulus, Numa Pompilius, Tullus Hostilius, Ancus Marcius, Tarquinius Priscus, Servius Tullius, Tarquinius Superbus'
+      notes: >
+        Rome ruled by 7 kings in order: 1) Romulus (753–716 BCE) — founder, established
+        religious/political institutions; 2) Numa Pompilius (715–672 BCE) — introduced
+        12-month calendar, reformed religion; 3) Tullus Hostilius (672–640 BCE) — warlike,
+        destroyed Alba Longa; 4) Ancus Marcius (640–616 BCE) — founded port of Ostia, built
+        Rome's first bridge; 5) Lucius Tarquinius Priscus (616–578 BCE) — first Etruscan king,
+        built Cloaca Maxima sewer; 6) Servius Tullius (578–534 BCE) — reformed military and
+        census; 7) Lucius Tarquinius Superbus (534–509 BCE) — tyrant, last king. Kingdom ended
+        after Tarquin's son Sextus assaulted Lucretia; she died by suicide and nobles expelled
+        the Tarquin family.
+      source_url: 'https://en.wikipedia.org/wiki/Roman_Kingdom'
+
+    Founding_of_Roman_Republic:
+      date: '509 BCE'
+      location: 'Rome, Italy'
+      key_terms: 'two consuls, annually elected, veto, imperium, Lucius Junius Brutus'
+      notes: >
+        Republic lasted 509–27 BCE. Traditional credit to Lucius Junius Brutus; modern scholars
+        view founding account as "quasi-mythological." Monarchy replaced by two annually elected
+        consuls who each could veto the other's decisions — deliberate check to prevent any one
+        person accumulating royal power. Consuls held supreme civil and military authority (imperium).
+      source_url: 'https://en.wikipedia.org/wiki/Roman_Republic'
+
+    SPQR:
+      date: 'First appeared ~80 BCE on inscriptions'
+      location: 'Rome — public documents, monuments, coins, military standards'
+      key_terms: 'Senatus Populusque Romanus, The Senate and People of Rome'
+      notes: >
+        SPQR = "Senatus Populusque Romanus" — "The Senate and People of Rome." First appeared
+        on inscriptions ~80 BCE. Used on public documents, monuments, coins, and military
+        standards. Still appears on Rome's manhole covers and official documents today.
+      source_url: 'https://en.wikipedia.org/wiki/SPQR'
+
+    Conflict_of_the_Orders:
+      date: '~500–287 BCE (approximately 200 years)'
+      location: 'Rome, Italy'
+      key_terms: 'patricians, plebeians, tribunes, Twelve Tables, Licinian-Sextian Laws, Lex Hortensia'
+      notes: >
+        Political struggle between patricians (aristocrats, ~50 families monopolizing magistracies)
+        and plebeians (commoners). Key milestones: 494 BCE — First Secession of the Plebs to the
+        Sacred Mount, tribunes of the plebs created (personally sacrosanct, immune to arrest,
+        veto power over legislation); 451–450 BCE — Twelve Tables produced (first written law code,
+        12 bronze tablets displayed publicly in the Forum); 367 BCE — Licinian-Sextian Laws opened
+        consulship to plebeians; 356 BCE — first plebeian dictator; 287 BCE — Lex Hortensia made
+        plebiscites binding on all citizens. Ended with full political equality on paper, though
+        a new patricio-plebeian aristocracy ("nobilitas") replaced the old patrician monopoly.
+      source_url: 'https://en.wikipedia.org/wiki/Conflict_of_the_Orders'
+
+    Gaius_Marius_Seven_Consulships:
+      date: 'Life ~157–86 BCE; first consul 107 BCE; consecutive 104–100 BCE; final 86 BCE'
+      location: 'Rome; battles at Aquae Sextiae (102 BCE) and Vercellae (101 BCE)'
+      key_terms: 'seven consulships, Teutones, Cimbri, Marian reforms, eagle standard, rivalry with Sulla'
+      notes: >
+        Marius held the consulship 7 times — a record. Defeated the Teutones at Aquae Sextiae
+        (102 BCE) and the Cimbri at Vercellae (101 BCE), saving Rome from Germanic invaders.
+        His rivalry with Sulla led to Rome's first civil war. The "Marian reforms" of the army
+        are now considered largely a modern scholarly construct — only two reforms are directly
+        attributed to him in ancient sources: redesigning the pilum and adopting the eagle as
+        legionary standard.
+      source_url: 'https://en.wikipedia.org/wiki/Gaius_Marius'
+
+    Sullas_Dictatorship:
+      date: 'Life 138–78 BCE; first march on Rome 88 BCE; second march 83–82 BCE; dictator 82–80 BCE'
+      location: 'Rome, Italy'
+      key_terms: 'Lucius Cornelius Sulla Felix, first march on Rome, proscriptions, dictator perpetuo, Colline Gate'
+      notes: >
+        Sulla made two marches on Rome: 88 BCE (after tribune Sulpicius transferred his
+        Mithridatic command to Marius, Sulla became "the first general during the late Republic"
+        to march an army on Rome); 83–82 BCE (returned from east, defeated opponents at Battle
+        of the Colline Gate). Sulla's proscriptions published death lists condemning thousands
+        without trial; descendants of proscribed barred from office. Appointed dictator 82 BCE
+        with no time limit ("dictator legis scribundis et rei publicae constituendae"); voluntarily
+        retired 80 BCE and died 78 BCE. His voluntary retirement was considered extraordinary.
+      source_url: 'https://en.wikipedia.org/wiki/Sulla'
+
+    Social_War:
+      date: '91–87 BCE (major fighting 91–88 BCE)'
+      location: 'Italy — Marsi, Samnite, Campanian territories'
+      key_terms: 'socii, Italian allies, Roman citizenship, lex Julia de civitate, lex Plautia Papiria'
+      notes: >
+        War between Rome and Italian allies (socii) demanding Roman citizenship. Key rebel groups:
+        Marsi, Samnites, Campanians. Total casualties ~100,000. Result: Rome granted citizenship to
+        all Italian communities via lex Julia de civitate (90 BCE) and lex Plautia Papiria (89 BCE).
+        Effectively extended Roman citizenship to all free Italians, transforming Rome from a
+        city-state to a nation. Participants on the Roman side included Sulla, Pompey Strabo, and Marius.
+      source_url: 'https://en.wikipedia.org/wiki/Social_War_(91%E2%80%9387_BC)'
+
+    First_Triumvirate:
+      date: 'Late 60 BCE / early 59 BCE'
+      location: 'Rome, Italy'
+      key_terms: 'Julius Caesar, Gnaeus Pompeius Magnus, Marcus Licinius Crassus, informal alliance'
+      notes: >
+        Informal private alliance (not a legally established body). Caesar wanted a profitable
+        provincial command; Pompey wanted ratification of eastern settlements and land for veterans;
+        Crassus wanted reduction of tax contracts. Cemented by Pompey marrying Caesar's daughter
+        Julia. Ended when Crassus died at Battle of Carrhae (53 BCE) in failed Parthian invasion;
+        Julia died in childbirth; Caesar and Pompey became rivals. Led to Civil War 49 BCE.
+      source_url: 'https://en.wikipedia.org/wiki/First_Triumvirate'
+
+    Second_Triumvirate:
+      date: 'Formed November 27, 43 BCE (lex Titia); legally expired December 31, 33 BCE'
+      location: 'Rome, Italy'
+      key_terms: 'Octavian, Mark Antony, Lepidus, lex Titia, proscriptions, Cicero killed'
+      notes: >
+        Unlike the First Triumvirate, this was legally constituted by the lex Titia — granted
+        "practically absolute power" to make/repeal legislation and issue judicial punishments
+        without due process. Territories divided: Antony = eastern provinces; Octavian = west;
+        Lepidus = Africa. Proscriptions included Cicero (killed for opposing Antony); ~300 total
+        proscribed. Formally expired December 31, 33 BCE; Octavian won Battle of Actium 31 BCE,
+        became sole ruler.
+      source_url: 'https://en.wikipedia.org/wiki/Second_Triumvirate'
+
+  # ----------------------------------------------------------
+  # THEME 1: Julius Caesar
+  # ----------------------------------------------------------
+  julius_caesar:
+    Caesar_Birth_and_Death:
+      date: 'Born 12 or 13 July 100 BCE; died 15 March 44 BCE (age 55)'
+      location: 'Born Rome; died at Curia of Pompey (within Theatre of Pompey complex), Rome'
+      key_terms: 'gens Julia, patrician family, Ides of March'
+      notes: >
+        Caesar came from a patrician family (gens Julia). Named flamen Dialis (priest of Jupiter)
+        as a young man. Won the civic crown (corona civica) for bravery at the Siege of Mytilene
+        (81 BCE) — Rome's second-highest military honor, awarded for saving a fellow citizen's life.
+        Career milestones: quaestor (69 BCE), pontifex maximus (64 BCE), praetor (62 BCE),
+        consul (59 BCE).
+      source_url: 'https://en.wikipedia.org/wiki/Julius_Caesar'
+
+    Gallic_Wars:
+      date: '58–50 BCE'
+      location: 'Modern France, Belgium, Switzerland, parts of Germany'
+      key_terms: 'Vercingetorix, Alesia, Britain invasion (55–54 BCE), Gergovia, 11 legions'
+      notes: >
+        Caesar grew from 6 legions (58 BCE) to 11 legions + auxiliaries at Alesia siege (~60,000+
+        troops). Key events: defeated Helvetii migrations; battled Germanic tribes; twice invaded
+        Britain (55–54 BCE); defeated Vercingetorix at Battle of Alesia (52 BCE). Ancient sources
+        claim 1,000,000 Gauls killed + 1,000,000 enslaved — considered wildly inflated by modern
+        historians. Vercingetorix (~82–46 BCE): Arverni nobleman, name means "supreme king of
+        warriors." United nearly all Gallic tribes against Caesar. Used scorched-earth tactics.
+        Won at Battle of Gergovia (one of only ~3 Roman defeats in all Gallic Wars). Captured at
+        Alesia, held prisoner 6 years, executed 46 BCE at Caesar's triumph.
+      source_url: 'https://en.wikipedia.org/wiki/Gallic_Wars'
+
+    Commentarii_de_Bello_Gallico:
+      date: 'Covering 58–52 BCE campaigns; 8th book added by Aulus Hirtius after Caesar died'
+      location: 'Written by Caesar as political propaganda during/after the Gallic Wars'
+      key_terms: 'Gallia est omnis divisa in partes tres, 7 books, 8th by Hirtius, Latin prose masterwork'
+      notes: >
+        Famous opening line: "Gallia est omnis divisa in partes tres" ("Gaul is a whole divided
+        into three parts"). Caesar wrote 7 books covering 58–52 BCE campaigns; Aulus Hirtius added
+        an 8th after Caesar's death. Purpose: political propaganda to build public support and defend
+        against potential prosecution on return to Rome. Considered a masterwork of Latin prose;
+        traditionally assigned as first text for Latin students.
+      source_url: 'https://en.wikipedia.org/wiki/Commentarii_de_Bello_Gallico'
+
+    Crossing_the_Rubicon:
+      date: 'Around January 10–11, 49 BCE (exact date unknown)'
+      location: 'Rubicon River — boundary between Cisalpine Gaul and Roman Italy proper'
+      key_terms: 'Alea iacta est, point of no return, Pompey fled Rome, illegal to bring army south of Rubicon'
+      notes: >
+        Roman law prohibited generals from bringing armies south of the Rubicon — violation meant
+        the general and soldiers were automatically condemned to death as outlaws. Caesar said
+        "Alea iacta est" ("The die has been cast") — attributed by Suetonius, though Plutarch
+        records he quoted the playwright Menander instead. Immediate effect: Pompey, the consuls,
+        and much of the Senate fled Rome. "Crossing the Rubicon" now means "passing the point of
+        no return."
+      source_url: 'https://en.wikipedia.org/wiki/Crossing_the_Rubicon'
+
+    Battle_of_Pharsalus:
+      date: '9 August 48 BCE'
+      location: 'Near Palaepharsalus in Thessaly, Greece'
+      key_terms: 'Caesar victory, Pompey fled Egypt, Caesar ~23,000 vs Pompey ~41,000–54,000'
+      notes: >
+        Caesar ~23,000 soldiers; Pompey ~41,000–54,000 troops (larger advantage in cavalry:
+        5,000–7,000 vs Caesar's ~1,000). Outcome: Caesar's decisive victory. Caesar claimed only
+        ~200 of his soldiers killed; Pompeian losses 6,000–15,000 killed + 24,000 captured.
+        Pompey fled to Egypt, assassinated on arrival by order of Ptolemy XIII. Considered the
+        battle that "effectively ended the Republic" as former allies flocked to Caesar.
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Pharsalus'
+
+    Caesar_and_Cleopatra:
+      date: '47 BCE (meeting in Alexandria); Caesarion born ~47 BCE'
+      location: 'Alexandria, Egypt'
+      key_terms: 'Cleopatra VII, Caesarion (Ptolemy XV), 9 languages, first Ptolemaic ruler to learn Egyptian'
+      notes: >
+        Cleopatra VII (69–30 BCE), last active Hellenistic pharaoh, met Caesar after he arrived
+        in Alexandria pursuing Pompey. She reportedly had herself smuggled into the palace "bound
+        inside a bed sack." Their relationship produced a son, Caesarion (Ptolemy XV), later named
+        co-ruler of Egypt. Cleopatra was exceptional for speaking ~9 languages and being the first
+        Ptolemaic ruler to learn Egyptian. After Caesar's death, Cleopatra allied with Mark Antony,
+        producing 3 more children. After Antony's defeat at Actium (31 BCE), Egypt became a Roman
+        province.
+      source_url: 'https://en.wikipedia.org/wiki/Cleopatra'
+
+    Julian_Calendar_Reform:
+      date: 'Proposed 46 BCE; took effect January 1, 45 BCE'
+      location: 'Rome'
+      key_terms: '365-day year, leap year every 4 years, Year of Confusion (445-day year), replaced by Gregorian 1582'
+      notes: >
+        The old Roman calendar was subject to political manipulation by priests. New system: fixed
+        365-day year with one leap day every 4 years = average 365.25 days. "Year of Confusion":
+        46 BCE was extended to 445 days to realign the calendar with the seasons. The Julian calendar
+        was standard in Western Europe until the Gregorian calendar reform of 1582 CE. The difference:
+        Julius Caesar's calendar overestimates the solar year by ~11 minutes per year.
+      source_url: 'https://en.wikipedia.org/wiki/Julian_calendar'
+
+    Caesars_Dictatorship:
+      date: 'Dictator in perpetuity accepted 44 BCE; earlier stints 49 BCE and briefly 48 BCE'
+      location: 'Rome'
+      key_terms: 'dictator perpetuo, 900 senators, extended citizenship, fear of kingship, Liberatores'
+      notes: >
+        In 44 BCE, Caesar accepted "dictator perpetuo" (dictator in perpetuity / dictator for life)
+        — breaking the traditional 6-month limit. He expanded the Senate from 600 to 900 members,
+        extended citizenship, reduced the grain dole, settled veterans in colonies. Fear that he
+        would declare himself king was the primary stated motivation for his assassination.
+      source_url: 'https://en.wikipedia.org/wiki/Julius_Caesar'
+
+    Assassination_of_Caesar:
+      date: '15 March 44 BCE (Ides of March)'
+      location: 'Curia of Pompey, within the Theatre of Pompey complex, Rome'
+      key_terms: '23 stab wounds, ~60 conspirators, Marcus Junius Brutus, Gaius Cassius Longinus, Liberatores, Et tu Brute (Shakespeare only)'
+      notes: >
+        ~60 senators participated; key leaders were Marcus Junius Brutus, Gaius Cassius Longinus,
+        Decimus Junius Brutus Albinus, and Gaius Trebonius. Called themselves the "Liberatores."
+        Caesar sustained 23 stab wounds; only one (second to the ribs) was fatal — death from blood
+        loss. Last words: ancient sources Cassius Dio and Suetonius report Caesar said nothing; some
+        sources give the Greek phrase meaning "You too, child?" recognizing Brutus. "Et tu, Brute?"
+        is from Shakespeare's 1599 play — NOT historical record. The assassination triggered the
+        Liberators' Civil War and ultimately ended the Republic.
+      source_url: 'https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar'
+
+    Caesars_Famous_Quotes:
+      date: 'Various dates 49–47 BCE'
+      location: 'Rubicon River (49 BCE); Pontus after Battle of Zela (47 BCE); opening of Commentarii'
+      key_terms: 'Alea iacta est (Rubicon), Veni vidi vici (Zela), Gallia est omnis divisa in partes tres'
+      notes: >
+        Verified quotes: "Alea iacta est" ("The die has been cast") — at crossing the Rubicon,
+        49 BCE, per Suetonius (Plutarch records Greek Menander quote instead). "Veni, vidi, vici"
+        ("I came, I saw, I conquered") — after Battle of Zela (47 BCE), reported by both Suetonius
+        and Plutarch. "Gallia est omnis divisa in partes tres" — opening of Commentarii de Bello
+        Gallico. "Et tu, Brute?" — SHAKESPEARE ONLY, not historically attested.
+      source_url: 'https://en.wikipedia.org/wiki/Julius_Caesar'
+
+  # ----------------------------------------------------------
+  # THEME 2: Augustus & the Principate
+  # ----------------------------------------------------------
+  augustus_and_principate:
+    Octavians_Birth_and_Name:
+      date: 'Born September 23, 63 BCE in Rome; died August 19, 14 CE (age 75)'
+      location: 'Rome; died at Nola, Campania'
+      key_terms: 'Gaius Octavius, Gaius Julius Caesar Octavianus, Imperator Caesar Divi Filius Augustus, Divus Augustus'
+      notes: >
+        Birth name: Gaius Octavius. After Caesar's assassination: Gaius Julius Caesar Octavianus.
+        Final official name: Imperator Caesar Divi Filius Augustus. The Senate deified him after
+        death — he became Divus Augustus. Reign length: over 40 years as Rome's first emperor
+        (27 BCE–14 CE). Last words (reported by Suetonius): "Have I played the part well? Then
+        applaud as I leave the stage."
+      source_url: 'https://en.wikipedia.org/wiki/Augustus'
+
+    Battle_of_Actium:
+      date: 'September 2, 31 BCE'
+      location: 'Ionian Sea, near the promontory of Actium, Greece'
+      key_terms: 'Octavian, Mark Antony, Cleopatra, Marcus Agrippa commanded Octavian fleet, ~250 ships sunk/captured'
+      notes: >
+        Octavian's fleet led by admiral Marcus Agrippa vs. Mark Antony and Cleopatra's combined
+        fleets. Outcome: decisive victory for Octavian — approximately 250 of Antony's ships sunk
+        or captured. Casualties: ~2,500 for Octavian's side; over 5,000 for Antony's forces.
+        Antony and Cleopatra fled to Alexandria, where both subsequently died; Egypt became a Roman
+        province. Ended the Roman Republic; gave Octavian sole, uncontested control of the
+        Mediterranean.
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Actium'
+
+    Title_of_Augustus_Granted:
+      date: 'January 16, 27 BCE'
+      location: 'Rome'
+      key_terms: 'Augustus meaning venerable/illustrious, princeps first citizen, pater patriae father of the country'
+      notes: >
+        Title "Augustus" granted by the Roman Senate January 16, 27 BCE. Meaning: "Venerable" or
+        "the illustrious one" — a religious/honorific title, not a formal office. He also received
+        "princeps" ("first citizen") and later "pater patriae" ("father of the country"). Title
+        carefully crafted — he avoided "king" or "dictator" to not repeat Caesar's mistakes.
+      source_url: 'https://en.wikipedia.org/wiki/Augustus'
+
+    Pax_Romana:
+      date: '27 BCE–180 CE (approximately 207 years)'
+      location: 'Roman Empire'
+      key_terms: 'golden age, ~70 million population (~33% of world population), greatest extent under Trajan 117 CE'
+      notes: >
+        Began with Augustus defeating Antony at Actium and establishing the Principate. Ended with
+        the death of Marcus Aurelius, last of the Five Good Emperors. Roman population peaked at
+        ~70 million (approximately 33% of world population). Greatest territorial extent under
+        Emperor Trajan in 117 CE. The Pax Romana lasted ~207 years — longer than the United States
+        has existed.
+      source_url: 'https://en.wikipedia.org/wiki/Pax_Romana'
+
+    Praetorian_Guard:
+      date: 'Founded 27 BCE; disbanded 312 CE by Constantine after Battle of Milvian Bridge'
+      location: 'Rome'
+      key_terms: 'Augustus, nine cohorts ~500 men each, emperor bodyguard, kingmakers, disbanded by Constantine'
+      notes: >
+        Founded by Augustus. Original organization: nine cohorts of approximately 500 men each.
+        Purpose: personal bodyguard and security for the emperor; also counterintelligence and
+        crowd control. Later notoriety: became kingmakers — known for assassinating emperors and
+        proclaiming successors. Disbanded 312 CE by Emperor Constantine after the Battle of Milvian
+        Bridge. The Guard outlasted Augustus by nearly 340 years.
+      source_url: 'https://en.wikipedia.org/wiki/Praetorian_Guard'
+
+    Vigiles_Fire_Brigade:
+      date: 'Founded 6 CE by Augustus'
+      location: 'Rome'
+      key_terms: 'seven cohorts ~1,000 men, firefighting AND night police, funded by 4% slave sales tax'
+      notes: >
+        Augustus founded the Vigiles in 6 CE. Funded by a 4% tax on slave sales. Seven cohorts of
+        approximately 1,000 men each (6,000 total initially). Dual role: firefighting AND night
+        watchmen/police (apprehended thieves, captured runaway slaves). Modeled after Alexandria,
+        Egypt's fire brigade. Rome's combined fire department and police force — founded 2,000 years
+        before modern equivalents.
+      source_url: 'https://en.wikipedia.org/wiki/Vigiles'
+
+    Aeneid:
+      date: 'Written 29–19 BCE (commissioned during Augustus''s reign); Virgil died before finishing it'
+      location: 'Rome'
+      key_terms: 'Virgil, Publius Vergilius Maro, Trojan hero Aeneas, ancestor of Romans, Book 6 prophesies Augustus, Iulus'
+      notes: >
+        Author: Virgil (Publius Vergilius Maro). Subject: Trojan hero Aeneas, ancestor of the
+        Romans, tracing Rome's origins and the Julian family. Political purpose: legitimize
+        Augustus's rule — Book 6 explicitly prophesies Augustus as destined to bring Rome glory;
+        traces Julian family ancestry to Aeneas via his son Iulus. Became central to Latin education
+        for centuries; state-sponsored epic designed to make Augustus seem divinely destined.
+      source_url: 'https://en.wikipedia.org/wiki/Aeneid'
+
+    Augustus_City_of_Marble:
+      date: 'Reign 27 BCE–14 CE'
+      location: 'Rome'
+      key_terms: '"found Rome a city of bricks and left it a city of marble" (Suetonius), Forum of Augustus, Temple of Mars Ultor, Ara Pacis'
+      notes: >
+        Famous quote: "I found Rome a city of bricks and left it a city of marble" (reported by
+        Suetonius in "Life of Augustus"). Augustus patronized major poets including Virgil, Horace,
+        and Ovid. Renovated the city, built the Forum of Augustus, Temple of Mars Ultor, and other
+        monuments. The Ara Pacis (Altar of Augustan Peace) was commissioned July 4, 13 BCE — ordered
+        by the Senate to honor Augustus's return from Hispania and Gaul; dedicated January 30, 9 BCE.
+      source_url: 'https://en.wikipedia.org/wiki/Augustus'
+
+  # ----------------------------------------------------------
+  # THEME 3: The Emperors — Good and Bad
+  # ----------------------------------------------------------
+  the_emperors:
+    Tiberius:
+      date: 'Reign September 17, 14 CE–March 16, 37 CE; adopted by Augustus 4 CE'
+      location: 'Rome; retired to island of Capri 26 CE'
+      key_terms: '2nd emperor, stepson of Augustus, Sejanus Praetorian Prefect, ruled from Capri'
+      notes: >
+        Full name: Tiberius Julius Caesar Augustus. Adopted stepson of Augustus. In 26 CE, after
+        his son Drusus died (23 CE), Tiberius withdrew to the island of Capri, leaving administration
+        to his Praetorian Prefect Sejanus. Regarded as: reluctant ruler, politically resentful of the
+        Senate, increasingly paranoid in later years. Left Rome and never returned — ruling an empire
+        from a Mediterranean island for his last decade. Death March 16, 37 CE at Misenum — ancient
+        sources conflict (natural causes vs. smothered by Caligula or associates).
+      source_url: 'https://en.wikipedia.org/wiki/Tiberius'
+
+    Caligula:
+      date: 'Reign March 16, 37 CE–January 24, 41 CE (approximately 4 years)'
+      location: 'Rome'
+      key_terms: '3rd emperor, nickname "little boots", horse Incitatus consul story, assassinated by Praetorian Guard'
+      notes: >
+        Full name: Gaius Julius Caesar Augustus Germanicus. Nickname "Caligula" ("little boots")
+        given by soldiers in childhood. The horse Incitatus — Caligula supposedly proposed making
+        him consul. Modern scholars debate whether this was an actual proposal or an elaborate joke
+        mocking the Senate. Assassination January 24, 41 CE — killed by Praetorian Guard officers,
+        senators, and courtiers. Ancient sources portray extreme tyranny; modern historians suggest
+        many allegations represent exaggeration or "malicious fantasy."
+      source_url: 'https://en.wikipedia.org/wiki/Caligula'
+
+    Claudius:
+      date: 'Reign January 24, 41 CE–October 13, 54 CE'
+      location: 'Rome; conquered Britain 43 CE'
+      key_terms: '4th emperor, found hiding behind curtain, conquest of Britain 43 CE, limp speech impediment'
+      notes: >
+        Full name: Tiberius Claudius Caesar Augustus Germanicus. After Caligula's assassination,
+        the Praetorian Guard found him hiding behind a curtain and proclaimed him emperor — the
+        Senate initially resisted but yielded. Physical conditions: limp, speech impediment,
+        involuntary tremors — possibly cerebral palsy, polio, or Tourette syndrome; possibly
+        exaggerated ailments to appear non-threatening. Conquest of Britain: initiated 43 CE,
+        sending forces under Aulus Plautius; Claudius personally traveled to Britain to receive
+        surrender. Death October 13, 54 CE — many ancient sources claim poisoned by his wife
+        Agrippina the Younger (disputed). Proves appearances deceiving — conquered Britain and
+        proved a capable administrator.
+      source_url: 'https://en.wikipedia.org/wiki/Claudius'
+
+    Nero:
+      date: 'Reign October 13, 54 CE–June 9, 68 CE'
+      location: 'Rome; in Antium when Great Fire started'
+      key_terms: '5th emperor, Great Fire of Rome July 64 CE, Christian persecution, "fiddled while Rome burned" MYTH (fiddle not invented for 1,500 more years)'
+      notes: >
+        Full birth name: Lucius Domitius Ahenobarbus. Great Fire of Rome: July 18–19, 64 CE.
+        Destroyed 3 of Rome's 14 districts, severely damaged 7 more. Nero was in Antium (his
+        birthplace) when the fire started and returned to organize relief. The lyre/fiddle myth:
+        "Nero fiddled while Rome burned" is at least partly Flavian-era propaganda — the fiddle
+        wasn't invented for another 1,500 years; ancient sources claim he sang but modern scholars
+        view this as unreliable. After the fire, Nero accused Christians of starting it (per Tacitus)
+        — first major Roman state persecution of Christians. Death June 9, 68 CE — unable to kill
+        himself, ordered his secretary Epaphroditus to perform the task; final words: "Too late!
+        This is fidelity!"
+      source_url: 'https://en.wikipedia.org/wiki/Nero'
+
+    Year_of_Four_Emperors:
+      date: '69 CE'
+      location: 'Roman Empire'
+      key_terms: 'Galba, Otho, Vitellius, Vespasian — in that order; Flavian dynasty founded'
+      notes: >
+        Four emperors in order: 1) Galba (survived only 7 months), 2) Otho, 3) Vitellius, 4) Vespasian.
+        Trigger: Galba, governor of Hispania, rose against Nero; after Nero's suicide (June 68), Galba
+        became emperor. How it ended: Vespasian's forces defeated Vitellius; Vitellius was killed by a
+        mob on December 20, 69 CE. Senate acknowledged Vespasian emperor December 21, 69 CE, founding
+        the Flavian dynasty.
+      source_url: 'https://en.wikipedia.org/wiki/Year_of_the_Four_Emperors'
+
+    Vespasian:
+      date: 'Reign 69–79 CE; died June 23, 79 CE'
+      location: 'Rome; earlier commanded in Britain invasion (43 CE) and Jewish War (66–70 CE)'
+      key_terms: '1st Flavian emperor, began Colosseum construction 72 CE, urine tax, "pecunia non olet" (money does not stink)'
+      notes: >
+        Full name: Titus Flavius Vespasianus. Equestrian family background. Key achievement: Began
+        construction of the Colosseum in 72 CE, funded by spoils from the Siege of Jerusalem (70 CE).
+        Fiscal reform: restored Rome's finances after civil war. Famously imposed a tax on urine
+        collection (urine used in tanning) — inspired phrase "pecunia non olet" ("money does not
+        stink"). Death June 23, 79 CE — reportedly died of severe diarrhea; final words: "Dear me,
+        I think I'm becoming a god."
+      source_url: 'https://en.wikipedia.org/wiki/Vespasian'
+
+    Titus_and_Vesuvius:
+      date: 'Reign June 24, 79 CE–September 13, 81 CE; Vesuvius eruption traditionally August 24, 79 CE'
+      location: 'Rome; Pompeii, Herculaneum destroyed at Bay of Naples'
+      key_terms: 'Vesuvius eruption 79 CE, Pompeii and Herculaneum destroyed, completed Colosseum, 100 days of games'
+      notes: >
+        Vesuvius eruption traditionally August 24, 79 CE (some modern scholars suggest October/November
+        based on archaeological evidence). Cities destroyed: Pompeii, Herculaneum, and surrounding
+        communities. Titus appointed commissioners for relief; donated large sums from imperial
+        treasury. Also during his reign: completed the Colosseum (begun by his father Vespasian)
+        and opened it with 100 days of games. Pre-reign: as general in 70 CE, destroyed Jerusalem
+        and the Second Temple during the First Jewish-Roman War. Reign defined by catastrophe —
+        Vesuvius AND a major fire in Rome.
+      source_url: 'https://en.wikipedia.org/wiki/Titus'
+
+    Five_Good_Emperors:
+      date: '96–180 CE'
+      location: 'Roman Empire'
+      key_terms: 'Nerva (96–98), Trajan (98–117), Hadrian (117–138), Antoninus Pius (138–161), Marcus Aurelius (161–180); Niccolò Machiavelli coined the term'
+      notes: >
+        Term coined by Niccolò Machiavelli in "The Discourses on Livy." The five in order: Nerva
+        (96–98 CE), Trajan (98–117 CE), Hadrian (117–138 CE), Antoninus Pius (138–161 CE), Marcus
+        Aurelius (161–180 CE). Key characteristic: each adopted his successor rather than relying
+        on biological heirs — ensuring merit-based selection. Edward Gibbon described their era as
+        when the empire was "governed by absolute power, under the guidance of wisdom and virtue."
+      source_url: 'https://en.wikipedia.org/wiki/Five_Good_Emperors'
+
+    Trajan:
+      date: 'Reign January 28, 98 CE–August 9, 117 CE; died at Selinus, Cilicia'
+      location: 'Roman Empire; maximum territorial extent achieved'
+      key_terms: 'Optimus Princeps title, Dacian Wars (101–102 and 105–106 CE), maximum territorial extent, ashes in Trajan''s Column base'
+      notes: >
+        Full name: Marcus Ulpius Traianus. Special title: Optimus Princeps ("the best ruler") —
+        bestowed by Senate, appears on coins from 105 CE; unique among Roman emperors. Dacian Wars:
+        two campaigns — first (101–102 CE) reduced Dacia to client kingdom; second (105–106 CE)
+        made it full Roman province. Under Trajan, Roman Empire reached maximum territorial extent.
+        Death August 9, 117 CE — died of a stroke while sailing back to Rome; ashes interred
+        beneath Trajan's Column. All later emperors were wished to be "more fortunate than Augustus
+        and better than Trajan."
+      source_url: 'https://en.wikipedia.org/wiki/Trajan'
+
+    Trajans_Column:
+      date: 'Completed 113 CE'
+      location: "Trajan's Forum, Rome (north of the Roman Forum)"
+      key_terms: '~30m tall, 190m continuous frieze, 2,662 figures, 155 scenes, Dacian Wars depicted, Trajan ashes in base'
+      notes: >
+        Height: ~30 meters (98 feet) tall; ~35 meters (115 feet) including the pedestal. Depicts:
+        a continuous 190-meter frieze winding around the shaft 23 times — 2,662 figures in 155
+        scenes depicting the Dacian Wars (101–102 and 105–106 CE). Content emphasis: orderly
+        soldiers carrying out ceremony and construction, not primarily battle scenes. Trajan's ashes
+        were entombed in the column's base after his death in 117 CE. Flanked originally by two
+        libraries that provided elevated platforms to view the upper portions of the frieze.
+      source_url: 'https://en.wikipedia.org/wiki/Trajan%27s_Column'
+
+    Hadrian:
+      date: 'Reign 117–138 CE; died July 10, 138 CE at Baiae, Italy (age ~62)'
+      location: 'Roman Empire; spent more than half his reign traveling provinces'
+      key_terms: 'consolidation over expansion, Hadrian''s Wall (begun 122 CE), Pantheon rebuilt, Villa Adriana at Tivoli'
+      notes: >
+        Full name: Publius Aelius Hadrianus. Key policy: consolidation over expansion — reversed
+        Trajan's conquests; spent more than half his reign traveling the provinces to inspect
+        conditions firsthand. Built Hadrian's Wall (begun 122 CE, took ~6 years). Rebuilt the
+        Pantheon. Constructed vast Villa Adriana at Tivoli. Personally visited almost every province
+        — extraordinary for a Roman emperor; spent more time outside Rome than in it.
+      source_url: 'https://en.wikipedia.org/wiki/Hadrian'
+
+    Marcus_Aurelius:
+      date: 'Reign 161–180 CE; died March 17, 180 CE, probably on Danube frontier (age ~58)'
+      location: 'Roman Empire; Danube frontier campaigns'
+      key_terms: 'Meditations written in Greek, Stoicism, Marcomannic Wars, Antonine Plague 165–180 CE, succeeded by biological son Commodus (ended adoptive succession)'
+      notes: >
+        The Meditations: a private philosophical journal written in Greek during his reign; considered
+        one of the most important surviving sources of ancient Stoic philosophy. Philosophy: Stoicism —
+        believed duty must guide action. Military challenges: Parthian War (161–166 CE); Marcomannic
+        Wars against Germanic tribes along the Danube; devastating Antonine Plague (165–180 CE) which
+        killed millions. Succeeded by his biological son Commodus — breaking the adoptive succession
+        that had defined the Five Good Emperors. His choice to pass power to his incompetent son ended
+        Rome's golden age.
+      source_url: 'https://en.wikipedia.org/wiki/Marcus_Aurelius'
+
+    Commodus:
+      date: 'Reign 177–192 CE (co-emperor from 177; sole ruler from 180 CE); assassinated December 31, 192 CE'
+      location: 'Rome'
+      key_terms: 'Gladiator Emperor, secutor gladiatorial type, renamed Rome "Colonia Lucia Annia Commodiana", identified with Hercules, strangled in his bath'
+      notes: >
+        Full original name: Lucius Aurelius Commodus. Fought in the arena as a secutor — spectators
+        thought it "unbecoming of an emperor." In 192 CE declared himself the "new Romulus" and
+        ritually re-founded Rome as "Colonia Lucia Annia Commodiana" (renaming Rome after himself).
+        Also identified himself with Hercules. Assassination December 31, 192 CE — mistress Marcia
+        and conspirators poisoned him; when poison didn't work fast enough, his wrestling partner
+        Narcissus strangled him in his bath. His assassination marked the end of the Nerva–Antonine
+        dynasty and the Pax Romana.
+      source_url: 'https://en.wikipedia.org/wiki/Commodus'
+
+  # ----------------------------------------------------------
+  # THEME 4: The Punic Wars
+  # ----------------------------------------------------------
+  punic_wars:
+    Carthage_Founding_and_Location:
+      date: 'Founded traditionally ~814 BCE (legendary); by 3rd century BCE "wealthiest city in the world" per Polybius'
+      location: 'Promontory on eastern shore of Lake of Tunis, modern Tunisia, North Africa'
+      key_terms: 'Queen Dido (Elissa), Phoenician colony from Tyre, "qrt-ḥdšt" means new city/new Tyre, Tanit, Baal, suffetes'
+      notes: >
+        Founded as a Phoenician colony by legendary Queen Dido (also called Elissa) from Tyre
+        (modern Lebanon). Name derives from Punic "qrt-ḥdšt" meaning "new city" (new Tyre). Greek
+        historian Polybius called Carthage "the wealthiest city in the world" at its peak. Government:
+        mixed constitutional system with elected suffetes (magistrates, similar to consuls), a council
+        of elders, and popular assemblies — even Aristotle considered it impressive. Military: relied
+        on hired mercenaries rather than citizen soldiers; this became catastrophic after the First
+        Punic War when unpaid mercenaries launched the devastating Mercenary War (240–237 BCE).
+        Chief deities: Tanit and Baal.
+      source_url: 'https://en.wikipedia.org/wiki/Carthage'
+
+    Hamilcar_Barca:
+      date: 'Life ~275–228 BCE; died 228 BCE in battle during Spanish campaigns'
+      location: 'Carthage; Sicily (247–241 BCE); Spain (from 237 BCE)'
+      key_terms: 'Barca means thunderbolt, father of Hannibal, Hasdrubal and Mago, Spanish silver mines, Hannibal oath "never to be a friend of Rome"'
+      notes: >
+        Name "Barca" means "thunderbolt" or "shining" in Semitic. Father of Hannibal, Hasdrubal,
+        and Mago. Role in First Punic War: commanded Carthaginian forces in Sicily 247–241 BCE;
+        despite limited resources, kept his army intact through guerrilla tactics. After Mercenary
+        War victory, expanded into Spain 237 BCE to rebuild Carthaginian power, securing silver mines.
+        The alleged oath: according to tradition, Hannibal at age 9 begged to accompany his father
+        to Spain; Hamilcar held him over a sacrificial fire and made him swear never to be a friend
+        of Rome.
+      source_url: 'https://en.wikipedia.org/wiki/Hamilcar_Barca'
+
+    First_Punic_War:
+      date: '264–241 BCE (23 years)'
+      location: 'Sicily; Mediterranean Sea (major naval battles)'
+      key_terms: 'corvus boarding bridge, Battle of Mylae (260 BCE), Battle of Cape Ecnomus (256 BCE), Battle of Aegates Islands (241 BCE), Sicily first Roman province, 3,200 silver talents indemnity'
+      notes: >
+        Described as "the longest war in ancient Romano-Greek history and the greatest naval war of
+        the ancient world." Cause: Mamertine mercenaries in Messana (Sicily) appealed to Rome for
+        help against Syracuse. Key battles: Battle of Mylae (260 BCE) — Rome used innovative corvus
+        boarding bridge (1.2m wide, 11m long with heavy spike) to compensate for inferior sailing
+        skills; Battle of Cape Ecnomus (256 BCE) — possibly history's largest naval battle by numbers
+        (~680 warships); Battle of the Aegates Islands (241 BCE) — final Roman naval victory.
+        Outcome: Carthage ceded Sicily (Rome's FIRST PROVINCE); paid indemnity of 3,200 talents of
+        silver; later surrendered Sardinia and Corsica.
+      source_url: 'https://en.wikipedia.org/wiki/First_Punic_War'
+
+    Hannibal_Barca:
+      date: 'Life 247–183/181 BCE; suicide rather than surrender to Romans'
+      location: 'Born Carthage; died Libyssa, Bithynia (modern Turkey near Istanbul)'
+      key_terms: 'Alps crossing 218 BCE, 40,000 soldiers + elephants departed, arrived with ~20,000 + few elephants, oath at age 9'
+      notes: >
+        Father: Hamilcar Barca. Brothers: Hasdrubal and Mago (both also fought against Rome). Alleged
+        oath at age 9: swore to his father "never to be a friend of Rome." Alpine crossing 218 BCE:
+        departed Spain with approximately 40,000 foot soldiers and 12,000 horsemen; arrived in Italy
+        with 20,000 foot soldiers, 4,000 horsemen, and only a few elephants (most died crossing).
+        Exact route remains debated by historians. Took approximately 15 days in autumn with soldiers
+        suffering from cold, exhaustion, and hostile Alpine tribes. Death: suicide by self-poisoning
+        rather than surrender to Romans after being pursued into exile.
+      source_url: 'https://en.wikipedia.org/wiki/Hannibal'
+
+    Battle_of_Cannae:
+      date: '2 August 216 BCE'
+      location: 'Near Cannae in Apulia, southeast Italy'
+      key_terms: 'double envelopment, 67,500+ Romans killed/captured, Hannibal tactical masterpiece, consuls Varro and Paullus, Paullus killed'
+      notes: >
+        Troop numbers: Romans ~86,400; Carthaginians ~50,000. Roman casualties: Polybius 70,000
+        killed + 10,000 captured; Livy 45,500 killed + 3,000 captured. Roman consul Lucius Aemilius
+        Paullus killed in battle. Commanders: Roman — Gaius Terentius Varro + Lucius Aemilius Paullus;
+        Carthaginian — Hannibal, Mago Barca, Hasdrubal. Tactic: Hannibal's "double envelopment" —
+        weaker Gallic/Hispanic troops in crescent center absorbed Roman advance while retreating;
+        African infantry on flanks wheeled inward; cavalry attacked from behind — total encirclement.
+        Still studied in military academies worldwide as a perfect example of tactical encirclement.
+        Rome's "greatest military disaster."
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Cannae'
+
+    Fabius_Maximus:
+      date: 'Active during Second Punic War (218–201 BCE); emergency dictator after Lake Trasimene 217 BCE'
+      location: 'Roman Italy'
+      key_terms: 'Quintus Fabius Maximus Verrucosus, Cunctator the Delayer (originally insult), Fabian strategy, George Washington "American Fabius", Kutuzov "Russian Fabius"'
+      notes: >
+        Full name: Quintus Fabius Maximus Verrucosus. Nickname "Cunctator" (the Delayer) — initially
+        an insult, later an honor. Strategy: avoided pitched battles; harassed Carthaginian supply
+        lines; scorched earth; wore down invaders through attrition. Initially: Romans were
+        "unimpressed" — seen as cowardice; he was even ransomed by the Senate when Hannibal captured
+        his farm slaves. Vindicated after Cannae disaster (216 BCE). Modern legacy: "Fabian strategy"
+        named after him; George Washington called "the American Fabius"; Mikhail Kutuzov called
+        "the Russian Fabius."
+      source_url: 'https://en.wikipedia.org/wiki/Fabius_Maximus'
+
+    Scipio_Africanus:
+      date: 'Life 236/235 BCE–c. 183 BCE'
+      location: 'Spain (210–206 BCE); Africa (invaded); Battle of Zama 202 BCE near modern El Kef, Tunisia'
+      key_terms: 'Publius Cornelius Scipio Africanus, first Roman general named after conquered territory, countered elephants with trumpet noise'
+      notes: >
+        Full name: Publius Cornelius Scipio Africanus. Title "Africanus" adopted after victories in
+        Africa — became first Roman general to be named after a conquered territory. Battle of Zama
+        (202 BCE): Scipio countered Hannibal's 80 war elephants by deploying infantry with gaps
+        between maniples; light troops threw javelins then retreated through gaps; Roman soldiers
+        sounded bugles and banged weapons, panicking elephants back into Carthaginian cavalry.
+        Masinissa's 4,000 Numidian cavalry routed Carthaginian cavalry, then wheeled to attack
+        Hannibal's rear. Casualties: Carthaginians 20,000 killed + 20,000 captured; Romans ~1,500
+        killed. Scipio also died ~183 BCE — the same year as Hannibal.
+      source_url: 'https://en.wikipedia.org/wiki/Scipio_Africanus'
+
+    Cato_the_Elder_and_Carthago_Delenda_Est:
+      date: 'Life 234–149 BCE; visited Carthage ~152 BCE; died 149 BCE just as Third Punic War began'
+      location: 'Rome; Carthage (visited ~152 BCE)'
+      key_terms: '"Ceterum censeo Carthaginem esse delendam" — "Furthermore I think that Carthage must be destroyed," full phrase, Senate speeches'
+      notes: >
+        Full name: Marcus Porcius Cato (Cato the Elder). Full phrase: "Ceterum (autem) censeo
+        Carthaginem esse delendam" — "Furthermore, I think that Carthage must be destroyed." After
+        visiting Carthage as part of a senatorial delegation in 152 BCE, Cato was alarmed by the
+        city's recovered prosperity. He ended virtually every Senate speech — regardless of topic —
+        with this phrase for years before the Third Punic War. The famous fig story (Cato displaying
+        a fresh fig from Carthage in the Senate) appears in Plutarch but is not confirmed by Wikipedia
+        — treat with caution. Died at age 85 in 149 BCE, just as the Third Punic War he advocated
+        for finally began.
+      source_url: 'https://en.wikipedia.org/wiki/Carthago_delenda_est'
+
+    Third_Punic_War:
+      date: '149–146 BCE (3 years)'
+      location: 'Carthage, North Africa'
+      key_terms: 'Scipio Aemilianus, 6 days systematic destruction, ~50,000 enslaved, salting the earth MYTH (19th-century invention), territory became Roman province of Africa'
+      notes: >
+        Cause: Carthage defended itself against territorial seizures by Rome's ally King Masinissa
+        of Numidia, violating peace terms by raising an army; Rome used this as justification. Roman
+        ultimatum: first demanded Carthage surrender all weapons (done). Then demanded Carthage
+        abandon their city entirely and relocate 16 km from the sea — knowing Carthage would refuse.
+        Key commander: Scipio Aemilianus (grandson by adoption of Scipio Africanus). Destruction:
+        over 6 days in 146 BCE, Romans "systematically worked their way through the residential part
+        of the city, killing everyone they encountered." ~50,000 survivors enslaved. "Salting the
+        earth" myth: "The notion that Roman forces then sowed the city with salt is likely a
+        19th-century invention" — not historically attested. Territory became province of Africa;
+        Roman Carthage not rebuilt until Augustus's time.
+      source_url: 'https://en.wikipedia.org/wiki/Third_Punic_War'
+
+  # ----------------------------------------------------------
+  # THEME 5: Engineering & Infrastructure
+  # ----------------------------------------------------------
+  engineering_and_infrastructure:
+    Roman_Roads:
+      date: 'Built from ~300 BCE through expansion; peak >400,000 km total roads'
+      location: 'Roman Empire — 113 provinces interconnected by 372 great roads'
+      key_terms: '>400,000 km total, >80,500 km stone-paved, 29 great military highways from Rome, cambered for drainage'
+      notes: >
+        At peak: more than 400,000 km (250,000 miles) of roads total; over 80,500 km (50,000 miles)
+        stone-paved. 29 great military highways radiated from Rome at peak. 113 provinces
+        interconnected by 372 great roads. Built from about 300 BCE through the expansion of Republic
+        and Empire. Stone-paved, cambered for drainage, flanked by footpaths and drainage ditches.
+        Some Roman road courses (and surfaces) survived for millennia; some overlaid by modern roads.
+      source_url: 'https://en.wikipedia.org/wiki/Roman_roads'
+
+    Via_Appia:
+      date: 'Construction began 312 BCE by censor Appius Claudius Caecus'
+      location: 'Rome to Brindisi (Brundisium), southeast Italy'
+      key_terms: '"queen of the long roads" (Appia longarum regina viarum — Statius), Samnite Wars military road, named after Appius Claudius Caecus'
+      notes: >
+        One of the earliest and strategically most important Roman roads. Named after censor Appius
+        Claudius Caecus, who also built Rome's first aqueduct (Aqua Appia) in the same year (312 BCE).
+        Latin name: "Appia longarum regina viarum" — "queen of the long roads" (recorded by Statius).
+        Built as a military road during the Samnite Wars. Oldest surviving major Roman road; still
+        partially traversable today.
+      source_url: 'https://en.wikipedia.org/wiki/Appian_Way'
+
+    Roman_Aqueducts:
+      date: 'First aqueduct (Aqua Appia) 312 BCE; by 3rd century AD Rome had 11 aqueducts'
+      location: 'Rome and across the empire'
+      key_terms: '11 aqueducts by 3rd century AD, gravity-only movement, supplied baths/fountains/households, Aqua Appia first (312 BCE), Aqua Claudia (38–52 AD)'
+      notes: >
+        Rome's first aqueduct (Aqua Appia) built 312 BCE — same censor (Appius Claudius Caecus) who
+        built the Via Appia. By the 3rd century AD, Rome had eleven aqueducts. Eleven aqueducts
+        sustained a population of over one million. Aqueducts moved water through gravity alone, along
+        a slight downward gradient. Most conduits were buried underground following terrain contours.
+        Supply priority: public fountains > public baths > private fee-paying users. Aqua Claudia:
+        begun by Caligula in 38 AD, finished by Claudius in 52 AD — one of the longest and most
+        impressive. Pont du Gard: 1st century AD aqueduct bridge in southern France, carried water
+        over 50 km to Roman colony of Nemausus (modern Nîmes); UNESCO World Heritage Site 1985.
+      source_url: 'https://en.wikipedia.org/wiki/Roman_aqueduct'
+
+    The_Colosseum:
+      date: 'Construction began 72 CE (Vespasian); completed 80 CE (Titus); further modified by Domitian'
+      location: 'Center of Rome, just east of the Roman Forum'
+      key_terms: 'Flavian Amphitheatre (official name), 50,000–80,000 capacity, travertine limestone + tuff + concrete, name from Colossus of Nero statue nearby'
+      notes: >
+        Official name: Flavian Amphitheatre (Amphitheatrum Flavium) — named for the Flavian dynasty.
+        Common name "Colosseum" derived from proximity to the Colossus of Nero (a 30-metre bronze
+        statue) — NOT named for its own size. Largest ancient amphitheatre ever built; largest standing
+        amphitheatre in the world. Built of travertine limestone, tuff (volcanic rock), and brick-faced
+        Roman concrete. Could hold an estimated 50,000 to 80,000 spectators; average audience ~65,000.
+        Used for gladiatorial contests, animal hunts, executions, battle re-enactments, mythological
+        dramas. Construction funded by spoils from the Siege of Jerusalem (70 CE).
+      source_url: 'https://en.wikipedia.org/wiki/Colosseum'
+
+    The_Pantheon:
+      date: 'Present building ordered by Hadrian; probably dedicated c. AD 126; in use as Catholic church since AD 609'
+      location: 'Rome (on site of earlier temple commissioned by Marcus Agrippa during Augustus reign)'
+      key_terms: 'world''s largest unreinforced concrete dome (43m / 142ft diameter), oculus sole light source, continuously used nearly 2,000 years'
+      notes: >
+        Present building ordered by Emperor Hadrian; probably dedicated c. AD 126. Hadrian chose to
+        re-inscribe it with Agrippa's original date inscription from the older temple — causing
+        centuries of confusion. Dome: still the world's largest unreinforced concrete dome. Dome
+        diameter: 43 metres (142 ft); height to oculus equals interior diameter (perfect sphere fits
+        inside). Central opening in dome called the oculus — the only light source (open to rain).
+        One of the best-preserved of all ancient Roman buildings; continuously used for nearly 2,000
+        years. Since AD 609, a Catholic church (Basilica of St. Mary and the Martyrs).
+      source_url: 'https://en.wikipedia.org/wiki/Pantheon,_Rome'
+
+    Roman_Concrete_Opus_Caementicium:
+      date: 'Used extensively throughout Roman Republic and Empire; structures have lasted ~2,000 years'
+      location: 'Roman Empire'
+      key_terms: 'opus caementicium, pozzolana volcanic ash, hydraulic-setting cement, Roman marine concrete strengthens over time with seawater (aluminous tobermorite crystals)'
+      notes: >
+        Roman concrete called opus caementicium. Based on a hydraulic-setting cement (pozzolana
+        volcanic ash) mixed into aggregate. Demonstrated remarkable durability — structures have
+        lasted ~2,000 years. Modern research has found Roman marine concrete actually strengthens
+        over time due to chemical reactions with seawater (aluminous tobermorite crystals) — a
+        property modern Portland cement lacks.
+      source_url: 'https://en.wikipedia.org/wiki/Roman_concrete'
+
+    Circus_Maximus:
+      date: 'Ancient chariot-racing stadium; dimensions 621m × 118m; capacity >150,000'
+      location: 'Rome, in valley between Aventine and Palatine hills'
+      key_terms: 'chariot racing (ludi circenses), first and largest stadium in ancient Rome, 621m long, >150,000 spectators, model for all Roman circuses, now a public park'
+      notes: >
+        First and largest stadium in ancient Rome. Measured 621 m (2,037 ft) in length and 118 m
+        (387 ft) in width. Could accommodate over 150,000 spectators — larger than any modern sports
+        stadium. Became the model for circuses throughout the Roman Empire. Used primarily for chariot
+        racing (ludi circenses). Site is now a public park.
+      source_url: 'https://en.wikipedia.org/wiki/Circus_Maximus'
+
+    Cloaca_Maxima:
+      date: 'Built during Roman Kingdom or early Republic; parts still in use today'
+      location: 'Rome — started at Forum Augustum; ended at the Tiber near Ponte Rotto'
+      key_terms: 'Great Sewer, one of world''s earliest sewage systems, Agrippa renovated, all 11 aqueducts connected by 1st century AD, still functionally in use today'
+      notes: >
+        One of the world's earliest sewage systems. Built to drain local marshes and remove waste.
+        Began as an open-air canal; developed into a much larger enclosed sewer. Agrippa renovated
+        and reconstructed much of the sewer. By the 1st century AD, all eleven Roman aqueducts were
+        connected to the sewer. Name related to Cloacina, a Roman goddess. Remained in use after
+        the fall of the Roman Empire; parts still in use today — built over 2,500 years ago.
+      source_url: 'https://en.wikipedia.org/wiki/Cloaca_Maxima'
+
+    Hadrians_Wall:
+      date: 'Construction begun AD 122 under Emperor Hadrian; UNESCO World Heritage Site 1987'
+      location: 'Northern England — Wallsend on River Tyne (east) to Bowness-on-Solway (west)'
+      key_terms: '73 miles (117.5 km), three legions built it (Legio II Augusta + VI Victrix + XX Valeria Victrix), largest Roman archaeological feature in Britain'
+      notes: >
+        Construction begun AD 122 in the reign of Emperor Hadrian; took ~6 years to complete main
+        structure. Total length: 73 miles (117.5 kilometres) — roughly the distance from New York
+        to Philadelphia. Builders: three Roman legions — Legio II Augusta, Legio VI Victrix, and
+        Legio XX Valeria Victrix (~15,000 soldiers). Purpose: physical barrier against raids;
+        controlled movement; symbolic statement of Roman power marking the empire's limit. Stone wall
+        with large ditches in front and behind; soldiers garrisoned in large forts, smaller milecastles,
+        and intervening turrets. Largest Roman archaeological feature in Britain; UNESCO World
+        Heritage Site 1987.
+      source_url: 'https://en.wikipedia.org/wiki/Hadrian%27s_Wall'
+
+    Roman_Numerals:
+      date: 'Originated ancient Rome; remained standard across Europe into Late Middle Ages'
+      location: 'Roman Empire; still used today worldwide'
+      key_terms: 'I (1), V (5), X (10), L (50), C (100), D (500), M (1000); additive and subtractive principles; clock faces, book chapters, film sequels, official documents'
+      notes: >
+        Seven symbols: I (1), V (5), X (10), L (50), C (100), D (500), M (1000). Additive principle:
+        concatenation of symbols representing fixed values. Subtractive principle: smaller numeral
+        before larger implies subtraction (IV = 4, IX = 9). Remained the standard way of writing
+        numbers throughout Europe well into the Late Middle Ages. Still used today for clock faces,
+        book chapters, film sequels (Super Bowl LVIII), and formal titles.
+      source_url: 'https://en.wikipedia.org/wiki/Roman_numerals'
+
+  # ----------------------------------------------------------
+  # THEME 6: Rise of Christianity in Rome
+  # ----------------------------------------------------------
+  rise_of_christianity:
+    Jesus_of_Nazareth_and_Pontius_Pilate:
+      date: 'Crucifixion most likely AD 30 or AD 33; Pontius Pilate served 26/27–36/37 AD'
+      location: '1st-century Judaea, Roman province'
+      key_terms: 'Pontius Pilate 5th prefect of Judaea, Emperor Tiberius, crucifixion, sign "Jesus of Nazareth King of the Jews" in Hebrew/Latin/Greek'
+      notes: >
+        Jesus: 1st-century Jewish preacher in the Roman province of Judaea; central figure of
+        Christianity. Crucifixion dated to AD 30 or 33 (scholars nearly universally accept
+        historicity). Sentenced by Pontius Pilate to be scourged and crucified. Pontius Pilate:
+        fifth governor (prefect) of the Roman province of Judaea, served under Emperor Tiberius
+        from 26/27 to 36/37 AD. Sign affixed to the cross: "Jesus of Nazareth, King of the Jews"
+        (written in Hebrew, Latin, and Greek). A stone inscription bearing Pilate's name was found
+        at Caesarea Maritima in 1961. Pilate is named in both the Apostles' Creed and the Nicene
+        Creed.
+      source_url: 'https://en.wikipedia.org/wiki/Pontius_Pilate'
+
+    Paul_the_Apostle:
+      date: 'Missionary journeys mid-40s to mid-50s AD; 13 of 27 New Testament books attributed to him'
+      location: 'Asia Minor and Europe'
+      key_terms: '13 New Testament letters, spread Christianity to Gentiles, founded communities across empire, Roman citizenship invoked ("Civis Romanus sum")'
+      notes: >
+        Christian apostle who spread teachings of Jesus in the 1st century AD. Founded several
+        Christian communities in Asia Minor and Europe from the mid-40s to mid-50s AD. Generally
+        regarded as one of the most important figures of the Apostolic Age. 13 of 27 New Testament
+        books attributed to him. Key role: spreading Christianity to Gentiles (non-Jews) — making
+        it a universal religion. His Roman citizenship famously protected him; he invoked it to
+        appeal to Caesar (Acts 25:11).
+      source_url: 'https://en.wikipedia.org/wiki/Paul_the_Apostle'
+
+    Nero_Christian_Persecution:
+      date: 'Great Fire of Rome: July 18–19, AD 64'
+      location: 'Rome; fire started near Circus Maximus'
+      key_terms: 'first major Roman persecution of Christians, Nero scapegoated Christians (per Tacitus), Peter and Paul traditionally martyred in Rome around this time'
+      notes: >
+        Great Fire began evening of 18–19 July AD 64. Fire lasted six days; was brought under
+        control, then reignited and burned three more days. Nearly three quarters of Rome destroyed.
+        Fire started in merchant shops around the Circus Maximus. Nero accused Christians of starting
+        the fire (per Tacitus) and used them as scapegoats — first documented Roman state persecution
+        of Christians. Tacitus recorded this in his Annals (written ~116 AD). Peter and Paul
+        traditionally martyred in Rome around this time.
+      source_url: 'https://en.wikipedia.org/wiki/Great_Fire_of_Rome'
+
+    Decian_Persecution:
+      date: '250 AD'
+      location: 'Roman Empire (first empire-wide systematic persecution)'
+      key_terms: 'Emperor Decius, empire-wide sacrifice edict, libelli (certificates of compliance), first systematic persecution'
+      notes: >
+        Christians persecuted under Emperor Decius in 250 AD. Decius issued an edict ordering everyone
+        in the empire to perform a sacrifice to the Roman gods. Sacrifices had to be performed in the
+        presence of a Roman magistrate; confirmed by a signed and witnessed certificate (libellus).
+        Text of the edict is lost, but many examples of the certificates (libelli) have survived.
+        First empire-wide, systematic persecution — many Christians apostatized, creating the "lapsed"
+        controversy in the Church.
+      source_url: 'https://en.wikipedia.org/wiki/Decian_persecution'
+
+    Diocletianic_Great_Persecution:
+      date: '303–311 AD'
+      location: 'Roman Empire; weakest in Gaul and Britain; strongest in Eastern provinces'
+      key_terms: 'last and most severe persecution, Diocletian + Maximian + Galerius + Constantius, edicts rescinded legal rights, ended by Edict of Milan 313 AD'
+      notes: >
+        Last and most severe persecution of Christians in the Roman Empire. In 303 AD, emperors
+        Diocletian, Maximian, Galerius, and Constantius issued edicts rescinding Christians' legal
+        rights and demanding compliance with traditional Roman religious practices. Later edicts
+        targeted clergy and demanded universal sacrifice. Persecution varied across the empire:
+        weakest in Gaul and Britain (only first edict applied); strongest in Eastern provinces.
+        Constantine and Licinius's Edict of Milan (313 AD) traditionally marks the end of the
+        persecution.
+      source_url: 'https://en.wikipedia.org/wiki/Diocletianic_Persecution'
+
+    Battle_of_Milvian_Bridge:
+      date: '28 October AD 312'
+      location: 'Near the Milvian Bridge over the Tiber River, Rome'
+      key_terms: 'Constantine I vs. Maxentius, Maxentius drowned in Tiber, "In hoc signo vinces" vision, Constantine began favoring Christianity'
+      notes: >
+        Battle between Roman Emperors Constantine I and Maxentius. Constantine won; Maxentius drowned
+        in the Tiber during the battle. Maxentius's body was decapitated; his head paraded through
+        Rome, then sent to Africa. According to tradition, Constantine saw a vision of a cross with
+        the words "In hoc signo vinces" ("In this sign, conquer") before the battle. Constantine's
+        victory set him on the path to becoming sole ruler. After this battle, Constantine disbanded
+        the Praetorian Guard. This was the pivotal moment that began Christianity's transition to
+        dominant religion of the empire.
+      source_url: 'https://en.wikipedia.org/wiki/Battle_of_Milvian_Bridge'
+
+    Edict_of_Milan:
+      date: 'February 13, 313 AD'
+      location: 'Mediolanum (Milan); formally issued by Licinius to Eastern provincial governors'
+      key_terms: 'Constantine I + Emperor Licinius, decriminalized Christianity, restored confiscated Christian property, did NOT make Christianity state religion (that was 380 AD under Theodosius I)'
+      notes: >
+        Constantine I and Emperor Licinius met in Mediolanum (Milan). Agreed to treat Christians
+        benevolently. The Edict gave Christianity legal status and reprieve from persecution; restored
+        all confiscated Christian property. Text: "We decided to grant to Christians and to everybody
+        the free power to follow the religion of their choice" — a general religious tolerance decree,
+        not exclusive to Christianity. CRITICAL MISCONCEPTION: The Edict of Milan did NOT make
+        Christianity the state religion — that was the Edict of Thessalonica in 380 CE under
+        Theodosius I.
+      source_url: 'https://en.wikipedia.org/wiki/Edict_of_Milan'
+
+    First_Council_of_Nicaea:
+      date: 'May–end of July 325 AD'
+      location: 'Nicaea (modern Iznik, Turkey)'
+      key_terms: 'convened by Constantine I, Nicene Creed produced, Arian controversy (same substance as God the Father?), first ecumenical council'
+      notes: >
+        Council of Christian bishops convened by Roman Emperor Constantine I. First ecumenical council
+        of the Christian Church. Addressed the Arian controversy — whether Jesus was of the same
+        substance as God the Father. Produced the Nicene Creed — a statement of Christian belief
+        that defined orthodox Christianity. Council ruled against Arianism.
+      source_url: 'https://en.wikipedia.org/wiki/First_Council_of_Nicaea'
+
+    Edict_of_Thessalonica:
+      date: 'February 27, AD 380'
+      location: 'Thessalonica (issued by Emperor Theodosius I)'
+      key_terms: 'made Nicene Christianity the state church of the Roman Empire, condemned Arianism as heresy, Theodosius I, this is when Christianity became state religion (NOT 313 AD)'
+      notes: >
+        Issued by Emperor Theodosius I. Made Nicene Christianity the state church of the Roman
+        Empire. Condemned other Christian creeds (such as Arianism) as heresies of "foolish madmen."
+        Authorized punishment of heretical creeds. THIS is the event that made Christianity the
+        official state religion of Rome — NOT the Edict of Milan in 313 AD. The gap: 67 years between
+        Christianity becoming legal (313 AD) and becoming the state religion (380 AD).
+      source_url: 'https://en.wikipedia.org/wiki/Edict_of_Thessalonica'
+
+  # ----------------------------------------------------------
+  # THEME 7: Fall of the Western Empire
+  # ----------------------------------------------------------
+  fall_of_western_empire:
+    Crisis_of_Third_Century:
+      date: '235–284 CE (~49 years)'
+      location: 'Roman Empire'
+      key_terms: '~50 claimants in ~50 years (~26 recognized by Senate), empire split into three competing polities, Aurelian reunified, Diocletian stabilized'
+      notes: >
+        Key characteristics: repeated foreign invasions, civil wars, and economic disintegration;
+        empire split into three competing polities at its height. ~26 legitimate emperors recognized
+        by Senate, plus numerous usurpers — roughly 50 claimants total in ~50 years. Emperor Aurelian
+        (270–275 CE) reunified the empire; Diocletian (284 CE onward) permanently stabilized it
+        through radical reforms. Impact: disrupted trade, caused economic decentralization, cities
+        fortified themselves for first time in centuries; marked transition from classical antiquity
+        to late antiquity.
+      source_url: 'https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century'
+
+    Diocletian_and_the_Tetrarchy:
+      date: 'Reign November 20, 284 CE–May 1, 305 CE; Tetrarchy created March 1, 293 CE'
+      location: 'Roman Empire; retired to palace in Dalmatia (modern Croatia)'
+      key_terms: 'Tetrarchy rule of four (two Augusti + two Caesares), largest most bureaucratic government in empire history, first emperor to voluntarily abdicate, grew cabbages in retirement'
+      notes: >
+        The Tetrarchy ("rule of four"): created March 1, 293 CE — divided imperial authority among
+        two senior emperors (Augusti) and two junior rulers (Caesares), each governing their own
+        territorial section. Reforms: separated and enlarged civil and military services; reorganized
+        provincial divisions; created the "largest and most bureaucratic government in the history of
+        the empire"; major tax reforms. Abdication: May 1, 305 CE — first Roman emperor to voluntarily
+        abdicate; retired to his palace in Dalmatia (modern Croatia) where he famously grew cabbages.
+        His cabbage-gardening retirement is a famous historical anecdote ("If you could see the
+        cabbages I planted with my own hands...").
+      source_url: 'https://en.wikipedia.org/wiki/Diocletian'
+
+    Constantine_I_First_Christian_Emperor:
+      date: 'Began favoring Christianity 312 CE; founded Constantinople May 11, 330 CE; died May 22, 337 CE'
+      location: 'Constantinople (New Rome) founded on site of Greek city Byzantium'
+      key_terms: 'Flavius Valerius Constantinus, Constantinople capital for 1,000+ years, disbanded Praetorian Guard 312 CE'
+      notes: >
+        Full name: Flavius Valerius Constantinus. Key dates: began favoring Christianity 312 CE.
+        Edict of Milan: February 13, 313 CE — decriminalized Christianity; did NOT make it state
+        religion. Constantinople: founded as "New Rome" on site of Greek city Byzantium; officially
+        dedicated May 11, 330 CE; served as capital of the empire for over 1,000 years. Disbanded
+        the Praetorian Guard 312 CE after Battle of Milvian Bridge. Death May 22, 337 CE, age 65,
+        at Nicomedia.
+      source_url: 'https://en.wikipedia.org/wiki/Constantine_the_Great'
+
+    Division_of_Roman_Empire:
+      date: 'January 17, 395 CE (death of Theodosius I)'
+      location: 'Eastern half: Constantinople; Western half: initially Mediolanum (Milan), later Ravenna'
+      key_terms: 'Theodosius I last to rule both halves, Eastern = Arcadius, Western = Honorius, permanent division'
+      notes: >
+        Emperor Theodosius I divided the empire between his two sons on his death. Eastern half
+        (ruled from Constantinople): Arcadius (older son). Western half: Honorius (younger son).
+        This was the PERMANENT division — Theodosius was the last emperor to rule both halves
+        simultaneously. Both sons were young when they took power; the empire's fate was left in
+        the hands of children and their advisors.
+      source_url: 'https://en.wikipedia.org/wiki/Division_of_the_Roman_Empire'
+
+    Sack_of_Rome_410:
+      date: 'August 24, 410 CE (three days)'
+      location: 'Rome'
+      key_terms: 'Visigoths led by King Alaric I, first foreign sack of Rome in ~800 years, 5,000 pounds gold + 30,000 pounds silver taken, Galla Placidia captured'
+      notes: >
+        Attacker: Visigoths led by King Alaric I. First time Rome had fallen to a foreign enemy in
+        approximately 800 years. Duration: three days of pillaging. What was taken: 5,000 pounds of
+        gold, 30,000 pounds of silver, fine textiles, dyed hides; Emperor's sister Galla Placidia
+        was captured as a hostage. Nature of the sack: relatively restrained by ancient standards —
+        no general slaughter, two basilicas designated as sanctuaries. Rome had been inviolable since
+        the Gauls sacked it c. 390 BCE. The psychological impact on the Roman world was enormous.
+      source_url: 'https://en.wikipedia.org/wiki/Sack_of_Rome_(410)'
+
+    Attila_the_Hun:
+      date: 'Reign 434–453 CE (sole ruler from 445 CE); died early 453 CE'
+      location: 'Hunnic Empire; Battle of Catalaunian Plains (northeastern France, near Châlons-en-Champagne), June 20, 451 CE'
+      key_terms: '"Scourge of God", Battle of Catalaunian Plains stopped Hunnic advance into Gaul, coalition led by Flavius Aetius + Visigothic king Theodoric I, died at own wedding feast (nosebleed or ruptured esophageal varices)'
+      notes: >
+        Attila: known as "the Scourge of God." Reigned 434–453 CE (co-ruler with brother Bleda until
+        445 CE, then sole ruler). Battle of Catalaunian Plains June 20, 451 CE: coalition of Western
+        Roman Empire + Visigoths + Franks + Burgundians, led by Roman general Flavius Aetius and
+        Visigothic king Theodoric I. Outcome: commonly considered a strategic victory for the
+        Roman-Visigothic coalition; Attila withdrew. Theodoric I (Visigothic king) was killed during
+        the battle. Death early 453 CE — died at a feast celebrating his marriage to Ildico; cause
+        likely severe bleeding (nosebleed or ruptured esophageal varices from excessive drinking).
+        Attila died not in battle but at his own wedding feast.
+      source_url: 'https://en.wikipedia.org/wiki/Attila'
+
+    Sack_of_Rome_455:
+      date: 'June 2–16, 455 CE (two weeks)'
+      location: 'Rome'
+      key_terms: 'Vandals led by King Gaiseric, stripped gilt bronze tiles from Temple of Jupiter, "vandalism" word origin'
+      notes: >
+        Attacker: Vandals led by King Gaiseric. What was taken: large amounts of gold, silver, jewels,
+        and furniture; stripped gilt bronze tiles from the roof of the Temple of Jupiter Optimus
+        Maximus; some Romans taken as slaves including widow Eudoxia and her daughters. Combined with
+        the 410 sack, "shocked the Roman world and symbolized the decline and impending fall of the
+        Western Roman Empire." Linguistic legacy: the Vandals' destructive actions gave rise to the
+        modern English word "vandalism."
+      source_url: 'https://en.wikipedia.org/wiki/Sack_of_Rome_(455)'
+
+    Romulus_Augustulus_Last_Western_Emperor:
+      date: 'Deposed September 4, 476 CE'
+      location: 'Ravenna; exiled to Castellum Lucullanum fortress near Naples'
+      key_terms: '"Augustulus" = "little Augustus" (mocking diminutive), approximately 10–15 years old, deposed by Odoacer, pension of 6,000 solidi'
+      notes: >
+        Full name: Romulus Augustus (called "Augustulus" — "little Augustus" — mockingly, as a
+        diminutive). Age at deposition: approximately 10–15 years old ("perhaps as young as ten").
+        Deposed by Odoacer, a Germanic barbarian general who led a revolt of foederati troops
+        demanding land grants. Fate: spared due to his "youth and beauty"; given an annual pension
+        of 6,000 solidi and exiled to the Castellum Lucullanum fortress near Naples; possibly survived
+        into the early 500s. His deposition is the conventional end of the Western Roman Empire.
+        Remarkable name irony: bore the names of both Rome's legendary founder (Romulus) and its
+        first emperor (Augustus).
+      source_url: 'https://en.wikipedia.org/wiki/Romulus_Augustulus'
+
+    Odoacer_First_King_of_Italy:
+      date: 'Deposed Romulus Augustulus September 4, 476 CE; ruled Italy 476–493 CE; murdered by Theodoric March 15, 493 CE'
+      location: 'Italy (ruled from Ravenna)'
+      key_terms: 'Germanic barbarian general, son of Attila officer Edeko, Rex (King) proclaimed by soldiers, sent imperial insignia to Constantinople, not an abolition of Rome'
+      notes: >
+        Background: Germanic barbarian general, probably of Scirian or mixed Germanic heritage; son
+        of Edeko (an officer of Attila). Led revolt of Germanic foederati demanding land; defeated
+        and killed Romulus's father Orestes; deposed Romulus Augustulus September 4, 476 CE. Title:
+        Rex ("king"), proclaimed by soldiers August 23, 476 CE; also accepted titles of dux Italiae
+        and patrician from Eastern Emperor Zeno. Odoacer sent the imperial insignia to Constantinople
+        and ruled as a king under nominal Eastern Roman suzerainty — the Western Empire ended not with
+        a bang but a bureaucratic reorganization. End: after Theodoric the Great invaded Italy (489 CE),
+        Odoacer was besieged in Ravenna; after negotiated settlement, Theodoric invited him to a
+        reconciliation banquet and murdered him March 15, 493 CE.
+      source_url: 'https://en.wikipedia.org/wiki/Odoacer'
+
+    Byzantine_Empire_Continuation:
+      date: 'Most commonly dated from Constantinople founding 330 CE; ended with fall of Constantinople May 29, 1453 CE (~1,123 years)'
+      location: 'Constantinople (modern Istanbul, Turkey)'
+      key_terms: 'citizens called themselves "Romans" (Rhomaioi) throughout; "Byzantine" coined by Western historians AFTER its fall; lasted 1,100+ years after Western Rome fell'
+      notes: >
+        The direct continuation of the Eastern Roman Empire, centered on Constantinople. Duration:
+        approximately 1,123 years (330–1453 CE). End: fall of Constantinople to the Ottoman Empire
+        on May 29, 1453 CE. Key continuity fact: the citizens called themselves "Romans" (Rhomaioi)
+        throughout the empire's entire existence. The term "Byzantine" was coined by Western historians
+        AFTER its fall. The empire never called itself "Byzantine" — it was always "the Roman Empire"
+        to its inhabitants and to its Islamic neighbors. For 1,100 years after Western Rome fell, a
+        Roman Empire continued to exist in the East and its people called themselves Romans.
+      source_url: 'https://en.wikipedia.org/wiki/Byzantine_Empire'
+
+# ============================================================
+# ANSWER TYPE POOLS
+# Used to generate plausible distractors for quiz questions.
+# Workers: DO NOT pull distractors from these pools —
+# these define the UNIVERSE of valid answers, not distractor banks.
+# ============================================================
+answer_type_pools:
+
+  emperor_names:
+    format: name
+    description: All Roman emperors and notable rulers
+    members:
+    - Augustus (Octavian)
+    - Tiberius
+    - Caligula
+    - Claudius
+    - Nero
+    - Galba
+    - Otho
+    - Vitellius
+    - Vespasian
+    - Titus
+    - Domitian
+    - Nerva
+    - Trajan
+    - Hadrian
+    - Antoninus Pius
+    - Marcus Aurelius
+    - Commodus
+    - Diocletian
+    - Constantine I
+    - Theodosius I
+    - Romulus Augustulus
+    - Caracalla
+    - Aurelian
+    - Justinian I
+
+  general_politician_names:
+    format: name
+    description: Generals, senators, tribunes, and politicians of the Roman world
+    members:
+    - Julius Caesar
+    - Pompey (Gnaeus Pompeius Magnus)
+    - Crassus (Marcus Licinius Crassus)
+    - Gaius Marius
+    - Sulla (Lucius Cornelius Sulla)
+    - Cicero
+    - Marcus Junius Brutus
+    - Gaius Cassius Longinus
+    - Mark Antony
+    - Lepidus
+    - Scipio Africanus
+    - Fabius Maximus (Cunctator)
+    - Cato the Elder
+    - Scipio Aemilianus
+    - Agrippa (Marcus Vipsanius Agrippa)
+    - Odoacer
+    - Flavius Aetius
+    - Appius Claudius Caecus
+
+  roman_god_names:
+    format: name
+    description: Roman gods and goddesses
+    members:
+    - Jupiter (king of gods, sky and thunder)
+    - Juno (queen of gods, protector of Rome)
+    - Mars (god of war)
+    - Venus (goddess of love and beauty)
+    - Minerva (goddess of wisdom and strategy)
+    - Neptune (god of the sea)
+    - Mercury (messenger god, commerce)
+    - Diana (goddess of the hunt and Moon)
+    - Bacchus (god of wine)
+    - Saturn (god of time and agriculture)
+    - Ceres (goddess of grain and agriculture)
+    - Vulcan (god of fire and the forge)
+    - Apollo (god of light, sun, music, poetry)
+    - Pluto (god of the underworld)
+
+  battle_names:
+    format: name
+    description: Famous battles of the Roman world
+    members:
+    - Battle of Cannae (216 BCE)
+    - Battle of Pharsalus (48 BCE)
+    - Battle of Actium (31 BCE)
+    - Battle of Zama (202 BCE)
+    - Battle of the Milvian Bridge (312 CE)
+    - Battle of Alesia (52 BCE)
+    - Battle of Mylae (260 BCE)
+    - Battle of Cape Ecnomus (256 BCE)
+    - Battle of the Aegates Islands (241 BCE)
+    - Battle of Lake Trasimene (217 BCE)
+    - Battle of the Metaurus (207 BCE)
+    - Battle of the Catalaunian Plains (451 CE)
+    - Battle of Aquae Sextiae (102 BCE)
+    - Battle of the Colline Gate (82 BCE)
+
+  structure_names:
+    format: name
+    description: Famous Roman buildings, structures, and infrastructure
+    members:
+    - Colosseum (Flavian Amphitheatre)
+    - Pantheon
+    - Circus Maximus
+    - Trajan's Column
+    - Forum Romanum
+    - Forum of Augustus
+    - Ara Pacis
+    - Cloaca Maxima
+    - Via Appia (Appian Way)
+    - Pont du Gard
+    - Hadrian's Wall
+    - Aqua Appia
+    - Aqua Claudia
+    - Baths of Caracalla
+    - Baths of Diocletian
+    - Domus Aurea (Nero's Golden House)
+    - Temple of Jupiter Optimus Maximus
+
+  date_events:
+    format: date
+    description: Key dates in Roman history
+    members:
+    - '753 BCE — Traditional founding of Rome'
+    - '509 BCE — Republic established'
+    - '451–449 BCE — Twelve Tables'
+    - '264–241 BCE — First Punic War'
+    - '218–201 BCE — Second Punic War'
+    - '216 BCE — Battle of Cannae'
+    - '202 BCE — Battle of Zama'
+    - '149–146 BCE — Third Punic War; Carthage destroyed'
+    - '88 BCE — Sulla''s first march on Rome'
+    - '49 BCE — Caesar crosses the Rubicon'
+    - '48 BCE — Battle of Pharsalus'
+    - '44 BCE — Ides of March; Caesar assassinated'
+    - '31 BCE — Battle of Actium'
+    - '27 BCE — Augustus receives title; Empire begins'
+    - '79 CE — Vesuvius eruption; Pompeii destroyed'
+    - '80 CE — Colosseum completed'
+    - '122 CE — Hadrian''s Wall begun'
+    - '313 CE — Edict of Milan'
+    - '380 CE — Edict of Thessalonica; Christianity becomes state religion'
+    - '395 CE — Permanent division of Roman Empire'
+    - '410 CE — Sack of Rome by Visigoths'
+    - '455 CE — Sack of Rome by Vandals'
+    - '476 CE — Fall of Western Roman Empire; Romulus Augustulus deposed'
+
+  political_terms:
+    format: term
+    description: Political, military, and legal vocabulary of Rome
+    members:
+    - consul (two annually elected chief magistrates)
+    - tribune (plebeian representative with veto power)
+    - dictator (temporary emergency ruler, normally 6-month limit)
+    - praetor (judicial magistrate, below consul)
+    - censor (official overseeing census and public morality)
+    - quaestor (financial magistrate, lowest rung of cursus honorum)
+    - imperium (supreme authority over civil and military matters)
+    - veto (I forbid — tribune's power to block magistrates)
+    - SPQR (Senatus Populusque Romanus)
+    - proscription (published death list, property confiscated)
+    - triumph (ceremonial procession honoring victorious general)
+    - legion (primary Roman army unit, ~5,200 men in late Republic)
+    - centurion (professional officer commanding a century of ~80 men)
+    - fasces (bundle of rods + axe, symbol of magisterial authority)
+    - princeps (first citizen — Augustus's chosen title)
+    - suffete (Carthaginian magistrate equivalent to consul)
+
+  text_work_names:
+    format: name
+    description: Famous texts and literary works of ancient Rome
+    members:
+    - Commentarii de Bello Gallico (Caesar)
+    - The Aeneid (Virgil)
+    - The Meditations (Marcus Aurelius)
+    - The Annals (Tacitus)
+    - Twelve Tables (451–449 BCE)
+    - Corpus Juris Civilis (Justinian)
+    - De Re Publica (Cicero)
+    - The Histories (Polybius)
+    - Lives of the Twelve Caesars (Suetonius)
+    - The Metamorphoses (Ovid)
+
+  city_place_names:
+    format: place
+    description: Important cities, locations, and geographic features of the Roman world
+    members:
+    - Rome (capital of the Republic and Empire)
+    - Carthage (enemy power; modern Tunisia)
+    - Constantinople (capital of Eastern Empire; modern Istanbul)
+    - Alexandria (Egypt; major cultural and trade center)
+    - Jerusalem (site of the Second Temple; destroyed 70 CE)
+    - Pompeii (buried by Vesuvius 79 CE)
+    - Ravenna (final Western capital)
+    - Rubicon River (boundary between Cisalpine Gaul and Italy proper)
+    - Nîmes (Nemausus; Roman colony in Gaul; Pont du Gard served this city)
+    - Tiber River (Rome's river; Maxentius drowned here 312 CE)
+    - Lake Trasimene (site of Hannibal's great ambush, 217 BCE)
+    - Alesia (site of Caesar's defeat of Vercingetorix, 52 BCE)
+    - Nicaea (site of First Council, 325 CE; modern Iznik, Turkey)
+    - Capri (island where Tiberius ruled the empire from, 26–37 CE)

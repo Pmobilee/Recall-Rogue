@@ -2441,11 +2441,11 @@
       "notes": ""
     },
     {
-      "key": "icon_dust",
+      "key": "icon_grey_matter",
       "category": "icons",
       "subcategory": null,
-      "prompt": "Mining dust resource icon, small pile of grey-brown sparkling dust/powder, mining byproduct. Simple icon. Centered, Cel-shaded 2D pixel art, bold black outlines, flat color shading with 2-3 tones per color, no gradients, no anti-aliasing, high contrast, vibrant saturated colors, clean crisp edges, top-left lighting, retro 16-bit game style, visible chunky pixels, green (#00FF00) background.",
-      "model": "default",
+      "prompt": "Brain grey matter currency icon, small glowing chunk of pink-grey brain tissue with visible neural folds and tiny electric sparks, knowledge resource collectible. Simple icon. Centered, Cel-shaded 2D pixel art, bold black outlines, flat color shading with 2-3 tones per color, no gradients, no anti-aliasing, high contrast, vibrant saturated colors, clean crisp edges, top-left lighting, retro 16-bit game style, visible chunky pixels, green (#00FF00) background.",
+      "model": "google/gemini-2.5-flash-image",
       "targetSizes": {
         "hires": [
           256,
@@ -2457,20 +2457,20 @@
         ]
       },
       "outputPaths": {
-        "original": "sprite-gen/output/icons/icon_dust_original.png",
-        "hires": "public/assets/sprites-hires/icons/icon_dust.png",
-        "lowres": "public/assets/sprites/icons/icon_dust.png"
+        "original": "sprite-gen/output/icons/icon_grey_matter_original.png",
+        "hires": "public/assets/sprites-hires/icons/icon_grey_matter.png",
+        "lowres": "public/assets/sprites/icons/icon_grey_matter.png"
       },
       "usedIn": [
         "HUD",
-        "InventoryView",
-        "spriteManifest.ts"
+        "CampUpgradeModal",
+        "RunEndScreen"
       ],
-      "generatedAt": "2026-03-06T05:58:19.517486",
+      "generatedAt": "2026-03-29T10:09:10.485Z",
       "generationMethod": "openrouter",
-      "version": 1,
+      "version": 2,
       "priority": "high",
-      "notes": ""
+      "notes": "Renamed from dust to grey matter (brain-themed learning currency)"
     },
     {
       "key": "icon_essence",
@@ -9792,7 +9792,7 @@
       "notes": "Decorator floor background - 5000 dust"
     }
   ],
-  "updatedAt": "2026-03-06T07:59:32.882Z",
+  "updatedAt": "2026-03-29T10:09:10.486Z",
   "arcane": {
     "icon_science": {
       "id": "icon_science",

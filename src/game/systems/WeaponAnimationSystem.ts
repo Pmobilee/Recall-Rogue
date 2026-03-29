@@ -343,7 +343,7 @@ export class WeaponAnimationSystem {
         },
         onComplete: () => {
           // ── IMPACT ──
-          scene.cameras.main.shake(90, 0.004, true)
+          ;(scene as any).screenShake?.trigger('micro')
 
           // ── FADE OUT (150ms) ──
           scene.tweens.add({
@@ -523,7 +523,7 @@ export class WeaponAnimationSystem {
           this.spawnTomeParticles(peakX, peakY, 0x8fbfff, scale)
 
           // Camera shake — lighter than sword, more of a "clank" feel
-          scene.cameras.main.shake(60, 0.002, true)
+          ;(scene as any).screenShake?.trigger('micro')
 
           // Hold at peak (180ms), then drop back down with fade out
           scene.time.delayedCall(180, () => {

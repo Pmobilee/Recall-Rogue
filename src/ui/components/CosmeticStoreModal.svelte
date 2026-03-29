@@ -1,5 +1,6 @@
 <script lang="ts">
   import { COSMETIC_PRODUCTS } from '../../data/iapCatalog'
+  import { getGreyMatterIconPath } from '../utils/iconAssets'
   import { getCurrentFeaturedDay, getTimeUntilReset, getTodaysDeals, type DailyDeal } from '../../data/dailyDeals'
   import { playerSave, persistPlayer } from '../stores/playerData'
   import { purchaseWithLocalFallback } from '../../services/monetizationService'
@@ -145,7 +146,7 @@
             <div class="deal-cost">
               {#each Object.entries(deal.cost) as [tier, amount]}
                 {#if amount && amount > 0}
-                  <span>{amount} {tier}</span>
+                  <span><img class="cost-gm-icon" src={getGreyMatterIconPath()} alt="" aria-hidden="true" />{amount} {tier}</span>
                 {/if}
               {/each}
             </div>
@@ -309,11 +310,20 @@
 
   .deal-cost,
   .product-price {
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: #fbbf24;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
+    align-items: center;
+  }
+
+  .cost-gm-icon {
+    width: calc(14px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: calc(2px * var(--layout-scale, 1));
   }
 
   .buy-btn {

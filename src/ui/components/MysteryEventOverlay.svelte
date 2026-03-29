@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { MysteryEvent, MysteryEffect } from '../../services/floorManager'
-  import { getRandomRoomBg, getRoomDepthMap, getMysteryEventBg } from '../../data/backgroundManifest'
+  import { getRandomRoomBg, getRoomDepthMap, getMysteryEventBg, getMysteryEventDepthMap } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { getMysteryEventIconPath, getMysteryEventEmoji } from '../utils/iconAssets'
@@ -22,7 +22,8 @@
   let { event, playerHp, playerMaxHp, onresolve }: Props = $props()
 
   const genericBgUrl = getRandomRoomBg('mystery')
-  const depthUrl = getRoomDepthMap('mystery')
+  const genericDepthUrl = getRoomDepthMap('mystery')
+  let depthUrl = $derived(event ? getMysteryEventDepthMap(event.id) : genericDepthUrl)
 
   // Use a per-event background if the event has one, falling back to the generic mystery bg.
   // The <img> onerror handler below falls back to genericBgUrl if the per-event asset 404s.

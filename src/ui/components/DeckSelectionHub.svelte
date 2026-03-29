@@ -47,6 +47,7 @@
       <div class="panel-tagline">
         Battle with knowledge.<br />Multi-domain combat.
       </div>
+      <div class="panel-stats">4 knowledge domains · 3,500+ facts</div>
     </button>
 
     <!-- Right panel: Study Temple -->
@@ -58,6 +59,7 @@
       <div class="panel-tagline">
         Master your decks.<br />Focused learning.
       </div>
+      <div class="panel-stats">48 curated decks · 46,000+ facts</div>
     </button>
   </div>
 </div>
@@ -66,7 +68,9 @@
   .deck-selection-hub {
     position: fixed;
     inset: 0;
-    background: linear-gradient(160deg, #0a0e1a 0%, #0d1117 50%, #0a1020 100%);
+    background:
+      radial-gradient(ellipse 800px 400px at 50% 50%, rgba(99, 102, 241, 0.04), transparent),
+      linear-gradient(160deg, #0a0e1a 0%, #0d1117 50%, #0a1020 100%);
     z-index: 200;
     display: flex;
     flex-direction: column;
@@ -99,7 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc(2px * var(--layout-scale, 1));
+    gap: calc(24px * var(--layout-scale, 1));
     padding: calc(24px * var(--layout-scale, 1));
   }
 
@@ -113,6 +117,8 @@
     max-width: calc(500px * var(--layout-scale, 1));
     height: calc(480px * var(--layout-scale, 1));
     border-radius: calc(16px * var(--layout-scale, 1));
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
     transition: all 0.25s ease;
     text-align: center;
@@ -130,14 +136,22 @@
   .panel--trivia {
     background: linear-gradient(160deg, #1a2332 0%, #1e293b 50%, #1a2332 100%);
     border: 1px solid rgba(245, 158, 11, 0.2);
-    box-shadow: none;
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3), inset 0 calc(1px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.05);
+  }
+
+  .panel--trivia::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: calc(3px * var(--layout-scale, 1));
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.5), transparent);
   }
 
   .panel--trivia:hover {
     transform: translateY(calc(-4px * var(--layout-scale, 1)));
     border-color: rgba(245, 158, 11, 0.5);
     box-shadow:
-      0 calc(8px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.15);
+      0 calc(12px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.2), inset 0 calc(1px * var(--layout-scale, 1)) calc(50px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.08);
   }
 
   .panel--trivia:active {
@@ -148,14 +162,22 @@
   .panel--study {
     background: linear-gradient(160deg, #1a1035 0%, #1e1145 50%, #1a1035 100%);
     border: 1px solid rgba(99, 102, 241, 0.2);
-    box-shadow: none;
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3), inset 0 calc(1px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1)) rgba(99, 102, 241, 0.05);
+  }
+
+  .panel--study::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: calc(3px * var(--layout-scale, 1));
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
   }
 
   .panel--study:hover {
     transform: translateY(calc(-4px * var(--layout-scale, 1)));
     border-color: rgba(99, 102, 241, 0.5);
     box-shadow:
-      0 calc(8px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1)) rgba(99, 102, 241, 0.15);
+      0 calc(12px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1)) rgba(99, 102, 241, 0.2), inset 0 calc(1px * var(--layout-scale, 1)) calc(50px * var(--layout-scale, 1)) rgba(99, 102, 241, 0.08);
   }
 
   .panel--study:active {
@@ -165,7 +187,7 @@
   /* Icons */
   .panel-icon {
     line-height: 1;
-    font-size: calc(64px * var(--text-scale, 1));
+    font-size: calc(80px * var(--text-scale, 1));
   }
 
   .panel-icon--trivia {
@@ -202,17 +224,26 @@
 
   /* Divider */
   .panel-divider {
-    width: calc(60px * var(--layout-scale, 1));
+    width: calc(80px * var(--layout-scale, 1));
     height: 1px;
     border: none;
   }
 
   .panel-divider--trivia {
-    background-color: rgba(245, 158, 11, 0.3);
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.5), transparent);
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.3);
   }
 
   .panel-divider--study {
-    background-color: rgba(99, 102, 241, 0.3);
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(99, 102, 241, 0.3);
+  }
+
+  /* Stats */
+  .panel-stats {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #475569;
+    margin-top: calc(8px * var(--layout-scale, 1));
   }
 
   /* Tagline */

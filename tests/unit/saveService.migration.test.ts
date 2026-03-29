@@ -20,7 +20,7 @@ describe('saveService migration safety', () => {
     expect(load()).toBeNull()
   })
 
-  it('migrates legacy mineral keys to geode/essence', () => {
+  it('migrates legacy mineral keys to greyMatter', () => {
     const base = createNewPlayer('teen') as unknown as Record<string, unknown>
     base.minerals = {
       dust: 11,
@@ -33,8 +33,9 @@ describe('saveService migration safety', () => {
     const migrated = load()
 
     expect(migrated).not.toBeNull()
-    expect(migrated?.minerals.geode).toBe(7)
-    expect(migrated?.minerals.essence).toBe(2)
+    // shard × 25 + coreFragment × 500 + primordialEssence × 2000 (dust is not a converted key)
+    // = 3 * 25 + 7 * 500 + 2 * 2000 = 75 + 3500 + 4000 = 7575
+    expect(migrated?.minerals.greyMatter).toBe(7575)
   })
 
   it('backfills relic economy fields when absent', () => {

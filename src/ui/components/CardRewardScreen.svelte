@@ -2,7 +2,7 @@
   import type { Card, CardType } from '../../data/card-types'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { getDetailedCardDescription, getShortCardDescription } from '../../services/cardDescriptionService'
-  import { getCardTypeIconPath } from '../utils/iconAssets'
+  import { getCardTypeIconPath, getGoldTierIconPath } from '../utils/iconAssets'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
   import { getCardArtUrl } from '../utils/cardArtManifest'
@@ -326,7 +326,7 @@
 {#if rewardStep === 'gold' && bundle}
     <div class="step-container" class:step-visible={stepVisible}>
       <div class="step-icon-action gold-action" aria-hidden="true">
-        <div class="step-icon">🪙</div>
+        <img class="step-icon-img gold-step-img" src={getGoldTierIconPath(bundle.goldEarned)} alt="" aria-hidden="true" />
       </div>
       <h1 class="step-title">Gold Earned</h1>
       <div class="step-value gold-value">+{bundle.goldEarned}</div>
@@ -598,6 +598,12 @@
   .step-icon-fallback {
     font-size: calc(72px * var(--layout-scale, 1));
     line-height: 1;
+  }
+
+  .gold-step-img {
+    width: calc(48px * var(--layout-scale, 1));
+    height: calc(48px * var(--layout-scale, 1));
+    object-fit: contain;
   }
 
   .gold-action {

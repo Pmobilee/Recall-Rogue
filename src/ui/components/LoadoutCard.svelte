@@ -14,8 +14,11 @@
 
   let { domainId, selectedSubcategories, onSubcategoriesChange }: Props = $props();
 
+  let isExpanded = $state(true);
+
   const meta = $derived(getDomainMetadata(domainId as FactDomain));
   const subcategories = $derived(getDomainSubcategories(domainId as FactDomain));
+  const totalFacts = $derived(subcategories.reduce((sum, s) => sum + s.count, 0));
 
   /** A chip is selected when: all included (empty) OR this sub's id is in the selected list. */
   function isChipSelected(subId: string): boolean {
@@ -55,6 +58,14 @@
   <div class="card-header">
     <span class="domain-icon">{meta.icon}</span>
     <span class="domain-name">{meta.displayName}</span>
+    {#if totalFacts > 0}
+      <span class="fact-count">{totalFacts} facts</span>
+    {/if}
+    {#if subcategories.length > 0}
+      <button class="expand-toggle" onclick={() => isExpanded = !isExpanded} aria-label={isExpanded ? 'Collapse' : 'Expand'}>
+        {isExpanded ? '▾' : '▸'}
+      </button>
+    {/if}
   </div>
 
   <!-- Body: chips or empty-state note -->
@@ -62,11 +73,12 @@
     <p class="empty-note">
       {meta.displayName} — all facts included (no subcategory breakdown available)
     </p>
-  {:else}
+  {:else if isExpanded}
     <div class="chip-area">
       {#each subcategories as sub (sub.id)}
         <SubcategoryChip
           label={sub.name}
+          count={sub.count}
           isSelected={isChipSelected(sub.id)}
           colorTint={meta.colorTint}
           ontoggle={() => toggleSubcategory(sub.id)}
@@ -109,6 +121,28 @@
     font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     color: var(--color-tint);
+  }
+
+  .fact-count {
+    margin-left: auto;
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 500;
+    color: #4b5563;
+  }
+
+  .expand-toggle {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: calc(14px * var(--text-scale, 1));
+    cursor: pointer;
+    padding: calc(4px * var(--layout-scale, 1));
+    line-height: 1;
+    transition: color 0.15s;
+  }
+
+  .expand-toggle:hover {
+    color: #94a3b8;
   }
 
   /* ---- Chip area ---- */
