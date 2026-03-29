@@ -50,6 +50,7 @@
   import { synergyFlash } from '../stores/gameState'
   import { getNonCuratedQuestion, getQuestionVariantCount } from '../utils/combatQuestionPolicy'
   import StatusEffectBar from './StatusEffectBar.svelte'
+  import EnemyPowerBadges from './EnemyPowerBadges.svelte'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import SurgeBorderOverlay from './SurgeBorderOverlay.svelte'
   import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
@@ -82,6 +83,9 @@
       distractorCount?: number,
     ) => {
       curedCursedFact: boolean
+      damageDealt?: number
+      shieldApplied?: number
+      healApplied?: number
       pendingChoice?: {
         cardId: string
         mechanicId: 'phase_shift' | 'unstable_flux'
@@ -1646,11 +1650,12 @@
     // Fire the play immediately with playMode: 'quick'
     const _qpPreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
     const _qpPrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
-    onplaycard(cardId, true, false, undefined, undefined, 'quick')
+    const quickResult = onplaycard(cardId, true, false, undefined, undefined, 'quick')
     spawnStatusFloaters(_qpPreEnemy, _qpPrePlayer)
 
-    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
-    const quickEffectVal = Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
+    const actualDmg = quickResult?.damageDealt ?? 0
+    const actualShield = quickResult?.shieldApplied ?? 0
+    const quickEffectVal = card.cardType === 'attack' ? actualDmg : card.cardType === 'shield' ? actualShield : (actualDmg || actualShield || Math.round(card.baseEffectValue * card.effectMultiplier))
     juiceManager.fire({
       type: 'correct',
       damage: quickEffectVal,
@@ -2180,11 +2185,17 @@
         const swooshCue = swooshCues[card.cardType]
         if (swooshCue) playCardAudio(swooshCue)
 
+        const actualChargeDmg = chargeResult?.damageDealt ?? 0
+        const actualChargeShield = chargeResult?.shieldApplied ?? 0
+        const actualEffectVal = card.cardType === 'attack' ? (actualChargeDmg || effectVal) : card.cardType === 'shield' ? (actualChargeShield || effectVal) : effectVal
+        const actualEffectLabel = (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
+          ? effectLabel
+          : `${card.cardType.toUpperCase()} ${actualEffectVal}`
         juiceManager.fire({
           type: 'correct',
-          damage: effectVal,
+          damage: actualEffectVal,
           isCritical: speedBonus,
-          effectLabel: effectLabel,
+          effectLabel: actualEffectLabel,
           isPerfectTurn: willBePerfect,
           cardType: card.cardType,
           hitCount,
@@ -2454,6 +2465,7 @@
     {/if}
 
     <StatusEffectBar effects={enemyEffects} position="enemy" />
+    <EnemyPowerBadges enemy={turnState?.enemy} />
 
     {#if turnState}
       <div class="sr-only" aria-live="polite" role="status">
@@ -3911,7 +3923,7 @@
   /* Status effect bars — enemy: below HP bar */
   :global(.layout-landscape .status-effect-bar-enemy) {
     position: fixed;
-    top: 18%;
+    top: 22%;
     left: 50%;
     transform: translateX(-50%);
     right: auto;

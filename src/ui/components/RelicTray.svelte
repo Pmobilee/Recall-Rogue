@@ -166,22 +166,23 @@
   }
 
   .relic-slot {
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(28px * var(--layout-scale, 1));
-    border-radius: calc(6px * var(--layout-scale, 1));
-    background: rgba(24, 33, 46, 0.9);
-    border: 1.5px solid #C9A227;
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: transparent;
+    border: none;
     display: grid;
     place-items: center;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 0;
     cursor: pointer;
-    transition: transform 150ms ease, box-shadow 150ms ease;
+    transition: transform 150ms ease, filter 150ms ease;
+    filter: drop-shadow(0 calc(1px * var(--layout-scale, 1)) calc(2px * var(--layout-scale, 1)) rgba(0,0,0,0.5));
   }
 
   .relic-slot:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 calc(6px * var(--layout-scale, 1)) rgba(201, 162, 39, 0.6));
   }
 
   .relic-slot.triggered {
@@ -189,8 +190,8 @@
   }
 
   .relic-icon {
-    width: calc(22px * var(--layout-scale, 1));
-    height: calc(22px * var(--layout-scale, 1));
+    width: calc(26px * var(--layout-scale, 1));
+    height: calc(26px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: auto;
   }

@@ -118,7 +118,7 @@
   /* ─── EXACT COPY of CardHand.svelte card rendering CSS ─── */
 
   .card-in-hand {
-    --card-w: calc(220px * var(--layout-scale, 1));
+    --card-w: calc(280px * var(--layout-scale, 1));
     --card-h: calc(var(--card-w) * 1.461);
     position: relative;
     width: var(--card-w);
@@ -182,7 +182,7 @@
     height: 100%;
     object-fit: contain;
     pointer-events: none;
-    image-rendering: pixelated;
+    image-rendering: auto;
   }
 
   .frame-card-art {
@@ -249,7 +249,7 @@
   .v2-mechanic-name {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.1);
+    font-size: calc(var(--card-w) * 0.08);
     color: #ffffff;
     text-transform: capitalize;
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -278,7 +278,7 @@
 
   .v2-effect-text {
     font-family: system-ui, -apple-system, sans-serif;
-    font-size: calc(var(--card-w) * 0.07);
+    font-size: calc(var(--card-w) * 0.08);
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
@@ -287,14 +287,17 @@
     text-align: center;
     line-height: 1.3;
     overflow: hidden;
+    word-break: break-word;
   }
 
   .parchment-inner {
-    display: inline;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 
   .desc-number {
-    font-family: 'Cinzel', 'Georgia', serif;
+    font-family: inherit;
     font-weight: 900;
     color: #ffffff;
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);

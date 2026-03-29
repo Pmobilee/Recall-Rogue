@@ -665,6 +665,25 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
     }
   }
 
+  // Compute fact state summary for the run-end screen
+  {
+    const touchedFactIds = new Set([
+      ...run.factsAnsweredCorrectly,
+      ...run.factsAnsweredIncorrectly,
+    ]);
+    const save = get(playerSave);
+    const reviewStates = save?.reviewStates ?? [];
+    const reviewMap = new Map(reviewStates.map((r: any) => [r.factId ?? r.id, r]));
+    let seen = 0, reviewing = 0, mastered = 0;
+    for (const factId of touchedFactIds) {
+      const rs = reviewMap.get(factId);
+      if (!rs || (rs.totalAttempts ?? 0) < 3) seen++;
+      else if ((rs.stability ?? 0) >= 30) mastered++;
+      else reviewing++;
+    }
+    (endData as any).factStateSummary = { seen, reviewing, mastered };
+  }
+
   lastRunSummary.set(captureRunSummary(run, endData));
   activeRunEndData.set(endData);
   activeRunState.set(null);
@@ -953,9 +972,8 @@ function openCardReward(): void {
   // AR-262: Apply accuracy grade bonuses to reward generation
   const rewardBundle = get(activeRewardBundle);
   const accuracyGrade = rewardBundle?.accuracyGrade;
-  const bonusCardOptions = (accuracyGrade === 'S' || accuracyGrade === 'A') ? 1 : 0;
   const guaranteeUncommon = accuracyGrade === 'S';
-  const typeCount = 3 + bonusCardOptions;
+  const typeCount = 3;
 
   const options = generateCardRewardOptionsByType(
     getRunPoolCards(),
@@ -1266,6 +1284,11 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   run.encountersTotal += 1;
   if (result === 'victory') {
     run.encountersWon += 1;
+    // Track defeated enemy for run-end screen
+    const exitEnemyId = get(combatExitEnemyId);
+    if (exitEnemyId) {
+      (run.defeatedEnemyIds ??= []).push(exitEnemyId);
+    }
     run.bounties = updateBounties(run.bounties, {
       type: 'encounter_won',
       flawless: run.currentEncounterWrongAnswers === 0,
@@ -1772,6 +1795,10 @@ export function getDefeatedBossName(): string {
  * handles Phaser boot and encounter start to avoid race conditions.
  */
 export function onMapNodeSelected(nodeId: string): void {
+  if (isProcessingEncounterResult) {
+    if (import.meta.env.DEV) console.warn('[GameFlow] Node selected while still processing encounter result — ignoring');
+    return;
+  }
   const run = get(activeRunState);
   if (!run || !run.floor.actMap) return;
 

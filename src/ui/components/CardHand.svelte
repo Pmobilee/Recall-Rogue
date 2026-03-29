@@ -1318,7 +1318,7 @@
         ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
-        style="transform: translate3d({xOffset}px, calc(-{riseAmount}px - var(--card-h) - 8px), 0); width: calc(var(--card-w) * 1.2);"
+        style="transform: translate3d({xOffset}px, calc(-{riseAmount}px - var(--card-h) - calc(32px * var(--layout-scale, 1))), 0); width: calc(var(--card-w) * 1.2);"
       >
         CHARGE
         <span class="charge-ap-badge" class:momentum-active={isMomentumMatch && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
@@ -1564,7 +1564,7 @@
        Place button bottom at riseAmount + card height + 8px from the container bottom,
        which puts it ~8px above the risen card's top edge.
        AR-220 sub-step 5: left/transform set via inline style to follow selected card's xOffset. */
-    bottom: calc(var(--card-h) * 0.5 + var(--card-h) + calc(20px * var(--layout-scale, 1)));
+    bottom: calc(var(--card-h) * 0.5 + var(--card-h) + calc(44px * var(--layout-scale, 1)));
     white-space: nowrap;
     /* §7 spec: charge button appear = 100ms fade-in */
     animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
@@ -1776,7 +1776,7 @@
   .v2-mechanic-name {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.075);
+    font-size: calc(var(--card-w) * 0.06);
     color: #000000;
     text-transform: capitalize;
     text-shadow:
@@ -1787,6 +1787,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 80%;
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -1843,7 +1845,7 @@
   }
 
   .desc-number {
-    font-family: 'Cinzel', 'Georgia', serif;
+    font-family: inherit;
     font-weight: 900;
     color: #ffffff;
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -1854,7 +1856,8 @@
   }
 
   .parchment-inner {
-    display: inline;
+    display: block;
+    width: 100%;
     text-align: center;
   }
 

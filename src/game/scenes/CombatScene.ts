@@ -905,6 +905,9 @@ export class CombatScene extends Phaser.Scene {
     if (!this.sceneReady) return
     this.currentEnemyHP = hp
     this.currentEnemyMaxHP = maxHP
+    if (hp <= 0 || maxHP <= 0) {
+      console.error('[CombatScene] setEnemy called with invalid HP:', { hp, maxHP, name, enemyId })
+    }
     this.currentEnemyId = enemyId ?? this.currentEnemyId
     this.currentEnemyCategory = category
     // Landscape: use absolute game units (not scaled by scaleFactor)

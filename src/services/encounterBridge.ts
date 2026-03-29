@@ -283,6 +283,8 @@ function syncCombatScene(turnState: TurnState): void {
 }
 
 export async function startEncounterForRoom(enemyId?: string): Promise<boolean> {
+  // Immediately invalidate any pending victory/defeat timers from the previous encounter
+  encounterGeneration++;
   const existingTurn = get(activeTurnState);
   if (existingTurn) {
     if (existingTurn.result === null) {
@@ -619,6 +621,9 @@ export function handlePlayCard(
   distractorCount?: number,
 ): {
   curedCursedFact: boolean;
+  damageDealt?: number;
+  shieldApplied?: number;
+  healApplied?: number;
   pendingChoice?: {
     cardId: string;
     mechanicId: 'phase_shift' | 'unstable_flux';
@@ -909,6 +914,9 @@ export function handlePlayCard(
 
   return {
     curedCursedFact: result.curedCursedFact ?? false,
+    damageDealt: result.effect?.damageDealt ?? 0,
+    shieldApplied: result.effect?.shieldApplied ?? 0,
+    healApplied: result.effect?.healApplied ?? 0,
     pendingChoice: result.pendingChoice,
     pendingCardPick: result.pendingCardPick,
   };

@@ -82,6 +82,8 @@
   // Tooltip state — one open at a time, identified by relic index
   // ============================================================
   let openTooltipIndex: number | null = $state(null)
+  let fogTooltipOpen = $state(false)
+  let goldTooltipOpen = $state(false)
 
   function toggleTooltip(index: number) {
     openTooltipIndex = openTooltipIndex === index ? null : index
@@ -142,9 +144,6 @@
        CENTER — Run Progress
        ============================================================ -->
   <div class="section section-center" aria-label="Run progress">
-    <span class="segment-name">{segmentName}</span>
-    <span class="progress-divider">·</span>
-    <span class="floor-label">Floor {currentFloor}</span>
     {#if ascensionLevel > 0}
       <span class="ascension-badge" aria-label="Ascension {ascensionLevel}">
         A{ascensionLevel}
@@ -161,10 +160,25 @@
        RIGHT — Resources & Controls
        ============================================================ -->
   <div class="section section-right">
+    <!-- Floor info -->
+    <span class="segment-name">{segmentName}</span>
+    <span class="progress-divider">·</span>
+    <span class="floor-label">Floor {currentFloor}</span>
+
     <!-- Gold -->
-    <div class="gold-counter" aria-label="Gold: {currency}">
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="gold-counter" aria-label="Gold: {currency}"
+      onmouseenter={() => { goldTooltipOpen = true }}
+      onmouseleave={() => { goldTooltipOpen = false }}
+      onclick={() => { goldTooltipOpen = !goldTooltipOpen }}
+    >
       <span class="gold-icon" aria-hidden="true">🪙</span>
       <span class="gold-value">{currency}</span>
+      {#if goldTooltipOpen}
+        <div class="gold-tooltip">
+          <div class="gold-tooltip-desc">Gold — spend at shops to buy cards and relics</div>
+        </div>
+      {/if}
     </div>
 
     <!-- Relics row -->
@@ -226,13 +240,32 @@
 
 <!-- Brain Fog Wing — extends below top bar -->
 {#if fogState !== undefined}
-  <div class="fog-wing" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'} aria-label="Brain Fog: {fogLevel} of 10">
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div class="fog-wing" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'} aria-label="Knowledge Aura: {fogLevel} of 10"
+    onclick={() => { fogTooltipOpen = !fogTooltipOpen }}
+    onmouseenter={() => { fogTooltipOpen = true }}
+    onmouseleave={() => { fogTooltipOpen = false }}
+  >
     <div class="fog-wing-content">
       <span class="fog-icon" aria-hidden="true">{fogState === 'flow_state' ? '✨' : '🌫️'}</span>
       <span class="fog-level">{fogLevel}</span>
     </div>
-    <!-- Animated fog overlay — opacity scales with fog level -->
     <div class="fog-mist" style="opacity: {(fogLevel ?? 0) / 10 * 0.7};"></div>
+    {#if fogTooltipOpen}
+      <div class="fog-tooltip">
+        <div class="fog-tooltip-title">Knowledge Aura</div>
+        <div class="fog-tooltip-desc">
+          {#if fogState === 'brain_fog'}
+            Brain Fog active — enemies deal +20% damage.
+          {:else if fogState === 'flow_state'}
+            Flow State active — draw +1 card per turn.
+          {:else}
+            Neutral — answer correctly to build Flow State.
+          {/if}
+          <br/>Aura: {fogLevel}/10 (below 4 = fog, above 7 = flow)
+        </div>
+      </div>
+    {/if}
   </div>
 {/if}
 
@@ -425,10 +458,13 @@
      Gold Counter
      ============================================================ */
   .gold-counter {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: calc(5px * var(--layout-scale, 1));
+    gap: calc(3px * var(--layout-scale, 1));
     flex-shrink: 0;
+    cursor: pointer;
+    margin-left: calc(8px * var(--layout-scale, 1));
   }
 
   .gold-icon {
@@ -443,6 +479,7 @@
     color: #fbbf24;
     line-height: 1;
     letter-spacing: 0.02em;
+    min-width: calc(24px * var(--layout-scale, 1));
   }
 
   /* ============================================================
@@ -625,7 +662,8 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     transition: background 400ms ease, box-shadow 400ms ease;
   }
 
@@ -701,5 +739,59 @@
 
   @media (prefers-reduced-motion: reduce) {
     .fog-mist { animation: none; }
+  }
+
+  .fog-tooltip {
+    position: absolute;
+    top: calc(100% + calc(4px * var(--layout-scale, 1)));
+    left: calc(10px * var(--layout-scale, 1));
+    background: rgba(14, 20, 32, 0.97);
+    border: 1.5px solid rgba(129, 140, 248, 0.4);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    max-width: calc(220px * var(--layout-scale, 1));
+    min-width: calc(160px * var(--layout-scale, 1));
+    z-index: 300;
+    pointer-events: none;
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.7);
+    white-space: normal;
+  }
+
+  .fog-tooltip-title {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #a78bfa;
+    margin-bottom: calc(4px * var(--layout-scale, 1));
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+  }
+
+  .fog-tooltip-desc {
+    font-size: calc(9px * var(--text-scale, 1));
+    color: #d4c9a8;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .gold-tooltip {
+    position: absolute;
+    top: calc(100% + calc(6px * var(--layout-scale, 1)));
+    right: 0;
+    background: rgba(14, 20, 32, 0.97);
+    border: 1.5px solid rgba(251, 191, 36, 0.4);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    z-index: 300;
+    pointer-events: none;
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+  }
+
+  .gold-tooltip-desc {
+    font-size: calc(9px * var(--text-scale, 1));
+    color: #d4c9a8;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
   }
 </style>

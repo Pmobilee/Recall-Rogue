@@ -557,33 +557,40 @@
     }
   }
 
+  let mapNodeSelectionInProgress = false
   async function handleMapNodeSelect(nodeId: string): Promise<void> {
-    const run = get(activeRunState)
-    if (!run?.floor.actMap) return
-    const node = run.floor.actMap.nodes[nodeId]
-    if (!node) return
+    if (mapNodeSelectionInProgress) return
+    mapNodeSelectionInProgress = true
+    try {
+      const run = get(activeRunState)
+      if (!run?.floor.actMap) return
+      const node = run.floor.actMap.nodes[nodeId]
+      if (!node) return
 
-    // Update map state (node selection, floor derivation, analytics)
-    onMapNodeSelected(nodeId)
+      // Update map state (node selection, floor derivation, analytics)
+      onMapNodeSelected(nodeId)
 
-    // Combat-type nodes: CardApp owns the full combat start sequence
-    if (node.type === 'combat' || node.type === 'elite' || node.type === 'boss') {
-      void ensurePhaserBooted()
-      gameFlowState.set('combat')
-      holdScreenTransition()
-      currentScreen.set('combat')
-      try {
-        if (!(await startEncounterForRoom(node.enemyId))) {
+      // Combat-type nodes: CardApp owns the full combat start sequence
+      if (node.type === 'combat' || node.type === 'elite' || node.type === 'boss') {
+        void ensurePhaserBooted()
+        gameFlowState.set('combat')
+        holdScreenTransition()
+        currentScreen.set('combat')
+        try {
+          if (!(await startEncounterForRoom(node.enemyId))) {
+            releaseScreenTransition()
+            currentScreen.set('dungeonMap')
+          } else {
+            autoSaveRun('combat')
+          }
+        } catch (err) {
+          console.error('[CardApp] Failed to start map node encounter', err)
           releaseScreenTransition()
           currentScreen.set('dungeonMap')
-        } else {
-          autoSaveRun('combat')
         }
-      } catch (err) {
-        console.error('[CardApp] Failed to start map node encounter', err)
-        releaseScreenTransition()
-        currentScreen.set('dungeonMap')
       }
+    } finally {
+      mapNodeSelectionInProgress = false
     }
   }
 
@@ -1374,6 +1381,11 @@
           currencyEarned={end.currencyEarned}
           isPracticeRun={end.isPracticeRun}
           xpResult={(end as any).xpResult}
+          defeatedEnemyIds={(end as any).defeatedEnemyIds ?? []}
+          factStateSummary={(end as any).factStateSummary ?? { seen: 0, reviewing: 0, mastered: 0 }}
+          elitesDefeated={end.elitesDefeated ?? 0}
+          miniBossesDefeated={end.miniBossesDefeated ?? 0}
+          bossesDefeated={end.bossesDefeated ?? 0}
           onplayagain={playAgain}
           onhome={returnToMenu}
         />

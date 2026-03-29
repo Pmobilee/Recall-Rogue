@@ -61,8 +61,6 @@ export interface CardEffectResult {
   mirrorCopy?: boolean;
   /** adapt: cleanse one random debuff from player */
   adaptCleanse?: boolean;
-  /** foresight charge_correct bonus: reveal the next enemy intent */
-  revealNextIntent?: boolean;
   /** recycle charge_correct bonus: number of cards to draw from discard pile */
   drawFromDiscard?: number;
   /** AR-203: Burn stacks to apply to the target on this card play. */
@@ -687,10 +685,9 @@ export function resolveCardEffect(
       return result;
     }
     case 'foresight': {
-      // draw count scales with play mode; charge_correct also reveals next intent
+      // draw count scales with play mode
       const drawCount = isChargeCorrect ? 3 : (isChargeWrong ? 1 : 2);
       result.extraCardsDrawn = drawCount;
-      if (isChargeCorrect) result.revealNextIntent = true;
       return result;
     }
     case 'transmute': {

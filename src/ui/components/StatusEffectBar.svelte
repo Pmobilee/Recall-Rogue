@@ -65,7 +65,6 @@
       {@const info = getInfo(effect.type)}
       <button
         class="effect-icon"
-        style="border-color: {info.color};"
         onclick={() => showEffect(effect.type)}
         aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
       >
@@ -110,20 +109,23 @@
   }
 
   .effect-bar-enemy {
-    top: calc(calc(48px * var(--layout-scale, 1)) + var(--safe-top, 0px));
+    top: calc(calc(72px * var(--layout-scale, 1)) + var(--safe-top, 0px));
   }
 
   .effect-bar-player {
-    bottom: calc(calc(46px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
+    top: calc(calc(4px * var(--layout-scale, 1)) + var(--safe-top, 0px));
+    right: calc(10px * var(--layout-scale, 1));
+    left: auto;
+    transform: none;
   }
 
   .effect-icon {
     position: relative;
-    width: calc(36px * var(--layout-scale, 1));
-    height: calc(36px * var(--layout-scale, 1));
-    border-radius: 6px;
-    border: 2px solid;
-    background: rgba(10, 18, 30, 0.85);
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: none;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,10 +133,11 @@
     -webkit-tap-highlight-color: transparent;
     padding: 0;
     font-family: inherit;
+    filter: drop-shadow(0 calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) rgba(0,0,0,0.6));
   }
 
   .effect-emoji {
-    font-size: calc(16px * var(--layout-scale, 1));
+    font-size: calc(22px * var(--layout-scale, 1));
     line-height: 1;
   }
 
@@ -183,7 +186,7 @@
   }
 
   .popup-enemy {
-    top: calc(calc(90px * var(--layout-scale, 1)) + var(--safe-top, 0px));
+    top: calc(calc(114px * var(--layout-scale, 1)) + var(--safe-top, 0px));
   }
 
   .popup-player {

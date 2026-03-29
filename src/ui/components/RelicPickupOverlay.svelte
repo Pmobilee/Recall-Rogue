@@ -20,20 +20,24 @@
 </script>
 
 <div class="relic-overlay" class:landscape={$isLandscape} role="dialog" aria-modal="true">
-  <div class="relic-card" style="border-color: {rarityColors[relic.rarity] ?? '#aaa'}">
-    <div class="tier-label" style="color: {rarityColors[relic.rarity] ?? '#aaa'}">{relic.rarity.toUpperCase()}</div>
-    <div class="relic-icon">{relic.icon}</div>
-    <h2 class="relic-name">{relic.name}</h2>
-    <p class="relic-desc">{relic.description}</p>
-    <div class="relic-effects">
-      {#each relic.effects as effect}
-        <div class="effect-line">{effect.description}</div>
-      {/each}
+  <div class="relic-backdrop"></div>
+  <div class="relic-panel">
+    <div class="relic-icon-wrap" style="--rarity-color: {rarityColors[relic.rarity] ?? '#aaa'};">
+      <span class="relic-icon-large">{relic.icon}</span>
     </div>
-    <p class="relic-lore">"{relic.flavorText}"</p>
-    <div class="relic-actions">
-      <button onclick={() => { playCardAudio('relic-acquired'); onAccept() }} class="btn-accept">Equip Relic</button>
-      <button onclick={onDecline} class="btn-decline">Leave It</button>
+    <h2 class="relic-title">{relic.name}</h2>
+    <span class="relic-rarity" style="color: {rarityColors[relic.rarity] ?? '#aaa'};">{relic.rarity}</span>
+    <p class="relic-description">{relic.description}</p>
+    {#if relic.effects.length > 0}
+      <div class="relic-effect-list">
+        {#each relic.effects as effect}
+          <span class="relic-effect-line">{effect.description}</span>
+        {/each}
+      </div>
+    {/if}
+    <div class="relic-buttons">
+      <button class="btn-take" onclick={() => { playCardAudio('relic-acquired'); onAccept() }}>Take</button>
+      <button class="btn-leave" onclick={onDecline}>Leave</button>
     </div>
   </div>
 </div>
@@ -42,50 +46,175 @@
   .relic-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.75);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 200;
+    animation: relicFadeIn 200ms ease-out;
   }
-  .relic-card {
-    background: #1a1a2e;
-    border: 2px solid;
-    border-radius: 8px;
-    padding: 24px;
-    max-width: 320px;
-    width: 90%;
+
+  .relic-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(calc(8px * var(--layout-scale, 1)));
+  }
+
+  .relic-panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    color: #e0e0e0;
-  }
-  .tier-label { font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 8px; text-transform: uppercase; }
-  .relic-icon { font-size: 3rem; margin: 8px 0; }
-  .relic-name { font-size: 1.1rem; margin: 8px 0 4px; font-family: var(--font-rpg); }
-  .relic-desc { font-size: 0.85rem; margin: 0 0 8px; }
-  .relic-effects { margin: 8px 0; }
-  .effect-line { font-size: 0.75rem; color: #88cc88; margin: 2px 0; }
-  .relic-lore { font-size: 0.75rem; font-style: italic; color: #888; margin: 8px 0 16px; }
-  .relic-actions { display: flex; gap: 12px; justify-content: center; }
-  .btn-accept { background: #2a5298; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; min-height: 44px; font-family: inherit; }
-  .btn-decline { background: #333; color: #ccc; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; min-height: 44px; font-family: inherit; }
-  .btn-accept:hover { background: #3a62a8; }
-  .btn-decline:hover { background: #444; }
-
-  /* === Landscape layout === */
-  .relic-overlay.landscape .relic-card {
-    max-width: min(55vw, 640px);
-    padding: 32px 40px;
+    background: rgba(15, 20, 35, 0.95);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: calc(16px * var(--layout-scale, 1));
+    padding: calc(32px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
+    max-width: calc(360px * var(--layout-scale, 1));
+    width: 90%;
+    box-shadow: 0 calc(8px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.6);
+    animation: relicScaleIn 250ms ease-out;
   }
 
-  .relic-overlay.landscape .relic-icon {
-    font-size: 4rem;
+  .relic-icon-wrap {
+    width: calc(96px * var(--layout-scale, 1));
+    height: calc(96px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    filter: drop-shadow(0 0 calc(16px * var(--layout-scale, 1)) var(--rarity-color));
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+    animation: relicFloat 2.4s ease-in-out infinite;
   }
 
-  .relic-overlay.landscape .relic-name {
-    font-size: 1.3rem;
+  .relic-icon-large {
+    font-size: calc(48px * var(--text-scale, 1));
+    line-height: 1;
   }
 
-  .relic-overlay.landscape .relic-desc {
-    font-size: 1rem;
+  .relic-title {
+    font-family: var(--font-rpg, 'Cinzel', 'Georgia', serif);
+    font-size: calc(20px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #f0f0f0;
+    margin: 0 0 calc(4px * var(--layout-scale, 1));
+    letter-spacing: 0.02em;
+  }
+
+  .relic-rarity {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+  }
+
+  .relic-description {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #c8c8d0;
+    line-height: 1.5;
+    margin: 0 0 calc(8px * var(--layout-scale, 1));
+    max-width: calc(280px * var(--layout-scale, 1));
+  }
+
+  .relic-effect-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
+    margin-bottom: calc(20px * var(--layout-scale, 1));
+  }
+
+  .relic-effect-line {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #6ee7b7;
+    line-height: 1.3;
+  }
+
+  .relic-buttons {
+    display: flex;
+    gap: calc(12px * var(--layout-scale, 1));
+    width: 100%;
+    justify-content: center;
+    margin-top: calc(8px * var(--layout-scale, 1));
+  }
+
+  .btn-take {
+    background: linear-gradient(180deg, #35c173, #249752);
+    color: #fff;
+    border: none;
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(36px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    min-height: calc(48px * var(--layout-scale, 1));
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
+    transition: transform 100ms ease, box-shadow 100ms ease;
+  }
+
+  .btn-take:hover {
+    transform: scale(1.04);
+    box-shadow: 0 calc(6px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.4);
+  }
+
+  .btn-leave {
+    background: #2d333b;
+    color: #9ba4ad;
+    border: none;
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    min-height: calc(48px * var(--layout-scale, 1));
+    transition: background 100ms ease;
+  }
+
+  .btn-leave:hover {
+    background: #3a414a;
+  }
+
+  /* Landscape overrides */
+  .relic-overlay.landscape .relic-panel {
+    max-width: min(55vw, calc(520px * var(--layout-scale, 1)));
+    padding: calc(36px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1));
+  }
+
+  .relic-overlay.landscape .relic-icon-large {
+    font-size: calc(56px * var(--text-scale, 1));
+  }
+
+  .relic-overlay.landscape .relic-title {
+    font-size: calc(24px * var(--text-scale, 1));
+  }
+
+  .relic-overlay.landscape .relic-description {
+    font-size: calc(15px * var(--text-scale, 1));
+    max-width: calc(380px * var(--layout-scale, 1));
+  }
+
+  @keyframes relicFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(calc(-8px * var(--layout-scale, 1))); }
+  }
+
+  @keyframes relicFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes relicScaleIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .relic-icon-wrap { animation: none; }
   }
 </style>

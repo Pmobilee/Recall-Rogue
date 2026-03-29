@@ -309,16 +309,14 @@ describe('foresight mechanic', () => {
     expect(result.revealNextIntent).toBeFalsy();
   });
 
-  it('charge_correct: draws 3 cards AND revealNextIntent=true', () => {
+  it('charge_correct: draws 3 cards', () => {
     const result = resolve('foresight', 'charge_correct');
     expect(result.extraCardsDrawn).toBe(3);
-    expect(result.revealNextIntent).toBe(true);
   });
 
-  it('charge_wrong: draws 1 card, no reveal', () => {
+  it('charge_wrong: draws 1 card', () => {
     const result = resolve('foresight', 'charge_wrong');
     expect(result.extraCardsDrawn).toBe(1);
-    expect(result.revealNextIntent).toBeFalsy();
   });
 });
 

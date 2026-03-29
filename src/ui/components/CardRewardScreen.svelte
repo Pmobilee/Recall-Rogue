@@ -838,11 +838,12 @@
 
   .altar-options {
     position: relative;
-    min-height: calc(168px * var(--layout-scale, 1));
+    min-height: calc(210px * var(--layout-scale, 1));
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: calc(10px * var(--layout-scale, 1));
     align-items: end;
+    overflow: hidden;
   }
 
   /* AR-124: Deck cycle-speed indicator */
@@ -858,7 +859,7 @@
     position: relative;
     border: none;
     border-radius: 0;
-    min-height: calc(146px * var(--layout-scale, 1));
+    min-height: calc(190px * var(--layout-scale, 1));
     padding: calc(28px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     color: #fff;
     background: transparent;
@@ -960,7 +961,7 @@
 
   .mini-card-name {
     font-weight: 800;
-    font-size: calc(13px * var(--layout-scale, 1));
+    font-size: calc(15px * var(--layout-scale, 1));
     letter-spacing: 0.2px;
     color: #f4f5f7;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
@@ -971,7 +972,7 @@
   }
 
   .mini-card-desc {
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #c8d2df;
     line-height: 1.3;
     text-align: center;
@@ -1564,7 +1565,7 @@
     height: 100%;
     object-fit: contain;
     pointer-events: none;
-    image-rendering: pixelated;
+    image-rendering: auto;
   }
 
   .frame-card-art {

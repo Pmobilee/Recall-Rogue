@@ -116,7 +116,7 @@ export class WeaponAnimationSystem {
     // ── Arm + Tome container ──────────────────────────────
     // arm.webp is 1136x973, tome.webp is 1300x929
     // Large first-person feel: ~280px wide at base 390 width
-    const armTargetW = 280 * scale
+    const armTargetW = 196 * scale
     const armNativeW = 1136
     const armScale = armTargetW / armNativeW
 
@@ -124,29 +124,29 @@ export class WeaponAnimationSystem {
     const tomeScale = armTargetW / tomeNativeW
 
     // Rest position: well below displayH, alpha=0 so fully invisible
-    this.armTomeContainer = this.scene.add.container(w * 0.75, displayH + 250 * scale)
+    this.armTomeContainer = this.scene.add.container(w * 0.75, displayH + 175 * scale)
       .setDepth(WEAPON_DEPTH)
       .setAlpha(0)  // HIDDEN at rest
 
     // Arm at the bottom of the container (sleeve/hand extending downward)
-    this.armSprite = this.scene.add.image(0, 40 * scale, 'weapon-arm').setScale(armScale)
+    this.armSprite = this.scene.add.image(0, 28 * scale, 'weapon-arm').setScale(armScale)
     // Tome above the arm (held by the hand), with glow behind it
-    this.tomeGlow = this.scene.add.image(0, -60 * scale, 'weapon-tome')
+    this.tomeGlow = this.scene.add.image(0, -42 * scale, 'weapon-tome')
       .setScale(tomeScale * 1.08)
       .setAlpha(0)
-    this.tomeSprite = this.scene.add.image(0, -60 * scale, 'weapon-tome').setScale(tomeScale)
+    this.tomeSprite = this.scene.add.image(0, -42 * scale, 'weapon-tome').setScale(tomeScale)
 
     // Order: glow behind tome, tome on top of arm
     this.armTomeContainer.add([this.armSprite, this.tomeGlow, this.tomeSprite])
 
     // ── Shield sprite ─────────────────────────────────────
     // shield.png is 1400x1897 — large first-person feel: ~220px wide at base 390 width
-    const shieldTargetW = 220 * scale
+    const shieldTargetW = 154 * scale
     const shieldNativeW = 1400
     const shieldScale = shieldTargetW / shieldNativeW
 
     // Rest position: well below displayH, alpha=0 so fully invisible
-    this.shieldSprite = this.scene.add.image(w * 0.25, displayH + 300 * scale, 'weapon-shield')
+    this.shieldSprite = this.scene.add.image(w * 0.25, displayH + 210 * scale, 'weapon-shield')
       .setScale(shieldScale)
       .setAlpha(0)  // HIDDEN at rest
       .setDepth(WEAPON_DEPTH)

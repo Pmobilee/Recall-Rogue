@@ -207,7 +207,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'hex': return `${power} poison ×${secondary ?? 3}`;
     case 'scout': return `Draw ${power}`;
     case 'recycle': return 'Draw 3';
-    case 'foresight': return `Draw ${power}, peek`;
+    case 'foresight': return `Draw ${power}`;
     case 'transmute': return 'Transform card';
     case 'mirror': return 'Copy last';
     case 'adapt': return 'Smart: ATK/DEF';
@@ -372,7 +372,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'recycle':
       return [txt('Draw '), num(3), txt(' cards')];
     case 'foresight':
-      return [txt('Draw '), num(power), txt(power !== 1 ? ' cards' : ' card'), txt('. Peek at next intent')];
+      return [txt('Draw '), num(power), txt(power !== 1 ? ' cards' : ' card')];
     case 'transmute':
       return [txt('Transform your weakest hand card')];
     case 'cleanse':
