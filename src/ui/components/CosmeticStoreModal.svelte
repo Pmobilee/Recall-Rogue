@@ -5,7 +5,7 @@
   import { purchaseWithLocalFallback } from '../../services/monetizationService'
   import { kidModeIapGuard } from '../../services/iapService'
   import GachaReveal from './GachaReveal.svelte'
-  import type { MineralTier, Rarity } from '../../data/types'
+  import type { PlayerMinerals, Rarity } from '../../data/types'
 
   interface Props {
     onClose: () => void
@@ -38,12 +38,12 @@
     return []
   }
 
-  function hasEnough(cost: Partial<Record<MineralTier, number>>): boolean {
+  function hasEnough(cost: Partial<Record<keyof PlayerMinerals, number>>): boolean {
     const minerals = $playerSave?.minerals
     if (!minerals) return false
     return Object.entries(cost).every(([tier, amount]) => {
       if (!amount || amount <= 0) return true
-      return (minerals[tier as MineralTier] ?? 0) >= amount
+      return (minerals[tier as keyof PlayerMinerals] ?? 0) >= amount
     })
   }
 
@@ -73,12 +73,12 @@
 
       for (const [tier, amount] of Object.entries(deal.cost)) {
         if (!amount || amount <= 0) continue
-        const key = tier as MineralTier
+        const key = tier as keyof PlayerMinerals
         next.minerals[key] = Math.max(0, (next.minerals[key] ?? 0) - amount)
       }
 
       if (deal.reward.type === 'minerals') {
-        next.minerals[deal.reward.tier] = (next.minerals[deal.reward.tier] ?? 0) + deal.reward.amount
+        next.minerals.greyMatter = (next.minerals.greyMatter ?? 0) + deal.reward.amount
       } else if (deal.reward.type === 'oxygen_tanks') {
         next.oxygen += deal.reward.amount
       } else if (deal.reward.type === 'recipe_discount') {
@@ -86,9 +86,9 @@
           next.purchasedKnowledgeItems = [...(next.purchasedKnowledgeItems ?? []), `discount:${deal.reward.recipeId}`]
         }
       } else if (deal.reward.type === 'random_minerals') {
-        const dust = deal.reward.minDust + Math.floor(Math.random() * (deal.reward.maxDust - deal.reward.minDust + 1))
-        next.minerals.dust = (next.minerals.dust ?? 0) + dust
-        gachaText = `Mystery cache yielded ${dust} dust.`
+        const greyMatter = deal.reward.minDust + Math.floor(Math.random() * (deal.reward.maxDust - deal.reward.minDust + 1))
+        next.minerals.greyMatter = (next.minerals.greyMatter ?? 0) + greyMatter
+        gachaText = `Mystery cache yielded ${greyMatter} grey matter.`
         gachaRarity = featuredDay === 7 ? 'epic' : 'rare'
         showGacha = true
       } else if (deal.reward.type === 'cosmetic_unlock') {

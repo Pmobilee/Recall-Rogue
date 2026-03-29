@@ -33,6 +33,12 @@ export interface DeckFact {
   funScore: number;
   quizQuestion: string;
   explanation: string;
+  /** Rich grammar explanation shown on wrong answers for language/grammar facts. */
+  grammarNote?: string;
+  /** When true, quiz answers are displayed with ~ prefix + full grammar point form. Used for fragment extractions. */
+  displayAsFullForm?: boolean;
+  /** The full canonical grammar point to display when displayAsFullForm is true (e.g. "てくれる" for a fragment "くれ"). */
+  fullFormDisplay?: string;
   visualDescription: string;
   sourceName: string;
   sourceUrl?: string;
@@ -54,6 +60,8 @@ export interface DeckFact {
   imageAssetPath?: string;
   /** Quiz presentation: 'text' (default), 'image_question' (image shown, text answers), 'image_answers' (text shown, image answer grid). */
   quizMode?: 'text' | 'image_question' | 'image_answers';
+  /** Quiz response mode: 'choice' (default multiple choice) or 'typing' (text input with romaji→hiragana). */
+  quizResponseMode?: 'choice' | 'typing';
 }
 
 export interface AnswerTypePool {

@@ -673,6 +673,7 @@ const facts = extractedFacts.map((fact, i) => {
     funScore:              6,
     quizQuestion:          `${fact.blankedSentence}\n(${fact.translation})`,
     explanation:           `${fact.point} (${fact.meaning}) — ${fact.fullSentence}`,
+    grammarNote:           '',
     visualDescription:     'Japanese grammar study card with sentence completion',
     sourceName:            'FJSD + Tatoeba (CC BY-SA 4.0)',
     sourceUrl:             fact.sourceUrl || undefined,

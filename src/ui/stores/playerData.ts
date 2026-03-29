@@ -1,6 +1,6 @@
 import { get } from 'svelte/store'
 import { singletonWritable } from './singletonStore'
-import type { AgeRating, HubSaveState, MineralTier, PendingArtifact, PlayerSave, ReviewState } from '../../data/types'
+import type { AgeRating, HubSaveState, PendingArtifact, PlayerMinerals, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 // Achievement gallery is archived — getUnlockedPaintingIds inlined as no-op
 function getUnlockedPaintingIds(): string[] { return [] }
@@ -281,7 +281,7 @@ export function unsuspendFact(factId: string): void {
  * Sells a learned fact for mineral rewards.
  *
  * @param factId - Fact identifier to sell.
- * @param mineralReward - Dust reward granted for this sale.
+ * @param mineralReward - Grey matter reward granted for this sale.
  */
 export function sellFact(factId: string, mineralReward: number): void {
   playerSave.update((save) => {
@@ -296,7 +296,7 @@ export function sellFact(factId: string, mineralReward: number): void {
       reviewStates: save.reviewStates.filter((state) => state.factId !== factId),
       minerals: {
         ...save.minerals,
-        dust: save.minerals.dust + mineralReward,
+        greyMatter: save.minerals.greyMatter + mineralReward,
       },
       stats: {
         ...save.stats,
@@ -829,7 +829,7 @@ export function incrementNewCardCount(): void {
  * @param tier - Mineral tier to increment.
  * @param amount - Amount to add.
  */
-export function addMinerals(tier: MineralTier, amount: number): void {
+export function addMinerals(tier: keyof PlayerMinerals, amount: number): void {
   playerSave.update((save) => {
     if (!save) {
       return save
@@ -853,7 +853,7 @@ export function addMinerals(tier: MineralTier, amount: number): void {
  * @param tier - Mineral tier to decrement.
  * @param amount - Amount to deduct.
  */
-export function deductMinerals(tier: MineralTier, amount: number): void {
+export function deductMinerals(tier: keyof PlayerMinerals, amount: number): void {
   playerSave.update((save) => {
     if (!save) {
       return save
@@ -993,13 +993,13 @@ export function recordRunComplete(bestFloor: number): void {
         claimedMilestones.push(milestone.days)
         // Apply the milestone reward
         if (milestone.reward === 'dust_bonus') {
-          updatedMinerals = { ...updatedMinerals, dust: updatedMinerals.dust + milestone.value }
+          updatedMinerals = { ...updatedMinerals, greyMatter: updatedMinerals.greyMatter + milestone.value }
         } else if (milestone.reward === 'crystal_bonus') {
-          updatedMinerals = { ...updatedMinerals, crystal: updatedMinerals.crystal + milestone.value }
+          updatedMinerals = { ...updatedMinerals, greyMatter: updatedMinerals.greyMatter + milestone.value * 100 }
         } else if (milestone.reward === 'geode_bonus') {
-          updatedMinerals = { ...updatedMinerals, geode: updatedMinerals.geode + milestone.value }
+          updatedMinerals = { ...updatedMinerals, greyMatter: updatedMinerals.greyMatter + milestone.value * 500 }
         } else if (milestone.reward === 'essence_bonus') {
-          updatedMinerals = { ...updatedMinerals, essence: updatedMinerals.essence + milestone.value }
+          updatedMinerals = { ...updatedMinerals, greyMatter: updatedMinerals.greyMatter + milestone.value * 2000 }
         } else if (milestone.reward === 'oxygen_bonus') {
           updatedOxygen = updatedOxygen + milestone.value
         } else if (milestone.reward === 'title') {
@@ -1100,15 +1100,15 @@ export function claimUnclaimedMilestones(): number {
     for (const milestone of unclaimed) {
       claimedMilestones.push(milestone.days)
       if (milestone.reward === 'dust_bonus') {
-        minerals = { ...minerals, dust: minerals.dust + milestone.value }
+        minerals = { ...minerals, greyMatter: minerals.greyMatter + milestone.value }
       } else if (milestone.reward === 'shard_bonus') {
-        minerals = { ...minerals, shard: minerals.shard + milestone.value }
+        minerals = { ...minerals, greyMatter: minerals.greyMatter + milestone.value * 25 }
       } else if (milestone.reward === 'crystal_bonus') {
-        minerals = { ...minerals, crystal: minerals.crystal + milestone.value }
+        minerals = { ...minerals, greyMatter: minerals.greyMatter + milestone.value * 100 }
       } else if (milestone.reward === 'geode_bonus') {
-        minerals = { ...minerals, geode: minerals.geode + milestone.value }
+        minerals = { ...minerals, greyMatter: minerals.greyMatter + milestone.value * 500 }
       } else if (milestone.reward === 'essence_bonus') {
-        minerals = { ...minerals, essence: minerals.essence + milestone.value }
+        minerals = { ...minerals, greyMatter: minerals.greyMatter + milestone.value * 2000 }
       } else if (milestone.reward === 'oxygen_bonus') {
         oxygen = oxygen + milestone.value
       } else if (milestone.reward === 'title') {
@@ -1164,10 +1164,10 @@ export function useStreakFreeze(): boolean {
 }
 
 /**
- * Purchases one streak freeze for the configured dust cost.
+ * Purchases one streak freeze for the configured grey matter cost.
  * Respects BALANCE.STREAK_FREEZE_MAX as the cap on total freezes.
  *
- * @returns `true` if purchase succeeded, `false` if insufficient dust or at max freezes.
+ * @returns `true` if purchase succeeded, `false` if insufficient grey matter or at max freezes.
  */
 export function purchaseStreakFreeze(): boolean {
   const current = get(playerSave)
@@ -1177,7 +1177,7 @@ export function purchaseStreakFreeze(): boolean {
   if (freezes >= BALANCE.STREAK_FREEZE_MAX) return false
 
   const cost = 200 // mining-era cost (STREAK_PROTECTION_COST removed)
-  if (current.minerals.dust < cost) return false
+  if (current.minerals.greyMatter < cost) return false
 
   playerSave.update(save => {
     if (!save) return save
@@ -1186,7 +1186,7 @@ export function purchaseStreakFreeze(): boolean {
       streakFreezes: (save.streakFreezes ?? 0) + 1,
       minerals: {
         ...save.minerals,
-        dust: save.minerals.dust - cost,
+        greyMatter: save.minerals.greyMatter - cost,
       },
       lastPlayedAt: Date.now(),
     }
@@ -1197,15 +1197,15 @@ export function purchaseStreakFreeze(): boolean {
 }
 
 /**
- * Deducts dust from the player's mineral balance.
+ * Deducts grey matter from the player's mineral balance.
  *
- * @param amount - Amount of dust to spend (must be > 0).
+ * @param amount - Amount of grey matter to spend (must be > 0).
  * @returns `true` if the spend succeeded, `false` if insufficient funds.
  */
-export function spendDust(amount: number): boolean {
+export function spendGreyMatter(amount: number): boolean {
   const current = get(playerSave)
   if (!current) return false
-  if ((current.minerals?.dust ?? 0) < amount) return false
+  if ((current.minerals?.greyMatter ?? 0) < amount) return false
 
   playerSave.update(save => {
     if (!save) return save
@@ -1213,7 +1213,7 @@ export function spendDust(amount: number): boolean {
       ...save,
       minerals: {
         ...save.minerals,
-        dust: (save.minerals?.dust ?? 0) - amount,
+        greyMatter: (save.minerals?.greyMatter ?? 0) - amount,
       },
     }
   })
@@ -1257,13 +1257,13 @@ export function buyCosmetic(cosmeticId: string, cost: Cosmetic['cost']): boolean
   if (current.ownedCosmetics.includes(cosmeticId)) return false
 
   // Validate player can afford
-  for (const [tier, required] of Object.entries(cost) as [MineralTier, number][]) {
+  for (const [tier, required] of Object.entries(cost) as [keyof PlayerMinerals, number][]) {
     if ((current.minerals[tier] ?? 0) < required) return false
   }
 
   // Deduct minerals
   const updatedMinerals = { ...current.minerals }
-  for (const [tier, required] of Object.entries(cost) as [MineralTier, number][]) {
+  for (const [tier, required] of Object.entries(cost) as [keyof PlayerMinerals, number][]) {
     updatedMinerals[tier] = (updatedMinerals[tier] ?? 0) - required
   }
 
@@ -1368,7 +1368,7 @@ export const playerCompanionStates = singletonWritable<CompanionState[]>(
 import type { FloorUpgradeTier } from '../../data/types'
 // hubUpgrades.ts archived — inline stubs
 function canUpgrade(_f: string, _t: number, _s: PlayerSave): { allowed: boolean } { return { allowed: false } }
-function getUpgradeDef(_f: string, _t: number): { dustCost: number; premiumCosts: { materialId: string; count: number }[] } | null { return null }
+function getUpgradeDef(_f: string, _t: number): { greyMatterCost: number; premiumCosts: { materialId: string; count: number }[] } | null { return null }
 
 /**
  * Upgrades a hub floor to the next tier, spending resources.
@@ -1388,7 +1388,7 @@ export function upgradeFloor(floorId: string, targetTier: FloorUpgradeTier): boo
 
   playerSave.update(s => {
     if (!s) return s
-    const updatedMinerals = { ...s.minerals, dust: s.minerals.dust - def.dustCost }
+    const updatedMinerals = { ...s.minerals, greyMatter: s.minerals.greyMatter - def.greyMatterCost }
     const updatedPremium = { ...s.premiumMaterials }
     for (const { materialId, count } of def.premiumCosts) {
       updatedPremium[materialId] = Math.max(0, (updatedPremium[materialId] ?? 0) - count)
@@ -1438,10 +1438,10 @@ const RARITY_ORDER_MIX = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'my
 
 /**
  * Mixes 3+ duplicate artifact cards into a new card with a chance of rarity upgrade.
- * Deducts MIX_FEE_DUST dust. Removes input cards, adds one output card.
+ * Deducts MIX_FEE grey matter. Removes input cards, adds one output card.
  *
  * @param instanceIds - Array of 3+ artifact card instanceIds to consume.
- * @returns The output rarity string, or null if the mix failed (insufficient cards/dust).
+ * @returns The output rarity string, or null if the mix failed (insufficient cards/grey matter).
  */
 export function mixArtifacts(instanceIds: string[]): string | null {
   const current = get(playerSave)
@@ -1449,7 +1449,7 @@ export function mixArtifacts(instanceIds: string[]): string | null {
 
   const cards = current.inventoryArtifacts ?? []
   if (instanceIds.length < 3) return null
-  if (current.minerals.dust < 100) return null
+  if (current.minerals.greyMatter < 100) return null
 
   // Validate all instanceIds exist
   const selectedCards = instanceIds.map(id => cards.find(c => c.instanceId === id)).filter(Boolean) as ArtifactCard[]
@@ -1502,7 +1502,7 @@ export function mixArtifacts(instanceIds: string[]): string | null {
       ...save,
       minerals: {
         ...save.minerals,
-        dust: save.minerals.dust - 100,
+        greyMatter: save.minerals.greyMatter - 100,
       },
       inventoryArtifacts: [
         ...(save.inventoryArtifacts ?? []).filter(c => !removeSet.has(c.instanceId)),
@@ -1778,18 +1778,18 @@ export function toggleRelicExclusion(relicId: string): void {
 }
 
 /**
- * Award XP at end of run. Calculates XP, processes level ups, awards dust.
+ * Award XP at end of run. Calculates XP, processes level ups, awards grey matter.
  * Returns the breakdown for display on RunEndScreen.
  *
  * @param stats - Run statistics used to calculate XP earned.
- * @returns XP breakdown, levels gained, new level, unlocked relics, and dust awarded.
+ * @returns XP breakdown, levels gained, new level, unlocked relics, and grey matter awarded.
  */
 export function awardRunXP(stats: RunXPStats): {
   breakdown: RunXPBreakdown;
   levelsGained: number;
   newLevel: number;
   relicsUnlocked: string[];
-  dustAwarded: number;
+  greyMatterAwarded: number;
 } {
 
   // Check if this is the first run today
@@ -1816,7 +1816,7 @@ export function awardRunXP(stats: RunXPStats): {
       unlockedRelicIds: [...existingRelics, ...newRelics],
       minerals: {
         ...s.minerals,
-        dust: (s.minerals?.dust ?? 0) + result.totalDustAwarded,
+        greyMatter: (s.minerals?.greyMatter ?? 0) + result.totalGreyMatterAwarded,
       },
     }
   })
@@ -1827,6 +1827,6 @@ export function awardRunXP(stats: RunXPStats): {
     levelsGained: result.levelsGained,
     newLevel: result.newLevel,
     relicsUnlocked: result.relicsUnlocked,
-    dustAwarded: result.totalDustAwarded,
+    greyMatterAwarded: result.totalGreyMatterAwarded,
   }
 }

@@ -19,8 +19,10 @@
     WRONG_ANSWER_RESUME_MAX,
   } from '../../data/balance'
   import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
+  import GrammarTypingInput from './GrammarTypingInput.svelte'
   import KeywordPopup from './KeywordPopup.svelte'
   import FuriganaText from '../FuriganaText.svelte'
+  import WordHover from './WordHover.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
@@ -55,6 +57,12 @@
     quizVariantType?: string
     /** Language code for the settings cogwheel (shows only when language has configurable options). */
     quizLanguageCode?: string
+    /** Rich grammar explanation shown on wrong answers for language/grammar facts. */
+    grammarNote?: string
+    /** Bold header extracted from the explanation (e.g. "さえ (even; only; just)"). */
+    grammarPointHeader?: string
+    /** Quiz response mode: 'choice' (default multiple choice) or 'typing' (text input with romaji→hiragana). */
+    quizResponseMode?: 'choice' | 'typing'
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
@@ -81,6 +89,9 @@
     deckDisplayName,
     quizLanguageCode,
     quizVariantType,
+    grammarNote,
+    grammarPointHeader,
+    quizResponseMode = 'choice',
     onanswer,
     onskip,
     oncancel,
@@ -349,10 +360,12 @@
         }, delay)
       } else {
         // Wrong: show answer for long enough to read it based on answer length
-        const baseDelay = Math.min(
+        let baseDelay = Math.min(
           WRONG_ANSWER_RESUME_BASE + correctAnswer.length * WRONG_ANSWER_RESUME_PER_CHAR,
           WRONG_ANSWER_RESUME_MAX,
         )
+        // Grammar notes need extra reading time
+        if (grammarNote) baseDelay += 3000
         const delay = Math.round(baseDelay * speed)
         autoResumeTimeoutId = setTimeout(() => {
           if (waitingForGotIt) {
@@ -513,6 +526,8 @@
         reading={japaneseParts.reading}
         size="md"
       /> {japaneseParts.after}
+    {:else if isJapaneseFact && question.includes('{___}')}
+      <WordHover sentence={question} excludeWords={[correctAnswer]} />
     {:else if chineseParts}
       {chineseParts.before}<FuriganaText
         text={pinyinOnly && chineseParts.reading ? chineseParts.reading : chineseParts.word}
@@ -546,7 +561,21 @@
     {/if}
   {/if}
 
-  {#if quizMode === 'image_answers' && answerImagePaths?.length}
+  {#if quizResponseMode === 'typing' && !answersDisabled}
+    <GrammarTypingInput
+      {correctAnswer}
+      acceptableAlternatives={[]}
+      onsubmit={(correct, _typed) => {
+        if (correct) {
+          handleAnswer(answers.indexOf(correctAnswer))
+        } else {
+          // Pick first wrong answer index to trigger wrong-answer flow
+          const wrongIdx = answers.findIndex(a => a !== correctAnswer)
+          handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
+        }
+      }}
+    />
+  {:else if quizMode === 'image_answers' && answerImagePaths?.length}
     <div class="card-answers-image-grid">
       {#each answers as answer, i}
         <button
@@ -592,6 +621,15 @@
           {/if}
         </button>
       {/each}
+    </div>
+  {/if}
+
+  {#if waitingForGotIt && grammarNote}
+    <div class="grammar-note" role="note" aria-label="Grammar Note">
+      {#if grammarPointHeader}
+        <span class="grammar-note-header">{grammarPointHeader}</span>
+      {/if}
+      <p class="grammar-note-text">{grammarNote}</p>
     </div>
   {/if}
 
@@ -644,7 +682,7 @@
     position: fixed;
     /* Needed so absolute-positioned children (settings popup) anchor here */
     isolation: isolate;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: calc(320px * var(--layout-scale, 1));
@@ -824,13 +862,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     min-height: calc(24px * var(--layout-scale, 1));
     box-sizing: border-box;
   }
 
   .header-domain {
-    font-size: calc(9px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-family: var(--font-rpg);
     color: #c8b478;
     display: inline-flex;
@@ -841,8 +879,8 @@
   }
 
   .header-domain-icon {
-    width: calc(14px * var(--layout-scale, 1));
-    height: calc(14px * var(--layout-scale, 1));
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
   }
@@ -1213,6 +1251,30 @@
   @keyframes quiz-result-flash {
     from { opacity: 0; }
     to   { opacity: 1; }
+  }
+
+  /* Grammar note panel shown on wrong answers for language/grammar facts */
+  .grammar-note {
+    margin-top: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(10, 8, 20, 0.85);
+    border-left: calc(3px * var(--layout-scale, 1)) solid #4ecdc4;
+    border-radius: calc(6px * var(--layout-scale, 1));
+  }
+
+  .grammar-note-header {
+    display: block;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: calc(4px * var(--layout-scale, 1));
+  }
+
+  .grammar-note-text {
+    font-size: calc(13px * var(--text-scale, 1));
+    line-height: 1.4;
+    color: #e0e0e0;
+    margin: 0;
   }
 
   /* Sub-step 1: "Got it" confirmation button after wrong answer */

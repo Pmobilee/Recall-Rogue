@@ -102,6 +102,24 @@ This applies to: dates, casualty figures, names, quotes, locations, statistics, 
 
 ---
 
+### Composite Deck Architecture
+
+Source decks own their facts. Composite decks (AP World History, AP US History, Ancient Civilizations) reference facts from multiple source decks without duplication. When designing source deck pools:
+
+- Each fact gets a globally unique ID and a `sourceDeckId` field
+- SM-2 progress is keyed globally by factId, not per-deck
+- Chain themes should be self-contained (composites may pull individual chains)
+- Flag facts with high composite reuse potential in notes
+
+**Full architecture:** See `data/deck-ideas.md` Section 2: Composite Deck Architecture.
+
+### Era-Based History Series
+
+World History is structured as 12 chronological era decks (Ancient Mesopotamia through Modern World), aligned with AP World History units where applicable. Each era has full pool architecture, chain themes, and cross-deck linking documented in `data/deck-ideas.md` Section 1.
+
+**ALWAYS consult `data/deck-ideas.md` before starting any new deck work** — it contains pool architecture, estimated fact counts, cross-deck dependencies, and production priority for ~180 planned decks across all domains.
+
+
 ## Curated Deck Design Philosophy — CRITICAL
 
 **A curated deck is NOT a trivia collection.** It is a carefully crafted ecosystem where every fact, every answer pool, every question template, and every confusion pair work together to build genuine understanding. This section is mandatory reading before any deck creation work.
@@ -976,6 +994,128 @@ The final deck JSON file is NOT a flat array of facts. It MUST be wrapped in the
 The curated deck store (`src/data/curatedDeckStore.ts`) reads this manifest at app startup to discover available decks. If a deck is not in the manifest, it won't be loaded.
 
 Run validation commands below before marking generation complete.
+
+### Grammar Deck Quality Standard — GOLDEN REFERENCE
+
+This section captures ALL quality requirements for grammar-type curated decks. It was derived from a deep audit of the Japanese N3 grammar deck (2026-03-29) and applies to ALL future grammar decks (N5, N4, N3, N2, N1, Korean, etc.).
+
+#### 1. Grammar Note Generation
+
+All grammar-type curated decks MUST include a `grammarNote` field on every fact. This field provides a simple contextual explanation shown to the player when they answer incorrectly.
+
+**How it works at runtime:**
+- **Bold header**: Derived from the `explanation` field (part before ` — `). E.g., `"さえ (even; only; just)"`. Same for every fact using that grammar point. Shown in bold white text.
+- **Contextual note**: The `grammarNote` field. A simple 1-2 sentence explanation of why this grammar point fits THIS specific sentence. Shown below the header.
+
+**Generation rules for `grammarNote`:**
+- Written by **Sonnet workers** during Phase 3 (Generation)
+- 1-2 simple sentences, 80-150 characters
+- Plain English, no linguistic jargon
+- Explains why the grammar point fits this specific sentence (contextual clue)
+- **NO distractor references** — distractors are selected dynamically at runtime
+- **Do NOT repeat** the grammar point definition (that's shown in the bold header)
+- Each worker receives grounded data: grammar point name + meaning, quiz question + translation, full sentence from explanation field
+
+**Example:**
+- Quiz: `食べ過ぎて、イチゴ{___}食べられない。` (I'm so full I couldn't even eat a strawberry.)
+- Bold header: **さえ (even; only; just)**
+- `grammarNote`: `"Emphasizes an extreme case — even a strawberry, the easiest food, is impossible to eat here."`
+
+#### 2. Fragment Answers — Tilde Display System
+
+When the blank extraction produces a **fragment** of the grammar point (e.g., "くれ" instead of "てくれる"), the fact MUST use the tilde display system:
+
+- Set `displayAsFullForm: true` on the fact
+- At quiz time, ALL answer options (correct + distractors) are shown with `~` prefix + full canonical grammar point name: `~てくれる`, `~てあげる`, `~てしまう`
+- **CRITICAL**: ALL options must consistently use the tilde format — NEVER mix tilde and non-tilde options, as this gives away the answer
+- Distractors for tilde facts must be the full canonical names from the same confusion group
+- The blank `{___}` stays in the sentence at the fragment position
+
+**When does this happen?** Te-form auxiliaries where the verb is in て-form and the auxiliary is split: `読んであ{___}` (answer: "げる" from "あげる"). The fill-blank extraction catches the suffix but not the full auxiliary.
+
+#### 3. Distractor Quality — MANDATORY RULES
+
+**CRITICAL LESSON (N3 audit, 2026-03-29):** 40-50% of distractors in the initial N3 deck were obviously wrong by grammatical form, letting students answer by elimination. This section prevents that.
+
+**Rule A: Syntactic Slot Filtering (MANDATORY)**
+- NEVER draw distractors from incompatible syntactic slots
+- A `te_form_auxiliary` blank → ONLY te-form auxiliary distractors
+- A `particle_post_noun` blank → ONLY particle distractors
+- A `sentence_ender` blank → ONLY sentence-ender distractors
+- Cross-slot contamination (e.g., particles in a verb-form question) is a blocking bug
+
+**Rule B: Conjugation Form Matching (MANDATORY for verb-attached grammar)**
+- When the blank answer is conjugated (e.g., "てしまった" past tense), ALL distractors MUST be in the same conjugation form (e.g., "ていた", "てあった", "てみた")
+- The confusion groups file must include a conjugation table mapping each grammar point to its conjugated forms (past, polite, negative, past_negative, volitional, conditional, etc.)
+- The build script MUST call `detectTeFormTense()` and `getMatchingConjugation()` — and these MUST handle all edge cases including fragment answers
+- If conjugation matching fails for a fact, fall back to the tilde display system (Rule 2)
+
+**Rule C: Confusion Group Priority**
+Distractors are drawn in priority order:
+1. **Same confusion group** (3-4 items) — semantically confusable, hardest
+2. **Same syntactic slot, different group** (3-4 items) — grammatically compatible
+3. **Broad pool within slot** (1-2 items) — only from the same syntactic slot, never cross-slot
+
+**Rule D: No Stem Giveaways**
+For grammar points that attach to verb stems (ようとする, ことにする), the preceding context often reveals the stem form. Distractors must:
+- Be grammar points that can grammatically follow the same verb form
+- NOT be obviously wrong because their stem doesn't fit the preceding verb
+
+#### 4. English Meaning Hints
+
+Every grammar quiz question MUST include an English hint word in the translation that cues the grammar function:
+
+```
+食べ過ぎて、イチゴ{___}食べられない。
+(I am so full I could not [even] eat a strawberry.)
+```
+
+- The `[bracketed word]` directly indicates which grammar function is being tested
+- Stored as a `hintWord` field on each fact (e.g., "even", "because", "if", "apparently")
+- Generated by Sonnet workers who compare the grammar point meaning against the English translation
+- If the translation already clearly indicates the function, the hint may be omitted
+
+#### 5. Dictionary Hover (Word-Level Translation)
+
+Grammar decks SHOULD support hover/tap word-level translation on the Japanese sentence text:
+- Uses **kuromoji.js** for morphological analysis (tokenization + POS tagging)
+- Maps tokens to **JMdict** entries for English glosses
+- Each word in the quiz question is wrapped in a hoverable `<span>`
+- On hover/tap: shows hiragana reading + primary English meaning
+- **MUST NOT** highlight or translate the grammar point being tested (don't give away the answer)
+- Helps learners understand sentence context when vocabulary is above their study level
+
+#### 6. Typing/Writing Mode
+
+Grammar decks SHOULD support a typing response mode alongside multiple choice:
+- Uses **wanakana** library for romaji→hiragana live conversion
+- Text input field replaces answer buttons (configurable per deck or per mastery level)
+- Answer validation: exact match + acceptable alternatives + politeness tolerance (casual/formal not penalized)
+- On wrong: show correct answer + grammar note + allow retry
+- Recommended activation: mastery level 3+ (students prove comprehension with MC first, then recall with typing)
+
+#### 7. Vocabulary Level Validation
+
+All sentences in a grammar deck MUST be validated against the target JLPT level:
+- Cross-reference sentence vocabulary against JLPT word frequency lists (N5→target level)
+- Flag sentences containing vocabulary above the target level
+- For flagged sentences: either replace with a simpler sentence OR add furigana + hover glosses for the advanced words
+- This prevents N3 grammar learners from being blocked by N2+ vocabulary
+
+#### Enforcement Checklist (Grammar Decks)
+
+Before marking a grammar deck as complete, verify ALL of the following:
+
+- [ ] Every fact has a non-empty `grammarNote`
+- [ ] Every fact has an `explanation` field in `"point (meaning) — sentence"` format
+- [ ] Fragment answers use the tilde display system (`displayAsFullForm: true`)
+- [ ] ALL distractors are from the same syntactic slot as the correct answer
+- [ ] Conjugated answers have conjugation-matched distractors
+- [ ] English translations include `[hint word]` for the grammar function
+- [ ] No cross-slot distractor contamination (sample 20 facts across all slots)
+- [ ] Vocabulary validated against target JLPT level
+- [ ] `npm run typecheck` + `npm run build` + `npx vitest run` all pass
+- [ ] Manual playtest: 10+ questions with genuinely confusable distractors
 
 ### Sub-Deck Design — When and How
 

@@ -22,6 +22,7 @@
   import CardHand from './CardHand.svelte'
   import CardExpanded from './CardExpanded.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
+  import { preloadTokenizer } from '../../services/japaneseTokenizer'
   import DamageNumber from './DamageNumber.svelte'
   import ChainCounter from './ChainCounter.svelte'
   import RelicTray from './RelicTray.svelte'
@@ -135,6 +136,12 @@
     answerImagePaths?: string[]
     /** Quiz variant/template type identifier (e.g. 'reading', 'forward', 'reverse'). Used to suppress furigana on reading questions. */
     variantType?: string
+    /** Rich grammar explanation shown on wrong answers for language/grammar facts. */
+    grammarNote?: string
+    /** Bold header extracted from the explanation (e.g. "さえ (even; only; just)"). */
+    grammarPointHeader?: string
+    /** Quiz response mode: 'choice' (default) or 'typing' (text input with romaji→hiragana). */
+    quizResponseMode?: 'choice' | 'typing'
   }
 
   let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -632,6 +639,14 @@
       ? (getLanguageConfig(committedQuizLanguage)?.options?.length ?? 0) > 0
       : false
   )
+
+  // Preload the Japanese tokenizer as soon as we know a Japanese quiz is being played.
+  // This fires in the background so the dictionary is ready before the first hover.
+  $effect(() => {
+    if (committedQuizLanguage === 'ja') {
+      preloadTokenizer()
+    }
+  })
 
   /**
    * Deck display name for the card header (e.g. "Japanese → N3 Vocabulary").
@@ -1149,6 +1164,18 @@
     const cleanDistractors = distractorAnswers.filter(
       d => d.toLowerCase() !== correctAnswerDisplay.toLowerCase()
     )
+
+    // Tilde display for fragment answers — show full canonical form with ~ prefix.
+    // correctAnswer stays as the fragment (e.g. "くれ") for scoring; display uses fullFormDisplay.
+    if (fact.displayAsFullForm && fact.fullFormDisplay) {
+      correctAnswerDisplay = `~${fact.fullFormDisplay}`
+      for (let i = 0; i < cleanDistractors.length; i++) {
+        if (!cleanDistractors[i].startsWith('~')) {
+          cleanDistractors[i] = `~${cleanDistractors[i]}`
+        }
+      }
+    }
+
     const allAnswers = [...cleanDistractors]
     const insertIdx = Math.floor((isRunRngActive() ? getRunRng('quiz').next() : Math.random()) * (allAnswers.length + 1))
     allAnswers.splice(insertIdx, 0, correctAnswerDisplay)
@@ -1270,6 +1297,9 @@
       imageAssetPath,
       answerImagePaths,
       variantType: templateResult.template.id,
+      grammarNote: fact.grammarNote,
+      grammarPointHeader: fact.explanation?.includes(' — ') ? fact.explanation.split(' — ')[0] : undefined,
+      quizResponseMode: fact.quizResponseMode ?? 'choice',
     }
   }
 
@@ -2622,6 +2652,9 @@
           answerImagePaths={committedQuizData.answerImagePaths}
           deckDisplayName={deckDisplayName}
           quizLanguageCode={committedQuizHasLanguageOptions ? (committedQuizLanguage ?? undefined) : undefined}
+          grammarNote={committedQuizData.grammarNote}
+          grammarPointHeader={committedQuizData.grammarPointHeader}
+          quizResponseMode={committedQuizData.quizResponseMode}
           onanswer={handleAnswer}
           onskip={handleSkip}
           oncancel={() => {}}
@@ -3930,12 +3963,12 @@
     bottom: auto;
   }
 
-  /* Status effect bars — player: just above the HP bar (which is now at bottom 27vh + 2x stats height) */
+  /* Status effect bars — player: just above the card hand strip (which is at 27vh from bottom) */
   :global(.layout-landscape .status-effect-bar-player) {
     position: fixed;
-    bottom: calc(27vh + calc(36px * var(--layout-scale, 1)) + calc(36px * var(--layout-scale, 1)) + calc(4px * var(--layout-scale, 1)));
-    left: 35%;
-    right: 30%;
+    bottom: calc(27vh + calc(40px * var(--layout-scale, 1)));
+    left: 15%;
+    right: auto;
     top: auto;
     transform: none;
   }

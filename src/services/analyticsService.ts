@@ -785,16 +785,12 @@ export class AnalyticsService {
    * Track a daily economy wealth snapshot for balance monitoring.
    * Should be called once per day on session open when a save is loaded.
    *
-   * @param dustHeld    - Current dust currency balance.
-   * @param shardHeld   - Current shard currency balance.
-   * @param crystalHeld - Current crystal (premium) currency balance.
+   * @param greyMatterHeld - Current grey matter currency balance.
    */
-  trackEconomySnapshot(dustHeld: number, shardHeld: number, crystalHeld: number): void {
-    // Compute a rough unified equivalent (shards = 10× dust, crystals = 100× dust)
-    const totalDustEquivalent = dustHeld + shardHeld * 10 + crystalHeld * 100
+  trackEconomySnapshot(greyMatterHeld: number): void {
     this.track({
       name: 'economy_wealth_snapshot',
-      properties: { dustHeld, shardHeld, crystalHeld, totalDustEquivalent },
+      properties: { greyMatterHeld },
     })
   }
 
