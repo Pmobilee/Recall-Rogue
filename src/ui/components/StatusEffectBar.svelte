@@ -116,8 +116,9 @@
     pointer-events: auto;
   }
 
+  /* Portrait: enemy HP bar is at ~12% viewport height; icons sit just below it (~14vh) */
   .effect-bar-enemy {
-    top: calc(calc(72px * var(--layout-scale, 1)) + var(--safe-top, 0px));
+    top: calc(14vh + var(--safe-top, 0px));
   }
 
   .effect-bar-player {
@@ -193,8 +194,9 @@
     z-index: 51;
   }
 
+  /* Portrait: popup appears just below the icons (~16vh) */
   .popup-enemy {
-    top: calc(calc(114px * var(--layout-scale, 1)) + var(--safe-top, 0px));
+    top: calc(16vh + var(--safe-top, 0px));
   }
 
   .popup-player {

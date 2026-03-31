@@ -214,15 +214,16 @@
   function getEffectValue(card: Card, chargeMode: boolean = false): number {
     const mechanic = getMechanicDefinition(card.mechanicId)
     if (mechanic) {
-      // Use quickPlayValue (the actual Quick Play damage), NOT baseValue
-      const baseVal = chargeMode ? Math.round(mechanic.quickPlayValue * CHARGE_CORRECT_MULTIPLIER) : mechanic.quickPlayValue
+      // Mastery bonus is included BEFORE the charge multiplier so it scales with Charge
       const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
-      return baseVal + masteryBonus
+      return chargeMode
+        ? Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER)
+        : mechanic.quickPlayValue + masteryBonus
     }
     // Fallback when mechanic definition is missing — use card's own stored values
     const base = Math.round(card.baseEffectValue * card.effectMultiplier);
     const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
-    return chargeMode ? Math.round(base * CHARGE_CORRECT_MULTIPLIER) + masteryBonus : base + masteryBonus;
+    return chargeMode ? Math.round((base + masteryBonus) * CHARGE_CORRECT_MULTIPLIER) : base + masteryBonus;
   }
 
   function shouldShowFrontValue(card: Card): boolean {

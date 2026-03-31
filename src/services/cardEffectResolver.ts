@@ -443,25 +443,25 @@ export function resolveCardEffect(
   const isChargeCorrect = playMode === 'charge' || playMode === 'charge_correct';
   const isChargeWrong = playMode === 'charge_wrong';
 
+  // Apply mastery bonus (AR-113) before charge multiplier so CC also scales the mastery bonus.
+  const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+
   let mechanicBaseValue: number;
   if (mechanic) {
     if (isChargeCorrect) {
-      mechanicBaseValue = Math.round(mechanic.quickPlayValue * CHARGE_CORRECT_MULTIPLIER);
+      // Mastery added inside multiplier so CC scales both base and mastery equally.
+      mechanicBaseValue = Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER);
     } else if (isChargeWrong) {
-      mechanicBaseValue = mechanic.chargeWrongValue;
+      mechanicBaseValue = mechanic.chargeWrongValue + masteryBonus;
     } else {
       // quick / quick_play
-      mechanicBaseValue = mechanic.quickPlayValue;
+      mechanicBaseValue = mechanic.quickPlayValue + masteryBonus;
     }
   } else {
     // No mechanic definition (wild fallback, unknown mechanic).
     // Apply tier multiplier to preserve pre-v2 behavior for these cards.
-    mechanicBaseValue = baseEffectValue * tierMultiplier;
+    mechanicBaseValue = baseEffectValue * tierMultiplier + masteryBonus;
   }
-
-  // Apply mastery bonus (AR-113)
-  const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
-  mechanicBaseValue += masteryBonus;
 
   const masterySecondaryBonus = getMasterySecondaryBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
   // Apply mastery secondary bonus to a copy of the card so switch cases can read it uniformly

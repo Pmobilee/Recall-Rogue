@@ -11,6 +11,15 @@
     4: 'The Archive',
   }
 
+  // ============================================================
+  // Status Effects (player — displayed inline after HP bar)
+  // ============================================================
+  interface StatusEffect {
+    type: string
+    value: number
+    turnsRemaining: number
+  }
+
   interface RelicEntry {
     definitionId: string
     name: string
@@ -35,6 +44,7 @@
     reviewQueueLength?: number
     fogLevel?: number
     fogState?: 'brain_fog' | 'neutral' | 'flow_state'
+    statusEffects?: StatusEffect[]
     onpause: () => void
   }
 
@@ -54,6 +64,7 @@
     reviewQueueLength = 0,
     fogLevel = 0,
     fogState = undefined,
+    statusEffects = [],
     onpause,
   }: Props = $props()
 
@@ -110,6 +121,46 @@
   })
 
   const emptySlotCount = $derived(Math.max(0, maxRelicSlots - relics.length))
+
+  // ============================================================
+  // Status effect icons — popup state and lookup table
+  // ============================================================
+  let activeStatusType = $state<string | null>(null)
+
+  const STATUS_EFFECT_INFO: Record<string, { name: string; icon: string; spriteIcon?: string; color: string; desc: (v: number, t: number) => string }> = {
+    poison:        { name: 'Poison',        icon: '☠️', spriteIcon: '/assets/sprites/icons/icon_status_poison.png',     color: '#22c55e', desc: (v, t) => `${v} poison damage/turn (${t} left)` },
+    weakness:      { name: 'Weakness',      icon: '⬇',  spriteIcon: '/assets/sprites/icons/icon_status_weakness.png',   color: '#a78bfa', desc: (_, t) => `Attacks deal 25% less damage (${t} left)` },
+    vulnerable:    { name: 'Vulnerable',    icon: '🎯', spriteIcon: '/assets/sprites/icons/icon_status_vulnerable.png', color: '#f87171', desc: (_, t) => `Takes 50% more damage (${t} left)` },
+    strength:      { name: 'Strength',      icon: '💪', spriteIcon: '/assets/sprites/icons/icon_status_strength.png',   color: '#fbbf24', desc: (v) => `Attacks deal +25% per stack (${v} stacks)` },
+    regen:         { name: 'Regen',         icon: '💚', spriteIcon: '/assets/sprites/icons/icon_status_regen.png',      color: '#4ade80', desc: (v, t) => `Heals ${v} HP/turn (${t} left)` },
+    immunity:      { name: 'Immunity',      icon: '✨', spriteIcon: '/assets/sprites/icons/icon_status_immunity.png',   color: '#60a5fa', desc: () => `Absorbs next poison instance` },
+    thorns:        { name: 'Thorns',        icon: '🌿', color: '#86efac', desc: (v) => `Deals ${v} damage back when hit` },
+    empower:       { name: 'Empower',       icon: '⚡', color: '#fcd34d', desc: (v) => `Next card gets +${v}% effect` },
+    double_strike: { name: 'Double Strike', icon: '⚔️', color: '#fb923c', desc: (v) => `Next attack hits twice at ${v}%` },
+    focus:         { name: 'Focus',         icon: '🔮', color: '#c084fc', desc: (v) => `Next ${v} card${v !== 1 ? 's' : ''} cost 1 less AP` },
+    foresight:     { name: 'Foresight',     icon: '👁️', color: '#67e8f9', desc: (_, t) => `See enemy intents (${t} left)` },
+    fortify:       { name: 'Fortify',       icon: '🏰', color: '#94a3b8', desc: (v) => `${v} block persists next turn` },
+    overclock:     { name: 'Overclock',     icon: '⚙️', color: '#e879f9', desc: () => `Next card doubled, draw -1` },
+    slow:          { name: 'Slow',          icon: '🐌', color: '#a1a1aa', desc: (_, t) => `Skips defend/buff (${t} left)` },
+    burn:          { name: 'Burn',          icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png',       color: '#f97316', desc: (v) => `Burn [${v}]: +${v} next hit, then halves` },
+    bleed:         { name: 'Bleed',         icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png',      color: '#ef4444', desc: (v) => `Bleed [${v}]: +${v} incoming damage/turn` },
+    freeze:        { name: 'Freeze',        icon: '❄️', color: '#38bdf8', desc: (_, t) => `Frozen — skips action (${t} left)` },
+    brain_fog:     { name: 'Brain Fog',     icon: '🌫️', color: '#818cf8', desc: (v) => `Enemies deal +20% damage. Fog: ${v}/10` },
+    flow_state:    { name: 'Flow State',    icon: '✨', color: '#fbbf24', desc: (v) => `Draw +1 card/turn. Fog: ${v}/10` },
+    locked:        { name: 'Locked Card',   icon: '🔒', color: '#f87171', desc: () => `A card is locked — must Charge to unlock` },
+    accuracy_s:    { name: 'S Grade',       icon: '⭐', color: '#fbbf24', desc: () => `Perfect accuracy — bonus rewards incoming` },
+  }
+
+  function getStatusInfo(type: string) {
+    return STATUS_EFFECT_INFO[type] ?? { name: type, icon: '❓', color: '#94a3b8', desc: (v: number, t: number) => `${type}: ${v} (${t} turns)` }
+  }
+
+  function toggleStatusPopup(type: string) {
+    activeStatusType = activeStatusType === type ? null : type
+  }
+
+  /** Only show effects that are still active */
+  const activeStatusEffects = $derived(statusEffects.filter(e => e.turnsRemaining > 0))
 </script>
 
 <div class="topbar" role="banner" aria-label="Run status">
@@ -138,6 +189,59 @@
         </span>
       </div>
     </div>
+
+    <!-- Status effect icons — inline to the right of HP bar, growing rightward -->
+    {#if activeStatusEffects.length > 0}
+      <div class="topbar-status-icons" role="list" aria-label="Player status effects">
+        {#each activeStatusEffects as effect (effect.type)}
+          {@const info = getStatusInfo(effect.type)}
+          <button
+            class="topbar-status-icon"
+            type="button"
+            onclick={() => toggleStatusPopup(effect.type)}
+            aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
+          >
+            {#if info.spriteIcon}
+              <img src={info.spriteIcon} alt={info.name} class="topbar-status-sprite" />
+            {:else}
+              <span class="topbar-status-emoji">{info.icon}</span>
+            {/if}
+            {#if effect.value > 1}
+              <span class="topbar-status-stack" style="background: {info.color};">{effect.value}</span>
+            {/if}
+            <span class="topbar-status-turns">{effect.turnsRemaining}</span>
+          </button>
+        {/each}
+      </div>
+    {/if}
+
+    <!-- Popup for active status icon — fixed so it escapes the overflow:hidden topbar -->
+    {#if activeStatusType !== null}
+      {@const activeEffect = activeStatusEffects.find(e => e.type === activeStatusType)}
+      {#if activeEffect}
+        {@const info = getStatusInfo(activeEffect.type)}
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div
+          class="topbar-status-popup-backdrop"
+          onclick={() => { activeStatusType = null }}
+          onkeydown={() => {}}
+        >
+          <div class="topbar-status-popup">
+            <div class="topbar-status-popup-row">
+              {#if info.spriteIcon}
+                <img src={info.spriteIcon} alt={info.name} class="topbar-status-popup-sprite" />
+              {:else}
+                <span class="topbar-status-popup-icon" style="color: {info.color};">{info.icon}</span>
+              {/if}
+              <div class="topbar-status-popup-text">
+                <span class="topbar-status-popup-name" style="color: {info.color};">{info.name}</span>
+                <span class="topbar-status-popup-desc">{info.desc(activeEffect.value, activeEffect.turnsRemaining)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {/if}
+    {/if}
   </div>
 
   <!-- ============================================================
@@ -315,7 +419,7 @@
     pointer-events: auto;
     box-sizing: border-box;
     user-select: none;
-    overflow: hidden;
+    overflow: visible;
   }
 
   /* ============================================================
@@ -331,7 +435,8 @@
   .section-left {
     flex: 1;
     min-width: 0;
-    max-width: 35%;
+    max-width: 45%;
+    overflow: visible;
   }
 
   .section-center {
@@ -354,15 +459,16 @@
   .hp-group {
     display: flex;
     align-items: center;
-    flex: 1;
-    min-width: 0;
+    flex: 0 1 auto;
+    min-width: calc(120px * var(--layout-scale, 1));
+    max-width: calc(200px * var(--layout-scale, 1));
   }
 
   .hp-bar-track {
     position: relative;
     flex: 1;
     min-width: 0;
-    height: calc(var(--topbar-height, 4.5vh) * 0.38);
+    height: calc(var(--topbar-height, 4.5vh) * 0.58);
     background: rgba(255, 255, 255, 0.08);
     border-radius: calc(3px * var(--layout-scale, 1));
     overflow: hidden;
@@ -404,7 +510,7 @@
   }
 
   .hp-value {
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
   }
 
   .shield-badge {
@@ -415,13 +521,145 @@
     background: rgba(56, 189, 248, 0.25);
     border: 1px solid rgba(56, 189, 248, 0.5);
     border-radius: 999px;
-    font-size: calc(7px * var(--text-scale, 1));
+    font-size: calc(9px * var(--text-scale, 1));
     font-family: var(--font-pixel, var(--font-rpg));
     font-weight: 700;
     color: #fff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     letter-spacing: 0.03em;
     line-height: 1;
+  }
+
+  /* ============================================================
+     Status Effect Icons — inline in top bar
+     ============================================================ */
+  .topbar-status-icons {
+    display: flex;
+    align-items: center;
+    gap: calc(3px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .topbar-status-icon {
+    position: relative;
+    width: calc(26px * var(--layout-scale, 1));
+    height: calc(26px * var(--layout-scale, 1));
+    min-width: calc(26px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+    transition: transform 120ms ease;
+  }
+
+  .topbar-status-icon:hover {
+    transform: scale(1.15);
+  }
+
+  .topbar-status-sprite {
+    width: calc(18px * var(--layout-scale, 1));
+    height: calc(18px * var(--layout-scale, 1));
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+
+  .topbar-status-emoji {
+    font-size: calc(14px * var(--layout-scale, 1));
+    line-height: 1;
+  }
+
+  .topbar-status-stack {
+    position: absolute;
+    top: calc(-3px * var(--layout-scale, 1));
+    right: calc(-3px * var(--layout-scale, 1));
+    min-width: calc(13px * var(--layout-scale, 1));
+    height: calc(13px * var(--layout-scale, 1));
+    border-radius: 50%;
+    font-size: calc(8px * var(--text-scale, 1));
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 calc(2px * var(--layout-scale, 1));
+    line-height: 1;
+  }
+
+  .topbar-status-turns {
+    position: absolute;
+    bottom: calc(-2px * var(--layout-scale, 1));
+    right: calc(1px * var(--layout-scale, 1));
+    font-size: calc(8px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #94a3b8;
+    line-height: 1;
+  }
+
+  /* Popup — fixed position so it escapes the topbar */
+  .topbar-status-popup-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+  }
+
+  .topbar-status-popup {
+    position: absolute;
+    top: calc(var(--topbar-height, 4.5vh) + calc(4px * var(--layout-scale, 1)));
+    left: calc(12px * var(--layout-scale, 1));
+    width: calc(220px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(15, 23, 42, 0.97);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    backdrop-filter: blur(8px);
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.7);
+    z-index: 501;
+  }
+
+  .topbar-status-popup-row {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .topbar-status-popup-icon {
+    font-size: calc(16px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    width: calc(22px * var(--layout-scale, 1));
+    text-align: center;
+  }
+
+  .topbar-status-popup-sprite {
+    width: calc(22px * var(--layout-scale, 1));
+    height: calc(22px * var(--layout-scale, 1));
+    image-rendering: pixelated;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .topbar-status-popup-text {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+  }
+
+  .topbar-status-popup-name {
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    font-family: var(--font-pixel, var(--font-rpg));
+    line-height: 1.2;
+  }
+
+  .topbar-status-popup-desc {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #94a3b8;
+    line-height: 1.3;
   }
 
   /* ============================================================

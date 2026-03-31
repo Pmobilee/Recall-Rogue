@@ -785,6 +785,34 @@
   )
   let topBarMaxRelicSlots = $derived($activeRunState ? getMaxRelicSlots($activeRunState.runRelics) : 5)
 
+  let topBarPlayerEffects = $derived((() => {
+    const ts = $activeTurnState
+    if (!ts) return []
+    const effects: Array<{ type: string; value: number; turnsRemaining: number }> = [
+      ...(ts.playerState?.statusEffects ?? []).map((e: { type: string; value: number; turnsRemaining: number }) => ({ type: e.type as string, value: e.value, turnsRemaining: e.turnsRemaining })),
+    ]
+    if (ts.thornsActive && ts.thornsValue > 0)
+      effects.push({ type: 'thorns', value: ts.thornsValue, turnsRemaining: 1 })
+    if (ts.buffNextCard > 0)
+      effects.push({ type: 'empower', value: ts.buffNextCard, turnsRemaining: 1 })
+    if (ts.doubleStrikeReady)
+      effects.push({ type: 'double_strike', value: 60, turnsRemaining: 1 })
+    if (ts.foresightTurnsRemaining > 0)
+      effects.push({ type: 'foresight', value: 2, turnsRemaining: ts.foresightTurnsRemaining })
+    if (ts.focusReady && ts.focusCharges > 0)
+      effects.push({ type: 'focus', value: ts.focusCharges, turnsRemaining: 1 })
+    if (ts.overclockReady)
+      effects.push({ type: 'overclock', value: 1, turnsRemaining: 1 })
+    if (ts.persistentShield > 0)
+      effects.push({ type: 'fortify', value: ts.persistentShield, turnsRemaining: 1 })
+    if (ts.phoenixRageTurnsRemaining > 0)
+      effects.push({ type: 'strength', value: 1, turnsRemaining: ts.phoenixRageTurnsRemaining })
+    const lockedCards = ts.deck?.hand?.filter((c: { isLocked?: boolean }) => c.isLocked) ?? []
+    if (lockedCards.length > 0)
+      effects.push({ type: 'locked', value: lockedCards.length, turnsRemaining: 999 })
+    return effects.filter((e) => e.turnsRemaining > 0)
+  })())
+
   $effect(() => {
     if ($currentScreen === 'hub') {
       hasRunSave = hasActiveRun()
@@ -1024,6 +1052,7 @@
       reviewQueueLength={$activeTurnState != null ? getReviewQueueLength() : 0}
       fogLevel={$activeTurnState != null ? getAuraLevel() : 0}
       fogState={$activeTurnState != null ? getAuraState() : undefined}
+      statusEffects={topBarPlayerEffects}
       onpause={handlePause}
     />
   {/if}

@@ -390,13 +390,14 @@ describe('computeDamagePreview — barbed_edge synergy (strike-tagged)', () => {
 describe('computeDamagePreview — mastery bonus', () => {
   it('adds mastery flat bonus (perLevelDelta=3 for strike) to QP and CC', () => {
     // strike perLevelDelta=3; masteryLevel=2 → masteryBonus=6
-    // nakedQpBase = 4 + 6 = 10; nakedCcBase = round(4*1.5) + 6 = 6 + 6 = 12
-    // effectMultiplier=1.0, no other modifiers → qpFinal=10, ccFinal=12
-    // compared to nakedQpBase=10 and nakedCcBase=12 → both neutral
+    // nakedQpBase = 4 + 6 = 10; nakedCcBase = round((4+6)*1.5) = round(15.0) = 15
+    // Mastery is inside the CC multiplier so CC scales the bonus too.
+    // effectMultiplier=1.0, no other modifiers → qpFinal=10, ccFinal=15
+    // compared to nakedQpBase=10 and nakedCcBase=15 → both neutral
     const card = makeAttackCard({ masteryLevel: 2 });
     const result = computeDamagePreview(card, baseCtx());
     expect(result.qpValue).toBe(10);
-    expect(result.ccValue).toBe(12);
+    expect(result.ccValue).toBe(15);
     expect(result.qpModified).toBe('neutral');
     expect(result.ccModified).toBe('neutral');
   });

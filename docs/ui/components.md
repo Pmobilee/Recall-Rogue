@@ -15,11 +15,11 @@
 | `CardHand.svelte` | Renders the player's hand with V2 card frames, art, mastery glow, chain color groups, and damage-modifier coloring (green=buffed, red=nerfed via `damagePreviews` prop) |
 | `CardCombatOverlay.svelte` | Root combat screen: wraps CardHand + QuizOverlay, handles surge/boss phases, landscape/portrait. Computes `damagePreviews` via `damagePreviewService` and passes to CardHand |
 | `CombatHUD.svelte` | Legacy HP bars + combat log; largely superseded by InRunTopBar |
-| `InRunTopBar.svelte` | Landscape HUD: HP, shield, gold, floor/segment, relic tray, fog level, pause |
+| `InRunTopBar.svelte` | Landscape/Portrait HUD: HP bar, shield badge, gold, floor/segment, relic tray, fog level, pause. Now includes inline player status effect icons (poison, burn, etc.) displayed to the right of the HP bar. Accepts optional `statusEffects` prop (populated by `topBarPlayerEffects` derived in CardApp.svelte) |
 | `ChainCounter.svelte` | Animated chain streak badge showing length, type color, and damage multiplier |
 | `ChainIcon.svelte` | Single chain-type icon pip used in ChainCounter and card frames |
 | `DamageNumber.svelte` | Floating combat numbers (damage, block, heal, poison, burn, bleed, gold, crit) |
-| `StatusEffectBar.svelte` | Row of active status effect icons + counts during combat |
+| `StatusEffectBar.svelte` | Row of active status effect icons + counts during combat. Enemy bar positioned at `14vh` (portrait) / `18vh` (landscape override via ). Player StatusEffectBar removed — player effects now inline in InRunTopBar |
 | `PassiveEffectBar.svelte` | Persistent passive effects active on player or enemy |
 | `EnemyPowerBadges.svelte` | Badges showing elite/boss modifier tags on an enemy |
 | `BossIntroOverlay.svelte` | Full-screen dramatic boss introduction cinematic |
