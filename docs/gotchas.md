@@ -165,3 +165,11 @@
 ### 2026-03-31 — Wrong charge is 0.7×, not zero
 **What went wrong:** Agent implemented wrong charge as dealing zero damage ("fizzle").
 **Fix:** Wrong charges deal reduced damage: `quickPlayValue × 0.7` (mastery 1+) or `× 0.6` (mastery 0). Never say "fizzle."
+
+### 2026-03-31 — Phaser elements don't reposition on window resize
+
+**What:** Resizing the browser window while in combat caused the enemy HP bar and sprite to stay at their old pixel positions/sizes, drifting out of alignment with Svelte overlay elements.
+
+**Why:** CombatScene's `repositionAll()` only fired on layout mode changes (portrait↔landscape via `handleLayoutChange`), not on same-mode window resizes. The Phaser scale manager resized the canvas but scene elements kept stale coordinates. Additionally, `scaleFactor` and `displayH` were only computed once in `create()`.
+
+**Fix:** Added `this.scale.on('resize', this.onScaleResize, this)` in CombatScene.create(). The handler recomputes `scaleFactor = w / BASE_WIDTH` and `displayH`, then calls `repositionAll()`. Enemy sprite container also gets scaled by `w / LANDSCAPE_BASE_WIDTH` to maintain proportional size. Listener cleaned up in `onShutdown()`.

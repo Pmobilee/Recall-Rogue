@@ -75,6 +75,7 @@ Renders the combat display zone (top ~58% of viewport in portrait, full canvas i
 | Method | Purpose |
 |---|---|
 | `handleLayoutChange(mode)` | Portrait/landscape reposition via `repositionAll()` |
+| `onScaleResize(gameSize)` | Fires on Phaser scale manager `resize` events (same-mode window resizes). Recomputes `scaleFactor` and `displayH`, then calls `repositionAll()`. Listener registered in `create()`, cleaned up in `onShutdown()`. |
 | `slideEnemyForQuiz(active)` | Slides enemy right (79% x) when quiz opens in landscape |
 | `setEnemy(id, category, hp, maxHp)` | Load enemy texture, reposition, start atmosphere |
 | `updateHP(enemy, player)` | Refresh HP bar graphics and near-death vignette |
@@ -84,7 +85,7 @@ Renders the combat display zone (top ~58% of viewport in portrait, full canvas i
 
 **Layout constants (portrait):** `DISPLAY_ZONE_HEIGHT_PCT = 0.58`, `ENEMY_X_PCT = 0.50`, enemy sizes 300/340/400px scaled by `scaleFactor (w/BASE_WIDTH)`.
 
-**Layout constants (landscape, `LANDSCAPE` object):** enemy centered at `ENEMY_X_PCT: 0.50`, slides to `0.79` during quiz. Enemy sizes are absolute game units (300/360/420px), not scaled.
+**Layout constants (landscape, `LANDSCAPE` object):** enemy centered at `ENEMY_X_PCT: 0.50`, slides to `0.79` during quiz. Enemy sizes are absolute game units (300/360/420px). In `repositionAll()`, the enemy sprite container is scaled by `w / LANDSCAPE_BASE_WIDTH` (1280) so sprites maintain proportional size across viewport changes.
 
 ### RewardRoomScene
 

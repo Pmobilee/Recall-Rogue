@@ -112,6 +112,10 @@ Triggers: `resize` event, `orientationchange` (with 100ms delay). Dev toggle: **
 
 All landscape-specific CSS lives in `desktop.css` under `[data-layout="landscape"]` selectors (bypasses Svelte component scoping).
 
+**Combat overlay positioning in landscape:** All **positional** CSS properties (`top`, `bottom`, `left`, `right`) in the combat overlay use pure `vh` values (e.g., `6.5vh`, `32vh`) rather than mixed `calc(Nvh + Npx * var(--layout-scale))` expressions. This ensures uniform scaling with the Phaser canvas, which uses viewport-percentage positioning. **Dimensional** properties (width, height, padding, font-size) still use `calc(Npx * var(--layout-scale, 1))`.
+
+`--topbar-height` uses `max(28px, 4.5vh)` for linear scaling (previously `clamp(36px, 4.5vh, 56px)`, which had a floor that caused misalignment at small viewports).
+
 ---
 
 ## Overlay CSS Variables (`src/ui/styles/overlay.css`)
