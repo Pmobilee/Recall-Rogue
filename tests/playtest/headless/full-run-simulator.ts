@@ -32,7 +32,6 @@ import { BotBrain, type BotSkills } from './bot-brain.js';
 import {
   PLAYER_START_HP,
   PLAYER_MAX_HP,
-  POST_ENCOUNTER_HEAL_PCT,
   ENABLE_PHASE2_MECHANICS,
   STARTER_DECK_COMPOSITION,
   SHOP_CARD_PRICE_V2,
@@ -634,9 +633,15 @@ function handleCombatNode(
   }
 
   if (result.result === 'victory' || result.result === 'timeout') {
-    // Heal a tiny amount post-combat (POST_ENCOUNTER_HEAL_PCT)
-    const healAmt = Math.floor(runState.maxHp * POST_ENCOUNTER_HEAL_PCT);
-    runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
+    // 25% chance health vial drop (matches real game probability)
+    if (Math.random() < 0.25) {
+      const isLarge = Math.random() < 0.3;
+      const vialHeal = isLarge
+        ? 20 + Math.floor(Math.random() * 16)  // 20-35 HP
+        : 8 + Math.floor(Math.random() * 11);  // 8-18 HP
+      runState.hp = Math.min(runState.maxHp, runState.hp + vialHeal);
+      if (verbose) console.log(`    Health vial: +${vialHeal} HP → ${runState.hp}`);
+    }
 
     // Award gold
     const goldAwarded = awardCombatGold(runState, nodeType);
@@ -808,6 +813,21 @@ function handleRestNode(
       const healAmt = Math.floor(runState.maxHp * healPct);
       runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
       if (verbose) console.log(`    [REST/bot] Healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
+    } else if (decision === 'meditate') {
+      // Remove weakest card (basic strike first)
+      if (runState.deck.length > 8) {
+        const strikeIdx = runState.deck.findIndex(c => c.mechanicId === 'strike');
+        const removeIdx = strikeIdx >= 0 ? strikeIdx : 0;
+        runState.deck.splice(removeIdx, 1);
+        runState.cardsRemoved++;
+        if (verbose) console.log(`    [REST/bot] Meditated (removed card). Deck: ${runState.deck.length}`);
+      } else {
+        // Deck too small to remove, heal instead
+        const healPct = BASE_REST_HEAL_PCT * ascMods.restHealMultiplier;
+        const healAmt = Math.floor(runState.maxHp * healPct);
+        runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
+        if (verbose) console.log(`    [REST/bot] Deck too small to meditate, healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
+      }
     } else {
       // Study: heal a bit as proxy for mastery gain
       const healAmt = Math.floor(runState.maxHp * 0.05);
@@ -855,6 +875,36 @@ function handleTreasureNode(
   if (verbose) console.log(`    [TREASURE] Got relic: ${id ?? 'none'}`);
 }
 
+/**
+ * Pick the best option from a mystery event choice by scoring each effect.
+ * Prefers heals when HP is low, gold, and card rewards; avoids damage/costs.
+ */
+function pickBestMysteryOption(
+  options: Array<{ label: string; effect: { type: string; amount?: number; percent?: number; message?: string } }>,
+  runState: SimRunState,
+): { type: string; amount?: number; percent?: number; message?: string } {
+  if (options.length === 0) return { type: 'nothing', message: '' };
+
+  const hpPct = runState.hp / (runState.maxHp || 1);
+  let bestIdx = 0;
+  let bestScore = -Infinity;
+
+  for (let i = 0; i < options.length; i++) {
+    const e = options[i].effect;
+    let score = 0;
+    if (e.type === 'heal' || e.type === 'healPercent') score += hpPct < 0.5 ? 40 : 20;
+    if (e.type === 'currency' && (e.amount ?? 0) > 0) score += 15;
+    if (e.type === 'freeCard' || e.type === 'cardReward') score += 10;
+    if (e.type === 'upgradeRandomCard') score += 10;
+    if (e.type === 'damage') score -= 30;
+    if (e.type === 'currency' && (e.amount ?? 0) < 0) score -= 15;
+    if (e.type === 'removeRandomCard') score += runState.deck.length > 12 ? 10 : -10;
+    if (e.type === 'nothing') score += 0;
+    if (score > bestScore) { bestScore = score; bestIdx = i; }
+  }
+  return options[bestIdx].effect;
+}
+
 function handleMysteryNode(
   runState: SimRunState,
   floor: number,
@@ -870,9 +920,9 @@ function handleMysteryNode(
 
   if (verbose) console.log(`    [MYSTERY] ${event.name}: effect=${event.effect.type}`);
 
-  // Resolve the top-level effect (for 'choice' effects, pick the first option that's positive)
+  // Resolve the top-level effect (for 'choice' effects, pick the best positive option)
   const effect = event.effect.type === 'choice'
-    ? (event.effect.options[0]?.effect ?? { type: 'nothing', message: '' })
+    ? pickBestMysteryOption(event.effect.options, runState)
     : event.effect;
 
   switch (effect.type) {
@@ -1106,14 +1156,11 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     const actSeed = options.seed + act * 31337;
     const actMap = generateActMap(segment, actSeed);
 
-    // Walk a random path through the map
-    const path = walkMapPath(actMap);
-
-    if (verbose) console.log(`  Path: ${path.map(n => `${n.type}(r${n.row})`).join(' -> ')}`);
-
-    for (const node of path) {
-      if (!survived) break;
-
+    /**
+     * Process a single map node — shared by both the brain-driven and legacy paths.
+     * Mutates survived, roomsVisited, nodeVisits, and all aggregate counters.
+     */
+    const processNode = (node: MapNode): void => {
       const floor = deriveFloorFromNode(actMap, node);
       const nodeType = node.type;
 
@@ -1210,6 +1257,53 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
       if (runState.hp <= 0) {
         survived = false;
         runState.hp = 0;
+      }
+    };
+
+    if (brain) {
+      // ── Brain-driven path: step-by-step room selection via brain.pickRoom() ──
+      const row0Ids = actMap.rows[0] ?? [];
+      if (row0Ids.length === 0) {
+        if (survived) actsCompleted++;
+        continue;
+      }
+
+      let currentNodeId = row0Ids[Math.floor(Math.random() * row0Ids.length)];
+      selectMapNode(actMap, currentNodeId);
+
+      if (verbose) console.log(`  Brain walk starting at node ${currentNodeId}`);
+
+      while (true) {
+        if (!survived) break;
+
+        const node = actMap.nodes[currentNodeId];
+        processNode(node);
+        if (!survived) break;
+
+        // After processing, pick next room
+        const availableIds = getAvailableNodes(actMap);
+        if (availableIds.length === 0) break;
+
+        let nextNodeId: string;
+        if (availableIds.length === 1) {
+          nextNodeId = availableIds[0];
+        } else {
+          const availableNodes = availableIds.map(id => actMap.nodes[id]);
+          const picked = brain.pickRoom(availableNodes, { hp: runState.hp, maxHp: runState.maxHp });
+          nextNodeId = picked.id;
+        }
+        selectMapNode(actMap, nextNodeId);
+        currentNodeId = nextNodeId;
+      }
+    } else {
+      // ── Legacy path: random walk via walkMapPath() ──
+      const path = walkMapPath(actMap);
+
+      if (verbose) console.log(`  Path: ${path.map(n => `${n.type}(r${n.row})`).join(' -> ')}`);
+
+      for (const node of path) {
+        if (!survived) break;
+        processNode(node);
       }
     }
 

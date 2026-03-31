@@ -568,25 +568,25 @@ export class BotBrain {
    * Decide what to do at a rest site.
    *
    * @param runState  Current run state snapshot
-   * @returns         'heal' or 'study'
+   * @returns         'heal', 'study', or 'meditate' (remove a card)
    */
-  planRest(runState: { hp: number; maxHp: number; deckSize: number }): 'heal' | 'study' {
+  planRest(runState: { hp: number; maxHp: number; deckSize: number }): 'heal' | 'study' | 'meditate' {
     const { skills } = this;
     const hpPct = runState.hp / (runState.maxHp || 1);
 
-    if (skills.restSkill < 0.3) {
-      return 'heal';
-    }
+    if (skills.restSkill < 0.3) return 'heal';
 
     if (skills.restSkill < 0.7) {
-      // Heal if HP < 50%, else study
-      return hpPct < 0.5 ? 'heal' : 'study';
+      if (hpPct < 0.5) return 'heal';
+      if (runState.deckSize > 15) return 'meditate';
+      return 'study';
     }
 
-    // 0.7–1.0: Study when HP > 70% (mastery farming), heal only when HP < 40%
-    if (hpPct > 0.7) return 'study';
+    // 0.7+: smart
     if (hpPct < 0.4) return 'heal';
-    return skills.restSkill >= 0.85 ? 'study' : 'heal';
+    if (runState.deckSize > 12) return 'meditate';
+    if (hpPct > 0.7) return 'study';
+    return 'heal';
   }
 
   // ── pickRoom ──────────────────────────────────────────────────────────────
