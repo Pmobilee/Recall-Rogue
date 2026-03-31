@@ -242,17 +242,25 @@ function num(v: number | string): CardDescPart {
 function masteryNum(v: number | string): CardDescPart {
   return { type: 'mastery-bonus', value: String(v) };
 }
-/** Returns [num(base)] or [num(base), masteryNum('+bonus')] depending on mastery level. */
-function numWithMastery(base: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
+/**
+ * Returns [num(base)] or [num(base), masteryNum('+bonus')] depending on mastery level.
+ * `total` may already include the mastery bonus (e.g. from getEffectValue()), so we
+ * subtract it back out to recover the true base for display ("4 +3", not "7 +3").
+ */
+function numWithMastery(total: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
   const bonus = getMasteryBaseBonus(mechanicId, masteryLevel);
-  if (bonus <= 0 || masteryLevel <= 0) return [num(base)];
-  return [num(base), masteryNum('+' + Math.round(bonus))];
+  if (bonus <= 0 || masteryLevel <= 0) return [num(total)];
+  return [num(total - Math.round(bonus)), masteryNum('+' + Math.round(bonus))];
 }
-/** Returns [num(base)] or [num(base), masteryNum('+bonus')] using secondary mastery bonus. */
-function numWithSecondaryMastery(base: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
+/**
+ * Returns [num(base)] or [num(base), masteryNum('+bonus')] using secondary mastery bonus.
+ * `total` may already include the mastery bonus, so we subtract it back out to recover
+ * the true base for display.
+ */
+function numWithSecondaryMastery(total: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
   const bonus = getMasterySecondaryBonus(mechanicId, masteryLevel);
-  if (bonus <= 0 || masteryLevel <= 0) return [num(base)];
-  return [num(base), masteryNum('+' + Math.round(bonus))];
+  if (bonus <= 0 || masteryLevel <= 0) return [num(total)];
+  return [num(total - Math.round(bonus)), masteryNum('+' + Math.round(bonus))];
 }
 function txt(v: string): CardDescPart {
   return { type: 'text', value: v };

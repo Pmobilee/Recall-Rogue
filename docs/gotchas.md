@@ -173,3 +173,11 @@
 **Why:** CombatScene's `repositionAll()` only fired on layout mode changes (portrait↔landscape via `handleLayoutChange`), not on same-mode window resizes. The Phaser scale manager resized the canvas but scene elements kept stale coordinates. Additionally, `scaleFactor` and `displayH` were only computed once in `create()`.
 
 **Fix:** Added `this.scale.on('resize', this.onScaleResize, this)` in CombatScene.create(). The handler recomputes `scaleFactor = w / BASE_WIDTH` and `displayH`, then calls `repositionAll()`. Enemy sprite container also gets scaled by `w / LANDSCAPE_BASE_WIDTH` to maintain proportional size. Listener cleaned up in `onShutdown()`.
+
+### 2026-03-31 — Mastery bonus double-counted in card description display
+
+**What:** Card descriptions showed inflated values — a mastery-1 Strike (base 4, +3 bonus) displayed `"Deal 7 +3"`, implying 10 damage, instead of the correct `"Deal 4 +3"` (totaling 7).
+
+**Why:** `CardHand.svelte` computes `power = baseVal + masteryBonus` and passes this pre-summed total to `numWithMastery()` and `numWithSecondaryMastery()`. The functions were then displaying `power` as the base and appending `+bonus` again, making the bonus appear twice. Same issue affected charge preview (showed `"Deal 9 +3"` instead of `"Deal 6 +3"`).
+
+**Fix:** Both functions now subtract the bonus to recover the true base before rendering: `base = total - Math.round(bonus)`. Display reads `[base, '+'+bonus]`. Do not pass a pre-subtracted base — the subtraction happens inside the description functions.

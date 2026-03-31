@@ -100,6 +100,12 @@ Deck management is split by run mode: `runPoolBuilder` handles standard domain r
 | **Key exports** | `getDetailedCardDescription`, `getShortCardDescription` |
 | **Key dependencies** | cardUpgradeService, mechanics.ts |
 
+### Mastery Bonus Display
+
+`numWithMastery(total, bonus)` and `numWithSecondaryMastery(total, bonus)` display values as `[base, +bonus]` — e.g. `"Deal 4 +3"` for a mastery-1 Strike (base 4, bonus 3).
+
+**Critical:** `CardHand.svelte` passes `power = baseVal + masteryBonus` (pre-summed). The functions subtract the bonus back out to recover the true base: `base = total - Math.round(bonus)`. This prevents the bonus from appearing double-counted ("Deal 7 +3" would imply 10 damage — wrong). Charge preview uses the same subtraction, so a mastery-1 Strike charge shows `"Deal 6 +3"` (not `"Deal 9 +3"`).
+
 ## libraryService
 
 | | |
