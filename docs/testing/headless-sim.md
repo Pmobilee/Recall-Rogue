@@ -12,7 +12,7 @@ The headless simulator runs full card-roguelite encounters entirely in Node.js �
 - `src/services/cardEffectResolver.ts` — card effects
 - `src/services/relicEffectResolver.ts` — relic triggers
 - `src/data/enemies.ts` — enemy templates
-- `src/data/balance.ts` — `PLAYER_START_HP`, `PLAYER_MAX_HP`, `POST_ENCOUNTER_HEAL_PCT`, `STARTER_DECK_COMPOSITION`
+- `src/data/balance.ts` — `PLAYER_START_HP`, `PLAYER_MAX_HP`, `STARTER_DECK_COMPOSITION`
 - `src/data/mechanics.ts` — `MECHANIC_DEFINITIONS`
 - `src/services/ascension.ts` — `getAscensionModifiers()`
 
@@ -84,7 +84,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | `masteryHunting` | Preference for charging high-`perLevelDelta` cards to gain mastery |
 | `rewardSkill` | Card reward selection quality (gap-filling, high-scaling picks) |
 | `shopSkill` | Shop purchase intelligence (removal, relics, food timing) |
-| `restSkill` | Rest site decision quality (heal vs study based on HP%) |
+| `restSkill` | Rest site decision quality (heal vs study vs meditate based on HP% and deck size) |
 
 ### How planTurn() Works
 
@@ -98,6 +98,49 @@ Other methods: `pickReward()`, `planShop()`, `planRest()`, `pickRoom()` — each
 ### makeSkills() Helper
 
 `makeSkills(overrides, baseline=0.5)` — fills unspecified axes with `baseline`; accuracy also defaults to baseline if omitted.
+
+## Room Navigation — Brain-Driven Path
+
+When a `BotBrain` is active, `walkMapPath` is replaced with step-by-step `brain.pickRoom()` calls. The brain scores each available map node by current HP and deck state, then commits one room at a time:
+
+- **Low HP** — prefers rest sites to heal; avoids combat nodes
+- **Healthy HP** — prefers combat for gold and card rewards
+- **Legacy path** — when no brain is present, random room selection is used unchanged
+
+`pickRoom()` returns the selected node id. The full-run simulator advances the map one step at a time using this output.
+
+## Rest Site — Meditate Action
+
+`planRest(runState)` now returns `'heal' | 'study' | 'meditate'` (previously only `'heal' | 'study'`).
+
+**Meditate** removes the weakest card in the deck (strike cards first). Decision thresholds:
+
+| `restSkill` | Meditate when deck size > |
+|-------------|--------------------------|
+| < 0.7 | 15 cards |
+| ≥ 0.7 | 12 cards |
+
+Meditate is never chosen when deck is at or below the threshold, or when HP is critically low and healing is more urgent.
+
+## Health Vials — Post-Combat Healing
+
+`POST_ENCOUNTER_HEAL_PCT` (flat 7% heal) has been replaced with a randomized health vial drop system. After each combat encounter:
+
+- **25% chance** — health vial drops
+  - **Small vial** (70% of drops): restores 8–18 HP
+  - **Large vial** (30% of drops): restores 20–35 HP
+- **75% chance** — no vial drops; no healing
+
+This produces more variance in run health curves than the old flat heal. The `balance.ts` constant `POST_ENCOUNTER_HEAL_PCT` is no longer read by the sim.
+
+## Mystery Events — Smart Choice Scoring
+
+Choice-based mystery events previously always picked option 0. The brain now scores each option by current HP and deck state:
+
+- **Prefers healing options** when HP is below ~50%
+- **Avoids damage options** when HP is critically low
+- **Considers deck size** for card-removal events (only takes removal when deck is large)
+- Falls back to option 0 if no scoring data is available for an event type
 
 ## Player Profiles
 
@@ -155,14 +198,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
   tests/playtest/headless/run-batch.ts --runs 200 --isolation
 ```
 
-## More Examples
-
-```bash
-# (all examples use: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts)
---runs 200 --profile glass_cannon
---runs 200 --archetype chain_god
---runs 200 --skills '{"accuracy":0.8,"chargeSkill":1.0,"chainSkill":0}'
-```
+**Isolation baseline results (2026-03-31):** `rewardSkill` (37%) and `cardSelection` (31%) dominate win-rate contribution. Isolation baseline is now ~8% (down from ~18% before the health vial system replaced flat healing).
 
 ## Output Format
 
@@ -210,8 +246,8 @@ In `--mode combat`, the batch runner also outputs `MechanicStats[]`:
 - `BotBrain.planTurn(hand, turnState, ascMods)` — public API; returns ordered `CardPlay[]` plan for the turn
 - `BotBrain.pickReward(options, currentDeck)` — selects best card reward; `null` = skip
 - `BotBrain.planShop(runState, shopCards, shopRelics, ...)` — returns ordered `ShopAction[]`
-- `BotBrain.planRest(runState)` — returns `'heal' | 'study'`
-- `BotBrain.pickRoom(options, runState)` — selects next map node by HP-weighted scoring
+- `BotBrain.planRest(runState)` — returns `'heal' | 'study' | 'meditate'`
+- `BotBrain.pickRoom(options, runState)` — selects next map node by HP-weighted scoring; called per step when brain is active
 
 **`bot-profiles.ts`:**
 - `makeSkills(overrides, baseline)` — builds a `BotSkills` object with baseline fill
@@ -223,12 +259,24 @@ In `--mode combat`, the batch runner also outputs `MechanicStats[]`:
 **`simulator.ts`:**
 - `runSimulation(opts: SimOptions): SimRunResult` — public API, runs one full sim
 - `simulateSingleEncounter(turnState, opts, ascMods)` — inner loop: plays all cards, calls `endPlayerTurn`, checks `checkEncounterEnd`
-- `buildSimDeck(deckSize)` — builds starter deck from `STARTER_DECK_COMPOSITION`, fills extras with weighted random mechanics
+- `buildSimDeck(deckSize)` — builds starter deck from `STARTER_DECK_COMPOSITION`, fills extras with weighted random mechanics; initializes `masteryLevel: 0` on all sim cards
 - `pickRandomEnemy(act, nodeType)` — delegates to `getEnemiesForNode()`
 
 **`browser-shim.ts`:** Must be imported first (`import './browser-shim.js'`). Stubs `localStorage`, `window`, `document`, and `import.meta.env` so game modules load without a browser.
 
 **`tsconfig.json`:** Extends `tsconfig.app.json`, maps `svelte/store` and `svelte` to `./svelte-shim` so Svelte store imports resolve in Node.js.
+
+## Recent Bug Fixes (2026-03-31)
+
+The following correctness bugs were fixed in the bot decision logic:
+
+| Bug | Old Behavior | Fix |
+|-----|-------------|-----|
+| Card EV overestimate | Used `card.baseEffectValue` (2× actual) | Now reads `mechanic.quickPlayValue` |
+| Charge wrong EV | Flat 0.25× assumed for all wrong charges | Uses per-mechanic `chargeWrongValue` |
+| Block scoring ignored enemy intent | Enemy damage not factored into block decisions | Wired to `turnState.enemy.nextIntent` |
+| Mastery not tracked | Sim cards had no `masteryLevel` field | `masteryLevel: 0` initialized on `buildSimDeck()` |
+| Chain momentum AP cost | Free-charge turns not detected | `nextChargeFreeForChainType` now factored into AP cost calculation |
 
 ## Ascension Support
 
