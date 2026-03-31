@@ -858,7 +858,7 @@ export function playCardAction(
       const fizzledEffect = createNoEffect(card);
       turnState.consecutiveCorrectThisEncounter = 0;
       // AR-261: Wrong charge answer — increase fog, add fact to review queue
-      adjustAura(2);
+      adjustAura(1);
       if (card.factId) {
         addToReviewQueue(card.factId);
       }
@@ -957,7 +957,7 @@ export function playCardAction(
 
     turnState.consecutiveCorrectThisEncounter = 0;
     // AR-261: Wrong charge answer — increase fog, add fact to review queue
-    adjustAura(2);
+    adjustAura(1);
     if (card.factId) {
       addToReviewQueue(card.factId);
     }
@@ -2362,6 +2362,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       chargeCorrect: false,
     };
     enemy.template.onPlayerNoCharge(ctx);
+  }
+
+  // AR-261: No charge played this turn — fog drifts up (+1)
+  // Covers both "only Quick Play cards" and "ended turn without playing anything".
+  if (!enemy.playerChargedThisTurn) {
+    adjustAura(1);
   }
 
   // Step 5d (AR-59.13): Reset playerChargedThisTurn for the next player turn

@@ -1,7 +1,10 @@
 // === Brain Fog System (was Knowledge Aura, AR-261) ===
 // Per-encounter gauge (0-10) driven by Charge accuracy.
 // Low fog (≤2) = Flow State (+1 card draw). High fog (≥7) = Brain Fog (enemies +20% dmg).
-// Fog starts at 0 each encounter. Wrong answers increase it, correct answers decrease it.
+// Fog starts at 0 each encounter.
+// - Charge Correct: adjustAura(-1) — fog decreases
+// - Charge Wrong:   adjustAura(+1) — fog increases
+// - No charge played this turn (Quick Play only or no cards played): adjustAura(+1) at endPlayerTurn()
 
 export type AuraState = 'brain_fog' | 'neutral' | 'flow_state';
 

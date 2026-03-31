@@ -81,6 +81,7 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 - No +1 AP surcharge
 - Breaks the Knowledge Chain
 - Locked cards (Trick Question) cannot be played Quick
+- If no Charge play was made the entire turn (Quick Play only, or no cards played), fog drifts up by 1 (`adjustAura(1)`) at `endPlayerTurn()` — AR-261
 
 **Charge Correct (`playMode = 'charge'`, `answeredCorrectly = true`)**
 - Damage = `(quickPlayValue + masteryBonus) × 1.5` — mastery is included before multiplication
@@ -96,7 +97,7 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 - Breaks Knowledge Chain, loses Chain Momentum
 - Mastery downgrade (skipped on first attempt at a fact, `isFirstAttempt` flag)
 - Adds fact to `cursedFactIds` if `masteryLevel === 0` and not first attempt
-- Increases fog by 2 (`adjustAura(2)`)
+- Increases fog by 1 (`adjustAura(1)`)
 - AP deducted — no refund on wrong answer
 
 ---
