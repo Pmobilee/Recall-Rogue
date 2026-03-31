@@ -171,6 +171,11 @@
     return parseJapaneseQuestion(fact.quizQuestion, fact.pronunciation)
   })
 
+  /** Whether the current fact is a grammar fill-in-the-blank question. */
+  const isGrammarFillBlank = $derived(
+    fact.quizQuestion.includes('{___}')
+  )
+
   const resultClass = $derived.by(() => {
     if (!showResult || isCorrect === null) return ''
     return isCorrect ? 'result-correct' : 'result-wrong'
@@ -468,6 +473,18 @@
         <p class="question {questionLengthClass}" data-testid="quiz-question">
           {koreanParts.before}<FuriganaText text={koreanParts.word} reading={koreanParts.reading} size="md" />{koreanParts.after}
         </p>
+      {:else if isGrammarFillBlank}
+        {@const parts = fact.quizQuestion.split('\n')}
+        {@const sentence = parts[0]}
+        {@const translation = parts[1] || ''}
+        <p class="question grammar-fill-blank {questionLengthClass}" data-testid="quiz-question">
+          {#each sentence.split('{___}') as segment, i}
+            {#if i > 0}<span class="grammar-blank">______</span>{/if}{segment}
+          {/each}
+        </p>
+        {#if translation}
+          <p class="grammar-translation">{translation}</p>
+        {/if}
       {:else}
         <p class="question {questionLengthClass}" data-testid="quiz-question">{displayAnswer(fact.quizQuestion)}</p>
       {/if}
@@ -849,6 +866,8 @@
   .quiz-overlay {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: auto;
     z-index: 210;
     display: flex;
@@ -1069,6 +1088,9 @@
     font-size: calc(1.1rem * var(--layout-scale, 1));
     line-height: 1.4;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
   /* AR-221: Auto-scaling font sizes based on question character count */
@@ -1082,6 +1104,33 @@
 
   .question.quiz-text-long {
     font-size: calc(14px * var(--text-scale, 1));
+  }
+
+  .grammar-fill-blank {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+  }
+
+  .grammar-blank {
+    display: inline-block;
+    min-width: calc(60px * var(--layout-scale, 1));
+    border-bottom: calc(2px * var(--layout-scale, 1)) solid var(--color-warning);
+    margin: 0 calc(2px * var(--layout-scale, 1));
+    text-align: center;
+    color: var(--color-warning);
+    letter-spacing: calc(2px * var(--layout-scale, 1));
+    font-weight: bold;
+  }
+
+  .grammar-translation {
+    color: var(--color-text-dim, #8899aa);
+    font-size: calc(13px * var(--text-scale, 1));
+    margin-top: calc(4px * var(--layout-scale, 1));
+    text-align: center;
+    font-style: italic;
+    line-height: 1.3;
   }
 
   .attempts {
@@ -1186,30 +1235,31 @@
   }
 
   .memory-tip {
-    background: rgba(78, 205, 196, 0.08);
+    background: rgba(0, 0, 0, 0.75);
     border-left: 3px solid #4ecdc4;
-    border-radius: 6px;
-    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     margin-top: calc(12px * var(--layout-scale, 1));
-    font-size: calc(0.85rem * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     line-height: 1.5;
     display: flex;
     flex-direction: column;
     gap: calc(4px * var(--layout-scale, 1));
+    max-width: calc(500px * var(--layout-scale, 1));
+    align-self: center;
   }
 
   .memory-tip-label {
     color: #4ecdc4;
     font-weight: 700;
-    font-size: calc(0.8rem * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
     letter-spacing: calc(0.5px * var(--layout-scale, 1));
     text-transform: uppercase;
   }
 
   .memory-tip-text {
-    color: var(--color-text);
+    color: #f0f0f0;
     font-style: italic;
-    opacity: 0.9;
   }
 
   .consistency-penalty-warning {

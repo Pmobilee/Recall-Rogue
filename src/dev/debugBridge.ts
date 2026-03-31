@@ -7,6 +7,7 @@
 import { initPlaytestAPI } from './playtestAPI'
 import { initScenarioSimulator } from './scenarioSimulator'
 import { initScreenshotHelper } from './screenshotHelper'
+import { initLayoutDump } from './layoutDump'
 
 export interface RRDebugSnapshot {
   currentScreen: string;
@@ -203,6 +204,10 @@ export function initDebugBridge(): void {
   // Initialize the screenshot helper (window.__rrScreenshot)
   initScreenshotHelper();
   rrLog('state-change', 'Screenshot helper initialized');
+
+  // Initialize the layout dump (window.__rrLayoutDump)
+  initLayoutDump();
+  rrLog('state-change', 'Layout dump initialized');
 
   // Backward compat aliases — remove after 2026-06-01
   const win = window as unknown as Record<string, unknown>;

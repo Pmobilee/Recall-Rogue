@@ -45,9 +45,13 @@ After completing ANY task that touches UI, visuals, gameplay, or layout, the Opu
 ### How to Take Screenshots
 
 ```javascript
-// CORRECT — always use this:
+// CORRECT — always use BOTH of these together:
 browser_evaluate(() => window.__rrScreenshotFile())
 // Saves to /tmp/rr-screenshot.jpg — then Read("/tmp/rr-screenshot.jpg") to view
+
+browser_evaluate(() => window.__rrLayoutDump())
+// Returns text with exact pixel coordinates of ALL Phaser + DOM elements
+// REQUIRED alongside screenshot — provides structured coordinate data the visual alone cannot
 
 // NEVER use these (they hang/timeout due to Phaser's RAF loop):
 // mcp__playwright__browser_take_screenshot
@@ -62,6 +66,7 @@ browser_evaluate(() => window.__rrScreenshotFile())
 2. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 3. Disable animations: `browser_evaluate(() => document.documentElement.setAttribute('data-pw-animations', 'disabled'))`
 4. Take screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` → `Read("/tmp/rr-screenshot.jpg")`
+4b. Get layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — exact pixel coordinates of ALL Phaser + DOM elements (ALWAYS run alongside screenshot)
 5. DOM snapshot: `mcp__playwright__browser_snapshot`
 6. Console check: `mcp__playwright__browser_console_messages`
 

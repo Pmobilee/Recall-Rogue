@@ -1,0 +1,343 @@
+{
+  "generated": "2026-03-30T08:57:57.926Z",
+  "totalImages": 42,
+  "totalBytes": 3055400,
+  "paintings": [
+    {
+      "id": "mona_lisa",
+      "title": "Mona Lisa",
+      "artist": "Leonardo da Vinci",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/mona_lisa.webp",
+      "fileSize": 143658
+    },
+    {
+      "id": "last_supper",
+      "title": "The Last Supper",
+      "artist": "Leonardo da Vinci",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/last_supper.webp",
+      "fileSize": 45708
+    },
+    {
+      "id": "creation_of_adam",
+      "title": "Creation of Adam",
+      "artist": "Michelangelo",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/creation_of_adam.webp",
+      "fileSize": 38090
+    },
+    {
+      "id": "birth_of_venus",
+      "title": "The Birth of Venus",
+      "artist": "Botticelli",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/birth_of_venus.webp",
+      "fileSize": 76902
+    },
+    {
+      "id": "girl_pearl_earring",
+      "title": "Girl with a Pearl Earring",
+      "artist": "Vermeer",
+      "movement": "baroque",
+      "path": "assets/paintings/baroque/girl_pearl_earring.webp",
+      "fileSize": 85172
+    },
+    {
+      "id": "night_watch",
+      "title": "The Night Watch",
+      "artist": "Rembrandt",
+      "movement": "baroque",
+      "path": "assets/paintings/baroque/night_watch.webp",
+      "fileSize": 52096
+    },
+    {
+      "id": "las_meninas",
+      "title": "Las Meninas",
+      "artist": "Velázquez",
+      "movement": "baroque",
+      "path": "assets/paintings/baroque/las_meninas.webp",
+      "fileSize": 47516
+    },
+    {
+      "id": "school_of_athens",
+      "title": "School of Athens",
+      "artist": "Raphael",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/school_of_athens.webp",
+      "fileSize": 79000
+    },
+    {
+      "id": "garden_earthly_delights",
+      "title": "The Garden of Earthly Delights",
+      "artist": "Bosch",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/garden_earthly_delights.webp",
+      "fileSize": 78538
+    },
+    {
+      "id": "arnolfini_portrait",
+      "title": "Arnolfini Portrait",
+      "artist": "Jan van Eyck",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/arnolfini_portrait.webp",
+      "fileSize": 53406
+    },
+    {
+      "id": "primavera",
+      "title": "Primavera",
+      "artist": "Botticelli",
+      "movement": "renaissance",
+      "path": "assets/paintings/renaissance/primavera.webp",
+      "fileSize": 90940
+    },
+    {
+      "id": "anatomy_lesson",
+      "title": "The Anatomy Lesson of Dr. Tulp",
+      "artist": "Rembrandt",
+      "movement": "baroque",
+      "path": "assets/paintings/baroque/anatomy_lesson.webp",
+      "fileSize": 29188
+    },
+    {
+      "id": "judith_holofernes",
+      "title": "Judith Slaying Holofernes",
+      "artist": "Artemisia Gentileschi",
+      "movement": "baroque",
+      "path": "assets/paintings/baroque/judith_holofernes.webp",
+      "fileSize": 70538
+    },
+    {
+      "id": "calling_st_matthew",
+      "title": "The Calling of Saint Matthew",
+      "artist": "Caravaggio",
+      "movement": "baroque",
+      "path": "assets/paintings/baroque/calling_st_matthew.webp",
+      "fileSize": 34872
+    },
+    {
+      "id": "art_of_painting",
+      "title": "The Art of Painting",
+      "artist": "Vermeer",
+      "movement": "baroque",
+      "path": "assets/paintings/baroque/art_of_painting.webp",
+      "fileSize": 77320
+    },
+    {
+      "id": "liberty_leading",
+      "title": "Liberty Leading the People",
+      "artist": "Delacroix",
+      "movement": "romanticism",
+      "path": "assets/paintings/romanticism/liberty_leading.webp",
+      "fileSize": 71158
+    },
+    {
+      "id": "wanderer_fog",
+      "title": "Wanderer above the Sea of Fog",
+      "artist": "Caspar David Friedrich",
+      "movement": "romanticism",
+      "path": "assets/paintings/romanticism/wanderer_fog.webp",
+      "fileSize": 57190
+    },
+    {
+      "id": "great_wave",
+      "title": "The Great Wave off Kanagawa",
+      "artist": "Hokusai",
+      "movement": "japanese",
+      "path": "assets/paintings/japanese/great_wave.webp",
+      "fileSize": 83410
+    },
+    {
+      "id": "third_of_may",
+      "title": "The Third of May 1808",
+      "artist": "Goya",
+      "movement": "romanticism",
+      "path": "assets/paintings/romanticism/third_of_may.webp",
+      "fileSize": 37846
+    },
+    {
+      "id": "olympia",
+      "title": "Olympia",
+      "artist": "Manet",
+      "movement": "realism",
+      "path": "assets/paintings/realism/olympia.webp",
+      "fileSize": 45958
+    },
+    {
+      "id": "whistlers_mother",
+      "title": "Whistler's Mother",
+      "artist": "Whistler",
+      "movement": "realism",
+      "path": "assets/paintings/realism/whistlers_mother.webp",
+      "fileSize": 35234
+    },
+    {
+      "id": "the_gleaners",
+      "title": "The Gleaners",
+      "artist": "Millet",
+      "movement": "realism",
+      "path": "assets/paintings/realism/the_gleaners.webp",
+      "fileSize": 57330
+    },
+    {
+      "id": "washington_crossing",
+      "title": "Washington Crossing the Delaware",
+      "artist": "Leutze",
+      "movement": "romanticism",
+      "path": "assets/paintings/romanticism/washington_crossing.webp",
+      "fileSize": 35936
+    },
+    {
+      "id": "raft_medusa",
+      "title": "The Raft of the Medusa",
+      "artist": "Géricault",
+      "movement": "romanticism",
+      "path": "assets/paintings/romanticism/raft_medusa.webp",
+      "fileSize": 68868
+    },
+    {
+      "id": "rain_steam_speed",
+      "title": "Rain, Steam and Speed",
+      "artist": "Turner",
+      "movement": "romanticism",
+      "path": "assets/paintings/romanticism/rain_steam_speed.webp",
+      "fileSize": 42242
+    },
+    {
+      "id": "impression_sunrise",
+      "title": "Impression, Sunrise",
+      "artist": "Monet",
+      "movement": "impressionism",
+      "path": "assets/paintings/impressionism/impression_sunrise.webp",
+      "fileSize": 42342
+    },
+    {
+      "id": "water_lilies",
+      "title": "Water Lilies",
+      "artist": "Monet",
+      "movement": "impressionism",
+      "path": "assets/paintings/impressionism/water_lilies.webp",
+      "fileSize": 109378
+    },
+    {
+      "id": "grande_jatte",
+      "title": "A Sunday on La Grande Jatte",
+      "artist": "Seurat",
+      "movement": "post_impressionism",
+      "path": "assets/paintings/post_impressionism/grande_jatte.webp",
+      "fileSize": 89648
+    },
+    {
+      "id": "starry_night",
+      "title": "The Starry Night",
+      "artist": "Van Gogh",
+      "movement": "post_impressionism",
+      "path": "assets/paintings/post_impressionism/starry_night.webp",
+      "fileSize": 117466
+    },
+    {
+      "id": "sunflowers",
+      "title": "Sunflowers",
+      "artist": "Van Gogh",
+      "movement": "post_impressionism",
+      "path": "assets/paintings/post_impressionism/sunflowers.webp",
+      "fileSize": 119704
+    },
+    {
+      "id": "bandaged_ear",
+      "title": "Self-Portrait with Bandaged Ear",
+      "artist": "Van Gogh",
+      "movement": "post_impressionism",
+      "path": "assets/paintings/post_impressionism/bandaged_ear.webp",
+      "fileSize": 113758
+    },
+    {
+      "id": "moulin_galette",
+      "title": "Bal du moulin de la Galette",
+      "artist": "Renoir",
+      "movement": "impressionism",
+      "path": "assets/paintings/impressionism/moulin_galette.webp",
+      "fileSize": 92556
+    },
+    {
+      "id": "bar_folies_bergere",
+      "title": "A Bar at the Folies-Bergère",
+      "artist": "Manet",
+      "movement": "impressionism",
+      "path": "assets/paintings/impressionism/bar_folies_bergere.webp",
+      "fileSize": 78128
+    },
+    {
+      "id": "card_players",
+      "title": "The Card Players",
+      "artist": "Cézanne",
+      "movement": "post_impressionism",
+      "path": "assets/paintings/post_impressionism/card_players.webp",
+      "fileSize": 75748
+    },
+    {
+      "id": "the_scream",
+      "title": "The Scream",
+      "artist": "Munch",
+      "movement": "expressionism",
+      "path": "assets/paintings/expressionism/the_scream.webp",
+      "fileSize": 88800
+    },
+    {
+      "id": "boating_party",
+      "title": "Luncheon of the Boating Party",
+      "artist": "Renoir",
+      "movement": "impressionism",
+      "path": "assets/paintings/impressionism/boating_party.webp",
+      "fileSize": 73988
+    },
+    {
+      "id": "dance_class",
+      "title": "The Dance Class",
+      "artist": "Degas",
+      "movement": "impressionism",
+      "path": "assets/paintings/impressionism/dance_class.webp",
+      "fileSize": 74312
+    },
+    {
+      "id": "starry_night_rhone",
+      "title": "Starry Night Over the Rhône",
+      "artist": "Van Gogh",
+      "movement": "post_impressionism",
+      "path": "assets/paintings/post_impressionism/starry_night_rhone.webp",
+      "fileSize": 126066
+    },
+    {
+      "id": "the_kiss_klimt",
+      "title": "The Kiss",
+      "artist": "Klimt",
+      "movement": "art_nouveau",
+      "path": "assets/paintings/art_nouveau/the_kiss_klimt.webp",
+      "fileSize": 130536
+    },
+    {
+      "id": "tahitian_women",
+      "title": "Tahitian Women on the Beach",
+      "artist": "Gauguin",
+      "movement": "post_impressionism",
+      "path": "assets/paintings/post_impressionism/tahitian_women.webp",
+      "fileSize": 81148
+    },
+    {
+      "id": "american_gothic",
+      "title": "American Gothic",
+      "artist": "Grant Wood",
+      "movement": "modern",
+      "path": "assets/paintings/modern/american_gothic.webp",
+      "fileSize": 82920
+    },
+    {
+      "id": "nighthawks",
+      "title": "Nighthawks",
+      "artist": "Edward Hopper",
+      "movement": "modern",
+      "path": "assets/paintings/modern/nighthawks.webp",
+      "fileSize": 20786
+    }
+  ]
+}

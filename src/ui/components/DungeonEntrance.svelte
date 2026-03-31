@@ -1,6 +1,8 @@
 <script lang="ts">
   import { getMenuBg, getMenuDepthMap } from '../../data/backgroundManifest'
   import ParallaxTransition from './ParallaxTransition.svelte'
+  import { staggerPopIn } from '../utils/roomPopIn'
+  import { tick } from 'svelte'
 
   interface Props {
     onbegin: (slowReader: boolean, languageCode: string | null) => void
@@ -12,6 +14,7 @@
   const menuBg = $derived(getMenuBg())
   const entranceBgUrl = getMenuBg()
   const entranceDepthUrl = getMenuDepthMap()
+  let overlayEl = $state<HTMLElement>(null!)
   let showRoomTransition = $state(true)
 
   function handleEnter(): void {
@@ -19,7 +22,7 @@
   }
 </script>
 
-<div class="onboarding-screen" style="background-image: linear-gradient(rgba(6, 8, 13, 0.4), rgba(6, 8, 13, 0.6)), url('{menuBg}')">
+<div class="onboarding-screen" bind:this={overlayEl} style="background-image: linear-gradient(rgba(6, 8, 13, 0.4), rgba(6, 8, 13, 0.6)), url('{menuBg}')">
   <div class="onboarding-panel">
     {#if onback}
       <button class="back-btn" type="button" onclick={onback}>&larr; Back</button>
@@ -36,7 +39,17 @@
     depthUrl={entranceDepthUrl}
     type="enter"
     onComplete={() => { showRoomTransition = false }}
-      persist
+    onSettle={() => {
+      tick().then(() => {
+        if (!overlayEl) return
+        staggerPopIn({
+          container: overlayEl,
+          elements: ['.onboarding-panel', 'h1', 'p', '.enter-btn'],
+          totalDuration: 1500,
+        })
+      })
+    }}
+    persist
   />
 {/if}
 

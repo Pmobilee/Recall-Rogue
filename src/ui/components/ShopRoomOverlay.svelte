@@ -26,6 +26,9 @@
   import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
   import { getShopkeeperBark, type ShopBarkTrigger } from '../../data/shopkeeperBarks'
   import { fade } from 'svelte/transition'
+  import { staggerPopIn } from '../utils/roomPopIn'
+  import { tick } from 'svelte'
+  import { displayAnswer } from '../../services/numericalDistractorService'
 
   function getEffectLabel(card: Card): string {
     const base = Math.round(card.baseEffectValue * card.effectMultiplier)
@@ -133,12 +136,7 @@
   // === Purchase animation state ===
   let purchasedItemId = $state<string | null>(null)
 
-  // === Entrance stagger animation (P3-B) ===
-  let entranceComplete = $state(false)
-  $effect(() => {
-    const timer = setTimeout(() => { entranceComplete = true }, 2200)
-    return () => clearTimeout(timer)
-  })
+  let overlayEl = $state<HTMLElement>(null!)
 
   // === Sell animation (P3-C) ===
   let sellingCardId = $state<string | null>(null)
@@ -455,7 +453,7 @@
   })
 </script>
 
-<section class="shop-overlay" class:landscape={$isLandscape} aria-label="Shop room" onclick={() => { entranceComplete = true }}>
+<section class="shop-overlay" bind:this={overlayEl} class:landscape={$isLandscape} aria-label="Shop room">
   <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <div class="shop-hud">
     <button type="button" class="hud-back" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
@@ -477,7 +475,7 @@
   {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
     {#if shopInventory.relics.length > 0}
       <div class="section-label">RELICS</div>
-      <div class="card-list" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 700ms">
+      <div class="card-list">
         {#each shopInventory.relics as item (item.relic.id)}
           {@const canAfford = currency >= item.price}
           <article
@@ -517,7 +515,7 @@
 
     {#if shopInventory.cards.length > 0}
       <div class="section-label">LEARNING CARDS</div>
-      <div class="card-list" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 1200ms">
+      <div class="card-list">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
           {@const shopCardSynergy = item.card.mechanicId ? getSynergyLabel(item.card.mechanicId, deckMechanics) : null}
@@ -580,7 +578,7 @@
 
     {#if shopInventory.removalCost != null}
       <div class="section-label">SERVICES</div>
-      <div class="services-row" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 1600ms">
+      <div class="services-row">
         <!-- Card Removal -->
         <article class="service-card service-removal">
           <div class="service-icon">🔥</div>
@@ -625,7 +623,7 @@
 
   {#if cards.length > 0}
     <div class="section-label">YOUR DECK</div>
-    <div class="card-list" class:entrance-stagger={!entranceComplete} style="--stagger-delay: 1800ms">
+    <div class="card-list">
       {#each cards as card (card.id)}
         <article
           class="card-item"
@@ -740,7 +738,7 @@
         {:else}
           <div class="haggle-fail">Wrong! Price marked up 30%: {penaltyPrice}g</div>
           {#if quizQuestion}
-            <div class="modal-note">Answer: {quizQuestion.correctAnswer}</div>
+            <div class="modal-note">Answer: {displayAnswer(quizQuestion.correctAnswer)}</div>
           {/if}
           <div class="modal-note">Returning to shop…</div>
         {/if}
@@ -819,7 +817,22 @@
     depthUrl={depthUrl}
     type="enter"
     onComplete={() => { showRoomTransition = false }}
-      persist
+    onSettle={() => {
+      tick().then(() => {
+        if (!overlayEl) return
+        staggerPopIn({
+          container: overlayEl,
+          elements: [
+            '.shop-hud',
+            '.section-label',
+            '.card-list',
+            '.services-row',
+          ],
+          totalDuration: 2800,
+        })
+      })
+    }}
+    persist
   />
 {/if}
 
@@ -869,8 +882,8 @@
     font-size: calc(20px * var(--text-scale, 1));
     cursor: pointer;
     padding: calc(8px * var(--layout-scale, 1));
-    min-width: calc(36px * var(--layout-scale, 1));
-    min-height: calc(36px * var(--layout-scale, 1));
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -971,6 +984,9 @@
   .service-transform {
     border: 1px solid #D85A30;
     background: rgba(216, 90, 48, 0.05);
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
   }
 
   .service-icon {
@@ -1567,19 +1583,6 @@
     color: #94a3b8;
     font-style: italic;
     line-height: 1.4;
-  }
-
-  /* === Entrance stagger animation (P3-B) === */
-  .entrance-stagger {
-    opacity: 0;
-    transform: translateY(calc(20px * var(--layout-scale, 1)));
-    animation: slide-up-in 400ms ease-out forwards;
-    animation-delay: var(--stagger-delay, 0ms);
-  }
-
-  @keyframes slide-up-in {
-    from { opacity: 0; transform: translateY(calc(20px * var(--layout-scale, 1))); }
-    to { opacity: 1; transform: translateY(0); }
   }
 
   /* === Sell tear animation (P3-C) === */

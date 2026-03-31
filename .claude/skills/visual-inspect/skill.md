@@ -35,9 +35,12 @@ const { chromium } = require('playwright');
   await page.evaluate(() => window.__rrScenario?.load('combat-basic'));
   await page.waitForTimeout(5000);
 
-  // Take composite screenshot (Phaser canvas + Svelte DOM via html2canvas)
+  // Visual: screenshot + layout dump (ALWAYS use both)
   const path = await page.evaluate(() => window.__rrScreenshotFile?.());
-  console.log('Screenshot:', path);
+  console.log('Screenshot:', path);  // then Read("/tmp/rr-screenshot.jpg") to view
+
+  const layout = await page.evaluate(() => window.__rrLayoutDump?.());
+  console.log('Layout dump:', layout);  // exact pixel coordinates of ALL Phaser + DOM elements
 
   // Get DOM audit data
   const audit = await page.evaluate(() => { /* discovery script */ });
@@ -57,6 +60,7 @@ If `mcp__playwright__*` tools are loaded, they can be used instead of the script
 3. Wait 5 seconds
 4. `browser_evaluate(() => window.__rrScreenshotFile())` -> saves to `/tmp/rr-screenshot.jpg`
 5. `Read("/tmp/rr-screenshot.jpg")` to view
+5b. `browser_evaluate(() => window.__rrLayoutDump())` -> returns exact pixel coordinates of ALL Phaser + DOM elements (ALWAYS run alongside screenshot)
 6. `mcp__playwright__browser_snapshot` for DOM state (supplementary)
 
 ### CRITICAL: Fix Tools, Never Fallback
@@ -227,9 +231,36 @@ Use `__rrScenario.listMysteryEvents()` for all valid event IDs.
 
 **Domains**: `general_knowledge`, `natural_sciences`, `history`, `geography`, `animals_wildlife`, `space_astronomy`, `food`, `mythology`
 
+## State Spawning (Instant Scenario Setup — PREFERRED METHOD)
+
+Use `__rrScenario.spawn()` for precise state control without menu navigation:
+
+```javascript
+// Spawn with custom overrides
+await page.evaluate(() => __rrScenario.spawn({
+  screen: 'combat',
+  enemy: 'algorithm',
+  playerHp: 30,
+  hand: ['heavy_strike', 'block', 'lifetap'],
+  relics: ['whetstone'],
+  turnOverrides: { chainMultiplier: 2.5, isSurge: true }
+}));
+
+// Get auto-generated test conditions for any element
+const recipe = await page.evaluate(() => __rrScenario.recipes('phoenix_feather'));
+// Returns optimal config for testing that relic
+await page.evaluate((r) => __rrScenario.spawn(r.config), recipe);
+
+// Test a status effect with ideal setup
+const poisonRecipe = await page.evaluate(() => __rrScenario.recipes('poison'));
+await page.evaluate((r) => __rrScenario.spawn(r.config), poisonRecipe);
+```
+
+`spawn()` replaces menu navigation — it's faster, more reliable, and lets you test specific states that are hard to reach through normal gameplay.
+
 ## Mid-Combat State Overrides
 
-After loading a combat scenario, use these to tweak state live:
+After loading a scenario, use these to tweak state live:
 
 ```javascript
 await page.evaluate(() => __rrScenario.setPlayerHp(50, 100));
@@ -270,6 +301,7 @@ await page.evaluate(() => {
 3. browser_evaluate -> __rrScenario.loadCustom({ screen: 'combat', enemy: 'the_archivist', playerHp: 30, hand: ['heavy_strike', 'block', 'lifetap'], relics: ['whetstone'] })
 4. wait 500ms
 5. browser_evaluate(() => window.__rrScreenshotFile()) -> saves to /tmp/rr-screenshot.jpg (Phaser + DOM composite). Use Read("/tmp/rr-screenshot.jpg") to view.
+5b. browser_evaluate(() => window.__rrLayoutDump()) -> returns exact pixel coordinates of ALL Phaser + DOM elements (ALWAYS run alongside screenshot)
 6. browser_snapshot -> check DOM state (supplementary)
 7. browser_console_messages -> check errors
 8. If issues found -> fix code -> repeat from step 3
@@ -408,6 +440,15 @@ After evaluation, your report must include:
 
 - ALWAYS use this skill for visual verification -- never click through menus
 - ALWAYS disable animations before screenshots
+- ALWAYS take BOTH screenshot AND layout dump — never one without the other:
+  - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` → saves to `/tmp/rr-screenshot.jpg`, then `Read()` to view
+  - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` → returns text with exact pixel coordinates of ALL Phaser + DOM elements
 - ALWAYS check console for errors after loading a scenario
 - For Phaser canvas content, use `browser_evaluate` to check scene state when screenshots aren't enough
 - After ANY code change, reload the page (navigate again) before loading a new scenario
+
+### Registry Update (AUTO)
+After completing visual inspection, update the registry:
+```bash
+npx tsx scripts/registry/updater.ts --ids "{comma-separated inspected element IDs}" --type visualDate
+```

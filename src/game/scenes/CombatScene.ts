@@ -3,6 +3,7 @@ import { isTurboMode } from '../../utils/turboMode'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
 import { CombatAtmosphereSystem } from '../systems/CombatAtmosphereSystem'
+import { DepthLightingSystem } from '../systems/DepthLightingSystem'
 import { getAtmosphereConfig, type AtmosphereConfig } from '../../data/roomAtmosphere'
 import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
 import { WeaponAnimationSystem } from '../systems/WeaponAnimationSystem'
@@ -219,6 +220,7 @@ export class CombatScene extends Phaser.Scene {
 
   // ── VFX systems ────────────────────────────────────
   private atmosphereSystem!: CombatAtmosphereSystem
+  private depthLightingSystem!: DepthLightingSystem
   private statusEffectVisuals!: StatusEffectVisualSystem
   private weaponAnimations!: WeaponAnimationSystem
   public screenShake!: ScreenShakeSystem
@@ -328,6 +330,7 @@ export class CombatScene extends Phaser.Scene {
           x - barW / 2, hpY - barH / 2,
           barW, barH, 6
         )
+        this.enemyHpBarBg.setData('drawnBounds', { x: x - barW / 2, y: hpY - barH / 2, w: barW, h: barH })
 
         // Redraw HP bar fill at new position (uses quizEnemyScaleOverride internally)
         this.refreshEnemyHpBar(false)
@@ -417,6 +420,7 @@ export class CombatScene extends Phaser.Scene {
       enemyHpBarCenterX - scaledEnemyHpBarW / 2, enemyHpY - scaledEnemyHpBarH / 2,
       scaledEnemyHpBarW, scaledEnemyHpBarH, 6
     )
+    this.enemyHpBarBg.setData('drawnBounds', { x: enemyHpBarCenterX - scaledEnemyHpBarW / 2, y: enemyHpY - scaledEnemyHpBarH / 2, w: scaledEnemyHpBarW, h: scaledEnemyHpBarH })
     this.enemyHpText.setPosition(enemyHpBarCenterX, enemyHpY)
     this.enemyBlockIcon.setPosition(
       enemyHpBarCenterX - scaledEnemyHpBarW / 2 - Math.round(20 * this.scaleFactor), enemyHpY
@@ -458,6 +462,7 @@ export class CombatScene extends Phaser.Scene {
       barX - scaledPlayerHpBarWidth / 2, barTop,
       scaledPlayerHpBarWidth, this.playerBarMaxH, 8
     )
+    this.playerHpBarBg.setData('drawnBounds', { x: barX - scaledPlayerHpBarWidth / 2, y: barTop, w: scaledPlayerHpBarWidth, h: this.playerBarMaxH })
     this.playerHpCurrentText.setPosition(barX, barTop - Math.round(22 * this.scaleFactor))
     this.playerHpSlashText.setPosition(barX, barTop - Math.round(12 * this.scaleFactor))
     this.playerHpMaxText.setPosition(barX, barTop - Math.round(2 * this.scaleFactor))
@@ -657,6 +662,7 @@ export class CombatScene extends Phaser.Scene {
       w / 2 - scaledEnemyHpBarW / 2, enemyHpY - scaledEnemyHpBarH / 2,
       scaledEnemyHpBarW, scaledEnemyHpBarH, 6
     )
+    this.enemyHpBarBg.setData('drawnBounds', { x: w / 2 - scaledEnemyHpBarW / 2, y: enemyHpY - scaledEnemyHpBarH / 2, w: scaledEnemyHpBarW, h: scaledEnemyHpBarH })
 
     this.enemyHpBarFill = this.add.graphics().setDepth(11)
     this.enemyHpBarFill.fillStyle(COLOR_HP_RED, 1)
@@ -664,6 +670,7 @@ export class CombatScene extends Phaser.Scene {
       w / 2 - scaledEnemyHpBarW / 2, enemyHpY - scaledEnemyHpBarH / 2,
       scaledEnemyHpBarW, scaledEnemyHpBarH, 6
     )
+    this.enemyHpBarFill.setData('drawnBounds', { x: w / 2 - scaledEnemyHpBarW / 2, y: enemyHpY - scaledEnemyHpBarH / 2, w: scaledEnemyHpBarW, h: scaledEnemyHpBarH })
 
     this.enemyHpText = this.add.text(w / 2, enemyHpY, '', {
       fontFamily: GAME_FONT,
@@ -722,6 +729,7 @@ export class CombatScene extends Phaser.Scene {
       barX - scaledPlayerHpBarWidth / 2, barTop,
       scaledPlayerHpBarWidth, this.playerBarMaxH, 8
     )
+    this.playerHpBarBg.setData('drawnBounds', { x: barX - scaledPlayerHpBarWidth / 2, y: barTop, w: scaledPlayerHpBarWidth, h: this.playerBarMaxH })
 
     this.playerHpBarFill = this.add.graphics().setDepth(8)
     this.playerHpBarFill.fillStyle(COLOR_HP_BLUE, 1)
@@ -729,6 +737,7 @@ export class CombatScene extends Phaser.Scene {
       barX - scaledPlayerHpBarWidth / 2, barTop,
       scaledPlayerHpBarWidth, this.playerBarMaxH, 8
     )
+    this.playerHpBarFill.setData('drawnBounds', { x: barX - scaledPlayerHpBarWidth / 2, y: barTop, w: scaledPlayerHpBarWidth, h: this.playerBarMaxH })
 
     const initialHpRatio = this.currentPlayerMaxHP > 0 ? this.currentPlayerHP / this.currentPlayerMaxHP : 0
     const hpColorCss = colorToCssHex(playerHpColor(initialHpRatio))
@@ -840,6 +849,9 @@ export class CombatScene extends Phaser.Scene {
     // ── Combat atmosphere system ────────────────────
     this.atmosphereSystem = new CombatAtmosphereSystem(this)
 
+    // ── Depth-based background lighting ───────────
+    this.depthLightingSystem = new DepthLightingSystem(this)
+
     // ── Status effect visual system ─────────────────
     this.statusEffectVisuals = new StatusEffectVisualSystem(this)
 
@@ -868,8 +880,9 @@ export class CombatScene extends Phaser.Scene {
   // ═════════════════════════════════════════════════════════
 
   /** Called every frame by Phaser. Drives per-frame systems. */
-  update(_time: number, delta: number): void {
+  update(time: number, delta: number): void {
     this.screenShake?.update(delta)
+    this.depthLightingSystem?.update(time)
   }
 
   // ═════════════════════════════════════════════════════════
@@ -949,6 +962,10 @@ export class CombatScene extends Phaser.Scene {
     // Sprite tinting and AO disabled until Light2D (AR-219) adds point lights.
     // Without light sources, multiplicative tint + AO just darkens everything.
     this.applyColorGrading(atmConfig)
+
+    // Apply depth-based lighting parameters from the atmosphere config
+    this.depthLightingSystem.setEnemyContext(this.currentEnemyId, this.currentFloor)
+    this.depthLightingSystem.applyAtmosphere(atmConfig)
   }
 
   /** Update enemy HP (optionally animate the bar). */
@@ -1103,18 +1120,7 @@ export class CombatScene extends Phaser.Scene {
   setRelics(relics: Array<{ domain: string; label: string }>): void {
     if (!this.sceneReady) return
     this.relicContainer.removeAll(true)
-    const spacing = 36
-    const startX = -((relics.length - 1) * spacing) / 2
-    relics.forEach((relic, i) => {
-      const bg = this.add.rectangle(startX + i * spacing, 0, 28, 28, 0x444466, 0.8)
-      const txt = this.add.text(startX + i * spacing, 0, relic.label.charAt(0).toUpperCase(), {
-        fontFamily: GAME_FONT,
-        fontSize: '14px',
-        color: '#ccccff',
-        align: 'center',
-      }).setOrigin(0.5, 0.5)
-      this.relicContainer.add([bg, txt])
-    })
+    // Relics are displayed by the DOM InRunTopBar — no Phaser rendering needed
   }
 
   /**
@@ -1164,6 +1170,7 @@ export class CombatScene extends Phaser.Scene {
 
       return new Promise<void>((resolve) => {
         this.load.image(bgKey, cleanPath)
+        this.depthLightingSystem.queueDepthMapLoad(enemyId, bgKey)
         this.load.once('complete', () => {
           if (hasTexture(this, bgKey)) {
             this._swapBackground(bgKey)
@@ -1218,11 +1225,13 @@ export class CombatScene extends Phaser.Scene {
     const w = this.scale.width
     const h = this.scale.height
 
-    // Cover-scale: image fills entire viewport without gaps (may crop edges)
+    // Cover-scale: image fills entire viewport without gaps (may crop edges).
+    // Scale up by 1% extra to guarantee full coverage — prevents sub-pixel
+    // gaps from PostFX FBO rounding, breathing displacement, or resize timing.
     const tex = this.textures.get(bgKey).getSourceImage()
     const imgW = (tex as HTMLImageElement).naturalWidth || (tex as HTMLCanvasElement).width || w
     const imgH = (tex as HTMLImageElement).naturalHeight || (tex as HTMLCanvasElement).height || h
-    const scale = Math.max(w / imgW, h / imgH)
+    const scale = Math.max(w / imgW, h / imgH) * 1.01
     const dispW = imgW * scale
     const dispH = imgH * scale
 
@@ -1239,6 +1248,10 @@ export class CombatScene extends Phaser.Scene {
         .setDepth(0)
     }
 
+    // Attach depth-based lighting shader to the background
+    if (this.combatBackground instanceof Phaser.GameObjects.Image) {
+      this.depthLightingSystem.attachToBackground(this.combatBackground)
+    }
   }
 
   /**
@@ -1655,12 +1668,14 @@ export class CombatScene extends Phaser.Scene {
       startX, enemyHpY - scaledH / 2,
       damageW, scaledH, 6
     )
+    this.damagePreviewGfx.setData('drawnBounds', { x: startX, y: enemyHpY - scaledH / 2, w: damageW, h: scaledH })
   }
 
   /** Hide damage preview on enemy HP bar. */
   hideDamagePreview(): void {
     if (!this.sceneReady) return
     this.damagePreviewGfx.clear()
+    this.damagePreviewGfx.setData('drawnBounds', null)
   }
 
   /**
@@ -1797,8 +1812,25 @@ export class CombatScene extends Phaser.Scene {
     const isBoss = this.currentEnemyCategory === 'boss'
     const fadeDuration = isBoss ? 560 : 380
 
-    // Delegate sprite entry animation to EnemySpriteSystem
-    this.enemySpriteSystem.playEntry(isBoss)
+    // Signal Svelte overlay to start HUD pop-in sequence
+    window.dispatchEvent(new Event('rr:combat-entry'))
+
+    // Delay enemy sprite entry so it appears AFTER HUD elements pop in
+    this.time.delayedCall(1800, () => {
+      this.enemySpriteSystem.playEntry(isBoss)
+      if (isBoss && !this.reduceMotion) {
+        this.screenShake.trigger('medium')
+        const cam = this.cameras.main
+        const baseZoom = cam.zoom
+        this.tweens.add({
+          targets: cam,
+          zoom: baseZoom * 1.045,
+          duration: 190,
+          yoyo: true,
+          ease: 'Sine.easeInOut',
+        })
+      }
+    })
 
     this.tweens.add({
       targets: this.entryFadeRect,
@@ -1806,19 +1838,6 @@ export class CombatScene extends Phaser.Scene {
       duration: fadeDuration,
       ease: 'Sine.easeOut',
     })
-
-    if (isBoss && !this.reduceMotion) {
-      this.screenShake.trigger('medium')
-      const cam = this.cameras.main
-      const baseZoom = cam.zoom
-      this.tweens.add({
-        targets: cam,
-        zoom: baseZoom * 1.045,
-        duration: 190,
-        yoyo: true,
-        ease: 'Sine.easeInOut',
-      })
-    }
   }
 
   /** Build floor counter label. */
@@ -1938,6 +1957,7 @@ export class CombatScene extends Phaser.Scene {
     // Bottom shadow (3D bevel)
     this.enemyHpBarFill.fillStyle(0x000000, 0.3)
     this.enemyHpBarFill.fillRect(x + 2, y + scaledH - 3, Math.max(0, targetW - 4), 2)
+    this.enemyHpBarFill.setData('drawnBounds', { x, y, w: scaledW, h: scaledH })
 
     const blockPrefix = this.currentEnemyBlock > 0 ? `(${this.currentEnemyBlock}) ` : ''
     this.enemyHpText.setText(`${blockPrefix}${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)
@@ -1969,8 +1989,10 @@ export class CombatScene extends Phaser.Scene {
         hpCenterX - scaledW / 2, enemyHpY - scaledH / 2,
         targetW, scaledH, 6
       )
+      this.enemyBlockBarFill.setData('drawnBounds', { x: hpCenterX - scaledW / 2, y: enemyHpY - scaledH / 2, w: targetW, h: scaledH })
     } else {
       this.enemyBlockBarFill.clear()
+      this.enemyBlockBarFill.setData('drawnBounds', null)
     }
   }
 
@@ -2018,6 +2040,7 @@ export class CombatScene extends Phaser.Scene {
         barX - scaledBarW / 2, barBottom - overshootH,
         scaledBarW, overshootH, 8
       )
+      this.playerHpBarFill.setData('drawnBounds', { x: barX - scaledBarW / 2, y: barBottom - overshootH, w: scaledBarW, h: overshootH })
 
       // Brief green flash at edges
       this.pulseEdgeGlow(COLOR_HP_BLUE, 0.15, 200)
@@ -2030,6 +2053,7 @@ export class CombatScene extends Phaser.Scene {
           barX - scaledBarW / 2, barBottom - targetH,
           scaledBarW, targetH, 8
         )
+        this.playerHpBarFill.setData('drawnBounds', { x: barX - scaledBarW / 2, y: barBottom - targetH, w: scaledBarW, h: targetH })
       })
 
       this.setPlayerHpLabel(colorCss)
@@ -2062,6 +2086,7 @@ export class CombatScene extends Phaser.Scene {
       barX - scaledBarW / 2, barBottom - targetH,
       scaledBarW, targetH, 8
     )
+    this.playerHpBarFill.setData('drawnBounds', { x: barX - scaledBarW / 2, y: barBottom - targetH, w: scaledBarW, h: targetH })
 
     this.setPlayerHpLabel(colorCss)
 
@@ -2136,6 +2161,7 @@ export class CombatScene extends Phaser.Scene {
     this.isCharging = false
     this.enemySpriteSystem?.destroy()
     this.atmosphereSystem?.stop()
+    this.depthLightingSystem?.stop()
     this.statusEffectVisuals?.destroy()
     this.weaponAnimations?.destroy()
     const cam = this.cameras.main

@@ -29,10 +29,39 @@ Run the standard verification gate for any code change.
 
 5. If all pass, report: "✓ typecheck, ✓ build, ✓ tests (N passed)"
 
-## Optional: Visual Check
+## Visual Verification via Spawn
+
+When the verification includes visual checks, use `__rrScenario.spawn()` to quickly set up specific states:
+
+```javascript
+// Quick visual check of combat
+await page.evaluate(() => __rrScenario.spawn({ screen: 'combat', enemy: 'page_flutter' }));
+await page.evaluate(() => window.__rrScreenshotFile());
+
+// Test a specific element
+await page.evaluate(() => __rrScenario.spawn(__rrScenario.recipes('soul_jar').config));
+```
+
+Use `spawn()` instead of navigating through menus — it's faster and more reliable.
+
+## Optional: Full Visual Check
 If the user adds `--visual` or if the change was UI-related:
 1. Ensure dev server is running (`npm run dev`)
 2. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
-3. Take screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs).
+3. Take screenshot AND layout dump (ALWAYS use both):
+   - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs).
+   - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements (structured coordinate data to complement the visual)
 4. Check console: `mcp__playwright__browser_console_messages`
 5. Report any visual issues or console errors.
+
+### Registry Update (AUTO)
+If all unit tests pass, stamp affected elements:
+```bash
+npx tsx scripts/registry/updater.ts --ids "{comma-separated element IDs with passing tests}" --type mechanicDate
+```
+If running full test suite (`npx vitest run`), stamp all:
+```bash
+npx tsx scripts/registry/updater.ts --table cards --type mechanicDate
+npx tsx scripts/registry/updater.ts --table relics --type mechanicDate
+npx tsx scripts/registry/updater.ts --table enemies --type mechanicDate
+```

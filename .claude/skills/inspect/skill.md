@@ -237,6 +237,29 @@ Output a single report that merges all findings:
 
 ---
 
+## Element-Specific Testing via Spawn
+
+When testing a specific game element (relic, enemy, mechanic, status effect), use the recipe system to spawn into optimal test conditions:
+
+```javascript
+// Auto-generated test scenario for any element
+const relicRecipe = await page.evaluate(() => __rrScenario.recipes('soul_jar'));
+await page.evaluate((r) => __rrScenario.spawn(r.config), relicRecipe);
+
+const enemyRecipe = await page.evaluate(() => __rrScenario.recipes('algorithm'));
+await page.evaluate((r) => __rrScenario.spawn(r.config), enemyRecipe);
+
+const poisonRecipe = await page.evaluate(() => __rrScenario.recipes('poison'));
+await page.evaluate((r) => __rrScenario.spawn(r.config), poisonRecipe);
+
+const cardRecipe = await page.evaluate(() => __rrScenario.recipes('heavy_strike'));
+await page.evaluate((r) => __rrScenario.spawn(r.config), cardRecipe);
+```
+
+The spawn system is the canonical way to set up test states — it replaces manual menu navigation and ensures reproducible test conditions across all testing methods.
+
+---
+
 ## MANDATORY: Visual Occlusion Check
 
 **THIS CHECK EXISTS BECAUSE WE MISSED EVERY CARD HAVING NO ART VISIBLE.**
@@ -287,7 +310,10 @@ function checkOcclusion(element) {
 }
 ```
 
-**For screenshots**, ALWAYS use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures both Phaser canvas and DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits) or `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout). The `elementFromPoint()` occlusion check above runs via `browser_evaluate` and catches occlusion as a complementary check.
+**For screenshots**, ALWAYS use BOTH of the following — they are required together, not interchangeable:
+- Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures both Phaser canvas and DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits) or `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout).
+- Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements (structured coordinate data to complement the visual screenshot).
+The `elementFromPoint()` occlusion check above runs via `browser_evaluate` and catches occlusion as a complementary check.
 
 **This check is NON-NEGOTIABLE. If a visual inspection worker skips it, the inspection is INCOMPLETE and MUST be flagged as such.**
 
@@ -376,3 +402,16 @@ function checkOcclusion(element) {
 5. **No testing gap persists — the system improves itself**
 
 This is not a suggestion. This is how testing works in this project.
+
+### Phase: Registry Update (AUTO)
+After all testing methods complete, stamp the registry for all inspected elements:
+```bash
+npx tsx scripts/registry/updater.ts --ids "{comma-separated IDs}" --type mechanicDate
+npx tsx scripts/registry/updater.ts --ids "{comma-separated IDs}" --type visualDate
+npx tsx scripts/registry/updater.ts --ids "{comma-separated IDs}" --type uxDate
+npx tsx scripts/registry/updater.ts --ids "{comma-separated IDs}" --type balanceDate
+npx tsx scripts/registry/updater.ts --ids "{comma-separated IDs}" --type strategyDate
+npx tsx scripts/registry/updater.ts --ids "{comma-separated IDs}" --type neuralDate
+npx tsx scripts/registry/updater.ts --ids "{comma-separated IDs}" --type playtestDate
+```
+Only stamp the date fields for methods that actually ran successfully. Use `--notes` to attach key findings.

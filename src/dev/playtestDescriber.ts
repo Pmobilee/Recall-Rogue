@@ -104,7 +104,7 @@ function collectActions(): string[] {
  * Covers all major screens with meaningful context for AI decision-making.
  */
 export function look(): string {
-  const screen = readStore<string>('terra:currentScreen') ?? 'unknown';
+  const screen = readStore<string>('rr:currentScreen') ?? 'unknown';
   const lines: string[] = [];
 
   const hud = getHUDText();
@@ -114,7 +114,7 @@ export function look(): string {
   switch (screen) {
     case 'hub':
     case 'base': {
-      const save = readStore<Record<string, unknown>>('terra:playerSave') as Record<string, unknown> | undefined;
+      const save = readStore<Record<string, unknown>>('rr:playerSave') as Record<string, unknown> | undefined;
       const currency = (save as any)?.minerals?.greyMatter ?? '?';
       const streak = (save as any)?.stats?.currentStreak ?? 0;
       const runsCompleted = (save as any)?.stats?.totalRunsCompleted ?? 0;
@@ -139,8 +139,8 @@ export function look(): string {
     }
 
     case 'combat': {
-      const turnState = readStore<any>('terra:activeTurnState');
-      const runState = readStore<any>('terra:activeRunState');
+      const turnState = readStore<any>('rr:activeTurnState');
+      const runState = readStore<any>('rr:activeRunState');
       const playerHp = turnState?.playerHP ?? '?';
       const playerMaxHp = turnState?.playerState?.maxHP ?? '?';
       const playerBlock = turnState?.playerState?.shield ?? 0;
@@ -229,7 +229,7 @@ export function look(): string {
     }
 
     case 'dungeonMap': {
-      const rooms = readStore<any>('terra:activeRoomOptions');
+      const rooms = readStore<any>('rr:activeRoomOptions');
       lines.push('SCREEN: dungeonMap');
       if (Array.isArray(rooms)) {
         lines.push('DOORS:');
@@ -242,7 +242,7 @@ export function look(): string {
     }
 
     case 'retreatOrDelve': {
-      const runState = readStore<any>('terra:activeRunState');
+      const runState = readStore<any>('rr:activeRunState');
       const currency = runState?.currency ?? '?';
       const segment = runState?.currentSegment ?? '?';
       const hp = runState?.playerHp ?? '?';
@@ -254,7 +254,7 @@ export function look(): string {
     }
 
     case 'shopRoom': {
-      const runState = readStore<any>('terra:activeRunState');
+      const runState = readStore<any>('rr:activeRunState');
       const gold = runState?.currency ?? '?';
       lines.push('SCREEN: shopRoom');
       lines.push(`GOLD: ${gold}`);
@@ -299,7 +299,7 @@ export function look(): string {
     }
 
     case 'mysteryEvent': {
-      const event = readStore<any>('terra:activeMysteryEvent');
+      const event = readStore<any>('rr:activeMysteryEvent');
       lines.push('SCREEN: mysteryEvent');
       if (event) {
         lines.push(`EVENT: ${event.title ?? event.id ?? 'Unknown'}`);
@@ -330,7 +330,7 @@ export function look(): string {
     }
 
     case 'runEnd': {
-      const runState = readStore<any>('terra:activeRunState');
+      const runState = readStore<any>('rr:activeRunState');
       lines.push('SCREEN: runEnd');
       if (runState) {
         lines.push(`FLOOR REACHED: ${runState.currentFloor ?? '?'}`);
@@ -418,7 +418,7 @@ export function look(): string {
  * data-testid, key CSS classes, and raw text nodes.
  */
 export function getAllText(): AllTextResult {
-  const screen = readStore<string>('terra:currentScreen') ?? 'unknown';
+  const screen = readStore<string>('rr:currentScreen') ?? 'unknown';
   const byTestId: Record<string, string> = {};
   const byClass: Record<string, string> = {};
   const raw: string[] = [];

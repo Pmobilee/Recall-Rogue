@@ -35,6 +35,39 @@ The principles are drawn from Nielsen, Pinelle (CHI 2008), PLAY (Desurvire & Wib
 
 ---
 
+## Instant State Setup via Spawn (PREFERRED)
+
+Use `__rrScenario.spawn()` to jump directly to any screen state with full control:
+
+```javascript
+// Jump to combat with specific conditions
+await page.evaluate(() => __rrScenario.spawn({
+  screen: 'combat',
+  enemy: 'algorithm',
+  playerHp: 50,
+  hand: ['heavy_strike', 'strike', 'block', 'expose', 'lifetap'],
+  relics: ['whetstone', 'iron_shield'],
+  turnOverrides: {
+    chainMultiplier: 2.0,
+    playerState: { statusEffects: [{ type: 'poison', value: 3, turnsRemaining: 2 }] }
+  }
+}));
+
+// Test a specific element with auto-generated optimal conditions
+const recipe = await page.evaluate(() => __rrScenario.recipes('soul_jar'));
+await page.evaluate((r) => __rrScenario.spawn(r.config), recipe);
+
+// Adjust mid-review without re-bootstrap
+await page.evaluate(() => __rrScenario.patch({
+  turn: { apCurrent: 0 },  // Test "no AP left" UX
+  run: { currency: 0 }     // Test "broke" shop UX
+}));
+```
+
+This replaces manual menu navigation. Use `spawn()` for ALL screen setup during UX reviews.
+
+---
+
 ## Execution Protocol
 
 ### Phase 1: DOM Scan (Programmatic — via browser_evaluate)
@@ -233,7 +266,10 @@ Disable animations, then capture:
 ```javascript
 document.documentElement.setAttribute('data-pw-animations', 'disabled');
 ```
-Take screenshot via `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures both Phaser canvas + DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently). Use `browser_snapshot` for supplementary DOM state.
+Take screenshot AND layout dump (ALWAYS use both — they complement each other):
+- Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures both Phaser canvas + DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently).
+- Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements (use for structured coordinate data to supplement Phase 1 DOM measurements).
+Use `browser_snapshot` for supplementary DOM state.
 
 ### Phase 3: Evaluate
 
@@ -746,3 +782,9 @@ These principles are derived from:
 - Hearthstone mobile adaptation (Blizzard GDC talks)
 - Steven Hoober thumb zone research (2013, 1333 participants)
 - Fitts's Law applied to game interfaces
+
+### Registry Update (AUTO)
+After completing UX review, update the registry:
+```bash
+npx tsx scripts/registry/updater.ts --ids "{comma-separated reviewed screen/element IDs}" --type uxDate
+```

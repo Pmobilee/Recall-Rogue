@@ -7,6 +7,7 @@ import BootAnimScene from './scenes/BootAnimScene'
 import { BootScene } from './scenes/BootScene'
 import { CombatScene } from './scenes/CombatScene'
 import { RewardRoomScene } from './scenes/RewardRoomScene'
+import { DepthLightingFX } from './shaders/DepthLightingFX'
 import { layoutMode, getCanvasForMode } from '../stores/layoutStore'
 import { get } from 'svelte/store'
 import type { LayoutMode } from '../stores/layoutStore'
@@ -59,6 +60,8 @@ export class CardGameManager {
       input: {
         activePointers: 1,
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      pipeline: { DepthLightingFX } as any,
       // Transparent during boot animation so HubScreen renders behind Phaser canvas
       transparent: startAnimation,
     })
@@ -156,6 +159,11 @@ export class CardGameManager {
     const scene = this.game.scene.getScene('RewardRoom')
     if (scene && scene.scene.isActive()) {
       this.game.scene.stop('RewardRoom')
+    }
+    // Ensure CombatScene renders above any stopped scene remnants
+    const combat = this.game.scene.getScene('CombatScene')
+    if (combat && combat.scene.isActive()) {
+      this.game.scene.bringToTop('CombatScene')
     }
   }
 

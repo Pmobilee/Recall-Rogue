@@ -195,7 +195,8 @@ VERIFY Progress:
   - [ ] Headless sim results compared to baseline
   - [ ] Win rates / economy metrics acceptable
 - [ ] Visual inspection of EVERY affected screen:
-  - [ ] Screenshot taken
+  - [ ] Screenshot taken (`browser_evaluate(() => window.__rrScreenshotFile())`)
+  - [ ] Layout dump taken (`browser_evaluate(() => window.__rrLayoutDump())`) — REQUIRED alongside screenshot
   - [ ] Console checked for errors
   - [ ] Feature works as user would experience it
 - [ ] Testing Plan items from AR all pass:
@@ -228,10 +229,11 @@ Run the sim BEFORE making changes to get a baseline, then AFTER to compare. Docu
 ```
 1. mcp__playwright__browser_navigate → http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial
 2. browser_evaluate(() => window.__rrScreenshotFile()) — saves to /tmp/rr-screenshot.jpg, returns path. Use Read("/tmp/rr-screenshot.jpg") to view
-3. mcp__playwright__browser_snapshot
-4. mcp__playwright__browser_console_messages
-5. For Phaser canvas: browser_evaluate(() => window.__rrDebug())
-6. For specific states: browser_evaluate(() => window.__rrScenario.load('scenario-name'))
+3. browser_evaluate(() => window.__rrLayoutDump()) — returns text with exact pixel coordinates of ALL Phaser + DOM elements (ALWAYS run alongside screenshot — required, not optional)
+4. mcp__playwright__browser_snapshot
+5. mcp__playwright__browser_console_messages
+6. For Phaser canvas: browser_evaluate(() => window.__rrDebug())
+7. For specific states: browser_evaluate(() => window.__rrScenario.load('scenario-name'))
 ```
 
 ### If Phase 6 reveals a fundamental flaw:

@@ -306,6 +306,7 @@
     padding: calc(calc(24px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1));
     z-index: 200;
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .back-btn {
@@ -593,7 +594,7 @@
 
   .count {
     color: #93c5fd;
-    font-size: calc(11px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
   }
 
   .filter-error {
@@ -628,6 +629,14 @@
   @media (min-width: 720px) {
     .domain-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: calc(720px * var(--layout-scale, 1));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .domain-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: calc(900px * var(--layout-scale, 1));
     }
   }
 </style>

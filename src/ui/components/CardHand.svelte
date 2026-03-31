@@ -13,6 +13,7 @@
   import { audioManager } from '../../services/audioService'
   import { isFirstChargeFree } from '../../services/discoverySystem'
   import { getMechanicDefinition } from '../../data/mechanics'
+  import { stretchText } from '../utils/stretchText'
   import { CHARGE_CORRECT_MULTIPLIER } from '../../data/balance'
   import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
   import { activeRunState } from '../../services/runStateStore'
@@ -152,8 +153,46 @@
     return -totalWidth / 2 + cardSpacing * index
   }
 
+  /** Landscape fan rotation — scales max angle with card count for natural fan spread */
+  function getLandscapeRotation(index: number, total: number): number {
+    if (total <= 1) return 0
+    const t = (index / (total - 1)) * 2 - 1  // -1 to +1
+    const maxAngle = Math.min(15, 2 + total * 1.3)  // scales with count: 3 cards≈6°, 10 cards≈15°
+    return t * maxAngle
+  }
+
+  /** Landscape arc lift — parabolic, scales arc height with card count */
+  function getLandscapeArcOffset(index: number, total: number): number {
+    if (total <= 1) return 0
+    const t = (index / (total - 1)) * 2 - 1  // -1 to +1
+    const arcHeight = Math.min(50, 5 + total * 4)  // scales with count: 3 cards≈17px, 10 cards≈45px
+    return arcHeight * (1 - t * t)
+  }
+
+  /** Landscape X offset — cards overlap, tighter with more cards, based on card-count-derived overlap fraction */
+  function getLandscapeXOffset(index: number, total: number, cardW: number): number {
+    if (total <= 1) return 0
+    // Spacing as fraction of card width — more cards = tighter packing
+    const overlapFraction = total <= 4 ? 0.72 : total <= 7 ? 0.56 : 0.44
+    const spacing = cardW * overlapFraction
+    const totalWidth = spacing * (total - 1)
+    return -totalWidth / 2 + spacing * index
+  }
+
+  /** Scatter offset — disabled, neighbors stay in place on hover */
+  function getHoverScatterX(_index: number, _hoveredIndex: number | null, _total: number): number {
+    return 0
+  }
+
+  const landscapeCardW = $derived.by(() => {
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 1080
+    return (35 * vh / 100) * 0.88 * handScaleFactor / 1.42
+  })
+
   function effectTextSizeClass(card: Card): string {
-    const desc = getShortCardDescription(card) || ''
+    const parts = getCardDescriptionParts(card)
+    const desc = parts.map(function(p) { return p.value }).join('')
+    if (desc.length > 35) return 'effect-text-xs'
     if (desc.length > 25) return 'effect-text-sm'
     if (desc.length > 15) return 'effect-text-md'
     return ''
@@ -223,14 +262,21 @@
   let hoveredIndex = $state<number | null>(null)
 
   /** AR-220: Rise amount = half the card height, read from CSS var --card-h. Defaults to 100 (half of 200px). */
-  let riseAmount = $state(100)
+  let riseAmount = $state(60)
+  let resolvedCardH = $state(200)
+  let layoutScaleValue = $state(1)
 
   $effect(() => {
     const update = (): void => {
-      const cardH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-h') || '200')
-      riseAmount = Math.round(cardH * 0.5)
+      // Read actual card height from a rendered card element (CSS custom properties return unresolved calc() strings)
+      const cardEl = document.querySelector('.card-landscape') ?? document.querySelector('.card-portrait')
+      const cardH = cardEl ? cardEl.getBoundingClientRect().height : 200
+      riseAmount = Math.round(cardH * 0.45)
+      resolvedCardH = Math.round(cardH)
+      layoutScaleValue = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--layout-scale') || '1')
     }
-    update()
+    // Defer to next frame so cards are rendered
+    requestAnimationFrame(update)
     window.addEventListener('resize', update, { passive: true })
     return () => window.removeEventListener('resize', update)
   })
@@ -759,6 +805,12 @@
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const effectVal = getEffectValue(card, isChargePreview)}
     {@const xOffset = getXOffset(i, cards.length)}
+    {@const lsRotation = getLandscapeRotation(i, cards.length)}
+    {@const lsArcOffset = getLandscapeArcOffset(i, cards.length)}
+    {@const lsXOffset = getLandscapeXOffset(i, cards.length, landscapeCardW)}
+    {@const scatterX = getHoverScatterX(i, hoveredIndex, cards.length)}
+    {@const hoverLiftLs = isHovered ? 60 : 0}
+    {@const hoverScaleLs = isHovered ? 1.15 : 1}
 
     <button
       class="card-in-hand card-landscape"
@@ -785,11 +837,11 @@
       class:card--locked={card.isLocked}
       style="
         {isAnimating ? '' : isDraggingThis
-          ? `transform: translate3d(${cardDragX}px, ${isSelected ? `-${riseAmount}px` : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
-          : `transform: translate3d(0, ${isSelected ? `-${riseAmount}px` : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.05 : 1});`}
+          ? `transform: translate3d(${lsXOffset + cardDragX}px, ${(isSelected ? -riseAmount : -lsArcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});`
+          : `transform: translate3d(${lsXOffset + scatterX}px, ${isSelected ? -riseAmount : -(lsArcOffset + hoverLiftLs)}px, 0) rotate(${isSelected ? 0 : lsRotation}deg) scale(${isSelected ? 1.1 : hoverScaleLs});`}
         animation-delay: {i * 60}ms;
         opacity: {isOther ? 0.35 : 1};
-        z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
+        z-index: {isDraggingThis ? 2000 : isSelected ? 2000 : isHovered ? 2000 : 1000 + i};
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
       "
       data-testid="card-hand-{i}"
@@ -832,9 +884,9 @@
               />
             {/if}
             <!-- Mechanic name overlay -->
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
-            <!-- Card type label overlay -->
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
+            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
+            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
@@ -930,7 +982,7 @@
         ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
-        style="left: {selectedCardCenterX}px; transform: translateX(-50%);"
+        style="left: {selectedCardCenterX}px; transform: translateX(-50%); bottom: {riseAmount + Math.round(resolvedCardH * 0.58) + Math.round(12 * layoutScaleValue)}px;"
       >
         {#if showGuaranteed}
           ✦ GUARANTEED
@@ -1006,8 +1058,9 @@
                 style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
               />
             {/if}
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
+            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
+            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
           </div>
           <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
           <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
@@ -1212,9 +1265,9 @@
               />
             {/if}
             <!-- Mechanic name overlay -->
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
-            <!-- Card type label overlay -->
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
+            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
+            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
@@ -1318,7 +1371,7 @@
         ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
-        style="transform: translate3d({xOffset}px, calc(-{riseAmount}px - var(--card-h) - calc(32px * var(--layout-scale, 1))), 0); width: calc(var(--card-w) * 1.2);"
+        style="transform: translate3d({xOffset}px, {-(riseAmount + Math.round(resolvedCardH * 0.58) + Math.round(12 * layoutScaleValue))}px, 0); width: calc(var(--card-w) * 1.2);"
       >
         CHARGE
         <span class="charge-ap-badge" class:momentum-active={isMomentumMatch && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
@@ -1416,8 +1469,9 @@
                 style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
               />
             {/if}
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
+            <!-- Chain color pill — on top, sized to match frame's card-type cutout -->
+            <div class="frame-text v2-card-type" style="{GUIDE_STYLES.cardTypePill} background-color: {getChainColor(card.chainType)};"></div>
           </div>
           <!-- AP cost OUTSIDE card-v2-frame so it can overflow -->
           <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
@@ -1456,43 +1510,21 @@
        Width derived from height via aspect ratio (1.42 tall : 1 wide → invert).
        --hand-scale defaults to 1 (≤6 cards) and shrinks toward 0.75 for 11+ cards. */
     --hand-scale: 1;
-    --card-h: calc(27vh * 0.92 * var(--hand-scale));
+    --card-h: calc(35vh * 0.88 * var(--hand-scale));
     --card-w: calc(var(--card-h) / 1.42);
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    /* Spec: card hand strip = 27% of viewport height */
-    height: 27vh;
+    /* Spec: card hand strip = 35% of viewport height */
+    height: 35vh;
     z-index: 20;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    gap: calc(8px * var(--hand-scale));
-    padding: 0 calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    /* Arc fan: absolute positioning, not flex */
+    display: block;
+    padding: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
     pointer-events: none;
-    overflow-x: auto;
-    overflow-y: visible;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .card-hand-landscape:has(.card-selected),
-  .card-hand-landscape:has(.drag-ready),
-  .card-hand-landscape:has(.drag-charge-zone) {
     overflow: visible;
-  }
-
-  .card-hand-landscape::-webkit-scrollbar {
-    height: calc(4px * var(--layout-scale, 1));
-  }
-
-  .card-hand-landscape::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: calc(2px * var(--layout-scale, 1));
   }
 
   .hand-overflow-hint {
@@ -1506,12 +1538,6 @@
     pointer-events: none;
   }
 
-  /* AR-91: Override .card-in-hand's position:absolute so flex layout
-     distributes landscape cards correctly in the flex row */
-  .card-hand-landscape .card-landscape {
-    position: relative !important;
-  }
-
   /* AR-94: Selected card rises visually above others in landscape */
   /* AR-220: Remove background container on selected card — card frame provides its own visual bounds */
   .card-hand-landscape .card-landscape.card-selected {
@@ -1522,7 +1548,10 @@
   }
 
   .card-landscape {
-    position: relative;
+    position: absolute;
+    bottom: calc(-0.42 * var(--card-h));
+    left: 50%;
+    margin-left: calc(var(--card-w) / -2);
     width: var(--card-w);
     height: var(--card-h);
     min-width: calc(72px * var(--layout-scale, 1));
@@ -1536,8 +1565,8 @@
     align-items: center;
     padding: 0;
     overflow: visible;
-    /* §7 spec: deselected return = 120ms ease-in; hover = 100ms ease */
-    transition: transform 120ms ease-in, opacity 200ms ease;
+    /* StS-style smooth transitions — 200ms sine ease-out, z-index instant */
+    transition: transform 200ms cubic-bezier(0.22, 0.61, 0.36, 1), opacity 200ms ease, z-index 0s;
     -webkit-tap-highlight-color: transparent;
     touch-action: none;
     font-family: inherit;
@@ -1545,26 +1574,22 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     perspective: 800px;
     will-change: transform, opacity;
-    flex-shrink: 0;
+    /* Center origin — natural scaling, no positional shift on hover */
+    transform-origin: center center;
   }
 
   /* §7 spec: card selected rise = 150ms ease-out */
   .card-landscape.card-selected {
-    transition: transform 150ms ease-out, opacity 200ms ease;
+    transition: transform 150ms ease-out, opacity 200ms ease, z-index 0s;
   }
 
-  /* §9 spec: hover enlarge — 1.05x scale, 100ms ease; only when no card is selected */
-  .card-hand-landscape:not(:has(.card-selected)) .card-landscape:hover:not(.card-dimmed) {
-    z-index: 10;
-  }
+  /* Hover: card rises to full prominence — transform and z-index handled by inline style for StS-style stacking */
 
   .charge-play-btn-landscape {
     position: absolute;
-    /* Position above the risen card: card rises riseAmount px (= var(--card-h) * 0.5) from hand strip.
-       Place button bottom at riseAmount + card height + 8px from the container bottom,
-       which puts it ~8px above the risen card's top edge.
-       AR-220 sub-step 5: left/transform set via inline style to follow selected card's xOffset. */
-    bottom: calc(var(--card-h) * 0.5 + var(--card-h) + calc(44px * var(--layout-scale, 1)));
+    /* bottom is set via inline style using resolved JS values (riseAmount + resolvedCardH + 12*layoutScale)
+       to avoid the CSS var(--card-h) mismatch where root --card-h is empty and resolves to 200px
+       while the hand container's --card-h is ~332px. */
     white-space: nowrap;
     /* §7 spec: charge button appear = 100ms fade-in */
     animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
@@ -1672,6 +1697,11 @@
     overflow: hidden; /* clips art to frame boundaries */
   }
 
+  /* When card is selected/popped, let clicks pass through the frame to the charge button */
+  .card-selected .card-v2-frame {
+    pointer-events: none;
+  }
+
   .frame-layer {
     position: absolute;
     inset: 0;
@@ -1774,40 +1804,24 @@
   }
 
   .v2-mechanic-name {
-    font-family: 'Cinzel', 'Georgia', serif;
+    font-family: 'Kreon', 'Georgia', serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.06);
-    color: #000000;
-    text-transform: capitalize;
+    font-size: 16px;
+    color: #1a0a00;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-shadow:
-      -1px -1px 0 #fff,
-       1px -1px 0 #fff,
-      -1px  1px 0 #fff,
-       1px  1px 0 #fff;
+      0 1px 0 rgba(255,220,180,0.4);
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80%;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
+    overflow: visible;
     text-align: center;
   }
 
   .v2-card-type {
-    display: none; /* removed — no ATTACK/SHIELD/UTILITY labels */
-    font-family: system-ui, -apple-system, sans-serif;
-    font-weight: 700;
-    font-size: calc(var(--card-w) * 0.085);
-    color: #e0e0e0;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    font-size: 0;
+    border-radius: 999px;
+    z-index: 1;
   }
 
   .card-type-icon {
@@ -1816,7 +1830,7 @@
   }
 
   .v2-effect-text {
-    font-family: var(--font-rpg, 'Cinzel', 'Georgia', serif);
+    font-family: 'Kreon', 'Georgia', serif;
     font-size: calc(var(--card-w) * 0.095);
     font-weight: 600;
     color: #ffffff;
@@ -1844,11 +1858,15 @@
     line-height: 1.2;
   }
 
+  .v2-effect-text.effect-text-xs {
+    font-size: calc(var(--card-w) * 0.052);
+    line-height: 1.15;
+  }
+
   .desc-number {
     font-family: inherit;
-    font-weight: 900;
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    font-weight: inherit;
+    color: inherit;
   }
 
   .desc-keyword {

@@ -28,6 +28,9 @@ import { RELIC_BY_ID } from '../data/relics/index';
 import { MECHANIC_BY_ID } from '../data/mechanics';
 import { factsDB } from '../services/factsDB';
 import { markOnboardingComplete, markOnboardingTooltipSeen } from '../services/cardPreferences';
+import { deepMerge, serializeState, deserializeState } from './deepMerge';
+import { generateSchema, formatSchemaForConsole } from './scenarioSchema';
+import { generateRecipes, getRecipe, listRecipes } from './scenarioRecipes';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -96,6 +99,10 @@ export interface ScenarioConfig {
   ascension?: number;
   /** Study quiz: number of questions to generate (default 3). */
   quizQuestionCount?: number;
+  /** Curated deck ID for study quiz scenarios (e.g. 'ancient_rome', 'constellations'). */
+  deckId?: string;
+  /** Sub-deck ID within a curated deck (optional). */
+  subDeckId?: string;
   /** Mastery challenge: question text. */
   masteryChallengeQuestion?: string;
   /** Mastery challenge: correct answer. */
@@ -118,6 +125,17 @@ interface ScenarioResult {
   ok: boolean;
   message: string;
   state?: Record<string, unknown>;
+}
+
+/**
+ * Extended scenario config with deep state overrides.
+ * Backward-compatible: all ScenarioConfig fields remain valid.
+ */
+export interface SpawnConfig extends ScenarioConfig {
+  /** Deep-merged into TurnState after combat/run bootstrap. Any TurnState field is settable. */
+  turnOverrides?: Record<string, unknown>;
+  /** Deep-merged into RunState after run bootstrap. Any RunState field is settable. */
+  runOverrides?: Record<string, unknown>;
 }
 
 // ---------------------------------------------------------------------------
@@ -313,6 +331,108 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     playerMaxHp: 100,
     hand: ['lifetap', 'block', 'strike', 'heavy_strike', 'block'],
   },
+
+  // === Complex scenarios (with state overrides) ===
+  'chain-boss-crisis': {
+    screen: 'combat',
+    enemy: 'algorithm',
+    playerHp: 25,
+    floor: 3,
+    hand: ['strike', 'strike', 'block', 'heavy_strike', 'expose'],
+    relics: ['whetstone', 'resonance_crystal'],
+    turnOverrides: {
+      chainMultiplier: 2.5,
+      chainLength: 4,
+      chainType: 2,
+      apCurrent: 4,
+      apMax: 4,
+      playerState: {
+        statusEffects: [{ type: 'strength', value: 3, turnsRemaining: 99 }],
+      },
+      enemy: {
+        isCharging: true,
+        chargedDamage: 30,
+        statusEffects: [{ type: 'vulnerable', value: 1, turnsRemaining: 2 }],
+      },
+    },
+    runOverrides: {
+      ascensionLevel: 3,
+      encountersWon: 6,
+      bestCombo: 8,
+    },
+  } as SpawnConfig,
+
+  'near-death-poison': {
+    screen: 'combat',
+    enemy: 'page_flutter',
+    playerHp: 3,
+    hand: ['lifetap', 'block', 'strike'],
+    turnOverrides: {
+      playerState: {
+        statusEffects: [{ type: 'poison', value: 5, turnsRemaining: 3 }],
+      },
+      apCurrent: 1,
+    },
+  } as SpawnConfig,
+
+  'inscription-stack': {
+    screen: 'combat',
+    enemy: 'page_flutter',
+    hand: ['strike', 'block', 'multi_hit', 'expose', 'reckless'],
+    turnOverrides: {
+      activeInscriptions: [
+        { mechanicId: 'strike', effectValue: 3, playMode: 'charge_correct' },
+        { mechanicId: 'block', effectValue: 2, playMode: 'charge_correct' },
+      ],
+      encounterTurnNumber: 5,
+    },
+  } as SpawnConfig,
+
+  'surge-chain-combo': {
+    screen: 'combat',
+    enemy: 'thesis_construct',
+    hand: ['strike', 'heavy_strike', 'multi_hit', 'expose', 'block'],
+    relics: ['resonance_crystal'],
+    chainTypes: [0, 0, 0, 0, 1],
+    turnOverrides: {
+      isSurge: true,
+      chainMultiplier: 2.0,
+      chainLength: 3,
+    },
+  } as SpawnConfig,
+
+  'phoenix-last-stand': {
+    screen: 'combat',
+    enemy: 'algorithm',
+    playerHp: 1,
+    hand: ['strike', 'block', 'lifetap', 'heavy_strike', 'block'],
+    relics: ['phoenix_feather'],
+    turnOverrides: {
+      phoenixAutoChargeTurns: 0,
+      phoenixRageTurnsRemaining: 0,
+    },
+    runOverrides: {
+      phoenixFeatherUsed: false,
+    },
+  } as SpawnConfig,
+
+  'ascension-15-elite': {
+    screen: 'combat',
+    enemy: 'final_lesson',
+    playerHp: 60,
+    floor: 8,
+    hand: ['heavy_strike', 'strike', 'block', 'expose', 'lifetap'],
+    relics: ['whetstone', 'iron_shield'],
+    turnOverrides: {
+      ascensionLevel: 15,
+      ascensionEnemyDamageMultiplier: 1.5,
+      ascensionWrongAnswerSelfDamage: 5,
+    },
+    runOverrides: {
+      ascensionLevel: 15,
+    },
+  } as SpawnConfig,
+
   // === Hub scenarios ===
   'hub-endgame': {
     screen: 'hub',
@@ -348,6 +468,46 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   },
   'study-quiz': {
     screen: 'restStudy',
+  },
+  'study-deck-rome': {
+    screen: 'restStudy',
+    deckId: 'ancient_rome',
+  },
+  'study-deck-greece': {
+    screen: 'restStudy',
+    deckId: 'ancient_greece',
+  },
+  'study-deck-paintings': {
+    screen: 'restStudy',
+    deckId: 'famous_paintings',
+  },
+  'study-deck-constellations': {
+    screen: 'restStudy',
+    deckId: 'constellations',
+  },
+  'study-deck-mammals': {
+    screen: 'restStudy',
+    deckId: 'mammals_world',
+  },
+  'study-deck-cuisines': {
+    screen: 'restStudy',
+    deckId: 'world_cuisines',
+  },
+  'study-deck-medieval': {
+    screen: 'restStudy',
+    deckId: 'medieval_world',
+  },
+  'study-deck-inventions': {
+    screen: 'restStudy',
+    deckId: 'famous_inventions',
+  },
+  'study-deck-egypt-myth': {
+    screen: 'restStudy',
+    deckId: 'egyptian_mythology',
+  },
+  'study-deck-anatomy': {
+    screen: 'restStudy',
+    deckId: 'human_anatomy',
   },
   'mastery-challenge': {
     screen: 'masteryChallenge',
@@ -1124,6 +1284,18 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
 
     await bootstrapRun(config);
 
+    // If a deckId was specified, set the run's deckMode so generateStudyQuestions() uses curated deck
+    if (config.deckId) {
+      const run = readStore('rr:activeRunState') as any;
+      if (run) {
+        run.deckMode = {
+          type: 'study' as const,
+          deckId: config.deckId,
+          subDeckId: config.subDeckId,
+        };
+      }
+    }
+
     // Generate study questions and inject via global bridge so CardApp can pick them up
     const { generateStudyQuestions, gameFlowState } = await import('../services/gameFlowController');
     const questions = generateStudyQuestions();
@@ -1136,7 +1308,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     writeStore('rr:currentScreen', 'restStudy');
     await wait(300);
 
-    return { ok: true, message: `Study quiz opened with ${questions.length} questions` };
+    const deckInfo = config.deckId ? ` (deck: ${config.deckId})` : '';
+    return { ok: true, message: `Study quiz opened with ${questions.length} questions${deckInfo}` };
   }
 
   // -----------------------------------------------------------------------
@@ -1338,6 +1511,11 @@ async function loadScenario(name: string): Promise<ScenarioResult> {
     const available = Object.keys(SCENARIOS).join(', ');
     return { ok: false, message: `Unknown scenario '${name}'. Available: ${available}` };
   }
+  // Auto-detect SpawnConfig (has turnOverrides or runOverrides)
+  const spawnConfig = config as SpawnConfig;
+  if (spawnConfig.turnOverrides || spawnConfig.runOverrides) {
+    return spawn(spawnConfig);
+  }
   return loadCustom(config);
 }
 
@@ -1355,6 +1533,122 @@ async function loadCustom(config: ScenarioConfig): Promise<ScenarioResult> {
     return startCombatScenario(config);
   }
   return loadNonCombatScenario(config);
+}
+
+/**
+ * Spawn into any game state with deep state overrides.
+ * Calls loadCustom() for the base scenario, then deep-merges turnOverrides
+ * into activeTurnState and runOverrides into activeRunState.
+ * This is the canonical way for playtest agents to jump to specific states.
+ */
+async function spawn(config: SpawnConfig): Promise<ScenarioResult> {
+  // Load the base scenario first (handles bootstrap, screen nav, etc.)
+  const result = await loadCustom(config);
+  if (!result.ok) return result;
+
+  // Apply deep overrides to TurnState
+  if (config.turnOverrides && Object.keys(config.turnOverrides).length > 0) {
+    const ts = readStore<any>('rr:activeTurnState');
+    if (ts) {
+      const merged = deepMerge(ts, config.turnOverrides as any);
+      writeStore('rr:activeTurnState', merged);
+    }
+  }
+
+  // Apply deep overrides to RunState
+  if (config.runOverrides && Object.keys(config.runOverrides).length > 0) {
+    const rs = readStore<any>('rr:activeRunState');
+    if (rs) {
+      const merged = deepMerge(rs, config.runOverrides as any);
+      writeStore('rr:activeRunState', merged);
+    }
+  }
+
+  return {
+    ...result,
+    message: result.message + (config.turnOverrides ? ' [+turnOverrides]' : '') + (config.runOverrides ? ' [+runOverrides]' : ''),
+  };
+}
+
+/**
+ * Mid-session state patching — deep-merges into live stores without re-bootstrapping.
+ * Use for mid-combat adjustments: patch({ turn: { enemy: { currentHP: 5 } } })
+ */
+function patch(overrides: { turn?: Record<string, unknown>; run?: Record<string, unknown> }): ScenarioResult {
+  const messages: string[] = [];
+
+  if (overrides.turn) {
+    const ts = readStore<any>('rr:activeTurnState');
+    if (ts) {
+      const merged = deepMerge(ts, overrides.turn as any);
+      writeStore('rr:activeTurnState', merged);
+      messages.push('TurnState patched');
+    } else {
+      messages.push('No active TurnState to patch');
+    }
+  }
+
+  if (overrides.run) {
+    const rs = readStore<any>('rr:activeRunState');
+    if (rs) {
+      const merged = deepMerge(rs, overrides.run as any);
+      writeStore('rr:activeRunState', merged);
+      messages.push('RunState patched');
+    } else {
+      messages.push('No active RunState to patch');
+    }
+  }
+
+  return { ok: messages.length > 0, message: messages.join('; ') || 'Nothing to patch' };
+}
+
+interface StateSnapshot {
+  label: string;
+  timestamp: number;
+  screen: string;
+  turnState: unknown;
+  runState: unknown;
+}
+
+/**
+ * Capture a full state snapshot (serialized for JSON storage/transport).
+ */
+function snapshot(label?: string): StateSnapshot {
+  const ts = readStore<any>('rr:activeTurnState');
+  const rs = readStore<any>('rr:activeRunState');
+  return {
+    label: label ?? `snapshot-${Date.now()}`,
+    timestamp: Date.now(),
+    screen: getScreen(),
+    turnState: serializeState(ts),
+    runState: serializeState(rs),
+  };
+}
+
+/**
+ * Restore a previously captured snapshot.
+ */
+function restore(snap: StateSnapshot): ScenarioResult {
+  if (!snap || !snap.timestamp) {
+    return { ok: false, message: 'Invalid snapshot object' };
+  }
+
+  const ts = deserializeState(snap.turnState);
+  const rs = deserializeState(snap.runState);
+
+  if (ts) writeStore('rr:activeTurnState', ts);
+  if (rs) writeStore('rr:activeRunState', rs);
+  if (snap.screen) writeStore('rr:currentScreen', snap.screen);
+
+  return { ok: true, message: `Restored snapshot '${snap.label}' (screen: ${snap.screen})` };
+}
+
+/**
+ * Register a named scenario at runtime (persists for this session).
+ */
+function registerScenario(name: string, config: SpawnConfig): void {
+  (SCENARIOS as Record<string, ScenarioConfig>)[name] = config;
+  console.log(`[__rrScenario] Registered scenario '${name}'`);
 }
 
 // ---------------------------------------------------------------------------
@@ -1407,10 +1701,36 @@ function printHelp(): void {
     '  load("mystery-tutors-office")            Load event by ID preset',
     '  loadCustom({ screen:"mysteryEvent", mysteryEventId:"tutors_office" })',
     '',
+    'SPAWN — Instant state injection (recommended over loadCustom)',
+    '  __rrScenario.spawn(config)            Load scenario + deep-merge state overrides',
+    '  config.turnOverrides = { ... }        Deep-merge into TurnState (any field)',
+    '  config.runOverrides = { ... }         Deep-merge into RunState (any field)',
+    '',
+    'PATCH — Mid-session state changes (no re-bootstrap)',
+    '  __rrScenario.patch({ turn, run })     Deep-merge into live stores',
+    '  patch({ turn: { enemy: { currentHP: 1 } } })   Set enemy to 1 HP',
+    '  patch({ run: { currency: 999 } })               Set gold to 999',
+    '',
+    'SNAPSHOT / RESTORE — Save and replay exact game moments',
+    '  __rrScenario.snapshot(label?)         Capture full state → JSON-safe object',
+    '  __rrScenario.restore(snapshot)        Restore from a captured snapshot',
+    '',
+    'SCHEMA — Discover available fields (for LLM agents)',
+    '  __rrScenario.schema()                 List all TurnState + RunState fields',
+    '',
+    'RECIPES — Pre-built configs for testing specific elements',
+    '  __rrScenario.recipes()                List all element test recipes',
+    '  __rrScenario.recipes("soul_jar")      Get spawn config for a specific element',
+    '  __rrScenario.recipes("enemy:algorithm")  Get by prefixed ID',
+    '',
+    'REGISTER — Add named scenarios at runtime',
+    '  __rrScenario.registerScenario(name, config)   Add to scenario list',
+    '',
     'SCREEN NAVIGATION SCENARIOS',
     '  onboarding, domain-selection, archetype-selection, relic-sanctum',
     '  library, profile, journal, settings',
     '  study-quiz  (restStudy screen)',
+    '  study-deck-rome / study-deck-greece / study-deck-paintings / etc.',
     '  mastery-challenge  (masteryChallenge screen)',
     '',
     'SCENARIO CONFIG SHAPE',
@@ -1483,6 +1803,33 @@ export function initScenarioSimulator(): void {
     load: (name: string) => loadScenario(name),
     loadCustom: (config: ScenarioConfig) => loadCustom(config),
     listMysteryEvents,
+
+    // Spawn system
+    spawn: (config: SpawnConfig) => spawn(config),
+    patch: (overrides: { turn?: Record<string, unknown>; run?: Record<string, unknown> }) => patch(overrides),
+    snapshot: (label?: string) => snapshot(label),
+    restore: (snap: StateSnapshot) => restore(snap),
+    schema: () => {
+      const fields = generateSchema();
+      formatSchemaForConsole(fields);
+      return fields;
+    },
+    recipes: (id?: string) => {
+      if (id) {
+        const recipe = getRecipe(id);
+        if (recipe) {
+          console.log(`Recipe: ${recipe.name} (${recipe.category}:${recipe.id})`);
+          console.log(`Description: ${recipe.description}`);
+          console.log('Config:', JSON.stringify(recipe.config, null, 2));
+          return recipe;
+        }
+        console.warn(`No recipe found for '${id}'`);
+        return null;
+      }
+      listRecipes();
+      return generateRecipes();
+    },
+    registerScenario,
 
     // Mid-combat helpers
     setPlayerHp,

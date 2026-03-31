@@ -6,6 +6,7 @@
   import { challengeService, type ChallengeMode } from '../../services/challengeService'
   import { BALANCE } from '../../data/balance'
   import { shuffled } from '../../services/randomUtils'
+  import { displayAnswer } from '../../services/numericalDistractorService'
   import SpeedRoundTimer from './SpeedRoundTimer.svelte'
 
   interface Props {
@@ -133,7 +134,7 @@
             </button>
           {:else}
             <p class="correct-answer">
-              Correct answer: {fact.correctAnswer}
+              Correct answer: {displayAnswer(fact.correctAnswer)}
             </p>
           {/if}
         </div>

@@ -1610,11 +1610,13 @@
     left: 0;
     width: 100%;
     height: 100dvh;
-    display: none;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .phaser-container.visible {
-    display: block;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .phaser-container.boot-anim-active {
@@ -1630,14 +1632,14 @@
     height: 100dvh !important;
   }
 
-  /* Landscape: push Phaser canvas below the top bar */
+  /* Landscape: canvas fills full viewport — topbar overlays on top (z-index 200) */
   [data-layout="landscape"] .phaser-container.visible {
-    top: var(--topbar-height, 0);
-    height: calc(100dvh - var(--topbar-height, 0));
+    top: 0;
+    height: 100dvh;
   }
 
   [data-layout="landscape"] .phaser-container.visible :global(canvas) {
-    height: calc(100dvh - var(--topbar-height, 0)) !important;
+    height: 100dvh !important;
   }
 
   .hub-wrapper {

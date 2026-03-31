@@ -3,6 +3,7 @@
   import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, getMasteryIconFilter, hasMasteryGlow, GUIDE_STYLES } from '../utils/cardFrameV2'
   import { getCardArtUrl } from '../utils/cardArtManifest'
   import { getCardDescriptionParts } from '../../services/cardDescriptionService'
+  import { stretchText } from '../utils/stretchText'
 
   interface Props {
     card: Card
@@ -49,7 +50,7 @@
             <!-- AP cost overlay -->
             <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{apCost}</div>
             <!-- Mechanic name overlay (on the banner) -->
-            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName} use:stretchText>{card.mechanicName ?? ''}</div>
             <!-- Card type label overlay -->
             <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
             <!-- Effect description text -->
@@ -247,17 +248,16 @@
   }
 
   .v2-mechanic-name {
-    font-family: 'Cinzel', 'Georgia', serif;
+    font-family: 'Kreon', 'Georgia', serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.08);
-    color: #ffffff;
-    text-transform: capitalize;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    font-size: 16px;
+    color: #1a0a00;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow:
+      0 1px 0 rgba(255,220,180,0.4);
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    align-items: center;
-    justify-content: center;
+    overflow: visible;
     text-align: center;
   }
 

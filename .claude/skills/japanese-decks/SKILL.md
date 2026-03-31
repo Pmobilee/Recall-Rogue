@@ -198,3 +198,24 @@ Reference data at `data/raw/japanese/n3-vocab-validation.json`:
 - Curate vocab validation results — replace genuinely difficult sentences
 - Extend dictionary hover to vocabulary decks (not just grammar)
 - Add conjugation table coverage beyond te-form (conditional, volitional, imperative)
+
+## Grammar Deck Build Lessons (2026-03-28)
+
+Critical lessons from the N3 Grammar fill-blank deck build:
+
+### Quiz Rendering: THREE Components, Not One
+Grammar fill-blank questions (`{___}` pattern) must be handled in ALL quiz rendering components:
+1. **`CardExpanded.svelte`** — combat charge quiz (line ~529, has `{___}` detection via `isJapaneseFact && question.includes('{___}')`)
+2. **`QuizOverlay.svelte`** — gate quiz / non-combat (has `isGrammarFillBlank` derived)
+3. **`CardCombatOverlay.svelte`** — study mode quiz selection (uses `getStudyModeQuiz()`)
+
+**If you add a new question format, you MUST verify it renders correctly in ALL THREE components.** Do not assume fixing one component fixes all rendering.
+
+### Question Template Must Use Placeholders
+The `questionFormat` field in `questionTemplates[]` must be `"{quizQuestion}"` — NOT a literal instruction string. The `renderTemplate()` function in `questionTemplateSelector.ts` only substitutes `{placeholder}` patterns. A literal string like `"Complete the sentence"` passes through unchanged and replaces the actual question.
+
+### Multi-Line Quiz Questions
+If `quizQuestion` contains `\n` (e.g., sentence + translation), the rendering component must split on `\n` and render separately. HTML does not render `\n` as line breaks. The grammar fill-blank handler splits with `question.split('\n')` and renders the translation as a separate `<p class="grammar-translation">`.
+
+### Run Pool vs Quiz Pool Distinction
+In study mode, `encounterBridge.ts` builds the **run pool** (what cards get dealt), while `CardCombatOverlay.svelte:getStudyModeQuiz()` selects **quiz questions** from `getCuratedDeckFacts(deckId, subDeckId)`. These are DIFFERENT pools. The run pool currently loads all facts for a language, not just the selected sub-deck. Quiz questions are correctly filtered. This means card `factId` values may not match the quiz shown — this is a pre-existing architectural issue, not a grammar deck bug.

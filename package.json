@@ -96,7 +96,9 @@
     "postinstall": "cp node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm",
     "verify:stability": "node scripts/critical-loop.mjs",
     "security:audit": "node scripts/security-audit.mjs",
-    "verify:ship": "node scripts/verify-ship.mjs"
+    "verify:ship": "node scripts/verify-ship.mjs",
+    "registry:sync": "tsx scripts/registry/sync.ts",
+    "registry:stale": "tsx scripts/registry/stale.ts"
   },
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.97",

@@ -106,6 +106,20 @@ This applies to: dates, casualty figures, names, quotes, locations, statistics, 
 | Pool factIds arrays empty or missing | Human Anatomy's 13 pools had zero factIds despite 2,009 facts (2026-03-29). Pools were defined as schemas without being populated. | ALWAYS build pool factIds programmatically by scanning facts: `pool.factIds = deck.facts.filter(f => f.answerTypePoolId === pool.id).map(f => f.id)`. Never hand-craft factIds. |
 | Domain field not matching canonical domains | Human Anatomy used `"domain": "medical"` which is not a CanonicalFactDomain (2026-03-29). Runtime cast it through without error but domain-dependent features broke silently. | Domain MUST be one of: general_knowledge, natural_sciences, space_astronomy, geography, geography_drill, history, mythology_folklore, animals_wildlife, human_body_health, food_cuisine, art_architecture, language. Check `src/data/card-types.ts` CANONICAL_FACT_DOMAINS. |
 | WIP decks published without structural audit | Human Anatomy's 2,009 WIP facts had been assembled from 49 separate generation batches with no unified pool schema — each batch invented its own pool IDs (2026-03-29). | Before publishing ANY WIP deck: run the full structural validation script (see below). WIP decks are drafts, not finished products. |
+| questionTemplates field missing | world_cuisines.json was missing `questionTemplates` entirely → `selectQuestionTemplate` crashed with "Cannot read properties of undefined" (2026-03-29) | EVERY deck JSON MUST have `"questionTemplates": []` and `"synonymGroups": []` even if empty. Run the field-check script after assembly. The code now has a `?? []` fallback but the data should still be correct. |
+| No visual in-game testing before shipping | 10 decks were built and validated via CLI only. When tested in-game, cuisines crashed immediately because of the missing field. CLI validation doesn't test the runtime rendering path. (2026-03-29) | ALWAYS run `__rrScenario.load('study-deck-DECKNAME')` in Playwright after CLI validation passes. Both gates must pass before a deck ships. |
+
+### Lessons Learned: Grammar / Fill-Blank Deck Builds (2026-03-28)
+
+These issues were discovered during the Japanese N3 Grammar deck build and apply to ALL future fill-in-the-blank or non-standard question format decks.
+
+| Lesson | What happened | Prevention |
+|--------|--------------|------------|
+| Quiz renders in MULTIPLE components | Grammar blanks `{___}` rendered correctly in `QuizOverlay.svelte` but showed as literal text in `CardExpanded.svelte` (the combat charge quiz). Agent incorrectly assumed only one component renders quizzes. | **ALWAYS check ALL quiz rendering paths**: `QuizOverlay.svelte` (gate/non-combat), `CardExpanded.svelte` (combat charge quiz), and `CardCombatOverlay.svelte` (study mode quiz selection). Any new question format must work in ALL three. |
+| questionFormat template vs quizQuestion | Template `questionFormat: "Complete the sentence..."` was used as literal text instead of `"{quizQuestion}"` placeholder. Players saw the template text, not the actual question. | **ALL question templates MUST use `{quizQuestion}` or other `{placeholder}` patterns** — never literal instructional text. The `renderTemplate()` function replaces `{placeholders}` with fact data; literal strings pass through unchanged. |
+| `\n` in quizQuestion not rendered | Translation after `\n` in `quizQuestion` was invisible because HTML doesn't render `\n` as line breaks. The text just ran together. | **Never put multi-line content in a single field expecting `\n` to work.** Either: (a) split at `\n` in the rendering component and use separate `<p>` elements, or (b) use `white-space: pre-line` CSS, or (c) use separate fields for sentence and translation. |
+| Fill-blank `{___}` needs explicit styling | `{___}` was shown as raw text. Students couldn't tell where the blank was in the sentence. | **Any special markers in quiz questions (`{___}`, `{N}`, etc.) MUST have rendering logic in ALL quiz components.** Check `CardExpanded.svelte` line ~529 for the existing `{___}` handler pattern. |
+| Run pool loads entire language, not sub-deck | Selecting "Japanese N3 Grammar" in Study Temple loaded ALL Japanese facts (~8600) into the run pool instead of just grammar facts (670). Cards were assigned random vocab factIds. | **Pre-existing issue** in `encounterBridge.ts` line ~365-373. Language-prefix deck IDs (`japanese_*`) route to `buildLanguageRunPool()` which loads everything. The quiz overlay (`getStudyModeQuiz`) correctly filters by sub-deck, so quizzes are correct — but card factIds are wrong. Fix requires filtering the run pool by sub-deck. |
 
 ---
 
@@ -1106,6 +1120,12 @@ The curated deck store (`src/data/curatedDeckStore.ts`) reads this manifest at a
 
 Run validation commands below before marking generation complete.
 
+**MANDATORY envelope fields — ALL must be present even if empty:**
+- `questionTemplates: []` — MUST exist (even if empty). The runtime calls `.filter()` on this array. Missing = crash.
+- `synonymGroups: []` — MUST exist (even if empty).
+- `difficultyTiers: [{tier: "easy", factIds: [...]}, ...]` — MUST be array with string tier names.
+- `answerTypePools: [...]` — MUST be array (not object).
+
 ### Grammar Deck Quality Standard — GOLDEN REFERENCE
 
 This section captures ALL quality requirements for grammar-type curated decks. It was derived from a deep audit of the Japanese N3 grammar deck (2026-03-29) and applies to ALL future grammar decks (N5, N4, N3, N2, N1, Korean, etc.).
@@ -1495,6 +1515,62 @@ const bad = facts.filter(f => !f.categoryL2 || ['general','other',''].includes(f
 bad.forEach(f => console.log('BAD categoryL2:', f.id, '->', f.categoryL2));
 console.log(bad.length ? bad.length + ' facts need valid categoryL2' : 'categoryL2 OK');
 "
+```
+
+---
+
+## Visual In-Game Deck Testing — MANDATORY
+
+**After CLI validation passes (verify-curated-deck.mjs), test EVERY deck in-game before shipping.**
+
+### Study Deck Scenarios
+
+The scenario system supports instant deck quiz loading via `__rrScenario`:
+
+```bash
+# In Playwright browser_evaluate:
+window.__rrScenario.load('study-deck-rome')           # Ancient Rome
+window.__rrScenario.load('study-deck-greece')          # Ancient Greece
+window.__rrScenario.load('study-deck-paintings')       # Famous Paintings (image quiz)
+window.__rrScenario.load('study-deck-constellations')  # Constellations
+window.__rrScenario.load('study-deck-cuisines')        # World Cuisines
+window.__rrScenario.load('study-deck-medieval')        # Medieval World
+window.__rrScenario.load('study-deck-inventions')      # Famous Inventions
+window.__rrScenario.load('study-deck-egypt-myth')      # Egyptian Mythology
+window.__rrScenario.load('study-deck-mammals')         # Mammals
+window.__rrScenario.load('study-deck-anatomy')         # Human Anatomy
+
+# Custom deck (any deck ID):
+window.__rrScenario.loadCustom({ screen: 'restStudy', deckId: 'YOUR_DECK_ID' })
+```
+
+### What to check visually:
+1. **Quiz loads without error** — no console errors, question text displays
+2. **Distractors make sense** — are the 4 choices plausible? No nonsense answers?
+3. **Image quizzes render** — for `image_question` decks, does the painting/flag show?
+4. **Text fits** — long questions don't overflow the quiz box
+5. **Answer selection works** — clicking an answer shows correct/wrong feedback
+
+### Adding new deck scenarios:
+
+When creating a new deck, add a preset to `src/dev/scenarioSimulator.ts` SCENARIOS object:
+```typescript
+'study-deck-SHORTNAME': {
+  screen: 'restStudy',
+  deckId: 'YOUR_DECK_ID',
+},
+```
+
+### Full deck validation pipeline (BOTH gates required):
+
+```bash
+# Gate 1: CLI structural validation
+node scripts/verify-curated-deck.mjs DECK_ID
+
+# Gate 2: Visual in-game test
+# (in Playwright browser_evaluate)
+window.__rrScenario.load('study-deck-SHORTNAME')
+# Then screenshot + visual check
 ```
 
 ---

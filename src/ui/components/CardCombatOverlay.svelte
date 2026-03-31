@@ -70,6 +70,8 @@
   import { isNumericalAnswer, getNumericalDistractors, displayAnswer as displayNumericalAnswer } from '../../services/numericalDistractorService'
   import type { Fact } from '../../data/types'
   import { REGION_NAMES, rollFlagQuestionType } from '../../services/nonCombatQuizSelector'
+  import { staggerPopIn } from '../utils/roomPopIn'
+  import { tick } from 'svelte'
 
 
   interface Props {
@@ -166,6 +168,7 @@
   let showChargeTutorial = $state(false)
   let showComparisonBanner = $state(false)
   let activeTutorial = $derived(
+    cardPlayStage === 'committed' ? null :
     showApTutorial ? 'ap' : showChargeTutorial ? 'charge' : showComparisonBanner ? 'comparison' : null
   )
   /** Whether the player has done a Quick Play this run (for comparison banner). */
@@ -345,7 +348,46 @@
     }
   })
 
-  let handCards = $derived<Card[]>(reshuffleHoldingHand ? [] : (turnState?.deck.hand ?? []))
+  // === Combat entry pop-in animation ===
+  let combatOverlayEl = $state<HTMLElement>(null!)
+  let combatEntryDelayCards = $state(false)
+  let lastPopInEncounterId = $state<string | null>(null)
+
+  // Listen for encounter entry signal from CombatScene
+  $effect(() => {
+    function onCombatEntry() {
+      // Only pop-in once per encounter (debounce by encounter ID)
+      const encId = turnState?.enemy?.template?.id ?? null
+      const turnNum = turnState?.turnNumber ?? 0
+      if (encId && turnNum <= 1 && encId !== lastPopInEncounterId) {
+        lastPopInEncounterId = encId
+        combatEntryDelayCards = true  // hold cards hidden
+        tick().then(() => {
+          if (!combatOverlayEl) return
+          staggerPopIn({
+            container: combatOverlayEl,
+            elements: [
+              '.enemy-name-header',
+              '.ap-orb',
+              '.draw-pile-indicator',
+              '.discard-pile-indicator',
+              '.player-status-strip',
+              '.enemy-intent-bubble',
+            ],
+            totalDuration: 1500,
+            onComplete: () => {
+              // After HUD pops in, release card hand — triggers swoosh from draw pile
+              combatEntryDelayCards = false
+            },
+          })
+        })
+      }
+    }
+    window.addEventListener('rr:combat-entry', onCombatEntry)
+    return () => window.removeEventListener('rr:combat-entry', onCombatEntry)
+  })
+
+  let handCards = $derived<Card[]>(reshuffleHoldingHand || combatEntryDelayCards ? [] : (turnState?.deck.hand ?? []))
 
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
   let chainLength = $derived(turnState?.chainLength ?? 0)
@@ -2456,7 +2498,7 @@
 
 </script>
 
-<div class="card-combat-overlay" class:near-death-tension={isNearDeath} class:layout-landscape={$isLandscape} class:quiz-active={isQuizPanelVisible}>
+<div class="card-combat-overlay" bind:this={combatOverlayEl} class:near-death-tension={isNearDeath} class:layout-landscape={$isLandscape} class:quiz-active={isQuizPanelVisible}>
   {#if turnState === null}
     <div class="empty-state">
       <p>Waiting for encounter...</p>

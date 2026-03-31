@@ -84,9 +84,6 @@
     return 0
   })
 
-  /** HP percentage 0–100. */
-  let hpPercent = $derived(playerMaxHp > 0 ? Math.round((playerHp / playerMaxHp) * 100) : 0)
-
   /** Nodes currently selectable (state === 'available'). */
   let availableNodes = $derived(
     Object.values(map.nodes).filter(n => n.state === 'available'),
@@ -224,13 +221,7 @@
   <!-- Fixed HUD -->
   <header class="map-hud">
     <h1 class="hud-title">{segmentName}</h1>
-
-    <div class="hp-bar-container" aria-label="Health: {playerHp} of {playerMaxHp}">
-      <div class="hp-bar-bg" role="progressbar" aria-valuenow={hpPercent} aria-valuemin={0} aria-valuemax={100}>
-        <div class="hp-bar-fill" style="width: {hpPercent}%"></div>
-      </div>
-      <span class="hp-text" aria-hidden="true">{playerHp} / {playerMaxHp}</span>
-    </div>
+    <!-- HP bar removed — InRunTopBar is the canonical HP display for dungeonMap screen -->
   </header>
 
   <!-- Ambient particles — segment-themed floating dust/wisps -->
@@ -352,40 +343,6 @@
   /* AR-243: Hide segment title in landscape — shown in top bar */
   :global([data-layout="landscape"]) .hud-title {
     display: none;
-  }
-
-  .hp-bar-container {
-    width: min(calc(340px * var(--layout-scale, 1)), 88%);
-    position: relative;
-    pointer-events: none;
-  }
-
-  .hp-bar-bg {
-    width: 100%;
-    height: calc(14px * var(--layout-scale, 1));
-    background: #1a2235;
-    border-radius: calc(7px * var(--layout-scale, 1));
-    overflow: hidden;
-    border: 1px solid #2a3448;
-  }
-
-  .hp-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #C0392B, #27AE60);
-    border-radius: calc(7px * var(--layout-scale, 1));
-    transition: width 0.3s ease;
-  }
-
-  .hp-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: calc(10px * var(--text-scale, 1));
-    color: #e6edf3;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-    white-space: nowrap;
   }
 
   /* =========================================================

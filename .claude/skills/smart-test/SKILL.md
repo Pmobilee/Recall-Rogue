@@ -80,3 +80,9 @@ If `--related` fails or produces errors:
 npx vitest run
 ```
 But file an issue or fix the `--related` functionality — don't permanently accept the slower workflow.
+
+### Registry Update (AUTO)
+After running affected tests, stamp elements related to changed files:
+```bash
+npx tsx scripts/registry/updater.ts --ids "{comma-separated affected element IDs}" --type mechanicDate
+```

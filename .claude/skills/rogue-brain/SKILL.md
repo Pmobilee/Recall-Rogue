@@ -141,3 +141,11 @@ tensorboard --logdir tests/playtest/rl/logs/
 | /balance-check | Report generation | Instant | Reads sim output |
 
 Rogue Brain is the only tool that LEARNS strategy across the full game, not just combat.
+
+### Registry Update (AUTO)
+After Rogue Brain analysis completes, stamp all game elements the agent covers:
+```bash
+npx tsx scripts/registry/updater.ts --table cards --type neuralDate
+npx tsx scripts/registry/updater.ts --table enemies --type neuralDate
+npx tsx scripts/registry/updater.ts --table relics --type neuralDate
+```

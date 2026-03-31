@@ -164,128 +164,128 @@ NES ultimate heroic dungeon theme with full dynamic arc, pure 8-bit chiptune, st
 
 # QUIET PLAYLIST (20 tracks)
 
-Lo-fi, chill, soft. For players who want to focus on the strategy and quiz. Still dungeon-dark but calm and non-distracting. Think lo-fi hip-hop beats but through an NES sound chip.
+Pure flowing dream-state ambient. Zero structure, zero rhythm, zero identifiable parts or sections. Each track is one unbroken continuous texture — sustained tones that drift and blend without beginning or end. No motifs, no patterns, no repetition the ear can latch onto. The listener should never notice the music is there. It exists only to make silence feel warm. Every track must feel like it could loop forever without a seam.
 
 ---
 
 ### Q01: "Candlelight Study"
 
 ```
-NES lo-fi chill dungeon study theme, 75 BPM, pure 8-bit chiptune, gentle pulse wave melody playing soft major-key notes with long sustain, triangle wave bass with simple two-note pattern repeating hypnotically, noise channel with very soft lo-fi crackle like vinyl static, second pulse wave adding occasional warm harmony notes, lo-fi chiptune beats to study and fight monsters to, relaxed and focused, not intense not scary just calm dungeon vibes, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, lo-fi pixel art study music
+NES continuous warm drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves holding a sustained major third interval that drifts imperceptibly between voicings with no discernible pattern, triangle wave bass as a low unchanging hum, noise channel silent, one seamless flowing tone that could be a candle flame translated to sound, no melody no rhythm no beats no sections no changes the ear can follow, C major warmth, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q02: "Quiet Blades"
 
 ```
-NES soft combat theme, 100 BPM, pure 8-bit chiptune, lead pulse wave playing a gentle melodic line that suggests combat without being aggressive, triangle wave bass with laid-back walking pattern, noise channel with soft brushed hi-hat only, second pulse wave adding warm sustained chords, fighting but calmly — strategic not frantic, the combat is a puzzle not a war, D minor but with warm voicings, authentic NES 2A03 four-channel limitation, retro 8-bit game lo-fi soundtrack
+NES continuous cool drone, no BPM no rhythm, pure 8-bit chiptune, pulse wave holding a single sustained tone that imperceptibly shifts pitch by a semitone over 60 seconds then drifts back, second pulse wave a perfect fifth above barely audible, triangle wave bass low pedal, noise channel silent, one unbroken flowing sound with no melody no rhythm no beats no motifs no sections, steel-blue calm, D minor, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q03: "Torchlight Reverie"
 
 ```
-NES dreamy dungeon lo-fi theme, 70 BPM, pure 8-bit chiptune, pulse wave playing spacious melody with lots of rests between notes, triangle wave bass with gentle root notes every two bars, noise channel faint crackling fire ambience, second pulse wave adding held harmony creating warm chord pads, watching the torchlight flicker while thinking about your next move, meditative and warm despite being underground, A minor with major seventh intervals for warmth, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous dreamy drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves in slow detuned unison creating a gentle undulating phasing effect that flows continuously, triangle wave bass holding a low warm tone, noise channel with imperceptible soft hiss like distant air, one unbroken dreamlike texture with no melody no rhythm no beats no patterns no sections, warm amber haze, A minor with major seventh, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q04: "Soft Steps"
 
 ```
-NES quiet exploration lo-fi theme, 85 BPM, pure 8-bit chiptune, lead pulse wave with simple stepping melody that moves in gentle quarter notes, triangle wave bass providing grounding root-fifth movement, noise channel with very soft kick on beats 1 and 3 only, second pulse wave holding sustained notes for warmth, walking quietly through corridors not in a rush, peaceful dungeon exploration, C major for simple clarity, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous gentle drone, no BPM no rhythm, pure 8-bit chiptune, single pulse wave sustaining one note indefinitely with very slow volume undulation like breathing, triangle wave bass a low octave below equally sustained, second pulse wave silent, noise channel silent, one unbroken tone that breathes slowly in and out, no melody no rhythm no beats no patterns no changes, pure stillness, C major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q05: "The Scholar's Rest"
 
 ```
-NES rest site lo-fi chiptune theme, 65 BPM, pure 8-bit chiptune, pulse wave playing gentle arpeggio pattern repeating like a music box but warm not creepy, triangle wave bass with slow sustained root notes, noise channel silent except for occasional single tick like a page turning, second pulse wave adding one long held note per phrase, studying your cards and planning the next floor, Eb major, warm and safe but still underground, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous soft drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves sustaining a warm open fifth that slowly and imperceptibly widens to a sixth then contracts back over 90 seconds, triangle wave bass as low pedal, noise channel silent, one seamless flowing interval with no melody no rhythm no beats no motifs no sections no discernible changes, safe warmth, Eb major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q06: "Ember Glow"
 
 ```
-NES lo-fi campfire dungeon theme, 60 BPM very slow, pure 8-bit chiptune, two pulse waves playing simple interlocking arpeggios creating a warm blanket of sound, triangle wave bass with single low note per bar, noise channel with quiet crackling ember texture, lo-fi warmth and comfort, sitting by the fire after a long fight, not sad not happy just present, A minor with natural warmth, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous ember drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves holding a single sustained chord with very slow imperceptible timbral shift as duty cycles drift, triangle wave bass low unchanging hum, noise channel with barely perceptible faint warmth like the idea of embers, one unbroken glowing tone, no melody no rhythm no beats no patterns no sections, just warmth existing, A minor, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q07: "Dust and Memory"
 
 ```
-NES nostalgic lo-fi dungeon theme, 80 BPM, pure 8-bit chiptune, pulse wave melody with wistful quality — notes that seem to remember better times, triangle wave bass with gentle movement, noise channel with soft vinyl-crackle texture throughout, second pulse wave adding detuned harmony for lo-fi warmth, the dungeon holds memories of those who came before, bittersweet and calm, G minor with occasional major lifts, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous hazy drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves slightly detuned from each other creating slow beating interference pattern that drifts continuously, triangle wave bass low sustained tone, noise channel with faint static haze barely above silence, one unbroken shimmering texture, no melody no rhythm no beats no motifs no sections, like looking through dusty glass, G minor, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q08: "Lantern Light"
 
 ```
-NES soft guiding light lo-fi theme, 90 BPM, pure 8-bit chiptune, lead pulse wave with bright but soft melody like a lantern bobbing as you walk, triangle wave bass with steady quarter note pulse, noise channel with gentle hi-hat shuffle, second pulse wave providing chordal warmth, a small light in the darkness guiding your way, hopeful but gentle, F major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous glow drone, no BPM no rhythm, pure 8-bit chiptune, pulse wave sustaining a single warm tone with imperceptible slow volume swell over 45 seconds then equally slow fade, triangle wave bass holding root, second pulse wave a major third above equally sustained, noise channel silent, one unbroken warm glow, no melody no rhythm no beats no patterns no sections, steady light, F major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q09: "Stone Lullaby"
 
 ```
-NES lo-fi dungeon sleep theme, 55 BPM very slow, pure 8-bit chiptune, single pulse wave playing a simple descending-then-ascending lullaby melody, triangle wave bass with one note every two bars, noise channel almost inaudible distant texture, second pulse wave enters only in the second half adding very quiet harmony, the dungeon is resting and so are you, minimal and hypnotic, D minor, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous deep drone, no BPM no rhythm, pure 8-bit chiptune, single pulse wave holding one low sustained tone, triangle wave bass an octave below as a sub-frequency presence, second pulse wave silent, noise channel silent, the most minimal possible sound — one continuous note that never changes, no melody no rhythm no beats no motifs no sections no variation, deep stone stillness, D minor, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q10: "Thinking Caps"
 
 ```
-NES quiz-focused lo-fi study theme, 95 BPM, pure 8-bit chiptune, pulse wave playing clever bouncy melody in major key that makes you feel smart, triangle wave bass with playful walking line, noise channel with light snare shuffle, second pulse wave adding staccato rhythmic accents, the feeling of knowing the answer before the timer runs out, confident and focused, C major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous focus drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves sustaining a minor third interval with imperceptible timbral drift, triangle wave bass low pedal tone, noise channel silent, one unbroken sustained interval that sits in the background like temperature — you stop noticing it is there, no melody no rhythm no beats no patterns no sections, clear still air, E minor, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q11: "Gentle Descent"
 
 ```
-NES lo-fi floor transition theme, 70 BPM, pure 8-bit chiptune, slowly descending pulse wave melody getting lower in register as you go deeper, triangle wave bass following the descent gently, noise channel with distant dripping water, second pulse wave adding ethereal held notes, going deeper but it's okay everything is calm, Dorian mode for bittersweet color, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous sinking drone, no BPM no rhythm, pure 8-bit chiptune, pulse wave holding a sustained tone that drops by one semitone every 90 seconds so slowly the change is imperceptible, second pulse wave a fifth above following, triangle wave bass low drone, noise channel silent, one unbroken glacially descending tone, no melody no rhythm no beats no patterns no sections, Dorian mode, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q12: "Parchment and Ink"
 
 ```
-NES lo-fi card management theme, 85 BPM, pure 8-bit chiptune, pulse wave playing studious melody like writing notes in a journal, triangle wave bass with academic walking pattern, noise channel with scratching pen texture barely audible, second pulse wave adding bookish warm harmonies, reviewing your deck and making plans, scholarly and calm, A major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous study drone, no BPM no rhythm, pure 8-bit chiptune, pulse wave sustaining a warm tone, second pulse wave sustaining a major second above creating a gentle sustained dissonance that resolves imperceptibly by drifting together over 2 minutes, triangle wave bass low root, noise channel silent, one unbroken flowing texture, no melody no rhythm no beats no motifs no sections, quiet concentration, A major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q13: "Warm Stones"
 
 ```
-NES lo-fi dungeon comfort theme, 75 BPM, pure 8-bit chiptune, both pulse waves playing interlocking warm arpeggios in thirds creating a cozy blanket of sound, triangle wave bass with simple heartbeat-like two-note pattern, noise channel with soft static warmth, even deep underground there are warm places, comforting and safe, F major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous warmth drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves sustaining a major third with very slow duty cycle modulation creating gentle timbral shimmer, triangle wave bass low pedal, noise channel with faint soft static like radiant heat, one unbroken warm chord hanging in space indefinitely, no melody no rhythm no beats no patterns no sections, thermal comfort, F major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q14: "Quiet Courage"
 
 ```
-NES lo-fi heroic soft theme, 80 BPM, pure 8-bit chiptune, pulse wave playing a quietly heroic melody — brave but not loud, triangle wave bass with steady supportive movement, noise channel with gentle kick-hat pattern, second pulse wave adding determined harmony notes, courage doesn't have to be loud, doing the right thing quietly, Bb major, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous resolve drone, no BPM no rhythm, pure 8-bit chiptune, pulse wave sustaining a single bright tone, second pulse wave a perfect fourth above equally sustained, triangle wave bass root pedal, noise channel silent, one unbroken open interval, no melody no rhythm no beats no motifs no sections no variation, calm certainty, Bb major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q15: "Midnight Arithmetic"
 
 ```
-NES lo-fi puzzle solving theme, 90 BPM, pure 8-bit chiptune, pulse wave playing a mathematical-feeling melody with precise intervals, triangle wave bass with logical stepping pattern, noise channel with metronomic soft tick, second pulse wave adding calculating harmony, the satisfaction of working through a problem, intellectual and satisfying, E minor with chromatic passing tones for clever feeling, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous still drone, no BPM no rhythm, pure 8-bit chiptune, pulse wave holding a sustained tone with imperceptible slow pitch wobble of less than a quarter-tone, triangle wave bass low pedal, second pulse wave silent, noise channel silent, one unbroken hovering tone, no melody no rhythm no beats no patterns no sections no ticking no clicks, pure sustained presence, E minor, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q16: "Copper and Dust"
 
 ```
-NES lo-fi dungeon merchant chill theme, 85 BPM, pure 8-bit chiptune, pulse wave playing a mellow jazzy melody with chromatic grace notes, triangle wave bass walking a chill chromatic line, noise channel with soft shuffle beat, second pulse wave adding coin-like staccato accents, browsing the shop with no urgency, everything has a price, F major with blues notes, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous mellow drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves sustaining a warm sixth interval with slow imperceptible phasing between them, triangle wave bass low root, noise channel silent, one unbroken sustained harmony, no melody no rhythm no beats no motifs no staccato no sections, quiet golden haze, F major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q17: "After the Battle"
 
 ```
-NES lo-fi post-combat rest theme, 60 BPM, pure 8-bit chiptune, pulse wave playing a relieved exhale of a melody — tension leaving the body, triangle wave bass with slow comforting root notes, noise channel quiet, second pulse wave adding warm resolution chords, you survived that encounter now catch your breath, the relief after a close fight, C major resolving from C minor, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous release drone, no BPM no rhythm, pure 8-bit chiptune, pulse wave sustaining a tone that imperceptibly shifts from minor to major over 2 minutes by raising the third by a semitone glacially slowly, second pulse wave root pedal, triangle wave bass low drone, noise channel silent, one unbroken tone of slowly dissolving tension, no melody no rhythm no beats no patterns no sections, C resolving from Cm, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q18: "Fool's Gold"
 
 ```
-NES lo-fi treasure room chill theme, 95 BPM, pure 8-bit chiptune, pulse wave playing a cheeky playful melody with unexpected turns, triangle wave bass with bouncy movement, noise channel with light percussion shuffle, second pulse wave adding sparkly high staccato notes like coins, finding treasure in the dungeon and not sure if it's worth it, A major with mischievous chromatic notes, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous shimmer drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves at nearly identical pitch creating a slow beating shimmer effect that glitters continuously, triangle wave bass low pedal, noise channel silent, one unbroken shimmering sustained tone, no melody no rhythm no beats no motifs no sections, faint gold light, A major, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q19: "Deep Breaths"
 
 ```
-NES lo-fi meditation rest theme, 50 BPM extremely slow, pure 8-bit chiptune, single pulse wave playing one note every 3-4 seconds with silence between, triangle wave bass holding a single pedal tone, noise channel breathing-like soft whoosh every few seconds, second pulse wave silent for most then one held note, the most minimal quiet track, almost meditation, just breathing in the dark, A minor, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous void drone, no BPM no rhythm, pure 8-bit chiptune, single pulse wave at lowest comfortable volume sustaining one unchanging tone, triangle wave bass barely audible sub-tone, second pulse wave silent, noise channel with imperceptible faint air, the absolute minimum — one held note and near-silence, no melody no rhythm no beats no patterns no sections no variation, just existing, A minor, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ### Q20: "The Long Road Home"
 
 ```
-NES lo-fi journey's end reflective theme, 75 BPM, pure 8-bit chiptune, pulse wave playing a nostalgic melody looking back on the run, triangle wave bass with gentle movement toward home, noise channel with soft static warmth, second pulse wave adding bittersweet harmony, whether you won or lost the journey mattered, reflective and warm, G major with minor passing tones, authentic NES 2A03 four-channel limitation, retro 8-bit lo-fi game soundtrack
+NES continuous farewell drone, no BPM no rhythm, pure 8-bit chiptune, two pulse waves sustaining a bittersweet major-minor ambiguity — major third and minor seventh held together creating a gentle unresolved warmth, triangle wave bass low root, noise channel silent, one unbroken chord sustained indefinitely, no melody no rhythm no beats no motifs no sections, stillness after everything, G major with minor seventh, authentic NES 2A03 four-channel limitation, retro 8-bit ambient drone
 ```
 
 ---

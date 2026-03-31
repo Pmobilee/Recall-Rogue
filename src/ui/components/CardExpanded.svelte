@@ -26,6 +26,7 @@
   import { deckOptions } from '../../services/deckOptionsService'
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
+  import { displayAnswer } from '../../services/numericalDistractorService'
 
   interface Props {
     card: Card
@@ -527,7 +528,15 @@
         size="md"
       /> {japaneseParts.after}
     {:else if isJapaneseFact && question.includes('{___}')}
-      <WordHover sentence={question} excludeWords={[correctAnswer]} />
+      {@const grammarParts = question.split('\n')}
+      {@const sentence = grammarParts[0]}
+      {@const translation = grammarParts[1] || ''}
+      {#each sentence.split('{___}') as segment, i}
+        {#if i > 0}<span class="grammar-blank">______</span>{/if}<WordHover sentence={segment} excludeWords={[correctAnswer]} />
+      {/each}
+      {#if translation}
+        <p class="grammar-translation">{translation}</p>
+      {/if}
     {:else if chineseParts}
       {chineseParts.before}<FuriganaText
         text={pinyinOnly && chineseParts.reading ? chineseParts.reading : chineseParts.word}
@@ -671,7 +680,7 @@
         {quizResultState === 'correct' ? 'CORRECT' : 'WRONG'}
       </span>
       {#if quizResultState === 'wrong' && answerRevealed}
-        <span class="quiz-result-correct-answer">{correctAnswer}</span>
+        <span class="quiz-result-correct-answer">{displayAnswer(correctAnswer)}</span>
       {/if}
     </div>
   {/if}
@@ -996,6 +1005,26 @@
 
   .card-question.quiz-text-long {
     font-size: calc(14px * var(--text-scale, 1));
+  }
+
+  .grammar-blank {
+    display: inline-block;
+    min-width: calc(60px * var(--layout-scale, 1));
+    border-bottom: calc(2px * var(--layout-scale, 1)) solid var(--color-warning, #f0c040);
+    margin: 0 calc(2px * var(--layout-scale, 1));
+    text-align: center;
+    color: var(--color-warning, #f0c040);
+    letter-spacing: calc(2px * var(--layout-scale, 1));
+    font-weight: bold;
+  }
+
+  .grammar-translation {
+    color: var(--color-text-dim, #8899aa);
+    font-size: calc(13px * var(--text-scale, 1));
+    margin-top: calc(4px * var(--layout-scale, 1));
+    text-align: center;
+    font-style: italic;
+    line-height: 1.3;
   }
 
   .card-answers {

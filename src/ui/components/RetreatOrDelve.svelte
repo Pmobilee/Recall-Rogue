@@ -5,6 +5,8 @@
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { staggerPopIn } from '../utils/roomPopIn'
+  import { tick } from 'svelte'
 
   interface Props {
     bossName: string
@@ -40,10 +42,11 @@
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 
+  let overlayEl = $state<HTMLElement>(null!)
   let retainedOnDeath = $derived(Math.floor(currency * deathPenalty))
 </script>
 
-<div class="decision" class:landscape={$isLandscape}>
+<div class="decision" bind:this={overlayEl} class:landscape={$isLandscape}>
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
   <div class="decision-content">
     <h1>SEGMENT CLEARED</h1>
@@ -53,6 +56,13 @@
       <div>Rewards Earned: <strong>{currency}</strong></div>
       <div>HP: <strong>{playerHp}/{playerMaxHp}</strong></div>
       <div>Next Segment: <strong>{nextSegmentName}</strong></div>
+    </div>
+
+    <div class="risk">
+      Enemies are stronger.
+      {#if retreatRewardsLocked}
+        Retreat rewards are locked for this depth on current Ascension.
+      {/if}
     </div>
 
     <div class="btn-row">
@@ -72,13 +82,6 @@
         <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
       </button>
     </div>
-
-    <div class="risk">
-      Enemies are stronger.
-      {#if retreatRewardsLocked}
-        Retreat rewards are locked for this depth on current Ascension.
-      {/if}
-    </div>
   </div>
 </div>
 
@@ -88,7 +91,17 @@
     depthUrl={depthUrl}
     type="enter"
     onComplete={() => { showRoomTransition = false }}
-      persist
+    onSettle={() => {
+      tick().then(() => {
+        if (!overlayEl) return
+        staggerPopIn({
+          container: overlayEl,
+          elements: ['.decision-content', 'h1', 'p', '.stats', '.risk', '.retreat', '.delve'],
+          totalDuration: 2200,
+        })
+      })
+    }}
+    persist
   />
 {/if}
 
@@ -190,7 +203,6 @@
   }
 
   .risk {
-    margin-top: calc(10px * var(--layout-scale, 1));
     font-size: calc(14px * var(--text-scale, 1));
     color: #C9D1D9;
     text-align: center;

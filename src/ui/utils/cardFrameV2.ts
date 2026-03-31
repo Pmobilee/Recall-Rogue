@@ -115,5 +115,7 @@ export const GUIDE_STYLES = {
   mechanicName: guideStyle(205, 120, 478, 110),
   artWindow: guideStyle(194, 186, 498, 412),
   cardType: guideStyle(243, 608, 400, 70),
-  effectText: guideStyle(134, 667, 640, 410),
+  /** Pill-shaped chain color indicator — matches the frame's small oval cutout exactly */
+  cardTypePill: guideStyle(403, 628, 80, 28),
+  effectText: guideStyle(134, 646, 640, 376),
 } as const

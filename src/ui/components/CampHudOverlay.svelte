@@ -15,11 +15,11 @@
      so left/right: 0 constrains it to the center column automatically.
      No viewport-spanning occurs — positioning is correct in both modes. -->
 <div class="hud-overlay" class:banner-offset={hasActiveRunBanner} class:landscape={$isLandscape} aria-label="Camp HUD">
-  <div class="hud-pill hud-left">
+  <div class="hud-pill hud-left" title="Win Streak">
     <span class="hud-icon">&#x1F525;</span>
     <span class="hud-value">{streak}</span>
   </div>
-  <div class="hud-pill hud-right" aria-label="Grey Matter">
+  <div class="hud-pill hud-right" aria-label="Grey Matter" title="Grey Matter">
     <img class="hud-icon-img" src={getGreyMatterIconPath()} alt="" aria-hidden="true" />
     <span class="hud-value">{greyMatterBalance}</span>
   </div>

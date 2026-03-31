@@ -11,9 +11,13 @@
      *  Use for Svelte-based rooms (shop, rest, mystery). Do NOT use for combat
      *  (Phaser renders its own background + sprites underneath). */
     persist?: boolean
+    /** Called when the enter animation settles into the persist background state,
+     *  or when skip() is triggered while in persist mode. Use to trigger room
+     *  element pop-in animations. */
+    onSettle?: () => void
   }
 
-  const { imageUrl, depthUrl, type, onComplete, duration = 3000, persist = false }: Props = $props()
+  const { imageUrl, depthUrl, type, onComplete, duration = 3000, persist = false, onSettle }: Props = $props()
 
   let canvas = $state<HTMLCanvasElement | null>(null)
   let bobOffset = $state(0)
@@ -257,6 +261,7 @@
           bobOffset = 0
           render(0, 1.0, 0, 1.0, 1.0)
           settled = true
+          onSettle?.()
         } else {
           // Exit transitions: fade to black, then unmount
           if (!destroyed) onComplete()
@@ -267,7 +272,14 @@
     function skip() {
       destroyed = true
       cancelAnimationFrame(rafId)
-      onComplete()
+      if (persist) {
+        bobOffset = 0
+        if (gl && prog) render(0, 1.0, 0, 1.0, 1.0)
+        settled = true
+        onSettle?.()
+      } else {
+        onComplete()
+      }
     }
 
     el.addEventListener('click', skip)
@@ -284,7 +296,12 @@
           if (!destroyed) {
             destroyed = true
             cancelAnimationFrame(rafId)
-            onComplete()
+            if (persist) {
+              settled = true
+              onSettle?.()
+            } else {
+              onComplete()
+            }
           }
         })
 

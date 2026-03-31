@@ -19405,7 +19405,7 @@
         "cholecystokinin"
       ],
       "chainThemeId": "gi_hormones",
-      "answerTypePoolId": "hormone_names",
+      "answerTypePoolId": "function_terms",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Which GI hormone is secreted by I cells of the duodenum in response to fat and protein, triggering gallbladder contraction and pancreatic enzyme release?",
@@ -19447,7 +19447,7 @@
       "correctAnswer": "Secretin",
       "acceptableAlternatives": [],
       "chainThemeId": "gi_hormones",
-      "answerTypePoolId": "hormone_names",
+      "answerTypePoolId": "function_terms",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Which GI hormone is released by S cells of the duodenum in response to acidic chyme, stimulating the pancreas to secrete bicarbonate-rich juice?",
@@ -19493,7 +19493,7 @@
         "gastric inhibitory peptide"
       ],
       "chainThemeId": "gi_hormones",
-      "answerTypePoolId": "hormone_names",
+      "answerTypePoolId": "function_terms",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Which GI hormone released by K cells of the duodenum in response to glucose and fat stimulates pancreatic beta cells to secrete insulin — an effect called the incretin effect?",
@@ -19530,7 +19530,7 @@
       "correctAnswer": "Motilin",
       "acceptableAlternatives": [],
       "chainThemeId": "gi_hormones",
-      "answerTypePoolId": "hormone_names",
+      "answerTypePoolId": "function_terms",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Which GI hormone triggers the migrating motor complex (MMC) every ~90 minutes during fasting, sweeping residual contents through the intestine?",
@@ -73614,16 +73614,6 @@
       ]
     },
     {
-      "id": "hormone_names",
-      "members": [],
-      "factIds": [
-        "ha_multi_001",
-        "ha_multi_002",
-        "ha_multi_003",
-        "ha_multi_004"
-      ]
-    },
-    {
       "id": "organ_names",
       "members": [],
       "factIds": [
@@ -73757,6 +73747,10 @@
         "ha_lymph_023",
         "ha_lymph_029",
         "ha_lymph_040",
+        "ha_multi_001",
+        "ha_multi_002",
+        "ha_multi_003",
+        "ha_multi_004",
         "ha_multi_014",
         "ha_musc_031",
         "ha_musc_032",
@@ -74071,11 +74065,6 @@
         "ha_urin_035",
         "ha_urin_037"
       ]
-    },
-    {
-      "id": "system_names",
-      "members": [],
-      "factIds": []
     },
     {
       "id": "clinical_terms",

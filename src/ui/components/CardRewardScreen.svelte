@@ -19,6 +19,8 @@
   import { turboDelay } from '../../utils/turboMode'
   import { getSynergyLabel } from '../../data/synergies'
   import { getActiveDeckCards } from '../../services/encounterBridge'
+  import { staggerPopIn } from '../utils/roomPopIn'
+  import { tick } from 'svelte'
 
   interface Props {
     options: Card[]
@@ -33,6 +35,7 @@
 
   const bgUrl = getRandomRoomBg('treasure')
   const depthUrl = getRoomDepthMap('treasure')
+  let overlayEl = $state<HTMLElement>(null!)
   let showRoomTransition = $state(true)
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
@@ -321,7 +324,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="reward-screen" class:card-phase={rewardStep === 'card'} class:landscape={$isLandscape}>
+<div class="reward-screen" bind:this={overlayEl} class:card-phase={rewardStep === 'card'} class:landscape={$isLandscape}>
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
 {#if rewardStep === 'gold' && bundle}
     <div class="step-container" class:step-visible={stepVisible}>
@@ -379,7 +382,7 @@
               onclick={() => selectType(option.cardType)}
               onpointerenter={() => hoverType(option.cardType)}
               disabled={collectLocked}
-              data-testid={`reward-type-${option.cardType}`}
+              data-testid={`reward-card-${i}`}
               aria-label={`Inspect ${option.mechanicName ?? option.cardType} reward`}
             >
               <!-- V2 layered card frame -->
@@ -491,7 +494,17 @@
     depthUrl={depthUrl}
     type="enter"
     onComplete={() => { showRoomTransition = false }}
-      persist
+    onSettle={() => {
+      tick().then(() => {
+        if (!overlayEl) return
+        staggerPopIn({
+          container: overlayEl,
+          elements: ['.altar-title', '.altar-sub', '.reward-step'],
+          totalDuration: 1200,
+        })
+      })
+    }}
+    persist
   />
 {/if}
 
@@ -802,8 +815,9 @@
   }
 
   .grade-label {
-    font-size: calc(20px * var(--layout-scale, 1));
-    line-height: 1;
+    font-size: calc(28px * var(--text-scale, 1));
+    line-height: 1.2;
+    font-weight: 700;
   }
 
   .grade-subtext {
@@ -1407,10 +1421,14 @@
     width: min(65vw, 900px);
     max-height: 85vh;
     overflow-y: auto;
+    transform: scale(1.15);
+    transform-origin: center center;
   }
 
   .reward-screen.landscape .actions {
     width: min(65vw, 900px);
+    transform: scale(1.15);
+    transform-origin: center center;
   }
 
   .reward-screen.landscape .altar-options {

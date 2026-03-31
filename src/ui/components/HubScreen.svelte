@@ -17,6 +17,7 @@
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { getLevelProgress } from '../../services/characterLevel'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { LIGHT_SOURCE_MANIFEST } from '../../data/lightSourceManifest'
 
   interface Props {
     streak: number
@@ -185,6 +186,28 @@
         relicsCollected: Math.floor(Math.random() * 6),
       },
     })
+  }
+
+  async function testBrightIdea(): Promise<void> {
+    const scenario = (globalThis as any).__rrScenario
+    if (!scenario) return
+    await scenario.loadCustom({ screen: 'combat', enemy: 'bright_idea' })
+  }
+
+  async function testBurningDeadline(): Promise<void> {
+    const scenario = (globalThis as any).__rrScenario
+    if (!scenario) return
+    await scenario.loadCustom({ screen: 'combat', enemy: 'burning_deadline' })
+  }
+
+  async function testLighting(): Promise<void> {
+    const scenario = (globalThis as any).__rrScenario
+    if (!scenario) return
+    // Pick a random enemy that has manifest light entries
+    const manifestEnemies = Object.keys(LIGHT_SOURCE_MANIFEST.enemies)
+    const enemyId = manifestEnemies[Math.floor(Math.random() * manifestEnemies.length)]
+    // Load combat directly with that enemy — no page_flutter flash
+    await scenario.loadCustom({ screen: 'combat', enemy: enemyId })
   }
 
   function onTransitionComplete(): void {
@@ -361,6 +384,9 @@
         <button class="dev-btn" onclick={previewEnter}>Enter</button>
         <button class="dev-btn" onclick={previewExit}>Exit</button>
         <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
+        <button class="dev-btn" onclick={testLighting}>Lighting</button>
+        <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
+        <button class="dev-btn" onclick={testBurningDeadline}>Deadline</button>
       </div>
 
       {#if transitionActive}

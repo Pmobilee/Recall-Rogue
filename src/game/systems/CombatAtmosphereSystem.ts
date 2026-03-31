@@ -96,19 +96,22 @@ export class CombatAtmosphereSystem {
     const h = this.scene.scale.height
 
     // ── Fog layer (depth 2) ───────────────────────────
-    this.fogGfx = this.scene.add.graphics().setDepth(2).setAlpha(this.config.fogAlpha)
-    this.fogGfx.fillStyle(0x000000, this.config.fogAlpha)
-    this.fogGfx.fillRect(0, h * 0.6, w, h * 0.4)
+    // Skipped on mid/flagship where DepthLightingFX handles depth-based fog
+    if (getDeviceTier() === 'low-end') {
+      this.fogGfx = this.scene.add.graphics().setDepth(2).setAlpha(this.config.fogAlpha)
+      this.fogGfx.fillStyle(0x000000, this.config.fogAlpha)
+      this.fogGfx.fillRect(0, h * 0.6, w, h * 0.4)
 
-    // Gentle alpha oscillation for fog drift
-    this.fogTween = this.scene.tweens.add({
-      targets: this.fogGfx,
-      alpha: { from: this.config.fogAlpha, to: this.config.fogAlpha * 1.5 },
-      duration: 3000,
-      yoyo: true,
-      repeat: -1,
-      ease: 'Sine.easeInOut',
-    })
+      // Gentle alpha oscillation for fog drift
+      this.fogTween = this.scene.tweens.add({
+        targets: this.fogGfx,
+        alpha: { from: this.config.fogAlpha, to: this.config.fogAlpha * 1.5 },
+        duration: 3000,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+      })
+    }
 
     // ── Particles ─────────────────────────────────────
     const pConfig = this.config.particles
@@ -167,7 +170,10 @@ export class CombatAtmosphereSystem {
 
     // ── Light shafts ──────────────────────────────────
     this.createLightShafts()
-    this.createBackgroundLightPool()
+    // Background light pool only needed on low-end where DepthLightingFX is inactive
+    if (getDeviceTier() === 'low-end') {
+      this.createBackgroundLightPool()
+    }
   }
 
   /** Stop all atmosphere effects and clean up. */

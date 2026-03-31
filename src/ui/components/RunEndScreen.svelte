@@ -350,13 +350,16 @@
     const harvestStart = cursor + 200
     schedulePhase(() => { showFactHarvest = true }, harvestStart)
     schedulePhase(() => {
-      animateCounter(factSummary.seen, 600, v => { displayedSeen = v })
+      const seenTarget = factSummary.seen
+      animateCounter(seenTarget, 600, v => { displayedSeen = Math.min(v, seenTarget) })
     }, harvestStart + 100)
     schedulePhase(() => {
-      animateCounter(factSummary.reviewing, 600, v => { displayedReviewing = v })
+      const reviewingTarget = factSummary.reviewing
+      animateCounter(reviewingTarget, 600, v => { displayedReviewing = Math.min(v, reviewingTarget) })
     }, harvestStart + 250)
     schedulePhase(() => {
-      animateCounter(factSummary.mastered, 600, v => { displayedMastered = v })
+      const masteredTarget = factSummary.mastered
+      animateCounter(masteredTarget, 600, v => { displayedMastered = Math.min(v, masteredTarget) })
     }, harvestStart + 400)
     cursor = harvestStart + 600
 
@@ -420,8 +423,14 @@
                 src="/assets/sprites/enemies/{id}_idle_1x.webp"
                 alt={info.name}
                 class="enemy-badge-img"
-                onerror={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                onerror={(e) => {
+                  const img = e.target as HTMLImageElement
+                  img.style.display = 'none'
+                  const fb = img.nextElementSibling as HTMLElement | null
+                  if (fb && fb.classList.contains('enemy-badge-fallback')) fb.style.display = 'flex'
+                }}
               />
+              <span class="enemy-badge-fallback" aria-hidden="true" style="display: none;">❓</span>
               {#if info.category !== 'common'}
                 <span class="badge-category-pip" style="background: {getCategoryBorderColor(info.category)}">
                   {info.category === 'boss' ? '★' : info.category === 'mini_boss' ? '◆' : '▲'}
@@ -494,7 +503,7 @@
         </div>
         <div class="stat-pill">
           <span class="pill-label">Encounters</span>
-          <span class="pill-value">{encountersWon}/{encountersTotal}</span>
+          <span class="pill-value">{encountersWon}</span>
         </div>
         <div class="stat-pill">
           <span class="pill-label">Time</span>
@@ -799,6 +808,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .enemy-badge-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(18px * var(--text-scale, 1));
+    line-height: 1;
   }
 
   .badge-category-pip {

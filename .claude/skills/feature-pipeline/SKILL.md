@@ -204,7 +204,9 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    Compare results against the pre-change baseline. If win rates, clear rates, or economy metrics shift significantly, investigate before declaring done.
 3. **Visual inspection** of EVERY affected screen — MANDATORY, NO EXCEPTIONS:
    - Navigate to each affected screen using `__rrScenario.load()`
-   - Take screenshot using `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures Phaser canvas + DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs)
+   - Take screenshot AND layout dump (ALWAYS use both — required, not optional):
+     - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, returns path. Use `Read("/tmp/rr-screenshot.jpg")` to view. Captures Phaser canvas + DOM overlays. NEVER use raw `__rrScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs)
+     - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements (structured coordinate data to complement the visual)
    - Check console for errors via `browser_console_messages`
    - Verify the feature works as a user would experience it
    - **THIS MUST HAPPEN AFTER EVERY SUB-AGENT BATCH** — not just at the end. If 3 agents run in parallel and return, inspect ALL 3 results before committing ANY of them

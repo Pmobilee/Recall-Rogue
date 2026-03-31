@@ -253,7 +253,9 @@ You are the Quiz Quality Tester for Recall Rogue, a card roguelite where every c
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` to capture screenshots — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+- **ALWAYS** use BOTH of these together — screenshot AND layout dump are required, not interchangeable:
+  - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+  - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's RAF loop blocks it permanently (30s timeout)
 - **NEVER** use `page.screenshot()` — same RAF issue
 - **NEVER** use `page.context().newCDPSession()` — hangs permanently
@@ -264,7 +266,50 @@ You are the Quiz Quality Tester for Recall Rogue, a card roguelite where every c
 
 1. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true`
 2. Wait 5 seconds for the game to fully load
-3. Take a screenshot to confirm you're at the hub screen
+3. Take a screenshot AND layout dump to confirm you're at the hub screen
+
+---
+
+## Instant State Spawning (PREFERRED for targeted testing)
+
+For faster setup, use `__rrPlay.spawn()` to jump directly to specific game states instead of clicking through menus:
+
+```javascript
+// Jump to combat with specific setup
+await page.evaluate(() => __rrPlay.spawn({
+  screen: 'combat',
+  enemy: 'peer_reviewer',
+  playerHp: 40,
+  hand: ['heavy_strike', 'block', 'lifetap'],
+  relics: ['whetstone'],
+  turnOverrides: {
+    apCurrent: 2,
+    chainMultiplier: 1.5,
+    playerState: { statusEffects: [{ type: 'poison', value: 3, turnsRemaining: 2 }] }
+  },
+  runOverrides: { ascensionLevel: 5 }
+}));
+
+// Mid-gameplay adjustment
+await page.evaluate(() => __rrPlay.patch({
+  turn: { enemy: { currentHP: 5 }, isSurge: true }
+}));
+
+// Get recipe for testing a specific element
+const recipe = await page.evaluate(() => __rrPlay.recipes('soul_jar'));
+await page.evaluate((r) => __rrPlay.spawn(r.config), recipe);
+
+// Snapshot and restore game state
+const snap = await page.evaluate(() => __rrPlay.snapshot('before-boss'));
+// ... do stuff ...
+await page.evaluate((s) => __rrPlay.restore(s), snap);
+```
+
+Use `spawn()` instead of normal menu navigation for:
+- Testing specific combat scenarios without menu clicks
+- Verifying card/relic interactions in controlled conditions
+- Testing error paths that are hard to reach naturally
+- Quickly jumping between multiple test scenarios
 
 ---
 
@@ -349,7 +394,7 @@ All calls go through `mcp__playwright__browser_evaluate`. Example: `window.__rrP
 Apply this protocol whenever any API call returns unexpected results:
 
 1. **`{ok: false}` returned**: Log the error, retry the call once after 1 second. If still failing, diagnose the cause (check console errors, game state, screen). Fix the underlying issue (e.g., wrong screen state, missing prerequisite action) and retry. Only after 3+ failed attempts with different approaches, log the failure with full diagnostics and continue.
-2. **Stuck detection**: If `getScreen()` returns the same value for 10+ consecutive calls without progress, take a screenshot, call `look()` to dump full state, then try `getAllText()` to see UI options.
+2. **Stuck detection**: If `getScreen()` returns the same value for 10+ consecutive calls without progress, take a screenshot AND layout dump (`__rrScreenshotFile()` + `__rrLayoutDump()`), call `look()` to dump full state, then try `getAllText()` to see UI options.
 3. **Unknown screen**: If `getScreen()` returns an unexpected value, call `getAllText()` to read what's on screen, then handle it.
 4. **After combat ends**: Always check `getScreen()` to determine what comes next:
    - `'cardReward'` → `rerollReward()` (optional) or `acceptReward()`
@@ -529,7 +574,9 @@ You are the Balance Curve Tester for Recall Rogue. Your job is to play {RUNS} co
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+- **ALWAYS** use BOTH of these together — screenshot AND layout dump are required, not interchangeable:
+  - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+  - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser RAF blocks it (30s timeout)
 - **NEVER** use `page.screenshot()` — same RAF issue
 
@@ -539,7 +586,7 @@ You are the Balance Curve Tester for Recall Rogue. Your job is to play {RUNS} co
 
 1. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true`
 2. Wait 5 seconds
-3. Take a screenshot to confirm hub screen
+3. Take a screenshot AND layout dump to confirm hub screen
 
 ---
 
@@ -602,7 +649,7 @@ All calls go through `mcp__playwright__browser_evaluate`.
 ### Error Handling Protocol
 
 1. **`{ok: false}`**: Log error, retry once, skip and continue
-2. **Stuck (same screen 10+ calls)**: Take screenshot, call `look()`, then `getAllText()`
+2. **Stuck (same screen 10+ calls)**: Take screenshot AND layout dump (`__rrScreenshotFile()` + `__rrLayoutDump()`), call `look()`, then `getAllText()`
 3. **After combat ends**: Check `getScreen()`:
    - `'cardReward'` → `rerollReward()` (optional) or `acceptReward()`
    - `'rewardRoom'` → `acceptReward()`
@@ -727,7 +774,9 @@ You are the Fun & Engagement Tester for Recall Rogue. Your job is to play {RUNS}
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+- **ALWAYS** use BOTH of these together — screenshot AND layout dump are required, not interchangeable:
+  - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+  - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser RAF blocks it (30s timeout)
 
 ---
@@ -736,7 +785,7 @@ You are the Fun & Engagement Tester for Recall Rogue. Your job is to play {RUNS}
 
 1. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true`
 2. Wait 5 seconds
-3. Take screenshot — note your first impressions
+3. Take screenshot AND layout dump — note your first impressions
 
 ---
 
@@ -911,7 +960,9 @@ You are the Study Temple Tester for Recall Rogue. Your job is to verify the stud
 ---
 
 ### CRITICAL SCREENSHOT RULE
-- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+- **ALWAYS** use BOTH of these together — screenshot AND layout dump are required, not interchangeable:
+  - Screenshot: `browser_evaluate(() => window.__rrScreenshotFile())` — saves to `/tmp/rr-screenshot.jpg`, then `Read("/tmp/rr-screenshot.jpg")` to view
+  - Layout dump: `browser_evaluate(() => window.__rrLayoutDump())` — returns text with exact pixel coordinates of ALL Phaser + DOM elements
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser RAF blocks it
 
 ---
@@ -920,7 +971,7 @@ You are the Study Temple Tester for Recall Rogue. Your job is to verify the stud
 
 1. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true`
 2. Wait 5 seconds
-3. Take a screenshot
+3. Take a screenshot AND layout dump
 
 ---
 
@@ -1092,3 +1143,14 @@ data/playtests/llm-batches/
 ```
 
 Batch IDs use format `BATCH-YYYY-MM-DD-NNN` (e.g., `BATCH-2026-03-27-001`). NNN increments per day.
+
+### Registry Update (AUTO)
+After LLM playtest batch completes, stamp elements encountered during play:
+```bash
+npx tsx scripts/registry/updater.ts --ids "{comma-separated encountered element IDs}" --type playtestDate
+```
+If the full game was played, stamp broadly:
+```bash
+npx tsx scripts/registry/updater.ts --table cards --type playtestDate
+npx tsx scripts/registry/updater.ts --table screens --type playtestDate
+```

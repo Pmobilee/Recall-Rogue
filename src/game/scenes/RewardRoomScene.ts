@@ -408,15 +408,19 @@ export class RewardRoomScene extends Phaser.Scene {
 
       for (let attempt = 0; attempt < maxAttempts; attempt++) {
         const angle = Math.random() * Math.PI * 2
-        const radiusX = (Math.random() * 0.42 + 0.05) * w
-        const radiusY = (Math.random() * 0.42 + 0.05) * h
+        const radiusX = (Math.random() * 0.35 + 0.05) * w
+        const radiusY = (Math.random() * 0.35 + 0.05) * h
         const x = cx + Math.cos(angle) * radiusX
         const y = cy + Math.sin(angle) * radiusY
 
+        const halfItem = 30
+        const clampedX = Math.max(cx - w / 2 + halfItem, Math.min(cx + w / 2 - halfItem, x))
+        const clampedY = Math.max(cy - h / 2 + halfItem, Math.min(cy + h / 2 - halfItem, y))
+
         let tooClose = false
         for (const existing of positions) {
-          const dx = x - existing.x
-          const dy = y - existing.y
+          const dx = clampedX - existing.x
+          const dy = clampedY - existing.y
           if (Math.sqrt(dx * dx + dy * dy) < minDist) {
             tooClose = true
             break
@@ -424,7 +428,7 @@ export class RewardRoomScene extends Phaser.Scene {
         }
 
         if (!tooClose) {
-          bestPos = { x, y }
+          bestPos = { x: clampedX, y: clampedY }
           placed = true
           break
         }
@@ -433,7 +437,10 @@ export class RewardRoomScene extends Phaser.Scene {
       if (!placed) {
         const angle = (i / count) * Math.PI * 2 + Math.random() * 0.3
         const r = Math.min(w, h) * 0.3
-        bestPos = { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r }
+        const halfItem = 30
+        const fbX = Math.max(cx - w / 2 + halfItem, Math.min(cx + w / 2 - halfItem, cx + Math.cos(angle) * r))
+        const fbY = Math.max(cy - h / 2 + halfItem, Math.min(cy + h / 2 - halfItem, cy + Math.sin(angle) * r))
+        bestPos = { x: fbX, y: fbY }
       }
 
       positions.push(bestPos)
@@ -962,6 +969,10 @@ export class RewardRoomScene extends Phaser.Scene {
     this.continueButton.on('pointerdown', () => {
       this.onContinueTapped()
     })
+
+    // Keyboard support: Enter or Space triggers Continue
+    this.input.keyboard?.on('keydown-ENTER', () => { this.onContinueTapped() })
+    this.input.keyboard?.on('keydown-SPACE', () => { this.onContinueTapped() })
   }
 
   private onContinueTapped(): void {

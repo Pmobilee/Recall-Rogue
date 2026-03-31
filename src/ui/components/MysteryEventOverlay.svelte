@@ -11,6 +11,8 @@
   import { get } from 'svelte/store'
   import { activeRunState } from '../../services/runStateStore'
   import { getCuratedDeckFacts } from '../../data/curatedDeckStore'
+  import { staggerPopIn } from '../utils/roomPopIn'
+  import { tick } from 'svelte'
 
   interface Props {
     event: MysteryEvent | null
@@ -29,6 +31,7 @@
   // The <img> onerror handler below falls back to genericBgUrl if the per-event asset 404s.
   let bgUrl = $derived(event ? getMysteryEventBg(event.id) : genericBgUrl)
 
+  let overlayEl = $state<HTMLElement>(null!)
   let showRoomTransition = $state(true)
   holdScreenTransition()
   preloadImages([genericBgUrl]).then(releaseScreenTransition)
@@ -423,7 +426,7 @@
 </script>
 
 {#if event}
-  <div class="mystery-overlay">
+  <div class="mystery-overlay" bind:this={overlayEl}>
     <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true"
       onerror={(e) => { (e.currentTarget as HTMLImageElement).src = genericBgUrl }} />
     <div class="mystery-card">
@@ -592,7 +595,17 @@
     depthUrl={depthUrl}
     type="enter"
     onComplete={() => { showRoomTransition = false }}
-      persist
+    onSettle={() => {
+      tick().then(() => {
+        if (!overlayEl) return
+        staggerPopIn({
+          container: overlayEl,
+          elements: ['.mystery-card', '.event-name', '.effect-icon', '.event-desc', '.hp-info', '.continue-btn'],
+          totalDuration: 2000,
+        })
+      })
+    }}
+    persist
   />
 {/if}
 
@@ -623,7 +636,7 @@
     border: 2px solid #9B59B6;
     border-radius: 12px;
     padding: calc(24px * var(--layout-scale, 1));
-    max-width: calc(340px * var(--layout-scale, 1));
+    max-width: min(90%, calc(480px * var(--layout-scale, 1)));
     max-height: 90vh;
     width: 100%;
     display: flex;

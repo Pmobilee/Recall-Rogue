@@ -951,6 +951,9 @@ async function resetToPreset(presetId: string): Promise<PlayResult> {
       runsCompleted: 3,
     }));
     localStorage.setItem('card:difficultyMode', JSON.stringify('standard'));
+    localStorage.setItem('tutorial:apShown', 'true');
+    localStorage.setItem('tutorial:chargeShown', 'true');
+    localStorage.setItem('tutorial:comparisonShown', 'true');
 
     // Preserve existing URL params (turbo, devpreset, etc.) through reload
     const params = new URLSearchParams(window.location.search);
@@ -991,6 +994,67 @@ function getSessionSummary(): Record<string, unknown> {
     firstEvent: first.type,
     lastEvent: last.type,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Scenario Spawn System (delegates to __rrScenario)
+// ---------------------------------------------------------------------------
+
+/** Spawn into any game state with deep overrides. Delegates to __rrScenario.spawn(). */
+async function spawnScenario(config: Record<string, unknown>): Promise<PlayResult> {
+  return safeAction(async () => {
+    const scenario = (window as any).__rrScenario;
+    if (!scenario?.spawn) {
+      return { ok: false, message: '__rrScenario not initialized — is the game loaded?' };
+    }
+    const result = await scenario.spawn(config);
+    return { ok: result.ok, message: result.message, state: result.state };
+  });
+}
+
+/** Mid-session state patching. Delegates to __rrScenario.patch(). */
+function patchState(overrides: { turn?: Record<string, unknown>; run?: Record<string, unknown> }): PlayResult {
+  const scenario = (window as any).__rrScenario;
+  if (!scenario?.patch) {
+    return { ok: false, message: '__rrScenario not initialized' };
+  }
+  return scenario.patch(overrides);
+}
+
+/** Capture full state snapshot. Delegates to __rrScenario.snapshot(). */
+function snapshotState(label?: string): Record<string, unknown> | PlayResult {
+  const scenario = (window as any).__rrScenario;
+  if (!scenario?.snapshot) {
+    return { ok: false, message: '__rrScenario not initialized' };
+  }
+  return scenario.snapshot(label);
+}
+
+/** Restore from snapshot. Delegates to __rrScenario.restore(). */
+function restoreState(snap: Record<string, unknown>): PlayResult {
+  const scenario = (window as any).__rrScenario;
+  if (!scenario?.restore) {
+    return { ok: false, message: '__rrScenario not initialized' };
+  }
+  return scenario.restore(snap);
+}
+
+/** Get schema of all available state fields. Delegates to __rrScenario.schema(). */
+function getSchema(): unknown[] | PlayResult {
+  const scenario = (window as any).__rrScenario;
+  if (!scenario?.schema) {
+    return { ok: false, message: '__rrScenario not initialized' };
+  }
+  return scenario.schema();
+}
+
+/** Get a recipe for testing a specific game element. Delegates to __rrScenario.recipes(). */
+function getRecipes(id?: string): unknown {
+  const scenario = (window as any).__rrScenario;
+  if (!scenario?.recipes) {
+    return { ok: false, message: '__rrScenario not initialized' };
+  }
+  return scenario.recipes(id);
 }
 
 // ---------------------------------------------------------------------------
@@ -1062,6 +1126,13 @@ export function initPlaytestAPI(): void {
     resetToPreset,
     getRecentEvents,
     getSessionSummary,
+    // Scenario spawn system
+    spawn: spawnScenario,
+    patch: patchState,
+    snapshot: snapshotState,
+    restore: restoreState,
+    schema: getSchema,
+    recipes: getRecipes,
     // Perception (from playtestDescriber)
     look,
     getAllText,

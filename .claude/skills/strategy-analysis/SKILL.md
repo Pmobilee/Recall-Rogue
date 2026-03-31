@@ -127,3 +127,9 @@ The skill produces a narrative balance report with:
 - [AIPA](https://github.com/AIPlaytesting/AIPA) — ML agent for PVE card game balance testing (Slay the Spire)
 - [MiniSTS + LLM Agents (FDG 2024)](https://dl.acm.org/doi/fullHtml/10.1145/3649921.3650013) — LLMs as game-playing agents with natural language reasoning
 - [SlayTheSpireFightPredictor](https://github.com/alexdriedger/SlayTheSpireFightPredictor) — ML fight outcome prediction trained on 325k fights
+
+### Registry Update (AUTO)
+After strategic analysis completes, stamp analyzed cards:
+```bash
+npx tsx scripts/registry/updater.ts --ids "{comma-separated analyzed card IDs}" --type strategyDate
+```

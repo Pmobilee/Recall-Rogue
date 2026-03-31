@@ -5,6 +5,8 @@
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { staggerPopIn } from '../utils/roomPopIn'
+  import { tick } from 'svelte'
 
   interface Props {
     playerHp: number
@@ -35,15 +37,17 @@
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 
+  let overlayEl = $state<HTMLElement>(null!)
   let healAmount = $derived(Math.round(playerMaxHp * 0.3))
   let projectedHp = $derived(Math.min(playerMaxHp, playerHp + healAmount))
+  let healDisabled = $derived(playerHp >= playerMaxHp)
 
   $effect(() => {
     playCardAudio('rest-open')
   })
 </script>
 
-<div class="rest-overlay" class:landscape={$isLandscape}>
+<div class="rest-overlay" bind:this={overlayEl} class:landscape={$isLandscape}>
   <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <div class="rest-card" style="position: relative; z-index: 1;">
     <h2 class="rest-title">Rest Site</h2>
@@ -56,8 +60,10 @@
     <div class="option-cards" role="radiogroup" aria-label="Rest site options">
       <button
         class="option-card heal-card"
+        class:disabled={healDisabled}
         data-testid="rest-heal"
-        onclick={() => { playCardAudio('rest-heal'); onheal() }}
+        disabled={healDisabled}
+        onclick={() => { if (!healDisabled) { playCardAudio('rest-heal'); onheal() } }}
       >
         <span class="option-icon">❤️</span>
         <span class="option-label">Rest</span>
@@ -100,7 +106,17 @@
     depthUrl={depthUrl}
     type="enter"
     onComplete={() => { showRoomTransition = false }}
-      persist
+    onSettle={() => {
+      tick().then(() => {
+        if (!overlayEl) return
+        staggerPopIn({
+          container: overlayEl,
+          elements: ['.rest-card', '.rest-title', '.rest-choice-caption', '.hp-info', '.heal-card', '.study-card', '.meditate-card'],
+          totalDuration: 2000,
+        })
+      })
+    }}
+    persist
   />
 {/if}
 
@@ -200,6 +216,7 @@
     border-color: #14B8A6;
   }
 
+  .heal-card.disabled,
   .study-card.disabled,
   .meditate-card.disabled {
     border-color: #5b6471;
@@ -210,12 +227,14 @@
     box-shadow: none;
   }
 
+  .heal-card.disabled .option-preview,
   .study-card.disabled .option-preview,
   .meditate-card.disabled .option-preview {
     opacity: 0.5;
     color: #9BA3AB;
   }
 
+  .heal-card.disabled:hover,
   .study-card.disabled:hover,
   .meditate-card.disabled:hover {
     border-color: #5b6471;

@@ -143,14 +143,25 @@ export class ScreenShakeSystem {
    * @param deltaMs - Frame delta time in milliseconds
    */
   update(deltaMs: number): void {
+    // Always pin the camera to (0, 0) before applying shake. This prevents
+    // zoom-tween interactions from leaking residual scroll offsets across frames
+    // (the zoom punch tweens change cam.zoom while scrollX/Y is non-zero, which
+    // causes Phaser to recalculate the viewport and leaves behind drift that
+    // accumulates each time a shake + zoom overlap). By zeroing scroll here and
+    // adding the shake delta freshly each frame, no drift can accumulate.
+    const cam = this.scene.cameras.main
+    cam.scrollX = 0
+    cam.scrollY = 0
+    this.offsetX = 0
+    this.offsetY = 0
+
     if (this.activeTier === null || this.activeConfig === null) return
 
     this.elapsed += deltaMs
     const cfg = this.activeConfig
 
     if (this.elapsed >= cfg.durationMs) {
-      // Shake finished — restore camera and reset
-      this._restoreCamera()
+      // Shake finished — reset state (camera already zeroed above)
       this.activeTier = null
       this.activeConfig = null
       this.elapsed = 0
@@ -171,14 +182,11 @@ export class ScreenShakeSystem {
 
     const effectiveAmp = cfg.amplitude * envelope * this.intensityMultiplier
 
-    // Restore previous offset then apply new one
-    this._restoreCamera()
+    // Apply fresh offset (camera is already at 0 from the pin above)
     this.offsetX = nx * effectiveAmp
     this.offsetY = ny * effectiveAmp
-
-    const cam = this.scene.cameras.main
-    cam.scrollX += this.offsetX
-    cam.scrollY += this.offsetY
+    cam.scrollX = this.offsetX
+    cam.scrollY = this.offsetY
   }
 
   /**
@@ -211,12 +219,14 @@ export class ScreenShakeSystem {
 
   /**
    * Reverts the camera scroll offset applied by this system.
+   * With the pin-then-apply approach in update(), explicit restore is only
+   * needed for stop() calls between frames.
    */
   private _restoreCamera(): void {
     if (this.offsetX !== 0 || this.offsetY !== 0) {
       const cam = this.scene.cameras.main
-      cam.scrollX -= this.offsetX
-      cam.scrollY -= this.offsetY
+      cam.scrollX = 0
+      cam.scrollY = 0
       this.offsetX = 0
       this.offsetY = 0
     }

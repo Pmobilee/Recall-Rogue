@@ -116,7 +116,7 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
     }
   } catch (err) {
     // html2canvas failed — log and continue with Phaser-only capture
-    console.warn('[screenshotHelper] html2canvas failed, DOM overlay missing:', err);
+    console.warn('[screenshotHelper] html2canvas failed (likely CSS color() function incompatibility). DOM overlay will be missing from screenshot:', err);
   }
 
   // 3. If scale != 1, draw the full canvas onto a smaller output canvas

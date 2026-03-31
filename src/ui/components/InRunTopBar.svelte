@@ -238,31 +238,56 @@
   </div>
 </div>
 
-<!-- Brain Fog Wing — extends below top bar -->
+<!-- Brain Fog Wing — glass meter below top bar -->
 {#if fogState !== undefined}
+  {@const fl = fogLevel ?? 0}
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class="fog-wing" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'} aria-label="Knowledge Aura: {fogLevel} of 10"
+  <div class="fog-wing-wrapper" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'}
     onclick={() => { fogTooltipOpen = !fogTooltipOpen }}
     onmouseenter={() => { fogTooltipOpen = true }}
     onmouseleave={() => { fogTooltipOpen = false }}
   >
-    <div class="fog-wing-content">
-      <span class="fog-icon" aria-hidden="true">{fogState === 'flow_state' ? '✨' : '🌫️'}</span>
-      <span class="fog-level">{fogLevel}</span>
+    <div class="fog-wing" aria-label="{fogState === 'brain_fog' ? 'Brain Fog' : fogState === 'flow_state' ? 'Flow State' : 'Neutral'} level {Math.abs(fl)}">
+      {#if fl < 0}
+        <div class="fog-fill-good" style="width: {Math.abs(fl) / 5 * 50}%; right: 50%;"></div>
+      {:else if fl > 0}
+        <div class="fog-fill-bad" style="width: {fl / 5 * 50}%; left: 50%;"></div>
+      {/if}
+      <div class="fog-center-mark"></div>
+      <div class="fog-mist" style="opacity: {Math.abs(fl) / 5 * 0.5};"></div>
+      <div class="fog-glass-highlight"></div>
     </div>
-    <div class="fog-mist" style="opacity: {(fogLevel ?? 0) / 10 * 0.7};"></div>
     {#if fogTooltipOpen}
       <div class="fog-tooltip">
-        <div class="fog-tooltip-title">Knowledge Aura</div>
+        <div class="fog-tooltip-title">
+          {#if fogState === 'brain_fog'}
+            Brain Fog
+          {:else if fogState === 'flow_state'}
+            Flow State
+          {:else}
+            Mental Clarity
+          {/if}
+        </div>
         <div class="fog-tooltip-desc">
           {#if fogState === 'brain_fog'}
-            Brain Fog active — enemies deal +20% damage.
+            Your mind is clouded. Enemies deal <strong>+20% damage</strong>. Answer questions correctly to clear the fog.
           {:else if fogState === 'flow_state'}
-            Flow State active — draw +1 card per turn.
+            Crystal clear focus! Draw <strong>+1 card</strong> per turn. Keep answering correctly to maintain flow.
           {:else}
-            Neutral — answer correctly to build Flow State.
+            Steady focus. Wrong answers build fog, correct answers clear it. Stay sharp to reach Flow State.
           {/if}
-          <br/>Aura: {fogLevel}/10 (below 4 = fog, above 7 = flow)
+        </div>
+        <div class="fog-tooltip-meter">
+          <span class="fog-tooltip-label">-5</span>
+          <div class="fog-tooltip-bar">
+            {#if (fogLevel ?? 0) < 0}
+              <div class="fog-tooltip-bar-good" style="width: {Math.abs(fogLevel ?? 0) / 5 * 50}%; right: 50%;"></div>
+            {:else if (fogLevel ?? 0) > 0}
+              <div class="fog-tooltip-bar-bad" style="width: {(fogLevel ?? 0) / 5 * 50}%; left: 50%;"></div>
+            {/if}
+            <div class="fog-tooltip-center"></div>
+          </div>
+          <span class="fog-tooltip-value">+5</span>
         </div>
       </div>
     {/if}
@@ -285,11 +310,12 @@
     justify-content: space-between;
     background: rgba(10, 15, 25, 0.92);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: calc(2px * var(--layout-scale, 1)) solid rgba(194, 157, 72, 0.6);
     padding: 0 calc(12px * var(--layout-scale, 1));
     pointer-events: auto;
     box-sizing: border-box;
     user-select: none;
+    overflow: hidden;
   }
 
   /* ============================================================
@@ -646,69 +672,113 @@
   }
 
   /* ============================================================
-     Brain Fog Wing
+     Brain Fog Wing — Glass Meter
      ============================================================ */
-  .fog-wing {
+  .fog-wing-wrapper {
     position: fixed;
     top: var(--topbar-height, clamp(36px, 4.5vh, 56px));
     left: 0;
     width: 35%;
-    height: calc(28px * var(--layout-scale, 1));
-    background: rgba(10, 15, 25, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom-right-radius: calc(16px * var(--layout-scale, 1));
     z-index: 199;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .fog-wing {
+    position: relative;
+    width: 100%;
+    height: calc(28px * var(--layout-scale, 1));
+    background: rgba(20, 30, 50, 0.35);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom-right-radius: calc(16px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     overflow: hidden;
-    pointer-events: auto;
-    cursor: pointer;
     transition: background 400ms ease, box-shadow 400ms ease;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
   }
 
-  .fog-wing-content {
-    position: relative;
+  /* Glass highlight — top reflection */
+  .fog-glass-highlight {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.03) 40%,
+      transparent 60%
+    );
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 3;
+  }
+
+  /* Green fill — extends left from center (good, negative fog) */
+  .fog-fill-good {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(80, 200, 120, 0.5) 0%,
+      rgba(50, 180, 80, 0.35) 50%,
+      rgba(30, 160, 60, 0.25) 100%
+    );
+    transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: calc(4px * var(--layout-scale, 1));
-    padding: 0 calc(10px * var(--layout-scale, 1));
+    border-radius: inherit;
   }
 
-  .fog-icon {
-    font-size: calc(12px * var(--text-scale, 1));
-    line-height: 1;
+  /* Red fill — extends right from center (bad, positive fog) */
+  .fog-fill-bad {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(220, 80, 60, 0.5) 0%,
+      rgba(200, 60, 50, 0.35) 50%,
+      rgba(180, 40, 40, 0.25) 100%
+    );
+    transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    border-radius: inherit;
   }
 
-  .fog-level {
-    font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(11px * var(--text-scale, 1));
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1;
-    letter-spacing: 0.03em;
+  /* Subtle center tick mark */
+  .fog-center-mark {
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 2;
+    pointer-events: none;
   }
 
   /* Danger state — brain fog active */
-  .fog-wing-danger {
-    background: rgba(25, 10, 30, 0.92);
-    box-shadow: inset 0 0 calc(12px * var(--layout-scale, 1)) rgba(129, 140, 248, 0.3);
-    border-color: rgba(129, 140, 248, 0.3);
+  .fog-wing-danger .fog-wing {
+    background: rgba(50, 15, 15, 0.4);
+    box-shadow:
+      inset 0 0 calc(12px * var(--layout-scale, 1)) rgba(220, 80, 60, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
+    border-color: rgba(220, 80, 60, 0.25);
   }
 
-  .fog-wing-danger .fog-level {
-    color: #a78bfa;
-  }
-
-  /* Flow state — low fog */
-  .fog-wing-flow {
-    box-shadow: inset 0 0 calc(10px * var(--layout-scale, 1)) rgba(251, 191, 36, 0.15);
-  }
-
-  .fog-wing-flow .fog-level {
-    color: #fbbf24;
+  /* Flow state — green clarity */
+  .fog-wing-flow .fog-wing {
+    background: rgba(15, 40, 20, 0.4);
+    box-shadow:
+      inset 0 0 calc(10px * var(--layout-scale, 1)) rgba(80, 200, 120, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.3);
+    border-color: rgba(80, 200, 120, 0.2);
   }
 
   /* Animated mist overlay */
@@ -717,14 +787,15 @@
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(129, 140, 248, 0.05) 0%,
-      rgba(129, 140, 248, 0.2) 30%,
-      rgba(129, 140, 248, 0.1) 60%,
-      rgba(129, 140, 248, 0.25) 100%
+      rgba(150, 160, 180, 0.05) 0%,
+      rgba(150, 160, 180, 0.15) 30%,
+      rgba(150, 160, 180, 0.08) 60%,
+      rgba(150, 160, 180, 0.18) 100%
     );
     animation: fogDrift 4s ease-in-out infinite alternate;
     pointer-events: none;
     border-radius: inherit;
+    z-index: 2;
   }
 
   @keyframes fogDrift {
@@ -742,37 +813,116 @@
     .fog-mist { animation: none; }
   }
 
+  /* Tooltip */
   .fog-tooltip {
     position: absolute;
     top: calc(100% + calc(4px * var(--layout-scale, 1)));
     left: calc(10px * var(--layout-scale, 1));
     background: rgba(14, 20, 32, 0.97);
-    border: 1.5px solid rgba(129, 140, 248, 0.4);
-    border-radius: calc(6px * var(--layout-scale, 1));
-    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    max-width: calc(220px * var(--layout-scale, 1));
-    min-width: calc(160px * var(--layout-scale, 1));
+    border: 1.5px solid rgba(148, 163, 184, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    max-width: calc(260px * var(--layout-scale, 1));
+    min-width: calc(180px * var(--layout-scale, 1));
     z-index: 300;
     pointer-events: none;
     box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.7);
     white-space: normal;
   }
 
+  .fog-wing-danger .fog-tooltip {
+    border-color: rgba(220, 80, 60, 0.4);
+  }
+
+  .fog-wing-flow .fog-tooltip {
+    border-color: rgba(80, 200, 120, 0.4);
+  }
+
   .fog-tooltip-title {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
     font-weight: 700;
-    color: #a78bfa;
-    margin-bottom: calc(4px * var(--layout-scale, 1));
+    color: #94a3b8;
+    margin-bottom: calc(6px * var(--layout-scale, 1));
     line-height: 1.3;
     letter-spacing: 0.03em;
   }
 
+  .fog-wing-danger .fog-tooltip .fog-tooltip-title {
+    color: #f87171;
+  }
+
+  .fog-wing-flow .fog-tooltip .fog-tooltip-title {
+    color: #4ade80;
+  }
+
   .fog-tooltip-desc {
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
     color: #d4c9a8;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    margin-bottom: calc(8px * var(--layout-scale, 1));
+  }
+
+  .fog-tooltip-desc strong {
+    color: #e8dcc0;
+    font-weight: 600;
+  }
+
+  /* Mini meter in tooltip */
+  .fog-tooltip-meter {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .fog-tooltip-label {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(8px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.5);
+    min-width: calc(24px * var(--layout-scale, 1));
+  }
+
+  .fog-tooltip-bar {
+    position: relative;
+    flex: 1;
+    height: calc(4px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: calc(2px * var(--layout-scale, 1));
+    overflow: hidden;
+  }
+
+  .fog-tooltip-bar-good {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(270deg, rgba(80, 200, 120, 0.7), rgba(50, 180, 80, 0.5));
+    border-radius: inherit;
+  }
+
+  .fog-tooltip-bar-bad {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(220, 80, 60, 0.7), rgba(200, 60, 50, 0.5));
+    border-radius: inherit;
+  }
+
+  .fog-tooltip-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .fog-tooltip-value {
+    font-family: var(--font-pixel, var(--font-rpg));
+    font-size: calc(8px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.6);
+    min-width: calc(28px * var(--layout-scale, 1));
+    text-align: right;
   }
 
   .gold-tooltip {
