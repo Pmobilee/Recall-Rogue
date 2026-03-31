@@ -98,7 +98,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'block', name: 'Block', type: 'shield',
     description: 'Gain block.',
     baseValue: 6, apCost: 1, maxPerPool: 0, tags: ['block'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 3, chargeCorrectValue: 18, chargeWrongValue: 2,
+    quickPlayValue: 5, chargeCorrectValue: 18, chargeWrongValue: 3,
   },
   {
     id: 'thorns', name: 'Thorns', type: 'shield',
@@ -118,7 +118,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'fortify', name: 'Fortify', type: 'shield',
     description: 'Gain 7 persistent block into next turn.',
     baseValue: 7, apCost: 2, maxPerPool: 0, tags: ['persistent_block'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 4, chargeCorrectValue: 21, chargeWrongValue: 3,
+    quickPlayValue: 6, chargeCorrectValue: 21, chargeWrongValue: 4,
   },
   {
     id: 'brace', name: 'Brace', type: 'shield',
@@ -146,7 +146,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'empower', name: 'Empower', type: 'buff',
     description: 'Next card deals 50% more damage.',
     baseValue: 50, apCost: 1, maxPerPool: 0, tags: ['buff'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 35, chargeCorrectValue: 75, chargeWrongValue: 25,
+    quickPlayValue: 50, chargeCorrectValue: 75, chargeWrongValue: 35,
   },
   {
     id: 'quicken', name: 'Quicken', type: 'buff',
@@ -214,7 +214,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'scout', name: 'Scout', type: 'utility',
     description: 'Draw 2 cards.',
     baseValue: 2, apCost: 1, maxPerPool: 0, tags: ['draw'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 1, chargeCorrectValue: 3, chargeWrongValue: 1,
+    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
   {
     id: 'recycle', name: 'Recycle', type: 'utility',
@@ -308,7 +308,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'reinforce', name: 'Reinforce', type: 'shield',
     description: 'Gain more block than a basic shield.',
     baseValue: 8, apCost: 1, maxPerPool: 3, tags: ['block'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 4, chargeCorrectValue: 24, chargeWrongValue: 3,
+    quickPlayValue: 7, chargeCorrectValue: 24, chargeWrongValue: 4,
   },
   {
     id: 'shrug_it_off', name: 'Shrug It Off', type: 'shield',
@@ -326,7 +326,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     id: 'guard', name: 'Guard', type: 'shield',
     description: 'Gain a large amount of block.',
     baseValue: 14, apCost: 2, maxPerPool: 2, tags: ['block'], launchPhase: 1, unlockLevel: 1,
-    quickPlayValue: 7, chargeCorrectValue: 42, chargeWrongValue: 5,
+    quickPlayValue: 12, chargeCorrectValue: 42, chargeWrongValue: 7,
   },
   {
     id: 'sap', name: 'Sap', type: 'debuff',

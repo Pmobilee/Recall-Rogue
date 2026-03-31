@@ -2,7 +2,7 @@
 // Tracks the Knowledge Chain state for the current player turn.
 // A chain forms when consecutive correctly-Charged cards share the same chainType (0-5).
 
-import { CHAIN_MULTIPLIERS, MAX_CHAIN_LENGTH } from '../data/balance';
+import { CHAIN_MULTIPLIERS, MAX_CHAIN_LENGTH, CHAIN_DECAY_PER_TURN } from '../data/balance';
 
 export interface ChainState {
   /** The chainType index of the current chain, or null if no chain is active. */
@@ -14,11 +14,26 @@ export interface ChainState {
 let _chain: ChainState = { chainType: null, length: 0 };
 
 /**
- * Resets the chain at the start of each player turn.
- * Called by turnManager at the start of each new turn.
+ * Fully resets the chain. Called at encounter start for a clean slate.
  */
 export function resetChain(): void {
   _chain = { chainType: null, length: 0 };
+}
+
+/**
+ * Decays the chain by CHAIN_DECAY_PER_TURN at the end of each player turn.
+ * Instead of fully resetting, the chain length decreases by 1 so players carry
+ * partial momentum into the next turn. If length reaches 0, chain type clears.
+ *
+ * Call this at end-of-turn (instead of resetChain) in turnManager.
+ */
+export function decayChain(): void {
+  const newLength = Math.max(0, _chain.length - CHAIN_DECAY_PER_TURN);
+  if (newLength === 0) {
+    _chain = { chainType: null, length: 0 };
+  } else {
+    _chain = { ..._chain, length: newLength };
+  }
 }
 
 /**

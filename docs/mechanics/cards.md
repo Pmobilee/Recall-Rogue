@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
@@ -69,21 +69,21 @@ The resolver (`cardEffectResolver.ts`) computes CC damage as:
 
 ```
 CC damage = (quickPlayValue + getMasteryBaseBonus(mechanicId, masteryLevel))
-            × CHARGE_CORRECT_MULTIPLIER (1.5)
+            × CHARGE_CORRECT_MULTIPLIER (2.0)
             × chainMultiplier
             × relicModifiers
             + inscriptionFuryBonus
 ```
 
-`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `(quickPlayValue + masteryBonus) × 1.5`. Do not read it.
+`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `(quickPlayValue + masteryBonus) × 2.0`. Do not read it.
 
-**Play mode multipliers:**
+**Play mode multipliers (as of 2026-04-01 balance pass):**
 
 | Mode | Effect |
 |------|--------|
 | Quick Play (`quick`) | Uses `quickPlayValue` directly |
-| Charge Correct (`charge_correct`) | `(quickPlayValue + masteryBonus) × 1.5` |
-| Charge Wrong (`charge_wrong`) | `FIZZLE_EFFECT_RATIO = 0.25×` of base effect |
+| Charge Correct (`charge_correct`) | `(quickPlayValue + masteryBonus) × 2.0` (buffed from 1.5×) |
+| Charge Wrong (`charge_wrong`) | `FIZZLE_EFFECT_RATIO = 0.5×` of base effect (buffed from 0.25×) |
 | Cursed QP | `CURSED_QP_MULTIPLIER = 0.7×` |
 | Cursed CC | `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0×` (reward is the cure) |
 | Cursed CW | `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5×` |

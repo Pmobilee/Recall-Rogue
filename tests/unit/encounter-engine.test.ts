@@ -512,8 +512,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'attack', value: 5, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1 applies 1.0x base damage scaling (early game nerf removed).
-      expect(result.damage).toBe(5);
+      // Floor 1: FLOOR_DAMAGE_SCALE_MID=2.0, so 5 * 2.0 = 10, capped at 10 (segment 1 cap, doubled 2026-03-31).
+      expect(result.damage).toBe(10);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: 10 * 1.5 * 1.0 = 15, capped at 5 per segment 1
-      expect(result.damage).toBe(5);
+      // Floor 1: 10 * 1.5 * 1.0 = 15, capped at 10 per segment 1 (cap doubled 2026-03-31)
+      expect(result.damage).toBe(10);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // 5 * 1.0 (strength) * 1.0 (floor) * 4 hits = 20, capped at 5 per segment 1
-      expect(result.damage).toBe(5);
+      // 5 * 1.0 (strength) * 1.0 (floor) * 4 hits = 20, capped at 10 per segment 1 (cap doubled 2026-03-31)
+      expect(result.damage).toBe(10);
     });
 
     it('returns player debuffs for debuff intent', () => {
@@ -782,14 +782,26 @@ describe('Player Combat State', () => {
   });
 
   describe('resetTurnState', () => {
-    it('clears shield and cardsPlayed', () => {
+    it('persists shield (capped at 2x maxHP) and clears cardsPlayed', () => {
       const state = mockPlayerState({
         shield: 15,
         cardsPlayedThisTurn: 4,
       });
       resetTurnState(state);
-      expect(state.shield).toBe(0);
+      // Shield of 15 is below cap (2 × 80 = 160), so it persists
+      expect(state.shield).toBe(15);
       expect(state.cardsPlayedThisTurn).toBe(0);
+    });
+
+    it('caps shield at 2x maxHP when carrying over', () => {
+      const state = mockPlayerState({
+        shield: 250,
+        maxHP: 80,
+        cardsPlayedThisTurn: 0,
+      });
+      resetTurnState(state);
+      // Cap is 2 × 80 = 160
+      expect(state.shield).toBe(160);
     });
 
     it('does not clear HP or status effects', () => {

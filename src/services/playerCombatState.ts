@@ -4,7 +4,7 @@
 
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect as applyEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { PLAYER_START_HP } from '../data/balance';
+import { PLAYER_START_HP, BLOCK_CARRY_CAP_MULTIPLIER } from '../data/balance';
 
 /** The player's combat state for a single encounter. */
 export interface PlayerCombatState {
@@ -12,7 +12,7 @@ export interface PlayerCombatState {
   hp: number;
   /** Maximum hit points. */
   maxHP: number;
-  /** Current shield (block) points. Absorbed before HP. Resets each turn. */
+  /** Current shield (block) points. Absorbed before HP. Persists across turns (capped at 2× maxHP). */
   shield: number;
   /** Active status effects on the player. */
   statusEffects: StatusEffect[];
@@ -142,11 +142,17 @@ export function tickPlayerStatusEffects(state: PlayerCombatState): {
 }
 
 /**
- * Resets per-turn state: clears shield and cards played counter.
+ * Resets per-turn state: carries over shield (capped at 2× maxHP) and resets cards played.
+ *
+ * Block is now persistent — it carries into the next turn rather than resetting to 0.
+ * A cap of BLOCK_CARRY_CAP_MULTIPLIER × maxHP prevents infinite stacking.
+ * Note: the `persistentShield` relic flag (fortress_wall) is handled separately by turnManager
+ * before calling this function and still overrides to full carry for that relic.
  *
  * @param state - The player combat state (mutated in place).
  */
 export function resetTurnState(state: PlayerCombatState): void {
-  state.shield = 0;
+  // Block persists across turns, capped at 2× maxHP to prevent infinite stacking
+  state.shield = Math.min(state.shield, state.maxHP * BLOCK_CARRY_CAP_MULTIPLIER);
   state.cardsPlayedThisTurn = 0;
 }

@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`
 
 ---
@@ -55,7 +55,7 @@ If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
 
 Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 
-1. **Mechanic base** — `mechanic.quickPlayValue` (QP) or `(quickPlayValue + masteryBonus) × CHARGE_CORRECT_MULTIPLIER` (CC = 1.5×) or `mechanic.chargeWrongValue` (CW)
+1. **Mechanic base** — `mechanic.quickPlayValue` (QP) or `(quickPlayValue + masteryBonus) × CHARGE_CORRECT_MULTIPLIER` (CC = 2.0×) or `mechanic.chargeWrongValue` (CW)
 2. **Mastery bonus** — `getMasteryBaseBonus(mechanicId, masteryLevel)` — included inside the 1.5× CC multiplier (not added flat after)
 3. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
 4. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
@@ -70,7 +70,8 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 
 **Tier multipliers:** All active tiers (T1, T2a, T2b) use `effectMultiplier = 1.0`. Tier no longer drives card power; mastery does. T3 = 0× (card becomes a passive).
 
-**Knowledge Chain multipliers** (`CHAIN_MULTIPLIERS`): [1.0, 1.0, 1.3, 1.7, 2.2, 3.0] at chain lengths 0–5.
+**Knowledge Chain multipliers** (`CHAIN_MULTIPLIERS`): [1.0, 1.2, 1.5, 2.0, 2.5, 3.5] at chain lengths 0–5.
+Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of fully resetting, preserving momentum into the next turn.
 
 ---
 
@@ -84,7 +85,7 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 - If no Charge play was made the entire turn (Quick Play only, or no cards played), fog drifts up by 1 (`adjustAura(1)`) at `endPlayerTurn()` — AR-261
 
 **Charge Correct (`playMode = 'charge'`, `answeredCorrectly = true`)**
-- Damage = `(quickPlayValue + masteryBonus) × 1.5` — mastery is included before multiplication
+- Damage = `(quickPlayValue + masteryBonus) × 2.0` — mastery is included before multiplication (CC multiplier buffed 1.5→2.0, 2026-04-01)
 - Extends Knowledge Chain
 - Mastery upgrade eligible
 - Costs `apCost + 1` (with waivers)
@@ -92,7 +93,7 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 - Clears fact from review queue
 
 **Charge Wrong (`playMode = 'charge'`, `answeredCorrectly = false`)**
-- Partial effect at `FIZZLE_EFFECT_RATIO = 0.25×` of base effect
+- Partial effect at `FIZZLE_EFFECT_RATIO = 0.5×` of base effect (buffed from 0.25×, 2026-04-01 — wrong answers feel less punishing)
 - Free First Charge wrong = 0.0× (total fizzle, `FIRST_CHARGE_FREE_WRONG_MULTIPLIER`)
 - Breaks Knowledge Chain, loses Chain Momentum
 - Mastery downgrade (skipped on first attempt at a fact, `isFirstAttempt` flag)
@@ -125,8 +126,8 @@ See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
 
 - `applyShield(state, amount)` — stacks additively
 - `takeDamage()` — shield absorbs first, then HP; `immunity` status absorbs after shield
-- `resetTurnState()` — shield decays to 0 each turn end
-- `persistentShield` — carries over if `fortress_wall` relic's `blockCarries` flag is set
+- `resetTurnState()` — block **persists** across turns (capped at `BLOCK_CARRY_CAP_MULTIPLIER × maxHP = 2× maxHP`). Block no longer decays to 0 each turn (changed 2026-04-01 balance pass).
+- `persistentShield` — `fortress_wall` relic's `blockCarries` flag still applies; fortify mechanic remains differentiated as the primary persistent-block card
 - Enemy block resets to 0 at start of enemy turn — enemies must re-defend each turn
 
 ---

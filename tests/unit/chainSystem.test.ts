@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import {
   resetChain,
+  decayChain,
   extendOrResetChain,
   getChainMultiplier,
   getCurrentChainLength,
@@ -19,90 +20,90 @@ describe('chainSystem', () => {
       expect(getChainMultiplier(0)).toBe(1.0);
     });
 
-    it('returns 1.0 for length 1 (first card, no bonus)', () => {
-      expect(getChainMultiplier(1)).toBe(1.0);
+    it('returns 1.2 for length 1 (first card, early bonus)', () => {
+      expect(getChainMultiplier(1)).toBe(1.2);
     });
 
-    it('returns 1.3 for length 2', () => {
-      expect(getChainMultiplier(2)).toBe(1.3);
+    it('returns 1.5 for length 2', () => {
+      expect(getChainMultiplier(2)).toBe(1.5);
     });
 
-    it('returns 1.7 for length 3', () => {
-      expect(getChainMultiplier(3)).toBe(1.7);
+    it('returns 2.0 for length 3', () => {
+      expect(getChainMultiplier(3)).toBe(2.0);
     });
 
-    it('returns 2.2 for length 4', () => {
-      expect(getChainMultiplier(4)).toBe(2.2);
+    it('returns 2.5 for length 4', () => {
+      expect(getChainMultiplier(4)).toBe(2.5);
     });
 
-    it('returns 3.0 for length 5', () => {
-      expect(getChainMultiplier(5)).toBe(3.0);
+    it('returns 3.5 for length 5', () => {
+      expect(getChainMultiplier(5)).toBe(3.5);
     });
 
     it('clamps at MAX_CHAIN_LENGTH = 5', () => {
-      expect(getChainMultiplier(6)).toBe(3.0);
-      expect(getChainMultiplier(100)).toBe(3.0);
+      expect(getChainMultiplier(6)).toBe(3.5);
+      expect(getChainMultiplier(100)).toBe(3.5);
     });
   });
 
   // --- extendOrResetChain tests ---
 
   describe('extendOrResetChain', () => {
-    it('returns 1.0 for first card of any chainType group', () => {
+    it('returns 1.2 for first card of any chainType group', () => {
       const mult = extendOrResetChain(0);
-      expect(mult).toBe(1.0);
+      expect(mult).toBe(1.2);
     });
 
-    it('returns 1.3 for second consecutive same-chainType card', () => {
+    it('returns 1.5 for second consecutive same-chainType card', () => {
       extendOrResetChain(0);
       const mult = extendOrResetChain(0);
-      expect(mult).toBe(1.3);
+      expect(mult).toBe(1.5);
     });
 
-    it('returns 1.7 for third consecutive same-chainType card', () => {
-      extendOrResetChain(0);
-      extendOrResetChain(0);
-      const mult = extendOrResetChain(0);
-      expect(mult).toBe(1.7);
-    });
-
-    it('returns 2.2 for fourth consecutive same-chainType card', () => {
-      extendOrResetChain(0);
+    it('returns 2.0 for third consecutive same-chainType card', () => {
       extendOrResetChain(0);
       extendOrResetChain(0);
       const mult = extendOrResetChain(0);
-      expect(mult).toBe(2.2);
+      expect(mult).toBe(2.0);
     });
 
-    it('returns 3.0 for fifth consecutive same-chainType card', () => {
-      extendOrResetChain(0);
+    it('returns 2.5 for fourth consecutive same-chainType card', () => {
       extendOrResetChain(0);
       extendOrResetChain(0);
       extendOrResetChain(0);
       const mult = extendOrResetChain(0);
-      expect(mult).toBe(3.0);
+      expect(mult).toBe(2.5);
     });
 
-    it('caps at 3.0 beyond chain length 5', () => {
+    it('returns 3.5 for fifth consecutive same-chainType card', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      const mult = extendOrResetChain(0);
+      expect(mult).toBe(3.5);
+    });
+
+    it('caps at 3.5 beyond chain length 5', () => {
       for (let i = 0; i < 5; i++) extendOrResetChain(0);
-      // 6th in same group — still 3.0 (capped)
+      // 6th in same group — still 3.5 (capped)
       const mult = extendOrResetChain(0);
-      expect(mult).toBe(3.0);
+      expect(mult).toBe(3.5);
     });
 
-    it('resets chain when different chainType is played, returns 1.0 for the new group', () => {
+    it('resets chain when different chainType is played, returns 1.2 for the new group', () => {
       extendOrResetChain(0);
       extendOrResetChain(0);
-      // Switch to chainType 1 — resets to length 1, mult = 1.0
+      // Switch to chainType 1 — resets to length 1, mult = 1.2
       const mult = extendOrResetChain(1);
-      expect(mult).toBe(1.0);
+      expect(mult).toBe(1.2);
     });
 
     it('starts new chain with the new chainType after reset', () => {
       extendOrResetChain(0);
       extendOrResetChain(1); // resets to chainType 1 chain, length 1
-      const mult = extendOrResetChain(1); // 2nd chainType 1 = length 2 = 1.3
-      expect(mult).toBe(1.3);
+      const mult = extendOrResetChain(1); // 2nd chainType 1 = length 2 = 1.5
+      expect(mult).toBe(1.5);
     });
 
     it('returns 1.0 and resets chain for card with undefined chainType', () => {
@@ -143,8 +144,42 @@ describe('chainSystem', () => {
       resetChain();
 
       const mult = extendOrResetChain(2);
-      expect(mult).toBe(1.0);
+      expect(mult).toBe(1.2);
       expect(getCurrentChainLength()).toBe(1);
+    });
+  });
+
+  // --- decayChain tests ---
+
+  describe('decayChain', () => {
+    it('reduces chain length by 1', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      extendOrResetChain(0); // length 3
+      decayChain();
+      expect(getCurrentChainLength()).toBe(2);
+    });
+
+    it('clears chainType when decayed to 0', () => {
+      extendOrResetChain(0); // length 1
+      decayChain(); // length 0 → clears
+      const state = getChainState();
+      expect(state.length).toBe(0);
+      expect(state.chainType).toBeNull();
+    });
+
+    it('preserves chainType when length > 1 after decay', () => {
+      extendOrResetChain(2);
+      extendOrResetChain(2); // length 2, chainType 2
+      decayChain(); // length 1 — chainType should persist
+      const state = getChainState();
+      expect(state.length).toBe(1);
+      expect(state.chainType).toBe(2);
+    });
+
+    it('does not go below 0', () => {
+      decayChain(); // already at 0
+      expect(getCurrentChainLength()).toBe(0);
     });
   });
 

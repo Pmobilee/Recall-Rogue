@@ -6,7 +6,7 @@ import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-t
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
-import { resetChain, extendOrResetChain, getChainState, getCurrentChainLength } from './chainSystem';
+import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
 import { resetReviewQueue, addToReviewQueue, clearReviewQueueFact, isReviewQueueFact } from './reviewQueueSystem';
 import { CHAIN_MOMENTUM_ENABLED, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
@@ -2707,14 +2707,16 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.bloodletterArmed = false;
   turnState.chargeCorrectsThisTurn = 0;
 
-  // Capture chainType BEFORE reset — used by tag_magnet to bias the next draw
+  // Capture chainType BEFORE decay — used by tag_magnet to bias the next draw
   const chainTypeBeforeReset = turnState.chainType;
 
-  // Reset Knowledge Chain at start of each new player turn
-  resetChain();
-  turnState.chainMultiplier = 1.0;
-  turnState.chainLength = 0;
-  turnState.chainType = null;
+  // Decay (not fully reset) Knowledge Chain at end of each player turn.
+  // Chain length drops by CHAIN_DECAY_PER_TURN; momentum carries partially into next turn.
+  decayChain();
+  const decayedChain = getChainState();
+  turnState.chainMultiplier = decayedChain.length > 0 ? 1.0 : 1.0; // will be recalculated on next card play
+  turnState.chainLength = decayedChain.length;
+  turnState.chainType = decayedChain.chainType;
 
   // Chain Momentum: reset on turn end
   turnState.nextChargeFreeForChainType = null;

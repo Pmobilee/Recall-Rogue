@@ -244,21 +244,22 @@ export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
 /**
  * Flat Charge Correct multiplier applied to quickPlayValue. The real power scaling
  * comes from mastery level bonuses (getMasteryBaseBonus) and tier multipliers (T1=1.0×,
- * T2a=1.3×, T2b=1.6×), NOT from increasing this multiplier. This is intentionally 1.5×.
+ * T2a=1.3×, T2b=1.6×), NOT from increasing this multiplier. Buffed to 2.0× (from 1.5×)
+ * in 2026-04-01 balance pass to make correct Charge answers feel meaningfully rewarding.
  *
- * Runtime formula: CC damage = (quickPlayValue + masteryBonus) × 1.5 × tierMult × chainMult × ...
+ * Runtime formula: CC damage = (quickPlayValue + masteryBonus) × 2.0 × tierMult × chainMult × ...
  *
  * Note: The `chargeCorrectValue` field in mechanics.ts is DEAD DATA — the resolver
  * always computes CC as quickPlayValue × this constant. Do not read chargeCorrectValue.
  */
-export const CHARGE_CORRECT_MULTIPLIER = 1.5;
+export const CHARGE_CORRECT_MULTIPLIER = 2.0;
 
 /** @deprecated Use CHARGE_CORRECT_MULTIPLIER instead. Kept for backward compat. */
 export const CHARGE_CORRECT_MULTIPLIERS: Record<string, number> = {
-  '1': 1.5,
-  '2a': 1.5,
-  '2b': 1.5,
-  '3': 1.2,
+  '1': 2.0,
+  '2a': 2.0,
+  '2b': 2.0,
+  '3': 2.0,
 };
 
 /** Charge play multipliers for wrong answers, by tier. */
@@ -326,17 +327,33 @@ export const TIER_QUESTION_FORMAT: Record<'1' | '2a' | '2b' | '3', {
 // Knowledge Chain system (AR-59.3)
 /**
  * Damage multipliers per chain length.
- * Index 0 = no card played yet (1.0×), 1 = first card (1.0× no bonus), 2 = second same-domain (1.3×), etc.
+ * Index 0 = no card played yet (1.0×), 1 = first card (1.2×), 2 = second same-domain (1.5×), etc.
+ * Rebalanced 2026-04-01: earlier bonus kick-in (1.2× at length 1 instead of 1.0×)
+ * and stronger top-end (3.5× at max instead of 3.0×) to reward chain building more.
  */
-export const CHAIN_MULTIPLIERS: number[] = [1.0, 1.0, 1.3, 1.7, 2.2, 3.0];
+export const CHAIN_MULTIPLIERS: number[] = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5];
 /** Maximum chain length (after which the multiplier stays at the last value). */
 export const MAX_CHAIN_LENGTH = 5;
+
+/**
+ * How many chain length points are lost per turn instead of full reset.
+ * 1 = chains decay by 1 each turn end (instead of resetting to 0).
+ * This rewards building chains across turns rather than fully losing momentum.
+ */
+export const CHAIN_DECAY_PER_TURN = 1;
 
 // Knowledge Surge system (AR-59.4)
 /** Turn number of the first Surge turn per encounter. */
 export const SURGE_FIRST_TURN = 2;
 /** Number of turns between Surge turns. */
 export const SURGE_INTERVAL = 4;
+/**
+ * On Surge turns, the Charge Correct multiplier is boosted by this factor.
+ * 1.5 = 50% bonus on top of CHARGE_CORRECT_MULTIPLIER (e.g. 2.0 × 1.5 = 3.0× effective).
+ */
+export const SURGE_CC_BONUS_MULTIPLIER = 1.5;
+/** Extra cards drawn at the start of a Surge turn. */
+export const SURGE_DRAW_BONUS = 1;
 
 // Chain Momentum system (AR-122)
 /** When true, a correct Charge answer waives the +1 AP surcharge on the NEXT Charge that turn. */
@@ -531,8 +548,9 @@ export const SOFT_ENRAGE_PHASE2_BONUS = 5;
 export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.5;
 
-/** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty). */
-export const FIZZLE_EFFECT_RATIO = 0.25;
+/** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty).
+ * Buffed from 0.25 → 0.5 in 2026-04-01 balance pass so wrong charges feel less punishing. */
+export const FIZZLE_EFFECT_RATIO = 0.5;
 
 // === BOSS QUIZ PHASE SYSTEM (AR-59.7) ===
 
@@ -686,6 +704,13 @@ export const RELIC_SELL_VALUE_COMMON = 15;
 export const RELIC_SELL_VALUE_UNCOMMON = 25;
 export const RELIC_SELL_VALUE_RARE = 35;
 export const RELIC_SELL_VALUE_LEGENDARY = 50;
+
+/**
+ * Cap for persistent block carry-over as a multiple of the player's max HP.
+ * Block no longer resets to 0 each turn — it persists but is capped at (maxHP × this value)
+ * to prevent infinite stacking. 2× maxHP allows meaningful tanking while bounding extremes.
+ */
+export const BLOCK_CARRY_CAP_MULTIPLIER = 2.0;
 
 /** Maximum block that Aegis Stone can carry between turns. */
 export const RELIC_AEGIS_STONE_MAX_CARRY = 15;

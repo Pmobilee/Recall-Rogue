@@ -218,3 +218,11 @@
 **Why:** `CombatScene.onShutdown()` calls `weaponAnimations.destroy()` which nulls all sprites and removes canvas textures. But `onWake()` never recreated them. Every `playSwordSlash()` etc. silently returned at the null-check guards.
 
 **Fix:** Added `this.weaponAnimations.createSprites(this.displayH)` to `onWake()`. The base PNG textures survive from `preloadAssets()` (only runs once), so `createSprites()` can safely rebuild on every wake. Any Phaser system that destroys resources in `onShutdown` must recreate them in `onWake`.
+
+### 2026-04-01 — AR-271 aura test was pre-existing failure before balance pass
+
+**What went wrong:** `tests/unit/ar271-wiring-integration.test.ts` → "wrong Charges increase fog (2 wrongs: fog rises from 0 to 4, neutral)" expects fog to rise by 2 per wrong charge, but `adjustAura(1)` only adds 1 per wrong answer.
+
+**Why:** The test was written against a spec where wrong answers added 2 fog, but the implementation was changed to 1 fog. The test was already failing before the 2026-04-01 balance pass.
+
+**Fix:** This is a pre-existing test drift, NOT caused by the 2026-04-01 balance changes. Fix separately by updating the test expectation or the aura system spec. Do not count as a new regression.

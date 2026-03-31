@@ -214,8 +214,10 @@ export function getMasteryApReduction(mechanicId: string, level: number): number
 
 /**
  * Whether a card can be mastery-upgraded.
- * Cards at max level, already-changed-this-encounter, and unknown mechanics cannot upgrade.
+ * Cards at max level and unknown mechanics cannot upgrade.
  * AR-202: Cursed cards cannot gain mastery until cured.
+ * Note: The once-per-encounter cap (masteryChangedThisEncounter) was removed in 2026-04-01
+ * balance pass — multiple correct Charges in one encounter each grant +1 mastery.
  */
 export function canMasteryUpgrade(card: Card): boolean {
   // AR-202: Cursed cards are locked at effective mastery 0 until cured.
@@ -223,18 +225,17 @@ export function canMasteryUpgrade(card: Card): boolean {
   const def = MASTERY_UPGRADE_DEFS[card.mechanicId ?? ''];
   const maxLevel = def?.maxLevel ?? MASTERY_MAX_LEVEL;
   if ((card.masteryLevel ?? 0) >= maxLevel) return false;
-  if (card.masteryChangedThisEncounter) return false;
   if (!card.mechanicId) return false;
   return card.mechanicId in MASTERY_UPGRADE_DEFS;
 }
 
 /**
  * Whether a card can be mastery-downgraded.
- * Cards at level 0 and already-changed-this-encounter cards cannot downgrade.
+ * Cards at level 0 cannot downgrade.
+ * Note: The once-per-encounter cap was removed in 2026-04-01 balance pass.
  */
 export function canMasteryDowngrade(card: Card): boolean {
   if ((card.masteryLevel ?? 0) <= 0) return false;
-  if (card.masteryChangedThisEncounter) return false;
   return true;
 }
 
