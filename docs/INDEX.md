@@ -18,6 +18,8 @@
 | [stores](architecture/stores.md) | Core Svelte stores, singleton pattern, state ownership, and initialization order |
 | [stores-gameplay](architecture/stores-gameplay.md) | Combat, co-op, and camp gameplay state stores with full interface details |
 | [services/index](architecture/services/index.md) | Lookup table mapping every service file to its domain sub-doc |
+| [event-bus](architecture/EVENT-BUS-REFERENCE.md) | Typed event contract and event bus reference |
+| [save-format](architecture/SAVE-FORMAT.md) | Save/load persistence schema and format |
 
 ---
 
@@ -56,6 +58,10 @@
 | [deck-system](content/deck-system.md) | Curated deck structure, JSON format, runtime loading, deck registry, and player progression tracking |
 | [fact-pipeline](content/fact-pipeline.md) | `Fact` data format, `facts.db` SQLite build pipeline, `factsDB` runtime service, and content production workflow |
 | [domains](content/domains.md) | All knowledge domains, subcategory taxonomy, domain resolution logic, and language vs. knowledge domain distinction |
+| [content-strategy](content/CONTENT_STRATEGY.md) | Content strategy and production pipeline overview |
+| [enemy-animations](content/ENEMY-ANIMATIONS.md) | Enemy sprite animation states and definitions (114KB reference) |
+| [art-backgrounds](content/ART_BRIEF_BACKGROUNDS.md) | Background art requirements and briefs |
+| [sprite-pipeline](content/SPRITE_PIPELINE.md) | Sprite generation and processing pipeline |
 
 ---
 
@@ -66,6 +72,8 @@
 | [strategy](testing/strategy.md) | Overview of all four testing layers (unit, headless sim, Playwright visual, LLM playtest) and when to use each |
 | [headless-sim](testing/headless-sim.md) | Running the headless combat simulator — profiles, output format, key commands, and internal module wiring |
 | [playwright](testing/playwright.md) | Visual testing with Playwright MCP and E2E scripts — screenshots, scenario loading, debug tools, and gotchas |
+| [dev-presets](testing/DEVPRESET-REFERENCE.md) | Dev scenario presets and query parameters |
+| [playtest-dashboard](testing/PLAYTEST-DASHBOARD.md) | Playtest dashboard server and data locations |
 
 ---
 
@@ -74,6 +82,7 @@
 | Doc | Summary |
 |-----|---------|
 | [gotchas](gotchas.md) | Append-only mistake log: Playwright pitfalls, visual regression incidents, Phaser canvas gotchas, and lessons learned |
+| [SECURITY](SECURITY.md) | Security considerations, CSP, input sanitization, and credential rules |
 
 ---
 

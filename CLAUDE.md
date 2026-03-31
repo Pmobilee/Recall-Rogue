@@ -162,7 +162,7 @@ Imports real game code directly. 6,000 runs in 5 seconds. Browser bots are for V
 ## Playtest Dashboard
 - Start: `npm run playtest:dashboard` → `http://localhost:5175/playtest`
 - Data: `data/playtests/leaderboard.json`, `data/playtests/logs/`, `data/playtests/reports/`
-- Details: `docs/PLAYTEST-DASHBOARD.md`
+- Details: `docs/testing/PLAYTEST-DASHBOARD.md`
 
 ## Sub-Agent Prompt Requirements
 Every sub-agent prompt MUST include:
