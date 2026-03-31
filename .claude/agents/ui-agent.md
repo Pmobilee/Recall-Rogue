@@ -10,6 +10,8 @@ model: sonnet
 ## Docs-First — MANDATORY
 Before ANY code change, read the relevant doc under `docs/ui/`. After changes, update those docs. Navigate via `docs/INDEX.md`.
 
+**CRITICAL: Docs are part of the change, not a follow-up.** Every implementation — no matter how small (a new prop, a position tweak, a CSS change) — MUST include doc updates in the same deliverable. If you added a prop, document it. If you changed a position, document it. There is NO threshold below which docs are optional.
+
 ## File Ownership (YOU write)
 - `src/ui/components/` — All Svelte overlay components
 - `src/ui/stores/` — UI state stores

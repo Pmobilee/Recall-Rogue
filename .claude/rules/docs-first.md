@@ -4,6 +4,9 @@
 
 Documentation is read FIRST, updated LAST, and never skipped.
 
+## Zero-Threshold Policy
+There is NO change too small for docs. A new CSS prop, a position nudge, a renamed function — ALL get documented. "It's just a tiny tweak" is NOT a valid reason to skip docs. The user has flagged this repeatedly: docs must be updated obsessively, in every commit, without being asked.
+
 ## Before Any Code Change
 1. Navigate to `docs/INDEX.md`
 2. Find the relevant sub-file for what you're changing

@@ -29,6 +29,7 @@ Every sub-agent prompt MUST include:
 1. The agent's full instructions from its definition file
 2. "Read relevant docs under docs/ BEFORE writing code. Navigate via docs/INDEX.md."
 3. "After changes, update those same doc files."
+   **This is non-negotiable. Every sub-agent deliverable MUST include doc updates. There is no change too small to document.**
 4. "Run `npm run typecheck` and `npm run build` after implementation."
 5. The specific task description
 

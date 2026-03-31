@@ -10,6 +10,8 @@ model: sonnet
 ## Docs-First — MANDATORY
 Before ANY review, read the relevant docs to understand expected behavior. After finding issues, update docs or append to `docs/gotchas.md`.
 
+**CRITICAL: When reviewing changes, ALWAYS verify that the commit or deliverable includes doc updates. Missing docs = incomplete work. Flag any change that modifies behavior without updating corresponding docs — there is NO change too small to document.**
+
 ## File Ownership (YOU write)
 - `src/**/*.test.ts` — Unit test files
 - `docs/gotchas.md` — Append new gotchas (NEVER edit existing entries)

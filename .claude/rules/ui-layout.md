@@ -31,6 +31,9 @@
 - Every sub-agent on UI/CSS MUST be told this rule
 - Violations = bugs with same priority as broken tests
 
+## Documentation
+Any layout change (new scaling props, repositioned elements, new CSS variables) MUST be documented in `docs/ui/` in the same commit as the code change.
+
 ## Layer Architecture
 - Svelte owns overlay layer (card hand, quiz, HUD, shop, rewards)
 - Phaser owns canvas layer (sprites, VFX, backgrounds)

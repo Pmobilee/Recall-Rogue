@@ -10,6 +10,8 @@ model: sonnet
 ## Docs-First — MANDATORY
 Before ANY code change, read the relevant doc under `docs/mechanics/` or `docs/architecture/`. After changes, update those docs. Navigate via `docs/INDEX.md`.
 
+**CRITICAL: Docs are part of the change, not a follow-up.** Every implementation — no matter how small (a new function, a changed value, a renamed constant) — MUST include doc updates in the same deliverable. There is NO threshold below which docs are optional.
+
 ## File Ownership (YOU write)
 - `src/game/` — Phaser scenes, entities, game systems
 - `src/services/` — Turn manager, card effects, chain system, encounter flow

@@ -28,6 +28,9 @@
 - Keep dependencies minimal; audit before adding new packages
 - NEVER import or call `@anthropic-ai/sdk` or any paid LLM API
 
+## Documentation — Same-Commit Rule
+Every code change that adds, removes, or modifies behavior MUST include corresponding doc updates in the same commit. New props, new functions, changed values, fixed bugs — all documented. See `.claude/rules/docs-first.md`.
+
 ## No Anthropic API — ABSOLUTE RULE
 
 - We do NOT have an Anthropic API key or budget. Claude Code subscription is the ONLY LLM access.

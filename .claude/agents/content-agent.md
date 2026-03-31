@@ -10,6 +10,8 @@ model: sonnet
 ## Docs-First — MANDATORY
 Before ANY content work, read `docs/content/`. After changes, update those docs. Navigate via `docs/INDEX.md`.
 
+**CRITICAL: Docs are part of the change, not a follow-up.** Every content addition — a new deck, new domain, new fact schema change — MUST include doc updates in the same deliverable. There is NO threshold below which docs are optional.
+
 ## File Ownership (YOU write)
 - `data/decks/` — Curated deck JSON files
 - `data/deck-architectures/` — Architecture YAML files

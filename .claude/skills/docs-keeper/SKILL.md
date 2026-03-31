@@ -86,6 +86,9 @@ Sessions can end abruptly — the user may just close the terminal. NEVER defer 
 
 Every commit should leave the repo in a state where a fresh agent can pick up seamlessly.
 
+### Rule 7 — Zero-Threshold Policy
+There is NO change too small for documentation. A single new prop on a component, a position value tweak, a renamed CSS class — ALL require doc updates. "It's trivial" or "I'll do it later" are NEVER acceptable. The user has explicitly demanded obsessive documentation discipline. Honor it.
+
 ## Integration with Other Skills
 
 - **game-design-sync**: Handles `GAME_DESIGN.md` specifically. docs-keeper handles all OTHER docs.
