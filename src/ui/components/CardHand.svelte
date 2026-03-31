@@ -55,6 +55,8 @@
     cureFlashes?: Record<string, boolean>
     /** Soul Jar: when true, show "GUARANTEED" label on the Charge button area. */
     showGuaranteed?: boolean
+    /** Effective damage previews per card — computed by CardCombatOverlay from current combat state. */
+    damagePreviews?: Record<string, import('../../services/damagePreviewService').DamagePreview>
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -82,6 +84,7 @@
     masteryFlashes = {},
     cureFlashes = {},
     showGuaranteed = false,
+    damagePreviews = {},
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -803,7 +806,9 @@
     })() : 0}
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
-    {@const effectVal = getEffectValue(card, isChargePreview)}
+    {@const preview = damagePreviews[card.id]}
+    {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
+    {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
     {@const xOffset = getXOffset(i, cards.length)}
     {@const lsRotation = getLandscapeRotation(i, cards.length)}
     {@const lsArcOffset = getLandscapeArcOffset(i, cards.length)}
@@ -890,9 +895,9 @@
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
-                {#each getCardDescriptionParts(card, undefined, getEffectValue(card, isChargePreview)) as part}
+                {#each getCardDescriptionParts(card, undefined, effectVal) as part}
                   {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'}>{part.value}</span>
+                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
                   {:else if part.type === 'keyword'}
                     <span class="desc-keyword">{part.value}</span>
                   {:else if part.type === 'conditional-number'}
@@ -1180,8 +1185,10 @@
     })() : 0}
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
-    {@const effectVal = getEffectValue(card, isChargePreview)}
-    {@const descPower = getEffectValue(card, isChargePreview)}
+    {@const preview = damagePreviews[card.id]}
+    {@const effectVal = preview ? (isChargePreview ? preview.ccValue : preview.qpValue) : getEffectValue(card, isChargePreview)}
+    {@const modState = preview ? (isChargePreview ? preview.ccModified : preview.qpModified) : 'neutral'}
+    {@const descPower = effectVal}
 
     <button
       class="card-in-hand card-has-frame"
@@ -1273,7 +1280,7 @@
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, descPower) as part}
                   {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'}>{part.value}</span>
+                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} class:damage-buffed={modState === 'buffed'} class:damage-nerfed={modState === 'nerfed'}>{part.value}</span>
                   {:else if part.type === 'keyword'}
                     <span class="desc-keyword">{part.value}</span>
                   {:else if part.type === 'conditional-number'}
@@ -1894,6 +1901,26 @@
     font-weight: 900;
     color: #4ade80;
     text-shadow: 0 0 4px rgba(74, 222, 128, 0.4), 0 1px 2px rgba(0,0,0,0.6);
+  }
+
+  /* Damage modifier coloring — buffed (relics/buffs raise effective value above base) */
+  .desc-number.damage-buffed {
+    color: #4ade80;
+    text-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(74, 222, 128, 0.4);
+  }
+
+  /* Damage modifier coloring — nerfed (enemy resistances lower effective value below base) */
+  .desc-number.damage-nerfed {
+    color: #f87171;
+    text-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(248, 113, 113, 0.4);
+  }
+
+  .desc-conditional-number.damage-buffed {
+    color: #4ade80;
+  }
+
+  .desc-conditional-number.damage-nerfed {
+    color: #f87171;
   }
 
   .card-animating {

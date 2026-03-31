@@ -356,6 +356,11 @@ export interface TurnState {
    * Used by Akashic Record spacing mechanic: tracks which encounter each fact was last charged.
    */
   encounterNumber: number;
+  /**
+   * Scar Tissue relic: accumulated wrong-Charge count this run.
+   * Used by damagePreviewService for flat damage bonus preview (+2 per stack).
+   */
+  scarTissueStacks: number;
 }
 
 export interface PlayCardResult {
@@ -591,6 +596,7 @@ export function startEncounter(
     bloodletterArmed: false,
     chargeCorrectsThisTurn: 0,
     encounterNumber: 0,
+    scarTissueStacks: _scarTissueStacks,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -1037,6 +1043,7 @@ export function playCardAction(
       // scar_tissue (v3): increment run-level stack counter on every wrong Charge
       if (chargeWrongFx.scarTissueStackIncrement) {
         _scarTissueStacks++;
+        turnState.scarTissueStacks = _scarTissueStacks;
       }
       // lucky_coin (v3): track wrong Charges this encounter; arm on reaching 3
       if (chargeWrongFx.luckyCoinWrongCount !== -1) {

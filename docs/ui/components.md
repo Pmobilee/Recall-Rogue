@@ -12,8 +12,8 @@
 
 | Component | Purpose |
 |-----------|---------|
-| `CardHand.svelte` | Renders the player's hand with V2 card frames, art, mastery glow, and chain color groups |
-| `CardCombatOverlay.svelte` | Root combat screen: wraps CardHand + QuizOverlay, handles surge/boss phases, landscape/portrait |
+| `CardHand.svelte` | Renders the player's hand with V2 card frames, art, mastery glow, chain color groups, and damage-modifier coloring (green=buffed, red=nerfed via `damagePreviews` prop) |
+| `CardCombatOverlay.svelte` | Root combat screen: wraps CardHand + QuizOverlay, handles surge/boss phases, landscape/portrait. Computes `damagePreviews` via `damagePreviewService` and passes to CardHand |
 | `CombatHUD.svelte` | Legacy HP bars + combat log; largely superseded by InRunTopBar |
 | `InRunTopBar.svelte` | Landscape HUD: HP, shield, gold, floor/segment, relic tray, fog level, pause |
 | `ChainCounter.svelte` | Animated chain streak badge showing length, type color, and damage multiplier |
@@ -32,6 +32,17 @@
 | `KidWowStars.svelte` | Star-burst animation for kids-mode correct answers |
 | `MentorHintDisplay.svelte` | Displays the hint purchased via the hint action |
 | `StreakFeedback.svelte` | Animated feedback for correct-answer streaks |
+
+### CardHand damagePreviews prop
+
+`CardHand` accepts an optional `damagePreviews?: Record<string, DamagePreview>` prop (from `damagePreviewService`). When present:
+- Each card's displayed damage/block number uses the relic/buff/enemy-adjusted effective value instead of the raw base value
+- `.desc-number.damage-buffed` (green glow) — effective > base
+- `.desc-number.damage-nerfed` (red glow) — effective < base
+- Both landscape and portrait rendering paths apply modifier coloring
+- `modState` is computed per-card from `preview.qpModified` / `preview.ccModified` depending on charge preview state
+
+`CardCombatOverlay` builds the full `DamagePreviewContext` from `turnState` and calls `computeDamagePreview` for every card in hand, passing the result as `{damagePreviews}` to CardHand.
 
 ---
 
@@ -163,4 +174,3 @@
 | `RelicCollectionScreen.svelte` | Browse all discovered relics with lore and stats |
 | `StarterRelicSelection.svelte` | Starter relic picker (dead code; removed in AR-59.12) |
 | `RarityBadge.svelte` | Small colored rarity badge (common / uncommon / rare / legendary) |
-

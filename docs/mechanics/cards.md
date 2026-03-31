@@ -2,7 +2,7 @@
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
 > **Last verified:** 2026-03-31
-> **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/data/balance.ts`
+> **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
 
@@ -87,6 +87,38 @@ CC damage = (quickPlayValue + getMasteryBaseBonus(mechanicId, masteryLevel))
 | Cursed CC | `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0×` (reward is the cure) |
 | Cursed CW | `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5×` |
 | First Charge free (new fact) | Wrong = `FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 0.0×` (fizzles) |
+
+---
+
+## Effective Damage Preview
+
+Service: `src/services/damagePreviewService.ts` — pure function, no side effects.
+
+Cards in hand display **effective** QP and CC values rather than raw base values. Numbers are colored to signal modifier state:
+
+- Green (`damage-buffed`) — effective value exceeds the unmodified base
+- Red (`damage-nerfed`) — effective value is below the unmodified base
+
+`CardCombatOverlay` builds a `DamagePreviewContext` from `turnState` and calls `computeDamagePreview` for every card in hand, passing the resulting `Record<string, DamagePreview>` to `CardHand` via the `damagePreviews` prop.
+
+**Modifiers INCLUDED in preview:**
+
+| Modifier | Effect |
+|----------|--------|
+| Relic % and flat bonuses | Applied per active relic |
+| Cursed multiplier | `CURSED_QP_MULTIPLIER` / `CURSED_CHARGE_CORRECT_MULTIPLIER` |
+| Empower buff (`buffNextCard`) | % bonus to next card's value |
+| Overclock ready | 2× effective damage |
+| Double strike ready | 2× effective damage |
+| Enemy vulnerable | 1.5× damage |
+| Enemy `quickPlayDamageMultiplier` | Partial QP reduction (e.g. Core Harbinger 0.3×) |
+| Enemy charge-resistant | 50% QP damage |
+| Enemy hardcover | Flat QP damage reduction |
+| Relics: inscription_fury, bastion's_will, stone_wall, worn_shield, hollow_armor | Inline computation |
+
+**Modifiers EXCLUDED (unknowable at preview time):**
+
+Speed bonus, chain multiplier, chainVulnerable, factDamageBonus, crescendo streak, memory_palace streak.
 
 ---
 

@@ -72,6 +72,8 @@
   import { REGION_NAMES, rollFlagQuestionType } from '../../services/nonCombatQuizSelector'
   import { staggerPopIn } from '../utils/roomPopIn'
   import { tick } from 'svelte'
+  import { computeDamagePreview, type DamagePreviewContext, type DamagePreview } from '../../services/damagePreviewService'
+  import { isVulnerable } from '../../data/statusEffects'
 
 
   interface Props {
@@ -436,6 +438,50 @@
     expertModeActive ? getRewardMultiplier(run?.deckMasteryPct ?? 0) : 1.0
   )
   const isPracticeRun = $derived(run?.practiceRunDetected === true)
+
+  let damagePreviews = $derived.by(() => {
+    if (!turnState) return {} as Record<string, DamagePreview>;
+
+    const enemy = turnState.enemy;
+    const ps = turnState.playerState;
+
+    const poisonStacks = (enemy.statusEffects ?? [])
+      .filter(s => s.type === 'poison')
+      .reduce((sum, s) => sum + (s.value ?? 0), 0);
+    const burnStacks = (enemy.statusEffects ?? [])
+      .filter(s => s.type === 'burn')
+      .reduce((sum, s) => sum + (s.value ?? 0), 0);
+    const furyBonus = (turnState.activeInscriptions ?? [])
+      .filter(i => i.mechanicId === 'inscription_fury')
+      .reduce((sum, i) => sum + i.effectValue, 0);
+
+    const ctx: DamagePreviewContext = {
+      activeRelicIds: turnState.activeRelicIds,
+      buffNextCard: turnState.buffNextCard,
+      overclockReady: turnState.overclockReady,
+      doubleStrikeReady: turnState.doubleStrikeReady,
+      firstAttackUsed: turnState.firstAttackUsed,
+      playerHpPercent: ps.maxHP > 0 ? ps.hp / ps.maxHP : 1,
+      enemyHpPercent: enemy.maxHP > 0 ? enemy.currentHP / enemy.maxHP : 1,
+      enemyPoisonStacks: poisonStacks,
+      enemyBurnStacks: burnStacks,
+      enemyIsVulnerable: isVulnerable(enemy.statusEffects ?? []),
+      enemyQpDamageMultiplier: enemy._quickPlayDamageMultiplierOverride ?? enemy.template.quickPlayDamageMultiplier,
+      enemyChargeResistant: !!enemy.template.chargeResistant,
+      enemyHardcover: enemy._hardcover ?? 0,
+      enemyHardcoverBroken: !!enemy._hardcoverBroken,
+      inscriptionFuryBonus: furyBonus,
+      cardsPlayedThisTurn: turnState.cardsPlayedThisTurn,
+      encounterTurnNumber: turnState.encounterTurnNumber,
+      scarTissueStacks: turnState.scarTissueStacks ?? 0,
+    };
+
+    const result: Record<string, DamagePreview> = {};
+    for (const card of handCards) {
+      result[card.id] = computeDamagePreview(card, ctx);
+    }
+    return result;
+  });
 
   let enemyIntent = $derived(turnState?.enemy.nextIntent ?? null)
   let enemyName = $derived(turnState?.enemy.template.name ?? '')
@@ -2720,7 +2766,6 @@
       <div class="turn-banner" class:turn-banner-visible={turnBannerVisible} class:enemy-turn={turnBannerText === 'ENEMY TURN'}>{turnBannerText}</div>
     {/if}
 
-    <StatusEffectBar effects={playerEffects} position="player" />
 
     <div class="player-status-strip" aria-label="Player health and block">
       <div class="player-ap-inline" class:ap-active={apCurrent > 0}>
@@ -2764,6 +2809,7 @@
       {masteryFlashes}
       {cureFlashes}
       {showGuaranteed}
+      {damagePreviews}
     />
 
     {#if showEndTurn}
@@ -3998,7 +4044,7 @@
   /* Status effect bars — enemy: below HP bar */
   :global(.layout-landscape .status-effect-bar-enemy) {
     position: fixed;
-    top: 22vh;
+    top: 18vh;
     left: 50%;
     transform: translateX(-50%);
     right: auto;
