@@ -210,3 +210,11 @@
 **Why:** Deltas were set ad-hoc over multiple feature sessions without a consistent target ratio framework.
 
 **Fix:** All 95 mechanics rebalanced (2026-03-31) against three deliberate tiers: Modest 1.5–2× (side-effect cards), Solid 2–2.5× (standard), Great 2.5–3× (high-risk/high-cost). Example: Strike `perLevelDelta` reduced 3→1.2 (QP 4→10 at L5, CC 6→15). Always check delta tier labels in `MASTERY_UPGRADE_DEFS` comments before assuming a mechanic's scaling is intentional.
+
+### 2026-03-31 — Weapon animations disappear after first combat encounter
+
+**What went wrong:** Sword, tome, and shield weapon animations only worked on the first combat encounter. On subsequent encounters they silently failed — no error, no visible animation.
+
+**Why:** `CombatScene.onShutdown()` calls `weaponAnimations.destroy()` which nulls all sprites and removes canvas textures. But `onWake()` never recreated them. Every `playSwordSlash()` etc. silently returned at the null-check guards.
+
+**Fix:** Added `this.weaponAnimations.createSprites(this.displayH)` to `onWake()`. The base PNG textures survive from `preloadAssets()` (only runs once), so `createSprites()` can safely rebuild on every wake. Any Phaser system that destroys resources in `onShutdown` must recreate them in `onWake`.

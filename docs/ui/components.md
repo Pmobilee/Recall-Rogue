@@ -48,6 +48,19 @@
 
 Cards have `class:tier-2a`, `class:tier-2b`, and `class:tier-3` bindings in the template (both landscape and portrait paths). The corresponding CSS rules carry no visual effects — tier drop-shadow glow styles (silver for 2a/2b, gold for tier-3) were removed 2026-03-31. The class bindings remain in the template for potential future use.
 
+### CardHand card-play animation phases
+
+Cards animate in place (no centering/floating to screen center). All three phases use `z-index: 60` instead of `z-index: 100`.
+
+| CSS class | Phase | Animation |
+|---|---|---|
+| `.card-reveal` | Reveal | `cardRevealPulse` — 200ms brightness flash + scale(1.05) in place |
+| `.card-swoosh` | Swoosh | `cardSwooshFade` — 200ms scale 1→0.9 + opacity fade; type-specific `::after` pseudo-elements still apply |
+| `.card-impact` | Impact | `cardImpactFade` — 200ms scale 0.9→0.7 + opacity 0.3→0 |
+| `.card-discard` | Discard | `discardShrink` — 200ms scale 0.7→0.3 + opacity fade |
+
+The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@keyframes` were removed 2026-03-31 — the base `.card-impact` handles all variants. Reduced-motion disables all four animations via `animation: none !important`.
+
 ---
 
 ## Quiz & Study

@@ -2204,6 +2204,9 @@ export class CombatScene extends Phaser.Scene {
       this.repositionAll()
     }
 
+    // Recreate weapon sprites destroyed by onShutdown — base PNG textures survive preload
+    this.weaponAnimations.createSprites(this.displayH)
+
     this.previousPlayerHpRatio = this.currentPlayerMaxHP > 0
       ? this.currentPlayerHP / this.currentPlayerMaxHP
       : 1

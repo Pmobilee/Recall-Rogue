@@ -88,7 +88,7 @@ Manages sword, arm+tome, and shield player-side animations. Sprites start alpha=
 
 **Assets:** `assets/sprites/weapons/sword.png`, `arm.png`, `tome.png`, `shield.png` (loaded via `preloadAssets()`, called from CombatScene preload).
 
-**Setup:** `createSprites(displayH, scaleFactor)` must be called in CombatScene `create()`.
+**Setup lifecycle:** `createSprites(displayH)` must be called in both `CombatScene.create()` AND `CombatScene.onWake()`. `onShutdown()` calls `destroy()` which nulls all sprites and removes canvas textures; `onWake()` must recreate them. The base PNG textures (`weapon-sword` etc.) are NOT removed by `destroy()` — they survive in the texture cache from the initial preload, so `createSprites()` on wake is safe and cheap.
 
 ### DepthLightingSystem
 

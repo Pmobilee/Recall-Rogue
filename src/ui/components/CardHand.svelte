@@ -2277,15 +2277,16 @@
     background: #0b1220;
   }
 
-  /* Reveal phase: card centers and enlarges */
+  /* Reveal phase: brief brightness pulse in place — no centering */
   .card-reveal {
-    position: fixed !important;
-    left: 50% !important;
-    top: 45% !important;
-    transform: translate(-50%, -50%) scale(1.8) !important;
-    z-index: 100 !important;
-    transition: all 400ms ease-in-out;
+    z-index: 60 !important;
     pointer-events: none;
+    animation: cardRevealPulse 200ms ease-out forwards;
+  }
+  @keyframes cardRevealPulse {
+    0% { filter: brightness(1); transform: scale(1); }
+    50% { filter: brightness(1.4); transform: scale(1.05); }
+    100% { filter: brightness(1); transform: scale(1); opacity: 0.8; }
   }
 
   .trial-badge {
@@ -2496,14 +2497,15 @@
 
   /* ═══ NEW ANIMATION PHASES ═══ */
 
-  /* Swoosh base: card stays centered, type-specific pseudo-element overlays */
+  /* Swoosh base: card stays in hand, type-specific pseudo-element overlays */
   .card-swoosh {
-    position: fixed !important;
-    left: 50% !important;
-    top: 45% !important;
-    transform: translate(-50%, -50%) scale(1.8) !important;
-    z-index: 100 !important;
+    z-index: 60 !important;
     pointer-events: none;
+    animation: cardSwooshFade 200ms ease-out forwards;
+  }
+  @keyframes cardSwooshFade {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0.3; transform: scale(0.9); }
   }
 
   /* Attack swoosh: golden slash from lower-right to upper-left */
@@ -2613,85 +2615,26 @@
     100% { background-position: 100% 50%; opacity: 0; }
   }
 
-  /* Impact base: card moves directionally */
+  /* Impact base: card fades out in place — no centering, base handles fade */
   .card-impact {
-    position: fixed !important;
-    left: 50% !important;
-    top: 45% !important;
-    z-index: 100 !important;
+    z-index: 60 !important;
     pointer-events: none;
+    animation: cardImpactFade 200ms ease-in forwards;
+  }
+  @keyframes cardImpactFade {
+    0% { opacity: 0.3; transform: scale(0.9); }
+    100% { opacity: 0; transform: scale(0.7); }
   }
 
-  /* Attack impact: 3D lunge toward enemy (upward) */
-  .card-impact-attack {
-    animation: impactLungeAttack 300ms ease-in-out forwards;
-  }
-  @keyframes impactLungeAttack {
-    0% { transform: translate(-50%, -50%) scale(1.8) perspective(600px) rotateX(0deg); }
-    40% { transform: translate(-50%, -55%) scale(1.9) perspective(600px) rotateX(-8deg); }
-    70% { transform: translate(-50%, -62%) scale(1.5) perspective(600px) rotateX(-14deg); opacity: 0.85; }
-    100% { transform: translate(-50%, -70%) scale(1.2) perspective(600px) rotateX(-18deg); opacity: 0.5; }
-  }
-
-  /* Shield impact: gentle protective rise */
-  .card-impact-shield {
-    animation: impactRiseShield 300ms ease-out forwards;
-  }
-  @keyframes impactRiseShield {
-    0% { transform: translate(-50%, -50%) scale(1.8); }
-    50% { transform: translate(-50%, -54%) scale(1.85); }
-    100% { transform: translate(-50%, -58%) scale(1.7); opacity: 0.6; }
-  }
-
-  /* Buff impact: power-up expand and glow */
-  .card-impact-buff {
-    animation: impactExpandBuff 300ms ease-out forwards;
-  }
-  @keyframes impactExpandBuff {
-    0% { transform: translate(-50%, -50%) scale(1.8); box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
-    50% { transform: translate(-50%, -52%) scale(1.95); box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); }
-    100% { transform: translate(-50%, -48%) scale(1.6); box-shadow: 0 0 0 rgba(255, 215, 0, 0); opacity: 0.5; }
-  }
-
-  /* Debuff impact: dissolve into mist toward enemy */
-  .card-impact-debuff {
-    animation: impactDissolveDebuff 300ms ease-in forwards;
-  }
-  @keyframes impactDissolveDebuff {
-    0% { transform: translate(-50%, -50%) scale(1.8); filter: blur(0); }
-    60% { transform: translate(-50%, -56%) scale(1.5); filter: blur(3px); opacity: 0.7; }
-    100% { transform: translate(-50%, -62%) scale(1.2); filter: blur(8px); opacity: 0.2; }
-  }
-
-  /* Wild impact: prismatic flash morph */
-  .card-impact-wild {
-    animation: impactMorphWild 300ms ease-in-out forwards;
-  }
-  @keyframes impactMorphWild {
-    0% { transform: translate(-50%, -50%) scale(1.8); filter: hue-rotate(0deg); }
-    50% { transform: translate(-50%, -52%) scale(1.9); filter: hue-rotate(180deg); }
-    100% { transform: translate(-50%, -55%) scale(1.5); filter: hue-rotate(360deg); opacity: 0.4; }
-  }
-
-  /* Discard: minimize and fly to bottom-right */
+  /* Discard: shrink and fade in place — no centering */
   .card-discard {
-    position: fixed !important;
-    z-index: 100 !important;
-    animation: discardMinimize 200ms ease-in forwards;
+    z-index: 60 !important;
+    animation: discardShrink 200ms ease-in forwards;
     pointer-events: none;
   }
-  @keyframes discardMinimize {
-    0% {
-      opacity: 0.7;
-      transform: scale(1);
-    }
-    100% {
-      transform: translate(
-        calc(var(--discard-pile-x, 30px) - 50vw),
-        calc(var(--discard-pile-y, 90vh) - 100vh + 40px * var(--layout-scale, 1))
-      ) rotate(-10deg) scale(0.05) !important;
-      opacity: 0;
-    }
+  @keyframes discardShrink {
+    0% { opacity: 0.2; transform: scale(0.7); }
+    100% { opacity: 0; transform: scale(0.3); }
   }
 
   /* §7 spec: cards un-dim after quiz = 200ms opacity (base transition for when class is removed) */
@@ -2753,7 +2696,7 @@
     }
 
     .card-reveal {
-      transition: none;
+      animation: none !important;
     }
 
     .card-swoosh-attack::after,

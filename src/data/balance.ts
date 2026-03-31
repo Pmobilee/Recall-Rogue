@@ -437,15 +437,15 @@ export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 /** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668) */
 export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.02;
 
-/** Enemy damage multiplier for floors 4-6 (base). */
-export const FLOOR_DAMAGE_SCALE_MID = 1.0;
+/** Enemy damage multiplier (base). Doubled 2026-03-31 alongside mastery scaling rebalance. */
+export const FLOOR_DAMAGE_SCALE_MID = 2.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 5,    // was 6
-  2: 6,    // was 7
-  3: 7,    // was 9
-  4: 10,   // was 12
+  1: 10,   // doubled from 5 alongside FLOOR_DAMAGE_SCALE_MID 2×
+  2: 12,   // doubled from 6
+  3: 14,   // doubled from 7
+  4: 20,   // doubled from 10
   endless: null,
 };
 
