@@ -292,7 +292,8 @@
         label="Relic Collection"
         zIndex={15}
         onclick={openUpgradeModal}
-        hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
+        hitTop="60%" hitLeft="1%" hitWidth="19%" hitHeight="11%"
+        spriteOffsetX="-73%" spriteOffsetY="-27%"
         showBorder
       />
 
@@ -302,7 +303,8 @@
         label="Social"
         zIndex={20}
         onclick={onOpenSocial}
-        hitTop="44%" hitLeft="66%" hitWidth="36%" hitHeight="22%"
+        hitTop="42%" hitLeft="84%" hitWidth="36%" hitHeight="22%"
+        spriteOffsetX="30%" spriteOffsetY="-2%"
         showBorder
       />
 

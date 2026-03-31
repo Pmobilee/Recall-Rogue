@@ -74,7 +74,7 @@
 | `HubNavBar.svelte` | Bottom navigation bar (Library, Profile, Social, Leaderboards) |
 | `HubVisitorView.svelte` | Visitor profile view when browsing another player's hub |
 | `CampHudOverlay.svelte` | HUD overlay on the hub: streak, gold, XP progress bar |
-| `CampSpriteButton.svelte` | Clickable NPC sprite button in the hub scene |
+| `CampSpriteButton.svelte` | Clickable NPC sprite button in the hub scene. Supports `spriteOffsetX`/`spriteOffsetY` props for CSS translate repositioning without re-rendering art assets (used for landscape-only layout adjustments) |
 | `CampSpeechBubble.svelte` | Speech bubble overlay for hub NPC characters |
 | `CampfireCanvas.svelte` | Canvas-based animated campfire flicker effect |
 | `CampfirePause.svelte` | In-run pause menu: resume / return to hub, run stats |

@@ -14,6 +14,10 @@
     labelLeft?: string
     ambientClass?: string
     showBorder?: boolean
+    /** CSS translate X offset applied to the sprite image (e.g. "-49%") — shifts baked sprite position without re-rendering art */
+    spriteOffsetX?: string
+    /** CSS translate Y offset applied to the sprite image (e.g. "-21%") — shifts baked sprite position without re-rendering art */
+    spriteOffsetY?: string
   }
 
   let {
@@ -31,6 +35,8 @@
     labelLeft,
     ambientClass = '',
     showBorder = false,
+    spriteOffsetX,
+    spriteOffsetY,
   }: Props = $props()
 </script>
 
@@ -46,6 +52,7 @@
     class:rpg-outline={showBorder}
     loading="lazy"
     decoding="async"
+    style={spriteOffsetX || spriteOffsetY ? `transform: translate(${spriteOffsetX ?? '0'}, ${spriteOffsetY ?? '0'});` : undefined}
   />
   {#if ambientClass === 'ambient-spark'}
     <span class="ambient-spark-dot"></span>
