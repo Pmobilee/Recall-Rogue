@@ -244,6 +244,16 @@ export class CombatScene extends Phaser.Scene {
   // Layout change handler (AR-71)
   // ═════════════════════════════════════════════════════════
 
+  /** Called by Phaser scale manager when the game canvas resizes (e.g., browser window drag). */
+  private onScaleResize(): void {
+    if (this.sceneReady) {
+      // Recompute scale factor and display zone for new canvas dimensions
+      this.scaleFactor = this.scale.width / BASE_WIDTH
+      this.displayH = this.scale.height * DISPLAY_ZONE_HEIGHT_PCT
+      this.repositionAll()
+    }
+  }
+
   /**
    * Called by CardGameManager when the layout mode changes (portrait ↔ landscape).
    * Stores the mode and repositions all scene objects accordingly.
@@ -862,6 +872,11 @@ export class CombatScene extends Phaser.Scene {
     this.events.on('shutdown', this.onShutdown, this)
     this.events.on('sleep', this.onShutdown, this)
     this.events.on('wake', this.onWake, this)
+
+    // Fix: Reposition all elements when browser window is resized within the same layout mode.
+    // Without this, Phaser's RESIZE scale mode updates the canvas dimensions but
+    // positioned elements (HP bar, sprites, text) stay at stale pixel coordinates.
+    this.scale.on('resize', this.onScaleResize, this)
 
     // Fix 1 (AR-97): Sync layout mode on scene create — the scene may have been
     // sleeping when the layout changed, so CardGameManager's handleLayoutChange
@@ -2164,6 +2179,7 @@ export class CombatScene extends Phaser.Scene {
     this.depthLightingSystem?.stop()
     this.statusEffectVisuals?.destroy()
     this.weaponAnimations?.destroy()
+    this.scale.off('resize', this.onScaleResize, this)
     const cam = this.cameras.main
     cam.zoom = 1.0
     cam.scrollX = 0
