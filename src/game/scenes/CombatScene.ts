@@ -38,7 +38,7 @@ const LANDSCAPE = {
   ENEMY_PANEL_X_START: 0.70,  // Kept for reference; enemy now centers by default
   ENEMY_X_PCT: 0.50,          // Enemy CENTERED in arena by default (spec: center, slides right on quiz)
   ENEMY_Y_PCT: 0.45,          // Vertically centered in arena
-  ENEMY_HP_Y_PCT: 0.19,       // HP bar below enemy name (name at ~6.5vh, bar at 19vh)
+  ENEMY_HP_Y_PCT: 0.155,      // HP bar below enemy name (name at ~6.5vh, bar at ~15.5vh)
   PLAYER_HP_BAR_X_PCT: 0.68,  // Left edge (unused — player HP now in Svelte stats bar)
   PLAYER_HP_BAR_TOP: 0.20,
   PLAYER_HP_BAR_BOTTOM: 0.80,
