@@ -1,3 +1,5 @@
+> ⚠️ **ARCHIVED** — This monolithic doc has been replaced by modular files under `docs/architecture/`, `docs/mechanics/`, `docs/ui/`, `docs/content/`, and `docs/testing/`. See [INDEX.md](INDEX.md) for navigation. This file is kept for historical reference.
+
 # Recall Rogue Architecture (V8 — Card Roguelite, v3 Curated Deck System)
 
 Every card is a fact. Learning IS gameplay.

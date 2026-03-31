@@ -206,6 +206,7 @@ export type SoundName =
   | 'tab_switch'
   | 'notification_ping'
   | 'error_deny'
+  | 'ui_pop_in'
   // --- Progression ---
   | 'fact_mastered'
   | 'mastery_challenge_appear'
@@ -2232,6 +2233,13 @@ function playErrorDeny(ctx: AnyAudioContext, master: GainNode): void {
   scheduleOscillator(ctx, master, 180, 'sine', 0.1, 0.06, now + 0.08)
 }
 
+/** UI pop-in — quick pleasant pop sound for element appearance animations. */
+function playUiPopIn(ctx: AnyAudioContext, master: GainNode): void {
+  const now = ctx.currentTime
+  scheduleOscillator(ctx, master, 880, 'sine', 0.25, 0.08, now)
+  scheduleOscillator(ctx, master, 1200, 'sine', 0.15, 0.06, now + 0.04)
+}
+
 // ---------------------------------------------------------------------------
 // Progression
 // ---------------------------------------------------------------------------
@@ -2706,6 +2714,7 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
   tab_switch: playTabSwitch,
   notification_ping: playNotificationPing,
   error_deny: playErrorDeny,
+  ui_pop_in: playUiPopIn,
   // --- Progression ---
   fact_mastered: playFactMastered,
   mastery_challenge_appear: playMasteryChallengeAppear,

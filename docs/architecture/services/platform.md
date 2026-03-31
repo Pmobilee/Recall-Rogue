@@ -1,0 +1,184 @@
+# Platform & Device Services
+
+> **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, and browser compatibility.
+> **Last verified:** 2026-03-31
+> **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, experimentService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts
+
+> **See also:** [`platform-audio.md`](platform-audio.md) — audioService, cardAudioManager, and juiceManager (audio synthesis and game-feel coordination).
+
+## Overview
+
+Platform services form the bridge between web-standard APIs and the three deployment targets: Tauri (Steam desktop), Capacitor (iOS/Android), and plain browser. Most services guard every call behind `platformService` constants (`isDesktop`, `isMobile`, `isWeb`) and gracefully no-op on unsupported platforms.
+
+---
+
+## platformService
+
+| | |
+|---|---|
+| **File** | src/services/platformService.ts |
+| **Purpose** | Detects active native wrapper (Tauri/Capacitor/web) at module load time; provides platform constants |
+| **Key exports** | `platform`, `isDesktop`, `isMobile`, `isWeb`, `hasSteam`, `Platform` (type) |
+| **Key dependencies** | None (window globals only) |
+
+## hapticService
+
+| | |
+|---|---|
+| **File** | src/services/hapticService.ts |
+| **Purpose** | iOS haptic feedback via Capacitor Haptics plugin; gracefully no-ops on Android, desktop, and web |
+| **Key exports** | `tapLight`, `tapMedium`, `tapHeavy`, `notifySuccess`, `notifyWarning`, `notifyError` |
+| **Key dependencies** | platformService |
+
+## perfService
+
+| | |
+|---|---|
+| **File** | src/services/perfService.ts |
+| **Purpose** | Web Vitals collector (LCP, FCP, CLS, INP, TTFB) via PerformanceObserver; reports once per session |
+| **Key exports** | `perfService` (singleton with `observe`) |
+| **Key dependencies** | analyticsService |
+
+## analyticsService
+
+| | |
+|---|---|
+| **File** | src/services/analyticsService.ts |
+| **Purpose** | Batches analytics events locally and flushes every 30 s; strips PII; persists queue to localStorage across reloads |
+| **Key exports** | `analyticsService` (singleton with `track`, `flush`), event type interfaces |
+| **Key dependencies** | uuid utils, playerData store, experimentBucket, analyticsEvents |
+
+## errorReporting
+
+| | |
+|---|---|
+| **File** | src/services/errorReporting.ts |
+| **Purpose** | Lightweight uncaught exception capture; sends to game's own API (no Sentry required); max 20 errors/session |
+| **Key exports** | `initErrorReporting`, `captureError` |
+| **Key dependencies** | None (fetch to API) |
+
+## inputService
+
+| | |
+|---|---|
+| **File** | src/services/inputService.ts |
+| **Purpose** | Game-action pub/sub dispatcher — decouples keyboard/gamepad/touch from UI components |
+| **Key exports** | `inputService` (singleton with `on`, `off`, `dispatch`), `GameAction` (type) |
+| **Key dependencies** | None |
+
+## keyboardInput
+
+| | |
+|---|---|
+| **File** | src/services/keyboardInput.ts |
+| **Purpose** | Keyboard listener that dispatches semantic GameActions; landscape-only, context-aware (quiz vs hand mode) |
+| **Key exports** | `initKeyboardInput`, `setQuizVisible`, `destroyKeyboardInput` |
+| **Key dependencies** | inputService, layoutStore |
+
+## shortcutService
+
+| | |
+|---|---|
+| **File** | src/services/shortcutService.ts |
+| **Purpose** | Centralized keyboard shortcut registry with player-customizable bindings persisted to localStorage |
+| **Key exports** | `shortcutService` (singleton with `on`, `off`, `getBinding`, `setBinding`, `getAll`), `ShortcutId` (type) |
+| **Key dependencies** | None (localStorage) |
+
+## accessibilityManager
+
+| | |
+|---|---|
+| **File** | src/services/accessibilityManager.ts |
+| **Purpose** | Subscribes to cardPreferences stores and applies `--text-scale`, `high-contrast`, `reduced-motion` to the DOM |
+| **Key exports** | `initAccessibilityManager` |
+| **Key dependencies** | cardPreferences |
+
+## notificationService
+
+| | |
+|---|---|
+| **File** | src/services/notificationService.ts |
+| **Purpose** | Local push notifications via Capacitor plugin — streak risk, milestone, review due, win-back; max 1/day, quiet hours enforced |
+| **Key exports** | `scheduleStreakRiskNotification`, `scheduleMilestoneNotification`, `cancelAllNotifications` |
+| **Key dependencies** | platformService |
+
+## entitlementService
+
+| | |
+|---|---|
+| **File** | src/services/entitlementService.ts |
+| **Purpose** | Content-access gating — Steam base game unlocks all; mobile free tier gets BASE_DOMAINS only; Scholar Pass unlocks all |
+| **Key exports** | `isDomainUnlocked`, `getAccessibleDomains`, `BASE_DOMAINS` |
+| **Key dependencies** | platformService, steamService, subscriptionService |
+
+## steamService
+
+| | |
+|---|---|
+| **File** | src/services/steamService.ts |
+| **Purpose** | Wraps Steamworks SDK calls via Tauri IPC — achievements, stats, DLC ownership; no-ops on non-Steam platforms |
+| **Key exports** | `unlockAchievement`, `setStatInt`, `hasDLC`, `getPersonaName` |
+| **Key dependencies** | platformService (@tauri-apps/api/core dynamic import) |
+
+## reviewPromptService
+
+| | |
+|---|---|
+| **File** | src/services/reviewPromptService.ts |
+| **Purpose** | Triggers App Store / Play Store review prompts at positive peaks (boss kill, Tier 2 promo, 7-day streak); max 1 per 90 days |
+| **Key exports** | `checkAndTriggerReviewPrompt`, `recordBossKill`, `recordTier2Promotion`, `recordStreakMilestone` |
+| **Key dependencies** | platformService |
+
+## browserCompat
+
+| | |
+|---|---|
+| **File** | src/services/browserCompat.ts |
+| **Purpose** | Feature detection for WebGL, ServiceWorker, IndexedDB, WebAudio, WebShare; reports engine type |
+| **Key exports** | `checkCompatibility`, `CompatReport` (interface) |
+| **Key dependencies** | errorReporting |
+
+## deviceTierService
+
+| | |
+|---|---|
+| **File** | src/services/deviceTierService.ts |
+| **Purpose** | Classifies device performance tier (low/mid/high) based on GPU renderer, device memory, and CPU concurrency |
+| **Key exports** | `getDeviceTier`, `DeviceTier` (type) |
+| **Key dependencies** | platformService |
+
+## experimentService
+
+| | |
+|---|---|
+| **File** | src/services/experimentService.ts |
+| **Purpose** | A/B experiment variant assignment by user ID hash — `slow_reader_default`, `starting_ap_3_vs_4`, `starter_deck_15_vs_18` |
+| **Key exports** | `getExperimentVariant`, `ExperimentKey` (type) |
+| **Key dependencies** | analyticsService |
+
+## kidModeService
+
+| | |
+|---|---|
+| **File** | src/services/kidModeService.ts |
+| **Purpose** | Parental controls — daily play time limits, PIN lock, age rating (kid/teen), social toggle |
+| **Key exports** | `kidModeService` (singleton with `getControls`, `setControls`, `verifyPin`, `isTimeLimitReached`) |
+| **Key dependencies** | localStorage |
+
+## legalConstants
+
+| | |
+|---|---|
+| **File** | src/services/legalConstants.ts |
+| **Purpose** | Shared constants for the age-gate system — `AGE_BRACKET_KEY`, `AgeBracket` type |
+| **Key exports** | `AGE_BRACKET_KEY`, `AgeBracket` (type) |
+| **Key dependencies** | None |
+
+## sessionTimer
+
+| | |
+|---|---|
+| **File** | src/services/sessionTimer.ts |
+| **Purpose** | Daily play time tracker with gentle 5-min warning and hard-stop at parental time limit |
+| **Key exports** | `sessionTimer` (singleton with `start`, `stop`, `getState`, `subscribe`) |
+| **Key dependencies** | localStorage |
