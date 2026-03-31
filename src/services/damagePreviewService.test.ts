@@ -9,7 +9,7 @@ import type { Card } from '../data/card-types';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-/** Build a minimal attack card using the 'strike' mechanic (QP=4, perLevelDelta=3). */
+/** Build a minimal attack card using the 'strike' mechanic (QP=4, perLevelDelta=1.2). */
 function makeAttackCard(overrides: Partial<Card> = {}): Card {
   return {
     id: 'test_card',
@@ -25,7 +25,7 @@ function makeAttackCard(overrides: Partial<Card> = {}): Card {
   };
 }
 
-/** Build a minimal shield card using the 'block' mechanic (QP=3, perLevelDelta=2). */
+/** Build a minimal shield card using the 'block' mechanic (QP=3, perLevelDelta=0.9). */
 function makeShieldCard(overrides: Partial<Card> = {}): Card {
   return {
     id: 'test_shield',
@@ -388,13 +388,14 @@ describe('computeDamagePreview — barbed_edge synergy (strike-tagged)', () => {
 });
 
 describe('computeDamagePreview — mastery bonus', () => {
-  it('adds mastery flat bonus (perLevelDelta=3 for strike) to QP and CC', () => {
-    // strike perLevelDelta=3; masteryLevel=2 → masteryBonus=6
-    // nakedQpBase = 4 + 6 = 10; nakedCcBase = round((4+6)*1.5) = round(15.0) = 15
-    // Mastery is inside the CC multiplier so CC scales the bonus too.
+  it('adds mastery flat bonus (perLevelDelta=1.2 for strike) to QP and CC', () => {
+    // strike perLevelDelta=1.2; masteryLevel=5 → masteryBonus=6.0
+    // nakedQpBase = Math.round(4 + 6.0) = 10
+    // nakedCcBase = Math.round((4 + 6.0) * 1.5) = Math.round(15.0) = 15
+    // Mastery bonus is inside the CC multiplier so CC scales the bonus too.
     // effectMultiplier=1.0, no other modifiers → qpFinal=10, ccFinal=15
     // compared to nakedQpBase=10 and nakedCcBase=15 → both neutral
-    const card = makeAttackCard({ masteryLevel: 2 });
+    const card = makeAttackCard({ masteryLevel: 5 });
     const result = computeDamagePreview(card, baseCtx());
     expect(result.qpValue).toBe(10);
     expect(result.ccValue).toBe(15);

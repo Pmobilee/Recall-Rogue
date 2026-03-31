@@ -628,12 +628,14 @@ export function resolveCardEffect(
     case 'brace': {
       const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
       if (!enemyIsAttacking) {
-        result.shieldApplied = 0;
+        // Non-attack intent: give minimum block from card value (half, rounded)
+        result.shieldApplied = applyShieldRelics(Math.round(finalValue * 0.5));
         return result;
       }
-      // Brace scales enemy intent by play-mode multiplier
+      // Brace scales enemy intent by play-mode multiplier, card value acts as floor
       const braceMultiplier = isChargeCorrect ? 3.0 : (isChargeWrong ? 0.7 : 1.0);
-      result.shieldApplied = applyShieldRelics(Math.round(enemy.nextIntent.value * braceMultiplier));
+      const intentBlock = Math.round(enemy.nextIntent.value * braceMultiplier);
+      result.shieldApplied = applyShieldRelics(Math.max(intentBlock, finalValue));
       return result;
     }
     case 'overheal': {

@@ -2,7 +2,7 @@
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
 > **Last verified:** 2026-03-31
-> **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/data/balance.ts`
+> **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).
 
@@ -83,7 +83,7 @@ CC damage = (quickPlayValue + getMasteryBaseBonus(mechanicId, masteryLevel))
 |------|--------|
 | Quick Play (`quick`) | Uses `quickPlayValue` directly |
 | Charge Correct (`charge_correct`) | `(quickPlayValue + masteryBonus) × 1.5` |
-| Charge Wrong (`charge_wrong`) | T1=0.8×, T2a/b=0.85×, T3=0.75× on base |
+| Charge Wrong (`charge_wrong`) | `FIZZLE_EFFECT_RATIO = 0.25×` of base effect |
 | Cursed QP | `CURSED_QP_MULTIPLIER = 0.7×` |
 | Cursed CC | `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0×` (reward is the cure) |
 | Cursed CW | `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5×` |
@@ -156,18 +156,41 @@ getMasteryBaseBonus(mechanicId, level) = MASTERY_UPGRADE_DEFS[mechanicId].perLev
 getMasterySecondaryBonus(mechanicId, level) = secondaryPerLevelDelta × level
 ```
 
+**Power tier targets (design intent):**
+- **Modest** — 1.5–2× QP at L5 (mechanics where side effect IS the value: tags, draws, AP reductions)
+- **Solid** — 2–2.5× QP at L5 (standard scaling for reliable combat cards)
+- **Great** — 2.5–3× QP at L5 (high-risk, high-cost, or thematic mechanics that earn elevated scaling)
+
 Selected caps and deltas (from `MASTERY_UPGRADE_DEFS` in `cardUpgradeService.ts`):
 
-| Mechanic | perLevelDelta | maxLevel | L5 bonus |
-|----------|-------------|---------|---------|
-| `strike` | +3 | 5 | +15 |
-| `block` | +2 | 5 | +10 |
-| `empower` | +5% | 5 | +25% |
-| `quicken` | 0 | 3 | tag bonus at L3 |
-| `cleanse` | 0 | 2 | binary only |
-| `overclock` | 0 | 3 | AP-1 at L3 |
+| Mechanic | perLevelDelta | maxLevel | QP at L0 | QP at L5 | Tier |
+|----------|-------------|---------|---------|---------|------|
+| `strike` | 1.2 | 5 | 4 | 10 | Solid 2.5× |
+| `block` | 0.9 | 5 | 3 | 7 | Solid 2.5× |
+| `brace` | 0.9 | 5 | 3 | 7 | Solid 2.5× |
+| `heavy_strike` | 2.0 | 5 | 10 | 20 | Solid 2× |
+| `reckless` | 2.4 | 5 | 6 | 18 | Great 3× |
+| `empower` | 2.0 | 5 | 35% | 45% | Modest |
+| `parry` | 0.3 | 5 | 2 | 3 | Modest 1.75× |
+| `quicken` | 0 | 3 | — | tag at L3 | Modest |
+| `cleanse` | 0 | 2 | — | binary only | Modest |
+| `overclock` | 0 | 3 | — | AP-1 at L3 | Modest |
 
 Some mechanics gain tags at L3 via `addTagAtLevel: [3, 'tagName']` unlocking additional behavior in the resolver.
+
+### Catch-Up Mastery (New Card Acquisition)
+
+Service: `src/services/catchUpMasteryService.ts` — called from `encounterBridge.addRewardCardToActiveDeck()`.
+
+When the player picks a new card as a reward, it receives **starting mastery proportional to the deck's current average** so late-game picks are not dead on arrival:
+
+- Avg mastery < 1 (run start) → L0 (no catch-up; early ramp feels natural)
+- Avg mastery ≥ 1 → random roll 0.5×–1.5× the average, floored and capped at the mechanic's `maxLevel`
+- Median new card lands at ~0.8× the deck average — slightly behind but immediately competitive
+
+```
+catchUpLevel = clamp(floor(rand(0.5–1.5) × avgMastery), 0, mechanic.maxLevel)
+```
 
 ---
 

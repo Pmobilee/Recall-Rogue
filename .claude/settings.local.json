@@ -2,11 +2,10 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash(git commit *)",
         "hooks": [
           {
             "type": "command",
-            "if": "Bash(git commit *)",
             "command": ".claude/hooks/pre-commit-verify.sh",
             "timeout": 300
           }

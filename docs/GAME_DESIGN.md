@@ -53,9 +53,9 @@ PLAYER TURN:
      CHARGE PLAY (drag card into upper screen zone above ~40% from top, or click CHARGE button):
        - Costs card's base AP + 1 additional AP (the "Charge surcharge")
        - Quiz panel appears. Timer starts. No backing out.
-       - CORRECT ANSWER → card plays at 1.5×–4.0× base (per card slot mastery 0–5). 500ms celebration.
-       - WRONG ANSWER → card plays at 0.6× (mastery 0) / 0.7× (mastery 1+). 300ms muted resolve.
-       - Card is never wasted — wrong answers still resolve (at 0.7× or lower).
+       - CORRECT ANSWER → card plays at (QP + masteryBonus) × 1.5. 500ms celebration.
+       - WRONG ANSWER → card plays at FIZZLE_EFFECT_RATIO (0.25×). 300ms muted resolve.
+       - Card is never wasted — wrong answers still resolve at reduced effect.
        - Contributes to Knowledge Chain if same chainType (0-5) as previous Charge.
        - MASTERED cards (level 5): quiz uses the hardest variant with most confusable distractors, but rewards the highest multiplier.
 
@@ -104,23 +104,21 @@ The runtime computes card effect values through this pipeline:
 
 **Example — Strike at different mastery levels (Charge Correct, no chain/relic):**
 
-Strike's `perLevelDelta` = 3, so mastery bonus = `level × 3`.
+Strike's `perLevelDelta` = 1.2, so mastery bonus = `level × 1.2`.
 
-| Mastery | Base | + Mastery Bonus | × 1.5 CC | × Tier | Total |
-|---------|------|-----------------|----------|--------|-------|
-| 0 | 4 | +0 = 4 | 6 | ×1.0 | **6** |
-| 2 | 4 | +6 = 10 | 15 | ×1.0 | **15** |
-| 5 | 4 | +15 = 19 | 28.5 | ×1.0 | **~29** |
-| 5 + T2b | 4 | +15 = 19 | 28.5 | ×1.6 | **~46** |
+| Mastery | Base | + Mastery Bonus | × 1.5 CC | Total |
+|---------|------|-----------------|----------|-------|
+| 0 | 4 | +0 = 4 | 6 | **6** |
+| 2 | 4 | +2.4 ≈ 6 | 9 | **9** |
+| 5 | 4 | +6 = 10 | 15 | **15** |
 
-With a 3-chain (1.7×) on top of mastery 5 + T2b: 46 × 1.7 = **~78 damage** from a single Strike.
+With a 3-chain (1.7×) on top of mastery 5: 15 × 1.7 = **~26 damage** from a single Strike.
 
-> **Design intent (2026-03-25):** Base values were intentionally halved (Strike 8→4, Block 6→3)
-> so that T0/M0 cards feel genuinely weak. The mastery scaling (perLevelDelta) was increased
-> to compensate — M5 cards are slightly stronger than before the nerf. This creates a satisfying
-> upgrade curve: M0 feels underpowered → M2-3 feels "normal" → M5 feels powerful. The 1.5×
-> CC multiplier stays modest because the real power comes from mastery progression, not from
-> Charging alone.
+> **Design intent (2026-03-31):** Mastery scaling rebalanced to 2–3× base at max level (was 1–5×).
+> Tier-based damage multipliers removed (all active tiers = 1.0×). Big damage comes from chain
+> multipliers (1.0–3.0×) and CC multiplier (1.5×), not from raw base scaling. Cards have deliberate
+> power tiers: Modest (1.5–2×), Solid (2–2.5×), Great (2.5–3×) — some cards are mediocre scalers,
+> others are great investments depending on risk/secondary effects.
 
 > **Implementation note:** The `chargeCorrectValue` field in `mechanics.ts` is **dead data** — the resolver does NOT read it. CC is always computed as `quickPlayValue × CHARGE_CORRECT_MULTIPLIER`. The field exists for documentation/reference only.
 
@@ -845,14 +843,19 @@ function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
 
 Combat power is driven by **card slot mastery** (0–5, per run), not FSRS tier:
 
-| Card Slot Mastery | Quick Play | Charged Correct | Charged Wrong | Charge AP Cost |
-|-------------------|------------|-----------------|---------------|----------------|
-| 0 | 1.0× | 2.5× | 0.6× | +1 AP |
-| 1 | 1.0× | 3.0× | 0.7× | +1 AP |
-| 2 | 1.0× | 3.0× | 0.7× | +1 AP |
-| 3 | 1.0× | 3.5× | 0.7× | +1 AP |
-| 4 | 1.0× | 3.5× | 0.7× | +1 AP |
-| 5 | 1.0× | 4.0× | 0.7× | +1 AP |
+- **Quick Play:** `quickPlayValue + masteryBonus` (1.0× of effective value)
+- **Charge Correct:** `(quickPlayValue + masteryBonus) × 1.5`
+- **Charge Wrong:** `FIZZLE_EFFECT_RATIO (0.25×)` of effective value
+- **Charge AP Cost:** +1 AP surcharge (waived during Surge, Chain Momentum, first charge)
+
+Mastery bonus = `perLevelDelta × masteryLevel` (varies per mechanic, targets 2–3× base at L5).
+
+| Card Slot Mastery | Example: Strike (QP=4, delta=1.2) | CC Value |
+|-------------------|-----------------------------------|----------|
+| 0 | 4 + 0 = 4 | 6 |
+| 1 | 4 + 1.2 ≈ 5 | 8 |
+| 3 | 4 + 3.6 ≈ 8 | 11 |
+| 5 | 4 + 6.0 = 10 | 15 |
 
 ### Mastery-Driven Question Difficulty
 

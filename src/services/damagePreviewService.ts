@@ -164,7 +164,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
 
   if (mechanic) {
     const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
-    nakedQpBase = mechanic.quickPlayValue + masteryBonus;
+    // Round nakedQpBase so fractional deltas (e.g. 0.9 × 3 = 2.7) produce clean integers for display
+    nakedQpBase = Math.round(mechanic.quickPlayValue + masteryBonus);
     nakedCcBase = Math.round((mechanic.quickPlayValue + masteryBonus) * CHARGE_CORRECT_MULTIPLIER);
   } else {
     // Legacy fallback: tier-scaled base effect value

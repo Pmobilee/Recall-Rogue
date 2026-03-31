@@ -123,8 +123,8 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   {
     id: 'brace', name: 'Brace', type: 'shield',
     description: 'Block equal to enemy telegraph.',
-    baseValue: 0, apCost: 1, maxPerPool: 0, tags: ['brace'], launchPhase: 1, unlockLevel: 0,
-    quickPlayValue: 0, chargeCorrectValue: 0, chargeWrongValue: 0,
+    baseValue: 6, apCost: 1, maxPerPool: 0, tags: ['brace'], launchPhase: 1, unlockLevel: 0,
+    quickPlayValue: 3, chargeCorrectValue: 9, chargeWrongValue: 2,
   },
   {
     id: 'overheal', name: 'Overheal', type: 'shield',

@@ -30,130 +30,130 @@ export interface MasteryUpgradeDef {
 /** Mastery scaling definitions for each mechanic. */
 export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   // Attacks
-  strike:        { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
-  multi_hit:     { perLevelDelta: 1 },                           // per hit
-  heavy_strike:  { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
-  piercing:      { perLevelDelta: 2 },                           // 4 -> 14 (base 4 + 5×2)
-  reckless:      { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
-  execute:       { perLevelDelta: 0, secondaryPerLevelDelta: 2 }, // bonus 8 -> 18
-  lifetap:       { perLevelDelta: 2 },                           // 4 -> 14 (base 4 + 5×2)
-  double_strike: { perLevelDelta: 1 },                           // per hit
+  strike:        { perLevelDelta: 1.2 },                         // 4 -> 10 (L5: 4 + 5×1.2) — Solid 2.5×
+  multi_hit:     { perLevelDelta: 0.6 },                         // per hit — 6→15 total at L5
+  heavy_strike:  { perLevelDelta: 2.0 },                         // 10 -> 20 (L5: 10 + 5×2.0) — Solid 2×, already high base
+  piercing:      { perLevelDelta: 0.9 },                         // 3 -> 7 (L5: 3 + 5×0.9) — Solid 2.5×
+  reckless:      { perLevelDelta: 2.4 },                         // 6 -> 18 (L5: 6 + 5×2.4) — Great 3×, self-dmg earns it
+  execute:       { perLevelDelta: 0, secondaryPerLevelDelta: 1.0 }, // bonus 8 -> 13 (L5) — Modest, finisher mechanic does the work
+  lifetap:       { perLevelDelta: 1.2 },                         // 4 -> 10 (L5: 4 + 5×1.2) — Great 2.5×, HP cost earns reward
+  double_strike: { perLevelDelta: 0.4 },                         // 75% -> 77% per hit at L5 — Modest, already doubles everything
   // Shields
-  block:         { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
-  fortify:       { perLevelDelta: 1 },                           // 7 -> 12
-  parry:         { perLevelDelta: 1 },                           // 3 -> 8
-  brace:         { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
-  emergency:     { perLevelDelta: 1 },                           // 4 -> 9
-  overheal:      { perLevelDelta: 2 },                           // 10 -> 20
-  thorns:        { perLevelDelta: 0, secondaryPerLevelDelta: 1 }, // retaliate 3 -> 8
+  block:         { perLevelDelta: 0.9 },                         // 3 -> 7 (L5: 3 + 5×0.9) — Solid 2.5×
+  fortify:       { perLevelDelta: 1.2 },                         // 4 -> 10 (L5: 4 + 5×1.2) — Solid 2.5×
+  parry:         { perLevelDelta: 0.3 },                         // 2 -> 3 (L5) — Modest 1.75×, draw bonus is its thing
+  brace:         { perLevelDelta: 0.9 },                         // 3 -> 7 (L5: 3 + 5×0.9) — Solid 2.5×
+  emergency:     { perLevelDelta: 0.8 },                         // 2 -> 6 (L5: 2 + 5×0.8) — Great 3×
+  overheal:      { perLevelDelta: 1.5 },                         // 5 -> 12 (L5: 5 + 5×1.5) — Solid 2.5×
+  thorns:        { perLevelDelta: 0, secondaryPerLevelDelta: 0.6 }, // retaliate 3 -> 6 (L5) — Modest
   // Buffs
-  empower:       { perLevelDelta: 5 },                           // 50% -> 75%
-  mirror:        { perLevelDelta: 0.05 },                        // 1.0 -> 1.25x
-  adapt:         { perLevelDelta: 0.05 },                        // 1.0 -> 1.25x
+  empower:       { perLevelDelta: 2.0 },                         // 35 -> 45% (L5) — Modest, already strong multiplicatively
+  mirror:        { perLevelDelta: 0.03 },                        // 1.0 -> 1.15× (L5) — Modest, multiplier on multiplier
+  adapt:         { perLevelDelta: 0.03 },                        // 1.0 -> 1.15× (L5) — Modest
   // Debuffs
-  weaken:        { perLevelDelta: 0.4 },                         // floor'd: 2,2,2,3,3,4 turns
-  expose:        { perLevelDelta: 0.4 },                         // floor'd: 1,1,1,2,2,3 turns
-  slow:          { perLevelDelta: 0.4 },                         // floor'd: 2,2,2,3,3,4 turns
-  hex:           { perLevelDelta: 1 },                           // 3 -> 8 per turn
+  weaken:        { perLevelDelta: 0.3 },                         // 1 -> 2.5t (L5) — Solid
+  expose:        { perLevelDelta: 0.3 },                         // 1 -> 2.5t (L5) — Solid
+  slow:          { perLevelDelta: 0.3 },                         // 1 -> 2.5t (L5) — Solid
+  hex:           { perLevelDelta: 0.4 },                         // 2 -> 4/t (L5) — Solid
   // Utility
   scout:         { perLevelDelta: 0, addTagAtLevel: [3, 'draw'] }, // +1 draw at L3 (via tag)
-  recycle:       { perLevelDelta: 0.2 },                         // floor'd: 3,3,3,3,4,4
-  foresight:     { perLevelDelta: 0, secondaryPerLevelDelta: 0.2 }, // floor'd at L3+
+  recycle:       { perLevelDelta: 0.12 },                        // slight nerf
+  foresight:     { perLevelDelta: 0, secondaryPerLevelDelta: 0.12 }, // slight nerf
   quicken:       { perLevelDelta: 0, addTagAtLevel: [3, 'draw'], maxLevel: 3 },
   cleanse:       { perLevelDelta: 0, maxLevel: 2 },              // binary — no scaling
-  focus:         { perLevelDelta: 0, secondaryPerLevelDelta: 0.2 }, // +1 at L3
+  focus:         { perLevelDelta: 0, secondaryPerLevelDelta: 0.12 }, // slight nerf
   immunity:      { perLevelDelta: 0, maxLevel: 2 },              // binary
   overclock:     { perLevelDelta: 0, apCostReductionAtLevels: [3], maxLevel: 3 }, // AP-1 at L3
-  transmute:     { perLevelDelta: 0.2, maxLevel: 3 },            // floor'd: 1 -> 2 at L3
+  transmute:     { perLevelDelta: 0.12, maxLevel: 3 },           // slight nerf
   conjure:       { perLevelDelta: 0, maxLevel: 3 },              // Mastery improves candidate tier (handled via sourceMasteryLevel)
   forge:         { perLevelDelta: 0, maxLevel: 3 },              // Mastery improves upgrade amount and pick count
 
   // ── AR-206: Phase 1 Expansion Cards ─────────────────────────────────────────
 
   // Filler cards
-  power_strike:      { perLevelDelta: 3 },                           // 4 -> 19 (base 4 + 5×3)
-  twin_strike:       { perLevelDelta: 1 },                           // 5x2 -> 10x2 per hit
-  iron_wave:         { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 5+5 -> 10+10
-  reinforce:         { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
-  shrug_it_off:      { perLevelDelta: 1, addTagAtLevel: [3, 'draw2'] }, // 6 -> 11; L3: draws 2
-  bash:              { perLevelDelta: 3, addTagAtLevel: [3, 'vuln_ext'] }, // 4 -> 19 (base 4 + 5×3); L3: +1t Vuln
-  guard:             { perLevelDelta: 2 },                           // 3 -> 13 (base 3 + 5×2)
-  sap:               { perLevelDelta: 1, addTagAtLevel: [3, 'weak_ext'] }, // 3 -> 8; L3: +1t Weakness
+  power_strike:      { perLevelDelta: 1.5 },                         // 5 -> 12 (L5) — Solid 2.5×
+  twin_strike:       { perLevelDelta: 0.9 },                         // 3/hit -> 7/hit (L5), 6→14 total — Solid 2.5×
+  iron_wave:         { perLevelDelta: 0.6, secondaryPerLevelDelta: 1.0 }, // 3+5 -> 6+10 (L5) — Solid 2×
+  reinforce:         { perLevelDelta: 1.2 },                         // 4 -> 10 (L5) — Solid 2.5×
+  shrug_it_off:      { perLevelDelta: 0.6, addTagAtLevel: [3, 'draw2'] }, // 3 -> 6 (L5) — Modest 2×
+  bash:              { perLevelDelta: 1.0, addTagAtLevel: [3, 'vuln_ext'] }, // 5 -> 10 (L5) — Modest 2×, L3 vuln is the real power
+  guard:             { perLevelDelta: 1.4 },                         // 7 -> 14 (L5) — Solid 2×
+  sap:               { perLevelDelta: 0.4, addTagAtLevel: [3, 'weak_ext'] }, // 2 -> 4 (L5) — Modest 2×, L3 weak = powerful tag
 
   // Bleed cards
-  rupture:           { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 5+3 -> 10+8
-  lacerate:          { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 4+4 -> 9+9
+  rupture:           { perLevelDelta: 0.9, secondaryPerLevelDelta: 0.9 }, // 3+3 -> 7+7 (L5) — Solid 2.5×
+  lacerate:          { perLevelDelta: 0.6, secondaryPerLevelDelta: 1.2 }, // 2+4 -> 5+10 (L5) — Solid
 
   // Burn cards
-  kindle:            { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 4+4 -> 9+9
-  ignite:            { perLevelDelta: 1 },                           // 4 -> 9 burn on next atk
+  kindle:            { perLevelDelta: 0.4, secondaryPerLevelDelta: 0.8 }, // 2+4 -> 4+8 (L5) — Solid 2×, burn does ongoing dmg
+  ignite:            { perLevelDelta: 0.4 },                         // 2 -> 4 (L5) — Modest 2×, burn payoff is elsewhere
 
   // Basic new cards
-  overcharge:        { perLevelDelta: 1 },                           // 6 -> 11 base (+ per-Charge scaling unchanged)
-  riposte:           { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 5+4 -> 10+9
-  absorb:            { perLevelDelta: 1, addTagAtLevel: [3, 'draw2'] }, // 5 -> 10; L3 CC: draws 2
-  reactive_shield:   { perLevelDelta: 1, addTagAtLevel: [3, 'thorns_ext'] }, // 4 -> 9; L3: +1 Thorns
-  sift:              { perLevelDelta: 1 },                           // look 3 -> look 8 cards
+  overcharge:        { perLevelDelta: 0.9 },                         // 3 -> 7 (L5) — Solid 2.5×
+  riposte:           { perLevelDelta: 0.9, secondaryPerLevelDelta: 1.2 }, // 3+4 -> 7+10 (L5) — Solid
+  absorb:            { perLevelDelta: 0.6, addTagAtLevel: [3, 'draw2'] }, // 3 -> 6 (L5) — Modest 2×
+  reactive_shield:   { perLevelDelta: 0.4, addTagAtLevel: [3, 'thorns_ext'] }, // 2 -> 4 (L5) — Modest 2×
+  sift:              { perLevelDelta: 0.4 },                         // look 3 -> look 5 (L5) — nerf
   scavenge:          { perLevelDelta: 0, addTagAtLevel: [3, 'scavenge2'], maxLevel: 3 }, // L3: QP puts 2 on top
-  precision_strike:  { perLevelDelta: 3, addTagAtLevel: [3, 'timer_ext75'] }, // 4 -> 19 (base 4 + 5×3); L3: timer +75%
+  precision_strike:  { perLevelDelta: 1.2, addTagAtLevel: [3, 'timer_ext75'] }, // 8 -> 14 (L5) — Modest 1.75×, L3 +75% timer is very powerful
   stagger:           { perLevelDelta: 0, addTagAtLevel: [3, 'weak_apply'], maxLevel: 3 }, // L3: QP applies 1t Weakness
-  corrode:           { perLevelDelta: 1, addTagAtLevel: [3, 'weak_ext'] }, // 5 -> 10 block removed; L3: +1t Weakness
+  corrode:           { perLevelDelta: 0.6, addTagAtLevel: [3, 'weak_ext'] }, // 3 -> 6 (L5) — Modest 2×
   swap:              { perLevelDelta: 0, addTagAtLevel: [3, 'draw3cc'], maxLevel: 3 }, // L3: CC draws 3
-  siphon_strike:     { perLevelDelta: 1, addTagAtLevel: [3, 'min_heal3'] }, // 6 -> 11; L3: min heal = 3
-  aegis_pulse:       { perLevelDelta: 1, addTagAtLevel: [3, 'chain_buff3'] }, // 5 -> 10; L3: chain buff +3
+  siphon_strike:     { perLevelDelta: 0.6, addTagAtLevel: [3, 'min_heal3'] }, // 3 -> 6 (L5) — Modest 2×, L3 heal is strong
+  aegis_pulse:       { perLevelDelta: 0.6, addTagAtLevel: [3, 'chain_buff3'] }, // 3 -> 6 (L5) — Modest 2×
 
   // Inscription cards
-  inscription_fury:  { perLevelDelta: 0.5 },                        // +2 -> +4 atk (rounded)
-  inscription_iron:  { perLevelDelta: 0.5 },                        // +3 -> +5 block/turn (rounded)
+  inscription_fury:  { perLevelDelta: 0.3 },                        // 1 -> 2.5 atk (L5) — Solid
+  inscription_iron:  { perLevelDelta: 0.4 },                        // 2 -> 4 block/turn (L5) — Solid
 
   // ── AR-207: Phase 2 Identity / Flagship Cards ─────────────────────────────
 
   // Attacks
-  gambit:            { perLevelDelta: 2, addTagAtLevel: [3, 'self_dmg_minus1'] }, // 10 -> 20 dmg; L3: self-dmg -1
-  chain_lightning:   { perLevelDelta: 1 },                           // base 8 -> 13 (multiplied by chain length on CC)
-  volatile_slash:    { perLevelDelta: 2 },                           // 10 -> 20; CC still exhausts
+  gambit:            { perLevelDelta: 2.0, addTagAtLevel: [3, 'self_dmg_minus1'] }, // 5 -> 15 (L5) — Great 3×, big risk
+  chain_lightning:   { perLevelDelta: 1.2 },                         // 4 -> 10 (L5) — Solid 2.5×, chain mult is separate
+  volatile_slash:    { perLevelDelta: 2.0 },                         // 5 -> 15 (L5) — Great 3×, exhausts = earns it
 
   // Shields
-  burnout_shield:    { perLevelDelta: 2 },                           // 8 -> 18; CC still exhausts
-  knowledge_ward:    { perLevelDelta: 1 },                           // 4/domain -> 9/domain
+  burnout_shield:    { perLevelDelta: 1.6 },                         // 4 -> 12 (L5) — Great 3×, CC exhausts
+  knowledge_ward:    { perLevelDelta: 0.9 },                         // 6 -> 10 (L5) — Modest 1.75×
 
   // Buffs
   warcry:            { perLevelDelta: 0, addTagAtLevel: [3, 'warcry_perm_str'], maxLevel: 3 }, // L3 QP: +1 permanent Str
   battle_trance:     { perLevelDelta: 0, addTagAtLevel: [3, 'battle_trance_draw4'], maxLevel: 3 }, // L3 QP: draw 4
 
   // Debuffs
-  curse_of_doubt:    { perLevelDelta: 5 },                           // +30% -> +55% charge amp (QP base)
-  mark_of_ignorance: { perLevelDelta: 1 },                           // +3 -> +8 flat charge amp (QP base)
-  corroding_touch:   { perLevelDelta: 1, maxLevel: 3 },              // +1 Weakness duration/level (QP: 1t -> 4t)
+  curse_of_doubt:    { perLevelDelta: 3.0 },                         // 20 -> 35% (L5) — Solid
+  mark_of_ignorance: { perLevelDelta: 0.4 },                         // 2 -> 4 (L5) — Solid
+  corroding_touch:   { perLevelDelta: 0.5, maxLevel: 3 },            // 1 -> 2.5t (L3) — Solid
 
   // Wilds
-  phase_shift:       { perLevelDelta: 2 },                           // 8 -> 18 dmg/block; CC: 12 -> 22
+  phase_shift:       { perLevelDelta: 1.2 },                         // 4 -> 10 (L5) — Solid 2.5×
   chameleon:         { perLevelDelta: 0, addTagAtLevel: [3, 'chameleon_qp_chain'], maxLevel: 3 }, // L3 QP: also inherits chain type
-  dark_knowledge:    { perLevelDelta: 1 },                           // 3/curse -> 8/curse (QP base)
+  dark_knowledge:    { perLevelDelta: 0.6 },                         // 3 -> 6 (L5) — Solid 2×
   chain_anchor:      { perLevelDelta: 0, addTagAtLevel: [3, 'chain_anchor_3'], maxLevel: 3 }, // L3 CC: sets chain to 3
   unstable_flux:     { perLevelDelta: 0, addTagAtLevel: [3, 'unstable_flux_qp_choice'], maxLevel: 3 }, // L3 QP: choose 1 of 2 options
 
   // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────────
 
   // Attacks
-  smite:             { perLevelDelta: 2, maxLevel: 5 },                              // QP base 10→20; CC avg-mastery bonus unchanged
-  feedback_loop:     { perLevelDelta: 2, addTagAtLevel: [3, 'feedback_weakness'], maxLevel: 3 }, // QP 5→11; CC 20→32; L3 QP applies 1 Weakness
+  smite:             { perLevelDelta: 2.0, maxLevel: 5 },                            // 10 -> 20 (L5) — Solid 2×, high base
+  feedback_loop:     { perLevelDelta: 1.7, addTagAtLevel: [3, 'feedback_weakness'], maxLevel: 3 }, // 5 -> 10 (L3) — Modest 2×, L3 weakness
   recall:            { perLevelDelta: 0.2, addTagAtLevel: [3, 'recall_draw'], maxLevel: 5 },    // per-card 1.0→2.0; L3: draw 1 after resolving
-  hemorrhage:        { perLevelDelta: 1, maxLevel: 5 },                              // base 4→9 (+ per-Bleed multiplier unchanged)
-  eruption:          { perLevelDelta: 1, maxLevel: 3 },                              // QP per-AP 8→11; CC per-AP 12→15
+  hemorrhage:        { perLevelDelta: 0.6, maxLevel: 5 },                            // 2 -> 5 (L5) — Solid, bleed mult is separate
+  eruption:          { perLevelDelta: 2.0, maxLevel: 3 },                            // 4 -> 10/AP (L3) — Solid 2.5×
 
   // Shields
-  bulwark:           { perLevelDelta: 3, maxLevel: 3 },                              // QP 18→27; CC 36→45 (still exhausts)
-  conversion:        { perLevelDelta: 2, maxLevel: 3 },                              // QP cap 10→16; CC cap 15→21
-  ironhide:          { perLevelDelta: 1, addTagAtLevel: [3, 'ironhide_perm_qp'], maxLevel: 3 }, // QP 6→9; L3 QP: +1 permanent Str
+  bulwark:           { perLevelDelta: 3.0, maxLevel: 3 },                            // 9 -> 18 (L3) — Solid 2×
+  conversion:        { perLevelDelta: 1.7, maxLevel: 3 },                            // 5 -> 10 (L3) — Solid 2×
+  ironhide:          { perLevelDelta: 1.0, addTagAtLevel: [3, 'ironhide_perm_qp'], maxLevel: 3 }, // 3 -> 6 (L3) — Modest 2×
 
   // Buffs
   frenzy:            { perLevelDelta: 0, addTagAtLevel: [3, 'frenzy_qp3'], maxLevel: 3 },       // L3 QP: frees 3 cards
   mastery_surge:     { perLevelDelta: 0, addTagAtLevel: [3, 'mastery_surge_qp2'], maxLevel: 3 },// L3 QP: upgrades 2 cards
-  war_drum:          { perLevelDelta: 1, maxLevel: 5 },                              // QP buff +2→+7 to all hand cards
+  war_drum:          { perLevelDelta: 0.1, maxLevel: 5 },                            // 1 -> 1.5 buff (L5) — very conservative, buffs ALL hand cards
 
   // Debuffs
-  entropy:           { perLevelDelta: 1, addTagAtLevel: [3, 'entropy_poison_qp'], maxLevel: 3 }, // QP Burn 3→6; L3 QP: +1 Poison
+  entropy:           { perLevelDelta: 0.7, addTagAtLevel: [3, 'entropy_poison_qp'], maxLevel: 3 }, // 2 -> 4 (L3) — Solid
 
   // Utility
   archive:           { perLevelDelta: 0, addTagAtLevel: [3, 'archive_retain2_qp'], maxLevel: 3 }, // L3 QP: retains 2 cards
@@ -168,7 +168,7 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   catalyst:          { perLevelDelta: 0, addTagAtLevel: [3, 'catalyst_bleed_qp'], maxLevel: 3 },  // L3 QP: also doubles Bleed
   mimic:             { perLevelDelta: 0, addTagAtLevel: [3, 'mimic_choose_qp'], maxLevel: 3 },    // L3 QP: player chooses from discard
   aftershock:        { perLevelDelta: 0.1, maxLevel: 3 },                            // QP mult 0.5→0.8; CC mult 0.7→1.0 at L3
-  knowledge_bomb:    { perLevelDelta: 1, maxLevel: 5 },                              // CC per-correct 4→9 damage
+  knowledge_bomb:    { perLevelDelta: 0.8, maxLevel: 5 },                            // per-correct, slight nerf
 
   // Inscription
   inscription_wisdom: { perLevelDelta: 0, addTagAtLevel: [3, 'inscription_wisdom_heal2'], maxLevel: 3 }, // L3 CC: heals 2 HP per correct

@@ -68,7 +68,7 @@ Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 
 Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `result = 'victory'`.
 
-**Tier multipliers** (legacy path, no mechanic definition): T1=1.0×, T2a=1.3×, T2b=1.6×, T3=0×.
+**Tier multipliers:** All active tiers (T1, T2a, T2b) use `effectMultiplier = 1.0`. Tier no longer drives card power; mastery does. T3 = 0× (card becomes a passive).
 
 **Knowledge Chain multipliers** (`CHAIN_MULTIPLIERS`): [1.0, 1.0, 1.3, 1.7, 2.2, 3.0] at chain lengths 0–5.
 
@@ -92,13 +92,24 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 - Clears fact from review queue
 
 **Charge Wrong (`playMode = 'charge'`, `answeredCorrectly = false`)**
-- Partial effect at `FIZZLE_EFFECT_RATIO` (0.25× of base effect by default)
+- Partial effect at `FIZZLE_EFFECT_RATIO = 0.25×` of base effect
 - Free First Charge wrong = 0.0× (total fizzle, `FIRST_CHARGE_FREE_WRONG_MULTIPLIER`)
 - Breaks Knowledge Chain, loses Chain Momentum
 - Mastery downgrade (skipped on first attempt at a fact, `isFirstAttempt` flag)
 - Adds fact to `cursedFactIds` if `masteryLevel === 0` and not first attempt
 - Increases fog by 1 (`adjustAura(1)`)
 - AP deducted — no refund on wrong answer
+
+---
+
+## Card Acquisition and Catch-Up Mastery
+
+When a player picks a new card as a reward mid-run, `encounterBridge.addRewardCardToActiveDeck()` calls `computeCatchUpMastery()` (`catchUpMasteryService.ts`) to assign a starting mastery level proportional to the deck's current average. This prevents late-game picks from being dead on arrival.
+
+- Deck avg < 1 → new card starts at L0 (early game, no catch-up)
+- Deck avg ≥ 1 → starting level = `floor(rand(0.5–1.5) × avgMastery)`, capped at mechanic's `maxLevel`
+
+See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
 
 ---
 

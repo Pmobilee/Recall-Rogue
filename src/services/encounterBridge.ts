@@ -54,6 +54,7 @@ import {
   getNovelFactPercentage,
   shouldSuppressRewardsForTinyPool,
 } from './masteryScalingService';
+import { computeCatchUpMastery } from './catchUpMasteryService';
 
 export interface EncounterSnapshot {
   activeDeck: CardRunState | null
@@ -1148,11 +1149,19 @@ export function getActiveDeckFactIds(): Set<string> {
   return ids;
 }
 
+/**
+ * Add a reward card to the active deck with catch-up mastery applied.
+ * New cards get mastery proportional to the deck's current average so late-game
+ * picks are not dead on arrival. See catchUpMasteryService for scaling details.
+ */
 export function addRewardCardToActiveDeck(card: Card): void {
   if (!activeDeck) return;
+  const catchUpLevel = computeCatchUpMastery(card, getActiveDeckCards());
   const cloned: Card = {
     ...card,
     id: `reward_${Math.random().toString(36).slice(2, 10)}`,
+    masteryLevel: catchUpLevel,
+    isUpgraded: catchUpLevel > 0,
   };
   addCardToDeck(activeDeck, cloned, 'top');
 }

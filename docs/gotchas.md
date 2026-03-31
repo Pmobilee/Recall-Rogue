@@ -138,6 +138,11 @@
 **What went wrong:** A lighting shader applied to enemies bled into the scene ambient color, tinting all combat backgrounds yellow.
 **Fix:** Visual-inspect after any shader, lighting, or `CombatAtmosphereSystem` change.
 
+### 2026-03-31 — Weapon animations disappear after first combat encounter
+**What went wrong:** Sword, tome, and shield animations worked on first combat but were invisible on all subsequent encounters after navigating away from combat and back.
+**Why:** `CombatScene.onShutdown()` (fired on both `shutdown` and `sleep` events) calls `weaponAnimations.destroy()`, which nulls all sprite and canvas texture references. `onWake()` did not recreate them. All animation methods silently return early when sprites are null.
+**Fix:** Added `this.weaponAnimations.createSprites(this.displayH)` to `onWake()`, before the HP ratio sync. The base PNG textures (`weapon-sword`, `weapon-arm`, `weapon-tome`, `weapon-shield`) are NOT removed by `destroy()` — they survive in the Phaser texture cache from the initial preload — so `createSprites()` on wake is cheap and safe. `createSprites()` already handles removing stale canvas textures (e.g. `weapon-sword-canvas`) before recreating them.
+
 ---
 
 ## Quiz / Game Design
@@ -189,3 +194,19 @@
 **Why:** The formula was implemented as `round(quickPlayValue × 1.5) + masteryBonus` instead of `round((quickPlayValue + masteryBonus) × 1.5)`.
 
 **Fix:** Mastery bonus is now included before the multiplier: `CC = round((base + mastery) × 1.5)`. Example: Strike base 4, mastery +3 → QP=7, CC was 9, now CC=11. All three sites (resolver, preview service, CardHand) were updated together.
+
+### 2026-03-31 — Brace mastery was dead code (base QP was 0)
+
+**What went wrong:** Brace had `quickPlayValue = 0` in its mechanic definition. The resolver ignored the card's value entirely for Brace and used only the enemy's telegraphed intent multiplied by a modifier. This meant Brace's mastery bonus (`perLevelDelta = 0.9`) added to a zero base — mastery upgrades had no effect on Brace's actual block.
+
+**Why:** Brace is a "block = enemy attack" mechanic. The resolver was supposed to take `max(intentBlock, cardValue)` but instead only used `intentBlock`. With base QP=0, the card value path was always lossy.
+
+**Fix:** Brace base `quickPlayValue` set to 3. Resolver now uses `max(intentBlock, cardValue)` so mastery scaling provides a real floor. At L5: QP=7, giving meaningful fallback block even against weak-telegraphing enemies.
+
+### 2026-03-31 — Mastery perLevelDelta ranged 1× to infinity across mechanics
+
+**What went wrong:** Before rebalancing, `perLevelDelta` values were wildly inconsistent. `strike` was +3 (4→19, an effective 4.75× at L5 CC), `brace` was effectively infinite (0 base = unbounded relative increase), `double_strike` was +1 (effectively 1.07× per-hit improvement). No deliberate power tier was enforced.
+
+**Why:** Deltas were set ad-hoc over multiple feature sessions without a consistent target ratio framework.
+
+**Fix:** All 95 mechanics rebalanced (2026-03-31) against three deliberate tiers: Modest 1.5–2× (side-effect cards), Solid 2–2.5× (standard), Great 2.5–3× (high-risk/high-cost). Example: Strike `perLevelDelta` reduced 3→1.2 (QP 4→10 at L5, CC 6→15). Always check delta tier labels in `MASTERY_UPGRADE_DEFS` comments before assuming a mechanic's scaling is intentional.
