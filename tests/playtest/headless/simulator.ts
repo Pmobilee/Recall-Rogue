@@ -30,6 +30,8 @@ import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT, ENABLE_PHASE2_
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
 import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
+import { selectRunChainTypes } from '../../../src/data/chainTypes.js';
+import { BotBrain, type BotSkills } from './bot-brain.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Types
@@ -58,6 +60,8 @@ export interface SimOptions {
   healBetweenEncounters?: number;
   /** Ascension level (0-20). Default: 0 */
   ascensionLevel?: number;
+  /** Bot skill profile. If provided, overrides correctRate/chargeRate for BotBrain-driven play. */
+  botSkills?: BotSkills;
 }
 
 /** Tracks a single card play event for per-mechanic win contribution analysis. */
@@ -89,7 +93,7 @@ export interface EncounterSummary {
 
 export interface SimRunResult {
   runId: string;
-  options: Required<SimOptions>;
+  options: Required<Omit<SimOptions, 'botSkills'>> & { botSkills?: BotSkills };
   encounters: EncounterSummary[];
   totalTurns: number;
   totalDamageDealt: number;
@@ -190,8 +194,9 @@ function pickRandomMechanic(): MechanicDefinition {
  * Builds a starting deck pool for simulation using real mechanic definitions.
  * Starter deck matches the real game: 5 Strike, 4 Block, 1 Foresight (from STARTER_DECK_COMPOSITION).
  * Additional cards beyond the starter use weighted random mechanics (simulating card rewards).
+ * Chain types are assigned round-robin from the run's selected 3 chain types.
  */
-function buildSimDeck(deckSize: number): Card[] {
+function buildSimDeck(deckSize: number, seed: number = 0): Card[] {
   // Build the real starter deck from STARTER_DECK_COMPOSITION
   const starterCards: Card[] = [];
   for (const entry of STARTER_DECK_COMPOSITION) {
@@ -207,6 +212,12 @@ function buildSimDeck(deckSize: number): Card[] {
   for (let i = cards.length; i < deckSize; i++) {
     const mechanic = pickRandomMechanic();
     cards.push(makeMechanicCard(mechanic));
+  }
+
+  // Assign chain types round-robin from the 3 types selected for this run
+  const runChainTypes = selectRunChainTypes(seed);
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].chainType = runChainTypes[i % runChainTypes.length];
   }
 
   return cards;
@@ -240,6 +251,8 @@ function simulateSingleEncounter(
     chargeRate: number;
     maxTurns: number;
     verbose: boolean;
+    /** Optional BotBrain for intelligent play. When absent, uses legacy dumb-bot logic. */
+    brain?: BotBrain;
   },
   ascMods: ReturnType<typeof getAscensionModifiers> = getAscensionModifiers(0),
 ): {
@@ -262,127 +275,221 @@ function simulateSingleEncounter(
   let maxCombo = 0;
   const cardPlays: CardPlayRecord[] = [];
 
-  const { verbose, correctRate, chargeRate, maxTurns } = opts;
+  const { verbose, correctRate, chargeRate, maxTurns, brain } = opts;
 
   while (turnsUsed < maxTurns) {
     // ── Player turn: play all cards in hand ────────────────────────────────
     let safetyBreak = 0;
     const handCardsBefore = new Set(turnState.deck.hand.map(c => c.id));
-    while (!isHandEmpty(turnState) && turnState.result === null) {
-      if (safetyBreak++ > 200) break; // absolute safety guard
 
-      const hand = turnState.deck.hand;
-      if (hand.length === 0) break;
+    if (brain) {
+      // ── BotBrain-driven play loop ──────────────────────────────────────
+      // Re-plan each iteration because playCardAction can change the hand
+      // (cards consumed, new cards drawn by utility cards, etc.)
+      while (!isHandEmpty(turnState) && turnState.result === null) {
+        if (safetyBreak++ > 200) break;
 
-      // AP check: if no card in hand can be played with remaining AP, end turn
-      const minCardCost = hand.reduce((min, c) => Math.min(min, c.apCost ?? 1), Infinity);
-      const minPlayCost = minCardCost + (chargeRate > 0 ? 1 : 0); // +1 for charge surcharge
-      const minQuickCost = minCardCost; // quick play has no surcharge
-      if (turnState.apCurrent < Math.min(minPlayCost, minQuickCost)) break;
+        const hand = turnState.deck.hand;
+        if (hand.length === 0) break;
 
-      // Pick first card in hand (simple strategy — no AI needed)
-      const card = hand[0];
-      const cardMinCost = card.apCost ?? 1;
+        const plan = brain.planTurn(hand, turnState, { freeCharging: ascMods.freeCharging });
+        if (plan.length === 0) break;
 
-      // Decide play mode based on available AP
-      // A19 buff: free charging (no +1 AP surcharge)
-      const chargeSurcharge = ascMods.freeCharging ? 0 : 1;
-      const chargeApCost = cardMinCost + chargeSurcharge;
-      const canCharge = turnState.apCurrent >= chargeApCost;
-      const isCharge = canCharge && Math.random() < chargeRate;
+        // Execute only the FIRST valid play, then re-plan with updated hand
+        let played = false;
+        for (const play of plan) {
+          // Re-check hand — cards may have been removed by previous effects
+          const card = turnState.deck.hand.find(c => c.id === play.cardId);
+          if (!card) continue;
 
-      // Skip this card if even quick play can't be afforded
-      if (turnState.apCurrent < cardMinCost) {
-        // Move to next card if hand has more
-        if (hand.length <= 1) break;
-        // Rotate: move hand[0] to end
-        const rotated = hand.shift()!;
-        hand.push(rotated);
-        continue;
+          const apCost = card.apCost ?? 1;
+          const isSurge = (turnState.turnNumber - 2) % 4 === 0 && turnState.turnNumber >= 2;
+          const chargeSurcharge = (ascMods.freeCharging || isSurge) ? 0 : 1;
+          const totalCost = play.mode === 'charge' ? apCost + chargeSurcharge : apCost;
+          if (turnState.apCurrent < totalCost) continue;
+
+          const answeredCorrectly = Math.random() < brain.skills.accuracy;
+          const speedBonus = answeredCorrectly && Math.random() < 0.5;
+
+          const res = playCardAction(turnState, card.id, answeredCorrectly, speedBonus, play.mode);
+
+          if (res.blocked && !res.fizzled) break;
+
+          turnState = res.turnState;
+          cardsPlayed++;
+          played = true;
+
+          cardPlays.push({
+            mechanic: card.mechanicId ?? card.cardType,
+            wasCharged: play.mode === 'charge',
+            answeredCorrectly,
+            damageDealt: res.effect.damageDealt ?? 0,
+            wasMomentumFree: false,
+          });
+
+          if (answeredCorrectly) {
+            correctAnswers++;
+            if (ascMods.correctAnswerHeal > 0) {
+              turnState.playerState.hp = Math.min(
+                turnState.playerState.hp + ascMods.correctAnswerHeal,
+                turnState.playerState.maxHp,
+              );
+            }
+          } else {
+            wrongAnswers++;
+          }
+
+          if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
+            turnState.playerState.hp = Math.min(
+              turnState.playerState.hp + ascMods.comboHealAmount,
+              turnState.playerState.maxHp,
+            );
+          }
+
+          if (res.effect.damageDealt > 0) damageDealt += res.effect.damageDealt;
+          if (res.comboCount > maxCombo) maxCombo = res.comboCount;
+
+          if (verbose) {
+            const hp = turnState.playerState.hp;
+            const eHP = turnState.enemy.currentHP;
+            console.log(
+              `  [T${turnsUsed + 1}] card=${card.mechanicId ?? card.cardType} correct=${answeredCorrectly} ` +
+              `mode=${play.mode} dmg=${res.effect.damageDealt} ap=${turnState.apCurrent} combo=${res.comboCount} ` +
+              `playerHP=${hp} enemyHP=${eHP}`
+            );
+          }
+
+          const midCheckResult = checkEncounterEnd(turnState);
+          if (midCheckResult !== null) {
+            return {
+              result: midCheckResult, turnsUsed: turnsUsed + 1,
+              damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo, cardPlays,
+            };
+          }
+
+          break; // Only execute first valid play, then re-plan
+        }
+
+        if (!played) break;
       }
+    } else {
+      // ── Legacy dumb-bot play loop (unchanged for backward compatibility) ──
+      while (!isHandEmpty(turnState) && turnState.result === null) {
+        if (safetyBreak++ > 200) break; // absolute safety guard
 
-      const answeredCorrectly = Math.random() < correctRate;
-      const speedBonus = answeredCorrectly && Math.random() < 0.5;
+        const hand = turnState.deck.hand;
+        if (hand.length === 0) break;
 
-      const res = playCardAction(
-        turnState,
-        card.id,
-        answeredCorrectly,
-        speedBonus,
-        isCharge ? 'charge' : 'quick',
-      );
+        // AP check: if no card in hand can be played with remaining AP, end turn
+        const minCardCost = hand.reduce((min, c) => Math.min(min, c.apCost ?? 1), Infinity);
+        const minPlayCost = minCardCost + (chargeRate > 0 ? 1 : 0); // +1 for charge surcharge
+        const minQuickCost = minCardCost; // quick play has no surcharge
+        if (turnState.apCurrent < Math.min(minPlayCost, minQuickCost)) break;
 
-      // If the card was blocked (returned from hand unchanged), AP is exhausted
-      if (res.blocked && !res.fizzled) {
-        break; // AP exhausted, end player turn
-      }
+        // Pick first card in hand (simple strategy — no AI needed)
+        const card = hand[0];
+        const cardMinCost = card.apCost ?? 1;
 
-      turnState = res.turnState;
-      cardsPlayed++;
+        // Decide play mode based on available AP
+        // A19 buff: free charging (no +1 AP surcharge)
+        const chargeSurcharge = ascMods.freeCharging ? 0 : 1;
+        const chargeApCost = cardMinCost + chargeSurcharge;
+        const canCharge = turnState.apCurrent >= chargeApCost;
+        const isCharge = canCharge && Math.random() < chargeRate;
 
-      // Record this card play for per-mechanic analysis
-      cardPlays.push({
-        mechanic: card.mechanicId ?? card.cardType,
-        wasCharged: isCharge,
-        answeredCorrectly,
-        damageDealt: res.effect.damageDealt ?? 0,
-        wasMomentumFree: false, // quick plays are never momentum-free in sim
-      });
+        // Skip this card if even quick play can't be afforded
+        if (turnState.apCurrent < cardMinCost) {
+          // Move to next card if hand has more
+          if (hand.length <= 1) break;
+          // Rotate: move hand[0] to end
+          const rotated = hand.shift()!;
+          hand.push(rotated);
+          continue;
+        }
 
-      if (answeredCorrectly) {
-        correctAnswers++;
-        // A17 buff: correct answers heal 1 HP
-        if (ascMods.correctAnswerHeal > 0) {
+        const answeredCorrectly = Math.random() < correctRate;
+        const speedBonus = answeredCorrectly && Math.random() < 0.5;
+
+        const res = playCardAction(
+          turnState,
+          card.id,
+          answeredCorrectly,
+          speedBonus,
+          isCharge ? 'charge' : 'quick',
+        );
+
+        // If the card was blocked (returned from hand unchanged), AP is exhausted
+        if (res.blocked && !res.fizzled) {
+          break; // AP exhausted, end player turn
+        }
+
+        turnState = res.turnState;
+        cardsPlayed++;
+
+        // Record this card play for per-mechanic analysis
+        cardPlays.push({
+          mechanic: card.mechanicId ?? card.cardType,
+          wasCharged: isCharge,
+          answeredCorrectly,
+          damageDealt: res.effect.damageDealt ?? 0,
+          wasMomentumFree: false, // quick plays are never momentum-free in sim
+        });
+
+        if (answeredCorrectly) {
+          correctAnswers++;
+          // A17 buff: correct answers heal 1 HP
+          if (ascMods.correctAnswerHeal > 0) {
+            turnState.playerState.hp = Math.min(
+              turnState.playerState.hp + ascMods.correctAnswerHeal,
+              turnState.playerState.maxHp,
+            );
+          }
+        } else {
+          wrongAnswers++;
+        }
+
+        // A6 buff: heal on combo threshold
+        if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
           turnState.playerState.hp = Math.min(
-            turnState.playerState.hp + ascMods.correctAnswerHeal,
+            turnState.playerState.hp + ascMods.comboHealAmount,
             turnState.playerState.maxHp,
           );
         }
-      } else {
-        wrongAnswers++;
-      }
 
-      // A6 buff: heal on combo threshold
-      if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
-        turnState.playerState.hp = Math.min(
-          turnState.playerState.hp + ascMods.comboHealAmount,
-          turnState.playerState.maxHp,
-        );
-      }
+        if (res.effect.damageDealt > 0) {
+          damageDealt += res.effect.damageDealt;
+        }
 
-      if (res.effect.damageDealt > 0) {
-        damageDealt += res.effect.damageDealt;
-      }
+        if (res.comboCount > maxCombo) {
+          maxCombo = res.comboCount;
+        }
 
-      if (res.comboCount > maxCombo) {
-        maxCombo = res.comboCount;
-      }
+        if (verbose) {
+          const hp = turnState.playerState.hp;
+          const eHP = turnState.enemy.currentHP;
+          console.log(
+            `  [T${turnsUsed + 1}] card=${card.mechanicId ?? card.cardType} correct=${answeredCorrectly} ` +
+            `mode=${isCharge ? 'charge' : 'quick'} ` +
+            `dmg=${res.effect.damageDealt} ap=${turnState.apCurrent} combo=${res.comboCount} ` +
+            `playerHP=${hp} enemyHP=${eHP}`
+          );
+        }
 
-      if (verbose) {
-        const hp = turnState.playerState.hp;
-        const eHP = turnState.enemy.currentHP;
-        console.log(
-          `  [T${turnsUsed + 1}] card=${card.mechanicId ?? card.cardType} correct=${answeredCorrectly} ` +
-          `mode=${isCharge ? 'charge' : 'quick'} ` +
-          `dmg=${res.effect.damageDealt} ap=${turnState.apCurrent} combo=${res.comboCount} ` +
-          `playerHP=${hp} enemyHP=${eHP}`
-        );
-      }
-
-      // Check encounter end after each card
-      const midCheckResult = checkEncounterEnd(turnState);
-      if (midCheckResult !== null) {
-        return {
-          result: midCheckResult,
-          turnsUsed: turnsUsed + 1,
-          damageDealt,
-          damageTaken,
-          cardsPlayed,
-          correctAnswers,
-          wrongAnswers,
-          maxCombo,
-          cardPlays,
-        };
+        // Check encounter end after each card
+        const midCheckResult = checkEncounterEnd(turnState);
+        if (midCheckResult !== null) {
+          return {
+            result: midCheckResult,
+            turnsUsed: turnsUsed + 1,
+            damageDealt,
+            damageTaken,
+            cardsPlayed,
+            correctAnswers,
+            wrongAnswers,
+            maxCombo,
+            cardPlays,
+          };
+        }
       }
     }
     void handCardsBefore; // suppress unused warning
@@ -453,7 +560,7 @@ function simulateSingleEncounter(
 export function runSimulation(opts: SimOptions = {}): SimRunResult {
   const startTime = Date.now();
 
-  const options: Required<SimOptions> = {
+  const options: Required<Omit<SimOptions, 'botSkills'>> & { botSkills?: BotSkills } = {
     encounterCount: opts.encounterCount ?? 10,
     correctRate: opts.correctRate ?? 0.75,
     chargeRate: opts.chargeRate ?? 0.7,
@@ -465,6 +572,7 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     verbose: opts.verbose ?? false,
     healBetweenEncounters: opts.healBetweenEncounters ?? POST_ENCOUNTER_HEAL_PCT,
     ascensionLevel: opts.ascensionLevel ?? 0,
+    botSkills: opts.botSkills,
   };
 
   // Compute ascension modifiers once for the entire run
@@ -472,9 +580,12 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
 
   const runId = `sim_${options.seed}_${Date.now()}`;
 
+  // Create BotBrain if botSkills provided — used for intelligent encounter play
+  const brain = options.botSkills ? new BotBrain(options.botSkills) : undefined;
+
   // Build deck once; it persists across encounters (roguelite model)
   const effectiveDeckSize = ascMods.starterDeckSizeOverride ?? options.deckSize;
-  const cardPool = buildSimDeck(effectiveDeckSize);
+  const cardPool = buildSimDeck(effectiveDeckSize, options.seed);
   const deck = createDeck(cardPool);
 
   // Track cross-encounter state
@@ -567,10 +678,11 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     }
 
     const encounterResult = simulateSingleEncounter(initialTurnState, {
-      correctRate: options.correctRate,
+      correctRate: options.botSkills?.accuracy ?? options.correctRate,
       chargeRate: options.chargeRate,
       maxTurns: options.maxTurnsPerEncounter,
       verbose: options.verbose,
+      brain,
     }, ascMods);
 
     // Update persistent HP from the last known turn state (approximation)

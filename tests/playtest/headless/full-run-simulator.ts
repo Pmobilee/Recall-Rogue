@@ -27,6 +27,8 @@ import {
 } from '../../../src/services/turnManager.js';
 import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
+import { selectRunChainTypes } from '../../../src/data/chainTypes.js';
+import { BotBrain, type BotSkills } from './bot-brain.js';
 import {
   PLAYER_START_HP,
   PLAYER_MAX_HP,
@@ -79,6 +81,8 @@ export interface FullRunOptions {
   ascensionLevel?: number;
   /** Number of acts to simulate (1-3). Default: 3 */
   acts?: 1 | 2 | 3;
+  /** Bot skill profile. If provided, overrides correctRate/chargeRate for BotBrain-driven play. */
+  botSkills?: BotSkills;
 }
 
 export interface NodeVisitRecord {
@@ -93,7 +97,7 @@ export interface NodeVisitRecord {
 
 export interface FullRunResult {
   runId: string;
-  options: Required<FullRunOptions>;
+  options: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills };
   survived: boolean;
   actsCompleted: number;
   finalHP: number;
@@ -202,13 +206,18 @@ function pickRandomMechanic(): MechanicDefinition {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-function buildStarterDeck(): Card[] {
+function buildStarterDeck(seed: number = 0): Card[] {
   const cards: Card[] = [];
   for (const entry of STARTER_DECK_COMPOSITION) {
     const mechanic = findMechanic(entry.mechanicId);
     for (let i = 0; i < entry.count; i++) {
       cards.push(makeMechanicCard(mechanic));
     }
+  }
+  // Assign chain types round-robin from the 3 types selected for this run
+  const runChainTypes = selectRunChainTypes(seed);
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].chainType = runChainTypes[i % runChainTypes.length];
   }
   return cards;
 }
@@ -287,6 +296,8 @@ function simulateSingleEncounter(
     correctRate: number;
     chargeRate: number;
     maxTurns: number;
+    /** Optional BotBrain for intelligent play. When absent, uses legacy dumb-bot logic. */
+    brain?: BotBrain;
   },
   ascMods: ReturnType<typeof getAscensionModifiers>,
 ): EncounterResult {
@@ -298,77 +309,150 @@ function simulateSingleEncounter(
   let wrongAnswers = 0;
   let maxCombo = 0;
 
-  const { correctRate, chargeRate, maxTurns } = opts;
+  const { correctRate, chargeRate, maxTurns, brain } = opts;
 
   while (turnsUsed < maxTurns) {
     // ── Player turn: play all cards in hand ──
     let safetyBreak = 0;
-    while (!isHandEmpty(turnState) && turnState.result === null) {
-      if (safetyBreak++ > 200) break;
 
-      const hand = turnState.deck.hand;
-      if (hand.length === 0) break;
+    if (brain) {
+      // ── BotBrain-driven play loop ──────────────────────────────────────
+      // Re-plan each iteration because playCardAction can change the hand
+      // (cards consumed, new cards drawn, etc.)
+      while (!isHandEmpty(turnState) && turnState.result === null) {
+        if (safetyBreak++ > 200) break;
 
-      const minCardCost = hand.reduce((min, c) => Math.min(min, c.apCost ?? 1), Infinity);
-      const minQuickCost = minCardCost;
-      if (turnState.apCurrent < minQuickCost) break;
+        const hand = turnState.deck.hand;
+        if (hand.length === 0) break;
 
-      const card = hand[0];
-      const cardMinCost = card.apCost ?? 1;
+        const plan = brain.planTurn(hand, turnState, { freeCharging: ascMods.freeCharging });
+        if (plan.length === 0) break;
 
-      const chargeSurcharge = ascMods.freeCharging ? 0 : 1;
-      const chargeApCost = cardMinCost + chargeSurcharge;
-      const canCharge = turnState.apCurrent >= chargeApCost;
-      const isCharge = canCharge && Math.random() < chargeRate;
+        // Execute only the FIRST valid play, then re-plan
+        let played = false;
+        for (const play of plan) {
+          // Re-check hand after each attempt — cards may have been removed
+          const card = turnState.deck.hand.find(c => c.id === play.cardId);
+          if (!card) continue;
 
-      if (turnState.apCurrent < cardMinCost) {
-        if (hand.length <= 1) break;
-        const rotated = hand.shift()!;
-        hand.push(rotated);
-        continue;
+          const apCost = card.apCost ?? 1;
+          const isSurge = (turnState.turnNumber - 2) % 4 === 0 && turnState.turnNumber >= 2;
+          const chargeSurcharge = (ascMods.freeCharging || isSurge) ? 0 : 1;
+          const totalCost = play.mode === 'charge' ? apCost + chargeSurcharge : apCost;
+          if (turnState.apCurrent < totalCost) continue;
+
+          const answeredCorrectly = Math.random() < brain.skills.accuracy;
+          const speedBonus = answeredCorrectly && Math.random() < 0.5;
+
+          const res = playCardAction(turnState, card.id, answeredCorrectly, speedBonus, play.mode);
+
+          if (res.blocked && !res.fizzled) break;
+
+          turnState = res.turnState;
+          cardsPlayed++;
+          played = true;
+
+          if (answeredCorrectly) {
+            correctAnswers++;
+            if (ascMods.correctAnswerHeal > 0) {
+              turnState.playerState.hp = Math.min(
+                turnState.playerState.hp + ascMods.correctAnswerHeal,
+                turnState.playerState.maxHP,
+              );
+            }
+          } else {
+            wrongAnswers++;
+          }
+
+          if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
+            turnState.playerState.hp = Math.min(
+              turnState.playerState.hp + ascMods.comboHealAmount,
+              turnState.playerState.maxHP,
+            );
+          }
+
+          if (res.effect.damageDealt > 0) damageDealt += res.effect.damageDealt;
+          if (res.comboCount > maxCombo) maxCombo = res.comboCount;
+
+          const midCheckResult = checkEncounterEnd(turnState);
+          if (midCheckResult !== null) {
+            return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo };
+          }
+
+          break; // Only execute first valid play, then re-plan
+        }
+
+        if (!played) break;
       }
+    } else {
+      // ── Legacy dumb-bot play loop (unchanged for backward compatibility) ──
+      while (!isHandEmpty(turnState) && turnState.result === null) {
+        if (safetyBreak++ > 200) break;
 
-      const answeredCorrectly = Math.random() < correctRate;
-      const speedBonus = answeredCorrectly && Math.random() < 0.5;
+        const hand = turnState.deck.hand;
+        if (hand.length === 0) break;
 
-      const res = playCardAction(
-        turnState,
-        card.id,
-        answeredCorrectly,
-        speedBonus,
-        isCharge ? 'charge' : 'quick',
-      );
+        const minCardCost = hand.reduce((min, c) => Math.min(min, c.apCost ?? 1), Infinity);
+        const minQuickCost = minCardCost;
+        if (turnState.apCurrent < minQuickCost) break;
 
-      if (res.blocked && !res.fizzled) break;
+        const card = hand[0];
+        const cardMinCost = card.apCost ?? 1;
 
-      turnState = res.turnState;
-      cardsPlayed++;
+        const chargeSurcharge = ascMods.freeCharging ? 0 : 1;
+        const chargeApCost = cardMinCost + chargeSurcharge;
+        const canCharge = turnState.apCurrent >= chargeApCost;
+        const isCharge = canCharge && Math.random() < chargeRate;
 
-      if (answeredCorrectly) {
-        correctAnswers++;
-        if (ascMods.correctAnswerHeal > 0) {
+        if (turnState.apCurrent < cardMinCost) {
+          if (hand.length <= 1) break;
+          const rotated = hand.shift()!;
+          hand.push(rotated);
+          continue;
+        }
+
+        const answeredCorrectly = Math.random() < correctRate;
+        const speedBonus = answeredCorrectly && Math.random() < 0.5;
+
+        const res = playCardAction(
+          turnState,
+          card.id,
+          answeredCorrectly,
+          speedBonus,
+          isCharge ? 'charge' : 'quick',
+        );
+
+        if (res.blocked && !res.fizzled) break;
+
+        turnState = res.turnState;
+        cardsPlayed++;
+
+        if (answeredCorrectly) {
+          correctAnswers++;
+          if (ascMods.correctAnswerHeal > 0) {
+            turnState.playerState.hp = Math.min(
+              turnState.playerState.hp + ascMods.correctAnswerHeal,
+              turnState.playerState.maxHP,
+            );
+          }
+        } else {
+          wrongAnswers++;
+        }
+
+        if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
           turnState.playerState.hp = Math.min(
-            turnState.playerState.hp + ascMods.correctAnswerHeal,
+            turnState.playerState.hp + ascMods.comboHealAmount,
             turnState.playerState.maxHP,
           );
         }
-      } else {
-        wrongAnswers++;
-      }
 
-      if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
-        turnState.playerState.hp = Math.min(
-          turnState.playerState.hp + ascMods.comboHealAmount,
-          turnState.playerState.maxHP,
-        );
-      }
+        if (res.effect.damageDealt > 0) damageDealt += res.effect.damageDealt;
+        if (res.comboCount > maxCombo) maxCombo = res.comboCount;
 
-      if (res.effect.damageDealt > 0) damageDealt += res.effect.damageDealt;
-      if (res.comboCount > maxCombo) maxCombo = res.comboCount;
-
-      const midCheckResult = checkEncounterEnd(turnState);
-      if (midCheckResult !== null) {
-        return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo };
+        const midCheckResult = checkEncounterEnd(turnState);
+        if (midCheckResult !== null) {
+          return { result: midCheckResult, turnsUsed: turnsUsed + 1, damageDealt, damageTaken, cardsPlayed, correctAnswers, wrongAnswers, maxCombo };
+        }
       }
     }
 
@@ -469,10 +553,12 @@ function handleCombatNode(
   nodeType: MapNodeType,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<FullRunOptions>,
+  opts: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
+  runChainTypes: number[],
+  brain?: BotBrain,
 ): EncounterResult & { goldAwarded: number } {
   // Map MapNodeType to enemy pool type
   let enemyPoolType: 'combat' | 'elite' | 'mini_boss' | 'boss';
@@ -529,7 +615,12 @@ function handleCombatNode(
 
   const result = simulateSingleEncounter(
     initialTurnState,
-    { correctRate: opts.correctRate, chargeRate: opts.chargeRate, maxTurns: opts.maxTurnsPerEncounter },
+    {
+      correctRate: opts.botSkills?.accuracy ?? opts.correctRate,
+      chargeRate: opts.chargeRate,
+      maxTurns: opts.maxTurnsPerEncounter,
+      brain,
+    },
     ascMods,
   );
 
@@ -550,10 +641,22 @@ function handleCombatNode(
     const goldAwarded = awardCombatGold(runState, nodeType);
 
     // Card reward (all combat nodes, plus elite and boss get one too)
-    const newCard = pickCardReward(runState.deck);
-    if (newCard) {
-      runState.deck.push(newCard);
-      runState.cardsAdded++;
+    if (brain) {
+      const options = [pickRandomMechanic(), pickRandomMechanic(), pickRandomMechanic()];
+      const chosen = brain.pickReward(options, runState.deck);
+      if (chosen && runState.deck.length < MAX_DECK_SIZE) {
+        const newCard = makeMechanicCard(chosen);
+        newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+        runState.deck.push(newCard);
+        runState.cardsAdded++;
+      }
+    } else {
+      const newCard = pickCardReward(runState.deck);
+      if (newCard) {
+        newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+        runState.deck.push(newCard);
+        runState.cardsAdded++;
+      }
     }
 
     // Elite: also award a relic
@@ -572,12 +675,73 @@ function handleShopNode(
   _floor: number,
   relicPool: string[],
   verbose: boolean,
+  runChainTypes: number[],
+  brain?: BotBrain,
 ): void {
+  const cardPrice = SHOP_CARD_PRICE_V2['common'] ?? 50;
+  const relicPrice = SHOP_RELIC_PRICE['common'] ?? 100;
+  const removalCost = SHOP_REMOVAL_BASE_PRICE + runState.cardRemovalCount * SHOP_REMOVAL_PRICE_INCREMENT;
+  const rationPrice = SHOP_FOOD_ITEMS.ration.basePrice;
+
+  if (brain) {
+    // ── BotBrain-driven shop ──────────────────────────────────────────────
+    const shopCards = [pickRandomMechanic(), pickRandomMechanic(), pickRandomMechanic()];
+    const shopRelics = relicPool.slice(0, 2); // offer 2 relics
+    const foodItems = [{ healPct: SHOP_FOOD_ITEMS.ration.healPct, cost: rationPrice }];
+
+    const actions = brain.planShop(
+      { hp: runState.hp, maxHp: runState.maxHp, gold: runState.gold, deckSize: runState.deck.length },
+      shopCards,
+      shopRelics,
+      removalCost,
+      cardPrice,
+      relicPrice,
+      foodItems,
+    );
+
+    for (const action of actions) {
+      if (action.type === 'remove_card' && runState.gold >= removalCost && runState.deck.length > 0) {
+        const strikeIdx = runState.deck.findIndex(c => c.mechanicId === 'strike');
+        const removeIdx = strikeIdx >= 0 ? strikeIdx : 0;
+        runState.deck.splice(removeIdx, 1);
+        runState.gold -= removalCost;
+        runState.goldSpent += removalCost;
+        runState.cardRemovalCount++;
+        runState.cardsRemoved++;
+        if (verbose) console.log(`    [SHOP/bot] Removed card. Deck: ${runState.deck.length}`);
+      } else if (action.type === 'buy_card' && runState.gold >= cardPrice && runState.deck.length < MAX_DECK_SIZE) {
+        const mechanic = shopCards[action.index] ?? shopCards[0];
+        if (mechanic) {
+          const newCard = makeMechanicCard(mechanic);
+          newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+          runState.deck.push(newCard);
+          runState.gold -= cardPrice;
+          runState.goldSpent += cardPrice;
+          runState.cardsAdded++;
+          if (verbose) console.log(`    [SHOP/bot] Bought card. Deck: ${runState.deck.length}`);
+        }
+      } else if (action.type === 'buy_relic' && runState.gold >= relicPrice && relicPool.length > 0) {
+        const id = awardRelic(runState, relicPool);
+        if (id) {
+          runState.gold -= relicPrice;
+          runState.goldSpent += relicPrice;
+          if (verbose) console.log(`    [SHOP/bot] Bought relic: ${id}`);
+        }
+      } else if (action.type === 'buy_food' && runState.gold >= rationPrice) {
+        const healAmt = Math.floor(runState.maxHp * SHOP_FOOD_ITEMS.ration.healPct);
+        runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
+        runState.gold -= rationPrice;
+        runState.goldSpent += rationPrice;
+        if (verbose) console.log(`    [SHOP/bot] Bought ration. HP: ${runState.hp}/${runState.maxHp}`);
+      }
+    }
+    return;
+  }
+
+  // ── Legacy dumb-bot shop (unchanged for backward compatibility) ──────────
   // 1. Card removal if deck is bloated and we can afford it
   if (runState.deck.length > 15) {
-    const removalCost = SHOP_REMOVAL_BASE_PRICE + runState.cardRemovalCount * SHOP_REMOVAL_PRICE_INCREMENT;
     if (runState.gold >= removalCost) {
-      // Remove the worst card (first attack card, or just the first card)
       // Heuristic: remove the first 'strike' in the deck (basic cards become weaker as deck grows)
       const strikeIdx = runState.deck.findIndex(c => c.mechanicId === 'strike');
       const removeIdx = strikeIdx >= 0 ? strikeIdx : 0;
@@ -593,10 +757,10 @@ function handleShopNode(
   }
 
   // 2. Buy a card if affordable (common price = 50g)
-  const cardPrice = SHOP_CARD_PRICE_V2['common'] ?? 50;
   if (runState.gold >= cardPrice && runState.deck.length < MAX_DECK_SIZE) {
     const newCard = pickCardReward(runState.deck);
     if (newCard) {
+      newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
       runState.deck.push(newCard);
       runState.gold -= cardPrice;
       runState.goldSpent += cardPrice;
@@ -606,7 +770,6 @@ function handleShopNode(
   }
 
   // 3. Buy a relic if affordable and pool is not empty (common relic = 100g)
-  const relicPrice = SHOP_RELIC_PRICE['common'] ?? 100;
   if (runState.gold >= relicPrice && relicPool.length > 0) {
     const id = awardRelic(runState, relicPool);
     if (id) {
@@ -617,7 +780,6 @@ function handleShopNode(
   }
 
   // 4. Buy food (ration) if low HP and affordable (ration = 25g)
-  const rationPrice = SHOP_FOOD_ITEMS.ration.basePrice;
   const hpPct = runState.hp / runState.maxHp;
   if (hpPct < 0.6 && runState.gold >= rationPrice) {
     const healAmt = Math.floor(runState.maxHp * SHOP_FOOD_ITEMS.ration.healPct);
@@ -632,9 +794,30 @@ function handleRestNode(
   runState: SimRunState,
   ascMods: ReturnType<typeof getAscensionModifiers>,
   verbose: boolean,
+  brain?: BotBrain,
 ): void {
-  const hpPct = runState.hp / runState.maxHp;
   const BASE_REST_HEAL_PCT = 0.30;
+
+  if (brain) {
+    // ── BotBrain-driven rest ──────────────────────────────────────────────
+    const decision = brain.planRest({ hp: runState.hp, maxHp: runState.maxHp, deckSize: runState.deck.length });
+
+    if (decision === 'heal') {
+      const healPct = BASE_REST_HEAL_PCT * ascMods.restHealMultiplier;
+      const healAmt = Math.floor(runState.maxHp * healPct);
+      runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
+      if (verbose) console.log(`    [REST/bot] Healed ${healAmt}. HP: ${runState.hp}/${runState.maxHp}`);
+    } else {
+      // Study: heal a bit as proxy for mastery gain
+      const healAmt = Math.floor(runState.maxHp * 0.05);
+      runState.hp = Math.min(runState.maxHp, runState.hp + healAmt);
+      if (verbose) console.log(`    [REST/bot] Studied. HP: ${runState.hp}/${runState.maxHp}`);
+    }
+    return;
+  }
+
+  // ── Legacy dumb-bot rest (unchanged for backward compatibility) ──────────
+  const hpPct = runState.hp / runState.maxHp;
 
   if (hpPct < 0.5) {
     // Heal 30% of max HP (ascension may reduce this)
@@ -675,10 +858,12 @@ function handleMysteryNode(
   runState: SimRunState,
   floor: number,
   act: 1 | 2 | 3,
-  opts: Required<FullRunOptions>,
+  opts: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills },
   ascMods: ReturnType<typeof getAscensionModifiers>,
   relicPool: string[],
   verbose: boolean,
+  runChainTypes: number[],
+  brain?: BotBrain,
 ): { didCombat: boolean; combatResult?: EncounterResult } {
   const event = generateMysteryEvent(floor);
 
@@ -717,10 +902,22 @@ function handleMysteryNode(
     }
     case 'freeCard':
     case 'cardReward': {
-      const newCard = pickCardReward(runState.deck);
-      if (newCard) {
-        runState.deck.push(newCard);
-        runState.cardsAdded++;
+      if (brain) {
+        const options = [pickRandomMechanic(), pickRandomMechanic(), pickRandomMechanic()];
+        const chosen = brain.pickReward(options, runState.deck);
+        if (chosen && runState.deck.length < MAX_DECK_SIZE) {
+          const newCard = makeMechanicCard(chosen);
+          newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+          runState.deck.push(newCard);
+          runState.cardsAdded++;
+        }
+      } else {
+        const newCard = pickCardReward(runState.deck);
+        if (newCard) {
+          newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+          runState.deck.push(newCard);
+          runState.cardsAdded++;
+        }
       }
       break;
     }
@@ -744,7 +941,7 @@ function handleMysteryNode(
     case 'combat': {
       // Fight a random enemy, no reward
       const combatResult = handleCombatNode(
-        runState, 'combat', floor, act, opts, ascMods, relicPool, verbose,
+        runState, 'combat', floor, act, opts, ascMods, relicPool, verbose, runChainTypes, brain,
       );
       return { didCombat: true, combatResult };
     }
@@ -808,7 +1005,7 @@ function walkMapPath(actMap: ActMap): MapNode[] {
 export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   const startTime = Date.now();
 
-  const options: Required<FullRunOptions> = {
+  const options: Required<Omit<FullRunOptions, 'botSkills'>> & { botSkills?: BotSkills } = {
     correctRate: opts.correctRate ?? 0.75,
     chargeRate: opts.chargeRate ?? 0.7,
     seed: opts.seed ?? Math.floor(Math.random() * 1_000_000),
@@ -816,6 +1013,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     verbose: opts.verbose ?? false,
     ascensionLevel: opts.ascensionLevel ?? 0,
     acts: opts.acts ?? 3,
+    botSkills: opts.botSkills,
   };
 
   const { verbose } = options;
@@ -823,13 +1021,19 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   const ascMods = getAscensionModifiers(options.ascensionLevel);
   const runId = `fullrun_${options.seed}_${Date.now()}`;
 
+  // Create BotBrain if botSkills provided — used for intelligent play decisions
+  const brain = options.botSkills ? new BotBrain(options.botSkills) : undefined;
+
+  // Chain types selected for this run — used round-robin for all cards added during the run
+  const runChainTypes = selectRunChainTypes(options.seed);
+
   // ── Initialize run state ──
   // PLAYER_START_HP (120) is the actual starting HP+MaxHP for a fresh run.
   // PLAYER_MAX_HP (100) is a lower baseline used by the old combat-only sim.
   // In a full run we start at PLAYER_START_HP for both, matching the real game.
   const baseMaxHp = ascMods.playerMaxHpOverride ?? PLAYER_START_HP;
   const runState: SimRunState = {
-    deck: buildStarterDeck(),
+    deck: buildStarterDeck(options.seed),
     relicIds: new Set<string>(),
     gold: 0,
     hp: baseMaxHp,
@@ -844,7 +1048,9 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   // Apply starter deck size override from ascension
   if (ascMods.starterDeckSizeOverride && ascMods.starterDeckSizeOverride !== runState.deck.length) {
     while (runState.deck.length < ascMods.starterDeckSizeOverride) {
-      runState.deck.push(makeMechanicCard(pickRandomMechanic()));
+      const newCard = makeMechanicCard(pickRandomMechanic());
+      newCard.chainType = runChainTypes[runState.deck.length % runChainTypes.length];
+      runState.deck.push(newCard);
     }
   }
 
@@ -929,7 +1135,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
           totalEncounters++;
           const combatResult = handleCombatNode(
             runState, nodeType, floor, act as 1 | 2 | 3,
-            options, ascMods, relicPool, verbose,
+            options, ascMods, relicPool, verbose, runChainTypes, brain,
           );
 
           visitRecord.result = combatResult.result;
@@ -952,12 +1158,12 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
         }
 
         case 'shop':
-          handleShopNode(runState, floor, relicPool, verbose);
+          handleShopNode(runState, floor, relicPool, verbose, runChainTypes, brain);
           visitRecord.result = 'skipped'; // shops don't have win/loss
           break;
 
         case 'rest':
-          handleRestNode(runState, ascMods, verbose);
+          handleRestNode(runState, ascMods, verbose, brain);
           visitRecord.result = 'skipped';
           break;
 
@@ -969,7 +1175,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
         case 'mystery': {
           const { didCombat, combatResult } = handleMysteryNode(
             runState, floor, act as 1 | 2 | 3,
-            options, ascMods, relicPool, verbose,
+            options, ascMods, relicPool, verbose, runChainTypes, brain,
           );
           if (didCombat && combatResult) {
             totalEncounters++;
