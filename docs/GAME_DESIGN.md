@@ -88,9 +88,9 @@ The runtime computes card effect values through this pipeline:
 1. **Base value** = mechanic's `quickPlayValue` (e.g., Strike = 4, Block = 3)
 2. **Play mode scaling:**
    - Quick Play: `quickPlayValue × 1.0` (no multiplier)
-   - Charge Correct: `quickPlayValue × 1.5` (CHARGE_CORRECT_MULTIPLIER)
+   - Charge Correct: `(quickPlayValue + masteryBonus) × 1.5` (CHARGE_CORRECT_MULTIPLIER) — mastery is multiplied in
    - Charge Wrong: mechanic's `chargeWrongValue` (e.g., Strike = 3, Block = 2)
-3. **Mastery bonus** = flat bonus from `getMasteryBaseBonus()` added to base (scales with mastery level 0–5)
+3. **Mastery bonus** = `getMasteryBaseBonus()` — added to `quickPlayValue` BEFORE the 1.5× multiplier (so mastery benefits from Charging)
 4. **Tier multiplier** = T1: 1.0×, T2a: 1.3×, T2b: 1.6× (from `card.effectMultiplier`)
 5. **Chain multiplier** = [1.0, 1.0, 1.3, 1.7, 2.2, 3.0] based on consecutive same-domain Charges
 6. **Buff/relic/overclock** multipliers stacked on top
@@ -2509,8 +2509,8 @@ Wrong Charge resolves at **0.7× multiplier** (mastery 1+) or **0.6×** (mastery
 
 The exact order of damage calculation for all attack cards. **The combo multiplier is NOT in this pipeline** — the combo system has been fully removed.
 
-1. `mechanicBaseValue` (from QP/CC/CW lookup)
-2. + mastery bonus (`perLevelDelta × masteryLevel`)
+1. `mechanicBaseValue` (from QP/CC/CW lookup — for CC: `(quickPlayValue + masteryBonus) × 1.5`)
+2. + mastery bonus is already folded into step 1 for CC; for QP/CW it is added flat here
 3. + Inscription of Fury flat bonus (if active — applied here as flat addition, attack cards only)
 4. + relic flat bonuses (`barbed_edge`, etc.)
 5. × `card.effectMultiplier` (mastery-derived: 1.0× QP, 2.5–4.0× CC, 0.6–0.7× CW)

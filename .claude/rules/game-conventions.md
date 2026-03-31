@@ -8,7 +8,7 @@
 
 ## Card Play Values
 - Quick Play = 1.0× base damage
-- Charge Correct = 1.5× + mastery bonus
+- Charge Correct = (base + mastery) × 1.5 — mastery is included BEFORE the multiplier
 - Charge Wrong = 0.6× (mastery 0) or 0.7× (mastery 1+) — NEVER zero, NEVER "fizzle"
 - +1 AP surcharge for Charging, waived during Surge turns and Chain Momentum
 

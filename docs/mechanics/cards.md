@@ -74,14 +74,14 @@ CC damage = (quickPlayValue + getMasteryBaseBonus(mechanicId, masteryLevel))
             + inscriptionFuryBonus
 ```
 
-`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver always computes CC as `quickPlayValue × 1.5`. Do not read it.
+`chargeCorrectValue` on `MechanicDefinition` is **dead data** — resolver computes CC as `(quickPlayValue + masteryBonus) × 1.5`. Do not read it.
 
 **Play mode multipliers:**
 
 | Mode | Effect |
 |------|--------|
 | Quick Play (`quick`) | Uses `quickPlayValue` directly |
-| Charge Correct (`charge_correct`) | `quickPlayValue × 1.5 × tier` |
+| Charge Correct (`charge_correct`) | `(quickPlayValue + masteryBonus) × 1.5 × tier` |
 | Charge Wrong (`charge_wrong`) | T1=0.8×, T2a/b=0.85×, T3=0.75× on base |
 | Cursed QP | `CURSED_QP_MULTIPLIER = 0.7×` |
 | Cursed CC | `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0×` (reward is the cure) |

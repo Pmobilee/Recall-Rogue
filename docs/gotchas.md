@@ -181,3 +181,11 @@
 **Why:** `CardHand.svelte` computes `power = baseVal + masteryBonus` and passes this pre-summed total to `numWithMastery()` and `numWithSecondaryMastery()`. The functions were then displaying `power` as the base and appending `+bonus` again, making the bonus appear twice. Same issue affected charge preview (showed `"Deal 9 +3"` instead of `"Deal 6 +3"`).
 
 **Fix:** Both functions now subtract the bonus to recover the true base before rendering: `base = total - Math.round(bonus)`. Display reads `[base, '+'+bonus]`. Do not pass a pre-subtracted base — the subtraction happens inside the description functions.
+
+### 2026-03-31 — Charge Correct mastery bonus was not multiplied
+
+**What went wrong:** Mastery bonus was added flat AFTER the 1.5× charge multiplier in `cardEffectResolver`, `damagePreviewService`, and `CardHand.getEffectValue`. This meant that upgrading a card increased the Quick Play value and Charge Wrong value, but did NOT benefit from the 1.5× multiplier on Charge Correct — mastery upgrades were worth less when charging than when playing quick.
+
+**Why:** The formula was implemented as `round(quickPlayValue × 1.5) + masteryBonus` instead of `round((quickPlayValue + masteryBonus) × 1.5)`.
+
+**Fix:** Mastery bonus is now included before the multiplier: `CC = round((base + mastery) × 1.5)`. Example: Strike base 4, mastery +3 → QP=7, CC was 9, now CC=11. All three sites (resolver, preview service, CardHand) were updated together.

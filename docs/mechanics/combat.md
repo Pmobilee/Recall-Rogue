@@ -55,8 +55,8 @@ If `apCurrent < apCost`, card is blocked (`blocked: true`, no AP deducted).
 
 Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 
-1. **Mechanic base** — `mechanic.quickPlayValue` (QP) or `quickPlayValue * CHARGE_CORRECT_MULTIPLIER` (CC = 1.5×) or `mechanic.chargeWrongValue` (CW)
-2. **Mastery bonus** — `getMasteryBaseBonus(mechanicId, masteryLevel)` added flat
+1. **Mechanic base** — `mechanic.quickPlayValue` (QP) or `(quickPlayValue + masteryBonus) × CHARGE_CORRECT_MULTIPLIER` (CC = 1.5×) or `mechanic.chargeWrongValue` (CW)
+2. **Mastery bonus** — `getMasteryBaseBonus(mechanicId, masteryLevel)` — included inside the 1.5× CC multiplier (not added flat after)
 3. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
 4. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
 5. **Speed/trick bonus** — speed bonus (1.5× if answered fast) × trick question unlock (2.0×)
@@ -83,7 +83,7 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 - Locked cards (Trick Question) cannot be played Quick
 
 **Charge Correct (`playMode = 'charge'`, `answeredCorrectly = true`)**
-- Damage = `quickPlayValue * 1.5` + mastery bonus
+- Damage = `(quickPlayValue + masteryBonus) × 1.5` — mastery is included before multiplication
 - Extends Knowledge Chain
 - Mastery upgrade eligible
 - Costs `apCost + 1` (with waivers)
