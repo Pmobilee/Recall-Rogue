@@ -11,7 +11,7 @@ import { ScreenShakeSystem } from '../systems/ScreenShakeSystem'
 import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg, getCombatBgForEnemy } from '../../data/backgroundManifest'
 import { ENEMY_TEMPLATES } from '../../data/enemies'
-import { BASE_WIDTH } from '../../data/layout'
+import { BASE_WIDTH, LANDSCAPE_BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
 
@@ -398,12 +398,13 @@ export class CombatScene extends Phaser.Scene {
     }
     this.currentEnemyY = enemyY
 
-    // Move enemy sprite container
+    // Move enemy sprite container and scale proportionally to viewport
     const container = this.enemySpriteSystem.getContainer()
     container.setPosition(enemyX, enemyY)
-    // Apply quiz scale override if active
-    if (isLandscape && this.quizEnemyScaleOverride !== null) {
-      container.setScale(this.quizEnemyScaleOverride)
+    if (isLandscape) {
+      // Landscape sprites use fixed pixel sizes designed for 1280px base — scale to current canvas
+      const landscapeScale = this.quizEnemyScaleOverride ?? (w / LANDSCAPE_BASE_WIDTH)
+      container.setScale(landscapeScale)
     }
 
     // Update enemy name text position
