@@ -12,6 +12,7 @@
 
 import type { Card, CardType } from '../../../src/data/card-types.js';
 import type { MechanicDefinition } from '../../../src/data/mechanics.js';
+import { getMechanicDefinition } from '../../../src/data/mechanics.js';
 import type { TurnState } from '../../../src/services/turnManager.js';
 import type { MapNode } from '../../../src/services/mapGenerator.js';
 import {
@@ -99,27 +100,32 @@ function getPerLevelDelta(mechanicId: string): number {
 
 /**
  * Estimate the quick-play effective value for a card, including mastery bonus.
+ * Uses mechanic.quickPlayValue (the actual quick-play value, e.g. Strike=4)
+ * rather than baseEffectValue (the combined total, e.g. Strike=8).
  */
 function cardQuickPlayEffective(card: Card): number {
-  const mechDef = card; // Card has quickPlayValue? Use baseEffectValue as proxy
-  // Cards in simulation use baseEffectValue as the quick-play base
+  const mechanic = getMechanicDefinition(card.mechanicId);
+  const qpv = mechanic?.quickPlayValue ?? card.baseEffectValue ?? 0;
   const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
-  return (card.baseEffectValue ?? 0) + masteryBonus;
+  return qpv + masteryBonus;
 }
 
 /**
- * Estimate charge EV per card.
- * chargeEV = acc × (qpv + masteryBonus) × 1.5 + (1-acc) × (qpv + masteryBonus) × 0.25
- *          vs quickEV = qpv + masteryBonus
- * Charge is better when chargeEV > quickEV.
- * Simplifies to: acc × 1.5 + (1-acc) × 0.25 > 1.0  → acc > 0.5
- * But this function returns the raw EVs so the caller can compare.
+ * Estimate charge EV per card using per-mechanic chargeWrongValue.
+ * chargeEV = acc × (qpv + masteryBonus) × 1.5 + (1-acc) × (mechanic.chargeWrongValue + masteryBonus)
+ * vs quickEV = qpv + masteryBonus
+ * Returns raw EVs so the caller can compare.
  */
 function computeChargeEV(card: Card, accuracy: number): { chargeEV: number; quickEV: number } {
-  const qpv = cardQuickPlayEffective(card);
-  const chargeEV = accuracy * qpv * CHARGE_CORRECT_MULTIPLIER
-    + (1 - accuracy) * qpv * FIZZLE_EFFECT_RATIO;
-  const quickEV = qpv;
+  const mechanic = getMechanicDefinition(card.mechanicId);
+  const qpv = mechanic?.quickPlayValue ?? card.baseEffectValue ?? 0;
+  const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+
+  const chargeCorrectValue = (qpv + masteryBonus) * CHARGE_CORRECT_MULTIPLIER;
+  const chargeWrongValue = (mechanic?.chargeWrongValue ?? qpv * FIZZLE_EFFECT_RATIO) + masteryBonus;
+
+  const chargeEV = accuracy * chargeCorrectValue + (1 - accuracy) * chargeWrongValue;
+  const quickEV = qpv + masteryBonus;
   return { chargeEV, quickEV };
 }
 
@@ -170,6 +176,15 @@ export class BotBrain {
     const playerHpPct = turnState.playerState.hp / (turnState.playerState.maxHP || 100);
     const enemyHp = turnState.enemy.currentHP;
     const currentChainType = turnState.chainType;
+    const chainMomentumType = turnState.nextChargeFreeForChainType;
+
+    // Read enemy intent for block scoring
+    const nextIntent = turnState.enemy.nextIntent;
+    const enemyNextDamage = nextIntent
+      ? (nextIntent.type === 'attack' || nextIntent.type === 'multi_attack'
+        ? nextIntent.value * (nextIntent.hitCount ?? 1)
+        : 0)
+      : 0;
 
     // Step 1: Order cards using cardSelection + chainSkill + blockSkill axes
     let ordered = this._orderHand(hand, {
@@ -178,6 +193,7 @@ export class BotBrain {
       currentChainType,
       apAvailable,
       chargeSurcharge,
+      enemyNextDamage,
     });
 
     // Step 2: Build play plan — decide mode per card
@@ -196,9 +212,12 @@ export class BotBrain {
         }
       }
 
-      const chargeApCost = apCost + chargeSurcharge;
+      // Chain momentum: if this card's chainType matches the momentum type, no surcharge
+      const hasMomentum = chainMomentumType !== null && card.chainType === chainMomentumType;
+      const effectiveSurcharge = hasMomentum ? 0 : chargeSurcharge;
+      const chargeApCost = apCost + effectiveSurcharge;
       const canCharge = apRemaining >= chargeApCost;
-      const mode = this._decideMode(card, canCharge, isSurge, currentChainType, plan.length);
+      const mode = this._decideMode(card, canCharge, isSurge, currentChainType, plan.length, hasMomentum);
 
       plan.push({ cardId: card.id, mode });
       apRemaining -= mode === 'charge' ? chargeApCost : apCost;
@@ -217,10 +236,11 @@ export class BotBrain {
       currentChainType: number | null;
       apAvailable: number;
       chargeSurcharge: number;
+      enemyNextDamage: number;
     },
   ): Card[] {
     const { skills } = this;
-    const { playerHpPct, enemyHp, currentChainType, apAvailable, chargeSurcharge } = ctx;
+    const { playerHpPct, enemyHp, currentChainType, apAvailable, chargeSurcharge, enemyNextDamage } = ctx;
 
     if (skills.cardSelection < 0.3) {
       // 0.0–0.3: play in hand order
@@ -236,13 +256,10 @@ export class BotBrain {
         if (skills.blockSkill >= 0.3 && playerHpPct < 0.3) {
           // Urgently prioritize shields when HP low
           score += 200 * skills.blockSkill;
-        } else if (skills.blockSkill >= 0.7) {
-          // Estimate if we need to absorb enemy damage
-          const enemyAttack = (ctx as { enemyAttack?: number }).enemyAttack ?? 0;
+        } else if (skills.blockSkill >= 0.7 && enemyNextDamage > 0) {
+          // Smart block: prioritize shields when enemy damage is high
           const shieldValue = cardQuickPlayEffective(card);
-          if (shieldValue > 0 && enemyAttack > 0) {
-            score += 100 * Math.min(shieldValue / enemyAttack, 1.0) * skills.blockSkill;
-          }
+          score += 100 * Math.min(shieldValue / enemyNextDamage, 1.0) * skills.blockSkill;
         } else if (skills.blockSkill < 0.3) {
           // Low blockSkill: deprioritize shields
           score -= 50;
@@ -316,6 +333,7 @@ export class BotBrain {
     isSurge: boolean,
     currentChainType: number | null,
     playsInPlanSoFar: number,
+    hasMomentum: boolean = false,
   ): 'charge' | 'quick' {
     if (!canCharge) return 'quick';
 
@@ -328,6 +346,9 @@ export class BotBrain {
       // 50% boost to charge rate during surge
       if (Math.random() < Math.min(1.0, acc * 1.5)) return 'charge';
     }
+
+    // Chain momentum: free charge surcharge — even modest chargeSkill should exploit this
+    if (hasMomentum && skills.chargeSkill >= 0.3) return 'charge';
 
     if (skills.chargeSkill < 0.3) {
       // 0.0–0.3: randomly charge at a low rate

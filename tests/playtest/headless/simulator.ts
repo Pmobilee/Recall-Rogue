@@ -145,6 +145,7 @@ function makeMechanicCard(
     mechanicId: mechanic.id,
     mechanicName: mechanic.name,
     originalBaseEffectValue: mechanic.baseValue,
+    masteryLevel: 0,  // enables mastery tracking via playCardAction/masteryUpgrade
   };
 }
 
