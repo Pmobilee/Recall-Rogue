@@ -303,7 +303,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: var(--topbar-height, clamp(36px, 4.5vh, 56px));
+    height: var(--topbar-height, 4.5vh);
     z-index: 200;
     display: flex;
     align-items: center;
@@ -362,7 +362,7 @@
     position: relative;
     flex: 1;
     min-width: 0;
-    height: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.38);
+    height: calc(var(--topbar-height, 4.5vh) * 0.38);
     background: rgba(255, 255, 255, 0.08);
     border-radius: calc(3px * var(--layout-scale, 1));
     overflow: hidden;
@@ -524,8 +524,8 @@
   }
 
   .relic-btn {
-    width: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.65);
-    height: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.65);
+    width: calc(var(--topbar-height, 4.5vh) * 0.65);
+    height: calc(var(--topbar-height, 4.5vh) * 0.65);
     border-radius: calc(4px * var(--layout-scale, 1));
     background: transparent;
     border: none;
@@ -563,8 +563,8 @@
   }
 
   .relic-icon {
-    width: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.5);
-    height: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.5);
+    width: calc(var(--topbar-height, 4.5vh) * 0.5);
+    height: calc(var(--topbar-height, 4.5vh) * 0.5);
     object-fit: contain;
     image-rendering: auto;
   }
@@ -573,7 +573,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    font-size: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.38);
+    font-size: calc(var(--topbar-height, 4.5vh) * 0.38);
     line-height: 1;
   }
 
@@ -611,7 +611,7 @@
   .tooltip-arrow {
     position: absolute;
     top: -7px;
-    right: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.3);
+    right: calc(var(--topbar-height, 4.5vh) * 0.3);
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
@@ -643,8 +643,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.65);
-    height: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.85);
+    width: calc(var(--topbar-height, 4.5vh) * 0.65);
+    height: calc(var(--topbar-height, 4.5vh) * 0.85);
     max-height: 100%;
     border-radius: calc(4px * var(--layout-scale, 1));
     background: transparent;
@@ -666,7 +666,7 @@
   }
 
   .pause-icon {
-    font-size: calc(var(--topbar-height, clamp(36px, 4.5vh, 56px)) * 0.55);
+    font-size: calc(var(--topbar-height, 4.5vh) * 0.55);
     line-height: 1;
     color: rgba(255, 255, 255, 0.75);
   }
@@ -676,7 +676,7 @@
      ============================================================ */
   .fog-wing-wrapper {
     position: fixed;
-    top: var(--topbar-height, clamp(36px, 4.5vh, 56px));
+    top: var(--topbar-height, 4.5vh);
     left: 0;
     width: 35%;
     z-index: 199;

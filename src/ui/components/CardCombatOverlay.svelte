@@ -3907,7 +3907,7 @@
   /* Enemy name: top-center of arena, offset below the persistent top bar */
   .layout-landscape .enemy-name-header {
     position: fixed;
-    top: calc(var(--run-viewport-top, 0px) + 2%);
+    top: 6.5vh;
     left: 0;
     right: 0;
     text-align: center;
@@ -3916,7 +3916,7 @@
   }
 
   .layout-landscape .enemy-dialogue {
-    top: calc(var(--run-viewport-top, 0px) + calc(48px * var(--layout-scale, 1)));
+    top: 11.2vh;
     max-width: calc(240px * var(--layout-scale, 1));
   }
 
@@ -3956,7 +3956,7 @@
   /* Pile indicators: bottom-left/right, just above card hand strip in landscape */
   .layout-landscape .draw-pile-indicator {
     position: fixed;
-    bottom: calc(25vh + calc(16px * var(--layout-scale, 1)));
+    bottom: 27.2vh;
     left: calc(16px * var(--layout-scale, 1));
     right: auto;
     transform: scale(0.85);
@@ -3965,7 +3965,7 @@
 
   .layout-landscape .discard-pile-indicator {
     position: fixed;
-    bottom: calc(25vh + calc(16px * var(--layout-scale, 1)));
+    bottom: 27.2vh;
     right: calc(16px * var(--layout-scale, 1));
     left: auto;
     transform: scale(0.85);
@@ -3988,7 +3988,7 @@
   /* Combo counter: stacked above End Turn on the right side of arena */
   :global(.layout-landscape .combo-counter) {
     position: fixed;
-    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(60px * var(--layout-scale, 1)));
+    bottom: 45.3vh;
     right: calc(16px * var(--layout-scale, 1));
     left: auto;
     top: auto;
@@ -3998,7 +3998,7 @@
   /* Status effect bars — enemy: below HP bar */
   :global(.layout-landscape .status-effect-bar-enemy) {
     position: fixed;
-    top: 22%;
+    top: 22vh;
     left: 50%;
     transform: translateX(-50%);
     right: auto;
@@ -4008,7 +4008,7 @@
   /* Status effect bars — player: just above the card hand strip (which is at 27vh from bottom) */
   :global(.layout-landscape .status-effect-bar-player) {
     position: fixed;
-    bottom: calc(27vh + calc(40px * var(--layout-scale, 1)));
+    bottom: 32.6vh;
     left: 15%;
     right: auto;
     top: auto;
@@ -4022,7 +4022,7 @@
 
   /* Must-charge tooltip: above center of hand strip */
   .layout-landscape .must-charge-tooltip {
-    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(16px * var(--layout-scale, 1)));
+    bottom: 39.2vh;
   }
 
   /* AR-124: Tutorial tooltips */
@@ -4078,12 +4078,12 @@
   .layout-landscape .tutorial-ap-tooltip {
     top: auto;
     right: auto;
-    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(56px * var(--layout-scale, 1)));
+    bottom: 44.8vh;
     left: calc(12px * var(--layout-scale, 1));
   }
 
   .layout-landscape .tutorial-charge-tooltip {
-    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(16px * var(--layout-scale, 1)));
+    bottom: 39.2vh;
   }
 
   .layout-landscape .tutorial-comparison-banner {
@@ -4100,7 +4100,7 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: calc(27vh + calc(36px * var(--layout-scale, 1)));
+    bottom: 32vh;
     left: 0;
     right: 0;
     height: calc(36px * var(--layout-scale, 1));
@@ -4121,7 +4121,7 @@
     gap: calc(3px * var(--layout-scale, 1));
     position: fixed;
     left: 15%;
-    bottom: calc(27vh + calc(36px * var(--layout-scale, 1)));
+    bottom: 32vh;
     z-index: 16;
   }
 
@@ -4171,7 +4171,7 @@
     align-items: center;
     position: fixed;
     right: calc(16px * var(--layout-scale, 1));
-    bottom: calc(27vh / 2 + calc(72px * var(--layout-scale, 1)));
+    bottom: 23.5vh;
     transform: translateY(50%);
     gap: calc(2px * var(--layout-scale, 1));
     z-index: 12;

@@ -1571,7 +1571,7 @@
     transform: none;
     width: 100vw;
     overflow: visible;
-    --topbar-height: clamp(36px, 4.5vh, 56px);
+    --topbar-height: max(28px, 4.5vh);
     --run-viewport-top: var(--topbar-height, 0px);
   }
 
