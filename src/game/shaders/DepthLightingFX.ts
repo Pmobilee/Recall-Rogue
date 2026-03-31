@@ -57,8 +57,11 @@ vec2 fboToImageUV(vec2 fboUV) {
 }
 
 // Sample depth map in image space
+// Flip Y: PostFX quad has UV y=0 at screen-bottom, but GL textures loaded
+// without UNPACK_FLIP_Y have image-top at UV y=0. Flipping aligns depth data
+// with the on-screen content rendered into the FBO.
 float sampleDepth(vec2 imageUV) {
-  return texture2D(uDepthMap, imageUV).r;
+  return texture2D(uDepthMap, vec2(imageUV.x, 1.0 - imageUV.y)).r;
 }
 
 void main() {
@@ -131,7 +134,7 @@ void main() {
     for (int i = 0; i < MAX_LIGHTS; i++) {
       if (i >= uLightCount) break;
 
-      vec2 lightUV = uPointLightPos[i].xy;
+      vec2 lightUV = vec2(uPointLightPos[i].x, 1.0 - uPointLightPos[i].y);
       float lightDepth = uPointLightPos[i].z;
       float radius = uPointLightParams[i].x;
       float intensity = uPointLightParams[i].y;
@@ -232,17 +235,6 @@ void main() {
   //    even in rooms with very low ambient. This creates vivid colored
   //    glow pools rather than just brightening dark areas.
   // --------------------------------------------------------
-  // --------------------------------------------------------
-  // 5. Rim lighting — bright edges at depth discontinuities
-  //    Flagship only. Detects sharp depth changes and adds
-  //    a subtle bright outline, selling the 3D illusion.
-  // --------------------------------------------------------
-  vec3 rimContrib = vec3(0.0);
-  if (uQualityLevel >= 2) {
-    float edgeMag = length(vec2(dR - dL, dD - dU));
-    float rim = smoothstep(0.03, 0.12, edgeMag) * 0.15;
-    rimContrib = vec3(rim);  // Neutral white rim
-  }
 
   // --------------------------------------------------------
   // 6. Combine everything
@@ -259,7 +251,7 @@ void main() {
     baseLit += bleedColor * color.rgb;
   }
 
-  vec3 litColor = baseLit + pointContrib + rimContrib;
+  vec3 litColor = baseLit + pointContrib;
   litColor = min(litColor, vec3(1.3));
   vec3 finalColor = mix(litColor, uFogColor, fogFactor);
 

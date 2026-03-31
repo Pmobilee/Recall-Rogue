@@ -43,6 +43,7 @@ Stable conventions are in `.claude/rules/` (auto-loaded every session):
 
 | Rule File | Covers |
 |---|---|
+| `agent-routing.md` | Mandatory agent routing, file ownership, sub-agent prompts |
 | `code-style.md` | TypeScript strict, security, no Anthropic API |
 | `game-conventions.md` | Damage pipeline, charge values, surge, FSRS, chains |
 | `testing.md` | Vitest, build verification, headless sim, Playwright |
