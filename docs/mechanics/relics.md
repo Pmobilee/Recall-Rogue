@@ -56,6 +56,10 @@
 5% random drop chance (`RELIC_DROP_CHANCE_REGULAR = 0.05`), drawn via `generateRandomRelicDrop()`.
 A pity system forces Uncommon+ if `pityActive`.
 
+### Reward Rooms (Card Reward)
+8% chance per floor (`RELIC_BONUS_CHANCE_REWARD_ROOM = 0.08`) to include a bonus relic alongside card choices.
+Controlled by `bonusRelicOfferedThisFloor` flag — only one per floor. Implemented in `gameFlowController.ts`.
+
 ### Boss Encounters
 `generateBossRelicChoices()` presents `RELIC_BOSS_CHOICES = 3` options using boss rarity weights.
 Reroll costs 50 gold (`RELIC_REROLL_COST`), max 1 reroll per selection (`RELIC_REROLL_MAX`).

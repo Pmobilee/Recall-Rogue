@@ -14,6 +14,15 @@
   let { card, onaccept, onreject }: Props = $props()
 
   let apCost = $derived(card.apCost ?? 1)
+
+  function effectTextSizeClass(card: Card): string {
+    const parts = getCardDescriptionParts(card)
+    const desc = parts.map(p => p.value).join('')
+    if (desc.length > 35) return 'effect-text-xs'
+    if (desc.length > 25) return 'effect-text-sm'
+    if (desc.length > 15) return 'effect-text-md'
+    return ''
+  }
 </script>
 
 <div class="reward-card-overlay" role="dialog" aria-modal="true">
@@ -54,7 +63,7 @@
             <!-- Card type label overlay -->
             <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
             <!-- Effect description text -->
-            <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
+            <div class="frame-text v2-effect-text {effectTextSizeClass(card)}" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card) as part}
                   {#if part.type === 'number'}
@@ -236,7 +245,7 @@
   .v2-ap-cost {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
-    font-size: calc(var(--card-w) * 0.22);
+    font-size: calc(var(--card-w) * 0.14);
     color: #fbbf24;
     -webkit-text-stroke: 1.5px #000;
     text-shadow:
@@ -277,17 +286,36 @@
   }
 
   .v2-effect-text {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: calc(var(--card-w) * 0.08);
+    font-family: 'Kreon', 'Georgia', serif;
+    font-size: calc(var(--card-w) * 0.095);
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     line-height: 1.3;
     overflow: hidden;
+    overflow-wrap: break-word;
     word-break: break-word;
+    padding: calc(4px * var(--layout-scale, 1));
+    box-sizing: border-box;
+  }
+
+  .v2-effect-text.effect-text-md {
+    font-size: calc(var(--card-w) * 0.076);
+  }
+
+  .v2-effect-text.effect-text-sm {
+    font-size: calc(var(--card-w) * 0.062);
+    line-height: 1.2;
+  }
+
+  .v2-effect-text.effect-text-xs {
+    font-size: calc(var(--card-w) * 0.052);
+    line-height: 1.15;
   }
 
   .parchment-inner {
@@ -298,9 +326,8 @@
 
   .desc-number {
     font-family: inherit;
-    font-weight: 900;
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    font-weight: inherit;
+    color: inherit;
   }
 
   .desc-keyword {

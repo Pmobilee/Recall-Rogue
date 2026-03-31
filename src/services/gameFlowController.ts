@@ -22,7 +22,7 @@ import {
   shouldOfferEvent,
 } from './floorManager';
 import type { Card, FactDomain } from '../data/card-types';
-import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_DISCOUNT, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST, RELIC_REROLL_MAX, RELIC_BOSS_CHOICES, RELIC_PITY_THRESHOLD, RELIC_RARITY_WEIGHTS } from '../data/balance';
+import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_DISCOUNT, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST, RELIC_REROLL_MAX, RELIC_BOSS_CHOICES, RELIC_PITY_THRESHOLD, RELIC_RARITY_WEIGHTS, RELIC_BONUS_CHANCE_REWARD_ROOM } from '../data/balance';
 import { generateCardRewardOptionsByType, rerollRewardCardInType } from './rewardGenerator';
 import {
   addRewardCardToActiveDeck,
@@ -1006,8 +1006,8 @@ function openCardReward(): void {
       rewards.push({ type: 'card', card });
     }
 
-    // 50% chance per floor to include a bonus relic alongside card choices
-    if (!run.floor.bonusRelicOfferedThisFloor && Math.random() < 0.5) {
+    // 8% chance per floor to include a bonus relic alongside card choices
+    if (!run.floor.bonusRelicOfferedThisFloor && Math.random() < RELIC_BONUS_CHANCE_REWARD_ROOM) {
       const relicPool = buildRelicPool();
       if (relicPool.length > 0) {
         const bonusRelic = relicPool[Math.floor(Math.random() * relicPool.length)];

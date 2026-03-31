@@ -99,14 +99,14 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
 
     // Debuff mechanics
     case 'weaken':
-      return `Apply Weakness for ${power} turns. Enemy deals less damage.` + apSuffix;
+      return `Apply ${power} Weakness. Enemy deals less damage.` + apSuffix;
     case 'expose':
-      return `Apply Vulnerable for ${power} turn(s). Enemy takes more damage.` + apSuffix;
+      return `Apply ${power} Vulnerable. Enemy takes more damage.` + apSuffix;
     case 'slow':
       return `Skip enemy's next defend or buff action.` + apSuffix;
     case 'hex': {
       const turns = secondary ?? 3;
-      return `Apply ${power} Poison for ${turns} turns.` + apSuffix;
+      return `Apply ${power} Poison over ${turns} turns.` + apSuffix;
     }
 
     // Utility mechanics
@@ -301,17 +301,17 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
   switch (mechanic.id) {
     // Attacks
     case 'strike':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
     case 'multi_hit': {
       const hits = secondary ?? 3;
-      return [txt('Hit '), num(hits), txt(' times for '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' each')];
+      return [num(hits), txt('× '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
     }
     case 'heavy_strike':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
     case 'piercing':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Ignores '), kw('Block', 'block')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Pierce')];
     case 'reckless':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Take '), num(secondary ?? 3), txt(' self-damage')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. '), num(secondary ?? 3), txt(' self-hit')];
     case 'execute': {
       const bonus = secondary ?? 8;
       const active = eHp < 0.3;
@@ -319,82 +319,82 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       const bonusParts: CardDescPart[] = secMasteryBonus > 0 && masteryLevel > 0
         ? [cond(bonus, active), masteryNum('+' + Math.round(secMasteryBonus))]
         : [cond(bonus, active)];
-      return [txt('Deal '), num(power), txt(' damage. +'), ...bonusParts, txt(' below 30%')];
+      return [num(power), txt(' damage. +'), ...bonusParts, txt(' <30%')];
     }
     case 'lifetap':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Heal 20% dealt')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Heal 20%')];
 
     // Shields
     case 'block':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
     case 'thorns':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Reflect '), ...numWithSecondaryMastery(secondary ?? 3, mechanic.id, masteryLevel), txt(' damage')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Reflect '), ...numWithSecondaryMastery(secondary ?? 3, mechanic.id, masteryLevel)];
     case 'fortify':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Persists next turn')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Persists')];
     case 'parry':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Draw 1 if attacked')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Draw on hit')];
     case 'brace':
-      return [txt('Gain '), kw('Block', 'block'), txt(' equal to enemy attack')];
+      return [kw('Block', 'block'), txt(' = enemy attack')];
     case 'overheal': {
       const doubled = power * 2;
       const active = pHp < 0.5;
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 ('), cond(doubled, active), txt(') below 50% HP')];
+      return [...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 ('), cond(doubled, active), txt(') <50%')];
     }
     case 'emergency': {
       const active = pHp < 0.3;
       const val = active ? power * 2 : power;
-      return [txt('Gain '), ...numWithMastery(val, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 below 30% HP')];
+      return [...numWithMastery(val, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 <30%')];
     }
 
     // Buffs
     case 'empower':
-      return [txt('Next card +'), ...numWithMastery(power, mechanic.id, masteryLevel), txt('% damage')];
+      return [txt('+'), ...numWithMastery(power, mechanic.id, masteryLevel), txt('% next damage')];
     case 'quicken':
-      return [txt('Gain +'), num(1), txt(' AP this turn')];
+      return [txt('+'), num(1), txt(' AP this turn')];
     case 'focus': {
       const count = Math.max(1, Math.floor((secondary as number | undefined) ?? 1));
       return count > 1
-        ? [txt('Next '), num(count), txt(' cards cost 1 less AP')]
-        : [txt('Next card costs 1 less AP')];
+        ? [txt('Next '), num(count), txt(' cards −1 AP')]
+        : [txt('Next card −1 AP')];
     }
     case 'double_strike':
-      return [txt('Next ATTACK card hits twice at full power')];
+      return [txt('Next ATK hits ×2')];
 
     // Debuffs
     case 'weaken':
-      return [txt('Apply '), kw('Weakness', 'weakness'), txt(' for '), num(power), txt(power !== 1 ? ' turns' : ' turn')];
+      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Weakness', 'weakness')];
     case 'expose':
-      return [txt('Apply '), kw('Vulnerable', 'vulnerable'), txt(' for '), num(power), txt(power !== 1 ? ' turns' : ' turn')];
+      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Vulnerable', 'vulnerable')];
     case 'slow':
       return [txt("Skip enemy's next defend or buff")];
     case 'hex': {
       const turns = secondary ?? 3;
-      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Poison', 'poison'), txt(' for '), num(turns), txt(turns !== 1 ? ' turns' : ' turn')];
+      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Poison', 'poison'), txt(', '), num(turns), txt('t')];
     }
 
     // Utility
     case 'scout': {
       const drawCount = Math.max(1, Math.floor((secondary as number | undefined) ?? power ?? 2));
-      return [txt('Draw '), num(drawCount), txt(drawCount !== 1 ? ' cards' : ' card')];
+      return [txt('Draw '), num(drawCount)];
     }
     case 'recycle':
-      return [txt('Draw '), num(3), txt(' cards')];
+      return [txt('Draw '), num(3)];
     case 'foresight':
-      return [txt('Draw '), num(power), txt(power !== 1 ? ' cards' : ' card')];
+      return [txt('Draw '), num(power)];
     case 'transmute':
-      return [txt('Transform your weakest hand card')];
+      return [txt('Transform weakest card')];
     case 'cleanse':
-      return [txt('Remove all debuffs. Draw 1')];
+      return [txt('Purge debuffs. Draw 1')];
     case 'immunity':
-      return [txt('Absorb next damage instance (up to '), num(power), txt(')')];
+      return [txt('Absorb up to '), num(power), txt(' damage')];
 
     // Wild
     case 'mirror':
-      return [txt("Copy previous card's effect")];
+      return [txt('Copy last card')];
     case 'adapt':
-      return [txt('Auto: '), kw('Block', 'block'), txt('/ATK/'), kw('Cleanse', 'cleanse'), txt(' vs intent')];
+      return [txt('Auto: '), kw('Block', 'block'), txt('/ATK/'), kw('Cleanse', 'cleanse')];
     case 'overclock':
-      return [txt('Next card ×2 effect')];
+      return [txt('Next card ×2')];
 
     // AR-264: Quiz-integrated cards
     case 'recall':

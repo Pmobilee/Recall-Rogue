@@ -59,8 +59,8 @@ export interface ItemObject {
 const FIREFLY_COUNT = 15
 const FIREFLY_COLORS = [0xd4e157, 0xfff176, 0xffee58]
 const CONTINUE_Y_PCT = 0.92
-const CARD_W = 48
-const CARD_H = 68
+const CARD_W = 64
+const CARD_H = 82
 const RELIC_SIZE = 44
 const CARD_TYPE_COLORS: Record<string, number> = {
   attack: 0xff6b6b,
@@ -554,7 +554,7 @@ export class RewardRoomScene extends Phaser.Scene {
         const baseKey = 'v2_frame_base'
 
         // Target size for mini card on cloth
-        const targetW = 48 * this.sf
+        const targetW = CARD_W * this.sf
         const targetH = targetW * (1142 / 886) // maintain card aspect ratio
 
         // Create a container for the layered card

@@ -15,7 +15,7 @@
 | `CardHand.svelte` | Renders the player's hand with V2 card frames, art, mastery glow, chain color groups, and damage-modifier coloring (green=buffed, red=nerfed via `damagePreviews` prop) |
 | `CardCombatOverlay.svelte` | Root combat screen: wraps CardHand + QuizOverlay, handles surge/boss phases, landscape/portrait. Computes `damagePreviews` via `damagePreviewService` and passes to CardHand |
 | `CombatHUD.svelte` | Legacy HP bars + combat log; largely superseded by InRunTopBar |
-| `InRunTopBar.svelte` | Landscape/Portrait HUD: HP bar, shield badge, gold, floor/segment, relic tray, fog level, pause. Now includes inline player status effect icons (poison, burn, etc.) displayed to the right of the HP bar. Accepts optional `statusEffects` prop (populated by `topBarPlayerEffects` derived in CardApp.svelte) |
+| `InRunTopBar.svelte` | Landscape/Portrait HUD: HP bar, shield badge, gold, floor/segment, relic tray, fog level, pause. Inline player status effect icons (poison, burn, etc.) to the right of the HP bar — hover to show per-icon popup. `.hp-group` uses `flex: 1 0 auto` (never shrinks when icons are added). Icon size matches HP bar height (`var(--topbar-height) * 0.58`). Status popup is per-wrapper positioned below each icon on hover; backdrop click pattern removed. `.section-left` uses `max-width: 35%`. Accepts optional `statusEffects` prop (from `topBarPlayerEffects` derived in CardApp.svelte). |
 | `ChainCounter.svelte` | Animated chain streak badge showing length, type color, and damage multiplier |
 | `ChainIcon.svelte` | Single chain-type icon pip used in ChainCounter and card frames |
 | `DamageNumber.svelte` | Floating combat numbers (damage, block, heal, poison, burn, bleed, gold, crit) |
@@ -43,6 +43,10 @@
 - `modState` is computed per-card from `preview.qpModified` / `preview.ccModified` depending on charge preview state
 
 `CardCombatOverlay` builds the full `DamagePreviewContext` from `turnState` and calls `computeDamagePreview` for every card in hand, passing the result as `{damagePreviews}` to CardHand.
+
+### CardHand tier classes
+
+Cards have `class:tier-2a`, `class:tier-2b`, and `class:tier-3` bindings in the template (both landscape and portrait paths). The corresponding CSS rules carry no visual effects — tier drop-shadow glow styles (silver for 2a/2b, gold for tier-3) were removed 2026-03-31. The class bindings remain in the template for potential future use.
 
 ---
 
@@ -149,7 +153,7 @@
 | Component | Purpose |
 |-----------|---------|
 | `CardRewardScreen.svelte` | Post-combat reward: animated gold/heal reveal then 3-card pick |
-| `RewardCardDetail.svelte` | Expanded detail for a single reward card (RewardRoomScene) |
+| `RewardCardDetail.svelte` | Expanded detail for a single reward card (RewardRoomScene). Renders an identical V2 card frame to CardHand.svelte. AP cost font: `var(--card-w) * 0.14`. Effect text uses `'Kreon', 'Georgia', serif` matching CardHand. Adaptive size classes: `effect-text-md` (>15 chars), `effect-text-sm` (>25), `effect-text-xs` (>35) computed by `effectTextSizeClass()`. `.desc-number` inherits font/color from parent (no override). |
 | `RunEndScreen.svelte` | Run summary: victory/defeat, XP breakdown, facts correct, floor reached |
 | `ArchetypeSelection.svelte` | Run-start archetype picker: Balanced / Aggressive / Defensive / Scholar |
 | `GachaReveal.svelte` | Gacha-style animated reveal for rare unlocks and season rewards |

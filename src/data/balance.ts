@@ -637,6 +637,9 @@ export const RELIC_REROLL_MAX = 1;
 /** Chance of random relic drop after regular encounters. */
 export const RELIC_DROP_CHANCE_REGULAR = 0.05;
 
+/** Chance of a bonus relic appearing alongside card choices in reward rooms (per floor). */
+export const RELIC_BONUS_CHANCE_REWARD_ROOM = 0.08;
+
 /** Number of relic choices presented at bosses and first mini-boss. */
 export const RELIC_BOSS_CHOICES = 3;
 
