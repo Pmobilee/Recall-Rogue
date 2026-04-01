@@ -109,6 +109,7 @@
   import { getMaxRelicSlots, isRelicSlotsFull } from './services/relicEffectResolver'
   import { isSlowReader, onboardingState, textSize, fontChoice, type FontChoice } from './services/cardPreferences'
   import { unlockCardAudio, playCardAudio } from './services/cardAudioManager'
+  import { audioManager } from './services/audioService'
   import { languageService } from './services/languageService'
   import { getDueReviews, playerSave, persistPlayer } from './ui/stores/playerData'
   import { lastRunSummary } from './services/hubState'
@@ -159,6 +160,8 @@
   import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
   import InRunTopBar from './ui/components/InRunTopBar.svelte'
+  import MusicWidget from './ui/components/MusicWidget.svelte'
+  import { musicService } from './services/musicService'
   import { getReviewQueueLength } from './services/reviewQueueSystem'
   import { getAuraLevel, getAuraState } from './services/knowledgeAuraSystem'
 
@@ -819,6 +822,15 @@
     }
   })
 
+  // Auto-start music when entering a run. Music keeps playing when leaving
+  // (hub screen, etc.) so users retain control via MusicWidget.
+  $effect(() => {
+    const inRun = IN_RUN_SCREENS.has($currentScreen) && $activeRunState !== null
+    if (inRun) {
+      musicService.startIfNotPlaying()
+    }
+  })
+
   function nextSegmentName(floor: number): string {
     if (floor < 3) return 'Shallow Depths'
     if (floor < 6) return 'Deep Dungeon'
@@ -830,6 +842,24 @@
 
   function handleUserInteraction(): void {
     unlockCardAudio()
+    // Preload combat-critical SFX files in background (synthesis handles first play)
+    void audioManager.preloadSounds([
+      // Quiz — heard every encounter
+      'quiz_correct', 'quiz_wrong', 'quiz_appear', 'quiz_answer_select', 'quiz_dismiss',
+      // Card play — every card every fight
+      'card_swoosh_attack', 'card_swoosh_shield', 'card_swoosh_buff', 'card_swoosh_debuff', 'card_swoosh_wild',
+      'card_deal', 'card_select', 'card_deselect', 'card_discard',
+      // Chain — signature mechanic
+      'chain_link_1', 'chain_link_2', 'chain_link_3', 'chain_link_4', 'chain_link_5', 'chain_break',
+      // Core combat feedback
+      'player_damage', 'enemy_attack', 'shield_absorb', 'shield_break', 'shield_gain',
+      // UI — heard constantly
+      'button_click', 'modal_open', 'modal_close',
+      // Turn flow
+      'end_turn_click', 'ap_spend',
+    ])
+    musicService.init()    // CREATE context on first gesture
+    musicService.unlock()  // RESUME if suspended
     if (!bootLogoPlayed) {
       bootLogoPlayed = true
       playCardAudio('boot-logo')
@@ -1055,6 +1085,7 @@
       statusEffects={topBarPlayerEffects}
       onpause={handlePause}
     />
+    <MusicWidget />
   {/if}
 
   <div
@@ -1087,9 +1118,11 @@
     />
     {#if showActiveRunBanner && !showBootAnimation}
       <div class="active-run-banner" data-testid="active-run-banner">
-        <span>Run in progress</span>
-        <button type="button" class="banner-resume-btn" data-testid="btn-resume-run" onclick={handleResumeActiveRun}>Resume</button>
-        <button type="button" class="banner-abandon-btn" data-testid="btn-abandon-run" onclick={handleAbandonRun}>Abandon</button>
+        <span class="banner-label">Run in progress</span>
+        <div class="banner-buttons">
+          <button type="button" class="banner-resume-btn" data-testid="btn-resume-run" onclick={handleResumeActiveRun}>Resume</button>
+          <button type="button" class="banner-abandon-btn" data-testid="btn-abandon-run" onclick={handleAbandonRun}>Abandon</button>
+        </div>
       </div>
     {/if}
     {#if showOutsideDuePrompt}
@@ -1757,9 +1790,9 @@
     right: 0;
     z-index: 250;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: calc(10px * var(--layout-scale, 1));
+    gap: calc(6px * var(--layout-scale, 1));
     margin-top: max(4px, var(--safe-top, 0px));
     padding-top: calc(10px * var(--layout-scale, 1));
     padding-bottom: calc(10px * var(--layout-scale, 1));
@@ -1771,6 +1804,17 @@
     color: #fbbf24;
     font-size: calc(13px * var(--text-scale, 1));
     font-weight: 600;
+  }
+
+  .banner-label {
+    font-size: calc(11px * var(--text-scale, 1));
+    opacity: 0.8;
+  }
+
+  .banner-buttons {
+    display: flex;
+    gap: calc(10px * var(--layout-scale, 1));
+    justify-content: center;
   }
 
   .banner-resume-btn {

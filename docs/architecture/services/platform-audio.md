@@ -1,8 +1,8 @@
 # Platform Services — Audio & Game Feel
 
-> **Purpose:** Audio synthesis, file-based SFX playback, card audio cues, and game-feel (juice) coordination services
+> **Purpose:** Audio synthesis, file-based SFX playback, card audio cues, ambient atmosphere layering, and game-feel (juice) coordination services
 > **Last verified:** 2026-04-01
-> **Source files:** `src/services/audioService.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`
+> **Source files:** `src/services/audioService.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`, `src/services/ambientAudioService.ts`
 
 > **See also:** [`platform.md`](platform.md) — All other platform services: device detection, haptics, performance, analytics, input, accessibility, notifications, entitlements, and more.
 
@@ -10,7 +10,92 @@
 
 ## Overview
 
-These three services form the audio and game-feel layer. They work together: `juiceManager` coordinates combat events → `cardAudioManager` maps cues to sound names → `audioService` plays the audio. `hapticService` (in `platform.md`) is also called by `juiceManager` for mobile haptic feedback.
+These services form the audio and game-feel layer. They work together: `juiceManager` coordinates combat events → `cardAudioManager` maps cues to sound names → `audioService` plays the audio. `ambientAudioService` runs in parallel, layering looping atmosphere sounds for the current room/screen context. `hapticService` (in `platform.md`) is also called by `juiceManager` for mobile haptic feedback.
+
+---
+
+## ambientAudioService
+
+| | |
+|---|---|
+| **File** | src/services/ambientAudioService.ts |
+| **Purpose** | Layer multiple simultaneous ambient loops per screen/room context; crossfade between contexts on transitions |
+| **Key exports** | `ambientAudio` (singleton), `AmbientContext` (type) |
+| **Key dependencies** | Web Audio API, `fetch` (for .ogg loop loading) |
+| **Loop files** | `public/assets/audio/sfx/loops/*.ogg` |
+
+### Audio Graph
+
+```
+AudioBufferSourceNode ─┐
+                       ├→ per-layer GainNode → masterGain → destination
+AudioBufferSourceNode ─┘   (N layers per recipe)
+```
+
+### Contexts and Recipes
+
+Each `AmbientContext` maps to a recipe: an ordered list of `{ file, volume }` layers. All layers play simultaneously as looping AudioBufferSourceNodes.
+
+| Context | Layers | Primary character |
+|---------|--------|-------------------|
+| `hub` | 5 | Campfire + stone room — warm/safe underground |
+| `dungeon_map` | 3 | Wind + drips — contemplative planning |
+| `shop` | 3 | Torch crackle + chain rattle — merchant alcove |
+| `rest` | 4 | Campfire + wind — deeper rest site |
+| `mystery` | 3 | Arcane whisper + void — eerie unknown |
+| `combat_dust` | 4 | Drips + stone — Floors 1–3 basic cave |
+| `combat_embers` | 4 | Ember pit + lava — Floors 4–6 volcanic |
+| `combat_ice` | 4 | Ice creak + wind howl — Floors 7–9 frozen |
+| `combat_arcane` | 4 | Arcane whisper + crystal — Floors 10–12 |
+| `combat_void` | 2 | Void drone + howl — minimal void |
+| `boss_arena` | 2 | Tension underbed + arena ambient |
+| `mastery_challenge` | 2 | Arcane + crystal hum |
+| `run_end_victory` | 1 | Soft campfire |
+| `run_end_defeat` | 2 | Void drone + wind |
+| `retreat_delve` | 3 | Wind + stone + dungeon drip |
+| `silent` | 0 | No audio |
+
+Recipe definitions live in the `RECIPES` constant at the top of `ambientAudioService.ts`. Spec source: `docs/roadmap/future/SFX-SOUND-GENERATION-PROMPTS.md §AMBIENT ATMOSPHERE RECIPES`.
+
+### Crossfade Behaviour
+
+- Duration: 800 ms (`CROSSFADE_SEC = 0.8`)
+- Old layers: `exponentialRampToValueAtTime(0.001, now + 0.8)`, then stopped after 900 ms
+- New layers: `linearRampToValueAtTime(targetVol, now + 0.8)` starting from 0
+- All new layer buffers loaded in parallel before fade-in begins
+
+### Modifiers (stacked multiplicatively)
+
+| Modifier | Multiplier | Purpose |
+|----------|-----------|---------|
+| Music coexistence | `0.3×` | BGM is playing; ambient sits under music |
+| Quiz duck | `0.5×` | Quiz overlay active; ambient steps back |
+
+Both flags are independent and stack: coexistence + ducking = `0.15×`.
+
+Volume math lives in the pure function `effectiveVolume(targetVolume, musicCoexistence, ducking)`.
+
+### Boss Overlay
+
+`addBossOverlay()` starts additional tension layers on top of the current recipe without crossfading away the existing ones. `removeBossOverlay()` fades them out over 800 ms. The overlay layers are defined in `BOSS_OVERLAY_LAYERS` (currently: `combat_tension_underbed.ogg` at 0.3).
+
+### Public API
+
+```ts
+ambientAudio.init()                            // lazy AudioContext creation; call from first user gesture
+ambientAudio.unlock()                          // resume suspended context on subsequent gestures
+await ambientAudio.setContext('combat_dust')   // switch context with crossfade; no-op if same context
+ambientAudio.duck()                            // quiz overlay — reduce to 50%
+ambientAudio.unduck()                          // restore from duck
+ambientAudio.setMusicCoexistence(true)         // BGM active — reduce to 30%
+ambientAudio.addBossOverlay()                  // add boss tension layers on top
+ambientAudio.removeBossOverlay()               // fade out boss layers
+ambientAudio.stop()                            // hard stop all layers, reset to silent
+```
+
+### Buffer Cache
+
+Decoded `AudioBuffer` objects are cached by file path string. Failed fetches are stored as `null` to suppress retries. Cache is unbounded (ambient loops are few and long-lived).
 
 ---
 
@@ -83,6 +168,21 @@ audioManager.setVolume(level: number)      // 0.0 – 1.0
 audioManager.mute() / unmute()
 audioManager.isMuted(): boolean
 ```
+
+### First-Gesture Preload (CardApp.svelte)
+
+`handleUserInteraction()` in `src/CardApp.svelte` is called on the first user touch/click (the browser AudioContext unlock gate). After calling `unlockCardAudio()`, it fire-and-forgets `audioManager.preloadSounds()` with the ~30 highest-priority sounds so their `.ogg` files are decoded before the first combat encounter begins:
+
+| Category | Sounds |
+|----------|--------|
+| Quiz | `quiz_correct`, `quiz_wrong`, `quiz_appear`, `quiz_answer_select`, `quiz_dismiss` |
+| Card play | `card_swoosh_attack/shield/buff/debuff/wild`, `card_deal`, `card_select`, `card_deselect`, `card_discard` |
+| Chain | `chain_link_1` through `chain_link_5`, `chain_break` |
+| Combat feedback | `player_damage`, `enemy_attack`, `shield_absorb`, `shield_break`, `shield_gain` |
+| UI | `button_click`, `modal_open`, `modal_close` |
+| Turn flow | `end_turn_click`, `ap_spend` |
+
+The synthesis fallback still fires on the very first play of any sound before its buffer is warm — the preload eliminates synthesis from the second play onward for all critical sounds.
 
 ---
 
