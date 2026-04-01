@@ -74,7 +74,7 @@
   import { staggerPopIn } from '../utils/roomPopIn'
   import { tick } from 'svelte'
   import { computeDamagePreview, type DamagePreviewContext, type DamagePreview } from '../../services/damagePreviewService'
-  import { isVulnerable } from '../../data/statusEffects'
+  import { isVulnerable, getStrengthModifier } from '../../data/statusEffects'
 
 
   interface Props {
@@ -475,6 +475,7 @@
       cardsPlayedThisTurn: turnState.cardsPlayedThisTurn,
       encounterTurnNumber: turnState.encounterTurnNumber,
       scarTissueStacks: turnState.scarTissueStacks ?? 0,
+      playerStrengthModifier: getStrengthModifier(ps.statusEffects),
     };
 
     const result: Record<string, DamagePreview> = {};
@@ -2884,7 +2885,6 @@
       <div class="lsb-ap-circle" class:lsb-ap-active={apCurrent > 0} class:lsb-ap-empty={apCurrent === 0}>
         <span class="lsb-ap-number">{apCurrent}</span>
       </div>
-      <span class="lsb-ap-label">AP</span>
     </div>
 
     <div class="landscape-stats-bar" aria-label="Player status">
@@ -4174,10 +4174,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: calc(3px * var(--layout-scale, 1));
     position: fixed;
-    left: 15%;
-    bottom: 32vh;
+    left: calc(16px * var(--layout-scale, 1));
+    bottom: 38vh;
     z-index: 16;
   }
 

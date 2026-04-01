@@ -47,6 +47,8 @@ export interface DamagePreviewContext {
   encounterTurnNumber: number;
   /** Accumulated wrong-charge count for scar_tissue flat bonus */
   scarTissueStacks: number;
+  /** Player strength/weakness modifier (1.0 = neutral, 0.75 = weakness 1, 1.25 = strength 1). Defaults to 1.0 if omitted. */
+  playerStrengthModifier?: number;
 }
 
 export interface DamagePreview {
@@ -194,6 +196,10 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     // Step 1: mechanic base + mastery
     let qpBase = nakedQpBase;
     let ccBase = nakedCcBase;
+
+    // Step 1b: player strength/weakness modifier
+    qpBase = Math.round(qpBase * (ctx.playerStrengthModifier ?? 1));
+    ccBase = Math.round(ccBase * (ctx.playerStrengthModifier ?? 1));
 
     // Step 2: cursed multipliers
     if (card.isCursed) {

@@ -335,20 +335,21 @@
 <!-- Brain Fog Wing — glass meter below top bar -->
 {#if fogState !== undefined}
   {@const fl = fogLevel ?? 0}
+  {@const displayFl = fl - 5}
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div class="fog-wing-wrapper" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'}
     onclick={() => { fogTooltipOpen = !fogTooltipOpen }}
     onmouseenter={() => { fogTooltipOpen = true }}
     onmouseleave={() => { fogTooltipOpen = false }}
   >
-    <div class="fog-wing" aria-label="{fogState === 'brain_fog' ? 'Brain Fog' : fogState === 'flow_state' ? 'Flow State' : 'Neutral'} level {Math.abs(fl)}">
-      {#if fl < 0}
-        <div class="fog-fill-good" style="width: {Math.abs(fl) / 5 * 50}%; right: 50%;"></div>
-      {:else if fl > 0}
-        <div class="fog-fill-bad" style="width: {fl / 5 * 50}%; left: 50%;"></div>
+    <div class="fog-wing" aria-label="{fogState === 'brain_fog' ? 'Brain Fog' : fogState === 'flow_state' ? 'Flow State' : 'Neutral'} level {Math.abs(displayFl)}">
+      {#if displayFl < 0}
+        <div class="fog-fill-good" style="width: {Math.abs(displayFl) / 5 * 50}%; right: 50%;"></div>
+      {:else if displayFl > 0}
+        <div class="fog-fill-bad" style="width: {displayFl / 5 * 50}%; left: 50%;"></div>
       {/if}
       <div class="fog-center-mark"></div>
-      <div class="fog-mist" style="opacity: {Math.abs(fl) / 5 * 0.5};"></div>
+      <div class="fog-mist" style="opacity: {Math.abs(displayFl) / 5 * 0.5};"></div>
       <div class="fog-glass-highlight"></div>
     </div>
     {#if fogTooltipOpen}
@@ -374,10 +375,10 @@
         <div class="fog-tooltip-meter">
           <span class="fog-tooltip-label">-5</span>
           <div class="fog-tooltip-bar">
-            {#if (fogLevel ?? 0) < 0}
-              <div class="fog-tooltip-bar-good" style="width: {Math.abs(fogLevel ?? 0) / 5 * 50}%; right: 50%;"></div>
-            {:else if (fogLevel ?? 0) > 0}
-              <div class="fog-tooltip-bar-bad" style="width: {(fogLevel ?? 0) / 5 * 50}%; left: 50%;"></div>
+            {#if displayFl < 0}
+              <div class="fog-tooltip-bar-good" style="width: {Math.abs(displayFl) / 5 * 50}%; right: 50%;"></div>
+            {:else if displayFl > 0}
+              <div class="fog-tooltip-bar-bad" style="width: {displayFl / 5 * 50}%; left: 50%;"></div>
             {/if}
             <div class="fog-tooltip-center"></div>
           </div>

@@ -1418,35 +1418,35 @@
   }
 
   .reward-screen.landscape .altar-shell {
-    width: min(65vw, 900px);
+    width: min(80vw, 1200px);
     max-height: 85vh;
     overflow-y: auto;
-    transform: scale(1.15);
+    transform: scale(1.5);
     transform-origin: center center;
   }
 
   .reward-screen.landscape .actions {
-    width: min(65vw, 900px);
-    transform: scale(1.15);
+    width: min(80vw, 1200px);
+    transform: scale(1.5);
     transform-origin: center center;
   }
 
   .reward-screen.landscape .altar-options {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: calc(16px * var(--layout-scale, 1));
+    gap: calc(24px * var(--layout-scale, 1));
   }
 
   .reward-screen.landscape .altar-option {
-    min-height: calc(200px * var(--layout-scale, 1));
-    padding: calc(36px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    min-height: calc(300px * var(--layout-scale, 1));
+    padding: calc(54px * var(--layout-scale, 1)) calc(15px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
   }
 
   .reward-screen.landscape .mini-card-name {
-    font-size: calc(15px * var(--layout-scale, 1));
+    font-size: calc(20px * var(--layout-scale, 1));
   }
 
   .reward-screen.landscape .mini-card-desc {
-    font-size: calc(12px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--layout-scale, 1));
   }
 
   .reward-screen.landscape .step-container {

@@ -17,7 +17,7 @@ import {
   CURSED_CHARGE_WRONG_MULTIPLIER,
 } from '../data/balance';
 import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
-import { isVulnerable } from '../data/statusEffects';
+import { isVulnerable, getStrengthModifier } from '../data/statusEffects';
 import { getMechanicDefinition, MECHANIC_DEFINITIONS, type PlayMode } from '../data/mechanics';
 import { resolveAttackModifiers, resolveShieldModifiers, resolvePoisonDurationBonus } from './relicEffectResolver';
 import { getAuraLevel, getAuraState, adjustAura } from './knowledgeAuraSystem';
@@ -568,7 +568,8 @@ export function resolveCardEffect(
     : 1;
 
   const applyAttackDamage = (baseDamage: number): void => {
-    let damage = Math.max(0, Math.round(baseDamage + (passiveBonuses?.attack ?? 0)));
+    const strengthMod = getStrengthModifier(playerState.statusEffects);
+    let damage = Math.max(0, Math.round(baseDamage * strengthMod + (passiveBonuses?.attack ?? 0)));
     if (isVulnerable(enemy.statusEffects)) damage = Math.round(damage * 1.5);
     result.damageDealt = damage;
     result.enemyDefeated = damage >= enemy.currentHP;

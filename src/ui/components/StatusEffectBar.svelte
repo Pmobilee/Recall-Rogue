@@ -32,9 +32,17 @@
     burn: { name: 'Burn', icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png', color: '#f97316', desc: (v) => `Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
     bleed: { name: 'Bleed', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png', color: '#ef4444', desc: (v) => `Bleed [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
     freeze: { name: 'Freeze', icon: '❄️', color: '#38bdf8', desc: (v, t) => `Frozen — skips action (${t} turn${t !== 1 ? 's' : ''} left)` },
-    // Knowledge Aura states (AR-261)
-    brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => `Brain Fog: enemies deal +20% damage. Fog: ${v}/10` },
-    flow_state: { name: 'Flow State', icon: '✨', color: '#fbbf24', desc: (v) => `Flow State: draw +1 card per turn. Fog: ${v}/10` },
+    // Knowledge Aura states (AR-261) — desc reflects actual fog level thresholds (0-2: flow, 3-6: neutral, 7-10: fog)
+    brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => {
+      if (v >= 7) return `Brain Fog active: enemies deal +20% damage. Fog: ${v}/10`;
+      if (v <= 2) return `Flow State: draw +1 card/turn. Fog: ${v}/10`;
+      return `Neutral — no aura effect. Fog: ${v}/10`;
+    }},
+    flow_state: { name: 'Flow State', icon: '✨', color: '#fbbf24', desc: (v) => {
+      if (v >= 7) return `Brain Fog active: enemies deal +20% damage. Fog: ${v}/10`;
+      if (v <= 2) return `Flow State active: draw +1 card/turn. Fog: ${v}/10`;
+      return `Neutral — no aura effect. Fog: ${v}/10`;
+    }},
     // Enemy-specific mechanics (AR-263)
     stunned: { name: 'Stunned', icon: '💫', color: '#fbbf24', desc: () => `Stunned — skips next action` },
     hardcover: { name: 'Hardcover', icon: '📖', color: '#a78bfa', desc: (v) => `Hardcover armor: ${v}. Reduces Quick Play damage. Charges strip it away.` },
@@ -73,7 +81,7 @@
         {:else}
           <span class="effect-emoji">{info.icon}</span>
         {/if}
-        {#if effect.value > 1}
+        {#if effect.value >= 1}
           <span class="effect-stack" style="background: {info.color};">{effect.value}</span>
         {/if}
         <span class="effect-turns">{effect.turnsRemaining}</span>
@@ -133,8 +141,8 @@
     width: calc(40px * var(--layout-scale, 1));
     height: calc(40px * var(--layout-scale, 1));
     border-radius: 50%;
-    border: none;
-    background: transparent;
+    border: calc(1px * var(--layout-scale, 1)) solid rgba(255, 255, 255, 0.4);
+    background: rgba(20, 28, 40, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,7 +150,8 @@
     -webkit-tap-highlight-color: transparent;
     padding: 0;
     font-family: inherit;
-    filter: drop-shadow(0 calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1)) rgba(0,0,0,0.6));
+    /* White outline glow instead of dark drop-shadow for better icon visibility */
+    filter: drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255,255,255,0.7)) drop-shadow(0 0 calc(1px * var(--layout-scale, 1)) rgba(255,255,255,0.5));
   }
 
   .effect-emoji {
@@ -154,12 +163,13 @@
     position: absolute;
     top: calc(-4px * var(--layout-scale, 1));
     right: calc(-4px * var(--layout-scale, 1));
-    min-width: calc(16px * var(--layout-scale, 1));
-    height: calc(16px * var(--layout-scale, 1));
+    min-width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
     border-radius: 50%;
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
     font-weight: 800;
     color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,9 +180,10 @@
     position: absolute;
     bottom: calc(-2px * var(--layout-scale, 1));
     right: calc(2px * var(--layout-scale, 1));
-    font-size: calc(9px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
     font-weight: 700;
-    color: #94a3b8;
+    color: #e2e8f0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
   }
 
   .effect-popup-backdrop {

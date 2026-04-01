@@ -411,13 +411,13 @@ export const HINTS_PER_ENCOUNTER = 1;
 export const START_AP_PER_TURN = 3;
 export const MAX_AP_PER_TURN = 5;
 
-// Post-encounter healing (AR-31: between-encounter recovery)
-/** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.08;
-/** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
-export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.03;
-/** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
-export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.05;
+// Post-encounter healing disabled — healing comes from potions only
+/** Fraction of max HP healed after each non-defeat encounter. Set to 0: no auto-heal. */
+export const POST_ENCOUNTER_HEAL_PCT = 0;
+/** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). Set to 0: no auto-heal. */
+export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0;
+/** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). Set to 0: no auto-heal. */
+export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0;
 /** Maximum HP percentage players can heal TO via post-encounter healing, by segment.
  *  Players below this threshold heal normally; players above it gain nothing.
  *  This creates late-game attrition so winners don't cruise at 99% HP. */

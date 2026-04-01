@@ -57,14 +57,15 @@ Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 
 1. **Mechanic base** — `mechanic.quickPlayValue` (QP) or `(quickPlayValue + masteryBonus) × CHARGE_CORRECT_MULTIPLIER` (CC = 2.0×) or `mechanic.chargeWrongValue` (CW)
 2. **Mastery bonus** — `getMasteryBaseBonus(mechanicId, masteryLevel)` — included inside the 1.5× CC multiplier (not added flat after)
-3. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
-4. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
-5. **Speed/trick bonus** — speed bonus (1.5× if answered fast) × trick question unlock (2.0×)
-6. **Combo multipliers** — `chainMultiplier × overclockMultiplier × buffMultiplier`
-7. **Relic modifiers** — `resolveAttackModifiers()` / `resolveShieldModifiers()`
-8. **Enemy modifiers** — QP damage multiplier, hardcover armor, `chargeResistant` (−50% QP), `chainVulnerable` (+50% chain damage)
-9. **Burn trigger** — `triggerBurn()`: bonus = current stacks, then stacks halve (multi-hit fires per hit)
-10. **Bleed bonus** — `getBleedBonus()`: flat `BLEED_BONUS_PER_STACK` per stack
+3. **Player strength/weakness modifier** — `getStrengthModifier(playerState.statusEffects)` — multiplied against base attack damage. Strength: +25% per stack; Weakness: −25% per stack; floor: 0.25×. Applied inside `applyAttackDamage()` in `cardEffectResolver.ts`. Does NOT affect shield cards.
+4. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
+5. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
+6. **Speed/trick bonus** — speed bonus (1.5× if answered fast) × trick question unlock (2.0×)
+7. **Combo multipliers** — `chainMultiplier × overclockMultiplier × buffMultiplier`
+8. **Relic modifiers** — `resolveAttackModifiers()` / `resolveShieldModifiers()`
+9. **Enemy modifiers** — QP damage multiplier, hardcover armor, `chargeResistant` (−50% QP), `chainVulnerable` (+50% chain damage)
+10. **Burn trigger** — `triggerBurn()`: bonus = current stacks, then stacks halve (multi-hit fires per hit)
+11. **Bleed bonus** — `getBleedBonus()`: flat `BLEED_BONUS_PER_STACK` per stack
 
 Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `result = 'victory'`.
 
@@ -122,12 +123,28 @@ See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
 
 ---
 
+## Post-Encounter Healing
+
+Post-encounter auto-heal is **disabled** (2026-04-01). All three heal constants in `balance.ts` are 0:
+
+- `POST_ENCOUNTER_HEAL_PCT = 0` — no base heal after victory
+- `RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0` — no extra heal in Relaxed mode
+- `POST_BOSS_ENCOUNTER_HEAL_BONUS = 0` — no extra heal after boss/mini-boss
+
+Healing during a run comes exclusively from **potions** (consumable items). The heal-cap table (`POST_ENCOUNTER_HEAL_CAP`) is retained in `balance.ts` as it may be reused if the feature is re-enabled, but has no effect while base heal is 0.
+
+The reward screen (`CardRewardScreen.svelte`) skips the heal UI step when `healAmount === 0`, so no UI change is needed.
+
+---
+
 ## Debuff Mechanics — Explicit Cases
 
 `expose` and `weaken` have explicit `case` branches in `cardEffectResolver.ts` (added 2026-04-01). Before this fix both fell through to the generic debuff fallback which applied wrong effects (weakness instead of vulnerable for expose; 0 stacks for weaken due to low finalValue).
 
 - `expose` — applies Vulnerable stacks: QP=1 stack, 1 turn. CC=max(1, round(finalValue)) stacks, 2 turns.
 - `weaken` — applies Weakness stacks: QP=1 stack, 1 turn. CC=max(1, round(finalValue)) stacks, 2 turns.
+- **Player Weakness effect** — when the player has Weakness stacks, `getStrengthModifier(playerState.statusEffects)` returns < 1.0, and `applyAttackDamage()` multiplies base attack damage by that value (fixed 2026-04-01). Previously player Weakness had no effect on outgoing player damage.
+- **Damage Preview** — `DamagePreviewContext.playerStrengthModifier` (optional, defaults to 1.0) mirrors this in the preview pipeline. Wired from `getStrengthModifier(ps.statusEffects)` in `CardCombatOverlay.svelte`.
 
 ---
 
