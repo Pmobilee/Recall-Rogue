@@ -296,3 +296,18 @@ Suno AI-generated mp3 files contain an embedded JPEG cover art stream (Stream #0
 
 ### 2026-04-01 — Floor 1 damage cap too low (3→6)
 LLM playtest BATCH-2026-04-01-001 found all floor 1 enemies dealt only 2 damage/turn due to ENEMY_TURN_DAMAGE_CAP segment 1 = 3. This cap was set for an older balance config and never recalibrated. Raised to 6 to allow enemies to deal 2-6 damage, creating actual tension while staying beginner-friendly. The cliff between segment 1 (was 3) and segment 2 (12) is now smoother.
+
+### 2026-04-01 — `getCombatState()` returned undefined playerHp via wrong field path
+
+**What:** `getCombatState()` in `src/dev/playtestAPI.ts` had `playerHp: turnState.playerHP`. The field `playerHP` does not exist on `TurnState` — player HP lives at `turnState.playerState.hp` (see `PlayerCombatState.hp`).
+
+**Why:** `TurnState` has a `playerState: PlayerCombatState` object. `playerHP` is used by the older `deckManager.ts` `DeckState` type (separate legacy system). The naming mismatch meant `getCombatState()` always returned `playerHp: undefined`.
+
+**Fix:** Changed to `playerHp: turnState.playerState?.hp`. When working with combat state always check whether you're in `TurnState` (uses `playerState.hp`) or legacy `DeckState` (uses `playerHP`).
+
+### 2026-04-01 — Study session dedup: selectFactForCharge only excludes the immediately previous fact
+**What:** `generateStudyQuestions()` called `selectNonCombatStudyQuestion` 3 times in a loop without tracking selected fact IDs. `selectFactForCharge` only excludes `tracker.getLastFactId()` (a single ID), so iteration 1 could return fact A, iteration 2 fact B, iteration 3 fact A again (B was last, not A).
+
+**Why:** The `InRunFactTracker` tracks a single `lastFactId` for consecutive-repeat prevention, not a multi-question session-wide exclusion set. The loop assumed seed offsets alone were sufficient for variety — they're not.
+
+**Fix:** Added `excludeFactIds?: ReadonlySet<string>` parameter to `selectNonCombatStudyQuestion`. The function filters the fact pool before passing it to `selectFactForCharge`. Caller (`generateStudyQuestions`) accumulates `excludeFactIds` across iterations and passes it each call. Fallback to full pool if filtering would exhaust the pool entirely (tiny decks).

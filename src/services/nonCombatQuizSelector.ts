@@ -54,6 +54,11 @@ export interface NonCombatQuizQuestion {
  * @param inRunTracker - In-run fact tracker; if null, a temporary empty one is created
  * @param cardMasteryLevel - Card mastery for difficulty scaling (default 1)
  * @param runSeed - Run seed for deterministic selection
+ * @param examTags - Optional exam tag filter
+ * @param meditatedThemeId - Optional chain theme ID that has been meditated (fewer distractors)
+ * @param excludeFactIds - Fact IDs already selected in this batch; excluded from the pool
+ *   to prevent duplicate questions when calling this function multiple times in a loop
+ *   (e.g. generateStudyQuestions builds 3 questions sequentially).
  * @returns A NonCombatQuizQuestion for study mode, or null if deck not loaded / trivia mode
  */
 export function selectNonCombatStudyQuestion(
@@ -66,13 +71,26 @@ export function selectNonCombatStudyQuestion(
   runSeed: number,
   examTags?: string[],
   meditatedThemeId?: number,
+  excludeFactIds?: ReadonlySet<string>,
 ): NonCombatQuizQuestion | null {
   const deck = getCuratedDeck(deckId);
   if (!deck) return null;
 
   // Non-combat uses full deck pool (not chain-theme-filtered)
-  const factPool = getCuratedDeckFacts(deckId, subDeckId, examTags);
+  let factPool = getCuratedDeckFacts(deckId, subDeckId, examTags);
   if (factPool.length === 0) return null;
+
+  // Exclude already-selected facts to prevent duplicates across a multi-question batch.
+  // Only filter if there will still be facts left — fall through to full pool if pool
+  // would become empty (edge case: tiny decks smaller than questionCount).
+  if (excludeFactIds && excludeFactIds.size > 0) {
+    const filtered = factPool.filter(f => !excludeFactIds.has(f.id));
+    if (filtered.length > 0) {
+      factPool = filtered;
+    }
+    // If filtered is empty (deck too small), keep the full pool so the caller still
+    // gets a question, even if it duplicates — better than returning null.
+  }
 
   // Use provided tracker or a temporary empty one
   const tracker = inRunTracker ?? new InRunFactTracker();
