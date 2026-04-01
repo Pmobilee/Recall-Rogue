@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { MysteryEvent, MysteryEffect } from '../../services/floorManager'
   import { getRandomRoomBg, getRoomDepthMap, getMysteryEventBg, getMysteryEventDepthMap } from '../../data/backgroundManifest'
+  import { factsDB } from '../../services/factsDB'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { getMysteryEventIconPath, getMysteryEventEmoji } from '../utils/iconAssets'
@@ -83,6 +84,10 @@
       case 'study': return 'free_card'
       case 'reviewMuseum': return 'free_card'
       case 'meditation': return 'heal'
+      case 'doubleOrNothing': return 'choice'
+      case 'speedRound': return 'choice'
+      case 'cardRoulette': return 'choice'
+      case 'factOrFiction': return 'choice'
       default: return 'choice'
     }
   }
@@ -422,7 +427,339 @@
     if (event?.effect.type === 'study') buildStudyFacts()
     if (event?.effect.type === 'reviewMuseum') buildMuseumEntries()
     if (event?.effect.type === 'meditation') buildThemeStats()
+    if (event?.effect.type === 'doubleOrNothing') {
+      donPot = 10
+      donQuestionIndex = 0
+      donPhase = 'question'
+      donCurrentQ = getRandomTriviaQuestion('easy')
+    }
+    if (event?.effect.type === 'speedRound') {
+      srScore = 0
+      srPhase = 'active'
+      srTimeLimit = (event.effect.timeSeconds ?? 15) * 1000
+      srCurrentQ = getRandomTriviaQuestion('easy')
+      srStartedAt = Date.now()
+      srElapsedMs = 0
+      startSpeedRoundTimer()
+    }
+    if (event?.effect.type === 'cardRoulette') {
+      crPicksLeft = event.effect.pickLimit
+      crPickCost = event.effect.pickCost
+      crResults = []
+      crDone = false
+      const outcomes: RouletteCard['outcome'][] = ['upgrade', 'freeCard', 'gold', 'damage', 'curse']
+      const shuffled = outcomes.sort(() => Math.random() - 0.5)
+      crCards = shuffled.map(o => ({
+        outcome: o,
+        flipped: false,
+        label: getRouletteLabel(o),
+      }))
+    }
+    if (event?.effect.type === 'factOrFiction') {
+      const count = event.effect.statementCount
+      fofStatements = buildFactOrFictionStatements(count)
+      fofCurrentIndex = 0
+      fofScore = 0
+      fofWrong = 0
+      fofPhase = 'playing'
+    }
   })
+
+  // ——— Shared trivia helper ———
+  interface TriviaQuestion {
+    question: string
+    correctAnswer: string
+    choices: string[]
+    factId: string
+  }
+
+  /** Pick a random trivia fact from factsDB, filtered by difficulty. */
+  function getRandomTriviaQuestion(difficulty: 'easy' | 'medium' | 'hard'): TriviaQuestion | null {
+    const allFacts = factsDB.getTriviaFacts()
+    let pool: typeof allFacts
+    if (difficulty === 'easy') pool = allFacts.filter(f => (f.difficulty ?? 3) <= 2)
+    else if (difficulty === 'medium') pool = allFacts.filter(f => (f.difficulty ?? 3) === 3)
+    else pool = allFacts.filter(f => (f.difficulty ?? 3) >= 4)
+
+    if (pool.length === 0) pool = allFacts // fallback
+    const fact = pool[Math.floor(Math.random() * pool.length)]
+    if (!fact) return null
+
+    // Pick 3 distractors
+    const distractors = [...fact.distractors].sort(() => Math.random() - 0.5).slice(0, 3)
+    // Shuffle choices (correct + 3 distractors)
+    const choices = [fact.correctAnswer, ...distractors].sort(() => Math.random() - 0.5)
+
+    return {
+      question: fact.quizQuestion,
+      correctAnswer: fact.correctAnswer,
+      choices,
+      factId: fact.id,
+    }
+  }
+
+  // ——— Double or Nothing state ———
+  let donPot = $state(10)
+  let donQuestionIndex = $state(0)
+  let donCurrentQ: TriviaQuestion | null = $state(null)
+  let donPhase: 'question' | 'cashOrDouble' | 'lost' | 'cashed' = $state('question')
+  const DON_DIFFICULTIES: Array<'easy' | 'medium' | 'hard'> = ['easy', 'easy', 'medium', 'hard']
+  const DON_MAX_QUESTIONS = 4
+
+  function handleDonAnswer(choice: string): void {
+    if (!donCurrentQ) return
+    if (choice === donCurrentQ.correctAnswer) {
+      donPot *= 2
+      donQuestionIndex++
+      if (donQuestionIndex >= DON_MAX_QUESTIONS) {
+        donPhase = 'cashed'
+        playCardAudio('event-positive')
+      } else {
+        donPhase = 'cashOrDouble'
+        playCardAudio('event-positive')
+      }
+    } else {
+      donPot = 0
+      donPhase = 'lost'
+      playCardAudio('event-negative')
+    }
+  }
+
+  function handleDonCashOut(): void {
+    donPhase = 'cashed'
+    playCardAudio('event-positive')
+    onresolve({ type: 'currency', amount: donPot })
+  }
+
+  function handleDonDoubleDown(): void {
+    const diff = DON_DIFFICULTIES[donQuestionIndex] ?? 'hard'
+    donCurrentQ = getRandomTriviaQuestion(diff)
+    donPhase = 'question'
+  }
+
+  function handleDonLostDone(): void {
+    onresolve({ type: 'currency', amount: 3 }) // consolation
+  }
+
+  // ——— Speed Round state ———
+  let srScore = $state(0)
+  let srCurrentQ: TriviaQuestion | null = $state(null)
+  let srPhase: 'active' | 'done' = $state('active')
+  let srStartedAt = $state(0)
+  let srElapsedMs = $state(0)
+  let srRafId = $state(0)
+  let srTimeLimit = $state(15000)
+
+  let srSecondsLeft = $derived(Math.max(0, Math.ceil((srTimeLimit - srElapsedMs) / 1000)))
+
+  function startSpeedRoundTimer(): void {
+    function tick(): void {
+      if (srPhase !== 'active') return
+      srElapsedMs = Date.now() - srStartedAt
+      if (srElapsedMs >= srTimeLimit) {
+        srPhase = 'done'
+        playCardAudio(srScore > 0 ? 'event-positive' : 'event-negative')
+        return
+      }
+      srRafId = requestAnimationFrame(tick)
+    }
+    srRafId = requestAnimationFrame(tick)
+  }
+
+  function handleSrAnswer(choice: string): void {
+    if (!srCurrentQ || srPhase !== 'active') return
+    if (choice === srCurrentQ.correctAnswer) {
+      srScore++
+    }
+    // Load next question regardless of correct/wrong
+    srCurrentQ = getRandomTriviaQuestion('easy')
+  }
+
+  function handleSrDone(): void {
+    cancelAnimationFrame(srRafId)
+    const effects: MysteryEffect[] = []
+    if (srScore > 0) {
+      effects.push({ type: 'currency', amount: srScore * 5 })
+      effects.push({ type: 'healPercent', percent: srScore * 3 })
+    }
+    if (effects.length === 0) {
+      onresolve({ type: 'currency', amount: 3 }) // consolation
+    } else {
+      onresolve({ type: 'compound', effects })
+    }
+  }
+
+  // Cancel speed round RAF on unmount/event change
+  $effect(() => {
+    return () => {
+      if (srRafId) cancelAnimationFrame(srRafId)
+    }
+  })
+
+  // ——— Card Roulette state ———
+  interface RouletteCard {
+    outcome: 'upgrade' | 'freeCard' | 'gold' | 'damage' | 'curse'
+    flipped: boolean
+    label: string
+  }
+  let crCards: RouletteCard[] = $state([])
+  let crPicksLeft = $state(3)
+  let crPickCost = $state(5)
+  let crResults: string[] = $state([])
+  let crDone = $state(false)
+
+  function getRouletteLabel(outcome: RouletteCard['outcome']): string {
+    switch (outcome) {
+      case 'upgrade': return 'Upgrade a card!'
+      case 'freeCard': return 'Free card added!'
+      case 'gold': return '+20g!'
+      case 'damage': return 'Trap! -15 HP!'
+      case 'curse': return 'Cursed! A card weakened.'
+    }
+  }
+
+  function handleCrFlip(index: number): void {
+    if (crCards[index].flipped || crPicksLeft <= 0 || crDone) return
+    crCards[index].flipped = true
+    crPicksLeft--
+    const outcome = crCards[index].outcome
+
+    if (outcome === 'damage' || outcome === 'curse') {
+      playCardAudio('event-negative')
+    } else {
+      playCardAudio('event-positive')
+    }
+
+    crResults = [...crResults, crCards[index].label]
+    // Force reactivity on crCards
+    crCards = [...crCards]
+  }
+
+  function handleCrDone(): void {
+    crDone = true
+    const effects: MysteryEffect[] = []
+    const flippedCount = crCards.filter(c => c.flipped).length
+    if (flippedCount > 0) {
+      effects.push({ type: 'damage', amount: flippedCount * crPickCost })
+    }
+    for (const card of crCards.filter(c => c.flipped)) {
+      switch (card.outcome) {
+        case 'upgrade': effects.push({ type: 'upgradeRandomCard' }); break
+        case 'freeCard': effects.push({ type: 'freeCard' }); break
+        case 'gold': effects.push({ type: 'currency', amount: 20 }); break
+        case 'damage': effects.push({ type: 'damage', amount: 15 }); break
+        case 'curse': break // TODO: curse effect when implemented
+      }
+    }
+    if (effects.length === 0) {
+      onresolve({ type: 'currency', amount: 3 })
+    } else {
+      onresolve({ type: 'compound', effects })
+    }
+  }
+
+  // ——— Fact or Fiction state ———
+  interface FofStatement {
+    text: string
+    isTrue: boolean
+    answered: boolean
+    correct: boolean | null
+    factQuestion: string
+  }
+  let fofStatements: FofStatement[] = $state([])
+  let fofCurrentIndex = $state(0)
+  let fofScore = $state(0)
+  let fofWrong = $state(0)
+  let fofPhase: 'playing' | 'feedback' | 'done' = $state('playing')
+  let fofFeedbackTimer = $state(0)
+
+  function buildFactOrFictionStatements(count: number): FofStatement[] {
+    const allFacts = factsDB.getTriviaFacts().filter(
+      f => f.statement && f.correctAnswer && f.distractors?.length > 0
+    )
+    const shuffled = [...allFacts].sort(() => Math.random() - 0.5)
+    const statements: FofStatement[] = []
+
+    let usedIdx = 0
+    for (let i = 0; i < count && usedIdx < shuffled.length; i++) {
+      const fact = shuffled[usedIdx++]
+      const makeTrue = i % 2 === 0
+
+      if (makeTrue) {
+        statements.push({
+          text: fact.statement,
+          isTrue: true,
+          answered: false,
+          correct: null,
+          factQuestion: fact.quizQuestion,
+        })
+      } else {
+        const distractor = fact.distractors[Math.floor(Math.random() * fact.distractors.length)]
+        const falsified = fact.statement.replace(fact.correctAnswer, distractor)
+        if (falsified !== fact.statement) {
+          statements.push({
+            text: falsified,
+            isTrue: false,
+            answered: false,
+            correct: null,
+            factQuestion: fact.quizQuestion,
+          })
+        } else {
+          // Fallback: use as true if replacement failed
+          statements.push({
+            text: fact.statement,
+            isTrue: true,
+            answered: false,
+            correct: null,
+            factQuestion: fact.quizQuestion,
+          })
+        }
+      }
+    }
+    // Shuffle the final order so true/false aren't alternating
+    return statements.sort(() => Math.random() - 0.5)
+  }
+
+  function handleFofAnswer(answeredTrue: boolean): void {
+    const stmt = fofStatements[fofCurrentIndex]
+    if (!stmt || stmt.answered) return
+
+    const isCorrect = answeredTrue === stmt.isTrue
+    stmt.answered = true
+    stmt.correct = isCorrect
+    // Force reactivity
+    fofStatements = [...fofStatements]
+
+    if (isCorrect) {
+      fofScore++
+      playCardAudio('event-positive')
+    } else {
+      fofWrong++
+      playCardAudio('event-negative')
+    }
+
+    fofPhase = 'feedback'
+    fofFeedbackTimer = window.setTimeout(() => {
+      if (fofCurrentIndex < fofStatements.length - 1) {
+        fofCurrentIndex++
+        fofPhase = 'playing'
+      } else {
+        fofPhase = 'done'
+      }
+    }, 800)
+  }
+
+  function handleFofDone(): void {
+    clearTimeout(fofFeedbackTimer)
+    const effects: MysteryEffect[] = []
+    if (fofScore > 0) effects.push({ type: 'currency', amount: fofScore * 8 })
+    if (fofWrong > 0) effects.push({ type: 'damage', amount: fofWrong * 6 })
+    if (effects.length === 0) {
+      onresolve({ type: 'currency', amount: 3 })
+    } else {
+      onresolve({ type: 'compound', effects })
+    }
+  }
 </script>
 
 {#if event}
@@ -563,6 +900,127 @@
           </div>
           <button class="continue-btn-outline" onclick={handleMeditationLeave}>Leave Chamber</button>
         {/if}
+
+      {:else if event.effect.type === 'doubleOrNothing'}
+        <!-- Double or Nothing -->
+        <div class="minigame-don">
+          <div class="don-pot">Pot: {donPot}g</div>
+          {#if donPhase === 'question' && donCurrentQ}
+            <p class="don-question">{donCurrentQ.question}</p>
+            <div class="don-choices">
+              {#each donCurrentQ.choices as choice (choice)}
+                <button class="choice-btn" onclick={() => handleDonAnswer(choice)}>{choice}</button>
+              {/each}
+            </div>
+          {:else if donPhase === 'cashOrDouble'}
+            <p class="don-correct">Correct! The pot is now {donPot}g.</p>
+            <div class="don-actions">
+              <button class="continue-btn" onclick={handleDonCashOut}>Cash Out ({donPot}g)</button>
+              <button class="choice-btn don-double" onclick={handleDonDoubleDown}>Double Down ({donPot * 2}g)</button>
+            </div>
+          {:else if donPhase === 'lost'}
+            <p class="don-lost">Wrong! You lost everything.</p>
+            <button class="continue-btn" onclick={handleDonLostDone}>Leave Empty-Handed</button>
+          {:else if donPhase === 'cashed'}
+            <p class="don-won">You walk away with {donPot}g!</p>
+            <button class="continue-btn" onclick={() => onresolve({ type: 'currency', amount: donPot })}>Collect Winnings</button>
+          {/if}
+        </div>
+
+      {:else if event.effect.type === 'speedRound'}
+        <!-- Speed Round -->
+        <div class="minigame-sr">
+          {#if srPhase === 'active' && srCurrentQ}
+            <div class="sr-header">
+              <span class="sr-timer" class:sr-urgent={srSecondsLeft <= 5}>{srSecondsLeft}s</span>
+              <span class="sr-score">Score: {srScore}</span>
+            </div>
+            <p class="sr-question">{srCurrentQ.question}</p>
+            <div class="sr-choices">
+              {#each srCurrentQ.choices as choice (choice)}
+                <button class="choice-btn" onclick={() => handleSrAnswer(choice)}>{choice}</button>
+              {/each}
+            </div>
+          {:else}
+            <div class="sr-results">
+              <p class="sr-result-title">Time's Up!</p>
+              <p class="sr-result-score">You answered {srScore} correctly!</p>
+              {#if srScore > 0}
+                <p class="sr-result-reward">+{srScore * 5}g, +{srScore * 3}% heal</p>
+              {:else}
+                <p class="sr-result-reward">Better luck next time. (3g consolation)</p>
+              {/if}
+            </div>
+            <button class="continue-btn" data-testid="mystery-continue" onclick={handleSrDone}>Continue</button>
+          {/if}
+        </div>
+
+      {:else if event.effect.type === 'cardRoulette'}
+        <!-- Card Roulette -->
+        <div class="minigame-cr">
+          <div class="cr-info">
+            <span>Picks remaining: {crPicksLeft}</span>
+            <span>Cost per pick: {crPickCost} HP</span>
+          </div>
+          <div class="cr-cards">
+            {#each crCards as card, i (i)}
+              <button
+                class="cr-card"
+                class:cr-flipped={card.flipped}
+                class:cr-positive={card.flipped && card.outcome !== 'damage' && card.outcome !== 'curse'}
+                class:cr-negative={card.flipped && (card.outcome === 'damage' || card.outcome === 'curse')}
+                disabled={card.flipped || crPicksLeft <= 0}
+                onclick={() => handleCrFlip(i)}
+              >
+                {#if card.flipped}
+                  <span class="cr-result">{card.label}</span>
+                {:else}
+                  <span class="cr-back">?</span>
+                {/if}
+              </button>
+            {/each}
+          </div>
+          {#if crResults.length > 0}
+            <div class="cr-log">
+              {#each crResults as result (result)}
+                <p>{result}</p>
+              {/each}
+            </div>
+          {/if}
+          <button class="continue-btn" data-testid="mystery-continue" onclick={handleCrDone}>
+            {crPicksLeft > 0 && crCards.some(c => !c.flipped) ? 'Walk Away' : 'Continue'}
+          </button>
+        </div>
+
+      {:else if event.effect.type === 'factOrFiction'}
+        <!-- Fact or Fiction -->
+        <div class="minigame-fof">
+          {#if fofPhase !== 'done'}
+            <div class="fof-progress">{fofCurrentIndex + 1} / {fofStatements.length}</div>
+            {@const stmt = fofStatements[fofCurrentIndex]}
+            {#if stmt}
+              <p class="fof-statement" class:fof-correct={stmt.correct === true} class:fof-wrong={stmt.correct === false}>
+                "{stmt.text}"
+              </p>
+              {#if fofPhase === 'playing'}
+                <div class="fof-buttons">
+                  <button class="choice-btn fof-true" onclick={() => handleFofAnswer(true)}>True</button>
+                  <button class="choice-btn fof-false" onclick={() => handleFofAnswer(false)}>False</button>
+                </div>
+              {:else}
+                <p class="fof-feedback">{stmt.correct ? 'Correct!' : `Wrong! This was ${stmt.isTrue ? 'true' : 'false'}.`}</p>
+              {/if}
+            {/if}
+          {:else}
+            <div class="fof-results">
+              <p class="fof-result-title">Results</p>
+              <p class="fof-result-score">{fofScore} / {fofStatements.length} correct</p>
+              {#if fofScore > 0}<p class="fof-reward">+{fofScore * 8}g earned</p>{/if}
+              {#if fofWrong > 0}<p class="fof-penalty">-{fofWrong * 6} HP damage</p>{/if}
+            </div>
+            <button class="continue-btn" data-testid="mystery-continue" onclick={handleFofDone}>Continue</button>
+          {/if}
+        </div>
 
       {:else}
         <button
@@ -1043,5 +1501,373 @@
   .continue-btn-outline:hover {
     border-color: #9B59B6;
     color: #E6EDF3;
+  }
+
+  /* ── Double or Nothing ──────────────────────────────────────────────────── */
+  .minigame-don {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .don-pot {
+    font-size: calc(22px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #e3b341;
+    text-align: center;
+    padding: calc(6px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    background: rgba(227, 179, 65, 0.1);
+    border: 1px solid #e3b341;
+    border-radius: calc(8px * var(--layout-scale, 1));
+  }
+
+  .don-question {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #C9D1D9;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .don-choices {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .don-correct {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #3fb950;
+    text-align: center;
+    margin: 0;
+  }
+
+  .don-lost {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #f85149;
+    text-align: center;
+    margin: 0;
+  }
+
+  .don-won {
+    font-size: calc(16px * var(--text-scale, 1));
+    color: #e3b341;
+    text-align: center;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .don-actions {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .don-double {
+    border-color: #e3b341;
+    color: #e3b341;
+  }
+
+  .don-double:hover {
+    background: rgba(227, 179, 65, 0.15);
+    border-color: #e3b341;
+  }
+
+  /* ── Speed Round ─────────────────────────────────────────────────────────── */
+  .minigame-sr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .sr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: calc(8px * var(--layout-scale, 1));
+  }
+
+  .sr-timer {
+    font-size: calc(20px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #3fb950;
+    transition: color 0.2s;
+  }
+
+  .sr-timer.sr-urgent {
+    color: #f85149;
+  }
+
+  .sr-score {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #C9D1D9;
+    font-weight: 700;
+  }
+
+  .sr-question {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #C9D1D9;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .sr-choices {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .sr-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1));
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .sr-result-title {
+    font-size: calc(18px * var(--text-scale, 1));
+    color: #9B59B6;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .sr-result-score {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #C9D1D9;
+    margin: 0;
+  }
+
+  .sr-result-reward {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #3fb950;
+    margin: 0;
+  }
+
+  /* ── Card Roulette ───────────────────────────────────────────────────────── */
+  .minigame-cr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .cr-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #8B949E;
+    padding: calc(4px * var(--layout-scale, 1)) 0;
+  }
+
+  .cr-cards {
+    display: flex;
+    flex-direction: row;
+    gap: calc(8px * var(--layout-scale, 1));
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .cr-card {
+    width: calc(70px * var(--layout-scale, 1));
+    height: calc(90px * var(--layout-scale, 1));
+    background: #1E2D3D;
+    border: 2px solid #484F58;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #C9D1D9;
+    text-align: center;
+    padding: calc(4px * var(--layout-scale, 1));
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .cr-card:hover:not(:disabled) {
+    background: #2D333B;
+    border-color: #9B59B6;
+  }
+
+  .cr-card:disabled {
+    cursor: default;
+    opacity: 0.85;
+  }
+
+  .cr-card.cr-positive {
+    border-color: #3fb950;
+    background: rgba(63, 185, 80, 0.1);
+  }
+
+  .cr-card.cr-negative {
+    border-color: #f85149;
+    background: rgba(248, 81, 73, 0.1);
+  }
+
+  .cr-back {
+    font-size: calc(28px * var(--text-scale, 1));
+    color: #484F58;
+    font-weight: 700;
+  }
+
+  .cr-result {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #E6EDF3;
+    line-height: 1.3;
+  }
+
+  .cr-log {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1));
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #8B949E;
+    max-height: calc(80px * var(--layout-scale, 1));
+    overflow-y: auto;
+  }
+
+  .cr-log p {
+    margin: 0;
+  }
+
+  /* ── Fact or Fiction ─────────────────────────────────────────────────────── */
+  .minigame-fof {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .fof-progress {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #8B949E;
+    text-align: center;
+  }
+
+  .fof-statement {
+    font-size: calc(15px * var(--text-scale, 1));
+    color: #C9D1D9;
+    text-align: center;
+    margin: 0;
+    line-height: 1.6;
+    padding: calc(10px * var(--layout-scale, 1));
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  .fof-statement.fof-correct {
+    border-color: #3fb950;
+    color: #3fb950;
+  }
+
+  .fof-statement.fof-wrong {
+    border-color: #f85149;
+    color: #f85149;
+  }
+
+  .fof-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: calc(10px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .fof-true {
+    flex: 1;
+    background: rgba(63, 185, 80, 0.1);
+    border-color: #3fb950;
+    color: #3fb950;
+  }
+
+  .fof-true:hover {
+    background: rgba(63, 185, 80, 0.25);
+  }
+
+  .fof-false {
+    flex: 1;
+    background: rgba(248, 81, 73, 0.1);
+    border-color: #f85149;
+    color: #f85149;
+  }
+
+  .fof-false:hover {
+    background: rgba(248, 81, 73, 0.25);
+  }
+
+  .fof-feedback {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #C9D1D9;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .fof-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1));
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .fof-result-title {
+    font-size: calc(18px * var(--text-scale, 1));
+    color: #9B59B6;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .fof-result-score {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #C9D1D9;
+    margin: 0;
+  }
+
+  .fof-reward {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #3fb950;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .fof-penalty {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #f85149;
+    margin: 0;
+    font-weight: 700;
   }
 </style>

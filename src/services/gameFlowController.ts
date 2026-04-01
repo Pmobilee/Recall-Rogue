@@ -2501,7 +2501,11 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
     case 'nothing':
     case 'combat':
     case 'cardReward':
-      // Handled by routing logic in onMysteryEffectResolved
+    case 'doubleOrNothing':
+    case 'speedRound':
+    case 'cardRoulette':
+    case 'factOrFiction':
+      // Handled by routing logic in onMysteryEffectResolved / MysteryEventOverlay UI
       break;
   }
 }

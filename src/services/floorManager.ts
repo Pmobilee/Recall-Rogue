@@ -62,6 +62,10 @@ export type MysteryEffect =
   | { type: 'study'; factIds: string[] }
   | { type: 'reviewMuseum' }
   | { type: 'meditation' }
+  | { type: 'doubleOrNothing' }
+  | { type: 'speedRound'; timeSeconds: number }
+  | { type: 'cardRoulette'; pickLimit: number; pickCost: number }
+  | { type: 'factOrFiction'; statementCount: number }
 
 // ============================================================
 // Room type weights by segment
@@ -278,6 +282,18 @@ const TIER_2_EVENTS: MysteryEvent[] = [
       loseEffect: { type: 'damage', amount: 15 },
     },
   },
+  {
+    id: 'double_or_nothing',
+    name: 'The Altar of Greed',
+    description: "A golden altar with a single coin resting on top. 'Double your fortune,' it whispers. 'Or lose it all.'",
+    effect: { type: 'doubleOrNothing' },
+  },
+  {
+    id: 'speed_round',
+    name: 'The Speed Scholar',
+    description: "An hourglass slams onto the desk. 'Answer as many as you can before the sand runs out!'",
+    effect: { type: 'speedRound', timeSeconds: 15 },
+  },
 ]
 
 const TIER_3_EVENTS: MysteryEvent[] = [
@@ -371,6 +387,18 @@ const TIER_3_EVENTS: MysteryEvent[] = [
       difficulty: 'easy',
       perCorrectRewards: [{ type: 'upgradeRandomCard' }, { type: 'upgradeRandomCard' }],
     },
+  },
+  {
+    id: 'card_roulette',
+    name: 'Card Roulette',
+    description: 'Five cards lie face-down on a velvet table. Each flip costs a drop of blood — but the rewards could be extraordinary.',
+    effect: { type: 'cardRoulette', pickLimit: 3, pickCost: 5 },
+  },
+  {
+    id: 'fact_or_fiction',
+    name: 'Fact or Fiction',
+    description: "A spectral judge reads statements aloud. 'True or false?' they demand. 'Choose wisely — lies have consequences.'",
+    effect: { type: 'factOrFiction', statementCount: 5 },
   },
 ]
 
