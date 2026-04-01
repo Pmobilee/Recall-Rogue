@@ -382,3 +382,15 @@ For WeaponAnimationSystem (uses closure `scene` variable): `if (scene?.scene?.is
 - `staple_bug`: 7 → 8 (effective HP ~32)
 
 **Rule:** When tuning floor 1 HP, target effective HP = baseHP × 4.0. For a 3–4 turn combat, effective HP should be ~2.5–3.5× the starting deck's expected damage per turn (~10–12 DPT with basic cards).
+
+### 2026-04-01 — BATCH-004: Remaining floor 1 "glass" enemies were still at baseHP 4 (~16 effective HP)
+
+Four shallow_depths commons carried a `// glass` comment and baseHP 4 that were missed in BATCH-003:
+- `bookmark_vine`: 4 → 7 (effective HP ~28)
+- `margin_gremlin`: 4 → 7 (effective HP ~28)
+- `index_weaver`: 4 → 7 (effective HP ~28)
+- `eraser_worm`: 4 → 7 (effective HP ~28)
+
+All are now at the same floor 1 HP floor (7–9 base) as the rest of Act 1 commons.
+
+**Rule:** After any HP tuning pass, grep `region: 'shallow_depths'` and scan ALL `baseHP` values. Do not stop after fixing the reported enemies — check the entire Act 1 pool.

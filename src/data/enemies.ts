@@ -735,7 +735,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Bookmark Vine',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 4, // glass
+    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Vine lash', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Poisoned thorns', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -771,7 +771,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Margin Gremlin',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 4, // glass
+    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
     intentPool: [
       { type: 'attack', value: 2, weight: 3, telegraph: 'Nimble jab' },
       { type: 'buff', value: 1, weight: 2, telegraph: 'Rocky surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
@@ -788,7 +788,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Index Weaver',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 4, // glass
+    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Web poison', statusEffect: { type: 'poison', value: 2, turns: 3 } },
@@ -849,7 +849,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Eraser Worm',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 4, // glass
+    baseHP: 7, // raised — floor 1 HP floor (BATCH-004)
     intentPool: [
       { type: 'multi_attack', value: 2, weight: 3, telegraph: 'Bite frenzy', hitCount: 4 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Larval grasp', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },

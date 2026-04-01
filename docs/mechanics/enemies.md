@@ -8,7 +8,7 @@
 
 | Category | Description | HP Range (base) |
 |---|---|---|
-| `common` | Standard combat nodes. Weighted random from act pool. | 4–9 |
+| `common` | Standard combat nodes. Weighted random from act pool. | 7–9 (Act 1); 4–9 overall |
 | `elite` | Elite nodes. More HP, phase transitions. | 7–12 |
 | `mini_boss` | Gate encounters mid-act. | 6–9 |
 | `boss` | Act-ending encounters. Two phases, high HP. | 11–19 |
@@ -94,8 +94,10 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 | `crib_sheet` | 4 | standard | `onPlayerChargeWrong`: reflects card's base damage to player |
 | `citation_needed` | 7 | standard | `onPlayerChargeWrong`: steals up to 5 block, heals enemy that amount |
 | `pop_quiz` | 7 | uncommon | `onPlayerChargeCorrect`: stuns enemy next turn; `onPlayerNoCharge`: +1 permanent `enrageBonusDamage` |
-| `eraser_worm` | 4 | rare | `chainVulnerable` — chain attacks deal +50% damage |
-| `bookmark_vine` | 4 | uncommon | `chainVulnerable`; multi-hit 3×fang barrage |
+| `eraser_worm` | 7 | rare | `chainVulnerable` — chain attacks deal +50% damage |
+| `bookmark_vine` | 7 | uncommon | `chainVulnerable`; multi-hit 3×vine lash |
+| `margin_gremlin` | 7 | uncommon | Self-buffs Strength 1 for 2 turns; fast repeated jabs |
+| `index_weaver` | 7 | standard | `chainVulnerable`; multi-hit 3×fang barrage + Poison 2×3 turns |
 | `overdue_golem` | 7 | standard | Heals 6 HP per turn from bog absorption |
 | `ink_slug` | 9 | standard | Stacks Poison 2 per attack; slow attacker |
 | `staple_bug` | 8 | standard | `chargeResistant`; heavy Mandible snap (4) + 2-hit Chittering strike |
