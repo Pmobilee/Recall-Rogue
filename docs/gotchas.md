@@ -278,3 +278,10 @@
 **Fix:** Replaced the CSS `<div>` with a second `<canvas>` element (`mix-blend-mode: normal`). `HubGlowEffect` draws the vignette gradient directly onto this canvas each frame using the Canvas 2D API (`ctx.createRadialGradient()`). Canvas gradient objects are not CSS strings — no parse overhead. `HubGlowCanvas.svelte` now takes two canvases: `canvas` (screen-blend glow) and `vignetteCanvas` (normal-blend vignette). `HubGlowEffect` constructor updated to `new HubGlowEffect(canvas, vignetteCanvas, campfireCenterFn)`.
 
 **Rule:** For any animation effect that must update position or intensity every frame, draw on a canvas rather than writing to CSS style properties. CSS property writes involving gradient strings, filter strings, or multi-stop values trigger reparsing overhead on every update.
+
+---
+
+## Audio
+
+### 2026-04-01 — Suno mp3 files fail in Safari (MEDIA_ERR_SRC_NOT_SUPPORTED)
+Suno AI-generated mp3 files contain an embedded JPEG cover art stream (Stream #0:1: Video: mjpeg) which causes Safari's HTMLAudioElement to return error code 4 (MEDIA_ERR_SRC_NOT_SUPPORTED). Chrome handles these fine. Fix: re-encode with ffmpeg using `-map 0:a:0` to strip the cover art, output as AAC .m4a (192k, 44.1kHz). Also: Safari's `decodeAudioData()` cannot decode these mp3s either — use HTMLAudioElement + createMediaElementSource instead of AudioBufferSourceNode.

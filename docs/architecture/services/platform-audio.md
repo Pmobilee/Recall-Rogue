@@ -230,31 +230,34 @@ The synthesis fallback still fires on the very first play of any sound before it
 | | |
 |---|---|
 | **File** | src/services/musicService.ts |
-| **Purpose** | BGM playback with Web Audio API — separate AudioContext from SFX, real-time frequency data for visualiser |
+| **Purpose** | BGM playback using HTMLAudioElement — Safari-compatible, real-time frequency data for visualiser |
 | **Key exports** | `musicService` (singleton) |
-| **Key dependencies** | Web Audio API, `src/data/musicTracks.ts` (track manifest), `ambientAudioService` (coexistence ducking) |
-| **Track files** | `public/assets/audio/music/epic/*.mp3` (18), `public/assets/audio/music/quiet/*.mp3` (14) |
+| **Key dependencies** | Web Audio API (`createMediaElementSource`), `src/data/musicTracks.ts` (track manifest), `ambientAudioService` (coexistence ducking), `cardAudioManager` (`musicVolume`/`musicEnabled` stores) |
+| **Track files** | `public/assets/audio/music/epic/*.m4a` (AAC 192k 44.1kHz), `public/assets/audio/music/quiet/*.m4a` — re-encoded from Suno mp3s that contained embedded JPEG cover art (see gotchas) |
 
 ### Audio Graph
 
 ```
-AudioBufferSourceNode → per-source GainNode → masterGain → AnalyserNode(fftSize=64) → destination
+HTMLAudioElement → createMediaElementSource() → masterGain → AnalyserNode(fftSize=64) → destination
 ```
+
+AnalyserNode is connected after `element.play()` starts (Safari compatibility — must not connect before playback begins).
 
 ### Features
 
-- **Two categories**: Epic (combat) and Lo-Fi/Quiet (ambient) — user toggles via MusicWidget
-- **Crossfade**: 1.5s linear ramp between tracks via dual per-source gain nodes
+- **Two categories**: Epic (combat) and Lo-Fi/Quiet (ambient) — user toggles via MusicWidget. Category label shown as EPIC / LO-FI in the widget; internal key is `'quiet'` for the Lo-Fi category.
+- **Crossfade**: Sequential 1.5s fade-out → 1.5s fade-in (no overlap). `HTMLAudioElement.volume` ramped via `requestAnimationFrame`.
+- **Run start fade-in**: `startWithFadeIn(5000)` provides a 5-second gentle fade-in when entering a run.
 - **Shuffle queue**: Fisher-Yates with back-to-back repeat avoidance
-- **LRU buffer cache**: Max 3 decoded AudioBuffers, preloads next track
 - **AnalyserNode**: 32 frequency bins at 60fps for spectrogram visualiser in MusicWidget
+- **Volume / mute**: Single source of truth is `musicVolume` / `musicEnabled` Svelte stores from `cardAudioManager`. `musicService` subscribes to these — never duplicates its own mute state.
 - **Persistence**: Volume, mute, category saved to `localStorage` key `music_prefs`
 - **User gesture gating**: AudioContext created lazily; `startIfNotPlaying()` is a no-op until `unlock()` is called from a user gesture handler
 - **Ambient coexistence**: Calls `ambientAudio.setMusicCoexistence(true/false)` to duck ambient layers when music plays
 
 ### UI Integration
 
-`MusicWidget.svelte` — Spotify-style expanding glass pill in top-right corner during runs. Shows real-time spectrogram, track name, Epic/Lo-Fi toggle, playback controls, volume slider. Rendered in `CardApp.svelte` alongside `InRunTopBar` when `showTopBar` is true.
+`MusicWidget.svelte` — Spotify-style expanding glass pill in top-right corner during runs. Shows real-time spectrogram, track name, Epic/Lo-Fi category toggle, playback controls, volume slider. Volume and mute state synced with `cardAudioManager` stores (single source of truth). Rendered in `CardApp.svelte` alongside `InRunTopBar` when `showTopBar` is true.
 
 ---
 
