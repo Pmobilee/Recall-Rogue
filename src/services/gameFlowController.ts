@@ -2497,6 +2497,28 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
       // So we recurse on the chosen effect if it arrives here directly.
       // (normally the overlay picks a sub-effect and calls onresolve with it)
       break;
+    case 'curseRandomCards': {
+      const run2 = get(activeRunState);
+      if (run2) {
+        const allCards = getActiveDeckCards();
+        const uncursed = allCards.filter(c => c.factId && !run2.cursedFactIds.has(c.factId));
+        const toCount = Math.min(effect.count, uncursed.length);
+        const shuffled = [...uncursed].sort(() => Math.random() - 0.5);
+        for (let i = 0; i < toCount; i++) {
+          run2.cursedFactIds.add(shuffled[i].factId!);
+        }
+      }
+      break;
+    }
+    case 'upgradeAllCards': {
+      const allCards = getActiveDeckCards();
+      for (const card of allCards) {
+        if (canMasteryUpgrade(card)) {
+          masteryUpgrade(card);
+        }
+      }
+      break;
+    }
     case 'freeCard':
     case 'nothing':
     case 'combat':
@@ -2505,6 +2527,7 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
     case 'speedRound':
     case 'cardRoulette':
     case 'factOrFiction':
+    case 'knowledgeShop':
       // Handled by routing logic in onMysteryEffectResolved / MysteryEventOverlay UI
       break;
   }

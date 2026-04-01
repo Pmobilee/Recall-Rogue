@@ -88,6 +88,7 @@
       case 'speedRound': return 'choice'
       case 'cardRoulette': return 'choice'
       case 'factOrFiction': return 'choice'
+      case 'knowledgeShop': return 'choice'
       default: return 'choice'
     }
   }
@@ -463,6 +464,12 @@
       fofWrong = 0
       fofPhase = 'playing'
     }
+    if (event?.effect.type === 'knowledgeShop') {
+      ksStepIndex = 0
+      ksPurchasedEffects = []
+      ksTotalHpCost = 0
+      ksDone = false
+    }
   })
 
   // ——— Shared trivia helper ———
@@ -673,6 +680,12 @@
   let fofPhase: 'playing' | 'feedback' | 'done' = $state('playing')
   let fofFeedbackTimer = $state(0)
 
+  // ——— Knowledge Shop (Knowing Skull) state ———
+  let ksStepIndex = $state(0)
+  let ksPurchasedEffects: MysteryEffect[] = $state([])
+  let ksTotalHpCost = $state(0)
+  let ksDone = $state(false)
+
   function buildFactOrFictionStatements(count: number): FofStatement[] {
     const allFacts = factsDB.getTriviaFacts().filter(
       f => f.statement && f.correctAnswer && f.distractors?.length > 0
@@ -754,6 +767,46 @@
     const effects: MysteryEffect[] = []
     if (fofScore > 0) effects.push({ type: 'currency', amount: fofScore * 8 })
     if (fofWrong > 0) effects.push({ type: 'damage', amount: fofWrong * 6 })
+    if (effects.length === 0) {
+      onresolve({ type: 'currency', amount: 3 })
+    } else {
+      onresolve({ type: 'compound', effects })
+    }
+  }
+
+  // ——— Knowledge Shop (Knowing Skull) handlers ———
+  function handleKsBuy(): void {
+    if (!event || event.effect.type !== 'knowledgeShop') return
+    const step = event.effect.steps[ksStepIndex]
+    if (!step) return
+
+    ksTotalHpCost += step.cost
+    ksPurchasedEffects = [...ksPurchasedEffects, step.reward]
+    playCardAudio('event-positive')
+
+    if (ksStepIndex < event.effect.steps.length - 1) {
+      ksStepIndex++
+    } else {
+      // All steps purchased
+      ksDone = true
+    }
+  }
+
+  function handleKsLeave(): void {
+    if (!event || event.effect.type !== 'knowledgeShop') return
+    ksTotalHpCost += event.effect.leaveCost
+    ksDone = true
+  }
+
+  function handleKsDone(): void {
+    const effects: MysteryEffect[] = []
+    // Apply HP cost first
+    if (ksTotalHpCost > 0) {
+      effects.push({ type: 'damage', amount: ksTotalHpCost })
+    }
+    // Then all purchased rewards
+    effects.push(...ksPurchasedEffects)
+
     if (effects.length === 0) {
       onresolve({ type: 'currency', amount: 3 })
     } else {
@@ -1019,6 +1072,51 @@
               {#if fofWrong > 0}<p class="fof-penalty">-{fofWrong * 6} HP damage</p>{/if}
             </div>
             <button class="continue-btn" data-testid="mystery-continue" onclick={handleFofDone}>Continue</button>
+          {/if}
+        </div>
+
+      {:else if event.effect.type === 'knowledgeShop'}
+        <!-- Knowledge Shop (Knowing Skull) -->
+        <div class="minigame-ks">
+          {#if !ksDone}
+            {@const step = event.effect.steps[ksStepIndex]}
+            <div class="ks-info">
+              <span class="ks-step">Step {ksStepIndex + 1} of {event.effect.steps.length}</span>
+              <span class="ks-hp-spent">HP spent: {ksTotalHpCost}</span>
+            </div>
+            {#if step}
+              <div class="ks-offer">
+                <p class="ks-label">{step.label}</p>
+                <p class="ks-cost">Cost: {step.cost} HP</p>
+              </div>
+              <div class="ks-actions">
+                <button class="choice-btn ks-buy" onclick={handleKsBuy}>
+                  Pay {step.cost} HP
+                </button>
+                <button class="choice-btn ks-leave" onclick={handleKsLeave}>
+                  Leave (costs {event.effect.leaveCost} HP)
+                </button>
+              </div>
+            {/if}
+            {#if ksPurchasedEffects.length > 0}
+              <div class="ks-purchased">
+                <p class="ks-purchased-title">Purchased:</p>
+                {#each ksPurchasedEffects as _, i (i)}
+                  <span class="ks-purchased-item">{event.effect.steps[i]?.label}</span>
+                {/each}
+              </div>
+            {/if}
+          {:else}
+            <div class="ks-results">
+              <p class="ks-result-title">The skull falls silent.</p>
+              <p class="ks-result-cost">Total HP spent: {ksTotalHpCost}</p>
+              {#if ksPurchasedEffects.length > 0}
+                <p class="ks-result-gained">Items gained: {ksPurchasedEffects.length}</p>
+              {:else}
+                <p class="ks-result-nothing">You gained nothing but paid the price.</p>
+              {/if}
+            </div>
+            <button class="continue-btn" data-testid="mystery-continue" onclick={handleKsDone}>Continue</button>
           {/if}
         </div>
 
@@ -1869,5 +1967,96 @@
     color: #f85149;
     margin: 0;
     font-weight: 700;
+  }
+
+  /* ── Knowledge Shop (Knowing Skull) ─────────────────────────────────────── */
+  .minigame-ks {
+    display: flex;
+    flex-direction: column;
+    gap: calc(12px * var(--layout-scale, 1));
+    align-items: center;
+    width: 100%;
+  }
+  .ks-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #aaa;
+  }
+  .ks-offer {
+    text-align: center;
+    padding: calc(16px * var(--layout-scale, 1));
+    background: rgba(0, 200, 200, 0.1);
+    border: 1px solid rgba(0, 200, 200, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .ks-label {
+    font-size: calc(18px * var(--text-scale, 1));
+    color: #4dd;
+    margin: 0 0 calc(8px * var(--layout-scale, 1)) 0;
+  }
+  .ks-cost {
+    font-size: calc(16px * var(--text-scale, 1));
+    color: #e44;
+    font-weight: bold;
+    margin: 0;
+  }
+  .ks-actions {
+    display: flex;
+    gap: calc(12px * var(--layout-scale, 1));
+    width: 100%;
+  }
+  .ks-actions .choice-btn {
+    flex: 1;
+  }
+  .ks-buy {
+    border-color: rgba(0, 200, 200, 0.5) !important;
+  }
+  .ks-leave {
+    border-color: rgba(200, 100, 100, 0.5) !important;
+  }
+  .ks-purchased {
+    width: 100%;
+    padding: calc(8px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    box-sizing: border-box;
+  }
+  .ks-purchased-title {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #888;
+    margin: 0 0 calc(4px * var(--layout-scale, 1)) 0;
+  }
+  .ks-purchased-item {
+    display: block;
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #4d4;
+    padding: calc(2px * var(--layout-scale, 1)) 0;
+  }
+  .ks-results {
+    text-align: center;
+  }
+  .ks-result-title {
+    font-size: calc(18px * var(--text-scale, 1));
+    color: #4dd;
+    margin: 0 0 calc(8px * var(--layout-scale, 1)) 0;
+  }
+  .ks-result-cost {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #e44;
+    margin: 0;
+  }
+  .ks-result-gained {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #4d4;
+    margin: 0;
+  }
+  .ks-result-nothing {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #888;
+    margin: 0;
   }
 </style>

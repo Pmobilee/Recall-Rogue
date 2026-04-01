@@ -66,6 +66,9 @@ export type MysteryEffect =
   | { type: 'speedRound'; timeSeconds: number }
   | { type: 'cardRoulette'; pickLimit: number; pickCost: number }
   | { type: 'factOrFiction'; statementCount: number }
+  | { type: 'knowledgeShop'; steps: Array<{ cost: number; reward: MysteryEffect; label: string }>; leaveCost: number }
+  | { type: 'curseRandomCards'; count: number }
+  | { type: 'upgradeAllCards' }
 
 // ============================================================
 // Room type weights by segment
@@ -294,6 +297,20 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     description: "An hourglass slams onto the desk. 'Answer as many as you can before the sand runs out!'",
     effect: { type: 'speedRound', timeSeconds: 15 },
   },
+  {
+    id: 'knowing_skull',
+    name: 'The Knowing Skull',
+    description: "A glowing skull sits on a stone pedestal. 'Ask me anything,' it whispers. 'But knowledge always has a price.'",
+    effect: {
+      type: 'knowledgeShop',
+      steps: [
+        { cost: 8, reward: { type: 'currency', amount: 20 }, label: 'Ask for gold (20g)' },
+        { cost: 12, reward: { type: 'upgradeRandomCard' }, label: 'Ask for wisdom (upgrade a card)' },
+        { cost: 16, reward: { type: 'freeCard' }, label: 'Ask for power (gain a card)' },
+      ],
+      leaveCost: 5,
+    },
+  },
 ]
 
 const TIER_3_EVENTS: MysteryEvent[] = [
@@ -400,6 +417,22 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     description: "A spectral judge reads statements aloud. 'True or false?' they demand. 'Choose wisely — lies have consequences.'",
     effect: { type: 'factOrFiction', statementCount: 5 },
   },
+  {
+    id: 'forbidden_section',
+    name: 'The Forbidden Section',
+    description: "Banned books behind shattered glass. The knowledge within is powerful — but reading carelessly could corrupt your mind.",
+    effect: {
+      type: 'quiz',
+      questionCount: 3,
+      difficulty: 'hard',
+      perCorrectRewards: [
+        { type: 'upgradeRandomCard' },
+        { type: 'upgradeRandomCard' },
+        { type: 'upgradeRandomCard' },
+      ],
+      perWrongPenalty: { type: 'curseRandomCards', count: 1 },
+    },
+  },
 ]
 
 const TIER_4_EVENTS: MysteryEvent[] = [
@@ -460,6 +493,44 @@ const TIER_4_EVENTS: MysteryEvent[] = [
     name: 'The Breakthrough',
     description: 'Everything clicks. A connection forms between ideas you never linked before. Your understanding deepens and your wounds ease.',
     effect: { type: 'compound', effects: [{ type: 'upgradeRandomCard' }, { type: 'healPercent', percent: 10 }] },
+  },
+  {
+    id: 'the_epiphany',
+    name: 'The Epiphany',
+    description: 'A vast cosmic archway opens before you. Three paths shimmer with impossible promise — but each demands a terrible sacrifice.',
+    effect: {
+      type: 'choice',
+      options: [
+        {
+          label: 'I Remember Everything (upgrade ALL cards, gain 3 curses)',
+          effect: { type: 'compound', effects: [{ type: 'upgradeAllCards' }, { type: 'curseRandomCards', count: 3 }] },
+        },
+        {
+          label: 'I Know My Weakness (remove up to 3 cards, lose 20% max HP)',
+          effect: { type: 'compound', effects: [{ type: 'removeRandomCard' }, { type: 'removeRandomCard' }, { type: 'removeRandomCard' }, { type: 'maxHpChange', amount: -20 }] },
+        },
+        {
+          label: 'I Seek Knowledge (quiz 5 hard questions for massive rewards)',
+          effect: {
+            type: 'quiz',
+            questionCount: 5,
+            difficulty: 'hard',
+            perCorrectRewards: [
+              { type: 'compound', effects: [{ type: 'currency', amount: 15 }, { type: 'healPercent', percent: 5 }] },
+              { type: 'compound', effects: [{ type: 'currency', amount: 15 }, { type: 'healPercent', percent: 5 }] },
+              { type: 'compound', effects: [{ type: 'currency', amount: 15 }, { type: 'healPercent', percent: 5 }] },
+              { type: 'compound', effects: [{ type: 'currency', amount: 15 }, { type: 'healPercent', percent: 5 }] },
+              { type: 'compound', effects: [{ type: 'currency', amount: 15 }, { type: 'healPercent', percent: 5 }] },
+            ],
+            perWrongPenalty: { type: 'damage', amount: 10 },
+          },
+        },
+        {
+          label: 'Turn away',
+          effect: { type: 'currency', amount: 5 },
+        },
+      ],
+    },
   },
 ]
 
