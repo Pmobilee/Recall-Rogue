@@ -413,7 +413,7 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.15;
+export const POST_ENCOUNTER_HEAL_PCT = 0.08;
 /** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.03;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
@@ -428,7 +428,7 @@ export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   4: 0.30,   // Segment 4 (floors 19-24): cap at 30%
 };
 /** Global base HP multiplier for all enemies. Ensures early fights require 2+ turns. */
-export const ENEMY_BASE_HP_MULTIPLIER = 2.5;
+export const ENEMY_BASE_HP_MULTIPLIER = 4.0;
 /**
  * HP scaling per floor above floor 1. Each floor adds this fraction to the base HP multiplier.
  * @deprecated Use ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT for segment-aware scaling.
@@ -436,7 +436,7 @@ export const ENEMY_BASE_HP_MULTIPLIER = 2.5;
 export const ENEMY_HP_SCALING_PER_FLOOR = 0.18;
 /** HP scaling per floor, by segment. Early floors gentle, late floors steep. */
 export const ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT: Record<number, number> = {
-  1: 0.12,   // Segment 1 (floors 1-6): gentle — QP-able early enemies
+  1: 0.10,   // Segment 1 (floors 1-6): gentle — QP-able early enemies
   2: 0.25,   // Segment 2 (floors 7-12): moderate — charging starts to matter
   3: 0.60,   // Segment 3 (floors 13-18): steep — must charge + chain to win
   4: 0.80,   // Segment 4 (floors 19-24): wall — full mastery required
@@ -474,11 +474,11 @@ export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.06;
 
 /** Enemy damage multiplier (base). Reverted to 1.0 on 2026-04-01 — Canary adaptive difficulty system now handles beginner protection (reduces enemy dmg after wrong answers), so a blanket damage reduction is no longer needed. Prior values: 0.5 (2026-04-01 with FLOOR_DAMAGE_SCALING_PER_FLOOR pairing), 0.8 (earlier on 2026-04-01), 1.0 (original). */
-export const FLOOR_DAMAGE_SCALE_MID = 0.8;
+export const FLOOR_DAMAGE_SCALE_MID = 1.2;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 4,    // lowered from 6 on 2026-04-01 to further reduce early-game spike damage for beginners (PLAYER_START_HP=100 rebalance)
+  1: 3,    // very low cap to help beginners with 100 HP to further reduce early-game spike damage for beginners (PLAYER_START_HP=100 rebalance)
   2: 12,   // doubled from 6
   3: 18,   // raised from 14 to increase late-game pressure
   4: 28,   // raised from 20 to increase late-game pressure
