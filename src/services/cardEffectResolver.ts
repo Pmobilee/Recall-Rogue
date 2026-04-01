@@ -614,17 +614,17 @@ export function resolveCardEffect(
       return result;
     }
     case 'fortify': {
-      // Entrench: double current block (all block persists since 2026-04-01)
+      // Entrench: gain block based on current block amount
       const currentBlock = playerState.shield ?? 0;
       if (isChargeCorrect) {
-        // CC: double block + gain extra from card value
-        result.shieldApplied = currentBlock + applyShieldRelics(finalValue);
+        // CC: gain 75% of current block + card value (strong reward for correct answer)
+        result.shieldApplied = Math.floor(currentBlock * 0.75) + applyShieldRelics(finalValue);
       } else if (isChargeWrong) {
-        // CW: gain 50% of current block
-        result.shieldApplied = Math.floor(currentBlock * 0.5);
+        // CW: gain 25% of current block (minimal)
+        result.shieldApplied = Math.floor(currentBlock * 0.25);
       } else {
-        // QP: double current block
-        result.shieldApplied = currentBlock;
+        // QP: gain 50% of current block
+        result.shieldApplied = Math.floor(currentBlock * 0.5);
       }
       return result;
     }
@@ -1437,12 +1437,14 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Shield Bash — deal damage equal to your block, consuming it (uncapped)
+    // Shield Bash — deal damage based on block, consuming it (capped at finalValue + mastery)
     case 'conversion': {
       const playerBlock = playerState.shield ?? 0;
       const cursedMult = card.isCursed ? 0.7 : 1.0;
       const convertPct = isChargeWrong ? 0.5 : 1.0;
-      const converted = Math.floor(playerBlock * convertPct * cursedMult);
+      // Cap at finalValue (scales with mastery: 10 QP → 18 at L5)
+      const maxConvert = Math.floor(finalValue * convertPct * cursedMult);
+      const converted = Math.min(maxConvert, playerBlock);
       result.blockConsumed = converted;
       if (converted > 0) {
         applyAttackDamage(converted);

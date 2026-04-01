@@ -724,11 +724,12 @@ export const RELIC_SELL_VALUE_UNCOMMON = 25;
 export const RELIC_SELL_VALUE_RARE = 35;
 export const RELIC_SELL_VALUE_LEGENDARY = 50;
 
-/**
- * Cap for persistent block carry-over as a multiple of the player's max HP.
- * Block no longer resets to 0 each turn — it persists but is capped at (maxHP × this value)
- * to prevent infinite stacking. 2× maxHP allows meaningful tanking while bounding extremes.
- */
+/** Fraction of block retained between turns. 0.75 = 25% decay per turn.
+ * At steady state, playing X block/turn converges to X/0.25 = 4X max block.
+ * Rewards consistent shield investment without infinite stacking. */
+export const BLOCK_DECAY_RETAIN_RATE = 0.75;
+
+/** @deprecated Use BLOCK_DECAY_RETAIN_RATE instead. Decay naturally caps block. */
 export const BLOCK_CARRY_CAP_MULTIPLIER = 2.0;
 
 /** Maximum block that Aegis Stone can carry between turns. */

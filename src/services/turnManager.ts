@@ -1894,7 +1894,7 @@ export function playCardAction(
   // thorns: register retaliation for the upcoming enemy attack
   if ((effect.thornsValue ?? 0) > 0) {
     turnState.thornsActive = true;
-    turnState.thornsValue = (turnState.thornsValue ?? 0) + (effect.thornsValue ?? 0);
+    turnState.thornsValue = effect.thornsValue ?? 0;
   }
 
   // AR-206: Stagger — skip enemy's next action (turn counter still advances)
@@ -2489,8 +2489,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     }
   }
 
-  // Thorns persists for entire encounter (stacks from multiple plays)
-  // Reset happens at encounter start only (startEncounter sets thornsValue: 0)
+  // Thorns resets after each enemy attack phase — must be reapplied each turn
+  turnState.thornsActive = false;
+  turnState.thornsValue = 0;
 
   turnState.turnLog.push({
     type: 'enemy_action',
@@ -2653,7 +2654,6 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   const carryShield = turnEndFx.blockCarries
     ? playerState.shield
     : turnState.persistentShield;
-  if (turnEndFx.blockCarries) turnState.triggeredRelicId = 'fortress_wall';
 
   if (turnEndFx.bonusApFromAfterimage > 0) {
     turnState.bonusApNextTurn += turnEndFx.bonusApFromAfterimage;
@@ -2680,8 +2680,16 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.bonusApNextTurn = (turnState.bonusApNextTurn ?? 0) + turnEndFx.bonusApNextTurn!;
   }
 
-  resetTurnState(playerState);
-  playerState.shield = Math.max(0, carryShield);
+  resetTurnState(playerState); // 25% decay applied
+  // Entrench CC: persistent shield adds on TOP of decayed block
+  if (turnState.persistentShield > 0) {
+    playerState.shield += turnState.persistentShield;
+  }
+  // aegis_stone / fortress_wall: block carries fully (overrides decay)
+  if (turnEndFx.blockCarries) {
+    playerState.shield = Math.max(playerState.shield, carryShield);
+    turnState.triggeredRelicId = 'fortress_wall';
+  }
   turnState.persistentShield = 0;
 
   // aegis_stone: if carrying 15+ block into next turn, grant Thorns 2 for the next enemy attack

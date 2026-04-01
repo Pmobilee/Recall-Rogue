@@ -4,7 +4,7 @@
 
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect as applyEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { PLAYER_START_HP, BLOCK_CARRY_CAP_MULTIPLIER } from '../data/balance';
+import { PLAYER_START_HP, BLOCK_DECAY_RETAIN_RATE } from '../data/balance';
 
 /** The player's combat state for a single encounter. */
 export interface PlayerCombatState {
@@ -152,7 +152,8 @@ export function tickPlayerStatusEffects(state: PlayerCombatState): {
  * @param state - The player combat state (mutated in place).
  */
 export function resetTurnState(state: PlayerCombatState): void {
-  // Block persists across turns, capped at 2× maxHP to prevent infinite stacking
-  state.shield = Math.min(state.shield, state.maxHP * BLOCK_CARRY_CAP_MULTIPLIER);
+  // Block decays 25% each turn (retains 75%) — rewards consistent shield investment
+  // Steady state: playing X block/turn converges to 4X max block
+  state.shield = Math.floor(state.shield * BLOCK_DECAY_RETAIN_RATE);
   state.cardsPlayedThisTurn = 0;
 }
