@@ -7,19 +7,19 @@
 
 ---
 
-## Music System — Three Playlists
+## Music System — Two Playlists
 
-The game has a **music mode selector** in the top-left corner showing the current track title with next/previous buttons and three playlist modes:
+The game has a **music mode selector** in the top-left corner showing the current track title with next/previous buttons and two playlist modes:
 
 | Mode | Vibe | When to Use |
 |------|------|-------------|
 | **EPIC** | Intense, dynamic, battle-forward | Default for combat-heavy players who want adrenaline |
 | **QUIET** | Lo-fi, chill, soft dungeon vibes | For players who want to focus on the quiz/strategy |
-| **AMBIENT** | Minimal, atmospheric, barely-there | For players who want near-silence with texture |
+
+> **Ambient mode** uses layered SFX loops instead of music — see `SFX-SOUND-GENERATION-PROMPTS.md` § Ambient Atmosphere Recipes.
 
 Each mode has its own playlist of ~20 tracks that plays continuously through the entire dungeon run. The player picks their vibe and the music stays in that lane.
 
-**Camp/hub** uses a separate small playlist (shared across all modes).
 **Stings** (victory, defeat, boss entrance) play as one-shots over any playlist.
 
 ### File Structure
@@ -27,8 +27,6 @@ Each mode has its own playlist of ~20 tracks that plays continuously through the
 public/assets/audio/bgm/
   epic/           — 20 intense dungeon tracks
   quiet/          — 20 lo-fi soft dungeon tracks
-  ambient/        — 20 minimal atmospheric tracks
-  camp/           — 5-10 hub/rest tracks
   stings/         — victory, defeat, boss entrance
 ```
 
@@ -290,172 +288,6 @@ NES continuous farewell drone, no BPM no rhythm, pure 8-bit chiptune, two pulse 
 
 ---
 
-# AMBIENT PLAYLIST (20 tracks)
-
-Minimal, textural, barely music. For players who want near-silence with just enough to know they're in a dungeon. These are sound-design-adjacent — drones, textures, sparse notes floating in darkness.
-
----
-
-### A01: "The Silence Between"
-
-```
-NES dungeon ambient minimal texture, pure 8-bit chiptune, single pulse wave playing one isolated note every 8-10 seconds floating in silence, triangle wave bass with barely audible low drone, noise channel with faint irregular dripping water, no rhythm no melody just isolated moments of sound in darkness, the dungeon breathes, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack, dark atmospheric
-```
-
-### A02: "Hollow Wind"
-
-```
-NES dungeon wind ambient drone, pure 8-bit chiptune, noise channel producing continuous soft wind-like texture, single pulse wave holding a very quiet sustained note that shifts pitch every 15 seconds, triangle wave bass inaudible low rumble, no melody no rhythm just wind through stone corridors, the emptiness between rooms, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A03: "Dripping Cavern"
-
-```
-NES cave ambient water texture, pure 8-bit chiptune, noise channel producing irregular water drip sounds at random intervals, pulse wave playing a single high note per drip like an echo, triangle wave bass with very low continuous drone, no melody just the sound of an underground water source, the dungeon is alive with hidden streams, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A04: "Torch Flicker"
-
-```
-NES dungeon ambient fire texture, pure 8-bit chiptune, noise channel with soft irregular crackling like a dying torch, pulse wave with occasional single warm note appearing and disappearing, triangle wave bass silent, second pulse wave adding one held note every 20 seconds that fades, watching a torch slowly burn down, hypnotic minimal, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A05: "Stone Whispers"
-
-```
-NES dungeon ambient whisper texture, pure 8-bit chiptune, two pulse waves playing extremely quiet detuned unison creating a subtle phasing whisper effect, triangle wave bass with single pedal tone, noise channel with random sparse ticks like stones settling, the walls seem to murmur, unsettling but not scary, whole-tone intervals for otherworldly feel, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A06: "Depth Gauge"
-
-```
-NES dungeon ambient descending drone, pure 8-bit chiptune, triangle wave bass playing an extremely slow descending chromatic line — one note shift every 10 seconds, pulse wave with faint harmonic hovering above, noise channel nearly silent occasional tick, the feeling of being deep underground and still going deeper, no rhythm just slow gravitational pull downward, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A07: "Ember Watch"
-
-```
-NES campfire ambient minimal rest theme, pure 8-bit chiptune, noise channel with gentle fire crackling pattern, single pulse wave playing one warm note every 6-8 seconds, triangle wave bass with lowest possible sustained note, second pulse wave silent, campfire ambience stripped to absolute minimum, the comfort of fire in the dark reduced to its essence, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A08: "Ancient Air"
-
-```
-NES dungeon ambient stale air texture, pure 8-bit chiptune, pulse wave producing a slow barely-audible oscillation like air moving through old passages, noise channel with distant resonance texture, triangle wave bass with extremely low almost felt-not-heard drone, no notes just texture, the dungeon has been here for centuries and the air remembers, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A09: "Rune Glow"
-
-```
-NES mystery room ambient minimal theme, pure 8-bit chiptune, single pulse wave playing whole-tone scale notes one at a time with 5-second gaps, each note slightly detuned creating dreamlike quality, triangle wave bass with chromatic pedal shift every 15 seconds, noise channel with sparse crystalline ticks, glowing runes on the wall casting faint light, otherworldly and strange, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A10: "Distant Battle"
-
-```
-NES ambient far-away combat texture, pure 8-bit chiptune, noise channel with very faint muffled rhythmic pattern like hearing a battle through thick walls, pulse wave with occasional distant melodic fragment barely audible, triangle wave bass with low rumble, someone else is fighting somewhere in the dungeon, you are alone with the echoes, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A11: "Frozen Passage"
-
-```
-NES dungeon cold ambient texture, pure 8-bit chiptune, pulse wave playing sparse high notes with long decay like icicles, triangle wave bass with deep glacial drone, noise channel with faint crystalline shimmer, second pulse wave adding rare dissonant interval, the dungeon gets cold at this depth, still and frozen, E minor with flat 6 for icy quality, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A12: "The Threshold"
-
-```
-NES ambient room transition texture, pure 8-bit chiptune, triangle wave bass playing two alternating notes very slowly creating a doorway feeling, pulse wave with single note that bends slightly, noise channel with one click like a latch, the moment between rooms, crossing a threshold into the unknown, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A13: "Dust Motes"
-
-```
-NES ambient floating particle texture, pure 8-bit chiptune, both pulse waves playing randomly spaced high tiny notes like dust catching light, no pattern just scattered sparkles, triangle wave bass completely silent, noise channel with faintest possible static, dust floating in a shaft of light from above, momentary beauty in the dark, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A14: "Below the Roots"
-
-```
-NES organic dungeon ambient texture, pure 8-bit chiptune, triangle wave bass with slow organic-feeling movement like roots growing, pulse wave with occasional note that sounds like something alive in the walls, noise channel with soft earthy texture, the dungeon is not just stone it's living, unsettling organic quality, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A15: "Prayer Candles"
-
-```
-NES ambient rest shrine texture, pure 8-bit chiptune, two pulse waves in very quiet unison playing a simple three-note descending prayer motif repeating every 12 seconds, triangle wave bass with single low sacred-feeling note, noise channel silent, a shrine found in the dungeon someone still prays here, solemn and reverent, C major for purity, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A16: "Iron Gates"
-
-```
-NES ambient industrial dungeon texture, pure 8-bit chiptune, noise channel with irregular metallic clanging at random intervals, triangle wave bass with deep resonant drone, pulse wave with occasional grinding note, second pulse wave silent, the deep dungeon where iron gates block forgotten passages, cold and mechanical, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A17: "Void"
-
-```
-NES ambient absolute minimal nothing, pure 8-bit chiptune, triangle wave bass with single sustained lowest possible note, pulse waves silent for 20+ seconds then one note appears and vanishes, noise channel with the faintest possible hiss, as close to silence as music can be, the deepest point of the dungeon where sound itself dies, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A18: "Echoing Steps"
-
-```
-NES ambient footstep echo texture, pure 8-bit chiptune, noise channel with rhythmic soft footstep-like sounds at walking pace, each footstep followed by pulse wave echo note that decays, triangle wave bass with distant corridor resonance, walking alone through endless corridors, the only sound is your own feet, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A19: "The Cartographer"
-
-```
-NES ambient map screen minimal texture, pure 8-bit chiptune, pulse wave playing a single thoughtful note every 4-5 seconds as if placing pins on a map, noise channel with soft paper-like rustle, triangle wave bass with grounding low note, second pulse wave silent, studying the dungeon map and planning your route, intellectual and still, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
-### A20: "Last Embers"
-
-```
-NES ambient dying campfire end-of-run texture, pure 8-bit chiptune, noise channel with increasingly sparse crackling — the fire is going out, pulse wave playing slower and slower melody fragments getting quieter, triangle wave bass fading to nothing, the run is ending whether in victory or defeat, everything winds down, the embers die, authentic NES 2A03 four-channel limitation, retro 8-bit ambient game soundtrack
-```
-
----
-
-# CAMP PLAYLIST (5-10 tracks)
-
-Plays on the hub/home screen. Consistently low energy, cozy-dark, safe haven.
-
----
-
-### Camp 01: "Torch and Stone"
-
-```
-Dark NES dungeon campsite respite theme, slow tempo 60-70 BPM, pure 8-bit chiptune, two pulse wave channels carrying a somber minor-key melody with long sustained notes and sparse arpeggios, deep triangle wave bass with slow deliberate root notes, noise channel crackling embers and distant dripping cave water, no real instruments, authentic NES 2A03 sound chip limitations, four-channel composition, dark medieval dungeon crawler, melancholic but restful, brief safety before descending deeper, flickering torchlight atmosphere, lo-fi bitcrushed warmth, detuned pulse wave vibrato for unease, minor key with occasional dissonant passing tones, seamless loop, pixel art campfire in a stone corridor, weary adventurers resting, quiet dread beneath the calm, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
-```
-
-### Camp 02: "Embers and Silence"
-
-```
-Dark NES dungeon campsite respite theme, very slow tempo 55-65 BPM, pure 8-bit chiptune, single pulse wave playing isolated minor-key notes with long silences between them, triangle wave bass with single sustained low drone, noise channel quiet ember crackle barely audible, second pulse wave completely silent for most of the piece then adds one held note, no real instruments, authentic NES 2A03 sound chip four-channel limitation, the most minimal track in the game, barely there, silence is the music, flickering torchlight in an empty corridor, the exhaustion after a hard fight, A minor, detuned vibrato on the few notes that exist, pixel art campfire embers, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
-```
-
-### Camp 03: "The Peddler's Alcove"
-
-```
-NES dungeon merchant theme, 105-115 BPM, pure 8-bit chiptune, lead pulse wave playing a slightly off-kilter bouncy melody in a major key that feels suspicious rather than cheerful, second pulse wave adding staccato rhythmic accompaniment like coins clinking, triangle wave bass walking a jazzy chromatic line, noise channel providing a light shuffle beat, no real instruments, authentic NES 2A03 sound chip four-channel limitation, dungeon peddler who should not be trusted, playful but with an edge of danger, F major with unexpected flat notes for unease, duty cycle changes giving the melody a sly winking quality, seamless loop, pixel art roguelite shop keeper in torchlit alcove, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG, Shovel Knight merchant vibes
-```
-
-### Camp 04: "Hearthside Tales"
-
-```
-NES warm storytelling camp theme, 70 BPM, pure 8-bit chiptune, pulse wave playing a gentle narrative melody that rises and falls like someone telling a story, triangle wave bass with warm supportive notes, noise channel with soft fire crackle, second pulse wave adding occasional response notes like a listener reacting, adventurers sharing stories by the fire, warm and communal, G major with nostalgic minor moments, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
-```
-
-### Camp 05: "Tomorrow's Descent"
-
-```
-NES anticipation camp theme, 65 BPM, pure 8-bit chiptune, pulse wave playing a melody that balances hope and dread — tomorrow you go back into the dungeon, triangle wave bass with slow resolute movement, noise channel with quiet distant rumbling from below, second pulse wave adding held tension notes, the night before the next run, determined but uncertain, D minor with moments of D major for hope, authentic NES 2A03 four-channel limitation, retro 8-bit game soundtrack, Famicom-era dark fantasy RPG
-```
-
----
-
 # ONE-SHOT STINGS
 
 Brief moments that play over the playlist.
@@ -490,18 +322,16 @@ NES boss entrance dramatic hit, pure 8-bit chiptune, both pulse waves slamming a
 ### Batch Order (most to least important)
 1. **Epic E01-E05** — the first dungeon experience
 2. **Quiet Q01-Q05** — alternative for quiz-focused players
-3. **Camp 01-03** — hub identity
-4. **Victory + Defeat stings** — emotional anchors
-5. **Epic E06-E20** — fill the epic playlist
-6. **Quiet Q06-Q20** — fill the quiet playlist
-7. **Ambient A01-A20** — last priority, most niche audience
-8. **Camp 04-05 + Boss sting** — finishing touches
+3. **Victory + Defeat stings** — emotional anchors
+4. **Epic E06-E20** — fill the epic playlist
+5. **Quiet Q06-Q20** — fill the quiet playlist
+6. **Boss sting** — finishing touch
+
+> **Hub/camp ambient** is handled by layered SFX loops — see `SFX-SOUND-GENERATION-PROMPTS.md` § Ambient Atmosphere Recipes.
 
 ### Total Track Count
 - **Epic:** 20 tracks
 - **Quiet:** 20 tracks
-- **Ambient:** 20 tracks
-- **Camp:** 5 tracks
 - **Stings:** 3
 
-**Grand total: 68 tracks**
+**Grand total: 43 tracks**
