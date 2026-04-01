@@ -629,7 +629,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   // Conversion — convert block to damage (1:1)
   {
     id: 'conversion', name: 'Shield Bash', type: 'shield',
-    description: 'Deal damage equal to your block, consuming it.',
+    description: 'Deal damage equal to your block.',
     baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 10,
     quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
   },

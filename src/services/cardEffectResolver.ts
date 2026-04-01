@@ -1450,18 +1450,17 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Shield Bash — deal damage based on block, consuming it (capped at finalValue + mastery)
+    // Shield Bash — deal damage equal to current block WITHOUT consuming it
+    // Block stays up as defense. CC multiplier applies via finalValue scaling.
     case 'conversion': {
       const playerBlock = playerState.shield ?? 0;
-      const cursedMult = card.isCursed ? 0.7 : 1.0;
-      const convertPct = isChargeWrong ? 0.5 : 1.0;
-      // Cap at finalValue (scales with mastery: 10 QP → 18 at L5)
-      const maxConvert = Math.floor(finalValue * convertPct * cursedMult);
-      const converted = Math.min(maxConvert, playerBlock);
-      result.blockConsumed = converted;
-      if (converted > 0) {
-        applyAttackDamage(converted);
+      if (playerBlock > 0) {
+        const cursedMult = card.isCursed ? 0.7 : 1.0;
+        const modePct = isChargeWrong ? 0.5 : (isChargeCorrect ? 1.5 : 1.0);
+        const damage = Math.floor(playerBlock * modePct * cursedMult);
+        applyAttackDamage(damage);
       }
+      // blockConsumed stays 0 — block is NOT consumed
       return result;
     }
 
