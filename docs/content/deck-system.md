@@ -44,7 +44,7 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `explanation` | yes | Post-answer explanation |
 | `difficulty` | yes | 1–5 scale |
 | `funScore` | yes | 1–10; facts with `funScore >= 7` get 2× weight in first draw |
-| `chainThemeId` | yes | 0–5 chain type slot |
+| `chainThemeId` | yes | numeric index (0–N) mapping to a named chain theme |
 | `answerTypePoolId` | yes | Links to an `AnswerTypePool` for distractor selection |
 | `grammarNote` | no | Rich grammar explanation for language/grammar facts |
 | `targetLanguageWord` | no | The target-language word (vocabulary decks) |
@@ -54,6 +54,8 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 | `quizResponseMode` | no | `'choice'` (default) or `'typing'` (text input) |
 | `quizMode` | no | `'text'`, `'image_question'`, or `'image_answers'` |
 | `volatile` | no | `true` if the answer may become outdated |
+
+**Non-standard fields that must NOT appear in final decks:** `statement`, `wowFactor`, `tags`, `ageGroup` — these are WIP-generation artifacts and must be stripped before a deck is live.
 
 ---
 
@@ -83,7 +85,7 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 ## dinosaurs Deck
 
-`data/decks/dinosaurs.json` — assembled 2026-04-01 from 3 WIP partial files.
+`data/decks/dinosaurs.json` — assembled 2026-04-01 from 3 WIP partial files. Fixed 2026-04-01 by `data/decks/_wip/fix-dinosaurs.mjs`.
 
 | Field | Value |
 |---|---|
@@ -94,17 +96,17 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 | `minimumFacts` | 100 |
 | `targetFacts` | 140 |
 
-**Chain Themes (7):**
+**Chain Themes (7) — stored as numeric IDs:**
 
 | chainThemeId | Name | Facts |
 |---|---|---|
-| `apex_predators` | Apex Predators | 55 |
-| `ancient_oceans_and_skies` | Ancient Oceans & Skies | 23 |
-| `armored_and_horned` | Armored & Horned | 20 |
-| `deep_time` | Deep Time | 20 |
-| `dino_spotter` | Dino Spotter (image IDs) | 39 |
-| `duck_bills_and_herds` | Duck-Bills & Herds | 16 |
-| `gentle_giants` | Gentle Giants (sauropods) | 14 |
+| 0 | Apex Predators | 55 |
+| 1 | Gentle Giants (sauropods) | 14 |
+| 2 | Armored & Horned | 20 |
+| 3 | Duck-Bills & Herds | 16 |
+| 4 | Ancient Oceans & Skies | 23 |
+| 5 | Deep Time | 20 |
+| 6 | Dino Spotter (image IDs) | 39 |
 
 **Answer Type Pools (5):**
 
@@ -118,11 +120,15 @@ The 4 `world_wonders` architecture files total 195 facts in the live deck. They 
 
 **Synonym Groups (5):** tyrannosaurus_names, apatosaurus_brontosaurus_names, ichthyosaurus_names, plesiosaurus_names, mosasaurus_names
 
-**Image facts:** 39 (all in `dino_spotter` theme, `quizMode: image_question`, assets at `/assets/dinosaurs/*.webp`)
+**Image facts:** 39 (all in chainThemeId 6 / dino_spotter, `quizMode: image_question`, assets at `/assets/dinosaurs/*.webp`)
 
 **Difficulty:** 1=17, 2=50, 3=83, 4=36, 5=1
 
+**difficultyTiers:** easy=67 (difficulty 1–2), medium=83 (difficulty 3), hard=37 (difficulty 4–5)
+
 **Source WIP files:** `data/decks/_wip/dino_apex_predators.json` (55), `data/decks/_wip/dino_herbivores.json` (50), `data/decks/_wip/dino_sky_sea_deep_images.json` (82)
+
+**Fix script (2026-04-01):** `data/decks/_wip/fix-dinosaurs.mjs` — converted 187 chainThemeId strings to numbers, added distractors to 12 empty-distractor bracket_number facts, populated difficultyTiers[], stripped non-standard fields (statement, wowFactor, tags, ageGroup) from all 187 facts.
 
 ---
 
