@@ -333,9 +333,16 @@ const TIER_3_EVENTS: MysteryEvent[] = [
   },
   {
     id: 'mirror_scholar',
-    name: 'The Mirror Scholar',
-    description: "A full-length mirror in an otherwise empty room. Your reflection smiles. You didn't.",
-    effect: { type: 'combat' },
+    name: 'The Doppelganger',
+    description: "A full-length mirror in an otherwise empty room. Your reflection steps out and challenges you. 'Prove you know more than yourself.'",
+    effect: {
+      type: 'rivalDuel',
+      questionCount: 5,
+      rivalAccuracy: 0.75,
+      winEffect: { type: 'compound', effects: [{ type: 'upgradeRandomCard' }, { type: 'upgradeRandomCard' }, { type: 'currency', amount: 20 }] },
+      tieEffect: { type: 'currency', amount: 10 },
+      loseEffect: { type: 'curseRandomCards', count: 2 },
+    },
   },
   {
     id: 'merchant_of_memories',
