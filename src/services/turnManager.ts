@@ -9,7 +9,7 @@ import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, decayChain, extendOrResetChain, getChainState, getCurrentChainLength } from './chainSystem';
 import { resetAura, adjustAura, getAuraState } from './knowledgeAuraSystem';
 import { resetReviewQueue, addToReviewQueue, clearReviewQueueFact, isReviewQueueFact } from './reviewQueueSystem';
-import { CHAIN_MOMENTUM_ENABLED, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
+import { CHAIN_MOMENTUM_ENABLED, CHARGE_AP_SURCHARGE, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
 import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
@@ -716,33 +716,31 @@ export function playCardAction(
 
   let apCost = Math.max(0, cardInHand.apCost ?? 1);
 
-  // Charge AP surcharge: +1 AP for Charge plays.
-  // Waived during Surge turns (every 3rd turn), for Free First Charge, or by Chain Momentum.
+  // Charge AP surcharge: CHARGE_AP_SURCHARGE (0) for all Charge plays.
+  // Surge, Warcry, and Chain Momentum flags are still consumed for their other effects
+  // (CC bonus multiplier, draw bonus), but no longer change AP cost since surcharge is 0.
   let usedFreeCharge = false;
   if (playMode === 'charge') {
     const runStateForCharge = get(activeRunState);
     const isSurge = getSurgeChargeSurcharge(turnState.turnNumber) === 0;
     if (isSurge) {
-      // Surge turns: no surcharge (already 0)
-      // Chain Momentum flag still applies (consumed below) but has no additional AP effect
+      // Surge turns: consume Chain Momentum flag (no AP effect since surcharge is already 0)
       if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFreeForChainType !== null) {
         turnState.nextChargeFreeForChainType = null; // consume the flag even on Surge
       }
     } else if (turnState.warcryFreeChargeActive) {
-      // AR-207: Warcry CC — next Charge this turn costs +0 AP surcharge (any color; takes priority)
+      // AR-207: Warcry CC — consume the flag (surcharge is 0 regardless)
       turnState.warcryFreeChargeActive = false; // consume the flag
-      // surcharge is 0 — no apCost increase
     } else if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFreeForChainType !== null && cardInHand.chainType === turnState.nextChargeFreeForChainType) {
-      // Chain Momentum: previous correct Charge waived this surcharge for matching chain type
+      // Chain Momentum: consume the flag (surcharge is 0 regardless)
       turnState.nextChargeFreeForChainType = null; // consume the flag
-      // surcharge is 0 — no apCost increase
     } else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(cardInHand.factId, runStateForCharge.firstChargeFreeFactIds)) {
-      // Free first Charge: AP surcharge is 0
+      // Free first Charge: AP surcharge is 0 (same as CHARGE_AP_SURCHARGE, kept for tracking)
       apCost += FIRST_CHARGE_FREE_AP_SURCHARGE;
       usedFreeCharge = true;
     } else {
-      // Normal Charge: +1 AP surcharge
-      apCost += 1;
+      // Normal Charge: CHARGE_AP_SURCHARGE (currently 0 — same AP cost as Quick Play)
+      apCost += CHARGE_AP_SURCHARGE;
     }
   } else if (playMode === 'quick') {
     // Quick Play: momentum lost
@@ -2897,25 +2895,20 @@ export function getHandSize(turnState: TurnState): number {
  * - Battle Trance restriction (blocks ALL plays when active)
  *
  * Quick Play costs base AP only (no surcharge).
- * Charge costs base AP + 1 surcharge (waived by Surge, warcry, or Chain Momentum).
+ * Charge costs base AP + CHARGE_AP_SURCHARGE (currently 0 — same as Quick Play).
  */
 export function isAnyCardPlayable(turnState: TurnState): boolean {
   if (turnState.phase !== 'player_action') return false;
   if (turnState.result !== null) return false;
   if (turnState.battleTranceRestriction) return false;
 
-  const { deck, apCurrent, focusCharges, warcryFreeChargeActive, nextChargeFreeForChainType, isSurge } = turnState;
+  const { deck, apCurrent, focusCharges } = turnState;
   const focusDiscount = focusCharges > 0 ? 1 : 0;
 
   for (const card of deck.hand) {
     const baseAp = Math.max(0, (card.apCost ?? 1) - focusDiscount);
-    // Quick Play: no surcharge
+    // Both Quick Play and Charge cost baseAp (CHARGE_AP_SURCHARGE = 0)
     if (baseAp <= apCurrent) return true;
-    // Charge surcharge waived on Surge, Warcry, or Chain Momentum (color-matched)
-    const momentumMatch = CHAIN_MOMENTUM_ENABLED && nextChargeFreeForChainType !== null && card.chainType === nextChargeFreeForChainType;
-    const chargeSurchargeWaived = isSurge || warcryFreeChargeActive || momentumMatch;
-    const chargeAp = chargeSurchargeWaived ? baseAp : baseAp + 1;
-    if (chargeAp <= apCurrent) return true;
   }
   return false;
 }

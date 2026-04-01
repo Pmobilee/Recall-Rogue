@@ -5,20 +5,28 @@
 import type { EnemyTemplate, EnemyInstance, EnemyIntent, EnemyTurnStartContext } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER } from '../data/balance';
+import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER, ENEMY_HP_SCALING_PER_FLOOR, ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT } from '../data/balance';
 import { resolvePoisonTickBonus } from './relicEffectResolver';
 import { getAuraState } from './knowledgeAuraSystem';
 
 /**
- * Computes HP scaling factor for a given floor.
+ * Computes HP scaling factor for a given floor using segment-based scaling.
  *
- * Floor 1 = 1.0x, each subsequent floor adds 10%.
+ * Scaling rate varies by segment so early floors are gentle for beginners
+ * while late floors ramp steeply for experienced players.
+ * - Segment 1 (1-6): 0.08/floor  → Floor 1: 1.00×, Floor 6: 1.40×
+ * - Segment 2 (7-12): 0.14/floor → Floor 7: ~1.48×, Floor 12: ~2.18×
+ * - Segment 3 (13-18): 0.20/floor → Floor 13: ~2.38×, Floor 18: ~3.38×
+ * - Segment 4 (19-24): 0.25/floor → Floor 19: ~3.63×, Floor 24: ~4.88×
  *
  * @param floor - The current floor number (1-indexed).
  * @returns The HP scaling multiplier.
  */
 export function getFloorScaling(floor: number): number {
-  return 1.0 + (floor - 1) * 0.10;
+  // Determine segment (1-4)
+  const segment = floor <= 6 ? 1 : floor <= 12 ? 2 : floor <= 18 ? 3 : 4;
+  const scalingRate = ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT[segment] ?? 0.18;
+  return 1.0 + (floor - 1) * scalingRate;
 }
 
 /**

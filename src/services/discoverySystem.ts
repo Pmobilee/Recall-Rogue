@@ -1,19 +1,19 @@
 /**
  * Fact Discovery System — "Free First Charge"
  *
- * The first time a player Charges a fact in a run, it is FREE:
- * - AP surcharge = 0 (regardless of Surge state)
+ * The first time a player Charges a fact in a run:
+ * - AP surcharge = 0 (same as CHARGE_AP_SURCHARGE globally — no special distinction now)
  * - Wrong answer = 1.0× multiplier (same as Quick Play — no penalty for trying)
- * - Correct answer = full Charge multiplier (2.5×/3.0×/3.5× per tier)
+ * - Correct answer = full Charge multiplier
  *
  * After the first Charge, the fact is normal for the rest of the run:
- * - AP surcharge = +1
- * - Wrong answer = 0.7× multiplier
+ * - AP surcharge = CHARGE_AP_SURCHARGE (currently 0)
+ * - Wrong answer = FIZZLE_EFFECT_RATIO (0.25×)
+ *
+ * Note: With CHARGE_AP_SURCHARGE = 0, the "free" AP distinction no longer exists.
+ * The system remains for tracking wrong-answer multiplier differences on first Charge.
  *
  * Per-run, not per-encounter. Resets only on new run.
- *
- * The ONLY visual indicator: the CHARGE button displays "FREE" (instead of "+1 AP")
- * when a fact hasn't been Charged yet this run.
  *
  * Design spec: docs/roadmap/completed/AR-59.23-FACT-DISCOVERY-SYSTEM.md
  */

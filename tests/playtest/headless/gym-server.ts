@@ -28,7 +28,7 @@ import {
 } from '../../../src/services/turnManager.js';
 import type { Card, CardType, FactDomain, CardTier, CardRunState } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
-import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT } from '../../../src/data/balance.js';
+import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT, CHARGE_AP_SURCHARGE } from '../../../src/data/balance.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
 import { FULL_RELIC_CATALOGUE, RELIC_BY_ID, STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
 import type { RoomOption } from '../../../src/services/floorManager.js';
@@ -537,10 +537,10 @@ function getActionMask(run: RunState): boolean[] {
     const hand = ts.deck.hand;
     const ap = ts.apCurrent;
 
-    // Cards 0-7 charge (need card + AP for base + 1 surcharge)
+    // Cards 0-7 charge (CHARGE_AP_SURCHARGE = 0: same AP cost as quick play)
     for (let i = 0; i < Math.min(hand.length, 8); i++) {
       const baseCost = hand[i].apCost ?? 1;
-      const chargeCost = baseCost + (ts.isSurge ? 0 : 1);
+      const chargeCost = baseCost + CHARGE_AP_SURCHARGE;
       if (ap >= chargeCost) mask[i] = true;        // charge
       if (ap >= baseCost) mask[i + 8] = true;       // quick
     }

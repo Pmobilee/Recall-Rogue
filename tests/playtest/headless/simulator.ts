@@ -26,7 +26,7 @@ import {
 } from '../../../src/services/turnManager.js';
 import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
-import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT, ENABLE_PHASE2_MECHANICS, STARTER_DECK_COMPOSITION } from '../../../src/data/balance.js';
+import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT, ENABLE_PHASE2_MECHANICS, STARTER_DECK_COMPOSITION, CHARGE_AP_SURCHARGE, CANARY_ASSIST_ENEMY_DMG_MULT, CANARY_ASSIST_WRONG_THRESHOLD, CANARY_DEEP_ASSIST_ENEMY_DMG_MULT, CANARY_DEEP_ASSIST_WRONG_THRESHOLD } from '../../../src/data/balance.js';
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
 import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
@@ -274,6 +274,7 @@ function simulateSingleEncounter(
   let correctAnswers = 0;
   let wrongAnswers = 0;
   let maxCombo = 0;
+  let wrongsThisEncounter = 0; // Canary adaptive difficulty — tracks wrongs per encounter
   const cardPlays: CardPlayRecord[] = [];
 
   const { verbose, correctRate, chargeRate, maxTurns, brain } = opts;
@@ -304,8 +305,8 @@ function simulateSingleEncounter(
           if (!card) continue;
 
           const apCost = card.apCost ?? 1;
-          const isSurge = (turnState.turnNumber - 2) % 4 === 0 && turnState.turnNumber >= 2;
-          const chargeSurcharge = (ascMods.freeCharging || isSurge) ? 0 : 1;
+          // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play
+          const chargeSurcharge = CHARGE_AP_SURCHARGE;
           const totalCost = play.mode === 'charge' ? apCost + chargeSurcharge : apCost;
           if (turnState.apCurrent < totalCost) continue;
 
@@ -338,6 +339,7 @@ function simulateSingleEncounter(
             }
           } else {
             wrongAnswers++;
+            wrongsThisEncounter++; // Canary: track per-encounter wrongs
           }
 
           if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
@@ -383,8 +385,8 @@ function simulateSingleEncounter(
 
         // AP check: if no card in hand can be played with remaining AP, end turn
         const minCardCost = hand.reduce((min, c) => Math.min(min, c.apCost ?? 1), Infinity);
-        const minPlayCost = minCardCost + (chargeRate > 0 ? 1 : 0); // +1 for charge surcharge
-        const minQuickCost = minCardCost; // quick play has no surcharge
+        const minPlayCost = minCardCost; // CHARGE_AP_SURCHARGE = 0: charge costs same as quick
+        const minQuickCost = minCardCost;
         if (turnState.apCurrent < Math.min(minPlayCost, minQuickCost)) break;
 
         // Pick first card in hand (simple strategy — no AI needed)
@@ -392,8 +394,8 @@ function simulateSingleEncounter(
         const cardMinCost = card.apCost ?? 1;
 
         // Decide play mode based on available AP
-        // A19 buff: free charging (no +1 AP surcharge)
-        const chargeSurcharge = ascMods.freeCharging ? 0 : 1;
+        // CHARGE_AP_SURCHARGE = 0: Charge and Quick Play cost the same AP
+        const chargeSurcharge = CHARGE_AP_SURCHARGE;
         const chargeApCost = cardMinCost + chargeSurcharge;
         const canCharge = turnState.apCurrent >= chargeApCost;
         const isCharge = canCharge && Math.random() < chargeRate;
@@ -447,6 +449,7 @@ function simulateSingleEncounter(
           }
         } else {
           wrongAnswers++;
+          wrongsThisEncounter++; // Canary: track per-encounter wrongs
         }
 
         // A6 buff: heal on combo threshold
@@ -494,6 +497,16 @@ function simulateSingleEncounter(
       }
     }
     void handCardsBefore; // suppress unused warning
+
+    // ── Canary adaptive difficulty: reduce enemy damage for struggling players ─
+    // Apply BEFORE endPlayerTurn so the real game code reads the multiplier correctly.
+    let canaryMult = 1.0;
+    if (wrongsThisEncounter >= CANARY_DEEP_ASSIST_WRONG_THRESHOLD) {
+      canaryMult = CANARY_DEEP_ASSIST_ENEMY_DMG_MULT;
+    } else if (wrongsThisEncounter >= CANARY_ASSIST_WRONG_THRESHOLD) {
+      canaryMult = CANARY_ASSIST_ENEMY_DMG_MULT;
+    }
+    turnState.canaryEnemyDamageMultiplier = canaryMult;
 
     // ── End player turn → enemy attacks ───────────────────────────────────
     const enemyResult = endPlayerTurn(turnState);

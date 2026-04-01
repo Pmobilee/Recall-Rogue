@@ -55,7 +55,8 @@ export interface RunState {
   startedAt: number;
   /**
    * Fact IDs for which the player has already used their one free first Charge this run.
-   * Once a factId is in this set, that fact costs the normal +1 AP Charge surcharge.
+   * Once a factId is in this set, that fact uses the normal FIZZLE_EFFECT_RATIO on wrong answers.
+   * (The AP surcharge distinction is moot now that CHARGE_AP_SURCHARGE = 0.)
    * Per-run, not per-encounter. Cleared on new run.
    */
   firstChargeFreeFactIds: Set<string>;

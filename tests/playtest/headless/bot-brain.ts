@@ -21,6 +21,7 @@ import {
   CHAIN_MULTIPLIERS,
   SURGE_INTERVAL,
   SURGE_FIRST_TURN,
+  CHARGE_AP_SURCHARGE,
 } from '../../../src/data/balance.js';
 import {
   MASTERY_UPGRADE_DEFS,
@@ -47,7 +48,7 @@ export interface BotSkills {
   blockSkill: number;
   /** 0–1: AP usage optimization (filling remaining AP with cheap cards) */
   apEfficiency: number;
-  /** 0–1: surge turn exploitation (free charge surcharge) */
+  /** 0–1: surge turn exploitation (CC bonus multiplier + extra draw) */
   surgeAwareness: number;
   /** 0–1: preference for charging high-perLevelDelta cards to gain mastery */
   masteryHunting: number;
@@ -82,7 +83,7 @@ export interface AscensionMods {
 // Internal helpers
 // ──────────────────────────────────────────────────────────────────────────────
 
-/** Return true if this global turn number is a Surge turn (free charge surcharge). */
+/** Return true if this global turn number is a Surge turn (CC bonus multiplier + extra draw). */
 function isSurgeTurn(globalTurnNumber: number): boolean {
   // Surge on turns: SURGE_FIRST_TURN, SURGE_FIRST_TURN + SURGE_INTERVAL, ...
   // e.g. turns 2, 6, 10, 14 (first turn = 1, so first surge at turn 2)
@@ -171,7 +172,8 @@ export class BotBrain {
   planTurn(hand: Card[], turnState: TurnState, ascMods: AscensionMods = {}): CardPlay[] {
     const { skills } = this;
     const isSurge = isSurgeTurn(turnState.turnNumber);
-    const chargeSurcharge = (ascMods.freeCharging || isSurge) ? 0 : 1;
+    // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play for all turns
+    const chargeSurcharge = CHARGE_AP_SURCHARGE;
     const apAvailable = turnState.apCurrent;
     const playerHpPct = turnState.playerState.hp / (turnState.playerState.maxHP || 100);
     const enemyHp = turnState.enemy.currentHP;
@@ -340,14 +342,14 @@ export class BotBrain {
     const { skills } = this;
     const acc = skills.accuracy;
 
-    // surgeAwareness: during surge turns, ALWAYS charge (free surcharge = always +EV)
+    // surgeAwareness: during surge turns, ALWAYS charge (CC bonus multiplier = always higher EV)
     if (isSurge && skills.surgeAwareness >= 1.0) return 'charge';
     if (isSurge && skills.surgeAwareness >= 0.5) {
-      // 50% boost to charge rate during surge
+      // 50% boost to charge rate during surge (CC bonus multiplier)
       if (Math.random() < Math.min(1.0, acc * 1.5)) return 'charge';
     }
 
-    // Chain momentum: free charge surcharge — even modest chargeSkill should exploit this
+    // Chain momentum: surcharge already 0, but charging still preferred for CC bonus
     if (hasMomentum && skills.chargeSkill >= 0.3) return 'charge';
 
     if (skills.chargeSkill < 0.3) {
@@ -357,13 +359,13 @@ export class BotBrain {
     }
 
     if (skills.chargeSkill < 0.5) {
-      // 0.3–0.5: charge when accuracy >= 0.56 (EV break-even)
-      return acc >= 0.56 ? 'charge' : 'quick';
+      // 0.3–0.5: charge when accuracy gives positive EV (break-even ~25% with 2.0× CC, 0.25× CW)
+      return acc >= 0.35 ? 'charge' : 'quick';
     }
 
     if (skills.chargeSkill < 0.7) {
       // 0.5–0.7: charge at EV break-even, also factor in card type
-      if (acc < 0.56) return 'quick';
+      if (acc < 0.35) return 'quick';
       if (isBuffOrUtility(card.cardType)) return 'quick'; // low multiplier payoff
       return 'charge';
     }

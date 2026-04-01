@@ -111,12 +111,12 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
       expect(getSurgeChargeSurcharge(14)).toBe(0);
     });
 
-    it('returns 1 during normal turns (standard surcharge)', () => {
-      expect(getSurgeChargeSurcharge(1)).toBe(1);
-      expect(getSurgeChargeSurcharge(3)).toBe(1);
-      expect(getSurgeChargeSurcharge(4)).toBe(1);
-      expect(getSurgeChargeSurcharge(5)).toBe(1);
-      expect(getSurgeChargeSurcharge(7)).toBe(1);
+    it('returns 0 during normal turns (CHARGE_AP_SURCHARGE = 0 globally, surcharge removed)', () => {
+      expect(getSurgeChargeSurcharge(1)).toBe(0);
+      expect(getSurgeChargeSurcharge(3)).toBe(0);
+      expect(getSurgeChargeSurcharge(4)).toBe(0);
+      expect(getSurgeChargeSurcharge(5)).toBe(0);
+      expect(getSurgeChargeSurcharge(7)).toBe(0);
     });
   });
 
@@ -214,7 +214,7 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
       expect(ts.apCurrent).toBe(apBefore - 1);
     });
 
-    it('Charge costs +1 AP surcharge during normal turns', () => {
+    it('Charge costs base AP only during normal turns (CHARGE_AP_SURCHARGE = 0)', () => {
       const deck = makeDeckWithHand();
       const enemy = mockEnemyInstance();
       const ts = startEncounter(deck, enemy); // turn 1 = normal
@@ -224,8 +224,8 @@ describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-pe
 
       const apBefore = ts.apCurrent;
       playCardAction(ts, card.id, 'charge', true);
-      // Base cost = 1 + surcharge 1 = 2 AP spent
-      expect(ts.apCurrent).toBe(apBefore - 2);
+      // Base cost = 1, no surcharge (CHARGE_AP_SURCHARGE = 0) → spend 1 AP
+      expect(ts.apCurrent).toBe(apBefore - 1);
     });
 
     it('Quick Play AP cost is unaffected by Surge (no surcharge either way)', () => {

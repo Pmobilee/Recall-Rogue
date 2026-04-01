@@ -39,6 +39,7 @@ import {
   SHOP_REMOVAL_BASE_PRICE,
   SHOP_REMOVAL_PRICE_INCREMENT,
   SHOP_FOOD_ITEMS,
+  CHARGE_AP_SURCHARGE,
 } from '../../../src/data/balance.js';
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
@@ -336,8 +337,8 @@ function simulateSingleEncounter(
           if (!card) continue;
 
           const apCost = card.apCost ?? 1;
-          const isSurge = (turnState.turnNumber - 2) % 4 === 0 && turnState.turnNumber >= 2;
-          const chargeSurcharge = (ascMods.freeCharging || isSurge) ? 0 : 1;
+          // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play
+          const chargeSurcharge = CHARGE_AP_SURCHARGE;
           const totalCost = play.mode === 'charge' ? apCost + chargeSurcharge : apCost;
           if (turnState.apCurrent < totalCost) continue;
 
@@ -399,7 +400,8 @@ function simulateSingleEncounter(
         const card = hand[0];
         const cardMinCost = card.apCost ?? 1;
 
-        const chargeSurcharge = ascMods.freeCharging ? 0 : 1;
+        // CHARGE_AP_SURCHARGE = 0: Charge costs same AP as Quick Play
+        const chargeSurcharge = CHARGE_AP_SURCHARGE;
         const chargeApCost = cardMinCost + chargeSurcharge;
         const canCharge = turnState.apCurrent >= chargeApCost;
         const isCharge = canCharge && Math.random() < chargeRate;

@@ -244,22 +244,22 @@ export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
 /**
  * Flat Charge Correct multiplier applied to quickPlayValue. The real power scaling
  * comes from mastery level bonuses (getMasteryBaseBonus) and tier multipliers (T1=1.0×,
- * T2a=1.3×, T2b=1.6×), NOT from increasing this multiplier. Buffed to 2.0× (from 1.5×)
- * in 2026-04-01 balance pass to make correct Charge answers feel meaningfully rewarding.
+ * T2a=1.3×, T2b=1.6×), NOT from increasing this multiplier. Nerfed to 1.75× (from 2.0×)
+ * in 2026-04-01 balance pass to reduce expert player damage output (dedicated 100% → ~85-95% target).
  *
- * Runtime formula: CC damage = (quickPlayValue + masteryBonus) × 2.0 × tierMult × chainMult × ...
+ * Runtime formula: CC damage = (quickPlayValue + masteryBonus) × 1.75 × tierMult × chainMult × ...
  *
  * Note: The `chargeCorrectValue` field in mechanics.ts is DEAD DATA — the resolver
  * always computes CC as quickPlayValue × this constant. Do not read chargeCorrectValue.
  */
-export const CHARGE_CORRECT_MULTIPLIER = 2.0;
+export const CHARGE_CORRECT_MULTIPLIER = 1.75;
 
 /** @deprecated Use CHARGE_CORRECT_MULTIPLIER instead. Kept for backward compat. */
 export const CHARGE_CORRECT_MULTIPLIERS: Record<string, number> = {
-  '1': 2.0,
-  '2a': 2.0,
-  '2b': 2.0,
-  '3': 2.0,
+  '1': 1.75,
+  '2a': 1.75,
+  '2b': 1.75,
+  '3': 1.75,
 };
 
 /** Charge play multipliers for wrong answers, by tier. */
@@ -356,8 +356,15 @@ export const SURGE_CC_BONUS_MULTIPLIER = 1.5;
 export const SURGE_DRAW_BONUS = 1;
 
 // Chain Momentum system (AR-122)
-/** When true, a correct Charge answer waives the +1 AP surcharge on the NEXT Charge that turn. */
+/** When true, a correct Charge answer waives the AP surcharge on the NEXT Charge that turn. */
 export const CHAIN_MOMENTUM_ENABLED = true;
+
+/**
+ * AP surcharge for Charge plays (added on top of card's base apCost).
+ * Set to 0 — Charge plays cost the same AP as Quick Play.
+ * The risk/reward comes from the accuracy check, not tempo loss.
+ */
+export const CHARGE_AP_SURCHARGE = 0;
 
 // Free First Charge system (AR-59.23)
 /** AP surcharge for the first Charge of a fact in a run. 0 = free. */
@@ -398,7 +405,7 @@ export const CURSED_AUTO_CURE_THRESHOLD = 0.6;
 export const CURSED_AUTO_CURE_COUNT = 1;
 
 // Player defaults
-export const PLAYER_START_HP = 120;
+export const PLAYER_START_HP = 180;
 export const PLAYER_MAX_HP = 100;
 export const HINTS_PER_ENCOUNTER = 1;
 export const START_AP_PER_TURN = 3;
@@ -406,7 +413,7 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.07;
+export const POST_ENCOUNTER_HEAL_PCT = 0.10;
 /** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.03;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
@@ -416,12 +423,24 @@ export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.05;
  *  This creates late-game attrition so winners don't cruise at 99% HP. */
 export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
   1: 1.00,   // Segment 1 (floors 1-6): full heal allowed
-  2: 0.90,   // Segment 2 (floors 7-12): cap at 90%
-  3: 0.80,   // Segment 3 (floors 13-18): cap at 80%
-  4: 0.65,   // Segment 4 (floors 19-24): cap at 65%
+  2: 0.80,   // Segment 2 (floors 7-12): cap at 80% (tightened from 0.90)
+  3: 0.60,   // Segment 3 (floors 13-18): cap at 60% (tightened from 0.70, 2026-04-01)
+  4: 0.35,   // Segment 4 (floors 19-24): cap at 35% (tightened from 0.50, 2026-04-01)
 };
 /** Global base HP multiplier for all enemies. Ensures early fights require 2+ turns. */
-export const ENEMY_BASE_HP_MULTIPLIER = 4.0;
+export const ENEMY_BASE_HP_MULTIPLIER = 5.0;
+/**
+ * HP scaling per floor above floor 1. Each floor adds this fraction to the base HP multiplier.
+ * @deprecated Use ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT for segment-aware scaling.
+ */
+export const ENEMY_HP_SCALING_PER_FLOOR = 0.18;
+/** HP scaling per floor, by segment. Early floors gentle, late floors steep. */
+export const ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT: Record<number, number> = {
+  1: 0.10,   // Segment 1 (floors 1-6): gentle scaling (unchanged from 2026-04-01)
+  2: 0.20,   // Segment 2 (floors 7-12): moderate scaling (reduced from 0.22, 2026-04-01)
+  3: 0.35,   // Segment 3 (floors 13-18): steep scaling (reduced from 0.45, 2026-04-01)
+  4: 0.50,   // Segment 4 (floors 19-24): very steep (reduced from 0.60, 2026-04-01)
+};
 /** HP multiplier for mini-bosses on floors 1-3 (1.0 = no reduction, proper base HP handles early balance). */
 export const EARLY_MINI_BOSS_HP_MULTIPLIER = 1.0;
 
@@ -451,18 +470,18 @@ export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
 /** Correct answer streak threshold to trigger challenge mode. */
 export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
-/** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668) */
-export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.02;
+/** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668; 2026-04-01: 0.02→0.06 to steepen late-game curve — floor 12 = +36%, floor 18 = +72%; reverted 2026-04-01: 0.06→0.03 — enemy HP scaling is the better lever; 2026-04-01: 0.03→0.06 — paired with FLOOR_DAMAGE_SCALE_MID 0.8→0.5 to keep early floors easy while steepening late-game pressure for experts) */
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.06;
 
-/** Enemy damage multiplier (base). Doubled 2026-03-31 alongside mastery scaling rebalance. */
-export const FLOOR_DAMAGE_SCALE_MID = 2.0;
+/** Enemy damage multiplier (base). Reverted to 1.0 on 2026-04-01 — Canary adaptive difficulty system now handles beginner protection (reduces enemy dmg after wrong answers), so a blanket damage reduction is no longer needed. Prior values: 0.5 (2026-04-01 with FLOOR_DAMAGE_SCALING_PER_FLOOR pairing), 0.8 (earlier on 2026-04-01), 1.0 (original). */
+export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 10,   // doubled from 5 alongside FLOOR_DAMAGE_SCALE_MID 2×
+  1: 6,    // lowered from 8 on 2026-04-01 to further reduce early-game spike damage for beginners
   2: 12,   // doubled from 6
-  3: 14,   // doubled from 7
-  4: 20,   // doubled from 10
+  3: 18,   // raised from 14 to increase late-game pressure
+  4: 28,   // raised from 20 to increase late-game pressure
   endless: null,
 };
 
@@ -517,16 +536,16 @@ export const QA_LIMITS = {
 
 /** Segment-based enrage turn budgets. Enrage starts earlier in deeper floors. */
 export const ENRAGE_SEGMENTS: { maxFloor: number; startTurn: number }[] = [
-  { maxFloor: 6, startTurn: 9 },        // Shallow Depths
-  { maxFloor: 12, startTurn: 8 },       // Deep Caverns
-  { maxFloor: 18, startTurn: 7 },       // The Abyss
-  { maxFloor: 24, startTurn: 6 },       // The Archive
+  { maxFloor: 6, startTurn: 10 },       // Shallow Depths (extended from 9: easier early game)
+  { maxFloor: 12, startTurn: 6 },       // Deep Caverns (earlier from 8: harder mid-late)
+  { maxFloor: 18, startTurn: 5 },       // The Abyss (earlier from 7: harder late)
+  { maxFloor: 24, startTurn: 4 },       // The Archive (earlier from 6: hardest late)
   { maxFloor: Infinity, startTurn: 5 }, // Endless
 ];
 
-/** +2 damage per turn for the first 3 enrage turns. */
+/** +2 damage per turn for the first 3 enrage turns. Restored from 1 to 2 on 2026-04-01 — Canary adaptive difficulty protects beginners, so normal enrage strength is appropriate. */
 export const ENRAGE_PHASE1_BONUS = 2;
-/** +4 damage per turn after 3 enrage turns. */
+/** +4 damage per turn after 3 enrage turns. Restored to 4 on 2026-04-01 for harder late-game enrage pressure. */
 export const ENRAGE_PHASE2_BONUS = 4;
 /** Number of turns at phase 1 bonus before escalating to phase 2. */
 export const ENRAGE_PHASE1_DURATION = 3;
