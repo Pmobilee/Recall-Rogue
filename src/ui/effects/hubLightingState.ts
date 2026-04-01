@@ -126,25 +126,22 @@ function computeSnapshot(t: number, streak: number): void {
   // Pick new random target intensity at variable intervals (150–600ms for active fire)
   if (t >= _nextTargetTime) {
     const r = Math.random()
-    if (r < 0.03) {
-      // 3% chance: super flare — fire briefly surges to maximum
+    if (r < 0.05) {
+      // 5% chance: super flare — fire surges to maximum
       _targetIntensity = 1.0
-      _nextTargetTime = t + 100 + Math.random() * 100  // quick burst, 100-200ms
-    } else if (r < 0.13) {
-      // 10% chance: dim dip (fire briefly lowers — deeper than before: 0.15 floor)
-      _targetIntensity = 0.15 + Math.random() * 0.15
-      // Schedule next target change in 150–600ms (was 300–1200ms)
-      _nextTargetTime = t + 150 + Math.random() * 450
-    } else if (r > 0.9) {
-      // 10% chance: bright flare — consistently hits 0.90–1.0+
-      _targetIntensity = 0.90 + Math.random() * 0.10 * amp
-      // Schedule next target change in 150–600ms (was 300–1200ms)
-      _nextTargetTime = t + 150 + Math.random() * 450
+      _nextTargetTime = t + 80 + Math.random() * 120
+    } else if (r < 0.20) {
+      // 15% chance: dim dip — fire drops low, darker than before
+      _targetIntensity = 0.05 + Math.random() * 0.15
+      _nextTargetTime = t + 150 + Math.random() * 400
+    } else if (r > 0.85) {
+      // 15% chance: bright flare — fire blazes high
+      _targetIntensity = 0.85 + Math.random() * 0.15 * amp
+      _nextTargetTime = t + 150 + Math.random() * 400
     } else {
-      // 77%: normal organic range (widened from 0.45–0.70 to 0.45–0.75)
-      _targetIntensity = 0.45 + Math.random() * 0.30
-      // Schedule next target change in 150–600ms (was 300–1200ms)
-      _nextTargetTime = t + 150 + Math.random() * 450
+      // 65%: normal range — much wider swing (0.25–0.85)
+      _targetIntensity = 0.25 + Math.random() * 0.60
+      _nextTargetTime = t + 120 + Math.random() * 400
     }
   }
 
@@ -152,11 +149,11 @@ function computeSnapshot(t: number, streak: number): void {
   // Increased from 0.04 (was sluggish at ~25 frames = 0.8s to 63%)
   _currentIntensity += (_targetIntensity - _currentIntensity) * 0.15
 
-  // Secondary micro-jitter: small per-frame random variation for alive feel
-  const microJitter = (Math.random() - 0.5) * 0.04
+  // Secondary micro-jitter: per-frame random variation for alive feel
+  const microJitter = (Math.random() - 0.5) * 0.06
 
-  // Add one slow breathing sine for gentle macro rhythm
-  const breath = 0.08 * Math.sin(t * 0.0015) * amp
+  // Slow breathing sine for macro rhythm (stronger to match wider range)
+  const breath = 0.12 * Math.sin(t * 0.0015) * amp
 
   const rawIntensity = _currentIntensity + breath + microJitter
 
