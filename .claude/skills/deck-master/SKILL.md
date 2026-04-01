@@ -108,6 +108,7 @@ This applies to: dates, casualty figures, names, quotes, locations, statistics, 
 | WIP decks published without structural audit | Human Anatomy's 2,009 WIP facts had been assembled from 49 separate generation batches with no unified pool schema — each batch invented its own pool IDs (2026-03-29). | Before publishing ANY WIP deck: run the full structural validation script (see below). WIP decks are drafts, not finished products. |
 | questionTemplates field missing | world_cuisines.json was missing `questionTemplates` entirely → `selectQuestionTemplate` crashed with "Cannot read properties of undefined" (2026-03-29) | EVERY deck JSON MUST have `"questionTemplates": []` and `"synonymGroups": []` even if empty. Run the field-check script after assembly. The code now has a `?? []` fallback but the data should still be correct. |
 | No visual in-game testing before shipping | 10 decks were built and validated via CLI only. When tested in-game, cuisines crashed immediately because of the missing field. CLI validation doesn't test the runtime rendering path. (2026-03-29) | ALWAYS run `__rrScenario.load('study-deck-DECKNAME')` in Playwright after CLI validation passes. Both gates must pass before a deck ships. |
+| Distractors matching other facts' correct answers in same pool | World Wonders (2026-04-01): 97 of 195 facts (50%) had distractors that were correct answers for sibling facts in the same pool. LLM-generated distractors pull from world knowledge, which includes the exact values in the pool. This causes "two right answers" to silently appear in quiz choices. | Check 7 in the structural validation script catches this automatically. ALWAYS run validation after generation. When generating distractors, instruct the worker to avoid using any value from the pool's `correctAnswer` set. |
 
 ### Lessons Learned: Grammar / Fill-Blank Deck Builds (2026-03-28)
 
@@ -186,7 +187,20 @@ deck.facts.forEach((f, i) => {
   });
 });
 
-// 7. Report
+// 7. Distractor pool collision — distractors must not match OTHER facts' correct answers in same pool
+(deck.answerTypePools || []).forEach(p => {
+  const poolFacts = (p.factIds || []).map(fid => deck.facts.find(x => x.id === fid)).filter(Boolean);
+  const poolAnswers = new Set(poolFacts.map(f => f.correctAnswer.toLowerCase().trim()));
+  poolFacts.forEach(f => {
+    (f.distractors || []).forEach(d => {
+      if (poolAnswers.has(d.toLowerCase().trim()) && d.toLowerCase().trim() !== f.correctAnswer.toLowerCase().trim()) {
+        issues.push("POOL COLLISION: fact " + f.id + " has distractor '" + d + "' which is a correct answer in pool " + p.id);
+      }
+    });
+  });
+});
+
+// 8. Report
 if (issues.length === 0) console.log("✓ CLEAN — " + deck.facts.length + " facts, " + deck.answerTypePools.length + " pools, all checks pass");
 else { console.log("✗ " + issues.length + " ISSUES:"); issues.forEach(i => console.log("  " + i)); process.exit(1); }
 VALIDATE
