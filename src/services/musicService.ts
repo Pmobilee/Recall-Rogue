@@ -32,10 +32,6 @@ class MusicService {
   private currentAudio: HTMLAudioElement | null = null
   /** MediaElementSource for the current audio — can only be created once per element. */
   private currentMediaSource: MediaElementAudioSourceNode | null = null
-  private currentGain: GainNode | null = null
-
-  /** Audio element that is fading out during crossfade. */
-  private fadingAudio: HTMLAudioElement | null = null
 
   private _isPlaying = false
   private _currentTrack: MusicTrack | null = null
@@ -92,60 +88,52 @@ class MusicService {
   }
 
   /**
-   * Play a track using HTMLAudioElement, crossfading from the current track.
-   * Connects the element to the Web Audio graph for analyser data.
+   * Play a track using HTMLAudioElement for playback (browser-native decoding).
+   * Connects to Web Audio AnalyserNode AFTER playback starts, for spectrogram.
    */
   async playTrack(track: MusicTrack): Promise<void> {
     try {
       this.init()
-      const running = await this.ensureRunning()
-      if (!running || !this.ctx || !this.analyser) {
-        console.warn('[Music] playTrack: AudioContext not running')
-        return
-      }
-
       console.log(`[Music] Playing: ${track.title} (${track.file})`)
 
-      // Create new audio element
-      const audio = new Audio(track.file)
+      // Create audio element — do NOT connect to Web Audio yet (Safari fails if
+      // createMediaElementSource is called before the element can play)
+      const audio = new Audio()
       audio.loop = true
-      audio.volume = 0  // start silent for crossfade
       audio.preload = 'auto'
+      audio.volume = 0  // start silent for crossfade-in
 
-      // Connect to Web Audio graph: element → gain → analyser → destination
-      const source = this.ctx.createMediaElementSource(audio)
-      const gain = this.ctx.createGain()
-      gain.gain.value = 0
-      source.connect(gain)
-      gain.connect(this.analyser)
-
-      // Wait for enough data to play
+      // Wait for loadable state before playing
       await new Promise<void>((resolve, reject) => {
         const onCanPlay = () => { cleanup(); resolve() }
-        const onError = () => { cleanup(); reject(new Error(`Failed to load: ${track.file}`)) }
+        const onError = () => {
+          cleanup()
+          const e = audio.error
+          reject(new Error(`Failed to load: ${track.file} (code=${e?.code ?? '?'}, ${e?.message ?? 'unknown'})`))
+        }
         const cleanup = () => {
           audio.removeEventListener('canplaythrough', onCanPlay)
           audio.removeEventListener('error', onError)
         }
         audio.addEventListener('canplaythrough', onCanPlay, { once: true })
         audio.addEventListener('error', onError, { once: true })
+        audio.src = track.file
         audio.load()
       })
 
-      // Crossfade: fade out old, fade in new
-      if (this.currentAudio && this.currentGain) {
-        this.fadeOutAndDispose(this.currentAudio, this.currentGain)
+      // Crossfade out old track
+      if (this.currentAudio) {
+        this.fadeOutAndDispose(this.currentAudio)
       }
 
-      // Start playing new track
+      // Start playback — volume crossfade via element.volume (not Web Audio gain)
       await audio.play()
-      // Use Web Audio gain for volume (audio.volume=1 always, gain controls level)
-      audio.volume = 1
-      this.fadeGain(gain, 0, this._muted ? 0 : this._volume, CROSSFADE_MS)
+      this.crossfadeIn(audio)
+
+      // Now connect to Web Audio analyser (after playback started)
+      this.connectAnalyser(audio)
 
       this.currentAudio = audio
-      this.currentMediaSource = source
-      this.currentGain = gain
 
       ambientAudio.setMusicCoexistence(true)
       console.log(`[Music] PLAYING: "${track.title}"`)
@@ -158,24 +146,50 @@ class MusicService {
     }
   }
 
-  /** Fade out an audio element and clean it up after the fade. */
-  private fadeOutAndDispose(audio: HTMLAudioElement, gain: GainNode): void {
-    this.fadingAudio = audio
-    this.fadeGain(gain, gain.gain.value, 0, CROSSFADE_MS)
-    setTimeout(() => {
-      audio.pause()
-      audio.src = ''
-      audio.load()  // release resources
-      if (this.fadingAudio === audio) this.fadingAudio = null
-    }, CROSSFADE_MS + 100)
+  /** Crossfade audio.volume from 0 → target over CROSSFADE_MS. */
+  private crossfadeIn(audio: HTMLAudioElement): void {
+    const target = this._muted ? 0 : this._volume
+    const steps = 30
+    const stepMs = CROSSFADE_MS / steps
+    let step = 0
+    const interval = setInterval(() => {
+      step++
+      audio.volume = Math.min(1, (step / steps) * target)
+      if (step >= steps) clearInterval(interval)
+    }, stepMs)
   }
 
-  /** Linearly ramp a GainNode from one value to another over durationMs. */
-  private fadeGain(gain: GainNode, from: number, to: number, durationMs: number): void {
-    if (!this.ctx) return
-    const now = this.ctx.currentTime
-    gain.gain.setValueAtTime(from, now)
-    gain.gain.linearRampToValueAtTime(to, now + durationMs / 1000)
+  /** Fade out an audio element and clean it up after the fade. */
+  private fadeOutAndDispose(audio: HTMLAudioElement): void {
+    const startVol = audio.volume
+    const steps = 20
+    const stepMs = CROSSFADE_MS / steps
+    let step = 0
+    const interval = setInterval(() => {
+      step++
+      audio.volume = Math.max(0, startVol * (1 - step / steps))
+      if (step >= steps) {
+        clearInterval(interval)
+        audio.pause()
+        audio.src = ''
+        audio.load()
+      }
+    }, stepMs)
+  }
+
+  /** Try to connect audio element to Web Audio analyser for spectrogram data. */
+  private connectAnalyser(audio: HTMLAudioElement): void {
+    if (!this.ctx || !this.analyser) return
+    try {
+      // Resume context if needed
+      if (this.ctx.state === 'suspended') void this.ctx.resume()
+      const source = this.ctx.createMediaElementSource(audio)
+      source.connect(this.analyser)
+      this.currentMediaSource = source
+    } catch (err) {
+      // Non-fatal — spectrogram just won't animate from real data
+      console.warn('[Music] Could not connect analyser (spectrogram will use idle animation):', err)
+    }
   }
 
   /** Set the active category, build a shuffled queue, and begin playback. */
@@ -233,8 +247,8 @@ class MusicService {
   /** Set master volume (0–1). */
   setVolume(v: number): void {
     this._volume = Math.max(0, Math.min(1, v))
-    if (this.currentGain && this.ctx && !this._muted) {
-      this.fadeGain(this.currentGain, this.currentGain.gain.value, this._volume, 50)
+    if (this.currentAudio && !this._muted) {
+      this.currentAudio.volume = this._volume
     }
     this.persistPrefs()
     this.notify()
@@ -243,9 +257,8 @@ class MusicService {
   /** Toggle mute. */
   toggleMute(): void {
     this._muted = !this._muted
-    if (this.currentGain && this.ctx) {
-      const target = this._muted ? 0 : this._volume
-      this.fadeGain(this.currentGain, this.currentGain.gain.value, target, 50)
+    if (this.currentAudio) {
+      this.currentAudio.volume = this._muted ? 0 : this._volume
     }
     this.persistPrefs()
     this.notify()
@@ -284,12 +297,10 @@ class MusicService {
 
   /** Fade out to silence and stop. */
   async fadeOutAndStop(durationMs: number): Promise<void> {
-    if (!this.currentGain || !this.currentAudio) return
-    this.fadeGain(this.currentGain, this.currentGain.gain.value, 0, durationMs)
-    await new Promise<void>(resolve => setTimeout(resolve, durationMs))
-    this.currentAudio.pause()
+    if (!this.currentAudio) return
+    this.fadeOutAndDispose(this.currentAudio)
+    await new Promise<void>(resolve => setTimeout(resolve, durationMs + 200))
     this.currentAudio = null
-    this.currentGain = null
     this.currentMediaSource = null
     ambientAudio.setMusicCoexistence(false)
     this._isPlaying = false

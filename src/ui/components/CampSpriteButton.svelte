@@ -14,10 +14,17 @@
     labelLeft?: string
     ambientClass?: string
     showBorder?: boolean
-    /** CSS translate X offset applied to the sprite image (e.g. "-49%") — shifts baked sprite position without re-rendering art */
+    /** CSS translate X offset applied to the sprite image (e.g. "-49%") — shifts baked sprite position without re-rendering art assets (used for landscape-only layout adjustments) */
     spriteOffsetX?: string
-    /** CSS translate Y offset applied to the sprite image (e.g. "-21%") — shifts baked sprite position without re-rendering art */
+    /** CSS translate Y offset applied to the sprite image (e.g. "-21%") — shifts baked sprite position without re-rendering art assets (used for landscape-only layout adjustments) */
     spriteOffsetY?: string
+    /**
+     * CSS `brightness()` factor for the sprite (0–2, default 1.0).
+     * Drives campfire lighting: nearby sprites glow brighter, far ones dim to ~0.45.
+     * Applied via `--sprite-brightness` CSS custom property so the rpg-outline
+     * drop-shadow filter chain is preserved and composed correctly.
+     */
+    brightness?: number
   }
 
   let {
@@ -37,7 +44,23 @@
     showBorder = false,
     spriteOffsetX,
     spriteOffsetY,
+    brightness = 1.0,
   }: Props = $props()
+
+  /** Build the inline style string for .sprite-img, composing transform + brightness variable. */
+  function buildSpriteStyle(
+    offsetX: string | undefined,
+    offsetY: string | undefined,
+    b: number
+  ): string {
+    const parts: string[] = []
+    if (offsetX || offsetY) {
+      parts.push(`transform: translate(${offsetX ?? '0'}, ${offsetY ?? '0'});`)
+    }
+    // Always set the CSS variable so the CSS filter rule can read it
+    parts.push(`--sprite-brightness: ${b};`)
+    return parts.join(' ')
+  }
 </script>
 
 <div
@@ -52,7 +75,7 @@
     class:rpg-outline={showBorder}
     loading="lazy"
     decoding="async"
-    style={spriteOffsetX || spriteOffsetY ? `transform: translate(${spriteOffsetX ?? '0'}, ${spriteOffsetY ?? '0'});` : undefined}
+    style={buildSpriteStyle(spriteOffsetX, spriteOffsetY, brightness)}
   />
   {#if ambientClass === 'ambient-spark'}
     <span class="ambient-spark-dot"></span>
@@ -87,10 +110,14 @@
     object-fit: fill;
     image-rendering: pixelated;
     pointer-events: none;
+    /* Campfire lighting: controlled via --sprite-brightness CSS variable (default 1.0). */
+    filter: brightness(var(--sprite-brightness, 1));
   }
 
   .sprite-img.rpg-outline {
+    /* Brightness must be prepended so drop-shadows apply to the already-brightened image. */
     filter:
+      brightness(var(--sprite-brightness, 1))
       drop-shadow(2px 0 0 #000)
       drop-shadow(-2px 0 0 #000)
       drop-shadow(0 2px 0 #000)
@@ -106,7 +133,9 @@
     background: transparent;
     border: none;
     padding: 0;
-    cursor: pointer;
+    /* Inherit cursor from parent so hub's cursor:none is not overridden — the
+       custom glow cursor IS the hover feedback when effects are active. */
+    cursor: inherit;
     pointer-events: auto;
     min-width: 48px;
     min-height: 48px;
@@ -114,11 +143,8 @@
     transition: transform 100ms ease, box-shadow 100ms ease;
   }
 
-  .sprite-hitbox:active {
-    /* no visible box — the sprite image flashes instead (see :has rule below) */
-  }
-
-  /* Flash the actual sprite pixels when the hitbox is pressed */
+  /* Flash the actual sprite pixels when the hitbox is pressed.
+     brightness(1.4) overrides the --sprite-brightness variable on press. */
   .camp-sprite-layer:has(.sprite-hitbox:active) > .sprite-img {
     filter:
       brightness(1.4)

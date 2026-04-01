@@ -254,3 +254,15 @@
 **Fix:** Before finalising any curated deck, run `data/decks/_wip/qa-world-wonders.mjs` (or adapt its check 7 logic). For the world_wonders deck specifically: replace all 97 flagged distractors in `measurement_number`, `architect_designer`, `year_date`, and `material_feature` pools with values that do not appear as a `correctAnswer` or `acceptableAlternatives` in that pool. Add 1 distractor each to the two facts below minimum. Merge `location_city` into `location_country` (already has 5+) or add 3 more city-answer facts.
 
 **Prevention:** Add this safety check to the deck assembly script (`assemble-world-wonders.mjs`) and future assembly scripts so distractor contamination is caught at generation time, not QA time.
+
+---
+
+### 2026-04-01 — Screen Blend Mode Cannot Darken: Vignette Was Invisible
+
+**What happened:** `HubGlowEffect.ts` drew a dark vignette gradient (Pass 2) on a canvas with CSS `mix-blend-mode: screen`. The vignette did nothing — edges never got dark despite Pass 2 being present and drawing `rgba(5,5,15,0.85)`.
+
+**Why:** Screen blend mode formula: `result = 1 - (1-A) * (1-B)`. Any dark/black color (low value) in screen mode approaches `result = 1 - (1-0) * (1-B) = B` — i.e., the dark color becomes transparent and the background shows through unchanged. Screen blend can ONLY ADD light; it cannot subtract it. This is by CSS spec design.
+
+**Fix:** Split into two layers. Keep the warm glow canvas with `mix-blend-mode: screen` (correct for additive light). Add a sibling `<div class="hub-vignette">` with normal blend mode using a CSS `radial-gradient` background. The gradient is centered on the campfire position (updated on mount + resize via `syncVignetteCenter()`).
+
+**Rule:** Never put darkening/vignette content on a `mix-blend-mode: screen` canvas. Screen layers can only be used for additive light effects.
