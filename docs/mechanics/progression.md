@@ -121,19 +121,25 @@ Row 0 = always combat, `PRE_BOSS_ROW` = always rest, `BOSS_ROW` = always boss. P
 
 ### Fog of War
 
-The dungeon map has a CSS fog overlay that limits what the player can see at a glance:
+The dungeon map uses a **visual depth-cueing system** that combines node blur and atmospheric fog wisps. There is no opaque overlay or mask blocking information — instead, progressively blurred nodes create the visual sense of distance, while scattered fog wisps add atmosphere.
 
-**Visibility rules:**
-- Current floor row and the next floor row are fully visible
-- Visited rows below the current position show dimly through light fog (50% opacity)
-- All rows above the next floor are fully hidden behind opaque fog
+**Node visibility:**
+- Nodes in the current row and next row are fully clear (0px blur, opacity 1.0)
+- Nodes 2 rows away show 8px blur and 0.4 opacity
+- Nodes 3 rows away show 16px blur and 0.2 opacity
+- Nodes 4+ rows away show 24px blur and 0.08 opacity (nearly imperceptible)
 
-**Implementation:**
-- CSS `mask-image` creates a transparent window around the player's current position
-- Fog overlay is at z-index 3 (above nodes at z-index 2) with `pointer-events: none` so clicks pass through to map nodes
-- 3 animated fog wisp layers create a swirling mist effect
-- Segment-themed fog colors match each act's visual palette
-- Respects `prefers-reduced-motion` — animations are disabled for users who prefer it
+Edge connection lines (SVG `.edge-layer`) follow the same opacity progression: 1.0 → 0.4 → 0.15 → 0.05 as you move away from the current row.
+
+**Atmospheric fog wisps:**
+- 17 scattered fog wisps across 3 size tiers create a billowy mist effect
+- Medium clouds (300–500px), large clouds (550–800px), backdrop clouds (900–1200px)
+- Each wisp follows a 6-keyframe meandering path with 200–450px drift
+- Uses Web Animations API with soft diffuse radial-gradients
+- Covers full screen width via `left: -50vw; right: -50vw`
+
+**Respects accessibility:**
+- All blur transitions and wisp animations disabled under `prefers-reduced-motion: reduce`
 
 ## Enemy Pools
 

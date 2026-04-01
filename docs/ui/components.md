@@ -226,20 +226,34 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `RetreatOrDelve.svelte` | Post-boss decision: retreat for safety vs. delve deeper |
 | `TheDeepUnlockOverlay.svelte` | Unlock overlay when the player first reaches floor 10+ |
 
-### DungeonMap fog-of-war z-index stack
+### DungeonMap fog-of-war system
 
-`DungeonMap.svelte` uses a CSS mask-based fog system. The z-index ordering within `.map-canvas` is:
+**Source:** `DungeonMap.svelte`
 
-| Layer | CSS class | z-index | Notes |
-|---|---|---|---|
-| Floor depth markers | `.row-marker` | 0 | Background labels |
-| SVG edges | `.edge-layer` | 1 | Path lines between nodes |
-| Nodes | `.node-position` | 2 | Room buttons |
-| Fog overlay | `.fog-overlay` | 3 | ABOVE nodes — mask window reveals current/next rows |
+The fog system uses **progressive node blur based on distance** combined with **scattered atmospheric fog wisps**. No opaque overlays or masks block visibility — the fog is purely visual depth cues.
 
-The fog overlay sits **above** nodes (z-index 3 > 2) so the CSS `mask-image` gradient actually hides far-away nodes. The transparent window in the mask reveals nodes at the current and next rows. `pointer-events: none` on `.fog-overlay` ensures clicks pass through to available node buttons below. Locked nodes hidden by fog are also `disabled` in markup.
+**Node visibility by distance (from current row):**
 
-The vignette (`.vignette-overlay`) is `position: fixed` in a separate stacking context at z-index 4 — it does not interfere with the map-canvas stack.
+| Rows | Blur | Opacity | Visibility |
+|------|------|---------|-----------|
+| 0–1 | 0px | 1.0 | Clear, fully visible |
+| 2 | 8px | 0.4 | Slightly soft |
+| 3 | 16px | 0.2 | Very soft, hard to read |
+| 4+ | 24px | 0.08 | Nearly imperceptible |
+
+Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on `.node-position` elements. Edge connection lines (`.edge-layer` SVG) apply the same opacity progression (1.0 → 0.4 → 0.15 → 0.05). Transitions smooth over 0.6s as the player advances.
+
+**Fog wisps:** 17 scattered clouds across 3 size tiers (medium 300–500px, large 550–800px, backdrop 900–1200px). Each wisp uses Web Animations API for 6-keyframe meandering paths with 200–450px drift. Soft diffuse radial-gradient fades to transparent at radius 100%. Extends full screen width via `left: -50vw; right: -50vw` inside `.dungeon-map-overlay`. Respects `prefers-reduced-motion` — skips animation.
+
+**Z-index stack:**
+
+| z-index | Element | Role |
+|---------|---------|------|
+| 0 | `.row-marker` | Floor depth labels |
+| 1 | `.edge-layer` SVG | Connection lines |
+| 2 | `.node-position` | Map nodes |
+| 3 | `.fog-overlay` | Fog wisps (atmospheric only) |
+| 4 | `.vignette-overlay` | Edge darkening (position: fixed) |
 
 ---
 
