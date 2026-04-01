@@ -1,7 +1,7 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `data/decks/manifest.json`
 
 ---
@@ -59,10 +59,102 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-03-31 it contains **59 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-01 it contains **61 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, **Dinosaurs & Paleontology**
+
+### In-Progress Deck Architectures
+
+Architecture YAML files in `data/deck-architectures/` represent decks that have verified source data but whose `.json` fact files have not yet been generated. These are the canonical pre-generation source of truth.
+
+| File | Deck ID | Status | Target Facts |
+|---|---|---|---|
+| `solar_system_arch.yaml` | `solar_system` | complete — live | 76 |
+| `dinosaurs_arch.yaml` | `dinosaurs` | complete — live | 187 |
+
+---
+
+## dinosaurs Deck
+
+`data/decks/dinosaurs.json` — assembled 2026-04-01 from 3 WIP partial files.
+
+| Field | Value |
+|---|---|
+| `id` | `dinosaurs` |
+| `domain` | `natural_sciences` |
+| `subDomain` | `paleontology` |
+| `facts` | 187 |
+| `minimumFacts` | 100 |
+| `targetFacts` | 140 |
+
+**Chain Themes (7):**
+
+| chainThemeId | Name | Facts |
+|---|---|---|
+| `apex_predators` | Apex Predators | 55 |
+| `ancient_oceans_and_skies` | Ancient Oceans & Skies | 23 |
+| `armored_and_horned` | Armored & Horned | 20 |
+| `deep_time` | Deep Time | 20 |
+| `dino_spotter` | Dino Spotter (image IDs) | 39 |
+| `duck_bills_and_herds` | Duck-Bills & Herds | 16 |
+| `gentle_giants` | Gentle Giants (sauropods) | 14 |
+
+**Answer Type Pools (5):**
+
+| Pool ID | Format | Facts |
+|---|---|---|
+| `dinosaur_names` | name | 104 |
+| `geological_periods` | term | 34 |
+| `bracket_numbers` | bracket_number | 36 |
+| `clade_names` | term | 5 |
+| `paleontologist_names` | name | 8 |
+
+**Synonym Groups (5):** tyrannosaurus_names, apatosaurus_brontosaurus_names, ichthyosaurus_names, plesiosaurus_names, mosasaurus_names
+
+**Image facts:** 39 (all in `dino_spotter` theme, `quizMode: image_question`, assets at `/assets/dinosaurs/*.webp`)
+
+**Difficulty:** 1=17, 2=50, 3=83, 4=36, 5=1
+
+**Source WIP files:** `data/decks/_wip/dino_apex_predators.json` (55), `data/decks/_wip/dino_herbivores.json` (50), `data/decks/_wip/dino_sky_sea_deep_images.json` (82)
+
+---
+
+## world_wonders Deck
+
+`data/decks/world_wonders.json` — assembled 2026-04-01 from 4 WIP partial files.
+
+| Field | Value |
+|---|---|
+| `id` | `world_wonders` |
+| `domain` | `geography` |
+| `subDomain` | `wonders_landmarks` |
+| `facts` | 195 |
+| `minimumFacts` | 120 |
+| `targetFacts` | 200 |
+
+**SubDecks (8):**
+
+| SubDeck ID | Name | chainThemeId | Facts |
+|---|---|---|---|
+| `ancient_wonders` | Ancient Wonders | 0 | 21 |
+| `sacred_monuments` | Sacred Monuments | 1 | 18 |
+| `towers_skyscrapers` | Towers & Skyscrapers | 2 | 25 |
+| `bridges_dams` | Bridges & Dams | 3 | 28 |
+| `palaces_castles` | Palaces & Castles | 4 | 26 |
+| `monuments_memorials` | Monuments & Memorials | 5 | 23 |
+| `natural_wonders` | Natural Wonders | 6 | 26 |
+| `modern_marvels` | Modern Marvels | 7 | 28 |
+
+**Answer Type Pools (7):** landmark_names (8), location_country (7), architect_designer (22), year_date (28), measurement_number (92), material_feature (21), person_historical (17)
+
+**Synonym Groups (6):** syn_big_ben, syn_statue_liberty, syn_northern_lights, syn_everest, syn_hagia_sophia, syn_forbidden_city
+
+**Difficulty:** easy=55, medium=99, hard=41
+
+**Assembly script:** `data/decks/_wip/assemble-world-wonders.mjs` — reads the 4 WIP partial fact files, merges them, strips WIP-only fields (subDeckId, statement, wowFactor, categoryL1/2, tags), builds all metadata, and writes the final JSON.
+
+**QA fix script (2026-04-01):** `data/decks/_wip/fix-world-wonders.mjs` — fixed 97 unsafe distractors (pool collision), merged `location_city` pool (2 facts) into `location_country`, and added 1 distractor to each of `ww_anc_parthenon_architect` and `ww_sac_hagia_sophia_architects`. All 12 QA checks now pass.
 
 ---
 

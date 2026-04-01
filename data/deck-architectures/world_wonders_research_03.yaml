@@ -1,0 +1,363 @@
+# World Wonders & Landmarks — Research File 03
+# Subdecks: Palaces & Castles, Monuments & Memorials
+# Researcher: content-agent, 2026-04-01
+# All facts verified against Wikipedia/Wikidata sources listed per landmark.
+# Workers are FORMATTERS only — do NOT invent or extrapolate beyond this file.
+
+---
+
+subdeck_4_palaces_and_castles:
+
+  Palace_of_Versailles:
+    location: "Versailles, France"
+    date_built: "1661 (construction began); major expansions through 1710"
+    architect_designer: "Louis Le Vau, Jules Hardouin-Mansart, André Le Nôtre (gardens)"
+    dimensions: "800 hectares total estate; 2,143 windows, 1,252 chimneys, 67 staircases"
+    key_facts:
+      - "Commissioned by King Louis XIV, who moved the royal court here in 1682"
+      - "Contains approximately 700 rooms (source article cites 700; palace has 2,143 windows)"
+      - "The Hall of Mirrors (Galerie des Glaces) runs nearly the full length of the garden facade; added 1678–1684"
+      - "The Treaty of Versailles ending World War I was signed in the Hall of Mirrors on 28 June 1919"
+      - "About 15 million people visit annually, making it one of the most visited sites in the world"
+    fun_facts:
+      - "Louis XIV was so devoted to Versailles that he once said he was born to be a king — and built a palace to prove it: the palace has 2,143 windows, 1,252 chimneys, and 67 staircases"
+    unesco: true
+    unesco_year: 1979
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Palace_of_Versailles"
+
+  Forbidden_City:
+    location: "Beijing, China"
+    date_built: "1406–1420 (Ming dynasty; construction ordered by Emperor Yongle)"
+    architect_designer: "Kuai Xiang (master builder)"
+    dimensions: "72 hectares; 980 buildings; approximately 8,886 rooms"
+    key_facts:
+      - "Served as the imperial palace for 24 emperors of the Ming and Qing dynasties"
+      - "Was the center of Chinese political power for over 500 years (1420 to 1924)"
+      - "Described as the largest preserved palatial complex still standing in the world"
+      - "Now administered by the Palace Museum and receives approximately 17 million visitors per year"
+      - "UNESCO World Heritage Site since 1987"
+    fun_facts:
+      - "The Forbidden City contains 980 buildings with approximately 8,886 rooms — it was believed that having fewer rooms than heaven (9,999.5) showed appropriate imperial humility"
+    unesco: true
+    unesco_year: 1987
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Forbidden_City"
+
+  Neuschwanstein_Castle:
+    location: "Hohenschwangau (Schwangau municipality), Bavaria, Germany"
+    date_built: "1869–1892 (construction began 5 September 1869; opened to public after Ludwig II's death in 1886)"
+    architect_designer: "Eduard Riedel (architect); Ludwig II and Christian Jank (designers/concept)"
+    dimensions: "65 metres tall (Guinness World Records: tallest castle in the world)"
+    key_facts:
+      - "Built by King Ludwig II of Bavaria as a private retreat and tribute to composer Richard Wagner"
+      - "Ludwig II paid from personal fortune and loans — he died in 1886 before the castle was completed"
+      - "Opened to the public shortly after Ludwig II's death; over 61 million visitors have since visited"
+      - "Widely cited as the inspiration for Walt Disney's Sleeping Beauty Castle at Disneyland (opened 1955)"
+      - "UNESCO World Heritage Site since 2025 as part of 'The Palaces of King Ludwig II of Bavaria'"
+    fun_facts:
+      - "Ludwig II lived in the castle for only 172 days before his mysterious death in 1886 — yet it became the most-visited castle in Europe"
+    unesco: true
+    unesco_year: 2025
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Neuschwanstein_Castle"
+
+  Alhambra:
+    location: "Granada, Spain"
+    date_built: "Construction began 1238 by Muhammad I Ibn al-Ahmar; most significant royal palaces built in 14th century under Yusuf I and Muhammad V"
+    architect_designer: "Nasrid dynasty builders (no single architect named)"
+    dimensions: "Situated on the Sabika hill of the Sierra Nevada; complex of palaces, gardens, and fortress towers"
+    key_facts:
+      - "Described as the only well-preserved palace from the medieval Islamic world"
+      - "One of the most famous examples of Islamic architecture, featuring intricate geometric tilework and muqarnas"
+      - "After the Christian Reconquista in 1492, became the royal court of Ferdinand and Isabella; Christopher Columbus received royal endorsement here"
+      - "Troops of Napoleon destroyed parts of it in 1812"
+      - "UNESCO World Heritage Site since 1984 (as 'Alhambra, Generalife and Albayzín, Granada')"
+    fun_facts:
+      - "Washington Irving's 1832 book 'Tales of the Alhambra', written while he lived inside the palace, sparked the Romantic era's fascination with Islamic Spain"
+    unesco: true
+    unesco_year: 1984
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Alhambra"
+
+  Tower_of_London:
+    location: "London, England (on the north bank of the River Thames)"
+    date_built: "Founded 1066 (end of year) as part of Norman Conquest; White Tower built by William the Conqueror in 1078"
+    architect_designer: "William the Conqueror (White Tower); later expansions under Richard I, Henry III, Edward I"
+    dimensions: "Castle grounds: 12 acres; Tower Liberties: 6 acres; White Tower height: 27 m"
+    key_facts:
+      - "Officially named 'His Majesty's Royal Palace and Fortress of the Tower of London'"
+      - "Served as royal residence, armory, treasury, mint, menagerie, and political prison over its history"
+      - "Houses the Crown Jewels of England, including the Koh-i-Noor diamond and the Imperial State Crown"
+      - "Famous legend holds that if the Tower's resident ravens ever leave, the Crown and the Tower will fall"
+      - "UNESCO World Heritage Site since 1988"
+    fun_facts:
+      - "Anne Boleyn and two of Henry VIII's other wives were executed within the Tower's walls — it's said their ghosts still walk the grounds at night"
+    unesco: true
+    unesco_year: 1988
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Tower_of_London"
+
+  Potala_Palace:
+    location: "Lhasa, Tibet Autonomous Region, China"
+    date_built: "1649 (construction of the modern palace, ordered by the 5th Dalai Lama; original fortress dates to 7th century)"
+    architect_designer: "Built under direction of the 5th Dalai Lama, Ngawang Lobsang Gyatso"
+    dimensions: "119 m above Marpo Ri (Red Mountain); over 300 m above the valley floor"
+    key_facts:
+      - "Named after Mount Potalaka, the mythical abode of the bodhisattva Avalokitesvara in Buddhist tradition"
+      - "Served as the winter palace of the Dalai Lamas from 1649 until the 14th Dalai Lama fled in 1959"
+      - "After 1959 and China's annexation of Tibet, became primarily a museum"
+      - "Built in the dzong style; contains chapels, living quarters, and tombs of past Dalai Lamas"
+      - "UNESCO World Heritage Site since 1994 (extended 2000 and 2001)"
+    fun_facts:
+      - "The palace stands at an altitude of approximately 3,700 meters (12,100 feet) above sea level — visiting it at full pace can cause altitude sickness"
+    unesco: true
+    unesco_year: 1994
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Potala_Palace"
+
+  Buckingham_Palace:
+    location: "Westminster, London, England"
+    date_built: "Core building ('Buckingham House') built 1703; became official royal residence on accession of Queen Victoria in 1837; East Front (current facade) added in 1913"
+    architect_designer: "John Nash, Edward Blore (19th-century enlargements); Aston Webb (1913 East Front)"
+    dimensions: "775 rooms; largest private garden in London"
+    key_facts:
+      - "The official London residence and administrative headquarters of the monarch of the United Kingdom"
+      - "Originally built in 1703 for the Duke of Buckingham and Normanby; purchased by George III in 1761"
+      - "Has 775 rooms including 19 state rooms, 52 royal and guest bedrooms, 188 staff bedrooms, 92 offices, and 78 bathrooms"
+      - "The Royal Standard flag flies when the monarch is in residence; the Union Flag flies when absent"
+      - "State rooms are open to the public during summer and selected winter/spring days"
+    fun_facts:
+      - "A German bomb destroyed the palace chapel during WWII — the site was rebuilt as the Queen's Gallery, now displaying works from the Royal Collection"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Buckingham_Palace"
+
+  Windsor_Castle:
+    location: "Windsor, Berkshire, England (approximately 40 km west of central London)"
+    date_built: "Original castle built in 11th century after Norman invasion; continuously occupied since Henry I (reigned 1100–1135)"
+    architect_designer: "William the Conqueror (original motte-and-bailey); numerous monarchs expanded it over centuries"
+    dimensions: "Grounds cover 13 acres; described as the longest-occupied palace in Europe"
+    key_facts:
+      - "The oldest and largest inhabited castle in the world; has been a royal residence for over 900 years"
+      - "Withstood a prolonged siege during the First Barons' War (early 13th century)"
+      - "Contains the 15th-century St George's Chapel, considered one of the supreme achievements of English Perpendicular Gothic architecture"
+      - "The Queen's private residence — Elizabeth II spent more nights here than at Buckingham Palace in her later years"
+      - "Grade I Listed Building and Scheduled Monument; not a UNESCO World Heritage Site"
+    fun_facts:
+      - "Over 40 monarchs have lived in Windsor Castle over its 950+ year history — more than any other royal residence on Earth"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Windsor_Castle"
+
+  Topkapi_Palace:
+    location: "Fatih district, Istanbul, Turkey"
+    date_built: "Construction began 1459 (ordered by Sultan Mehmed the Conqueror, six years after the conquest of Constantinople); completed 1465"
+    architect_designer: "Mehmed II, Alaüddin, Davud Ağa, Mimar Sinan (various phases)"
+    dimensions: "59,260 to 70,000 square metres; four main courtyards"
+    key_facts:
+      - "Served as the administrative center of the Ottoman Empire and main residence of its sultans from the 1460s to 1853"
+      - "Ottoman sultans lived here for approximately 400 years before moving to the newly built Dolmabahçe Palace in 1853"
+      - "After the end of the Ottoman Empire, a government decree of 3 April 1924 transformed Topkapi into a museum"
+      - "The Treasury houses the Spoonmaker's Diamond (Kasikci Elmasi), an 86-carat diamond, and the Topkapi Dagger"
+      - "UNESCO World Heritage Site since 1985 as part of the 'Historic Areas of Istanbul'"
+    fun_facts:
+      - "The Topkapi harem housed hundreds of women of the Ottoman imperial household — at its peak it was a city-within-a-city with its own schools, mosques, and baths"
+    unesco: true
+    unesco_year: 1985
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Topkap%C4%B1_Palace"
+
+  Himeji_Castle:
+    location: "Himeji, Hyogo Prefecture, Japan"
+    date_built: "Original fort 1333; major expansions 1581 (Toyotomi Hideyoshi), 1601–1609 (Ikeda Terumasa), 1617–1618 (Honda Tadamasa)"
+    architect_designer: "Akamatsu Norimura (1333 original); Ikeda Terumasa oversaw the 1601–1609 construction of the main keep"
+    dimensions: "Height of main keep: 46.4 m (152 ft); 83 structures; 107 hectares UNESCO site area"
+    key_facts:
+      - "Regarded as the finest surviving example of prototypical Japanese castle architecture"
+      - "Known as 'Hakuro-jo' or 'Shirasagi-jo' (White Egret/White Heron Castle) for its brilliant white exterior"
+      - "Survived World War II intact — Allied bombing that destroyed much of Himeji city in 1945 left the castle undamaged"
+      - "Comprises a network of 83 structures with advanced defensive systems from Japan's feudal period"
+      - "UNESCO World Heritage Site since 1993"
+    fun_facts:
+      - "The main tower has a false 'dummy' floor visible from outside — attackers who counted windows thought they knew the floor plan, but the interior layout was deliberately deceptive"
+    unesco: true
+    unesco_year: 1993
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Himeji_Castle"
+
+
+subdeck_5_monuments_and_memorials:
+
+  Statue_of_Liberty:
+    location: "Liberty Island, New York Harbor, New York, USA"
+    date_built: "Dedicated 28 October 1886"
+    architect_designer: "Frédéric Auguste Bartholdi (sculptor); Gustave Eiffel (internal iron framework); Richard Morris Hunt (pedestal)"
+    dimensions: "Copper statue from heel to torch: 46.1 m (151 ft 1 in); total height from ground to torch tip: 93.1 m (305 ft 1 in)"
+    key_facts:
+      - "A gift to the United States from the people of France, symbolizing friendship between the two nations"
+      - "Depicts a robed and crowned woman (Libertas, the Roman goddess of freedom) holding a torch and a tablet inscribed with July 4, 1776"
+      - "Gustave Eiffel engineered the internal iron framework — the same engineer who later built the Eiffel Tower"
+      - "The copper skin has oxidized to its famous green color (verdigris) from its original reddish-brown"
+      - "UNESCO World Heritage Site since 1984"
+    fun_facts:
+      - "The statue's full official name is 'Liberty Enlightening the World' — most people don't know it has a formal name at all"
+    unesco: true
+    unesco_year: 1984
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Statue_of_Liberty"
+
+  Christ_the_Redeemer:
+    location: "Corcovado mountain, Rio de Janeiro, Brazil"
+    date_built: "Constructed 1922–1931; inaugurated 12 October 1931"
+    architect_designer: "Paul Landowski (sculptor); Heitor da Silva Costa (engineer); Albert Caquot (French engineer collaborator); Gheorghe Leonida (face sculptor)"
+    dimensions: "Statue height: 30 m (98 ft); pedestal: 8 m (26 ft); arm span: 28 m (92 ft); total with pedestal: 38 m (125 ft)"
+    key_facts:
+      - "Art Deco statue of Jesus Christ, made of reinforced concrete and soapstone"
+      - "Stands on Corcovado mountain at 710 m above sea level, overlooking the city of Rio de Janeiro"
+      - "The statue faces east, arms outstretched in a welcoming gesture toward the city"
+      - "Original design showed Christ holding a globe in one hand and a cross in the other — the final arms-wide design was chosen later"
+      - "One of the New Seven Wonders of the World (voted 2007)"
+    fun_facts:
+      - "The statue is struck by lightning approximately three to five times per year — a lightning rod is built into the top of the right thumb"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)"
+
+  Mount_Rushmore:
+    location: "Black Hills near Keystone, South Dakota, USA"
+    date_built: "Carving 1927–1941 (Gutzon Borglum directed until his death in March 1941; his son Lincoln Borglum completed it)"
+    architect_designer: "Gutzon Borglum (sculptor/designer); Lincoln Borglum (completed)"
+    dimensions: "60-foot-tall (18 m) faces; mountain elevation: 5,725 feet (1,745 m); memorial park: 1,278 acres"
+    key_facts:
+      - "Features 60-foot depictions of four US presidents: George Washington, Thomas Jefferson, Theodore Roosevelt, and Abraham Lincoln"
+      - "The four presidents were chosen to represent the nation's foundation (Washington), expansion (Jefferson), development (Roosevelt), and preservation (Lincoln)"
+      - "Sculptor Gutzon Borglum named the monument 'The Shrine of Democracy'"
+      - "Attracts more than two million visitors annually"
+      - "Construction took approximately 14 years and used dynamite to remove roughly 450,000 tons of rock"
+    fun_facts:
+      - "A secret room was blasted behind Lincoln's head to serve as a 'Hall of Records' storing US historical documents — it was never finished and remains empty today"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Mount_Rushmore"
+
+  Lincoln_Memorial:
+    location: "National Mall, Washington, D.C., USA (western end)"
+    date_built: "Dedicated 30 May 1922; architect Henry Bacon; statue designed by Daniel Chester French in 1920, carved by the Piccirilli brothers"
+    architect_designer: "Henry Bacon (architect); Daniel Chester French (statue sculptor)"
+    dimensions: "Building: 57.8 m x 36.1 m footprint; 30.2 m tall; 36 exterior Doric columns, each 13.4 m tall"
+    key_facts:
+      - "A neoclassical temple honoring Abraham Lincoln, the 16th President of the United States"
+      - "Surrounded by a peristyle of 36 fluted Doric columns — one for each of the 36 states in the Union at the time of Lincoln's death in 1865"
+      - "The marble statue of Lincoln inside the central chamber is 5.8 m (19 ft) tall"
+      - "Lincoln's two most famous speeches — the Gettysburg Address and his Second Inaugural Address — are inscribed on the interior walls"
+      - "Martin Luther King Jr. delivered his 'I Have a Dream' speech from the Lincoln Memorial steps in 1963"
+    fun_facts:
+      - "The 36 exterior columns represent states at Lincoln's death, while 48 stone festoons above them represent the 48 states when the memorial was built in 1922 — the U.S. has since added two more"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Lincoln_Memorial"
+
+  Arc_de_Triomphe:
+    location: "Place Charles de Gaulle (formerly Place de l'Etoile), Paris, France"
+    date_built: "Commissioned 1806 by Napoleon after victory at Austerlitz; completed 1836 (Napoleon never saw it finished)"
+    architect_designer: "Jean-François Chalgrin (architect; died 1811 before completion)"
+    dimensions: "Height: 49.54 m (162.5 ft); width: 44.82 m; depth: 22.21 m"
+    key_facts:
+      - "Commissioned by Emperor Napoleon to honor French armies who fought in the Revolutionary and Napoleonic Wars"
+      - "The names of French victories and generals are engraved on its inner and outer surfaces"
+      - "Beneath its vault lies the Tomb of the Unknown Soldier from World War I, marked by an eternal flame"
+      - "Located at the center of a 12-avenue star-shaped road intersection (the 'Etoile')"
+      - "Napoleon's funeral cortege passed under the Arc in 1840, 19 years after his death"
+    fun_facts:
+      - "Napoleon commissioned the Arc in 1806 but it wasn't finished until 1836 — he only ever saw a full-scale painted canvas model of it, erected for his 1810 marriage to Marie-Louise"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Arc_de_Triomphe"
+
+  Moai:
+    location: "Rapa Nui (Easter Island), Chile (eastern Polynesia)"
+    date_built: "Carved between approximately 1250 and 1500 CE by the Rapa Nui people"
+    architect_designer: "Rapa Nui people (no individual attribution)"
+    dimensions: "More than 900 statues; tallest erected moai (Paro): approximately 10 m (33 ft) tall and 82 tonnes; heaviest erected moai at Ahu Tongariki: 86 tonnes; one unfinished moai would be approximately 21 m tall"
+    key_facts:
+      - "Monolithic human figures carved from volcanic tuff (compressed volcanic ash) from the Rano Raraku quarry"
+      - "Nearly half of all moai remain at Rano Raraku, the main quarry; hundreds were transported around the island's perimeter and placed on stone platforms called ahu"
+      - "The moai represent the living faces of deified ancestors ('aringa ora ata tepuna' in Rapa Nui language)"
+      - "All moai had toppled by the late 19th century; many have since been re-erected"
+      - "Rapa Nui National Park (which includes the moai) is a UNESCO World Heritage Site since 1995"
+    fun_facts:
+      - "For decades scholars debated how the Rapa Nui transported the giant statues — experiments in 2012 showed they could be 'walked' upright using ropes, which aligns with Rapa Nui oral tradition that the statues 'walked' to their positions"
+    unesco: true
+    unesco_year: 1995
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Moai"
+
+  Gateway_of_India:
+    location: "Mumbai (Bombay), Maharashtra, India (on the waterfront)"
+    date_built: "Foundation stone laid 31 March 1913; construction completed and inaugurated 4 December 1924"
+    architect_designer: "George Wittet (architect)"
+    dimensions: "Height: 26 m (85 ft); diameter of central dome: 15 m (49 ft)"
+    key_facts:
+      - "An arch-monument built to commemorate the landing of King George V and Queen Mary in December 1911 for his coronation as Emperor of India — the first British monarch to visit India"
+      - "Built in the Indo-Saracenic style, inspired by 16th-century Gujarati architecture; made of basalt"
+      - "The final design by architect George Wittet was sanctioned in 1914; construction took until 1924"
+      - "The last British troops to leave India marched through the Gateway in February 1948, following Indian independence"
+      - "Situated opposite the iconic Taj Mahal Palace Hotel, overlooking the Arabian Sea"
+    fun_facts:
+      - "The Gateway was built to welcome British rulers to India — within 24 years of its completion, the British were marching out through it for the last time"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Gateway_of_India"
+
+  Brandenburg_Gate:
+    location: "Pariser Platz, Berlin, Germany"
+    date_built: "Built 1788–1791 by order of King Frederick William II of Prussia"
+    architect_designer: "Carl Gotthard Langhans (architect); Johann Gottfried Schadow (quadriga bronze sculpture)"
+    dimensions: "Neoclassical gate with 12 Doric columns; the gate itself is 26 m tall and 65.5 m wide"
+    key_facts:
+      - "An 18th-century neoclassical monument, built on the site of a former city gate marking the road from Berlin to Brandenburg an der Havel"
+      - "The bronze quadriga (four-horse chariot) atop the gate was designed by sculptor Johann Gottfried Schadow"
+      - "Napoleon seized the quadriga as war booty in 1806; it was returned to Berlin in 1814 after his defeat"
+      - "During the Cold War, the gate stood in the no-man's land between East and West Berlin, inaccessible from either side"
+      - "Became a powerful symbol of German reunification when the Berlin Wall fell on 9 November 1989"
+    fun_facts:
+      - "The Brandenburg Gate is the only surviving one of Berlin's original 18 city gates — it has witnessed Napoleon's triumph, two world wars, and the fall of the Berlin Wall"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Brandenburg_Gate"
+
+  Washington_Monument:
+    location: "National Mall, Washington, D.C., USA"
+    date_built: "Construction began 1848; halted 1854 due to funding shortfall (and political dispute with the Know-Nothing party); resumed 1879; completed and opened 9 October 1884"
+    architect_designer: "Robert Mills (original design); Thomas Lincoln Casey (U.S. Army Corps of Engineers, oversaw 1879–1884 completion)"
+    dimensions: "Height: 554 ft 7 in (169.046 m); tallest obelisk in the world"
+    key_facts:
+      - "A 555-foot (169 m) obelisk built to commemorate George Washington, Founding Father and first U.S. president"
+      - "Visible two-tone coloration of the exterior marble results from the 25-year construction interruption (1854–1879): the marble quarried for the resumed construction was from a slightly different source"
+      - "Was the world's tallest structure from its completion in 1884 until surpassed by the Eiffel Tower in 1889"
+      - "The third tallest monumental column in the world (after the Juche Tower in Pyongyang and the San Jacinto Monument in Texas)"
+      - "A lightning rod runs through the aluminum apex cap at its tip"
+    fun_facts:
+      - "The Washington Monument is an obelisk — the same ancient Egyptian form used for monuments thousands of years earlier — but its construction was interrupted for so long that its exterior shows a visible color change halfway up"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Washington_Monument"
+
+  Taj_Mahal:
+    location: "Agra, Uttar Pradesh, India (on the right bank of the river Yamuna)"
+    date_built: "Commissioned 1631 by Emperor Shah Jahan; construction 1631–1653"
+    architect_designer: "Ustad Ahmad Lahori (primary architect)"
+    dimensions: "Main dome height: 73 m (240 ft); complex: 17 hectares (42 acres)"
+    key_facts:
+      - "An ivory-white marble mausoleum commissioned by Mughal Emperor Shah Jahan to house the tomb of his wife Mumtaz Mahal, who died in 1631; Shah Jahan himself is also entombed here"
+      - "Built in Mughal architecture style, blending Persian, Islamic, and Indian elements"
+      - "The main mausoleum sits at the center of a 17-hectare complex including a mosque, guest house, and formal gardens"
+      - "Approximately 20,000 artisans and craftsmen worked on its construction"
+      - "UNESCO World Heritage Site since 1983; considered one of the finest examples of Mughal architecture"
+    fun_facts:
+      - "The minarets of the Taj Mahal lean slightly outward — deliberately designed so that if they fall in an earthquake, they will collapse away from the main tomb rather than onto it"
+    unesco: true
+    unesco_year: 1983
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Taj_Mahal"

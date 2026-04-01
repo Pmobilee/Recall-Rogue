@@ -1,0 +1,372 @@
+# World Wonders & Landmarks — Research File 02
+# Subdeck 2: Towers & Skyscrapers
+# Subdeck 3: Bridges & Dams
+#
+# ALL facts verified from Wikipedia. Source URLs listed per landmark.
+# Researcher: content-agent, 2026-04-01
+# DO NOT generate facts from this file without checking source URLs.
+
+subdeck_2_towers_skyscrapers:
+
+  Eiffel_Tower:
+    location: "Paris, France"
+    coordinates: "48.8584, 2.2945"
+    date_built: "1887–1889"
+    architect_designer: "Gustave Eiffel (engineer)"
+    dimensions: "330 m (1,083 ft) tall including antenna; base square 125 m per side"
+    key_facts:
+      - "Built as the centrepiece of the 1889 World's Fair, celebrating the centennial of the French Revolution"
+      - "Held the record as the world's tallest human-made structure for 41 years until the Chrysler Building was completed in 1930"
+      - "Made of wrought iron; locally nicknamed 'La dame de fer' (Iron Lady)"
+      - "Was the first structure in the world to surpass both the 200-metre and 300-metre height marks"
+      - "Named a UNESCO World Heritage Site as part of 'Paris, Banks of the Seine' in 1991"
+    fun_facts:
+      - "Gustave Eiffel had a private apartment built at the very top of the tower where he entertained guests including Thomas Edison"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Eiffel_Tower"
+
+  Burj_Khalifa:
+    location: "Dubai, United Arab Emirates"
+    coordinates: "25.1972, 55.2744"
+    date_built: "2004–2010 (opened January 4, 2010)"
+    architect_designer: "Skidmore, Owings & Merrill"
+    dimensions: "829.8 m (2,722 ft) total height; roof height 828 m (2,717 ft)"
+    key_facts:
+      - "World's tallest structure and tallest building since topping out in 2009, surpassing Taipei 101"
+      - "Designed by Skidmore, Owings & Merrill; 163 floors above ground"
+      - "Named after UAE President Khalifa bin Zayed Al Nahyan"
+      - "Contains the world's highest occupied floor and highest outdoor observation deck (at the time of opening)"
+      - "Megatall skyscraper — one of very few structures exceeding 600 m"
+    fun_facts:
+      - "The Burj Khalifa is so tall that residents on upper floors can see the sunset twice — once from ground level and again by quickly taking an elevator to the top"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Burj_Khalifa"
+
+  Empire_State_Building:
+    location: "Midtown Manhattan, New York City, USA"
+    coordinates: "40.7484, -73.9857"
+    date_built: "1930–1931"
+    architect_designer: "Shreve, Lamb & Harmon (Art Deco style)"
+    dimensions: "443.2 m (1,454 ft) total including antenna; roof height 380 m (1,250 ft); 102 stories"
+    key_facts:
+      - "Constructed between 1930 and 1931; built in just 410 days"
+      - "Was the world's tallest building until the North Tower of the World Trade Center was topped out in 1970"
+      - "Designed in the Art Deco style; name comes from New York state's nickname 'Empire State'"
+      - "Regained status as NYC's tallest building after September 11, 2001 attacks until One World Trade Center surpassed it in 2012"
+      - "As of 2025, the 59th-tallest completed skyscraper in the world"
+    fun_facts:
+      - "The Empire State Building was completed so quickly that it averaged over 4 floors of construction per week during its peak"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Empire_State_Building"
+
+  Leaning_Tower_of_Pisa:
+    location: "Pisa, Italy"
+    coordinates: "43.7230, 10.3966"
+    date_built: "Construction began 1173; completed in stages through ~14th century"
+    architect_designer: "Bonanno Pisano (attributed, disputed)"
+    dimensions: "Height 55.86 m (183 ft 3 in) on low side; 56.67 m (185 ft 11 in) on high side; lean ~3.97 degrees"
+    key_facts:
+      - "Is the freestanding bell tower (campanile) of Pisa Cathedral; one of three structures in the Piazza del Duomo"
+      - "Began to lean during construction due to soft soil that could not support the structure's weight"
+      - "By 1990, the tilt had reached 5.5 degrees; stabilised by remedial work between 1993 and 2001, reducing tilt to 3.97 degrees"
+      - "Weighs an estimated 14,500 tonnes; has 296 steps to the top"
+      - "Part of the Piazza del Duomo, a UNESCO World Heritage Site"
+    fun_facts:
+      - "The lean, which was originally an engineering flaw, became the tower's most famous feature and now draws over 5 million visitors per year"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa"
+
+  CN_Tower:
+    location: "Toronto, Ontario, Canada"
+    coordinates: "43.6426, -79.3871"
+    date_built: "Construction began February 6, 1973; completed 1976"
+    architect_designer: "Foundation Company of Canada (construction); Canron of Etobicoke (steel and antenna)"
+    dimensions: "553.3 m (1,815.3 ft) tall"
+    key_facts:
+      - "Completed in 1976; held the record for the world's tallest free-standing structure for 32 years (1975–2007) until surpassed by the Burj Khalifa"
+      - "Was the world's tallest tower until 2009, when surpassed by the Canton Tower in Guangzhou"
+      - "Name 'CN' originally stood for Canadian National, the railway company that built it"
+      - "Contains a revolving restaurant at approximately 350 m (1,150 ft) elevation"
+      - "Attracts more than 2 million international visitors annually"
+    fun_facts:
+      - "The CN Tower contains 40,500 m³ of concrete, all of which was mixed on-site to ensure batch consistency"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/CN_Tower"
+
+  Tokyo_Tower:
+    location: "Shiba-koen, Minato, Tokyo, Japan"
+    coordinates: "35.6586, 139.7454"
+    date_built: "Completed 1958"
+    architect_designer: "Nikken Sekkei (design firm)"
+    dimensions: "332.9 m (1,092 ft) tall"
+    key_facts:
+      - "Completed in 1958; was the tallest tower in Japan until Tokyo Skytree surpassed it in 2012"
+      - "A lattice tower inspired by the Eiffel Tower; painted white and international orange to comply with air safety regulations"
+      - "Serves as a communications and observation tower in the Minato ward of Tokyo"
+      - "Weighs 4,000 tonnes — about 3,300 tonnes less than the Eiffel Tower despite being taller"
+      - "Houses two observation decks: the main deck at 150 m and the special observatory at 250 m"
+    fun_facts:
+      - "Tokyo Tower was built from steel melted down from US military tanks used during the Korean War"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Tokyo_Tower"
+
+  Big_Ben_Elizabeth_Tower:
+    location: "Palace of Westminster, London, England, UK"
+    coordinates: "51.5007, -0.1246"
+    date_built: "Completed 1859; renamed Elizabeth Tower in 2012"
+    architect_designer: "Augustus Pugin and Sir Charles Barry (Perpendicular Gothic style)"
+    dimensions: "96 m (316 ft) tall; clock dials 6.9 m (22.5 ft) in diameter; base 12 m (40 ft) square"
+    key_facts:
+      - "The tower was completed in 1859; the name 'Big Ben' technically refers to the Great Bell, which weighs 13.5 long tons (13.7 tonnes)"
+      - "Renamed from Clock Tower to Elizabeth Tower in 2012 to mark Queen Elizabeth II's Diamond Jubilee"
+      - "Designed by Augustus Pugin in the Perpendicular Gothic style; climb from ground to belfry is 334 steps"
+      - "The clock mechanism was the largest and most accurate four-faced striking clock in the world upon completion"
+      - "Designated a UNESCO World Heritage Site in 1987 as part of the Palace of Westminster"
+    fun_facts:
+      - "The Great Clock's accuracy is maintained by adding or removing pre-decimal pennies from the pendulum — each penny changes the clock's speed by 0.4 seconds per day"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Big_Ben"
+
+  Shanghai_Tower:
+    location: "Lujiazui, Pudong, Shanghai, China"
+    coordinates: "31.2355, 121.5010"
+    date_built: "Groundbreaking November 29, 2008; completed 2015; opened February 2015"
+    architect_designer: "Gensler (international design firm); owned by Shanghai Municipal Government"
+    dimensions: "632 m (2,073 ft) tall; 128 stories"
+    key_facts:
+      - "Currently the tallest building in China and the world's third-tallest building by height to architectural top"
+      - "Tallest of the world's first triple-adjacent supertall buildings in Pudong (alongside Jin Mao Tower and Shanghai World Financial Center)"
+      - "Had the world's fastest elevators at 20.5 m/s (74 km/h) until surpassed by Guangzhou CTF Finance Center in 2017"
+      - "Was the tallest and largest LEED-CS Platinum certified building in the world from 2016 to 2025"
+      - "Divided into nine separate zones for office, retail and leisure use through tiered construction"
+    fun_facts:
+      - "The observation decks on the 118th and 119th floors sit at 546 m and 552 m above ground — among the highest publicly accessible points in the world"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Shanghai_Tower"
+
+  Petronas_Towers:
+    location: "Kuala Lumpur, Malaysia"
+    coordinates: "3.1579, 101.7116"
+    date_built: "Superstructure construction began April 1, 1994; spires completed March 1996; opened 1998"
+    architect_designer: "César Pelli (Argentine-American architect); structural system by Fazlur Rahman Khan's tube-in-tube design"
+    dimensions: "451.9 m (1,483 ft) tall; 88 stories each"
+    key_facts:
+      - "From 1996 to 2004, were the tallest buildings in the world until surpassed by Taipei 101"
+      - "Still the world's tallest twin skyscrapers"
+      - "Steel and glass facade designed to resemble motifs from Islamic art, reflecting Malaysia's Muslim heritage"
+      - "Connected by a double-decker skybridge on the 41st and 42nd floors — the highest two-story bridge in the world at the time"
+      - "Constructed largely of reinforced concrete rather than steel due to the high cost of importing steel to Malaysia"
+    fun_facts:
+      - "The towers were built by two different construction companies — one tower was built by a Japanese firm and the other by a Korean firm — and competed to finish first"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Petronas_Towers"
+
+  Space_Needle:
+    location: "Seattle Center, Seattle, Washington, USA"
+    coordinates: "47.6205, -122.3493"
+    date_built: "Built for the 1962 World's Fair; completed 1962"
+    architect_designer: "Edward E. Carlson (concept), John Graham Jr. (architect)"
+    dimensions: "184 m (605 ft) tall; 42 m (138 ft) wide; weighs 9,550 short tons"
+    key_facts:
+      - "Built for the 1962 World's Fair (Century 21 Exposition), which drew more than 2.3 million visitors"
+      - "At 605 ft (184 m), was once the tallest building west of the Mississippi River in the United States"
+      - "Designated a Seattle landmark by the city's Landmarks Preservation Board on April 19, 1999"
+      - "Built to withstand winds of up to 200 mph (320 km/h) and earthquakes of up to magnitude 9.0"
+      - "Elevators take visitors to the observation deck at 520 ft (160 m) above ground in 41 seconds"
+    fun_facts:
+      - "The Space Needle's observation deck and revolving restaurant were built to rotate 360 degrees — the restaurant completes one full rotation per hour"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Space_Needle"
+
+
+subdeck_3_bridges_dams:
+
+  Golden_Gate_Bridge:
+    location: "San Francisco, California, USA"
+    coordinates: "37.8199, -122.4783"
+    date_built: "Construction 1933–1937; opened May 27, 1937"
+    architect_designer: "Joseph Strauss (chief engineer); Leon Moisseiff, Irving Morrow, Charles Ellis (significant contributions)"
+    dimensions: "Main span 1,280 m (4,200 ft); total height 227 m (746 ft)"
+    key_facts:
+      - "Suspension bridge spanning the Golden Gate strait connecting San Francisco Bay and the Pacific Ocean"
+      - "Opened on May 27, 1937; at that time was both the longest and tallest suspension bridge in the world"
+      - "Held the title of longest suspension bridge until 1964; tallest until 1998"
+      - "Recognized by the American Society of Civil Engineers as one of the Wonders of the Modern World"
+      - "Carries both U.S. Route 101 and California State Route 1 across the strait; also open to pedestrians and cyclists"
+    fun_facts:
+      - "Frommer's travel guide describes the Golden Gate Bridge as 'possibly the most beautiful, certainly the most photographed, bridge in the world'"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+
+  Tower_Bridge:
+    location: "London, England, UK"
+    coordinates: "51.5055, -0.0754"
+    date_built: "Built 1886–1894; opened June 30, 1894"
+    architect_designer: "Horace Jones (architect); John Wolfe Barry (engineer); Henry Marc Brunel (assistance)"
+    dimensions: "290 m (940 ft) total length; two towers 65 m (213 ft) each"
+    key_facts:
+      - "A combined bascule, suspension, and (until 1960) cantilever bridge crossing the River Thames near the Tower of London"
+      - "Opened by Edward, Prince of Wales, and Alexandra, Princess of Wales, on June 30, 1894"
+      - "The bascules can open to allow tall ships to pass; originally hydraulically powered, converted to electro-hydraulic in 1972"
+      - "Carries 40,000 road crossings every day; part of the London Inner Ring Road"
+      - "Grade I listed building; sometimes confused with London Bridge, located about 800 m upstream"
+    fun_facts:
+      - "Tower Bridge is so often confused with London Bridge that it inspired a persistent urban legend about an American who supposedly purchased the wrong bridge"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Tower_Bridge"
+
+  Hoover_Dam:
+    location: "Black Canyon, Nevada/Arizona border, USA"
+    coordinates: "36.0156, -114.7378"
+    date_built: "Construction 1931–1936; dedicated September 30, 1935 by President Roosevelt"
+    architect_designer: "Six Companies, Inc. (construction consortium); U.S. Bureau of Reclamation (design)"
+    dimensions: "Height 221.4 m (726.4 ft); length 379 m (1,244 ft); base width 201 m (660 ft)"
+    key_facts:
+      - "A concrete arch-gravity dam on the Colorado River between Nevada and Arizona; constructed during the Great Depression (1931–1936)"
+      - "Dedicated on September 30, 1935 by President Franklin D. Roosevelt; turned over to the federal government on March 1, 1936 — more than two years ahead of schedule"
+      - "Impounds Lake Mead, the largest reservoir in the United States by volume"
+      - "Generates 2,078.8 MW of hydroelectric power for Nevada, Arizona, and California"
+      - "Attracts approximately 7 million tourists per year; originally called Boulder Dam until Congress restored the name Hoover Dam in 1947"
+    fun_facts:
+      - "Hoover Dam's construction cost over 100 lives, yet was completed more than two years ahead of its contracted schedule"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Hoover_Dam"
+
+  Panama_Canal:
+    location: "Panama (connecting Caribbean Sea to Pacific Ocean)"
+    coordinates: "9.0800, -79.6800"
+    date_built: "France began 1881; US took over 1904; opened August 15, 1914"
+    architect_designer: "US Army Corps of Engineers / Isthmian Canal Commission (US phase); original French attempt led by Ferdinand de Lesseps"
+    dimensions: "82 km (51 miles) long; original locks 33.5 m (110 ft) wide"
+    key_facts:
+      - "Artificial waterway connecting the Caribbean Sea with the Pacific Ocean across the Isthmus of Panama"
+      - "France began construction in 1881 but abandoned the project in 1889; the United States took over in 1904 and opened the canal on August 15, 1914"
+      - "Reduces the journey from the Arabian Sea to London by approximately 8,900 km (5,500 mi)"
+      - "A third, wider lane of locks was completed in May 2016 (expanded canal), allowing Neopanamax ships to transit"
+      - "Panamanian government took full control of the canal on December 31, 1999, following the 1977 Torrijos–Carter Treaties"
+    fun_facts:
+      - "A single ship passing through the Panama Canal uses an average of 200,000,000 litres (52 million US gallons) of fresh water per transit"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Panama_Canal"
+
+  Sydney_Harbour_Bridge:
+    location: "Sydney, Australia"
+    coordinates: "-33.8523, 151.2108"
+    date_built: "Construction 1923–1932; opened March 19, 1932"
+    architect_designer: "John Bradfield (NSW Dept of Public Works, director); Dorman Long of Middlesbrough, UK (design and construction)"
+    dimensions: "Arch span 504 m (1,654 ft); arch summit 134 m (440 ft) above sea level; deck width 48.8 m (160 ft)"
+    key_facts:
+      - "Steel through arch bridge spanning Sydney Harbour from the CBD to the North Shore; nicknamed 'the Coathanger'"
+      - "Opened on March 19, 1932; carries rail, vehicular, bicycle and pedestrian traffic"
+      - "The tallest steel arch bridge in the world, measuring 134 m (440 ft) from top to water level"
+      - "Was the world's widest long-span bridge at 48.8 m (160 ft) until completion of the Port Mann Bridge in Vancouver in 2012"
+      - "Total steelwork weight including arch and approach spans is 52,800 tonnes"
+    fun_facts:
+      - "The steel arch can rise by up to 18 cm (7 in) on hot days as the metal expands in the summer heat"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge"
+
+  Brooklyn_Bridge:
+    location: "New York City, USA (spanning East River between Manhattan and Brooklyn)"
+    coordinates: "40.7061, -73.9969"
+    date_built: "Construction began 1870; opened May 24, 1883"
+    architect_designer: "John A. Roebling (designer); Washington Roebling (chief engineer); Emily Warren Roebling (contributed engineering work)"
+    dimensions: "Main span 486.3 m (1,595.5 ft); deck 38.7 m (127 ft) above mean high water"
+    key_facts:
+      - "Opened May 24, 1883; was the first fixed crossing of the East River and the longest suspension bridge in the world at that time"
+      - "Designed by John A. Roebling; after Roebling was fatally injured in an accident, his son Washington Roebling took over as chief engineer"
+      - "Officially renamed the Brooklyn Bridge in 1915 (originally called the New York and Brooklyn Bridge)"
+      - "Designated a National Historic Landmark, a New York City landmark, and a National Historic Civil Engineering Landmark"
+      - "Cable-stayed suspension bridge; the cables and main towers are original from 1883 construction"
+    fun_facts:
+      - "Emily Warren Roebling, wife of the incapacitated chief engineer Washington Roebling, effectively managed the bridge's final years of construction — she was the first person to cross the completed bridge"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Brooklyn_Bridge"
+
+  Three_Gorges_Dam:
+    location: "Yiling District, Yichang, Hubei Province, China (on Yangtze River)"
+    coordinates: "30.8230, 111.0040"
+    date_built: "Dam body completed 2006; fully operational 2012; ship lift completed 2015"
+    architect_designer: "Chinese government / Yangtze River Three Gorges Water Conservancy Project"
+    dimensions: "Dam body 185 m (607 ft) high and 2,309 m (7,576 ft) wide"
+    key_facts:
+      - "Hydroelectric gravity dam on the Yangtze River; world's largest power station by installed capacity at 22,500 MW"
+      - "Dam body completed in 2006; the power plant became fully operational in 2012 when the last of 32 main turbines began production"
+      - "Each of the 32 main turbines generates 700 MW; combined capacity of 22,500 MW dwarfs the next-largest hydroelectric plant (Itaipu at 12,600 MW)"
+      - "Generates approximately 95 TWh of electricity per year; in 2020 produced nearly 112 TWh, breaking Itaipu's record"
+      - "Displaced between 1.13 million and 1.4 million people during construction"
+    fun_facts:
+      - "The Three Gorges reservoir is so large that scientists calculated its water mass measurably slows the Earth's rotation very slightly"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Three_Gorges_Dam"
+
+  Akashi_Kaikyo_Bridge:
+    location: "Kobe, Hyogo Prefecture, Japan (spanning Akashi Strait to Awaji Island)"
+    coordinates: "34.6287, 134.9934"
+    date_built: "Construction began 1988; completed 1998"
+    architect_designer: "Honshu-Shikoku Bridge Authority (Japan)"
+    dimensions: "Main span 1,991 m (6,532 ft); total length 3,911 m (12,831 ft)"
+    key_facts:
+      - "Suspension bridge linking the city of Kobe on Honshu to Iwaya, Awaji on Awaji Island across the Akashi Strait"
+      - "Completed in 1998; had the longest central span of any suspension bridge in the world until surpassed by the 1915 Çanakkale Bridge in Turkey (opened March 2022)"
+      - "Currently the second-longest suspension bridge main span in the world, at 1,991 m (6,532 ft)"
+      - "Part of the Kobe-Awaji-Naruto Expressway, one of three routes of the Honshū–Shikoku Bridge Project"
+      - "Built to withstand typhoons, strong currents, and earthquakes — designed after two ferry disasters in the Akashi Strait in 1945 and 1955"
+    fun_facts:
+      - "During construction, the 1995 Great Hanshin earthquake shifted one of the bridge's towers by about 1 metre, requiring engineers to redesign the bridge on the fly"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Akashi_Kaikyo_Bridge"
+
+  Millau_Viaduct:
+    location: "Millau, Aveyron, Occitanie, France"
+    coordinates: "44.0791, 3.0225"
+    date_built: "Built 2001–2004; inaugurated December 14, 2004; opened to traffic December 16, 2004"
+    architect_designer: "Michel Virlogeux (engineer); Norman Foster (architect)"
+    dimensions: "Structural height 343 m (1,125 ft); tallest pier 245 m (804 ft); total length 2,460 m (8,071 ft)"
+    key_facts:
+      - "Multi-span cable-stayed bridge across the gorge valley of the Tarn River, part of the A75–A71 autoroute from Paris to Béziers"
+      - "Stood as the tallest bridge in the world for over two decades (2004–late 2025) with a structural height of 343 m"
+      - "Formally inaugurated on December 14, 2004 and opened to traffic two days later; construction cost approximately €394 million"
+      - "Designed by engineer Michel Virlogeux and English architect Norman Foster"
+      - "Received the 2006 Outstanding Structure Award from the International Association for Bridge and Structural Engineering"
+    fun_facts:
+      - "At its highest point, the Millau Viaduct deck sits higher than the Eiffel Tower — drivers cross it at an elevation above the clouds on misty mornings"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Millau_Viaduct"
+
+  Suez_Canal:
+    location: "Egypt (connecting Mediterranean Sea to Red Sea through the Isthmus of Suez)"
+    coordinates: "30.5, 32.3"
+    date_built: "Construction 1859–1869; officially opened November 17, 1869"
+    architect_designer: "Ferdinand de Lesseps (organiser); Compagnie de Suez (builder)"
+    dimensions: "193.30 km (120.11 mi) long"
+    key_facts:
+      - "Artificial sea-level waterway connecting the Mediterranean Sea to the Red Sea; no locks — ships float directly through at sea level"
+      - "Construction lasted from 1859 to 1869; the canal officially opened on November 17, 1869"
+      - "Reduces the journey from the Arabian Sea to London by approximately 8,900 km (5,500 mi)"
+      - "In 2021, more than 20,600 vessels traversed the canal (average of 56 per day)"
+      - "President Nasser nationalised the canal in July 1956, triggering the Suez Crisis; the canal is now operated by the state-owned Suez Canal Authority"
+    fun_facts:
+      - "In March 2021, the container ship Ever Given ran aground and blocked the canal for six days, holding up an estimated $9.6 billion of global trade per day"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Suez_Canal"

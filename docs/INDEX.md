@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-03-31
+> **Last rebuilt:** 2026-04-01
 
 ---
 
@@ -59,6 +59,7 @@
 | [fact-pipeline](content/fact-pipeline.md) | `Fact` data format, `facts.db` SQLite build pipeline, `factsDB` runtime service, and content production workflow |
 | [domains](content/domains.md) | All knowledge domains, subcategory taxonomy, domain resolution logic, and language vs. knowledge domain distinction |
 | [content-strategy](content/CONTENT_STRATEGY.md) | Content strategy and production pipeline overview |
+| [image-quiz-assets](content/image-quiz-assets.md) | Image asset library for `quizMode: 'image_question'` — dinosaur set (39 species), manifest format, license notes |
 | [enemy-animations](content/ENEMY-ANIMATIONS.md) | Enemy sprite animation states and definitions (114KB reference) |
 | [art-backgrounds](content/ART_BRIEF_BACKGROUNDS.md) | Background art requirements and briefs |
 | [sprite-pipeline](content/SPRITE_PIPELINE.md) | Sprite generation and processing pipeline |

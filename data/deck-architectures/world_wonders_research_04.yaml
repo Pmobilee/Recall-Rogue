@@ -1,0 +1,394 @@
+# World Wonders & Landmarks — Verified Research Data
+# Subdecks 6 (Natural Wonders) and 7 (Modern Marvels)
+# All facts verified from Wikipedia sources — DO NOT generate from LLM knowledge
+# Research date: 2026-04-01
+
+---
+
+subdeck_6_natural_wonders:
+  description: "Ten of Earth's most spectacular natural wonders"
+
+  Grand_Canyon:
+    location: "Arizona, United States"
+    coordinates: "36.3°N, 112.75°W"
+    date_built: "natural formation — carved over ~5-6 million years by Colorado River"
+    architect_designer: "N/A — natural"
+    dimensions: "277 miles (446 km) long; up to 18 miles (29 km) wide; over 1 mile (1,857 m / 6,093 ft) deep"
+    key_facts:
+      - "Carved by the Colorado River in Arizona; 277 miles (446 km) long, up to 18 miles wide, over 1 mile deep (6,093 ft / 1,857 m)"
+      - "Exposes nearly 2 billion years of Earth's geological history in its rock layers"
+      - "The Colorado River established its current course through the canyon approximately 5 to 6 million years ago"
+      - "First European to view it was Spanish explorer García López de Cárdenas in 1540"
+      - "The Pueblo people considered the Grand Canyon a holy site and made pilgrimages to it for thousands of years"
+      - "Became Grand Canyon National Park in 1919; designated a UNESCO World Heritage Site in 1979"
+    fun_facts:
+      - "The canyon walls expose rock strata spanning nearly 2 billion years — nearly half the age of the Earth itself"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Grand_Canyon"
+
+  Great_Barrier_Reef:
+    location: "Coral Sea, off Queensland coast, Australia"
+    coordinates: "approx. 18°S, 147°E (central region)"
+    date_built: "natural formation — current reef system approx. 6,000–8,000 years old; older reef systems millions of years old"
+    architect_designer: "N/A — built by coral polyps"
+    dimensions: "over 2,300 km (1,400 mi) long; area of approximately 344,400 km² (133,000 sq mi); separated from coast by channel up to 160 km wide and over 61 m deep"
+    key_facts:
+      - "World's largest coral reef system, composed of over 2,900 individual reefs and 900 islands"
+      - "Stretches over 2,300 km (1,400 mi) along the coast of Queensland, Australia"
+      - "Can be seen from outer space — the world's biggest single structure made by living organisms"
+      - "Built by billions of tiny organisms called coral polyps"
+      - "Designated a UNESCO World Heritage Site in 1981"
+      - "CNN listed it as one of the Seven Natural Wonders of the World in 1997"
+    fun_facts:
+      - "The Great Barrier Reef is the world's biggest single structure made by living organisms and is visible from outer space"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Great_Barrier_Reef"
+
+  Victoria_Falls:
+    location: "Zambezi River, on the border between Zambia and Zimbabwe"
+    coordinates: "17°55'28\"S, 25°51'24\"E"
+    date_built: "natural formation"
+    architect_designer: "N/A — natural"
+    dimensions: "width: 1,708 m (5,604 ft); height: 108 m (355 ft); average flow: 1,088 m³/s"
+    key_facts:
+      - "Waterfall on the Zambezi River on the border between Zambia and Zimbabwe"
+      - "Width of 1,708 m (5,604 ft) — one of the world's largest waterfalls"
+      - "Height of 108 m (355 ft) with an average flow of approximately 1,088 m³/s"
+      - "Local Lozi name is Mosi-oa-Tunya, meaning 'The Smoke That Thunders'"
+      - "Scottish missionary David Livingstone named the falls Victoria Falls in 1855 in honor of Queen Victoria"
+      - "Designated a UNESCO World Heritage Site in 1989"
+    fun_facts:
+      - "During peak flood season, the spray from Victoria Falls can be seen from 50 km away and the thunder of the water heard 40 km away"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Victoria_Falls"
+
+  Mount_Everest:
+    location: "Mahalangur Himal, Himalayas — on the China-Nepal border"
+    coordinates: "27°59'17\"N, 86°55'31\"E"
+    date_built: "natural formation"
+    architect_designer: "N/A — natural"
+    dimensions: "height: 8,848.86 m (29,031.7 ft) above sea level — most recent 2020 measurement by Chinese and Nepali authorities"
+    key_facts:
+      - "Earth's highest mountain above sea level at 8,848.86 m (29,031.7 ft), measured in 2020"
+      - "Located in the Mahalangur Himal sub-range of the Himalayas, on the China-Nepal border"
+      - "Known as Sagarmatha in Nepal and Qomolangma in Tibet"
+      - "As of May 2024, 340 people have died on Everest; over 200 bodies remain on the mountain"
+      - "Two main climbing routes: southeast ridge from Nepal (standard) and north ridge from Tibet"
+      - "First confirmed summit: Edmund Hillary (New Zealand) and Tenzing Norgay (Nepal) on 29 May 1953"
+    fun_facts:
+      - "Mount Everest grows approximately 4 mm taller each year due to tectonic uplift of the Indian plate"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Mount_Everest"
+
+  Northern_Lights_Aurora_Borealis:
+    location: "High-latitude regions — primarily Arctic Circle (Canada, Norway, Iceland, Sweden, Finland, Alaska, Russia)"
+    coordinates: "N/A — atmospheric phenomenon"
+    date_built: "natural phenomenon"
+    architect_designer: "N/A — natural"
+    dimensions: "Can cover entire sky; occurs in thermosphere/exosphere at altitudes of roughly 100–300 km"
+    key_facts:
+      - "Natural light display in Earth's upper atmosphere caused by charged particles from the Sun colliding with atmospheric atoms"
+      - "Collisions excite oxygen and nitrogen, emitting light in colors including green, red, and purple"
+      - "Called aurora borealis in the Arctic (northern lights) and aurora australis in the Antarctic (southern lights)"
+      - "Result of disturbances in Earth's magnetosphere caused by solar wind from coronal holes and coronal mass ejections"
+      - "Display dynamic patterns appearing as curtains, rays, spirals, or flickers covering the entire sky"
+      - "Best observed from high-latitude regions such as Norway, Iceland, Canada, and Alaska"
+    fun_facts:
+      - "The lights occur because solar particles are funneled toward Earth's poles by its magnetic field — the same process creates both the northern and southern lights simultaneously"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Aurora"
+
+  Giants_Causeway:
+    location: "County Antrim, Northern Ireland (approximately 4.8 km northeast of Bushmills)"
+    coordinates: "55°14'27\"N, 6°30'42\"W"
+    date_built: "natural formation — ancient volcanic fissure eruption during Paleogene period (approx. 50–60 million years ago)"
+    architect_designer: "N/A — natural"
+    dimensions: "approximately 40,000 interlocking basalt columns; tallest columns approximately 12 m (39 ft) high; solidified lava in cliffs up to 28 m (92 ft) thick"
+    key_facts:
+      - "Area of approximately 40,000 interlocking basalt columns, result of an ancient volcanic fissure eruption"
+      - "Located in County Antrim on the north coast of Northern Ireland"
+      - "Part of the North Atlantic Igneous Province active during the Paleogene period"
+      - "Most columns are hexagonal, though some have four, five, seven, or eight sides"
+      - "Tallest columns are approximately 12 m (39 ft) high; solidified lava in cliffs is 28 m (92 ft) thick in places"
+      - "Designated a UNESCO World Heritage Site in 1986 and a national nature reserve in 1987"
+    fun_facts:
+      - "Irish legend says giant Fionn mac Cumhaill (Finn McCool) built the causeway to walk to Scotland for a fight — the same basalt formations appear at Fingal's Cave in Scotland"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Giant%27s_Causeway"
+
+  Paricutin_Volcano:
+    location: "Michoacán, Mexico (near Uruapan, approximately 322 km west of Mexico City)"
+    coordinates: "approx. 19°28'N, 102°15'W"
+    date_built: "natural formation — erupted starting 20 February 1943 from a cornfield; active 1943-1952"
+    architect_designer: "N/A — natural"
+    dimensions: "height at peak (1952): approximately 424 m (1,391 ft) above original ground level; cone base diameter approximately 1.5 km"
+    key_facts:
+      - "Cinder cone volcano in Michoacán, Mexico that suddenly erupted from a farmer's cornfield on 20 February 1943"
+      - "Farmer Dionisio Pulido witnessed the eruption begin in his cornfield, making it one of the few volcanoes whose birth was observed by humans"
+      - "One of the Seven Natural Wonders of the World (as listed by CNN in 1997)"
+      - "The eruption lasted nine years, from 1943 to 1952, burying the town of San Juan Parangaricutiro under lava"
+      - "Grew to approximately 424 m above the original ground level by the end of its active period"
+      - "Located approximately 322 km (200 mi) west of Mexico City in the state of Michoacán"
+    fun_facts:
+      - "Paricutin is one of the very few volcanoes whose birth was actually witnessed — the eruption started in a corn farmer's field and was watched from the beginning"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Paricutin_volcano"
+
+  Harbour_of_Rio_de_Janeiro:
+    location: "Guanabara Bay, Rio de Janeiro, Brazil"
+    coordinates: "22°47'25\"S, 43°9'20\"W"
+    date_built: "natural formation"
+    architect_designer: "N/A — natural"
+    dimensions: "bay area: 412 km² (159 sq mi); length: 31 km; width: 28 km; perimeter: 143 km"
+    key_facts:
+      - "Guanabara Bay (Baía de Guanabara) is the natural harbour of Rio de Janeiro, Brazil"
+      - "Bay area of 412 km² (159 sq mi) — the second largest bay by area in Brazil"
+      - "Portuguese explorer Gaspar de Lemos arrived on 1 January 1502 and mistook the bay for a river mouth, naming it Rio de Janeiro (River of January)"
+      - "Surrounded by dramatic granite peaks including Sugarloaf Mountain (Pão de Açúcar, 396 m) and the mountain bearing Christ the Redeemer"
+      - "Listed as one of the Seven Natural Wonders of the World (CNN, 1997)"
+      - "The harbour is flanked by Atlantic Forest, with the Tijuca Forest being one of the world's largest urban forests"
+    fun_facts:
+      - "Rio de Janeiro — meaning 'River of January' — is named after a navigational mistake: early Portuguese explorers mistook Guanabara Bay's entrance for a river mouth"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Guanabara_Bay"
+
+  Great_Blue_Hole:
+    location: "Lighthouse Reef, approximately 70 km from Belize City, Belize"
+    coordinates: "approx. 17°19'N, 87°32'W"
+    date_built: "natural formation — formed during Quaternary glaciation (stalactite analysis shows formation 153,000, 66,000, 60,000, and 15,000 years ago)"
+    architect_designer: "N/A — natural"
+    dimensions: "circular; 318 m (1,043 ft) across; 124 m (407 ft) deep; surface area 70,650 m²"
+    key_facts:
+      - "Large marine sinkhole off the coast of Belize, near the center of Lighthouse Reef atoll"
+      - "Circular shape, 318 m (1,043 ft) across and 124 m (407 ft) deep"
+      - "Formed as a limestone cave during the Quaternary glaciation when sea levels were much lower; later flooded as oceans rose"
+      - "Analysis of stalactites shows formation occurred at roughly 153,000, 66,000, 60,000, and 15,000 years ago"
+      - "Part of the larger Belize Barrier Reef Reserve System — a UNESCO World Heritage Site"
+      - "Made famous by oceanographer Jacques Cousteau, who called it one of the world's top dive sites in 1971"
+    fun_facts:
+      - "The Great Blue Hole was originally a dry cave with stalactites — it flooded when sea levels rose after the last Ice Age, preserving ancient stalactites 40 m underwater"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Great_Blue_Hole"
+
+  Dead_Sea:
+    location: "Jordan Rift Valley — bordered by Jordan (east), West Bank (west), and Israel (southwest)"
+    coordinates: "31°30'N, 35°30'E"
+    date_built: "natural formation"
+    architect_designer: "N/A — natural"
+    dimensions: "surface (2025): 439.78 m (1,443 ft) below sea level; depth: 304 m (997 ft); length of main basin: 50 km; width: 15 km; salinity: 34.2% (approximately 9.6× saltier than ocean)"
+    key_facts:
+      - "Landlocked hypersaline lake in the Jordan Rift Valley with shores at 439.78 m (1,443 ft) below sea level — lowest land-based elevation on Earth (as of 2025)"
+      - "Salinity of approximately 34.2% — about 9.6 times saltier than the ocean — making it one of the world's saltiest bodies of water"
+      - "At 304 m (997 ft) deep, it is the deepest hypersaline lake in the world"
+      - "The high density (1.24 kg/litre) makes floating effortless — humans cannot sink"
+      - "Its main tributary is the Jordan River; due to water diversion, the sea has shrunk significantly and continues to drop by approximately 1 m per year"
+      - "Was one of the world's first health resorts and has supplied products from Egyptian mummification asphalt to modern potash fertilizers"
+    fun_facts:
+      - "The Dead Sea is so salty that almost nothing can live in it — not fish, not most bacteria — yet its mineral-rich mud has been used for skin treatments for thousands of years"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Dead_Sea"
+
+---
+
+subdeck_7_modern_marvels:
+  description: "Ten of humanity's most remarkable modern engineering and architectural achievements"
+
+  Sydney_Opera_House:
+    location: "Bennelong Point, Sydney Harbour, New South Wales, Australia"
+    coordinates: "33°51'24\"S, 151°12'54\"E"
+    date_built: "construction began 1 March 1959; opened 20 October 1973"
+    architect_designer: "Jørn Utzon (Danish; won 1957 international design competition); completed by Australian team led by Peter Hall"
+    dimensions: "height: 65 m (213 ft); length: 183 m (600 ft); width: 120 m (394 ft); total seating: 5,738 across all venues"
+    key_facts:
+      - "Multi-venue performing arts centre located on Bennelong Point on Sydney Harbour"
+      - "Designed by Danish architect Jørn Utzon, who won an international design competition in 1957"
+      - "Formally opened by Queen Elizabeth II on 20 October 1973 — 16 years after the competition was won"
+      - "Height 65 m (213 ft); hosts over 1,800 performances annually, attended by more than 1.4 million people"
+      - "Designated a UNESCO World Heritage Site in 2007"
+      - "Original cost estimate: AUD $7 million; final cost: AUD $102 million"
+    fun_facts:
+      - "Jørn Utzon's winning design was almost rejected — it was retrieved from the discard pile by Finnish architect Eero Saarinen and went on to become one of the most recognized buildings on Earth"
+    unesco: true
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Sydney_Opera_House"
+
+  Channel_Tunnel:
+    location: "Beneath the English Channel — connecting Folkestone, UK to Coquelles (near Calais), France"
+    coordinates: "entrance UK: approx. 51°6'N, 1°8'E; entrance France: approx. 50°54'N, 1°47'E"
+    date_built: "construction 1988–1994; opened 6 May 1994"
+    architect_designer: "Transmanche-Link (Anglo-French consortium of 10 construction and engineering companies)"
+    dimensions: "total length: 50.46 km (31.35 mi); underwater section (longest of any tunnel): 37.9 km (23.5 mi); maximum depth: 75 m (246 ft) below sea level; average depth below seabed: 45 m (148 ft)"
+    key_facts:
+      - "Railway tunnel 50.46 km (31.35 mi) long beneath the English Channel, opened in 1994"
+      - "Longest underwater section of any tunnel in the world at 37.9 km (23.5 mi)"
+      - "Reaches a maximum depth of 75 m (246 ft) below sea level"
+      - "The only fixed link between Great Britain and the European mainland"
+      - "Consists of three tunnels: two rail tunnels and one central service tunnel"
+      - "Carries Eurostar passenger trains, LeShuttle vehicle trains, and freight trains; designed for speeds up to 200 km/h"
+    fun_facts:
+      - "The first tunnel proposals date back to 1802 — Napoleon reportedly considered it — but it took nearly two centuries for national security concerns to be overcome and construction to begin"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Channel_Tunnel"
+
+  International_Space_Station:
+    location: "Low Earth orbit — approximately 400 km (250 mi) above Earth"
+    coordinates: "orbits between 51.64° N and S; orbital altitude approximately 400 km"
+    date_built: "first module (Zarya) launched 20 November 1998; continuously crewed since 2 November 2000"
+    architect_designer: "Multi-agency: NASA (USA), Roscosmos (Russia), ESA (Europe), JAXA (Japan), CSA (Canada)"
+    dimensions: "length: 109 m (358 ft) with solar arrays; width: 73 m (239 ft); internal volume: 1,005 m³; mass: approximately 450,000 kg (990,000 lb)"
+    key_facts:
+      - "Space station in low Earth orbit at approximately 400 km altitude, operated by NASA, Roscosmos, ESA, JAXA, and CSA"
+      - "Largest human spacecraft ever constructed: 109 m (358 ft) wide with solar arrays — roughly the size of a football field"
+      - "First module (Zarya) launched 20 November 1998; humans have lived aboard continuously since 2 November 2000"
+      - "Travels at 7.67 km/s (27,600 km/h), completing one orbit every ~93 minutes — about 15.5 orbits per day"
+      - "Internal volume of 1,005 m³ — comparable to a Boeing 747 airliner"
+      - "Mass approximately 450,000 kg (990,000 lb) — assembled in orbit from modules launched on over 40 missions"
+    fun_facts:
+      - "The ISS moves so fast that crew members see 16 sunrises and 16 sunsets every single day"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/International_Space_Station"
+
+  Palm_Jumeirah:
+    location: "Persian Gulf, Jumeirah, Dubai, United Arab Emirates"
+    coordinates: "25°7'5\"N, 55°8'0\"E"
+    date_built: "construction began 2001; largely complete by 2006–2008; residential population over 25,000 by 2022"
+    architect_designer: "Nakheel Properties (developer); constructed by Dutch dredging company Van Oord"
+    dimensions: "shaped like a palm tree; trunk plus 16 fronds plus outer crescent; adds approximately 78 km of new coastline; total reclaimed land approximately 5.72 km²"
+    key_facts:
+      - "Archipelago of artificial islands in the Persian Gulf off Jumeirah, Dubai, shaped like a palm tree when viewed from above"
+      - "Created entirely through land reclamation by Dutch dredging company Van Oord starting in 2001"
+      - "Adds approximately 78 km of new beach coastline to Dubai's shoreline"
+      - "Home to approximately 25,000 residents as of 2022, plus luxury hotels including Atlantis The Palm"
+      - "Part of the Palm Islands series which, when fully completed, will add 520 km to Dubai's coastline"
+      - "The outer crescent hosts luxury resorts and is connected to the palm fronds by an underwater tunnel and monorail"
+    fun_facts:
+      - "Palm Jumeirah was built using 94 million cubic metres of sand dredged from the seabed — no concrete, steel, or rock was used in its construction"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Palm_Jumeirah"
+
+  Guggenheim_Museum_Bilbao:
+    location: "Abandoibarra, alongside the Nervión River, Bilbao, Biscay, Spain"
+    coordinates: "43°16'7\"N, 2°56'2\"W"
+    date_built: "inaugurated 18 October 1997"
+    architect_designer: "Frank Gehry (Canadian-American architect)"
+    dimensions: "total floor area approximately 24,000 m² (258,000 sq ft); exhibition space approximately 11,000 m²"
+    key_facts:
+      - "Museum of modern and contemporary art in Bilbao, Spain, inaugurated on 18 October 1997 by King Juan Carlos I"
+      - "Designed by Canadian-American architect Frank Gehry, clad in titanium, glass, and limestone"
+      - "Hailed as 'a signal moment in the architectural culture' — cited in the 2010 World Architecture Survey as the most important building completed since 1980"
+      - "One of several museums affiliated with the Solomon R. Guggenheim Foundation; one of the largest museums in Spain"
+      - "Credited with revitalizing Bilbao and inspiring the 'Bilbao Effect' — the concept of a single building transforming an entire city's economy and image"
+      - "Received 1,305,003 visitors in 2025"
+    fun_facts:
+      - "The Guggenheim Bilbao transformed a declining industrial city into a global cultural destination — economists estimate it generated over $500 million in tax revenue in its first ten years alone"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Guggenheim_Museum_Bilbao"
+
+  Large_Hadron_Collider:
+    location: "Beneath the France-Switzerland border near Geneva — primarily at CERN, Meyrin, Switzerland"
+    coordinates: "46°14'N, 6°3'E (CERN main site)"
+    date_built: "construction 1998–2008; first collisions achieved in 2010"
+    architect_designer: "CERN (European Organization for Nuclear Research); built with over 10,000 scientists from more than 100 countries"
+    dimensions: "tunnel circumference: 27 km (17 mi); maximum tunnel depth: 175 m (574 ft); collision energy (Run 3): up to 13.6 TeV total"
+    key_facts:
+      - "World's largest and highest-energy particle accelerator, built by CERN between 1998 and 2008"
+      - "Tunnel circumference of 27 km (17 mi), as deep as 175 m (574 ft) beneath the France-Switzerland border near Geneva"
+      - "Built in collaboration with over 10,000 scientists from more than 100 countries"
+      - "First collisions achieved in 2010; the Higgs boson was discovered using the LHC and announced in July 2012"
+      - "Primarily collides proton beams but can also accelerate heavy ions such as lead nuclei"
+      - "Has four main crossing points where particles collide, each surrounded by a massive detector (ATLAS, CMS, ALICE, LHCb)"
+    fun_facts:
+      - "The LHC accelerates protons to 99.9999991% of the speed of light — at that speed, a beam particle completes the 27 km circuit about 11,245 times per second"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Large_Hadron_Collider"
+
+  Burj_Al_Arab:
+    location: "Artificial island 280 m from Jumeirah Beach, Dubai, United Arab Emirates"
+    coordinates: "25°8'29\"N, 55°11'7\"E"
+    date_built: "construction began 10 July 1994; opened 1 December 1999"
+    architect_designer: "Tom Wright of WKA (formerly Atkins); structural engineer: Atkins"
+    dimensions: "architectural height: 321 m (1,053 ft); top occupied floor: 197.5 m; helipad height: 210 m (689 ft); 56 floors (plus 3 below ground); 202 suites"
+    key_facts:
+      - "Luxury hotel in Dubai standing 321 m (1,053 ft) tall on its own artificial island 280 m (920 ft) from Jumeirah Beach"
+      - "Designed by architect Tom Wright; its shape is deliberately modeled on the sail of a traditional Arab dhow"
+      - "Construction began 10 July 1994; opened 1 December 1999; cost approximately USD $1 billion"
+      - "One of the tallest hotels in the world; however 39% of its total height is non-occupiable space"
+      - "Connected to the mainland by a private curving bridge; has a helipad at 210 m (689 ft) above ground"
+      - "Has 202 duplex suites; often marketed as the world's only 'seven-star hotel' (a claim not from an official rating body)"
+    fun_facts:
+      - "The Burj Al Arab's helipad at 210 m has hosted a tennis court (Agassi vs. Federer, 2005) and a golf hole (Tiger Woods, 2004) — both as publicity stunts"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Burj_Al_Arab"
+
+  The_Shard:
+    location: "Southwark, London, United Kingdom (near London Bridge)"
+    coordinates: "51°30'15\"N, 0°5'12\"W"
+    date_built: "construction began March 2009; topped out 30 March 2012; inaugurated 5 July 2012; observation deck opened 1 February 2013"
+    architect_designer: "Renzo Piano (Italian architect)"
+    dimensions: "height: 309.6 m (1,016 ft); 95 storeys; 72 habitable floors; observation deck at 244 m (801 ft)"
+    key_facts:
+      - "95-storey pyramid-shaped skyscraper in Southwark, London, designed by Italian architect Renzo Piano"
+      - "Standing 309.6 m (1,016 ft) high, it is the tallest building in the United Kingdom and Western Europe"
+      - "Construction began March 2009; inaugurated 5 July 2012; topped out 30 March 2012"
+      - "Has 72 habitable floors including offices, restaurants, hotel, residential apartments, and a public viewing gallery at 244 m (801 ft)"
+      - "Owned 95% by the State of Qatar and 5% by Sellar Property Group"
+      - "Seventh-tallest building in Europe"
+    fun_facts:
+      - "The Shard was designed so that its glass facade reflects the sky and the city around it — each of its 11,000 glass panels is slightly different in shape, giving it a shimmering, fragmentary appearance"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/The_Shard"
+
+  One_World_Trade_Center:
+    location: "285 Fulton Street, Lower Manhattan, New York City, USA"
+    coordinates: "40°42'47\"N, 74°0'48\"W"
+    date_built: "construction began 27 April 2006; topped out 30 August 2012; spire complete and full height reached 10 May 2013; opened November 2014"
+    architect_designer: "David Childs of Skidmore, Owings & Merrill"
+    dimensions: "height: 541 m (1,776 ft) to top of spire; 94 above-ground floors; cost approximately USD $3.9 billion"
+    key_facts:
+      - "Tallest building in the United States and Western Hemisphere at 541 m (1,776 ft) — the seventh-tallest in the world"
+      - "Height of 1,776 feet deliberately references the year of the US Declaration of Independence"
+      - "Designed by David Childs of Skidmore, Owings & Merrill; construction began 27 April 2006"
+      - "Built on the site of the original World Trade Center destroyed in the September 11, 2001 terrorist attacks"
+      - "Became the tallest structure in New York City on 30 April 2012, surpassing the Empire State Building"
+      - "Also known as the Freedom Tower (a name used pre-2009)"
+    fun_facts:
+      - "One World Trade Center's height of exactly 1,776 feet is not a coincidence — it was a deliberate design decision to symbolize the year America declared independence"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/One_World_Trade_Center"
+
+  Beijing_National_Stadium:
+    location: "Olympic Green, Chaoyang, Beijing, China"
+    coordinates: "approx. 40°0'29\"N, 116°23'30\"E"
+    date_built: "broke ground December 2003; officially started construction March 2004; completed June 2008"
+    architect_designer: "Herzog & de Meuron (Swiss architects Jacques Herzog and Pierre de Meuron) with ARUP structural engineers; Chinese architect Li Xinggang"
+    dimensions: "total area: 204,000 m²; seating capacity: 80,000 (91,000 with temporary seating); height of main structure: approximately 69 m"
+    key_facts:
+      - "Stadium at Olympic Green in Beijing, nicknamed 'the Bird's Nest' (鸟巢) for its distinctive lattice steel structure"
+      - "Designed by Swiss architects Herzog & de Meuron; covers 204,000 m² with an 80,000-person capacity"
+      - "Broke ground December 2003, completed June 2008 in time for the 2008 Beijing Summer Olympics"
+      - "Used again for the 2022 Beijing Winter Olympics, making it the first stadium to host both Summer and Winter Olympic opening/closing ceremonies"
+      - "The interlocking steel lattice uses approximately 42,000 tonnes of steel"
+      - "Owned by a partnership between Beijing Municipal State-owned Assets Management Co Ltd (58%) and CITIC Group (42%)"
+    fun_facts:
+      - "The Bird's Nest is the first stadium in history to host the opening ceremonies of both Summer (2008) and Winter (2022) Olympic Games"
+    unesco: false
+    source_urls:
+      - "https://en.wikipedia.org/wiki/Beijing_National_Stadium"

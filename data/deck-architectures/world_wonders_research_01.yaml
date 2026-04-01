@@ -1,0 +1,505 @@
+# World Wonders & Landmarks — Verified Source Data
+# Research date: 2026-04-01
+# All facts verified against Wikipedia. Source URLs provided for every landmark.
+# Workers MUST format only the data in this file — do NOT invent or supplement.
+
+deck_id: world_wonders_landmarks
+deck_name: "World Wonders & Landmarks"
+domain: history
+sub_domain: world_heritage
+research_status: complete
+researcher_notes: >
+  All data fetched from English Wikipedia REST API (rest_v1/page/summary) and
+  MediaWiki API (action=query&prop=extracts) on 2026-04-01. Measurements, dates,
+  and counts are taken verbatim from article text. Any fact marked UNVERIFIED
+  was not confirmed and must be independently sourced before generation.
+
+# ============================================================
+# SUBDECK 0: Ancient Wonders
+# ============================================================
+subdeck_0:
+  id: ancient_wonders
+  name: "Ancient Wonders"
+  target_facts: 40
+
+  landmarks:
+
+    Great_Pyramid_of_Giza:
+      location: "Giza, Egypt"
+      coordinates: "29.9792, 31.1342"
+      date_built: "c. 2600 BC (built over approx. 26 years)"
+      architect_designer: "Unknown — ancient Egyptian builders under Pharaoh Khufu (Cheops)"
+      dimensions:
+        original_height: "146.6 m (481 ft) — now reduced to 138.5 m (454 ft)"
+        base_length: "230.3 m (755.6 ft) per side"
+        volume: "approx. 2.6 million cubic metres"
+        slope_angle: "51°50'40\""
+      key_facts:
+        - "Tomb of Pharaoh Khufu (Cheops), Fourth Dynasty of the Old Kingdom"
+        - "Oldest of the Seven Wonders of the Ancient World and the only one still largely intact"
+        - "Was the world's tallest human-made structure for more than 3,800 years"
+        - "Built using an estimated 2.3 million large blocks weighing 6 million tonnes in total"
+        - "Casing stones were white limestone from Tura; inner chambers used granite from Aswan"
+        - "Part of UNESCO World Heritage Site 'Memphis and its Necropolis'"
+      fun_facts:
+        - "The Great Pyramid held the record as the world's tallest building for over 3,800 years — longer than any other structure in history"
+        - "Granite blocks in the King's Chamber each weigh up to 80 tonnes and were transported by boat on the Nile from Aswan, ~900 km away"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
+
+    Colosseum:
+      location: "Rome, Italy"
+      coordinates: "41.8903, 12.4922"
+      date_built: "72 AD – 80 AD (completed under Emperor Titus)"
+      architect_designer: "Commissioned by Emperor Vespasian; completed under Titus and modified by Domitian (Flavian dynasty)"
+      dimensions:
+        length: "188 m (617 ft)"
+        width: "156 m (512 ft)"
+        height: "48–50 m (157–164 ft)"
+        capacity: "50,000–80,000 spectators (average approx. 65,000)"
+      key_facts:
+        - "Largest ancient amphitheatre ever built and the largest standing amphitheatre in the world"
+        - "Construction began under Emperor Vespasian in 72 AD and was completed in 80 AD under Titus"
+        - "Used for gladiatorial contests, animal hunts, public executions, dramas, and briefly mock sea battles"
+        - "Built of travertine limestone, tuff (volcanic rock), and brick-faced Roman concrete"
+        - "Also known as the Flavian Amphitheatre after the Flavian dynasty"
+        - "UNESCO World Heritage Site as part of the historic centre of Rome (designated 1980)"
+      fun_facts:
+        - "The Colosseum could be flooded for mock naval battles (naumachia) in its early years — engineers channelled water from a nearby aqueduct"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Colosseum"
+
+    Parthenon:
+      location: "Acropolis, Athens, Greece"
+      coordinates: "37.9715, 23.7266"
+      date_built: "447 BC – 432 BC (construction 447–438 BC; decorations completed 432 BC)"
+      architect_designer: "Ictinus and Callicrates (architects); Phidias (overseer of sculptures)"
+      dimensions:
+        length: "69.5 m (228 ft)"
+        width: "30.9 m (101 ft)"
+        columns: "8 on each end (Doric order), 17 on each side"
+      key_facts:
+        - "Former temple dedicated to the goddess Athena, located on the Athenian Acropolis"
+        - "Built in the 5th century BC in thanksgiving for Greek victory over Persian invaders"
+        - "Construction started in 447 BC; completed in 438 BC with artwork continuing to 432 BC"
+        - "Later became a Christian church (late 6th c. AD), then an Ottoman mosque (after 1458)"
+        - "Severely damaged in 1687 when a Venetian bomb hit an Ottoman munitions store inside"
+        - "Many sculptures removed by the 7th Earl of Elgin (1800–1803), now held in the British Museum as the Elgin Marbles"
+        - "UNESCO World Heritage Site as part of the Acropolis of Athens (designated 1987)"
+      fun_facts:
+        - "The Parthenon's columns lean slightly inward and bulge in the middle — deliberate optical refinements to make the building appear perfectly straight to the human eye"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Parthenon"
+
+    Machu_Picchu:
+      location: "Urubamba Province, Cusco Region, Peru"
+      coordinates: "-13.1633, -72.5456"
+      date_built: "c. 1420–1450 AD; abandoned c. 1530 AD"
+      architect_designer: "Built by the Inca under Emperor Pachacuti (traditionally attributed)"
+      dimensions:
+        altitude: "2,430 m (7,970 ft) above sea level"
+        area: "approx. 5 km2 (1.9 sq mi) protected area"
+      key_facts:
+        - "15th-century Inca citadel on a mountain ridge at 2,430 m above sea level"
+        - "Believed to have served as an estate for Inca emperor Pachacuti"
+        - "Modern radiocarbon dating places its occupation between c. 1420 and 1530"
+        - "Abandoned roughly a century after construction, likely during the Spanish conquest"
+        - "Brought to international attention in 1911 by American historian Hiram Bingham III"
+        - "Named a UNESCO World Heritage Site in 1983 and one of the New Seven Wonders of the World in 2007"
+        - "Features dry-stone construction without mortar — walls fitted together with extreme precision"
+        - "Receives over 1.5 million visitors annually as of 2025"
+      fun_facts:
+        - "Machu Picchu was never discovered or destroyed by the Spanish conquistadors — it was abandoned before Spanish forces reached the area, which is why it survived nearly intact"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Machu_Picchu"
+
+    Petra:
+      location: "Ma'an Governorate, southern Jordan"
+      coordinates: "30.3285, 35.4444"
+      date_built: "Capital city from c. 2nd century BC; Al-Khazneh built c. 1st century AD"
+      architect_designer: "Built by the Nabataean people; Al-Khazneh possibly mausoleum of King Aretas IV"
+      dimensions:
+        al_khazneh_height: "approx. 40 m (131 ft) facade"
+        site_area: "264 km2 (102 sq mi) protected zone"
+      key_facts:
+        - "Ancient rock-cut city in southern Jordan, originally known as Raqmu"
+        - "Called the 'Rose City' because of the pink-red sandstone from which it is carved"
+        - "Capital of the Nabataean Kingdom; population peaked at an estimated 20,000 in the 1st century AD"
+        - "Nabataea fell to Rome in 106 AD and was renamed Arabia Petraea"
+        - "Area inhabited from as early as 7000 BC; settled by Nabataeans in the 4th century BC"
+        - "UNESCO World Heritage Site (designated 1985) and one of the New 7 Wonders of the World"
+        - "Famous for its rock-cut architecture and sophisticated water conduit systems"
+      fun_facts:
+        - "Petra's main entrance is a narrow 1.2 km gorge called the Siq, with walls rising up to 80 m on either side — visitors walk through it to emerge suddenly before the Treasury facade"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Petra"
+
+    Great_Wall_of_China:
+      location: "Northern China (from Liaodong in the east to Lop Lake in the west)"
+      coordinates: "40.68, 117.23 (Badaling section reference point)"
+      date_built: "First walls 7th century BC; joined in Qin dynasty (221–206 BC); best-known Ming dynasty sections 1368–1644"
+      architect_designer: "Multiple dynasties; major Qin construction under Emperor Qin Shi Huang; extensive Ming dynasty rebuilding"
+      dimensions:
+        total_length: "21,196.18 km (13,170.70 mi) total collective fortifications"
+        height: "varies; Ming sections typically 6–7 m (20–23 ft) high"
+        width: "varies; Ming sections typically 4–5 m (13–16 ft) wide at top"
+      key_facts:
+        - "Series of fortifications built across northern Chinese borders against Eurasian Steppe nomads"
+        - "First walls date to the 7th century BC; joined together during the Qin dynasty"
+        - "Best-known sections built by the Ming dynasty (1368–1644)"
+        - "Total collective length is 21,196.18 km (13,170.70 mi)"
+        - "Features watchtowers, troop barracks, garrison stations, and signaling capabilities"
+        - "Also served as border control and facilitated trade along the Silk Road"
+        - "UNESCO World Heritage Site (designated 1987) and one of the New 7 Wonders of the World"
+      fun_facts:
+        - "The Great Wall is not a single continuous wall but a collection of multiple walls built by different dynasties over 2,000 years — many sections are separated by gaps or have completely disappeared"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Great_Wall_of_China"
+
+    Stonehenge:
+      location: "Salisbury Plain, Wiltshire, England, UK"
+      coordinates: "51.1789, -1.8261"
+      date_built: "c. 3100 BC – c. 1600 BC (multiple phases; main sarsen circle 2600–2400 BC)"
+      architect_designer: "Unknown — Neolithic and Bronze Age peoples; builder culture unknown"
+      dimensions:
+        outer_stone_height: "approx. 4.0 m (13 ft) high, 2.1 m (7 ft) wide"
+        outer_stone_weight: "approx. 25 tons each"
+        outer_ring_diameter: "approx. 30 m (98 ft)"
+      key_facts:
+        - "Prehistoric megalithic structure on Salisbury Plain, 3 km west of Amesbury"
+        - "Outer ring of vertical sarsen standing stones, each ~4 m high and ~25 tons"
+        - "Aligned toward sunrise on the summer solstice and sunset on the winter solstice"
+        - "Constructed in several phases beginning c. 3100 BC and continuing to c. 1600 BC"
+        - "Main sarsen circle placed between 2600 and 2400 BC"
+        - "Bluestones (smaller inner stones) transported from the Preseli Hills in Wales, ~250 km away"
+        - "UNESCO World Heritage Site (designated 1986)"
+      fun_facts:
+        - "The bluestones at Stonehenge were transported from the Preseli Hills in Wales — roughly 250 km away — likely by a combination of water transport and sledges, an extraordinary feat for Neolithic people"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Stonehenge"
+
+    Chichen_Itza_El_Castillo:
+      location: "Tinúm Municipality, Yucatán, Mexico"
+      coordinates: "20.6831, -88.5686"
+      date_built: "c. 9th–12th century AD (Terminal Classic to early Postclassic period)"
+      architect_designer: "Built by the Maya people; El Castillo (Temple of Kukulcan) is the central pyramid"
+      dimensions:
+        el_castillo_height: "approx. 30 m (98 ft)"
+        el_castillo_base: "approx. 55.3 m (181 ft) per side"
+        el_castillo_steps: "91 steps on each of 4 sides + 1 top platform = 365 total (days in a year)"
+      key_facts:
+        - "Large pre-Columbian Maya city, one of the largest Maya cities"
+        - "Active from Late Classic (c. 600–900 AD) through early Postclassic (c. 900–1200 AD)"
+        - "El Castillo (Temple of Kukulcan) is the central step-pyramid, approximately 30 m tall"
+        - "The pyramid has 91 steps on each of its four faces plus the top platform, totalling 365 — one for each day of the year"
+        - "Exhibits multiple architectural styles including central Mexican and Puuc Maya"
+        - "UNESCO World Heritage Site (designated 1988) and one of the New 7 Wonders of the World"
+      fun_facts:
+        - "At the spring and autumn equinoxes, the setting sun casts a shadow on El Castillo's staircase that resembles a serpent descending the pyramid — a deliberate astronomical design by the Maya architects"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Chichen_Itza"
+        - "https://en.wikipedia.org/wiki/El_Castillo,_Chichen_Itza"
+
+    Terracotta_Army:
+      location: "Lintong County, Xi'an, Shaanxi, China"
+      coordinates: "34.385, 109.2731"
+      date_built: "c. 210–209 BCE (buried with Qin Shi Huang)"
+      architect_designer: "Created for Qin Shi Huang, the first emperor of China"
+      dimensions:
+        pit_count: "3 main pits"
+        figure_count: "estimates from 2007: over 8,000 soldiers, 130 chariots with 520 horses, 150 cavalry horses"
+        figure_height: "varies by rank; generals are tallest"
+      key_facts:
+        - "Collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first emperor of China"
+        - "Funerary art buried with the emperor in 210–209 BCE to protect him in the afterlife"
+        - "Discovered in 1974 by local farmers in Lintong County outside Xi'an"
+        - "Three pits contain over 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses (2007 estimate)"
+        - "Figures vary in height according to their rank — generals are tallest"
+        - "Each figure was originally painted in vivid colours; the paint deteriorates rapidly after excavation"
+        - "UNESCO World Heritage Site (designated 1987) as part of the Mausoleum of the First Qin Emperor"
+      fun_facts:
+        - "No two of the 8,000+ terracotta warriors have identical faces — each was individually crafted with distinct facial features, hairstyles, and expressions"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Terracotta_Army"
+
+    Mohenjo_daro:
+      location: "Larkana District, Sindh, Pakistan"
+      coordinates: "27.3292, 68.1389"
+      date_built: "Built c. 2500 BCE; abandoned c. 1700 BCE"
+      architect_designer: "Built by the ancient Indus Valley Civilisation; builders unknown"
+      dimensions:
+        estimated_population: "at least 40,000 people at its peak"
+        area: "approx. 300 hectares (core city)"
+      key_facts:
+        - "One of the largest settlements of the ancient Indus Valley Civilisation"
+        - "Built c. 2500 BCE; contemporary with ancient Egypt, Mesopotamia, Minoa, and Norte Chico"
+        - "Name means 'Mound of the Dead Men' in Sindhi"
+        - "Estimated population of at least 40,000 people at its peak"
+        - "Abandoned c. 1700 BCE along with other large Indus Valley cities"
+        - "Rediscovered in the 1920s; designated a UNESCO World Heritage Site in 1980"
+        - "First South Asian site to receive UNESCO World Heritage designation"
+        - "Currently threatened by erosion and improper restoration"
+      fun_facts:
+        - "Mohenjo-daro had advanced urban planning c. 2500 BCE — including a grid street layout, brick-lined sewers, and a large public bath ('the Great Bath'), centuries before ancient Greece or Rome"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Mohenjo-daro"
+
+# ============================================================
+# SUBDECK 1: Sacred Monuments
+# ============================================================
+subdeck_1:
+  id: sacred_monuments
+  name: "Sacred Monuments"
+  target_facts: 40
+
+  landmarks:
+
+    Notre_Dame_de_Paris:
+      location: "Ile de la Cite, 4th arrondissement, Paris, France"
+      coordinates: "48.8531, 2.3500"
+      date_built: "1163 – largely completed 1260 (construction); restored 1844–1864; fire 2019; reopened December 2024"
+      architect_designer: "Begun under Bishop Maurice de Sully; restoration supervised by Eugene Viollet-le-Duc (1844–1864)"
+      dimensions:
+        length: "128 m (420 ft)"
+        width: "48 m (157 ft)"
+        tower_height: "69 m (226 ft) — the two western towers"
+        spire_height: "93 m (305 ft) — the 19th-century spire (collapsed in 2019 fire, being rebuilt)"
+      key_facts:
+        - "Medieval Catholic cathedral on the Ile de la Cite, Paris; construction began 1163 under Bishop Maurice de Sully"
+        - "Largely completed by 1260; considered one of the finest examples of French Gothic architecture"
+        - "Pioneered the use of the rib vault and flying buttress in French Gothic construction"
+        - "Victor Hugo's 1831 novel 'The Hunchback of Notre-Dame' sparked interest leading to major 1844–1864 restoration"
+        - "Napoleon's coronation was held here in 1804"
+        - "A devastating fire on 15 April 2019 collapsed the spire and destroyed much of the roof; cathedral reopened December 2024"
+        - "UNESCO World Heritage Site as part of 'Paris, Banks of the Seine' (designated 1991)"
+      fun_facts:
+        - "Notre-Dame's flying buttresses were a revolutionary engineering innovation — they transfer the outward thrust of the heavy stone vault walls to outer piers, allowing the walls to be thinner and filled with enormous stained-glass windows"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+
+    Hagia_Sophia:
+      location: "Fatih district, Istanbul, Turkey"
+      coordinates: "41.0083, 28.9800"
+      date_built: "532–537 AD (current structure); earlier churches on site from 360 AD"
+      architect_designer: "Isidore of Miletus and Anthemius of Tralles (Greek geometers); commissioned by Byzantine Emperor Justinian I"
+      dimensions:
+        dome_diameter: "31.24 m (102.5 ft)"
+        dome_height_from_floor: "55.6 m (182 ft)"
+        length: "approx. 82 m (269 ft)"
+        width: "approx. 73 m (240 ft)"
+      key_facts:
+        - "Completed in AD 537 by Byzantine Emperor Justinian I; designed by Isidore of Miletus and Anthemius of Tralles"
+        - "Was the world's largest interior space upon completion and among the first to use a fully pendentive dome"
+        - "Considered the epitome of Byzantine architecture; said to have 'changed the history of architecture'"
+        - "Served as the Christian cathedral of Constantinople from 360 to 1453 (with Latin interlude 1204–1261)"
+        - "Converted to a mosque after the Ottoman conquest of Constantinople in 1453"
+        - "Served as a museum 1935–2020; redesignated as a mosque in 2020"
+        - "UNESCO World Heritage Site (designated 1985) as part of 'Historic Areas of Istanbul'"
+      fun_facts:
+        - "When Emperor Justinian first entered the completed Hagia Sophia in 537 AD, he reportedly declared 'Solomon, I have surpassed thee!' — referring to the legendary Temple of Solomon in Jerusalem"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Hagia_Sophia"
+
+    Sagrada_Familia:
+      location: "Eixample district, Barcelona, Catalonia, Spain"
+      coordinates: "41.4037, 2.1743"
+      date_built: "Construction began 19 March 1882; ongoing (completion estimated 2026+ due to delays)"
+      architect_designer: "Francisco de Paula del Villar (original 1882); Antoni Gaudi took over 1883 and devoted his life to it; Gaudi died 1926; construction continues under successive architects"
+      dimensions:
+        planned_height: "172.5 m (566 ft) — the central tower of Jesus Christ when complete"
+        current_tallest_tower: "138 m (453 ft) — Tower of the Virgin Mary (completed 2021)"
+        footprint: "approx. 90 m x 60 m"
+      key_facts:
+        - "The largest unfinished Catholic church in the world; under construction since 1882"
+        - "Designed by Catalan architect Antoni Gaudi in a style combining Gothic and curvilinear Art Nouveau forms"
+        - "Construction began 19 March 1882 under Francisco de Paula del Villar; Gaudi took over in 1883"
+        - "Gaudi devoted the rest of his life to the project and is buried in the church's crypt; he died in 1926"
+        - "At Gaudi's death, less than a quarter of the project was complete"
+        - "Relies solely on private donations (no government funding)"
+        - "In 2005 added to existing (1984) UNESCO World Heritage Site 'Works of Antoni Gaudi'"
+        - "Pope Benedict XVI consecrated it as a minor basilica on 7 November 2010"
+      fun_facts:
+        - "Gaudi designed Sagrada Familia by hanging chains from the ceiling and photographing the resulting catenary curves upside-down — the inverted arches formed perfectly load-bearing stone arches, a genius structural insight"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
+
+    St_Peters_Basilica:
+      location: "Vatican City (enclaved within Rome, Italy)"
+      coordinates: "41.9022, 12.4533"
+      date_built: "Construction began 18 April 1506; completed 18 November 1626"
+      architect_designer: "Principally Donato Bramante, Michelangelo, and Carlo Maderno; piazza and fittings by Gian Lorenzo Bernini"
+      dimensions:
+        length: "218 m (715 ft) — interior nave"
+        width: "150 m (490 ft)"
+        dome_height: "136.6 m (448 ft) — to the top of the cross on the dome"
+        interior_area: "approx. 15,160 m2 (163,200 sq ft) — largest church in the world by interior measure"
+      key_facts:
+        - "Largest church in the world by interior measure"
+        - "Construction began 18 April 1506 and was completed 18 November 1626 — spanning 120 years"
+        - "Designed principally by Bramante, Michelangelo, and Carlo Maderno; piazza by Bernini"
+        - "Stands on the traditional site of Saint Peter's tomb (first Bishop of Rome/Pope)"
+        - "A church of the Italian High Renaissance; located in Vatican City, an independent microstate"
+        - "Replaced the Old St. Peter's Basilica which dated from the reign of Emperor Constantine (4th century)"
+        - "Pope presides at liturgies drawing audiences from 15,000 to over 80,000 people"
+        - "Not a UNESCO World Heritage Site by name, but Vatican City as a whole is listed (designated 1984)"
+      fun_facts:
+        - "Michelangelo redesigned St. Peter's Basilica at age 71, working on it without pay for the last 18 years of his life — he died before the dome was completed, but his design was followed faithfully"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica"
+
+    Borobudur:
+      location: "Magelang Regency, Central Java, Indonesia"
+      coordinates: "-7.608, 110.204"
+      date_built: "c. 8th–9th century AD (built during the Sailendra Dynasty); abandoned c. 14th century"
+      architect_designer: "Built by the Sailendra Dynasty; architect unknown"
+      dimensions:
+        height: "35.4 m (116 ft) before stupa restoration"
+        base_size: "123 m x 123 m (404 x 404 ft)"
+        platforms: "9 stacked platforms (6 square, 3 circular) topped by a central dome"
+        relief_panels: "2,672 relief panels"
+        buddha_statues: "originally 504 Buddha statues; 72 around the central dome in perforated stupas"
+      key_facts:
+        - "9th-century Mahayana Buddhist temple in Central Java, Indonesia; largest Buddhist temple in the world"
+        - "Built during the reign of the Sailendra Dynasty c. 8th century AD"
+        - "Nine stacked platforms topped by a central dome; decorated with 2,672 relief panels and originally 504 Buddha statues"
+        - "Abandoned following 14th-century decline of Hindu kingdoms in Java and conversion to Islam"
+        - "Brought to worldwide attention in 1814 by Sir Thomas Stamford Raffles, then British ruler of Java"
+        - "Largest restoration project completed in 1983 by Indonesian government and UNESCO"
+        - "UNESCO World Heritage Site (designated 1991)"
+      fun_facts:
+        - "Borobudur contains 1,460 narrative relief panels that form a 'picture book' of Buddhist teachings — if laid end to end they would stretch nearly 5 km, making it one of the world's largest collections of Buddhist stone reliefs"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Borobudur"
+
+    Angkor_Wat:
+      location: "Angkor, Siem Reap Province, Cambodia"
+      coordinates: "13.4125, 103.8667"
+      date_built: "1113–1150 CE (constructed during reign of Khmer king Suryavarman II)"
+      architect_designer: "Commissioned by Khmer king Suryavarman II; architect unknown"
+      dimensions:
+        site_area: "162.6 hectares (1.6 km2; 401.8 acres) within the complex"
+        central_tower_height: "65 m (213 ft)"
+        moat_width: "approx. 190 m (623 ft) wide surrounding the complex"
+      key_facts:
+        - "Largest religious complex in the world; located in the ancient capital of Angkor, Cambodia"
+        - "Constructed 1113–1150 CE by Khmer king Suryavarman II as a Hindu temple dedicated to Vishnu"
+        - "Gradually transformed into a Buddhist temple from the late 13th century onward; remains active"
+        - "National symbol of Cambodia and appears on the Cambodian national flag"
+        - "Unique among Angkorian temples in being oriented toward the west"
+        - "Layout symbolically represents Mount Meru (cosmological concept in both Hindu and Buddhist traditions)"
+        - "UNESCO World Heritage Site as part of Angkor (designated 1992)"
+      fun_facts:
+        - "Angkor Wat is the only religious monument in the world to appear on a nation's flag — a testament to its role as a symbol of Cambodian identity across centuries of religious and political change"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Angkor_Wat"
+
+    Golden_Temple_Harmandir_Sahib:
+      location: "Amritsar, Punjab, India"
+      coordinates: "31.620, 74.876"
+      date_built: "Sarovar (holy pool) completed 1577 by Guru Ram Das; gurdwara built early 17th c.; gilded by Maharaja Ranjit Singh 1830"
+      architect_designer: "Sarovar begun by Guru Ram Das (4th Sikh Guru); Guru Arjan (5th Guru) oversaw original gurdwara; rebuilt in marble and copper 1809, gold leaf applied 1830 by Maharaja Ranjit Singh"
+      dimensions:
+        sanctum_size: "approx. 12 m x 12 m (40 x 40 ft) — the sanctum building itself"
+        sarovar_dimensions: "approx. 150 m x 150 m (500 x 500 ft) — the sacred pool"
+      key_facts:
+        - "Pre-eminent spiritual site of Sikhism and one of its holiest shrines"
+        - "Located in Amritsar, Punjab, India"
+        - "Sacred pool (sarovar) completed in 1577 by Guru Ram Das, the 4th Sikh Guru"
+        - "Guru Arjan (5th Guru) placed a copy of the Adi Granth there in 1604"
+        - "Destroyed multiple times by Mughal and Afghan armies; repeatedly rebuilt"
+        - "Maharaja Ranjit Singh rebuilt it in marble and copper in 1809 and overlaid the sanctum with gold leaf in 1830 — this is the origin of the name 'Golden Temple'"
+        - "In 1984, Indian Army's Operation Blue Star was launched here to remove militants, causing significant damage and many casualties"
+      fun_facts:
+        - "The Golden Temple's kitchen (langar) serves free meals to all visitors regardless of religion, caste, or background — it feeds up to 100,000 people per day on busy festival days, making it one of the world's largest community kitchens"
+      unesco: false
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Harmandir_Sahib"
+
+    Blue_Mosque_Sultan_Ahmed:
+      location: "Fatih district (Sultanahmet), Istanbul, Turkey"
+      coordinates: "41.0054, 28.9768"
+      date_built: "1609–1617 AD"
+      architect_designer: "Architect Sedefkar Mehmed Agha; commissioned by Sultan Ahmed I"
+      dimensions:
+        dome_diameter: "approx. 23.5 m (77 ft)"
+        dome_height: "approx. 43 m (141 ft)"
+        minarets: "6 minarets (unusual — most Ottoman mosques have 4)"
+        tiles: "more than 20,000 Iznik tiles"
+      key_facts:
+        - "Ottoman-era imperial mosque constructed 1609–1617 under Sultan Ahmed I"
+        - "Popularly known as the Blue Mosque due to the blue Iznik tiles and painted floral motifs inside"
+        - "Features 6 minarets — unusually large number for an Ottoman mosque"
+        - "Decorated with more than 20,000 Iznik tiles in turquoise, green, and blue"
+        - "Classical Ottoman layout with central dome surrounded by four semi-domes"
+        - "Built next to the former Hippodrome; stands directly across from Hagia Sophia"
+        - "UNESCO World Heritage Site as part of 'Historic Areas of Istanbul' (designated 1985)"
+      fun_facts:
+        - "When the Blue Mosque was built with 6 minarets, there was controversy because the mosque in Mecca (Masjid al-Haram) also had 6 minarets — Sultan Ahmed I had to fund a 7th minaret for Mecca to resolve the dispute"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Sultan_Ahmed_Mosque"
+
+    Cologne_Cathedral:
+      location: "Cologne, North Rhine-Westphalia, Germany"
+      coordinates: "50.9414, 6.9583"
+      date_built: "Construction began 1248; halted c. 1560; resumed 1814; completed 1880"
+      architect_designer: "Medieval Gothic design; various architects over 632 years; completed to medieval plan in 1880"
+      dimensions:
+        height: "157 m (515 ft) — tallest twin-spired church in the world"
+        length: "144 m (473 ft)"
+        width: "86 m (282 ft)"
+        nave_height: "43.35 m (142 ft)"
+      key_facts:
+        - "Catholic cathedral in Cologne; seat of the Archbishop of Cologne"
+        - "Tallest twin-spired church in the world at 157 m (515 ft); third tallest church in Europe"
+        - "Construction began in 1248; halted c. 1560; resumed 1814; completed to original medieval plan in 1880"
+        - "The 632-year construction period is one of the longest of any cathedral"
+        - "Germany's most visited landmark, attracting an average of 6 million visitors per year"
+        - "Houses the Shrine of the Three Kings (Reliquary of the Magi), a major medieval pilgrimage destination"
+        - "UNESCO World Heritage Site (designated 1996)"
+      fun_facts:
+        - "For 4 years (1880–1884) after its completion, Cologne Cathedral was the tallest building in the world — the first time in over 600 years that a new structure had surpassed the Great Pyramid of Giza in height"
+      unesco: true
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Cologne_Cathedral"
+
+    Wat_Phra_Kaew:
+      location: "Grand Palace precinct, Bangkok, Thailand"
+      coordinates: "13.7514, 100.4925"
+      date_built: "Construction began 1783 under King Rama I (first king of the Chakri dynasty)"
+      architect_designer: "Commissioned by King Rama I; traditional Thai religious architecture; expanded by successive Chakri kings"
+      dimensions:
+        complex_area: "approx. 94,500 m2 (1,017,000 sq ft) — the broader Grand Palace compound"
+        emerald_buddha_height: "66 cm (26 in) — the statue itself (made of jasper, not true emerald)"
+      key_facts:
+        - "Most sacred Buddhist temple in Thailand; located within the Grand Palace in Bangkok"
+        - "Houses the Emerald Buddha, venerated as the country's palladium (national protective talisman)"
+        - "Construction began in 1783 under Rama I, the first king of the Chakri dynasty"
+        - "Each successive Chakri king has added to or embellished the temple as a form of royal merit-making"
+        - "The 'Emerald' Buddha is actually carved from green jasper, not emerald; stands 66 cm tall"
+        - "Many important state and royal ceremonies are held here, presided over by the king in person"
+        - "The temple has no resident monks — it functions purely as a royal chapel"
+      fun_facts:
+        - "The Emerald Buddha has three sets of golden seasonal costumes (hot, rainy, and cool season) that are ceremonially changed by the King of Thailand himself at the start of each season — a tradition unbroken since the 18th century"
+      unesco: false
+      note_on_unesco: >
+        Wat Phra Kaew and the Grand Palace are not individually on the UNESCO World Heritage List
+        as of 2026; Bangkok's historic area has been proposed but not yet designated.
+      source_urls:
+        - "https://en.wikipedia.org/wiki/Wat_Phra_Kaew"

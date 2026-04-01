@@ -155,10 +155,6 @@
     return STATUS_EFFECT_INFO[type] ?? { name: type, icon: '❓', color: '#94a3b8', desc: (v: number, t: number) => `${type}: ${v} (${t} turns)` }
   }
 
-  function toggleStatusPopup(type: string) {
-    activeStatusType = activeStatusType === type ? null : type
-  }
-
   /** Only show effects that are still active */
   const activeStatusEffects = $derived(statusEffects.filter(e => e.turnsRemaining > 0))
 </script>
@@ -195,52 +191,46 @@
       <div class="topbar-status-icons" role="list" aria-label="Player status effects">
         {#each activeStatusEffects as effect (effect.type)}
           {@const info = getStatusInfo(effect.type)}
-          <button
-            class="topbar-status-icon"
-            type="button"
-            onclick={() => toggleStatusPopup(effect.type)}
-            aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
+          <div
+            class="topbar-status-icon-wrapper"
+            role="listitem"
+            onmouseenter={() => { activeStatusType = effect.type }}
+            onmouseleave={() => { activeStatusType = null }}
           >
-            {#if info.spriteIcon}
-              <img src={info.spriteIcon} alt={info.name} class="topbar-status-sprite" />
-            {:else}
-              <span class="topbar-status-emoji">{info.icon}</span>
+            <button
+              class="topbar-status-icon"
+              type="button"
+              aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
+            >
+              {#if info.spriteIcon}
+                <img src={info.spriteIcon} alt={info.name} class="topbar-status-sprite" />
+              {:else}
+                <span class="topbar-status-emoji">{info.icon}</span>
+              {/if}
+              {#if effect.value > 1}
+                <span class="topbar-status-stack" style="background: {info.color};">{effect.value}</span>
+              {/if}
+              <span class="topbar-status-turns">{effect.turnsRemaining}</span>
+            </button>
+            {#if activeStatusType === effect.type}
+              <div class="topbar-status-popup">
+                <div class="topbar-status-popup-row">
+                  {#if info.spriteIcon}
+                    <img src={info.spriteIcon} alt={info.name} class="topbar-status-popup-sprite" />
+                  {:else}
+                    <span class="topbar-status-popup-icon" style="color: {info.color};">{info.icon}</span>
+                  {/if}
+                  <div class="topbar-status-popup-text">
+                    <span class="topbar-status-popup-name" style="color: {info.color};">{info.name}</span>
+                    <span class="topbar-status-popup-desc">{info.desc(effect.value, effect.turnsRemaining)}</span>
+                  </div>
+                </div>
+              </div>
             {/if}
-            {#if effect.value > 1}
-              <span class="topbar-status-stack" style="background: {info.color};">{effect.value}</span>
-            {/if}
-            <span class="topbar-status-turns">{effect.turnsRemaining}</span>
-          </button>
+          </div>
         {/each}
       </div>
-    {/if}
-
-    <!-- Popup for active status icon — fixed so it escapes the overflow:hidden topbar -->
-    {#if activeStatusType !== null}
-      {@const activeEffect = activeStatusEffects.find(e => e.type === activeStatusType)}
-      {#if activeEffect}
-        {@const info = getStatusInfo(activeEffect.type)}
-        <!-- svelte-ignore a11y_no_static_element_interactions -->
-        <div
-          class="topbar-status-popup-backdrop"
-          onclick={() => { activeStatusType = null }}
-          onkeydown={() => {}}
-        >
-          <div class="topbar-status-popup">
-            <div class="topbar-status-popup-row">
-              {#if info.spriteIcon}
-                <img src={info.spriteIcon} alt={info.name} class="topbar-status-popup-sprite" />
-              {:else}
-                <span class="topbar-status-popup-icon" style="color: {info.color};">{info.icon}</span>
-              {/if}
-              <div class="topbar-status-popup-text">
-                <span class="topbar-status-popup-name" style="color: {info.color};">{info.name}</span>
-                <span class="topbar-status-popup-desc">{info.desc(activeEffect.value, activeEffect.turnsRemaining)}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      {/if}
     {/if}
   </div>
 
@@ -435,7 +425,7 @@
   .section-left {
     flex: 1;
     min-width: 0;
-    max-width: 45%;
+    max-width: 33%;
     overflow: visible;
   }
 
@@ -449,7 +439,7 @@
   .section-right {
     flex: 1;
     min-width: 0;
-    max-width: 45%;
+    max-width: 40%;
     justify-content: flex-end;
   }
 
@@ -459,9 +449,8 @@
   .hp-group {
     display: flex;
     align-items: center;
-    flex: 0 1 auto;
-    min-width: calc(120px * var(--layout-scale, 1));
-    max-width: calc(200px * var(--layout-scale, 1));
+    flex: 1 0 auto;
+    min-width: 0;
   }
 
   .hp-bar-track {
@@ -540,11 +529,15 @@
     flex-shrink: 0;
   }
 
+  .topbar-status-icon-wrapper {
+    position: relative;
+  }
+
   .topbar-status-icon {
     position: relative;
-    width: calc(26px * var(--layout-scale, 1));
-    height: calc(26px * var(--layout-scale, 1));
-    min-width: calc(26px * var(--layout-scale, 1));
+    width: calc(var(--topbar-height, 4.5vh) * 0.58);
+    height: calc(var(--topbar-height, 4.5vh) * 0.58);
+    min-width: calc(var(--topbar-height, 4.5vh) * 0.58);
     border-radius: 50%;
     border: none;
     background: rgba(0, 0, 0, 0.35);
@@ -563,14 +556,14 @@
   }
 
   .topbar-status-sprite {
-    width: calc(18px * var(--layout-scale, 1));
-    height: calc(18px * var(--layout-scale, 1));
+    width: 80%;
+    height: 80%;
     image-rendering: pixelated;
     object-fit: contain;
   }
 
   .topbar-status-emoji {
-    font-size: calc(14px * var(--layout-scale, 1));
+    font-size: calc(var(--topbar-height, 4.5vh) * 0.40);
     line-height: 1;
   }
 
@@ -601,17 +594,13 @@
     line-height: 1;
   }
 
-  /* Popup — fixed position so it escapes the topbar */
-  .topbar-status-popup-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 500;
-  }
-
+  /* Popup — positioned below each icon wrapper */
   .topbar-status-popup {
     position: absolute;
-    top: calc(var(--topbar-height, 4.5vh) + calc(4px * var(--layout-scale, 1)));
-    left: calc(12px * var(--layout-scale, 1));
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: calc(4px * var(--layout-scale, 1));
     width: calc(220px * var(--layout-scale, 1));
     padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: rgba(15, 23, 42, 0.97);
@@ -620,6 +609,7 @@
     backdrop-filter: blur(8px);
     box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.7);
     z-index: 501;
+    pointer-events: none;
   }
 
   .topbar-status-popup-row {

@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "lastSynced": "2026-03-31",
+  "lastSynced": "2026-04-01",
   "tables": {
     "cards": [
       {
@@ -185,9 +185,9 @@
       },
       {
         "id": "fortify",
-        "name": "Fortify",
+        "name": "Entrench",
         "category": "shield",
-        "description": "Gain 7 persistent block into next turn.",
+        "description": "Double your current block.",
         "sourceFile": "src/data/mechanics.ts",
         "status": "active",
         "mechanicDate": "not_checked",
@@ -1445,9 +1445,9 @@
       },
       {
         "id": "conversion",
-        "name": "Conversion",
+        "name": "Shield Bash",
         "category": "shield",
-        "description": "Convert up to 10 block into damage (1:1). CC: up to 15. CW: up to 5. Block is lost.",
+        "description": "Deal damage equal to your block.",
         "sourceFile": "src/data/mechanics.ts",
         "status": "active",
         "mechanicDate": "not_checked",

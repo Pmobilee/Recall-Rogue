@@ -1,0 +1,1081 @@
+deck_id: dinosaurs
+name: "Dinosaurs & Paleontology"
+domain: natural_sciences
+sub_domain: paleontology
+target_facts: 140
+minimum_facts: 100
+
+# Sourcing & licensing (MANDATORY)
+data_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Dinosaur
+    license: CC-BY-SA-4.0
+    usage: fact text, explanations, species details, discovery history
+  - name: Wikidata
+    url: https://www.wikidata.org/wiki/Q430
+    license: CC0
+    usage: structured taxonomic data, measurements (length, mass), geological periods
+  - name: Wikimedia Commons
+    url: https://commons.wikimedia.org/wiki/Category:Dinosaurs
+    license: CC-BY-SA-3.0 / CC-BY-4.0 / CC0 (varies per image)
+    usage: paleoart illustrations for image-based quiz facts
+
+asset_sources:
+  - type: dinosaur_illustrations
+    source: Wikimedia Commons
+    license: CC-BY-SA-3.0 / CC-BY-4.0 / CC0 (varies per image)
+    note: "Paleoart by Nobu Tamura, Fred Wierum, Emily Willoughby, and others"
+    format: webp
+    path: public/assets/dinosaurs/
+
+# === VERIFIED SOURCE DATA (from Wikidata SPARQL + Wikipedia API, 2026-04-01) ===
+
+source_data:
+
+  # ─── THEROPODS (carnivorous bipedal dinosaurs) ───────────────────────────────
+
+  theropods:
+
+    Tyrannosaurus:
+      wikidata_id: Q14332
+      period: Late Cretaceous
+      period_mya: 68-66
+      length_m: 12
+      mass_tonnes: 8.4
+      diet: carnivore
+      clade: Theropoda
+      family: Tyrannosauridae
+      found_in: [Western North America]
+      wikipedia: https://en.wikipedia.org/wiki/Tyrannosaurus
+      difficulty: easy
+      notes: "Largest land predator ever. Tiny vestigial forelimbs, massive jaws with banana-sized teeth (~30cm). Sue specimen at Field Museum, Chicago. Binocular vision. Debated top speed ~20km/h."
+
+    Spinosaurus:
+      wikidata_id: Q130966
+      period: Late Cretaceous
+      period_mya: 99-93
+      length_m: 14
+      mass_tonnes: 7.4
+      diet: piscivore
+      clade: Theropoda
+      family: Spinosauridae
+      found_in: [North Africa]
+      wikipedia: https://en.wikipedia.org/wiki/Spinosaurus
+      difficulty: medium
+      notes: "Largest carnivorous dinosaur. Neural spine sail on back (up to 1.65m tall). Semi-aquatic fish-eater with crocodile-like snout. Paddle-like tail for swimming (2020 discovery). From Morocco/Egypt."
+
+    Allosaurus:
+      wikidata_id: Q14400
+      period: Late Jurassic
+      period_mya: 155-150
+      length_m: 8.5
+      mass_tonnes: 2.3
+      diet: carnivore
+      clade: Theropoda
+      family: Allosauridae
+      found_in: [Morrison Formation, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Allosaurus
+      difficulty: medium
+      notes: "Apex predator of the Late Jurassic. Large skull with strong arms bearing 3 large claws. Abundant in Morrison Formation. Hunted sauropods. Named 'different lizard' by Othniel Charles Marsh."
+
+    Velociraptor:
+      wikidata_id: Q14403
+      period: Late Cretaceous
+      period_mya: 75-71
+      length_m: 1.8
+      mass_kg: 15
+      diet: carnivore
+      clade: Theropoda
+      family: Dromaeosauridae
+      found_in: [Mongolia, China]
+      wikipedia: https://en.wikipedia.org/wiki/Velociraptor
+      difficulty: easy
+      notes: "Turkey-sized with feathers — NOT Jurassic Park size (that was Deinonychus). Sickle-shaped killing claw on each foot (2nd toe). Found in Gobi Desert, Mongolia. The Jurassic Park raptors were based on Deinonychus."
+
+    Ceratosaurus:
+      wikidata_id: Q130902
+      period: Late Jurassic
+      period_mya: 153-148
+      length_m: 6
+      mass_tonnes: 0.5
+      diet: carnivore
+      clade: Theropoda
+      family: Ceratosauridae
+      found_in: [Morrison Formation, USA; Tanzania]
+      wikipedia: https://en.wikipedia.org/wiki/Ceratosaurus
+      difficulty: hard
+      notes: "Distinctive horn on its nose (giving its name: 'horned lizard'). Row of osteoderms (bony scales) along the back. Coexisted with Allosaurus in Morrison Formation. Four-fingered hands (unusual for theropods)."
+
+    Carnotaurus:
+      wikidata_id: Q18510948
+      period: Late Cretaceous
+      period_mya: 72-69
+      length_m: 8
+      mass_tonnes: 1.3
+      diet: carnivore
+      clade: Theropoda
+      family: Abelisauridae
+      found_in: [Argentina]
+      wikipedia: https://en.wikipedia.org/wiki/Carnotaurus
+      difficulty: medium
+      notes: "Bull-like horns above eyes (carnivore from Argentina). Most vestigial forelimbs of any large theropod — even smaller than T. rex's arms. Fast runner estimated at 48-56km/h. Skin impressions found show bumpy texture."
+
+    Dilophosaurus:
+      wikidata_id: Q271710
+      period: Early Jurassic
+      period_mya: 193
+      length_m: 7
+      mass_kg: 400
+      diet: carnivore
+      clade: Theropoda
+      family: Dilophosauridae
+      found_in: [Arizona, USA; China]
+      wikipedia: https://en.wikipedia.org/wiki/Dilophosaurus
+      difficulty: hard
+      notes: "Double crest on skull (hence 'two-crested lizard'). One of earliest large predatory dinosaurs. NO frill or venom — those were Jurassic Park fiction invented by Michael Crichton. Found in Arizona."
+
+    Compsognathus:
+      wikidata_id: Q130880
+      period: Late Jurassic
+      period_mya: 150
+      length_m: 0.65
+      mass_kg: 3.5
+      diet: carnivore
+      clade: Theropoda
+      family: Compsognathidae
+      found_in: [Germany, France]
+      wikipedia: https://en.wikipedia.org/wiki/Compsognathus
+      difficulty: hard
+      notes: "One of the smallest known non-avian dinosaurs. Chicken-sized (about 65cm long). Ate lizards and small prey. Found in Germany — same Solnhofen limestone as Archaeopteryx. Two-fingered hands."
+
+    Deinonychus:
+      wikidata_id: Q14405
+      period: Early Cretaceous
+      period_mya: 115-108
+      length_m: 3.4
+      mass_kg: 73
+      diet: carnivore
+      clade: Theropoda
+      family: Dromaeosauridae
+      found_in: [Montana, Wyoming, Oklahoma, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Deinonychus
+      difficulty: hard
+      notes: "The actual basis for Jurassic Park 'Velociraptors' (Deinonychus is much larger at 3.4m). Named 'terrible claw'. Pack hunter theory proposed by John Ostrom 1969, revolutionized dino science. Large sickle claw on second toe."
+
+    Giganotosaurus:
+      wikidata_id: Q14438
+      period: Late Cretaceous
+      period_mya: 98-97
+      length_m: 12.5
+      mass_tonnes: 6.5
+      diet: carnivore
+      clade: Theropoda
+      family: Carcharodontosauridae
+      found_in: [Argentina]
+      wikipedia: https://en.wikipedia.org/wiki/Giganotosaurus
+      difficulty: hard
+      notes: "Rivals T. rex in size (may have been slightly longer). From Patagonia, Argentina. Slender elongated skull with blade-like serrated teeth. Likely hunted giant sauropods like Argentinosaurus. Named 1995."
+
+    Carcharodontosaurus:
+      wikidata_id: Q14431
+      period: Late Cretaceous
+      period_mya: 99-94
+      length_m: 12.5
+      mass_tonnes: 6.2
+      diet: carnivore
+      clade: Theropoda
+      family: Carcharodontosauridae
+      found_in: [North Africa]
+      wikipedia: https://en.wikipedia.org/wiki/Carcharodontosaurus
+      difficulty: hard
+      notes: "Name means 'shark-toothed lizard' (carcharias = shark, odontos = tooth). From Morocco and Algeria. One of the largest carnivorous dinosaurs. Contemporary of Spinosaurus in North Africa. Originally described 1931."
+
+    Albertosaurus:
+      wikidata_id: Q40751
+      period: Late Cretaceous
+      period_mya: 70-68
+      length_m: 9
+      mass_tonnes: 1.3
+      diet: carnivore
+      clade: Theropoda
+      family: Tyrannosauridae
+      found_in: [Alberta, Canada]
+      wikipedia: https://en.wikipedia.org/wiki/Albertosaurus
+      difficulty: hard
+      notes: "Tyrannosaurid relative of T. rex, but smaller. Named after Alberta, Canada. Barnum Brown discovered a bonebed in 1910 containing 26 individuals — evidence of pack hunting. Narrower skull than T. rex."
+
+    Baryonyx:
+      wikidata_id: Q131006
+      period: Early Cretaceous
+      period_mya: 130-125
+      length_m: 10
+      mass_tonnes: 1.7
+      diet: piscivore
+      clade: Theropoda
+      family: Spinosauridae
+      found_in: [England, UK; Spain; Portugal]
+      wikipedia: https://en.wikipedia.org/wiki/Baryonyx
+      difficulty: hard
+      notes: "Fish-eating spinosaurid discovered in Surrey, England (1983). Crocodile-like skull, huge curved thumb claw (name = 'heavy claw'). Fish scales found in stomach. Closely related to Spinosaurus."
+
+    Coelophysis:
+      period: Late Triassic
+      period_mya: 213-203
+      length_m: 3
+      mass_kg: 25
+      diet: carnivore
+      clade: Theropoda
+      family: Coelophysidae
+      found_in: [Ghost Ranch, New Mexico, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Coelophysis
+      difficulty: hard
+      notes: "One of the earliest known dinosaurs. Slender and fast. Massive death assemblage (hundreds of skeletons) discovered at Ghost Ranch, New Mexico — one of the most spectacular dinosaur bonebeds. Hollow bones (name = 'hollow form')."
+
+    Gallimimus:
+      period: Late Cretaceous
+      period_mya: 70
+      length_m: 6
+      mass_kg: 440
+      diet: omnivore
+      clade: Theropoda
+      family: Ornithomimidae
+      found_in: [Mongolia]
+      wikipedia: https://en.wikipedia.org/wiki/Gallimimus
+      difficulty: medium
+      notes: "Ostrich mimic dinosaur — long legs, toothless beak, long neck. One of the fastest dinosaurs (estimated 40-70km/h). Featured in Jurassic Park (herd scene). Name means 'chicken mimic'. From the Nemegt Formation, Mongolia."
+
+    Therizinosaurus:
+      period: Late Cretaceous
+      period_mya: 70-68
+      length_m: 10
+      mass_tonnes: 5
+      diet: herbivore
+      clade: Theropoda
+      family: Therizinosauridae
+      found_in: [Mongolia]
+      wikipedia: https://en.wikipedia.org/wiki/Therizinosaurus
+      difficulty: hard
+      notes: "Bizarre theropod with the longest claws of any known animal ever — up to 1 meter long. Despite being a theropod (same group as T. rex), it was herbivorous with a pot belly. Named 'scythe lizard'."
+
+    Oviraptor:
+      period: Late Cretaceous
+      period_mya: 75-71
+      length_m: 1.5
+      mass_kg: 35
+      diet: omnivore
+      clade: Theropoda
+      family: Oviraptoridae
+      found_in: [Mongolia]
+      wikipedia: https://en.wikipedia.org/wiki/Oviraptor
+      difficulty: hard
+      notes: "Name means 'egg thief' — originally thought to be stealing Protoceratops eggs. Later discovered it was actually BROODING its own eggs (vindicated). Parrot-like beak, head crest. Found by Roy Chapman Andrews expedition 1923."
+
+  # ─── SAUROPODS (long-necked herbivores) ─────────────────────────────────────
+
+  sauropods:
+
+    Diplodocus:
+      wikidata_id: Q14330
+      period: Late Jurassic
+      period_mya: 154-152
+      length_m: 26
+      mass_tonnes: 14
+      diet: herbivore
+      clade: Sauropoda
+      family: Diplodocidae
+      found_in: [Morrison Formation, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Diplodocus
+      difficulty: easy
+      notes: "One of the longest dinosaurs. Whip-like tail (possibly supersonic crack). Very long neck. Pencil-like teeth for stripping leaves (not chewing). Name means 'double beam' (referring to tail structure). Carnegie Natural History Museum famous cast."
+
+    Brachiosaurus:
+      wikidata_id: Q14397
+      period: Late Jurassic
+      period_mya: 154-153
+      length_m: 21
+      mass_tonnes: 56
+      diet: herbivore
+      clade: Sauropoda
+      family: Brachiosauridae
+      found_in: [Morrison Formation, USA; Tanzania]
+      wikipedia: https://en.wikipedia.org/wiki/Brachiosaurus
+      difficulty: easy
+      notes: "Front legs longer than hind legs (unusual for sauropods — name means 'arm lizard'). Giraffe-like upright posture. Nostrils high on the skull. Ate high tree canopy vegetation. Featured in Jurassic Park opening scene."
+
+    Apatosaurus:
+      wikidata_id: Q14326
+      period: Late Jurassic
+      period_mya: 152-151
+      length_m: 21
+      mass_tonnes: 22
+      diet: herbivore
+      clade: Sauropoda
+      family: Apatosauridae
+      found_in: [Morrison Formation, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Apatosaurus
+      difficulty: easy
+      notes: "Also known as Brontosaurus — the name 'Brontosaurus' was considered invalid 1903-2015 but was restored as a valid separate genus in 2015. Both names now accepted. Name means 'deceptive lizard'. Massive body with whip-like tail. 'Thunder lizard' nickname."
+
+    Argentinosaurus:
+      wikidata_id: Q130859
+      period: Late Cretaceous
+      period_mya: 96-92
+      length_m: 35
+      mass_tonnes: 70
+      diet: herbivore
+      clade: Sauropoda
+      family: Titanosauridae
+      found_in: [Argentina]
+      wikipedia: https://en.wikipedia.org/wiki/Argentinosaurus
+      difficulty: medium
+      notes: "One of the largest animals ever to live on land. Estimated 70-80 tonnes (some estimates higher). From Patagonia, Argentina. Known from partial remains (vertebrae and leg bones). A titanosaur — most successful Late Cretaceous sauropods."
+
+  # ─── CERATOPSIANS (horned/frilled herbivores) ────────────────────────────────
+
+  ceratopsians:
+
+    Triceratops:
+      wikidata_id: Q14384
+      period: Late Cretaceous
+      period_mya: 68-66
+      length_m: 9
+      mass_tonnes: 8
+      diet: herbivore
+      clade: Ceratopsia
+      family: Ceratopsidae
+      found_in: [Western North America]
+      wikipedia: https://en.wikipedia.org/wiki/Triceratops
+      difficulty: easy
+      notes: "Three facial horns and a large bony frill. One of the very last non-avian dinosaurs (went extinct at K-Pg boundary). Contemporary of T. rex — evidence of combat between the two. Named by Othniel Charles Marsh 1889. Among most recognizable dinosaurs."
+
+    Protoceratops:
+      period: Late Cretaceous
+      period_mya: 75-71
+      length_m: 1.8
+      mass_kg: 180
+      diet: herbivore
+      clade: Ceratopsia
+      family: Protoceratopsidae
+      found_in: [Mongolia, China]
+      wikipedia: https://en.wikipedia.org/wiki/Protoceratops
+      difficulty: hard
+      notes: "Small ancestor of horned ceratopsian dinosaurs — lacks developed horns. Famous 'fighting dinosaurs' fossil: specimen locked in combat with Velociraptor, buried alive by sand dune. Found by Roy Chapman Andrews 1922 expedition. Likely the source of griffin legends in ancient Scythia."
+
+    Styracosaurus:
+      period: Late Cretaceous
+      period_mya: 75
+      length_m: 5.5
+      mass_tonnes: 2.7
+      diet: herbivore
+      clade: Ceratopsia
+      family: Ceratopsidae
+      found_in: [Alberta, Canada; Montana, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Styracosaurus
+      difficulty: hard
+      notes: "Spectacular frill with long spikes radiating outward from the frill edge. Single large horn on its nose (name = 'spiked lizard'). Lived in large herds. Named by Lawrence Lambe 1913. Shorter than Triceratops but with more elaborate frill ornamentation."
+
+  # ─── STEGOSAURS ──────────────────────────────────────────────────────────────
+
+  stegosaurs:
+
+    Stegosaurus:
+      wikidata_id: Q14388
+      period: Late Jurassic
+      period_mya: 155-150
+      length_m: 9
+      mass_tonnes: 3.5
+      diet: herbivore
+      clade: Stegosauria
+      family: Stegosauridae
+      found_in: [Morrison Formation, USA; Portugal]
+      wikipedia: https://en.wikipedia.org/wiki/Stegosaurus
+      difficulty: easy
+      notes: "Double row of distinctive back plates (17 plates). Thagomizer: 4 tail spikes for defense (name coined in a Gary Larson Far Side cartoon, later adopted by scientists). Brain often cited as walnut-sized — technically about 80g, small for its body mass. Contemporary of Allosaurus."
+
+  # ─── ANKYLOSAURS ─────────────────────────────────────────────────────────────
+
+  ankylosaurs:
+
+    Ankylosaurus:
+      wikidata_id: Q40621
+      period: Late Cretaceous
+      period_mya: 68-66
+      length_m: 8
+      mass_tonnes: 6
+      diet: herbivore
+      clade: Ankylosauria
+      family: Ankylosauridae
+      found_in: [Western North America]
+      wikipedia: https://en.wikipedia.org/wiki/Ankylosaurus
+      difficulty: medium
+      notes: "Living tank: full-body armor of bony plates (osteoderms) embedded in skin. Massive tail club (ankylosed bones) could shatter predator bones. Even eyelids were armored. One of the last surviving dinosaurs (68-66 mya). Only skull was found in 1906."
+
+  # ─── ORNITHOPODS (duck-bills and kin) ────────────────────────────────────────
+
+  ornithopods:
+
+    Parasaurolophus:
+      wikidata_id: Q203583
+      period: Late Cretaceous
+      period_mya: 76-74
+      length_m: 9
+      mass_tonnes: 2.5
+      diet: herbivore
+      clade: Ornithopoda
+      family: Hadrosauridae
+      found_in: [Alberta, Canada; New Mexico, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Parasaurolophus
+      difficulty: medium
+      notes: "Long curved hollow head crest (up to 1.8m) used as a resonating chamber to produce low-frequency trumpeting calls — CT scans confirmed. Duck-billed herbivore. One of the most recognizable hadrosaurs. Could walk on 2 or 4 legs."
+
+    Iguanodon:
+      wikidata_id: Q130980
+      period: Early Cretaceous
+      period_mya: 126-113
+      length_m: 10
+      mass_tonnes: 3.5
+      diet: herbivore
+      clade: Ornithopoda
+      family: Iguanodontidae
+      found_in: [Belgium, England, Germany, Spain]
+      wikipedia: https://en.wikipedia.org/wiki/Iguanodon
+      difficulty: medium
+      notes: "Second dinosaur ever formally named (1825) by Gideon Mantell. Distinctive thumb spike (initially mistakenly placed on nose). Could walk on 2 or 4 legs. 29+ articulated skeletons found at Bernissart, Belgium mine in 1878 — a landmark discovery."
+
+    Edmontosaurus:
+      wikidata_id: Q309466
+      period: Late Cretaceous
+      period_mya: 73-66
+      length_m: 13
+      mass_tonnes: 4
+      diet: herbivore
+      clade: Ornithopoda
+      family: Hadrosauridae
+      found_in: [Western North America]
+      wikipedia: https://en.wikipedia.org/wiki/Edmontosaurus
+      difficulty: hard
+      notes: "Duck-billed hadrosaur. Exceptional skin impressions found (mummified specimens). One of the very last non-avian dinosaurs, lived right up to the K-Pg extinction. T. rex bite marks found on tail vertebra — evidence of predation or scavenging. Named after Edmonton, Alberta."
+
+    Pachycephalosaurus:
+      wikidata_id: Q14455
+      period: Late Cretaceous
+      period_mya: 70-66
+      length_m: 4.5
+      mass_kg: 450
+      diet: herbivore
+      clade: Pachycephalosauria
+      family: Pachycephalosauridae
+      found_in: [Montana, Wyoming, South Dakota, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Pachycephalosaurus
+      difficulty: hard
+      notes: "Thick domed skull up to 25cm thick (name = 'thick-headed lizard'). Head-butting behavior is debated — some paleontologists argue flank-butting or display instead. Largest known pachycephalosaur. Two-legged herbivore. Known only from skull material."
+
+    Maiasaura:
+      period: Late Cretaceous
+      period_mya: 76.7
+      length_m: 9
+      mass_tonnes: 3
+      diet: herbivore
+      clade: Ornithopoda
+      family: Hadrosauridae
+      found_in: [Montana, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Maiasaura
+      difficulty: hard
+      notes: "Name means 'good mother lizard'. First dinosaur proven to care for its young — Jack Horner discovered nesting colonies with eggs, hatchlings, and juveniles in 1978 (Two Medicine Formation, Montana). Overturned image of dinosaurs as neglectful parents. Remains sent to the International Space Station."
+
+    Corythosaurus:
+      period: Late Cretaceous
+      period_mya: 77-75
+      length_m: 9
+      mass_tonnes: 3.8
+      diet: herbivore
+      clade: Ornithopoda
+      family: Hadrosauridae
+      found_in: [Alberta, Canada]
+      wikipedia: https://en.wikipedia.org/wiki/Corythosaurus
+      difficulty: hard
+      notes: "Helmet-shaped hollow crest (name = 'helmet lizard'). Crest used for sound production and species recognition — similar function to Parasaurolophus. Excellent hearing. Duck-billed. Well-preserved skin impressions known. Discovered by Barnum Brown 1914."
+
+  # ─── EARLY / TRANSITIONAL DINOSAURS ─────────────────────────────────────────
+
+  early_dinosaurs:
+
+    Eoraptor:
+      wikidata_id: Q130988
+      period: Late Triassic
+      period_mya: 231
+      length_m: 1.7
+      mass_kg: 10
+      diet: omnivore
+      clade: early dinosaur (stem)
+      family: Eodromaeidae
+      found_in: [Argentina]
+      wikipedia: https://en.wikipedia.org/wiki/Eoraptor
+      difficulty: hard
+      notes: "One of the earliest known dinosaurs (231 million years ago). From Ischigualasto Formation, Argentina. Shows mix of primitive and derived features. Name means 'dawn thief'. Small, fast, bipedal. Discovered 1991 by Paul Sereno."
+
+    Archaeopteryx:
+      wikidata_id: Q100196
+      period: Late Jurassic
+      period_mya: 150
+      length_m: 0.5
+      mass_kg: 0.9
+      diet: carnivore
+      clade: Avialae
+      family: Archaeopterygidae
+      found_in: [Germany]
+      wikipedia: https://en.wikipedia.org/wiki/Archaeopteryx
+      difficulty: medium
+      notes: "Transitional link between non-avian dinosaurs and birds. Had feathered wings (like birds) but also teeth, clawed fingers, and a long bony tail (like dinosaurs). Found in Solnhofen limestone, Bavaria, 1861 — just 2 years after Darwin's On the Origin of Species. About 12 specimens known."
+
+  # ─── PTEROSAURS (flying reptiles — NOT dinosaurs, but contemporary) ──────────
+
+  pterosaurs:
+    note: "Pterosaurs are NOT dinosaurs — they are flying reptiles that lived alongside dinosaurs. Include for educational context."
+
+    Pteranodon:
+      period: Late Cretaceous
+      period_mya: 86-84
+      wingspan_m: 6.5
+      mass_kg: 25
+      diet: piscivore
+      clade: Pterosauria
+      family: Pteranodontidae
+      found_in: [Kansas, Nebraska, Wyoming, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Pteranodon
+      difficulty: medium
+      notes: "Toothless flying reptile (name = 'winged and toothless'). Distinctive backward-pointing head crest. 6-7m wingspan. NOT a dinosaur — a pterosaur (flying reptile). Flew over the Western Interior Seaway. Used thermals and soaring like modern sea birds."
+
+    Quetzalcoatlus:
+      period: Late Cretaceous
+      period_mya: 68-66
+      wingspan_m: 10.5
+      mass_kg: 250
+      diet: carnivore
+      clade: Pterosauria
+      family: Azhdarchidae
+      found_in: [Texas, USA]
+      wikipedia: https://en.wikipedia.org/wiki/Quetzalcoatlus
+      difficulty: hard
+      notes: "Largest flying animal ever known. Giraffe-sized when standing on the ground (5m tall). Named after Quetzalcoatl, the feathered serpent god of Aztec mythology. Likely stalked prey on land like a modern stork. From the Hell Creek Formation, Texas."
+
+    Dimorphodon:
+      wikidata_id: Q131245
+      period: Early Jurassic
+      period_mya: 182
+      wingspan_m: 1.4
+      mass_kg: 2
+      diet: insectivore
+      clade: Pterosauria
+      family: Dimorphodontidae
+      found_in: [Dorset, England]
+      wikipedia: https://en.wikipedia.org/wiki/Dimorphodon
+      difficulty: hard
+      notes: "Had two distinct types of teeth (name = 'two-form tooth' — unusual for pterosaurs). Large head relative to body. Found on the Jurassic Coast of Dorset, England by Mary Anning. One of earliest pterosaurs. Described by Richard Owen 1859."
+
+  # ─── MARINE REPTILES (NOT dinosaurs, but contemporary) ───────────────────────
+
+  marine_reptiles:
+    note: "Marine reptiles are NOT dinosaurs — they are other reptile lineages that lived at the same time."
+
+    Mosasaurus:
+      period: Late Cretaceous
+      period_mya: 82-66
+      length_m: 13
+      mass_tonnes: 14
+      diet: carnivore
+      clade: Mosasauridae
+      family: Mosasauridae
+      found_in: [Europe, North America, worldwide oceans]
+      wikipedia: https://en.wikipedia.org/wiki/Mosasaurus
+      difficulty: medium
+      notes: "Giant marine lizard — apex ocean predator of the Late Cretaceous. NOT a dinosaur or plesiosaur but related to modern monitor lizards. Double-hinged jaw like snakes for swallowing large prey. Featured in Jurassic World. First found in Maastricht, Netherlands (name = 'Meuse lizard')."
+
+    Ichthyosaurus:
+      period: Early Jurassic
+      period_mya: 200-175
+      length_m: 2
+      mass_kg: 90
+      diet: piscivore
+      clade: Ichthyosauria
+      family: Ichthyosauridae
+      found_in: [England, Germany, worldwide]
+      wikipedia: https://en.wikipedia.org/wiki/Ichthyosaurus
+      difficulty: medium
+      notes: "Dolphin-shaped marine reptile (convergent evolution — same shape, different lineage). Gave birth to live young (fossils of mothers with embryos found). Enormous eyes adapted for deep diving. NOT a dinosaur. First complete specimen found by Mary Anning at Lyme Regis, England (~1811)."
+
+    Plesiosaurus:
+      period: Early Jurassic
+      period_mya: 200-175
+      length_m: 3.5
+      mass_tonnes: 0.4
+      diet: piscivore
+      clade: Plesiosauria
+      family: Plesiosauridae
+      found_in: [England]
+      wikipedia: https://en.wikipedia.org/wiki/Plesiosaurus
+      difficulty: medium
+      notes: "Long neck, small head, 4 paddle-like flippers. Inspired Loch Ness Monster myth. NOT a dinosaur — a plesiosaur. Found by Mary Anning at Lyme Regis 1823. Named by William Conybeare. Plesiosaurs could not raise their necks high above water (despite popular depictions)."
+
+  # ─── DEEP TIME TOPIC FACTS ───────────────────────────────────────────────────
+
+  deep_time:
+    note: "Topic-based facts for the deep_time chain theme — geological periods, key events, paleontology history."
+
+    Triassic_Period:
+      time_mya: 252-201
+      key_events:
+        - "First dinosaurs appeared approximately 231 mya (Eoraptor, Herrerasaurus)"
+        - "Recovery from Permian-Triassic mass extinction (Great Dying)"
+        - "Pangaea supercontinent, hot and dry climate"
+        - "Mammals first appeared during Triassic"
+      wikipedia: https://en.wikipedia.org/wiki/Triassic
+
+    Jurassic_Period:
+      time_mya: 201-145
+      key_events:
+        - "Sauropods dominated as the largest land animals"
+        - "First birds evolved from theropod dinosaurs (Archaeopteryx ~150 mya)"
+        - "Pangaea began breaking apart, forming Atlantic Ocean"
+        - "Morrison Formation (USA) deposited — rich dinosaur fossil site"
+      wikipedia: https://en.wikipedia.org/wiki/Jurassic
+
+    Cretaceous_Period:
+      time_mya: 145-66
+      key_events:
+        - "Flowering plants (angiosperms) diversified rapidly"
+        - "T. rex, Triceratops, large marine reptiles lived here"
+        - "India separated from Gondwana and drifted north"
+        - "Ended with K-Pg mass extinction 66 mya"
+      wikipedia: https://en.wikipedia.org/wiki/Cretaceous
+
+    K_Pg_Extinction:
+      time_mya: 66
+      key_facts:
+        - "Chicxulub asteroid impact, Yucatan Peninsula, Mexico"
+        - "Asteroid estimated 10-15km diameter"
+        - "Wiped out ~75% of all species, including non-avian dinosaurs"
+        - "Named K-Pg boundary (Cretaceous-Paleogene)"
+        - "Evidence: worldwide iridium layer, shocked quartz, Chicxulub crater (180km wide)"
+      wikipedia: https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event
+
+    Richard_Owen:
+      born: 1804
+      died: 1892
+      key_facts:
+        - "Coined the term 'Dinosauria' in 1842 (meaning 'terrible lizards')"
+        - "Described Megalosaurus, Iguanodon, Hylaeosaurus as a distinct group"
+        - "Founded the Natural History Museum, London"
+        - "Adversary of Charles Darwin and Thomas Huxley"
+      wikipedia: https://en.wikipedia.org/wiki/Richard_Owen
+
+    Mary_Anning:
+      born: 1799
+      died: 1847
+      key_facts:
+        - "Pioneering fossil hunter from Lyme Regis, Dorset, England"
+        - "Found first complete Ichthyosaurus skeleton (~1811, age 12)"
+        - "Found first Plesiosaurus (1823)"
+        - "Found Dimorphodon pterosaur (1828)"
+        - "Largely uncredited in her lifetime due to gender and class"
+        - "Possibly inspired the tongue twister 'She sells sea shells'"
+      wikipedia: https://en.wikipedia.org/wiki/Mary_Anning
+
+    Bone_Wars:
+      period: 1877-1892
+      key_facts:
+        - "Fierce rivalry between Othniel Charles Marsh and Edward Drinker Cope"
+        - "Together discovered 142 new dinosaur species"
+        - "Both used espionage, bribery, and sabotage against each other"
+        - "Marsh named Apatosaurus and Brontosaurus, Stegosaurus, Triceratops"
+        - "Cope named Camarasaurus, Coelophysis, and many others"
+        - "Dramatically expanded knowledge of North American dinosaurs"
+      wikipedia: https://en.wikipedia.org/wiki/Bone_Wars
+
+    First_Named_Dinosaur:
+      key_facts:
+        - "Megalosaurus: first dinosaur formally named (1824) by William Buckland"
+        - "Iguanodon: second named (1825) by Gideon Mantell"
+        - "Both named before the term 'Dinosauria' existed (coined 1842)"
+        - "Megalosaurus means 'great lizard'"
+      wikipedia: https://en.wikipedia.org/wiki/Megalosaurus
+
+    Pangaea:
+      key_facts:
+        - "Supercontinent that existed during Triassic period (~335-175 mya)"
+        - "Began breaking apart in Early Jurassic (~175 mya)"
+        - "Separation drove dinosaur evolution and diversification"
+        - "Explains why similar dinosaur species found on different modern continents"
+        - "Laurasia (north) and Gondwana (south) were the two main fragments"
+      wikipedia: https://en.wikipedia.org/wiki/Pangaea
+
+    Feathered_Dinosaurs:
+      key_facts:
+        - "Feathered dinosaur fossils discovered in Liaoning Province, China (1990s onward)"
+        - "Revolutionized understanding: many theropods had feathers"
+        - "Sinosauropteryx (1996) was first feathered non-avian dinosaur confirmed"
+        - "Confirms birds evolved directly from theropod dinosaurs"
+        - "Velociraptor had feather quill knobs on arm bones (confirmed 2007)"
+      wikipedia: https://en.wikipedia.org/wiki/Feathered_dinosaur
+
+# === CHAIN THEMES ===
+
+chain_themes:
+  - id: apex_predators
+    name: "Apex Predators"
+    description: "Fearsome theropod hunters — T. rex, Spinosaurus, Allosaurus, and their kin"
+    species:
+      - Tyrannosaurus
+      - Spinosaurus
+      - Allosaurus
+      - Velociraptor
+      - Carnotaurus
+      - Giganotosaurus
+      - Carcharodontosaurus
+      - Albertosaurus
+      - Deinonychus
+      - Ceratosaurus
+      - Dilophosaurus
+      - Baryonyx
+      - Coelophysis
+      - Gallimimus
+      - Compsognathus
+      - Oviraptor
+      - Therizinosaurus
+
+  - id: gentle_giants
+    name: "Gentle Giants"
+    description: "Massive long-necked sauropods — the largest land animals in Earth's history"
+    species:
+      - Diplodocus
+      - Brachiosaurus
+      - Apatosaurus
+      - Argentinosaurus
+
+  - id: armored_and_horned
+    name: "Armored & Horned"
+    description: "Heavily defended herbivores — ceratopsians, ankylosaurs, stegosaurs, and pachycephalosaurs"
+    species:
+      - Triceratops
+      - Ankylosaurus
+      - Stegosaurus
+      - Protoceratops
+      - Styracosaurus
+      - Pachycephalosaurus
+
+  - id: duck_bills_and_herds
+    name: "Duck-Bills & Herds"
+    description: "Social hadrosaurids and ornithopods — crested, vocal, and community-oriented"
+    species:
+      - Parasaurolophus
+      - Iguanodon
+      - Edmontosaurus
+      - Maiasaura
+      - Corythosaurus
+
+  - id: ancient_oceans_and_skies
+    name: "Ancient Oceans & Skies"
+    description: "Pterosaurs that ruled the air and marine reptiles that dominated the seas"
+    species:
+      - Pteranodon
+      - Quetzalcoatlus
+      - Dimorphodon
+      - Mosasaurus
+      - Ichthyosaurus
+      - Plesiosaurus
+      - Archaeopteryx
+
+  - id: deep_time
+    name: "Deep Time"
+    description: "Geological periods, mass extinctions, paleontology history, and evolutionary milestones"
+    note: "Topic-based facts rather than species-based — covers Richard Owen, Mary Anning, Bone Wars, K-Pg extinction, geological periods, Pangaea, and feathered dinosaur discoveries"
+
+# === ANSWER TYPE POOLS ===
+
+answer_type_pools:
+  - id: dinosaur_names
+    format: name
+    members:
+      - Tyrannosaurus
+      - Spinosaurus
+      - Allosaurus
+      - Velociraptor
+      - Ceratosaurus
+      - Carnotaurus
+      - Dilophosaurus
+      - Compsognathus
+      - Deinonychus
+      - Giganotosaurus
+      - Carcharodontosaurus
+      - Albertosaurus
+      - Baryonyx
+      - Coelophysis
+      - Gallimimus
+      - Therizinosaurus
+      - Oviraptor
+      - Diplodocus
+      - Brachiosaurus
+      - Apatosaurus
+      - Argentinosaurus
+      - Triceratops
+      - Protoceratops
+      - Styracosaurus
+      - Stegosaurus
+      - Ankylosaurus
+      - Parasaurolophus
+      - Iguanodon
+      - Edmontosaurus
+      - Pachycephalosaurus
+      - Maiasaura
+      - Corythosaurus
+      - Eoraptor
+      - Archaeopteryx
+      - Pteranodon
+      - Quetzalcoatlus
+      - Dimorphodon
+      - Mosasaurus
+      - Ichthyosaurus
+      - Plesiosaurus
+    count: 40
+
+  - id: geological_periods
+    format: term
+    members:
+      - Late Triassic
+      - Early Jurassic
+      - Middle Jurassic
+      - Late Jurassic
+      - Early Cretaceous
+      - Late Cretaceous
+    count: 6
+
+  - id: diet_types
+    format: term
+    members:
+      - Carnivore
+      - Herbivore
+      - Omnivore
+      - Piscivore
+      - Insectivore
+    count: 5
+
+  - id: clade_names
+    format: term
+    members:
+      - Theropod
+      - Sauropod
+      - Ceratopsian
+      - Ankylosaur
+      - Stegosaur
+      - Hadrosaurid
+      - Ornithopod
+      - Pterosaur
+      - Mosasaur
+      - Ichthyosaur
+      - Plesiosaur
+    count: 11
+
+  - id: bracket_numbers
+    format: bracket_number
+    note: "Runtime-generated numeric distractors for lengths, weights, dates, dimensions"
+
+  - id: paleontologist_names
+    format: name
+    members:
+      - Richard Owen
+      - Mary Anning
+      - Gideon Mantell
+      - Othniel Charles Marsh
+      - Edward Drinker Cope
+      - Barnum Brown
+      - Roy Chapman Andrews
+      - Jack Horner
+      - Paul Sereno
+      - Mary Schweitzer
+      - William Buckland
+      - John Ostrom
+    count: 12
+
+# === QUESTION TEMPLATES ===
+
+question_templates:
+  # dinosaur_names pool
+  - id: dino_from_feature
+    format: "Which dinosaur is known for {distinctive_feature}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 0
+    difficulty: 1
+
+  - id: dino_from_period
+    format: "Which of these dinosaurs lived during the {period}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 0
+    difficulty: 2
+
+  - id: dino_from_diet
+    format: "Which of these dinosaurs was a {diet_type}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: dino_from_size_superlative
+    format: "Which dinosaur was the largest/heaviest/longest {category}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: dino_from_location
+    format: "Which dinosaur was discovered in {location}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: dino_from_nickname
+    format: "Which dinosaur is nicknamed {nickname}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: dino_from_clade
+    format: "Which of these is a {clade_name}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  - id: dino_from_counterintuitive
+    format: "Which dinosaur {counterintuitive_fact}?"
+    answer_pool: dinosaur_names
+    available_from_mastery: 4
+    difficulty: 5
+
+  # geological_periods pool
+  - id: period_from_dino
+    format: "In which period did {dinosaur} live?"
+    answer_pool: geological_periods
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: period_from_event
+    format: "During which period did {major_event} occur?"
+    answer_pool: geological_periods
+    available_from_mastery: 2
+    difficulty: 3
+
+  # clade_names pool
+  - id: clade_from_dino
+    format: "What type of dinosaur is {dinosaur_name}?"
+    answer_pool: clade_names
+    available_from_mastery: 1
+    difficulty: 2
+
+  - id: clade_from_features
+    format: "Which dinosaur group is characterized by {defining_feature}?"
+    answer_pool: clade_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  # paleontologist_names pool
+  - id: paleo_from_achievement
+    format: "Which paleontologist {achievement}?"
+    answer_pool: paleontologist_names
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: paleo_from_discovery
+    format: "Who discovered or named {dinosaur_or_concept}?"
+    answer_pool: paleontologist_names
+    available_from_mastery: 3
+    difficulty: 4
+
+  # bracket_numbers pool
+  - id: dino_length
+    format: "Approximately how long was {dinosaur_name}?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 2
+    difficulty: 3
+
+  - id: extinction_date
+    format: "Approximately how many million years ago did {event} occur?"
+    answer_pool: bracket_numbers
+    available_from_mastery: 2
+    difficulty: 3
+
+# === SEEDED CONFUSION PAIRS ===
+
+common_confusions:
+  - [Tyrannosaurus, Giganotosaurus, Carcharodontosaurus]     # Large theropods, size rivalry
+  - [Velociraptor, Deinonychus]                               # Dromaeosaurids, Jurassic Park confusion
+  - [Diplodocus, Apatosaurus, Brachiosaurus]                  # Sauropods — similar shape
+  - [Pteranodon, Quetzalcoatlus]                              # Large pterosaurs
+  - [Mosasaurus, Plesiosaurus, Ichthyosaurus]                 # Marine reptiles
+  - [Triceratops, Styracosaurus, Protoceratops]              # Ceratopsians
+  - [Parasaurolophus, Corythosaurus, Edmontosaurus]          # Hadrosaurs / duck-bills
+  - [Spinosaurus, Baryonyx]                                   # Spinosaurids
+  - [Stegosaurus, Ankylosaurus]                               # Armored herbivores
+  - [Allosaurus, Ceratosaurus]                               # Late Jurassic predators
+  - [Eoraptor, Coelophysis]                                  # Early small dinosaurs
+  - [Othniel Charles Marsh, Edward Drinker Cope]             # Bone Wars rivals
+  - [Mary Anning, Gideon Mantell]                            # Early 19th century fossil hunters
+
+# === SYNONYM GROUPS ===
+
+synonym_groups:
+  - id: apatosaurus_brontosaurus
+    fact_ids: []  # facts about Apatosaurus may also accept Brontosaurus
+    reason: "Brontosaurus was synonymized with Apatosaurus 1903-2015, now restored as separate but closely related — context-dependent"
+  - id: trex_full_name
+    fact_ids: []  # "T. rex" = "Tyrannosaurus rex" = "Tyrannosaurus"
+    reason: "Abbreviated name universally accepted"
+  - id: kpg_boundary
+    fact_ids: []  # K-Pg = K/T = Cretaceous-Paleogene = Cretaceous-Tertiary
+    reason: "Same event, old nomenclature still common"
+
+# === DIFFICULTY TIERS ===
+
+difficulty_tiers:
+  easy:  # Universally known, featured in movies/TV
+    - Tyrannosaurus
+    - Triceratops
+    - Stegosaurus
+    - Velociraptor
+    - Brachiosaurus
+    - Diplodocus
+  medium:  # Known to dinosaur enthusiasts
+    - Spinosaurus
+    - Ankylosaurus
+    - Parasaurolophus
+    - Allosaurus
+    - Pteranodon
+    - Apatosaurus
+    - Carnotaurus
+    - Argentinosaurus
+    - Mosasaurus
+    - Ichthyosaurus
+    - Plesiosaurus
+    - Archaeopteryx
+    - Iguanodon
+    - Gallimimus
+  hard:  # Requires specific paleontology knowledge
+    - Carcharodontosaurus
+    - Giganotosaurus
+    - Deinonychus
+    - Coelophysis
+    - Eoraptor
+    - Therizinosaurus
+    - Protoceratops
+    - Styracosaurus
+    - Pachycephalosaurus
+    - Edmontosaurus
+    - Maiasaura
+    - Corythosaurus
+    - Albertosaurus
+    - Baryonyx
+    - Ceratosaurus
+    - Dilophosaurus
+    - Compsognathus
+    - Oviraptor
+    - Quetzalcoatlus
+    - Dimorphodon
+
+volatile_facts: []
+# Paleontology facts are stable — taxonomy occasionally revised but core facts are durable

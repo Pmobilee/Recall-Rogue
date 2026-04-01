@@ -235,3 +235,22 @@
 **Fix:** Added explicit `case 'expose':` and `case 'weaken':` branches in `cardEffectResolver.ts` before the `default:` case. expose applies Vulnerable, weaken applies Weakness. Both use `Math.max(1, Math.round(finalValue))` stacks to guarantee minimum 1 stack on any play mode. Duration: 1 turn (QP/CW), 2 turns (CC).
 
 **Pattern:** Any new debuff mechanic with `quickPlayValue < 5` MUST have an explicit case or it will silently do nothing via the fallback.
+
+### 2026-04-01 — world_wonders deck: 97 unsafe distractors from same-pool contamination
+**What went wrong:** 56 of 195 facts in `data/decks/world_wonders.json` have distractors that are also `correctAnswer` or `acceptableAlternatives` values of other facts in the same `answerTypePool`. This makes those distractors technically correct answers for a different fact — a quiz fairness violation. 97 individual distractor instances are affected.
+
+**Affected pools:**
+- `measurement_number`: 49 instances (the largest pool with 92 facts — high collision probability)
+- `architect_designer`: 36 instances (22 facts, many famous architects reused as distractors across questions)
+- `year_date`: 9 instances
+- `material_feature`: 3 instances
+
+**Root cause:** The distractor generation pass reused real values from the same pool (e.g., CN Tower height "553 metres" used as a distractor for Burj Khalifa, but the Shanghai Tower also answers 553m). When pools are large with semantically similar numeric/name values, this collision is inevitable if distractors are drawn from within the deck without checking the pool's answer set first.
+
+**Also found:**
+- 2 facts have only 6 distractors (`ww_anc_parthenon_architect`, `ww_sac_hagia_sophia_architects`), below the 7-minimum
+- Pool `location_city` has only 2 facts, below the 5-minimum required for safe distractor selection
+
+**Fix:** Before finalising any curated deck, run `data/decks/_wip/qa-world-wonders.mjs` (or adapt its check 7 logic). For the world_wonders deck specifically: replace all 97 flagged distractors in `measurement_number`, `architect_designer`, `year_date`, and `material_feature` pools with values that do not appear as a `correctAnswer` or `acceptableAlternatives` in that pool. Add 1 distractor each to the two facts below minimum. Merge `location_city` into `location_country` (already has 5+) or add 3 more city-answer facts.
+
+**Prevention:** Add this safety check to the deck assembly script (`assemble-world-wonders.mjs`) and future assembly scripts so distractor contamination is caught at generation time, not QA time.
