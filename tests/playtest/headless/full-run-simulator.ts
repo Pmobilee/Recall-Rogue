@@ -669,7 +669,33 @@ function handleCombatNode(
 
     // Elite: also award a relic
     if (nodeType === 'elite' || nodeType === 'boss') {
-      awardRelic(runState, relicPool);
+      if (brain && relicPool.length >= 3) {
+        // Brain-driven relic selection: offer 3 candidates, let brain pick best
+        const candidates = [relicPool[0], relicPool[1], relicPool[2]];
+        const hpPct = runState.hp / (runState.maxHp || 1);
+        const attackCount = runState.deck.filter(c => c.cardType === 'attack').length;
+        const attackPct = runState.deck.length > 0 ? attackCount / runState.deck.length : 0;
+        const chosenId = brain.pickRelic(candidates, hpPct, attackPct);
+        // Remove chosen from pool and award it
+        const chosenIdx = relicPool.indexOf(chosenId);
+        if (chosenIdx >= 0) {
+          relicPool.splice(chosenIdx, 1);
+          runState.relicIds.add(chosenId);
+          const def = RELIC_BY_ID[chosenId];
+          if (def) {
+            for (const eff of def.effects) {
+              if (eff.effectId === 'max_hp_bonus') {
+                runState.maxHp += eff.value ?? 0;
+                runState.hp = Math.min(runState.hp + (eff.value ?? 0), runState.maxHp);
+              }
+            }
+          }
+        } else {
+          awardRelic(runState, relicPool);
+        }
+      } else {
+        awardRelic(runState, relicPool);
+      }
     }
 
     return { ...result, goldAwarded };

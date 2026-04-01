@@ -122,6 +122,15 @@ See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
 
 ---
 
+## Debuff Mechanics — Explicit Cases
+
+`expose` and `weaken` have explicit `case` branches in `cardEffectResolver.ts` (added 2026-04-01). Before this fix both fell through to the generic debuff fallback which applied wrong effects (weakness instead of vulnerable for expose; 0 stacks for weaken due to low finalValue).
+
+- `expose` — applies Vulnerable stacks: QP=1 stack, 1 turn. CC=max(1, round(finalValue)) stacks, 2 turns.
+- `weaken` — applies Weakness stacks: QP=1 stack, 1 turn. CC=max(1, round(finalValue)) stacks, 2 turns.
+
+---
+
 ## Shield (Block)
 
 - `applyShield(state, amount)` — stacks additively

@@ -1755,6 +1755,31 @@ export function resolveCardEffect(
       return result;
     }
 
+    // Debuff: Expose — apply Vulnerable stacks (no damage)
+    case 'expose': {
+      // finalValue encodes stack count; minimum 1 so QP always applies at least 1 stack.
+      const exposeStacks = Math.max(1, Math.round(finalValue));
+      const exposeDuration = isChargeCorrect ? 2 : 1;
+      result.statusesApplied.push({
+        type: 'vulnerable',
+        value: exposeStacks,
+        turnsRemaining: exposeDuration,
+      });
+      return result;
+    }
+    // Debuff: Weaken — apply Weakness stacks (no damage)
+    case 'weaken': {
+      // finalValue encodes stack count; minimum 1 so QP always applies at least 1 stack.
+      const weakenStacks = Math.max(1, Math.round(finalValue));
+      const weakenDuration = isChargeCorrect ? 2 : 1;
+      result.statusesApplied.push({
+        type: 'weakness',
+        value: weakenStacks,
+        turnsRemaining: weakenDuration,
+      });
+      return result;
+    }
+
     default:
       break;
   }

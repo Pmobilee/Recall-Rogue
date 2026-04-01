@@ -39,13 +39,13 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   lifetap:       { perLevelDelta: 1.2 },                         // 4 -> 10 (L5: 4 + 5×1.2) — Great 2.5×, HP cost earns reward
   double_strike: { perLevelDelta: 0.4 },                         // 75% -> 77% per hit at L5 — Modest, already doubles everything
   // Shields
-  block:         { perLevelDelta: 0.9 },                         // 3 -> 7 (L5: 3 + 5×0.9) — Solid 2.5×
-  fortify:       { perLevelDelta: 1.2 },                         // 4 -> 10 (L5: 4 + 5×1.2) — Solid 2.5×
+  block:         { perLevelDelta: 1.2 },                         // 3 -> 9 (L5: 3 + 5×1.2) — Solid 3×
+  fortify:       { perLevelDelta: 1.5 },                         // 4 -> 11 (L5: 4 + 5×1.5) — Solid 2.75×
   parry:         { perLevelDelta: 0.3 },                         // 2 -> 3 (L5) — Modest 1.75×, draw bonus is its thing
-  brace:         { perLevelDelta: 0.9 },                         // 3 -> 7 (L5: 3 + 5×0.9) — Solid 2.5×
-  emergency:     { perLevelDelta: 0.8 },                         // 2 -> 6 (L5: 2 + 5×0.8) — Great 3×
+  brace:         { perLevelDelta: 1.2 },                         // 3 -> 9 (L5: 3 + 5×1.2) — Solid 3×
+  emergency:     { perLevelDelta: 1.0 },                         // 2 -> 7 (L5: 2 + 5×1.0) — Solid 3.5×
   overheal:      { perLevelDelta: 1.5 },                         // 5 -> 12 (L5: 5 + 5×1.5) — Solid 2.5×
-  thorns:        { perLevelDelta: 0, secondaryPerLevelDelta: 0.6 }, // retaliate 3 -> 6 (L5) — Modest
+  thorns:        { perLevelDelta: 1.2, secondaryPerLevelDelta: 0.6 }, // primary 0 -> 6 (L5); retaliate 3 -> 6 (L5)
   // Buffs
   empower:       { perLevelDelta: 2.0 },                         // 35 -> 45% (L5) — Modest, already strong multiplicatively
   mirror:        { perLevelDelta: 0.03 },                        // 1.0 -> 1.15× (L5) — Modest, multiplier on multiplier
@@ -74,10 +74,10 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   power_strike:      { perLevelDelta: 1.5 },                         // 5 -> 12 (L5) — Solid 2.5×
   twin_strike:       { perLevelDelta: 0.9 },                         // 3/hit -> 7/hit (L5), 6→14 total — Solid 2.5×
   iron_wave:         { perLevelDelta: 0.6, secondaryPerLevelDelta: 1.0 }, // 3+5 -> 6+10 (L5) — Solid 2×
-  reinforce:         { perLevelDelta: 1.2 },                         // 4 -> 10 (L5) — Solid 2.5×
-  shrug_it_off:      { perLevelDelta: 0.6, addTagAtLevel: [3, 'draw2'] }, // 3 -> 6 (L5) — Modest 2×
+  reinforce:         { perLevelDelta: 1.5 },                         // 4 -> 11 (L5) — Solid 2.75×
+  shrug_it_off:      { perLevelDelta: 1.2, addTagAtLevel: [3, 'draw2'] }, // 3 -> 9 (L5) — Solid 3×
   bash:              { perLevelDelta: 1.0, addTagAtLevel: [3, 'vuln_ext'] }, // 5 -> 10 (L5) — Modest 2×, L3 vuln is the real power
-  guard:             { perLevelDelta: 1.4 },                         // 7 -> 14 (L5) — Solid 2×
+  guard:             { perLevelDelta: 1.6 },                         // 7 -> 15 (L5) — Solid 2.15×
   sap:               { perLevelDelta: 0.4, addTagAtLevel: [3, 'weak_ext'] }, // 2 -> 4 (L5) — Modest 2×, L3 weak = powerful tag
 
   // Bleed cards

@@ -226,3 +226,12 @@
 **Why:** The test was written against a spec where wrong answers added 2 fog, but the implementation was changed to 1 fog. The test was already failing before the 2026-04-01 balance pass.
 
 **Fix:** This is a pre-existing test drift, NOT caused by the 2026-04-01 balance changes. Fix separately by updating the test expectation or the aura system spec. Do not count as a new regression.
+
+### 2026-04-01 — expose and weaken debuff mechanics applied wrong effects
+**What went wrong:** `expose` (supposed to apply Vulnerable) and `weaken` (supposed to apply Weakness) had no explicit `case` in `cardEffectResolver.ts`. Both fell through to the generic debuff fallback which computed `weaknessValue = Math.floor(finalValue / 2)`. Since both mechanics have `quickPlayValue: 1`, finalValue=1 → weaknessValue=0 → 0 stacks applied at QP. At CC, expose incorrectly applied Weakness (not Vulnerable). Neither mechanic worked correctly.
+
+**Why:** The generic debuff fallback applies both weakness and vulnerable based on numeric thresholds (weakness if finalValue/2 > 0; vulnerable if finalValue >= 5). Low-value debuff cards never triggered vulnerable and usually applied 0 weakness stacks.
+
+**Fix:** Added explicit `case 'expose':` and `case 'weaken':` branches in `cardEffectResolver.ts` before the `default:` case. expose applies Vulnerable, weaken applies Weakness. Both use `Math.max(1, Math.round(finalValue))` stacks to guarantee minimum 1 stack on any play mode. Duration: 1 turn (QP/CW), 2 turns (CC).
+
+**Pattern:** Any new debuff mechanic with `quickPlayValue < 5` MUST have an explicit case or it will silently do nothing via the fallback.

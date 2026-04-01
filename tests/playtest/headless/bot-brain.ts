@@ -58,6 +58,8 @@ export interface BotSkills {
   shopSkill: number;
   /** 0–1: rest site decision quality (heal vs study) */
   restSkill: number;
+  /** 0–1: relic selection quality (tier awareness + context bonuses) */
+  relicSkill: number;
 }
 
 /** A single planned card play (mode only — accuracy roll happens in simulator). */
@@ -266,6 +268,21 @@ export class BotBrain {
           // Low blockSkill: deprioritize shields
           score -= 50;
         }
+
+        // Persistence-aware shield scoring: block compounds value over remaining turns
+        if (skills.blockSkill >= 0.5 && enemyHp > 0) {
+          const shieldValue = cardQuickPlayEffective(card);
+          // Estimate average damage per turn from attack cards in hand
+          const attackCards = hand.filter(c => !isDefensiveType(c.cardType));
+          const avgDpt = attackCards.length > 0
+            ? attackCards.reduce((sum, c) => sum + cardQuickPlayEffective(c), 0) / attackCards.length
+            : 1;
+          const estimatedTurnsLeft = Math.ceil(enemyHp / Math.max(avgDpt, 1));
+          if (estimatedTurnsLeft > 1) {
+            const persistenceBonus = shieldValue * Math.min(estimatedTurnsLeft, 4) * 0.15 * skills.blockSkill;
+            score += persistenceBonus;
+          }
+        }
       }
 
       // ── cardSelection: attack priority and efficiency ───────────────────
@@ -432,8 +449,10 @@ export class BotBrain {
 
       for (const opt of options) {
         const currentPct = (typeCounts[opt.type] ?? 0) / deckSize;
-        // Prefer options that fill gaps (under-represented types score higher)
-        const score = 1.0 - currentPct;
+        const perLevelDelta = MASTERY_UPGRADE_DEFS[opt.id]?.perLevelDelta ?? 0;
+        const apCost = opt.apCost ?? 1;
+        // Delta-aware: value mastery scaling for ALL card types, gap-fill bonus, penalize high AP cost
+        const score = (perLevelDelta * 10) + (1.0 - currentPct) * 5 - (apCost - 1) * 3;
         if (score > bestScore) {
           bestScore = score;
           bestOption = opt;
@@ -456,11 +475,9 @@ export class BotBrain {
     for (const opt of options) {
       let score = 0;
 
-      // Prefer attack cards with high mastery scaling
-      if (opt.type === 'attack') {
-        const delta = MASTERY_UPGRADE_DEFS[opt.id]?.perLevelDelta ?? 0;
-        score += delta * 20;
-      }
+      // Prefer any card type with high mastery scaling (not just attacks)
+      const delta = MASTERY_UPGRADE_DEFS[opt.id]?.perLevelDelta ?? 0;
+      score += delta * 20;
 
       // Gap filling
       const currentPct = (typeCounts[opt.type] ?? 0) / deckSize;
@@ -476,6 +493,77 @@ export class BotBrain {
     }
 
     return bestOption;
+  }
+
+  // ── pickRelic ─────────────────────────────────────────────────────────────
+
+  /**
+   * Pick the best relic from a set of candidates.
+   *
+   * @param options          Relic IDs to choose from
+   * @param hpPct            Current HP as a fraction of max HP
+   * @param deckAttackPct    Fraction of deck cards that are attack type
+   * @returns                Chosen relic ID, or empty string if no options
+   */
+  pickRelic(options: string[], hpPct: number, deckAttackPct: number): string {
+    if (options.length === 0) return '';
+    if (options.length === 1) return options[0];
+
+    const { relicSkill } = this.skills;
+
+    // Low skill: random
+    if (relicSkill < 0.3) return options[Math.floor(Math.random() * options.length)];
+
+    // Score each relic
+    const RELIC_TIERS: Record<string, number> = {
+      // S-tier (massive impact)
+      swift_boots: 100, blood_price: 95, volatile_core: 90, berserker_s_oath: 90,
+      scholars_crown: 85, mirror_of_knowledge: 85, phoenix_feather: 85,
+      prismatic_shard: 80, capacitor: 80, time_warp: 80,
+      // A-tier (strong)
+      crit_lens: 70, chain_reactor: 70, quicksilver_quill: 70, double_down: 70,
+      scavengers_eye: 65, tag_magnet: 65, adrenaline_shard: 65,
+      memory_nexus: 60, overflow_gem: 60, resonance_crystal: 60,
+      last_breath: 60, aegis_stone: 60, bastions_will: 60,
+      // B-tier (solid)
+      whetstone: 50, iron_shield: 50, herbal_pouch: 50, steel_skin: 50,
+      vitality_ring: 50, gold_magnet: 45, merchants_favor: 45,
+      reckless_resolve: 45, red_fang: 45, domain_mastery_sigil: 45,
+      brass_knuckles: 45, battle_scars: 45, regeneration_orb: 45,
+      // C-tier (situational)
+      lucky_coin: 30, thick_skin: 30, tattered_notebook: 30,
+      quick_study: 30, insight_prism: 30, plague_flask: 30,
+      chain_forge: 25, scholars_gambit: 25, null_shard: 20, chronometer: 20,
+    };
+
+    let bestId = options[0];
+    let bestScore = -1;
+
+    for (const id of options) {
+      let score = RELIC_TIERS[id] ?? 35; // default B-tier
+
+      // Context bonuses (relicSkill >= 0.5)
+      if (relicSkill >= 0.5) {
+        if (hpPct < 0.4) {
+          // Low HP: prefer sustain
+          if (['herbal_pouch', 'regeneration_orb', 'last_breath', 'phoenix_feather', 'vitality_ring', 'steel_skin'].includes(id)) score += 30;
+        }
+        if (deckAttackPct > 0.6) {
+          // Attack-heavy deck: prefer damage relics
+          if (['whetstone', 'volatile_core', 'crit_lens', 'red_fang', 'berserker_s_oath'].includes(id)) score += 20;
+        }
+      }
+
+      // Add some randomness to prevent identical picks
+      score += Math.random() * 10 * (1 - relicSkill);
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestId = id;
+      }
+    }
+
+    return bestId;
   }
 
   // ── planShop ──────────────────────────────────────────────────────────────

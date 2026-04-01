@@ -166,8 +166,14 @@ Selected caps and deltas (from `MASTERY_UPGRADE_DEFS` in `cardUpgradeService.ts`
 | Mechanic | perLevelDelta | maxLevel | QP at L0 | QP at L5 | Tier |
 |----------|-------------|---------|---------|---------|------|
 | `strike` | 1.2 | 5 | 4 | 10 | Solid 2.5× |
-| `block` | 0.9 | 5 | 3 | 7 | Solid 2.5× |
-| `brace` | 0.9 | 5 | 3 | 7 | Solid 2.5× |
+| `block` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
+| `brace` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
+| `fortify` | 1.5 | 5 | 4 | 11 | Solid 2.75× (buffed 2026-04-01) |
+| `reinforce` | 1.5 | 5 | 4 | 11 | Solid 2.75× (buffed 2026-04-01) |
+| `guard` | 1.6 | 5 | 7 | 15 | Solid 2.15× (buffed 2026-04-01) |
+| `emergency` | 1.0 | 5 | 2 | 7 | Solid 3.5× (buffed 2026-04-01) |
+| `shrug_it_off` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
+| `thorns` | 1.2 | 5 | 3 | 9 | Solid 3× for block (buffed 2026-04-01; reflect stays hardcoded) |
 | `heavy_strike` | 2.0 | 5 | 10 | 20 | Solid 2× |
 | `reckless` | 2.4 | 5 | 6 | 18 | Great 3× |
 | `empower` | 2.0 | 5 | 35% | 45% | Modest |

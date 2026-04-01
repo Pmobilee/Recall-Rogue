@@ -1,7 +1,7 @@
 # Card Mechanics Reference
 
 > **Purpose:** Complete table of all card mechanics — attack, shield, buff, debuff, utility, and wild
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/data/mechanics.ts`, `src/services/cardEffectResolver.ts`
 
 > **See also:** [`cards.md`](cards.md) — Card entity, types, tiers, damage formula, mastery system, and card creation pipeline.
@@ -75,8 +75,8 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 
 | ID | Name | Ph | Notes |
 |----|------|----|-------|
-| `weaken` | Weaken | 1 | Apply Weakness stacks |
-| `expose` | Expose | 1 | Apply Vulnerable stacks |
+| `weaken` | Weaken | 1 | Apply Weakness stacks (no damage). QP: 1 stack, 1t. CC: 1+ stacks, 2t. Previously fell through to generic debuff fallback and applied 0 stacks — fixed 2026-04-01. |
+| `expose` | Expose | 1 | Apply Vulnerable stacks (no damage). QP: 1 stack, 1t. CC: 1+ stacks, 2t. Previously fell through to generic debuff fallback and applied Weakness instead of Vulnerable — fixed 2026-04-01. |
 | `hex` | Hex | 1 | Apply Poison 3 for 3 turns |
 | `slow` | Slow | 1 | Skip enemy's next defend/buff; `chargeBonusEffect: 'slow_weaken'` |
 | `sap` | Sap | 1 | Damage + Weakness |

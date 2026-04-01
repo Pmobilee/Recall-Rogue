@@ -35,6 +35,7 @@ export const SKILL_AXES = [
   'rewardSkill',
   'shopSkill',
   'restSkill',
+  'relicSkill',
 ] as const;
 
 export type SkillAxis = typeof SKILL_AXES[number];
@@ -63,6 +64,7 @@ export function makeSkills(overrides: Partial<BotSkills>, baseline: number = 0.5
     rewardSkill:    baseline,
     shopSkill:      baseline,
     restSkill:      baseline,
+    relicSkill:     baseline,
   };
   return { ...base, ...overrides };
 }
@@ -90,6 +92,7 @@ export const LEGACY_PROFILES: Record<string, BotSkills> = {
     rewardSkill:    0.2,
     shopSkill:      0.2,
     restSkill:      0.0,
+    relicSkill:     0.0,
   }, 0),
 
   /** Casual player: decent accuracy, some charging, minimal strategy. */
@@ -105,6 +108,7 @@ export const LEGACY_PROFILES: Record<string, BotSkills> = {
     rewardSkill:    0.3,
     shopSkill:      0.3,
     restSkill:      0.3,
+    relicSkill:     0.2,
   }, 0),
 
   /** Regular player: moderate skill across all axes. */
@@ -120,6 +124,7 @@ export const LEGACY_PROFILES: Record<string, BotSkills> = {
     rewardSkill:    0.5,
     shopSkill:      0.5,
     restSkill:      0.5,
+    relicSkill:     0.4,
   }, 0),
 
   /** Lower accuracy but good game mechanics — typical "gamer" profile. */
@@ -135,6 +140,7 @@ export const LEGACY_PROFILES: Record<string, BotSkills> = {
     rewardSkill:    0.6,
     shopSkill:      0.6,
     restSkill:      0.6,
+    relicSkill:     0.5,
   }, 0),
 
   /** Dedicated player: high accuracy, solid strategic play. */
@@ -150,6 +156,7 @@ export const LEGACY_PROFILES: Record<string, BotSkills> = {
     rewardSkill:    0.7,
     shopSkill:      0.7,
     restSkill:      0.7,
+    relicSkill:     0.7,
   }, 0),
 
   /** Scholar: highest accuracy, near-optimal strategy on all axes. */
@@ -165,6 +172,7 @@ export const LEGACY_PROFILES: Record<string, BotSkills> = {
     rewardSkill:    0.8,
     shopSkill:      0.8,
     restSkill:      0.8,
+    relicSkill:     0.9,
   }, 0),
 };
 
@@ -189,6 +197,7 @@ export const ARCHETYPE_PROFILES: Record<string, BotSkills> = {
     apEfficiency:   0.7,
     rewardSkill:    0.6,
     restSkill:      0.8,
+    relicSkill:     0.4,
   }),
 
   /**
@@ -202,6 +211,7 @@ export const ARCHETYPE_PROFILES: Record<string, BotSkills> = {
     surgeAwareness: 0.8,
     masteryHunting: 0.7,
     apEfficiency:   0.8,
+    relicSkill:     0.6,
   }),
 
   /**
@@ -214,6 +224,7 @@ export const ARCHETYPE_PROFILES: Record<string, BotSkills> = {
     surgeAwareness: 1.0,
     chargeSkill:    0.3,
     cardSelection:  0.8,
+    relicSkill:     0.3,
   }),
 
   /**
@@ -226,6 +237,7 @@ export const ARCHETYPE_PROFILES: Record<string, BotSkills> = {
     chargeSkill:    0.8,
     restSkill:      1.0,
     rewardSkill:    0.7,
+    relicSkill:     0.5,
   }),
 
   /**
@@ -239,6 +251,7 @@ export const ARCHETYPE_PROFILES: Record<string, BotSkills> = {
     apEfficiency:   0.9,
     cardSelection:  0.7,
     blockSkill:     0.5,
+    relicSkill:     0.3,
   }),
 
   /**
@@ -252,6 +265,7 @@ export const ARCHETYPE_PROFILES: Record<string, BotSkills> = {
     blockSkill:     0.0,
     surgeAwareness: 1.0,
     masteryHunting: 0.8,
+    relicSkill:     0.5,
   }),
 
   /**
@@ -373,6 +387,7 @@ function skillsEqual(a: BotSkills, b: BotSkills): boolean {
     Math.abs(a.masteryHunting - b.masteryHunting)  < eps &&
     Math.abs(a.rewardSkill    - b.rewardSkill)     < eps &&
     Math.abs(a.shopSkill      - b.shopSkill)       < eps &&
-    Math.abs(a.restSkill      - b.restSkill)       < eps
+    Math.abs(a.restSkill      - b.restSkill)       < eps &&
+    Math.abs(a.relicSkill     - b.relicSkill)      < eps
   );
 }
