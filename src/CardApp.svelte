@@ -828,7 +828,7 @@
   $effect(() => {
     const inRun = IN_RUN_SCREENS.has($currentScreen) && $activeRunState !== null
     if (inRun) {
-      musicService.startIfNotPlaying()
+      musicService.startWithFadeIn(5000)
     }
   })
 

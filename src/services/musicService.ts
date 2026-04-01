@@ -13,13 +13,13 @@
 
 import { type MusicCategory, type MusicTrack, getTracksByCategory } from '../data/musicTracks'
 import { ambientAudio } from './ambientAudioService'
+import { musicVolume, musicEnabled } from './cardAudioManager'
+import { get } from 'svelte/store'
 
 const PREFS_KEY = 'music_prefs'
 const CROSSFADE_MS = 1500
 
 interface MusicPrefs {
-  volume: number
-  muted: boolean
   category: MusicCategory
   lastTrackId: string | null
 }
@@ -36,9 +36,9 @@ class MusicService {
   private _isPlaying = false
   private _currentTrack: MusicTrack | null = null
   private _currentCategory: MusicCategory = 'quiet'
-  private _volume = 0.5
-  private _muted = false
   private _userGestureReceived = false
+  /** Duration for the next crossfadeIn call — reset to CROSSFADE_MS after use. */
+  private _fadeInDuration: number = CROSSFADE_MS
 
   private shuffleQueue: MusicTrack[] = []
   private listeners = new Set<() => void>()
@@ -48,8 +48,8 @@ class MusicService {
   get isPlaying(): boolean { return this._isPlaying }
   get currentTrack(): MusicTrack | null { return this._currentTrack }
   get currentCategory(): MusicCategory { return this._currentCategory }
-  get volume(): number { return this._volume }
-  get muted(): boolean { return this._muted }
+  get volume(): number { return get(musicVolume) }
+  get muted(): boolean { return !get(musicEnabled) }
   get ready(): boolean {
     return this._userGestureReceived && this.ctx != null && this.ctx.state !== 'suspended'
   }
@@ -64,6 +64,19 @@ class MusicService {
     this.analyser.fftSize = 64
     this.analyser.smoothingTimeConstant = 0.75
     this.analyser.connect(this.ctx.destination)
+
+    // Sync volume from settings stores
+    musicVolume.subscribe(vol => {
+      if (this.currentAudio && get(musicEnabled)) {
+        this.currentAudio.volume = vol
+      }
+    })
+    musicEnabled.subscribe(enabled => {
+      if (this.currentAudio) {
+        this.currentAudio.volume = enabled ? get(musicVolume) : 0
+      }
+    })
+
     this.loadPrefs()
   }
 
@@ -90,11 +103,19 @@ class MusicService {
   /**
    * Play a track using HTMLAudioElement for playback (browser-native decoding).
    * Connects to Web Audio AnalyserNode AFTER playback starts, for spectrogram.
+   * Fades out old track fully BEFORE starting the new one (sequential, not overlapping).
    */
   async playTrack(track: MusicTrack): Promise<void> {
     try {
       this.init()
       console.log(`[Music] Playing: ${track.title} (${track.file})`)
+
+      // Fade out old track fully BEFORE starting new one
+      if (this.currentAudio) {
+        await this.fadeOutAndDispose(this.currentAudio)
+        this.currentAudio = null
+        this.currentMediaSource = null
+      }
 
       // Create audio element — do NOT connect to Web Audio yet (Safari fails if
       // createMediaElementSource is called before the element can play)
@@ -121,11 +142,6 @@ class MusicService {
         audio.load()
       })
 
-      // Crossfade out old track
-      if (this.currentAudio) {
-        this.fadeOutAndDispose(this.currentAudio)
-      }
-
       // Start playback — volume crossfade via element.volume (not Web Audio gain)
       await audio.play()
       this.crossfadeIn(audio)
@@ -146,11 +162,13 @@ class MusicService {
     }
   }
 
-  /** Crossfade audio.volume from 0 → target over CROSSFADE_MS. */
+  /** Crossfade audio.volume from 0 → target over _fadeInDuration ms (then resets to default). */
   private crossfadeIn(audio: HTMLAudioElement): void {
-    const target = this._muted ? 0 : this._volume
+    const duration = this._fadeInDuration
+    this._fadeInDuration = CROSSFADE_MS  // reset to default after use
+    const target = get(musicEnabled) ? get(musicVolume) : 0
     const steps = 30
-    const stepMs = CROSSFADE_MS / steps
+    const stepMs = duration / steps
     let step = 0
     const interval = setInterval(() => {
       step++
@@ -159,22 +177,28 @@ class MusicService {
     }, stepMs)
   }
 
-  /** Fade out an audio element and clean it up after the fade. */
-  private fadeOutAndDispose(audio: HTMLAudioElement): void {
-    const startVol = audio.volume
-    const steps = 20
-    const stepMs = CROSSFADE_MS / steps
-    let step = 0
-    const interval = setInterval(() => {
-      step++
-      audio.volume = Math.max(0, startVol * (1 - step / steps))
-      if (step >= steps) {
-        clearInterval(interval)
-        audio.pause()
-        audio.src = ''
-        audio.load()
-      }
-    }, stepMs)
+  /**
+   * Fade out an audio element and clean it up after the fade.
+   * Returns a Promise that resolves when the fade is fully complete.
+   */
+  private fadeOutAndDispose(audio: HTMLAudioElement): Promise<void> {
+    return new Promise(resolve => {
+      const startVol = audio.volume
+      const steps = 20
+      const stepMs = CROSSFADE_MS / steps
+      let step = 0
+      const interval = setInterval(() => {
+        step++
+        audio.volume = Math.max(0, startVol * (1 - step / steps))
+        if (step >= steps) {
+          clearInterval(interval)
+          audio.pause()
+          audio.src = ''
+          audio.load()
+          resolve()
+        }
+      }, stepMs)
+    })
   }
 
   /** Try to connect audio element to Web Audio analyser for spectrogram data. */
@@ -244,23 +268,15 @@ class MusicService {
     await this.next()
   }
 
-  /** Set master volume (0–1). */
+  /** Set master volume (0–1) by writing to the shared musicVolume store. */
   setVolume(v: number): void {
-    this._volume = Math.max(0, Math.min(1, v))
-    if (this.currentAudio && !this._muted) {
-      this.currentAudio.volume = this._volume
-    }
-    this.persistPrefs()
+    musicVolume.set(Math.max(0, Math.min(1, v)))
     this.notify()
   }
 
-  /** Toggle mute. */
+  /** Toggle mute by toggling the shared musicEnabled store. */
   toggleMute(): void {
-    this._muted = !this._muted
-    if (this.currentAudio) {
-      this.currentAudio.volume = this._muted ? 0 : this._volume
-    }
-    this.persistPrefs()
+    musicEnabled.update(v => !v)
     this.notify()
   }
 
@@ -295,11 +311,21 @@ class MusicService {
     void this.playCategory(this._currentCategory)
   }
 
+  /**
+   * Start playback with a slow fade-in. Used at run start for a gentle intro.
+   * No-op if already playing or no user gesture has been received.
+   */
+  startWithFadeIn(durationMs: number): void {
+    if (this._isPlaying) return
+    if (!this._userGestureReceived) return
+    this._fadeInDuration = durationMs
+    void this.playCategory(this._currentCategory)
+  }
+
   /** Fade out to silence and stop. */
   async fadeOutAndStop(durationMs: number): Promise<void> {
     if (!this.currentAudio) return
-    this.fadeOutAndDispose(this.currentAudio)
-    await new Promise<void>(resolve => setTimeout(resolve, durationMs + 200))
+    await this.fadeOutAndDispose(this.currentAudio)
     this.currentAudio = null
     this.currentMediaSource = null
     ambientAudio.setMusicCoexistence(false)
@@ -330,8 +356,6 @@ class MusicService {
   private persistPrefs(): void {
     try {
       const prefs: MusicPrefs = {
-        volume: this._volume,
-        muted: this._muted,
         category: this._currentCategory,
         lastTrackId: this._currentTrack?.id ?? null,
       }
@@ -344,8 +368,6 @@ class MusicService {
       const raw = localStorage.getItem(PREFS_KEY)
       if (!raw) return
       const prefs = JSON.parse(raw) as Partial<MusicPrefs>
-      if (typeof prefs.volume === 'number') this._volume = Math.max(0, Math.min(1, prefs.volume))
-      if (typeof prefs.muted === 'boolean') this._muted = prefs.muted
       if (prefs.category === 'epic' || prefs.category === 'quiet') this._currentCategory = prefs.category
     } catch { /* ignore malformed prefs */ }
   }
