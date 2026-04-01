@@ -168,7 +168,7 @@ Selected caps and deltas (from `MASTERY_UPGRADE_DEFS` in `cardUpgradeService.ts`
 | `strike` | 1.2 | 5 | 4 | 10 | Solid 2.5× |
 | `block` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
 | `brace` | 1.2 | 5 | 3 | 9 | Solid 3× (buffed 2026-04-01) |
-| `fortify` | 1.5 | 5 | 4 | 11 | Solid 2.75× (buffed 2026-04-01) |
+| `fortify` (Entrench) | 1.5 | 5 | 4 | 11 | Solid 2.75× (reworked 2026-04-01: QP doubles current block, CC doubles+adds card value, CW +50%) |
 | `reinforce` | 1.5 | 5 | 4 | 11 | Solid 2.75× (buffed 2026-04-01) |
 | `guard` | 1.6 | 5 | 7 | 15 | Solid 2.15× (buffed 2026-04-01) |
 | `emergency` | 1.0 | 5 | 2 | 7 | Solid 3.5× (buffed 2026-04-01) |

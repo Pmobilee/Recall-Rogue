@@ -85,7 +85,7 @@ All have `unlockCost: 0` and `startsUnlocked: true`.
 | ID | Effect | Trigger |
 |---|---|---|
 | `whetstone` | +3 attack damage, -1 block on shields | permanent |
-| `iron_shield` | +3 block each turn start; -1 draw on turn 1 | on_turn_start |
+| `iron_shield` | +5 block each turn start; -1 draw on turn 1 | on_turn_start |
 | `vitality_ring` | +20 max HP | on_run_start |
 | `herbal_pouch` | Heal 8 HP after each combat | on_encounter_end |
 | `swift_boots` | Draw 6 cards per turn instead of 5 | permanent |
@@ -139,7 +139,7 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 | `archive_codex` | After combat: +1 flat damage per 10 total mastery levels in deck | on_encounter_end | 8 |
 | `chain_forge` | Once/encounter: chain break prevented, card gets current multiplier, chain increments | on_chain_complete | 8 |
 | `berserker_s_oath` | -30 max HP at run start; +40% attack damage | on_run_start | 9 |
-| `thorn_crown` | At 15+ block when attacked: reflect 5 damage | on_damage_taken | 10 |
+| `thorn_crown` | At 10+ block when attacked: reflect 5 damage | on_damage_taken | 10 |
 | `bastions_will` | Charged shield cards: +75% block; Quick Play shields: +25% block | on_charge_correct | 11 |
 | `festering_wound` | When enemy has 3+ poison stacks: all attacks +40% damage | permanent | 13 |
 | `capacitor` | Unused AP at turn end stores (max 3); next turn gains stored AP | on_turn_end | 14 |

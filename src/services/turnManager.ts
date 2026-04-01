@@ -1894,7 +1894,7 @@ export function playCardAction(
   // thorns: register retaliation for the upcoming enemy attack
   if ((effect.thornsValue ?? 0) > 0) {
     turnState.thornsActive = true;
-    turnState.thornsValue = effect.thornsValue ?? 0;
+    turnState.thornsValue = (turnState.thornsValue ?? 0) + (effect.thornsValue ?? 0);
   }
 
   // AR-206: Stagger — skip enemy's next action (turn counter still advances)
@@ -2489,9 +2489,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     }
   }
 
-  // Reset thorns retaliation after the attack phase
-  turnState.thornsActive = false;
-  turnState.thornsValue = 0;
+  // Thorns persists for entire encounter (stacks from multiple plays)
+  // Reset happens at encounter start only (startEncounter sets thornsValue: 0)
 
   turnState.turnLog.push({
     type: 'enemy_action',
@@ -2688,7 +2687,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // aegis_stone: if carrying 15+ block into next turn, grant Thorns 2 for the next enemy attack
   if (turnEndFx.blockCarries && turnState.activeRelicIds.has('aegis_stone') && playerState.shield >= RELIC_AEGIS_STONE_MAX_CARRY) {
     turnState.thornsActive = true;
-    turnState.thornsValue = 2;
+    turnState.thornsValue = (turnState.thornsValue ?? 0) + 2;
   }
 
   turnState.cardsPlayedThisTurn = 0;

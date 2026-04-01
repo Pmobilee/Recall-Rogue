@@ -115,8 +115,8 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
 
   // Shield (phase 1 promoted)
   {
-    id: 'fortify', name: 'Fortify', type: 'shield',
-    description: 'Gain 7 persistent block into next turn.',
+    id: 'fortify', name: 'Entrench', type: 'shield',
+    description: 'Double your current block.',
     baseValue: 7, apCost: 2, maxPerPool: 0, tags: ['persistent_block'], launchPhase: 1, unlockLevel: 0,
     quickPlayValue: 6, chargeCorrectValue: 21, chargeWrongValue: 4,
   },
@@ -628,8 +628,8 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
 
   // Conversion — convert block to damage (1:1)
   {
-    id: 'conversion', name: 'Conversion', type: 'shield',
-    description: 'Convert up to 10 block into damage (1:1). CC: up to 15. CW: up to 5. Block is lost.',
+    id: 'conversion', name: 'Shield Bash', type: 'shield',
+    description: 'Deal damage equal to your block, consuming it.',
     baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 10,
     quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
   },

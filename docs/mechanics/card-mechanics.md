@@ -44,7 +44,7 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `block` | Block | 1 | 3 | 1 | Basic block |
 | `thorns` | Thorns | 1 | 3 | 1 | Block + reflect `secondaryValue: 3` on hit |
 | `emergency` | Emergency | 1 | 2 | 1 | Block; doubled if HP < 30% |
-| `fortify` | Fortify | 1 | 4 | 2 | Persistent block carries to next turn |
+| `fortify` | Entrench | 1 | 4 | 2 | QP: double current block. CC: double block + card value. CW: +50% of current block |
 | `brace` | Brace | 1 | 0 | 1 | Block = enemy telegraph value |
 | `overheal` | Overheal | 1 | 5 | 2 | 10 block; doubled if HP < 50% |
 | `reinforce` | Reinforce | 1 | 4 | 1 | More block than basic shield |

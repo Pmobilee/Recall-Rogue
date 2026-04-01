@@ -614,9 +614,18 @@ export function resolveCardEffect(
       return result;
     }
     case 'fortify': {
-      const shield = applyShieldRelics(finalValue);
-      result.shieldApplied = shield;
-      result.persistentShield = shield;
+      // Entrench: double current block (all block persists since 2026-04-01)
+      const currentBlock = playerState.shield ?? 0;
+      if (isChargeCorrect) {
+        // CC: double block + gain extra from card value
+        result.shieldApplied = currentBlock + applyShieldRelics(finalValue);
+      } else if (isChargeWrong) {
+        // CW: gain 50% of current block
+        result.shieldApplied = Math.floor(currentBlock * 0.5);
+      } else {
+        // QP: double current block
+        result.shieldApplied = currentBlock;
+      }
       return result;
     }
     case 'parry': {
@@ -629,7 +638,7 @@ export function resolveCardEffect(
       const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
       if (!enemyIsAttacking) {
         // Non-attack intent: give minimum block from card value (half, rounded)
-        result.shieldApplied = applyShieldRelics(Math.round(finalValue * 0.5));
+        result.shieldApplied = applyShieldRelics(finalValue);
         return result;
       }
       // Brace scales enemy intent by play-mode multiplier, card value acts as floor
@@ -1428,14 +1437,12 @@ export function resolveCardEffect(
       return result;
     }
 
-    // Conversion — convert block to damage (1:1), consume the block
+    // Shield Bash — deal damage equal to your block, consuming it (uncapped)
     case 'conversion': {
-      // finalValue = cap (10/15/5 + mastery bonus per level)
-      const convCap = finalValue;
-      // Adjust cap for cursed card (0.7×, floor)
-      const effectiveCap = card.isCursed ? Math.floor(convCap * 0.7) : convCap;
       const playerBlock = playerState.shield ?? 0;
-      const converted = Math.min(effectiveCap, playerBlock);
+      const cursedMult = card.isCursed ? 0.7 : 1.0;
+      const convertPct = isChargeWrong ? 0.5 : 1.0;
+      const converted = Math.floor(playerBlock * convertPct * cursedMult);
       result.blockConsumed = converted;
       if (converted > 0) {
         applyAttackDamage(converted);

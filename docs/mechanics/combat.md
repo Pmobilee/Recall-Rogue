@@ -139,6 +139,13 @@ See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
 - `persistentShield` — `fortress_wall` relic's `blockCarries` flag still applies; fortify mechanic remains differentiated as the primary persistent-block card
 - Enemy block resets to 0 at start of enemy turn — enemies must re-defend each turn
 
+## Thorns (Retaliation)
+
+- `thorns` card mechanic: reflects `thornsValue` damage back to enemy after each enemy attack
+- **Stacks additively** — multiple thorns plays in one encounter add to `turnState.thornsValue` (changed 2026-04-01)
+- **Persists for entire encounter** — no longer resets after each enemy attack; resets only at `startEncounter()` (changed 2026-04-01)
+- `aegis_stone` relic: grants `+2 thorns` at end of turn if block ≥ `RELIC_AEGIS_STONE_MAX_CARRY` — also additive
+
 ---
 
 ## Enrage System

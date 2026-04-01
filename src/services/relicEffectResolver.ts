@@ -51,7 +51,7 @@ export function isRelicSlotsFull(runRelics: RunRelic[]): boolean {
 
 /** Effects resolved at the start of each player turn. */
 export interface TurnStartEffects {
-  /** Block granted at start of each turn (iron_shield v2: +3; iron_buckler v1: +5). */
+  /** Block granted at start of each turn (iron_shield v2: +5; iron_buckler v1: +5). */
   bonusBlock: number;
   /** Bonus AP released from Capacitor stored charge this turn. */
   capacitorReleasedAP: number;
@@ -111,9 +111,9 @@ export function resolveTurnStartEffects(
   capacitorStored: number = 0,
   context?: TurnStartContext,
 ): TurnStartEffects {
-  // iron_shield (v2, +3) replaces iron_buckler (v1, +5)
+  // iron_shield (v2, +5) replaces iron_buckler (v1, +5)
   const bonusBlock =
-    relicIds.has('iron_shield') ? 3 :
+    relicIds.has('iron_shield') ? 5 :
     relicIds.has('iron_buckler') ? 5 : // v1 legacy fallback
     0;
 
@@ -733,7 +733,7 @@ export interface DamageTakenContext {
   hadBlock: boolean;
   /** Whether block absorbed any of the incoming damage (mirror_shield v1). */
   blockAbsorbedAll: boolean;
-  /** Player's current block amount (thorn_crown v2: needs 15+ block). */
+  /** Player's current block amount (thorn_crown v2: needs 10+ block). */
   currentBlock?: number;
 }
 
@@ -753,9 +753,9 @@ export function resolveDamageTakenEffects(
     thornReflect = context.hadBlock ? 2 : 4; // v1 legacy
   }
 
-  // thorn_crown (v2) — reflect 5 damage when attacked at 15+ block
+  // thorn_crown (v2) — reflect 5 damage when attacked at 10+ block
   const thornCrownReflect =
-    relicIds.has('thorn_crown') && (context.currentBlock ?? 0) >= 15 ? 5 : 0;
+    relicIds.has('thorn_crown') && (context.currentBlock ?? 0) >= 10 ? 5 : 0;
 
   // steel_skin: v2 value is -3; v1 was -2
   const flatReduction = relicIds.has('steel_skin') ? 3 : 0;
