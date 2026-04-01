@@ -1,7 +1,7 @@
 # Gotchas & Lessons Learned
 
 > **Purpose:** Append-only mistake log and lessons learned
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** CLAUDE.md, memory/feedback-*, git log
 
 > **Rules:** NEVER edit or remove existing entries. Always append new entries at the bottom. Include date, what happened, why, and how to fix/avoid.
@@ -257,6 +257,8 @@
 
 ---
 
+## Hub Ambient Lighting
+
 ### 2026-04-01 — Screen Blend Mode Cannot Darken: Vignette Was Invisible
 
 **What happened:** `HubGlowEffect.ts` drew a dark vignette gradient (Pass 2) on a canvas with CSS `mix-blend-mode: screen`. The vignette did nothing — edges never got dark despite Pass 2 being present and drawing `rgba(5,5,15,0.85)`.
@@ -266,3 +268,13 @@
 **Fix:** Split into two layers. Keep the warm glow canvas with `mix-blend-mode: screen` (correct for additive light). Add a sibling `<div class="hub-vignette">` with normal blend mode using a CSS `radial-gradient` background. The gradient is centered on the campfire position (updated on mount + resize via `syncVignetteCenter()`).
 
 **Rule:** Never put darkening/vignette content on a `mix-blend-mode: screen` canvas. Screen layers can only be used for additive light effects.
+
+### 2026-04-01 — CSS reactive radial-gradient causes per-frame Chrome reparse overhead
+
+**What happened:** The CSS `<div class="hub-vignette">` fix above used a `$derived` Svelte string for `background: radial-gradient(...)` that updated position every frame. Even with quantization to 20 discrete steps, Chrome reparsed the gradient string each time the CSS property changed — visible in DevTools as style recalc entries on every animation frame.
+
+**Why:** CSS `radial-gradient()` strings are not cached by the browser as a gradient object. Each assignment to a style property containing a gradient triggers a full reparse of the gradient syntax. Even quantized to 20 steps, 30fps updates = 30 reparsed gradient strings per second per element.
+
+**Fix:** Replaced the CSS `<div>` with a second `<canvas>` element (`mix-blend-mode: normal`). `HubGlowEffect` draws the vignette gradient directly onto this canvas each frame using the Canvas 2D API (`ctx.createRadialGradient()`). Canvas gradient objects are not CSS strings — no parse overhead. `HubGlowCanvas.svelte` now takes two canvases: `canvas` (screen-blend glow) and `vignetteCanvas` (normal-blend vignette). `HubGlowEffect` constructor updated to `new HubGlowEffect(canvas, vignetteCanvas, campfireCenterFn)`.
+
+**Rule:** For any animation effect that must update position or intensity every frame, draw on a canvas rather than writing to CSS style properties. CSS property writes involving gradient strings, filter strings, or multi-stop values trigger reparsing overhead on every update.
