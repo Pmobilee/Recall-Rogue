@@ -420,18 +420,25 @@ Decks serve TWO distinct game modes. Workers building decks must understand both
 - **This is the casual/fun mode** — zero commitment, instant variety
 - Facts answered in Trivia Dungeon do NOT count toward curated deck progress (separate fact pools)
 
-### Fact Pool Separation (CRITICAL)
+### Fact Pool Relationship
 
-**Trivia Dungeon and Study Temple use COMPLETELY SEPARATE fact pools.** There is zero overlap.
+**Study Temple and Trivia Dungeon share knowledge facts via the Trivia Bridge.**
 
-- **Trivia Dungeon** uses the existing general fact database (`src/data/seed/facts.db`, `knowledge-*.json`). These are the broad trivia facts that have always been in the game — standalone questions, no special structure. **No vocabulary/language facts** — those live exclusively in Study Temple.
-- **Study Temple (Curated Decks)** use their own dedicated fact files (`data/decks/<deck_id>.json`). These are purpose-built for focused study with answer type pools, confusion matrices, and sub-decks.
+- **Study Temple (Curated Decks)** use dedicated fact files (`data/decks/<deck_id>.json`) with answer type pools, confusion matrices, and sub-decks — purpose-built for focused study.
+- **Trivia Dungeon** uses `facts.db` (SQLite), which includes both standalone trivia facts AND bridged curated deck facts.
+- **The Bridge** (`/curated-trivia-bridge`) extracts 1 representative fact per entity from each knowledge deck into `facts.db`. Bridged facts keep their original deck IDs, so **FSRS review states transfer between modes** — learning a fact in Study Temple means it's "known" in Trivia Dungeon too.
 
-Both systems can cover the same knowledge domains (e.g., both have History, Geography, etc.) and even the same sub-topics (e.g., both might have WW2 facts). But the actual fact entries are completely different — different IDs, different questions, different distractors.
+**Vocabulary is curated-only.** ALL language learning content (Japanese, Korean, Spanish, French, German, Dutch, Czech, etc.) lives exclusively in Study Temple. Language facts are never bridged into Trivia Dungeon.
 
-**Vocabulary is curated-only.** ALL language learning content (Japanese, Korean, Spanish, French, German, Dutch, Czech, etc.) lives exclusively in Study Temple as curated decks with sub-decks (Vocabulary, Kanji, Grammar). Language facts must be removed from the general trivia pool.
+### Post-Generation: Trivia Bridge
 
-**Future consideration:** Once enough curated decks exist, Trivia Dungeon could optionally pull from curated deck facts. Not for initial implementation.
+After generating a new knowledge deck, run `/curated-trivia-bridge` to extract representative facts into the trivia database:
+
+1. Add the new deck to `scripts/content-pipeline/bridge/deck-bridge-config.json`
+2. Run: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`
+3. Rebuild: `node scripts/build-facts-db.mjs`
+
+See `docs/content/trivia-bridge.md` for full details.
 
 ### Per-Language Display Settings
 

@@ -258,3 +258,23 @@ During combat, `deckManager.ts` assigns facts per hand-draw from the run's `fact
 - **Cursed facts** bypass cooldown to resurface for cure opportunities
 - **First-draw bias**: `funScore >= 7` facts get 2× selection weight for the opening hand
 - **Draw smoothing**: guarantees at least one attack card and one chain-type pair per hand
+
+---
+
+## Trivia Bridge
+
+Knowledge deck facts can be bridged into `facts.db` so they are available in Trivia Dungeon alongside regular trivia facts.
+
+Key properties:
+- **1 per entity**: The bridge selects the single best trivia question per named entity (e.g. one question about T-Rex, one about Lincoln)
+- **Same IDs**: Bridged facts keep their original curated deck fact IDs — FSRS review states transfer automatically between Study Temple and Trivia Dungeon
+- **Additive**: Existing trivia facts stay in the pool; bridged facts are added alongside them
+- **Provenance**: Every bridged fact gets a `"bridge:{deckId}"` tag and lives in `src/data/seed/bridge-curated.json`
+
+A fact answered correctly in Study Temple will already have FSRS progress in Trivia Dungeon, and vice versa. Players are not quizzed on the same knowledge twice from scratch.
+
+Scripts:
+- Bridge script: `scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`
+- Config (entity grouping, per-deck settings): `scripts/content-pipeline/bridge/deck-bridge-config.json`
+
+Run the `/curated-trivia-bridge` skill after adding or updating any knowledge deck. Full details: `docs/content/trivia-bridge.md`.

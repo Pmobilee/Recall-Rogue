@@ -1,0 +1,193 @@
+{
+  "_comment": "Per-deck configuration for the Curated Deck → Trivia Bridge extraction script.",
+  "_comment2": "prefixSegments: how many leading underscore-separated ID segments to skip (deck prefix + chain abbreviation).",
+  "_comment3": "entitySegments: how many segments after the prefix form the entity key (default 1).",
+  "_comment4": "Last updated: 2026-04-01",
+
+  "ancient_greece": {
+    "domain": "history",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "ancient_classical"
+  },
+
+  "ancient_rome": {
+    "domain": "history",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "ancient_classical"
+  },
+
+  "constellations": {
+    "domain": "space_astronomy",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "stars_galaxies"
+  },
+
+  "dinosaurs": {
+    "domain": "natural_sciences",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "geology_earth",
+    "skipChainThemes": [6]
+  },
+
+  "egyptian_mythology": {
+    "domain": "mythology_folklore",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "gods_deities"
+  },
+
+  "famous_inventions": {
+    "domain": "general_knowledge",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "inventions_tech"
+  },
+
+  "famous_paintings": {
+    "domain": "art_architecture",
+    "prefixSegments": 2,
+    "entitySegments": 2,
+    "ageRating": "teen",
+    "categoryL2": "painting_visual"
+  },
+
+  "greek_mythology": {
+    "domain": "mythology_folklore",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "greek_roman"
+  },
+
+  "human_anatomy": {
+    "domain": "human_body_health",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "anatomy_organs"
+  },
+
+  "mammals_world": {
+    "domain": "animals_wildlife",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "mammals"
+  },
+
+  "medieval_world": {
+    "domain": "history",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "medieval"
+  },
+
+  "nasa_missions": {
+    "domain": "space_astronomy",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "missions_spacecraft"
+  },
+
+  "norse_mythology": {
+    "domain": "mythology_folklore",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "norse_celtic"
+  },
+
+  "periodic_table": {
+    "domain": "natural_sciences",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "chemistry_elements"
+  },
+
+  "solar_system": {
+    "domain": "space_astronomy",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "planets_moons"
+  },
+
+  "us_presidents": {
+    "domain": "history",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "people_leaders"
+  },
+
+  "us_states": {
+    "domain": "geography",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "americas"
+  },
+
+  "world_capitals": {
+    "domain": "geography",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "europe"
+  },
+
+  "world_countries": {
+    "domain": "geography",
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "landforms_water"
+  },
+
+  "world_cuisines": {
+    "domain": "food_cuisine",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "world_cuisine"
+  },
+
+  "world_flags": {
+    "domain": "geography",
+    "skip": true,
+    "prefixSegments": 1,
+    "entitySegments": 1,
+    "ageRating": "kid",
+    "categoryL2": "landforms_water",
+    "_skipReason": "image-only deck — all facts use quizMode=image_question and cannot be used as trivia"
+  },
+
+  "world_war_ii": {
+    "domain": "history",
+    "prefixSegments": 2,
+    "entitySegments": 1,
+    "ageRating": "teen",
+    "categoryL2": "world_wars"
+  },
+
+  "world_wonders": {
+    "domain": "geography",
+    "prefixSegments": 2,
+    "entitySegments": 2,
+    "ageRating": "kid",
+    "categoryL2": "landmarks_wonders"
+  }
+}

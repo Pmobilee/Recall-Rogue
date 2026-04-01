@@ -599,6 +599,12 @@ Invalid distractors are auto-stripped by `build-facts-db.mjs` using `isPlacehold
 
 Every fact must have `_haikuProcessed: true` to pass promotion. QA validates schema, distractor blocklist, and dedup check for duplicate `id` and similar `quizQuestion` text.
 
+### Bridge Fact Awareness
+
+Facts with IDs matching curated deck patterns (e.g., `dino_*`, `pres_*`, `wwii_*`, `myth_*`) originate from curated decks via the trivia bridge (`/curated-trivia-bridge`). These live in `src/data/seed/bridge-curated.json`.
+
+When generating new trivia facts for domains that also have curated decks, check for semantic duplicates against bridge facts. Do not generate trivia facts that cover the same entity + question as an existing bridge fact. Use `grep` on `bridge-curated.json` to check before generating.
+
 ### Known Ingestion Issues to Avoid
 
 These were found in the March 2026 quality audit:
