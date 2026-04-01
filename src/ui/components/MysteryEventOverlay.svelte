@@ -8,6 +8,7 @@
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
   import EventQuiz from './EventQuiz.svelte'
   import { get } from 'svelte/store'
   import { activeRunState } from '../../services/runStateStore'
@@ -54,6 +55,7 @@
   $effect(() => {
     if (event) {
       playCardAudio('mystery-appear')
+      void ambientAudio.setContext('mystery')
       // Reset quiz state when a new event is shown
       quizPhase = 'intro'
       pendingQuizEffects = []

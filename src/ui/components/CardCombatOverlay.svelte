@@ -35,6 +35,7 @@
   import type { CombatScene } from '../../game/scenes/CombatScene'
   import { getCardTier } from '../../services/tierDerivation'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
   import { reshuffleEvent } from '../../services/deckManager'
   import { audioManager } from '../../services/audioService'
   import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, FIZZLE_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
@@ -2428,6 +2429,15 @@
   $effect(() => {
     const quizVisible = cardPlayStage === 'committed'
     setQuizVisible(quizVisible)
+  })
+
+  /** Duck ambient audio while the charge quiz overlay is visible. */
+  $effect(() => {
+    if (isQuizPanelVisible) {
+      ambientAudio.duck()
+    } else {
+      ambientAudio.unduck()
+    }
   })
 
   let kbdUnsubscribers: Array<() => void> = []

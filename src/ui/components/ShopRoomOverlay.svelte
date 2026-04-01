@@ -23,6 +23,7 @@
   import { getSynergyLabel, findSynergies } from '../../data/synergies'
   import { getActiveDeckCards } from '../../services/encounterBridge'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
   import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
   import { getShopkeeperBark, type ShopBarkTrigger } from '../../data/shopkeeperBarks'
   import { fade } from 'svelte/transition'
@@ -449,6 +450,7 @@
 
   $effect(() => {
     playCardAudio('shop-open')
+    void ambientAudio.setContext('shop')
     showBark('enter_shop')
   })
 </script>

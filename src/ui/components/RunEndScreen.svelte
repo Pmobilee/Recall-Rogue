@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import { shareRunSummaryCard } from '../../services/runShareService'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
   import { analyticsService } from '../../services/analyticsService'
   import { ENEMY_TEMPLATES, type EnemyTemplate, type EnemyCategory } from '../../data/enemies'
   import { getGreyMatterIconPath } from '../utils/iconAssets'
@@ -312,6 +313,7 @@
 
   onMount(() => {
     playCardAudio(isVictory ? 'run-victory' : 'run-defeat')
+    void ambientAudio.setContext(isVictory ? 'run_end_victory' : 'run_end_defeat')
     showBadgeXP = enemyIds.map(() => false)
 
     if (prefersReducedMotion()) {

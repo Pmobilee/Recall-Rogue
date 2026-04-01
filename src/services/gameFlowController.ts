@@ -122,6 +122,23 @@ import type { DeckMode } from '../data/studyPreset'
 import { generateActMap, selectMapNode, deriveFloorFromNode, type ActMap } from './mapGenerator'
 import { getBossForFloor } from './floorManager'
 import { ENEMY_TEMPLATES } from '../data/enemies'
+import { ambientAudio } from './ambientAudioService'
+import type { AmbientContext } from './ambientAudioService'
+import { getFloorTheme } from '../data/roomAtmosphere'
+
+/**
+ * Set ambient audio context for a combat encounter based on floor and boss status.
+ * Call at every combat start point.
+ */
+function setCombatAmbient(floor: number, isBoss: boolean): void {
+  if (isBoss) {
+    void ambientAudio.setContext('boss_arena')
+    ambientAudio.addBossOverlay()
+  } else {
+    const theme = getFloorTheme(floor)
+    void ambientAudio.setContext(`combat_${theme}` as AmbientContext)
+  }
+}
 
 export type GameFlowState =
   | 'idle'
@@ -933,6 +950,8 @@ async function proceedAfterReward(): Promise<void> {
   if (run.floor.currentEncounter === run.floor.encountersPerFloor) {
     // Reset guard now — encounter 3 will need its own onEncounterComplete call
     isProcessingEncounterResult = false;
+    // Set ambient for encounter 3 (boss/mini-boss floor final encounter)
+    setCombatAmbient(run.floor.currentFloor, isBossFloor(run.floor.currentFloor));
     gameFlowState.set('combat');
     holdScreenTransition();
     currentScreen.set('combat');
@@ -1269,6 +1288,9 @@ function giveRelicAsToastDrop(relic: RelicDefinition): void {
 export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   const run = get(activeRunState);
   if (!run) return;
+
+  // Remove boss overlay when combat ends (safe to call even if no overlay is active)
+  ambientAudio.removeBossOverlay()
 
   // Guard: prevent double-processing if a stale 550 ms timer fires after the reward flow
   // has already completed and a new encounter has started. This is the root cause of Bug 9
@@ -1957,6 +1979,8 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
   }
   switch (room.type) {
     case 'combat':
+      // Set ambient for regular combat encounter
+      if (run) setCombatAmbient(run.floor.currentFloor, false)
       gameFlowState.set('combat');
       holdScreenTransition();
       currentScreen.set('combat');
@@ -2048,6 +2072,9 @@ export function resumeFromCampfire(): void {
     gameFlowState.set(returnState);
     currentScreen.set(returnState as string as import('../ui/stores/gameState').Screen);
   } else {
+    // Resuming combat from campfire — restore ambient
+    const campfireRun = get(activeRunState)
+    if (campfireRun) setCombatAmbient(campfireRun.floor.currentFloor, isBossFloor(campfireRun.floor.currentFloor))
     gameFlowState.set('combat');
     currentScreen.set('combat');
   }
@@ -2396,6 +2423,8 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
       activeMasteryChallenge.set(null);
       activeRunState.set(run);
       // Transition to combat screen and start the encounter
+      // Set ambient for mystery room combat
+      setCombatAmbient(run.floor.currentFloor, false)
       gameFlowState.set('combat');
       holdScreenTransition();
       currentScreen.set('combat');

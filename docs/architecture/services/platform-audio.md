@@ -97,6 +97,23 @@ ambientAudio.stop()                            // hard stop all layers, reset to
 
 Decoded `AudioBuffer` objects are cached by file path string. Failed fetches are stored as `null` to suppress retries. Cache is unbounded (ambient loops are few and long-lived).
 
+### Integration Points
+
+| Caller | Call site | What happens |
+|--------|-----------|--------------|
+| `src/CardApp.svelte` — `handleUserInteraction()` | After `unlockCardAudio()` on the very first user gesture | `ambientAudio.init()` creates the AudioContext; `ambientAudio.unlock()` resumes it if suspended |
+| `src/services/gameFlowController.ts` — `setCombatAmbient()` | Helper called at every combat start point | Sets the correct `combat_<theme>` context based on floor number; sets `boss_arena` + calls `addBossOverlay()` on boss floors |
+| `src/services/gameFlowController.ts` — `onEncounterComplete()` | At the start of every encounter-complete handler | `removeBossOverlay()` fades out boss tension layers; safe to call when no overlay is active |
+| `src/services/musicService.ts` — `playTrack()` | After `newSource.start()` when a BGM track begins playing | `setMusicCoexistence(true)` ducks ambient to 30% |
+| `src/services/musicService.ts` — `fadeOutAndStop()` | Before `this._isPlaying = false` when music fully stops | `setMusicCoexistence(false)` restores ambient to full volume |
+| `src/services/musicService.ts` — `togglePlayPause()` | Inside `ctx.suspend().then()` callback when user pauses music | `setMusicCoexistence(false)` restores ambient while music is paused |
+
+The `setCombatAmbient` helper in `gameFlowController.ts` is called at four combat start points:
+1. Auto-started encounter 3 (boss/mini-boss) inside `proceedAfterReward()`
+2. `onRoomSelected` case `'combat'` (player picks a room)
+3. `resumeFromCampfire()` fallback combat path
+4. Mystery-room combat via `onMysteryEffectResolved()`
+
 ---
 
 ## audioService

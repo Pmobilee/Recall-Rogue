@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { MasteryChallengeQuestion } from '../../services/masteryChallengeService'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
 
   interface Props {
     challenge: MasteryChallengeQuestion | null
@@ -48,6 +49,7 @@
     }
     resetState()
     playCardAudio('mastery-challenge')
+    void ambientAudio.setContext('mastery_challenge')
     rafId = requestAnimationFrame(tick)
     return () => cancelTick()
   })

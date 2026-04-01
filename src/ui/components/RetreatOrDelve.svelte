@@ -5,6 +5,7 @@
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
   import { staggerPopIn } from '../utils/roomPopIn'
   import { tick } from 'svelte'
 
@@ -44,6 +45,10 @@
 
   let overlayEl = $state<HTMLElement>(null!)
   let retainedOnDeath = $derived(Math.floor(currency * deathPenalty))
+
+  $effect(() => {
+    void ambientAudio.setContext('retreat_delve')
+  })
 </script>
 
 <div class="decision" bind:this={overlayEl} class:landscape={$isLandscape}>

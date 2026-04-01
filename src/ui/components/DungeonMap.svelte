@@ -6,6 +6,7 @@
   import { BASE_WIDTH } from '../../data/layout'
   import { isLandscape } from '../../stores/layoutStore'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
 
   // =========================================================
   // Props
@@ -248,6 +249,7 @@
 
   onMount(() => {
     playCardAudio('map-open')
+    void ambientAudio.setContext('dungeon_map')
     layoutScale = getLayoutScale()
 
     const observer = new ResizeObserver(entries => {

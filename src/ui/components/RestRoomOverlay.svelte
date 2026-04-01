@@ -5,6 +5,7 @@
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { playCardAudio } from '../../services/cardAudioManager'
+  import { ambientAudio } from '../../services/ambientAudioService'
   import { staggerPopIn } from '../utils/roomPopIn'
   import { tick } from 'svelte'
 
@@ -44,6 +45,7 @@
 
   $effect(() => {
     playCardAudio('rest-open')
+    void ambientAudio.setContext('rest')
   })
 </script>
 
