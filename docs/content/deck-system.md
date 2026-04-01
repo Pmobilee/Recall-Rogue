@@ -64,14 +64,20 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
 - **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, **Dinosaurs & Paleontology**
 
-### In-Progress Deck Architectures
+### Deck Architecture Files
 
-Architecture YAML files in `data/deck-architectures/` represent decks that have verified source data but whose `.json` fact files have not yet been generated. These are the canonical pre-generation source of truth.
+Architecture YAML files in `data/deck-architectures/` hold the verified source data used to generate `.json` fact files. They are the canonical pre-generation source of truth. Some large decks (e.g. `world_wonders`) split generation across multiple architecture files — one per batch — which are then merged by an assembly script.
 
-| File | Deck ID | Status | Target Facts |
-|---|---|---|---|
-| `solar_system_arch.yaml` | `solar_system` | complete — live | 76 |
-| `dinosaurs_arch.yaml` | `dinosaurs` | complete — live | 187 |
+| File | Deck ID | Status | Facts | Notes |
+|---|---|---|---|---|
+| `solar_system_arch.yaml` | `solar_system` | complete — live | 76 | Single file |
+| `dinosaurs_arch.yaml` | `dinosaurs` | complete — live | 187 | Single file |
+| `world_wonders_research_01.yaml` | `world_wonders` | complete — live | ~50 | Batch 1: ancient wonders |
+| `world_wonders_research_02.yaml` | `world_wonders` | complete — live | ~50 | Batch 2: sacred monuments |
+| `world_wonders_research_03.yaml` | `world_wonders` | complete — live | ~50 | Batch 3: towers + bridges |
+| `world_wonders_research_04.yaml` | `world_wonders` | complete — live | ~50 | Batch 4: palaces + monuments + natural + modern |
+
+The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
 ---
 
