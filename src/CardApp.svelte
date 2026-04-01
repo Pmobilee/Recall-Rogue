@@ -162,6 +162,7 @@
   import InRunTopBar from './ui/components/InRunTopBar.svelte'
   import MusicWidget from './ui/components/MusicWidget.svelte'
   import { musicService } from './services/musicService'
+  import { ambientAudio } from './services/ambientAudioService'
   import { getReviewQueueLength } from './services/reviewQueueSystem'
   import { getAuraLevel, getAuraState } from './services/knowledgeAuraSystem'
 
@@ -842,6 +843,8 @@
 
   function handleUserInteraction(): void {
     unlockCardAudio()
+    ambientAudio.init()
+    ambientAudio.unlock()
     // Preload combat-critical SFX files in background (synthesis handles first play)
     void audioManager.preloadSounds([
       // Quiz — heard every encounter

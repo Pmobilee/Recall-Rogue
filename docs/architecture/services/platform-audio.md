@@ -1,8 +1,8 @@
 # Platform Services — Audio & Game Feel
 
-> **Purpose:** Audio synthesis, file-based SFX playback, card audio cues, ambient atmosphere layering, and game-feel (juice) coordination services
+> **Purpose:** Audio synthesis, file-based SFX playback, card audio cues, ambient atmosphere layering, BGM music playback, and game-feel (juice) coordination services
 > **Last verified:** 2026-04-01
-> **Source files:** `src/services/audioService.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`, `src/services/ambientAudioService.ts`
+> **Source files:** `src/services/audioService.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`, `src/services/ambientAudioService.ts`, `src/services/musicService.ts`
 
 > **See also:** [`platform.md`](platform.md) — All other platform services: device detection, haptics, performance, analytics, input, accessibility, notifications, entitlements, and more.
 
@@ -195,6 +195,39 @@ The synthesis fallback still fires on the very first play of any sound before it
 | **Key exports** | `playCardAudio`, `CardAudioCue` (type) |
 | **Key dependencies** | audioService |
 
+## musicService (BGM)
+
+| | |
+|---|---|
+| **File** | src/services/musicService.ts |
+| **Purpose** | BGM playback with Web Audio API — separate AudioContext from SFX, real-time frequency data for visualiser |
+| **Key exports** | `musicService` (singleton) |
+| **Key dependencies** | Web Audio API, `src/data/musicTracks.ts` (track manifest), `ambientAudioService` (coexistence ducking) |
+| **Track files** | `public/assets/audio/music/epic/*.mp3` (18), `public/assets/audio/music/quiet/*.mp3` (14) |
+
+### Audio Graph
+
+```
+AudioBufferSourceNode → per-source GainNode → masterGain → AnalyserNode(fftSize=64) → destination
+```
+
+### Features
+
+- **Two categories**: Epic (combat) and Lo-Fi/Quiet (ambient) — user toggles via MusicWidget
+- **Crossfade**: 1.5s linear ramp between tracks via dual per-source gain nodes
+- **Shuffle queue**: Fisher-Yates with back-to-back repeat avoidance
+- **LRU buffer cache**: Max 3 decoded AudioBuffers, preloads next track
+- **AnalyserNode**: 32 frequency bins at 60fps for spectrogram visualiser in MusicWidget
+- **Persistence**: Volume, mute, category saved to `localStorage` key `music_prefs`
+- **User gesture gating**: AudioContext created lazily; `startIfNotPlaying()` is a no-op until `unlock()` is called from a user gesture handler
+- **Ambient coexistence**: Calls `ambientAudio.setMusicCoexistence(true/false)` to duck ambient layers when music plays
+
+### UI Integration
+
+`MusicWidget.svelte` — Spotify-style expanding glass pill in top-right corner during runs. Shows real-time spectrogram, track name, Epic/Lo-Fi toggle, playback controls, volume slider. Rendered in `CardApp.svelte` alongside `InRunTopBar` when `showTopBar` is true.
+
+---
+
 ## juiceManager
 
 | | |
@@ -203,3 +236,27 @@ The synthesis fallback still fires on the very first play of any sound before it
 | **Purpose** | Centralized game-feel coordinator — dispatches haptics + audio cues for combat events (correct, wrong, combo, chain, etc.) |
 | **Key exports** | `juiceManager` (singleton with `onCorrectImpact`, `onWrongFizzle`, `onEnemyHit`, `onChainLink`, etc.) |
 | **Key dependencies** | hapticService, cardAudioManager |
+
+---
+
+## ambientAudioService — UI Integration Points
+
+`setContext()` is called from Svelte components at the lifecycle point where the screen/room becomes active. All calls use `void` prefix (fire-and-forget). `duck()`/`unduck()` are synchronous.
+
+| Component | File | Call | Trigger |
+|-----------|------|------|---------|
+| `HubScreen` | `src/ui/components/HubScreen.svelte` | `setContext('hub')` | Initial `$effect` alongside `playCardAudio('hub-welcome')` |
+| `DungeonMap` | `src/ui/components/DungeonMap.svelte` | `setContext('dungeon_map')` | `onMount` alongside `playCardAudio('map-open')` |
+| `ShopRoomOverlay` | `src/ui/components/ShopRoomOverlay.svelte` | `setContext('shop')` | `$effect` alongside `playCardAudio('shop-open')` |
+| `RestRoomOverlay` | `src/ui/components/RestRoomOverlay.svelte` | `setContext('rest')` | `$effect` alongside `playCardAudio('rest-open')` |
+| `MysteryEventOverlay` | `src/ui/components/MysteryEventOverlay.svelte` | `setContext('mystery')` | `$effect` when `event` is set, alongside `playCardAudio('mystery-appear')` |
+| `RunEndScreen` | `src/ui/components/RunEndScreen.svelte` | `setContext('run_end_victory')` or `setContext('run_end_defeat')` | `onMount`, branched on `isVictory` |
+| `MasteryChallengeOverlay` | `src/ui/components/MasteryChallengeOverlay.svelte` | `setContext('mastery_challenge')` | `$effect` when `challenge` is set, alongside `playCardAudio('mastery-challenge')` |
+| `RetreatOrDelve` | `src/ui/components/RetreatOrDelve.svelte` | `setContext('retreat_delve')` | Initial `$effect` on mount |
+| `CardCombatOverlay` | `src/ui/components/CardCombatOverlay.svelte` | `duck()` / `unduck()` | `$effect` reactive on `isQuizPanelVisible` — ducks when charge quiz panel is showing |
+
+### Pattern Notes
+
+- `setContext()` is async (returns `Promise<void>`) but all callers use `void` because the crossfade completes in the background — components do not need to await it.
+- `duck()`/`unduck()` are synchronous volume ramp calls, no `void` needed.
+- The duck signal uses `isQuizPanelVisible` (not the broader `cardPlayStage === 'committed'`) so Quick Play animations — which set `committed` briefly without showing a quiz — do not trigger ducking.
