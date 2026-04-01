@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -199,22 +199,82 @@ combat (boss) → retreatOrDelve
 
 ## Dungeon Map — Fog of War System
 
-**Source file:** `src/ui/components/DungeonMap.svelte`  
+**Source file:** `src/ui/components/DungeonMap.svelte`
 **Last updated:** 2026-04-01
 
 ### Overview
 
-The dungeon map uses a CSS mask-based fog of war that only reveals the current floor and the floors immediately above and below it. Distant rows (unexplored future floors and far-past visited floors) are hidden behind animated mist that matches each segment's color palette.
+The dungeon map uses an atmospheric fog-of-war system combining **progressive node blur** (based on distance) and **scattered fog wisps**. The fog is purely visual — no opaque masks or overlays hide the layout. Nearby nodes appear clear, distant nodes progressively blur, creating an atmospheric sense of limited visibility without blocking information flow.
 
-### Visibility Logic
+### Node Visibility & Icon Blur
 
-- `fogWindowCenterY` — derived Y position (px from canvas top) of the visibility window center, computed from `currentRow`, `rowSpacing`, and `canvasHeight`
-- `fogMaskStyle` — derived inline style string providing both `mask-image` and `-webkit-mask-image` CSS properties
-- The clear window spans ±2 rows from the current row. Visited rows below the window get semi-transparent fog (0.3 opacity). Everything above the window gets full fog.
-- CSS masks: `black` = fog visible, `transparent` = fog hidden (map shows through)
-- The mask transitions smoothly via `transition: mask-image 0.6s ease-in-out` as the player advances
+Nodes blur progressively based on distance from the current row:
 
-### Segment Fog Colors (`SEGMENT_FOG`)
+| Distance | Rows | Blur | Opacity | Effect |
+|----------|------|------|---------|--------|
+| Current + Next | 0–1 | 0px | 1.0 | Crisp, fully visible |
+| Approaching | 2 | 8px | 0.4 | Slightly soft, dimmer |
+| Far ahead | 3 | 16px | 0.2 | Very soft, hard to read |
+| Very distant | 4+ | 24px | 0.08 | Nearly imperceptible |
+
+**Same opacity rules apply to the edge connection lines** — visually fades from 1.0 (current/next rows) to 0.4, then 0.15, then 0.05 as rows recede.
+
+Node blur is applied via CSS `filter: blur(...)` on `.node-position` elements; opacity as `opacity: ...` on the same. Blur eases smoothly over 0.6s as the player advances.
+
+### Fog Wisps — Atmospheric Overlay
+
+**17 scattered fog wisps** create a billowy mist effect across the full map width:
+
+| Tier | Count | Size (px) | Animation Speed |
+|------|-------|-----------|-----------------|
+| Medium clouds | 8 | 300–500 | Medium (6–8s) |
+| Large clouds | 6 | 550–800 | Slow (8–10s) |
+| Backdrop clouds | 3 | 900–1200 | Very slow (10–15s) |
+
+Each wisp:
+- Uses a **soft diffuse radial-gradient** that fades to transparent at 100% radius
+- Follows a **6-keyframe meandering path** with 200–450px horizontal/vertical drift
+- Applies Web Animations API (CSS `@keyframes` with `var()` in animations don't work in Chrome)
+- Respects `prefers-reduced-motion` — skips animation on user preference
+
+### Fog Overlay DOM Structure
+
+```html
+<!-- Direct child of .dungeon-map-overlay -->
+<div class="fog-overlay" style="height: {canvasHeight}px;">
+  <!-- 17 scattered fog wisps, positioned absolutely -->
+  <div class="fog-wisp fog-wisp-1"><!-- ... --></div>
+  <div class="fog-wisp fog-wisp-2"><!-- ... --></div>
+  <!-- ... -->
+  <div class="fog-wisp fog-wisp-17"><!-- ... --></div>
+</div>
+```
+
+Fog extends full screen width via `left: -50vw; right: -50vw` inside `.dungeon-map-overlay`, ensuring no gaps at screen edges. Height matches `canvasHeight` for proper alignment with map rows.
+
+### Layer Stack
+
+| z-index | Element | Role |
+|---------|---------|------|
+| 0 | `.row-marker` (in `.map-canvas`) | Floor depth labels |
+| 1 | `.edge-layer` SVG (in `.map-canvas`) | Connection lines between nodes |
+| 2 | `.node-position` (in `.map-canvas`) | Map nodes |
+| 3 | `.fog-overlay` (sibling of `.map-scroll-container`) | Fog wisps — atmospheric overlay only |
+| 4 | `.vignette-overlay` | Edge darkening (position: fixed) |
+
+### Implementation Details
+
+- **No opaque base or mask** — fog is purely decorative wisps overlaid on transparent background
+- **Icon blur for distance** — blur/opacity applied directly to node elements, not masks
+- **Web Animations API** — each wisp uses JS-driven animation (CSS `@keyframes` with `var()` doesn't work in Chrome)
+- **Landscape support** — fog overlay respects `top: var(--topbar-height)` offset so top bar remains visible
+- **Reduced motion** — all wisp animations and edge opacity transitions disabled under `prefers-reduced-motion: reduce`
+
+---
+
+## Segment Fog Colors
+
+Not used for masks (no masks exist), but fog wisps can be tinted per-segment. Segment colors are defined in `SEGMENT_FOG`:
 
 | Segment | Value | Theme |
 |---------|-------|-------|
@@ -222,34 +282,3 @@ The dungeon map uses a CSS mask-based fog of war that only reveals the current f
 | 2 | `#0a0e14` | Cool blue-grey — Deep Caverns |
 | 3 | `#0a0c16` | Icy blue-purple — The Abyss |
 | 4 | `#0c0812` | Arcane purple — The Archive |
-
-### Layer Stack (inside `.map-canvas`)
-
-| z-index | Element | Role |
-|---------|---------|------|
-| 0 | `.row-marker` | Floor depth labels |
-| 1 | `.edge-layer` (SVG) | Connection lines between nodes |
-| 2 | `.fog-overlay` | Fog of war — covers hidden rows |
-| 3 | `.node-position` | Map nodes — always above fog |
-| 4 | `.vignette-overlay` | Edge darkening (position: fixed) |
-
-### Fog Overlay DOM Structure
-
-```html
-<div class="fog-overlay" style="height: {canvasHeight}px; {fogMaskStyle}">
-  <div class="fog-base" style="background: {segmentColor}">  <!-- solid fill -->
-  <div class="fog-wisp fog-wisp-1">  <!-- drifting radial gradient, 25s cycle -->
-  <div class="fog-wisp fog-wisp-2">  <!-- drifting radial gradient, 35s reversed -->
-  <div class="fog-wisp fog-wisp-3">  <!-- drifting radial gradient, 20s cycle -->
-</div>
-```
-
-The fog wisps use `background-position` animation via `@keyframes fogDrift1/2/3` to simulate swirling mist.
-
-### Reduced Motion
-
-Both fog drift animations and the mask transition are disabled under `prefers-reduced-motion: reduce`.
-
-### What Was Replaced
-
-The previous system used per-node `fogOpacity` and `fogBlur` values computed inline (opacity 1.0 → 0.45 by row distance, blur 0 → 1px). This caused mild dimming but no visual fog effect. The `fogOpacity` field has been removed from the `EdgeData` interface and `opacity` attributes have been removed from all SVG path elements.

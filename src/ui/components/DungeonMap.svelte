@@ -47,16 +47,59 @@
   /** Base vertical spacing between rows (unscaled px). */
   const ROW_SPACING_BASE = 90
 
-  /**
-   * Fog base colors per segment — solid fill that fills the fog overlay.
-   * Chosen to match each segment's ambient palette.
-   */
-  const SEGMENT_FOG: Record<1 | 2 | 3 | 4, string> = {
-    1: '#1a150e',  // warm brown — Shallow Depths
-    2: '#0a0e14',  // cool blue-grey — Deep Caverns
-    3: '#0a0c16',  // icy blue-purple — The Abyss
-    4: '#0c0812',  // arcane purple — The Archive
-  }
+  // Fog wisps — large soft cloud shapes that drift visibly across the map.
+  // Sized for 1920×1080. Fewer wisps but each is a real cloud, not a dust particle.
+  const fogWisps = (() => {
+    const wisps: Array<{ size: number; ratio: number; x: number; y: number; opacity: number; dur: number; delay: number; dx: number; dy: number }> = []
+    let seed = 42
+    const rng = () => { seed = (seed * 16807 + 0) % 2147483647; return (seed - 1) / 2147483646 }
+    /** Random value centered on 0 with given magnitude */
+    const drift = (mag: number) => (rng() - 0.5) * 2 * mag
+
+    // Medium clouds (300-500px) — 8 of them
+    for (let i = 0; i < 8; i++) {
+      wisps.push({
+        size: 300 + rng() * 200,
+        ratio: 0.3 + rng() * 0.2,
+        x: rng() * 100 - 10,
+        y: rng() * 80,
+        opacity: 0.12 + rng() * 0.10,
+        dur: 15 + rng() * 10,
+        delay: rng() * 20,
+        dx: drift(350),
+        dy: drift(150),
+      })
+    }
+    // Large clouds (550-800px) — 6 of them
+    for (let i = 0; i < 6; i++) {
+      wisps.push({
+        size: 550 + rng() * 250,
+        ratio: 0.3 + rng() * 0.2,
+        x: rng() * 90 - 5,
+        y: rng() * 75 + 2,
+        opacity: 0.08 + rng() * 0.08,
+        dur: 20 + rng() * 15,
+        delay: rng() * 25,
+        dx: drift(450),
+        dy: drift(200),
+      })
+    }
+    // Huge backdrop clouds (900-1200px) — 3 of them, very subtle
+    for (let i = 0; i < 3; i++) {
+      wisps.push({
+        size: 900 + rng() * 300,
+        ratio: 0.3 + rng() * 0.15,
+        x: rng() * 80,
+        y: rng() * 65 + 5,
+        opacity: 0.05 + rng() * 0.05,
+        dur: 30 + rng() * 20,
+        delay: rng() * 30,
+        dx: drift(300),
+        dy: drift(120),
+      })
+    }
+    return wisps
+  })()
 
   // =========================================================
   // Reactive state
@@ -108,51 +151,10 @@
   let canvasHeight = $derived(map.rows.length * rowSpacing + 2 * ROW_SPACING_BASE * layoutScale)
 
   // =========================================================
-  // Fog of war — mask-based visibility window
+  // Fog of war — blur-based visibility
   // =========================================================
-
-  /**
-   * Y center of the visibility window in px from the top of map-canvas.
-   * Maps are rendered bottom-up (row 0 is at the bottom), so we invert.
-   */
-  let fogWindowCenterY = $derived(
-    canvasHeight - (currentRow * rowSpacing + rowSpacing / 2)
-  )
-
-  /**
-   * CSS mask-image inline style for the fog overlay div.
-   *
-   * In CSS masks: black = fully opaque (fog shows), transparent = hidden (fog invisible, map shows through).
-   * The clear window is `transparent` so the map is visible there.
-   * Above the window: fully fogged (future rooms hidden).
-   * Below the window: light fog (visited path dimly visible).
-   * All stops clamped to [0,100] to avoid non-monotonic gradient issues at map edges.
-   */
-  let fogMaskStyle = $derived.by(() => {
-    const windowTop = fogWindowCenterY - rowSpacing * 2
-    const windowBottom = fogWindowCenterY + rowSpacing * 2
-    const clamp = (v: number) => Math.max(0, Math.min(100, v))
-    const topPct = clamp((windowTop / canvasHeight) * 100)
-    const bottomPct = clamp((windowBottom / canvasHeight) * 100)
-    // Soft edges around the clear window — all monotonically increasing
-    const fadeInStart = clamp(topPct - 8)
-    const fadeInMid = clamp(topPct - 4)
-    const fadeOutMid = clamp(bottomPct + 4)
-    const fadeOutEnd = clamp(bottomPct + 8)
-
-    const gradient = `linear-gradient(to bottom,
-      black 0%,
-      black ${fadeInStart}%,
-      rgba(0,0,0,0.6) ${fadeInMid}%,
-      transparent ${topPct}%,
-      transparent ${bottomPct}%,
-      rgba(0,0,0,0.4) ${fadeOutMid}%,
-      rgba(0,0,0,0.5) ${fadeOutEnd}%,
-      rgba(0,0,0,0.5) 100%
-    )`
-
-    return `-webkit-mask-image: ${gradient}; mask-image: ${gradient};`
-  })
+  // Icons themselves get heavily blurred beyond the visible window.
+  // Scattered fog wisps add atmosphere on top — no opaque base needed.
 
   // =========================================================
   // Edge data derivation
@@ -165,6 +167,7 @@
     y2: number
     state: 'traveled' | 'available' | 'locked'
     sourceRow: number
+    fogOpacity: number
   }
 
   let edges = $derived.by<EdgeData[]>(() => {
@@ -183,7 +186,10 @@
         let edgeState: 'traveled' | 'available' | 'locked' = 'locked'
         if (nodeVisited && childVisited) edgeState = 'traveled'
         else if (nodeVisited && childAvailable) edgeState = 'available'
-        result.push({ x1: nx, y1: ny, x2: cx, y2: cy, state: edgeState, sourceRow: node.row })
+        // Hide edges far from current row
+        const maxDist = Math.max(Math.abs(node.row - currentRow), Math.abs(child.row - currentRow))
+        const fogOpacity = maxDist <= 1 ? 1 : maxDist <= 2 ? 0.4 : maxDist <= 3 ? 0.15 : 0.05
+        result.push({ x1: nx, y1: ny, x2: cx, y2: cy, state: edgeState, sourceRow: node.row, fogOpacity })
       }
     }
     return result
@@ -254,6 +260,31 @@
     })
     if (scrollContainer) observer.observe(scrollContainer)
 
+    // Animate fog wisps via Web Animations API (CSS var() in @keyframes doesn't work in Chrome)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!prefersReducedMotion) {
+      const wispEls = document.querySelectorAll('.fog-wisp')
+      const animations: Animation[] = []
+      wispEls.forEach((el, i) => {
+        const w = fogWisps[i]
+        if (!w) return
+        const anim = el.animate([
+          { transform: 'translate(0, 0)' },
+          { transform: `translate(${w.dx * 0.6}px, ${w.dy}px)` },
+          { transform: `translate(${w.dx}px, ${w.dy * 0.3}px)` },
+          { transform: `translate(${w.dx * 0.4}px, ${w.dy * -0.5}px)` },
+          { transform: `translate(${w.dx * -0.3}px, ${w.dy * -0.8}px)` },
+          { transform: 'translate(0, 0)' },
+        ], {
+          duration: w.dur * 1000,
+          iterations: Infinity,
+          easing: 'ease-in-out',
+          delay: -w.delay * 1000,
+        })
+        animations.push(anim)
+      })
+    }
+
     return () => observer.disconnect()
   })
 
@@ -302,12 +333,14 @@
             <path
               class="edge-path edge-traveled-glow edge-enter"
               d={edgePath(edge.x1, edge.y1, edge.x2, edge.y2)}
+              opacity={edge.fogOpacity}
               style="animation-delay: {edge.sourceRow * 60 + 30}ms;"
             />
           {/if}
           <path
             class="edge-path edge-{edge.state} edge-enter"
             d={edgePath(edge.x1, edge.y1, edge.x2, edge.y2)}
+            opacity={edge.fogOpacity}
             style="animation-delay: {edge.sourceRow * 60 + 30}ms;"
           />
         {/each}
@@ -317,9 +350,12 @@
       {#each Object.values(map.nodes) as node (node.id)}
         {@const nx = node.x * containerWidth}
         {@const ny = canvasHeight - (node.row * rowSpacing + rowSpacing / 2)}
+        {@const rowDist = Math.abs(node.row - currentRow)}
+        {@const nodeOpacity = rowDist <= 1 ? 1 : rowDist <= 2 ? 0.4 : rowDist <= 3 ? 0.2 : 0.08}
+        {@const nodeBlur = rowDist <= 1 ? 0 : rowDist <= 2 ? 8 : rowDist <= 3 ? 16 : 24}
         <div
           class="node-position node-entrance"
-          style="left: {nx}px; top: {ny}px; animation-delay: {node.row * 60}ms;"
+          style="left: {nx}px; top: {ny}px; opacity: {nodeOpacity}; filter: blur(calc({nodeBlur}px * var(--layout-scale, 1))); animation-delay: {node.row * 60}ms;"
         >
           <MapNodeComponent
             {node}
@@ -328,18 +364,24 @@
         </div>
       {/each}
 
-      <!-- Fog of war overlay — ABOVE nodes so CSS mask actually hides far-away nodes.
-           pointer-events: none ensures clicks pass through to available nodes below.
-           The mask window around the current floor keeps current/next-row nodes visible. -->
+      <!-- Fog of war — many scattered wisps of varied sizes -->
       <div
         class="fog-overlay"
-        style="height: {canvasHeight}px; {fogMaskStyle}"
+        style="height: {canvasHeight}px;"
         aria-hidden="true"
       >
-        <div class="fog-base" style="background: {SEGMENT_FOG[map.segment]};"></div>
-        <div class="fog-wisp fog-wisp-1"></div>
-        <div class="fog-wisp fog-wisp-2"></div>
-        <div class="fog-wisp fog-wisp-3"></div>
+        {#each fogWisps as w, i (i)}
+          <div
+            class="fog-wisp"
+            style="
+              width: calc({w.size}px * var(--layout-scale, 1));
+              height: calc({w.size * w.ratio}px * var(--layout-scale, 1));
+              top: {w.y}%;
+              left: {w.x}%;
+              opacity: {w.opacity};
+            "
+          ></div>
+        {/each}
       </div>
 
       <!-- Floor depth markers — subtle row labels -->
@@ -365,6 +407,12 @@
     flex-direction: column;
     z-index: 200;
     overflow: hidden;
+  }
+
+  /* Issue 2 fix: In landscape, push overlay top down to leave room for InRunTopBar.
+     Both share z-index 200 but top bar renders first in DOM; this avoids overlap. */
+  :global([data-layout="landscape"]) .dungeon-map-overlay {
+    top: var(--topbar-height, 4.5vh);
   }
 
   .vignette-overlay {
@@ -495,65 +543,35 @@
   }
 
   /* =========================================================
-     Fog of war overlay
-     Sits at z-index 3, above nodes (z-index 2) and edges (z-index 1).
-     Uses CSS mask-image to punch a clear window around the current floor
-     while covering everything else with animated fog.
-     pointer-events: none ensures clicks pass through to available nodes.
+     Fog of war — many scattered atmospheric wisps
+     No opaque base. Icons are blurred directly (inline styles).
+     26 wisps of varied sizes (tiny to large) float around.
+     Each wisp uses CSS custom properties --dx/--dy for unique drift.
      ========================================================= */
   .fog-overlay {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: -50vw;
+    right: -50vw;
     z-index: 3;
     pointer-events: none;
-    overflow: hidden;
-    transition: mask-image 0.6s ease-in-out, -webkit-mask-image 0.6s ease-in-out;
-  }
-
-  .fog-base {
-    position: absolute;
-    inset: 0;
-    opacity: 0.95;
+    overflow: visible;
   }
 
   .fog-wisp {
     position: absolute;
-    inset: 0;
-    background-size: 200% 200%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center,
+      rgba(160,165,185,0.6) 0%,
+      rgba(150,155,175,0.3) 20%,
+      rgba(140,145,165,0.1) 50%,
+      transparent 100%
+    );
+    will-change: transform;
   }
 
-  .fog-wisp-1 {
-    background: radial-gradient(ellipse 80% 40% at 30% 40%, rgba(255,255,255,0.07) 0%, transparent 60%);
-    animation: fogDrift1 25s ease-in-out infinite;
-  }
-
-  .fog-wisp-2 {
-    background: radial-gradient(ellipse 60% 50% at 70% 60%, rgba(255,255,255,0.05) 0%, transparent 55%);
-    animation: fogDrift2 35s ease-in-out infinite reverse;
-  }
-
-  .fog-wisp-3 {
-    background: radial-gradient(ellipse 70% 35% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
-    animation: fogDrift3 20s ease-in-out infinite;
-  }
-
-  @keyframes fogDrift1 {
-    0%, 100% { background-position: 0% 0%; opacity: 0.5; }
-    50% { background-position: 100% 80%; opacity: 0.8; }
-  }
-
-  @keyframes fogDrift2 {
-    0%, 100% { background-position: 100% 100%; opacity: 0.4; }
-    50% { background-position: 0% 20%; opacity: 0.7; }
-  }
-
-  @keyframes fogDrift3 {
-    0%, 100% { background-position: 50% 0%; opacity: 0.6; }
-    33% { background-position: 0% 100%; opacity: 0.3; }
-    66% { background-position: 100% 50%; opacity: 0.8; }
-  }
+  /* Wisp animations are created via Web Animations API in onMount
+     (CSS var() in @keyframes is not supported in Chrome) */
 
   /* =========================================================
      Node positioning wrapper
@@ -641,9 +659,6 @@
     }
     .fog-wisp {
       animation: none;
-    }
-    .fog-overlay {
-      transition: none;
     }
   }
 </style>
