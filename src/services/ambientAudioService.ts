@@ -17,6 +17,8 @@
  * - Music coexistence mode (30% of recipe target volumes)
  * - Boss overlay: additive layers on top of current recipe
  * - Buffer cache keyed by file path
+ * - Pending context replay: setContext() calls before init() are buffered and
+ *   replayed automatically once the AudioContext is created on the first user gesture
  *
  * Usage:
  *   import { ambientAudio } from '../services/ambientAudioService'
@@ -28,7 +30,7 @@
 
 /** A single layer in an ambient recipe */
 interface AmbientLayer {
-  /** Path to the .ogg loop file under /assets/audio/sfx/ */
+  /** Path to the .m4a loop file under /assets/audio/sfx/ */
   file: string
   /** Target volume 0.0–1.0 */
   volume: number
@@ -78,108 +80,108 @@ const MUSIC_COEXISTENCE_RATIO = 0.3
 const RECIPES: Record<AmbientContext, AmbientRecipe> = {
   hub: {
     layers: [
-      { file: '/assets/audio/sfx/loops/hub_campfire_ambience.ogg', volume: 0.7 },
-      { file: '/assets/audio/sfx/loops/water_drip_close.ogg', volume: 0.12 },
-      { file: '/assets/audio/sfx/loops/stone_room_resonance.ogg', volume: 0.2 },
-      { file: '/assets/audio/sfx/loops/camp_cloth_rustle.ogg', volume: 0.08 },
-      { file: '/assets/audio/sfx/loops/distant_creature_stir.ogg', volume: 0.06 },
+      { file: '/assets/audio/sfx/loops/hub_campfire_ambience.m4a', volume: 0.7 },
+      { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.12 },
+      { file: '/assets/audio/sfx/loops/stone_room_resonance.m4a', volume: 0.2 },
+      { file: '/assets/audio/sfx/loops/camp_cloth_rustle.m4a', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/distant_creature_stir.m4a', volume: 0.06 },
     ],
   },
   dungeon_map: {
     layers: [
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.4 },
-      { file: '/assets/audio/sfx/loops/water_drip_close.ogg', volume: 0.1 },
-      { file: '/assets/audio/sfx/loops/stone_creak_settle.ogg', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.4 },
+      { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.08 },
     ],
   },
   shop: {
     layers: [
-      { file: '/assets/audio/sfx/loops/fire_torch_crackle.ogg', volume: 0.5 },
-      { file: '/assets/audio/sfx/loops/chain_rattle_distant.ogg', volume: 0.15 },
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/fire_torch_crackle.m4a', volume: 0.5 },
+      { file: '/assets/audio/sfx/loops/chain_rattle_distant.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.08 },
     ],
   },
   rest: {
     layers: [
-      { file: '/assets/audio/sfx/loops/hub_campfire_ambience.ogg', volume: 0.6 },
-      { file: '/assets/audio/sfx/loops/water_drip_close.ogg', volume: 0.15 },
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.1 },
-      { file: '/assets/audio/sfx/loops/stone_creak_settle.ogg', volume: 0.05 },
+      { file: '/assets/audio/sfx/loops/hub_campfire_ambience.m4a', volume: 0.6 },
+      { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.05 },
     ],
   },
   mystery: {
     layers: [
-      { file: '/assets/audio/sfx/loops/arcane_whisper.ogg', volume: 0.5 },
-      { file: '/assets/audio/sfx/loops/void_drone.ogg', volume: 0.25 },
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/arcane_whisper.m4a', volume: 0.5 },
+      { file: '/assets/audio/sfx/loops/void_drone.m4a', volume: 0.25 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.08 },
     ],
   },
   combat_dust: {
     layers: [
-      { file: '/assets/audio/sfx/loops/water_drip_close.ogg', volume: 0.35 },
-      { file: '/assets/audio/sfx/loops/stone_creak_settle.ogg', volume: 0.2 },
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.1 },
-      { file: '/assets/audio/sfx/loops/fire_torch_crackle.ogg', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.35 },
+      { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.2 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/fire_torch_crackle.m4a', volume: 0.08 },
     ],
   },
   combat_embers: {
     layers: [
-      { file: '/assets/audio/sfx/loops/fire_ember_pit.ogg', volume: 0.45 },
-      { file: '/assets/audio/sfx/loops/lava_bubble.ogg', volume: 0.3 },
-      { file: '/assets/audio/sfx/loops/steam_vent_hiss.ogg', volume: 0.15 },
-      { file: '/assets/audio/sfx/loops/stone_creak_settle.ogg', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/fire_ember_pit.m4a', volume: 0.45 },
+      { file: '/assets/audio/sfx/loops/lava_bubble.m4a', volume: 0.3 },
+      { file: '/assets/audio/sfx/loops/steam_vent_hiss.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.08 },
     ],
   },
   combat_ice: {
     layers: [
-      { file: '/assets/audio/sfx/loops/ice_creak.ogg', volume: 0.4 },
-      { file: '/assets/audio/sfx/loops/wind_howl_deep.ogg', volume: 0.3 },
-      { file: '/assets/audio/sfx/loops/water_drip_close.ogg', volume: 0.1 },
-      { file: '/assets/audio/sfx/loops/crystal_hum.ogg', volume: 0.05 },
+      { file: '/assets/audio/sfx/loops/ice_creak.m4a', volume: 0.4 },
+      { file: '/assets/audio/sfx/loops/wind_howl_deep.m4a', volume: 0.3 },
+      { file: '/assets/audio/sfx/loops/water_drip_close.m4a', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/crystal_hum.m4a', volume: 0.05 },
     ],
   },
   combat_arcane: {
     layers: [
-      { file: '/assets/audio/sfx/loops/arcane_whisper.ogg', volume: 0.4 },
-      { file: '/assets/audio/sfx/loops/crystal_hum.ogg', volume: 0.25 },
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.1 },
-      { file: '/assets/audio/sfx/loops/stone_creak_settle.ogg', volume: 0.08 },
+      { file: '/assets/audio/sfx/loops/arcane_whisper.m4a', volume: 0.4 },
+      { file: '/assets/audio/sfx/loops/crystal_hum.m4a', volume: 0.25 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.08 },
     ],
   },
   combat_void: {
     layers: [
-      { file: '/assets/audio/sfx/loops/void_drone.ogg', volume: 0.5 },
-      { file: '/assets/audio/sfx/loops/wind_howl_deep.ogg', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/void_drone.m4a', volume: 0.5 },
+      { file: '/assets/audio/sfx/loops/wind_howl_deep.m4a', volume: 0.15 },
     ],
   },
   boss_arena: {
     layers: [
-      { file: '/assets/audio/sfx/loops/combat_tension_underbed.ogg', volume: 0.5 },
-      { file: '/assets/audio/sfx/loops/boss_arena_ambient.ogg', volume: 0.4 },
+      { file: '/assets/audio/sfx/loops/combat_tension_underbed.m4a', volume: 0.5 },
+      { file: '/assets/audio/sfx/loops/boss_arena_ambient.m4a', volume: 0.4 },
     ],
   },
   mastery_challenge: {
     layers: [
-      { file: '/assets/audio/sfx/loops/arcane_whisper.ogg', volume: 0.4 },
-      { file: '/assets/audio/sfx/loops/crystal_hum.ogg', volume: 0.3 },
+      { file: '/assets/audio/sfx/loops/arcane_whisper.m4a', volume: 0.4 },
+      { file: '/assets/audio/sfx/loops/crystal_hum.m4a', volume: 0.3 },
     ],
   },
   run_end_victory: {
     layers: [
-      { file: '/assets/audio/sfx/loops/hub_campfire_ambience.ogg', volume: 0.4 },
+      { file: '/assets/audio/sfx/loops/hub_campfire_ambience.m4a', volume: 0.4 },
     ],
   },
   run_end_defeat: {
     layers: [
-      { file: '/assets/audio/sfx/loops/void_drone.ogg', volume: 0.3 },
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/void_drone.m4a', volume: 0.3 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.15 },
     ],
   },
   retreat_delve: {
     layers: [
-      { file: '/assets/audio/sfx/loops/wind_passage.ogg', volume: 0.35 },
-      { file: '/assets/audio/sfx/loops/stone_creak_settle.ogg', volume: 0.15 },
-      { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.ogg', volume: 0.1 },
+      { file: '/assets/audio/sfx/loops/wind_passage.m4a', volume: 0.35 },
+      { file: '/assets/audio/sfx/loops/stone_creak_settle.m4a', volume: 0.15 },
+      { file: '/assets/audio/sfx/loops/dungeon_drip_ambient.m4a', volume: 0.1 },
     ],
   },
   silent: { layers: [] },
@@ -187,7 +189,7 @@ const RECIPES: Record<AmbientContext, AmbientRecipe> = {
 
 // Boss overlay layers added on top of the current recipe without stopping it
 const BOSS_OVERLAY_LAYERS: AmbientLayer[] = [
-  { file: '/assets/audio/sfx/loops/combat_tension_underbed.ogg', volume: 0.3 },
+  { file: '/assets/audio/sfx/loops/combat_tension_underbed.m4a', volume: 0.3 },
 ]
 
 // ─── Pure helpers ────────────────────────────────────────────────────────────
@@ -218,6 +220,11 @@ class AmbientAudioService {
   private bufferCache = new Map<string, AudioBuffer>()
 
   private currentContext: AmbientContext = 'silent'
+  /**
+   * Last context requested via setContext(). Stored here when called before
+   * init() so that init() can replay it once the AudioContext is available.
+   */
+  private pendingContext: AmbientContext = 'silent'
   private musicCoexistence = false
   private ducking = false
 
@@ -227,6 +234,9 @@ class AmbientAudioService {
    * Create AudioContext and master gain node lazily.
    * Must be called within a user gesture handler (browser autoplay policy).
    * Safe to call multiple times — subsequent calls are no-ops.
+   *
+   * If setContext() was called before init() (e.g. from a Svelte $effect on
+   * mount before the first user gesture), the pending context is replayed now.
    */
   init(): void {
     if (this.ctx) return
@@ -234,6 +244,13 @@ class AmbientAudioService {
     this.masterGain = this.ctx.createGain()
     this.masterGain.gain.value = 1
     this.masterGain.connect(this.ctx.destination)
+
+    // Replay any context that was requested before the AudioContext existed.
+    // Reset currentContext to 'silent' first so setContext() doesn't short-circuit.
+    if (this.pendingContext !== 'silent' && this.pendingContext !== this.currentContext) {
+      this.currentContext = 'silent'
+      void this.setContext(this.pendingContext)
+    }
   }
 
   /**
@@ -248,10 +265,19 @@ class AmbientAudioService {
 
   /**
    * Switch to a new ambient context with an 800 ms crossfade.
-   * No-op if the requested context is already active.
+   *
+   * Always records the requested context as pending so init() can replay it
+   * if called before the AudioContext has been created.
+   *
+   * No-op (beyond storing pending) if the requested context is already active,
+   * or if the AudioContext has not been initialised yet.
    */
   async setContext(context: AmbientContext): Promise<void> {
+    // Always store as pending so init() can pick it up after the first gesture.
+    this.pendingContext = context
     if (context === this.currentContext) return
+    // AudioContext not yet created — bail, init() will replay pendingContext.
+    if (!this.ctx) return
     this.currentContext = context
     const recipe = RECIPES[context]
     await this.crossfadeTo(recipe)
@@ -320,6 +346,7 @@ class AmbientAudioService {
     this.activeLayers = []
     this.bossOverlayLayers = []
     this.currentContext = 'silent'
+    this.pendingContext = 'silent'
   }
 
   // ─── Private — buffer loading ──────────────────────────────────────────────

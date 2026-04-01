@@ -21,8 +21,8 @@ These services form the audio and game-feel layer. They work together: `juiceMan
 | **File** | src/services/ambientAudioService.ts |
 | **Purpose** | Layer multiple simultaneous ambient loops per screen/room context; crossfade between contexts on transitions |
 | **Key exports** | `ambientAudio` (singleton), `AmbientContext` (type) |
-| **Key dependencies** | Web Audio API, `fetch` (for .ogg loop loading) |
-| **Loop files** | `public/assets/audio/sfx/loops/*.ogg` |
+| **Key dependencies** | Web Audio API, `fetch` (for .m4a loop loading) |
+| **Loop files** | `public/assets/audio/sfx/loops/*.m4a` |
 
 ### Audio Graph
 
@@ -77,20 +77,33 @@ Volume math lives in the pure function `effectiveVolume(targetVolume, musicCoexi
 
 ### Boss Overlay
 
-`addBossOverlay()` starts additional tension layers on top of the current recipe without crossfading away the existing ones. `removeBossOverlay()` fades them out over 800 ms. The overlay layers are defined in `BOSS_OVERLAY_LAYERS` (currently: `combat_tension_underbed.ogg` at 0.3).
+`addBossOverlay()` starts additional tension layers on top of the current recipe without crossfading away the existing ones. `removeBossOverlay()` fades them out over 800 ms. The overlay layers are defined in `BOSS_OVERLAY_LAYERS` (currently: `combat_tension_underbed.m4a` at 0.3).
+
+### Pre-init Pending Context
+
+`setContext()` can be called before `init()` — for example from Svelte `$effect` hooks that run on component mount before the user has interacted with the page (browser autoplay policy blocks `AudioContext` creation until a user gesture).
+
+The service handles this via a `pendingContext` field:
+
+- `setContext()` always writes its argument to `pendingContext` before any early-return check.
+- If `this.ctx` is null (not yet initialised), the method returns without starting playback.
+- When `init()` creates the `AudioContext` on the first user gesture, it checks whether `pendingContext` differs from `currentContext` and, if so, calls `setContext(pendingContext)` to replay the missed transition.
+- `stop()` resets `pendingContext` to `'silent'` along with `currentContext`.
+
+This means components can call `void ambientAudio.setContext('hub')` unconditionally in their mount effects — the audio will start correctly as soon as the user clicks anywhere.
 
 ### Public API
 
 ```ts
-ambientAudio.init()                            // lazy AudioContext creation; call from first user gesture
+ambientAudio.init()                            // lazy AudioContext creation; replays pendingContext if set
 ambientAudio.unlock()                          // resume suspended context on subsequent gestures
-await ambientAudio.setContext('combat_dust')   // switch context with crossfade; no-op if same context
+await ambientAudio.setContext('combat_dust')   // switch context with crossfade; stores pending if ctx not ready
 ambientAudio.duck()                            // quiz overlay — reduce to 50%
 ambientAudio.unduck()                          // restore from duck
 ambientAudio.setMusicCoexistence(true)         // BGM active — reduce to 30%
 ambientAudio.addBossOverlay()                  // add boss tension layers on top
 ambientAudio.removeBossOverlay()               // fade out boss layers
-ambientAudio.stop()                            // hard stop all layers, reset to silent
+ambientAudio.stop()                            // hard stop all layers, reset to silent + pending
 ```
 
 ### Buffer Cache
@@ -101,7 +114,7 @@ Decoded `AudioBuffer` objects are cached by file path string. Failed fetches are
 
 | Caller | Call site | What happens |
 |--------|-----------|--------------|
-| `src/CardApp.svelte` — `handleUserInteraction()` | After `unlockCardAudio()` on the very first user gesture | `ambientAudio.init()` creates the AudioContext; `ambientAudio.unlock()` resumes it if suspended |
+| `src/CardApp.svelte` — `handleUserInteraction()` | After `unlockCardAudio()` on the very first user gesture | `ambientAudio.init()` creates the AudioContext and replays any pending context; `ambientAudio.unlock()` resumes it if suspended |
 | `src/services/gameFlowController.ts` — `setCombatAmbient()` | Helper called at every combat start point | Sets the correct `combat_<theme>` context based on floor number; sets `boss_arena` + calls `addBossOverlay()` on boss floors |
 | `src/services/gameFlowController.ts` — `onEncounterComplete()` | At the start of every encounter-complete handler | `removeBossOverlay()` fades out boss tension layers; safe to call when no overlay is active |
 | `src/services/musicService.ts` — `playTrack()` | After `newSource.start()` when a BGM track begins playing | `setMusicCoexistence(true)` ducks ambient to 30% |
@@ -121,15 +134,15 @@ The `setCombatAmbient` helper in `gameFlowController.ts` is called at four comba
 | | |
 |---|---|
 | **File** | src/services/audioService.ts |
-| **Purpose** | Web Audio API playback — 229 .ogg files preferred, procedural synthesis fallback for every sound |
+| **Purpose** | Web Audio API playback — 229 .m4a files preferred, procedural synthesis fallback for every sound |
 | **Key exports** | `audioManager` (singleton with `unlock`, `playSound`, `setVolume`, `preloadSounds`), `SoundName` (type) |
-| **Key dependencies** | Web Audio API, `fetch` (for .ogg file loading) |
+| **Key dependencies** | Web Audio API, `fetch` (for .m4a file loading) |
 
 ### Playback Architecture — File-First with Synthesis Fallback
 
 `audioService` uses a two-tier strategy:
 
-1. **File-based (preferred):** 229 `.ogg` files live under `public/assets/audio/sfx/` organised by folder (combat, status, quiz, turn, surge, relic, encounter, map, hub, shop, rest, reward, mystery, run, ui, reveal, mastery, keeper, transition, tutorial, progression, legacy). Decoded `AudioBuffer` objects are cached in memory after first load.
+1. **File-based (preferred):** 229 `.m4a` files live under `public/assets/audio/sfx/` organised by folder (combat, status, quiz, turn, surge, relic, encounter, map, hub, shop, rest, reward, mystery, run, ui, reveal, mastery, keeper, transition, tutorial, progression, legacy). Decoded `AudioBuffer` objects are cached in memory after first load.
 2. **Synthesis fallback (always present):** Every `SoundName` has a corresponding synthesis function in `SOUND_MAP`. Used on the first play of any sound before its file is loaded, or if the file fetch fails.
 
 ### Request Lifecycle
@@ -142,7 +155,7 @@ playSound('quiz_correct')
       └─ play synthesis immediately (zero latency)
 
 loadSfxBuffer (async, background)
-  ├─ fetch('/assets/audio/sfx/quiz/quiz_correct.ogg')
+  ├─ fetch('/assets/audio/sfx/quiz/quiz_correct.m4a')
   ├─ ctx.decodeAudioData(arrayBuffer)
   └─ bufferCache.set(name, audioBuffer)    // next call uses file
          on error → bufferCache.set(name, null)  // no retry
@@ -152,7 +165,7 @@ loadSfxBuffer (async, background)
 
 | Symbol | Kind | Description |
 |--------|------|-------------|
-| `SFX_FILE_MAP` | `Partial<Record<SoundName, string>>` | Maps all 229 SoundNames to their .ogg paths |
+| `SFX_FILE_MAP` | `Partial<Record<SoundName, string>>` | Maps all 229 SoundNames to their .m4a paths |
 | `sfxPath(name)` | function | Auto-derives path from name prefix; has explicit overrides for edge-cases |
 | `bufferCache` | `Map<SoundName, AudioBuffer \| null>` | Decoded buffer cache; `null` = fetch failed, don't retry |
 | `loadingSet` | `Set<SoundName>` | Guards against duplicate in-flight requests |
@@ -162,18 +175,18 @@ loadSfxBuffer (async, background)
 ### Path Mapping Rules
 
 Most paths are auto-generated by `sfxPath()` using the convention:
-`/assets/audio/sfx/{first_segment_before_underscore}/{name}.ogg`
+`/assets/audio/sfx/{first_segment_before_underscore}/{name}.m4a`
 
 Explicit overrides (where the file path doesn't match the prefix rule):
 
 | SoundName | File path |
 |-----------|-----------|
-| `surge_active` | `surge/surge_active_loop.ogg` |
-| `button_click` | `ui/button_click.ogg` |
-| `modal_open/close`, `toggle_on/off`, `tab_switch`, `notification_ping`, `error_deny`, `ui_pop_in` | `ui/{name}.ogg` |
-| `collect`, `item_pickup`, `gaia_quip`, `lava_sizzle`, `gas_pocket` | `legacy/{name}.ogg` |
-| `mine_dirt`, `mine_rock`, `mine_crystal`, `mine_break` | `legacy/{name}.ogg` |
-| `oxygen_warning`, `oxygen_low`, `oxygen_critical` | `legacy/{name}.ogg` |
+| `surge_active` | `surge/surge_active_loop.m4a` |
+| `button_click` | `ui/button_click.m4a` |
+| `modal_open/close`, `toggle_on/off`, `tab_switch`, `notification_ping`, `error_deny`, `ui_pop_in` | `ui/{name}.m4a` |
+| `collect`, `item_pickup`, `gaia_quip`, `lava_sizzle`, `gas_pocket` | `legacy/{name}.m4a` |
+| `mine_dirt`, `mine_rock`, `mine_crystal`, `mine_break` | `legacy/{name}.m4a` |
+| `oxygen_warning`, `oxygen_low`, `oxygen_critical` | `legacy/{name}.m4a` |
 
 ### Public API
 
@@ -188,7 +201,7 @@ audioManager.isMuted(): boolean
 
 ### First-Gesture Preload (CardApp.svelte)
 
-`handleUserInteraction()` in `src/CardApp.svelte` is called on the first user touch/click (the browser AudioContext unlock gate). After calling `unlockCardAudio()`, it fire-and-forgets `audioManager.preloadSounds()` with the ~30 highest-priority sounds so their `.ogg` files are decoded before the first combat encounter begins:
+`handleUserInteraction()` in `src/CardApp.svelte` is called on the first user touch/click (the browser AudioContext unlock gate). After calling `unlockCardAudio()`, it fire-and-forgets `audioManager.preloadSounds()` with the ~30 highest-priority sounds so their `.m4a` files are decoded before the first combat encounter begins:
 
 | Category | Sounds |
 |----------|--------|
@@ -275,5 +288,6 @@ AudioBufferSourceNode → per-source GainNode → masterGain → AnalyserNode(ff
 ### Pattern Notes
 
 - `setContext()` is async (returns `Promise<void>`) but all callers use `void` because the crossfade completes in the background — components do not need to await it.
+- `setContext()` called before the first user gesture safely stores the request as `pendingContext` — no errors, audio starts at `init()` time.
 - `duck()`/`unduck()` are synchronous volume ramp calls, no `void` needed.
 - The duck signal uses `isQuizPanelVisible` (not the broader `cardPlayStage === 'committed'`) so Quick Play animations — which set `committed` briefly without showing a quiz — do not trigger ducking.

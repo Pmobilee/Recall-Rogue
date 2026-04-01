@@ -237,49 +237,49 @@ export type SoundName =
 // ---------------------------------------------------------------------------
 
 /**
- * Helper to compute the .ogg file path for a given SoundName.
- * Most sounds follow the pattern /assets/audio/sfx/{prefix}/{name}.ogg where
+ * Helper to compute the .m4a file path for a given SoundName.
+ * Most sounds follow the pattern /assets/audio/sfx/{prefix}/{name}.m4a where
  * {prefix} is the text before the first underscore.  Special cases are
  * overridden explicitly.
  */
 function sfxPath(name: SoundName): string {
   // Explicit overrides for names whose file path doesn't match the prefix rule
   const OVERRIDES: Partial<Record<SoundName, string>> = {
-    // surge_active maps to surge_active_loop.ogg
-    surge_active: '/assets/audio/sfx/surge/surge_active_loop.ogg',
+    // surge_active maps to surge_active_loop.m4a
+    surge_active: '/assets/audio/sfx/surge/surge_active_loop.m4a',
     // ui/* names — button_click has no underscore prefix folder
-    button_click: '/assets/audio/sfx/ui/button_click.ogg',
-    modal_open: '/assets/audio/sfx/ui/modal_open.ogg',
-    modal_close: '/assets/audio/sfx/ui/modal_close.ogg',
-    toggle_on: '/assets/audio/sfx/ui/toggle_on.ogg',
-    toggle_off: '/assets/audio/sfx/ui/toggle_off.ogg',
-    tab_switch: '/assets/audio/sfx/ui/tab_switch.ogg',
-    notification_ping: '/assets/audio/sfx/ui/notification_ping.ogg',
-    error_deny: '/assets/audio/sfx/ui/error_deny.ogg',
-    ui_pop_in: '/assets/audio/sfx/ui/ui_pop_in.ogg',
+    button_click: '/assets/audio/sfx/ui/button_click.m4a',
+    modal_open: '/assets/audio/sfx/ui/modal_open.m4a',
+    modal_close: '/assets/audio/sfx/ui/modal_close.m4a',
+    toggle_on: '/assets/audio/sfx/ui/toggle_on.m4a',
+    toggle_off: '/assets/audio/sfx/ui/toggle_off.m4a',
+    tab_switch: '/assets/audio/sfx/ui/tab_switch.m4a',
+    notification_ping: '/assets/audio/sfx/ui/notification_ping.m4a',
+    error_deny: '/assets/audio/sfx/ui/error_deny.m4a',
+    ui_pop_in: '/assets/audio/sfx/ui/ui_pop_in.m4a',
     // legacy/* names — all mine_*, oxygen_*, and single-segment legacy names
-    collect: '/assets/audio/sfx/legacy/collect.ogg',
-    item_pickup: '/assets/audio/sfx/legacy/item_pickup.ogg',
-    gaia_quip: '/assets/audio/sfx/legacy/gaia_quip.ogg',
-    lava_sizzle: '/assets/audio/sfx/legacy/lava_sizzle.ogg',
-    gas_pocket: '/assets/audio/sfx/legacy/gas_pocket.ogg',
-    mine_dirt: '/assets/audio/sfx/legacy/mine_dirt.ogg',
-    mine_rock: '/assets/audio/sfx/legacy/mine_rock.ogg',
-    mine_crystal: '/assets/audio/sfx/legacy/mine_crystal.ogg',
-    mine_break: '/assets/audio/sfx/legacy/mine_break.ogg',
-    oxygen_warning: '/assets/audio/sfx/legacy/oxygen_warning.ogg',
-    oxygen_low: '/assets/audio/sfx/legacy/oxygen_low.ogg',
-    oxygen_critical: '/assets/audio/sfx/legacy/oxygen_critical.ogg',
+    collect: '/assets/audio/sfx/legacy/collect.m4a',
+    item_pickup: '/assets/audio/sfx/legacy/item_pickup.m4a',
+    gaia_quip: '/assets/audio/sfx/legacy/gaia_quip.m4a',
+    lava_sizzle: '/assets/audio/sfx/legacy/lava_sizzle.m4a',
+    gas_pocket: '/assets/audio/sfx/legacy/gas_pocket.m4a',
+    mine_dirt: '/assets/audio/sfx/legacy/mine_dirt.m4a',
+    mine_rock: '/assets/audio/sfx/legacy/mine_rock.m4a',
+    mine_crystal: '/assets/audio/sfx/legacy/mine_crystal.m4a',
+    mine_break: '/assets/audio/sfx/legacy/mine_break.m4a',
+    oxygen_warning: '/assets/audio/sfx/legacy/oxygen_warning.m4a',
+    oxygen_low: '/assets/audio/sfx/legacy/oxygen_low.m4a',
+    oxygen_critical: '/assets/audio/sfx/legacy/oxygen_critical.m4a',
   }
   if (name in OVERRIDES) return OVERRIDES[name]!
 
   // Auto-derive folder from first underscore segment
   const folder = name.split('_')[0]
-  return `/assets/audio/sfx/${folder}/${name}.ogg`
+  return `/assets/audio/sfx/${folder}/${name}.m4a`
 }
 
 /**
- * Maps every SoundName that has a corresponding .ogg file to its path.
+ * Maps every SoundName that has a corresponding .m4a file to its path.
  * Generated once at module load — cheap string operations only.
  *
  * Design: file playback takes priority over synthesis when the buffer is
@@ -3059,7 +3059,7 @@ class AudioManager {
   }
 
   /**
-   * Lazily fetches and decodes an .ogg file for the given sound name.
+   * Lazily fetches and decodes an .m4a file for the given sound name.
    * Caches the result (including null on failure) so each file is decoded
    * at most once per session.  Returns null if no file mapping exists or
    * on any network/decode error.
@@ -3107,7 +3107,7 @@ class AudioManager {
   }
 
   /**
-   * Plays a named sound.  Prefers the decoded .ogg file buffer when cached;
+   * Plays a named sound.  Prefers the decoded .m4a file buffer when cached;
    * otherwise falls back to Web Audio API synthesis immediately and fires a
    * background fetch so the next call uses the file instead.
    *
@@ -3129,7 +3129,7 @@ class AudioManager {
       return
     }
 
-    // Fast path: use cached AudioBuffer from .ogg file.
+    // Fast path: use cached AudioBuffer from .m4a file.
     const cached = this.bufferCache.get(name)
     if (cached) {
       const source = ctx.createBufferSource()
