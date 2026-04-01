@@ -47,6 +47,17 @@
   /** Base vertical spacing between rows (unscaled px). */
   const ROW_SPACING_BASE = 90
 
+  /**
+   * Fog base colors per segment — solid fill that fills the fog overlay.
+   * Chosen to match each segment's ambient palette.
+   */
+  const SEGMENT_FOG: Record<1 | 2 | 3 | 4, string> = {
+    1: '#1a150e',  // warm brown — Shallow Depths
+    2: '#0a0e14',  // cool blue-grey — Deep Caverns
+    3: '#0a0c16',  // icy blue-purple — The Abyss
+    4: '#0c0812',  // arcane purple — The Archive
+  }
+
   // =========================================================
   // Reactive state
   // =========================================================
@@ -97,6 +108,53 @@
   let canvasHeight = $derived(map.rows.length * rowSpacing + 2 * ROW_SPACING_BASE * layoutScale)
 
   // =========================================================
+  // Fog of war — mask-based visibility window
+  // =========================================================
+
+  /**
+   * Y center of the visibility window in px from the top of map-canvas.
+   * Maps are rendered bottom-up (row 0 is at the bottom), so we invert.
+   */
+  let fogWindowCenterY = $derived(
+    canvasHeight - (currentRow * rowSpacing + rowSpacing / 2)
+  )
+
+  /**
+   * CSS mask-image inline style for the fog overlay div.
+   *
+   * In CSS masks: black = fully opaque (fog shows), transparent = hidden (fog invisible, map shows through).
+   * The clear window is `transparent` so the map is visible there.
+   * Above the window: fully fogged (future rooms hidden).
+   * Below the window: light fog (visited path dimly visible).
+   * All stops clamped to [0,100] to avoid non-monotonic gradient issues at map edges.
+   */
+  let fogMaskStyle = $derived.by(() => {
+    const windowTop = fogWindowCenterY - rowSpacing * 2
+    const windowBottom = fogWindowCenterY + rowSpacing * 2
+    const clamp = (v: number) => Math.max(0, Math.min(100, v))
+    const topPct = clamp((windowTop / canvasHeight) * 100)
+    const bottomPct = clamp((windowBottom / canvasHeight) * 100)
+    // Soft edges around the clear window — all monotonically increasing
+    const fadeInStart = clamp(topPct - 8)
+    const fadeInMid = clamp(topPct - 4)
+    const fadeOutMid = clamp(bottomPct + 4)
+    const fadeOutEnd = clamp(bottomPct + 8)
+
+    const gradient = `linear-gradient(to bottom,
+      black 0%,
+      black ${fadeInStart}%,
+      rgba(0,0,0,0.6) ${fadeInMid}%,
+      transparent ${topPct}%,
+      transparent ${bottomPct}%,
+      rgba(0,0,0,0.4) ${fadeOutMid}%,
+      rgba(0,0,0,0.5) ${fadeOutEnd}%,
+      rgba(0,0,0,0.5) 100%
+    )`
+
+    return `-webkit-mask-image: ${gradient}; mask-image: ${gradient};`
+  })
+
+  // =========================================================
   // Edge data derivation
   // =========================================================
 
@@ -106,7 +164,6 @@
     x2: number
     y2: number
     state: 'traveled' | 'available' | 'locked'
-    fogOpacity: number
     sourceRow: number
   }
 
@@ -126,11 +183,7 @@
         let edgeState: 'traveled' | 'available' | 'locked' = 'locked'
         if (nodeVisited && childVisited) edgeState = 'traveled'
         else if (nodeVisited && childAvailable) edgeState = 'available'
-        const nodeDist = Math.abs(node.row - currentRow)
-        const childDist = Math.abs(child.row - currentRow)
-        const maxDist = Math.max(nodeDist, childDist)
-        const fogOpacity = maxDist <= 1 ? 1 : maxDist <= 3 ? 0.7 : 0.4
-        result.push({ x1: nx, y1: ny, x2: cx, y2: cy, state: edgeState, fogOpacity, sourceRow: node.row })
+        result.push({ x1: nx, y1: ny, x2: cx, y2: cy, state: edgeState, sourceRow: node.row })
       }
     }
     return result
@@ -249,14 +302,12 @@
             <path
               class="edge-path edge-traveled-glow edge-enter"
               d={edgePath(edge.x1, edge.y1, edge.x2, edge.y2)}
-              opacity={edge.fogOpacity}
               style="animation-delay: {edge.sourceRow * 60 + 30}ms;"
             />
           {/if}
           <path
             class="edge-path edge-{edge.state} edge-enter"
             d={edgePath(edge.x1, edge.y1, edge.x2, edge.y2)}
-            opacity={edge.fogOpacity}
             style="animation-delay: {edge.sourceRow * 60 + 30}ms;"
           />
         {/each}
@@ -266,12 +317,9 @@
       {#each Object.values(map.nodes) as node (node.id)}
         {@const nx = node.x * containerWidth}
         {@const ny = canvasHeight - (node.row * rowSpacing + rowSpacing / 2)}
-        {@const rowDist = Math.abs(node.row - currentRow)}
-        {@const fogOpacity = rowDist <= 1 ? 1 : rowDist <= 3 ? 0.7 : 0.45}
-        {@const fogBlur = rowDist <= 1 ? 0 : rowDist <= 3 ? 0.5 : 1}
         <div
           class="node-position node-entrance"
-          style="left: {nx}px; top: {ny}px; opacity: {fogOpacity}; filter: blur({fogBlur}px); animation-delay: {node.row * 60}ms;"
+          style="left: {nx}px; top: {ny}px; animation-delay: {node.row * 60}ms;"
         >
           <MapNodeComponent
             {node}
@@ -279,6 +327,20 @@
           />
         </div>
       {/each}
+
+      <!-- Fog of war overlay — ABOVE nodes so CSS mask actually hides far-away nodes.
+           pointer-events: none ensures clicks pass through to available nodes below.
+           The mask window around the current floor keeps current/next-row nodes visible. -->
+      <div
+        class="fog-overlay"
+        style="height: {canvasHeight}px; {fogMaskStyle}"
+        aria-hidden="true"
+      >
+        <div class="fog-base" style="background: {SEGMENT_FOG[map.segment]};"></div>
+        <div class="fog-wisp fog-wisp-1"></div>
+        <div class="fog-wisp fog-wisp-2"></div>
+        <div class="fog-wisp fog-wisp-3"></div>
+      </div>
 
       <!-- Floor depth markers — subtle row labels -->
       {#each rowMarkers as marker}
@@ -310,7 +372,7 @@
     inset: 0;
     background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
     pointer-events: none;
-    z-index: 3;
+    z-index: 4;
   }
 
   /* =========================================================
@@ -433,7 +495,70 @@
   }
 
   /* =========================================================
+     Fog of war overlay
+     Sits at z-index 3, above nodes (z-index 2) and edges (z-index 1).
+     Uses CSS mask-image to punch a clear window around the current floor
+     while covering everything else with animated fog.
+     pointer-events: none ensures clicks pass through to available nodes.
+     ========================================================= */
+  .fog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+    transition: mask-image 0.6s ease-in-out, -webkit-mask-image 0.6s ease-in-out;
+  }
+
+  .fog-base {
+    position: absolute;
+    inset: 0;
+    opacity: 0.95;
+  }
+
+  .fog-wisp {
+    position: absolute;
+    inset: 0;
+    background-size: 200% 200%;
+  }
+
+  .fog-wisp-1 {
+    background: radial-gradient(ellipse 80% 40% at 30% 40%, rgba(255,255,255,0.07) 0%, transparent 60%);
+    animation: fogDrift1 25s ease-in-out infinite;
+  }
+
+  .fog-wisp-2 {
+    background: radial-gradient(ellipse 60% 50% at 70% 60%, rgba(255,255,255,0.05) 0%, transparent 55%);
+    animation: fogDrift2 35s ease-in-out infinite reverse;
+  }
+
+  .fog-wisp-3 {
+    background: radial-gradient(ellipse 70% 35% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+    animation: fogDrift3 20s ease-in-out infinite;
+  }
+
+  @keyframes fogDrift1 {
+    0%, 100% { background-position: 0% 0%; opacity: 0.5; }
+    50% { background-position: 100% 80%; opacity: 0.8; }
+  }
+
+  @keyframes fogDrift2 {
+    0%, 100% { background-position: 100% 100%; opacity: 0.4; }
+    50% { background-position: 0% 20%; opacity: 0.7; }
+  }
+
+  @keyframes fogDrift3 {
+    0%, 100% { background-position: 50% 0%; opacity: 0.6; }
+    33% { background-position: 0% 100%; opacity: 0.3; }
+    66% { background-position: 100% 50%; opacity: 0.8; }
+  }
+
+  /* =========================================================
      Node positioning wrapper
+     z-index 2 — below fog overlay (z-index 3), above edges (z-index 1).
+     Nodes in the fog window are revealed by the mask; others are hidden.
      ========================================================= */
   .node-position {
     position: absolute;
@@ -513,6 +638,12 @@
     }
     :global(.edge-enter) {
       animation: none;
+    }
+    .fog-wisp {
+      animation: none;
+    }
+    .fog-overlay {
+      transition: none;
     }
   }
 </style>

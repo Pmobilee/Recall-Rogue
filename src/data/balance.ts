@@ -867,13 +867,19 @@ export const MAP_CONFIG = {
   SHOP_MIN_ROW: 2,
   ELITE_MIN_COUNT: 1,
   ELITE_MAX_COUNT: 2,
+  SHOP_MIN_COUNT: 1,
+  SHOP_MAX_COUNT: 2,
+  MYSTERY_MIN_COUNT: 2,
+  MYSTERY_MAX_COUNT: 4,
+  SHOP_MIN_SPACING: 2,     // minimum rows between two shops
   PRE_BOSS_ROW: 6,         // rest or shop, paths converge
   BOSS_ROW: 7,             // single boss node
+  // StS-aligned weights: fewer combat/treasure, more mystery/shops in later segments
   ROOM_DISTRIBUTION: {
-    1: { combat: 0.42, elite: 0.12, mystery: 0.16, rest: 0.12, treasure: 0.10, shop: 0.08 },
-    2: { combat: 0.38, elite: 0.14, mystery: 0.16, rest: 0.12, treasure: 0.10, shop: 0.10 },
-    3: { combat: 0.34, elite: 0.16, mystery: 0.16, rest: 0.14, treasure: 0.10, shop: 0.10 },
-    4: { combat: 0.30, elite: 0.18, mystery: 0.16, rest: 0.14, treasure: 0.10, shop: 0.12 },
+    1: { combat: 0.45, elite: 0.08, mystery: 0.22, rest: 0.12, treasure: 0.05, shop: 0.08 },
+    2: { combat: 0.42, elite: 0.10, mystery: 0.22, rest: 0.12, treasure: 0.04, shop: 0.10 },
+    3: { combat: 0.40, elite: 0.12, mystery: 0.22, rest: 0.12, treasure: 0.04, shop: 0.10 },
+    4: { combat: 0.38, elite: 0.14, mystery: 0.22, rest: 0.12, treasure: 0.04, shop: 0.10 },
   } as Record<1 | 2 | 3 | 4, Record<string, number>>,
 } as const
 

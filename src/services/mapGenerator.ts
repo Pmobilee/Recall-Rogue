@@ -307,6 +307,11 @@ function assignRoomTypes(
     SHOP_MIN_ROW,
     ELITE_MIN_COUNT,
     ELITE_MAX_COUNT,
+    SHOP_MIN_COUNT,
+    SHOP_MAX_COUNT,
+    MYSTERY_MIN_COUNT,
+    MYSTERY_MAX_COUNT,
+    SHOP_MIN_SPACING,
     PRE_BOSS_ROW,
     BOSS_ROW,
     ROOM_DISTRIBUTION,
@@ -380,38 +385,77 @@ function assignRoomTypes(
     rests.forEach((n, i) => { if (i !== keepIdx) n.type = 'combat' })
   }
 
-  // 2. Ensure exactly 2 shops, spaced apart (at least 2 rows between them)
-  const shopNodesList = regularNodes.filter(n => n.type === 'shop')
-  shopNodesList.forEach(n => { n.type = 'combat' })
-  const shopCandidates = regularNodes.filter(n => n.type === 'combat' && n.row >= SHOP_MIN_ROW)
-  if (shopCandidates.length >= 2) {
-    const first = shopCandidates[Math.floor(rng() * shopCandidates.length)]
-    first.type = 'shop'
-    const secondCandidates = shopCandidates.filter(n => n.type === 'combat' && Math.abs(n.row - first.row) >= 2)
-    if (secondCandidates.length > 0) {
-      secondCandidates[Math.floor(rng() * secondCandidates.length)].type = 'shop'
-    } else {
-      const fallback = shopCandidates.filter(n => n.type === 'combat')
-      if (fallback.length > 0) fallback[Math.floor(rng() * fallback.length)].type = 'shop'
+  // 2. Enforce shop count within [SHOP_MIN_COUNT, SHOP_MAX_COUNT] range, spaced by SHOP_MIN_SPACING.
+  // Let the weighted random result stand when it falls within range — only intervene at the edges.
+  let currentShops = regularNodes.filter(n => n.type === 'shop')
+  // Trim excess shops back to SHOP_MAX_COUNT
+  if (currentShops.length > SHOP_MAX_COUNT) {
+    const shuffled = [...currentShops]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    for (const s of shuffled) {
+      if (currentShops.length <= SHOP_MAX_COUNT) break
+      s.type = 'combat'
+      currentShops = regularNodes.filter(n => n.type === 'shop')
+    }
+  }
+  // Enforce SHOP_MIN_SPACING: if 2+ shops are within SHOP_MIN_SPACING rows, convert one back to combat
+  if (currentShops.length >= 2) {
+    const sortedShops = [...currentShops].sort((a, b) => a.row - b.row)
+    for (let i = 1; i < sortedShops.length; i++) {
+      if (sortedShops[i].row - sortedShops[i - 1].row < SHOP_MIN_SPACING) {
+        sortedShops[i].type = 'combat'
+      }
+    }
+    currentShops = regularNodes.filter(n => n.type === 'shop')
+  }
+  // Ensure at least SHOP_MIN_COUNT shops exist
+  if (currentShops.length < SHOP_MIN_COUNT) {
+    const shopCandidates = regularNodes.filter(n => n.type === 'combat' && n.row >= SHOP_MIN_ROW)
+    const shuffled = [...shopCandidates]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    for (const c of shuffled) {
+      if (currentShops.length >= SHOP_MIN_COUNT) break
+      c.type = 'shop'
+      currentShops = regularNodes.filter(n => n.type === 'shop')
     }
   }
 
-  // 3. Ensure exactly 2 mystery rooms, not in same row as shops
-  const mysteryNodesList = regularNodes.filter(n => n.type === 'mystery')
-  mysteryNodesList.forEach(n => { n.type = 'combat' })
-  const shopRows = new Set(regularNodes.filter(n => n.type === 'shop').map(n => n.row))
-  const mysteryCandidates = regularNodes.filter(n => n.type === 'combat' && !shopRows.has(n.row))
-  if (mysteryCandidates.length >= 2) {
-    const first = mysteryCandidates[Math.floor(rng() * mysteryCandidates.length)]
-    first.type = 'mystery'
-    const secondCandidates = mysteryCandidates.filter(n => n.type === 'combat')
-    if (secondCandidates.length > 0) {
-      secondCandidates[Math.floor(rng() * secondCandidates.length)].type = 'mystery'
+  // 3. Enforce mystery count within [MYSTERY_MIN_COUNT, MYSTERY_MAX_COUNT] range.
+  // Let the weighted random result stand when it falls within range — only intervene at the edges.
+  let currentMystery = regularNodes.filter(n => n.type === 'mystery')
+  // Trim excess mystery rooms back to MYSTERY_MAX_COUNT
+  if (currentMystery.length > MYSTERY_MAX_COUNT) {
+    const shuffled = [...currentMystery]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
-  } else if (mysteryCandidates.length === 1) {
-    mysteryCandidates[0].type = 'mystery'
-    const fallback = regularNodes.filter(n => n.type === 'combat')
-    if (fallback.length > 0) fallback[Math.floor(rng() * fallback.length)].type = 'mystery'
+    for (const m of shuffled) {
+      if (currentMystery.length <= MYSTERY_MAX_COUNT) break
+      m.type = 'combat'
+      currentMystery = regularNodes.filter(n => n.type === 'mystery')
+    }
+  }
+  // Ensure at least MYSTERY_MIN_COUNT mystery rooms exist; avoid rows already occupied by a shop
+  if (currentMystery.length < MYSTERY_MIN_COUNT) {
+    const shopRowsSet = new Set(regularNodes.filter(n => n.type === 'shop').map(n => n.row))
+    const mysteryCandidates = regularNodes.filter(n => n.type === 'combat' && !shopRowsSet.has(n.row))
+    const shuffled = [...mysteryCandidates]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    for (const c of shuffled) {
+      if (currentMystery.length >= MYSTERY_MIN_COUNT) break
+      c.type = 'mystery'
+      currentMystery = regularNodes.filter(n => n.type === 'mystery')
+    }
   }
 
   // Guarantee ELITE_MIN_COUNT–ELITE_MAX_COUNT elites in eligible rows

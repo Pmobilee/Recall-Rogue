@@ -1,7 +1,7 @@
 # Progression & Run Structure
 
 > **Purpose:** Documents the run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/services/runManager.ts`, `src/services/floorManager.ts`, `src/services/mapGenerator.ts`, `src/services/ascension.ts`, `src/data/balance.ts`, `src/services/shopService.ts`
 
 ---
@@ -118,6 +118,22 @@ Row 0 = always combat, `PRE_BOSS_ROW` = always rest, `BOSS_ROW` = always boss. P
 
 ### Map Navigation
 `selectMapNode(map, nodeId)` — locks siblings in the same row, unlocks children. Records each decision in `map.decisionHistory`. `isActMapComplete` returns true when the boss node is visited.
+
+### Fog of War
+
+The dungeon map has a CSS fog overlay that limits what the player can see at a glance:
+
+**Visibility rules:**
+- Current floor row and the next floor row are fully visible
+- Visited rows below the current position show dimly through light fog (50% opacity)
+- All rows above the next floor are fully hidden behind opaque fog
+
+**Implementation:**
+- CSS `mask-image` creates a transparent window around the player's current position
+- Fog overlay is at z-index 3 (above nodes at z-index 2) with `pointer-events: none` so clicks pass through to map nodes
+- 3 animated fog wisp layers create a swirling mist effect
+- Segment-themed fog colors match each act's visual palette
+- Respects `prefers-reduced-motion` — animations are disabled for users who prefer it
 
 ## Enemy Pools
 
