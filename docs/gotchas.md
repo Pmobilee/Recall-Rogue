@@ -311,3 +311,21 @@ LLM playtest BATCH-2026-04-01-001 found all floor 1 enemies dealt only 2 damage/
 **Why:** The `InRunFactTracker` tracks a single `lastFactId` for consecutive-repeat prevention, not a multi-question session-wide exclusion set. The loop assumed seed offsets alone were sufficient for variety — they're not.
 
 **Fix:** Added `excludeFactIds?: ReadonlySet<string>` parameter to `selectNonCombatStudyQuestion`. The function filters the fact pool before passing it to `selectFactForCharge`. Caller (`generateStudyQuestions`) accumulates `excludeFactIds` across iterations and passes it each call. Fallback to full pool if filtering would exhaust the pool entirely (tiny decks).
+
+### 2026-04-01 — Post-reward screen stall in turbo/bot mode: Phaser timer not turbo-aware
+
+**What:** After combat in turbo mode, the reward room Phaser scene completed but `currentScreen` stayed on `'rewardRoom'`, causing `selectMapNode()` to fail silently (guarded by `isProcessingEncounterResult`).
+
+**Why:** `RewardRoomScene.checkAutoAdvance()` uses `this.time.delayedCall(800, ...)` to emit `'sceneComplete'` after all items are collected. Phaser's internal timer is NOT accelerated by `turboDelay()` — it always fires after 800ms of real time. In turbo mode the bot waited only `turboDelay(1000) = 5ms` for this timer. The 800ms timer fired AFTER the bot had already given up and moved on.
+
+**Fix:** In `checkAutoAdvance()`, check `isTurboMode()`. If true, emit `'sceneComplete'` synchronously (no timer). This makes the entire `handleComplete → stopRewardRoom → onComplete → proceedAfterReward → currentScreen.set('dungeonMap')` callback chain resolve synchronously within the same Phaser event dispatch. Also replaced the fixed 100ms post-collect wait in `bot.ts` with a 500ms poll loop on `currentScreen !== 'rewardRoom'`, so the bot correctly detects when the screen advances.
+
+**Rule:** Any Phaser `delayedCall` or `tween` in gameplay-critical code paths MUST check `isTurboMode()` and skip the delay. Turbo mode only accelerates `setTimeout`-based delays via `turboDelay()` — not Phaser's internal timer queue.
+
+### 2026-04-01 — factsDB.rowToFact() did not parse `tags` column — bridge detection silently failed
+
+**What:** The trivia bridge adds `bridge:{deckId}` tags to bridged facts, stored in the `tags` TEXT column of facts.db as JSON. But `rowToFact()` in `factsDB.ts` never read that column — `fact.tags` was always `undefined` at runtime. This meant `getBridgedDistractors()` in `quizService.ts` never detected bridge facts, so pool-based distractor selection never triggered.
+
+**Why:** The `tags` column was added to the DB schema months ago but `rowToFact()` was never updated to parse it. The column existed, the data was written correctly, but the runtime type just didn't include the mapping.
+
+**Fix:** Added `tags: row['tags'] ? JSON.parse(String(row['tags'])) as string[] : undefined` to `rowToFact()`. Rule: when adding a new column to `build-facts-db.mjs`, ALWAYS update `rowToFact()` in `factsDB.ts` to parse it back.
