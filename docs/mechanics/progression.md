@@ -53,11 +53,35 @@ Event chance after combat by segment (`EVENT_CHANCE_BY_SEGMENT`): 80% / 75% / 65
 `generateRoomOptions` always ensures at least 1 combat room in each 3-room selection.
 
 ### Mystery Events
-`generateMysteryEvent(floor)`: 20% combat, 10% card reward, 70% narrative event from tiered pools.
-- `TIER_1_EVENTS` (all floors): 7 events — upgrades, study, currency, free cards
-- `TIER_2_EVENTS` (floor ≥ 3): 7 events — rival duel, museum review, ambush, transform
-- `TIER_3_EVENTS` (floor ≥ 6): 6 events — burning library quiz, desperate bargain, wishing well
-- `TIER_4_EVENTS` (floor ≥ 9): 6 events — knowledge gamble, meditation chamber, the purge
+`generateMysteryEvent(floor)` uses act-aware distribution via `MYSTERY_DISTRIBUTION_BY_ACT`:
+| Act | Narrative | Card Reward | Combat |
+|-----|-----------|-------------|--------|
+| 1 (floors 1–4) | 80% | 5% | 15% |
+| 2 (floors 5–8) | 65% | 10% | 25% |
+| 3 (floors 9–12) | 55% | 15% | 30% |
+
+Act 3 combat ambushes are always elite-tier. Act 2 ambushes are 50/50 regular/elite.
+
+Tier pools (added per act):
+- `TIER_1_EVENTS` (Act 1+): 7 events — reading nook, inscription (quiz), tutor (quiz), whispering shelf, lost notebook, flashcard merchant, lost and found
+- `TIER_2_EVENTS` (Act 2+): 7 events — strict librarian, wrong answer museum, copyist's workshop, strange mushrooms (hidden 50/50), ambush, donation box, rival student (lose = 15 damage)
+- `TIER_3_EVENTS` (Act 2+): 6 events — burning library (quiz, wrong = 8 damage), mirror scholar, merchant of memories, cache of contraband, wishing well, study group (quiz-gated)
+- `TIER_4_EVENTS` (Act 3+): 7 events — knowledge gamble (3 hard Qs), the purge, meditation chamber, the purification (eraser_storm id, remove 2 + heal 15%), elite ambush, desperate bargain, the breakthrough (upgrade + heal 10%)
+
+**Phase 2 redesign changes (2026-04-01):**
+- All "nothing/Ignore/Decline" outcomes replaced with minimum 3–5g consolation
+- `dust_and_silence` → "The Inscription" (quiz-gated: correct = heal 15% + 10g; wrong = 10 damage)
+- `strange_mushrooms` "Eat one" → hidden 50/50 random (heal 25% OR 15 damage); "Ignore" = 5g
+- `donation_box` → "Donate 25g" = +5 max HP; "Shake it" = 50/50 +15g or 10 damage; "Leave" = 3g
+- `rival_student` loseEffect → 15 damage (was nothing)
+- `merchant_of_memories` → second option is -15 max HP for upgrade + free card; Decline = 3g
+- `study_group` → quiz-gated (2 easy Qs, upgrade per correct); replaces duplicate upgradeRandomCard
+- `the_breakthrough` → compound (upgrade + heal 10%); replaces duplicate upgradeRandomCard
+- `eraser_storm` (id kept) → "The Purification": remove 2 random cards + heal 15%
+- `knowledge_gamble` → 3 hard questions (heal 15% / upgrade / heal 15% per correct; 10 damage per wrong)
+- `wishing_well` bad outcome now also deals 8 damage; "Save" = 3g consolation
+- `desperate_bargain` "Keep your strength" → 3g consolation
+- `burning_library` perWrongPenalty → 8 damage (was nothing)
 
 ## Map Layout (`mapGenerator.ts`)
 

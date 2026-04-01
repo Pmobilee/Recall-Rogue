@@ -144,7 +144,7 @@ const TIER_1_EVENTS: MysteryEvent[] = [
         { type: 'currency', amount: 10 },
         { type: 'upgradeRandomCard' },
       ],
-      perWrongPenalty: { type: 'nothing', message: 'The tutor corrects you gently.' },
+      // No penalty — tutor corrects gently; wrong answers just yield no reward for that question
     },
   },
   {
@@ -155,9 +155,15 @@ const TIER_1_EVENTS: MysteryEvent[] = [
   },
   {
     id: 'dust_and_silence',
-    name: 'Dust and Silence',
-    description: 'An abandoned study. Papers scattered, ink still wet. But whoever was here is long gone.',
-    effect: { type: 'nothing', message: 'The desk is still warm. Whoever was here left no clues.' },
+    name: 'The Inscription',
+    description: 'A stone tablet covered in glowing runes. Decipher them to claim their power — but misread them at your peril.',
+    effect: {
+      type: 'quiz',
+      questionCount: 1,
+      difficulty: 'easy',
+      perCorrectRewards: [{ type: 'compound', effects: [{ type: 'healPercent', percent: 15 }, { type: 'currency', amount: 10 }] }],
+      perWrongPenalty: { type: 'damage', amount: 10 },
+    },
   },
   {
     id: 'lost_notebook',
@@ -211,8 +217,18 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Eat one (risky)', effect: { type: 'healPercent', percent: 15 } },
-        { label: 'Ignore them', effect: { type: 'nothing', message: 'Probably wise.' } },
+        {
+          label: 'Eat one (unknown outcome)',
+          // Hidden 50/50: heal 25% OR take 15 damage — player commits without knowing
+          effect: {
+            type: 'random',
+            outcomes: [
+              [{ type: 'healPercent', percent: 25 }],
+              [{ type: 'damage', amount: 15 }],
+            ],
+          },
+        },
+        { label: 'Ignore them', effect: { type: 'currency', amount: 5 } },
       ],
     },
   },
@@ -229,9 +245,22 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Donate 20 gold (+3 max HP)', effect: { type: 'compound', effects: [{ type: 'currency', amount: -20 }, { type: 'maxHpChange', amount: 3 }] } },
-        { label: 'Shake it (gain 10 gold)', effect: { type: 'currency', amount: 10 } },
-        { label: 'Leave it', effect: { type: 'nothing', message: 'You move on.' } },
+        {
+          label: 'Donate 25 gold (+5 max HP)',
+          effect: { type: 'compound', effects: [{ type: 'currency', amount: -25 }, { type: 'maxHpChange', amount: 5 }] },
+        },
+        {
+          label: 'Shake it (50/50: +15g or 10 damage)',
+          // Hidden 50/50: gain gold OR take damage
+          effect: {
+            type: 'random',
+            outcomes: [
+              [{ type: 'currency', amount: 15 }],
+              [{ type: 'damage', amount: 10 }],
+            ],
+          },
+        },
+        { label: 'Leave it', effect: { type: 'currency', amount: 3 } },
       ],
     },
   },
@@ -245,7 +274,8 @@ const TIER_2_EVENTS: MysteryEvent[] = [
       rivalAccuracy: 0.65,
       winEffect: { type: 'compound', effects: [{ type: 'freeCard' }, { type: 'healPercent', percent: 10 }] },
       tieEffect: { type: 'currency', amount: 15 },
-      loseEffect: { type: 'nothing', message: 'Better luck next time.' },
+      // Losing now has real stakes — not a free "nothing" outcome
+      loseEffect: { type: 'damage', amount: 15 },
     },
   },
 ]
@@ -265,7 +295,7 @@ const TIER_3_EVENTS: MysteryEvent[] = [
         { type: 'healPercent', percent: 10 },
         { type: 'upgradeRandomCard' },
       ],
-      perWrongPenalty: { type: 'nothing', message: 'That book is lost to the flames.' },
+      perWrongPenalty: { type: 'damage', amount: 8 },
     },
   },
   {
@@ -281,9 +311,16 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Trade 8 max HP for a card upgrade', effect: { type: 'compound', effects: [{ type: 'maxHpChange', amount: -8 }, { type: 'upgradeRandomCard' }] } },
-        { label: 'Trade 15 HP for a free card', effect: { type: 'damage', amount: 15 } },
-        { label: 'Decline', effect: { type: 'nothing', message: "The merchant nods. 'Perhaps next time.'" } },
+        {
+          label: 'Trade 8 max HP (upgrade a card)',
+          effect: { type: 'compound', effects: [{ type: 'maxHpChange', amount: -8 }, { type: 'upgradeRandomCard' }] },
+        },
+        {
+          label: 'Trade 15 max HP (upgrade a card + gain a card)',
+          effect: { type: 'compound', effects: [{ type: 'maxHpChange', amount: -15 }, { type: 'upgradeRandomCard' }, { type: 'freeCard' }] },
+        },
+        // Decline is never truly free — consolation 3g
+        { label: 'Decline', effect: { type: 'currency', amount: 3 } },
       ],
     },
   },
@@ -307,16 +344,33 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Toss 10 gold (random reward)', effect: { type: 'random', outcomes: [[{ type: 'currency', amount: -10 }, { type: 'currency', amount: 30 }], [{ type: 'currency', amount: -10 }, { type: 'healPercent', percent: 20 }], [{ type: 'currency', amount: -10 }, { type: 'upgradeRandomCard' }], [{ type: 'currency', amount: -10 }]] } },
-        { label: 'Save your gold', effect: { type: 'nothing', message: 'You keep your coins.' } },
+        {
+          label: 'Toss 10 gold (random reward)',
+          // 4 equally-weighted outcomes; the bad outcome now also deals damage
+          effect: {
+            type: 'random',
+            outcomes: [
+              [{ type: 'currency', amount: -10 }, { type: 'currency', amount: 30 }],
+              [{ type: 'currency', amount: -10 }, { type: 'healPercent', percent: 20 }],
+              [{ type: 'currency', amount: -10 }, { type: 'upgradeRandomCard' }],
+              [{ type: 'currency', amount: -10 }, { type: 'damage', amount: 8 }],
+            ],
+          },
+        },
+        { label: 'Save your gold', effect: { type: 'currency', amount: 3 } },
       ],
     },
   },
   {
     id: 'study_group',
     name: 'The Study Group',
-    description: "Four ghostly students huddle around a desk. 'Sit down,' one says. The study session is surprisingly productive.",
-    effect: { type: 'upgradeRandomCard' },
+    description: "Four ghostly students huddle around a desk. 'Sit down,' one says. 'Let's review.' Answer well and your cards grow stronger.",
+    effect: {
+      type: 'quiz',
+      questionCount: 2,
+      difficulty: 'easy',
+      perCorrectRewards: [{ type: 'upgradeRandomCard' }, { type: 'upgradeRandomCard' }],
+    },
   },
 ]
 
@@ -324,13 +378,17 @@ const TIER_4_EVENTS: MysteryEvent[] = [
   {
     id: 'knowledge_gamble',
     name: 'The Knowledge Gamble',
-    description: 'One question. Everything on the line.',
+    description: 'Three questions. Everything on the line. The altar glows brighter with each answer.',
     effect: {
       type: 'quiz',
-      questionCount: 1,
+      questionCount: 3,
       difficulty: 'hard',
-      perCorrectRewards: [{ type: 'healPercent', percent: 100 }],
-      perWrongPenalty: { type: 'maxHpChange', amount: -8 },
+      perCorrectRewards: [
+        { type: 'healPercent', percent: 15 },
+        { type: 'upgradeRandomCard' },
+        { type: 'healPercent', percent: 15 },
+      ],
+      perWrongPenalty: { type: 'damage', amount: 10 },
     },
   },
   {
@@ -347,9 +405,9 @@ const TIER_4_EVENTS: MysteryEvent[] = [
   },
   {
     id: 'eraser_storm',
-    name: 'The Eraser Storm',
-    description: 'A white mist rolls in, dissolving everything it touches. Two of your cards dissolve — but the mist is strangely restorative.',
-    effect: { type: 'removeRandomCard' },
+    name: 'The Purification',
+    description: 'A white mist rolls in, dissolving impurities. Two of your weakest cards dissolve — but the mist is strangely restorative.',
+    effect: { type: 'compound', effects: [{ type: 'removeRandomCard' }, { type: 'removeRandomCard' }, { type: 'healPercent', percent: 15 }] },
   },
   {
     id: 'elite_ambush',
@@ -365,15 +423,15 @@ const TIER_4_EVENTS: MysteryEvent[] = [
       type: 'choice',
       options: [
         { label: 'Sacrifice 10 max HP (remove 2 cards, heal 20%)', effect: { type: 'compound', effects: [{ type: 'maxHpChange', amount: -10 }, { type: 'removeRandomCard' }, { type: 'removeRandomCard' }, { type: 'healPercent', percent: 20 }] } },
-        { label: 'Keep your strength', effect: { type: 'nothing', message: 'You back away from the altar.' } },
+        { label: 'Keep your strength', effect: { type: 'currency', amount: 3 } },
       ],
     },
   },
   {
     id: 'the_breakthrough',
     name: 'The Breakthrough',
-    description: 'Everything clicks. A connection forms between ideas you never linked before.',
-    effect: { type: 'upgradeRandomCard' },
+    description: 'Everything clicks. A connection forms between ideas you never linked before. Your understanding deepens and your wounds ease.',
+    effect: { type: 'compound', effects: [{ type: 'upgradeRandomCard' }, { type: 'healPercent', percent: 10 }] },
   },
 ]
 
@@ -643,19 +701,35 @@ function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES): string {
 }
 
 /**
+ * Per-act distribution weights for mystery event sub-types.
+ * Escalates combat risk and card reward chances as acts progress.
+ * Act 1 (floors 1-4): learn quiz-gate safely; Act 3 (floors 9-12): desperate gambles.
+ */
+const MYSTERY_DISTRIBUTION_BY_ACT: Record<1 | 2 | 3, { combat: number; cardReward: number; narrative: number }> = {
+  1: { combat: 0.15, cardReward: 0.05, narrative: 0.80 },
+  2: { combat: 0.25, cardReward: 0.10, narrative: 0.65 },
+  3: { combat: 0.30, cardReward: 0.15, narrative: 0.55 },
+}
+
+/**
  * Generate a mystery event scaled to the current floor.
- * - 20% chance: combat encounter (no post-combat reward)
- * - 10% chance: card reward room
- * - 70% chance: narrative event from tiered pools
+ * Distribution is act-aware (Act 1: 80/5/15, Act 2: 65/10/25, Act 3: 55/15/30
+ * for narrative/cardReward/combat respectively).
+ * - Act 1 (floors 1-4): low combat, quiz-gate introduction
+ * - Act 2 (floors 5-8): ramped combat risk, meaningful rewards
+ * - Act 3 (floors 9-12): maximum tension, elite ambushes
  */
 export function generateMysteryEvent(floor?: number): MysteryEvent {
   const f = floor ?? 1
+  const act = getActForFloor(f)
+  const dist = MYSTERY_DISTRIBUTION_BY_ACT[act]
   const rng = isRunRngActive() ? getRunRng('map') : null
 
-  // 20% chance: combat
-  if ((rng ? rng.next() : Math.random()) < 0.20) {
-    // Floors 1-5: regular, 6-8: 50/50 regular/elite, 9+: elite
-    const isElite = f >= 9 || (f >= 6 && (rng ? rng.next() : Math.random()) < 0.5)
+  const roll = (rng ? rng.next() : Math.random())
+
+  // Combat ambush — Act 3 always elite
+  if (roll < dist.combat) {
+    const isElite = act === 3 || (act === 2 && (rng ? rng.next() : Math.random()) < 0.5)
     return {
       id: isElite ? 'mystery_elite_combat' : 'mystery_combat',
       name: 'Ambush!',
@@ -666,8 +740,8 @@ export function generateMysteryEvent(floor?: number): MysteryEvent {
     }
   }
 
-  // 10% chance: card reward (0.125 of remaining 80%)
-  if ((rng ? rng.next() : Math.random()) < 0.125) {
+  // Card reward cache
+  if (roll < dist.combat + dist.cardReward) {
     return {
       id: 'mystery_reward',
       name: 'Hidden Cache',
@@ -676,11 +750,12 @@ export function generateMysteryEvent(floor?: number): MysteryEvent {
     }
   }
 
-  // 70%: narrative event from tiered pool
+  // Narrative event from act-mapped tier pool
+  // Act 1 = Tier 1, Act 2 = Tier 1 + Tier 2, Act 3 = all tiers
   const pool: MysteryEvent[] = [...TIER_1_EVENTS]
-  if (f >= 3) pool.push(...TIER_2_EVENTS)
-  if (f >= 6) pool.push(...TIER_3_EVENTS)
-  if (f >= 9) pool.push(...TIER_4_EVENTS)
+  if (act >= 2) pool.push(...TIER_2_EVENTS)
+  if (act >= 2) pool.push(...TIER_3_EVENTS)
+  if (act >= 3) pool.push(...TIER_4_EVENTS)
 
   const idx = Math.floor((rng ? rng.next() : Math.random()) * pool.length)
   return { ...pool[idx] }
