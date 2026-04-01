@@ -17,11 +17,14 @@ This AR establishes the **definitive, exhaustive audio event catalog** for Recal
 
 ## Current Audio Infrastructure
 
-- **Engine:** Web Audio API synthesis (no external files) — `src/services/audioService.ts`
-- **Combat layer:** `src/services/cardAudioManager.ts` — 14 cues mapped to 42 synthesized sounds
-- **Biome layer:** `src/game/managers/AudioManager.ts` — 25 biome ambient configs
+- **Engine:** File-first playback + synthesis fallback — `src/services/audioService.ts`
+- **File assets:** 229 CC0 `.ogg` files in `public/assets/audio/sfx/` (OpenGameArt + Kenney). All 229 `SoundName` entries in `SFX_FILE_MAP` now have real `.ogg` replacements. Synthesis still present as fallback on first play / failed fetch.
+- **Ambient layer:** `src/services/ambientAudioService.ts` — 15 atmosphere recipes using 33 looping `.ogg` files in `public/assets/audio/sfx/loops/`
+- **Combat layer:** `src/services/cardAudioManager.ts` — 141 cues mapped to SoundNames
+- **BGM:** `src/services/musicService.ts` — 43 tracks (20 epic + 20 quiet + 3 stings) in `public/assets/audio/music/`
 - **Settings:** SFX + Music volume sliders with localStorage persistence
-- **Music:** Not yet implemented (BGM channel reserved in cardAudioManager)
+
+> **Note (2026-04-01):** The Sonniss GDC 2026 Bundle path originally described in this doc has been superseded. All SFX are now CC0-sourced `.ogg` files. Synthesis fallbacks remain for resilience.
 
 ---
 

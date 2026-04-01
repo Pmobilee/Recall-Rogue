@@ -3264,46 +3264,37 @@ The **complete, exhaustive audio event catalog** lives in `docs/roadmap/complete
 
 | Component | File | Purpose |
 |-----------|------|---------|
-| Audio Synthesis Engine | `src/services/audioService.ts` | Web Audio API synthesis — 180 programmatic sounds (2,683 lines) |
-| Card Audio Manager | `src/services/cardAudioManager.ts` | High-level cue layer (141 cues mapped to synthesized sounds) |
-| Biome Audio Manager | `src/game/managers/AudioManager.ts` | Ambient loops + hazard SFX for 25 biome types |
+| SFX Playback Engine | `src/services/audioService.ts` | File-first playback — 229 `.ogg` CC0 files in `public/assets/audio/sfx/`; Web Audio synthesis fallback for every SoundName |
+| Card Audio Manager | `src/services/cardAudioManager.ts` | High-level cue layer (141 cues mapped to SoundNames) |
+| Ambient Audio Service | `src/services/ambientAudioService.ts` | 15 layered atmosphere recipes using 33 looping `.ogg` files; crossfading, quiz ducking, music coexistence, boss overlay |
+| BGM Service | `src/services/musicService.ts` | BGM playback — 43 tracks total (20 epic, 20 quiet, 3 stings); crossfade, shuffle, spectrogram visualiser |
 | Settings UI | `src/ui/components/SettingsPanel.svelte` | SFX + Music volume sliders with localStorage persistence |
 
 ### Implementation Status Summary
 
 | Priority | Count | Description | Status |
 |----------|-------|-------------|--------|
-| P0 (Ship-blocking) | 31 | Core feel — combat, encounters, run lifecycle, UI basics | DONE (synthesis) |
-| P1 (Core Feel) | 100 | Status effects, chains, enemies, transitions | DONE (synthesis), BGM pending |
+| P0 (Ship-blocking) | 31 | Core feel — combat, encounters, run lifecycle, UI basics | DONE (file SFX) |
+| P1 (Core Feel) | 100 | Status effects, chains, enemies, transitions | DONE (file SFX + ambient) |
 | P2 (Polish) | 73 | UI interactions, NPC sounds, ambient details | Mostly wired |
 | P3 (Nice-to-have) | 26 | Hover sounds, scroll feedback, environmental micro-detail | Partially wired |
-| **Total** | **234** | **182 trigger calls across 32 files** | **SFX complete, BGM pending** |
+| **Total** | **234** | **182 trigger calls across 32 files** | **SFX complete (229 files), ambient complete (33 loops), BGM 43 tracks** |
 
-### Background Music (BGM) — User-Created via AI Music Generation
+### Background Music (BGM)
 
-13 BGM tracks are needed. These will be created by the developer using **ACE-Step 1.5** (open source, installed locally at `~/opt/ace-step`, runs on M4 Max MPS) or commercial tools (Suno, Udio, AIVA). ACE-Step benchmarks above Suno v5 (SongEval 8.09), generates full songs in 30-60s locally, and costs nothing. **Detailed generation prompts** for every track are in `docs/roadmap/future/BGM-MUSIC-GENERATION-PROMPTS.md` and AR-228 Section 23.
+43 BGM tracks are implemented across three modes. Files live in `public/assets/audio/music/` as `.mp3`.
 
-| Track | Screen | Priority | Duration |
-|-------|--------|----------|----------|
-| Hub theme | Camp/home screen | P1 | 60-90s loop |
-| Combat (normal) | Standard encounters | P1 | 45-60s loop |
-| Combat (boss) | Boss fights | P1 | 60-90s loop |
-| Combat (elite) | Elite encounters | P2 | 45-60s loop |
-| Shop theme | Merchant room | P2 | 30-45s loop |
-| Rest site theme | Campfire rest | P2 | 60-90s loop |
-| Map/exploration | Dungeon map | P2 | 45-60s loop |
-| Mystery event | Strange encounters | P2 | 30-45s loop |
-| Surge overlay | Knowledge Surge turns | P1 | 15-20s loop |
-| Boss quiz phase | Critical quiz moments | P1 | 15-20s loop |
-| Run victory | Dungeon complete | P0 | 15-20s one-shot |
-| Run defeat | Game over | P1 | 12-15s one-shot |
-| Tutorial/onboarding | First-time experience | P2 | 45-60s loop |
+| Mode | Count | Category | File path |
+|------|-------|----------|-----------|
+| EPIC | 20 | High-energy combat | `public/assets/audio/music/epic/*.mp3` |
+| QUIET | 20 | Lo-fi ambient / exploration | `public/assets/audio/music/quiet/*.mp3` |
+| Stings | 3 | One-shots (victory, defeat, boss-intro) | `public/assets/audio/music/stings/*.mp3` |
 
-Place generated files in `public/assets/audio/bgm/` as `.ogg` or `.mp3` (128-192kbps).
+The user toggles EPIC/QUIET via `MusicWidget.svelte`. Stings fire from `musicService` at specific lifecycle events. Playback details (crossfade, shuffle, LRU cache, spectrogram) documented in `docs/architecture/services/platform-audio.md`.
 
-### Sonniss GDC Archive — Foley Replacement Path
+### SFX Asset Sources
 
-The Sonniss GDC 2026 Bundle (7.47GB, royalty-free, no attribution) provides professional foley samples to replace Web Audio synthesis for sounds that need organic texture. See AR-228 "Sonniss GDC Sound Archive — Integration Guide" for download instructions, directory structure, and the 8 priority replacement targets (enemy attacks, shield break, coins, footsteps, etc.).
+229 CC0 SFX files sourced from OpenGameArt and Kenney.nl are now in `public/assets/audio/sfx/` organised by folder (combat, status, quiz, turn, surge, relic, encounter, map, hub, shop, rest, reward, mystery, run, ui, reveal, mastery, keeper, transition, tutorial, progression, legacy). Synthesis fallbacks remain for every SoundName — the Sonniss GDC 2026 Bundle path (originally planned in AR-228) was superseded by this CC0 sourcing pass.
 
 ### Key Sound Design Principles
 

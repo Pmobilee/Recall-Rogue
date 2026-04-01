@@ -2,7 +2,7 @@
 
 > **Purpose:** Gameplay-critical Svelte components: Combat UI, Quiz & Study, Hub & Navigation, Dungeon & Map, Card Management, Rooms & Events, Rewards & Progression, Relics.
 > **Last verified:** 2026-04-01
-> **Source files:** `src/ui/components/**/*.svelte` (186 files), `src/CardApp.svelte`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`
+> **Source files:** `src/ui/components/**/*.svelte` (186 files), `src/CardApp.svelte`, `src/ui/effects/hubAnimationLoop.ts`, `src/ui/effects/hubLightingState.ts`, `src/ui/effects/HubGlowEffect.ts`, `src/ui/effects/CampfireEffect.ts`
 
 > **See also:** [`components-social.md`](components-social.md) — Social & Multiplayer, Profile & Account, Auth & Legal, Monetization & Seasons, Onboarding & Cutscenes, Utility & Effects.
 
@@ -13,7 +13,7 @@
 | Component | Purpose |
 |-----------|---------|
 | `CardHand.svelte` | Renders the player's hand with V2 card frames, art, mastery glow, chain color groups, and damage-modifier coloring (green=buffed, red=nerfed via `damagePreviews` prop) |
-| `CardCombatOverlay.svelte` | Root combat screen: wraps CardHand + QuizOverlay, handles surge/boss phases, landscape/portrait. Computes `damagePreviews` via `damagePreviewService` and passes to CardHand |
+| `CardCombatOverlay.svelte` | Root combat screen: wraps CardHand + QuizOverlay, handles surge/boss phases, landscape/portrait. Computes `damagePreviews` via `damagePreviewService` and passes to CardHand. Calls `ambientAudio.duck()` / `unduck()` via `$effect` reactive on `isQuizPanelVisible` — ducks ambient when charge quiz panel is showing |
 | `CombatHUD.svelte` | Legacy HP bars + combat log; largely superseded by InRunTopBar |
 | `InRunTopBar.svelte` | Landscape/Portrait HUD: HP bar, shield badge, gold, floor/segment, relic tray, fog level, pause. Inline player status effect icons (poison, burn, etc.) to the right of the HP bar — hover to show per-icon popup. `.hp-group` uses `flex: 1 0 auto` (never shrinks when icons are added). Icon size matches HP bar height (`var(--topbar-height) * 0.58`). Status popup is per-wrapper positioned below each icon on hover; backdrop click pattern removed. `.section-left` uses `max-width: 35%`. Accepts optional `statusEffects` prop (from `topBarPlayerEffects` derived in CardApp.svelte). |
 | `MusicWidget.svelte` | Ultra-sleek Spotify-style BGM player widget. `position: fixed` pill (top-right, below InRunTopBar, z-index 201). Collapsed: ~56×36px pill with 6-bar spectrogram canvas (48×32). Expanded: 240px glass panel with wide spectrogram, track title + marquee overflow, category toggle (EPIC/QUIET), prev/play-pause/next controls, volume slider with mute toggle. All state synced from `musicService` via `subscribe()`. rAF animation loop driven by `musicService.getFrequencyData()` — idle sine wave when not playing. Expand/collapse via CSS `max-height` + `opacity` transition. Closes on outside click. Shown alongside `InRunTopBar` whenever `showTopBar` is true (landscape in-run screens). `musicService.startIfNotPlaying()` auto-fires on entering any `IN_RUN_SCREENS`. |
@@ -71,7 +71,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `QuizOverlay.svelte` | Multiple-choice quiz modal for card activation; Gaia avatar, 3 distractors, timer |
 | `ChallengeQuizOverlay.svelte` | Challenge-mode quiz (speed round, mastery) with configurable ChallengeMode |
 | `StudyQuizOverlay.svelte` | Rest-room study quiz: boss-quiz–style questions to upgrade card charges |
-| `MasteryChallengeOverlay.svelte` | Mastery challenge room: timed quiz sequence for card mastery rewards |
+| `MasteryChallengeOverlay.svelte` | Mastery challenge room: timed quiz sequence for card mastery rewards. Calls `ambientAudio.setContext('mastery_challenge')` on `$effect` when challenge is set |
 | `ScholarQuizPanel.svelte` | Scholar-challenge run quiz panel with extended question formats |
 | `EventQuiz.svelte` | Quiz embedded inside mystery/special events for branching outcomes |
 | `GrammarTypingInput.svelte` | Free-text typing input for grammar deck tilde-fragment answers |
@@ -88,15 +88,15 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 
 | Component | Purpose |
 |-----------|---------|
-| `HubScreen.svelte` | Main hub: campfire, NPC sprites, run summary, navigation entry points. Integrates hub lighting engine, glow canvas, fireflies, moths, custom cursor light, per-sprite brightness with mouse proximity bonus, and background warmth filter. Tracks mouse via `onpointermove`/`onpointerleave`; hides system cursor with `style:cursor="none"` when effects are enabled. Child interactive elements use `cursor: inherit` (not `cursor: pointer`) so the hub cursor:none propagates correctly. **Z-index layering (landscape)**: `.camp-bg-wide` z-0, HubGlowCanvas glow-canvas z-1 / vignette z-2, `.hub-center` z-3 (raised from z-1 on 2026-04-01 so all sprites and HUD inside hub-center paint above the vignette overlay; background image at z-0 still gets darkened by vignette). |
+| `HubScreen.svelte` | Main hub: campfire, NPC sprites, run summary, navigation entry points. Calls `ambientAudio.setContext('hub')` on initial `$effect`. Integrates hub lighting engine, glow canvas, fireflies, moths, custom cursor light, per-sprite brightness with mouse proximity bonus, and background warmth filter. Tracks mouse via `onpointermove`/`onpointerleave`; hides system cursor with `style:cursor="none"` when effects are enabled. Child interactive elements use `cursor: inherit` (not `cursor: pointer`) so the hub cursor:none propagates correctly. **Z-index layering (landscape)**: `.camp-bg-wide` z-0, HubGlowCanvas glow-canvas z-1 / vignette z-2, `.hub-center` z-3 (raised from z-1 on 2026-04-01 so all sprites and HUD inside hub-center paint above the vignette overlay; background image at z-0 still gets darkened by vignette). |
 | `HubNavBar.svelte` | Bottom navigation bar (Library, Profile, Social, Leaderboards) |
 | `HubVisitorView.svelte` | Visitor profile view when browsing another player's hub |
 | `CampHudOverlay.svelte` | HUD overlay on the hub: streak, gold, XP progress bar |
 | `CampSpriteButton.svelte` | Clickable NPC sprite button in the hub scene. Props: `spriteOffsetX`/`spriteOffsetY` for CSS translate repositioning; `brightness` (default 1.0) for campfire lighting via `--sprite-brightness` CSS custom property. `fireShadow` prop removed 2026-04-01 (full-frame sprites caused alpha-channel blob halos). `.sprite-hitbox` uses `cursor: inherit` (updated 2026-04-01, was `cursor: pointer`) so the hub `cursor: none` is not overridden by child buttons — the custom glow cursor IS the hover feedback when effects are active. See "Hub Lighting" section below. |
 | `CampSpeechBubble.svelte` | Speech bubble overlay for hub NPC characters |
 | `CampfireCanvas.svelte` | Canvas-based animated campfire flicker effect. CSS size is `calc(200px * var(--layout-scale, 1))` × `calc(250px * var(--layout-scale, 1))`. **z-index: 26** — above campfire sprite (z-25) so ember particles render on top of the fire art. On mount, canvas pixel dimensions are set from `clientWidth`/`clientHeight`; a `ResizeObserver` keeps them in sync. Scale factor (`clientWidth / 200`) is passed to `CampfireEffect` constructor and updated via `setScale()`. |
-| `HubGlowCanvas.svelte` | Two-layer hub glow system: (1) `position: fixed` canvas with `mix-blend-mode: screen` for additive warm orange radial glow; (2) sibling `<div class="hub-vignette">` with normal blend mode and reactive CSS `radial-gradient` that pulses with fire intensity — bright fire expands the lit area, dim fire tightens darkness. Props: `campfireCenterFn: () => {x, y}` (absolute viewport pixels), `zIndex?: number` (default 1; vignette div gets `zIndex + 1`), `mouseX?: number` / `mouseY?: number` — forwarded to `HubGlowEffect.setMousePosition()` for a secondary warm light at the cursor. Imports `getHubLightingStore()` and uses `$derived` to recompute gradient stops from `$hubLighting.intensity` at ~30fps. |
-| `HubFireflies.svelte` | Ambient firefly particles driven by **RAF sine-wave motion** (rewritten 2026-04-01 to match RewardRoomScene.ts Phaser firefly system). Spawns 8 fireflies on mount; keeps count stable by respawning dead ones immediately. **Motion:** each firefly has per-fly `phase`, `ampX`/`ampY` (2–5% / 1.5–4% container), `freqX`/`freqY` (0.0004–0.001), `depthLayer` (0.5–1.0). Position updated each RAF tick: `x = baseX + sin(now * freqX * depth + phase) * ampX`, `y = baseY + cos(now * freqY * depth + phase) * ampY`. Slow horizontal drift on `baseX` (±0.02%/frame, clamped 2–98%). **Lifecycle:** fadingIn 600ms → alive 4–8s → fadingOut 800ms → dead → respawn at new random position. **Alpha:** `maxAlpha = 0.4 + depthLayer * 0.4` (0.6–0.8). **No CSS keyframes** — all motion is JS-driven via RAF at 30fps throttle. Single `tick` `` integer triggers Svelte re-renders; firefly array is plain (non-reactive) for performance. **Spawn:** 30% dark-edge bias (4 edges), 70% full-screen excluding campfire zone 40–60%x / 55–75%y. **Size:** `(size * depthLayer)px * var(--layout-scale, 1)`. **Reduce-motion:** static positions, no RAF loop, alpha 0.5. |
+| `HubGlowCanvas.svelte` | Two-canvas hub glow system (updated 2026-04-01 perf pass): (1) `position: fixed` canvas with `mix-blend-mode: screen` for additive warm orange radial glow; (2) sibling `<canvas class="hub-vignette-canvas">` with `mix-blend-mode: normal` for vignette darkening — replaces the old CSS `<div>` whose reactive `radial-gradient` was being reparsed by Chrome each frame. Props: `campfireCenterFn: () => {x, y}` (absolute viewport pixels), `zIndex?: number` (default 1; vignette canvas gets `zIndex + 1`), `mouseX?: number` / `mouseY?: number` — forwarded to `HubGlowEffect.setMousePosition()`. No longer imports `getHubLightingStore()` — vignette gradient is drawn directly by `HubGlowEffect` onto the second canvas each frame. |
+| `HubFireflies.svelte` | Ambient firefly particles driven by **shared-loop sine-wave motion** (updated 2026-04-01 perf pass). Uses `hubAnimationLoop.ts` shared 30fps loop instead of own RAF. Spawns 15 fireflies on mount; keeps count stable by respawning dead ones immediately. **Motion:** each firefly has per-fly `phase`, `ampX`/`ampY`, `freqX`/`freqY`, `depthLayer` (0.5–1.0). Position updated every 30fps tick; Svelte `tick` $state only incremented every 3rd frame (~10fps) to reduce 15-element DOM style-recalc cascade. **Lifecycle:** fadingIn 600ms → alive 4–8s → fadingOut 800ms → dead → respawn. **Alpha:** `maxAlpha = 0.4 + depthLayer * 0.4` (0.6–0.8). **No CSS keyframes** — all motion is JS-driven. **Spawn:** full-screen excluding campfire zone 40–60%x / 55–75%y. **Size:** `(size * depthLayer)px * var(--layout-scale, 1)`. **Reduce-motion:** static positions, no callback registration. |
 
 | `HubMoths.svelte` | 4 tiny moths orbiting the campfire (added 2026-04-01). Each traces an elliptical CSS path centered near the fire (~50%, 58% of container). Orbit radius 3–8% wide, 1.5–3% tall; duration 4–8s; staggered by ~0.8s each. Scale variation in `@keyframes moth-orbit` (0.8–1.1×) simulates depth as moths pass in front of and behind the fire. Separate `@keyframes moth-flutter` (1.2–2.7s) drives irregular opacity (0.5–0.9) simulating wings catching firelight. Appearance: 3×2px dot, `rgba(180,160,120,0.7)` warm tan, subtle warm glow. z-index 26 (matches CampfireCanvas). Rendered via `{#if !disableEffects}<HubMoths />{/if}` in both landscape and portrait hub layouts. |
 | `HubCursorLight.svelte` | Mouse-interactive custom cursor + firefly trail for the hub scene. Props: `x: number` (viewport clientX), `y: number` (viewport clientY), `visible: boolean`. Renders a warm orange radial-gradient glowing dot (`position: fixed; z-index: 100; pointer-events: none`) that replaces the system cursor. **Trail (updated 2026-04-01):** warm golden yellow particles `rgba(255, 240, 120, 0.8)` (was green). Max 6 particles (was 10), spawn interval 120ms (was 80ms). **Movement threshold:** only spawns when cursor moves ≥3px — suppresses micro-movement spawning. **Distance pruning:** particles >10% viewport width from current cursor are removed immediately (prevents orphaned spheres when cursor jumps). **Stop cleanup:** all trail particles cleared 500ms after cursor stops moving (via `setTimeout` reset on each move event). Particles drift 10–25px, lifetime 400–800ms. Respects `prefers-reduced-motion` (hides trail, keeps static cursor). |
@@ -113,11 +113,11 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 `src/ui/effects/hubLightingState.ts` — central flicker engine driving glow, sprite dimming, and background warmth in sync.
 
 **Architecture:**
-- Single RAF loop at ~30fps, shared cadence with `CampfireEffect`
+- Uses shared 30fps loop from `hubAnimationLoop.ts` — no own RAF (updated 2026-04-01 perf pass)
 - **Responsive flicker** (updated 2026-04-01): easing factor 0.15/frame — visible changes within ~5 frames (~170ms). New target picked every 150–600ms (was 300–1200ms). Dim dip floor lowered to 0.15 (was 0.25), bright flare ceiling raised to 0.95 (was 0.90). Per-frame micro-jitter of ±0.02 for alive feel. Slow breathing sine (amplitude 0.08, freq 0.0015) for macro rhythm.
 - **Brighter peaks** (updated 2026-04-01): 3% super flare → instantly targets 1.0 (quick 100–200ms burst); 10% bright flare → 0.90–1.0+ (was 0.80–0.95); 77% normal range → 0.45–0.75 (was 0.45–0.70, widened for livelier baseline). Super flare checked before dim dip and bright flare.
 - Streak multiplier scales flicker amplitude (streak 0 → ×1.0, streak 7+ → ×1.6 capped at ×1.8)
-- Reactive store updated every frame at ~30fps (was every other frame at ~15fps) — drives responsive vignette pulsing
+- Reactive store throttled to every 3rd frame (~10fps) to reduce Svelte reactive cascade overhead; `getSnapshot()` still updates every frame for canvas consumers
 - Respects `localStorage 'card:reduceMotionMode'` — returns static middle values when true
 
 **Exports:**
@@ -128,7 +128,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `HubLightingReactive` | interface | `{ spriteBrightness, warmth, intensity }` for CSS consumers |
 | `CAMPFIRE_CENTER_PCT` | const | `{ x: 50, y: 64 }` — campfire center as % of hub container |
 | `getSnapshot()` | function | Allocation-free synchronous read; returns mutated shared object |
-| `getHubLightingStore()` | function | Returns Svelte writable store updated at ~30fps (every frame) for CSS consumers. Used by HubScreen for per-sprite brightness and HubGlowCanvas for reactive vignette gradient. |
+| `getHubLightingStore()` | function | Returns Svelte writable store throttled to ~10fps (every 3rd frame) for CSS consumers. Used by HubScreen for per-sprite brightness. No longer used by HubGlowCanvas (vignette drawn by HubGlowEffect directly onto canvas). |
 | `start(streak)` | function | Start RAF loop; safe to call multiple times |
 | `stop()` | function | Stop loop, reset to static values |
 | `updateStreak(streak)` | function | Update amplitude multiplier without restarting |
@@ -200,22 +200,43 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 - **Particle counts per streak:** streak 0 → 15, streak 3+ → 30, streak 7+ → 45
 
 **`HubGlowEffect` — `src/ui/effects/HubGlowEffect.ts`:**
-- `new HubGlowEffect(canvas, campfireCenterFn)`
-- Own 30fps RAF loop reading `getSnapshot()` each frame
+- `new HubGlowEffect(canvas, vignetteCanvas, campfireCenterFn)` (updated 2026-04-01 perf pass — now takes two canvases)
+- Uses shared 30fps loop from `hubAnimationLoop.ts` — no own RAF
 - **Pass 1 (warm glow):** radial gradient centered on campfire, `0%: rgba(255,140,40, intensity*0.25)` → `30%: rgba(255,100,20, intensity*0.12)` → `100%: transparent`; radius = `diagonal * (0.55 + intensity * 0.10)`
 - **Pass 2 (mouse light):** when `setMousePosition(x, y)` has been called, draws a second radial gradient centered on the cursor. Radius = `diagonal * 0.15` (smaller than campfire). Alphas: `rgba(255,220,160, intensity*0.10)` → `rgba(255,200,140, intensity*0.04)` → transparent. Adds subtle warm illumination near the cursor on the screen-blend canvas.
-- **Pass 2 (vignette) REMOVED** (2026-04-01): `mix-blend-mode: screen` makes dark colors transparent — vignette drawn on this canvas did nothing. Vignette moved to a sibling CSS `<div class="hub-vignette">` in `HubGlowCanvas.svelte` using normal blend mode with reactive `$derived` gradient. Stops pulse with `$hubLighting.intensity`: transparent stop moves 10–13.6%, darkness alphas shift 0.20–0.30 / 0.55–0.65 / 0.83–0.88 as fire dims/brightens. Updates at ~30fps via store subscription.
-- `mix-blend-mode: screen` on canvas CSS makes glow additive (dark colors transparent — correct for warm glow, wrong for vignette darkening)
+- **Pass 3 (vignette):** drawn onto `vignetteCanvas` (normal blend mode) each frame using `ctx.createRadialGradient()`. Intensity-modulated stops: transparent at campfire center, `rgba(5,5,15, 0.20–0.30)` → `rgba(5,5,15, 0.55–0.65)` → `rgba(2,2,8, 0.83–0.88)` → `rgba(2,2,8, 0.93)` at outer edge. Replaces old CSS `<div>` whose reactive `$derived` gradient string was being reparsed by Chrome each frame (even when quantized to 20 steps).
+- `mix-blend-mode: screen` on glow canvas CSS makes glow additive (dark = transparent — correct for warm glow). Vignette canvas uses `mix-blend-mode: normal` so it can genuinely darken edges.
 - Reduce-motion: draws one static frame at `intensity=0.5`, no RAF loop
 - `setMousePosition(x, y)` / `clearMousePosition()` — forwarded from `HubGlowCanvas` via `$effect` when `mouseX`/`mouseY` props change
 - `start()` / `stop()` / `destroy()` lifecycle
+
+### Hub Shared Animation Loop
+
+`src/ui/effects/hubAnimationLoop.ts` — single 30fps RAF loop shared by all hub ambient systems (added 2026-04-01 perf pass).
+
+**Purpose:** Replaces 4 separate `requestAnimationFrame` loops that were running simultaneously (`hubLightingState`, `CampfireEffect`, `HubGlowEffect`, `HubFireflies`). Consolidating into one loop reduces RAF callback overhead and ensures all systems advance in lockstep.
+
+**API:**
+
+| Export | Type | Description |
+|--------|------|-------------|
+| `FrameCallback` | type alias | `(now: number, deltaMs: number) => void` |
+| `registerCallback(cb)` | function | Register a callback; auto-starts the loop on first registration |
+| `unregisterCallback(cb)` | function | Unregister; auto-stops the loop when no callbacks remain |
+
+**Behavior:**
+- Throttles to 30fps (FRAME_MS = 33.3ms) using a frame-skip approach
+- Guards against tab-hidden wake-up spikes by capping `deltaMs` at 100ms
+- Auto-starts RAF when the first callback is registered
+- Auto-stops RAF when all callbacks are unregistered (zero overhead when hub is not visible)
+- De-duplicates registrations (safe to call `registerCallback` multiple times with same ref)
 
 
 ## Dungeon & Map
 
 | Component | Purpose |
 |-----------|---------|
-| `DungeonMap.svelte` | Procedurally generated dungeon map with branching node paths |
+| `DungeonMap.svelte` | Procedurally generated dungeon map with branching node paths. Calls `ambientAudio.setContext('dungeon_map')` on `onMount` |
 | `DungeonEntrance.svelte` | Dungeon entry screen with parallax transition and language selection |
 | `MapNode.svelte` | Individual room node on the dungeon map (combat, shop, rest, mystery, boss) |
 | `MapAmbientParticles.svelte` | Ambient particle layer over the dungeon map |
@@ -223,7 +244,7 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 | `DomainStrip.svelte` | Horizontal strip for a domain category with icon and name |
 | `DomainStripCard.svelte` | Individual card within a DomainStrip |
 | `TriviaDungeonScreen.svelte` | Entry screen for trivia-dungeon mode with domain selection |
-| `RetreatOrDelve.svelte` | Post-boss decision: retreat for safety vs. delve deeper |
+| `RetreatOrDelve.svelte` | Post-boss decision: retreat for safety vs. delve deeper. Calls `ambientAudio.setContext('retreat_delve')` on initial `$effect` on mount |
 | `TheDeepUnlockOverlay.svelte` | Unlock overlay when the player first reaches floor 10+ |
 
 ### DungeonMap fog-of-war system
@@ -286,9 +307,9 @@ Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on 
 
 | Component | Purpose |
 |-----------|---------|
-| `ShopRoomOverlay.svelte` | Shop: buy/sell cards and relics, card removal, haggle quiz |
-| `RestRoomOverlay.svelte` | Rest room: heal HP, study to upgrade a card, meditate to remove one |
-| `MysteryEventOverlay.svelte` | Mystery event: narrative choice cards with quiz-gated outcomes |
+| `ShopRoomOverlay.svelte` | Shop: buy/sell cards and relics, card removal, haggle quiz. Calls `ambientAudio.setContext('shop')` on `$effect` |
+| `RestRoomOverlay.svelte` | Rest room: heal HP, study to upgrade a card, meditate to remove one. Calls `ambientAudio.setContext('rest')` on `$effect` |
+| `MysteryEventOverlay.svelte` | Mystery event: narrative choice cards with quiz-gated outcomes. Calls `ambientAudio.setContext('mystery')` on `$effect` when event is set |
 | `SpecialEventOverlay.svelte` | Scripted lore/mechanic special events |
 | `PostMiniBossRestOverlay.svelte` | Post-mini-boss rest: auto-heal + optional card upgrade |
 | `MeditateOverlay.svelte` | Meditate rest option: pick a card to permanently remove |
@@ -303,7 +324,7 @@ Node blur and opacity applied via CSS `filter: blur(...)` and `opacity: ...` on 
 |-----------|---------|
 | `CardRewardScreen.svelte` | Post-combat reward: animated gold/heal reveal then 3-card pick |
 | `RewardCardDetail.svelte` | Expanded detail for a single reward card (RewardRoomScene). Renders an identical V2 card frame to CardHand.svelte. AP cost font: `var(--card-w) * 0.14`. Effect text uses `'Kreon', 'Georgia', serif` matching CardHand. Adaptive size classes: `effect-text-md` (>15 chars), `effect-text-sm` (>25), `effect-text-xs` (>35) computed by `effectTextSizeClass()`. `.desc-number` inherits font/color from parent (no override). |
-| `RunEndScreen.svelte` | Run summary: victory/defeat, XP breakdown, facts correct, floor reached |
+| `RunEndScreen.svelte` | Run summary: victory/defeat, XP breakdown, facts correct, floor reached. Calls `ambientAudio.setContext('run_end_victory')` or `setContext('run_end_defeat')` on `onMount` branched on `isVictory` |
 | `ArchetypeSelection.svelte` | Run-start archetype picker: Balanced / Aggressive / Defensive / Scholar |
 | `GachaReveal.svelte` | Gacha-style animated reveal for rare unlocks and season rewards |
 | `SeasonRewardOverlay.svelte` | Animated season pass tier reward unlock overlay |

@@ -1,13 +1,14 @@
 # Services Index
 
 > **Purpose:** Lookup table mapping every service name to its domain sub-doc.
-> **Last verified:** 2026-03-31
-> **Source files:** All `src/services/*.ts` (141 files, excluding test files)
+> **Last verified:** 2026-04-01
+> **Source files:** All `src/services/*.ts` (142 files, excluding test files)
 
 | Service | File | Sub-doc |
 |---------|------|---------|
 | accuracyGradeSystem | src/services/accuracyGradeSystem.ts | [quiz.md](quiz.md) |
 | accessibilityManager | src/services/accessibilityManager.ts | [platform.md](platform.md) |
+| ambientAudioService | src/services/ambientAudioService.ts | [platform-audio.md](platform-audio.md) |
 | analyticsService | src/services/analyticsService.ts | [platform.md](platform.md) |
 | apiClient | src/services/apiClient.ts | [persistence.md](persistence.md) |
 | archetypeDetector | src/services/archetypeDetector.ts | [learning.md](learning.md) |
