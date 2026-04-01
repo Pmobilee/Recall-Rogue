@@ -198,6 +198,7 @@ export class BotBrain {
       apAvailable,
       chargeSurcharge,
       enemyNextDamage,
+      playerShield: turnState.playerState?.shield ?? 0,
     });
 
     // Step 2: Build play plan — decide mode per card
@@ -241,10 +242,11 @@ export class BotBrain {
       apAvailable: number;
       chargeSurcharge: number;
       enemyNextDamage: number;
+      playerShield: number;
     },
   ): Card[] {
     const { skills } = this;
-    const { playerHpPct, enemyHp, currentChainType, apAvailable, chargeSurcharge, enemyNextDamage } = ctx;
+    const { playerHpPct, enemyHp, currentChainType, apAvailable, chargeSurcharge, enemyNextDamage, playerShield } = ctx;
 
     if (skills.cardSelection < 0.3) {
       // 0.0–0.3: play in hand order
@@ -334,6 +336,13 @@ export class BotBrain {
         if (apCost > apAvailable * 0.6) {
           score -= 20;
         }
+      }
+
+      // ── blockSkill: don't waste AP on block-dependent cards with no block ──
+      // Entrench (fortify) and Shield Bash (conversion) do nothing without existing block
+      if ((card.mechanicId === 'fortify' || card.mechanicId === 'conversion') &&
+          playerShield < 5) {
+        score -= 500; // Don't waste AP on block-dependent cards with no block
       }
 
       return { card, score };
@@ -472,6 +481,9 @@ export class BotBrain {
     }
     const deckSize = currentDeck.length || 1;
 
+    // Count shield-type cards for block synergy scoring
+    const shieldCount = typeCounts['shield'] ?? 0;
+
     for (const opt of options) {
       let score = 0;
 
@@ -485,6 +497,12 @@ export class BotBrain {
 
       // Prefer low AP cost for AP efficiency
       score -= opt.apCost * 5;
+
+      // Synergy bonus: Entrench (fortify) and Shield Bash (conversion) are better
+      // when the deck already has enough block cards to make them useful
+      if ((opt.id === 'fortify' || opt.id === 'conversion') && shieldCount >= 3) {
+        score += 15; // Synergy bonus with existing shield cards
+      }
 
       if (score > bestScore) {
         bestScore = score;

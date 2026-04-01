@@ -637,10 +637,11 @@ describe('AR-271 Relic Mechanic: Lucky Coin armed flag', () => {
 describe('AR-271 Aura States: Brain Fog and Flow State via gameplay', () => {
   /**
    * Test 7: Wrong Charges increase fog toward Brain Fog (≥ 7).
-   * Starting at 0, each wrong Charge raises fog by 2.
-   * After 2 wrong Charges: 0 + 2 + 2 = 4 → neutral.
+   * Starting at 0, each wrong Charge raises fog by 1.
+   * After 2 wrong Charges: 0 + 1 + 1 = 2 → still flow_state.
+   * After 3 wrong Charges: 2 + 1 = 3 → neutral.
    */
-  it('wrong Charges increase fog (2 wrongs: fog rises from 0 to 4, neutral)', () => {
+  it('wrong Charges increase fog (2 wrongs: fog rises from 0 to 2, still flow_state)', () => {
     const w0 = makeCard({ id: 'fog_w0', factId: 'fog_wf0', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
     const w1 = makeCard({ id: 'fog_w1', factId: 'fog_wf1', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
     const padding: Card[] = Array.from({ length: 18 }, (_, i) =>
@@ -657,12 +658,12 @@ describe('AR-271 Aura States: Brain Fog and Flow State via gameplay', () => {
     expect(getAuraLevel()).toBe(0);
 
     playCardAction(turnState, 'fog_w0', false, false, 'charge');
-    expect(getAuraLevel()).toBe(2); // 0 + 2 = 2 (still flow_state)
+    expect(getAuraLevel()).toBe(1); // 0 + 1 = 1 (still flow_state)
 
     playCardAction(turnState, 'fog_w1', false, false, 'charge');
-    expect(getAuraLevel()).toBe(4); // 2 + 2 = 4 → neutral
+    expect(getAuraLevel()).toBe(2); // 1 + 1 = 2 → still flow_state (threshold is ≤2)
 
-    expect(getAuraState()).toBe('neutral');
+    expect(getAuraState()).toBe('flow_state');
   });
 
   /**

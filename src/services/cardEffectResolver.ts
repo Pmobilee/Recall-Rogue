@@ -10,6 +10,7 @@ import {
   LEGACY_TIER_MULTIPLIER,
   TIER_MULTIPLIER,
   CHARGE_CORRECT_MULTIPLIER,
+  SURGE_CC_BONUS_MULTIPLIER,
   getBalanceOverrides,
   CURSED_QP_MULTIPLIER,
   CURSED_CHARGE_CORRECT_MULTIPLIER,
@@ -329,6 +330,13 @@ export interface AdvancedResolveOptions {
    * 0 = no bonus.
    */
   factDamageBonus?: number;
+
+  /**
+   * Whether this card play is on a Surge turn.
+   * When true and the play is Charge Correct, damage is multiplied by SURGE_CC_BONUS_MULTIPLIER (1.5).
+   * Populated by turnManager from turnState.isSurge.
+   */
+  isSurge?: boolean;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -534,9 +542,14 @@ export function resolveCardEffect(
     ? 1 + (advanced.factDamageBonus ?? 0)
     : 1;
 
+  // Surge CC bonus: on Surge turns, Charge Correct attacks deal extra damage.
+  const surgeMultiplier = (advanced.isSurge && isChargeCorrect && effectiveType === 'attack')
+    ? SURGE_CC_BONUS_MULTIPLIER
+    : 1;
+
   const rawValue = effectiveBase * focusAdjustedMultiplier;
   result.rawValue = rawValue;
-  const scaledValue = Math.round(rawValue * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier * factDamageBonusMult);
+  const scaledValue = Math.round(rawValue * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier * factDamageBonusMult * surgeMultiplier);
   // Apply flat relic attack bonus after all multipliers (so it isn't multiplied by combo/chain).
   const relicFlatAttackBonus = relicAttackMods?.flatDamageBonus ?? 0;
   const finalValue = effectiveType === 'attack'

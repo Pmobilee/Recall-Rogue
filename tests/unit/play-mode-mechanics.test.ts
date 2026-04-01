@@ -170,9 +170,9 @@ describe('strike mechanic play modes', () => {
     expect(result.damageDealt).toBe(4);
   });
 
-  it('charge_correct: deals 8 damage (round(4*2.0), CHARGE_CORRECT_MULTIPLIER=2.0)', () => {
+  it('charge_correct: deals 7 damage (round(4*1.75), CHARGE_CORRECT_MULTIPLIER=1.75)', () => {
     const result = resolve('strike', 'charge_correct');
-    expect(result.damageDealt).toBe(8);
+    expect(result.damageDealt).toBe(7);
   });
 
   it('charge_wrong: deals 3 damage', () => {
@@ -195,9 +195,9 @@ describe('reckless mechanic', () => {
     expect(result.selfDamage).toBe(3);
   });
 
-  it('charge_correct: 12 damage (round(6*2.0)), still 3 self-damage (flat)', () => {
+  it('charge_correct: 11 damage (round(6*1.75)), still 3 self-damage (flat)', () => {
     const result = resolve('reckless', 'charge_correct');
-    expect(result.damageDealt).toBe(12);
+    expect(result.damageDealt).toBe(11);
     expect(result.selfDamage).toBe(3); // self-damage does NOT scale
   });
 
@@ -216,16 +216,16 @@ describe('execute mechanic', () => {
     expect(result.damageDealt).toBe(3);
   });
 
-  it('charge_correct: 30 damage (6 base + 24 bonus) at <30% HP', () => {
+  it('charge_correct: 29 damage (5 base + 24 bonus) at <30% HP', () => {
     const result = resolve('execute', 'charge_correct', undefined, { currentHP: 10, maxHP: 100 });
-    // 6 base (Math.round(3*2.0)) + 24 hardcoded bonus = 30
-    // At chargeMultiplier=1.0, tier=1, effectMultiplier=1: finalValue=6, bonus=24
-    expect(result.damageDealt).toBe(30);
+    // 5 base (Math.round(3*1.75)) + 24 hardcoded bonus = 29
+    // At chargeMultiplier=1.0, tier=1, effectMultiplier=1: finalValue=5, bonus=24
+    expect(result.damageDealt).toBe(29);
   });
 
-  it('charge_correct: only 6 damage at full HP (no bonus trigger)', () => {
+  it('charge_correct: only 5 damage at full HP (no bonus trigger)', () => {
     const result = resolve('execute', 'charge_correct', undefined, { currentHP: 100, maxHP: 100 });
-    expect(result.damageDealt).toBe(6);
+    expect(result.damageDealt).toBe(5);
   });
 
   it('charge_wrong: > 0 damage in all modes', () => {
@@ -417,9 +417,9 @@ describe('block mechanic', () => {
     const result = resolve('block', 'quick');
     expect(result.shieldApplied).toBe(5);
   });
-  it('charge_correct: 10 shield (Math.round(5*2.0), QP=5 and CC_MULT=2.0)', () => {
+  it('charge_correct: 9 shield (Math.round(5*1.75), QP=5 and CC_MULT=1.75)', () => {
     const result = resolve('block', 'charge_correct');
-    expect(result.shieldApplied).toBe(10);
+    expect(result.shieldApplied).toBe(9);
   });
   it('charge_wrong: 3 shield (chargeWrongValue buffed 2→3, 2026-04-01)', () => {
     const result = resolve('block', 'charge_wrong');
@@ -461,9 +461,9 @@ describe('thorns mechanic', () => {
     expect(result.shieldApplied).toBe(3);
     expect(result.thornsValue).toBe(3);
   });
-  it('charge_correct: 6 block (round(3*2.0)), 9 reflect (hardcoded)', () => {
+  it('charge_correct: 5 block (round(3*1.75)), 9 reflect (hardcoded)', () => {
     const result = resolve('thorns', 'charge_correct');
-    expect(result.shieldApplied).toBe(6);
+    expect(result.shieldApplied).toBe(5);
     expect(result.thornsValue).toBe(9);
   });
   it('charge_wrong: 2 block, 2 reflect', () => {
@@ -492,9 +492,9 @@ describe('empower mechanic', () => {
     const result = resolve('empower', 'quick');
     expect(result.finalValue).toBe(50);
   });
-  it('charge_correct: finalValue=100 (round(50*2.0), QP=50 and CC_MULT=2.0)', () => {
+  it('charge_correct: finalValue=88 (round(50*1.75), QP=50 and CC_MULT=1.75)', () => {
     const result = resolve('empower', 'charge_correct');
-    expect(result.finalValue).toBe(100);
+    expect(result.finalValue).toBe(88);
   });
   it('charge_wrong: finalValue=35 (chargeWrongValue buffed 25→35, 2026-04-01)', () => {
     const result = resolve('empower', 'charge_wrong');

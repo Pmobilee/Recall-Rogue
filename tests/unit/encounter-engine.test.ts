@@ -394,8 +394,8 @@ describe('Enemy Manager', () => {
       expect(getFloorScaling(5)).toBeCloseTo(1.40);
     });
 
-    it('returns 1.90 for floor 10', () => {
-      expect(getFloorScaling(10)).toBeCloseTo(1.90);
+    it('returns 3.25 for floor 10 (segment 2, 0.25/floor)', () => {
+      expect(getFloorScaling(10)).toBeCloseTo(3.25);
     });
   });
 
@@ -512,8 +512,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'attack', value: 5, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: FLOOR_DAMAGE_SCALE_MID=2.0, so 5 * 2.0 = 10, capped at 10 (segment 1 cap, doubled 2026-03-31).
-      expect(result.damage).toBe(10);
+      // Floor 1: FLOOR_DAMAGE_SCALE_MID=1.2, so round(5 * 1.2) = 6, capped at segment 1 cap of 3.
+      expect(result.damage).toBe(3);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: 10 * 1.5 * 1.0 = 15, capped at 10 per segment 1 (cap doubled 2026-03-31)
-      expect(result.damage).toBe(10);
+      // Floor 1: round(10 * 1.5 * 1.2) = 18, capped at segment 1 cap of 3.
+      expect(result.damage).toBe(3);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // 5 * 1.0 (strength) * 1.0 (floor) * 4 hits = 20, capped at 10 per segment 1 (cap doubled 2026-03-31)
-      expect(result.damage).toBe(10);
+      // round(5 * 1.0 * 1.2) * 4 = 24, capped at segment 1 cap of 3.
+      expect(result.damage).toBe(3);
     });
 
     it('returns player debuffs for debuff intent', () => {
@@ -782,26 +782,26 @@ describe('Player Combat State', () => {
   });
 
   describe('resetTurnState', () => {
-    it('persists shield (capped at 2x maxHP) and clears cardsPlayed', () => {
+    it('decays shield by 25% each turn and clears cardsPlayed', () => {
       const state = mockPlayerState({
         shield: 15,
         cardsPlayedThisTurn: 4,
       });
       resetTurnState(state);
-      // Shield of 15 is below cap (2 × 80 = 160), so it persists
-      expect(state.shield).toBe(15);
+      // Block decays: floor(15 * 0.75) = 11
+      expect(state.shield).toBe(11);
       expect(state.cardsPlayedThisTurn).toBe(0);
     });
 
-    it('caps shield at 2x maxHP when carrying over', () => {
+    it('decays large shield by 25%', () => {
       const state = mockPlayerState({
         shield: 250,
         maxHP: 80,
         cardsPlayedThisTurn: 0,
       });
       resetTurnState(state);
-      // Cap is 2 × 80 = 160
-      expect(state.shield).toBe(160);
+      // floor(250 * 0.75) = 187
+      expect(state.shield).toBe(187);
     });
 
     it('does not clear HP or status effects', () => {
@@ -1186,7 +1186,9 @@ describe('Turn Manager', () => {
       }
       if (!ts.result) {
         endPlayerTurn(ts);
-        expect(ts.deck.hand.length).toBe(HAND_SIZE);
+        // Turn 2 is a surge turn (isSurgeTurn(2)=true), so player draws HAND_SIZE + SURGE_DRAW_BONUS cards.
+        // HAND_SIZE=5, SURGE_DRAW_BONUS=1 → 6 cards drawn.
+        expect(ts.deck.hand.length).toBe(HAND_SIZE + 1);
       }
     });
 
@@ -1226,11 +1228,13 @@ describe('Turn Manager', () => {
       expect(ts.result).toBe('defeat');
     });
 
-    it('resets shield after turn', () => {
+    it('decays shield after turn (enemy attacks first, then 25% decay)', () => {
       const ts = startEncounter(deck, enemy);
       ts.playerState.shield = 10;
       endPlayerTurn(ts);
-      expect(ts.playerState.shield).toBe(0);
+      // Enemy attacks first: 3 damage (floor 1 cap) → shield 10 - 3 = 7
+      // Then resetTurnState decays: floor(7 * 0.75) = 5
+      expect(ts.playerState.shield).toBe(5);
     });
 
     it('ticks player and enemy status effects', () => {

@@ -44,6 +44,7 @@ import {
   getBalanceValue,
   BLEED_BONUS_PER_STACK,
   BLEED_DECAY_PER_TURN,
+  SURGE_DRAW_BONUS,
 } from '../data/balance';
 import { MECHANICS_BY_TYPE, getMechanicDefinition, type PlayMode } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
@@ -1301,6 +1302,7 @@ export function playCardAction(
       correctChargesThisEncounter: correctChargesForResolver,
       scarTissueStacks: _scarTissueStacks,
       factDamageBonus,
+      isSurge: turnState.isSurge,
     },
   );
 
@@ -2767,6 +2769,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   let drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
   turnState.pendingDrawCountOverride = null;
+  // Surge Draw Bonus: draw one extra card at the start of Surge turns.
+  if (turnState.isSurge) {
+    drawCount += SURGE_DRAW_BONUS;
+  }
   // AR-261: Flow State bonus — draw one extra card per turn when in flow_state
   if (getAuraState() === 'flow_state') {
     drawCount += 1;

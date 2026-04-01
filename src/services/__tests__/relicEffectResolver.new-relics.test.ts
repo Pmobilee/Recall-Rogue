@@ -970,9 +970,9 @@ describe('whetstone (reworked)', () => {
 });
 
 describe('iron_shield (reworked)', () => {
-  it('grants 3 block at turn start', () => {
+  it('grants 5 block at turn start', () => {
     const result = resolveTurnStartEffects(new Set(['iron_shield']));
-    expect(result.bonusBlock).toBe(3);
+    expect(result.bonusBlock).toBe(5);
   });
 });
 
