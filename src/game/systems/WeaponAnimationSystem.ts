@@ -342,8 +342,10 @@ export class WeaponAnimationSystem {
           sword.setY(handleY + animState.yOffset * scale)
         },
         onComplete: () => {
-          // ── IMPACT ──
-          ;(scene as any).screenShake?.trigger('micro')
+          // ── IMPACT ── guard against stale scene refs after shutdown
+          if (scene?.scene?.isActive()) {
+            ;(scene as any).screenShake?.trigger('micro')
+          }
 
           // ── FADE OUT (150ms) ──
           scene.tweens.add({
@@ -522,8 +524,10 @@ export class WeaponAnimationSystem {
           // Blue-white particle burst from shield center
           this.spawnTomeParticles(peakX, peakY, 0x8fbfff, scale)
 
-          // Camera shake — lighter than sword, more of a "clank" feel
-          ;(scene as any).screenShake?.trigger('micro')
+          // Camera shake — lighter than sword, more of a "clank" feel — guard against stale scene refs
+          if (scene?.scene?.isActive()) {
+            ;(scene as any).screenShake?.trigger('micro')
+          }
 
           // Hold at peak (180ms), then drop back down with fade out
           scene.time.delayedCall(180, () => {

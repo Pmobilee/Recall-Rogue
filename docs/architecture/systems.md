@@ -80,6 +80,8 @@ Falls back to colored placeholder rectangle + emoji icon when no texture exists.
 
 Key public surface: `setTexture(key, size, x, y, category)`, `getContainer()`, `updateBasePosition(x, y)`, `playAttack(cb)`, `playHit()`, `playDeath(cb)`, `setEnraged(bool)`, `applyAtmosphere(config)`.
 
+**Scene-alive guard:** All `screenShake?.trigger()` calls inside tween `onComplete` callbacks are wrapped with `if (this.scene?.scene?.isActive())` to prevent errors when `CombatScene.onShutdown()` calls `tweens.killAll()` (which fires `onComplete` on in-flight tweens after the scene is destroyed).
+
 ### WeaponAnimationSystem
 
 **File:** `src/game/systems/WeaponAnimationSystem.ts`
@@ -89,6 +91,8 @@ Manages sword, arm+tome, and shield player-side animations. Sprites start alpha=
 **Assets:** `assets/sprites/weapons/sword.png`, `arm.png`, `tome.png`, `shield.png` (loaded via `preloadAssets()`, called from CombatScene preload).
 
 **Setup lifecycle:** `createSprites(displayH)` must be called in both `CombatScene.create()` AND `CombatScene.onWake()`. `onShutdown()` calls `destroy()` which nulls all sprites and removes canvas textures; `onWake()` must recreate them. The base PNG textures (`weapon-sword` etc.) are NOT removed by `destroy()` — they survive in the texture cache from the initial preload, so `createSprites()` on wake is safe and cheap.
+
+**Scene-alive guard:** `screenShake?.trigger()` calls inside tween `onComplete` callbacks are wrapped with `if (scene?.scene?.isActive())` to prevent crashes when `tweens.killAll()` fires callbacks on in-flight tweens during shutdown.
 
 ### DepthLightingSystem
 

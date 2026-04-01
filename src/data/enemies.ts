@@ -256,7 +256,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Page Flutter',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 5, // standard
+    baseHP: 8, // raised — floor 1 HP floor (BATCH-003)
     intentPool: [
       { type: 'attack', value: 3, weight: 3, telegraph: 'Swooping strike' },
       { type: 'attack', value: 3, weight: 2, telegraph: 'Frenzied bite' },
@@ -274,7 +274,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Thesis Construct',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 5, // standard
+    baseHP: 7, // raised — floor 1 HP floor (BATCH-003)
     intentPool: [
       { type: 'attack', value: 2, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 2, weight: 2, telegraph: 'Hardening crystals' },
@@ -293,7 +293,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Mold Puff',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // tanky
+    baseHP: 8, // raised — floor 1 HP floor (BATCH-003)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Spore burst' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
@@ -718,7 +718,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Ink Slug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // tanky
+    baseHP: 9, // raised — floor 1 HP floor (BATCH-003)
     intentPool: [
       { type: 'attack', value: 3, weight: 2, telegraph: 'Mud slash' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -753,7 +753,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Staple Bug',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 7, // tanky
+    baseHP: 8, // raised — floor 1 HP floor (BATCH-003)
     intentPool: [
       { type: 'defend', value: 2, weight: 3, telegraph: 'Harden shell' },
       { type: 'attack', value: 4, weight: 2, telegraph: 'Mandible snap' },

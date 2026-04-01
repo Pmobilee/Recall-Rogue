@@ -1,0 +1,25 @@
+{
+  "batchId": "BATCH-2026-04-01-003",
+  "createdAt": "2026-04-01T12:48:00Z",
+  "completedAt": "2026-04-01T13:45:00Z",
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple"],
+  "args": { "runs": 3, "domain": "general_knowledge" },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "overallVerdict": "PASS",
+  "fixes_since_batch_002": [
+    "Study question dedup (excludeFactIds across iterations)",
+    "SRS +/- indicator on answer feedback",
+    "Charge button shows total AP cost instead of just surcharge",
+    "Rome/Greece deck pool contamination fixed (15 facts reassigned)",
+    "Post-reward flow: synchronous sceneComplete in turbo mode",
+    "Floor 1 enemy base intent values raised (2→3-4)",
+    "playerHp added to getCombatState()"
+  ],
+  "reports": {
+    "quiz-quality": { "status": "complete", "verdict": "PASS", "criticalCount": 0, "highCount": 0, "mediumCount": 1, "lowCount": 2 },
+    "balance-curve": { "status": "complete", "verdict": "PASS", "criticalCount": 0, "highCount": 1, "mediumCount": 3, "lowCount": 0 },
+    "fun-engagement": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 1, "mediumCount": 2, "lowCount": 1 },
+    "study-temple": { "status": "complete", "verdict": "PASS", "criticalCount": 0, "highCount": 1, "mediumCount": 0, "lowCount": 0 }
+  }
+}

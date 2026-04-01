@@ -9,7 +9,7 @@ import {
   getNotifications, validateScreen,
 } from './playtestDescriber'
 import { readStore } from './storeBridge'
-import { isTurboMode, turboDelay } from '../utils/turboMode'
+import { turboDelay } from '../utils/turboMode'
 import { factsDB } from '../services/factsDB'
 import { RELIC_BY_ID } from '../data/relics'
 
@@ -327,14 +327,28 @@ async function previewCardQuiz(index: number): Promise<PlayResult> {
   });
 }
 
-/** End the current combat turn. */
+/** End the current combat turn. Polls until the turn actually advances (max 3s). */
 async function endTurn(): Promise<PlayResult> {
   return safeAction(async () => {
     const btn = document.querySelector('[data-testid="btn-end-turn"]') as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: 'End Turn button not found' };
+    if (!btn) return { ok: false, message: 'End turn button not found' };
+    if (btn.disabled) return { ok: false, message: 'End turn button is disabled' };
+
+    // Read current screen before clicking
+    const prevScreen = getScreen();
     btn.click();
-    await wait(turboDelay(2000));
-    return { ok: true, message: 'Turn ended' };
+
+    // Poll until turn advances or screen changes (max 3s)
+    for (let i = 0; i < 60; i++) {
+      await wait(50);
+      const screen = getScreen();
+      if (screen !== prevScreen || screen !== 'combat') break;
+      // Check if button is re-enabled (new turn started)
+      const newBtn = document.querySelector('[data-testid="btn-end-turn"]') as HTMLButtonElement | null;
+      if (newBtn && !newBtn.disabled) break;
+    }
+
+    return { ok: true, message: `Turn ended. Screen: ${getScreen()}` };
   });
 }
 
@@ -353,7 +367,8 @@ async function selectRoom(index: number): Promise<PlayResult> {
   });
 }
 
-/** Select a map node by ID (e.g. 'r0-n0'). Triggers the full node selection + room entry flow. */
+/** Select a map node by ID (e.g. 'r0-n0'). Triggers the full node selection + room entry flow.
+ *  Polls until screen changes from dungeonMap (max 5s) to handle slow ensurePhaserBooted + startEncounterForRoom. */
 async function selectMapNode(nodeId: string): Promise<PlayResult> {
   return safeAction(async () => {
     // Click the DOM button directly — this fires the Svelte onclick handler
@@ -361,7 +376,15 @@ async function selectMapNode(nodeId: string): Promise<PlayResult> {
     if (!btn) return { ok: false, message: `Map node ${nodeId} not found` };
     if (btn.disabled) return { ok: false, message: `Map node ${nodeId} is disabled (state: ${btn.className})` };
     btn.click();
-    await wait(isTurboMode() ? 100 : 500);
+
+    // Poll until screen changes from dungeonMap (max 5s)
+    // Needed because ensurePhaserBooted + startEncounterForRoom can take 500ms+ in turbo mode
+    for (let i = 0; i < 100; i++) {
+      await wait(50);
+      const screen = getScreen();
+      if (screen !== 'dungeonMap') break;
+    }
+
     return { ok: true, message: `Selected map node ${nodeId}. Screen: ${getScreen()}` };
   });
 }

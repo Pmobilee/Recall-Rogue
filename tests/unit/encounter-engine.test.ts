@@ -339,14 +339,14 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(24);
   });
 
-  it('page_flutter has 5 baseHP (AR-59.13 v2 stats)', () => {
+  it('page_flutter has 8 baseHP (BATCH-003 floor 1 HP raise)', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'page_flutter');
-    expect(bat?.baseHP).toBe(5);
+    expect(bat?.baseHP).toBe(8);
   });
 
-  it('thesis_construct has 5 baseHP (AR-99 balance tuning)', () => {
+  it('thesis_construct has 7 baseHP (BATCH-003 floor 1 HP raise)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'thesis_construct');
-    expect(golem?.baseHP).toBe(5);
+    expect(golem?.baseHP).toBe(7);
   });
 
   it('algorithm has 12 baseHP (AR-59.13 v2 stats)', () => {

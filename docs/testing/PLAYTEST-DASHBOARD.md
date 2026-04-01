@@ -72,3 +72,17 @@ curl -s http://localhost:5175/api/playtest/leaderboard | jq '.updatedAt, .totalP
 curl -s http://localhost:5175/api/playtest/report/<playthrough-id> | jq '.issueCount'
 curl -s http://localhost:5175/api/playtest/log/<playthrough-id> | jq '.summary'
 ```
+
+## playtestAPI.ts — Timing Behaviour
+
+`src/dev/playtestAPI.ts` exposes `window.__rrPlay` for AI-driven playtesting.
+
+### endTurn()
+Clicks `[data-testid="btn-end-turn"]` then **polls for up to 3 s** (60 × 50 ms) rather than using a fixed wait. The poll breaks when:
+- The screen changes away from `combat`, OR
+- The End Turn button re-enables (indicating a new turn has started).
+
+This replaces the old `await wait(turboDelay(2000))` which was insufficient for the async callback chain to complete, requiring a double-call to actually advance the turn.
+
+### selectMapNode(nodeId)
+Clicks `[data-testid="map-node-${nodeId}"]` then **polls for up to 5 s** (100 × 50 ms) until `getScreen()` is no longer `'dungeonMap'`. This is needed because `ensurePhaserBooted() + startEncounterForRoom()` can take 500 ms+ in turbo mode, making the old fixed 100 ms wait too short to reliably launch combat.

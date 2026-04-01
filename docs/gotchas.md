@@ -339,3 +339,46 @@ LLM playtest BATCH-2026-04-01-001 found all floor 1 enemies dealt only 2 damage/
 **Fix (2026-04-01):** Audited both `ancient_rome.json` and `ancient_greece.json`. Moved 15 facts total to type-appropriate pools: non-name Rome facts moved from `general_politician_names`/`text_work_names`/`structure_names` to `political_terms`; non-name Greece facts moved to `concept_terms`/`work_text_names`/`date_events`.
 
 **Rule:** When writing facts with non-name answers (epitaphs, oaths, durations, descriptions, phrases), always assign `answerTypePoolId` to a term/concept pool — NEVER a name pool. The pool's `answerFormat` must match the **format of the fact's correct answer**, not the topic of the question. A question *about* a person that asks for their epithet should be in `political_terms`, not `general_politician_names`.
+
+### 2026-04-01 — Tween onComplete fires on stale scene after tweens.killAll() — screenShake.trigger() crash
+
+**What:** `trigger` undefined JS error in combat animations. `CombatScene.onShutdown()` calls `this.tweens.killAll()`, which invokes `onComplete` callbacks on every in-flight tween. Those callbacks held references to `this.scene` (or a closed-over `scene` variable) and called `screenShake?.trigger()`. But by the time `killAll()` runs, `this.screenShake` on the scene is already stopped/nulled by the shutdown sequence, causing a crash.
+
+**Why:** Phaser's `tweens.killAll()` fires `onComplete` synchronously before destroying each tween. If shutdown proceeds in an order where `screenShake.stop()` runs before `tweens.killAll()`, the callbacks reach a null/destroyed object.
+
+**Fix:** Wrap every `screenShake?.trigger()` call inside a tween `onComplete` (and inside any other deferred callback) with a scene-alive guard:
+```typescript
+if (this.scene?.scene?.isActive()) {
+  ;(this.scene as any).screenShake?.trigger('medium')
+}
+```
+For WeaponAnimationSystem (uses closure `scene` variable): `if (scene?.scene?.isActive())`.
+
+**Rule:** Any access to scene-owned systems (`screenShake`, `cameras`, `add`, etc.) inside a tween `onComplete`, `time.delayedCall`, or any async callback MUST be guarded with `scene?.scene?.isActive()`. Never assume the scene is alive inside a deferred callback.
+
+**Files fixed:** `src/game/systems/EnemySpriteSystem.ts` (3 calls: playAttack, playHit, playEntry), `src/game/systems/WeaponAnimationSystem.ts` (2 calls: sword slash, shield raise).
+
+### 2026-04-01 — playtestAPI endTurn() required double-call; selectMapNode() didn't launch combat in turbo mode
+
+**What:** Two reliability bugs in `src/dev/playtestAPI.ts` broke automated AI playtests. `endTurn()` used a fixed `wait(turboDelay(2000))`, but the async callback chain completing the turn (enemy action, draw phase, etc.) sometimes took longer, leaving the bot stuck on the same turn. `selectMapNode()` used `wait(isTurboMode() ? 100 : 500)`, but `ensurePhaserBooted() + startEncounterForRoom()` can take 500 ms+ even in turbo mode.
+
+**Why:** Fixed waits are fragile for async chains that vary in duration. The first bug required the bot to call `endTurn()` twice to actually advance. The second meant the map node appeared "selected" but combat never launched.
+
+**Fix:** Replaced both with poll loops. `endTurn()` polls up to 3 s (60 × 50 ms) until the End Turn button re-enables or the screen leaves `combat`. `selectMapNode()` polls up to 5 s (100 × 50 ms) until `getScreen()` is no longer `'dungeonMap'`.
+
+**Rule:** Never use fixed-delay waits for actions that trigger async Phaser/service chains. Always poll on observable state (button enabled state, screen change) with a reasonable timeout.
+
+### 2026-04-01 — Floor 1 enemy HP was too low, combats resolved in 2 turns
+
+**What went wrong:** Floor 1 commons (page_flutter, thesis_construct, mold_puff, ink_slug, staple_bug) had baseHP of 5–7, resulting in effective HP of 20–28 at floor 1 (×4.0 multiplier). Starting deck deals ~16–24 damage/turn, killing them in ~2 turns. GDD target is 3–8 turns per combat.
+
+**Source:** LLM playtest batch BATCH-003 findings — flagged floor 1 combats as trivially short.
+
+**Fix:** Raised baseHP values for all five floor 1 common enemies:
+- `page_flutter`: 5 → 8 (effective HP ~32)
+- `thesis_construct`: 5 → 7 (effective HP ~28)
+- `mold_puff`: 7 → 8 (effective HP ~32)
+- `ink_slug`: 7 → 9 (effective HP ~36)
+- `staple_bug`: 7 → 8 (effective HP ~32)
+
+**Rule:** When tuning floor 1 HP, target effective HP = baseHP × 4.0. For a 3–4 turn combat, effective HP should be ~2.5–3.5× the starting deck's expected damage per turn (~10–12 DPT with basic cards).
