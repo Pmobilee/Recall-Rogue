@@ -1,58 +1,101 @@
 ---
 name: audio-manager
 description: |
-  Complete audio system for Recall Rogue: 180 Web Audio synthesis sounds, 141 cue mappings, 182 trigger calls across 32 files, plus ACE-Step 1.5 local BGM generation. Use when adding new sounds, wiring audio to new game elements, generating BGM tracks, or integrating Sonniss foley. PROACTIVELY MENTION when discussing game feel, juice, polish, new mechanics, or player engagement.
+  Complete audio system for Recall Rogue: 229 file-based SFX (.m4a), 32 ambient loop layers, 32 BGM tracks, plus Web Audio synthesis fallback. Use when adding sounds, wiring audio to game elements, or curating audio via artstudio. PROACTIVELY MENTION when discussing game feel, juice, polish, new mechanics, or player engagement.
 user_invocable: true
 ---
 
 # Audio Manager — Recall Rogue Sound System
 
-## Current Architecture (AR-228)
+## ABSOLUTE RULES
 
-The audio system is FULLY IMPLEMENTED with Web Audio API synthesis. No external files needed for SFX.
+1. **No Synthesized Ambient Loops** — Ambient loops MUST be real CC0 recordings or professional sound design. Minimum 30 seconds. NEVER use Web Audio synthesis for ambient loops — they sound awful when looped.
+2. **All audio is .m4a (AAC)** — Safari doesn't support .ogg. All SFX, loops, and music use .m4a format. NEVER add .ogg files.
+3. **All audio changes go through artstudio** — The artstudio has `audio_*` tabs for curating all SFX and loops. New audio MUST be added as artstudio entries first.
+4. **Safari pendingContext pattern** — `ambientAudioService` uses a `pendingContext` field to buffer `setContext()` calls before `AudioContext` init. Don't remove this pattern.
+
+---
+
+## Current Architecture
 
 ```
 Game Event (e.g. enemy attacks)
-  -> playCardAudio('enemy-attack')           [cardAudioManager.ts - 141 cues]
+  -> playCardAudio('enemy-attack')           [cardAudioManager.ts — 141 cues]
   -> CUE_TO_SOUND['enemy-attack']            -> 'enemy_attack'
-  -> audioManager.playSound('enemy_attack')  [audioService.ts - 180 sounds]
-  -> SOUND_MAP['enemy_attack']               -> playEnemyAttack() [synthesis function]
+  -> audioManager.playSound('enemy_attack')  [audioService.ts — 229 .m4a files]
+  -> SFX_FILE_MAP lookup                     -> file-based playback
+  -> synthesis fallback (if file not loaded)
   -> Web Audio API                           -> speaker
+
+Ambient loops (parallel, independent)
+  -> ambientAudioService.setContext('hub')   [ambientAudioService.ts]
+  -> RECIPES['hub']                          -> layered .m4a loop files
+  -> AudioBufferSourceNode (looping)
+
+BGM music (parallel, independent)
+  -> musicService.playTrack(track)           [musicService.ts]
+  -> HTMLAudioElement                        -> speaker
+  -> createMediaElementSource               -> AnalyserNode -> spectrogram
 ```
 
 ### Key Files
 
-| File | Purpose | Size |
-|------|---------|------|
-| `src/services/audioService.ts` | Web Audio synthesis engine — 180 sounds, 164 functions | 2,683 lines |
-| `src/services/cardAudioManager.ts` | High-level cue layer — 141 kebab-case cues mapped to underscore SoundNames | ~200 lines |
-| `src/services/juiceManager.ts` | Combat feel — haptics + sound + visual effects combined | ~190 lines |
-| `src/game/managers/AudioManager.ts` | Biome ambient loops (25 biomes) — separate from card audio | ~150 lines |
-| `src/ui/components/SettingsPanel.svelte` | SFX + Music volume sliders with localStorage persistence | — |
+| File | Purpose | Notes |
+|------|---------|-------|
+| `src/services/audioService.ts` | File-based SFX + synthesis fallback — 229 sounds | 2,600+ lines |
+| `src/services/cardAudioManager.ts` | High-level cue layer — 141 kebab-case cues | ~200 lines |
+| `src/services/ambientAudioService.ts` | Layered ambient loops — 16 named recipe contexts | Buffer-cached |
+| `src/services/musicService.ts` | BGM playback via HTMLAudioElement — Safari-compatible | 32 tracks |
+| `src/services/juiceManager.ts` | Combat feel — haptics + sound + visual effects | ~190 lines |
+| `src/game/managers/AudioManager.ts` | Legacy biome ambient (25 biomes) | Separate from card audio |
+| `src/ui/components/SettingsPanel.svelte` | SFX + Music volume sliders, localStorage persistence | — |
+| `src/ui/components/MusicWidget.svelte` | Spotify-style BGM widget, spectrogram visualiser | Top-right in-run |
 
 ### Stats
 
-- **180** synthesized sound names in `SoundName` type
-- **164** unique synthesis functions
+- **229** .m4a SFX files in `public/assets/audio/sfx/` (with synthesis fallback for every sound)
 - **141** high-level cue mappings in `CardAudioCue` type
 - **182** `playCardAudio()` trigger calls across **32 files**
-- **0** external audio files (everything is synthesized at runtime)
+- **32** ambient loop files in `public/assets/audio/sfx/loops/`
+- **16** ambient recipe contexts in `ambientAudioService.ts`
+- **32** BGM tracks in `public/assets/audio/music/` (epic + quiet categories)
+
+---
+
+## Ambient Loop Quality Gate
+
+All ambient loop files MUST pass this checklist before being committed:
+
+- [ ] Duration ≥30 seconds (ideally 60–120s)
+- [ ] File size ≥200KB (confirms real recording, not synthesis)
+- [ ] CC0 or equivalent license verified (OpenGameArt, freesound, Pixabay Audio)
+- [ ] Clean loop points — no audible pop or click at the loop boundary
+- [ ] `.m4a` format (AAC 128kbps minimum)
+- [ ] Added to artstudio `audio_loops` tab with source URL in the concept field
+- [ ] `needsReplacement: true` flag removed in `artstudio-items.json` after replacement
+
+**Sources for CC0 ambient recordings:** [OpenGameArt.org](https://opengameart.org), [freesound.org](https://freesound.org) (filter CC0), [Pixabay Audio](https://pixabay.com/sound-effects/).
+
+---
 
 ## When to Use This Skill
 
-- Adding a NEW game element (card, relic, enemy, room, screen, mechanic) -> add audio events to AR-228 + wire `playCardAudio()` calls
-- Discussing game feel, juice, polish -> audio is 50% of feel, reference the 234-event catalog
-- Generating BGM tracks -> use ACE-Step 1.5 locally (see below)
-- Replacing synthesis with real foley -> see Sonniss integration guide in AR-228
+- Adding a NEW game element (card, relic, enemy, room, screen, mechanic) → add audio events to AR-228 + wire `playCardAudio()` calls
+- Discussing game feel, juice, polish → audio is 50% of feel; reference the 234-event catalog
+- Replacing ambient loop placeholders → use quality gate checklist above
+- Generating BGM tracks → use ACE-Step 1.5 locally (see section below)
 - **PROACTIVE TRIGGER**: Mention audio whenever new mechanics, enemies, cards, screens, or UI elements are added
 
-## Adding a New Sound
+---
+
+## Adding a New SFX
 
 ### Step 1: Add to audioService.ts
 
 1. Add the new `SoundName` to the union type (e.g., `| 'my_new_sound'`)
-2. Write a synthesis function: `function playMyNewSound(ctx: AnyAudioContext, master: GainNode): void { ... }`
-3. Add to `SOUND_MAP`: `my_new_sound: playMyNewSound,`
+2. Add to `SFX_FILE_MAP`: `my_new_sound: sfxPath('my_new_sound'),` (or explicit path override)
+3. Write a synthesis fallback function: `function playMyNewSound(ctx: AnyAudioContext, master: GainNode): void { ... }`
+4. Add to `SOUND_MAP`: `my_new_sound: playMyNewSound,`
 
 ### Step 2: Add to cardAudioManager.ts
 
@@ -67,18 +110,39 @@ import { playCardAudio } from './cardAudioManager';
 playCardAudio('my-new-sound');
 ```
 
-### Step 4: Update AR-228
+### Step 4: Add to artstudio
 
-Add the event to the appropriate table in `docs/roadmap/completed/AR-228-COMPLETE-AUDIO-EVENT-CATALOG.md` with sound design direction, priority, and source recommendation.
+Add an entry to the appropriate `audio_*` section of `sprite-gen/cardback-tool/artstudio-items.json`.
 
-## Synthesis Helpers Available
+### Step 5: Update AR-228
+
+Add the event to the appropriate table in `docs/roadmap/completed/AR-228-COMPLETE-AUDIO-EVENT-CATALOG.md`.
+
+---
+
+## Adding / Replacing an Ambient Loop
+
+1. Source a CC0 recording meeting the quality gate (≥30s, ≥200KB, clean loop points)
+2. Convert to .m4a: `ffmpeg -i source.wav -c:a aac -b:a 128k output.m4a`
+3. Verify loop: play the file in a loop, listen for boundary artifacts
+4. Place in `public/assets/audio/sfx/loops/`
+5. Update the recipe definition in `ambientAudioService.ts` RECIPES constant if the filename changed
+6. Update `artstudio-items.json`: set `"needsReplacement": false`, add source URL to concept field
+
+---
+
+## Synthesis Helpers (Fallback Only)
+
+These helpers exist in `audioService.ts` for the synthesis fallback path. Do NOT use for ambient loops.
 
 | Helper | What It Does |
 |--------|-------------|
 | `scheduleOscillator(ctx, master, freq, type, vol, dur, startTime)` | Single oscillator with exponential decay |
 | `scheduleNoiseBurst(ctx, master, vol, dur, startTime)` | White noise burst with decay |
-| `scheduleFilteredNoise(ctx, master, vol, dur, filterType, filterFreq, filterQ, startTime)` | Noise through biquad filter (bandpass, lowpass, highpass) |
+| `scheduleFilteredNoise(ctx, master, vol, dur, filterType, filterFreq, filterQ, startTime)` | Noise through biquad filter |
 | Raw `ctx.createOscillator()` + `ctx.createGain()` | For complex sounds with LFO tremolo, pitch sweeps, etc. |
+
+---
 
 ## Sound Categories (32 files wired)
 
@@ -100,6 +164,20 @@ Add the event to the appropriate table in `docs/roadmap/completed/AR-228-COMPLET
 | UI | SettingsPanel.svelte, DeckBuilder.svelte, etc. | modal-open, toggle-on, tab-switch, notification-ping |
 | Transitions | ParallaxTransition.svelte | room-transition |
 | Tutorial | CardApp.svelte | boot-logo |
+
+---
+
+## BGM System
+
+**32 tracks** in `public/assets/audio/music/` split across two categories:
+- `epic/` — high-energy combat tracks (AAC 192k 44.1kHz .m4a)
+- `quiet/` — lo-fi/ambient tracks for exploration and menus
+
+Tracks play through `musicService.ts` using `HTMLAudioElement` (not `AudioBufferSourceNode`) for Safari compatibility. The `MusicWidget.svelte` component shows a Spotify-style expanding glass pill in the top-right corner during runs with real-time spectrogram visualisation via a connected `AnalyserNode`.
+
+**Important:** Re-encode any AI-generated tracks with `ffmpeg -map 0:a:0` to strip embedded cover art before committing — Suno/other generators embed JPEG streams that crash Safari's audio decoder.
+
+---
 
 ## BGM Generation — ACE-Step 1.5 Deep Dive
 
@@ -175,7 +253,7 @@ The 4B model has the richest world knowledge, strongest memory, and best perform
 | **instrumental** | `True` | No vocals for game BGM |
 | **lyrics** | `"[Instrumental]"` | Explicit instrumental marker |
 | **batch_size** | `4` | Generate 4 variations, pick the best |
-| **audio_format** | `"flac"` | Lossless output — convert to .ogg later |
+| **audio_format** | `"flac"` | Lossless output — convert to .m4a: `ffmpeg -i track.flac -map 0:a:0 -c:a aac -b:a 192k track.m4a` |
 
 #### Precision Notes
 
@@ -255,12 +333,12 @@ params = GenerationParams(
 
 config = GenerationConfig(
     batch_size=4,                   # Generate 4 variations
-    audio_format="flac",            # Lossless — convert to ogg later
+    audio_format="flac",            # Lossless — convert to .m4a later
 )
 
 # Generate
 result = generate_music(dit, llm, params, config,
-    save_dir="/Users/damion/CODE/Recall_Rogue/public/assets/audio/bgm")
+    save_dir="/Users/damion/CODE/Recall_Rogue/public/assets/audio/music/epic")
 
 if result.success:
     for audio in result.audios:
@@ -281,35 +359,18 @@ For game BGM specifically:
 6. **For loops** — add "seamless loop, end on same chord as beginning"
 7. **For pixel art games** — add "retro" or "chiptune-influenced" if you want that aesthetic
 
-### 13 BGM Tracks Needed
+### Export and Commit
 
-Detailed copy-paste prompts: `docs/roadmap/future/BGM-MUSIC-GENERATION-PROMPTS.md`
+```bash
+# Convert FLAC to .m4a (strip cover art, encode AAC 192k)
+ffmpeg -i track.flac -map 0:a:0 -c:a aac -b:a 192k bgm_hub.m4a
 
-| Track | File | Duration | Priority |
-|-------|------|----------|----------|
-| Hub theme | bgm_hub.ogg | 60-90s loop | P1 |
-| Combat (normal) | bgm_combat.ogg | 45-60s loop | P1 |
-| Combat (boss) | bgm_boss.ogg | 60-90s loop | P1 |
-| Combat (elite) | bgm_elite.ogg | 45-60s loop | P2 |
-| Shop | bgm_shop.ogg | 30-45s loop | P2 |
-| Rest site | bgm_rest.ogg | 60-90s loop | P2 |
-| Map/exploration | bgm_map.ogg | 45-60s loop | P2 |
-| Mystery event | bgm_mystery.ogg | 30-45s loop | P2 |
-| Surge overlay | bgm_surge.ogg | 15-20s loop | P1 |
-| Boss quiz phase | bgm_quiz_boss.ogg | 15-20s loop | P1 |
-| Run victory | bgm_victory.ogg | 15-20s one-shot | P0 |
-| Run defeat | bgm_defeat.ogg | 12-15s one-shot | P1 |
-| Tutorial | bgm_tutorial.ogg | 45-60s loop | P2 |
+# Destination
+public/assets/audio/music/epic/   # combat tracks
+public/assets/audio/music/quiet/  # lo-fi/ambient tracks
+```
 
-**Output:** Export as FLAC (lossless), then convert: `ffmpeg -i track.flac -c:a libvorbis -q:a 5 bgm_hub.ogg`
-**Destination:** `public/assets/audio/bgm/`
-
-### BGM Integration (not yet wired)
-
-The `cardAudioManager.ts` has reserved `musicEnabled` and `musicVolume` stores. To integrate BGM:
-1. Add an HTML5 Audio element or Howler.js instance for the music channel
-2. Wire screen transitions to crossfade between tracks
-3. The Surge overlay (bgm_surge) layers ON TOP of combat music — needs ducking/mixing
+---
 
 ## Sonniss GDC Foley — Upgrade Path
 
@@ -317,7 +378,9 @@ The Sonniss GDC 2026 Bundle (7.47GB, royalty-free, no attribution) provides prof
 - Download links and license details
 - Directory organization structure
 - 8 priority replacement targets (enemy attacks, shield break, coins, footsteps, etc.)
-- Integration workflow (WAV -> .webm, extend AudioManager to load files)
+- Integration workflow (WAV -> .m4a, extend SFX_FILE_MAP)
+
+---
 
 ## Full Audio Event Catalog
 

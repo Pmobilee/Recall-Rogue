@@ -63,6 +63,7 @@
 | [enemy-animations](content/ENEMY-ANIMATIONS.md) | Enemy sprite animation states and definitions (114KB reference) |
 | [art-backgrounds](content/ART_BRIEF_BACKGROUNDS.md) | Background art requirements and briefs |
 | [sprite-pipeline](content/SPRITE_PIPELINE.md) | Sprite generation and processing pipeline |
+| [artstudio](content/artstudio.md) | Art Studio dev tool: category system, image generation, audio SFX review workflow, server API |
 
 ---
 

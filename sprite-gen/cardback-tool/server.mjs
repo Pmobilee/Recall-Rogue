@@ -1720,6 +1720,9 @@ const ARTSTUDIO_CATEGORIES = [
   'reward_icons', 'nav_icons', 'archetype_icons',
   'lb_icons', 'mystery_icons', 'synergy_icons',
   'ui_icons', 'map_icons', 'enemy_power_icons', 'currency_icons',
+  // Audio SFX categories (externally sourced, no generation)
+  'audio_loops', 'audio_combat', 'audio_quiz', 'audio_ui', 'audio_shop',
+  'audio_status', 'audio_encounter', 'audio_progression', 'audio_rest', 'audio_hub', 'audio_other',
 ];
 
 /** Categories that use remote ComfyUI instead of OpenRouter */
@@ -1875,6 +1878,17 @@ function checkDeployed(category, itemId) {
     currency_icons:    `public/assets/sprites/icons/icon_currency_${itemId}.png`,
     relicicons:        `public/assets/sprites/icons/icon_relic_${itemId}.png`,
     enemies:           `public/assets/sprites/enemies/${itemId}.png`,
+    audio_loops:       `public/assets/audio/sfx/loops/${itemId}.m4a`,
+    audio_combat:      `public/assets/audio/sfx/combat/${itemId}.m4a`,
+    audio_quiz:        `public/assets/audio/sfx/quiz/${itemId}.m4a`,
+    audio_ui:          `public/assets/audio/sfx/ui/${itemId}.m4a`,
+    audio_shop:        `public/assets/audio/sfx/shop/${itemId}.m4a`,
+    audio_status:      `public/assets/audio/sfx/status/${itemId}.m4a`,
+    audio_encounter:   `public/assets/audio/sfx/encounter/${itemId}.m4a`,
+    audio_progression: `public/assets/audio/sfx/progression/${itemId}.m4a`,
+    audio_rest:        `public/assets/audio/sfx/rest/${itemId}.m4a`,
+    audio_hub:         `public/assets/audio/sfx/hub/${itemId}.m4a`,
+    audio_other:       `public/assets/audio/sfx/other/${itemId}.m4a`,
   };
   const relPath = DEPLOY_PATHS[category];
   if (!relPath) return null;
@@ -1897,16 +1911,26 @@ app.get('/api/artstudio/items', (req, res) => {
 
 // POST /api/artstudio/items — upsert an item
 app.post('/api/artstudio/items', express.json(), (req, res) => {
-  const { id, category, name, concept, prompt, targetWidth, targetHeight } = req.body;
+  const { id, category, name, concept, prompt, targetWidth, targetHeight, codeLocation, needsReplacement } = req.body;
   if (!id || !category || !name) return res.status(400).json({ error: 'id, category, name required' });
   if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
+  const isAudio = category.startsWith('audio_');
   const data = readArtStudioItems();
   const list = data[category];
   const idx = list.findIndex(i => i.id === id);
   if (idx >= 0) {
     list[idx] = { ...list[idx], name, concept, prompt, targetWidth, targetHeight };
+    if (isAudio) {
+      if (codeLocation !== undefined) list[idx].codeLocation = codeLocation;
+      if (needsReplacement !== undefined) list[idx].needsReplacement = needsReplacement;
+    }
   } else {
-    list.push({ id, name, concept: concept || '', prompt: prompt || '', targetWidth: targetWidth || 512, targetHeight: targetHeight || 512, variants: [] });
+    const entry = { id, name, concept: concept || '', prompt: prompt || '', targetWidth: targetWidth || 512, targetHeight: targetHeight || 512, variants: [] };
+    if (isAudio) {
+      entry.codeLocation = codeLocation || '';
+      entry.needsReplacement = needsReplacement || false;
+    }
+    list.push(entry);
   }
   writeArtStudioItems(data);
   res.json({ ok: true });
@@ -2055,15 +2079,24 @@ app.post('/api/artstudio/generate', express.json(), async (req, res) => {
   })();
 });
 
-// GET /api/artstudio/image/:category/:id/:variant — serve variant image
+// GET /api/artstudio/image/:category/:id/:variant — serve variant image or audio
 app.get('/api/artstudio/image/:category/:id/:variant', (req, res) => {
   const { category, id, variant } = req.params;
   if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
-  const imgPath = resolve(ARTSTUDIO_OUTPUT_DIR, category, id, `variant-${variant}.png`);
-  if (!existsSync(imgPath)) return res.status(404).json({ error: 'Image not found' });
-  res.setHeader('Content-Type', 'image/png');
-  res.setHeader('Cache-Control', 'no-store');
-  res.sendFile(imgPath);
+  const isAudio = category.startsWith('audio_');
+  if (isAudio) {
+    const audioPath = resolve(ARTSTUDIO_OUTPUT_DIR, category, id, `variant-${variant}.m4a`);
+    if (!existsSync(audioPath)) return res.status(404).json({ error: 'Audio not found' });
+    res.setHeader('Content-Type', 'audio/mp4');
+    res.setHeader('Cache-Control', 'no-store');
+    res.sendFile(audioPath);
+  } else {
+    const imgPath = resolve(ARTSTUDIO_OUTPUT_DIR, category, id, `variant-${variant}.png`);
+    if (!existsSync(imgPath)) return res.status(404).json({ error: 'Image not found' });
+    res.setHeader('Content-Type', 'image/png');
+    res.setHeader('Cache-Control', 'no-store');
+    res.sendFile(imgPath);
+  }
 });
 
 // POST /api/artstudio/accept — mark a variant as accepted

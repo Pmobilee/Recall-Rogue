@@ -285,3 +285,14 @@
 
 ### 2026-04-01 — Suno mp3 files fail in Safari (MEDIA_ERR_SRC_NOT_SUPPORTED)
 Suno AI-generated mp3 files contain an embedded JPEG cover art stream (Stream #0:1: Video: mjpeg) which causes Safari's HTMLAudioElement to return error code 4 (MEDIA_ERR_SRC_NOT_SUPPORTED). Chrome handles these fine. Fix: re-encode with ffmpeg using `-map 0:a:0` to strip the cover art, output as AAC .m4a (192k, 44.1kHz). Also: Safari's `decodeAudioData()` cannot decode these mp3s either — use HTMLAudioElement + createMediaElementSource instead of AudioBufferSourceNode.
+
+### 2026-04-01 — Synthesized ambient loops are unacceptable quality
+
+**What:** All 32 ambient loop files in `public/assets/audio/sfx/loops/` were Web Audio synthesis exports — 0.5–15 seconds, 8KB–244KB. They sounded awful when looped.
+
+**Why:** Short synthesized loops (even 10s) create obvious repetition artifacts. Ambient atmosphere needs real recordings of 30+ seconds minimum. The initial implementation used `ambientAudioService` with placeholders generated from the synthesis engine rather than sourcing CC0 recordings.
+
+**Fix:** Replace all 32 files with CC0 recordings from OpenGameArt/freesound/Pixabay. Added ambient loop quality gate checklist to `.claude/skills/audio-manager/SKILL.md`. Added quality standards section to `docs/architecture/services/platform-audio.md`. All audio curation now goes through artstudio `audio_*` tabs. Loops requiring replacement are flagged with `"needsReplacement": true` in `sprite-gen/cardback-tool/artstudio-items.json`.
+
+### 2026-04-01 — Floor 1 damage cap too low (3→6)
+LLM playtest BATCH-2026-04-01-001 found all floor 1 enemies dealt only 2 damage/turn due to ENEMY_TURN_DAMAGE_CAP segment 1 = 3. This cap was set for an older balance config and never recalibrated. Raised to 6 to allow enemies to deal 2-6 damage, creating actual tension while staying beginner-friendly. The cliff between segment 1 (was 3) and segment 2 (12) is now smoother.

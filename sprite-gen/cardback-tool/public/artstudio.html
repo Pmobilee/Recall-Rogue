@@ -595,6 +595,74 @@
     background: #fff;
   }
 
+  /* Audio variant cards */
+  .audio-variant-card {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 300px;
+    max-width: 380px;
+    padding: 12px;
+    background: #1a1a2e;
+    border: 2px solid #2a2a4a;
+    border-radius: 8px;
+    transition: border-color 0.15s;
+  }
+  .audio-variant-card.accepted { border-color: #4ecca3; box-shadow: 0 0 10px rgba(78,204,163,0.25); }
+  .audio-variant-card:hover { border-color: #3a3a6a; }
+
+  .audio-play-btn {
+    width: 100%;
+    padding: 10px;
+    background: #1a3a4a;
+    border: 1px solid #2a5a6a;
+    border-radius: 6px;
+    color: #4ec8e0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .audio-play-btn:hover { background: #2a4a5a; }
+  .audio-play-btn.playing { background: #1a4a2a; border-color: #2a7a4a; color: #4ecca3; }
+
+  .audio-meta-row {
+    display: flex;
+    gap: 10px;
+    font-size: 0.72rem;
+    color: #666;
+  }
+
+  .audio-meta-row span { font-family: monospace; }
+
+  .badge-needs-replacement {
+    display: inline-block;
+    background: #5a1a1a;
+    color: #ff8888;
+    border: 1px solid #8a3a3a;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  .item-codelocation {
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #88aacc;
+    margin-top: 4px;
+    background: #0f1525;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border-left: 2px solid #336;
+  }
+
+
 </style>
 </head>
 <body>
@@ -637,6 +705,18 @@
     <button class="tab-btn" onclick="switchTab('ui_icons')">UI</button>
     <button class="tab-btn" onclick="switchTab('map_icons')">Map Rooms</button>
     <button class="tab-btn" onclick="switchTab('enemy_power_icons')">Enemy Powers</button>
+    <!-- Audio SFX Categories -->
+    <button class="tab-btn" onclick="switchTab('audio_loops')">Audio: Loops</button>
+    <button class="tab-btn" onclick="switchTab('audio_combat')">Audio: Combat</button>
+    <button class="tab-btn" onclick="switchTab('audio_quiz')">Audio: Quiz</button>
+    <button class="tab-btn" onclick="switchTab('audio_ui')">Audio: UI</button>
+    <button class="tab-btn" onclick="switchTab('audio_shop')">Audio: Shop</button>
+    <button class="tab-btn" onclick="switchTab('audio_status')">Audio: Status</button>
+    <button class="tab-btn" onclick="switchTab('audio_encounter')">Audio: Encounter</button>
+    <button class="tab-btn" onclick="switchTab('audio_progression')">Audio: Progression</button>
+    <button class="tab-btn" onclick="switchTab('audio_rest')">Audio: Rest</button>
+    <button class="tab-btn" onclick="switchTab('audio_hub')">Audio: Hub</button>
+    <button class="tab-btn" onclick="switchTab('audio_other')">Audio: Other</button>
   </div>
 </header>
 
@@ -678,6 +758,17 @@
   <div class="tab-panel" id="panel-ui_icons"></div>
   <div class="tab-panel" id="panel-map_icons"></div>
   <div class="tab-panel" id="panel-enemy_power_icons"></div>
+  <div class="tab-panel" id="panel-audio_loops"></div>
+  <div class="tab-panel" id="panel-audio_combat"></div>
+  <div class="tab-panel" id="panel-audio_quiz"></div>
+  <div class="tab-panel" id="panel-audio_ui"></div>
+  <div class="tab-panel" id="panel-audio_shop"></div>
+  <div class="tab-panel" id="panel-audio_status"></div>
+  <div class="tab-panel" id="panel-audio_encounter"></div>
+  <div class="tab-panel" id="panel-audio_progression"></div>
+  <div class="tab-panel" id="panel-audio_rest"></div>
+  <div class="tab-panel" id="panel-audio_hub"></div>
+  <div class="tab-panel" id="panel-audio_other"></div>
   <div class="tab-panel" id="panel-music"></div>
 </div>
 
@@ -704,18 +795,32 @@
       <label class="form-label">Concept (short description)</label>
       <textarea class="form-input" id="formConcept" placeholder="Brief concept description..."></textarea>
     </div>
-    <div class="form-row">
-      <label class="form-label">Prompt</label>
-      <textarea class="form-input" id="formPrompt" placeholder="Full generation prompt..."></textarea>
+    <!-- Audio-only fields (shown when current tab is audio_*) -->
+    <div class="form-row" id="formCodeLocationRow" style="display:none">
+      <label class="form-label">Code Location (e.g. audioService.ts:sfx_button_click)</label>
+      <input class="form-input" id="formCodeLocation" type="text" placeholder="e.g. audioService.ts:playButtonClick">
     </div>
-    <div class="form-row-2col">
+    <div class="form-row" id="formNeedsReplacementRow" style="display:none">
+      <label class="form-label" style="display:flex;align-items:center;gap:8px;cursor:pointer">
+        <input type="checkbox" id="formNeedsReplacement" style="cursor:pointer">
+        Needs Replacement (placeholder / low quality)
+      </label>
+    </div>
+    <!-- Image-only fields (hidden for audio) -->
+    <div id="formImageFields">
       <div class="form-row">
-        <label class="form-label">Target Width</label>
-        <input class="form-input" id="formWidth" type="number" value="512">
+        <label class="form-label">Prompt</label>
+        <textarea class="form-input" id="formPrompt" placeholder="Full generation prompt..."></textarea>
       </div>
-      <div class="form-row">
-        <label class="form-label">Target Height</label>
-        <input class="form-input" id="formHeight" type="number" value="512">
+      <div class="form-row-2col">
+        <div class="form-row">
+          <label class="form-label">Target Width</label>
+          <input class="form-input" id="formWidth" type="number" value="512">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Target Height</label>
+          <input class="form-input" id="formHeight" type="number" value="512">
+        </div>
       </div>
     </div>
     <div class="modal-actions">
@@ -730,10 +835,30 @@
     'cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'mysteryrooms', 'rewardrooms', 'relicicons', 'deckfronts',
     'cardtype_icons', 'domain_icons', 'status_icons', 'intent_icons', 'reward_icons', 'nav_icons', 'hub_icons',
     'archetype_icons', 'lb_icons', 'mystery_icons', 'ui_icons', 'map_icons', 'enemy_power_icons',
+    // Audio SFX categories
+    'audio_loops', 'audio_combat', 'audio_quiz', 'audio_ui', 'audio_shop',
+    'audio_status', 'audio_encounter', 'audio_progression', 'audio_rest', 'audio_hub', 'audio_other',
   ];
   let currentTab = 'cardframes';
   let allItems = Object.fromEntries([...ALL_CATEGORIES, 'music'].map(c => [c, []]));
   let pollTimers = {};
+
+  /** Returns true if the given category key is an audio SFX category */
+  function isAudioCategory(tab) {
+    return tab.startsWith('audio_');
+  }
+
+  /** Pause all <audio> elements on the page except the one currently playing */
+  function stopOtherAudio(exceptEl) {
+    document.querySelectorAll('audio.artstudio-audio').forEach(el => {
+      if (el !== exceptEl) {
+        el.pause();
+        el.currentTime = 0;
+        const btn = el.closest('.audio-variant-card')?.querySelector('.audio-play-btn');
+        if (btn) { btn.textContent = '▶ Play'; btn.classList.remove('playing'); }
+      }
+    });
+  }
 
   // ── Tab switching ──────────────────────────────────────────
   function switchTab(tab) {
@@ -772,6 +897,10 @@
   function renderItems() {
     if (currentTab === 'music') {
       renderMusicTab();
+      return;
+    }
+    if (isAudioCategory(currentTab)) {
+      renderAudioTab(currentTab);
       return;
     }
     const q = document.getElementById('searchInput').value.toLowerCase();
@@ -945,6 +1074,114 @@
     } catch(e) {
       document.getElementById('statusText').textContent = `Error: ${e.message}`;
     }
+  }
+
+  // ── Render audio SFX tab ──────────────────────────────────
+  function renderAudioTab(tab) {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const panel = document.getElementById(`panel-${tab}`);
+    let items = (allItems[tab] || []).filter(i =>
+      !q || i.name.toLowerCase().includes(q) || i.id.toLowerCase().includes(q) || (i.concept || '').toLowerCase().includes(q)
+    );
+
+    if (!items.length) {
+      panel.innerHTML = `<div class="empty-state"><h2>No audio items yet</h2><p>Click "+ Add Item" to register an audio SFX entry. Drop .m4a files into artstudio-output/${tab}/{id}/variant-1.m4a</p></div>`;
+      return;
+    }
+
+    // Sort: no accepted variant floats to top
+    items.sort((a, b) => {
+      const aAccepted = a.variants?.some(v => v.accepted) ? 1 : 0;
+      const bAccepted = b.variants?.some(v => v.accepted) ? 1 : 0;
+      return aAccepted - bAccepted;
+    });
+
+    panel.innerHTML = '';
+    for (const item of items) {
+      panel.appendChild(buildAudioItemCard(item, tab));
+    }
+  }
+
+  // ── Build an audio item card ───────────────────────────────
+  function buildAudioItemCard(item, tab) {
+    const card = document.createElement('div');
+    card.className = 'item-card';
+    card.id = `item-${item.id}`;
+
+    const deployedBadge = item.deployed === true
+      ? '<span style="background:#27ae60;color:#fff;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:8px;font-weight:600;">IN GAME</span>'
+      : item.deployed === false
+      ? '<span style="background:#e74c3c;color:#fff;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:8px;font-weight:600;">NOT DEPLOYED</span>'
+      : '';
+
+    const needsReplacementBadge = item.needsReplacement
+      ? '<span class="badge-needs-replacement">NEEDS REPLACEMENT</span>'
+      : '';
+
+    const codeLocationEl = item.codeLocation
+      ? `<div class="item-codelocation">${esc(item.codeLocation)}</div>`
+      : '';
+
+    const variantHtml = item.variants?.length
+      ? item.variants.map(v => buildAudioVariantHTML(item, v, tab)).join('')
+      : '<span class="variant-empty">No audio variants yet. Drop variant-1.m4a into artstudio-output/' + esc(tab) + '/' + esc(item.id) + '/</span>';
+
+    card.innerHTML = `
+      <div class="item-header">
+        <div class="item-meta">
+          <div class="item-name">${esc(item.name)}${deployedBadge}</div>
+          <div class="item-id">${esc(item.id)}</div>
+          <div class="item-concept">${esc(item.concept || '')}</div>
+          ${codeLocationEl}
+          ${needsReplacementBadge}
+        </div>
+        <div class="item-actions">
+          <span class="variant-count-label">${item.variants?.length ?? 0} variant${(item.variants?.length ?? 0) !== 1 ? 's' : ''}</span>
+          <button class="btn btn-danger" style="font-size:0.75rem;padding:4px 10px"
+            onclick="deleteItem('${esc(item.id)}')">Delete</button>
+        </div>
+      </div>
+      <div class="variants-row" id="variants-${esc(item.id)}">
+        ${variantHtml}
+      </div>
+    `;
+
+    return card;
+  }
+
+  // ── Build an audio variant card ────────────────────────────
+  function buildAudioVariantHTML(item, v, tab) {
+    const audioUrl = `/api/artstudio/image/${tab}/${item.id}/${v.variant}`;
+    const sizeKb = v.fileSize ? Math.round(v.fileSize / 1024) + ' KB' : '';
+    const duration = v.duration ? v.duration.toFixed(1) + 's' : '';
+    const elId = `audio-${item.id}-${v.variant}`;
+
+    return `
+      <div class="audio-variant-card ${v.accepted ? 'accepted' : ''}" id="vc-${esc(item.id)}-${v.variant}">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <span style="font-size:0.8rem;font-weight:700;color:#aabbdd">Variant ${v.variant}</span>
+          ${v.accepted ? '<span style="background:#4ecca3;color:#0f0f1a;font-size:0.65rem;font-weight:700;padding:2px 7px;border-radius:4px;">ACCEPTED</span>' : ''}
+        </div>
+        <audio class="artstudio-audio" id="${elId}" preload="none" style="width:100%;height:36px"
+          onplay="stopOtherAudio(this); const btn=this.closest('.audio-variant-card')?.querySelector('.audio-play-btn'); if(btn){btn.textContent='⏸ Pause';btn.classList.add('playing');}"
+          onpause="const btn=this.closest('.audio-variant-card')?.querySelector('.audio-play-btn'); if(btn){btn.textContent='▶ Play';btn.classList.remove('playing');}"
+          onended="const btn=this.closest('.audio-variant-card')?.querySelector('.audio-play-btn'); if(btn){btn.textContent='▶ Play';btn.classList.remove('playing');}">
+          <source src="${audioUrl}" type="audio/mp4">
+        </audio>
+        <button class="audio-play-btn" onclick="
+          const audio = document.getElementById('${elId}');
+          if (audio.paused) { audio.play(); } else { audio.pause(); }
+        ">▶ Play</button>
+        <div class="audio-meta-row">
+          ${duration ? `<span>${esc(duration)}</span>` : ''}
+          ${sizeKb ? `<span>${esc(sizeKb)}</span>` : ''}
+        </div>
+        <div class="variant-btn-row">
+          <button class="btn-accept ${v.accepted ? 'accepted' : ''}"
+            onclick="acceptVariant('${esc(item.id)}', ${v.variant})">${v.accepted ? 'Accepted' : 'Accept'}</button>
+        </div>
+      </div>
+    `;
   }
 
   // ── Build a single item card DOM element ──────────────────
@@ -1211,6 +1448,13 @@
     document.getElementById('formPrompt').value = '';
     document.getElementById('formWidth').value = currentTab === 'cardframes' ? '512' : '256';
     document.getElementById('formHeight').value = currentTab === 'cardframes' ? '729' : '256';
+    document.getElementById('formCodeLocation').value = '';
+    document.getElementById('formNeedsReplacement').checked = false;
+    // Toggle audio vs image fields
+    const isAudio = isAudioCategory(currentTab);
+    document.getElementById('formImageFields').style.display = isAudio ? 'none' : '';
+    document.getElementById('formCodeLocationRow').style.display = isAudio ? '' : 'none';
+    document.getElementById('formNeedsReplacementRow').style.display = isAudio ? '' : 'none';
     document.getElementById('modalOverlay').classList.add('open');
   }
 
@@ -1222,15 +1466,27 @@
     const id = document.getElementById('formId').value.trim().replace(/\s+/g, '-').toLowerCase();
     const name = document.getElementById('formName').value.trim();
     const concept = document.getElementById('formConcept').value.trim();
-    const prompt = document.getElementById('formPrompt').value.trim();
-    const targetWidth = parseInt(document.getElementById('formWidth').value) || 512;
-    const targetHeight = parseInt(document.getElementById('formHeight').value) || 512;
     if (!id || !name) { alert('ID and Name are required.'); return; }
+    const isAudio = isAudioCategory(currentTab);
+    const body = { id, category: currentTab, name, concept };
+    if (isAudio) {
+      const codeLocation = document.getElementById('formCodeLocation').value.trim();
+      const needsReplacement = document.getElementById('formNeedsReplacement').checked;
+      if (codeLocation) body.codeLocation = codeLocation;
+      body.needsReplacement = needsReplacement;
+      body.targetWidth = 0;
+      body.targetHeight = 0;
+      body.prompt = '';
+    } else {
+      body.prompt = document.getElementById('formPrompt').value.trim();
+      body.targetWidth = parseInt(document.getElementById('formWidth').value) || 512;
+      body.targetHeight = parseInt(document.getElementById('formHeight').value) || 512;
+    }
     try {
       const r = await fetch('/api/artstudio/items', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, category: currentTab, name, concept, prompt, targetWidth, targetHeight })
+        body: JSON.stringify(body)
       });
       if (!r.ok) throw new Error(await r.text());
       closeModal();
