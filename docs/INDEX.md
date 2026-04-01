@@ -94,3 +94,4 @@
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Replaced by modular `architecture/` docs — kept for historical reference |
 | [GAME_DESIGN.md](GAME_DESIGN.md) | Design spec (still authoritative for game design intent) |
 | [RESEARCH/](RESEARCH/) | Design specs, research documents, and production specs |
+| [RESEARCH/mystery-room-redesign](RESEARCH/mystery-room-redesign.md) | Mystery room system overhaul — StS-informed event design, full event catalog, new effect types, act distribution changes, implementation roadmap |
