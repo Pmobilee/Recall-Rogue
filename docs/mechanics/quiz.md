@@ -1,7 +1,7 @@
 # Quiz Engine Mechanics
 
 > **Purpose:** Documents how quiz questions are selected, formatted, graded, and how the FSRS spaced repetition algorithm schedules fact reviews.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`
 
 ---
@@ -28,6 +28,14 @@ Anki three-priority system:
 2. **Main queue** — Anki Intersperser: proportional mixing of due graduated reviews + new cards. New cards sorted by `difficulty` ascending (easier first). New cards only introduced when `canIntroduceNew()` returns true (`MAX_LEARNING = 8`)
 3. **Ahead learning** — cards in learning but not yet due, only when nothing else available
 4. **Fallback** — any card except the immediately previous fact (avoids consecutive repeats)
+
+**Multi-question batch dedup** (`nonCombatQuizSelector.ts`):
+`selectNonCombatStudyQuestion` accepts an optional `excludeFactIds: ReadonlySet<string>` parameter.
+When provided, the fact pool is filtered to exclude those IDs before calling `selectFactForCharge`.
+This prevents duplicate questions in batches like rest-site study sessions (3 questions).
+The caller (`generateStudyQuestions` in `gameFlowController.ts`) accumulates `excludeFactIds` across
+iterations and passes it on each call. If filtering would leave zero candidates (tiny deck), the full
+pool is used as a fallback so the function never returns `null` due to exhaustion.
 
 ### 2. Template Selection (`questionTemplateSelector.ts`)
 
@@ -67,7 +75,13 @@ Mastery Trial overrides (`MASTERY_TRIAL` constant): 5 options, close distractors
 5. Deduplication: skips distractor answers that appear by name in the question text
 6. Fallback to `fact.distractors[]` if pool yields insufficient candidates
 
-Legacy trivia mode (`quizService.ts: getQuizChoices`): uses `fact.distractors` directly; falls back to `getVocabDistractors` for vocab type and `getNumericalDistractors` for brace-marked answers. Slices to `BALANCE.QUIZ_DISTRACTORS_SHOWN = 3` wrong answers (4 total choices).
+`inRunTracker` parameter accepts `InRunFactTracker | null`. When `null` (trivia mode bridge path), in-run struggle scoring is skipped and jitter seed uses `totalCharges = 0`.
+
+**Trivia mode distractor path** (`quizService.ts: getQuizChoices`):
+
+`getQuizChoices` checks for a `bridge:{deckId}` tag on the fact first. If present, `getBridgedDistractors` attempts pool-based selection via `selectDistractors` using the source curated deck's answer type pools and the global confusion matrix (neutral mastery level 1, no `InRunFactTracker`). Falls back to pre-generated distractors if the deck isn't loaded, the fact ID isn't found in the deck, or the pool has fewer than 5 facts.
+
+For non-bridged facts: uses `fact.distractors` directly; falls back to `getVocabDistractors` for vocab type and `getNumericalDistractors` for brace-marked answers. Slices to `BALANCE.QUIZ_DISTRACTORS_SHOWN = 3` wrong answers (4 total choices).
 
 ### 5. Grading
 

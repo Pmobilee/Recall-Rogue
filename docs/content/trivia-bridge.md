@@ -1,8 +1,8 @@
 # Curated Deck → Trivia Bridge
 
-> **Purpose:** Documents the build-time bridge that extracts representative trivia facts from curated knowledge decks and injects them into `facts.db`, enabling FSRS knowledge transfer between Study Temple and Trivia Dungeon.
+> **Purpose:** Documents the build-time bridge that extracts representative trivia facts from curated knowledge decks and injects them into `facts.db`, enabling FSRS knowledge transfer between Study Temple and Trivia Dungeon. Also covers the runtime pool-based distractor selection that activates for bridged facts in trivia mode.
 > **Last verified:** 2026-04-01
-> **Source files:** `scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, `scripts/content-pipeline/bridge/deck-bridge-config.json`, `src/data/seed/bridge-curated.json`
+> **Source files:** `scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`, `scripts/content-pipeline/bridge/deck-bridge-config.json`, `src/data/seed/bridge-curated.json`, `src/services/quizService.ts`, `src/services/curatedDistractorSelector.ts`
 
 ---
 
@@ -33,7 +33,7 @@ The **trivia bridge** fixes this. It is a build-time script that reads curated k
 8. Writes a summary manifest to `bridge-manifest.json`
 9. `scripts/build-facts-db.mjs` ingests `bridge-curated.json` alongside other seed files
 
-Zero runtime code changes are required — the bridge operates entirely at build time.
+At runtime, `getQuizChoices` in `quizService.ts` detects the `bridge:{deckId}` tag and uses pool-based distractor selection from the source curated deck — see **Runtime Distractor Selection** below.
 
 ---
 
@@ -105,7 +105,7 @@ Each candidate fact is scored to find the best trivia representative for its ent
 | (from deck) | `categoryL1` | `deck.domain` |
 | (from config) | `categoryL2` | Per-deck mapping in `deck-bridge-config.json` |
 | `chainThemeId` | (dropped) | Not used in trivia mode |
-| `answerTypePoolId` | (dropped) | Not used in trivia mode |
+| `answerTypePoolId` | (dropped) | Not used in trivia mode — but `answerTypePoolId` is still on the source `DeckFact` and is used at runtime by the distractor selector |
 
 ---
 
@@ -120,6 +120,21 @@ score >= 5.0  → rare
 score >= 3.5  → uncommon
 else          → common
 ```
+
+---
+
+## Runtime Distractor Selection
+
+Bridged facts carry a `bridge:{deckId}` tag. `getQuizChoices` in `quizService.ts` detects this tag and calls `getBridgedDistractors(fact, deckId)` before the normal pre-generated distractor path.
+
+`getBridgedDistractors` flow:
+1. Looks up the source deck via `getCuratedDeck(deckId)` — returns `null` if deck not loaded
+2. Finds the matching `DeckFact` by `fact.id` in `deck.facts` — returns `null` if not found
+3. Finds the answer type pool via `deckFact.answerTypePoolId` — returns `null` if pool missing or `pool.factIds.length < 5`
+4. Calls `selectDistractors(deckFact, pool, deck.facts, deck.synonymGroups, confusionMatrix, null, BALANCE.QUIZ_DISTRACTORS_SHOWN, 1)` — `inRunTracker` is `null` (no active run in trivia mode), mastery level neutral at 1
+5. Returns distractor strings via `.map(d => d.correctAnswer)`, or `null` on empty result to fall through to pre-generated distractors
+
+This means bridged trivia facts benefit from confusion-matrix-weighted distractor selection (same wrong answers the player has previously confused), identical to curated deck mode — without needing an active combat run.
 
 ---
 

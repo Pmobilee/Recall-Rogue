@@ -48,6 +48,8 @@ export function getDistractorCount(
  * 5. Same pool, any difficulty (fill remaining)
  *
  * Falls back to the fact's pre-generated distractors[] if pool is too small.
+ *
+ * @param inRunTracker - In-run fact tracker, or null when called from trivia mode (no active run).
  */
 export function selectDistractors(
   correctFact: DeckFact,
@@ -55,7 +57,7 @@ export function selectDistractors(
   allDeckFacts: DeckFact[],
   synonymGroups: SynonymGroup[],
   confusionMatrix: ConfusionMatrix,
-  inRunTracker: InRunFactTracker,
+  inRunTracker: InRunFactTracker | null,
   count: number,
   cardMasteryLevel: number,
 ): DistractorSelectionResult {
@@ -158,8 +160,8 @@ export function selectDistractors(
       if (source === 'pool_fill') source = 'reverse_confusion';
     }
 
-    // In-run struggle
-    const runState = inRunTracker.getState(factId);
+    // In-run struggle — only available when an active run tracker is present
+    const runState = inRunTracker?.getState(factId);
     if (runState && runState.wrongCount > 0) {
       score += 3.0;
       if (source === 'pool_fill') source = 'in_run_struggle';
@@ -200,7 +202,8 @@ export function selectDistractors(
   for (let i = 0; i < correctFact.id.length; i++) {
     idHash = ((idHash << 5) + idHash) ^ correctFact.id.charCodeAt(i);
   }
-  const jitterSeed = (inRunTracker.getTotalCharges() * 31 + (idHash >>> 0)) | 0;
+  // Use 0 for totalCharges when no in-run tracker is available (trivia mode)
+  const jitterSeed = ((inRunTracker?.getTotalCharges() ?? 0) * 31 + (idHash >>> 0)) | 0;
   let jitterState = (jitterSeed | 0) || 1;
   function jitter(): number {
     jitterState ^= jitterState << 13;

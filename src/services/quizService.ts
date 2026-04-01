@@ -2,6 +2,9 @@ import { BALANCE } from '../data/balance'
 import type { Fact, ReviewState } from '../data/types'
 import { getVocabDistractors } from './vocabDistractorService'
 import { isNumericalAnswer, getNumericalDistractors, displayAnswer } from './numericalDistractorService'
+import { getCuratedDeck } from '../data/curatedDeckStore'
+import { selectDistractors } from './curatedDistractorSelector'
+import { getConfusionMatrix } from './confusionMatrixStore'
 
 /**
  * Selects the next quiz fact from review-due cards only.
@@ -149,7 +152,49 @@ export function selectDifficultyWeightedQuestion(
 }
 
 /**
+ * For bridged facts (curated deck facts surfaced in trivia mode), use the source
+ * deck's answer type pools and confusion matrix for smarter distractor selection
+ * instead of random pre-generated distractors.
+ *
+ * Returns distractor answer strings, or null to fall back to pre-generated distractors.
+ *
+ * @param fact - The trivia fact with a bridge tag
+ * @param deckId - The source curated deck ID (extracted from the bridge tag)
+ */
+function getBridgedDistractors(fact: Fact, deckId: string): string[] | null {
+  const deck = getCuratedDeck(deckId)
+  if (!deck) return null
+
+  const deckFact = deck.facts.find(f => f.id === fact.id)
+  if (!deckFact) return null
+
+  const pool = deck.answerTypePools.find(p => p.id === deckFact.answerTypePoolId)
+  // Pool too small to produce meaningful distractors — fall back to pre-generated
+  if (!pool || pool.factIds.length < 5) return null
+
+  const confusionMatrix = getConfusionMatrix()
+  const result = selectDistractors(
+    deckFact,
+    pool,
+    deck.facts,
+    deck.synonymGroups ?? [],
+    confusionMatrix,
+    null,  // no InRunFactTracker in trivia mode
+    BALANCE.QUIZ_DISTRACTORS_SHOWN,
+    1,     // neutral mastery level
+  )
+
+  if (result.distractors.length === 0) return null
+  return result.distractors.map(d => d.correctAnswer)
+}
+
+/**
  * Builds shuffled multiple-choice answers for a quiz fact.
+ *
+ * For bridged curated deck facts (tagged `bridge:{deckId}`), uses the source
+ * deck's answer type pools and confusion matrix for smarter distractor selection.
+ * Falls back to pre-generated distractors, vocab generation, or numerical
+ * generation for non-bridged facts.
  *
  * The resulting array contains the correct answer and a random subset of
  * distractors defined by game balance.
@@ -158,6 +203,17 @@ export function selectDifficultyWeightedQuestion(
  * @returns A shuffled array containing one correct answer and distractors.
  */
 export function getQuizChoices(fact: Fact): string[] {
+  // Pool-based distractor selection for bridged curated deck facts
+  const bridgeTag = fact.tags?.find(t => t.startsWith('bridge:'))
+  if (bridgeTag) {
+    const poolDistractors = getBridgedDistractors(fact, bridgeTag.replace('bridge:', ''))
+    if (poolDistractors) {
+      const correctDisplay = displayAnswer(fact.correctAnswer)
+      return shuffleArray([...poolDistractors, correctDisplay])
+    }
+  }
+
+  // Original path for non-bridged facts
   let distractorSource = fact.distractors
 
   // Runtime vocab distractor generation (spec 1.8 Option E)
