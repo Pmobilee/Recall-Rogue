@@ -478,7 +478,7 @@ export const FLOOR_DAMAGE_SCALE_MID = 1.2;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 3,    // very low cap to help beginners with 100 HP to further reduce early-game spike damage for beginners (PLAYER_START_HP=100 rebalance)
+  1: 6,    // raised from 3 to 6: allows floor 1 enemies to deal 2-6 damage, creating actual tension without being deadly (LLM playtest BATCH-2026-04-01-001 found 2 dmg/turn was trivial)
   2: 12,   // doubled from 6
   3: 18,   // raised from 14 to increase late-game pressure
   4: 28,   // raised from 20 to increase late-game pressure

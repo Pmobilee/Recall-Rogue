@@ -1,0 +1,24 @@
+{
+  "batchId": "BATCH-2026-04-01-002",
+  "createdAt": "2026-04-01T11:24:00Z",
+  "completedAt": "2026-04-01T12:05:00Z",
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple"],
+  "args": {
+    "runs": 3,
+    "domain": "general_knowledge"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "overallVerdict": "ISSUES",
+  "fixes_since_batch_001": [
+    "rewardRoomBridge.ts delays now turbo-aware",
+    "playtestAPI acceptReward() now works with Phaser RewardRoomScene",
+    "ENEMY_TURN_DAMAGE_CAP segment 1: 3→6"
+  ],
+  "reports": {
+    "quiz-quality": { "status": "complete", "verdict": "PASS", "score": "4.0/5.0", "criticalCount": 0, "highCount": 0, "mediumCount": 2, "lowCount": 2 },
+    "balance-curve": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 1, "mediumCount": 3, "lowCount": 1 },
+    "fun-engagement": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 3, "mediumCount": 2, "lowCount": 0 },
+    "study-temple": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 1, "mediumCount": 1, "lowCount": 2 }
+  }
+}

@@ -258,8 +258,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'shallow_depths',
     baseHP: 5, // standard
     intentPool: [
-      { type: 'attack', value: 2, weight: 3, telegraph: 'Swooping strike' },
-      { type: 'attack', value: 2, weight: 2, telegraph: 'Frenzied bite' },
+      { type: 'attack', value: 3, weight: 3, telegraph: 'Swooping strike' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Frenzied bite' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Screeching', statusEffect: { type: 'strength', value: 1, turns: 2 } },
       { type: 'defend', value: 1, weight: 1, telegraph: 'Wing cover' },
     ],
@@ -295,7 +295,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'shallow_depths',
     baseHP: 7, // tanky
     intentPool: [
-      { type: 'attack', value: 2, weight: 2, telegraph: 'Spore burst' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Spore burst' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
@@ -720,7 +720,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'shallow_depths',
     baseHP: 7, // tanky
     intentPool: [
-      { type: 'attack', value: 2, weight: 2, telegraph: 'Mud slash' },
+      { type: 'attack', value: 3, weight: 2, telegraph: 'Mud slash' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'poison', value: 2, turns: 2 } },
       { type: 'defend', value: 1, weight: 1, telegraph: 'Sliming' },
     ],
@@ -756,8 +756,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     baseHP: 7, // tanky
     intentPool: [
       { type: 'defend', value: 2, weight: 3, telegraph: 'Harden shell' },
-      { type: 'attack', value: 2, weight: 2, telegraph: 'Mandible snap' },
-      { type: 'multi_attack', value: 2, weight: 1, telegraph: 'Chittering strike', hitCount: 2 },
+      { type: 'attack', value: 4, weight: 2, telegraph: 'Mandible snap' },
+      { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Chittering strike', hitCount: 2 },
     ],
     description: 'Heavy carapace. Prefers to block and wait.',
     rarity: 'standard',

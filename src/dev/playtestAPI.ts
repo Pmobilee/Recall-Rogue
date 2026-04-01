@@ -138,7 +138,7 @@ function getCombatState(): Record<string, unknown> | null {
   const enemy = turnState.enemy;
   return {
     // Player
-    playerHp: turnState.playerHP,
+    playerHp: turnState.playerState?.hp,
     playerMaxHp: turnState.playerState?.maxHP,
     playerBlock: turnState.playerState?.shield ?? 0,
     playerStatusEffects: (turnState.playerState?.statusEffects ?? []).map((s: any) => ({
@@ -366,14 +366,82 @@ async function selectMapNode(nodeId: string): Promise<PlayResult> {
   });
 }
 
-/** Accept a card reward (click the accept button). */
+/**
+ * Accept rewards in the Phaser RewardRoomScene.
+ *
+ * The reward room is a Phaser scene — no DOM buttons exist. This function:
+ * 1. Falls back to a DOM button if one is present (for any Svelte-only fallback screens).
+ * 2. Otherwise, drives the Phaser RewardRoomScene directly:
+ *    - Emits 'pointerdown' on gold/vial sprites to collect them immediately.
+ *    - For card items, emits 'pointerdown' on the sprite (shows the card detail overlay),
+ *      then accepts via getCardDetailCallbacks().onAccept().
+ *    - For relic items, follows the same accept-via-callbacks pattern.
+ * 3. Waits for the scene to auto-advance (checkAutoAdvance fires when all collected).
+ */
 async function acceptReward(): Promise<PlayResult> {
   return safeAction(async () => {
+    // Try DOM button first (Svelte fallback screen)
     const btn = document.querySelector('[data-testid="reward-accept"]') as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: 'Reward accept button not found' };
-    btn.click();
+    if (btn) {
+      btn.click();
+      await wait(turboDelay(1000));
+      return { ok: true, message: `Reward accepted via DOM. Screen: ${getScreen()}` };
+    }
+
+    // Phaser RewardRoomScene path
+    const reg = globalThis as Record<symbol, unknown>;
+    const mgr = reg[Symbol.for('rr:cardGameManager')] as any;
+    if (!mgr) return { ok: false, message: 'CardGameManager not found' };
+
+    const scene = mgr.getRewardRoomScene();
+    if (!scene || !scene.scene?.isActive()) {
+      return { ok: false, message: 'RewardRoomScene not active' };
+    }
+
+    // Auto-collect all non-card, non-relic items first (gold, vials).
+    // Each item's sprite has a pointerdown listener that calls handleItemTap.
+    const items = scene.items as Array<{ collected: boolean; reward: { type: string }; sprite: any }>;
+    for (const item of items) {
+      if (item.collected) continue;
+      if (item.reward.type === 'gold' || item.reward.type === 'health_vial') {
+        (item.sprite as any)?.emit('pointerdown');
+        await wait(turboDelay(200));
+      }
+    }
+
+    // Handle first uncollected card item.
+    // Tapping opens the card detail overlay; accept via bridge callbacks.
+    const cardItem = items.find(i => !i.collected && i.reward.type === 'card');
+    if (cardItem) {
+      (cardItem.sprite as any)?.emit('pointerdown');
+      await wait(turboDelay(300));
+
+      const { getCardDetailCallbacks } = await import('../services/rewardRoomBridge');
+      const callbacks = getCardDetailCallbacks();
+      if (callbacks) {
+        callbacks.onAccept();
+        await wait(turboDelay(500));
+      }
+    }
+
+    // Handle first uncollected relic item.
+    const relicItem = items.find(i => !i.collected && i.reward.type === 'relic');
+    if (relicItem) {
+      (relicItem.sprite as any)?.emit('pointerdown');
+      await wait(turboDelay(300));
+
+      const { getCardDetailCallbacks } = await import('../services/rewardRoomBridge');
+      const callbacks = getCardDetailCallbacks();
+      if (callbacks) {
+        callbacks.onAccept();
+        await wait(turboDelay(500));
+      }
+    }
+
+    // Wait for checkAutoAdvance to fire (triggers sceneComplete when all items collected).
     await wait(turboDelay(1000));
-    return { ok: true, message: `Reward accepted. Screen: ${getScreen()}` };
+
+    return { ok: true, message: `Reward accepted via Phaser scene. Screen: ${getScreen()}` };
   });
 }
 

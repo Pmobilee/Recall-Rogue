@@ -4,6 +4,7 @@ import type { LayoutMode } from '../../stores/layoutStore'
 import type { Card } from '../../data/card-types'
 import type { RelicDefinition } from '../../data/relics/types'
 import { playCardAudio } from '../../services/cardAudioManager'
+import { isTurboMode } from '../../utils/turboMode'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -710,10 +711,18 @@ export class RewardRoomScene extends Phaser.Scene {
   private checkAutoAdvance(): void {
     const uncollected = this.items.filter(i => !i.collected)
     if (uncollected.length === 0) {
-      // All items collected — auto-advance after disintegration finishes
-      this.time.delayedCall(800, () => {
+      // All items collected — auto-advance after disintegration finishes.
+      // In turbo/bot mode emit synchronously so the handleComplete callback chain
+      // (stopRewardRoom → onComplete → proceedAfterReward → currentScreen.set)
+      // resolves within the same page.evaluate() call, preventing the 800ms
+      // Phaser timer from racing against sceneComplete listener attachment.
+      if (isTurboMode()) {
         this.events.emit('sceneComplete')
-      })
+      } else {
+        this.time.delayedCall(800, () => {
+          this.events.emit('sceneComplete')
+        })
+      }
     }
   }
 

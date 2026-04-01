@@ -1,7 +1,7 @@
 # Visual Testing with Playwright
 
 > **Purpose:** How to visually test Recall Rogue using Playwright MCP and E2E scripts — screenshots, scenario loading, debug tools, and known gotchas.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/dev/screenshotHelper.ts`, `src/dev/scenarioSimulator.ts`, `src/dev/debugBridge.ts`, `src/dev/layoutDump.ts`, `tests/e2e/01-app-loads.cjs`, `tests/e2e/03-save-resume.cjs`
 
 ## Two Modes
@@ -159,3 +159,20 @@ Key selectors for interactive elements:
 | `room-choice-0` … `room-choice-2` | Dungeon map room choices |
 
 Note: Playwright cannot click Phaser canvas objects — clicks do not reach Phaser's input system. Use `browser_evaluate` to trigger game actions programmatically, or use `__rrScenario` to set up the state you need.
+
+## Reward Room: Phaser-Only Screen
+
+The reward room is rendered entirely in the Phaser `RewardRoomScene` — there are no DOM buttons to click. The `__rrPlay.acceptReward()` API handles this automatically:
+
+1. Falls back to `[data-testid="reward-accept"]` DOM button if present (for any Svelte fallback path).
+2. Otherwise accesses `CardGameManager` via `Symbol.for('rr:cardGameManager')` and gets the `RewardRoomScene`.
+3. Emits `pointerdown` on gold/vial sprite objects to collect them (each sprite has a Phaser input listener).
+4. For card rewards, emits `pointerdown` on the card sprite (opens the Svelte card detail overlay), then calls `getCardDetailCallbacks().onAccept()` from `rewardRoomBridge`.
+5. Waits for `checkAutoAdvance` to fire the `sceneComplete` event once all items are collected.
+
+```javascript
+// Bot usage — accepts all rewards and waits for auto-advance
+await page.evaluate(() => window.__rrPlay.acceptReward());
+```
+
+All waits inside `acceptReward` use `turboDelay()` so they collapse to 5ms in turbo mode.

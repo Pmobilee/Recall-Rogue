@@ -1,7 +1,7 @@
 # Run Lifecycle Services
 
 > **Purpose:** Run creation/management, floor/map generation, enemy spawning, reward generation, shop, ascension, and run-scoped utilities.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** runManager.ts, floorManager.ts, mapGenerator.ts, enemyManager.ts (see also combat.md), shopService.ts, ascension.ts, relicAcquisitionService.ts, rewardGenerator.ts, encounterRewards.ts, rewardRoomBridge.ts, rewardSpawnService.ts, gameFlowController.ts, screenController.ts, runStateStore.ts, hubState.ts, runSaveService.ts (see persistence.md), runEarlyBoostController.ts, deterministicRandom.ts, seededRng.ts, randomUtils.ts
 
 > See also: [run-competitive.md](run-competitive.md) for bountyManager, canaryService, masteryChallengeService, dailyExpeditionService, endlessDepthsService, scholarChallengeService, characterLevel, loreService, cardPreferences, funnessBoost
@@ -98,9 +98,10 @@ Run lifecycle starts in `gameFlowController` (screen state machine) and `runMana
 | | |
 |---|---|
 | **File** | src/services/rewardRoomBridge.ts |
-| **Purpose** | Bridges gameFlowController to the Phaser RewardRoomScene — handles scene lifecycle and card detail overlay |
-| **Key exports** | `showRewardRoom`, `rewardCardDetail` (store), `getCardDetailCallbacks` |
-| **Key dependencies** | rewardSpawnService, gameState store |
+| **Purpose** | Bridges gameFlowController to the Phaser RewardRoomScene — handles scene lifecycle, card detail overlay, and turbo-aware delays |
+| **Key exports** | `openRewardRoom`, `openTestRewardRoom`, `rewardCardDetail` (store), `getCardDetailCallbacks` |
+| **Key dependencies** | rewardSpawnService, gameState store, turboMode |
+| **Turbo awareness** | All internal delays use `turboDelay()` — poll interval (50ms→5ms), Phaser boot wait (500ms→5ms), container visibility wait (100ms→5ms). `maxWaitMs = 3000` is kept constant so Phaser still gets enough game loop ticks regardless of turbo mode. |
 
 ## rewardSpawnService
 
@@ -173,4 +174,3 @@ Run lifecycle starts in `gameFlowController` (screen state machine) and `runMana
 | **Purpose** | Fisher-Yates shuffle without sort-bias |
 | **Key exports** | `shuffled` |
 | **Key dependencies** | None |
-

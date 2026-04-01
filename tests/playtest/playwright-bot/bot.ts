@@ -1231,7 +1231,27 @@ async function handleScreen(
         await page.waitForTimeout(200);
         await handleGenericAction(page);
       }
-      await page.waitForTimeout(100);
+      // After emitting sceneComplete, poll for the screen to advance.
+      // For simple rewards: proceedAfterReward() sets currentScreen synchronously,
+      // so we exit the poll loop quickly.
+      // For relic-then-card rewards: onComplete opens a second rewardRoom, so
+      // currentScreen stays 'rewardRoom'. We exit after 500ms and let the main
+      // loop process the second reward room on the next iteration.
+      {
+        const pollStart = Date.now();
+        while (Date.now() - pollStart < 500) {
+          await page.waitForTimeout(20);
+          const screenNow = await page.evaluate(() => {
+            const sym = Symbol.for('rr:currentScreen');
+            const store = (globalThis as any)[sym];
+            if (!store?.subscribe) return null;
+            let v: string | null = null;
+            store.subscribe((val: string) => { v = val; })();
+            return v;
+          });
+          if (screenNow !== 'rewardRoom') break;
+        }
+      }
       break;
     }
 

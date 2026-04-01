@@ -2228,7 +2228,10 @@ export function generateStudyQuestions(): QuizQuestion[] {
     const confusionMatrix = getConfusionMatrix();
     const inRunTracker = run.inRunFactTracker ?? null;
     const questions: QuizQuestion[] = [];
-    // Generate up to 3 questions with different seed offsets so each is distinct
+    // Track already-selected fact IDs across iterations to prevent duplicate questions.
+    // selectNonCombatStudyQuestion only excludes the single lastFactId from tracker, so
+    // without this accumulating set the same fact can appear twice in a 3-question batch.
+    const excludeFactIds = new Set<string>();
     for (let i = 0; i < 3; i++) {
       const q = selectNonCombatStudyQuestion(
         'rest',
@@ -2239,8 +2242,11 @@ export function generateStudyQuestions(): QuizQuestion[] {
         1,
         run.runSeed + i * 1000,
         run.deckMode.examTags,
+        undefined, // meditatedThemeId
+        excludeFactIds,
       );
       if (q) {
+        excludeFactIds.add(q.factId);
         questions.push({
           factId: q.factId,
           question: q.question,

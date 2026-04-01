@@ -36,12 +36,23 @@ async function fetchManifest(): Promise<Set<string>> {
   return EMPTY_IDS
 }
 
+/**
+ * Maximum consecutive SSE connection errors before giving up.
+ * The cardback tool server is rarely running; stop reconnecting quickly
+ * to avoid spamming "Failed to load resource" errors in devtools.
+ */
+const SSE_MAX_ERRORS = 3
+
 function connectSSE(): void {
   // In dev mode, connect to cardback tool SSE for live updates
   const CARDBACK_TOOL_URL = 'http://100.74.153.81:5175'
   try {
     const es = new EventSource(`${CARDBACK_TOOL_URL}/api/game/cardback-updates`)
+    let errorCount = 0
+
     es.onmessage = (event) => {
+      // Reset error count on successful message
+      errorCount = 0
       try {
         const data = JSON.parse(event.data)
         if (data.type === 'cardback_ready' && data.factId) {
@@ -52,8 +63,15 @@ function connectSSE(): void {
         }
       } catch { /* ignore parse errors */ }
     }
+
     es.onerror = () => {
-      // Reconnect handled automatically by EventSource
+      errorCount++
+      // Stop reconnecting after SSE_MAX_ERRORS consecutive failures.
+      // EventSource auto-reconnects by default; closing it prevents infinite
+      // "Failed to load resource" spam when the cardback tool isn't running.
+      if (errorCount >= SSE_MAX_ERRORS) {
+        es.close()
+      }
     }
   } catch {
     // SSE not available — fall back to polling

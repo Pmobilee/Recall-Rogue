@@ -512,8 +512,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'attack', value: 5, weight: 1, telegraph: 'Strike' },
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: FLOOR_DAMAGE_SCALE_MID=1.2, so round(5 * 1.2) = 6, capped at segment 1 cap of 3.
-      expect(result.damage).toBe(3);
+      // Floor 1: FLOOR_DAMAGE_SCALE_MID=1.2, so round(5 * 1.2) = 6, segment 1 cap is now 6, so result = 6.
+      expect(result.damage).toBe(6);
     });
 
     it('applies strength modifier to attacks', () => {
@@ -522,8 +522,8 @@ describe('Enemy Manager', () => {
         statusEffects: [{ type: 'strength', value: 2, turnsRemaining: 3 }],
       });
       const result = executeEnemyIntent(enemy);
-      // Floor 1: round(10 * 1.5 * 1.2) = 18, capped at segment 1 cap of 3.
-      expect(result.damage).toBe(3);
+      // Floor 1: round(10 * 1.5 * 1.2) = 18, capped at segment 1 cap of 6.
+      expect(result.damage).toBe(6);
     });
 
     it('calculates multi_attack damage correctly', () => {
@@ -531,8 +531,8 @@ describe('Enemy Manager', () => {
         nextIntent: { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Flurry', hitCount: 4 },
       });
       const result = executeEnemyIntent(enemy);
-      // round(5 * 1.0 * 1.2) * 4 = 24, capped at segment 1 cap of 3.
-      expect(result.damage).toBe(3);
+      // round(5 * 1.0 * 1.2) * 4 = 24, capped at segment 1 cap of 6.
+      expect(result.damage).toBe(6);
     });
 
     it('returns player debuffs for debuff intent', () => {
@@ -1232,9 +1232,9 @@ describe('Turn Manager', () => {
       const ts = startEncounter(deck, enemy);
       ts.playerState.shield = 10;
       endPlayerTurn(ts);
-      // Enemy attacks first: 3 damage (floor 1 cap) → shield 10 - 3 = 7
-      // Then resetTurnState decays: floor(7 * 0.75) = 5
-      expect(ts.playerState.shield).toBe(5);
+      // Enemy attacks first: 6 damage (floor 1 cap = 6) → shield 10 - 6 = 4
+      // Then resetTurnState decays: floor(4 * 0.75) = 3
+      expect(ts.playerState.shield).toBe(3);
     });
 
     it('ticks player and enemy status effects', () => {

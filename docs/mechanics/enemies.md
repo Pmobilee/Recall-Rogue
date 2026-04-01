@@ -1,7 +1,7 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
@@ -27,18 +27,18 @@ Damage formula (in `executeEnemyIntent`):
 ```
 damage = round((intent.value + enrageBonusDamage) × strengthModifier × getFloorDamageScaling(floor))
 ```
-- Floors 1–6: `FLOOR_DAMAGE_SCALE_MID = 1.0`
-- Floors 7+: `1.0 + (floor - 6) × FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.02 per floor above 6)
+- Floors 1–6: `FLOOR_DAMAGE_SCALE_MID = 1.2`
+- Floors 7+: `1.0 + (floor - 6) × FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.06 per floor above 6)
 
 ### Per-Turn Damage Caps (`ENEMY_TURN_DAMAGE_CAP`)
 Charged attacks with `bypassDamageCap: true` skip these caps.
 
 | Segment | Floors | Cap |
 |---|---|---|
-| 1 | 1–6 | 5 |
-| 2 | 7–12 | 6 |
-| 3 | 13–18 | 7 |
-| 4 | 19–24 | 10 |
+| 1 | 1–6 | 6 |
+| 2 | 7–12 | 12 |
+| 3 | 13–18 | 18 |
+| 4 | 19–24 | 28 |
 | endless | 25+ | none |
 
 ### Ascension and Aura Scaling
@@ -46,6 +46,19 @@ Charged attacks with `bypassDamageCap: true` skip these caps.
 - `enemyHpMultiplier = 1.0` (no global HP mult; difficulty comes from elite design)
 - High ascension: `miniBossBossTierAttacks` flag upgrades mini-boss intent pools to boss-tier attacks
 - Brain Fog aura: all enemy attacks deal ×1.2 damage
+
+### Floor 1 Base Attack Intent Values (2026-04-01)
+Shallow Depths common enemies were updated so attack intents are not trivially negated by basic block:
+
+| Enemy | Attack intent value | Effective floor 1 damage (×1.2, cap 6) |
+|---|---|---|
+| `page_flutter` | 3 | 4 |
+| `mold_puff` | 3 | 4 |
+| `ink_slug` | 3 | 4 |
+| `staple_bug` (Mandible snap / Chittering strike) | 4 | 5 |
+| `thesis_construct` (multi-attack 2×2) | 2 per hit | 2 per hit |
+
+`thesis_construct` keeps 2×2 multi-attack — it is already effective via hit count.
 
 ## Act Enemy Pools (`ACT_ENEMY_POOLS`)
 

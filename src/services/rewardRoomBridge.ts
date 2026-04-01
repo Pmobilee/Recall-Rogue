@@ -8,6 +8,7 @@ import type { RelicDefinition } from '../data/relics/types';
 import type { RewardRoomData, RewardItem } from '../game/scenes/RewardRoomScene';
 import { currentScreen } from '../ui/stores/gameState';
 import { initRewardSpawnService } from './rewardSpawnService';
+import { turboDelay } from '../utils/turboMode';
 import { writable } from 'svelte/store';
 
 /** Currently displayed card in the reward room detail overlay. */
@@ -32,7 +33,7 @@ function getManager(): any {
  * Returns the active scene, or null on timeout.
  */
 async function waitForRewardRoomScene(mgr: any, maxWaitMs = 3000): Promise<any | null> {
-  const pollIntervalMs = 50;
+  const pollIntervalMs = turboDelay(50);
   const maxAttempts = Math.ceil(maxWaitMs / pollIntervalMs);
 
   for (let i = 0; i < maxAttempts; i++) {
@@ -75,7 +76,7 @@ export async function openRewardRoom(
     const instance = CardGameManager.getInstance();
     instance.boot();
     // Wait for Phaser to initialize
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, turboDelay(500)));
     mgr = getManager();
     if (import.meta.env.DEV) console.log('[RewardRoomBridge] After boot, mgr:', mgr ? 'found' : 'null');
     if (!mgr) {
@@ -89,7 +90,7 @@ export async function openRewardRoom(
   currentScreen.set('rewardRoom');
 
   // Small delay to let Phaser container become visible
-  await new Promise(resolve => setTimeout(resolve, 100));
+  await new Promise(resolve => setTimeout(resolve, turboDelay(100)));
 
   const data: RewardRoomData = { rewards };
   if (import.meta.env.DEV) console.log('[RewardRoomBridge] Opening reward room with', rewards.length, 'rewards');

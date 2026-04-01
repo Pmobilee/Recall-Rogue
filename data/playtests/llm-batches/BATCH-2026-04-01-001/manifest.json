@@ -1,0 +1,19 @@
+{
+  "batchId": "BATCH-2026-04-01-001",
+  "createdAt": "2026-04-01T09:34:00Z",
+  "completedAt": "2026-04-01T10:25:00Z",
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple"],
+  "args": {
+    "runs": 3,
+    "domain": "general_knowledge"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "overallVerdict": "ISSUES",
+  "reports": {
+    "quiz-quality": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 2, "mediumCount": 3, "lowCount": 3 },
+    "balance-curve": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 2, "mediumCount": 4, "lowCount": 2 },
+    "fun-engagement": { "status": "complete", "verdict": "ISSUES", "criticalCount": 1, "highCount": 3, "mediumCount": 3, "lowCount": 0 },
+    "study-temple": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 1, "mediumCount": 1, "lowCount": 2 }
+  }
+}

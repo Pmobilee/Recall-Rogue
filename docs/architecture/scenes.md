@@ -1,7 +1,7 @@
 # Scenes
 
 > **Purpose:** Phaser scenes, lifecycle, and scene transitions
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-01
 > **Source files:** `src/game/scenes/BootScene.ts`, `src/game/scenes/BootAnimScene.ts`, `src/game/scenes/CombatScene.ts`, `src/game/scenes/RewardRoomScene.ts`, `src/game/CardGameManager.ts`
 
 > See also: [systems.md](systems.md) for the 10 game systems
@@ -98,6 +98,8 @@ Displays collectible reward items on a background. Players tap items to collect 
 **`update()`:** Drives `updateFireflies(time, delta)` with sinusoidal bobbing and lifespan-based fade.
 
 **Events emitted on `this.events`:** `'goldCollected'`, `'vialCollected'`, `'cardAccepted'`, `'relicAccepted'`, `'sceneComplete'`.
+
+**`checkAutoAdvance()`:** Called whenever an item is collected. If all items are collected, fires `'sceneComplete'`. In normal mode: 800ms `delayedCall` (lets disintegration animation finish). In turbo/bot mode (`isTurboMode()`): emits synchronously so the `handleComplete → stopRewardRoom → onComplete → proceedAfterReward → currentScreen.set('dungeonMap')` callback chain completes within the same Phaser event dispatch, preventing `currentScreen` from stalling on `'rewardRoom'`.
 
 **Assets preloaded:** `reward_bg.webp`, `reward_bg_landscape.jpg`, `gold_tier_0-5.png`, `health_vial_small/large.png`, all 30+ mechanic card art PNGs, v2 card frame WebPs.
 
