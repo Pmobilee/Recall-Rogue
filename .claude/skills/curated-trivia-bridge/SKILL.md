@@ -13,9 +13,22 @@ Extract representative trivia facts from curated knowledge decks and inject them
 
 ---
 
+## Which Decks Get Bridged?
+
+**NOT all curated decks should be bridged.** Only knowledge decks enter the trivia database.
+
+| Deck Type | Bridge? | Example Decks |
+|-----------|---------|---------------|
+| **Knowledge** | YES | Dinosaurs, Solar System, Ancient Rome, World Wonders, Human Anatomy |
+| **Vocabulary/Language** | NO | Japanese N5-N1, Spanish, French |
+
+**Why the distinction:** Knowledge decks contain general-knowledge trivia that works in both Study Temple (curated FSRS) and Trivia Dungeon (broad pool). Language decks have vocabulary/grammar facts that only make sense in their curated Study Temple context — they'd be nonsensical as random trivia questions.
+
+---
+
 ## When to Run
 
-- After `/deck-master` generates a new knowledge deck
+- After `/deck-master` generates a new **knowledge** deck (not vocabulary/language)
 - After curated deck facts are updated, regenerated, or QA-fixed
 - After adding new decks to the manifest
 - Periodically to ensure bridge output is in sync with deck content

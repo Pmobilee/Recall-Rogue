@@ -70,13 +70,13 @@ The six `.card-impact-attack/shield/buff/debuff/wild` sub-classes and their `@ke
 |-----------|---------|
 | `QuizOverlay.svelte` | Multiple-choice quiz modal for card activation; Gaia avatar, 3 distractors, timer |
 | `ChallengeQuizOverlay.svelte` | Challenge-mode quiz (speed round, mastery) with configurable ChallengeMode |
-| `StudyQuizOverlay.svelte` | Rest-room study quiz: boss-quiz–style questions to upgrade card charges |
+| `StudyQuizOverlay.svelte` | Rest-room study quiz: boss-quiz–style questions to upgrade card charges. Shows inline `SRS +` / `SRS -` indicator (green/red, 0.65 opacity, scaled `10px`) alongside correct/wrong feedback text. |
 | `MasteryChallengeOverlay.svelte` | Mastery challenge room: timed quiz sequence for card mastery rewards. Calls `ambientAudio.setContext('mastery_challenge')` on `$effect` when challenge is set |
 | `ScholarQuizPanel.svelte` | Scholar-challenge run quiz panel with extended question formats |
 | `EventQuiz.svelte` | Quiz embedded inside mystery/special events for branching outcomes |
 | `GrammarTypingInput.svelte` | Free-text typing input for grammar deck tilde-fragment answers |
 | `WordHover.svelte` | Hoverable word revealing dictionary definition on hover/tap |
-| `StudySession.svelte` | Standalone study session for the Study Temple screen |
+| `StudySession.svelte` | Standalone study session for the Study Temple screen. After player taps a rating button, shows a floating `SRS +` (green) or `SRS -` (red) label above the rating buttons for the 300ms pause before advancing. State: `srsIndicator: '+' | '-' | null`. |
 | `StudyStation.svelte` | Quick-review widget inside the Hub |
 | `StudyModeSelector.svelte` | Toggle between multiple-choice / typing / flashcard modes |
 | `FactReveal.svelte` | Animates the reveal of a new fact after answering correctly |

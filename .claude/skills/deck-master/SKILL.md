@@ -430,13 +430,26 @@ Decks serve TWO distinct game modes. Workers building decks must understand both
 
 **Vocabulary is curated-only.** ALL language learning content (Japanese, Korean, Spanish, French, German, Dutch, Czech, etc.) lives exclusively in Study Temple. Language facts are never bridged into Trivia Dungeon.
 
-### Post-Generation: Trivia Bridge
+### Post-Generation: Trivia Bridge — MANDATORY CHECK
 
-After generating a new knowledge deck, run `/curated-trivia-bridge` to extract representative facts into the trivia database:
+**After EVERY new deck, you MUST decide whether to bridge it into the trivia database.**
 
-1. Add the new deck to `scripts/content-pipeline/bridge/deck-bridge-config.json`
-2. Run: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`
-3. Rebuild: `node scripts/build-facts-db.mjs`
+#### Which decks get bridged?
+
+| Deck Type | Bridge? | Why |
+|-----------|---------|-----|
+| **Knowledge decks** (history, science, geography, etc.) | **YES** | Facts appear in both Study Temple AND Trivia Dungeon. FSRS review state transfers between modes via shared fact IDs. |
+| **Vocabulary/language decks** (Japanese, Spanish, etc.) | **NO** | Language facts stay in Study Temple only. They don't fit trivia dungeon's general-knowledge format. |
+
+#### If YES — run `/curated-trivia-bridge`:
+
+1. Add the new deck to `scripts/content-pipeline/bridge/deck-bridge-config.json` with correct `prefixSegments`, `entitySegments`, `categoryL2`, and `domain`
+2. Dry run: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --dry-run`
+3. Generate: `node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs`
+4. Rebuild DB: `node scripts/build-facts-db.mjs`
+5. Verify: `npx vitest run` — check for ID collisions or distractor warnings
+
+**If you skip this step for a knowledge deck, that deck's facts will NOT appear in Trivia Dungeon and FSRS progress will NOT transfer between modes.**
 
 See `docs/content/trivia-bridge.md` for full details.
 

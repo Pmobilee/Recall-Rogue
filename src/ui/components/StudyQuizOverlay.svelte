@@ -114,6 +114,11 @@
         {#if showFeedback}
           <p class="feedback-text" class:feedback-correct={selectedAnswer === currentQuestion.correctAnswer} class:feedback-wrong={selectedAnswer !== currentQuestion.correctAnswer}>
             {selectedAnswer === currentQuestion.correctAnswer ? '✓ Correct!' : '✗ Wrong'}
+            <span
+              class="srs-indicator"
+              class:srs-plus={selectedAnswer === currentQuestion.correctAnswer}
+              class:srs-minus={selectedAnswer !== currentQuestion.correctAnswer}
+            >SRS {selectedAnswer === currentQuestion.correctAnswer ? '+' : '-'}</span>
           </p>
         {/if}
       {/if}
@@ -353,6 +358,18 @@
   .feedback-wrong {
     color: #E74C3C;
   }
+
+  .srs-indicator {
+    display: inline-block;
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 600;
+    opacity: 0.65;
+    margin-left: calc(8px * var(--layout-scale, 1));
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+  }
+
+  .srs-plus { color: #4ADE80; }
+  .srs-minus { color: #EF4444; }
 
   /* Summary screen */
   .summary {

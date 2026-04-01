@@ -42,6 +42,9 @@
   // ── Phase 57.2: Tree shimmer on correct answer ────────────
   let lastAnswerCorrect = $state(false)
 
+  // ── FSRS indicator shown briefly after rating ───────────
+  let srsIndicator = $state<'+' | '-' | '=' | null>(null)
+
   function onCorrectAnswer(): void {
     lastAnswerCorrect = true
     setTimeout(() => { lastAnswerCorrect = false }, 800)
@@ -136,6 +139,9 @@
     }
     onAnswer(currentFact.id, button)
 
+    // Set FSRS indicator based on button choice
+    srsIndicator = button === 'again' ? '-' : '+'
+
     // Re-queue Again cards at the end (max MAX_AGAIN_REQUEUES times per card)
     if (button === 'again') {
       const count = againCounts.get(currentFact.id) ?? 0
@@ -147,6 +153,8 @@
 
     // Brief visual pause before transitioning
     await new Promise<void>(r => setTimeout(r, 300))
+
+    srsIndicator = null
 
     if (cardIndex + 1 >= totalCards) {
       isDone = true
@@ -365,6 +373,13 @@
     <!-- Self-rating buttons (only after flip) -->
     {#if isFlipped}
       <div class="rating-buttons">
+        {#if srsIndicator !== null}
+          <span
+            class="srs-indicator"
+            class:srs-indicator--plus={srsIndicator === '+'}
+            class:srs-indicator--minus={srsIndicator === '-'}
+          >SRS {srsIndicator}</span>
+        {/if}
         {#each buttonOrder as btn}
           <button class="rating-btn rating-btn--{btn.key}" type="button" onclick={() => void rate(btn.key)}>
             <span class="rating-label">{btn.label}</span>
@@ -951,6 +966,24 @@
     flex: 1;
     min-height: 48px;
   }
+
+  /* ── FSRS indicator ──────────────────────────────────────────── */
+  .srs-indicator {
+    position: absolute;
+    top: calc(-4px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 600;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    opacity: 0.7;
+    pointer-events: none;
+    white-space: nowrap;
+    color: #9CA3AF;
+  }
+
+  .srs-indicator--plus { color: #4ADE80; }
+  .srs-indicator--minus { color: #EF4444; }
 
   /* ── Complete screen ─────────────────────────────────────────── */
   .complete-screen {
