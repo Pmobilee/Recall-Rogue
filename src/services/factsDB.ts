@@ -611,6 +611,7 @@ class FactsDB {
           ? (v.distractors as unknown[]).map(d => typeof d === 'string' ? d : (d as { text: string }).text ?? String(d))
           : v.distractors,
       })) as QuestionVariant[] : undefined,
+      tags: row['tags'] ? JSON.parse(String(row['tags'])) as string[] : undefined,
     }
   }
 }
