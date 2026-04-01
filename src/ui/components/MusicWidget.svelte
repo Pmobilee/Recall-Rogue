@@ -142,6 +142,7 @@
 
   function handleCategorySwitch(cat: MusicCategory, e: MouseEvent): void {
     e.stopPropagation()
+    currentCategory = cat  // update UI immediately on click
     musicService.switchCategory(cat)
   }
 
