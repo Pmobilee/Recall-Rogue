@@ -965,7 +965,7 @@
           {:else if showGuaranteed}
             <span class="charge-zone-text guaranteed-active">✦ GUARANTEED ✦</span>
           {:else}
-            <span class="charge-zone-text" class:momentum-active={isMomentumMatch && !isSurgeActive}>⚡ CHARGE {isSurgeActive || isMomentumMatch ? '+0' : '+1'} AP{isMomentumMatch && !isSurgeActive ? ' ⚡' : ''}</span>
+            <span class="charge-zone-text" class:momentum-active={isMomentumMatch && !isSurgeActive}>⚡ CHARGE {chargeApCostForDrag} AP{isMomentumMatch && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
         </div>
       {/if}
@@ -975,7 +975,7 @@
       {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge}
-      {@const chargeApDisplay = isFreeAp ? '+0' : '+1'}
+      {@const chargeApDisplay = String(chargeApCost)}
       {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button
         class="charge-play-btn charge-play-btn-landscape"
@@ -1351,7 +1351,7 @@
           {:else if showGuaranteed}
             <span class="charge-zone-text guaranteed-active">✦ GUARANTEED ✦</span>
           {:else}
-            <span class="charge-zone-text" class:momentum-active={isMomentumMatch && !isSurgeActive}>⚡ CHARGE {isSurgeActive || isMomentumMatch ? '+0' : '+1'} AP{isMomentumMatch && !isSurgeActive ? ' ⚡' : ''}</span>
+            <span class="charge-zone-text" class:momentum-active={isMomentumMatch && !isSurgeActive}>⚡ CHARGE {chargeApCostForDrag} AP{isMomentumMatch && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
         </div>
       {/if}
@@ -1366,7 +1366,7 @@
       {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge}
-      {@const chargeApDisplay = isFreeAp ? '+0' : '+1'}
+      {@const chargeApDisplay = String(chargeApCost)}
       {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button
         class="charge-play-btn"

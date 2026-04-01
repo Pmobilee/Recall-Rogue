@@ -329,3 +329,13 @@ LLM playtest BATCH-2026-04-01-001 found all floor 1 enemies dealt only 2 damage/
 **Why:** The `tags` column was added to the DB schema months ago but `rowToFact()` was never updated to parse it. The column existed, the data was written correctly, but the runtime type just didn't include the mapping.
 
 **Fix:** Added `tags: row['tags'] ? JSON.parse(String(row['tags'])) as string[] : undefined` to `rowToFact()`. Rule: when adding a new column to `build-facts-db.mjs`, ALWAYS update `rowToFact()` in `factsDB.ts` to parse it back.
+
+### 2026-04-01 — answerTypePool contamination: non-name answers in name pools create gibberish distractors
+
+**What:** LLM playtests found distractors like "Scourge of God", "vandalism", "never to be a friend of Rome", and "Ten years" appearing alongside person names and dates, making them trivially eliminatable.
+
+**Why:** These facts had correct answers that were epitaphs, oaths, English word origins, and durations — but were incorrectly placed in `answerFormat: "name"` pools (`general_politician_names`, `god_names`, `battle_names`). The game draws pool-mate correct answers as distractors for questions in the same pool. When a "who crossed the Alps?" question draws from `general_politician_names`, it might pull "Scourge of God" (Attila's epithet) or "vandalism" (word origin) as a distractor instead of a plausible general's name.
+
+**Fix (2026-04-01):** Audited both `ancient_rome.json` and `ancient_greece.json`. Moved 15 facts total to type-appropriate pools: non-name Rome facts moved from `general_politician_names`/`text_work_names`/`structure_names` to `political_terms`; non-name Greece facts moved to `concept_terms`/`work_text_names`/`date_events`.
+
+**Rule:** When writing facts with non-name answers (epitaphs, oaths, durations, descriptions, phrases), always assign `answerTypePoolId` to a term/concept pool — NEVER a name pool. The pool's `answerFormat` must match the **format of the fact's correct answer**, not the topic of the question. A question *about* a person that asks for their epithet should be in `political_terms`, not `general_politician_names`.

@@ -49,6 +49,16 @@
 
 Cards have `class:tier-2a`, `class:tier-2b`, and `class:tier-3` bindings in the template (both landscape and portrait paths). The corresponding CSS rules carry no visual effects — tier drop-shadow glow styles (silver for 2a/2b, gold for tier-3) were removed 2026-03-31. The class bindings remain in the template for potential future use.
 
+### CardHand charge button AP display
+
+The charge button and drag-charge zone both show the **total AP cost** to charge, not just the surcharge. This means a 1 AP card displays "2 AP ⚡ CHARGE" (base 1 + surcharge 1), not "+1 AP".
+
+-  — total cost (base card cost minus focus discount + surge/momentum surcharge)
+- When free (surge/momentum/isFreeCharge): , displays "0 AP" with green badge color
+- Badge color: green when free, red when , default otherwise
+- Drag zone indicator uses  (same formula, no isFreeCharge factor)
+- Applies to landscape charge button (~line 978), portrait charge button (~line 1369), landscape drag zone (~line 968), portrait drag zone (~line 1354)
+
 ### CardHand card-play animation phases
 
 Cards animate in place (no centering/floating to screen center). All three phases use `z-index: 60` instead of `z-index: 100`.

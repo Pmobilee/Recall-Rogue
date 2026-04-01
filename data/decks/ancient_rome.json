@@ -1064,7 +1064,7 @@
         "Gaul is divided into three parts"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "text_work_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -3290,7 +3290,7 @@
         "spoils of the Jewish War"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "structure_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -7074,7 +7074,7 @@
         "5th"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "all",
@@ -10321,7 +10321,7 @@
         "poison"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -10514,7 +10514,7 @@
         "to hate Rome"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -11139,7 +11139,7 @@
         "the Scourge of God"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -11235,7 +11235,7 @@
         "the word vandalism"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 2,
       "funScore": 9,
       "ageGroup": "all",
@@ -12586,7 +12586,7 @@
         "247 to 183 BCE"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 4,
       "funScore": 5,
       "ageGroup": "all",
@@ -12879,7 +12879,7 @@
         "two brothers"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -13173,7 +13173,7 @@
         "given a pension and exiled"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "general_politician_names",
+      "answerTypePoolId": "political_terms",
       "difficulty": 4,
       "funScore": 8,
       "ageGroup": "all",
@@ -13653,7 +13653,6 @@
         "rome_emp_nero_death",
         "rome_emp_five_good_coined",
         "rome_eng_via_appia_builder",
-        "rome_chr_pilate_rank",
         "rome_emp_tiberius_sejanus",
         "rome_emp_hadrian_pantheon",
         "rome_pun_carthage_founding",
@@ -13662,22 +13661,15 @@
         "rome_pun_fabius_cunctator",
         "rome_pun_metaurus",
         "rome_pun_scipio_africanus",
-        "rome_pun_hannibal_death",
         "rome_pun_cato_delenda",
-        "rome_pun_hannibal_oath",
         "rome_pun_hannibal_vs_scipio_ranking",
         "rome_pun_scipio_aemilianus_third",
-        "rome_fall_attila_nickname",
-        "rome_fall_vandals_455",
         "rome_fall_odoacer",
         "rome_fall_why_rome_fell",
         "rome_fall_theodoric_great",
-        "rome_pun_hannibal_lifespan",
         "rome_pun_masinissa",
-        "rome_pun_hannibal_brothers_count",
         "rome_fall_stilicho",
-        "rome_fall_aetius_last_roman",
-        "rome_fall_romulus_augustulus_fate"
+        "rome_fall_aetius_last_roman"
       ],
       "minimumSize": 5
     },
@@ -13740,7 +13732,17 @@
         "rome_life_toga_types",
         "rome_life_latin_romance_languages",
         "rome_pun_third_punic_cause",
-        "rome_fall_western_collapse_factors"
+        "rome_fall_western_collapse_factors",
+        "rome_chr_pilate_rank",
+        "rome_pun_hannibal_death",
+        "rome_pun_hannibal_oath",
+        "rome_fall_attila_nickname",
+        "rome_fall_vandals_455",
+        "rome_pun_hannibal_lifespan",
+        "rome_pun_hannibal_brothers_count",
+        "rome_fall_romulus_augustulus_fate",
+        "rome_cae_bello_gallico_opening",
+        "rome_aug_colosseum_jerusalem"
       ],
       "minimumSize": 5
     },
@@ -13749,7 +13751,6 @@
       "label": "Famous Roman Texts & Works",
       "answerFormat": "name",
       "factIds": [
-        "rome_cae_bello_gallico_opening",
         "rome_aug_marcus_stoicism",
         "rome_chr_paul_new_testament",
         "rome_chr_milvian_bridge_vision",
@@ -13783,7 +13784,6 @@
       "factIds": [
         "rome_cae_assassination_location",
         "rome_aug_marble_quote",
-        "rome_aug_colosseum_jerusalem",
         "rome_aug_hadrian_wall_length",
         "rome_aug_trajans_column",
         "rome_aug_cursus_publicus",

@@ -278,3 +278,62 @@ Scripts:
 - Config (entity grouping, per-deck settings): `scripts/content-pipeline/bridge/deck-bridge-config.json`
 
 Run the `/curated-trivia-bridge` skill after adding or updating any knowledge deck. Full details: `docs/content/trivia-bridge.md`.
+
+---
+
+## ancient_rome Deck
+
+`data/decks/ancient_rome.json` — 275 facts covering the full arc of Roman civilization.
+
+| Field | Value |
+|---|---|
+| `id` | `ancient_rome` |
+| `domain` | `history` |
+| `subDomain` | `ancient_rome` |
+| `facts` | 275 |
+| `minimumFacts` | 200 |
+| `targetFacts` | 280 |
+
+**Answer Type Pools (9):**
+
+| Pool ID | Format | Facts (after 2026-04-01 fix) |
+|---|---|---|
+| `date_events` | date | dates/counts/numbers |
+| `city_place_names` | name | cities, places |
+| `general_politician_names` | name | 40 — person names only |
+| `political_terms` | term | 65 — terms, phrases, epitaphs, oaths |
+| `text_work_names` | name | 6 — text/work titles |
+| `battle_names` | name | battle names |
+| `structure_names` | name | 29 — building/structure names |
+| `emperor_names` | name | emperor names |
+| `roman_god_names` | name | Roman deity names |
+
+**Pool fix (2026-04-01):** 10 facts were reassigned from `general_politician_names`, `text_work_names`, and `structure_names` to `political_terms` because their correct answers were non-name types (epithets, oaths, date ranges, phrases) that would appear as bad distractors in person-name questions. See gotchas.md for the lesson.
+
+---
+
+## ancient_greece Deck
+
+`data/decks/ancient_greece.json` — 246 facts covering Classical Greece from the poleis to Alexander.
+
+| Field | Value |
+|---|---|
+| `id` | `ancient_greece` |
+| `domain` | `history` |
+| `subDomain` | `ancient_greece` |
+| `facts` | 246 |
+
+**Answer Type Pools (8):**
+
+| Pool ID | Format | Facts (after 2026-04-01 fix) |
+|---|---|---|
+| `ruler_general_names` | name | 38 — person names |
+| `concept_terms` | term | 101 — terms, durations, descriptions |
+| `date_events` | date | 40 — calendar dates |
+| `structure_names` | name | 15 — building/place names |
+| `god_names` | name | 16 — Greek deity names |
+| `city_state_names` | place | 13 — polis/city names |
+| `battle_names` | name | 8 — battle names |
+| `work_text_names` | name | 15 — literary/artistic works |
+
+**Pool fix (2026-04-01):** 5 facts were reassigned to correct pools: `greece_cs_ostracism_duration` ("Ten years") and `greece_rel_poseidon_domain` ("Seas, water, storms…") moved from name-format pools to `concept_terms`; `greece_cs_agora_function` (function description) moved to `concept_terms`; `greece_oc_kritios_boy` (artwork title) moved to `work_text_names`; `greece_alex_hellespont_crossing` ("334 BCE") moved from `battle_names` to `date_events`.
