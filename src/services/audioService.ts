@@ -231,6 +231,286 @@ export type SoundName =
   | 'tutorial_step_complete'
   | 'tutorial_complete'
 
+
+// ---------------------------------------------------------------------------
+// File-based SFX mapping
+// ---------------------------------------------------------------------------
+
+/**
+ * Helper to compute the .ogg file path for a given SoundName.
+ * Most sounds follow the pattern /assets/audio/sfx/{prefix}/{name}.ogg where
+ * {prefix} is the text before the first underscore.  Special cases are
+ * overridden explicitly.
+ */
+function sfxPath(name: SoundName): string {
+  // Explicit overrides for names whose file path doesn't match the prefix rule
+  const OVERRIDES: Partial<Record<SoundName, string>> = {
+    // surge_active maps to surge_active_loop.ogg
+    surge_active: '/assets/audio/sfx/surge/surge_active_loop.ogg',
+    // ui/* names — button_click has no underscore prefix folder
+    button_click: '/assets/audio/sfx/ui/button_click.ogg',
+    modal_open: '/assets/audio/sfx/ui/modal_open.ogg',
+    modal_close: '/assets/audio/sfx/ui/modal_close.ogg',
+    toggle_on: '/assets/audio/sfx/ui/toggle_on.ogg',
+    toggle_off: '/assets/audio/sfx/ui/toggle_off.ogg',
+    tab_switch: '/assets/audio/sfx/ui/tab_switch.ogg',
+    notification_ping: '/assets/audio/sfx/ui/notification_ping.ogg',
+    error_deny: '/assets/audio/sfx/ui/error_deny.ogg',
+    ui_pop_in: '/assets/audio/sfx/ui/ui_pop_in.ogg',
+    // legacy/* names — all mine_*, oxygen_*, and single-segment legacy names
+    collect: '/assets/audio/sfx/legacy/collect.ogg',
+    item_pickup: '/assets/audio/sfx/legacy/item_pickup.ogg',
+    gaia_quip: '/assets/audio/sfx/legacy/gaia_quip.ogg',
+    lava_sizzle: '/assets/audio/sfx/legacy/lava_sizzle.ogg',
+    gas_pocket: '/assets/audio/sfx/legacy/gas_pocket.ogg',
+    mine_dirt: '/assets/audio/sfx/legacy/mine_dirt.ogg',
+    mine_rock: '/assets/audio/sfx/legacy/mine_rock.ogg',
+    mine_crystal: '/assets/audio/sfx/legacy/mine_crystal.ogg',
+    mine_break: '/assets/audio/sfx/legacy/mine_break.ogg',
+    oxygen_warning: '/assets/audio/sfx/legacy/oxygen_warning.ogg',
+    oxygen_low: '/assets/audio/sfx/legacy/oxygen_low.ogg',
+    oxygen_critical: '/assets/audio/sfx/legacy/oxygen_critical.ogg',
+  }
+  if (name in OVERRIDES) return OVERRIDES[name]!
+
+  // Auto-derive folder from first underscore segment
+  const folder = name.split('_')[0]
+  return `/assets/audio/sfx/${folder}/${name}.ogg`
+}
+
+/**
+ * Maps every SoundName that has a corresponding .ogg file to its path.
+ * Generated once at module load — cheap string operations only.
+ *
+ * Design: file playback takes priority over synthesis when the buffer is
+ * cached.  First play of any sound triggers a lazy fetch then falls back to
+ * synthesis; subsequent plays use the decoded AudioBuffer directly.
+ */
+const SFX_FILE_MAP: Partial<Record<SoundName, string>> = {
+  // --- Combat: Card Events ---
+  card_swoosh_attack: sfxPath('card_swoosh_attack'),
+  card_swoosh_shield: sfxPath('card_swoosh_shield'),
+  card_swoosh_buff: sfxPath('card_swoosh_buff'),
+  card_swoosh_debuff: sfxPath('card_swoosh_debuff'),
+  card_swoosh_wild: sfxPath('card_swoosh_wild'),
+  card_deal: sfxPath('card_deal'),
+  card_shuffle: sfxPath('card_shuffle'),
+  card_select: sfxPath('card_select'),
+  card_deselect: sfxPath('card_deselect'),
+  card_discard: sfxPath('card_discard'),
+  card_fizzle: sfxPath('card_fizzle'),
+  card_exhaust: sfxPath('card_exhaust'),
+  charge_initiate: sfxPath('charge_initiate'),
+  double_strike: sfxPath('double_strike'),
+  inscription_resolve: sfxPath('inscription_resolve'),
+  // --- Combat: Enemy Actions ---
+  enemy_intent: sfxPath('enemy_intent'),
+  enemy_attack: sfxPath('enemy_attack'),
+  enemy_charge_up: sfxPath('enemy_charge_up'),
+  enemy_charge_release: sfxPath('enemy_charge_release'),
+  enemy_defend: sfxPath('enemy_defend'),
+  enemy_buff: sfxPath('enemy_buff'),
+  enemy_debuff_player: sfxPath('enemy_debuff_player'),
+  enemy_enrage: sfxPath('enemy_enrage'),
+  enemy_phase_transition: sfxPath('enemy_phase_transition'),
+  enemy_heal: sfxPath('enemy_heal'),
+  enemy_dialogue: sfxPath('enemy_dialogue'),
+  // --- Combat: Player Health ---
+  player_damage: sfxPath('player_damage'),
+  shield_absorb: sfxPath('shield_absorb'),
+  shield_break: sfxPath('shield_break'),
+  shield_gain: sfxPath('shield_gain'),
+  player_heal: sfxPath('player_heal'),
+  immunity_trigger: sfxPath('immunity_trigger'),
+  player_defeated: sfxPath('player_defeated'),
+  low_hp_warning: sfxPath('low_hp_warning'),
+  // --- Chain System ---
+  chain_link_1: sfxPath('chain_link_1'),
+  chain_link_2: sfxPath('chain_link_2'),
+  chain_link_3: sfxPath('chain_link_3'),
+  chain_link_4: sfxPath('chain_link_4'),
+  chain_link_5: sfxPath('chain_link_5'),
+  chain_break: sfxPath('chain_break'),
+  chain_momentum: sfxPath('chain_momentum'),
+  // --- Status Effects ---
+  status_poison_apply: sfxPath('status_poison_apply'),
+  status_poison_tick: sfxPath('status_poison_tick'),
+  status_burn_apply: sfxPath('status_burn_apply'),
+  status_burn_tick: sfxPath('status_burn_tick'),
+  status_bleed_apply: sfxPath('status_bleed_apply'),
+  status_weakness_apply: sfxPath('status_weakness_apply'),
+  status_vulnerability_apply: sfxPath('status_vulnerability_apply'),
+  status_strength_apply: sfxPath('status_strength_apply'),
+  status_regen_apply: sfxPath('status_regen_apply'),
+  status_focus_apply: sfxPath('status_focus_apply'),
+  status_expire: sfxPath('status_expire'),
+  status_regen_tick: sfxPath('status_regen_tick'),
+  // --- Quiz ---
+  quiz_correct: sfxPath('quiz_correct'),
+  quiz_wrong: sfxPath('quiz_wrong'),
+  quiz_appear: sfxPath('quiz_appear'),
+  quiz_answer_select: sfxPath('quiz_answer_select'),
+  quiz_speed_bonus: sfxPath('quiz_speed_bonus'),
+  quiz_dismiss: sfxPath('quiz_dismiss'),
+  quiz_timer_tick: sfxPath('quiz_timer_tick'),
+  quiz_memory_tip: sfxPath('quiz_memory_tip'),
+  quiz_streak: sfxPath('quiz_streak'),
+  // --- Turn Flow ---
+  enemy_turn_start: sfxPath('enemy_turn_start'),
+  ap_spend: sfxPath('ap_spend'),
+  ap_gain: sfxPath('ap_gain'),
+  ap_exhausted: sfxPath('ap_exhausted'),
+  end_turn_click: sfxPath('end_turn_click'),
+  perfect_turn: sfxPath('perfect_turn'),
+  combo_10: sfxPath('combo_10'),
+  // --- Surge ---
+  surge_announce: sfxPath('surge_announce'),
+  surge_end: sfxPath('surge_end'),
+  surge_active: sfxPath('surge_active'),
+  // --- Relic Triggers ---
+  relic_trigger_generic: sfxPath('relic_trigger_generic'),
+  relic_trigger_defensive: sfxPath('relic_trigger_defensive'),
+  relic_trigger_offensive: sfxPath('relic_trigger_offensive'),
+  relic_trigger_heal: sfxPath('relic_trigger_heal'),
+  relic_trigger_ap: sfxPath('relic_trigger_ap'),
+  relic_card_spawn: sfxPath('relic_card_spawn'),
+  relic_death_prevent: sfxPath('relic_death_prevent'),
+  relic_capacitor_release: sfxPath('relic_capacitor_release'),
+  // --- Encounter Lifecycle ---
+  encounter_start: sfxPath('encounter_start'),
+  encounter_start_boss: sfxPath('encounter_start_boss'),
+  encounter_start_elite: sfxPath('encounter_start_elite'),
+  encounter_victory: sfxPath('encounter_victory'),
+  encounter_defeat: sfxPath('encounter_defeat'),
+  boss_defeated: sfxPath('boss_defeated'),
+  boss_intro: sfxPath('boss_intro'),
+  // --- Map & Navigation ---
+  map_open: sfxPath('map_open'),
+  map_node_hover: sfxPath('map_node_hover'),
+  map_node_click: sfxPath('map_node_click'),
+  map_path_reveal: sfxPath('map_path_reveal'),
+  floor_transition: sfxPath('floor_transition'),
+  room_transition: sfxPath('room_transition'),
+  // --- Hub ---
+  hub_welcome: sfxPath('hub_welcome'),
+  hub_start_run: sfxPath('hub_start_run'),
+  hub_button_library: sfxPath('hub_button_library'),
+  hub_button_settings: sfxPath('hub_button_settings'),
+  // --- Shop ---
+  shop_open: sfxPath('shop_open'),
+  shop_purchase: sfxPath('shop_purchase'),
+  shop_insufficient_gold: sfxPath('shop_insufficient_gold'),
+  shop_haggle_start: sfxPath('shop_haggle_start'),
+  shop_haggle_success: sfxPath('shop_haggle_success'),
+  shop_close: sfxPath('shop_close'),
+  shop_sell: sfxPath('shop_sell'),
+  shop_removal_burn: sfxPath('shop_removal_burn'),
+  shop_removal_complete: sfxPath('shop_removal_complete'),
+  shop_transform_shimmer: sfxPath('shop_transform_shimmer'),
+  shop_transform_dissolve: sfxPath('shop_transform_dissolve'),
+  shop_transform_vortex: sfxPath('shop_transform_vortex'),
+  shop_transform_split: sfxPath('shop_transform_split'),
+  shop_transform_materialize: sfxPath('shop_transform_materialize'),
+  shop_transform_reveal: sfxPath('shop_transform_reveal'),
+  shop_transform_confirm: sfxPath('shop_transform_confirm'),
+  shop_price_tick: sfxPath('shop_price_tick'),
+  shop_unaffordable: sfxPath('shop_unaffordable'),
+  shop_card_appear: sfxPath('shop_card_appear'),
+  shop_card_flip: sfxPath('shop_card_flip'),
+  shop_coin_fly: sfxPath('shop_coin_fly'),
+  shop_bark: sfxPath('shop_bark'),
+  // --- Rest Site ---
+  rest_open: sfxPath('rest_open'),
+  rest_heal: sfxPath('rest_heal'),
+  rest_study: sfxPath('rest_study'),
+  rest_meditate: sfxPath('rest_meditate'),
+  rest_card_removed: sfxPath('rest_card_removed'),
+  // --- Rewards ---
+  reward_screen: sfxPath('reward_screen'),
+  gold_collect: sfxPath('gold_collect'),
+  card_accepted: sfxPath('card_accepted'),
+  card_skipped: sfxPath('card_skipped'),
+  card_rerolled: sfxPath('card_rerolled'),
+  relic_acquired: sfxPath('relic_acquired'),
+  treasure_item_appear: sfxPath('treasure_item_appear'),
+  treasure_item_collect: sfxPath('treasure_item_collect'),
+  // --- Mystery Events ---
+  mystery_appear: sfxPath('mystery_appear'),
+  event_choice: sfxPath('event_choice'),
+  event_outcome_positive: sfxPath('event_outcome_positive'),
+  event_outcome_negative: sfxPath('event_outcome_negative'),
+  event_continue: sfxPath('event_continue'),
+  // --- Run Lifecycle ---
+  run_start: sfxPath('run_start'),
+  domain_select: sfxPath('domain_select'),
+  floor_cleared: sfxPath('floor_cleared'),
+  retreat_chosen: sfxPath('retreat_chosen'),
+  delve_deeper: sfxPath('delve_deeper'),
+  run_victory: sfxPath('run_victory'),
+  run_defeat: sfxPath('run_defeat'),
+  stat_tick: sfxPath('stat_tick'),
+  xp_award: sfxPath('xp_award'),
+  level_up: sfxPath('level_up'),
+  ascension_unlock: sfxPath('ascension_unlock'),
+  // --- Generic UI ---
+  button_click: sfxPath('button_click'),
+  modal_open: sfxPath('modal_open'),
+  modal_close: sfxPath('modal_close'),
+  toggle_on: sfxPath('toggle_on'),
+  toggle_off: sfxPath('toggle_off'),
+  tab_switch: sfxPath('tab_switch'),
+  notification_ping: sfxPath('notification_ping'),
+  error_deny: sfxPath('error_deny'),
+  ui_pop_in: sfxPath('ui_pop_in'),
+  // --- Reveal ---
+  reveal_common: sfxPath('reveal_common'),
+  reveal_uncommon: sfxPath('reveal_uncommon'),
+  reveal_rare: sfxPath('reveal_rare'),
+  reveal_epic: sfxPath('reveal_epic'),
+  reveal_legendary: sfxPath('reveal_legendary'),
+  reveal_mythic: sfxPath('reveal_mythic'),
+  // --- Mastery ---
+  mastery_glow: sfxPath('mastery_glow'),
+  mastery_fullscreen: sfxPath('mastery_fullscreen'),
+  streak_milestone: sfxPath('streak_milestone'),
+  // --- Keeper NPC ---
+  keeper_calm: sfxPath('keeper_calm'),
+  keeper_excited: sfxPath('keeper_excited'),
+  keeper_stern: sfxPath('keeper_stern'),
+  keeper_curious: sfxPath('keeper_curious'),
+  // --- Screen Transitions ---
+  transition_hub_dungeon: sfxPath('transition_hub_dungeon'),
+  transition_combat_reward: sfxPath('transition_combat_reward'),
+  transition_to_rest: sfxPath('transition_to_rest'),
+  transition_to_shop: sfxPath('transition_to_shop'),
+  transition_run_end_hub: sfxPath('transition_run_end_hub'),
+  boot_logo: sfxPath('boot_logo'),
+  // --- Tutorial ---
+  tutorial_tooltip: sfxPath('tutorial_tooltip'),
+  tutorial_step_complete: sfxPath('tutorial_step_complete'),
+  tutorial_complete: sfxPath('tutorial_complete'),
+  // --- Progression ---
+  fact_mastered: sfxPath('fact_mastered'),
+  mastery_challenge_appear: sfxPath('mastery_challenge_appear'),
+  mastery_trial_pass: sfxPath('mastery_trial_pass'),
+  mastery_trial_fail: sfxPath('mastery_trial_fail'),
+  mechanic_unlock: sfxPath('mechanic_unlock'),
+  relic_unlock: sfxPath('relic_unlock'),
+  // --- Legacy ---
+  mine_dirt: sfxPath('mine_dirt'),
+  mine_rock: sfxPath('mine_rock'),
+  mine_crystal: sfxPath('mine_crystal'),
+  mine_break: sfxPath('mine_break'),
+  collect: sfxPath('collect'),
+  item_pickup: sfxPath('item_pickup'),
+  oxygen_warning: sfxPath('oxygen_warning'),
+  oxygen_low: sfxPath('oxygen_low'),
+  oxygen_critical: sfxPath('oxygen_critical'),
+  gaia_quip: sfxPath('gaia_quip'),
+  lava_sizzle: sfxPath('lava_sizzle'),
+  gas_pocket: sfxPath('gas_pocket'),
+}
+
 // Webkit-prefixed AudioContext fallback for older iOS Safari.
 type AnyAudioContext = AudioContext
 declare global {
@@ -2750,6 +3030,11 @@ class AudioManager {
   private volume: number = 1.0
   private muted: boolean = false
 
+  /** Decoded AudioBuffer cache — null means the file failed to load. */
+  private bufferCache = new Map<SoundName, AudioBuffer | null>()
+  /** Tracks in-flight fetch+decode calls to avoid duplicate requests. */
+  private loadingSet = new Set<SoundName>()
+
   /**
    * Lazily initializes the AudioContext and master GainNode on first use.
    * Returns null when Web Audio API is unavailable (e.g. in tests or SSR).
@@ -2774,6 +3059,38 @@ class AudioManager {
   }
 
   /**
+   * Lazily fetches and decodes an .ogg file for the given sound name.
+   * Caches the result (including null on failure) so each file is decoded
+   * at most once per session.  Returns null if no file mapping exists or
+   * on any network/decode error.
+   */
+  private async loadSfxBuffer(name: SoundName): Promise<AudioBuffer | null> {
+    if (this.bufferCache.has(name)) return this.bufferCache.get(name)!
+    if (this.loadingSet.has(name)) return null // already in-flight, skip
+
+    const path = SFX_FILE_MAP[name]
+    if (!path) return null
+
+    this.loadingSet.add(name)
+    try {
+      const response = await fetch(path)
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      const arrayBuffer = await response.arrayBuffer()
+      const result = this.getContext()
+      if (!result) return null
+      const audioBuffer = await result.ctx.decodeAudioData(arrayBuffer)
+      this.bufferCache.set(name, audioBuffer)
+      return audioBuffer
+    } catch {
+      // File not found or decode error — store null so we never retry.
+      this.bufferCache.set(name, null)
+      return null
+    } finally {
+      this.loadingSet.delete(name)
+    }
+  }
+
+  /**
    * Unlocks the AudioContext by resuming it.
    * Must be called from within a user gesture (click, touch, keydown) to satisfy
    * mobile browser autoplay restrictions. Safe to call multiple times.
@@ -2790,8 +3107,12 @@ class AudioManager {
   }
 
   /**
-   * Plays a named sound programmatically using Web Audio API synthesis.
-   * No-op when muted, volume is zero, or AudioContext is unavailable.
+   * Plays a named sound.  Prefers the decoded .ogg file buffer when cached;
+   * otherwise falls back to Web Audio API synthesis immediately and fires a
+   * background fetch so the next call uses the file instead.
+   *
+   * Strategy: zero-latency on first play (synthesis), progressive upgrade to
+   * file-based audio on subsequent plays.
    *
    * @param name - The name of the sound to play.
    */
@@ -2808,8 +3129,36 @@ class AudioManager {
       return
     }
 
+    // Fast path: use cached AudioBuffer from .ogg file.
+    const cached = this.bufferCache.get(name)
+    if (cached) {
+      const source = ctx.createBufferSource()
+      source.buffer = cached
+      source.connect(master)
+      source.start()
+      return
+    }
+
+    // If the file mapping exists but isn't loaded yet, start a background
+    // fetch for next time.  null in the cache means a previous fetch failed —
+    // don't retry.
+    if (SFX_FILE_MAP[name] !== undefined && !this.bufferCache.has(name)) {
+      void this.loadSfxBuffer(name)
+    }
+
+    // Fall back to synthesis for this play.
     const fn = SOUND_MAP[name]
     fn(ctx, master)
+  }
+
+  /**
+   * Preloads file-based SFX for the given sound names.
+   * Call during loading screens to warm the buffer cache for critical sounds.
+   *
+   * @param names - Array of SoundNames to prefetch and decode.
+   */
+  async preloadSounds(names: SoundName[]): Promise<void> {
+    await Promise.allSettled(names.map(n => this.loadSfxBuffer(n)))
   }
 
   /**
