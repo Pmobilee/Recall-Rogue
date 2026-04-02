@@ -78,6 +78,8 @@ Architecture YAML files in `data/deck-architectures/` hold the verified source d
 | `world_wonders_research_02.yaml` | `world_wonders` | complete — live | ~50 | Batch 2: sacred monuments |
 | `world_wonders_research_03.yaml` | `world_wonders` | complete — live | ~50 | Batch 3: towers + bridges |
 | `world_wonders_research_04.yaml` | `world_wonders` | complete — live | ~50 | Batch 4: palaces + monuments + natural + modern |
+| `cs_tech_algorithms_arch.yaml` | `computer_science_algorithms` | research complete — pending generation | ~30 | Sub-deck 3: Sorting, search, graph algos, data structures, theory |
+| `cs_tech_systems_arch.yaml` | `computer_science_systems` | research complete — pending generation | ~35 | Sub-deck 4: OS, networking, security, acronyms |
 
 The 4 `world_wonders` architecture files total 195 facts in the live deck. They were merged by `data/decks/_wip/assemble-world-wonders.mjs`.
 
@@ -451,3 +453,64 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `dinosaurs` | `clade_names` | 5 | 6 |
 
 **Validation:** All 12 modified decks pass 0 FAIL after the change. Run `node scripts/verify-curated-deck.mjs <deck_id>` to verify.
+
+---
+
+## human_anatomy Deck
+
+`data/decks/human_anatomy.json` — 2009 facts covering human anatomy across 17 sub-decks, including 818 visual image-answer facts.
+
+| Field | Value |
+|---|---|
+| `id` | `human_anatomy` |
+| `domain` | `natural_sciences` |
+| `subDomain` | `human_anatomy` |
+| `facts` | 2009 |
+
+**Sub-Decks (17):**
+
+| SubDeck ID | Name | Facts |
+|---|---|---|
+| `skeletal_system` | Skeletal System | 80 |
+| `muscular_system` | Muscular System | 140 |
+| `cardiovascular` | Cardiovascular System | 115 |
+| `nervous_system` | Nervous System | 125 |
+| `digestive_system` | Digestive System | 65 |
+| `respiratory_system` | Respiratory System | 54 |
+| `urinary_system` | Urinary System | 44 |
+| `reproductive_system` | Reproductive System | 54 |
+| `endocrine_system` | Endocrine System | 53 |
+| `lymphatic_immune` | Lymphatic & Immune System | 44 |
+| `special_senses` | Special Senses | 39 |
+| `integumentary` | Integumentary System | 48 |
+| `visual_anatomy` | Visual Anatomy | 818 |
+| `clinical_anatomy` | Clinical Anatomy | 90 |
+| `embryology` | Embryology | 90 |
+| `regional_anatomy` | Regional Anatomy | 60 |
+| `histology` | Histology | 90 |
+
+**Answer Type Pools (12):**
+
+| Pool ID | Format | Facts | Notes |
+|---|---|---|---|
+| `bone_names` | — | 44 | |
+| `muscle_names` | — | 68 | |
+| `structure_names` | — | 1182 | Largest pool; image-answer facts use this |
+| `nerve_names` | — | 65 | |
+| `vessel_names` | — | 15 | |
+| `organ_names` | — | 7 | +2 synthetics (5 dropped — matched correct answers) |
+| `function_terms` | — | 260 | |
+| `location_terms` | — | 58 | |
+| `number_stats` | — | 104 | |
+| `clinical_terms` | — | 130 | |
+| `tissue_types` | — | 57 | |
+| `immune_terms` | — | 19 | |
+
+**Quiz Modes:**
+- 1191 text facts (no `quizMode`)
+- 409 image question facts (`quizMode: "image_question"`)
+- 409 image answer facts (`quizMode: "image_answers"`) — player sees question text, picks from image options
+
+**Difficulty:** 1=289, 2=875, 3=765, 4=26 (54 unset)
+
+**Fix (2026-04-02):** 19 `image_answers` facts had duplicate `quizQuestion` text across 9 groups (same structure shown from multiple angles). Fixed by `data/decks/_wip/fix-anatomy-duplicate-questions.mjs` (cleaned up after run). Each question now incorporates a parenthetical view label derived from the explanation: e.g. "Which image shows the Skull (lateral view)?", "Which image shows the Skull (inferior/base view)?". Validation: 2009/2009 PASS.
