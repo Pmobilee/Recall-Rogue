@@ -1,0 +1,772 @@
+deck_id: music_history
+name: "Music History"
+domain: art_architecture
+sub_domain: music_history
+target_facts: 230
+minimum_facts: 180
+
+data_sources:
+  - name: Wikidata
+    url: https://www.wikidata.org
+    license: CC0
+    usage: structured data (birth/death dates, nationalities, genres)
+  - name: Wikipedia
+    url: https://en.wikipedia.org
+    license: CC-BY-SA-4.0
+    usage: narrative context, cultural impact, explanations
+
+# ============================================================
+# ANSWER TYPE POOLS
+# ============================================================
+answer_type_pools:
+  - id: composer_names
+    format: name
+    estimated_count: 28
+    min_distractors: 4
+    members:
+      - Vivaldi
+      - Bach
+      - Handel
+      - Haydn
+      - Mozart
+      - Beethoven
+      - Schubert
+      - Mendelssohn
+      - Chopin
+      - Schumann
+      - Liszt
+      - Wagner
+      - Verdi
+      - Brahms
+      - Tchaikovsky
+      - Dvořák
+      - Grieg
+      - Rimsky-Korsakov
+      - Bizet
+      - Puccini
+      - Mahler
+      - Debussy
+      - Ravel
+      - Stravinsky
+      - Rachmaninoff
+      - Gershwin
+      - Prokofiev
+      - Shostakovich
+
+  - id: artist_names
+    format: name
+    estimated_count: 30
+    min_distractors: 4
+    members:
+      - Louis Armstrong
+      - Duke Ellington
+      - Billie Holiday
+      - Ella Fitzgerald
+      - Charlie Parker
+      - Miles Davis
+      - John Coltrane
+      - Thelonious Monk
+      - Elvis Presley
+      - Chuck Berry
+      - The Beatles
+      - The Rolling Stones
+      - Bob Dylan
+      - Jimi Hendrix
+      - Led Zeppelin
+      - Pink Floyd
+      - David Bowie
+      - Queen
+      - Stevie Wonder
+      - Aretha Franklin
+      - Bob Marley
+      - Michael Jackson
+      - Prince
+      - Madonna
+      - Nirvana
+      - Tupac Shakur
+      - Kraftwerk
+      - Run-DMC
+      - Grandmaster Flash
+      - Public Enemy
+
+  - id: work_names
+    format: name
+    estimated_count: 22
+    min_distractors: 4
+    members:
+      - The Four Seasons
+      - Messiah
+      - The Well-Tempered Clavier
+      - Symphony No. 9 (Beethoven)
+      - Moonlight Sonata
+      - The Magic Flute
+      - Carmen
+      - Swan Lake
+      - The Nutcracker
+      - New World Symphony
+      - Peer Gynt Suite
+      - The Rite of Spring
+      - Boléro
+      - Clair de Lune
+      - Rhapsody in Blue
+      - La Bohème
+      - Der Ring des Nibelungen
+      - Scheherazade
+      - Also sprach Zarathustra
+      - Pictures at an Exhibition
+      - Peter and the Wolf
+      - West Side Story
+
+  - id: album_names
+    format: name
+    estimated_count: 20
+    min_distractors: 4
+    members:
+      - Kind of Blue
+      - A Love Supreme
+      - Sgt. Pepper's Lonely Hearts Club Band
+      - Abbey Road
+      - Revolver
+      - Pet Sounds
+      - Thriller
+      - Purple Rain
+      - Dark Side of the Moon
+      - The Rise and Fall of Ziggy Stardust
+      - Nevermind
+      - Rumours
+      - Born to Run
+      - What's Going On
+      - Songs in the Key of Life
+      - Exile on Main St.
+      - Led Zeppelin IV
+      - OK Computer
+      - The Miseducation of Lauryn Hill
+      - Straight Outta Compton
+
+  - id: genre_names
+    format: term
+    estimated_count: 16
+    min_distractors: 4
+    members:
+      - baroque
+      - classical
+      - romantic
+      - impressionism
+      - jazz
+      - blues
+      - rock and roll
+      - soul
+      - R&B
+      - punk
+      - hip-hop
+      - electronic
+      - reggae
+      - opera
+      - country
+      - gospel
+
+  - id: instrument_names
+    format: name
+    estimated_count: 16
+    min_distractors: 4
+    members:
+      - violin
+      - piano
+      - cello
+      - trumpet
+      - saxophone
+      - guitar
+      - drums
+      - clarinet
+      - flute
+      - oboe
+      - harp
+      - organ
+      - double bass
+      - trombone
+      - harpsichord
+      - tuba
+
+  - id: music_terms
+    format: term
+    estimated_count: 16
+    min_distractors: 4
+    members:
+      - crescendo
+      - fortissimo
+      - pianissimo
+      - allegro
+      - adagio
+      - sonata
+      - symphony
+      - concerto
+      - aria
+      - cadence
+      - opus
+      - libretto
+      - staccato
+      - legato
+      - fermata
+      - tempo
+
+  - id: era_names
+    format: term
+    estimated_count: 6
+    min_distractors: 4
+    note: "SMALL POOL (<5 after excluding correct). All facts need pre-generated distractors (8+)."
+    members:
+      - Medieval/Renaissance
+      - Baroque
+      - Classical
+      - Romantic
+      - Impressionist
+      - Modern/20th Century
+
+# ============================================================
+# SUB-DECKS
+# ============================================================
+sub_decks:
+  - id: classical_masters
+    name: "Classical Masters"
+    chainThemeId: 0
+    target_facts: 55
+    description: "Baroque through late Romantic composers and their greatest works (1600-1920)"
+    entities:
+      # Baroque
+      - name: Antonio Vivaldi
+        birth: 1678-03-04
+        death: 1741-07-28
+        country: Republic of Venice
+        era: Baroque
+        works: [The Four Seasons, Gloria]
+        wikidata: Q1340
+      - name: Johann Sebastian Bach
+        birth: 1685-03-31
+        death: 1750-07-28
+        country: Holy Roman Empire
+        era: Baroque
+        works: [Brandenburg Concertos, The Well-Tempered Clavier, Mass in B minor, Toccata and Fugue in D minor]
+        wikidata: Q1339
+      - name: George Frideric Handel
+        birth: 1685-03-05
+        death: 1759-04-14
+        country: Holy Roman Empire / Kingdom of Great Britain
+        era: Baroque
+        works: [Messiah, Water Music, Music for the Royal Fireworks]
+        wikidata: Q7302
+      - name: Henry Purcell
+        birth: 1659-09-10
+        death: 1695-11-21
+        country: Kingdom of England
+        era: Baroque
+        works: [Dido and Aeneas]
+        wikidata: Q9695
+      # Classical
+      - name: Joseph Haydn
+        birth: 1732-03-31
+        death: 1809-05-31
+        country: Holy Roman Empire
+        era: Classical
+        works: [The Creation, London Symphonies]
+        wikidata: Q7349
+        note: "Father of the Symphony and Father of the String Quartet"
+      - name: Wolfgang Amadeus Mozart
+        birth: 1756-01-27
+        death: 1791-12-05
+        country: Prince-Archbishopric of Salzburg
+        era: Classical
+        works: [The Magic Flute, Don Giovanni, Requiem, Eine kleine Nachtmusik, Symphony No. 40]
+        wikidata: Q254
+        note: "Child prodigy, composed first pieces at age 5, died at 35"
+      - name: Ludwig van Beethoven
+        birth: 1770-12-16
+        death: 1827-03-26
+        country: Electorate of Cologne / Austrian Empire
+        era: Classical/Romantic bridge
+        works: [Symphony No. 9, Moonlight Sonata, Für Elise, Symphony No. 5]
+        wikidata: Q255
+        note: "Went almost completely deaf, bridged Classical and Romantic eras"
+      # Early Romantic
+      - name: Franz Schubert
+        birth: 1797-01-31
+        death: 1828-11-19
+        country: Austrian Empire
+        era: Romantic
+        works: [Ave Maria, Erlkönig, Trout Quintet, Unfinished Symphony]
+        wikidata: Q7312
+        note: "Died at 31, wrote over 600 songs (Lieder)"
+      - name: Felix Mendelssohn
+        birth: 1809-02-03
+        death: 1847-11-04
+        country: Hamburg
+        era: Romantic
+        works: [Wedding March, Violin Concerto in E minor]
+        wikidata: Q46096
+      - name: Frédéric Chopin
+        birth: 1810-03-01
+        death: 1849-10-17
+        country: Duchy of Warsaw / France
+        era: Romantic
+        works: [Nocturnes, Polonaises, Ballades, Mazurkas]
+        wikidata: Q1268
+        note: "Poet of the Piano, wrote almost exclusively for piano"
+      - name: Robert Schumann
+        birth: 1810-06-08
+        death: 1856-07-29
+        country: Kingdom of Saxony
+        era: Romantic
+        works: [Carnaval, Kinderszenen]
+        wikidata: Q7351
+      - name: Franz Liszt
+        birth: 1811-10-22
+        death: 1886-07-31
+        country: Austrian Empire / Hungary
+        era: Romantic
+        works: [Hungarian Rhapsodies, Liebestraum]
+        wikidata: Q41309
+        note: "Invented the solo piano recital, legendary virtuoso"
+      - name: Hector Berlioz
+        birth: 1803-12-11
+        death: 1869-03-08
+        country: France
+        era: Romantic
+        works: [Symphonie Fantastique]
+        wikidata: Q1151
+      # Late Romantic
+      - name: Richard Wagner
+        birth: 1813-05-22
+        death: 1883-02-13
+        country: Kingdom of Saxony
+        era: Romantic
+        works: [Der Ring des Nibelungen, Tristan und Isolde, Die Walküre, Ride of the Valkyries]
+        wikidata: Q1511
+        note: "Built Bayreuth Festival Theatre for his own operas"
+      - name: Giuseppe Verdi
+        birth: 1813-10-10
+        death: 1901-01-27
+        country: Kingdom of Italy
+        era: Romantic
+        works: [La Traviata, Aida, Rigoletto, Nabucco]
+        wikidata: Q7317
+      - name: Johannes Brahms
+        birth: 1833-05-07
+        death: 1897-04-03
+        country: Hamburg / Germany
+        era: Romantic
+        works: [German Requiem, Hungarian Dances, Lullaby]
+        wikidata: Q7294
+      - name: Pyotr Ilyich Tchaikovsky
+        birth: 1840-05-07
+        death: 1893-11-06
+        country: Russian Empire
+        era: Romantic
+        works: [Swan Lake, The Nutcracker, 1812 Overture, Piano Concerto No. 1]
+        wikidata: Q7315
+      - name: Antonín Dvořák
+        birth: 1841-09-08
+        death: 1904-05-01
+        country: Kingdom of Bohemia
+        era: Romantic
+        works: [New World Symphony, Slavonic Dances]
+        wikidata: Q7298
+      - name: Edvard Grieg
+        birth: 1843-06-15
+        death: 1907-09-04
+        country: Norway
+        era: Romantic
+        works: [Peer Gynt Suite, Piano Concerto in A minor]
+        wikidata: Q80621
+      - name: Nikolai Rimsky-Korsakov
+        birth: 1844-03-18
+        death: 1908-06-21
+        country: Russian Empire
+        era: Romantic
+        works: [Scheherazade, Flight of the Bumblebee]
+        wikidata: Q93227
+      - name: Georges Bizet
+        birth: 1838-10-25
+        death: 1875-06-03
+        country: France
+        era: Romantic
+        works: [Carmen]
+        wikidata: Q56158
+        note: "Died 3 months after Carmen premiered, never knew its success"
+      - name: Giacomo Puccini
+        birth: 1858-12-22
+        death: 1924-11-29
+        country: Italy
+        era: Romantic/Verismo
+        works: [La Bohème, Madama Butterfly, Tosca, Turandot]
+        wikidata: Q7311
+      - name: Gustav Mahler
+        birth: 1860-07-07
+        death: 1911-05-18
+        country: Austrian Empire
+        era: Late Romantic
+        works: [Symphony No. 8 "Symphony of a Thousand"]
+        wikidata: Q7304
+      # Impressionist / Modern
+      - name: Claude Debussy
+        birth: 1862-08-22
+        death: 1918-03-25
+        country: France
+        era: Impressionist
+        works: [Clair de Lune, La Mer, Prélude à l'après-midi d'un faune]
+        wikidata: Q4700
+      - name: Maurice Ravel
+        birth: 1875-03-07
+        death: 1937-12-28
+        country: France
+        era: Impressionist
+        works: [Boléro, Daphnis et Chloé]
+        wikidata: Q1178
+      - name: Igor Stravinsky
+        birth: 1882-06-17
+        death: 1971-04-06
+        country: Russian Empire / USA
+        era: Modern
+        works: [The Rite of Spring, The Firebird, Petrushka]
+        wikidata: Q7314
+        note: "Rite of Spring premiere caused a riot in Paris 1913"
+      - name: Sergei Rachmaninoff
+        birth: 1873-04-01
+        death: 1943-03-28
+        country: Russian Empire / USA
+        era: Late Romantic
+        works: [Piano Concerto No. 2, Rhapsody on a Theme of Paganini]
+        wikidata: Q131861
+      - name: Sergei Prokofiev
+        birth: 1891-04-23
+        death: 1953-03-05
+        country: Russian Empire / USSR
+        era: Modern
+        works: [Peter and the Wolf, Romeo and Juliet]
+        note: "Died same day as Stalin"
+      - name: George Gershwin
+        birth: 1898-09-26
+        death: 1937-07-11
+        country: USA
+        era: Modern
+        works: [Rhapsody in Blue, Porgy and Bess, An American in Paris]
+
+  - id: instruments_theory
+    name: "Instruments & Theory"
+    chainThemeId: 1
+    target_facts: 40
+    description: "Musical instruments, theory fundamentals, and how music works"
+    topics:
+      # String family
+      - violin (highest string, Stradivarius)
+      - viola (alto voice of strings)
+      - cello (tenor/bass voice)
+      - double bass (lowest string)
+      - harp (oldest string instrument type)
+      - guitar (most popular instrument worldwide)
+      # Woodwind family
+      - flute (no reed)
+      - clarinet (single reed)
+      - oboe (double reed)
+      - bassoon (double reed, bass)
+      - saxophone (invented by Adolphe Sax, 1846)
+      # Brass family
+      - trumpet (highest brass)
+      - French horn
+      - trombone (uses slide)
+      - tuba (lowest brass)
+      # Keyboard
+      - piano (invented by Bartolomeo Cristofori, ~1700)
+      - harpsichord (plucked strings, predecessor to piano)
+      - organ (pipes, oldest keyboard instrument)
+      # Percussion
+      - timpani (tuned drums in orchestra)
+      - drums/drum kit
+      # Theory terms
+      - tempo (speed of music)
+      - dynamics (volume: pp, p, mp, mf, f, ff)
+      - crescendo (gradually louder)
+      - diminuendo/decrescendo (gradually softer)
+      - allegro (fast), adagio (slow), andante (walking pace)
+      - staccato (detached), legato (smooth)
+      - fermata (hold note)
+      - time signatures (4/4, 3/4 waltz, 6/8)
+      # Musical forms
+      - sonata (multi-movement work for solo/duo)
+      - symphony (multi-movement orchestral work)
+      - concerto (soloist + orchestra)
+      - opera (sung drama)
+      - aria (solo song in opera)
+      - cadence (harmonic resolution)
+      - opus (work number)
+      - libretto (opera text)
+
+  - id: jazz_blues
+    name: "Jazz & Blues"
+    chainThemeId: 2
+    target_facts: 45
+    description: "From Mississippi Delta blues to bebop, cool jazz, and beyond"
+    entities:
+      - name: Robert Johnson
+        note: "Crossroads legend, 27 Club, Delta blues"
+      - name: Bessie Smith
+        birth: 1894-04-15
+        death: 1937-09-26
+        country: USA
+        note: "Empress of the Blues"
+      - name: Louis Armstrong
+        note: "Satchmo, What a Wonderful World, trumpet virtuoso, transformed jazz"
+      - name: Duke Ellington
+        birth: 1899-04-29
+        death: 1974-05-24
+        country: USA
+        note: "Take the A Train, Cotton Club, greatest jazz composer"
+      - name: Billie Holiday
+        birth: 1915-04-07
+        death: 1959-07-17
+        country: USA
+        note: "Strange Fruit, Lady Day"
+      - name: Ella Fitzgerald
+        note: "First Lady of Song, scat singing virtuoso"
+      - name: Charlie Parker
+        birth: 1920-08-29
+        death: 1955-03-12
+        country: USA
+        note: "Bird, bebop revolution with alto saxophone"
+      - name: Dizzy Gillespie
+        birth: 1917-10-21
+        death: 1993-01-06
+        country: USA
+        note: "Bebop co-creator with Parker, bent trumpet"
+      - name: Thelonious Monk
+        note: "Brilliant Corners, idiosyncratic piano style"
+      - name: Dave Brubeck
+        birth: 1920-12-06
+        death: 2012-12-05
+        country: USA
+        note: "Take Five (5/4 time), Time Out album"
+      - name: Miles Davis
+        birth: 1926-05-26
+        death: 1991-09-28
+        country: USA
+        note: "Kind of Blue (best-selling jazz album), Bitches Brew (jazz fusion)"
+      - name: John Coltrane
+        note: "A Love Supreme, giant steps, soprano sax"
+      - name: Charles Mingus
+        birth: 1922-04-22
+        death: 1979-01-05
+        country: USA
+        note: "Bass virtuoso, Mingus Ah Um"
+      - name: B.B. King
+        note: "King of the Blues, Lucille (his guitar)"
+      - name: Muddy Waters
+        note: "Father of Chicago Blues, Rolling Stones named after his song"
+    albums:
+      - Kind of Blue (Miles Davis, 1959)
+      - A Love Supreme (John Coltrane, 1965)
+      - Time Out (Dave Brubeck, 1959)
+      - Mingus Ah Um (Charles Mingus, 1959)
+      - The Shape of Jazz to Come (Ornette Coleman, 1959)
+    narrative_arcs:
+      - Blues origins (Mississippi Delta → Chicago → electric blues)
+      - Jazz birth (New Orleans → swing → bebop revolution)
+      - Cool jazz vs hard bop split (1950s)
+      - Jazz fusion (Miles Davis electric period)
+
+  - id: rock_pop
+    name: "Rock & Pop Revolution"
+    chainThemeId: 3
+    target_facts: 50
+    description: "From 1950s rock and roll through punk, grunge, and alternative"
+    entities:
+      - name: Elvis Presley
+        note: "The King, Graceland, hip-swiveling controversy"
+      - name: Chuck Berry
+        note: "Johnny B. Goode, father of rock and roll guitar"
+      - name: Little Richard
+        birth: 1932-12-05
+        death: 2020-05-09
+        country: USA
+        note: "Tutti Frutti, flamboyant pioneer"
+      - name: Buddy Holly
+        birth: 1936-09-07
+        death: 1959-02-03
+        country: USA
+        note: "The Day the Music Died, died in plane crash at 22"
+      - name: The Beatles
+        note: "Fab Four, British Invasion, Sgt. Pepper's, Abbey Road"
+      - name: The Rolling Stones
+        note: "Satisfaction, longest-touring rock band"
+      - name: Bob Dylan
+        birth: 1941-05-24
+        country: USA
+        note: "Nobel Prize in Literature 2016, Blowin' in the Wind"
+      - name: Jimi Hendrix
+        note: "Greatest guitarist, Woodstock Star-Spangled Banner, 27 Club"
+      - name: Led Zeppelin
+        note: "Stairway to Heaven, heavy metal pioneers"
+      - name: Pink Floyd
+        note: "Dark Side of the Moon (900+ weeks on charts), The Wall"
+      - name: Queen
+        note: "Bohemian Rhapsody, Freddie Mercury, We Will Rock You"
+      - name: David Bowie
+        birth: 1947-01-08
+        death: 2016-01-10
+        country: UK
+        note: "Ziggy Stardust, chameleon of rock, Space Oddity"
+      - name: The Who
+        note: "My Generation, Pete Townshend's windmill"
+      - name: Nirvana
+        note: "Smells Like Teen Spirit, grunge, Kurt Cobain 27 Club"
+      - name: Elton John
+        birth: 1947-03-25
+        country: UK
+        note: "Rocket Man, Crocodile Rock, best-selling singles artist"
+      - name: Bruce Springsteen
+        note: "The Boss, Born to Run, Born in the U.S.A."
+    albums:
+      - Sgt. Pepper's Lonely Hearts Club Band (Beatles, 1967)
+      - Abbey Road (Beatles, 1969)
+      - Revolver (Beatles, 1966)
+      - Pet Sounds (Beach Boys, 1966)
+      - Dark Side of the Moon (Pink Floyd, 1973)
+      - Led Zeppelin IV (Led Zeppelin, 1971)
+      - Nevermind (Nirvana, 1991)
+      - The Rise and Fall of Ziggy Stardust (Bowie, 1972)
+      - Rumours (Fleetwood Mac, 1977)
+      - Born to Run (Springsteen, 1975)
+      - OK Computer (Radiohead, 1997)
+      - Exile on Main St. (Rolling Stones, 1972)
+    narrative_arcs:
+      - Birth of rock and roll (Chuck Berry/Elvis/Little Richard → British Invasion)
+      - Beatles arc (Hamburg → Beatlemania → Sgt. Pepper's → breakup)
+      - Punk revolution (Ramones/Sex Pistols → New Wave)
+      - Grunge explosion (Nirvana's Nevermind dethroning hair metal)
+
+  - id: world_modern
+    name: "World Music & Modern Era"
+    chainThemeId: 4
+    target_facts: 40
+    description: "Hip-hop, electronic, reggae, soul, and music industry landmarks"
+    entities:
+      - name: Aretha Franklin
+        note: "Queen of Soul, Respect"
+      - name: Stevie Wonder
+        note: "Songs in the Key of Life, child prodigy, multi-instrumentalist"
+      - name: Bob Marley
+        note: "Reggae legend, One Love, Get Up Stand Up"
+      - name: Michael Jackson
+        note: "King of Pop, Thriller (best-selling album ever), moonwalk"
+      - name: Prince
+        note: "Purple Rain, multi-instrumentalist genius"
+      - name: Madonna
+        note: "Queen of Pop, Material Girl, Like a Virgin"
+      - name: Kraftwerk
+        note: "Electronic music pioneers, Autobahn, Trans-Europe Express"
+      - name: Grandmaster Flash
+        note: "The Message, hip-hop pioneer, turntablism"
+      - name: Run-DMC
+        note: "First hip-hop group on MTV, Walk This Way with Aerosmith"
+      - name: Public Enemy
+        note: "Fight the Power, politically conscious hip-hop"
+      - name: Tupac Shakur
+        note: "Changes, Dear Mama, murdered 1996"
+      - name: The Notorious B.I.G.
+        note: "Ready to Die, East Coast/West Coast rivalry"
+      - name: Marvin Gaye
+        note: "What's Going On, landmark protest album"
+      - name: James Brown
+        note: "Godfather of Soul, I Got You (I Feel Good)"
+    albums:
+      - Thriller (Michael Jackson, 1982)
+      - Purple Rain (Prince, 1984)
+      - What's Going On (Marvin Gaye, 1971)
+      - Songs in the Key of Life (Stevie Wonder, 1976)
+      - Straight Outta Compton (N.W.A, 1988)
+      - The Miseducation of Lauryn Hill (1998)
+    narrative_arcs:
+      - Soul/Motown (James Brown → Aretha → Stevie → Marvin)
+      - Birth of hip-hop (DJ Kool Herc → Grandmaster Flash → Run-DMC → golden age)
+      - Electronic music (Kraftwerk → house → techno → EDM)
+      - Reggae (ska → rocksteady → Bob Marley)
+
+# ============================================================
+# COMMON CONFUSIONS (seeded for confusion matrix)
+# ============================================================
+common_confusions:
+  - [Bach, Handel]           # Both Baroque, born 1685
+  - [Mozart, Haydn]          # Both Classical, contemporaries
+  - [Beethoven, Brahms]      # Germanic symphonists
+  - [Debussy, Ravel]         # French Impressionists
+  - [Schubert, Schumann]     # Similar names, both Romantic
+  - [Verdi, Puccini]         # Italian opera composers
+  - [Chopin, Liszt]          # Romantic piano virtuosos
+  - [Beatles, Rolling Stones] # British Invasion rivals
+  - [Miles Davis, John Coltrane]  # Jazz innovators
+  - [Charlie Parker, Dizzy Gillespie]  # Bebop co-creators
+  - [symphony, concerto]     # Orchestral forms
+  - [sonata, concerto]       # Musical forms
+  - [Baroque, Classical]     # Adjacent eras
+
+# ============================================================
+# QUESTION TEMPLATES
+# ============================================================
+question_templates:
+  - id: who_composed
+    format: "Who composed {work}?"
+    answer_pool: composer_names
+    available_from_mastery: 0
+    difficulty: 1
+  - id: era_of_composer
+    format: "Which musical era is {composer} associated with?"
+    answer_pool: era_names
+    available_from_mastery: 1
+    difficulty: 2
+  - id: instrument_of_artist
+    format: "What instrument is {artist} famous for?"
+    answer_pool: instrument_names
+    available_from_mastery: 1
+    difficulty: 2
+  - id: genre_origin
+    format: "Which genre originated in {context}?"
+    answer_pool: genre_names
+    available_from_mastery: 2
+    difficulty: 3
+  - id: term_definition
+    format: "What is the musical term for {description}?"
+    answer_pool: music_terms
+    available_from_mastery: 0
+    difficulty: 1
+  - id: album_artist
+    format: "Which artist recorded the album {album}?"
+    answer_pool: artist_names
+    available_from_mastery: 1
+    difficulty: 2
+  - id: work_composer_reverse
+    format: "What famous work is {composer} known for?"
+    answer_pool: work_names
+    available_from_mastery: 2
+    difficulty: 3
+
+# ============================================================
+# DIFFICULTY TIERS
+# ============================================================
+difficulty_tiers:
+  easy:
+    - "Mozart, Beethoven, Bach, Beatles, Elvis, guitar, piano, violin"
+    - "Basic theory terms, universally known works"
+  medium:
+    - "Chopin, Tchaikovsky, Debussy, Miles Davis, Led Zeppelin"
+    - "Era identification, album-artist matching"
+  hard:
+    - "Rimsky-Korsakov, Bartók, Schoenberg, bebop pioneers"
+    - "Musical form distinctions, obscure theory terms"
+
+# ============================================================
+# SYNONYM GROUPS
+# ============================================================
+synonym_groups:
+  - id: beethoven_ninth
+    facts: [symphony_no_9, ode_to_joy]
+    reason: "Same work, different names"
+  - id: bach_family
+    facts: [js_bach, cpe_bach]
+    reason: "Both 'Bach' — must never be distractors for each other"

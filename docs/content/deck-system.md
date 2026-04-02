@@ -1,7 +1,7 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-02
 > **Source files:** `src/data/curatedDeckStore.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `data/decks/manifest.json`
 
 ---
@@ -61,10 +61,10 @@ Each deck file is a `CuratedDeck` object (`src/data/curatedDeckTypes.ts`):
 
 ## Manifest
 
-`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-01 it contains **61 decks**:
+`data/decks/manifest.json` lists all active deck filenames. As of 2026-04-02 it contains **62 decks**:
 
 - **Language**: Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, French A1–B2, German A1–B2, Japanese Hiragana/Katakana/N1–N5/N3 Grammar, Korean Hangul/TOPIK 1–2, Spanish A1–B2
-- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, **Dinosaurs & Paleontology**
+- **Knowledge**: World Countries/Capitals/Flags, Solar System, US Presidents, Periodic Table, US States, NASA Missions, Greek/Norse/Egyptian Mythology, WWII, Human Anatomy, Ancient Rome/Greece, Famous Inventions, Mammals, Constellations, Famous Paintings, World Cuisines, Medieval World, World Wonders & Landmarks, Dinosaurs & Paleontology, **Music History**
 
 ### Deck Architecture Files
 
@@ -337,3 +337,58 @@ Run the `/curated-trivia-bridge` skill after adding or updating any knowledge de
 | `work_text_names` | name | 15 — literary/artistic works |
 
 **Pool fix (2026-04-01):** 5 facts were reassigned to correct pools: `greece_cs_ostracism_duration` ("Ten years") and `greece_rel_poseidon_domain` ("Seas, water, storms…") moved from name-format pools to `concept_terms`; `greece_cs_agora_function` (function description) moved to `concept_terms`; `greece_oc_kritios_boy` (artwork title) moved to `work_text_names`; `greece_alex_hellespont_crossing` ("334 BCE") moved from `battle_names` to `date_events`.
+
+---
+
+## music_history Deck
+
+`data/decks/music_history.json` — assembled 2026-04-02 from 5 WIP partial files by `data/decks/_wip/assemble-music-history.mjs`.
+
+| Field | Value |
+|---|---|
+| `id` | `music_history` |
+| `domain` | `art_architecture` |
+| `subDomain` | `music_history` |
+| `facts` | 230 |
+| `minimumFacts` | 180 |
+| `targetFacts` | 230 |
+
+**SubDecks (5):**
+
+| SubDeck ID | Name | chainThemeId | Facts |
+|---|---|---|---|
+| `classical_masters` | Classical Masters | 0 | 55 |
+| `instruments_theory` | Instruments & Theory | 1 | 40 |
+| `jazz_blues` | Jazz & Blues | 2 | 45 |
+| `rock_pop` | Rock & Pop Revolution | 3 | 50 |
+| `world_modern` | World Music & Modern Era | 4 | 40 |
+
+**Answer Type Pools (7):**
+
+| Pool ID | Format | Facts |
+|---|---|---|
+| `artist_names` | name | 79 (includes 3 reclassified from composer_names) |
+| `work_names` | title | 32 |
+| `album_names` | title | 30 |
+| `genre_names` | term | 27 |
+| `music_terms` | term | 28 |
+| `instrument_names` | name | 14 |
+| `era_names` | term | 20 |
+
+**Pool note:** An initial `composer_names` pool had only 3 facts (below the 5-fact minimum). Those 3 facts (`mh_0_liszt_piano_virtuoso`, `mh_0_verdi_risorgimento`, `mh_0_mozart_child_prodigy`) were reclassified into `artist_names`, which is semantically correct since their correct answers are musician names and the pool now has 79 members.
+
+**Difficulty:**
+- easy (1–2): 155 facts
+- medium (3): 66 facts
+- hard (4–5): 9 facts
+
+**Validation:** 230/230 PASS, 0 FAIL (via `scripts/verify-curated-deck.mjs`)
+
+**Source WIP files:**
+- `data/decks/_wip/music_history_classical.json` (55 facts, chainThemeId 0)
+- `data/decks/_wip/music_history_theory.json` (40 facts, chainThemeId 1)
+- `data/decks/_wip/music_history_jazz.json` (45 facts, chainThemeId 2)
+- `data/decks/_wip/music_history_rock.json` (50 facts, chainThemeId 3)
+- `data/decks/_wip/music_history_world.json` (40 facts, chainThemeId 4)
+
+**Assembly script:** `data/decks/_wip/assemble-music-history.mjs` — reads all 5 WIP files, checks for duplicate IDs, validates required fields, normalizes missing `acceptableAlternatives`/`volatile` fields, builds `answerTypePools` by scanning facts, builds `difficultyTiers` by difficulty range, builds `subDecks` by chainThemeId, wraps in CuratedDeck envelope, writes output, updates manifest, runs structural validation.
