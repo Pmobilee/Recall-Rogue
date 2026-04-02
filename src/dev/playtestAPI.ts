@@ -104,26 +104,40 @@ async function startRun(): Promise<PlayResult> {
   });
 }
 
-/** Select a domain by clicking its card. */
+/** Select a domain — handles deckSelectionHub → triviaDungeon → start flow. */
 async function selectDomain(domain: string): Promise<PlayResult> {
   return safeAction(async () => {
-    const btn = document.querySelector(`[data-testid="domain-card-${domain}"]`) as HTMLElement | null;
-    if (!btn) return { ok: false, message: `Domain card '${domain}' not found` };
-    btn.click();
-    await wait(turboDelay(1000));
+    const screen = getScreen();
+
+    // Step 1: If on deckSelectionHub, click Trivia Dungeon panel first
+    if (screen === 'deckSelectionHub') {
+      const triviaPanel = document.querySelector('[data-testid="panel--trivia"]') as HTMLElement | null;
+      if (!triviaPanel) return { ok: false, message: 'Trivia Dungeon panel not found on deckSelectionHub' };
+      triviaPanel.click();
+      await wait(turboDelay(1000));
+    }
+
+    // Step 2: Click domain card on triviaDungeon screen
+    const domainCard = document.querySelector(`[data-testid="domain-card-${domain}"]`) as HTMLElement | null;
+    if (domainCard) {
+      domainCard.click();
+      await wait(turboDelay(500));
+    }
+
+    // Step 3: Click Start Run footer button
+    const startBtn = document.querySelector('[data-testid="footer-start-btn"]') as HTMLElement | null;
+    if (startBtn) {
+      startBtn.click();
+      await wait(turboDelay(1500));
+    }
+
     return { ok: true, message: `Selected domain: ${domain}. Screen: ${getScreen()}` };
   });
 }
 
-/** Select an archetype by clicking its button. */
-async function selectArchetype(archetype: string): Promise<PlayResult> {
-  return safeAction(async () => {
-    const btn = document.querySelector(`[data-testid="archetype-${archetype}"]`) as HTMLElement | null;
-    if (!btn) return { ok: false, message: `Archetype '${archetype}' not found` };
-    btn.click();
-    await wait(turboDelay(2000));
-    return { ok: true, message: `Selected archetype: ${archetype}. Screen: ${getScreen()}` };
-  });
+/** Archetype is auto-selected as 'balanced' per GAME_DESIGN.md. This is a no-op. */
+async function selectArchetype(_archetype: string): Promise<PlayResult> {
+  return { ok: true, message: 'Archetype auto-selected as balanced. Screen: ' + getScreen() };
 }
 
 // ---------------------------------------------------------------------------
@@ -134,8 +148,10 @@ async function selectArchetype(archetype: string): Promise<PlayResult> {
 function getCombatState(): Record<string, unknown> | null {
   const turnState = readStore<any>('rr:activeTurnState');
   if (!turnState) return null;
-  const runState = readStore<any>('rr:activeRunState');
+  // Guard: if combat has ended (enemy/player state cleared during transition), return null
   const enemy = turnState.enemy;
+  if (!enemy || !turnState.playerState) return null;
+  const runState = readStore<any>('rr:activeRunState');
   return {
     // Player
     playerHp: turnState.playerState?.hp,
@@ -416,9 +432,17 @@ async function acceptReward(): Promise<PlayResult> {
     const mgr = reg[Symbol.for('rr:cardGameManager')] as any;
     if (!mgr) return { ok: false, message: 'CardGameManager not found' };
 
-    const scene = mgr.getRewardRoomScene();
-    if (!scene || !scene.scene?.isActive()) {
-      return { ok: false, message: 'RewardRoomScene not active' };
+    // Poll for scene activation — Phaser queues scene.start() asynchronously,
+    // so the scene may not be active on the first check after combat ends.
+    let scene = null;
+    for (let i = 0; i < 60; i++) {  // 60 × 50ms = 3s max
+      scene = mgr.getRewardRoomScene();
+      if (scene && scene.scene?.isActive()) break;
+      scene = null;
+      await wait(50);
+    }
+    if (!scene) {
+      return { ok: false, message: 'RewardRoomScene not active after 3s wait' };
     }
 
     // Auto-collect all non-card, non-relic items first (gold, vials).

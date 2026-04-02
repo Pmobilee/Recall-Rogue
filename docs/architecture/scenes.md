@@ -103,6 +103,8 @@ Displays collectible reward items on a background. Players tap items to collect 
 
 **Assets preloaded:** `reward_bg.webp`, `reward_bg_landscape.jpg`, `gold_tier_0-5.png`, `health_vial_small/large.png`, all 30+ mechanic card art PNGs, v2 card frame WebPs.
 
+**`shutdown()`:** Kills all tweens/timers, clears overlay, then removes all scene-level event listeners (`this.events.removeAllListeners()`) and keyboard listeners (`this.input.keyboard?.removeAllListeners()`). Also calls `removeAllListeners()` on each item sprite before destroying it. This prevents listener accumulation when the scene is stopped and restarted between encounters (crashes with `Cannot read properties of undefined (reading 'trigger')` were caused by missing this cleanup).
+
 **Note:** Stone slab art is placeholder (TODO AR-225).
 
 ---

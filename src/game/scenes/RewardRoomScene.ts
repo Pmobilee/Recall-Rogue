@@ -1224,6 +1224,12 @@ export class RewardRoomScene extends Phaser.Scene {
     this.time.removeAllEvents()
     this.clearOverlay()
 
+    // Remove scene-level event listeners to prevent accumulation across restarts.
+    // Without this, goldCollected/sceneComplete/etc. listeners pile up each encounter.
+    this.events.removeAllListeners()
+    // Remove keyboard listeners added in createContinueButton() (ENTER/SPACE handlers).
+    this.input.keyboard?.removeAllListeners()
+
     for (const fly of this.fireflies) {
       if (fly.sprite && fly.sprite.active) {
         fly.sprite.destroy()
@@ -1232,6 +1238,10 @@ export class RewardRoomScene extends Phaser.Scene {
     this.fireflies = []
 
     for (const item of this.items) {
+      // Remove pointerdown listeners before destroying to prevent stale handler refs.
+      if (item.sprite) {
+        (item.sprite as any).removeAllListeners?.()
+      }
       if (item.sprite && (item.sprite as any).active) {
         item.sprite.destroy()
       }

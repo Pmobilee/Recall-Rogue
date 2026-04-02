@@ -34,21 +34,25 @@ Parse from the user's invocation message:
 
 | Argument | Meaning |
 |----------|---------|
-| (none) | Run all 4 testers |
+| (none) | Run all 5 testers |
 | `quiz` | Quiz Quality tester only |
 | `balance` | Balance Curve tester only |
 | `fun` | Fun/Engagement tester only |
 | `study` | Study Temple tester only |
+| `fullrun` | Full Run Bug Hunter — plays complete run from Hub through 1-2 floors |
 | Comma-separated names | Run named testers only (e.g., `quiz,balance`) |
 | `smoke-only` | Phase 0 connectivity check only — do not run testers |
 | `runs=N` | Each tester completes N combat encounters (default: 3) |
 | `domain=X` | Override domain (default: `general_knowledge`) |
+| `floors=N` | How many dungeon floors to attempt (default: 2, fullrun tester only) |
 
 **Examples:**
 - `/llm-playtest` — all 4 testers, general_knowledge, 3 encounters each
 - `/llm-playtest quiz,fun` — quiz quality + fun/engagement only
 - `/llm-playtest domain=history runs=5` — all testers, history domain, 5 encounters
 - `/llm-playtest smoke-only` — just verify the game is running and APIs work
+- `/llm-playtest fullrun` — full run bug hunter, 2 floors
+- `/llm-playtest fullrun floors=3` — full run, 3 floors
 
 ---
 
@@ -155,7 +159,7 @@ Before spawning testers, create the batch manifest:
 {
   "batchId": "BATCH-2026-03-27-001",
   "createdAt": "2026-03-27T10:00:00Z",
-  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple"],
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple", "full-run"],
   "args": {
     "runs": 3,
     "domain": "general_knowledge"
@@ -1115,6 +1119,394 @@ Write your report to `{BATCH_DIR}/study-temple.md`:
 
 ---
 
+## Tester 5: Full Run Bug Hunter — Full Self-Contained Prompt Template
+
+> The orchestrator spawns a Sonnet sub-agent with this entire block as its prompt (substituting `{BATCH_DIR}`, `{FLOORS}`, `{DOMAIN}`).
+
+---
+
+**FULL RUN BUG HUNTER TESTER — SELF-CONTAINED PROMPT**
+
+You are the Full Run Bug Hunter for Recall Rogue, a card roguelite knowledge game. Your job is to play a COMPLETE run from Hub through {FLOORS} full dungeon floors using the `window.__rrPlay` API via Playwright MCP. You must visit ALL room types (combat, shop, rest, mystery, boss) and report crashes, stuck states, broken transitions, missing UI, and data anomalies.
+
+**Your output**: Write a markdown report to `{BATCH_DIR}/full-run.md` using the bug report format defined at the end of this prompt.
+
+---
+
+### GAME DESIGN REFERENCE — What You Should Expect
+
+**Run Flow**: Hub → startRun() → domainSelect → archetypeSelect → dungeonMap → [room nodes] → boss → retreatOrDelve → [next floor or runEnd]
+
+**Room Types on the Map**:
+- **Combat**: Turn-based card battles. Draw 5 cards, play them (quickPlay = 1 AP, chargePlay = 2 AP with quiz), endTurn, enemy attacks, repeat. Win → reward sequence.
+- **Elite**: Harder combat with better rewards.
+- **Boss**: End-of-floor combat. After winning → retreatOrDelve screen.
+- **Shop**: Buy/sell cards and relics. Can haggle (quiz for discount).
+- **Rest**: Choose heal (restore HP), upgrade (quiz to upgrade card mastery), or meditate (remove a card).
+- **Mystery**: Narrative event with choices and consequences.
+- **Treasure**: Auto-collect rewards.
+
+**Post-Combat Sequence**: combat victory → rewardRoom (Phaser scene: collect gold, vials, pick card, relics — all inline) → back to dungeonMap. There is NO separate cardReward screen — card selection happens inside the Phaser reward room.
+
+**Combat Key Numbers**:
+- 3 AP per turn (max 5), 5 cards drawn per turn
+- Quick Play: 1 AP, base damage, no quiz
+- Charge Play: 2 AP (+1 surcharge), 1.5× damage if correct, 0.5× if wrong, requires quiz
+- Surge turns (every 4th global turn): free charge surcharge
+- Chain multipliers: 1.0× / 1.2× / 1.5× / 2.0× / 2.5× / 3.5× at lengths 0-5
+- Chain decays by 1 per turn (not full reset)
+
+**Win/Loss**: Enemy HP ≤ 0 = victory. Player HP ≤ 0 = defeat → runEnd. Last_breath/phoenix_feather relics can save from lethal once.
+
+**Retreat or Delve**: After boss defeat, player chooses to cash out (retreat → victory runEnd) or continue to next floor (delve → new dungeonMap).
+
+---
+
+### CRITICAL SCREENSHOT & LAYOUT DUMP RULES
+
+- **ALWAYS** call `__rrLayoutDump()` via `browser_evaluate(() => window.__rrLayoutDump())` at EVERY screen transition and after EVERY combat turn end
+- **ALWAYS** use `browser_evaluate(() => window.__rrScreenshotFile())` for screenshots — then `Read("/tmp/rr-screenshot.jpg")` to view
+- **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's RAF loop blocks it permanently (30s timeout)
+- **NEVER** use `page.screenshot()` — same RAF issue
+- Layout dumps are your PRIMARY perception tool — they show exact positions of ALL Phaser + DOM elements
+
+---
+
+### Setup
+
+1. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true`
+2. Wait 5 seconds for the game to fully load
+3. Mute audio:
+```javascript
+await browser_evaluate(() => {
+  const sym1 = Symbol.for('rr:sfxEnabled');
+  const sym2 = Symbol.for('rr:musicEnabled');
+  if (globalThis[sym1]?.set) globalThis[sym1].set(false);
+  if (globalThis[sym2]?.set) globalThis[sym2].set(false);
+});
+```
+4. Verify APIs exist: `__rrPlay`, `__rrLayoutDump`, `__rrDebug`, `__rrScreenshotFile`
+5. Take initial **LAYOUT DUMP + screenshot** to confirm hub screen
+
+---
+
+### The `window.__rrPlay` API — Key Methods
+
+All calls go through `mcp__playwright__browser_evaluate`.
+
+**Navigation & State:**
+- `getScreen()` — Current screen: `'hub'`, `'domainSelect'`, `'archetypeSelect'`, `'dungeonMap'`, `'combat'`, `'cardReward'`, `'rewardRoom'`, `'restRoom'`, `'shopRoom'`, `'mysteryEvent'`, `'retreatOrDelve'`, `'runEnd'`
+- `look()` — Full game state as structured text
+- `getAllText()` — All visible DOM text
+- `getRecentEvents(N)` — Last N game events
+- `validateScreen()` — Check screen state validity
+- `getRunState()` — `{floor, segment, currency, deckSize, relics, playerHp, playerMaxHp, encountersCompleted}`
+
+**Run Flow:**
+- `startRun()` → `{ok}`
+- `selectDomain(domain)` → `{ok}`
+- `selectArchetype(archetype)` → `{ok}`
+- `selectMapNode(nodeId)` → `{ok}`
+
+**Combat:**
+- `getCombatState()` — Full state: playerHp, playerMaxHp, playerBlock, ap, apMax, enemyName, enemyHp, enemyMaxHp, enemyBlock, enemyIntent, hand[], turn, floor, gold
+- `quickPlayCard(index)` → `{ok, damage?, block?}`
+- `chargePlayCard(index, answerCorrectly)` → `{ok, damage?, quizData?}`
+- `endTurn()` → `{ok}`
+
+**Post-Combat:**
+- `acceptReward()` — Collect rewards
+- `selectRewardType(cardType)` — Pick card type in card reward
+- `delve()` — Continue to next floor
+- `retreat()` — End run as victory
+- `restHeal()` / `restMeditate()` — Rest actions
+- `getShopInventory()` → `{relics[], cards[], removalCost}`
+- `shopBuyRelic(index)` / `shopBuyCard(index)`
+- `getMysteryEventChoices()` → `[{index, text}]`
+- `selectMysteryChoice(index)`
+- `mysteryContinue()` — Continue past event
+
+---
+
+### Error Handling Protocol
+
+1. **`{ok: false}` returned**: Log error, capture `__rrDebug()` + `__rrLayoutDump()`, retry once after 2 seconds. If still failing, document as BUG with full evidence.
+2. **Stuck detection**: If `getScreen()` returns the same value 3+ consecutive times with no game state progress:
+   a. Capture: `__rrLayoutDump()` + `__rrDebug()` + `__rrScreenshotFile()` + `look()` + `getAllText()` + `getRecentEvents(20)`
+   b. Try clicking any visible interactive elements found in layout dump
+   c. If 3 recovery attempts fail: record as CRITICAL bug, try `navigate('dungeonMap')` as last resort
+   d. If that fails too: end run and report
+3. **Unknown screen**: Call `getAllText()` and `look()` to understand what's displayed, then handle appropriately
+4. **Combat doesn't end after 30 turns**: Record as HIGH bug (infinite loop), end turn 5 more times, then force navigate away
+
+---
+
+### Your Testing Protocol
+
+#### Phase 1: Start the Run
+
+```
+1. startRun() → check getScreen()
+   → LAYOUT DUMP (verify domainSelect screen elements)
+2. selectDomain('{DOMAIN}') → check getScreen()
+   → LAYOUT DUMP
+3. selectArchetype('balanced') → check getScreen()
+   → LAYOUT DUMP + SCREENSHOT (should be dungeonMap)
+```
+
+Wait 2 seconds between each call. If any returns `{ok: false}`, capture evidence and retry once.
+
+#### Phase 2: Map Navigation Loop
+
+For each floor (repeat for {FLOORS} floors):
+
+**Discover available map nodes:**
+```javascript
+const mapInfo = await browser_evaluate(() => {
+  const nodes = document.querySelectorAll('[data-testid^="map-node-"]');
+  const available = [];
+  nodes.forEach(el => {
+    if ((el.classList.contains('state-available') || el.classList.contains('available'))
+        && el.offsetParent !== null) {
+      available.push({
+        testId: el.getAttribute('data-testid'),
+        classes: el.className,
+        text: el.textContent?.trim()?.substring(0, 50) || ''
+      });
+    }
+  });
+  return { available, total: nodes.length };
+});
+```
+
+**Node selection priority** (maximize room type coverage):
+1. Mystery (if not yet visited this floor)
+2. Shop (if not yet visited this floor)
+3. Rest (if not yet visited this floor)
+4. Elite (if not yet visited this floor)
+5. Any unvisited type
+6. First available combat node
+
+After `selectMapNode(testId)`:
+- Wait 3 seconds
+- Check `getScreen()` — should NOT be `dungeonMap` anymore
+- **LAYOUT DUMP** immediately
+- If still `dungeonMap` after 5 seconds: document as stuck-state bug, retry with different node
+
+#### Phase 3: Room Handlers
+
+**COMBAT ROOM:**
+```
+PRE-COMBAT:
+  LAYOUT DUMP
+  getCombatState() → record enemy name, HP, floor
+  BUG CHECK: hand has cards? AP > 0? enemy alive?
+
+TURN LOOP (max 30 turns):
+  1. getCombatState() → read hand, AP, enemy
+  2. For each card (while AP allows):
+     - If AP >= 2: chargePlayCard(i, true)
+     - If AP == 1: quickPlayCard(i)
+     - Check getScreen() after each play — combat may have ended
+  3. endTurn()
+  4. LAYOUT DUMP
+  5. BUG CHECK: AP unchanged? Enemy HP unchanged? Unexpected screen? Turn didn't increment?
+  6. Check getScreen() — may have transitioned
+
+POST-COMBAT:
+  LAYOUT DUMP
+  Record: turns taken, enemy name, final HP, damage dealt
+```
+
+**REWARD ROOM** (post-combat — KNOWN CRASH POINT):
+```
+  LAYOUT DUMP
+  look() → read reward options
+  getRunState() → record gold before
+  acceptReward()
+  Wait 3 seconds (Phaser scene needs time)
+  LAYOUT DUMP
+  getRunState() → record gold after
+  Check getScreen() — should transition away
+  
+  BUG CHECK: acceptReward returns {ok: false}? Screen stuck? Gold unchanged?
+  If {ok: false}: capture __rrDebug() IMMEDIATELY — this was a previous CRITICAL bug
+```
+
+**CARD REWARD:** (No separate screen — card selection is handled inline inside the Reward Room Phaser scene. If getScreen() returns 'cardReward', call acceptReward() which routes to the Reward Room handler above.)
+
+**SHOP ROOM:**
+```
+  LAYOUT DUMP
+  getShopInventory() → record all items and prices
+  getRunState() → record gold
+  If can afford relic: shopBuyRelic(0) → LAYOUT DUMP → verify gold decreased
+  If can afford card: shopBuyCard(0) → LAYOUT DUMP → verify gold decreased
+  Wait for return to dungeonMap
+  
+  BUG CHECK: 0 items? NaN prices? Negative prices? Gold didn't decrease after buy?
+```
+
+**REST ROOM:**
+```
+  LAYOUT DUMP
+  look() → read options
+  getRunState() → record HP
+  If playerHp < playerMaxHp * 0.8: restHeal() → verify HP increased
+  Else: restMeditate()
+  LAYOUT DUMP after action
+  Check getScreen() → should return to dungeonMap
+  
+  BUG CHECK: heal didn't change HP? Screen stuck? Options not showing?
+```
+
+**MYSTERY EVENT:**
+```
+  LAYOUT DUMP
+  getMysteryEventChoices() → record choices
+  look() → read narrative
+  If choices available: selectMysteryChoice(0)
+  Else: mysteryContinue()
+  Wait 2 seconds
+  Check getScreen()
+  If still mysteryEvent: mysteryContinue()
+  LAYOUT DUMP
+  
+  BUG CHECK: empty choices? stuck screen? unexpected consequence?
+```
+
+**RETREAT OR DELVE** (after boss):
+```
+  LAYOUT DUMP + SCREENSHOT
+  getRunState() → record floor, HP, gold
+  If currentFloor < {FLOORS}: delve()
+  Else: retreat()
+  Wait 3 seconds
+  LAYOUT DUMP
+  Check getScreen() → dungeonMap (delve) or runEnd (retreat)
+  
+  BUG CHECK: screen didn't change? Floor didn't increment after delve?
+```
+
+**RUN END:**
+```
+  LAYOUT DUMP + SCREENSHOT
+  look() → read results
+  getRunState() → record final stats
+  getSessionSummary() → aggregate stats
+  Record: floors completed, encounters won, accuracy, gold earned
+```
+
+#### Phase 4: Handle Death
+
+If player dies mid-combat (getScreen returns 'runEnd' or getCombatState shows playerHp <= 0):
+- This is NORMAL gameplay, not a bug
+- Take LAYOUT DUMP + screenshot at runEnd
+- Record the death details (which enemy, which floor, HP at death)
+- If {FLOORS} target not met: start a NEW run and continue
+
+#### Phase 5: Universal Screen Router
+
+After EVERY action, check `getScreen()` and route:
+
+| Screen | Handler |
+|--------|---------|
+| `combat` | → Combat handler |
+| `rewardRoom` | → Reward Room handler |
+| `cardReward` | → Redirect to Reward Room handler (card selection is inline in rewardRoom) |
+| `dungeonMap` | → Map Navigation (pick next node) |
+| `shopRoom` | → Shop handler |
+| `restRoom` | → Rest handler |
+| `mysteryEvent` | → Mystery handler |
+| `retreatOrDelve` | → Retreat/Delve handler |
+| `runEnd` | → Run End handler |
+| `hub` | → Run ended, start new if floors target not met |
+| Unknown | → Log as anomaly, LAYOUT DUMP, try look() + getAllText() |
+
+---
+
+### Known Behaviors (Not Bugs) — DO NOT REPORT THESE
+
+1. **Fact repetition** (~8-10 unique facts per 22 charges) — this is the Anki learning algorithm working, not a bug
+2. **Quick play damage lower than charge** — intended 1:1.5 ratio
+3. **Audio muted** — we muted it in setup
+4. **Combat ending in 2 turns on floor 1** — this is a KNOWN balance issue, not a transition bug. Only report if the transition AFTER combat breaks.
+5. **No separate cardReward screen** — card selection is integrated into the rewardRoom Phaser scene. acceptReward() transitions directly to dungeonMap after collecting all items.
+
+---
+
+### Bug Report Format
+
+Write your report to `{BATCH_DIR}/full-run.md`:
+
+```markdown
+# Full Run Bug Report — {BATCH_ID}
+**Tester**: Full Run Bug Hunter | **Model**: sonnet | **Date**: {DATE}
+
+## Run Summary
+- **Floors attempted**: N / {FLOORS} target
+- **Floors completed**: N
+- **Total rooms visited**: N
+- **Room types visited**: combat (N), shop (N), rest (N), mystery (N), boss (N), elite (N), reward (N)
+- **Total combat encounters**: N
+- **Run outcome**: victory / defeat / stuck / crash
+- **Total bugs found**: N (critical: X, high: X, medium: X, low: X)
+
+## Verdict: {PASS | ISSUES | FAIL}
+(FAIL if any CRITICAL bugs; ISSUES if any HIGH bugs; PASS otherwise)
+
+## Room Type Coverage
+| Room Type | Visited? | Count | Working? | Notes |
+|-----------|----------|-------|----------|-------|
+
+## Screen Transition Log
+| # | From Screen | To Screen | Expected | Match? | Layout Dump Anomalies |
+|---|-------------|-----------|----------|--------|----------------------|
+
+## Bugs Found
+
+### CRITICAL
+(Run-blocking crashes, infinite loops, data loss)
+
+### HIGH  
+(Broken transitions, missing UI, incorrect game state)
+
+### MEDIUM
+(Visual glitches, minor state issues, non-blocking)
+
+### LOW
+(Polish issues, minor inconsistencies)
+
+Each bug entry:
+### BUG-NNN [SEVERITY] — Title
+- **Screen**: where it happened
+- **Action**: what triggered it
+- **Expected**: what should have happened
+- **Actual**: what actually happened
+- **Evidence**: layout dump excerpt, debug state, console errors
+- **Run State**: floor, HP, gold, encounters completed
+- **Reproducible**: first occurrence / consistent / intermittent
+
+## Per-Encounter Combat Log
+| # | Floor | Enemy | Turns | HP Before | HP After | Gold Gained | Cards Played | Bugs |
+|---|-------|-------|-------|-----------|----------|-------------|--------------|------|
+
+## Layout Dump Anomaly Summary
+Any layout dumps where elements were missing, overlapping incorrectly, or positioned outside viewport.
+
+## Console Errors
+All unique JS errors encountered (via __rrDebug().recentErrors).
+
+## What Worked Well
+List transitions and rooms that functioned correctly — confirms test coverage.
+```
+
+---
+
+**END OF TESTER 5 PROMPT**
+
+---
+
 ## Integration with /inspect
 
 The `/inspect` orchestrator can invoke `/llm-playtest` as its **7th testing method**. When `/inspect` runs on:
@@ -1123,6 +1515,7 @@ The `/inspect` orchestrator can invoke `/llm-playtest` as its **7th testing meth
 - **Quiz Systems**: add `quiz,study` testers for full content + SM-2 verification
 - **Screens**: `fun` tester for engagement quality (visual screens handled separately by `/visual-inspect`)
 - **Overall game**: all 4 testers
+- **Full game flow**: add `fullrun` tester to verify all screen transitions and room handlers work end-to-end
 
 The `/inspect` skill should document in its Phase 3 aggregation that LLM playtest results are incorporated alongside other methods.
 
@@ -1139,6 +1532,7 @@ data/playtests/llm-batches/
     balance-curve.md      — Balance Curve tester report
     fun-engagement.md     — Fun/Engagement tester report
     study-temple.md       — Study Temple tester report
+    full-run.md           — Full Run Bug Hunter report (if fullrun tester requested)
     SUMMARY.md            — Aggregated cross-tester summary
 ```
 

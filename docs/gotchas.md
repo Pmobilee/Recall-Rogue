@@ -394,3 +394,31 @@ Four shallow_depths commons carried a `// glass` comment and baseHP 4 that were 
 All are now at the same floor 1 HP floor (7–9 base) as the rest of Act 1 commons.
 
 **Rule:** After any HP tuning pass, grep `region: 'shallow_depths'` and scan ALL `baseHP` values. Do not stop after fixing the reported enemies — check the entire Act 1 pool.
+
+### 2026-04-02 — RewardRoomScene listener accumulation crashes after 3+ combats
+
+**What went wrong:** LLM playtest BATCH-2026-04-02-001 crashed with `Cannot read properties of undefined (reading 'trigger')` and `Cannot read properties of null (reading 'blendModes')` after 3+ combat encounters.
+
+**Why:** `RewardRoomScene.shutdown()` did not call `this.events.removeAllListeners()` or `this.input.keyboard?.removeAllListeners()`. Each time the scene was stopped and restarted (once per combat encounter), new `goldCollected`, `sceneComplete`, ENTER/SPACE keyboard handlers, and item sprite `pointerdown` listeners were added on top of the previous ones — never cleaned up.
+
+**Fix:** Added to `shutdown()`: `this.events.removeAllListeners()`, `this.input.keyboard?.removeAllListeners()`, and `item.sprite.removeAllListeners()` before sprite destroy in the items loop.
+
+**Rule:** Phaser scenes that are stopped and restarted MUST clean up all event listeners in `shutdown()`. The pattern is: clear scene events, clear keyboard, destroy game objects (after removing their listeners). Never rely on Phaser's destroy() alone to clear pointerdown/scene event handlers added during `create()`.
+
+### 2026-04-02 — playtestAPI acceptReward() failed immediately due to async Phaser scene.start()
+
+**What went wrong:** `acceptReward()` returned `{ok: false, message: 'RewardRoomScene not active'}` immediately after combat ended, because `scene.scene.isActive()` was checked synchronously before Phaser had finished processing the `scene.start()` call.
+
+**Why:** Phaser queues `scene.start()` internally and processes it on the next game loop tick, not synchronously.
+
+**Fix:** Replaced the immediate check with a polling loop (60 × 50ms = 3s max) that retries until the scene is active.
+
+**Rule:** After any `CardGameManager.startRewardRoom()` / `scene.start()` call, never assume the scene is immediately active. Poll with a retry loop in any API that checks `scene.scene.isActive()`.
+
+### 2026-04-02 — selectDomain() failed because deckSelectionHub was the initial screen, not triviaDungeon
+
+**What went wrong:** `selectDomain()` looked for `[data-testid="domain-card-${domain}"]` directly, but after `startRun()` the screen is `deckSelectionHub`, not `triviaDungeon`. The domain card element doesn't exist until the Trivia Dungeon panel is clicked.
+
+**Fix:** `selectDomain()` now checks `getScreen()` first. If on `deckSelectionHub`, it clicks `[data-testid="panel--trivia"]` first, then clicks the domain card, then clicks the Start Run footer button.
+
+**Rule:** When writing `__rrPlay` API navigation helpers, map the FULL user flow — don't assume the game is already on the expected sub-screen. Check `getScreen()` and navigate forward from wherever the player is.
